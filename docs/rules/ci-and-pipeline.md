@@ -103,7 +103,15 @@ older sha, and the survivor's checkout contains its commits anyway. Three conseq
 which cost a turn here before they were understood:
 
 * **A cancelled pending run is not a failure.** Do not investigate one, and do not report it as
-  a broken pipeline.
+  a broken pipeline. ⛔ **BUT CHECK THE DURATION FIRST, BECAUSE `cancelled` IS TWO EVENTS.** A
+  job killed by its own `timeout-minutes` carries the same conclusion word as a superseded
+  pending run, and this bullet — *do not investigate one* — is what made the 2026-09-19 outage
+  invisible for four hours: a 100.32 MB file had the pre-receive hook declining every push, and
+  the timeout killed the job mid-retry, so 68 minutes of wasted work per run read as ordinary
+  push contention. Twice. **The times tell them apart.** A supersede kills a run that never
+  started work: seconds old, empty log. A timeout kill runs for exactly `timeout-minutes` and
+  its log is full. `scripts/check-file-sizes.py`, run first in `pipeline.yml`, is what stops
+  that particular cause from recurring silently; the reading rule above is general.
 * **Three pushes produce two runs.** Any count of runs against pushes will be short, by design.
 * **Do not push again while waiting on a run you want to watch**, because the push cancels it.
   Land the work in one commit, or accept re-arming the watch on the new run.

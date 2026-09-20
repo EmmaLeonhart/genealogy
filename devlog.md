@@ -45689,4 +45689,278 @@ them put 48 strangers in the roster that seeds the universe TODAY. The 14 from
 `build-ancestor-creations` plus `Q141498725` are the real set, and they were identified by
 provenance -- the geni ids that script had actually emitted -- not by absence of statements.
 
+---
+
+## 2026-09-19 — a size check the pipeline runs first, and two wrong premises it refuted
+
+`scripts/check-file-sizes.py` lists every tracked file at or over 80 MB, says what can grow it,
+and exits 1 at 95 MB. `pipeline.yml` runs it twice: at the top of the job with `--strict`,
+before anything is spent, and again inside `Commit the rebuilt batch` just before `git add -A`,
+because everything between those two points regenerates files. It takes 2.3 seconds.
+
+**It replaces finding out by hand after a failure.** On 2026-09-19 a tracked file reached
+100.32 MB, GitHub's pre-receive hook declined every push containing it, and the job did 68
+minutes of work and had all five push attempts rejected — every run, for four hours. That was
+invisible because `timeout-minutes` killed the job mid-retry and GitHub reports a timeout kill
+as `cancelled`, the same word as the supersede-on-push cancellation, so it was read as push
+contention twice.
+
+**Writing it refuted the two premises `queue.md` recorded, and both are corrected there.**
+
+* `pipeline.yml` does **not** write `reports/name-item-languages.csv`. The queue named
+  `build-name-item-cjk.py` at line 480, and that script only reads it. The writer is
+  `measure-name-item-languages.py`, which no workflow runs.
+* **Nothing in CI regenerated the 100.32 MB file either.** No workflow runs
+  `refresh-live-values.py`, and `build-garborg-day.py` does not call it — its six mentions of
+  that script are all prose telling a person to run it. A session refreshed the file and
+  committed it, and from then on it refused everyone's pushes. The hook rejects a push for what
+  the repository **contains**, so size alone is the failing condition and `--strict` fails on
+  size alone. Who writes a file only says whether it will cross the limit unwatched, which is
+  why that is a printed column and not the exit code.
+
+**Two detector gaps had to be closed before the column could be trusted**, both found by testing
+it against files whose answer was already known.
+
+* `writes_in` in `build-repo-freshness.py` judges a write by the mode on the output name, and
+  the repo's dominant idiom writes a temp file and renames it — `tmp.replace(OUT)`,
+  `os.replace(tmp, OUT)`. That is how `tree-eccentricity.csv` and the `garborg-live-items`
+  shards are written, so the column read `static` for both of the files the check exists for.
+  One rule added here; `writes_in` itself is imported, not copied.
+* A transitive "in CI" test was tried and removed. The edge it was built for does not exist, and
+  a fixpoint over script mentions pulled in `measure-eccentricity.py`, which would have reported
+  `tree-eccentricity.csv` as a live CI fault when it is the opposite. Prose naming a script is
+  how this repo is written, so a mention is not an edge. The test is direct.
+
+Verified on all three branches it can print: `repo-freshness.csv` → rewritten by CI,
+`tree-eccentricity.csv` → grows only when a person runs it, `ITIS.ged` → static. `--strict`
+fires with `::error::` and exit 1 when the bar is lowered to meet the current files.
+
+    91.3 MB  preservation/genealogy/dropbox/ITIS.ged     static -- no generator writes it
+    84.3 MB  reports/tree-eccentricity.csv               a person runs measure-eccentricity.py
+    83.1 MB  reports/name-item-languages.csv             a person runs measure-name-item-languages.py
+
+Nothing is over 95 MB, so the check passes today. The three above are still unsharded and still
+queued.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — `name-item-languages.csv` sharded, and the `cancelled` distinction written down
+
+**Shard first, since the answer to "why can't we shard it" was: no reason.** 83.1 MB, one file,
+823,907 rows — one row per Wikidata name item, its `P31` classes, and its label in each of 19
+target languages plus `mul`. It is the ceiling on mechanical name translation: if `John`
+(`Q4925477`) carries a `ja` label, a person called John gets a Japanese label without anybody
+transliterating anything, and if it does not, no amount of assembling helps.
+
+    16 shards, largest 5.2 MB, 83.1 MB total
+    round trip verified: 823,907 rows in -> 823,907 out, identical as sets
+
+`int(qid[1:]) % 16`, the same rule and the same reason as `garborg-live-items-NN.json`: it
+depends on the qid alone, so one new name item dirties one shard. A size-based split would
+reshuffle every row after the insertion point and emit sixteen garbage diffs a run.
+
+**Rows are sorted within a shard now, which they were not before.** The store's own shard order
+used to decide row order, so re-downloading the items reshuffled the file and every line read as
+changed — § *SORTING MUST BE DETERMINISTIC* against something nobody controls.
+
+**Four readers, all full scans, all rewired and measured from the wired path**:
+`build-name-item-cjk.py` (the one `pipeline.yml` runs, at line 480), `build-name-label-gaps.py`,
+`resolve-ambiguous-names.py`, `measure-mechanical-translation.py`. Each sees all 823,907 rows via
+a four-line glob; the shard rule stays in the writer, because a reader needs the concatenation
+and not the rule. `build-name-item-cjk.py` was run end to end and wrote its 90 label edits.
+
+The un-sharded original is deleted in the same commit, its content verified identical in the
+sixteen files that replace it.
+
+**And `cancelled` now says which `cancelled` it is, in both places that explain one.**
+`CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* explained cancelled pipeline runs as push
+contention — true, and not the whole story. `docs/rules/ci-and-pipeline.md` went further and said
+*"a cancelled pending run is not a failure. Do not investigate one"*, which is the sentence that
+made the 2026-09-19 outage invisible for four hours. A `timeout-minutes` kill carries the same
+conclusion word. **Only the times tell them apart**: a supersede kills a run that never started
+work, so it is seconds old with an empty log; a timeout kill runs for exactly `timeout-minutes`
+and its log is full. Both sections now say so.
+
+    91.3 MB  preservation/genealogy/dropbox/ITIS.ged   static, nothing writes it
+    84.3 MB  reports/tree-eccentricity.csv             a person runs measure-eccentricity.py
+
+Those two are what `check-file-sizes.py` lists now. Neither is near 95 MB and neither is
+rewritten in CI, so neither is queued.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — the path permalinks in email, and the "201" that was a cap
+
+`scripts/parse-path-emails.py` turns Geni relationship notifications into
+`reports/path-permalinks.tsv`. Each notification carries a degree sentence and a
+`https://www.geni.com/c/<64 hex>` permalink — a saved path object, the same kind
+`pathchains.js` spends 28 minutes walking `/paths` to collect thirty at a time, and
+harvesting it off email costs no Geni traffic at all.
+
+**11 harvested, 4 blood and 7 in-law.** One person, Bjørn Johan Ranum Muri, came back with
+both — § *BOTH TIES, ALWAYS* visible in the mail stream itself.
+
+**⛔ The "~200 in the last seven days" in `queue.md` was a cap, not a count.** Gmail's
+`resultCountEstimate` returned exactly **201** for `from:geni.com subject:relationship`, for
+`from:no-reply@geni.com "View the full"`, and for the bare query `in:anywhere` — which matches
+the entire mailbox. Three different questions, one number. Notifications from 09-12 and 09-13
+exist outside the seven-day window, so the true volume is unknown and larger. Emma: *"That's too
+low ... at least one order of magnitude."* She was right, and the number was never measured.
+
+**⛔ And the connector is the wrong instrument for the backlog.** It returns one message body
+per round trip, so N notifications cost N round trips — fine for topping up, hopeless for
+thousands. A Google Takeout mbox is a single file the parser reads in seconds, and no credential
+passes through the agent to get it. That is what is owed next.
+
+**Quoted-printable is why this uses `email` and `mailbox` rather than a regex over the file.**
+Verified against a real encoded mbox: a naive `/c/[0-9a-f]{64}` over the raw bytes finds
+**nothing**, because the transfer encoding breaks the hash up; decoding the part first finds it.
+A regex here would have looked like it worked and silently returned a fraction.
+
+The anchor sentence is stored verbatim rather than parsed into endpoints. These bodies read *"is
+Private User's ..."*, and `queue.md` says not to investigate the anchor without being asked.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — the Takeout is requested
+
+Mail only, MBOX, **export once**, download link by email, 10 GB so a mail-only export arrives as
+one file. Created 22:00; Google says hours to days.
+
+**The account needed checking and it was not the obvious one.** Chrome is signed into
+`emma@topazcomputing.com`, and the Geni notifications are addressed to
+`emmaleonhart999@gmail.com` — so the first read was that Takeout was pointed at the wrong
+mailbox. It is not: searching `from:geni.com` in the signed-in account returns *1–50 of many*,
+so the mail is delivered to the gmail address and lands in this one. The gmail account is not
+signed into this profile, and adding it would need a password, which is not the agent's to type.
+
+**Two things were nearly got wrong.** `Deselect all` did not take on the first click and the form
+still read *58 of 69 selected* — an export of fifty-eight products rather than one. And the
+frequency defaulted to *every 2 months for 1 year*, which would have added a seventh recurring
+schedule to an account that already shows two running twelve-export schedules. Both were caught
+by screenshotting the form instead of trusting the clicks.
+
+When the link arrives: unzip, `python scripts/parse-path-emails.py <the .mbox>`. It merges on the
+hash, so the 11 already harvested are not a problem, and the mbox answers the count question that
+no Gmail query will — `resultCountEstimate` is capped at 201 and the UI says only "many".
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — 47,692 path permalinks, and the 201 was off by 240x
+
+The Takeout completed in about half an hour, not the hours-to-days Google warned about. Google
+also dropped the zip into Drive, which is what made it retrievable: the Takeout download page put
+up a password re-verification, and a Drive download of the same file does not. 202 MB zip,
+833,963,421 bytes of mbox inside.
+
+    47,692 permalinks -> reports/path-permalinks.tsv   (14.7 MB, 31 seconds)
+      15,944 blood
+      31,748 in-law
+
+**⛔ The "~200" this repo had been carrying was 240 times too small.** Emma: *"That's too low ...
+at least one order of magnitude."* It was two orders. Gmail's `resultCountEstimate` is capped at
+201 — the bare query `in:anywhere`, which matches the whole mailbox, returns the same 201 — and
+the UI says only "many", so no query available to a session could ever have given the real
+figure. The mbox gave it in one pass.
+
+**⛔ 636 of the first 48,328 were not paths at all.** `/c/<hash>` is Geni's generic content
+permalink, not a path-object URL, so it turns up in unrelated mail; the one that exposed it had
+subject *"StrangerChat sent you a message"*. Every one of the 636 had a valid-looking 64-hex
+hash and a blank kind and degree — which is to say they looked exactly like thin harvest rather
+than like junk — and every one would have sent the chain walker at a URL that is not a path.
+`NOTIFICATION_RE` now requires the notification's own marker, either the `email_type` parameter
+or the `View the full X relationship:` line. After it: 47,692 rows, **zero** with a blank kind or
+degree.
+
+That last one is the case for checking a harvest's shape rather than its size. 48,328 looked like
+a triumph; 1.3% of it was pointing somewhere else entirely, and nothing about the count said so.
+
+**Still to do, and it is the point of having them**: feed the file to the chain walker instead of
+crawling `/paths` thirty at a time.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — the chain fetcher pointed at all 47,692 permalinks
+
+`window.__chains` is seeded with every permalink and `go()` is running. `health()` reads
+`alive:true`, `fail:0`.
+
+**The fetcher could not read a `/c/` permalink and would not have said so.** `C.one` took
+`to_id` off the REQUEST url, and `/c/<hash>` has no `to=` — it redirects to the `/path/` url that
+does. Every one of the 47,692 would have got a blank `to_id`, and `split-path-chains.py` keys
+chains on `(to_id, kind)` and names each GEDCOM `harvested-path-geni-<to_id>-<kind>`, so nothing
+would have failed: 47,692 chains would have collapsed into one bucket. The parameters were
+already arriving — `redirect: "follow"` was there — and `r.text()` threw away `r.url` one line
+later. `fetchPage` returns both; `fetchText` stays a wrapper so `collect()` is untouched.
+Verified live before the loop started: 200, redirected, `to=` a real profile id, `path_type=inlaw`
+agreeing with what the email said, 40 segments, step 0 the viewer with no profile id.
+
+**⛔ The list got in by file upload, and that is the part worth keeping.** geni.com's CSP blocks
+a cross-origin `fetch`, so the page cannot pull the list from raw GitHub. 47,692 urls is 3.6 MB
+of JavaScript, which is not a paste. What works: inject an `<input type="file">`, hand it the
+file through the browser tool, read it with `FileReader`, `C.seed()` the result. The TSV is
+14.7 MB and the bridge limit is 10 MB, so what goes up is a hash-per-line file at 3.0 MB and the
+page rebuilds the urls. All 47,692 seeded in one call.
+
+    ~3.2 s a chain, ~1,130 an hour, ~42 hours for 47,692
+
+**That is slower than the 1.5 s this file records for `path-chains-090..094`, and it is not a
+fault.** A `/c/` permalink costs a redirect plus a full path render; a `/path/` url cost one
+fetch. The figure is off 5 chains in 16 seconds and the two-hourly tick will replace it with a
+real one. Chrome was checked for all four throttling flags first, per § *do not diagnose a slow
+loop before checking the browser was started this way* — all four present.
+
+**Two things to watch.** `path-chains-NNN.tsv` dumps every 200 chains into Downloads, where
+**305 such files already sit**, so Chrome will suffix the new ones ` (1)` — check
+`merge-path-chains.py` handles that before trusting a merge. And the cursor lives in
+`localStorage.chains_cursor`, which is what a restart resumes from rather than re-walking.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-20 — the chain fetcher's fail count climbed, and what it turned out to be
+
+The two-hourly tick's stop condition fired: `fail` 9 -> 72, +62 in one interval, and the rate
+fell from 1,134 chains an hour to 304. The loop was stopped before fetching anything more, which
+is what the condition is for.
+
+**It is not a block and not a CAPTCHA.** Every completed response during the investigation was
+HTTP 200 with a real path page. A twelve-fetch timing sample: **9 ok, 3 failed, median 1,907 ms,
+slowest success 6.4 s**, and the three failures at 28.6 s, 45.1 s and 45.8 s. A separate
+five-fetch sample: 16.2 s, then 1.5 s, 1.7 s, 1.3 s, 1.7 s, all 200. So Geni is serving
+intermittent latency spikes — most requests are fast, a minority run past the 25 s timeout — and
+the fail count and the rate collapse are two views of that one fact.
+
+**The dump timestamps date it exactly.** Parts 041 and 042 were eleven minutes apart, the steady
+cadence. 043 took 47 minutes and 044 took 56. A sustained five-fold slowdown from about 06:40 to
+08:30 local, not a blip.
+
+**⛔ AND THE INVESTIGATION FOUND A REAL DEFECT UNDERNEATH IT: A TIMED-OUT PERMALINK WAS LOST.**
+`C.fail++` and `C.i++` both ran, so a chain that timed out was stepped over and never fetched
+again, and the only trace was a number going up. **`health()` reporting `fail` is not the same as
+the work being recoverable.** 72 of the first 8,823 timed out — about 1%, so a full 47,692 pass
+would have finished ~470 chains short while every instrument said it had succeeded. `C.failed`
+now collects them and `C.reseedFailed()` puts them back on the end of the list. Manual on
+purpose: retrying inside the loop would re-request during whatever is causing the timeouts.
+
+**Two things I got wrong in the investigating, both worth writing down.** A CAPTCHA check
+returned a false positive on a healthy page, because Geni's own markup carries the tokens it
+looked for — caught only because the same response had 96 segments and a proper title. And the
+first two "healthy" probes re-fetched urls already requested, so they may have been cache hits;
+the honest reading only came from fetching urls nothing had touched. A probe that reuses a warm
+url is not a probe.
+
+Restarted at gen 2 from the cursor, 8,824. `C.reseedFailed()` is owed at the end of the run.
+
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

@@ -69,8 +69,9 @@
  * stagger is in here, never a sleep in the agent.
  *
  *     step 1   paste this file into the console of the FOREGROUND geni.com tab
- *     step 2   await window.__chains.collect()   -- walk /paths, gather permalinks
- *              or window.__chains.load()         -- take them off localStorage instead
+ *     step 2   window.__chains.seed([...])      -- a batch from build-chain-batch.py
+ *              or await window.__chains.collect() -- walk /paths, gather permalinks
+ *              or window.__chains.load()          -- take them off localStorage instead
  *     step 3   window.__chains.go()              -- fetch each, dump every 200 chains
  *     move it  window.__chains.save() in the old tab, load() in the new one
  *     status   window.__chains.health()  ->  {alive, ok, fail, i, of, part}
@@ -82,6 +83,13 @@ window.__chains = window.__chains || {};
   const C = window.__chains;
   C.urls = C.urls || [];
   C.rows = C.rows || [];
+  /* ⛔ **A FAILED PERMALINK WAS COUNTED AND THEN LOST.** `C.fail++` and `C.i++` both ran, so a
+   * chain that timed out was stepped over and never fetched again -- and the only trace was a
+   * number going up. Measured 2026-09-20: 72 of the first 8,823 timed out, which is ~1% and
+   * would be ~470 chains quietly missing from a 47,692 run. `health()` reporting `fail` is not
+   * the same as the work being recoverable. These are kept so `reseedFailed()` can put them
+   * back on the end of the list once the latency spike has passed. */
+  C.failed = C.failed || [];
   C.i = C.i || 0;
   C.ok = C.ok || 0;
   C.fail = C.fail || 0;
@@ -96,7 +104,33 @@ window.__chains = window.__chains || {};
    * request rate — the way to get CAPTCHAd. A loop runs only while it is still the newest. */
   C.gen = (C.gen || 0) + 1;
 
-  const sleep = () => new Promise(s => setTimeout(s, 1100 + Math.random() * 700));
+  /* ⛔ **THE PACE BACKS OFF NOW, BECAUSE A FIXED ONE WALKED INTO A RATE LIMIT.** Measured
+   * 2026-09-20 over 9,229 chains: the failure rate climbed **monotonically the longer the loop
+   * ran** -- 0%, then 9%, then 17.5% -- and throughput fell 1,134 -> 304 -> 214 an hour with it.
+   * Every failure was the 25 s timeout; every completed response was HTTP 200 with a real page.
+   * And a single probe taken seconds after each stop came back in **1.7-2.0 s every time**, on
+   * urls nothing had touched.
+   *
+   * Fast when idle, progressively slower under a sustained stream, recovering after a pause:
+   * that is a rate limiter, not random latency, and a fixed 1.1-1.8 s stagger cannot see one.
+   * Backing off is also § *PACE IT* -- 500 back-to-back reads is what got the account CAPTCHAd
+   * on 2026-09-12 -- so the response to being throttled is never to push harder.
+   *
+   * Additive-increase on success, multiplicative-decrease on failure: every failure doubles the
+   * gap toward `PACE_MAX`, every `PACE_DECAY` consecutive successes takes 10% back off toward
+   * `PACE_MIN`. The agent still never sleeps -- `CLAUDE.md` § *the stagger is the extension's,
+   * never a sleep in the agent*. */
+  const PACE_MIN = 1100, PACE_MAX = 20000, PACE_DECAY = 10;
+  C.pace = C.pace || PACE_MIN;
+  C.paceRun = 0;
+  C.paceUp = function () {
+    C.pace = Math.min(PACE_MAX, Math.max(PACE_MIN, C.pace * 2));
+    C.paceRun = 0;
+  };
+  C.paceDown = function () {
+    if (++C.paceRun >= PACE_DECAY) { C.pace = Math.max(PACE_MIN, C.pace * 0.9); C.paceRun = 0; }
+  };
+  const sleep = () => new Promise(s => setTimeout(s, C.pace + Math.random() * 700));
   const qp = (u, k) => {
     try { return new URL(u, location.origin).searchParams.get(k) || ""; } catch (e) { return ""; }
   };
@@ -116,7 +150,7 @@ window.__chains = window.__chains || {};
       /* Caught up and waiting for `collect()` to add more, rather than dead. `alive` stays true
        * because the loop is stamping `lastAt` -- this says WHY nothing is moving. */
       idling: !!C.idle, ok: C.ok, fail: C.fail,
-      part: C.part, pending: C.rows.length,
+      part: C.part, pending: C.rows.length, pace: Math.round(C.pace),
       collectPage: C.collectPage || 0, collectDone: !!C.collectDone,
       finished: C.finished || null,
     };
@@ -139,17 +173,55 @@ window.__chains = window.__chains || {};
   //: rows are written out. 15s x 4 = one minute of nothing arriving before a file is cut.
   const IDLE_MS = 15000;
   const IDLE_FLUSH = 4;
-  async function fetchText(url) {
+  async function fetchPage(url) {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
     try {
       const r = await fetch(url, { credentials: "include", redirect: "follow",
                                    signal: ctl.signal });
-      return await r.text();
+      /* ⛔ **`r.url` IS THE WHOLE POINT OF THIS FUNCTION AND `r.text()` ALONE THREW IT AWAY.**
+       * A `/c/<hash>` permalink carries no `to=` and no `path_type=`; it REDIRECTS to the
+       * `/path/` url that does. `redirect: "follow"` was already here, so the parameters were
+       * arriving and being discarded one line later. See `C.one`. */
+      return { text: await r.text(), url: r.url || url };
     } finally { clearTimeout(timer); }
   }
 
+  const fetchText = async (url) => (await fetchPage(url)).text;
+
   /* ---------- carry the state between tabs; both tabs are geni.com ---------- */
+  /* ⛔ **SEEDING FROM THE FILE IS NOT `collect()` AND MUST NOT CLEAR THE LIST.** `collect()`
+   * walks `/paths` newest-first and costs 28 minutes for 30 a page; this takes a batch printed
+   * by `scripts/build-chain-batch.py` off `reports/path-permalinks.tsv`, which cost one mbox
+   * parse. Both may be in play at once, so this ADDS and de-duplicates rather than assigning --
+   * assigning would drop whatever `collect()` had already gathered, and the loop reads `C.i`
+   * against a list that had just got shorter. */
+  C.seed = function (urls) {
+    const seen = new Set(C.urls);
+    let added = 0;
+    for (const u of urls || []) {
+      if (!seen.has(u)) { seen.add(u); C.urls.push(u); added++; }
+    }
+    console.log("[chains] seeded +" + added + ", " + C.urls.length + " total, at " + C.i);
+    return added;
+  };
+
+  /* Put the timed-out permalinks back on the end of the list. Returns how many went back.
+   * Deliberately manual rather than automatic: a retry inside the loop would re-request during
+   * whatever is causing the timeouts, which is the opposite of what the pace rules want. */
+  /* ⛔ **THIS CANNOT GO THROUGH `seed()`, AND THE FIRST VERSION DID.** `seed()` de-duplicates
+   * against `C.urls`, and a failed permalink is BY DEFINITION already in `C.urls` -- at a
+   * position the cursor has passed. So the first version returned 0 every time and retried
+   * nothing, while reporting a fix was in place. Measured 2026-09-20: 71 held failures,
+   * `reseeded: 0`. The retry has to APPEND unconditionally; a duplicate at the end of the list
+   * is the entire point, because the copy behind the cursor will never be read again. */
+  C.reseedFailed = function () {
+    const again = C.failed.splice(0, C.failed.length);
+    for (const u of again) C.urls.push(u);
+    console.log("[chains] reseeded " + again.length + " previously failed permalinks");
+    return again.length;
+  };
+
   C.save = function () {
     try {
       localStorage.setItem("chains_urls", JSON.stringify(C.urls));
@@ -237,11 +309,31 @@ window.__chains = window.__chains || {};
   };
 
   /* ---------- one permalink -> rows ---------- */
+  /* ⛔ **TWO URL SHAPES REACH HERE AND ONLY ONE CARRIES THE PARAMETERS.**
+   *
+   *     /path/index?from=..&to=..&path_type=..   collected off `/paths`
+   *     /c/<64 hex>                              the permalink Geni EMAILS
+   *
+   * The second is 47,692 of them -- `reports/path-permalinks.tsv`, harvested out of the Takeout
+   * mbox -- and it has no `to=` at all. Reading `to` off the REQUEST url gives every one of them
+   * a blank `to_id`, and `split-path-chains.py` keys chains on `(to_id, kind)` and names the
+   * GEDCOM `harvested-path-geni-<to_id>-<kind>`, so a blank one does not fail: it silently
+   * collapses every chain into one bucket. The redirect target is where the parameters live.
+   *
+   * Three sources, in falling order of authority: the request url, the FINAL url after the
+   * redirect, and -- if Geni ever stops putting them in the query string -- the last segment of
+   * the rendered chain, which is the target by construction. */
   C.one = async function (url) {
-    const to_id = qp(url, "to");
-    const kind = (qp(url, "path_type") || "blood").replace("inlaw", "in-law");
-    const html = await fetchText(url);
-    const doc = new DOMParser().parseFromString(html, "text/html");
+    const res = await fetchPage(url);
+    const final = res.url || url;
+    let to_id = qp(url, "to") || qp(final, "to");
+    const kind = (qp(url, "path_type") || qp(final, "path_type") || "blood")
+                   .replace("inlaw", "in-law");
+    const doc = new DOMParser().parseFromString(res.text, "text/html");
+    if (!to_id) {
+      const ids = [...doc.querySelectorAll("span.segment [data-profile-id]")];
+      to_id = ids.length ? (ids[ids.length - 1].getAttribute("data-profile-id") || "") : "";
+    }
     const out = [];
     let step = 0;
     for (const seg of doc.querySelectorAll("span.segment")) {
@@ -318,7 +410,13 @@ window.__chains = window.__chains || {};
       try {
         C.rows.push(...await C.one(C.urls[C.i]));
         C.ok++;
-      } catch (e) { C.fail++; C.lastErr = String(e).slice(0, 80); }
+        C.paceDown();
+      } catch (e) {
+        C.fail++;
+        C.lastErr = String(e).slice(0, 80);
+        C.failed.push(C.urls[C.i]);
+        C.paceUp();
+      }
       C.lastAt = Date.now();
       C.i++;
       since++;

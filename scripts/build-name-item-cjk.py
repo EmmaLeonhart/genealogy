@@ -57,8 +57,17 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 PLAN = REPO / "reports" / "name-item-plan.csv"
-LANGS = REPO / "reports" / "name-item-languages.csv"
+LANGS_DIR = REPO / "reports"
 OUT = REPO / "reports" / "wikidata-name-item-cjk.qs"
+
+
+#: The census is sixteen shards now -- `measure-name-item-languages.py` says why, and the
+#: short version is that one tracked file over 100 MB refuses EVERY push to the repo. Every
+#: reader here scans the whole census, so it needs the concatenation and not the shard rule.
+def _language_rows(folder):
+    for path in sorted(folder.glob("name-item-languages-*.csv")):
+        with path.open(encoding="utf-8", newline="") as fh:
+            yield from csv.DictReader(fh)
 
 #: The same per-run ceiling every other label edit answers to, read from the composer so the
 #: two cannot drift. § *Caps:* `LABEL_EDIT_CAP`.
@@ -90,11 +99,10 @@ def our_name_items():
 def live_languages(wanted):
     """`{qid: {lang: label}}` for the wanted qids, from the committed census."""
     out = {}
-    with LANGS.open(encoding="utf-8", newline="") as fh:
-        for row in csv.DictReader(fh):
-            qid = row.get("qid")
-            if qid in wanted:
-                out[qid] = {k: (row.get(k) or "").strip() for k in CJK}
+    for row in _language_rows(LANGS_DIR):
+        qid = row.get("qid")
+        if qid in wanted:
+            out[qid] = {k: (row.get(k) or "").strip() for k in CJK}
     return out
 
 

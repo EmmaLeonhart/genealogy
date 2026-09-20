@@ -609,6 +609,16 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   it is the reason the batch is stale. **If the pipeline has to complete, stop pushing and say
   so**; the stamps can wait one tick and nothing is lost, because `attempt_ledger.stamp` is
   idempotent and the drains are on disk.
+
+  ⛔ **BUT `cancelled` IS TWO DIFFERENT EVENTS AND THIS SECTION USED TO EXPLAIN ONLY ONE.** A
+  job killed by its own `timeout-minutes` and a pending run superseded by a push are **the same
+  word in every listing**, and push contention — true, and written above — is the explanation
+  that comes to hand. Two confident wrong diagnoses came out of reading the conclusion word on
+  2026-09-19, when the real cause was a 100.32 MB file making the pre-receive hook decline every
+  push while the timeout killed the job mid-retry. **Only the start and end times tell them
+  apart**: a supersede cancels a run that never started work, so it dies in seconds with an
+  empty log; a timeout kill runs for exactly `timeout-minutes` and its log is full. Check the
+  duration before attributing a `cancelled` run to anything.
 - **Pages is built from the sha the pipeline PUSHED**, not the one that triggered it.
 - **A page whose generator no workflow runs is published as a photograph.**
 - **The synoptic tree BUILDS in Actions**, slimmed. ~6.07 GB per million people.
