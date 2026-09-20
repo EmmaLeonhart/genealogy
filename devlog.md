@@ -45667,12 +45667,26 @@ found **62 orphans**, of which **14 came from this script**. Those 14 plus `Q141
 in `reports/entry-points-now.tsv`, taking it from 11 rows to 26. Ruled 2026-09-20: *"Every single
 person who was accidentally made by it should become an entry point."*
 
-⛔ **AND THEN ALL 48 OF THE OTHERS WENT IN TOO.** Ruled minutes later, 2026-09-20: *"force open
-all 48 orphans and add them into the ledger. Or not add them into the ledger, add them in as
-entry points ... into the contemporary entry points thing."* So every one of the 62 is now in
-`reports/entry-points-now.tsv` -- **11 rows before today, 74 after** -- and the 48 were opened as
-browser tabs for inspection. They were not all made the same way and several do carry a
-description, so they are not one failure; being unreachable is what they have in common, and an
-entry point is what answers that whatever the cause.
+⛔ **AND THE OTHER 48 WERE NOT ORPHANS AT ALL. THE SCAN THAT FOUND THEM WAS WRONG.**
+
+They went into `entry-points-now.tsv` on the instruction *"force open all 48 orphans and add them
+... into the contemporary entry points thing"*, and came straight back out: *"None of these
+things are things that remotely qualify in this category ... none of these are orphans as I
+expected them to be."* They are now in `entry-points-jan1.tsv` instead -- 44 added, 4 already
+there -- and `entry-points-now.tsv` is back to **26**: the original 11 plus the 15 that really
+are ours.
+
+**The defect is in the definition, and it is worth naming exactly.** The scan asked *does this
+ledger item have no `P22`/`P25`/`P40`/`P26`/`P3373` in our cached copy* and called the answer an
+orphan. That catches **every established Wikidata person who simply has no family recorded**,
+which is ordinary and not a defect at all. The QIDs say so without looking anything up:
+`Q181677`, `Q313559`, `Q314809`, `Q524071`, `Q707581` -- five and six digits, items that predate
+this project by years.
+
+**"Has no family statements" is not "we minted it by mistake and left it unreachable."** The
+second is a small set we created; the first is a property of a large part of Wikidata. Conflating
+them put 48 strangers in the roster that seeds the universe TODAY. The 14 from
+`build-ancestor-creations` plus `Q141498725` are the real set, and they were identified by
+provenance -- the geni ids that script had actually emitted -- not by absence of statements.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
