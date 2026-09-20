@@ -1,4 +1,10 @@
-"""Split the daily batch into the part CI/CD sends itself and the part a person pastes.
+"""Deal the part CI/CD sends itself; the QuickStatements file gets the whole batch.
+
+⛔ **NOT A DISJOINT SPLIT ANY MORE. Ruled 2026-09-19:** *"quickstatements always generated with
+the full contents"*. `wikidata-garborg-day-manual.txt` is now a verbatim copy of the composed
+batch, and `wikidata-garborg-day-auto.txt` is the share the schedule sends unattended -- a
+SUBSET of it, not its complement. The history below is kept because it is the evidence for why
+disjointness existed at all, and the one line that killed it.
 
 Ruled 2026-09-14: *"Make the CICD do about half the edits every day automatically. Produce
 disjoint quickstatements on the github page too."* **Disjoint** is the hard word: the Pages site
@@ -378,6 +384,26 @@ def main() -> int:
     a_text = "\n".join(auto).rstrip() + "\n"
     m_text = "\n".join(manual).rstrip() + "\n"
 
+    # ⛔ **THE QUICKSTATEMENTS HALF IS THE FULL BATCH. Ruled 2026-09-19:** *"quickstatements
+    # always generated with the full contents"*, and earlier the same day: *"all the
+    # quickstatements are attempted to be run because no duplicate items are ever made due to
+    # the description uniqueness guarding."*
+    #
+    # **This supersedes the disjointness on its own reasoning.** Everything above exists because
+    # *"a duplicate `CREATE` mints a second item for somebody who now exists, and that is the one
+    # failure in this design that cannot be undone"*. That premise stopped being true when
+    # descriptions became mandatory: Wikibase refuses a creation whose label AND non-empty
+    # description both match, so a duplicated human `CREATE` is now refused exactly as a
+    # duplicated name-item `CREATE` always was. Measured 2026-09-19 across the day's runs --
+    # fourteen creations came back `ALREADY EXISTS`, each costing one edit, and the sender
+    # carried straight on.
+    #
+    # So the asymmetry the split was built around is gone, and with it the reason to withhold
+    # two thirds of the humans from the file a person actually runs. **The auto half is still
+    # dealt a share** -- it is what the schedule sends unattended, and sending everything twice
+    # would spend the bot's creation cap on items the paste is about to make anyway.
+    m_text = text
+
     # ⛔ **THE ASSERTIONS CHANGED SHAPE WHEN DUPLICATION BECAME THE DESIGN.** They used to check
     # that the two files were a PARTITION -- every line exactly once. That is now false on
     # purpose: everything except the creation of an individual is written to both. What still has
@@ -402,13 +428,16 @@ def main() -> int:
     # is not the grouping a per-unit parse produces, and comparing counts across the two read
     # 29 + 57 != 1. The invariant that matters is about the units this function dealt, so it is
     # asserted there: no unit containing the creation of an individual may appear in both files.
+    # ⛔ **THE OLD CHECK REFUSED AN INDIVIDUAL CREATION IN BOTH HALVES. IT IS GONE BY
+    # RULING, NOT BY OVERSIGHT.** The QuickStatements half is now the whole batch, so every
+    # human creation is deliberately in both files and that assertion would fail every run.
+    # What replaces it is the property that still matters: the auto half must be a SUBSET of
+    # what was composed, so the schedule can never send something the page does not carry.
     for _i in person_units:
         _t = chr(10).join(units[_i])
-        if _t in a_text and _t in m_text:
-            raise SystemExit("an individual creation appears in BOTH halves: "
-                             + _t.splitlines()[0][:80])
-    if len(auto_people) + len([i for i in person_units if i not in auto_people]) != len(person_units):
-        raise SystemExit("individual creations were lost between the halves")
+        if _t in a_text and _t not in m_text:
+            raise SystemExit("an individual creation is in the auto half but NOT in the "
+                             "full QuickStatements file: " + _t.splitlines()[0][:80])
 
     # 3. ⛔ NO `LAST` LINE MAY PRECEDE ITS `CREATE`. `LAST` binds BACKWARDS, so a `LAST` line
     #    that ends up above every `CREATE` in its half attaches to nothing -- and one that ends

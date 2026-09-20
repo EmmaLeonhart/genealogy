@@ -48,9 +48,17 @@ on:
   push:
     branches: [main]
   schedule:
-    # Every six hours, off the hour: :23 rather than :00, where every scheduled workflow on
-    # GitHub fires at once and the queue is worst.
-    - cron: "23 1,7,13,19 * * *"
+    # ⛔ **ONCE A DAY, PLUS ON PUSH. Ruled 2026-09-19:** *"this thing runs once a day and
+    # also at push"*. It was every six hours -- `23 1,7,13,19` -- and that is now wrong for a
+    # measured reason rather than a preference: each compose is a FRESH PICK, so four runs a day
+    # deal four batches against a budget of `DAILY_CREATION_CAP` = 500 creations, and the bot
+    # account has neither `noratelimit` nor `apihighlimits`. Everything past the cap comes back
+    # `no-automatic-entity-id`, so the extra runs bought refusals, not people.
+    #
+    # 07:23 is the slot kept, and the reason is unchanged: `wikidata-edits.yml` sends at 08:07,
+    # so this lands after the rebuild and before the send. Off the hour because every scheduled
+    # workflow on GitHub fires at :00 and the queue is worst there.
+    - cron: "23 7 * * *"
   workflow_dispatch:
     inputs:
       force:
