@@ -100,8 +100,16 @@ FEMALE = "Q6581072"        # sex or gender -> female
 #: ⛔ TWO a day from the scheduled run, FOUR in the QuickStatements half. Raised from 1 and 2 on
 #: 2026-09-17: *"Add 2 ancestors of mine everyday with the cicd and 4 in the quickstatements"*.
 #: The ratio stays 1:2, the same share the daily batch is dealt at.
-AUTO_CREATIONS = 2
-MANUAL_CREATIONS = 4
+#: ⛔ **TEN A DAY. Ruled 2026-09-19** as one of the MANDATORY categories inside the 500-a-day
+#: budget: *"10 of my ancestors plus the ancestral rings of the other people"*. Was 2 and 4.
+#:
+#: **The 1:2 split is preserved and the total is the ruled number**, so the scheduled run takes
+#: a third and the QuickStatements half takes the rest -- 3 and 7. The ratio is the share the
+#: daily batch is dealt at and was not what changed; only the size was. Ten does not divide by
+#: three, so the remainder goes to the QuickStatements side, which is the half a person runs and
+#: the half that is not subject to the bot account's creation cap.
+AUTO_CREATIONS = 3
+MANUAL_CREATIONS = 7
 
 #: ⛔ A PLACEHOLDER PARENT IS OURS AND NEVER WIKIDATA'S. `CLAUDE.md` § *A sibling step gets a
 #: placeholder parent in OUR TREE and never on Wikidata*. `build-family-candidates.py` writes

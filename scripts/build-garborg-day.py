@@ -1844,7 +1844,7 @@ LABEL_EDIT_CAP = 90
 #: the third it takes is exactly the 50% that was added -- `1.5 / 3 = 0.5`. The hand-run keeps
 #: the volume it has today and the autonomous run is purely the increase, which is what
 #: *"an additional smaller amount of edits ... run autonomously"* asks for.
-NAME_ADD_CAP = 90
+NAME_ADD_CAP = 50
 
 #: **A ceiling on the `P2600` lead**, which is exempt from `MANUAL_P2600_PER_RUN` by design: an
 #: id must never be withheld from an item this run is labelling. That exemption is right and is
@@ -2636,8 +2636,35 @@ ARNE_GENI = "6000000005607426327"
 
 
 
-CHILDREN_PER_RUN = 40
-PARENTS_PER_RUN = 40
+#: ⛔ **THE DAILY CREATION BUDGET. Ruled 2026-09-19, and it is a measured ceiling, not a guess.**
+#:
+#: *"500 creations a day is a realistic cap. Anything more raises issues ... Every run makes 400
+#: regular people, up to 50 names, plus any of the mandatory people (10 of my ancestors plus the
+#: ancestral rings of the other people, plus the creating the other parent on single parents),
+#: and the relationship creations."*
+#:
+#: **Where the number comes from.** The bot account is `*, user, autoconfirmed` and holds
+#: **neither `noratelimit` nor `apihighlimits`** -- it is not in the `bot` group. So Wikidata's
+#: anti-abuse cap on minting items applies, and on 2026-09-19 it engaged after **642 creations**:
+#: every later `CREATE` came back `no-automatic-entity-id: Cannot automatically assign ID`, while
+#: statements kept flowing untouched. One run executed 18 edits and created **zero** items.
+#:
+#: 500 sits under that observed ceiling on purpose. Raising it does not buy creations -- it buys
+#: refusals from an account that is already being throttled, which is the behaviour the
+#: anti-abuse measure exists to catch. **The only change that lifts the ceiling is a bot flag**,
+#: which is a Wikidata community approval and needs a person.
+#:
+#: **The 500 is a ceiling over the whole day, not a per-run quota**, because `pipeline.yml`
+#: recomposes several times a day and each composition is a fresh pick.
+DAILY_CREATION_CAP = 500
+
+#: The regular half of that budget: ordinary people picked by `compose`, split evenly between
+#: the children and parents stages. 400 of the 500, leaving 50 for names and the rest for the
+#: mandatory categories, which ride ON TOP and are never traded against this.
+REGULAR_CREATIONS_PER_RUN = 400
+
+CHILDREN_PER_RUN = REGULAR_CREATIONS_PER_RUN // 2
+PARENTS_PER_RUN = REGULAR_CREATIONS_PER_RUN // 2
 
 #: **Free parents, and they do not count against `PARENTS_PER_RUN`.** The rolling rule: where a
 #: child is present and appears to have a single mother or single father, the next run gives them
@@ -6000,6 +6027,18 @@ def compose(our_items, fam, rng, ring_seeds=None):
             free += 1
     why.append(f"5. {free} free parents of {len(eligible)} eligible "
                f"({FREE_PARENTS_FREE} free + half the remaining = {budget}), outside the cap")
+
+    # ⛔ **REPORT THE PICK AGAINST THE DAILY CAP.** `DAILY_CREATION_CAP` is a ceiling on what the
+    # bot account can actually mint before Wikidata starts refusing -- measured at 642 on
+    # 2026-09-19 -- so a composition that sails past it is not ambitious, it is a composition
+    # whose tail will come back `no-automatic-entity-id`. It is REPORTED rather than enforced
+    # because the mandatory categories above are deliberately outside every cap: the free
+    # parents say so on the line above, and the priority ancestor ring is uncapped by
+    # construction. Silently trimming those to fit a number would defeat both rulings.
+    why.append(f"6. {len(picked)} people picked against a {DAILY_CREATION_CAP}/day cap"
+               + (f" -- OVER by {len(picked) - DAILY_CREATION_CAP}, expect the tail to be"
+                  " refused as no-automatic-entity-id"
+                  if len(picked) > DAILY_CREATION_CAP else ""))
 
     return picked, why
 
