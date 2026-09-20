@@ -72894,6 +72894,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141313911$B9082CDF-ED35-4462-ACF0-0E76CF3BAD3D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141513158",
+        "numeric-id": 141513158
+       }
+      },
+      "hash": "66db9ad80f2b45747cf60fc151007a3ecfe13516",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "e3b465747d459cebd98e5c904500fda53a1170e7",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000178279335862"
+          },
+          "hash": "e11789e97609da9f28a9a72e5620972b5193ef4e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P26": [
     {
      "id": "Q141313911$BFB72A9F-6F99-4B49-A012-0516BE55CB19",
@@ -73207,8 +73250,8 @@
     "value": "安娜·斯蒂纳·布罗曼"
    }
   },
-  "lastrevid": 2540659826,
-  "modified": "2026-09-05T21:01:06Z",
+  "lastrevid": 2548030844,
+  "modified": "2026-09-20T21:29:29Z",
   "ns": 0,
   "pageid": 134846104,
   "sitelinks": {},
@@ -125163,6 +125206,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141498343$E16B39FD-BA6C-486B-AA73-D00F012E3EB3",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141513092",
+        "numeric-id": 141513092
+       }
+      },
+      "hash": "6c460fc148cc1a18ae5975d44cf4d7b7c250cdb3",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "625a3c52bc8116274f8cc74ff84a5984421cdd7f",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000181749339891"
+          },
+          "hash": "58c83aee46d7674199449d3b5c181cf0422b8ce0",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -125415,8 +125499,8 @@
     "value": "安娜·海伦娜·奥尔斯达特·奥埃斯塔德"
    }
   },
-  "lastrevid": 2548009550,
-  "modified": "2026-09-20T19:25:39Z",
+  "lastrevid": 2548030190,
+  "modified": "2026-09-20T21:24:56Z",
   "ns": 0,
   "pageid": 135057679,
   "sitelinks": {},
@@ -135168,6 +135252,49 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q141510759$4DB106E7-72DD-46FD-9721-CC78673DEB12",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141513054",
+        "numeric-id": 141513054
+       }
+      },
+      "hash": "135464e9ce128f7ab998e1c3fbf80b14cc862694",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3932d0ba8d8a7228f9d40bcde603a808932c8614",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002207844394"
+          },
+          "hash": "7f179ea643c132d28fce60c0ec255830f3767492",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141510759$85088E1F-9F40-44DB-A830-D267BD5B4C2B",
@@ -135430,8 +135557,8 @@
     "value": "安娜·奥斯滕斯多特"
    }
   },
-  "lastrevid": 2547967331,
-  "modified": "2026-09-20T17:06:05Z",
+  "lastrevid": 2548029543,
+  "modified": "2026-09-20T21:15:56Z",
   "ns": 0,
   "pageid": 135069892,
   "sitelinks": {},
@@ -138061,6 +138188,365 @@
   "pageid": 135071697,
   "sitelinks": {},
   "title": "Q141512503",
+  "type": "item"
+ },
+ "Q141512999": {
+  "aliases": {
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Agathe Birkland"
+    }
+   ]
+  },
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141512999$BF805814-D970-4151-8016-88C3B61D4FD4",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q141512999$82F01037-6288-446A-9607-222FA715261C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141352449",
+        "numeric-id": 141352449
+       }
+      },
+      "hash": "3b706dd18dc971903b9a41377f8bad5152fa2343",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "d8397139624650df04db28e16c492efa898765a1",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000207771056843"
+          },
+          "hash": "6948eaad710d8c1ba2dc50cab185ab028cca978c",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141512999$69BB5F12-9D89-468C-88F7-6BC6C0A12BE3",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141498444",
+        "numeric-id": 141498444
+       }
+      },
+      "hash": "221001ed9bfc38c052cd592184d884f9db8e50d8",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "d8397139624650df04db28e16c492efa898765a1",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000207771056843"
+          },
+          "hash": "6948eaad710d8c1ba2dc50cab185ab028cca978c",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141512999$FBE3E9FF-1141-4470-9F03-21F12DBDAD19",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000207771056843"
+      },
+      "hash": "6948eaad710d8c1ba2dc50cab185ab028cca978c",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Agathe Birkland"
+        },
+        "hash": "9726b509c41cdfdd254fea17207eb69ce9599e39",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141512999$1ECFF925-57CB-42A4-B58D-551223A3A739",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q141512999$50FE5E94-B916-41A4-809B-914E1E40069B",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 11,
+        "time": "+1911-08-23T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "e58dd5184db592d7c8e049df6c24df6ead743226",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "d8397139624650df04db28e16c492efa898765a1",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000207771056843"
+          },
+          "hash": "6948eaad710d8c1ba2dc50cab185ab028cca978c",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P734": [
+    {
+     "id": "Q141512999$9FDAB851-F732-4C11-AF43-3EB3D8930E59",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q20995845",
+        "numeric-id": 20995845
+       }
+      },
+      "hash": "cd1aa93cffca9eb7038ab762a16db132a768bbf8",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P3831": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q2507958",
+          "numeric-id": 2507958
+         }
+        },
+        "hash": "72b0eecdeb0564ec238e4869eedaf6fbce92a07e",
+        "property": "P3831",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P3831"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q141512999$7C200881-3D22-4B20-9E55-C79A6E1E998F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q2803433",
+        "numeric-id": 2803433
+       }
+      },
+      "hash": "d746f034de57f84f7438570b8c892c950e3f627e",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P3831": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q28418670",
+          "numeric-id": 28418670
+         }
+        },
+        "hash": "91ccfc6bc526dec6cc761841200844bff27f0781",
+        "property": "P3831",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P3831"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141512999$BCFAD25B-A37F-4987-813F-8AC21AC5C6EE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q18638496",
+        "numeric-id": 18638496
+       }
+      },
+      "hash": "727a1558e985b1f3cd3dd71ee5975ba7230e2066",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "born 23 Aug 1911"
+   }
+  },
+  "id": "Q141512999",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Agathe Thompson"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "アガーテ・トンプソン"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "아가테 톰프손"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Agathe Thompson"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "阿加特·汤普森"
+   }
+  },
+  "lastrevid": 2548028653,
+  "modified": "2026-09-20T21:03:38Z",
+  "ns": 0,
+  "pageid": 135072193,
+  "sitelinks": {},
+  "title": "Q141512999",
   "type": "item"
  },
  "Q15057415": {
