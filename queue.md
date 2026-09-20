@@ -311,11 +311,25 @@ findings, not work in progress. Nothing here is started.**
   permalinks that failed before 2026-09-20 18:00 are not in any retry list and cannot be named**.
   The retry now appends unconditionally.
 
-  **How to recover those 143, offline, at the end**: `reports/path-permalinks.tsv` carries
-  `subject_name` for every permalink, and a harvested chain's LAST segment is that same person.
-  Any permalink whose `subject_name` matches no final segment in `reports/path-chains-*.tsv` is a
-  candidate for re-walking. That is a join over committed files and costs no Geni traffic to
-  compute -- it is not `--skip` arithmetic and must not be guessed at.
+  **How to recover those 143, offline**: `reports/path-permalinks.tsv` carries `subject_name`
+  for every permalink, and a harvested chain's LAST segment is that same person. The join is
+  `covered_names()` in `build-chain-batch.py`, done 2026-09-20.
+
+  ⛔ **AND THE SAME JOIN SAYS MOST OF THE REMAINING WALK IS WASTED.** Measured: of the 38,148
+  permalinks still to walk, **20,856 already name-match a chain we hold** -- so walking them can
+  only re-fetch something already on disk. `--skip-covered` drops them and takes the whole list
+  from 47,692 to **27,808**.
+
+  ⛔ **IT DROPS ONLY WHERE THE NAME IS HELD BY EXACTLY ONE CHAIN, AND THAT TEST IS THE WHOLE
+  SAFETY OF IT.** Of those 20,856, only 13,031 match a name held by a single chain; the other
+  7,825 match an ambiguous one, and the ambiguity is concentrated in placeholders -- `NN` ends
+  21 held chains, `N.N.` 10, `<private> Schottenstein` 7. Skipping on a bare name match would
+  throw away a real person because an unrelated `NN` is already held. **A name is not an
+  identifier**, which is the same rule as § *PARSE PATRONYMICS BY FORM* in another costume.
+
+  **Not yet applied to the running loop.** The whole 47,692 is seeded in the page and the loop is
+  healthy; re-seeding it mid-run to save time is how a working campaign gets broken. Apply at the
+  next restart.
 
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read

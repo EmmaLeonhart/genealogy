@@ -46,6 +46,37 @@ def rows():
         return list(csv.DictReader(fh, delimiter="\t"))
 
 
+def covered_names() -> dict:
+    """`{final-segment name: how many held chains end on it}`.
+
+    A chain's LAST segment is the person the path was found to, and
+    `reports/path-permalinks.tsv` carries that same person as `subject_name` -- so the two
+    join on the name without fetching anything. Rows with step `-1` are the `EMPTY` marker
+    and carry no person, so they are skipped.
+    """
+    last: dict = {}
+    for path in sorted((REPO / "reports").glob("path-chains-*.tsv")):
+        try:
+            with path.open(encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    try:
+                        step = int(row.get("step", ""))
+                    except (TypeError, ValueError):
+                        continue
+                    if step < 0:
+                        continue
+                    key = (row.get("to_id", ""), row.get("kind", ""))
+                    if key not in last or step > last[key][0]:
+                        last[key] = (step, row.get("name", ""))
+        except OSError:
+            continue
+    freq: dict = {}
+    for _, name in last.values():
+        if name:
+            freq[name] = freq.get(name, 0) + 1
+    return freq
+
+
 def held_chains() -> set:
     """`{(to_id, kind)}` already on disk, for the count line only.
 
@@ -69,6 +100,10 @@ def main() -> int:
                     help="how many permalinks to emit (default 2000)")
     ap.add_argument("--skip", type=int, default=0,
                     help="how many to pass over first -- the cursor")
+    ap.add_argument("--skip-covered", action="store_true",
+                    help="drop permalinks whose subject_name already ends a held chain. "
+                         "⛔ ONLY when that name is held by EXACTLY ONE chain -- see the note "
+                         "on ambiguous names in the source.")
     ap.add_argument("--kind", choices=("blood", "inlaw", "both"), default="both",
                     help="⛔ BOTH by default. CLAUDE.md § BOTH TIES, ALWAYS: a blood chain AND "
                          "a marriage chain, and the redundancy is the point.")
@@ -77,12 +112,28 @@ def main() -> int:
     all_rows = rows()
     if args.kind != "both":
         all_rows = [r for r in all_rows if r.get("kind") == args.kind]
+
+    dropped = 0
+    if args.skip_covered:
+        # ⛔ **THE UNIQUENESS TEST IS THE WHOLE SAFETY OF THIS.** Measured 2026-09-20: 20,856
+        # unwalked permalinks name-match a held chain, but only **13,031** match a name held by
+        # exactly one chain. The other 7,825 match an ambiguous one, and the ambiguity is not
+        # spread evenly -- it is concentrated in placeholders, `NN` on 21 chains, `N.N.` on 10,
+        # `<private> Schottenstein` on 7. Skipping on a bare name match would throw away a real
+        # person because an unrelated `NN` is already held, which is § *PARSE PATRONYMICS BY
+        # FORM* in another costume: a name is not an identifier.
+        freq = covered_names()
+        keep = [r for r in all_rows if freq.get(r.get("subject_name", ""), 0) != 1]
+        dropped = len(all_rows) - len(keep)
+        all_rows = keep
     batch = [r["url"] for r in all_rows[args.skip:args.skip + args.count]]
 
     held = held_chains()
     blood = sum(1 for r in all_rows if r.get("kind") == "blood")
-    print("// %d permalinks held, %d blood and %d in-law; %d (to_id, kind) chains already on disk"
-          % (len(all_rows), blood, len(all_rows) - blood, len(held)))
+    print("// %d permalinks%s, %d blood and %d in-law; %d (to_id, kind) chains already on disk"
+          % (len(all_rows),
+             (" after dropping %d already covered" % dropped) if dropped else " held",
+             blood, len(all_rows) - blood, len(held)))
     print("// this batch: %d, starting at offset %d, %d left after it"
           % (len(batch), args.skip, max(0, len(all_rows) - args.skip - len(batch))))
     print("// next:  python scripts/build-chain-batch.py --count %d --skip %d"
