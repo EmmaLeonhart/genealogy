@@ -5,8 +5,6 @@
 # per the 2026-08-30 ruling that neither form of private gets a qualifier.
 # Re-stating property+value attaches the qualifier; it does not add a second P2600.
 
-Q141456337	P2600	"6000000006129142264"	P1810	"Johan Gudmundsson (Ulf of Horsnäs)"
-Q141456358	P2600	"370152494350011136"	P1810	"Gudmund Pedersson Ulf till Örby och Ekenäs"
 Q141493459	P2600	"6000000006906428932"	P1810	"Slavibor"
 Q141493460	P2600	"6000000001199993264"	P1810	"Otto \"der Reiche\" von Ballenstedt Graf von Ballenstedt"
 Q141493461	P2600	"363554498970006647"	P1810	"Sune Sverkersson Sik"
@@ -15,6 +13,8 @@ Q141493478	P2600	"6000000000757999620"	P1810	"Inger Axelsdatter Güntersberg"
 Q141498380	P2600	"6000000196282195908"	P1810	"Hailaga Halvdansson Halfdansson {Legendary}"
 Q141498390	P2600	"6000000004839304936"	P1810	"Regnild"
 Q141498426	P2600	"6000000000424678903"	P1810	"Adela Vicomtesse de Carlat"
+Q141498435	P2600	"6000000022587109295"	P1810	"Reginlind [Reinhild]"
+Q141498444	P2600	"6000000177921459104"	P1810	"Ragnhild Rasmusdatter Eikeland"
 Q111989638	P2600	"6000000002394166039"	P1810	"Ernst Fredrik von Willebrand"
 Q115870656	P2600	"6000000006828549211"	P1810	"Märta Tomasdotter"
 Q115871023	P2600	"6000000012120496352"	P1810	"Esaias (Issai) Fedorovich Aminoff"
