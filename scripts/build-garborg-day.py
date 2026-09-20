@@ -2740,17 +2740,36 @@ def subgraph_roots():
     relationships is the highest-yield entry point there is, which is exactly what a sv.wikipedia
     article with no genealogical work leaves behind. The roster stays at **about 250** --
     instructed the same day -- so `reports/entry-points.tsv` is a trickle, not a second campaign.
+    ⛔ **ONE CSV NOW. Ruled 2026-09-20:** *"all the Bure people, plus Arne, plus all of the
+    people that we've added to the entry points for miscellaneous reasons all need to be in one
+    single CSV file for the immediate entry points."*
+
+    `reports/entry-points-immediate.csv`, three columns -- `qid`, `geni_id`, `source`. It is
+    built by `scripts/build-immediate-entry-points.py` from `bureatten.csv`, the two roots, and
+    the added rosters, so the answer to *who is an entry point today* is ONE file read rather
+    than three assembled here at import time.
+
+    ⛔ **AND A MISSING FILE IS NOW FATAL, NOT A SILENT FALLBACK.** The old body did
+    `if roster.exists():` around `bureatten.csv` and otherwise carried on with two roots. That
+    is a 252-to-2 collapse of the universe with nothing said, and it is exactly the shape of
+    failure this file keeps being bitten by.
     """
-    roots = [ARNE_QID, BUREUS_QID]
-    roster = ROOT / "reports" / "bureatten.csv"
-    if roster.exists():
-        with open(roster, encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                if (row.get("geni_ids") or "").strip() and row.get("qid"):
-                    roots.append(row["qid"])
-    # `active_entry_points` now covers every bucket whose date has arrived, so the separate
-    # group sweep that used to follow it is gone with the group machinery.
-    roots.extend(q for q, _ in active_entry_points())
+    path = ROOT / "reports" / "entry-points-immediate.csv"
+    if not path.exists():
+        raise SystemExit(
+            f"{path.relative_to(ROOT)} is missing. It is the single source of immediate entry "
+            "points; rebuild it with scripts/build-immediate-entry-points.py. Refusing to run "
+            "on two roots, which is what silently happened before.")
+    roots = []
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            q = (row.get("qid") or "").strip()
+            if q.startswith("Q"):
+                roots.append(q)
+    if len(roots) < 200:
+        raise SystemExit(
+            f"{path.relative_to(ROOT)} holds only {len(roots)} entry points. The roster is about "
+            "250 and has been since 2026-08-29; refusing to run on a truncated one.")
     return tuple(dict.fromkeys(roots))
 
 
