@@ -193,8 +193,28 @@ def usable_label(label):
 def eligible(fam):
     """`[(child_geni, child_qid, parent_geni, 'father'|'mother'), ...]`, in tree order.
 
-    An ancestor of the owner who HAS a QID and whose parent the tree knows but Wikidata does
-    not. The walk is breadth-first from the owner and visits each person once.
+    A QID-bearing ancestor, reachable from the owner THROUGH QID-bearing people only, whose
+    parent the tree knows and Wikidata does not.
+
+    ⛔ **THE WALK ONLY TRAVELS THROUGH PEOPLE WHO CARRY A QID, AND NOT DOING SO WAS A REAL
+    DEFECT.** Ruled 2026-09-20: *"the create my ancestors stuff just creates random ancestors
+    instead of creating connected ancestors ... disconnected ancestors are not even really able
+    to come into anything."*
+
+    The old walk enqueued EVERY parent regardless of QID, so it crossed long stretches of people
+    Wikidata has never heard of and then fired wherever some distant QID-bearing person had a
+    parent we lacked. The creation was linked -- `child_qid P22 LAST` is emitted either way --
+    but linked to an item with **no Wikidata path back to the owner**, because the generations in
+    between were never created. Connected on Geni, a free-floating pair on Wikidata.
+
+    Restricting the queue to QID-bearing parents makes every pick an extension of the owner's
+    CONTIGUOUS Wikidata ancestry: the child is reachable from the owner through items that all
+    exist, so the new parent joins the same component rather than starting an island.
+
+    This is the contiguity rule `build-garborg-day.priority_ancestor_ring` already uses -- *"the
+    walk goes up THROUGH people who already hold a QID"* -- and nothing more. **It is not a
+    ring**: the ring returns the whole boundary, this still returns candidates for a random pick
+    of `AUTO_CREATIONS` + `MANUAL_CREATIONS`. *"I did not request a ring."*
     """
     seen, queue, found = {OWNER}, collections.deque([OWNER]), []
     while queue:
@@ -207,14 +227,15 @@ def eligible(fam):
                                          (mother, mother_qid, "mother")):
             if not parent:
                 continue
-            if parent not in seen:
+            # ⛔ Only step THROUGH a parent who is already on Wikidata. A parent with no QID is
+            # the frontier, not a road: walking past them is what produced islands.
+            if parent_qid and parent not in seen:
                 seen.add(parent)
                 queue.append(parent)
             # The CHILD must be in the universe and the PARENT must not be on Wikidata.
             if qid and not parent_qid and not parent.startswith(PLACEHOLDER_PREFIXES):
                 found.append((gid, qid, parent, role))
     return found
-
 
 def block(parent_geni, label, role, child_geni, child_qid):
     """One creation and the link from the child that made it eligible."""
