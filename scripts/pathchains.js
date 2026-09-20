@@ -69,8 +69,9 @@
  * stagger is in here, never a sleep in the agent.
  *
  *     step 1   paste this file into the console of the FOREGROUND geni.com tab
- *     step 2   await window.__chains.collect()   -- walk /paths, gather permalinks
- *              or window.__chains.load()         -- take them off localStorage instead
+ *     step 2   window.__chains.seed([...])      -- a batch from build-chain-batch.py
+ *              or await window.__chains.collect() -- walk /paths, gather permalinks
+ *              or window.__chains.load()          -- take them off localStorage instead
  *     step 3   window.__chains.go()              -- fetch each, dump every 200 chains
  *     move it  window.__chains.save() in the old tab, load() in the new one
  *     status   window.__chains.health()  ->  {alive, ok, fail, i, of, part}
@@ -139,17 +140,39 @@ window.__chains = window.__chains || {};
   //: rows are written out. 15s x 4 = one minute of nothing arriving before a file is cut.
   const IDLE_MS = 15000;
   const IDLE_FLUSH = 4;
-  async function fetchText(url) {
+  async function fetchPage(url) {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
     try {
       const r = await fetch(url, { credentials: "include", redirect: "follow",
                                    signal: ctl.signal });
-      return await r.text();
+      /* ⛔ **`r.url` IS THE WHOLE POINT OF THIS FUNCTION AND `r.text()` ALONE THREW IT AWAY.**
+       * A `/c/<hash>` permalink carries no `to=` and no `path_type=`; it REDIRECTS to the
+       * `/path/` url that does. `redirect: "follow"` was already here, so the parameters were
+       * arriving and being discarded one line later. See `C.one`. */
+      return { text: await r.text(), url: r.url || url };
     } finally { clearTimeout(timer); }
   }
 
+  const fetchText = async (url) => (await fetchPage(url)).text;
+
   /* ---------- carry the state between tabs; both tabs are geni.com ---------- */
+  /* ⛔ **SEEDING FROM THE FILE IS NOT `collect()` AND MUST NOT CLEAR THE LIST.** `collect()`
+   * walks `/paths` newest-first and costs 28 minutes for 30 a page; this takes a batch printed
+   * by `scripts/build-chain-batch.py` off `reports/path-permalinks.tsv`, which cost one mbox
+   * parse. Both may be in play at once, so this ADDS and de-duplicates rather than assigning --
+   * assigning would drop whatever `collect()` had already gathered, and the loop reads `C.i`
+   * against a list that had just got shorter. */
+  C.seed = function (urls) {
+    const seen = new Set(C.urls);
+    let added = 0;
+    for (const u of urls || []) {
+      if (!seen.has(u)) { seen.add(u); C.urls.push(u); added++; }
+    }
+    console.log("[chains] seeded +" + added + ", " + C.urls.length + " total, at " + C.i);
+    return added;
+  };
+
   C.save = function () {
     try {
       localStorage.setItem("chains_urls", JSON.stringify(C.urls));
@@ -237,11 +260,31 @@ window.__chains = window.__chains || {};
   };
 
   /* ---------- one permalink -> rows ---------- */
+  /* ⛔ **TWO URL SHAPES REACH HERE AND ONLY ONE CARRIES THE PARAMETERS.**
+   *
+   *     /path/index?from=..&to=..&path_type=..   collected off `/paths`
+   *     /c/<64 hex>                              the permalink Geni EMAILS
+   *
+   * The second is 47,692 of them -- `reports/path-permalinks.tsv`, harvested out of the Takeout
+   * mbox -- and it has no `to=` at all. Reading `to` off the REQUEST url gives every one of them
+   * a blank `to_id`, and `split-path-chains.py` keys chains on `(to_id, kind)` and names the
+   * GEDCOM `harvested-path-geni-<to_id>-<kind>`, so a blank one does not fail: it silently
+   * collapses every chain into one bucket. The redirect target is where the parameters live.
+   *
+   * Three sources, in falling order of authority: the request url, the FINAL url after the
+   * redirect, and -- if Geni ever stops putting them in the query string -- the last segment of
+   * the rendered chain, which is the target by construction. */
   C.one = async function (url) {
-    const to_id = qp(url, "to");
-    const kind = (qp(url, "path_type") || "blood").replace("inlaw", "in-law");
-    const html = await fetchText(url);
-    const doc = new DOMParser().parseFromString(html, "text/html");
+    const res = await fetchPage(url);
+    const final = res.url || url;
+    let to_id = qp(url, "to") || qp(final, "to");
+    const kind = (qp(url, "path_type") || qp(final, "path_type") || "blood")
+                   .replace("inlaw", "in-law");
+    const doc = new DOMParser().parseFromString(res.text, "text/html");
+    if (!to_id) {
+      const ids = [...doc.querySelectorAll("span.segment [data-profile-id]")];
+      to_id = ids.length ? (ids[ids.length - 1].getAttribute("data-profile-id") || "") : "";
+    }
     const out = [];
     let step = 0;
     for (const seg of doc.querySelectorAll("span.segment")) {
