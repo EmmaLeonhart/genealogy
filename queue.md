@@ -278,26 +278,27 @@ findings, not work in progress. Nothing here is started.**
   would have sent the chain walker at a URL that is not a path. `NOTIFICATION_RE` now requires
   the notification's own marker.
 
-  **RUNNING since 2026-09-19 22:5x.** All 47,692 are seeded into `window.__chains` in a geni.com
-  tab and `go()` is walking them. Measured over the first 16 seconds: **~3.2 s a chain, ~1,130 an
-  hour, about 42 hours for the lot** -- slower than the 1.5 s `path-chains-090..094` were written
-  at, and not a fault: a `/c/` permalink costs a REDIRECT plus a full path render where a
-  `/path/` url cost one fetch. That sample is 5 chains and the two-hourly tick will replace it.
+  ⛔ **PAUSED 2026-09-20 at 12,911 of 47,692. Ruled: the walk is not worth more session time.**
+  *"honestly can you hold off on this stuff ... I think that this is the least value added
+  session"*. **The permalinks are the artifact that mattered and they are committed** --
+  `reports/path-permalinks.tsv`, 47,692 rows, verified 0 malformed, 0 duplicate, 0 blank, sorted
+  on the hash. The walk is a long grind on top of them and any session can resume it.
 
-  ⛔ **THE LIST GOT IN BY FILE UPLOAD, NOT BY PASTING.** geni.com's CSP blocks a cross-origin
-  `fetch`, so the page cannot pull the list from raw GitHub; and 47,692 urls is 3.6 MB of
-  JavaScript, which is not a paste. What works: inject an `<input type="file">` into the page,
-  hand it the file with the browser tool, read it with `FileReader`, `C.seed()` the result. All
-  47,692 went in at once. The TSV itself is 14.7 MB and over the 10 MB bridge limit, so what is
-  uploaded is a hash-per-line file -- 3.0 MB, and the page rebuilds the urls.
+  **To resume**: paste `scripts/pathchains.js` into a foreground geni.com tab, inject an
+  `<input type="file">` and upload a hash-per-line file built from the TSV (geni.com's CSP
+  blocks a cross-origin fetch and 47,692 urls is 3.6 MB of JavaScript, so neither a fetch nor a
+  paste works), set `C.i` from `localStorage.chains_cursor`, then `C.go()`.
+  **Use `build-chain-batch.py --skip-covered`**: 23,306 of the remaining 34,781 are worth
+  walking and the rest can only re-fetch a chain already held.
 
-  **Where the state is**: `localStorage.chains_cursor` is the resume point, and
-  `path-chains-NNN.tsv` lands in the Downloads folder every 200 chains. ⛔ **305 such files were
-  ALREADY there** before this started, so Chrome will suffix the new ones ` (1)`; check
-  `merge-path-chains.py` handles that before trusting a merge.
+  **State at the pause**: 12,911 walked, 12,764 resolved, 147 failed. 31,819 chains held against
+  25,827 before this started, 192,556 distinct people. Rate when healthy 1,140 an hour; it fell
+  to 161 for about seven hours on 2026-09-20 and recovered on its own, so a slow interval is an
+  interval and not a projection.
 
-  **What is left**: merge the dumps back into the repo as they land, and keep the loop alive --
-  a two-hourly cron reads `health()`. It tops nothing up, because the whole list is seeded.
+  **What is left, for whoever resumes**: the walk itself; then `split-path-chains.py` and
+  `build-tiny-gedcoms.py`, neither of which has been run -- the second writes corpus `.ged`
+  files, so it is a deliberate step and was kept out of the two-hourly tick on purpose.
 
   ⛔ **AND `C.reseedFailed()` IS OWED AT THE END OF THE RUN.** A permalink that times out used to
   be counted in `fail` and stepped over for good; it is now kept in `C.failed` and appended back.
