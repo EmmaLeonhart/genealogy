@@ -261,9 +261,21 @@ findings, not work in progress. Nothing here is started.**
   ⛔ **SO THE CONNECTOR IS THE WRONG INSTRUMENT FOR THE BACKLOG.** The session's Gmail
   connector returns one message body per round trip — N notifications cost N round trips, which
   is fine for topping up and hopeless for thousands. **A Google Takeout mbox is one file and the
-  parser eats it in seconds**, with no credential passing through the agent. What is owed:
-  export the mail, run the parser over it, then feed `reports/path-permalinks.tsv` to the chain
-  walker instead of crawling `/paths`.
+  parser eats it in seconds**, with no credential passing through the agent.
+
+  **The export is REQUESTED, 2026-09-19 22:00** — Mail only, MBOX, export once, download link by
+  email, 10 GB so it arrives as one file. Google says hours to days. **It is on
+  `emma@topazcomputing.com`, which is the right mailbox**: the Geni notifications are addressed
+  to `emmaleonhart999@gmail.com` and land there, confirmed by searching `from:geni.com` in that
+  account and getting *1–50 of many*. The gmail account is NOT signed into this Chrome profile
+  and adding it needs a password, which is not the agent's to type — so if a future session needs
+  a different mailbox, that is a hand step.
+
+  **When the download link arrives:** unzip, then
+  `python scripts/parse-path-emails.py <the .mbox>` — it merges on the hash, so it does not
+  matter that 11 are already in. Then feed `reports/path-permalinks.tsv` to the chain walker
+  instead of crawling `/paths`. The mbox also answers the count question exactly, which no Gmail
+  query will.
 
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read

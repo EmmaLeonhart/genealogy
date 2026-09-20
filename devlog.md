@@ -45772,3 +45772,29 @@ The anchor sentence is stored verbatim rather than parsed into endpoints. These 
 Private User's ..."*, and `queue.md` says not to investigate the anchor without being asked.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — the Takeout is requested
+
+Mail only, MBOX, **export once**, download link by email, 10 GB so a mail-only export arrives as
+one file. Created 22:00; Google says hours to days.
+
+**The account needed checking and it was not the obvious one.** Chrome is signed into
+`emma@topazcomputing.com`, and the Geni notifications are addressed to
+`emmaleonhart999@gmail.com` — so the first read was that Takeout was pointed at the wrong
+mailbox. It is not: searching `from:geni.com` in the signed-in account returns *1–50 of many*,
+so the mail is delivered to the gmail address and lands in this one. The gmail account is not
+signed into this profile, and adding it would need a password, which is not the agent's to type.
+
+**Two things were nearly got wrong.** `Deselect all` did not take on the first click and the form
+still read *58 of 69 selected* — an export of fifty-eight products rather than one. And the
+frequency defaulted to *every 2 months for 1 year*, which would have added a seventh recurring
+schedule to an account that already shows two running twelve-export schedules. Both were caught
+by screenshotting the form instead of trusting the clicks.
+
+When the link arrives: unzip, `python scripts/parse-path-emails.py <the .mbox>`. It merges on the
+hash, so the 11 already harvested are not a problem, and the mbox answers the count question that
+no Gmail query will — `resultCountEstimate` is capped at 201 and the UI says only "many".
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
