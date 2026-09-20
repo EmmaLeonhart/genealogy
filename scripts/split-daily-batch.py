@@ -402,7 +402,11 @@ def main() -> int:
     # two thirds of the humans from the file a person actually runs. **The auto half is still
     # dealt a share** -- it is what the schedule sends unattended, and sending everything twice
     # would spend the bot's creation cap on items the paste is about to make anyway.
-    m_text = text
+    # ⛔ **`SRC.read_text()`, NOT `text`.** The unit loop above rebinds `text` as a
+    # local -- `text = chr(10).join(u)` -- so assigning from it here took the LAST UNIT
+    # instead of the whole batch, and the QuickStatements file came out as one block.
+    # Read the source again rather than relying on a name the loop has shadowed.
+    m_text = SRC.read_text(encoding="utf-8")
 
     # ⛔ **THE ASSERTIONS CHANGED SHAPE WHEN DUPLICATION BECAME THE DESIGN.** They used to check
     # that the two files were a PARTITION -- every line exactly once. That is now false on
@@ -428,16 +432,19 @@ def main() -> int:
     # is not the grouping a per-unit parse produces, and comparing counts across the two read
     # 29 + 57 != 1. The invariant that matters is about the units this function dealt, so it is
     # asserted there: no unit containing the creation of an individual may appear in both files.
-    # ⛔ **THE OLD CHECK REFUSED AN INDIVIDUAL CREATION IN BOTH HALVES. IT IS GONE BY
-    # RULING, NOT BY OVERSIGHT.** The QuickStatements half is now the whole batch, so every
-    # human creation is deliberately in both files and that assertion would fail every run.
-    # What replaces it is the property that still matters: the auto half must be a SUBSET of
-    # what was composed, so the schedule can never send something the page does not carry.
-    for _i in person_units:
-        _t = chr(10).join(units[_i])
-        if _t in a_text and _t not in m_text:
-            raise SystemExit("an individual creation is in the auto half but NOT in the "
-                             "full QuickStatements file: " + _t.splitlines()[0][:80])
+    # ⛔ **CHECK LINES, NOT REASSEMBLED BLOCKS.** The first version of this compared a unit's
+    # joined text against `m_text` with `in`, and it failed every run: a person unit is split
+    # into its `bound` and `free` lines and rejoined, so the block's STRING is regrouped even
+    # though not one line of it changed. Comparing at block granularity asks whether the
+    # reassembly happens to match the source byte for byte, which is not the property that
+    # matters. The property that matters is that the schedule can never send a line the page
+    # does not also carry, and that is a line-level question.
+    _m_lines = {ln for ln in m_text.splitlines() if ln.strip() and not ln.lstrip().startswith("#")}
+    _stray = [ln for ln in a_text.splitlines()
+              if ln.strip() and not ln.lstrip().startswith("#") and ln not in _m_lines]
+    if _stray:
+        raise SystemExit("the auto half has %d line(s) the full QuickStatements file does not: %s"
+                         % (len(_stray), _stray[0][:80]))
 
     # 3. ⛔ NO `LAST` LINE MAY PRECEDE ITS `CREATE`. `LAST` binds BACKWARDS, so a `LAST` line
     #    that ends up above every `CREATE` in its half attaches to nothing -- and one that ends
