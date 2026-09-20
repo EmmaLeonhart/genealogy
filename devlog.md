@@ -45737,3 +45737,38 @@ Those two are what `check-file-sizes.py` lists now. Neither is near 95 MB and ne
 rewritten in CI, so neither is queued.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — the path permalinks in email, and the "201" that was a cap
+
+`scripts/parse-path-emails.py` turns Geni relationship notifications into
+`reports/path-permalinks.tsv`. Each notification carries a degree sentence and a
+`https://www.geni.com/c/<64 hex>` permalink — a saved path object, the same kind
+`pathchains.js` spends 28 minutes walking `/paths` to collect thirty at a time, and
+harvesting it off email costs no Geni traffic at all.
+
+**11 harvested, 4 blood and 7 in-law.** One person, Bjørn Johan Ranum Muri, came back with
+both — § *BOTH TIES, ALWAYS* visible in the mail stream itself.
+
+**⛔ The "~200 in the last seven days" in `queue.md` was a cap, not a count.** Gmail's
+`resultCountEstimate` returned exactly **201** for `from:geni.com subject:relationship`, for
+`from:no-reply@geni.com "View the full"`, and for the bare query `in:anywhere` — which matches
+the entire mailbox. Three different questions, one number. Notifications from 09-12 and 09-13
+exist outside the seven-day window, so the true volume is unknown and larger. Emma: *"That's too
+low ... at least one order of magnitude."* She was right, and the number was never measured.
+
+**⛔ And the connector is the wrong instrument for the backlog.** It returns one message body
+per round trip, so N notifications cost N round trips — fine for topping up, hopeless for
+thousands. A Google Takeout mbox is a single file the parser reads in seconds, and no credential
+passes through the agent to get it. That is what is owed next.
+
+**Quoted-printable is why this uses `email` and `mailbox` rather than a regex over the file.**
+Verified against a real encoded mbox: a naive `/c/[0-9a-f]{64}` over the raw bytes finds
+**nothing**, because the transfer encoding breaks the hash up; decoding the part first finds it.
+A regex here would have looked like it worked and silently returned a fraction.
+
+The anchor sentence is stored verbatim rather than parsed into endpoints. These bodies read *"is
+Private User's ..."*, and `queue.md` says not to investigate the anchor without being asked.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

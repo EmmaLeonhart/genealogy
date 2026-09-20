@@ -243,11 +243,27 @@ findings, not work in progress. Nothing here is started.**
   Measured on the 4,432-attempt drain: `queued/queued` is 2,969, 67%. A queued search's result
   never comes back in the response and reaches `/paths` only when a path is FOUND. The inline
   harvest added 2026-09-19 catches the other, cheaper third.
-  **The route exists and is unused**: every completed search emails a full degree sentence and a
-  `https://www.geni.com/c/<hash>` permalink — a saved path object, the same kind
-  `pathchains.js` spends 28 minutes walking `/paths` to collect 30 at a time. ~200 in the last
-  seven days and climbing now that thousands are being queued. Emma, 2026-09-19: *"my email
-  contains all of the requested paths ... you can recover them from my email."*
+  **The route exists and is HALF BUILT NOW**: every completed search emails a full degree
+  sentence and a `https://www.geni.com/c/<hash>` permalink — a saved path object, the same kind
+  `pathchains.js` spends 28 minutes walking `/paths` to collect 30 at a time. Emma, 2026-09-19:
+  *"my email contains all of the requested paths ... you can recover them from my email."*
+  `scripts/parse-path-emails.py` reads either an mbox or pasted bodies and merges into
+  `reports/path-permalinks.tsv` on the hash. 11 harvested so far.
+
+  ⛔ **AND "~200" WAS A CAP, NOT A COUNT.** This bullet used to say *~200 in the last seven
+  days*. Gmail's `resultCountEstimate` returned exactly **201** for
+  `from:geni.com subject:relationship`, for `from:no-reply@geni.com "View the full"`, and for
+  the bare query `in:anywhere` — which matches the entire mailbox. It is a ceiling the API
+  reports and nothing more. Notifications from 09-12 and 09-13 exist outside that window, so
+  the real volume is unknown and larger; Emma, 2026-09-19: *"That's too low ... at least one
+  order of magnitude."*
+
+  ⛔ **SO THE CONNECTOR IS THE WRONG INSTRUMENT FOR THE BACKLOG.** The session's Gmail
+  connector returns one message body per round trip — N notifications cost N round trips, which
+  is fine for topping up and hopeless for thousands. **A Google Takeout mbox is one file and the
+  parser eats it in seconds**, with no credential passing through the agent. What is owed:
+  export the mail, run the parser over it, then feed `reports/path-permalinks.tsv` to the chain
+  walker instead of crawling `/paths`.
 
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read
