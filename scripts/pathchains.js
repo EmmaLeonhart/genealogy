@@ -209,11 +209,17 @@ window.__chains = window.__chains || {};
   /* Put the timed-out permalinks back on the end of the list. Returns how many went back.
    * Deliberately manual rather than automatic: a retry inside the loop would re-request during
    * whatever is causing the timeouts, which is the opposite of what the pace rules want. */
+  /* ⛔ **THIS CANNOT GO THROUGH `seed()`, AND THE FIRST VERSION DID.** `seed()` de-duplicates
+   * against `C.urls`, and a failed permalink is BY DEFINITION already in `C.urls` -- at a
+   * position the cursor has passed. So the first version returned 0 every time and retried
+   * nothing, while reporting a fix was in place. Measured 2026-09-20: 71 held failures,
+   * `reseeded: 0`. The retry has to APPEND unconditionally; a duplicate at the end of the list
+   * is the entire point, because the copy behind the cursor will never be read again. */
   C.reseedFailed = function () {
     const again = C.failed.splice(0, C.failed.length);
-    const n = C.seed(again);
-    console.log("[chains] reseeded " + n + " previously failed permalinks");
-    return n;
+    for (const u of again) C.urls.push(u);
+    console.log("[chains] reseeded " + again.length + " previously failed permalinks");
+    return again.length;
   };
 
   C.save = function () {

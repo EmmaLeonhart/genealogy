@@ -300,9 +300,22 @@ findings, not work in progress. Nothing here is started.**
   a two-hourly cron reads `health()`. It tops nothing up, because the whole list is seeded.
 
   ⛔ **AND `C.reseedFailed()` IS OWED AT THE END OF THE RUN.** A permalink that times out used to
-  be counted in `fail` and stepped over for good; it is now kept in `C.failed`. 72 of the first
-  8,823 timed out, so expect a few hundred over the whole pass. **The run is not finished when
-  `i >= of` -- it is finished when `i >= of` AND `C.failed` is empty.**
+  be counted in `fail` and stepped over for good; it is now kept in `C.failed` and appended back.
+  **The run is not finished when `i >= of` -- it is finished when `i >= of` AND `C.failed` is
+  empty.**
+
+  ⛔ **AND THE FIRST `reseedFailed` RETRIED NOTHING WHILE REPORTING A FIX.** It went through
+  `seed()`, which de-duplicates against `C.urls` -- and a failed permalink is by definition
+  already in `C.urls`, at a position the cursor has passed. So it returned `0` every time. Worse,
+  it had already SPLICED the urls out of `C.failed` before discarding them, so **the 143
+  permalinks that failed before 2026-09-20 18:00 are not in any retry list and cannot be named**.
+  The retry now appends unconditionally.
+
+  **How to recover those 143, offline, at the end**: `reports/path-permalinks.tsv` carries
+  `subject_name` for every permalink, and a harvested chain's LAST segment is that same person.
+  Any permalink whose `subject_name` matches no final segment in `reports/path-chains-*.tsv` is a
+  candidate for re-walking. That is a join over committed files and costs no Geni traffic to
+  compute -- it is not `--skip` arithmetic and must not be guessed at.
 
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read
