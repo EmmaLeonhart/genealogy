@@ -7516,7 +7516,25 @@ def main():
             en_form = normalise_generation_suffix(primary, "en", _gen)
             if re.search(r"[A-Za-z]", primary):
                 lines.append(f'LAST\tLen\t"{qs(en_form)}"')
-                # ⛔ Immediately after the `en` label, never at the end of the block.
+                # ⛔ **IMMEDIATELY AFTER THE `en` LABEL, AND EVERY INDIVIDUAL GETS ONE.**
+                # Ruled 2026-09-19: *"every individual needs a description"*, after a
+                # measurement on the composed batch -- **107 of 129 creations, 83%, carried no
+                # `Den` at all**, because `life_description` returns empty for anyone with no
+                # usable birth or death data and the emitter was `if _desc:`. Five of every six
+                # items we created therefore had NO deduplication guard, which is how
+                # `Anders Jørgensen Heier` came to exist as both `Q141504247` and `Q141502696`.
+                # A blank description is not a weak guard, it is the absence of one.
+                #
+                # The fallback is `describe_all`, which is NOT invented here -- it is the
+                # formulaic phrase the redacted branch above already writes as a LABEL,
+                # *"daughter of Arne Olaus Fjørtoft Garborg"*. Dates are preferred when there
+                # are any; a person with neither dates nor a named relative still yields
+                # nothing, and that is the only remaining hole.
+                if not _desc:
+                    _rel = describe_all(g, facts, father, mother, referred_to_as, table,
+                                        children, spouses, siblings,
+                                        qid_of=our_items, live_labels=live_labels)
+                    _desc = (_rel.get("en") or "").strip()
                 if _desc:
                     lines.append(f'LAST\tDen\t"{qs(_desc)}"')
                     _desc_emitted = True
