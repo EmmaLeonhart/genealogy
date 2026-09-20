@@ -221,6 +221,13 @@ findings, not work in progress. Nothing here is started.**
   `pipeline.yml` runs writes it, so it sits harmless until whoever runs `measure-eccentricity.py`
   pushes the result. That is a trap for a future session, not a live fault.
 
+- **The repo-wide picture, measured 2026-09-19: nothing is over 100 MB anywhere.** The largest
+  tracked file is **`preservation/genealogy/dropbox/ITIS.ged` at 91.3 MB** -- closer to the limit
+  than anything above, and **harmless**, because preserved GEDCOMs are static and no workflow
+  rewrites them. **Size alone is the wrong sort key.** What matters is whether something
+  regenerates the file: 91.3 MB that never changes is safe, and 83.1 MB that `pipeline.yml`
+  rewrites every run is the one that takes the pipeline down.
+
 - **⛔ NOTHING WARNS BEFORE A FILE CROSSES 100 MB.** All three above were found by hand, by
   listing tracked files after a failure. The 2026-09-19 crossing cost **68 minutes of pipeline
   work per run, silently, for four hours** — and it was invisible because the job's
