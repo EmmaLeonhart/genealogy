@@ -121247,6 +121247,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141487940$A9CDF718-99F6-45FE-B392-32847E102C4D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141512846",
+        "numeric-id": 141512846
+       }
+      },
+      "hash": "2d363bb700c00be765edf737a59bc839e1c3b05a",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "eb3c0c8fdb16239ff6a81e38c0371b31eff38e9d",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000187729309867"
+          },
+          "hash": "6a187fa17fda0a42d46abd632af5626ce457ad85",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P26": [
     {
      "id": "Q141487940$60BD1EEC-2346-459D-BC93-613C73470C70",
@@ -121617,8 +121660,8 @@
     "value": "赫尔曼·吉迪恩·约纳坦·德·罗吉埃尔"
    }
   },
-  "lastrevid": 2547665939,
-  "modified": "2026-09-19T05:17:48Z",
+  "lastrevid": 2548023265,
+  "modified": "2026-09-20T20:17:38Z",
   "ns": 0,
   "pageid": 135047052,
   "sitelinks": {},
@@ -132084,6 +132127,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141498644$41C87940-C692-43A5-B871-344D48F2CA4F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141512641",
+        "numeric-id": 141512641
+       }
+      },
+      "hash": "2707cbb58fad6bce9838533d7d550060ae7a1f73",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "93dc75a36bbd0fe70df00c8716ef65cd288eaf07",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003491933963"
+          },
+          "hash": "627a9f36662315e919a45b4d8eb2b68308d5ada9",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -132266,8 +132350,8 @@
     "value": "安娜·加布里埃尔斯达特·戴尔"
    }
   },
-  "lastrevid": 2548006009,
-  "modified": "2026-09-20T19:15:37Z",
+  "lastrevid": 2548018630,
+  "modified": "2026-09-20T19:56:11Z",
   "ns": 0,
   "pageid": 135057978,
   "sitelinks": {},
@@ -139212,6 +139296,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141502708$3BB9EF45-F1C9-4FA4-8709-37355BA8DEC6",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141512186",
+        "numeric-id": 141512186
+       }
+      },
+      "hash": "488ffbda43d269596c5844aad8ca163feef7157c",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "90f86047a49b75b2314531ec0ee2c0c65e3a17a9",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000004532459059"
+          },
+          "hash": "378f1fcc4c8455bb68d071f86e7044395808332a",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141502708$C0B60A84-2E6A-498B-8D75-55B12911BB96",
@@ -139474,8 +139601,8 @@
     "value": "海伦娜·夫里克塞尔·维盖利阿"
    }
   },
-  "lastrevid": 2547801884,
-  "modified": "2026-09-19T21:46:30Z",
+  "lastrevid": 2548016917,
+  "modified": "2026-09-20T19:52:29Z",
   "ns": 0,
   "pageid": 135062435,
   "sitelinks": {},
@@ -143793,6 +143920,888 @@
   "pageid": 135070654,
   "sitelinks": {},
   "title": "Q141511492",
+  "type": "item"
+ },
+ "Q141512228": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141512228$B85A78B5-F665-45B3-82ED-0849AC517D68",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q141512228$0477247E-4C2B-426A-985A-9C8691EF266B",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141199959",
+        "numeric-id": 141199959
+       }
+      },
+      "hash": "ad19de7f1a66af585738608b31b94dc9e76f917d",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "c4e0a8cafed1e406ed33d2e1ad547c04c023d058",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000027467540994"
+          },
+          "hash": "929e0a7870e19ef83cf7d711358db2294c23ea49",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141512228$604C499E-F520-4894-9FC6-C46E308F5770",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141199822",
+        "numeric-id": 141199822
+       }
+      },
+      "hash": "718442505c714a9b46c7434d64803130bf8bac00",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "c4e0a8cafed1e406ed33d2e1ad547c04c023d058",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000027467540994"
+          },
+          "hash": "929e0a7870e19ef83cf7d711358db2294c23ea49",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141512228$774E4C9A-B91F-478B-867D-46D2D6D810AB",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000027467540994"
+      },
+      "hash": "929e0a7870e19ef83cf7d711358db2294c23ea49",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Gert Mårtensson"
+        },
+        "hash": "1fcad937bec9956f4e9f0a313ef7a0d097a8ffb4",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141512228$F759A69F-FD22-4310-8795-A64213BD2A6A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P734": [
+    {
+     "id": "Q141512228$66513AE6-91F2-41F8-8FE3-B8F6F5542F2C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q1957624",
+        "numeric-id": 1957624
+       }
+      },
+      "hash": "8790c9702b68f5a2e0f2f788b3f2329270e7eb43",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141512228$6397F03D-3845-40B3-9FA8-021385EEB546",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5553169",
+        "numeric-id": 5553169
+       }
+      },
+      "hash": "531983004976841365c1046ccf13d8fa2ec3abfb",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "son of Martinus Johannis"
+   }
+  },
+  "id": "Q141512228",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Gert Mårtensson"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "ゲルト・モールテンソン"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "게르트 모르텐손"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Gert Mårtensson"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "盖尔特·莫尔滕松"
+   }
+  },
+  "lastrevid": 2548017004,
+  "modified": "2026-09-20T19:52:36Z",
+  "ns": 0,
+  "pageid": 135071422,
+  "sitelinks": {},
+  "title": "Q141512228",
+  "type": "item"
+ },
+ "Q141512276": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141512276$B6FC9519-690E-46EA-A881-52C410C1C19C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141512276$DDD46863-8840-4056-AEB6-29A874CA8AF6",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000002845973133"
+      },
+      "hash": "eada501cf07b346cc6108822d803d9e629795ef6",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Peder Enoksson Stangeland"
+        },
+        "hash": "309324a5e51d2084028b94993924ade3cbc4f040",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141512276$E924405E-1150-4182-A85F-1EE8DE11C8F4",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141512276$0A8E82F9-0E18-4927-BBA3-DF0952D70FA5",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141419481",
+        "numeric-id": 141419481
+       }
+      },
+      "hash": "408ef66cb701e3e6d14419726a5e017eeb883853",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b24daf6f0b7da0c24f2bf757d03b97315956b4ee",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002845973133"
+          },
+          "hash": "eada501cf07b346cc6108822d803d9e629795ef6",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q141512276$BED79920-36B6-4A3A-9485-7F7ECBAAB1D0",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1652-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "ff6bc977cf56fd23dfd76b35442332233ccff330",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1480": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q5727902",
+          "numeric-id": 5727902
+         }
+        },
+        "hash": "cb40f2027a88b8d23735681aaccba1069a574f54",
+        "property": "P1480",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1480"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b24daf6f0b7da0c24f2bf757d03b97315956b4ee",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002845973133"
+          },
+          "hash": "eada501cf07b346cc6108822d803d9e629795ef6",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P570": [
+    {
+     "id": "Q141512276$B785ED7B-16A8-406B-B6B1-CC24DB1BAECC",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1696-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "924dabdfe94bfe59d990c82898c4d4a311b19db3",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b24daf6f0b7da0c24f2bf757d03b97315956b4ee",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002845973133"
+          },
+          "hash": "eada501cf07b346cc6108822d803d9e629795ef6",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P734": [
+    {
+     "id": "Q141512276$33DD8137-CF0B-477C-A57C-EEAD7EF26683",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q21452049",
+        "numeric-id": 21452049
+       }
+      },
+      "hash": "287adb12e0871b256613e2dfb252eac6a52ed11f",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141512276$E4D4A8E4-2C7F-4B39-A9A8-DB249FB3835A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q10622039",
+        "numeric-id": 10622039
+       }
+      },
+      "hash": "02803f3de8e5bfad47e897cd3be691a5c29b613f",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "circa 1652 Stangeland, Klepp, Rogaland - 1696 Stangeland, Klepp, Rogaland"
+   }
+  },
+  "id": "Q141512276",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Peder Enoksson Stangeland"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "ペーダー・エノクソン・スタンゲラン"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "페데르 에노크손 스타에란드"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Peder Enoksson Stangeland"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "彼泽·埃诺克松·斯坦格兰"
+   }
+  },
+  "lastrevid": 2548017211,
+  "modified": "2026-09-20T19:53:01Z",
+  "ns": 0,
+  "pageid": 135071470,
+  "sitelinks": {},
+  "title": "Q141512276",
+  "type": "item"
+ },
+ "Q141512484": {
+  "aliases": {
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Peder Tveit"
+    }
+   ]
+  },
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141512484$00E27C3A-3351-4F0E-916B-D60214E129F8",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P26": [
+    {
+     "id": "Q141512484$2E0FE480-95C3-4D72-A373-6C83A86E885F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141450167",
+        "numeric-id": 141450167
+       }
+      },
+      "hash": "0aede5c914e7ba892e7eb889adb56ea63bc0812a",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "cdf556215bcfe324631dd13de6f94efbadec3074",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000011655486412"
+          },
+          "hash": "66119607024dfbfc3103dd13b407298c95a64764",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141512484$64F61D4E-1DE5-4334-AFB0-43EFA1A7B854",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000011655486412"
+      },
+      "hash": "66119607024dfbfc3103dd13b407298c95a64764",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Peder Salomonsen Tveit"
+        },
+        "hash": "093df6f15fa1f6fb8bf21c36bd54b95e1ca70561",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141512484$7873BF14-5DC1-437C-BE1D-8278998A4632",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P5056": [
+    {
+     "id": "Q141512484$48F1F2CA-0460-410C-A78E-3A80934B190A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141498362",
+        "numeric-id": 141498362
+       }
+      },
+      "hash": "ddf37780d289985632cd25cef53a2770682365c1",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q141512484$16A51A2C-7FE9-44B0-9B1E-99C65E6F76A1",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1750-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "28352a9984c8ef2b3ca3ec4487a30ce71353fb32",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "cdf556215bcfe324631dd13de6f94efbadec3074",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000011655486412"
+          },
+          "hash": "66119607024dfbfc3103dd13b407298c95a64764",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P570": [
+    {
+     "id": "Q141512484$1972A28D-5477-40A2-B907-E803CE04F20A",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1807-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "6eb84b0349523c62b2fc7e337d94e574a2bfa3f5",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "cdf556215bcfe324631dd13de6f94efbadec3074",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000011655486412"
+          },
+          "hash": "66119607024dfbfc3103dd13b407298c95a64764",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P734": [
+    {
+     "id": "Q141512484$2369CC2A-CAE6-4330-BDF8-C72B21CE9B3F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q27888842",
+        "numeric-id": 27888842
+       }
+      },
+      "hash": "07380b25ffcc25171dc3c50082df3adcf2948348",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141512484$BF5C1ABD-C727-40C5-957D-35185F431897",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q10622039",
+        "numeric-id": 10622039
+       }
+      },
+      "hash": "02803f3de8e5bfad47e897cd3be691a5c29b613f",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "1750 Tveit, Høyland - 1807"
+   }
+  },
+  "id": "Q141512484",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Peder Salomonsen Tveit"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "ペーダー・サロモンセン・トヴェイト"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "페데르 사로몬센 트베이트"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Peder Salomonsen Tveit"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "彼泽·萨洛莫恩森·特韦伊特"
+   }
+  },
+  "lastrevid": 2548017828,
+  "modified": "2026-09-20T19:55:12Z",
+  "ns": 0,
+  "pageid": 135071678,
+  "sitelinks": {},
+  "title": "Q141512484",
   "type": "item"
  },
  "Q1527396": {
