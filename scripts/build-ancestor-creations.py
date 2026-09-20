@@ -100,8 +100,16 @@ FEMALE = "Q6581072"        # sex or gender -> female
 #: ⛔ TWO a day from the scheduled run, FOUR in the QuickStatements half. Raised from 1 and 2 on
 #: 2026-09-17: *"Add 2 ancestors of mine everyday with the cicd and 4 in the quickstatements"*.
 #: The ratio stays 1:2, the same share the daily batch is dealt at.
-AUTO_CREATIONS = 2
-MANUAL_CREATIONS = 4
+#: ⛔ **TEN A DAY. Ruled 2026-09-19** as one of the MANDATORY categories inside the 500-a-day
+#: budget: *"10 of my ancestors plus the ancestral rings of the other people"*. Was 2 and 4.
+#:
+#: **The 1:2 split is preserved and the total is the ruled number**, so the scheduled run takes
+#: a third and the QuickStatements half takes the rest -- 3 and 7. The ratio is the share the
+#: daily batch is dealt at and was not what changed; only the size was. Ten does not divide by
+#: three, so the remainder goes to the QuickStatements side, which is the half a person runs and
+#: the half that is not subject to the bot account's creation cap.
+AUTO_CREATIONS = 3
+MANUAL_CREATIONS = 7
 
 #: ⛔ A PLACEHOLDER PARENT IS OURS AND NEVER WIKIDATA'S. `CLAUDE.md` § *A sibling step gets a
 #: placeholder parent in OUR TREE and never on Wikidata*. `build-family-candidates.py` writes
@@ -185,8 +193,28 @@ def usable_label(label):
 def eligible(fam):
     """`[(child_geni, child_qid, parent_geni, 'father'|'mother'), ...]`, in tree order.
 
-    An ancestor of the owner who HAS a QID and whose parent the tree knows but Wikidata does
-    not. The walk is breadth-first from the owner and visits each person once.
+    A QID-bearing ancestor, reachable from the owner THROUGH QID-bearing people only, whose
+    parent the tree knows and Wikidata does not.
+
+    ⛔ **THE WALK ONLY TRAVELS THROUGH PEOPLE WHO CARRY A QID, AND NOT DOING SO WAS A REAL
+    DEFECT.** Ruled 2026-09-20: *"the create my ancestors stuff just creates random ancestors
+    instead of creating connected ancestors ... disconnected ancestors are not even really able
+    to come into anything."*
+
+    The old walk enqueued EVERY parent regardless of QID, so it crossed long stretches of people
+    Wikidata has never heard of and then fired wherever some distant QID-bearing person had a
+    parent we lacked. The creation was linked -- `child_qid P22 LAST` is emitted either way --
+    but linked to an item with **no Wikidata path back to the owner**, because the generations in
+    between were never created. Connected on Geni, a free-floating pair on Wikidata.
+
+    Restricting the queue to QID-bearing parents makes every pick an extension of the owner's
+    CONTIGUOUS Wikidata ancestry: the child is reachable from the owner through items that all
+    exist, so the new parent joins the same component rather than starting an island.
+
+    This is the contiguity rule `build-garborg-day.priority_ancestor_ring` already uses -- *"the
+    walk goes up THROUGH people who already hold a QID"* -- and nothing more. **It is not a
+    ring**: the ring returns the whole boundary, this still returns candidates for a random pick
+    of `AUTO_CREATIONS` + `MANUAL_CREATIONS`. *"I did not request a ring."*
     """
     seen, queue, found = {OWNER}, collections.deque([OWNER]), []
     while queue:
@@ -199,14 +227,15 @@ def eligible(fam):
                                          (mother, mother_qid, "mother")):
             if not parent:
                 continue
-            if parent not in seen:
+            # ⛔ Only step THROUGH a parent who is already on Wikidata. A parent with no QID is
+            # the frontier, not a road: walking past them is what produced islands.
+            if parent_qid and parent not in seen:
                 seen.add(parent)
                 queue.append(parent)
             # The CHILD must be in the universe and the PARENT must not be on Wikidata.
             if qid and not parent_qid and not parent.startswith(PLACEHOLDER_PREFIXES):
                 found.append((gid, qid, parent, role))
     return found
-
 
 def block(parent_geni, label, role, child_geni, child_qid):
     """One creation and the link from the child that made it eligible."""

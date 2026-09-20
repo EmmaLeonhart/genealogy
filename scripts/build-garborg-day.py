@@ -1844,7 +1844,7 @@ LABEL_EDIT_CAP = 90
 #: the third it takes is exactly the 50% that was added -- `1.5 / 3 = 0.5`. The hand-run keeps
 #: the volume it has today and the autonomous run is purely the increase, which is what
 #: *"an additional smaller amount of edits ... run autonomously"* asks for.
-NAME_ADD_CAP = 90
+NAME_ADD_CAP = 50
 
 #: **A ceiling on the `P2600` lead**, which is exempt from `MANUAL_P2600_PER_RUN` by design: an
 #: id must never be withheld from an item this run is labelling. That exemption is right and is
@@ -2636,8 +2636,35 @@ ARNE_GENI = "6000000005607426327"
 
 
 
-CHILDREN_PER_RUN = 40
-PARENTS_PER_RUN = 40
+#: ⛔ **THE DAILY CREATION BUDGET. Ruled 2026-09-19, and it is a measured ceiling, not a guess.**
+#:
+#: *"500 creations a day is a realistic cap. Anything more raises issues ... Every run makes 400
+#: regular people, up to 50 names, plus any of the mandatory people (10 of my ancestors plus the
+#: ancestral rings of the other people, plus the creating the other parent on single parents),
+#: and the relationship creations."*
+#:
+#: **Where the number comes from.** The bot account is `*, user, autoconfirmed` and holds
+#: **neither `noratelimit` nor `apihighlimits`** -- it is not in the `bot` group. So Wikidata's
+#: anti-abuse cap on minting items applies, and on 2026-09-19 it engaged after **642 creations**:
+#: every later `CREATE` came back `no-automatic-entity-id: Cannot automatically assign ID`, while
+#: statements kept flowing untouched. One run executed 18 edits and created **zero** items.
+#:
+#: 500 sits under that observed ceiling on purpose. Raising it does not buy creations -- it buys
+#: refusals from an account that is already being throttled, which is the behaviour the
+#: anti-abuse measure exists to catch. **The only change that lifts the ceiling is a bot flag**,
+#: which is a Wikidata community approval and needs a person.
+#:
+#: **The 500 is a ceiling over the whole day, not a per-run quota**, because `pipeline.yml`
+#: recomposes several times a day and each composition is a fresh pick.
+DAILY_CREATION_CAP = 500
+
+#: The regular half of that budget: ordinary people picked by `compose`, split evenly between
+#: the children and parents stages. 400 of the 500, leaving 50 for names and the rest for the
+#: mandatory categories, which ride ON TOP and are never traded against this.
+REGULAR_CREATIONS_PER_RUN = 400
+
+CHILDREN_PER_RUN = REGULAR_CREATIONS_PER_RUN // 2
+PARENTS_PER_RUN = REGULAR_CREATIONS_PER_RUN // 2
 
 #: **Free parents, and they do not count against `PARENTS_PER_RUN`.** The rolling rule: where a
 #: child is present and appears to have a single mother or single father, the next run gives them
@@ -2713,17 +2740,36 @@ def subgraph_roots():
     relationships is the highest-yield entry point there is, which is exactly what a sv.wikipedia
     article with no genealogical work leaves behind. The roster stays at **about 250** --
     instructed the same day -- so `reports/entry-points.tsv` is a trickle, not a second campaign.
+    ⛔ **ONE CSV NOW. Ruled 2026-09-20:** *"all the Bure people, plus Arne, plus all of the
+    people that we've added to the entry points for miscellaneous reasons all need to be in one
+    single CSV file for the immediate entry points."*
+
+    `reports/entry-points-immediate.csv`, three columns -- `qid`, `geni_id`, `source`. It is
+    built by `scripts/build-immediate-entry-points.py` from `bureatten.csv`, the two roots, and
+    the added rosters, so the answer to *who is an entry point today* is ONE file read rather
+    than three assembled here at import time.
+
+    ⛔ **AND A MISSING FILE IS NOW FATAL, NOT A SILENT FALLBACK.** The old body did
+    `if roster.exists():` around `bureatten.csv` and otherwise carried on with two roots. That
+    is a 252-to-2 collapse of the universe with nothing said, and it is exactly the shape of
+    failure this file keeps being bitten by.
     """
-    roots = [ARNE_QID, BUREUS_QID]
-    roster = ROOT / "reports" / "bureatten.csv"
-    if roster.exists():
-        with open(roster, encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                if (row.get("geni_ids") or "").strip() and row.get("qid"):
-                    roots.append(row["qid"])
-    # `active_entry_points` now covers every bucket whose date has arrived, so the separate
-    # group sweep that used to follow it is gone with the group machinery.
-    roots.extend(q for q, _ in active_entry_points())
+    path = ROOT / "reports" / "entry-points-immediate.csv"
+    if not path.exists():
+        raise SystemExit(
+            f"{path.relative_to(ROOT)} is missing. It is the single source of immediate entry "
+            "points; rebuild it with scripts/build-immediate-entry-points.py. Refusing to run "
+            "on two roots, which is what silently happened before.")
+    roots = []
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            q = (row.get("qid") or "").strip()
+            if q.startswith("Q"):
+                roots.append(q)
+    if len(roots) < 200:
+        raise SystemExit(
+            f"{path.relative_to(ROOT)} holds only {len(roots)} entry points. The roster is about "
+            "250 and has been since 2026-08-29; refusing to run on a truncated one.")
     return tuple(dict.fromkeys(roots))
 
 
@@ -6001,6 +6047,18 @@ def compose(our_items, fam, rng, ring_seeds=None):
     why.append(f"5. {free} free parents of {len(eligible)} eligible "
                f"({FREE_PARENTS_FREE} free + half the remaining = {budget}), outside the cap")
 
+    # ⛔ **REPORT THE PICK AGAINST THE DAILY CAP.** `DAILY_CREATION_CAP` is a ceiling on what the
+    # bot account can actually mint before Wikidata starts refusing -- measured at 642 on
+    # 2026-09-19 -- so a composition that sails past it is not ambitious, it is a composition
+    # whose tail will come back `no-automatic-entity-id`. It is REPORTED rather than enforced
+    # because the mandatory categories above are deliberately outside every cap: the free
+    # parents say so on the line above, and the priority ancestor ring is uncapped by
+    # construction. Silently trimming those to fit a number would defeat both rulings.
+    why.append(f"6. {len(picked)} people picked against a {DAILY_CREATION_CAP}/day cap"
+               + (f" -- OVER by {len(picked) - DAILY_CREATION_CAP}, expect the tail to be"
+                  " refused as no-automatic-entity-id"
+                  if len(picked) > DAILY_CREATION_CAP else ""))
+
     return picked, why
 
 
@@ -7381,6 +7439,10 @@ def main():
 
         block_start = len(lines)
         lines.append("CREATE")
+        # Computed HERE so it can be emitted beside the label instead of after the
+        # statements -- see the fallback at the end of this block for why that matters.
+        _desc = life_description(f, _PLACES.get(g))
+        _desc_emitted = False
         # **Both branches must leave these bound.** The alias block below reads them after
         # the branch, and the redacted branch never set them -- so creating a redacted
         # person crashed with `UnboundLocalError`. It went unseen because the unfiltered
@@ -7436,6 +7498,9 @@ def main():
                                      qid_of=our_items, live_labels=live_labels)
             for code, value in sorted(described.items()):
                 lines.append(f'LAST\tL{code}\t"{value}"')
+                if code == "en" and _desc and not _desc_emitted:
+                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                    _desc_emitted = True
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:
@@ -7509,6 +7574,28 @@ def main():
             en_form = normalise_generation_suffix(primary, "en", _gen)
             if re.search(r"[A-Za-z]", primary):
                 lines.append(f'LAST\tLen\t"{qs(en_form)}"')
+                # ⛔ **IMMEDIATELY AFTER THE `en` LABEL, AND EVERY INDIVIDUAL GETS ONE.**
+                # Ruled 2026-09-19: *"every individual needs a description"*, after a
+                # measurement on the composed batch -- **107 of 129 creations, 83%, carried no
+                # `Den` at all**, because `life_description` returns empty for anyone with no
+                # usable birth or death data and the emitter was `if _desc:`. Five of every six
+                # items we created therefore had NO deduplication guard, which is how
+                # `Anders Jørgensen Heier` came to exist as both `Q141504247` and `Q141502696`.
+                # A blank description is not a weak guard, it is the absence of one.
+                #
+                # The fallback is `describe_all`, which is NOT invented here -- it is the
+                # formulaic phrase the redacted branch above already writes as a LABEL,
+                # *"daughter of Arne Olaus Fjørtoft Garborg"*. Dates are preferred when there
+                # are any; a person with neither dates nor a named relative still yields
+                # nothing, and that is the only remaining hole.
+                if not _desc:
+                    _rel = describe_all(g, facts, father, mother, referred_to_as, table,
+                                        children, spouses, siblings,
+                                        qid_of=our_items, live_labels=live_labels)
+                    _desc = (_rel.get("en") or "").strip()
+                if _desc:
+                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                    _desc_emitted = True
             lines.append(f'LAST\tLmul\t"{qs(mul_form)}"')
             # **No `Aen`. Ever.** Ruled 2026-08-26: no `Aen` is ever added, and only
             # non-Latin-script forms get aliases for a birth name that is not in `Amul`.
@@ -7703,13 +7790,22 @@ def main():
         for note in unresolved:
             carried.append((g, label, f"name item missing: {note}"))
 
-        # ⛔ **THE LIFE DESCRIPTION.** Ruled 2026-09-19 -- see `life_description`. `Den` only:
-        # the string is English prose (`born`, `died`) around data, and a description is
-        # deduplicated per language, so putting it in `mul` would collide across every language
-        # at once. Emitted last in the block so it never separates a `CREATE` from its labels.
-        _desc = life_description(f, _PLACES.get(g))
-        if _desc:
-            lines.append(f'LAST	Den	"{qs(_desc)}"')
+        # ⛔ **THE LIFE DESCRIPTION GOES BESIDE THE LABEL, NOT AT THE END.** Ruled 2026-09-19:
+        # *"the den should be immediately after the en label"*. It is emitted with the labels
+        # above; this is only the fallback for a branch that emitted no label at all, so a
+        # description can never be silently dropped.
+        #
+        # **This comment used to say the opposite** -- *"emitted last in the block so it never
+        # separates a CREATE from its labels"* -- and that reasoning is backwards. QuickStatements
+        # applies a CREATE block line by line, so emitting `Den` last means the item is born
+        # LABEL-ONLY and carries every statement before it ever gets a description. The
+        # label-plus-description pair is the ONLY thing Wikibase deduplicates on, so a duplicate
+        # cannot be refused until the final line -- by which point the duplicate exists and is
+        # fully furnished. Measured on `Anders Jørgensen Heier`: `Q141504247` and `Q141502696`
+        # both exist, and the `Den` on one failed with *already has label ... using the same
+        # description text*, the guard firing far too late to prevent anything.
+        if _desc and not _desc_emitted:
+            lines.append(f'LAST\tDen\t"{qs(_desc)}"')
 
         # **A creation with NO relationship is not shipped. It is carried.**
         #

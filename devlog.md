@@ -45636,6 +45636,59 @@ the 50 MB warning on every push. It is the next one to cross.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 
+## 2026-09-20 — the ancestor creator made islands, and 15 of them are now entry points
+
+⛔ **`Q141498725` IS A DUPLICATE AND AN ORPHAN AT ONCE.** *Helgi Olavsson*, geni
+`6000000000196425114` — and our ledger maps that same geni id to **`Q141502962`**. Two items for
+one person, and the item carries only `P21`, `P2600`, `P31`: **no description, and no `P22`,
+`P25` or `P40` of any kind.** Both bugs of 2026-09-19 compounded in one item — the missing
+description meant no deduplication guard, so the person was minted twice, and the `P22`/`P25`
+link went to the other copy.
+
+**The ledger never saw the duplicate.** `garborg-qids.tsv` knows `Q141502962` and not
+`Q141498725`, which is why a scan for one geni id carried by two items returns **0**: the second
+copy is invisible to every instrument we have. It was reported by hand.
+
+**The cause, fixed the same hour.** `build-ancestor-creations.eligible` walked breadth-first from
+the owner and enqueued EVERY parent regardless of QID, so it crossed long stretches of people
+Wikidata has never heard of before firing. The creation was always linked — `child_qid P22 LAST`
+is emitted either way — but to an item with no Wikidata path back to the owner. **620 eligible
+became 169** once the queue was restricted to stepping THROUGH QID-bearing people only: **451 of
+620, 73%, were islands waiting to happen.**
+
+The picks say it more plainly than the count. Before: *Gotinha Porcellos de Castilla*,
+*Aldetrude*, *Onneca Fortúnez of Pamplona* — scattered Iberian and Frankish nobility. After:
+Aukland, Aubø, Reve, Tjøtta, Øystein Olsen Reve, Jon Olofsson — the owner's own Scandinavian line.
+
+### What was already made
+
+A scan of all 6,379 ledger entities for `P2600` with **no** `P22`/`P25`/`P40`/`P26`/`P3373`
+found **62 orphans**, of which **14 came from this script**. Those 14 plus `Q141498725` are now
+in `reports/entry-points-now.tsv`, taking it from 11 rows to 26. Ruled 2026-09-20: *"Every single
+person who was accidentally made by it should become an entry point."*
+
+⛔ **AND THE OTHER 48 WERE NOT ORPHANS AT ALL. THE SCAN THAT FOUND THEM WAS WRONG.**
+
+They went into `entry-points-now.tsv` on the instruction *"force open all 48 orphans and add them
+... into the contemporary entry points thing"*, and came straight back out: *"None of these
+things are things that remotely qualify in this category ... none of these are orphans as I
+expected them to be."* They are now in `entry-points-jan1.tsv` instead -- 44 added, 4 already
+there -- and `entry-points-now.tsv` is back to **26**: the original 11 plus the 15 that really
+are ours.
+
+**The defect is in the definition, and it is worth naming exactly.** The scan asked *does this
+ledger item have no `P22`/`P25`/`P40`/`P26`/`P3373` in our cached copy* and called the answer an
+orphan. That catches **every established Wikidata person who simply has no family recorded**,
+which is ordinary and not a defect at all. The QIDs say so without looking anything up:
+`Q181677`, `Q313559`, `Q314809`, `Q524071`, `Q707581` -- five and six digits, items that predate
+this project by years.
+
+**"Has no family statements" is not "we minted it by mistake and left it unreachable."** The
+second is a small set we created; the first is a property of a large part of Wikidata. Conflating
+them put 48 strangers in the roster that seeds the universe TODAY. The 14 from
+`build-ancestor-creations` plus `Q141498725` are the real set, and they were identified by
+provenance -- the geni ids that script had actually emitted -- not by absence of statements.
+
 ---
 
 ## 2026-09-19 — a size check the pipeline runs first, and two wrong premises it refuted

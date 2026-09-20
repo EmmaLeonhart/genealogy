@@ -1,4 +1,10 @@
-"""Split the daily batch into the part CI/CD sends itself and the part a person pastes.
+"""Deal the part CI/CD sends itself; the QuickStatements file gets the whole batch.
+
+⛔ **NOT A DISJOINT SPLIT ANY MORE. Ruled 2026-09-19:** *"quickstatements always generated with
+the full contents"*. `wikidata-garborg-day-manual.txt` is now a verbatim copy of the composed
+batch, and `wikidata-garborg-day-auto.txt` is the share the schedule sends unattended -- a
+SUBSET of it, not its complement. The history below is kept because it is the evidence for why
+disjointness existed at all, and the one line that killed it.
 
 Ruled 2026-09-14: *"Make the CICD do about half the edits every day automatically. Produce
 disjoint quickstatements on the github page too."* **Disjoint** is the hard word: the Pages site
@@ -378,6 +384,30 @@ def main() -> int:
     a_text = "\n".join(auto).rstrip() + "\n"
     m_text = "\n".join(manual).rstrip() + "\n"
 
+    # ⛔ **THE QUICKSTATEMENTS HALF IS THE FULL BATCH. Ruled 2026-09-19:** *"quickstatements
+    # always generated with the full contents"*, and earlier the same day: *"all the
+    # quickstatements are attempted to be run because no duplicate items are ever made due to
+    # the description uniqueness guarding."*
+    #
+    # **This supersedes the disjointness on its own reasoning.** Everything above exists because
+    # *"a duplicate `CREATE` mints a second item for somebody who now exists, and that is the one
+    # failure in this design that cannot be undone"*. That premise stopped being true when
+    # descriptions became mandatory: Wikibase refuses a creation whose label AND non-empty
+    # description both match, so a duplicated human `CREATE` is now refused exactly as a
+    # duplicated name-item `CREATE` always was. Measured 2026-09-19 across the day's runs --
+    # fourteen creations came back `ALREADY EXISTS`, each costing one edit, and the sender
+    # carried straight on.
+    #
+    # So the asymmetry the split was built around is gone, and with it the reason to withhold
+    # two thirds of the humans from the file a person actually runs. **The auto half is still
+    # dealt a share** -- it is what the schedule sends unattended, and sending everything twice
+    # would spend the bot's creation cap on items the paste is about to make anyway.
+    # ⛔ **`SRC.read_text()`, NOT `text`.** The unit loop above rebinds `text` as a
+    # local -- `text = chr(10).join(u)` -- so assigning from it here took the LAST UNIT
+    # instead of the whole batch, and the QuickStatements file came out as one block.
+    # Read the source again rather than relying on a name the loop has shadowed.
+    m_text = SRC.read_text(encoding="utf-8")
+
     # ⛔ **THE ASSERTIONS CHANGED SHAPE WHEN DUPLICATION BECAME THE DESIGN.** They used to check
     # that the two files were a PARTITION -- every line exactly once. That is now false on
     # purpose: everything except the creation of an individual is written to both. What still has
@@ -402,13 +432,19 @@ def main() -> int:
     # is not the grouping a per-unit parse produces, and comparing counts across the two read
     # 29 + 57 != 1. The invariant that matters is about the units this function dealt, so it is
     # asserted there: no unit containing the creation of an individual may appear in both files.
-    for _i in person_units:
-        _t = chr(10).join(units[_i])
-        if _t in a_text and _t in m_text:
-            raise SystemExit("an individual creation appears in BOTH halves: "
-                             + _t.splitlines()[0][:80])
-    if len(auto_people) + len([i for i in person_units if i not in auto_people]) != len(person_units):
-        raise SystemExit("individual creations were lost between the halves")
+    # ⛔ **CHECK LINES, NOT REASSEMBLED BLOCKS.** The first version of this compared a unit's
+    # joined text against `m_text` with `in`, and it failed every run: a person unit is split
+    # into its `bound` and `free` lines and rejoined, so the block's STRING is regrouped even
+    # though not one line of it changed. Comparing at block granularity asks whether the
+    # reassembly happens to match the source byte for byte, which is not the property that
+    # matters. The property that matters is that the schedule can never send a line the page
+    # does not also carry, and that is a line-level question.
+    _m_lines = {ln for ln in m_text.splitlines() if ln.strip() and not ln.lstrip().startswith("#")}
+    _stray = [ln for ln in a_text.splitlines()
+              if ln.strip() and not ln.lstrip().startswith("#") and ln not in _m_lines]
+    if _stray:
+        raise SystemExit("the auto half has %d line(s) the full QuickStatements file does not: %s"
+                         % (len(_stray), _stray[0][:80]))
 
     # 3. ⛔ NO `LAST` LINE MAY PRECEDE ITS `CREATE`. `LAST` binds BACKWARDS, so a `LAST` line
     #    that ends up above every `CREATE` in its half attaches to nothing -- and one that ends
