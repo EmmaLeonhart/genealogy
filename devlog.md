@@ -45834,3 +45834,42 @@ a triumph; 1.3% of it was pointing somewhere else entirely, and nothing about th
 crawling `/paths` thirty at a time.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — the chain fetcher pointed at all 47,692 permalinks
+
+`window.__chains` is seeded with every permalink and `go()` is running. `health()` reads
+`alive:true`, `fail:0`.
+
+**The fetcher could not read a `/c/` permalink and would not have said so.** `C.one` took
+`to_id` off the REQUEST url, and `/c/<hash>` has no `to=` — it redirects to the `/path/` url that
+does. Every one of the 47,692 would have got a blank `to_id`, and `split-path-chains.py` keys
+chains on `(to_id, kind)` and names each GEDCOM `harvested-path-geni-<to_id>-<kind>`, so nothing
+would have failed: 47,692 chains would have collapsed into one bucket. The parameters were
+already arriving — `redirect: "follow"` was there — and `r.text()` threw away `r.url` one line
+later. `fetchPage` returns both; `fetchText` stays a wrapper so `collect()` is untouched.
+Verified live before the loop started: 200, redirected, `to=` a real profile id, `path_type=inlaw`
+agreeing with what the email said, 40 segments, step 0 the viewer with no profile id.
+
+**⛔ The list got in by file upload, and that is the part worth keeping.** geni.com's CSP blocks
+a cross-origin `fetch`, so the page cannot pull the list from raw GitHub. 47,692 urls is 3.6 MB
+of JavaScript, which is not a paste. What works: inject an `<input type="file">`, hand it the
+file through the browser tool, read it with `FileReader`, `C.seed()` the result. The TSV is
+14.7 MB and the bridge limit is 10 MB, so what goes up is a hash-per-line file at 3.0 MB and the
+page rebuilds the urls. All 47,692 seeded in one call.
+
+    ~3.2 s a chain, ~1,130 an hour, ~42 hours for 47,692
+
+**That is slower than the 1.5 s this file records for `path-chains-090..094`, and it is not a
+fault.** A `/c/` permalink costs a redirect plus a full path render; a `/path/` url cost one
+fetch. The figure is off 5 chains in 16 seconds and the two-hourly tick will replace it with a
+real one. Chrome was checked for all four throttling flags first, per § *do not diagnose a slow
+loop before checking the browser was started this way* — all four present.
+
+**Two things to watch.** `path-chains-NNN.tsv` dumps every 200 chains into Downloads, where
+**305 such files already sit**, so Chrome will suffix the new ones ` (1)` — check
+`merge-path-chains.py` handles that before trusting a merge. And the cursor lives in
+`localStorage.chains_cursor`, which is what a restart resumes from rather than re-walking.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
