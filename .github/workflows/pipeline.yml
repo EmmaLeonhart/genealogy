@@ -147,6 +147,19 @@ jobs:
       - name: Before
         run: free -m; df -h / | tail -1
 
+      # ⛔ **FIRST, BECAUSE THE ALTERNATIVE IS FINDING OUT AN HOUR IN.** On 2026-09-19 a
+      # tracked file reached 100.32 MB, GitHub's pre-receive hook declined every push
+      # containing it, and this job did 68 minutes of work and had all five push attempts
+      # rejected -- every run, for four hours. It was invisible because `timeout-minutes`
+      # killed the job mid-retry and GitHub reports a timeout kill as `cancelled`, the same
+      # word as the supersede-on-push cancellation, so it was read as push contention twice.
+      #
+      # The check is two seconds and it runs before anything is spent. It is NOT
+      # `continue-on-error` like the census steps below: a file at 95 MB means this run's
+      # push is already doomed, and the whole point is to say so now rather than at the end.
+      - name: Nothing is approaching GitHub's 100 MB hard limit
+        run: python scripts/check-file-sizes.py --strict
+
       - name: Unpack the derived CSVs
         run: python scripts/pack-derived.py --unpack
 
@@ -550,6 +563,11 @@ jobs:
         id: commit
         run: |
           python scripts/pack-derived.py
+          # Again, because the step at the top of this job checked what was CHECKED OUT and
+          # everything since has been regenerating files. A file that crossed during this run
+          # fails here with its name in the log, instead of five rejected pushes and a
+          # `cancelled` conclusion that means two different things.
+          python scripts/check-file-sizes.py --strict
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A

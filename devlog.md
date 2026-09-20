@@ -45635,3 +45635,58 @@ process, so a key would move between shards on different runs.
 the 50 MB warning on every push. It is the next one to cross.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — a size check the pipeline runs first, and two wrong premises it refuted
+
+`scripts/check-file-sizes.py` lists every tracked file at or over 80 MB, says what can grow it,
+and exits 1 at 95 MB. `pipeline.yml` runs it twice: at the top of the job with `--strict`,
+before anything is spent, and again inside `Commit the rebuilt batch` just before `git add -A`,
+because everything between those two points regenerates files. It takes 2.3 seconds.
+
+**It replaces finding out by hand after a failure.** On 2026-09-19 a tracked file reached
+100.32 MB, GitHub's pre-receive hook declined every push containing it, and the job did 68
+minutes of work and had all five push attempts rejected — every run, for four hours. That was
+invisible because `timeout-minutes` killed the job mid-retry and GitHub reports a timeout kill
+as `cancelled`, the same word as the supersede-on-push cancellation, so it was read as push
+contention twice.
+
+**Writing it refuted the two premises `queue.md` recorded, and both are corrected there.**
+
+* `pipeline.yml` does **not** write `reports/name-item-languages.csv`. The queue named
+  `build-name-item-cjk.py` at line 480, and that script only reads it. The writer is
+  `measure-name-item-languages.py`, which no workflow runs.
+* **Nothing in CI regenerated the 100.32 MB file either.** No workflow runs
+  `refresh-live-values.py`, and `build-garborg-day.py` does not call it — its six mentions of
+  that script are all prose telling a person to run it. A session refreshed the file and
+  committed it, and from then on it refused everyone's pushes. The hook rejects a push for what
+  the repository **contains**, so size alone is the failing condition and `--strict` fails on
+  size alone. Who writes a file only says whether it will cross the limit unwatched, which is
+  why that is a printed column and not the exit code.
+
+**Two detector gaps had to be closed before the column could be trusted**, both found by testing
+it against files whose answer was already known.
+
+* `writes_in` in `build-repo-freshness.py` judges a write by the mode on the output name, and
+  the repo's dominant idiom writes a temp file and renames it — `tmp.replace(OUT)`,
+  `os.replace(tmp, OUT)`. That is how `tree-eccentricity.csv` and the `garborg-live-items`
+  shards are written, so the column read `static` for both of the files the check exists for.
+  One rule added here; `writes_in` itself is imported, not copied.
+* A transitive "in CI" test was tried and removed. The edge it was built for does not exist, and
+  a fixpoint over script mentions pulled in `measure-eccentricity.py`, which would have reported
+  `tree-eccentricity.csv` as a live CI fault when it is the opposite. Prose naming a script is
+  how this repo is written, so a mention is not an edge. The test is direct.
+
+Verified on all three branches it can print: `repo-freshness.csv` → rewritten by CI,
+`tree-eccentricity.csv` → grows only when a person runs it, `ITIS.ged` → static. `--strict`
+fires with `::error::` and exit 1 when the bar is lowered to meet the current files.
+
+    91.3 MB  preservation/genealogy/dropbox/ITIS.ged     static -- no generator writes it
+    84.3 MB  reports/tree-eccentricity.csv               a person runs measure-eccentricity.py
+    83.1 MB  reports/name-item-languages.csv             a person runs measure-name-item-languages.py
+
+Nothing is over 95 MB, so the check passes today. The three above are still unsharded and still
+queued.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
