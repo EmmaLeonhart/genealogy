@@ -45798,3 +45798,39 @@ hash, so the 11 already harvested are not a problem, and the mbox answers the co
 no Gmail query will — `resultCountEstimate` is capped at 201 and the UI says only "many".
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — 47,692 path permalinks, and the 201 was off by 240x
+
+The Takeout completed in about half an hour, not the hours-to-days Google warned about. Google
+also dropped the zip into Drive, which is what made it retrievable: the Takeout download page put
+up a password re-verification, and a Drive download of the same file does not. 202 MB zip,
+833,963,421 bytes of mbox inside.
+
+    47,692 permalinks -> reports/path-permalinks.tsv   (14.7 MB, 31 seconds)
+      15,944 blood
+      31,748 in-law
+
+**⛔ The "~200" this repo had been carrying was 240 times too small.** Emma: *"That's too low ...
+at least one order of magnitude."* It was two orders. Gmail's `resultCountEstimate` is capped at
+201 — the bare query `in:anywhere`, which matches the whole mailbox, returns the same 201 — and
+the UI says only "many", so no query available to a session could ever have given the real
+figure. The mbox gave it in one pass.
+
+**⛔ 636 of the first 48,328 were not paths at all.** `/c/<hash>` is Geni's generic content
+permalink, not a path-object URL, so it turns up in unrelated mail; the one that exposed it had
+subject *"StrangerChat sent you a message"*. Every one of the 636 had a valid-looking 64-hex
+hash and a blank kind and degree — which is to say they looked exactly like thin harvest rather
+than like junk — and every one would have sent the chain walker at a URL that is not a path.
+`NOTIFICATION_RE` now requires the notification's own marker, either the `email_type` parameter
+or the `View the full X relationship:` line. After it: 47,692 rows, **zero** with a blank kind or
+degree.
+
+That last one is the case for checking a harvest's shape rather than its size. 48,328 looked like
+a triumph; 1.3% of it was pointing somewhere else entirely, and nothing about the count said so.
+
+**Still to do, and it is the point of having them**: feed the file to the chain walker instead of
+crawling `/paths` thirty at a time.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

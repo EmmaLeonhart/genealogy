@@ -263,19 +263,23 @@ findings, not work in progress. Nothing here is started.**
   is fine for topping up and hopeless for thousands. **A Google Takeout mbox is one file and the
   parser eats it in seconds**, with no credential passing through the agent.
 
-  **The export is REQUESTED, 2026-09-19 22:00** — Mail only, MBOX, export once, download link by
-  email, 10 GB so it arrives as one file. Google says hours to days. **It is on
-  `emma@topazcomputing.com`, which is the right mailbox**: the Geni notifications are addressed
-  to `emmaleonhart999@gmail.com` and land there, confirmed by searching `from:geni.com` in that
-  account and getting *1–50 of many*. The gmail account is NOT signed into this Chrome profile
-  and adding it needs a password, which is not the agent's to type — so if a future session needs
-  a different mailbox, that is a hand step.
+  **DONE, 2026-09-19. 47,692 permalinks are in `reports/path-permalinks.tsv`** — 15,944 blood
+  and 31,748 in-law, parsed out of the Takeout mbox in 31 seconds. The Takeout was Mail only,
+  MBOX, export once; it completed in about half an hour and Google also dropped the zip into
+  Drive, which is how it was fetched without the password challenge the Takeout download page
+  puts up.
 
-  **When the download link arrives:** unzip, then
-  `python scripts/parse-path-emails.py <the .mbox>` — it merges on the hash, so it does not
-  matter that 11 are already in. Then feed `reports/path-permalinks.tsv` to the chain walker
-  instead of crawling `/paths`. The mbox also answers the count question exactly, which no Gmail
-  query will.
+  ⛔ **AND THE REAL NUMBER IS 47,692, NOT 201 — 240 TIMES THE FIGURE THIS BULLET USED TO CARRY.**
+  Emma, 2026-09-19: *"That's too low ... at least one order of magnitude."* It was two.
+
+  ⛔ **636 `/c/` LINKS WERE NOT PATHS AND ARE EXCLUDED.** `/c/<hash>` is Geni's generic content
+  permalink, so it appears in unrelated mail — the one that exposed it was subject *"StrangerChat
+  sent you a message"*. Every one had a valid-looking hash and a blank degree, and every one
+  would have sent the chain walker at a URL that is not a path. `NOTIFICATION_RE` now requires
+  the notification's own marker.
+
+  **What is left**: feed `reports/path-permalinks.tsv` to the chain walker instead of crawling
+  `/paths` 30 at a time. That is the whole point of having them and it has not been done.
 
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read

@@ -71,6 +71,17 @@ KIND_RE = re.compile(r"email_type=(\w*?)_?path_search_notification")
 #: in the module docstring for why this is not split into endpoints.
 DEGREE_RE = re.compile(r"^(.+? is .+?(?:'s|s') .+?\.)\s*$", re.M)
 
+#: ⛔ **A `/c/` LINK IS NOT A PATH OBJECT, AND WITHOUT THIS 636 OF THEM WERE NOT.** `/c/<hash>`
+#: is Geni's generic content permalink, so it turns up in mail that has nothing to do with a
+#: relationship search -- the one that exposed it was subject *"StrangerChat sent you a
+#: message"*. Over the whole mailbox that was **636 rows of 48,328**, every one of them with a
+#: valid-looking hash, a blank kind and a blank degree, and every one of them would have sent
+#: the chain walker at a URL that is not a path. So a block counts only when it carries the
+#: notification's own marker: the `email_type` parameter, or the `View the full X
+#: relationship:` line that precedes the permalink in every real one.
+NOTIFICATION_RE = re.compile(
+    r"path_search_notification|View the full (blood|in-?law) relationship")
+
 
 _TAG_RE = re.compile(r"<[^>]+>")
 
@@ -122,21 +133,31 @@ def parse(text: str) -> list[dict]:
     identical in all of them -- so the split is on the first URL of each mail, which is
     the one field guaranteed present and unique.
     """
-    rows = []
+    rows, skipped = [], []
     for block in re.split(r"(?=Dear Emma,)", text):
         m = URL_RE.search(block)
         if not m:
+            continue
+        marker = NOTIFICATION_RE.search(block)
+        if not marker:
+            skipped.append(m.group(1))
             continue
         kind = KIND_RE.search(block)
         degree = DEGREE_RE.search(block)
         rows.append({
             "hash": m.group(1),
-            "kind": (kind.group(1) or "blood") if kind else "",
+            # `email_type` first: the subject and the body line are free text with a
+            # person's name in them, the query parameter is not. The `View the full ...`
+            # line is the fallback for a mail that carries no unsubscribe footer.
+            "kind": ((kind.group(1) or "blood") if kind
+                     else (marker.group(1) or "").replace("-", "") or ""),
             "subject_name": (degree.group(1).split(" is ", 1)[0].strip()
                              if degree else ""),
             "degree": degree.group(1).strip() if degree else "",
             "url": f"https://www.geni.com/c/{m.group(1)}",
         })
+    if skipped:
+        print(f"  skipped {len(skipped):,} /c/ links that are not path notifications")
     return rows
 
 
