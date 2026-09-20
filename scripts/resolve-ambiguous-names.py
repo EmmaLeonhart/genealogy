@@ -49,17 +49,15 @@ def load_classes():
         with open(path, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
                 out[row["qid"]] = set(row["classes"].split())
-    with open(ROOT / "reports" / "name-item-languages.csv", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            out.setdefault(row["qid"], set(row["classes"].split()))
+    for row in _language_rows(ROOT / "reports"):
+        out.setdefault(row["qid"], set(row["classes"].split()))
     return out
 
 
 def load_mul():
     out = {}
-    with open(ROOT / "reports" / "name-item-languages.csv", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            out[row["qid"]] = (row.get("mul") or "").strip()
+    for row in _language_rows(ROOT / "reports"):
+        out[row["qid"]] = (row.get("mul") or "").strip()
     return out
 
 

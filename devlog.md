@@ -45690,3 +45690,50 @@ Nothing is over 95 MB, so the check passes today. The three above are still unsh
 queued.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-19 — `name-item-languages.csv` sharded, and the `cancelled` distinction written down
+
+**Shard first, since the answer to "why can't we shard it" was: no reason.** 83.1 MB, one file,
+823,907 rows — one row per Wikidata name item, its `P31` classes, and its label in each of 19
+target languages plus `mul`. It is the ceiling on mechanical name translation: if `John`
+(`Q4925477`) carries a `ja` label, a person called John gets a Japanese label without anybody
+transliterating anything, and if it does not, no amount of assembling helps.
+
+    16 shards, largest 5.2 MB, 83.1 MB total
+    round trip verified: 823,907 rows in -> 823,907 out, identical as sets
+
+`int(qid[1:]) % 16`, the same rule and the same reason as `garborg-live-items-NN.json`: it
+depends on the qid alone, so one new name item dirties one shard. A size-based split would
+reshuffle every row after the insertion point and emit sixteen garbage diffs a run.
+
+**Rows are sorted within a shard now, which they were not before.** The store's own shard order
+used to decide row order, so re-downloading the items reshuffled the file and every line read as
+changed — § *SORTING MUST BE DETERMINISTIC* against something nobody controls.
+
+**Four readers, all full scans, all rewired and measured from the wired path**:
+`build-name-item-cjk.py` (the one `pipeline.yml` runs, at line 480), `build-name-label-gaps.py`,
+`resolve-ambiguous-names.py`, `measure-mechanical-translation.py`. Each sees all 823,907 rows via
+a four-line glob; the shard rule stays in the writer, because a reader needs the concatenation
+and not the rule. `build-name-item-cjk.py` was run end to end and wrote its 90 label edits.
+
+The un-sharded original is deleted in the same commit, its content verified identical in the
+sixteen files that replace it.
+
+**And `cancelled` now says which `cancelled` it is, in both places that explain one.**
+`CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* explained cancelled pipeline runs as push
+contention — true, and not the whole story. `docs/rules/ci-and-pipeline.md` went further and said
+*"a cancelled pending run is not a failure. Do not investigate one"*, which is the sentence that
+made the 2026-09-19 outage invisible for four hours. A `timeout-minutes` kill carries the same
+conclusion word. **Only the times tell them apart**: a supersede kills a run that never started
+work, so it is seconds old with an empty log; a timeout kill runs for exactly `timeout-minutes`
+and its log is full. Both sections now say so.
+
+    91.3 MB  preservation/genealogy/dropbox/ITIS.ged   static, nothing writes it
+    84.3 MB  reports/tree-eccentricity.csv             a person runs measure-eccentricity.py
+
+Those two are what `check-file-sizes.py` lists now. Neither is near 95 MB and neither is
+rewritten in CI, so neither is queued.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
