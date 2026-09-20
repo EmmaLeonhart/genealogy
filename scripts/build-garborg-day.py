@@ -7381,6 +7381,10 @@ def main():
 
         block_start = len(lines)
         lines.append("CREATE")
+        # Computed HERE so it can be emitted beside the label instead of after the
+        # statements -- see the fallback at the end of this block for why that matters.
+        _desc = life_description(f, _PLACES.get(g))
+        _desc_emitted = False
         # **Both branches must leave these bound.** The alias block below reads them after
         # the branch, and the redacted branch never set them -- so creating a redacted
         # person crashed with `UnboundLocalError`. It went unseen because the unfiltered
@@ -7436,6 +7440,9 @@ def main():
                                      qid_of=our_items, live_labels=live_labels)
             for code, value in sorted(described.items()):
                 lines.append(f'LAST\tL{code}\t"{value}"')
+                if code == "en" and _desc and not _desc_emitted:
+                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                    _desc_emitted = True
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:
@@ -7509,6 +7516,10 @@ def main():
             en_form = normalise_generation_suffix(primary, "en", _gen)
             if re.search(r"[A-Za-z]", primary):
                 lines.append(f'LAST\tLen\t"{qs(en_form)}"')
+                # ⛔ Immediately after the `en` label, never at the end of the block.
+                if _desc:
+                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                    _desc_emitted = True
             lines.append(f'LAST\tLmul\t"{qs(mul_form)}"')
             # **No `Aen`. Ever.** Ruled 2026-08-26: no `Aen` is ever added, and only
             # non-Latin-script forms get aliases for a birth name that is not in `Amul`.
@@ -7703,13 +7714,22 @@ def main():
         for note in unresolved:
             carried.append((g, label, f"name item missing: {note}"))
 
-        # ⛔ **THE LIFE DESCRIPTION.** Ruled 2026-09-19 -- see `life_description`. `Den` only:
-        # the string is English prose (`born`, `died`) around data, and a description is
-        # deduplicated per language, so putting it in `mul` would collide across every language
-        # at once. Emitted last in the block so it never separates a `CREATE` from its labels.
-        _desc = life_description(f, _PLACES.get(g))
-        if _desc:
-            lines.append(f'LAST	Den	"{qs(_desc)}"')
+        # ⛔ **THE LIFE DESCRIPTION GOES BESIDE THE LABEL, NOT AT THE END.** Ruled 2026-09-19:
+        # *"the den should be immediately after the en label"*. It is emitted with the labels
+        # above; this is only the fallback for a branch that emitted no label at all, so a
+        # description can never be silently dropped.
+        #
+        # **This comment used to say the opposite** -- *"emitted last in the block so it never
+        # separates a CREATE from its labels"* -- and that reasoning is backwards. QuickStatements
+        # applies a CREATE block line by line, so emitting `Den` last means the item is born
+        # LABEL-ONLY and carries every statement before it ever gets a description. The
+        # label-plus-description pair is the ONLY thing Wikibase deduplicates on, so a duplicate
+        # cannot be refused until the final line -- by which point the duplicate exists and is
+        # fully furnished. Measured on `Anders Jørgensen Heier`: `Q141504247` and `Q141502696`
+        # both exist, and the `Den` on one failed with *already has label ... using the same
+        # description text*, the guard firing far too late to prevent anything.
+        if _desc and not _desc_emitted:
+            lines.append(f'LAST\tDen\t"{qs(_desc)}"')
 
         # **A creation with NO relationship is not shipped. It is carried.**
         #
