@@ -114,7 +114,7 @@
 
   async function person(focus, base) {
     const out = [], seen = new Set();
-    let pages = 1;
+    let pages = 1, tries = 0;
     S.who = focus; S.page = 0; S.pages = 0;
     for (let n = 1; S.running; n++) {
       S.page = n; S.lastAt = Date.now();
@@ -130,9 +130,28 @@
         if (!r.ok) throw new Error("HTTP " + r.status);
         doc = new DOMParser().parseFromString(await r.text(), "text/html");
       } catch (e) {
-        S.fail++; S.lastFail = focus + " p" + n + " " + String((e && e.message) || e);
+        /* ⛔ A FETCH FAILURE MUST NOT SILENTLY TRUNCATE A PERSON. The first version broke out
+         * of the page loop and then saved what it had, so `6000000002188524323` was written
+         * with pages 1-86 of 93 and the file on disk was indistinguishable from a complete
+         * one. Ruled 2026-09-19: *"No person should ever be abandoned."* A partial capture is
+         * an abandoned person that looks finished, which is worse than an obvious failure.
+         *
+         * Three retries with a growing wait; only then give up, and RECORD the person on
+         * `S.partial` so the sweep can be re-pointed at them. */
+        tries++;
+        if (tries <= 3) {
+          S.lastFail = focus + " p" + n + " retry " + tries + " " + String((e && e.message) || e);
+          await new Promise(function (r) { setTimeout(r, 4000 * tries); });
+          n--;                      /* redo this page */
+          continue;
+        }
+        S.fail++;
+        S.lastFail = focus + " p" + n + " GAVE UP " + String((e && e.message) || e);
+        if (!S.partial) S.partial = [];
+        if (S.partial.indexOf(focus) < 0) S.partial.push(focus);
         break;
       }
+      tries = 0;
       if (n === 1) {
         const c = (doc.body.textContent.match(/of ([\d,]+) people/) || [, ""])[1];
         pages = c ? Math.ceil(parseInt(c.replace(/,/g, ""), 10) / 20) : 1;
