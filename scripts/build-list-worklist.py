@@ -40,16 +40,38 @@ import sys
 #  CLAUDE.md § *THE STUPIDER AND MORE SPECIFIC THE INSTRUCTION* -- implement the list given.
 SUFFIXES = ("sson", "ssen", "sdatter", "sdottir", "dotter", "datter", "dottir")
 BARE = {"son", "sen", "dotter", "datter", "dottir"}
-TOKEN = re.compile(r"[A-Za-zÀ-ɏ]+")
+#  A hyphenated compound is ONE token. Splitting it left `Nogaret-Calvisson` preceded by
+#  `Nogaret` instead of by `de`, so the particle test could not see the particle.
+TOKEN = re.compile(r"[A-Za-zÀ-ɏ']+(?:-[A-Za-zÀ-ɏ']+)*")
+
+#  ⛔ A `-sson` AFTER A PARTICLE IS A PLACE, NOT A PATRONYMIC. Ruled 2026-09-19 on being shown
+#  the first block: 13 of 15 "patronymic" hits were French and Breton toponyms --
+#  `de Calvisson` x8, `de Soisson` x2, `di Trecesson`, `of Maubuisson`, `de Pont-a-Mousson`.
+#  Every one of them sits directly after a nobiliary or locative particle, and no real
+#  patronymic does: `Katarina Sigismunsdotter` and `Maria Vasilievna Vasilsdotter` follow a
+#  given name. So the particle is the discriminator and it separates all 15 correctly.
+PARTICLES = {"de", "di", "du", "des", "del", "della", "da", "of", "la", "le", "les",
+             "von", "van", "der", "den", "a", "à", "d'", "l'", "zu", "af", "au"}
+
+#  The -dotter/-datter/-dottir family is exempt: no toponym ends that way, and excluding one
+#  because it happened to follow a particle would lose a real matronymic for nothing.
+UNAMBIGUOUS = ("sdatter", "sdottir", "dotter", "datter", "dottir")
 
 
 def is_patronymic(name: str) -> bool:
-    for tok in TOKEN.findall(name):
+    toks = TOKEN.findall(name)
+    for i, tok in enumerate(toks):
         low = tok.lower()
         if low in BARE or len(tok) < 5:
             continue
-        if low.endswith(SUFFIXES):
+        if not low.endswith(SUFFIXES):
+            continue
+        if low.endswith(UNAMBIGUOUS):
             return True
+        prev = toks[i - 1].lower() if i else ""
+        if prev in PARTICLES:
+            continue          # a place, not a person's father
+        return True
     return False
 
 
