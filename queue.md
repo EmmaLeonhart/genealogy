@@ -278,8 +278,26 @@ findings, not work in progress. Nothing here is started.**
   would have sent the chain walker at a URL that is not a path. `NOTIFICATION_RE` now requires
   the notification's own marker.
 
-  **What is left**: feed `reports/path-permalinks.tsv` to the chain walker instead of crawling
-  `/paths` 30 at a time. That is the whole point of having them and it has not been done.
+  **RUNNING since 2026-09-19 22:5x.** All 47,692 are seeded into `window.__chains` in a geni.com
+  tab and `go()` is walking them. Measured over the first 16 seconds: **~3.2 s a chain, ~1,130 an
+  hour, about 42 hours for the lot** -- slower than the 1.5 s `path-chains-090..094` were written
+  at, and not a fault: a `/c/` permalink costs a REDIRECT plus a full path render where a
+  `/path/` url cost one fetch. That sample is 5 chains and the two-hourly tick will replace it.
+
+  ⛔ **THE LIST GOT IN BY FILE UPLOAD, NOT BY PASTING.** geni.com's CSP blocks a cross-origin
+  `fetch`, so the page cannot pull the list from raw GitHub; and 47,692 urls is 3.6 MB of
+  JavaScript, which is not a paste. What works: inject an `<input type="file">` into the page,
+  hand it the file with the browser tool, read it with `FileReader`, `C.seed()` the result. All
+  47,692 went in at once. The TSV itself is 14.7 MB and over the 10 MB bridge limit, so what is
+  uploaded is a hash-per-line file -- 3.0 MB, and the page rebuilds the urls.
+
+  **Where the state is**: `localStorage.chains_cursor` is the resume point, and
+  `path-chains-NNN.tsv` lands in the Downloads folder every 200 chains. ⛔ **305 such files were
+  ALREADY there** before this started, so Chrome will suffix the new ones ` (1)`; check
+  `merge-path-chains.py` handles that before trusting a merge.
+
+  **What is left**: merge the dumps back into the repo as they land, and keep the loop alive --
+  a two-hourly cron reads `health()`. It tops nothing up, because the whole list is seeded.
 
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read
