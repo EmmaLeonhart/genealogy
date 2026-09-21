@@ -115,6 +115,27 @@ Skellefteå, Västerbotten. `von Hagmann` born in Reval is a Baltic German; `von
 ennobled form of a Swedish name. Large sibling counts (17, 19) are what make a descent plausible
 rather than a coincidence of spelling.
 
+## ⛔ IT DOES NOT GENERALISE TO THE WHOLE DISCONNECTED POPULATION. MEASURED.
+
+Connecting people who are genuinely unconnected is a way to find connections in its own right --
+*"if we can connect people who legit are not connected that's alone a way to find connections"* --
+so the obvious next move is to point this at `reports/unconnected-p2600.tsv`. It was tried on
+2026-09-20 and it does not work:
+
+    251,607 disconnected P2600 holders
+      sharing a surname with the owner's 8,254 ancestors:  51 people, 37 surnames
+
+and the hits are Salvador Dalí, Cameron Diaz, Anita Loos, Kiele Sanchez. **Modern people with
+common surnames.**
+
+The reason is structural and will not be fixed by better matching: the owner's ancestry is
+pre-modern Scandinavian and European, the disconnected `P2600` population is largely modern, and
+a shared `dahl` or `brown` across six centuries is noise. Surname evidence needs two populations
+that plausibly overlap in TIME AND PLACE. Yuri's descendants against her ancestry gave 472 leads
+because both sides are the same centuries and the same corner of Europe.
+
+So: aim it at a named descendant roster, not at the disconnected corpus.
+
 ## ⛔ The limit to state every time
 
 **570 maternal ancestors against 7,684 paternal.** The Swedish side — the one that matters for
