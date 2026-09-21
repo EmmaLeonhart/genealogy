@@ -945,6 +945,12 @@ PRIORITY_ANCESTOR_SEEDS = (
     #              Teit Ketilbjornsson.
     "6000000006128315972",      # Saint William of Gellone / Sant Guilhem de Gellona, 755-812
     "6000000015677500609",      # Torgeir Ingemundsson, b. 1200
+    # ⛔ **ADDED 2026-09-20 BY HAND**: *"I think I want an ancestor ring to go from
+    # Q141223733 every time too. for future generations."* Hans Bertil Frisk, in the
+    # account owner's own MATERNAL line -- which is the side the ring is worth most on,
+    # because the maternal ancestry is 570 people against 7,684 paternal and the surname
+    # leads keep landing where the tree is thinnest.
+    "6000000177921459066",      # Hans Bertil Frisk, Q141223733
 )
 
 
