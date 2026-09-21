@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **526**
+- shared surnames: **528**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -46,6 +46,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **landen** | father (Norwegian) | no | 1 | 1 | Pepin de Landen | Anna Elisabet Landén |
 | **lens** | father (Norwegian) | yes | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
 | **lombardia** | father (Norwegian) | yes | 1 | 1 | Adelais of Italy and Lombardia | Luis Fernández de Córdoba y Enríqu |
+| **lombardo** | father (Norwegian) | no father recorded | 1 | 1 | Burcia de origen Lombardo | Tara Lynne Lombardo |
 | **lusatia** | father (Norwegian) | yes | 1 | 1 | Emnilda_Hodica Von Lusatia | Cecilie |
 | **margrethe** | father (Norwegian) | yes | 1 | 1 | Christian abu Margrethe | Mette Margrethe Moe |
 | **montfaucon** | father (Norwegian) | no father recorded | 1 | 1 | Deuteria Doda van Montfaucon (van  | Etienne de Montfaucon, dit d'Orbe |
@@ -128,4 +129,3 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **furman** | mother (Swedish) | no father recorded | 1 | 3 | Mårten Furman | <private> Furman (Correll) |
 | **hagman** | mother (Swedish) | yes | 1 | 3 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
 | **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
-| **juliana** | father (Norwegian) | yes | 1 | 3 | Flavia Juliana | Augusta Juliana |
