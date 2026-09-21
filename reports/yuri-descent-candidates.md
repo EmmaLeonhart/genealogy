@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **523**
+- shared surnames: **525**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -41,6 +41,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **hungria** | father (Norwegian) | yes | 1 | 1 | Vazul de Hungría | Maria von Habsburg Van Hongarije d |
 | **huntingdon** | father (Norwegian) | yes | 1 | 1 | Matilda de Huntingdon | Maria Cristina Cristina Hastings C |
 | **ingeborg** | father (Norwegian) | yes | 1 | 1 | Knut abu Ingeborg | Ingeborg Carolina Fredericka Louis |
+| **jordal** | father (Norwegian) | no father recorded | 1 | 1 | Olav Jordal | Evelyn Ilene Jordal (1944 - 2017) |
 | **jure** | father (Norwegian) | yes | 1 | 1 | Sophia von Rheineck suo jure | Andrea Vincenzo Giuseppe Filippo G |
 | **landen** | father (Norwegian) | no | 1 | 1 | Pepin de Landen | Anna Elisabet Landén |
 | **lens** | father (Norwegian) | yes | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
@@ -75,7 +76,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **welf** | father (Norwegian) | yes | 1 | 1 | Henry III Welf | Johann von Braunschweig-Wolfenbütt |
 | **zweden** | father (Norwegian) | yes | 1 | 1 | Moalda Digri Kinriksdatter Koningi | Carl Adolf van Zweden |
 | **øvre** | father (Norwegian) | no | 1 | 1 | Ola Hallvardsson Kvås øvre | Sophie Olsdatter Røskaft [Øvre] |
-| **aznar** | father (Norwegian) | no father recorded | 1 | 2 | Centulio Aznar Aznar | José María Caro y Aznar (1931 - d. |
 | **belley** | father (Norwegian) | no | 2 | 1 | Ugo De Belley | Antoine de La Chambre Bishop of Be |
 | **bloch** | father (Norwegian) | no | 2 | 1 | Maren Pedersdatter Bloch | Constance Bloch |
 | **budde** | father (Norwegian) | no father recorded | 2 | 1 | Märta Pederintytär Budde | Aleksandrine (Alexandra Pavlovna)  |
@@ -124,8 +124,8 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de namur** | father (Norwegian) | yes | 1 | 3 | Hadwide de Namur | Caroline Léopoldine de Namur |
 | **dynasty** | father (Norwegian) | no | 3 | 1 | Ladislaus Árpád dynasty I | Mestwin Samborides dynasty II |
 | **egeland** | father (Norwegian) | no | 3 | 1 | Hallvard Torgersson Ytre Egeland | Oddvar Egeland |
-| **forrester** | father (Norwegian) | yes | 1 | 3 | NN the forrester | Anna Maria Cockburn 9th Baroness F |
 | **furman** | mother (Swedish) | no father recorded | 1 | 3 | Mårten Furman | <private> Furman (Correll) |
 | **hagman** | mother (Swedish) | yes | 1 | 3 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
 | **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
 | **juliana** | father (Norwegian) | yes | 1 | 3 | Flavia Juliana | Augusta Juliana |
+| **kluge** | father (Norwegian) | no father recorded | 3 | 1 | Ommund Larsson Kluge | Maria "Maya" Petrovna von Kluge (1 |
