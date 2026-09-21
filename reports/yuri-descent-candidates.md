@@ -3,14 +3,13 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **529**
+- shared surnames: **532**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
 | surname | side | on the descent path? | ancestors | descendants | example ancestor | example descendant |
 |---|---|---|---|---|---|---|
 | **anastasia** | father (Norwegian) | yes | 1 | 1 | Rogneda Anastasia | Antoinette Marie Clementine Hermin |
-| **blanche** | father (Norwegian) | no father recorded | 1 | 1 | Margaret Blanche | Lady Helena Blanche, Countess of H |
 | **bosnia** | father (Norwegian) | no | 1 | 1 | NN of Bosnia | Katarina Celjska |
 | **bouchet** | father (Norwegian) | no father recorded | 1 | 1 | Adèle De Bouchet | Margarita Diago y Du Bouchet (c.18 |
 | **brittany** | father (Norwegian) | no | 1 | 1 | Budic Mur III de Bretagne King of  | Yolande of Brittany |
@@ -30,9 +29,9 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de rouen** | father (Norwegian) | yes | 1 | 1 | Tesselin de Vascoeuil vicomte de R | Louis Charles de Saint-Albin évêqu |
 | **dreux** | father (Norwegian) | no | 1 | 1 | Robert de Dreux | Renaud de Dreux |
 | **eike** | father (Norwegian) | no father recorded | 1 | 1 | Halvor * Eike | Viola B Eike |
-| **flanders** | father (Norwegian) | no father recorded | 1 | 1 | Adela of Flanders | Michael Edward Flanders |
 | **fossan** | father (Norwegian) | no father recorded | 1 | 1 | Magla Guttormsdatter Fossan | Ethel M Van Fossan (1888 - d.) |
 | **geneva** | father (Norwegian) | yes | 1 | 1 | Eldegarde De Geneva | Madeleine Astrid Ingeborg Ella Els |
+| **gent** | father (Norwegian) | no father recorded | 1 | 1 | Hildegarde Van Holland Gravin van  | Kesiah Gent (c.1824 - d.) "Ghent" |
 | **grave** | father (Norwegian) | no father recorded | 1 | 1 | Heinrich I von Berg-Schelklingen G | Albert Emile Storm de Grave (1885  |
 | **haard** | father (Norwegian) | no | 1 | 1 | Jon Olofsson Haard | Karen Rasmusdatter Haard |
 | **halland** | father (Norwegian) | yes | 1 | 1 | Finn Arnesson Earl of Halland, Swe | Bertil Gustaf Oskar Carl Eugén av  |
@@ -79,7 +78,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **øvre** | father (Norwegian) | no | 1 | 1 | Ola Hallvardsson Kvås øvre | Sophie Olsdatter Røskaft [Øvre] |
 | **belley** | father (Norwegian) | no | 2 | 1 | Ugo De Belley | Antoine de La Chambre Bishop of Be |
 | **blanch** | father (Norwegian) | no father recorded | 2 | 1 | Olav Henrikson Blanch | Ethyl Blanch (c.1896 - 2001) |
-| **bloch** | father (Norwegian) | no | 2 | 1 | Maren Pedersdatter Bloch | Constance Bloch |
+| **blanche** | father (Norwegian) | no father recorded | 1 | 2 | Margaret Blanche | Mildred Henrietta Blanche (1916 -  |
 | **budde** | father (Norwegian) | no father recorded | 2 | 1 | Märta Pederintytär Budde | Aleksandrine (Alexandra Pavlovna)  |
 | **castile** | father (Norwegian) | yes | 2 | 1 | Munia Elvira de Castile Queen | Isabel de Castilla «la Católica» d |
 | **consort** | father (Norwegian) | yes | 1 | 2 | Procopia byzantine empress consort | Eleonora di Mantua Gonzaga Queen E |
@@ -129,3 +128,4 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **furman** | mother (Swedish) | no father recorded | 1 | 3 | Mårten Furman | <private> Furman (Correll) |
 | **hagman** | mother (Swedish) | yes | 1 | 3 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
 | **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
+| **juliana** | father (Norwegian) | yes | 1 | 3 | Flavia Juliana | Augusta Juliana |
