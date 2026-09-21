@@ -1,0 +1,35 @@
+0 HEAD
+1 SOUR genimerge
+2 NAME exports/post-merge/hotfix-romer-ingrid-parentage.ged
+1 NOTE HOTFIX 2026-09-21 -- the Roemer join. Asserted by Wikidata, absent from our tree.
+2 CONT
+2 CONT WHAT WIKIDATA ALREADY SAYS. Q141290200 "Ingrid Oelversdatter Smoer", b.1329 d.1393, alias
+2 CONT "Ingrid Oelversdatter Roemer", carries P22 = Q141450322. The ledger pairs that QID with
+2 CONT geni 6000000002621242041, Oelver Henningsson Roemer. So the father edge is published; it is
+2 CONT only our tree that lacks it.
+2 CONT
+2 CONT WHAT OUR TREE HAS. Ingrid appears twice and BOTH are the owner's ancestors:
+2 CONT   6000000002893346298  carries FAMC @F6000000036740813161@ -- a family with a CHIL line and
+2 CONT                        NOTHING ELSE. Identical in all 13 privileged files that hold it, so
+2 CONT                        it is the settled state and not an artifact of one export.
+2 CONT   6000000225709965832  father recorded as 6000000227289508960, the HUSK, which redirects to
+2 CONT                        6000000002621242041 and carries no ancestry of its own.
+2 CONT Between them the owner reaches Oelver only through a dead redirect, so the priority ancestor
+2 CONT ring seeded on Q141450322 has grown 1,278 people that reach nobody.
+2 CONT
+2 CONT WHAT THIS FILE DOES. It puts a HUSB on the family that ALREADY EXISTS and already holds her
+2 CONT as CHIL. No new FAM xref is invented and no FAMC is added, because both are already there.
+2 CONT No mother is asserted: the evidence is the patronymic, which names the father and is silent
+2 CONT on the mother. The second profile is left alone rather than pointed at the same family --
+2 CONT the duplicate is a separate defect and merging it here would hide it.
+2 CONT
+2 CONT Nothing here touched geni.com. The moratorium of 2026-09-21 is intact.
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @F6000000036740813161@ FAM
+1 HUSB @I6000000002621242041@
+0 @I6000000002621242041@ INDI
+1 FAMS @F6000000036740813161@
+0 TRLR
