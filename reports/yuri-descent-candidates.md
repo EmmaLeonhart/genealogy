@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **504**
+- shared surnames: **507**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -44,7 +44,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **landen** | father (Norwegian) | no | 1 | 1 | Pepin de Landen | Anna Elisabet Landén |
 | **lens** | father (Norwegian) | yes | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
 | **lombardia** | father (Norwegian) | yes | 1 | 1 | Adelais of Italy and Lombardia | Luis Fernández de Córdoba y Enríqu |
-| **loos** | father (Norwegian) | yes | 1 | 1 | Irmgard aka ‘Swanhilde of Holland’ | Johanna de Bourgogne Vicomtesse de |
 | **lusatia** | father (Norwegian) | yes | 1 | 1 | Emnilda_Hodica Von Lusatia | Cecilie |
 | **margrethe** | father (Norwegian) | yes | 1 | 1 | Christian abu Margrethe | Mette Margrethe Moe |
 | **montfaucon** | father (Norwegian) | no father recorded | 1 | 1 | Deuteria Doda van Montfaucon (van  | Etienne de Montfaucon, dit d'Orbe |
@@ -76,6 +75,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **zweden** | father (Norwegian) | yes | 1 | 1 | Moalda Digri Kinriksdatter Koningi | Carl Adolf van Zweden |
 | **øvre** | father (Norwegian) | no | 1 | 1 | Ola Hallvardsson Kvås øvre | Sophie Olsdatter Røskaft [Øvre] |
 | **adelaide** | father (Norwegian) | yes | 1 | 2 | Adele Adelaide | Enrichetta Adelaide di Savoia |
+| **aznar** | father (Norwegian) | no father recorded | 1 | 2 | Centulio Aznar Aznar | José María Caro y Aznar (1931 - d. |
 | **belley** | father (Norwegian) | no | 2 | 1 | Ugo De Belley | Antoine de La Chambre Bishop of Be |
 | **bloch** | father (Norwegian) | no | 2 | 1 | Maren Pedersdatter Bloch | Constance Bloch |
 | **budde** | father (Norwegian) | no father recorded | 2 | 1 | Märta Pederintytär Budde | Aleksandrine (Alexandra Pavlovna)  |
@@ -99,6 +99,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **isles** | father (Norwegian) | yes | 1 | 2 | Gjertud of the Isles | Alexander Wentworth Macdonald Bosv |
 | **jørstad** | father (Norwegian) | no | 2 | 1 | Cesilie Jacobsdatter Jørstad | Reidun Else Jørstad |
 | **kleef** | father (Norwegian) | yes | 1 | 2 | Beatrix I van Kleef | Jan van Kleef |
+| **loos** | father (Norwegian) | no father recorded | 1 | 2 | Irmgard aka ‘Swanhilde of Holland’ | Anna Viczay de Hédervár et Loós (1 |
 | **marcillac** | father (Norwegian) | yes | 2 | 1 | Amaury de Marcillac | Thérèse Gabrielle de Crugy Marcill |
 | **mortimer** | father (Norwegian) | no father recorded | 1 | 2 | Gersende de Mortimer | Robert John Rayner Mortimer (1889  |
 | **rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
@@ -126,6 +127,5 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **dynasty** | father (Norwegian) | no | 3 | 1 | Ladislaus Árpád dynasty I | Mestwin Samborides dynasty II |
 | **egeland** | father (Norwegian) | no | 3 | 1 | Hallvard Torgersson Ytre Egeland | Oddvar Egeland |
 | **forrester** | father (Norwegian) | yes | 1 | 3 | NN the forrester | Anna Maria Cockburn 9th Baroness F |
+| **gyula** | father (Norwegian) | no father recorded | 1 | 3 | Zombor Gyula (II) | István Gaál de Gyula (1900 - 1967) |
 | **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
-| **juliana** | father (Norwegian) | yes | 1 | 3 | Flavia Juliana | Augusta Juliana |
-| **kommedal** | father (Norwegian) | no | 3 | 1 | Osmund Knutson Kommedal | Kåre Kommedal |
