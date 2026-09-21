@@ -204,6 +204,40 @@ Two answers Emma asked for and did not get:
 
 ## ⛔ ERRORS FOUND 2026-09-19 — written down instead of chased. Ruled the same day
 
+### ⛔ ERRORS FOUND 2026-09-21 — a Cyrillic `mul`, and a duplicate of a rich existing item
+
+**`Q141523987` was created with `mul` = `Мономахиня`.** Emma, 2026-09-21: *"one person was
+created with a cyrillic mul label. That is not allowed and idk why it went through."*
+
+- **Why it went through: `build-mul-labels.py` performs NO script test, and says so.** Line 11
+  states the assumption — *"native full name in Latin script, which is exactly what `en` holds
+  here"* — and line 96's branch `elif mul: "kept: mul already equals en"` passes any existing
+  `label_mul` through unchanged. When `en` is ITSELF non-Latin the assumption fails silently,
+  and nothing between `derived-labels.csv` and the batch asks what script `mul` is in.
+  `docs/rules/names.md` is explicit that the default label is the native full name **in Latin
+  script** and that a non-Latin form *"cannot live in `mul`"*.
+
+- **The Latin form was one column away and was discarded.** `reports/label-mul.tsv:209092`
+  carries the GEDCOM name `/Monomakhina/` in the same row it wrote `Мономахиня` into `mul`.
+
+- **⛔ AND THE ITEM SHOULD NOT HAVE BEEN CREATED AT ALL. `Q4301841` ALREADY HELD THAT PERSON.**
+  It carries `P2600` `6000000003858589577`, `mul` = *Anastasia Monomakhina*, `en` = *Anastasia
+  Monomakh*, and 21 properties including `P22`, `P25`, `P26`, `P40`, `P569`, `P570`. And the
+  ledger knew: `reports/garborg-qids.tsv:1397` maps that geni id to `Q4301841`, recorded
+  2026-08-25. The new item has three properties and no description. **The Cyrillic label is the
+  symptom that was noticed; the duplicate creation is the defect.**
+
+- **Scale, measured over `reports/label-mul.tsv`**: **616 Cyrillic**, 181 Hebrew, 6 Arabic,
+  1 Greek, 1 Mongolian. The 13,327 CJK / 391 Hangul / 16 kana are LEGITIMATE — the Sinosphere
+  rule puts those in `mul` on purpose — so the wrong set is the ~805 that are neither Latin nor
+  Sinosphere.
+
+- ⛔ **THIS IS NOT THE THING § *A MIXED-SCRIPT LABEL IS NOT A CAMPAIGN* REFUSES.** That ruling is
+  about labels already on Wikidata that mix Latin and Cyrillic, and says `mul` agreement sorts
+  them out. This is **our own creations** carrying a wholly non-Latin `mul`, emitted by a step
+  that never asks. Do not dismiss one with the other.
+
+
 *"for every error that came up organize them into a queue"* — said after a session that
 context-switched between five threads and cancelled 21 pipeline runs doing it. **These are
 findings, not work in progress. Nothing here is started.**
