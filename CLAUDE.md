@@ -494,7 +494,14 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME** — Geni puts the husband in `GIVN`.
 - **A GUARD IN ONE EMITTER IS NOT A GUARD.** There are two emitters; rules live in `namemodel`.
 - **No given name is not no name** — a redacted person's surname is still a `P734`.
-- **The MARRIED name is the real name.** `mul` carries it, birth name as `Amul`, **never an `Aen`**.
+- **⛔ A WOMAN GOES UNDER HER MAIDEN NAME; A MAN GOES UNDER HIS MARRIED NAME. Ruled 2026-09-21**,
+  reversing *the MARRIED name is the real name* for women only: *"we are going to switch so that
+  women are made under their maiden names, not under their married names, because women under
+  their married names was a source of confusion. Men are still under their married names."*
+  So for a **woman** `mul` carries the **maiden** name and the married name is the `Amul`; for a
+  **man** `mul` carries the married name and the birth name is the `Amul`. **Never an `Aen`**,
+  which is unchanged. A man's married name is rare and *"usually means a name change occurred"* —
+  evidence of an event rather than a convention, which is why his side does not move.
 - **`NN` is PRESERVED in `mul`**; descriptive labels are ADDED in other languages. `Private` never
   becomes a label, and neither person is left unlabelled.
 - **A bare given name is not a label** — the farm name is the surname; else `Given NN`.

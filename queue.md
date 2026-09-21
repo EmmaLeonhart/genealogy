@@ -1024,3 +1024,87 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
 
   **This has recurred**, so the fix is the branch plus two tests — `mul` is `Given NN`, and every
   descriptive label opens with the given name — not another pass over the emitted items.
+
+---
+
+## Queued 2026-09-21, arbitrary order — dictated in one go
+
+### ⛔ PATRONYMICS ARE MADE IN PAIRS. STANDING ORDER, AND IT IS NOT BEING FOLLOWED
+
+Ruled 2026-09-21: *"we are supposed to be always, always, always creating the male and the
+female versions of the patronymics at the same time as pairs. We're supposed to be doing a
+repetitive thing with a masculine and female version of them that are linked together. I don't
+see this in the quick statements, even though it's been a standing order for a really long
+time."*
+
+**The judgment is that it was forgotten, not that it is reparative.** The batch creates
+`Ingebretson` alone — masculine patronymic, son name, `P144` based on `Ingebret` — and no
+`Ingebretsdatter` beside it and no link between the two.
+
+`scripts/build-patronymic-items.py` already holds the gendered-suffix table and the `P5278`
+*surname for other gender* pairing. **Whether anything CALLS it is the open question** —
+§ *Code that is WRITTEN but never CALLED is not done*. Establish that first, with a narrow
+search over `scripts/` and `.github/workflows/` only.
+
+⛔ **THE CALLER SEARCH IS NOT A CORPUS GREP.** One was run here on 2026-09-21 as
+`grep -rn ... -r . --include=*` from the repo root, which sweeps `exports/`; it ran for two
+minutes and had to be killed. § *NEVER GREP THE WHOLE CORPUS* — the question was worth seconds.
+
+The pair is `Q130444148` masculine patronymic ↔ `Q130444179` feminine patronymic, and
+`Q10673705` son name ↔ `Q10476255` daughter name. `P5278` links the two items both ways.
+
+### ⛔ THE BATCH IS PUTTING `P2600` ON REDIRECTS, AND A TEST ALREADY CATCHES IT
+
+Ruled 2026-09-21: *"what the fuck is going on with the constant attempts to add these qids to
+redirects?"* QuickStatements answers **"The given entity ID refers to a redirect, which is not
+supported in this context"** and the statement is lost.
+
+    Q141502958   P2600 "6000000004313804007"
+    Q141502959   P2600 "6000000001821187530"
+
+**These are the same two QIDs as CI failure #1**, `tests/test_garborg_day_batch.py::
+test_every_explicit_subject_already_exists` — *editing items not in the ledger*. So the test
+that would have stopped this has been failing rather than being fixed, which is why it is
+*constant*. The fix is the generator resolving a redirect to its target before emitting, not a
+denylist of the two.
+
+### The 7 CI failures — item 4 of the 2026-09-17 order
+
+Run `35590570344`, 2026-09-21, identical on Python 3.10 and 3.13.
+
+- `test_garborg_day_batch.py::test_every_explicit_subject_already_exists` — the redirect item above
+- `test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person`
+- `test_garborg_day_batch.py::test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created`
+- `test_garborg_day_batch.py::test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions`
+  — `('P25', 'Q136660380')` emitted one-way
+- `test_no_descriptions_or_summaries.py::test_no_batch_carries_a_description` — `Den` values that
+  are relational phrases rather than life descriptions: `"born Foss"`, `"wife of Thure Johansson
+  Stålarm"`, `"son of Gunnar Gunnarson Ænes"`, and one that is a raw source note,
+  `"Grødem i Randaberg; jfr g og æ bok 1 side 118 - 17"`. **This is the same fault as the
+  `Tora NN` item above** — a relative's name reaching a field that is not about them.
+- `test_p2600_batches.py::test_no_line_carries_an_unescapable_quote[wikidata-subject-named-as.qs]`
+  — `"Bertha \"Betsy\" Pedersdatter"`, `"Otto \"der Reiche\" von Ballenstedt"`. A nickname in
+  quotes inside a `P1810` value; QuickStatements has no escape for it.
+- `test_p2600_batches.py::test_the_daily_batch_never_restates_what_the_item_already_holds` — 97
+  statements the item already holds
+
+Some are stale committed artifacts that `pipeline.yml` fixes on recompose; the quote one and the
+description one are generator defects. § *the exception is a defect: fix the generator, push, and
+let the pipeline run it.*
+
+### ⛔ WOMEN GO UNDER THEIR MAIDEN NAMES. MEN STAY UNDER THEIR MARRIED NAMES
+
+Ruled 2026-09-21: *"we are going to switch so that women are made under their maiden names, not
+under their married names, because women under their married names was a source of confusion.
+Men are still under their married names."*
+
+**This REVERSES § *The MARRIED name is the real name* for women only.** That rule said `mul`
+carries the married name with the birth name as `Amul`; for a woman the two now swap — `mul` is
+the maiden name, the married name becomes the alias. **Never an `Aen`**, which is unchanged.
+
+Men are untouched, and Emma's own note on why: *"married names for men are like a bit of a weird
+ass thing where whenever they have them, it usually means a name change occurred"* — so a man's
+married name is evidence of an event, not a naming convention, and it stays where it is.
+
+⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD* — there are two emitters and this belongs in
+`namemodel`. And `name modelling.txt` is the authority over both this file and `CLAUDE.md`.
