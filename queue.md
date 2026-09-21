@@ -8,6 +8,36 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## ⛔ GENI MORATORIUM — NO CONTACT OF ANY KIND UNTIL AT LEAST 2026-10-21
+
+**Ruled 2026-09-21:** *"never touch geni again this moratorium is at least a month"*.
+
+Geni's WAF (Incapsula) began answering **403** to everything on 2026-09-21, including a plain
+page fetch, after the descendants sweep had run at concurrency 24. The sweep was stopped at
+9,168 of 29,366 people and Chrome went down with the block still live.
+
+**Nothing talks to geni.com.** Not the list sweep, not `scripts/pathrun.js`, not the chain
+fetcher, not a GEDCOM export, not the collector, not a single probe to see whether the block
+has lifted — a probe IS contact. This overrides § *THE PATH CAMPAIGN RUNS IN EVERY SESSION,
+NO MATTER WHAT* and § *THE FIRST THING IN EVERY SESSION*, both of which assume a browser that
+is allowed to make requests.
+
+**The date is the floor, not the trigger.** *At least* a month means 2026-10-21 is the earliest
+it could be reconsidered, and reconsidering is Emma's call, not a thing a session resumes on
+its own because the date has passed.
+
+The work that does not need Geni is unaffected: the 269,698 people already harvested are on
+disk under `reports/sweep/`, CI/CD keeps running, and Wikidata is reachable.
+
+Recovery state, for whenever it does resume:
+
+* `reports/sweep-partial-incapsula-2026-09-21.txt` — 209 people whose capture is empty or
+  truncated *because of the block*. They are not done and their archived files are the WAF's
+  output, not Geni's.
+* the queue is `reports/sweep-queue-6000000227822546944.txt`, and the cursor stood at **8,993**.
+
+---
+
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
 ### ⛔ THE PATH COLLECTION IS A BACKGROUND ASSUMPTION, NOT THE FIRST ITEM. Ruled 2026-09-14
