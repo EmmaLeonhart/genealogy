@@ -44,8 +44,18 @@ on:
         type: string
         default: "1000"
 
+# ⛔ **THE UNION OF WHAT THE CALLED WORKFLOWS NEED, AND IT HAS TO BE.** A reusable
+# workflow can never hold MORE permission than its caller, so anything missing here is
+# silently unavailable downstream -- and the run does not fail in a job, it fails to START,
+# reported only as `startup_failure` with no log at all. Measured on run 35548495474:
+# granting `contents: write` alone killed it before a single job existed, because
+# `pipeline.yml` declares `issues: write` and its `site` job needs `pages: write` and
+# `id-token: write` to deploy.
 permissions:
-  contents: write
+  contents: write   # tree.yml and pipeline.yml both commit and push
+  issues: write     # pipeline.yml opens an issue when a step it tolerates fails
+  pages: write      # the site job deploys
+  id-token: write   # ...and Pages deployment is OIDC-authenticated
 
 # Never two of these at once: they both push to `main` and both take over an hour.
 concurrency:
