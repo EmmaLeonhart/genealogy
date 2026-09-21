@@ -113,7 +113,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **von rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
 | **von sulzbach** | father (Norwegian) | yes | 1 | 2 | Adelaide von Sulzbach | Augusta Sophia von Sulzbach |
 | **von worms** | father (Norwegian) | yes | 2 | 1 | Wandilmode von Worms | Heinrich von der Pfalz Fürstbischo |
-| **walter** | father (Norwegian) | no father recorded | 1 | 2 | Voltekin [? Walter] Voltekin [? Wa | Maria Anna Walter (1920 - d.) |
 | **wenden** | father (Norwegian) | no father recorded | 1 | 2 | Radagest II of the Heruli & Wenden | Anastasie Alexandrine Paule de Wen |
 | **worms** | father (Norwegian) | yes | 2 | 1 | Wandilmode von Worms | Heinrich von der Pfalz Fürstbischo |
 | **bang** | father (Norwegian) | yes | 3 | 1 | Niels Nielsen Hansen Bang | Eva Margareta Bang |
@@ -129,3 +128,4 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **malin** | mother (Swedish) | yes | 1 | 3 | Olof abu Malin | Elizabeth Malin |
 | **mendes** | father (Norwegian) | no | 1 | 3 | Godilona Mendes | Miguel Mendes |
 | **mompelgard** | father (Norwegian) | yes | 1 | 3 | Liutpold von Mömpelgard | Georg II. |
+| **næsheim** | father (Norwegian) | yes | 3 | 1 | Anna Knutsdatter Næsheim | Christian Næsheim |
