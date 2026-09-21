@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **472**
+- shared surnames: **473**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -31,6 +31,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de rouen** | father (Norwegian) | yes | 1 | 1 | Tesselin de Vascoeuil vicomte de R | Louis Charles de Saint-Albin évêqu |
 | **dreux** | father (Norwegian) | no | 1 | 1 | Robert de Dreux | Renaud de Dreux |
 | **finn** | father (Norwegian) | no father recorded | 1 | 1 | Lugaid Lorc mac Óengusa Finn, Dál  | <private> Finn |
+| **flanders** | father (Norwegian) | no father recorded | 1 | 1 | Adela of Flanders | Michael Edward Flanders |
 | **fosse** | father (Norwegian) | no | 1 | 1 | Helga Toresdatter Fosse | Berta Martine Fosse |
 | **geneva** | father (Norwegian) | yes | 1 | 1 | Eldegarde De Geneva | Madeleine Astrid Ingeborg Ella Els |
 | **haard** | father (Norwegian) | no | 1 | 1 | Jon Olofsson Haard | Karen Rasmusdatter Haard |
@@ -128,4 +129,3 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **malin** | mother (Swedish) | yes | 1 | 3 | Olof abu Malin | Elizabeth Malin |
 | **mendes** | father (Norwegian) | no | 1 | 3 | Godilona Mendes | Miguel Mendes |
 | **mompelgard** | father (Norwegian) | yes | 1 | 3 | Liutpold von Mömpelgard | Georg II. |
-| **næsheim** | father (Norwegian) | yes | 3 | 1 | Anna Knutsdatter Næsheim | Christian Næsheim |
