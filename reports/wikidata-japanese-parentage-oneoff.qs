@@ -1,4 +1,9 @@
-# ⛔ ONE-OFF, BY HAND, 2026-09-21. Ruled: "Totsuyami-Sakitara-no-Kami should be a father of
+# ⛔ PARKED. NOT TO BE RUN. Ruled 2026-09-21, minutes after it was written:
+# "I am not representing that on wikidata other stuff important might do geni later".
+# So this is a RECORD of the fact, not a pending edit. It may become a Geni edit later;
+# it is not a Wikidata one. Do not paste it, do not fold it into a batch.
+#
+# ONE-OFF, BY HAND, 2026-09-21. Ruled: "Totsuyami-Sakitara-no-Kami should be a father of
 # Ōtataneko in our data. This should be somehow added in or edited in as it is an important thing."
 #
 # ⛔ IT IS NOT SENT BY THE BOT AND THAT IS DELIBERATE. Neither item is in reports/garborg-qids.tsv,
