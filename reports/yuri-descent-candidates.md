@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **515**
+- shared surnames: **521**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -34,6 +34,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **flanders** | father (Norwegian) | no father recorded | 1 | 1 | Adela of Flanders | Michael Edward Flanders |
 | **fossan** | father (Norwegian) | no father recorded | 1 | 1 | Magla Guttormsdatter Fossan | Ethel M Van Fossan (1888 - d.) |
 | **geneva** | father (Norwegian) | yes | 1 | 1 | Eldegarde De Geneva | Madeleine Astrid Ingeborg Ella Els |
+| **grave** | father (Norwegian) | no father recorded | 1 | 1 | Heinrich I von Berg-Schelklingen G | Albert Emile Storm de Grave (1885  |
 | **haard** | father (Norwegian) | no | 1 | 1 | Jon Olofsson Haard | Karen Rasmusdatter Haard |
 | **halland** | father (Norwegian) | yes | 1 | 1 | Finn Arnesson Earl of Halland, Swe | Bertil Gustaf Oskar Carl Eugén av  |
 | **haug** | father (Norwegian) | no father recorded | 1 | 1 | Jostein Haug | Mary R Haug (1899 - 1972) |
@@ -53,7 +54,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **more** | father (Norwegian) | no father recorded | 1 | 1 | Ljot Toresson Jarl of More | Jose Eugenio More (1905 - 1997) |
 | **munn** | father (Norwegian) | no father recorded | 1 | 1 | Helga Sigurdsdotter Munn | Stella Elizabeth Munn (1885 - 1951 |
 | **nunez** | father (Norwegian) | no father recorded | 1 | 1 | Fruela Núñez | Laura Del Rio Núñez |
-| **olai** | mother (Swedish) | no | 1 | 1 | Andreas Olai | Selma Petronella Olai |
 | **orkney** | father (Norwegian) | yes | 1 | 1 | Ellen Sigurdsdottir av Orkney | Mary FitzMaurice Countess of Orkne |
 | **ossory** | father (Norwegian) | yes | 1 | 1 | Sigurðr of Ossory | Augusta Mary Fitzpatrick Baroness  |
 | **rise** | father (Norwegian) | yes | 1 | 1 | Tora Ranesdatter Rise | Signe Ingeborg Rise |
@@ -74,10 +74,8 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **von mompelgard** | father (Norwegian) | yes | 1 | 1 | Liutpold von Mömpelgard | Georg II. |
 | **von staufen** | father (Norwegian) | no father recorded | 1 | 1 | Agnes Liubava von Staufen | Leo von Staufen (b. - bef.1522) |
 | **welf** | father (Norwegian) | yes | 1 | 1 | Henry III Welf | Johann von Braunschweig-Wolfenbütt |
-| **ximenez** | father (Norwegian) | yes | 1 | 1 | Garcia Ximenez, magnate Basco | Charles Louis du Hamel de Breul Xi |
 | **zweden** | father (Norwegian) | yes | 1 | 1 | Moalda Digri Kinriksdatter Koningi | Carl Adolf van Zweden |
 | **øvre** | father (Norwegian) | no | 1 | 1 | Ola Hallvardsson Kvås øvre | Sophie Olsdatter Røskaft [Øvre] |
-| **adelaide** | father (Norwegian) | yes | 1 | 2 | Adele Adelaide | Enrichetta Adelaide di Savoia |
 | **aznar** | father (Norwegian) | no father recorded | 1 | 2 | Centulio Aznar Aznar | José María Caro y Aznar (1931 - d. |
 | **belley** | father (Norwegian) | no | 2 | 1 | Ugo De Belley | Antoine de La Chambre Bishop of Be |
 | **bloch** | father (Norwegian) | no | 2 | 1 | Maren Pedersdatter Bloch | Constance Bloch |
@@ -93,8 +91,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **furman** | mother (Swedish) | no | 1 | 2 | Mårten Furman | Christina Gustaviana von Furman |
 | **garces** | father (Norwegian) | yes | 2 | 1 | NN Garcés | Macarena Agüero Garcés |
 | **gille** | father (Norwegian) | no | 2 | 1 | Margareta Haraldsdatter Gille | Elsa Isabella Bratt Gille |
-| **hagman** | mother (Swedish) | yes | 1 | 2 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
-| **haugland** | father (Norwegian) | no father recorded | 2 | 1 | Berit Tjærandsdatter Øvre Haugland | Nelly Sigrid "Ella" Haugland (1937 |
 | **heinsberg** | father (Norwegian) | yes | 2 | 1 | Gosewin II von Heinsberg | Katharina von Sponheim Heinsberg |
 | **hund** | father (Norwegian) | yes | 2 | 1 | Tore Toreson Hund | Karl Gotthelf von Hund |
 | **island** | father (Norwegian) | yes | 1 | 2 | Úlfur Óspaksson Stallare af Island | Axel Christian Georg af Danmark vo |
@@ -118,8 +114,11 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **von ravenstein** | father (Norwegian) | yes | 1 | 2 | Albrecht von Ravenstein | Gen. Johann Friedrich Theodor Hein |
 | **von rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
 | **wenden** | father (Norwegian) | no father recorded | 1 | 2 | Radagest II of the Heruli & Wenden | Anastasie Alexandrine Paule de Wen |
+| **ximenez** | father (Norwegian) | no father recorded | 1 | 2 | Garcia Ximenez, magnate Basco | <private> Beneyto-Guillamas y Sanz |
 | **aasland** | father (Norwegian) | yes | 3 | 1 | Marit Aasland | Kari Elise Aasland Torgersen |
+| **adelaide** | father (Norwegian) | yes | 1 | 3 | Adele Adelaide | Enrichetta Adelaide di Savoia |
 | **bond** | father (Norwegian) | no father recorded | 1 | 3 | Thord Bond "Shagge" | Winnie Delta Bond (1826 - 1915) |
+| **bryne** | father (Norwegian) | no father recorded | 1 | 3 | Nils Erikson Bryne | Ebba Maria Bryne (1900 - 1989) |
 | **dagsburg** | father (Norwegian) | no father recorded | 3 | 1 | Adela van Dagsburg | Katharina Luise Eleonore von Leini |
 | **de champagne** | father (Norwegian) | no | 3 | 1 | Marie De Champagne Duchess Of Burg | Pierre de Champagne Ier |
 | **de comminges** | father (Norwegian) | yes | 1 | 3 | Asnerius III Commignes and Consera | Roger de Comminges II |
@@ -129,3 +128,4 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **dynasty** | father (Norwegian) | no | 3 | 1 | Ladislaus Árpád dynasty I | Mestwin Samborides dynasty II |
 | **egeland** | father (Norwegian) | no | 3 | 1 | Hallvard Torgersson Ytre Egeland | Oddvar Egeland |
 | **forrester** | father (Norwegian) | yes | 1 | 3 | NN the forrester | Anna Maria Cockburn 9th Baroness F |
+| **hagman** | mother (Swedish) | yes | 1 | 3 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
