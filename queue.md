@@ -907,3 +907,16 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
   thing in its own right. ⛔ This does **not** reopen the merge — CLAUDE.md
   § *THE WIKIDATA TREE NEVER GOES INTO THE SYNOPTIC TREE* stands, and
   `--also out/wikidata-tree.ged` stays unwired.
+
+---
+
+## Agentic work on the other genealogy sources
+
+- **Look at agentic work on genealogy sources other than Geni — FamilySearch, MyHeritage and the
+  rest.** Ruled 2026-09-21: *"look at agentic work on other genealogy sources like familysearch
+  myheritage etc"*. Geni is one reach and it is actively hostile; the Incapsula 403 of
+  2026-09-21 is what a single-source pipeline costs. The question is which of these can be worked
+  the way Geni is — what needs a logged-in browser, what has an API, what can be harvested at
+  all — not to switch away from Geni but to stop the tree depending on one site.
+  `preservation/` already holds three MyHeritage *Descent from Antiquity* snapshots, so some of
+  this material is in hand and unexamined.
