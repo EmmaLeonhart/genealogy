@@ -992,20 +992,35 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
         en-us   Tora NN          <- the CORRECT label
         desc    born Hå ?
 
-  The right name is sitting in `en-ca` and `en-us` while `en` and `fr` carry a sentence about
-  somebody else. This is CLAUDE.md § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME* and
-  § *`NN` is PRESERVED in `mul`* — `Tora NN` is exactly the form the rules call for.
+  ⛔ **THE DESCRIPTIVE LABEL IS NOT THE BUG. Ruled 2026-09-21:** *"Tora NN is mul. Tora mother of
+  person in every language lol"*. A relative phrase in a language label is **correct and
+  intended** — § *`NN` is PRESERVED in `mul`; descriptive labels are ADDED in other languages*.
+  Two things are actually wrong, and neither is the existence of the phrase:
+
+        WANTED                                   GOT
+        mul    Tora NN                           (absent)
+        en     Tora, mother of Sven Torstensen   mother of Sven Torstensen Tvihaug
+        fr     Tora, mère de Sven Torstensen     mère de Sven Torstensen Tvihaug
+        en-ca  (nothing owed)                    Tora NN
+        en-us  (nothing owed)                    Tora NN
+
+  1. **`mul` is missing, and `Tora NN` has been filed into `en-ca`/`en-us` instead.** That is the
+     one label the rules say must carry `NN`, and it is the one label not set.
+  2. **The descriptive labels drop the given name.** They must read `Tora, mother of …` — the
+     person's own name first, the relation after. A label that is *only* a relation names somebody
+     else, which is § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME*.
 
   **It is translated, which means it is generated and not inherited** — `mère de` is ours.
   ⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD*: there are two emitters and the rule belongs in
   `namemodel`. Find where the relative-phrase reaches the label rather than patching the symptom,
   and fix the ones already emitted.
 
-  ⛔ **AND THE FAULT IS THE `NN` SURNAME BRANCH, NOT LABELLING IN GENERAL. Ruled 2026-09-21:**
-  *"Tora is a better name than what's there ... Idk why you kept on consistently doing the NN
-  surname wrong"*. The trigger is **a person with a given name and no surname**. The rule for that
-  case is already written — § *A bare given name is not a label: the farm name is the surname;
-  else `Given NN`* — so the correct output is `Tora NN`, which the emitter **already produced**
-  and put in `en-ca` and `en-us`. The defect is that the no-surname branch *also* reaches for a
-  relative phrase and that phrase wins the primary slot. **This has recurred**, so the fix is the
-  branch and a test pinning `Given NN`, not another pass over the emitted items.
+  ⛔ **AND THE FAULT IS THE `NN` SURNAME BRANCH. Ruled 2026-09-21:** *"Idk why you kept on
+  consistently doing the NN surname wrong"*. The trigger is **a person with a given name and no
+  surname**, and the branch gets both halves wrong at once: it sends `Given NN` to the wrong
+  languages and it builds the descriptive form without the given name. The emitter clearly
+  **has** both pieces — it produced `Tora NN` and it produced the relation — so this is routing
+  and assembly, not a missing name.
+
+  **This has recurred**, so the fix is the branch plus two tests — `mul` is `Given NN`, and every
+  descriptive label opens with the given name — not another pass over the emitted items.
