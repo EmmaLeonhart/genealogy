@@ -883,3 +883,16 @@ generations where the corpus held 116, and closed twice on it.
 ⛔ **AND IT ACCUMULATES.** *"building over time the ultimate one"* -- the frame grows as balls
 land, so each round is drawn against a larger descent than the last. The denylist rebuild in
 step 2 of the procedure is what keeps that from re-sampling ground already taken.
+
+---
+
+## Parse the descendant reports into actual family trees
+
+- **Investigate turning the descendant reports in `reports/sweep/*.tsv` into family trees by
+  parsing the relationship text.** Ruled 2026-09-21: *"we can make the descendant reports into
+  family trees through parsing. The report's relationship needs to be parsed but might work."*
+  The harvest is 1,350,775 rows across 7,247 files and it currently carries a name and nothing
+  else, so every swept person is a name with no position. The relationship each report states is
+  the structure -- if it parses, the sweep stops being a name list and becomes genealogy for
+  people the GEDCOM exports never reached. Investigate whether it parses reliably before
+  building anything on it.
