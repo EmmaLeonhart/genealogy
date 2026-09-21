@@ -1000,3 +1000,12 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
   ⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD*: there are two emitters and the rule belongs in
   `namemodel`. Find where the relative-phrase reaches the label rather than patching the symptom,
   and fix the ones already emitted.
+
+  ⛔ **AND THE FAULT IS THE `NN` SURNAME BRANCH, NOT LABELLING IN GENERAL. Ruled 2026-09-21:**
+  *"Tora is a better name than what's there ... Idk why you kept on consistently doing the NN
+  surname wrong"*. The trigger is **a person with a given name and no surname**. The rule for that
+  case is already written — § *A bare given name is not a label: the farm name is the surname;
+  else `Given NN`* — so the correct output is `Tora NN`, which the emitter **already produced**
+  and put in `en-ca` and `en-us`. The defect is that the no-surname branch *also* reaches for a
+  relative phrase and that phrase wins the primary slot. **This has recurred**, so the fix is the
+  branch and a test pinning `Given NN`, not another pass over the emitted items.
