@@ -1,4 +1,13 @@
-# The hinge: Salomea Romanovna's mother
+# The hinge: Salomea Romanovna's mother — REFUTED 2026-09-21
+
+⛔ **THE LEAD IS DEAD. The contradiction is real, and the error is the BIRTH YEAR, not the
+mother.** Source research settled it the same day it was found, and the correction is recorded at
+the bottom of this page rather than by deleting the page, because the instrument was sound and is
+worth keeping. **Nothing here gives descent from Euphemia Monomakh.**
+
+The claim as originally written follows, then what the sources say.
+
+---
 
 **One maternity assignment stands between the account owner and descent from Euphemia Monomakh —
 Yuri Dolgorukiy's mother — and our own tree's dates say the recorded assignment is impossible.**
@@ -116,3 +125,59 @@ is still the Vingåker register.
    in our data. Everything else on this page is a distant second.
 2. **The Vingåker 1752 birth record**, which now answers two screens rather than one.
 3. Nothing else in the ancestry is close. The general test says so mechanically.
+
+---
+
+# What the sources say, and why it fails
+
+**`Salomea Romanovna, b. 1191, d. 10 January 1266` does not exist in scholarship.** The record is
+a construct, and both of its dates are traceable corruptions:
+
+- **The death date is Świętopełk II's own.** He died **11 January 1266**; our tree gives his wife
+  10 January 1266, one day off. The real woman died **23 August**, in 1230 or 1235.
+- **The 1191 birth is unsupported by anything.** The East Slavic tradition that makes her Roman's
+  daughter at all puts her birth at **c. 1204/05** and her marriage at **c. 1223**.
+
+⛔ **AND THE SCHOLARLY VERSION ASSIGNS HER TO THE BYZANTINE WIFE — THE MOTHER OUR TREE ALREADY
+RECORDS.** Voytovych, Baumgarten and Rymar give *Salomea-Euphrosyne Romanivna, daughter of Roman
+by Anna/Euphrosyne*, born after the c.1200 marriage. So the impossibility this page was built on
+dissolves by **fixing the birth year**, with the maternity left exactly as it stands. Predslava
+never enters it.
+
+**The identification is doubted even as to her father.** Dąbrowski, *Genealogia Mścisławowiczów*
+(2008), heads her section *"Salomea Romanówna **lub** Daniłówna, **jakoby** żona Świętopełka
+Mściwojowica"* — daughter of Roman **or** of Daniel, **allegedly** Świętopełk's wife. The tradition
+cannot place her within forty years. In Polish scholarship she is absent entirely: Świętopełk II's
+first wife is **Eufrozyna**, parentage unresolved, with at least four competing candidates and the
+old Odon of Poznań filiation now rejected. The Polish and Ukrainian traditions agree on the day
+and month of death and disagree on the year and the father — one woman, two reconstructions.
+
+**A second date in our tree is also false.** `Predslava Rurikovna` is recorded dead in **1193**,
+but in February 1204 Roman forced monastic tonsure on Rurik, his wife and his daughter Predslava.
+She was alive eleven years after our tree buries her.
+
+## What survives
+
+- **The instrument survives and is unchanged.** *An ancestor who married into the target
+  population, where the line continues through a different spouse* is a sound test; it was run
+  mechanically over all 8,254 ancestors and returned this row and nothing else. It found a real
+  contradiction. The contradiction simply had a different cause than the one that would have
+  helped.
+- **The owner's existing Rurikid descent is NOT at risk.** Salomea's identification being doubted
+  matters less than it looks: blocking her entirely still leaves `Vladimir Monomakh` reachable by
+  an independent route, at a cost of 21 of 8,255 recorded ancestors. Blocking Roman Mstislavich
+  costs 12 and also leaves Monomakh reachable.
+- ⛔ **TWO CORRECTIONS ARE OWED TO THE TREE**, and neither helps the descent question: Salomea's
+  dates (b. c.1204/05, d. 23 Aug 1230×1235, not b.1191 d.10 Jan 1266) and Predslava's death
+  (after February 1204, not 1193). Both are Geni-side facts; **the Geni moratorium is in force**,
+  so neither can be actioned now.
+- **Two works would settle her outright** and neither was readable: Dąbrowski 2008 on
+  *Salomea Romanówna lub Daniłówna*, and Smoliński, *Świętopełk Gdański* (2016).
+
+## Where the descent question now stands
+
+**No route to Euphemia Monomakh has been found.** The surname instrument is exhausted, the contact
+map rules out the Bure heartland and Norway, the general hinge test returns exactly one row and
+that row is this one, and this one is refuted. What is left is the weaker lead in
+`yuri-junction-hunt.md` — `Lars Persson`, Vingåker 1752, and a parish register that is not in our
+data.
