@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **507**
+- shared surnames: **508**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -28,6 +28,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de montreuil** | father (Norwegian) | yes | 1 | 1 | Adele de Montreuil | Agnès Louise de Montreuil |
 | **de rouen** | father (Norwegian) | yes | 1 | 1 | Tesselin de Vascoeuil vicomte de R | Louis Charles de Saint-Albin évêqu |
 | **dreux** | father (Norwegian) | no | 1 | 1 | Robert de Dreux | Renaud de Dreux |
+| **eike** | father (Norwegian) | no father recorded | 1 | 1 | Halvor * Eike | Viola B Eike |
 | **finn** | father (Norwegian) | no father recorded | 1 | 1 | Lugaid Lorc mac Óengusa Finn, Dál  | <private> Finn |
 | **flanders** | father (Norwegian) | no father recorded | 1 | 1 | Adela of Flanders | Michael Edward Flanders |
 | **fossan** | father (Norwegian) | no father recorded | 1 | 1 | Magla Guttormsdatter Fossan | Ethel M Van Fossan (1888 - d.) |
@@ -83,7 +84,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **consort** | father (Norwegian) | yes | 1 | 2 | Procopia byzantine empress consort | Eleonora di Mantua Gonzaga Queen E |
 | **de aragao** | father (Norwegian) | no | 1 | 2 | Galindo de Aragão, Conde de Aragão | Francisco Manuel de Aragão |
 | **de bar** | father (Norwegian) | yes | 1 | 2 | Thibaud de Bar le Duc | Yolande de Bar d'Anjou Duchess of  |
-| **de crequy** | father (Norwegian) | no | 2 | 1 | Odoacre de Créquy | Madeleine Marguerite de Créquy |
 | **de navarre** | father (Norwegian) | no | 1 | 2 | Luppa Sanchez de Navarre | Enrique de Navarre |
 | **de saldana** | father (Norwegian) | yes | 2 | 1 | Gómez Díaz Conde de Saldaña y Liéb | Luisa de Mendoza condesa de Saldañ |
 | **flandre** | father (Norwegian) | yes | 2 | 1 | Judith Flandre | Marie Luise Alexandrine Karoline v |
