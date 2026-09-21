@@ -47984,6 +47984,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141189079$42AE0FA7-1CB0-43E4-A533-3520B907176E",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141527105",
+        "numeric-id": 141527105
+       }
+      },
+      "hash": "0225e16f073079cb5563d188118edc74efcc1d5c",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "6567c34f2265614249a0fa6c29031b9b472cbb45",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003095034818"
+          },
+          "hash": "8ff4a7b34096d20cf5707ef1c61d6836a6634353",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -48184,8 +48225,8 @@
     "value": "拉尔斯·托尔莫德森·梅勒"
    }
   },
-  "lastrevid": 2548163017,
-  "modified": "2026-09-21T14:55:41Z",
+  "lastrevid": 2548210048,
+  "modified": "2026-09-21T20:49:07Z",
   "ns": 0,
   "pageid": 134641532,
   "sitelinks": {},
@@ -128810,6 +128851,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141498391$B7A10A7A-3EB6-47EB-A723-F25B1916920B",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141526889",
+        "numeric-id": 141526889
+       }
+      },
+      "hash": "794e3974232384c647f7d1cba9a256ce01db5343",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "6aba939a6ecddb524ca2b08de000e6464bd2ad6d",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000189599172857"
+          },
+          "hash": "43afaea3761c4a792d54d0b65e08b1b5aaa2410f",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -128970,8 +129052,8 @@
     "value": "卡塔里娜·奥洛夫斯多特·布雷"
    }
   },
-  "lastrevid": 2547635685,
-  "modified": "2026-09-19T02:44:40Z",
+  "lastrevid": 2548205700,
+  "modified": "2026-09-21T20:08:11Z",
   "ns": 0,
   "pageid": 135057728,
   "sitelinks": {},
@@ -154746,6 +154828,70 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141519367$C07B602A-D929-4C62-86C9-CC822C68AE34",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141527234",
+        "numeric-id": 141527234
+       }
+      },
+      "hash": "681e2d3985e9cacda97e52fa79f1e096df9642b5",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P144": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q141290465",
+          "numeric-id": 141290465
+         }
+        },
+        "hash": "5ffd19520e33b7df55bf5dc6e25895b5f089b233",
+        "property": "P144",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P144"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "8e5db999050d3da223836ceb8e9ce37f802bd58b",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003491990011"
+          },
+          "hash": "9c0fd33b37d0286130d5eaa43ed5a1458ef1aded",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141519367$DB5D9E48-034E-412F-9372-4270353AF0C3",
@@ -154995,8 +155141,8 @@
     "value": "贝尔特·约里内·马乌里特斯达特·劳斯塔"
    }
   },
-  "lastrevid": 2548098844,
-  "modified": "2026-09-21T09:11:46Z",
+  "lastrevid": 2548213158,
+  "modified": "2026-09-21T21:20:22Z",
   "ns": 0,
   "pageid": 135079143,
   "sitelinks": {},
@@ -171755,6 +171901,227 @@
   "pageid": 135085769,
   "sitelinks": {},
   "title": "Q141526375",
+  "type": "item"
+ },
+ "Q141526951": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141526951$4D11F529-173D-4231-958E-9721108CD4B9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141526951$7909CB0E-387D-463A-8775-C59AD2BB8D81",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000008738988880"
+      },
+      "hash": "411ca5627584e3d4f08f22f638ac6d2aa92f6509",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Tora"
+        },
+        "hash": "cb53a1ce408f76dacd543e9db0204def20fec223",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141526951$08C61C8B-B5CF-4257-A0ED-7D2E879BE527",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141526951$A1ED028E-D09C-4903-8D51-3A9E3BCFBBBF",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141454697",
+        "numeric-id": 141454697
+       }
+      },
+      "hash": "ee448ed653024799f0381fd8f136565db07487c2",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "c30c04e7dcedc5590b050d22ddac6d4588b3912e",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000008738988880"
+          },
+          "hash": "411ca5627584e3d4f08f22f638ac6d2aa92f6509",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141526951$861CCF55-0B39-425D-B463-864A0ECE37CA",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q19967624",
+        "numeric-id": 19967624
+       }
+      },
+      "hash": "f3f3784f6b53dd9ade6db07cc82ea495e5257a26",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "born Hå ?"
+   }
+  },
+  "id": "Q141526951",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "mare de Sven Torstensen Tvihaug"
+   },
+   "da": {
+    "language": "da",
+    "value": "mor til Sven Torstensen Tvihaug"
+   },
+   "de": {
+    "language": "de",
+    "value": "Mutter von Sven Torstensen Tvihaug"
+   },
+   "en": {
+    "language": "en",
+    "value": "mother of Sven Torstensen Tvihaug"
+   },
+   "es": {
+    "language": "es",
+    "value": "madre de Sven Torstensen Tvihaug"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "mère de Sven Torstensen Tvihaug"
+   },
+   "it": {
+    "language": "it",
+    "value": "madre di Sven Torstensen Tvihaug"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "スヴェン・トルステンセン・トヴィハウグの母"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "스벤 토르스텐센 트비하욱의 어머니"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Tora NN"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "mor til Sven Torstensen Tvihaug"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "moeder van Sven Torstensen Tvihaug"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "mãe de Sven Torstensen Tvihaug"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "mor till Sven Torstensen Tvihaug"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "斯文·托尔斯滕森·特维哈乌格之母"
+   }
+  },
+  "lastrevid": 2548207564,
+  "modified": "2026-09-21T20:25:46Z",
+  "ns": 0,
+  "pageid": 135086402,
+  "sitelinks": {},
+  "title": "Q141526951",
   "type": "item"
  },
  "Q15057415": {
@@ -220179,6 +220546,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q4981287$BC559961-EB54-4B43-8FCB-250EC5B66C66",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141527551",
+        "numeric-id": 141527551
+       }
+      },
+      "hash": "2c44a9060505d3f7a637440450b569671b23cc67",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "c488bbe79cb32b6fea50d7ecccf29f5313730177",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002601672538"
+          },
+          "hash": "1fc0fa21bf539e238174f4382b56d2cb13be36ac",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P25": [
@@ -220893,8 +221301,8 @@
     "value": "Бенгта Сунесдоттер"
    }
   },
-  "lastrevid": 2548174206,
-  "modified": "2026-09-21T16:17:43Z",
+  "lastrevid": 2548217552,
+  "modified": "2026-09-21T22:03:33Z",
   "ns": 0,
   "pageid": 4761958,
   "sitelinks": {
