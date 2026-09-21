@@ -178,6 +178,28 @@ def main() -> int:
                     d_idx[s].add(g)
     print(f"  swept rows folded in: {swept:,}")
 
+    # ⛔ **A SURNAME IS ONLY A LEAD IF IT SITS ON THE DESCENT PATH.** Ruled by measurement
+    # 2026-09-20, after both of the first two leads died the same way.
+    #
+    # `Christina Gustaviana von Furman` IS a Yuri descendant and DOES carry a surname the owner's
+    # maternal line carries. Both true, and the lead was still worthless: her Yuri blood comes
+    # through her MOTHER, Margareta Charlotta von Essen, and runs von Essen -> von Wrangell ->
+    # von Ritter -> von Krüdener -> von Rosen -> von Buxhoeveden -> Rurykwicz. Her father
+    # `Gustaf Adolf von Furman` is **not a descendant of Yuri at all**. So even if he descends
+    # from the owner's Mårten Furman, that carries no Yuri blood in either direction.
+    #
+    # `von Hagmann` died the same way and worse: it is a MARRIED name over a von Maydell --
+    # `CLAUDE.md` § *The MARRIED name is the real name* is exactly why Geni renders it that way.
+    #
+    # A surname travels down the PATERNAL line, so the test is whether the father is also a
+    # descendant of the target. Where no father is recorded the row is kept and flagged, because
+    # a missing parent is the thing being looked for, not evidence against.
+    def on_descent_path(g):
+        ps = par.get(g, [])
+        if not ps:
+            return "no father recorded"
+        return "yes" if ps[0] in desc else "no"
+
     rows = []
     for side, people in (("mother (Swedish)", mat), ("father (Norwegian)", pat)):
         idx = collections.defaultdict(set)
@@ -185,8 +207,9 @@ def main() -> int:
             for s in surnames(lab.get(g, "")):
                 idx[s].add(g)
         for s in set(idx) & set(d_idx):
+            best = sorted(d_idx[s])[0]
             rows.append((len(idx[s]) * len(d_idx[s]), s, side, len(idx[s]), len(d_idx[s]),
-                         sorted(idx[s])[0], sorted(d_idx[s])[0]))
+                         sorted(idx[s])[0], best, on_descent_path(best)))
     rows.sort()
 
     with io.open(OUT, "w", encoding="utf-8", newline="\n") as fh:
@@ -198,16 +221,18 @@ def main() -> int:
         fh.write("Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they "
                  "link nothing. Titles are excluded. Ranked by rarity — a surname held by one "
                  "person on each side is a place to look, one held by dozens is a common name.\n\n")
-        fh.write("| surname | side | ancestors | descendants | example ancestor | example descendant |\n")
-        fh.write("|---|---|---|---|---|---|\n")
-        for _rank, s, side, na, nd, ea, ed in rows[:120]:
-            fh.write(f"| **{s}** | {side} | {na} | {nd} | {lab.get(ea,'')[:38]} | {lab.get(ed,'')[:38]} |\n")
+        fh.write("| surname | side | on the descent path? | ancestors | descendants "
+                 "| example ancestor | example descendant |\n")
+        fh.write("|---|---|---|---|---|---|---|\n")
+        for _rank, s, side, na, nd, ea, ed, onpath in rows[:120]:
+            fh.write(f"| **{s}** | {side} | {onpath} | {na} | {nd} | "
+                     f"{lab.get(ea,chr(39)+chr(39))[:34]} | {lab.get(ed,'')[:34]} |" + chr(10))
 
     print(f"{os.path.relpath(OUT, ROOT)}")
     print(f"  Yuri descendants in tree {len(desc):,} | maternal {len(mat):,} | paternal {len(pat):,}")
     print(f"  shared surnames {len(rows):,}")
-    for _r, s, side, na, nd, ea, ed in rows[:25]:
-        print(f"   {s:20s} {side:20s} {na}x{nd}  {lab.get(ea,'')[:30]:30s} | {lab.get(ed,'')[:30]}")
+    for _r, s, side, na, nd, ea, ed, onpath in rows[:25]:
+        print(f"   {s:18s} {side:20s} onpath={onpath:18s} {na}x{nd}  {lab.get(ea,'')[:26]:26s} | {lab.get(ed,'')[:26]}")
     return 0
 
 
