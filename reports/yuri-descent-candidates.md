@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **508**
+- shared surnames: **515**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -12,6 +12,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **anastasia** | father (Norwegian) | yes | 1 | 1 | Rogneda Anastasia | Antoinette Marie Clementine Hermin |
 | **blanche** | father (Norwegian) | no father recorded | 1 | 1 | Margaret Blanche | Lady Helena Blanche, Countess of H |
 | **bosnia** | father (Norwegian) | no | 1 | 1 | NN of Bosnia | Katarina Celjska |
+| **bouchet** | father (Norwegian) | no father recorded | 1 | 1 | Adèle De Bouchet | Margarita Diago y Du Bouchet (c.18 |
 | **brittany** | father (Norwegian) | no | 1 | 1 | Budic Mur III de Bretagne King of  | Yolande of Brittany |
 | **brussels** | father (Norwegian) | yes | 1 | 1 | Henry II of Louvain count of Louva | Margaretha Antonia Marie Félicité  |
 | **carinthia** | father (Norwegian) | no | 1 | 1 | Matilda of Swabia duchess of Carin | Elisabeth Korutanská queen of Sici |
@@ -49,6 +50,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **margrethe** | father (Norwegian) | yes | 1 | 1 | Christian abu Margrethe | Mette Margrethe Moe |
 | **montfaucon** | father (Norwegian) | no father recorded | 1 | 1 | Deuteria Doda van Montfaucon (van  | Etienne de Montfaucon, dit d'Orbe |
 | **montreuil** | father (Norwegian) | yes | 1 | 1 | Adele de Montreuil | Agnès Louise de Montreuil |
+| **more** | father (Norwegian) | no father recorded | 1 | 1 | Ljot Toresson Jarl of More | Jose Eugenio More (1905 - 1997) |
 | **munn** | father (Norwegian) | no father recorded | 1 | 1 | Helga Sigurdsdotter Munn | Stella Elizabeth Munn (1885 - 1951 |
 | **nunez** | father (Norwegian) | no father recorded | 1 | 1 | Fruela Núñez | Laura Del Rio Núñez |
 | **olai** | mother (Swedish) | no | 1 | 1 | Andreas Olai | Selma Petronella Olai |
@@ -127,5 +129,3 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **dynasty** | father (Norwegian) | no | 3 | 1 | Ladislaus Árpád dynasty I | Mestwin Samborides dynasty II |
 | **egeland** | father (Norwegian) | no | 3 | 1 | Hallvard Torgersson Ytre Egeland | Oddvar Egeland |
 | **forrester** | father (Norwegian) | yes | 1 | 3 | NN the forrester | Anna Maria Cockburn 9th Baroness F |
-| **gyula** | father (Norwegian) | no father recorded | 1 | 3 | Zombor Gyula (II) | István Gaál de Gyula (1900 - 1967) |
-| **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
