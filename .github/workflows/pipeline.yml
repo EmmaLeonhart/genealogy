@@ -59,6 +59,13 @@ on:
     # so this lands after the rebuild and before the send. Off the hour because every scheduled
     # workflow on GitHub fires at :00 and the queue is worst there.
     - cron: "23 7 * * *"
+  # ⛔ `workflow_call`, so `redo-everything.yml` can chain this. A workflow dispatched
+  # with GITHUB_TOKEN creates no run, so chaining cannot go through `gh workflow run`.
+  workflow_call:
+    inputs:
+      force:
+        type: boolean
+        default: false
   workflow_dispatch:
     inputs:
       force:

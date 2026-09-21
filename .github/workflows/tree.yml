@@ -23,6 +23,15 @@ name: Rebuild the synoptic tree
 # `derived-labels.csv` a generation stale, which is a defect this repo has already paid for.
 
 on:
+  # ⛔ `workflow_call` mirrors the dispatch inputs so `redo-everything.yml` can chain this.
+  # It is here rather than a `gh workflow run` from inside a job because a workflow
+  # dispatched with GITHUB_TOKEN creates NO run -- the same rule that makes the
+  # pipeline's own pushes inert.
+  workflow_call:
+    inputs:
+      skip_merge:
+        type: boolean
+        default: false
   workflow_dispatch:
     inputs:
       skip_merge:

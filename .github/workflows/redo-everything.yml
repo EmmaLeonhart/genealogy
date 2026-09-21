@@ -1,0 +1,77 @@
+name: Redo everything
+
+# **ONE BUTTON: rebuild the tree, refresh the ledger, compose the QuickStatements, send them.**
+#
+# Ruled 2026-09-20: *"the GitHub pages should have a link that goes to the GitHub action flow
+# thing that will redo everything. Including synoptic tree rebuilding, checking, refreshing the
+# ledger, building the quick statements, and running them on Wikidata."*
+#
+# ⛔ **IT CHAINS WITH `workflow_call`, NOT `gh workflow run`, AND THAT IS FORCED.** A workflow
+# dispatched with `GITHUB_TOKEN` creates **no run** -- the same documented rule that makes
+# `pipeline.yml`'s own pushes inert. So a job here that shelled out to `gh workflow run` would
+# report success and start nothing. The three workflows each grew a `workflow_call:` trigger
+# mirroring their dispatch inputs, and this calls them.
+#
+# ⛔ **THE LINK ON THE PAGES SITE IS SAFE TO PUBLISH.** The site is public and this is not:
+# `workflow_dispatch` requires WRITE access to the repository, so a visitor can follow the link
+# and see the workflow, and only somebody who can push can actually start it. Ruled the same day:
+# *"the github actions link is real. Only I can trigger it."*
+#
+# **Order is the whole point and it is not arbitrary.** Each step's input is the previous step's
+# output:
+#
+#     1. tree      rebuild-everything.py -- the merge, the derived layer, the P2600 refresh,
+#                  the unconnected worklist. Everything downstream reads these.
+#     2. pipeline  compose the batch from the refreshed ledger, split it, publish Pages.
+#     3. edits     send the automatic half.
+#
+# Running 3 before 2 sends yesterday's composition; running 2 before 1 composes against a
+# generation-stale derived layer. Both have happened.
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_merge:
+        description: "Reuse out/merged.ged and rebuild only the derived layer (much faster)"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Print the edits instead of sending them"
+        type: boolean
+        default: false
+      limit:
+        description: "Maximum edits in the send step"
+        type: string
+        default: "1000"
+
+permissions:
+  contents: write
+
+# Never two of these at once: they both push to `main` and both take over an hour.
+concurrency:
+  group: redo-everything
+  cancel-in-progress: false
+
+jobs:
+  tree:
+    uses: ./.github/workflows/tree.yml
+    with:
+      skip_merge: ${{ inputs.skip_merge == true }}
+    secrets: inherit
+
+  pipeline:
+    needs: tree
+    uses: ./.github/workflows/pipeline.yml
+    with:
+      # The gate exists to skip a pointless run; a hand-pressed button is never pointless.
+      force: true
+    secrets: inherit
+
+  edits:
+    needs: pipeline
+    uses: ./.github/workflows/wikidata-edits.yml
+    with:
+      dry_run: ${{ inputs.dry_run == true }}
+      limit: ${{ inputs.limit }}
+      batch: reports/wikidata-garborg-day-auto.txt
+    secrets: inherit

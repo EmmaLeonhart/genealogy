@@ -21,6 +21,19 @@ name: wikidata-edits
 # dispatched with dry_run: false, which has been allowed since 1 September.
 
 on:
+  # ⛔ `workflow_call`, so `redo-everything.yml` can chain this. Secrets are passed by the
+  # caller with `secrets: inherit`; nothing here reads them from a file.
+  workflow_call:
+    inputs:
+      dry_run:
+        type: boolean
+        default: true
+      limit:
+        type: string
+        default: "10"
+      batch:
+        type: string
+        default: "reports/wikidata-garborg-day-auto.txt"
   workflow_dispatch:
     inputs:
       dry_run:

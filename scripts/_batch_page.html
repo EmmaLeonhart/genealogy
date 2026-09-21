@@ -30,6 +30,13 @@ a{color:var(--accent)}
   <button id="select">Select all</button>
   <span class="sub" id="said"></span>
 </div>
+<!-- ⛔ THE LINK TO THE ONE ACTION THAT REDOES EVERYTHING. Ruled 2026-09-20. The site is public
+     and this link is safe to publish: workflow_dispatch requires WRITE access, so a visitor can
+     read the page and only somebody who can push can start it. -->
+<p class="sub">Rebuild the tree, refresh the ledger, recompose the batch and send it:
+<a href="https://github.com/EmmaLeonhart/genealogy/actions/workflows/redo-everything.yml"
+   target="_blank" rel="noopener">Redo everything</a>
+— one Action, run in order. Only a repository writer can start it.</p>
 <pre id="qs">%s</pre>
 <script>
 /* **The copy button did not work and this is three fixes, not one.** 2026-09-04:

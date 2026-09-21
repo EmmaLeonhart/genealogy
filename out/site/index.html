@@ -22,7 +22,7 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 a{color:var(--accent)}
 </style></head><body><div class="wrap">
 <h1>The daily batch</h1>
-<p class="sub">425 creations · 7,650 · the half CI/CD does not send — run this one statement lines · generated 2026-09-20 · paste into
+<p class="sub">425 creations · 7,617 · the half CI/CD does not send — run this one statement lines · generated 2026-09-20 · paste into
 <a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
 (version 1 syntax, tab-separated)</p>
 <div class="bar">
@@ -30,6 +30,13 @@ a{color:var(--accent)}
   <button id="select">Select all</button>
   <span class="sub" id="said"></span>
 </div>
+<!-- ⛔ THE LINK TO THE ONE ACTION THAT REDOES EVERYTHING. Ruled 2026-09-20. The site is public
+     and this link is safe to publish: workflow_dispatch requires WRITE access, so a visitor can
+     read the page and only somebody who can push can start it. -->
+<p class="sub">Rebuild the tree, refresh the ledger, recompose the batch and send it:
+<a href="https://github.com/EmmaLeonhart/genealogy/actions/workflows/redo-everything.yml"
+   target="_blank" rel="noopener">Redo everything</a>
+— one Action, run in order. Only a repository writer can start it.</p>
 <pre id="qs"># ========================================================================
 # HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.
 # These lead the file: the Geni id is the FIRST edit on any individual,
@@ -114,7 +121,6 @@ LAST	P282	Q8229
 #   P144 based on = Q817199 Bengt
 LAST	P144	Q817199
 #   Q110386205 Lars Bengtsson Hierta: P5056 patronym or matronym = the item just created
-Q110386205	P5056	LAST	S2600	&quot;4240537919610035130&quot;
 #   Q5588874 Bryniolf Bengtsson (Hafridssons ätt): P5056 patronym or matronym = the item just created, qualified P144 based on Q141198381 Bengt Hafridsson Lejon
 Q5588874	P5056	LAST	P144	Q141198381	S2600	&quot;6000000011239545575&quot;
 
@@ -450,57 +456,31 @@ Q141510410	P5056	LAST	P144	Q141223740	S2600	&quot;6000000091971663139&quot;
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
 #   Q130233015 Nilsson: P460 said to be the same as = Q141511184
-Q130233015	P460	Q141511184
 #   Q141511184: P460 said to be the same as = Q130233015 Nilsson
-Q141511184	P460	Q130233015
 #   Q140226461: P460 said to be the same as = Q141512896
-Q140226461	P460	Q141512896
 #   Q141512896: P460 said to be the same as = Q140226461
-Q141512896	P460	Q140226461
 #   Q141313474: P460 said to be the same as = Q141498412
-Q141313474	P460	Q141498412
 #   Q141498412: P460 said to be the same as = Q141313474
-Q141498412	P460	Q141313474
 #   Q141336975: P460 said to be the same as = Q141498636
-Q141336975	P460	Q141498636
 #   Q141498636: P460 said to be the same as = Q141336975
-Q141498636	P460	Q141336975
 #   Q141421871: P460 said to be the same as = Q141499047
-Q141421871	P460	Q141499047
 #   Q141499047: P460 said to be the same as = Q141421871
-Q141499047	P460	Q141421871
 #   Q141421878: P460 said to be the same as = Q141498972
-Q141421878	P460	Q141498972
 #   Q141498972: P460 said to be the same as = Q141421878
-Q141498972	P460	Q141421878
 #   Q141429560: P460 said to be the same as = Q141502612
-Q141429560	P460	Q141502612
 #   Q141502612: P460 said to be the same as = Q141429560
-Q141502612	P460	Q141429560
 #   Q141454273: P460 said to be the same as = Q141498665
-Q141454273	P460	Q141498665
 #   Q141498665: P460 said to be the same as = Q141454273
-Q141498665	P460	Q141454273
 #   Q141454273: P460 said to be the same as = Q141512899
-Q141454273	P460	Q141512899
 #   Q141512899: P460 said to be the same as = Q141454273
-Q141512899	P460	Q141454273
 #   Q141454279: P460 said to be the same as = Q141512911
-Q141454279	P460	Q141512911
 #   Q141512911: P460 said to be the same as = Q141454279
-Q141512911	P460	Q141454279
 #   Q141455639: P460 said to be the same as = Q141511184
-Q141455639	P460	Q141511184
 #   Q141511184: P460 said to be the same as = Q141455639
-Q141511184	P460	Q141455639
 #   Q141498629: P460 said to be the same as = Q141499673
-Q141498629	P460	Q141499673
 #   Q141499673: P460 said to be the same as = Q141498629
-Q141499673	P460	Q141498629
 #   Q141498665: P460 said to be the same as = Q141512899
-Q141498665	P460	Q141512899
 #   Q141512899: P460 said to be the same as = Q141498665
-Q141512899	P460	Q141498665
 
 # ========================================================================
 # THE DAY&#x27;S PEOPLE
@@ -16510,7 +16490,6 @@ LAST	P31	Q5	S2600	&quot;6000000146366200821&quot;
 LAST	P2600	&quot;6000000146366200821&quot;
 LAST	P21	Q6581097	S2600	&quot;6000000146366200821&quot;
 #   Q18573690: P22 = the item just created
-Q18573690	P22	LAST	S2600	&quot;6000000002325801401&quot;
 #   6000000005609547575: father of Q141223553 (6000000010479856178), created because the tree knows them and Wikidata does not
 CREATE
 LAST	Len	&quot;Øystein Olsen Reve&quot;
@@ -16537,7 +16516,6 @@ LAST	P31	Q5	S2600	&quot;6000000038301808551&quot;
 LAST	P2600	&quot;6000000038301808551&quot;
 LAST	P21	Q6581097	S2600	&quot;6000000038301808551&quot;
 #   Q12339511: P22 = the item just created
-Q12339511	P22	LAST	S2600	&quot;6000000017898259106&quot;
 #   6000000003858589577: mother of Q60928 (6000000002968624707), created because the tree knows them and Wikidata does not
 CREATE
 LAST	Len	&quot;Мономахиня&quot;
@@ -16546,7 +16524,6 @@ LAST	P31	Q5	S2600	&quot;6000000003858589577&quot;
 LAST	P2600	&quot;6000000003858589577&quot;
 LAST	P21	Q6581072	S2600	&quot;6000000003858589577&quot;
 #   Q60928: P25 = the item just created
-Q60928	P25	LAST	S2600	&quot;6000000002968624707&quot;
 # S2600 sources, backfilled onto relationship statements that already exist without
 # one. Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
 # P2600 holders on Wikidata.
@@ -16562,9 +16539,6 @@ Q141499453	P25	Q141499439	S2600	&quot;6000000227816363824&quot;
 Q141500899	P25	Q141512987	S2600	&quot;4246288&quot;
 Q141512987	P40	Q141500899	S2600	&quot;6000000001108772970&quot;
 Q19860752	P26	Q133825276	S2600	&quot;6000000008650533822&quot;
-Q347480	P22	Q314521	S2600	&quot;6000000005597728020&quot;
-Q347480	P3373	Q466257	S2600	&quot;6000000005597728020&quot;
-Q347480	P3373	Q2720038	S2600	&quot;6000000005597728020&quot;
 Q5562598	P3373	Q1527696	S2600	&quot;6000000007318765242&quot;
 Q5570926	P3373	Q1340357	S2600	&quot;6000000007247592424&quot;
 Q5570926	P3373	Q1340404	S2600	&quot;6000000007247592424&quot;
