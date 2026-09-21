@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **525**
+- shared surnames: **526**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -77,6 +77,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **zweden** | father (Norwegian) | yes | 1 | 1 | Moalda Digri Kinriksdatter Koningi | Carl Adolf van Zweden |
 | **øvre** | father (Norwegian) | no | 1 | 1 | Ola Hallvardsson Kvås øvre | Sophie Olsdatter Røskaft [Øvre] |
 | **belley** | father (Norwegian) | no | 2 | 1 | Ugo De Belley | Antoine de La Chambre Bishop of Be |
+| **blanch** | father (Norwegian) | no father recorded | 2 | 1 | Olav Henrikson Blanch | Ethyl Blanch (c.1896 - 2001) |
 | **bloch** | father (Norwegian) | no | 2 | 1 | Maren Pedersdatter Bloch | Constance Bloch |
 | **budde** | father (Norwegian) | no father recorded | 2 | 1 | Märta Pederintytär Budde | Aleksandrine (Alexandra Pavlovna)  |
 | **castile** | father (Norwegian) | yes | 2 | 1 | Munia Elvira de Castile Queen | Isabel de Castilla «la Católica» d |
@@ -128,4 +129,3 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **hagman** | mother (Swedish) | yes | 1 | 3 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
 | **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
 | **juliana** | father (Norwegian) | yes | 1 | 3 | Flavia Juliana | Augusta Juliana |
-| **kluge** | father (Norwegian) | no father recorded | 3 | 1 | Ommund Larsson Kluge | Maria "Maya" Petrovna von Kluge (1 |
