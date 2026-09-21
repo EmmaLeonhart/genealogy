@@ -1,4 +1,19 @@
-# Finding an unrecorded descent by surname
+# Collecting surname LEADS for an unrecorded descent
+
+⛔ **THIS COLLECTS LEADS. IT DOES NOT FIND ANSWERS, AND FALSE POSITIVES ARE THE EXPECTED
+OUTPUT.** Ruled 2026-09-20: *"the point of this is generally for collecting leads. Not for
+finding stuff. So the false positives were expected."*
+
+So a lead that does not survive investigation has not failed -- it has been worked. The first two
+(`furman`, `hagman`) were both run to ground and both turned out to carry no Yuri descent; that
+is the method operating normally, not a defect in it. Do not report a worked lead as a loss, and
+do not tighten the matching until it stops producing them, because the tightening is what loses
+the real ones.
+
+Likewise `on_descent_path` is computed for ONE example descendant rather than for every bearer of
+the surname. That is intended: the surname is the unit of a lead, and one bearer sitting on the
+descent path is enough to make the surname worth a look.
+
 
 **How the Furman and Hagman leads were found, 2026-09-20.** Written down to be repeated, and to
 be repeated *exactly*, because three of the four passes it took produced confident nonsense.
