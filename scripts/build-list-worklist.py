@@ -68,8 +68,14 @@ def is_patronymic(name: str) -> bool:
             continue
         if low.endswith(UNAMBIGUOUS):
             return True
-        prev = toks[i - 1].lower() if i else ""
-        if prev in PARTICLES:
+        #  ⛔ ONE OCCURRENCE AFTER A PARTICLE CONDEMNS THE WHOLE TOKEN. `Hessen` was the top
+        #  "patronymic" in the sweep at 31 hits, because names repeat the house in a
+        #  parenthetical -- `Matilde von Hessen (Brabant-Lothringen, Hessen), Prinzessin` --
+        #  and the second one follows `Lothringen,` rather than `von`. Checking only the
+        #  immediately preceding token therefore lets every repeat through.
+        low_tok = low
+        if any(toks[j - 1].lower() in PARTICLES
+               for j, t in enumerate(toks) if j and t.lower() == low_tok):
             continue          # a place, not a person's father
         return True
     return False
