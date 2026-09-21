@@ -159,6 +159,25 @@ def main() -> int:
         for s in surnames(lab.get(g, "")):
             d_idx[s].add(g)
 
+    # ⛔ **THE SWEPT PAGES COUNT TOO, AND THEY ARE NOT IN THE TREE.** `reports/sweep/*.tsv`
+    # is the branch's raw harvest -- one file per focus person, `name_text` as Geni renders it.
+    # These are exactly the people the synoptic tree does NOT hold, which is the population a
+    # surname match is actually for: somebody already in the tree needs no name evidence.
+    import glob
+    swept = 0
+    for f in glob.glob(os.path.join(ROOT, "reports", "sweep", "*.tsv")):
+        with io.open(f, encoding="utf-8", errors="replace", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="	"):
+                g = (r.get("geni_id") or "").strip()
+                nm = re.sub(r"^\s*Name:\s*", "", (r.get("name_text") or "").strip())
+                if not g or not nm:
+                    continue
+                swept += 1
+                lab.setdefault(g, nm)
+                for s in surnames(nm):
+                    d_idx[s].add(g)
+    print(f"  swept rows folded in: {swept:,}")
+
     rows = []
     for side, people in (("mother (Swedish)", mat), ("father (Norwegian)", pat)):
         idx = collections.defaultdict(set)
