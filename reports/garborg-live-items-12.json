@@ -145536,6 +145536,184 @@
   "title": "Q141518268",
   "type": "item"
  },
+ "Q141518284": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141518284$89DEC417-0688-4A19-8C39-C0E59821C8B4",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141518284$74252BA4-C349-46C6-A411-D67F08348532",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000227802432937"
+      },
+      "hash": "c2ca6b53d20af755e37815079fcfaaa8af2625f9",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141518284$FC2712A1-7010-4F4E-89F7-6C935B4BA9D3",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141518284$0DAF0089-4ED6-4848-B5DF-D5870D99D741",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141515111",
+        "numeric-id": 141515111
+       }
+      },
+      "hash": "b76945de2157c688c3b164439a10abd53e02d640",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "56ab237290f8b5490727b4f17f3f927ee214b223",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000227802432937"
+          },
+          "hash": "c2ca6b53d20af755e37815079fcfaaa8af2625f9",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141518284",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "esposa de Emmeke Barsebek"
+   },
+   "da": {
+    "language": "da",
+    "value": "hustru til Emmeke Barsebek"
+   },
+   "de": {
+    "language": "de",
+    "value": "Ehefrau von Emmeke Barsebek"
+   },
+   "en": {
+    "language": "en",
+    "value": "wife of Emmeke Barsebek"
+   },
+   "es": {
+    "language": "es",
+    "value": "esposa de Emmeke Barsebek"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "épouse de Emmeke Barsebek"
+   },
+   "it": {
+    "language": "it",
+    "value": "moglie di Emmeke Barsebek"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "エンメケ・バルセベクの妻"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "엠메케 바르세베크의 아내"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "NN Barsebek"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "hustru til Emmeke Barsebek"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "echtgenote van Emmeke Barsebek"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "esposa de Emmeke Barsebek"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "maka till Emmeke Barsebek"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "埃梅凯·巴尔塞贝克之妻"
+   }
+  },
+  "lastrevid": 2548087749,
+  "modified": "2026-09-21T08:06:04Z",
+  "ns": 0,
+  "pageid": 135078064,
+  "sitelinks": {},
+  "title": "Q141518284",
+  "type": "item"
+ },
  "Q141518348": {
   "aliases": {},
   "claims": {
@@ -159225,6 +159403,10 @@
     {
      "language": "mul",
      "value": "Diego Rodríguez de Castilla"
+    },
+    {
+     "language": "mul",
+     "value": "Diego 'Porcelos' Rodríguez de Castilla conde de Castilla"
     }
    ]
   },
@@ -159554,8 +159736,8 @@
     "value": "迭戈·罗德里格斯·德·卡斯蒂拉·孔德·德·卡斯蒂拉"
    }
   },
-  "lastrevid": 2548159397,
-  "modified": "2026-09-21T14:42:05Z",
+  "lastrevid": 2548219551,
+  "modified": "2026-09-21T22:28:03Z",
   "ns": 0,
   "pageid": 135082620,
   "sitelinks": {},
@@ -159563,7 +159745,14 @@
   "type": "item"
  },
  "Q141523356": {
-  "aliases": {},
+  "aliases": {
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Bertil Albretson Hodne"
+    }
+   ]
+  },
   "claims": {
    "P21": [
     {
@@ -159848,8 +160037,8 @@
     "value": "贝尔特尔·阿尔布雷特松·霍德内"
    }
   },
-  "lastrevid": 2548160924,
-  "modified": "2026-09-21T14:46:53Z",
+  "lastrevid": 2548218948,
+  "modified": "2026-09-21T22:23:16Z",
   "ns": 0,
   "pageid": 135082898,
   "sitelinks": {},

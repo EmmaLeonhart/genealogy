@@ -30,66 +30,6 @@ Q141502959	P2600	"6000000001821187530"
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Kylles -- family, 6 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kylles"
-LAST	Len	"Kylles"
-#   set the mul label to "Kylles"
-LAST	Lmul	"Kylles"
-#   set the ja label to "キレス"
-LAST	Lja	"キレス"
-#   set the zh label to "基莱斯"
-LAST	Lzh	"基莱斯"
-#   set the ko label to "킬레스"
-LAST	Lko	"킬레스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Kylles"
-LAST	P1705	mul:"Kylles"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141520306 Ingrid Endresdatter Berge: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141520306	P734	LAST	P3831	Q2507958	S2600	"6000000002807373039"
-#   Q141456412 Merete Sigvardsdotter Frøyland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141456412	P734	LAST	P3831	Q2507958	S2600	"6000000003095060379"
-#   Q141523560 Malena Rasmusdatter Kylles: P734 family name = the item just created
-Q141523560	P734	LAST	S2600	"6000000014277111640"
-
-# Sjursdatter -- patronymic, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Sjursdatter"
-LAST	Len	"Sjursdatter"
-#   set the mul label to "Sjursdatter"
-LAST	Lmul	"Sjursdatter"
-#   set the ja label to "シュルスダッテル"
-LAST	Lja	"シュルスダッテル"
-#   set the zh label to "舒尔斯达特"
-LAST	Lzh	"舒尔斯达特"
-#   set the ko label to "수르스다테르"
-LAST	Lko	"수르스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P1705 native label = mul:"Sjursdatter"
-LAST	P1705	mul:"Sjursdatter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q12000735 Sjur
-LAST	P144	Q12000735
-#   Q141422284 Marta Sjursdatter Pighaug: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498450 Sjur Nilsson Anda
-Q141422284	P5056	LAST	P144	Q141498450	S2600	"6000000006771426543"
-#   Q141515016 Guri Sjursdatter Anda: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498450 Sjur Nilsson Anda
-Q141515016	P5056	LAST	P144	Q141498450	S2600	"6000000180553181828"
-
 # Berdinesson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -151,6 +91,58 @@ LAST	P144	Q280861
 Q141523576	P5056	LAST	P144	Q141493133	S2600	"6000000003023610911"
 #   Q141526969 Tore Endreson Gjesteland: P5056 patronym or matronym = the item just created
 Q141526969	P5056	LAST	S2600	"6000000003095137297"
+
+# Hedraeus -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Hedraeus"
+LAST	Len	"Hedraeus"
+#   set the mul label to "Hedraeus"
+LAST	Lmul	"Hedraeus"
+#   set the ja label to "ヘドラエウス"
+LAST	Lja	"ヘドラエウス"
+#   set the zh label to "赫德拉厄斯"
+LAST	Lzh	"赫德拉厄斯"
+#   set the ko label to "헤드래우스"
+LAST	Lko	"헤드래우스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Hedraeus"
+LAST	P1705	mul:"Hedraeus"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141519943 Helena Elisabeth Juhontytär Hedraeus: P734 family name = the item just created
+Q141519943	P734	LAST	S2600	"6000000001127157510"
+
+# Kylles -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kylles"
+LAST	Len	"Kylles"
+#   set the mul label to "Kylles"
+LAST	Lmul	"Kylles"
+#   set the ja label to "キレス"
+LAST	Lja	"キレス"
+#   set the zh label to "基莱斯"
+LAST	Lzh	"基莱斯"
+#   set the ko label to "킬레스"
+LAST	Lko	"킬레스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Kylles"
+LAST	P1705	mul:"Kylles"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141520306 Ingrid Endresdatter Berge: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141520306	P734	LAST	P3831	Q2507958	S2600	"6000000002807373039"
+#   Q141456412 Merete Sigvardsdotter Frøyland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141456412	P734	LAST	P3831	Q2507958	S2600	"6000000003095060379"
+#   Q141523560 Malena Rasmusdatter Kylles: P734 family name = the item just created
+Q141523560	P734	LAST	S2600	"6000000014277111640"
 
 # Alfsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
@@ -246,34 +238,36 @@ Q141519413	P5056	LAST	S2600	"5221459660790135812"
 #   Q141419959 Truls Endresen Sveinsvoll: P5056 patronym or matronym = the item just created, qualified P144 based on Q141443340 Endre Sveinsvoll
 Q141419959	P5056	LAST	P144	Q141443340	S2600	"6000000003492045969"
 
-# Hedraeus -- family, 2 bearer(s) in the batches
+# Gunnarsen -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Hedraeus"
-LAST	Len	"Hedraeus"
-#   set the mul label to "Hedraeus"
-LAST	Lmul	"Hedraeus"
-#   set the ja label to "ヘドラエウス"
-LAST	Lja	"ヘドラエウス"
-#   set the zh label to "赫德拉厄斯"
-LAST	Lzh	"赫德拉厄斯"
-#   set the ko label to "헤드래우스"
-LAST	Lko	"헤드래우스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Hedraeus"
-LAST	P1705	mul:"Hedraeus"
+#   the item just created: set the en label to "Gunnarsen"
+LAST	Len	"Gunnarsen"
+#   set the mul label to "Gunnarsen"
+LAST	Lmul	"Gunnarsen"
+#   set the ja label to "グンナルセン"
+LAST	Lja	"グンナルセン"
+#   set the zh label to "古纳尔森"
+LAST	Lzh	"古纳尔森"
+#   set the ko label to "군나르센"
+LAST	Lko	"군나르센"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P1705 native label = mul:"Gunnarsen"
+LAST	P1705	mul:"Gunnarsen"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141519943 Helena Elisabeth Juhontytär Hedraeus: P734 family name = the item just created
-Q141519943	P734	LAST	S2600	"6000000001127157510"
+#   P144 based on = Q120416 Gunnar
+LAST	P144	Q120416
 
 # Hylteen -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Hylteen"
+#   set the en label to "Hylteen"
 LAST	Len	"Hylteen"
 #   set the mul label to "Hylteen"
 LAST	Lmul	"Hylteen"
@@ -378,21 +372,21 @@ Q141516057	P5056	LAST	P144	Q141450273	S2600	"6000000003095006145"
 #   Q141520592 Mareta Knudsdatter Joa: P5056 patronym or matronym = the item just created
 Q141520592	P5056	LAST	S2600	"6000000003491944459"
 
-# 1923 more name items are needed and wait for a later
+# 1911 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Matintytär (patronymic), 2 bearer(s)
-#   Monson (patronymic), 2 bearer(s)
+#   Lochnæa (family), 2 bearer(s)
 #   Mosesdotter (patronymic), 2 bearer(s)
 #   Pehrsdotter (patronymic), 2 bearer(s)
 #   Pfinzing (family), 2 bearer(s)
 #   Rudiger (given), 2 bearer(s)
 #   Simonsdotter (patronymic), 2 bearer(s)
-#   Synneva (given), 2 bearer(s)
+#   Sivertsen (patronymic), 2 bearer(s)
+#   Sjursdatter (patronymic), 2 bearer(s)
 #   Theodericus (given), 2 bearer(s)
+#   Tjølson (patronymic), 2 bearer(s)
 #   Torgersdotter (patronymic), 2 bearer(s)
 #   Vestenberg (family), 2 bearer(s)
-#   Welinus (family), 2 bearer(s)
-#   ... and 1911 more
+#   ... and 1899 more
 
 
 # ======================================================================
@@ -402,71 +396,137 @@ Q141520592	P5056	LAST	S2600	"6000000003491944459"
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
 #   Q108828512: P460 said to be the same as = Q141514230
+Q108828512	P460	Q141514230
 #   Q141514230: P460 said to be the same as = Q108828512
+Q141514230	P460	Q108828512
 #   Q130233015 Nilsson: P460 said to be the same as = Q141511184
+Q130233015	P460	Q141511184
 #   Q141511184: P460 said to be the same as = Q130233015 Nilsson
+Q141511184	P460	Q130233015
 #   Q130233050: P460 said to be the same as = Q141517519
+Q130233050	P460	Q141517519
 #   Q141517519: P460 said to be the same as = Q130233050
+Q141517519	P460	Q130233050
 #   Q140226461: P460 said to be the same as = Q141512896
+Q140226461	P460	Q141512896
 #   Q141512896: P460 said to be the same as = Q140226461
+Q141512896	P460	Q140226461
 #   Q141290425: P460 said to be the same as = Q141527521
+Q141290425	P460	Q141527521
 #   Q141527521: P460 said to be the same as = Q141290425
+Q141527521	P460	Q141290425
 #   Q141313474: P460 said to be the same as = Q141498412
+Q141313474	P460	Q141498412
 #   Q141498412: P460 said to be the same as = Q141313474
+Q141498412	P460	Q141313474
 #   Q141336966: P460 said to be the same as = Q141515178
+Q141336966	P460	Q141515178
 #   Q141515178: P460 said to be the same as = Q141336966
+Q141515178	P460	Q141336966
 #   Q141336975: P460 said to be the same as = Q141498636
+Q141336975	P460	Q141498636
 #   Q141498636: P460 said to be the same as = Q141336975
+Q141498636	P460	Q141336975
 #   Q141352780: P460 said to be the same as = Q141518427
+Q141352780	P460	Q141518427
 #   Q141518427: P460 said to be the same as = Q141352780
+Q141518427	P460	Q141352780
 #   Q141352782: P460 said to be the same as = Q141527440
+Q141352782	P460	Q141527440
 #   Q141527440: P460 said to be the same as = Q141352782
+Q141527440	P460	Q141352782
 #   Q141381271: P460 said to be the same as = Q141515171
+Q141381271	P460	Q141515171
 #   Q141515171: P460 said to be the same as = Q141381271
+Q141515171	P460	Q141381271
 #   Q141403363: P460 said to be the same as = Q141518427
+Q141403363	P460	Q141518427
 #   Q141518427: P460 said to be the same as = Q141403363
+Q141518427	P460	Q141403363
 #   Q141421871: P460 said to be the same as = Q141499047
+Q141421871	P460	Q141499047
 #   Q141499047: P460 said to be the same as = Q141421871
+Q141499047	P460	Q141421871
 #   Q141421878: P460 said to be the same as = Q141498972
+Q141421878	P460	Q141498972
 #   Q141498972: P460 said to be the same as = Q141421878
+Q141498972	P460	Q141421878
 #   Q141429560: P460 said to be the same as = Q141502612
+Q141429560	P460	Q141502612
 #   Q141502612: P460 said to be the same as = Q141429560
+Q141502612	P460	Q141429560
 #   Q141436735: P460 said to be the same as = Q141527454
+Q141436735	P460	Q141527454
 #   Q141527454: P460 said to be the same as = Q141436735
+Q141527454	P460	Q141436735
 #   Q141440447: P460 said to be the same as = Q141527521
+Q141440447	P460	Q141527521
 #   Q141527521: P460 said to be the same as = Q141440447
+Q141527521	P460	Q141440447
 #   Q141444398: P460 said to be the same as = Q141527509
+Q141444398	P460	Q141527509
 #   Q141527509: P460 said to be the same as = Q141444398
+Q141527509	P460	Q141444398
 #   Q141450133: P460 said to be the same as = Q141527472
+Q141450133	P460	Q141527472
 #   Q141527472: P460 said to be the same as = Q141450133
+Q141527472	P460	Q141450133
 #   Q141454273: P460 said to be the same as = Q141498665
+Q141454273	P460	Q141498665
 #   Q141498665: P460 said to be the same as = Q141454273
+Q141498665	P460	Q141454273
 #   Q141454273: P460 said to be the same as = Q141512899
+Q141454273	P460	Q141512899
 #   Q141512899: P460 said to be the same as = Q141454273
+Q141512899	P460	Q141454273
 #   Q141454279: P460 said to be the same as = Q141512911
+Q141454279	P460	Q141512911
 #   Q141512911: P460 said to be the same as = Q141454279
+Q141512911	P460	Q141454279
 #   Q141455639: P460 said to be the same as = Q141511184
+Q141455639	P460	Q141511184
 #   Q141511184: P460 said to be the same as = Q141455639
+Q141511184	P460	Q141455639
 #   Q141455696: P460 said to be the same as = Q141527490
+Q141455696	P460	Q141527490
 #   Q141527490: P460 said to be the same as = Q141455696
+Q141527490	P460	Q141455696
 #   Q141498377: P460 said to be the same as = Q141521145
+Q141498377	P460	Q141521145
 #   Q141521145: P460 said to be the same as = Q141498377
+Q141521145	P460	Q141498377
 #   Q141498629: P460 said to be the same as = Q141499673
+Q141498629	P460	Q141499673
 #   Q141499673: P460 said to be the same as = Q141498629
+Q141499673	P460	Q141498629
 #   Q141498665: P460 said to be the same as = Q141512899
+Q141498665	P460	Q141512899
 #   Q141512899: P460 said to be the same as = Q141498665
+Q141512899	P460	Q141498665
 #   Q141499558: P460 said to be the same as = Q141515179
+Q141499558	P460	Q141515179
 #   Q141515179: P460 said to be the same as = Q141499558
+Q141515179	P460	Q141499558
 #   Q141500773: P460 said to be the same as = Q141527207
+Q141500773	P460	Q141527207
 #   Q141527207: P460 said to be the same as = Q141500773
+Q141527207	P460	Q141500773
 #   Q141511191: P460 said to be the same as = Q141523556
+Q141511191	P460	Q141523556
 #   Q141523556: P460 said to be the same as = Q141511191
+Q141523556	P460	Q141511191
 #   Q141512921: P460 said to be the same as = Q141518527
+Q141512921	P460	Q141518527
 #   Q141518527: P460 said to be the same as = Q141512921
+Q141518527	P460	Q141512921
 #   Q141515176: P460 said to be the same as = Q141518473
+Q141515176	P460	Q141518473
 #   Q141518473: P460 said to be the same as = Q141515176
+Q141518473	P460	Q141515176
 #   Q141527454: P460 said to be the same as = Q83866230 Alvsson
+Q141527454	P460	Q83866230
 #   Q83866230 Alvsson: P460 said to be the same as = Q141527454
+Q83866230	P460	Q141527454
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -481,31 +541,9 @@ Q141520592	P5056	LAST	S2600	"6000000003491944459"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   51 people, 119 edits; 0 edits held for a later run
+#   56 people, 141 edits; 0 edits held for a later run
 #   across 0 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   add a mul alias "Øystein Olsen Hodne"
-Q141527555	Amul	"Øystein Olsen Hodne"
-#   Q141527554: 'Ulf Thorkellsson' has no ja/zh/ko label
-#   Q141527554: set the ja label
-#   Q141527554: set the zh label
-#   Q141527554: set the ko label
-#   Q141527555: 'Øystein Olsen Reve' has no ja/zh/ko label
-#   Q141527555: set the ja label
-Q141527555	Lja	"オイスタイン・オルセン・レヴェ"
-#   set the ja label to "オイスタイン・オルセン・レヴェ"
-Q141527555	Lja	"オイスタイン・オルセン・レヴェ"
-#   Q141527555: set the zh label
-Q141527555	Lzh	"奥伊斯特因·奥尔森·雷韦"
-#   set the zh label to "奥伊斯特因·奥尔森·雷韦"
-Q141527555	Lzh	"奥伊斯特因·奥尔森·雷韦"
-#   Q141527555: set the ko label
-Q141527555	Lko	"외이스테인 올센 레베"
-#   set the ko label to "외이스테인 올센 레베"
-Q141527555	Lko	"외이스테인 올센 레베"
-#   Q141527554 Ulf Thorkellsson: set the ja label to "ウルフ・トルケルソン"
-#   set the zh label to "乌尔夫·托尔凯尔松"
-#   set the ko label to "울프 토르켈손"
 #   Q141527551: 'Sune Folkesson Folkunga' has no ja/zh/ko label
 #   Q141527551: set the ja label
 Q141527551	Lja	"スネ・フォルケソン・フォルクンガ"
@@ -540,63 +578,146 @@ Q141526980	Amul	"Tore Hanson Hansen"
 Q141526969	Amul	"Tore Endreson Endreson"
 #   add a mul alias "Sissel Olsdatter Olsdatter"
 Q141526863	Amul	"Sissel Olsdatter Olsdatter"
-#   add a mul alias "Siri Eliasdatter Eliasdatter"
-Q141523085	Amul	"Siri Eliasdatter Eliasdatter"
-#   Q141523080 Helga Pedersdatter Grov: add a mul alias "Helga Pedersdatter Foss"
-Q141523080	Amul	"Helga Pedersdatter Foss"
-#   Q141523079 Ermenane: set the ja label to "エルメナネ"
-#   set the zh label to "埃尔梅纳内"
-#   set the ko label to "에르메나네"
-#   Q141523077 Erik Johannesson Eikeland: add a mul alias "Erik Johannesson Skjæveland"
-Q141523077	Amul	"Erik Johannesson Skjæveland"
-#   Q141523072 Ericus Birgeri: add a mul alias "Ericus Birgersson"
-Q141523072	Amul	"Ericus Birgersson"
-#   add a mul alias "Malli Kyllingstad"
-Q141523070	Amul	"Malli Kyllingstad"
-#   Q141523068 Diego Rodríguez de Castilla conde de Castilla: add a mul alias "Diego 'Porcelos' Rodríguez de Castilla conde de Castilla"
-Q141523068	Amul	"Diego 'Porcelos' Rodríguez de Castilla conde de Castilla"
-#   Q141523062 Lars Larsen Voll: add a mul alias "Lars Larsen Håland"
-Q141523062	Amul	"Lars Larsen Håland"
-#   add a mul alias "Mallene (Melinda) G. Peterson"
-Q141523055	Amul	"Mallene (Melinda) G. Peterson"
-#   Q141523040 Ingeborg Iversdatter Holt: add a mul alias "Ingeborg Iversdatter Halvorsrud"
-Q141523040	Amul	"Ingeborg Iversdatter Halvorsrud"
-#   Q141523034 Els Pfinzing: add a mul alias "Els Isolt"
-Q141523034	Amul	"Els Isolt"
-#   Q141522999 Malena Davidsdatter Hadland: add a mul alias "Malena Davidsdatter Bjelland"
-Q141522999	Amul	"Malena Davidsdatter Bjelland"
-#   Q141522958 Rasmus Ellingson Ellingsen Sør-Varhaug: add a mul alias "Rasmus Ellingson Ellingsen Bratland"
-Q141522958	Amul	"Rasmus Ellingson Ellingsen Bratland"
-#   Q141522948 Magdalena Benjamina Ulfhielm: add a mul alias "Magdalena Benjamina Koskull"
-Q141522948	Amul	"Magdalena Benjamina Koskull"
-#   Q141522936 Barbara Helena Freidenfelt: add a mul alias "Barbara Helena Freudenfeldt"
-Q141522936	Amul	"Barbara Helena Freudenfeldt"
-#   Q141522934 Ranveig Nilsdatter Risa: add a mul alias "Ranveig Nilsdatter Mossige"
-Q141522934	Amul	"Ranveig Nilsdatter Mossige"
-#   Q141522807 Ludemira: add a mul alias "Ludemira of Bohemia"
-Q141522807	Amul	"Ludemira of Bohemia"
-#   Q141522805 Ragnhild Jacobsdatter Thompson: add a mul alias "Ragnhild Rachel Jacobsdatter Aabo"
-Q141522805	Amul	"Ragnhild Rachel Jacobsdatter Aabo"
-#   Q141522775 Petrus Ericus Stöök: add a mul alias "Petrus Ericus Steuchius"
-Q141522775	Amul	"Petrus Ericus Steuchius"
-#   Q141522749 Peter Svedberg Jr.: add a mul alias "Peter Svedberg d.y."
-Q141522749	Amul	"Peter Svedberg d.y."
-#   Q141522674 Anders Kristenson Austrått: add a mul alias "Anders Kristenson Austrått"
-Q141522674	Amul	"Anders Kristenson Austrått"
-#   Q141522666 Astrid Furuholmen: add a mul alias "Astrid Halse"
-Q141522666	Amul	"Astrid Halse"
-#   add a mul alias "Kleng Helgeson Løland d.e."
-Q141522621	Amul	"Kleng Helgeson Løland d.e."
-#   Q141522597 Ingeborg Maria Auestad: add a mul alias "Ingeborg Maria Rasmusdatter"
-Q141522597	Amul	"Ingeborg Maria Rasmusdatter"
-#   Q141522586 Torborg Nilsdotter Røgenes: add a mul alias "Torborg Nilsdotter Raunes"
-Q141522586	Amul	"Torborg Nilsdotter Raunes"
-#   add a mul alias "Peder Tørreson Kleppe"
-Q141522555	Amul	"Peder Tørreson Kleppe"
-#   add a mul alias "Florence Alberta Swedburgh"
-Q141522535	Amul	"Florence Alberta Swedburgh"
-#   add a mul alias "Peder Rasmusson Rasmussen Voll"
-Q141522516	Amul	"Peder Rasmusson Rasmussen Voll"
+#   Q141526671 Sigvard Asbjørnsen Todneim: add a mul alias "Sigvard Asbjørnsen Motland"
+Q141526671	Amul	"Sigvard Asbjørnsen Motland"
+#   Q141526614 Signe Eilefsdatter Bore: add a mul alias "Signe Eilefsdatter Kleppe"
+Q141526614	Amul	"Signe Eilefsdatter Kleppe"
+#   Q141526586: 'Tormod Olavsen Foss' has no ja/zh/ko label
+#   Q141526586: set the ja label
+Q141526586	Lja	"トルモド・オラヴセン・フォッス"
+#   set the ja label to "トルモド・オラヴセン・フォッス"
+Q141526586	Lja	"トルモド・オラヴセン・フォッス"
+#   Q141526586: set the zh label
+Q141526586	Lzh	"托尔莫德·奥拉夫森·福斯"
+#   set the zh label to "托尔莫德·奥拉夫森·福斯"
+Q141526586	Lzh	"托尔莫德·奥拉夫森·福斯"
+#   Q141526586: set the ko label
+Q141526586	Lko	"토르모드 오랍센 포스"
+#   set the ko label to "토르모드 오랍센 포스"
+Q141526586	Lko	"토르모드 오랍센 포스"
+#   Q141526579: 'Luitgard von Grögling-Hirschberg' has no ja/zh/ko label
+#   Q141526579: set the ja label
+#   Q141526579: set the zh label
+#   Q141526579: set the ko label
+#   Q141526581: 'Dode Clotilde De Schelde' has no ja/zh/ko label
+#   Q141526581: set the ja label
+#   Q141526581: set the zh label
+#   Q141526581: set the ko label
+#   Q141526584: 'Ottarsdatter Bjørnsson' has no ja/zh/ko label
+#   Q141526584: set the ja label
+Q141526584	Lja	"オッタルスダッテル・ビョルンソン"
+#   set the ja label to "オッタルスダッテル・ビョルンソン"
+Q141526584	Lja	"オッタルスダッテル・ビョルンソン"
+#   Q141526584: set the zh label
+Q141526584	Lzh	"奥塔尔斯达特·博尔恩松"
+#   set the zh label to "奥塔尔斯达特·博尔恩松"
+Q141526584	Lzh	"奥塔尔斯达特·博尔恩松"
+#   Q141526584: set the ko label
+Q141526584	Lko	"오타르스다테르 뵈른손"
+#   set the ko label to "오타르스다테르 뵈른손"
+Q141526584	Lko	"오타르스다테르 뵈른손"
+#   Q141526581 Dode Clotilde De Schelde: add a mul alias "Dode Clotilde De Metz"
+#   set the ja label to "ドデ・クロティルド・デ・シェルデ"
+#   set the zh label to "多德·克洛蒂尔德·德·谢尔德"
+#   set the ko label to "도데 크로틸데 데 셀데"
+#   Q141526579 Luitgard von Grögling-Hirschberg: add a mul alias "Luitgard von Kärnten"
+#   set the ja label to "ルイトガルド・ヴォン・グログリングヒルスクベルグ"
+#   set the zh label to "卢伊特加尔德·翁·格罗格林希尔斯克贝尔格"
+#   set the ko label to "뤼트가르드 본 그뢰그링히르스베륵"
+#   Q141526576: 'Hallvard Skjalgsson' has no ja/zh/ko label
+#   Q141526576: set the ja label
+Q141526576	Lja	"ハルヴァルド・シャルグソン"
+#   set the ja label to "ハルヴァルド・シャルグソン"
+Q141526576	Lja	"ハルヴァルド・シャルグソン"
+#   Q141526576: set the zh label
+Q141526576	Lzh	"哈尔瓦尔德·沙尔格松"
+#   set the zh label to "哈尔瓦尔德·沙尔格松"
+Q141526576	Lzh	"哈尔瓦尔德·沙尔格松"
+#   Q141526576: set the ko label
+Q141526576	Lko	"할바르드 살그손"
+#   set the ko label to "할바르드 살그손"
+Q141526576	Lko	"할바르드 살그손"
+#   Q141526574 Sara Kristoffersdatter Erga: add a mul alias "Sara Kristoffersdatter Orre"
+Q141526574	Amul	"Sara Kristoffersdatter Orre"
+#   add a mul alias "Rannveig Olsdatter Olsdatter"
+Q141526573	Amul	"Rannveig Olsdatter Olsdatter"
+#   Q141511411: 'Ulf Thorkellsson' has no ja/zh/ko label
+#   Q141511411: set the ja label
+#   Q141511411: set the zh label
+#   Q141511411: set the ko label
+#   Q141513422: 'Slag Slau' has no ja/zh/ko label
+#   Q141513422: set the ja label
+#   Q141513422: set the zh label
+#   Q141513422: set the ko label
+#   Q141523079: 'Ermenane' has no ja/zh/ko label
+#   Q141523079: set the ja label
+#   Q141523079: set the zh label
+#   Q141523079: set the ko label
+#   Q141526573: 'Rannveig Olsdatter Nese' has no ja/zh/ko label
+#   Q141526573: set the ja label
+Q141526573	Lja	"ランヴェイグ・オルスダッテル・ネセ"
+#   set the ja label to "ランヴェイグ・オルスダッテル・ネセ"
+Q141526573	Lja	"ランヴェイグ・オルスダッテル・ネセ"
+#   Q141526573: set the zh label
+Q141526573	Lzh	"兰韦伊格·奥尔斯达特·内塞"
+#   set the zh label to "兰韦伊格·奥尔斯达特·内塞"
+Q141526573	Lzh	"兰韦伊格·奥尔斯达特·内塞"
+#   Q141526573: set the ko label
+Q141526573	Lko	"란베익 올스다테르 네세"
+#   set the ko label to "란베익 올스다테르 네세"
+Q141526573	Lko	"란베익 올스다테르 네세"
+#   Q141526379 Østen Josteinson Egenes: add a mul alias "Østen Josteinson Haug"
+Q141526379	Amul	"Østen Josteinson Haug"
+#   Q141526375 Østen Berdinesson Stangeland: add a mul alias "Østen Berdinesson Berdinesson"
+Q141526375	Amul	"Østen Berdinesson Berdinesson"
+#   Q141526217 Torkel Ormson Solberg: add a mul alias "Torkel Ormson Ormson"
+Q141526217	Amul	"Torkel Ormson Ormson"
+#   Q141526129 Tollak Reiarson or Tollef Kydland: add a mul alias "Tollak Reiarson or Tollef Reiersen"
+Q141526129	Amul	"Tollak Reiarson or Tollef Reiersen"
+#   add a mul alias "Tollach Larsen Tu"
+Q141526127	Amul	"Tollach Larsen Tu"
+#   add a mul alias "Synneva Hendricksdatter Fadnes"
+Q141526080	Amul	"Synneva Hendricksdatter Fadnes"
+#   add a mul alias "Størkard Eriksen Varden"
+Q141525998	Amul	"Størkard Eriksen Varden"
+#   Q141525996 Roald Belestson Bokn: add a mul alias "Roald Belestson Byre"
+Q141525996	Amul	"Roald Belestson Byre"
+#   add a mul alias "Reiar Asserson Asserson"
+Q141525982	Amul	"Reiar Asserson Asserson"
+#   Q141525980 Steffen Gudbrandsen Haga: add a mul alias "Steffen Stephen Gudbrandsen Haga"
+Q141525980	Amul	"Steffen Stephen Gudbrandsen Haga"
+#   add a mul alias "Rayna ?"
+Q141525972	Amul	"Rayna ?"
+#   add a mul alias "Siri Sigmundsdatter Nordås"
+Q141525964	Amul	"Siri Sigmundsdatter Nordås"
+#   add a mul alias "Siri Jonsdatter Jonsdatter"
+Q141525962	Amul	"Siri Jonsdatter Jonsdatter"
+#   Q141525956 Sigmund Arnbjørnson Kydland: add a mul alias "Sigmund Arnbjørnson Gjedrem"
+Q141525956	Amul	"Sigmund Arnbjørnson Gjedrem"
+#   Q141525849 Rasmus Jonsen Skrudland: add a mul alias "Rasmus Jonsen Lende"
+Q141525849	Amul	"Rasmus Jonsen Lende"
+#   add a mul alias "Reiar Olsen Opstad"
+Q141525846	Amul	"Reiar Olsen Opstad"
+#   add a mul alias "Rasmus Tollefson Våland"
+Q141525838	Amul	"Rasmus Tollefson Våland"
+#   add a mul alias "Rasmus Johannesson Johannesson Risa"
+Q141525835	Amul	"Rasmus Johannesson Johannesson Risa"
+#   Q141525830 Rasmus Rasmusson Tjelta: add a mul alias "Rasmus Rasmusson Rasmusson"
+Q141525830	Amul	"Rasmus Rasmusson Rasmusson"
+#   add a mul alias "Rasmus Halvardsen Skas"
+Q141525818	Amul	"Rasmus Halvardsen Skas"
+#   Q141525816 Ragnvald Stangeland: add a mul alias "Ragnvald (Ron) Stangeland"
+Q141525816	Amul	"Ragnvald (Ron) Stangeland"
+#   add a mul alias "Ragnhild Olsdatter Olsdatter"
+Q141525804	Amul	"Ragnhild Olsdatter Olsdatter"
+#   add a mul alias "Ragnhild Ogmundsdatter Ogmundsdatter"
+Q141525800	Amul	"Ragnhild Ogmundsdatter Ogmundsdatter"
+#   Q141525790 Ragnhild Andersdatter Gimra: add a mul alias "Ragnhild Andersdatter Sveinsvoll"
+Q141525790	Amul	"Ragnhild Andersdatter Sveinsvoll"
+#   Q141525765 Peter Fontell: add a mul alias "Peter Fontelius"
+Q141525765	Amul	"Peter Fontelius"
+#   Q141525563 Peder Sigmundson Kyllingstad: add a mul alias "Peder Sigmundson Nordås"
+Q141525563	Amul	"Peder Sigmundson Nordås"
 #   Q141522389 Peder Helgesen Njærheim: add a mul alias "Peder Helgesen Opstad"
 Q141522389	Amul	"Peder Helgesen Opstad"
 #   Q141522320 Orm Olavson Hebnes: add a mul alias "Orm Olavson Koll"
@@ -947,9 +1068,13 @@ Q1362049	Lko	"조한 아우구스트 산델스"
 #   Q1362049 Johan August Sandels: set the ko label to "조한 아우구스트 산델스"
 Q1362049	Lko	"조한 아우구스트 산델스"
 #   Q695735 Otto von Ballenstedt: add a mul alias "Otto von Ballenstedt"
+Q695735	Amul	"Otto von Ballenstedt"
 #   set the mul label to "Otto, Count of Ballenstedt"
+Q695735	Lmul	"Otto, Count of Ballenstedt"
 #   add a mul alias "Otto der Reiche von Ballenstedt Graf von Ballenstedt"
+Q695735	Amul	"Otto der Reiche von Ballenstedt Graf von Ballenstedt"
 #   set the ko label to "오토"
+Q695735	Lko	"오토"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -16716,8 +16841,8 @@ Q141523551	P3448	Q141189071	S2600	"4853206462760075208"
 Q141520079	P26	Q141519478	S2600	"4984207401370061327"
 #   Q141519348 Berit Albretsdatter Voll Jr.: P26 spouse = Q141519413 Jon Endresen Voll
 Q141519348	P26	Q141519413	S2600	"5221459829400135818"
-#   Q141518216 Emmeke Barsebek: P26 spouse = Q141524046 NN Barsebek
-Q141518216	P26	Q141524046	S2600	"5226678099470116355"
+#   Q141518216 Emmeke Barsebek: P26 spouse = Q141518284 NN Barsebek
+Q141518216	P26	Q141518284	S2600	"5226678099470116355"
 #   Q141527215 Ådne Larsson Haukamork: P3448 stepparent = Q141521763 Njell Einarson Vølstad
 Q141527215	P3448	Q141521763	S2600	"5335430866730068623"
 #   Q141515177 Ingela Danielsdotter Kröger: P26 spouse = Q141520560 Peder Andersson Grubb
@@ -16782,7 +16907,6 @@ Q792154	P3448	Q141524070	S2600	"6000000001827582117"
 #   P40 child = Q136908598 Karahisa-no-mikoto
 #   P40 child = Q55533077 Izumo-Furune-no-mikoto
 #   P2600 Geni.com profile ID = 6000000001893413214 Ata-no-mikoto no Mikoto, qualified P1810 subject named as 阿多
-#   P2600 Geni.com profile ID = 6000000001893436003 Karahisa-no-mikoto, qualified P1810 subject named as 韓日狭
 #   Q141521602 Siri Danielsdatter Vik: P26 spouse = Q141524649 Paul Gjermundsen Vik
 Q141521602	P26	Q141524649	S2600	"6000000002105204474"
 #   Q141524649 Paul Gjermundsen Vik: P26 spouse = Q141521602 Siri Danielsdatter Vik
@@ -16939,12 +17063,6 @@ Q141519453	P22	Q141519868	S2600	"6000000003491995129"
 Q141523005	P26	Q141518296	S2600	"6000000003492026884"
 #   Q141518296 Bereta Olsdatter Sømme: P26 spouse = Q141523005 Salmund Johannesson Sømme
 Q141518296	P26	Q141523005	S2600	"6000000003492026920"
-#   Q141419860 Ragnhild Øysteinsdatter Hodne: P40 child = Q141527555 Øystein Olsen Reve
-Q141419860	P40	Q141527555	S2600	"6000000003492033716"
-#   Q141422293 Ola Johannesen Hodne Jr.: P40 child = Q141527555 Øystein Olsen Reve
-Q141422293	P40	Q141527555	S2600	"6000000003492033721"
-#   Q141336982 Anna Tollaksdatter Reve: P26 spouse = Q141527555 Øystein Olsen Reve
-Q141336982	P26	Q141527555	S2600	"6000000003492033746"
 #   Q141518022 Elen Tollaksdatter Sørbø: P26 spouse = Q141526127 Tollach Larsen Sørbøe
 Q141518022	P26	Q141526127	S2600	"6000000003492033761"
 #   Q141522177 Laurits Lauritsson Torland: P26 spouse = Q141520328 Ingrid Rasmusdatter Fuglestad
@@ -17089,20 +17207,6 @@ Q141519420	P26	Q141520546	S2600	"6000000005609518066"
 Q141520546	P26	Q141519420	S2600	"6000000005609518075"
 #   Q141520591 Ingeborg Larsdatter Årsvoll: P40 child = Q141521475 Jon Ingebretson Todneim
 Q141520591	P40	Q141521475	S2600	"6000000005609534940"
-#   Q141527555 Øystein Olsen Reve: P22 father = Q141422293 Ola Johannesen Hodne Jr.
-Q141527555	P22	Q141422293	S2600	"6000000005609547575"
-#   P25 mother = Q141419860 Ragnhild Øysteinsdatter Hodne
-Q141527555	P25	Q141419860	S2600	"6000000005609547575"
-#   P40 child = Q141223553 Ragnhild Kristine Øystensdatter Nese
-Q141527555	P40	Q141223553	S2600	"6000000005609547575"
-#   P40 child = Q141440517 Bendix Østensen Nese
-Q141527555	P40	Q141440517	S2600	"6000000005609547575"
-#   P40 child = Q141520139 Ola Øysteinsen Reve
-Q141527555	P40	Q141520139	S2600	"6000000005609547575"
-#   P40 child = Q141451116 Tollak Øysteinsen Reve
-Q141527555	P40	Q141451116	S2600	"6000000005609547575"
-#   P26 spouse = Q141336982 Anna Tollaksdatter Reve
-Q141527555	P26	Q141336982	S2600	"6000000005609547575"
 #   Q141522516 Peder Rasmusson Voll på Varhaug: P26 spouse = Q141523458 Anna Larsdatter Hårr
 Q141522516	P26	Q141523458	S2600	"6000000005609552121"
 #   Q141521395 Katarina Torgilsdatter Torsnes: P40 child = Q141518345 Marta Lauritsdatter Fosen Håland
@@ -17289,8 +17393,8 @@ Q141520287	P26	Q141521601	S2600	"6000000008807397469"
 Q141521936	P26	Q141523067	S2600	"6000000008856669416"
 #   Q141513710 Truls Larsen Meling: P40 child = Q141517386 Enok Trulsen Meling
 Q141513710	P40	Q141517386	S2600	"6000000008860325575"
-#   Q141521861 Ola Kjedeland: P26 spouse = Q141521474 NN Kjedeland
-Q141521861	P26	Q141521474	S2600	"6000000008896175281"
+#   Q141521861 Ola Kjedeland: P26 spouse = Q141518313 NN Kjedeland
+Q141521861	P26	Q141518313	S2600	"6000000008896175281"
 #   Q141523839 Mariana Lovisa Carlheim-Gyllensköld: P22 father = Q141526012 Svante Mauritz Carlheim-Gyllensköld
 Q141523839	P22	Q141526012	S2600	"6000000008897399679"
 #   Q141523067 Signy Klementsdatter Madla: P26 spouse = Q141521936 Ola Persen Jåtten
@@ -17329,8 +17433,8 @@ Q141526573	P26	Q141313505	S2600	"6000000009243757359"
 Q141518546	P25	Q141513450	S2600	"6000000009244657570"
 #   P26 spouse = Q141516036 Jon Tørresson Trones
 Q141518546	P26	Q141516036	S2600	"6000000009244657570"
-#   Q141521474 NN Kjedeland: P26 spouse = Q141521861 Ola Kjedeland
-Q141521474	P26	Q141521861	S2600	"6000000009245258191"
+#   Q141518313 NN Kjedeland: P26 spouse = Q141521861 Ola Kjedeland
+Q141518313	P26	Q141521861	S2600	"6000000009245258191"
 #   Q141526231 Tormod Torgerson Espedal: P22 father = Q141526203 Torger Guttormson Espedal
 Q141526231	P22	Q141526203	S2600	"6000000009315993031"
 #   Q141521900 Sven Dimberg: P40 child = Q141518086 Anders Dimberg
@@ -17411,10 +17515,8 @@ Q141523052	P40	Q141523398	S2600	"6000000012153655049"
 Q141519557	P40	Q141519111	S2600	"6000000012576836772"
 #   Q141519385 Göran Sabelfana: P40 child = Q141523581 Margareta Jöransdotter Sabelfana
 Q141519385	P40	Q141523581	S2600	"6000000012695306297"
-#   P2600 Geni.com profile ID = 6000000012789160423 Tsusa-no-mikoto, qualified P1810 subject named as Tsusa-no-mikoto
 #   Q86734749 Kushini-no-mikoto: P40 child = Q135579354 Tsusa-no-mikoto
 #   P2600 Geni.com profile ID = 6000000012789241315 Kushini-no-mikoto, qualified P1810 subject named as Kushini-no-mikoto
-#   P2600 Geni.com profile ID = 6000000012789418407 Izumo-Furune-no-mikoto, qualified P1810 subject named as Izumo-Furune-no-mikoto
 #   Q135579361 Morosu-no-mikoto: P40 child = Q135579362 Ata-no-mikoto no Mikoto
 #   P2600 Geni.com profile ID = 6000000012789539255 Morosu-no-mikoto, qualified P1810 subject named as Morosu-no-mikoto
 #   Q141514481 Berta Jonsdatter Tjelta: P40 child = Q141522962 Torger Person Tjelta
@@ -18206,7 +18308,6 @@ Q141290200	P26	Q141526576	S2600	"6000000225709965832"
 #   P40 child = Q135524905 Yorihiro Tanba
 #   P40 child = Q135524999 Yorikazu Tanba
 #   P2600 Geni.com profile ID = 6000000227350595951 Yorihide Tanba, qualified P1810 subject named as Yorihide Tanba
-#   P2600 Geni.com profile ID = 6000000227350595957 Asukai Masatsuna Tanba, qualified P1810 subject named as Asukai Masatsuna Tanba
 #   Q135524928 Mitsuyo Tanba: P22 father = Q135524917 Yasuyo Tanba
 #   P40 child = Q135524939 Moriyo Tanba
 #   P40 child = Q135524936 Sadayo Tanba
@@ -18571,255 +18672,10 @@ Q141290200	P26	Q141526576	S2600	"6000000225709965832"
 #   Q135524952 Sueyoshi Tanba Sr.: P22 father = Q135524950 Suekata Tanba
 #   P40 child = Q135524954 Sueyoshi Tanba Jr.
 #   P2600 Geni.com profile ID = 6000000227379436850 Sueyoshi Tanba Sr., qualified P1810 subject named as Sueyoshi Tanba Sr.
-#   Q141524046 NN Barsebek: P26 spouse = Q141518216 Emmeke Barsebek
-Q141524046	P26	Q141518216	S2600	"6000000227802432937"
+#   Q141518284 NN Barsebek: P26 spouse = Q141518216 Emmeke Barsebek
+Q141518284	P26	Q141518216	S2600	"6000000227802432937"
 #   Q141517560 Sigurd Onarheim: P26 spouse = Q141524083 NN Onarheim
 Q141517560	P26	Q141524083	S2600	"6000000227811549827"
 #   Q141524083 NN Onarheim: P26 spouse = Q141517560 Sigurd Onarheim
 Q141524083	P26	Q141517560	S2600	"6000000227816629854"
 
-# P1810 subject named as, backfilled onto P2600 statements that already exist.
-# Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
-# P2600 holders on Wikidata.
-# The value is Geni's display_name, never our own label. NN and private are skipped,
-# per the 2026-08-30 ruling that neither form of private gets a qualifier.
-# Re-stating property+value attaches the qualifier; it does not add a second P2600.
-
-Q2575818	P2600	"6000000000909345046"	P1810	"Robert Henrik Иванович Rehbinder till Viksberg"
-Q26239714	P2600	"6000000006828366697"	P1810	"Jonas Jonae Rudberus"
-Q26239733	P2600	"6000000003681032954"	P1810	"Claus Edén"
-Q2624238	P2600	"6000000006127108986"	P1810	"Wilhelm Mauritz Klingspor"
-Q26405863	P2600	"6000000001218533012"	P1810	"Olof Engelbertsson Bure"
-Q2694124	P2600	"6000000025022974646"	P1810	"Albrecht Elof Ihre d.y."
-Q2720038	P2600	"6000000005018061457"	P1810	"Guido d'Ivrea marchese d'Ivrea"
-Q274606	P2600	"6000000001669654269"	P1810	"Berengar I margrave of Friuli, king of Italy"
-Q27863581	P2600	"6000000009366671365"	P1810	"Johan Carl Strömfelt"
-Q284400	P2600	"6000000000424624719"	P1810	"Giséle de Cysoing"
-Q111989638	P2600	"6000000002394166039"	P1810	"Ernst Fredrik von Willebrand"
-Q112970864	P2600	"6000000012116814751"	P1810	"Feodor Grigorievich Аминев"
-Q115871024	P2600	"6000000012120500394"	P1810	"Pelageja Grigorevna Skundin"
-Q115871025	P2600	"6000000011101676038"	P1810	"Joakim Albrektsson von Konow"
-Q116976568	P2600	"6000000009983821409"	P1810	"Andreas Olai Hesselius"
-Q125207604	P2600	"6000000026309295246"	P1810	"Benjamin Sandels"
-Q128043331	P2600	"6000000002912071711"	P1810	"Fredrik Reinhold Paykull"
-Q131729966	P2600	"6000000010888193282"	P1810	"Birgitta Carlberg"
-Q136375935	P2600	"6000000006127441356"	P1810	"Ture Bengtsson Ribbing RSO"
-Q136386660	P2600	"4140700"	P1810	"Sofia Margareta von Haartman"
-# P1810 subject named as, backfilled onto P2600 statements that already exist.
-# Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
-# P2600 holders on Wikidata.
-# The value is Geni's display_name, never our own label. NN and private are skipped,
-# per the 2026-08-30 ruling that neither form of private gets a qualifier.
-# Re-stating property+value attaches the qualifier; it does not add a second P2600.
-
-Q10480021	P2600	"6000000012942583482"	P1810	"Edvard Fredrik von Saltza"
-Q110302791	P2600	"6000000005264351012"	P1810	"Anna Fartegnsdatter Seim"
-Q130717	P2600	"6000000014740730166"	P1810	"Gustavus Hesselius Sr"
-Q135091394	P2600	"6000000008649576625"	P1810	"Carl Bengtsson Ribbing RSO"
-Q1362049	P2600	"6000000011714425501"	P1810	"Johan August Sandels"
-Q136376387	P2600	"6000000000572428039"	P1810	"Ebba Kristina Siöblad"
-Q136660380	P2600	"6000000007095332291"	P1810	"Maria Andersdotter Bergia"
-Q141271422	P2600	"6000000007220645211"	P1810	"Jon Olofsson"
-Q141456306	P2600	"6000000007443346712"	P1810	"Johan Christersson (Ulf af Horsnäs)"
-Q141519531	P2600	"6000000059499134935"	P1810	"unbekannt Esler"
-Q141526573	P2600	"6000000009243757359"	P1810	"Rannveig Olsdatter Olsdatter"
-Q141526576	P2600	"6000000172226224822"	P1810	"Hallvard Skjalgsson"
-Q141526584	P2600	"6000000008177323079"	P1810	"Ottarsdatter Bjørnsson"
-Q141526586	P2600	"6000000002376687013"	P1810	"Tormod Olavsen Foss"
-Q141527548	P2600	"6000000178279141871"	P1810	"Carl Andersson"
-Q141527551	P2600	"4293217"	P1810	"Sune Folkesson Folkunga"
-Q141527555	P2600	"6000000005609547575"	P1810	"Øystein Olsen Hodne"
-Q16650516	P2600	"6000000008605117809"	P1810	"Mikael von Törne"
-Q185832	P2600	"6000000006713354346"	P1810	"Emanuel Swedenborg"
-Q18613031	P2600	"6000000031884893247"	P1810	"Karl Gregersson Birgersson"
-Q19631563	P2600	"6000000006783257558"	P1810	"Erik Carlsson Odelström"
-Q19828095	P2600	"6000000006127570365"	P1810	"Carl Mörner af Morlanda"
-Q19842232	P2600	"6000000005795638082"	P1810	"Algot Bryniolfsson"
-Q19860752	P2600	"6000000008650533822"	P1810	"Carl Harald Strömfeldt"
-Q19975889	P2600	"6000000006127732174"	P1810	"Fredrik August August Adelsvärd"
-Q19976400	P2600	"6000000002142697033"	P1810	"Abraham Sundius"
-Q19976679	P2600	"6000000008890203139"	P1810	"Otto Johan Lagerfelt"
-Q19977201	P2600	"6000000007814473860"	P1810	"Jakob Pedersson Törnsköld till Runstorp"
-Q2021113	P2600	"6000000078709755794"	P1810	"Olof Broman"
-Q2040261	P2600	"6000000007014532346"	P1810	"Otto Reinhold Strömfelt"
-Q2054995	P2600	"6000000007141651300"	P1810	"Willa of Tuscany"
-Q2075113	P2600	"6000000006127523492"	P1810	"Hedvig Ulrika De la Gardie"
-Q217044	P2600	"6000000018252392646"	P1810	"Franz Adolf Berwald"
-Q2361145	P2600	"5580434788100067215"	P1810	"Carl Reinhold Sahlberg"
-Q23930942	P2600	"6000000001744971918"	P1810	"Pepin"
-Q23930953	P2600	"6000000003962400680"	P1810	"Adalhaid"
-Q2415388	P2600	"6000000000047165787"	P1810	"Carl Gustaf Mannerheim"
-Q2471654	P2600	"6000000004396685338"	P1810	"Eva Aurora Charlotta Stjernvall"
-Q2478781	P2600	"6000000003748326674"	P1810	"Adolf Fredrik Munck af Fulkila"
-Q2490612	P2600	"6000000007548029494"	P1810	"Johan Gertsson till Ånsta"
-# ========================================================================
-# ONE PARENT A RUN, UP THE ACCOUNT OWNER'S OWN ANCESTRY -- the scheduled run, 3 creation(s).
-# 169 eligible: an ancestor of 6000000087535357291 who carries a QID and whose parent the tree
-# knows and Wikidata does not. Chosen at random, seeded on 2026-09-21 so the pick is
-# stable for the day -- the batch is recomposed several times a day and an
-# unseeded choice would create a different person on each recomposition.
-# ========================================================================
-#   4293217: father of Q4981287 (6000000002601672538), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Sune Folkesson Folkunga"
-LAST	Lmul	"Sune Folkesson Folkunga"
-LAST	P31	Q5	S2600	"4293217"
-LAST	P2600	"4293217"
-LAST	P21	Q6581097	S2600	"4293217"
-#   Q4981287: P22 = the item just created
-Q4981287	P22	LAST	S2600	"6000000002601672538"
-#   356601173070003496: mother of Q2616032 (6000000003087125859), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Helena Torildsdotter"
-LAST	Lmul	"Helena Torildsdotter"
-LAST	P31	Q5	S2600	"356601173070003496"
-LAST	P2600	"356601173070003496"
-LAST	P21	Q6581072	S2600	"356601173070003496"
-#   Q2616032: P25 = the item just created
-#   6000000030192750410: mother of Q536899 (6000000002198362511), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Ermenane"
-LAST	Lmul	"Ermenane"
-LAST	P31	Q5	S2600	"6000000030192750410"
-LAST	P2600	"6000000030192750410"
-LAST	P21	Q6581072	S2600	"6000000030192750410"
-#   Q536899: P25 = the item just created
-# ========================================================================
-# ONE PARENT A RUN, UP THE ACCOUNT OWNER'S OWN ANCESTRY -- the QuickStatements half, 7 creation(s).
-# 169 eligible: an ancestor of 6000000087535357291 who carries a QID and whose parent the tree
-# knows and Wikidata does not. Chosen at random, seeded on 2026-09-21 so the pick is
-# stable for the day -- the batch is recomposed several times a day and an
-# unseeded choice would create a different person on each recomposition.
-# ========================================================================
-#   6000000009243757359: mother of Q141219202 (6000000012587664964), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Rannveig Olsdatter Nese"
-LAST	Lmul	"Rannveig Olsdatter Nese"
-LAST	P31	Q5	S2600	"6000000009243757359"
-LAST	P2600	"6000000009243757359"
-LAST	P21	Q6581072	S2600	"6000000009243757359"
-#   Q141219202: P25 = the item just created
-Q141219202	P25	LAST	S2600	"6000000012587664964"
-#   6000000172226224822: father of Q141216603 (6000000004870702053), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Hallvard Skjalgsson"
-LAST	Lmul	"Hallvard Skjalgsson"
-LAST	P31	Q5	S2600	"6000000172226224822"
-LAST	P2600	"6000000172226224822"
-LAST	P21	Q6581097	S2600	"6000000172226224822"
-#   Q141216603: P22 = the item just created
-Q141216603	P22	LAST	S2600	"6000000004870702053"
-#   6000000004533709443: mother of Q61314170 (6000000001669640454), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Luitgard von Grögling-Hirschberg"
-LAST	Lmul	"Luitgard von Grögling-Hirschberg"
-LAST	P31	Q5	S2600	"6000000004533709443"
-LAST	P2600	"6000000004533709443"
-LAST	P21	Q6581072	S2600	"6000000004533709443"
-#   Q61314170: P25 = the item just created
-#   6000000006296799111: mother of Q453739 (5535400391550125499), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Dode Clotilde De Schelde"
-LAST	Lmul	"Dode Clotilde De Schelde"
-LAST	P31	Q5	S2600	"6000000006296799111"
-LAST	P2600	"6000000006296799111"
-LAST	P21	Q6581072	S2600	"6000000006296799111"
-#   Q453739: P25 = the item just created
-#   6000000008177323079: mother of Q75291924 (6000000001169224783), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Ottarsdatter Bjørnsson"
-LAST	Lmul	"Ottarsdatter Bjørnsson"
-LAST	P31	Q5	S2600	"6000000008177323079"
-LAST	P2600	"6000000008177323079"
-LAST	P21	Q6581072	S2600	"6000000008177323079"
-#   Q75291924: P25 = the item just created
-Q75291924	P25	LAST	S2600	"6000000001169224783"
-#   6000000002376687013: father of Q141206080 (6000000002482240141), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Tormod Olavsen Foss"
-LAST	Lmul	"Tormod Olavsen Foss"
-LAST	P31	Q5	S2600	"6000000002376687013"
-LAST	P2600	"6000000002376687013"
-LAST	P21	Q6581097	S2600	"6000000002376687013"
-#   Q141206080: P22 = the item just created
-Q141206080	P22	LAST	S2600	"6000000002482240141"
-#   6000000005609547575: father of Q141223553 (6000000010479856178), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Øystein Olsen Reve"
-LAST	Lmul	"Øystein Olsen Reve"
-LAST	P31	Q5	S2600	"6000000005609547575"
-LAST	P2600	"6000000005609547575"
-LAST	P21	Q6581097	S2600	"6000000005609547575"
-#   Q141223553: P22 = the item just created
-Q141223553	P22	LAST	S2600	"6000000010479856178"
-# S2600 sources, backfilled onto relationship statements that already exist without
-# one. Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
-# P2600 holders on Wikidata.
-# EVERY LINE IS ATTESTED BY OUR TREE: a source is a claim about the source, so a
-# relationship Geni does not state is left alone rather than cited to Geni.
-# Re-stating property+value attaches the reference; it does not add a second statement.
-
-Q5916189	P3373	Q4225027	S2600	"6000000021501491188"
-Q5916189	P3373	Q5916183	S2600	"6000000021501491188"
-Q5931081	P26	Q109835400	S2600	"6000000008890247904"
-Q593706	P40	Q156749	S2600	"6000000000446956140"
-Q5951779	P40	Q5951795	S2600	"6000000013400899375"
-Q115871024	P26	Q115871023	S2600	"6000000012120500394"
-Q115871025	P26	Q115871026	S2600	"6000000011101676038"
-Q116976568	P26	Q136660380	S2600	"6000000009983821409"
-Q116976568	P40	Q130717	S2600	"6000000009983821409"
-Q125207604	P3373	Q1362049	S2600	"6000000026309295246"
-Q128043331	P40	Q128045809	S2600	"6000000002912071711"
-Q136386662	P26	Q156749	S2600	"6000000000446794995"
-Q1371153	P40	Q6080164	S2600	"6000000011049179542"
-Q137599005	P40	Q5542574	S2600	"6000000006127732070"
-Q137650370	P40	Q6185927	S2600	"6000000007708731985"
-Q137650370	P3373	Q6001589	S2600	"6000000007708731985"
-Q137650370	P3373	Q2965864	S2600	"6000000007708731985"
-Q137650370	P3373	Q6001608	S2600	"6000000007708731985"
-Q137650370	P3373	Q792307	S2600	"6000000007708731985"
-Q138094850	P40	Q364270	S2600	"6000000006429785063"
-# S2600 sources, backfilled onto relationship statements that already exist without
-# one. Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
-# P2600 holders on Wikidata.
-# EVERY LINE IS ATTESTED BY OUR TREE: a source is a claim about the source, so a
-# relationship Geni does not state is left alone rather than cited to Geni.
-# Re-stating property+value attaches the reference; it does not add a second statement.
-
-Q109546615	P40	Q109547445	S2600	"6000000007343898358"
-Q109547222	P3373	Q109547445	S2600	"6000000008890350233"
-Q109829893	P26	Q1362049	S2600	"6000000011714588237"
-Q110286890	P40	Q135091394	S2600	"6000000000404673699"
-Q111446058	P26	Q111446030	S2600	"6000000012587879017"
-Q118087	P22	Q9353042	S2600	"6000000001120089414"
-Q118511887	P40	Q111446030	S2600	"6000000012821366554"
-Q128050730	P22	Q128045809	S2600	"6000000025612168842"
-Q133825276	P25	Q116775793	S2600	"6000000008788618801"
-Q134546510	P40	Q1362049	S2600	"6000000008496890939"
-Q136660380	P40	Q130717	S2600	"6000000007095332291"
-Q141313911	P22	Q141520663	S2600	"6000000177921561828"
-Q141447068	P40	Q141520926	S2600	"5413393304250084700"
-Q141493140	P22	Q141520108	S2600	"6000000003511977845"
-Q156041	P22	Q695735	S2600	"6000000001593637951"
-Q5570928	P26	Q140191768	S2600	"6000000006782861172"
-Q5618813	P3373	Q1393227	S2600	"6000000006127907767"
-Q5698210	P25	Q141224012	S2600	"6000000054235169012"
-Q5706932	P25	Q1393227	S2600	"6000000008780306729"
-Q5724521	P22	Q26239902	S2600	"6000000008979441405"
-Q5745627	P22	Q5745634	S2600	"6000000020128505901"
-Q5779125	P25	Q4944366	S2600	"6000000007464308710"
-Q5783613	P22	Q5783620	S2600	"6000000003770432103"
-Q5802535	P3373	Q5802518	S2600	"6000000006128046380"
-Q5807131	P26	Q111989591	S2600	"6000000011532511759"
-Q5807131	P40	Q3450190	S2600	"6000000011532511759"
-Q5807136	P3373	Q3450190	S2600	"6000000006127951020"
-Q5914160	P3373	Q5914181	S2600	"6000000006127120320"
-Q5914181	P25	Q110457044	S2600	"6000000006127120304"
-Q5914181	P3373	Q2624238	S2600	"6000000006127120304"
-Q5916153	P22	Q5916183	S2600	"6000000019898891222"
-Q5916183	P22	Q5916162	S2600	"6000000019933609341"
-Q5916183	P25	Q4988935	S2600	"6000000019933609341"
-Q5916183	P3373	Q5916189	S2600	"6000000019933609341"
-Q5916183	P3373	Q4225027	S2600	"6000000019933609341"
-Q5916189	P22	Q5916162	S2600	"6000000021501491188"
-Q5916189	P25	Q4988935	S2600	"6000000021501491188"

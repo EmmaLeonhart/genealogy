@@ -176302,6 +176302,222 @@
   "title": "Q141518205",
   "type": "item"
  },
+ "Q141518317": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141518317$6BB3BFD6-AA15-4FAD-A38D-8278E0761326",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141518317$AB832B83-BEBE-4D31-8D1C-156E3D2D944F",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000008851243817"
+      },
+      "hash": "2d973ca5ca39458da20aae279846a74718ae3599",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Gjermund"
+        },
+        "hash": "24219984bac1bf9d0b0765ff8326d6fe25410047",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141518317$0A3FE827-97F1-4B52-84F6-1D7291D29FB1",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141518317$6D891340-84D4-4EC8-BCDF-A92D1183AACE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141511491",
+        "numeric-id": 141511491
+       }
+      },
+      "hash": "64eaa09843efa80f6c8863bcd0fc34bf2944e408",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "144d2d95c82e9f961ca7d8d444e2373c3272c3aa",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000008851243817"
+          },
+          "hash": "2d973ca5ca39458da20aae279846a74718ae3599",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141518317$A3798573-DE79-4590-A9D6-C28467BFDDBA",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q3441894",
+        "numeric-id": 3441894
+       }
+      },
+      "hash": "26260088d603679dd5b05e4316114f16991711b9",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141518317",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "pare de Kari Gjermundsdatter Bore"
+   },
+   "da": {
+    "language": "da",
+    "value": "far til Kari Gjermundsdatter Bore"
+   },
+   "de": {
+    "language": "de",
+    "value": "Vater von Kari Gjermundsdatter Bore"
+   },
+   "en": {
+    "language": "en",
+    "value": "father of Kari Gjermundsdatter Bore"
+   },
+   "es": {
+    "language": "es",
+    "value": "padre de Kari Gjermundsdatter Bore"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "père de Kari Gjermundsdatter Bore"
+   },
+   "it": {
+    "language": "it",
+    "value": "padre di Kari Gjermundsdatter Bore"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "カリ・イェルムンドスダッテル・ボレの父"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "카리 게르문드스다테르 보레의 아버지"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Gjermund NN"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "far til Kari Gjermundsdatter Bore"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "vader van Kari Gjermundsdatter Bore"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "pai de Kari Gjermundsdatter Bore"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "far till Kari Gjermundsdatter Bore"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "卡里·耶尔蒙德斯达特·博雷之父"
+   }
+  },
+  "lastrevid": 2548087893,
+  "modified": "2026-09-21T08:06:57Z",
+  "ns": 0,
+  "pageid": 135078097,
+  "sitelinks": {},
+  "title": "Q141518317",
+  "type": "item"
+ },
  "Q141518365": {
   "aliases": {},
   "claims": {

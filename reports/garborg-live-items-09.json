@@ -140969,6 +140969,236 @@
   "title": "Q141502809",
   "type": "item"
  },
+ "Q141502841": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141502841$7877880E-09F9-45B9-95FD-35C72F7FE1FE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P26": [
+    {
+     "id": "Q141502841$86A2888B-E415-4B78-B580-074543439AB6",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141499898",
+        "numeric-id": 141499898
+       }
+      },
+      "hash": "0b1431fb73d0948dcfbc0187fe781c159cbff2d7",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3de985d8c16c340e16bcba6947a06aa10607ad23",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009458775815"
+          },
+          "hash": "6dc1c8f0bf18818f8f131c9b4735cafcafeb7e46",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141502841$80668C4E-E475-4B2E-8930-457FB4687CAE",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000009458775815"
+      },
+      "hash": "6dc1c8f0bf18818f8f131c9b4735cafcafeb7e46",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141502841$38089402-3F30-4221-B1D1-0AB835617461",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141502841$C92E1728-BA98-486A-9C4E-25BDA4E56DC0",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141456382",
+        "numeric-id": 141456382
+       }
+      },
+      "hash": "e48fcdef7fcf967244ae9b321aca69214a1362b5",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3de985d8c16c340e16bcba6947a06aa10607ad23",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009458775815"
+          },
+          "hash": "6dc1c8f0bf18818f8f131c9b4735cafcafeb7e46",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P5056": [
+    {
+     "id": "Q141502841$DB3619C0-6E5F-4AAE-86D2-76DBA96342C6",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141448431",
+        "numeric-id": 141448431
+       }
+      },
+      "hash": "117cb884af2686aa9c8ab2864015e4a0c83037ad",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141502841",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "esposa de Torstein NN"
+   },
+   "da": {
+    "language": "da",
+    "value": "hustru til Torstein NN"
+   },
+   "de": {
+    "language": "de",
+    "value": "Ehefrau von Torstein NN"
+   },
+   "en": {
+    "language": "en",
+    "value": "wife of Torstein NN"
+   },
+   "es": {
+    "language": "es",
+    "value": "esposa de Torstein NN"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "épouse de Torstein NN"
+   },
+   "it": {
+    "language": "it",
+    "value": "moglie di Torstein NN"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "NN Torsteinsdatter"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "hustru til Torstein NN"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "echtgenote van Torstein NN"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "esposa de Torstein NN"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "maka till Torstein NN"
+   }
+  },
+  "lastrevid": 2547806361,
+  "modified": "2026-09-19T22:13:01Z",
+  "ns": 0,
+  "pageid": 135062550,
+  "sitelinks": {},
+  "title": "Q141502841",
+  "type": "item"
+ },
  "Q141502889": {
   "aliases": {},
   "claims": {
@@ -143446,6 +143676,227 @@
   "pageid": 135070527,
   "sitelinks": {},
   "title": "Q141511369",
+  "type": "item"
+ },
+ "Q141511385": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141511385$4F2CC91A-0D68-4ACD-B307-04004211213D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q141511385$9E1DC4CC-B799-458B-840C-C0F75C6926C5",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141216498",
+        "numeric-id": 141216498
+       }
+      },
+      "hash": "24a556c2008a2b74c4b4be7ff0e074443776ede0",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "d3534a945b82402aea7b8f8dc468f135fb3a5c33",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009735783838"
+          },
+          "hash": "e574dce9363de24cead79755dffbfe5f2b8668de",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141511385$0D0293D8-B0CA-4124-AA45-73B6D630FEBA",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141313884",
+        "numeric-id": 141313884
+       }
+      },
+      "hash": "039bdbdf2556651a08f771ffe79966b979a33a3a",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "d3534a945b82402aea7b8f8dc468f135fb3a5c33",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009735783838"
+          },
+          "hash": "e574dce9363de24cead79755dffbfe5f2b8668de",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141511385$0156CF76-261B-44FD-B7AB-517D83602ED5",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000009735783838"
+      },
+      "hash": "e574dce9363de24cead79755dffbfe5f2b8668de",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141511385$E1AD0D6F-A0FD-4EDD-AF18-55C54D58278D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141511385",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "fill de Norman Charles Tunheim"
+   },
+   "da": {
+    "language": "da",
+    "value": "søn af Norman Charles Tunheim"
+   },
+   "de": {
+    "language": "de",
+    "value": "Sohn von Norman Charles Tunheim"
+   },
+   "en": {
+    "language": "en",
+    "value": "son of Norman Charles Tunheim"
+   },
+   "es": {
+    "language": "es",
+    "value": "hijo de Norman Charles Tunheim"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "fils de Norman Charles Tunheim"
+   },
+   "it": {
+    "language": "it",
+    "value": "figlio di Norman Charles Tunheim"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "ノーマン・チャールズ・トゥンヘイムの息子"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "노르만 차레스 툰헤임의 아들"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "NN"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "sønn av Norman Charles Tunheim"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "zoon van Norman Charles Tunheim"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "filho de Norman Charles Tunheim"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "son till Norman Charles Tunheim"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "诺曼·查尔斯·通海姆之子"
+   }
+  },
+  "lastrevid": 2547999968,
+  "modified": "2026-09-20T18:57:36Z",
+  "ns": 0,
+  "pageid": 135070543,
+  "sitelinks": {},
+  "title": "Q141511385",
   "type": "item"
  },
  "Q141511401": {
@@ -158597,6 +159048,184 @@
   "title": "Q141518089",
   "type": "item"
  },
+ "Q141518313": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141518313$5A214A9C-B05D-4805-8542-556EB5C93EB0",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141518313$1854CF33-313D-4C50-AA78-BAF731E16FC7",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000009245258191"
+      },
+      "hash": "852cdf4d688058de058921f36438cc57ac387665",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141518313$21804C03-13F9-4077-8951-A18BCB450CF1",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141518313$C31BF5EF-C7A1-4F8D-9B44-7032F81AA1C4",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141516107",
+        "numeric-id": 141516107
+       }
+      },
+      "hash": "417e6ab53b0f4d9701531f4fc8e0dadabd242d10",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bf8d7da06001b99fdcc976d8469ccb4a48a7654f",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009245258191"
+          },
+          "hash": "852cdf4d688058de058921f36438cc57ac387665",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141518313",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "esposa de Ola Kjedeland"
+   },
+   "da": {
+    "language": "da",
+    "value": "hustru til Ola Kjedeland"
+   },
+   "de": {
+    "language": "de",
+    "value": "Ehefrau von Ola Kjedeland"
+   },
+   "en": {
+    "language": "en",
+    "value": "wife of Ola Kjedeland"
+   },
+   "es": {
+    "language": "es",
+    "value": "esposa de Ola Kjedeland"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "épouse de Ola Kjedeland"
+   },
+   "it": {
+    "language": "it",
+    "value": "moglie di Ola Kjedeland"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "オーラ・ヒェデランドの妻"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "오라 케데란드의 아내"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "NN Kjedeland"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "hustru til Ola Kjedeland"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "echtgenote van Ola Kjedeland"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "esposa de Ola Kjedeland"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "maka till Ola Kjedeland"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "奥拉·谢德兰德之妻"
+   }
+  },
+  "lastrevid": 2548087870,
+  "modified": "2026-09-21T08:06:50Z",
+  "ns": 0,
+  "pageid": 135078093,
+  "sitelinks": {},
+  "title": "Q141518313",
+  "type": "item"
+ },
  "Q141518345": {
   "aliases": {
    "mul": [
@@ -171873,7 +172502,14 @@
   "type": "item"
  },
  "Q141523577": {
-  "aliases": {},
+  "aliases": {
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Iver Kjær Iversen Iversen"
+    }
+   ]
+  },
   "claims": {
    "P21": [
     {
@@ -172258,8 +172894,8 @@
     "value": "伊韦尔·谢尔·伊韦尔森"
    }
   },
-  "lastrevid": 2548163329,
-  "modified": "2026-09-21T14:56:52Z",
+  "lastrevid": 2548218526,
+  "modified": "2026-09-21T22:16:35Z",
   "ns": 0,
   "pageid": 135083100,
   "sitelinks": {},
@@ -172966,227 +173602,6 @@
   "pageid": 135083469,
   "sitelinks": {},
   "title": "Q141523977",
-  "type": "item"
- },
- "Q141524041": {
-  "aliases": {},
-  "claims": {
-   "P21": [
-    {
-     "id": "Q141524041$248742E0-0B07-4923-9068-BDC21810F872",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q6581072",
-        "numeric-id": 6581072
-       }
-      },
-      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
-      "property": "P21",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P26": [
-    {
-     "id": "Q141524041$239752DE-2943-42A5-9707-6CCD0DB0EA5F",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141514950",
-        "numeric-id": 141514950
-       }
-      },
-      "hash": "75f8de68814d7c2aa407b570d26d1b86e6b2b569",
-      "property": "P26",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "2a479e764b09927b748b6c33fb4ea2e1bdb6e942",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000001493833197"
-          },
-          "hash": "0bcdd86fc9e7ec8b3f759289b05f522bbbb8c633",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P2600": [
-    {
-     "id": "Q141524041$A3567536-D359-439D-BE45-04B161EF629E",
-     "mainsnak": {
-      "datatype": "external-id",
-      "datavalue": {
-       "type": "string",
-       "value": "6000000001493833197"
-      },
-      "hash": "0bcdd86fc9e7ec8b3f759289b05f522bbbb8c633",
-      "property": "P2600",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P31": [
-    {
-     "id": "Q141524041$AF1491F5-3C3E-4594-8E4D-077D9909D2B3",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q5",
-        "numeric-id": 5
-       }
-      },
-      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
-      "property": "P31",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P40": [
-    {
-     "id": "Q141524041$F71CAA31-049A-4168-9882-1AC28852292D",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141502453",
-        "numeric-id": 141502453
-       }
-      },
-      "hash": "311d642691047da18aa09b76ae2652d72d444071",
-      "property": "P40",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "2a479e764b09927b748b6c33fb4ea2e1bdb6e942",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000001493833197"
-          },
-          "hash": "0bcdd86fc9e7ec8b3f759289b05f522bbbb8c633",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ]
-  },
-  "descriptions": {},
-  "id": "Q141524041",
-  "labels": {
-   "ca": {
-    "language": "ca",
-    "value": "esposa de Finn Tjøstolvson Hundorp"
-   },
-   "da": {
-    "language": "da",
-    "value": "hustru til Finn Tjøstolvson Hundorp"
-   },
-   "de": {
-    "language": "de",
-    "value": "Ehefrau von Finn Tjøstolvson Hundorp"
-   },
-   "en": {
-    "language": "en",
-    "value": "wife of Finn Tjøstolvson Hundorp"
-   },
-   "es": {
-    "language": "es",
-    "value": "esposa de Finn Tjøstolvson Hundorp"
-   },
-   "fr": {
-    "language": "fr",
-    "value": "épouse de Finn Tjøstolvson Hundorp"
-   },
-   "it": {
-    "language": "it",
-    "value": "moglie di Finn Tjøstolvson Hundorp"
-   },
-   "ja": {
-    "language": "ja",
-    "value": "フィン・トヨストルヴソン・フンドルプの妻"
-   },
-   "ko": {
-    "language": "ko",
-    "value": "핀 최스톨브손 훈도르프의 아내"
-   },
-   "mul": {
-    "language": "mul",
-    "value": "NN"
-   },
-   "nb": {
-    "language": "nb",
-    "value": "hustru til Finn Tjøstolvson Hundorp"
-   },
-   "nl": {
-    "language": "nl",
-    "value": "echtgenote van Finn Tjøstolvson Hundorp"
-   },
-   "pt": {
-    "language": "pt",
-    "value": "esposa de Finn Tjøstolvson Hundorp"
-   },
-   "sv": {
-    "language": "sv",
-    "value": "maka till Finn Tjøstolvson Hundorp"
-   },
-   "zh": {
-    "language": "zh",
-    "value": "芬恩·特约斯托尔夫松·洪多尔普之妻"
-   }
-  },
-  "lastrevid": 2548176021,
-  "modified": "2026-09-21T16:35:06Z",
-  "ns": 0,
-  "pageid": 135083524,
-  "sitelinks": {},
-  "title": "Q141524041",
   "type": "item"
  },
  "Q141524121": {
