@@ -113,7 +113,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **tveit** | father (Norwegian) | no | 2 | 1 | Synnøva Rasmusdatter Tveit | Ove Øvrehus |
 | **valvatne** | father (Norwegian) | yes | 2 | 1 | Anders til Vale og Valvatne | Torbjørg C. Valvatne |
 | **van kleve** | father (Norwegian) | no | 2 | 1 | Gerberga van Kleve | Adolf van Kleve |
-| **von ravenstein** | father (Norwegian) | yes | 1 | 2 | Albrecht von Ravenstein | Gen. Johann Friedrich Theodor Hein |
 | **von rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
 | **wenden** | father (Norwegian) | no father recorded | 1 | 2 | Radagest II of the Heruli & Wenden | Anastasie Alexandrine Paule de Wen |
 | **ximenez** | father (Norwegian) | no father recorded | 1 | 2 | Garcia Ximenez, magnate Basco | <private> Beneyto-Guillamas y Sanz |
@@ -129,3 +128,4 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de namur** | father (Norwegian) | yes | 1 | 3 | Hadwide de Namur | Caroline Léopoldine de Namur |
 | **dynasty** | father (Norwegian) | no | 3 | 1 | Ladislaus Árpád dynasty I | Mestwin Samborides dynasty II |
 | **egeland** | father (Norwegian) | no | 3 | 1 | Hallvard Torgersson Ytre Egeland | Oddvar Egeland |
+| **furman** | mother (Swedish) | no father recorded | 1 | 3 | Mårten Furman | <private> Furman (Correll) |
