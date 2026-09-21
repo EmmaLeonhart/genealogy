@@ -978,3 +978,25 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
   ⛔ **BLOCKED-ON-EXTERNAL: the Geni moratorium.** The fix is a Geni-side parent link and a
   duplicate merge, and nothing touches geni.com before 2026-10-21 at the earliest. Recorded now so
   the evidence is not re-derived later.
+
+---
+
+## ⛔ RELATIVE-DESCRIBING LABELS ARE STILL GOING OUT
+
+- **A label that names a relative is being written as the primary label, and the pipeline is still
+  doing it.** Seen 2026-09-21 on **`Q141526951`**:
+
+        en      mother of Sven Torstensen Tvihaug
+        fr      mère de Sven Torstensen Tvihaug
+        en-ca   Tora NN          <- the CORRECT label
+        en-us   Tora NN          <- the CORRECT label
+        desc    born Hå ?
+
+  The right name is sitting in `en-ca` and `en-us` while `en` and `fr` carry a sentence about
+  somebody else. This is CLAUDE.md § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME* and
+  § *`NN` is PRESERVED in `mul`* — `Tora NN` is exactly the form the rules call for.
+
+  **It is translated, which means it is generated and not inherited** — `mère de` is ours.
+  ⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD*: there are two emitters and the rule belongs in
+  `namemodel`. Find where the relative-phrase reaches the label rather than patching the symptom,
+  and fix the ones already emitted.
