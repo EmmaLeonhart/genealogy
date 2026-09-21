@@ -896,3 +896,14 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
   the structure -- if it parses, the sweep stops being a name list and becomes genealogy for
   people the GEDCOM exports never reached. Investigate whether it parses reliably before
   building anything on it.
+
+---
+
+## Export a GEDCOM from Wikidata
+
+- **Queue up exporting GEDCOM from Wikidata.** Ruled 2026-09-21: *"after that we queue up
+  exporting gedcom from wikidata."* `scripts/build-wikidata-gedcom.py` already renders one and
+  `--connectivity` is the artifact that fits in Actions; what is wanted here is the export as a
+  thing in its own right. ⛔ This does **not** reopen the merge — CLAUDE.md
+  § *THE WIKIDATA TREE NEVER GOES INTO THE SYNOPTIC TREE* stands, and
+  `--also out/wikidata-tree.ged` stays unwired.
