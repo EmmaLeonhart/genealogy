@@ -1108,3 +1108,35 @@ married name is evidence of an event, not a naming convention, and it stays wher
 
 ⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD* — there are two emitters and this belongs in
 `namemodel`. And `name modelling.txt` is the authority over both this file and `CLAUDE.md`.
+
+### ⛔ A RELATIONAL LABEL ON A PERSON WHOSE GIVEN NAME IS KNOWN — THE BIGGEST DEFECT OF THE CAMPAIGN
+
+Ruled 2026-09-21: *"You still are producing wrong things where a person's first name is known,
+but their labels that they're given are relational. That is not supposed to be happening. And
+you're doing that as the biggest issue of this entire fucking campaign."* And: *"you actually
+fix this critical issue that's been destroying so many items or making them useless."*
+
+**The trigger is a person who HAS a given name.** The emitter still reaches for the relational
+phrase and ships `mother of Brita Danielsdotter Berg` where it holds `Tora` and could have
+written `Tora, mother of Brita Danielsdotter Berg`. § *A NAME FIELD THAT NAMES A RELATIVE IS NOT
+A NAME* — a label that is only a relation names somebody else, so the item is not merely
+untidy, it is **useless**: it cannot be found, and it cannot be told apart from every other
+item labelled the same way.
+
+**It is already visible in three places and they are one fault:**
+
+- `tests/test_no_descriptions_or_summaries.py::test_no_batch_carries_a_description` fails on
+  `Den` values that are relational rather than life descriptions — `"wife of Thure Johansson
+  Stålarm"`, `"son of Gunnar Gunnarson Ænes"`, `"mother of Brita Danielsdotter Berg"`,
+  `"daughter of Margareta Lithman"`, `"husband of Sissel Jonsdatter"`, `"born Foss"`.
+- the `Tora NN` item above — `mul` missing, descriptive labels dropping the given name.
+- **the corpus itself carries the same shape from Geni**, so it is arriving as well as being
+  generated: 9 people in one 506-person ancestor walk are labelled `Jön abu Eric`,
+  `Matt abu Anders`, `Nils abu Kierstin`, `Olof abu Malin`, `Erik abu Olof`,
+  `Pärs abu Ingerborg`, `Lars abu Hanna`, `Olof abu Maria`, `Anders abu Elin` — `abu` is
+  *father of*. Those have a given name in hand too.
+
+**The fix is the branch, not a pass over the emitted items.** ⛔ § *A GUARD IN ONE EMITTER IS NOT
+A GUARD* — it belongs in `namemodel`, and it needs the two tests named in the `Tora NN` item:
+`mul` is `Given NN` when there is a given name and no surname, and **every descriptive label
+opens with the given name**. Then fix what already went out.
