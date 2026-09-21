@@ -45964,3 +45964,54 @@ url is not a probe.
 Restarted at gen 2 from the cursor, 8,824. `C.reseedFailed()` is owed at the end of the run.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+## 2026-09-21 — the maternal leads were never three, and the report is why
+
+**Fourteen consecutive ticks reported "3 maternal surnames" and there are 19.** `rows.sort()`
+ranks by rarity — `len(ancestors) * len(descendants)` ascending — and `rows[:120]` cut at it.
+The maternal side has 19 of the 536 shared surnames and eleven of the interesting ones sit past
+the cut, because *rare* and *interesting* are not the same thing on a line this thin. **`bure`
+is 1x29 and ranked 29th by that key, so it never appeared once** — the kinship the entire
+pipeline is pointed at, hidden from the report that was supposed to find it. `roth` is 1x66,
+`soderberg` 8x18, `burman` 1x14. The maternal side is now never truncated; the paternal side
+keeps the cut, holding 517 of the 536.
+
+**And `on_descent_path` read the father positionally.** `load_family` concatenates
+`father, mother, fathers, mothers` into one list, so `par[g][0]` is the father only when a
+father is recorded at all. It returned `Wilhelmine von Romberg` as the father of
+`Anna Helena von Roth` and scored four surnames as patrilineal that are not. `fa` is now its
+own map off the named columns — CLAUDE.md § *PARSE PATRONYMICS BY FORM. Never parse a name
+positionally*, which is the same rule and the same failure.
+
+**Every maternal surname is dead for descent, and they all die the same way.** Corrected, the
+test is whether the surname-bearing FATHER is also a Yuri descendant, i.e. whether the name and
+the blood travel down the male line together. Only `bure` passes it — 25 of 29 carriers — and
+walking that patriline up settles it:
+
+    Claes Jonas Bure        b.1713   YURI-DESC   <- mother Beata Elisabeth Rålamb (1677-1716)
+    Gustaf Jonasson Bure    b.1651   not
+    Jonas Jonsson Bure      b.1615   not
+    Jonas Engelbertsson Bure b.1575  not
+    Engelbertus Laurentii   b.1542   not
+    Laurentius Svenonis     b.1507   not
+    Sven Pedersson          b.1475   not
+
+The blood enters the Bure name **once, in 1713, through a wife**, and the owner's
+`Herse Andersson Bure (BEF 1470 - 1549)` is not in that line at all — Claes Jonas Bure's 6,860
+recorded ancestors do not contain him. `burman` is the same shape with the branches genuinely
+joined: `Nils Andersson Burman (1545)` **is** an ancestor of the Yuri-descendant Burmans, and
+the blood still only arrives at `Aurora Gustava Burman (1816-1855)`, 271 years downstream of the
+split. A marriage carries blood to the descendants of that marriage and to no other branch of
+the surname — the von Furman and von Hagmann finding, now confirmed as the universal shape.
+
+**The instrument is near exhausted on the side that matters, and the reason is structural.**
+Of 570 maternal ancestors **only 55 carry a matchable surname at all — 10%**, and on the
+frontier (222 people with no recorded parent) it is also 10%. The rest are patronymics, which
+are excluded by design and correctly. Stripping the `abu`-pattern artifacts leaves **24 real
+maternal surnames**, of which 14 already match. The paternal side is 68% and 2,626 surnames.
+So fourteen zero-yield ticks were not the sweep failing; there is close to nothing left for a
+surname to match on maternally.
+
+**Two tree joins are worth keeping even though neither is descent.** `Herse Andersson Bure`
+(d.1549) and `Sven Pedersson` (~1475) are two Bure patrilines the tree holds apart in the same
+era, and the Burman branches are confirmed joined at 1545.

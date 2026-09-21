@@ -9,7 +9,26 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 
 | surname | side | on the descent path? | ancestors | descendants | example ancestor | example descendant |
 |---|---|---|---|---|---|---|
-| **anastasia** | father (Norwegian) | yes | 1 | 1 | Rogneda Anastasia | Antoinette Marie Clementine Hermin |
+| **frisch** | mother (Swedish) | no father recorded | 1 | 1 | Bengt Frisch | <private> Dalgas Frisch |
+| **utter** | mother (Swedish) | no father recorded | 1 | 1 | Johan Olofsson Utter | Lueila Utter (1863 - c.1888) |
+| **furman** | mother (Swedish) | no father recorded | 1 | 3 | Mårten Furman | <private> Furman (Correll) |
+| **hagman** | mother (Swedish) | yes | 1 | 3 | Per Persson Hagman | Sophia Frederica Fredericka Hagman |
+| **malin** | mother (Swedish) | yes | 1 | 3 | Olof abu Malin | Elizabeth Malin |
+| **olai** | mother (Swedish) | no | 1 | 3 | Andreas Olai | Selma Petronella Olai |
+| **hjelm** | mother (Swedish) | no father recorded | 1 | 7 | Anders Hjelm | <private> Nordenfalk |
+| **boman** | mother (Swedish) | yes | 2 | 4 | Hans Boman | Johanna Ulrika Ulrica Boman |
+| **wedberg** | mother (Swedish) | no | 6 | 2 | Johan Fredrik Wedberg | Kasper Ferdinand Wedberg |
+| **broman** | mother (Swedish) | yes | 2 | 7 | Petter Broman | Anna Elisabeth Broman |
+| **burman** | mother (Swedish) | no | 1 | 14 | Nils Andersson Burman | Hanna Henriette Burman |
+| **anders** | mother (Swedish) | yes | 1 | 16 | Matt abu Anders | Pauline Anders |
+| **hanna** | mother (Swedish) | no father recorded | 1 | 21 | Lars abu Hanna | Bernice Jane Hanna (1908 - 1997) |
+| **frisk** | mother (Swedish) | no | 5 | 5 | Karl Emil Frisk | Karl Johan Frisk |
+| **bure** | mother (Swedish) | yes | 1 | 29 | Herse Andersson Bure | Maria Christina Constantia Bure |
+| **anna** | mother (Swedish) | yes | 1 | 32 | Jans abu Anna | Marie Anna von Bayern Erzherzogin  |
+| **roth** | mother (Swedish) | no father recorded | 1 | 66 | Per Andersson Roth | Ernesto Walter Oechler Roth (1912  |
+| **maria** | mother (Swedish) | yes | 1 | 134 | Olof abu Maria | Kerstin Elisabeth Maria Key |
+| **soderberg** | mother (Swedish) | yes | 8 | 18 | Gustaf Johan Johansson Söderberg | Barbro Stigsdotter Söderberg |
+| **anastasia** | father (Norwegian) | no father recorded | 1 | 1 | Rogneda Anastasia | Antoinette Marie Clementine Hermin |
 | **basco** | father (Norwegian) | no father recorded | 1 | 1 | Ximeno magnate Basco | Sandra Lynn Basco (1947 - 2025) |
 | **bosnia** | father (Norwegian) | no | 1 | 1 | NN of Bosnia | Katarina Celjska |
 | **bouchet** | father (Norwegian) | no father recorded | 1 | 1 | Adèle De Bouchet | Margarita Diago y Du Bouchet (c.18 |
@@ -25,13 +44,12 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de charroux** | father (Norwegian) | yes | 1 | 1 | Sulpice de Charroux | Charles Chabot Seigneur de Charrou |
 | **de hungria** | father (Norwegian) | yes | 1 | 1 | Vazul de Hungría | Maria von Habsburg Van Hongarije d |
 | **de laon** | father (Norwegian) | yes | 1 | 1 | Raoul 1er de Laon comte de Laon et | Louis Charles de Saint-Albin évêqu |
-| **de lens** | father (Norwegian) | yes | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
+| **de lens** | father (Norwegian) | no father recorded | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
 | **de montreuil** | father (Norwegian) | yes | 1 | 1 | Adele de Montreuil | Agnès Louise de Montreuil |
 | **de rouen** | father (Norwegian) | yes | 1 | 1 | Tesselin de Vascoeuil vicomte de R | Louis Charles de Saint-Albin évêqu |
 | **dreux** | father (Norwegian) | no | 1 | 1 | Robert de Dreux | Renaud de Dreux |
 | **eike** | father (Norwegian) | no father recorded | 1 | 1 | Halvor * Eike | Viola B Eike |
 | **fossan** | father (Norwegian) | no father recorded | 1 | 1 | Magla Guttormsdatter Fossan | Ethel M Van Fossan (1888 - d.) |
-| **frisch** | mother (Swedish) | no father recorded | 1 | 1 | Bengt Frisch | <private> Dalgas Frisch |
 | **geneva** | father (Norwegian) | yes | 1 | 1 | Eldegarde De Geneva | Madeleine Astrid Ingeborg Ella Els |
 | **gent** | father (Norwegian) | no father recorded | 1 | 1 | Hildegarde Van Holland Gravin van  | Kesiah Gent (c.1824 - d.) "Ghent" |
 | **grave** | father (Norwegian) | no father recorded | 1 | 1 | Heinrich I von Berg-Schelklingen G | Albert Emile Storm de Grave (1885  |
@@ -46,7 +64,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **jordal** | father (Norwegian) | no father recorded | 1 | 1 | Olav Jordal | Evelyn Ilene Jordal (1944 - 2017) |
 | **jure** | father (Norwegian) | yes | 1 | 1 | Sophia von Rheineck suo jure | Andrea Vincenzo Giuseppe Filippo G |
 | **landen** | father (Norwegian) | no | 1 | 1 | Pepin de Landen | Anna Elisabet Landén |
-| **lens** | father (Norwegian) | yes | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
+| **lens** | father (Norwegian) | no father recorded | 1 | 1 | Judith de Lens | Anne Marie de Recourt dama flamenc |
 | **lombardia** | father (Norwegian) | yes | 1 | 1 | Adelais of Italy and Lombardia | Luis Fernández de Córdoba y Enríqu |
 | **lombardo** | father (Norwegian) | no father recorded | 1 | 1 | Burcia de origen Lombardo | Tara Lynne Lombardo |
 | **lusatia** | father (Norwegian) | yes | 1 | 1 | Emnilda_Hodica Von Lusatia | Cecilie |
@@ -56,8 +74,8 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **more** | father (Norwegian) | no father recorded | 1 | 1 | Ljot Toresson Jarl of More | Jose Eugenio More (1905 - 1997) |
 | **munn** | father (Norwegian) | no father recorded | 1 | 1 | Helga Sigurdsdotter Munn | Stella Elizabeth Munn (1885 - 1951 |
 | **nunez** | father (Norwegian) | no father recorded | 1 | 1 | Fruela Núñez | Laura Del Rio Núñez |
-| **orkney** | father (Norwegian) | yes | 1 | 1 | Ellen Sigurdsdottir av Orkney | Mary FitzMaurice Countess of Orkne |
-| **ossory** | father (Norwegian) | yes | 1 | 1 | Sigurðr of Ossory | Augusta Mary Fitzpatrick Baroness  |
+| **orkney** | father (Norwegian) | no father recorded | 1 | 1 | Ellen Sigurdsdottir av Orkney | Mary FitzMaurice Countess of Orkne |
+| **ossory** | father (Norwegian) | no father recorded | 1 | 1 | Sigurðr of Ossory | Augusta Mary Fitzpatrick Baroness  |
 | **rise** | father (Norwegian) | yes | 1 | 1 | Tora Ranesdatter Rise | Signe Ingeborg Rise |
 | **saldana** | father (Norwegian) | yes | 1 | 1 | Diego Muñoz 1er. Conde de Saldaña | Luisa de Mendoza condesa de Saldañ |
 | **saxe-wittenberg** | father (Norwegian) | no | 1 | 1 | Agnes of Austria Duchess of Saxe-W | Barbara von Sachsen-Wittenberg Mar |
@@ -69,9 +87,8 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **solheim** | father (Norwegian) | no | 1 | 1 | Tore Torgildsen Solheim | Erik Gudbrand Solheim |
 | **staufen** | father (Norwegian) | no father recorded | 1 | 1 | Agnes Liubava von Staufen | Leo von Staufen (b. - bef.1522) |
 | **szamotuł** | father (Norwegian) | yes | 1 | 1 | Wincenty Szamotulski z Szamotuł | Kateřina Ratibořska z Szamotuł |
-| **utter** | mother (Swedish) | no father recorded | 1 | 1 | Johan Olofsson Utter | Lueila Utter (1863 - c.1888) |
-| **van gent** | father (Norwegian) | yes | 1 | 1 | Hildegarde Van Holland Gravin van  | Albertine van Gent dit Vilain |
-| **van teisterbant** | father (Norwegian) | yes | 1 | 1 | vrouw van Diederik van Teisterbant | Johan Melchior van Eck van Teister |
+| **van gent** | father (Norwegian) | no father recorded | 1 | 1 | Hildegarde Van Holland Gravin van  | Albertine van Gent dit Vilain |
+| **van teisterbant** | father (Norwegian) | no father recorded | 1 | 1 | vrouw van Diederik van Teisterbant | Johan Melchior van Eck van Teister |
 | **van zweden** | father (Norwegian) | yes | 1 | 1 | Moalda Digri Kinriksdatter Koningi | Carl Adolf van Zweden |
 | **von bohmen** | father (Norwegian) | yes | 1 | 1 | Judith von Böhmen Duchess of Polan | Anna Королева Богемии и Венгрии Ja |
 | **von mompelgard** | father (Norwegian) | yes | 1 | 1 | Liutpold von Mömpelgard | Georg II. |
@@ -90,10 +107,10 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **de navarre** | father (Norwegian) | no | 1 | 2 | Luppa Sanchez de Navarre | Enrique de Navarre |
 | **de saldana** | father (Norwegian) | yes | 2 | 1 | Gómez Díaz Conde de Saldaña y Liéb | Luisa de Mendoza condesa de Saldañ |
 | **flandre** | father (Norwegian) | yes | 2 | 1 | Judith Flandre | Marie Luise Alexandrine Karoline v |
-| **francs** | father (Norwegian) | yes | 2 | 1 | Hugues de Paris duc des Francs, co | Marie-Constance Adélaïde Viart des |
+| **francs** | father (Norwegian) | no father recorded | 2 | 1 | Hugues de Paris duc des Francs, co | Marie-Constance Adélaïde Viart des |
 | **garces** | father (Norwegian) | yes | 2 | 1 | NN Garcés | Macarena Agüero Garcés |
 | **gille** | father (Norwegian) | no | 2 | 1 | Margareta Haraldsdatter Gille | Elsa Isabella Bratt Gille |
-| **heinsberg** | father (Norwegian) | yes | 2 | 1 | Gosewin II von Heinsberg | Katharina von Sponheim Heinsberg |
+| **heinsberg** | father (Norwegian) | no father recorded | 2 | 1 | Gosewin II von Heinsberg | Katharina von Sponheim Heinsberg |
 | **hund** | father (Norwegian) | yes | 2 | 1 | Tore Toreson Hund | Karl Gotthelf von Hund |
 | **island** | father (Norwegian) | yes | 1 | 2 | Úlfur Óspaksson Stallare af Island | Axel Christian Georg af Danmark vo |
 | **isles** | father (Norwegian) | yes | 1 | 2 | Gjertud of the Isles | Alexander Wentworth Macdonald Bosv |
@@ -103,7 +120,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **mortimer** | father (Norwegian) | no father recorded | 1 | 2 | Gersende de Mortimer | Robert John Rayner Mortimer (1889  |
 | **rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
 | **ribera** | father (Norwegian) | yes | 2 | 1 | Osorio Gutiérrez Señor de Cabrera  | Maria Amália Machado de Mendonça E |
-| **rott** | father (Norwegian) | yes | 2 | 1 | Sven Toresen Rott | Cecilie Rott |
+| **rott** | father (Norwegian) | no father recorded | 2 | 1 | Sven Toresen Rott | Cecilie Rott |
 | **rurikov** | father (Norwegian) | yes | 1 | 2 | Rurik Rurikov | Fyodor I Ivanovich Rurikov |
 | **sikveland** | father (Norwegian) | no father recorded | 2 | 1 | Jesper Njellson Sikveland | Solveig Helen Sikveland (1927 - 20 |
 | **soma** | father (Norwegian) | yes | 1 | 2 | Lars Soma | Alfonso Osorio de Moscoso y Osorio |
@@ -116,16 +133,18 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **von rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
 | **wenden** | father (Norwegian) | no father recorded | 1 | 2 | Radagest II of the Heruli & Wenden | Anastasie Alexandrine Paule de Wen |
 | **ximenez** | father (Norwegian) | no father recorded | 1 | 2 | Garcia Ximenez, magnate Basco | <private> Beneyto-Guillamas y Sanz |
-| **aasland** | father (Norwegian) | yes | 3 | 1 | Marit Aasland | Kari Elise Aasland Torgersen |
+| **aasland** | father (Norwegian) | no father recorded | 3 | 1 | Marit Aasland | Kari Elise Aasland Torgersen |
 | **adelaide** | father (Norwegian) | yes | 1 | 3 | Adele Adelaide | Enrichetta Adelaide di Savoia |
 | **bjørn** | father (Norwegian) | no father recorded | 3 | 1 | Karen Sørensdatter Bjørn | Maren Bjørn Fog (1764 - 1825) "Mar |
 | **bryne** | father (Norwegian) | no father recorded | 1 | 3 | Nils Erikson Bryne | Ebba Maria Bryne (1900 - 1989) |
 | **dagsburg** | father (Norwegian) | no father recorded | 3 | 1 | Adela van Dagsburg | Katharina Luise Eleonore von Leini |
-| **de champagne** | father (Norwegian) | no | 3 | 1 | Marie De Champagne Duchess Of Burg | Pierre de Champagne Ier |
-| **de comminges** | father (Norwegian) | yes | 1 | 3 | Asnerius III Commignes and Consera | Roger de Comminges II |
-| **de joigny** | father (Norwegian) | yes | 3 | 1 | Guillaume de Joigny | Damien BLONDEL de JOIGNY de BELLEB |
-| **de landas** | father (Norwegian) | yes | 1 | 3 | Amauri ‘Le Viell’ de Landas | Robert de Landas |
-| **de namur** | father (Norwegian) | yes | 1 | 3 | Hadwide de Namur | Caroline Léopoldine de Namur |
+| **de champagne** | father (Norwegian) | no father recorded | 3 | 1 | Marie De Champagne Duchess Of Burg | Pierre de Champagne Ier |
+| **de comminges** | father (Norwegian) | no father recorded | 1 | 3 | Asnerius III Commignes and Consera | Roger de Comminges II |
+| **de joigny** | father (Norwegian) | no father recorded | 3 | 1 | Guillaume de Joigny | Damien BLONDEL de JOIGNY de BELLEB |
+| **de landas** | father (Norwegian) | no father recorded | 1 | 3 | Amauri ‘Le Viell’ de Landas | Robert de Landas |
+| **de namur** | father (Norwegian) | no father recorded | 1 | 3 | Hadwide de Namur | Caroline Léopoldine de Namur |
 | **dynasty** | father (Norwegian) | no | 3 | 1 | Ladislaus Árpád dynasty I | Mestwin Samborides dynasty II |
 | **egeland** | father (Norwegian) | no | 3 | 1 | Hallvard Torgersson Ytre Egeland | Oddvar Egeland |
-| **furman** | mother (Swedish) | no father recorded | 1 | 3 | Mårten Furman | <private> Furman (Correll) |
+| **infanta** | father (Norwegian) | yes | 1 | 3 | Velasquita Sánchez de Pamplona inf | Leonor de Aragón Infanta |
+| **juliana** | father (Norwegian) | no father recorded | 1 | 3 | Flavia Juliana | Augusta Juliana |
+| **kluge** | father (Norwegian) | no father recorded | 3 | 1 | Ommund Larsson Kluge | Maria "Maya" Petrovna von Kluge (1 |

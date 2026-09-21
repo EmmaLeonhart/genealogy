@@ -104,7 +104,7 @@ def surnames(label: str) -> set[str]:
 
 
 def load_family():
-    kids, par, lab = {}, {}, {}
+    kids, par, lab, fa = {}, {}, {}, {}
     with io.open(os.path.join(ROOT, "reports", "derived-family.csv"),
                  encoding="utf-8", errors="replace", newline="") as fh:
         for r in csv.DictReader(fh):
@@ -121,13 +121,25 @@ def load_family():
                     ps.extend(x.strip() for x in v.split(SEP) if x.strip())
             if ps:
                 par[g] = ps
+            # ⛔ **THE FATHER IS A NAMED COLUMN, NOT `par[g][0]`.** `par` concatenates four
+            # columns, so position 0 is the father only when a father happens to be recorded.
+            # Read positionally it returned `Wilhelmine von Romberg` as a father and scored four
+            # surnames as patrilineal that are not -- CLAUDE.md § *PARSE BY FORM, never
+            # positionally*, which is the ultimate cause of most name defects here.
+            fs = []
+            for col in ("father", "fathers"):
+                v = (r.get(col) or "").strip()
+                if v:
+                    fs.extend(x.strip() for x in v.split(SEP) if x.strip())
+            if fs:
+                fa[g] = fs
     with io.open(os.path.join(ROOT, "reports", "derived-labels.csv"),
                  encoding="utf-8", errors="replace", newline="") as fh:
         for r in csv.DictReader(fh):
             g = (r.get("geni_id") or "").strip()
             if g:
                 lab[g] = (r.get("label_mul") or r.get("label_en") or "").strip()
-    return kids, par, lab
+    return kids, par, lab, fa
 
 
 def walk(start, edges):
@@ -143,7 +155,7 @@ def walk(start, edges):
 
 
 def main() -> int:
-    kids, par, lab = load_family()
+    kids, par, lab, fa = load_family()
 
     desc = walk(YURI, kids)
 
@@ -195,10 +207,10 @@ def main() -> int:
     # descendant of the target. Where no father is recorded the row is kept and flagged, because
     # a missing parent is the thing being looked for, not evidence against.
     def on_descent_path(g):
-        ps = par.get(g, [])
-        if not ps:
+        fs = fa.get(g, [])
+        if not fs:
             return "no father recorded"
-        return "yes" if ps[0] in desc else "no"
+        return "yes" if fs[0] in desc else "no"
 
     rows = []
     for side, people in (("mother (Swedish)", mat), ("father (Norwegian)", pat)):
@@ -212,6 +224,15 @@ def main() -> int:
                          sorted(idx[s])[0], best, on_descent_path(best)))
     rows.sort()
 
+    # ⛔ **THE MATERNAL SIDE IS NEVER TRUNCATED.** Ruled by measurement 2026-09-21: the rank is
+    # rarity, `rows[:120]` cut at it, and eleven of the fourteen shared MATERNAL surnames fell
+    # past the cut -- including `bure` (1x29), which is the kinship the whole pipeline is
+    # pointed at. The report showed three maternal rows and was read as "three maternal leads"
+    # for fourteen consecutive ticks. The paternal side keeps the cut: it has 522 of the 536.
+    m_rows = [r for r in rows if r[2].startswith("mother")]
+    p_rows = [r for r in rows if not r[2].startswith("mother")]
+    shown = m_rows + p_rows[:120]
+
     with io.open(OUT, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("# Surnames shared by Yuri Dolgorukiy's descendants and the owner's ancestors\n\n")
         fh.write(f"- descendants of Yuri in the synoptic tree: **{len(desc):,}**\n")
@@ -224,14 +245,15 @@ def main() -> int:
         fh.write("| surname | side | on the descent path? | ancestors | descendants "
                  "| example ancestor | example descendant |\n")
         fh.write("|---|---|---|---|---|---|---|\n")
-        for _rank, s, side, na, nd, ea, ed, onpath in rows[:120]:
+        for _rank, s, side, na, nd, ea, ed, onpath in shown:
             fh.write(f"| **{s}** | {side} | {onpath} | {na} | {nd} | "
                      f"{lab.get(ea,chr(39)+chr(39))[:34]} | {lab.get(ed,'')[:34]} |" + chr(10))
 
     print(f"{os.path.relpath(OUT, ROOT)}")
     print(f"  Yuri descendants in tree {len(desc):,} | maternal {len(mat):,} | paternal {len(pat):,}")
     print(f"  shared surnames {len(rows):,}")
-    for _r, s, side, na, nd, ea, ed, onpath in rows[:25]:
+    print(f"  maternal rows {len(m_rows)} (all listed) | paternal rows {len(p_rows)}")
+    for _r, s, side, na, nd, ea, ed, onpath in m_rows:
         print(f"   {s:18s} {side:20s} onpath={onpath:18s} {na}x{nd}  {lab.get(ea,'')[:26]:26s} | {lab.get(ed,'')[:26]}")
     return 0
 
