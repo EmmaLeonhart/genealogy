@@ -91,22 +91,6 @@ tiny path GEDCOMs, 773 isolates reached.
 ⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
 is the extension's, never a sleep in the agent.
 
-### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
-
-*"you had no business having any submissions going through until everything was done. That's why
-it was at the end of the queue. Really, the submission should even have a requirement that all of
-the Wikidata people get connected. Get connected with the path thing. So disable any editing of
-Wikidata by the runner right now ... because we aren't ready for it. And the queue structure was
-supposed to make that be the case."*
-
-`HELD = True` in `scripts/wikidata_lockout.py` and `EDITS_HELD: "yes"` in
-`.github/workflows/wikidata-edits.yml`, checked by both `editing_allowed` and
-`automation_allowed`, with no environment override — a date arrives on its own, a hold is lifted
-by a person. `tests/test_wikidata_start_date.py` fails if the two halves disagree.
-
-**The condition for lifting it is stated and is not a date either**: the Wikidata people are
-connected through the path search first. That campaign is at the END of this file.
-
 ### ⛔ SKJALGSSON IS DROPPED. Ruled 2026-09-13: *"Drop skjalgsson please"*.
 
 Not paused and not finished-by-measurement — dropped. Three balls are filed under
