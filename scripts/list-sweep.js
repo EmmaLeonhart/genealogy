@@ -44,7 +44,8 @@
   const S = {
     running: false, gen: Date.now(), i: 0, of: 0, who: "", page: 0, pages: 0,
     rows: 0, done: 0, fail: 0, lastFail: "", empty: 0,
-    queue: [], startedAt: new Date().toISOString(), lastAt: Date.now()
+    queue: [], startedAt: new Date().toISOString(), lastAt: Date.now(),
+    conc: 4, concMax: 16, failAtLastRamp: 0, cursor: 0
   };
   window.__listsweep = S;
 
@@ -121,60 +122,77 @@
     return b;
   }
 
-  async function person(focus, base) {
-    const out = [], seen = new Set();
-    let pages = 1, tries = 0;
-    S.who = focus; S.page = 0; S.pages = 0;
-    for (let n = 1; S.running; n++) {
-      S.page = n; S.lastAt = Date.now();
-      const body = new URLSearchParams(Object.assign({}, base, {
-        focus_id: focus, page: String(n), group: "descendants"
-      }));
-      let doc;
+  /* ⛔ **THE BOTTLENECK IS GENI'S LATENCY, NOT OUR RATE.** Measured 2026-09-20: a single page
+   * POST takes **5.4s to 15.9s, averaging ~9s**, against a stagger of 1.2s. 8,832 pages for
+   * 174 people took 24.5 hours of wall clock, and 8832 x ~10s IS 24.5 hours -- the arithmetic
+   * closes exactly. The loop was never idle and never throttled: a timer-drift test returned
+   * 1.01 with `hidden:true`, so the launcher's anti-throttle flags were doing their job.
+   *
+   * Capping pages per person and trimming the queue were both proposed here and both refused:
+   * *"capping the pages per person and cutting the queue are the worst possible ideas ever ...
+   * The queue is extremely optimized."* They discard data to fix a problem they do not touch.
+   *
+   * ⛔ **CONCURRENCY IS OVER PEOPLE, AND EVERY PERSON'S PAGES STAY CONSECUTIVE.** Ruled
+   * 2026-09-20, before this shipped the wrong way round: *"Concurrency means we are working on
+   * multiple people at once, but every single person's pages are all consecutive, basically."*
+   *
+   * The first version parallelised the PAGES of one person, which is the easy mistake and a
+   * dangerous one: the paging form carries `page_profiles` and `page_objects`, which are the
+   * server's own cursor for that focus. Firing several pages of the SAME focus at once races
+   * that cursor, and a corrupted cursor returns plausible wrong rows rather than an error.
+   * Separate people have separate cursors, so a worker pool over people is both faster and
+   * safer.
+   *
+   * ⛔ **AND IT RAMPS RATHER THAN JUMPING.** Ruled the same day: *"Ramp it and watch."*
+   * `S.conc` is the number of workers; `S.ramp()` adds one while `fail` stays flat, so the
+   * ceiling is found by measurement instead of guessed. Workers claim from a shared cursor,
+   * so raising `S.conc` mid-run simply lets another worker start. */
+  async function fetchPage(focus, base, n) {
+    let tries = 0;
+    for (;;) {
       try {
+        const body = new URLSearchParams(Object.assign({}, base, {
+          focus_id: focus, page: String(n), group: "descendants"
+        }));
         const r = await fetch("/list/index", {
           method: "POST", credentials: "include", body: body,
           headers: { "Content-Type": "application/x-www-form-urlencoded" }
         });
         if (!r.ok) throw new Error("HTTP " + r.status);
-        doc = new DOMParser().parseFromString(await r.text(), "text/html");
+        S.lastAt = Date.now();
+        return new DOMParser().parseFromString(await r.text(), "text/html");
       } catch (e) {
-        /* ⛔ A FETCH FAILURE MUST NOT SILENTLY TRUNCATE A PERSON. The first version broke out
-         * of the page loop and then saved what it had, so `6000000002188524323` was written
-         * with pages 1-86 of 93 and the file on disk was indistinguishable from a complete
-         * one. Ruled 2026-09-19: *"No person should ever be abandoned."* A partial capture is
-         * an abandoned person that looks finished, which is worse than an obvious failure.
-         *
-         * Three retries with a growing wait; only then give up, and RECORD the person on
-         * `S.partial` so the sweep can be re-pointed at them. */
         tries++;
-        if (tries <= 3) {
-          S.lastFail = focus + " p" + n + " retry " + tries + " " + String((e && e.message) || e);
-          await new Promise(function (r) { setTimeout(r, 4000 * tries); });
-          n--;                      /* redo this page */
-          continue;
+        if (tries > 3) {
+          S.fail++;
+          S.lastFail = focus + " p" + n + " GAVE UP " + String((e && e.message) || e);
+          if (S.partial.indexOf(focus) < 0) S.partial.push(focus);
+          return null;
         }
-        S.fail++;
-        S.lastFail = focus + " p" + n + " GAVE UP " + String((e && e.message) || e);
-        if (!S.partial) S.partial = [];
-        if (S.partial.indexOf(focus) < 0) S.partial.push(focus);
-        break;
+        S.lastFail = focus + " p" + n + " retry " + tries;
+        await new Promise(function (r) { setTimeout(r, 4000 * tries); });
       }
-      tries = 0;
-      if (n === 1) {
-        const c = (doc.body.textContent.match(/of ([\d,]+) people/) || [, ""])[1];
-        pages = c ? Math.ceil(parseInt(c.replace(/,/g, ""), 10) / 20) : 1;
-        S.pages = pages;
-      }
-      parse(doc, focus, n, out, seen);
-      S.rows = out.length;
-      if (n >= pages) break;
-      await new Promise(function (r) { setTimeout(r, STAGGER); });
     }
-    /* A person with no descendants is a real answer, not a failure -- ruled 2026-09-19,
-     * *"smaller exports leaking in are self healing and still give info"*. Written anyway,
-     * so the sweep never re-asks. */
-    S.lastWasEmpty = !out.length;
+  }
+
+  /* One person, start to finish, PAGES IN ORDER. Never called concurrently for the same
+   * focus. */
+  async function person(focus, base) {
+    const out = [], seen = new Set();
+    S.who = focus;
+    const first = await fetchPage(focus, base, 1);
+    if (!first) { save(focus, out); S.done++; S.empty++; return; }
+    const c = (first.body.textContent.match(/of ([\d,]+) people/) || [, ""])[1];
+    const pages = c ? Math.ceil(parseInt(c.replace(/,/g, ""), 10) / 20) : 1;
+    parse(first, focus, 1, out, seen);
+    S.pages = pages; S.page = 1; S.rows = out.length;
+    for (let n = 2; n <= pages && S.running; n++) {
+      await new Promise(function (r) { setTimeout(r, STAGGER); });
+      const doc = await fetchPage(focus, base, n);
+      if (!doc) break;
+      parse(doc, focus, n, out, seen);
+      S.page = n; S.rows = out.length;
+    }
     if (!out.length) S.empty++;
     save(focus, out);
     S.done++;
@@ -182,24 +200,45 @@
 
   S.health = function () {
     return { running: S.running, i: S.i, of: S.of, who: S.who, page: S.page, pages: S.pages,
-             rows: S.rows, done: S.done, empty: S.empty, fail: S.fail, lastFail: S.lastFail,
-             alive: S.running && (Date.now() - S.lastAt) < 120000 };
+             rows: S.rows, done: S.done, empty: S.empty, fail: S.fail, conc: S.conc,
+             partial: S.partial.length, lastFail: S.lastFail,
+             alive: S.running && (Date.now() - S.lastAt) < 180000 };
+  };
+
+  /* Raise concurrency only if nothing failed since the last raise. Called on a timer; a step
+   * that coincides with a new failure is skipped and the level holds where it is. */
+  S.ramp = function () {
+    if (S.fail > S.failAtLastRamp) { S.failAtLastRamp = S.fail; return "held at " + S.conc; }
+    if (S.conc >= S.concMax) return "at max " + S.conc;
+    S.conc++; S.failAtLastRamp = S.fail;
+    return "raised to " + S.conc;
   };
   S.stop = function () { S.running = false; return "stopping after " + S.who; };
 
-  S.start = async function (ids) {
-    S.queue = ids.slice(); S.of = S.queue.length; S.running = true;
-    const gen = S.gen;
-    const base = baseFields();
-    if (!base) { S.running = false; return "no paging form -- load a /list page first"; }
-    for (let k = 0; k < S.queue.length && S.running && gen === S.gen; k++) {
-      S.i = k + 1;
-      try { await person(S.queue[k], base); }
-      catch (e) { S.fail++; S.lastFail = S.queue[k] + " " + String((e && e.message) || e); }
-      await new Promise(function (r) { setTimeout(r, S.lastWasEmpty ? BETWEEN_EMPTY : BETWEEN_FULL); });
+  S.start = async function () {
+    if (S.running) return "already running";
+    S.running = true;
+    const gen = S.gen, base = baseFields();
+    if (!base) { S.running = false; return "no paging form"; }
+    /* Workers share one cursor. Each takes the next person and runs them to completion, so
+     * the QUEUE ORDER is still honoured -- people are started in order, they merely finish
+     * out of order. */
+    async function worker(id) {
+      while (S.running && gen === S.gen) {
+        if (S.cursor >= S.queue.length) return;
+        if (id >= S.conc) { await new Promise(function (r) { setTimeout(r, 5000); }); continue; }
+        const k = S.cursor++;
+        S.i = k + 1;
+        try { await person(S.queue[k], base); }
+        catch (e) { S.fail++; S.lastFail = S.queue[k] + " " + String((e && e.message) || e); }
+        await new Promise(function (r) { setTimeout(r, BETWEEN_FULL); });
+      }
     }
+    const pool = [];
+    for (let w = 0; w < S.concMax; w++) pool.push(worker(w));
+    await Promise.all(pool);
     S.running = false;
-    return "sweep finished: " + S.done + " people";
+    return "finished " + S.done;
   };
 
   return "loaded; call __listsweep.start([...ids])";
