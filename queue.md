@@ -948,3 +948,33 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
   all — not to switch away from Geni but to stop the tree depending on one site.
   `preservation/` already holds three MyHeritage *Descent from Antiquity* snapshots, so some of
   this material is in hand and unexamined.
+
+---
+
+## The Rømer ring seed is one unrecorded parent link from the owner's ancestry
+
+- **`Ingrid Ølversdatter Romer` (1329–1393) IS an ancestor** — Geni `6000000002893346298`,
+  paternal, 21 generations up — and she has **no recorded parents at all**. The ring seed
+  `Olfvir Henningsson Rømer` (d. 1350, `6000000002621242041`, `Q141450322`) is **not** connected
+  to the owner, which is why the ring has grown 1,278 people that reach nobody.
+
+  Three things say they are father and daughter and the tree simply does not record it:
+
+  * her patronymic **names her father as Ølver**, and he is an Ølver Rømer who died in 1350 when
+    she was 21;
+  * he already has a daughter recorded with the **identical patronymic**,
+    `Anna Ølversdatter Rømer` (1340);
+  * **both couples have children called `Otte Rømer` and `Harneyt Rømer`, under four different
+    profile ids** — Ingrid × `Zabel Rømer` gives `6000000001669611995` / `6000000001669612001`,
+    Olfvir × `Ulvhild Henningson Rømer` gives `6000000010292908965` / `6000000010292144128`.
+    Two sibling pairs bearing the same two names, one of them as rare as *Harneyt*, in one family
+    in one generation, is duplication rather than coincidence.
+
+  ⛔ **This is the Rømer leg of the Pfinzing continental route** — `preservation/FINDINGS.md`
+  routes Pfinzing → Geuschmidt → `Baron Henning von Rømer` → `Ølver and Ingrid Rømer` → Tenga →
+  Underberge and says that middle stretch is the owner's own ancestry. It is, and the join is one
+  edge. Closing it attaches the seed's 1,278 recorded ancestors and makes the ring productive.
+
+  ⛔ **BLOCKED-ON-EXTERNAL: the Geni moratorium.** The fix is a Geni-side parent link and a
+  duplicate merge, and nothing touches geni.com before 2026-10-21 at the earliest. Recorded now so
+  the evidence is not re-derived later.
