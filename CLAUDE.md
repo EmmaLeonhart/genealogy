@@ -508,7 +508,24 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   corruption compounds. Nine went out 2026-09-18 and were reverted by hand.
   → [names](docs/rules/names.md)
 - **The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN.** All three readings are produced for
-  everyone; culture only picks which is promoted to `mul`.
+  everyone; culture only picks which is promoted to the **pan-CJK label**.
+- **⛔ `mul` IS CATEGORICALLY LATIN. ANY letter of ANY other script stops it. Diacritics are
+  fine.** Ruled 2026-09-21: *"Mul is categorically only latin and any letter from any script
+  should stop it from going through. Diacritics are okay though. The pan cjk label is internal
+  and is generally applied literally to Japanese and Chinese and transliterated into Korean"*.
+
+  **The line above used to end *"promoted to `mul`"*, and that one word is why 13,734 CJK, Hangul
+  and kana `mul` values looked deliberate.** The thing culture promotes into is the **pan-CJK
+  label, which is INTERNAL to the pipeline and is not `mul`**. Measured 2026-09-21 over
+  `reports/label-mul.tsv`: 13,327 CJK, 616 Cyrillic, 391 Hangul, 181 Hebrew, 16 kana, 6 Arabic,
+  1 Greek, 1 Mongolian — **14,539 labels that cannot be `mul`**.
+
+  **They all came through ONE branch**, `kept: mul already equals en` in `build-mul-labels.py`,
+  which assumed `en` was Latin and never asked. `is_latin()` now stops it: every alphabetic
+  character must be Latin, NFD makes diacritics combining marks so `Ø`, `æ`, `ß` and `é` pass,
+  and a non-Latin label is DROPPED rather than transliterated, because inventing a romanisation
+  is a separate decision. **The guard stops new ones; the 14,539 already live are not repaired
+  by it** and are recorded in `queue.md`.
 - **A title inside a label takes the NATIVE form in CJK**, never a transliteration. An unknown
   place or title is DROPPED, never transliterated.
 - **Transliterate the English reading.** Faithfulness to the source language destroys more than it

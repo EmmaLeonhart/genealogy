@@ -227,10 +227,25 @@ created with a cyrillic mul label. That is not allowed and idk why it went throu
   2026-08-25. The new item has three properties and no description. **The Cyrillic label is the
   symptom that was noticed; the duplicate creation is the defect.**
 
-- **Scale, measured over `reports/label-mul.tsv`**: **616 Cyrillic**, 181 Hebrew, 6 Arabic,
-  1 Greek, 1 Mongolian. The 13,327 CJK / 391 Hangul / 16 kana are LEGITIMATE — the Sinosphere
-  rule puts those in `mul` on purpose — so the wrong set is the ~805 that are neither Latin nor
-  Sinosphere.
+- **Scale, measured over `reports/label-mul.tsv`, and it is 14,539 not 805.** Ruled 2026-09-21:
+  *"Mul is categorically only latin and any letter from any script should stop it from going
+  through. Diacritics are okay though."* So the CJK ones are NOT an exception:
+  **13,327 CJK, 616 Cyrillic, 391 Hangul, 181 Hebrew, 16 kana, 6 Arabic, 1 Greek, 1 Mongolian.**
+
+- ⛔ **`CLAUDE.md` SAID CJK WAS PROMOTED INTO `mul` AND THAT WAS THE CONFLATION.** The thing
+  culture promotes into is the **pan-CJK label, internal to the pipeline** — applied literally
+  to Japanese and Chinese, transliterated into Korean — and it is not `mul`. One word in that
+  line is why 13,734 CJK/Hangul/kana `mul` values read as deliberate. Corrected 2026-09-21.
+
+- **The guard is IN**: `is_latin()` in `build-mul-labels.py`, applied to every branch beside the
+  existing unreadable-label guard. Diacritics pass by NFD; a non-Latin label is dropped rather
+  than transliterated, because inventing a romanisation is a separate decision.
+  **It stops new ones and repairs nothing.**
+
+- **⛔ OWED: the 14,539 already live.** A Latin `mul` has to be derived for each — for the
+  Cyrillic/Hebrew/Arabic/Greek set the GEDCOM often already holds it (`/Monomakhina/` was one
+  column away), and for the 13,734 Sinosphere ones it is a transliteration job that must not be
+  guessed at. Not started.
 
 - ⛔ **THIS IS NOT THE THING § *A MIXED-SCRIPT LABEL IS NOT A CAMPAIGN* REFUSES.** That ruling is
   about labels already on Wikidata that mix Latin and Cyrillic, and says `mul` agreement sorts

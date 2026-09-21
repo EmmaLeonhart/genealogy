@@ -39,6 +39,7 @@ import csv
 import io
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -53,6 +54,21 @@ DERIVED = ROOT / "reports" / "derived-labels.csv"
 DISPLAY = ROOT / "reports" / "display-names.csv"
 EN_STEP = ROOT / "reports" / "label-en.tsv"
 OUT = ROOT / "reports" / "label-mul.tsv"
+
+def is_latin(s):
+    """Every ALPHABETIC character is Latin. Diacritics and punctuation do not count.
+
+    `unicodedata.normalize("NFD", ...)` splits a precomposed letter into its base and a
+    combining mark; a combining mark is category `Mn` and so is not `isalpha()`, which is what
+    makes `é`, `ø`, `æ` and `ß` pass while `Мономахиня`, `謝` and `이` do not. Digits, spaces
+    and punctuation are skipped for the same reason -- this asks about letters, not about the
+    whole string.
+    """
+    for ch in unicodedata.normalize("NFD", s):
+        if ch.isalpha() and not unicodedata.name(ch, "").startswith("LATIN"):
+            return False
+    return True
+
 
 #: Any character that is a letter or a digit in ANY script. A label with none of these is
 #: punctuation and cannot be somebody's name.
@@ -139,6 +155,33 @@ def main() -> int:
                     state, value = "FIXED: unreadable label, surname kept", "NN " + surname
                 else:
                     state, value = "FIXED: unreadable label, no surname to keep", "NN"
+
+            # ⛔ **`mul` IS CATEGORICALLY LATIN, AND NOTHING HERE ASKED UNTIL 2026-09-21.**
+            # Ruled that day: *"Mul is categorically only latin and any letter from any script
+            # should stop it from going through. Diacritics are okay though."*
+            #
+            # **The branch that let it through is `kept: mul already equals en`.** This file
+            # ASSUMED `en` was Latin -- the module docstring says so in as many words, *"native
+            # full name in Latin script, which is exactly what `en` holds here"* -- and when
+            # `en` is itself non-Latin the assumption fails in silence. `Q141523987` went out
+            # with `mul` = `Мономахиня` that way, and the Latin form `/Monomakhina/` was sitting
+            # in the same row.
+            #
+            # Measured over `reports/label-mul.tsv` the same day: **616 Cyrillic, 181 Hebrew,
+            # 6 Arabic, 1 Greek, 1 Mongolian, 13,327 CJK, 391 Hangul, 16 kana.**
+            #
+            # ⛔ **AND THE CJK ONES ARE NOT AN EXCEPTION.** `CLAUDE.md` read as though a CJK
+            # reading is promoted into `mul` for a Sinosphere person. That is the **pan-CJK
+            # label**, which is INTERNAL to the pipeline -- applied literally to Japanese and
+            # Chinese and transliterated into Korean -- and it is not `mul`. Conflating the two
+            # is what made 13,734 CJK `mul` values look deliberate.
+            #
+            # Diacritics pass: NFD splits them into combining marks, which are not alphabetic,
+            # so `Ø`, `æ`, `ß` and `é` are all Latin here. A non-Latin label is DROPPED rather
+            # than transliterated -- inventing a romanisation is a different decision and needs
+            # its own pass; this only stops the wrong thing going out.
+            if value and not is_latin(value):
+                state, value = "none: NOT LATIN -- mul is Latin-only", ""
 
             tally[state] += 1
             rows.append([g, r.get("qid", ""), value, en, name[:60], state])
