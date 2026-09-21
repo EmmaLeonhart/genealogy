@@ -3,7 +3,7 @@
 - descendants of Yuri in the synoptic tree: **152,365**
 - ancestors through the mother (Swedish): **570**
 - ancestors through the father (Norwegian): **7,684**
-- shared surnames: **528**
+- shared surnames: **529**
 
 Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they link nothing. Titles are excluded. Ranked by rarity — a surname held by one person on each side is a place to look, one held by dozens is a common name.
 
@@ -97,7 +97,6 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **isles** | father (Norwegian) | yes | 1 | 2 | Gjertud of the Isles | Alexander Wentworth Macdonald Bosv |
 | **jørstad** | father (Norwegian) | no | 2 | 1 | Cesilie Jacobsdatter Jørstad | Reidun Else Jørstad |
 | **kleef** | father (Norwegian) | yes | 1 | 2 | Beatrix I van Kleef | Jan van Kleef |
-| **loos** | father (Norwegian) | no father recorded | 1 | 2 | Irmgard aka ‘Swanhilde of Holland’ | Anna Viczay de Hédervár et Loós (1 |
 | **marcillac** | father (Norwegian) | yes | 2 | 1 | Amaury de Marcillac | Thérèse Gabrielle de Crugy Marcill |
 | **mortimer** | father (Norwegian) | no father recorded | 1 | 2 | Gersende de Mortimer | Robert John Rayner Mortimer (1889  |
 | **rheinfelden** | father (Norwegian) | no father recorded | 2 | 1 | Chuno von Rheinfelden | Sebastian Truchsess von Rheinfelde |
@@ -108,6 +107,7 @@ Patronymics are excluded: every Erik's daughter is an `Eriksdotter`, so they lin
 | **soma** | father (Norwegian) | yes | 1 | 2 | Lars Soma | Alfonso Osorio de Moscoso y Osorio |
 | **spoleto** | father (Norwegian) | yes | 1 | 2 | Rothildis di Spoleto | Maria Vittoria Datti patrizia di S |
 | **stensrud** | father (Norwegian) | no father recorded | 1 | 2 | Hans Tjøstelsen Stensrud | Cheryl Lee Stensrud |
+| **susa** | father (Norwegian) | no father recorded | 1 | 2 | Ulric Manfred II of the Arduinici  | Vaso Suša (1930 - 1990) |
 | **tveit** | father (Norwegian) | no | 2 | 1 | Synnøva Rasmusdatter Tveit | Ove Øvrehus |
 | **valvatne** | father (Norwegian) | yes | 2 | 1 | Anders til Vale og Valvatne | Torbjørg C. Valvatne |
 | **van kleve** | father (Norwegian) | no | 2 | 1 | Gerberga van Kleve | Adolf van Kleve |
