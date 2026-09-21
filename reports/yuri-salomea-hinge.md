@@ -78,16 +78,41 @@ literature rather than a settled one our tree merely got backwards.
 Predslava, not Roman. So nothing here can be emitted as a Wikidata edit as things stand, and
 nothing should be until the maternity is settled against sources.
 
-⛔ **THE GENERAL INSTRUMENT IS THE FINDING, NOT JUST THIS ROW.** *Birth year earlier than the
-recorded parents' marriage* is a mechanical test over the whole tree, and here it landed on the
-single most consequential person in the owner's ancestry on the first pass. It has not been run
-in general.
+⛔ **THE GENERAL TEST HAS NOW BEEN RUN, AND SALOMEA IS THE ONLY ONE.** *Birth year earlier than
+the recorded parents' marriage, or a recorded mother under 14* flags **372** of the owner's
+ancestors. Crossed against *the father also had a spouse inside Euphemia's issue*, exactly
+**one** survives, and it is this row. The other 371 are date noise in the pre-1000 material —
+mothers aged 0, 2 and 9 — with no alternative wife anywhere near the target population.
+
+So this is not the best of several candidates. **It is the only place in 8,254 recorded ancestors
+where a single maternity correction produces descent from Euphemia.**
+
+## The mother side, which the patronymic instrument could never see
+
+A patronymic names the **father**, so the junction hunt in `yuri-junction-hunt.md` only ever
+tested fathers — and an unrecorded **mother** yields descent identically. Re-run against women in
+Euphemia's issue who are placed in a Swedish region and whose issue the tree does not record, the
+Södermanland cluster comes back on the same person it did from the father side:
+
+**`Lars Persson` (~1752, Vingåker/Björkvik) draws candidates from both directions at once.**
+
+| direction | candidate | where |
+|---|---|---|
+| father | `Per Ribbing` 1717, no recorded issue | Årdala, Södermanland |
+| mother | **six `Rosenhane` women, 1713–1725, all without recorded issue** | **Marieberg, Björkvik, Södermanland** |
+
+Marieberg in Björkvik is a Rosenhane seat and Björkvik sits inside his own locus. So the one
+frontier person the father-side screen returned is also the one the mother-side screen piles on.
+
+⛔ **AND THE PILE IS THE WARNING, NOT THE EVIDENCE.** *Six sisters, all childless* is what an
+incomplete 18th-century noble record looks like, not six spinsters — "no recorded issue" is a
+statement about our tree, not about their lives. The convergence raises Lars Persson above the
+rest of the frontier; it does not make any single woman a candidate over the others. The document
+is still the Vingåker register.
 
 ## Next
 
-1. **Settle Salomea's maternity against the literature** — that is the whole question, and it is
-   not in our data.
-2. **Run the general test**: every ancestor whose birth precedes the recorded parents' marriage,
-   crossed against fathers who had another spouse inside Euphemia's issue.
-3. The Vingåker parish register lead in `yuri-junction-hunt.md` is now clearly the weaker of the
-   two and should wait.
+1. **Settle Salomea's maternity against the literature.** That is the whole question and it is not
+   in our data. Everything else on this page is a distant second.
+2. **The Vingåker 1752 birth record**, which now answers two screens rather than one.
+3. Nothing else in the ancestry is close. The general test says so mechanically.
