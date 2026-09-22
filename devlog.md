@@ -46100,3 +46100,44 @@ The three copies were NOT collapsed. § *Duplication is deliberate here. Never "
 § *THE REPO IS MINIMALIST* both point the same way: the missing thing was never a shared
 module, it was a test holding them to one answer, so
 `test_no_emitter_backslash_escapes_a_quote` is parametrised over all three.
+
+## 2026-09-21 — six entry points were stale redirects, and the refresh was counting them instead of naming them
+
+From Emma's own screenshot of QuickStatements, not from any check: *"what the fuck is going on
+with the constant attempts to add these qids to redirects?"* — `Q141502958` and `Q141502959`
+answering **"The given entity ID refers to a redirect, which is not supported in this
+context"**, every run.
+
+They are the same two QIDs `test_every_explicit_subject_already_exists` has been failing on. The
+test was right and had been failing rather than being fixed, which is exactly why it recurred.
+
+**Both targets already held the statement.** `Q3754184` Onneca Fortúnez already carried
+`P2600 6000000004313804007`; `Q250731` Álmos, Duke of Nitra already carried
+`6000000001821187530`. So the edits were not merely misdirected, they had nothing to do.
+
+**They are DOUBLE redirects, and that is why nothing detected them.**
+`Q141502958 → Q141498680 → Q3754184`. `wbgetentities` follows neither hop — it returns an
+entity with no labels and no claims — so these QIDs were absent from
+`garborg-live-items-NN.json` entirely, and every downstream *does the item already hold this?*
+check answered *do not know* and emitted. `action=query&titles=…&redirects=1` follows the whole
+chain, and one call over all 26 entry points found **six stale, not two**:
+
+    Q141493459 -> Q9353042      Q141502958 -> Q3754184
+    Q141493460 -> Q695735       Q141502959 -> Q250731
+    Q141493461 -> Q3736064      Q141502962 -> Q141498725
+
+The test caught two of the six; the other four sit inside the exemption sets and were invisible
+to it. All six are resolved in `reports/entry-points-now.tsv` — the hand-maintained drip file
+that `entry-points-immediate.csv` is generated from — and 26 rows became 25, because
+`Q141502962` resolved onto a row that was already there.
+
+**The durable half adds no file, which § *THE REPO IS MINIMALIST* required.**
+`refresh-live-values.py` already knew: it printed `{len(items)} of {len(qids)} fetched` and
+dropped the shortfall silently. It now names the ids and says how to resolve them. A merged-away
+item is the campaign working — our creation folded into a long-standing item — so it reports
+rather than exits.
+
+**One thing is left for Emma and was not decided here.** `Q141502962` now redirects to
+`Q141498725`, and on 2026-09-20 she ruled those two are *not* a duplicate pair. The merge is the
+live state either way; whether it was hers is not knowable from here, so nothing was undone and
+nothing re-split. Tagged NEEDS-DECISION in `queue.md`.

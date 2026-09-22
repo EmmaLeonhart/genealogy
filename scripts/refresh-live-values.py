@@ -204,6 +204,30 @@ def main():
         sys.exit("no items came back at all -- that is a broken fetch, not empty items")
     print(f"{len(items)} of {len(qids)} fetched")
 
+    # ⛔ **A QID THAT DID NOT COME BACK IS NAMED, NOT COUNTED.** This printed the shortfall
+    # as a number and dropped the rest silently, and that silence is what let six of the 26
+    # entry points sit as stale REDIRECTS for however long -- every run re-sent statements onto
+    # them, QuickStatements answered *"The given entity ID refers to a redirect, which is not
+    # supported in this context"*, and nothing here said which ids were involved. Found
+    # 2026-09-21 from Emma's own screenshot rather than from any check.
+    #
+    # An item merged away is the ORDINARY case, not an error: it is what happens when our own
+    # creation is folded into a long-standing item, which is the campaign working. So this
+    # reports rather than exits -- but it reports the ids, because
+    # `Q141502958 -> Q141498680 -> Q3754184` is a DOUBLE redirect and `wbgetentities` follows
+    # neither hop, so the only visible symptom was an absence.
+    absent = sorted(set(qids) - set(items))
+    if absent:
+        print("")
+        print(f"WARNING: {len(absent)} requested items did not come back. A merged-away "
+              f"item is ordinary, but it must be RESOLVED in whichever roster names it -- "
+              f"most often reports/entry-points-now.tsv -- or it is edited again every run:")
+        for q in absent:
+            print(f"  {q}")
+        print("  Resolve with: action=query&titles=<ids>&redirects=1, which follows the "
+              "whole chain where wbgetentities follows none of it.")
+        print("")
+
     rows = []
     for qid, item in sorted(items.items()):
         for prop, statements in sorted(item.get("claims", {}).items()):

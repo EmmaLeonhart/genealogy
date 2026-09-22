@@ -1053,7 +1053,7 @@ minutes and had to be killed. § *NEVER GREP THE WHOLE CORPUS* — the question 
 The pair is `Q130444148` masculine patronymic ↔ `Q130444179` feminine patronymic, and
 `Q10673705` son name ↔ `Q10476255` daughter name. `P5278` links the two items both ways.
 
-### ⛔ THE BATCH IS PUTTING `P2600` ON REDIRECTS, AND A TEST ALREADY CATCHES IT
+### ⛔ THE BATCH IS PUTTING `P2600` ON REDIRECTS — FIXED 2026-09-21, AND IT WAS SIX NOT TWO
 
 Ruled 2026-09-21: *"what the fuck is going on with the constant attempts to add these qids to
 redirects?"* QuickStatements answers **"The given entity ID refers to a redirect, which is not
@@ -1065,8 +1065,40 @@ supported in this context"** and the statement is lost.
 **These are the same two QIDs as CI failure #1**, `tests/test_garborg_day_batch.py::
 test_every_explicit_subject_already_exists` — *editing items not in the ledger*. So the test
 that would have stopped this has been failing rather than being fixed, which is why it is
-*constant*. The fix is the generator resolving a redirect to its target before emitting, not a
-denylist of the two.
+*constant*.
+
+⛔ **AND BOTH TARGETS ALREADY HELD THE STATEMENT**, so every run re-sent an edit that had
+nothing to do. `Q3754184` Onneca Fortúnez already carried `P2600 6000000004313804007` and
+`Q250731` Álmos, Duke of Nitra already carried `6000000001821187530`.
+
+⛔ **THEY ARE DOUBLE REDIRECTS, WHICH IS WHY NOTHING SAW THEM.**
+`Q141502958 → Q141498680 → Q3754184`. `wbgetentities` follows **neither** hop and returns an
+empty entity, so the QIDs were simply absent from the live store and every downstream *does the
+item already hold this?* check answered *do not know* and emitted. `action=query&redirects=1`
+follows the whole chain and is what resolved them.
+
+⛔ **AND CHECKING ALL 26 ENTRY POINTS FOUND SIX STALE, NOT TWO.** The test caught two because
+the other four are shielded by the exemption sets:
+
+    Q141493459 -> Q9353042      Q141502958 -> Q3754184
+    Q141493460 -> Q695735       Q141502959 -> Q250731
+    Q141493461 -> Q3736064      Q141502962 -> Q141498725
+
+All six are resolved in `reports/entry-points-now.tsv`, which is the hand-maintained drip file
+`entry-points-immediate.csv` is generated from. 26 rows became 25.
+
+**The durable half is in `refresh-live-values.py`, and it adds no file.** It already knew — it
+printed `{len(items)} of {len(qids)} fetched` and dropped the rest silently. It now NAMES the
+ids that did not come back and says where to resolve them. A merged-away item is the ordinary
+case, so it reports rather than exits.
+
+- **⛔ NEEDS-DECISION: `Q141502962 → Q141498725` IS NOW A MERGE ON WIKIDATA.** Ruled 2026-09-20:
+  *"that duplicate pair is not a duplicate pair ... To my knowledge, there's no duplicate pairs
+  anymore."* Wikidata now says otherwise — `Q141502962` redirects to `Q141498725` and both
+  carried Geni `6000000000196425114`. Resolving collapsed them to one entry-point row, which is
+  the live state being reflected and **not a judgment about the ruling**. Whether that merge was
+  Emma's own is not something this session can tell, so nothing was undone and nothing was
+  re-split.
 
 ### The 7 CI failures — item 4 of the 2026-09-17 order
 
