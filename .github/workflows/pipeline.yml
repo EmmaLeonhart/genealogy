@@ -635,7 +635,27 @@ jobs:
           # `cancelled`, which is the same word a superseded run gets. Two confident wrong
           # diagnoses came out of reading that word on 2026-09-19. A bounded call fails in
           # minutes with its own name in the log instead.
+          # ⛔ **BOUNDING EACH CALL IS NOT BOUNDING THE LOOP, AND THE ARITHMETIC SAYS SO.**
+          # Five attempts of `timeout 900` pull + `timeout 600` resolve + `timeout 900` push is
+          # **200 minutes** against this job's `timeout-minutes: 150` -- of which roughly 90 are
+          # already spent by the time this step starts. So the per-call timeouts added when the
+          # 58-minute hang was fixed still allow the loop to consume the whole job and report
+          # `cancelled`, which is the exact ambiguity they were added to remove. Caught by
+          # arithmetic on 2026-09-22, not by another lost run.
+          #
+          # A DEADLINE fixes what per-call bounds cannot: no attempt begins past it, and the
+          # step fails with its own message while the job still has time to run its cleanup.
+          # 30 minutes is chosen against the measurement -- the last green run took 94 minutes
+          # end to end and its commit step was a small part of that.
+          deadline=$(( $(date +%s) + 1800 ))
           for attempt in 1 2 3 4 5; do
+            if [ "$(date +%s)" -ge "$deadline" ]; then
+              echo "::error title=Commit step out of time::gave up after $((attempt - 1)) \
+attempt(s); 30 minutes is the budget and the job would otherwise run to its own timeout and \
+report the ambiguous 'cancelled'. The batch is composed and committed locally; the next run \
+recomposes it."
+              exit 1
+            fi
             if ! timeout 900 git pull --rebase origin main; then
               unmerged="$(git diff --name-only --diff-filter=U)"
               if [ -z "$unmerged" ]; then
