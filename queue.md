@@ -1092,13 +1092,14 @@ printed `{len(items)} of {len(qids)} fetched` and dropped the rest silently. It 
 ids that did not come back and says where to resolve them. A merged-away item is the ordinary
 case, so it reports rather than exits.
 
-- **⛔ NEEDS-DECISION: `Q141502962 → Q141498725` IS NOW A MERGE ON WIKIDATA.** Ruled 2026-09-20:
-  *"that duplicate pair is not a duplicate pair ... To my knowledge, there's no duplicate pairs
-  anymore."* Wikidata now says otherwise — `Q141502962` redirects to `Q141498725` and both
-  carried Geni `6000000000196425114`. Resolving collapsed them to one entry-point row, which is
-  the live state being reflected and **not a judgment about the ruling**. Whether that merge was
-  Emma's own is not something this session can tell, so nothing was undone and nothing was
-  re-split.
+- **`Q141502962 → Q141498725` — SETTLED 2026-09-21. Emma merged them herself**: *"I merged
+  them — leave it"*. So the collapsed single entry-point row is correct, and the 2026-09-20
+  ruling that they are *"not a duplicate pair"* is superseded by her own later merge rather than
+  contradicted by it. Nothing to contest and nothing to re-split.
+
+  **The general lesson is the one already written**: § *NOT A DUPLICATE PAIR* warns that the
+  error was *"reading a cached ledger as the live state"*, and this session read a cached
+  **ruling** as the live state in the same way. The live check is what settled it.
 
 ### The 7 CI failures — item 4 of the 2026-09-17 order
 
