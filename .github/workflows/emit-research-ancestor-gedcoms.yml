@@ -1,0 +1,49 @@
+name: emit-research-ancestor-gedcoms
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/emit-ancestor-gedcoms.py"
+      - ".github/workflows/emit-research-ancestor-gedcoms.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Emit ancestor GEDCOMs from derived CSVs
+        run: python scripts/emit-ancestor-gedcoms.py
+
+      - name: Commit and push research-exports GEDCOMs
+        run: |
+          set -euo pipefail
+          git config user.name "Emma Leonhart"
+          git config user.email "contact@emmaleonhart.com"
+          git add research-exports/tang-ancestors.ged research-exports/leonhart-ancestors.ged research-exports/README.md || true
+          if git diff --cached --quiet; then
+            echo "No GEDCOM changes to commit"
+            ls -lh research-exports/ || true
+            exit 0
+          fi
+          git commit -m "$(cat <<'MSG'
+Add synoptic ancestor GEDCOMs for Tang DFA seeds and Leonhart
+
+Built by scripts/emit-ancestor-gedcoms.py from reports/derived-*.csv(.gz)
+(no Geni network contact). Seeds: Tang 362164304500001795 /
+6000000008024207441 / 6000000002187826932; Leonhart 6000000087535357291.
+MSG
+)"
+          git push origin HEAD:main
