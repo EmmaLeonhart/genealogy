@@ -123,8 +123,16 @@ ID_DESCRIPTION = re.compile(r"^(?:Geni \d+|FamilySearch [A-Z0-9-]+)$")
 #: anyone with no dates. It went unnoticed because this test read only
 #: `wikidata-garborg-day.txt`; adding the two halves, which are what is actually sent, is what
 #: surfaced it. `labels.AS_CHILD`/`AS_SPOUSE`/`AS_PARENT` are where the words come from.
+#:
+#: ⛔ **AND THE PHRASE MAY LEAD WITH THE PERSON'S OWN GIVEN NAME, SEPARATED BY A COMMA.**
+#: Ruled 2026-09-21 — *"SETTLED: A COMMA. `Tora, mother of Brita`"* — and
+#: `namemodel.lead_with_given_name` is what writes it. The batch carries
+#: `Agmund Unge Dans, son of Hallkel Agmundssøn Krøkedans` and
+#: `Anna Kornelia, wife of Carl Gökman`; a regex anchored on the relation word alone called
+#: every one of them a hand-written sentence.
 RELATION_WORD = r"son|daughter|child|husband|wife|spouse|father|mother|parent"
-RELATIONSHIP_DESCRIPTION = re.compile(rf"^(?:{RELATION_WORD}) of \S")
+RELATIONSHIP_DESCRIPTION = re.compile(
+    rf"^(?:[^,]{{1,120}}, )?(?:{RELATION_WORD}) of \S")
 #: The bracketed form on the end of an otherwise ordinary description.
 ID_SUFFIX = re.compile(r" \((?:Geni \d+|FamilySearch [A-Z0-9-]+)\)$")
 

@@ -1204,6 +1204,35 @@ def _cjk_priority_qids(our_items):
 
 
 
+def drop_held_restatements(lines, live_values):
+    """Drop every line that only restates a statement the item already holds. `(lines, n)`.
+
+    ⛔ **THE GATE MUST RUN ON WHAT IS WRITTEN, INCLUDING THE HEAD** — the same lesson
+    `refuse_non_local` records one function below. The in-compose version of this ran over
+    `lines` alone, and the hand-identification block is prepended as `head` afterwards, so
+    `Q141502960 P2600 "375732891600013185"` reached line 9 of the composed batch as a pure
+    no-op. `manual_p2600_lines` checks live and is usually right; when its one batched request
+    misses, nothing downstream was asking.
+
+    **Bare only.** A line carrying a qualifier or a reference is attaching something the item
+    does not have, which is a real edit and the whole point of the growth passes.
+
+    `LAST` is never dropped — it names an item this run is creating, so the statement cannot
+    already exist. Labels, aliases and descriptions are never dropped either: they REPLACE, and
+    whether to send one is a different question from whether a claim is present.
+    """
+    kept, dropped = [], 0
+    for line in lines:
+        parts = line.split(chr(9))
+        if (len(parts) == 3 and parts[0].startswith("Q") and parts[1].startswith("P")
+                and parts[2] != "LAST"
+                and (parts[0], parts[1], parts[2].strip('"')) in live_values):
+            dropped += 1
+            continue
+        kept.append(line)
+    return kept, dropped
+
+
 def refuse_non_local(lines, allowed):
     """Drop every batch line whose SUBJECT is an existing item outside the universe and its ring.
 
@@ -7922,18 +7951,22 @@ def main():
     # `LAST` is never dropped: it names an item being created in this run, so the statement
     # cannot already exist. Labels and aliases are never dropped either -- they REPLACE, and
     # whether to send one is a different question from whether a claim is present.
+    #
+    # ⛔ **AND IT IS A BARE RESTATEMENT THAT IS THE WASTE, NOT EVERY RESTATEMENT.** This tested
+    # `len(parts) >= 3`, which would also delete `Q… P2600 "…" P1810 "…"` — the subject-named-as
+    # backfill, whose ENTIRE PURPOSE is to re-state a statement that already exists in order to
+    # attach a qualifier it lacks. Ruled 2026-09-14: *"add the subject named as to existing
+    # P2600 properties within the universe"*, and `CLAUDE.md` says the mechanism outright —
+    # *"Re-stating property+value attaches the reference; it does not add a second statement."*
+    #
+    # The backfill escaped this only by appending in `pipeline.yml` after this script has
+    # finished. It is one wiring change away from being silently gutted, so the predicate says
+    # what it means: a line that carries NOTHING but the triple is a no-op and goes; a line that
+    # attaches a qualifier or a reference is a real edit and stays. The emitter already checked
+    # the qualifier is absent — `build-subject-named-as-backfill` counts those as `already`.
     if live_values:
-        kept, dropped = [], 0
-        for line in lines:
-            parts = line.split(chr(9))
-            if (len(parts) >= 3 and parts[0].startswith("Q") and parts[1].startswith("P")
-                    and parts[2] != "LAST"
-                    and (parts[0], parts[1], parts[2].strip('"')) in live_values):
-                dropped += 1
-                continue
-            kept.append(line)
-        lines = kept
-        print(f"{dropped} statements dropped: the item already holds them")
+        lines, _dropped = drop_held_restatements(lines, live_values)
+        print(f"{_dropped} statements dropped: the item already holds them")
 
     # **Say what the suppressor stopped, every run.** A guard nobody can see is a guard
     # nobody trusts, and this one exists precisely because a silent re-emission started an
@@ -8451,6 +8484,12 @@ def main():
     # before `refuse_non_local` strips — and stripping the one reciprocal a creation carried is
     # exactly how `Q141529844`, `Q141529845` and `Q141529847` were minted with no links at all.
     # A guard that runs before the last thing to edit the file is not the last guard.
+    # The already-holds drop AGAIN, over the assembled file — see `drop_held_restatements`.
+    # The head is prepended above and is otherwise never filtered.
+    if live_values:
+        _final_lines, _held = drop_held_restatements(_final_lines, live_values)
+        if _held:
+            print(f"{_held} bare restatement(s) dropped from the assembled batch, head included")
     _final_lines, _orphans = qs_v1.drop_orphaned_creations(_final_lines)
     if _orphans:
         print(f"{len(_orphans)} creation(s) dropped: the gate stripped the only relationship "
