@@ -194,13 +194,44 @@ BATCH_GED = """0 HEAD
 1 SEX F
 1 FAMC @FFS1@
 1 _FSFTID DDDD-444
+0 @IFS5@ INDI
+1 NAME Henrik /Guntersberg/
+1 SEX M
+1 FAMS @FFS2@
+1 _FSFTID EEEE-555
+0 @IFS6@ INDI
+1 NAME Torleiv /Benkestok/
+1 SEX M
+1 FAMS @FFS3@
+1 _FSFTID FFFF-666
 0 @FFS1@ FAM
 1 HUSB @IFS2@
 1 WIFE @IFS1@
 1 CHIL @IFS3@
 1 CHIL @IFS4@
+0 @FFS2@ FAM
+1 HUSB @IFS5@
+1 CHIL @IFS1@
+0 @FFS3@ FAM
+1 HUSB @IFS6@
+1 CHIL @IFS2@
 0 TRLR
 """
+
+#: ⛔ **THE SAMPLE NEEDS AN ANCHOR THE BRIDGE RESOLVES, OR NOBODY IS CREATED AT ALL.**
+#: `build-familysearch-day` carries a person forward when no relationship can be emitted for
+#: them -- the isolate rule of 2026-08-29, restated 2026-09-21 on three live isolates -- and in
+#: a sample where nobody has a QID that is EVERYBODY. The first version of these tests was
+#: written before that guard existed and went green on a file it then emptied.
+#:
+#: `EEEE-555` and `FFFF-666` are the fathers of the two people the label assertions are about,
+#: so each of them has exactly one QID-bearing relative and is created with a `P22` to it. That
+#: is also the real shape of the campaign: a wavefront out from the eleven bridge points.
+BATCH_BRIDGE = """fs_id	qid	geni_id
+EEEE-555	Q88888888	
+FFFF-666	Q77777777	
+"""
+BATCH_UNIVERSE = '{"universe": ["Q88888888", "Q77777777"], "one_step": []}'
 
 
 @pytest.fixture(scope="module")
@@ -214,10 +245,11 @@ def builder():
 
 @pytest.fixture(scope="module")
 def batch(builder, tmp_path_factory):
-    """The emitted file for `BATCH_GED`, with the ledger and the universe both empty.
+    """The emitted file for `BATCH_GED`, with the two anchors of `BATCH_BRIDGE` resolved.
 
-    Empty on purpose: what the sample is for is the creation path, and an empty bridge is
-    also the state every FamilySearch export after the first one starts in.
+    The bridge is not empty, and it cannot be: a creation with no relationship is carried, not
+    shipped, so an empty bridge produces an empty batch and every assertion below would be
+    checking a header. See `BATCH_BRIDGE`.
     """
     import argparse
     tmp = tmp_path_factory.mktemp("fsbatch")
@@ -225,8 +257,10 @@ def batch(builder, tmp_path_factory):
     src.write_text(BATCH_GED, encoding="utf-8")
     builder.OUT = tmp / "out.txt"
     builder.CARRY = tmp / "carry.tsv"
-    builder.BRIDGE = tmp / "missing-bridge.tsv"
-    builder.UNIVERSE = tmp / "missing-universe.json"
+    builder.BRIDGE = tmp / "bridge.tsv"
+    builder.BRIDGE.write_text(BATCH_BRIDGE, encoding="utf-8")
+    builder.UNIVERSE = tmp / "universe.json"
+    builder.UNIVERSE.write_text(BATCH_UNIVERSE, encoding="utf-8")
     builder.build(argparse.Namespace(gedcom=[str(src)], limit=0))
     return builder.OUT.read_text(encoding="utf-8")
 

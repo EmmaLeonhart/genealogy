@@ -9691,7 +9691,6 @@ Q141494554	P40	LAST	S2600	"6000000004368350816"
 #   Q141521650 Jon Olofsson: P26 spouse = the item just created
 Q141521650	P26	LAST	S2600	"6000000004368350816"
 #   Q141504246 Anders Jonsson i Viken: P25 mother = the item just created
-Q141504246	P25	LAST	S2600	"6000000004368350816"
 #   the item just created: P735 given name = Q1160640 Lucia
 LAST	P735	Q1160640
 #   P5056 patronym or matronym = Q141318568
@@ -17997,10 +17996,6 @@ Q136376387	P2600	"6000000000572428039"	P1810	"Ebba Kristina Siöblad"
 Q136660380	P2600	"6000000007095332291"	P1810	"Maria Andersdotter Bergia"
 Q141225693	P2600	"6000000178279141871"	P1810	"Carl Andersson"
 Q141271422	P2600	"6000000007220645211"	P1810	"Jon Olofsson"
-Q141271445	P2600	"6000000002376687013"	P1810	"Tormod Olavsen Foss"
-Q141290198	P2600	"6000000172226224822"	P1810	"Hallvard Skjalgsson"
-Q141314039	P2600	"6000000009243757359"	P1810	"Rannveig Olsdatter Olsdatter"
-Q141337266	P2600	"6000000005609547575"	P1810	"Øystein Olsen Hodne"
 Q141456306	P2600	"6000000007443346712"	P1810	"Johan Christersson (Ulf af Horsnäs)"
 Q141519531	P2600	"6000000059499134935"	P1810	"unbekannt Esler"
 Q141523779	P2600	"6000000008177323079"	P1810	"Ottarsdatter Bjørnsson"
@@ -18057,15 +18052,6 @@ LAST	P21	Q6581072	S2600	"6000000002154297114"
 Q81212	P25	LAST	S2600	"5475363828490111452"
 #   6000000010821867444: mother of Q14974 (6000000001172352035), created because the tree knows them and Wikidata does not
 CREATE
-LAST	Len	"Malusha Malkovna Lubechanka"
-LAST	Den	"Geni 6000000010821867444"
-LAST	Lmul	"Malusha Malkovna Lubechanka"
-LAST	P31	Q5	S2600	"6000000010821867444"
-LAST	P2600	"6000000010821867444"
-LAST	P21	Q6581072	S2600	"6000000010821867444"
-#   Q14974: P25 = the item just created
-#   6000000177945982827: father of Q141216494 (6000000030876120040), created because the tree knows them and Wikidata does not
-CREATE
 LAST	Len	"Jacob Knutson Skiftun"
 LAST	Den	"Geni 6000000177945982827"
 LAST	Lmul	"Jacob Knutson Skiftun"
@@ -18075,39 +18061,6 @@ LAST	P21	Q6581097	S2600	"6000000177945982827"
 #   Q141216494: P22 = the item just created
 Q141216494	P22	LAST	S2600	"6000000030876120040"
 #   6000000002106194792: mother of Q2521523 (6000000000172750514), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Solveig Halfdansdatter"
-LAST	Den	"Geni 6000000002106194792"
-LAST	Lmul	"Solveig Halfdansdatter"
-LAST	P31	Q5	S2600	"6000000002106194792"
-LAST	P2600	"6000000002106194792"
-LAST	P21	Q6581072	S2600	"6000000002106194792"
-#   Q2521523: P25 = the item just created
-#   6000000004648710083: father of Q12001101 (6000000180815172825), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Ogmund Torbergsson Giske"
-LAST	Den	"Geni 6000000004648710083"
-LAST	Lmul	"Ogmund Torbergsson Giske"
-LAST	P31	Q5	S2600	"6000000004648710083"
-LAST	P2600	"6000000004648710083"
-LAST	P21	Q6581097	S2600	"6000000004648710083"
-#   Q12001101: P22 = the item just created
-#   6000000002187828621: father of Q30301558 (6000000002947577496), created because the tree knows them and Wikidata does not
-CREATE
-LAST	Len	"Poppo von Berg-Schelklingen zu Roggenstein"
-LAST	Den	"Geni 6000000002187828621"
-LAST	Lmul	"Poppo von Berg-Schelklingen zu Roggenstein"
-LAST	P31	Q5	S2600	"6000000002187828621"
-LAST	P2600	"6000000002187828621"
-LAST	P21	Q6581097	S2600	"6000000002187828621"
-#   Q30301558: P22 = the item just created
-# S2600 sources, backfilled onto relationship statements that already exist without
-# one. Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
-# P2600 holders on Wikidata.
-# EVERY LINE IS ATTESTED BY OUR TREE: a source is a claim about the source, so a
-# relationship Geni does not state is left alone rather than cited to Geni.
-# Re-stating property+value attaches the reference; it does not add a second statement.
-
 Q109546615	P40	Q109547445	S2600	"6000000007343898358"
 Q109547222	P3373	Q109547445	S2600	"6000000008890350233"
 Q109829893	P26	Q1362049	S2600	"6000000011714588237"
