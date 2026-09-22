@@ -52,6 +52,32 @@ nothing goes out until this is done. The 2026-09-14 item is folded in here rathe
 beside it — one item about one thing — and its state was stale anyway (last read run
 `34922163324`, 4 failures, long superseded).
 
+⛔ **AND STOP HAND-PATCHING THE GENERATED BATCH. A COMPOSITION IS ONE SET OR IT IS
+INCONSISTENT.** This is the cause of run `35703883166` going red on the fast lane after the
+verify branch had gone green on the same fixes, and it was mine.
+
+Resolving the rebase, I kept MY `wikidata-garborg-day.txt` and let git auto-merge
+`garborg-carry-forward.tsv` toward origin's. Measured afterwards: mine holds **452 creations and
+references `Q141504248`**, origin's holds **448 and does not**, and the two carry-forwards differ
+by two rows. So the batch came from one composition and its carry-forward from another, and both
+failures follow directly —
+
+    test_every_qid_the_batch_points_at_already_exists   P25 -> Q141504248, created by a
+                                                        creation the newer composition drops
+    test_every_married_surname_..._is_being_created     5 surnames recorded in a carry-forward
+                                                        that belongs to the other batch
+
+**Generated artifacts cannot be merged file-by-file.** The composer writes the batch, the
+halves, the carry-forward and the name items as ONE consistent set; taking one file from run A
+and another from run B produces a state no run ever produced and no test can be satisfied by.
+Hand-patching them to make a test pass is the same error one step earlier — it was expedient
+four times today and it is what put the repo here.
+
+**The rule: on a conflict in a generated artifact, take ONE side wholesale for every file in the
+set, and if the right set does not exist yet, let `pipeline.yml` recompose it rather than
+assembling one by hand.** `CLAUDE.md` § *DO NOT DO CI/CD's WORK BY HAND* already says this; what
+was missing is that it applies to CONFLICT RESOLUTION too.
+
 ⛔ **AND "GREEN" HAS TO SAY WHICH LANE, BECAUSE THE SLOW ONE HAS NEVER RUN.** Measured
 2026-09-22 over the last ten CI runs: the `slow` job concluded **`skipped` in every one of the
 eight that reported it**, and `none` in the two now in flight. It is gated
