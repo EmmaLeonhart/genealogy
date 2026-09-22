@@ -1225,7 +1225,57 @@ hold the two identifiers and whatever the tree already says, not to start a rese
   Wagria is eastern Holstein: Wendish / Obotrite, which is the **Pomeranian side of the
   Dutch-Pomeranian cluster** § *Why the cluster campaign exists* is about.
 - **FamilySearch `MBW7-P7H`** — <https://www.familysearch.org/en/tree/pedigree/portrait/MBW7-P7H>.
-  Not fetched: FamilySearch needs a signed-in session and it is hers to work in.
+
+⛔ **AND FAMILYSEARCH DATA GOES INTO THE SYNOPTIC TREE. Ruled 2026-09-21:** *"I never ruled
+that ... and yes the familysearch data is specifically meant for the synoptic tree"*, against
+this file having claimed the opposite. **The claim was invented here**: the 2026-09-10 ruling
+that the WIKIDATA tree never enters the synoptic tree was stretched to cover FamilySearch,
+which she had never ruled on at all. § *Incomplete earlier work is not the thing being
+described* — and a ruling about one source is not a ruling about another.
+
+### The exporter: `getmyancestors`, and there is no API key
+
+**There is no FamilySearch exporter in this repo and there never was.** Checked 2026-09-21:
+`geni-extension` is `host_permissions` `*://www.geni.com/*` and `file:///*`, its eight content
+scripts are Geni-specific, and FamilySearch appears in exactly two docs — as an order.life
+external-id property and as a suggestion in `docs/cbdb.md`. A previous session said the
+extension existed; it does not.
+
+**`getmyancestors` 1.2.0 is the tool** — a Python CLI, `pip install getmyancestors`, installed
+2026-09-21. It authenticates with the ordinary FamilySearch **account username and password**
+and has a client ID compiled in, so `--client_id` only overrides it. **Run with no `-u`/`-p` it
+prompts**, which is the only acceptable form: § the agent never handles a password, and
+`--save-settings` / `--show-password` are never passed.
+
+    getmyancestors -i MBW7-P7H -a 12 -d 2 -m -v       -o gedcom/familysearch/MBW7-P7H-a12-d2.ged       -l gedcom/familysearch/MBW7-P7H.log --concurrency 4 --delay 0.3
+
+`--concurrency 4 --delay 0.3` against defaults of 10 and 0.1, deliberately: concurrency 24 is
+what got Geni's WAF to answer 403 to everything.
+
+⛔ **It pins `requests==2.32.3`** and the install downgraded the environment from 2.34.2. Other
+scripts here import `requests`.
+
+### ⛔ THE PRIMARY KEY IS THE WORK, AND THE PRECEDENT ALREADY EXISTS
+
+`identity.GENI_ID_RE` is `^@[IFNS](\d+)@$` — **digits only** — and a FamilySearch id is
+`MBW7-P7H`, alphanumeric with a hyphen. So a FamilySearch GEDCOM cannot join on the Geni
+profile id, and dropping one straight into `exports/` would put an unparseable file into the
+daily rebuild. It stages in `gedcom/familysearch/` until the merge can read it.
+
+**`scripts/build-wikidata-gedcom.py` is the shape to copy.** It renders a *mergeable* GEDCOM
+for a second identifier namespace already:
+
+    a P2600 holder   @I<geni id>@    1 RFN geni:<id>     FUSES with the corpus, exact join
+    everyone else    @IQ<digits>@    1 REFN Q<digits>    no Geni profile
+    families         @FW<n>@                             `@F9<n>@` parsed as Geni family 91
+
+**The `Q` and the `W` are load-bearing** — they are what stops a foreign xref parsing as a Geni
+id, which is the `@NI04461@` trap that once pointed at a stranger's profile. FamilySearch needs
+the same treatment and the letter must not be `Q`, `F`, `I`, `N` or `S`.
+
+**First step is to look at what getmyancestors actually emits** — whether the FS id lands in
+the xref, in `RFN`, or in a `_FSFTID` custom tag — because that decides how much rendering is
+needed rather than being guessable.
 
 ### ⛔ OUR TREE IS ALREADY RICHER THAN WIKIDATA HERE, AND THAT IS THE POINT
 
