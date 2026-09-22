@@ -52,6 +52,24 @@ nothing goes out until this is done. The 2026-09-14 item is folded in here rathe
 beside it — one item about one thing — and its state was stale anyway (last read run
 `34922163324`, 4 failures, long superseded).
 
+⛔ **AND "GREEN" HAS TO SAY WHICH LANE, BECAUSE THE SLOW ONE HAS NEVER RUN.** Measured
+2026-09-22 over the last ten CI runs: the `slow` job concluded **`skipped` in every one of the
+eight that reported it**, and `none` in the two now in flight. It is gated
+`if: github.event_name == 'workflow_dispatch'` **and** `needs: test` — so a scheduled run skips
+it, a PR skips it, and a dispatch whose fast lane is red skips it too. CI has been red on the
+fast lane for days, so the gate has held it shut throughout.
+
+Its one module is `tests/test_gedcom_real_exports.py`, which reparses **every export in
+`exports/`** against the real files rather than the hand-written fixtures — its own docstring
+says *"the U+2028 handling in `parse` was found here, not there"*. That is not a module whose
+silence is comfortable.
+
+**So the definition for the switch is the FAST lane on 3.10 and 3.13**, which is what the
+workflow itself intends — *"a separate job so a red fast lane is legible on its own"* — and the
+slow lane is reported separately rather than blocking. It is about to produce its first real
+result in this session; if it is red, that is a finding of its own and gets its own item rather
+than being folded into this one.
+
 ⛔ **AND IT STOPS BEING FIRST BY ITSELF.** Ruled 2026-09-22, *"finish CI, then switch"*: the tick
 that sees a GREEN CI run on a sha that is on `origin/main` deletes this section, writes the
 devlog entry, and moves to § *The order. Top to bottom.* below — first bullet, the Pages link to
