@@ -8,6 +8,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## Actually work the queue
+
+I notice that the queue has already become fucking garbage with a gazillion different things on it, which is making it highly difficult to actually use. You probably have given up on using the queue properly. So fix it since we are trying to seriously work through it.
+
+## Fix zipper merge stuff
+
+I have noticed it's very common at this point for people in the last section of the queue.md to be duplicates put onto World Tree people. My impression is that you read my idea that it was okay to do Family Search duplicates, as it is okay to drop our duplicate safeguards for people from geni versus WikiData. That is not true. That's not what I wanted.
+
+I only wanted it for Family Search because Family Search has often different trees, whereas Wikidata tends to be smaller, and geni is the more authoritative thing, or geni is a straight-up expansion of Wikidata. Family Search sometimes conflicts with geni. That's why I asked you to do so, and I notice that it appears to me that you are kind of dropping that safeguard. So fix this
+
 ## ⛔ GENI MORATORIUM — NO CONTACT OF ANY KIND UNTIL AT LEAST 2026-10-21
 
 **Ruled 2026-09-21:** *"never touch geni again this moratorium is at least a month"*.
