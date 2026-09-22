@@ -32,18 +32,12 @@ jobs:
           set -euo pipefail
           git config user.name "Emma Leonhart"
           git config user.email "contact@emmaleonhart.com"
-          git add research-exports/tang-ancestors.ged research-exports/leonhart-ancestors.ged research-exports/README.md || true
+          mkdir -p research-exports
+          git add research-exports/tang-ancestors.ged research-exports/leonhart-ancestors.ged
           if git diff --cached --quiet; then
             echo "No GEDCOM changes to commit"
             ls -lh research-exports/ || true
             exit 0
           fi
-          git commit -m "$(cat <<'MSG'
-Add synoptic ancestor GEDCOMs for Tang DFA seeds and Leonhart
-
-Built by scripts/emit-ancestor-gedcoms.py from reports/derived-*.csv(.gz)
-(no Geni network contact). Seeds: Tang 362164304500001795 /
-6000000008024207441 / 6000000002187826932; Leonhart 6000000087535357291.
-MSG
-)"
+          git commit -m "Add synoptic ancestor GEDCOMs for Tang DFA seeds and Leonhart"
           git push origin HEAD:main
