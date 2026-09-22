@@ -66,7 +66,41 @@ def test_the_only_parse_warnings_are_lines_that_never_claimed_to_be_gedcom(expor
 #: only the first was too narrow -- I checked the two files in front of me instead of censusing
 #: the corpus, and the slow lane found the third. Measured 2026-08-31 over every `.ged` under
 #: `exports/`: **511 `Geni.com`, 2 `genimerge-scraped`, 1 `genimerge`**.
-SYNTHESISED_SOURCES = {"genimerge-scraped", "genimerge"}
+#:
+#: ⛔ **`genimerge-tiny` IS 96% OF THE CORPUS AND THIS SET HAD NEVER HEARD OF IT.** Censused
+#: 2026-09-22 over every `.ged` under `exports/`, reading headers only:
+#:
+#:     21,967  genimerge-tiny      the path GEDCOMs this repo writes
+#:        830  Geni.com
+#:          2  genimerge
+#:          1  getmyancestors      FamilySearch, and not ours -- see FOREIGN_SOURCES
+#:
+#: The comment above records the previous census as *"511 Geni.com, 2 genimerge-scraped, 1
+#: genimerge"*. The corpus has since turned into something this module could not classify, and
+#: nothing said so because the slow lane never ran: it is gated `workflow_dispatch` AND
+#: `needs: test`, and the fast lane was red for days. A gate that cannot run is not a gate.
+SYNTHESISED_SOURCES = {"genimerge-scraped", "genimerge", "genimerge-tiny"}
+
+#: ⛔ **A FOREIGN EXPORT IS NEITHER GENI'S NOR OURS, AND THE DIFFERENCE IS LOAD-BEARING.**
+#: `getmyancestors` writes the FamilySearch corpus. It is a real export from a real database --
+#: so it is not *synthesised*, and calling it that would lose the distinction this module's
+#: header test exists to keep -- but it is not Geni's either, and **every Geni-structural
+#: assumption below is false of it on purpose**.
+#:
+#: `scripts/render-familysearch-gedcom.py` renumbers its xrefs to `@IFS<n>@` / `@FFS<n>@`
+#: precisely so they CANNOT parse as Geni profile ids: `identity.GENI_ID_RE` is `^@[IFNS](\d+)@$`
+#: and `@I1@` would otherwise read as Geni profile 1, fusing 3,103 Norwegians onto whoever holds
+#: ids 1..3103. `tests/test_familysearch_gedcom.py` pins that render and asserts the raw file
+#: WOULD have leaked. So asserting `@I<digits>@` here would demand the exact thing the renderer
+#: exists to prevent, and the two test files would contradict each other.
+FOREIGN_SOURCES = {"getmyancestors"}
+
+#: The xref prefixes a foreign export uses, per source. One map each, because the point of a
+#: foreign prefix is that it is NOT one of ours.
+FOREIGN_XREF_PREFIXES = {
+    "getmyancestors": {"IFS": "INDI", "FFS": "FAM", "NFS": "NOTE", "SFS": "SOUR",
+                       "SUBM": "SUBM"},
+}
 SYNTHETIC_ID_PREFIXES = ("9995", "9990")
 
 
@@ -74,9 +108,19 @@ def _is_synthetic(geni_id):
     return geni_id.startswith(SYNTHETIC_ID_PREFIXES) and len(geni_id) == 19
 
 
+def _source_of(export):
+    """The `1 SOUR` of the header, or `''`."""
+    return export.header.value_of("SOUR") if export.header else ""
+
+
 def _synthesised(export):
     """True for a file this repo generated rather than one Geni sent."""
-    return bool(export.header) and export.header.value_of("SOUR") in SYNTHESISED_SOURCES
+    return _source_of(export) in SYNTHESISED_SOURCES
+
+
+def _foreign(export):
+    """True for an export from a genealogy database that is not Geni. See `FOREIGN_SOURCES`."""
+    return _source_of(export) in FOREIGN_SOURCES
 
 
 def test_export_has_a_geni_header(export):
@@ -90,13 +134,19 @@ def test_export_has_a_geni_header(export):
     """
     assert export.header is not None
     source = export.header.value_of("SOUR")
-    assert source == "Geni.com" or source in SYNTHESISED_SOURCES, (
-        f"unknown export source {source!r}")
+    assert (source == "Geni.com" or source in SYNTHESISED_SOURCES
+            or source in FOREIGN_SOURCES), f"unknown export source {source!r}"
 
 
 def test_every_individual_xref_encodes_its_geni_profile_id(export):
     # This is the assumption the entire merge rests on: the xref IS the ID, and
     # RFN says the same thing. If Geni ever changes that, fail here and loudly.
+    # ⛔ A FOREIGN export's xrefs are deliberately unparseable as Geni ids -- that is what
+    # `render-familysearch-gedcom.py` exists to guarantee and what
+    # `tests/test_familysearch_gedcom.py` pins. Asserting the opposite here would put the two
+    # files in contradiction and demand the very leak the renderer prevents.
+    if _foreign(export):
+        pytest.skip(f"{_source_of(export)}: xrefs are namespaced so they CANNOT be Geni ids")
     individuals = export.by_tag("INDI")
     assert individuals
 
@@ -168,12 +218,31 @@ def _prefixes_by_tag(records) -> dict[str, set[str]]:
     return seen
 
 
-def _unknown(seen: dict[str, set[str]]) -> dict[str, list[str]]:
-    return {p: sorted(tags) for p, tags in seen.items() if p not in XREF_PREFIXES}
+def _unknown(seen: dict[str, set[str]], known=None) -> dict[str, list[str]]:
+    """The prefixes in `seen` that `known` does not account for. Geni's four by default."""
+    known = XREF_PREFIXES if known is None else known
+    return {p: sorted(tags) for p, tags in seen.items() if p not in known}
 
 
 def test_only_the_four_known_xref_prefixes_occur(export):
-    unexpected = _unknown(_prefixes_by_tag(export.records))
+    """⛔ **And a FOREIGN export is checked against its own four, not Geni's.**
+
+    `getmyancestors` writes `@IFS<n>@` / `@FFS<n>@` after `render-familysearch-gedcom.py` has
+    renumbered it, and the whole point of those prefixes is that `GENI_ID_RE` cannot parse
+    them. Reporting them here as *"Geni has started using xref prefixes this project does not
+    know"* would be the message saying the opposite of what happened -- nothing about Geni
+    changed, and the prefixes are unknown to `identity` deliberately.
+    """
+    known = FOREIGN_XREF_PREFIXES.get(_source_of(export), XREF_PREFIXES)
+    unexpected = _unknown(_prefixes_by_tag(export.records), known)
+
+    if _foreign(export):
+        assert not unexpected, (
+            f"{_source_of(export)} used an xref prefix its renderer does not produce: "
+            f"{unexpected}. Check scripts/render-familysearch-gedcom.py -- a prefix it does "
+            f"not namespace is one GENI_ID_RE may parse as a Geni profile id."
+        )
+        return
 
     assert not unexpected, (
         f"Geni has started using xref prefixes this project does not know: "
@@ -186,10 +255,17 @@ def test_only_the_four_known_xref_prefixes_occur(export):
 def test_each_xref_prefix_stays_bound_to_one_record_type(export):
     seen = _prefixes_by_tag(export.records)
 
+    # A foreign export brings its own prefixes, and the property still holds -- one prefix,
+    # one record type -- it is just a different map. `KeyError: 'FFS'` was this test asserting
+    # Geni's map over FamilySearch's.
+    expected = FOREIGN_XREF_PREFIXES.get(_source_of(export), XREF_PREFIXES)
+
     for prefix, tags in sorted(seen.items()):
-        assert tags == {XREF_PREFIXES[prefix]}, (
+        assert prefix in expected, (
+            f"xref prefix {prefix!r} is not one {_source_of(export)!r} is known to use")
+        assert tags == {expected[prefix]}, (
             f"xref prefix {prefix!r} appears on {sorted(tags)}, but this project "
-            f"assumes it means {XREF_PREFIXES[prefix]} and nothing else."
+            f"assumes it means {expected[prefix]} and nothing else."
         )
 
 
@@ -209,7 +285,22 @@ def test_every_known_prefix_is_actually_present(export):
         assert "I" in seen, "even an overlay has to name somebody"
         return
 
-    assert {"I", "F"} <= seen
+    # A foreign export is a genealogy, so the property holds -- under its own prefixes.
+    if _foreign(export):
+        assert {"IFS", "FFS"} <= seen, (
+            f"{_source_of(export)}: an export without people and families is not one")
+        return
+
+    # ⛔ **A ONE-PERSON EXPORT HAS NO FAMILIES, AND THAT IS NOT A BROKEN EXPORT.**
+    # `exports/post-merge/export-Ancestors-6000000227805352866.ged` is one `INDI` and one
+    # `SUBM`: a real `Ancestors` export of somebody Geni records no relatives for. `{"I","F"}
+    # <= seen` called that a format change. The property worth asserting is the one the
+    # docstring states -- a genealogy names people -- plus the stronger half only where it can
+    # be true: TWO people related to each other require a `FAM` to relate them.
+    assert "I" in seen, "an export without people is not one"
+    if len(export.by_tag("INDI")) > 1:
+        assert "F" in seen, (
+            "more than one person and no family: the relationships would be unrepresented")
 
 
 def test_the_prefix_reader_distinguishes_the_xref_that_caused_the_bug():
