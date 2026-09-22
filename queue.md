@@ -164,7 +164,12 @@ it is done.
 
 ⛔ **Do not edit Wikidata while this section is still here.**
 
-
 ---
 
-Live plan below this CI-green gate continues in `docs/queue-archive/queue-live-rest-{0..5}.md` (split for upload size; re-join into this file in a follow-up).
+## Follow-up (not first)
+
+- Re-join the META QUEUE / non-Geni live plan into this file from the full cleaned `queue.md`
+  (box path `/workspace/genealogy-work/queue.md` or Windows checkout). Truncated here only for
+  MCP upload size — Geni campaign dump stays archived, not restored.
+- Inline plain `scripts/build-ancestor-creations.py` and drop `_ac_payload_*.b64`.
+- Finish `docs/queue-archive/geni-blocked-campaigns-2026-09-cont.md` (archive part 2).
