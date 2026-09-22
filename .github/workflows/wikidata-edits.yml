@@ -163,7 +163,10 @@ jobs:
           sparse-checkout: |
             /scripts
             /src
+            /tests/test_no_descriptions_or_summaries.py
             /reports/wikidata-garborg-day*.txt
+            /reports/wikidata-familysearch-day.txt
+            /reports/wikidata-ancestor-creations*.qs
             /reports/wikidata-edits-applied.tsv
             /out/wikidata/unlinked-items.json
             /out/wikidata/edit-universe.json
@@ -251,6 +254,25 @@ jobs:
             exit 1
           fi
           echo "$batch: $(grep -c '^' "$batch") lines"
+
+      # ⛔ **THE DESCRIPTION GUARDS RUN BEFORE ANYTHING IS SENT, AND THEY FAIL THE JOB.**
+      # Ruled 2026-09-21: *"ci/cd for this should block any editing lol. All individuals should
+      # have descriptions"*, and *"we need to make everything green before edits happen. No
+      # half measures."*
+      #
+      # Wikibase refuses a duplicate creation only when the label AND a NON-EMPTY description
+      # both match, so a blank description is not a weak guard — it is the absence of the only
+      # guard there is, and every duplicate it lets through has to be merged by hand afterwards.
+      # A test that goes red in `tests.yml` does not stop this workflow; this step does.
+      #
+      # `pytest` rather than a bespoke check, so the gate and the test suite can never drift
+      # apart into two different answers. No `continue-on-error`: it fails closed, which is the
+      # same choice the start-date and locality gates make.
+      - name: Nothing is sent while a creation has no description
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: |
+          python -m pip install --quiet pytest
+          python -m pytest -q tests/test_no_descriptions_or_summaries.py
 
       - name: Run the batch
         if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'

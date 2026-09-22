@@ -381,6 +381,21 @@ jobs:
           PYTHONPATH: src
         run: python scripts/split-daily-batch.py
 
+      # ⛔ FAMILYSEARCH, AND IT IS DELIBERATELY NOT PART OF THE SPLIT ABOVE. Ruled 2026-09-21:
+      # *"I want to have a pipeline that creates duplicates of familysearch vs geni but we can
+      # manually merge it. Makes separate quickstatements."* Its own file, so the duplicates it
+      # creates are reviewable and mergeable as a SET rather than mixed into edits that are
+      # meant to be unique -- which is why it runs after the split and feeds neither half.
+      #
+      # It regenerates here rather than in a session because `CLAUDE.md` § *Code that is
+      # WRITTEN but never CALLED is not done*: the bridge grows every time one of these items
+      # gets a `P2889`, so a snapshot committed by hand is wrong the day after it is made.
+      - name: The FamilySearch batch, its own file
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-familysearch-day.py
+
       # ⛔ THE UNIVERSE-GROWTH PASS, APPENDED TO BOTH HALVES AFTER THE SPLIT. Ruled
       # 2026-09-14: adding `P1810` to existing `P2600` statements is a true, harmless, missing
       # statement — and the point is that editing an item makes it OURS, so the universe grows

@@ -46189,3 +46189,153 @@ records where the file holds 6,490, because a `NOTE` carries its text inline; th
 never affected and the leak guard proved it, but a summary off by 341x is how a bad render gets
 waved through, so the counter has a test too. And the 919 KB download log is gitignored by name,
 never a `*.log` pattern.
+
+---
+
+## 2026-09-21 — every individual gets a description, and CI/CD blocks editing until they do
+
+*"All individuals should have descriptions."* *"No description info means geni id referencing
+description not no description."* *"CI/CD for this should block any editing."* *"We need to make
+everything green before edits happen. No half measures."*
+
+**Wikibase refuses a duplicate creation only when the label AND a NON-EMPTY description both
+match.** So a blank description is not a weak guard, it is the absence of the only guard there
+is — and every duplicate it lets through has to be merged by hand afterwards. That is the whole
+of it, and four emitters were leaving it blank.
+
+Measured across the composed batches before the fix:
+
+    reports/wikidata-garborg-day.txt          28 blank descriptions, 5 duplicate pairs
+    reports/wikidata-garborg-day-auto.txt     16 blank descriptions, 4 duplicate pairs
+    reports/wikidata-garborg-day-manual.txt   25 blank descriptions, 5 duplicate pairs
+    reports/wikidata-ancestor-creations*.qs   10 blank descriptions
+    reports/wikidata-familysearch-day.txt    182 blank descriptions
+
+All of them are now zero, and so is every duplicate `(label, description)` pair.
+
+### The ladder, and it has no bottom rung that emits nothing
+
+    1. the life description        circa 1518 Bergen, Norway - 1580
+    2. the relationship phrase     daughter of Arne Olaus Fjørtoft Garborg
+    3. THE IDENTIFIER              Geni 6000000000757999620 / FamilySearch MBW7-P7H
+
+Rung 3 is unique by construction — it is the primary key of whichever source the person came
+from — so two items of ours can never again collide on label plus description. It is a pointer
+rather than a sentence, deliberately: when nothing is known about the person it describes the
+RECORD we hold instead of describing nobody, which is also what the person doing a merge needs
+to see. `scripts/descriptions.py` is the one authority, shared, because a guard in one emitter
+is not a guard.
+
+### Four emitters, each blank for its own reason
+
+- **`build-garborg-day.py`** stopped at rung 2. The comment said so in as many words — *"a
+  person with neither dates nor a named relative still yields nothing, and that is the only
+  remaining hole"* — a hole in the duplicate guard, written down instead of filled. `_desc` is
+  now resolved at the top of the `CREATE` block so every branch gets it.
+- **`build-ancestor-creations.py`** had a whole section headed **⛔ NO DESCRIPTIONS**, citing
+  the categorical ban of 2026-08-30. **That ban was reversed on 2026-09-19** and this emitter
+  went on obeying the dead rule, so all ten people it made — `Margareta`, `Rotrude`, `Brigida
+  Aslaksdatter`, exactly the commonplace labels that collide — went out unguarded.
+- **`build-garborg-name-items.py`** had `given` in `CLASS_FOR` and not in `DESCRIPTION_FOR`, so
+  **every given-name item ever minted carried no description**. `Berete`, labelled in five
+  languages, `P31 Q202444`, nothing to stop a second one. The argument that put `patronymic`
+  there in the first place — duplicates to the point of intolerability — is the same argument.
+- **`build-familysearch-day.py`**, new today, takes rung 3 off `P2889`.
+
+### And a collision between two descriptions that both exist
+
+Two people with the same name and the same dates produce the same string, which in a
+Scandinavian corpus is the ordinary case and not the odd one. `descriptions.deduplicate` runs
+over the **assembled** batch — not inside the composer, for the reason `check-batch-locality.py`
+gives about the locality gate: passes append to the file afterwards, and a guard the composer
+alone applies is one appended section away from being no guard. The second of a colliding pair
+takes its identifier in brackets.
+
+### The gate, in two places, both failing closed
+
+- **`wikidata-edit-run.py` refuses the whole file** before a live run if any `CREATE` in it has
+  no description. The file, not the line: skipping the undescribed creations would send a batch
+  whose `LAST` statements name the wrong item.
+- **`wikidata-edits.yml` runs the description tests before the send step**, with no
+  `continue-on-error`. A test going red in `tests.yml` does not stop that workflow; this does.
+
+`tests/test_no_descriptions_or_summaries.py` gains the two assertions and now reads the two
+**halves** as well — `-auto.txt` is what the schedule sends and `-manual.txt` is what the site
+publishes, and neither was ever checked. Its allowed-shape list was also wrong in two ways that
+only showed once the halves were in scope: the relationship phrase of rung 2 was never listed,
+and a life description whose side is a place with no date (`born Wollin, Potsdam-Mittelmark,
+Brandenburg, Germany`) failed a mandatory-year lookahead.
+
+**The already-run batches are left alone.** `wikidata-garborg-day-1.qs`,
+`wikidata-garborg-day-2026-08-25-run.qs` and `wikidata-jon-parents.qs` hold 15 undescribed
+creations between them; those items exist, and rewriting the record of what went out would
+falsify it. The fix for them is on Wikidata.
+
+---
+
+## 2026-09-21 — FamilySearch gets its own QuickStatements, and the duplicates are the design
+
+*"I want to have a pipeline that creates duplicates of familysearch vs geni but we can manually
+merge it. Makes separate quickstatements."*
+
+`scripts/build-familysearch-day.py` writes `reports/wikidata-familysearch-day.txt`: **2,853
+`CREATE` blocks** out of the 3,103 people in
+`exports/familysearch/MBW7-P7H-ancestors12-descendants2.ged`, each carrying `P2889`. **55
+relationship statements go out from the new items** to the ones the `P2889` bridge already
+resolves, and **55 more go the other way** — `Q… P… LAST`, across 8 existing items — which is
+what attaches the new component to Wikidata in the same run instead of leaving it floating.
+
+**This closes the `NEEDS-DECISION` the 0.35% bridge left open**, taking the first of its three
+readings: emit `P2889` ourselves and become the bridge rather than consume one. Withholding
+items until a join is proven means 3,092 people never reach Wikidata at all; measuring `P2889`
+coverage across all of Wikidata first is § *DO NOT MEASURE THE VOLUME BEFORE DOING A SMALL
+THING*.
+
+`P2889` on every created item is the load-bearing part and the test that pins hardest: the
+FamilySearch id is the only identifier these people have, so an item made without it cannot be
+joined by anyone later, including the person doing the merge it exists for. One `P2889` per
+`CREATE`, checked by count.
+
+It runs in `pipeline.yml` after the split and feeds neither half, so the duplicates stay
+reviewable as a set. `check-batch-locality.py` now reads four batches rather than three — a
+separate output file is not an exemption from § *ALL EDITS, NO EXCEPTIONS* — and all four report
+clean.
+
+**250 people are carried forward rather than created, with the reason named per person** in
+`reports/familysearch-carry-forward.tsv`: 154 unnamed, 85 refused by the CJK gate, 11 already on
+Wikidata. Nobody is silently dropped.
+
+### Two label defects this corpus found, both fixed where the rule lives
+
+**`leads_with_a_marker` read `tokens[0]`, and the marker vocabulary has held phrases all along.**
+`n n`, `n. n.`, `no name`, `not known`, `name not known`, `unknown wife`, `namn okänt` — none of
+them could ever match, because the test was one token wide. Eleven FamilySearch people went into
+a draft batch labelled `N. N. Harniktsdatter`, `N. N Arnesdatter Skjeggen`, `N. N Bødal`, the
+marker read as a given name and the surname after it read as a patronymic.
+
+The same scan over `reports/derived-labels.csv`: **504 label strings on the GENI side are in that
+state** — 172 `N. N.`, 165 `N N`, 72 `No Name`, 48 `no name`, and a tail. So this was never a
+FamilySearch problem; FamilySearch is where it became visible. `marker_prefix_length` replaces
+the boolean because the caller has to drop exactly the marker: `labels_for` removed `tokens[0]`
+and nothing else, so even a detected two-word marker would have come out
+`NN N. Harniktsdatter`, half of it preserved as a given name.
+
+**Two gaps in the curated vocabulary, filled rather than worked around.** `n. n` was the one
+missing permutation — `n.n`, `n n` and `n. n.` were all listed and the half-stopped spelling was
+not. `ikke kjent` is Norwegian, the unabbreviated form of `ukjent`, already there at 188; the
+standing rule § *An obvious unknown-word marker goes straight in* covers it without asking.
+
+### What the builder reuses rather than reinvents
+
+`label_in`, `life_description`, `qs`, `HUMAN` and `SEX` come from `build-garborg-day.py`;
+`labels.labels_for`, `drop_marker_surname`, `name_with_unknown_surname` and
+`namemodel.drop_label_title` carry the naming rules; `datequals.date_quals` writes the
+qualifiers. The one new piece is `to_gedcom`, and it is a **source-format normaliser, not a
+second date parser** — FamilySearch writes free text in six languages and 253 distinct shapes
+over 5,666 `DATE` lines, so the spelling is rewritten into GEDCOM tokens and `genimerge.dates`
+stays the only thing that reads a date. `about 1520` → `ABT 1520` → `circa 1520` in the
+description and `P1480 Q5727902` on the statement. Text it does not recognise passes through
+unchanged and parses to nothing.
+
+⛔ **Nothing in this touched geni.com.** The moratorium of 2026-09-21 is intact: this work is a
+committed GEDCOM, Wikidata artifacts already on disk, and Python.

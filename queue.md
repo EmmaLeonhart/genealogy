@@ -36,48 +36,6 @@ Recovery state, for whenever it does resume:
   output, not Geni's.
 * the queue is `reports/sweep-queue-6000000227822546944.txt`, and the cursor stood at **8,993**.
 
-## ⛔ FIRST ITEM — FAMILYSEARCH AND GENI GET SEPARATE ITEMS, ON PURPOSE. Ruled 2026-09-21
-
-*"I want to have a pipeline that creates duplicates of familysearch vs geni but we can manually
-merge it. Makes separate quickstatements."*
-
-**Duplicates are the DESIGN here, not a defect to prevent.** A FamilySearch person gets their
-own Wikidata item even when a Geni person for the same human already has one. A human merges the
-pair afterwards on Wikidata, which is a one-click operation there and leaves a redirect.
-
-**Why, and it is measured rather than assumed:** the `P2889` bridge resolves **11 of 3,103**
-people — 0.35% — so automated resolution cannot join these two trees. Withholding an item until
-the join is proven means 3,092 people never enter Wikidata at all. Creating both and merging by
-hand is the stopgap `CLAUDE.md` § *THE PRACTICAL BARRIER: THE ZIPPER MERGE* already describes,
-applied to a second source.
-
-⛔ **THIS OVERRIDES THE ANTI-DUPLICATE REASONING FOR THIS PIPELINE ONLY.** § *DESCRIPTIONS ARE
-WRITTEN NOW, AND THE REASON IS THE DEDUPLICATION* exists to stop us recreating **our own**
-items. It is not a reason to refuse a FamilySearch item beside a Geni one — that duplicate is
-intentional, it is going to be merged, and the description is what lets the person merging see
-they are the same human. Descriptions are still written, for that reason rather than against it.
-
-**A SEPARATE QuickStatements file.** Not folded into the daily batch: its own output, so the
-duplicates it creates are reviewable and mergeable as a set rather than mixed into edits that
-are meant to be unique. Name it beside the others in `reports/`.
-
-What exists to build on:
-
-    exports/familysearch/MBW7-P7H-ancestors12-descendants2.ged   3,103 people, in the corpus
-    scripts/render-familysearch-gedcom.py                        the safe-xref render
-    scripts/bridge-familysearch-qids.py                          _FSFTID -> P2889 -> QID -> P2600
-    reports/familysearch-qid-bridge.tsv                          the 11 that already join
-
-**The 11 that DO join are the one exception**: they already have an item, so they take
-statements rather than a creation. Everything else is a `CREATE`.
-
-⛔ **AND `P2889` GOES ON EVERY ITEM IT CREATES.** The FamilySearch id is the only identifier
-these people have, so an item created without it cannot be joined by anyone later — including
-the person doing the merge. That is also what turns this pipeline into the bridge instead of a
-consumer of one: the next export resolves against the ids we ourselves published.
-
----
-
 ## ⛔ THE META QUEUE, FOLDED IN 2026-09-20 — THIS IS THE LIVE PLAN
 
 It was a separate file only because PR #254 rewrote `queue.md` underneath it. That merge
@@ -1349,12 +1307,13 @@ id, while `garborg-qids.tsv` pairs her perfectly well. `ledger()` folds both for
 reason. A join that silently under-reports by 2.75x is the shape of failure this repo keeps
 being bitten by.
 
-- **⛔ NEEDS-DECISION: 0.35% is the finding, and what follows from it is not decided.** Three
-  readings, none of them taken here: emit `P2889` ourselves for people we have identified, and
-  become the bridge rather than consuming it; accept an eleven-point attachment and let the
-  zipper do the rest; or measure `P2889` coverage across all of Wikidata before any further
-  FamilySearch pulls. § *DO NOT MEASURE THE VOLUME BEFORE DOING A SMALL THING* cuts against the
-  third.
+**SETTLED 2026-09-21, and the first reading is the one taken**: we emit `P2889` ourselves and
+become the bridge. `scripts/build-familysearch-day.py` writes
+`reports/wikidata-familysearch-day.txt`, a separate batch that creates every FamilySearch
+person as their own item carrying `P2889`, so the next `bridge-familysearch-qids.py` run
+resolves against ids we published. The duplicate against a Geni item is intended and a human
+merges it. The third reading -- measure coverage across all of Wikidata first -- was refused by
+§ *DO NOT MEASURE THE VOLUME BEFORE DOING A SMALL THING*.
 
 ### ⛔ OUR TREE IS ALREADY RICHER THAN WIKIDATA HERE, AND THAT IS THE POINT
 

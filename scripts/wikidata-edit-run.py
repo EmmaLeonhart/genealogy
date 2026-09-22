@@ -952,6 +952,36 @@ def _explain(blocked: Blocked, satisfied: set) -> None:
           "already applied.", file=sys.stderr)
 
 
+#: The label and the description inside a `CREATE` block, as QuickStatements writes them.
+_CREATE_LABEL = re.compile(r'^LAST\t(?:Lmul|Len)\t"(.*)"$')
+_CREATE_DEN = re.compile(r'^LAST\tDen\t"(.+)"$')
+
+
+def creations_without_a_description(path):
+    """`[label]` for every `CREATE` in the batch that carries no non-empty `Den`.
+
+    ⛔ Ruled 2026-09-21: *"all individuals should have descriptions"*, and CI/CD blocks any
+    editing when one does not. A `CREATE` with no label at all is not counted here — that is a
+    different defect with its own guard, and reporting it under this message would send
+    somebody looking for a description that was never the problem.
+    """
+    out = []
+    lines = path.read_text(encoding="utf-8").splitlines()
+    starts = [n for n, l in enumerate(lines) if l.strip() == "CREATE"]
+    for i, start in enumerate(starts):
+        end = starts[i + 1] if i + 1 < len(starts) else len(lines)
+        label = described = None
+        for n in range(start + 1, end):
+            m = _CREATE_LABEL.match(lines[n])
+            if m and label is None:
+                label = m.group(1)
+            if _CREATE_DEN.match(lines[n]):
+                described = True
+        if label and not described:
+            out.append(label)
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch", required=True)
@@ -1059,6 +1089,26 @@ def main() -> int:
             f"refusing a live run on {rel}: not one of the reviewed batches "
             f"({', '.join(sorted(REVIEWED_BATCHES))}). "
             "Review before execute is load-bearing — see docs/wikidata-bot.md."
+        )
+
+    # ⛔ **A CREATION WITH NO DESCRIPTION BLOCKS THE WHOLE RUN. Ruled 2026-09-21:** *"ci/cd for
+    # this should block any editing lol. All individuals should have descriptions."*
+    #
+    # It is a gate on the SENDER rather than only a test, because a test says the batch was
+    # wrong when it was composed and this says nothing goes out until it is right. Wikibase
+    # refuses a duplicate creation only on label AND a NON-EMPTY description together, so a
+    # blank description is not a weak guard — it is the absence of the only guard there is, and
+    # the duplicates it lets through have to be merged by hand afterwards.
+    #
+    # It refuses the file, not the line: skipping the undescribed creations and sending the
+    # rest would send a batch whose `LAST` statements name the wrong item.
+    undescribed = creations_without_a_description(path)
+    if undescribed:
+        raise SystemExit(
+            f"refusing a live run on {rel}: {len(undescribed)} CREATE block(s) carry no "
+            f"description, e.g. {undescribed[:5]}. Every individual gets one — the life "
+            "description, else a relationship phrase, else the identifier (`Geni <id>`). "
+            "scripts/descriptions.py writes it; recompose the batch."
         )
 
     account = os.environ.get("USERNAME")

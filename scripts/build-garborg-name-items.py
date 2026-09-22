@@ -185,6 +185,18 @@ DESCRIPTION_FOR = {
     "patronymic": "patronymic",
     "family": "family name",
     "matronymic": "matronymic",
+    # ⛔ **A GIVEN NAME ITEM WAS THE ONE KIND GOING OUT WITH NO DESCRIPTION AT ALL**, and
+    # `CLASS_FOR` has had a `given` entry all along, so every one of them was created blank.
+    # Found 2026-09-21 by counting blank descriptions across the composed batches:
+    # `Berete`, labelled in five languages, `P31 Q202444 given name`, and no `Den`.
+    #
+    # Ruled 2026-09-01 and the reasoning is the whole of it: patronymics got a description
+    # *"so that they deduplicate properly, because duplicate patronymics were being created
+    # to the point of intolerability"*. `Berete` is a commoner token than any patronymic and
+    # the same deduplication is the only thing stopping us minting it twice. The rule this
+    # sits under — § *Name items keep their three strings* — forbids STRIPPING one from a
+    # batch; it does not say the fourth kind should go out unguarded.
+    "given": "given name",
 }
 
 #: The live day batch. The earlier `wikidata-garborg.qs` and `-hop2.qs` were retired

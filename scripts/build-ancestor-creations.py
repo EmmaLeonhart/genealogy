@@ -65,10 +65,19 @@ picks two existed unlinked (`Willa of Tuscany` as `Q2054995`, `Q60040644`, `Q401
 I asked whether to gate this before it was wired. That was the wrong question and the answer is
 written here so nobody asks it again.
 
-## ⛔ NO DESCRIPTIONS
+## ⛔ EVERY CREATION CARRIES A DESCRIPTION, AND THIS SECTION USED TO SAY THE OPPOSITE
 
-`CLAUDE.md` § *NO descriptions and NO edit summaries, categorically* — the exception is name
-items and these are people. `Den` is not emitted, however much a bare label looks unfinished.
+It said *"`CLAUDE.md` § NO descriptions and NO edit summaries, categorically — the exception is
+name items and these are people. `Den` is not emitted, however much a bare label looks
+unfinished."* **That rule was reversed on 2026-09-19** — `CLAUDE.md` § *DESCRIPTIONS ARE WRITTEN
+NOW, AND THE REASON IS THE DEDUPLICATION* — and this emitter went on obeying the dead one, so
+every person it made went out with no description at all: **10 of them across the two files**,
+`Margareta`, `Rotrude`, `Brigida Aslaksdatter`, exactly the commonplace labels that collide.
+
+Ruled 2026-09-21: *"all individuals should have descriptions"*, and *"no description info means
+geni id referencing description not no description"*. These people have a label and a Geni id
+and nothing else — no dates are loaded here — so the description is the identifier,
+`Geni <id>`, which is unique by construction. `scripts/descriptions.py` is the one authority.
 """
 from __future__ import annotations
 
@@ -79,6 +88,9 @@ import pathlib
 import random
 import re
 import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import descriptions  # noqa: E402 -- the one description rule, shared with the other emitters
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FAMILY = ROOT / "reports" / "derived-family.csv"
@@ -250,6 +262,11 @@ def block(parent_geni, label, role, child_geni, child_qid):
         # An empty label is left UNSET rather than written as "" -- `Len ""` sets a blank one.
         lines.append('LAST\tLen\t"%s"' % label)
         lines.append('LAST\tLmul\t"%s"' % label)
+        # ⛔ **IMMEDIATELY AFTER THE LABEL, because QuickStatements applies a `CREATE` line by
+        # line**: a `Den` written at the end of the block means the item is born label-only and
+        # is fully furnished before the pair can be refused, which is how
+        # `Anders Jørgensen Heier` came to exist twice.
+        lines.append('LAST\tDen\t"%s"' % descriptions.id_description("P2600", parent_geni))
     lines.append('LAST\tP31\t%s\tS2600\t"%s"' % (HUMAN, parent_geni))
     lines.append('LAST\tP2600\t"%s"' % parent_geni)
     lines.append('LAST\tP21\t%s\tS2600\t"%s"' % (sex, parent_geni))

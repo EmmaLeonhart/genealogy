@@ -89,7 +89,12 @@ def is_redacted(gedcom_name: str) -> bool:
 #: not include `unknown` or `?`, which were refused when they were added to
 #: `NOT_A_NAME` unasked, and which are somebody's editorial choice rather than a
 #: marker this project owns.
-_NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n.n", "n-n"}
+#:
+#: **`n. n` was the one missing permutation**, found 2026-09-21 in the FamilySearch corpus:
+#: `Olav /N. N/` and `Holger /N. N/` reached the batch as labels reading `Olav N. N`, because
+#: `n.n`, `n n` and `n. n.` were all listed and the half-stopped spelling was not. That is an
+#: enumeration completed, not a widening — every other way of writing it was already here.
+_NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n. n", "n.n", "n-n"}
 
 
 # --------------------------------------------------------------------------
@@ -143,6 +148,12 @@ WORDS_MEANING_UNKNOWN = {
     # marker goes straight in* -- covers this without asking.
     "unknown",        # 2,127
     "ukjent",         #   188  Norwegian
+    "ikke kjent",     #     4  Norwegian, the unabbreviated form of `ukjent`. Found
+                      #        2026-09-21 in the FamilySearch corpus, where four people
+                      #        were created with it as their whole label. The standing
+                      #        rule — § *An obvious unknown-word marker goes straight in* —
+                      #        covers it without asking, and `not known` and `name not
+                      #        known` are the same phrase in English, already listed.
     "no name",        #    92
     "name not known", #    45  Ruled 2026-08-18, on two phrases the mononym census
                       #        turned up: both are markers. This one slipped
@@ -250,14 +261,43 @@ def leads_with_a_marker(text: str) -> bool:
     `NN Hildesheim`, `unknown Bloomfield`, `N Пузына`. The surname after it is real
     data — `CLAUDE.md` records that discarding these loses 3,605 surnames — so the
     caller keeps it rather than collapsing the label to bare `NN`.
+
+    ⛔ **A MARKER IS NOT ALWAYS ONE TOKEN, AND THIS READ ONLY THE FIRST.** The vocabulary
+    above has held multi-word forms all along — `n n`, `n. n.`, `no name`, `not known`,
+    `name not known`, `unknown wife`, `namn okänt` — and a label opening with any of them
+    matched nothing, because `head` is `tokens[0]`. Found 2026-09-21 in the FamilySearch
+    corpus: **11 people** went into a batch labelled `N. N. Harniktsdatter`,
+    `N. N Arnesdatter Skjeggen`, `N. N Bødal`, with the marker read as a given name and the
+    surname read as a patronymic after it. The leading phrase is now tested to the length of
+    the longest marker in the vocabulary, so every spelling already listed actually fires.
+    """
+    return marker_prefix_length(text) > 0
+
+
+def marker_prefix_length(text: str) -> int:
+    """How many leading tokens of `text` form a marker, `0` when it does not open with one.
+
+    The count rather than a boolean, because the caller has to drop exactly the marker and
+    keep exactly the surname. `labels_for` dropped `tokens[0]` and nothing else, so even once
+    a two-word marker was detected the label would have come out `NN N. Harniktsdatter` —
+    half the marker preserved as a given name.
     """
     tokens = (text or "").split()
     if len(tokens) < 2:
-        return False
+        return 0
     head = tokens[0].strip(",;:()[]").lower()
     if head in NOT_MARKERS:
-        return False
-    return head in NARROW_MARKERS | WORDS_MEANING_UNKNOWN | SINGLE_LETTER_MARKERS
+        return 0
+    vocabulary = NARROW_MARKERS | WORDS_MEANING_UNKNOWN | SINGLE_LETTER_MARKERS
+    # Longest first, so `name not known` wins over `not known` where both could match, and the
+    # longest phrase in the vocabulary decides how far ahead to look — a bare count here would
+    # go stale the next time a phrase is added.
+    longest = max((len(m.split()) for m in vocabulary), default=1)
+    for n in range(min(longest, len(tokens) - 1), 0, -1):
+        phrase = " ".join(tokens[:n]).strip(",;:()[]").lower()
+        if phrase in vocabulary:
+            return n
+    return 0
 
 
 #: Quote characters a label may be wrapped in. Stripped before matching, because a
@@ -375,7 +415,9 @@ def labels_for(gedcom_name: str, descriptive: str = "") -> dict[str, str]:
     if not is_unnamed(gedcom_name):
         name = display_name(gedcom_name)
         if leads_with_a_marker(name):
-            rest = " ".join(name.split()[1:]).strip()
+            # The whole marker comes off, not its first token: `N. N. Harniktsdatter` is
+            # `NN Harniktsdatter`, never `NN N. Harniktsdatter`.
+            rest = " ".join(name.split()[marker_prefix_length(name):]).strip()
             # **A parenthetical is a description, not a surname.**
             # `NN (Wife of Marcus Aemilius Lepidus)` carries no family name at all
             # — somebody wrote the relationship into the name field. The model for

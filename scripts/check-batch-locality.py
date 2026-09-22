@@ -49,9 +49,16 @@ import wikidata_lockout  # noqa: E402 -- NEVER_EDIT lives there, one definition,
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 UNIVERSE = ROOT / "out" / "wikidata" / "edit-universe.json"
 LIVE_LABELS = ROOT / "reports" / "garborg-live-labels.tsv"
+#: ⛔ **THE FAMILYSEARCH BATCH IS A BATCH.** `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE
+#: UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS, NO EXCEPTIONS* — a separate output file is not
+#: an exemption from the locality rule, it is another file that has to obey it.
+#: `build-familysearch-day.py` gates its own reciprocals against the same artifact, and this
+#: is the second reading of it for the reason the docstring below gives: a gate that lives
+#: only in the composer is one stale artifact away from being no gate.
 BATCHES = ("reports/wikidata-garborg-day.txt",
            "reports/wikidata-garborg-day-auto.txt",
-           "reports/wikidata-garborg-day-manual.txt")
+           "reports/wikidata-garborg-day-manual.txt",
+           "reports/wikidata-familysearch-day.txt")
 
 SUBJECT = re.compile(r"^(Q\d+)\t")
 LABEL_EDIT = re.compile(r"^(Q\d+)\t[LAD](?:mul|en|ja|zh|ko)\t")

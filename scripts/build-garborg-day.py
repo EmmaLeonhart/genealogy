@@ -48,6 +48,7 @@ csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
 from datequals import date_quals  # noqa: E402
+import descriptions  # noqa: E402 -- the one description rule, shared with the FamilySearch batch
 from namemodel import (  # noqa: E402
     qualifier_value,
     aliases_for, classify, classify_fields, load_plan,
@@ -7486,7 +7487,33 @@ def main():
         lines.append("CREATE")
         # Computed HERE so it can be emitted beside the label instead of after the
         # statements -- see the fallback at the end of this block for why that matters.
+        #
+        # ⛔ **THERE IS NO SUCH THING AS "NO DESCRIPTION". Ruled 2026-09-21:** *"no description
+        # info means geni id referencing description not no description"*, said while the
+        # duplicates were still coming -- *"we're making too many duplicates and it's
+        # bothersome"*. A blank description is the ABSENCE of the deduplication guard, and the
+        # guard is the only thing Wikibase refuses a creation on. `Anders Jørgensen Heier`
+        # exists twice, `Q141504247` and `Q141502696`, because of this exact hole.
+        #
+        # So the ladder is fixed and has no bottom rung that emits nothing:
+        #
+        #     1. the life description        `circa 1518 Bergen, Norway - 1580`
+        #     2. the relationship phrase     `daughter of Arne Olaus Fjørtoft Garborg`
+        #     3. THE GENI ID                 `Geni 6000000000757999620`
+        #
+        # Rung 3 is unique by construction -- it is the primary key of this whole project --
+        # so two items of ours can never again collide on label plus description. It is a
+        # pointer rather than a sentence, which is the point: it describes the record we hold
+        # when nothing is known about the person, instead of describing nobody.
         _desc = life_description(f, _PLACES.get(g))
+        if not _desc:
+            _rel = describe_all(g, facts, father, mother, referred_to_as, table,
+                                children, spouses, siblings,
+                                qid_of=our_items, live_labels=live_labels,
+                                fields=fields)
+            _desc = (_rel.get("en") or "").strip()
+        if not _desc:
+            _desc = f"Geni {g}"
         _desc_emitted = False
         # **Both branches must leave these bound.** The alias block below reads them after
         # the branch, and the redacted branch never set them -- so creating a redacted
@@ -7632,14 +7659,14 @@ def main():
                 # The fallback is `describe_all`, which is NOT invented here -- it is the
                 # formulaic phrase the redacted branch above already writes as a LABEL,
                 # *"daughter of Arne Olaus Fjørtoft Garborg"*. Dates are preferred when there
-                # are any; a person with neither dates nor a named relative still yields
-                # nothing, and that is the only remaining hole.
-                if not _desc:
-                    _rel = describe_all(g, facts, father, mother, referred_to_as, table,
-                                        children, spouses, siblings,
-                                        qid_of=our_items, live_labels=live_labels,
-                                        fields=fields)
-                    _desc = (_rel.get("en") or "").strip()
+                # are any.
+                #
+                # ⛔ **AND THE HOLE THIS COMMENT USED TO END ON IS CLOSED.** It said *"a person
+                # with neither dates nor a named relative still yields nothing, and that is the
+                # only remaining hole"* -- a hole in the one guard against duplicating our own
+                # items, left open and written down instead of filled. Ruled 2026-09-21: the
+                # third rung is the Geni id, and it is applied at the top of the block so every
+                # branch gets it. `_desc` is non-empty by the time control reaches here.
                 if _desc:
                     lines.append(f'LAST\tDen\t"{qs(_desc)}"')
                     _desc_emitted = True
@@ -8404,6 +8431,19 @@ def main():
     # place that can see all of it.
     _final_lines = refuse_non_local(head + lines,
                                     set(our_wikidata_subgraph) | set(one_step_qids))
+    # ⛔ **AND NO TWO CREATIONS MAY CARRY THE SAME LABEL AND DESCRIPTION.** Ruled 2026-09-21,
+    # with the duplicates still coming: *"we're making too many duplicates and it's
+    # bothersome"*. Wikibase refuses a creation only on the pair TOGETHER, so two people with
+    # the same name and the same dates -- the commonest shape there is in a Scandinavian
+    # corpus -- are a duplicate we mint ourselves and then merge by hand. The second one takes
+    # its Geni id into the description, which is unique by construction.
+    #
+    # Gated on the ASSEMBLED file for the same reason `refuse_non_local` is, one line above:
+    # the composer cannot see what the growth passes append, and a guard the composer alone
+    # applies is one appended section away from being no guard.
+    _collided = descriptions.deduplicate(_final_lines, "P2600")
+    if _collided:
+        print(f"{_collided} descriptions collided and took their Geni id")
     out.write_text(NEWLINE.join(_final_lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 
