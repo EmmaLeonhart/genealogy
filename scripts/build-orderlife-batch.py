@@ -376,6 +376,60 @@ def _rel(q, wqid, prop, value, ref, other, persons, gaiad):
     }
 
 
+def break_requires_cycles(batch):
+    """Cut the edges that close a cycle in `requires`. Returns `[(from, to)]`, deterministic.
+
+    ⛔ **`requires` IS THE PARENT GRAPH, SO AN ANCESTRY CYCLE BECOMES A BATCH THAT CANNOT RUN
+    IN ANY ORDER.** `tests/test_edit_graph.test_the_dependency_graph_has_no_cycles` says it
+    plainly: *"A before B before A can never be executed in any order."* Found 2026-09-21 in
+    CI, one cycle of 13 people among **62,354 edges** — somebody in order.life is recorded as
+    their own thirteen-greats ancestor. `reports/ancestry-cycles.tsv` records that this is a
+    known shape in genealogical data rather than a surprise.
+
+    **Only the ORDERING HINT is dropped, never the statement.** `requires` says *do this one
+    first*; cutting one edge of a cycle leaves every edit in the batch, still emitted, still
+    carrying every other dependency. Nobody is withheld, which is the whole difference between
+    this and refusing the cycle.
+
+    **Deterministic**: the walk goes over `sorted(graph)` and each node's edges in their
+    existing order, so the same input cuts the same edge every time —
+    `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*, which is about bytes rather than about sorts.
+    """
+    known = {e["id"] for e in batch if e.get("id")}
+    graph = {e["id"]: [r for r in (e.get("requires") or []) if r in known]
+             for e in batch if e.get("id")}
+    colour, cut = {}, []
+
+    def walk(node, on_stack):
+        colour[node] = 1
+        on_stack.add(node)
+        for nxt in list(graph.get(node, ())):
+            if nxt in on_stack:
+                cut.append((node, nxt))
+                graph[node].remove(nxt)
+                continue
+            if colour.get(nxt) is None:
+                walk(nxt, on_stack)
+        on_stack.discard(node)
+        colour[node] = 2
+
+    import sys as _sys
+    _sys.setrecursionlimit(100000)
+    for node in sorted(graph):
+        if colour.get(node) is None:
+            walk(node, set())
+    if not cut:
+        return []
+    dropped = {}
+    for a, b in cut:
+        dropped.setdefault(a, set()).add(b)
+    for e in batch:
+        gone = dropped.get(e.get("id"))
+        if gone:
+            e["requires"] = [r for r in (e.get("requires") or []) if r not in gone]
+    return cut
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("-o", "--out", default="reports/wikidata-orderlife.json")
@@ -684,6 +738,11 @@ def main() -> int:
             summary["add_relationship"] = summary.get("add_relationship", 0) + 1
 
     batch.sort(key=lambda e: (e["tier"], e["subject"]["orderlife_qid"]))
+
+    cut = break_requires_cycles(batch)
+    if cut:
+        print(f"cut {len(cut)} requires edge(s) to break an ancestry cycle: "
+              + ", ".join(f"{a} -/-> {b}" for a, b in cut[:4]))
 
     out = REPO / args.out
     out.write_text(json.dumps(batch, ensure_ascii=False) + "\n", encoding="utf-8")
