@@ -46463,3 +46463,42 @@ duplicates.
 `pipeline.yml` recomposes on push and that is whose job it is — § *DO NOT DO CI/CD's WORK BY
 HAND*. So this is the last push until that run lands, per § *If the pipeline has to complete,
 stop pushing and say so*.
+
+---
+
+## 2026-09-22 — the pipeline's commit step hung for 58 minutes on `git checkout --theirs -- .`
+
+Run `35682558066` reported **`cancelled`**, and `cancelled` is the word a superseded run gets
+too. The duration settles it and nothing else does: started 03:32:13Z, killed 06:02:28Z —
+**exactly 150 minutes**, which is the job's own `timeout-minutes`. A supersede kills a run that
+never started work and leaves an empty log; this one had a full log and died handing the work
+over. `CLAUDE.md` § *`cancelled` IS TWO DIFFERENT EVENTS AND THIS SECTION USED TO EXPLAIN ONLY
+ONE* is about exactly this, and it cost two wrong diagnoses on 2026-09-19.
+
+**The log says where.** The conflict list printed at 05:04:32 — 23 generated files,
+`garborg-live-items-*.json`, `label-edits-emitted.tsv`, `wikidata-garborg-day.txt` — and then
+**nothing at all for 58 minutes**, ending in `Terminate orphan process: pid (3787) (git)`.
+
+**The cause is one character of scope.** The resolution line was
+
+    git checkout --theirs -- .
+
+against a checkout that is a **partial clone**: `filter: blob:none` with a non-cone
+sparse-checkout. `-- .` asks git to materialise every path in a 13 GB repository, and every blob
+it does not have is a separate lazy fetch over the network, one round trip at a time. The
+conflicting paths were already in hand on the line above, in `$unmerged`, and **only an unmerged
+path has a `--theirs` side at all** — so naming them is identical in effect and bounded by the
+size of the conflict rather than by the size of the repo.
+
+It now reads the paths from `git diff --name-only --diff-filter=U -z` straight into `xargs -0`,
+which is the NUL-safe form: a generated path may contain a space, and word-splitting `$unmerged`
+would resolve the wrong file.
+
+**And every git call in the loop is bounded now** — `timeout 900` on the pull and the push,
+`timeout 600` on the resolution. A hang here is otherwise invisible: the step prints nothing,
+the job runs to `timeout-minutes`, and the conclusion word is the ambiguous one. A bounded call
+fails in minutes with its own name in the log.
+
+⛔ **This is why the batch never recomposed.** Three of the CI failures were waiting on a
+pipeline run to land, and the pipeline could not land. The artifacts have had the fixed
+generators applied to them by hand in the meantime, but the mechanism was broken, not slow.
