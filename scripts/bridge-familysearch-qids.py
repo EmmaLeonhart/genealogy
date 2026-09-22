@@ -27,13 +27,23 @@ from __future__ import annotations
 
 import csv
 import json
-import os
+
 import re
 import sys
 import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+#: ⛔ **THE USER-AGENT IS AN EMAIL ADDRESS AND NOTHING ELSE.** `scripts/bot_identity.py` is the
+#: one definition and its rule is categorical: *"Never, in any user agent or anywhere else, link
+#: the repository."* This file built its own agent carrying
+#: `genealogy-repo/1.0 (<a github url>)` -- a tool name, a version, the account and the repo
+#: name, every one of which tells a reader where the code lives and what it is for. That is the
+#: leak `bot_identity` exists to prevent, and `tests/test_bot_identity.py` fails on the host
+#: string in any script, which is how this was caught.
+from bot_identity import agent                                          # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports" / "familysearch-qid-bridge.tsv"
@@ -49,11 +59,6 @@ PAUSE = 1.5
 ENDPOINT = "https://query.wikidata.org/sparql"
 
 
-def agent() -> str:
-    """Wikimedia answers an empty User-Agent with 403, so this is required rather than nice."""
-    contact = os.environ.get("BOT_CONTACT", "").strip()
-    base = "genealogy-repo/1.0 (https://github.com/EmmaLeonhart/genealogy)"
-    return f"{base} {contact}".strip()
 
 
 def fs_ids(path: Path) -> list[str]:

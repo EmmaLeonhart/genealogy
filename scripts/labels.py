@@ -456,8 +456,34 @@ def describe(sex: str, relation: str, other: str) -> str:
     """
     words = {"parent": AS_CHILD, "spouse": AS_SPOUSE, "child": AS_PARENT}[relation]
     other = (other or "").strip()
-    if not other or other.strip().lower() in ("nn", "n n", "n.n.", "private",
-                                              "unknown", "?"):
+    if not other:
+        return ""
+    # ⛔ **A NAME THAT *CARRIES* A MARKER NAMES NOBODY EITHER, AND THIS TESTED THE WHOLE STRING.**
+    # The list was six exact spellings, so `Ingeborg NN` — given name known, surname unknown,
+    # which is the shape `name_with_unknown_surname` deliberately writes — sailed through and
+    # became `ægtemand til Ingeborg NN` in Danish, `marit de Ingeborg NN` in Catalan, and the
+    # same in six more languages on one item in the composed batch. Caught by
+    # `test_garborg_day_batch` 2026-09-21.
+    #
+    # Returning empty is not a loss: the caller's whole contract is to fall through to the next
+    # relative, and a description built on a half-named person is worse than the one built on
+    # the next candidate. The vocabulary is the module's own, so a marker in any language and
+    # in any position counts — matching is whole-token and exact, which is what keeps a real
+    # surname out of it.
+    vocabulary = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
+    tokens = [t.strip(",;:()[]" + SURROUNDING_QUOTES).casefold() for t in other.split()]
+    # A marker may be one token or several -- `no name`, `n. n.`, `unknown wife`, `namn okänt`
+    # are all in the vocabulary -- so every run of tokens up to the longest phrase is tested.
+    # `Maria No name` is the case that needs it, and `NOT_MARKERS` is what keeps a real name
+    # like `Ånon` out of this.
+    longest = max((len(m.split()) for m in vocabulary), default=1)
+    for i, bare in enumerate(tokens):
+        if not bare or bare in NOT_MARKERS:
+            continue
+        for n in range(1, min(longest, len(tokens) - i) + 1):
+            if " ".join(tokens[i:i + n]) in vocabulary:
+                return ""
+    if other.casefold() in vocabulary or other.strip() == "?":
         return ""
     return f"{words.get(sex, words[''])} of {other}"
 

@@ -46405,3 +46405,61 @@ They are carried, not dropped: every item this run makes publishes a `P2889`, so
 `bridge-familysearch-qids.py` run resolves them and the run after that links their neighbours.
 The component grows outward from the eleven attachment points as a wavefront, which is the
 SEQUENCE § *The batches are a SEQUENCE* describes — not a slower way of shipping 2,817 isolates.
+
+---
+
+## 2026-09-21 — the CI failures, worked one at a time
+
+*"We need to make everything green before edits happen. No half measures."* Run
+`35682599151` on `1f9fc015a`, seven distinct failures. Four are fixed outright; three are stale
+artifacts whose generators are fixed and which `pipeline.yml` recomposes.
+
+**`bridge-familysearch-qids.py` linked the repository in its User-Agent.** It built its own
+agent — `genealogy-repo/1.0 (<a github url>)` — carrying a tool name, a version, the account and
+the repo name. `scripts/bot_identity.py` is the one definition and its rule is categorical:
+*"the User-Agent is an email address and nothing else ... Never, in any user agent or anywhere
+else, link the repository."* It imports `bot_identity.agent` now.
+
+**108 marker labels in `reports/wikidata-orderlife.json`.** `create_geni_only:Q101041` carried
+`n. n. Diez --` in `en`, and 107 more read `No Name Zauja-e-...`. The emitter was already correct
+— it routes through `labels_for` — so this was the **504-label defect showing up in a second
+artifact**: `no name` and `n. n.` are multi-word markers and `leads_with_a_marker` could not see
+them. Regenerating the batch against the fixed vocabulary brings it to zero.
+
+**The ledger oracle was narrower than the emitter.** `test_every_explicit_subject_already_exists`
+read `reports/identifications.tsv` alone, while `manual_p2600_lines` reads
+`reports/entry-points-immediate.csv` — ruled 2026-09-20 to be the ONE file answering *who is an
+entry point today*. `Q141502958` and `Q141502959` failed for being "not in the ledger" when they
+are roster members receiving their first `P2600`, which is the exact category the carve-outs
+beside it exist for. A fifth carve-out, read from the file so it cannot quietly grow.
+
+**A description named a marker.** `Lda "ægtemand til Ingeborg NN"`, and the same in Catalan,
+German and six more on one item. `labels.describe` refused six exact spellings — `nn`, `n n`,
+`n.n.`, `private`, `unknown`, `?` — so `Ingeborg NN`, which is the shape
+`name_with_unknown_surname` deliberately writes, sailed through. It now refuses any name
+carrying a marker in any position, single-token or phrase, so the caller falls through to the
+next relative as its contract always said.
+
+**The picker was recreating our own items.** `6000000003378670599`, `6000000177945982827` and
+`6000000225709965832` are all in `reports/garborg-qids.tsv` and were being created again.
+`eligible()` called a parent creatable when the `parent_qid` column was empty — but that column
+comes from `derived-family.csv`, rewritten only when the tree is rebuilt, while the ledger is
+refreshed every run. **This is not the intended duplicate**: the header above it is explicit
+that creating somebody *Wikidata* already has unlinked is the point, because another editor
+merges the pair and does the entity resolution for us. Recreating **our own** item baits nobody.
+
+**And a married surname was being dropped in silence.** `pipeline.yml` runs the composer — which
+plans the name items and writes `garborg-carry-forward.tsv` — and only *then* appends these
+creations to the batch. So a `_MARNM` on somebody picked here was neither linked, nor proposed,
+nor recorded as carried. `Berg-Schelklingen`, `zu`, `Roggenstein`, `Skiftun`. The script now
+appends its own carry rows, idempotently, because the batch is regenerated several times a day.
+
+With both gates the picker sees **24 eligible pairs**, down from 102 with the universe gate
+alone, and the ten it picks have no orphans, no subjects outside the universe and no ledger
+duplicates.
+
+⛔ **Three failures are left and they are the committed day batch, not the code.**
+`wikidata-garborg-day.txt` still holds the ancestor-creation blocks from before these fixes.
+`pipeline.yml` recomposes on push and that is whose job it is — § *DO NOT DO CI/CD's WORK BY
+HAND*. So this is the last push until that run lands, per § *If the pipeline has to complete,
+stop pushing and say so*.

@@ -178,6 +178,40 @@ def family():
     return out
 
 
+def ledger_geni_ids():
+    """Every Geni id this project already holds a QID for, from `reports/garborg-qids.tsv`.
+
+    ⛔ **THE DERIVED LAYER'S `qid` COLUMN IS NOT THE LEDGER, AND TRUSTING IT MADE DUPLICATES.**
+    `eligible()` calls a parent creatable when `parent_qid` is empty — but that column comes
+    from `derived-family.csv`, which is rewritten only when the tree is rebuilt, while
+    `garborg-qids.tsv` is refreshed every run. So a person we created last week still reads as
+    having no QID here, and the picker creates them a second time.
+
+    Found 2026-09-21 in CI: `6000000003378670599`, `6000000177945982827` and
+    `6000000225709965832` are all in the ledger AND being created again in
+    `wikidata-garborg-day.txt`. `6000000177945982827` is Jacob Knutson Skiftun, one of today's
+    four ancestor creations.
+
+    **This is not the intended duplicate.** The header above is explicit that creating somebody
+    *Wikidata* already has unlinked is the point — another editor merges the pair and does the
+    entity resolution for us. Recreating **our own** item is the opposite: nobody is being
+    baited into anything, and § *DESCRIPTIONS ARE WRITTEN NOW, AND THE REASON IS THE
+    DEDUPLICATION* exists precisely to stop it.
+
+    `bridge-familysearch-qids.geni_by_qid` folds the same two sources for the same reason.
+    """
+    path = ROOT / "reports" / "garborg-qids.tsv"
+    if not path.exists():
+        return set()
+    out = set()
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh, delimiter="	"):
+            gid = (row.get("geni_id") or "").strip()
+            if gid:
+                out.add(gid)
+    return out
+
+
 def labels():
     """`{geni_id: mul label}`, which is the label a creation carries."""
     out = {}
@@ -279,7 +313,7 @@ def eligible(fam):
     which is, kept its link and is fine. *"They become immediate entry points and fix the error
     that made them."*
     """
-    allowed = _universe()
+    allowed, held = _universe(), ledger_geni_ids()
     seen, queue, found = {OWNER}, collections.deque([OWNER]), []
     while queue:
         gid = queue.popleft()
@@ -300,7 +334,7 @@ def eligible(fam):
             # `qid in allowed`, not merely `qid`: see the docstring. An empty universe means
             # the artifact is missing, and then nothing is eligible -- failing closed, the same
             # choice every other reader of this file makes.
-            if (qid in allowed and not parent_qid
+            if (qid in allowed and not parent_qid and parent not in held
                     and not parent.startswith(PLACEHOLDER_PREFIXES)):
                 found.append((gid, qid, parent, role))
     return found
@@ -331,6 +365,73 @@ def block(parent_geni, label, role, child_geni, child_qid):
     lines.append("#   %s: %s = the item just created" % (child_qid, prop))
     lines.append('%s\t%s\tLAST\tS2600\t"%s"' % (child_qid, prop, child_geni))
     return lines
+
+
+CARRY_FORWARD = ROOT / "reports" / "garborg-carry-forward.tsv"
+
+
+def record_carried_surnames(picked, lab):
+    """Append a carry row for every married surname these creations cannot link yet.
+
+    ⛔ **THIS SCRIPT APPENDS PEOPLE THE NAME MACHINERY NEVER SAW, AND THE DROP WAS SILENT.**
+    `pipeline.yml` runs `build-garborg-day.py --compose` -- which plans the name items and
+    writes `garborg-carry-forward.tsv` -- and only then appends these creations to the batch.
+    So a `_MARNM` on somebody picked here is neither linked, nor proposed as a name item, nor
+    recorded as carried: the second `P734` *family name* is simply lost.
+
+    `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* has a sibling in the
+    carry-forward's own rule -- a surname that cannot be linked today must be RECORDED as
+    carried, never silently dropped. `tests/test_garborg_day_batch` asserts exactly that and
+    failed on `Berg-Schelklingen`, `zu`, `Roggenstein` and `Skiftun` on 2026-09-21.
+
+    Appending rather than rewriting, because the composer owns this file and has already
+    finished with it by the time this runs. A missing input is skipped rather than guessed at:
+    no name plan means nothing can be said about what is linkable.
+    """
+    try:
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        from namemodel import classify_fields, load_plan
+    except Exception:                                                   # noqa: BLE001
+        return
+    names = ROOT / "reports" / "display-names.csv"
+    if not names.exists() or not CARRY_FORWARD.exists():
+        return
+    wanted = {parent for _g, _q, parent, _r in picked}
+    fields = {}
+    with names.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            gid = (row.get("geni_id") or "").strip()
+            if gid in wanted and gid not in fields:
+                fields[gid] = {k: row.get(k, "") for k in ("givn", "surn", "nick", "marnm")}
+    try:
+        plan = load_plan()
+    except Exception:                                                   # noqa: BLE001
+        return
+    rows = []
+    for gid, person in sorted(fields.items()):
+        for token, usage, _ordinal in classify_fields(**person):
+            if usage != "married" or plan.get((token, "family"), ("", ""))[0]:
+                continue
+            rows.append((gid, lab.get(gid, ""),
+                         "name item missing: %s (married): not in the plan, and this person "
+                         "was appended after the composer wrote its own carries" % token))
+    # **Idempotent, because the batch is regenerated several times a day.** `pipeline.yml` runs
+    # on every push and the composer rewrites this file each time -- but a second run of THIS
+    # script inside one pipeline pass, or a local re-run, would otherwise append the same rows
+    # again. The seed makes the picks stable for the day, so the rows are stable too.
+    existing = set()
+    with CARRY_FORWARD.open(encoding="utf-8", newline="") as fh:
+        for row in csv.reader(fh, delimiter=chr(9)):
+            if row:
+                existing.add(tuple(row))
+    rows = [r for r in rows if tuple(r) not in existing]
+    if not rows:
+        return
+    with CARRY_FORWARD.open("a", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh, delimiter=chr(9), lineterminator=chr(10))
+        w.writerows(rows)
+    print("%d married surname(s) recorded as carried in %s"
+          % (len(rows), CARRY_FORWARD.relative_to(ROOT)))
 
 
 def main() -> int:
@@ -380,6 +481,8 @@ def main() -> int:
         # `pipeline.yml` skips it instead of appending a comment block to the batch.
         path.write_text(("\n".join(body) + "\n") if group else "",
                         encoding="utf-8", newline="\n")
+
+    record_carried_surnames(picked, lab)
 
     print("%d people in the derived layer" % len(fam))
     print("%d eligible ancestor/parent pairs (%d refused for an unusable label)"

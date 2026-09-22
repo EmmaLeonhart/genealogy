@@ -370,6 +370,33 @@ def _name_item_qids():
     return out
 
 
+def _immediate_entry_point_qids():
+    """The immediate entry-point roster — the FIFTH carve-out, and the emitter's own source.
+
+    ⛔ **THE ORACLE WAS NARROWER THAN THE EMITTER.** `manual_p2600_lines` reads
+    `reports/entry-points-immediate.csv` — ruled 2026-09-20 to be the ONE file that answers *who
+    is an entry point today* — and this test read `reports/identifications.tsv` alone. So a
+    `P2600` emitted for a roster member failed the guard for being "not in the ledger", which is
+    the same category error the manual-identification carve-out above was written to fix: an
+    item receiving its FIRST `P2600` cannot be in a ledger built from `P2600` holders.
+
+    Found in CI 2026-09-21 on `Q141502958` and `Q141502959`, both `source=added` in that file.
+
+    Read from the file rather than hardcoded, so the exception is exactly the roster and cannot
+    quietly grow — the same discipline `_emma_confirmed_qids` states for itself.
+    """
+    path = REPO / "reports" / "entry-points-immediate.csv"
+    if not path.exists():
+        return set()
+    out = set()
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            qid = (row.get("qid") or "").strip()
+            if qid.startswith("Q"):
+                out.add(qid)
+    return out
+
+
 def test_every_explicit_subject_already_exists():
     """A statement on `Q…` edits an existing item; on `LAST` it edits the new one.
 
@@ -382,7 +409,7 @@ def test_every_explicit_subject_already_exists():
     """
     known = (known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids()
              | _emma_confirmed_qids() | _manual_identification_qids()
-             | _name_item_qids())
+             | _name_item_qids() | _immediate_entry_point_qids())
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"
