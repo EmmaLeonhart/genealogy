@@ -36,6 +36,32 @@ Recovery state, for whenever it does resume:
   output, not Geni's.
 * the queue is `reports/sweep-queue-6000000227822546944.txt`, and the cursor stood at **8,993**.
 
+## ⛔ FIRST ITEM — GET CI GREEN. NOTHING EDITS WIKIDATA UNTIL IT IS. Ruled 2026-09-21
+
+*"Right the fuck now we need to make everything green before edits happen. No half measures.
+In flight actions should still happen and be triggered before this."*
+
+**The gate is built and it fails closed**: `wikidata-edits.yml` runs the description tests before
+the send step with no `continue-on-error`, and `wikidata-edit-run.py` refuses a whole batch
+carrying any `CREATE` with no description. So this item is not a wish — nothing goes out until
+it is done.
+
+Run `35682599151` on `1f9fc015a` had **seven distinct failures**. Four are fixed and pushed;
+**three are the committed `reports/wikidata-garborg-day.txt`, not the code** — it still holds
+ancestor-creation blocks minted before the fixes:
+
+* `test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere`
+* `test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created`
+* `test_the_ledger_and_the_batch_do_not_both_claim_a_person`
+
+**They clear when `pipeline.yml` recomposes and commits.** ⛔ **So do not push while a pipeline
+run is PENDING if the point is to let that run land** — § *THE 45-MINUTE PATH TICK PUSHES, SO THE
+PIPELINE CAN NEVER REACH THE FRONT*, measured at 0 green pipeline runs in 20. Check
+`gh run list` before pushing; a stamp or a queue edit can wait one tick.
+
+Then re-run CI and work whatever is still red, one at a time, root cause first. § *A real defect
+-> a precise documented blocker, never a loosened assertion.*
+
 ## ⛔ THE META QUEUE, FOLDED IN 2026-09-20 — THIS IS THE LIVE PLAN
 
 It was a separate file only because PR #254 rewrote `queue.md` underneath it. That merge
