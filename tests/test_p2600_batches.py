@@ -558,6 +558,23 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
 
     `LAST` is exempt — it names an item created in this run, so the statement cannot already
     exist. Labels and aliases are exempt because they REPLACE rather than add.
+
+    ⛔ **AND A RESTATEMENT THAT ATTACHES SOMETHING IS EXEMPT, WHICH THIS DID NOT KNOW.** Written
+    2026-08-27; the subject-named-as backfill was ruled on **2026-09-14** and its entire purpose
+    is to re-state a `P2600` that already exists in order to hang a `P1810` qualifier on it —
+    *"add the subject named as to existing P2600 properties within the universe"*. `CLAUDE.md`
+    states the mechanism: *"Re-stating property+value attaches the reference; it does not add a
+    second statement."* So the test failed on **90 lines that were doing exactly what they were
+    told to**, which is a guard mis-firing rather than a batch defect.
+
+    The distinction is the one the waste argument above actually rests on: a line carrying
+    NOTHING but the triple changes nothing on the item and is the 229-of-306 noise this was
+    written against; a line carrying a qualifier or a reference changes the item. The emitter
+    has already checked that the qualifier is absent — `build-subject-named-as-backfill` counts
+    the ones that have it as `already` and never emits them — so this cannot become a licence
+    to re-send. `build-garborg-day.drop_held_restatements` reads the same rule from the other
+    side and now runs over the ASSEMBLED batch, head included, which is what caught
+    `Q141502960 P2600 "375732891600013185"` sitting at line 9 as a pure no-op.
     """
     values = REPORTS / "garborg-live-values.tsv"
     batch = REPORTS / "wikidata-garborg-day.txt"
@@ -570,7 +587,7 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
     repeats = []
     for i, ln in statements(batch):
         p = ln.split("\t")
-        if (len(p) >= 3 and p[0].startswith("Q") and p[1].startswith("P")
+        if (len(p) == 3 and p[0].startswith("Q") and p[1].startswith("P")
                 and p[2] != "LAST"
                 and (p[0], p[1], p[2].strip('"')) in live):
             repeats.append((i, ln[:60]))

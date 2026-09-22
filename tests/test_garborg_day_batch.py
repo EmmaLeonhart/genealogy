@@ -897,6 +897,26 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
                 if row.get("qid"):
                     exempt.add(row["qid"])
 
+    # **The third exemption: the LOCALITY GATE, and it is the strongest of the three.**
+    # `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS,
+    # NO EXCEPTIONS* makes the reciprocal literally forbidden when the other end sits outside
+    # `out/wikidata/edit-universe.json`: `Q109835051 P40 LAST` is an edit ON that item, while
+    # `LAST P25 Q109835051` edits only the item this run is creating and is perfectly legal.
+    # `refuse_non_local` therefore strips one half and keeps the other, and the one-way link
+    # that leaves behind is the CORRECT outcome rather than a defect.
+    #
+    # Read from the artifact the gate itself reads, like the two exemptions above are read from
+    # the builder's own files, so this is exactly the items an edit may not land on and cannot
+    # widen into "one-way links are acceptable". A missing artifact exempts nothing, which is
+    # the safe direction: the assertion stays at full strength.
+    import json as _json
+    universe_file = REPO / "out" / "wikidata" / "edit-universe.json"
+    if universe_file.exists():
+        _u = _json.loads(universe_file.read_text(encoding="utf-8"))
+        allowed = set(_u.get("universe") or ()) | set(_u.get("one_step") or ())
+    else:
+        allowed = None
+
     missing = []
     for block in text.split("CREATE")[1:]:
         body = block.split("\nCREATE")[0]
@@ -911,6 +931,8 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
             wanted = wanted if isinstance(wanted, tuple) else (wanted,)
             if value in exempt:
                 continue
+            if allowed is not None and value not in allowed:
+                continue            # the reciprocal is an edit the locality gate forbids
             if not any(f"{value}\t{w}\tLAST" in body for w in wanted):
                 missing.append((prop, value))
 
