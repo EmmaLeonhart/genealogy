@@ -561,12 +561,28 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                 out["zh"] = f"{zh}之{ZH[group_name].get(sex) or ZH[group_name]['']}"
                 if ko:
                     out["ko"] = f"{ko}의 {KO[group_name].get(sex) or KO[group_name]['']}"
-                # **The CJK three keep the bare relation, and that is deliberate.** The
-                # Japanese apposition runs the other way -- `マリンの父アンドレアス` is
-                # *Malin's father Andreas*, name LAST -- so the European `Andreas father of
-                # Malin` shape cannot simply be copied across. `namemodel._DESCRIBE_LEADS`
-                # carries the reasoning; § *no guessing on the representations* is why it
-                # waits for a ruling rather than being assembled here.
+                # **The name goes LAST in CJK**, ruled 2026-09-21 -- `マリンの父アンドレアス`
+                # is *Malin's father Andreas*, which is where an apposition goes in Japanese.
+                # `namemodel._DESCRIBE_TRAILS` holds the order; this supplies the name in the
+                # script it is going into, because `lead_with_given_name` never transliterates.
+                #
+                # ⛔ **AND A NAME THAT WILL NOT TRANSLITERATE DROPS THE CJK THREE.** Splicing
+                # a Latin `Tora` onto `…の娘` is the mixed-script label the 2026-09-03
+                # `ソン・オフ・` ruling is about, and § *Partial is worse than absent* already
+                # decides it. The Latin languages keep theirs -- only CJK is affected.
+                if own:
+                    own_ja, own_zh, own_ko = label_in(own, table)
+                    if own_ja and own_zh:
+                        out["ja"] = lead_with_given_name(own_ja, out["ja"], "ja")
+                        out["zh"] = lead_with_given_name(own_zh, out["zh"], "zh")
+                        if "ko" in out:
+                            if own_ko:
+                                out["ko"] = lead_with_given_name(own_ko, out["ko"], "ko")
+                            else:
+                                del out["ko"]
+                    else:
+                        for code in ("ja", "zh", "ko"):
+                            out.pop(code, None)
             return out
     return {}
 

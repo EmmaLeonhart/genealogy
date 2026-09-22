@@ -1303,12 +1303,13 @@ def test_a_known_given_name_leads_the_descriptive_label():
     useless rather than merely untidy.
     """
     from namemodel import lead_with_given_name
-    assert lead_with_given_name("Andreas", "father of Malin") == "Andreas father of Malin"
+    assert lead_with_given_name("Andreas", "father of Malin") == "Andreas, father of Malin"
     assert lead_with_given_name("Tora", "mother of Brita Danielsdotter Berg") == (
-        "Tora mother of Brita Danielsdotter Berg")
-    # The form is a bare space, matching `build-nn-label-batch` and the 2026-09-09 ruling
-    # that `tests/test_nn_label_batch.py` pins. One form across both emitters is the point.
-    assert "," not in lead_with_given_name("Andreas", "father of Malin")
+        "Tora, mother of Brita Danielsdotter Berg")
+    # ⛔ **A COMMA, ruled 2026-09-21** -- the `Tora NN` item's own form, which reversed the
+    # bare space of 2026-09-09. `tests/test_nn_label_batch.py` moved to match, because one
+    # form across both emitters is the reason this lives in the model.
+    assert lead_with_given_name("Andreas", "father of Malin").startswith("Andreas,")
 
 
 def test_a_person_with_no_given_name_keeps_the_bare_relation():
@@ -1334,16 +1335,44 @@ def test_leading_with_the_given_name_is_idempotent():
     assert lead_with_given_name("Andreas", once) == once
 
 
-def test_the_cjk_descriptive_label_is_left_alone():
-    """⛔ The Japanese apposition runs the other way and is NOT guessed at.
+def test_the_cjk_name_goes_last_because_that_is_where_it_goes():
+    """⛔ The CJK apposition follows the noun. Ruled 2026-09-21: the NATIVE order.
 
-    `マリンの父アンドレアス` is *Malin's father Andreas* -- the name LAST -- so the European
-    order cannot be copied across. § *no guessing on the representations*: the CJK label keeps
-    the bare relation until the order is ruled.
+    `マリンの父アンドレアス` is *Malin's father Andreas*, name LAST -- the reverse of the
+    European `Andreas, father of Malin`. Japanese and Chinese take no joiner at all; Korean
+    takes a space.
     """
     from namemodel import lead_with_given_name
-    for code in ("ja", "zh", "ko"):
-        assert lead_with_given_name("Tora", "マリンの父", code) == "マリンの父"
+    assert lead_with_given_name("アンドレアス", "マリンの父", "ja") == "マリンの父アンドレアス"
+    assert lead_with_given_name("安德烈斯", "馬林之父", "zh") == "馬林之父安德烈斯"
+    assert lead_with_given_name("안드레아스", "마린의 아버지", "ko") == "마린의 아버지 안드레아스"
+    # No comma anywhere in CJK -- the European separator does not travel.
+    assert "," not in lead_with_given_name("アンドレアス", "マリンの父", "ja")
+
+
+def test_the_cjk_tail_is_idempotent_too():
+    """Applied twice it must not repeat the name at the end."""
+    from namemodel import lead_with_given_name
+    once = lead_with_given_name("アンドレアス", "マリンの父", "ja")
+    assert lead_with_given_name("アンドレアス", once, "ja") == once
+
+
+def test_the_model_never_transliterates_for_cjk():
+    """⛔ The CALLER renders the name into the script; this only places it.
+
+    A Latin name handed in for a `ja` label would produce the mixed-script label the
+    2026-09-03 `ソン・オフ・` ruling forbids, so `describe_all` transliterates first and
+    DROPS all three CJK labels when it cannot -- § *Partial is worse than absent*. This test
+    records that the model is not the place that guard lives.
+    """
+    from namemodel import lead_with_given_name
+    # It places whatever it is given, faithfully -- which is exactly why the caller must not
+    # hand it a Latin token for a CJK language.
+    assert lead_with_given_name("Tora", "マリンの母", "ja") == "マリンの母Tora"
+    source = (Path(__file__).resolve().parents[1]
+              / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert "own_ja, own_zh, own_ko = label_in(own, table)" in source
+    assert "out.pop(code, None)" in source
 
 
 def test_own_given_name_refuses_a_marker_and_a_relatives_name():

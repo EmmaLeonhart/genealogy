@@ -156,13 +156,21 @@ def test_a_real_name_is_never_touched(nn):
 
 
 def test_the_clause_is_built_from_the_recovered_name(nn):
-    """The assembled English, end to end, for the worked case."""
+    """The assembled English, end to end, for the worked case.
+
+    ⛔ **THE SEPARATOR IS A COMMA, CHANGED 2026-09-21**: `Andreas, father of Malin`. This
+    test pinned a bare space from 2026-09-09, and the `Tora NN` ruling reversed it -- the
+    assertion moved with the rule rather than being left to fail. The half that was never in
+    question is the ORDER: the person's own name comes first, because a label that is only a
+    relation names the relative.
+    """
+    from namemodel import lead_with_given_name
     word = nn.WORDS["en"]["parent_of"]["M"]
     joiner = nn.WORDS["en"]["of"]
     clause = nn._join(word, joiner, "Malin")
     assert clause == "father of Malin"
     given = nn.GIVEN_WITH_MARKER.match("Andreas NN").group(1)
-    assert f"{given} {clause}" == "Andreas father of Malin"
+    assert lead_with_given_name(given, clause, "en") == "Andreas, father of Malin"
 
 
 def test_the_emitter_actually_uses_the_recovered_name(nn):
@@ -171,3 +179,5 @@ def test_the_emitter_actually_uses_the_recovered_name(nn):
     source = (REPO / "scripts" / "build-nn-label-batch.py").read_text(encoding="utf-8")
     assert "GIVEN_WITH_MARKER.match(value(\"mul\")" in source
     assert '"value": clause}' in source
+    # ⛔ And it goes through the MODEL, so the two emitters cannot drift apart again.
+    assert "lead_with_given_name(known.group(1).strip(), clause, lang)" in source

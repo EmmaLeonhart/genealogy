@@ -1152,18 +1152,19 @@ tests in `tests/test_namemodel.py` pin it.
 `describe_all` never got it. That is § *A GUARD IN ONE EMITTER IS NOT A GUARD* exactly, which
 is why the model holds it now.
 
-- **⛔ STILL OPEN: WHAT PUNCTUATION.** Two forms are attested and both are Emma's. 2026-09-09
-  says `Andreas father of Malin`, a bare space, and a test pins it. The `Tora NN` item of
-  2026-09-21 says `Tora, mother of …`, with a comma. **The space form was implemented**,
-  because it is the one already shipping and one form across both emitters is the point — but
-  the newer instruction says comma, so this is a guess and it is recorded as one.
+- **⛔ SETTLED 2026-09-21: A COMMA.** `Tora, mother of Brita`. Two forms were attested and
+  both were Emma's -- the bare space of 2026-09-09, pinned by `tests/test_nn_label_batch.py`,
+  and the comma of the `Tora NN` item. The comma wins, the test moved with it rather than
+  being left to fail, and `build-nn-label-batch` now calls the model function instead of
+  formatting the prefix itself, so the two emitters cannot drift apart again.
 
-- **⛔ STILL OPEN: THE CJK WORD ORDER, AND IT IS NOT GUESSED.** The European apposition leads
-  with the name; the Japanese runs the other way — `マリンの父アンドレアス` is *Malin's father
-  Andreas*, name LAST. `build-nn-label-batch` flagged this in 2026-09-09 and sidestepped it
-  because `WORDS` carries no CJK, but `describe_all` DOES emit CJK, so it meets the question
-  for real. § *no guessing on the representations*: the CJK three keep the bare relation until
-  it is ruled. `namemodel._DESCRIBE_LEADS` is where that decision lives.
+- **⛔ SETTLED 2026-09-21: CJK TAKES THE NATIVE ORDER, NAME LAST.** `マリンの父アンドレアス`
+  is *Malin's father Andreas*, which is where an apposition goes in Japanese -- the reverse of
+  the European form, not a copy of it. Japanese and Chinese take no joiner, Korean takes a
+  space. `namemodel._DESCRIBE_TRAILS` holds it. The name is transliterated by `describe_all`
+  before it is placed, and **all three CJK labels drop when it will not transliterate**,
+  because a Latin token spliced into a katakana phrase is the 2026-09-03 `ソン・オフ・`
+  failure -- § *Partial is worse than absent*.
 
 - **Still owed: fix what already went out.** The rule now stops new ones; the items already
   carrying a bare relational label are a separate pass and are not done.

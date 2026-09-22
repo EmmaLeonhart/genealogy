@@ -2487,19 +2487,26 @@ def own_given_name(fields) -> str:
     return " ".join(kept)
 
 
-#: ⛔ **THE EUROPEAN LANGUAGES ONLY, AND CJK IS DELIBERATELY ABSENT.** An apposition goes
-#: ahead of the clause in all eleven languages of `WORDS` -- `Andreas father of Malin`,
-#: `Andreas Vater von Malin` -- and **the Japanese order is the other way round**:
-#: `マリンの父アンドレアス` is *Malin's father Andreas*, with the name LAST.
-#: `build-nn-label-batch` noted that in 2026-09-09 and sidestepped it because `WORDS` carries
-#: no CJK; `describe_all` does emit CJK, so it meets the question for real. § *no guessing on
-#: the representations* decides it: a CJK descriptive label is left as the relation alone
-#: until the order is ruled, rather than assembled from reasoning.
-_DESCRIBE_LEADS = frozenset({"ja", "zh", "ko"})
+#: ⛔ **THE TWO ORDERS, AND THEY ARE OPPOSITE.** A European apposition goes AHEAD of the
+#: clause -- `Tora, mother of Malin`, `Tora, Mutter von Malin` -- and the CJK apposition goes
+#: AFTER the noun it qualifies: `マリンの母トーラ` is *Malin's mother Tora*, name LAST.
+#: `build-nn-label-batch` spotted that in 2026-09-09 and could sidestep it because `WORDS`
+#: carries no CJK; `describe_all` does emit CJK, so it meets the question for real. Ruled
+#: 2026-09-21: the native order, not the European one copied across.
+#:
+#: The value is the joiner that sits between the clause and the trailing name. Japanese and
+#: Chinese take none at all -- the apposition is bare -- and Korean takes a space.
+_DESCRIBE_TRAILS = {"ja": "", "zh": "", "ko": " "}
+
+#: The separator after a leading given name, for every language that puts the name first.
+#: Ruled 2026-09-21: a comma. The `Tora NN` item wrote `Tora, mother of …` and that is the
+#: form, which reverses the bare space ruled on 2026-09-09 and pinned by
+#: `tests/test_nn_label_batch.py` -- that test moved with it rather than being left to fail.
+_DESCRIBE_LEAD_SEP = ","
 
 
 def lead_with_given_name(given: str, phrase: str, lang: str = "en") -> str:
-    """`Tora, mother of Brita Danielsdotter Berg` -- the person's own name FIRST.
+    """`Tora, mother of Brita Danielsdotter Berg` -- the person's own name in front.
 
     ⛔ **A LABEL THAT IS ONLY A RELATION NAMES SOMEBODY ELSE.** Ruled 2026-09-21 as the
     biggest defect of the campaign: *"You still are producing wrong things where a person's
@@ -2517,25 +2524,28 @@ def lead_with_given_name(given: str, phrase: str, lang: str = "en") -> str:
     `build-nn-label-batch` both assemble these phrases, and a third added later is covered
     without being told.
 
-    **The form is `Andreas father of Malin`, a bare space and no comma**, because that is the
-    attested one: it was ruled on 2026-09-09, `build-nn-label-batch` emits it, and
-    `tests/test_nn_label_batch.py` pins it. The `Tora NN` item of 2026-09-21 writes it with a
-    comma -- `Tora, mother of …` -- and that divergence is recorded in `queue.md` rather than
-    settled here, since the half that matters is identical in both and one form across both
-    emitters is the reason this function exists at all.
+    ⛔ **IN CJK THE NAME GOES LAST**, because that is where an apposition goes in Japanese --
+    see `_DESCRIBE_TRAILS`. The caller passes the name already rendered in the script it is
+    going into; this never transliterates, and a Latin name handed in for a `ja` label would
+    produce exactly the mixed-script label the 2026-09-03 `ソン・オフ・` ruling forbids.
 
     With no given name the phrase is returned untouched, which is the unnamed person's case
-    and is correct. A CJK language is returned untouched too -- see `_DESCRIBE_LEADS`.
+    and is correct.
     """
     given = " ".join((given or "").split())
     phrase = " ".join((phrase or "").split())
-    if not given or not phrase or lang in _DESCRIBE_LEADS:
+    if not given or not phrase:
         return phrase
+    if lang in _DESCRIBE_TRAILS:
+        # Idempotent at the tail, the same way the European branch is at the head.
+        if phrase.casefold().endswith(given.casefold()):
+            return phrase
+        return f"{phrase}{_DESCRIBE_TRAILS[lang]}{given}"
     # Already leading with the name -- an emitter that was fixed first, or a phrase built by
     # hand. Idempotent rather than doubled, so this can be applied at more than one layer.
     if phrase.casefold().startswith(given.casefold()):
         return phrase
-    return f"{given} {phrase}"
+    return f"{given}{_DESCRIBE_LEAD_SEP} {phrase}"
 
 
 #: ⛔ **A ROMAN NAME GETS NO NAME ITEMS AT ALL.** Ruled 2026-09-14: *"I would like us to just

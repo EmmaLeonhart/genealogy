@@ -291,6 +291,9 @@ def _starts_with_vowel(name):
     # They are vowels, and Norwegian names are common in this corpus.
     return base in "AEIOUaeiou" or base in "ØøÆæ"
 
+from namemodel import lead_with_given_name  # noqa: E402
+
+
 def _join(word, joiner, other):
     """`"fille de Arne"` -- but `"fils d'Arne"`, because French elides `de` before a vowel.
 
@@ -560,7 +563,13 @@ def main() -> int:
                 clause = _join(word, joiner, other)
                 known = GIVEN_WITH_MARKER.match(value("mul") or "")
                 if known:
-                    clause = "%s %s" % (known.group(1).strip(), clause)
+                    # ⛔ **THE MODEL PUTS THE NAME IN, NOT THIS FILE.** Ruled 2026-09-21
+                    # after the same rule was found missing from `describe_all` in
+                    # `build-garborg-day` -- § *A GUARD IN ONE EMITTER IS NOT A GUARD*, so
+                    # both emitters now call one function and cannot drift apart again. The
+                    # separator moved with it: a comma, `Tora, mother of …`, replacing the
+                    # bare space this line used to write.
+                    clause = lead_with_given_name(known.group(1).strip(), clause, lang)
                 edits.append({
                     "id": f"nn_label:{qid}:{lang}",
                     "type": "set_label",
