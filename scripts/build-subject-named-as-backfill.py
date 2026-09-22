@@ -130,8 +130,22 @@ ADJACENT_FLOOR = 10
 
 
 def qs(value: str) -> str:
-    """A QuickStatements string literal."""
-    return value.replace("\\", "\\\\").replace('"', '\\"')
+    """A QuickStatements string literal.
+
+    ⛔ **V1 CANNOT ESCAPE A DOUBLE QUOTE, SO THE QUOTE IS REMOVED.** This function used to
+    write `\\"`, which is Python's escape and not QuickStatements' -- there is no backslash
+    escape in the V1 format at all, so the line was simply unparseable and the statement was
+    lost. `Q141206058` carried `P1810 "Bertha \\"Betsy\\" Pedersdatter"` and
+    `Q141493460` `"Otto \\"der Reiche\\" von Ballenstedt"` -- a nickname in quotes, which is
+    how Geni renders one.
+
+    **`build-garborg-day.qs` has always stripped it** and this is now the same answer, found
+    by `tests/test_p2600_batches.py::test_no_line_carries_an_unescapable_quote` failing on the
+    committed batch. Two emitters had two different escapers and only one was right, which is
+    § *A GUARD IN ONE EMITTER IS NOT A GUARD* in its other form. The copies stay separate --
+    § *Duplication is deliberate here* -- and a test pins them to agree instead.
+    """
+    return (value or "").replace('"', "").strip()
 
 
 def carries_marker(name: str) -> bool:

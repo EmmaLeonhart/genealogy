@@ -1082,9 +1082,16 @@ Run `35590570344`, 2026-09-21, identical on Python 3.10 and 3.13.
   Stålarm"`, `"son of Gunnar Gunnarson Ænes"`, and one that is a raw source note,
   `"Grødem i Randaberg; jfr g og æ bok 1 side 118 - 17"`. **This is the same fault as the
   `Tora NN` item above** — a relative's name reaching a field that is not about them.
-- `test_p2600_batches.py::test_no_line_carries_an_unescapable_quote[wikidata-subject-named-as.qs]`
-  — `"Bertha \"Betsy\" Pedersdatter"`, `"Otto \"der Reiche\" von Ballenstedt"`. A nickname in
-  quotes inside a `P1810` value; QuickStatements has no escape for it.
+- ~~`test_p2600_batches.py::test_no_line_carries_an_unescapable_quote`~~ **FIXED 2026-09-21.**
+  Two backfill generators carried `qs()` as
+  `value.replace("\\", "\\\\").replace('"', '\\"')` -- Python's escape, not
+  QuickStatements'. There is no backslash escape in V1 at all, so
+  `Q141206058 P1810 "Bertha \"Betsy\" Pedersdatter"` was unparseable and the statement was
+  silently lost. `build-garborg-day.qs` had always stripped the quote instead. Both now strip.
+  **`wikidata-relationship-sources.qs` had the identical defect** and only passed because
+  today's batch holds no quoted name -- § *A GUARD IN ONE EMITTER IS NOT A GUARD*. The three
+  copies stay separate per § *Duplication is deliberate here*, and a new parametrised test
+  pins them to agree.
 - `test_p2600_batches.py::test_the_daily_batch_never_restates_what_the_item_already_holds` — 97
   statements the item already holds
 

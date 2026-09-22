@@ -46072,3 +46072,31 @@ against a paternal 495. Nothing touched Geni; the moratorium is intact.
 root, looking for the callers of `build-patronymic-items.py`. It swept `exports/`, ran two
 minutes and was killed. § *NEVER GREP THE WHOLE CORPUS*: the question was worth seconds over
 `scripts/` and `.github/workflows/`.
+
+## 2026-09-21 — `\"` is not a QuickStatements escape, and two generators thought it was
+
+`test_no_line_carries_an_unescapable_quote` had been failing on the committed
+`wikidata-subject-named-as.qs`, on two lines:
+
+    Q141206058  P2600 "6000000053155539975"  P1810 "Bertha \"Betsy\" Pedersdatter"
+    Q141493460  P2600 "6000000001199993264"  P1810 "Otto \"der Reiche\" von Ballenstedt …"
+
+A nickname in quotes, which is how Geni renders one. `build-subject-named-as-backfill.py` and
+`build-relationship-sources-backfill.py` both held
+
+    def qs(value): return value.replace("\\", "\\\\").replace('"', '\\"')
+
+which is Python's escape and not QuickStatements'. **V1 has no backslash escape at all**, so
+the line was not merely ugly — it was unparseable, and the statement was lost with nothing
+saying so. `build-garborg-day.qs` has stripped the quote since it was written, with the reason
+in its docstring, and that is now the answer in all three.
+
+**The second file had the identical defect and was green.** `wikidata-relationship-sources.qs`
+passes today only because this batch happens to contain no quoted name — the same
+§ *A GUARD IN ONE EMITTER IS NOT A GUARD* shape as the relational label earlier today, and the
+second time in one session that a rule was right in one emitter of several.
+
+The three copies were NOT collapsed. § *Duplication is deliberate here. Never "fix" it.* and
+§ *THE REPO IS MINIMALIST* both point the same way: the missing thing was never a shared
+module, it was a test holding them to one answer, so
+`test_no_emitter_backslash_escapes_a_quote` is parametrised over all three.

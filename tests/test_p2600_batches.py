@@ -603,3 +603,41 @@ def test_no_geni_id_statement_is_sourced_to_its_own_geni_id():
     assert not offenders, (
         "P2600 statements sourced to their own Geni id -- an identifier is not evidence for "
         f"itself: {offenders[:5]}")
+
+
+# ---------------------------------------------------------------------------
+# ⛔ EVERY EMITTER ESCAPES A QUOTE THE SAME WAY, BECAUSE V1 CANNOT ESCAPE ONE AT ALL.
+#
+# Found 2026-09-21 by `test_no_line_carries_an_unescapable_quote` failing on the committed
+# `wikidata-subject-named-as.qs`: two backfill generators wrote `\"`, which is Python's escape
+# and not QuickStatements', so `Q141206058 P1810 "Bertha \"Betsy\" Pedersdatter"` was
+# unparseable and the statement was simply lost. `build-garborg-day.qs` had always stripped the
+# quote instead.
+#
+# The copies are NOT collapsed into one -- § *Duplication is deliberate here. Never "fix" it.*
+# This test is what keeps them agreeing, which is the thing that was actually missing.
+# ---------------------------------------------------------------------------
+
+QS_EMITTERS = (
+    "build-garborg-day.py",
+    "build-subject-named-as-backfill.py",
+    "build-relationship-sources-backfill.py",
+)
+
+
+@pytest.mark.parametrize("script", QS_EMITTERS)
+def test_no_emitter_backslash_escapes_a_quote(script):
+    """⛔ `\\"` is not a QuickStatements escape. There is no escape; the quote comes out.
+
+    Checked against the source rather than by importing, because these are scripts with
+    module-level work in them. The fragment looked for is the whole wrong CALL, so the
+    docstrings that quote the old behaviour cannot trip it.
+    """
+    source = (REPORTS.parent / "scripts" / script).read_text(encoding="utf-8")
+    wrong = r""".replace('"', '\\"')"""
+    assert wrong not in source, (
+        f"{script}: qs() backslash-escapes a double quote; QuickStatements V1 cannot parse "
+        f"that, and the statement is silently lost")
+    right = r"""replace('"', "")"""
+    assert right in source, (
+        f"{script}: qs() must REMOVE the double quote, the way build-garborg-day.qs does")
