@@ -194,11 +194,43 @@ def render(subject_note, people, sex, fams, source):
             out.append("1 FAMC @F%s@" % fx)
             out.append("2 PEDI foster")
         out.append("1 RFN geni:%s" % gid)
+    # ⛔ **ONE RECORD PER XREF, BECAUSE `fam_xref` IS A FUNCTION OF THE MEMBERS ALONE.**
+    # Two entries in `fams` with the same member set hash to the same `@F9990...@`, and this
+    # loop emitted a `0 @F...@ FAM` for each of them -- a GEDCOM carrying the same record xref
+    # twice, which is malformed: a reader may take the first, the last, or refuse the file.
+    #
+    # Measured 2026-09-22 in CI, the first slow-lane run this module has ever completed:
+    # **306 of the tiny-path files** carry duplicated xrefs, every one an `@F9990...@`
+    # placeholder family, and in the file inspected the two records were byte-identical --
+    # `1 HUSB @I6000000116694298987@ | 1 CHIL @I6000000182737012832@`, twice.
+    #
+    # Merging rather than dropping the second: identical is what was observed, but the xref
+    # asserts only that the MEMBERS match, so a second entry may legitimately carry a `MARR`
+    # or a `DIV` the first does not. Taking the union keeps that and cannot lose an edge.
+    merged = {}
     for f in fams:
         members = [m for m in [f.get("husb"), f.get("wife")] + f.get("chil", []) if m]
         if len(members) < 2:
             continue
-        out.append("0 @F%s@ FAM" % fam_xref(members))
+        xref = fam_xref(members)
+        prev = merged.get(xref)
+        if prev is None:
+            merged[xref] = dict(f)
+            continue
+        for slot in ("husb", "wife"):
+            if not prev.get(slot) and f.get(slot):
+                prev[slot] = f[slot]
+        seen = list(prev.get("chil", []))
+        for c in f.get("chil", []):
+            if c not in seen:
+                seen.append(c)
+        prev["chil"] = seen
+        for flag in ("marr", "div"):
+            if f.get(flag):
+                prev[flag] = True
+
+    for xref, f in merged.items():
+        out.append("0 @F%s@ FAM" % xref)
         if f.get("husb"):
             out.append("1 HUSB @I%s@" % f["husb"])
         if f.get("wife"):
