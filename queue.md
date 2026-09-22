@@ -1140,3 +1140,30 @@ item labelled the same way.
 A GUARD* — it belongs in `namemodel`, and it needs the two tests named in the `Tora NN` item:
 `mul` is `Given NN` when there is a given name and no surname, and **every descriptive label
 opens with the given name**. Then fix what already went out.
+
+#### Done 2026-09-21 — the fix, and the one thing it does NOT settle
+
+`namemodel.own_given_name` and `namemodel.lead_with_given_name` are the model's copy of the
+rule, and `describe_all` in `build-garborg-day.py` now threads `fields` and calls them. Five
+tests in `tests/test_namemodel.py` pin it.
+
+**The rule already existed in the other emitter.** `build-nn-label-batch` has emitted
+`Andreas father of Malin` since 2026-09-09 and `tests/test_nn_label_batch.py` pins it;
+`describe_all` never got it. That is § *A GUARD IN ONE EMITTER IS NOT A GUARD* exactly, which
+is why the model holds it now.
+
+- **⛔ STILL OPEN: WHAT PUNCTUATION.** Two forms are attested and both are Emma's. 2026-09-09
+  says `Andreas father of Malin`, a bare space, and a test pins it. The `Tora NN` item of
+  2026-09-21 says `Tora, mother of …`, with a comma. **The space form was implemented**,
+  because it is the one already shipping and one form across both emitters is the point — but
+  the newer instruction says comma, so this is a guess and it is recorded as one.
+
+- **⛔ STILL OPEN: THE CJK WORD ORDER, AND IT IS NOT GUESSED.** The European apposition leads
+  with the name; the Japanese runs the other way — `マリンの父アンドレアス` is *Malin's father
+  Andreas*, name LAST. `build-nn-label-batch` flagged this in 2026-09-09 and sidestepped it
+  because `WORDS` carries no CJK, but `describe_all` DOES emit CJK, so it meets the question
+  for real. § *no guessing on the representations*: the CJK three keep the bare relation until
+  it is ruled. `namemodel._DESCRIBE_LEADS` is where that decision lives.
+
+- **Still owed: fix what already went out.** The rule now stops new ones; the items already
+  carrying a bare relational label are a separate pass and are not done.

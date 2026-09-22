@@ -1280,3 +1280,84 @@ def test_the_contaminated_families_are_not_modelled():
     for token in ("Eric", "Henric", "Fredric", "Ulric",
                   "Benavides", "Benevides", "Ridolfi", "Al-Thaqafi"):
         assert not PATRONYMIC.match(token), token
+
+
+# ---------------------------------------------------------------------------
+# ⛔ A LABEL THAT IS ONLY A RELATION NAMES SOMEBODY ELSE. Ruled 2026-09-21.
+#
+# *"You still are producing wrong things where a person's first name is known, but their
+# labels that they're given are relational. That is not supposed to be happening. And you're
+# doing that as the biggest issue of this entire fucking campaign."*
+#
+# The rule already existed -- `build-nn-label-batch` has emitted `Andreas father of Malin`
+# since 2026-09-09 -- and `build-garborg-day.describe_all` never got it, which is exactly the
+# shape § *A GUARD IN ONE EMITTER IS NOT A GUARD* describes. These tests pin the rule in the
+# MODEL so the next emitter is covered without being told.
+# ---------------------------------------------------------------------------
+
+def test_a_known_given_name_leads_the_descriptive_label():
+    """`Tora mother of Brita`, never a bare `mother of Brita`.
+
+    A label that is only a relation names the RELATIVE, so the item cannot be found and
+    cannot be told apart from every other item labelled the same way. That is what makes it
+    useless rather than merely untidy.
+    """
+    from namemodel import lead_with_given_name
+    assert lead_with_given_name("Andreas", "father of Malin") == "Andreas father of Malin"
+    assert lead_with_given_name("Tora", "mother of Brita Danielsdotter Berg") == (
+        "Tora mother of Brita Danielsdotter Berg")
+    # The form is a bare space, matching `build-nn-label-batch` and the 2026-09-09 ruling
+    # that `tests/test_nn_label_batch.py` pins. One form across both emitters is the point.
+    assert "," not in lead_with_given_name("Andreas", "father of Malin")
+
+
+def test_a_person_with_no_given_name_keeps_the_bare_relation():
+    """The descriptive label was never wrong in itself.
+
+    Someone with no name at all has nothing else to be called, and `CLAUDE.md` § *The
+    NN/Private label algorithm applies to EVERY unnamed person* asks for exactly this. The
+    defect was narrower: a given name in hand and thrown away.
+    """
+    from namemodel import lead_with_given_name
+    assert lead_with_given_name("", "daughter of Olof Larsson") == "daughter of Olof Larsson"
+    assert lead_with_given_name(None, "wife of Rostaing Arbald") == "wife of Rostaing Arbald"
+
+
+def test_leading_with_the_given_name_is_idempotent():
+    """Applied at two layers it must not double the name.
+
+    `build-nn-label-batch` already prefixes from `mul`; if the model is applied over the top
+    the result has to stay `Andreas father of Malin`, never `Andreas Andreas father of Malin`.
+    """
+    from namemodel import lead_with_given_name
+    once = lead_with_given_name("Andreas", "father of Malin")
+    assert lead_with_given_name("Andreas", once) == once
+
+
+def test_the_cjk_descriptive_label_is_left_alone():
+    """⛔ The Japanese apposition runs the other way and is NOT guessed at.
+
+    `マリンの父アンドレアス` is *Malin's father Andreas* -- the name LAST -- so the European
+    order cannot be copied across. § *no guessing on the representations*: the CJK label keeps
+    the bare relation until the order is ruled.
+    """
+    from namemodel import lead_with_given_name
+    for code in ("ja", "zh", "ko"):
+        assert lead_with_given_name("Tora", "マリンの父", code) == "マリンの父"
+
+
+def test_own_given_name_refuses_a_marker_and_a_relatives_name():
+    """What counts as the person's OWN given name, and the two things that are not.
+
+    `NN` is a marker, not a name. `NN ektefelle Søren Jonson` is her HUSBAND -- the
+    `Q141352505` case `names_a_relative` exists for. A marker beside a real given name is
+    stripped rather than refused, because `NN Tora` and `Tora` are the same person's given
+    name with the unknown half written out.
+    """
+    from namemodel import own_given_name
+    assert own_given_name({"givn": "Tora"}) == "Tora"
+    assert own_given_name({"givn": "NN Tora"}) == "Tora"
+    assert own_given_name({"givn": "NN"}) == ""
+    assert own_given_name({"givn": "NN ektefelle Søren Jonson"}) == ""
+    assert own_given_name({}) == ""
+    assert own_given_name(None) == ""

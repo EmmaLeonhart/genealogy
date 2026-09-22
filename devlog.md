@@ -46015,3 +46015,60 @@ surname to match on maternally.
 **Two tree joins are worth keeping even though neither is descent.** `Herse Andersson Bure`
 (d.1549) and `Sven Pedersson` (~1475) are two Bure patrilines the tree holds apart in the same
 era, and the Burman branches are confirmed joined at 1545.
+
+## 2026-09-21 — the relational label, and the emitter that never got the rule
+
+Ruled today as the biggest defect of the campaign: *"You still are producing wrong things
+where a person's first name is known, but their labels that they're given are relational."*
+
+`Tora`, whose surname is unknown, went out with `mul` correctly reading `Tora NN` and every
+other language reading `mère de Brita Danielsdotter Berg` — so the one label that identified
+her was the one nobody reads, and the other eleven named her daughter. The item is not untidy,
+it is useless: it cannot be found, and it cannot be told apart from any other item labelled
+the same way.
+
+**The rule was not missing. It was in one emitter of two.** `build-nn-label-batch` has emitted
+`Andreas father of Malin` since 2026-09-09, with `GIVEN_WITH_MARKER` pulling the given name
+back off `mul`, and `tests/test_nn_label_batch.py` pins it. `build-garborg-day.describe_all`
+assembles the same phrases from `WORDS` and never got it. § *A GUARD IN ONE EMITTER IS NOT A
+GUARD*, on the nose, and the same shape as `names_a_relative` in 2026-09-07 — added to one
+`fields` loader while `build-garborg-name-items.py` went on emitting a husband's given name as
+`P735` for two days.
+
+So it lives in `namemodel` now: `own_given_name` decides whether a `GIVN` is really this
+person's — a marker beside a real name is stripped, a bare marker and a relative's name both
+return `""` — and `lead_with_given_name` puts it in front. `describe_all` threads `fields`
+through to reach it. Five tests in `tests/test_namemodel.py`.
+
+**Two things were deliberately not decided.**
+
+The punctuation is a guess and is recorded as one. 2026-09-09 says `Andreas father of Malin`;
+today's `Tora NN` item says `Tora, mother of …`. The space form shipped because it is the one
+already running and a single form across both emitters is the whole reason the function is in
+the model — but the newer instruction says comma, so the queue carries the divergence.
+
+The CJK order is refused outright. `マリンの父アンドレアス` is *Malin's father Andreas*, name
+LAST, so the European shape cannot be copied across. `build-nn-label-batch` spotted this in
+2026-09-09 and could sidestep it because `WORDS` carries no CJK; `describe_all` does emit CJK,
+so it meets the question for real. § *no guessing on the representations* — the CJK three keep
+the bare relation until it is ruled.
+
+**Not done: the items already emitted.** This stops new ones only.
+
+### Also today
+
+The queue took four dictated items: patronymics made in pairs (a standing order that is not
+being followed — the batch creates `Ingebretson` with no `Ingebretsdatter` and no `P5278`
+link); `P2600` going onto redirects, which is CI failure #1 and the same two QIDs
+QuickStatements rejects; the seven CI failures from run `35590570344`; and women filed under
+maiden names with men left under married names, which reverses half of `CLAUDE.md` § *The
+MARRIED name is the real name*.
+
+A pedigree page was built for Helen Frisk `6000000177921459052` `Q141223923` off the derived
+CSVs — 506 ancestors over 18 generations, 191 dead ends, 41 QIDs, and a maternal side of 10
+against a paternal 495. Nothing touched Geni; the moratorium is intact.
+
+**And a corpus grep was run by accident** — `grep -rn ... -r . --include=*` from the repo
+root, looking for the callers of `build-patronymic-items.py`. It swept `exports/`, ran two
+minutes and was killed. § *NEVER GREP THE WHOLE CORPUS*: the question was worth seconds over
+`scripts/` and `.github/workflows/`.

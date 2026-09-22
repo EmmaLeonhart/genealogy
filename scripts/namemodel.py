@@ -2470,6 +2470,74 @@ def _unknown_markers() -> frozenset:
     return _MARKERS
 
 
+def own_given_name(fields) -> str:
+    """The person's OWN given name, or `""` when the field does not carry one.
+
+    **Three things are not a given name and all three reach `GIVN`**: nothing at all, a
+    redaction marker (`NN`, `Private`, `Ukjent`), and a sentence about somebody else --
+    `NN ektefelle Søren Jonson`, which `names_a_relative` already recognises. A marker is
+    stripped rather than refused, because `NN Tora` and `Tora` are the same person's given
+    name with the unknown half written out.
+    """
+    givn = " ".join((fields or {}).get("givn", "").split()) if fields else ""
+    if not givn or names_a_relative(givn):
+        return ""
+    markers = _unknown_markers()
+    kept = [tok for tok in givn.split() if tok.casefold().strip(".,") not in markers]
+    return " ".join(kept)
+
+
+#: ⛔ **THE EUROPEAN LANGUAGES ONLY, AND CJK IS DELIBERATELY ABSENT.** An apposition goes
+#: ahead of the clause in all eleven languages of `WORDS` -- `Andreas father of Malin`,
+#: `Andreas Vater von Malin` -- and **the Japanese order is the other way round**:
+#: `マリンの父アンドレアス` is *Malin's father Andreas*, with the name LAST.
+#: `build-nn-label-batch` noted that in 2026-09-09 and sidestepped it because `WORDS` carries
+#: no CJK; `describe_all` does emit CJK, so it meets the question for real. § *no guessing on
+#: the representations* decides it: a CJK descriptive label is left as the relation alone
+#: until the order is ruled, rather than assembled from reasoning.
+_DESCRIBE_LEADS = frozenset({"ja", "zh", "ko"})
+
+
+def lead_with_given_name(given: str, phrase: str, lang: str = "en") -> str:
+    """`Tora, mother of Brita Danielsdotter Berg` -- the person's own name FIRST.
+
+    ⛔ **A LABEL THAT IS ONLY A RELATION NAMES SOMEBODY ELSE.** Ruled 2026-09-21 as the
+    biggest defect of the campaign: *"You still are producing wrong things where a person's
+    first name is known, but their labels that they're given are relational."* The item then
+    cannot be found and cannot be told apart from every other item labelled the same way, so
+    it is useless rather than untidy -- § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME*.
+
+    **The descriptive label was never wrong in itself** -- a person with no name at all has
+    nothing else to be called, and `CLAUDE.md` § *The NN/Private label algorithm applies to
+    EVERY unnamed person* asks for exactly it. The defect is narrower: the emitter reached for
+    the phrase while holding a given name, and threw the name away.
+
+    **It lives in the model because there are two emitters** -- § *A GUARD IN ONE EMITTER IS
+    NOT A GUARD*. `describe_all` in `build-garborg-day` and the placeholder pass in
+    `build-nn-label-batch` both assemble these phrases, and a third added later is covered
+    without being told.
+
+    **The form is `Andreas father of Malin`, a bare space and no comma**, because that is the
+    attested one: it was ruled on 2026-09-09, `build-nn-label-batch` emits it, and
+    `tests/test_nn_label_batch.py` pins it. The `Tora NN` item of 2026-09-21 writes it with a
+    comma -- `Tora, mother of …` -- and that divergence is recorded in `queue.md` rather than
+    settled here, since the half that matters is identical in both and one form across both
+    emitters is the reason this function exists at all.
+
+    With no given name the phrase is returned untouched, which is the unnamed person's case
+    and is correct. A CJK language is returned untouched too -- see `_DESCRIBE_LEADS`.
+    """
+    given = " ".join((given or "").split())
+    phrase = " ".join((phrase or "").split())
+    if not given or not phrase or lang in _DESCRIBE_LEADS:
+        return phrase
+    # Already leading with the name -- an emitter that was fixed first, or a phrase built by
+    # hand. Idempotent rather than doubled, so this can be applied at more than one layer.
+    if phrase.casefold().startswith(given.casefold()):
+        return phrase
+    return f"{given} {phrase}"
+
+
 #: ⛔ **A ROMAN NAME GETS NO NAME ITEMS AT ALL.** Ruled 2026-09-14: *"I would like us to just
 #: never actually apply names and given names to Roman people since they always get undone, I
 #: think due to the weird naming structure of them."*

@@ -52,6 +52,7 @@ from namemodel import (  # noqa: E402
     qualifier_value,
     aliases_for, classify, classify_fields, load_plan,
     names_a_relative as _namemodel_names_a_relative,
+    lead_with_given_name, own_given_name,
     drop_description_suffix, generation_suffix_key,
     normalise_generation_suffix, statements_for,
     suffix_is_native)
@@ -392,8 +393,19 @@ def is_relationship_description(text):
 
 def describe_all(geni_id, facts, father, mother, labels, table,
                  children=None, spouses=None, siblings=None,
-                 qid_of=None, live_labels=None):
+                 qid_of=None, live_labels=None, fields=None):
     """`{lang: "daughter of Arne Olaus Fjørtoft Garborg"}` for a redacted person.
+
+    ⛔ **AND IT OPENS WITH THE PERSON'S OWN GIVEN NAME WHEN THERE IS ONE.** Ruled 2026-09-21:
+    *"a person's first name is known, but their labels that they're given are relational.
+    That is not supposed to be happening."* `Tora`, whose surname is unknown, took
+    `mère de Brita Danielsdotter Berg` in every language while her `mul` correctly read
+    `Tora NN` -- so the one label that identified her was the one nobody reads, and the rest
+    named her daughter. She is `Tora, mother of Brita Danielsdotter Berg` now.
+
+    `fields` is what carries the given name, and it is threaded in rather than re-read:
+    `own_given_name` in `namemodel` is what decides a `GIVN` is really this person's, because
+    a marker and a relative's name both reach that column.
 
     Built from the nearest named parent. `ja` and `zh` are included **here** where
     `build-nn-label-batch.py` excludes them, and the reason it excludes them is the
@@ -513,6 +525,10 @@ def describe_all(geni_id, facts, father, mother, labels, table,
             name = named(rel) if rel else ""
             if not name:
                 continue
+            # **The person's OWN given name leads every one of these**, when they have one.
+            # Ruled 2026-09-21 -- see this function's docstring. `own_given_name` is the
+            # model's, so `build-nn-label-batch` gets the identical reading of what counts.
+            own = own_given_name((fields or {}).get(geni_id))
             out = {}
             for lang, words in WORDS.items():
                 group = words[group_name]
@@ -520,7 +536,8 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                 joiner = words["of"]
                 if isinstance(joiner, dict):
                     joiner = joiner.get(group_name, joiner[""])
-                out[lang] = f"{word} {joiner} {qs(name)}"
+                out[lang] = lead_with_given_name(
+                    own, f"{word} {joiner} {qs(name)}", lang)
             ja, zh, ko = label_in(name, table)
             if ja:
                 JA = {"child_of": {"M": "息子", "F": "娘", "": "子"},
@@ -544,6 +561,12 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                 out["zh"] = f"{zh}之{ZH[group_name].get(sex) or ZH[group_name]['']}"
                 if ko:
                     out["ko"] = f"{ko}의 {KO[group_name].get(sex) or KO[group_name]['']}"
+                # **The CJK three keep the bare relation, and that is deliberate.** The
+                # Japanese apposition runs the other way -- `マリンの父アンドレアス` is
+                # *Malin's father Andreas*, name LAST -- so the European `Andreas father of
+                # Malin` shape cannot simply be copied across. `namemodel._DESCRIBE_LEADS`
+                # carries the reasoning; § *no guessing on the representations* is why it
+                # waits for a ruling rather than being assembled here.
             return out
     return {}
 
@@ -7501,7 +7524,8 @@ def main():
                 lines.append(f'LAST\tAmul\t"{_nn_birth}"')
             described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings,
-                                     qid_of=our_items, live_labels=live_labels)
+                                     qid_of=our_items, live_labels=live_labels,
+                                     fields=fields)
             for code, value in sorted(described.items()):
                 lines.append(f'LAST\tL{code}\t"{value}"')
                 if code == "en" and _desc and not _desc_emitted:
@@ -7597,7 +7621,8 @@ def main():
                 if not _desc:
                     _rel = describe_all(g, facts, father, mother, referred_to_as, table,
                                         children, spouses, siblings,
-                                        qid_of=our_items, live_labels=live_labels)
+                                        qid_of=our_items, live_labels=live_labels,
+                                        fields=fields)
                     _desc = (_rel.get("en") or "").strip()
                 if _desc:
                     lines.append(f'LAST\tDen\t"{qs(_desc)}"')
