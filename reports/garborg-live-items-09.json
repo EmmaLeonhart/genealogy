@@ -161813,6 +161813,49 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q141518313$A474B013-34E4-4B10-BF9E-445F7BCE83C3",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141521861",
+        "numeric-id": 141521861
+       }
+      },
+      "hash": "7c54c30d35d846489060e6fc22af0f3cfe13179e",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bf8d7da06001b99fdcc976d8469ccb4a48a7654f",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009245258191"
+          },
+          "hash": "852cdf4d688058de058921f36438cc57ac387665",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141518313$1854CF33-313D-4C50-AA78-BAF731E16FC7",
@@ -161959,8 +162002,8 @@
     "value": "奥拉·谢德兰德之妻"
    }
   },
-  "lastrevid": 2548087870,
-  "modified": "2026-09-21T08:06:50Z",
+  "lastrevid": 2548278065,
+  "modified": "2026-09-22T03:04:11Z",
   "ns": 0,
   "pageid": 135078093,
   "sitelinks": {},

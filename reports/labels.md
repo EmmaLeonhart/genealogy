@@ -5,15 +5,15 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,812,843 people**.
+One row per person in `reports/derived-labels.csv` — **1,815,946 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,701,036 | 93.8% |
+| Latin only | 1,704,138 | 93.8% |
 | CJK only — needs translation for en | 54,141 | 3.0% |
-| no usable name at all | 29,553 | 1.6% |
+| no usable name at all | 29,554 | 1.6% |
 | other script only — needs translation for en | 13,406 | 0.7% |
 | mixed-script only — no clean Latin label | 11,407 | 0.6% |
 | Latin and CJK | 3,300 | 0.2% |
@@ -27,7 +27,7 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 2,048,155 |
+| Latin | 2,054,399 |
 | CJK | 133,221 |
 | other | 53,989 |
 | mixed | 35,604 |

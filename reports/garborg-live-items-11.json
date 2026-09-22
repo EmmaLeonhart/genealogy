@@ -191171,6 +191171,49 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q141528027$8F709525-5C72-4A2D-A071-79BDB45151C5",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141528033",
+        "numeric-id": 141528033
+       }
+      },
+      "hash": "96e65acbb3020fea422a88a53bc2a8924cb7b2e4",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "52de4817be4ac7029c1310ece8e09790cfda6116",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000177921458845"
+          },
+          "hash": "250e947f1885a151a48cbeed836f344205b4df0a",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141528027$D2F1B664-C92E-48AB-A989-F4FDCE06CC35",
@@ -191524,8 +191567,8 @@
     "value": "古斯塔夫·埃米尔·卡尔松·弗里斯克"
    }
   },
-  "lastrevid": 2548270368,
-  "modified": "2026-09-22T02:22:36Z",
+  "lastrevid": 2548279118,
+  "modified": "2026-09-22T03:11:25Z",
   "ns": 0,
   "pageid": 135087623,
   "sitelinks": {},

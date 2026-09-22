@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **1,812,943 people**, 
+One row per person in `reports/derived-facts.csv` — **1,816,046 people**, 
 of whom 73,562 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,809,622 | 99.8% |
-| occupation | 204,810 | 11.3% |
-| birth date | 1,182,728 | 65.2% |
+| sex | 1,812,725 | 99.8% |
+| occupation | 205,016 | 11.3% |
+| birth date | 1,185,418 | 65.3% |
 | birth place | 0 | 0.0% |
-| death date | 937,136 | 51.7% |
+| death date | 938,839 | 51.7% |
 | death place | 0 | 0.0% |
-| burial date | 114,884 | 6.3% |
+| burial date | 115,022 | 6.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,27 +48,27 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**36 date values**, 19 distinct, parsed to no year. They keep their raw
+**1,777 date values**, 980 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
+| `about 1300` | 24 |
+| `about 1250` | 24 |
+| `about 1280` | 21 |
+| `about 1320` | 20 |
+| `about 1350` | 18 |
+| `about 1340` | 18 |
+| `about 1290` | 18 |
+| `about 1330` | 16 |
 | `ABT` | 16 |
-| `AFT` | 3 |
-| `BET 725 AND` | 1 |
-| `-538000000` | 1 |
-| `-1400000000` | 1 |
-| `ABT -538000000` | 1 |
-| `6092011` | 1 |
-| `13011704` | 1 |
-| `2031721` | 1 |
-| `BET  AND` | 1 |
-| `19981` | 1 |
-| `265 APR 1843` | 1 |
-| `SEP 41666` | 1 |
-| `DEC 161728` | 1 |
-| `105 NOV 1743` | 1 |
+| `about 1260` | 15 |
+| `about 1275` | 15 |
+| `about 1240` | 13 |
+| `about 1400` | 13 |
+| `about 1310` | 12 |
+| `about 1315` | 12 |
 
 `reports/impossible-years.md` has the full account of these: bare modifiers with
 no operand, and cosmological years in the hundreds of millions belonging to
