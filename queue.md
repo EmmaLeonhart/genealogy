@@ -90,6 +90,16 @@ Its one module is `tests/test_gedcom_real_exports.py`, which reparses **every ex
 says *"the U+2028 handling in `parse` was found here, not there"*. That is not a module whose
 silence is comfortable.
 
+⛔ **AND A SCHEDULED RUN SUPERSEDES A DISPATCH, WHICH SILENTLY DROPS THE SLOW LANE AGAIN.**
+Measured 2026-09-22: dispatch `35711991621` was created 09:43:25Z and **cancelled 10:02:31Z**,
+19 minutes in with both fast lanes and the slow lane mid-flight, because scheduled run
+`35713644605` was created at 10:01:10Z and CI's concurrency cancels in progress. The scheduled
+run then skips `slow` by its own `if: github.event_name == 'workflow_dispatch'`.
+
+So the slow lane can be lost in two different ways — never started, or started and superseded —
+and both leave a CI result that looks like an answer. **A dispatch has to be the most recent CI
+run to mean anything**, which is worth knowing before reading one as green.
+
 **So the definition for the switch is the FAST lane on 3.10 and 3.13**, which is what the
 workflow itself intends — *"a separate job so a red fast lane is legible on its own"* — and the
 slow lane is reported separately rather than blocking. It is about to produce its first real
