@@ -38,6 +38,25 @@ Recovery state, for whenever it does resume:
 
 ## ⛔ FIRST ITEM — GET CI GREEN. NOTHING EDITS WIKIDATA UNTIL IT IS. Ruled 2026-09-21
 
+⛔ **THIS SUPERSEDES THE 2026-09-14 RULING THAT IT MUST NOT BE FIRST, AND THAT IS WORTH SAYING
+OUT LOUD BECAUSE I BROKE IT SILENTLY.** The queue already carried a `GET CI GREEN` item, whose
+own words were *"Ruled 2026-09-14: put it as the queue item before actually running the cicd
+proper. Not a first item, not worked ahead of real work."* I wrote a second one, put it at the
+front, and named it in the work-loop cron — so three ticks reported progress on an item I had
+authored, against a standing ruling, while the live plan below was untouched. Emma, asked
+directly on 2026-09-22 whether the queue was being worked: it was not.
+
+**It is first anyway, and the newer ruling is why**: *"right the fuck now we need to make
+everything green before edits happen. No half measures."* The gate is built and fails closed, so
+nothing goes out until this is done. The 2026-09-14 item is folded in here rather than left
+beside it — one item about one thing — and its state was stale anyway (last read run
+`34922163324`, 4 failures, long superseded).
+
+⛔ **AND IT STOPS BEING FIRST BY ITSELF.** Ruled 2026-09-22, *"finish CI, then switch"*: the tick
+that sees a GREEN CI run on a sha that is on `origin/main` deletes this section, writes the
+devlog entry, and moves to § *The order. Top to bottom.* below — first bullet, the Pages link to
+the redo-everything action. No further check-in.
+
 *"Right the fuck now we need to make everything green before edits happen. No half measures.
 In flight actions should still happen and be triggered before this."*
 
@@ -447,21 +466,6 @@ findings, not work in progress. Nothing here is started.**
   executed, and the only genuine losses were two `still lagged after 900s of waiting` plus two
   dependents skipped behind one of them. `MAXLAG` is already 10 and the budget already 900 s.
   Nothing to fix in our code; recorded so the next session does not re-diagnose it as ours.
-
-## ⛔ GET CI GREEN — IMMEDIATELY BEFORE LIFTING THE HOLD, AND NOT BEFORE THEN
-
-Ruled 2026-09-14: *"put it as the queue item before actually running the cicd proper"*. Not a
-first item, not worked ahead of real work.
-
-Last read: run `34922163324` on `07fdb97e`, **4 failures, down from 11**. Three were fixed after
-that run (`built-batches.tsv`, the `das` and `von` tests); the fourth is the committed batch
-offering to create 63 people who already hold QIDs, which `pipeline.yml` fixes when it
-recomposes. `build-repo-freshness.py` is NOT a defect any more: run 2026-09-17 it indexed 96,546 paths,
-wrote 1,885 tracked artifacts to `reports/repo-freshness.csv` and named 34 files claiming a
-corpus smaller than the live one. Checked before being repeated — § *CHECK before raising an
-alarm*.
-
-Dispatch `ci.yml`, read the conclusion, fix what it says. § *TESTS RUN IN CI/CD OR NOT AT ALL*.
 
 ## ⛔ GEDCOM EXPORTS — MOVED TO THE VERY END, 2026-09-14
 
