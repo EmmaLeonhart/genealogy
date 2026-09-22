@@ -1168,3 +1168,49 @@ is why the model holds it now.
 
 - **Still owed: fix what already went out.** The rule now stops new ones; the items already
   carrying a bare relational label are a separate pass and are not done.
+
+---
+
+## AT THE VERY END — INVESTIGATE ON FAMILYSEARCH, NOT GENI. Queued 2026-09-21
+
+*"people I particularly want to investigate now … long story short [FamilySearch] is much better
+documented than anything on geni I think. I am inclined to think that geni is really bad at
+covering this area. So I will investigate on family search more … and then barrel through the
+queue (that thing is at the end lol)."*
+
+**Her own words place this last, and she is doing the investigating.** The agent's job is to
+hold the two identifiers and whatever the tree already says, not to start a research campaign.
+
+- **`Q660913` Kruto the Wend** — Prince of Wagria, `P2600` `6000000007690981645`, 13 sitelinks.
+  Wagria is eastern Holstein: Wendish / Obotrite, which is the **Pomeranian side of the
+  Dutch-Pomeranian cluster** § *Why the cluster campaign exists* is about.
+- **FamilySearch `MBW7-P7H`** — <https://www.familysearch.org/en/tree/pedigree/portrait/MBW7-P7H>.
+  Not fetched: FamilySearch needs a signed-in session and it is hers to work in.
+
+### ⛔ OUR TREE IS ALREADY RICHER THAN WIKIDATA HERE, AND THAT IS THE POINT
+
+Wikidata holds **no parents and no children** for `Q660913` — one spouse, an occupation, and two
+CONFLICTING death dates (`1093` and `1105`, both live). Our corpus holds a whole household,
+under the label **`Crito von Rügen`** rather than `Kruto the Wend`:
+
+    father    6000000012966007622  Grimus von von Rügen        no QID
+    mother    6000000059830466964  Slavina von Rügen           no QID
+    spouse    6000000007705157654  Slawina von Rügen           Q111239463   already on Wikidata
+    spouse    6000000175893574822  Slavka Swantiborides        no QID
+    child     6000000007690998267  Littog auf Rügen            no QID
+    child     6000000007705759288  Ratibor auf Rügen           no QID
+    child     6000000007705521210  Burislav auf Rügen          no QID
+
+So **six of the seven are creations, not statements** — § *A statement goes in only if BOTH ends
+already have a QID*, and the batch is a SEQUENCE. Nothing here is emittable today beyond what is
+already there, and that is the ordinary shape rather than a blocker.
+
+**Two things to look at when this is worked, neither of them asserted now:**
+
+- **`Grimus von von Rügen` carries a doubled `von`.** A label defect in our own data, not Geni's
+  rendering of a name.
+- **The mother is `Slavina von Rügen` and the spouse is `Slawina von Rügen`** — one letter apart.
+  That is either two real women who shared a name or a confusion, and § *The question is whether
+  OUR TREE MATCHES GENI* decides it is checked against Geni rather than reasoned about. ⛔ Under
+  the moratorium it cannot be checked at all, so it waits. § *DO NOT PANIC ABOUT ITEMS WE GOT
+  WRONG*.
