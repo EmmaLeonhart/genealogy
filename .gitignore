@@ -652,3 +652,9 @@ preservation/genealogy/ericastridson_MyHeritage/Perkwunos overloaded/Backup/Perk
 preservation/genealogy/ericastridson_MyHeritage/Perkwunos/Backup/Perkele - 2018-07-14 21-07-47.zip
 preservation/genealogy/ericastridson_MyHeritage/Perkwunos/Backup/Perkele - 2018-07-14 23-16-10.zip
 reports/description-audit.csv
+
+# The getmyancestors download log for the first FamilySearch export, 2026-09-21. 919 KB of
+# per-request lines -- `Downloading: /platform/tree/persons/...` and a status code -- which is
+# how the 84 HTTP 429s and 9 403s were counted, and useless once counted. Named one line at a
+# time, never a `*.log` pattern, the same convention the export zips follow.
+gedcom/familysearch/MBW7-P7H.log

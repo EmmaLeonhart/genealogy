@@ -1273,9 +1273,46 @@ for a second identifier namespace already:
 id, which is the `@NI04461@` trap that once pointed at a stranger's profile. FamilySearch needs
 the same treatment and the letter must not be `Q`, `F`, `I`, `N` or `S`.
 
-**First step is to look at what getmyancestors actually emits** — whether the FS id lands in
-the xref, in `RFN`, or in a `_FSFTID` custom tag — because that decides how much rendering is
-needed rather than being guessable.
+### DONE 2026-09-21 — the first export is in the corpus
+
+    gedcom/familysearch/MBW7-P7H-a12-d2.ged                      ORIGINAL, never rewritten
+    exports/familysearch/MBW7-P7H-ancestors12-descendants2.ged   the render, in the corpus
+
+**`MBW7-P7H` is Inger Axelsdatter Güntersberg** — `Q141493478`, Geni `6000000000757999620`,
+the FIRST of the two `PRIORITY_ANCESTOR_SEEDS`. So the export is the ring seed's own tree:
+**3,103 individuals, 1,456 families, 1,315 sources, 6,490 notes**, with dates, places and
+coordinates. 3,637 requests at 200, 84 at 429 absorbed by the retry loop, 9 at 403.
+
+**What it emits, measured rather than guessed:** sequential integers on OUR four prefixes —
+`@I1@`, `@F1@`, `@N1@`, `@S1@` — so `@I1@` parses as Geni profile 1. The identifier lives in
+`_FSFTID` on 3,103 of 3,103 individuals and 1,339 of 1,456 families, and there is **no `RFN`
+at all**. `scripts/render-familysearch-gedcom.py` renumbers to `@IFS/FFS/NFS/SFS<n>@`, adds
+`REFN fs:<id>`, and REFUSES to write if any xref still parses as a Geni id.
+`tests/test_familysearch_gedcom.py` pins it, including that the raw file *would* have leaked.
+
+**The original is preserved untouched** — 101,511 lines against the render's 105,953, which is
+exactly the 4,442 added `REFN` lines and nothing else.
+
+⛔ **THE BRIDGE WORKS AND IS NEARLY EMPTY. 11 OF 3,103.** `scripts/bridge-familysearch-qids.py`
+asked Wikidata for all 4,442 ids in batches of 250: **11 resolve through `P2889`**, and with the
+ledger folded in all 11 reach a Geni id — `reports/familysearch-qid-bridge.tsv`. That is
+**0.35% coverage**, so the FamilySearch tree enters the synoptic tree as a 3,103-person
+component attached at eleven points. The mechanism is exact and proven end to end; the data on
+Wikidata's side is simply not there. Inger herself is one of the eleven, which is the
+attachment that matters most.
+
+⛔ **AND `p2600-all.tsv` ALONE REPORTED 4, NOT 11.** The first version of the bridge read only
+the master correspondence and said Inger — the person the export is rooted on — reached no Geni
+id, while `garborg-qids.tsv` pairs her perfectly well. `ledger()` folds both for exactly this
+reason. A join that silently under-reports by 2.75x is the shape of failure this repo keeps
+being bitten by.
+
+- **⛔ NEEDS-DECISION: 0.35% is the finding, and what follows from it is not decided.** Three
+  readings, none of them taken here: emit `P2889` ourselves for people we have identified, and
+  become the bridge rather than consuming it; accept an eleven-point attachment and let the
+  zipper do the rest; or measure `P2889` coverage across all of Wikidata before any further
+  FamilySearch pulls. § *DO NOT MEASURE THE VOLUME BEFORE DOING A SMALL THING* cuts against the
+  third.
 
 ### ⛔ OUR TREE IS ALREADY RICHER THAN WIKIDATA HERE, AND THAT IS THE POINT
 

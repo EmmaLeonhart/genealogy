@@ -46141,3 +46141,51 @@ rather than exits.
 `Q141498725`, and on 2026-09-20 she ruled those two are *not* a duplicate pair. The merge is the
 live state either way; whether it was hers is not knowable from here, so nothing was undone and
 nothing re-split. Tagged NEEDS-DECISION in `queue.md`.
+
+## 2026-09-21 — the first FamilySearch export, and the bridge is 11 of 3,103
+
+`MBW7-P7H` turned out to be **Inger Axelsdatter Güntersberg** — `Q141493478`, Geni
+`6000000000757999620`, the first entry in `PRIORITY_ANCESTOR_SEEDS`. So the pedigree asked for
+is the ancestor ring's own seed, and it came back **3,103 individuals, 1,456 families, 1,315
+sources, 6,490 notes** with dates, places and coordinates. 3,637 requests at 200, 84 at 429 all
+absorbed by the retry loop, 9 at 403.
+
+**Three claims made here were wrong and are corrected.** There is no FamilySearch exporter in
+this repo — `geni-extension` is geni.com only, and a previous session said otherwise. There IS
+effectively an API key: `getmyancestors` ships a third party's client id, `a02j000000KTRjpAAH`
+with redirect uri `misbach.github.io`, shared by every user of the package, which is the likely
+source of the 429s. And the claim that FamilySearch data stays BESIDE the synoptic tree was
+invented here by stretching the 2026-09-10 Wikidata ruling onto a source Emma had never ruled
+on; she ruled the opposite. *"I never ruled that ... the familysearch data is specifically meant
+for the synoptic tree"*.
+
+**What the file actually contains, measured.** Sequential integers on our own four xref
+prefixes: `@I1@`, `@F1@`, `@N1@`, `@S1@`. `GENI_ID_RE` is `^@[IFNS](\d+)@$`, so `@I1@` parses as
+**Geni profile 1** — and small Geni ids are real people. Merging it as written would have fused
+3,103 Norwegians onto whoever holds ids 1..3103, which is the `@NI04461@` trap and the `@F9<n>@`
+bug `build-wikidata-gedcom.py` already fixed once. The identifier lives in `_FSFTID`, on every
+one of the 3,103 individuals and on 1,339 of the families, and there is **no `RFN` anywhere**.
+
+`render-familysearch-gedcom.py` renumbers to `@IFS/FFS/NFS/SFS<n>@`, adds `REFN fs:<id>` beside
+each `_FSFTID`, and refuses to write at all if a single xref still parses. The original download
+is preserved untouched in `gedcom/familysearch/` — 101,511 lines against the render's 105,953,
+which is exactly the 4,442 added `REFN` lines and nothing else.
+
+⛔ **THE BRIDGE IS EXACT AND NEARLY EMPTY.** `_FSFTID → P2889 → QID → P2600 → geni id`, asked of
+Wikidata for all 4,442 ids in batches of 250: **11 resolve**. 0.35%. So the tree gains a
+3,103-person component attached at eleven points. The mechanism is proven end to end and the
+data on Wikidata's side is not there — a finding about `P2889` coverage rather than about the
+method, and no name matching was reached for at any point.
+
+**And the first version of the bridge reported 4, not 11.** It read `p2600-all.tsv` alone and
+said Inger — the person the whole export is rooted on — reached no Geni id, while
+`garborg-qids.tsv` pairs her with `6000000000757999620` perfectly well. `ledger()` in
+`build-garborg-day.py` folds the two together precisely because the ledger knows about items
+carrying no `P2600` yet, which is the shape of everything this campaign creates. A join that
+under-reports by 2.75x while looking finished is the failure this repo keeps repeating.
+
+**Two smaller things.** The renderer's own record counter was anchored `$` and reported 19 NOTE
+records where the file holds 6,490, because a `NOTE` carries its text inline; the rewriting was
+never affected and the leak guard proved it, but a summary off by 341x is how a bad render gets
+waved through, so the counter has a test too. And the 919 KB download log is gitignored by name,
+never a `*.log` pattern.
