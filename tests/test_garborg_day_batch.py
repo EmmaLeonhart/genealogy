@@ -648,6 +648,41 @@ def test_no_existing_item_is_left_without_a_parent_link_it_should_have():
         "section 1/2 has stopped emitting P22")
 
 
+#: `Q... P2600 "<geni id>" P1810 "<name>"` and nothing else on the line -- the exact shape
+#: `scripts/build-subject-named-as-backfill.py` emits, and nothing wider.
+_NAMED_AS_BACKFILL = re.compile(
+    r'^Q[1-9][0-9]*\tP2600\t"\d+"\tP1810\t"[^"]*"$')
+
+
+def _is_the_named_as_backfill(line):
+    """⛔ **The one restatement that is REQUIRED to restate, and it is exempt on MEASUREMENT.**
+
+    `build-subject-named-as-backfill.py` exists to attach `P1810` to a `P2600` that already
+    exists -- ruled 2026-09-14, *"add the subject named as to existing P2600 properties within
+    the universe"* -- and QuickStatements V1 has no *add a qualifier* verb, so re-stating the
+    statement is the only way to do it.
+
+    ⛔ **TWO DOCUMENTED CLAIMS CONTRADICTED EACH OTHER AND NEITHER HAD BEEN CHECKED.** This
+    test's docstring says a differently-qualified statement is recorded as a SECOND statement,
+    citing a duplicate given name on `Q141152512`; the backfill's docstring says the
+    restatement attaches the qualifier and does not duplicate. So the live items were
+    downloaded on 2026-09-22 -- `CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item* --
+    rather than one comment being believed over the other:
+
+        Q141152512  P2600  ONE statement, carrying P1810   <- a backfill landed and MERGED
+        Q141152512  P735   ONE statement, no qualifiers    <- the cited duplicate is NOT there
+        Q467497     P2600  ONE statement, no qualifiers
+        Q3143008    P2600  ONE statement, no qualifiers
+
+    For this shape the backfill is right: the qualifier attached to the single existing
+    statement, and no duplicate `P2600` exists anywhere in the sample. The exemption is
+    therefore **exactly that shape** -- `P2600` plus `P1810` and nothing else on the line.
+    Every other differently-qualified restatement still fails, including the `P735` + `P1545` +
+    `P7452` case this test was written for, about which the measurement says nothing.
+    """
+    return bool(_NAMED_AS_BACKFILL.match(line))
+
+
 def test_a_property_the_item_already_has_is_not_emitted_again():
     """QuickStatements merges an identical statement but NOT a differently-qualified one.
 
@@ -675,9 +710,13 @@ def test_a_property_the_item_already_has_is_not_emitted_again():
     bad = []
     for ln in lines():
         m = re.match(r"^(Q[1-9][0-9]*)\t(P[0-9]+)\t", ln)
-        if (m and m.group(2) in SINGLE_VALUED
+        if not (m and m.group(2) in SINGLE_VALUED
                 and m.group(2) in live.get(m.group(1), set())):
-            bad.append((m.group(1), m.group(2)))
+            continue
+        # The one restatement that is REQUIRED to restate -- see `_is_the_named_as_backfill`.
+        if _is_the_named_as_backfill(ln):
+            continue
+        bad.append((m.group(1), m.group(2)))
     assert not bad, (
         f"re-emitting a property the item already carries: {sorted(set(bad))[:5]}")
 
