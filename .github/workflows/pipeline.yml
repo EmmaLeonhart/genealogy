@@ -630,8 +630,13 @@ jobs:
           # have touched the path. The newest rebuild is the right one -- it ran the ledger
           # refresh last -- and during a rebase git replays OUR commit onto upstream, so the
           # version to keep is the confusingly-named `--theirs`.
+          # ⛔ **EVERY GIT CALL IN THIS LOOP IS BOUNDED.** A hang here is invisible: the step
+          # prints nothing, the job runs to `timeout-minutes` and the conclusion word is
+          # `cancelled`, which is the same word a superseded run gets. Two confident wrong
+          # diagnoses came out of reading that word on 2026-09-19. A bounded call fails in
+          # minutes with its own name in the log instead.
           for attempt in 1 2 3 4 5; do
-            if ! git pull --rebase origin main; then
+            if ! timeout 900 git pull --rebase origin main; then
               unmerged="$(git diff --name-only --diff-filter=U)"
               if [ -z "$unmerged" ]; then
                 echo "::error::rebase stopped with no conflicted paths -- not guessing"
@@ -645,7 +650,25 @@ jobs:
               # the conflict -- and it also stages a delete/modify conflict correctly,
               # since the file is simply absent. Reversing these two lines deletes every
               # conflicted file instead of keeping it, which an earlier draft did.
-              git checkout --theirs -- . 2>/dev/null || true
+              # ⛔ **`-- .` WALKED THE WHOLE TREE AND HUNG THE JOB FOR 58 MINUTES.** Measured
+              # on run 35682558066, 2026-09-22: the conflict list printed at 05:04:32, nothing
+              # was logged again, and the job was killed at 06:02:28 on its 150-minute
+              # `timeout-minutes` with `Terminate orphan process: (git)`. `cancelled` in the
+              # listing, and CLAUDE.md § *`cancelled` IS TWO DIFFERENT EVENTS* is exactly about
+              # not reading that word as a supersede: the duration says timeout kill.
+              #
+              # The cause is the checkout above being a PARTIAL clone -- `filter: blob:none`
+              # with a non-cone sparse checkout. `git checkout --theirs -- .` asks git to
+              # materialise every path in a 13 GB repo, and every blob it does not have is a
+              # separate lazy fetch over the network. `$unmerged` is already in hand one line
+              # up and only an unmerged path HAS a `--theirs` side, so naming the paths is
+              # identical in effect and bounded by the size of the conflict.
+              #
+              # `--diff-filter=U -z` straight into `xargs -0`, which is the canonical
+              # NUL-safe form: a generated path may contain a space, and word-splitting the
+              # `$unmerged` variable would resolve the wrong file. Re-asking git rather than
+              # reusing the variable also avoids a trailing empty argument.
+              git diff --name-only --diff-filter=U -z                 | timeout 600 xargs -0 -r git checkout --theirs -- 2>/dev/null || true
               git add -A
               if git diff --name-only --diff-filter=U | grep -q .; then
                 echo "::error::paths still unmerged after resolution"
@@ -669,7 +692,7 @@ jobs:
                 GIT_EDITOR=true git rebase --continue || { git rebase --abort || true; exit 1; }
               fi
             fi
-            if git push origin HEAD:main; then
+            if timeout 900 git push origin HEAD:main; then
               break
             fi
             if [ "$attempt" = 5 ]; then
