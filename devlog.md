@@ -46339,3 +46339,69 @@ unchanged and parses to nothing.
 
 ⛔ **Nothing in this touched geni.com.** The moratorium of 2026-09-21 is intact: this work is a
 committed GEDCOM, Wikidata artifacts already on disk, and Python.
+
+---
+
+## 2026-09-21 — three isolated individuals, made entry points and the error that made them fixed
+
+*"Three isolated individuals were created. They become immediate entry points and fix the error
+that made them."*
+
+    Q141529844  Solveig Halfdansdatter                      6000000002106194792
+    Q141529845  Ogmund Torbergsson Giske                    6000000004648710083
+    Q141529847  Poppo von Berg-Schelklingen zu Roggenstein  6000000002187828621
+
+`Special:WhatLinksHere` reports **"No pages link to"** for all three. They are now in
+`reports/entry-points.tsv` with `active_from` 2026-09-21 — their own date, live today, not the
+2027-01-01 bloc.
+
+### The mechanism, and it is legible in the committed files
+
+`build-ancestor-creations.py` emits a creation and **exactly one** relationship: the reciprocal
+`Q<child> P22|P25 LAST` that is the entire reason the person was picked. `refuse_non_local` then
+drops that line because the child sits outside `out/wikidata/edit-universe.json` — and does not
+drop the `CREATE` above it. Comparing the two files shows it directly: in
+`wikidata-ancestor-creations.qs` every creation is followed by its reciprocal; in
+`wikidata-garborg-day.txt` three of the four have the **comment line naming the statement still
+there and the statement gone**.
+
+    Q141216494 P22 LAST   survived   -- Q141216494 is in the universe
+    Q2521523   P25 LAST   stripped   -- Solveig
+    Q12001101  P22 LAST   stripped   -- Ogmund
+    Q30301558  P22 LAST   stripped   -- Poppo
+
+### Fixed at both ends
+
+**The root cause.** `eligible()` carried the comment *"The CHILD must be in the universe"* and
+tested `qid` — that the child is on Wikidata at all, which is a far larger set. It now tests
+membership of the edit universe, the same artifact the gate reads. **102 candidates remain**, so
+the mechanism still climbs a generation a run; it climbs through people whose links survive.
+The module docstring argued the opposite on 2026-09-17 — *"gating them on the subgraph would be
+circular"* — and that section is rewritten rather than left contradicting the code.
+
+**The general guard.** `qs_v1.drop_orphaned_creations` withdraws any `CREATE` left with no
+relationship, and it runs after `refuse_non_local` in `build-garborg-day.py` and after the strip
+in `check-batch-locality.py`. `compose` has refused an unrelated creation since 2026-08-29, but
+it runs inside the composer — before the growth passes append and before anything is stripped.
+A guard that runs before the last thing to edit the file is not the last guard. Run over
+today's batch it catches all three plus **`Brigida Aslaksdatter` and `Malusha Malkovna
+Lubechanka`**, which were about to go the same way.
+
+⛔ **"Until the next `CREATE`" is the wrong block boundary and it hid exactly one of the three.**
+The batch ends with the relationships section — hundreds of `Q… P22 Q…` lines between items that
+already exist — so the final creation's block ran to end of file, swallowed all of them and read
+as well connected. Poppo is the last creation in the file. A line belongs to a block when its
+subject is `LAST`, or when it is the reciprocal `Q… P… LAST`; anything else is a different
+section however close it sits.
+
+### And the FamilySearch batch was about to do this 2,817 times
+
+The same rule applied there takes it from 2,853 creations to **36**. Only 11 of 3,103 people in
+that tree have a QID, so on the first run only the ring around those 11 can be linked at
+creation — everyone else would have been a bare `instance of human` with a `P2889` and nothing
+pointing at it, which is what gets nominated for deletion.
+
+They are carried, not dropped: every item this run makes publishes a `P2889`, so the next
+`bridge-familysearch-qids.py` run resolves them and the run after that links their neighbours.
+The component grows outward from the eleven attachment points as a wavefront, which is the
+SEQUENCE § *The batches are a SEQUENCE* describes — not a slower way of shipping 2,817 isolates.

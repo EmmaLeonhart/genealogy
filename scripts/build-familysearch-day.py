@@ -86,6 +86,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from genimerge.dates import parse_date                                  # noqa: E402
 from datequals import date_quals                                        # noqa: E402
 import descriptions                                                     # noqa: E402
+import qs_v1                                                            # noqa: E402
 import labels as labelmod                                               # noqa: E402
 import namemodel                                                        # noqa: E402
 
@@ -567,6 +568,26 @@ def build(args):
         for subject, prop in back:
             block.append(f"{subject}\t{prop}\tLAST{ref}")
 
+        # ⛔ **A CREATION WITH NO RELATIONSHIP IS NOT SHIPPED. IT IS CARRIED.** The rule is from
+        # 2026-08-29 and `build-garborg-day.compose` has obeyed it since: a bare `instance of
+        # human` with an identifier and nothing pointing at it is an isolate, and an isolate is
+        # what gets nominated for deletion. Ruled again 2026-09-21, on three live ones Emma
+        # found by hand: *"three isolated individuals were created."*
+        #
+        # **This costs this batch almost all of it, and that is the correct answer.** Only 11
+        # of 3,103 people here have a QID, so on the first run just the ring around those 11
+        # can be linked at creation. The rest wait, and they do not wait forever: every item
+        # this run makes publishes a `P2889`, so the next `bridge-familysearch-qids.py` run
+        # resolves them and the run after that can link their neighbours. The component grows
+        # outward from the eleven attachment points as a wavefront, which is the SEQUENCE
+        # `CLAUDE.md` § *The batches are a SEQUENCE* describes — not a slower version of
+        # shipping 2,817 isolates today.
+        if not any(re.match(r"^(?:LAST|Q\d+)\t(?:P22|P25|P26|P40|P3373)\t", ln)
+                   for ln in block):
+            carried.append((fs, primary, "no relationship could be emitted: no relative of "
+                                         "theirs has a QID yet, so they would be an isolate"))
+            continue
+
         lines += block
         lines.append("")
         created += 1
@@ -579,6 +600,11 @@ def build(args):
     # description TOGETHER, so an identical pair is a duplicate we make ourselves and then
     # have to merge by hand.
     collided = descriptions.deduplicate(lines, FS_PROP)
+
+    # ⛔ The isolate guard AGAIN, over the assembled file, for the reason it exists at all: the
+    # one in the loop above cannot see a line something later takes away. Here it should find
+    # nothing, and if it ever does the number is printed rather than swallowed.
+    lines, orphaned = qs_v1.drop_orphaned_creations(lines)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     # `newline="\n"` explicitly: on Windows the default translates to CRLF, and the garborg
@@ -594,6 +620,7 @@ def build(args):
     print(f"  {len(by_fs):,} distinct FamilySearch people over {len(paths)} file(s)")
     print(f"  {created:,} CREATE blocks")
     print(f"  {collided:,} descriptions collided and took their FamilySearch id")
+    print(f"  {len(orphaned):,} orphaned creations dropped by the post-pass")
     print(f"  {len(carried):,} carried forward, not created:")
     for reason, n in reasons.most_common():
         print(f"      {n:6,}  {reason}")

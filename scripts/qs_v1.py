@@ -251,3 +251,94 @@ def _apply(cmd: Command, obj: dict) -> None:
             obj["aliases"].setdefault(lang, []).append(text)
         return
     obj["claims"].append(_claim(cmd))
+
+
+#: The relationship properties that put a created item into the tree. An item holding none of
+#: them is an isolate: a bare `instance of human` with an identifier and nothing pointing at it,
+#: which is exactly what gets nominated for deletion.
+RELATIONSHIP_PROPS = ("P22", "P25", "P26", "P40", "P3373")
+
+_RELATIONSHIP_LINE = re.compile(
+    r"^(?:LAST|Q\d+)\t(?:%s)\t" % "|".join(RELATIONSHIP_PROPS))
+
+
+def _block_end(lines, start, limit):
+    """Where the `CREATE` at `start` stops, never later than `limit`.
+
+    ⛔ **"UNTIL THE NEXT `CREATE`" IS THE WRONG BOUNDARY AND IT HIDES THE LAST ONE.** The batch
+    ends with the relationships section — hundreds of `Q… P22 Q…` lines between items that
+    already exist — so the final creation's block ran to end of file, swallowed all of them and
+    read as perfectly well connected. `Poppo von Berg-Schelklingen zu Roggenstein` is the last
+    creation in the file and is exactly the isolate this function was written for; it was the
+    one case the first version missed.
+
+    A line belongs to the block when it is blank or a comment, when its subject is `LAST`, or
+    when it is the reciprocal `Q… P… LAST` — a QID subject whose VALUE is the item just made.
+    Anything else is a statement between two items that already exist, which is a different
+    section however close it sits. That is the same reading of `LAST` the rest of this module
+    is built on.
+    """
+    n = start + 1
+    while n < limit:
+        line = lines[n]
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or line.startswith("LAST\t"):
+            n += 1
+            continue
+        parts = line.split("\t")
+        if len(parts) >= 3 and _QID.match(parts[0]) and parts[2] == "LAST":
+            n += 1
+            continue
+        break
+    return n
+
+
+def drop_orphaned_creations(lines):
+    """Remove every `CREATE` block left with no relationship statement. Returns `(lines, [label])`.
+
+    ⛔ **THE LOCALITY GATE STRIPS A LINE AND THE CREATION IT BELONGED TO SURVIVES IT.** Found
+    2026-09-21, from three live items Emma checked by hand — `Q141529844` Solveig
+    Halfdansdatter, `Q141529845` Ogmund Torbergsson Giske, `Q141529847` Poppo von
+    Berg-Schelklingen zu Roggenstein — each of which `Special:WhatLinksHere` reports as
+    *"No pages link to"*.
+
+    `build-ancestor-creations.py` emits a creation and **exactly one** relationship, the
+    reciprocal `Q<child> P22|P25 LAST` that is the whole reason the person was picked. The
+    locality gate then drops that line because the child sits outside the edit universe, and
+    the `CREATE` above it is untouched — so the run mints an item with nothing pointing at it.
+    The comment line naming the stripped statement is still in the committed batch, three lines
+    above a creation that no longer links anywhere, which is what made it readable at all.
+
+    `build-garborg-day.compose` has had this guard since 2026-08-29 — *"a creation with NO
+    relationship is not shipped, it is carried"* — but it runs **inside** the composer, before
+    the growth passes append and before anything is stripped. A guard that runs before the last
+    thing to edit the file is not the last guard. This is the same argument
+    `check-batch-locality.py` makes for re-reading the assembled batch, and it lives here
+    because this module is the one that knows what a `CREATE` block is.
+
+    A block with no label is left alone: that is a different defect with its own guard, and a
+    name item is not a person and is not supposed to carry a relationship at all.
+    """
+    starts = [n for n, l in enumerate(lines) if l.strip() == "CREATE"]
+    doomed, dropped = set(), []
+    for i, start in enumerate(starts):
+        end = _block_end(lines, start, starts[i + 1] if i + 1 < len(starts) else len(lines))
+        label = None
+        related = False
+        is_person = False
+        for n in range(start, end):
+            m = re.match(r'^LAST\t(?:Lmul|Len)\t"(.*)"$', lines[n])
+            if m and label is None:
+                label = m.group(1)
+            if _RELATIONSHIP_LINE.match(lines[n]):
+                related = True
+            # `P31 Q5` is what separates a person from a name item. Only a person is expected
+            # to carry a relationship, and only a person becomes an isolate without one.
+            if lines[n].startswith("LAST\tP31\tQ5"):
+                is_person = True
+        if is_person and label is not None and not related:
+            doomed.update(range(start, end))
+            dropped.append(label)
+    if not dropped:
+        return lines, []
+    return [l for n, l in enumerate(lines) if n not in doomed], dropped

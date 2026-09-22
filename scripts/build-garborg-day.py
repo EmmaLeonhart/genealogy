@@ -49,6 +49,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from datequals import date_quals  # noqa: E402
 import descriptions  # noqa: E402 -- the one description rule, shared with the FamilySearch batch
+import qs_v1  # noqa: E402 -- the one module that knows what a CREATE block is
 from namemodel import (  # noqa: E402
     qualifier_value,
     aliases_for, classify, classify_fields, load_plan,
@@ -8444,6 +8445,16 @@ def main():
     _collided = descriptions.deduplicate(_final_lines, "P2600")
     if _collided:
         print(f"{_collided} descriptions collided and took their Geni id")
+    # ⛔ **AND NO CREATION SURVIVES THE GATE WITH NOTHING POINTING AT IT.** Ruled 2026-09-21 on
+    # three live isolates: *"three isolated individuals were created."* `compose` has refused an
+    # unrelated creation since 2026-08-29, but it runs before the growth passes append and
+    # before `refuse_non_local` strips — and stripping the one reciprocal a creation carried is
+    # exactly how `Q141529844`, `Q141529845` and `Q141529847` were minted with no links at all.
+    # A guard that runs before the last thing to edit the file is not the last guard.
+    _final_lines, _orphans = qs_v1.drop_orphaned_creations(_final_lines)
+    if _orphans:
+        print(f"{len(_orphans)} creation(s) dropped: the gate stripped the only relationship "
+              f"they had, e.g. {_orphans[:4]}")
     out.write_text(NEWLINE.join(_final_lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 

@@ -45,6 +45,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import wikidata_lockout  # noqa: E402 -- NEVER_EDIT lives there, one definition, three readers
+import qs_v1  # noqa: E402 -- the one module that knows what a CREATE block is
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 UNIVERSE = ROOT / "out" / "wikidata" / "edit-universe.json"
@@ -133,13 +134,28 @@ def strip(path, allowed, kanji) -> int:
         if k and k.group(1) in kanji:
             dropped.append(k.group(1)); continue
         keep.append(line)
-    if dropped:
+    # ⛔ **AND A STRIPPED LINE TAKES ITS ORPHANED CREATION WITH IT.** Ruled 2026-09-21 on three
+    # live isolates: *"three isolated individuals were created."* `build-ancestor-creations.py`
+    # emits a creation and exactly ONE relationship, the reciprocal `Q<child> P… LAST`. This
+    # filter drops that line when the child is outside the universe and leaves the `CREATE`
+    # standing, so the run mints a bare `instance of human` with nothing pointing at it —
+    # `Q141529844`, `Q141529845`, `Q141529847`, all three reporting *"No pages link to"*.
+    #
+    # The picker no longer chooses a child outside the universe, which is the root cause; this
+    # is the guard for everything else that ever appends to a batch. A filter that can orphan a
+    # creation has to be able to withdraw it.
+    keep, orphaned = qs_v1.drop_orphaned_creations(keep)
+    if dropped or orphaned:
         path.write_text(chr(10).join(keep), encoding="utf-8")
+    if dropped:
         names = sorted(set(dropped))
         print("%s: STRIPPED %d line(s) on %d item(s): %s%s"
               % (path.name, len(dropped), len(names), ", ".join(names[:8]),
                  " ..." if len(names) > 8 else ""))
-    return len(dropped)
+    if orphaned:
+        print("%s: WITHDREW %d creation(s) the strip left with no relationship at all: %s"
+              % (path.name, len(orphaned), ", ".join(orphaned[:6])))
+    return len(dropped) + len(orphaned)
 
 
 def main() -> int:

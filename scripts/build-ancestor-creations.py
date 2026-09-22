@@ -37,9 +37,28 @@ is what was asked for. Re-running the composer is then a no-op rather than a fou
 
 ## What counts as "in the universe"
 
-Carrying a QID. Not the Arne subgraph test `build-garborg-day.py` uses for its ring: these are
-the account owner's own ancestors, they are the universe's origin rather than candidates for
-admission to it, and gating them on the subgraph would be circular.
+⛔ **THIS SAID "CARRYING A QID" AND THAT PRODUCED THREE ISOLATES ON WIKIDATA.** It read: *"Not
+the Arne subgraph test `build-garborg-day.py` uses for its ring: these are the account owner's
+own ancestors, they are the universe's origin rather than candidates for admission to it, and
+gating them on the subgraph would be circular."*
+
+The argument is coherent and the outcome is not, because **the gate downstream does not share
+it**. This script appends to the batch and `refuse_non_local` then drops every line whose
+subject QID is outside `out/wikidata/edit-universe.json`. A creation here carries exactly ONE
+relationship — `child_qid P22|P25 LAST` — so when the child is outside that artifact the link is
+stripped and the `CREATE` is not, and the run mints a bare `instance of human` with nothing
+pointing at it. `Q141529844`, `Q141529845` and `Q141529847` are live and are exactly that;
+Emma found them with `Special:WhatLinksHere` on 2026-09-21.
+
+So the test is now `qid in edit-universe.json`, the same artifact the gate reads. **102
+candidates remain**, so the mechanism still climbs a generation at a time; it climbs through
+people whose links will survive, which is the only kind of climb that was ever happening on
+Wikidata's side.
+
+It is not circular. The universe already contains the owner's QID-bearing ancestry — that is
+what put 6,239 items in it — and every creation this makes joins it, so next run the new item
+is inside and its own parents become eligible. The circularity the old note feared is the
+mechanism working.
 
 ## ⛔ CREATING SOMEBODY WIKIDATA ALREADY HAS IS THE POINT, NOT A DEFECT
 
@@ -84,6 +103,7 @@ from __future__ import annotations
 import collections
 import csv
 import datetime
+import json
 import pathlib
 import random
 import re
@@ -202,6 +222,21 @@ def usable_label(label):
     return any(ch.isalpha() for ch in v)
 
 
+def _universe():
+    """The QIDs an edit may land on: `out/wikidata/edit-universe.json`, universe plus ring.
+
+    Read here as well as in the composer because this script appends to the batch AFTER the
+    composer has run, and `CLAUDE.md` is explicit that a gate living in one place is one stale
+    artifact away from being no gate. Missing file -> empty set -> nothing is eligible, which
+    is the safe direction: no creation is better than an isolate.
+    """
+    path = ROOT / "out" / "wikidata" / "edit-universe.json"
+    if not path.exists():
+        return set()
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return set(data.get("universe") or ()) | set(data.get("one_step") or ())
+
+
 def eligible(fam):
     """`[(child_geni, child_qid, parent_geni, 'father'|'mother'), ...]`, in tree order.
 
@@ -227,7 +262,24 @@ def eligible(fam):
     walk goes up THROUGH people who already hold a QID"* -- and nothing more. **It is not a
     ring**: the ring returns the whole boundary, this still returns candidates for a random pick
     of `AUTO_CREATIONS` + `MANUAL_CREATIONS`. *"I did not request a ring."*
+
+    ⛔ **AND THE CHILD MUST BE IN THE EDIT UNIVERSE, WHICH THIS SAID AND DID NOT DO.** The line
+    below reads *"The CHILD must be in the universe"* and tested `qid` — that the child is on
+    Wikidata at all, which is a different and much larger set. The creation carries **exactly
+    one** relationship, the reciprocal `child_qid P22|P25 LAST`, and `refuse_non_local` drops
+    that line when the child is outside the universe. The `CREATE` above it is not dropped with
+    it. So a pick outside the universe does not produce a linked item, it produces an **isolate**
+    — a bare `instance of human` with a `P2600` and nothing pointing at it, which is what gets
+    nominated for deletion.
+
+    Three of them are live and Emma found them by hand on 2026-09-21: `Q141529844` Solveig
+    Halfdansdatter off `Q2521523`, `Q141529845` Ogmund Torbergsson Giske off `Q12001101`,
+    `Q141529847` Poppo von Berg-Schelklingen zu Roggenstein off `Q30301558`. None of those three
+    children is in `edit-universe.json`; the fourth pick of the same run, off `Q141216494`,
+    which is, kept its link and is fine. *"They become immediate entry points and fix the error
+    that made them."*
     """
+    allowed = _universe()
     seen, queue, found = {OWNER}, collections.deque([OWNER]), []
     while queue:
         gid = queue.popleft()
@@ -245,7 +297,11 @@ def eligible(fam):
                 seen.add(parent)
                 queue.append(parent)
             # The CHILD must be in the universe and the PARENT must not be on Wikidata.
-            if qid and not parent_qid and not parent.startswith(PLACEHOLDER_PREFIXES):
+            # `qid in allowed`, not merely `qid`: see the docstring. An empty universe means
+            # the artifact is missing, and then nothing is eligible -- failing closed, the same
+            # choice every other reader of this file makes.
+            if (qid in allowed and not parent_qid
+                    and not parent.startswith(PLACEHOLDER_PREFIXES)):
                 found.append((gid, qid, parent, role))
     return found
 
