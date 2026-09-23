@@ -78,6 +78,15 @@ PLACEHOLDER = ("9995", "9990")
 #: siblings is not a judgement you can make from a phone. They stay in the census.
 MAX_OPTIONS = 8
 
+#: Birth years further apart than this rule an option out. The same 15 the card already flags
+#: in red as "born N years apart".
+DATE_GATE = 15
+
+
+def _year(life):
+    v = (life or ("",))[0]
+    return int(v) if re.fullmatch(r"-?[0-9]+", str(v or "")) else None
+
 #: **How many cards reach the PAGE.** The census is whole and this is not a filter on it -- it
 #: is the size of the deck you open.
 #:
@@ -237,6 +246,7 @@ def main():
                            ["Children", theirs_named(kids_of.get(q, []))]]}
 
     cases = []
+    dated_out = 0
     for card in cards:
         opts, parent = card["opts"], card["parent"]
         if card["side"] == "ours":
@@ -249,6 +259,19 @@ def main():
             options = [dict(their_block(q), geni=g, qid=q,
                             our=anchor["name"], cand=wd_label.get(q, q)) for g, q in opts]
             ask = "Which of these items is our person?"
+
+        # **DATES FIRST, the zipper's own order.** An option born more than DATE_GATE years from
+        # the anchor is not a candidate, and a card with none left is not a question. Without
+        # this, a Geni duplicate of Johann Christoph Friedrich Bach (1732) -- whose real item is
+        # already held by the other profile -- was asked to pick among a 1689 cousin and two
+        # infants who died in 1713 and 1719.
+        ay = _year(anchor["life"])
+        kept = [o for o in options
+                if ay is None or _year(o["life"]) is None or abs(_year(o["life"]) - ay) <= DATE_GATE]
+        if not kept:
+            dated_out += 1
+            continue
+        options = kept
 
         if card["arm"] == "child":
             trigger = ("held because their parent ", our_name(parent) or parent,
@@ -282,6 +305,9 @@ def main():
             "our": anchor["name"] if card["side"] == "theirs" else options[0]["our"],
             "cand": anchor["name"] if card["side"] == "ours" else options[0]["cand"],
         })
+
+    print("%d card(s) dropped: every option born more than %d years from the anchor"
+          % (dated_out, DATE_GATE), file=sys.stderr)
 
     # ---- the census ------------------------------------------------------------------
     with io.open(OUT_TSV, "w", encoding="utf-8", newline="") as fh:

@@ -388,7 +388,10 @@ def wikidata_facts(label_ids, chip_ids):
             for q, (lab, sx, born, died) in store_scan(need).items():
                 if lab:
                     labels.setdefault(q, lab)
-                if q in chip_ids:
+                # An EMPTY store entry is not an answer: recording it here would mark the item
+                # as looked up and the API below would never be asked. That is how every option
+                # on the J.C.F. Bach card read "no sex or dates recorded" while Wikidata had both.
+                if q in chip_ids and (sx or born or died):
                     sex[q], life[q] = sx, (born, died)
 
     missing_labels = sorted(q for q in label_ids if not labels.get(q))

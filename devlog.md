@@ -46561,3 +46561,15 @@ Names and years are carried as readings, never used to choose. The trees diverge
 lines. Birth-year gaps of 14–30 years appear only at 1268 and above.
 
 146 Parent deck verdicts from 2026-09-23 appended to `reports/emma-judgments.tsv` (133 SAME, 13 DIFFERENT), read from the artifact's `decisions/all` and checked against the pasted block.
+
+**The pick-one deck asked an unanswerable question**, reported off the J.C.F. Bach card. Geni has
+two profiles for Johann Christoph Friedrich Bach; `6000000008209282773` already holds `Q57225`, so
+the other one, `6000000215260020035` (1732), was offered only the leftover male items in the
+sibling slot: `Q11685154` (1689–1740, son of `Q48345`), `Q30075271` (1713–1713), `Q21029016`
+(1718–1719). Two defects, both fixed:
+
+- `deck.wikidata_facts` stored an EMPTY store entry as an answer, so the API was never asked and
+  347 of 3,022 options read "no sex or dates recorded" although Wikidata has both.
+- `build-pick-one-candidates.py` never looked at dates. It now drops an option born more than 15
+  years from the anchor (`DATE_GATE`, the same gap the card flags red) and drops the card when
+  none remain. Dates first, the zipper's own order.
