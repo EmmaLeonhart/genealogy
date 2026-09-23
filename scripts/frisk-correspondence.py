@@ -5,7 +5,7 @@ from Cameron on both sides at once: father against father, mother against mother
 number for ahnentafel number. Names and years do not choose a pair -- position does -- they are
 carried beside it so a disagreement is visible.
 
-    frisk_geni/Cameron Frisk geni ancestors.ged   Geni export, keyed on the Geni profile id
+    exports/frisk/*.ged                           Geni exports, keyed on the Geni profile id
     frisk_geni/Cameron Frisk.ged                  MyHeritage export of the FamilySearch-sourced tree
     -> reports/frisk-geni-familysearch.tsv
 """
@@ -19,14 +19,17 @@ sys.path.insert(0, str(ROOT / "src"))
 from genimerge.gedcom import parse_file  # noqa: E402
 from genimerge.dates import parse_date  # noqa: E402
 
-GENI = ROOT / "frisk_geni" / "Cameron Frisk geni ancestors.ged"
+#: Every Geni export of the family, joined on the profile id -- an exact join, the xref IS the id.
+GENI = sorted((ROOT / "exports" / "frisk").glob("*.ged"))
 MH = ROOT / "frisk_geni" / "Cameron Frisk.ged"
 OUT = ROOT / "reports" / "frisk-geni-familysearch.tsv"
 
 
-def index(path):
-    doc = parse_file(path)
-    recs = doc.by_xref()
+def index(*paths):
+    recs = {}
+    for path in paths:
+        for x, r in parse_file(path).by_xref().items():
+            recs.setdefault(x, r)
     people = {x: r for x, r in recs.items() if r.tag == "INDI"}
     return people, recs
 
@@ -67,7 +70,7 @@ def root(people, first, last):
 
 
 def main():
-    g_people, g_recs = index(GENI)
+    g_people, g_recs = index(*GENI)
     m_people, m_recs = index(MH)
     queue = [(1, root(g_people, "cameron", "frisk"), root(m_people, "cameron", "frisk"))]
     rows = []

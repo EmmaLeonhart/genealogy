@@ -8,6 +8,27 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## ⛔ HANDOFF FROM THE 2026-09-23 SESSION — DO THESE FIRST, THEN DELETE THIS SECTION
+
+- **Pipeline run `35926937958`** was the first real run in a day (`pipeline.yml` had not parsed
+  since `a60344da5`; fixed in `cdc7b63ec`). When it and the queued run after it finish:
+  `gh workflow run ci.yml` on the tip. The fast-lane failures left at `fb85b0a3` were the stale
+  batch (locality 188 items, ledger subjects `Q103949808`/`Q22236578`, carry-forward surnames
+  Heimnes/Finnøy, an NN in a `da` description). Re-read them against the RECOMPOSED batch; do not
+  hand-patch the batch. The other three failures are fixed.
+- **Deck rebuild `35935021653`** carries the pick-one date gate (`DATE_GATE` 15) and the
+  empty-store-entry fix in `deck.wikidata_facts`. When it lands: `git pull`, publish
+  `out/pick-one-review.html` to `https://claude.ai/artifact/AL1PD6ENiaKZbUST1ALUur`, and check
+  the log line "card(s) dropped". The J.C.F. Bach card (`6000000215260020035`) must be gone.
+- **Zipper decks are a session-start step now**: `CLAUDE.md` § *AND EVERY SESSION STARTS WITH
+  THE ZIPPER DECKS*. CI builds them, never locally. Read each artifact's `decisions/all` with
+  `ArtifactData` and append what is not yet in `reports/emma-judgments.tsv`. 146 parent verdicts
+  went in this session.
+- **Cameron Frisk**: `exports/frisk/` holds Cameron's and Elly Olivia Andersson's Ancestors
+  exports (Elly adds 215 Geni people). `reports/frisk-geni-familysearch.tsv` = 254 positional
+  pairs; the FamilySearch/MyHeritage side is what bounds it.
+- `git stash@{0}` on the local machine is only locally built deck outputs. Safe to drop.
+
 ## Actually work the queue
 
 Done for this pass (2026-09-22): the Geni-blocked campaign laundry list (Monte Carlo / NN NN,
