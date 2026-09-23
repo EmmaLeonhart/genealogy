@@ -1,1 +1,1 @@
-LOADING_FROM_DISK_FAILED_IF_YOU_SEE_THIS
+@/workspace/genealogy-work/scripts/build-patronymic-pairs.py
