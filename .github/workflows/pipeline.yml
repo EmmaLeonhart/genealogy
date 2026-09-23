@@ -522,6 +522,19 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-name-item-cjk.py
 
+      # Patronymics are made in pairs, and the description uniqueness measurement.
+      - name: Patronymic gendered pairs
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-patronymic-pairs.py
+
+      - name: Description uniqueness measurement
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-description-audit.py
+
       - name: Refresh the batch inventory
         continue-on-error: true
         env:

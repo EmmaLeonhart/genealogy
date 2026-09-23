@@ -2,10 +2,6 @@ name: emit-research-ancestor-gedcoms
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "scripts/emit-ancestor-gedcoms.py"
-      - ".github/workflows/emit-research-ancestor-gedcoms.yml"
 
 permissions:
   contents: write

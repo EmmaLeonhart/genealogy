@@ -46528,3 +46528,17 @@ It now demands exactly one base class, with the four finer ones (masculine/femin
 son/daughter name) allowed beside it. Each finer class is independent: `Olasen` is a masculine
 patronymic but not a son word. Checked against `wikidata-patronymic-pairs.qs` (40 blocks) and
 `wikidata-garborg-name-items.txt` (12): no failures.
+
+Pick-one deck published for the first time as a claude.ai artifact (`AL1PD6ENiaKZbUST1ALUur`,
+1,000 of 10,420 cards); family deck republished to `8LrXG1u2QUamTFJ66Fayx3` (3,259 cards). The
+three URLs and the read-the-`db`-first step are in `CLAUDE.md`.
+
+`scripts/apply_meta_wiring.py` was a one-shot from a cloud session that could not push large
+edits: on a CI dispatch it would wire `build-patronymic-pairs.py` and `build-description-audit.py`
+into `pipeline.yml`, drop two finished `queue.md` sections, and delete its own workflow. It never
+ran. Done here directly instead: both steps are in `pipeline.yml`, the Pages redo-everything
+bullet is gone (the live site links `redo-everything.yml`), the patronymic-pairs standing order
+is gone, and the `wire-meta` job is out of `ci.yml`. `emit-research-ancestor-gedcoms.yml` and
+`restore-tanba-day-batch.yml` lose their `push:` triggers, which `test_no_workflow_runs_automatically`
+forbids; both keep `workflow_dispatch`. The script file and `apply-meta-wiring.yml` are still in
+the tree, so `test_no_source_file_links_a_repository` stays red until they are removed.

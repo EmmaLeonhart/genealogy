@@ -155,7 +155,7 @@ item below once this section deletes; do not fold it back into GET CI GREEN.
 ⛔ **AND IT STOPS BEING FIRST BY ITSELF.** Ruled 2026-09-22, *"finish CI, then switch"*: the tick
 that sees a GREEN fast-lane CI run on a sha that is on `origin/main` (and is the tip, or the tip
 has not moved since) deletes this section, writes the devlog entry, and moves to § *The order.
-Top to bottom.* below — first bullet, the Pages link to the redo-everything action. No further
+Top to bottom.* below — first remaining bullet (description uniqueness review). No further
 check-in.
 
 *"Right the fuck now we need to make everything green before edits happen. No half measures.
@@ -178,10 +178,6 @@ It was a separate file only because PR #254 rewrote `queue.md` underneath it. Th
 is done, so it lives here now and `meta-queue.md` is deleted.
 
 ## The order. Top to bottom.
-
-- **⛔ PUT A LINK ON THE GITHUB PAGES SITE TO THE ACTION THAT REDOES EVERYTHING.** One workflow,
-  one link, running the whole chain: *"synoptic tree rebuilding, checking, refreshing the ledger,
-  building the quick statements, and running them on Wikidata."*
 
 - **⛔ THEN THE DESCRIPTION UNIQUENESS REVIEW, AND IT IS A MEASUREMENT BEFORE IT IS A CHANGE.**
   Mass-generate the description that WOULD be written for every individual we would make, into a
@@ -570,30 +566,6 @@ findings, not work in progress. Nothing here is started.**
 ---
 
 ## Queued 2026-09-21, arbitrary order — dictated in one go
-
-### ⛔ PATRONYMICS ARE MADE IN PAIRS. STANDING ORDER, AND IT IS NOT BEING FOLLOWED
-
-Ruled 2026-09-21: *"we are supposed to be always, always, always creating the male and the
-female versions of the patronymics at the same time as pairs. We're supposed to be doing a
-repetitive thing with a masculine and female version of them that are linked together. I don't
-see this in the quick statements, even though it's been a standing order for a really long
-time."*
-
-**The judgment is that it was forgotten, not that it is reparative.** The batch creates
-`Ingebretson` alone — masculine patronymic, son name, `P144` based on `Ingebret` — and no
-`Ingebretsdatter` beside it and no link between the two.
-
-`scripts/build-patronymic-items.py` already holds the gendered-suffix table and the `P5278`
-*surname for other gender* pairing. **Whether anything CALLS it is the open question** —
-§ *Code that is WRITTEN but never CALLED is not done*. Establish that first, with a narrow
-search over `scripts/` and `.github/workflows/` only.
-
-⛔ **THE CALLER SEARCH IS NOT A CORPUS GREP.** One was run here on 2026-09-21 as
-`grep -rn ... -r . --include=*` from the repo root, which sweeps `exports/`; it ran for two
-minutes and had to be killed. § *NEVER GREP THE WHOLE CORPUS* — the question was worth seconds.
-
-The pair is `Q130444148` masculine patronymic ↔ `Q130444179` feminine patronymic, and
-`Q10673705` son name ↔ `Q10476255` daughter name. `P5278` links the two items both ways.
 
 ### ⛔ THE BATCH IS PUTTING `P2600` ON REDIRECTS — FIXED 2026-09-21, AND IT WAS SIX NOT TWO
 

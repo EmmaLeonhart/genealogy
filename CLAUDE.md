@@ -217,6 +217,14 @@ does not stop it.
     3. publish each out/*-review.html as a claude.ai artifact, the same three URLs every session
     4. move on to the queue; do not wait for verdicts
 
+    parent    https://claude.ai/artifact/LKhTa5itp99KBXexTtY45Z
+    family    https://claude.ai/artifact/8LrXG1u2QUamTFJ66Fayx3
+    pick-one  https://claude.ai/artifact/AL1PD6ENiaKZbUST1ALUur
+
+**Each deck keeps its verdicts in its own `db` store, `decisions/all`**, whether or not *Copy
+decisions* was ever pressed. Read it with `ArtifactData` before rebuilding and append anything not
+already in `reports/emma-judgments.tsv` — one Family verdict had sat there since 2026-09-09.
+
 Pasted verdicts go into `reports/emma-judgments.tsv` exactly as
 [wikidata-editing](docs/rules/wikidata-editing.md) § *THE PARENT DECK* says, then rebuild — the
 deck shrinking is the check that they landed. Manual adjudication is still the stopgap the top

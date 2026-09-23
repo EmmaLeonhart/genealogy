@@ -3,9 +3,6 @@ name: Restore Tanba-stripped day batch
 # One-shot: un-corrupt reports/wikidata-garborg-day.txt on this branch.
 # Triggered only when this workflow file is pushed (not on day-file commits).
 on:
-  push:
-    paths:
-      - ".github/workflows/restore-tanba-day-batch.yml"
   workflow_dispatch:
 
 permissions:
