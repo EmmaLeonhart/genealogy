@@ -8434,15 +8434,20 @@ def main():
     # And a FAILURE is loud. It printed one WARNING and fell back to the file on disk, so a
     # crashed generator produced a batch built on a stale name-items file that looked exactly
     # like a fresh one -- the same shape as § *the derived tables WERE a PHOTOGRAPH*.
-    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build-garborg-name-items.py")],
-                       cwd=str(ROOT), capture_output=True, text=True,
-                       encoding="utf-8", errors="replace")
-    for line in (r.stdout or "").splitlines():
+    # Local/Actions pipe-deadlock fix: capture_output=True fills the OS pipe when
+    # name-items prints a lot while parent waits; redirect to a log file instead.
+    _name_items_log = ROOT / "reports" / "name-items-compose.log"
+    with open(_name_items_log, "w", encoding="utf-8", errors="replace") as _nf:
+        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build-garborg-name-items.py")],
+                           cwd=str(ROOT), stdout=_nf, stderr=subprocess.STDOUT,
+                           text=True, encoding="utf-8", errors="replace")
+    _name_out = _name_items_log.read_text(encoding="utf-8", errors="replace")
+    for line in _name_out.splitlines():
         print(f"    [name-items] {line}")
     if r.returncode != 0:
         sys.exit("the name-items generator failed, so the batch would be built on whatever "
                  "reports/wikidata-garborg-name-items.txt happens to hold -- a stale file "
-                 "looks identical to a fresh one:\n" + (r.stderr or "")[-800:])
+                 "looks identical to a fresh one:\n" + _name_out[-800:])
     # **This block used to ASSIGN `head`, and that discarded every `P2600` above it.** Reported
     # 2026-09-04: name objects were being linked onto people carrying no Geni id, which is
     # categorically not allowed -- the Geni id must be the first edit on any individual, and a

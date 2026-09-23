@@ -63869,6 +63869,27 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141223907$4507ec9e-46e0-0c1e-6ac4-83ebd182abb0",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141539855",
+        "numeric-id": 141539855
+       }
+      },
+      "hash": "60701aa66c9970ef2909ad0740b6524b85e140c7",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P26": [
     {
      "id": "Q141223907$D21D0511-EDAD-41E2-AEF9-C9D10E58982A",
@@ -63942,6 +63963,23 @@
      "qualifiers-order": [
       "P1810"
      ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2889": [
+    {
+     "id": "Q141223907$0e864191-478b-3da7-cae5-9d380b140d05",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "PNMB-MKW"
+      },
+      "hash": "2d297b376a394ce72743c6cdf365dc066d1bac19",
+      "property": "P2889",
+      "snaktype": "value"
+     },
      "rank": "normal",
      "type": "statement"
     }
@@ -64291,8 +64329,8 @@
     "value": "Elly Olivia Frisk"
    }
   },
-  "lastrevid": 2548217508,
-  "modified": "2026-09-21T22:02:54Z",
+  "lastrevid": 2548697021,
+  "modified": "2026-09-23T05:23:01Z",
   "ns": 0,
   "pageid": 134679041,
   "sitelinks": {},
@@ -292055,6 +292093,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Magnus Petri Aurivillius"
+        },
+        "hash": "4456b9f3c21fb356f91b3fffe7b591340b1be153",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -293376,8 +293431,8 @@
     "value": "马格努斯·奥里维利乌斯"
    }
   },
-  "lastrevid": 2547999901,
-  "modified": "2026-09-20T18:57:28Z",
+  "lastrevid": 2548688707,
+  "modified": "2026-09-23T04:27:08Z",
   "ns": 0,
   "pageid": 5322993,
   "sitelinks": {

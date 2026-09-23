@@ -188720,6 +188720,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141523230$675AACD5-E2F6-4481-8969-A412F6BD27BA",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141542168",
+        "numeric-id": 141542168
+       }
+      },
+      "hash": "c1f2a79c07b620c779931e45f503a377f736802c",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "e6850b90aefbdac4bdf40f6afc2e6f9e2250caaf",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000183288895902"
+          },
+          "hash": "ab01411c5d85b6c2f6a55854ddbe3d963ccee43c",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P2600": [
@@ -188825,8 +188866,8 @@
     "value": "扬·奥洛夫·埃德加·博克曼之子"
    }
   },
-  "lastrevid": 2548586531,
-  "modified": "2026-09-22T20:53:56Z",
+  "lastrevid": 2548790483,
+  "modified": "2026-09-23T11:38:22Z",
   "ns": 0,
   "pageid": 135082778,
   "sitelinks": {},
@@ -221328,6 +221369,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141533390$E52D5D3A-B48D-47B8-BEB6-8C66C0B103AD",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141533786",
+        "numeric-id": 141533786
+       }
+      },
+      "hash": "d3ece56ee765741f197f7a32dd54a95059de2be8",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fc5f2beae4a73028ad1949059425deca4a4c52a8",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000198898879898"
+          },
+          "hash": "837c0a5c8fb9bd5569726114991dd943b417f65e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141533390$42C95356-1FD0-4D91-ABC4-629B156430CB",
@@ -221547,8 +221631,8 @@
     "value": "伊瓦尔·桑斯马克"
    }
   },
-  "lastrevid": 2548407811,
-  "modified": "2026-09-22T11:52:16Z",
+  "lastrevid": 2548720123,
+  "modified": "2026-09-23T07:18:17Z",
   "ns": 0,
   "pageid": 135093396,
   "sitelinks": {},
@@ -313737,6 +313821,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Anders Abraham Grafström"
+        },
+        "hash": "af7bb2daf0f1fad966da7d3945d100c2b7fd4d79",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -315943,8 +316044,8 @@
     "value": "Anders Abraham Grafström"
    }
   },
-  "lastrevid": 2547811127,
-  "modified": "2026-09-19T22:48:33Z",
+  "lastrevid": 2548688572,
+  "modified": "2026-09-23T04:25:47Z",
   "ns": 0,
   "pageid": 461825,
   "sitelinks": {
@@ -317434,6 +317535,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Charlotta Aurora De Geer af Finspång"
+        },
+        "hash": "b355e017282e937dd8975fc8c57e68eaebac1f76",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -318022,8 +318140,8 @@
     "value": "Charlotta Aurora De Geer"
    }
   },
-  "lastrevid": 2547811161,
-  "modified": "2026-09-19T22:48:40Z",
+  "lastrevid": 2548688585,
+  "modified": "2026-09-23T04:25:54Z",
   "ns": 0,
   "pageid": 4725154,
   "sitelinks": {
@@ -318280,6 +318398,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Ulrika Eleonora von Düben"
+        },
+        "hash": "6ff4e13dcfa751e97d62a77e284a4ababbad42ce",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -318789,8 +318924,8 @@
     "value": "Ulrika Eleonora von Düben"
    }
   },
-  "lastrevid": 2547811286,
-  "modified": "2026-09-19T22:49:08Z",
+  "lastrevid": 2548688593,
+  "modified": "2026-09-23T04:25:58Z",
   "ns": 0,
   "pageid": 4726049,
   "sitelinks": {
@@ -321758,6 +321893,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Johan Fredrik Adelheim Borgström"
+        },
+        "hash": "2c31227890e7b34eafd1650338c811c380a2ec58",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -322544,8 +322696,8 @@
     "value": "约翰·弗雷德里克·阿德尔赫伊姆·博尔格斯特罗姆"
    }
   },
-  "lastrevid": 2543088574,
-  "modified": "2026-09-10T06:04:07Z",
+  "lastrevid": 2548688676,
+  "modified": "2026-09-23T04:26:47Z",
   "ns": 0,
   "pageid": 5302731,
   "sitelinks": {
@@ -324684,6 +324836,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Johan Adelswärd"
+        },
+        "hash": "2328e466e648a02f473225af0b996cfecb047fa0",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -326634,8 +326803,8 @@
     "value": "約翰·阿德爾斯瓦德"
    }
   },
-  "lastrevid": 2545914226,
-  "modified": "2026-09-15T01:04:53Z",
+  "lastrevid": 2548688681,
+  "modified": "2026-09-23T04:26:50Z",
   "ns": 0,
   "pageid": 5302777,
   "sitelinks": {
@@ -328448,6 +328617,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Gustaf Ericsson"
+        },
+        "hash": "56c1001223ce7a981f6a6e9c9ad73fbd79111343",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -329507,8 +329693,8 @@
     "value": "Gustaf Benzelstierna"
    }
   },
-  "lastrevid": 2548098900,
-  "modified": "2026-09-21T09:11:59Z",
+  "lastrevid": 2548688716,
+  "modified": "2026-09-23T04:27:17Z",
   "ns": 0,
   "pageid": 5331263,
   "sitelinks": {

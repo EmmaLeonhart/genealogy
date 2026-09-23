@@ -2245,6 +2245,49 @@
      "type": "statement"
     }
    ],
+   "P8366": [
+    {
+     "id": "Q102010$CFC9E4A6-64C9-455B-B9BF-E1DAD4A70F40",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "53275"
+      },
+      "hash": "d3db88700d67d93c47cc0ea3f2a683963f8177cb",
+      "property": "P8366",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "9a24f7c0208b05d6be97077d855671d1dfdbc0dd",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P8440": [
     {
      "id": "Q102010$A4FF276E-465F-4254-AE54-C54126235AE0",
@@ -2460,8 +2503,8 @@
     "value": "اوئٹنگن کے فریڈرک چہارم"
    }
   },
-  "lastrevid": 2546965740,
-  "modified": "2026-09-17T09:06:29Z",
+  "lastrevid": 2548684494,
+  "modified": "2026-09-23T03:53:57Z",
   "ns": 0,
   "pageid": 104606,
   "sitelinks": {
@@ -227645,6 +227688,49 @@
      "type": "statement"
     }
    ],
+   "P40": [
+    {
+     "id": "Q141533786$60ADB906-DC6A-4809-9B2B-3035FC061DD5",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141533390",
+        "numeric-id": 141533390
+       }
+      },
+      "hash": "a12ef1f0ed53e5844b696bc47d7420b6a009fd83",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "8c9120f1e756292397c0207328b7e754db33a61d",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000198899333841"
+          },
+          "hash": "8c9e33e46a124775eb0655ab0c1fc6abd046fdd5",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P5056": [
     {
      "id": "Q141533786$597C011C-90FD-44C7-A2EA-89F02B4282DC",
@@ -227885,8 +227971,8 @@
     "value": "奥拉利阿·卡里内·桑斯马克"
    }
   },
-  "lastrevid": 2548427332,
-  "modified": "2026-09-22T12:43:08Z",
+  "lastrevid": 2548720132,
+  "modified": "2026-09-23T07:18:19Z",
   "ns": 0,
   "pageid": 135093775,
   "sitelinks": {},
@@ -306430,6 +306516,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Christina Charlotta Piper"
+        },
+        "hash": "149cfffdb6d5bb1ea21bcd257fafeed8d66126f2",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -307134,8 +307237,8 @@
     "value": "Stina Piper"
    }
   },
-  "lastrevid": 2548164676,
-  "modified": "2026-09-21T15:05:07Z",
+  "lastrevid": 2548688622,
+  "modified": "2026-09-23T04:26:11Z",
   "ns": 0,
   "pageid": 4753715,
   "sitelinks": {
@@ -308137,6 +308240,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Ulrika Eleonora Strömfelt"
+        },
+        "hash": "58ea68698cd0da10a1cfa6fb8476da85e543b86f",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -309669,8 +309789,8 @@
     "value": "Ulrika Strömfelt"
    }
   },
-  "lastrevid": 2544274796,
-  "modified": "2026-09-12T00:42:15Z",
+  "lastrevid": 2548688640,
+  "modified": "2026-09-23T04:26:23Z",
   "ns": 0,
   "pageid": 4769190,
   "sitelinks": {
@@ -310869,6 +310989,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Carl Jesper Benzelius"
+        },
+        "hash": "4489da9c9531521b47c7a15d7b360a934498f2ba",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -311935,8 +312072,8 @@
     "value": "Carl Jesper Benzelius"
    }
   },
-  "lastrevid": 2548131943,
-  "modified": "2026-09-21T12:16:11Z",
+  "lastrevid": 2548688657,
+  "modified": "2026-09-23T04:26:35Z",
   "ns": 0,
   "pageid": 4816790,
   "sitelinks": {

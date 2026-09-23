@@ -4794,6 +4794,69 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q110153084$CD8B74FF-9909-4B68-8E59-D1D16A7C40AE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q23060964",
+        "numeric-id": 23060964
+       }
+      },
+      "hash": "eeb416f121a01889b67fec0963c6514eb188382d",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fc26990f9c64a0996d03ef5454cc186063cb2e65",
+       "snaks": {
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/wiki/Wilhelm_Heinrich_von_Lepel"
+          },
+          "hash": "acfa65fd492a1b76fc0cbad6a2a0d5d8c2d5382a",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2026-09-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "27157cd5fd241d3e830d8e492a83d1372f6b3d37",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4656",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q110153084$14C086F6-4FCC-483C-830C-F550B0432E04",
@@ -4866,6 +4929,69 @@
      "type": "statement"
     }
    ],
+   "P3373": [
+    {
+     "id": "Q110153084$2E5386FA-4E8D-45B4-AB4A-836E89E008C1",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q2524210",
+        "numeric-id": 2524210
+       }
+      },
+      "hash": "d50dc5bcd1bcb69cd24992b738472749b3658a67",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "6c70f8b6262efc3457eddde988deea1900142b65",
+       "snaks": {
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/wiki/Friedrich_Wilhelm_von_Lepel_(1716–1783)"
+          },
+          "hash": "2ef0fb844e1f9e3ac54739186be0846e74e21fcb",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2026-09-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "27157cd5fd241d3e830d8e492a83d1372f6b3d37",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4656",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P40": [
     {
      "id": "Q110153084$f4118f8a-3690-48ee-9742-6570fe2386be",
@@ -4907,6 +5033,67 @@
        },
        "snaks-order": [
         "P248"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q110153084$47C0E189-DEA3-4D64-951C-839651F5B7CE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q23060979",
+        "numeric-id": 23060979
+       }
+      },
+      "hash": "68f580d04ca0c2839dd3ba28b617fba6029b5048",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fc26990f9c64a0996d03ef5454cc186063cb2e65",
+       "snaks": {
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/wiki/Wilhelm_Heinrich_von_Lepel"
+          },
+          "hash": "acfa65fd492a1b76fc0cbad6a2a0d5d8c2d5382a",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2026-09-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "27157cd5fd241d3e830d8e492a83d1372f6b3d37",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4656",
+        "P813"
        ]
       }
      ],
@@ -5214,8 +5401,8 @@
     "value": "格雷芬·阿马利阿埃莱奥诺雷·亨凯尔·翁·多内尔斯马尔克"
    }
   },
-  "lastrevid": 2540843042,
-  "modified": "2026-09-06T04:40:12Z",
+  "lastrevid": 2548745258,
+  "modified": "2026-09-23T08:56:37Z",
   "ns": 0,
   "pageid": 105233782,
   "sitelinks": {},
@@ -279975,6 +280162,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Helena Maria Ehrenstråhle"
+        },
+        "hash": "bfdbbd13796153893ef128cc02ffbce641002fc3",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -280605,8 +280809,8 @@
     "value": "Helena Maria Ehrenstråhle"
    }
   },
-  "lastrevid": 2543629833,
-  "modified": "2026-09-11T00:37:56Z",
+  "lastrevid": 2548688595,
+  "modified": "2026-09-23T04:26:00Z",
   "ns": 0,
   "pageid": 4726651,
   "sitelinks": {

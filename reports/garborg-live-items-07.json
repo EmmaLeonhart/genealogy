@@ -202060,6 +202060,49 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q141533655$F05748E8-C117-484B-98DB-21003C1A3122",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141533804",
+        "numeric-id": 141533804
+       }
+      },
+      "hash": "aba02208300a56bda2f175d14e6e2d02b0c610f9",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "e93e5a0effe1ae0bb7f10e54fe7cd537822c6cd6",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000193533254829"
+          },
+          "hash": "8b0f0ded8c6004819c98ec30a4b93a94de8c1c99",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141533655$0AE7CB4F-62BA-4DF9-88EF-63E8BF5884FF",
@@ -202366,8 +202409,8 @@
     "value": "奥拉夫·伊瓦尔松·霍格内斯塔德之妻"
    }
   },
-  "lastrevid": 2548423206,
-  "modified": "2026-09-22T12:31:14Z",
+  "lastrevid": 2548720111,
+  "modified": "2026-09-23T07:18:13Z",
   "ns": 0,
   "pageid": 135093656,
   "sitelinks": {},
@@ -260576,6 +260619,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Benedicta Sunesdotter Folkungaätten"
+        },
+        "hash": "02826950371229680a7871817e8b470c306951de",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -261185,8 +261245,8 @@
     "value": "Бенгта Сунесдоттер"
    }
   },
-  "lastrevid": 2548217552,
-  "modified": "2026-09-21T22:03:33Z",
+  "lastrevid": 2548688630,
+  "modified": "2026-09-23T04:26:17Z",
   "ns": 0,
   "pageid": 4761958,
   "sitelinks": {
@@ -266305,6 +266365,23 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Peter Artedi"
+        },
+        "hash": "c91248518706cc87f25c5db3434979e369254985",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -268002,8 +268079,8 @@
     "value": "Петер Артеді"
    }
   },
-  "lastrevid": 2548240954,
-  "modified": "2026-09-22T00:35:27Z",
+  "lastrevid": 2548688659,
+  "modified": "2026-09-23T04:26:38Z",
   "ns": 0,
   "pageid": 493095,
   "sitelinks": {
