@@ -46542,3 +46542,5 @@ is gone, and the `wire-meta` job is out of `ci.yml`. `emit-research-ancestor-ged
 `restore-tanba-day-batch.yml` lose their `push:` triggers, which `test_no_workflow_runs_automatically`
 forbids; both keep `workflow_dispatch`. The script file and `apply-meta-wiring.yml` are still in
 the tree, so `test_no_source_file_links_a_repository` stays red until they are removed.
+
+Deleted `scripts/apply_meta_wiring.py` and `apply-meta-wiring.yml` on approval, after doing their work by hand.
