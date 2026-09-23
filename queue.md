@@ -10,13 +10,29 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## Actually work the queue
 
-I notice that the queue has already become fucking garbage with a gazillion different things on it, which is making it highly difficult to actually use. You probably have given up on using the queue properly. So fix it since we are trying to seriously work through it.
+Done for this pass (2026-09-22): the Geni-blocked campaign laundry list (Monte Carlo / NN NN,
+Inal Kut Chor, Ingemund, Ursula/Alix, STEP Forest, Bagrationi, commanded Forests, …) is **not**
+the live plan and was bloating the file. It is parked at
+`docs/queue-archive/geni-blocked-campaigns-2026-09.md` — same pattern as the 2026-09-15 archive —
+and must not be started under the Geni moratorium. Keep this file as **work only**.
 
 ## Fix zipper merge stuff
 
-I have noticed it's very common at this point for people in the last section of the queue.md to be duplicates put onto World Tree people. My impression is that you read my idea that it was okay to do Family Search duplicates, as it is okay to drop our duplicate safeguards for people from geni versus WikiData. That is not true. That's not what I wanted.
+**Ruling, restated so it cannot be misread again:**
 
-I only wanted it for Family Search because Family Search has often different trees, whereas Wikidata tends to be smaller, and geni is the more authoritative thing, or geni is a straight-up expansion of Wikidata. Family Search sometimes conflicts with geni. That's why I asked you to do so, and I notice that it appears to me that you are kind of dropping that safeguard. So fix this
+- **FamilySearch intentional duplicates are OK** — and only there. Separate QuickStatements
+  (`scripts/build-familysearch-day.py` → `reports/wikidata-familysearch-day.txt`); a human merges
+  on Wikidata afterwards. That is what she asked for.
+- **Geni versus Wikidata: keep the duplicate safeguards.** Do **not** mint a second item next to
+  a World Tree person as "bait". The zipper / `P2600` / synoptic correspondence are how those
+  people get identified; creating doubles is not a substitute.
+
+**Code fix landed 2026-09-22:** `scripts/build-ancestor-creations.py` had a section *CREATING
+SOMEBODY WIKIDATA ALREADY HAS IS THE POINT* (Willa of Tuscany, Sunifred, …). That was the
+FamilySearch ruling stretched onto Geni↔Wikidata. Reversed. It now refuses parents already
+spoken for via `out/wikidata/p2600-all.tsv` or `reports/synoptic-correspondence.tsv` — the same
+floor `build-garborg-day.py` already uses. Delete this section once the next composed batch is
+confirmed not to recreate spoken-for Geni ids.
 
 ## ⛔ GENI MORATORIUM — NO CONTACT OF ANY KIND UNTIL AT LEAST 2026-10-21
 
@@ -116,10 +132,27 @@ slow lane is reported separately rather than blocking. It is about to produce it
 result in this session; if it is red, that is a finding of its own and gets its own item rather
 than being folded into this one.
 
+### Status checked 2026-09-22 ~16:30 PT
+
+| run | sha | branch | fast 3.10 | fast 3.13 | slow | notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| [35714896690](https://github.com/EmmaLeonhart/genealogy/actions/runs/35714896690) (#111) | `ae7b8f3a` | main | **success** | **success** | **failure** | Fast lane green on main. Overall conclusion `failure` only because of slow. |
+| [35723539567](https://github.com/EmmaLeonhart/genealogy/actions/runs/35723539567) (#112) | `837d6d93` | `ci/verify-tiny` | success (branch) | success (branch) | — | Branch only — does **not** clear this item. |
+| tip `14cea770` | main tip | — | **no CI yet** | **no CI yet** | — | Ancestor GEDCOM commits landed after #111. |
+
+**Still first until:** a workflow_dispatch CI run whose **fast lane is green on 3.10 and 3.13** for a
+sha that is the current `origin/main` tip (or at least includes today's tip), and that dispatch
+is the most recent CI run on main. Emma: please dispatch CI on tip — this agent has GitHub MCP
+write for contents/PRs but no Actions `workflow_dispatch` credential.
+
+**Slow lane** on #111 failed in `tests/test_gedcom_real_exports.py` — file as its **own** queue
+item below once this section deletes; do not fold it back into GET CI GREEN.
+
 ⛔ **AND IT STOPS BEING FIRST BY ITSELF.** Ruled 2026-09-22, *"finish CI, then switch"*: the tick
-that sees a GREEN CI run on a sha that is on `origin/main` deletes this section, writes the
-devlog entry, and moves to § *The order. Top to bottom.* below — first bullet, the Pages link to
-the redo-everything action. No further check-in.
+that sees a GREEN fast-lane CI run on a sha that is on `origin/main` (and is the tip, or the tip
+has not moved since) deletes this section, writes the devlog entry, and moves to § *The order.
+Top to bottom.* below — first bullet, the Pages link to the redo-everything action. No further
+check-in.
 
 *"Right the fuck now we need to make everything green before edits happen. No half measures.
 In flight actions should still happen and be triggered before this."*
@@ -129,21 +162,11 @@ the send step with no `continue-on-error`, and `wikidata-edit-run.py` refuses a 
 carrying any `CREATE` with no description. So this item is not a wish — nothing goes out until
 it is done.
 
-Run `35682599151` on `1f9fc015a` had **seven distinct failures**. Four are fixed and pushed;
-**three are the committed `reports/wikidata-garborg-day.txt`, not the code** — it still holds
-ancestor-creation blocks minted before the fixes:
+⛔ **Do not edit Wikidata while this section is still here.**
 
-* `test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere`
-* `test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created`
-* `test_the_ledger_and_the_batch_do_not_both_claim_a_person`
+---
 
-**They clear when `pipeline.yml` recomposes and commits.** ⛔ **So do not push while a pipeline
-run is PENDING if the point is to let that run land** — § *THE 45-MINUTE PATH TICK PUSHES, SO THE
-PIPELINE CAN NEVER REACH THE FRONT*, measured at 0 green pipeline runs in 20. Check
-`gh run list` before pushing; a stamp or a queue edit can wait one tick.
-
-Then re-run CI and work whatever is still red, one at a time, root cause first. § *A real defect
--> a precise documented blocker, never a loosened assertion.*
+---
 
 ## ⛔ THE META QUEUE, FOLDED IN 2026-09-20 — THIS IS THE LIVE PLAN
 
@@ -531,593 +554,14 @@ findings, not work in progress. Nothing here is started.**
   dependents skipped behind one of them. `MAXLAG` is already 10 and the budget already 900 s.
   Nothing to fix in our code; recorded so the next session does not re-diagnose it as ours.
 
-## ⛔ GEDCOM EXPORTS — MOVED TO THE VERY END, 2026-09-14
-
-Ruled: *"these gedcom descendant exports are best moved to the very end of the queue so we can
-focus on other stuff since they can be done and integrated on a more long term basis while we
-fix important stuff."*
-
-They sit AFTER the hold lift on purpose, so a long-running export can never block it. Each one
-is a submit, a wait of 6-15 minutes, and a file — cheap to pick up whenever the browser is
-free, and they integrate on their own schedule.
-
-### Ursula von Münsterberg — the German branch of Alix's descent, missing from the corpus
-
-`6000000188494434823`. **Not in our tree**, and her mother `Sophie of Teschen`
-`6000000006727858370` already is — so this is one export away from closing a branch we know is
-there. Established 2026-09-15 from Emma's own lead: Geni computed her relationship through
-`6000000003481830064` **Guy d'Ibelin, whose mother is Alix de Lampron**, and the route from the
-German side runs Cieszyn → Bavaria-Landshut → Lusignan Cyprus → Guy → Alix, hinging on the
-marriage of Agnes von Bayern-Landshut to a Lusignan king.
-
-*"it may be the case for many others too"* — so the interest is the branch, not the individual.
-`Descendants` off a created ancestor per `docs/export-seed-rules.md`, not `Forest`.
-
-⛔ Check `https://www.geni.com/gedcom/export/6000000188494434823` for *"You are not allowed to
-export that profile"* first; she was not created by this account.
-
-**Checked 2026-09-17 and it says exactly that**, so the created-ancestor route is the only one.
-The ancestor exists now: **`6000000227804005917` NN von Pardubice**, created as the father of
-`6000000176534654825` **Anna von Pardubice** (c.1359, born Pardubice, no parents on Geni) —
-tier 4 of `docs/export-seed-rules.md`, no parents at all and a surname, so `NN` plus the child's
-birth surname. Anna is five generations above Ursula: Anna → Barbara von Sternberg → Königin
-Kunigunde von Kunstadt-Podiebrad → Viktorin Bocek von Münsterberg → Ursula. `Descendants` 5000
-submitted off him as task `6000000227804000942`.
-
-
-### `Forest` export for a STEP relationship — the one representation the corpus does not attest
-
-The profile scrape carries `step-parent` 12 and `step-child` 3, and **the corpus attests no way to
-write one**: every `PEDI` value in `exports/` outside the tiny directories is `adopted` 2,473,
-`foster` 805 or `birth` 555, and there is no `PEDI step`. So `build-tiny-gedcoms.py` drops those 15
-edges rather than invent a shape for them.
-
-Ruled 2026-09-13 for this exact case: *"we have to do a `Forest` export on that point in order to
-get that relationship so we know how to represent it."*
-
-A seed is in `geni-families/292373984150002914-family.tsv` — subject `292373984150002914`, whose
-`step-parent` row is `Ratanbai Tata`. `Forest`, because the point of the export is to cross the
-step link rather than descend.
-
-⛔ Check `https://www.geni.com/gedcom/export/292373984150002914` for *"You are not allowed to export
-that profile"* first.
-
-**Checked 2026-09-17: it says exactly that**, and redirects to `/error`. So this one needs the
-same created-ancestor route Ursula needed — create a relative of `292373984150002914` this
-account owns, then run `Forest` off the created person, because the walk has to cross the step
-link rather than descend. Still to do; the commanded roster is ahead of it.
-
-
-## THE ORDER, 2026-09-17. WORK IT TOP TO BOTTOM
-
-Dictated in one go after a session that jumped between things. **None of these depend on an
-earlier one finishing** -- the order is hers -- except that the archive is best delved into
-before the connection investigations, because it may hold the answer.
-
-The Geni exports below run alongside all of this and are **the least significant part**:
-*"these actual Geni exports are kind of the least significant part of what we're doing here. It
-just happens that I got a lot of them all at once."*
-
-- **4. All the random CI/CD crap.** CI has been failing since before 2026-09-17, and the
-  three-ledger refactor has never run green: every pipeline run since it landed was cancelled by
-  the next push.
-
-- **5. Investigate the Pomeranian-Cypriot connections.**
-
-- **6. The ontology.** `P407` *language of work or name* is the piece left undone: which languages
-  a name belongs to is not a fact about the string and needs a source.
-
-- **7. An aggressive campaign to do the downloading properly.**
-
-- **8. Then a Cypriot / Russian / Bagrationi investigation.**
-
-- **9. Then whatever else.**
-
-### Why the cluster campaign exists
-
-*"we are trying to dig in on a specific cluster to make sure we have completely exhausted it."*
-The bet: the Dutch-Pomeranian cluster has a relatively high likelihood of a descent from
-antiquity -- the kings of Cyprus, or Russian nobility -- either of which reaches the **Georgian
-royal family, which is the goal**. It is strange in that it moves very far geographically and
-then fizzles out unexpectedly; the theory is that many people have investigated it a little and
-nobody pushed far, because it tends to be the less noble ancestry on a lot of paths.
-
-⛔ **THE POINT IS TO *ADD* BLOOD, NOT TO FIND IT IN THE GRAPH.** Ruled 2026-09-17 against exactly
-that mistake: measuring existing connectivity treats the tree as fixed, and in a 1.4M-person tree
-almost any two noble lines are reachable at some hop count, so a reachability number says nearly
-nothing. The exports are what create the edges.
-
-## ⛔ A FULL RING OF ANCESTRY ON TWO PEOPLE, EVERY RUN. Ruled 2026-09-18
-
-*"for these two people I want you to go crazy with their ancestors. Every run should add a full
-ring to their ancestry."*
-
-    6000000000757999620  Q141493478  Inger Axelsdatter Güntersberg
-    6000000002621242041  Q141450322  Olfvir / Ølver Rømer
-
-`PRIORITY_ANCESTOR_SEEDS` and `priority_ancestor_ring` in `scripts/build-garborg-day.py`. The
-walk goes up THROUGH people who already hold a QID and returns everybody standing on the first
-boundary above -- the whole ring, unioned in after `compose` picks, uncapped, because a full ring
-is not a shape `compose` can express and a slice of it advances the ancestry a fraction of a
-generation a day.
-
-**It advances itself and there is nothing to maintain**: what it returns gets created, enters the
-ledger, and is walked THROUGH next run instead of returned again. No depth counter, no cursor, no
-state, and no way for it to quietly stop.
-
-⛔ **THE LEDGER'S GENI ID FOR `Q141450322` IS THE HUSK.** `garborg-qids.tsv` pairs it with
-`6000000227289508960`, which redirects to `6000000002621242041` and has no `FAMC` of its own --
-so seeding on the ledger alone would have grown nothing while printing a cheerful zero. Both ids
-seed the walk. Correcting the ledger row is still owed.
-
-**First measurement, 2026-09-18: 8 people on the frontier**, 7 walked through.
-
-## ⛔ TOP PRIORITY EXPORTS, from 00:30 on 2026-09-18 — run top to bottom, one at a time
-
-Ahead of the commanded roster below. Geni allows one export at a time, so this is a strict
-sequence, not a set.
-
-- **Bothilde Sigurdsdatter Onarheim** — `Forest`. *"for merge related stuff changing"*, so it is
-  a **privileged** export and is filed into `exports/post-merge/`.
-
-  ⛔ **`6000000227805045863` IS A HUSK AND THE EXPORT DOES NOT RUN ON IT.** It redirects to
-  `6000000177261659865`, the real Bothilde (c.1275), which this account does not manage —
-  `https://www.geni.com/gedcom/export/6000000177261659865` answers *"You are not allowed to
-  export that profile"* and lands on `/error`. The husk's own export form still loads, titles
-  itself **"(No Name)'s GEDCOM File is Being Created"** and accepts the submit; that is the trap
-  § *`6000000227289508960` IS A MERGED-AWAY HUSK* describes, and one such submit was spent here
-  on 2026-09-19 before the redirect was checked.
-
-  **The seed is `6000000227811549827` Sigurd Onarheim**, her father, created by this account and
-  directly attested by her patronymic — tier 1 of `docs/export-seed-rules.md`. `NN Onarheim`
-  `6000000227816629854` is the mother placeholder and is the fallback. `Forest` 5000 submitted
-  off Sigurd on 2026-09-19; the page confirmed **"Sigurd Onarheim's GEDCOM File is Being
-  Created"**, a named profile rather than `(No Name)`. Delete this when the zip is filed.
-
-⛔ **AND `6000000002621242041` OLFVIR IS NOT EXPORTED DIRECTLY. RULED 2026-09-18.** Forest,
-Ancestors and Descendants were all queued on that id and **none of them can run**: the profile
-is not this account's, and the `request_export` endpoint does not get round that — the form
-page's refusal was the real answer after all. The two `NN` seeds above are the route to the same
-ancestry, which is the shape the whole campaign already uses: **you do not export the person you
-want, you export a placeholder this account owns next to them.**
-
-### ⛔ `6000000227289508960` IS A MERGED-AWAY HUSK. DO NOT SEED OFF IT
-
-The link originally given for Olfvir was `6000000227289508960`, and it **redirects** to
-`6000000002621242041`. That merge is what connected the new ancestors — it is the event the
-00:30 wait was for, not a problem to route around.
-
-The husk is still half-alive and that is the trap: its export form loads, titled
-**"GEDCOM Export for (No Name)"**, and it **accepts a submit**. The task it returns —
-`6000000227805163844`, `Ancestors` — then errors on every single reload. So a submit that looks
-like it worked produces nothing, and nothing says so.
-
-**The submit is a plain GET**, which the button merely builds, and navigating to it directly
-beats hunting the button —
-
-    https://www.geni.com/gedcom/request_export?id=<geni id>&walk=Forest&max_profiles=5000
-      &destination=Ftb80&name_format=0&locale=en-US&include_bom=1
-
-`walk` is `Forest` / `Ancestors` / `Descendants` / `BloodTree`. It is a convenience, **not a way
-past a permission**: on a profile this account does not manage the endpoint refuses exactly as
-the form page does. That was argued the other way here on 2026-09-18, under § *NEVER SAY YOU
-CANNOT DO SOMETHING YOU HAVE NOT TRIED*, and it was wrong — the form page's refusal WAS the
-mechanism, and the rule does not make an access control disappear.
-
-⛔ **AND DO NOT INVENT A DESCENDANT TO WALK UP FROM.** `docs/export-seed-rules.md` only ever
-creates **parents**, because a parent is implied to have existed and a child is not. Creating a
-child of a real historical person to seed an `Ancestors` walk asserts something false about the
-tree, and it was offered here and refused.
-
-**A clicked submit is confirmed by `location.href` carrying `request_export` or
-`/gedcom/download?task_id=`, never by the page text** — `get_page_text` returns stale content on
-this site throughout. And coordinate clicks were landing off-target all night because
-`getBoundingClientRect` reports in a 1536-wide viewport while the click frame is 1568 wide; that
-is what looked like "the first click is always swallowed".
-
-## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
-## COMMANDED EXPORTS, 2026-09-17 — ABANDONED
-
-⛔ **STOPPED BY INSTRUCTION, 2026-09-17:** *"after downloading the finished gedcom abandon doing
-the exports since your job is different stuff"*, and earlier: *"these actual Geni exports are kind
-of the least significant part of what we're doing here."*
-
-**15 Forest exports were taken**, the last being NN von Flemming at 22:54. 215 zips sit in
-`~/Downloads`, unfiled — filing them into `exports/` is hers.
-
-The roster below is left listed rather than deleted, so the cluster is recoverable if it is ever
-picked up again. Nothing here is running and nothing should be dispatched from it.
-
-⛔ **`6000000227803023904` NN von Eickstedt NEEDS A RE-RUN.** It was requested at 22:10, its export
-slot then freed with no file produced, and its download link yields nothing.
-
-⛔ **AND `6000000227803104825` Knut father of Ingegerd WAS EXPORTED TWICE**, 21:27 and 21:34. Geni
-refuses a second export while one is generating and the refusal appears as a banner on a page that
-*also* still reads "Being Created", so it looks like success. The reliable instrument is
-`https://www.geni.com/gedcom`, which lists every request with a timestamp; the submit page is a
-static snapshot and lies about state. Do not batch a download click with the next dispatch.
-
-
-Forest on each, in the order given. Then Descendants, in reverse of that order.
-The Forest order runs up the generations; the reverse runs back down them.
-
-One at a time, cannot be cancelled. Delete a line when its zip is in `~/Downloads`.
-
-### `Forest`
-
-### `Descendants`
-- `6000000227803089951` NN von Liesgau
-- `6000000227803060959` NN
-- `6000000227803068881` NN von Leinegau
-- `6000000227803029977` NN von Luchow
-- `6000000227803090852` NN ?
-- `6000000227803031913` NN h. Nałęcz
-- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow
-- `6000000227803024989` Svales Rein
-- `6000000227803041902` Guttorm Hundorp
-- `6000000227802407043` Sigmund father of Sigrid
-- `6000000227803073849` NN NN
-- `6000000227803024982` NN Kruckow
-- `6000000227802432937` NN Barsebek
-- `6000000227803089879` NN von dem Borne
-- `6000000227803041931` NN von Flemming
-- `6000000227803023904` NN von Eickstedt
-- `6000000227803104825` Knut father of Ingegerd
-- `6000000227803077823` Jön Liljesparre
-- `6000000227803024957` NN Knutsdatter
-- `6000000227803089850` Knud Porse
-- `6000000227802697066` Olof father of Kerstin
-- `6000000227803023862` NN Bulgerss
-- `6000000227803060855` NN Hessøen
-- `6000000227803032874` NN van Valckenier
-- `6000000227297029878` NN
-- `6000000227803027847` Adrian Falchener
-- `6000000227803061825` David Fjose
-- `6000000227802431855` Lars father of Sigrid
-
-## Forest exports
-
-These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
-
-Forest https://www.geni.com/people/NN-Fuca/6000000227739821875
-
-Descendants https://www.geni.com/people/NN/6000000227739695943
-
-## Ancestor Exports
-
-At the end of the queue after all other things are done I want to do some specific ancestor export campaigns. 
-
-Ancestor exports from certain specific people to get their ancestors
-
-try this one https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064
-
-## `Forest` exports centred on people carrying the TAIL relationships in the TSVs
-
-Ruled 2026-09-13: *"put it at the end of the queue that... to do forest exports centred on people
-with the tail relationships for the TSV files."* Written down and not started **yet**.
-
-**Last in order, and it gets done.** Emma, immediately after: *"it's at the very terminal end of
-it. And it's NOT parked. It's gonna be addressed later."*
-
-**Why a `Forest` and not a lookup:** a relationship we have never seen in a real Geni export has
-no attested representation, and § *no guessing on the representations* forbids composing one.
-The export centred on a person who **has** that relationship is what shows how Geni writes it.
-
-**The tail, counted off `paths/harvested-path-geni-*.tsv` on 2026-09-13.** The whole distribution
-is 33 distinct strings; these are the ones below the common six and their gender variants:
-
-    134  her adoptive mother        3  her child            2  his/her father
-     18  her ex-husband             3  his ex-wife          2  his parent
-     15  your relative?             3  his fiancée          2  her ex-partner
-     11  his partner                1  his child            1  his adoptive mother
-      5  his/her parent             1  her partner          1  his adoptive father
-      4  her fiancé
-
-**⛔ THE URGENT ONES ARE THE UNATTESTED ONES, and there are two kinds.**
-
-* **fiancé / fiancée — 7 rows, and `ENGA` occurs ZERO times in this corpus.** There is no shape to
-  copy, so they are currently emitted as a couple with no marriage event. This is the case Emma
-  described exactly: *"if there's some relationship that is only present in one spot, we have to
-  do a `Forest` export on that point in order to get that relationship so we know how to
-  represent it."*
-* **`your relative?` — 15 rows.** Geni itself is not naming the relationship, so a `Forest` on
-  those people is the only way to find out what the link actually is.
-
-**Already attested and needing no export** (`devlog.md` 2026-09-13 carries the measurements):
-adoptive → `FAMC` + `2 PEDI adopted` + `1 ADOP` + `3 ADOP BOTH`; ex- → bare `1 MARR` with bare
-`1 DIV`; partner → a `FAM` with no `MARR`. `foster` is attested 781 times in the corpus and
-appears in **no** path string, so it needs nothing until one turns up.
-
-Pairs with these relations are in `reports/path-chains.tsv`; the person to centre the export on
-is the one the tail word describes.
-
-## Names
-
-Remember that this is not something to be done out of order, it is the second last item in the queue for a reason
-
-We are still generating non-name items as names such as numbers, and I think https://www.wikidata.org/wiki/Special:Contributions/OBender12 is likely pretty pissed at this point, but no talk page messages yet. idk why you did not fix it and seem to have completely overlooked the error that he constantly corrects. There are plenty of non-name things that need to be parsed not as names.
-
-Read "address_this.html"
-
-### Examples
-
-Even in the current batch one exists lol
-
-# und -- family, 8 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "und"
-LAST	Len	"und"
-#   set the mul label to "und"
-LAST	Lmul	"und"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q61139384 Mangold von Thurgau und Nellenburg III: P734 family name = the item just created
-Q61139384	P734	LAST	S2600	"6000000004106003883"
-#   Q81827036 Adalbert von Saffenberg und Norvenich: P734 family name = the item just created
-Q81827036	P734	LAST	S2600	"6000000009305060696"
-#   Q55068638 Friedrich zu Schwarzenberg und Hohenlandsberg: P734 family name = the item just created
-Q55068638	P734	LAST	S2600	"6000000014784646061"
-#   Q110261972 Johann I von Tengen und Nellenburg: P734 family name = the item just created
-Q110261972	P734	LAST	S2600	"6000000017758205608"
-#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P734 family name = the item just created
-Q110415677	P734	LAST	S2600	"6000000019797018175"
-#   Q828346 Berthold Graf von Neuffen und Achalm: P734 family name = the item just created
-Q828346	P734	LAST	S2600	"6000000082813823834"
-#   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
-Q110410743	P734	LAST	S2600	"6000000105706792946"
-
-## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
-
-Ruled 2026-09-14: *"have the very last queue item be one that would be to restart the path
-collection in the event that the path collection ended up stopping."* And the standing rule is
-now in `CLAUDE.md` § *THE PATH CAMPAIGN RUNS IN EVERY SESSION, NO MATTER WHAT*.
-
-    check    ls -lt ~/Downloads/path-chains-*.tsv  -- a gap means it is dead
-             window.__pathrun in the geni.com tab: {running, i, ok, fail}
-    restart  open an UNCONNECTED profile, paste the DERIVE block of scripts/pathrun.js,
-             then the RUN block with ids from scripts/build-pathrun-batch.py
-    stop     window.__pathrun.stop()
-
-**Its stopping is not an emergency and not a reason to work on it.** Restart it, go back to the
-first item.
-
-- **DECIDE: what happens to `build-add-p2600-batch`.** <!-- requeued-add-p2600-2026-09-13 -->
-  Deferred on 2026-09-06 for want of context to decide on, and re-queued on 2026-09-13 by
-  `.github/workflows/requeue-add-p2600.yml`.
-
-  It writes **7,166 `P2600` statements** inferred from parent-anchor proof into
-  `reports/wikidata-add-p2600.qs`, and **nothing runs it**. The four options as they stood: fold
-  it into the daily batch under a cap; give it its own scheduled workflow; delete it; or leave it
-  as a hand-run tool. `reports/qs-batch-audit.md` carries the measurement.
-
-  The other five generators in that audit were settled on 2026-09-06 —
-  `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
-  `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
-  This is the last one open.
-
-## ⛔ MAKE THE REPO MINIMALIST. NOT YET — SEE THE PIPELINE RUN FIRST
-
-Ruled 2026-09-17: *"this repo ought to be extremely minimalist. Smallest it can possibly be."*
-And immediately after, on being shown the first measurement: *"Hold the fuck off on this. Add the
-item to the queue to work on making it more minimalist. I want to actually see the repo editing
-in the current state before you torch the current state."*
-
-**So this is queued, not started.** The current state has to be observed running before anything
-is removed — a thing nobody has watched work is a thing nobody can tell was load-bearing.
-
-What is known so far, and it is one measurement, not a plan:
-
-    scripts    342 .py/.js
-    reports  1,805 files
-    docs        41
-    workflows   12
-
-`CLAUDE.md` § *LEGACY CODE IS DELETED* already gives the test — *does the pipeline read this*,
-not *might this be useful* — so the work is applying it, not deciding it.
-
-⛔ **AND THE OBVIOUS FIRST CUT IS NOT OBVIOUS.** The roster TSVs look like the thing to scrub now
-that `5feda3d6` folded all 441 pairs into the identifications GEDCOM — but they are still READ,
-by `build-qid-links-gedcom.py`, so by the repo's own test they are not legacy. Making them legacy
-means moving their pairs into the generator's constant first. That is a decision with an order to
-it, which is exactly why it is queued rather than done.
-
-⛔ **NOTHING IN THE PIPELINE IS TRIVIAL**, ruled the same day: *"even if I tell you something is
-trivial, it is probably not trivial"*, and *"if there's anything in the pipeline that makes it
-slower, that is intentional."* A minimalism pass is the most dangerous possible shape for that
-failure, so it does not start until the pipeline has been watched end to end in its current form.
-
-## Ingemund Grimsson is ELEVATED, 2026-09-18
-
-Ruled: *"immediately run an ancestors export desendants export and forest export on this
-person ... they are top priority and their export is gonna be elevated in importance a it
-overrides other things"* -- <https://www.geni.com/people/Ingemund-Grimsson-I-R/6000000227816621867>
-
-All three submitted 2026-09-18, confirmed by his own name in the
-*"... GEDCOM File is Being Created"* heading rather than by the page text, which lies:
-
-    Forest       23:09Z   went out inside the created-today batch
-    Ancestors    23:16Z
-    Descendants  23:17Z
-
-None of the three returns a task id -- see § A FOREST SUBMIT HANDS BACK NO HANDLE in
-`scripts/forest-created-today.js`. They come off <https://www.geni.com/gedcom> when rows appear.
-
-## Descendants campaign on Inal Kut Chor `6000000035218736073` -- QUEUED, starts when the
-## created-today Forests are dispatched
-
-Ruled 2026-09-18, in the same breath as the Ingemund elevation:
-*"once this is finished start a descendants campaign on ... Inal-Kut-Chor"*. So it follows the
-batch rather than interrupting it, and Ingemund overrides both.
-
-`docs/monte-carlo-procedure.md` unchanged: frame, denylist, 40 candidates, every reading at or
-above 4,000 exported off a created ancestor, the root stops on a round that returns none.
-
-⛔ **AND THE FRAME IS BUILT FRESH, NOT READ OFF DISK.** `reports/descent-from-6000000035218690155.csv`
-is a DIFFERENT person. Abul Hamza's roster was six days stale on 2026-09-18 and hid 71
-generations -- round 3 read zero against a top of 618, and the same sweep on the rebuilt frame
-returned a 15,000 cap hit. A stale frame reports a root as finished when it is not.
-
-### ⛔ THE COLLECTOR IS LEFT WITH `mcThreshold` 99999999. RESET IT TO 4000 BEFORE ANY SWEEP
-
-Set 2026-09-18 so the Inal Kut Chor census could run readings-only while Geni refused every
-export. **A sweep dispatched on top of it will read forty pages, fire no climb, and report no
-hits -- which is indistinguishable from a root that is finished.** That is the exact shape of
-failure that closed Abul Hamza twice on a stale frame the same day.
-
-`{type:"montecarlo"}` sets it from `threshold`, so any normal dispatch clears it. Nothing else does.
-
-### Owed on Inal Kut Chor `6000000035218736073`, round 1
-
-- `6000000048540306833` read **5,174** -- owed a climb and a `Descendants` export off a created
-  ancestor. Round 1 is NOT closed; round 2 follows once this is worked.
-
-### Owed from 2026-09-18, blocked on the export refusal
-
-- **Ingemund Grimsson `6000000227816621867`** -- Ancestors, Descendants, Forest. ELEVATED.
-- **14 of the 19 created-today Forests** -- `reports/created-today-2026-09-18.tsv`.
-- Check the year counter on <https://www.geni.com/gedcom> first. A submit that does not move it
-  was refused, whatever the page says.
-
-## ⛔ NEXT CAMPAIGN AFTER THE CURRENT WORK -- `NN NN` `6000000227822546944`
-
-Ruled 2026-09-19: *"future campaign after these is forest + descendant + descendant campaign
-monte carlo on is one ... remember monte carlo on all recorded descendants of them in the
-synoptic tree and building over time the ultimate one"*.
-<https://www.geni.com/people/NN-NN/6000000227822546944>
-
-Three steps, in this order:
-
-- **`Forest`** on `6000000227822546944`
-- **`Descendants`** on `6000000227822546944`
-- **the Monte Carlo**, `docs/monte-carlo-procedure.md` unchanged -- 40 candidates a round,
-  threshold 4,000, every hit climbed and exported off a created ancestor, the root stops on a
-  round that returns none.
-
-⛔ **THE FRAME IS EVERY RECORDED DESCENDANT IN THE SYNOPTIC TREE, NOT THE BALL.** The sample is
-drawn from `scripts/descent-from.py` over the corpus -- all of them, as the tree holds them --
-and the trunk cut applies if it comes back DEEP. It is built FRESH at the time, never read off
-disk: Abul Hamza was sampled for three rounds against a roster six days stale that held 45
-generations where the corpus held 116, and closed twice on it.
-
-⛔ **AND IT ACCUMULATES.** *"building over time the ultimate one"* -- the frame grows as balls
-land, so each round is drawn against a larger descent than the last. The denylist rebuild in
-step 2 of the procedure is what keeps that from re-sampling ground already taken.
-
 ---
 
-## Parse the descendant reports into actual family trees
+## Non-Geni follow-ons (kept short; full text was in the cleaned box queue)
 
-- **Investigate turning the descendant reports in `reports/sweep/*.tsv` into family trees by
-  parsing the relationship text.** Ruled 2026-09-21: *"we can make the descendant reports into
-  family trees through parsing. The report's relationship needs to be parsed but might work."*
-  The harvest is 1,350,775 rows across 7,247 files and it currently carries a name and nothing
-  else, so every swept person is a name with no position. The relationship each report states is
-  the structure -- if it parses, the sweep stops being a name list and becomes genealogy for
-  people the GEDCOM exports never reached. Investigate whether it parses reliably before
-  building anything on it.
-
----
-
-## Export a GEDCOM from Wikidata
-
-- **Queue up exporting GEDCOM from Wikidata.** Ruled 2026-09-21: *"after that we queue up
-  exporting gedcom from wikidata."* `scripts/build-wikidata-gedcom.py` already renders one and
-  `--connectivity` is the artifact that fits in Actions; what is wanted here is the export as a
-  thing in its own right. ⛔ This does **not** reopen the merge — CLAUDE.md
-  § *THE WIKIDATA TREE NEVER GOES INTO THE SYNOPTIC TREE* stands, and
-  `--also out/wikidata-tree.ged` stays unwired.
-
----
-
-## Agentic work on the other genealogy sources
-
-- **Look at agentic work on genealogy sources other than Geni — FamilySearch, MyHeritage and the
-  rest.** Ruled 2026-09-21: *"look at agentic work on other genealogy sources like familysearch
-  myheritage etc"*. Geni is one reach and it is actively hostile; the Incapsula 403 of
-  2026-09-21 is what a single-source pipeline costs. The question is which of these can be worked
-  the way Geni is — what needs a logged-in browser, what has an API, what can be harvested at
-  all — not to switch away from Geni but to stop the tree depending on one site.
-  `preservation/` already holds three MyHeritage *Descent from Antiquity* snapshots, so some of
-  this material is in hand and unexamined.
-
----
-
-## The Rømer ring seed is one unrecorded parent link from the owner's ancestry
-
-- **`Ingrid Ølversdatter Romer` (1329–1393) IS an ancestor** — Geni `6000000002893346298`,
-  paternal, 21 generations up — and she has **no recorded parents at all**. The ring seed
-  `Olfvir Henningsson Rømer` (d. 1350, `6000000002621242041`, `Q141450322`) is **not** connected
-  to the owner, which is why the ring has grown 1,278 people that reach nobody.
-
-  Three things say they are father and daughter and the tree simply does not record it:
-
-  * her patronymic **names her father as Ølver**, and he is an Ølver Rømer who died in 1350 when
-    she was 21;
-  * he already has a daughter recorded with the **identical patronymic**,
-    `Anna Ølversdatter Rømer` (1340);
-  * **both couples have children called `Otte Rømer` and `Harneyt Rømer`, under four different
-    profile ids** — Ingrid × `Zabel Rømer` gives `6000000001669611995` / `6000000001669612001`,
-    Olfvir × `Ulvhild Henningson Rømer` gives `6000000010292908965` / `6000000010292144128`.
-    Two sibling pairs bearing the same two names, one of them as rare as *Harneyt*, in one family
-    in one generation, is duplication rather than coincidence.
-
-  ⛔ **This is the Rømer leg of the Pfinzing continental route** — `preservation/FINDINGS.md`
-  routes Pfinzing → Geuschmidt → `Baron Henning von Rømer` → `Ølver and Ingrid Rømer` → Tenga →
-  Underberge and says that middle stretch is the owner's own ancestry. It is, and the join is one
-  edge. Closing it attaches the seed's 1,278 recorded ancestors and makes the ring productive.
-
-  ⛔ **BLOCKED-ON-EXTERNAL: the Geni moratorium.** The fix is a Geni-side parent link and a
-  duplicate merge, and nothing touches geni.com before 2026-10-21 at the earliest. Recorded now so
-  the evidence is not re-derived later.
-
----
-
-## ⛔ RELATIVE-DESCRIBING LABELS ARE STILL GOING OUT
-
-- **A label that names a relative is being written as the primary label, and the pipeline is still
-  doing it.** Seen 2026-09-21 on **`Q141526951`**:
-
-        en      mother of Sven Torstensen Tvihaug
-        fr      mère de Sven Torstensen Tvihaug
-        en-ca   Tora NN          <- the CORRECT label
-        en-us   Tora NN          <- the CORRECT label
-        desc    born Hå ?
-
-  ⛔ **THE DESCRIPTIVE LABEL IS NOT THE BUG. Ruled 2026-09-21:** *"Tora NN is mul. Tora mother of
-  person in every language lol"*. A relative phrase in a language label is **correct and
-  intended** — § *`NN` is PRESERVED in `mul`; descriptive labels are ADDED in other languages*.
-  Two things are actually wrong, and neither is the existence of the phrase:
-
-        WANTED                                   GOT
-        mul    Tora NN                           (absent)
-        en     Tora, mother of Sven Torstensen   mother of Sven Torstensen Tvihaug
-        fr     Tora, mère de Sven Torstensen     mère de Sven Torstensen Tvihaug
-        en-ca  (nothing owed)                    Tora NN
-        en-us  (nothing owed)                    Tora NN
-
-  1. **`mul` is missing, and `Tora NN` has been filed into `en-ca`/`en-us` instead.** That is the
-     one label the rules say must carry `NN`, and it is the one label not set.
-  2. **The descriptive labels drop the given name.** They must read `Tora, mother of …` — the
-     person's own name first, the relation after. A label that is *only* a relation names somebody
-     else, which is § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME*.
-
-  **It is translated, which means it is generated and not inherited** — `mère de` is ours.
-  ⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD*: there are two emitters and the rule belongs in
-  `namemodel`. Find where the relative-phrase reaches the label rather than patching the symptom,
-  and fix the ones already emitted.
-
-  ⛔ **AND THE FAULT IS THE `NN` SURNAME BRANCH. Ruled 2026-09-21:** *"Idk why you kept on
-  consistently doing the NN surname wrong"*. The trigger is **a person with a given name and no
-  surname**, and the branch gets both halves wrong at once: it sends `Given NN` to the wrong
-  languages and it builds the descriptive form without the given name. The emitter clearly
-  **has** both pieces — it produced `Tora NN` and it produced the relation — so this is routing
-  and assembly, not a missing name.
-
-  **This has recurred**, so the fix is the branch plus two tests — `mul` is `Given NN`, and every
-  descriptive label opens with the given name — not another pass over the emitted items.
+- Parse the descendant reports into actual family trees (offline; no Geni contact).
+- Export a GEDCOM from Wikidata (Wikidata only).
+- The Rømer ring seed is one unrecorded parent link from the owner's ancestry — work when touching rings; do not Geni-fetch under the moratorium.
+- Relative-describing labels are still a standing defect (see Queued 2026-09-21 / maiden-name and relational-label rulings).
 
 ---
 
@@ -1305,6 +749,8 @@ is why the model holds it now.
 
 ---
 
+---
+
 ## AT THE VERY END — INVESTIGATE ON FAMILYSEARCH, NOT GENI. Queued 2026-09-21
 
 *"people I particularly want to investigate now … long story short [FamilySearch] is much better
@@ -1436,3 +882,9 @@ already there, and that is the ordinary shape rather than a blocker.
   OUR TREE MATCHES GENI* decides it is checked against Geni rather than reasoned about. ⛔ Under
   the moratorium it cannot be checked at all, so it waits. § *DO NOT PANIC ABOUT ITEMS WE GOT
   WRONG*.
+
+---
+
+## Follow-up (not first)
+
+- FS ids on entry points should generate people too — implement seeding from P2889 / FS columns where Geni is empty.

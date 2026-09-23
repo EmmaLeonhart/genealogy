@@ -60,29 +60,27 @@ what put 6,239 items in it — and every creation this makes joins it, so next r
 is inside and its own parents become eligible. The circularity the old note feared is the
 mechanism working.
 
-## ⛔ CREATING SOMEBODY WIKIDATA ALREADY HAS IS THE POINT, NOT A DEFECT
+## ⛔ GENI ↔ WIKIDATA DUPLICATES ARE NOT INTENDED. FAMILYSEARCH IS THE EXCEPTION.
 
-Ruled 2026-09-17, and this is the whole design rather than a tolerated cost: *"the idea is that
-duplicates are intended behaviour lol ... The reasoning here is specifically that adding all of
-them may over time lead to other editors merging in the duplicates and that specifically is
-likely gonna help with my brandenburg ancestry"*.
+⛔ **Ruled again from the front of `queue.md` (Fix zipper merge stuff):** intentional duplicates
+are for **FamilySearch only** — `scripts/build-familysearch-day.py`, a separate QuickStatements
+file, where a human merges the pair afterwards. They are **not** for Geni versus Wikidata.
 
-**The duplicate is the bait.** A new item carrying a `P2600` and a parent link sits next to an
-existing unlinked item for the same person; other Wikidata editors notice the pair and merge
-them, and **the merge is what does the entity resolution** — it brings their item's statements
-and sitelinks together with our Geni id and our parent edge, on one item, without us having
-identified anything. That is the zipper's job being done by other people, at their pace, for
-free. `CLAUDE.md` § *the zipper merge* records that our own resolution *"is not doing that well"*;
-this routes round it.
+The 2026-09-17 note below this used to say the opposite for this emitter — that recreating
+somebody Wikidata already has (Willa of Tuscany, Sunifred I de Barcelona, …) was *"the bait"*
+for other editors to merge. That reading stretched the FamilySearch ruling onto Geni↔Wikidata
+and is what put World Tree duplicates into the day batch. **It is reversed here.**
 
-So the count of duplicates is not a number to drive down. Do not add a label-search gate, do not
-route these to a review file, do not "improve" the eligibility test to avoid people who probably
-already exist — avoiding them removes the mechanism. Measured on the first real run: of three
-picks two existed unlinked (`Willa of Tuscany` as `Q2054995`, `Q60040644`, `Q4019888`;
-`Sunifred I de Barcelona` as `Q1342360`), which is a good day rather than a bad one.
+**What still stands from 2026-09-17:** climb the owner's contiguous Wikidata ancestry one parent
+at a time. **What does not:** mint a second item next to an existing World Tree person.
 
-I asked whether to gate this before it was wired. That was the wrong question and the answer is
-written here so nobody asks it again.
+`build-garborg-day.py` already refuses a creation when the Geni id is spoken for — `P2600` on
+Wikidata, or an identification in `reports/synoptic-correspondence.tsv` (zipper + structural).
+This script now reads the same two sources. Holding a creation costs a day; creating a
+duplicate costs a manual merge on Wikidata. Prefer hold.
+
+⛔ **Recreating OUR OWN item** (same Geni id already in `garborg-qids.tsv`) stays forbidden too —
+that was never the bait case; see `ledger_geni_ids` below.
 
 ## ⛔ EVERY CREATION CARRIES A DESCRIPTION, AND THIS SECTION USED TO SAY THE OPPOSITE
 
@@ -192,11 +190,11 @@ def ledger_geni_ids():
     `wikidata-garborg-day.txt`. `6000000177945982827` is Jacob Knutson Skiftun, one of today's
     four ancestor creations.
 
-    **This is not the intended duplicate.** The header above is explicit that creating somebody
-    *Wikidata* already has unlinked is the point — another editor merges the pair and does the
-    entity resolution for us. Recreating **our own** item is the opposite: nobody is being
-    baited into anything, and § *DESCRIPTIONS ARE WRITTEN NOW, AND THE REASON IS THE
-    DEDUPLICATION* exists precisely to stop it.
+    **Recreating our own item is never intended.** The Geni↔Wikidata bait doctrine above was
+    reversed: FamilySearch is the only pipeline that may mint a deliberate parallel item.
+    Recreating a Geni id we already hold a QID for is worse still — nobody is being merged into
+    anything useful, and § *DESCRIPTIONS ARE WRITTEN NOW, AND THE REASON IS THE DEDUPLICATION*
+    exists precisely to stop it.
 
     `bridge-familysearch-qids.geni_by_qid` folds the same two sources for the same reason.
     """
@@ -209,6 +207,35 @@ def ledger_geni_ids():
             gid = (row.get("geni_id") or "").strip()
             if gid:
                 out.add(gid)
+    return out
+
+
+def spoken_for():
+    """Geni ids that already have a Wikidata item — do NOT create them again.
+
+    Same floor `build-garborg-day.py` uses before minting a person:
+
+    * `out/wikidata/p2600-all.tsv` — Wikidata already carries `P2600` for them
+    * `reports/synoptic-correspondence.tsv` — zipper / structural identification
+
+    Missing files fail open only for that source (empty contribution), matching garborg: a
+    missing correspondence simply cannot hold anyone. The ledger check stays separate and
+    stricter.
+    """
+    out = {}
+    p2600 = ROOT / "out" / "wikidata" / "p2600-all.tsv"
+    if p2600.exists():
+        with p2600.open(encoding="utf-8", newline="") as fh:
+            for row in csv.reader(fh, delimiter="\t"):
+                if len(row) >= 2 and row[0].startswith("Q") and row[1].strip().isdigit():
+                    out.setdefault(row[1].strip(), row[0])
+    corr = ROOT / "reports" / "synoptic-correspondence.tsv"
+    if corr.exists():
+        with corr.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                if g and q.startswith("Q"):
+                    out.setdefault(g, q)
     return out
 
 
@@ -313,7 +340,7 @@ def eligible(fam):
     which is, kept its link and is fine. *"They become immediate entry points and fix the error
     that made them."*
     """
-    allowed, held = _universe(), ledger_geni_ids()
+    allowed, held, taken = _universe(), ledger_geni_ids(), spoken_for()
     seen, queue, found = {OWNER}, collections.deque([OWNER]), []
     while queue:
         gid = queue.popleft()
@@ -330,11 +357,17 @@ def eligible(fam):
             if parent_qid and parent not in seen:
                 seen.add(parent)
                 queue.append(parent)
-            # The CHILD must be in the universe and the PARENT must not be on Wikidata.
+            # The CHILD must be in the universe and the PARENT must not already be spoken for.
             # `qid in allowed`, not merely `qid`: see the docstring. An empty universe means
             # the artifact is missing, and then nothing is eligible -- failing closed, the same
             # choice every other reader of this file makes.
+            #
+            # ⛔ `parent not in taken`: Geni↔Wikidata duplicate safeguard. Same sources as
+            # `build-garborg-day` — a P2600 or a zipper/structural correspondence means the
+            # person already has an item. FamilySearch intentional duplicates live in a
+            # different emitter; this one does not mint World Tree doubles.
             if (qid in allowed and not parent_qid and parent not in held
+                    and parent not in taken
                     and not parent.startswith(PLACEHOLDER_PREFIXES)):
                 found.append((gid, qid, parent, role))
     return found
