@@ -1,0 +1,72 @@
+--- a/scripts/build-garborg-day.py
++++ b/scripts/build-garborg-day.py
+@@ -50,6 +50,7 @@
+ from datequals import date_quals  # noqa: E402
+ import descriptions  # noqa: E402 -- the one description rule, shared with the FamilySearch batch
+ import qs_v1  # noqa: E402 -- the one module that knows what a CREATE block is
++from tanba_batch_block import tanba_blocked_qids  # noqa: E402 — day batch must never edit Tanba
+ from namemodel import (  # noqa: E402
+     qualifier_value,
+     aliases_for, classify, classify_fields, load_plan,
+@@ -458,8 +459,15 @@
+             # (`name not known`, `no name`) as well as single words, so splitting on space
+             # would miss exactly the longest and most obvious markers.
+             markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {"nn", "unknown", "ukjent"}
++            # PREFIX catches `NN Surname` and multi-word markers (`name not known`).
++            # TOKEN catches the mirror shape `Given NN` / `Margreta NN`, which the prefix
++            # test misses and which put `father of Margreta NN` into the day batch.
+             if any(low == w or low.startswith(w + " ") for w in markers):
+                 return ""
++            single_word = {w for w in markers if " " not in w}
++            tokens = low.replace("/", " ").split()
++            if any(t in single_word for t in tokens):
++                return ""
+             # **A relative whose own label is one of these descriptions names nobody either**,
+             # and it composes into nonsense rather than stopping: `daughter of father of`, and
+             # `wife of Son of Menon III Pharsalos`. 21 of those are sitting in
+@@ -2962,6 +2970,7 @@
+ # excluded. § *LEGACY CODE IS DELETED*.
+ 
+ 
++
+ def kluge_blocked_from_universe():
+     """The kluge's full set: the three Buyeo people **and the 178 CJK clan individuals**.
+ 
+@@ -8027,23 +8036,30 @@
+     # labelling probably changes in September, but universe membership does not happen until
+     # October. They are blocked from the universe and their labels still
+     # go out; excluding them here would silently drop the 15-a-day label drip.
+-    excluded = set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
++    excluded = (set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
++                | tanba_blocked_qids())
+ 
+     def names_excluded(line):
++        # QIDs, and the clan surname itself in annotations ("Yorikiyo Tanba").
++        if "tanba" in line.lower():
++            return True
+         return any(tok in line for tok in excluded)
+ 
+-
+     kept, dropped = [], 0
+     for ln in lines:
+-        if not ln.lstrip().startswith("#") and names_excluded(ln):
+-            while kept and kept[-1].lstrip().startswith("#"):
+-                kept.pop()
++        # Comments naming an excluded person are dropped too: annotate() writes
++        # multi-line description blocks, and popping only the immediate preceding
++        # comment left a 500-line Tanba wall after the statements were gone.
++        if names_excluded(ln):
++            if not ln.lstrip().startswith("#"):
++                while kept and kept[-1].lstrip().startswith("#"):
++                    kept.pop()
+             dropped += 1
+             continue
+         kept.append(ln)
+     if dropped:
+-        print(f"excluded ids: {dropped} statement line(s) dropped "
+-              f"({', '.join(sorted(excluded))}) — never emitted, in any position")
++        print(f"excluded ids: {dropped} line(s) dropped incl. Tanba "
++              f"({len(tanba_blocked_qids())} Tanba QIDs on disk) — never emitted")
+ 
+     # ---- ⛔ A LABEL SLOT A HUMAN HAS RULED ON IS NEVER RE-ASSERTED ----------------------
+     #

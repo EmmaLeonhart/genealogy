@@ -1,12 +1,12 @@
 name: Apply Tanba day-batch composer gate
 
-# One-shot on main: run install_tanba_day_gate.py (drop Tanba lines entirely
-# including comments; never comment them out), update README, self-delete.
-# Sparse checkout so we do not pull multi-hundred-MB FamilySearch GEDCOMs.
+# One-shot on main: apply scripts/tanba-day-gate.patch to build-garborg-day.py
+# (drop Tanba lines entirely incl. comments; never comment them out), then self-delete.
 on:
   push:
     paths:
       - ".github/workflows/apply-tanba-day-gate.yml"
+      - "scripts/tanba-day-gate.patch"
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ concurrency:
 jobs:
   apply:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,27 +27,24 @@ jobs:
           fetch-depth: 0
           sparse-checkout: |
             scripts/build-garborg-day.py
-            scripts/install_tanba_day_gate.py
+            scripts/tanba-day-gate.patch
             scripts/tanba_batch_block.py
-            scripts/_wire_tanba_import.py
             scripts/README-tanba-fix.md
-            reports/tanba-qids.json
-            reports/tanba-p2600-pairs.tsv
             .github/workflows/apply-tanba-day-gate.yml
           sparse-checkout-cone-mode: false
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-
-      - name: Wire Tanba gate via installer
+      - name: Apply patch, update README, commit, self-delete
         run: |
           set -euo pipefail
           git pull --ff-only origin main || git reset --hard origin/main
-          python scripts/install_tanba_day_gate.py
-          python scripts/_wire_tanba_import.py
-          grep -nE 'tanba_blocked_qids|tanba. in line.lower|single_word = .w for w in markers' scripts/build-garborg-day.py | head -30
-          python -c 'import ast; ast.parse(open("scripts/build-garborg-day.py", encoding="utf-8").read()); print("syntax ok")'
+          if grep -q 'from tanba_batch_block import tanba_blocked_qids' scripts/build-garborg-day.py \
+             && grep -q 'if "tanba" in line.lower():' scripts/build-garborg-day.py; then
+            echo "gate already present"
+          else
+            patch -p1 --forward --reject-file=- < scripts/tanba-day-gate.patch
+          fi
+          grep -nE 'tanba_blocked_qids|tanba. in line.lower|single_word|tokens = low' scripts/build-garborg-day.py | head -30
+          python -c 'import ast; ast.parse(open("scripts/build-garborg-day.py",encoding="utf-8").read()); print("syntax ok")'
           printf '%s\n' \
             '# Tanba day-batch gate (wired 2026-09-23)' \
             '' \
@@ -59,22 +56,19 @@ jobs:
             '- `scripts/build-garborg-day.py` final gate drops ANY line with `tanba` / Tanba QIDs **including comments**' \
             '- `usable()` rejects relative names with NN as a token (`Margreta NN`)' \
             '- `scripts/install_tanba_day_gate.py` / `scripts/strip_tanba_from_day_batch.py`' \
+            '- `scripts/tanba-day-gate.patch` — the applied one-shot patch (kept for history)' \
             '' \
             'Strip alone is not the end state: the composer gate must stay wired.' \
             > scripts/README-tanba-fix.md
-
-      - name: Commit gate; remove this workflow
-        run: |
-          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git sparse-checkout disable || true
           rm -f .github/workflows/apply-tanba-day-gate.yml
           rm -f scripts/_wire_tanba_import.py
-          git add scripts/build-garborg-day.py scripts/README-tanba-fix.md
+          git add scripts/build-garborg-day.py scripts/README-tanba-fix.md scripts/tanba-day-gate.patch
           git add -u .github/workflows/apply-tanba-day-gate.yml scripts/_wire_tanba_import.py || true
           git rm -f --ignore-unmatch .github/workflows/apply-tanba-day-gate.yml scripts/_wire_tanba_import.py || true
-          git add scripts/build-garborg-day.py scripts/README-tanba-fix.md
+          git add scripts/build-garborg-day.py scripts/README-tanba-fix.md scripts/tanba-day-gate.patch
           if git diff --cached --quiet; then
             echo "nothing to commit"
             exit 0
@@ -82,7 +76,7 @@ jobs:
           git commit -m "$(cat <<'EOF'
           Wire Tanba day-batch gate: drop Tanba lines entirely; never comment them out
 
-          Apply install_tanba_day_gate to build-garborg-day.py via
+          Apply tanba-day-gate.patch to build-garborg-day.py via
           tanba_batch_block.tanba_blocked_qids: excluded includes Tanba QIDs;
           names_excluded drops ANY line with tanba/Tanba QIDs including annotation
           comments (no # CREATE/LAST walls). Given-NN usable() token fix included.
