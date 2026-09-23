@@ -173,3 +173,4 @@ it is done.
   MCP upload size — Geni campaign dump stays archived, not restored.
 - Inline plain `scripts/build-ancestor-creations.py` and drop `_ac_payload_*.b64`.
 - Finish `docs/queue-archive/geni-blocked-campaigns-2026-09-cont.md` (archive part 2).
+- FS ids on entry points should generate people too — implement seeding from P2889 / FS columns where Geni is empty.
