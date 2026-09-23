@@ -46573,3 +46573,5 @@ sibling slot: `Q11685154` (1689–1740, son of `Q48345`), `Q30075271` (1713–17
 - `build-pick-one-candidates.py` never looked at dates. It now drops an option born more than 15
   years from the anchor (`DATE_GATE`, the same gap the card flags red) and drops the card when
   none remain. Dates first, the zipper's own order.
+
+**Cameron Frisk ancestry into the corpus.** `exports/frisk/`: `export-Ancestors-6000000227892448837.ged` (Cameron, 1,040 people, byte-identical to `frisk_geni/Cameron Frisk geni ancestors.ged`) and `export-Ancestors-6000000227891340662.ged` (his grandmother Elly Olivia Andersson, 904 people, **215 not in Cameron's file**). Both from the 2026-09-23 Downloads zips; earlier runs had not imported the full ancestry.

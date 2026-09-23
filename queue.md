@@ -185,6 +185,11 @@ is done, so it lives here now and `meta-queue.md` is deleted.
     a non-empty description both match, so a description that repeats is a guard that does not
     guard. § *A blank description is not a guard, it is the absence of one.*
 
+- **DESCRIPTION COLLISION -> THE GENI ID ALONE.** Ruled 2026-09-23 on the audit (837 colliding
+  pairs, 1,872 people): *"when there is a collision we give only the geni id as the fallback
+  description"*. A person in `reports/description-collisions.csv` gets the Geni id as the whole
+  description, not appended. `descriptions.deduplicate` currently APPENDS within one batch only.
+
 - **Then merge `exports/2026-09-19` again**, to pick up what it has gathered since.
 
 - **⛔ AND FROM THIS POINT ON, MERGE THAT BRANCH EVERY HOUR ON THE HOUR.** Set up before the
