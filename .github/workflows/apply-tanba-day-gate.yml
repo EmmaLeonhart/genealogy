@@ -1,1 +1,128 @@
-PLACEHOLDER
+name: Apply Tanba day-batch composer gate
+
+# No actions/checkout — full/sparse checkout hangs on huge FamilySearch GEDCOM history.
+# Download target + patch (+ put/cleanup helpers) via Contents API raw, patch, PUT full file.
+on:
+  push:
+    paths:
+      - ".github/workflows/apply-tanba-day-gate.yml"
+      - "scripts/tanba-day-gate.patch"
+      - "scripts/put_tanba_day_gate_via_api.py"
+      - "scripts/cleanup_tanba_day_helpers.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-tanba-day-gate
+  cancel-in-progress: true
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download, patch, Contents-API PUT (no checkout)
+        id: gate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          set -euo pipefail
+          API="https://api.github.com"
+          HDR_AUTH="Authorization: Bearer ${GH_TOKEN}"
+          HDR_API="Accept: application/vnd.github+json"
+          HDR_RAW="Accept: application/vnd.github.raw"
+          HDR_VER="X-GitHub-Api-Version: 2022-11-28"
+          mkdir -p scripts
+
+          dl() {
+            local path="$1" dest="$2"
+            curl -fsSL -H "$HDR_AUTH" -H "$HDR_RAW" -H "$HDR_VER" \
+              "$API/repos/$OWNER/$REPO/contents/${path}?ref=main" -o "$dest"
+          }
+
+          echo "::group::Download helpers, patch, build-garborg-day.py"
+          dl scripts/put_tanba_day_gate_via_api.py /tmp/put_gate.py
+          dl scripts/cleanup_tanba_day_helpers.py /tmp/cleanup_gate.py
+          dl scripts/tanba-day-gate.patch scripts/tanba-day-gate.patch
+          dl scripts/build-garborg-day.py scripts/build-garborg-day.py
+          wc -c /tmp/put_gate.py /tmp/cleanup_gate.py scripts/tanba-day-gate.patch scripts/build-garborg-day.py
+          echo "::endgroup::"
+
+          ALREADY=0
+          if grep -q 'from tanba_batch_block import tanba_blocked_qids' scripts/build-garborg-day.py \
+             && grep -qF 'if "tanba" in line.lower():' scripts/build-garborg-day.py \
+             && grep -q 'single_word' scripts/build-garborg-day.py \
+             && ! grep -qF 'if not ln.lstrip().startswith("#") and names_excluded' scripts/build-garborg-day.py; then
+            echo "gate already present and verified"
+            ALREADY=1
+          fi
+
+          if [ "$ALREADY" -eq 0 ]; then
+            echo "::group::Apply patch"
+            patch -p1 < scripts/tanba-day-gate.patch
+            echo "::endgroup::"
+
+            echo "::group::Verify gate markers (pre-PUT)"
+            grep -n 'tanba_blocked_qids' scripts/build-garborg-day.py | head -20
+            grep -nF 'if "tanba" in line.lower():' scripts/build-garborg-day.py | head -5
+            grep -n 'single_word' scripts/build-garborg-day.py | head -5
+            test "$(grep -c 'from tanba_batch_block import tanba_blocked_qids' scripts/build-garborg-day.py)" -ge 1
+            test "$(grep -c 'tanba_blocked_qids()' scripts/build-garborg-day.py)" -ge 1
+            test "$(grep -cF 'if "tanba" in line.lower():' scripts/build-garborg-day.py)" -ge 1
+            test "$(grep -c 'single_word' scripts/build-garborg-day.py)" -ge 1
+            if grep -qF 'if not ln.lstrip().startswith("#") and names_excluded' scripts/build-garborg-day.py; then
+              echo "FAIL: old keep-comments names_excluded pattern still present"
+              exit 1
+            fi
+            python3 -c 'import ast; ast.parse(open("scripts/build-garborg-day.py", encoding="utf-8").read()); print("syntax ok")'
+            echo "::endgroup::"
+
+            echo "::group::Contents API PUT"
+            META=$(curl -fsSL -H "$HDR_AUTH" -H "$HDR_API" -H "$HDR_VER" \
+              "$API/repos/$OWNER/$REPO/contents/scripts/build-garborg-day.py?ref=main")
+            export FILE_SHA=$(printf '%s' "$META" | python3 -c 'import json,sys; print(json.load(sys.stdin)["sha"])')
+            python3 /tmp/put_gate.py
+            echo "::endgroup::"
+          else
+            echo "skip PUT"
+            echo "already" > gate-commit-sha.txt
+          fi
+
+          echo "::group::Re-fetch tip and prove"
+          sleep 2
+          dl scripts/build-garborg-day.py /tmp/tip-build-garborg-day.py
+          echo "import_count=$(grep -c 'from tanba_batch_block import tanba_blocked_qids' /tmp/tip-build-garborg-day.py || true)"
+          echo "call_count=$(grep -c 'tanba_blocked_qids()' /tmp/tip-build-garborg-day.py || true)"
+          echo "tanba_lower_count=$(grep -cF 'if "tanba" in line.lower():' /tmp/tip-build-garborg-day.py || true)"
+          echo "single_word_count=$(grep -c 'single_word' /tmp/tip-build-garborg-day.py || true)"
+          echo "old_pattern_count=$(grep -cF 'if not ln.lstrip().startswith("#") and names_excluded' /tmp/tip-build-garborg-day.py || true)"
+          grep -n 'from tanba_batch_block import tanba_blocked_qids' /tmp/tip-build-garborg-day.py | head -5
+          grep -nF 'if "tanba" in line.lower():' /tmp/tip-build-garborg-day.py | head -5
+          grep -n 'single_word' /tmp/tip-build-garborg-day.py | head -5
+          grep -q 'from tanba_batch_block import tanba_blocked_qids' /tmp/tip-build-garborg-day.py
+          grep -qF 'if "tanba" in line.lower():' /tmp/tip-build-garborg-day.py
+          if grep -qF 'if not ln.lstrip().startswith("#") and names_excluded' /tmp/tip-build-garborg-day.py; then
+            echo "FAIL tip still has old pattern"; exit 1
+          fi
+          echo "TIP_OK $(cat gate-commit-sha.txt)"
+          echo "gate_commit=$(cat gate-commit-sha.txt)" >> "$GITHUB_OUTPUT"
+          echo "::endgroup::"
+
+      - name: Delete one-shot helpers; write README
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          set -euo pipefail
+          API="https://api.github.com"
+          curl -fsSL -H "Authorization: Bearer ${GH_TOKEN}" -H "Accept: application/vnd.github.raw" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$API/repos/$OWNER/$REPO/contents/scripts/cleanup_tanba_day_helpers.py?ref=main" \
+            -o /tmp/cleanup_gate.py
+          python3 /tmp/cleanup_gate.py
