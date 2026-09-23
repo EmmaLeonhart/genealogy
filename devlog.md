@@ -46559,3 +46559,5 @@ Geni id beside the MyHeritage `_UID`. **254 pairs over 13 generations; 247 share
 Names and years are carried as readings, never used to choose. The trees diverge at the top:
 2536 is Per Nilsson on Geni and Per Isaksson on FamilySearch, so 5072 onward pairs different
 lines. Birth-year gaps of 14–30 years appear only at 1268 and above.
+
+146 Parent deck verdicts from 2026-09-23 appended to `reports/emma-judgments.tsv` (133 SAME, 13 DIFFERENT), read from the artifact's `decisions/all` and checked against the pasted block.
