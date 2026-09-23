@@ -8,6 +8,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## Try To establish the Cameron Frisk ancestors familysearch geni correspondence
+
+I have a bunch of stuff in a directory for that. But basicaly the intention of the exports is to establish some unification between them. IT is not complete by any means but can be used to establish correspondence between a bunch of them
+
 ## Actually work the queue
 
 Done for this pass (2026-09-22): the Geni-blocked campaign laundry list (Monte Carlo / NN NN,
