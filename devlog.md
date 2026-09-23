@@ -46551,3 +46551,11 @@ now keeps the sides side by side on a phone, drops the duplicated name, and cuts
 three with "+N more". Desktop is unchanged. The three artifacts were republished from the new
 template. The session-start step no longer builds decks locally: `review-decks.yml` builds them
 and the session publishes what CI committed.
+
+**Cameron Frisk: Geni ↔ FamilySearch correspondence, by position.** `scripts/frisk-correspondence.py`
+walks both pedigrees up from Cameron at once (father against father, mother against mother) and
+writes `reports/frisk-geni-familysearch.tsv`, one row per ahnentafel slot filled on both sides,
+Geni id beside the MyHeritage `_UID`. **254 pairs over 13 generations; 247 share a name word.**
+Names and years are carried as readings, never used to choose. The trees diverge at the top:
+2536 is Per Nilsson on Geni and Per Isaksson on FamilySearch, so 5072 onward pairs different
+lines. Birth-year gaps of 14–30 years appear only at 1268 and above.
