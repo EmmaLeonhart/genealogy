@@ -46577,3 +46577,5 @@ sibling slot: `Q11685154` (1689–1740, son of `Q48345`), `Q30075271` (1713–17
 **Cameron Frisk ancestry into the corpus.** `exports/frisk/`: `export-Ancestors-6000000227892448837.ged` (Cameron, 1,040 people, byte-identical to `frisk_geni/Cameron Frisk geni ancestors.ged`) and `export-Ancestors-6000000227891340662.ged` (his grandmother Elly Olivia Andersson, 904 people, **215 not in Cameron's file**). Both from the 2026-09-23 Downloads zips; earlier runs had not imported the full ancestry.
 
 Frisk correspondence now reads every `exports/frisk/*.ged` joined on the Geni id; still 254 pairs, bounded by the FamilySearch side. Handoff section written at the top of `queue.md`.
+
+12 pick-one deck verdicts appended to `reports/emma-judgments.tsv` as `pick-one-adjudication-gui` (3 SAME, 9 DIFFERENT): four picks from the artifact's `decisions/all`, each winner SAME and every other option in its slot DIFFERENT, option order read off the published deck. The Parent and Family stores held nothing new; the Family store's 5 UNSURE come back by design.
