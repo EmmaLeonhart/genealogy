@@ -1,6 +1,7 @@
 name: Assemble geni-blocked campaigns cont archive
 
 # One-shot: concatenate MCP-sized parts into the archive file, then self-delete.
+# Retrigger: parts 0-2 are staged on main.
 on:
   push:
     paths:
