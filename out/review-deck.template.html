@@ -38,13 +38,6 @@ h1{font:600 21px/1.2 "IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
 .col{padding:16px 20px 22px;min-width:0}
 .col+.col{border-left:1px solid var(--line)}
 @media (max-width:720px){
-  .cols{grid-template-columns:1fr}
-  .col+.col{border-left:0;border-top:1px solid var(--line)}
-  body{padding:16px 14px 20px}
-  .name{font-size:21px}
-  .col{padding:14px 16px 18px}
-  .cardtop{padding:14px 16px}
-  .trigger{max-width:none}
   .acts{padding:9px 12px}
   .actrow{gap:7px}
   button{padding:8px 12px;font-size:13.5px}
@@ -73,6 +66,7 @@ h1{font:600 21px/1.2 "IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
 ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
 li{font-size:13.5px}
 mark{background:var(--accent-soft);color:inherit;border-radius:3px;padding:0 3px}
+.more{color:var(--accent);cursor:pointer;font-weight:500}
 .none{color:var(--muted);font-style:italic;font-size:13px}
 .ask{padding:12px 20px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted)}
 .ask b{color:var(--ink);font-weight:600}
@@ -104,6 +98,22 @@ kbd{font:500 11px "IBM Plex Mono",monospace;opacity:.6;margin-left:6px}
 .done h2{font:600 24px Newsreader,Georgia,serif;margin:0 0 8px}
 textarea{width:100%;height:220px;margin-top:16px;font:400 12px/1.5 "IBM Plex Mono",monospace;
   background:var(--raise);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px}
+/* **A phone is where the decks are actually worked**, so on one the two sides stay SIDE BY SIDE
+   (the comparison is the job), the name is not printed twice, and every list is cut to three
+   with a tap to open the rest. Desktop is unchanged. */
+@media (max-width:720px){
+  .cols{grid-template-columns:1fr 1fr}
+  .col+.col{border-left:1px solid var(--line);border-top:0}
+  body{padding:10px 16px 20px;font-size:13px}
+  .cardtop .name{display:none}
+  .col{padding:10px 10px 12px}
+  .who{font-size:15px}
+  .field{margin-top:8px}
+  li{font-size:12.5px}
+  .cardtop{padding:8px 10px}
+  .trigger{max-width:none;font-size:12px}
+  .bar{margin:8px 0 10px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -183,9 +193,18 @@ function fields(spec, words) {
   }).join("");
 }
 
+var PHONE = window.matchMedia && window.matchMedia("(max-width:720px)").matches;
 function list(items, words) {
   if (!items || !items.length) return '<div class="none">none recorded</div>';
-  return "<ul>" + items.map(function (x) { return "<li>" + hl(x, words) + "</li>"; }).join("") + "</ul>";
+  var lis = items.map(function (x, n) {
+    return "<li" + (PHONE && n >= 3 ? " hidden" : "") + ">" + hl(x, words) + "</li>";
+  });
+  if (PHONE && items.length > 3) {
+    lis.push('<li class="more" onclick="var u=this.parentNode;' +
+             'Array.prototype.forEach.call(u.children,function(l){l.hidden=false});this.hidden=true">+' +
+             (items.length - 3) + " more</li>");
+  }
+  return "<ul>" + lis.join("") + "</ul>";
 }
 
 // Sex and life years, the two things that discriminate people whose names legitimately

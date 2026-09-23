@@ -46544,3 +46544,10 @@ forbids; both keep `workflow_dispatch`. The script file and `apply-meta-wiring.y
 the tree, so `test_no_source_file_links_a_repository` stays red until they are removed.
 
 Deleted `scripts/apply_meta_wiring.py` and `apply-meta-wiring.yml` on approval, after doing their work by hand.
+
+The decks were unusable on a phone: under 720px the two sides stacked and every child and
+sibling list printed in full, so one card ran several screens. `out/review-deck.template.html`
+now keeps the sides side by side on a phone, drops the duplicated name, and cuts each list to
+three with "+N more". Desktop is unchanged. The three artifacts were republished from the new
+template. The session-start step no longer builds decks locally: `review-decks.yml` builds them
+and the session publishes what CI committed.

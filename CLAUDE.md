@@ -212,8 +212,8 @@ of session thing like the paths"*, and *"You make an artifact as per protocol an
 through the queue."* It runs **beside** the path runner, and it needs no Geni, so the moratorium
 does not stop it.
 
-    1. gh workflow run review-decks.yml                 -- Pages catches up on its own
-    2. PYTHONPATH=src python scripts/build-{parent,family,pick-one}-candidates.py
+    1. gh workflow run review-decks.yml                 -- CI builds the decks, never locally
+    2. when it lands, git pull
     3. publish each out/*-review.html as a claude.ai artifact, the same three URLs every session
     4. move on to the queue; do not wait for verdicts
 
@@ -224,6 +224,11 @@ does not stop it.
 **Each deck keeps its verdicts in its own `db` store, `decisions/all`**, whether or not *Copy
 decisions* was ever pressed. Read it with `ArtifactData` before rebuilding and append anything not
 already in `reports/emma-judgments.tsv` — one Family verdict had sat there since 2026-09-09.
+
+**The decks are worked on a PHONE.** Ruled 2026-09-23: *"I do almost all my work on mobile ...
+these things are just way too large."* `out/review-deck.template.html` keeps the two sides side by
+side under 720px, prints the name once, and cuts every list to three with a tap for the rest.
+Judge a deck change on a phone-width screen first.
 
 Pasted verdicts go into `reports/emma-judgments.tsv` exactly as
 [wikidata-editing](docs/rules/wikidata-editing.md) § *THE PARENT DECK* says, then rebuild — the
