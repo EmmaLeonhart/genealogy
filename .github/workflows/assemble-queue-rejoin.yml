@@ -1,6 +1,7 @@
 name: Assemble re-joined queue.md
 
 # One-shot sparse: concatenate MCP-sized queue parts, then self-delete.
+# Retrigger: parts 0-3 are staged on main.
 on:
   push:
     paths:
