@@ -8,6 +8,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## add this person as an entry point from familsysearcg
+
+https://www.wikidata.org/wiki/Q141539550
+
 ## Actually work the queue
 
 I notice that the queue has already become fucking garbage with a gazillion different things on it, which is making it highly difficult to actually use. You probably have given up on using the queue properly. So fix it since we are trying to seriously work through it.
