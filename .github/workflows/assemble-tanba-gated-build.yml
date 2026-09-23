@@ -1,95 +1,12 @@
-name: Assemble Tanba-gated build-garborg-day
+name: Assemble Tanba-gated build-garborg-day (inert)
 
-# One-shot: concatenate MCP-sized parts into scripts/build-garborg-day.py, update README, self-delete.
-# Parts are already the gated file. fetch-depth 1 + blob:none + sparse.
+# Inert: superseded by apply-tanba-day-gate.yml (Contents API, no checkout).
+# Kept only so a stale path push cannot revive sparse checkout. Safe to delete.
 on:
-  push:
-    paths:
-      - ".github/workflows/assemble-tanba-gated-build.yml"
-      - "scripts/_build_garborg_day_part_0.txt"
-      - "scripts/_build_garborg_day_part_1.txt"
-      - "scripts/_build_garborg_day_part_2.txt"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
-concurrency:
-  group: assemble-tanba-gated-build
-  cancel-in-progress: true
-
 jobs:
-  assemble:
+  inert:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 1
-          filter: blob:none
-          sparse-checkout: |
-            scripts/build-garborg-day.py
-            scripts/_build_garborg_day_part_0.txt
-            scripts/_build_garborg_day_part_1.txt
-            scripts/_build_garborg_day_part_2.txt
-            scripts/README-tanba-fix.md
-            scripts/tanba_batch_block.py
-            .github/workflows/assemble-tanba-gated-build.yml
-            .github/workflows/apply-tanba-day-gate.yml
-          sparse-checkout-cone-mode: false
-
-      - name: Concatenate parts; prove gate; commit; cleanup
-        run: |
-          set -euo pipefail
-          # Materialize sparse blobs
-          git checkout HEAD -- scripts/_build_garborg_day_part_0.txt scripts/_build_garborg_day_part_1.txt scripts/_build_garborg_day_part_2.txt || true
-          cat scripts/_build_garborg_day_part_0.txt \
-              scripts/_build_garborg_day_part_1.txt \
-              scripts/_build_garborg_day_part_2.txt \
-            > scripts/build-garborg-day.py
-          test -s scripts/build-garborg-day.py
-          grep -q 'from tanba_batch_block import tanba_blocked_qids' scripts/build-garborg-day.py
-          grep -q 'if "tanba" in line.lower():' scripts/build-garborg-day.py
-          grep -q 'tanba_blocked_qids()' scripts/build-garborg-day.py
-          grep -q 'single_word' scripts/build-garborg-day.py
-          python -c 'import ast; ast.parse(open("scripts/build-garborg-day.py",encoding="utf-8").read()); print("syntax ok")'
-          printf '%s\n' \
-            '# Tanba day-batch gate (wired 2026-09-23)' \
-            '' \
-            'Emma: QuickStatements must not edit Tanba people. **Drop matching lines entirely** —' \
-            'never leave them as `#`-prefixed CREATE/LAST/Q comments or annotate walls.' \
-            '' \
-            '## Live on main' \
-            '- `scripts/tanba_batch_block.py` — roster-backed denylist' \
-            '- `scripts/build-garborg-day.py` drops ANY line with `tanba` / Tanba QIDs **including comments**' \
-            '- `usable()` rejects relative names with NN as a token (`Margreta NN`)' \
-            '' \
-            'Strip alone is not the end state: the composer gate must stay wired.' \
-            > scripts/README-tanba-fix.md
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git sparse-checkout disable || true
-          rm -f scripts/_build_garborg_day_part_0.txt \
-                scripts/_build_garborg_day_part_1.txt \
-                scripts/_build_garborg_day_part_2.txt \
-                .github/workflows/assemble-tanba-gated-build.yml \
-                .github/workflows/apply-tanba-day-gate.yml \
-                scripts/_wire_tanba_import.py \
-                scripts/apply_tanba_gate_replacements.py \
-                scripts/tanba_gate_replacements.json
-          git add scripts/build-garborg-day.py scripts/README-tanba-fix.md
-          git add -u scripts/ .github/workflows/ || true
-          if git diff --cached --quiet; then
-            echo "nothing to commit"; exit 0
-          fi
-          git commit -m "$(cat <<'EOF'
-          Wire Tanba day-batch gate: drop Tanba lines entirely; never comment them out
-
-          Assemble gated build-garborg-day.py from MCP-sized parts via
-          tanba_batch_block.tanba_blocked_qids: excluded includes Tanba QIDs;
-          names_excluded drops ANY line with tanba/Tanba QIDs including annotation
-          comments (no # CREATE/LAST walls). Given-NN usable() token fix included.
-          EOF
-          )"
-          git push origin HEAD:main
+      - run: echo "inert — use apply-tanba-day-gate.yml / Contents API path"
