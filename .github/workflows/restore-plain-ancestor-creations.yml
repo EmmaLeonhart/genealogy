@@ -1,0 +1,63 @@
+name: Restore plain build-ancestor-creations
+
+# One-shot: expand scripts/_ac_payload_*.b64 into readable
+# scripts/build-ancestor-creations.py, then drop the payload parts and this workflow.
+on:
+  push:
+    paths:
+      - ".github/workflows/restore-plain-ancestor-creations.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: restore-plain-ancestor-creations
+  cancel-in-progress: false
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Inline plain source from payload; drop loader artifacts
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import base64, zlib
+          from pathlib import Path
+          d = Path("scripts")
+          b64 = (d / "_ac_payload_0.b64").read_text(encoding="ascii") + (
+              d / "_ac_payload_1.b64"
+          ).read_text(encoding="ascii")
+          src = zlib.decompress(base64.b64decode(b64.encode("ascii")))
+          assert b"def spoken_for(" in src, "spoken_for missing"
+          assert b"p2600-all.tsv" in src, "p2600 floor missing"
+          assert b"synoptic-correspondence.tsv" in src, "synoptic floor missing"
+          assert b"CREATING SOMEBODY WIKIDATA ALREADY HAS" not in src
+          out = d / "build-ancestor-creations.py"
+          out.write_bytes(src)
+          print("wrote", out, "bytes", len(src))
+          PY
+          rm -f scripts/_ac_payload_0.b64 scripts/_ac_payload_1.b64
+          rm -f .github/workflows/restore-plain-ancestor-creations.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u scripts/ .github/workflows/
+          git add scripts/build-ancestor-creations.py
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "$(cat <<'EOF'
+          Inline plain scripts/build-ancestor-creations.py; drop _ac_payload_*.b64
+
+          Replace the temporary zlib+base64 MCP landing with readable source.
+          spoken_for / Geni↔Wikidata refusal preserved.
+          EOF
+          )"
+          git push origin HEAD:main
