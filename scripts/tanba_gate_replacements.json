@@ -1,0 +1,16 @@
+{
+  "replacements": [
+    {
+      "old": "import qs_v1  # noqa: E402 -- the one module that knows what a CREATE block is\n",
+      "new": "import qs_v1  # noqa: E402 -- the one module that knows what a CREATE block is\nfrom tanba_batch_block import tanba_blocked_qids  # noqa: E402 — day batch must never edit Tanba\n"
+    },
+    {
+      "old": "            markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {\"nn\", \"unknown\", \"ukjent\"}\n            if any(low == w or low.startswith(w + \" \") for w in markers):\n                return \"\"\n",
+      "new": "            markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {\"nn\", \"unknown\", \"ukjent\"}\n            # PREFIX catches `NN Surname` and multi-word markers (`name not known`).\n            # TOKEN catches the mirror shape `Given NN` / `Margreta NN`, which the prefix\n            # test misses and which put `father of Margreta NN` into the day batch.\n            if any(low == w or low.startswith(w + \" \") for w in markers):\n                return \"\"\n            single_word = {w for w in markers if \" \" not in w}\n            tokens = low.replace(\"/\", \" \").split()\n            if any(t in single_word for t in tokens):\n                return \"\"\n"
+    },
+    {
+      "old": "    excluded = set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)\n\n    def names_excluded(line):\n        return any(tok in line for tok in excluded)\n\n\n    kept, dropped = [], 0\n    for ln in lines:\n        if not ln.lstrip().startswith(\"#\") and names_excluded(ln):\n            while kept and kept[-1].lstrip().startswith(\"#\"):\n                kept.pop()\n            dropped += 1\n            continue\n        kept.append(ln)\n    if dropped:\n        print(f\"excluded ids: {dropped} statement line(s) dropped \"\n              f\"({', '.join(sorted(excluded))}) — never emitted, in any position\")\n",
+      "new": "    excluded = (set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)\n                | tanba_blocked_qids())\n\n    def names_excluded(line):\n        # QIDs, and the clan surname itself in annotations (\"Yorikiyo Tanba\").\n        if \"tanba\" in line.lower():\n            return True\n        return any(tok in line for tok in excluded)\n\n    kept, dropped = [], 0\n    for ln in lines:\n        # Comments naming an excluded person are dropped too: annotate() writes\n        # multi-line description blocks, and popping only the immediate preceding\n        # comment left a 500-line Tanba wall after the statements were gone.\n        if names_excluded(ln):\n            if not ln.lstrip().startswith(\"#\"):\n                while kept and kept[-1].lstrip().startswith(\"#\"):\n                    kept.pop()\n            dropped += 1\n            continue\n        kept.append(ln)\n    if dropped:\n        print(f\"excluded ids: {dropped} line(s) dropped incl. Tanba \"\n              f\"({len(tanba_blocked_qids())} Tanba QIDs on disk) — never emitted\")\n"
+    }
+  ]
+}
