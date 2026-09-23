@@ -1,7 +1,7 @@
 name: Assemble re-joined queue.md
 
 # One-shot sparse: concatenate MCP-sized queue parts, then self-delete.
-# Retrigger: parts 0-3 are staged on main.
+# Retrigger v3: rebase before push (prior runs lost tip races).
 on:
   push:
     paths:
@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
           sparse-checkout: |
             queue.md
             docs/queue-archive/_queue_part_0.md
@@ -44,6 +44,7 @@ jobs:
           grep -q 'Fix zipper merge stuff' queue.md
           grep -q 'FS ids on entry points' queue.md
           grep -q 'INVESTIGATE ON FAMILYSEARCH' queue.md
+          wc -c queue.md
           rm -f docs/queue-archive/_queue_part_0.md \
                 docs/queue-archive/_queue_part_1.md \
                 docs/queue-archive/_queue_part_2.md \
@@ -63,4 +64,5 @@ jobs:
           zipper section retained pending composed-batch confirmation.
           EOF
           )"
+          git pull --rebase origin main
           git push origin HEAD:main
