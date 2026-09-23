@@ -46521,3 +46521,10 @@ SAME. Appended.
 "workflow file issue", so no batch was recomposed for a day — the stale batch is what the CI
 fast lane has been failing on (locality, ledger subjects, carry-forward surnames). Joined onto one
 line.
+
+`test_every_created_name_item_says_what_kind_of_name_it_is` still demanded exactly one `P31`,
+against the 2026-09-17 Björnsson ruling that `build-garborg-name-items._finer_classes` implements.
+It now demands exactly one base class, with the four finer ones (masculine/feminine patronymic,
+son/daughter name) allowed beside it. Each finer class is independent: `Olasen` is a masculine
+patronymic but not a son word. Checked against `wikidata-patronymic-pairs.qs` (40 blocks) and
+`wikidata-garborg-name-items.txt` (12): no failures.

@@ -272,14 +272,24 @@ def test_every_created_person_carries_exactly_one_geni_id(name):
 
 @pytest.mark.parametrize("name", NAMES)
 def test_every_created_name_item_says_what_kind_of_name_it_is(name):
-    """A name item with no `P31` is untyped, and nothing can tell given from family."""
+    """A name item with no `P31` is untyped, and nothing can tell given from family.
+
+    **A patronymic carries more, by ruling** -- `Q69821896` *Björnsson* is the shape
+    (2026-09-17, `build-garborg-name-items._finer_classes`): the gendered patronymic and the
+    son/daughter name ride beside the one base class, each only where the ending says so
+    (`Olasen` is masculine but not a son word). So: exactly one P31 outside those four.
+    """
     path = REPORTS / name
     bad = []
     for n, block in enumerate(create_blocks(path), 1):
-        p31 = [ln for ln in block if ln.startswith("LAST	P31	")]
-        if len(p31) != 1:
+        p31 = {ln.split("\t")[2].strip() for ln in block if ln.startswith("LAST	P31	")}
+        if len(p31 - FINER_NAME_CLASSES) != 1:
             bad.append((n, f"{len(p31)} P31 statements"))
-    assert not bad, f"{name}: every CREATE needs exactly one P31 — {bad[:5]}"
+    assert not bad, f"{name}: every CREATE needs exactly one base P31 — {bad[:5]}"
+
+
+# masculine patronymic, feminine patronymic, son name, daughter name
+FINER_NAME_CLASSES = {"Q130444148", "Q130444179", "Q10673705", "Q10476255"}
 
 
 def test_no_two_batches_create_the_same_person():
