@@ -1,7 +1,8 @@
 name: Apply Tanba day-batch composer gate
 
-# One-shot on main: apply scripts/tanba-day-gate.patch to build-garborg-day.py
-# (drop Tanba lines entirely incl. comments; never comment them out), then self-delete.
+# One-shot on main: apply scripts/tanba-day-gate.patch (drop Tanba lines entirely
+# incl. comments; never comment them out), then self-delete.
+# fetch-depth 1 + sparse — do NOT fetch full history (GEDCOM commits are huge).
 on:
   push:
     paths:
@@ -24,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          fetch-depth: 1
           sparse-checkout: |
             scripts/build-garborg-day.py
             scripts/tanba-day-gate.patch
@@ -36,7 +37,6 @@ jobs:
       - name: Apply patch, update README, commit, self-delete
         run: |
           set -euo pipefail
-          git pull --ff-only origin main || git reset --hard origin/main
           if grep -q 'from tanba_batch_block import tanba_blocked_qids' scripts/build-garborg-day.py \
              && grep -q 'if "tanba" in line.lower():' scripts/build-garborg-day.py; then
             echo "gate already present"
