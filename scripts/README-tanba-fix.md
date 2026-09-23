@@ -1,15 +1,16 @@
-# Tanba day-batch fix (2026-09-22)
+# Tanba day-batch gate (wired 2026-09-23)
 
-Emma: QuickStatements must not edit Tanba people.
+Emma: QuickStatements must not edit Tanba people. **Drop matching lines entirely** —
+never leave them as `#`-prefixed CREATE/LAST/Q comments or annotate walls.
 
-## Already on this branch
-- `scripts/tanba_batch_block.py` — roster-backed Tanba QID denylist
+## Live on main
+- `scripts/tanba_batch_block.py` — roster-backed Tanba QID denylist (`reports/tanba-qids.json`, `reports/tanba-p2600-pairs.tsv`)
+- `scripts/build-garborg-day.py` final gate:
+  - `from tanba_batch_block import tanba_blocked_qids`
+  - `excluded |= tanba_blocked_qids()`
+  - `names_excluded` drops **any** line with `tanba` (case-insensitive) or a blocked QID, **including comments**
+- `usable()` also rejects relative names with NN as a token anywhere (`Margreta NN`)
+- `scripts/install_tanba_day_gate.py` — idempotent installer (prefers the import if already present)
+- `scripts/strip_tanba_from_day_batch.py` — one-shot cleaner for an already-written day file
 
-## Still needed (local on Emma laptop / next agent with git push auth)
-1. Strip Tanba comments from `reports/wikidata-garborg-day.txt` (526 lines; statements already absent).
-2. Patch `scripts/build-garborg-day.py`:
-   - `from tanba_batch_block import tanba_blocked_qids`
-   - final gate: `excluded |= tanba_blocked_qids()` and drop comment lines naming Tanba/QIDs
-   - `usable()`: reject relative names with NN as a token anywhere (`Margreta NN`)
-
-Local SHAs on box (unpushed): `62bdf1b03` Tanba strip+gate; `b8b66aaed` Given-NN.
+Strip alone is not the end state: the composer gate must stay wired so the next compose cannot bring Tanba back as comments.
