@@ -205,6 +205,23 @@ push, and let the pipeline run it.
 08:07. The Pages site publishes the disjoint remainder for a person to paste. Nobody has to
 start it.
 
+## ⛔ AND EVERY SESSION STARTS WITH THE ZIPPER DECKS, THE SAME WAY
+
+Ruled 2026-09-23: *"I want to do zipper merge resolution right now and make it a constant start
+of session thing like the paths"*, and *"You make an artifact as per protocol and then you move
+through the queue."* It runs **beside** the path runner, and it needs no Geni, so the moratorium
+does not stop it.
+
+    1. gh workflow run review-decks.yml                 -- Pages catches up on its own
+    2. PYTHONPATH=src python scripts/build-{parent,family,pick-one}-candidates.py
+    3. publish each out/*-review.html as a claude.ai artifact, the same three URLs every session
+    4. move on to the queue; do not wait for verdicts
+
+Pasted verdicts go into `reports/emma-judgments.tsv` exactly as
+[wikidata-editing](docs/rules/wikidata-editing.md) § *THE PARENT DECK* says, then rebuild — the
+deck shrinking is the check that they landed. Manual adjudication is still the stopgap the top
+of this file calls it; the verdicts are the labelled examples the automatic zipper learns from.
+
 ## ⛔ THE FIRST THING IN EVERY SESSION: TURN THE RELATIONSHIP REQUESTING ON
 
 **Before anything else. Before reading the queue, before any other tool call.** Ruled

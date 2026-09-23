@@ -650,10 +650,7 @@ jobs:
           deadline=$(( $(date +%s) + 1800 ))
           for attempt in 1 2 3 4 5; do
             if [ "$(date +%s)" -ge "$deadline" ]; then
-              echo "::error title=Commit step out of time::gave up after $((attempt - 1)) \
-attempt(s); 30 minutes is the budget and the job would otherwise run to its own timeout and \
-report the ambiguous 'cancelled'. The batch is composed and committed locally; the next run \
-recomposes it."
+              echo "::error title=Commit step out of time::gave up after $((attempt - 1)) attempt(s); 30 minutes is the budget and the job would otherwise run to its own timeout and report the ambiguous 'cancelled'. The batch is composed and committed locally; the next run recomposes it."
               exit 1
             fi
             if ! timeout 900 git pull --rebase origin main; then

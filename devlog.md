@@ -46502,3 +46502,22 @@ fails in minutes with its own name in the log.
 ⛔ **This is why the batch never recomposed.** Three of the CI failures were waiting on a
 pipeline run to land, and the pipeline could not land. The artifacts have had the fixed
 generators applied to them by hand in the meantime, but the mechanism was broken, not slow.
+
+## 2026-09-23 — zipper decks become a session-start step; pipeline.yml was unparseable
+
+Ruled: *"I want to do zipper merge resolution right now and make it a constant start of session
+thing like the paths"* and *"You make an artifact as per protocol and then you move through the
+queue."* `CLAUDE.md` now carries § *AND EVERY SESSION STARTS WITH THE ZIPPER DECKS*: dispatch
+`review-decks.yml`, build the three decks locally, publish each to its standing claude.ai
+artifact, move on. Parent deck rebuilt to 3,496 cards and republished to
+`LKhTa5itp99KBXexTtY45Z`.
+
+The Family Adjudication artifact's stored decisions held 1,559 verdicts; 1,558 were already in
+`reports/emma-judgments.tsv` and one was not — Eberhard Truchsess von Waldburg = `Q29380947`,
+SAME. Appended.
+
+`pipeline.yml` had not parsed since `a60344da5` (2026-09-22 12:14Z): an `echo` continued with
+`\` onto lines at column 0, which ends the YAML block scalar. Every push since failed in 0 s with
+"workflow file issue", so no batch was recomposed for a day — the stale batch is what the CI
+fast lane has been failing on (locality, ledger subjects, carry-forward surnames). Joined onto one
+line.
