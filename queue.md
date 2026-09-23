@@ -8,6 +8,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## add this person as an entry point from familsysearcg
+
+https://www.wikidata.org/wiki/Q141539550
+
 ## Actually work the queue
 
 Done for this pass (2026-09-22): the Geni-blocked campaign laundry list (Monte Carlo / NN NN,
