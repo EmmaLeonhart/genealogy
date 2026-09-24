@@ -46657,3 +46657,10 @@ over 100 MB and blocked every push. The script writes `reports/tree-eccentricity
 Two stale follow-on bullets deleted: *Export a GEDCOM from Wikidata* is
 `scripts/build-wikidata-gedcom.py`, run by `union-tree.yml`; *relative-describing labels* is
 tracked in its own section, whose CJK remainder is all that is left.
+
+## 2026-09-24 — `build-add-p2600-batch` deleted
+
+Decided when asked: delete. It wrote 7,166 inferred `P2600` into `reports/wikidata-add-p2600.qs`
+and no workflow ran it, and since 2026-09-17 every `P2600` must land in the universe or one step
+beyond, which it never checked. Deleted with its re-queue script and workflow and its unrun
+output. That closes the last open generator from `reports/qs-batch-audit.md`.

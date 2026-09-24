@@ -837,16 +837,3 @@ already there, and that is the ordinary shape rather than a blocker.
 
 - FS ids on entry points should generate people too — implement seeding from P2889 / FS columns where Geni is empty.
 
-- **DECIDE: what happens to `build-add-p2600-batch`.** <!-- requeued-add-p2600-2026-09-13 -->
-  Deferred on 2026-09-06 for want of context to decide on, and re-queued on 2026-09-13 by
-  `.github/workflows/requeue-add-p2600.yml`.
-
-  It writes **7,166 `P2600` statements** inferred from parent-anchor proof into
-  `reports/wikidata-add-p2600.qs`, and **nothing runs it**. The four options as they stood: fold
-  it into the daily batch under a cap; give it its own scheduled workflow; delete it; or leave it
-  as a hand-run tool. `reports/qs-batch-audit.md` carries the measurement.
-
-  The other five generators in that audit were settled on 2026-09-06 —
-  `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
-  `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
-  This is the last one open.
