@@ -46943,3 +46943,13 @@ tries it after the Latin-to-Latin match fails and returns the father's own recor
 `P735` already names, which is what makes the `P5056` rule fire. `Olavi Virtanen` under `Juho`
 stays a given name; `Petri` under a `Petri` father stays a family name. The plan, the `P144`
 backfill and the bearer links follow on the next pipeline run.
+
+## 2026-09-24 — ancestor rings for Rømer, Bureus, Ettinger and Garborg
+
+*"Add an ancestor ring for Arne Garborg and Johannes Bureus and Robert Ettinger. It is not
+appropriate for them to be overly focused on me."* Seeded on the four QIDs named, which are
+descendants of the figures and override them: `Q141529420` Elsebe Hartniksdatter Rømer,
+`Q141523581` Margareta Jöransdotter Sabelfana (Bureus), `Q714044` Robert Chester Wilson Ettinger,
+`Q141168827` Hans Eivind Garborg -- all four in the tree with parents, their Geni ids from the
+ledger. Added to `PRIORITY_ANCESTOR_SEEDS`, so each run creates the next full generation of their
+ancestors and the ring advances by itself.

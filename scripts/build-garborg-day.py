@@ -984,6 +984,13 @@ PRIORITY_ANCESTOR_SEEDS = (
     # because the maternal ancestry is 570 people against 7,684 paternal and the surname
     # leads keep landing where the tree is thinnest.
     "6000000177921459066",      # Hans Bertil Frisk, Q141223733
+    # ⛔ **ADDED 2026-09-24 BY HAND**: *"Add an ancestor ring for Arne Garborg and Johannes
+    # Bureus and Robert Ettinger. It is not appropriate for them to be overly focused on me."*
+    # Seeded on the QIDs named, which are descendants of the figures and override them:
+    "5130591198120138104",      # Elsebe Hartniksdatter Rømer, Q141529420, 1358-1419
+    "6000000008367536363",      # Margareta Jöransdotter Sabelfana (Bureus), Q141523581, d. 1681
+    "6000000003022010249",      # Robert Chester Wilson Ettinger, Q714044, 1918-2011
+    "6000000005607426344",      # Hans Eivind Garborg, Q141168827, 1925-2008
 )
 
 
