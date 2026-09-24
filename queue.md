@@ -30,7 +30,7 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 - **Latinate patronymics seem to be absent: `Erici`, `Olai`, `Olavi`, `Petri`.** Review why,
   after the item above.
 
-- Add an ancestor ring for Arne Garborg and Johannes Bureus and Robert Ettinger. It is not appropriate for them to be overly focused on me
+- Add an ancestor ring for Arne Garborg and Johannes Bureus and Robert Ettinger. It is not appropriate for them to be overly focused on me. Also ancetor ring for this person https://www.wikidata.org/wiki/Q141529420
 
 - **Review the middle-initial items**, because of roman-numeral confusions. *"Losses are a bigger
   threat than the gains are positive here."*
