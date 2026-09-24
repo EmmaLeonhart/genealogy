@@ -7482,6 +7482,13 @@ def main():
         if not f:
             carried.append((g, label, "no derived facts"))
             continue
+        # ⛔ **A CREATION CARRIES `P2600 "<g>"`, SO `g` MUST BE A GENI ID.** The tree also holds
+        # people with no Geni profile -- FamilySearch `FS<n>` and, since 2026-09-24, the
+        # label-only people of `scripts/parse-sweep-trees.py` (`L<n>`) -- and the ring reaches
+        # them through the same family maps. Nothing stopped one going out as `P2600 "L123"`.
+        # Dropped, not carried: a carry is tomorrow's batch, and this is never anybody's.
+        if not g.isdigit():
+            continue
 
         # ⛔ **THE LABEL-COLLISION HOLD IS DELETED, 2026-09-19.** *"This thing literally should
         # not exist."* It held anyone whose label already existed undescribed on Wikidata, and

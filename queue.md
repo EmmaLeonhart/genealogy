@@ -559,7 +559,10 @@ findings, not work in progress. Nothing here is started.**
 
 ## Non-Geni follow-ons (kept short; full text was in the cleaned box queue)
 
-- Parse the descendant reports into actual family trees (offline; no Geni contact).
+- **Sweep-parsed people have a display name and no `GIVN`/`SURN`.** `exports/sweep-parsed/`
+  writes `1 NAME <Geni display name>` with no slashes, since the report gives one string, so the
+  208,043 new Geni people carry titles in the name (`…, Markgraf`) and no name items. Before
+  the ring reaches them, decide how their name is split -- by form, never by position.
 - Export a GEDCOM from Wikidata (Wikidata only).
 - The Rømer ring seed is one unrecorded parent link from the owner's ancestry — work when touching rings; do not Geni-fetch under the moratorium.
 - Relative-describing labels are still a standing defect (see Queued 2026-09-21 / maiden-name and relational-label rulings).

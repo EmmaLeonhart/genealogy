@@ -46587,3 +46587,21 @@ Frisk correspondence now reads every `exports/frisk/*.ged` joined on the Geni id
 **Descendant-to-ancestry leads rerun on the whole roster.** `match-descendants-to-ancestry.load_desc` now folds the sweep (`reports/sweep/*.tsv`, skipping the 209 WAF-truncated focus files) into the list pages: **282,763 descendants against 8,254 ancestors, exact-id overlap 0, 1,874 shared name tokens** (514 on 2026-09-20 over 14,897), 500 of them at rarity <= 4, all written to the new `reports/descendant-ancestry-leads.csv`. `fuzzy-match-tables.py` reads the same loader: 2,634,943 pairs scored after blocking, **943 at >= 0.82**, 393 ancestors x 438 descendants; the top is common Swedish patronymic names (`jonas jonsson`, `anna nilsdotter`, `per persson`). The manager half stays queued: the ancestors side has no `managed_by` without a Geni ancestors report.
 
 **Deck chips: `HTTP 414` fixed.** Run `35935021653` built all three decks with no sex or dates: `candidate_chips` sent every missing candidate to `wbgetentities` in ONE URL, and once an empty store entry stopped counting as an answer that list outgrew a URL. So the pick-one date gate dropped 0 cards and the J.C.F. Bach card survived. Now fetched 50 at a time, like `fetch_labels`.
+
+## 2026-09-24 — the descendant reports are a family tree: `exports/sweep-parsed/`
+
+*"The actual content is extremely regular with string matching plus the generation numbers ...
+we do create individuals based solely on their names ... but we do zipper merging on the
+individuals that are created solely based off of their label."*
+
+`scripts/parse-sweep-trees.py` reads all 8,959 `reports/sweep/*.tsv`. A parent name resolves
+inside its own file by folded name or URL slug, narrowed by the invariant that a parent's depth
+is at least g-1. Whatever does not resolve becomes a label-only person `@IL…@`, keyed on its
+resolved co-parent, and those are zipped against the corpus through their slot (parent, then
+spouse; solo, then name). 11,804 of the 169,691 label people were identified that way. Only
+edges the corpus lacks are written, onto the corpus's own family xref where one exists.
+Numbers in `reports/sweep-report-parsing.md`. Output is byte-identical across hash seeds.
+
+`build-garborg-day.py` and `build-ancestor-creations.py` now refuse to create anyone whose id
+is not a Geni id. The ring reaches FamilySearch `FS<n>` and label `L<n>` people through the
+same family maps, and nothing stopped a `P2600 "L123"`.

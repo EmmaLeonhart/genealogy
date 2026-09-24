@@ -68,4 +68,25 @@ generation ladder over 1.2M people and roughly a million candidate parent-child 
 population the GEDCOM exports never reached — and `yuri-junction-hunt.md` § *Where this leaves it*
 names the frontier as the bottleneck on the whole descent hunt.
 
-Not built. This establishes that building it is worth doing and what it would yield.
+**Built 2026-09-24: `scripts/parse-sweep-trees.py`**, writing `exports/sweep-parsed/` (three
+shards, 75 MB) and `reports/sweep-parsed-zipper.tsv`. Per the ruling that day, a name that does
+not resolve becomes **a label-only individual** (`@IL…@`) and the zipper runs over those. Over
+all 8,959 files:
+
+| | |
+|---|---|
+| parents resolved to a Geni id (per row, all files) | 1,359,728 |
+| parents made from a label | 1,020,222 |
+| couples with neither resolved, made as a label pair | 74,455 |
+| label-only people made | 169,691 |
+| of them identified by the zipper with a corpus person | 11,804 (6,713 parent slot, 5,091 spouse) |
+| new Geni people written | 208,043 |
+| label-only people written | 157,770 |
+| child edges added | 209,316 |
+| parents added onto an EXISTING corpus family | 22,261 |
+
+Three string forms had to be learned from the data, each worth thousands of edges: the `MP`
+badge on a row's name that the family text never carries, a nickname LIST after the years
+(`"A", "B"`) whose commas hid the years, and Geni's SHORT name in the family text
+(`Jacob Bibler` for `Jacob Asa Bibler`), which the row's percent-encoded URL slug matches.
+**Geni lists the father first**: 162,884 (M, F) against 6 ('', M) and no (F, M).

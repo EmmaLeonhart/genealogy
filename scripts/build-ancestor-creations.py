@@ -366,8 +366,10 @@ def eligible(fam):
             # `build-garborg-day` — a P2600 or a zipper/structural correspondence means the
             # person already has an item. FamilySearch intentional duplicates live in a
             # different emitter; this one does not mint World Tree doubles.
+            # `parent.isdigit()`: a label-only or FamilySearch parent has no Geni id to be the
+            # `P2600` this emits.
             if (qid in allowed and not parent_qid and parent not in held
-                    and parent not in taken
+                    and parent not in taken and parent.isdigit()
                     and not parent.startswith(PLACEHOLDER_PREFIXES)):
                 found.append((gid, qid, parent, role))
     return found
