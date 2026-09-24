@@ -425,9 +425,15 @@ def read_corpus():
             g = row["geni_id"]
             corpus.add(g)
             split = lambda c: [x.strip() for x in re.split(r"[,;|]", c or "") if x.strip()]
-            fathers[g] = split(row.get("fathers") or row.get("father"))
-            mothers[g] = split(row.get("mothers") or row.get("mother"))
-            spouses[g] = split(row.get("spouses"))
+            # ⛔ **ONLY A GENI ID IS A CANDIDATE.** Once these files are merged the tree holds the
+            # label-only people too (`L…`, 157,770 of them on 2026-09-24), and a re-render would
+            # identify each in-law with its OWN label copy. A digit id is a person some export or
+            # another report put there -- which is the whole gain of re-running after the merge:
+            # an in-law who is a descendant row in a DIFFERENT report is joined by the children.
+            geni = lambda ids: [x for x in ids if x.isdigit()]
+            fathers[g] = geni(split(row.get("fathers") or row.get("father")))
+            mothers[g] = geni(split(row.get("mothers") or row.get("mother")))
+            spouses[g] = geni(split(row.get("spouses")))
     sex = {}
     with gzip.open(FACTS, "rt", encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
@@ -454,7 +460,29 @@ def main() -> int:
     ap.add_argument("--date", default=datetime.date.today().isoformat())
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--limit", type=int, default=0, help="parse only the first N files")
+    ap.add_argument("--replace", action="store_true",
+                    help="re-render this date's files in place (they are a render of reports/sweep/)")
+    ap.add_argument("--corpus-rev", default="",
+                    help="read the tree from this commit: the one before these files were merged")
     args = ap.parse_args()
+    # ⛔ **A RE-RENDER READS THE TREE AS IT WAS BEFORE THIS OUTPUT WAS MERGED.** Measured
+    # 2026-09-24: against the merged tree the parser meets its own previous families, finds each
+    # one "already holds" the parents it put there, and writes 0 new people and 0 child edges --
+    # replacing the files with that would erase the whole contribution. `--corpus-rev` points
+    # the four corpus files at a commit from before the merge (`baf607e99` for the 2026-09-24
+    # render); the cross-report join below needs nothing from the merged tree.
+    current = {n: globals()[n] for n in ("STRUCTURE", "FAMILY", "FACTS", "LABELS")}
+    if args.corpus_rev:
+        import subprocess, tempfile
+        tmp = tempfile.mkdtemp(prefix="corpus-")
+        for name in ("STRUCTURE", "FAMILY", "FACTS", "LABELS"):
+            rel = os.path.relpath(globals()[name], ROOT).replace(os.sep, "/")
+            dst = os.path.join(tmp, os.path.basename(rel))
+            with open(dst, "wb") as fh:
+                fh.write(subprocess.run(["git", "show", f"{args.corpus_rev}:{rel}"], cwd=ROOT,
+                                        check=True, capture_output=True).stdout)
+            globals()[name] = dst
+        print(f"corpus read from {args.corpus_rev}")
 
     p = Parse()
     files = sorted(glob.glob(os.path.join(SWEEP, "sweep-descendants-*.tsv")))
@@ -468,6 +496,14 @@ def main() -> int:
 
     (corpus, c_fathers, c_mothers, c_spouses, c_sex, c_label,
      fam_p, fam_c, fams, famc) = read_corpus()
+    # The ZIPPER matches against the CURRENT tree: its candidates are Geni ids only, so the
+    # render's own label people cannot match themselves, and whatever was merged since --
+    # the FamilySearch render, newer exports -- is evidence it should use. Only the PLACEMENT
+    # above reads the pre-merge tree.
+    if args.corpus_rev:
+        globals().update(current)
+        (_c, c_fathers, c_mothers, c_spouses, c_sex, c_label, *_rest) = read_corpus()
+        del _c, _rest
     sex = lambda g: c_sex.get(g) or p.sex.get(g, "")
 
     # --- the child's parent slots from the votes -------------------------------------------
@@ -524,6 +560,13 @@ def main() -> int:
         props, method = set(), ""
         for child in sorted(rec["children"]):
             cands = (c_fathers if rec["sex"] == "M" else c_mothers).get(child, [])
+            # ⛔ **THE CROSS-REPORT JOIN, 2026-09-24.** An in-law named only as text in one report
+            # is often a descendant ROW in another, and that report resolved this very child to
+            # their Geni id. The parser has read every report, so `parent_ids` already holds it:
+            # any resolved parent of the child who is not the known co-parent and whose sex fits.
+            own = [x for x in p.parent_ids.get(child, ()) if isinstance(x, str)
+                   and x.isdigit() and x != rec["co"] and p.sex.get(x, "") in (rec["sex"], "")]
+            cands = sorted(set(cands) | set(own))
             if len(cands) == 1:
                 props.add(cands[0]); method = method or "solo"
             elif cands:
@@ -694,6 +737,12 @@ def main() -> int:
     shards = [records[i:i + SHARD_RECORDS] for i in range(0, len(records), SHARD_RECORDS)]
     paths = [os.path.join(OUT_DIR, "sweep-parsed-%s-%02d.ged" % (args.date, n + 1))
              for n in range(len(shards))]
+    # `--replace`, ruled 2026-09-24: these files are a RENDER of `reports/sweep/`, which is never
+    # rewritten, so a re-render replaces the date's own previous output. Use it with
+    # `--corpus-rev`, or the render reads its own previous output as corpus (see there).
+    if args.replace:
+        for old in glob.glob(os.path.join(OUT_DIR, "sweep-parsed-%s-*.ged" % args.date)):
+            os.remove(old)
     for path in paths:
         if os.path.exists(path):
             print("REFUSING: %s exists -- a new parse is always a new file" % path)

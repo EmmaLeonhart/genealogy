@@ -47130,3 +47130,25 @@ is a missing link on Wikidata, not missing data. For comparison the 2026-08-28 m
 our tree, not Wikidata: 64% within two hops of another Bure person then.
 
 **The 19 became ancestor-ring seeds the same day**, on request: `PRIORITY_ANCESTOR_SEEDS`.
+
+## 2026-09-24 — the descendant-report in-laws, identified against the merged tree
+
+The reports were already parsed and merged (the tree went 1,816,046 -> 2,193,917 people); asked
+to identify the in-laws next. 169,670 people exist only as a name -- a descendants report lists
+descendants, so a spouse appears only as text in "Son of X and Y" -- and the zipper had matched
+11,803 of them against the tree as it stood before the merge.
+
+**It now matches 16,637**, +4,834, by the same solo-then-name rule inside a slot, against the
+CURRENT tree, which has since gained the FamilySearch render and newer exports. Two traps were
+found on the way and are guarded:
+
+* the merged tree holds the label people themselves (`L…`), so the candidates are Geni ids only,
+  or every in-law would match its own label copy;
+* a re-render against the merged tree meets its OWN previous families, finds each already holding
+  the parents it put there, and writes 0 new people and 0 child edges -- replacing the files with
+  that erases the whole contribution. So placement reads the tree from before the merge
+  (`--corpus-rev baf607e99`) and only the zipper reads the current tree.
+
+A join through the parser's own cross-report parent links was tried and adds nothing. The
+re-render (`--replace`) keeps all 208,043 new people and 209,316 child edges; 4,827 label people
+are written as the real person instead. `reports/sweep-parsed-zipper.tsv` has every one.
