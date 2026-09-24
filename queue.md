@@ -17,10 +17,16 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   first with bridge -> zipper -> render. Check it went green and that
   `exports/familysearch/PFR5-LDS-ancestors12-descendants2.ged` puts `GF2B-NKG` (Emma Olivia
   Andersdotter) on `@I6000000178279770847@`.
-- **CI green.** The fast lane's last 3 failures are `test_generated_inventories.py` naming files
-  deleted in `f2e0082f8`; `pipeline.yml` regenerates both inventories. Once a pipeline run on a
-  sha after that deletion finishes, dispatch `ci.yml`; green on 3.10 and 3.13 closes it. The same dispatch runs the slow lane,
-  whose only failure (306 tiny-path files with duplicate records) `837d6d93e` already fixed.
+- **CI green.** Run `35985128623` (on `d23d1624e`): 7 failed on 3.10 and 3.13. Three are the
+  inventories (`built-batches.tsv`, `repo-freshness.csv`) and three are the batch (locality 189
+  items, ledger subjects `Q103949808`/`Q22236578`, married surnames) -- the tree rebuild
+  `54d5017d7` rewrote the day batch, carry-forward, ledger and universe without the rest of the
+  set, so it is one composition's batch beside another's files. `pipeline.yml` recomposes all of
+  it; never hand-patch. The seventh, the export cap tripped by the 16,427-person FamilySearch
+  render, is fixed by `5aa22adde`. Pipeline `35986860652` is recomposing; CI is dispatched on
+  the tip when it lands. Green on 3.10 and 3.13 closes this; the slow lane runs in the same
+  dispatch.
+
 ## Last — placed here by Emma, not before everything above is done
 
 - **Review the middle-initial items**, because of roman-numeral confusions. *"Losses are a bigger

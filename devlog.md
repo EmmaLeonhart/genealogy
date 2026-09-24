@@ -46826,3 +46826,14 @@ The conflicts themselves are ordinary: the tree rebuild and the pipeline both co
 `exports/familysearch/` joins `sources.DERIVED_DIRS`: CI run `35985128623` measured the
 16,427-person PFR5-LDS render against `GENI_EXPORT_CAP`. It is our render of a FamilySearch
 download, corpus for the merge and not a Geni export, the same case as `sweep-parsed`.
+
+## 2026-09-24 — the tree rebuild no longer composes the batch
+
+CI run `35985128623` went red on 7 tests, three of them the batch (locality 189 items, ledger
+subjects `Q103949808`/`Q22236578`, married surnames) that had cleared on run 126. The cause was
+the tree rebuild `54d5017d7`: `rebuild-everything.py` ended with `build-garborg-day.py
+--compose`, so `tree.yml` committed the day batch, carry-forward, ledger and universe of its
+own composition beside the halves and name items `pipeline.yml` had composed -- two workflows each
+writing part of one set. The step is removed; `pipeline.yml`, which composes on every push and
+daily, is the one owner. The cloud session's `5aa22adde` settles the seventh failure (the export
+cap tripped by the FamilySearch render).

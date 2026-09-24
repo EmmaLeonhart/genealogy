@@ -254,7 +254,8 @@ jobs:
             'rebuild the synoptic tree in Actions' \
             '' \
             'Full rebuild-everything.py run on a GitHub runner: the merge over every .ged' \
-            'under exports/, then the derived layer in its required order, then the batch.' \
+            'under exports/, then the derived layer in its required order. The batch is' \
+            'composed by pipeline.yml, never here.' \
             '' \
             'This is the rebuild that used to need a local machine. out/merged.ged is not' \
             'committed -- it is 409 MB and over the file limit -- but everything derived' \

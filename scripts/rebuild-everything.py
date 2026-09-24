@@ -28,7 +28,12 @@ human should not be holding it in their head:
 7. `apply-pipe-labels.py` — reads the ruled `|` into `reports/title-label-proposals.tsv`, whose
    resolved rows `build-garborg-day.py` emits. Before the batch, and after nothing in particular.
 8. `pack-derived.py` — gzips the four CSVs that exceed GitHub's 100 MiB limit.
-9. `build-garborg-day.py --compose` — the QuickStatements batch.
+
+**The QuickStatements batch is NOT built here** -- removed 2026-09-24. `pipeline.yml` composes it
+on every push and daily, together with the halves, the name items and the carry-forward, as one
+set. Composed here as well, `tree.yml` committed the day batch, carry-forward, ledger and universe
+of one composition beside the halves of another, and CI run `35985128623` went red on exactly
+that mix (locality, ledger subjects, married surnames). One composition, one owner.
 
 **Step 3 used to run fourth, after the two `derive-*` steps, and that was a real bug.**
 `derive-family.py` line ~75 reads `reports/derived-labels.csv` to name the people it reports —
@@ -156,8 +161,6 @@ STEPS = [
     ("the piped labels",
      [sys.executable, os.path.join("scripts", "apply-pipe-labels.py")]),
     ("pack the big CSVs", [sys.executable, os.path.join("scripts", "pack-derived.py")]),
-    ("the QuickStatements batch",
-     [sys.executable, os.path.join("scripts", "build-garborg-day.py"), "--compose"]),
     # **The adjudication deck, AFTER the batch.** The HTML is regenerated every time the
     # pipeline runs. It reads the derived CSVs plus
     # `reports/emma-judgments.tsv`, so it must follow the derived layer; it goes after the batch
