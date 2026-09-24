@@ -1399,3 +1399,15 @@ def test_a_woman_goes_under_her_maiden_name_and_a_man_under_his_married_one():
     assert married_is_primary("F") is False
     assert married_is_primary("M") is True
     assert married_is_primary("") is True
+
+
+def test_own_given_name_refuses_what_is_not_a_first_name():
+    """2026-09-24, from a dry run of the relational-label correction over the live ledger:
+    `???`, `konenes navn` (*the wife's name*), `mm`, `n` and a bare patronymic all passed as a
+    given name and would have led a label -- `???, wife of Peder Bjornson Grude`."""
+    from namemodel import own_given_name
+    for givn in ("???", "konenes navn", "mm", "n", "N", "Olavsdatter", "NN"):
+        assert own_given_name({"givn": givn}) == "", givn
+    assert own_given_name({"givn": "Tora NN"}) == "Tora"
+    assert own_given_name({"givn": "Anna Olsdatter"}) == "Anna Olsdatter"
+    assert own_given_name({"givn": "Mariet"}) == "Mariet"

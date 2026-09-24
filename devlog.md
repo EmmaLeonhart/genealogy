@@ -46627,3 +46627,16 @@ gate had cleaned `wikidata-garborg-day.txt`, but the halves are written after it
 It runs as the last writer in `pipeline.yml` (before the site build) and again in
 `wikidata-edits.yml` before sending. The one-shot `restore-tanba-day-batch.yml`, pinned to an
 old fix branch, is deleted.
+
+## 2026-09-24 — relational labels that already went out get the given name
+
+`_label_corrections` gains the owed half of the 2026-09-21 ruling: an existing item whose live
+label, in any Latin-script language, is a relation phrase in OUR vocabulary (`WORDS`, so
+`mor til X` and `Mutter von X` are caught where `labels.is_description` is narrow on purpose)
+gets `Given, <phrase>` when Geni holds the person's given name. Dry run over the live ledger:
+609 edits over 56 items. No `Amul` for the outgoing phrase; CJK is left for its own pass.
+
+The dry run showed `own_given_name` accepting `???`, `konenes navn`, `mm`, `n` and a bare
+patronymic (29 of the 276 relational-label items with a `GIVN`). It now requires a capitalised,
+non-marker, non-patronymic-only name. The creation path calls the same function, so new items
+stop getting `???, wife of …` too.

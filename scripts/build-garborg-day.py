@@ -1681,6 +1681,31 @@ def _piped_label_fixes(live_labels=None, path=None):
     return out
 
 
+def _our_relational_phrase(label, lang):
+    """Is `label` a relation phrase in the exact shape OUR emitter writes -- `mother of X`,
+    `mor til X`, `Mutter von X` -- built from `WORDS`, the table `describe_all` uses?
+
+    `labels.is_description` is narrow on purpose and misses `far til`, `mor til`,
+    `Mutter von`, `dochter van`. Reading our own vocabulary instead recognises precisely what
+    we wrote and nothing somebody else did, which is the only kind of label this block may
+    correct -- § *WIKIDATA'S LABEL BEATS OURS*.
+    """
+    words = WORDS.get(lang)
+    if not words or not label:
+        return False
+    of = words.get("of")
+    preps = set(of.values()) if isinstance(of, dict) else {of}
+    low = label.casefold()
+    for group, forms in words.items():
+        if group == "of" or not isinstance(forms, dict):
+            continue
+        for w in forms.values():
+            for p in preps:
+                if w and p and low.startswith(f"{str(w).casefold()} {str(p).casefold()} "):
+                    return True
+    return False
+
+
 def _label_corrections(our_items, labels, table, state, fields=None,
                        generation=None, live_labels=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
@@ -1754,8 +1779,40 @@ def _label_corrections(our_items, labels, table, state, fields=None,
             if row.get("qid") and lab:
                 live[row["qid"]] = lab
 
+    from labels import UNNAMED_MARKER
+    codes_of = {}
+    for (_q, _code) in (live_labels or {}):
+        codes_of.setdefault(_q, []).append(_code)
+
     out = []
     for geni_id, qid in sorted(our_items.items(), key=lambda kv: kv[1]):
+        # ⛔ **A RELATIONAL LABEL WE WROTE, ON A PERSON WHOSE GIVEN NAME IS KNOWN.** Ruled
+        # 2026-09-21 as the biggest defect of the campaign, and the queue item's owed half:
+        # *"fix what already went out"*. `describe_all` now leads with the given name at
+        # creation; this puts it on the items created before that -- `wife of Matts Nilsson`
+        # becomes `Mariet, wife of Matts Nilsson`. Only a phrase in OUR vocabulary is touched,
+        # and only Latin-script languages: a CJK apposition needs the name rendered natively
+        # and in the other order, which `lead_with_given_name` cannot do from a Latin name.
+        # No `Amul` for the outgoing value: a relation phrase is not a name to search by.
+        _own = own_given_name((fields or {}).get(geni_id))
+        if _own:
+            for _code in sorted(codes_of.get(qid, ())):
+                if _code in ("ja", "zh", "ko", "mul"):
+                    continue
+                _have = live_labels[(qid, _code)]
+                if _our_relational_phrase(_have, _code):
+                    _new = qs(lead_with_given_name(_own, _have, _code))
+                    out.append(f"#   {qid}: {_code} label {_have!r} is only a relation; "
+                               f"the given name is {_own!r}")
+                    out.append(f'{qid}\tL{_code}\t"{_new}"')
+            # And `mul` is `Given NN` when the given name is known and no surname is -- the
+            # other test the ruling named. Only a `mul` that is EXACTLY the marker: `NN Stromer`
+            # carries a surname and is a different question.
+            _surn = " ".join(((fields or {}).get(geni_id) or {}).get("surn", "").split())
+            if (live_labels.get((qid, "mul")) == UNNAMED_MARKER
+                    and (not _surn or _surn.casefold().strip(".") in ("nn", "n.n"))):
+                out.append(f"#   {qid}: mul is the bare marker; the given name is {_own!r}")
+                out.append(f'{qid}\tLmul\t"{qs(_own)} {UNNAMED_MARKER}"')
         # **The label we want is the EXPANDED one.** Ruled 2026-08-27: abbreviations like
         # `-dtr` are fixed, because a Wikidata `mul` label is supposed to carry the full form.
         # That is part of the compliance work. `expand_abbreviations` ran only on the

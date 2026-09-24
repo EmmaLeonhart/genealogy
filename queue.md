@@ -700,8 +700,10 @@ is why the model holds it now.
   because a Latin token spliced into a katakana phrase is the 2026-09-03 `ソン・オフ・`
   failure -- § *Partial is worse than absent*.
 
-- **Still owed: fix what already went out.** The rule now stops new ones; the items already
-  carrying a bare relational label are a separate pass and are not done.
+- **Still owed: the CJK half of what already went out.** The Latin half is wired
+  (2026-09-24, `_label_corrections`: 609 edits over 56 items at the time, drained by
+  `LABEL_EDIT_CAP`). A `ja`/`zh`/`ko` relational label needs the given name rendered natively and
+  placed LAST, and a kanji `ja` is Sinosphere and untouchable -- so it is its own pass.
 
 ---
 

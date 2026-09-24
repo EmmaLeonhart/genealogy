@@ -2485,6 +2485,12 @@ def _unknown_markers() -> frozenset:
     return _MARKERS
 
 
+def _usage_of(token: str) -> str:
+    """`classify_fields`' usage for one token, or `""` when it returns nothing for it."""
+    got = classify_fields(token, "")
+    return got[0][1] if got else ""
+
+
 def own_given_name(fields) -> str:
     """The person's OWN given name, or `""` when the field does not carry one.
 
@@ -2498,7 +2504,22 @@ def own_given_name(fields) -> str:
     if not givn or names_a_relative(givn):
         return ""
     markers = _unknown_markers()
-    kept = [tok for tok in givn.split() if tok.casefold().strip(".,") not in markers]
+    # A token with no letter in it (`???`, `-`) is not a name either, and it reached labels as
+    # `???, wife of Peder Bjornson Grude` (`Q141518711`, measured 2026-09-24).
+    kept = [tok for tok in givn.split()
+            if tok.casefold().strip(".,") not in markers and any(ch.isalpha() for ch in tok)
+            and _usage_of(tok) != "unknown"]
+    # **And a NAME starts with a capital** (or an uncased script). Lower-case `GIVN` is a note,
+    # not a name: `konenes navn` (*the wife's name*) and `mm` both reached a `mul` label as
+    # `konenes navn NN` in the 2026-09-24 dry run. A particle beside a real name is fine.
+    if not any(not next(ch for ch in tok if ch.isalpha()).islower() for tok in kept):
+        return ""
+    # ⛔ **A PATRONYMIC ALONE IS NOT A GIVEN NAME.** The ruling is about a person whose FIRST
+    # name is known. Measured 2026-09-24: of the 276 ledger items holding a relational label
+    # and a `GIVN`, 29 hold only a patronymic (`Olavsdatter`, `Jonsdatter`), and
+    # `Olavsdatter, daughter of Olav …` names her by her father twice. With a real given name beside it the patronymic stays: `Anna Olsdatter`.
+    if kept and all(_usage_of(tok) == "patronymic" for tok in kept):
+        return ""
     return " ".join(kept)
 
 
