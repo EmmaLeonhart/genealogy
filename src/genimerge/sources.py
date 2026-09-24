@@ -109,7 +109,12 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #:
 #: Kept as an empty tuple rather than deleted because `geni_exports()` and `__all__` name it, and
 #: a future generated aggregate would belong here.
-DERIVED_DIRS = ()
+#:
+#: **And one arrived, 2026-09-24: `exports/sweep-parsed/`**, written by
+#: `scripts/parse-sweep-trees.py` from the descendant reports -- 200,000-record shards that are
+#: corpus for the merge and are not a Geni export. CI run `35944408308` read one as an export of
+#: 200,000 against `GENI_EXPORT_CAP` 5,000, the `scraped-pages.ged` failure exactly.
+DERIVED_DIRS = (EXPORTS_DIR / "sweep-parsed",)
 DERIVED_DIR = EXPORTS_DIR / "0-scraped"
 
 
