@@ -355,11 +355,12 @@ LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 
-# Jonesen -- the counterpart of Jonesdatter (12 bearer(s))
+# Håvardsdotter -- the counterpart of Håvardson (12 bearer(s))
 CREATE
-LAST	Len	"Jonesen"
-LAST	Lmul	"Jonesen"
+LAST	Len	"Håvardsdotter"
+LAST	Lmul	"Håvardsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
-LAST	P31	Q130444148
+LAST	P31	Q130444179
+LAST	P31	Q10476255
 
