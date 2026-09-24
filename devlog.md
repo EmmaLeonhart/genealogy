@@ -47109,3 +47109,22 @@ the descriptions test's batch list are removed. The owner `6000000087535357291` 
 `PRIORITY_ANCESTOR_SEEDS` entry instead, so each run creates the next full generation: **56 runs**
 by the same measure as the other rings, against ~3,240 days at two a day. Every ring together is
 still 93 runs, Ettinger's.
+
+## 2026-09-24 — how connected the Bure entry points are on Wikidata
+
+Asked whether the 250 Bure entry points (`entry-points-immediate.csv`, source `bureatten`) have
+become connected to each other after the pipeline's long run on them.
+`reports/bure-wikidata-connectivity.csv` is every one: Wikidata degree, the Bure people in its
+Wikidata component, hops to the nearest other Bure person on Wikidata and in our tree. The
+Wikidata graph is `relations.tsv` (2026-09-17) plus today's live values of our own items.
+
+**They are connected, and to the world tree.** 231 of 250 (92%) sit in ONE component of 1.24
+million items that holds Charlemagne `Q3044`, Arne Garborg and Bureus. 138 are directly linked
+to another Bure person, 173 within two hops. All 250 are in the edit universe and every one has
+at least one family link.
+
+**19 are outside it**: 16 alone (no other Bure person reachable) and three in a small component of
+their own. In our tree all 19 reach another Bure person, within 1-8 hops -- `Nils Abraham
+Bruncrona`, `Lars Georg Rabenius` and `Olof Ingelsson Rabenius` are ONE hop from one -- so each
+is a missing link on Wikidata, not missing data. For comparison the 2026-08-28 measurement was of
+our tree, not Wikidata: 64% within two hops of another Bure person then.
