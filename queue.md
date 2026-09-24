@@ -21,19 +21,3 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   without one. ⛔ **Never overwrite an existing description**, in any language: only add where
   there is none.
 
-## Blocked on the Geni moratorium
-
-- **The research, manager half.** The ancestors report off Geni supplies `managed_by` for the
-  owner's ~8,254 ancestors; then join managers in `match-descendants-to-ancestry.py`.
-- **The path requester.** 140,692 never attempted at the last count; `scripts/pathrun.js`,
-  `CLAUDE.md` § *THE PATH CAMPAIGN*.
-- **The chain walk.** 12,911 of 47,692 permalinks walked. Resume with
-  `build-chain-batch.py --skip-covered`, finish with `C.reseedFailed()`, then run
-  `split-path-chains.py` and `build-tiny-gedcoms.py`.
-- **The sibling scrape.** A loop over `reports/sibling-pair-worklist.tsv` at the extension's
-  pace, never alongside the path campaign.
-- **The descendants sweep.** Cursor 8,993 in `reports/sweep-queue-6000000227822546944.txt`; the
-  209 people in `reports/sweep-partial-incapsula-2026-09-21.txt` are the WAF's output and are
-  redone.
-- **`Slavina` / `Slawina von Rügen`**, Kruto's mother and spouse, one letter apart: checked
-  against Geni, not reasoned about.
