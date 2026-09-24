@@ -46653,3 +46653,7 @@ file. References alone were 24 MB. The queue item is deleted.
 88 MB plain, tracked, and the next person to run `measure-eccentricity.py` would have pushed it
 over 100 MB and blocked every push. The script writes `reports/tree-eccentricity.csv.gz` and
 `eccentric-clusters.py` reads it: 24 MB. Queue item deleted.
+
+Two stale follow-on bullets deleted: *Export a GEDCOM from Wikidata* is
+`scripts/build-wikidata-gedcom.py`, run by `union-tree.yml`; *relative-describing labels* is
+tracked in its own section, whose CJK remainder is all that is left.
