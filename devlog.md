@@ -47152,3 +47152,17 @@ found on the way and are guarded:
 A join through the parser's own cross-report parent links was tried and adds nothing. The
 re-render (`--replace`) keeps all 208,043 new people and 209,316 child edges; 4,827 label people
 are written as the real person instead. `reports/sweep-parsed-zipper.tsv` has every one.
+
+## 2026-09-24 — descriptions backfilled onto established items, dates and relatives only
+
+The queued backfill. `_description_backfill` in `build-garborg-day.py` gives `Den` to our editable
+items that the live store shows with no English description: `life_description` first, else the
+`describe_all` relationship phrase, and nothing at all for an item with neither -- never the
+Geni-id rung, which is strictly the anti-duplication guard for fresh creations. An item the live
+store does not hold is skipped, since it cannot be checked, and an existing description is never
+touched. The edits join the other label edits, so `LABEL_EDIT_CAP` and the emitted ledger pace
+them.
+
+Checked the same day, the first pipeline run on the new composer: its gate dropped nothing; the
+post-append strip took 12 lines on 6 items, all created that day and in the universe by the next
+recompose.
