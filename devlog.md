@@ -46801,3 +46801,14 @@ deleted.
 `GIVN` ends with: **210 name records** (`de de`, `ap ap`, `von von`, `verch verch`). A capitalised
 repeat is a name and stays -- `Joseph Thomas Thomas`. Applies at the next tree rebuild; existing
 items move through the label-correction pass. Queue item deleted.
+
+## 2026-09-24 — FamilySearch entry points, from the downloads already on disk
+
+Ruled: *"you use the existing familysearch trees downloaded"* -- not new `getmyancestors` runs.
+Four entry points are in the two existing downloads: `Q141493478` (`MBW7-P7H`, Inger),
+`Q141493463` (`LXM8-QYV`), `Q792154` (`LZ6S-D5L`) and `Q141382445` (`KHW5-BDP`).
+`build-familysearch-day.py` already creates the FamilySearch relatives of any bridged item in the
+universe, and entry points are in it by definition, so what they needed was the bridge knowing
+them: the committed bridge (2026-09-21) held three, and the `P2889` roster resolves all four at the
+tree run now going. The five entry points with no Geni id (`Q1356707`, `Q141539936`, `Q2351576`,
+`Q2886007`, `Q3172623`) are in neither download, so there is nothing on disk to generate them from.
