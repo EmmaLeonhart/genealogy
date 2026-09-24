@@ -58,7 +58,7 @@ def rendered():
     spec = util.spec_from_file_location("fsrender", RENDERER)
     mod = util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    text, counts = mod.rewrite(RAW)
+    text, counts = mod.rewrite(RAW, {"LXM8-QYV": "4976573922110117540"}, "MBW7-P7H")
     return text, counts
 
 
@@ -67,7 +67,9 @@ def test_not_one_xref_survives_that_parses_as_a_geni_id(rendered):
     import re
     from genimerge.identity import GENI_ID_RE
     text, _ = rendered
-    leaked = [tok for tok in re.findall(r"@[^@\s]+@", text) if GENI_ID_RE.match(tok)]
+    meant = {"@I4976573922110117540@"}          # the one person the sample bridge resolves
+    leaked = [tok for tok in re.findall(r"@[^@\s]+@", text)
+              if GENI_ID_RE.match(tok) and tok not in meant]
     assert not leaked, f"xrefs still parse as Geni ids: {leaked[:5]}"
 
 
@@ -87,14 +89,26 @@ def test_the_raw_file_WOULD_have_leaked(rendered):
 def test_every_pointer_is_rewritten_not_just_the_definitions(rendered):
     """A definition and a reference have the same shape, so both move or the file is broken."""
     text, _ = rendered
-    assert "0 @IFS1@ INDI" in text
-    assert "1 FAMS @FFS376@" in text      # a reference to a family not defined in the sample
-    assert "1 FAMC @FFS1@" in text
-    assert "1 CHIL @IFS1@" in text
-    assert "2 NOTE @NFS1@" in text
-    assert "1 SOUR @SFS9@" in text
-    assert "0 @NFS1@ NOTE" in text
-    assert "0 @SFS9@ SOUR" in text
+    assert "0 @IFSMBW7P7H@ INDI" in text
+    assert "1 FAMS @FFSMBW7P7HX376@" in text   # a family not defined in the sample: file-seeded
+    assert "1 FAMC @FFS9QXFYBW@" in text
+    assert "1 CHIL @IFSMBW7P7H@" in text
+    assert "2 NOTE @NFSMBW7P7HX1@" in text
+    assert "1 SOUR @SFSMBW7P7HX9@" in text
+    assert "0 @NFSMBW7P7HX1@ NOTE" in text
+    assert "0 @SFSMBW7P7HX9@ SOUR" in text
+
+
+def test_a_bridged_person_is_written_on_their_geni_xref(rendered):
+    """⛔ Found 2026-09-24 on Emma Olivia Andersdotter: a render with no Geni xref never attaches.
+
+    A FamilySearch person the bridge resolves takes `@I<geni id>@` and `RFN geni:`, so the merge
+    joins them to the corpus exactly, and it is not reported as a leak.
+    """
+    text, counts = rendered
+    assert "0 @I4976573922110117540@ INDI\n1 RFN geni:4976573922110117540" in text
+    assert "1 HUSB @I4976573922110117540@" in text
+    assert counts["bridged"] == 1
 
 
 def test_the_familysearch_id_is_carried_as_a_refn(rendered):
