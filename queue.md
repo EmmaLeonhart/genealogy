@@ -21,8 +21,21 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   deleted in `f2e0082f8`; `pipeline.yml` regenerates both inventories. Once a pipeline run on a
   sha after that deletion finishes, dispatch `ci.yml`; green on 3.10 and 3.13 closes it. The same dispatch runs the slow lane,
   whose only failure (306 tiny-path files with duplicate records) `837d6d93e` already fixed.
-- **FamilySearch ids on entry points should generate people too** — seed from `P2889` where the
-  Geni column is empty.
+- **FamilySearch ids on entry points should generate people too** — BLOCKED-ON-USER-ACTION:
+  each is a `getmyancestors` download, and it prompts for the FamilySearch password, which the
+  agent never handles. Five entry points have no Geni id and carry `P2889`; none is in either
+  existing download (checked 2026-09-24). Run these where you can type the password, commit the
+  `.ged` files, and `tree.yml` does the rest (the zipper globs `gedcom/familysearch/`, the render
+  puts every paired person on their Geni id):
+
+      getmyancestors -i L64M-MBC -a 12 -d 2 -m -v -o gedcom/familysearch/L64M-MBC-a12-d2.ged --concurrency 4 --delay 0.3   # Q141539936 François Thiery
+      getmyancestors -i MBHP-X23 -a 12 -d 2 -m -v -o gedcom/familysearch/MBHP-X23-a12-d2.ged --concurrency 4 --delay 0.3   # Q2886007 Barthélemy du Drac
+      getmyancestors -i KCMJ-GLT -a 12 -d 2 -m -v -o gedcom/familysearch/KCMJ-GLT-a12-d2.ged --concurrency 4 --delay 0.3   # Q3172623 Jean II Baillet
+      getmyancestors -i GQG4-4XK -a 12 -d 2 -m -v -o gedcom/familysearch/GQG4-4XK-a12-d2.ged --concurrency 4 --delay 0.3   # Q1356707 Matthäus I.
+      getmyancestors -i PDYD-J5N -a 12 -d 2 -m -v -o gedcom/familysearch/PDYD-J5N-a12-d2.ged --concurrency 4 --delay 0.3   # Q2351576 Yves de Bellême
+
+  Each zipper anchor then needs the root's Geni id in `FS_ROOTS` if it has one; these five have
+  none, so they attach only through relatives the zipper can reach.
 - **`Grimus von von Rügen`** (`6000000012966007622`, father of `Q660913` Kruto the Wend) carries a
   doubled `von` in our label.
 
