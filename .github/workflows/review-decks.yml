@@ -45,7 +45,10 @@ permissions:
 jobs:
   deck:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 60, not 30: run 35947524324 was killed at exactly 30:00 inside the pick-one step. Checkout
+    # is ~4.5 min and the three decks 6-12 min each, and the last green run took 29 -- one
+    # Wikidata 429 waited out was enough to cross the line.
+    timeout-minutes: 60
     steps:
       # Same exclusions as the pipeline: nothing here reads the corpus or the Wikidata store,
       # which is what keeps a 13 GB tree inside a 14 GB runner.
