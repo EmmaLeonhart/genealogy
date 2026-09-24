@@ -46681,3 +46681,20 @@ decks are republished to their three artifacts. The zipper-deck session-start st
 verdicts in any `decisions/all`). CI is dispatched on the recomposed tip; reading it is the
 GET CI GREEN item, where the handoff's CI note now lives. Section deleted.
 Queue bullet on `CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* lacking the timeout-kill vs supersede distinction deleted: the section already carries it (*"BUT `cancelled` IS TWO DIFFERENT EVENTS"*, duration tells them apart).
+
+## 2026-09-23 — the ancestor creator no longer recreates spoken-for Geni ids, checked on a real batch
+
+The 2026-09-22 fix to `scripts/build-ancestor-creations.py` reversed *CREATING SOMEBODY WIKIDATA
+ALREADY HAS IS THE POINT*: intentional duplicates are for FamilySearch only, and a parent already
+spoken for in `out/wikidata/p2600-all.tsv` or `reports/synoptic-correspondence.tsv` is refused.
+The queue item said to delete itself once a composed batch confirmed it.
+
+Measured on the batch composed at `96cd30f6f` (2026-09-24 05:11Z, after the fix landed), against
+568,569 spoken-for Geni ids:
+
+    reports/wikidata-garborg-day.txt              505 CREATE-with-P2600, 0 spoken for
+    reports/wikidata-garborg-day-manual.txt       502, 0
+    reports/wikidata-ancestor-creations-auto.qs     3, 0
+    reports/wikidata-ancestor-creations.qs          3, 0
+
+The ruling itself stays in the script's docstring (lines 66-77, 194).

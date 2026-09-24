@@ -16,24 +16,6 @@ the live plan and was bloating the file. It is parked at
 `docs/queue-archive/geni-blocked-campaigns-2026-09.md` — same pattern as the 2026-09-15 archive —
 and must not be started under the Geni moratorium. Keep this file as **work only**.
 
-## Fix zipper merge stuff
-
-**Ruling, restated so it cannot be misread again:**
-
-- **FamilySearch intentional duplicates are OK** — and only there. Separate QuickStatements
-  (`scripts/build-familysearch-day.py` → `reports/wikidata-familysearch-day.txt`); a human merges
-  on Wikidata afterwards. That is what she asked for.
-- **Geni versus Wikidata: keep the duplicate safeguards.** Do **not** mint a second item next to
-  a World Tree person as "bait". The zipper / `P2600` / synoptic correspondence are how those
-  people get identified; creating doubles is not a substitute.
-
-**Code fix landed 2026-09-22:** `scripts/build-ancestor-creations.py` had a section *CREATING
-SOMEBODY WIKIDATA ALREADY HAS IS THE POINT* (Willa of Tuscany, Sunifred, …). That was the
-FamilySearch ruling stretched onto Geni↔Wikidata. Reversed. It now refuses parents already
-spoken for via `out/wikidata/p2600-all.tsv` or `reports/synoptic-correspondence.tsv` — the same
-floor `build-garborg-day.py` already uses. Delete this section once the next composed batch is
-confirmed not to recreate spoken-for Geni ids.
-
 ## ⛔ GENI MORATORIUM — NO CONTACT OF ANY KIND UNTIL AT LEAST 2026-10-21
 
 **Ruled 2026-09-21:** *"never touch geni again this moratorium is at least a month"*.
