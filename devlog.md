@@ -47093,3 +47093,11 @@ limit on 2026-09-23 and ended in `permissiondenied` on 2026-09-24. Now: `MIN_GAP
 the run at once, the rest resuming tomorrow from the receipt; the scheduled limit is **500**
 (~4.9 h at the 35 s mean) and the job timeout 355 minutes. With the ration and file-order send
 above, the 500 are the name items, the 30 individuals and the whole ring first.
+
+**Corrected the same day: the owner's line was missing from that.** `build-ancestor-creations.py`
+is a different mechanism -- two of the owner's ancestors a day (four more in the paste file), not
+a generation a run -- so it is bounded by how many lack an item, not by depth. Of the owner's
+**8,514** ancestors in the tree (756 FamilySearch-only), **6,475** have no item: **~3,240 days** at
+two a day, ~1,080 at six. The deepest line is 74 generations. The 756 FamilySearch-only ancestors
+carry no Geni id, so this creator cannot make them; they reach Wikidata only through the
+FamilySearch batch. The 93 days above holds for `PRIORITY_ANCESTOR_SEEDS` alone.
