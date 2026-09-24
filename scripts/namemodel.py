@@ -415,6 +415,37 @@ SUFFIX_LANGUAGES = {
 }
 
 
+#: The written form each native language gets, per generation. Swedish writes the elder `d.ä.`;
+#: Norwegian and Danish write `d.e.`; all five write the younger `d.y.`.
+_NATIVE_FORM = {("II", "sv"): "d.y.", ("I", "sv"): "d.ä."}
+_NATIVE_DEFAULT = {"II": "d.y.", "I": "d.e."}
+
+
+def native_generation_labels(label: str, nsfx: str = "") -> dict:
+    """`{language: label}` for each language that uses the person's generation suffix natively.
+
+    Queued 2026-09-24: *"d.y. and d.e. should have labels made specifically for the languages
+    that use them."* `mul` takes `II`/`I` and `en` takes `Jr.`/`Sr.`, so until now a Swedish,
+    Norwegian or Danish reader saw the Roman numeral. `SUFFIX_LANGUAGES` already says which
+    languages own each form; this writes the label for them, suffix LAST as everywhere else.
+
+    Only the Scandinavian forms: `de` was named as a possible user and does not use them --
+    German writes `d. J.` / `d. Ä.` (*der Jüngere*, *der Ältere*).
+    """
+    key = generation_suffix_key(nsfx) or generation_suffix_in_label(label)
+    if not key or not label:
+        return {}
+    langs = SUFFIX_LANGUAGES.get(key, set()) - {"en", "fi"}
+    if not langs:
+        return {}
+    numeral = GENERATION_SUFFIX[key][0]
+    base = normalise_generation_suffix(label, "mul", nsfx)
+    if base.endswith(" " + numeral):
+        base = base[: -len(numeral) - 1]
+    return {lang: f"{base} {_NATIVE_FORM.get((numeral, lang), _NATIVE_DEFAULT[numeral])}"
+            for lang in sorted(langs)}
+
+
 def suffix_is_native(label: str, language: str) -> bool:
     """Is every generation suffix in `label` one that `language` actually uses?
 

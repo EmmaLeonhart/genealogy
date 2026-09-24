@@ -46906,16 +46906,15 @@ known FamilySearch prefix, and the RFN test -- which skipped FamilySearch files 
 requires every `@I<digits>@` person in one to carry the matching `RFN geni:<id>`. Checked on both
 renders: every prefix bound to one record type, none unknown, 0 RFN mismatches.
 
-## 2026-09-24 — CI green on the fast lane; the slow lane's FamilySearch prefixes
+## 2026-09-24 — `d.y.` / `d.e.` labels in the languages that write them
 
-**The fast lane is green**: run `35999956503` on `c9a3872c`, 3.10 and 3.13 both `success`, which
-closed the CI item. The inventories cleared once a pipeline run carried the deletions, and the
-batch tests once a composition was one set again.
+`mul` carries `II`/`I` and `en` `Jr.`/`Sr.`, so a Swedish, Norwegian or Danish reader of our
+items saw a Roman numeral. `namemodel.native_generation_labels` writes a label for each language
+`SUFFIX_LANGUAGES` says uses the person's form, suffix last: `d.y.` for `nb`/`nn`/`no`/`da`/`sv`,
+`d.e.` for the Norwegian and Danish codes, `d.ä.` for Swedish. Creations carry them, and
+`_label_corrections` adds them to our existing items that lack them (never to one somebody else
+labelled), under the usual label cap, so the running pipeline corrects what is already out.
 
-**The slow lane** failed two tests on the FamilySearch renders, both from today's re-keying:
-xrefs are now `@IFS<FamilySearch id>@`, so the letters-then-digits prefix reader took `IFSGWBN`
-for a prefix, and people on a Geni id are `@I<digits>@`, a prefix the FamilySearch map did not
-list. `_prefix` now reads the renderer's four prefixes as prefixes, `I` on `INDI` is a known
-FamilySearch prefix, and the RFN test -- which skipped FamilySearch files entirely -- now requires
-every `@I<digits>@` person in one to carry the matching `RFN geni:<id>`. Checked on both renders:
-every prefix bound to one record type, none unknown, 0 RFN mismatches.
+The research half: `de` was named as a likely user and does not use these forms -- German writes
+`d. J.` / `d. Ä.` (*der Jüngere*, *der Ältere*) -- so it is not in the list. Finnish
+(`nuorempi`/`vanhempi`) and English (`the Younger`/`Jr.`) already have their own entries.

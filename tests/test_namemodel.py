@@ -1421,3 +1421,17 @@ def test_a_particle_filed_on_both_sides_of_the_seam_is_said_once():
     assert drop("Gwrddwfin ap ap Cwrrig", "Gwrddwfin ap", "ap Cwrrig") == "Gwrddwfin ap Cwrrig"
     assert drop("Joseph Thomas Thomas", "Joseph Thomas", "Thomas") == "Joseph Thomas Thomas"
     assert drop("Per Andersson", "Per", "Andersson") == "Per Andersson"
+
+
+def test_the_languages_that_write_d_y_and_d_e_get_their_own_label():
+    """Queued 2026-09-24: `mul` says `II`, `en` says `Jr.`, and the Scandinavian languages say
+    the form they actually use -- suffix last, `d.ä.` for the Swedish elder."""
+    young = namemodel.native_generation_labels("Lars Jonson d.y. Skrudland")
+    assert set(young) == {"nb", "nn", "no", "da", "sv"}
+    assert young["sv"] == "Lars Jonson Skrudland d.y."
+    assert namemodel.native_generation_labels("Per Olsen d.e.") == {
+        c: "Per Olsen d.e." for c in ("nb", "nn", "no", "da")}
+    assert namemodel.native_generation_labels("Johan Andersson d.ä.") == {
+        "sv": "Johan Andersson d.ä."}
+    assert namemodel.native_generation_labels("Elias Lagerheim", "Jr.") == {}
+    assert namemodel.native_generation_labels("Anna Berg") == {}

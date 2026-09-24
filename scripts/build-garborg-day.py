@@ -57,7 +57,7 @@ from namemodel import (  # noqa: E402
     names_a_relative as _namemodel_names_a_relative,
     lead_with_given_name, own_given_name, married_is_primary,
     drop_description_suffix, generation_suffix_key,
-    normalise_generation_suffix, statements_for,
+    normalise_generation_suffix, native_generation_labels, statements_for,
     suffix_is_native)
 
 
@@ -1855,6 +1855,18 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                     and (not _surn or _surn.casefold().strip(".") in ("nn", "n.n"))):
                 out.append(f"#   {qid}: mul is the bare marker; the given name is {_own!r}")
                 out.append(f'{qid}\tLmul\t"{qs(_own)} {UNNAMED_MARKER}"')
+        # The languages that write `d.y.`/`d.e.`/`d.ä.` get their own label on our existing
+        # items too, queued 2026-09-24 -- only where nobody else labelled the item, and only
+        # where the live label in that language is not already it.
+        _gen_key = (generation or {}).get(geni_id, "")
+        if _gen_key and not any(theirs.get(geni_id, ("", ""))):
+            for _code, _native in native_generation_labels(
+                    labels.get(geni_id, ""), _gen_key).items():
+                _native = qs(_native)
+                if (live_labels or {}).get((qid, _code)) != _native:
+                    out.append(f"#   {qid}: set the {_code} label to {_native!r}, the "
+                               f"generation suffix as {_code} writes it")
+                    out.append(f'{qid}\tL{_code}\t"{_native}"')
         # **The label we want is the EXPANDED one.** Ruled 2026-08-27: abbreviations like
         # `-dtr` are fixed, because a Wikidata `mul` label is supposed to carry the full form.
         # That is part of the compliance work. `expand_abbreviations` ran only on the
@@ -7810,6 +7822,9 @@ def main():
             en_form = normalise_generation_suffix(primary, "en", _gen)
             if re.search(r"[A-Za-z]", primary):
                 lines.append(f'LAST\tLen\t"{qs(en_form)}"')
+                # The languages that write `d.y.`/`d.e.`/`d.ä.` get it, suffix last.
+                for _code, _native in native_generation_labels(primary, _gen).items():
+                    lines.append(f'LAST\tL{_code}\t"{qs(_native)}"')
                 # ⛔ **IMMEDIATELY AFTER THE `en` LABEL, AND EVERY INDIVIDUAL GETS ONE.**
                 # Ruled 2026-09-19: *"every individual needs a description"*, after a
                 # measurement on the composed batch -- **107 of 129 creations, 83%, carried no

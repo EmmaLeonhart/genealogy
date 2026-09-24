@@ -13,10 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **`d.y.` and `d.e.` get labels made specifically for the languages that use them.** Low
-  priority, after the item above. Known: `no`, `nn`, `da`, `sv`, `de`; likely others -- research
-  which languages use them, then apply, and the running program corrects the existing labels.
-
 - **Latinate patronymics seem to be absent: `Erici`, `Olai`, `Olavi`, `Petri`.** Review why,
   after the item above.
 
