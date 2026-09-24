@@ -22813,8 +22813,8 @@ Sources in merge order (later sources win value conflicts):
 
 | record | count |
 | --- | ---: |
-| FAM | 1038469 |
-| INDI | 2193916 |
+| FAM | 1033670 |
+| INDI | 2189295 |
 | SUBM | 58713 |
 
 ## What each source contributed
@@ -23337,8 +23337,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227757576826.ged` | 0 | 1 | 0 | 8876 | 1 |
 | `export-Descendants-6000000227757712839.ged` | 945 | 1182 | 5 | 6314 | 663 |
 | `export-Forest-6000000227739821875.ged` | 2826 | 4979 | 6 | 42 | 18 |
-| `MBW7-P7H-ancestors12-descendants2.ged` | 1456 | 3015 | 1 | 88 | 671 |
-| `PFR5-LDS-ancestors12-descendants2.ged` | 7093 | 12208 | 0 | 4220 | 30285 |
+| `MBW7-P7H-ancestors12-descendants2.ged` | 1456 | 3035 | 1 | 68 | 489 |
+| `PFR5-LDS-ancestors12-descendants2.ged` | 7093 | 12361 | 0 | 4067 | 29213 |
 | `export-Descendants-6000000227714378863.ged` | 234 | 357 | 1 | 7983 | 578 |
 | `export-Descendants-6000000227723755983.ged` | 1085 | 1248 | 12 | 6634 | 230 |
 | `export-Forest-6000000227714378863.ged` | 81 | 98 | 1 | 8135 | 132 |
@@ -23386,11 +23386,11 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-9.ged` | 0 | 6 | 0 | 6230 | 6 |
 | `export-Ancestors-6000000227891340662.ged` | 311 | 532 | 13 | 784 | 124 |
 | `export-Ancestors-6000000227892448837.ged` | 136 | 229 | 2 | 1470 | 115 |
-| `export-Ancestors-6000000087535357291.ged` | 626 | 919 | 16 | 5447 | 2572 |
+| `export-Ancestors-6000000087535357291.ged` | 626 | 928 | 16 | 5438 | 2477 |
 | `export-Ancestors-6000000177921459052.ged` | 0 | 0 | 0 | 875 | 0 |
 | `export-Ancestors-6000000177921459056.ged` | 11 | 19 | 1 | 7041 | 89 |
 | `export-Ancestors-6000000177921459078.ged` | 4 | 6 | 0 | 7078 | 38 |
-| `export-Ancestors-6000000177921459114.ged` | 2 | 3 | 1 | 7689 | 160 |
+| `export-Ancestors-6000000177921459114.ged` | 2 | 3 | 1 | 7689 | 156 |
 | `export-Ancestors-6000000209078072833.ged` | 0 | 0 | 0 | 1189 | 0 |
 | `export-Ancestors-6000000220974565012.ged` | 0 | 0 | 0 | 1897 | 0 |
 | `export-Bio-6000000212213649822.ged` | 33 | 38 | 0 | 7031 | 17 |
@@ -23464,7 +23464,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000211987119821.ged` | 57 | 66 | 1 | 7942 | 147 |
 | `export-Forest-6000000227675436876.ged` | 1411 | 4746 | 134 | 535 | 171 |
 | `export-Ancestors-6000000177921459109.ged` | 17 | 30 | 2 | 19 | 24 |
-| `export-Ancestors-6000000177921459114.ged` | 2 | 3 | 1 | 7689 | 160 |
+| `export-Ancestors-6000000177921459114.ged` | 2 | 3 | 1 | 7689 | 156 |
 | `export-Forest-6000000227614275833.ged` | 1159 | 3755 | 97 | 1836 | 240 |
 | `export-Descendants-6000000227819770878.ged` | 93 | 190 | 1 | 7738 | 72 |
 | `export-Descendants-6000000227820054849.ged` | 2345 | 4651 | 206 | 700 | 141 |
@@ -23487,8 +23487,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227288930948.ged` | 1575 | 4517 | 99 | 920 | 344 |
 | `export-Forest-6000000227289463836.ged` | 1525 | 4375 | 150 | 1332 | 392 |
 | `export-Forest-6000000227289547881.ged` | 729 | 1295 | 20 | 6593 | 644 |
-| `export-Forest-6000000227289604840.ged` | 1124 | 2051 | 28 | 5123 | 1088 |
-| `export-Forest-6000000227289663852.ged` | 393 | 1884 | 34 | 4568 | 1292 |
+| `export-Forest-6000000227289604840.ged` | 1124 | 2053 | 28 | 5121 | 1069 |
+| `export-Forest-6000000227289663852.ged` | 393 | 1891 | 34 | 4561 | 1235 |
 | `export-Forest-6000000227289792822.ged` | 208 | 550 | 5 | 7346 | 522 |
 | `export-Forest.ged` | 0 | 0 | 0 | 6251 | 0 |
 | `export-Descendants-6000000227712070008.ged` | 311 | 545 | 10 | 8349 | 760 |
@@ -23525,7 +23525,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227726348824.ged` | 2096 | 3896 | 206 | 2640 | 1196 |
 | `export-Descendants-6000000227726382855.ged` | 2100 | 4435 | 146 | 1055 | 479 |
 | `export-Forest-6000000227714686873.ged` | 169 | 252 | 5 | 8384 | 128 |
-| `export-Ancestors.ged` | 1 | 0 | 0 | 6694 | 8 |
+| `export-Ancestors.ged` | 1 | 0 | 0 | 6694 | 10 |
 | `export-BloodTree.ged` | 1 | 2 | 0 | 5285 | 1 |
 | `export-Forest-6000000226977233850.ged` | 924 | 1618 | 8 | 3314 | 713 |
 | `export-Forest-6000000226989731860.ged` | 0 | 0 | 0 | 6339 | 5 |
@@ -23564,9 +23564,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-41.ged` | 523 | 1656 | 15 | 3774 | 909 |
 | `export-Forest-42.ged` | 201 | 317 | 0 | 6190 | 416 |
 | `export-Forest-43.ged` | 667 | 1096 | 11 | 5102 | 635 |
-| `sweep-parsed-2026-09-24-01.ged` | 0 | 183328 | 0 | 16672 | 20673 |
-| `sweep-parsed-2026-09-24-02.ged` | 6143 | 184974 | 0 | 8883 | 9609 |
-| `sweep-parsed-2026-09-24-03.ged` | 150123 | 0 | 0 | 0 | 0 |
+| `sweep-parsed-2026-09-24-01.ged` | 0 | 183571 | 0 | 16429 | 20174 |
+| `sweep-parsed-2026-09-24-02.ged` | 11232 | 179907 | 0 | 8861 | 9580 |
+| `sweep-parsed-2026-09-24-03.ged` | 140235 | 0 | 0 | 0 | 0 |
 | `export-Forest-6000000227351174975.ged` | 128 | 230 | 0 | 7548 | 81 |
 | `andrew-andy-roy-gibb.ged` | 37 | 12 | 0 | 26 | 15 |
 | `arne-garborg-to-johannes-bureus-geni.ged` | 17 | 0 | 0 | 18 | 12 |
@@ -30718,7 +30718,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000015620374774-inlaw.ged` | 0 | 0 | 0 | 47 | 0 |
 | `harvested-path-geni-6000000015624148715-inlaw.ged` | 1 | 1 | 0 | 41 | 0 |
 | `harvested-path-geni-6000000015626179574-inlaw.ged` | 2 | 2 | 0 | 33 | 0 |
-| `harvested-path-geni-6000000015626197202-blood.ged` | 6 | 1 | 0 | 78 | 10 |
+| `harvested-path-geni-6000000015626197202-blood.ged` | 6 | 0 | 0 | 79 | 12 |
 | `harvested-path-geni-6000000015629993688-blood.ged` | 14 | 14 | 0 | 77 | 0 |
 | `harvested-path-geni-6000000015631370958-blood.ged` | 13 | 13 | 0 | 83 | 0 |
 | `harvested-path-geni-6000000015631370958-inlaw.ged` | 4 | 2 | 0 | 41 | 1 |
@@ -31809,7 +31809,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000018202577333-blood.ged` | 21 | 16 | 0 | 60 | 5 |
 | `harvested-path-geni-6000000018204335490-inlaw.ged` | 5 | 5 | 0 | 43 | 0 |
 | `harvested-path-geni-6000000018212260392-inlaw.ged` | 4 | 3 | 0 | 38 | 1 |
-| `harvested-path-geni-6000000018220851929-blood.ged` | 12 | 10 | 0 | 35 | 2 |
+| `harvested-path-geni-6000000018220851929-blood.ged` | 12 | 11 | 0 | 34 | 1 |
 | `harvested-path-geni-6000000018220851929-inlaw.ged` | 2 | 1 | 0 | 36 | 0 |
 | `harvested-path-geni-6000000018221197510-inlaw.ged` | 8 | 6 | 0 | 31 | 1 |
 | `harvested-path-geni-6000000018229668727-blood.ged` | 26 | 3 | 0 | 80 | 20 |
@@ -32929,7 +32929,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000021790370402-inlaw.ged` | 0 | 0 | 0 | 37 | 0 |
 | `harvested-path-geni-6000000021790390189-inlaw.ged` | 1 | 1 | 0 | 37 | 0 |
 | `harvested-path-geni-6000000021790452175-inlaw.ged` | 1 | 1 | 0 | 37 | 0 |
-| `harvested-path-geni-6000000021790613309-blood.ged` | 15 | 11 | 0 | 65 | 6 |
+| `harvested-path-geni-6000000021790613309-blood.ged` | 15 | 10 | 0 | 66 | 8 |
 | `harvested-path-geni-6000000021790613309-inlaw.ged` | 6 | 3 | 0 | 40 | 4 |
 | `harvested-path-geni-6000000021790827730-inlaw.ged` | 1 | 1 | 0 | 37 | 0 |
 | `harvested-path-geni-6000000021792998663-blood.ged` | 17 | 14 | 0 | 72 | 3 |
@@ -45538,7 +45538,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227668434852.ged` | 13 | 15 | 0 | 8107 | 16 |
 | `export-Descendants-6000000227676315909.ged` | 0 | 0 | 0 | 8294 | 0 |
 | `export-Forest-6000000227668434852.ged` | 49 | 5 | 0 | 7856 | 54 |
-| `export-Forest-6000000227676315909.ged` | 735 | 1918 | 21 | 5012 | 2386 |
+| `export-Forest-6000000227676315909.ged` | 735 | 1915 | 21 | 5015 | 2431 |
 | `export-Forest-6000000227145774838.ged` | 1913 | 3397 | 144 | 1274 | 434 |
 | `export-Forest-6000000227147141927.ged` | 10 | 197 | 4 | 6879 | 247 |
 | `export-Forest-6000000227145420853.ged` | 1298 | 3628 | 100 | 748 | 264 |
@@ -45551,9 +45551,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227733837031.ged` | 118 | 246 | 0 | 7573 | 114 |
 | `export-Descendants-6000000227735175860.ged` | 1 | 0 | 0 | 8542 | 8 |
 | `export-Descendants-6000000227735855842.ged` | 1 | 0 | 0 | 8542 | 6 |
-| `export-Descendants-6000000227749221232.ged` | 549 | 876 | 6 | 7006 | 3570 |
+| `export-Descendants-6000000227749221232.ged` | 549 | 877 | 6 | 7005 | 3555 |
 | `export-Descendants-6000000227750261857.ged` | 0 | 0 | 0 | 8601 | 0 |
-| `export-Descendants-6000000227804005917.ged` | 657 | 1136 | 24 | 6120 | 8043 |
+| `export-Descendants-6000000227804005917.ged` | 657 | 1139 | 24 | 6117 | 7998 |
 | `export-Descendants-6000000227805012893.ged` | 461 | 1209 | 22 | 5932 | 1275 |
 | `export-Descendants-6000000227816621867.ged` | 1104 | 2500 | 50 | 4823 | 1654 |
 | `export-Forest-6000000178918141824-refresh.ged` | 0 | 0 | 0 | 8332 | 0 |
@@ -45571,11 +45571,11 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227715260898.ged` | 42 | 178 | 0 | 7636 | 123 |
 | `export-Forest-6000000227739381826.ged` | 106 | 427 | 1 | 7298 | 836 |
 | `export-Forest-6000000227755683825.ged` | 8 | 51 | 0 | 7569 | 62 |
-| `export-Forest-6000000227802407043.ged` | 1319 | 1772 | 40 | 6465 | 1998 |
+| `export-Forest-6000000227802407043.ged` | 1319 | 1775 | 40 | 6462 | 1976 |
 | `export-Forest-6000000227802431855.ged` | 1778 | 3048 | 51 | 3118 | 1956 |
 | `export-Forest-6000000227802432937.ged` | 254 | 867 | 7 | 6466 | 1097 |
 | `export-Forest-6000000227802697066.ged` | 101 | 177 | 2 | 8013 | 506 |
-| `export-Forest-6000000227802697137.ged` | 2217 | 3788 | 25 | 1805 | 5901 |
+| `export-Forest-6000000227802697137.ged` | 2217 | 3786 | 25 | 1807 | 5928 |
 | `export-Forest-6000000227803023862.ged` | 230 | 664 | 5 | 6803 | 927 |
 | `export-Forest-6000000227803023904.ged` | 1099 | 2804 | 23 | 3258 | 3746 |
 | `export-Forest-6000000227803024957.ged` | 98 | 201 | 1 | 8239 | 324 |
@@ -45608,8 +45608,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227811549827-2026-09-18T2314.ged` | 0 | 0 | 0 | 8406 | 0 |
 | `export-Forest-6000000227811549827.ged` | 0 | 0 | 0 | 8406 | 0 |
 | `export-Forest-6000000227815618073.ged` | 482 | 1652 | 8 | 5204 | 1245 |
-| `export-Forest-6000000227816205043.ged` | 382 | 1084 | 1 | 6042 | 2317 |
-| `export-Forest-6000000227816313859.ged` | 645 | 1187 | 8 | 6337 | 3420 |
+| `export-Forest-6000000227816205043.ged` | 382 | 1090 | 1 | 6036 | 2275 |
+| `export-Forest-6000000227816313859.ged` | 645 | 1192 | 8 | 6332 | 3384 |
 | `export-Forest-6000000227816363824.ged` | 427 | 542 | 3 | 8066 | 514 |
 | `export-Forest-6000000227816411855.ged` | 34 | 773 | 11 | 6120 | 1405 |
 | `export-Forest-6000000227816541821.ged` | 0 | 0 | 0 | 6938 | 0 |
@@ -45636,17 +45636,17 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**17468** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**17035** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
 | `INDI.CHAN.DATE` | 7080 |
-| `INDI.BIRT.DATE` | 4745 |
-| `INDI.DEAT.DATE` | 3501 |
-| `INDI.DEAT` | 910 |
-| `INDI.BURI.DATE` | 669 |
+| `INDI.BIRT.DATE` | 4509 |
+| `INDI.DEAT.DATE` | 3355 |
+| `INDI.DEAT` | 875 |
+| `INDI.BURI.DATE` | 653 |
 | `FAM.HUSB` | 468 |
 | `INDI.SEX` | 74 |
 | `FAM.DIV` | 21 |
@@ -47517,17 +47517,12 @@ By path:
 | `@I5512359337980087028@` | `INDI.BIRT.DATE` | about 1455 | MBW7-P7H-ancestors12-descendants2.ged | BET 1465 AND 1480 | export-Descendants-6000000227289370034.ged |
 | `@I6000000002893316227@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227468650841.ged |
 | `@I6000000002893316227@` | `INDI.BIRT.DATE` | about 1440 | MBW7-P7H-ancestors12-descendants2.ged | 1460 | export-Forest-6000000227468650841.ged |
-| `@I6000000003645811056@` | `INDI.DEAT.DATE` | 1471 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1471 | export-Forest-6000000227320438845.ged |
-| `@I6000000003281256924@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227320438845.ged |
 | `@I6000000001584801190@` | `INDI.DEAT.DATE` | 1501 | MBW7-P7H-ancestors12-descendants2.ged | 1502 | export-Forest-6000000227468650841.ged |
 | `@I6000000001584801190@` | `INDI.BIRT.DATE` | about 1415 | MBW7-P7H-ancestors12-descendants2.ged | 1430 | export-Forest-6000000227468650841.ged |
-| `@I6000000005042069515@` | `INDI.DEAT.DATE` | After 1465 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1424 | export-Forest-6000000227320438845.ged |
-| `@I6000000005042069515@` | `INDI.BIRT.DATE` | Abt 1421 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1390 | export-Forest-6000000227320438845.ged |
 | `@I6000000006241455727@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000227289370034.ged |
 | `@I6000000006241455727@` | `INDI.BIRT.DATE` | estimated 1427 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1420 | export-Descendants-6000000227289370034.ged |
 | `@I6000000005075343353@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227468650841.ged |
 | `@I6000000005075343353@` | `INDI.BIRT.DATE` | about 1420 | MBW7-P7H-ancestors12-descendants2.ged | 1420 | export-Forest-6000000227468650841.ged |
-| `@I6000000005041598810@` | `INDI.BIRT.DATE` | 1424 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1400 | export-Forest-6000000227320438845.ged |
 | `@I6000000017876489301@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227308361821.ged |
 | `@I6000000003897585979@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227308361821.ged |
 | `@I6000000003897585979@` | `INDI.BIRT.DATE` | about 1392 | MBW7-P7H-ancestors12-descendants2.ged | AFT 1395 | export-Forest-6000000227308361821.ged |
@@ -47546,11 +47541,7 @@ By path:
 | `@I6000000007692128954@` | `INDI.BIRT.DATE` | 1484 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1484 | export-Forest-6000000227320438845.ged |
 | `@I6000000002572728015@` | `INDI.DEAT.DATE` | Aft 1423 | MBW7-P7H-ancestors12-descendants2.ged | 1427 | export-Forest-6000000227295848846.ged |
 | `@I6000000002572728015@` | `INDI.BIRT.DATE` | about 1373 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1373 | export-Forest-6000000227295848846.ged |
-| `@I6000000002017898070@` | `INDI.BIRT.DATE` | 1 January 1530 | MBW7-P7H-ancestors12-descendants2.ged | 1530 | export-Descendants-6000000227289370034.ged |
-| `@I6000000002017898070@` | `INDI.DEAT.DATE` | about 1593 | MBW7-P7H-ancestors12-descendants2.ged | 1593 | export-Descendants-6000000227289370034.ged |
 | `@I6000000002893824744@` | `INDI.BIRT.DATE` | 1585 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1595 | export-Descendants-6000000227289370034.ged |
-| `@I6000000002893611154@` | `INDI.BIRT.DATE` | 1530 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1530 | export-Descendants-6000000227289370034.ged |
-| `@I6000000002893611154@` | `INDI.DEAT.DATE` | 13 September 1587 | MBW7-P7H-ancestors12-descendants2.ged | 13 SEP 1587 | export-Descendants-6000000227289370034.ged |
 | `@I6000000001599605724@` | `INDI.BIRT.DATE` | Abt 1465 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1465 | export-Forest-6000000227320438845.ged |
 | `@I6000000007635631030@` | `INDI.BIRT.DATE` | about 1600 | MBW7-P7H-ancestors12-descendants2.ged | 1600 | export-Descendants-6000000227289370034.ged |
 | `@I6000000002572701505@` | `INDI.BIRT.DATE` | 1400 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1400 | export-BloodTree-6000000227289508960.ged |
@@ -47558,30 +47549,15 @@ By path:
 | `@I6000000002572701505@` | `INDI.BURI.DATE` | 1454 | MBW7-P7H-ancestors12-descendants2.ged | 1450 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000021528103181@` | `INDI.DEAT.DATE` | 29. marts 1664 | MBW7-P7H-ancestors12-descendants2.ged | ABT 29 MAR 1664 | export-Descendants-6000000227289370034.ged |
 | `@I6000000003378670599@` | `INDI.BIRT.DATE` | 1340 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1350 | export-Forest-6000000227295848846.ged |
-| `@I6000000007636368233@` | `INDI.BIRT.DATE` | abt. 1626 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1633 | export-Descendants-6000000227289370034.ged |
 | `@I6000000026105678965@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227306452830.ged |
-| `@I6000000003821039383@` | `INDI.DEAT.DATE` | before 1624 | MBW7-P7H-ancestors12-descendants2.ged | BEF 1624 | export-Descendants-6000000227289370034.ged |
 | `@I6000000002078126382@` | `INDI.DEAT.DATE` | 10 October 1700 | MBW7-P7H-ancestors12-descendants2.ged | 10 OCT 1700 | export-Descendants-6000000227289370034.ged |
 | `@I6000000002078126382@` | `INDI.BURI.DATE` | 11 October 1700 | MBW7-P7H-ancestors12-descendants2.ged | 11 OCT 1700 | export-Descendants-6000000227289370034.ged |
-| `@I6000000004202433041@` | `INDI.DEAT.DATE` | 1615 | MBW7-P7H-ancestors12-descendants2.ged | 1587 | export-Forest-6000000227308361821.ged |
-| `@I6000000004202433041@` | `INDI.BIRT.DATE` | about 1540 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1540 | export-Forest-6000000227308361821.ged |
 | `@I6000000021807161192@` | `INDI.DEAT.DATE` | 14. september 1707 | MBW7-P7H-ancestors12-descendants2.ged | 14 SEP 1707 | export-Descendants-6000000227289370034.ged |
-| `@I6000000002512241437@` | `INDI.BIRT.DATE` | 1560 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1560 | export-Descendants-6000000227289370034.ged |
-| `@I6000000002512241437@` | `INDI.DEAT.DATE` | 10 June 1622 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1630 | export-Descendants-6000000227289370034.ged |
-| `@I6000000007049612131@` | `INDI.BURI.DATE` | 3 December 1626 | MBW7-P7H-ancestors12-descendants2.ged | 3 DEC 1626 | export-Descendants-6000000227289370034.ged |
-| `@I6000000007049612131@` | `INDI.BIRT.DATE` | About 1580 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1580 | export-Descendants-6000000227289370034.ged |
-| `@I6000000007049612131@` | `INDI.DEAT.DATE` | 30 November 1626 | MBW7-P7H-ancestors12-descendants2.ged | 30 NOV 1626 | export-Descendants-6000000227289370034.ged |
 | `@I6000000007692233162@` | `INDI.DEAT.DATE` | 3 Mar 1582 | MBW7-P7H-ancestors12-descendants2.ged | 3 MAR 1582 | export-Forest-6000000227317899894.ged |
-| `@I6000000094451697974@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000227289370034.ged |
-| `@I6000000003645896033@` | `INDI.BIRT.DATE` | about 1575 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1575 | export-Descendants-6000000227289370034.ged |
 | `@I6000000007401330590@` | `INDI.DEAT.DATE` | 1667 | MBW7-P7H-ancestors12-descendants2.ged | BEF 20 NOV 1667 | export-Descendants-6000000227289370034.ged |
 | `@I6000000004870648136@` | `INDI.BIRT.DATE` | 1362 | MBW7-P7H-ancestors12-descendants2.ged | 1360 | export-Forest-6000000227295848846.ged |
 | `@I6000000004870648136@` | `INDI.DEAT.DATE` | after 1408 | MBW7-P7H-ancestors12-descendants2.ged | AFT 1408 | export-Forest-6000000227295848846.ged |
-| `@I6000000005620702283@` | `INDI.DEAT.DATE` | about 1620 | MBW7-P7H-ancestors12-descendants2.ged | 1620 | export-Forest-6000000227297029878.ged |
-| `@I6000000005620702283@` | `INDI.BIRT.DATE` | about 1540 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1540 | export-Forest-6000000227297029878.ged |
 | `@I6000000007692282242@` | `INDI.BIRT.DATE` | 1545 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1545 | export-Forest-6000000227320438845.ged |
-| `@I6000000003768604339@` | `INDI.DEAT.DATE` | about 1628 | MBW7-P7H-ancestors12-descendants2.ged | 1628 | export-Descendants-6000000227289370034.ged |
-| `@I6000000003768604339@` | `INDI.BIRT.DATE` | about 1557 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1557 | export-Descendants-6000000227289370034.ged |
 | `@I6000000031472823299@` | `INDI.DEAT.DATE` | 1623 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1623 | export-Forest-6000000227297027825.ged |
 | `@I6000000003820948401@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227295848846.ged |
 | `@I6000000003820948401@` | `INDI.BIRT.DATE` | 1403 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1403 | export-Forest-6000000227295848846.ged |
@@ -47593,10 +47569,6 @@ By path:
 | `@I6000000008115020929@` | `INDI.DEAT.DATE` | 16 Feb 1692 | MBW7-P7H-ancestors12-descendants2.ged | 16 FEB 1692 | export-Forest-6000000227297027825.ged |
 | `@I6000000008686109792@` | `INDI.DEAT.DATE` | about 1450 | MBW7-P7H-ancestors12-descendants2.ged | 1450 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000008686109792@` | `INDI.BIRT.DATE` | about 1405 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1405 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000000128112007@` | `INDI.DEAT.DATE` | 21 June 1628 | MBW7-P7H-ancestors12-descendants2.ged | 21 JUN 1628 | export-Forest-6000000227297029878.ged |
-| `@I6000000002006166904@` | `INDI.DEAT.DATE` | 1620 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1620 | export-Forest-6000000227297029878.ged |
-| `@I6000000002006166904@` | `INDI.BIRT.DATE` | 12. Februar 1569 | MBW7-P7H-ancestors12-descendants2.ged | 12 FEB 1569 | export-Forest-6000000227297029878.ged |
-| `@I6000000006589423150@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227308361821.ged |
 | `@I6000000002893299341@` | `INDI.BIRT.DATE` | 1340 | MBW7-P7H-ancestors12-descendants2.ged | ABT 1326 | export-Forest-6000000227295848846.ged |
 | `@I6000000007980337274@` | `INDI.DEAT` | Y | MBW7-P7H-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000227289604855.ged |
 | `@I6000000008115048412@` | `INDI.DEAT.DATE` | 19 Nov 1666 | MBW7-P7H-ancestors12-descendants2.ged | 19 NOV 1666 | export-Forest-6000000227297027825.ged |
@@ -47824,7 +47796,6 @@ By path:
 | `@I6000000178279840831@` | `INDI.BIRT.DATE` | 26Oct1742 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAY 1747 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000002866367282@` | `INDI.DEAT.DATE` | 1791 | PFR5-LDS-ancestors12-descendants2.ged | BET 1775 AND 1820 | export-Forest-6000000227311010870.ged |
 | `@I6000000002866367282@` | `INDI.BIRT.DATE` | 1731 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1725 | export-Forest-6000000227311010870.ged |
-| `@I6000000177921501879@` | `INDI.BIRT.DATE` | 1732 | PFR5-LDS-ancestors12-descendants2.ged | 2 APR 1732 | export-Descendants-6000000177921389824.ged |
 | `@I6000000011078886609@` | `INDI.BIRT.DATE` | 4 December 1738 | PFR5-LDS-ancestors12-descendants2.ged | 4 DEC 1738 | export-Forest-6000000227294926845.ged |
 | `@I6000000002374539778@` | `INDI.DEAT.DATE` | 24 June 1786 | PFR5-LDS-ancestors12-descendants2.ged | 24 JUN 1786 | export-Forest-6000000227296927882.ged |
 | `@I6000000002374539778@` | `INDI.BIRT.DATE` | 1 September 1726 | PFR5-LDS-ancestors12-descendants2.ged | 1 SEP 1726 | export-Forest-6000000227296927882.ged |
@@ -47862,7 +47833,6 @@ By path:
 | `@I6000000177921516849@` | `INDI.BIRT.DATE` | 18 Oct 1729 | PFR5-LDS-ancestors12-descendants2.ged | 19 OCT 1729 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000035769326152@` | `INDI.DEAT.DATE` | før 1790 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1773 | export-Forest-6000000227299181836.ged |
 | `@I6000000035769326152@` | `INDI.BIRT.DATE` | 1728 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1727 | export-Forest-6000000227299181836.ged |
-| `@I6000000177921501874@` | `INDI.BIRT.DATE` | 1730 | PFR5-LDS-ancestors12-descendants2.ged | 1729 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000024386276094@` | `INDI.BIRT.DATE` | 1730 | PFR5-LDS-ancestors12-descendants2.ged | 11 OCT 1730 | export-Forest-6000000227295934952.ged |
 | `@I6000000178279357868@` | `INDI.BIRT.DATE` | 25Sep1739 | PFR5-LDS-ancestors12-descendants2.ged | 25 SEP 1739 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000003492033716@` | `INDI.BIRT.DATE` |        1723 | PFR5-LDS-ancestors12-descendants2.ged | 1723 | export-BloodTree-6000000087535357291.ged |
@@ -47994,7 +47964,6 @@ By path:
 | `@I6000000007037327234@` | `INDI.BIRT.DATE` |        1687 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1687 | export-Forest-6000000227296927882.ged |
 | `@I6000000118401483866@` | `INDI.DEAT.DATE` | 1759 | PFR5-LDS-ancestors12-descendants2.ged | 12 APR 1759 | export-Forest-6000000227315747834.ged |
 | `@I6000000118401483866@` | `INDI.BIRT.DATE` | 1693 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1693 | export-Forest-6000000227315747834.ged |
-| `@I6000000177921389824@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000177921389824.ged |
 | `@I6000000006776171884@` | `INDI.DEAT.DATE` | 1712 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1733 | export-Forest-6000000227315362825.ged |
 | `@I6000000006776171884@` | `INDI.BIRT.DATE` | about 1680 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1685 | export-Forest-6000000227315362825.ged |
 | `@I6000000005609547739@` | `INDI.DEAT.DATE` | 1787 | PFR5-LDS-ancestors12-descendants2.ged | 13 FEB 1787 | export-BloodTree-6000000087535357291.ged |
@@ -48528,7 +48497,6 @@ By path:
 | `@I6000000002963278331@` | `INDI.BIRT.DATE` | about 1555 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1555 | export-Forest-6000000227315362825.ged |
 | `@I6000000002964237068@` | `INDI.BIRT.DATE` | about 1607 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1595 | export-Forest-6000000227296927882.ged |
 | `@I6000000002964237068@` | `INDI.DEAT.DATE` | 1648 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1648 | export-Forest-6000000227296927882.ged |
-| `@I6000000002619602934@` | `INDI.BIRT.DATE` | 1580 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1580 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000000496983272@` | `INDI.DEAT.DATE` | January 1661 | PFR5-LDS-ancestors12-descendants2.ged | BET 1653 AND 1661 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000000496983272@` | `INDI.BIRT.DATE` | 1590 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1580 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000005607365222@` | `INDI.BIRT.DATE` | 1575 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1564 | export-Forest-6000000227290969847.ged |
@@ -48537,7 +48505,6 @@ By path:
 | `@I6000000003615007865@` | `INDI.DEAT.DATE` | 1607 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1607 | export-Forest-6000000227296927882.ged |
 | `@I6000000025349344669@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227294926845.ged |
 | `@I6000000025349344669@` | `INDI.BIRT.DATE` | Abt 1600 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1595 | export-Forest-6000000227294926845.ged |
-| `@I6000000001169146145@` | `INDI.DEAT.DATE` | 1672 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1662 | export-Forest-6000000227299181836.ged |
 | `@I6000000006868924292@` | `INDI.BIRT.DATE` | about 1560 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1580 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000006868924292@` | `INDI.DEAT.DATE` | about 1620 | PFR5-LDS-ancestors12-descendants2.ged | 1613 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000007378147830@` | `INDI.BIRT.DATE` | 1589 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1589 | export-Ancestors-6000000227464556886.ged |
@@ -48668,8 +48635,6 @@ By path:
 | `@I6000000003173346398@` | `INDI.BIRT.DATE` | about 1608 | PFR5-LDS-ancestors12-descendants2.ged | 1602 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003173346398@` | `INDI.DEAT.DATE` | 3 June 1669 | PFR5-LDS-ancestors12-descendants2.ged | 3 JUN 1669 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000025170081763@` | `INDI.DEAT.DATE` | 22 Apr 1852 | PFR5-LDS-ancestors12-descendants2.ged | 22 APR 1852 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000003492055595@` | `INDI.DEAT.DATE` | bef 1664 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1664 | export-Forest-6000000227312306880.ged |
-| `@I6000000003492055595@` | `INDI.BIRT.DATE` |        1620 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1620 | export-Forest-6000000227312306880.ged |
 | `@I6000000003094939912@` | `INDI.BIRT.DATE` | about 1667 | PFR5-LDS-ancestors12-descendants2.ged | 1667 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094939912@` | `INDI.BURI.DATE` | 13 Mar 1735 | PFR5-LDS-ancestors12-descendants2.ged | 13 MAR 1735 | export-Forest-6000000227296927882.ged |
 | `@I6000000011776958258@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
@@ -48820,8 +48785,6 @@ By path:
 | `@I6000000007012923849@` | `INDI.BIRT.DATE` | Abt 1640 | PFR5-LDS-ancestors12-descendants2.ged | 1640 | export-Forest-6000000227295934952.ged |
 | `@I6000000178135392843@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
 | `@I6000000005967219755@` | `INDI.BIRT.DATE` | Abt 1595 | PFR5-LDS-ancestors12-descendants2.ged | 1595 | export-Forest-6000000227254397877.ged |
-| `@I6000000003024605546@` | `INDI.DEAT.DATE` | 26 April 1852 | PFR5-LDS-ancestors12-descendants2.ged | 26 APR 1852 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024605546@` | `INDI.BIRT.DATE` | 27 July 1796 | PFR5-LDS-ancestors12-descendants2.ged | 1796 | export-Forest-6000000227296927882.ged |
 | `@I6000000216469140821@` | `INDI.BIRT.DATE` | 1 Jul 1712 | PFR5-LDS-ancestors12-descendants2.ged | 1 JUL 1712 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005606841858@` | `INDI.DEAT.DATE` | 20 December 1823 | PFR5-LDS-ancestors12-descendants2.ged | 20 DEC 1823 | export-Forest-6000000227312306880.ged |
 | `@I6000000005607311199@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000227224418030.ged |
@@ -48884,19 +48847,16 @@ By path:
 | `@I6000000005607685746@` | `INDI.DEAT.DATE` | 26 December 1762 | PFR5-LDS-ancestors12-descendants2.ged | 26 DEC 1762 | export-Forest-6000000227295934952.ged |
 | `@I6000000011329696852@` | `INDI.BURI.DATE` | 11 June 1904 | PFR5-LDS-ancestors12-descendants2.ged | 11 JUN 1904 | export-Forest-6000000227296962836.ged |
 | `@I6000000011329696852@` | `INDI.DEAT.DATE` | 06 JUN 1904 | PFR5-LDS-ancestors12-descendants2.ged | 6 JUN 1904 | export-Forest-6000000227296962836.ged |
-| `@I6000000021651310257@` | `INDI.BIRT.DATE` | 3 June 1883 | PFR5-LDS-ancestors12-descendants2.ged | 3 JUN 1883 | export-Descendants-6000000177943120858.ged |
 | `@I6000000013485850415@` | `INDI.BIRT.DATE` |        1747 | PFR5-LDS-ancestors12-descendants2.ged | 1747 | export-Forest-6000000227296927882.ged |
 | `@I6000000013485850415@` | `INDI.DEAT.DATE` | 6 October 1818 | PFR5-LDS-ancestors12-descendants2.ged | 6 OCT 1818 | export-Forest-6000000227296927882.ged |
 | `@I6000000132008973574@` | `INDI.DEAT.DATE` | 08 Dec 1753 | PFR5-LDS-ancestors12-descendants2.ged | 1753 | export-Forest-6000000227295934952.ged |
 | `@I6000000132008973574@` | `INDI.BIRT.DATE` | 03 Jul 1726 | PFR5-LDS-ancestors12-descendants2.ged | 3 JUL 1726 | export-Forest-6000000227295934952.ged |
-| `@I6000000010057347454@` | `INDI.BIRT.DATE` | 1 March 1764 | PFR5-LDS-ancestors12-descendants2.ged | 9 OCT 1739 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000006171215854@` | `INDI.DEAT.DATE` | 13 October 1799 | PFR5-LDS-ancestors12-descendants2.ged | 1799 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000006171215854@` | `INDI.BURI.DATE` | 13/10/1799 | PFR5-LDS-ancestors12-descendants2.ged | 13 OCT 1799 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000004861652212@` | `INDI.DEAT.DATE` | after 1674 | PFR5-LDS-ancestors12-descendants2.ged | 1674 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000004861652212@` | `INDI.BIRT.DATE` | Abt 1596 | PFR5-LDS-ancestors12-descendants2.ged | 1596 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000001169232896@` | `INDI.DEAT.DATE` | 1660 | PFR5-LDS-ancestors12-descendants2.ged | 1679 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000001169232896@` | `INDI.BIRT.DATE` | about 1606 | PFR5-LDS-ancestors12-descendants2.ged | 1605 | export-BloodTree-6000000227289508960.ged |
-| `@I5342771646520104976@` | `INDI.DEAT.DATE` | BEF 1675 | PFR5-LDS-ancestors12-descendants2.ged | 1670 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003492037540@` | `INDI.DEAT.DATE` |        1711 | PFR5-LDS-ancestors12-descendants2.ged | 1711 | export-Forest-6000000227312306880.ged |
 | `@I6000000003492072116@` | `INDI.BIRT.DATE` |        1679 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1679 | export-Forest-6000000227303522852.ged |
 | `@I6000000005609211668@` | `INDI.DEAT.DATE` | 1762 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1762 | export-Forest-6000000227312306880.ged |
@@ -48935,8 +48895,6 @@ By path:
 | `@I6000000005607123699@` | `INDI.BIRT.DATE` | 1657 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1657 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000005607123699@` | `INDI.DEAT.DATE` | 1717 | PFR5-LDS-ancestors12-descendants2.ged | 1718 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003253689318@` | `INDI.DEAT.DATE` | 24 March 1725 | PFR5-LDS-ancestors12-descendants2.ged | 24 MAR 1725 | export-Forest-6000000227311193823.ged |
-| `@I6000000009299169816@` | `INDI.BIRT.DATE` | 1796 | PFR5-LDS-ancestors12-descendants2.ged | 28 APR 1793 | export-Forest-6000000227290969847.ged |
-| `@I6000000009299169816@` | `INDI.DEAT.DATE` | 30 September 1865 | PFR5-LDS-ancestors12-descendants2.ged | 1864 | export-Forest-6000000227290969847.ged |
 | `@I6000000003094967657@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227299240825.ged |
 | `@I6000000003094967657@` | `INDI.BIRT.DATE` | Abt 1638 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1645 | export-Forest-6000000227299240825.ged |
 | `@I6000000014515953122@` | `INDI.DEAT.DATE` | 30 Oct 1817 | PFR5-LDS-ancestors12-descendants2.ged | 30 OCT 1817 | export-Descendants-6000000177944124971.ged |
@@ -48968,10 +48926,7 @@ By path:
 | `@I6000000010480210324@` | `INDI.BIRT.DATE` | 29 Jan 1815 | PFR5-LDS-ancestors12-descendants2.ged | 29 JAN 1815 | export-Forest-6000000227296962836.ged |
 | `@I6000000010480210324@` | `INDI.DEAT.DATE` | 12 Apr 1901 | PFR5-LDS-ancestors12-descendants2.ged | 12 APR 1901 | export-Forest-6000000227296962836.ged |
 | `@I6000000003094982171@` | `INDI.BIRT.DATE` | 1614 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1614 | export-Forest-6000000227254397877.ged |
-| `@I6000000011516326905@` | `INDI.DEAT.DATE` | 1 December 1867 | PFR5-LDS-ancestors12-descendants2.ged | 1 DEC 1867 | export-Forest-6000000227296927882.ged |
-| `@I6000000011516326905@` | `INDI.BIRT.DATE` | about 1791 | PFR5-LDS-ancestors12-descendants2.ged | 1791 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095033736@` | `INDI.BIRT.DATE` | Abt 1653 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1653 | export-Forest-6000000227312306880.ged |
-| `@I6000000005607089073@` | `INDI.BIRT.DATE` | 25Oct1765 | PFR5-LDS-ancestors12-descendants2.ged | 1765 | export-Forest-6000000227312306880.ged |
 | `@I6000000003095063253@` | `INDI.BIRT.DATE` | about 1683 | PFR5-LDS-ancestors12-descendants2.ged | 1687 | export-Forest-6000000227303522852.ged |
 | `@I6000000005606976888@` | `INDI.DEAT.DATE` |        1741 | PFR5-LDS-ancestors12-descendants2.ged | 1741 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492037913@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
@@ -49126,14 +49081,12 @@ By path:
 | `@I6000000011359114067@` | `INDI.BIRT.DATE` | Abt 1649 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1649 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000002845973162@` | `INDI.BIRT.DATE` | 1655 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1645 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000016762373214@` | `INDI.BIRT.DATE` | 1658 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1658 | export-Forest-6000000227312306880.ged |
-| `@I6000000021652749382@` | `INDI.BIRT.DATE` | 26 November 1888 | PFR5-LDS-ancestors12-descendants2.ged | 26 NOV 1888 | export-Descendants-6000000177943120858.ged |
 | `@I6000000007774553544@` | `INDI.BIRT.DATE` | 1620 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1630 | export-Forest-6000000227290969847.ged |
 | `@I6000000007774553544@` | `INDI.DEAT.DATE` | 1682 | PFR5-LDS-ancestors12-descendants2.ged | FEB 1682 | export-Forest-6000000227290969847.ged |
 | `@I337606717430005362@` | `INDI.DEAT.DATE` | 4 Jul 1784 age 59 | PFR5-LDS-ancestors12-descendants2.ged | 4 JUL 1784 | export-Forest-6000000227290969847.ged |
 | `@I6000000003094973517@` | `INDI.DEAT.DATE` | after 1760 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1760 | export-Forest-6000000227296927882.ged |
 | `@I6000000005609406841@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000005609406841@` | `INDI.BIRT.DATE` |        1654 | PFR5-LDS-ancestors12-descendants2.ged | 1654 | export-Forest-6000000227296927882.ged |
-| `@I6000000005607089009@` | `INDI.BIRT.DATE` | 17Nov1754 | PFR5-LDS-ancestors12-descendants2.ged | 1754 | export-Forest-6000000227312306880.ged |
 | `@I6000000003491944761@` | `INDI.BIRT.DATE` | Abt 1644 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1644 | export-Forest-6000000227312306880.ged |
 | `@I6000000003095108944@` | `INDI.DEAT.DATE` | 17 May 1720 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAR 1720 | export-Forest-6000000227315643833.ged |
 | `@I6000000003095108944@` | `INDI.BURI.DATE` | 17 mars 1720 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAR 1720 | export-Forest-6000000227315643833.ged |
@@ -49141,8 +49094,6 @@ By path:
 | `@I6000000007497209668@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000007497209668@` | `INDI.BIRT.DATE` |        1689 | PFR5-LDS-ancestors12-descendants2.ged | 1689 | export-Forest-6000000227296927882.ged |
 | `@I6000000007012742542@` | `INDI.BIRT.DATE` | 1690 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1688 | export-Forest-6000000227315362825.ged |
-| `@I6000000005606976905@` | `INDI.DEAT.DATE` | Abt 1704 | PFR5-LDS-ancestors12-descendants2.ged | 1704 | export-Forest-6000000227296927882.ged |
-| `@I6000000005606976905@` | `INDI.BIRT.DATE` | Abt 1704 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1700 | export-Forest-6000000227296927882.ged |
 | `@I6000000002301685738@` | `INDI.BIRT.DATE` | 1614 | PFR5-LDS-ancestors12-descendants2.ged | 1615 | export-Descendants-6000000178898487831.ged |
 | `@I6000000003095013075@` | `INDI.DEAT.DATE` |        1674 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1674 | export-Forest-6000000227254397877.ged |
 | `@I6000000003095013075@` | `INDI.BIRT.DATE` | Abt 1624 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1624 | export-Forest-6000000227254397877.ged |
@@ -49197,13 +49148,10 @@ By path:
 | `@I6000000005606976501@` | `INDI.BURI.DATE` | 1770 | PFR5-LDS-ancestors12-descendants2.ged | 29 APR 1770 | export-Forest-6000000227296927882.ged |
 | `@I6000000005606986984@` | `INDI.BIRT.DATE` |        1679 | PFR5-LDS-ancestors12-descendants2.ged | 1679 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005606986984@` | `INDI.DEAT.DATE` |        1755 | PFR5-LDS-ancestors12-descendants2.ged | 1755 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000011076706917@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000087535357291.ged |
 | `@I6000000006607278340@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227300430000.ged |
 | `@I6000000013814140357@` | `INDI.DEAT.DATE` | Bef 22 Mar 1723 | PFR5-LDS-ancestors12-descendants2.ged | BEF 22 MAR 1723 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005606855704@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000227289508960.ged |
 | `@I6000000005606855704@` | `INDI.BIRT.DATE` |        1658 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1658 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000005608888567@` | `INDI.DEAT.DATE` | before 4 April 1745 | PFR5-LDS-ancestors12-descendants2.ged | 1745 | export-Descendants-6000000178898487831.ged |
-| `@I6000000005608888567@` | `INDI.BIRT.DATE` | 1676 | PFR5-LDS-ancestors12-descendants2.ged | 1686 | export-Descendants-6000000178898487831.ged |
 | `@I6000000005607500388@` | `INDI.DEAT.DATE` | 27 June 1830 | PFR5-LDS-ancestors12-descendants2.ged | 27 JUN 1830 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607500388@` | `INDI.BURI.DATE` | 18 July 1830 | PFR5-LDS-ancestors12-descendants2.ged | 18 JUL 1830 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607500388@` | `INDI.BIRT.DATE` | 1761 | PFR5-LDS-ancestors12-descendants2.ged | 18 OCT 1761 | export-Forest-6000000227296927882.ged |
@@ -49226,11 +49174,7 @@ By path:
 | `@I6000000005609508628@` | `INDI.BIRT.DATE` | ABT 1621 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1620 | export-Forest-6000000227295934952.ged |
 | `@I6000000005609508628@` | `INDI.DEAT.DATE` | AFT 1701 | PFR5-LDS-ancestors12-descendants2.ged | 1701 | export-Forest-6000000227295934952.ged |
 | `@I6000000005607007924@` | `INDI.BIRT.DATE` | rundt 1653 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1650 | export-Forest-6000000227299240825.ged |
-| `@I6000000005607000220@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000177944124971.ged |
-| `@I6000000005607000220@` | `INDI.BIRT.DATE` | about 1597 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1597 | export-Descendants-6000000177944124971.ged |
-| `@I6000000150602289966@` | `INDI.BIRT.DATE` | about 1655 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1655 | export-Forest-6000000227299240825.ged |
 | `@I6000000212872333839@` | `INDI.BIRT.DATE` |        1737 | PFR5-LDS-ancestors12-descendants2.ged | 1737 | export-Forest-6000000227315362825.ged |
-| `@I6000000005607000212@` | `INDI.BIRT.DATE` | about 1597 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1597 | export-Descendants-6000000177944124971.ged |
 | `@I6000000009243618597@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
 | `@I6000000005606976869@` | `INDI.DEAT.DATE` | 14 October 1804 | PFR5-LDS-ancestors12-descendants2.ged | 14 OCT 1804 | export-Forest-6000000227295934952.ged |
 | `@I6000000020906645948@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296962836.ged |
@@ -49269,7 +49213,6 @@ By path:
 | `@I6000000007621513422@` | `INDI.BIRT.DATE` | abt 1687 | PFR5-LDS-ancestors12-descendants2.ged | 1684 | export-Forest-6000000227312306880.ged |
 | `@I6000000004160543963@` | `INDI.DEAT.DATE` |        1670 | PFR5-LDS-ancestors12-descendants2.ged | 1670 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000004160543963@` | `INDI.BIRT.DATE` |        1612 | PFR5-LDS-ancestors12-descendants2.ged | 1612 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000007759142191@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000003492031114@` | `INDI.BIRT.DATE` | 19 Feb 1804 | PFR5-LDS-ancestors12-descendants2.ged | 19 FEB 1804 | export-Forest-6000000227315362825.ged |
 | `@I6000000003492031114@` | `INDI.DEAT.DATE` | 17 Oct 1870 | PFR5-LDS-ancestors12-descendants2.ged | 17 OCT 1870 | export-Forest-6000000227315362825.ged |
 | `@I6000000000496970302@` | `INDI.BIRT.DATE` | Abt 1634 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1634 | export-Forest-6000000227296927882.ged |
@@ -49293,11 +49236,8 @@ By path:
 | `@I6000000009532976254@` | `INDI.BURI.DATE` | 23 July 1758 | PFR5-LDS-ancestors12-descendants2.ged | 23 JUL 1758 | export-Descendants-6000000177944124971.ged |
 | `@I6000000011718031145@` | `INDI.BIRT.DATE` |        1679 | PFR5-LDS-ancestors12-descendants2.ged | 1679 | export-Forest-6000000227296927882.ged |
 | `@I6000000008363986466@` | `INDI.DEAT.DATE` |        1792 | PFR5-LDS-ancestors12-descendants2.ged | 1792 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005609529475@` | `INDI.DEAT.DATE` | after 1709 | PFR5-LDS-ancestors12-descendants2.ged | 1694 | export-Ancestors-6000000227464556886.ged |
-| `@I6000000005609529475@` | `INDI.BIRT.DATE` | about 1639 | PFR5-LDS-ancestors12-descendants2.ged | 1637 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000001169163728@` | `INDI.DEAT.DATE` | 1686 | PFR5-LDS-ancestors12-descendants2.ged | 1689 | export-Descendants-6000000178898487831.ged |
 | `@I6000000005607050959@` | `INDI.BIRT.DATE` |        1727 | PFR5-LDS-ancestors12-descendants2.ged | 1727 | export-Forest-6000000227296927882.ged |
-| `@I6000000177921501894@` | `INDI.BIRT.DATE` | 19 september 1768 | PFR5-LDS-ancestors12-descendants2.ged | 1771 | export-Descendants-6000000177921389824.ged |
 | `@I6000000013814140360@` | `INDI.BURI.DATE` | 15 Nov 1696 | PFR5-LDS-ancestors12-descendants2.ged | 15 NOV 1696 | export-Descendants-6000000177944124971.ged |
 | `@I6000000013814140360@` | `INDI.DEAT.DATE` | 1696 | PFR5-LDS-ancestors12-descendants2.ged | NOV 1696 | export-Descendants-6000000177944124971.ged |
 | `@I6000000004042234830@` | `INDI.DEAT.DATE` | 1686 | PFR5-LDS-ancestors12-descendants2.ged | 27 FEB 1686 | export-Forest-6000000227294926845.ged |
@@ -49311,15 +49251,14 @@ By path:
 | `@I6000000115345988864@` | `INDI.DEAT.DATE` | 4 February 1873 | PFR5-LDS-ancestors12-descendants2.ged | 4 FEB 1873 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000115345988864@` | `INDI.BIRT.DATE` | 8 September 1838 | PFR5-LDS-ancestors12-descendants2.ged | 8 SEP 1838 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000004825776766@` | `INDI.DEAT.DATE` | 1668 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1668 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000021653156982@` | `INDI.BIRT.DATE` | 8 December 1876 | PFR5-LDS-ancestors12-descendants2.ged | 8 DEC 1876 | export-Descendants-6000000177943120858.ged |
 | `@I6000000003094902461@` | `INDI.DEAT.DATE` | after 1681 | PFR5-LDS-ancestors12-descendants2.ged | 1680 | export-Forest-6000000227290969847.ged |
 | `@I6000000014513059420@` | `INDI.DEAT.DATE` | 4 November 1826 | PFR5-LDS-ancestors12-descendants2.ged | 4 NOV 1826 | export-Descendants-6000000177944124971.ged |
 | `@I6000000003095006131@` | `INDI.DEAT.DATE` | ABT 1758 | PFR5-LDS-ancestors12-descendants2.ged | 1758 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095006131@` | `INDI.BIRT.DATE` | Abt 1688 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1688 | export-Forest-6000000227296927882.ged |
 | `@I6000000054641592135@` | `INDI.DEAT.DATE` | Dec 1763 | PFR5-LDS-ancestors12-descendants2.ged | 1763 | export-Forest-6000000227312306880.ged |
 | `@I6000000054641592135@` | `INDI.BIRT.DATE` |        1680 | PFR5-LDS-ancestors12-descendants2.ged | 1680 | export-Forest-6000000227312306880.ged |
-| `@I6000000005607475221@` | `INDI.BIRT.DATE` |        1708 | PFR5-LDS-ancestors12-descendants2.ged | 1711 | export-Forest-6000000227312306880.ged |
-| `@I6000000005607475221@` | `INDI.DEAT.DATE` | 10 Oct 1794 | PFR5-LDS-ancestors12-descendants2.ged | 1794 | export-Forest-6000000227312306880.ged |
+| `@I6000000005608892451@` | `INDI.BIRT.DATE` |        1708 | PFR5-LDS-ancestors12-descendants2.ged | 1708 | export-Forest-6000000227312306880.ged |
+| `@I6000000005608892451@` | `INDI.DEAT.DATE` | 10 Oct 1794 | PFR5-LDS-ancestors12-descendants2.ged | 1708 | export-Forest-6000000227312306880.ged |
 | `@I6000000032068927203@` | `INDI.DEAT.DATE` |    Jul 1918 | PFR5-LDS-ancestors12-descendants2.ged | 2 APR 1918 | export-Forest-6000000227315643833.ged |
 | `@I6000000032068927203@` | `INDI.BIRT.DATE` | 21 Jun 1897 | PFR5-LDS-ancestors12-descendants2.ged | 24 JUN 1897 | export-Forest-6000000227315643833.ged |
 | `@I6000000025171347871@` | `INDI.BIRT.DATE` |        1781 | PFR5-LDS-ancestors12-descendants2.ged | 1781 | export-Forest-6000000227291028845.ged |
@@ -49389,8 +49328,6 @@ By path:
 | `@I6000000008348998208@` | `INDI.DEAT.DATE` |  6 MAY 1725 | PFR5-LDS-ancestors12-descendants2.ged | 6 MAY 1725 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000005608888913@` | `INDI.BIRT.DATE` |        1688 | PFR5-LDS-ancestors12-descendants2.ged | 1688 | export-Forest-6000000227312306880.ged |
 | `@I6000000111151680874@` | `INDI.BIRT.DATE` |        1727 | PFR5-LDS-ancestors12-descendants2.ged | 1727 | export-Forest-6000000227296927882.ged |
-| `@I6000000039229563859@` | `INDI.BIRT.DATE` | 22 February 1759 | PFR5-LDS-ancestors12-descendants2.ged | 22 FEB 1759 | export-Forest-6000000227294926845.ged |
-| `@I6000000039229563859@` | `INDI.DEAT.DATE` | 1 January 1834 | PFR5-LDS-ancestors12-descendants2.ged | 1 JAN 1834 | export-Forest-6000000227294926845.ged |
 | `@I6000000178822092836@` | `INDI.BIRT.DATE` | 24 NOV 1718 | PFR5-LDS-ancestors12-descendants2.ged | 26 OCT 1718 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000205694179841@` | `INDI.BURI.DATE` | 28 November 1748 | PFR5-LDS-ancestors12-descendants2.ged | 28 NOV 1748 | export-Forest-6000000227296927882.ged |
 | `@I6000000205694179841@` | `INDI.DEAT.DATE` | 1748 | PFR5-LDS-ancestors12-descendants2.ged | NOV 1748 | export-Forest-6000000227296927882.ged |
@@ -49494,7 +49431,6 @@ By path:
 | `@I6000000007581489469@` | `INDI.BIRT.DATE` | February 1777 | PFR5-LDS-ancestors12-descendants2.ged | FEB 1777 | export-Forest-6000000227296927882.ged |
 | `@I6000000007581489469@` | `INDI.BURI.DATE` | 6 February 1859 | PFR5-LDS-ancestors12-descendants2.ged | 6 FEB 1859 | export-Forest-6000000227296927882.ged |
 | `@I6000000007581489469@` | `INDI.DEAT.DATE` | 27 January 1859 | PFR5-LDS-ancestors12-descendants2.ged | 27 JAN 1859 | export-Forest-6000000227296927882.ged |
-| `@I6000000021652413708@` | `INDI.BIRT.DATE` | 17 July 1879 | PFR5-LDS-ancestors12-descendants2.ged | 17 JUL 1879 | export-Descendants-6000000177943120858.ged |
 | `@I6000000005607458218@` | `INDI.BIRT.DATE` | 1670 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1670 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000005607458218@` | `INDI.DEAT.DATE` | 1711 | PFR5-LDS-ancestors12-descendants2.ged | 16 MAY 1711 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000008686109607@` | `INDI.BIRT.DATE` |        1691 | PFR5-LDS-ancestors12-descendants2.ged | 1691 | export-Forest-6000000227310843862.ged |
@@ -49541,7 +49477,6 @@ By path:
 | `@I6000000003253761138@` | `INDI.DEAT.DATE` | 16 July 1694 | PFR5-LDS-ancestors12-descendants2.ged | 1694 | export-Forest-6000000227311193823.ged |
 | `@I6000000008918292104@` | `INDI.DEAT.DATE` |        1695 | PFR5-LDS-ancestors12-descendants2.ged | 1695 | export-Forest-6000000227295934952.ged |
 | `@I6000000008918292104@` | `INDI.BIRT.DATE` | Abt 1625 | PFR5-LDS-ancestors12-descendants2.ged | 1640 | export-Forest-6000000227295934952.ged |
-| `@I6000000177921458884@` | `INDI.BIRT.DATE` | 1930 | PFR5-LDS-ancestors12-descendants2.ged | 1929 | export-Forest-6000000227315643833.ged |
 | `@I6000000003095156690@` | `INDI.BIRT.DATE` | 25 Oct 1691 | PFR5-LDS-ancestors12-descendants2.ged | 25 OCT 1691 | export-Forest-6000000227310843862.ged |
 | `@I6000000000496986919@` | `INDI.DEAT.DATE` | after 1758 | PFR5-LDS-ancestors12-descendants2.ged | AFT 1758 | export-Forest-6000000227300430000.ged |
 | `@I6000000009143822743@` | `INDI.DEAT.DATE` | 20 October 1835 | PFR5-LDS-ancestors12-descendants2.ged | 20 OCT 1835 | export-Forest-6000000227296927882.ged |
@@ -49604,8 +49539,6 @@ By path:
 | `@I6000000003094992729@` | `INDI.BIRT.DATE` | abt 1600 | PFR5-LDS-ancestors12-descendants2.ged | 1600 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005609265222@` | `INDI.DEAT.DATE` | 14 April 1870 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1870 | export-Forest-6000000227311010870.ged |
 | `@I6000000161721983859@` | `INDI.BIRT.DATE` | 10 Mar 1824 | PFR5-LDS-ancestors12-descendants2.ged | 10 MAR 1824 | export-Descendants-6000000177943120858.ged |
-| `@I6000000012899944687@` | `INDI.BIRT.DATE` | 14/05/1825 | PFR5-LDS-ancestors12-descendants2.ged | 14 MAY 1825 | export-Forest-6000000227290969847.ged |
-| `@I6000000005607086938@` | `INDI.DEAT.DATE` |        1743 | PFR5-LDS-ancestors12-descendants2.ged | 1743 | export-Forest-6000000227300430000.ged |
 | `@I6000000005607201190@` | `INDI.BIRT.DATE` | about 1677 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1687 | export-Forest-6000000227296927882.ged |
 | `@I6000000151128949844@` | `INDI.BIRT.DATE` | about 1605 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1600 | export-Forest-6000000227296927882.ged |
 | `@I6000000003491944070@` | `INDI.BURI.DATE` | 9 mars 1749 | PFR5-LDS-ancestors12-descendants2.ged | 9 MAR 1749 | export-Descendants-6000000177944124971.ged |
@@ -49642,7 +49575,6 @@ By path:
 | `@I6000000009243581344@` | `INDI.DEAT.DATE` |  4 JAN 1799 | PFR5-LDS-ancestors12-descendants2.ged | 1799 | export-Forest-6000000227315362825.ged |
 | `@I6000000009243581344@` | `INDI.BIRT.DATE` |        1727 | PFR5-LDS-ancestors12-descendants2.ged | 1728 | export-Forest-6000000227315362825.ged |
 | `@I6000000003491944645@` | `INDI.DEAT.DATE` | 1730 | PFR5-LDS-ancestors12-descendants2.ged | 23 FEB 1730 | export-Forest-6000000227312306880.ged |
-| `@I6000000194371575847@` | `INDI.BIRT.DATE` |        1651 | PFR5-LDS-ancestors12-descendants2.ged | 1651 | export-Forest-6000000227312306880.ged |
 | `@I6000000002963957456@` | `INDI.BURI.DATE` | 14 June 1739 | PFR5-LDS-ancestors12-descendants2.ged | 1739 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492057669@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227297534832.ged |
 | `@I6000000003492057669@` | `INDI.BIRT.DATE` | 1617 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1617 | export-Forest-6000000227297534832.ged |
@@ -49685,8 +49617,6 @@ By path:
 | `@I6000000003492049348@` | `INDI.BIRT.DATE` | 1662 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1662 | export-Forest-6000000227315362825.ged |
 | `@I6000000005607077358@` | `INDI.DEAT.DATE` | 8 MAR 1742 | PFR5-LDS-ancestors12-descendants2.ged | 1741 | export-Forest-6000000227296927882.ged |
 | `@I6000000003025466581@` | `INDI.BIRT.DATE` |        1677 | PFR5-LDS-ancestors12-descendants2.ged | 1676 | export-Forest-6000000227296927882.ged |
-| `@I6000000004256787540@` | `INDI.DEAT.DATE` | 1668 | PFR5-LDS-ancestors12-descendants2.ged | BEF 8 SEP 1668 | export-Forest-6000000227296927882.ged |
-| `@I6000000004256787540@` | `INDI.BIRT.DATE` | about 1600 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1617 | export-Forest-6000000227296927882.ged |
 | `@I6000000003313372387@` | `INDI.DEAT.DATE` | before 4 February 1691 | PFR5-LDS-ancestors12-descendants2.ged | 1691 | export-Forest-6000000227299181836.ged |
 | `@I6000000003313372387@` | `INDI.BURI.DATE` | 4 Feb 1691 | PFR5-LDS-ancestors12-descendants2.ged | 9 FEB 1691 | export-Forest-6000000227299181836.ged |
 | `@I6000000003313372387@` | `INDI.BIRT.DATE` | 1645 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1645 | export-Forest-6000000227299181836.ged |
@@ -49716,12 +49646,9 @@ By path:
 | `@I6000000029333866487@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000029333866487@` | `INDI.BIRT.DATE` |        1708 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1708 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094992980@` | `INDI.DEAT.DATE` | 1711 | PFR5-LDS-ancestors12-descendants2.ged | 4 MAR 1711 | export-Forest-6000000227312306880.ged |
-| `@I6000000016398055447@` | `INDI.BIRT.DATE` |        1798 | PFR5-LDS-ancestors12-descendants2.ged | 1798 | export-Forest-6000000227296927882.ged |
 | `@I6000000208185682821@` | `INDI.BIRT.DATE` |        1706 | PFR5-LDS-ancestors12-descendants2.ged | 1709 | export-Descendants-6000000227224418030.ged |
 | `@I6000000013882360738@` | `INDI.BIRT.DATE` | 23 Mar 1720 | PFR5-LDS-ancestors12-descendants2.ged | 22 MAR 1720 | export-Forest-6000000227299240825.ged |
 | `@I6000000013882360738@` | `INDI.DEAT.DATE` |        1763 | PFR5-LDS-ancestors12-descendants2.ged | 1763 | export-Forest-6000000227299240825.ged |
-| `@I6000000005607475244@` | `INDI.DEAT.DATE` |        1785 | PFR5-LDS-ancestors12-descendants2.ged | 1785 | export-Forest-6000000227295934952.ged |
-| `@I6000000005607475244@` | `INDI.BIRT.DATE` |        1711 | PFR5-LDS-ancestors12-descendants2.ged | 1711 | export-Forest-6000000227295934952.ged |
 | `@I6000000029335968831@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000029335968831@` | `INDI.BIRT.DATE` | 23 July 1713 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1712 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607155933@` | `INDI.BIRT.DATE` |        1700 | PFR5-LDS-ancestors12-descendants2.ged | 1700 | export-Forest-6000000227296927882.ged |
@@ -49840,8 +49767,6 @@ By path:
 | `@I6000000003094956922@` | `INDI.DEAT.DATE` | 19 April 1839 | PFR5-LDS-ancestors12-descendants2.ged | 19 APR 1839 | export-Forest-6000000227299240825.ged |
 | `@I6000000011330295290@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296962836.ged |
 | `@I6000000011330295290@` | `INDI.BIRT.DATE` | 03 MAY 1864 | PFR5-LDS-ancestors12-descendants2.ged | 3 MAY 1864 | export-Forest-6000000227296962836.ged |
-| `@I5426434732130122086@` | `INDI.BIRT.DATE` | 26 Apr 1705 | PFR5-LDS-ancestors12-descendants2.ged | 1705 | export-Forest-6000000227254397877.ged |
-| `@I5426434732130122086@` | `INDI.DEAT.DATE` |        1786 | PFR5-LDS-ancestors12-descendants2.ged | 1786 | export-Forest-6000000227254397877.ged |
 | `@I6000000017962109679@` | `INDI.DEAT.DATE` | etter 1782 | PFR5-LDS-ancestors12-descendants2.ged | 1782 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000017962109679@` | `INDI.BIRT.DATE` | 1693 | PFR5-LDS-ancestors12-descendants2.ged | 1690 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003491940979@` | `INDI.BIRT.DATE` |        1585 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1585 | export-Forest-6000000227312306880.ged |
@@ -49924,11 +49849,8 @@ By path:
 | `@I6000000014515440830@` | `INDI.DEAT.DATE` |  8 APR 1816 | PFR5-LDS-ancestors12-descendants2.ged | 1816 | export-Forest-6000000227299240825.ged |
 | `@I6000000014515440830@` | `INDI.BIRT.DATE` |        1788 | PFR5-LDS-ancestors12-descendants2.ged | 1788 | export-Forest-6000000227299240825.ged |
 | `@I6000000116892716834@` | `INDI.DEAT.DATE` | 14. april 1764 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1764 | export-Forest-6000000227312306880.ged |
-| `@I6000000009298796184@` | `INDI.DEAT.DATE` | 24 July 1937 | PFR5-LDS-ancestors12-descendants2.ged | 24 JUL 1938 | export-Forest-6000000227290969847.ged |
 | `@I6000000003094925142@` | `INDI.BIRT.DATE` |        1693 | PFR5-LDS-ancestors12-descendants2.ged | 1693 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607023892@` | `INDI.DEAT.DATE` | 24 October 1841 | PFR5-LDS-ancestors12-descendants2.ged | 24 OCT 1841 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024493976@` | `INDI.DEAT.DATE` | 27 Dec 1887 | PFR5-LDS-ancestors12-descendants2.ged | 27 DEC 1887 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024493976@` | `INDI.BIRT.DATE` |        1799 | PFR5-LDS-ancestors12-descendants2.ged | 1799 | export-Forest-6000000227296927882.ged |
 | `@I6000000002386768645@` | `INDI.BIRT.DATE` |        1699 | PFR5-LDS-ancestors12-descendants2.ged | 1699 | export-Descendants-6000000177944124971.ged |
 | `@I6000000002386768645@` | `INDI.DEAT.DATE` | 30 Jun 1773 | PFR5-LDS-ancestors12-descendants2.ged | 30 JUN 1733 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005607400617@` | `INDI.DEAT.DATE` | August 1744 | PFR5-LDS-ancestors12-descendants2.ged | AUG 1744 | export-Forest-6000000227315643833.ged |
@@ -49944,15 +49866,12 @@ By path:
 | `@I6000000030868403829@` | `INDI.BIRT.DATE` | 1767 | PFR5-LDS-ancestors12-descendants2.ged | 8 APR 1767 | export-Descendants-6000000227315747834.ged |
 | `@I6000000030868403829@` | `INDI.DEAT.DATE` | 1842 | PFR5-LDS-ancestors12-descendants2.ged | 15 OCT 1842 | export-Descendants-6000000227315747834.ged |
 | `@I5335391149890074971@` | `INDI.DEAT.DATE` | 1766 | PFR5-LDS-ancestors12-descendants2.ged | 1767 | export-Forest-6000000227296927882.ged |
-| `@I6000000011390612336@` | `INDI.BIRT.DATE` |        1728 | PFR5-LDS-ancestors12-descendants2.ged | 1734 | export-Forest-6000000227296927882.ged |
 | `@I6000000012099746963@` | `INDI.DEAT.DATE` | 8 November 1851 | PFR5-LDS-ancestors12-descendants2.ged | 8 NOV 1851 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000012099746963@` | `INDI.BIRT.DATE` | 1796 | PFR5-LDS-ancestors12-descendants2.ged | ABT 13 MAR 1796 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005607377431@` | `INDI.DEAT.DATE` | 1690 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1690 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000005607377431@` | `INDI.BIRT.DATE` | about 1627 | PFR5-LDS-ancestors12-descendants2.ged | 1626 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003491944572@` | `INDI.BIRT.DATE` | 7 December 1704 | PFR5-LDS-ancestors12-descendants2.ged | 7 DEC 1704 | export-Forest-6000000227312306880.ged |
 | `@I6000000003491944572@` | `INDI.DEAT.DATE` | 14 April 1762 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1762 | export-Forest-6000000227312306880.ged |
-| `@I6000000003024843420@` | `INDI.DEAT.DATE` | 14 Dec 1854 | PFR5-LDS-ancestors12-descendants2.ged | 14 DEC 1854 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024843420@` | `INDI.BIRT.DATE` | 15 Feb 1835 | PFR5-LDS-ancestors12-descendants2.ged | 15 FEB 1835 | export-Forest-6000000227296927882.ged |
 | `@I6000000011330320292@` | `INDI.DEAT.DATE` | 30 JUL 1858 | PFR5-LDS-ancestors12-descendants2.ged | 24 JUL 1858 | export-Forest-6000000227296962836.ged |
 | `@I6000000011330320292@` | `INDI.BIRT.DATE` | 23 JUL 1858 | PFR5-LDS-ancestors12-descendants2.ged | 2 JUL 1858 | export-Forest-6000000227296962836.ged |
 | `@I6000000003094956695@` | `INDI.BIRT.DATE` | 9 May 1782 | PFR5-LDS-ancestors12-descendants2.ged | 1782 | export-Forest-6000000227311010870.ged |
@@ -49962,8 +49881,6 @@ By path:
 | `@I6000000005608892507@` | `INDI.DEAT.DATE` |        1734 | PFR5-LDS-ancestors12-descendants2.ged | 1734 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005608892507@` | `INDI.BIRT.DATE` |        1734 | PFR5-LDS-ancestors12-descendants2.ged | 1734 | export-Descendants-6000000177944124971.ged |
 | `@I375743193340004705@` | `INDI.BIRT.DATE` | about 1662 | PFR5-LDS-ancestors12-descendants2.ged | 1662 | export-Forest-6000000227297681897.ged |
-| `@I6000000007433602272@` | `INDI.BIRT.DATE` | før 24. mars 1799 | PFR5-LDS-ancestors12-descendants2.ged | 24 MAR 1799 | export-Forest-6000000227311010870.ged |
-| `@I6000000007433602272@` | `INDI.DEAT.DATE` | 26 Oct 1872 | PFR5-LDS-ancestors12-descendants2.ged | 26 OCT 1872 | export-Forest-6000000227311010870.ged |
 | `@I6000000010513897006@` | `INDI.DEAT.DATE` | 29 Dec 1885 | PFR5-LDS-ancestors12-descendants2.ged | 29 DEC 1885 | export-Forest-6000000227296927882.ged |
 | `@I6000000010513897006@` | `INDI.BIRT.DATE` | 15 Feb 1833 | PFR5-LDS-ancestors12-descendants2.ged | 15 FEB 1833 | export-Forest-6000000227296927882.ged |
 | `@I6000000008331410902@` | `INDI.DEAT.DATE` | 1 December 1735 | PFR5-LDS-ancestors12-descendants2.ged | 1735 | export-Descendants-6000000177944124971.ged |
@@ -50013,7 +49930,6 @@ By path:
 | `@I6000000006171211577@` | `INDI.BIRT.DATE` | 26.12.1750 | PFR5-LDS-ancestors12-descendants2.ged | 1750 | export-Forest-6000000227310843862.ged |
 | `@I6000000003095038826@` | `INDI.DEAT.DATE` | 31 October 1892 | PFR5-LDS-ancestors12-descendants2.ged | 31 OCT 1892 | export-Forest-6000000227290969847.ged |
 | `@I6000000003095038826@` | `INDI.BIRT.DATE` | 1810 | PFR5-LDS-ancestors12-descendants2.ged | 1812 | export-Forest-6000000227290969847.ged |
-| `@I6000000177967919865@` | `INDI.BIRT.DATE` | abt 1660 | PFR5-LDS-ancestors12-descendants2.ged | 1662 | export-Descendants-6000000177944124971.ged |
 | `@I6000000006856256266@` | `INDI.DEAT.DATE` | Bef 1711 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1709 | export-Forest-6000000227299181836.ged |
 | `@I6000000006856256266@` | `INDI.BIRT.DATE` | Abt 1648 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1648 | export-Forest-6000000227299181836.ged |
 | `@I6000000009590869514@` | `INDI.BIRT.DATE` | 11 Aug 1709 | PFR5-LDS-ancestors12-descendants2.ged | 1709 | export-Forest-6000000227295934952.ged |
@@ -50041,7 +49957,6 @@ By path:
 | `@I6000000190833413821@` | `INDI.BIRT.DATE` | 10 May 1911 | PFR5-LDS-ancestors12-descendants2.ged | 10 MAY 1911 | export-Forest-6000000227290969847.ged |
 | `@I6000000000172043424@` | `INDI.BIRT.DATE` | 1703 | PFR5-LDS-ancestors12-descendants2.ged | 1702 | export-Forest-6000000227299181836.ged |
 | `@I6000000007789059223@` | `INDI.DEAT.DATE` | 24 May 1856 | PFR5-LDS-ancestors12-descendants2.ged | 24 MAY 1856 | export-Forest-6000000227299240825.ged |
-| `@I6000000002976502147@` | `INDI.DEAT.DATE` |  5 DEC 1921 | PFR5-LDS-ancestors12-descendants2.ged | 5 DEC 1921 | export-Forest-6000000227296927882.ged |
 | `@I6000000008860328452@` | `INDI.DEAT.DATE` | 1805 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAR 1805 | export-Forest-6000000227295934952.ged |
 | `@I6000000008860328452@` | `INDI.BIRT.DATE` | 1722 | PFR5-LDS-ancestors12-descendants2.ged | 11 OCT 1722 | export-Forest-6000000227295934952.ged |
 | `@I6000000035525912053@` | `INDI.BIRT.DATE` |        1877 | PFR5-LDS-ancestors12-descendants2.ged | 10 FEB 1877 | export-Forest-6000000227299732860.ged |
@@ -50122,10 +50037,6 @@ By path:
 | `@I6000000009381024929@` | `INDI.BIRT.DATE` |        1719 | PFR5-LDS-ancestors12-descendants2.ged | 1719 | export-Forest-6000000227303522852.ged |
 | `@I6000000009381024929@` | `INDI.BURI.DATE` | 6 Jul 1733 | PFR5-LDS-ancestors12-descendants2.ged | 6 JUL 1733 | export-Forest-6000000227303522852.ged |
 | `@I6000000040703700791@` | `INDI.BIRT.DATE` | abt 1653 | PFR5-LDS-ancestors12-descendants2.ged | 1653 | export-Descendants-6000000177944124971.ged |
-| `@I6000000125611993955@` | `INDI.DEAT.DATE` | 11 August 1965 | PFR5-LDS-ancestors12-descendants2.ged | 11 AUG 1965 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000125611993955@` | `INDI.BIRT.DATE` | 6 January 1899 | PFR5-LDS-ancestors12-descendants2.ged | 6 JAN 1899 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000005608892487@` | `INDI.BIRT.DATE` |        1748 | PFR5-LDS-ancestors12-descendants2.ged | 7 APR 1748 | export-Forest-6000000227315362825.ged |
-| `@I6000000005608892487@` | `INDI.DEAT.DATE` | 25 Apr 1832 | PFR5-LDS-ancestors12-descendants2.ged | 25 APR 1832 | export-Forest-6000000227315362825.ged |
 | `@I6000000011515960721@` | `INDI.DEAT.DATE` |        1748 | PFR5-LDS-ancestors12-descendants2.ged | 1748 | export-Descendants-6000000227224418030.ged |
 | `@I6000000002585603481@` | `INDI.DEAT.DATE` | 6 June 1837 | PFR5-LDS-ancestors12-descendants2.ged | 6 JUN 1837 | export-Descendants-6000000227224418030.ged |
 | `@I5266654523790101779@` | `INDI.DEAT.DATE` | 10 Mar 1758 | PFR5-LDS-ancestors12-descendants2.ged | 1758 | export-Descendants-6000000227289370034.ged |
@@ -50147,7 +50058,6 @@ By path:
 | `@I6000000002585735142@` | `INDI.DEAT.DATE` | 3 February 1841 | PFR5-LDS-ancestors12-descendants2.ged | 3 FEB 1841 | export-Forest-6000000227315362825.ged |
 | `@I6000000003094912258@` | `INDI.BIRT.DATE` |        1660 | PFR5-LDS-ancestors12-descendants2.ged | 1660 | export-Forest-6000000227296927882.ged |
 | `@I6000000083959724097@` | `INDI.BIRT.DATE` |        1805 | PFR5-LDS-ancestors12-descendants2.ged | 1805 | export-Forest-6000000227299240825.ged |
-| `@I6000000034770024232@` | `INDI.BIRT.DATE` | 1673 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1673 | export-Descendants-6000000178898487831.ged |
 | `@I6000000003094912542@` | `INDI.BIRT.DATE` | 25 Dec 1742 | PFR5-LDS-ancestors12-descendants2.ged | 1742 | export-Forest-6000000227315362825.ged |
 | `@I6000000003095033092@` | `INDI.DEAT.DATE` | 6 May 1875 | PFR5-LDS-ancestors12-descendants2.ged | 6 MAY 1875 | export-Forest-6000000227296927882.ged |
 | `@I6000000010556594852@` | `INDI.BIRT.DATE` | 19 May 1805 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1805 | export-Forest-6000000227315362825.ged |
@@ -50169,12 +50079,9 @@ By path:
 | `@I6000000115342617931@` | `INDI.BIRT.DATE` | 11 October 1854 | PFR5-LDS-ancestors12-descendants2.ged | 11 OCT 1854 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005609278755@` | `INDI.DEAT.DATE` | 6 Apr 1817 | PFR5-LDS-ancestors12-descendants2.ged | 6 APR 1817 | export-Forest-6000000227299240825.ged |
 | `@I6000000005609278755@` | `INDI.BIRT.DATE` |        1747 | PFR5-LDS-ancestors12-descendants2.ged | 1747 | export-Forest-6000000227299240825.ged |
-| `@I6000000005607217105@` | `INDI.DEAT.DATE` |        1733 | PFR5-LDS-ancestors12-descendants2.ged | 1733 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005607217105@` | `INDI.BIRT.DATE` | 1663 | PFR5-LDS-ancestors12-descendants2.ged | 1664 | export-Descendants-6000000177944124971.ged |
 | `@I6000000003491940856@` | `INDI.BIRT.DATE` | 1655 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1655 | export-Forest-6000000227312306880.ged |
 | `@I6000000104242792989@` | `INDI.BIRT.DATE` | 07 FEB 1815 | PFR5-LDS-ancestors12-descendants2.ged | 7 FEB 1815 | export-Forest-6000000227290969847.ged |
 | `@I6000000003094967471@` | `INDI.BIRT.DATE` | Abt 1704 | PFR5-LDS-ancestors12-descendants2.ged | 1704 | export-Forest-6000000227299240825.ged |
-| `@I6000000045976870862@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227291028845.ged |
 | `@I6000000010094682231@` | `INDI.DEAT.DATE` |        1763 | PFR5-LDS-ancestors12-descendants2.ged | 1763 | export-Forest-6000000227295934952.ged |
 | `@I6000000010094682231@` | `INDI.BIRT.DATE` | about 1692 | PFR5-LDS-ancestors12-descendants2.ged | 1688 | export-Forest-6000000227295934952.ged |
 | `@I6000000190833989827@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227290969847.ged |
@@ -50197,8 +50104,6 @@ By path:
 | `@I6000000018605137932@` | `INDI.DEAT.DATE` | 12 Mar 1695 | PFR5-LDS-ancestors12-descendants2.ged | 12 MAR 1695 | export-Descendants-6000000177944124971.ged |
 | `@I6000000018605137932@` | `INDI.BIRT.DATE` | ABT 1642 | PFR5-LDS-ancestors12-descendants2.ged | 1662 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005608892520@` | `INDI.DEAT.DATE` | 17 Jan 1819 | PFR5-LDS-ancestors12-descendants2.ged | 17 JAN 1819 | export-Forest-6000000227464556886.ged |
-| `@I6000000007671844206@` | `INDI.BIRT.DATE` | after 1678 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1681 | export-Forest-6000000227291028845.ged |
-| `@I6000000012913579535@` | `INDI.BIRT.DATE` | 28 Apr 1832 | PFR5-LDS-ancestors12-descendants2.ged | 28 APR 1832 | export-Forest-6000000227290969847.ged |
 | `@I6000000017493059278@` | `INDI.DEAT.DATE` |  8 AUG 1832 | PFR5-LDS-ancestors12-descendants2.ged | 8 AUG 1832 | export-Forest-6000000227299240825.ged |
 | `@I6000000017493059278@` | `INDI.BIRT.DATE` |        1752 | PFR5-LDS-ancestors12-descendants2.ged | 1752 | export-Forest-6000000227299240825.ged |
 | `@I6000000012703928906@` | `INDI.DEAT.DATE` | 6 April 1821 | PFR5-LDS-ancestors12-descendants2.ged | 6 APR 1821 | export-Forest-6000000227296927882.ged |
@@ -50208,8 +50113,6 @@ By path:
 | `@I6000000005609581291@` | `INDI.DEAT.DATE` |  1 FEB 1728 | PFR5-LDS-ancestors12-descendants2.ged | 1 FEB 1728 | export-Forest-6000000227315362825.ged |
 | `@I6000000005609581291@` | `INDI.BIRT.DATE` |        1669 | PFR5-LDS-ancestors12-descendants2.ged | 1669 | export-Forest-6000000227315362825.ged |
 | `@I6000000008860419323@` | `INDI.DEAT.DATE` | 1733 | PFR5-LDS-ancestors12-descendants2.ged | APR 1733 | export-Forest-6000000227312306880.ged |
-| `@I6000000003095071591@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000227289508960.ged |
-| `@I6000000003095071591@` | `INDI.BIRT.DATE` | 1520 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1585 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003492072278@` | `INDI.BIRT.DATE` |        1684 | PFR5-LDS-ancestors12-descendants2.ged | 1684 | export-Forest-6000000227315362825.ged |
 | `@I6000000006776171412@` | `INDI.BIRT.DATE` | Abt 1670 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1684 | export-Forest-6000000227312306880.ged |
 | `@I6000000002401863524@` | `INDI.DEAT.DATE` | 1901 | PFR5-LDS-ancestors12-descendants2.ged | 4 AUG 1901 | export-Forest-6000000227464556886.ged |
@@ -50231,9 +50134,6 @@ By path:
 | `@I6000000005607146768@` | `INDI.BIRT.DATE` | 1663 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1663 | export-Forest-6000000227296927882.ged |
 | `@I6000000005609575150@` | `INDI.DEAT.DATE` | 15 JAN 1749 | PFR5-LDS-ancestors12-descendants2.ged | 1749 | export-Forest-6000000227310843862.ged |
 | `@I6000000005609575150@` | `INDI.BIRT.DATE` | before 1690 | PFR5-LDS-ancestors12-descendants2.ged | 1693 | export-Forest-6000000227310843862.ged |
-| `@I6000000025767998288@` | `INDI.DEAT.DATE` | 4. juni 1935 | PFR5-LDS-ancestors12-descendants2.ged | 4 JUN 1935 | export-Forest-6000000227299240825.ged |
-| `@I6000000025767998288@` | `INDI.BURI.DATE` | 8. juni 1935 | PFR5-LDS-ancestors12-descendants2.ged | 8 JUN 1935 | export-Forest-6000000227299240825.ged |
-| `@I6000000025767998288@` | `INDI.BIRT.DATE` | 7. august 1865 | PFR5-LDS-ancestors12-descendants2.ged | 7 AUG 1865 | export-Forest-6000000227299240825.ged |
 | `@I6000000047154474892@` | `INDI.BIRT.DATE` |        1777 | PFR5-LDS-ancestors12-descendants2.ged | 1777 | export-Forest-6000000227299181836.ged |
 | `@I6000000200601446822@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005607387344@` | `INDI.DEAT.DATE` | 25 January 1887 | PFR5-LDS-ancestors12-descendants2.ged | 25 JAN 1887 | export-Forest-6000000227296927882.ged |
@@ -50339,8 +50239,6 @@ By path:
 | `@I6000000003021286309@` | `INDI.DEAT.DATE` | 8 March 1695 | PFR5-LDS-ancestors12-descendants2.ged | 8 MAR 1695 | export-Forest-6000000227315362825.ged |
 | `@I6000000003021286309@` | `INDI.BIRT.DATE` |        1652 | PFR5-LDS-ancestors12-descendants2.ged | 1652 | export-Forest-6000000227315362825.ged |
 | `@I6000000006158622416@` | `INDI.BIRT.DATE` |        1737 | PFR5-LDS-ancestors12-descendants2.ged | 1737 | export-Forest-6000000227299240825.ged |
-| `@I6000000006787656195@` | `INDI.BIRT.DATE` | about 1682 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1682 | export-Forest-6000000227310843862.ged |
-| `@I6000000006787656195@` | `INDI.DEAT.DATE` | Bef 17 Apr 1731 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1731 | export-Forest-6000000227310843862.ged |
 | `@I6000000004141190383@` | `INDI.DEAT.DATE` | før 1711 | PFR5-LDS-ancestors12-descendants2.ged | BET 1701 AND 1711 | export-Forest-6000000227254397877.ged |
 | `@I6000000004141190383@` | `INDI.BIRT.DATE` | 1630 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1630 | export-Forest-6000000227254397877.ged |
 | `@I6000000011357276695@` | `INDI.DEAT.DATE` | Abt 1810 | PFR5-LDS-ancestors12-descendants2.ged | 1810 | export-Forest-6000000227296927882.ged |
@@ -50349,7 +50247,6 @@ By path:
 | `@I6000000009674682481@` | `INDI.BIRT.DATE` |        1668 | PFR5-LDS-ancestors12-descendants2.ged | 1668 | export-Forest-6000000227299240825.ged |
 | `@I6000000003095115557@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227291028845.ged |
 | `@I6000000003095115557@` | `INDI.BIRT.DATE` | 14 Feb 1824 | PFR5-LDS-ancestors12-descendants2.ged | 14 FEB 1824 | export-Forest-6000000227291028845.ged |
-| `@I6000000009977276208@` | `INDI.BIRT.DATE` | Abt 1640 | PFR5-LDS-ancestors12-descendants2.ged | 1650 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003491971252@` | `INDI.DEAT.DATE` | 1767 | PFR5-LDS-ancestors12-descendants2.ged | 1 JUL 1767 | export-Forest-6000000227464556886.ged |
 | `@I6000000005609202497@` | `INDI.BURI.DATE` | 30. mai 1734 | PFR5-LDS-ancestors12-descendants2.ged | 30 MAY 1734 | export-Forest-6000000227315362825.ged |
 | `@I6000000014512932706@` | `INDI.DEAT.DATE` | 16 MAR 1749 | PFR5-LDS-ancestors12-descendants2.ged | 1749 | export-Descendants-6000000177944124971.ged |
@@ -50367,8 +50264,6 @@ By path:
 | `@I6000000195137600823@` | `INDI.BIRT.DATE` |        1762 | PFR5-LDS-ancestors12-descendants2.ged | 1762 | export-Forest-6000000227291028845.ged |
 | `@I6000000002386036282@` | `INDI.DEAT.DATE` | Bef 1758 | PFR5-LDS-ancestors12-descendants2.ged | BEF 1758 | export-Descendants-6000000177944124971.ged |
 | `@I6000000002386036282@` | `INDI.BIRT.DATE` |        1755 | PFR5-LDS-ancestors12-descendants2.ged | 1755 | export-Descendants-6000000177944124971.ged |
-| `@I6000000003491998017@` | `INDI.DEAT.DATE` | about 1694 | PFR5-LDS-ancestors12-descendants2.ged | 1694 | export-Ancestors-6000000227464556886.ged |
-| `@I6000000003491998017@` | `INDI.BIRT.DATE` | about 1637 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1637 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000003087245477@` | `INDI.BIRT.DATE` | 13 May 1830 | PFR5-LDS-ancestors12-descendants2.ged | 13 MAY 1830 | export-Forest-6000000227296927882.ged |
 | `@I6000000022290337822@` | `INDI.BIRT.DATE` | 11 Sep 1791 | PFR5-LDS-ancestors12-descendants2.ged | SEP 1791 | export-Forest-6000000227296927882.ged |
 | `@I6000000012921795107@` | `INDI.BIRT.DATE` | 26 Mar 1836 | PFR5-LDS-ancestors12-descendants2.ged | 26 MAR 1836 | export-Forest-6000000227296927882.ged |
@@ -50388,8 +50283,6 @@ By path:
 | `@I6000000040404725849@` | `INDI.BIRT.DATE` | 11 Aug 1743 | PFR5-LDS-ancestors12-descendants2.ged | 11 AUG 1743 | export-Descendants-6000000177944124971.ged |
 | `@I6000000083615052330@` | `INDI.DEAT.DATE` | 19 Oct 1741 | PFR5-LDS-ancestors12-descendants2.ged | BEF 19 OCT 1741 | export-Forest-6000000227312306880.ged |
 | `@I6000000005606983723@` | `INDI.DEAT.DATE` | 25 Mar 1819 | PFR5-LDS-ancestors12-descendants2.ged | 25 MAR 1819 | export-Forest-6000000227296927882.ged |
-| `@I6000000005760615192@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
-| `@I6000000005760615192@` | `INDI.BIRT.DATE` | 23 November 1732 | PFR5-LDS-ancestors12-descendants2.ged | 23 NOV 1732 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094956476@` | `INDI.DEAT.DATE` | 1742 | PFR5-LDS-ancestors12-descendants2.ged | 17 DEC 1742 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492072792@` | `INDI.DEAT.DATE` | Abt 1760 | PFR5-LDS-ancestors12-descendants2.ged | 1767 | export-Forest-6000000227312306880.ged |
 | `@I6000000003492072792@` | `INDI.BIRT.DATE` | about 1682 | PFR5-LDS-ancestors12-descendants2.ged | 1679 | export-Forest-6000000227312306880.ged |
@@ -50420,7 +50313,6 @@ By path:
 | `@I6000000005607685516@` | `INDI.DEAT.DATE` | 1728 | PFR5-LDS-ancestors12-descendants2.ged | BEF 1728 | export-Forest-6000000227291028845.ged |
 | `@I6000000003026033578@` | `INDI.BIRT.DATE` | about  1711 | PFR5-LDS-ancestors12-descendants2.ged | 1711 | export-Forest-6000000227296927882.ged |
 | `@I6000000008744612803@` | `INDI.BIRT.DATE` | about 1640 | PFR5-LDS-ancestors12-descendants2.ged | 1640 | export-Descendants-6000000177944124971.ged |
-| `@I6000000025457179900@` | `INDI.BIRT.DATE` | før 29. mai 1796 | PFR5-LDS-ancestors12-descendants2.ged | 29 MAY 1796 | export-Forest-6000000227311010870.ged |
 | `@I6000000011655884591@` | `INDI.DEAT.DATE` | 14 April 1828 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1828 | export-Forest-6000000227296927882.ged |
 | `@I6000000002853215758@` | `INDI.DEAT.DATE` | 17 Feb 1823 | PFR5-LDS-ancestors12-descendants2.ged | 17 FEB 1823 | export-Forest-6000000227300430000.ged |
 | `@I6000000002853215758@` | `INDI.BIRT.DATE` |        1781 | PFR5-LDS-ancestors12-descendants2.ged | 27 SEP 1781 | export-Forest-6000000227300430000.ged |
@@ -50436,8 +50328,6 @@ By path:
 | `@I6000000003014937151@` | `INDI.BIRT.DATE` | rundt 1703 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1703 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095047245@` | `INDI.DEAT.DATE` | 3 December 1877 | PFR5-LDS-ancestors12-descendants2.ged | 1877 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095047245@` | `INDI.BURI.DATE` | 9 December 1877 | PFR5-LDS-ancestors12-descendants2.ged | 9 DEC 1877 | export-Forest-6000000227296927882.ged |
-| `@I6000000005608892480@` | `INDI.DEAT.DATE` |        1747 | PFR5-LDS-ancestors12-descendants2.ged | 1747 | export-Forest-6000000227315362825.ged |
-| `@I6000000005608892480@` | `INDI.BIRT.DATE` |        1747 | PFR5-LDS-ancestors12-descendants2.ged | 1747 | export-Forest-6000000227315362825.ged |
 | `@I6000000003492055182@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000177944124971.ged |
 | `@I6000000003095060639@` | `INDI.BIRT.DATE` |        1695 | PFR5-LDS-ancestors12-descendants2.ged | 1695 | export-Forest-6000000227310843862.ged |
 | `@I6000000003095156715@` | `INDI.BIRT.DATE` | 30 Nov 1730 | PFR5-LDS-ancestors12-descendants2.ged | 30 NOV 1730 | export-Forest-6000000227299240825.ged |
@@ -50462,8 +50352,6 @@ By path:
 | `@I6000000015788016545@` | `INDI.DEAT.DATE` | 25 Feb 1835 | PFR5-LDS-ancestors12-descendants2.ged | 25 FEB 1835 | export-Descendants-6000000177944124971.ged |
 | `@I6000000015788016545@` | `INDI.BIRT.DATE` | 1783 | PFR5-LDS-ancestors12-descendants2.ged | ABT OCT 1783 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005606907249@` | `INDI.DEAT.DATE` | 20 July 1806 | PFR5-LDS-ancestors12-descendants2.ged | 20 JUL 1806 | export-Ancestors-6000000227464556886.ged |
-| `@I5352811457980050405@` | `INDI.BIRT.DATE` | 27 July 1788 | PFR5-LDS-ancestors12-descendants2.ged | 1788 | export-Forest-6000000227296927882.ged |
-| `@I5352811457980050405@` | `INDI.DEAT.DATE` | 20 Oct 1871 | PFR5-LDS-ancestors12-descendants2.ged | 20 OCT 1871 | export-Forest-6000000227296927882.ged |
 | `@I3960809@` | `INDI.DEAT.DATE` | 28 December 1826 | PFR5-LDS-ancestors12-descendants2.ged | 28 DEC 1826 | export-Forest-6000000227296927882.ged |
 | `@I3960809@` | `INDI.BIRT.DATE` | 1753 | PFR5-LDS-ancestors12-descendants2.ged | 2 JUL 1753 | export-Forest-6000000227296927882.ged |
 | `@I6000000008112711335@` | `INDI.DEAT.DATE` | 30 March 1752 | PFR5-LDS-ancestors12-descendants2.ged | 30 MAR 1752 | export-Forest-6000000227312306880.ged |
@@ -50581,7 +50469,6 @@ By path:
 | `@I3967153@` | `INDI.BIRT.DATE` | 02.04.1723 | PFR5-LDS-ancestors12-descendants2.ged | MAR 1723 | export-Forest-6000000227254397877.ged |
 | `@I6000000005607155237@` | `INDI.DEAT.DATE` | 8 June 1843 | PFR5-LDS-ancestors12-descendants2.ged | 8 JUN 1843 | export-Forest-6000000227296927882.ged |
 | `@I6000000068326874939@` | `INDI.BIRT.DATE` |        1779 | PFR5-LDS-ancestors12-descendants2.ged | 1779 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005609441388@` | `INDI.BIRT.DATE` | 1663 | PFR5-LDS-ancestors12-descendants2.ged | 1664 | export-Descendants-6000000227289370034.ged |
 | `@I6000000150599318061@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
 | `@I6000000150599318061@` | `INDI.BIRT.DATE` |        1624 | PFR5-LDS-ancestors12-descendants2.ged | 1624 | export-Forest-6000000227312306880.ged |
 | `@I5206037195990079715@` | `INDI.BIRT.DATE` |        1778 | PFR5-LDS-ancestors12-descendants2.ged | 1778 | export-Forest-6000000227315362825.ged |
@@ -50607,8 +50494,6 @@ By path:
 | `@I6000000194387196843@` | `INDI.BIRT.DATE` |        1652 | PFR5-LDS-ancestors12-descendants2.ged | 1652 | export-Forest-6000000227312306880.ged |
 | `@I5207675204530062653@` | `INDI.BIRT.DATE` |        1763 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1763 | export-Forest-6000000227296927882.ged |
 | `@I5207675204530062653@` | `INDI.DEAT.DATE` | 21 September 1851 | PFR5-LDS-ancestors12-descendants2.ged | 21 SEP 1851 | export-Forest-6000000227296927882.ged |
-| `@I6000000005608880704@` | `INDI.DEAT.DATE` | 20 Jan 1675 | PFR5-LDS-ancestors12-descendants2.ged | 20 JAN 1675 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000005608880704@` | `INDI.BIRT.DATE` | 1610 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1610 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003491933606@` | `INDI.BIRT.DATE` |        1731 | PFR5-LDS-ancestors12-descendants2.ged | 1731 | export-Forest-6000000227299240825.ged |
 | `@I6000000014512651531@` | `INDI.BURI.DATE` | 4 Oct 1809 | PFR5-LDS-ancestors12-descendants2.ged | 4 OCT 1809 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000014512651531@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000087535357291.ged |
@@ -50625,8 +50510,6 @@ By path:
 | `@I6000000005607187860@` | `INDI.BIRT.DATE` | ABT 1743 | PFR5-LDS-ancestors12-descendants2.ged | 1745 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607187860@` | `INDI.DEAT.DATE` | 23 Nov 1819 | PFR5-LDS-ancestors12-descendants2.ged | 23 NOV 1819 | export-Forest-6000000227296927882.ged |
 | `@I6000000020094714494@` | `INDI.BIRT.DATE` | 25 september 1704 | PFR5-LDS-ancestors12-descendants2.ged | 25 SEP 1704 | export-Forest-6000000227295934952.ged |
-| `@I6000000003024738087@` | `INDI.DEAT.DATE` | 3 May 1913 | PFR5-LDS-ancestors12-descendants2.ged | 3 MAY 1913 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024738087@` | `INDI.BIRT.DATE` | 18 Apr 1827 | PFR5-LDS-ancestors12-descendants2.ged | 18 APR 1827 | export-Forest-6000000227296927882.ged |
 | `@I6000000003491944507@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
 | `@I6000000003491944507@` | `INDI.BIRT.DATE` | 1709 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1709 | export-Forest-6000000227312306880.ged |
 | `@I6000000005609451979@` | `INDI.DEAT.DATE` |        1718 | PFR5-LDS-ancestors12-descendants2.ged | 1718 | export-Forest-6000000227296927882.ged |
@@ -50706,7 +50589,6 @@ By path:
 | `@I6000000003491995574@` | `INDI.BIRT.DATE` |        1728 | PFR5-LDS-ancestors12-descendants2.ged | 1728 | export-Forest-6000000227312306880.ged |
 | `@I6000000005606916257@` | `INDI.DEAT.DATE` |        1732 | PFR5-LDS-ancestors12-descendants2.ged | 15 SEP 1733 | export-Forest-6000000227315747834.ged |
 | `@I6000000005607050747@` | `INDI.BIRT.DATE` | 24 Feb 1731 | PFR5-LDS-ancestors12-descendants2.ged | 1731 | export-Forest-6000000227296927882.ged |
-| `@I6000000011254042588@` | `INDI.BIRT.DATE` | 14 April 1726 | PFR5-LDS-ancestors12-descendants2.ged | 1726 | export-Forest-6000000227254397877.ged |
 | `@I6000000026977087095@` | `INDI.DEAT.DATE` |        1741 | PFR5-LDS-ancestors12-descendants2.ged | 1741 | export-Descendants-6000000227224418030.ged |
 | `@I6000000003094967354@` | `INDI.DEAT.DATE` |        1749 | PFR5-LDS-ancestors12-descendants2.ged | 1749 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094967354@` | `INDI.BIRT.DATE` | about 1693 | PFR5-LDS-ancestors12-descendants2.ged | 1683 | export-Forest-6000000227296927882.ged |
@@ -50716,7 +50598,6 @@ By path:
 | `@I6000000051740891918@` | `INDI.DEAT.DATE` | 1725 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1725 | export-Forest-6000000227315643833.ged |
 | `@I6000000005608884503@` | `INDI.DEAT.DATE` | 1670 | PFR5-LDS-ancestors12-descendants2.ged | 30 MAY 1670 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000005607187506@` | `INDI.BIRT.DATE` | abt 1673 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1673 | export-Forest-6000000227296927882.ged |
-| `@I6000000005609547494@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227311193823.ged |
 | `@I6000000009465368437@` | `INDI.BIRT.DATE` | 1693 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1693 | export-Forest-6000000227296927882.ged |
 | `@I6000000011447479404@` | `INDI.DEAT.DATE` | 4 Jul 1694 | PFR5-LDS-ancestors12-descendants2.ged | 4 JUL 1694 | export-Forest-6000000227303522852.ged |
 | `@I6000000011447479404@` | `INDI.BIRT.DATE` | 1640 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1650 | export-Forest-6000000227303522852.ged |
@@ -50783,7 +50664,6 @@ By path:
 | `@I6000000034321014537@` | `INDI.BURI.DATE` | 11 May 1886 | PFR5-LDS-ancestors12-descendants2.ged | 11 MAY 1886 | export-Forest-6000000227296927882.ged |
 | `@I6000000034321014537@` | `INDI.BIRT.DATE` | 12 February 1809 | PFR5-LDS-ancestors12-descendants2.ged | 12 FEB 1809 | export-Forest-6000000227296927882.ged |
 | `@I6000000034321014537@` | `INDI.DEAT.DATE` | 5 May 1886 | PFR5-LDS-ancestors12-descendants2.ged | 5 MAY 1886 | export-Forest-6000000227296927882.ged |
-| `@I6000000003492077482@` | `INDI.DEAT.DATE` |        1735 | PFR5-LDS-ancestors12-descendants2.ged | 1735 | export-Forest-6000000227312306880.ged |
 | `@I6000000003492026884@` | `INDI.DEAT.DATE` | 1741 | PFR5-LDS-ancestors12-descendants2.ged | 17 NOV 1741 | export-Forest-6000000227312306880.ged |
 | `@I6000000003492026884@` | `INDI.BIRT.DATE` | 14 Jan 1681 | PFR5-LDS-ancestors12-descendants2.ged | 14 JAN 1681 | export-Forest-6000000227312306880.ged |
 | `@I6000000008191314464@` | `INDI.DEAT.DATE` | 22 Jan 1792 | PFR5-LDS-ancestors12-descendants2.ged | 1792 | export-Forest-6000000227299732860.ged |
@@ -50803,8 +50683,6 @@ By path:
 | `@I6000000000003012772@` | `INDI.BURI.DATE` | 19 December 1839 | PFR5-LDS-ancestors12-descendants2.ged | 19 DEC 1839 | export-Forest-6000000227296927882.ged |
 | `@I6000000005609341296@` | `INDI.DEAT.DATE` | 9Feb1716 | PFR5-LDS-ancestors12-descendants2.ged | 1716 | export-Forest-6000000227315643833.ged |
 | `@I6000000005606916386@` | `INDI.DEAT.DATE` | 5 Apr 1727 | PFR5-LDS-ancestors12-descendants2.ged | 5 APR 1727 | export-Forest-6000000227295934952.ged |
-| `@I6000000003491940095@` | `INDI.DEAT.DATE` | 4 February 1805 | PFR5-LDS-ancestors12-descendants2.ged | 1813 | export-Forest-6000000227312306880.ged |
-| `@I6000000003491940095@` | `INDI.BIRT.DATE` | 15 July 1740 | PFR5-LDS-ancestors12-descendants2.ged | 1740 | export-Forest-6000000227312306880.ged |
 | `@I6000000003095028074@` | `INDI.BURI.DATE` | 17 Sep 1741 | PFR5-LDS-ancestors12-descendants2.ged | 1741 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095028074@` | `INDI.BIRT.DATE` | 6 May 1725 | PFR5-LDS-ancestors12-descendants2.ged | 1725 | export-Forest-6000000227296927882.ged |
 | `@I6000000007013137956@` | `INDI.BIRT.DATE` | about 1610 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1600 | export-Forest-6000000227296927882.ged |
@@ -50814,8 +50692,6 @@ By path:
 | `@I6000000002334353763@` | `INDI.DEAT.DATE` | 1731 | PFR5-LDS-ancestors12-descendants2.ged | MAR 1731 | export-Forest-6000000227312306880.ged |
 | `@I6000000002334353763@` | `INDI.BIRT.DATE` |        1658 | PFR5-LDS-ancestors12-descendants2.ged | 1660 | export-Forest-6000000227312306880.ged |
 | `@I6000000010069489525@` | `INDI.DEAT.DATE` | 7 December 1826 | PFR5-LDS-ancestors12-descendants2.ged | 7 DEC 1826 | export-Forest-6000000227312306880.ged |
-| `@I6000000003492031119@` | `INDI.DEAT.DATE` | 18 Oct 1910 | PFR5-LDS-ancestors12-descendants2.ged | 19 OCT 1910 | export-Forest-6000000227315362825.ged |
-| `@I6000000003492031119@` | `INDI.BIRT.DATE` | 24 March 1829 | PFR5-LDS-ancestors12-descendants2.ged | 21 MAR 1829 | export-Forest-6000000227315362825.ged |
 | `@I6000000083960494929@` | `INDI.BIRT.DATE` |        1811 | PFR5-LDS-ancestors12-descendants2.ged | 1811 | export-Forest-6000000227299240825.ged |
 | `@I6000000005606976190@` | `INDI.DEAT.DATE` | 11 March 1842 | PFR5-LDS-ancestors12-descendants2.ged | 1842 | export-Forest-6000000227296927882.ged |
 | `@I6000000007012114869@` | `INDI.DEAT.DATE` |        1779 | PFR5-LDS-ancestors12-descendants2.ged | 1779 | export-Forest-6000000227296927882.ged |
@@ -50845,8 +50721,6 @@ By path:
 | `@I6000000174675222901@` | `INDI.DEAT.DATE` | 30 Jul 1901 | PFR5-LDS-ancestors12-descendants2.ged | 30 JUL 1901 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095028011@` | `INDI.BIRT.DATE` |        1726 | PFR5-LDS-ancestors12-descendants2.ged | 1726 | export-Forest-6000000227300430000.ged |
 | `@I6000000003095028011@` | `INDI.DEAT.DATE` |        1741 | PFR5-LDS-ancestors12-descendants2.ged | 1741 | export-Forest-6000000227300430000.ged |
-| `@I6000000028708694024@` | `INDI.DEAT.DATE` |  9 JUN 1857 | PFR5-LDS-ancestors12-descendants2.ged | 9 JUN 1857 | export-Forest-6000000227311010870.ged |
-| `@I6000000028708694024@` | `INDI.BIRT.DATE` | før 4. august 1793 | PFR5-LDS-ancestors12-descendants2.ged | 4 AUG 1793 | export-Forest-6000000227311010870.ged |
 | `@I6000000011486797073@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227299181836.ged |
 | `@I6000000057367245876@` | `INDI.BIRT.DATE` | 1673 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1673 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492064116@` | `INDI.DEAT.DATE` | 8 January 1665 | PFR5-LDS-ancestors12-descendants2.ged | 8 JAN 1665 | export-Forest-6000000227296927882.ged |
@@ -50868,7 +50742,6 @@ By path:
 | `@I6000000019268266305@` | `INDI.DEAT.DATE` | 1 Feb 1857 | PFR5-LDS-ancestors12-descendants2.ged | 1 FEB 1857 | export-Forest-6000000227312306880.ged |
 | `@I6000000003094932570@` | `INDI.BIRT.DATE` | 1693 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1693 | export-Forest-6000000227254397877.ged |
 | `@I6000000005607339179@` | `INDI.DEAT.DATE` | 22 October 1830 | PFR5-LDS-ancestors12-descendants2.ged | 22 OCT 1830 | export-Forest-6000000227296927882.ged |
-| `@I6000000194387162840@` | `INDI.DEAT.DATE` | Bef 1711 | PFR5-LDS-ancestors12-descendants2.ged | BEF 1711 | export-Forest-6000000227312306880.ged |
 | `@I6000000025071891197@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227315362825.ged |
 | `@I6000000192001341863@` | `INDI.DEAT.DATE` | 26 August 1888 | PFR5-LDS-ancestors12-descendants2.ged | 1888 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005607326949@` | `INDI.DEAT.DATE` | 1818 | PFR5-LDS-ancestors12-descendants2.ged | 4 JAN 1818 | export-Forest-6000000227293577970.ged |
@@ -50907,9 +50780,6 @@ By path:
 | `@I6000000007221770527@` | `INDI.DEAT.DATE` | 23 August 1796 | PFR5-LDS-ancestors12-descendants2.ged | 23 AUG 1796 | export-Forest-6000000227299732860.ged |
 | `@I6000000131445464821@` | `INDI.BURI.DATE` | 30 May 1803 | PFR5-LDS-ancestors12-descendants2.ged | 30 MAY 1803 | export-Forest-6000000227300430000.ged |
 | `@I6000000131445464821@` | `INDI.DEAT.DATE` | 30 May 1803 | PFR5-LDS-ancestors12-descendants2.ged | 1803 | export-Forest-6000000227300430000.ged |
-| `@I6000000002735003879@` | `INDI.DEAT.DATE` | 7 July 1829 | PFR5-LDS-ancestors12-descendants2.ged | 7 JUL 1829 | export-Forest-6000000227296927882.ged |
-| `@I6000000002735003879@` | `INDI.BURI.DATE` | 12 July 1829 | PFR5-LDS-ancestors12-descendants2.ged | 12 JUL 1829 | export-Forest-6000000227296927882.ged |
-| `@I6000000002735003879@` | `INDI.BIRT.DATE` | November 1740 | PFR5-LDS-ancestors12-descendants2.ged | NOV 1740 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095003911@` | `INDI.DEAT.DATE` | Mar 1763 | PFR5-LDS-ancestors12-descendants2.ged | 1763 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000003095003911@` | `INDI.BIRT.DATE` | 09 Jun 1720 | PFR5-LDS-ancestors12-descendants2.ged | 1720 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000069468640836@` | `INDI.BIRT.DATE` | 28 DES 1848 | PFR5-LDS-ancestors12-descendants2.ged | 28 DEC 1848 | export-Forest-6000000227299240825.ged |
@@ -50941,8 +50811,6 @@ By path:
 | `@I6000000150604496353@` | `INDI.DEAT.DATE` | 31 January 1863 | PFR5-LDS-ancestors12-descendants2.ged | 31 JAN 1863 | export-Forest-6000000227299240825.ged |
 | `@I6000000150604496353@` | `INDI.BURI.DATE` | 8 February 1863 | PFR5-LDS-ancestors12-descendants2.ged | 8 FEB 1863 | export-Forest-6000000227299240825.ged |
 | `@I6000000013019662729@` | `INDI.BIRT.DATE` |        1675 | PFR5-LDS-ancestors12-descendants2.ged | 1675 | export-Forest-6000000227296927882.ged |
-| `@I6000000002866431340@` | `INDI.DEAT.DATE` | 16 April 1871 | PFR5-LDS-ancestors12-descendants2.ged | 16 APR 1871 | export-Forest-6000000227315362825.ged |
-| `@I6000000002866431340@` | `INDI.BIRT.DATE` | 5 July 1807 | PFR5-LDS-ancestors12-descendants2.ged | 5 JUL 1807 | export-Forest-6000000227315362825.ged |
 | `@I6000000011090464777@` | `INDI.DEAT.DATE` | 17 February 1905 | PFR5-LDS-ancestors12-descendants2.ged | 17 FEB 1903 | export-Forest-6000000227315362825.ged |
 | `@I6000000011090464777@` | `INDI.BIRT.DATE` | 10 May 1818 | PFR5-LDS-ancestors12-descendants2.ged | 10 MAY 1818 | export-Forest-6000000227315362825.ged |
 | `@I6000000116751174103@` | `INDI.DEAT.DATE` | 1740 | PFR5-LDS-ancestors12-descendants2.ged | 1699 | export-Forest-6000000227295934952.ged |
@@ -50963,14 +50831,11 @@ By path:
 | `@I6000000005607081129@` | `INDI.DEAT.DATE` | 1758 | PFR5-LDS-ancestors12-descendants2.ged | BEF 1758 | export-Forest-6000000227296927882.ged |
 | `@I6000000190523189821@` | `INDI.BIRT.DATE` | 10 Feb 1837 | PFR5-LDS-ancestors12-descendants2.ged | 1837 | export-Forest-6000000227315362825.ged |
 | `@I6000000190523189821@` | `INDI.DEAT.DATE` | 02 Jun 1906 | PFR5-LDS-ancestors12-descendants2.ged | 2 JUN 1906 | export-Forest-6000000227315362825.ged |
-| `@I6000000005606916426@` | `INDI.BIRT.DATE` | about 1680 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1683 | export-Forest-6000000227464556886.ged |
 | `@I6000000074314722948@` | `INDI.DEAT.DATE` | 21 August 1821 | PFR5-LDS-ancestors12-descendants2.ged | 28 AUG 1821 | export-Forest-6000000227254397877.ged |
 | `@I6000000074314722948@` | `INDI.BIRT.DATE` | 1744 | PFR5-LDS-ancestors12-descendants2.ged | 1743 | export-Forest-6000000227254397877.ged |
 | `@I6000000010094620202@` | `INDI.BURI.DATE` | 20 May 1781 | PFR5-LDS-ancestors12-descendants2.ged | 20 MAY 1781 | export-Forest-6000000227312306880.ged |
 | `@I6000000014428630381@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000014428630381@` | `INDI.BIRT.DATE` | about 1681 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1681 | export-Forest-6000000227296927882.ged |
-| `@I6000000004722858002@` | `INDI.DEAT.DATE` | 14 Nov 1823 | PFR5-LDS-ancestors12-descendants2.ged | 14 NOV 1823 | export-Forest-6000000227312306880.ged |
-| `@I6000000004722858002@` | `INDI.BIRT.DATE` |        1736 | PFR5-LDS-ancestors12-descendants2.ged | 1736 | export-Forest-6000000227312306880.ged |
 | `@I6000000002857234207@` | `INDI.BURI.DATE` | 5. januar 1817 | PFR5-LDS-ancestors12-descendants2.ged | 5 JAN 1817 | export-Forest-6000000227296927882.ged |
 | `@I6000000002857234207@` | `INDI.BIRT.DATE` | 1754 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1753 | export-Forest-6000000227296927882.ged |
 | `@I6000000002857234207@` | `INDI.DEAT.DATE` | 14. desember 1816 | PFR5-LDS-ancestors12-descendants2.ged | 14 DEC 1816 | export-Forest-6000000227296927882.ged |
@@ -51029,8 +50894,6 @@ By path:
 | `@I6000000011150491344@` | `INDI.BURI.DATE` | 1 January 1804 | PFR5-LDS-ancestors12-descendants2.ged | 1 JAN 1804 | export-Forest-6000000227296927882.ged |
 | `@I6000000116751174152@` | `INDI.DEAT.DATE` | 2 MAR 1694 | PFR5-LDS-ancestors12-descendants2.ged | 1694 | export-Forest-6000000227295934952.ged |
 | `@I6000000116751174152@` | `INDI.BURI.DATE` | 2 Mar 1694 | PFR5-LDS-ancestors12-descendants2.ged | 2 MAR 1694 | export-Forest-6000000227295934952.ged |
-| `@I6000000010532202194@` | `INDI.DEAT.DATE` |        1693 | PFR5-LDS-ancestors12-descendants2.ged | 1693 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000010532202194@` | `INDI.BIRT.DATE` | EST 1651 | PFR5-LDS-ancestors12-descendants2.ged | 1651 | export-BloodTree-6000000227289508960.ged |
 | `@I5206018745300031870@` | `INDI.DEAT.DATE` | 6 Sep 1898 | PFR5-LDS-ancestors12-descendants2.ged | 6 SEP 1898 | export-Forest-6000000227300430000.ged |
 | `@I5206018745300031870@` | `INDI.BIRT.DATE` | 1 Sep 1816 | PFR5-LDS-ancestors12-descendants2.ged | 1 SEP 1816 | export-Forest-6000000227300430000.ged |
 | `@I6000000082814320024@` | `INDI.BIRT.DATE` | 23 April 1815 | PFR5-LDS-ancestors12-descendants2.ged | 23 APR 1815 | export-Forest-6000000227296927882.ged |
@@ -51050,9 +50913,6 @@ By path:
 | `@I337607033510005360@` | `INDI.BIRT.DATE` | 7 Jul 1726 | PFR5-LDS-ancestors12-descendants2.ged | 1726 | export-Forest-6000000227290969847.ged |
 | `@I337607033510005360@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227290969847.ged |
 | `@I6000000174925936821@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227295934952.ged |
-| `@I6000000005607651256@` | `INDI.BIRT.DATE` | Abt 1647 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1624 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000009299324581@` | `INDI.DEAT.DATE` | 13 April 1888 | PFR5-LDS-ancestors12-descendants2.ged | 1889 | export-Forest-6000000227290969847.ged |
-| `@I6000000009299324581@` | `INDI.BIRT.DATE` | 8 April 1808 | PFR5-LDS-ancestors12-descendants2.ged | 8 APR 1808 | export-Forest-6000000227290969847.ged |
 | `@I6000000003095089113@` | `INDI.DEAT.DATE` | 24 July 1871 | PFR5-LDS-ancestors12-descendants2.ged | 24 JUL 1871 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095089113@` | `INDI.BURI.DATE` | 30 July 1871 | PFR5-LDS-ancestors12-descendants2.ged | 30 JUL 1871 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095089113@` | `INDI.BIRT.DATE` |        1799 | PFR5-LDS-ancestors12-descendants2.ged | 28 APR 1799 | export-Forest-6000000227296927882.ged |
@@ -51097,8 +50957,6 @@ By path:
 | `@I6000000007575828255@` | `INDI.DEAT.DATE` | 1893 | PFR5-LDS-ancestors12-descendants2.ged | 1894 | export-Forest-6000000227296927882.ged |
 | `@I6000000169025526972@` | `INDI.DEAT.DATE` | abt 1861 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1861 | export-Forest-6000000227296927882.ged |
 | `@I6000000169025526972@` | `INDI.BIRT.DATE` | 14 May 1805 | PFR5-LDS-ancestors12-descendants2.ged | 1805 | export-Forest-6000000227296927882.ged |
-| `@I4770690549580074990@` | `INDI.BIRT.DATE` | 31 December 1741 | PFR5-LDS-ancestors12-descendants2.ged | 31 DEC 1741 | export-Forest-6000000227290969847.ged |
-| `@I4770690549580074990@` | `INDI.DEAT.DATE` | 15 May 1826 | PFR5-LDS-ancestors12-descendants2.ged | 15 MAY 1826 | export-Forest-6000000227290969847.ged |
 | `@I6000000002335691829@` | `INDI.DEAT.DATE` | 20 September 1899 | PFR5-LDS-ancestors12-descendants2.ged | 20 SEP 1899 | export-Forest-6000000227296927882.ged |
 | `@I6000000000751800995@` | `INDI.BIRT.DATE` | 1685 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1659 | export-Forest-6000000227296927882.ged |
 | `@I6000000039564138058@` | `INDI.DEAT.DATE` | 1741 | PFR5-LDS-ancestors12-descendants2.ged | BEF 28 OCT 1741 | export-Descendants-6000000177944124971.ged |
@@ -51116,9 +50974,6 @@ By path:
 | `@I6000000005608888878@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227295934952.ged |
 | `@I6000000003095033246@` | `INDI.DEAT.DATE` | 5 November 1779 | PFR5-LDS-ancestors12-descendants2.ged | 1779 | export-Forest-6000000227315362825.ged |
 | `@I6000000003095028647@` | `INDI.DEAT.DATE` | about 1690 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1690 | export-Forest-6000000227312306880.ged |
-| `@I6000000007744721430@` | `INDI.BIRT.DATE` | 27 July 1829 | PFR5-LDS-ancestors12-descendants2.ged | 27 JUN 1829 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000007744721430@` | `INDI.BURI.DATE` | 24 April 1897 | PFR5-LDS-ancestors12-descendants2.ged | 24 APR 1897 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000007744721430@` | `INDI.DEAT.DATE` | 17 April 1897 | PFR5-LDS-ancestors12-descendants2.ged | 17 APR 1897 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000002690086678@` | `INDI.DEAT.DATE` | 27 March 1854 | PFR5-LDS-ancestors12-descendants2.ged | 1854 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094916148@` | `INDI.BIRT.DATE` | 3 Jun 1752 | PFR5-LDS-ancestors12-descendants2.ged | 3 JUN 1752 | export-Forest-6000000227254397877.ged |
 | `@I6000000003094916148@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227254397877.ged |
@@ -51147,8 +51002,6 @@ By path:
 | `@I6000000012476638197@` | `INDI.BIRT.DATE` |        1769 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1769 | export-Forest-6000000227315362825.ged |
 | `@I6000000006979636168@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227299240825.ged |
 | `@I6000000005607050819@` | `INDI.BIRT.DATE` |        1713 | PFR5-LDS-ancestors12-descendants2.ged | 1713 | export-Forest-6000000227296927882.ged |
-| `@I6000000009381827546@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000177944124971.ged |
-| `@I6000000009381827546@` | `INDI.BIRT.DATE` | about 1712 | PFR5-LDS-ancestors12-descendants2.ged | 1730 | export-Descendants-6000000177944124971.ged |
 | `@I6000000009368045487@` | `INDI.BURI.DATE` | 22 Nov 1807 | PFR5-LDS-ancestors12-descendants2.ged | 22 NOV 1807 | export-Forest-6000000227296927882.ged |
 | `@I6000000150597527084@` | `INDI.BIRT.DATE` |        1755 | PFR5-LDS-ancestors12-descendants2.ged | 1755 | export-Forest-6000000227315362825.ged |
 | `@I6000000180200251895@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227315643833.ged |
@@ -51171,8 +51024,6 @@ By path:
 | `@I6000000003095034712@` | `INDI.DEAT.DATE` | 1670 | PFR5-LDS-ancestors12-descendants2.ged | 1695 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003095034712@` | `INDI.BIRT.DATE` | 1642 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1642 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003095022965@` | `INDI.BIRT.DATE` | about 1605 | PFR5-LDS-ancestors12-descendants2.ged | 1606 | export-Forest-6000000227296927882.ged |
-| `@I6000000025769082428@` | `INDI.BIRT.DATE` | 28 January 1868 | PFR5-LDS-ancestors12-descendants2.ged | 28 JAN 1868 | export-Forest-6000000227299240825.ged |
-| `@I6000000025769082428@` | `INDI.DEAT.DATE` |        1906 | PFR5-LDS-ancestors12-descendants2.ged | 6 SEP 1906 | export-Forest-6000000227299240825.ged |
 | `@I6000000002387321522@` | `INDI.BURI.DATE` | 13 Jan 1807 | PFR5-LDS-ancestors12-descendants2.ged | 13 JAN 1807 | export-Descendants-6000000177944124971.ged |
 | `@I6000000002387321522@` | `INDI.BIRT.DATE` |        1731 | PFR5-LDS-ancestors12-descendants2.ged | 1731 | export-Descendants-6000000177944124971.ged |
 | `@I6000000002387321522@` | `INDI.DEAT.DATE` |        1807 | PFR5-LDS-ancestors12-descendants2.ged | 1807 | export-Descendants-6000000177944124971.ged |
@@ -51308,7 +51159,6 @@ By path:
 | `@I5354215736650076067@` | `INDI.DEAT.DATE` | 25 December 1824 | PFR5-LDS-ancestors12-descendants2.ged | 1824 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607109355@` | `INDI.BIRT.DATE` | 1807 | PFR5-LDS-ancestors12-descendants2.ged | 2 NOV 1807 | export-Forest-6000000227290969847.ged |
 | `@I6000000025349361758@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227294926845.ged |
-| `@I6000000011958465645@` | `INDI.BIRT.DATE` | 7. desember 1760 | PFR5-LDS-ancestors12-descendants2.ged | 1760 | export-Forest-6000000227296927882.ged |
 | `@I6000000004160546609@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Ancestors-6000000227464556886.ged |
 | `@I6000000004160546609@` | `INDI.BIRT.DATE` | 1614 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1614 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000029543471544@` | `INDI.BURI.DATE` | 19 November 1799 | PFR5-LDS-ancestors12-descendants2.ged | 19 NOV 1799 | export-Forest-6000000227296927882.ged |
@@ -51316,8 +51166,6 @@ By path:
 | `@I6000000029543471544@` | `INDI.DEAT.DATE` | 19 November 1799 | PFR5-LDS-ancestors12-descendants2.ged | 1799 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094973702@` | `INDI.BIRT.DATE` | about 1715 | PFR5-LDS-ancestors12-descendants2.ged | 1715 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492055983@` | `INDI.DEAT.DATE` |        1810 | PFR5-LDS-ancestors12-descendants2.ged | 1810 | export-Forest-6000000227299240825.ged |
-| `@I6000000128985061822@` | `INDI.DEAT.DATE` | 13 January 1915 | PFR5-LDS-ancestors12-descendants2.ged | 13 JAN 1915 | export-Forest-6000000227290969847.ged |
-| `@I6000000128985061822@` | `INDI.BURI.DATE` | 22 January 1915 | PFR5-LDS-ancestors12-descendants2.ged | 22 JAN 1915 | export-Forest-6000000227290969847.ged |
 | `@I6000000003491976446@` | `INDI.BURI.DATE` | 26 September 1784 | PFR5-LDS-ancestors12-descendants2.ged | 26 SEP 1784 | export-Forest-6000000227312306880.ged |
 | `@I6000000110806986896@` | `INDI.DEAT.DATE` | Bef 14 Dec 1741 | PFR5-LDS-ancestors12-descendants2.ged | 14 DEC 1741 | export-Forest-6000000227296927882.ged |
 | `@I6000000110806986896@` | `INDI.BIRT.DATE` |        1691 | PFR5-LDS-ancestors12-descendants2.ged | 1691 | export-Forest-6000000227296927882.ged |
@@ -51346,8 +51194,6 @@ By path:
 | `@I6000000002728301193@` | `INDI.BURI.DATE` | 19 Oct 1682 | PFR5-LDS-ancestors12-descendants2.ged | 19 OCT 1682 | export-Forest-6000000227295848846.ged |
 | `@I6000000002728301193@` | `INDI.BIRT.DATE` | 1608 | PFR5-LDS-ancestors12-descendants2.ged | 1600 | export-Forest-6000000227295848846.ged |
 | `@I6000000083615891846@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
-| `@I6000000028708516165@` | `INDI.BIRT.DATE` | 28. april 1805 | PFR5-LDS-ancestors12-descendants2.ged | 28 APR 1805 | export-Forest-6000000227311010870.ged |
-| `@I6000000028708516165@` | `INDI.DEAT.DATE` | 24 Nov 1831 | PFR5-LDS-ancestors12-descendants2.ged | 24 NOV 1831 | export-Forest-6000000227311010870.ged |
 | `@I6000000204697797843@` | `INDI.DEAT.DATE` | 25 Dec 1710 | PFR5-LDS-ancestors12-descendants2.ged | DEC 1710 | export-Descendants-6000000177944124971.ged |
 | `@I6000000204697797843@` | `INDI.BIRT.DATE` |        1710 | PFR5-LDS-ancestors12-descendants2.ged | 1710 | export-Descendants-6000000177944124971.ged |
 | `@I6000000002390798501@` | `INDI.BIRT.DATE` | 1610 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1610 | export-BloodTree-6000000227289508960.ged |
@@ -51380,16 +51226,12 @@ By path:
 | `@I6000000023248569020@` | `INDI.DEAT.DATE` | 29 Jan 1885 | PFR5-LDS-ancestors12-descendants2.ged | 29 JAN 1885 | export-Forest-6000000227311010870.ged |
 | `@I6000000023248569020@` | `INDI.BIRT.DATE` | 1798 | PFR5-LDS-ancestors12-descendants2.ged | 5 AUG 1798 | export-Forest-6000000227311010870.ged |
 | `@I6000000002762650606@` | `INDI.DEAT.DATE` | 11 Nov 1831 | PFR5-LDS-ancestors12-descendants2.ged | 11 NOV 1831 | export-Forest-6000000227312306880.ged |
-| `@I6000000035525894109@` | `INDI.BIRT.DATE` | 19 February 1860 | PFR5-LDS-ancestors12-descendants2.ged | 19 FEB 1860 | export-Forest-6000000227299732860.ged |
-| `@I6000000014564344121@` | `INDI.BIRT.DATE` | 1675 | PFR5-LDS-ancestors12-descendants2.ged | 1663 | export-Forest-6000000227291028845.ged |
 | `@I6000000101819136834@` | `INDI.BIRT.DATE` | 11 June 1817 | PFR5-LDS-ancestors12-descendants2.ged | 11 JUL 1817 | export-Forest-6000000227294926845.ged |
 | `@I6000000101819136834@` | `INDI.DEAT.DATE` | 3 September 1884 | PFR5-LDS-ancestors12-descendants2.ged | 3 SEP 1884 | export-Forest-6000000227294926845.ged |
 | `@I6000000150597225197@` | `INDI.BIRT.DATE` | May 1736 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1736 | export-Forest-6000000227296927882.ged |
 | `@I6000000007975201198@` | `INDI.DEAT.DATE` | 1828 | PFR5-LDS-ancestors12-descendants2.ged | 1 FEB 1828 | export-Forest-6000000227315643833.ged |
 | `@I6000000194953088845@` | `INDI.BIRT.DATE` | 26   feb   1850 | PFR5-LDS-ancestors12-descendants2.ged | 26 FEB 1850 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000194953088845@` | `INDI.DEAT.DATE` | 14   mar   1930 | PFR5-LDS-ancestors12-descendants2.ged | 14 MAR 1930 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000003024599848@` | `INDI.DEAT.DATE` | 11 Sep 1905 | PFR5-LDS-ancestors12-descendants2.ged | 11 SEP 1905 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024599848@` | `INDI.BIRT.DATE` | 16 Mar 1837 | PFR5-LDS-ancestors12-descendants2.ged | 16 MAR 1837 | export-Forest-6000000227296927882.ged |
 | `@I6000000003491944610@` | `INDI.BIRT.DATE` | 1670 | PFR5-LDS-ancestors12-descendants2.ged | 1673 | export-Forest-6000000227312306880.ged |
 | `@I6000000110819576030@` | `INDI.DEAT.DATE` |        1794 | PFR5-LDS-ancestors12-descendants2.ged | 1794 | export-Forest-6000000227296927882.ged |
 | `@I6000000110819576030@` | `INDI.BIRT.DATE` |        1748 | PFR5-LDS-ancestors12-descendants2.ged | 1748 | export-Forest-6000000227296927882.ged |
@@ -51441,8 +51283,6 @@ By path:
 | `@I6000000003094916227@` | `INDI.BIRT.DATE` | abt 1749 | PFR5-LDS-ancestors12-descendants2.ged | 1749 | export-Forest-6000000227315362825.ged |
 | `@I6000000178139063821@` | `INDI.BIRT.DATE` | 20 December 1862 | PFR5-LDS-ancestors12-descendants2.ged | 20 DEC 1862 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000178139063821@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000087535357291.ged |
-| `@I6000000009384432195@` | `INDI.DEAT.DATE` | 14 Nov 1833 | PFR5-LDS-ancestors12-descendants2.ged | 14 NOV 1833 | export-Forest-6000000227296927882.ged |
-| `@I6000000009384432195@` | `INDI.BIRT.DATE` | 1745 | PFR5-LDS-ancestors12-descendants2.ged | 1749 | export-Forest-6000000227296927882.ged |
 | `@I5335410192560047561@` | `INDI.BIRT.DATE` | 13 SEP 1744 | PFR5-LDS-ancestors12-descendants2.ged | 1744 | export-Forest-6000000227296927882.ged |
 | `@I6000000003027094689@` | `INDI.DEAT.DATE` | 5 February 1873 | PFR5-LDS-ancestors12-descendants2.ged | 5 FEB 1873 | export-Forest-6000000227296927882.ged |
 | `@I6000000003027094689@` | `INDI.BIRT.DATE` | 1792 | PFR5-LDS-ancestors12-descendants2.ged | 26 SEP 1792 | export-Forest-6000000227296927882.ged |
@@ -51488,7 +51328,6 @@ By path:
 | `@I6000000005607123709@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000227289508960.ged |
 | `@I6000000005607123709@` | `INDI.BIRT.DATE` | 1638 | PFR5-LDS-ancestors12-descendants2.ged | 1640 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000110806986907@` | `INDI.BIRT.DATE` |        1684 | PFR5-LDS-ancestors12-descendants2.ged | 1684 | export-Forest-6000000227296927882.ged |
-| `@I6000000194387368838@` | `INDI.BIRT.DATE` |        1665 | PFR5-LDS-ancestors12-descendants2.ged | 1665 | export-Forest-6000000227312306880.ged |
 | `@I6000000003492083683@` | `INDI.BIRT.DATE` | 1731 | PFR5-LDS-ancestors12-descendants2.ged | ABT 16 FEB 1731 | export-Forest-6000000227300121832.ged |
 | `@I6000000013431552863@` | `INDI.DEAT.DATE` | 1 October 1848 | PFR5-LDS-ancestors12-descendants2.ged | 1 OCT 1848 | export-Forest-6000000227312306880.ged |
 | `@I6000000003043516236@` | `INDI.BIRT.DATE` | about 1625 | PFR5-LDS-ancestors12-descendants2.ged | 1625 | export-BloodTree-6000000227289508960.ged |
@@ -51540,8 +51379,6 @@ By path:
 | `@I6000000018469162809@` | `INDI.BIRT.DATE` | 1633 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1633 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000008191341327@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000087535357291.ged |
 | `@I6000000008191341327@` | `INDI.BIRT.DATE` |        1790 | PFR5-LDS-ancestors12-descendants2.ged | 31 DEC 1790 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000039229233199@` | `INDI.DEAT.DATE` | 5 January 1835 | PFR5-LDS-ancestors12-descendants2.ged | 5 JAN 1835 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000039229233199@` | `INDI.BIRT.DATE` | 3 September 1755 | PFR5-LDS-ancestors12-descendants2.ged | 3 SEP 1755 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000003477158307@` | `INDI.DEAT.DATE` | 21 November 1846 | PFR5-LDS-ancestors12-descendants2.ged | 21 NOV 1846 | export-Forest-6000000227299732860.ged |
 | `@I6000000003477158307@` | `INDI.BIRT.DATE` | 13 February 1752 | PFR5-LDS-ancestors12-descendants2.ged | 6 APR 1752 | export-Forest-6000000227299732860.ged |
 | `@I6000000169821778864@` | `INDI.BIRT.DATE` |        1790 | PFR5-LDS-ancestors12-descendants2.ged | 1790 | export-BloodTree-6000000087535357291.ged |
@@ -51628,8 +51465,6 @@ By path:
 | `@I6000000005606994835@` | `INDI.DEAT.DATE` | 26 Mar 1829 | PFR5-LDS-ancestors12-descendants2.ged | 26 MAR 1829 | export-Forest-6000000227296927882.ged |
 | `@I6000000005606994835@` | `INDI.BIRT.DATE` | 14 Aug 1746 | PFR5-LDS-ancestors12-descendants2.ged | 1746 | export-Forest-6000000227296927882.ged |
 | `@I6000000007575107265@` | `INDI.BIRT.DATE` | about 1720 | PFR5-LDS-ancestors12-descendants2.ged | 1728 | export-Forest-6000000227303522852.ged |
-| `@I6000000003024747964@` | `INDI.BIRT.DATE` | 02 Aug 1840 | PFR5-LDS-ancestors12-descendants2.ged | 2 AUG 1840 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024747964@` | `INDI.DEAT.DATE` | 24 Feb 1845 | PFR5-LDS-ancestors12-descendants2.ged | 24 FEB 1845 | export-Forest-6000000227296927882.ged |
 | `@I6000000006771426899@` | `INDI.BURI.DATE` | Oct 1806 | PFR5-LDS-ancestors12-descendants2.ged | OCT 1806 | export-Forest-6000000227315362825.ged |
 | `@I6000000006771426899@` | `INDI.BIRT.DATE` |        1741 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1741 | export-Forest-6000000227315362825.ged |
 | `@I6000000006771426899@` | `INDI.DEAT.DATE` | 10 October 1806 | PFR5-LDS-ancestors12-descendants2.ged | 10 OCT 1806 | export-Forest-6000000227315362825.ged |
@@ -51662,10 +51497,6 @@ By path:
 | `@I6000000006849869096@` | `INDI.BIRT.DATE` | Abt 1670 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1670 | export-Forest-6000000227254397877.ged |
 | `@I6000000006849869096@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227254397877.ged |
 | `@I6000000009373809561@` | `INDI.DEAT.DATE` |        1741 | PFR5-LDS-ancestors12-descendants2.ged | 1741 | export-Descendants-6000000177944124971.ged |
-| `@I6000000002452570218@` | `INDI.DEAT.DATE` | about 1744 | PFR5-LDS-ancestors12-descendants2.ged | 1734 | export-Descendants-6000000227289370034.ged |
-| `@I6000000002452570218@` | `INDI.BIRT.DATE` | 1682 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1681 | export-Descendants-6000000227289370034.ged |
-| `@I6000000005609451653@` | `INDI.BIRT.DATE` | 14 August 1720 | PFR5-LDS-ancestors12-descendants2.ged | 14 AUG 1720 | export-Forest-6000000227315362825.ged |
-| `@I6000000005609451653@` | `INDI.DEAT.DATE` | 25 December 1763 | PFR5-LDS-ancestors12-descendants2.ged | 25 DEC 1763 | export-Forest-6000000227315362825.ged |
 | `@I6000000186908329851@` | `INDI.DEAT.DATE` | 1773 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1773 | export-Forest-6000000227299181836.ged |
 | `@I6000000003094912353@` | `INDI.BIRT.DATE` | 1665 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1660 | export-Forest-6000000227310843862.ged |
 | `@I6000000150606012822@` | `INDI.BIRT.DATE` | 15 May 1758 | PFR5-LDS-ancestors12-descendants2.ged | 1758 | export-Forest-6000000227296927882.ged |
@@ -51789,8 +51620,6 @@ By path:
 | `@I5354224236350111235@` | `INDI.DEAT.DATE` | about 1820 | PFR5-LDS-ancestors12-descendants2.ged | 1820 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492057450@` | `INDI.BIRT.DATE` | 1656 | PFR5-LDS-ancestors12-descendants2.ged | 1654 | export-Forest-6000000227315362825.ged |
 | `@I6000000003492057450@` | `INDI.DEAT.DATE` | 1721 | PFR5-LDS-ancestors12-descendants2.ged | 15 FEB 1721 | export-Forest-6000000227315362825.ged |
-| `@I6000000012899146218@` | `INDI.BIRT.DATE` | 24/02/1872 | PFR5-LDS-ancestors12-descendants2.ged | 24 FEB 1872 | export-Forest-6000000227290969847.ged |
-| `@I6000000012899146218@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227290969847.ged |
 | `@I6000000003094977054@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227254397877.ged |
 | `@I6000000003094977054@` | `INDI.BIRT.DATE` | ABT 1709 | PFR5-LDS-ancestors12-descendants2.ged | 1709 | export-Forest-6000000227254397877.ged |
 | `@I6000000002452595235@` | `INDI.BIRT.DATE` |        1734 | PFR5-LDS-ancestors12-descendants2.ged | 1734 | export-Descendants-6000000177944124971.ged |
@@ -51799,16 +51628,12 @@ By path:
 | `@I6000000005609581300@` | `INDI.BIRT.DATE` | 1679 | PFR5-LDS-ancestors12-descendants2.ged | 9 NOV 1679 | export-Forest-6000000227312306880.ged |
 | `@I6000000005609256127@` | `INDI.DEAT.DATE` | 1912 | PFR5-LDS-ancestors12-descendants2.ged | 8 MAR 1912 | export-Forest-6000000227312306880.ged |
 | `@I6000000005609256127@` | `INDI.BIRT.DATE` | 4 May 1817 | PFR5-LDS-ancestors12-descendants2.ged | 4 MAY 1817 | export-Forest-6000000227312306880.ged |
-| `@I6000000177921535860@` | `INDI.BIRT.DATE` | 8 februari 1765 | PFR5-LDS-ancestors12-descendants2.ged | 24 MAY 1773 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000046970243137@` | `INDI.DEAT.DATE` |        1799 | PFR5-LDS-ancestors12-descendants2.ged | 1799 | export-Descendants-6000000227224418030.ged |
 | `@I6000000046970243137@` | `INDI.BIRT.DATE` |        1779 | PFR5-LDS-ancestors12-descendants2.ged | 1779 | export-Descendants-6000000227224418030.ged |
-| `@I6000000003024841490@` | `INDI.BIRT.DATE` | 8 Aug 1843 | PFR5-LDS-ancestors12-descendants2.ged | 8 AUG 1843 | export-Forest-6000000227296927882.ged |
-| `@I6000000003024841490@` | `INDI.DEAT.DATE` | 23 Dec 1912 | PFR5-LDS-ancestors12-descendants2.ged | 23 DEC 1912 | export-Forest-6000000227296927882.ged |
 | `@I6000000003491995244@` | `INDI.BIRT.DATE` |        1724 | PFR5-LDS-ancestors12-descendants2.ged | 1724 | export-Forest-6000000227312306880.ged |
 | `@I6000000011321675968@` | `INDI.BIRT.DATE` |        1721 | PFR5-LDS-ancestors12-descendants2.ged | 20 MAY 1721 | export-Forest-6000000227303522852.ged |
 | `@I6000000011321675968@` | `INDI.BURI.DATE` | bur 17 Jan 1796 | PFR5-LDS-ancestors12-descendants2.ged | 17 JAN 1796 | export-Forest-6000000227303522852.ged |
 | `@I6000000005607477301@` | `INDI.DEAT.DATE` | 03 MAY 1874 | PFR5-LDS-ancestors12-descendants2.ged | 3 MAY 1864 | export-Forest-6000000227296927882.ged |
-| `@I6000000005608892414@` | `INDI.BIRT.DATE` | December 1761 | PFR5-LDS-ancestors12-descendants2.ged | 1761 | export-Forest-6000000227296927882.ged |
 | `@I6000000003094973308@` | `INDI.BIRT.DATE` |        1702 | PFR5-LDS-ancestors12-descendants2.ged | 1702 | export-Forest-6000000227296927882.ged |
 | `@I6000000009304518738@` | `INDI.DEAT.DATE` | 1762 | PFR5-LDS-ancestors12-descendants2.ged | 1763 | export-Forest-6000000227290969847.ged |
 | `@I6000000009304518738@` | `INDI.BIRT.DATE` | 29 Jan 1719 | PFR5-LDS-ancestors12-descendants2.ged | 29 JAN 1719 | export-Forest-6000000227290969847.ged |
@@ -51828,7 +51653,6 @@ By path:
 | `@I6000000119927487870@` | `INDI.DEAT.DATE` |        1725 | PFR5-LDS-ancestors12-descendants2.ged | 1725 | export-Descendants-6000000177944124971.ged |
 | `@I6000000119927487870@` | `INDI.BURI.DATE` | 15 Jul 1725 | PFR5-LDS-ancestors12-descendants2.ged | 15 JUL 1725 | export-Descendants-6000000177944124971.ged |
 | `@I6000000119927487870@` | `INDI.BIRT.DATE` |        1725 | PFR5-LDS-ancestors12-descendants2.ged | 1725 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005608952052@` | `INDI.DEAT.DATE` | about 1734 | PFR5-LDS-ancestors12-descendants2.ged | 1734 | export-Descendants-6000000178898487831.ged |
 | `@I6000000002844020852@` | `INDI.DEAT.DATE` | 1 Jan 1803 | PFR5-LDS-ancestors12-descendants2.ged | DEC 1802 | export-Forest-6000000227296927882.ged |
 | `@I6000000002844020852@` | `INDI.BIRT.DATE` | 09 Dec 1736 | PFR5-LDS-ancestors12-descendants2.ged | 9 DEC 1736 | export-Forest-6000000227296927882.ged |
 | `@I6000000011954269397@` | `INDI.DEAT.DATE` | 04 Oct 1834 | PFR5-LDS-ancestors12-descendants2.ged | 4 OCT 1834 | export-Forest-6000000227312306880.ged |
@@ -51901,15 +51725,12 @@ By path:
 | `@I6000000003491954876@` | `INDI.BIRT.DATE` | 1659 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1667 | export-Forest-6000000227296927882.ged |
 | `@I6000000000152805743@` | `INDI.DEAT.DATE` | 11 JUL 1779 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1779 | export-Forest-6000000227296927882.ged |
 | `@I6000000000152805743@` | `INDI.BIRT.DATE` | 1717 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1711 | export-Forest-6000000227296927882.ged |
-| `@I6000000005606916265@` | `INDI.BIRT.DATE` | Abt 1665 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1665 | export-Forest-6000000227315747834.ged |
 | `@I6000000046135399187@` | `INDI.BIRT.DATE` |        1750 | PFR5-LDS-ancestors12-descendants2.ged | 1750 | export-Forest-6000000227299240825.ged |
 | `@I6000000011239560745@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
 | `@I6000000005606938098@` | `INDI.BIRT.DATE` | about 1789 | PFR5-LDS-ancestors12-descendants2.ged | 1789 | export-Forest-6000000227312306880.ged |
 | `@I6000000017953780650@` | `INDI.BIRT.DATE` | 25 March 1765 | PFR5-LDS-ancestors12-descendants2.ged | 25 MAR 1765 | export-Forest-6000000227312306880.ged |
 | `@I6000000017953780650@` | `INDI.DEAT.DATE` | 22 Apr 1835 | PFR5-LDS-ancestors12-descendants2.ged | 22 APR 1835 | export-Forest-6000000227312306880.ged |
 | `@I6000000023857637616@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
-| `@I6000000003025030940@` | `INDI.DEAT.DATE` | 17 Apr 1918 | PFR5-LDS-ancestors12-descendants2.ged | 17 APR 1918 | export-Forest-6000000227310843862.ged |
-| `@I6000000003025030940@` | `INDI.BIRT.DATE` | 09 Sep 1842 | PFR5-LDS-ancestors12-descendants2.ged | 9 SEP 1842 | export-Forest-6000000227310843862.ged |
 | `@I6000000014522710383@` | `INDI.DEAT.DATE` | 3 June 1810 | PFR5-LDS-ancestors12-descendants2.ged | MAY 1810 | export-Forest-6000000227312306880.ged |
 | `@I6000000110819575838@` | `INDI.DEAT.DATE` | 15 August 1841 | PFR5-LDS-ancestors12-descendants2.ged | 15 AUG 1811 | export-Forest-6000000227296927882.ged |
 | `@I6000000110819575838@` | `INDI.BIRT.DATE` | <1751> | PFR5-LDS-ancestors12-descendants2.ged | ABT 1741 | export-Forest-6000000227296927882.ged |
@@ -51922,8 +51743,6 @@ By path:
 | `@I6000000117438522825@` | `INDI.BURI.DATE` | 22 February 1829 | PFR5-LDS-ancestors12-descendants2.ged | 22 FEB 1829 | export-Forest-6000000227296927882.ged |
 | `@I6000000117438522825@` | `INDI.BIRT.DATE` | April 1751 | PFR5-LDS-ancestors12-descendants2.ged | APR 1751 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095033859@` | `INDI.DEAT.DATE` |        1739 | PFR5-LDS-ancestors12-descendants2.ged | 1739 | export-Forest-6000000227296927882.ged |
-| `@I6000000005609466234@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227299732860.ged |
-| `@I6000000005609466234@` | `INDI.BIRT.DATE` | 1710 | PFR5-LDS-ancestors12-descendants2.ged | 1704 | export-Forest-6000000227299732860.ged |
 | `@I6000000005606886780@` | `INDI.BIRT.DATE` |  9 JUL 1881 | PFR5-LDS-ancestors12-descendants2.ged | 9 JUL 1881 | export-Forest-6000000227296930828.ged |
 | `@I6000000017917475454@` | `INDI.DEAT.DATE` | 19 August 1816 | PFR5-LDS-ancestors12-descendants2.ged | 19 AUG 1816 | export-Descendants-6000000177944124971.ged |
 | `@I6000000017917475454@` | `INDI.BIRT.DATE` | About 1740 | PFR5-LDS-ancestors12-descendants2.ged | 1740 | export-Descendants-6000000177944124971.ged |
@@ -51957,7 +51776,6 @@ By path:
 | `@I6000000005931018159@` | `INDI.BURI.DATE` | 2 April 1752 | PFR5-LDS-ancestors12-descendants2.ged | 2 APR 1752 | export-Forest-6000000227315362825.ged |
 | `@I6000000003492033839@` | `INDI.DEAT.DATE` | 23 July 1931 | PFR5-LDS-ancestors12-descendants2.ged | 23 JUL 1931 | export-Descendants-6000000227315362825.ged |
 | `@I6000000003492033839@` | `INDI.BIRT.DATE` | 25 April 1845 | PFR5-LDS-ancestors12-descendants2.ged | 25 APR 1845 | export-Descendants-6000000227315362825.ged |
-| `@I6000000006787544421@` | `INDI.DEAT.DATE` | Aft 1760 | PFR5-LDS-ancestors12-descendants2.ged | AFT 1760 | export-Forest-6000000227310843862.ged |
 | `@I6000000003491992626@` | `INDI.BIRT.DATE` |        1821 | PFR5-LDS-ancestors12-descendants2.ged | 1821 | export-Forest-6000000227300121832.ged |
 | `@I6000000002836440744@` | `INDI.BIRT.DATE` |        1762 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1762 | export-Forest-6000000227315362825.ged |
 | `@I6000000002836440744@` | `INDI.DEAT.DATE` | 9 Sep 1841 | PFR5-LDS-ancestors12-descendants2.ged | 9 SEP 1841 | export-Forest-6000000227315362825.ged |
@@ -51965,8 +51783,6 @@ By path:
 | `@I6000000020290623078@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000011167651960@` | `INDI.BIRT.DATE` | 16 Feb 1855 | PFR5-LDS-ancestors12-descendants2.ged | 16 FEB 1855 | export-Forest-6000000227299732860.ged |
 | `@I6000000011167651960@` | `INDI.DEAT.DATE` | 7 November 1938 | PFR5-LDS-ancestors12-descendants2.ged | 7 NOV 1938 | export-Forest-6000000227299732860.ged |
-| `@I6000000012898678739@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227290969847.ged |
-| `@I6000000012898678739@` | `INDI.BIRT.DATE` | 10/11/1879 | PFR5-LDS-ancestors12-descendants2.ged | 10 NOV 1879 | export-Forest-6000000227290969847.ged |
 | `@I6000000098028986258@` | `INDI.DEAT.DATE` | 11 September 1936 | PFR5-LDS-ancestors12-descendants2.ged | 11 SEP 1936 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000098028986258@` | `INDI.BIRT.DATE` | 17 September 1883 | PFR5-LDS-ancestors12-descendants2.ged | 17 SEP 1883 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005930447562@` | `INDI.DEAT.DATE` | 18 May 1838 | PFR5-LDS-ancestors12-descendants2.ged | 18 MAY 1838 | export-Forest-6000000227295934952.ged |
@@ -51976,8 +51792,6 @@ By path:
 | `@I6000000008379457317@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227300430000.ged |
 | `@I6000000026340046985@` | `INDI.BIRT.DATE` |        1790 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1790 | export-Forest-6000000227254397877.ged |
 | `@I6000000026340046985@` | `INDI.DEAT.DATE` | 3 Oct 1877 | PFR5-LDS-ancestors12-descendants2.ged | 3 OCT 1877 | export-Forest-6000000227254397877.ged |
-| `@I6000000004722704046@` | `INDI.DEAT.DATE` | 28 May 1827 | PFR5-LDS-ancestors12-descendants2.ged | 28 MAY 1827 | export-Forest-6000000227312306880.ged |
-| `@I6000000004722704046@` | `INDI.BIRT.DATE` | 19 Feb 1752 | PFR5-LDS-ancestors12-descendants2.ged | 19 FEB 1752 | export-Forest-6000000227312306880.ged |
 | `@I6000000169821483995@` | `INDI.BIRT.DATE` |        1803 | PFR5-LDS-ancestors12-descendants2.ged | 1803 | export-Forest-6000000227254397877.ged |
 | `@I6000000010383125506@` | `INDI.DEAT.DATE` | 1747 | PFR5-LDS-ancestors12-descendants2.ged | 1721 | export-Forest-6000000227299181836.ged |
 | `@I6000000010383125506@` | `INDI.BIRT.DATE` | 1650 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1650 | export-Forest-6000000227299181836.ged |
@@ -51985,13 +51799,10 @@ By path:
 | `@I6000000003095094711@` | `INDI.BIRT.DATE` | 1724 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1724 | export-Forest-6000000227296927882.ged |
 | `@I6000000005609425797@` | `INDI.BIRT.DATE` | 26 Aug 1798 | PFR5-LDS-ancestors12-descendants2.ged | 26 AUG 1798 | export-Forest-6000000087535357291.ged |
 | `@I6000000005609425797@` | `INDI.DEAT.DATE` | 1846 | PFR5-LDS-ancestors12-descendants2.ged | 26 MAY 1846 | export-Forest-6000000087535357291.ged |
-| `@I6000000002845973670@` | `INDI.DEAT.DATE` | 1764 | PFR5-LDS-ancestors12-descendants2.ged | 27 APR 1764 | export-Forest-6000000227295934952.ged |
-| `@I6000000002845973670@` | `INDI.BIRT.DATE` | abt. 1717 | PFR5-LDS-ancestors12-descendants2.ged | 20 OCT 1717 | export-Forest-6000000227295934952.ged |
 | `@I6000000002857142980@` | `INDI.BIRT.DATE` | 1713 | PFR5-LDS-ancestors12-descendants2.ged | JUN 1713 | export-Forest-6000000227296927882.ged |
 | `@I6000000002857142980@` | `INDI.BURI.DATE` | 27. september 1767 | PFR5-LDS-ancestors12-descendants2.ged | 27 SEP 1766 | export-Forest-6000000227296927882.ged |
 | `@I6000000002857142980@` | `INDI.DEAT.DATE` | 1767 | PFR5-LDS-ancestors12-descendants2.ged | 2 JUL 1766 | export-Forest-6000000227296927882.ged |
 | `@I6000000012701878092@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
-| `@I6000000003492031172@` | `INDI.BIRT.DATE` | 19 September 1844 | PFR5-LDS-ancestors12-descendants2.ged | 19 SEP 1844 | export-Forest-6000000227295934952.ged |
 | `@I6000000005607077870@` | `INDI.BIRT.DATE` | 1610 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1610 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000065465007954@` | `INDI.DEAT.DATE` | 11 September 1934 | PFR5-LDS-ancestors12-descendants2.ged | 11 SEP 1934 | export-Forest-6000000227299240825.ged |
 | `@I6000000065465007954@` | `INDI.BIRT.DATE` | 6 July 1859 | PFR5-LDS-ancestors12-descendants2.ged | 7 JUN 1859 | export-Forest-6000000227299240825.ged |
@@ -52015,8 +51826,6 @@ By path:
 | `@I6000000002975163688@` | `INDI.DEAT.DATE` | 25 May 1822 | PFR5-LDS-ancestors12-descendants2.ged | 25 MAY 1822 | export-Forest-6000000227296927882.ged |
 | `@I6000000002975163688@` | `INDI.BIRT.DATE` |        1783 | PFR5-LDS-ancestors12-descendants2.ged | 1783 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607109280@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
-| `@I6000000003094916179@` | `INDI.DEAT.DATE` | 9 Jun 1819 | PFR5-LDS-ancestors12-descendants2.ged | 9 JUN 1819 | export-Forest-6000000227296927882.ged |
-| `@I6000000003094916179@` | `INDI.BIRT.DATE` | 1730 | PFR5-LDS-ancestors12-descendants2.ged | 1735 | export-Forest-6000000227296927882.ged |
 | `@I6000000003492037136@` | `INDI.DEAT.DATE` | 13 Dec 1850 | PFR5-LDS-ancestors12-descendants2.ged | 13 DEC 1850 | export-Forest-6000000227299240825.ged |
 | `@I6000000003492037136@` | `INDI.BIRT.DATE` | 12 Jun 1803 | PFR5-LDS-ancestors12-descendants2.ged | 12 JUN 1803 | export-Forest-6000000227299240825.ged |
 | `@I6000000012477201400@` | `INDI.BIRT.DATE` | 20 May 1816 | PFR5-LDS-ancestors12-descendants2.ged | 20 MAY 1816 | export-BloodTree-6000000087535357291.ged |
@@ -52094,7 +51903,6 @@ By path:
 | `@I6000000005418739903@` | `INDI.BIRT.DATE` | 1662 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1662 | export-Forest-6000000227294926845.ged |
 | `@I6000000005607685507@` | `INDI.DEAT.DATE` | Sep 1764 | PFR5-LDS-ancestors12-descendants2.ged | 1764 | export-Forest-6000000227291028845.ged |
 | `@I6000000005607685507@` | `INDI.BIRT.DATE` | about 1685 | PFR5-LDS-ancestors12-descendants2.ged | 5 JUL 1685 | export-Forest-6000000227291028845.ged |
-| `@I6000000218222311821@` | `INDI.BIRT.DATE` | about 1769 | PFR5-LDS-ancestors12-descendants2.ged | 1777 | export-Forest-6000000227296927882.ged |
 | `@I6000000005609325662@` | `INDI.BURI.DATE` | 7 August 1774 | PFR5-LDS-ancestors12-descendants2.ged | 7 AUG 1774 | export-Forest-6000000227291028845.ged |
 | `@I6000000005609325662@` | `INDI.DEAT.DATE` | 07 Aug 1774 | PFR5-LDS-ancestors12-descendants2.ged | 1774 | export-Forest-6000000227291028845.ged |
 | `@I6000000005609325662@` | `INDI.BIRT.DATE` | 1695 | PFR5-LDS-ancestors12-descendants2.ged | 1701 | export-Forest-6000000227291028845.ged |
@@ -52163,8 +51971,6 @@ By path:
 | `@I6000000003095187738@` | `INDI.DEAT.DATE` | 27 February 1828 | PFR5-LDS-ancestors12-descendants2.ged | 27 FEB 1828 | export-Forest-6000000227299240825.ged |
 | `@I6000000017493063119@` | `INDI.BIRT.DATE` |        1792 | PFR5-LDS-ancestors12-descendants2.ged | 1792 | export-Forest-6000000227299240825.ged |
 | `@I6000000017493063119@` | `INDI.DEAT.DATE` | 03 Aug 1842 | PFR5-LDS-ancestors12-descendants2.ged | 1842 | export-Forest-6000000227299240825.ged |
-| `@I6000000025769364153@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227299240825.ged |
-| `@I6000000025769364153@` | `INDI.BIRT.DATE` | 07 Dec 1877 | PFR5-LDS-ancestors12-descendants2.ged | 7 DEC 1877 | export-Forest-6000000227299240825.ged |
 | `@I6000000013724905095@` | `INDI.DEAT.DATE` | 1811 | PFR5-LDS-ancestors12-descendants2.ged | 6 JUN 1811 | export-Forest-6000000227315362825.ged |
 | `@I6000000003491933581@` | `INDI.BIRT.DATE` | 15 July 1691 | PFR5-LDS-ancestors12-descendants2.ged | 15 JUL 1691 | export-Forest-6000000227315362825.ged |
 | `@I6000000003094956931@` | `INDI.BURI.DATE` | 26 Dec 1819 | PFR5-LDS-ancestors12-descendants2.ged | 26 DEC 1819 | export-Forest-6000000227296927882.ged |
@@ -52174,8 +51980,6 @@ By path:
 | `@I5352005330460020258@` | `INDI.BIRT.DATE` | 19 January 1772 | PFR5-LDS-ancestors12-descendants2.ged | 19 JAN 1772 | export-Forest-6000000227296927882.ged |
 | `@I6000000198955277880@` | `INDI.DEAT.DATE` | 17 March 1883 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAR 1883 | export-Forest-6000000227299240825.ged |
 | `@I6000000198955277880@` | `INDI.BIRT.DATE` |  9 AUG 1795 | PFR5-LDS-ancestors12-descendants2.ged | 9 AUG 1795 | export-Forest-6000000227299240825.ged |
-| `@I6000000005441682220@` | `INDI.DEAT.DATE` | 1682 | PFR5-LDS-ancestors12-descendants2.ged | 1700 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000005441682220@` | `INDI.BIRT.DATE` | about 1624 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1624 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000014234156973@` | `INDI.DEAT.DATE` | 1718 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1718 | export-Forest-6000000227310843862.ged |
 | `@I6000000014234156973@` | `INDI.BIRT.DATE` |        1653 | PFR5-LDS-ancestors12-descendants2.ged | 1653 | export-Forest-6000000227310843862.ged |
 | `@I6000000003094971270@` | `INDI.DEAT.DATE` | 6 January 1799 | PFR5-LDS-ancestors12-descendants2.ged | 6 JAN 1799 | export-Forest-6000000227296927882.ged |
@@ -52197,8 +52001,6 @@ By path:
 | `@I6000000011322091313@` | `INDI.BIRT.DATE` | Abt 1698 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1698 | export-Forest-6000000227312306880.ged |
 | `@I6000000011322091313@` | `INDI.DEAT.DATE` | 1741 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1740 | export-Forest-6000000227312306880.ged |
 | `@I6000000083960224934@` | `INDI.DEAT.DATE` | 14 April 1846 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1846 | export-Forest-6000000227299240825.ged |
-| `@I6000000008686109250@` | `INDI.BIRT.DATE` | 15 may 1740 | PFR5-LDS-ancestors12-descendants2.ged | 15 MAY 1740 | export-Forest-6000000227290969847.ged |
-| `@I6000000008686109250@` | `INDI.DEAT.DATE` | 19 aug 1792 | PFR5-LDS-ancestors12-descendants2.ged | 19 AUG 1792 | export-Forest-6000000227290969847.ged |
 | `@I4680532417320039594@` | `INDI.BIRT.DATE` | 15 May 1796 | PFR5-LDS-ancestors12-descendants2.ged | 15 MAY 1796 | export-Forest-6000000227296927882.ged |
 | `@I4680532417320039594@` | `INDI.DEAT.DATE` | 3 June 1863 | PFR5-LDS-ancestors12-descendants2.ged | 3 JUN 1863 | export-Forest-6000000227296927882.ged |
 | `@I6000000170746504821@` | `INDI.BIRT.DATE` |        1799 | PFR5-LDS-ancestors12-descendants2.ged | 1799 | export-Forest-6000000227299240825.ged |
@@ -52214,14 +52016,12 @@ By path:
 | `@I6000000005606847232@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227295934952.ged |
 | `@I6000000116685688006@` | `INDI.DEAT.DATE` | Bef 25 May 1728 | PFR5-LDS-ancestors12-descendants2.ged | BEF 25 MAY 1728 | export-Forest-6000000227312306880.ged |
 | `@I6000000005609463773@` | `INDI.BURI.DATE` | 26 maj 1695 | PFR5-LDS-ancestors12-descendants2.ged | 5 JUN 1695 | export-Forest-6000000227315362825.ged |
-| `@I6000000002390714489@` | `INDI.BIRT.DATE` | about 1646 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1646 | export-Descendants-6000000227289370034.ged |
 | `@I6000000006605841696@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000006605841696@` | `INDI.BIRT.DATE` | 1751 | PFR5-LDS-ancestors12-descendants2.ged | 1752 | export-Forest-6000000227296927882.ged |
 | `@I6000000003491992631@` | `INDI.BIRT.DATE` | 10 Dec 1835 | PFR5-LDS-ancestors12-descendants2.ged | 10 DEC 1835 | export-Forest-6000000227296927882.ged |
 | `@I6000000003491992631@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000005607402633@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227315643833.ged |
 | `@I6000000005607402633@` | `INDI.BIRT.DATE` | Abt 1604 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1600 | export-Forest-6000000227315643833.ged |
-| `@I6000000125612277939@` | `INDI.BIRT.DATE` | 19 January 1895 | PFR5-LDS-ancestors12-descendants2.ged | 19 JAN 1895 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000003094919015@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227315362825.ged |
 | `@I6000000017891743180@` | `INDI.DEAT.DATE` | 1820 | PFR5-LDS-ancestors12-descendants2.ged | 7 MAR 1820 | export-Forest-6000000227295934952.ged |
 | `@I6000000017891743180@` | `INDI.BIRT.DATE` |        1749 | PFR5-LDS-ancestors12-descendants2.ged | 1749 | export-Forest-6000000227295934952.ged |
@@ -52309,7 +52109,6 @@ By path:
 | `@I6000000005607339190@` | `INDI.BURI.DATE` | 23 November 1835 | PFR5-LDS-ancestors12-descendants2.ged | 23 NOV 1835 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607339190@` | `INDI.DEAT.DATE` | 13 November 1835 | PFR5-LDS-ancestors12-descendants2.ged | 13 NOV 1835 | export-Forest-6000000227296927882.ged |
 | `@I6000000178940799860@` | `INDI.BIRT.DATE` | 17 May 1931 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAY 1931 | export-BloodTree-6000000087535357291.ged |
-| `@I292754180010002641@` | `INDI.BIRT.DATE` | 1680 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1680 | export-Descendants-6000000178898487831.ged |
 | `@I6000000004861610875@` | `INDI.DEAT.DATE` |  5 JAN 1844 | PFR5-LDS-ancestors12-descendants2.ged | 1844 | export-Forest-6000000227311010870.ged |
 | `@I6000000004861610875@` | `INDI.BIRT.DATE` | Abt 1759 | PFR5-LDS-ancestors12-descendants2.ged | 1759 | export-Forest-6000000227311010870.ged |
 | `@I6000000064575255877@` | `INDI.DEAT.DATE` | 13 October 1859 | PFR5-LDS-ancestors12-descendants2.ged | 13 OCT 1859 | export-Forest-6000000227296927882.ged |
@@ -52353,7 +52152,6 @@ By path:
 | `@I6000000003492015133@` | `INDI.DEAT.DATE` | 18 Jan 1822 | PFR5-LDS-ancestors12-descendants2.ged | 18 JAN 1822 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607042309@` | `INDI.BIRT.DATE` | 30 December 1900 | PFR5-LDS-ancestors12-descendants2.ged | 1900 | export-Forest-6000000227300430000.ged |
 | `@I6000000083960930882@` | `INDI.DEAT.DATE` | 5 November 1860 | PFR5-LDS-ancestors12-descendants2.ged | 5 NOV 1860 | export-Forest-6000000227299240825.ged |
-| `@I6000000004103515754@` | `INDI.BIRT.DATE` | 16 July 1843 | PFR5-LDS-ancestors12-descendants2.ged | 16 JUL 1843 | export-Forest-6000000227290969847.ged |
 | `@I6000000006969441117@` | `INDI.BIRT.DATE` | before 16 April 1780 | PFR5-LDS-ancestors12-descendants2.ged | 1780 | export-Forest-6000000227296927882.ged |
 | `@I6000000006969441117@` | `INDI.DEAT.DATE` | 1863 | PFR5-LDS-ancestors12-descendants2.ged | 9 OCT 1863 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607387314@` | `INDI.BIRT.DATE` |        1730 | PFR5-LDS-ancestors12-descendants2.ged | 1730 | export-Forest-6000000227296927882.ged |
@@ -52375,9 +52173,6 @@ By path:
 | `@I6000000023267117091@` | `INDI.DEAT.DATE` |        1831 | PFR5-LDS-ancestors12-descendants2.ged | 17 APR 1831 | export-Forest-6000000227312306880.ged |
 | `@I6000000092748641874@` | `INDI.DEAT.DATE` |        1791 | PFR5-LDS-ancestors12-descendants2.ged | 1791 | export-Forest-6000000227296927882.ged |
 | `@I6000000092748641874@` | `INDI.BIRT.DATE` |        1757 | PFR5-LDS-ancestors12-descendants2.ged | 1757 | export-Forest-6000000227296927882.ged |
-| `@I6000000002841692034@` | `INDI.BURI.DATE` | 22 Sep 1846 | PFR5-LDS-ancestors12-descendants2.ged | 22 SEP 1846 | export-Forest-6000000227311010870.ged |
-| `@I6000000002841692034@` | `INDI.DEAT.DATE` | 15 September 1846 | PFR5-LDS-ancestors12-descendants2.ged | 15 SEP 1846 | export-Forest-6000000227311010870.ged |
-| `@I6000000002841692034@` | `INDI.BIRT.DATE` |        1766 | PFR5-LDS-ancestors12-descendants2.ged | 1766 | export-Forest-6000000227311010870.ged |
 | `@I6000000095352827027@` | `INDI.DEAT.DATE` | before 21 October 1782 | PFR5-LDS-ancestors12-descendants2.ged | 1782 | export-Forest-6000000227295934952.ged |
 | `@I6000000095352827027@` | `INDI.BIRT.DATE` | 1726 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1726 | export-Forest-6000000227295934952.ged |
 | `@I6000000003491944984@` | `INDI.BIRT.DATE` |        1778 | PFR5-LDS-ancestors12-descendants2.ged | 1778 | export-Forest-6000000227312306880.ged |
@@ -52390,7 +52185,6 @@ By path:
 | `@I6000000000496986709@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227315747834.ged |
 | `@I6000000008349290396@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000227289508960.ged |
 | `@I6000000008349290396@` | `INDI.BIRT.DATE` | 1683 | PFR5-LDS-ancestors12-descendants2.ged | 1682 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000002976630069@` | `INDI.BIRT.DATE` | 26 Jan 1833 | PFR5-LDS-ancestors12-descendants2.ged | 26 JAN 1833 | export-Forest-6000000227254397877.ged |
 | `@I6000000005561004894@` | `INDI.DEAT.DATE` | 6 Jun 1870 | PFR5-LDS-ancestors12-descendants2.ged | 6 JUN 1870 | export-Forest-6000000227312306880.ged |
 | `@I6000000005561004894@` | `INDI.BIRT.DATE` |        1795 | PFR5-LDS-ancestors12-descendants2.ged | 6 DEC 1795 | export-Forest-6000000227312306880.ged |
 | `@I6000000002374691041@` | `INDI.BIRT.DATE` | 2 February 1763 | PFR5-LDS-ancestors12-descendants2.ged | 2 FEB 1763 | export-Forest-6000000227296927882.ged |
@@ -52411,9 +52205,6 @@ By path:
 | `@I6000000006771426738@` | `INDI.DEAT.DATE` | 31 July 1840 | PFR5-LDS-ancestors12-descendants2.ged | 31 JUL 1840 | export-Forest-6000000227464556886.ged |
 | `@I6000000003095022820@` | `INDI.DEAT.DATE` | 1814 | PFR5-LDS-ancestors12-descendants2.ged | 1786 | export-Forest-6000000227296927882.ged |
 | `@I6000000003095022820@` | `INDI.BIRT.DATE` |        1713 | PFR5-LDS-ancestors12-descendants2.ged | 1713 | export-Forest-6000000227296927882.ged |
-| `@I6000000002735003873@` | `INDI.BURI.DATE` | 2 November 1834 | PFR5-LDS-ancestors12-descendants2.ged | 2 NOV 1834 | export-Forest-6000000227296927882.ged |
-| `@I6000000002735003873@` | `INDI.BIRT.DATE` | August 1742 | PFR5-LDS-ancestors12-descendants2.ged | AUG 1742 | export-Forest-6000000227296927882.ged |
-| `@I6000000002735003873@` | `INDI.DEAT.DATE` | 20 October 1834 | PFR5-LDS-ancestors12-descendants2.ged | 20 OCT 1834 | export-Forest-6000000227296927882.ged |
 | `@I3967141@` | `INDI.DEAT.DATE` | Mar 1800 | PFR5-LDS-ancestors12-descendants2.ged | FEB 1800 | export-Forest-6000000227254397877.ged |
 | `@I3967141@` | `INDI.BIRT.DATE` | August 1731 | PFR5-LDS-ancestors12-descendants2.ged | AUG 1731 | export-Forest-6000000227254397877.ged |
 | `@I3967141@` | `INDI.BURI.DATE` | 2 March 1800 | PFR5-LDS-ancestors12-descendants2.ged | 2 MAR 1800 | export-Forest-6000000227254397877.ged |
@@ -52422,8 +52213,6 @@ By path:
 | `@I6000000003492074858@` | `INDI.BIRT.DATE` | Abt 1695 | PFR5-LDS-ancestors12-descendants2.ged | 1707 | export-Forest-6000000227299240825.ged |
 | `@I6000000001291163067@` | `INDI.DEAT.DATE` | 10. august 1871 | PFR5-LDS-ancestors12-descendants2.ged | 10 AUG 1871 | export-Forest-6000000227311010870.ged |
 | `@I6000000001291163067@` | `INDI.BIRT.DATE` | før 25. desember 1784 | PFR5-LDS-ancestors12-descendants2.ged | DEC 1784 | export-Forest-6000000227311010870.ged |
-| `@I6000000005608892494@` | `INDI.DEAT.DATE` | 10 Feb 1824 | PFR5-LDS-ancestors12-descendants2.ged | 10 FEB 1824 | export-Forest-6000000227295934952.ged |
-| `@I6000000005608892494@` | `INDI.BIRT.DATE` | abt. 1740 | PFR5-LDS-ancestors12-descendants2.ged | 1748 | export-Forest-6000000227295934952.ged |
 | `@I6000000005607500714@` | `INDI.DEAT.DATE` | 10. desember 1860 | PFR5-LDS-ancestors12-descendants2.ged | 10 DEC 1860 | export-Forest-6000000227254397877.ged |
 | `@I6000000202543587856@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-BloodTree-6000000087535357291.ged |
 | `@I6000000202543587856@` | `INDI.BIRT.DATE` | Abt 1896 | PFR5-LDS-ancestors12-descendants2.ged | 19 APR 1895 | export-BloodTree-6000000087535357291.ged |
@@ -52441,8 +52230,6 @@ By path:
 | `@I6000000011841558922@` | `INDI.DEAT.DATE` | 31 July 1919 | PFR5-LDS-ancestors12-descendants2.ged | 31 JUL 1919 | export-Forest-6000000227299732860.ged |
 | `@I6000000008686109491@` | `INDI.BIRT.DATE` | 1673 | PFR5-LDS-ancestors12-descendants2.ged | 1675 | export-Forest-6000000227290969847.ged |
 | `@I6000000008686109491@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227290969847.ged |
-| `@I6000000009298912108@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227290969847.ged |
-| `@I6000000009298912108@` | `INDI.BIRT.DATE` | 03/02/1851 | PFR5-LDS-ancestors12-descendants2.ged | 3 FEB 1851 | export-Forest-6000000227290969847.ged |
 | `@I5412286130370072375@` | `INDI.BIRT.DATE` |        1778 | PFR5-LDS-ancestors12-descendants2.ged | 1778 | export-Forest-6000000227296927882.ged |
 | `@I6000000005795660728@` | `INDI.DEAT.DATE` | 18 April 1718 | PFR5-LDS-ancestors12-descendants2.ged | 18 APR 1718 | export-Forest-6000000227315362825.ged |
 | `@I6000000003094939770@` | `INDI.BIRT.DATE` | about 1720 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1720 | export-Forest-6000000227295934952.ged |
@@ -52466,8 +52253,6 @@ By path:
 | `@I6000000026298071942@` | `INDI.DEAT.DATE` | 5 February 1839 | PFR5-LDS-ancestors12-descendants2.ged | 5 FEB 1839 | export-Descendants-6000000177944417821.ged |
 | `@I6000000026298071942@` | `INDI.BURI.DATE` | 18. februar 1839 | PFR5-LDS-ancestors12-descendants2.ged | 18 FEB 1839 | export-Descendants-6000000177944417821.ged |
 | `@I6000000026298071942@` | `INDI.BIRT.DATE` | 1776 | PFR5-LDS-ancestors12-descendants2.ged | 14 JUN 1776 | export-Descendants-6000000177944417821.ged |
-| `@I6000000008686109527@` | `INDI.DEAT.DATE` | 14 May 1852 | PFR5-LDS-ancestors12-descendants2.ged | 14 MAY 1852 | export-Forest-6000000227310843862.ged |
-| `@I6000000008686109527@` | `INDI.BIRT.DATE` | 1770 | PFR5-LDS-ancestors12-descendants2.ged | 1768 | export-Forest-6000000227310843862.ged |
 | `@I6000000003095260343@` | `INDI.BIRT.DATE` | 11 Jul 1832 | PFR5-LDS-ancestors12-descendants2.ged | 11 JUL 1832 | export-Forest-6000000227299240825.ged |
 | `@I6000000005607481616@` | `INDI.BURI.DATE` | 4 August 1776 | PFR5-LDS-ancestors12-descendants2.ged | 4 AUG 1776 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607481616@` | `INDI.BIRT.DATE` | about 1706 | PFR5-LDS-ancestors12-descendants2.ged | 1706 | export-Forest-6000000227296927882.ged |
@@ -52494,7 +52279,6 @@ By path:
 | `@I6000000009214935556@` | `INDI.BIRT.DATE` |        1755 | PFR5-LDS-ancestors12-descendants2.ged | 1755 | export-Forest-6000000227296927882.ged |
 | `@I6000000009214935556@` | `INDI.DEAT.DATE` |  3 APR 1834 | PFR5-LDS-ancestors12-descendants2.ged | 3 APR 1834 | export-Forest-6000000227296927882.ged |
 | `@I6000000002387151502@` | `INDI.BIRT.DATE` |        1693 | PFR5-LDS-ancestors12-descendants2.ged | 1693 | export-Forest-6000000227296927882.ged |
-| `@I6000000005607193001@` | `INDI.BURI.DATE` | 10 Feb 1805 | PFR5-LDS-ancestors12-descendants2.ged | 10 FEB 1805 | export-Forest-6000000227296927882.ged |
 | `@I6000000014021354007@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227296927882.ged |
 | `@I6000000014021354007@` | `INDI.BIRT.DATE` | 1740 | PFR5-LDS-ancestors12-descendants2.ged | 1742 | export-Forest-6000000227296927882.ged |
 | `@I6000000006776185892@` | `INDI.DEAT.DATE` | Bef 1 Jul 1669 | PFR5-LDS-ancestors12-descendants2.ged | 1669 | export-Forest-6000000227299240825.ged |
@@ -52507,8 +52291,6 @@ By path:
 | `@I6000000008068090475@` | `INDI.DEAT.DATE` | 14 March 1865 | PFR5-LDS-ancestors12-descendants2.ged | 14 MAR 1865 | export-Forest-6000000227295934952.ged |
 | `@I6000000003286810833@` | `INDI.BIRT.DATE` | 1677 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1677 | export-Forest-6000000227299181836.ged |
 | `@I6000000003286810833@` | `INDI.DEAT.DATE` | 1741 | PFR5-LDS-ancestors12-descendants2.ged | BEF JUN 1741 | export-Forest-6000000227299181836.ged |
-| `@I6000000007433447884@` | `INDI.DEAT.DATE` | 17 Mar 1876 | PFR5-LDS-ancestors12-descendants2.ged | 17 MAR 1876 | export-Forest-6000000227311010870.ged |
-| `@I6000000007433447884@` | `INDI.BIRT.DATE` |        1797 | PFR5-LDS-ancestors12-descendants2.ged | 7 APR 1797 | export-Forest-6000000227311010870.ged |
 | `@I6000000005609325833@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227254397877.ged |
 | `@I6000000005609325833@` | `INDI.BIRT.DATE` |        1674 | PFR5-LDS-ancestors12-descendants2.ged | 1674 | export-Forest-6000000227254397877.ged |
 | `@I6000000013999654738@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Descendants-6000000177944417821.ged |
@@ -52541,8 +52323,6 @@ By path:
 | `@I6000000005609256028@` | `INDI.DEAT.DATE` | 1 July 1863 | PFR5-LDS-ancestors12-descendants2.ged | 1 JUL 1863 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000005609256028@` | `INDI.BIRT.DATE` |        1818 | PFR5-LDS-ancestors12-descendants2.ged | 18 SEP 1818 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000008379307466@` | `INDI.BIRT.DATE` | 1711 | PFR5-LDS-ancestors12-descendants2.ged | 1708 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000018858057128@` | `INDI.DEAT.DATE` | 25 sep 1858 | PFR5-LDS-ancestors12-descendants2.ged | 25 SEP 1858 | export-Forest-6000000227311010870.ged |
-| `@I6000000018858057128@` | `INDI.BIRT.DATE` | 1797 | PFR5-LDS-ancestors12-descendants2.ged | NOV 1797 | export-Forest-6000000227311010870.ged |
 | `@I6000000046135672899@` | `INDI.DEAT.DATE` | 16. januar 1813 | PFR5-LDS-ancestors12-descendants2.ged | 16 JAN 1813 | export-Forest-6000000227299240825.ged |
 | `@I6000000007647174502@` | `INDI.DEAT.DATE` | 7 June 1743 | PFR5-LDS-ancestors12-descendants2.ged | 7 JUN 1763 | export-Descendants-6000000227289370034.ged |
 | `@I6000000000496982970@` | `INDI.DEAT.DATE` | Aft 1785 | PFR5-LDS-ancestors12-descendants2.ged | 1785 | export-Forest-6000000227315747834.ged |
@@ -52561,7 +52341,6 @@ By path:
 | `@I6000000019427319239@` | `INDI.DEAT.DATE` | 25 January 1881 | PFR5-LDS-ancestors12-descendants2.ged | 25 JAN 1881 | export-Descendants-6000000177944088828.ged |
 | `@I6000000003095234980@` | `INDI.DEAT.DATE` | 23 July 1722 | PFR5-LDS-ancestors12-descendants2.ged | 23 JUL 1722 | export-Descendants-6000000227289370034.ged |
 | `@I6000000003095234980@` | `INDI.BURI.DATE` | 23 July 1722 | PFR5-LDS-ancestors12-descendants2.ged | 23 JUL 1722 | export-Descendants-6000000227289370034.ged |
-| `@I6000000012623478203@` | `INDI.BIRT.DATE` | 1708 | PFR5-LDS-ancestors12-descendants2.ged | 1701 | export-Forest-6000000227299732860.ged |
 | `@I6000000025538698525@` | `INDI.DEAT.DATE` | Abt 1696 | PFR5-LDS-ancestors12-descendants2.ged | 1676 | export-Forest-6000000227312306880.ged |
 | `@I6000000025538698525@` | `INDI.BIRT.DATE` | Abt 1620 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1615 | export-Forest-6000000227312306880.ged |
 | `@I6000000005609256287@` | `INDI.BIRT.DATE` | about 1650 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1646 | export-Forest-6000000227315706873.ged |
@@ -52608,9 +52387,6 @@ By path:
 | `@I6000000005609451301@` | `INDI.DEAT.DATE` |        1759 | PFR5-LDS-ancestors12-descendants2.ged | 1759 | export-Forest-6000000227315362825.ged |
 | `@I6000000005609451301@` | `INDI.BIRT.DATE` | 11Mar1692 | PFR5-LDS-ancestors12-descendants2.ged | 11 MAR 1692 | export-Forest-6000000227315362825.ged |
 | `@I6000000005607477258@` | `INDI.BIRT.DATE` | 1754 | PFR5-LDS-ancestors12-descendants2.ged | 1 DEC 1754 | export-Forest-6000000227300121832.ged |
-| `@I6000000034320908875@` | `INDI.DEAT.DATE` | 31 Jan 1921 | PFR5-LDS-ancestors12-descendants2.ged | 31 JAN 1921 | export-Forest-6000000227299732860.ged |
-| `@I6000000034320908875@` | `INDI.BIRT.DATE` | 05 Sep 1859 | PFR5-LDS-ancestors12-descendants2.ged | 5 SEP 1859 | export-Forest-6000000227299732860.ged |
-| `@I6000000003492077427@` | `INDI.DEAT.DATE` | 5 December 1813 | PFR5-LDS-ancestors12-descendants2.ged | 1813 | export-Forest-6000000227312306880.ged |
 | `@I6000000003025591032@` | `INDI.DEAT.DATE` | about 1740 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1700 | export-Forest-6000000227296927882.ged |
 | `@I6000000003025591032@` | `INDI.BURI.DATE` | 19 April  1740 | PFR5-LDS-ancestors12-descendants2.ged | 19 APR 1740 | export-Forest-6000000227296927882.ged |
 | `@I6000000003025591032@` | `INDI.BIRT.DATE` | about 1660 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1660 | export-Forest-6000000227296927882.ged |
@@ -52628,8 +52404,6 @@ By path:
 | `@I6000000005607481319@` | `INDI.BURI.DATE` | 4 Feb 1821 | PFR5-LDS-ancestors12-descendants2.ged | 4 FEB 1821 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607481760@` | `INDI.BIRT.DATE` | 1744 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1744 | export-Forest-6000000227296927882.ged |
 | `@I6000000018606501329@` | `INDI.BIRT.DATE` | 10 March 1765 | PFR5-LDS-ancestors12-descendants2.ged | 1765 | export-Forest-6000000227312306880.ged |
-| `@I6000000005760677083@` | `INDI.DEAT.DATE` | 15 Mar 1832 | PFR5-LDS-ancestors12-descendants2.ged | 15 MAR 1832 | export-Forest-6000000227296927882.ged |
-| `@I6000000005760677083@` | `INDI.BIRT.DATE` |        1756 | PFR5-LDS-ancestors12-descendants2.ged | 1756 | export-Forest-6000000227296927882.ged |
 | `@I6000000005435193891@` | `INDI.BIRT.DATE` | 1708 | PFR5-LDS-ancestors12-descendants2.ged | 11 MAR 1708 | export-Forest-6000000227315643833.ged |
 | `@I6000000005607023878@` | `INDI.DEAT.DATE` | 11 Feb 1842 | PFR5-LDS-ancestors12-descendants2.ged | 11 FEB 1842 | export-Forest-6000000227295934952.ged |
 | `@I6000000005607672987@` | `INDI.BIRT.DATE` | Abt 1684 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1695 | export-Forest-6000000227295934952.ged |
@@ -52664,8 +52438,6 @@ By path:
 | `@I6000000003477369115@` | `INDI.DEAT.DATE` | 23 September 1826 | PFR5-LDS-ancestors12-descendants2.ged | 23 SEP 1826 | export-Forest-6000000227299732860.ged |
 | `@I6000000003477369115@` | `INDI.BURI.DATE` | 4 October 1826 | PFR5-LDS-ancestors12-descendants2.ged | 23 SEP 1826 | export-Forest-6000000227299732860.ged |
 | `@I6000000009071647334@` | `INDI.BIRT.DATE` | 1651 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1668 | export-Forest-6000000227291028845.ged |
-| `@I6000000005607152481@` | `INDI.BIRT.DATE` | 3. september 1868 | PFR5-LDS-ancestors12-descendants2.ged | 3 SEP 1868 | export-Forest-6000000227299240825.ged |
-| `@I6000000005607152481@` | `INDI.DEAT.DATE` | 12. april 1952 | PFR5-LDS-ancestors12-descendants2.ged | 12 APR 1952 | export-Forest-6000000227299240825.ged |
 | `@I6000000005607285097@` | `INDI.BIRT.DATE` | abt. 1785 | PFR5-LDS-ancestors12-descendants2.ged | 1788 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005607285097@` | `INDI.DEAT.DATE` | 1853 | PFR5-LDS-ancestors12-descendants2.ged | 1 JAN 1853 | export-Descendants-6000000177944124971.ged |
 | `@I6000000104245237012@` | `INDI.DEAT.DATE` | 2 May 1861 | PFR5-LDS-ancestors12-descendants2.ged | 2 MAY 1861 | export-Descendants-6000000227310843862.ged |
@@ -52694,8 +52466,6 @@ By path:
 | `@I6000000023248227328@` | `INDI.BURI.DATE` | 26 May 1888 | PFR5-LDS-ancestors12-descendants2.ged | 1 JUN 1888 | export-Forest-6000000227311010870.ged |
 | `@I6000000023248227328@` | `INDI.BIRT.DATE` | 13 November 1799 | PFR5-LDS-ancestors12-descendants2.ged | BEF 13 OCT 1799 | export-Forest-6000000227311010870.ged |
 | `@I6000000023248227328@` | `INDI.DEAT.DATE` | 26 May 1888 | PFR5-LDS-ancestors12-descendants2.ged | 26 MAY 1888 | export-Forest-6000000227311010870.ged |
-| `@I6000000005607421823@` | `INDI.DEAT.DATE` | 22 July 1844 | PFR5-LDS-ancestors12-descendants2.ged | 22 JUL 1844 | export-Forest-6000000227315362825.ged |
-| `@I6000000005607421823@` | `INDI.BIRT.DATE` | 1796 | PFR5-LDS-ancestors12-descendants2.ged | 1797 | export-Forest-6000000227315362825.ged |
 | `@I6000000003492033804@` | `INDI.BIRT.DATE` | 1803 | PFR5-LDS-ancestors12-descendants2.ged | 13 MAR 1803 | export-Descendants-6000000227315362825.ged |
 | `@I6000000003492033804@` | `INDI.DEAT.DATE` |  8 AUG 1891 | PFR5-LDS-ancestors12-descendants2.ged | 8 JUN 1891 | export-Descendants-6000000227315362825.ged |
 | `@I6000000003094916458@` | `INDI.DEAT.DATE` | after 1758 | PFR5-LDS-ancestors12-descendants2.ged | 1758 | export-Forest-6000000227254397877.ged |
@@ -53082,10 +52852,6 @@ By path:
 | `@I6000000009447665156@` | `INDI.BIRT.DATE` | 1643 | export-Ancestors-6000000227464556886-2026-08-30.ged | 1636 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006964530073@` | `INDI.BIRT.DATE` | ABT 1625 | export-Ancestors-6000000227464556886-2026-08-30.ged | 1640 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006964530073@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000227464556886-2026-08-30.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003491998017@` | `INDI.BIRT.DATE` | ABT 1637 | export-Ancestors-6000000227464556886-2026-08-30.ged | about 1637 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003491998017@` | `INDI.DEAT.DATE` | 1694 | export-Ancestors-6000000227464556886-2026-08-30.ged | about 1694 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005609529475@` | `INDI.BIRT.DATE` | 1637 | export-Ancestors-6000000227464556886-2026-08-30.ged | about 1639 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005609529475@` | `INDI.DEAT.DATE` | 1694 | export-Ancestors-6000000227464556886-2026-08-30.ged | after 1709 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608884503@` | `INDI.DEAT.DATE` | 30 MAY 1670 | export-Ancestors-6000000227464556886-2026-08-30.ged | 1670 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608884510@` | `INDI.BIRT.DATE` | ABT 1620 | export-Ancestors-6000000227464556886-2026-08-30.ged | about 1644 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002806742588@` | `INDI.BIRT.DATE` | 1612 | export-Ancestors-6000000227464556886-2026-08-30.ged | about 1610 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -53231,7 +52997,6 @@ By path:
 | `@I6000000005589782837@` | `INDI.DEAT.DATE` | AFT 1672 | export-Ancestors-6000000227464556886-2026-08-30.ged | 1674 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006582663777@` | `INDI.BIRT.DATE` | 1580 | export-Ancestors-6000000227464556886-2026-08-30.ged | 1582 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000001169266129@` | `INDI.BIRT.DATE` | ABT 1575 | export-Ancestors-6000000227464556886-2026-08-30.ged | abt 1575 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002619602934@` | `INDI.BIRT.DATE` | ABT 1580 | export-Ancestors-6000000227464556886-2026-08-30.ged | 1580 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002549584487@` | `INDI.BIRT.DATE` | ABT 1590 | export-Ancestors-6000000227464556886-2026-08-30.ged | rundt 1595 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002549584487@` | `INDI.DEAT.DATE` | AFT 1670 | export-Ancestors-6000000227464556886-2026-08-30.ged | etter 1670 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002549684410@` | `INDI.BIRT.DATE` | ABT 1580 | export-Ancestors-6000000227464556886-2026-08-30.ged | rundt 1580 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -53337,21 +53102,12 @@ By path:
 | `@I6000000003095230544@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Descendants-6000000227513637856.ged | 19 JUN 2023 | export-Forest-6000000227300121832.ged |
 | `@I6000000204864728845@` | `INDI.BIRT.DATE` | 9 FEB 1794 | export-Descendants-6000000227513637856.ged | 1794 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000204864728845@` | `INDI.DEAT` | *(empty)* | export-Descendants-6000000227513637856.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003025030940@` | `INDI.BIRT.DATE` | 9 SEP 1842 | export-Descendants-6000000227513637856.ged | 09 Sep 1842 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003025030940@` | `INDI.DEAT.DATE` | 17 APR 1918 | export-Descendants-6000000227513637856.ged | 17 Apr 1918 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000012913579535@` | `INDI.BIRT.DATE` | 28 APR 1832 | export-Descendants-6000000227513637856.ged | 28 Apr 1832 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009298912108@` | `INDI.BIRT.DATE` | 3 FEB 1851 | export-Descendants-6000000227513637856.ged | 03/02/1851 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009298912108@` | `INDI.DEAT` | *(empty)* | export-Descendants-6000000227513637856.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000038789234076@` | `INDI.CHAN.DATE` | 29 AUG 2026 | export-Descendants-6000000227513637856.ged | 28 FEB 2018 | export-Forest-6000000227310843862.ged |
 | `@I6000000013134831139@` | `INDI.CHAN.DATE` | 30 AUG 2026 | export-Descendants-6000000227513637856.ged | 04 APR 2026 | export-Forest-6000000227296962836.ged |
 | `@I6000000005609522416@` | `INDI.BIRT.DATE` | 19 JAN 1854 | export-Descendants-6000000227513637856.ged | 19 Jan 1854 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609522416@` | `INDI.DEAT.DATE` | 1 JAN 1897 | export-Descendants-6000000227513637856.ged | 01 Jan 1897 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000202543587856@` | `INDI.BIRT.DATE` | 19 APR 1895 | export-Descendants-6000000227513637856.ged | Abt 1896 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000202543587856@` | `INDI.DEAT` | *(empty)* | export-Descendants-6000000227513637856.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000012899146218@` | `INDI.BIRT.DATE` | 24 FEB 1872 | export-Descendants-6000000227513637856.ged | 24/02/1872 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000012899146218@` | `INDI.DEAT` | *(empty)* | export-Descendants-6000000227513637856.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000128985061822@` | `INDI.DEAT.DATE` | 13 JAN 1915 | export-Descendants-6000000227513637856.ged | 13 January 1915 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000128985061822@` | `INDI.BURI.DATE` | 22 JAN 1915 | export-Descendants-6000000227513637856.ged | 22 January 1915 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002954044864@` | `INDI.CHAN.DATE` | 08 NOV 2023 | export-Forest-6000000227464556886-2026-08-30.ged | 04 SEP 2026 | export-Forest-6000000227610585972.ged |
 | `@I6000000005606907258@` | `INDI.DEAT.DATE` | 8 FEB 1795 | export-Forest-6000000227464556886-2026-08-30.ged | 8 Feb 1795 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606907266@` | `INDI.DEAT.DATE` | 17 DEC 1829 | export-Forest-6000000227464556886-2026-08-30.ged | 17. desember 1829 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -53381,7 +53137,6 @@ By path:
 | `@I6000000014516499641@` | `INDI.DEAT.DATE` | 5 SEP 1863 | export-Forest-6000000227464556886-2026-08-30.ged | 5 September 1863 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007222147444@` | `INDI.BIRT.DATE` | 1688 | export-Forest-6000000227464556886-2026-08-30.ged |        1688 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606916439@` | `INDI.BIRT.DATE` | 1675 | export-Forest-6000000227464556886-2026-08-30.ged | about 1628 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005606916426@` | `INDI.BIRT.DATE` | ABT 1683 | export-Forest-6000000227464556886-2026-08-30.ged | about 1680 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609102895@` | `INDI.BIRT.DATE` | 1687 | export-Forest-6000000227464556886-2026-08-30.ged | about 1697 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609102895@` | `INDI.DEAT.DATE` | 21 DEC 1764 | export-Forest-6000000227464556886-2026-08-30.ged | 21 December 1764 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606907233@` | `INDI.DEAT.DATE` | 1751 | export-Forest-6000000227464556886-2026-08-30.ged |        1751 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -53932,10 +53687,6 @@ By path:
 | `@I6000000021651776645@` | `INDI.BIRT.DATE` | 14 AUG 1846 | export-Forest-33.ged | 14 August 1846 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000021652410546@` | `INDI.BIRT.DATE` | 7 SEP 1855 | export-Forest-33.ged |  7 SEP 1855 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000021652410546@` | `INDI.DEAT.DATE` | 4 MAR 1934 | export-Forest-33.ged | 4 mars 1934 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000021653156982@` | `INDI.BIRT.DATE` | 8 DEC 1876 | export-Forest-33.ged | 8 December 1876 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000021652413708@` | `INDI.BIRT.DATE` | 17 JUL 1879 | export-Forest-33.ged | 17 July 1879 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000021651310257@` | `INDI.BIRT.DATE` | 3 JUN 1883 | export-Forest-33.ged | 3 June 1883 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000021652749382@` | `INDI.BIRT.DATE` | 26 NOV 1888 | export-Forest-33.ged | 26 November 1888 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000108368976925@` | `INDI.BIRT.DATE` | 21 JUN 1836 | export-Forest-33.ged | 21 June 1836 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000115345988864@` | `INDI.BIRT.DATE` | 8 SEP 1838 | export-Forest-33.ged | 8 September 1838 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000115345988864@` | `INDI.DEAT.DATE` | 4 FEB 1873 | export-Forest-33.ged | 4 February 1873 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -53953,8 +53704,6 @@ By path:
 | `@I6000000098026801299@` | `INDI.BIRT.DATE` | 11 APR 1887 | export-Forest-33.ged | 11 April 1887 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000098026801299@` | `INDI.DEAT.DATE` | 18 OCT 1918 | export-Forest-33.ged | 18 October 1918 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000125613092821@` | `INDI.BIRT.DATE` | 5 SEP 1879 | export-Forest-33.ged | 5 September 1879 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000125611993955@` | `INDI.BIRT.DATE` | 6 JAN 1899 | export-Forest-33.ged | 6 January 1899 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000125611993955@` | `INDI.DEAT.DATE` | 11 AUG 1965 | export-Forest-33.ged | 11 August 1965 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000178904715862@` | `INDI.BIRT.DATE` | 22 NOV 1886 | export-Forest-33.ged | 2 Feb 1883 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000178937912924@` | `INDI.BIRT.DATE` | 7 SEP 1914 | export-Forest-33.ged | 7 September 1914 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000178939178833@` | `INDI.BIRT.DATE` | 11 FEB 1917 | export-Forest-33.ged | 11 February 1917 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -54143,7 +53892,6 @@ By path:
 | `@I6000000005607201217@` | `INDI.DEAT.DATE` | 15 APR 1802 | export-Forest-4.ged | 1802 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607387492@` | `INDI.DEAT.DATE` | 27 JAN 1813 | export-Forest-4.ged | 1813 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000023359829491@` | `INDI.DEAT.DATE` | 1830 | export-Forest-4.ged | 6. desember 1830 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607193001@` | `INDI.BURI.DATE` | 10 FEB 1805 | export-Forest-4.ged | 10 Feb 1805 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002374716908@` | `INDI.DEAT.DATE` | 22 JUL 1818 | export-Forest-4.ged | 1818 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094956749@` | `INDI.BIRT.DATE` | 29 SEP 1744 | export-Forest-4.ged | 29 September 1744 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094956749@` | `INDI.DEAT.DATE` | 29 JUL 1812 | export-Forest-4.ged | 28 June 1812 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -54188,9 +53936,6 @@ By path:
 | `@I6000000005607524517@` | `INDI.BIRT.DATE` | ABT 1700 | export-Forest-4.ged | 1700 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607524517@` | `INDI.DEAT` | *(empty)* | export-Forest-4.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609223578@` | `INDI.CHAN.DATE` | 11 JAN 2025 | export-Forest-4.ged | 05 AUG 2026 | export-Forest-6000000227312306880.ged |
-| `@I6000000002841692034@` | `INDI.BIRT.DATE` | 1766 | export-Forest-4.ged |        1766 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002841692034@` | `INDI.DEAT.DATE` | 15 SEP 1846 | export-Forest-4.ged | 15 September 1846 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002841692034@` | `INDI.BURI.DATE` | 22 SEP 1846 | export-Forest-4.ged | 22 Sep 1846 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609571866@` | `INDI.BIRT.DATE` | 1660 | export-Forest-4.ged | Abt 1660 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609571866@` | `INDI.DEAT.DATE` | 1734 | export-Forest-4.ged | etter 1733 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002334353763@` | `INDI.BIRT.DATE` | 1660 | export-Forest-4.ged |        1658 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -54226,8 +53971,6 @@ By path:
 | `@I6000000005607387314@` | `INDI.BIRT.DATE` | 1730 | export-Forest-4.ged |        1730 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095226705@` | `INDI.DEAT.DATE` | 1879 | export-Forest-4.ged | 11 Jan 1879 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095226705@` | `INDI.BURI.DATE` | 19 JAN 1879 | export-Forest-4.ged | 19 January 1879 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I5352811457980050405@` | `INDI.BIRT.DATE` | 1788 | export-Forest-4.ged | 27 July 1788 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I5352811457980050405@` | `INDI.DEAT.DATE` | 20 OCT 1871 | export-Forest-4.ged | 20 Oct 1871 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002374539778@` | `INDI.BIRT.DATE` | 1 SEP 1726 | export-Forest-4.ged | 1 September 1726 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002374539778@` | `INDI.DEAT.DATE` | 24 JUN 1786 | export-Forest-4.ged | 24 June 1786 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002374733126@` | `INDI.BIRT.DATE` | 1747 | export-Forest-4.ged | 27 November 1747 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -54240,7 +53983,6 @@ By path:
 | `@I6000000003094956704@` | `INDI.BIRT.DATE` | 1786 | export-Forest-4.ged |        1786 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094956704@` | `INDI.DEAT.DATE` | 1881 | export-Forest-4.ged | 23 November 1881 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000077315943351@` | `INDI.BIRT.DATE` | 3 NOV 1876 | export-Forest-4.ged | 3 November 1876 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002976630069@` | `INDI.BIRT.DATE` | 26 JAN 1833 | export-Forest-4.ged | 26 Jan 1833 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606886559@` | `INDI.BIRT.DATE` | 1661 | export-Forest-4.ged |        1661 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606886567@` | `INDI.BIRT.DATE` | 1683 | export-Forest-4.ged | about 1685 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606886567@` | `INDI.DEAT.DATE` | 5 APR 1722 | export-Forest-4.ged | 5 April 1722 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -54488,8 +54230,6 @@ By path:
 | `@I6000000177921501869@` | `INDI.DEAT.DATE` | 8 OCT 1852 | export-Ancestors-6000000227892448837.ged | 8 oktober 1852 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007139980393@` | `INDI.BIRT.DATE` | 1 OCT 1724 | export-Ancestors-6000000227892448837.ged | 1 October 1724 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000177921501854@` | `INDI.BIRT.DATE` | 1744 | export-Ancestors-6000000227892448837.ged | 1769 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000177921501874@` | `INDI.BIRT.DATE` | 1729 | export-Ancestors-6000000227892448837.ged | 1730 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000177921501879@` | `INDI.BIRT.DATE` | 2 APR 1732 | export-Ancestors-6000000227892448837.ged | 1732 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007818631316@` | `INDI.BIRT.DATE` | 1 NOV 1730 | export-Ancestors-6000000227892448837.ged | 1 November 1730 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011078918407@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000227892448837.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011078918407@` | `INDI.CHAN.DATE` | 23 SEP 2026 | export-Ancestors-6000000227892448837.ged | 19 AUG 2025 | export-Forest-6000000227294926845.ged |
@@ -54499,7 +54239,6 @@ By path:
 | `@I6000000000581187590@` | `INDI.DEAT.DATE` | 4 JAN 1796 | export-Ancestors-6000000227892448837.ged |  4 JAN 1796 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000000581187590@` | `INDI.BURI.DATE` | 10 JAN 1796 | export-Ancestors-6000000227892448837.ged | 10 Jan 1796 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000000581187590@` | `INDI.CHAN.DATE` | 23 SEP 2026 | export-Ancestors-6000000227892448837.ged | 05 JAN 2024 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000177921389824@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000227892448837.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011078760054@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000227892448837.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000000581187536@` | `INDI.BIRT.DATE` | ABT 1685 | export-Ancestors-6000000227892448837.ged | 1685 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000000581187536@` | `INDI.DEAT.DATE` | 29 JAN 1738 | export-Ancestors-6000000227892448837.ged | 29 Jan 1738 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -54646,8 +54385,6 @@ By path:
 | `@I6000000177921516839@` | `INDI.BIRT.DATE` | 18 SEP 1758 | export-Ancestors-6000000087535357291.ged | 9 October 1767 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000177921535834@` | `INDI.BIRT.DATE` | 22 OCT 1761 | export-Ancestors-6000000087535357291.ged | 22 oktober 1761 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000177921535839@` | `INDI.BIRT.DATE` | 20 MAY 1777 | export-Ancestors-6000000087535357291.ged | 20 May 1777 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000177921501894@` | `INDI.BIRT.DATE` | 1771 | export-Ancestors-6000000087535357291.ged | 19 september 1768 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000177921535860@` | `INDI.BIRT.DATE` | 24 MAY 1773 | export-Ancestors-6000000087535357291.ged | 8 februari 1765 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000177921544834@` | `INDI.BIRT.DATE` | 10 JUN 1768 | export-Ancestors-6000000087535357291.ged | 16 OCT 1768 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000177921544839@` | `INDI.BIRT.DATE` | 1769 | export-Ancestors-6000000087535357291.ged | 15 November 1769 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000177921535875@` | `INDI.BIRT.DATE` | 16 OCT 1773 | export-Ancestors-6000000087535357291.ged | 16 October 1773 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55342,7 +55079,6 @@ By path:
 | `@I4112011304930055529@` | `INDI.BIRT.DATE` | ABT 1585 | export-Ancestors-6000000087535357291.ged | etter 1580 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000001169238166@` | `INDI.BIRT.DATE` | ABT 1600 | export-Ancestors-6000000087535357291.ged | about 1585 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000001169238166@` | `INDI.DEAT.DATE` | 1630 | export-Ancestors-6000000087535357291.ged | after 1668 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000001169146145@` | `INDI.DEAT.DATE` | ABT 1662 | export-Ancestors-6000000087535357291.ged | 1672 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607268671@` | `INDI.BIRT.DATE` | ABT 1600 | export-Ancestors-6000000087535357291.ged | 1600 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607268671@` | `INDI.DEAT.DATE` | 1673 | export-Ancestors-6000000087535357291.ged | ca 1673 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002482165558@` | `INDI.BIRT.DATE` | ABT 1587 | export-Ancestors-6000000087535357291.ged | 1585 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55508,8 +55244,6 @@ By path:
 | `@I6000000002006386304@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001136798072@` | `INDI.BIRT.DATE` | ABT 1415 | export-Ancestors-6000000087535357291.ged | 1400 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001136798072@` | `INDI.DEAT.DATE` | AFT 1472 | export-Ancestors-6000000087535357291.ged | etter 1473 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003281256924@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003645811056@` | `INDI.DEAT.DATE` | ABT 1471 | export-Ancestors-6000000087535357291.ged | 1471 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I5512359337980087028@` | `INDI.BIRT.DATE` | BET 1465 AND 1480 | export-Ancestors-6000000087535357291.ged | about 1455 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I5512359337980087028@` | `INDI.DEAT.DATE` | AFT 1501 | export-Ancestors-6000000087535357291.ged | about 1501 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000002893316227@` | `INDI.BIRT.DATE` | 1460 | export-Ancestors-6000000087535357291.ged | about 1440 | MBW7-P7H-ancestors12-descendants2.ged |
@@ -55523,10 +55257,6 @@ By path:
 | `@I6000000002512252605@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000003821039045@` | `INDI.BIRT.DATE` | ABT 1373 | export-Ancestors-6000000087535357291.ged | about 1387 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000003821039045@` | `INDI.DEAT.DATE` | ABT 1450 | export-Ancestors-6000000087535357291.ged | about 1450 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000206195190843@` | `INDI.BIRT.DATE` | ABT 1412 | export-Ancestors-6000000087535357291.ged | about 1345 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000005041598810@` | `INDI.BIRT.DATE` | ABT 1400 | export-Ancestors-6000000087535357291.ged | 1424 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000005042069515@` | `INDI.BIRT.DATE` | ABT 1390 | export-Ancestors-6000000087535357291.ged | Abt 1421 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000005042069515@` | `INDI.DEAT.DATE` | ABT 1424 | export-Ancestors-6000000087535357291.ged | After 1465 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000005075343353@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000005075343353@` | `INDI.BIRT.DATE` | 1420 | export-Ancestors-6000000087535357291.ged | about 1420 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000006241455727@` | `INDI.BIRT.DATE` | ABT 1420 | export-Ancestors-6000000087535357291.ged | estimated 1427 | MBW7-P7H-ancestors12-descendants2.ged |
@@ -55543,11 +55273,6 @@ By path:
 | `@I6000000007980760910@` | `INDI.DEAT.DATE` | 1420 | export-Ancestors-6000000087535357291.ged | about 1410 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000002006298745@` | `INDI.BIRT.DATE` | ABT 1336 | export-Ancestors-6000000087535357291.ged | 1369 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000002006298745@` | `INDI.DEAT.DATE` | ABT 1371 | export-Ancestors-6000000087535357291.ged | 1427 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000012673513328@` | `INDI.BIRT.DATE` | BEF 1350 | export-Ancestors-6000000087535357291.ged | about 1350 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000012673513328@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000000621170104@` | `INDI.BIRT.DATE` | ABT 1345 | export-Ancestors-6000000087535357291.ged | 1350 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000000621170104@` | `INDI.DEAT.DATE` | AFT 1433 | export-Ancestors-6000000087535357291.ged | after 1413 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000001493907157@` | `INDI.BIRT.DATE` | ABT 1370 | export-Ancestors-6000000087535357291.ged | about 1360 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000017876489301@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001317925402@` | `INDI.BIRT.DATE` | BET 1365 AND 1425 | export-Ancestors-6000000087535357291.ged | about 1390 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001317925402@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
@@ -55557,12 +55282,6 @@ By path:
 | `@I6000000015841631236@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000015841669087@` | `INDI.BIRT.DATE` | BET 1460 AND 1480 | export-Ancestors-6000000087535357291.ged | about 1478 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000002893299341@` | `INDI.BIRT.DATE` | ABT 1326 | export-Ancestors-6000000087535357291.ged | 1340 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002006517141@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000012673316618@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000012673316618@` | `INDI.BIRT.DATE` | BEF 1320 | export-Ancestors-6000000087535357291.ged | from about 1280 to 1291 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I5137033638730022528@` | `INDI.BIRT.DATE` | ABT 1315 | export-Ancestors-6000000087535357291.ged | 1320 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I5137033638730022528@` | `INDI.DEAT.DATE` | ABT 1349 | export-Ancestors-6000000087535357291.ged | 1389 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000187191097841@` | `INDI.BIRT.DATE` | ABT 1320 | export-Ancestors-6000000087535357291.ged | 1335 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000031921720268@` | `INDI.BIRT.DATE` | ABT 1350 | export-Ancestors-6000000087535357291.ged | about 1365 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000031921788092@` | `INDI.BIRT.DATE` | 1368 | export-Ancestors-6000000087535357291.ged | about 1370 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000031921788092@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
@@ -55572,8 +55291,6 @@ By path:
 | `@I6000000015841678165@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000015837899499@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000177944541850@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Ancestors-6000000087535357291.ged | 17 AUG 2026 | export-BloodTree-6000000227295848846.ged |
-| `@I5137037814840138979@` | `INDI.BIRT.DATE` | ABT 1300 | export-Ancestors-6000000087535357291.ged | 1290 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I5137037814840138979@` | `INDI.DEAT.DATE` | ABT 1370 | export-Ancestors-6000000087535357291.ged | 1380 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000035522555028@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000005059632369@` | `INDI.CHAN.DATE` | 10 NOV 2024 | export-Ancestors-6000000087535357291.ged | 25 AUG 2026 | export-Ancestors-6000000227464556886-2026-08-30.ged |
 | `@I6000000031780184510@` | `INDI.DEAT` | *(empty)* | export-Ancestors-6000000087535357291.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
@@ -55674,7 +55391,6 @@ By path:
 | `@I6000000000656813883@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Ancestors-6000000177921459114.ged | 20 MAR 2026 | export-Forest-20.ged |
 | `@I6000000176200817886@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Bio-6000000212213649822.ged | 14 APR 2024 | export-Forest-14.ged |
 | `@I6000000015117759603@` | `INDI.BIRT.DATE` | 3 MAY 1931 | export-BloodTree-6000000087535357291.ged | 3 May 1931 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000177921458884@` | `INDI.BIRT.DATE` | 1929 | export-BloodTree-6000000087535357291.ged | 1930 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000015117759599@` | `INDI.BIRT.DATE` | 14 DEC 1928 | export-BloodTree-6000000087535357291.ged | 14 December 1928 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000015117759599@` | `INDI.DEAT.DATE` | 12 MAY 2004 | export-BloodTree-6000000087535357291.ged | 12 May 2004 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000032068927203@` | `INDI.BIRT.DATE` | 24 JUN 1897 | export-BloodTree-6000000087535357291.ged | 21 Jun 1897 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55719,7 +55435,6 @@ By path:
 | `@I6000000035525972877@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000035526020901@` | `INDI.BIRT.DATE` | 25 APR 1827 | export-BloodTree-6000000087535357291.ged |        1827 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000035526020901@` | `INDI.DEAT.DATE` | 31 MAY 1918 | export-BloodTree-6000000087535357291.ged | 31 May 1918 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000012899944687@` | `INDI.BIRT.DATE` | 14 MAY 1825 | export-BloodTree-6000000087535357291.ged | 14/05/1825 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000207773330830@` | `INDI.BIRT.DATE` | 1 AUG 1864 | export-BloodTree-6000000087535357291.ged | 1 August 1864 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000207773330830@` | `INDI.DEAT.DATE` | 28 APR 1923 | export-BloodTree-6000000087535357291.ged | 28 April 1923 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000207773663900@` | `INDI.BIRT.DATE` | 10 SEP 1893 | export-BloodTree-6000000087535357291.ged | 10 Sep 1893 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55799,7 +55514,6 @@ By path:
 | `@I6000000011487317541@` | `INDI.BIRT.DATE` | 23 MAR 1847 | export-BloodTree-6000000087535357291.ged | 23 March 1847 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000077297672317@` | `INDI.BIRT.DATE` | 3 JUL 1836 | export-BloodTree-6000000087535357291.ged |        1836 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000077297672317@` | `INDI.DEAT.DATE` | 25 FEB 1928 | export-BloodTree-6000000087535357291.ged | 25 Feb 1928 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000035525894109@` | `INDI.BIRT.DATE` | 19 FEB 1860 | export-BloodTree-6000000087535357291.ged | 19 February 1860 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012333806261@` | `INDI.BIRT.DATE` | 26 DEC 1861 | export-BloodTree-6000000087535357291.ged |        1861 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012333806261@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011841656824@` | `INDI.BIRT.DATE` | 11 JAN 1864 | export-BloodTree-6000000087535357291.ged | 11 January 1864 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55811,20 +55525,15 @@ By path:
 | `@I6000000035526036992@` | `INDI.BIRT.DATE` | 10 APR 1873 | export-BloodTree-6000000087535357291.ged |        1873 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000035525912053@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000035525912053@` | `INDI.BIRT.DATE` | 10 FEB 1877 | export-BloodTree-6000000087535357291.ged |        1877 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009299169816@` | `INDI.BIRT.DATE` | 28 APR 1793 | export-BloodTree-6000000087535357291.ged | 1796 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009299169816@` | `INDI.DEAT.DATE` | 1864 | export-BloodTree-6000000087535357291.ged | 30 September 1865 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000206688720905@` | `INDI.BIRT.DATE` | 1790 | export-BloodTree-6000000087535357291.ged | about 1790 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000206688720905@` | `INDI.DEAT.DATE` | 27 FEB 1865 | export-BloodTree-6000000087535357291.ged | 27 February 1865 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000020937502830@` | `INDI.BIRT.DATE` | 23 MAY 1907 | export-BloodTree-6000000087535357291.ged | 23 May 1907 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000020937502830@` | `INDI.DEAT.DATE` | 28 FEB 1995 | export-BloodTree-6000000087535357291.ged | 28 February 1995 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000039229563859@` | `INDI.BIRT.DATE` | 22 FEB 1759 | export-BloodTree-6000000087535357291.ged | 22 February 1759 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000039229563859@` | `INDI.DEAT.DATE` | 1 JAN 1834 | export-BloodTree-6000000087535357291.ged | 1 January 1834 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000101819136834@` | `INDI.BIRT.DATE` | 11 JUL 1817 | export-BloodTree-6000000087535357291.ged | 11 June 1817 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000101819136834@` | `INDI.DEAT.DATE` | 3 SEP 1884 | export-BloodTree-6000000087535357291.ged | 3 September 1884 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000081104428847@` | `INDI.BIRT.DATE` | 9 MAY 1854 | export-BloodTree-6000000087535357291.ged | 9 May 1854 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000098028986258@` | `INDI.BIRT.DATE` | 17 SEP 1883 | export-BloodTree-6000000087535357291.ged | 17 September 1883 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000098028986258@` | `INDI.DEAT.DATE` | 11 SEP 1936 | export-BloodTree-6000000087535357291.ged | 11 September 1936 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000125612277939@` | `INDI.BIRT.DATE` | 19 JAN 1895 | export-BloodTree-6000000087535357291.ged | 19 January 1895 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000178938780837@` | `INDI.BIRT.DATE` | 26 FEB 1919 | export-BloodTree-6000000087535357291.ged | 26 February 1919 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000178938780837@` | `INDI.DEAT.DATE` | 1 JUL 1997 | export-BloodTree-6000000087535357291.ged | 1 July 1997 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000178940799860@` | `INDI.BIRT.DATE` | 17 MAY 1931 | export-BloodTree-6000000087535357291.ged | 17 May 1931 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55840,11 +55549,6 @@ By path:
 | `@I6000000116694298835@` | `INDI.BIRT.DATE` | 28 OCT 1836 | export-BloodTree-6000000087535357291.ged | 1836 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000026323783946@` | `INDI.BIRT.DATE` | 28 FEB 1842 | export-BloodTree-6000000087535357291.ged | 28 February 1842 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000026323783946@` | `INDI.DEAT.DATE` | 27 MAR 1937 | export-BloodTree-6000000087535357291.ged | 27 March 1937 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025767998288@` | `INDI.BIRT.DATE` | 7 AUG 1865 | export-BloodTree-6000000087535357291.ged | 7. august 1865 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025767998288@` | `INDI.DEAT.DATE` | 4 JUN 1935 | export-BloodTree-6000000087535357291.ged | 4. juni 1935 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025767998288@` | `INDI.BURI.DATE` | 8 JUN 1935 | export-BloodTree-6000000087535357291.ged | 8. juni 1935 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025769082428@` | `INDI.BIRT.DATE` | 28 JAN 1868 | export-BloodTree-6000000087535357291.ged | 28 January 1868 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025769082428@` | `INDI.DEAT.DATE` | 6 SEP 1906 | export-BloodTree-6000000087535357291.ged |        1906 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000025782345089@` | `INDI.DEAT.DATE` | 19 DEC 1936 | export-BloodTree-6000000087535357291.ged | 20 DEC 1936 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000025793503095@` | `INDI.BIRT.DATE` | 8 JUN 1872 | export-BloodTree-6000000087535357291.ged | 08 Jun 1872 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000025814575023@` | `INDI.BIRT.DATE` | 16 NOV 1879 | export-BloodTree-6000000087535357291.ged | 16 Nov 1879 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55858,8 +55562,6 @@ By path:
 | `@I6000000002711365308@` | `INDI.DEAT.DATE` | 16 JUL 1852 | export-BloodTree-6000000087535357291.ged | 16 Jul 1854 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I5206037195990079715@` | `INDI.BIRT.DATE` | 1778 | export-BloodTree-6000000087535357291.ged |        1778 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I5206037195990079715@` | `INDI.DEAT.DATE` | 28 APR 1840 | export-BloodTree-6000000087535357291.ged | 28 April 1840 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002866431340@` | `INDI.BIRT.DATE` | 5 JUL 1807 | export-BloodTree-6000000087535357291.ged | 5 July 1807 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002866431340@` | `INDI.DEAT.DATE` | 16 APR 1871 | export-BloodTree-6000000087535357291.ged | 16 April 1871 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002866476200@` | `INDI.BIRT.DATE` | 26 DEC 1809 | export-BloodTree-6000000087535357291.ged | 26 Dec 1809 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002866476200@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000059582152084@` | `INDI.BIRT.DATE` | 13 DEC 1812 | export-BloodTree-6000000087535357291.ged | 13 Dec 1812 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55868,8 +55570,6 @@ By path:
 | `@I5206018745300031870@` | `INDI.DEAT.DATE` | 6 SEP 1898 | export-BloodTree-6000000087535357291.ged | 6 Sep 1898 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002866525222@` | `INDI.BIRT.DATE` | 8 MAY 1825 | export-BloodTree-6000000087535357291.ged | 8 May 1825 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003491976436@` | `INDI.BIRT.DATE` | 16 JUN 1802 | export-BloodTree-6000000087535357291.ged | 16 Jun 1802 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003492031119@` | `INDI.BIRT.DATE` | 21 MAR 1829 | export-BloodTree-6000000087535357291.ged | 24 March 1829 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003492031119@` | `INDI.DEAT.DATE` | 19 OCT 1910 | export-BloodTree-6000000087535357291.ged | 18 Oct 1910 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008363986466@` | `INDI.DEAT.DATE` | 1792 | export-BloodTree-6000000087535357291.ged |        1792 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000014515953122@` | `INDI.DEAT.DATE` | 30 OCT 1817 | export-BloodTree-6000000087535357291.ged | 30 Oct 1817 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000023699897063@` | `INDI.BIRT.DATE` | 1746 | export-BloodTree-6000000087535357291.ged |        1746 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55968,8 +55668,6 @@ By path:
 | `@I6000000005607491260@` | `INDI.DEAT.DATE` | 4 FEB 1834 | export-BloodTree-6000000087535357291.ged | 4 Feb 1834 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095187778@` | `INDI.BIRT.DATE` | 17 AUG 1766 | export-BloodTree-6000000087535357291.ged |        1766 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095187778@` | `INDI.DEAT.DATE` | 22 MAY 1853 | export-BloodTree-6000000087535357291.ged | 22 May 1853 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000034320908875@` | `INDI.BIRT.DATE` | 5 SEP 1859 | export-BloodTree-6000000087535357291.ged | 05 Sep 1859 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000034320908875@` | `INDI.DEAT.DATE` | 31 JAN 1921 | export-BloodTree-6000000087535357291.ged | 31 Jan 1921 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012333067769@` | `INDI.BIRT.DATE` | 15 MAR 1865 | export-BloodTree-6000000087535357291.ged | 1865 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012333067769@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011841558922@` | `INDI.BIRT.DATE` | 16 FEB 1853 | export-BloodTree-6000000087535357291.ged | 16 February 1853 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -55980,24 +55678,15 @@ By path:
 | `@I4771125430840074465@` | `INDI.DEAT.DATE` | 4 MAR 1821 | export-BloodTree-6000000087535357291.ged | 4 March 1821 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095195017@` | `INDI.DEAT.DATE` | 1825 | export-BloodTree-6000000087535357291.ged | 26 May 1825 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011893867632@` | `INDI.BIRT.DATE` | 1761 | export-BloodTree-6000000087535357291.ged | 27 December 1761 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009299324581@` | `INDI.BIRT.DATE` | 8 APR 1808 | export-BloodTree-6000000087535357291.ged | 8 April 1808 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009299324581@` | `INDI.DEAT.DATE` | 1889 | export-BloodTree-6000000087535357291.ged | 13 April 1888 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009298796184@` | `INDI.DEAT.DATE` | 24 JUL 1938 | export-BloodTree-6000000087535357291.ged | 24 July 1937 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000017348416155@` | `INDI.BIRT.DATE` | 28 DEC 1826 | export-BloodTree-6000000087535357291.ged | 28 December 1826 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000017348416155@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000012898678739@` | `INDI.BIRT.DATE` | 10 NOV 1879 | export-BloodTree-6000000087535357291.ged | 10/11/1879 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000012898678739@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000047343092868@` | `INDI.BIRT.DATE` | 17 FEB 1752 | export-BloodTree-6000000087535357291.ged | 11 Feb 1752 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000188893237823@` | `INDI.BIRT.DATE` | 1 OCT 1748 | export-BloodTree-6000000087535357291.ged | 1 Oct 1748 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000188893237823@` | `INDI.DEAT.DATE` | 18 SEP 1773 | export-BloodTree-6000000087535357291.ged | 18 Sep 1773 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000010057347454@` | `INDI.BIRT.DATE` | 9 OCT 1739 | export-BloodTree-6000000087535357291.ged | 1 March 1764 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000022935248147@` | `INDI.BIRT.DATE` | 10 MAY 1726 | export-BloodTree-6000000087535357291.ged | 10 May 1726 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000022935248147@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000039229233199@` | `INDI.BIRT.DATE` | 3 SEP 1755 | export-BloodTree-6000000087535357291.ged | 3 September 1755 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000039229233199@` | `INDI.DEAT.DATE` | 5 JAN 1835 | export-BloodTree-6000000087535357291.ged | 5 January 1835 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000081104373924@` | `INDI.BIRT.DATE` | 21 AUG 1842 | export-BloodTree-6000000087535357291.ged | 21 August 1842 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000081104373924@` | `INDI.DEAT.DATE` | 11 NOV 1903 | export-BloodTree-6000000087535357291.ged | 11 November 1903 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000011076706917@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013181882686@` | `INDI.BIRT.DATE` | 1920 | export-BloodTree-6000000087535357291.ged | 7 MAR 1920 | export-Descendants-6000000227315747834.ged |
 | `@I6000000013181882686@` | `INDI.CHAN.DATE` | 24 JUL 2026 | export-BloodTree-6000000087535357291.ged | 09 AUG 2026 | export-Descendants-6000000227315747834.ged |
 | `@I6000000005607146612@` | `INDI.BIRT.DATE` | 1712 | export-BloodTree-6000000087535357291.ged | Abt 1712 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56051,10 +55740,6 @@ By path:
 | `@I6000000005607065097@` | `INDI.BIRT.DATE` | 1807 | export-BloodTree-6000000087535357291.ged |        1807 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000062460888845@` | `INDI.DEAT.DATE` | 20 JUL 1886 | export-BloodTree-6000000087535357291.ged | 1886 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000116694298829@` | `INDI.BIRT.DATE` | 20 MAR 1837 | export-BloodTree-6000000087535357291.ged | 20 Mar 1837 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607152481@` | `INDI.BIRT.DATE` | 3 SEP 1868 | export-BloodTree-6000000087535357291.ged | 3. september 1868 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607152481@` | `INDI.DEAT.DATE` | 12 APR 1952 | export-BloodTree-6000000087535357291.ged | 12. april 1952 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025769364153@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025769364153@` | `INDI.BIRT.DATE` | 7 DEC 1877 | export-BloodTree-6000000087535357291.ged | 07 Dec 1877 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000025782525928@` | `INDI.BIRT.DATE` | 26 AUG 1886 | export-BloodTree-6000000087535357291.ged | 26 August 1886 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000025782525928@` | `INDI.DEAT.DATE` | 13 SEP 1927 | export-BloodTree-6000000087535357291.ged | 13 December 1927 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000025792555814@` | `INDI.BIRT.DATE` | 10 APR 1870 | export-BloodTree-6000000087535357291.ged | 10 Apr 1870 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56080,15 +55765,12 @@ By path:
 | `@I6000000010556635727@` | `INDI.DEAT.DATE` | 1815 | export-BloodTree-6000000087535357291.ged | 3 September 1815 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000010556152024@` | `INDI.BIRT.DATE` | 1816 | export-BloodTree-6000000087535357291.ged | 15 Aug 1816 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000010556152024@` | `INDI.DEAT.DATE` | 1816 | export-BloodTree-6000000087535357291.ged | 18 Aug 1816 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607421823@` | `INDI.BIRT.DATE` | 1797 | export-BloodTree-6000000087535357291.ged | 1796 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607421823@` | `INDI.DEAT.DATE` | 22 JUL 1844 | export-BloodTree-6000000087535357291.ged | 22 July 1844 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002867850621@` | `INDI.BIRT.DATE` | 20 FEB 1805 | export-BloodTree-6000000087535357291.ged | 1806 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002867850621@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095115557@` | `INDI.BIRT.DATE` | 14 FEB 1824 | export-BloodTree-6000000087535357291.ged | 14 Feb 1824 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095115557@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011393708202@` | `INDI.BIRT.DATE` | 4 FEB 1826 | export-BloodTree-6000000087535357291.ged | 04 Feb 1826 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011393708202@` | `INDI.DEAT.DATE` | 26 MAY 1890 | export-BloodTree-6000000087535357291.ged | 22 May 1890 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003492031172@` | `INDI.BIRT.DATE` | 19 SEP 1844 | export-BloodTree-6000000087535357291.ged | 19 September 1844 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000204390156826@` | `INDI.DEAT.DATE` | AUG 1712 | export-BloodTree-6000000087535357291.ged | 14 August 1712 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000204390156826@` | `INDI.BURI.DATE` | 14 AUG 1712 | export-BloodTree-6000000087535357291.ged | 14 augusti 1712 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609113086@` | `INDI.BURI.DATE` | 12 AUG 1786 | export-BloodTree-6000000087535357291.ged | 12 August 1786 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56151,15 +55833,8 @@ By path:
 | `@I6000000003492033794@` | `INDI.DEAT.DATE` | 5 AUG 1894 | export-BloodTree-6000000087535357291.ged | 5 Aug 1894 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002853953330@` | `INDI.DEAT.DATE` | 7 MAR 1847 | export-BloodTree-6000000087535357291.ged | 7 Mar 1847 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000028708568014@` | `INDI.DEAT.DATE` | 9 JAN 1867 | export-BloodTree-6000000087535357291.ged | 9. januar 1867 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000028708694024@` | `INDI.BIRT.DATE` | 4 AUG 1793 | export-BloodTree-6000000087535357291.ged | før 4. august 1793 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000028708694024@` | `INDI.DEAT.DATE` | 9 JUN 1857 | export-BloodTree-6000000087535357291.ged |  9 JUN 1857 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000025457179900@` | `INDI.BIRT.DATE` | 29 MAY 1796 | export-BloodTree-6000000087535357291.ged | før 29. mai 1796 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000007433602272@` | `INDI.BIRT.DATE` | 24 MAR 1799 | export-BloodTree-6000000087535357291.ged | før 24. mars 1799 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000007433602272@` | `INDI.DEAT.DATE` | 26 OCT 1872 | export-BloodTree-6000000087535357291.ged | 26 Oct 1872 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492033988@` | `INDI.BIRT.DATE` | 11 APR 1802 | export-BloodTree-6000000087535357291.ged | før 11. april 1802 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492033988@` | `INDI.DEAT.DATE` | 16 APR 1835 | export-BloodTree-6000000087535357291.ged | 16 Apr 1835 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000028708516165@` | `INDI.BIRT.DATE` | 28 APR 1805 | export-BloodTree-6000000087535357291.ged | 28. april 1805 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000028708516165@` | `INDI.DEAT.DATE` | 24 NOV 1831 | export-BloodTree-6000000087535357291.ged | 24 Nov 1831 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492037008@` | `INDI.DEAT.DATE` | 18 JUN 1859 | export-BloodTree-6000000087535357291.ged | 18 Jun 1859 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002626063813@` | `INDI.BIRT.DATE` | 17 NOV 1819 | export-BloodTree-6000000087535357291.ged | 27 OCT 1819 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002626063813@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56233,8 +55908,6 @@ By path:
 | `@I6000000222576045825@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002452588272@` | `INDI.BIRT.DATE` | 1711 | export-BloodTree-6000000087535357291.ged | 1710 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002452588272@` | `INDI.BURI.DATE` | 13 APR 1777 | export-BloodTree-6000000087535357291.ged | 13. april 1777 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009381827546@` | `INDI.BIRT.DATE` | 1730 | export-BloodTree-6000000087535357291.ged | about 1712 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009381827546@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000116889890851@` | `INDI.BIRT.DATE` | 1705 | export-BloodTree-6000000087535357291.ged |        1705 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000116889890851@` | `INDI.DEAT.DATE` | 1767 | export-BloodTree-6000000087535357291.ged |        1767 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008191341327@` | `INDI.BIRT.DATE` | 31 DEC 1790 | export-BloodTree-6000000087535357291.ged |        1790 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56243,9 +55916,6 @@ By path:
 | `@I6000000008191323105@` | `INDI.DEAT.DATE` | 21 NOV 1884 | export-BloodTree-6000000087535357291.ged | 1884 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008191150937@` | `INDI.BIRT.DATE` | 7 MAY 1827 | export-BloodTree-6000000087535357291.ged |        1827 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008191150937@` | `INDI.DEAT.DATE` | 11 MAR 1868 | export-BloodTree-6000000087535357291.ged | 11 Mar 1868 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000007744721430@` | `INDI.BIRT.DATE` | 27 JUN 1829 | export-BloodTree-6000000087535357291.ged | 27 July 1829 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000007744721430@` | `INDI.DEAT.DATE` | 17 APR 1897 | export-BloodTree-6000000087535357291.ged | 17 April 1897 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000007744721430@` | `INDI.BURI.DATE` | 24 APR 1897 | export-BloodTree-6000000087535357291.ged | 24 April 1897 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008191499431@` | `INDI.BIRT.DATE` | 27 MAR 1832 | export-BloodTree-6000000087535357291.ged |        1832 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008191499431@` | `INDI.DEAT` | *(empty)* | export-BloodTree-6000000087535357291.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012588293590@` | `INDI.BIRT.DATE` | 1710 | export-BloodTree-6000000087535357291.ged |        1710 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56314,7 +55984,6 @@ By path:
 | `@I6000000011893875622@` | `INDI.BIRT.DATE` | ABT 1802 | export-BloodTree-6000000087535357291.ged |        1802 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095038826@` | `INDI.BIRT.DATE` | 1812 | export-BloodTree-6000000087535357291.ged | 1810 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095038826@` | `INDI.DEAT.DATE` | 31 OCT 1892 | export-BloodTree-6000000087535357291.ged | 31 October 1892 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000004103515754@` | `INDI.BIRT.DATE` | 16 JUL 1843 | export-BloodTree-6000000087535357291.ged | 16 July 1843 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006171215843@` | `INDI.BURI.DATE` | 15 OCT 1741 | export-BloodTree-6000000087535357291.ged | 15 October 1741 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006171215854@` | `INDI.DEAT.DATE` | 1799 | export-BloodTree-6000000087535357291.ged | 13 October 1799 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006171215854@` | `INDI.BURI.DATE` | 13 OCT 1799 | export-BloodTree-6000000087535357291.ged | 13/10/1799 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -56562,8 +56231,6 @@ By path:
 | `@I6000000003094916448@` | `INDI.BIRT.DATE` | 1686 | export-Forest-6000000227087120840.ged | Abt 1686 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094916448@` | `INDI.DEAT.DATE` | 1745 | export-Forest-6000000227087120840.ged | Abt 1745 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094932561@` | `INDI.DEAT.DATE` | 1729 | export-Forest-6000000227087120840.ged | before 1731 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I5426434732130122086@` | `INDI.BIRT.DATE` | 1705 | export-Forest-6000000227087120840.ged | 26 Apr 1705 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I5426434732130122086@` | `INDI.DEAT.DATE` | 1786 | export-Forest-6000000227087120840.ged |        1786 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094932549@` | `INDI.BIRT.DATE` | ABT 1682 | export-Forest-6000000227087120840.ged |        1682 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094932570@` | `INDI.BIRT.DATE` | ABT 1693 | export-Forest-6000000227087120840.ged | 1693 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094932576@` | `INDI.BIRT.DATE` | ABT 1695 | export-Forest-6000000227087120840.ged |        1695 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57577,12 +57244,10 @@ By path:
 | `@I6000000021807161192@` | `INDI.DEAT.DATE` | 14 SEP 1707 | export-Forest-6000000227289604840.ged | 14. september 1707 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000031472823299@` | `INDI.DEAT.DATE` | ABT 1623 | export-Forest-6000000227289604840.ged | 1623 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007401330590@` | `INDI.DEAT.DATE` | BEF 20 NOV 1667 | export-Forest-6000000227289604840.ged | 1667 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000007636368233@` | `INDI.BIRT.DATE` | ABT 1633 | export-Forest-6000000227289604840.ged | abt. 1626 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000005744994348@` | `INDI.CHAN.DATE` | 18 OCT 2023 | export-Forest-6000000227289604840.ged | 24 AUG 2026 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000006171215819@` | `INDI.BIRT.DATE` | ABT 1596 | export-Forest-6000000227289604840.ged | about 1597 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006171215819@` | `INDI.DEAT.DATE` | 1661 | export-Forest-6000000227289604840.ged | about 1660 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002390798501@` | `INDI.BIRT.DATE` | ABT 1610 | export-Forest-6000000227289604840.ged | 1610 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000014564344121@` | `INDI.BIRT.DATE` | 1663 | export-Forest-6000000227289604840.ged | 1675 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000150601640901@` | `INDI.BIRT.DATE` | 1667 | export-Forest-6000000227289604840.ged |        1667 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000150601640901@` | `INDI.DEAT.DATE` | 1714 | export-Forest-6000000227289604840.ged |        1714 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003253761138@` | `INDI.DEAT.DATE` | 1694 | export-Forest-6000000227289604840.ged | 16 July 1694 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57592,7 +57257,6 @@ By path:
 | `@I6000000006776171812@` | `INDI.DEAT.DATE` | 1760 | export-Forest-6000000227289604840.ged | about 1758 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000026450760041@` | `INDI.BIRT.DATE` | ABT 1665 | export-Forest-6000000227289604840.ged | 1665 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000026450760041@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289604840.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003492057689@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289604840.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I5131613999760114921@` | `INDI.CHAN.DATE` | 05 APR 2023 | export-Forest-6000000227289604840.ged | 18 AUG 2026 | export-Forest-6000000227313986833.ged |
 | `@I6000000003492057669@` | `INDI.BIRT.DATE` | ABT 1617 | export-Forest-6000000227289604840.ged | 1617 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492057669@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289604840.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57618,7 +57282,6 @@ By path:
 | `@I6000000003492049778@` | `INDI.BIRT.DATE` | 1654 | export-Forest-6000000227289604840.ged | 1656 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492049778@` | `INDI.DEAT.DATE` | 4 AUG 1710 | export-Forest-6000000227289604840.ged | 04 Aug 1710 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607152803@` | `INDI.BIRT.DATE` | ABT 1660 | export-Forest-6000000227289604840.ged | Abt 1660 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000007671844206@` | `INDI.BIRT.DATE` | ABT 1681 | export-Forest-6000000227289604840.ged | after 1678 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012588335611@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289604840.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002386768645@` | `INDI.BIRT.DATE` | 1699 | export-Forest-6000000227289604840.ged |        1699 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002386768645@` | `INDI.DEAT.DATE` | 30 JUN 1733 | export-Forest-6000000227289604840.ged | 30 Jun 1773 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57632,7 +57295,6 @@ By path:
 | `@I6000000003492057592@` | `INDI.DEAT.DATE` | 1692 | export-Forest-6000000227289604840.ged | etter 1692 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006979663118@` | `INDI.BIRT.DATE` | 1650 | export-Forest-6000000227289604840.ged | Abt 1650 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006979663118@` | `INDI.DEAT.DATE` | 1713 | export-Forest-6000000227289604840.ged | 25 December 1713 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005609547494@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289604840.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608892013@` | `INDI.BIRT.DATE` | ABT 1641 | export-Forest-6000000227289604840.ged | rundt 1640 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072116@` | `INDI.BIRT.DATE` | ABT 1679 | export-Forest-6000000227289604840.ged |        1679 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072131@` | `INDI.BIRT.DATE` | 1687 | export-Forest-6000000227289604840.ged |        1687 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57644,8 +57306,6 @@ By path:
 | `@I6000000002806798354@` | `INDI.BIRT.DATE` | 1603 | export-Forest-6000000227289604840.ged | ABT 1603 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013715914848@` | `INDI.DEAT.DATE` | 1763 | export-Forest-6000000227289604840.ged |        1763 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006776171820@` | `INDI.DEAT.DATE` | 1749 | export-Forest-6000000227289604840.ged | about 1749 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000006776171303@` | `INDI.BIRT.DATE` | 13 JAN 1722 | export-Forest-6000000227289604840.ged | 13 Jan 1722 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000006776171303@` | `INDI.DEAT.DATE` | 7 MAR 1765 | export-Forest-6000000227289604840.ged |  7 MAR 1765 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608909156@` | `INDI.DEAT.DATE` | 6 OCT 1675 | export-Forest-6000000227289604840.ged | 6 Oct 1675 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000018605186892@` | `INDI.BIRT.DATE` | 1646 | export-Forest-6000000227289604840.ged | abt 1646 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000018605186892@` | `INDI.DEAT.DATE` | 16 MAY 1695 | export-Forest-6000000227289604840.ged | 16 May 1695 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57669,26 +57329,16 @@ By path:
 | `@I6000000018605350184@` | `INDI.BIRT.DATE` | 6 FEB 1692 | export-Forest-6000000227289663852.ged |  6 FEB 1692 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000018605350184@` | `INDI.DEAT.DATE` | 15 DEC 1741 | export-Forest-6000000227289663852.ged | 1741 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006776185012@` | `INDI.BIRT.DATE` | ABT 1656 | export-Forest-6000000227289663852.ged | 1648 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005609451653@` | `INDI.BIRT.DATE` | 14 AUG 1720 | export-Forest-6000000227289663852.ged | 14 August 1720 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005609451653@` | `INDI.DEAT.DATE` | 25 DEC 1763 | export-Forest-6000000227289663852.ged | 25 December 1763 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000031386027849@` | `INDI.BIRT.DATE` | 1724 | export-Forest-6000000227289663852.ged | 05 Sep 1724 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000031386027849@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289663852.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000031386027849@` | `INDI.BURI.DATE` | 21 MAR 1801 | export-Forest-6000000227289663852.ged | 21 Mar 1801 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000034819494934@` | `INDI.BIRT.DATE` | ABT 1722 | export-Forest-6000000227289663852.ged | 14 Aug 1722 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000034819494934@` | `INDI.DEAT.DATE` | AUG 1799 | export-Forest-6000000227289663852.ged | 1799 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000175796633851@` | `INDI.BIRT.DATE` | 21 JUN 1727 | export-Forest-6000000227289663852.ged | 21 Jun 1726 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000175796633851@` | `INDI.DEAT.DATE` | 1770 | export-Forest-6000000227289663852.ged |        1770 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I3960809@` | `INDI.BIRT.DATE` | 2 JUL 1753 | export-Forest-6000000227289663852.ged | 1753 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I3960809@` | `INDI.DEAT.DATE` | 28 DEC 1826 | export-Forest-6000000227289663852.ged | 28 December 1826 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000026539276311@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289663852.ged | 25 JUL 2024 | export-Descendants-6000000227224418030.ged |
-| `@I6000000001770110775@` | `INDI.BIRT.DATE` | 1654 | export-Forest-6000000227289663852.ged | 1660 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000001770110775@` | `INDI.DEAT.DATE` | 1732 | export-Forest-6000000227289663852.ged | 28 June 1735 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000034770459846@` | `INDI.BIRT.DATE` | ABT 1657 | export-Forest-6000000227289663852.ged | about 1650 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000200516292908@` | `INDI.BIRT.DATE` | ABT 1657 | export-Forest-6000000227289663852.ged | about 1630 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000200516292908@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289663852.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609256287@` | `INDI.BIRT.DATE` | ABT 1646 | export-Forest-6000000227289663852.ged | about 1650 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609418207@` | `INDI.CHAN.DATE` | 01 JAN 2026 | export-Forest-6000000227289663852.ged | 18 AUG 2026 | export-Descendants-6000000227513637856.ged |
-| `@I6000000002390714489@` | `INDI.BIRT.DATE` | ABT 1646 | export-Forest-6000000227289663852.ged | about 1646 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000001770193451@` | `INDI.BIRT.DATE` | ABT 1622 | export-Forest-6000000227289663852.ged | 1622 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002351737571@` | `INDI.DEAT.DATE` | 1718 | export-Forest-6000000227289663852.ged | etter 1720 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I5266654523790101779@` | `INDI.BIRT.DATE` | ABT 1670 | export-Forest-6000000227289663852.ged | 1670 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57701,16 +57351,12 @@ By path:
 | `@I6000000008860596253@` | `INDI.BIRT.DATE` | 1684 | export-Forest-6000000227289663852.ged | 1674 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008860596253@` | `INDI.DEAT.DATE` | 1756 | export-Forest-6000000227289663852.ged | before 16 April 1756 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008860596253@` | `INDI.BURI.DATE` | 16 APR 1756 | export-Forest-6000000227289663852.ged | 16 April 1756 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608888567@` | `INDI.BIRT.DATE` | 1686 | export-Forest-6000000227289663852.ged | 1676 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608888567@` | `INDI.DEAT.DATE` | 1745 | export-Forest-6000000227289663852.ged | before 4 April 1745 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008438586409@` | `INDI.DEAT.DATE` | ABT 1660 | export-Forest-6000000227289663852.ged | før 1664 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072243@` | `INDI.BIRT.DATE` | ABT 1646 | export-Forest-6000000227289663852.ged | 1646 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072243@` | `INDI.DEAT.DATE` | BEF 21 MAR 1714 | export-Forest-6000000227289663852.ged | 1714 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072181@` | `INDI.BIRT.DATE` | ABT 1650 | export-Forest-6000000227289663852.ged | 1650 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072181@` | `INDI.DEAT.DATE` | 30 JUL 1724 | export-Forest-6000000227289663852.ged | 30 Jul 1724 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608897267@` | `INDI.BURI.DATE` | 30 MAR 1732 | export-Forest-6000000227289663852.ged | 19 Mar 1732 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002845973670@` | `INDI.BIRT.DATE` | 20 OCT 1717 | export-Forest-6000000227289663852.ged | abt. 1717 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002845973670@` | `INDI.DEAT.DATE` | 27 APR 1764 | export-Forest-6000000227289663852.ged | 1764 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013418765201@` | `INDI.BIRT.DATE` | 1761 | export-Forest-6000000227289663852.ged | 1757 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013418765201@` | `INDI.DEAT.DATE` | 25 AUG 1824 | export-Forest-6000000227289663852.ged | 25 Aug 1824 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013487203948@` | `INDI.BIRT.DATE` | 1722 | export-Forest-6000000227289663852.ged | abt. 1722 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57768,20 +57414,11 @@ By path:
 | `@I6000000024129598821@` | `INDI.DEAT.DATE` | 26 OCT 1850 | export-Forest-6000000227289663852.ged | 22 OCT 1850 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000190699091856@` | `INDI.BIRT.DATE` | 1754 | export-Forest-6000000227289663852.ged |        1754 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000046723962023@` | `INDI.BIRT.DATE` | ABT 1683 | export-Forest-6000000227289663852.ged | 1683 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005609441388@` | `INDI.BIRT.DATE` | 1664 | export-Forest-6000000227289663852.ged | 1663 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002452570218@` | `INDI.BIRT.DATE` | ABT 1681 | export-Forest-6000000227289663852.ged | 1682 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002452570218@` | `INDI.DEAT.DATE` | 1734 | export-Forest-6000000227289663852.ged | about 1744 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607651256@` | `INDI.BIRT.DATE` | ABT 1624 | export-Forest-6000000227289663852.ged | Abt 1647 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000034770024232@` | `INDI.BIRT.DATE` | ABT 1673 | export-Forest-6000000227289663852.ged | 1673 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000030729724242@` | `INDI.DEAT.DATE` | 1697 | export-Forest-6000000227289663852.ged |        1697 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609418196@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227289663852.ged | 18 AUG 2026 | export-Forest-6000000227315643833.ged |
 | `@I6000000003271510184@` | `INDI.CHAN.DATE` | 26 OCT 2023 | export-Forest-6000000227289663852.ged | 18 AUG 2026 | export-Descendants-6000000227513637856.ged |
 | `@I6000000007978369537@` | `INDI.CHAN.DATE` | 10 NOV 2019 | export-Forest-6000000227289663852.ged | 18 AUG 2026 | export-Descendants-6000000227513637856.ged |
 | `@I6000000007647174502@` | `INDI.DEAT.DATE` | 7 JUN 1763 | export-Forest-6000000227289663852.ged | 7 June 1743 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002006166904@` | `INDI.BIRT.DATE` | 12 FEB 1569 | export-Forest-6000000227289663852.ged | 12. Februar 1569 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002006166904@` | `INDI.DEAT.DATE` | ABT 1620 | export-Forest-6000000227289663852.ged | 1620 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002512241437@` | `INDI.BIRT.DATE` | ABT 1560 | export-Forest-6000000227289663852.ged | 1560 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002512241437@` | `INDI.DEAT.DATE` | ABT 1630 | export-Forest-6000000227289663852.ged | 10 June 1622 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000005607373546@` | `INDI.BIRT.DATE` | 1638 | export-Forest-6000000227289663852.ged | about 1625 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607373546@` | `INDI.DEAT.DATE` | 1695 | export-Forest-6000000227289663852.ged | ABT 1695 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609425081@` | `INDI.BIRT.DATE` | 1670 | export-Forest-6000000227289663852.ged | about 1670 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -57800,9 +57437,6 @@ By path:
 | `@I6000000083615891846@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289663852.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013700984437@` | `INDI.DEAT.DATE` | JUN 1726 | export-Forest-6000000227289663852.ged | 1726 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000013700984437@` | `INDI.BURI.DATE` | 16 JUN 1726 | export-Forest-6000000227289663852.ged | 16 Jun 1726 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000006776171828@` | `INDI.BIRT.DATE` | 1683 | export-Forest-6000000227289663852.ged |        1683 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000006776171828@` | `INDI.DEAT.DATE` | 1761 | export-Forest-6000000227289663852.ged |        1761 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608888553@` | `INDI.BIRT.DATE` | 1 AUG 1722 | export-Forest-6000000227289663852.ged | 01 Aug 1722 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072253@` | `INDI.BIRT.DATE` | ABT 1665 | export-Forest-6000000227289663852.ged | 1665 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608897315@` | `INDI.BURI.DATE` | 24 MAR 1774 | export-Forest-6000000227289663852.ged | 24. mars 1774 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095033360@` | `INDI.DEAT.DATE` | 1771 | export-Forest-6000000227289663852.ged |  9 AUG 1771 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -58128,8 +57762,6 @@ By path:
 | `@I6000000005607123699@` | `INDI.DEAT.DATE` | 1718 | export-Descendants-6000000227712070008.ged | 1717 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607373476@` | `INDI.BIRT.DATE` | ABT 1654 | export-Descendants-6000000227712070008.ged | 1654 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000019442474913@` | `INDI.CHAN.DATE` | 26 AUG 2026 | export-Descendants-6000000227712070008.ged | 20 MAR 2026 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000005441682220@` | `INDI.BIRT.DATE` | ABT 1624 | export-Descendants-6000000227712070008.ged | about 1624 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005441682220@` | `INDI.DEAT.DATE` | 1700 | export-Descendants-6000000227712070008.ged | 1682 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000001169317411@` | `INDI.CHAN.DATE` | 26 AUG 2026 | export-Descendants-6000000227712070008.ged | 27 SEP 2022 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003163663151@` | `INDI.BIRT.DATE` | ABT 1631 | export-Descendants-6000000227712070008.ged | 1631 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006171215719@` | `INDI.BIRT.DATE` | 1635 | export-Descendants-6000000227712070008.ged | about 1635 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -58152,8 +57784,6 @@ By path:
 | `@I6000000003094982459@` | `INDI.BIRT.DATE` | 1604 | export-Descendants-6000000227712070008.ged |        1604 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094982459@` | `INDI.DEAT.DATE` | 1673 | export-Descendants-6000000227712070008.ged | after 1673 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006171226248@` | `INDI.BIRT.DATE` | 1606 | export-Descendants-6000000227712070008.ged | Abt 1606 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003095071591@` | `INDI.BIRT.DATE` | ABT 1585 | export-Descendants-6000000227712070008.ged | 1520 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003095071591@` | `INDI.DEAT` | *(empty)* | export-Descendants-6000000227712070008.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007774132198@` | `INDI.BIRT.DATE` | ABT 1614 | export-Descendants-6000000227712070008.ged | 1614 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007774132198@` | `INDI.DEAT.DATE` | ABT 1670 | export-Descendants-6000000227712070008.ged | 1670 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007774132198@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Descendants-6000000227712070008.ged | 29 JUN 2024 | export-BloodTree-6000000227289508960.ged |
@@ -59263,8 +58893,6 @@ By path:
 | `@I6000000004225241931@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Descendants-6000000227295848846.ged | 13 NOV 2023 | export-Ancestors.ged |
 | `@I6000000004677093137@` | `INDI.BIRT.DATE` | BET 1605 AND 1613 | export-Descendants-6000000227295848846.ged | 1594 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000004677093137@` | `INDI.DEAT.DATE` | ABT 1676 | export-Descendants-6000000227295848846.ged | 1675 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608880704@` | `INDI.BIRT.DATE` | ABT 1610 | export-Descendants-6000000227295848846.ged | 1610 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608880704@` | `INDI.DEAT.DATE` | 20 JAN 1675 | export-Descendants-6000000227295848846.ged | 20 Jan 1675 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000018050283146@` | `INDI.CHAN.DATE` | 11 SEP 2026 | export-Descendants-6000000227295848846.ged | 17 NOV 2025 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000011732488406@` | `INDI.CHAN.DATE` | 11 SEP 2026 | export-Descendants-6000000227295848846.ged | 06 JUN 2025 | export-BloodTree-6000000227289508960.ged |
 | `@I4462761@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Descendants-6000000227295848846.ged | 03 APR 2024 | export-Ancestors.ged |
@@ -59282,9 +58910,6 @@ By path:
 | `@I6000000006994999580@` | `INDI.BURI.DATE` | 30 MAR 1732 | export-Descendants-6000000227295848846.ged | 30 March 1732 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000006994999580@` | `INDI.DEAT.DATE` | 30 MAR 1732 | export-Descendants-6000000227295848846.ged | 30 March 1732 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000012848302413@` | `INDI.DEAT.DATE` | 1676 | export-Descendants-6000000227295848846.ged |        1676 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009977276208@` | `INDI.BIRT.DATE` | 1650 | export-Descendants-6000000227295848846.ged | Abt 1640 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000010532202194@` | `INDI.BIRT.DATE` | 1651 | export-Descendants-6000000227295848846.ged | EST 1651 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000010532202194@` | `INDI.DEAT.DATE` | 1693 | export-Descendants-6000000227295848846.ged |        1693 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000023149946318@` | `INDI.BIRT.DATE` | BET 1653 AND 1657 | export-Descendants-6000000227295848846.ged | 1653 | export-Forest-6000000227295848846.ged |
 | `@I6000000023149946318@` | `INDI.CHAN.DATE` | 19 AUG 2026 | export-Descendants-6000000227295848846.ged | 27 APR 2022 | export-Forest-6000000227295848846.ged |
 | `@I6000000019360694737@` | `INDI.DEAT.DATE` | ABT 1665 | export-Descendants-6000000227295848846.ged | ABT 1692 | export-BloodTree-6000000227289508960.ged |
@@ -59387,7 +59012,6 @@ By path:
 | `@I6000000005607407830@` | `INDI.DEAT.DATE` | 1740 | export-Descendants-6000000227295848846.ged | rundt 1740 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007980957822@` | `INDI.DEAT.DATE` | 13 DEC 1734 | export-Descendants-6000000227295848846.ged | 1734 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609384108@` | `INDI.DEAT.DATE` | 1722 | export-Descendants-6000000227295848846.ged | about 1722 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I292754180010002641@` | `INDI.BIRT.DATE` | ABT 1680 | export-Descendants-6000000227295848846.ged | 1680 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000001770110977@` | `INDI.CHAN.DATE` | 23 AUG 2026 | export-Descendants-6000000227295848846.ged | 10 AUG 2025 | export-Forest-6000000227296930828.ged |
 | `@I6000000001770188380@` | `INDI.DEAT.DATE` | ABT 1748 | export-Descendants-6000000227295848846.ged | Abt 1748 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095166268@` | `INDI.BIRT.DATE` | 16 NOV 1704 | export-Descendants-6000000227295848846.ged | 16 Nov 1704 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -59467,7 +59091,6 @@ By path:
 | `@I6000000017297171323@` | `INDI.BIRT.DATE` | 1620 | export-Forest-6000000227295848846.ged |        1620 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000017297171323@` | `INDI.DEAT.DATE` | ABT 1700 | export-Forest-6000000227295848846.ged |        1699 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000017297171323@` | `INDI.BURI.DATE` | 4 JAN 1700 | export-Forest-6000000227295848846.ged |  4 JAN 1700 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I5342771646520104976@` | `INDI.DEAT.DATE` | 1670 | export-Forest-6000000227295848846.ged | BEF 1675 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003253466195@` | `INDI.CHAN.DATE` | 21 AUG 2026 | export-Forest-6000000227295848846.ged | 03 DEC 2024 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000005591056052@` | `INDI.CHAN.DATE` | 23 AUG 2026 | export-Forest-6000000227295848846.ged | 30 APR 2025 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000003492057788@` | `INDI.CHAN.DATE` | 19 AUG 2026 | export-Forest-6000000227295848846.ged | 05 DEC 2024 | export-Forest-6000000227295848846.ged |
@@ -59839,7 +59462,6 @@ By path:
 | `@I6000000001169163728@` | `INDI.DEAT.DATE` | 1689 | export-Forest-40.ged | 1686 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000000574102715@` | `INDI.CHAN.DATE` | 12 APR 2023 | export-Forest-40.ged | 09 AUG 2026 | export-Forest-6000000227311193823.ged |
 | `@I6000000005606916257@` | `INDI.DEAT.DATE` | 15 SEP 1733 | export-Forest-40.ged |        1732 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005606916265@` | `INDI.BIRT.DATE` | ABT 1665 | export-Forest-40.ged | Abt 1665 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492072228@` | `INDI.BIRT.DATE` | 1690 | export-Forest-40.ged |        1690 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005606916273@` | `INDI.DEAT` | *(empty)* | export-Forest-40.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000176143961865@` | `INDI.DEAT.DATE` | 1734 | export-Forest-40.ged | Abt 1733 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -59875,7 +59497,6 @@ By path:
 | `@I6000000010530422143@` | `INDI.CHAN.DATE` | 01 OCT 2022 | export-Forest-41.ged | 08 AUG 2026 | export-Forest-6000000227294050988.ged |
 | `@I6000000007691746454@` | `INDI.BIRT.DATE` | 1541 | export-Forest-41.ged | 1540 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007691746454@` | `INDI.DEAT.DATE` | 1581 | export-Forest-41.ged | 1580 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000006589423150@` | `INDI.DEAT` | *(empty)* | export-Forest-41.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I3967892063190122858@` | `INDI.CHAN.DATE` | 21 AUG 2023 | export-Forest-41.ged | 08 AUG 2026 | export-Forest-6000000227294050988.ged |
 | `@I6000000029120539809@` | `INDI.CHAN.DATE` | 24 MAY 2018 | export-Forest-41.ged | 25 AUG 2026 | export-Descendants-6000000227712070008.ged |
 | `@I6000000022450966031@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-41.ged | 25 AUG 2026 | export-Descendants-6000000227714398904.ged |
@@ -60636,20 +60257,8 @@ By path:
 | `@I6000000030141462966@` | `INDI.CHAN.DATE` | 18 SEP 2026 | export-Descendants-6000000227805012893.ged | 30 APR 2022 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000009897859618@` | `INDI.BIRT.DATE` | BEF 1435 | export-Descendants-6000000227805012893.ged | ABT 1435 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000009897859618@` | `INDI.DEAT.DATE` | 1517 | export-Descendants-6000000227805012893.ged | 1500 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002017898070@` | `INDI.BIRT.DATE` | 1530 | export-Descendants-6000000227805012893.ged | 1 January 1530 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002017898070@` | `INDI.DEAT.DATE` | 1593 | export-Descendants-6000000227805012893.ged | about 1593 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002893611154@` | `INDI.BIRT.DATE` | ABT 1530 | export-Descendants-6000000227805012893.ged | 1530 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002893611154@` | `INDI.DEAT.DATE` | 13 SEP 1587 | export-Descendants-6000000227805012893.ged | 13 September 1587 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000215689547848@` | `INDI.CHAN.DATE` | 11 SEP 2026 | export-Descendants-6000000227805012893.ged | 19 FEB 2025 | export-Forest-6000000227320438845.ged |
 | `@I6000000000128283921@` | `INDI.CHAN.DATE` | 24 AUG 2026 | export-Descendants-6000000227805012893.ged | 30 APR 2022 | export-Forest-6000000227297029878.ged |
-| `@I6000000003768604339@` | `INDI.BIRT.DATE` | ABT 1557 | export-Descendants-6000000227805012893.ged | about 1557 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003768604339@` | `INDI.DEAT.DATE` | 1628 | export-Descendants-6000000227805012893.ged | about 1628 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003645896033@` | `INDI.BIRT.DATE` | ABT 1575 | export-Descendants-6000000227805012893.ged | about 1575 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000007049612131@` | `INDI.BIRT.DATE` | ABT 1580 | export-Descendants-6000000227805012893.ged | About 1580 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000007049612131@` | `INDI.DEAT.DATE` | 30 NOV 1626 | export-Descendants-6000000227805012893.ged | 30 November 1626 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000007049612131@` | `INDI.BURI.DATE` | 3 DEC 1626 | export-Descendants-6000000227805012893.ged | 3 December 1626 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000094451697974@` | `INDI.DEAT` | *(empty)* | export-Descendants-6000000227805012893.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003821039383@` | `INDI.DEAT.DATE` | BEF 1624 | export-Descendants-6000000227805012893.ged | before 1624 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001797957481@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Descendants-6000000227805012893.ged | 30 APR 2025 | export-Descendants-6000000227212960823.ged |
 | `@I6000000013668671178@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Descendants-6000000227805012893.ged | 15 JUN 2022 | export-Forest-11.ged |
 | `@I6000000003603733418@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Descendants-6000000227805012893.ged | 30 APR 2022 | export-Forest-11.ged |
@@ -60734,8 +60343,6 @@ By path:
 | `@I6000000000905960126@` | `INDI.CHAN.DATE` | 23 AUG 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 27 APR 2022 | export-Forest-6000000227297029878.ged |
 | `@I6000000004967164253@` | `INDI.CHAN.DATE` | 23 AUG 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 15 FEB 2026 | export-Forest-6000000227297029878.ged |
 | `@I6000000001169163542@` | `INDI.CHAN.DATE` | 17 SEP 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 06 OCT 2023 | export-Forest-6000000227297029878.ged |
-| `@I6000000005620702283@` | `INDI.BIRT.DATE` | ABT 1540 | export-Forest-6000000227297029878-refresh-20260917.ged | about 1540 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000005620702283@` | `INDI.DEAT.DATE` | 1620 | export-Forest-6000000227297029878-refresh-20260917.ged | about 1620 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000005620702283@` | `INDI.CHAN.DATE` | 20 AUG 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 11 JUN 2024 | export-Forest-6000000227297029878.ged |
 | `@I6000000005744994348@` | `INDI.CHAN.DATE` | 24 AUG 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 18 OCT 2023 | export-Forest-6000000227289604840.ged |
 | `@I6000000012929295389@` | `INDI.CHAN.DATE` | 15 SEP 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 03 APR 2023 | export-BloodTree-6000000227289508960.ged |
@@ -60772,7 +60379,6 @@ By path:
 | `@I6000000002893342097@` | `INDI.CHAN.DATE` | 17 SEP 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 27 APR 2022 | export-Forest-6000000227297029878.ged |
 | `@I6000000005441631466@` | `INDI.CHAN.DATE` | 17 SEP 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 30 APR 2025 | export-Forest-6000000227297029878.ged |
 | `@I6000000000890661018@` | `INDI.CHAN.DATE` | 23 AUG 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 20 OCT 2024 | export-Forest-6000000227297029878.ged |
-| `@I6000000000128112007@` | `INDI.DEAT.DATE` | 21 JUN 1628 | export-Forest-6000000227297029878-refresh-20260917.ged | 21 June 1628 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000002289404710@` | `INDI.CHAN.DATE` | 17 SEP 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 07 MAR 2025 | export-Forest-6000000227297027825.ged |
 | `@I6000000007980897331@` | `INDI.CHAN.DATE` | 30 AUG 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 07 AUG 2026 | export-Forest-6000000227297029878.ged |
 | `@I6000000007635596538@` | `INDI.CHAN.DATE` | 13 SEP 2026 | export-Forest-6000000227297029878-refresh-20260917.ged | 08 DEC 2025 | export-Forest-6000000227297027825.ged |
@@ -60915,12 +60521,8 @@ By path:
 | `@I6000000007980337274@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227802407043.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007980874715@` | `INDI.BIRT.DATE` | ABT 1430 | export-Forest-6000000227802407043.ged | Ca 1412 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007980874715@` | `INDI.DEAT.DATE` | 1464 | export-Forest-6000000227802407043.ged | After 1465 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000002837418908@` | `INDI.BIRT.DATE` | ABT 1440 | export-Forest-6000000227802407043.ged | ABT 1425 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000004202433041@` | `INDI.BIRT.DATE` | ABT 1540 | export-Forest-6000000227802407043.ged | about 1540 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000004202433041@` | `INDI.DEAT.DATE` | 1587 | export-Forest-6000000227802407043.ged | 1615 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007090867238@` | `INDI.BIRT.DATE` | 1420 | export-Forest-6000000227802407043.ged | 1435 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007090867238@` | `INDI.DEAT.DATE` | 1489 | export-Forest-6000000227802407043.ged | 1500 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000004680895075@` | `INDI.BIRT.DATE` | 1563 | export-Forest-6000000227802407043.ged | about 1582 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001169126993@` | `INDI.CHAN.DATE` | 09 SEP 2026 | export-Forest-6000000227802407043.ged | 01 MAY 2022 | export-Forest-6000000227297027825.ged |
 | `@I4162186596380089689@` | `INDI.CHAN.DATE` | 22 AUG 2026 | export-Forest-6000000227802407043.ged | 03 JUN 2026 | export-Descendants-6000000227289370034.ged |
 | `@I6000000007114272291@` | `INDI.CHAN.DATE` | 01 SEP 2026 | export-Forest-6000000227802407043.ged | 03 MAR 2026 | export-Descendants-6000000227289604855.ged |
@@ -61901,7 +61503,6 @@ By path:
 | `@I6000000006808708702@` | `INDI.CHAN.DATE` | 15 SEP 2026 | export-Forest-6000000227815618073.ged | 24 NOV 2025 | export-Forest-6000000227297762830.ged |
 | `@I6000000207827699827@` | `INDI.CHAN.DATE` | 15 SEP 2026 | export-Forest-6000000227815618073.ged | 02 AUG 2024 | export-Forest-6000000227297762830.ged |
 | `@I6000000001732073634@` | `INDI.CHAN.DATE` | 16 SEP 2026 | export-Forest-6000000227815618073.ged | 13 FEB 2026 | export-Descendants-20.ged |
-| `@I6000000003492093275@` | `INDI.BIRT.DATE` | 1625 | export-Forest-6000000227816205043.ged |        1619 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003491940861@` | `INDI.BIRT.DATE` | ABT 1656 | export-Forest-6000000227816205043.ged | 1656 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608927548@` | `INDI.CHAN.DATE` | 20 AUG 2026 | export-Forest-6000000227816205043.ged | 14 AUG 2023 | export-Forest-6000000227296927882.ged |
 | `@I6000000005607082483@` | `INDI.BIRT.DATE` | ABT 1668 | export-Forest-6000000227816205043.ged | 1668 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -61913,9 +61514,6 @@ By path:
 | `@I6000000013019662729@` | `INDI.BIRT.DATE` | 1675 | export-Forest-6000000227816205043.ged |        1675 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000014228926719@` | `INDI.BIRT.DATE` | 6 DEC 1693 | export-Forest-6000000227816205043.ged | 6 Dec 1693 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000014228926719@` | `INDI.DEAT.DATE` | 1747 | export-Forest-6000000227816205043.ged |        1747 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000177967919865@` | `INDI.BIRT.DATE` | 1662 | export-Forest-6000000227816205043.ged | abt 1660 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607217105@` | `INDI.BIRT.DATE` | 1664 | export-Forest-6000000227816205043.ged | 1663 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607217105@` | `INDI.DEAT.DATE` | 1733 | export-Forest-6000000227816205043.ged |        1733 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608909221@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816205043.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003491944527@` | `INDI.BIRT.DATE` | 1665 | export-Forest-6000000227816205043.ged | about 1663 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003491944527@` | `INDI.BURI.DATE` | 25 MAY 1727 | export-Forest-6000000227816205043.ged | 25 May 1727 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -61965,8 +61563,6 @@ By path:
 | `@I6000000005609552059@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816205043.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608880687@` | `INDI.BIRT.DATE` | ABT 1635 | export-Forest-6000000227816205043.ged | Abt 1635 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608880687@` | `INDI.DEAT.DATE` | 1718 | export-Forest-6000000227816205043.ged | 1705 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000157498961953@` | `INDI.BIRT.DATE` | ABT 1700 | export-Forest-6000000227816205043.ged |        1698 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000157498961953@` | `INDI.DEAT.DATE` | BEF 1 SEP 1760 | export-Forest-6000000227816205043.ged | 1760 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000221231315916@` | `INDI.BIRT.DATE` | ABT 1707 | export-Forest-6000000227816205043.ged |        1707 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000221231315916@` | `INDI.DEAT.DATE` | BEF 6 JUN 1774 | export-Forest-6000000227816205043.ged |        1740 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000009341281500@` | `INDI.CHAN.DATE` | 06 SEP 2026 | export-Forest-6000000227816205043.ged | 03 APR 2026 | export-Descendants-6000000177944124971.ged |
@@ -62098,7 +61694,6 @@ By path:
 | `@I6000000024266817910@` | `INDI.CHAN.DATE` | 05 SEP 2026 | export-Forest-6000000227816205043.ged | 30 APR 2023 | export-Forest-6000000227464556886.ged |
 | `@I6000000005609571766@` | `INDI.CHAN.DATE` | 06 SEP 2026 | export-Forest-6000000227816205043.ged | 26 OCT 2025 | export-Descendants-6000000177944124971.ged |
 | `@I6000000116681181858@` | `INDI.CHAN.DATE` | 05 SEP 2026 | export-Forest-6000000227816205043.ged | 26 OCT 2025 | export-Descendants-6000000177944124971.ged |
-| `@I6000000045976870862@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816205043.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000157498961834@` | `INDI.CHAN.DATE` | 05 SEP 2026 | export-Forest-6000000227816205043.ged | 04 APR 2026 | export-Descendants-6000000177944124971.ged |
 | `@I6000000214790432821@` | `INDI.CHAN.DATE` | 05 SEP 2026 | export-Forest-6000000227816205043.ged | 04 APR 2026 | export-Descendants-6000000177944124971.ged |
 | `@I6000000157498962073@` | `INDI.CHAN.DATE` | 05 SEP 2026 | export-Forest-6000000227816205043.ged | 04 APR 2026 | export-Descendants-6000000177944124971.ged |
@@ -62113,8 +61708,6 @@ By path:
 | `@I6000000020355125195@` | `INDI.BIRT.DATE` | 1708 | export-Forest-6000000227816205043.ged |        1657 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000020355125195@` | `INDI.DEAT.DATE` | 1770 | export-Forest-6000000227816205043.ged |        1735 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000049090922903@` | `INDI.CHAN.DATE` | 06 SEP 2026 | export-Forest-6000000227816205043.ged | 02 NOV 2025 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005607475221@` | `INDI.BIRT.DATE` | 1711 | export-Forest-6000000227816205043.ged |        1708 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005607475221@` | `INDI.DEAT.DATE` | 1794 | export-Forest-6000000227816205043.ged | 10 Oct 1794 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608892501@` | `INDI.BIRT.DATE` | 1732 | export-Forest-6000000227816205043.ged |        1732 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608892501@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816205043.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005608892507@` | `INDI.BIRT.DATE` | 1734 | export-Forest-6000000227816205043.ged |        1734 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62317,8 +61910,6 @@ By path:
 | `@I6000000003492055277@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816205043.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492055277@` | `INDI.BURI.DATE` | 26 MAR 1797 | export-Forest-6000000227816205043.ged | 26 Mar 1797 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003491995259@` | `INDI.BIRT.DATE` | 1734 | export-Forest-6000000227816205043.ged |        1734 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608892494@` | `INDI.BIRT.DATE` | 1748 | export-Forest-6000000227816205043.ged | abt. 1740 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000005608892494@` | `INDI.DEAT.DATE` | 10 FEB 1824 | export-Forest-6000000227816205043.ged | 10 Feb 1824 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002386036282@` | `INDI.BIRT.DATE` | 1755 | export-Forest-6000000227816205043.ged |        1755 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002386036282@` | `INDI.DEAT.DATE` | BEF 1758 | export-Forest-6000000227816205043.ged | Bef 1758 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002386120143@` | `INDI.DEAT.DATE` | 1814 | export-Forest-6000000227816205043.ged | 27 June 1814 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62459,8 +62050,6 @@ By path:
 | `@I6000000003094916317@` | `INDI.DEAT.DATE` | 1743 | export-Forest-6000000227816313859.ged |        1743 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095108732@` | `INDI.BIRT.DATE` | 1724 | export-Forest-6000000227816313859.ged | Abt 1724 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095108732@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000036728004077@` | `INDI.BIRT.DATE` | 1720 | export-Forest-6000000227816313859.ged | 1722 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000036728004077@` | `INDI.DEAT.DATE` | 1757 | export-Forest-6000000227816313859.ged | 12 December 1784 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000169285455881@` | `INDI.BIRT.DATE` | 27 SEP 1714 | export-Forest-6000000227816313859.ged | 27 September 1714 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095156705@` | `INDI.BIRT.DATE` | 19 DEC 1691 | export-Forest-6000000227816313859.ged | 19 December 1691 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095156705@` | `INDI.DEAT.DATE` | 1748 | export-Forest-6000000227816313859.ged | November 1748 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62512,7 +62101,6 @@ By path:
 | `@I6000000046135595855@` | `INDI.BIRT.DATE` | 1738 | export-Forest-6000000227816313859.ged |        1738 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000046135595855@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000008686085395@` | `INDI.BIRT.DATE` | 27 DEC 1721 | export-Forest-6000000227816313859.ged | 1721 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000011254042588@` | `INDI.BIRT.DATE` | 1726 | export-Forest-6000000227816313859.ged | 14 April 1726 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I5268078579390023639@` | `INDI.BIRT.DATE` | 6 JAN 1760 | export-Forest-6000000227816313859.ged | 1754 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000169284155266@` | `INDI.BIRT.DATE` | 1745 | export-Forest-6000000227816313859.ged |        1745 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095195311@` | `INDI.BIRT.DATE` | 1754 | export-Forest-6000000227816313859.ged |        1754 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62530,15 +62118,11 @@ By path:
 | `@I6000000007978311032@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095034155@` | `INDI.BIRT.DATE` | 1694 | export-Forest-6000000227816313859.ged | abt 1694 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095034179@` | `INDI.BIRT.DATE` | 1734 | export-Forest-6000000227816313859.ged | 1733 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003094916179@` | `INDI.BIRT.DATE` | 1735 | export-Forest-6000000227816313859.ged | 1730 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003094916179@` | `INDI.DEAT.DATE` | 9 JUN 1819 | export-Forest-6000000227816313859.ged | 9 Jun 1819 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609271140@` | `INDI.BIRT.DATE` | 1741 | export-Forest-6000000227816313859.ged | 17 January 1741 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005609271140@` | `INDI.DEAT.DATE` | 23 JAN 1829 | export-Forest-6000000227816313859.ged | 23 January 1829 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094902142@` | `INDI.BIRT.DATE` | OCT 1708 | export-Forest-6000000227816313859.ged | 1708 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094902142@` | `INDI.DEAT.DATE` | MAY 1780 | export-Forest-6000000227816313859.ged | 1780 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094902142@` | `INDI.BURI.DATE` | 28 MAY 1780 | export-Forest-6000000227816313859.ged | 28/05/1780 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000008686109250@` | `INDI.BIRT.DATE` | 15 MAY 1740 | export-Forest-6000000227816313859.ged | 15 may 1740 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000008686109250@` | `INDI.DEAT.DATE` | 19 AUG 1792 | export-Forest-6000000227816313859.ged | 19 aug 1792 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607150552@` | `INDI.DEAT.DATE` | 1734 | export-Forest-6000000227816313859.ged | 23 May 1734 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000039028530115@` | `INDI.DEAT.DATE` | 1708 | export-Forest-6000000227816313859.ged | 4 March 1707 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I4592805@` | `INDI.BURI.DATE` | 21 MAY 1786 | export-Forest-6000000227816313859.ged | 21 May 1786 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62590,8 +62174,6 @@ By path:
 | `@I6000000005607502132@` | `INDI.BIRT.DATE` | 1736 | export-Forest-6000000227816313859.ged |        1736 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607502132@` | `INDI.DEAT.DATE` | 1800 | export-Forest-6000000227816313859.ged |        1800 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003272763430@` | `INDI.DEAT.DATE` | 27 FEB 1789 | export-Forest-6000000227816313859.ged | 1789 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009384432195@` | `INDI.BIRT.DATE` | 1749 | export-Forest-6000000227816313859.ged | 1745 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009384432195@` | `INDI.DEAT.DATE` | 14 NOV 1833 | export-Forest-6000000227816313859.ged | 14 Nov 1833 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000009384296110@` | `INDI.BIRT.DATE` | 1751 | export-Forest-6000000227816313859.ged |        1751 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000022290072375@` | `INDI.BIRT.DATE` | NOV 1794 | export-Forest-6000000227816313859.ged | 1794 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000022290072375@` | `INDI.DEAT.DATE` | 21 JAN 1871 | export-Forest-6000000227816313859.ged | 2 Jan 1871 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62624,10 +62206,6 @@ By path:
 | `@I6000000005795660514@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094916114@` | `INDI.BIRT.DATE` | 1764 | export-Forest-6000000227816313859.ged |        1764 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094916128@` | `INDI.BIRT.DATE` | 1755 | export-Forest-6000000227816313859.ged |        1755 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000011390612336@` | `INDI.BIRT.DATE` | 1734 | export-Forest-6000000227816313859.ged |        1728 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002735003879@` | `INDI.BIRT.DATE` | NOV 1740 | export-Forest-6000000227816313859.ged | November 1740 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002735003879@` | `INDI.DEAT.DATE` | 7 JUL 1829 | export-Forest-6000000227816313859.ged | 7 July 1829 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002735003879@` | `INDI.BURI.DATE` | 12 JUL 1829 | export-Forest-6000000227816313859.ged | 12 July 1829 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094916227@` | `INDI.BIRT.DATE` | 1749 | export-Forest-6000000227816313859.ged | abt 1749 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I5413276959100121554@` | `INDI.BIRT.DATE` | 31 JUL 1705 | export-Forest-6000000227816313859.ged | 31 Jul 1705 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094912542@` | `INDI.BIRT.DATE` | 1742 | export-Forest-6000000227816313859.ged | 25 Dec 1742 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62662,8 +62240,6 @@ By path:
 | `@I6000000005609278791@` | `INDI.DEAT.DATE` | 19 JUN 1857 | export-Forest-6000000227816313859.ged | 19 Jun 1857 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005457152020@` | `INDI.CHAN.DATE` | 06 SEP 2026 | export-Forest-6000000227816313859.ged | 26 APR 2022 | export-Forest-6000000227310843862.ged |
 | `@I6000000039402116903@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227816313859.ged | 18 DEC 2022 | export-Forest-6000000227087120840.ged |
-| `@I4770690549580074990@` | `INDI.BIRT.DATE` | 31 DEC 1741 | export-Forest-6000000227816313859.ged | 31 December 1741 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I4770690549580074990@` | `INDI.DEAT.DATE` | 15 MAY 1826 | export-Forest-6000000227816313859.ged | 15 May 1826 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007534886487@` | `INDI.BIRT.DATE` | ABT 1644 | export-Forest-6000000227816313859.ged | 1644 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007534886487@` | `INDI.DEAT.DATE` | BEF 18 JUL 1728 | export-Forest-6000000227816313859.ged | 1728 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000007534886487@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227816313859.ged | 29 JUN 2024 | export-Forest-6000000227290969847.ged |
@@ -62698,18 +62274,13 @@ By path:
 | `@I6000000010740900098@` | `INDI.BIRT.DATE` | 1730 | export-Forest-6000000227816313859.ged | 1 Jan 1730 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000010740900098@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011958270186@` | `INDI.DEAT.DATE` | 12 JAN 1835 | export-Forest-6000000227816313859.ged | 12 January 1835 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000011958465645@` | `INDI.BIRT.DATE` | 1760 | export-Forest-6000000227816313859.ged | 7. desember 1760 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000014215020322@` | `INDI.BIRT.DATE` | 1751 | export-Forest-6000000227816313859.ged |        1751 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003215185681@` | `INDI.BIRT.DATE` | ABT 1700 | export-Forest-6000000227816313859.ged | Abt 1700 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000003215185681@` | `INDI.DEAT.DATE` | 1775 | export-Forest-6000000227816313859.ged |        1775 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607471709@` | `INDI.CHAN.DATE` | 20 AUG 2026 | export-Forest-6000000227816313859.ged | 17 APR 2025 | export-Descendants-6000000227315747834.ged |
 | `@I6000000009438351073@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227816313859.ged | 28 APR 2022 | export-Forest-6000000227310843862.ged |
 | `@I6000000003947455854@` | `INDI.BIRT.DATE` | ABT 1705 | export-Forest-6000000227816313859.ged | 1705 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003947455854@` | `INDI.DEAT.DATE` | 1785 | export-Forest-6000000227816313859.ged |        1785 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011792098320@` | `INDI.BIRT.DATE` | 1729 | export-Forest-6000000227816313859.ged | 11 Dec 1729 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011792098320@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000011792148391@` | `INDI.BIRT.DATE` | 1736 | export-Forest-6000000227816313859.ged | 26 February 1736 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000011792098361@` | `INDI.BIRT.DATE` | 1744 | export-Forest-6000000227816313859.ged | 21 March 1744 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095006659@` | `INDI.BIRT.DATE` | 1737 | export-Forest-6000000227816313859.ged | 19 May 1737 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000005607439299@` | `INDI.DEAT.DATE` | 6 OCT 1819 | export-Forest-6000000227816313859.ged | 6 October 1819 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095003690@` | `INDI.DEAT.DATE` | 1768 | export-Forest-6000000227816313859.ged | Feb 1768 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62765,7 +62336,6 @@ By path:
 | `@I6000000003272574859@` | `INDI.BIRT.DATE` | 1740 | export-Forest-6000000227816313859.ged | 1739 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003272574859@` | `INDI.BURI.DATE` | 17 SEP 1819 | export-Forest-6000000227816313859.ged | 17 September 1819 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003272574859@` | `INDI.DEAT.DATE` | 17 SEP 1819 | export-Forest-6000000227816313859.ged | 1819 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000009384811659@` | `INDI.BIRT.DATE` | 1756 | export-Forest-6000000227816313859.ged |        1756 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000002343437900@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000035769319851@` | `INDI.BIRT.DATE` | 28 APR 1793 | export-Forest-6000000227816313859.ged | 1793 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000035769319851@` | `INDI.DEAT.DATE` | 24 AUG 1843 | export-Forest-6000000227816313859.ged | 24 August 1843 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -62796,9 +62366,6 @@ By path:
 | `@I6000000003094916136@` | `INDI.BIRT.DATE` | JUL 1751 | export-Forest-6000000227816313859.ged | July 1751 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094916136@` | `INDI.DEAT.DATE` | JAN 1804 | export-Forest-6000000227816313859.ged | January 1804 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003094916136@` | `INDI.BURI.DATE` | 8 JAN 1804 | export-Forest-6000000227816313859.ged | 8 January 1804 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002735003873@` | `INDI.BIRT.DATE` | AUG 1742 | export-Forest-6000000227816313859.ged | August 1742 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002735003873@` | `INDI.DEAT.DATE` | 20 OCT 1834 | export-Forest-6000000227816313859.ged | 20 October 1834 | PFR5-LDS-ancestors12-descendants2.ged |
-| `@I6000000002735003873@` | `INDI.BURI.DATE` | 2 NOV 1834 | export-Forest-6000000227816313859.ged | 2 November 1834 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003095050643@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227816313859.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000037837296240@` | `INDI.BIRT.DATE` | 1749 | export-Forest-6000000227816313859.ged | <1747> | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000037837296240@` | `INDI.DEAT.DATE` | MAY 1828 | export-Forest-6000000227816313859.ged | 02 May 1828 | PFR5-LDS-ancestors12-descendants2.ged |

@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **2,193,916 people**, 
+One row per person in `reports/derived-facts.csv` — **2,189,295 people**, 
 of whom 86,764 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 2,189,445 | 99.8% |
-| occupation | 205,338 | 9.4% |
-| birth date | 1,328,499 | 60.6% |
+| sex | 2,184,824 | 99.8% |
+| occupation | 205,344 | 9.4% |
+| birth date | 1,328,660 | 60.7% |
 | birth place | 0 | 0.0% |
-| death date | 1,077,291 | 49.1% |
+| death date | 1,077,410 | 49.2% |
 | death place | 0 | 0.0% |
-| burial date | 117,076 | 5.3% |
+| burial date | 117,085 | 5.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,24 +48,24 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**9,075 date values**, 6,856 distinct, parsed to no year. They keep their raw
+**9,175 date values**, 6,927 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
 | `about 1670` | 36 |
-| `about 1650` | 32 |
+| `about 1650` | 33 |
+| `about 1680` | 27 |
 | `about 1660` | 27 |
 | `about 1665` | 26 |
-| `about 1680` | 26 |
 | `about 1700` | 25 |
 | `about 1250` | 24 |
 | `about 1300` | 24 |
 | `about 1280` | 21 |
+| `about 1630` | 21 |
 | `about 1685` | 21 |
 | `about 1320` | 20 |
-| `about 1630` | 20 |
 | `about 1655` | 20 |
 | `about 1290` | 18 |
 | `about 1690` | 18 |
