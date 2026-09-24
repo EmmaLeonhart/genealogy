@@ -79,7 +79,8 @@ def test_the_only_parse_warnings_are_lines_that_never_claimed_to_be_gedcom(expor
 #: genimerge"*. The corpus has since turned into something this module could not classify, and
 #: nothing said so because the slow lane never ran: it is gated `workflow_dispatch` AND
 #: `needs: test`, and the fast lane was red for days. A gate that cannot run is not a gate.
-SYNTHESISED_SOURCES = {"genimerge-scraped", "genimerge", "genimerge-tiny"}
+#: `sweep-parsed` is `scripts/parse-sweep-trees.py`'s render of the descendant reports (2026-09-24).
+SYNTHESISED_SOURCES = {"genimerge-scraped", "genimerge", "genimerge-tiny", "sweep-parsed"}
 
 #: ⛔ **A FOREIGN EXPORT IS NEITHER GENI'S NOR OURS, AND THE DIFFERENCE IS LOAD-BEARING.**
 #: `getmyancestors` writes the FamilySearch corpus. It is a real export from a real database --
@@ -102,6 +103,9 @@ FOREIGN_XREF_PREFIXES = {
     # a matching `RFN`, which `test_every_individual_xref_encodes_its_geni_profile_id` checks).
     "getmyancestors": {"IFS": "INDI", "FFS": "FAM", "NFS": "NOTE", "SFS": "SOUR",
                        "SUBM": "SUBM", "I": "INDI"},
+    # Ours, not foreign, but with prefixes of its own: `IL`/`FL` are the label-only people and
+    # the families they sit in -- `label_xref`, deliberately unparseable as Geni ids.
+    "sweep-parsed": {"I": "INDI", "F": "FAM", "IL": "INDI", "FL": "FAM"},
 }
 SYNTHETIC_ID_PREFIXES = ("9995", "9990")
 
@@ -162,6 +166,10 @@ def test_every_individual_xref_encodes_its_geni_profile_id(export):
     for indi in individuals:
         assert indi.xref and indi.xref.startswith("@I") and indi.xref.endswith("@")
         geni_id = indi.xref[2:-1]
+        # A label-only person of the sweep render has no Geni id and says so (`@IL…@`, no RFN).
+        if _source_of(export) == "sweep-parsed" and geni_id.startswith("L"):
+            assert indi.value_of("RFN") == "", f"{indi.xref} is label-only and claims a Geni id"
+            continue
         assert geni_id.isdigit()
         # **A minted placeholder carries no `RFN`, and that is the point.** The rule is per
         # RECORD, not per file: `scraped-paths.ged` holds real Geni people *and* minted
@@ -292,6 +300,12 @@ def test_every_known_prefix_is_actually_present(export):
     without them is not one.
     """
     seen = {_prefix(r.xref) for r in export.records if r.xref}
+
+    # The sweep render is SHARDED -- people first, families after -- so one shard may hold only
+    # one kind. The property belongs to the set of shards, which the parser writes together.
+    if _source_of(export) == "sweep-parsed":
+        assert seen, "an empty sweep-parsed shard"
+        return
 
     # A generated overlay is not a genealogy and is not claiming to be one: the QID-link file
     # is `INDI` records and nothing else, by design. The property being asserted -- that a Geni
