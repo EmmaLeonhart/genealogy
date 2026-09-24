@@ -418,6 +418,9 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     `DATE_WORDS` in `build-garborg-day.py` is the authority. **A missing side is
     omitted, never left as a leading dash** — `died 1590`, not `- 1590`, which was 20% of the
     attested genealogical import this form was measured against.
+    **No backfill onto established items** (ruled 2026-09-24): ~4,380 made before 2026-09-19
+    have none, and that is not the issue — the guard is for the pipeline duplicating its own
+    fresh creations, not for items that have stood for days.
   - **⛔ `PLAC` STAYS OUT OF THE SYNOPTIC TREE.** The 2026-09-10 ruling is intact: `KEEP_TAGS`
     drops it and `merged.ged` carries no place. `slim.harvest_places` reads it one record before
     the prune — the only moment it exists — and `genimerge merge` writes it BESIDE the tree.
