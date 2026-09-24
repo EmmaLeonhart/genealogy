@@ -488,7 +488,15 @@ def candidate_chips(qids):
     if not fetch:
         return sex, life, gone
     try:
-        claims, gone = fetch_claims(fetch)
+        # ⛔ **50 AT A TIME.** `wbgetentities` takes at most 50 ids, and one URL holding every
+        # missing candidate died with `HTTP 414: URI Too Long` on 2026-09-24 -- once an empty
+        # store entry stopped counting as an answer, the API list grew past what one URL holds,
+        # every chip went blank, and the date gate had no dates to drop a card on.
+        claims = {}
+        for i in range(0, len(fetch), 50):
+            c, g = fetch_claims(fetch[i:i + 50])
+            claims.update(c)
+            gone |= g
         for q, cl in claims.items():
             sex[q] = SEX_OF_QID.get(first_id(cl, "P21"), "")
             life[q] = (first_year(cl, "P569"), first_year(cl, "P570"))
