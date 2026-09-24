@@ -550,23 +550,7 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                     own, f"{word} {joiner} {qs(name)}", lang)
             ja, zh, ko = label_in(name, table)
             if ja:
-                JA = {"child_of": {"M": "息子", "F": "娘", "": "子"},
-                      "parent_of": {"M": "父", "F": "母", "": "親"},
-                      "spouse_of": {"M": "夫", "F": "妻", "": "配偶者"},
-                      "sibling_of": {"M": "兄弟", "F": "姉妹", "": "きょうだい"}}
-                ZH = {"child_of": {"M": "子", "F": "女", "": "子女"},
-                      "parent_of": {"M": "父", "F": "母", "": "父母"},
-                      "spouse_of": {"M": "夫", "F": "妻", "": "配偶"},
-                      "sibling_of": {"M": "兄弟", "F": "姐妹", "": "同胞"}}
-                # **Korean too**, ruled 2026-09-01: CJK includes Korean. Without this the
-                # NN/relationship people were the one population still leaving Wikidata with two
-                # CJK labels out of three, which is what `queue.md` § *ABSOLUTE PREREQUISITE*
-                # exists to stop. Korean takes the genitive 의 and the relationship word after
-                # it, the same shape as the Japanese の and the Chinese 之.
-                KO = {"child_of": {"M": "아들", "F": "딸", "": "자녀"},
-                      "parent_of": {"M": "아버지", "F": "어머니", "": "부모"},
-                      "spouse_of": {"M": "남편", "F": "아내", "": "배우자"},
-                      "sibling_of": {"M": "형제", "F": "자매", "": "형제자매"}}
+                JA, ZH, KO = CJK_RELATION["ja"][0], CJK_RELATION["zh"][0], CJK_RELATION["ko"][0]
                 out["ja"] = f"{ja}の{JA[group_name].get(sex) or JA[group_name]['']}"
                 out["zh"] = f"{zh}之{ZH[group_name].get(sex) or ZH[group_name]['']}"
                 if ko:
@@ -1706,6 +1690,49 @@ def _our_relational_phrase(label, lang):
     return False
 
 
+#: The CJK relation words `describe_all` writes, with the genitive each language joins them by.
+#: **Korean too**, ruled 2026-09-01: CJK includes Korean. Without it the NN/relationship people
+#: were the one population still leaving Wikidata with two CJK labels out of three. Korean takes
+#: the genitive 의 and the relationship word after it, the same shape as の and 之.
+CJK_RELATION = {
+    "ja": ({"child_of": {"M": "息子", "F": "娘", "": "子"},
+            "parent_of": {"M": "父", "F": "母", "": "親"},
+            "spouse_of": {"M": "夫", "F": "妻", "": "配偶者"},
+            "sibling_of": {"M": "兄弟", "F": "姉妹", "": "きょうだい"}}, "の"),
+    "zh": ({"child_of": {"M": "子", "F": "女", "": "子女"},
+            "parent_of": {"M": "父", "F": "母", "": "父母"},
+            "spouse_of": {"M": "夫", "F": "妻", "": "配偶"},
+            "sibling_of": {"M": "兄弟", "F": "姐妹", "": "同胞"}}, "之"),
+    "ko": ({"child_of": {"M": "아들", "F": "딸", "": "자녀"},
+            "parent_of": {"M": "아버지", "F": "어머니", "": "부모"},
+            "spouse_of": {"M": "남편", "F": "아내", "": "배우자"},
+            "sibling_of": {"M": "형제", "F": "자매", "": "형제자매"}}, "의 "),
+}
+
+#: Katakana, which is what our transliteration writes a European name in.
+_KATAKANA = re.compile("[゠-ヿ]")
+
+
+def _our_cjk_relational_phrase(label, lang):
+    """Is `label` exactly a CJK relation phrase `describe_all` writes, with no name yet?
+
+    `<name>の父`, `<name>之父`, `<name>의 아버지` -- the phrase ENDS on the relation word, so a
+    label that already carries the given name after it (`マリンの父アンドレアス`) is not matched and
+    the correction cannot fire twice. ⛔ **A `ja` label counts only if its name part holds
+    katakana**: a kanji `ja` is the Sinosphere signal, and writing over it flips the person into
+    the Latin pipeline (`CLAUDE.md` § *THE KANJI SIGNAL*).
+    """
+    words, joiner = CJK_RELATION.get(lang, (None, None))
+    if not words or not label:
+        return False
+    for forms in words.values():
+        for w in forms.values():
+            if label.endswith(joiner + w):
+                name = label[:-len(joiner + w)]
+                return bool(name) and (lang != "ja" or bool(_KATAKANA.search(name)))
+    return False
+
+
 def _label_corrections(our_items, labels, table, state, fields=None,
                        generation=None, live_labels=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
@@ -1805,6 +1832,21 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                     out.append(f"#   {qid}: {_code} label {_have!r} is only a relation; "
                                f"the given name is {_own!r}")
                     out.append(f'{qid}\tL{_code}\t"{_new}"')
+            # The CJK half, owed since 2026-09-21: the given name rendered natively and placed
+            # LAST (`マリンの父アンドレアス`). `ja` decides whether the item is ours to touch at
+            # all, and a name that will not transliterate leaves all three alone -- the same
+            # rule `describe_all` applies at creation (§ *Partial is worse than absent*).
+            _live = live_labels or {}
+            if _our_cjk_relational_phrase(_live.get((qid, "ja")), "ja"):
+                _own_cjk = dict(zip(("ja", "zh", "ko"), label_in(_own, table)))
+                if _own_cjk["ja"] and _own_cjk["zh"]:
+                    for _code in ("ja", "zh", "ko"):
+                        _have = _live.get((qid, _code))
+                        if _own_cjk[_code] and _our_cjk_relational_phrase(_have, _code):
+                            out.append(f"#   {qid}: {_code} label {_have!r} is only a "
+                                       f"relation; the given name is {_own!r}")
+                            out.append(f'{qid}\tL{_code}\t"'
+                                       f'{qs(lead_with_given_name(_own_cjk[_code], _have, _code))}"')
             # And `mul` is `Given NN` when the given name is known and no surname is -- the
             # other test the ruling named. Only a `mul` that is EXACTLY the marker: `NN Stromer`
             # carries a surname and is a different question.
