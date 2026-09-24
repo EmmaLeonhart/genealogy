@@ -34,6 +34,15 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 
+# Ormsdotter -- the counterpart of Ormsson (32 bearer(s))
+CREATE
+LAST	Len	"Ormsdotter"
+LAST	Lmul	"Ormsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+
 # Asbjørnsdotter -- the counterpart of Asbjørnson (29 bearer(s))
 CREATE
 LAST	Len	"Asbjørnsdotter"
@@ -354,13 +363,4 @@ LAST	Lmul	"Pålsen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
-
-# Håvardsdotter -- the counterpart of Håvardson (12 bearer(s))
-CREATE
-LAST	Len	"Håvardsdotter"
-LAST	Lmul	"Håvardsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
 
