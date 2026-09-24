@@ -1450,3 +1450,21 @@ def test_a_latin_patronymic_is_confirmed_by_a_vernacular_father(givn, father, to
     father was recorded as `Erik`/`Olof`/`Per` -- the usual case -- so bearers got `P735`."""
     got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn="", father_given=father)}
     assert got[token] == kind
+
+
+@pytest.mark.parametrize("givn, surn, kept, gone", [
+    ("Lars W", "", "Lars", None),
+    ("Robert VI", "", "Robert", None),
+    ("Hugues I", "d'Amboise", "Hugues", None),
+    ("Carl I.", "Berg", "Carl", None),
+    ("Anna M", "Olsdotter", "Anna", None),
+    ("NN Anna", "Berg", None, "Anna"),        # a real marker still suppresses, as designed
+])
+def test_an_initial_or_a_numeral_does_not_suppress_the_given_names(givn, surn, kept, gone):
+    """Measured 2026-09-24: 31,401 people lost their given name to a letter or numeral beside
+    it arming the marker rule. `reports/middle-initials.csv` is the census."""
+    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn)}
+    if kept:
+        assert got.get(kept) == "given"
+    if gone:
+        assert gone not in got

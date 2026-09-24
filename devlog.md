@@ -46953,3 +46953,18 @@ descendants of the figures and override them: `Q141529420` Elsebe Hartniksdatter
 `Q141168827` Hans Eivind Garborg -- all four in the tree with parents, their Geni ids from the
 ledger. Added to `PRIORITY_ANCESTOR_SEEDS`, so each run creates the next full generation of their
 ancestors and the ring advances by itself.
+
+## 2026-09-24 — middle initials: 31,401 people were losing their given name
+
+The review, done as a census first: `reports/middle-initials.csv`, every name record whose
+`GIVN` holds a single letter or a Roman numeral -- 55,052 records, 50,295 people -- with how
+`classify_fields` reads it and which given names it lost.
+
+**The finding was a loss, not a naming question.** `_has_marker` exists so `NN Anna` does not
+make `Anna` a given name, and it fired on any `GIVN` token `name_shape` calls `unknown`. Initials
+and numerals are `unknown`, so `Lars W` kept only `W`, `Robert VI` only `VI`, `Hugues I
+d'Amboise` lost `Hugues`: **31,401 people, 1,916 of them with an item**. An initial or a numeral
+no longer arms it; the token stays `unknown`, so nothing new is minted. Re-measured: **3,325**
+people still lose a given name, now to other words in `GIVN` -- epithets, quoted nicknames,
+bracketed alternates. That, the roman-letter ambiguity, and the `IV` and `Of` given-name items
+created on 2026-09-13 stay in the queue as what the review left open.

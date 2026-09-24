@@ -1735,6 +1735,11 @@ ROMAN_ORDINAL = re.compile(r"^X{0,3}(IX|IV|V?I{0,3})$")
 CJK_NUMERALS = set("〇一二三四五六七八九十百千万億零壱弐参拾世")
 
 
+#: A middle initial: one letter, with or without its full stop. Never a marker; see
+#: `classify_fields` § *AN INITIAL OR A NUMERAL IS NOT A MARKER*.
+_MARKER_EXEMPT = re.compile(r"^[^\W\d_]\.?$")
+
+
 def is_numeral(token: str) -> bool:
     """True when the token is a number written in digits, Roman letters or CJK characters.
 
@@ -2819,7 +2824,14 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     #
     # `is_patronymic` already accepts every abbreviated form — it is only `name_shape` that
     # calls them unknown — so excluding them here needs no new list to drift.
+    # ⛔ **AN INITIAL OR A NUMERAL IS NOT A MARKER.** Measured 2026-09-24 over every name
+    # record: a single letter or a Roman numeral in `GIVN` armed this rule and suppressed the
+    # real given names beside it -- `Lars W` kept only `W`, `Robert VI` only `VI`, `Hugues I
+    # d'Amboise` lost `Hugues` -- for **31,401 people**, 1,916 of them with an item. The token
+    # itself stays `unknown`, so no initial or numeral is minted as a name; the given names
+    # around it are simply no longer thrown away. `reports/middle-initials.csv` is the census.
     _has_marker = any(name_shape(t)[1] == "unknown" and not is_patronymic(t)
+                      and not _MARKER_EXEMPT.match(t) and not is_numeral(t)
                       for t in _givn_tokens)
 
     ordinal = 0

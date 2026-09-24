@@ -13,8 +13,13 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **Review the middle-initial items**, because of roman-numeral confusions. *"Losses are a bigger
-  threat than the gains are positive here."*
+- **Middle initials, what the review left open** (the loss is fixed; devlog 2026-09-24):
+  a letter that is also a Roman numeral (`I`, `V`, `X`, `L`, `C`, `D`, `M`) is `unknown` and
+  never an item, while `C.` in `John C. Smith` becomes a given-name item -- which of those should
+  be items is the roman-numeral question. `IV` (`Q141444419`) and `Of` (`Q141444430`) were
+  created as given-name items on 2026-09-13. 3,325 people still lose a given name to an epithet,
+  quoted nickname or bracketed alternate in `GIVN` (`Heinrich VI der Gute`, `Robert VII dit
+  Robin`) -- `reports/middle-initials.csv`, column `given_lost`.
 - **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
   here is only to hold the identifiers and what the tree says (the archived queue has both).
 
