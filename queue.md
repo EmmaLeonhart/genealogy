@@ -13,10 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **FamilySearch step, first real run.** Tree rebuild `35974019599` (2026-09-24) is the
-  first with bridge -> zipper -> render. Check it went green and that
-  `exports/familysearch/PFR5-LDS-ancestors12-descendants2.ged` puts `GF2B-NKG` (Emma Olivia
-  Andersdotter) on `@I6000000178279770847@`.
 - **CI green.** Run `35985128623` (on `d23d1624e`): 7 failed on 3.10 and 3.13. Three are the
   inventories (`built-batches.tsv`, `repo-freshness.csv`) and three are the batch (locality 189
   items, ledger subjects `Q103949808`/`Q22236578`, married surnames) -- the tree rebuild

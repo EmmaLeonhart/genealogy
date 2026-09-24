@@ -46837,3 +46837,12 @@ own composition beside the halves and name items `pipeline.yml` had composed -- 
 writing part of one set. The step is removed; `pipeline.yml`, which composes on every push and
 daily, is the one owner. The cloud session's `5aa22adde` settles the seventh failure (the export
 cap tripped by the FamilySearch render).
+
+## 2026-09-24 — the FamilySearch step's first real run: green, and Emma Olivia is in the tree
+
+Tree rebuild `35974019599`, the first with bridge -> zipper -> render ahead of the merge, went
+green. Bridge: 27 FamilySearch people resolve to a QID through the `P2889` roster, 26 to a Geni
+id. Zipper: 26 anchors, 4,837 new pairs. Render: `PFR5-LDS` 16,427 people, 4,700 on their Geni
+id; `MBW7-P7H` 3,103, 162. `GF2B-NKG` Emma Olivia Andersdotter is `@I6000000178279770847@`, and
+the rebuilt tree holds her with both parents (the zipper's round-4 pairs), her husband Karl Anton
+and her daughter Elly -- the case that started this.
