@@ -13,6 +13,16 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
+- **The daily send, rationed in a fixed order.** Ruled 2026-09-24: the automatic half is sent
+  as **5 given names, 5 patronymics, 5 family names**, then **30 individuals**, then **every
+  ancestor-ring person in a random order**, and only then the rest of the batch. The rings are
+  what connects us to the world tree, so they are done in full every day; everything else waits
+  behind them. Context: the send tripped Wikidata's anti-abuse creation limit on 2026-09-23
+  (`no-automatic-entity-id`) and got `permissiondenied` on everything on 2026-09-24 -- 0 edits
+  executed. The account `日巫女` is not blocked.
+- **Measure the rings: the highest path up from each ancestor-ring seed**, i.e. how many runs
+  until the rings finish (one generation per run). Estimate was about sixty days at most.
+
 - **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
   here is only to hold the identifiers and what the tree says (the archived queue has both).
 - **Backfill descriptions on established items, dates and relatives only.** ~4,380 of our items
