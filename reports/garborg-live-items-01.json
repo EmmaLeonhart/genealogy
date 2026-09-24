@@ -185785,6 +185785,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141520321$FF0D214D-9099-4F77-A834-6E38F744A434",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141548315",
+        "numeric-id": 141548315
+       }
+      },
+      "hash": "2c6317fb65ccb57330803773e68d2454c0932cab",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "744c051c4768fb598e26134663cc5e7611cbda69",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000218774352679"
+          },
+          "hash": "4afa61339d6f24ae89ccf4a4f2a244a3a018a182",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141520321$ABBECD43-496B-433C-965B-971EE1BA3D61",
@@ -186001,8 +186044,8 @@
     "value": "英格堡·奥洛夫斯多特"
    }
   },
-  "lastrevid": 2548113425,
-  "modified": "2026-09-21T10:55:44Z",
+  "lastrevid": 2549000582,
+  "modified": "2026-09-24T10:21:55Z",
   "ns": 0,
   "pageid": 135079999,
   "sitelinks": {},

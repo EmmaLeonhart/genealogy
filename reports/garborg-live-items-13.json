@@ -147427,6 +147427,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141494573$FB011A87-C5B6-4858-96F4-91F45969AD9B",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141548324",
+        "numeric-id": 141548324
+       }
+      },
+      "hash": "4f4b9f1194d381e0665e892525d09f17cd576edd",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b282fd8f11907b4804e8e236b59a4b7d592d9869",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000014544956034"
+          },
+          "hash": "1179f94b7360cab4accd75751ddd006c0c1576fd",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -147609,8 +147650,8 @@
     "value": "斯特因沃尔·西韦尔特斯达特·耶德雷姆"
    }
   },
-  "lastrevid": 2548411893,
-  "modified": "2026-09-22T12:02:59Z",
+  "lastrevid": 2549001083,
+  "modified": "2026-09-24T10:25:47Z",
   "ns": 0,
   "pageid": 135053833,
   "sitelinks": {},

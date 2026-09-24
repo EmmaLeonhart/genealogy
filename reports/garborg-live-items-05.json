@@ -209552,6 +209552,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141533589$5FCC364D-BC6F-45F0-A65A-720F580C9C0E",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141548355",
+        "numeric-id": 141548355
+       }
+      },
+      "hash": "29be324310185746d1eacc9f683cdc87962f9d8e",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b622d8206836807f809986d05582595ff728e9df",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "4635906"
+          },
+          "hash": "e6757bbc271c0927c78469ff6f4cf3a072bed081",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P26": [
     {
      "id": "Q141533589$446F461E-2ACE-4E24-8B06-980DFA9D909C",
@@ -209981,8 +210024,8 @@
     "value": "马莱纳·奥尔斯达特·沃尔斯塔德"
    }
   },
-  "lastrevid": 2548622536,
-  "modified": "2026-09-22T22:54:06Z",
+  "lastrevid": 2549001610,
+  "modified": "2026-09-24T10:30:05Z",
   "ns": 0,
   "pageid": 135093592,
   "sitelinks": {},
@@ -222172,6 +222215,320 @@
   "pageid": 135108020,
   "sitelinks": {},
   "title": "Q141548261",
+  "type": "item"
+ },
+ "Q141548309": {
+  "aliases": {
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Hillevi Sophia Törngren"
+    }
+   ]
+  },
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141548309$EF373235-DAB7-4425-87C0-6151210F3A06",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q141548309$C59A3DCC-8544-4D6D-9FC0-CB694B323120",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141520198",
+        "numeric-id": 141520198
+       }
+      },
+      "hash": "d927dcbe9780cb704f5b7a7efacafd6400147b4a",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "6629056c322bf507043fdddd4d0768211f088ad5",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000026310031558"
+          },
+          "hash": "f34b4dc2c97838ecf857c09eeb9ea7038d5d14be",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141548309$BBE3B74E-C0AD-48EC-8A4A-BD4DD8EFC041",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000026310031558"
+      },
+      "hash": "f34b4dc2c97838ecf857c09eeb9ea7038d5d14be",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Hillevi Sophia Posse af Säby"
+        },
+        "hash": "574f30bcc57aafa9258cb8a57d88d73fbd5b62b1",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141548309$061EFC53-DA71-4ABE-BF03-73F0C466CDB9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q141548309$126C89CE-2095-40CF-9D9B-213208C5F47E",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1804-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "c03ebea7518acfd5f6fba15c282c8847d7c3fa59",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "6629056c322bf507043fdddd4d0768211f088ad5",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000026310031558"
+          },
+          "hash": "f34b4dc2c97838ecf857c09eeb9ea7038d5d14be",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P570": [
+    {
+     "id": "Q141548309$B5183C85-35A0-4BC7-9B00-88490782881E",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1889-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "ce06be3e45e83edb108a72a635cf03f0806cd133",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "6629056c322bf507043fdddd4d0768211f088ad5",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000026310031558"
+          },
+          "hash": "f34b4dc2c97838ecf857c09eeb9ea7038d5d14be",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141548309$58FA2804-EC63-4AF5-92C3-F74500488B7A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q2302787",
+        "numeric-id": 2302787
+       }
+      },
+      "hash": "a040107d947c1f59f8c5ddb7441c9473fa0b2ce1",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1545": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "2"
+        },
+        "hash": "7241753c62a310cf84895620ea82250dcea65835",
+        "property": "P1545",
+        "snaktype": "value"
+       }
+      ],
+      "P3831": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q245025",
+          "numeric-id": 245025
+         }
+        },
+        "hash": "d2f200256267b5915480636fe6e9142b0bf2236d",
+        "property": "P3831",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1545",
+      "P3831"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "1804 - 1889"
+   }
+  },
+  "id": "Q141548309",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Hillevi Sophia Posse af Säby"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "ヒレヴィ・ソフィア・ポッセ・アフ・セビ"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "힐레비 소피아 포세 아프 세비"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Hillevi Sophia Posse af Säby"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "希莱维·索菲娅·波塞·阿夫·塞比"
+   }
+  },
+  "lastrevid": 2549000513,
+  "modified": "2026-09-24T10:21:16Z",
+  "ns": 0,
+  "pageid": 135108070,
+  "sitelinks": {},
+  "title": "Q141548309",
   "type": "item"
  },
  "Q144565": {

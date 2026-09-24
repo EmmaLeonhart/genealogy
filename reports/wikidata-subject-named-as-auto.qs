@@ -5,6 +5,7 @@
 # per the 2026-08-30 ruling that neither form of private gets a qualifier.
 # Re-stating property+value attaches the qualifier; it does not add a second P2600.
 
+Q5605565	P2600	"6000000019149843256"	P1810	"Germund Ludvig Cederhielm"
 Q5605651	P2600	"6000000020086878142"	P1810	"Fredrik Johan Cederschiöld"
 Q5605668	P2600	"6000000007675721719"	P1810	"Petrus Eliae Gavelius till Lidboholm"
 Q5613434	P2600	"6000000007026278130"	P1810	"Börje Olofsson Bureus"
@@ -14,7 +15,6 @@ Q5618770	P2600	"6000000006127523477"	P1810	"Carl Julius Magnusson De la Gardie t
 Q5618800	P2600	"6000000012159725691"	P1810	"Pontus Fredrik De la Gardie"
 Q5618813	P2600	"6000000006127907767"	P1810	"Ulrik Gustaf Magnusson de la Gardie"
 Q5622753	P2600	"6000000172119806833"	P1810	"Daniel Djurberg"
-Q5626148	P2600	"6000000007680468910"	P1810	"Carl Wilhelm von Düben"
 Q128044690	P2600	"6000000009014497802"	P1810	"Johan Fredrik Paykull till Türpsal"
 Q131729964	P2600	"6000000010887870735"	P1810	"Herman Kolthoff"
 Q136243114	P2600	"6000000001804702573"	P1810	"Elsa Ebba Elsa Banér"

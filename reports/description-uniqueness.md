@@ -6,54 +6,54 @@ so a description that repeats under a different label costs nothing.
 
 | | |
 |---|---|
-| people | 1,816,537 |
-| with a description | 1,267,295 (69.8%) |
-| **no description at all** | **549,242** (30.2%) |
-| distinct (label, description) | 1,249,536 |
-| colliding pairs | 896 |
-| people in a collision | 2,011 |
+| people | 2,198,766 |
+| with a description | 1,414,609 (64.3%) |
+| **no description at all** | **784,157** (35.7%) |
+| distinct (label, description) | 1,390,837 |
+| colliding pairs | 1,222 |
+| people in a collision | 2,619 |
 
 ## The worst collisions
 
 | count | label | description |
 |---|---|---|
-| 16 | 李 | died 771 |
-| 13 | 李 | born China |
-| 12 | 元 | born China |
-| 10 | 李 | died 812 |
 | 8 | Uknf | Europe - Europe |
 | 8 | NN | born circa 1290 |
 | 8 | NN 李 | died 706 |
-| 8 | 李 | died 864 |
-| 6 | NN | died Munster, Ireland |
+| 7 | NN | died Munster, Ireland |
+| 6 | NN | born circa 1560 |
+| 6 | NN | died Germany |
+| 6 | NN | born circa 1100 |
 | 6 | NN | born circa 1590 |
 | 6 | NN | Europe - Europe |
 | 6 | NN | born circa 1200 |
 | 6 | NN Lee | born 한국 경북 경주시 |
-| 5 | NN | born circa 1560 |
-| 5 | NN | died Germany |
+| 5 | NN | Egypt - Egypt |
+| 5 | NN | died Scotland |
 | 5 | NN | China - China |
-| 5 | NN | born circa 1100 |
 | 5 | Gaius Servilius | born Rome, Roma, Italy |
 | 5 | NN | born circa 1620 |
 | 5 | NN | born circa 1500 |
 | 5 | NN | born circa 1630 |
 | 5 | NN 李 | died 608 |
 | 5 | NN 李 | died 679 |
-| 5 | 李 | died 881 |
 | 5 | Tatarkanof | died 1770 |
-| 5 | Taga | born Bef 1861 |
+| 4 | NN | born circa 1565 |
 | 4 | NN | born circa 1340 |
-| 4 | NN | died France |
-| 4 | NN | Egypt - Egypt |
+| 4 | NN | France - France |
 | 4 | NN | died (Iberia), Georgia |
-| 4 | NN | died Scotland |
+| 4 | NN | died Armenia |
 | 4 | NN | born circa 1390 |
-| 4 | NN | born circa 1400 |
 | 4 | NN | born circa 1575 |
 | 4 | NN | born circa 1440 |
 | 4 | Marcus Valerius | born Rome, Roma, Italy |
 | 4 | NN | born circa 900 |
+| 4 | NN | born circa 1510 |
 | 4 | NN | born circa 1230 |
 | 4 | Kone | died Jordanger, Luster, Sogn og Fjordane, Norway |
 | 4 | NN | born circa 1150 |
+| 4 | NN | born circa 1470 |
+| 4 | Folman | died Aft 1932 |
+| 4 | NN 柳 | died 698 |
+| 4 | NN 李 | died 652 |
+| 4 | NN Lee | 한국 경북 경주시 - 한국 경북 경주시 |

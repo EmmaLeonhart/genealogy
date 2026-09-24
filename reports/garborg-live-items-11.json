@@ -226780,6 +226780,49 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q141538299$A8B6770A-B65F-491F-B69C-EEFED7610F53",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141548390",
+        "numeric-id": 141548390
+       }
+      },
+      "hash": "01fd710541dd7b2a28bcae4b6bc1c1d0a212f7e4",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "9ed6311e1cabbd070abd5f09128a46e6d9c60396",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000196335427822"
+          },
+          "hash": "e579d42a3d3cd1bee0bbde58469f27c1c0a5deb7",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141538299$5A621A36-B520-4FCC-85DD-73C3C106EA60",
@@ -227010,8 +227053,8 @@
     "value": "埃纳尔·古纳尔松·奥尔斯沃尔"
    }
   },
-  "lastrevid": 2548603360,
-  "modified": "2026-09-22T21:44:46Z",
+  "lastrevid": 2549002324,
+  "modified": "2026-09-24T10:35:41Z",
   "ns": 0,
   "pageid": 135098076,
   "sitelinks": {},
@@ -241080,6 +241123,233 @@
   "pageid": 135108026,
   "sitelinks": {},
   "title": "Q141548267",
+  "type": "item"
+ },
+ "Q141548315": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141548315$B0C19D9E-C89B-4AA7-808C-C907D1171ADA",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141548315$B864DA99-B1A0-4F9A-94C7-5A70A60E4A78",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000218774352679"
+      },
+      "hash": "4afa61339d6f24ae89ccf4a4f2a244a3a018a182",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Hustru Olof Larsson"
+        },
+        "hash": "3c70784cb6809756f82c71f95e334731fe498780",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141548315$1D5D14F1-EC78-4465-B864-F30A75702478",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141548315$0356AC69-7F98-45CD-8241-439AF318FB15",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141520321",
+        "numeric-id": 141520321
+       }
+      },
+      "hash": "dd4b33c181b21085b2dd0be630c7b45b7cf00cbd",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "744c051c4768fb598e26134663cc5e7611cbda69",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000218774352679"
+          },
+          "hash": "4afa61339d6f24ae89ccf4a4f2a244a3a018a182",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P5056": [
+    {
+     "id": "Q141548315$D9BFD3E5-FCAF-4423-BF42-B9E8A1EF12C8",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141290425",
+        "numeric-id": 141290425
+       }
+      },
+      "hash": "8484d964d46b9b6143fcff073708d56a1c739481",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q141548315$81F67573-66C1-4944-A453-34DA1FD415C5",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1586-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "c6cddbf7e30792d27eee199c0164f747ad368c7d",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "744c051c4768fb598e26134663cc5e7611cbda69",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000218774352679"
+          },
+          "hash": "4afa61339d6f24ae89ccf4a4f2a244a3a018a182",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "born 1586 Skinnskatteberg, Vastmanland, Sweden"
+   }
+  },
+  "id": "Q141548315",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Hustru Olof Larsson"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "フストル・オロフ・ラーション"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "후스트루 오로프 라르손"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Hustru Olof Larsson"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "胡斯特鲁·奥洛夫·拉森"
+   }
+  },
+  "lastrevid": 2549000602,
+  "modified": "2026-09-24T10:22:07Z",
+  "ns": 0,
+  "pageid": 135108076,
+  "sitelinks": {},
+  "title": "Q141548315",
   "type": "item"
  },
  "Q14558299": {
