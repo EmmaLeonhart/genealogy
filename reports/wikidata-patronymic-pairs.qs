@@ -230,6 +230,15 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 
+# Assersdotter -- the counterpart of Asserson (16 bearer(s))
+CREATE
+LAST	Len	"Assersdotter"
+LAST	Lmul	"Assersdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+
 # Davidsdotter -- the counterpart of Davidson (16 bearer(s))
 CREATE
 LAST	Len	"Davidsdotter"
@@ -350,14 +359,6 @@ LAST	P31	Q130444148
 CREATE
 LAST	Len	"Jonesen"
 LAST	Lmul	"Jonesen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-
-# Alvsen -- the counterpart of Alvsdatter (11 bearer(s))
-CREATE
-LAST	Len	"Alvsen"
-LAST	Lmul	"Alvsen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
