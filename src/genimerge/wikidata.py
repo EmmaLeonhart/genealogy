@@ -118,11 +118,23 @@ def _http_fetch(url: str, data: bytes | None = None, headers: dict | None = None
             **(headers or {}),
         },
     )
-    with urllib.request.urlopen(request, timeout=120) as response:
-        payload = response.read()
-        if response.headers.get("Content-Encoding") == "gzip":
-            payload = gzip.decompress(payload)
-        return payload
+    # **A 429/503 is WAITED OUT here, for every direct caller.** `WikidataClient` has its own
+    # retries, but 19 scripts call this raw, and on 2026-09-24 one Wikidata 429 in
+    # `refresh-created-name-items.py` killed a whole tree rebuild (run 35944404806) at step 16,
+    # after the merge had succeeded. `Retry-After` is honoured when sent.
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                payload = response.read()
+                if response.headers.get("Content-Encoding") == "gzip":
+                    payload = gzip.decompress(payload)
+                return payload
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 503) or attempt == 3:
+                raise
+            wait = exc.headers.get("Retry-After", "") if exc.headers else ""
+            time.sleep(int(wait) if str(wait).isdigit() else 10 * 2 ** attempt)
+    raise RuntimeError("unreachable")
 
 
 @dataclass

@@ -46664,3 +46664,11 @@ Decided when asked: delete. It wrote 7,166 inferred `P2600` into `reports/wikida
 and no workflow ran it, and since 2026-09-17 every `P2600` must land in the universe or one step
 beyond, which it never checked. Deleted with its re-queue script and workflow and its unrun
 output. That closes the last open generator from `reports/qs-batch-audit.md`.
+
+## 2026-09-24 — the tree rebuild with `sweep-parsed` MERGED, then died on a Wikidata 429
+
+Run `35944404806` got through the merge and the derive steps with the sweep-parsed shards in the
+corpus, which answers whether it fits. It then failed at step 16: one Wikidata `429` in
+`refresh-created-name-items.py`, while pipeline run 1556 was hitting Wikidata too, stopped the
+batch composer. `genimerge.wikidata._http_fetch`, which 19 scripts call directly, now waits out a
+`429`/`503` (honouring `Retry-After`) instead of raising on the first one.
