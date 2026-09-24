@@ -47192,3 +47192,5 @@ not written, but they say the tie-break picks a wrong namesake in roughly 2% of 
 can be cross-checked. Also: a row ending `, MP` (a Member of Parliament) was losing it to the
 Master-Profile badge strip; indexed under both forms (+15 couples). Re-rendered with
 `--corpus-rev baf607e99`.
+
+**And generation 1:** the report subject is not a row of their own report, so their children resolved no parent when the text styled the name differently. Geni names the father first, so the subject's sex (from the facts) now fills its slot: +346 parents, the other name a label hung off the subject. Re-rendered.

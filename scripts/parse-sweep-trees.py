@@ -290,10 +290,12 @@ class Parse:
         self.spouse_labels: dict[str, set] = collections.defaultdict(set)
         self.spouse_ids: dict[str, set] = collections.defaultdict(set)
         self.stats = collections.Counter()
+        self.focus, self.focus_sex = "", {}   # the report being read; subject -> M/F
         self.order = collections.Counter()   # (sex of first-named, sex of second) when both resolve
 
     def file(self, path: str) -> None:
         focus = os.path.basename(path)[len("sweep-descendants-"):-len(".tsv")]
+        self.focus = focus
         rows = []
         with io.open(path, encoding="utf-8", errors="replace") as fh:
             head = fh.readline().rstrip("\n").split("\t")
@@ -413,6 +415,17 @@ class Parse:
         # 11,854 (M, F) and not one (F, M). So position supplies the sex wherever the tree
         # has none -- a fact about Geni's rendering, not a parse of the name.
         resolved = [(x, s) for x, s in ((ra, "M"), (rb, "F")) if x]
+        # ⛔ **GENERATION 1: ONE PARENT IS THE REPORT'S SUBJECT, BY DEFINITION.** The subject is
+        # not a row of their own report, so their children's `… and …` found no row when the
+        # text styled their name differently -- about 4% of the rows resolving no parent
+        # (2026-09-24). Geni names the father first, so the subject's sex says which slot is
+        # theirs; the other stays a label hung off them, as any in-law is.
+        if not resolved and g == 1 and a and b:
+            fs = self.focus_sex.get(self.focus, "")
+            if fs in ("M", "F"):
+                ra, rb = (self.focus, None) if fs == "M" else (None, self.focus)
+                resolved = [(ra, "M")] if ra else [(rb, "F")]
+                self.stats["generation-1 parents resolved to the report's subject"] += 1
         if not resolved:
             if a and b:
                 self.stats["couples with neither parent resolved (made as a label pair)"] += 1
@@ -504,6 +517,11 @@ def main() -> int:
     files = sorted(glob.glob(os.path.join(SWEEP, "sweep-descendants-*.tsv")))
     if args.limit:
         files = files[:args.limit]
+    subjects = {os.path.basename(f)[len("sweep-descendants-"):-len(".tsv")] for f in files}
+    with gzip.open(FACTS, "rt", encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            if row["geni_id"] in subjects and row["sex"] in ("M", "F"):
+                p.focus_sex[row["geni_id"]] = row["sex"]
     for i, path in enumerate(files):
         p.file(path)
         if i % 1000 == 999:
