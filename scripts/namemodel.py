@@ -1518,6 +1518,37 @@ def given_name_run(words):
     return out or list(words[:1])
 
 
+#: **The Latin given names and the vernacular forms the same man was recorded under**, folded.
+#: Ruled 2026-09-24 (a hand-written table, nothing inferred): `Ericus Petri` is the son of a man
+#: the tree records as `Per`, not `Petrus` -- clergy latinised their own names, not their
+#: fathers' -- so matching the genitive only against a LATIN father left `Erici`, `Olai`, `Petri`
+#: and `Olavi` classed as second given names, their bearers on `P735` and never `P5056`.
+LATIN_VERNACULAR = {
+    "petrus": {"per", "pehr", "peder", "peter", "petter", "peer", "par"},
+    "olaus": {"olof", "olov", "ole", "ola", "olav", "oluf", "olle"},
+    "olavus": {"olav", "olof", "olov", "ole", "oluf"},
+    "ericus": {"erik", "eric", "erick", "erich"},
+    "andreas": {"anders", "andor"},
+    "laurentius": {"lars", "lorens", "laurits", "lauritz"},
+    "johannes": {"johan", "jon", "jons", "hans", "jens", "johann", "jan"},
+    "nicolaus": {"nils", "niels", "nikolaus", "claus", "klaus"},
+    "magnus": {"mans", "mogens"},
+    "benedictus": {"bengt", "bent"},
+    "martinus": {"marten", "morten", "martin"},
+    "matthias": {"mats", "matts", "mattias", "mads"},
+    "jacobus": {"jakob", "jacob", "jacop"},
+    "paulus": {"pal", "poul", "paul"},
+    "canutus": {"knut", "knud"},
+    "georgius": {"goran", "joran", "jorgen", "jurgen", "orjan", "georg"},
+    "gregorius": {"gregers", "greger"},
+    "christophorus": {"kristoffer", "christoffer", "stoffer"},
+    "michael": {"mikael", "michel", "mickel", "mikkel"},
+    "thomas": {"tomas"},
+    "sveno": {"sven", "svend"},
+    "haquinus": {"hakan", "hakon"},
+}
+
+
 def latin_patronymic_source(token: str, father_given: str) -> str:
     """The father's given name `token` is the Latin genitive of, or `""`.
 
@@ -1538,6 +1569,13 @@ def latin_patronymic_source(token: str, father_given: str) -> str:
         for end in LATIN_NOMINATIVE_ENDINGS:
             if stem + end in givens:
                 return givens[stem + end]
+    # The father recorded in the vernacular: `Petri` under a father `Per`. The source is the
+    # name he is recorded by, so `P144` points where his own `P735` does.
+    for stem in stems:
+        for end in LATIN_NOMINATIVE_ENDINGS:
+            for vernacular in LATIN_VERNACULAR.get(stem + end, ()):
+                if vernacular in givens:
+                    return givens[vernacular]
     return ""
 
 

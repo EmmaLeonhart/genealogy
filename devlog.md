@@ -46934,3 +46934,12 @@ go unused, and `Olavi` never became a patronymic item. Secondary: `Erici`'s `P14
 `Eric`, while fathers carry `Ericus` (`Q18066804`) and other forms, and 8 bearers (6 Petri, 2 Olai)
 meet every condition of the rule and are still unlinked. The rest have no father in the tree or a
 father without an item, which the rule cannot resolve by design.
+
+**Fixed the same day, ruled a hand-written table.** `namemodel.LATIN_VERNACULAR` holds 22 Latin
+given names and the vernacular forms the same man is recorded under (`petrus` -> `per`, `peder`,
+`peter` ...; `olaus` -> `olof`, `ole` ...; `ericus` -> `erik` ...). `latin_patronymic_source`
+tries it after the Latin-to-Latin match fails and returns the father's own recorded name, so
+`Ericus Petri` under `Per` is a patronymic whose `P144` source is `Per` -- the item the father's
+`P735` already names, which is what makes the `P5056` rule fire. `Olavi Virtanen` under `Juho`
+stays a given name; `Petri` under a `Petri` father stays a family name. The plan, the `P144`
+backfill and the bearer links follow on the next pipeline run.

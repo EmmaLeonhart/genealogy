@@ -1435,3 +1435,18 @@ def test_the_languages_that_write_d_y_and_d_e_get_their_own_label():
         "sv": "Johan Andersson d.ä."}
     assert namemodel.native_generation_labels("Elias Lagerheim", "Jr.") == {}
     assert namemodel.native_generation_labels("Anna Berg") == {}
+
+
+@pytest.mark.parametrize("givn, father, token, kind", [
+    ("Ericus Petri", "Per", "Petri", "patronymic"),     # father in the vernacular
+    ("Petrus Olai", "Olof", "Olai", "patronymic"),
+    ("Anders Olavi", "Olof", "Olavi", "patronymic"),
+    ("Andreas Erici", "Erik", "Erici", "patronymic"),
+    ("Laurentius Petri", "Petrus", "Petri", "patronymic"),  # father in Latin, as before
+    ("Olavi", "Juho", "Olavi", "given"),                 # a Finnish given name stays one
+])
+def test_a_latin_patronymic_is_confirmed_by_a_vernacular_father(givn, father, token, kind):
+    """Reviewed 2026-09-24: `Erici`/`Olai`/`Petri`/`Olavi` were second given names whenever the
+    father was recorded as `Erik`/`Olof`/`Per` -- the usual case -- so bearers got `P735`."""
+    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn="", father_given=father)}
+    assert got[token] == kind
