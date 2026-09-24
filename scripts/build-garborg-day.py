@@ -6616,6 +6616,16 @@ def main():
                 if _q and _q not in our_wikidata_subgraph:
                     one_step_qids.add(_q)
         print(f"one step beyond the universe: {len(one_step_qids)} items")
+        # ⛔ **THE ITEMS AN EMITTER MAY EDIT, DECIDED ONCE, BEFORE ANY EMITTER RUNS.** Reported
+        # 2026-09-24: *"the logic should simply never create any statements affecting them"*.
+        # `our_items` is the whole ledger -- 442 Jan-1 entry points, the Izumo and Tanba rosters
+        # -- and every walk over it generated statements that `refuse_non_local` then deleted,
+        # leaving their comments behind in the batch and on the site. `our_items` stays the
+        # ledger for LOOKUPS (who already has an item, so nobody is created twice); `editable`
+        # is who may be the SUBJECT of an edit. An entry point the universe reaches on its own
+        # is in it, and so becomes editable, with nothing else to switch.
+        editable = set(our_wikidata_subgraph) | set(one_step_qids)
+        editable_items = {g: q for g, q in our_items.items() if q in editable}
         # ⛔ **THE SENDER HAS TO BE ABLE TO ASK THE SAME QUESTION.** `wikidata-edit-run.py` reads
         # a batch off disk hours later, in a workflow, with no tree and no subgraph, so it cannot
         # recompute this -- and a gate that exists only in the composer is one stale artifact
@@ -7261,7 +7271,7 @@ def main():
         known = state.get(q)
         return prop not in known[1] if known else True
 
-    for g, q in sorted(our_items.items()):
+    for g, q in sorted(editable_items.items()):
         before_this_person = len(seen)
         for prop, target in (("P22", father.get(g)), ("P25", mother.get(g))):
             if target and target in our_items and absent(q, prop):
@@ -7929,11 +7939,13 @@ def main():
         reciprocal = []
         for prop, target, back in (("P22", father.get(g), "P40"),
                                    ("P25", mother.get(g), "P40")):
-            if target and target in our_items:
+            # A link to an item we may not edit goes in NEITHER direction: the reciprocal would
+            # be an edit on it, and a one-way link is what the both-directions test refuses.
+            if target and our_items.get(target) in editable:
                 lines.append(f"LAST\t{prop}\t{our_items[target]}{ref(g)}")
                 reciprocal.append((our_items[target], back, g))
         for sp in sorted(spouses.get(g, ())):
-            if sp in our_items:
+            if our_items.get(sp) in editable:
                 lines.append(f"LAST\tP26\t{our_items[sp]}{ref(g)}")
                 reciprocal.append((our_items[sp], "P26", g))
         # **The cap is 10 a day ACROSS EVERY BATCH, and this site was escaping it.**
@@ -7944,7 +7956,7 @@ def main():
         # are too numerous to send in one batch. `_siblings_emitted` is shared module state
         # precisely so both sites draw on one budget.
         for sib in sorted(siblings.get(g, ())):
-            if sib in our_items:
+            if our_items.get(sib) in editable:
                 if sibling_budget_left() <= 0:
                     carried.append((g, label, f"P3373 sibling {our_items[sib]} held: over the "
                                     f"{SIBLING_CAP}-a-day cap"))
@@ -7953,7 +7965,7 @@ def main():
                 lines.append(f"LAST\tP3373\t{our_items[sib]}{ref(g)}")
                 reciprocal.append((our_items[sib], "P3373", g))
         for kid in sorted(children.get(g, ())):
-            if kid in our_items:
+            if our_items.get(kid) in editable:
                 lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g)}")
                 sex_of = (facts.get(g, {}) or {}).get("sex", "")
                 reciprocal.append((our_items[kid], "P22" if sex_of == "M" else "P25", g))
@@ -8384,10 +8396,10 @@ def main():
     # small; the ordering is what decides it when it happens.
     derived_labels = (
         _piped_label_fixes(live_labels)
-        + _label_corrections(our_items, labels, table, state, fields, generation,
+        + _label_corrections(editable_items, labels, table, state, fields, generation,
                              live_labels)
         + _cjk_follows_mul(table)
-        + _missing_cjk_labels(our_items, labels, table, live_labels))
+        + _missing_cjk_labels(editable_items, labels, table, live_labels))
     # ⛔ **LOCALITY, ON EVERY DERIVED LABEL EDIT. THIS IS THE ALARM.**
     #
     # Ruled 2026-09-18, after nine `ja` labels were set on `Q135525010`, `Q135579354` and seven
@@ -8493,7 +8505,7 @@ def main():
     # line whose SUBJECT is an existing item outside the universe and its ring. `CREATE` blocks
     # and their `LAST` lines are untouched: a creation has no QID yet and `compose` already picks
     # them from inside the universe.
-    lines = refuse_non_local(lines, set(our_wikidata_subgraph) | set(one_step_qids))
+    lines = refuse_non_local(lines, editable)
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first**, ruled 2026-08-30: one file rather than two, names first and
