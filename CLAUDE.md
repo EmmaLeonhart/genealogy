@@ -420,7 +420,8 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     attested genealogical import this form was measured against.
     **Established items are not the urgent case** (ruled 2026-09-24): ~4,380 made before
     2026-09-19 have none; the guard is for the pipeline duplicating its own fresh creations. A
-    backfill is queued last, dates and relatives only, never the Geni-id fallback.
+    backfill is queued last, dates and relatives only, never the Geni-id fallback (that rung is
+    strictly anti-duplication). **⛔ An existing description is NEVER overwritten.**
   - **⛔ `PLAC` STAYS OUT OF THE SYNOPTIC TREE.** The 2026-09-10 ruling is intact: `KEEP_TAGS`
     drops it and `merged.ged` carries no place. `slim.harvest_places` reads it one record before
     the prune — the only moment it exists — and `genimerge merge` writes it BESIDE the tree.
