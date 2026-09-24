@@ -48,7 +48,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
     drop_clan_suffix, drop_description_suffix, drop_label_title,
     drop_repeated_patronymic, generation_suffix_in_label, generation_suffix_key,
-    keep_own_surname, married_name_of,
+    keep_own_surname, married_is_primary, married_name_of,
     normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
@@ -198,6 +198,18 @@ def main() -> int:
             if short in text:
                 text = text.replace(short, full)
         return text
+    # **Sex decides which name is the label**, `namemodel.married_is_primary`: a woman goes under
+    # her maiden name, a man under his married one (ruled 2026-09-21). `derive-facts.py` runs
+    # BEFORE this in `rebuild-everything.py` so the file is this merge's, not the last one's.
+    sex: dict[str, str] = {}
+    facts_path = REPO_ROOT / "reports" / "derived-facts.csv"
+    if facts_path.exists():
+        with open(facts_path, encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row.get("sex"):
+                    sex[row["geni_id"]] = row["sex"]
+    print(f"{sum(1 for v in sex.values() if v == 'F'):,} women take the maiden name as label")
+
     by_person: dict[str, list[dict]] = defaultdict(list)
     with open(SOURCE, encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
@@ -457,7 +469,7 @@ def main() -> int:
             same = next((d for d in latin if _bare(d) == _bare(married) and d != married), None)
             if same:
                 married = same
-        if correction or not married:
+        if correction or not married or not married_is_primary(sex.get(geni_id, "")):
             primary, alias_out = birth, list(aliases)
         else:
             primary = married

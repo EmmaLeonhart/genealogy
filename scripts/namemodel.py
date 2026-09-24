@@ -555,6 +555,21 @@ def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
     return f"{out} {want}".strip()
 
 
+def married_is_primary(sex: str) -> bool:
+    """Whether the MARRIED name is the label (`mul`/`en`) and the birth name the `Amul`.
+
+    ⛔ **A WOMAN GOES UNDER HER MAIDEN NAME; A MAN UNDER HIS MARRIED NAME.** Ruled 2026-09-21:
+    *"we are going to switch so that women are made under their maiden names, not under their
+    married names, because women under their married names was a source of confusion. Men are
+    still under their married names."* A man's married name is rare and *"usually means a name
+    change occurred"* -- evidence of an event, which is why his side does not move.
+
+    So only `F` flips to the maiden form. An unknown sex keeps the married form, the rule as it
+    stood, because the ruling is about women and nothing says who an unknown is.
+    """
+    return (sex or "").strip().upper() != "F"
+
+
 def married_name_of(fields) -> str:
     """The `_MARNM` where it really is a married name, else `""`.
 

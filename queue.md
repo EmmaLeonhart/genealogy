@@ -441,13 +441,6 @@ findings, not work in progress. Nothing here is started.**
   hook rejects a push for what the repository CONTAINS, not for what the push changed. Size
   alone is the failing condition; who writes it only says whether it will cross unwatched.
 
-- **⛔ `CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* IS INCOMPLETE AND IT MISLED TWICE.** It
-  explains cancelled pipeline runs as push contention, which is true and was not the whole
-  story: a `timeout-minutes` kill and a supersede-on-push cancellation are **the same word in
-  every listing**, and only the job's start and end times tell them apart. Two confident wrong
-  diagnoses came out of reading the conclusion word on 2026-09-19. The section needs the
-  distinction written into it.
-
 - **⛔ TWO THIRDS OF PATH REQUESTS NOW RETURN `202` AND WE COLLECT NONE OF THOSE ANSWERS.**
   Measured on the 4,432-attempt drain: `queued/queued` is 2,969, 67%. A queued search's result
   never comes back in the response and reaches `/paths` only when a path is FOUND. The inline
@@ -649,23 +642,6 @@ Run `35590570344`, 2026-09-21, identical on Python 3.10 and 3.13.
 Some are stale committed artifacts that `pipeline.yml` fixes on recompose; the quote one and the
 description one are generator defects. § *the exception is a defect: fix the generator, push, and
 let the pipeline run it.*
-
-### ⛔ WOMEN GO UNDER THEIR MAIDEN NAMES. MEN STAY UNDER THEIR MARRIED NAMES
-
-Ruled 2026-09-21: *"we are going to switch so that women are made under their maiden names, not
-under their married names, because women under their married names was a source of confusion.
-Men are still under their married names."*
-
-**This REVERSES § *The MARRIED name is the real name* for women only.** That rule said `mul`
-carries the married name with the birth name as `Amul`; for a woman the two now swap — `mul` is
-the maiden name, the married name becomes the alias. **Never an `Aen`**, which is unchanged.
-
-Men are untouched, and Emma's own note on why: *"married names for men are like a bit of a weird
-ass thing where whenever they have them, it usually means a name change occurred"* — so a man's
-married name is evidence of an event, not a naming convention, and it stays where it is.
-
-⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD* — there are two emitters and this belongs in
-`namemodel`. And `name modelling.txt` is the authority over both this file and `CLAUDE.md`.
 
 ### ⛔ A RELATIONAL LABEL ON A PERSON WHOSE GIVEN NAME IS KNOWN — THE BIGGEST DEFECT OF THE CAMPAIGN
 

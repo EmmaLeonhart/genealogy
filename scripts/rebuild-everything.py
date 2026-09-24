@@ -16,7 +16,8 @@ human should not be holding it in their head:
    of missing this: correcting the exports and re-running the analysers left the old surname in
    place, because `derive-labels.py` does not build the file it reads.
 4. `derive-family.py` and `derive-facts.py` — `merged.ged` → `derived-family.csv`,
-   `derived-facts.csv`. **`derive-family.py` also reads `derived-labels.csv`**, which is why it
+   `derived-facts.csv` (facts actually runs BEFORE step 3: labels read its sex column).
+   **`derive-family.py` also reads `derived-labels.csv`**, which is why it
    now runs *after* step 3 rather than before it; see below.
 5. `build-cjk-romanisation.py` — reads the three derived CSVs, and its output feeds both the
    preview and the `en` batch below. Added 2026-09-01 for the same reason as the chain in
@@ -106,9 +107,12 @@ STEPS = [
     # **Before `derive-family.py`, not after.** That script reads `derived-labels.csv` behind an
     # `if LABELS.exists()`, so running it first is silent and merely wrong: the names it reports
     # are one merge stale, and empty on a first run.
+    # **Facts before labels**: `derive-labels.py` reads the SEX column, because a woman's label
+    # is her maiden name and a man's his married one (ruled 2026-09-21). `derive-facts.py`
+    # reads nothing derived, so moving it up costs nothing.
+    ("derived facts", [sys.executable, os.path.join("scripts", "derive-facts.py")]),
     ("derived labels", [sys.executable, os.path.join("scripts", "derive-labels.py")]),
     ("derived family", [sys.executable, os.path.join("scripts", "derive-family.py")]),
-    ("derived facts", [sys.executable, os.path.join("scripts", "derive-facts.py")]),
     # **The CJK romanisation, and it is the same trap again.** `build-cjk-romanisation.py` reads
     # `derived-labels.csv`, `derived-facts.csv` and `derived-family.csv`, and its output is read
     # by BOTH `build-relationship-label-preview.py` and `build-en-label-batch.py` -- two steps

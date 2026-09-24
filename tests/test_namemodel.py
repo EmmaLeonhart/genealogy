@@ -1390,3 +1390,12 @@ def test_own_given_name_refuses_a_marker_and_a_relatives_name():
     assert own_given_name({"givn": "NN ektefelle Søren Jonson"}) == ""
     assert own_given_name({}) == ""
     assert own_given_name(None) == ""
+
+
+def test_a_woman_goes_under_her_maiden_name_and_a_man_under_his_married_one():
+    """Ruled 2026-09-21: *"women are made under their maiden names ... Men are still under their
+    married names."* Unknown sex keeps the rule as it stood."""
+    from namemodel import married_is_primary
+    assert married_is_primary("F") is False
+    assert married_is_primary("M") is True
+    assert married_is_primary("") is True

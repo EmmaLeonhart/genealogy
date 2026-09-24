@@ -55,7 +55,7 @@ from namemodel import (  # noqa: E402
     qualifier_value,
     aliases_for, classify, classify_fields, load_plan,
     names_a_relative as _namemodel_names_a_relative,
-    lead_with_given_name, own_given_name,
+    lead_with_given_name, own_given_name, married_is_primary,
     drop_description_suffix, generation_suffix_key,
     normalise_generation_suffix, statements_for,
     suffix_is_native)
@@ -7608,6 +7608,9 @@ def main():
             if _surn and _marnm and _surn.casefold() != _marnm.casefold():
                 mul_value = f"{UNNAMED_MARKER} {qs(_marnm)}"
                 _nn_birth = f"{UNNAMED_MARKER} {qs(_surn)}"
+                # A woman goes under her MAIDEN name (ruled 2026-09-21), so hers swap.
+                if not married_is_primary(f["sex"]):
+                    mul_value, _nn_birth = _nn_birth, mul_value
             lines.append(f'LAST\tLmul\t"{mul_value}"')
             if _nn_birth and _nn_birth != mul_value:
                 lines.append(f'LAST\tAmul\t"{_nn_birth}"')
@@ -7658,6 +7661,11 @@ def main():
             from labels import drop_marker_surname
             primary = drop_marker_surname(primary, marnm, surn)
             birth = drop_marker_surname(birth, surn) if birth else birth
+            # ⛔ **A WOMAN GOES UNDER HER MAIDEN NAME.** Ruled 2026-09-21, reversing the block
+            # above for women only: her `mul`/`en` is the birth form and the married form is
+            # the `Amul`. `birth` below is then the ALIAS, whichever name it holds.
+            if is_married and not married_is_primary(f["sex"]):
+                primary, birth = birth, primary
 
             # **`en` only for a name written in Latin script.** The non-Latin fallback
             # above rescues 55,547 people from being created as a bare `NN`, but their

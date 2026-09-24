@@ -46605,3 +46605,14 @@ Numbers in `reports/sweep-report-parsing.md`. Output is byte-identical across ha
 `build-garborg-day.py` and `build-ancestor-creations.py` now refuse to create anyone whose id
 is not a Geni id. The ring reaches FamilySearch `FS<n>` and label `L<n>` people through the
 same family maps, and nothing stopped a `P2600 "L123"`.
+
+## 2026-09-24 — women go under their maiden names, in both emitters
+
+The 2026-09-21 ruling was in `CLAUDE.md` and in no code. `namemodel.married_is_primary(sex)`
+holds it; `derive-labels.py` (so every reader of `label_mul`) and both label branches of
+`build-garborg-day.py` (named and NN) call it. `derive-facts.py` now runs before
+`derive-labels.py` in `rebuild-everything.py`, since the label needs the sex. Existing items
+move through the label-correction pass that already exists, under `LABEL_EDIT_CAP`.
+
+Also deleted from the queue: the `CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* bullet, whose
+timeout-versus-supersede distinction is already written into that section.
