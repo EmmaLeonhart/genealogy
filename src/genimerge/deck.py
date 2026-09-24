@@ -28,6 +28,7 @@ import re
 import sqlite3
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -290,6 +291,28 @@ def store_scan(wanted):
     return out
 
 
+def _get_json(url, tries=6):
+    """One polite GET: 0.4 s after every answer, and a 429/503 is WAITED OUT, not skipped.
+
+    Run `35942844515` (2026-09-24): the first 429 was caught and `continue`d past the sleep, so
+    every later chunk went out 12 ms apart, each one 429'd, and 2,333 of 3,557 cards lost their
+    Wikidata name -- `BROKEN DECK`. Wikidata's `Retry-After` is honoured when it is sent.
+    """
+    req = urllib.request.Request(url, headers={"User-Agent": WD_AGENT})
+    for attempt in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=90) as fh:
+                data = json.loads(fh.read().decode("utf-8"))
+            time.sleep(0.4)
+            return data
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 503) or attempt == tries - 1:
+                raise
+            wait = exc.headers.get("Retry-After", "")
+            time.sleep(int(wait) if wait.isdigit() else 5 * 2 ** attempt)
+    raise RuntimeError("unreachable")
+
+
 def fetch_labels(ids):
     """`{qid: label}` from the live API, batched 50 at a time.
 
@@ -304,14 +327,11 @@ def fetch_labels(ids):
         url = WD_API + "?" + urllib.parse.urlencode({
             "action": "wbgetentities", "ids": "|".join(chunk), "props": "labels",
             "languages": "|".join(LABEL_LANGS), "format": "json"})
-        req = urllib.request.Request(url, headers={"User-Agent": WD_AGENT})
         try:
-            with urllib.request.urlopen(req, timeout=90) as fh:
-                data = json.loads(fh.read().decode("utf-8"))
+            data = _get_json(url)
         except Exception as exc:                                          # noqa: BLE001
             sys.stderr.write("label fetch failed for %d ids: %s\n" % (len(chunk), exc))
             continue
-        time.sleep(0.4)
         for q, e in (data.get("entities") or {}).items():
             labs = e.get("labels") or {}
             for lang in LABEL_LANGS:
@@ -426,10 +446,7 @@ def fetch_claims(ids):
         return {}, set()
     url = WD_API + "?" + urllib.parse.urlencode({
         "action": "wbgetentities", "ids": "|".join(ids), "props": "claims", "format": "json"})
-    req = urllib.request.Request(url, headers={"User-Agent": WD_AGENT})
-    with urllib.request.urlopen(req, timeout=90) as fh:
-        data = json.loads(fh.read().decode("utf-8"))
-    time.sleep(0.4)
+    data = _get_json(url)
     if not (data.get("error") or {}).get("code"):
         return {q: (e.get("claims") or {}) for q, e in data.get("entities", {}).items()}, set()
     if len(ids) == 1:
