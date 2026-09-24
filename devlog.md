@@ -46640,3 +46640,10 @@ The dry run showed `own_given_name` accepting `???`, `konenes navn`, `mm`, `n` a
 patronymic (29 of the 276 relational-label items with a `GIVN`). It now requires a capitalised,
 non-marker, non-patronymic-only name. The creation path calls the same function, so new items
 stop getting `???, wife of …` too.
+
+## 2026-09-24 — `model-vs-reality-items.json` keeps only what the diff reads
+
+It was 82 MB (57.9 MB on 09-19), tracked and rewritten by the pipeline's `--refetch`: the same
+path to 100 MB that blocked every push on 09-19. The diff reads each statement's `mainsnak` and
+`rank` and nothing else, so the snapshot now holds exactly that: 26.7 MB measured on today's
+file. References alone were 24 MB. The queue item is deleted.

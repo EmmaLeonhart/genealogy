@@ -163,10 +163,29 @@ def fetch(qids, dest=None):
         # which reads like a network problem rather than a bug two lines up.
         out.update(client.full_entities(batch))
         print(f"  fetched {min(i + 50, len(ids))}/{len(ids)}", flush=True)
+    # ⛔ **ONLY WHAT THE DIFF READS IS KEPT, OR THE FILE CROSSES 100 MB AND BLOCKS EVERY PUSH.**
+    # Measured 2026-09-24: 82 MB and growing (57.9 MB on 09-19), tracked, and rewritten by the
+    # pipeline -- the shape of the 100.32 MB `garborg-live-items.json` that made the pre-receive
+    # hook refuse every push on 2026-09-19. The diff below reads a statement's `mainsnak` and
+    # `rank` and nothing else; references alone were 24 MB and labels, sitelinks and aliases
+    # another 6. `missing` is kept because the diff tests for it.
+    out = {q: _what_the_diff_reads(q, e) for q, e in out.items()}
     dest = Path(dest or ITEMS)
     dest.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(dest, "w", encoding="utf-8"), ensure_ascii=False)
     return out
+
+
+def _what_the_diff_reads(qid, entity):
+    """`{id, claims: {P: [{mainsnak, rank}]}}` -- the only parts `main` looks at."""
+    if "missing" in entity:
+        return {"id": qid, "missing": ""}
+    claims = {}
+    for prop, sts in (entity.get("claims") or {}).items():
+        claims[prop] = [{"mainsnak": {k: v for k, v in st.get("mainsnak", {}).items()
+                                      if k != "hash"},
+                         "rank": st.get("rank")} for st in sts]
+    return {"id": qid, "claims": claims}
 
 
 def main():
