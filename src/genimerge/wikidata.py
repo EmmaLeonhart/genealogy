@@ -25,6 +25,7 @@ import gzip
 import hashlib
 import os
 import pathlib
+import http.client
 import json
 import time
 import urllib.error
@@ -215,7 +216,10 @@ class WikidataClient:
                     raise
                 self.throttled += 1
                 time.sleep(self._backoff(attempt, error))
-            except urllib.error.URLError as error:
+            # A body cut off mid-stream is `http.client.IncompleteRead`, which is neither of the
+            # above: during the 2026-09-24 query-service outage it killed the P2889 roster
+            # twice, at partitions 7 and 10, on the first try. It is the same transient failure.
+            except (urllib.error.URLError, http.client.HTTPException, ConnectionError) as error:
                 last_error = error
                 time.sleep(self._backoff(attempt, error))
         raise RuntimeError(
