@@ -346,12 +346,19 @@ function render() {
 // **A PICK CARD SHOWS THE ANCHOR ONCE AND EVERY CANDIDATE BESIDE IT.** The slot has one
 // answer, so the question is not N yes/no cards -- offering it that way invites N Sames, which
 // is the whole reason `build-family-candidates.py` held these back.
+// Where a side's id links: Wikidata, FamilySearch (`GF2B-NKG`), or a Geni profile.
+function linkOf(p) {
+  if (p.kind === "qid") return "https://www.wikidata.org/wiki/" + p.id;
+  if (p.kind === "fs") return "https://www.familysearch.org/tree/person/details/" + p.id;
+  return "https://www.geni.com/people/x/" + p.id;
+}
+
 function renderPick(c) {
   var hw = c.highlight || [];
   var a = c.anchor;
-  var href = a.kind === "qid" ? "https://www.wikidata.org/wiki/" + a.id
-                              : "https://www.geni.com/people/x/" + a.id;
-  var eyebrow = a.kind === "qid" ? "The item &middot; Wikidata" : "Our person &middot; Geni";
+  var href = linkOf(a);
+  var eyebrow = a.kind === "qid" ? "The item &middot; Wikidata"
+              : a.kind === "fs" ? "FamilySearch" : "Our person &middot; Geni";
   var html =
     '<div class="card"><div class="cardtop">' +
       '<div class="name">' + esc(a.name) + "</div>" +
@@ -367,8 +374,7 @@ function renderPick(c) {
     '<div class="ask">' + esc(c.ask || "") + " <b>" + c.options.length +
       " to choose from.</b> Pick one, or press <b>None of these</b>.</div>" +
     '<div class="opts">' + c.options.map(function (o, n) {
-      var oh = o.kind === "qid" ? "https://www.wikidata.org/wiki/" + o.id
-                                : "https://www.geni.com/people/x/" + o.id;
+      var oh = linkOf(o);
       return '<div class="opt"><div class="eyebrow">Option ' + (n + 1) + "</div>" +
         '<div class="who">' + hl(o.name, hw) + "</div>" +
         '<div class="id"><a href="' + esc(oh) + '" target="_blank" rel="noopener">' +

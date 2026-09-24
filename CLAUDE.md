@@ -226,7 +226,9 @@ round 3.
 
     THE SESSION:
       1. git pull; read reports/familysearch-zipper-pairs.tsv against the last session's count
-      2. work reports/familysearch-zipper-ambiguous.tsv -- the slots the zipper refuses to guess
+      2. work reports/familysearch-zipper-ambiguous.tsv -- the slots the zipper refuses to guess,
+         as the FamilySearch deck (scripts/build-familysearch-deck.py, built by review-decks.yml;
+         its verdicts go into emma-judgments.tsv with the fs_id in `qid` and come back as anchors)
       3. then the three decks below
 
 **The FamilySearch side is keyed on `_FSFTID`, never on a file's own counter**, and it is read
@@ -255,6 +257,7 @@ does not stop it.
     parent    https://claude.ai/artifact/LKhTa5itp99KBXexTtY45Z
     family    https://claude.ai/artifact/8LrXG1u2QUamTFJ66Fayx3
     pick-one  https://claude.ai/artifact/AL1PD6ENiaKZbUST1ALUur
+    familysearch  https://claude.ai/artifact/93GL9DBmVErTnBxfGsru3j   (the zipper's refused slots)
 
 **Each deck keeps its verdicts in its own `db` store, `decisions/all`**, whether or not *Copy
 decisions* was ever pressed. Read it with `ArtifactData` before rebuilding and append anything not

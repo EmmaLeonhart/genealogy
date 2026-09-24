@@ -593,6 +593,9 @@ def write_outputs(prefix, other, pairs, provenance, conflicts, ambiguous, refute
 #: never from the renders in `exports/familysearch/`, which are keyed by this run's output.
 FS_DIR = ROOT / "gedcom" / "familysearch"
 FS_BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
+JUDGMENTS = ROOT / "reports" / "emma-judgments.tsv"
+#: A FamilySearch person id: `GF2B-NKG`, `PFR5-LDS`.
+FS_ID = re.compile(r"^[A-Z0-9]{4}-[A-Z0-9]{3}$")
 
 #: Anchors no identifier on Wikidata states: a download's root is the person it was run on,
 #: and that person's Geni profile is known here without asking anybody.
@@ -675,6 +678,20 @@ def main_familysearch():
             for row in csv.DictReader(f, delimiter="\t"):
                 if row.get("fs_id") and row.get("geni_id"):
                     anchors.setdefault(row["fs_id"], row["geni_id"])
+    # **The FamilySearch deck's verdicts are anchors.** `build-familysearch-deck.py` asks the
+    # slots this walk refused; a `SAME` there is a hand-made pair, written into
+    # `emma-judgments.tsv` with the FamilySearch id in the `qid` column, and it seeds the next
+    # walk exactly as a bridge row does.
+    judged = 0
+    if JUDGMENTS.exists():
+        with open(JUDGMENTS, encoding="utf-8", newline="") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                fs, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
+                if (FS_ID.match(fs) and g
+                        and (row.get("verdict") or "").strip().upper() == "SAME"):
+                    anchors.setdefault(fs, g)
+                    judged += 1
+    print(f"{judged} FamilySearch deck verdicts read back as anchors")
     for fs, g in anchors.items():
         stated_g[g].add(fs)
         stated_q[fs].add(g)

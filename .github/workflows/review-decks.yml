@@ -106,6 +106,14 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-pick-one-candidates.py
 
+      # The fourth deck: the FamilySearch slots the zipper refused. Queued 2026-09-24 under
+      # FAMILYSEARCH ZIPPERING; it reads the raw downloads in gedcom/familysearch/ and
+      # reports/familysearch-zipper-ambiguous.tsv, which tree.yml writes, and no Wikidata.
+      - name: Build the FamilySearch deck
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-familysearch-deck.py
+
       - name: Copy it onto the site
         run: python scripts/build-pages-site.py
 
@@ -117,6 +125,7 @@ jobs:
           git add out/parent-review.html out/gui-data.json \
                   out/family-review.html out/family-gui-data.json out/site \
                   out/pick-one-review.html out/pick-one-gui-data.json \
+                  out/familysearch-review.html out/familysearch-gui-data.json \
                   reports/parent-candidates.tsv reports/family-candidates.tsv \
                   reports/pick-one-candidates.tsv
           if git diff --cached --quiet; then

@@ -46698,3 +46698,15 @@ Measured on the batch composed at `96cd30f6f` (2026-09-24 05:11Z, after the fix 
     reports/wikidata-ancestor-creations.qs          3, 0
 
 The ruling itself stays in the script's docstring (lines 66-77, 194).
+
+## 2026-09-24 — the FamilySearch deck, the fourth artifact
+
+`scripts/build-familysearch-deck.py` turns `reports/familysearch-zipper-ambiguous.tsv` into pick
+cards: `1 x N` anchored on our person, `N x 1` on the FamilySearch person, `1 x 1` as a pick of
+one. `N x M` (805 slots) stays in the census, as it does for the Wikidata pick-one deck; the same
+slot reached from both parents is one card (114 repeats); an option whose known sex contradicts
+the anchor's is dropped. **421 cards** at first build. The FamilySearch side comes from
+`zipper-join.load_familysearch`, the zipper's own reader of the raw downloads, and links to
+`familysearch.org/tree/person/details/<id>`. Verdicts land in `emma-judgments.tsv` with the
+`fs_id` in `qid`; `zipper-join.py --familysearch` now reads the `SAME` ones back as anchors.
+Built by `review-decks.yml`, published at https://claude.ai/artifact/93GL9DBmVErTnBxfGsru3j.

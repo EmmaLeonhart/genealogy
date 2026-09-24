@@ -25,12 +25,6 @@ The zipper itself landed 2026-09-24 (4,866 pairs; the devlog has it). What is le
 - **Confirm the first `tree.yml` run with the FamilySearch step goes green** and that
   `exports/familysearch/PFR5-LDS-*.ged` comes back with `GF2B-NKG` on
   `@I6000000178279770847@`. Dispatch it once the pipeline is not running.
-- **A FamilySearch deck for `reports/familysearch-zipper-ambiguous.tsv`** -- 1,351 slots, 1,214
-  of them children. The pick-one card is the shape (`N x 1` and `1 x N`); `genimerge.deck` is
-  QID-shaped, so the FamilySearch side needs its own relatives and dates from the download.
-  Published as a fourth artifact beside the three decks, verdicts into `emma-judgments.tsv`
-  with the `fs_id` in the `qid` column, and `zipper-join.py --familysearch` reads them back as
-  anchors.
 - **`build-familysearch-day.py` still reads only the bridge.** Should it read the zipper pairs
   too, so a person the zipper put on a Geni profile whose item exists is not created again? The
   FamilySearch intentional-duplicates ruling says duplicates are allowed there -- NEEDS-DECISION.
