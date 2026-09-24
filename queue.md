@@ -37,4 +37,3 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   redone.
 - **`Slavina` / `Slawina von Rügen`**, Kruto's mother and spouse, one letter apart: checked
   against Geni, not reasoned about.
-- **The Rømer ring seed** is one unrecorded parent link from the owner's ancestry.
