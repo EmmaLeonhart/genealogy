@@ -47194,3 +47194,20 @@ Master-Profile badge strip; indexed under both forms (+15 couples). Re-rendered 
 `--corpus-rev baf607e99`.
 
 **And generation 1:** the report subject is not a row of their own report, so their children resolved no parent when the text styled the name differently. Geni names the father first, so the subject's sex (from the facts) now fills its slot: +346 parents, the other name a label hung off the subject. Re-rendered.
+
+## 2026-09-24 — descendant-report parents placed by row order
+
+The structural route the morning session found, now in code. Tested first: walking down a
+generation, a child's parent never steps back to an earlier row of the generation above in
+**99.2%** of 51,980 cases over 300 reports (284 of them without a single backward step). So
+`_order_parents` groups consecutive children naming one couple into a block, takes the blocks a
+name places as anchors, and places a block between two anchors on the one row between them that
+fits -- the only row in the range, or the only one its name (a `<private> Surname` included) can
+be. The parent's own sex picks the slot; the other name stays an in-law label.
+
+    parents placed by row order                    8,446
+    couples with neither parent resolved   41,505 -> 33,059
+    conflicting parent slots (dropped)      1,744 -> 1,817   (+73, under 1% of placements)
+
+Re-rendered with `--corpus-rev baf607e99`. Still open on the queue item: the 33,059, the 1,817
+conflicts, 1,605 unsplittable parent strings, and the unused `immediate_family` siblings.
