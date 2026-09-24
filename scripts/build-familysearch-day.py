@@ -99,6 +99,19 @@ CARRY = ROOT / "reports" / "familysearch-carry-forward.tsv"
 #: `P2889` FamilySearch person ID -- the identifier that makes a created item joinable.
 FS_PROP = "P2889"
 
+ZIPPER_PAIRS = ROOT / "reports" / "familysearch-zipper-pairs.tsv"
+P2600_ALL = ROOT / "out" / "wikidata" / "p2600-all.tsv"
+
+#: ⛔ **A person the zipper put on a Geni profile that ALREADY HAS AN ITEM is not created.**
+#: Decided when asked, 2026-09-24: *"Skip them; add P2889 instead"*. The intentional-duplicates
+#: ruling was made when the bridge reached 11 people and nothing else could tell who a
+#: FamilySearch person was; the zipper now pairs thousands, and minting a second item for a
+#: person whose item we can name is a duplicate made on purpose for no one. The item takes
+#: `P2889` instead -- which also grows the bridge, since the next bridge run finds it.
+#: Capped per run like `MANUAL_P2600_PER_RUN`: an identifier onto an existing item is the same
+#: shape of edit, and the universe gate applies to it as to every edit.
+P2889_ADD_CAP = 40
+
 
 def garborg():
     """The daily builder, imported for its choke points rather than copied.
@@ -435,6 +448,36 @@ def read_universe():
     return set(data.get("universe") or ()) | set(data.get("one_step") or ())
 
 
+def read_zipped_items(G):
+    """`fs_id -> qid` for every zipper pair whose Geni profile has an item.
+
+    The Geni side is `build-garborg-day.ledger()` -- our ledger, the hand identifications and
+    the judgments -- over `p2600-all.tsv`, the live `P2600` roster. A Geni id that two items
+    both claim is left out: that is Wikidata's duplicate, and choosing one is not ours to do.
+    """
+    geni_q, twice = {}, set()
+    if P2600_ALL.exists():
+        with open(P2600_ALL, encoding="utf-8") as fh:
+            for line in fh:
+                q, _, g = line.rstrip("\n").partition("\t")
+                if not (q.startswith("Q") and g):
+                    continue
+                if g in geni_q and geni_q[g] != q:
+                    twice.add(g)
+                geni_q[g] = q
+    for g in twice:
+        geni_q.pop(g, None)
+    geni_q.update(G.ledger())
+    out = {}
+    if ZIPPER_PAIRS.exists():
+        with open(ZIPPER_PAIRS, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                fs, g = (row.get("fs_id") or "").strip(), (row.get("geni_id") or "").strip()
+                if fs and geni_q.get(g):
+                    out[fs] = geni_q[g]
+    return out
+
+
 def build(args):
     G = garborg()
     table = G.translit()
@@ -447,6 +490,7 @@ def build(args):
 
     people, father, mother, spouses, children = read_corpus(paths)
     bridge, universe = read_bridge(), read_universe()
+    zipped = {fs: q for fs, q in read_zipped_items(G).items() if fs not in bridge}
 
     # `fs_id` is the primary key on this side, the way the Geni profile id is on the other.
     # Two exports of overlapping trees hold the same person twice and the first record wins,
@@ -458,8 +502,11 @@ def build(args):
         if fs and fs not in by_fs:
             by_fs[fs] = rec
             order.append(fs)
-    qid_of_key = {key: bridge[rec["fs_id"]]
-                  for key, rec in people.items() if bridge.get(rec["fs_id"])}
+    # A zipped person's item is as good a link target as a bridged one: their relatives are
+    # created pointing at it rather than floating.
+    qid_of_key = {key: bridge.get(rec["fs_id"]) or zipped[rec["fs_id"]]
+                  for key, rec in people.items()
+                  if bridge.get(rec["fs_id"]) or zipped.get(rec["fs_id"])}
 
     lines, carried, created = [], [], 0
     lines += [
@@ -476,9 +523,26 @@ def build(args):
         "",
     ]
 
+    added = 0
+    for fs in order:
+        if fs not in zipped:
+            continue
+        q = zipped[fs]
+        if q in universe and added < P2889_ADD_CAP:
+            lines.append(f"#   {q}: the zipper put FamilySearch {fs} on this item's Geni "
+                         f"profile; the item takes the id instead of a duplicate")
+            lines.append(f'{q}\t{FS_PROP}\t"{fs}"')
+            added += 1
+    if added:
+        lines.append("")
+
     for fs in order:
         rec = by_fs[fs]
         key = rec["xref"]
+        if fs in zipped:
+            carried.append((fs, "", f"the zipper put them on an existing item: {zipped[fs]}, "
+                                    f"not created"))
+            continue
         if fs in bridge:
             carried.append((fs, "", f"already on Wikidata as {bridge[fs]}: takes "
                                     f"statements, not a creation"))
@@ -619,6 +683,8 @@ def build(args):
     reasons = collections.Counter(r.split(":")[0] for _f, _l, r in carried)
     print(f"  {len(by_fs):,} distinct FamilySearch people over {len(paths)} file(s)")
     print(f"  {created:,} CREATE blocks")
+    print(f"  {len(zipped):,} zipper pairs already on an item; {added:,} take {FS_PROP} this run "
+          f"(cap {P2889_ADD_CAP}, universe-gated)")
     print(f"  {collided:,} descriptions collided and took their FamilySearch id")
     print(f"  {len(orphaned):,} orphaned creations dropped by the post-pass")
     print(f"  {len(carried):,} carried forward, not created:")

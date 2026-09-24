@@ -25,9 +25,6 @@ The zipper itself landed 2026-09-24 (4,866 pairs; the devlog has it). What is le
 - **Confirm the first `tree.yml` run with the FamilySearch step goes green** and that
   `exports/familysearch/PFR5-LDS-*.ged` comes back with `GF2B-NKG` on
   `@I6000000178279770847@`. Dispatch it once the pipeline is not running.
-- **`build-familysearch-day.py` still reads only the bridge.** Should it read the zipper pairs
-  too, so a person the zipper put on a Geni profile whose item exists is not created again? The
-  FamilySearch intentional-duplicates ruling says duplicates are allowed there -- NEEDS-DECISION.
 
 ## ⛔ GENI MORATORIUM — NO CONTACT OF ANY KIND UNTIL AT LEAST 2026-10-21
 

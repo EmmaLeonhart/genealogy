@@ -46710,3 +46710,13 @@ the anchor's is dropped. **421 cards** at first build. The FamilySearch side com
 `familysearch.org/tree/person/details/<id>`. Verdicts land in `emma-judgments.tsv` with the
 `fs_id` in `qid`; `zipper-join.py --familysearch` now reads the `SAME` ones back as anchors.
 Built by `review-decks.yml`, published at https://claude.ai/artifact/93GL9DBmVErTnBxfGsru3j.
+
+## 2026-09-24 — the FamilySearch batch reuses the items the zipper found
+
+Decided when asked: *"Skip them; add P2889 instead."* `build-familysearch-day.py` read only the
+bridge (11 people); it now also reads `familysearch-zipper-pairs.tsv` and, through
+`build-garborg-day.ledger()` over `p2600-all.tsv`, finds which of those Geni profiles already
+have an item. Measured on today's inputs: **1,247 FamilySearch people are not created a second
+time**. Their items take `P2889` instead (universe-gated, `P2889_ADD_CAP` 40 a run, like the
+`P2600` additions) and serve as link targets for their relatives. A Geni id two items both
+claim is left out. The NEEDS-DECISION queue item is deleted.
