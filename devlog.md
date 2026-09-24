@@ -47029,3 +47029,26 @@ Norheim, `Q141533323` Guri Rasmusdatter Helland, `Q141532509` Anne Persdatter Ho
 after the label cap and outside its `done` ledger -- the ledger is what sends an edit once and
 never again -- so a row stops only when Wikidata holds it. No `Amul` of the broken value is kept;
 the batch test accepts the forced list as its own evidence.
+
+## 2026-09-24 — how long the ancestor rings have left
+
+Asked: *"for the ancestor rings, what is the highest path up"*, against an estimate of about
+sixty days at most. The ring creates one generation per run and walks straight through ancestors
+who already hold an item, so the runs left for a seed are the most item-less people on any
+ancestor path above it (from `derived-family`, with items from `garborg-qids.tsv` and
+`p2600-all.tsv`):
+
+    Robert Chester Wilson Ettinger   Q714044      93    <- the longest by far
+    Hans Eivind Garborg              Q141168827   49
+    Inger Axelsdatter Guntersberg    Q141493478   35
+    Olfvir / Olver Romer             Q141450322   35
+    Elsebe Hartniksdatter Rømer      Q141529420   35
+    Torgeir Ingemundsson                          31
+    Hans Bertil Frisk                Q141223733    5
+    Margareta Jöransdotter (Bureus)  Q141523581    2
+    Saint William of Gellone                       1
+
+**93 runs until every ring is finished** -- past sixty, and only because of Ettinger. His line is
+101 generations in our tree, 93 of them without an item: Tzvi Hirsch Ashkenazi (1658), the
+Babylonian exilarchs (David ben Zakkai 960, Mar Zutra II 488, Nechemya ben Nathan 250) back to
+Arnan ben Rafaya (-372). Without the Ettinger seed the rings finish in 49 runs (Garborg).
