@@ -46680,3 +46680,4 @@ from pick-one and no Tanba QID remains in the batch, either half or `out/site/in
 decks are republished to their three artifacts. The zipper-deck session-start step ran (no new
 verdicts in any `decisions/all`). CI is dispatched on the recomposed tip; reading it is the
 GET CI GREEN item, where the handoff's CI note now lives. Section deleted.
+Queue bullet on `CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* lacking the timeout-kill vs supersede distinction deleted: the section already carries it (*"BUT `cancelled` IS TWO DIFFERENT EVENTS"*, duration tells them apart).
