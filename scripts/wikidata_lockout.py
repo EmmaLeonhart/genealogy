@@ -217,8 +217,8 @@ def drop_clan_labels(edits, today: datetime.date | None = None):
 #: Wikidata:Administrators' noticeboard then there will be no edits ever ... if there is then it
 #: does not do anything at all. No updating quickstatements no editing at all."* Read live on
 #: every run, so it lifts itself when the thread is archived off the page and returns if one is
-#: opened again. Checked by the sender's live path, the `wikidata-edits` gate, and the scheduled
-#: and push-triggered `pipeline` and `daily-batch-email` runs. **Fails CLOSED**: a page that
+#: opened again. Checked by the sender's live path, the `wikidata-edits` gate, and every
+#: `pipeline` and `daily-batch-email` run -- no event and no `force` bypasses it. **Fails CLOSED**: a page that
 #: cannot be read is treated as a page that mentions it.
 NOTICEBOARD = "Wikidata:Administrators' noticeboard"
 NOTICEBOARD_MARK = "日巫女"

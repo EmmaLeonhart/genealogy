@@ -16,15 +16,16 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 Ruled 2026-09-24, replacing the two-week hold: *"as long as there is any mention of 日巫女 at
 Wikidata:Administrators' noticeboard then there will be no edits ever ... No updating
 quickstatements no editing at all."* Read live on every run and fails closed:
-`wikidata-edits.yml` gate, `pipeline.yml` gate (schedule and push), `daily-batch-email.yml`, and
+`wikidata-edits.yml` gate, `pipeline.yml` gate (every event), `daily-batch-email.yml`, and
 the sender's live path (`scripts/wikidata_lockout.py` § NOTICEBOARD). **No cron job runs for a
 week**: `wikidata-edits`, `pipeline`, `ci`, `daily-batch-email`, `pages`, `tree`, `review-decks`
 stay DISABLED in GitHub until 2026-10-01; after that `gh workflow enable <file>` and the
-noticeboard gate governs. The one exception is `quickstatements-once.yml`: a single compose with
-no edits at 2026-09-25 21:41 UTC. *"This is indication I was editing too aggressively but it was
-mostly a quickstatements issue of the tool not being throttled correctly."*
+noticeboard gate governs. **No exception, no one-off run**: ruled the same evening, *"no run at
+all only runs of even generations of quickstatements happen only after the string is not present
+on that page"* -- the gate in `pipeline.yml` stops every event, dispatch and `force` included.
+*"This is indication I was editing too aggressively but it was mostly a quickstatements issue of
+the tool not being throttled correctly."*
 
-- **Delete `.github/workflows/quickstatements-once.yml`** once its 2026-09-25 run has happened.
 - **Re-enable the seven workflows on 2026-10-01** (`gh workflow enable <file>`).
 
 ## Now

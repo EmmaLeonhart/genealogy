@@ -103,22 +103,19 @@ jobs:
       # which the gate cannot see. Gating pushes on contributions would reproduce exactly the failure
       # of 2026-09-03, where three scheduled runs skipped and the site served a batch from the
       # night before while every run showed green. "All the way" means the gate does not stop it.
-      # ⛔ **WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, THE AUTOMATIC RUNS DO NOTHING.**
-      # Ruled 2026-09-24: *"No updating quickstatements no editing at all."* It gates the
-      # schedule and push, the runs nobody pressed; a dispatch or a call (the one-shot in
-      # `quickstatements-once.yml`, the redo button) composes, and the send is gated again in
-      # `wikidata-edits.yml`. Fails closed: unreadable == held.
+      # ⛔ **WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, NO RUN COMPOSES ANYTHING.**
+      # Ruled 2026-09-24: *"only runs of even generations of quickstatements happen only after
+      # the string is not present on that page."* Every event -- schedule, push, dispatch, call,
+      # `force` included; nothing bypasses it. Fails closed: unreadable == held.
       - id: check
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "push" ]; then
-            page=$(curl -fsSL --retry 3 --max-time 60 \
-              -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
-              "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
-            if [ -z "$page" ] || grep -qF '日巫女' <<<"$page"; then
-              echo "HELD: the Administrators' noticeboard mentions 日巫女, or could not be read"
-              echo "run=false" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
+          page=$(curl -fsSL --retry 3 --max-time 60 \
+            -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
+            "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
+          if [ -z "$page" ] || grep -qF '日巫女' <<<"$page"; then
+            echo "HELD: the Administrators' noticeboard mentions 日巫女, or could not be read"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
           if [ "${{ inputs.force }}" = "true" ] || [ "${{ github.event_name }}" = "push" ]; then
             echo "forced: event=${{ github.event_name }} force=${{ inputs.force }}"
