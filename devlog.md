@@ -46979,3 +46979,17 @@ particle (`Hugues I d'Amboise`, `Louis II de Lorraine`). A letter that cannot be
 **`IV` and `Of`: removal was ruled, and cannot go out through the batch.** All 13 bearers
 (`Q473500`, `Q1521994`, `Q1597828` ... and `Q18748299`, `Q5920901` on `Of`) are outside the
 universe, and every edit is gated on it.
+
+**`IV` and `Of`, ruled: a report for hand edits.** `reports/wikidata-remove-iv-of-p735.qs` holds
+the 13 removals, ready to paste and outside the automatic batch, so the universe gate stays
+absolute. `of` joined the not-a-name words so `Of` cannot be minted again; `IV` already could
+not be.
+
+**And only a real marker arms the suppression.** Adding `of` showed the rest of the loss:
+`Johan Of Berg` lost `Johan` for the same reason `Lars W` had -- any `unknown` token armed a
+rule written for `NN Anna`. It now fires on the unknown-person marker vocabulary alone (`NN`,
+`Unknown`, `Private`, `okänd` ...), and after a connector word (`der`, `dit`, `the`, `genannt`)
+the rest of `GIVN` is an epithet or alias, never a given name, so keeping `Heinrich` does not
+mint `Gute`. Final census: **2,151** people show a "loss", and every one checked is a quoted
+epithet or bracketed alternate (`"the Ingenious"`, `'the Fair'`, `(Hinrich)`) -- not a given
+name. From **31,401** people losing a real given name to none.

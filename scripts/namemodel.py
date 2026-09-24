@@ -1951,6 +1951,7 @@ NOT_NAME_WORDS = frozenset("""
     und and et ou och og oder eller or
     the der die das den dem el la le lo los las les
     aka alias dit dite genannt called known nee born
+    of
 """.split())
 
 
@@ -2830,8 +2831,16 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # d'Amboise` lost `Hugues` -- for **31,401 people**, 1,916 of them with an item. The token
     # itself stays `unknown`, so no initial or numeral is minted as a name; the given names
     # around it are simply no longer thrown away. `reports/middle-initials.csv` is the census.
+    #
+    # ⛔ **AND ONLY A REAL MARKER ARMS IT.** The same measurement's residue, 3,325 people, was
+    # connector words and epithets doing the same thing -- `der` in `Heinrich VI der Gute`,
+    # `dit` in `Robert VII dit Robin`, `Of` in `Johan Of Berg`. The rule exists for `NN Anna`
+    # and `Unknown Smith`: a token saying the person's name is not known. So it fires on the
+    # marker vocabulary, and every other `unknown` token is left out of the name without taking
+    # the given names with it.
     _has_marker = any(name_shape(t)[1] == "unknown" and not is_patronymic(t)
-                      and not _MARKER_EXEMPT.match(t) and not is_numeral(t)
+                      and (name_shape(t)[0].casefold() in UNKNOWN_MARKERS
+                           or name_shape(t)[0].casefold() in _unknown_markers())
                       for t in _givn_tokens)
 
     # ⛔ **A SINGLE LETTER AFTER A GIVEN NAME IS AN INITIAL, WHATEVER THE LETTER.** Ruled
@@ -2846,8 +2855,14 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     _has_surname = bool(_surn_first)
     _styled = _surn_first in PARTICLES or _surn_first.startswith(("d'", "d’"))
     ordinal = 0
+    # After a connector (`der Gute`, `dit Robin`, `genannt`, `the Younger`) the rest of `GIVN`
+    # is an epithet or an alias, not a given name -- counted before these were kept, so that
+    # keeping `Heinrich` does not mint `Gute` as a `P735`.
+    _after_connector = False
     for position, token in enumerate([] if is_description(raw_givn)
                                      else join_particles(_givn_tokens)):
+        if name_shape(token)[0].casefold() in NOT_NAME_WORDS:
+            _after_connector = True
         if position and _MARKER_EXEMPT.match(token) and not _has_marker:
             _roman = token.rstrip(".").upper() in "IVXLCDM"
             if not _roman or (_has_surname and (token.endswith(".") or not _styled)):
@@ -2876,6 +2891,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             # `Nicolaus Iohannis Johansson`, `Magnus Jonæ Uhr`, `Georgius Andreae Troninus`:
             # the Latin genitive stands where a middle name would and is not one.
             out.append((token, "patronymic", 0))
+        elif _after_connector:
+            out.append((token, "unknown", 0))
         elif not _has_marker:
             ordinal += 1
             out.append((token, "given", ordinal))

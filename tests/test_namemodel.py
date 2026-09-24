@@ -1481,3 +1481,19 @@ def test_an_initial_or_a_numeral_does_not_suppress_the_given_names(givn, surn, k
 def test_a_single_letter_after_a_given_name_is_an_initial(givn, surn, token, kind):
     got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn)}
     assert got[token] == kind
+
+
+@pytest.mark.parametrize("givn, surn, given, not_given", [
+    ("Johan Of", "Berg", "Johan", "Of"),
+    ("Heinrich VI der Gute", "", "Heinrich", "Gute"),     # an epithet is not a given name
+    ("Robert VII dit Robin", "", "Robert", "Robin"),      # nor is an alias after `dit`
+    ("NN Anna", "Berg", None, "Anna"),                     # a real marker still suppresses
+    ("Private Anna", "Berg", None, "Anna"),
+])
+def test_only_a_real_marker_suppresses_given_names(givn, surn, given, not_given):
+    """2026-09-24: connector words and epithets armed the marker rule meant for `NN`, and the
+    given names beside them were lost; after a connector, the rest of `GIVN` is not given."""
+    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn)}
+    if given:
+        assert got.get(given) == "given"
+    assert got.get(not_given) != "given"
