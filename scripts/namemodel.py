@@ -2834,9 +2834,26 @@ def classify_fields(givn: str, surn: str, nick: str = "",
                       and not _MARKER_EXEMPT.match(t) and not is_numeral(t)
                       for t in _givn_tokens)
 
+    # ⛔ **A SINGLE LETTER AFTER A GIVEN NAME IS AN INITIAL, WHATEVER THE LETTER.** Ruled
+    # 2026-09-24: `Carl I. Berg` has an initial `I.`, not the ordinal one. A person with a
+    # SURNAME is not a regnal name, so there a lone `I`/`V`/`X`/`L`/`C`/`D`/`M` is read as the
+    # initial it is; with no surname (`Robert VI`, `Bengt I.`) it stays the numeral.
+    # Multi-letter numerals (`II`, `IV`) are always numerals.
+    # A surname opening on a particle (`d'Amboise`, `de Lorraine`) is a territorial style, and
+    # there an undotted Roman letter is the ordinal: `Hugues I d'Amboise` is Hugh the First.
+    # A letter that cannot be a numeral at all (`Lars W`) is an initial with or without one.
+    _surn_first = ((surn or "").split() or [""])[0].casefold()
+    _has_surname = bool(_surn_first)
+    _styled = _surn_first in PARTICLES or _surn_first.startswith(("d'", "d’"))
     ordinal = 0
-    for token in ([] if is_description(raw_givn)
-                  else join_particles(_givn_tokens)):
+    for position, token in enumerate([] if is_description(raw_givn)
+                                     else join_particles(_givn_tokens)):
+        if position and _MARKER_EXEMPT.match(token) and not _has_marker:
+            _roman = token.rstrip(".").upper() in "IVXLCDM"
+            if not _roman or (_has_surname and (token.endswith(".") or not _styled)):
+                ordinal += 1
+                out.append((token, "given", ordinal))
+                continue
         # **`name_shape` runs on `GIVN` too.** It did not until 2026-08-31, so every marker
         # already in `UNKNOWN_MARKERS` became a `given` name when it sat in the given-name
         # field: `NN`, `Unknown`, `okänd` and `anonyma` each produced a `P735` proposal.

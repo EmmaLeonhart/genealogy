@@ -46968,3 +46968,14 @@ no longer arms it; the token stays `unknown`, so nothing new is minted. Re-measu
 people still lose a given name, now to other words in `GIVN` -- epithets, quoted nicknames,
 bracketed alternates. That, the roman-letter ambiguity, and the `IV` and `Of` given-name items
 created on 2026-09-13 stay in the queue as what the review left open.
+
+**Initials, ruled the same day: all of them, by position.** A single letter after a given name
+is an initial whatever the letter -- `Carl I. Berg` has the initial `I.` -- so it becomes a
+given-name item like `C.` in `John C. Smith` already did. A lone Roman letter stays the numeral
+only where the name is regnal: no surname (`Robert VI`, `Bengt I.`), or a surname opening on a
+particle (`Hugues I d'Amboise`, `Louis II de Lorraine`). A letter that cannot be a numeral
+(`Lars W`) is an initial either way; `II`, `IV` and longer are always numerals.
+
+**`IV` and `Of`: removal was ruled, and cannot go out through the batch.** All 13 bearers
+(`Q473500`, `Q1521994`, `Q1597828` ... and `Q18748299`, `Q5920901` on `Of`) are outside the
+universe, and every edit is gated on it.

@@ -1468,3 +1468,16 @@ def test_an_initial_or_a_numeral_does_not_suppress_the_given_names(givn, surn, k
         assert got.get(kept) == "given"
     if gone:
         assert gone not in got
+
+
+@pytest.mark.parametrize("givn, surn, token, kind", [
+    ("Carl I.", "Berg", "I.", "given"),          # ruled 2026-09-24: an initial by position
+    ("Anna M", "Olsdotter", "M", "given"),
+    ("Lars W", "", "W", "given"),                # cannot be a numeral: an initial regardless
+    ("Robert VI", "", "VI", "unknown"),          # a regnal name keeps its numeral
+    ("Hugues I", "d'Amboise", "I", "unknown"),   # a territorial style keeps its numeral
+    ("Karl II", "Berg", "II", "unknown"),        # a multi-letter numeral is always one
+])
+def test_a_single_letter_after_a_given_name_is_an_initial(givn, surn, token, kind):
+    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn)}
+    assert got[token] == kind
