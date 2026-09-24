@@ -46672,3 +46672,11 @@ corpus, which answers whether it fits. It then failed at step 16: one Wikidata `
 `refresh-created-name-items.py`, while pipeline run 1556 was hitting Wikidata too, stopped the
 batch composer. `genimerge.wikidata._http_fetch`, which 19 scripts call directly, now waits out a
 `429`/`503` (honouring `Retry-After`) instead of raising on the first one.
+
+## 2026-09-24 — the 2026-09-23 handoff is closed
+
+Pipeline run 1556 recomposed the batch and rebuilt all three decks; the J.C.F. Bach card is gone
+from pick-one and no Tanba QID remains in the batch, either half or `out/site/index.html`. The
+decks are republished to their three artifacts. The zipper-deck session-start step ran (no new
+verdicts in any `decisions/all`). CI is dispatched on the recomposed tip; reading it is the
+GET CI GREEN item, where the handoff's CI note now lives. Section deleted.
