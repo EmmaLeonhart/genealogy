@@ -1135,3 +1135,23 @@ def test_the_mul_consensus_puts_the_geni_form_in_an_alias_not_the_label():
         m = re.match(r'^Q\d+\tLmul\t"([^"]*)"', ln)
         if m:
             assert m.group(1).strip(), f"empty mul on an existing item: {ln}"
+
+
+@pytest.mark.parametrize("label, lang, ours", [
+    ("マリンの父", "ja", True),               # our phrase, no name yet: corrected
+    ("マリンの父アンドレアス", "ja", False),   # already carries the name: never twice
+    ("王氏の父", "ja", False),                 # kanji ja is Sinosphere: never touched
+    ("玛琳之父", "zh", True),
+    ("마린의 아버지", "ko", True),
+    ("Tora", "ja", False),
+])
+def test_the_cjk_half_of_the_relational_label_fix_touches_only_our_phrase(label, lang, ours):
+    """Owed since 2026-09-21: a CJK relational label gets the given name natively and LAST."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod._our_cjk_relational_phrase(label, lang) is ours

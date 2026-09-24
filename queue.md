@@ -19,13 +19,8 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   Andersdotter) on `@I6000000178279770847@`.
 - **CI green.** The fast lane's last 3 failures are `test_generated_inventories.py` naming files
   deleted in `f2e0082f8`; `pipeline.yml` regenerates both inventories. Once a pipeline run on a
-  sha after that deletion finishes, dispatch `ci.yml`; green on 3.10 and 3.13 closes it.
-- **CI slow lane.** `tests/test_gedcom_real_exports.py` failed on run `35714896690`, the only time
-  the slow lane has run. Read the failure and fix it.
-- **The CJK half of the relational labels already sent.** The Latin half is wired
-  (`_label_corrections`). A `ja`/`zh`/`ko` relational label needs the given name rendered
-  natively and placed LAST (`namemodel._DESCRIBE_TRAILS`); a kanji `ja` is Sinosphere and is
-  never touched.
+  sha after that deletion finishes, dispatch `ci.yml`; green on 3.10 and 3.13 closes it. The same dispatch runs the slow lane,
+  whose only failure (306 tiny-path files with duplicate records) `837d6d93e` already fixed.
 - **Sweep-parsed people have a display name and no `GIVN`/`SURN`.** `exports/sweep-parsed/`
   writes `1 NAME <Geni display name>` unsplit, so 208,043 people carry titles in the name
   (`…, Markgraf`) and get no name items. Split by form, never by position.

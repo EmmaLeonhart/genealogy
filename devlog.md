@@ -46766,3 +46766,18 @@ five sections each claiming to come first. The old file moved verbatim to
 is **Now** (in order), **Last** (placed there by Emma), and **Blocked on the Geni moratorium**,
 with no priority banners: the order is the priority. `audit-turns-recorded.py` now also reads
 `docs/queue-archive/`, so the directives quoted in the archive still count as recorded.
+
+## 2026-09-24 — the CJK half of the relational labels; the slow lane was already fixed
+
+**CJK relational labels.** `_label_corrections` put the given name onto the Latin relational
+labels already sent (`Mariet, wife of Matts Nilsson`) and skipped `ja`/`zh`/`ko`. It now does
+those too: the name rendered by `label_in` and placed LAST (`マリンの父アンドレアス`), all three
+moving together only when `ja` is our own phrase with a katakana name, so a kanji `ja` is never
+touched, and nothing when the name will not transliterate. The relation words moved out of
+`describe_all` to `CJK_RELATION`, one table for creation and correction. A parametrised test pins
+the detector.
+
+**The slow lane.** Its one failure on run `35714896690` was `test_record_xrefs_are_unique` on 306
+files in `exports/tiny-paths/`. `837d6d93e` had already collapsed the 1,638 duplicate `FAM`
+records, and all 20,292 files on main now hold none. The CI dispatch that closes the fast lane
+runs the slow lane too, so the item folded into that one.
