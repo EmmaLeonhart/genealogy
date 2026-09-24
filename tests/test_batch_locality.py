@@ -177,3 +177,20 @@ def test_the_picker_never_chooses_a_child_outside_the_universe():
     assert parent_of_outside not in chosen_parents, (
         "a child outside the edit universe loses its reciprocal to the locality filter, so the "
         "creation hung off it is an isolate the moment it is made")
+
+
+def test_a_stripped_item_takes_its_annotation_with_it(tmp_path):
+    """Reported 2026-09-24: the Izumo blocks. The strip removed the statements and left the
+    `#   Q… name: …` header and its `#   P…` continuations in every day file and on the site."""
+    path = tmp_path / "day.txt"
+    path.write_text("\n".join([
+        "#   Q135579407 Yasutaka 52 Izumo-kokuso: P22 father = Q1",
+        "#   P40 child = Q2",
+        "Q135579407\tP22\tQ1",
+        "#   Q5 Kept: P26 spouse = Q6",
+        "Q5\tP26\tQ6",
+    ]), encoding="utf-8")
+    check.strip(path, {"Q1", "Q5", "Q6"}, set())
+    text = path.read_text(encoding="utf-8")
+    assert "Izumo" not in text and "P40 child = Q2" not in text
+    assert "#   Q5 Kept" in text and "Q5\tP26\tQ6" in text

@@ -63,6 +63,8 @@ BATCHES = ("reports/wikidata-garborg-day.txt",
 
 SUBJECT = re.compile(r"^(Q\d+)\t")
 LABEL_EDIT = re.compile(r"^(Q\d+)\t[LAD](?:mul|en|ja|zh|ko)\t")
+#: `#   Q<item> <name>: ...` -- the header a backfill pass writes above an item's statements.
+ANNOTATION = re.compile(r"^#   (Q\d+) ")
 #: The Han ranges as ASCII escapes. `CLAUDE.md` § *Write a Han range as ASCII escapes* — the
 #: literal form ate the Hangul block and cost 5,338 Korean people.
 HAN = re.compile("[一-鿿㐀-䶿豈-﫿]")
@@ -134,6 +136,26 @@ def strip(path, allowed, kanji) -> int:
         if k and k.group(1) in kanji:
             dropped.append(k.group(1)); continue
         keep.append(line)
+    # ⛔ **AND A STRIPPED ITEM TAKES ITS ANNOTATION WITH IT.** Reported 2026-09-24, on the Izumo
+    # blocks: the backfill passes write `#   Q<item> <name>: P22 father = ...` above each item's
+    # statements, with `#   P40 child = ...` continuation lines under it, and this filter took
+    # the statements and left the comments -- 113 Izumo lines in every day file and on the site,
+    # describing edits that were never going out. An item none of whose statements survived
+    # loses its header and continuations; one that keeps a statement keeps its comments.
+    live = {m.group(1) for m in map(SUBJECT.match, keep) if m}
+    gone = set(dropped) - live
+    if gone:
+        kept, drop_block = [], False
+        for line in keep:
+            head = ANNOTATION.match(line)
+            if head:
+                drop_block = head.group(1) in gone
+            elif not line.startswith("#   P"):
+                drop_block = False
+            if drop_block:
+                continue
+            kept.append(line)
+        keep = kept
     # ⛔ **AND A STRIPPED LINE TAKES ITS ORPHANED CREATION WITH IT.** Ruled 2026-09-21 on three
     # live isolates: *"three isolated individuals were created."* `build-ancestor-creations.py`
     # emits a creation and exactly ONE relationship, the reciprocal `Q<child> P… LAST`. This

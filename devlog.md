@@ -46846,3 +46846,16 @@ id. Zipper: 26 anchors, 4,837 new pairs. Render: `PFR5-LDS` 16,427 people, 4,700
 id; `MBW7-P7H` 3,103, 162. `GF2B-NKG` Emma Olivia Andersdotter is `@I6000000178279770847@`, and
 the rebuilt tree holds her with both parents (the zipper's round-4 pairs), her husband Karl Anton
 and her daughter Elly -- the case that started this.
+
+## 2026-09-24 — the Izumo comments: a gated item left its annotations behind
+
+*"why the fuck are there all those Izumo things ... Did it get commented out and then the
+comments became persistent?"* Yes. The backfill passes write `#   Q<item> <name>: P22 father =
+...` above each item's statements, with `#   P40 child = ...` continuations, and
+`check-batch-locality.py --fix` deleted the statements of items outside the universe but kept the
+comments: 113 Izumo lines in every day file and on the Pages site, describing edits that were
+never sent. The strip now removes the annotation block of any item none of whose statements
+survived (the Tanba strip already did this). And the gate step moved ahead of the site snapshot
+in `pipeline.yml`: the site had been built before the strip ran, so it could show what the gate
+was about to remove. The next pipeline run writes clean files; the committed ones are not
+hand-edited.

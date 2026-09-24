@@ -525,6 +525,46 @@ jobs:
       - name: No Tanba line in any day file
         run: python scripts/strip_tanba_from_day_batch.py
 
+      # ⛔ **THE LOCALITY GATE, CHECKED ON THE WRITTEN BATCH, BEFORE ANYTHING PUBLISHES IT.**
+      # ⛔ **AND BEFORE THE SITE SNAPSHOT (moved 2026-09-24).** The site was built from the batch
+      # before this strip ran, so it could publish what the gate was about to remove.
+      #
+      #
+      # Added 2026-09-18, after nine `ja` labels were written onto Jan-1 entry points outside the
+      # universe -- Q135525010, Q135579354 and seven more -- and were reverted by hand one at a
+      # time. Behind them sat 936, 962 and 985 more non-local lines in the three day batches.
+      #
+      # **This step is here rather than only in `ci.yml` because the batch is published from this
+      # workflow.** The nine reached Wikidata through a QuickStatements PASTE off the published
+      # page, a route that never touches `wikidata-edit-run.py`, so a gate in the sender could not
+      # have stopped them and a test that runs on some other workflow's schedule is too late. If
+      # the batch composed in this run is bad, this run must fail before Pages serves it.
+      #
+      # `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS,
+      # NO EXCEPTIONS*, and § *THE KANJI SIGNAL DECIDES WHICH LABEL UNIVERSE A PERSON IS IN*.
+      - name: The batch may not touch anything outside the universe
+        env:
+          PYTHONPATH: src
+        # ⛔ STDLIB ONLY. The first version of this step ran pytest and failed with
+        # `No module named pytest` on run 35329948498 -- this workflow installs nothing.
+        # It failed CLOSED, which is right, but it had checked nothing: a gate that cannot
+        # run is not a gate, and a red tick nobody can read as evidence is worse than none.
+        # tests/test_batch_locality.py calls the same functions, so there is one
+        # implementation and two callers.
+        # ⛔ **`--fix` STRIPS BEFORE IT CHECKS, AND THAT IS THE POINT.** The composer already
+        # gates the file it writes -- and then the three universe-growth passes above `cat`
+        # their output onto all three day files, after the gate, ungated. On run 35398258982
+        # that put 7 items past it: `Q141497327` a name item the people-universe can never
+        # hold, and six strangers' items reached through `p2600-all.tsv`. The check then failed
+        # the run, so the batch was composed, refused and thrown away -- every day, which is why
+        # the three-ledger refactor has never once gone green.
+        #
+        # A check can only fail the run. Failing the run is the thing that has been stopping the
+        # batch from ever landing, so the same rule is applied as a filter at the last point
+        # that can see the whole file, and the check that follows passes on merit or fails for
+        # a reason that is not this one.
+        run: python scripts/check-batch-locality.py --fix
+
       - name: Refresh the committed site snapshot
         continue-on-error: true
         env:
@@ -588,43 +628,6 @@ jobs:
           git status --short | head -20
 
       # Repack before committing: the plain CSVs are gitignored and the `.gz` are what is tracked.
-      # ⛔ **THE LOCALITY GATE, CHECKED ON THE WRITTEN BATCH, BEFORE ANYTHING PUBLISHES IT.**
-      #
-      # Added 2026-09-18, after nine `ja` labels were written onto Jan-1 entry points outside the
-      # universe -- Q135525010, Q135579354 and seven more -- and were reverted by hand one at a
-      # time. Behind them sat 936, 962 and 985 more non-local lines in the three day batches.
-      #
-      # **This step is here rather than only in `ci.yml` because the batch is published from this
-      # workflow.** The nine reached Wikidata through a QuickStatements PASTE off the published
-      # page, a route that never touches `wikidata-edit-run.py`, so a gate in the sender could not
-      # have stopped them and a test that runs on some other workflow's schedule is too late. If
-      # the batch composed in this run is bad, this run must fail before Pages serves it.
-      #
-      # `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS,
-      # NO EXCEPTIONS*, and § *THE KANJI SIGNAL DECIDES WHICH LABEL UNIVERSE A PERSON IS IN*.
-      - name: The batch may not touch anything outside the universe
-        env:
-          PYTHONPATH: src
-        # ⛔ STDLIB ONLY. The first version of this step ran pytest and failed with
-        # `No module named pytest` on run 35329948498 -- this workflow installs nothing.
-        # It failed CLOSED, which is right, but it had checked nothing: a gate that cannot
-        # run is not a gate, and a red tick nobody can read as evidence is worse than none.
-        # tests/test_batch_locality.py calls the same functions, so there is one
-        # implementation and two callers.
-        # ⛔ **`--fix` STRIPS BEFORE IT CHECKS, AND THAT IS THE POINT.** The composer already
-        # gates the file it writes -- and then the three universe-growth passes above `cat`
-        # their output onto all three day files, after the gate, ungated. On run 35398258982
-        # that put 7 items past it: `Q141497327` a name item the people-universe can never
-        # hold, and six strangers' items reached through `p2600-all.tsv`. The check then failed
-        # the run, so the batch was composed, refused and thrown away -- every day, which is why
-        # the three-ledger refactor has never once gone green.
-        #
-        # A check can only fail the run. Failing the run is the thing that has been stopping the
-        # batch from ever landing, so the same rule is applied as a filter at the last point
-        # that can see the whole file, and the check that follows passes on merit or fails for
-        # a reason that is not this one.
-        run: python scripts/check-batch-locality.py --fix
-
       - name: Commit the rebuilt batch
         id: commit
         run: |
