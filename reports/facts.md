@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **1,816,537 people**, 
-of whom 73,564 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **2,198,766 people**, 
+of whom 86,764 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,813,216 | 99.8% |
-| occupation | 205,092 | 11.3% |
-| birth date | 1,185,765 | 65.3% |
+| sex | 2,194,295 | 99.8% |
+| occupation | 205,445 | 9.3% |
+| birth date | 1,332,720 | 60.6% |
 | birth place | 0 | 0.0% |
-| death date | 939,112 | 51.7% |
+| death date | 1,080,386 | 49.1% |
 | death place | 0 | 0.0% |
-| burial date | 115,055 | 6.3% |
+| burial date | 117,536 | 5.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,27 +48,27 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**1,777 date values**, 980 distinct, parsed to no year. They keep their raw
+**10,368 date values**, 7,779 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
-| `about 1300` | 24 |
+| `about 1670` | 40 |
+| `about 1650` | 35 |
+| `about 1660` | 30 |
+| `about 1680` | 28 |
+| `about 1700` | 27 |
+| `about 1665` | 26 |
 | `about 1250` | 24 |
+| `about 1300` | 24 |
+| `about 1630` | 23 |
+| `about 1685` | 23 |
 | `about 1280` | 21 |
 | `about 1320` | 20 |
-| `about 1350` | 18 |
-| `about 1340` | 18 |
-| `about 1290` | 18 |
-| `about 1330` | 16 |
-| `ABT` | 16 |
-| `about 1260` | 15 |
-| `about 1275` | 15 |
-| `about 1240` | 13 |
-| `about 1400` | 13 |
-| `about 1310` | 12 |
-| `about 1315` | 12 |
+| `about 1690` | 20 |
+| `about 1655` | 20 |
+| `about 1640` | 20 |
 
 `reports/impossible-years.md` has the full account of these: bare modifiers with
 no operand, and cosmological years in the hundreds of millions belonging to
