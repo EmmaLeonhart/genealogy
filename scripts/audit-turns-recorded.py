@@ -44,7 +44,8 @@ OUT = ROOT / "reports" / "unrecorded-instructions.tsv"
 
 #: Where the project writes down what has been said.
 RECORDS = [ROOT / "CLAUDE.md", ROOT / "queue.md", ROOT / "devlog.md",
-           ROOT / "name modelling.txt"]
+           ROOT / "name modelling.txt",
+           *sorted((ROOT / "docs" / "queue-archive").glob("*.md"))]
 
 DIRECTIVE = re.compile(
     r"\b(add (it )?to the (end of the )?queue|queue item|never|always|stop |don'?t |do not "

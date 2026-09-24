@@ -46752,3 +46752,17 @@ have an item. Measured on today's inputs: **1,247 FamilySearch people are not cr
 time**. Their items take `P2889` instead (universe-gated, `P2889_ADD_CAP` 40 a run, like the
 `P2600` additions) and serve as link targets for their relatives. A Geni id two items both
 claim is left out. The NEEDS-DECISION queue item is deleted.
+
+## 2026-09-24 — the queue rewritten as a list of work
+
+*"I really really think that the queue is garbage and not followable"* and *"a lot of stuff was
+made top priority and never done and that is why the crud accumulated. I just want you to get the
+actual work efficiently done."*
+
+826 lines held about a dozen open actions. The rest was rulings already in `CLAUDE.md` or
+superseded, the history of finished work, findings, and campaigns blocked by the moratorium, and
+five sections each claiming to come first. The old file moved verbatim to
+`docs/queue-archive/queue-before-2026-09-24-rewrite.md`; nothing was deleted. The new `queue.md`
+is **Now** (in order), **Last** (placed there by Emma), and **Blocked on the Geni moratorium**,
+with no priority banners: the order is the priority. `audit-turns-recorded.py` now also reads
+`docs/queue-archive/`, so the directives quoted in the archive still count as recorded.
