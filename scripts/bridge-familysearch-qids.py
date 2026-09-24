@@ -21,7 +21,7 @@ batches, and writes what came back.
 Writes `reports/familysearch-qid-bridge.tsv` — `fs_id`, `qid`, `geni_id`.
 
 Usage:
-    python scripts/bridge-familysearch-qids.py <namespaced.ged> [out.tsv]
+    python scripts/bridge-familysearch-qids.py [<download.ged> ...]   default: every gedcom/familysearch/*.ged
 """
 from __future__ import annotations
 
@@ -92,6 +92,27 @@ def query(ids: list[str]) -> dict[str, str]:
     return out
 
 
+def store_p2889() -> dict[str, str]:
+    """`{fs_id: qid}` for every item in the local store (`wikidata/items/`) carrying `P2889`.
+
+    The items this campaign already touched are in the store, and they are exactly the ones
+    most likely to carry an id we or someone before us published. One pass, no network.
+    """
+    import gzip
+    out = {}
+    for shard in sorted((ROOT / "wikidata" / "items").glob("items-*.jsonl.gz")):
+        with gzip.open(shard, "rt", encoding="utf-8") as fh:
+            for line in fh:
+                if '"P2889"' not in line:
+                    continue
+                e = json.loads(line)
+                for st in (e.get("claims") or {}).get("P2889", ()):
+                    v = (st.get("mainsnak") or {}).get("datavalue", {}).get("value")
+                    if isinstance(v, str):
+                        out.setdefault(v, e.get("id", ""))
+    return out
+
+
 def geni_by_qid() -> dict[str, str]:
     """QID -> geni id, from BOTH stores, the way `build-garborg-day.ledger` does.
 
@@ -126,30 +147,42 @@ def geni_by_qid() -> dict[str, str]:
 
 
 def main() -> int:
-    if len(sys.argv) < 2:
-        print(__doc__)
-        return 2
-    src = Path(sys.argv[1])
-    dst = Path(sys.argv[2]) if len(sys.argv) > 2 else OUT
+    # ⛔ **EVERY DOWNLOAD, INTO ONE BRIDGE.** It took one file and rewrote the bridge from it,
+    # so bridging the owner's tree would have erased Inger's eleven. With no argument it reads
+    # every raw download in `gedcom/familysearch/`, which is what `tree.yml` runs.
+    srcs = [Path(a) for a in sys.argv[1:]] or sorted(
+        p for p in (ROOT / "gedcom" / "familysearch").glob("*.ged") if "-test" not in p.stem)
+    dst = OUT
 
-    ids = fs_ids(src)
-    print(f"{len(ids):,} distinct FamilySearch ids in {src.name}")
+    ids = list(dict.fromkeys(i for src in srcs for i in fs_ids(src)))
+    print(f"{len(ids):,} distinct FamilySearch ids in {', '.join(s.name for s in srcs)}")
 
+    # ⛔ **A FAILED QUERY MUST NOT ERASE A KNOWN ANSWER.** On 2026-09-24 the query service
+    # answered every batch 429 (*"1 req / min ... during active wdqs outage"*) and the rewrite
+    # replaced a bridge of 11 with one of 0. What was resolved before is kept.
     found = {}
-    for i in range(0, len(ids), BATCH):
-        chunk = ids[i:i + BATCH]
+    if dst.exists():
+        with open(dst, encoding="utf-8", newline="") as fh:
+            found = {r["fs_id"]: r["qid"] for r in csv.DictReader(fh, delimiter="\t")
+                     if r.get("qid")}
+    # The local store first: every item we hold that carries `P2889`, offline, no rate limit.
+    found.update({fs: q for fs, q in store_p2889().items() if fs in set(ids)})
+    print(f"  {len(found):,} resolved from the previous bridge and the local store")
+
+    todo = [i for i in ids if i not in found]
+    for i in range(0, len(todo), BATCH):
+        chunk = todo[i:i + BATCH]
         try:
             got = query(chunk)
         except Exception as exc:                                        # noqa: BLE001
-            # A failed batch is reported and skipped rather than killing the run: a partial
-            # bridge is useful and the missing ids are simply unresolved, which is the same
-            # state they were in before.
-            print(f"  batch {i // BATCH + 1}: FAILED {exc}")
-            got = {}
+            # Reported and the rest skipped: a rate-limited service is not asked 100 more
+            # times, and the unasked ids are simply unresolved, the state they were in.
+            print(f"  batch {i // BATCH + 1}: FAILED {exc} -- stopping the live queries")
+            break
         found.update(got)
-        print(f"  {min(i + BATCH, len(ids))}/{len(ids)} asked, {len(found)} matched",
+        print(f"  {min(i + BATCH, len(todo))}/{len(todo)} asked live, {len(found)} matched",
               flush=True)
-        if i + BATCH < len(ids):
+        if i + BATCH < len(todo):
             time.sleep(PAUSE)
 
     geni = geni_by_qid()
