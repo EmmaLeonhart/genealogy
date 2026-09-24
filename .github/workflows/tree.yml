@@ -95,6 +95,18 @@ jobs:
       - name: Unpack the derived CSVs
         run: python scripts/pack-derived.py --unpack || echo "nothing to unpack; a full rebuild writes them"
 
+      # ⛔ THE ZIPPER DOES THE FAMILYSEARCH WORK, AND IT RUNS BEFORE THE MERGE (ruled 2026-09-24).
+      # Bridge -> zipper -> render, so the merge below reads a FamilySearch render keyed on the
+      # Geni ids this run found. The zipper reads the derived CSVs just unpacked -- the previous
+      # tree -- which is the same one-run lag every other derived input has.
+      - name: FamilySearch zipper
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/bridge-familysearch-qids.py
+          python scripts/zipper-join.py --familysearch
+          python scripts/render-familysearch-gedcom.py --all
+
       # One streaming pass over the shards -> a sqlite index of QID -> shard and Geni ID -> QID.
       # Offline; it talks to nothing. Measured here on 2026-09-03: **23 minutes, 142 MB, 2,426,152
       # items over 2,427 shards**, of which 516,595 carry a P2600. It is not committed because

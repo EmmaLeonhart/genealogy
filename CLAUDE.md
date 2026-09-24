@@ -205,6 +205,36 @@ push, and let the pipeline run it.
 08:07. The Pages site publishes the disjoint remainder for a person to paste. Nobody has to
 start it.
 
+## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
+
+Ruled 2026-09-24: *"We should be having the zipper do all of the familysearch stuff. I want
+familysearch zippering to be a specific thing that we do start with every session. Since
+familysearch zippering is a bit higher priority."* It needs no Geni, so the moratorium does not
+stop it, and it comes **before** the three decks below.
+
+**The bridge alone reached 11 people of 4,442.** An exact join through `P2889` and `P2600` needs
+an item carrying both ids, and almost none of the owner's ancestors' items do. So
+`Q141539855` Emma Olivia Andersdotter was in the FamilySearch tree and nowhere in ours, with her
+daughter anchored on both sides, because nothing walked from the daughter to the mother.
+`zipper-join.py --familysearch` walks it: 12 anchors, 25 rounds, **4,866 pairs**, and she is
+round 3.
+
+    CI, in tree.yml before the merge:
+      bridge-familysearch-qids.py        anchors: every item stating BOTH ids, one live query
+      zipper-join.py --familysearch      FamilySearch downloads against the synoptic tree
+      render-familysearch-gedcom.py --all  every paired person written on their Geni id
+
+    THE SESSION:
+      1. git pull; read reports/familysearch-zipper-pairs.tsv against the last session's count
+      2. work reports/familysearch-zipper-ambiguous.tsv -- the slots the zipper refuses to guess
+      3. then the three decks below
+
+**The FamilySearch side is keyed on `_FSFTID`, never on a file's own counter**, and it is read
+from the raw downloads in `gedcom/familysearch/`, never from the renders.
+**FamilySearch holds duplicates of its own** — two records, one person, the same parents
+(`GDQB-KJQ` and `PNMB-9FS` are both Anna Danielsdotter). A pair whose Wikidata item states the
+*other* FamilySearch id is that, not a zipper error: all 6 such disagreements on 2026-09-24 were.
+
 ## ⛔ AND EVERY SESSION STARTS WITH THE ZIPPER DECKS, THE SAME WAY
 
 Ruled 2026-09-23: *"I want to do zipper merge resolution right now and make it a constant start

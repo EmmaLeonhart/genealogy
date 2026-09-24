@@ -16,6 +16,25 @@ the live plan and was bloating the file. It is parked at
 `docs/queue-archive/geni-blocked-campaigns-2026-09.md` — same pattern as the 2026-09-15 archive —
 and must not be started under the Geni moratorium. Keep this file as **work only**.
 
+## ⛔ FAMILYSEARCH ZIPPERING — ABOVE EVERYTHING BELOW. Ruled 2026-09-24
+
+*"We should be having the zipper do all of the familysearch stuff ... familysearch zippering is a
+bit higher priority."* `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER* is the procedure.
+The zipper itself landed 2026-09-24 (4,866 pairs; the devlog has it). What is left:
+
+- **Confirm the first `tree.yml` run with the FamilySearch step goes green** and that
+  `exports/familysearch/PFR5-LDS-*.ged` comes back with `GF2B-NKG` on
+  `@I6000000178279770847@`. Dispatch it once the pipeline is not running.
+- **A FamilySearch deck for `reports/familysearch-zipper-ambiguous.tsv`** -- 1,351 slots, 1,214
+  of them children. The pick-one card is the shape (`N x 1` and `1 x N`); `genimerge.deck` is
+  QID-shaped, so the FamilySearch side needs its own relatives and dates from the download.
+  Published as a fourth artifact beside the three decks, verdicts into `emma-judgments.tsv`
+  with the `fs_id` in the `qid` column, and `zipper-join.py --familysearch` reads them back as
+  anchors.
+- **`build-familysearch-day.py` still reads only the bridge.** Should it read the zipper pairs
+  too, so a person the zipper put on a Geni profile whose item exists is not created again? The
+  FamilySearch intentional-duplicates ruling says duplicates are allowed there -- NEEDS-DECISION.
+
 ## ⛔ GENI MORATORIUM — NO CONTACT OF ANY KIND UNTIL AT LEAST 2026-10-21
 
 **Ruled 2026-09-21:** *"never touch geni again this moratorium is at least a month"*.

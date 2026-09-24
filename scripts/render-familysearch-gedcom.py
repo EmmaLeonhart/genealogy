@@ -62,6 +62,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "gedcom" / "familysearch"
 OUT_DIR = ROOT / "exports" / "familysearch"
 BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
+ZIPPER = ROOT / "reports" / "familysearch-zipper-pairs.tsv"
 
 #: The four record kinds `getmyancestors` emits, each mapped to the namespaced prefix. The
 #: letter pair is what makes the xref unparseable as a Geni id -- verified against
@@ -87,13 +88,21 @@ def clean(fs_id: str) -> str:
     return re.sub(r"[^0-9A-Za-z]", "", fs_id).upper()
 
 
-def load_bridge(path: Path = BRIDGE) -> dict[str, str]:
-    """`{fs_id: geni_id}` for every FamilySearch person the bridge resolves to a Geni id."""
-    if not path.exists():
-        return {}
-    with open(path, encoding="utf-8", newline="") as fh:
-        return {r["fs_id"]: r["geni_id"] for r in csv.DictReader(fh, delimiter="\t")
-                if r.get("fs_id") and r.get("geni_id")}
+def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER) -> dict[str, str]:
+    """`{fs_id: geni_id}` for every FamilySearch person the bridge OR THE ZIPPER puts on a Geni id.
+
+    ⛔ **THE ZIPPER DOES THE FAMILYSEARCH WORK. Ruled 2026-09-24.** The bridge on its own
+    reached 11 people of 4,442; `zipper-join.py --familysearch` walks from those anchors and
+    reached 4,866. The bridge wins a disagreement, because it is an identifier Wikidata states
+    and the zipper is an inference from position.
+    """
+    out = {}
+    for p, col in ((zipper, "geni_id"), (path, "geni_id")):
+        if p.exists():
+            with open(p, encoding="utf-8", newline="") as fh:
+                out.update({r["fs_id"]: r[col] for r in csv.DictReader(fh, delimiter="\t")
+                            if r.get("fs_id") and r.get(col)})
+    return out
 
 
 def rewrite(text: str, bridge: dict[str, str] | None = None,

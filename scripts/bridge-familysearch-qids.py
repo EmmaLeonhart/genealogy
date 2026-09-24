@@ -92,6 +92,33 @@ def query(ids: list[str]) -> dict[str, str]:
     return out
 
 
+def live_anchors() -> dict[str, tuple[str, str]]:
+    """`{fs_id: (qid, geni_id)}` for every item on Wikidata carrying BOTH `P2889` and `P2600`.
+
+    One query, ~13,000 rows in ~11 seconds, measured 2026-09-24. These are the zipper's anchors
+    and the local store cannot supply them: it predates the items this campaign creates, which
+    is how `Q141223907` Elly Olivia Frisk -- both ids stated -- bridged to nothing. Asking for
+    every `P2889` holder instead (34,920) runs past the service's timeout and returns a
+    silently TRUNCATED file, so the join is done on the server and only the pairs come back.
+    """
+    sparql = "SELECT ?item ?fs ?g WHERE { ?item wdt:P2889 ?fs ; wdt:P2600 ?g . }"
+    url = ENDPOINT + "?" + urllib.parse.urlencode({"query": sparql, "format": "json"})
+    req = urllib.request.Request(url, headers={"User-Agent": agent(),
+                                               "Accept": "application/sparql-results+json"})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as fh:
+            data = json.load(fh)
+    except Exception as exc:                                            # noqa: BLE001
+        print(f"  live anchors: FAILED {exc} -- carrying on with what is on disk")
+        return {}
+    out = {}
+    for row in data["results"]["bindings"]:
+        out.setdefault(row["fs"]["value"], (row["item"]["value"].rsplit("/", 1)[-1],
+                                            row["g"]["value"]))
+    print(f"  {len(out):,} items on Wikidata state both a FamilySearch and a Geni id")
+    return out
+
+
 def store_p2889() -> dict[str, str]:
     """`{fs_id: qid}` for every item in the local store (`wikidata/items/`) carrying `P2889`.
 
@@ -166,8 +193,11 @@ def main() -> int:
             found = {r["fs_id"]: r["qid"] for r in csv.DictReader(fh, delimiter="\t")
                      if r.get("qid")}
     # The local store first: every item we hold that carries `P2889`, offline, no rate limit.
-    found.update({fs: q for fs, q in store_p2889().items() if fs in set(ids)})
-    print(f"  {len(found):,} resolved from the previous bridge and the local store")
+    idset = set(ids)
+    found.update({fs: q for fs, q in store_p2889().items() if fs in idset})
+    live = {fs: qg for fs, qg in live_anchors().items() if fs in idset}
+    found.update({fs: q for fs, (q, _g) in live.items()})
+    print(f"  {len(found):,} resolved from the previous bridge, the local store and the live anchors")
 
     todo = [i for i in ids if i not in found]
     for i in range(0, len(todo), BATCH):
@@ -186,6 +216,8 @@ def main() -> int:
             time.sleep(PAUSE)
 
     geni = geni_by_qid()
+    for q, g in live.values():
+        geni.setdefault(q, g)
     rows = []
     for fs in ids:
         qid = found.get(fs, "")

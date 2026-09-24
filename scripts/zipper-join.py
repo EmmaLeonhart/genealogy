@@ -291,32 +291,20 @@ def by_name(left, right, our_name, their_name, inherited=frozenset()):
     return mutually_unique(edges)
 
 
-def main():
-    if not RELATIONS.exists():
-        sys.exit(f"missing {RELATIONS} - run scripts/extract-wikidata-relations.py first")
+def load_ours():
+    """Our side of every zipper: the synoptic tree's derived CSVs, keyed by Geni id.
 
-    theirs = {}
-    with open(RELATIONS, encoding="utf-8") as f:
-        rd = csv.DictReader(f, delimiter="\t")
-        for row in rd:
-            theirs[row["qid"]] = row
-    print(f"{len(theirs):,} Wikidata items with family relationships")
-
+    Names and dates feed the cascade ONLY. Nothing here is consulted for a solo proposal.
+    """
     ours = {}
     with open(ROOT / "reports" / "derived-family.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             ours[row["geni_id"]] = row
     print(f"{len(ours):,} people in our tree")
-
-    # Names and dates feed the cascade ONLY. Nothing here is consulted for a solo proposal.
-    our_name, their_name, our_year, their_year = {}, {}, {}, {}
+    our_name, our_year, our_sex = {}, {}, {}
     with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             our_name[row["geni_id"]] = row["label_en"] or row["label_mul"]
-    with open(ROOT / "out" / "wikidata" / "labels.tsv", encoding="utf-8") as f:
-        for row in csv.DictReader(f, delimiter="\t"):
-            their_name[row["qid"]] = (row["en"] or row["mul"] or row["no"]
-                                      or row["nb"] or row["sv"] or row["da"])
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             y = row.get("birth_date_year")
@@ -325,16 +313,13 @@ def main():
                     our_year[row["geni_id"]] = int(y)
                 except ValueError:
                     pass
-    if DATES.exists():
-        with open(DATES, encoding="utf-8") as f:
-            for row in csv.DictReader(f, delimiter="\t"):
-                if row["birth_year"]:
-                    their_year[row["qid"]] = int(row["birth_year"])
-    else:
-        print(f"  (no {DATES.name}; the date step of the cascade will be skipped - "
-              f"run scripts/extract-wikidata-dates.py)")
-    print(f"{len(our_year):,} of ours dated, {len(their_year):,} of theirs dated")
+            if row["sex"] in ("M", "F"):
+                our_sex[row["geni_id"]] = row["sex"]
+    print(f"{len(our_year):,} of ours dated, {len(our_sex):,} sexed")
+    return ours, our_name, our_year, our_sex
 
+
+def refuter(our_sex, their_sex):
     # **Sex REFUTES a pairing; it never supports one.** Roughly half of random pairs agree by
     # chance, so agreement is worth almost nothing -- but a disagreement is unambiguous in a
     # way a ten-year date gap is not. Two soft medieval dates can differ by a decade and still
@@ -359,11 +344,40 @@ def main():
     # Non-binary `P21` values are carried as raw QIDs by the extractor and are deliberately NOT
     # compared -- our `M`/`F` means something narrower, and treating `Q1052281` as a mismatch
     # would manufacture refutations against real people.
-    our_sex, their_sex = {}, {}
-    with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            if row["sex"] in ("M", "F"):
-                our_sex[row["geni_id"]] = row["sex"]
+    def sex_refutes(g, q):
+        a, b = our_sex.get(g), their_sex.get(q)
+        return bool(a and b and a != b)
+    return sex_refutes
+
+
+def main():
+    if "--familysearch" in sys.argv[1:]:
+        return main_familysearch()
+    if not RELATIONS.exists():
+        sys.exit(f"missing {RELATIONS} - run scripts/extract-wikidata-relations.py first")
+
+    theirs = {}
+    with open(RELATIONS, encoding="utf-8") as f:
+        rd = csv.DictReader(f, delimiter="	")
+        for row in rd:
+            theirs[row["qid"]] = row
+    print(f"{len(theirs):,} Wikidata items with family relationships")
+
+    ours, our_name, our_year, our_sex = load_ours()
+
+    their_name, their_year, their_sex = {}, {}, {}
+    with open(ROOT / "out" / "wikidata" / "labels.tsv", encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="	"):
+            their_name[row["qid"]] = (row["en"] or row["mul"] or row["no"]
+                                      or row["nb"] or row["sv"] or row["da"])
+    if DATES.exists():
+        with open(DATES, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="	"):
+                if row["birth_year"]:
+                    their_year[row["qid"]] = int(row["birth_year"])
+    else:
+        print(f"  (no {DATES.name}; the date step of the cascade will be skipped - "
+              f"run scripts/extract-wikidata-dates.py)")
     if SEXES.exists():
         with open(SEXES, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="	"):
@@ -372,19 +386,29 @@ def main():
     else:
         print(f"  (no {SEXES.name}; sex refutation OFF - "
               f"run scripts/extract-wikidata-sex.py)")
-    print(f"{len(our_sex):,} of ours sexed, {len(their_sex):,} of theirs sexed")
-
-    def sex_refutes(g, q):
-        a, b = our_sex.get(g), their_sex.get(q)
-        return bool(a and b and a != b)
+    print(f"{len(their_year):,} of theirs dated, {len(their_sex):,} sexed")
 
     # --- anchors: what Wikidata itself asserts ------------------------------------------
-    g2q, q2g = {}, {}
     stated_g, stated_q = collections.defaultdict(set), collections.defaultdict(set)
     for qid, row in theirs.items():
         for g in split(row.get("p2600")):
             stated_g[g].add(qid)
             stated_q[qid].add(g)
+    result = zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year,
+                       their_year, refuter(our_sex, their_sex))
+    write_outputs("zipper", "qid", *result)
+
+
+def zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year, their_year,
+              sex_refutes, max_rounds=MAX_ROUNDS):
+    """The rounds, for any two trees shaped like ours and like `relations.tsv`.
+
+    `ours` is keyed by Geni id with `father`/`mother`/`spouses`/`children` cells; `theirs` by
+    the other side's id with `p22`/`p25`/`p26`/`p40`. `stated_g`/`stated_q` are the identities
+    the other side ASSERTS -- they are the anchors where one-to-one, and they refute a proposal
+    that contradicts them. Wikidata passes its `P2600`s; FamilySearch passes its bridge.
+    """
+    g2q, q2g = {}, {}
     for g, qs in stated_g.items():
         if len(qs) == 1 and g in ours:
             q = next(iter(qs))
@@ -397,7 +421,7 @@ def main():
     conflicts, ambiguous, refuted_by_sex = [], [], []
     frontier = set(g2q)
 
-    for rnd in range(1, MAX_ROUNDS + 1):
+    for rnd in range(1, max_rounds + 1):
         proposed = collections.defaultdict(set)   # geni -> {qid}
         reverse = collections.defaultdict(set)    # qid -> {geni}
         seen_slots = 0
@@ -516,36 +540,42 @@ def main():
               f"{len(fresh):,} new pairs, {len(g2q):,} total")
         frontier = set(fresh)
 
-    out = ROOT / "reports" / "zipper-pairs.tsv"
+    return pairs, provenance, conflicts, ambiguous, refuted_by_sex
+
+
+def write_outputs(prefix, other, pairs, provenance, conflicts, ambiguous, refuted_by_sex):
+    """`reports/<prefix>-{pairs,conflicts,sex-refuted,ambiguous}.tsv`; `other` names the
+    column that holds the other side's id (`qid`, `fs_id`)."""
+    out = ROOT / "reports" / f"{prefix}-pairs.tsv"
     with open(out, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, delimiter="\t")
-        w.writerow(["round", "geni_id", "qid", "slot", "method", "from_geni", "from_qid",
+        w.writerow(["round", "geni_id", other, "slot", "method", "from_geni", f"from_{other}",
                     "evidence"])
         for g, (q, rnd) in sorted(pairs.items(), key=lambda kv: (kv[1][1], kv[0])):
             slot, method, fg, fq, ev = provenance.get((g, q), ("", "", "", "", ""))
             w.writerow([rnd, g, q, slot, method, fg, fq, ev])
 
     for name, rows, cols in (
-            ("zipper-conflicts.tsv", conflicts,
+            (f"{prefix}-conflicts.tsv", conflicts,
              ["round", "slot", "geni_id", "proposed_qid", "recorded_qid", "from_geni",
               "from_qid"]),
-            ("zipper-sex-refuted.tsv", refuted_by_sex,
+            (f"{prefix}-sex-refuted.tsv", refuted_by_sex,
              ["round", "slot", "method", "geni_id", "qid", "from_geni", "from_qid",
               "evidence"]),
-            ("zipper-ambiguous.tsv", ambiguous,
+            (f"{prefix}-ambiguous.tsv", ambiguous,
              ["round", "slot", "from_geni", "from_qid", "ours_unmatched",
               "theirs_unmatched"])):
         p = ROOT / "reports" / name
         with open(p, "w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=cols, delimiter="\t")
+            w = csv.DictWriter(f, fieldnames=[c.replace("qid", other) for c in cols],
+                               delimiter="\t")
             w.writeheader()
-            w.writerows(rows)
+            w.writerows({k.replace("qid", other): v for k, v in r.items()} for r in rows)
 
-    print(f"\n{len(pairs):,} NEW correspondences -> reports/zipper-pairs.tsv")
-    print(f"{len(conflicts):,} refuted by a recorded P2600 -> reports/zipper-conflicts.tsv")
-    print(f"{len(refuted_by_sex):,} refuted by P21 sex or gender -> "
-          f"reports/zipper-sex-refuted.tsv")
-    print(f"{len(ambiguous):,} slots too ambiguous to call -> reports/zipper-ambiguous.tsv")
+    print(f"\n{len(pairs):,} NEW correspondences -> reports/{prefix}-pairs.tsv")
+    print(f"{len(conflicts):,} refuted by a recorded id -> reports/{prefix}-conflicts.tsv")
+    print(f"{len(refuted_by_sex):,} refuted by sex -> reports/{prefix}-sex-refuted.tsv")
+    print(f"{len(ambiguous):,} slots too ambiguous to call -> reports/{prefix}-ambiguous.tsv")
     methods = collections.Counter(provenance[(g, q)][1] for g, (q, _r) in pairs.items()
                                   if (g, q) in provenance)
     print("\nhow each pair was reached - per the 2026-08-25 rule that the "
@@ -557,6 +587,100 @@ def main():
         print("\nwhere the ambiguity is - the hard case named in the design:")
         for slot, n in by_slot.most_common():
             print(f"   {n:>7}  {slot}")
+
+
+#: The raw `getmyancestors` downloads. The FamilySearch side of the zipper is read from these,
+#: never from the renders in `exports/familysearch/`, which are keyed by this run's output.
+FS_DIR = ROOT / "gedcom" / "familysearch"
+FS_BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
+
+#: Anchors no identifier on Wikidata states: a download's root is the person it was run on,
+#: and that person's Geni profile is known here without asking anybody.
+FS_ROOTS = {"PFR5-LDS": "6000000087535357291"}
+
+#: One round is one generation, and a download reaches twelve up and two down from its root,
+#: so the Wikidata run's eight would stop the walk a third of the way up. It ends on its own
+#: when a round finds nothing new; this is only the backstop.
+FS_MAX_ROUNDS = 40
+
+
+def load_familysearch():
+    """Every FamilySearch download as the other side of the zipper, keyed by `_FSFTID`.
+
+    Shaped like `relations.tsv` -- `p22`/`p25`/`p26`/`p40` -- so `zip_sides` walks it
+    unchanged. A person in two downloads is one person: the id is FamilySearch's own.
+    """
+    from genimerge.dates import parse_date                             # noqa: E402
+    from genimerge.gedcom import stream_file                           # noqa: E402
+
+    rel = collections.defaultdict(lambda: collections.defaultdict(set))
+    name, year, sex = {}, {}, {}
+    for path in sorted(FS_DIR.glob("*.ged")):
+        if "-test" in path.stem:
+            continue
+        fs_of, fams = {}, []
+        for r in stream_file(path):
+            if r.tag == "INDI":
+                fs = r.value_of("_FSFTID")
+                if not fs:
+                    continue
+                fs_of[r.xref] = fs
+                name.setdefault(fs, r.value_of("NAME").replace("/", " ").strip())
+                y = parse_date(r.path_value("BIRT", "DATE")).year
+                if y is not None:
+                    year.setdefault(fs, y)
+                if r.value_of("SEX") in ("M", "F"):
+                    sex.setdefault(fs, r.value_of("SEX"))
+            elif r.tag == "FAM":
+                fams.append(([c.value for c in r.all("HUSB")], [c.value for c in r.all("WIFE")],
+                             [c.value for c in r.all("CHIL")]))
+        for husb, wife, chil in fams:
+            h = [fs_of[x] for x in husb if x in fs_of]
+            w = [fs_of[x] for x in wife if x in fs_of]
+            c = [fs_of[x] for x in chil if x in fs_of]
+            for a in h + w:
+                rel[a]["p26"].update(x for x in h + w if x != a)
+                rel[a]["p40"].update(c)
+            for k in c:
+                rel[k]["p22"].update(h)
+                rel[k]["p25"].update(w)
+    theirs = {fs: {p: " | ".join(sorted(v)) for p, v in slots.items()}
+              for fs, slots in rel.items()}
+    print(f"{len(theirs):,} FamilySearch people with family relationships, "
+          f"{len(year):,} dated, {len(sex):,} sexed")
+    return theirs, name, year, sex
+
+
+def main_familysearch():
+    """`--familysearch`: the zipper between the FamilySearch downloads and the synoptic tree.
+
+    **Ruled 2026-09-24: the zipper does the FamilySearch work.** The bridge alone is an exact
+    join through `P2889` and `P2600`, and it reached **11** of 4,442 people: an item has to carry
+    both ids, and almost none of the owner's ancestors' items do. Emma Olivia Andersdotter
+    (`Q141539855`, `GF2B-NKG`) is the case that showed it -- her daughter is anchored on both
+    sides, and she was still nowhere, because nothing walked from the daughter to the mother.
+
+    Anchors are the bridge's `fs_id -> geni_id` rows and `FS_ROOTS`; the walk is `zip_sides`,
+    the same cascade and the same refusals as the Wikidata run. Writes
+    `reports/familysearch-zipper-{pairs,conflicts,sex-refuted,ambiguous}.tsv`, and
+    `scripts/render-familysearch-gedcom.py` puts every paired person on their Geni id.
+    """
+    theirs, their_name, their_year, their_sex = load_familysearch()
+    ours, our_name, our_year, our_sex = load_ours()
+
+    stated_g, stated_q = collections.defaultdict(set), collections.defaultdict(set)
+    anchors = dict(FS_ROOTS)
+    if FS_BRIDGE.exists():
+        with open(FS_BRIDGE, encoding="utf-8", newline="") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                if row.get("fs_id") and row.get("geni_id"):
+                    anchors.setdefault(row["fs_id"], row["geni_id"])
+    for fs, g in anchors.items():
+        stated_g[g].add(fs)
+        stated_q[fs].add(g)
+    result = zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year,
+                       their_year, refuter(our_sex, their_sex), FS_MAX_ROUNDS)
+    write_outputs("familysearch-zipper", "fs_id", *result)
 
 
 if __name__ == "__main__":
