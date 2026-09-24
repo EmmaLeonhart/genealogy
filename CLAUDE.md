@@ -217,6 +217,11 @@ does not stop it.
     3. publish each out/*-review.html as a claude.ai artifact, the same three URLs every session
     4. move on to the queue; do not wait for verdicts
 
+    ⛔ NOT WHILE A PIPELINE RUN IS IN PROGRESS. pipeline.yml rebuilds all three decks itself, so a
+    dispatched deck run pushes the same files under it: run 35937363940 did all its work, hit
+    the conflict in its commit step and hung 43 minutes on the partial-clone rebase until the
+    150-minute timeout killed it. If a pipeline run is going, its decks ARE the rebuild.
+
     parent    https://claude.ai/artifact/LKhTa5itp99KBXexTtY45Z
     family    https://claude.ai/artifact/8LrXG1u2QUamTFJ66Fayx3
     pick-one  https://claude.ai/artifact/AL1PD6ENiaKZbUST1ALUur
