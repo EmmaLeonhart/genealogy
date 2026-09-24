@@ -1,7 +1,7 @@
 # Leads: the descendants roster against the owner's ancestry
 
 - ancestors of the owner: **8,254** named, from the synoptic tree
-- descendants in the roster: **14,897**
+- descendants in the roster: **282,763**
 - **exact Geni id overlap: 0** — expected to be 0; anything here is a connection already known
 
 ## Shared name tokens
@@ -11,101 +11,101 @@ A token is >=4 characters, accent-folded, with titles and `NN` removed. Ranked b
 | token | ancestors | descendants | example ancestor | example descendant |
 |---|---|---|---|---|
 | `argyrosa` | 1 | 1 | NN Argyrosa | Elene Argyrosa (c.1050 - d.) |
-| `sibylla` | 1 | 1 | Suthen Sibylla | Sibylla of Armenia, Princess of Antioch  |
 | `eustachie` | 1 | 1 | Eustachie de Châtillon dame d'Yerres | Eustachie Olivier d'Agrain (1304 - d.) |
 | `toucy` | 1 | 1 | Constance de Toucy | Philippe de Toucy, II, Titular Prince of |
-| `jakub` | 1 | 1 | Jakub [? Kaszuba] Von GÜNTERSBERG | Jakub beg (Soltan Yaqub) Aq Qoyunlu |
-| `dana` | 1 | 1 | Dana Danpsdatter | Dana Khalil Aq Quyunlu |
-| `andrew` | 1 | 1 | Andrew I Árpád dynasty | Andrew Asen Shishman |
-| `mother` | 1 | 1 | NN Mother(S) "Friller" | N. mother of Tajlu Khanum Aq Qoyunlu |
-| `sister` | 1 | 1 | Sister | N. sister of Shah Ismail and spouse of O |
-| `jelena` | 1 | 1 | Jelena Arpad | Mara Jelena Tomašević (c.1447 - 1498) "M |
 | `pavia` | 1 | 1 | Pavia | Francesco Sforza, conte di Pavia MP (149 |
-| `reginald` | 1 | 1 | Reginald I of Ivrea count palatine of Bu | Reginald Le Turk (1515 - 1554) |
-| `pskov` | 1 | 1 | Olga of Pskov Grand Princess of Kyiv | False Dmitry III Prince of Pskov 1610–16 |
-| `рюрикович` | 1 | 1 | Iaroslav I Vladimirovich Рюрикович | False Dmitry I Иванович Рюрикович, Sover |
-| `aurelio` | 1 | 1 | Aurelio Chirino | Aurelio Fregoso |
 | `eastern` | 1 | 1 | Euphemia Świętopełkówna von Rügen Prince | Izabella Jagiellon, Queen consort of Eas |
 | `itier` | 1 | 1 | Itier d'Auvergne | "Guillaume" Itier GINESTOUS (de) (aft.15 |
-| `sybille` | 1 | 1 | Sybille de Bourgogne duchesse consort de | Sybille de Castellane |
-| `sicily` | 1 | 1 | Roger I of Hauteville the great count of | Emanuel Filibert of Savoy, viceroy of Si |
 | `rodez` | 1 | 1 | Ferreolus de Rodez | Catherine Countess of Armagnac and of Ro |
-| `prinsessa` | 1 | 1 | Agnes Jonsson Prinsessa av Norge | Isabella Vasa, Prinsessa (1564 - 1566) |
 | `garsia` | 1 | 1 | Garsia II Sanchez da Sanzoz | Garsia Settimo (c.1560 - d.) |
-| `irena` | 1 | 1 | Irena Komnena | Irena Castriota |
-| `herve` | 1 | 1 | Hervé I de Mortagne | Hervé Borré (1576 - 1634) |
 | `obizzo` | 1 | 1 | Oberto I Obizzo | Obizzo d'Este, bishop of Modena (1611 -  |
-| `napoli` | 1 | 1 | Gemma di Napoli | Elisabetha di Borbone, Principessa di Fr |
 | `lineage` | 1 | 1 | NN Probably in the lineage of Cearbhall  | Princess of Blood Lineage Marie Countess |
-| `verdun` | 1 | 1 | Wichburg de Verdun von Bayern Pfalzgräfi | Eric de Lorraine, évêque de Verdun (1576 |
-| `christopher` | 1 | 1 | Christopher Mitens | Christopher Vasa (1598 - 1598) |
-| `constance` | 1 | 1 | Constance de Toucy | Anna Catherine Constance Vasa (1619 - 16 |
-| `xvii` | 1 | 1 | Berenguer Ramon I de Barcelona XVII | Goffredo IV Grifeo, XVII. barone di Part |
-| `olivia` | 1 | 1 | Elly Olivia Frisk | Olivia Paternò Castello (c.1600 - d.) |
 | `ferreol` | 1 | 1 | Ferreol of Rome | Julie de Pontevès, dame de Saint Ferréol |
 | `langres` | 1 | 1 | Amadeus d'Ivrea Comte de Oscheret von Iv | Louis Marie Armand de Simiane, évêque de |
-| `herzogin` | 1 | 1 | Agnes Herzogin von Braunschweig-Lüneburg | Marie Charlotte de la Trémoïlle, Herzogi |
-| `luxemburg` | 1 | 1 | Giselbert I of Luxemburg Count of Salm a | Henri Léon de Luxemburg d'Albert |
-| `benedicta` | 1 | 1 | Benedicta Sunesdotter Folkungaätten | Benedicta Henrietta of the Palatinate (1 |
-| `chatarina` | 1 | 1 | Chatarina Johansdotter | Maria Chatarina de Alanis (1710 - d.) |
-| `master` | 1 | 1 | Philippe de Milly 7th Templar Grand Mast | Juan Antonio de Morales y Garrido, Maste |
-| `alvarez` | 1 | 1 | Bermudo Alvarez | Diego Alvarez de Bracamonte, III Señor d |
-| `furst` | 1 | 1 | Tugumir der Heveller Fürst | Ivan Александрович Fürst Bagration (1730 |
-| `laurentia` | 1 | 1 | Laurentia van Valckenier | Theresa Joanna Catharina Laurentia Bonni |
 | `mauleon` | 1 | 1 | Geoffroi le Fort Mauléon | Marguerite de Vincens de Mauléon |
-| `oswald` | 1 | 1 | Oswald the holy | Hendrik Oswald van La Tour-Auvergne (167 |
-| `vrouwe` | 1 | 1 | T. van Orléans-Eifelgau Vrouwe Di Mosezz | Vrouwe Anne Catherine de la Valette (165 |
-| `utrecht` | 1 | 1 | Immed IV Graf im Bistum Utrecht | William III King of the United Kingdom,  |
 | `lothaire` | 1 | 1 | Lothaire I | Charles Jean Lothaire de Lorraine Freihe |
 | `charmois` | 1 | 1 | Ehrenfried von Maasgau I, Count in the B | Nicolas René de Saint-Rémy, seigneur de  |
-| `pfalzgrafin` | 1 | 1 | Wichburg de Verdun von Bayern Pfalzgräfi | Charlotte von der Pfalz, Pfalzgräfin bei |
 | `anda` | 1 | 1 | Marit Jonsdatter Anda | Catalina de Anda (1719 - d.) |
-| `grande` | 1 | 1 | Thibault de Blois IV Le Grande | Isabel de Bettencourt, a Grande (c.1496  |
-| `zona` | 1 | 1 | Zona von Bellingen | Kazimiera Rakowska (Madeyska h. Poraj),  |
-| `deux` | 1 | 1 | Mathilde de France Reine Consort des Deu | Thérèse de Pontevès, Dame de Deux-Frères |
-| `romano` | 1 | 1 | Romano Bermúdez León | Bernardino Savelli, Nobile Romano (1653  |
-| `flavio` | 1 | 1 | Flávio Ataulfo Ataulfo de Coimbra | Flavio Ruffo (c.1612 - c.1656) |
-| `rollo` | 1 | 1 | Rollo «Gange-Rolv» Ragnvaldsson | Catherine Rollo MP |
-| `adrien` | 1 | 1 | Adrien | Adrien St-Aubin (c.1648 - 1702) "St Aubi |
-| `clement` | 1 | 1 | Clement Öndesson | Léopold Clément de Lorraine, prince héri |
-| `ruler` | 1 | 2 | Nordalah Ruler in Middle Friesland | Ivane - ruler of Dvin in 1225 |
-| `euphemia` | 2 | 1 | Euphemia Świętopełkówna von Rügen Prince | Euphemia of Armenia MP (b. - 1309) |
+| `lusatia` | 1 | 1 | Emnilda_Hodica Von Lusatia | Cecilie Countess Of Lusatia (1779 - 1781 |
+| `iniga` | 1 | 1 | Onneca or Íñiga Fortúnez Princess of Pam | Prinzessin Iniga von Thurn und Taxis (19 |
+| `d'italia` | 1 | 1 | Adalbert II Re d'Italia, Marchese d'Ivre | Marie-José de Belgique, regina consorte  |
+| `brochard` | 1 | 1 | Robert Brochard de Château-du-Loire I | Albertine Brochard de la Rochebrochard ( |
+| `zweden` | 1 | 1 | Moalda Digri Kinriksdatter Koningin van  | Carl Adolf van Zweden (1763 - 1844) |
+| `edvardsen` | 1 | 1 | Jacob Edvardsen | Harald Edvardsen Sandvik (1898 - d.) |
+| `halland` | 1 | 1 | Finn Arnesson Earl of Halland, Sweden | Hertig Bertil av Halland, Sveriges arvfu |
+| `vilborg` | 1 | 1 | Vilborg Ósvaldsdóttir | Vilborg Pétursdóttir (1879 - 1969) |
+| `dortea` | 1 | 1 | Dortea Børgersdatter Tolfsby | Alvilda Frederikke Dortea Jensen (1901 - |
+| `from` | 1 | 1 | Theodora Angelina Angelos from Philadelp | Tove Agnete Bækmark From (1923 - d.) |
+| `tostenson` | 1 | 1 | Alf Tostenson Frøiland | Pearl Juellea Tostenson |
+| `aquitaine` | 1 | 1 | William d'Aquitaine III Count of Poitou, | Gonzalo of Bourbon, Duke of Aquitaine MP |
+| `rise` | 1 | 1 | Tora Ranesdatter Rise | Richard Anthony Bethell, of Rise (1922 - |
+| `sigriður` | 1 | 1 | Sigríður Þorleifsdóttir | Þóra Sigríður Jónsdóttir |
+| `bjarni` | 1 | 1 | Bjarni Gautski Hrolfsson | Bjarni Dalsgaard |
+| `sigmundsdottir` | 1 | 1 | Tora Sigmundsdottir | Vígdis Sigmundsdóttir Sigmundsdóttir |
+| `ampurias` | 1 | 1 | Ermessenda D' Ampurias Comtesse de Carca | <private> de Medina Orleáns Bragança, Co |
+| `apulia` | 1 | 1 | Robert of Hauteville duke of Apulia & Ca | Prince Aimone, Duke of Apulia MP Paris,  |
+| `brussel` | 1 | 1 | Henry III of Leuven and Brussel | Princess Elisabeth, Duchess of Brabant M |
+| `eliassen` | 1 | 1 | Andreas Petrus Eliassen Hoknes | Annika Sofie Eliassen |
+| `willibirg` | 1 | 1 | Willibirg von Achalm | Freiin Willibirg Schilling von Canstatt  |
+| `blekinge` | 1 | 1 | Knut Valdemarsson Duke of Estland, Bleki | Princess Adrienne, Duchess of Blekinge M |
+| `presles` | 1 | 1 | Adeline Presles de Beaugency | Marie de Lierneux de Presles (1785 - 185 |
+| `endreson` | 1 | 1 | Tore Endreson Gjesteland | Carl Endreson Stølo (c.1721 - c.1752) |
+| `godefroi` | 1 | 1 | Godefroi | Charles Godefroi Sophie Jules Marie de R |
+| `karlson` | 1 | 1 | Anders Karlson Austrått | Salomon Carlsen Steinsvåg Karlson Hisjo  |
+| `olina` | 1 | 1 | Olina Salomonsdatter | Gjøa Olina Olsdatter Johannesdotter Myre |
+| `cesilie` | 1 | 1 | Cesilie Jacobsdatter Jørstad | Cesilie Karlsen (1871 - 1940) |
+| `olava` | 1 | 1 | Olava Allogia Eriksdottir | Petra Olava Pedersen (1877 - 1955) |
+| `johannesen` | 1 | 1 | Ola Johannesen Hodne II | Bernt Kornelius Johannesen (1902 - d.) |
+| `skretting` | 1 | 1 | Anna Eriksdatter Skretting | Anny Aagot Skretting (1914 - 1990) |
+| `danielsdatter` | 1 | 1 | Siri Danielsdatter Vik | Agnes Marie Danielsdatter Fylkesnes (191 |
+| `gjertsen` | 1 | 1 | Henrik Gjertsen Miltzow | Sofie Marie Elisabeth Gjertsen Hauge (19 |
+| `leiv` | 1 | 1 | Leiv Halvardson Bjørheim | Leiv Espen Espen Aalberg Bjørge |
+| `engela` | 1 | 1 | Engela | Engela Lange (c.1675 - 1737) |
+| `thordis` | 1 | 1 | Thórgerd Thórdis Sidu-Hallsdóttir | Thordis Hastrup (1871 - 1953) |
+| `jedvard` | 1 | 1 | Jedvard Thordsson Bonde | Friherre Carl Jedvard Carlsson Bonde (19 |
+| `torvi` | 1 | 1 | Thyra Torvi | Torvi Lindstedt (1922 - 2012) |
+| `mattsson` | 1 | 1 | Anders Mattsson | Marie-Louise Gerda Mattsson |
+| `hakansson` | 1 | 1 | Nicodemus Håkansson | Hulda Paulia Lilja ,Håkansson (1887 - 1 |
+| `gunnarsdotter` | 1 | 1 | Maret Gunnarsdotter | Anna-Maria Gunnarsdotter (1897 - d.) |
+| `jerichow` | 1 | 1 | NN von Jerichow | Ellen Merete Jerichow (1934 - 2013) |
+| `uppland` | 1 | 1 | Halvdan «the Black» Gudrødsson King in U | Carl Bildt MP Stockholm, Hedvig Eleonora |
+| `horka` | 1 | 1 | Horka | Erzsebet Gräfin Andrássy de Csik-Szent-K |
 
 ## Managing individuals in the roster
 
 ⛔ The strongest axis, and the one the first batch discarded. A manager who also appears on the owner's ancestry is a human link, not a name coincidence. **The tree-derived ancestors carry no manager**, so this half waits on the scraped ancestors list.
 
-- distinct managers: **808**
+- distinct managers: **18,728**
 
 | people | manager |
 |---|---|
-| 719 | George J. Homs |
-| 520 | Elsa Antonia Saldana |
-| 477 | Antonio Moncada di Paternò |
-| 438 | Peter Trefilov |
-| 386 | Ekaterina Svetlova |
-| 359 | Emily Damiano |
-| 342 | Ofir Friedman |
-| 338 | Judith "Judi" Elaine (McKee) Burns |
-| 293 | Juan Enrique Hurtado Rojas |
-| 291 | Henn Sarv |
-| 280 | Vakhtangi Karlovich Jikiya |
-| 263 | Edward Joseph Camiña-Cisneros |
-| 256 | Eugene Vladimirovich Tereschenko |
-| 247 | Jean-Claude Camilleri |
-| 245 | Bernice Refalo |
-| 231 | Homero |
-| 230 | Don Mario Gregorio |
-| 222 | Livio Scremin |
-| 208 | Marie-Hélène Andrée Allègre |
-| 173 | Ignacio José Francisco Narro Etchegaray |
-| 172 | Ben M. Angel, still catching up |
-| 164 | Marc Vitelli |
-| 152 | Francesco Maria Cicogna Mozzoni |
-| 135 | Gustavo Latorre (c) |
-| 128 | Roderick Mallia |
-| 124 | Enrique Maria Algorta Facio |
-| 120 | Sylvie Mochiri (Moshiri) |
-| 119 | FARKAS Mihály László |
-| 113 | Bjørn P. Brox |
-| 108 | Federico Garza |
+| 6358 | Roy Johansen |
+| 4402 | Leszek Mila |
+| 4402 | Jim Wile |
+| 3592 | Tommaso Valarani |
+| 3517 | Kurt Gammeltoft |
+| 3303 | Elle Kiiker |
+| 3264 | Peter Trefilov |
+| 3140 | Douglas John Nimmo |
+| 3082 | Jadra (Geni Curator) |
+| 2861 | Jose Rafael Escareal |
+| 2762 | Viktorija Ruškulienė Ⓒ |
+| 2597 | Philipp E. Kafka |
+| 2504 | Csaba Somlyódy |
+| 2312 | Balázs Ábry, dr. |
+| 2111 | David Prins |
+| 2017 | Günther Kipp |
+| 1953 | Юлия Виталиевна Прокоп |
+| 1939 | K. Wodyński (on hiatus) |
+| 1903 | George J. Homs |
+| 1902 | Marek (AB RhD-) Szypryt [Y-DNA: N1c1a1a1a] |
+| 1852 | Eric Dee Schaefer |
+| 1729 | Ann Ramsey © |
+| 1599 | José Javier |
+| 1544 | Pavel Astafiev |
+| 1499 | Michael Lawrence Rhodes |
+| 1475 | Molly Ruth Wheeler (Fugate) |
+| 1447 | Mariel Anita Luoma |
+| 1422 | Galina Lessel |
+| 1383 | Katherine Cuellar |
+| 1307 | Kuʻuipo Dillard ❤️ |

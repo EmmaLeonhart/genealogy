@@ -7,7 +7,7 @@ read history into the output instead of producing it: *"I feel like that's a bit
 misunderstanding, like you're doing more inferences than I'm expecting you to do. I'm looking
 for fuzzy text similarity search between two tables."*
 
-Left table  `reports/list-descendants-6000000227822546944.tsv`   14,897 scraped descendants
+Left table  the roster: list pages + `reports/sweep/*.tsv`       282,763 scraped descendants
 Right table `reports/owner-ancestors.tsv` + `derived-labels.csv`  8,254 ancestors of the owner
 
 **Blocking, because the full product is 123 million pairs.** Only pairs sharing at least one
@@ -63,15 +63,20 @@ def toks(cleaned: str) -> set[str]:
 
 
 def main() -> int:
+    # The roster is `match-descendants-to-ancestry.load_desc`, list pages plus the sweep --
+    # one loader, so the two halves of the research can never read two different rosters.
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "mdta", os.path.join(ROOT, "scripts", "match-descendants-to-ancestry.py"))
+    mdta = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mdta)
     left = []
-    p = os.path.join(ROOT, "reports", "list-descendants-6000000227822546944.tsv")
-    with io.open(p, encoding="utf-8", errors="replace", newline="") as fh:
-        for r in csv.DictReader(fh, delimiter="\t"):
-            g = (r.get("geni_id") or "").strip()
-            c = clean(r.get("name", ""))
-            if g and c:
-                left.append((g, r.get("name", "").strip(), c,
-                             re.sub(r"^\s*Managed By:\s*", "", (r.get("managed_by") or "").strip())))
+    for r in mdta.load_desc():
+        g = (r.get("geni_id") or "").strip()
+        c = clean(r.get("name", ""))
+        if g and c:
+            left.append((g, r.get("name", "").strip(), c,
+                         re.sub(r"^\s*Managed By:\s*", "", (r.get("managed_by") or "").strip())))
 
     want = {r["geni_id"] for r in csv.DictReader(
         io.open(os.path.join(ROOT, "reports", "owner-ancestors.tsv"), encoding="utf-8"),

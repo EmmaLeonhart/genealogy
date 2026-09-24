@@ -196,31 +196,25 @@ is done, so it lives here now and `meta-queue.md` is deleted.
 
 ## The order. Top to bottom.
 
-- **Then merge `exports/2026-09-19` again**, to pick up what it has gathered since.
-
-- **⛔ AND FROM THIS POINT ON, MERGE THAT BRANCH EVERY HOUR ON THE HOUR.** Set up before the
-  research starts, not after: *"at the end of this meta queue, like before the research starts,
-  you're going to have a thing that every hour on the hour merges in the content from that
-  descendants report based branch."*
-
-- **THEN THE RESEARCH: is there a lead into her ancestry among these descendants?**
-  - The material is the descendants roster being built on that branch — *"we're kind of
-    developing a very large roster of his descendants"* — plus the general 6N descendants.
-  - The other side is **her own ~8,000 ancestors**. If they are not already to hand, the
-    **ancestors report function** produces them: *"which is very similar and works the exact same
-    way, except for ancestors of a person."* Pick the form that matches most easily; that choice
-    is the point of using the report rather than something else.
-  - **⛔ FUZZY STRING MATCHING IS RIGHT HERE, AND IT USUALLY IS NOT.** Stated explicitly:
-    *"this is one of the few situations in which fuzzy string matching might actually be good."*
-    Looking for common given names, common surnames, **and common managing individuals**.
-  - **⛔ THE MANAGING INDIVIDUAL IS A LEAD AND IT WAS THROWN AWAY.** The original 6N descendants
-    batch omitted it because *"Claude decided to use its own discretion to omit the managing
-    individual, which is not a thing you're supposed to do."* It is signal, not metadata: two
-    people managed by one account is a connection. Anything regathered carries it.
+- **THE RESEARCH, MANAGER HALF — BLOCKED-ON-EXTERNAL: the Geni moratorium (>= 2026-10-21).**
+  The name halves are run over the whole roster (list pages + sweep, 282,763 people):
+  `reports/descendant-ancestry-leads.{md,csv}` (1,874 shared tokens, every one in the CSV) and
+  `reports/fuzzy-name-matches.csv` (943 pairs >= 0.82). What is left is **common managing
+  individuals**: the roster carries `managed_by` on nearly every row, the owner's ~8,254
+  ancestors carry none, because `owner-ancestors.tsv` is tree-derived. Only the **ancestors
+  report** off Geni supplies it (*"works the exact same way, except for ancestors of a person"*),
+  and that is Geni contact. When it lands, join managers across the two sides in
+  `match-descendants-to-ancestry.py`. *"two people managed by one account is a connection"*;
+  the first 6N batch dropped the manager and that is not to be repeated.
 
 ---
 
 ## Standing, while the above runs
+
+- **⛔ MERGE `exports/2026-09-19` EVERY HOUR ON THE HOUR — a session-only cron, so re-create it at the top of every session.** Set up before the
+  research starts, not after: *"at the end of this meta queue, like before the research starts,
+  you're going to have a thing that every hour on the hour merges in the content from that
+  descendants report based branch."*
 
 - **The path requester runs, and a drained batch is not a finished campaign.** Measured
   2026-09-20: **70,044 of 251,607 really attempted, 140,692 never** — about 18 more batches of

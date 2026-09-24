@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import glob
 import io
 import os
 import re
@@ -36,6 +37,8 @@ import unicodedata
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "reports", "descendant-ancestry-leads.md")
+#: Every shared token, not the top of it -- the markdown shows the rarest 60.
+OUT_CSV = os.path.join(ROOT, "reports", "descendant-ancestry-leads.csv")
 csv.field_size_limit(10 ** 9)
 
 #: Tokens that carry no identifying force. A surname match on one of these is noise, and they
@@ -68,9 +71,31 @@ def tokens(name: str) -> set[str]:
 
 
 def load_desc():
+    """The roster: the list pages AND the branch's sweep, one row per Geni id.
+
+    ⛔ **THE SWEEP IS THE ROSTER NOW.** The list pages held 14,897 people on 2026-09-20; the
+    sweep of `exports/2026-09-19` has since harvested 269,698 into `reports/sweep/*.tsv`, with
+    `managed_by_text` on nearly every row. Reading only the list file answered the question for
+    the first slice. The 209 focus people whose capture was the WAF's 403 page are skipped.
+    """
     p = os.path.join(ROOT, "reports", "list-descendants-6000000227822546944.tsv")
     with io.open(p, encoding="utf-8", errors="replace", newline="") as fh:
-        return [r for r in csv.DictReader(fh, delimiter="\t") if (r.get("geni_id") or "").strip()]
+        rows = {r["geni_id"].strip(): r for r in csv.DictReader(fh, delimiter="\t")
+                if (r.get("geni_id") or "").strip()}
+    bad = set()
+    partial = os.path.join(ROOT, "reports", "sweep-partial-incapsula-2026-09-21.txt")
+    if os.path.exists(partial):
+        bad = set(io.open(partial, encoding="utf-8").read().split())
+    for f in sorted(glob.glob(os.path.join(ROOT, "reports", "sweep", "*.tsv"))):
+        if re.sub(r"\D", "", os.path.basename(f)) in bad:
+            continue
+        with io.open(f, encoding="utf-8", errors="replace", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="\t"):
+                g = (r.get("geni_id") or "").strip()
+                if g and g not in rows:
+                    rows[g] = {"geni_id": g, "name": r.get("name_text") or "",
+                               "managed_by": r.get("managed_by_text") or ""}
+    return list(rows.values())
 
 
 def load_anc_names():
@@ -137,6 +162,13 @@ def main() -> int:
         fh.write(f"- distinct managers: **{len(mgr):,}**\n\n| people | manager |\n|---|---|\n")
         for m, n in mgr.most_common(30):
             fh.write(f"| {n} | {m} |\n")
+
+    with io.open(OUT_CSV, "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh, lineterminator="\n")
+        w.writerow(["token", "ancestors", "descendants", "ancestor_ids", "example_descendant_ids"])
+        for t, rs in sorted(hits.items(), key=lambda kv: (len(idx[kv[0]]) * len(kv[1]), kv[0])):
+            w.writerow([t, len(idx[t]), len(rs), " ".join(sorted(idx[t])),
+                        " ".join(sorted(r["geni_id"] for r in rs)[:20])])
 
     print(f"{os.path.relpath(OUT, ROOT)}")
     print(f"  ancestors {len(anc):,} | descendants {len(desc):,} | exact overlap {len(exact)}")
