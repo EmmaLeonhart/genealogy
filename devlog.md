@@ -46822,3 +46822,7 @@ them, leaving orphaned git processes. The conflict-marker check after the resolu
 path makes git lazily download every blob in the repository. It now greps only the resolved
 paths (already local, just checked out) under a 120 s timeout, in `pipeline.yml` and `tree.yml`.
 The conflicts themselves are ordinary: the tree rebuild and the pipeline both compose the batch.
+
+`exports/familysearch/` joins `sources.DERIVED_DIRS`: CI run `35985128623` measured the
+16,427-person PFR5-LDS render against `GENI_EXPORT_CAP`. It is our render of a FamilySearch
+download, corpus for the merge and not a Geni export, the same case as `sweep-parsed`.

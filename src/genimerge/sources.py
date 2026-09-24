@@ -114,7 +114,11 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #: `scripts/parse-sweep-trees.py` from the descendant reports -- 200,000-record shards that are
 #: corpus for the merge and are not a Geni export. CI run `35944408308` read one as an export of
 #: 200,000 against `GENI_EXPORT_CAP` 5,000, the `scraped-pages.ged` failure exactly.
-DERIVED_DIRS = (EXPORTS_DIR / "sweep-parsed",)
+#:
+#: **And `exports/familysearch/`**, `render-familysearch-gedcom.py`'s renders of FamilySearch
+#: downloads: corpus for the merge, and not a Geni export. CI run `35985128623` read the 16,427-
+#: person PFR5-LDS render against `GENI_EXPORT_CAP`.
+DERIVED_DIRS = (EXPORTS_DIR / "sweep-parsed", EXPORTS_DIR / "familysearch")
 DERIVED_DIR = EXPORTS_DIR / "0-scraped"
 
 
