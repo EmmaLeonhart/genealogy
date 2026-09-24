@@ -47080,3 +47080,16 @@ plain statements and never a ring person.
 The `-ae`/`-æ` genitive of a Latin `-as` name (`Jonas`, `Andreas`, `Matthias`, `Thomas` ...,
 `namemodel.LATIN_AS_NAMES`) is now a patronymic by form in both fields. Unlike `-i`, where the
 Finnish given name `Olavi` is real, no given name or surname has that shape; `Blæ` is untouched.
+
+## 2026-09-24 — the sender paces itself the way shintowiki-scripts does
+
+*"use the shintowiki-scripts rate limiting since it works really really well."* Taken from
+`modern-quickstatements/direct_daily_edits.py` there: a random **20-50 s** gap between edits
+(~1.7 a minute, far under Wikidata's throttle), a daily cap sized so it fits GitHub's hard
+six-hour job ceiling, and a stop at the first real rate-limit refusal. `wikidata-edit-run.py`
+slept a fixed 2 s -- about thirty edits a minute, which is what tripped the anti-abuse creation
+limit on 2026-09-23 and ended in `permissiondenied` on 2026-09-24. Now: `MIN_GAP, MAX_GAP = 20,
+50` between edit objects on a live run; `ratelimited`, `no-automatic-entity-id` or a 429 stops
+the run at once, the rest resuming tomorrow from the receipt; the scheduled limit is **500**
+(~4.9 h at the 35 s mean) and the job timeout 355 minutes. With the ration and file-order send
+above, the 500 are the name items, the 30 individuals and the whole ring first.

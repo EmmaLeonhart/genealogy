@@ -116,7 +116,9 @@ jobs:
     # The auto half is ~45 creations and several hundred objects, each a separate wbeditentity
     # call with a deliberate delay, plus whatever maxlag costs. 90 minutes covers it and still
     # fails a genuinely stuck run rather than hanging the queue all day.
-    timeout-minutes: 90
+    # ⛔ 355 since 2026-09-24: shintowiki's pacing, a random 20-50 s between edits, puts 500
+    # edits at ~4.9 h. GitHub kills a hosted job at 6 h whatever this says, so it sits under that.
+    timeout-minutes: 355
     steps:
       - name: Hold until the start date
         id: gate
@@ -223,7 +225,8 @@ jobs:
           today=$(date -u +%F)
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
             echo "batch=$DAILY_BATCH" >> "$GITHUB_OUTPUT"
-            echo "limit=1000" >> "$GITHUB_OUTPUT"
+            # 500, ruled 2026-09-24 with shintowiki's pacing: what fits in six hours at 20-50 s.
+            echo "limit=500" >> "$GITHUB_OUTPUT"
             # A THIRD OF THE BATCH is the autonomous share -- ruled 2026-09-14, "making 50%
             # more quickstatements and then segregating out a third of that to be run by
             # cicd". The caps went up 50% the same day, so the third CI/CD takes is exactly

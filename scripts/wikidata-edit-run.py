@@ -41,6 +41,7 @@ import math
 import os
 import re
 import sys
+import random
 import time
 import urllib.parse
 import urllib.request
@@ -65,6 +66,19 @@ API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 #: ceiling and a 100 limit, so two thirds of every day was handed to a person. Ruled that
 #: day: *"Run all 411"*. The ceiling exists to stop a runaway, not to ration the work.
 MAX_EDITS_PER_RUN = 1000
+
+#: ⛔ **PACING, TAKEN FROM `shintowiki-scripts`** (`modern-quickstatements/direct_daily_edits.py`),
+#: ruled 2026-09-24: *"use the shintowiki-scripts rate limiting since it works really really
+#: well"*. A random 20-50 s gap between edit objects on a live run -- ~1.7 a minute, far under
+#: Wikidata's throttle -- where this file slept a fixed 2 s and tripped the anti-abuse creation
+#: limit (2026-09-23), then `permissiondenied` on everything (2026-09-24, 0 edits). The same
+#: arithmetic sets the daily limit: at a 35 s mean, 500 edits is ~4.9 h, inside GitHub's hard
+#: six-hour job ceiling.
+MIN_GAP, MAX_GAP = 20, 50
+
+#: Wikidata saying *slow down*: stop the run at once rather than spend four more refusals
+#: finding out. Tomorrow's run resumes from the receipt.
+RATE_LIMITED = ("ratelimited", "no-automatic-entity-id", "429 Too Many Requests")
 
 #: A live run may only execute a batch that is committed and reviewable. Anything
 #: generated on the fly is a dry run at best.
@@ -1231,6 +1245,10 @@ def main() -> int:
             if "maxlag" not in str(exc):
                 consecutive += 1
             print(f"       {e['id']}  {e['kind']:<9} FAILED: {exc}", file=sys.stderr)
+            if any(tag in str(exc) for tag in RATE_LIMITED):
+                print("\nSTOPPED: Wikidata is rate-limiting this account; the rest waits for "
+                      "the next run.", file=sys.stderr)
+                break
             # A run where everything fails is not a batch with a bad edit in it; it
             # is a broken account, a changed API or a block. Grinding through the
             # remaining edits would turn one problem into a hundred log lines.
@@ -1274,6 +1292,8 @@ def main() -> int:
         if receipt:
             append_receipt(receipt, e, qid)
         print(f"  {done:>3}  {e['id']}  {e['kind']:<9} {qid}")
+        if args.live:
+            time.sleep(random.uniform(MIN_GAP, MAX_GAP))
 
     print(f"\n{done} edits executed")
     if duplicates:
