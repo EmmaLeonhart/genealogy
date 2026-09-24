@@ -83,9 +83,23 @@ MAX_OPTIONS = 8
 DATE_GATE = 15
 
 
-def _year(life):
-    v = (life or ("",))[0]
+def _year(life, i=0):
+    v = (list(life or ()) + ["", ""])[i]
     return int(v) if re.fullmatch(r"-?[0-9]+", str(v or "")) else None
+
+
+def _disjoint(a, b):
+    """One died before the other was born -- not the same person, whatever the birth gap.
+
+    The birth gate alone kept the J.C.F. Bach card (1732) against Leopold Augustus Bach,
+    born 1718 and **dead 1719**: 14 years sits inside `DATE_GATE`, and a man who died thirteen
+    years before our person was born cannot be him.
+    """
+    for x, y in ((a, b), (b, a)):
+        died, born = _year(x, 1), _year(y, 0)
+        if died is not None and born is not None and died < born:
+            return True
+    return False
 
 #: **How many cards reach the PAGE.** The census is whole and this is not a filter on it -- it
 #: is the size of the deck you open.
@@ -267,7 +281,9 @@ def main():
         # infants who died in 1713 and 1719.
         ay = _year(anchor["life"])
         kept = [o for o in options
-                if ay is None or _year(o["life"]) is None or abs(_year(o["life"]) - ay) <= DATE_GATE]
+                if not _disjoint(anchor["life"], o["life"])
+                and (ay is None or _year(o["life"]) is None
+                     or abs(_year(o["life"]) - ay) <= DATE_GATE)]
         if not kept:
             dated_out += 1
             continue
