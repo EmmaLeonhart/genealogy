@@ -1102,6 +1102,10 @@ def main() -> int:
         print(f"The date is scripts/wikidata_lockout.py START_DATE "
               f"({wikidata_lockout.START_DATE}).")
         return 0
+    clear, why = wikidata_lockout.noticeboard_clear()
+    if not clear:
+        print(f"\nHELD — no live run. {why}")
+        return 0
 
     if rel not in REVIEWED_BATCHES:
         raise SystemExit(

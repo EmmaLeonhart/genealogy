@@ -30,9 +30,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      # ⛔ Nothing is delivered while the Administrators' noticeboard mentions 日巫女 (ruled
+      # 2026-09-24, scripts/wikidata_lockout.py § NOTICEBOARD). Fails closed: unreadable == held.
+      - name: Noticeboard hold
+        id: hold
+        run: |
+          page=$(curl -fsSL --retry 3 --max-time 60 \
+            -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
+            "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
+          if [ -z "$page" ] || grep -qF '日巫女' <<<"$page"; then
+            echo "HELD: the Administrators' noticeboard mentions 日巫女, or could not be read"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
       # Only the batch and the carry-forward. This workflow rebuilds nothing: the batch is
       # committed, and rebuilding needs the corpus and 17 GB.
       - uses: actions/checkout@v4
+        if: steps.hold.outputs.go == 'true'
         with:
           filter: blob:none
           sparse-checkout: |
@@ -42,6 +58,7 @@ jobs:
 
       - name: What is in today's batch
         id: batch
+        if: steps.hold.outputs.go == 'true'
         run: |
           FILE=reports/wikidata-garborg-day.txt
           if [ ! -s "$FILE" ]; then echo "no batch file on disk" >&2; exit 1; fi
@@ -51,6 +68,7 @@ jobs:
           echo "carried=$(( $(wc -l < reports/garborg-carry-forward.tsv) - 1 ))" >> "$GITHUB_OUTPUT"
 
       - name: Open the issue
+        if: steps.hold.outputs.go == 'true'
         uses: actions/github-script@v7
         env:
           CREATES: ${{ steps.batch.outputs.creates }}

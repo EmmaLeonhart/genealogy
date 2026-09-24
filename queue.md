@@ -11,14 +11,21 @@ not an action goes in `docs/queue-archive/`. The file this replaced, verbatim, i
 it. Each session re-creates the hourly `exports/2026-09-19` merge cron and starts with
 `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER*.
 
-## ⛔ ALL EDITS AND ALL SCHEDULED JOBS ON HOLD, 2026-09-24 TO AT LEAST 2026-10-08
+## ⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女; NO CRON JOBS TO 2026-10-01
 
-Ruled 2026-09-24: *"kill all edits for 2 weeks ... there is an issue and it is excessive ... all
-cron job stuff on hold for 2 weeks, kill all jobs."* Done: edit run `36054472568` cancelled (0
-edits made); pipeline, CI and tree runs force-cancelled; `wikidata-edits`, `pipeline`, `ci`,
-`daily-batch-email`, `pages`, `tree`, `review-decks` DISABLED (`gh workflow enable <file>` undoes
-it); the session merge cron deleted. Nothing is sent, dispatched or re-enabled until Emma says so;
-the date is the floor, not the trigger. Offline repo work continues.
+Ruled 2026-09-24, replacing the two-week hold: *"as long as there is any mention of 日巫女 at
+Wikidata:Administrators' noticeboard then there will be no edits ever ... No updating
+quickstatements no editing at all."* Read live on every run and fails closed:
+`wikidata-edits.yml` gate, `pipeline.yml` gate (schedule and push), `daily-batch-email.yml`, and
+the sender's live path (`scripts/wikidata_lockout.py` § NOTICEBOARD). **No cron job runs for a
+week**: `wikidata-edits`, `pipeline`, `ci`, `daily-batch-email`, `pages`, `tree`, `review-decks`
+stay DISABLED in GitHub until 2026-10-01; after that `gh workflow enable <file>` and the
+noticeboard gate governs. The one exception is `quickstatements-once.yml`: a single compose with
+no edits at 2026-09-25 21:41 UTC. *"This is indication I was editing too aggressively but it was
+mostly a quickstatements issue of the tool not being throttled correctly."*
+
+- **Delete `.github/workflows/quickstatements-once.yml`** once its 2026-09-25 run has happened.
+- **Re-enable the seven workflows on 2026-10-01** (`gh workflow enable <file>`).
 
 ## Now
 

@@ -120,15 +120,29 @@ jobs:
     # edits at ~4.9 h. GitHub kills a hosted job at 6 h whatever this says, so it sits under that.
     timeout-minutes: 355
     steps:
+      # ⛔ AND WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, NOTHING RUNS -- not even
+      # a dry run. Ruled 2026-09-24; scripts/wikidata_lockout.py § NOTICEBOARD carries the ruling
+      # and the sender checks it again on its live path. Fails closed: unreadable == held.
       - name: Hold until the start date
         id: gate
         run: |
+          noticeboard_clear() {
+            local page
+            page=$(curl -fsSL --retry 3 --max-time 60 \
+              -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
+              "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
+            if [[ -z "$page" ]]; then echo "HELD (fail-closed): the noticeboard could not be read"; return 1; fi
+            if grep -qF '日巫女' <<<"$page"; then echo "HELD: the Administrators' noticeboard mentions 日巫女"; return 1; fi
+            echo "the Administrators' noticeboard does not mention 日巫女"
+          }
           today=$(date -u +%F)
           if [[ "$EDITS_HELD" == "yes" ]]; then
             echo "EDITS_HELD=yes - editing is held by hand, nothing runs (not even a dry run)"
             echo "go=false" >> "$GITHUB_OUTPUT"
           elif [[ "$today" < "$START_DATE" ]]; then
             echo "today=$today is before START_DATE=$START_DATE — nothing to do"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif ! noticeboard_clear; then
             echo "go=false" >> "$GITHUB_OUTPUT"
           else
             echo "go=true" >> "$GITHUB_OUTPUT"

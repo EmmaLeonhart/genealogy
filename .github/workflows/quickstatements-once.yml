@@ -1,0 +1,38 @@
+name: QuickStatements once
+
+# **ONE COMPOSE, NO EDITS, ONCE.** Ruled 2026-09-24, during the hold: *"If there is an option to
+# generate them but not attempt any edits, then I want it to be something that will auto-run in
+# 24 hours and then never again."* It calls `pipeline.yml` -- ledger refresh, compose, split,
+# Pages -- which sends nothing; the sender is `wikidata-edits.yml` and this does not call it.
+#
+# The cron names a day of the year, so it would come round again on 2027-09-25; the date check
+# is what makes it once. Delete this file after it has run.
+
+on:
+  schedule:
+    - cron: "41 21 25 9 *"
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+jobs:
+  once:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.day.outputs.go }}
+    steps:
+      - id: day
+        run: |
+          if [ "$(date -u +%F)" = "2026-09-25" ]; then echo "go=true" >> "$GITHUB_OUTPUT"
+          else echo "go=false" >> "$GITHUB_OUTPUT"; echo "not 2026-09-25 -- this ran once already"; fi
+
+  pipeline:
+    needs: once
+    if: needs.once.outputs.go == 'true'
+    uses: ./.github/workflows/pipeline.yml
+    with:
+      force: true
+    secrets: inherit

@@ -22,7 +22,8 @@ failing closed is a skipped run; the cost of failing open is editing through a s
 order. No network is involved any more, so the failure modes that used to reach
 here — no route, a 404, a truncated body — cannot.
 
-    python scripts/wikidata_lockout.py     # exit 0 = allowed, 1 = locked
+    python scripts/wikidata_lockout.py                  # exit 0 = allowed, 1 = locked
+    python scripts/wikidata_lockout.py --noticeboard    # exit 0 = no 日巫女 on the noticeboard
 """
 
 from __future__ import annotations
@@ -211,10 +212,46 @@ def drop_clan_labels(edits, today: datetime.date | None = None):
     return kept, dropped
 
 
+#: ⛔ **WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, NOTHING RUNS.** Ruled 2026-09-24,
+#: replacing the two-week hold: *"as long as there is any mention of 日巫女 at
+#: Wikidata:Administrators' noticeboard then there will be no edits ever ... if there is then it
+#: does not do anything at all. No updating quickstatements no editing at all."* Read live on
+#: every run, so it lifts itself when the thread is archived off the page and returns if one is
+#: opened again. Checked by the sender's live path, the `wikidata-edits` gate, and the scheduled
+#: and push-triggered `pipeline` and `daily-batch-email` runs. **Fails CLOSED**: a page that
+#: cannot be read is treated as a page that mentions it.
+NOTICEBOARD = "Wikidata:Administrators' noticeboard"
+NOTICEBOARD_MARK = "日巫女"
+
+
+def noticeboard_clear() -> tuple[bool, str]:
+    """(clear, detail): False while the noticeboard's wikitext contains `NOTICEBOARD_MARK`."""
+    import urllib.parse
+    import urllib.request
+    url = "https://www.wikidata.org/w/index.php?" + urllib.parse.urlencode(
+        {"title": NOTICEBOARD, "action": "raw"})
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            text = r.read().decode("utf-8")
+    except Exception as e:  # noqa: BLE001 -- any failure is a closed gate
+        return False, f"LOCKED (fail-closed): {NOTICEBOARD} unreadable: {e}"
+    if not text.strip():
+        return False, f"LOCKED (fail-closed): {NOTICEBOARD} came back empty"
+    if NOTICEBOARD_MARK in text:
+        return False, f"LOCKED: {NOTICEBOARD} mentions {NOTICEBOARD_MARK}"
+    return True, f"{NOTICEBOARD} does not mention {NOTICEBOARD_MARK}"
+
+
 def main() -> int:
     # The detail string is ASCII, but a cp1252 console has crashed on this output
     # before; the wrapper stays.
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+    if "--noticeboard" in sys.argv[1:]:
+        clear, detail = noticeboard_clear()
+        print(("CLEAR - " if clear else "") + detail)
+        return 0 if clear else 1
     allowed, detail = editing_allowed()
     print(("ALLOWED - " if allowed else "LOCKED - ") + detail)
     return 0 if allowed else 1
