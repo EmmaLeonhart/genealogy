@@ -61,10 +61,10 @@ COUNT_QUERIES = {
 }
 
 
-def partition_query(prefix: str) -> str:
-    """Every P2600 statement whose item URI hashes to ``prefix``."""
+def partition_query(prefix: str, prop: str = "P2600") -> str:
+    """Every ``prop`` statement whose item URI hashes to ``prefix``."""
     return (
-        "SELECT ?item ?g WHERE { ?item wdt:P2600 ?g . "
+        f"SELECT ?item ?g WHERE {{ ?item wdt:{prop} ?g . "
         f'FILTER(STRSTARTS(MD5(STR(?item)), "{prefix}")) }}'
     )
 
@@ -78,6 +78,7 @@ def fetch_all_p2600(
     *,
     partitions: Sequence[str] = PARTITIONS,
     progress: Callable[[int, int], None] | None = None,
+    prop: str = "P2600",
 ) -> list[tuple[str, str]]:
     """Every (QID, Geni ID) pair on Wikidata, as a list of pairs.
 
@@ -86,7 +87,7 @@ def fetch_all_p2600(
     """
     pairs: list[tuple[str, str]] = []
     for index, prefix in enumerate(partitions, start=1):
-        for row in client.sparql(partition_query(prefix)):
+        for row in client.sparql(partition_query(prefix, prop)):
             pairs.append((_qid(row["item"]), row["g"]))
         if progress is not None:
             progress(index, len(partitions))

@@ -821,14 +821,7 @@ already there, and that is the ordinary shape rather than a blocker.
   the moratorium it cannot be checked at all, so it waits. § *DO NOT PANIC ABOUT ITEMS WE GOT
   WRONG*.
 
-
-
-  
-## Updating P2600 and P2889 from wikidata
-
-We need to updated our rosters of these since they change a lot and it can lead to outdated stuff. Our periodic stuff
-  
-  ---
+---
 
 ## Follow-up (not first)
 

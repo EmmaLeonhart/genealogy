@@ -1,6 +1,15 @@
 """Refresh `out/wikidata/p2600-all.tsv` from live Wikidata, without merging the tree.
 
     BOT_CONTACT=you@example.com python scripts/refresh-p2600-all.py
+    BOT_CONTACT=you@example.com python scripts/refresh-p2600-all.py --p2889
+
+**`--p2889` refreshes `out/wikidata/p2889-all.tsv` the same way** -- `qid<TAB>fs_id`, every item
+carrying `P2889` *FamilySearch person ID*. Ruled 2026-09-24: *"We need to update our rosters of
+these since they change a lot and it can lead to outdated stuff."* It is the FamilySearch
+zipper's anchor roster, and it replaces the bridge's own live queries: those asked one question
+per 250 people at build time, and on 2026-09-24 the query service answered them 403 and 429
+(*"1 req / min ... during active wdqs outage"*), so the bridge reached 12 people. A roster
+refreshed here fails loudly and leaves the last good copy in place.
 
 **The file is the master QID-to-Geni correspondence** — every Wikidata item carrying `P2600`
 *Geni.com profile ID*, as `qid<TAB>geni_id` with no header. **Forty scripts and three modules
@@ -62,7 +71,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true",
                     help="fetch and report, but do not write the file")
+    ap.add_argument("--p2889", action="store_true",
+                    help="refresh the FamilySearch roster, out/wikidata/p2889-all.tsv")
     args = ap.parse_args()
+    prop, out = ("P2889", OUT.with_name("p2889-all.tsv")) if args.p2889 else ("P2600", OUT)
 
     # `require_agent` fails loudly when BOT_CONTACT is unset: an empty User-Agent gets a bare
     # 403 from Wikimedia, and six call sites once shared that mystery.
@@ -71,20 +83,22 @@ def main():
     client = WikidataClient(cache_dir=CACHE, delay=1.0)
 
     before = 0
-    if OUT.exists():
-        before = sum(1 for _ in OUT.open(encoding="utf-8"))
+    if out.exists():
+        before = sum(1 for _ in out.open(encoding="utf-8"))
         print(f"current file: {before:,} rows, "
-              f"modified {__import__('datetime').date.fromtimestamp(OUT.stat().st_mtime)}")
+              f"modified {__import__('datetime').date.fromtimestamp(out.stat().st_mtime)}")
 
+    counts = overlap_mod.COUNT_QUERIES if prop == "P2600" else {
+        "statements": f"SELECT (COUNT(*) AS ?n) WHERE {{ ?item wdt:{prop} ?g }}"}
     reported = {}
-    for name, query in overlap_mod.COUNT_QUERIES.items():
+    for name, query in counts.items():
         reported[name] = int(client.sparql(query)[0]["n"])
         print(f"  wikidata {name}: {reported[name]:,}", flush=True)
 
     def progress(done, total):
         print(f"  partition {done}/{total}", flush=True)
 
-    pairs = overlap_mod.fetch_all_p2600(client, progress=progress)
+    pairs = overlap_mod.fetch_all_p2600(client, progress=progress, prop=prop)
     print(f"\nfetched {len(pairs):,} statements")
 
     expected = reported["statements"]
@@ -99,11 +113,11 @@ def main():
         print("--dry-run: not writing")
         return 0
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
+    out.parent.mkdir(parents=True, exist_ok=True)
     text = "\n".join(f"{qid}\t{gid}" for qid, gid in sorted(pairs)) + "\n"
-    OUT.write_text(text, encoding="utf-8")
+    out.write_text(text, encoding="utf-8")
     after = len(pairs)
-    print(f"\nwrote {OUT.relative_to(ROOT)}: {before:,} -> {after:,} rows "
+    print(f"\nwrote {out.relative_to(ROOT)}: {before:,} -> {after:,} rows "
           f"({after - before:+,})")
     return 0
 
