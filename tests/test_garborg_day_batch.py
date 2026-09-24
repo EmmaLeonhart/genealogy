@@ -518,6 +518,12 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
     # `Amul` and the overwrite fails again, which is the property worth having.
     preserved = {m.group(1) for m in
                  (re.match(r"^(Q[1-9][0-9]*)\tAmul\t", ln) for ln in lines()) if m}
+    # `reports/forced-labels.tsv`, ruled 2026-09-24: restoring a label our own pipeline broke.
+    # Keeping the broken value as an alias would preserve the damage, so no `Amul` is written.
+    forced = REPO / "reports" / "forced-labels.tsv"
+    if forced.exists():
+        preserved |= {ln.split("\t")[0] for ln in forced.read_text(encoding="utf-8").splitlines()[1:]
+                      if ln.startswith("Q")}
     cjk = _cjk_block_qids()
 
     # **Setting a label an item does NOT have overwrites nothing, and that is now much of the

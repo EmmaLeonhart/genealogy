@@ -47020,3 +47020,12 @@ labels worse (`Madela Tolleivsdatter Tolleivsdtr Norheim`). The ground, its alia
 
 The same reading applied to today's `d.y.`/`d.e.` pass, which wrote a native label wherever the
 live one differed: it is now additive only -- a language that already holds a label keeps it.
+
+**The five it made worse are forced back, every run.** Ruled: treat them as already sent and
+keep forcing the correct label through. `reports/forced-labels.tsv` holds `mul` and `en` for
+`Q141548837` Rosenkrantz (`… til Frøllinge og Rosenlund.`), `Q141533556` Madela Tolleivsdatter
+Norheim, `Q141533323` Guri Rasmusdatter Helland, `Q141532509` Anne Persdatter Hodne and
+`Q141532491` Anna Katarina Silvius. `_forced_labels` emits each row whose live label differs,
+after the label cap and outside its `done` ledger -- the ledger is what sends an edit once and
+never again -- so a row stops only when Wikidata holds it. No `Amul` of the broken value is kept;
+the batch test accepts the forced list as its own evidence.

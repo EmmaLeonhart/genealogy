@@ -1374,6 +1374,28 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
     return out
 
 
+FORCED_LABELS_FILE = ROOT / "reports" / "forced-labels.tsv"
+
+
+def _forced_labels(live_labels=None, path=None):
+    """`reports/forced-labels.tsv` as label lines, for every row the live label does not match.
+
+    See the call site: never capped, never retired by the `done` ledger, gone only once
+    Wikidata holds the value.
+    """
+    path = path or FORCED_LABELS_FILE
+    if not path.exists():
+        return []
+    out = []
+    for row in csv.DictReader(path.open(encoding="utf-8"), delimiter="\t"):
+        qid, lang, value = row["qid"], row["lang"], row["value"]
+        if (live_labels or {}).get((qid, lang)) == value:
+            continue
+        out.append(f"#   {qid}: force the {lang} label back to {value!r} -- {row.get('note', '')}")
+        out.append(f'{qid}\tL{lang}\t"{qs(value)}"')
+    return out
+
+
 #: The hand-dictated label applications. See `_hand_label_applications`.
 LABEL_APPLICATIONS_FILE = ROOT / "reports" / "label-applications.tsv"
 
@@ -8405,6 +8427,12 @@ def main():
     lines = _cap_label_edits(
         lines, clan_block, hand + trimmed,
         priority=_cjk_priority_qids(our_items))
+    # ⛔ **FORCED LABELS: RE-SENT EVERY RUN UNTIL WIKIDATA HOLDS THEM.** Ruled 2026-09-24, for the
+    # five labels the deleted birth-name ground made worse: *"treat all of them as though they
+    # have already been done and ... always attempt to force through"*. After the cap and outside
+    # its `done` ledger on purpose -- that ledger is what sends an edit once and never again.
+    # A row stops only when the live label equals it.
+    lines = _forced_labels(live_labels) + lines
 
     # ⛔ **THE LAST GATE: LOCALITY OVER THE WHOLE BATCH, NOT ONE EMITTER.**
     #
