@@ -11,6 +11,15 @@ not an action goes in `docs/queue-archive/`. The file this replaced, verbatim, i
 it. Each session re-creates the hourly `exports/2026-09-19` merge cron and starts with
 `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER*.
 
+## ⛔ ALL EDITS AND ALL SCHEDULED JOBS ON HOLD, 2026-09-24 TO AT LEAST 2026-10-08
+
+Ruled 2026-09-24: *"kill all edits for 2 weeks ... there is an issue and it is excessive ... all
+cron job stuff on hold for 2 weeks, kill all jobs."* Done: edit run `36054472568` cancelled (0
+edits made); pipeline, CI and tree runs force-cancelled; `wikidata-edits`, `pipeline`, `ci`,
+`daily-batch-email`, `pages`, `tree`, `review-decks` DISABLED (`gh workflow enable <file>` undoes
+it); the session merge cron deleted. Nothing is sent, dispatched or re-enabled until Emma says so;
+the date is the floor, not the trigger. Offline repo work continues.
+
 ## Now
 
 - **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24,
