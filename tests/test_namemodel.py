@@ -1508,3 +1508,15 @@ def test_a_lone_letter_in_a_surname_field_is_never_a_family_name():
                                                       for t, k, _ in got)
     assert ("陳", "family", 0) in namemodel.classify_fields(givn="明", surn="陳")
     assert ("김", "family", 0) in namemodel.classify_fields(givn="민수", surn="김")
+
+
+@pytest.mark.parametrize("givn, surn, token, kind", [
+    ("Petrus Jonæ", "", "Jonæ", "patronymic"),     # ruled 2026-09-24, no father needed
+    ("Petrus", "Jonæ", "Jonæ", "patronymic"),
+    ("Anders Andreae", "Berg", "Andreae", "patronymic"),
+    ("Petrus Thomae", "", "Thomae", "patronymic"),
+    ("Anna", "Blæ", "Blæ", "family"),              # an -æ surname that is no Latin genitive
+])
+def test_the_ae_genitive_is_a_patronymic_by_form(givn, surn, token, kind):
+    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn)}
+    assert got[token] == kind

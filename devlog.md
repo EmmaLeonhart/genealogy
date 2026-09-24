@@ -47072,3 +47072,11 @@ individuals of 388, all 102 ring people -- 142 creations against 240 -- then the
 `runnable_order(ordered=True)`, which `wikidata-edit-run.py` uses for this file, takes the earliest
 ready edit by file position instead of a random one, so when a limit bites it cuts the tail of
 plain statements and never a ring person.
+
+## 2026-09-24 — `Jonæ` is a patronymic
+
+*"Jonæ is a patronymic thing."* With a father on record the model already read it; without one,
+`Jonæ` was a given name in `GIVN` and a family name in `SURN` (193 records carry `Jonæ`/`Jonae`).
+The `-ae`/`-æ` genitive of a Latin `-as` name (`Jonas`, `Andreas`, `Matthias`, `Thomas` ...,
+`namemodel.LATIN_AS_NAMES`) is now a patronymic by form in both fields. Unlike `-i`, where the
+Finnish given name `Olavi` is real, no given name or surname has that shape; `Blæ` is untouched.
