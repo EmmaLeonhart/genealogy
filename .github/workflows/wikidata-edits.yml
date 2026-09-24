@@ -170,6 +170,8 @@ jobs:
             /reports/wikidata-edits-applied.tsv
             /out/wikidata/unlinked-items.json
             /out/wikidata/edit-universe.json
+            /reports/tanba-qids.json
+            /reports/tanba-p2600-pairs.tsv
 
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.go == 'true'
@@ -268,6 +270,12 @@ jobs:
       # `pytest` rather than a bespoke check, so the gate and the test suite can never drift
       # apart into two different answers. No `continue-on-error`: it fails closed, which is the
       # same choice the start-date and locality gates make.
+      # Tanba is never edited (ruled 2026-09-22). The batch on disk may predate the pipeline's
+      # own strip, so it is stripped again here; it fails closed without the roster.
+      - name: No Tanba line reaches Wikidata
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: python scripts/strip_tanba_from_day_batch.py
+
       - name: Nothing is sent while a creation has no description
         if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
         run: |

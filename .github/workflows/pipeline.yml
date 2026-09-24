@@ -504,6 +504,12 @@ jobs:
             echo "appended $(grep -c S2600 reports/wikidata-relationship-sources.qs) to the manual half"
           fi
 
+      # ⛔ TANBA LAST. The composer drops Tanba lines, then the split and the appends above write
+      # all three day files again, and the site on 2026-09-24 still showed 178 Tanba QIDs from
+      # halves nothing re-checked. Dropped here, after every writer, comments included.
+      - name: No Tanba line in any day file
+        run: python scripts/strip_tanba_from_day_batch.py
+
       - name: Refresh the committed site snapshot
         continue-on-error: true
         env:

@@ -46616,3 +46616,14 @@ move through the label-correction pass that already exists, under `LABEL_EDIT_CA
 
 Also deleted from the queue: the `CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES* bullet, whose
 timeout-versus-supersede distinction is already written into that section.
+
+## 2026-09-24 — Tanba out of the halves and the site, not just the composed batch
+
+The site still showed Tanba: 178 Tanba QIDs in 879 lines of `wikidata-garborg-day-auto.txt`
+and `-manual.txt`, all `#` comments, with `out/site/index.html` built from them. The composer's
+gate had cleaned `wikidata-garborg-day.txt`, but the halves are written after it by
+`split-daily-batch.py` plus five appended `.qs` files, and nothing re-checked them.
+`strip_tanba_from_day_batch.py` now covers all three files and fails closed without the roster.
+It runs as the last writer in `pipeline.yml` (before the site build) and again in
+`wikidata-edits.yml` before sending. The one-shot `restore-tanba-day-batch.yml`, pinned to an
+old fix branch, is deleted.
