@@ -13,6 +13,18 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
+- **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24. What
+  the parse has: 208,385 people, 1,404,409 parent slots on a Geni id. What it lacks: **41,505
+  couples with no parent resolved** (mostly `<private>` living people and spelling variants,
+  which no name match can reach), **1,744 conflicting parent slots** dropped, 1,605 parent
+  strings with no split, and the `immediate_family` siblings/spouses are not used at all. The
+  structural route found in the 2026-09-24 morning session is untried in code: a report is
+  breadth-first by generation, with sibling blocks in the same order as their parents in the
+  generation before, so a parent follows from ROW ORDER -- id to id, no name.
+- **CI slow lane red: 11 failures, all `exports/sweep-parsed/`** (run `36011859223`).
+  `test_gedcom_real_exports.py` does not know the `sweep-parsed` header or its `IL`/`FL` label
+  prefixes. Fast lane green on 3.10 and 3.13.
+
 - **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
   here is only to hold the identifiers and what the tree says (the archived queue has both).
 
