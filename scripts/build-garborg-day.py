@@ -996,6 +996,28 @@ PRIORITY_ANCESTOR_SEEDS = (
     # made two of the owner's ancestors a day -- 6,475 lacked an item, ~3,240 days -- where a
     # ring makes the next full generation every run.
     "6000000087535357291",      # Emma Leonhart, the account owner
+    # ⛔ **ADDED 2026-09-24 BY HAND**: the 19 Bure entry points outside the world-tree
+    # component on Wikidata (`reports/bure-wikidata-connectivity.csv`), all reachable from
+    # another Bure person in our tree.
+    "311815313480004654",    # Olof Nauclér, Q16649960
+    "6000000017424989989",   # Nils Abraham Bruncrona, Q16945159
+    "6000000006783257558",   # Erik Carlsson Odelström, Q19631563
+    "6000000078709755794",   # Olof Broman, Q2021113
+    "5580434788100067215",   # Carl Reinhold Sahlberg, Q2361145
+    "6000000033257118889",   # Peter Artedi, Q524071
+    "6000000007293370456",   # Johan Fredrik Adelheim Borgström, Q5542574
+    "6000000038458872253",   # Erik Alstrin, Q5547967
+    "6000000172119806833",   # Daniel Djurberg, Q5622753
+    "6000000007548228373",   # Martinus Erici Gestrinius, Q5757435
+    "6000000003770432103",   # Engelbert Hallenius, Q5783613
+    "6000000008831013351",   # Gustaf Harmens, Q5790728
+    "6000000019777574162",   # Israel Hwasser, Q5818420
+    "6000000044191693814",   # Gabriel Hansson Marklin, Q5976894
+    "6000000023896755915",   # Lars Georg Rabenius, Q6060350
+    "6000000017425518359",   # Olof Ingelsson Rabenius, Q6060365
+    "6000000006783102821",   # Erik Odelstierna, Q6158199
+    "6000000012044161205",   # Anders Sidner, Q6175446
+    "6000000009585266046",   # Per Henrik Widmark, Q6240337
 )
 
 

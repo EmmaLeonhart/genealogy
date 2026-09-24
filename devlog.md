@@ -47128,3 +47128,5 @@ their own. In our tree all 19 reach another Bure person, within 1-8 hops -- `Nil
 Bruncrona`, `Lars Georg Rabenius` and `Olof Ingelsson Rabenius` are ONE hop from one -- so each
 is a missing link on Wikidata, not missing data. For comparison the 2026-08-28 measurement was of
 our tree, not Wikidata: 64% within two hops of another Bure person then.
+
+**The 19 became ancestor-ring seeds the same day**, on request: `PRIORITY_ANCESTOR_SEEDS`.
