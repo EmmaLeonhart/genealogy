@@ -46812,3 +46812,13 @@ universe, and entry points are in it by definition, so what they needed was the 
 them: the committed bridge (2026-09-21) held three, and the `P2889` roster resolves all four at the
 tree run now going. The five entry points with no Geni id (`Q1356707`, `Q141539936`, `Q2351576`,
 `Q2886007`, `Q3172623`) are in neither download, so there is nothing on disk to generate them from.
+
+## 2026-09-24 — the pipeline's commit step hung on a whole-repo `git grep`
+
+Pipeline runs `35937363940` and `35970562188` both did every step, printed "resolving in favour of
+this run's rebuild", and then sat 30+ minutes in the commit step until the job timeout killed
+them, leaving orphaned git processes. The conflict-marker check after the resolution was
+`git grep --cached` over the WHOLE index, and this checkout is `filter: blob:none`: grepping every
+path makes git lazily download every blob in the repository. It now greps only the resolved
+paths (already local, just checked out) under a 120 s timeout, in `pipeline.yml` and `tree.yml`.
+The conflicts themselves are ordinary: the tree rebuild and the pipeline both compose the batch.

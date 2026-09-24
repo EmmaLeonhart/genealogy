@@ -732,7 +732,13 @@ jobs:
               # file, and committing THAT is worse than the failure this loop replaces. An
               # earlier draft did exactly that, because `read -d` is a bashism the loop
               # above no longer relies on. Refuse rather than push a marker.
-              if git grep -qI -e '^<<<<<<< ' -e '^>>>>>>> ' --cached; then
+              # ⛔ ONLY THE RESOLVED PATHS. Over the whole index, `git grep --cached` on this
+              # `blob:none` partial clone downloads EVERY blob in the repo, one lazy fetch at a
+              # time: run 35970562188 (and 35937363940 before it) printed the resolved list and
+              # then hung 30+ minutes with orphaned git processes until the job timeout killed
+              # it. The resolved files were just checked out, so their blobs are already local.
+              if printf '%s\n' "$unmerged" | timeout 120 xargs -r -d '\n' \
+                  git grep -qI -e '^<<<<<<< ' -e '^>>>>>>> ' --cached --; then
                 echo "::error::conflict markers survived resolution -- refusing to push"
                 git rebase --abort || true
                 exit 1

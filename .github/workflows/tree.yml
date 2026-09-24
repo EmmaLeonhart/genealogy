@@ -308,7 +308,11 @@ jobs:
                 exit 1
               fi
               # Committing a conflict marker is worse than the failure this replaces.
-              if git grep -qI -e '^<<<<<<< ' -e '^>>>>>>> ' --cached; then
+              # Only the resolved paths: over the whole index this grep lazily downloads every
+              # blob of the `blob:none` clone -- the hang that timed pipeline runs out on
+              # 2026-09-24 (see the same check in pipeline.yml).
+              if printf '%s\n' "$unmerged" | timeout 120 xargs -r -d '\n' \
+                  git grep -qI -e '^<<<<<<< ' -e '^>>>>>>> ' --cached --; then
                 echo "::error::conflict markers survived resolution -- refusing to push"
                 git rebase --abort || true
                 exit 1
