@@ -46905,3 +46905,17 @@ did not list. `_prefix` now reads the renderer's four prefixes as prefixes, `I` 
 known FamilySearch prefix, and the RFN test -- which skipped FamilySearch files entirely -- now
 requires every `@I<digits>@` person in one to carry the matching `RFN geni:<id>`. Checked on both
 renders: every prefix bound to one record type, none unknown, 0 RFN mismatches.
+
+## 2026-09-24 — CI green on the fast lane; the slow lane's FamilySearch prefixes
+
+**The fast lane is green**: run `35999956503` on `c9a3872c`, 3.10 and 3.13 both `success`, which
+closed the CI item. The inventories cleared once a pipeline run carried the deletions, and the
+batch tests once a composition was one set again.
+
+**The slow lane** failed two tests on the FamilySearch renders, both from today's re-keying:
+xrefs are now `@IFS<FamilySearch id>@`, so the letters-then-digits prefix reader took `IFSGWBN`
+for a prefix, and people on a Geni id are `@I<digits>@`, a prefix the FamilySearch map did not
+list. `_prefix` now reads the renderer's four prefixes as prefixes, `I` on `INDI` is a known
+FamilySearch prefix, and the RFN test -- which skipped FamilySearch files entirely -- now requires
+every `@I<digits>@` person in one to carry the matching `RFN geni:<id>`. Checked on both renders:
+every prefix bound to one record type, none unknown, 0 RFN mismatches.
