@@ -8610,8 +8610,11 @@ def main():
     # as `head` and never passed through the gate -- the same mistake as filtering `derived_labels`
     # alone and leaving `P22`/`P40`/`P2600` behind. Gate the assembled file, once, at the only
     # place that can see all of it.
-    _final_lines = refuse_non_local(head + lines,
-                                    set(our_wikidata_subgraph) | set(one_step_qids))
+    # The name items universe people bear are editable too; `build-garborg-name-items.py`
+    # generated its edits against that set and recorded it in the universe file.
+    _names = set(json.loads((ROOT / "out" / "wikidata" / "edit-universe.json")
+                            .read_text(encoding="utf-8")).get("name_items") or ())
+    _final_lines = refuse_non_local(head + lines, editable | _names)
     # ⛔ **AND NO TWO CREATIONS MAY CARRY THE SAME LABEL AND DESCRIPTION.** Ruled 2026-09-21,
     # with the duplicates still coming: *"we're making too many duplicates and it's
     # bothersome"*. Wikibase refuses a creation only on the pair TOGETHER, so two people with

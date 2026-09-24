@@ -721,12 +721,14 @@ EDIT_UNIVERSE = REPO / "out" / "wikidata" / "edit-universe.json"
 
 
 def _edit_universe() -> set:
-    """Every QID an edit may be made on: the universe, plus one step beyond it."""
+    """Every QID an edit may be made on: the universe, one step beyond it, and the name items
+    universe people bear (`name_items`, recorded by `build-garborg-name-items.py`)."""
     try:
         data = json.loads(EDIT_UNIVERSE.read_text(encoding="utf-8"))
     except Exception:                                    # noqa: BLE001 -- absent or unreadable
         return set()
-    return set(data.get("universe") or ()) | set(data.get("one_step") or ())
+    return (set(data.get("universe") or ()) | set(data.get("one_step") or ())
+            | set(data.get("name_items") or ()))
 
 
 def _refuse_outside_the_universe(edits, path):

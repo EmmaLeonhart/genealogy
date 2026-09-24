@@ -46881,3 +46881,13 @@ now print nothing.
 The 189 post-append items are a different case: every one checked is an existing NAME item
 taking `Den "given name"`, which `CLAUDE.md` says is never stripped, and which the people
 universe can never contain.
+
+**Name items, ruled the same day: a name item a universe person bears is editable.**
+`build-garborg-name-items.py` walked the whole ledger too -- linking every bearer in it and
+describing every name item in the plan -- which is where the 189 stripped items a day came from.
+`editable_sets()` now takes the people from `edit-universe.json` and the name items they carry
+(`P735`/`P734`/`P5056` in the live values: 2,348 for 8,026 people today), and the bearer links,
+the descriptions and the `P144` backfill are generated for those only. The set is written back
+as `name_items`, and all three readers of the universe file -- the composer's final gate,
+`check-batch-locality.py`, and the sender `wikidata-edit-run.py` -- allow it. `Baudoin` and the
+other stripped examples are borne by nobody in the universe, so they are now never generated.

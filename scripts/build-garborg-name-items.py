@@ -478,6 +478,34 @@ def live_values():
     return out
 
 
+EDIT_UNIVERSE = ROOT / "out" / "wikidata" / "edit-universe.json"
+
+
+def editable_sets():
+    """`(people, name_items)` this run may EDIT, and records `name_items` for the gates.
+
+    Ruled 2026-09-24: *"the logic should simply never create any statements affecting them"*,
+    and *a name item a universe person bears is editable*. `have` is the whole ledger -- the
+    Jan-1 entry points, the Izumo and Tanba rosters -- so linking every bearer in it and
+    describing every name item in the plan generated edits the locality gate then deleted, 189
+    name items a day. People are the universe plus one step, as the composer wrote them; name
+    items are the `P735`/`P734`/`P5056` values those people carry. Written back into
+    `edit-universe.json` as `name_items`, so `refuse_non_local` and `check-batch-locality.py`
+    allow exactly what this generated. No universe file means nothing existing is edited.
+    """
+    import json
+    if not EDIT_UNIVERSE.exists():
+        return set(), set()
+    data = json.loads(EDIT_UNIVERSE.read_text(encoding="utf-8"))
+    people = set(data.get("universe") or ()) | set(data.get("one_step") or ())
+    names = {v for (q, p), vals in live_values().items()
+             if q in people and p in ("P735", "P734", "P5056")
+             for v in vals if v.startswith("Q")}
+    data["name_items"] = sorted(names)
+    EDIT_UNIVERSE.write_text(json.dumps(data), encoding="utf-8")
+    return people, names
+
+
 RING_TOKENS = ROOT / "reports" / "name-tokens-needed.tsv"
 
 
@@ -635,6 +663,7 @@ def _twin_holding(label, description, ours):
 def main():
     ids = people_in_batches()
     have = ledger()
+    editable_people, editable_names = editable_sets()
 
     # **The father for a patronymic's `P144` comes from a WIDER map than the ledger.**
     # Reported 2026-09-02: patronymics were not getting the names they derive from, which is
@@ -984,6 +1013,8 @@ def main():
         # `LAST` as a SUBJECT is scoped to its block and did not know the same of `LAST`
         # as a value.
         for geni_id, qid in sorted(have.items()):
+            if qid not in editable_people:
+                continue
             person = fields.get(geni_id)
             if not person:
                 continue
@@ -1060,7 +1091,7 @@ def main():
     want = {}
     for (token, usage), (existing, _action) in plan.items():
         q = (existing or "").strip()
-        if q.startswith("Q") and usage in DESCRIPTION_FOR:
+        if q.startswith("Q") and usage in DESCRIPTION_FOR and q in editable_names:
             want.setdefault(q, (token, usage))
     if want:
         ids = sorted(want)
@@ -1172,6 +1203,8 @@ def main():
                     ours[qid] = label_here
                 if qid.startswith("Q") and targets:
                     backfill.setdefault(qid, (label_here, targets))
+    # Only a name item a universe person bears is edited -- see `editable_sets`.
+    backfill = {q: v for q, v in backfill.items() if q in editable_names}
     if backfill:
         ids = sorted(backfill)
         print("")

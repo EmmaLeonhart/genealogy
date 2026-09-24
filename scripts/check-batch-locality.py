@@ -78,6 +78,8 @@ def universe():
         return None
     d = json.loads(UNIVERSE.read_text(encoding="utf-8"))
     allowed = set(d.get("universe") or ()) | set(d.get("one_step") or ())
+    # The name items universe people bear, recorded by `build-garborg-name-items.py`.
+    allowed |= set(d.get("name_items") or ())
     return allowed or None
 
 

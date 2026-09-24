@@ -194,3 +194,13 @@ def test_a_stripped_item_takes_its_annotation_with_it(tmp_path):
     text = path.read_text(encoding="utf-8")
     assert "Izumo" not in text and "P40 child = Q2" not in text
     assert "#   Q5 Kept" in text and "Q5\tP26\tQ6" in text
+
+
+def test_a_name_item_a_universe_person_bears_is_editable(tmp_path, monkeypatch):
+    """Ruled 2026-09-24: `name_items` in the universe file is part of what may be edited, so a
+    name item's description is generated for a universe bearer and never stripped after."""
+    uni = tmp_path / "edit-universe.json"
+    uni.write_text('{"universe": ["Q1"], "one_step": [], "name_items": ["Q900"]}',
+                   encoding="utf-8")
+    monkeypatch.setattr(check, "UNIVERSE", uni)
+    assert check.universe() == {"Q1", "Q900"}
