@@ -13,16 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **CI green.** Run `35985128623` (on `d23d1624e`): 7 failed on 3.10 and 3.13. Three are the
-  inventories (`built-batches.tsv`, `repo-freshness.csv`) and three are the batch (locality 189
-  items, ledger subjects `Q103949808`/`Q22236578`, married surnames) -- the tree rebuild
-  `54d5017d7` rewrote the day batch, carry-forward, ledger and universe without the rest of the
-  set, so it is one composition's batch beside another's files. `pipeline.yml` recomposes all of
-  it; never hand-patch. The seventh, the export cap tripped by the 16,427-person FamilySearch
-  render, is fixed by `5aa22adde`. Pipeline `35986860652` is recomposing; CI is dispatched on
-  the tip when it lands. Green on 3.10 and 3.13 closes this; the slow lane runs in the same
-  dispatch.
-
 - **`d.y.` and `d.e.` get labels made specifically for the languages that use them.** Low
   priority, after the item above. Known: `no`, `nn`, `da`, `sv`, `de`; likely others -- research
   which languages use them, then apply, and the running program corrects the existing labels.

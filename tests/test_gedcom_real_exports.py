@@ -98,8 +98,10 @@ FOREIGN_SOURCES = {"getmyancestors"}
 #: The xref prefixes a foreign export uses, per source. One map each, because the point of a
 #: foreign prefix is that it is NOT one of ours.
 FOREIGN_XREF_PREFIXES = {
+    # `I` is a person the bridge or the zipper put on their real Geni id (`@I<geni id>@` with
+    # a matching `RFN`, which `test_every_individual_xref_encodes_its_geni_profile_id` checks).
     "getmyancestors": {"IFS": "INDI", "FFS": "FAM", "NFS": "NOTE", "SFS": "SOUR",
-                       "SUBM": "SUBM"},
+                       "SUBM": "SUBM", "I": "INDI"},
 }
 SYNTHETIC_ID_PREFIXES = ("9995", "9990")
 
@@ -146,7 +148,14 @@ def test_every_individual_xref_encodes_its_geni_profile_id(export):
     # `tests/test_familysearch_gedcom.py` pins. Asserting the opposite here would put the two
     # files in contradiction and demand the very leak the renderer prevents.
     if _foreign(export):
-        pytest.skip(f"{_source_of(export)}: xrefs are namespaced so they CANNOT be Geni ids")
+        # Namespaced people cannot be Geni ids; the ones the bridge or the zipper put on a Geni
+        # id (ruled 2026-09-24) must say so in `RFN`, exactly as a Geni export does.
+        for indi in export.by_tag("INDI"):
+            inner = (indi.xref or "").strip("@")
+            if inner[:1] == "I" and inner[1:].isdigit():
+                assert indi.value_of("RFN") == f"geni:{inner[1:]}", (
+                    f"{indi.xref} is written on a Geni id and its RFN does not say so")
+        return
     individuals = export.by_tag("INDI")
     assert individuals
 
@@ -199,8 +208,14 @@ XREF_PREFIXES = {"I": "INDI", "F": "FAM", "N": "NOTE", "S": "SUBM"}
 
 
 def _prefix(xref: str) -> str:
-    """The leading letters of an xref: `@I123@` -> `I`, `@NI04461@` -> `NI`."""
+    """The leading letters of an xref: `@I123@` -> `I`, `@NI04461@` -> `NI`.
+
+    The FamilySearch render keys a record on the FamilySearch id itself (`@IFSGF2BNKG@`), so
+    its four prefixes are read as prefixes whatever letters follow them.
+    """
     inner = xref.strip("@")
+    if inner[:3] in ("IFS", "FFS", "NFS", "SFS"):
+        return inner[:3]
     letters = ""
     for char in inner:
         if not char.isalpha():
