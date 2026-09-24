@@ -253,7 +253,7 @@ def test_no_two_creations_share_a_label_and_a_description():
     Two people with the same name and the same dates produce the same string — which in a
     Scandinavian corpus is the ordinary case, not the odd one — and Wikibase refuses only on
     the PAIR, so an identical pair is a duplicate we mint ourselves and then merge by hand.
-    The second one takes its identifier into the description in brackets.
+    The second one takes its identifier AS the description (ruled 2026-09-23).
 
     Measured 2026-09-21 before the guard: **5 duplicate pairs in `wikidata-garborg-day.txt`,
     4 in the auto half, 5 in the manual half**, on top of 28, 16 and 25 blank descriptions.
@@ -270,3 +270,23 @@ def test_no_two_creations_share_a_label_and_a_description():
     assert not offenders, (
         f"{len(offenders)} creations duplicate an earlier one in the same file: "
         f"{offenders[:8]}")
+
+
+def test_a_collision_takes_the_geni_id_alone():
+    """Ruled 2026-09-23: *"when there is a collision we give only the geni id as the fallback
+    description"* -- the id REPLACES the colliding description, it is not appended, and a
+    person the corpus-wide audit lists as colliding gets it even when the batch holds no twin.
+    """
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    import descriptions
+
+    def block(label, desc, geni):
+        return ["CREATE", f'LAST	Lmul	"{label}"', f'LAST	Den	"{desc}"',
+                f'LAST	P2600	"{geni}"']
+
+    lines = block("Erik Ersson", "born 1728", "1") + block("Erik Ersson", "born 1728", "2")         + block("Anna", "born 1700", "3") + block("Anna", "born 1701", "4")
+    assert descriptions.deduplicate(lines, "P2600", {"3"}) == 2
+    assert [l for l in lines if "	Den	" in l] == [
+        'LAST	Den	"born 1728"', 'LAST	Den	"Geni 2"',
+        'LAST	Den	"Geni 3"', 'LAST	Den	"born 1701"']

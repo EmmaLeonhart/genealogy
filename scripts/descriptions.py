@@ -61,7 +61,27 @@ def id_description(prop: str, value: str) -> str:
     return f"{SOURCE_WORD.get(prop, prop)} {value}"
 
 
-def deduplicate(lines, id_prop):
+#: The corpus-wide collisions `build-description-audit.py` measures, one person per row.
+COLLISIONS = "reports/description-collisions.csv"
+
+
+def corpus_collisions(path):
+    """The Geni ids whose `(label, description)` pair collides ANYWHERE in the corpus.
+
+    ⛔ Ruled 2026-09-23 on the audit (837 colliding pairs, 1,872 people): *"when there is a
+    collision we give only the geni id as the fallback description"*. A collision inside one
+    batch is only the part of it the batch can see; the audit sees the rest, including the
+    person created last week that this one would duplicate. A missing file is an empty set.
+    """
+    import csv
+    import os
+    if not os.path.exists(path):
+        return set()
+    with open(path, encoding="utf-8", newline="") as fh:
+        return {r["geni_id"].strip() for r in csv.DictReader(fh) if r.get("geni_id")}
+
+
+def deduplicate(lines, id_prop, collided=frozenset()):
     """Give every `CREATE` block a description, and make no two of them the same pair.
 
     `lines` is the assembled batch; `id_prop` is the identifier property its `CREATE` blocks
@@ -70,8 +90,10 @@ def deduplicate(lines, id_prop):
 
     * **a block with NO `Den` gets one**, inserted straight after its label, reading
       `Geni <id>` / `FamilySearch <id>`. A blank description is the absence of the guard.
-    * **a block whose `(label, description)` pair has already been seen** has the identifier
-      appended to its description: `1400 Bergen - 1460 (Geni 6000000001234567890)`.
+    * **a block whose `(label, description)` pair has already been seen, or whose identifier
+      is in `collided`**, has its description REPLACED by the identifier alone:
+      `Geni 6000000001234567890`. Ruled 2026-09-23 -- the id is the whole fallback, never a
+      suffix on the description that collided.
 
     ⛔ **It reads the ASSEMBLED file rather than the loop that built it**, for the reason
     `check-batch-locality.py` gives about the locality gate: passes run after the composer,
@@ -117,10 +139,10 @@ def deduplicate(lines, id_prop):
             edits.append((label_at + 1, None, f'LAST\tDen\t"{id_description(id_prop, ident)}"'))
             desc = id_description(id_prop, ident)
             changed += 1
-        elif (label, desc) in seen:
-            edits.append((desc_at, f'LAST\tDen\t"{desc} ({id_description(id_prop, ident)})"',
-                          None))
-            desc = f"{desc} ({id_description(id_prop, ident)})"
+        elif ((label, desc) in seen or ident in collided) \
+                and desc != id_description(id_prop, ident):
+            desc = id_description(id_prop, ident)
+            edits.append((desc_at, f'LAST\tDen\t"{desc}"', None))
             changed += 1
         seen.add((label, desc))
 

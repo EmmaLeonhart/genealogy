@@ -219,6 +219,14 @@ jobs:
           BOT_CONTACT: emma@topazcomputing.com
         run: python scripts/refresh-reverted-labels.py
 
+      # ⛔ **BEFORE THE COMPOSE, because the compose reads it.** A person this lists as colliding
+      # anywhere in the corpus gets the Geni id alone as the description (ruled 2026-09-23).
+      - name: Description uniqueness measurement
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-description-audit.py
+
       - name: Ledger refresh and QuickStatements rebuild
         env:
           BOT_CONTACT: emma@topazcomputing.com
@@ -528,12 +536,6 @@ jobs:
         env:
           PYTHONPATH: src
         run: python scripts/build-patronymic-pairs.py
-
-      - name: Description uniqueness measurement
-        continue-on-error: true
-        env:
-          PYTHONPATH: src
-        run: python scripts/build-description-audit.py
 
       - name: Refresh the batch inventory
         continue-on-error: true

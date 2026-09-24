@@ -8490,13 +8490,16 @@ def main():
     # with the duplicates still coming: *"we're making too many duplicates and it's
     # bothersome"*. Wikibase refuses a creation only on the pair TOGETHER, so two people with
     # the same name and the same dates -- the commonest shape there is in a Scandinavian
-    # corpus -- are a duplicate we mint ourselves and then merge by hand. The second one takes
-    # its Geni id into the description, which is unique by construction.
+    # corpus -- are a duplicate we mint ourselves and then merge by hand. The second one, and
+    # anyone the corpus-wide audit lists as colliding, takes its Geni id AS the description,
+    # which is unique by construction (ruled 2026-09-23: the id alone, not appended).
     #
     # Gated on the ASSEMBLED file for the same reason `refuse_non_local` is, one line above:
     # the composer cannot see what the growth passes append, and a guard the composer alone
     # applies is one appended section away from being no guard.
-    _collided = descriptions.deduplicate(_final_lines, "P2600")
+    _collided = descriptions.deduplicate(
+        _final_lines, "P2600",
+        descriptions.corpus_collisions(ROOT / descriptions.COLLISIONS))
     if _collided:
         print(f"{_collided} descriptions collided and took their Geni id")
     # ⛔ **AND NO CREATION SURVIVES THE GATE WITH NOTHING POINTING AT IT.** Ruled 2026-09-21 on
