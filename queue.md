@@ -31,6 +31,7 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   after the item above.
 
 - Add an ancestor ring for Arne Garborg and Johannes Bureus and Robert Ettinger. It is not appropriate for them to be overly focused on me. Also ancetor ring for this person https://www.wikidata.org/wiki/Q141529420 (romer) https://www.wikidata.org/wiki/Q141523581 (Bureus) https://www.wikidata.org/wiki/Q714044 (Ettinger) https://www.wikidata.org/wiki/Q141168827 (Garborg)
+-- To be clear these qids are the things to do ancestor rings on. the text people are overridden by them since these are their desvendants
 
 - **Review the middle-initial items**, because of roman-numeral confusions. *"Losses are a bigger
   threat than the gains are positive here."*
