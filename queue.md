@@ -15,6 +15,9 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 - **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
   here is only to hold the identifiers and what the tree says (the archived queue has both).
+- **Backfill descriptions on established items, dates and relatives only.** ~4,380 of our items
+  made before 2026-09-19 have none. Use life dates, else the relationship phrase; never the
+  Geni-id fallback -- an item with neither is left without one.
 
 ## Blocked on the Geni moratorium
 
