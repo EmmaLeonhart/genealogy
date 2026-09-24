@@ -47101,3 +47101,11 @@ a generation a run -- so it is bounded by how many lack an item, not by depth. O
 two a day, ~1,080 at six. The deepest line is 74 generations. The 756 FamilySearch-only ancestors
 carry no Geni id, so this creator cannot make them; they reach Wikidata only through the
 FamilySearch batch. The 93 days above holds for `PRIORITY_ANCESTOR_SEEDS` alone.
+
+**And then scrapped, the same day:** *"completely scratch that thing and just have me as an
+ancestor that a ring comes from."* `build-ancestor-creations.py`, its pipeline step, its two output
+files, the sparse-checkout line in `wikidata-edits.yml`, its picker test and its two entries in
+the descriptions test's batch list are removed. The owner `6000000087535357291` is a
+`PRIORITY_ANCESTOR_SEEDS` entry instead, so each run creates the next full generation: **56 runs**
+by the same measure as the other rings, against ~3,240 days at two a day. Every ring together is
+still 93 runs, Ettinger's.

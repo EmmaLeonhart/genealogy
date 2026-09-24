@@ -991,6 +991,11 @@ PRIORITY_ANCESTOR_SEEDS = (
     "6000000008367536363",      # Margareta Jöransdotter Sabelfana (Bureus), Q141523581, d. 1681
     "6000000003022010249",      # Robert Chester Wilson Ettinger, Q714044, 1918-2011
     "6000000005607426344",      # Hans Eivind Garborg, Q141168827, 1925-2008
+    # ⛔ **ADDED 2026-09-24 BY HAND, REPLACING `build-ancestor-creations.py`**: *"completely
+    # scratch that thing and just have me as an ancestor that a ring comes from"*. That script
+    # made two of the owner's ancestors a day -- 6,475 lacked an item, ~3,240 days -- where a
+    # ring makes the next full generation every run.
+    "6000000087535357291",      # Emma Leonhart, the account owner
 )
 
 

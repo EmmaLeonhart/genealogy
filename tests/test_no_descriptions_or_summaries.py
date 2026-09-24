@@ -195,9 +195,7 @@ def test_nothing_sets_an_edit_summary():
 LIVE_BATCHES = ["reports/wikidata-garborg-day.txt",
                 "reports/wikidata-garborg-day-auto.txt",
                 "reports/wikidata-garborg-day-manual.txt",
-                "reports/wikidata-familysearch-day.txt",
-                "reports/wikidata-ancestor-creations.qs",
-                "reports/wikidata-ancestor-creations-auto.qs"]
+                "reports/wikidata-familysearch-day.txt"]
 
 #: `CREATE`, then the label and description lines inside the block that follows it.
 _LABEL_LINE = re.compile(r'^LAST\t(?:Lmul|Len)\t"(.*)"$')

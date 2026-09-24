@@ -146,37 +146,6 @@ def test_a_name_item_is_not_an_isolate():
     assert kept == lines
 
 
-def test_the_picker_never_chooses_a_child_outside_the_universe():
-    """⛔ The ROOT cause, and the docstring said it while the code tested something else.
-
-    `eligible()` read *"The CHILD must be in the universe"* and tested `qid` -- that the child
-    is on Wikidata at all, a far larger set than `out/wikidata/edit-universe.json`. Every pick
-    outside that artifact loses its only relationship to the locality filter and becomes an
-    isolate.
-    """
-    spec = importlib.util.spec_from_file_location(
-        "ancestor_creations",
-        pathlib.Path(__file__).resolve().parents[1] / "scripts" / "build-ancestor-creations.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-
-    owner = mod.OWNER
-    # owner -> in-universe child with a known parent, and an OUT-of-universe child with one.
-    # The parents are Geni ids because a creation carries `P2600 "<parent>"`, and `eligible`
-    # refuses anything that is not one (2026-09-24: label-only and FamilySearch people).
-    parent_of_inside, parent_of_outside = "6000000000000000001", "6000000000000000002"
-    fam = {
-        owner: ("Q141216494", "inside", "QIN", "outside", "QOUT"),
-        "inside": ("QIN", parent_of_inside, "", "", ""),
-        "outside": ("QOUT", parent_of_outside, "", "", ""),
-    }
-    mod._universe = lambda: {"Q141216494", "QIN"}
-    picks = mod.eligible(fam)
-    chosen_parents = {p for _g, _q, p, _r in picks}
-    assert parent_of_inside in chosen_parents
-    assert parent_of_outside not in chosen_parents, (
-        "a child outside the edit universe loses its reciprocal to the locality filter, so the "
-        "creation hung off it is an isolate the moment it is made")
 
 
 def test_a_stripped_item_takes_its_annotation_with_it(tmp_path):
