@@ -22,13 +22,14 @@ bulk. The report carries several so the shape can be read rather than asserted.
 many carry a QID, and named members — because § *Always write the English label next to a
 property or item ID* applies to people too, and a cluster nobody can name is not a finding.
 
-Reads `reports/tree-eccentricity.csv` (already measured) and the family graph. Writes
+Reads `reports/tree-eccentricity.csv.gz` (already measured) and the family graph. Writes
 `reports/eccentric-clusters.tsv` and `reports/eccentric-clusters.md`.
 """
 from __future__ import annotations
 
 import collections
 import csv
+import gzip
 import os
 import pathlib
 import sys
@@ -37,7 +38,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 csv.field_size_limit(10_000_000)
 
-ECC = ROOT / "reports" / "tree-eccentricity.csv"
+ECC = ROOT / "reports" / "tree-eccentricity.csv.gz"
 OUT_TSV = ROOT / "reports" / "eccentric-clusters.tsv"
 OUT_MD = ROOT / "reports" / "eccentric-clusters.md"
 
@@ -106,7 +107,7 @@ def load_names():
 def load_eccentricity(names):
     """`{geni_id: (dist, qid, label)}` for everyone with a distance to Charlemagne."""
     out = {}
-    with open(ECC, encoding="utf-8", newline="") as fh:
+    with gzip.open(ECC, "rt", encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             d = row["dist_charlemagne"]
             if d == "" or d is None:

@@ -417,10 +417,6 @@ Two answers Emma asked for and did not get:
 context-switched between five threads and cancelled 21 pipeline runs doing it. **These are
 findings, not work in progress. Nothing here is started.**
 
-- **`reports/tree-eccentricity.csv` is 84.3 MB, the largest tracked file in the repo.** Nothing
-  `pipeline.yml` runs writes it, so it sits harmless until whoever runs `measure-eccentricity.py`
-  pushes the result. That is a trap for a future session, not a live fault.
-
 - **The repo-wide picture, measured 2026-09-19: nothing is over 100 MB anywhere.** The largest
   tracked file is **`preservation/genealogy/dropbox/ITIS.ged` at 91.3 MB** -- closer to the limit
   than anything above, and **harmless**, because preserved GEDCOMs are static and no workflow

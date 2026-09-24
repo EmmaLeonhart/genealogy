@@ -46647,3 +46647,9 @@ It was 82 MB (57.9 MB on 09-19), tracked and rewritten by the pipeline's `--refe
 path to 100 MB that blocked every push on 09-19. The diff reads each statement's `mainsnak` and
 `rank` and nothing else, so the snapshot now holds exactly that: 26.7 MB measured on today's
 file. References alone were 24 MB. The queue item is deleted.
+
+## 2026-09-24 — `tree-eccentricity.csv` is gzipped
+
+88 MB plain, tracked, and the next person to run `measure-eccentricity.py` would have pushed it
+over 100 MB and blocked every push. The script writes `reports/tree-eccentricity.csv.gz` and
+`eccentric-clusters.py` reads it: 24 MB. Queue item deleted.

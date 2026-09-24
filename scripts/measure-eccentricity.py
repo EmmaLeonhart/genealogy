@@ -37,7 +37,7 @@ side could never have two children*.
 
     python scripts/measure-eccentricity.py [--landmarks N]
 
-Writes `reports/tree-eccentricity.csv` --- one row per person, every person, per `CLAUDE.md`
+Writes `reports/tree-eccentricity.csv.gz` --- one row per person, every person, per `CLAUDE.md`
 § *"Analyse this" means build a CSV of every instance*.
 """
 
@@ -57,7 +57,7 @@ FAMILY_GZ = REPO / "reports" / "derived-family.csv.gz"
 FAMILY_CSV = REPO / "reports" / "derived-family.csv"
 LABELS_GZ = REPO / "reports" / "derived-labels.csv.gz"
 LABELS_CSV = REPO / "reports" / "derived-labels.csv"
-OUT = REPO / "reports" / "tree-eccentricity.csv"
+OUT = REPO / "reports" / "tree-eccentricity.csv.gz"
 
 SEP = " | "
 LINK_COLUMNS = ("father", "mother", "spouses", "children", "fathers", "mothers")
@@ -200,8 +200,9 @@ def main() -> int:
 
     lab = load_labels(index)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    tmp = OUT.with_suffix(".csv.tmp")
-    with open(tmp, "w", encoding="utf-8", newline="") as fh:
+    # Gzipped: 88 MB plain, tracked, and 12 MB from GitHub's 100 MB push refusal (2026-09-24).
+    tmp = OUT.with_name(OUT.name + ".tmp")
+    with gzip.open(tmp, "wt", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, lineterminator="\n")
         w.writerow(["geni_id", "qid", "label_en", "degree", "component_size",
                     "in_largest_component", "dist_charlemagne", "ecc_lower_bound"])
