@@ -46711,6 +46711,38 @@ the anchor's is dropped. **421 cards** at first build. The FamilySearch side com
 `fs_id` in `qid`; `zipper-join.py --familysearch` now reads the `SAME` ones back as anchors.
 Built by `review-decks.yml`, published at https://claude.ai/artifact/93GL9DBmVErTnBxfGsru3j.
 
+## 2026-09-24 — the zipper does the FamilySearch work, and both rosters refresh daily
+
+*"We should be having the zipper do all of the familysearch stuff. I want familysearch zippering
+to be a specific thing that we do start with every session."* Picked up from the previous
+session, which had re-keyed the FamilySearch render on `_FSFTID` and on Geni ids after
+`Q141539855` Emma Olivia Andersdotter turned out to be in the owner's FamilySearch tree and
+nowhere in ours.
+
+**Why she was missing.** The bridge is `_FSFTID -> P2889 -> QID -> P2600`, an exact join that
+needs an item carrying both ids. It reached **11 of 4,442**. Her daughter `Q141223907` Elly
+Olivia Frisk carries both (`PNMB-MKW`, `6000000178275437038`) and still bridged to nothing,
+because the bridge read `P2889` from a local store that predates the item.
+
+**The zipper.** `zipper-join.py`'s rounds are now `zip_sides()`, one copy run by both sides:
+Geni against Wikidata as before, and `--familysearch`, the raw downloads against the synoptic
+tree. Anchors are the bridge plus the download's root (`PFR5-LDS` is the owner's profile). From
+12 anchors: **25 rounds, 4,866 pairs** (2,427 solo, 2,003 date, 436 name), 73 refused by sex, 0
+conflicts, 1,351 slots left ambiguous (1,214 of them children). Emma Olivia is round 3, as
+Elly's mother, on `6000000178279770847`. Wikidata independently states 16 of the pairs: 10 agree
+and all 6 others are FamilySearch holding a second record of the same person (same name, same
+parents -- `GDQB-KJQ` and `PNMB-9FS` are both Anna Danielsdotter), so none was a zipper error.
+The render now writes every zipper-paired person on their Geni id; the bridge wins a clash.
+
+**The rosters** (queued by hand the same evening). The bridge's live queries were answered 403
+and 429 (*"1 req / min ... during active wdqs outage"*). `refresh-p2600-all.py --p2889` now
+builds `out/wikidata/p2889-all.tsv` with the same 16 partitions and the same short-fetch refusal,
+the bridge reads that instead of the network, and `pipeline.yml` refreshes both rosters every
+day -- `tree.yml` runs only on an exports push or by hand, so a refresh living there was not
+periodic. `tree.yml` runs bridge -> zipper -> render before its merge.
+
+`CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER* is the session-start procedure; the deck
+for the ambiguous slots is the entry above.
 ## 2026-09-24 — the FamilySearch batch reuses the items the zipper found
 
 Decided when asked: *"Skip them; add P2889 instead."* `build-familysearch-day.py` read only the

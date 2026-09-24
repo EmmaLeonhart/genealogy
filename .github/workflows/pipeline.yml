@@ -178,6 +178,21 @@ jobs:
       - name: Unpack the derived CSVs
         run: python scripts/pack-derived.py --unpack
 
+      # ⛔ THE ROSTERS ARE REFRESHED DAILY, HERE. Ruled 2026-09-24: *"We need to update our
+      # rosters of these since they change a lot and it can lead to outdated stuff."* `tree.yml`
+      # only runs on a push to `exports/**` or by hand, so a refresh that lives only there is a
+      # refresh that happens when somebody remembers. `p2600-all.tsv` is what forty scripts join
+      # through; `p2889-all.tsv` is the FamilySearch zipper's anchors. An outage keeps the
+      # committed copy -- the script refuses a short fetch and never writes one.
+      - name: Refresh the P2600 and P2889 rosters
+        continue-on-error: true
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: |
+          python scripts/refresh-p2600-all.py
+          python scripts/refresh-p2600-all.py --p2889
+
       # `--compose` refreshes the ledger itself — `CLAUDE.md`: regenerating the QuickStatements
       # ALWAYS regenerates the ledger — so there is no separate refresh step to forget.
       # ⛔ **BEFORE THE COMPOSE, because the compose READS what this writes.**

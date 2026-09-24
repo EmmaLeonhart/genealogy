@@ -99,7 +99,10 @@ jobs:
       # Bridge -> zipper -> render, so the merge below reads a FamilySearch render keyed on the
       # Geni ids this run found. The zipper reads the derived CSVs just unpacked -- the previous
       # tree -- which is the same one-run lag every other derived input has.
+      # The P2889 roster it reads is refreshed daily by pipeline.yml. A failure here keeps the
+      # previous render in exports/ and must not abandon the rebuild below.
       - name: FamilySearch zipper
+        continue-on-error: true
         env:
           PYTHONPATH: src
         run: |

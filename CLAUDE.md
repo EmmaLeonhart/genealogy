@@ -219,8 +219,10 @@ daughter anchored on both sides, because nothing walked from the daughter to the
 `zipper-join.py --familysearch` walks it: 12 anchors, 25 rounds, **4,866 pairs**, and she is
 round 3.
 
+    CI, pipeline.yml daily:
+      refresh-p2600-all.py [--p2889]     both rosters, out/wikidata/p2{600,889}-all.tsv
     CI, in tree.yml before the merge:
-      bridge-familysearch-qids.py        anchors: every item stating BOTH ids, one live query
+      bridge-familysearch-qids.py        anchors: _FSFTID -> P2889 roster -> QID -> P2600 roster
       zipper-join.py --familysearch      FamilySearch downloads against the synoptic tree
       render-familysearch-gedcom.py --all  every paired person written on their Geni id
 

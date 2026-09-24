@@ -69,6 +69,8 @@ def test_no_pair_is_fetched_twice():
 def test_the_partition_filter_names_the_prefix_it_was_asked_for():
     assert 'MD5(STR(?item)), "c"' in overlap.partition_query("c")
     assert "wdt:P2600" in overlap.partition_query("c")
+    # the FamilySearch roster, `refresh-p2600-all.py --p2889`, is the same fetch on P2889
+    assert "wdt:P2889" in overlap.partition_query("c", "P2889")
 
 
 def test_progress_is_reported_once_per_partition():
