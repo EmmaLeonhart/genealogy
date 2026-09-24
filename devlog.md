@@ -46781,3 +46781,14 @@ the detector.
 files in `exports/tiny-paths/`. `837d6d93e` had already collapsed the 1,638 duplicate `FAM`
 records, and all 20,292 files on main now hold none. The CI dispatch that closes the fast lane
 runs the slow lane too, so the item folded into that one.
+
+## 2026-09-24 — sweep-parsed names split by Geni's own slug, never by position
+
+`parse-sweep-trees.split_by_slug`: Geni builds a profile's URL slug from the FIRST given name and
+the SURNAME field plus the suffix (`Jacob Asa Bibler` -> `/people/Jacob-Bibler/`), so where the
+slug drops a middle run, the single cut that reproduces it is Geni's own boundary. Written as
+`NAME Given /Surname/ Suffix` with `GIVN`/`SURN`/`NSFX`, the shape of a real export, so titles land
+in `NSFX` and the name model reads the fields by form. **131,122 of 208,043** new people split;
+the rest stay a display string rather than a guess -- a slug that drops nothing, a second cut
+that also works, a leading prefix, or a bracketed surname. Shards regenerated. Queue item
+deleted.

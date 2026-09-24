@@ -21,9 +21,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   deleted in `f2e0082f8`; `pipeline.yml` regenerates both inventories. Once a pipeline run on a
   sha after that deletion finishes, dispatch `ci.yml`; green on 3.10 and 3.13 closes it. The same dispatch runs the slow lane,
   whose only failure (306 tiny-path files with duplicate records) `837d6d93e` already fixed.
-- **Sweep-parsed people have a display name and no `GIVN`/`SURN`.** `exports/sweep-parsed/`
-  writes `1 NAME <Geni display name>` unsplit, so 208,043 people carry titles in the name
-  (`…, Markgraf`) and get no name items. Split by form, never by position.
 - **FamilySearch ids on entry points should generate people too** — seed from `P2889` where the
   Geni column is empty.
 - **`Grimus von von Rügen`** (`6000000012966007622`, father of `Q660913` Kruto the Wend) carries a

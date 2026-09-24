@@ -61,3 +61,22 @@ def test_generation_reads_words_and_digits():
     assert sweep.generation("Relationship: Christine's daughter") == 1
     assert sweep.generation("Relationship: Yuri's fifth great grandson") == 7
     assert sweep.generation("Relationship: Yuri's 12th great grandson") == 14
+
+
+def test_the_name_splits_only_where_geni_slug_fixes_the_boundary():
+    split = sweep.split_by_slug
+    # the slug drops the middle name, so exactly one cut reproduces it
+    assert split("Jacob Asa Bibler", "Jacob-Bibler") == ("Jacob Asa", "Bibler", "")
+    # the title after the comma is NSFX, as Geni itself files it
+    assert split("Alexander Stewart, Archbishop of St. Andrews",
+                 "Alexander-Stewart-Archbishop-of-St-Andrews") == (
+        "Alexander", "Stewart", "Archbishop of St. Andrews")
+    # two words and nothing dropped: given, surname
+    assert split("Daniel Ogden", "Daniel-Ogden") == ("Daniel", "Ogden", "")
+    # nothing dropped and three words: the slug says nothing, so no guess
+    assert split("Anna Maria Svensdotter", "Anna-Maria-Svensdotter") is None
+    # a prefix is never guessed, and a bracketed "surname" is a nickname
+    assert split("Grand prince Mikhail Yaroslavich of Vladimir",
+                 "Grand-prince-Mikhail-of-Vladimir") is None
+    assert split("Yelena (Elena), daughter of Yuri Dolgorukiy",
+                 "Yelena-Elena-daughter-of-Yuri-Dolgorukiy") is None

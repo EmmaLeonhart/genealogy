@@ -229,6 +229,41 @@ def slug(name: str) -> str:
     return "-".join(re.findall(r"\w+", urllib.parse.unquote(QUOTED.sub(" ", name)))).casefold()
 
 
+def split_by_slug(display: str, slug_text: str):
+    """`(givn, surn, nsfx)` read off Geni's own URL slug, or None when the slug cannot say.
+
+    The rows carry one display string and no name fields, and `CLAUDE.md` forbids splitting a
+    name by position. The slug is not position: Geni builds it from the FIRST given name and the
+    SURNAME field (`Jacob Asa Bibler` -> `/people/Jacob-Bibler/`), plus the suffix after the
+    comma. So where the slug DROPS a run of middle names, the one cut that reproduces it is the
+    boundary Geni itself holds. Measured 2026-09-24 over a sample of 31,378 rows: 18,681 split.
+
+    Refused, and left as the display string: a slug that drops nothing (`Anna Maria Svensdotter`
+    fixes no boundary unless it is exactly two words), more than one cut that works, a slug that
+    starts with anything but the name's first word (prefix guessing put `Prince Yury` in a
+    prefix), and a bracketed surname (`Yelena (Elena)` is a nickname).
+    """
+    name, _, suffix = display.partition(", ")
+    tok = lambda s: [t.casefold() for t in re.findall(r"\w+", urllib.parse.unquote(s))]
+    T, S = tok(slug_text), tok(suffix)
+    if S and T[-len(S):] == S:
+        T = T[:-len(S)]
+    words = name.split()
+    W = [tok(w) for w in words]
+    flat = lambda ws: [t for w in ws for t in w]
+    if len(words) < 2 or not T:
+        return None
+    if flat(W) == T:
+        cut = 1 if len(words) == 2 else None
+    else:
+        cuts = [j for j in range(2, len(words)) if flat(W[:1]) + flat(W[j:]) == T]
+        cut = cuts[0] if len(cuts) == 1 else None
+    if cut is None:
+        return None
+    surn = " ".join(words[cut:])
+    return None if "(" in surn else (" ".join(words[:cut]), surn, suffix)
+
+
 def label_xref(kind: str, key: tuple) -> str:
     """A stable, unparseable-as-Geni xref for a label-only record."""
     digest = hashlib.sha1("\x1f".join(key).encode("utf-8")).hexdigest()[:15]
@@ -241,6 +276,7 @@ def label_xref(kind: str, key: tuple) -> str:
 class Parse:
     def __init__(self):
         self.name: dict[str, str] = {}        # geni id -> display name
+        self.slug: dict[str, str] = {}        # geni id -> Geni's URL slug for them
         self.years: dict[str, tuple] = {}     # geni id -> (birth, death)
         self.sex: dict[str, str] = {}         # geni id -> M/F from its own row
         # child -> {geni ids voted as parent}, and the label-only names voted
@@ -286,6 +322,7 @@ class Parse:
             m = SLUG.match(href)
             if m:
                 by_slug[slug(m.group(1))].append(gid)
+                self.slug.setdefault(gid, m.group(1))
             if birth or death:
                 self.years.setdefault(gid, (birth, death))
             depth[gid] = generation(rel)
@@ -611,7 +648,17 @@ def main() -> int:
             lines.append("1 RFN geni:%s" % node)
             if node not in corpus:
                 if node in p.name:
-                    lines.append("1 NAME %s" % p.name[node])
+                    parts = split_by_slug(p.name[node], p.slug.get(node, ""))
+                    if parts:
+                        givn, surn, nsfx = parts
+                        lines.append("1 NAME %s /%s/%s" % (givn, surn,
+                                                           " " + nsfx if nsfx else ""))
+                        lines += ["2 GIVN %s" % givn, "2 SURN %s" % surn]
+                        if nsfx:
+                            lines.append("2 NSFX %s" % nsfx)
+                        st["new geni people with GIVN/SURN from the slug"] += 1
+                    else:
+                        lines.append("1 NAME %s" % p.name[node])
                 if p.sex.get(node):
                     lines.append("1 SEX %s" % p.sex[node])
                 b, d = p.years.get(node, ("", ""))
