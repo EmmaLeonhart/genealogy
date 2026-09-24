@@ -47,7 +47,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
     drop_clan_suffix, drop_description_suffix, drop_label_title,
-    drop_repeated_patronymic, generation_suffix_in_label, generation_suffix_key,
+    drop_doubled_particle, drop_repeated_patronymic, generation_suffix_in_label,
+    generation_suffix_key,
     keep_own_surname, married_is_primary, married_name_of,
     normalise_generation_suffix, without_nickname,
 )
@@ -267,6 +268,7 @@ def main() -> int:
             # (`Svantepolk Knutsson /Viby/` with `_MARNM Knutsson`), reported 2026-09-07 as
             # replications of the patronymic.
             rendered = drop_repeated_patronymic(rendered)
+            rendered = drop_doubled_particle(rendered, record["givn"], record["surn"])
             # An *ätt* is a clan, not a name, and only where the person's own `NSFX` says so.
             rendered = drop_clan_suffix(rendered, clean(record["nsfx"]))
             # **A TITLE MUST NOT END UP IN A `mul` LABEL.** Ruled 2026-09-07: the highest

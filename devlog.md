@@ -46792,3 +46792,12 @@ in `NSFX` and the name model reads the fields by form. **131,122 of 208,043** ne
 the rest stay a display string rather than a guess -- a slug that drops nothing, a second cut
 that also works, a leading prefix, or a bracketed surname. Shards regenerated. Queue item
 deleted.
+
+## 2026-09-24 — a particle filed on both sides of the name seam is said once
+
+`Grimus von von Rügen` (`6000000012966007622`) is `GIVN Grimus von` + `SURN von Rügen` on Geni.
+`namemodel.drop_doubled_particle`, called in `derive-labels.py` after
+`drop_repeated_patronymic`, collapses it where `SURN` starts with a lower-case particle that
+`GIVN` ends with: **210 name records** (`de de`, `ap ap`, `von von`, `verch verch`). A capitalised
+repeat is a name and stays -- `Joseph Thomas Thomas`. Applies at the next tree rebuild; existing
+items move through the label-correction pass. Queue item deleted.

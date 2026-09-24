@@ -937,6 +937,35 @@ def _patronymic_key(token: str) -> str:
     return "".join(out)
 
 
+def drop_doubled_particle(label: str, givn: str, surn: str) -> str:
+    """`Grimus von von Rügen` -> `Grimus von Rügen`: a particle Geni filed on BOTH sides of the
+    GIVN/SURN seam, said once.
+
+    Queued 2026-09-21 on `6000000012966007622`, father of `Q660913` Kruto the Wend: his record is
+    `GIVN Grimus von`, `SURN von Rügen`, and the concatenation says `von` twice. Measured
+    2026-09-24: 684 labels still carry a doubled token at that seam -- `de de Moldrup`,
+    `ap ap Cwrrig`, `Verch verch Tudwal` -- after `drop_repeated_patronymic` has taken the
+    patronymic ones.
+
+    **Only a PARTICLE, and the test is the case Geni filed it in.** `SURN`'s first token in lower
+    case is a particle (`von`, `de`, `ap`, `verch`); a capitalised one is a name, and
+    `Joseph Thomas Thomas` may be exactly what that person was called -- the same restraint
+    `drop_repeated_patronymic` takes with a repeated given name. The SURN side's spelling is the
+    one kept, since it is the particle's own field.
+    """
+    g, s_ = (givn or "").split(), (surn or "").split()
+    if not g or not s_ or len(g) < 2:
+        return label
+    particle = s_[0]
+    if not (particle.isalpha() and particle.islower()) or g[-1].casefold() != particle.casefold():
+        return label
+    toks = (label or "").split()
+    for i in range(len(toks) - 1):
+        if toks[i].casefold() == toks[i + 1].casefold() == particle.casefold():
+            return " ".join(toks[:i] + [particle] + toks[i + 2:])
+    return label
+
+
 def drop_repeated_patronymic(label: str) -> str:
     """`label` with an adjacent repeat of one patronymic collapsed to a single token.
 

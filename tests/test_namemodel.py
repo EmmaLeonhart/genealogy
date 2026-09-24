@@ -1411,3 +1411,13 @@ def test_own_given_name_refuses_what_is_not_a_first_name():
     assert own_given_name({"givn": "Tora NN"}) == "Tora"
     assert own_given_name({"givn": "Anna Olsdatter"}) == "Anna Olsdatter"
     assert own_given_name({"givn": "Mariet"}) == "Mariet"
+
+
+def test_a_particle_filed_on_both_sides_of_the_seam_is_said_once():
+    """`GIVN Grimus von` + `SURN von Rügen` (2026-09-24). A capitalised repeat is a name and
+    stays: `Joseph Thomas Thomas`."""
+    from namemodel import drop_doubled_particle as drop
+    assert drop("Grimus von von Rügen", "Grimus von", "von Rügen") == "Grimus von Rügen"
+    assert drop("Gwrddwfin ap ap Cwrrig", "Gwrddwfin ap", "ap Cwrrig") == "Gwrddwfin ap Cwrrig"
+    assert drop("Joseph Thomas Thomas", "Joseph Thomas", "Thomas") == "Joseph Thomas Thomas"
+    assert drop("Per Andersson", "Per", "Andersson") == "Per Andersson"

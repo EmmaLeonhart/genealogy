@@ -36,8 +36,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
   Each zipper anchor then needs the root's Geni id in `FS_ROOTS` if it has one; these five have
   none, so they attach only through relatives the zipper can reach.
-- **`Grimus von von Rügen`** (`6000000012966007622`, father of `Q660913` Kruto the Wend) carries a
-  doubled `von` in our label.
 
 ## Last — placed here by Emma, not before everything above is done
 
