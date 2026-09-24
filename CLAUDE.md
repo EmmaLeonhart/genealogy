@@ -576,6 +576,8 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   **man** `mul` carries the married name and the birth name is the `Amul`. **Never an `Aen`**,
   which is unchanged. A man's married name is rare and *"usually means a name change occurred"* —
   evidence of an event rather than a convention, which is why his side does not move.
+  **⛔ It governs what is CREATED and is never backfilled** (ruled 2026-09-24, *"a waste of
+  edits"*): an established woman labelled by her married name keeps it.
 - **`NN` is PRESERVED in `mul`**; descriptive labels are ADDED in other languages. `Private` never
   becomes a label, and neither person is left unlabelled.
 - **A bare given name is not a label** — the farm name is the surname; else `Given NN`.
