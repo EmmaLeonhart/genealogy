@@ -23,6 +23,10 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   the tip when it lands. Green on 3.10 and 3.13 closes this; the slow lane runs in the same
   dispatch.
 
+- **`d.y.` and `d.e.` get labels made specifically for the languages that use them.** Low
+  priority, after the item above. Known: `no`, `nn`, `da`, `sv`, `de`; likely others -- research
+  which languages use them, then apply, and the running program corrects the existing labels.
+
 ## Last — placed here by Emma, not before everything above is done
 
 - **Review the middle-initial items**, because of roman-numeral confusions. *"Losses are a bigger
