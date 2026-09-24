@@ -259,7 +259,7 @@ geni_id	label	why
 6000000011851638215	Margareta Steuchia	HELD by the duplicate guard: parent Q456456 has unmatched child item(s) Q109555189;Q552374;Q131726351 - this person may already be one
 6000000007603022201	Otto Reinhold Taube af Karlö	HELD by the duplicate guard: child Q110457049 already names parent item(s) Q19862153;Q110457132 - this person may already be one
 6000000030653381943	?? Chaloff	HELD by the duplicate guard: child Q141457246 already names parent item(s) Q141498902 - this person may already be one
-6000000002374835290	Lars Eivindson Norheim	HELD by the duplicate guard: child Q141456615 already names parent item(s) Q141498800 - this person may already be one
+6000000002374835290	Lars Eivindson Norheim	HELD by the duplicate guard: child Q141533911 already names parent item(s) Q141498800 - this person may already be one
 6000000018090078312	Malli Eivindsdatter Nese/Skorve	HELD by the duplicate guard: child Q141456361 already names parent item(s) Q141313691 - this person may already be one
 6000000002836313613	Sven Torsteinson Lima	HELD by the duplicate guard: child Q141223933 already names parent item(s) Q141225714 - this person may already be one
 6000000012047648752	Margareta Christina von Lingen	HELD by the duplicate guard: parent Q5959177 has unmatched child item(s) Q133754410 - this person may already be one
@@ -10114,7 +10114,10 @@ geni_id	label	why
 6000000107939073044	Daniel Kihlman	name item missing: Kihlman (married): not in the plan
 6000000003491944813	Domhild Salmundsdatter Sømme	name item missing: Domhild (given): create
 6000000003491944813	Domhild Salmundsdatter Sømme	name item missing: Salmundsdatter (patronymic): create
-6000000003095013106	Domhild? Torgrimsdatter Gjerdrem / Ljosdal	GATE: no ja/zh/ko label, so not created
+6000000003095013106	Domhild? Torgrimsdatter Gjerdrem / Ljosdal	name item missing: Torgrimsdatter (patronymic): create
+6000000003095013106	Domhild? Torgrimsdatter Gjerdrem / Ljosdal	name item missing: Malmheim (family): create
+6000000003095013106	Domhild? Torgrimsdatter Gjerdrem / Ljosdal	name item missing: Gjerdrem (married): not in the plan
+6000000003095013106	Domhild? Torgrimsdatter Gjerdrem / Ljosdal	name item missing: Ljosdal (married): not in the plan
 6000000002964690254	Domild? Tjærandsdatter Sømme	GATE: no ja/zh/ko label, so not created
 6000000006782497906	Dorothea Austrædia	name item missing: Austrædia (family): not in the plan
 6000000111247053824	Dorthea nndatter Klaus Stangeland	name item missing: nndatter (patronymic): not in the plan
@@ -10244,7 +10247,6 @@ geni_id	label	why
 6000000026310031558	Hillevi Sophia Törngren	name item missing: Törngren (married): not in the plan
 6000000218774352679	Hustru Olof Larsson	name item missing: Hustru (given): create
 6000000218774352679	Hustru Olof Larsson	name item missing: Olof (family): not in the plan
-6000000002735003528	Inga Bjørnsdatter Frafjord Hielm	GATE: no ja/zh/ko label, so not created
 6000000003095034721	Inga Rasmusdatter Selvik 1. kone	GATE: no ja/zh/ko label, so not created
 6000000014544956034	Ingeborg Alvsdatter Grude	P3373 sibling Q141436682 held: over the 60-a-day cap
 6000000014544956034	Ingeborg Alvsdatter Grude	P3373 sibling Q141533449 held: over the 60-a-day cap
@@ -10380,7 +10382,6 @@ geni_id	label	why
 6000000151185004963	Marta Jensdtr. Slettestrand	name item missing: Jensdtr. (patronymic): not in the plan
 6000000151185004963	Marta Jensdtr. Slettestrand	name item missing: Slettestrand (family): not in the plan
 6000000035698706210	Marta Maria Andreasdatter Hodne	name item missing: Andreasdatter (patronymic): create
-6000000005607411855	Marta Maria Toresdatter Netland /	GATE: no ja/zh/ko label, so not created
 6000000007141627716	Marta Åmundsdatter Nedre Øksnevad	name item missing: Åmundsdatter (patronymic): not in the plan
 6000000041765471741	Martin Harmens	P3373 sibling Q141514804 held: over the 60-a-day cap
 6000000041765471741	Martin Harmens	name item missing: Harmens (married): not in the plan
@@ -10601,7 +10602,6 @@ geni_id	label	why
 6000000003377660936	Tolve Peterson Nås, Tolveætten	name item missing: Peterson (patronymic): create
 6000000003377660936	Tolve Peterson Nås, Tolveætten	name item missing: Näs (family): not in the plan
 6000000003377660936	Tolve Peterson Nås, Tolveætten	name item missing: Nås (married): not in the plan
-6000000005607133268	Tora Bjørnsdatter Lunde?/ Tveiten/ Nordland	GATE: no ja/zh/ko label, so not created
 6000000004880524817	Torbjorn Nikolausson Børve	name item missing: Torbjorn (given): create
 6000000004880524817	Torbjorn Nikolausson Børve	name item missing: Nikolausson (patronymic): not in the plan
 6000000003095033731	Tore Sigvardson Todnem	P3373 sibling Q141498646 held: over the 60-a-day cap
@@ -10631,3 +10631,5 @@ geni_id	label	why
 6000000005607081787	Ådne Ådnesen Haugland	P3373 sibling Q141533869 held: over the 60-a-day cap
 6000000004578590359	Åsa Toresdotter? Drange	GATE: no ja/zh/ko label, so not created
 6000000001469860043	Þuríður Gissurardóttir	GATE: no ja/zh/ko label, so not created
+6000000003377660936	Tolve Peterson Nås, Tolveætten	name item missing: Nås (married): not in the plan, and this person was appended after the composer wrote its own carries
+6000000008248206451	Halldor Rannveigsson av Sogn	name item missing: Sogn (married): not in the plan, and this person was appended after the composer wrote its own carries

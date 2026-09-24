@@ -6,12 +6,12 @@ so a description that repeats under a different label costs nothing.
 
 | | |
 |---|---|
-| people | 1,758,563 |
-| with a description | 1,227,506 (69.8%) |
-| **no description at all** | **531,057** (30.2%) |
-| distinct (label, description) | 1,210,001 |
-| colliding pairs | 837 |
-| people in a collision | 1,872 |
+| people | 1,816,537 |
+| with a description | 1,267,295 (69.8%) |
+| **no description at all** | **549,242** (30.2%) |
+| distinct (label, description) | 1,249,536 |
+| colliding pairs | 896 |
+| people in a collision | 2,011 |
 
 ## The worst collisions
 
@@ -22,17 +22,21 @@ so a description that repeats under a different label costs nothing.
 | 12 | 元 | born China |
 | 10 | 李 | died 812 |
 | 8 | Uknf | Europe - Europe |
+| 8 | NN | born circa 1290 |
 | 8 | NN 李 | died 706 |
 | 8 | 李 | died 864 |
 | 6 | NN | died Munster, Ireland |
+| 6 | NN | born circa 1590 |
 | 6 | NN | Europe - Europe |
-| 6 | NN | born circa 1290 |
+| 6 | NN | born circa 1200 |
 | 6 | NN Lee | born 한국 경북 경주시 |
+| 5 | NN | born circa 1560 |
+| 5 | NN | died Germany |
 | 5 | NN | China - China |
 | 5 | NN | born circa 1100 |
 | 5 | Gaius Servilius | born Rome, Roma, Italy |
-| 5 | NN | born circa 1200 |
 | 5 | NN | born circa 1620 |
+| 5 | NN | born circa 1500 |
 | 5 | NN | born circa 1630 |
 | 5 | NN 李 | died 608 |
 | 5 | NN 李 | died 679 |
@@ -40,20 +44,16 @@ so a description that repeats under a different label costs nothing.
 | 5 | Tatarkanof | died 1770 |
 | 5 | Taga | born Bef 1861 |
 | 4 | NN | born circa 1340 |
-| 4 | NN | born circa 1560 |
 | 4 | NN | died France |
-| 4 | NN | died Germany |
 | 4 | NN | Egypt - Egypt |
 | 4 | NN | died (Iberia), Georgia |
 | 4 | NN | died Scotland |
-| 4 | NN | born circa 1590 |
+| 4 | NN | born circa 1390 |
+| 4 | NN | born circa 1400 |
+| 4 | NN | born circa 1575 |
+| 4 | NN | born circa 1440 |
 | 4 | Marcus Valerius | born Rome, Roma, Italy |
+| 4 | NN | born circa 900 |
 | 4 | NN | born circa 1230 |
 | 4 | Kone | died Jordanger, Luster, Sogn og Fjordane, Norway |
 | 4 | NN | born circa 1150 |
-| 4 | Folman | died Aft 1932 |
-| 4 | NN 柳 | died 698 |
-| 4 | NN 李 | died 652 |
-| 4 | NN Lee | 한국 경북 경주시 - 한국 경북 경주시 |
-| 4 | Jose The'o Salas | born circa 1876 Colorado |
-| 3 | NN | born circa 1565 |
