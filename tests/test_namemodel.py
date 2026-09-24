@@ -1497,3 +1497,14 @@ def test_only_a_real_marker_suppresses_given_names(givn, surn, given, not_given)
     if given:
         assert got.get(given) == "given"
     assert got.get(not_given) != "given"
+
+
+def test_a_lone_letter_in_a_surname_field_is_never_a_family_name():
+    """Reported 2026-09-24: the batch created `N.` as a family name twice. `Ingemund Olson
+    /N. Eiane/`, married `N. Espedal` -- `N.` is Nordre/Nedre on the farm. A single Han or
+    Hangul character IS a whole family name and must survive."""
+    got = namemodel.classify_fields(givn="Ingemund Olson", surn="N. Eiane", marnm="N. Espedal")
+    assert ("N.", "family", 0) not in got and not any(k == "married" and t == "N."
+                                                      for t, k, _ in got)
+    assert ("陳", "family", 0) in namemodel.classify_fields(givn="明", surn="陳")
+    assert ("김", "family", 0) in namemodel.classify_fields(givn="민수", surn="김")

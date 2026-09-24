@@ -1737,7 +1737,9 @@ CJK_NUMERALS = set("〇一二三四五六七八九十百千万億零壱弐参拾
 
 #: A middle initial: one letter, with or without its full stop. Never a marker; see
 #: `classify_fields` § *AN INITIAL OR A NUMERAL IS NOT A MARKER*.
-_MARKER_EXEMPT = re.compile(r"^[^\W\d_]\.?$")
+#: **LATIN letters only.** A single Han or Hangul character is a whole name -- `陳`, `李`, `김`
+#: are family names, 184 single-character plan rows are mostly those -- and never an initial.
+_MARKER_EXEMPT = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿ]\.?$")
 
 
 def is_numeral(token: str) -> bool:
@@ -2162,6 +2164,10 @@ def load_plan(path: Path | None = None) -> dict:
     out = {}
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
+            # A lone Latin letter is never a family name (`N.` is Nordre/Nedre on a farm): a
+            # stale plan row must not create one. See `classify_fields`, SURN loop.
+            if row["usage"] in ("family", "married") and _MARKER_EXEMPT.match(row["token"]):
+                continue
             out[(row["token"], row["usage"])] = (
                 (row.get("existing_qid") or "").strip(),
                 (row.get("action") or "").strip(),
@@ -2912,6 +2918,13 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         [t for t in re.split(r"\s+", surn_field.strip()) if t])
     for raw in join_particles(surn_tokens):
         token, shape = name_shape(raw)
+        # ⛔ **A LONE LETTER IN A SURNAME FIELD IS NEVER A FAMILY NAME.** Reported 2026-09-24,
+        # after the batch created `N.` as a family-name item twice and was killed by hand:
+        # `Ingemund Olson /N. Eiane/`, married `N. Espedal`. In a farm name `N.` is Nordre or
+        # Nedre, as `S.` is Søndre and `Ø.` Øvre -- a qualifier on the farm, not a name.
+        if _MARKER_EXEMPT.match(token):
+            out.append((token, "unknown", 0))
+            continue
         if shape:
             out.append((token, shape, 0))
             continue
@@ -2926,6 +2939,9 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
         for raw in married.split():
             token, shape = name_shape(raw)
+            if _MARKER_EXEMPT.match(token):
+                out.append((token, "unknown", 0))
+                continue
             # **`_MARNM` gets the patronymic test too, and it did not until 2026-09-04.**
             # `GIVN` and `SURN` both run `is_patronymic` above -- `name modelling.txt`:
             # *"We have to check in the given names and in the surname whether it is a

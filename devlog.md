@@ -46993,3 +46993,15 @@ the rest of `GIVN` is an epithet or alias, never a given name, so keeping `Heinr
 mint `Gute`. Final census: **2,151** people show a "loss", and every one checked is a quoted
 epithet or bracketed alternate (`"the Ingenious"`, `'the Fair'`, `(Hinrich)`) -- not a given
 name. From **31,401** people losing a real given name to none.
+
+## 2026-09-24 — `N.` was being created as a family name, twice
+
+Reported with a screenshot: the batch created `N.` (`Q141550359`) as a family name and linked
+`Q141498418` Ingemund Olson N. Espedal to it, and it was killed by hand twice. Geni has
+`Ingemund Olson /N. Eiane/`, married `N. Espedal`: `N.` is Nordre or Nedre, the qualifier on a
+farm, as `S.` is Søndre and `Ø.` Øvre. The surname loop classed every token that was not a
+patronymic as `family`. A lone Latin letter in `SURN` or the married name is now `unknown`,
+never an item, and `load_plan` drops stale lone-letter family rows -- 16 were in
+`name-item-plan.csv`, 11 of them marked `create` (`N.`, `Ø.`, `S`, `I.`, `R.` ...). Latin only:
+the first version of the letter pattern matched a single Han or Hangul character, which is a
+whole family name (`陳`, `김`), and the test pins that they survive.
