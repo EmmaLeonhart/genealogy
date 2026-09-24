@@ -319,6 +319,12 @@ class Parse:
             if display:
                 self.name.setdefault(gid, display)
                 by_name[fold(display)].append(gid)
+                # ⛔ `split_name` drops a trailing ` MP` as Geni's Master Profile badge, which is
+                # also how a Member of Parliament's name ENDS: the row `Charles William Grenfell,
+                # MP` became `Charles William Grenfell,` and his children's `... Grenfell, MP and
+                # ...` never found him (2026-09-24). Index the row under both forms.
+                if " MP" in name_text:
+                    by_name[fold(display + " MP")].append(gid)
             m = SLUG.match(href)
             if m:
                 by_slug[slug(m.group(1))].append(gid)
@@ -338,6 +344,16 @@ class Parse:
                 return focus
             for index, k in ((by_name, f), (by_slug, slug(name))):
                 hits = {g for g in index.get(k, ()) if depth.get(g, 0) >= floor}
+                # ⛔ **SEVERAL ROWS OF ONE NAME: THE ONE EXACTLY A GENERATION UP.** Descendant
+                # lines reuse names every generation (Henrik Pleskow, Hieronim Leżeński), and
+                # `>= floor` let a grandfather and grandson of one name both qualify, so the
+                # slot was refused -- about 60% of the rows resolving no parent at all, measured
+                # 2026-09-24 over 400 reports. A child at generation g is in the report BECAUSE
+                # a parent at exactly g-1 is, so exactly one row of that name there decides it.
+                if len(hits) > 1:
+                    exact = {g for g in hits if depth.get(g, 0) == floor}
+                    if len(exact) == 1:
+                        hits = exact
                 if hits:
                     return next(iter(hits)) if len(hits) == 1 else None
             return None

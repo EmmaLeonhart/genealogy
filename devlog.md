@@ -47166,3 +47166,29 @@ them.
 Checked the same day, the first pipeline run on the new composer: its gate dropped nothing; the
 post-append strip took 12 lines on 6 items, all created that day and in the universe by the next
 recompose.
+
+## 2026-09-24 — why descendant rows resolved no parent, and the fix for the largest cause
+
+The earlier answer -- "usually the report's name for the parent doesn't match that parent's row" --
+was stated without checking, and it was wrong. Measured over 400 random reports, mirroring the
+parser's own splitting (4,336 rows with no parent resolved):
+
+    ~60%  AMBIGUITY: the parent's name is there, on several rows -- descendant lines reuse
+          names every generation, and `>= g-1` let grandfather and grandson both qualify
+    ~17%  no row carries that exact name (spelling and transliteration variants)
+    ~18%  `<private>` living people
+     ~2%  generation 1: the parent is the report's own subject, who is not a row
+
+`resolve` now prefers, among several rows of the name, the single one at EXACTLY g-1 -- a
+child at generation g is in the report because a parent at g-1 is. Full parse:
+
+    couples with neither parent resolved     74,440 -> 41,851
+    parent slots resolved to a Geni id    1,359,743 -> 1,404,063
+    label-only people                       169,668 -> 165,046
+    conflicting parent slots (dropped)          827 -> 1,744
+
+The conflicts are the cost: a child in two reports whose parents now disagree. They are dropped,
+not written, but they say the tie-break picks a wrong namesake in roughly 2% of the cases that
+can be cross-checked. Also: a row ending `, MP` (a Member of Parliament) was losing it to the
+Master-Profile badge strip; indexed under both forms (+15 couples). Re-rendered with
+`--corpus-rev baf607e99`.
