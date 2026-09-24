@@ -1056,7 +1056,10 @@ def main() -> int:
     # Order before slicing. Taking the first N in FILE order ignores `requires`,
     # which is the whole reason those lists exist.
     try:
-        edits = runnable_order(edits, seed=args.seed, satisfied=satisfied)
+        # The daily automatic half is written in the order it must go out (see
+        # `split-daily-batch.py`): names, 30 individuals, the whole ring, then the rest.
+        edits = runnable_order(edits, seed=args.seed, satisfied=satisfied,
+                               ordered=Path(args.batch).name == "wikidata-garborg-day-auto.txt")
     except Blocked as blocked:
         _explain(blocked, satisfied)
         return 1

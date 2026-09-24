@@ -47,7 +47,7 @@ def _needs(edit: dict) -> list:
 
 
 def runnable_order(edits: Iterable[dict], *, seed: int | None = None,
-                   satisfied: Iterable | None = None) -> list[dict]:
+                   satisfied: Iterable | None = None, ordered: bool = False) -> list[dict]:
     """The edits, in an order where no edit precedes anything it requires.
 
     ``satisfied`` names ids already applied in an earlier run, so a resumed batch
@@ -68,6 +68,11 @@ def runnable_order(edits: Iterable[dict], *, seed: int | None = None,
     been rejected anyway.
     """
     pending = list(edits)
+    # ``ordered``: the earliest ready edit by its position in the batch instead of a random
+    # one. Ruled 2026-09-24 for the daily automatic half, which `split-daily-batch.py` writes
+    # in the order it must be sent -- names, 30 individuals, the ring, then the rest -- so the
+    # rate limit, when it bites, cuts the tail and never the rings.
+    position = {id(e): n for n, e in enumerate(pending)}
     done = set(satisfied or ())
     by_id = {e.get("id"): e for e in pending}
 
@@ -111,6 +116,9 @@ def runnable_order(edits: Iterable[dict], *, seed: int | None = None,
     while ready or urgent:
         if urgent:
             chosen = urgent.popleft()
+        elif ordered:
+            i = min(range(len(ready)), key=lambda k: position[id(ready[k])])
+            chosen = ready.pop(i)
         else:
             # Random index, swapped with the last element: O(1) removal, and the same
             # uniform choice a scan-and-pick would have made.

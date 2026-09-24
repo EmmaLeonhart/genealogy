@@ -160,3 +160,11 @@ def test_the_runner_refuses_a_batch_whose_prerequisites_are_elsewhere():
     assert "REFUSED" in out.stderr
     assert "wikidata-en-labels.json" in out.stderr, (
         "the refusal must name the batch that provides what is missing")
+
+
+def test_ordered_mode_keeps_the_batch_order_wherever_requirements_allow():
+    """Ruled 2026-09-24: the daily automatic half is sent in FILE order -- names, 30 people,
+    the ring, then the rest -- so a rate limit cuts the tail and never the rings."""
+    edits = [edit("n1"), edit("n2"), edit("p1"), edit("link", "p1"), edit("r1"), edit("s1")]
+    order = [e["id"] for e in runnable_order(edits, seed=7, ordered=True)]
+    assert order == ["n1", "n2", "p1", "link", "r1", "s1"]

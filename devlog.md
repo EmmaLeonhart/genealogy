@@ -47052,3 +47052,23 @@ ancestor path above it (from `derived-family`, with items from `garborg-qids.tsv
 101 generations in our tree, 93 of them without an item: Tzvi Hirsch Ashkenazi (1658), the
 Babylonian exilarchs (David ben Zakkai 960, Mar Zutra II 488, Nechemya ben Nathan 250) back to
 Arnan ben Rafaya (-372). Without the Ettinger seed the rings finish in 49 runs (Garborg).
+
+## 2026-09-24 — the daily send is a ration, in sending order
+
+Ruled: *"five given names, five patronymics, and five family names ... then 30 individuals ...
+then every obligatory ring person in a randomized order ... only after all that ... the rest"*,
+because the rings connect us to the world tree and are to be done in full every day, and the send
+was going too hard. Measured before changing it: on 2026-09-23 creations hit Wikidata's
+anti-abuse limit (`no-automatic-entity-id: … you are limited from performing this action too many
+times in a short space of time`) and the run stopped; on 2026-09-24 everything came back
+`permissiondenied` and **0 edits** went out. The account `日巫女` is not blocked (77,853 edits,
+`user`/`autoconfirmed`); the one-third share had been handing the sender 240 creations a day.
+
+`split-daily-batch.py` now writes the automatic half as four buckets in order: the first 5 name
+items of each kind (a matronymic counts as a patronymic), the first 30 non-ring individuals, every
+ring creation shuffled with a date seed, then every unit that is not a creation. Creations the
+ration leaves out stay on the page for pasting. On today's batch: 10 name items of 12, 30
+individuals of 388, all 102 ring people -- 142 creations against 240 -- then the rest. And
+`runnable_order(ordered=True)`, which `wikidata-edit-run.py` uses for this file, takes the earliest
+ready edit by file position instead of a random one, so when a limit bites it cuts the tail of
+plain statements and never a ring person.

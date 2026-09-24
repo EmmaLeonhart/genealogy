@@ -1,5 +1,11 @@
 """Deal the part CI/CD sends itself; the QuickStatements file gets the whole batch.
 
+⛔ **THE AUTOMATIC PART IS A RATION, IN SENDING ORDER. Ruled 2026-09-24**, superseding the
+one-third share and the stride below: five given names, five patronymics and five family names,
+then thirty individuals, then every ancestor-ring person in a random order, then everything that
+is not a creation. `wikidata-edit-run.py` sends it in that order. The history below is kept as
+the evidence for how the halves came to be what they are.
+
 ⛔ **NOT A DISJOINT SPLIT ANY MORE. Ruled 2026-09-19:** *"quickstatements always generated with
 the full contents"*. `wikidata-garborg-day-manual.txt` is now a verbatim copy of the composed
 batch, and `wikidata-garborg-day-auto.txt` is the share the schedule sends unattended -- a
@@ -57,7 +63,8 @@ never over text, and a block moves whole.
 
 from __future__ import annotations
 
-import math
+import datetime
+import random
 import sys
 from pathlib import Path
 
@@ -70,22 +77,34 @@ SRC = REPO / "reports" / "wikidata-garborg-day.txt"
 AUTO = REPO / "reports" / "wikidata-garborg-day-auto.txt"
 MANUAL = REPO / "reports" / "wikidata-garborg-day-manual.txt"
 
-#: The share the schedule sends by itself. One third; see the module docstring for why.
-#: ⛔ **A THIRD IS A SHARE OF WHATEVER IS COMPOSED, NEVER A CAP.** Ruled 2026-09-14 --
-#: *"making 50% more quickstatements and then segregating out a third of that to be run by
-#: cicd"* -- and restated 2026-09-17 when it came out wrong: *"I wasn't intending for there to be
-#: a cap, I was intending for 50% of the edits to be done. I was intending for a third of the
-#: edits to be automatic and two-thirds of the edits to be done by quick statements."*
-#:
-#: **Both halves get done.** The third is the autonomous share; the rest is pasted. What broke it
-#: was not this number but a second ceiling stacked on it: `RUN_LIMIT` at 100 and the workflow's
-#: `limit=100` bound BELOW the share, so a batch of 411 sent 100 where a third is 137, and
-#: everything above 100 silently became somebody's homework. A share recomputes as the batch
-#: grows; a ceiling does not, and nothing re-derived it as the batch grew.
-#:
-#: The ceilings stay raised (1000) so they can never bind below the share again. They exist to
-#: stop a runaway, not to ration the work.
-AUTO_SHARE = 1.0 / 3.0
+#: ⛔ **THE RATION, ruled 2026-09-24**, replacing the one-third share: five name items of each
+#: kind, thirty individuals, then every ring person, then everything that is not a creation.
+#: The one-third share sent 240 creations a day and tripped Wikidata's anti-abuse creation limit.
+NAMES_PER_KIND = 5
+INDIVIDUALS = 30
+
+#: `P31` on a name-item creation -> which of the three allocations it draws on. A matronymic
+#: draws on the patronymic five.
+NAME_CLASS = {"Q202444": "given", "Q12308941": "given", "Q11879590": "given",
+              "Q3409032": "given", "Q110874": "patronymic", "Q1076664": "patronymic",
+              "Q101352": "family"}
+NAME_KINDS = ("given", "patronymic", "family")
+
+
+def name_kind(unit):
+    """The allocation a unit's name-item creation draws on, or `None` for any other unit."""
+    joined = chr(10).join(unit)
+    if not any(l.strip().upper() == "CREATE" for l in unit):
+        return None
+    for e in qs_v1.edit_objects(qs_v1.parse(joined)):
+        if e.get("kind") != "create":
+            continue
+        for c in e.get("claims") or ():
+            v = c.get("value")
+            if c.get("property") == "P31" and isinstance(v, dict) and v.get("id") in NAME_CLASS:
+                return NAME_CLASS[v["id"]]
+    return None
+
 
 #: The scheduled run's own ceiling, mirrored so the split never hands it more than it will send.
 #: If it did, the surplus would be in neither file: the runner would stop at its limit and the
@@ -127,7 +146,6 @@ def main() -> int:
     text = SRC.read_text(encoding="utf-8")
 
     edits = qs_v1.edit_objects(qs_v1.parse(text))
-    share = min(math.ceil(len(edits) * AUTO_SHARE), RUN_LIMIT)
 
     bs = blocks(text)
     # ⛔ **A PREFIX IS NOT A THIRD, AND FOR DAYS IT MEANT CI/CD CREATED NOBODY.**
@@ -315,56 +333,54 @@ def main() -> int:
                         out.add(v.strip('"'))
         return out
 
+    # ⛔ **THE AUTOMATIC HALF IS RATIONED, IN THE ORDER IT IS SENT. Ruled 2026-09-24:** five given
+    # names, five patronymics and five family names; then thirty individuals; then EVERY
+    # ancestor-ring person in a random order; then the rest. The rings are what connect us to
+    # the world tree, so they are done in full every day, and the send had been tripping
+    # Wikidata's anti-abuse creation limit (`no-automatic-entity-id`, 2026-09-23) and then
+    # getting `permissiondenied` on everything (2026-09-24). Creations the ration leaves out stay
+    # on the page for a person to paste; everything that is not a creation is sent after them.
+    # `wikidata-edit-run.py` sends this file in FILE order, not randomly.
     person_units = [i for i, u in enumerate(units) if is_person_create(u)]
-    person_units_set = set(person_units)
-    n_auto = int(round(len(person_units) * AUTO_SHARE))
-    auto_people = set(person_units[:n_auto])
-    if ring_ids:
-        forced = {i for i in person_units if ring_geni_ids(units[i]) & ring_ids}
-        new_forced = forced - auto_people
-        auto_people |= forced
-        print(f"   priority ring: {len(forced)} creation(s) forced automatic, "
-              f"{len(new_forced)} of them the share would have left for the page")
-    print(f"   {len(person_units)} individual creation(s): {len(auto_people)} automatic, "
-          f"{len(person_units) - len(auto_people)} for the page; everything else in BOTH")
+    ring_units = [i for i in person_units if ring_geni_ids(units[i]) & ring_ids]
+    ring_set = set(ring_units)
+    other_people = [i for i in person_units if i not in ring_set]
+    name_units = {}
+    for i, u in enumerate(units):
+        kind = name_kind(u)
+        if kind:
+            name_units.setdefault(kind, []).append(i)
+    chosen_names = [i for kind in NAME_KINDS for i in name_units.get(kind, [])[:NAMES_PER_KIND]]
+    chosen_people = other_people[:INDIVIDUALS]
+    rng = random.Random(datetime.date.today().isoformat())
+    shuffled_ring = list(ring_units)
+    rng.shuffle(shuffled_ring)
+    creation_units = set(person_units) | {i for v in name_units.values() for i in v}
+    print(f"   rationed: {len(chosen_names)} name item(s) of "
+          f"{sum(len(v) for v in name_units.values())}, {len(chosen_people)} individual(s) of "
+          f"{len(other_people)}, all {len(ring_units)} ring creation(s), then the rest")
 
-    # ⛔ **THE DISJOINT PART IS THE CREATE AND WHAT BINDS TO IT, NOTHING ELSE.**
-    #
-    # A unit is a `CREATE` block, and `blocks` runs one from a `CREATE` to the NEXT `CREATE` --
-    # so it carries the new item's `LAST` lines AND whatever explicitly-subjected statements
-    # happen to follow before the next creation. Dealing the whole unit therefore dealt those
-    # statements too: measured, **0 of 244 standalone connectivity claims reached both halves**,
-    # they simply inherited the allocation of the creation above them.
-    #
-    # Only two kinds of line genuinely cannot leave a `CREATE`:
-    #   * a `LAST`-subject line -- it IS the new item's own statement
-    #   * a line using `LAST` as a VALUE -- `Q141353755 P735 LAST ...`, which points at it
-    # `LAST` binds backwards and names no QID, so either one separated from its creation
-    # attaches to nothing, or worse to whatever `CREATE` precedes it in the other file.
-    #
-    # Everything else in the block has an explicit QID subject and stands on its own, so it goes
-    # to BOTH -- which is the ruling: *"as far as connectivity stuff goes ... we have it 100% on
-    # both of them."*
+    # ⛔ **THE DISJOINT PART IS THE CREATE AND WHAT BINDS TO IT, NOTHING ELSE.** A unit runs from
+    # a `CREATE` to the next, so it also carries explicitly-subjected statements that follow.
+    # Only a `LAST`-subject line and a line using `LAST` as a VALUE cannot leave their `CREATE`;
+    # the rest stands on its own and goes out with everything else -- *"as far as connectivity
+    # stuff goes ... we have it 100% on both of them."*
     def bound_to_create(line):
         t = line.strip()
         if not t or t.startswith("#"):
             return None                      # a comment follows whatever it introduces
         if t.upper() == "CREATE":
             return True
-        parts = t.split("	")
+        parts = t.split("\t")
         if parts[0] == "LAST":
             return True
         return any(x == "LAST" for x in parts[1:])
 
-    auto, manual = [], []
+    bound_of, rest = {}, []
     for i, u in enumerate(units):
-        if i not in person_units_set:
-            text = chr(10).join(u)
-            auto.append(text)
-            manual.append(text)
+        if i not in creation_units:
+            rest.append(chr(10).join(u))
             continue
-        mine = auto if i in auto_people else manual
-        other = manual if mine is auto else auto
         bound, free, pending = [], [], []
         for line in u:
             b = bound_to_create(line)
@@ -375,11 +391,14 @@ def main() -> int:
             pending = []
         free.extend(pending)
         if bound:
-            mine.append(chr(10).join(bound))
+            bound_of[i] = chr(10).join(bound)
         if free:
-            text = chr(10).join(free)
-            mine.append(text)
-            other.append(text)
+            rest.append(chr(10).join(free))
+    auto = ([bound_of[i] for i in chosen_names if i in bound_of]
+            + [bound_of[i] for i in chosen_people if i in bound_of]
+            + [bound_of[i] for i in shuffled_ring if i in bound_of]
+            + rest)
+    manual = []
 
     a_text = "\n".join(auto).rstrip() + "\n"
     m_text = "\n".join(manual).rstrip() + "\n"
@@ -480,8 +499,6 @@ def main() -> int:
     MANUAL.write_text(m_text, encoding="utf-8", newline="\n")
     print(f"{len(edits)} edits -> {len(a_edits)} automatic ({AUTO.name}), "
           f"{len(m_edits)} for the page ({MANUAL.name})")
-    print(f"   the share applies to individual creations only; "
-          f"the {len(units) - len(person_units)} other unit(s) are in both files")
     return 0
 
 
