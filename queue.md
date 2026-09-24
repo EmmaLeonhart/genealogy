@@ -13,9 +13,13 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **Latinate patronymics seem to be absent: `Erici`, `Olai`, `Olavi`, `Petri`.** Review why,
-  after the item above.
-
+- **Latin patronymics are classed as given names when the father is recorded in the vernacular.**
+  Reviewed 2026-09-24 (devlog): `classify_fields` makes `Petri` a patronymic only when the
+  father's given name is `Petrus`; with `Per`, `Olof` or `Erik` -- the usual case -- it is a second
+  given name. So the plan holds `Erici`/`Olai`/`Petri` only as given names, bearers get `P735`
+  instead of `P5056`, `Olavi` has no patronymic item at all, and `Erici`'s `P144` names only
+  `Eric`. The fix needs a Latin <-> vernacular given-name equivalence (Petrus~Per/Peder,
+  Olaus~Olof/Ole, Ericus~Erik, ...) read against the father in the tree.
 - Add an ancestor ring for Arne Garborg and Johannes Bureus and Robert Ettinger. It is not appropriate for them to be overly focused on me. Also ancetor ring for this person https://www.wikidata.org/wiki/Q141529420 (romer) https://www.wikidata.org/wiki/Q141523581 (Bureus) https://www.wikidata.org/wiki/Q714044 (Ettinger) https://www.wikidata.org/wiki/Q141168827 (Garborg)
 -- To be clear these qids are the things to do ancestor rings on. the text people are overridden by them since these are their desvendants
 

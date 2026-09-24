@@ -46918,3 +46918,19 @@ labelled), under the usual label cap, so the running pipeline corrects what is a
 The research half: `de` was named as a likely user and does not use these forms -- German writes
 `d. J.` / `d. Ä.` (*der Jüngere*, *der Ältere*) -- so it is not in the list. Finnish
 (`nuorempi`/`vanhempi`) and English (`the Younger`/`Jr.`) already have their own entries.
+
+## 2026-09-24 — why `Erici`, `Olai`, `Olavi` and `Petri` seem absent (review)
+
+Name items exist for three (`Erici` `Q141313537`, `Olai` `Q141313056`, `Petri` `Q141314115`,
+all 2026-09-05); `Olavi` has none, though 265 people in the tree carry it. Of our items bearing
+them, few are linked by `P5056`: Erici 1 of 9, Olai 5 of 18, Petri 2 of 20, Olavi 0 of 1.
+
+**The cause is the classifier.** `classify_fields` recognises a Latin genitive as a patronymic
+only when the father's given name is recorded in Latin: `Ericus Petri` with father `Petrus` ->
+patronymic, with father `Per` -> a second GIVEN name. Clergy with Latin patronymics mostly have
+fathers recorded in the vernacular, so the plan holds `Erici`/`Olai`/`Petri` only as given names
+(`('Erici','given')` -> `Q110012183`), bearers get `P735` rather than `P5056`, the patronymic items
+go unused, and `Olavi` never became a patronymic item. Secondary: `Erici`'s `P144` names only
+`Eric`, while fathers carry `Ericus` (`Q18066804`) and other forms, and 8 bearers (6 Petri, 2 Olai)
+meet every condition of the rule and are still unlinked. The rest have no father in the tree or a
+father without an item, which the rule cannot resolve by design.
