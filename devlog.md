@@ -47005,3 +47005,18 @@ never an item, and `load_plan` drops stale lone-letter family rows -- 16 were in
 `name-item-plan.csv`, 11 of them marked `create` (`N.`, `Ø.`, `S`, `I.`, `R.` ...). Latin only:
 the first version of the letter pattern matched a single Han or Hangul character, which is a
 whole family name (`陳`, `김`), and the test pins that they survive.
+
+## 2026-09-24 — established women were being relabelled from married to maiden name
+
+*"you're actively backfilling existing female entries from their married name to their maiden
+name. I don't want that. That's a waste of edits."* The birth-name ground in `_label_corrections`
+existed to finish the 2026-08-29 switch to married labels: it replaced a live label that was one
+of the person's alias forms with ours. Since the 2026-09-21 ruling a woman's label is her maiden
+name and her married name the alias, so every woman already labelled by her married name read as
+a correction. Of the 50 corrections in the committed batch, **45** were exactly that (`Olalia
+Karine Sandsmark` -> `Jørgensen`, `Marit Olsdotter Lussi` -> `Haga`) and the other five made
+labels worse (`Madela Tolleivsdatter Tolleivsdtr Norheim`). The ground, its alias map and its
+`_birth_forms` helper are deleted: a policy change is not backfilled onto established items.
+
+The same reading applied to today's `d.y.`/`d.e.` pass, which wrote a native label wherever the
+live one differed: it is now additive only -- a language that already holds a label keeps it.

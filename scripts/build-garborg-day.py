@@ -1374,37 +1374,6 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
     return out
 
 
-def _birth_forms(label, alternates):
-    """Those `alternates` that differ from `label` in the LAST TOKEN ONLY — the birth form.
-
-    **The one part of `further_latin_names` that is a legitimate ground for a label
-    correction.** Our married-name flip swaps the surname and leaves the given names alone, so
-    the form it replaced shares every token but the last: `Bergitte Gunnbjørnsdatter Tengs`
-    against `Bergitte Gunnbjørnsdatter Aukland`. That is exactly what
-    § *The MARRIED name is the real name* makes the `Amul`.
-
-    **⛔ TAKING THE WHOLE COLUMN RE-CREATES THE FAILURE THIS GROUND WAS NARROWED AGAINST.**
-    Measured: it offered `Adolf Erik Nordenskiöld` -> `Nils Adolf Erik Nordenskiöld`,
-    `Anders Chydenius` -> `Anders Jacobsson Chydenius` and `Stina Piper` ->
-    `Christina Charlotta Piper` — Wikidata's labels being BETTER than ours — and
-    and the account owner's own label gaining the one middle name `CLAUDE.md` says in as many
-    words must never be emitted. 40 items, most of them wrong; 13 under this rule.
-
-    Computed from the LABEL rather than from `fields`, because `fields` keeps a person's FIRST
-    `NAME` record and Bergitte's first record is a plain string with no `SURN` or `_MARNM` at
-    all — the structured ones are records 1 and 2.
-    """
-    head = (label or "").split()
-    if len(head) < 2:
-        return set()
-    out = set()
-    for alt in alternates:
-        toks = alt.split()
-        if len(toks) == len(head) and toks[:-1] == head[:-1] and toks[-1] != head[-1]:
-            out.add(alt)
-    return out
-
-
 #: The hand-dictated label applications. See `_hand_label_applications`.
 LABEL_APPLICATIONS_FILE = ROOT / "reports" / "label-applications.tsv"
 
@@ -1763,8 +1732,6 @@ def _label_corrections(our_items, labels, table, state, fields=None,
     *"first amul added if applicable"* -- which is what stops a hand correction being
     silently overwritten.
     """
-    # The birth forms, so a correction can be recognised as one rather than guessed at.
-    aliases_of = {}
     theirs = {}
     dl = ROOT / "reports" / "derived-labels.csv"
     if dl.exists():
@@ -1772,30 +1739,6 @@ def _label_corrections(our_items, labels, table, state, fields=None,
         want_ids = set(our_items)
         for row in csv.DictReader(dl.open(encoding="utf-8")):
             if row["geni_id"] in want_ids:
-                # **`alias_names` alone could never fire for the reported case.**
-                # `Q141198835` Bergitte Gunnbjørnsdatter — the hinge of the three lines — has
-                # `SURN Tengs` and `_MARNM Aukland`, so § *The MARRIED name is the real name*
-                # makes `Aukland` the label and `Tengs` the `Amul`. But `alias_names` holds
-                # what `alias_from_married_name` builds, which is the MARRIED form and so the
-                # label again; the birth form was only ever in `further_latin_names`.
-                #
-                # **⛔ AND `further_latin_names` IS NOT THE FIX.** Taking that column whole
-                # re-creates the failure this ground was narrowed against: measured, it offered
-                # `Adolf Erik Nordenskiöld` -> `Nils Adolf Erik Nordenskiöld`,
-                # `Anders Chydenius` -> `Anders Jacobsson Chydenius`, `Stina Piper` ->
-                # `Christina Charlotta Piper` — Wikidata's labels being BETTER than ours — and
-                # and the account owner's own label gaining the one middle name `CLAUDE.md`
-                # says in as many words must never be emitted. 40 items, most of them wrong.
-                #
-                # So the ground is the BIRTH FORM specifically: `givn + surn`, the rendering
-                # our own married-name flip replaced. Nothing else in that column qualifies.
-                names = {a.strip()
-                         for a in (row.get("alias_names") or "").split(" | ") if a.strip()}
-                names |= _birth_forms(
-                    (row.get("label_mul") or row.get("label_en") or "").strip(),
-                    [a.strip() for a in (row.get("further_latin_names") or "").split(" | ")
-                     if a.strip()])
-                aliases_of[row["geni_id"]] = names
                 # **Wikidata's OWN label for this person, from the bulk store.** Non-empty
                 # means somebody outside this project labelled the item, which is what
                 # § *WIKIDATA'S LABEL BEATS OURS* protects. The generation-suffix ground
@@ -1870,7 +1813,8 @@ def _label_corrections(our_items, labels, table, state, fields=None,
             for _code, _native in native_generation_labels(
                     labels.get(geni_id, ""), _gen_key).items():
                 _native = qs(_native)
-                if (live_labels or {}).get((qid, _code)) != _native:
+                # Additive only: a language that already holds a label keeps it.
+                if not (live_labels or {}).get((qid, _code)):
                     out.append(f"#   {qid}: set the {_code} label to {_native!r}, the "
                                f"generation suffix as {_code} writes it")
                     out.append(f'{qid}\tL{_code}\t"{_native}"')
@@ -1952,64 +1896,16 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                     out.append(f"#   {qid}: set the {code} label")
                     out.append(f'{qid}\tL{code}\t"{value}"')
             continue
-        # **Only where the item literally holds the BIRTH name.** The first version corrected
-        # every difference, and its own output showed why that is wrong: it offered to rewrite
-        # `Carl August Ehrensvärd (1745-1800)` to `Carl August Ehrensvärd` and to strip
-        # `of Viby, heiress, lady of Händelöö` off Ingegerd Svantepolksdotter -- Wikidata's
-        # labels being BETTER than ours, and § *The purpose is to ADD to Wikidata, not to
-        # correct it* forbids exactly that. Matching against the birth-name alias makes this
-        # a correction of our own 2026-08-29 flip and nothing else.
-        if have not in aliases_of.get(geni_id, ()):
-            continue
-        # **A comment above EVERY line, not just the first.** `tests/test_p2600_batches.py`
-        # asserts it and was right to: these are five separate edits to a live item, and a
-        # reader scanning the batch to approve or delete one of them needs each to say what it
-        # does. One comment over a five-line group leaves four unexplained.
-        out.append(f"#   {qid}: holds {have!r}; ours is {want!r}")
-        out.append(f"#   {qid}: keep the outgoing label as an alias before it is replaced")
-        out.append(f'{qid}	Amul	"{have}"')
-        out.append(f"#   {qid}: set the mul label to {want!r}")
-        out.append(f'{qid}	Lmul	"{want}"')
-        out.append(f"#   {qid}: set the en label to {want!r}")
-        out.append(f'{qid}	Len	"{want}"')
-        # THE CJK HERE IS ADDITIVE ONLY, AND THIS GUARD IS THE WHOLE POINT OF IT.
-        #
-        # **What happened without it, 2026-09-14.** A Latin-label correction dragged
-        # `ja`/`zh`/`ko` along as a side effect and wrote them with `L`, which REPLACES.
-        # One batch, `#temporary_batch_1789348401596`, ran 01:14-01:25 UTC and did
-        # `set ja` 32 times, `set ko` 32 and `set zh` 31 -- 110 live CJK labels
-        # overwritten in eleven minutes.
-        #
-        # The case Emma found: Q236972 Fuxi held the correct `ja` and this wrote a
-        # katakana string over it. That string was `Yuxiong` -- the profile's SECOND
-        # `1 NAME` record -- transliterated letter by letter as though it were European.
-        # A bot restored the right one the next day; reports/restore-cjk-labels.qs puts
-        # the other 79 back.
-        #
-        # CLAUDE.md *Wikidata's label beats ours* is written about `mul`; it plainly
-        # governs these too. `_missing_cjk_labels` has said so in its own docstring since
-        # it was written -- *PURELY ADDITIVE, it never rewrites a label that exists* --
-        # and this path simply never had the same guard.
-        #
-        # AND THIS IS A GUARD, NOT A FIX FOR THE TRANSLITERATION. `label_in()` still
-        # renders any Latin string phonetically into katakana, which is right for a
-        # European name and wrong for a romanised Chinese one. The guard means it can no
-        # longer destroy a correct label; it does not mean it produces a correct one where
-        # none exists. That is the second defect in the queue item.
-        ja, zh, ko = label_in(want, table)
-        if ja:
-            for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
-                if (live_labels or {}).get((qid, code)):
-                    continue
-                out.append(f"#   {qid}: set the {code} label")
-                out.append(f'{qid}	L{code}	"{value}"')
+        # The BIRTH-NAME ground is DELETED, 2026-09-24. It finished the 2026-08-29 switch to
+        # married labels; three weeks on, all it still found was policy drift -- 45 of its 50
+        # corrections moved an established woman from her married to her maiden name after
+        # the 2026-09-21 ruling, *"a waste of edits"*, and the other five made labels worse
+        # (`Madela Tolleivsdatter Tolleivsdtr Norheim`). A policy change is not backfilled.
     if out:
         out = ["", "# " + "-" * 72,
-               "# LABEL CORRECTIONS -- existing items whose label is not what our tree now",
-               "#   says. derive-labels.py made the married form primary on 2026-08-29 and",
-               "#   these items predate it. The outgoing label is preserved as an Amul on",
-               "#   the line above the Lmul that replaces it, so nothing hand-written is",
-               "#   lost. This block SHRINKS as it is run -- it is not the clan block.",
+               "# LABEL CORRECTIONS -- our own items: an abbreviation expanded, a generation",
+               "#   suffix placed, a relational label given its name, a native d.y./d.e. label",
+               "#   added. A policy change is never backfilled onto established labels.",
                "# " + "-" * 72] + out
     return out
 
