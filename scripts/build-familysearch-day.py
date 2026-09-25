@@ -353,8 +353,9 @@ def date_row(raw):
 def name_plan(rec):
     """`(primary, aliases)` — the label this person goes under and the forms beside it.
 
-    ⛔ **`CLAUDE.md`, ruled 2026-09-21: a woman goes under her MAIDEN name, a man under his
-    MARRIED name.** FamilySearch writes the maiden form as the untyped `1 NAME` and the married
+    ⛔ **Reversed 2026-09-25: everybody goes under the MARRIED name again, where the married form
+    carries the given name.** The 2026-09-21 ruling it replaces: a woman went under her MAIDEN
+    name, a man under his MARRIED name. FamilySearch writes the maiden form as the untyped `1 NAME` and the married
     one as `2 TYPE married`, so the two sexes read opposite ends of the same pair of fields:
 
         F   mul = the untyped NAME          the married form becomes an Amul
@@ -400,7 +401,13 @@ def name_plan(rec):
 
     birth = label(untyped[0]) if untyped else ""
     wed = label(married[0]) if married else ""
-    if rec["sex"] == "M" and wed:
+    # ⛔ **Reversed 2026-09-25: everybody goes under the married name** (`namemodel.married_is_primary`)
+    # -- but only a married form that carries the person's own given name. FamilySearch often
+    # records the married name as surnames alone (`Henrikson Guntersberg` for Kirstine
+    # Trondsdatter), and making that the label is exactly the `Q141492819` `Talgje` defect.
+    first = birth.split()[0].casefold() if birth else ""
+    if wed and namemodel.married_is_primary(rec["sex"]) and (
+            not birth or first in wed.casefold().split()):
         primary, displaced = wed, birth
     else:
         primary, displaced = birth or wed, (wed if birth else "")

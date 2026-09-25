@@ -47565,3 +47565,30 @@ composer's married branch building `given + _MARNM` with `given` EMPTY: label `T
 `Marita/given`, that `drop_marker_surname` keeps it, and `names_a_relative` is false. Not
 reproduced yet, so the forward fix is a guard on the SHAPE: a married label that does not carry
 the person's given name is never emitted. That is the next commit.
+
+## 2026-09-25 — the married name leads again, and a married label must carry the given name
+
+The rest of the `Q141492819` item.
+
+- **Reversed: everybody goes under the married name.** *"reverse course on the undo of the
+  married-name handling"* is read as undoing the 2026-09-21 switch that put women under their
+  maiden names. Her own label, `Marite Bergesdatter Talgje`, is the married form.
+  `namemodel.married_is_primary` returns True for every sex; `CLAUDE.md`, the two tests pinning the
+  old rule, and the FamilySearch builder follow. The 2026-09-24 no-backfill ruling stands.
+  **Guessed and recorded**: Emma had asked for no questions for six hours.
+- **Forward guard.** In `build-garborg-day.py`, a married person whose `GIVN` yields no
+  given/patronymic tokens keeps the derived label instead of the bare `_MARNM`. In
+  `build-familysearch-day.py`, a married form leads only if it carries the person's first given
+  name: Kirstine Trondsdatter's married form is `Henrikson Guntersberg`, surnames alone.
+- **Backward.** A census of all 8,350 items this account created
+  (`reports/garborg-qids.tsv` x live labels x `display-names`) found **7** whose live `mul` is
+  surname or married-name words only: `Q141492819` `Talgje`, `Q141529094` `Viland`,
+  `Q141511317` `Eriksdatter Braut`, `Q141487959` `Foss`, `Q141548981` `von Stauden`,
+  `Q141498427` `Gustavsson`, `Q141533935` `Grøsfjell`. The other six get `mul`/`en`/`ja`/`zh`/`ko`
+  in `reports/label-applications.tsv`, composed in the married shape (`Kari Oddsdatter Foss`,
+  `Matthias von Stauden II` ...). 33 more lack a given-name token only because the label uses
+  another spelling (`Jaakko Chydenius` for `Jakob`); those are real names and are left alone.
+- **Cause.** Today's classifier finds given names in all seven. Most carry Geni marks in `GIVN`
+  (`Eirikson*`, `Signe*`, `Torkelsen?`, `Berit,`), and older code must have read no given token
+  there. The exact old path was not reproduced (see the entry above); the guard is on the shape,
+  so it holds whatever produced it.

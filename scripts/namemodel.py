@@ -589,7 +589,15 @@ def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
 def married_is_primary(sex: str) -> bool:
     """Whether the MARRIED name is the label (`mul`/`en`) and the birth name the `Amul`.
 
-    ⛔ **A WOMAN GOES UNDER HER MAIDEN NAME; A MAN UNDER HIS MARRIED NAME.** Ruled 2026-09-21:
+    ⛔ **EVERYBODY GOES UNDER THE MARRIED NAME AGAIN. Reversed 2026-09-25**, on the queue item for
+    `Q141492819`: *"reverse course on the undo of the married-name handling"*, with her own label
+    given as `Marite Bergesdatter Talgje` -- her married surname. The 2026-09-21 switch below is
+    undone; the no-backfill ruling of 2026-09-24 still stands, so nothing established is relabelled.
+    A married label must still carry the person's given names -- `build-garborg-day.py` refuses the
+    bare married surname that made `Q141492819` read `Talgje`.
+
+    Superseded, kept for the reasoning: ⛔ **A WOMAN GOES UNDER HER MAIDEN NAME; A MAN UNDER HIS
+    MARRIED NAME.** Ruled 2026-09-21:
     *"we are going to switch so that women are made under their maiden names, not under their
     married names, because women under their married names was a source of confusion. Men are
     still under their married names."* A man's married name is rare and *"usually means a name
@@ -598,7 +606,7 @@ def married_is_primary(sex: str) -> bool:
     So only `F` flips to the maiden form. An unknown sex keeps the married form, the rule as it
     stood, because the ruling is about women and nothing says who an unknown is.
     """
-    return (sex or "").strip().upper() != "F"
+    return True
 
 
 def married_name_of(fields) -> str:

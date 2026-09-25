@@ -292,11 +292,11 @@ def test_every_created_item_carries_P2889(batch):
     assert len(ids) == creates, "an item was created that nobody can ever join"
 
 
-def test_a_woman_goes_under_her_maiden_name_and_a_man_under_his_married_one(batch):
-    """⛔ Ruled 2026-09-21, and the two sexes read opposite ends of the same pair of fields.
-
-    FamilySearch writes the maiden form as the untyped `1 NAME` and the married one as
-    `2 TYPE married`, so getting this backwards is one character of code and 215 women.
+def test_a_married_form_leads_only_when_it_carries_the_given_name(batch):
+    """⛔ Reversed 2026-09-25: the married name leads for everybody -- but Kirstine's FamilySearch
+    married form is `Henrikson Guntersberg`, surnames alone, and a label without the given name
+    is the `Q141492819` `Talgje` defect. So she keeps the full birth form and Trond (whose
+    married form `Trond Benkestok` carries his name) leads with it, as before.
     """
     assert 'LAST\tLmul\t"Kirstine Trondsdatter Benkestok"' in batch
     assert 'LAST\tAmul\t"Henrikson Guntersberg"' in batch

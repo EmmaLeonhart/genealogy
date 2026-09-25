@@ -7743,6 +7743,12 @@ def main():
 
             given = [t for t, u, _o in classify_fields(f_.get("givn", ""), "")
                      if u in ("given", "patronymic")]
+            # ⛔ **A MARRIED LABEL WITHOUT THE PERSON'S GIVEN NAMES IS NEVER BUILT.** With `given`
+            # empty this made the label the bare married surname: `Q141492819` went out as
+            # `Talgje`, and a census on 2026-09-25 found 7 of 8,350 created items shaped that way.
+            # With no given tokens the derived label stands and the married form is not flipped in.
+            if is_married and not given:
+                is_married = False
             # **The expansion has to happen HERE, not on `label`.** For a married person
             # `primary` is rebuilt out of the raw `GIVN` and `_MARNM` fields, so an expansion
             # applied to `label` upstream is thrown away -- which is exactly how

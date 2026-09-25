@@ -209,7 +209,7 @@ def main() -> int:
             for row in csv.DictReader(handle):
                 if row.get("sex"):
                     sex[row["geni_id"]] = row["sex"]
-    print(f"{sum(1 for v in sex.values() if v == 'F'):,} women take the maiden name as label")
+    print(f"{len(sex):,} people with a recorded sex (the married name leads for all, 2026-09-25)")
 
     by_person: dict[str, list[dict]] = defaultdict(list)
     with open(SOURCE, encoding="utf-8", newline="") as handle:
