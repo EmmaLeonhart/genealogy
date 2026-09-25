@@ -47592,3 +47592,18 @@ The rest of the `Q141492819` item.
   (`Eirikson*`, `Signe*`, `Torkelsen?`, `Berit,`), and older code must have read no given token
   there. The exact old path was not reproduced (see the entry above); the guard is on the shape,
   so it holds whatever produced it.
+
+## 2026-09-25 — the Rømer ring seed joined to the owner's ancestry
+
+The "one unrecorded parent link" was Ingrid Ølversdatter Rømer (`6000000225709965832`, in the
+owner's ancestry at generation 19) to her father `Q141450322` Ølver Rømer
+(`6000000002621242041`). When `reports/owner-ancestors.tsv` was built, her only recorded father
+was the merged-away husk `6000000227289508960`, which has no parents of its own, so the walk
+stopped there. Today's `derived-family.csv` gives her both fathers (the merge landed in the tree).
+`build-owner-ancestors.py` needed no change: it is hand-run and the file was stale.
+
+Rebuilt from the committed tree with no Geni fetch: **8,254 -> 9,991 ancestors**. Ølver is at
+generation 19 and his parents (`6000000002893375079`, `6000000004533169633`) at 20. One row
+dropped, `6000000227222618886`, which has no relations in today's tree. **The ledger half was
+already done**: `garborg-qids.tsv` pairs `Q141450322` with `6000000002621242041` and holds no
+row for the husk.

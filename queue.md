@@ -29,11 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Record the missing parent link between the owner's ancestry and the Rømer ring seed.** It is
-  one unrecorded link; `Q141450322` Olfvir / Ølver Rømer (`6000000002621242041`) is a
-  `PRIORITY_ANCESTOR_SEEDS` ring seed. Work it from data on disk or FamilySearch; no Geni fetch.
-  Also owed: the ledger row for `Q141450322` pairs the husk id `6000000227289508960`, which
-  redirects to `6000000002621242041`.
 - **The FamilySearch zipper, done properly.** Checked on one family and a 16-pair Wikidata
   cross-check only. Measure it across all 4,863 pairs, work out what the 1,351 ambiguous slots
   need, and handle FamilySearch's own duplicate records (two ids, one person).
