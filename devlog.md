@@ -47441,3 +47441,17 @@ Dry run over all 8,959 reports: parents resolved to a Geni id 1,417,687 -> 1,418
 strings 1,605 -> 1,128, 340 placed by row order, conflicts 1,833 -> 1,834. Per child, compared
 against the previous version: nobody lost a parent. One more child gets a Geni-id parent, and 21
 children that used to get nothing now get a label-only pair.
+
+## 2026-09-25 — descendant reports: conflicting parent slots decided by years, 1,834 -> 836
+
+A conflicting slot is one child voted two Geni ids for one parent across reports. Sampled, these are
+namesakes a generation apart: Zita of Bourbon-Parma (b. 1892) was voted both Maria Antónia de
+Bragança b. 1862 and her namesake b. 1903. `CLAUDE.md` says *names lie and years decide*, so
+`parse-sweep-trees.py` (`ad75b34cd`) now keeps the one candidate born 13 to 70 years before the
+child (55 for a mother) who was not dead before the birth (a father a year before). It reads the
+report's years first, then `derived-facts`. Exactly one fitting candidate takes the slot; otherwise
+the slot is still dropped. All 10 sampled decisions are right.
+
+Dry run: 998 slots decided, dropped 1,834 -> 836, parents added onto existing corpus families
+19 -> 173. The zipper identifies 52 fewer label people, because those slots now hold the real
+Geni id directly.

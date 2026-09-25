@@ -34,8 +34,8 @@ the tool not being throttled correctly."*
   parents placed by row order. **Measured per CHILD on 2026-09-25**, not per row: 3,713 distinct
   children get a Geni-id parent from no report at all. 2,349 of them have `<private>` parents and
   1,364 have named ones, and each still gets a label-only pair. (The old 33,059 counted every row
-  in every report.) Left: the **1,364 named**, **1,833 conflicting parent slots** (one child, two
-  ids for one parent across reports), and **1,128 parent strings with no split** (down from 1,605 on 2026-09-25; mostly royal titles with `and` in them, like `King of Denmark and Norway`). Ruled out by
+  in every report.) Left: the **1,364 named**, **836 conflicting parent slots** (one child, two
+  ids for one parent across reports; 998 of 1,834 decided by years on 2026-09-25, and the rest lack years or have several that fit), and **1,128 parent strings with no split** (down from 1,605 on 2026-09-25; mostly royal titles with `and` in them, like `King of Denmark and Norway`). Ruled out by
   measurement: full-sibling propagation (0 distinct children) and the cross-report join (net -48).
 - **CI slow lane red: 11 failures, all `exports/sweep-parsed/`** (run `36011859223`).
   `test_gedcom_real_exports.py` does not know the `sweep-parsed` header or its `IL`/`FL` label
