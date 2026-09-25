@@ -153,12 +153,12 @@ def sex_of_relationship(rel: str) -> str:
 ROLES = ("Half brother of", "Half sister of", "Half sibling of", "Ex-husband of", "Ex-wife of",
          "Ex-partner of", "Son of", "Daughter of", "Child of", "Husband of", "Wife of",
          "Partner of", "Father of", "Mother of", "Parent of", "Brother of", "Sister of",
-         "Sibling of", "Fiancé of", "Fiancée of")
+         "Sibling of", "Fiancé of", "Fiancée of", "Widow of", "Widower of")
 ROLE_RE = re.compile(r"(?:^|(?<=\s))(%s) " % "|".join(re.escape(r) for r in ROLES))
 PARENT_ROLES = {"Son of": "M", "Daughter of": "F", "Child of": ""}
 #: The row person's sex implied by each spouse role; the spouse is then the other sex.
 SPOUSE_ROLES = {"Husband of": "M", "Wife of": "F", "Ex-husband of": "M", "Ex-wife of": "F",
-                "Partner of": "", "Ex-partner of": ""}
+                "Partner of": "", "Ex-partner of": "", "Widow of": "F", "Widower of": "M"}
 OWN_SEX = {"Father of": "M", "Mother of": "F", "Brother of": "M", "Sister of": "F",
            "Half brother of": "M", "Half sister of": "F"}
 TRUNCATION = re.compile(r"(«\s*less|\band \d+ others?;?|\bmore »)")
@@ -481,6 +481,16 @@ class Parse:
                     return
                 chosen = (a, b, ra, rb)
         if chosen is None:
+            # ⛔ **A TITLE WITH "and" IN IT DEFEATS THE SPLIT, NOT THE POSITION.** `Christian IV
+            # king of Denmark and Norway and Vibeke Kruse` names neither row exactly, so no cut
+            # resolves -- 1,625 rows on 2026-09-25, a few dozen royal couples swept many times.
+            # Row order may still have found the parent; take it into its own sex's slot and
+            # leave the other slot empty, since without a cut there is no name to hang a label on.
+            op = (order_parent or {}).get(gid)
+            if op and self.sex.get(op) in ("M", "F"):
+                self.parent_ids[gid].add((op, self.sex[op]))
+                self.stats["unsplit parent strings placed by row order"] += 1
+                return
             self.stats["parent strings with no resolvable split"] += 1
             return
         a, b, ra, rb = chosen

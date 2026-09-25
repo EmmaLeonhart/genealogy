@@ -47424,3 +47424,20 @@ The noticeboard check is suspended until 2026-10-05 in all four places (`7fe7109
 before. `ci`, `wikidata-edits`, `daily-batch-email`, `pipeline`, `pages`, `tree` and `review-decks`
 are re-enabled, ahead of 2026-10-01. Pipeline run `36147502168` passed the gate. The item's
 wording was to remove the hold, and that is done.
+
+## 2026-09-25 — descendant reports: widow roles, and unsplittable parent strings placed by row order
+
+The 1,625 parent strings that no cut resolves were read and sampled. They are a few dozen royal
+couples swept in many reports, whose titles carry their own `and`: `Christian IV king of Denmark and
+Norway and Vibeke Kruse`, `Oscar II, King of Sweden and Norway and Sophia of Nassau…`. Two fixes
+went into `parse-sweep-trees.py`:
+- **`Widow of` / `Widower of` are roles.** They were missing, so `… Widower of Katharine, Duchess of
+  Kent` bled into the parent cell and broke its split.
+- **A string that won't split falls back to row order.** `_order_parents` may already have placed
+  the parent by position, and that parent goes into its own sex's slot. The other slot stays
+  empty, because without a cut there is no name to hang a label on.
+
+Dry run over all 8,959 reports: parents resolved to a Geni id 1,417,687 -> 1,418,720, unsplittable
+strings 1,605 -> 1,128, 340 placed by row order, conflicts 1,833 -> 1,834. Per child, compared
+against the previous version: nobody lost a parent. One more child gets a Geni-id parent, and 21
+children that used to get nothing now get a label-only pair.
