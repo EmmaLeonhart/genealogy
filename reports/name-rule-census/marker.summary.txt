@@ -1,0 +1,74 @@
+# marker
+instances 113790  name-records 63370  people 59471  distinct tokens 26034
+
+## transitions
+   94568  (absent) -> given
+   16778  unknown -> given
+     857  (absent) -> given+given
+     727  married -> given+married
+     259  unknown+unknown -> given+unknown
+     229  family -> family+given
+     140  nickname -> given+nickname
+      89  unknown -> given+unknown
+      36  (absent) -> given+given+given
+      29  unknown+unknown -> given+given
+      21  married -> given+given+married
+      12  family+married -> family+given+married
+       8  unknown+unknown+unknown+unknown -> given+unknown+unknown+unknown
+       7  married+married -> given+married+married
+       6  unknown+unknown+unknown -> given+unknown+unknown
+       4  particle -> given
+       3  (absent) -> given+given+given+given
+       3  unknown+unknown+unknown -> given+given+given
+       3  unknown+unknown+unknown -> given+given+unknown
+       2  family -> family+given+given
+       2  unknown+unknown -> given+unknown+unknown
+       1  family+nickname -> family+given+nickname
+       1  married -> given+given+given+married
+       1  unknown -> given+given
+       1  unknown+unknown -> given+given+given
+       1  family+married+nickname -> family+given+married+nickname
+       1  nickname -> given+given+nickname
+       1  (absent) -> given+given+given+given+given+given
+
+## fields
+  108219  givn
+    2602  givn;nick
+    1387  givn;marnm
+    1045  givn;surn
+     423  givn;surn;marnm
+      59  givn;marnm;nick
+      34  givn;surn;nick
+      21  givn;surn;marnm;nick
+
+## top 30 tokens
+    1489  A   {'unknown->given@givn': 1416, 'unknown->given@givn;surn': 41, 'unknown->given@givn;nick': 14, 'unknown->given@givn;marnm': 11}
+    1371  E   {'unknown->given@givn': 1303, 'unknown->given@givn;surn': 28, 'unknown->given@givn;marnm': 15, 'unknown->given@givn;nick': 14}
+    1179  M   {'unknown->given@givn': 1047, 'unknown->given@givn;surn': 91, 'unknown->given@givn;surn;marnm': 18, 'unknown->given@givn;nick': 11}
+    1121  J   {'unknown->given@givn': 1078, 'unknown->given@givn;nick': 15, 'unknown->given@givn;surn': 14, 'unknown->given@givn;marnm': 7}
+    1056  I   {'unknown->given@givn': 987, 'unknown->given@givn;nick': 46, 'unknown->given@givn;surn': 5, 'unknown->given@givn;surn;marnm': 5}
+     878  Maria   {'(absent)->given@givn': 819, '(absent)->given@givn;nick': 45, '(absent)->given+given@givn': 10, 'unknown->given+unknown@givn': 4}
+     863  B   {'unknown->given@givn': 737, 'unknown->given@givn;surn': 67, 'unknown->given@givn;marnm': 26, 'unknown->given@givn;surn;marnm': 25}
+     826  H   {'unknown->given@givn': 725, 'unknown->given@givn;surn': 51, 'unknown->given@givn;marnm': 26, 'unknown->given@givn;surn;marnm': 15}
+     821  John   {'(absent)->given@givn': 793, '(absent)->given@givn;nick': 19, '(absent)->given@givn;surn': 4, '(absent)->given+given@givn': 2}
+     793  W   {'unknown->given@givn': 710, 'unknown->given@givn;surn': 52, 'unknown->given@givn;surn;marnm': 10, 'unknown->given@givn;marnm': 9}
+     784  L   {'unknown->given@givn': 725, 'unknown->given@givn;surn': 36, 'unknown->given@givn;surn;marnm': 13, 'unknown->given@givn;marnm': 5}
+     781  C   {'unknown->given@givn': 686, 'unknown->given@givn;surn': 59, 'unknown->given@givn;surn;marnm': 18, 'unknown->given@givn;nick': 7}
+     710  S   {'unknown->given@givn': 593, 'unknown->given@givn;surn': 64, 'unknown->given@givn;surn;marnm': 25, 'unknown->given@givn;marnm': 18}
+     704  Heinrich   {'(absent)->given@givn': 665, '(absent)->given@givn;nick': 34, '(absent)->given@givn;surn;marnm': 2, '(absent)->given+given@givn': 2}
+     694  Johann   {'(absent)->given@givn': 663, '(absent)->given@givn;nick': 27, '(absent)->given+given@givn': 4}
+     694  Wife   {'(absent)->given@givn': 692, '(absent)->given@givn;nick': 2}
+     664  William   {'(absent)->given@givn': 642, '(absent)->given@givn;nick': 18, 'nickname->given+nickname@givn;nick': 1, '(absent)->given@givn;surn;marnm': 1}
+     623  R   {'unknown->given@givn': 552, 'unknown->given@givn;surn': 38, 'unknown->given@givn;marnm': 10, 'unknown+unknown->given+unknown@givn': 7}
+     619  Anna   {'(absent)->given@givn': 598, '(absent)->given@givn;nick': 16, '(absent)->given+given@givn': 5}
+     608  Friedrich   {'(absent)->given@givn': 582, '(absent)->given@givn;nick': 23, 'nickname->given+nickname@givn': 1, 'nickname->given+nickname@givn;nick': 1}
+     538  Mary   {'(absent)->given@givn': 530, '(absent)->given@givn;nick': 5, 'nickname->given+nickname@givn;nick': 3}
+     520  z   {'unknown->given@givn': 260, 'unknown->given@givn;marnm': 127, 'unknown->given@givn;surn': 50, 'unknown+unknown->given+unknown@givn;marnm': 28}
+     483  P   {'unknown->given@givn': 458, 'unknown->given@givn;surn': 8, 'unknown->given@givn;nick': 7, 'unknown->given@givn;marnm': 6}
+     476  R.   {'(absent)->given@givn': 447, '(absent)->given+given@givn': 11, 'unknown->given@givn': 10, '(absent)->given+given+given@givn': 3}
+     469  F   {'unknown->given@givn': 439, 'unknown->given@givn;surn': 13, 'unknown->given@givn;marnm': 10, 'unknown->given@givn;surn;marnm': 5}
+     441  D   {'unknown->given@givn': 415, 'unknown->given@givn;surn': 15, 'unknown->given@givn;nick': 6, 'unknown->given@givn;surn;marnm': 3}
+     427  Raden   {'(absent)->given@givn': 326, 'married->given+married@givn;marnm': 75, '(absent)->given+given@givn': 20, '(absent)->given@givn;nick': 4}
+     422  G   {'unknown->given@givn': 383, 'unknown->given@givn;surn': 17, 'unknown->given@givn;marnm': 8, 'unknown->given@givn;surn;marnm': 6}
+     422  Jan   {'(absent)->given@givn': 395, '(absent)->given@givn;nick': 21, '(absent)->given+given@givn': 3, 'nickname->given+nickname@givn;nick': 2}
+     415  Wilhelm   {'(absent)->given@givn': 396, '(absent)->given@givn;nick': 14, '(absent)->given+given@givn': 5}

@@ -29,10 +29,25 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **The name-model fixes, measured across the whole tree.** Latin patronymics
-  (`LATIN_VERNACULAR`), `Jonæ` (`-ae`), the lone-letter surname rule (`N.`) and the marker rule
-  were each checked on handfuls of examples. Census every one over `display-names.csv` before and
-  after, and look at what each newly classifies.
+- **Fix the marker rule's four measured misreads** (`reports/name-rule-census/marker.csv.gz`,
+  2026-09-25). The 2026-09-24 narrowing recovered ~105k real given names and initials, and now lets
+  through: relationship words as given names (`Wife of William Lantham`, `Daughter of`, `Søn 1`,
+  1,841), lower-case connectors read as initials (`z` Polish *of* 520, `e`/`y` *and*, `o`, `h.`,
+  `b`; 1,446), `N N` read as two initials (159), and descriptive words (`Name not known`,
+  `Unnamed`; 275). Also exposed: Indonesian/Malay titles (`Raden`, `Raja`, `Sultan`, `Daeng`;
+  2,532) missing from the title list, and 175 regnal `I`/`V` with a dynasty in `SURN`
+  (`Christian I /Oldenburg/`) now given.
+- **Guard the `-ae` genitive in `SURN`** (`reports/name-rule-census/ae.csv`). Right in `GIVN`
+  (`Petrus Jonæ`); wrong for ~70 inherited surnames: the Tübingen `Andreae` family (~62,
+  `Johann Valentin /Andreae/`), Danish `Zachariae` (4), and the Romanian given name `Nicolae`
+  (4). Unlike `LATIN_VERNACULAR` it has no father check.
+- **Guard `LATIN_VERNACULAR` by position** (`reports/name-rule-census/latin_vernacular.csv`). ~76
+  of 541 are 19th-century Norwegian/Danish/Finnish given names turned patronymic because the father
+  carries the vernacular name: `Olai Olsen` (41), `Nicolai Edvard /Nielsen/` (30), `Olavi` (5,
+  though the code comment itself says `Olavi` is a Finnish given name).
+- **Lone-letter surname: `Å` and `Ö` are real one-letter farm names** (5 records,
+  `Ingvald /Å/`) and are now `unknown`. The other 1,056 of 1,061 changes are right (`N.`, `Y.`,
+  `Ø`, connectors `é`/`á`/`í`).
 - **The ration and the pacing, seen working end to end.** Edit run `36054472568` (dispatched
   2026-09-24, 500, live) is the first test: confirm names -> 30 people -> ring go out in order,
   20-50 s apart, and what stops it.

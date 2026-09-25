@@ -1,0 +1,32 @@
+# ae
+instances 194  name-records 193  people 177  distinct tokens 14
+
+## transitions
+     110  given -> patronymic
+      82  family -> patronymic
+       2  family+given -> patronymic+patronymic
+
+## fields
+     107  givn
+      55  surn;marnm
+      25  surn
+       3  givn;nick
+       2  givn;surn
+       1  surn;marnm;nick
+       1  surn;nick
+
+## top 30 tokens
+      88  Andreae   {'family->patronymic@surn;marnm': 44, 'given->patronymic@givn': 24, 'family->patronymic@surn': 18, 'given->patronymic@givn;nick': 1}
+      27  Andreæ   {'given->patronymic@givn': 20, 'family->patronymic@surn;marnm': 3, 'family->patronymic@surn': 2, 'family+given->patronymic+patronymic@givn;surn': 1}
+      21  Jonae   {'given->patronymic@givn': 19, 'family+given->patronymic+patronymic@givn;surn': 1, 'family->patronymic@surn;marnm': 1}
+      21  Jonæ   {'given->patronymic@givn': 15, 'family->patronymic@surn;marnm': 5, 'family->patronymic@surn': 1}
+       9  Matthiae   {'given->patronymic@givn': 8, 'given->patronymic@givn;nick': 1}
+       6  Matthiæ   {'given->patronymic@givn': 6}
+       5  Thomae   {'given->patronymic@givn': 5}
+       5  Zachariae   {'family->patronymic@surn': 3, 'given->patronymic@givn': 2}
+       4  Nicolae   {'given->patronymic@givn': 4}
+       3  Eliae   {'given->patronymic@givn': 2, 'family->patronymic@surn': 1}
+       2  Zachariæ   {'family->patronymic@surn;marnm': 1, 'given->patronymic@givn': 1}
+       1  JONAE   {'given->patronymic@givn': 1}
+       1  Jeremiae   {'given->patronymic@givn;nick': 1}
+       1  Jeremiæ   {'family->patronymic@surn;marnm': 1}

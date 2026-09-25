@@ -47641,3 +47641,19 @@ name and date parse), so they stop splitting one slot into two candidates.
 Both changes take effect on the next `tree.yml` run, which runs the zipper in CI; its new pair and
 ambiguity counts are the measurement of the fix. They are not measured here, because the walk
 needs the full merged tree.
+
+## 2026-09-25 — the four name-model rules censused over every name record
+
+Every row of `display-names.csv` (**2,786,897 name records**) through `classify_fields`, twice:
+with one rule switched off (BEFORE) and as committed (AFTER). The father's name is supplied as
+`build-garborg-name-items.py` does. Every changed token is in `reports/name-rule-census/`, with a
+transition summary per rule.
+
+| rule | changed | people | right | looks wrong |
+| --- | --- | --- | --- | --- |
+| `LATIN_VERNACULAR` | 541 | 485 | clergy genitives (`Olaus Laurentii`, father Lars) | ~76: `Olai`/`Nicolai`/`Olavi` as real given names |
+| `-ae` genitive | 194 | 177 | `GIVN` (`Petrus Jonæ`) | ~70 in `SURN`: `Andreae` family, `Zachariae`, `Nicolae` |
+| lone letter | 1,061 | 964 | farm qualifiers and connectors (`N.` 428, `Y.` 127) | 5: `Å`, `Ö` farm names |
+| marker narrowing | 113,790 | 59,471 | ~105k given names and initials recovered | ~7-8k: relation words, `z`/`e`/`y`, `N N`, titles |
+
+Each "looks wrong" set is now a queue item with its counts and examples.

@@ -1,0 +1,51 @@
+# latin_vernacular
+instances 541  name-records 541  people 485  distinct tokens 27
+
+## transitions
+     376  given -> patronymic
+     125  married -> patronymic
+      28  family -> patronymic
+       5  family+given -> patronymic+patronymic
+       4  given+married -> patronymic+patronymic
+       2  given+given -> patronymic+patronymic
+       1  given+nickname -> nickname+patronymic
+
+## fields
+     366  givn
+     123  marnm
+      14  surn;marnm
+      13  givn;nick
+      13  surn
+       5  givn;surn
+       4  givn;marnm
+       2  marnm;nick
+       1  surn;nick
+
+## top 30 tokens
+     133  Olai   {'given->patronymic@givn': 102, 'married->patronymic@marnm': 23, 'family->patronymic@surn;marnm': 2, 'given+given->patronymic+patronymic@givn': 2}
+      94  Petri   {'given->patronymic@givn': 59, 'married->patronymic@marnm': 22, 'family->patronymic@surn;marnm': 4, 'family->patronymic@surn': 4}
+      78  Nicolai   {'given->patronymic@givn': 60, 'married->patronymic@marnm': 10, 'given+married->patronymic+patronymic@givn;marnm': 2, 'family->patronymic@surn;marnm': 2}
+      53  Johannis   {'given->patronymic@givn': 39, 'married->patronymic@marnm': 10, 'given+nickname->nickname+patronymic@givn;nick': 1, 'married->patronymic@marnm;nick': 1}
+      37  Erici   {'given->patronymic@givn': 20, 'married->patronymic@marnm': 12, 'family->patronymic@surn': 3, 'family->patronymic@surn;nick': 1}
+      31  Laurentii   {'given->patronymic@givn': 17, 'married->patronymic@marnm': 12, 'family->patronymic@surn;marnm': 2}
+      13  Georgii   {'given->patronymic@givn': 7, 'given->patronymic@givn;nick': 3, 'family+given->patronymic+patronymic@givn;surn': 1, 'family->patronymic@surn': 1}
+      13  Magni   {'given->patronymic@givn': 6, 'married->patronymic@marnm': 6, 'family->patronymic@surn;marnm': 1}
+      13  Martini   {'given->patronymic@givn': 12, 'married->patronymic@marnm': 1}
+      12  Olavi   {'given->patronymic@givn': 8, 'married->patronymic@marnm': 3, 'given->patronymic@givn;nick': 1}
+      11  Jacobi   {'given->patronymic@givn': 9, 'married->patronymic@marnm': 2}
+      10  Benedicti   {'given->patronymic@givn': 6, 'married->patronymic@marnm': 3, 'given->patronymic@givn;nick': 1}
+       6  Christophori   {'married->patronymic@marnm': 4, 'family->patronymic@surn': 1, 'given->patronymic@givn': 1}
+       5  Haquini   {'given->patronymic@givn': 1, 'given->patronymic@givn;nick': 1, 'married->patronymic@marnm;nick': 1, 'family->patronymic@surn;marnm': 1}
+       5  Michaelis   {'given->patronymic@givn': 2, 'married->patronymic@marnm': 2, 'given->patronymic@givn;nick': 1}
+       4  Andreæ   {'married->patronymic@marnm': 4}
+       4  Laurenti   {'given->patronymic@givn': 4}
+       4  Matthiæ   {'married->patronymic@marnm': 4}
+       3  Canuti   {'given->patronymic@givn': 2, 'married->patronymic@marnm': 1}
+       2  Ericii   {'married->patronymic@marnm': 1, 'given->patronymic@givn': 1}
+       2  Johanni   {'given->patronymic@givn': 2}
+       2  Olaii   {'given->patronymic@givn': 2}
+       2  Svenois   {'married->patronymic@marnm': 2}
+       1  Georgi   {'given->patronymic@givn': 1}
+       1  Johannii   {'given->patronymic@givn': 1}
+       1  Pauli   {'given->patronymic@givn': 1}
+       1  Petrii   {'given->patronymic@givn': 1}

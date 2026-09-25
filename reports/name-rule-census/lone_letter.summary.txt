@@ -1,0 +1,55 @@
+# lone_letter
+instances 1061  name-records 1053  people 964  distinct tokens 35
+
+## transitions
+     425  family -> unknown
+     384  married -> unknown
+     116  particle -> unknown
+      74  family+given -> given+unknown
+      51  given+married -> given+unknown
+       5  family+family -> unknown+unknown
+       2  particle+particle -> particle+unknown
+       2  family+family+given+given -> given+given+unknown+unknown
+       1  family+married -> unknown+unknown
+       1  married+married -> unknown+unknown
+
+## fields
+     484  marnm
+     385  surn
+      72  givn;surn
+      56  givn;marnm
+      49  surn;marnm
+      12  givn;surn;marnm
+       3  surn;nick
+
+## top 30 tokens
+     428  N.   {'family->unknown@surn': 145, 'married->unknown@marnm': 142, 'family+given->given+unknown@givn;surn': 57, 'given+married->given+unknown@givn;marnm': 46}
+     127  Y.   {'married->unknown@marnm': 62, 'family->unknown@surn': 60, 'family->unknown@surn;marnm': 5}
+     118  D.   {'particle->unknown@marnm': 105, 'particle->unknown@surn': 10, 'particle+particle->particle+unknown@givn;surn': 2, 'particle->unknown@surn;marnm': 1}
+      83  H.   {'family->unknown@surn': 50, 'married->unknown@marnm': 31, 'family->unknown@surn;nick': 1, 'family->unknown@surn;marnm': 1}
+      39  S.   {'family->unknown@surn': 16, 'married->unknown@marnm': 13, 'family->unknown@surn;marnm': 8, 'family+given->given+unknown@givn;surn': 1}
+      32  M.   {'family->unknown@surn': 16, 'married->unknown@marnm': 10, 'family+given->given+unknown@givn;surn': 3, 'family->unknown@surn;marnm': 3}
+      24  A.   {'family->unknown@surn': 14, 'married->unknown@marnm': 9, 'family->unknown@surn;nick': 1}
+      19  U.   {'family->unknown@surn': 11, 'married->unknown@marnm': 7, 'family->unknown@surn;marnm': 1}
+      16  Ó   {'married->unknown@marnm': 15, 'married->unknown@givn;marnm': 1}
+      15  O.   {'married->unknown@marnm': 10, 'family->unknown@surn': 3, 'given+married->given+unknown@givn;marnm': 1, 'family+given->given+unknown@givn;surn': 1}
+      14  G.   {'married->unknown@marnm': 5, 'family->unknown@surn': 5, 'family->unknown@surn;marnm': 3, 'given+married->given+unknown@givn;marnm': 1}
+      13  L.   {'family->unknown@surn': 6, 'married->unknown@marnm': 5, 'family->unknown@surn;marnm': 1, 'family+given->given+unknown@givn;surn': 1}
+      13  à   {'married->unknown@marnm': 7, 'family->unknown@surn': 3, 'family->unknown@surn;marnm': 3}
+      13  é   {'married->unknown@marnm': 9, 'married->unknown@givn;marnm': 2, 'family->unknown@surn': 1, 'family->unknown@givn;surn;marnm': 1}
+      10  K.   {'married->unknown@marnm': 6, 'family->unknown@surn': 4}
+      10  R.   {'married->unknown@marnm': 3, 'family->unknown@surn': 3, 'family->unknown@givn;surn': 2, 'given+married->given+unknown@givn;marnm': 2}
+      10  Ø   {'married->unknown@marnm': 8, 'family->unknown@surn;marnm': 1, 'family->unknown@surn': 1}
+       9  J.   {'married->unknown@marnm': 8, 'family->unknown@surn': 1}
+       9  á   {'family->unknown@surn': 5, 'married->unknown@marnm': 4}
+       8  B.   {'married->unknown@marnm': 4, 'family->unknown@surn': 4}
+       8  F.   {'family->unknown@surn': 4, 'married->unknown@marnm': 3, 'family+given->given+unknown@givn;surn': 1}
+       7  ä   {'married->unknown@marnm': 4, 'family->unknown@surn;marnm': 1, 'family->unknown@surn': 1, 'married->unknown@givn;marnm': 1}
+       6  C.   {'family->unknown@surn': 4, 'married->unknown@marnm': 2}
+       6  E.   {'family->unknown@surn': 3, 'married->unknown@marnm': 2, 'family+given->given+unknown@givn;surn': 1}
+       4  Å   {'family->unknown@surn': 2, 'family->unknown@givn;surn': 1, 'family->unknown@surn;marnm': 1}
+       4  ø   {'family->unknown@surn': 3, 'married->unknown@marnm': 1}
+       3  P.   {'married->unknown@marnm': 2, 'family->unknown@surn': 1}
+       3  W.   {'family->unknown@surn': 1, 'family->unknown@surn;marnm': 1, 'married->unknown@marnm': 1}
+       2  Z.   {'family->unknown@surn': 1, 'family->unknown@surn;marnm': 1}
+       2  æ   {'married->unknown@marnm': 1, 'family->unknown@surn': 1}
