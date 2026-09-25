@@ -832,7 +832,7 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
     """
     import sys
     sys.path.insert(0, str(REPO / "scripts"))
-    from namemodel import classify_fields, load_plan
+    from namemodel import classify_fields, clean_fields, load_plan
 
     if not NAME_ITEMS.exists():
         pytest.skip("no name-items batch generated")
@@ -847,12 +847,17 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
         for row in csv.DictReader(f):
             if row["geni_id"] in created and row["geni_id"] not in fields:
                 fields[row["geni_id"]] = {k: row.get(k, "")
-                                          for k in ("givn", "surn", "nick", "marnm")}
+                                          for k in ("givn", "surn", "nick", "marnm", "nsfx")}
 
     plan, proposed = load_plan(), name_item_tokens()
     missing = []
     for geni_id, person in fields.items():
-        for token, usage, _ordinal in classify_fields(**person):
+        # The model classifies the CLEANED fields (`namemodel.clean_fields`): a title tail
+        # like `i Sverige` or `till Skälboö` is not a surname, and reading the raw field
+        # flagged it as a married name the model never emits.
+        clean = clean_fields(person)
+        for token, usage, _ordinal in classify_fields(clean["givn"], clean["surn"],
+                                                      clean["nick"], clean["marnm"]):
             if usage != "married":
                 continue
             # The parenthesised exclusion that stood here is GONE, and deliberately.

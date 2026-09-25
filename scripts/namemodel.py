@@ -3038,6 +3038,36 @@ def classify(label: str) -> list[tuple[str, str, int]]:
     return out
 
 
+def clean_fields(fields):
+    """The GEDCOM name fields as the model reads them: a description `GIVN` emptied, and the
+    suffix, title tail, leading title and leading territorial designation cut from `GIVN`,
+    `SURN` and `_MARNM`. `statements_for` classifies THIS, not the raw fields -- so anything
+    checking what the model emits (`tests/test_garborg_day_batch.py`) must clean the same way,
+    or `Olof Galle i Sverige`'s `Sverige` reads as a married surname the model never meant.
+    """
+    fields = dict(fields)
+    # **⛔ THE DROP CHAIN MUST NOT MANUFACTURE A NAME OUT OF "THERE IS NO NAME".**
+    # `drop_leading_title` reads `Stillborn` as a title, so `Stillborn Son` arrived at
+    # `classify_fields` as `Son` and `Stillborn daughter 1` as `daughter 1` -- and
+    # `classify_fields` recognises the phrase WHOLE, through `is_description`, so it never
+    # saw one. That produced `P735` given name *Son*, *daughter* and *1* on **296**
+    # stillborn people. Ruled 2026-08-30: stop assigning names to a person who has no
+    # names at all.
+    #
+    # It was invisible because `build-garborg-day` gated the whole name block on its own
+    # `_has_given_name`, which reads the RAW field and so answered correctly. The guard
+    # masked the defect instead of fixing it, and removing the guard is what surfaced it.
+    if is_description(fields.get("givn", "")):
+        fields["givn"] = ""
+    for _f in ("givn", "surn", "marnm"):
+        if fields.get(_f):
+            if fields.get("nsfx"):
+                fields[_f] = drop_name_suffix(fields[_f], fields["nsfx"])
+            fields[_f] = drop_leading_territorial(
+                drop_leading_title(drop_title_tail(fields[_f])))
+    return fields
+
+
 def statements_for(label, plan, geni_id, father_qid=None, fields=None,
                    sex="", father_name="", father_aka="", father_given=""):
     """(statement lines, notes) for one person's name.
@@ -3076,26 +3106,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         label = drop_name_suffix(label, fields["nsfx"])
     label = drop_title_tail(label)
     if fields:
-        fields = dict(fields)
-        # **⛔ THE DROP CHAIN MUST NOT MANUFACTURE A NAME OUT OF "THERE IS NO NAME".**
-        # `drop_leading_title` reads `Stillborn` as a title, so `Stillborn Son` arrived at
-        # `classify_fields` as `Son` and `Stillborn daughter 1` as `daughter 1` -- and
-        # `classify_fields` recognises the phrase WHOLE, through `is_description`, so it never
-        # saw one. That produced `P735` given name *Son*, *daughter* and *1* on **296**
-        # stillborn people. Ruled 2026-08-30: stop assigning names to a person who has no
-        # names at all.
-        #
-        # It was invisible because `build-garborg-day` gated the whole name block on its own
-        # `_has_given_name`, which reads the RAW field and so answered correctly. The guard
-        # masked the defect instead of fixing it, and removing the guard is what surfaced it.
-        if is_description(fields.get("givn", "")):
-            fields["givn"] = ""
-        for _f in ("givn", "surn", "marnm"):
-            if fields.get(_f):
-                if fields.get("nsfx"):
-                    fields[_f] = drop_name_suffix(fields[_f], fields["nsfx"])
-                fields[_f] = drop_leading_territorial(
-                    drop_leading_title(drop_title_tail(fields[_f])))
+        fields = clean_fields(fields)
         # **`father_name` is what turns a `-sen` token into the right kind of statement.**
         # The test: the same token as the father means an inherited surname (`P734`), a
         # stem matching the father's GIVEN name means a patronymic (`P5056`). Without it the
