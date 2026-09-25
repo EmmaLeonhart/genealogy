@@ -80,6 +80,7 @@ import collections
 import csv
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -647,6 +648,35 @@ def load_familysearch():
             for k in c:
                 rel[k]["p22"].update(h)
                 rel[k]["p25"].update(w)
+    # ⛔ **FAMILYSEARCH HOLDS DUPLICATES OF ITS OWN**, two ids for one person (`GDQB-KJQ` and
+    # `PNMB-9FS` are both Anna Danielsdotter). Two records with the same folded name, the same
+    # birth year and a parent in common are one person: 9 on 2026-09-25. Left apart,
+    # they are two candidates in one slot for one person of ours, so the slot is refused. The
+    # later id (sorted) is folded into the earlier one before the walk.
+    def fold(s):
+        s = unicodedata.normalize("NFKD", (s or "").casefold())
+        return " ".join(re.findall(r"[a-z]+", "".join(c for c in s if not unicodedata.combining(c))))
+    by_key = collections.defaultdict(list)
+    for fs in sorted(rel):
+        if name.get(fs) and year.get(fs) is not None:
+            by_key[(fold(name[fs]), year[fs])].append(fs)
+    alias = {}
+    for ids in by_key.values():
+        for i, a in enumerate(ids):
+            for b in ids[i + 1:]:
+                if b not in alias and a not in alias and (
+                        (rel[a]["p22"] | rel[a]["p25"]) & (rel[b]["p22"] | rel[b]["p25"])):
+                    alias[b] = a
+    for b, a in alias.items():
+        for p, v in rel.pop(b).items():
+            rel[a][p].update(v)
+    for slots in rel.values():
+        for p in slots:
+            slots[p] = {alias.get(x, x) for x in slots[p]} - {""}
+    for fs, slots in rel.items():
+        for p in slots:
+            slots[p].discard(fs)
+    print(f"{len(alias)} FamilySearch duplicate records folded into their twin")
     theirs = {fs: {p: " | ".join(sorted(v)) for p, v in slots.items()}
               for fs, slots in rel.items()}
     print(f"{len(theirs):,} FamilySearch people with family relationships, "
@@ -670,6 +700,16 @@ def main_familysearch():
     """
     theirs, their_name, their_year, their_sex = load_familysearch()
     ours, our_name, our_year, our_sex = load_ours()
+    # ⛔ **OUR OWN RENDER OF A FAMILYSEARCH PERSON IS NOT A CANDIDATE FOR THAT PERSON.** The
+    # merged tree carries `FS<id>` people -- the render of FamilySearch people no Geni profile was
+    # paired to -- and they sat in our slots competing with the very records they came from:
+    # 2,286 of 2,449 ambiguous slots on 2026-09-25 held one, and 1,563 fall to one-against-one
+    # once they go. They are dropped from our side, so the walk finds the Geni person or nobody.
+    compact = {fs.replace("-", "") for fs in set(theirs) | set(their_name)}
+    renders = [g for g in ours if g.startswith("FS") and g[2:] in compact]
+    for g in renders:
+        del ours[g]
+    print(f"{len(renders):,} of our FS<id> renders dropped as candidates for their own record")
 
     stated_g, stated_q = collections.defaultdict(set), collections.defaultdict(set)
     anchors = dict(FS_ROOTS)

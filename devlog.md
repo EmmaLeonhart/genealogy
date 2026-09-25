@@ -47607,3 +47607,37 @@ generation 19 and his parents (`6000000002893375079`, `6000000004533169633`) at 
 dropped, `6000000227222618886`, which has no relations in today's tree. **The ledger half was
 already done**: `garborg-qids.tsv` pairs `Q141450322` with `6000000002621242041` and holds no
 row for the husk.
+
+## 2026-09-25 — the FamilySearch zipper measured across every pair; two fixes
+
+**Measured over `reports/familysearch-zipper-pairs.tsv` (13,202 rows).** **8,572 of them are not
+pairs at all**: they pair an `FS<id>` render already in the merged tree with its own record, which
+is circular. **The real pairs are 4,630 Geni people.** None pairs a render with a different record.
+
+- **Wikidata can't measure it**: 82 of the paired Geni people have an item, and 1 of those items
+  carries `P2889`. That one disagrees (`LRDZ-9HG` against Wikidata's `PNMB-CPN`), the shape
+  FamilySearch's own duplicates produced six times on 2026-09-24.
+- **Measured against itself instead** (FamilySearch birth year and sex against ours, pair by pair):
+  0 sex conflicts. `date` pairs: 6,243 of 6,258 same year. `solo` (position only), where both
+  sides are dated: 3,568 same year, 131 within 2, 255 within 10, **132 more than 10 apart**.
+  `name`: 12 more than 10 apart. **All 144 far-apart pairs have the same given name on both
+  sides**, e.g. `Trond Torleivsson Benkestok` 1495 against 1508, which reads as different date
+  estimates of one person rather than a wrong match.
+
+**The 1,351 ambiguous slots are now 2,449, and 2,286 of them hold our own `FS<id>` render of one
+of the FamilySearch candidates**, so the zipper was competing with its own earlier output.
+Removing those gives 1,563 slots down to one candidate or none and 80 already so; 806 stay
+ambiguous, most with nothing left on FamilySearch's side (`2 ours x 0 theirs` 164, `3 x 0` 122).
+**Fix:** `main_familysearch` drops every `FS<id>` whose record is on FamilySearch's side from our
+candidates (14,874 people), so a slot finds the Geni person or nobody. The circular pairs go with
+them. The render needs nothing from them: a circular pair and an unpaired record get the same
+`IFS<id>` key.
+
+**FamilySearch's own duplicates:** a census of the two downloads finds 12 record pairs sharing a
+folded name, a birth year and a parent (`Samuel Bloch` 1687 twice, `Johannes Roemer` 1434 ...).
+**Fix:** `load_familysearch` folds each into its twin before the walk (9 by the zipper's own
+name and date parse), so they stop splitting one slot into two candidates.
+
+Both changes take effect on the next `tree.yml` run, which runs the zipper in CI; its new pair and
+ambiguity counts are the measurement of the fix. They are not measured here, because the walk
+needs the full merged tree.

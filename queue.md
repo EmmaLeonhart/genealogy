@@ -29,9 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **The FamilySearch zipper, done properly.** Checked on one family and a 16-pair Wikidata
-  cross-check only. Measure it across all 4,863 pairs, work out what the 1,351 ambiguous slots
-  need, and handle FamilySearch's own duplicate records (two ids, one person).
 - **The name-model fixes, measured across the whole tree.** Latin patronymics
   (`LATIN_VERNACULAR`), `Jonæ` (`-ae`), the lone-letter surname rule (`N.`) and the marker rule
   were each checked on handfuls of examples. Census every one over `display-names.csv` before and
