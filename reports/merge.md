@@ -132,54 +132,54 @@ Sources in merge order (later sources win value conflicts):
 126. `export-Descendants-6000000227746863827.ged`
 127. `export-Forest-6000000227712700862.ged`
 128. `export-Forest-6000000227723403845.ged`
-129. `export-Ancestors-3.ged`
-130. `export-BloodTree-38.ged`
-131. `export-BloodTree-8.ged`
-132. `export-Descendants-20.ged`
-133. `export-Descendants-33.ged`
-134. `export-Descendants-45.ged`
-135. `export-Descendants-7.ged`
-136. `export-Forest-10.ged`
-137. `export-Forest-11.ged`
-138. `export-Forest-12.ged`
-139. `export-Forest-13.ged`
-140. `export-Forest-14.ged`
-141. `export-Forest-15.ged`
-142. `export-Forest-16.ged`
-143. `export-Forest-17.ged`
-144. `export-Forest-18.ged`
-145. `export-Forest-19.ged`
-146. `export-Forest-2.ged`
-147. `export-Forest-21.ged`
-148. `export-Forest-22.ged`
-149. `export-Forest-23.ged`
-150. `export-Forest-24.ged`
-151. `export-Forest-25.ged`
-152. `export-Forest-26.ged`
-153. `export-Forest-27.ged`
-154. `export-Forest-28.ged`
-155. `export-Forest-29.ged`
-156. `export-Forest-30.ged`
-157. `export-Forest-31.ged`
-158. `export-Forest-32.ged`
-159. `export-Forest-34.ged`
-160. `export-Forest-35.ged`
-161. `export-Forest-36.ged`
-162. `export-Forest-37.ged`
-163. `export-Forest-39.ged`
-164. `export-Forest-40.ged`
-165. `export-Forest-41.ged`
-166. `export-Forest-42.ged`
-167. `export-Forest-43.ged`
-168. `export-Forest-44.ged`
-169. `export-Forest-46.ged`
-170. `export-Forest-47.ged`
-171. `export-Forest-48.ged`
-172. `export-Forest-49.ged`
-173. `export-Forest-5.ged`
-174. `export-Forest-50.ged`
-175. `export-Forest-6.ged`
-176. `export-Forest-9.ged`
+129. `export-Ancestors-6000000220974565012.ged`
+130. `export-BloodTree-6000000209755304828.ged`
+131. `export-BloodTree-6000000220631599842.ged`
+132. `export-Descendants-45.ged`
+133. `export-Descendants-6000000210034958823.ged`
+134. `export-Descendants-6000000211987119821.ged`
+135. `export-Descendants-6000000220876233832.ged`
+136. `export-Forest-22.ged`
+137. `export-Forest-23.ged`
+138. `export-Forest-40.ged`
+139. `export-Forest-41.ged`
+140. `export-Forest-42.ged`
+141. `export-Forest-43.ged`
+142. `export-Forest-44.ged`
+143. `export-Forest-46.ged`
+144. `export-Forest-47.ged`
+145. `export-Forest-48.ged`
+146. `export-Forest-49.ged`
+147. `export-Forest-50.ged`
+148. `export-Forest-6000000178918422849.ged`
+149. `export-Forest-6000000179131571831.ged`
+150. `export-Forest-6000000209042542914.ged`
+151. `export-Forest-6000000209053003954.ged`
+152. `export-Forest-6000000209058145828.ged`
+153. `export-Forest-6000000209068285866.ged`
+154. `export-Forest-6000000209078072833.ged`
+155. `export-Forest-6000000209297192824.ged`
+156. `export-Forest-6000000209508060845.ged`
+157. `export-Forest-6000000209655085851.ged`
+158. `export-Forest-6000000209782032914.ged`
+159. `export-Forest-6000000209934958825.ged`
+160. `export-Forest-6000000210034958823.ged`
+161. `export-Forest-6000000210455153850.ged`
+162. `export-Forest-6000000210455841916.ged`
+163. `export-Forest-6000000210483097857.ged`
+164. `export-Forest-6000000210483284822.ged`
+165. `export-Forest-6000000210521076830.ged`
+166. `export-Forest-6000000210521625836.ged`
+167. `export-Forest-6000000210977860839.ged`
+168. `export-Forest-6000000211785248844.ged`
+169. `export-Forest-6000000211987119821.ged`
+170. `export-Forest-6000000211988500829.ged`
+171. `export-Forest-6000000212213503823.ged`
+172. `export-Forest-6000000212213649822.ged`
+173. `export-Forest-6000000220876233832.ged`
+174. `export-Forest-6000000220974565012.ged`
+175. `export-Forest-6000000221219228904.ged`
+176. `export-Forest-6000000227039926826.ged`
 177. `export-Descendants-6000000227725484834.ged`
 178. `export-Descendants-6000000227741310007.ged`
 179. `export-Descendants-6000000227741680915.ged`
@@ -20202,2619 +20202,4752 @@ Sources in merge order (later sources win value conflicts):
 20196. `isolate-geni-hugo-bernhard-raham-gi-1886-1941.ged`
 20197. `isolate-geni-ignacio-braulio-anzo-tegui-s-enz-1905-1978-buenos-aires.ged`
 20198. `isolate-geni-ignaz-paul-vital-troxler-1780-1866-aarau.ged`
-20199. `isolate-geni-ingvald-enersen-1859-1938.ged`
-20200. `isolate-geni-isak-bj-rklund-1686-1740-turku-bo.ged`
-20201. `isolate-geni-ivar-christian-hallstr-m-1826-1901.ged`
-20202. `isolate-geni-ivar-gi-ver-1929-2025-schenectady.ged`
-20203. `isolate-geni-j-ns-ivan-hjalmar-frisk-1900-1984.ged`
-20204. `isolate-geni-jaakko-alfred-ahokas-1923-2007.ged`
-20205. `isolate-geni-jaakko-wilhelm-suolahti-1918-1987-helsinki.ged`
-20206. `isolate-geni-jacques-du-ze-1244-1334-avignon.ged`
-20207. `isolate-geni-jacques-jacob-ludvig-borelius-1859-1921-lund.ged`
-20208. `isolate-geni-jakob-lennart-simons-1905-1986-helsingfors.ged`
-20209. `isolate-geni-james-fred-rippy-phd-1892-1977-wilmington.ged`
-20210. `isolate-geni-jan-arvid-hellstr-m-1941-1994-v-xj.ged`
-20211. `isolate-geni-jan-groth-1938-2022.ged`
-20212. `isolate-geni-jarl-axel-wasastjerna-1896-1972-helsinki.ged`
-20213. `isolate-geni-jean-no-l-tremblay-c-m-1926-2020.ged`
-20214. `isolate-geni-jens-erichstrup-eidsvollsmann-1775-1826.ged`
-20215. `isolate-geni-jens-glad-balchen-1926-2009-trondheim.ged`
-20216. `isolate-geni-jens-gregoriussen-riber-1480-1480-1571.ged`
-20217. `isolate-geni-jens-jacobsen-bull-1718.ged`
-20218. `isolate-geni-jens-jenssen-1842-1905-trondheim.ged`
-20219. `isolate-geni-jens-johannesen-tvedt-1857-1935-stavanger.ged`
-20220. `isolate-geni-joachim-jungius-junge-1587-1657-hamburg.ged`
-20221. `isolate-geni-joachim-v-lschow-1591-1664.ged`
-20222. `isolate-geni-johan-august-malmstr-m-1829-1901-stockholm.ged`
-20223. `isolate-geni-johan-browallius-1707-1755-turku-bo.ged`
-20224. `isolate-geni-johan-carl-wilcke-1732-1796-stockholm.ged`
-20225. `isolate-geni-johan-ernst-gunnerus-biskop-i-trondheim-1718-1773-krist.ged`
-20226. `isolate-geni-johan-floderius-floderus-1721-1789.ged`
-20227. `isolate-geni-johan-friis-1820-1875-kristiansand.ged`
-20228. `isolate-geni-johan-gottschalk-wallerius-1709-1785-uppsala.ged`
-20229. `isolate-geni-johan-hjalmar-th-el-tj-der-1848-1937-stockholm.ged`
-20230. `isolate-geni-johan-marnburg-1882-1966-stavanger.ged`
-20231. `isolate-geni-johan-peter-weisse-1832-1886-kristiania.ged`
-20232. `isolate-geni-johan-severin-axell-1843-1892-wiesbaden.ged`
-20233. `isolate-geni-johan-wolter-arnberg-1832-1900.ged`
-20234. `isolate-geni-johann-christian-ernesti-1695-1768-bad-langensalza.ged`
-20235. `isolate-geni-johann-christian-von-klein-klein-dr-1659-1732.ged`
-20236. `isolate-geni-johann-christoph-mylius-1710-1756-jena.ged`
-20237. `isolate-geni-johann-vollrath-christian-heinrich-b-nger-1782-1842.ged`
-20238. `isolate-geni-johanna-amalia-edman-1851.ged`
-20239. `isolate-geni-johannes-alle-faber-1925-2007-bennekom.ged`
-20240. `isolate-geni-johannes-botvid-elias-melin-1889-1979.ged`
-20241. `isolate-geni-johannes-hendrikus-becking-1890-1972.ged`
-20242. `isolate-geni-johannes-jonasson-columbus-columbus-1640-1684-uppsala.ged`
-20243. `isolate-geni-johannes-svenonis-raumannus-c-1570-1614-uppsala.ged`
-20244. `isolate-geni-john-johnsen-norem-1888-1976-stavanger.ged`
-20245. `isolate-geni-john-kirk-train-varnedoe-1946-2003.ged`
-20246. `isolate-geni-john-lawrence-ashbery-1927-2017-hudson.ged`
-20247. `isolate-geni-john-ugelstad-1921-1997-trondheim.ged`
-20248. `isolate-geni-jon-magnusson-1662.ged`
-20249. `isolate-geni-jonas-hallenberg-1748-1834-stockholm.ged`
-20250. `isolate-geni-joonas-kokkonen-1921-1996-j-rvenp.ged`
-20251. `isolate-geni-josef-svennung-1895-1985-uppsala.ged`
-20252. `isolate-geni-joseph-aloisius-ratzinger-1927-2022-vatican-city.ged`
-20253. `isolate-geni-joseph-hooton-taylor-jr.ged`
-20254. `isolate-geni-josip-plemelj-1873-1967-ljubljana.ged`
-20255. `isolate-geni-jouko-matti-virkkunen-1933-2011-espoo.ged`
-20256. `isolate-geni-juan-antonio-orrego-salas-1919-2019-bloomington.ged`
-20257. `isolate-geni-juho-heikki-vennola-karhu-1872-1938-helsinki.ged`
-20258. `isolate-geni-jukka-ammondt-riiluoto.ged`
-20259. `isolate-geni-julius-severin-wilhelm-lassen-1847-1923-k-benhavn.ged`
-20260. `isolate-geni-just-henrich-von-ely-eidsvollsmann-1759-1824-kristiansa.ged`
-20261. `isolate-geni-jvind-winge-1886-1964-copenhagen.ged`
-20262. `isolate-geni-kaare-alexander-rnung-1931-2013.ged`
-20263. `isolate-geni-kaarlo-rafael-koskimies-forsman-1898-1977-helsinki.ged`
-20264. `isolate-geni-kaarlo-veikko-paatero-pelin-1903-1986-helsinki.ged`
-20265. `isolate-geni-kaj-gabriel-franck-1911-1989.ged`
-20266. `isolate-geni-kalle-putkisto-1919-1997-helsinki.ged`
-20267. `isolate-geni-kansleri-ernst-philip-palm-n-1916-1991-helsinki.ged`
-20268. `isolate-geni-karen-jensdatter-dahl-c1600.ged`
-20269. `isolate-geni-karl-aimo-kalle-acht-1928-2019-helsinki.ged`
-20270. `isolate-geni-karl-august-julius-schmitt-walter-1900-1985-kreuth.ged`
-20271. `isolate-geni-karl-bertil-mathias-qvist-1920-1991-s-t-karins-kaarina.ged`
-20272. `isolate-geni-karl-birger-blomdahl-1916-1968-kungs-ngen.ged`
-20273. `isolate-geni-karl-frithiof-sundman-1873-1949-helsinki.ged`
-20274. `isolate-geni-karl-g-sta-liebert-1916-1998.ged`
-20275. `isolate-geni-karl-oskar-karl-medin-1847-1927-stockholm.ged`
-20276. `isolate-geni-karl-reinhard-m-ller-1774-1861.ged`
-20277. `isolate-geni-karsten-olai-johannessen-1920-1997-copenhagen.ged`
-20278. `isolate-geni-katri-elina-rehtij-rvi-tynni-1912-1987-helsinki.ged`
-20279. `isolate-geni-ke-anders-edvard-wallenquist-1904-1994.ged`
-20280. `isolate-geni-ke-joel-ohlmarks-olsson-1911-1984.ged`
-20281. `isolate-geni-kichimatsu-kishi-1872-1956-orange.ged`
-20282. `isolate-geni-kjetil-jansrud.ged`
-20283. `isolate-geni-knut-emil-lundmark-1889-1958-apotekaren-5.ged`
-20284. `isolate-geni-kristen-nygaard-1926-2002-oslo.ged`
-20285. `isolate-geni-kristian-olaf-bernard-birkeland-1867-1917.ged`
-20286. `isolate-geni-kristoffer-bertram-louis-berg-1867-1944-stavanger.ged`
-20287. `isolate-geni-ky-sti-haataja-1881-1956-p-lk-ne.ged`
-20288. `isolate-geni-kylee-curtis-1994-1994-payson.ged`
-20289. `isolate-geni-l-opold-sancke-1815-1874-brussels.ged`
-20290. `isolate-geni-lars-arvid-axel-von-haartman-1919-1998-helsinki.ged`
-20291. `isolate-geni-lars-fridthjofsen-tokstad-sem-platou-1920-2003.ged`
-20292. `isolate-geni-lars-kristian-holm-brynildsen-1954-2009-bergen.ged`
-20293. `isolate-geni-lars-larsen-hertervig-1830-1902-stavanger.ged`
-20294. `isolate-geni-lars-magnus-m-ller-1857-1912-stockholm.ged`
-20295. `isolate-geni-lars-martinsson-ramndal-dysjaland-1893-1971.ged`
-20296. `isolate-geni-lars-nilsen-oftedal-1852.ged`
-20297. `isolate-geni-laurentius-petri-gothus-1529-1579-uppsala.ged`
-20298. `isolate-geni-lauri-einari-kettunen-1885-1963-helsinki.ged`
-20299. `isolate-geni-laurids-engelstoft-1774-1851.ged`
-20300. `isolate-geni-lauritz-scavenius-1562-1626-stavanger.ged`
-20301. `isolate-geni-lauritz-wilhelm-hansen-1879-1953-stavanger.ged`
-20302. `isolate-geni-lehre-livingston-dantzler-1878-1958-lexington.ged`
-20303. `isolate-geni-leo-reino-sario-1916-2009-santa-monica.ged`
-20304. `isolate-geni-leon-detela-1902-1982.ged`
-20305. `isolate-geni-leonard-wickstr-m-1910-1944.ged`
-20306. `isolate-geni-leonid-hurwicz-1917-2008-minneapolis.ged`
-20307. `isolate-geni-lewis-edward-yablonsky-1924-2014.ged`
-20308. `isolate-geni-lindor-serrurier-1846-1901.ged`
-20309. `isolate-geni-lorenz-jacob-wasmer-ritter-von-stein-1815-1890.ged`
-20310. `isolate-geni-lorenzo-corsini-1652-1740-rome.ged`
-20311. `isolate-geni-lothar-of-segni-pope-innocent-iii-1160-1216-perugia.ged`
-20312. `isolate-geni-louis-d-anjou-comte-de-gravina-1324.ged`
-20313. `isolate-geni-louis-henri-de-cahuzac-marquis-de-caux-1825.ged`
-20314. `isolate-geni-louise-von-renngarten-1872.ged`
-20315. `isolate-geni-luciano-anceschi-1911-1995.ged`
-20316. `isolate-geni-ludovico-paolo-francesco-buglio-1606-1682-pechino.ged`
-20317. `isolate-geni-ludvig-bramsen-1847.ged`
-20318. `isolate-geni-ludvig-holm-olsen-1914-1990-bergen.ged`
-20319. `isolate-geni-luka-modri.ged`
-20320. `isolate-geni-m-ngk-t-mur-khan-of-the-golden-horde-c-1245-1283.ged`
-20321. `isolate-geni-maffeo-vincenzo-barberini-1568-1644-rome.ged`
-20322. `isolate-geni-magnus-bernhard-olsen-1878-1963.ged`
-20323. `isolate-geni-marcel-paul-junod-1904-1961-geneva.ged`
-20324. `isolate-geni-margareta-sanseverino-d1360.ged`
-20325. `isolate-geni-marinus-jan-granpr-moli-re-1883-1972-wassenaar.ged`
-20326. `isolate-geni-martin-hans-christian-knudsen-1871-1949-gentofte.ged`
-20327. `isolate-geni-martin-henriksson-stodius-1590-1676-n-dendal.ged`
-20328. `isolate-geni-martin-nag-1927-2015-oslo.ged`
-20329. `isolate-geni-martin-welker-1819-1902-wooster.ged`
-20330. `isolate-geni-mary-deshon-churchill-1905.ged`
-20331. `isolate-geni-mary-noble-garretson-welleck-1896-1971.ged`
-20332. `isolate-geni-masami-ehara-kuni-pak-yeong-in-1908-2007-los-angeles.ged`
-20333. `isolate-geni-michael-heltzer-1928-2010-haifa.ged`
-20334. `isolate-geni-michael-malvin-michaelsen-1889-1966-stavanger.ged`
-20335. `isolate-geni-michelangelo-conti-1655-1724-rome.ged`
-20336. `isolate-geni-minnie-bruce-pratt-1946-d.ged`
-20337. `isolate-geni-miroslava-princess-of-bulgaria-c975.ged`
-20338. `isolate-geni-mordechai-zeev-ettinger-a-b-d-lwow-1804-1863-jochberg.ged`
-20339. `isolate-geni-morten-smith-petersen-1751-1825-sem.ged`
-20340. `isolate-geni-moses-coit-tyler-1835-1900-ithaca.ged`
-20341. `isolate-geni-muhammad-al-hashemi-570-632-al-madinah.ged`
-20342. `isolate-geni-nelly-leonie-sachs-1891-1970-stockholm-urban-area.ged`
-20343. `isolate-geni-niccol-sfondrati-1535-1591-rome.ged`
-20344. `isolate-geni-nick-bostrom.ged`
-20345. `isolate-geni-nicola-jaeger-1903-1975-milan.ged`
-20346. `isolate-geni-nicolai-edinger-s-rensen-balle-1744-1816-k-benhavn-vor-.ged`
-20347. `isolate-geni-niels-carl-michael-ius-flindt-dahl-1812-1865-frederiksb.ged`
-20348. `isolate-geni-niels-henning-rsted-pedersen-1946-2005-ish-j.ged`
-20349. `isolate-geni-niels-thorkild-rovsing-1862-1927.ged`
-20350. `isolate-geni-niels-wilhelm-gade-1817-1890-holmens-sogn-k-benhavn.ged`
-20351. `isolate-geni-nik-laos-de-bari-270-352.ged`
-20352. `isolate-geni-nils-alstrup-dahl-1911-2001-oslo.ged`
-20353. `isolate-geni-nils-bernhard-gregor-paulsson-1889-1977.ged`
-20354. `isolate-geni-nils-gustaf-axelsson-wollin-axelsson-1892-1964.ged`
-20355. `isolate-geni-nils-karlsen-rvik-1918-2005.ged`
-20356. `isolate-geni-nils-olof-holst-1846-1918.ged`
-20357. `isolate-geni-nils-olof-zeilon-1886-1958.ged`
-20358. `isolate-geni-olaf-helliesen-lange-1875-1965-stavanger.ged`
-20359. `isolate-geni-olaf-pedersen-1920-1997.ged`
-20360. `isolate-geni-olav-hindahl-1892-1963.ged`
-20361. `isolate-geni-olavi-valdemar-per-salo-1913-1966-helsinki.ged`
-20362. `isolate-geni-ole-arnt-buer-rosholdt-1940-2018.ged`
-20363. `isolate-geni-ole-fredrik-olden-1879-1963-stavanger.ged`
-20364. `isolate-geni-ole-gabriel-gabrielson-kverneland-1854-1941-time.ged`
-20365. `isolate-geni-ole-mathias-abrahamsen-1883-1980.ged`
-20366. `isolate-geni-ole-myrvoll-jensen-1911-1988-bergen.ged`
-20367. `isolate-geni-ole-r-island-1911-c-1975-stavanger.ged`
-20368. `isolate-geni-olli-juhani-j-rvinen-1950-1990.ged`
-20369. `isolate-geni-oluf-eilert-l-seth-1858-1945.ged`
-20370. `isolate-geni-organist-christian-cappelen-1845-1916-kristiania.ged`
-20371. `isolate-geni-oscar-stig-wikander-1908-1983-uppsala-c.ged`
-20372. `isolate-geni-oskar-carl-gustaf-sill-n-1883-1965-stockholm.ged`
-20373. `isolate-geni-ottaviano-dei-conti-di-tuscolo-c-936-964-rome.ged`
-20374. `isolate-geni-otto-adolf-ludwig-intze-1843-1904-aachen.ged`
-20375. `isolate-geni-otto-colonna-pope-martin-v-1368-1431-roma.ged`
-20376. `isolate-geni-otto-halpern-1899-1982-london.ged`
-20377. `isolate-geni-ottobono-fieschi-pope-adrian-v-1205-1276-viterbo.ged`
-20378. `isolate-geni-paavo-ilmari-ravila-1902-1974-helsinki.ged`
-20379. `isolate-geni-paavo-matti-v-yrynen.ged`
-20380. `isolate-geni-paolo-vinassa-de-regny-1871-1957.ged`
-20381. `isolate-geni-papa-inoc-ncio-vi-tienne-aubert-1282-1362-avignon.ged`
-20382. `isolate-geni-paul-lawrence-modrich.ged`
-20383. `isolate-geni-paul-stohrer-1909-1975-stuttgart.ged`
-20384. `isolate-geni-peder-hansen-resen-1625-1688-k-benhavn.ged`
-20385. `isolate-geni-peder-pavels-hielm-1781-1846-skien.ged`
-20386. `isolate-geni-peder-valentin-rosenkilde-eidsvollsmann-1772-1836-stava.ged`
-20387. `isolate-geni-pedro-calmon-moniz-de-bittencourt-1902-1985-rio-de-jane.ged`
-20388. `isolate-geni-pedro-juli-o-rebolo-c-1215-1277-viterbo.ged`
-20389. `isolate-geni-pedro-mart-nez-de-luna-y-p-rez-de-gotor-papa-benedicto-xiii-el-papa-luna-1328-1423-pen-scola-pe-scola.ged`
-20390. `isolate-geni-pehr-kalm-1716-1779-turku.ged`
-20391. `isolate-geni-pehr-victor-edman-1916-1977-munich.ged`
-20392. `isolate-geni-pehr-wilhelmsson-wargentin-1717-1783.ged`
-20393. `isolate-geni-pekka-gustaf-grenquist-1907-1981.ged`
-20394. `isolate-geni-pekka-juhana-myrberg-1892-1976-helsinki.ged`
-20395. `isolate-geni-pentti-juha-kalervo-kouri-1949-2009-los-angeles.ged`
-20396. `isolate-geni-per-asbj-rn-pedersen-tj-stland-1918-2004-stavanger.ged`
-20397. `isolate-geni-per-gustaf-einar-sj-vall-1879-1964.ged`
-20398. `isolate-geni-per-inge-torkelsen-1953-2021-radiumhospitalet-oslo.ged`
-20399. `isolate-geni-per-ingvar-br-nemark-1929-2014.ged`
-20400. `isolate-geni-per-johan-magnus-ohlin-1910-1974-uppsala-c.ged`
-20401. `isolate-geni-per-nils-staffan-bergsten-1932-2022.ged`
-20402. `isolate-geni-peter-edvard-holm-1833-1915-k-benhavn.ged`
-20403. `isolate-geni-peter-moltesen-1914-2009-birker-d.ged`
-20404. `isolate-geni-peter-petersen-waage-1833-1900-karl-johans-gate-47-oslo.ged`
-20405. `isolate-geni-peter-wilhelm-b-ckman-k-b-ckman-1927-2006.ged`
-20406. `isolate-geni-philip-fischel-vineberg-1914-1987-montreal-east.ged`
-20407. `isolate-geni-philip-heinrich-kriebel-tegnel-rer-1771-1846-stavanger.ged`
-20408. `isolate-geni-phillip-james-edwin-jim-peebles.ged`
-20409. `isolate-geni-pierre-roger-de-beaufort-1329-1378-rome.ged`
-20410. `isolate-geni-pietro-barbo-1417-1471-rome.ged`
-20411. `isolate-geni-pietro-francesco-orsini-1649-1730-rome.ged`
-20412. `isolate-geni-pietro-tomacelli-perrino-1356-1404-rome.ged`
-20413. `isolate-geni-pm-ralf-johan-gustaf-t-rngren-1899-1961-turku.ged`
-20414. `isolate-geni-polde-bibi-1933-2012-ljubljana.ged`
-20415. `isolate-geni-pope-adrian-i-di-via-lata-c-700-795-roma.ged`
-20416. `isolate-geni-pope-benedict-vii-b-983-rome.ged`
-20417. `isolate-geni-pope-calixtus-iii-alfonso-de-borja-y-cavanilles-1378-1458-roma.ged`
-20418. `isolate-geni-pope-john-sicco-954-1003-rome.ged`
-20419. `isolate-geni-pope-john-x-c-860-929-roma.ged`
-20420. `isolate-geni-pope-paul-di-orsini-i-700-767-roma.ged`
-20421. `isolate-geni-pope-stephen-di-orsini-ii-714-757-roma.ged`
-20422. `isolate-geni-poppo-de-curagnoni-b-1048-palestrina.ged`
-20423. `isolate-geni-povl-ole-fanger-1934-2006.ged`
-20424. `isolate-geni-private-falch-300566252160002064.ged`
-20425. `isolate-geni-private-falch-307414261200006461.ged`
-20426. `isolate-geni-prof-arne-wilhelm-kaurin-tiselius-1902-1971.ged`
-20427. `isolate-geni-prof-carl-frithjof-smith-1859-1917-weimar.ged`
-20428. `isolate-geni-prof-dr-arie-querido-1901-1983-pont-de-barret.ged`
-20429. `isolate-geni-prof-dr-august-maria-leopold-karl-knoll-1900-1963-wien.ged`
-20430. `isolate-geni-prof-dr-bernard-hendrik-slicher-van-bath-1910-2004-wage.ged`
-20431. `isolate-geni-prof-dr-cornelis-pijnacker-hordijk-1847-1908-haarlem.ged`
-20432. `isolate-geni-prof-dr-dr-h-c-mult-fritz-richard-baltzer-1884-1974-ber.ged`
-20433. `isolate-geni-prof-dr-ernst-hermann-riesenfeld-1877-1957-stockholm.ged`
-20434. `isolate-geni-prof-dr-julius-hirschwald-1845-1928.ged`
-20435. `isolate-geni-prof-dr-med-august-ludolph-brauer-1865-1951-munich.ged`
-20436. `isolate-geni-prof-dr-phil-david-holde-1864-1938-berlin-wilmersdorf.ged`
-20437. `isolate-geni-prof-dr-phil-karl-wilhelm-baedeker-1877-1914.ged`
-20438. `isolate-geni-prof-frank-johnson-goodnow-1859-1939.ged`
-20439. `isolate-geni-prof-johann-friedrich-von-herrenschwand-dr-1881-1959.ged`
-20440. `isolate-geni-prof-kai-viktor-johannes-von-fieandt-ph-d-1909-2000-esp.ged`
-20441. `isolate-geni-prof-mr-johannes-hendrik-carpentier-alting-1864-1929-s-.ged`
-20442. `isolate-geni-prof-richard-macgillivray-dawkins-fba-1871-1955-oxford.ged`
-20443. `isolate-geni-prof-sigfrid-rafael-karsten-1879-1956-helsinki.ged`
-20444. `isolate-geni-prof-torsten-evert-karsten-ph-d-1870-1942-helsinki.ged`
-20445. `isolate-geni-professor-abraham-thorberg-1759-1790.ged`
-20446. `isolate-geni-professor-axel-thue-1863-1922-oslo.ged`
-20447. `isolate-geni-professor-stig-fredrik-sigurd-lindberg-1916-1982-circeo.ged`
-20448. `isolate-geni-professori-leo-eino-aario-engman-1906-1998-espoo.ged`
-20449. `isolate-geni-qin-shi-huang-259-210.ged`
-20450. `isolate-geni-ragnar-schreiner-1915-d.ged`
-20451. `isolate-geni-ramon-prieto-bances-1889-1972-oviedo.ged`
-20452. `isolate-geni-raphael-jan-h-egh-krohn-krohn-1938-1988-b-rum.ged`
-20453. `isolate-geni-reginald-aubrey-fessenden-1866-1932.ged`
-20454. `isolate-geni-representative-garland-hale-barr-iv.ged`
-20455. `isolate-geni-richard-royce-schrock-1945-d.ged`
-20456. `isolate-geni-rinaldo-di-jenne-dei-conti-di-segni-c-1199-1261-viterbo.ged`
-20457. `isolate-geni-risto-kalevi-tuomikoski-1911-1989-helsinki.ged`
-20458. `isolate-geni-rjan-lindberger-1912-2005-stockholm.ged`
-20459. `isolate-geni-rkebiskop-anton-niklas-sundberg-1818-1900-uppsala.ged`
-20460. `isolate-geni-rni-magn-sson-1663-1730-k-benhavn.ged`
-20461. `isolate-geni-robert-francis-prevost-osa.ged`
-20462. `isolate-geni-roderic-llan-ol-i-de-borja-borja-pope-alexander-vi-1431-1503-rome.ged`
-20463. `isolate-geni-rolf-rainer-otto-robert-westman-1927-2017-bo.ged`
-20464. `isolate-geni-roman-august-adelheim-1881-1938.ged`
-20465. `isolate-geni-romanus-di-tuscolo-b-1032-roma.ged`
-20466. `isolate-geni-rudolf-beck-1919-c1941.ged`
-20467. `isolate-geni-rudolf-max-isay-1886-1956-bonn.ged`
-20468. `isolate-geni-rudolph-sophus-bergh-1859-1924-davos.ged`
-20469. `isolate-geni-s-ren-tobias-aarstad-1861-1928.ged`
-20470. `isolate-geni-salomon-munk-1803-1867-paris.ged`
-20471. `isolate-geni-samson-eitrheim-1872-1966-oslo.ged`
-20472. `isolate-geni-samuel-karl-anders-wide-pettersson-1861-1918-uppsala.ged`
-20473. `isolate-geni-sergius-864-911-roma.ged`
-20474. `isolate-geni-shah-sultan-hossein-safavi-1668-1726.ged`
-20475. `isolate-geni-sigurd-erixon-1888-1968.ged`
-20476. `isolate-geni-sigurd-some-s-rensen-1889-1984-copenhagen.ged`
-20477. `isolate-geni-sigurd-teodoro-arentsen-steeger-arentsen.ged`
-20478. `isolate-geni-silvio-edmundo-elia-1913-d.ged`
-20479. `isolate-geni-simon-de-brion-martinus-iv-c-1210-1285-perugia.ged`
-20480. `isolate-geni-sinibaldo-fieschi-pope-innocent-iv-c-1195-1254-naples.ged`
-20481. `isolate-geni-sir-frederick-gowland-hopkins-1861-1947-cambridge.ged`
-20482. `isolate-geni-sogneprest-i-spydeberg-jacob-nicolai-wilse-1735-1801.ged`
-20483. `isolate-geni-solveig-tandberg-1898.ged`
-20484. `isolate-geni-sophia-elisabeth-sahlin-1789.ged`
-20485. `isolate-geni-ssu-nien-fu-1896-1950.ged`
-20486. `isolate-geni-st-le-eskeland-1943-2015-oslo.ged`
-20487. `isolate-geni-stinius-fredriksen-1902-1977-oslo.ged`
-20488. `isolate-geni-suidger-von-morsleben-pope-clement-ii-1005-1047.ged`
-20489. `isolate-geni-sultan-jalal-al-din-muhammad-gurkani-1542-1605-fatehpur-sikri.ged`
-20490. `isolate-geni-sun-cheng-e-1911-1991.ged`
-20491. `isolate-geni-svein-geirfinn-molaug-1914-2007-oslo.ged`
-20492. `isolate-geni-svein-isaksen-rosseland-1894-1985.ged`
-20493. `isolate-geni-sven-adolf-diego-helander-1889-1970-stockholm.ged`
-20494. `isolate-geni-sven-axel-hoflund-1906-1979-kalmar-h.ged`
-20495. `isolate-geni-sven-emanuel-dedering-1897-1986.ged`
-20496. `isolate-geni-sven-magnus-en-carlsen.ged`
-20497. `isolate-geni-sven-nielsen-1883-1958-stavanger.ged`
-20498. `isolate-geni-sverre-tonning-olsen-bruland-1923-2013-oslo.ged`
-20499. `isolate-geni-sylvi-inkeri-anttila-mets-mies-1916-2013-helsinki.ged`
-20500. `isolate-geni-tage-gillis-torsten-carleman-1892-1949-danderyd.ged`
-20501. `isolate-geni-tage-kemp-1896-1964-k-benhavn-k-benhavn-sogn.ged`
-20502. `isolate-geni-tem-jin-borjigin-khan-khagan-of-the-mongol-empire-c-1162-1227.ged`
-20503. `isolate-geni-teobaldo-visconti-c-1210-1276-arezzo.ged`
-20504. `isolate-geni-theodor-theodorsen-dahl-1886-1946-stavanger.ged`
-20505. `isolate-geni-theophylactos-rangabe-byzantine-co-emperor-c-792-849.ged`
-20506. `isolate-geni-theophylactus-di-tuscolo-c-1012-c-1056-2-roma.ged`
-20507. `isolate-geni-theophylactus-di-tuscolo-c-1012-c-1056-roma.ged`
-20508. `isolate-geni-theophylactus-di-tuscolo-c-980-1024-rome.ged`
-20509. `isolate-geni-thomas-j-nsson-thor-n-thorild-1759-1808.ged`
-20510. `isolate-geni-thomas-starr-1813.ged`
-20511. `isolate-geni-thor-abrosius-helliesen-1855-1914-stavanger.ged`
-20512. `isolate-geni-thor-emanuel-ekecrantz-1856-1939.ged`
-20513. `isolate-geni-thoralf-albert-skolem-1887-1963.ged`
-20514. `isolate-geni-thore-michelsen-1888-d.ged`
-20515. `isolate-geni-thorleif-oscar-karlsen-1909-2010.ged`
-20516. `isolate-geni-thorvald-buch-1863-1925.ged`
-20517. `isolate-geni-thure-georg-sahama-sahlstein-1910-1983-helsinki.ged`
-20518. `isolate-geni-thure-magnus-julius-hastrup-1903-1989.ged`
-20519. `isolate-geni-timo-veijola-1947-2005-hyvink.ged`
-20520. `isolate-geni-tommaso-parentuccelli-lucando-1397-1455-rome.ged`
-20521. `isolate-geni-tore-renberg.ged`
-20522. `isolate-geni-torger-torgerson-vetteland-1829-1914-stavanger.ged`
-20523. `isolate-geni-torkel-opsahl-1931-1993-gen-ve.ged`
-20524. `isolate-geni-torsten-h-gerstrand-1916-d.ged`
-20525. `isolate-geni-torsten-ludvig-thunberg-1873-1952-lund.ged`
-20526. `isolate-geni-tove-b-rheim-holtermann-1917-2005-stavanger.ged`
-20527. `isolate-geni-tuomo-seppo-mannermaa-1937-2015-espoo.ged`
-20528. `isolate-geni-uberto-umberto-crivelli-1120-1187-ferrara.ged`
-20529. `isolate-geni-ugolino-anagni-dei-conti-di-segni-pope-gregory-ix-c-1170-1241-roma.ged`
-20530. `isolate-geni-ulf-arne-s-derblom-1930-2016.ged`
-20531. `isolate-geni-ulrich-oskar-zech-1927-2010-munich.ged`
-20532. `isolate-geni-univ-prof-dr-phil-et-med-walther-poppelreuter-1886-1939.ged`
-20533. `isolate-geni-unto-uuno-uotila-1910-1977-helsinki.ged`
-20534. `isolate-geni-v-in-gr-nholm-1868-1936-helsinki.ged`
-20535. `isolate-geni-vasilijs-sinaiskis-1876-1949-brussels.ged`
-20536. `isolate-geni-verner-panton-1926-1998.ged`
-20537. `isolate-geni-viggo-brun-1885-1978.ged`
-20538. `isolate-geni-viktor-georg-von-wolff-1886.ged`
-20539. `isolate-geni-vil-m-du-an-lambl-1824-1895-warsaw.ged`
-20540. `isolate-geni-vilhelm-eliel-viktorinus-wessman-1879-1958-eken-s.ged`
-20541. `isolate-geni-viljo-johannes-mansikka-1884-1947-helsinki.ged`
-20542. `isolate-geni-vincenzo-francesco-maria-errante-1890-1951.ged`
-20543. `isolate-geni-viola-marie-sibylle-gr-fin-von-bethusy-huc-1927-d.ged`
-20544. `isolate-geni-vladi-marmo-forsblom-1914-1969-jyv-skyl.ged`
-20545. `isolate-geni-walter-courvoisier-1875-1931-orselina.ged`
-20546. `isolate-geni-walter-louis-moritz-laqueur-1921-2018-washington.ged`
-20547. `isolate-geni-walter-weisbach-1889-1962-den-haag.ged`
-20548. `isolate-geni-wiktor-marian-dega-1896-1995-pozna.ged`
-20549. `isolate-geni-wilfried-karl-theodor-schlau-1917-2010-friedrichsdorf.ged`
-20550. `isolate-geni-wilhelm-adolf-diesterweg-1782-1835-bonn.ged`
-20551. `isolate-geni-wilhelm-lanzky-otto-1909-1991.ged`
-20552. `isolate-geni-wilhelm-wiget-1885-1934-herisau.ged`
-20553. `isolate-geni-willem-joseph-andries-geb-diehl-jonckbloet-1817-1885-wi.ged`
-20554. `isolate-geni-william-christopher-zeise-1836-ridder-af-dannebrog-1789.ged`
-20555. `isolate-geni-william-coucheron-aamot-1868-1948.ged`
-20556. `isolate-geni-william-wilhelm-franz-latzko-md-1863-1945-new-york.ged`
-20557. `isolate-geni-wolfgang-anton-de-boor-1917-2014-cologne.ged`
-20558. `isolate-geni-wolmar-jammi-nyberg-1919-1973-sibbo.ged`
-20559. `isolate-geni-yngve-zotterman-1898-1982-stockholm.ged`
-20560. `isolate-geni-yrj-henrik-kajava-nylund-1884-1929-helsinki.ged`
-20561. `jimmu.ged`
-20562. `lady-palsu-of-the-jin-clan.ged`
-20563. `madgacen-300-d.ged`
-20564. `makeda-queen-of-sheba-1013-982.ged`
-20565. `makeda-to-enlil-nirari.ged`
-20566. `makeda-to-marguerite.ged`
-20567. `makeda-to-matthew.ged`
-20568. `nn-basse.ged`
-20569. `nn-daughter-of-berenice.ged`
-20570. `nn-of-malwa.ged`
-20571. `nn.ged`
-20572. `pasuti.ged`
-20573. `princess-nn.ged`
-20574. `psamtik-ii-pharaoh-of-egypt-b-589.ged`
-20575. `r-chaim-itzkowitz-volozhiner.ged`
-20576. `rabbi-yisrael-gershon-soloveitchik.ged`
-20577. `randolph-paulus-borsheim.ged`
-20578. `saved-349440463640013536.ged`
-20579. `saved-365466687720012045.ged`
-20580. `saved-3696730.ged`
-20581. `saved-375738756460004676.ged`
-20582. `saved-4077210.ged`
-20583. `saved-4077390.ged`
-20584. `saved-4103872.ged`
-20585. `saved-4366030.ged`
-20586. `saved-4376103.ged`
-20587. `saved-4627273.ged`
-20588. `saved-4946518870490042172.ged`
-20589. `saved-4976573922110117540.ged`
-20590. `saved-4984086862270100347.ged`
-20591. `saved-5235605714220070458.ged`
-20592. `saved-5271489675500023723.ged`
-20593. `saved-5305294636990124817.ged`
-20594. `saved-5441313740220126371.ged`
-20595. `saved-5447505087810135067.ged`
-20596. `saved-5502964838900085605.ged`
-20597. `saved-6000000000012602183.ged`
-20598. `saved-6000000000135924403.ged`
-20599. `saved-6000000000136616524.ged`
-20600. `saved-6000000000136688085.ged`
-20601. `saved-6000000000139648597.ged`
-20602. `saved-6000000000186421249.ged`
-20603. `saved-6000000000196218118.ged`
-20604. `saved-6000000000351087662.ged`
-20605. `saved-6000000000351087701.ged`
-20606. `saved-6000000000424848932.ged`
-20607. `saved-6000000000437044109.ged`
-20608. `saved-6000000000437316601.ged`
-20609. `saved-6000000000437327174.ged`
-20610. `saved-6000000000437669873.ged`
-20611. `saved-6000000000467542216.ged`
-20612. `saved-6000000000574078388.ged`
-20613. `saved-6000000000638286399.ged`
-20614. `saved-6000000000666780234.ged`
-20615. `saved-6000000000687421882.ged`
-20616. `saved-6000000000694158525.ged`
-20617. `saved-6000000000728299766.ged`
-20618. `saved-6000000000756952602.ged`
-20619. `saved-6000000000757999620.ged`
-20620. `saved-6000000000758079676.ged`
-20621. `saved-6000000000768957873.ged`
-20622. `saved-6000000000866353020.ged`
-20623. `saved-6000000000873947684.ged`
-20624. `saved-6000000000891680343.ged`
-20625. `saved-6000000001088154772.ged`
-20626. `saved-6000000001138735296.ged`
-20627. `saved-6000000001139071013.ged`
-20628. `saved-6000000001144914191.ged`
-20629. `saved-6000000001169154976.ged`
-20630. `saved-6000000001169171714.ged`
-20631. `saved-6000000001169235389.ged`
-20632. `saved-6000000001169238166.ged`
-20633. `saved-6000000001169313832.ged`
-20634. `saved-6000000001196257237.ged`
-20635. `saved-6000000001198860794.ged`
-20636. `saved-6000000001199993264.ged`
-20637. `saved-6000000001200028258.ged`
-20638. `saved-6000000001311917463.ged`
-20639. `saved-6000000001412881746.ged`
-20640. `saved-6000000001506899998.ged`
-20641. `saved-6000000001584382671.ged`
-20642. `saved-6000000001584801190.ged`
-20643. `saved-6000000001593637951.ged`
-20644. `saved-6000000001614845637.ged`
-20645. `saved-6000000001651460598.ged`
-20646. `saved-6000000001651502714.ged`
-20647. `saved-6000000001651629109.ged`
-20648. `saved-6000000001708363985.ged`
-20649. `saved-6000000001711091993.ged`
-20650. `saved-6000000001770188397.ged`
-20651. `saved-6000000001770214443.ged`
-20652. `saved-6000000001821102369.ged`
-20653. `saved-6000000001827575240.ged`
-20654. `saved-6000000001827582117.ged`
-20655. `saved-6000000001827610153.ged`
-20656. `saved-6000000001838607806.ged`
-20657. `saved-6000000001838879990.ged`
-20658. `saved-6000000001969506851.ged`
-20659. `saved-6000000001969599119.ged`
-20660. `saved-6000000001995109345.ged`
-20661. `saved-6000000002017898070.ged`
-20662. `saved-6000000002043263103.ged`
-20663. `saved-6000000002078094635.ged`
-20664. `saved-6000000002078126382.ged`
-20665. `saved-6000000002163543379.ged`
-20666. `saved-6000000002187796542.ged`
-20667. `saved-6000000002187851434.ged`
-20668. `saved-6000000002188110562.ged`
-20669. `saved-6000000002188289908.ged`
-20670. `saved-6000000002188578738.ged`
-20671. `saved-6000000002226068159.ged`
-20672. `saved-6000000002245279564.ged`
-20673. `saved-6000000002267060138.ged`
-20674. `saved-6000000002277862058.ged`
-20675. `saved-6000000002330980548.ged`
-20676. `saved-6000000002342416311.ged`
-20677. `saved-6000000002391959353.ged`
-20678. `saved-6000000002434214184.ged`
-20679. `saved-6000000002463510938.ged`
-20680. `saved-6000000002481819312.ged`
-20681. `saved-6000000002482084257.ged`
-20682. `saved-6000000002482165558.ged`
-20683. `saved-6000000002512346178.ged`
-20684. `saved-6000000002516491073.ged`
-20685. `saved-6000000002527461568.ged`
-20686. `saved-6000000002572699392.ged`
-20687. `saved-6000000002572701505.ged`
-20688. `saved-6000000002572783163.ged`
-20689. `saved-6000000002588347233.ged`
-20690. `saved-6000000002744891329.ged`
-20691. `saved-6000000002748554800.ged`
-20692. `saved-6000000002750545795.ged`
-20693. `saved-6000000002847945015.ged`
-20694. `saved-6000000002866077692.ged`
-20695. `saved-6000000002866078652.ged`
-20696. `saved-6000000002893299341.ged`
-20697. `saved-6000000002893299372.ged`
-20698. `saved-6000000002893316227.ged`
-20699. `saved-6000000002893322314.ged`
-20700. `saved-6000000002893330286.ged`
-20701. `saved-6000000002893335701.ged`
-20702. `saved-6000000002916189513.ged`
-20703. `saved-6000000002920620224.ged`
-20704. `saved-6000000003012468747.ged`
-20705. `saved-6000000003025853747.ged`
-20706. `saved-6000000003026039395.ged`
-20707. `saved-6000000003043806217.ged`
-20708. `saved-6000000003049156212.ged`
-20709. `saved-6000000003076221220.ged`
-20710. `saved-6000000003087080306.ged`
-20711. `saved-6000000003094916337.ged`
-20712. `saved-6000000003094967990.ged`
-20713. `saved-6000000003094971035.ged`
-20714. `saved-6000000003095003918.ged`
-20715. `saved-6000000003095060610.ged`
-20716. `saved-6000000003095080287.ged`
-20717. `saved-6000000003101980999.ged`
-20718. `saved-6000000003102253400.ged`
-20719. `saved-6000000003102295068.ged`
-20720. `saved-6000000003125438035.ged`
-20721. `saved-6000000003152860875.ged`
-20722. `saved-6000000003253261775.ged`
-20723. `saved-6000000003253460860.ged`
-20724. `saved-6000000003253601093.ged`
-20725. `saved-6000000003332799114.ged`
-20726. `saved-6000000003332823073.ged`
-20727. `saved-6000000003355801643.ged`
-20728. `saved-6000000003367976924.ged`
-20729. `saved-6000000003401838954.ged`
-20730. `saved-6000000003418900347.ged`
-20731. `saved-6000000003484293276.ged`
-20732. `saved-6000000003491988509.ged`
-20733. `saved-6000000003491988584.ged`
-20734. `saved-6000000003491988599.ged`
-20735. `saved-6000000003491988619.ged`
-20736. `saved-6000000003492029785.ged`
-20737. `saved-6000000003492033993.ged`
-20738. `saved-6000000003492057788.ged`
-20739. `saved-6000000003492064709.ged`
-20740. `saved-6000000003559734445.ged`
-20741. `saved-6000000003645919492.ged`
-20742. `saved-6000000003645919625.ged`
-20743. `saved-6000000003645940658.ged`
-20744. `saved-6000000003646023820.ged`
-20745. `saved-6000000003646023907.ged`
-20746. `saved-6000000003783022260.ged`
-20747. `saved-6000000003805720033.ged`
-20748. `saved-6000000003827445550.ged`
-20749. `saved-6000000003858704239.ged`
-20750. `saved-6000000003869622559.ged`
-20751. `saved-6000000003887729856.ged`
-20752. `saved-6000000003897585979.ged`
-20753. `saved-6000000003958968521.ged`
-20754. `saved-6000000004027712640.ged`
-20755. `saved-6000000004105285975.ged`
-20756. `saved-6000000004214433404.ged`
-20757. `saved-6000000004533176419.ged`
-20758. `saved-6000000004647605698.ged`
-20759. `saved-6000000004671044584.ged`
-20760. `saved-6000000004863275809.ged`
-20761. `saved-6000000004863611375.ged`
-20762. `saved-6000000004863761158.ged`
-20763. `saved-6000000004863823276.ged`
-20764. `saved-6000000004869049343.ged`
-20765. `saved-6000000004870648136.ged`
-20766. `saved-6000000005074489379.ged`
-20767. `saved-6000000005381997903.ged`
-20768. `saved-6000000005382299298.ged`
-20769. `saved-6000000005414590318.ged`
-20770. `saved-6000000005545740001.ged`
-20771. `saved-6000000005581573549.ged`
-20772. `saved-6000000005598851255.ged`
-20773. `saved-6000000005606851579.ged`
-20774. `saved-6000000005606886765.ged`
-20775. `saved-6000000005606886780.ged`
-20776. `saved-6000000005606886827.ged`
-20777. `saved-6000000005606976930.ged`
-20778. `saved-6000000005607042284.ged`
-20779. `saved-6000000005607042309.ged`
-20780. `saved-6000000005607119313.ged`
-20781. `saved-6000000005607123730.ged`
-20782. `saved-6000000005607268671.ged`
-20783. `saved-6000000005607282941.ged`
-20784. `saved-6000000005607296161.ged`
-20785. `saved-6000000005607335640.ged`
-20786. `saved-6000000005607365269.ged`
-20787. `saved-6000000005607439733.ged`
-20788. `saved-6000000005607599821.ged`
-20789. `saved-6000000005607884543.ged`
-20790. `saved-6000000005608934604.ged`
-20791. `saved-6000000005609028769.ged`
-20792. `saved-6000000005609304829.ged`
-20793. `saved-6000000005609304839.ged`
-20794. `saved-6000000005609458561.ged`
-20795. `saved-6000000005609518095.ged`
-20796. `saved-6000000005609522416.ged`
-20797. `saved-6000000005609522426.ged`
-20798. `saved-6000000005609547535.ged`
-20799. `saved-6000000005609547544.ged`
-20800. `saved-6000000005609547691.ged`
-20801. `saved-6000000005744994368.ged`
-20802. `saved-6000000005744994427.ged`
-20803. `saved-6000000005795638082.ged`
-20804. `saved-6000000005795638104.ged`
-20805. `saved-6000000005856163014.ged`
-20806. `saved-6000000006127859612.ged`
-20807. `saved-6000000006171259545.ged`
-20808. `saved-6000000006183866418.ged`
-20809. `saved-6000000006253433055.ged`
-20810. `saved-6000000006253635635.ged`
-20811. `saved-6000000006277556378.ged`
-20812. `saved-6000000006589193224.ged`
-20813. `saved-6000000006602653847.ged`
-20814. `saved-6000000006769001160.ged`
-20815. `saved-6000000006776171892.ged`
-20816. `saved-6000000006776187362.ged`
-20817. `saved-6000000006776187394.ged`
-20818. `saved-6000000006776187410.ged`
-20819. `saved-6000000006991041605.ged`
-20820. `saved-6000000007006053264.ged`
-20821. `saved-6000000007020763500.ged`
-20822. `saved-6000000007058802262.ged`
-20823. `saved-6000000007062931743.ged`
-20824. `saved-6000000007062987558.ged`
-20825. `saved-6000000007114444629.ged`
-20826. `saved-6000000007225974316.ged`
-20827. `saved-6000000007243462851.ged`
-20828. `saved-6000000007259558393.ged`
-20829. `saved-6000000007304150583.ged`
-20830. `saved-6000000007339101221.ged`
-20831. `saved-6000000007511564057.ged`
-20832. `saved-6000000007549309545.ged`
-20833. `saved-6000000007559278400.ged`
-20834. `saved-6000000007581296353.ged`
-20835. `saved-6000000007588187341.ged`
-20836. `saved-6000000007588187344.ged`
-20837. `saved-6000000007589095414.ged`
-20838. `saved-6000000007635630874.ged`
-20839. `saved-6000000007635630965.ged`
-20840. `saved-6000000007635631030.ged`
-20841. `saved-6000000007661859262.ged`
-20842. `saved-6000000007676113728.ged`
-20843. `saved-6000000007773104021.ged`
-20844. `saved-6000000007826003451.ged`
-20845. `saved-6000000007958767639.ged`
-20846. `saved-6000000007959864423.ged`
-20847. `saved-6000000007980520044.ged`
-20848. `saved-6000000008034160064.ged`
-20849. `saved-6000000008106241912.ged`
-20850. `saved-6000000008115020929.ged`
-20851. `saved-6000000008115048412.ged`
-20852. `saved-6000000008205346192.ged`
-20853. `saved-6000000008469756742.ged`
-20854. `saved-6000000008715164518.ged`
-20855. `saved-6000000008765536305.ged`
-20856. `saved-6000000008933309505.ged`
-20857. `saved-6000000008961666136.ged`
-20858. `saved-6000000009170017937.ged`
-20859. `saved-6000000009465627532.ged`
-20860. `saved-6000000009499609049.ged`
-20861. `saved-6000000009500754533.ged`
-20862. `saved-6000000009544774015.ged`
-20863. `saved-6000000009875303979.ged`
-20864. `saved-6000000010160609967.ged`
-20865. `saved-6000000010222435520.ged`
-20866. `saved-6000000010226740465.ged`
-20867. `saved-6000000010259352985.ged`
-20868. `saved-6000000010331792637.ged`
-20869. `saved-6000000010463529059.ged`
-20870. `saved-6000000010642992694.ged`
-20871. `saved-6000000010888345851.ged`
-20872. `saved-6000000011043803107.ged`
-20873. `saved-6000000011078549071.ged`
-20874. `saved-6000000011078726908.ged`
-20875. `saved-6000000011078807545.ged`
-20876. `saved-6000000011078829655.ged`
-20877. `saved-6000000011078886609.ged`
-20878. `saved-6000000011078918407.ged`
-20879. `saved-6000000011079271617.ged`
-20880. `saved-6000000011079343735.ged`
-20881. `saved-6000000011183696687.ged`
-20882. `saved-6000000011239201122.ged`
-20883. `saved-6000000011239545575.ged`
-20884. `saved-6000000011399221611.ged`
-20885. `saved-6000000011647607597.ged`
-20886. `saved-6000000011769042441.ged`
-20887. `saved-6000000011807777264.ged`
-20888. `saved-6000000012108249741.ged`
-20889. `saved-6000000012245669731.ged`
-20890. `saved-6000000012455272755.ged`
-20891. `saved-6000000012503281124.ged`
-20892. `saved-6000000012587690898.ged`
-20893. `saved-6000000012724604098.ged`
-20894. `saved-6000000013205833004.ged`
-20895. `saved-6000000013214878518.ged`
-20896. `saved-6000000013618082642.ged`
-20897. `saved-6000000014224378935.ged`
-20898. `saved-6000000014265035290.ged`
-20899. `saved-6000000014287321085.ged`
-20900. `saved-6000000014300629210.ged`
-20901. `saved-6000000014512537406.ged`
-20902. `saved-6000000014522158621.ged`
-20903. `saved-6000000015117490925.ged`
-20904. `saved-6000000015117958521.ged`
-20905. `saved-6000000015302506749.ged`
-20906. `saved-6000000015399620672.ged`
-20907. `saved-6000000015423592428.ged`
-20908. `saved-6000000015485735160.ged`
-20909. `saved-6000000015843590321.ged`
-20910. `saved-6000000016426352456.ged`
-20911. `saved-6000000016524856961.ged`
-20912. `saved-6000000016959316252.ged`
-20913. `saved-6000000017093875188.ged`
-20914. `saved-6000000017512587298.ged`
-20915. `saved-6000000017535961052.ged`
-20916. `saved-6000000017799612472.ged`
-20917. `saved-6000000018212260392.ged`
-20918. `saved-6000000018448055702.ged`
-20919. `saved-6000000018528235866.ged`
-20920. `saved-6000000018752060667.ged`
-20921. `saved-6000000019410166019.ged`
-20922. `saved-6000000020013489270.ged`
-20923. `saved-6000000020344692199.ged`
-20924. `saved-6000000020344732085.ged`
-20925. `saved-6000000020344842981.ged`
-20926. `saved-6000000021139261439.ged`
-20927. `saved-6000000021143457434.ged`
-20928. `saved-6000000021546131052.ged`
-20929. `saved-6000000021651776645.ged`
-20930. `saved-6000000021652410546.ged`
-20931. `saved-6000000023250155337.ged`
-20932. `saved-6000000023666472983.ged`
-20933. `saved-6000000024431753429.ged`
-20934. `saved-6000000024431778428.ged`
-20935. `saved-6000000024841032051.ged`
-20936. `saved-6000000026191425197.ged`
-20937. `saved-6000000026258097510.ged`
-20938. `saved-6000000026534693043.ged`
-20939. `saved-6000000027507886451.ged`
-20940. `saved-6000000027593736914.ged`
-20941. `saved-6000000028408939773.ged`
-20942. `saved-6000000029363285200.ged`
-20943. `saved-6000000030009027971.ged`
-20944. `saved-6000000030042669829.ged`
-20945. `saved-6000000030775253849.ged`
-20946. `saved-6000000031833079710.ged`
-20947. `saved-6000000031873939968.ged`
-20948. `saved-6000000032068841409.ged`
-20949. `saved-6000000034357465956.ged`
-20950. `saved-6000000035169497997.ged`
-20951. `saved-6000000035525393426.ged`
-20952. `saved-6000000035525469386.ged`
-20953. `saved-6000000035525833995.ged`
-20954. `saved-6000000035525972877.ged`
-20955. `saved-6000000035842865927.ged`
-20956. `saved-6000000036357505108.ged`
-20957. `saved-6000000036357582274.ged`
-20958. `saved-6000000037061491552.ged`
-20959. `saved-6000000039766619938.ged`
-20960. `saved-6000000043649084885.ged`
-20961. `saved-6000000047943564981.ged`
-20962. `saved-6000000050635310838.ged`
-20963. `saved-6000000051276273861.ged`
-20964. `saved-6000000054990622176.ged`
-20965. `saved-6000000057175128821.ged`
-20966. `saved-6000000057327773067.ged`
-20967. `saved-6000000057959889971.ged`
-20968. `saved-6000000065991527068.ged`
-20969. `saved-6000000067502220858.ged`
-20970. `saved-6000000069050151452.ged`
-20971. `saved-6000000069466362236.ged`
-20972. `saved-6000000070497375043.ged`
-20973. `saved-6000000071638439878.ged`
-20974. `saved-6000000073132490036.ged`
-20975. `saved-6000000077297672317.ged`
-20976. `saved-6000000077297739021.ged`
-20977. `saved-6000000077316240007.ged`
-20978. `saved-6000000077667834821.ged`
-20979. `saved-6000000077762121855.ged`
-20980. `saved-6000000079267271590.ged`
-20981. `saved-6000000080929243843.ged`
-20982. `saved-6000000081001962237.ged`
-20983. `saved-6000000082819939353.ged`
-20984. `saved-6000000082822675871.ged`
-20985. `saved-6000000082862457204.ged`
-20986. `saved-6000000093411354957.ged`
-20987. `saved-6000000099934709827.ged`
-20988. `saved-6000000100733843835.ged`
-20989. `saved-6000000103633571840.ged`
-20990. `saved-6000000105712682826.ged`
-20991. `saved-6000000116694298987.ged`
-20992. `saved-6000000126234285831.ged`
-20993. `saved-6000000141086236875.ged`
-20994. `saved-6000000155055551821.ged`
-20995. `saved-6000000161721983869.ged`
-20996. `saved-6000000161721983881.ged`
-20997. `saved-6000000161721983893.ged`
-20998. `saved-6000000169037819865.ged`
-20999. `saved-6000000177463770840.ged`
-21000. `saved-6000000177920129831.ged`
-21001. `saved-6000000177921458827.ged`
-21002. `saved-6000000177921458833.ged`
-21003. `saved-6000000177921458845.ged`
-21004. `saved-6000000177921458863.ged`
-21005. `saved-6000000177921458990.ged`
-21006. `saved-6000000177921458999.ged`
-21007. `saved-6000000177921459033.ged`
-21008. `saved-6000000177921459052.ged`
-21009. `saved-6000000177921459056.ged`
-21010. `saved-6000000177921459066.ged`
-21011. `saved-6000000177921459072.ged`
-21012. `saved-6000000177921459078.ged`
-21013. `saved-6000000177921459094.ged`
-21014. `saved-6000000177921459104.ged`
-21015. `saved-6000000177921459114.ged`
-21016. `saved-6000000177921459129.ged`
-21017. `saved-6000000177921459134.ged`
-21018. `saved-6000000177921459169.ged`
-21019. `saved-6000000177921516822.ged`
-21020. `saved-6000000177921516839.ged`
-21021. `saved-6000000177921516859.ged`
-21022. `saved-6000000177944025822.ged`
-21023. `saved-6000000178670150833.ged`
-21024. `saved-6000000180285636825.ged`
-21025. `saved-6000000182737012832.ged`
-21026. `saved-6000000183986957910.ged`
-21027. `saved-6000000184169690842.ged`
-21028. `saved-6000000185157445888.ged`
-21029. `saved-6000000185158249846.ged`
-21030. `saved-6000000202543587856.ged`
-21031. `saved-6000000207769838867.ged`
-21032. `saved-6000000207770099821.ged`
-21033. `saved-6000000207770887863.ged`
-21034. `saved-6000000216588272880.ged`
-21035. `scorpion-i.ged`
-21036. `tadlaf-al-qaydari.ged`
-21037. `tem-jin-borjigin-khan-khagan-of-the-mong.ged`
-21038. `wen-jifu.ged`
-21039. `zeng-yuan.ged`
-21040. `1053448.ged`
-21041. `1054227.ged`
-21042. `1108959.ged`
-21043. `1414400.ged`
-21044. `1435328.ged`
-21045. `1544998.ged`
-21046. `1602143.ged`
-21047. `1605703.ged`
-21048. `1620416.ged`
-21049. `16755.ged`
-21050. `1696952.ged`
-21051. `1722187.ged`
-21052. `1793039.ged`
-21053. `1898299.ged`
-21054. `2093306.ged`
-21055. `2120676.ged`
-21056. `2249131.ged`
-21057. `2316244.ged`
-21058. `2316512.ged`
-21059. `2316972.ged`
-21060. `2317000.ged`
-21061. `2341427.ged`
-21062. `2348876.ged`
-21063. `292373984150002914.ged`
-21064. `292375499530004720.ged`
-21065. `292375614100003130.ged`
-21066. `292375719740008518.ged`
-21067. `292376429810004785.ged`
-21068. `292391597660006813.ged`
-21069. `3724849.ged`
-21070. `3724940.ged`
-21071. `3724946.ged`
-21072. `6000000000785786199.ged`
-21073. `6000000000872878006.ged`
-21074. `6000000001517526463.ged`
-21075. `6000000002028537662.ged`
-21076. `6000000006101354494.ged`
-21077. `6000000008174402366.ged`
-21078. `6000000008174466264.ged`
-21079. `6000000008176509969.ged`
-21080. `6000000008176622061.ged`
-21081. `6000000008176934493.ged`
-21082. `6000000008176981279.ged`
-21083. `6000000008177059370.ged`
-21084. `6000000008209329558.ged`
-21085. `6000000008209364679.ged`
-21086. `6000000008209406512.ged`
-21087. `6000000008209471202.ged`
-21088. `6000000008209474398.ged`
-21089. `6000000008209478282.ged`
-21090. `6000000008239556189.ged`
-21091. `6000000008239559135.ged`
-21092. `6000000008239590629.ged`
-21093. `6000000008461425733.ged`
-21094. `6000000008881168092.ged`
-21095. `6000000008881260729.ged`
-21096. `6000000008881347600.ged`
-21097. `6000000008881365723.ged`
-21098. `6000000008881370696.ged`
-21099. `6000000008881398025.ged`
-21100. `6000000008881463848.ged`
-21101. `6000000009583760174.ged`
-21102. `6000000009584254696.ged`
-21103. `6000000009584324661.ged`
-21104. `6000000009584383436.ged`
-21105. `6000000009593134620.ged`
-21106. `6000000009593580544.ged`
-21107. `6000000009593804483.ged`
-21108. `6000000009602576325.ged`
-21109. `6000000009749349185.ged`
-21110. `6000000009750181705.ged`
-21111. `6000000011489518934.ged`
-21112. `6000000015251760335.ged`
-21113. `6000000015251864613.ged`
-21114. `6000000017598776819.ged`
-21115. `6000000017599430239.ged`
-21116. `6000000017599452029.ged`
-21117. `6000000017601292551.ged`
-21118. `6000000017602027283.ged`
-21119. `6000000017602416858.ged`
-21120. `6000000017602461524.ged`
-21121. `6000000017602541883.ged`
-21122. `6000000017602671987.ged`
-21123. `6000000017602752341.ged`
-21124. `6000000017602840367.ged`
-21125. `6000000017602871867.ged`
-21126. `6000000017602909346.ged`
-21127. `6000000017603017344.ged`
-21128. `6000000017603043149.ged`
-21129. `6000000017603108393.ged`
-21130. `6000000017603116673.ged`
-21131. `6000000017603119240.ged`
-21132. `6000000017603127342.ged`
-21133. `6000000017603244042.ged`
-21134. `6000000018391674002.ged`
-21135. `6000000018394859816.ged`
-21136. `6000000018395600056.ged`
-21137. `6000000018809378584.ged`
-21138. `6000000033302814796.ged`
-21139. `6000000033303439023.ged`
-21140. `6000000036853250505.ged`
-21141. `6000000036854364270.ged`
-21142. `6000000036854711943.ged`
-21143. `6000000038555523003.ged`
-21144. `6000000038555630138.ged`
-21145. `6000000039315561835.ged`
-21146. `6000000039319367337.ged`
-21147. `6000000041985855247.ged`
-21148. `6000000041985856069.ged`
-21149. `6000000041985978113.ged`
-21150. `6000000041988558440.ged`
-21151. `6000000041988800141.ged`
-21152. `6000000074712812884.ged`
-21153. `6000000081001962237.ged`
-21154. `6000000081561097142.ged`
-21155. `6000000081561262442.ged`
-21156. `6000000081561784858.ged`
-21157. `6000000081561820879.ged`
-21158. `6000000081561965958.ged`
-21159. `6000000081561973861.ged`
-21160. `6000000081701543832.ged`
-21161. `6000000082250162949.ged`
-21162. `6000000082251726895.ged`
-21163. `6000000082417150189.ged`
-21164. `6000000082417620821.ged`
-21165. `6000000083040500385.ged`
-21166. `6000000169646834857.ged`
-21167. `6000000174013443429.ged`
-21168. `6000000174013690383.ged`
-21169. `6000000174772224635.ged`
-21170. `6000000174772526456.ged`
-21171. `6000000174773429162.ged`
-21172. `6000000174773610146.ged`
-21173. `6000000174773679865.ged`
-21174. `6000000174774123984.ged`
-21175. `6000000174774135958.ged`
-21176. `6000000174774257861.ged`
-21177. `6000000174774399824.ged`
-21178. `6000000174774419939.ged`
-21179. `6000000174774486989.ged`
-21180. `6000000174775367866.ged`
-21181. `6000000176227546848.ged`
-21182. `6000000186886974842.ged`
-21183. `saved-1548918.ged`
-21184. `saved-1610437.ged`
-21185. `saved-2077926.ged`
-21186. `saved-2120676.ged`
-21187. `saved-2125635.ged`
-21188. `saved-2128292.ged`
-21189. `saved-2399215.ged`
-21190. `saved-292350426030002931.ged`
-21191. `saved-304413571170007106.ged`
-21192. `saved-304413670430008270.ged`
-21193. `saved-316216248270002934.ged`
-21194. `saved-346534886220012248.ged`
-21195. `saved-346535323980012266.ged`
-21196. `saved-349440463640013536.ged`
-21197. `saved-361843381280007976.ged`
-21198. `saved-365313857240013083.ged`
-21199. `saved-365314124540003500.ged`
-21200. `saved-365314894420003448.ged`
-21201. `saved-365315518800010569.ged`
-21202. `saved-365466687720012045.ged`
-21203. `saved-365471060260013162.ged`
-21204. `saved-365471464220013205.ged`
-21205. `saved-367359078190012517.ged`
-21206. `saved-368713820640003185.ged`
-21207. `saved-368714154710012201.ged`
-21208. `saved-3696730.ged`
-21209. `saved-375738756460004676.ged`
-21210. `saved-375744715040013128.ged`
-21211. `saved-3810353.ged`
-21212. `saved-381761530540011401.ged`
-21213. `saved-388449893270012482.ged`
-21214. `saved-388450329300012525.ged`
-21215. `saved-388613596210002012.ged`
-21216. `saved-4077210.ged`
-21217. `saved-4077390.ged`
-21218. `saved-4079111.ged`
-21219. `saved-4103872.ged`
-21220. `saved-4195891192880058503.ged`
-21221. `saved-4195938644320058013.ged`
-21222. `saved-4198641.ged`
-21223. `saved-4229916861440069622.ged`
-21224. `saved-4248013140250038185.ged`
-21225. `saved-4259042.ged`
-21226. `saved-4259048.ged`
-21227. `saved-4259086.ged`
-21228. `saved-4263630100270128037.ged`
-21229. `saved-4275395618020068615.ged`
-21230. `saved-4275583289130033084.ged`
-21231. `saved-4275641755920033011.ged`
-21232. `saved-4362903.ged`
-21233. `saved-4365730.ged`
-21234. `saved-4366030.ged`
-21235. `saved-4376103.ged`
-21236. `saved-4520147.ged`
-21237. `saved-4520166.ged`
-21238. `saved-4592410796700031770.ged`
-21239. `saved-4627273.ged`
-21240. `saved-4722085825290038085.ged`
-21241. `saved-4924448917970137597.ged`
-21242. `saved-4924448933160137503.ged`
-21243. `saved-4946518870490042172.ged`
-21244. `saved-4976573922110117540.ged`
-21245. `saved-4984086862270100347.ged`
-21246. `saved-5001362652110128116.ged`
-21247. `saved-5105745500030114706.ged`
-21248. `saved-5106195884670114511.ged`
-21249. `saved-5119671559010045041.ged`
-21250. `saved-5131571863040103622.ged`
-21251. `saved-5200066333790031078.ged`
-21252. `saved-5207146906010118647.ged`
-21253. `saved-5207146917280118653.ged`
-21254. `saved-5219301786390025586.ged`
-21255. `saved-5235605714220070458.ged`
-21256. `saved-5251653855510129840.ged`
-21257. `saved-5267211996730068114.ged`
-21258. `saved-5271489675500023723.ged`
-21259. `saved-5304572722780119951.ged`
-21260. `saved-5304606047970088500.ged`
-21261. `saved-5304611081740076756.ged`
-21262. `saved-5305294636990124817.ged`
-21263. `saved-5328971090140130337.ged`
-21264. `saved-5336768638830104036.ged`
-21265. `saved-5336815803180122126.ged`
-21266. `saved-5389087141070079885.ged`
-21267. `saved-5441266921810062407.ged`
-21268. `saved-5441313740220126371.ged`
-21269. `saved-5447505087810135067.ged`
-21270. `saved-5502961102630086048.ged`
-21271. `saved-5502964838900085605.ged`
-21272. `saved-5551057844540081310.ged`
-21273. `saved-5551063057940043140.ged`
-21274. `saved-5562350241840082253.ged`
-21275. `saved-5617518918050122036.ged`
-21276. `saved-5617538511300106313.ged`
-21277. `saved-5679634808960060299.ged`
-21278. `saved-5680189981660060613.ged`
-21279. `saved-6000000000010678591.ged`
-21280. `saved-6000000000012602183.ged`
-21281. `saved-6000000000019972451.ged`
-21282. `saved-6000000000023930647.ged`
-21283. `saved-6000000000041470596.ged`
-21284. `saved-6000000000060201977.ged`
-21285. `saved-6000000000073797328.ged`
-21286. `saved-6000000000085100177.ged`
-21287. `saved-6000000000099770180.ged`
-21288. `saved-6000000000101143665.ged`
-21289. `saved-6000000000113843065.ged`
-21290. `saved-6000000000113843072.ged`
-21291. `saved-6000000000125793641.ged`
-21292. `saved-6000000000127612116.ged`
-21293. `saved-6000000000127612134.ged`
-21294. `saved-6000000000135924403.ged`
-21295. `saved-6000000000136616524.ged`
-21296. `saved-6000000000136688085.ged`
-21297. `saved-6000000000139648597.ged`
-21298. `saved-6000000000186421249.ged`
-21299. `saved-6000000000196218118.ged`
-21300. `saved-6000000000207082579.ged`
-21301. `saved-6000000000207082672.ged`
-21302. `saved-6000000000252931854.ged`
-21303. `saved-6000000000351087662.ged`
-21304. `saved-6000000000351087701.ged`
-21305. `saved-6000000000361052707.ged`
-21306. `saved-6000000000424848932.ged`
-21307. `saved-6000000000424851399.ged`
-21308. `saved-6000000000437044109.ged`
-21309. `saved-6000000000437130447.ged`
-21310. `saved-6000000000437316601.ged`
-21311. `saved-6000000000437327174.ged`
-21312. `saved-6000000000437669873.ged`
-21313. `saved-6000000000460790288.ged`
-21314. `saved-6000000000467542216.ged`
-21315. `saved-6000000000484083511.ged`
-21316. `saved-6000000000484249023.ged`
-21317. `saved-6000000000496970049.ged`
-21318. `saved-6000000000497643885.ged`
-21319. `saved-6000000000537527004.ged`
-21320. `saved-6000000000565230800.ged`
-21321. `saved-6000000000565416578.ged`
-21322. `saved-6000000000568379999.ged`
-21323. `saved-6000000000568695494.ged`
-21324. `saved-6000000000571789704.ged`
-21325. `saved-6000000000574078388.ged`
-21326. `saved-6000000000576766420.ged`
-21327. `saved-6000000000589541967.ged`
-21328. `saved-6000000000593738894.ged`
-21329. `saved-6000000000594454726.ged`
-21330. `saved-6000000000607356949.ged`
-21331. `saved-6000000000607426990.ged`
-21332. `saved-6000000000634953446.ged`
-21333. `saved-6000000000638286399.ged`
-21334. `saved-6000000000646636987.ged`
-21335. `saved-6000000000646740659.ged`
-21336. `saved-6000000000649121564.ged`
-21337. `saved-6000000000650837721.ged`
-21338. `saved-6000000000659810695.ged`
-21339. `saved-6000000000663149325.ged`
-21340. `saved-6000000000663258163.ged`
-21341. `saved-6000000000666780234.ged`
-21342. `saved-6000000000671061765.ged`
-21343. `saved-6000000000679344754.ged`
-21344. `saved-6000000000687421882.ged`
-21345. `saved-6000000000687631539.ged`
-21346. `saved-6000000000694158525.ged`
-21347. `saved-6000000000709334357.ged`
-21348. `saved-6000000000725159715.ged`
-21349. `saved-6000000000728299766.ged`
-21350. `saved-6000000000735554252.ged`
-21351. `saved-6000000000756952602.ged`
-21352. `saved-6000000000757999620.ged`
-21353. `saved-6000000000758079676.ged`
-21354. `saved-6000000000764818098.ged`
-21355. `saved-6000000000764844009.ged`
-21356. `saved-6000000000768957873.ged`
-21357. `saved-6000000000781697178.ged`
-21358. `saved-6000000000796891248.ged`
-21359. `saved-6000000000855618243.ged`
-21360. `saved-6000000000866353020.ged`
-21361. `saved-6000000000873947684.ged`
-21362. `saved-6000000000879803071.ged`
-21363. `saved-6000000000891680343.ged`
-21364. `saved-6000000000982525534.ged`
-21365. `saved-6000000001012125847.ged`
-21366. `saved-6000000001056501127.ged`
-21367. `saved-6000000001062725047.ged`
-21368. `saved-6000000001063167523.ged`
-21369. `saved-6000000001088018839.ged`
-21370. `saved-6000000001088021553.ged`
-21371. `saved-6000000001088154772.ged`
-21372. `saved-6000000001116583134.ged`
-21373. `saved-6000000001131192746.ged`
-21374. `saved-6000000001138735296.ged`
-21375. `saved-6000000001139071013.ged`
-21376. `saved-6000000001139144268.ged`
-21377. `saved-6000000001144914191.ged`
-21378. `saved-6000000001169154976.ged`
-21379. `saved-6000000001169171714.ged`
-21380. `saved-6000000001169235389.ged`
-21381. `saved-6000000001169238166.ged`
-21382. `saved-6000000001169313832.ged`
-21383. `saved-6000000001196257237.ged`
-21384. `saved-6000000001198262405.ged`
-21385. `saved-6000000001198860794.ged`
-21386. `saved-6000000001199993264.ged`
-21387. `saved-6000000001200028258.ged`
-21388. `saved-6000000001311917463.ged`
-21389. `saved-6000000001322198340.ged`
-21390. `saved-6000000001322198603.ged`
-21391. `saved-6000000001338193719.ged`
-21392. `saved-6000000001353276458.ged`
-21393. `saved-6000000001353537105.ged`
-21394. `saved-6000000001372350889.ged`
-21395. `saved-6000000001372368326.ged`
-21396. `saved-6000000001372528092.ged`
-21397. `saved-6000000001412881746.ged`
-21398. `saved-6000000001498704022.ged`
-21399. `saved-6000000001498704055.ged`
-21400. `saved-6000000001498704338.ged`
-21401. `saved-6000000001500854738.ged`
-21402. `saved-6000000001500893042.ged`
-21403. `saved-6000000001500929374.ged`
-21404. `saved-6000000001501057114.ged`
-21405. `saved-6000000001504281165.ged`
-21406. `saved-6000000001504702346.ged`
-21407. `saved-6000000001504816842.ged`
-21408. `saved-6000000001506899998.ged`
-21409. `saved-6000000001584382671.ged`
-21410. `saved-6000000001584687363.ged`
-21411. `saved-6000000001584801190.ged`
-21412. `saved-6000000001593637951.ged`
-21413. `saved-6000000001594051535.ged`
-21414. `saved-6000000001613759071.ged`
-21415. `saved-6000000001613970246.ged`
-21416. `saved-6000000001614845637.ged`
-21417. `saved-6000000001624111597.ged`
-21418. `saved-6000000001651460598.ged`
-21419. `saved-6000000001651502714.ged`
-21420. `saved-6000000001651629109.ged`
-21421. `saved-6000000001708363985.ged`
-21422. `saved-6000000001711091993.ged`
-21423. `saved-6000000001713373908.ged`
-21424. `saved-6000000001722370024.ged`
-21425. `saved-6000000001732153525.ged`
-21426. `saved-6000000001732177195.ged`
-21427. `saved-6000000001770188397.ged`
-21428. `saved-6000000001770214443.ged`
-21429. `saved-6000000001784502814.ged`
-21430. `saved-6000000001784535509.ged`
-21431. `saved-6000000001784558539.ged`
-21432. `saved-6000000001801026836.ged`
-21433. `saved-6000000001821102369.ged`
-21434. `saved-6000000001827531760.ged`
-21435. `saved-6000000001827575240.ged`
-21436. `saved-6000000001827582117.ged`
-21437. `saved-6000000001827585947.ged`
-21438. `saved-6000000001827593928.ged`
-21439. `saved-6000000001827596078.ged`
-21440. `saved-6000000001827610153.ged`
-21441. `saved-6000000001833628324.ged`
-21442. `saved-6000000001838607806.ged`
-21443. `saved-6000000001838879990.ged`
-21444. `saved-6000000001873530609.ged`
-21445. `saved-6000000001891957076.ged`
-21446. `saved-6000000001900007557.ged`
-21447. `saved-6000000001919547668.ged`
-21448. `saved-6000000001919812645.ged`
-21449. `saved-6000000001969506851.ged`
-21450. `saved-6000000001969599119.ged`
-21451. `saved-6000000001994951163.ged`
-21452. `saved-6000000001995109345.ged`
-21453. `saved-6000000002017898070.ged`
-21454. `saved-6000000002031285960.ged`
-21455. `saved-6000000002043263103.ged`
-21456. `saved-6000000002078094635.ged`
-21457. `saved-6000000002078126382.ged`
-21458. `saved-6000000002106139599.ged`
-21459. `saved-6000000002163543379.ged`
-21460. `saved-6000000002176658451.ged`
-21461. `saved-6000000002187796542.ged`
-21462. `saved-6000000002187796550.ged`
-21463. `saved-6000000002187851434.ged`
-21464. `saved-6000000002188050061.ged`
-21465. `saved-6000000002188081857.ged`
-21466. `saved-6000000002188110562.ged`
-21467. `saved-6000000002188289908.ged`
-21468. `saved-6000000002188304379.ged`
-21469. `saved-6000000002188307463.ged`
-21470. `saved-6000000002188307934.ged`
-21471. `saved-6000000002188578738.ged`
-21472. `saved-6000000002188578769.ged`
-21473. `saved-6000000002188579271.ged`
-21474. `saved-6000000002188625450.ged`
-21475. `saved-6000000002222709933.ged`
-21476. `saved-6000000002226068159.ged`
-21477. `saved-6000000002228252084.ged`
-21478. `saved-6000000002228278394.ged`
-21479. `saved-6000000002244380726.ged`
-21480. `saved-6000000002244397924.ged`
-21481. `saved-6000000002244397940.ged`
-21482. `saved-6000000002245279564.ged`
-21483. `saved-6000000002267060138.ged`
-21484. `saved-6000000002277862058.ged`
-21485. `saved-6000000002278450149.ged`
-21486. `saved-6000000002280344494.ged`
-21487. `saved-6000000002280411009.ged`
-21488. `saved-6000000002330980548.ged`
-21489. `saved-6000000002336577815.ged`
-21490. `saved-6000000002336697043.ged`
-21491. `saved-6000000002342416311.ged`
-21492. `saved-6000000002358756663.ged`
-21493. `saved-6000000002370640619.ged`
-21494. `saved-6000000002391959353.ged`
-21495. `saved-6000000002403898091.ged`
-21496. `saved-6000000002403898117.ged`
-21497. `saved-6000000002434214184.ged`
-21498. `saved-6000000002463510938.ged`
-21499. `saved-6000000002481819312.ged`
-21500. `saved-6000000002482084257.ged`
-21501. `saved-6000000002482165558.ged`
-21502. `saved-6000000002503678686.ged`
-21503. `saved-6000000002512241178.ged`
-21504. `saved-6000000002512246810.ged`
-21505. `saved-6000000002512246864.ged`
-21506. `saved-6000000002512346178.ged`
-21507. `saved-6000000002516491073.ged`
-21508. `saved-6000000002517120513.ged`
-21509. `saved-6000000002517120595.ged`
-21510. `saved-6000000002527461568.ged`
-21511. `saved-6000000002553650991.ged`
-21512. `saved-6000000002572699392.ged`
-21513. `saved-6000000002572701505.ged`
-21514. `saved-6000000002572783163.ged`
-21515. `saved-6000000002585455740.ged`
-21516. `saved-6000000002585562372.ged`
-21517. `saved-6000000002588347233.ged`
-21518. `saved-6000000002600987455.ged`
-21519. `saved-6000000002602162553.ged`
-21520. `saved-6000000002626238951.ged`
-21521. `saved-6000000002664914535.ged`
-21522. `saved-6000000002744891329.ged`
-21523. `saved-6000000002748554800.ged`
-21524. `saved-6000000002750545795.ged`
-21525. `saved-6000000002766488352.ged`
-21526. `saved-6000000002767708000.ged`
-21527. `saved-6000000002770849622.ged`
-21528. `saved-6000000002770896230.ged`
-21529. `saved-6000000002785337209.ged`
-21530. `saved-6000000002801147492.ged`
-21531. `saved-6000000002813633340.ged`
-21532. `saved-6000000002832115884.ged`
-21533. `saved-6000000002837456927.ged`
-21534. `saved-6000000002847207216.ged`
-21535. `saved-6000000002847945015.ged`
-21536. `saved-6000000002866077692.ged`
-21537. `saved-6000000002866078652.ged`
-21538. `saved-6000000002866250576.ged`
-21539. `saved-6000000002877958100.ged`
-21540. `saved-6000000002890270426.ged`
-21541. `saved-6000000002893299341.ged`
-21542. `saved-6000000002893299372.ged`
-21543. `saved-6000000002893316227.ged`
-21544. `saved-6000000002893322314.ged`
-21545. `saved-6000000002893330286.ged`
-21546. `saved-6000000002893335701.ged`
-21547. `saved-6000000002906400227.ged`
-21548. `saved-6000000002916189513.ged`
-21549. `saved-6000000002920620224.ged`
-21550. `saved-6000000002969078825.ged`
-21551. `saved-6000000002969217246.ged`
-21552. `saved-6000000002979875144.ged`
-21553. `saved-6000000003002231602.ged`
-21554. `saved-6000000003002364630.ged`
-21555. `saved-6000000003002538177.ged`
-21556. `saved-6000000003012468747.ged`
-21557. `saved-6000000003025853747.ged`
-21558. `saved-6000000003026039395.ged`
-21559. `saved-6000000003043806217.ged`
-21560. `saved-6000000003049156212.ged`
-21561. `saved-6000000003058583726.ged`
-21562. `saved-6000000003058905240.ged`
-21563. `saved-6000000003076221220.ged`
-21564. `saved-6000000003086332874.ged`
-21565. `saved-6000000003086434645.ged`
-21566. `saved-6000000003087080306.ged`
-21567. `saved-6000000003094916337.ged`
-21568. `saved-6000000003094967990.ged`
-21569. `saved-6000000003094971035.ged`
-21570. `saved-6000000003094977911.ged`
-21571. `saved-6000000003095003918.ged`
-21572. `saved-6000000003095060610.ged`
-21573. `saved-6000000003095060659.ged`
-21574. `saved-6000000003095080287.ged`
-21575. `saved-6000000003095084974.ged`
-21576. `saved-6000000003095113068.ged`
-21577. `saved-6000000003095156945.ged`
-21578. `saved-6000000003095195374.ged`
-21579. `saved-6000000003101980999.ged`
-21580. `saved-6000000003102253400.ged`
-21581. `saved-6000000003102295068.ged`
-21582. `saved-6000000003111305140.ged`
-21583. `saved-6000000003116379849.ged`
-21584. `saved-6000000003116743788.ged`
-21585. `saved-6000000003116932225.ged`
-21586. `saved-6000000003125122695.ged`
-21587. `saved-6000000003125438035.ged`
-21588. `saved-6000000003152600818.ged`
-21589. `saved-6000000003152860875.ged`
-21590. `saved-6000000003152872621.ged`
-21591. `saved-6000000003187090488.ged`
-21592. `saved-6000000003196492775.ged`
-21593. `saved-6000000003242618875.ged`
-21594. `saved-6000000003252172731.ged`
-21595. `saved-6000000003252323043.ged`
-21596. `saved-6000000003253261775.ged`
-21597. `saved-6000000003253460860.ged`
-21598. `saved-6000000003253601093.ged`
-21599. `saved-6000000003306757977.ged`
-21600. `saved-6000000003307054576.ged`
-21601. `saved-6000000003319932530.ged`
-21602. `saved-6000000003332799114.ged`
-21603. `saved-6000000003332823073.ged`
-21604. `saved-6000000003344565684.ged`
-21605. `saved-6000000003344745168.ged`
-21606. `saved-6000000003353135663.ged`
-21607. `saved-6000000003353178311.ged`
-21608. `saved-6000000003355801643.ged`
-21609. `saved-6000000003367976924.ged`
-21610. `saved-6000000003379144766.ged`
-21611. `saved-6000000003379409803.ged`
-21612. `saved-6000000003389294519.ged`
-21613. `saved-6000000003401838954.ged`
-21614. `saved-6000000003417361345.ged`
-21615. `saved-6000000003418900347.ged`
-21616. `saved-6000000003484293276.ged`
-21617. `saved-6000000003484293288.ged`
-21618. `saved-6000000003491933538.ged`
-21619. `saved-6000000003491947054.ged`
-21620. `saved-6000000003491958558.ged`
-21621. `saved-6000000003491986946.ged`
-21622. `saved-6000000003491988189.ged`
-21623. `saved-6000000003491988489.ged`
-21624. `saved-6000000003491988509.ged`
-21625. `saved-6000000003491988584.ged`
-21626. `saved-6000000003491988599.ged`
-21627. `saved-6000000003491988619.ged`
-21628. `saved-6000000003491988831.ged`
-21629. `saved-6000000003492005126.ged`
-21630. `saved-6000000003492029785.ged`
-21631. `saved-6000000003492033784.ged`
-21632. `saved-6000000003492033799.ged`
-21633. `saved-6000000003492033993.ged`
-21634. `saved-6000000003492057788.ged`
-21635. `saved-6000000003492064709.ged`
-21636. `saved-6000000003492064827.ged`
-21637. `saved-6000000003492068105.ged`
-21638. `saved-6000000003492068120.ged`
-21639. `saved-6000000003492068938.ged`
-21640. `saved-6000000003492535579.ged`
-21641. `saved-6000000003493162078.ged`
-21642. `saved-6000000003495348795.ged`
-21643. `saved-6000000003495384814.ged`
-21644. `saved-6000000003521493989.ged`
-21645. `saved-6000000003535740332.ged`
-21646. `saved-6000000003559734445.ged`
-21647. `saved-6000000003568661683.ged`
-21648. `saved-6000000003588755565.ged`
-21649. `saved-6000000003615417006.ged`
-21650. `saved-6000000003620618740.ged`
-21651. `saved-6000000003645825338.ged`
-21652. `saved-6000000003645919492.ged`
-21653. `saved-6000000003645919625.ged`
-21654. `saved-6000000003645940658.ged`
-21655. `saved-6000000003646023820.ged`
-21656. `saved-6000000003646023907.ged`
-21657. `saved-6000000003665102809.ged`
-21658. `saved-6000000003665181171.ged`
-21659. `saved-6000000003665414365.ged`
-21660. `saved-6000000003721939858.ged`
-21661. `saved-6000000003732742137.ged`
-21662. `saved-6000000003781494806.ged`
-21663. `saved-6000000003783022260.ged`
-21664. `saved-6000000003805720033.ged`
-21665. `saved-6000000003823851202.ged`
-21666. `saved-6000000003824461685.ged`
-21667. `saved-6000000003824564617.ged`
-21668. `saved-6000000003827445550.ged`
-21669. `saved-6000000003827661670.ged`
-21670. `saved-6000000003828248652.ged`
-21671. `saved-6000000003828248658.ged`
-21672. `saved-6000000003828250057.ged`
-21673. `saved-6000000003828250078.ged`
-21674. `saved-6000000003842233263.ged`
-21675. `saved-6000000003854400441.ged`
-21676. `saved-6000000003858704239.ged`
-21677. `saved-6000000003858716758.ged`
-21678. `saved-6000000003858749453.ged`
-21679. `saved-6000000003869622559.ged`
-21680. `saved-6000000003887729856.ged`
-21681. `saved-6000000003897585979.ged`
-21682. `saved-6000000003902489870.ged`
-21683. `saved-6000000003905140955.ged`
-21684. `saved-6000000003953393939.ged`
-21685. `saved-6000000003958968521.ged`
-21686. `saved-6000000003979582810.ged`
-21687. `saved-6000000004027712640.ged`
-21688. `saved-6000000004028320232.ged`
-21689. `saved-6000000004032942523.ged`
-21690. `saved-6000000004034893096.ged`
-21691. `saved-6000000004035037156.ged`
-21692. `saved-6000000004078906672.ged`
-21693. `saved-6000000004104838733.ged`
-21694. `saved-6000000004105285975.ged`
-21695. `saved-6000000004131116716.ged`
-21696. `saved-6000000004140735934.ged`
-21697. `saved-6000000004214433404.ged`
-21698. `saved-6000000004281397219.ged`
-21699. `saved-6000000004389585513.ged`
-21700. `saved-6000000004456080013.ged`
-21701. `saved-6000000004457022019.ged`
-21702. `saved-6000000004533176419.ged`
-21703. `saved-6000000004533503066.ged`
-21704. `saved-6000000004533503379.ged`
-21705. `saved-6000000004533510674.ged`
-21706. `saved-6000000004534272864.ged`
-21707. `saved-6000000004647605698.ged`
-21708. `saved-6000000004650708520.ged`
-21709. `saved-6000000004671044584.ged`
-21710. `saved-6000000004691642355.ged`
-21711. `saved-6000000004838388133.ged`
-21712. `saved-6000000004862474531.ged`
-21713. `saved-6000000004863275809.ged`
-21714. `saved-6000000004863611375.ged`
-21715. `saved-6000000004863761158.ged`
-21716. `saved-6000000004863823276.ged`
-21717. `saved-6000000004868825651.ged`
-21718. `saved-6000000004868825686.ged`
-21719. `saved-6000000004868846058.ged`
-21720. `saved-6000000004868846355.ged`
-21721. `saved-6000000004868851834.ged`
-21722. `saved-6000000004868858899.ged`
-21723. `saved-6000000004869049343.ged`
-21724. `saved-6000000004870648136.ged`
-21725. `saved-6000000004974123682.ged`
-21726. `saved-6000000004974523185.ged`
-21727. `saved-6000000005013705987.ged`
-21728. `saved-6000000005025304600.ged`
-21729. `saved-6000000005074489379.ged`
-21730. `saved-6000000005246487476.ged`
-21731. `saved-6000000005381997903.ged`
-21732. `saved-6000000005382299298.ged`
-21733. `saved-6000000005391128983.ged`
-21734. `saved-6000000005398287081.ged`
-21735. `saved-6000000005414590318.ged`
-21736. `saved-6000000005441081725.ged`
-21737. `saved-6000000005441559089.ged`
-21738. `saved-6000000005442236186.ged`
-21739. `saved-6000000005545740001.ged`
-21740. `saved-6000000005576602065.ged`
-21741. `saved-6000000005581573549.ged`
-21742. `saved-6000000005581573602.ged`
-21743. `saved-6000000005598851255.ged`
-21744. `saved-6000000005606851579.ged`
-21745. `saved-6000000005606851647.ged`
-21746. `saved-6000000005606873183.ged`
-21747. `saved-6000000005606886765.ged`
-21748. `saved-6000000005606886780.ged`
-21749. `saved-6000000005606886827.ged`
-21750. `saved-6000000005606886909.ged`
-21751. `saved-6000000005606907877.ged`
-21752. `saved-6000000005606976930.ged`
-21753. `saved-6000000005607042284.ged`
-21754. `saved-6000000005607042309.ged`
-21755. `saved-6000000005607042593.ged`
-21756. `saved-6000000005607119313.ged`
-21757. `saved-6000000005607123730.ged`
-21758. `saved-6000000005607187224.ged`
-21759. `saved-6000000005607264518.ged`
-21760. `saved-6000000005607268671.ged`
-21761. `saved-6000000005607282941.ged`
-21762. `saved-6000000005607296161.ged`
-21763. `saved-6000000005607335640.ged`
-21764. `saved-6000000005607339190.ged`
-21765. `saved-6000000005607365269.ged`
-21766. `saved-6000000005607377021.ged`
-21767. `saved-6000000005607439733.ged`
-21768. `saved-6000000005607481550.ged`
-21769. `saved-6000000005607599821.ged`
-21770. `saved-6000000005607880384.ged`
-21771. `saved-6000000005607884543.ged`
-21772. `saved-6000000005608851471.ged`
-21773. `saved-6000000005608851479.ged`
-21774. `saved-6000000005608851503.ged`
-21775. `saved-6000000005608873060.ged`
-21776. `saved-6000000005608873104.ged`
-21777. `saved-6000000005608873211.ged`
-21778. `saved-6000000005608884093.ged`
-21779. `saved-6000000005608934604.ged`
-21780. `saved-6000000005609028769.ged`
-21781. `saved-6000000005609064474.ged`
-21782. `saved-6000000005609102300.ged`
-21783. `saved-6000000005609102344.ged`
-21784. `saved-6000000005609304829.ged`
-21785. `saved-6000000005609304839.ged`
-21786. `saved-6000000005609458561.ged`
-21787. `saved-6000000005609466031.ged`
-21788. `saved-6000000005609518095.ged`
-21789. `saved-6000000005609522416.ged`
-21790. `saved-6000000005609522426.ged`
-21791. `saved-6000000005609534511.ged`
-21792. `saved-6000000005609534659.ged`
-21793. `saved-6000000005609547367.ged`
-21794. `saved-6000000005609547535.ged`
-21795. `saved-6000000005609547544.ged`
-21796. `saved-6000000005609547691.ged`
-21797. `saved-6000000005739075955.ged`
-21798. `saved-6000000005739942225.ged`
-21799. `saved-6000000005744994368.ged`
-21800. `saved-6000000005744994427.ged`
-21801. `saved-6000000005795638082.ged`
-21802. `saved-6000000005795638104.ged`
-21803. `saved-6000000005856163014.ged`
-21804. `saved-6000000005942135258.ged`
-21805. `saved-6000000006127214913.ged`
-21806. `saved-6000000006127322318.ged`
-21807. `saved-6000000006127859612.ged`
-21808. `saved-6000000006127996485.ged`
-21809. `saved-6000000006127996492.ged`
-21810. `saved-6000000006127996498.ged`
-21811. `saved-6000000006128227797.ged`
-21812. `saved-6000000006171259545.ged`
-21813. `saved-6000000006183866418.ged`
-21814. `saved-6000000006253433055.ged`
-21815. `saved-6000000006253635635.ged`
-21816. `saved-6000000006277556378.ged`
-21817. `saved-6000000006293783777.ged`
-21818. `saved-6000000006336803890.ged`
-21819. `saved-6000000006351988253.ged`
-21820. `saved-6000000006352209093.ged`
-21821. `saved-6000000006400320009.ged`
-21822. `saved-6000000006402064518.ged`
-21823. `saved-6000000006444130321.ged`
-21824. `saved-6000000006444270409.ged`
-21825. `saved-6000000006444357812.ged`
-21826. `saved-6000000006444364312.ged`
-21827. `saved-6000000006565863003.ged`
-21828. `saved-6000000006565930017.ged`
-21829. `saved-6000000006575266506.ged`
-21830. `saved-6000000006589193197.ged`
-21831. `saved-6000000006589193210.ged`
-21832. `saved-6000000006589193224.ged`
-21833. `saved-6000000006589193735.ged`
-21834. `saved-6000000006589193752.ged`
-21835. `saved-6000000006589261586.ged`
-21836. `saved-6000000006589261605.ged`
-21837. `saved-6000000006589261737.ged`
-21838. `saved-6000000006602653847.ged`
-21839. `saved-6000000006727823308.ged`
-21840. `saved-6000000006744570542.ged`
-21841. `saved-6000000006769001160.ged`
-21842. `saved-6000000006769847598.ged`
-21843. `saved-6000000006776171892.ged`
-21844. `saved-6000000006776187362.ged`
-21845. `saved-6000000006776187394.ged`
-21846. `saved-6000000006776187410.ged`
-21847. `saved-6000000006792569099.ged`
-21848. `saved-6000000006802626827.ged`
-21849. `saved-6000000006802748484.ged`
-21850. `saved-6000000006804155423.ged`
-21851. `saved-6000000006807994202.ged`
-21852. `saved-6000000006828562507.ged`
-21853. `saved-6000000006828783137.ged`
-21854. `saved-6000000006845609473.ged`
-21855. `saved-6000000006892741240.ged`
-21856. `saved-6000000006909919760.ged`
-21857. `saved-6000000006909980800.ged`
-21858. `saved-6000000006910119673.ged`
-21859. `saved-6000000006910218376.ged`
-21860. `saved-6000000006910371360.ged`
-21861. `saved-6000000006910524128.ged`
-21862. `saved-6000000006927613398.ged`
-21863. `saved-6000000006932496197.ged`
-21864. `saved-6000000006963936279.ged`
-21865. `saved-6000000006964093867.ged`
-21866. `saved-6000000006991041605.ged`
-21867. `saved-6000000007006053264.ged`
-21868. `saved-6000000007020763500.ged`
-21869. `saved-6000000007035211375.ged`
-21870. `saved-6000000007040744781.ged`
-21871. `saved-6000000007051275051.ged`
-21872. `saved-6000000007051737771.ged`
-21873. `saved-6000000007058475918.ged`
-21874. `saved-6000000007058802262.ged`
-21875. `saved-6000000007059008284.ged`
-21876. `saved-6000000007059036372.ged`
-21877. `saved-6000000007060635081.ged`
-21878. `saved-6000000007062931743.ged`
-21879. `saved-6000000007062987558.ged`
-21880. `saved-6000000007090217253.ged`
-21881. `saved-6000000007096021931.ged`
-21882. `saved-6000000007114444629.ged`
-21883. `saved-6000000007149829030.ged`
-21884. `saved-6000000007150056822.ged`
-21885. `saved-6000000007159201467.ged`
-21886. `saved-6000000007168006559.ged`
-21887. `saved-6000000007168150360.ged`
-21888. `saved-6000000007182167503.ged`
-21889. `saved-6000000007182299647.ged`
-21890. `saved-6000000007182710798.ged`
-21891. `saved-6000000007182829201.ged`
-21892. `saved-6000000007210899736.ged`
-21893. `saved-6000000007211481443.ged`
-21894. `saved-6000000007218725750.ged`
-21895. `saved-6000000007225974316.ged`
-21896. `saved-6000000007243462851.ged`
-21897. `saved-6000000007243504597.ged`
-21898. `saved-6000000007243779310.ged`
-21899. `saved-6000000007259558393.ged`
-21900. `saved-6000000007272507672.ged`
-21901. `saved-6000000007279272308.ged`
-21902. `saved-6000000007295507866.ged`
-21903. `saved-6000000007304150583.ged`
-21904. `saved-6000000007335744612.ged`
-21905. `saved-6000000007335974610.ged`
-21906. `saved-6000000007339101221.ged`
-21907. `saved-6000000007367810201.ged`
-21908. `saved-6000000007392290792.ged`
-21909. `saved-6000000007393382928.ged`
-21910. `saved-6000000007404085354.ged`
-21911. `saved-6000000007404267211.ged`
-21912. `saved-6000000007425369965.ged`
-21913. `saved-6000000007507069278.ged`
-21914. `saved-6000000007507095358.ged`
-21915. `saved-6000000007511564057.ged`
-21916. `saved-6000000007511564070.ged`
-21917. `saved-6000000007511832794.ged`
-21918. `saved-6000000007538343204.ged`
-21919. `saved-6000000007549179716.ged`
-21920. `saved-6000000007549309545.ged`
-21921. `saved-6000000007559278400.ged`
-21922. `saved-6000000007581296353.ged`
-21923. `saved-6000000007581383931.ged`
-21924. `saved-6000000007587625693.ged`
-21925. `saved-6000000007587694720.ged`
-21926. `saved-6000000007588187341.ged`
-21927. `saved-6000000007588187344.ged`
-21928. `saved-6000000007588356972.ged`
-21929. `saved-6000000007589095312.ged`
-21930. `saved-6000000007589095414.ged`
-21931. `saved-6000000007604938431.ged`
-21932. `saved-6000000007604938444.ged`
-21933. `saved-6000000007614477274.ged`
-21934. `saved-6000000007618351978.ged`
-21935. `saved-6000000007630944209.ged`
-21936. `saved-6000000007632160030.ged`
-21937. `saved-6000000007635630874.ged`
-21938. `saved-6000000007635630965.ged`
-21939. `saved-6000000007635631030.ged`
-21940. `saved-6000000007661859262.ged`
-21941. `saved-6000000007676113728.ged`
-21942. `saved-6000000007676466396.ged`
-21943. `saved-6000000007770332213.ged`
-21944. `saved-6000000007773104021.ged`
-21945. `saved-6000000007782302849.ged`
-21946. `saved-6000000007826003451.ged`
-21947. `saved-6000000007826127365.ged`
-21948. `saved-6000000007958767639.ged`
-21949. `saved-6000000007959631642.ged`
-21950. `saved-6000000007959864423.ged`
-21951. `saved-6000000007980369200.ged`
-21952. `saved-6000000007980520044.ged`
-21953. `saved-6000000007980693054.ged`
-21954. `saved-6000000008008010549.ged`
-21955. `saved-6000000008019682504.ged`
-21956. `saved-6000000008034160064.ged`
-21957. `saved-6000000008034415513.ged`
-21958. `saved-6000000008063252550.ged`
-21959. `saved-6000000008100776194.ged`
-21960. `saved-6000000008101228513.ged`
-21961. `saved-6000000008106241912.ged`
-21962. `saved-6000000008115020929.ged`
-21963. `saved-6000000008115048412.ged`
-21964. `saved-6000000008205346192.ged`
-21965. `saved-6000000008205535747.ged`
-21966. `saved-6000000008286490755.ged`
-21967. `saved-6000000008286846382.ged`
-21968. `saved-6000000008352466911.ged`
-21969. `saved-6000000008366453417.ged`
-21970. `saved-6000000008379218961.ged`
-21971. `saved-6000000008406419757.ged`
-21972. `saved-6000000008406511750.ged`
-21973. `saved-6000000008469756742.ged`
-21974. `saved-6000000008477543238.ged`
-21975. `saved-6000000008507821635.ged`
-21976. `saved-6000000008516116524.ged`
-21977. `saved-6000000008630356444.ged`
-21978. `saved-6000000008630356466.ged`
-21979. `saved-6000000008630587231.ged`
-21980. `saved-6000000008687044864.ged`
-21981. `saved-6000000008687180600.ged`
-21982. `saved-6000000008715164518.ged`
-21983. `saved-6000000008764977184.ged`
-21984. `saved-6000000008765237558.ged`
-21985. `saved-6000000008765536305.ged`
-21986. `saved-6000000008787687730.ged`
-21987. `saved-6000000008787855478.ged`
-21988. `saved-6000000008798323789.ged`
-21989. `saved-6000000008798575043.ged`
-21990. `saved-6000000008798585431.ged`
-21991. `saved-6000000008931923941.ged`
-21992. `saved-6000000008933309505.ged`
-21993. `saved-6000000008961666136.ged`
-21994. `saved-6000000008975808174.ged`
-21995. `saved-6000000009006496259.ged`
-21996. `saved-6000000009099803774.ged`
-21997. `saved-6000000009100005728.ged`
-21998. `saved-6000000009110468637.ged`
-21999. `saved-6000000009134934503.ged`
-22000. `saved-6000000009134991508.ged`
-22001. `saved-6000000009170017937.ged`
-22002. `saved-6000000009189190206.ged`
-22003. `saved-6000000009196500176.ged`
-22004. `saved-6000000009196991377.ged`
-22005. `saved-6000000009214903611.ged`
-22006. `saved-6000000009217651803.ged`
-22007. `saved-6000000009288970429.ged`
-22008. `saved-6000000009412979361.ged`
-22009. `saved-6000000009465627532.ged`
-22010. `saved-6000000009499609049.ged`
-22011. `saved-6000000009500754533.ged`
-22012. `saved-6000000009511458815.ged`
-22013. `saved-6000000009512037044.ged`
-22014. `saved-6000000009512050024.ged`
-22015. `saved-6000000009512394794.ged`
-22016. `saved-6000000009512397570.ged`
-22017. `saved-6000000009512632295.ged`
-22018. `saved-6000000009544774015.ged`
-22019. `saved-6000000009551480095.ged`
-22020. `saved-6000000009657862393.ged`
-22021. `saved-6000000009706835506.ged`
-22022. `saved-6000000009875160931.ged`
-22023. `saved-6000000009875224601.ged`
-22024. `saved-6000000009875303979.ged`
-22025. `saved-6000000009879586250.ged`
-22026. `saved-6000000009916465367.ged`
-22027. `saved-6000000009916611254.ged`
-22028. `saved-6000000010076488689.ged`
-22029. `saved-6000000010160609967.ged`
-22030. `saved-6000000010222435520.ged`
-22031. `saved-6000000010226740465.ged`
-22032. `saved-6000000010229568198.ged`
-22033. `saved-6000000010229747719.ged`
-22034. `saved-6000000010239991822.ged`
-22035. `saved-6000000010240000883.ged`
-22036. `saved-6000000010240260367.ged`
-22037. `saved-6000000010259352985.ged`
-22038. `saved-6000000010288168143.ged`
-22039. `saved-6000000010288326033.ged`
-22040. `saved-6000000010288779197.ged`
-22041. `saved-6000000010288870971.ged`
-22042. `saved-6000000010288911760.ged`
-22043. `saved-6000000010288921953.ged`
-22044. `saved-6000000010289043219.ged`
-22045. `saved-6000000010289067232.ged`
-22046. `saved-6000000010289095311.ged`
-22047. `saved-6000000010331432922.ged`
-22048. `saved-6000000010331792637.ged`
-22049. `saved-6000000010341338258.ged`
-22050. `saved-6000000010351510999.ged`
-22051. `saved-6000000010407268537.ged`
-22052. `saved-6000000010449304150.ged`
-22053. `saved-6000000010449454103.ged`
-22054. `saved-6000000010449616852.ged`
-22055. `saved-6000000010449889350.ged`
-22056. `saved-6000000010463529059.ged`
-22057. `saved-6000000010513431062.ged`
-22058. `saved-6000000010534596447.ged`
-22059. `saved-6000000010546157120.ged`
-22060. `saved-6000000010546205936.ged`
-22061. `saved-6000000010598672967.ged`
-22062. `saved-6000000010642992694.ged`
-22063. `saved-6000000010644712727.ged`
-22064. `saved-6000000010659609679.ged`
-22065. `saved-6000000010659664086.ged`
-22066. `saved-6000000010671353360.ged`
-22067. `saved-6000000010680123679.ged`
-22068. `saved-6000000010680345246.ged`
-22069. `saved-6000000010807476638.ged`
-22070. `saved-6000000010888314829.ged`
-22071. `saved-6000000010888345851.ged`
-22072. `saved-6000000010888345895.ged`
-22073. `saved-6000000011036078569.ged`
-22074. `saved-6000000011040229514.ged`
-22075. `saved-6000000011043803107.ged`
-22076. `saved-6000000011048419126.ged`
-22077. `saved-6000000011078549071.ged`
-22078. `saved-6000000011078726908.ged`
-22079. `saved-6000000011078807545.ged`
-22080. `saved-6000000011078829655.ged`
-22081. `saved-6000000011078886609.ged`
-22082. `saved-6000000011078918407.ged`
-22083. `saved-6000000011079271617.ged`
-22084. `saved-6000000011079343735.ged`
-22085. `saved-6000000011169272123.ged`
-22086. `saved-6000000011169570980.ged`
-22087. `saved-6000000011183696687.ged`
-22088. `saved-6000000011239201122.ged`
-22089. `saved-6000000011239402589.ged`
-22090. `saved-6000000011239545575.ged`
-22091. `saved-6000000011244838043.ged`
-22092. `saved-6000000011245746417.ged`
-22093. `saved-6000000011252874344.ged`
-22094. `saved-6000000011274338852.ged`
-22095. `saved-6000000011276917624.ged`
-22096. `saved-6000000011315288524.ged`
-22097. `saved-6000000011330161333.ged`
-22098. `saved-6000000011380063304.ged`
-22099. `saved-6000000011392245825.ged`
-22100. `saved-6000000011399221611.ged`
-22101. `saved-6000000011428579002.ged`
-22102. `saved-6000000011429638227.ged`
-22103. `saved-6000000011433727968.ged`
-22104. `saved-6000000011460254487.ged`
-22105. `saved-6000000011489252646.ged`
-22106. `saved-6000000011536465369.ged`
-22107. `saved-6000000011540389372.ged`
-22108. `saved-6000000011546841461.ged`
-22109. `saved-6000000011568319792.ged`
-22110. `saved-6000000011568373884.ged`
-22111. `saved-6000000011570928590.ged`
-22112. `saved-6000000011570983149.ged`
-22113. `saved-6000000011601412945.ged`
-22114. `saved-6000000011613442175.ged`
-22115. `saved-6000000011623099406.ged`
-22116. `saved-6000000011647607597.ged`
-22117. `saved-6000000011648048242.ged`
-22118. `saved-6000000011769042441.ged`
-22119. `saved-6000000011774471387.ged`
-22120. `saved-6000000011807777264.ged`
-22121. `saved-6000000011811245484.ged`
-22122. `saved-6000000011821706820.ged`
-22123. `saved-6000000011843556332.ged`
-22124. `saved-6000000011870629601.ged`
-22125. `saved-6000000011970410034.ged`
-22126. `saved-6000000012013655297.ged`
-22127. `saved-6000000012108249741.ged`
-22128. `saved-6000000012139250763.ged`
-22129. `saved-6000000012139788237.ged`
-22130. `saved-6000000012198494299.ged`
-22131. `saved-6000000012242523692.ged`
-22132. `saved-6000000012243172431.ged`
-22133. `saved-6000000012245669731.ged`
-22134. `saved-6000000012293585755.ged`
-22135. `saved-6000000012293596475.ged`
-22136. `saved-6000000012294304415.ged`
-22137. `saved-6000000012307860943.ged`
-22138. `saved-6000000012308553479.ged`
-22139. `saved-6000000012336650452.ged`
-22140. `saved-6000000012337711888.ged`
-22141. `saved-6000000012455272755.ged`
-22142. `saved-6000000012503281124.ged`
-22143. `saved-6000000012504273407.ged`
-22144. `saved-6000000012566391180.ged`
-22145. `saved-6000000012587690898.ged`
-22146. `saved-6000000012591881202.ged`
-22147. `saved-6000000012617461291.ged`
-22148. `saved-6000000012640023947.ged`
-22149. `saved-6000000012640245221.ged`
-22150. `saved-6000000012641619750.ged`
-22151. `saved-6000000012724604098.ged`
-22152. `saved-6000000012754388121.ged`
-22153. `saved-6000000012878346373.ged`
-22154. `saved-6000000012904227535.ged`
-22155. `saved-6000000012952101595.ged`
-22156. `saved-6000000012987643357.ged`
-22157. `saved-6000000013019602706.ged`
-22158. `saved-6000000013021605891.ged`
-22159. `saved-6000000013071838546.ged`
-22160. `saved-6000000013122624376.ged`
-22161. `saved-6000000013166100337.ged`
-22162. `saved-6000000013184965702.ged`
-22163. `saved-6000000013195069123.ged`
-22164. `saved-6000000013205833004.ged`
-22165. `saved-6000000013214852442.ged`
-22166. `saved-6000000013214878518.ged`
-22167. `saved-6000000013281880387.ged`
-22168. `saved-6000000013291844252.ged`
-22169. `saved-6000000013487830550.ged`
-22170. `saved-6000000013538823820.ged`
-22171. `saved-6000000013618082642.ged`
-22172. `saved-6000000013694127827.ged`
-22173. `saved-6000000013694337126.ged`
-22174. `saved-6000000013938289487.ged`
-22175. `saved-6000000013986579880.ged`
-22176. `saved-6000000014024359812.ged`
-22177. `saved-6000000014044436728.ged`
-22178. `saved-6000000014044440566.ged`
-22179. `saved-6000000014044468426.ged`
-22180. `saved-6000000014164331457.ged`
-22181. `saved-6000000014224378935.ged`
-22182. `saved-6000000014253280113.ged`
-22183. `saved-6000000014265035290.ged`
-22184. `saved-6000000014287203465.ged`
-22185. `saved-6000000014287321085.ged`
-22186. `saved-6000000014300507795.ged`
-22187. `saved-6000000014300629210.ged`
-22188. `saved-6000000014300860839.ged`
-22189. `saved-6000000014301252922.ged`
-22190. `saved-6000000014301322889.ged`
-22191. `saved-6000000014301339457.ged`
-22192. `saved-6000000014301359938.ged`
-22193. `saved-6000000014349023517.ged`
-22194. `saved-6000000014360883324.ged`
-22195. `saved-6000000014394601788.ged`
-22196. `saved-6000000014493706045.ged`
-22197. `saved-6000000014507656819.ged`
-22198. `saved-6000000014512537406.ged`
-22199. `saved-6000000014522158621.ged`
-22200. `saved-6000000014545722296.ged`
-22201. `saved-6000000014652275852.ged`
-22202. `saved-6000000014652351128.ged`
-22203. `saved-6000000014814372062.ged`
-22204. `saved-6000000014846941321.ged`
-22205. `saved-6000000014853129253.ged`
-22206. `saved-6000000014946390383.ged`
-22207. `saved-6000000015117399351.ged`
-22208. `saved-6000000015117490925.ged`
-22209. `saved-6000000015117958521.ged`
-22210. `saved-6000000015204381777.ged`
-22211. `saved-6000000015211178776.ged`
-22212. `saved-6000000015245604334.ged`
-22213. `saved-6000000015302506749.ged`
-22214. `saved-6000000015309255172.ged`
-22215. `saved-6000000015309299285.ged`
-22216. `saved-6000000015319810478.ged`
-22217. `saved-6000000015357707513.ged`
-22218. `saved-6000000015394330678.ged`
-22219. `saved-6000000015399099546.ged`
-22220. `saved-6000000015399620672.ged`
-22221. `saved-6000000015423318064.ged`
-22222. `saved-6000000015423592428.ged`
-22223. `saved-6000000015423722158.ged`
-22224. `saved-6000000015423962219.ged`
-22225. `saved-6000000015485735160.ged`
-22226. `saved-6000000015518649039.ged`
-22227. `saved-6000000015518684068.ged`
-22228. `saved-6000000015518685084.ged`
-22229. `saved-6000000015521070849.ged`
-22230. `saved-6000000015521370780.ged`
-22231. `saved-6000000015521590083.ged`
-22232. `saved-6000000015593753615.ged`
-22233. `saved-6000000015694585880.ged`
-22234. `saved-6000000015770704042.ged`
-22235. `saved-6000000015843590321.ged`
-22236. `saved-6000000015851698695.ged`
-22237. `saved-6000000015998729022.ged`
-22238. `saved-6000000016303264136.ged`
-22239. `saved-6000000016303283134.ged`
-22240. `saved-6000000016360042741.ged`
-22241. `saved-6000000016425918956.ged`
-22242. `saved-6000000016426352456.ged`
-22243. `saved-6000000016426580160.ged`
-22244. `saved-6000000016476125295.ged`
-22245. `saved-6000000016479087543.ged`
-22246. `saved-6000000016524697799.ged`
-22247. `saved-6000000016524856961.ged`
-22248. `saved-6000000016582078281.ged`
-22249. `saved-6000000016623538002.ged`
-22250. `saved-6000000016662825611.ged`
-22251. `saved-6000000016772114903.ged`
-22252. `saved-6000000016959316252.ged`
-22253. `saved-6000000016982342071.ged`
-22254. `saved-6000000017093875188.ged`
-22255. `saved-6000000017335445640.ged`
-22256. `saved-6000000017394131513.ged`
-22257. `saved-6000000017512579814.ged`
-22258. `saved-6000000017512587298.ged`
-22259. `saved-6000000017512648427.ged`
-22260. `saved-6000000017512682319.ged`
-22261. `saved-6000000017512797708.ged`
-22262. `saved-6000000017513039586.ged`
-22263. `saved-6000000017535961052.ged`
-22264. `saved-6000000017625357021.ged`
-22265. `saved-6000000017627448734.ged`
-22266. `saved-6000000017799612472.ged`
-22267. `saved-6000000017871912470.ged`
-22268. `saved-6000000018110421350.ged`
-22269. `saved-6000000018145628151.ged`
-22270. `saved-6000000018212260392.ged`
-22271. `saved-6000000018212464007.ged`
-22272. `saved-6000000018348056712.ged`
-22273. `saved-6000000018426488633.ged`
-22274. `saved-6000000018448055702.ged`
-22275. `saved-6000000018448271481.ged`
-22276. `saved-6000000018464035156.ged`
-22277. `saved-6000000018528235866.ged`
-22278. `saved-6000000018752060667.ged`
-22279. `saved-6000000018821123732.ged`
-22280. `saved-6000000018908930497.ged`
-22281. `saved-6000000018909038179.ged`
-22282. `saved-6000000018909112139.ged`
-22283. `saved-6000000019023540872.ged`
-22284. `saved-6000000019023649207.ged`
-22285. `saved-6000000019032360275.ged`
-22286. `saved-6000000019103963083.ged`
-22287. `saved-6000000019382922858.ged`
-22288. `saved-6000000019410166019.ged`
-22289. `saved-6000000019509377608.ged`
-22290. `saved-6000000019557061076.ged`
-22291. `saved-6000000019594325656.ged`
-22292. `saved-6000000019698408474.ged`
-22293. `saved-6000000019775225537.ged`
-22294. `saved-6000000019775649283.ged`
-22295. `saved-6000000019857924817.ged`
-22296. `saved-6000000019941023277.ged`
-22297. `saved-6000000020013489270.ged`
-22298. `saved-6000000020109737178.ged`
-22299. `saved-6000000020146576832.ged`
-22300. `saved-6000000020146931228.ged`
-22301. `saved-6000000020182272013.ged`
-22302. `saved-6000000020344692199.ged`
-22303. `saved-6000000020344732085.ged`
-22304. `saved-6000000020344842981.ged`
-22305. `saved-6000000020377095239.ged`
-22306. `saved-6000000020473563984.ged`
-22307. `saved-6000000020475622749.ged`
-22308. `saved-6000000020475690473.ged`
-22309. `saved-6000000020492202008.ged`
-22310. `saved-6000000021039674210.ged`
-22311. `saved-6000000021039691973.ged`
-22312. `saved-6000000021079935250.ged`
-22313. `saved-6000000021131949939.ged`
-22314. `saved-6000000021132026143.ged`
-22315. `saved-6000000021139261439.ged`
-22316. `saved-6000000021143457434.ged`
-22317. `saved-6000000021331531124.ged`
-22318. `saved-6000000021331531144.ged`
-22319. `saved-6000000021399265460.ged`
-22320. `saved-6000000021423524876.ged`
-22321. `saved-6000000021423552972.ged`
-22322. `saved-6000000021438775306.ged`
-22323. `saved-6000000021442678985.ged`
-22324. `saved-6000000021499390330.ged`
-22325. `saved-6000000021500013763.ged`
-22326. `saved-6000000021501319830.ged`
-22327. `saved-6000000021545325820.ged`
-22328. `saved-6000000021546131052.ged`
-22329. `saved-6000000021635152223.ged`
-22330. `saved-6000000021649357634.ged`
-22331. `saved-6000000021649684059.ged`
-22332. `saved-6000000021651776645.ged`
-22333. `saved-6000000021652410546.ged`
-22334. `saved-6000000021656391531.ged`
-22335. `saved-6000000021829378478.ged`
-22336. `saved-6000000022067361271.ged`
-22337. `saved-6000000022699116782.ged`
-22338. `saved-6000000022823598236.ged`
-22339. `saved-6000000022823987873.ged`
-22340. `saved-6000000022826443643.ged`
-22341. `saved-6000000022905307808.ged`
-22342. `saved-6000000022905487598.ged`
-22343. `saved-6000000022980324190.ged`
-22344. `saved-6000000022981121872.ged`
-22345. `saved-6000000023007521972.ged`
-22346. `saved-6000000023045918112.ged`
-22347. `saved-6000000023047704443.ged`
-22348. `saved-6000000023093166835.ged`
-22349. `saved-6000000023188954676.ged`
-22350. `saved-6000000023189437982.ged`
-22351. `saved-6000000023250155337.ged`
-22352. `saved-6000000023666472983.ged`
-22353. `saved-6000000023680996844.ged`
-22354. `saved-6000000023738942040.ged`
-22355. `saved-6000000023739078847.ged`
-22356. `saved-6000000023768343105.ged`
-22357. `saved-6000000023855089493.ged`
-22358. `saved-6000000023858289958.ged`
-22359. `saved-6000000023858480076.ged`
-22360. `saved-6000000023921242233.ged`
-22361. `saved-6000000024105547515.ged`
-22362. `saved-6000000024106601099.ged`
-22363. `saved-6000000024304661912.ged`
-22364. `saved-6000000024431661697.ged`
-22365. `saved-6000000024431753429.ged`
-22366. `saved-6000000024431778428.ged`
-22367. `saved-6000000024548549483.ged`
-22368. `saved-6000000024583594541.ged`
-22369. `saved-6000000024583905275.ged`
-22370. `saved-6000000024617396092.ged`
-22371. `saved-6000000024666502056.ged`
-22372. `saved-6000000024841032051.ged`
-22373. `saved-6000000024851923471.ged`
-22374. `saved-6000000025124793875.ged`
-22375. `saved-6000000025153348204.ged`
-22376. `saved-6000000025592868536.ged`
-22377. `saved-6000000025592868542.ged`
-22378. `saved-6000000025819589873.ged`
-22379. `saved-6000000026173188815.ged`
-22380. `saved-6000000026173349636.ged`
-22381. `saved-6000000026173714009.ged`
-22382. `saved-6000000026191425197.ged`
-22383. `saved-6000000026226697810.ged`
-22384. `saved-6000000026241080028.ged`
-22385. `saved-6000000026258097510.ged`
-22386. `saved-6000000026534693043.ged`
-22387. `saved-6000000026893410996.ged`
-22388. `saved-6000000026972756419.ged`
-22389. `saved-6000000026975287820.ged`
-22390. `saved-6000000027109936984.ged`
-22391. `saved-6000000027340643370.ged`
-22392. `saved-6000000027438971715.ged`
-22393. `saved-6000000027439182158.ged`
-22394. `saved-6000000027507886451.ged`
-22395. `saved-6000000027592523666.ged`
-22396. `saved-6000000027593736914.ged`
-22397. `saved-6000000027645833651.ged`
-22398. `saved-6000000027654634894.ged`
-22399. `saved-6000000027665609376.ged`
-22400. `saved-6000000027842049766.ged`
-22401. `saved-6000000027842200337.ged`
-22402. `saved-6000000028278117400.ged`
-22403. `saved-6000000028408939773.ged`
-22404. `saved-6000000029363285200.ged`
-22405. `saved-6000000029363526786.ged`
-22406. `saved-6000000029364339263.ged`
-22407. `saved-6000000029364391060.ged`
-22408. `saved-6000000029742178286.ged`
-22409. `saved-6000000030008527586.ged`
-22410. `saved-6000000030008915196.ged`
-22411. `saved-6000000030009027971.ged`
-22412. `saved-6000000030042669829.ged`
-22413. `saved-6000000030384467074.ged`
-22414. `saved-6000000030756190508.ged`
-22415. `saved-6000000030756257752.ged`
-22416. `saved-6000000030775253849.ged`
-22417. `saved-6000000031001900951.ged`
-22418. `saved-6000000031009109101.ged`
-22419. `saved-6000000031247349696.ged`
-22420. `saved-6000000031495668940.ged`
-22421. `saved-6000000031521916552.ged`
-22422. `saved-6000000031522057461.ged`
-22423. `saved-6000000031833079710.ged`
-22424. `saved-6000000031873939968.ged`
-22425. `saved-6000000032045186110.ged`
-22426. `saved-6000000032068841409.ged`
-22427. `saved-6000000032658035873.ged`
-22428. `saved-6000000032943742081.ged`
-22429. `saved-6000000032976700619.ged`
-22430. `saved-6000000033096911541.ged`
-22431. `saved-6000000033438633013.ged`
-22432. `saved-6000000033442136907.ged`
-22433. `saved-6000000033547075516.ged`
-22434. `saved-6000000033547208139.ged`
-22435. `saved-6000000033547397933.ged`
-22436. `saved-6000000033864312339.ged`
-22437. `saved-6000000034197727224.ged`
-22438. `saved-6000000034255327598.ged`
-22439. `saved-6000000034357465956.ged`
-22440. `saved-6000000034357760862.ged`
-22441. `saved-6000000034945147419.ged`
-22442. `saved-6000000035169266389.ged`
-22443. `saved-6000000035169497997.ged`
-22444. `saved-6000000035306669685.ged`
-22445. `saved-6000000035451537211.ged`
-22446. `saved-6000000035525393426.ged`
-22447. `saved-6000000035525469386.ged`
-22448. `saved-6000000035525833995.ged`
-22449. `saved-6000000035525972877.ged`
-22450. `saved-6000000035842865927.ged`
-22451. `saved-6000000035953773820.ged`
-22452. `saved-6000000035956517862.ged`
-22453. `saved-6000000036357505108.ged`
-22454. `saved-6000000036357582274.ged`
-22455. `saved-6000000037035247723.ged`
-22456. `saved-6000000037035530796.ged`
-22457. `saved-6000000037061234630.ged`
-22458. `saved-6000000037061491552.ged`
-22459. `saved-6000000037080891969.ged`
-22460. `saved-6000000037499373524.ged`
-22461. `saved-6000000037499674070.ged`
-22462. `saved-6000000039348882765.ged`
-22463. `saved-6000000039632819016.ged`
-22464. `saved-6000000039766619938.ged`
-22465. `saved-6000000040374803004.ged`
-22466. `saved-6000000040464859483.ged`
-22467. `saved-6000000040996845017.ged`
-22468. `saved-6000000041536548158.ged`
-22469. `saved-6000000041537287092.ged`
-22470. `saved-6000000042729202545.ged`
-22471. `saved-6000000043648786217.ged`
-22472. `saved-6000000043649084885.ged`
-22473. `saved-6000000043649220131.ged`
-22474. `saved-6000000043815150026.ged`
-22475. `saved-6000000044128793940.ged`
-22476. `saved-6000000046292822989.ged`
-22477. `saved-6000000047943564981.ged`
-22478. `saved-6000000049134640939.ged`
-22479. `saved-6000000050635310838.ged`
-22480. `saved-6000000051276273861.ged`
-22481. `saved-6000000051555644950.ged`
-22482. `saved-6000000051556352836.ged`
-22483. `saved-6000000051633524915.ged`
-22484. `saved-6000000052215030827.ged`
-22485. `saved-6000000052215334833.ged`
-22486. `saved-6000000052215809962.ged`
-22487. `saved-6000000054990622176.ged`
-22488. `saved-6000000054992850924.ged`
-22489. `saved-6000000056330118941.ged`
-22490. `saved-6000000056333864823.ged`
-22491. `saved-6000000056945714362.ged`
-22492. `saved-6000000057172875007.ged`
-22493. `saved-6000000057175128821.ged`
-22494. `saved-6000000057327773067.ged`
-22495. `saved-6000000057959889971.ged`
-22496. `saved-6000000057959975839.ged`
-22497. `saved-6000000058002247415.ged`
-22498. `saved-6000000059809756110.ged`
-22499. `saved-6000000060993725243.ged`
-22500. `saved-6000000063114008888.ged`
-22501. `saved-6000000063114171008.ged`
-22502. `saved-6000000063114223064.ged`
-22503. `saved-6000000065981704822.ged`
-22504. `saved-6000000065991527068.ged`
-22505. `saved-6000000066263754251.ged`
-22506. `saved-6000000066264516851.ged`
-22507. `saved-6000000066264526835.ged`
-22508. `saved-6000000066264650876.ged`
-22509. `saved-6000000067502220858.ged`
-22510. `saved-6000000069050151452.ged`
-22511. `saved-6000000069051592822.ged`
-22512. `saved-6000000069466362236.ged`
-22513. `saved-6000000070396611338.ged`
-22514. `saved-6000000070497375043.ged`
-22515. `saved-6000000071637497156.ged`
-22516. `saved-6000000071638053857.ged`
-22517. `saved-6000000071638234914.ged`
-22518. `saved-6000000071638302829.ged`
-22519. `saved-6000000071638439878.ged`
-22520. `saved-6000000071768187852.ged`
-22521. `saved-6000000071769436089.ged`
-22522. `saved-6000000072112528902.ged`
-22523. `saved-6000000072962073961.ged`
-22524. `saved-6000000073011630896.ged`
-22525. `saved-6000000073057747827.ged`
-22526. `saved-6000000073120561949.ged`
-22527. `saved-6000000073132490036.ged`
-22528. `saved-6000000073622488100.ged`
-22529. `saved-6000000074341208894.ged`
-22530. `saved-6000000074341809000.ged`
-22531. `saved-6000000074342040898.ged`
-22532. `saved-6000000076761806976.ged`
-22533. `saved-6000000076805697475.ged`
-22534. `saved-6000000076807199992.ged`
-22535. `saved-6000000077107182863.ged`
-22536. `saved-6000000077297672317.ged`
-22537. `saved-6000000077297739021.ged`
-22538. `saved-6000000077316240007.ged`
-22539. `saved-6000000077667834821.ged`
-22540. `saved-6000000077762121855.ged`
-22541. `saved-6000000077795945062.ged`
-22542. `saved-6000000078378778833.ged`
-22543. `saved-6000000078379065845.ged`
-22544. `saved-6000000079267271590.ged`
-22545. `saved-6000000080929243843.ged`
-22546. `saved-6000000081000509607.ged`
-22547. `saved-6000000081001770518.ged`
-22548. `saved-6000000081001960578.ged`
-22549. `saved-6000000081001962237.ged`
-22550. `saved-6000000081003033570.ged`
-22551. `saved-6000000081003222288.ged`
-22552. `saved-6000000081003290197.ged`
-22553. `saved-6000000081003784512.ged`
-22554. `saved-6000000081003814187.ged`
-22555. `saved-6000000081003838952.ged`
-22556. `saved-6000000081003840360.ged`
-22557. `saved-6000000081003941823.ged`
-22558. `saved-6000000081004270036.ged`
-22559. `saved-6000000081729286896.ged`
-22560. `saved-6000000082033862114.ged`
-22561. `saved-6000000082819939353.ged`
-22562. `saved-6000000082822675871.ged`
-22563. `saved-6000000082862457204.ged`
-22564. `saved-6000000082894655175.ged`
-22565. `saved-6000000082895620836.ged`
-22566. `saved-6000000083072935969.ged`
-22567. `saved-6000000083767537112.ged`
-22568. `saved-6000000083767648821.ged`
-22569. `saved-6000000083768071842.ged`
-22570. `saved-6000000085676763948.ged`
-22571. `saved-6000000086903454833.ged`
-22572. `saved-6000000087535357291.ged`
-22573. `saved-6000000089141178845.ged`
-22574. `saved-6000000089141527885.ged`
-22575. `saved-6000000089171988019.ged`
-22576. `saved-6000000089437494952.ged`
-22577. `saved-6000000091348678858.ged`
-22578. `saved-6000000091348678867.ged`
-22579. `saved-6000000091348678897.ged`
-22580. `saved-6000000091525536068.ged`
-22581. `saved-6000000091525814902.ged`
-22582. `saved-6000000091526339970.ged`
-22583. `saved-6000000091526612901.ged`
-22584. `saved-6000000091528437842.ged`
-22585. `saved-6000000091529796831.ged`
-22586. `saved-6000000091602117821.ged`
-22587. `saved-6000000093411354957.ged`
-22588. `saved-6000000094193729218.ged`
-22589. `saved-6000000094194176187.ged`
-22590. `saved-6000000094725759821.ged`
-22591. `saved-6000000094788864010.ged`
-22592. `saved-6000000096398991038.ged`
-22593. `saved-6000000096399963028.ged`
-22594. `saved-6000000096400842905.ged`
-22595. `saved-6000000099934709827.ged`
-22596. `saved-6000000100082504307.ged`
-22597. `saved-6000000100302352316.ged`
-22598. `saved-6000000100733843835.ged`
-22599. `saved-6000000103633571840.ged`
-22600. `saved-6000000103752573902.ged`
-22601. `saved-6000000105712682826.ged`
-22602. `saved-6000000105715318851.ged`
-22603. `saved-6000000108322400841.ged`
-22604. `saved-6000000111817455021.ged`
-22605. `saved-6000000111817701912.ged`
-22606. `saved-6000000112537545366.ged`
-22607. `saved-6000000112538736189.ged`
-22608. `saved-6000000112538853251.ged`
-22609. `saved-6000000112539226128.ged`
-22610. `saved-6000000112539233010.ged`
-22611. `saved-6000000112539909876.ged`
-22612. `saved-6000000112539932868.ged`
-22613. `saved-6000000112540071069.ged`
-22614. `saved-6000000115667769821.ged`
-22615. `saved-6000000115668545101.ged`
-22616. `saved-6000000115668584966.ged`
-22617. `saved-6000000116694298987.ged`
-22618. `saved-6000000120884050897.ged`
-22619. `saved-6000000122450336924.ged`
-22620. `saved-6000000126234285831.ged`
-22621. `saved-6000000127314445823.ged`
-22622. `saved-6000000129556183032.ged`
-22623. `saved-6000000130515775874.ged`
-22624. `saved-6000000130516552831.ged`
-22625. `saved-6000000136584255821.ged`
-22626. `saved-6000000137763536821.ged`
-22627. `saved-6000000140114350029.ged`
-22628. `saved-6000000140996282158.ged`
-22629. `saved-6000000140997657859.ged`
-22630. `saved-6000000140998307832.ged`
-22631. `saved-6000000141085184010.ged`
-22632. `saved-6000000141086236875.ged`
-22633. `saved-6000000141991252871.ged`
-22634. `saved-6000000147798365860.ged`
-22635. `saved-6000000155055551821.ged`
-22636. `saved-6000000161721983869.ged`
-22637. `saved-6000000161721983881.ged`
-22638. `saved-6000000161721983893.ged`
-22639. `saved-6000000167856262821.ged`
-22640. `saved-6000000167857079822.ged`
-22641. `saved-6000000169037819865.ged`
-22642. `saved-6000000171058400024.ged`
-22643. `saved-6000000172054164872.ged`
-22644. `saved-6000000174847323565.ged`
-22645. `saved-6000000174849656050.ged`
-22646. `saved-6000000175680503879.ged`
-22647. `saved-6000000177462988887.ged`
-22648. `saved-6000000177463069892.ged`
-22649. `saved-6000000177463770840.ged`
-22650. `saved-6000000177920129831.ged`
-22651. `saved-6000000177921458827.ged`
-22652. `saved-6000000177921458833.ged`
-22653. `saved-6000000177921458845.ged`
-22654. `saved-6000000177921458863.ged`
-22655. `saved-6000000177921458990.ged`
-22656. `saved-6000000177921458999.ged`
-22657. `saved-6000000177921459033.ged`
-22658. `saved-6000000177921459052.ged`
-22659. `saved-6000000177921459056.ged`
-22660. `saved-6000000177921459066.ged`
-22661. `saved-6000000177921459072.ged`
-22662. `saved-6000000177921459078.ged`
-22663. `saved-6000000177921459094.ged`
-22664. `saved-6000000177921459104.ged`
-22665. `saved-6000000177921459114.ged`
-22666. `saved-6000000177921459129.ged`
-22667. `saved-6000000177921459134.ged`
-22668. `saved-6000000177921459169.ged`
-22669. `saved-6000000177921516822.ged`
-22670. `saved-6000000177921516839.ged`
-22671. `saved-6000000177921516859.ged`
-22672. `saved-6000000177944025822.ged`
-22673. `saved-6000000177987312850.ged`
-22674. `saved-6000000178669824833.ged`
-22675. `saved-6000000178670150833.ged`
-22676. `saved-6000000180280592858.ged`
-22677. `saved-6000000180285636825.ged`
-22678. `saved-6000000180745893830.ged`
-22679. `saved-6000000180823601861.ged`
-22680. `saved-6000000181163135859.ged`
-22681. `saved-6000000181166108829.ged`
-22682. `saved-6000000181289074845.ged`
-22683. `saved-6000000182737012832.ged`
-22684. `saved-6000000183986957910.ged`
-22685. `saved-6000000184169690842.ged`
-22686. `saved-6000000184267864840.ged`
-22687. `saved-6000000184442109821.ged`
-22688. `saved-6000000184590962909.ged`
-22689. `saved-6000000184888139875.ged`
-22690. `saved-6000000185157445888.ged`
-22691. `saved-6000000185158249846.ged`
-22692. `saved-6000000185447097943.ged`
-22693. `saved-6000000186115707839.ged`
-22694. `saved-6000000186609053824.ged`
-22695. `saved-6000000191391773823.ged`
-22696. `saved-6000000194783603884.ged`
-22697. `saved-6000000197656493859.ged`
-22698. `saved-6000000197657301823.ged`
-22699. `saved-6000000197657328821.ged`
-22700. `saved-6000000200892917834.ged`
-22701. `saved-6000000202543587856.ged`
-22702. `saved-6000000207618037836.ged`
-22703. `saved-6000000207769838867.ged`
-22704. `saved-6000000207770099821.ged`
-22705. `saved-6000000207770887863.ged`
-22706. `saved-6000000212832088822.ged`
-22707. `saved-6000000212832554822.ged`
-22708. `saved-6000000216588093869.ged`
-22709. `saved-6000000216588272880.ged`
-22710. `saved-6000000216825684836.ged`
-22711. `saved-6000000218930532858.ged`
-22712. `saved-6000000221151631885.ged`
-22713. `saved-6000000221151780844.ged`
-22714. `saved-6000000222599111823.ged`
-22715. `export-Descendants-6000000227668434852.ged`
-22716. `export-Descendants-6000000227676315909.ged`
-22717. `export-Forest-6000000227668434852.ged`
-22718. `export-Forest-6000000227676315909.ged`
-22719. `export-Forest-6000000227145774838.ged`
-22720. `export-Forest-6000000227147141927.ged`
-22721. `export-Forest-6000000227145420853.ged`
-22722. `export-Ancestors-6000000227739381826.ged`
-22723. `export-Ancestors-6000000227805352866.ged`
-22724. `export-Ancestors-6000000227816621867.ged`
-22725. `export-Descendants-6000000227036719829-refresh-20260913.ged`
-22726. `export-Descendants-6000000227036719829.ged`
-22727. `export-Descendants-6000000227733569883.ged`
-22728. `export-Descendants-6000000227733837031.ged`
-22729. `export-Descendants-6000000227735175860.ged`
-22730. `export-Descendants-6000000227735855842.ged`
-22731. `export-Descendants-6000000227749221232.ged`
-22732. `export-Descendants-6000000227750261857.ged`
-22733. `export-Descendants-6000000227804005917.ged`
-22734. `export-Descendants-6000000227805012893.ged`
-22735. `export-Descendants-6000000227816621867.ged`
-22736. `export-Forest-6000000178918141824-refresh.ged`
-22737. `export-Forest-6000000178918141824.ged`
-22738. `export-Forest-6000000227036719829-refresh-20260913.ged`
-22739. `export-Forest-6000000227036719829.ged`
-22740. `export-Forest-6000000227297029878-refresh-20260917.ged`
-22741. `export-Forest-6000000227413001839.ged`
-22742. `export-Forest-6000000227413445871.ged`
-22743. `export-Forest-6000000227413852831.ged`
-22744. `export-Forest-6000000227414103872.ged`
-22745. `export-Forest-6000000227415008926.ged`
-22746. `export-Forest-6000000227558482822.ged`
-22747. `export-Forest-6000000227558664902.ged`
-22748. `export-Forest-6000000227715260898.ged`
-22749. `export-Forest-6000000227739381826.ged`
-22750. `export-Forest-6000000227755683825.ged`
-22751. `export-Forest-6000000227802407043.ged`
-22752. `export-Forest-6000000227802431855.ged`
-22753. `export-Forest-6000000227802432937.ged`
-22754. `export-Forest-6000000227802697066.ged`
-22755. `export-Forest-6000000227802697137.ged`
-22756. `export-Forest-6000000227803023862.ged`
-22757. `export-Forest-6000000227803023904.ged`
-22758. `export-Forest-6000000227803024957.ged`
-22759. `export-Forest-6000000227803024982.ged`
-22760. `export-Forest-6000000227803024989.ged`
-22761. `export-Forest-6000000227803027847.ged`
-22762. `export-Forest-6000000227803029977.ged`
-22763. `export-Forest-6000000227803031913.ged`
-22764. `export-Forest-6000000227803032874.ged`
-22765. `export-Forest-6000000227803038858.ged`
-22766. `export-Forest-6000000227803041902.ged`
-22767. `export-Forest-6000000227803041931.ged`
-22768. `export-Forest-6000000227803060855.ged`
-22769. `export-Forest-6000000227803060959.ged`
-22770. `export-Forest-6000000227803061825.ged`
-22771. `export-Forest-6000000227803068881.ged`
-22772. `export-Forest-6000000227803073849.ged`
-22773. `export-Forest-6000000227803077823.ged`
-22774. `export-Forest-6000000227803089850.ged`
-22775. `export-Forest-6000000227803089879.ged`
-22776. `export-Forest-6000000227803089951.ged`
-22777. `export-Forest-6000000227803090852.ged`
-22778. `export-Forest-6000000227803104825.ged`
-22779. `export-Forest-6000000227805012893.ged`
-22780. `export-Forest-6000000227805073902.ged`
-22781. `export-Forest-6000000227805124882.ged`
-22782. `export-Forest-6000000227805352866.ged`
-22783. `export-Forest-6000000227805421869.ged`
-22784. `export-Forest-6000000227805430843.ged`
-22785. `export-Forest-6000000227811549827-2026-09-18T2314.ged`
-22786. `export-Forest-6000000227811549827.ged`
-22787. `export-Forest-6000000227815618073.ged`
-22788. `export-Forest-6000000227816205043.ged`
-22789. `export-Forest-6000000227816313859.ged`
-22790. `export-Forest-6000000227816363824.ged`
-22791. `export-Forest-6000000227816411855.ged`
-22792. `export-Forest-6000000227816541821.ged`
-22793. `export-Forest-6000000227816551825.ged`
-22794. `export-Forest-6000000227816621867.ged`
-22795. `export-Forest-6000000227816628912.ged`
-22796. `export-Forest-6000000227816629854.ged`
-22797. `export-Forest-6000000227816685869.ged`
-22798. `export-Forest-6000000227831634917.ged`
-22799. `export-Forest-6000000227831999861.ged`
-22800. `hotfix-romer-ingrid-parentage.ged`
-22801. `wikidata-qid-links.ged`
-22802. `identifications-now.ged`
-22803. `identifications-jan1.ged`
-22804. `identifications-passive.ged`
+20199. `isolate-geni-inger-axelsdatter-g-ntersberg-1571-1613-voss.ged`
+20200. `isolate-geni-ingvald-enersen-1859-1938.ged`
+20201. `isolate-geni-isak-bj-rklund-1686-1740-turku-bo.ged`
+20202. `isolate-geni-ivar-christian-hallstr-m-1826-1901.ged`
+20203. `isolate-geni-ivar-gi-ver-1929-2025-schenectady.ged`
+20204. `isolate-geni-j-ns-ivan-hjalmar-frisk-1900-1984.ged`
+20205. `isolate-geni-jaakko-alfred-ahokas-1923-2007.ged`
+20206. `isolate-geni-jaakko-wilhelm-suolahti-1918-1987-helsinki.ged`
+20207. `isolate-geni-jacques-du-ze-1244-1334-avignon.ged`
+20208. `isolate-geni-jacques-jacob-ludvig-borelius-1859-1921-lund.ged`
+20209. `isolate-geni-jakob-lennart-simons-1905-1986-helsingfors.ged`
+20210. `isolate-geni-james-fred-rippy-phd-1892-1977-wilmington.ged`
+20211. `isolate-geni-james-vi-i-stewart-king-of-scots-king-of-england-irelan.ged`
+20212. `isolate-geni-jan-arvid-hellstr-m-1941-1994-v-xj.ged`
+20213. `isolate-geni-jan-groth-1938-2022.ged`
+20214. `isolate-geni-jarl-axel-wasastjerna-1896-1972-helsinki.ged`
+20215. `isolate-geni-jean-no-l-tremblay-c-m-1926-2020.ged`
+20216. `isolate-geni-jens-erichstrup-eidsvollsmann-1775-1826.ged`
+20217. `isolate-geni-jens-glad-balchen-1926-2009-trondheim.ged`
+20218. `isolate-geni-jens-gregoriussen-riber-1480-1480-1571.ged`
+20219. `isolate-geni-jens-jacobsen-bull-1718.ged`
+20220. `isolate-geni-jens-jenssen-1842-1905-trondheim.ged`
+20221. `isolate-geni-jens-johannesen-tvedt-1857-1935-stavanger.ged`
+20222. `isolate-geni-joachim-jungius-junge-1587-1657-hamburg.ged`
+20223. `isolate-geni-joachim-v-lschow-1591-1664.ged`
+20224. `isolate-geni-johan-august-malmstr-m-1829-1901-stockholm.ged`
+20225. `isolate-geni-johan-browallius-1707-1755-turku-bo.ged`
+20226. `isolate-geni-johan-carl-wilcke-1732-1796-stockholm.ged`
+20227. `isolate-geni-johan-ernst-gunnerus-biskop-i-trondheim-1718-1773-krist.ged`
+20228. `isolate-geni-johan-floderius-floderus-1721-1789.ged`
+20229. `isolate-geni-johan-friis-1820-1875-kristiansand.ged`
+20230. `isolate-geni-johan-gottschalk-wallerius-1709-1785-uppsala.ged`
+20231. `isolate-geni-johan-hjalmar-th-el-tj-der-1848-1937-stockholm.ged`
+20232. `isolate-geni-johan-marnburg-1882-1966-stavanger.ged`
+20233. `isolate-geni-johan-peter-weisse-1832-1886-kristiania.ged`
+20234. `isolate-geni-johan-severin-axell-1843-1892-wiesbaden.ged`
+20235. `isolate-geni-johan-wolter-arnberg-1832-1900.ged`
+20236. `isolate-geni-johann-christian-ernesti-1695-1768-bad-langensalza.ged`
+20237. `isolate-geni-johann-christian-von-klein-klein-dr-1659-1732.ged`
+20238. `isolate-geni-johann-christoph-mylius-1710-1756-jena.ged`
+20239. `isolate-geni-johann-vollrath-christian-heinrich-b-nger-1782-1842.ged`
+20240. `isolate-geni-johanna-amalia-edman-1851.ged`
+20241. `isolate-geni-johannes-alle-faber-1925-2007-bennekom.ged`
+20242. `isolate-geni-johannes-botvid-elias-melin-1889-1979.ged`
+20243. `isolate-geni-johannes-hendrikus-becking-1890-1972.ged`
+20244. `isolate-geni-johannes-jonasson-columbus-columbus-1640-1684-uppsala.ged`
+20245. `isolate-geni-johannes-svenonis-raumannus-c-1570-1614-uppsala.ged`
+20246. `isolate-geni-john-johnsen-norem-1888-1976-stavanger.ged`
+20247. `isolate-geni-john-kirk-train-varnedoe-1946-2003.ged`
+20248. `isolate-geni-john-lawrence-ashbery-1927-2017-hudson.ged`
+20249. `isolate-geni-john-ugelstad-1921-1997-trondheim.ged`
+20250. `isolate-geni-jon-magnusson-1662.ged`
+20251. `isolate-geni-jonas-hallenberg-1748-1834-stockholm.ged`
+20252. `isolate-geni-joonas-kokkonen-1921-1996-j-rvenp.ged`
+20253. `isolate-geni-josef-svennung-1895-1985-uppsala.ged`
+20254. `isolate-geni-joseph-aloisius-ratzinger-1927-2022-vatican-city.ged`
+20255. `isolate-geni-joseph-hooton-taylor-jr.ged`
+20256. `isolate-geni-josip-plemelj-1873-1967-ljubljana.ged`
+20257. `isolate-geni-jouko-matti-virkkunen-1933-2011-espoo.ged`
+20258. `isolate-geni-juan-antonio-orrego-salas-1919-2019-bloomington.ged`
+20259. `isolate-geni-juho-heikki-vennola-karhu-1872-1938-helsinki.ged`
+20260. `isolate-geni-jukka-ammondt-riiluoto.ged`
+20261. `isolate-geni-julius-severin-wilhelm-lassen-1847-1923-k-benhavn.ged`
+20262. `isolate-geni-just-henrich-von-ely-eidsvollsmann-1759-1824-kristiansa.ged`
+20263. `isolate-geni-jvind-winge-1886-1964-copenhagen.ged`
+20264. `isolate-geni-kaare-alexander-rnung-1931-2013.ged`
+20265. `isolate-geni-kaarlo-rafael-koskimies-forsman-1898-1977-helsinki.ged`
+20266. `isolate-geni-kaarlo-veikko-paatero-pelin-1903-1986-helsinki.ged`
+20267. `isolate-geni-kaj-gabriel-franck-1911-1989.ged`
+20268. `isolate-geni-kalle-putkisto-1919-1997-helsinki.ged`
+20269. `isolate-geni-kansleri-ernst-philip-palm-n-1916-1991-helsinki.ged`
+20270. `isolate-geni-karen-jensdatter-dahl-c1600.ged`
+20271. `isolate-geni-karl-aimo-kalle-acht-1928-2019-helsinki.ged`
+20272. `isolate-geni-karl-august-julius-schmitt-walter-1900-1985-kreuth.ged`
+20273. `isolate-geni-karl-bertil-mathias-qvist-1920-1991-s-t-karins-kaarina.ged`
+20274. `isolate-geni-karl-birger-blomdahl-1916-1968-kungs-ngen.ged`
+20275. `isolate-geni-karl-frithiof-sundman-1873-1949-helsinki.ged`
+20276. `isolate-geni-karl-g-sta-liebert-1916-1998.ged`
+20277. `isolate-geni-karl-oskar-karl-medin-1847-1927-stockholm.ged`
+20278. `isolate-geni-karl-reinhard-m-ller-1774-1861.ged`
+20279. `isolate-geni-karsten-olai-johannessen-1920-1997-copenhagen.ged`
+20280. `isolate-geni-katri-elina-rehtij-rvi-tynni-1912-1987-helsinki.ged`
+20281. `isolate-geni-ke-anders-edvard-wallenquist-1904-1994.ged`
+20282. `isolate-geni-ke-joel-ohlmarks-olsson-1911-1984.ged`
+20283. `isolate-geni-kichimatsu-kishi-1872-1956-orange.ged`
+20284. `isolate-geni-kjetil-jansrud.ged`
+20285. `isolate-geni-knut-emil-lundmark-1889-1958-apotekaren-5.ged`
+20286. `isolate-geni-kristen-nygaard-1926-2002-oslo.ged`
+20287. `isolate-geni-kristian-olaf-bernard-birkeland-1867-1917.ged`
+20288. `isolate-geni-kristoffer-bertram-louis-berg-1867-1944-stavanger.ged`
+20289. `isolate-geni-ky-sti-haataja-1881-1956-p-lk-ne.ged`
+20290. `isolate-geni-kylee-curtis-1994-1994-payson.ged`
+20291. `isolate-geni-l-opold-sancke-1815-1874-brussels.ged`
+20292. `isolate-geni-lars-arvid-axel-von-haartman-1919-1998-helsinki.ged`
+20293. `isolate-geni-lars-fridthjofsen-tokstad-sem-platou-1920-2003.ged`
+20294. `isolate-geni-lars-kristian-holm-brynildsen-1954-2009-bergen.ged`
+20295. `isolate-geni-lars-larsen-hertervig-1830-1902-stavanger.ged`
+20296. `isolate-geni-lars-magnus-m-ller-1857-1912-stockholm.ged`
+20297. `isolate-geni-lars-martinsson-ramndal-dysjaland-1893-1971.ged`
+20298. `isolate-geni-lars-nilsen-oftedal-1852.ged`
+20299. `isolate-geni-laurentius-petri-gothus-1529-1579-uppsala.ged`
+20300. `isolate-geni-lauri-einari-kettunen-1885-1963-helsinki.ged`
+20301. `isolate-geni-laurids-engelstoft-1774-1851.ged`
+20302. `isolate-geni-lauritz-scavenius-1562-1626-stavanger.ged`
+20303. `isolate-geni-lauritz-wilhelm-hansen-1879-1953-stavanger.ged`
+20304. `isolate-geni-lehre-livingston-dantzler-1878-1958-lexington.ged`
+20305. `isolate-geni-leo-reino-sario-1916-2009-santa-monica.ged`
+20306. `isolate-geni-leon-detela-1902-1982.ged`
+20307. `isolate-geni-leonard-wickstr-m-1910-1944.ged`
+20308. `isolate-geni-leonid-hurwicz-1917-2008-minneapolis.ged`
+20309. `isolate-geni-lewis-edward-yablonsky-1924-2014.ged`
+20310. `isolate-geni-lindor-serrurier-1846-1901.ged`
+20311. `isolate-geni-lorenz-jacob-wasmer-ritter-von-stein-1815-1890.ged`
+20312. `isolate-geni-lorenzo-corsini-1652-1740-rome.ged`
+20313. `isolate-geni-lothar-of-segni-pope-innocent-iii-1160-1216-perugia.ged`
+20314. `isolate-geni-louis-d-anjou-comte-de-gravina-1324.ged`
+20315. `isolate-geni-louis-henri-de-cahuzac-marquis-de-caux-1825.ged`
+20316. `isolate-geni-louise-von-renngarten-1872.ged`
+20317. `isolate-geni-luciano-anceschi-1911-1995.ged`
+20318. `isolate-geni-ludovico-paolo-francesco-buglio-1606-1682-pechino.ged`
+20319. `isolate-geni-ludvig-bramsen-1847.ged`
+20320. `isolate-geni-ludvig-holm-olsen-1914-1990-bergen.ged`
+20321. `isolate-geni-luka-modri.ged`
+20322. `isolate-geni-m-ngk-t-mur-khan-of-the-golden-horde-c-1245-1283.ged`
+20323. `isolate-geni-maffeo-vincenzo-barberini-1568-1644-rome.ged`
+20324. `isolate-geni-magnus-bernhard-olsen-1878-1963.ged`
+20325. `isolate-geni-marcel-paul-junod-1904-1961-geneva.ged`
+20326. `isolate-geni-margareta-sanseverino-d1360.ged`
+20327. `isolate-geni-marinus-jan-granpr-moli-re-1883-1972-wassenaar.ged`
+20328. `isolate-geni-martin-hans-christian-knudsen-1871-1949-gentofte.ged`
+20329. `isolate-geni-martin-henriksson-stodius-1590-1676-n-dendal.ged`
+20330. `isolate-geni-martin-nag-1927-2015-oslo.ged`
+20331. `isolate-geni-martin-welker-1819-1902-wooster.ged`
+20332. `isolate-geni-mary-deshon-churchill-1905.ged`
+20333. `isolate-geni-mary-noble-garretson-welleck-1896-1971.ged`
+20334. `isolate-geni-masami-ehara-kuni-pak-yeong-in-1908-2007-los-angeles.ged`
+20335. `isolate-geni-michael-heltzer-1928-2010-haifa.ged`
+20336. `isolate-geni-michael-malvin-michaelsen-1889-1966-stavanger.ged`
+20337. `isolate-geni-michelangelo-conti-1655-1724-rome.ged`
+20338. `isolate-geni-minnie-bruce-pratt-1946-d.ged`
+20339. `isolate-geni-miroslava-princess-of-bulgaria-c975.ged`
+20340. `isolate-geni-mordechai-zeev-ettinger-a-b-d-lwow-1804-1863-jochberg.ged`
+20341. `isolate-geni-morten-smith-petersen-1751-1825-sem.ged`
+20342. `isolate-geni-moses-coit-tyler-1835-1900-ithaca.ged`
+20343. `isolate-geni-muhammad-al-hashemi-570-632-al-madinah.ged`
+20344. `isolate-geni-nelly-leonie-sachs-1891-1970-stockholm-urban-area.ged`
+20345. `isolate-geni-niccol-sfondrati-1535-1591-rome.ged`
+20346. `isolate-geni-nick-bostrom.ged`
+20347. `isolate-geni-nicola-jaeger-1903-1975-milan.ged`
+20348. `isolate-geni-nicolai-edinger-s-rensen-balle-1744-1816-k-benhavn-vor-.ged`
+20349. `isolate-geni-niels-carl-michael-ius-flindt-dahl-1812-1865-frederiksb.ged`
+20350. `isolate-geni-niels-henning-rsted-pedersen-1946-2005-ish-j.ged`
+20351. `isolate-geni-niels-thorkild-rovsing-1862-1927.ged`
+20352. `isolate-geni-niels-wilhelm-gade-1817-1890-holmens-sogn-k-benhavn.ged`
+20353. `isolate-geni-nik-laos-de-bari-270-352.ged`
+20354. `isolate-geni-nils-alstrup-dahl-1911-2001-oslo.ged`
+20355. `isolate-geni-nils-bernhard-gregor-paulsson-1889-1977.ged`
+20356. `isolate-geni-nils-gustaf-axelsson-wollin-axelsson-1892-1964.ged`
+20357. `isolate-geni-nils-karlsen-rvik-1918-2005.ged`
+20358. `isolate-geni-nils-olof-holst-1846-1918.ged`
+20359. `isolate-geni-nils-olof-zeilon-1886-1958.ged`
+20360. `isolate-geni-olaf-helliesen-lange-1875-1965-stavanger.ged`
+20361. `isolate-geni-olaf-pedersen-1920-1997.ged`
+20362. `isolate-geni-olav-hindahl-1892-1963.ged`
+20363. `isolate-geni-olavi-valdemar-per-salo-1913-1966-helsinki.ged`
+20364. `isolate-geni-ole-arnt-buer-rosholdt-1940-2018.ged`
+20365. `isolate-geni-ole-fredrik-olden-1879-1963-stavanger.ged`
+20366. `isolate-geni-ole-gabriel-gabrielson-kverneland-1854-1941-time.ged`
+20367. `isolate-geni-ole-mathias-abrahamsen-1883-1980.ged`
+20368. `isolate-geni-ole-myrvoll-jensen-1911-1988-bergen.ged`
+20369. `isolate-geni-ole-r-island-1911-c-1975-stavanger.ged`
+20370. `isolate-geni-olli-juhani-j-rvinen-1950-1990.ged`
+20371. `isolate-geni-oluf-eilert-l-seth-1858-1945.ged`
+20372. `isolate-geni-organist-christian-cappelen-1845-1916-kristiania.ged`
+20373. `isolate-geni-oscar-stig-wikander-1908-1983-uppsala-c.ged`
+20374. `isolate-geni-oskar-carl-gustaf-sill-n-1883-1965-stockholm.ged`
+20375. `isolate-geni-ottaviano-dei-conti-di-tuscolo-c-936-964-rome.ged`
+20376. `isolate-geni-otto-adolf-ludwig-intze-1843-1904-aachen.ged`
+20377. `isolate-geni-otto-colonna-pope-martin-v-1368-1431-roma.ged`
+20378. `isolate-geni-otto-halpern-1899-1982-london.ged`
+20379. `isolate-geni-ottobono-fieschi-pope-adrian-v-1205-1276-viterbo.ged`
+20380. `isolate-geni-paavo-ilmari-ravila-1902-1974-helsinki.ged`
+20381. `isolate-geni-paavo-matti-v-yrynen.ged`
+20382. `isolate-geni-paolo-vinassa-de-regny-1871-1957.ged`
+20383. `isolate-geni-papa-inoc-ncio-vi-tienne-aubert-1282-1362-avignon.ged`
+20384. `isolate-geni-paul-lawrence-modrich.ged`
+20385. `isolate-geni-paul-stohrer-1909-1975-stuttgart.ged`
+20386. `isolate-geni-peder-hansen-resen-1625-1688-k-benhavn.ged`
+20387. `isolate-geni-peder-pavels-hielm-1781-1846-skien.ged`
+20388. `isolate-geni-peder-valentin-rosenkilde-eidsvollsmann-1772-1836-stava.ged`
+20389. `isolate-geni-pedro-calmon-moniz-de-bittencourt-1902-1985-rio-de-jane.ged`
+20390. `isolate-geni-pedro-juli-o-rebolo-c-1215-1277-viterbo.ged`
+20391. `isolate-geni-pedro-mart-nez-de-luna-y-p-rez-de-gotor-papa-benedicto-xiii-el-papa-luna-1328-1423-pen-scola-pe-scola.ged`
+20392. `isolate-geni-pehr-kalm-1716-1779-turku.ged`
+20393. `isolate-geni-pehr-victor-edman-1916-1977-munich.ged`
+20394. `isolate-geni-pehr-wilhelmsson-wargentin-1717-1783.ged`
+20395. `isolate-geni-pekka-gustaf-grenquist-1907-1981.ged`
+20396. `isolate-geni-pekka-juhana-myrberg-1892-1976-helsinki.ged`
+20397. `isolate-geni-pentti-juha-kalervo-kouri-1949-2009-los-angeles.ged`
+20398. `isolate-geni-per-asbj-rn-pedersen-tj-stland-1918-2004-stavanger.ged`
+20399. `isolate-geni-per-gustaf-einar-sj-vall-1879-1964.ged`
+20400. `isolate-geni-per-inge-torkelsen-1953-2021-radiumhospitalet-oslo.ged`
+20401. `isolate-geni-per-ingvar-br-nemark-1929-2014.ged`
+20402. `isolate-geni-per-johan-magnus-ohlin-1910-1974-uppsala-c.ged`
+20403. `isolate-geni-per-nils-staffan-bergsten-1932-2022.ged`
+20404. `isolate-geni-peter-edvard-holm-1833-1915-k-benhavn.ged`
+20405. `isolate-geni-peter-moltesen-1914-2009-birker-d.ged`
+20406. `isolate-geni-peter-petersen-waage-1833-1900-karl-johans-gate-47-oslo.ged`
+20407. `isolate-geni-peter-wilhelm-b-ckman-k-b-ckman-1927-2006.ged`
+20408. `isolate-geni-philip-fischel-vineberg-1914-1987-montreal-east.ged`
+20409. `isolate-geni-philip-heinrich-kriebel-tegnel-rer-1771-1846-stavanger.ged`
+20410. `isolate-geni-phillip-james-edwin-jim-peebles.ged`
+20411. `isolate-geni-pierre-roger-de-beaufort-1329-1378-rome.ged`
+20412. `isolate-geni-pietro-barbo-1417-1471-rome.ged`
+20413. `isolate-geni-pietro-francesco-orsini-1649-1730-rome.ged`
+20414. `isolate-geni-pietro-tomacelli-perrino-1356-1404-rome.ged`
+20415. `isolate-geni-pm-ralf-johan-gustaf-t-rngren-1899-1961-turku.ged`
+20416. `isolate-geni-polde-bibi-1933-2012-ljubljana.ged`
+20417. `isolate-geni-pope-adrian-i-di-via-lata-c-700-795-roma.ged`
+20418. `isolate-geni-pope-benedict-vii-b-983-rome.ged`
+20419. `isolate-geni-pope-calixtus-iii-alfonso-de-borja-y-cavanilles-1378-1458-roma.ged`
+20420. `isolate-geni-pope-john-sicco-954-1003-rome.ged`
+20421. `isolate-geni-pope-john-x-c-860-929-roma.ged`
+20422. `isolate-geni-pope-paul-di-orsini-i-700-767-roma.ged`
+20423. `isolate-geni-pope-stephen-di-orsini-ii-714-757-roma.ged`
+20424. `isolate-geni-poppo-de-curagnoni-b-1048-palestrina.ged`
+20425. `isolate-geni-povl-ole-fanger-1934-2006.ged`
+20426. `isolate-geni-private-falch-300566252160002064.ged`
+20427. `isolate-geni-private-falch-307414261200006461.ged`
+20428. `isolate-geni-prof-arne-wilhelm-kaurin-tiselius-1902-1971.ged`
+20429. `isolate-geni-prof-carl-frithjof-smith-1859-1917-weimar.ged`
+20430. `isolate-geni-prof-dr-arie-querido-1901-1983-pont-de-barret.ged`
+20431. `isolate-geni-prof-dr-august-maria-leopold-karl-knoll-1900-1963-wien.ged`
+20432. `isolate-geni-prof-dr-bernard-hendrik-slicher-van-bath-1910-2004-wage.ged`
+20433. `isolate-geni-prof-dr-cornelis-pijnacker-hordijk-1847-1908-haarlem.ged`
+20434. `isolate-geni-prof-dr-dr-h-c-mult-fritz-richard-baltzer-1884-1974-ber.ged`
+20435. `isolate-geni-prof-dr-ernst-hermann-riesenfeld-1877-1957-stockholm.ged`
+20436. `isolate-geni-prof-dr-julius-hirschwald-1845-1928.ged`
+20437. `isolate-geni-prof-dr-med-august-ludolph-brauer-1865-1951-munich.ged`
+20438. `isolate-geni-prof-dr-phil-david-holde-1864-1938-berlin-wilmersdorf.ged`
+20439. `isolate-geni-prof-dr-phil-karl-wilhelm-baedeker-1877-1914.ged`
+20440. `isolate-geni-prof-frank-johnson-goodnow-1859-1939.ged`
+20441. `isolate-geni-prof-johann-friedrich-von-herrenschwand-dr-1881-1959.ged`
+20442. `isolate-geni-prof-kai-viktor-johannes-von-fieandt-ph-d-1909-2000-esp.ged`
+20443. `isolate-geni-prof-mr-johannes-hendrik-carpentier-alting-1864-1929-s-.ged`
+20444. `isolate-geni-prof-richard-macgillivray-dawkins-fba-1871-1955-oxford.ged`
+20445. `isolate-geni-prof-sigfrid-rafael-karsten-1879-1956-helsinki.ged`
+20446. `isolate-geni-prof-torsten-evert-karsten-ph-d-1870-1942-helsinki.ged`
+20447. `isolate-geni-professor-abraham-thorberg-1759-1790.ged`
+20448. `isolate-geni-professor-axel-thue-1863-1922-oslo.ged`
+20449. `isolate-geni-professor-stig-fredrik-sigurd-lindberg-1916-1982-circeo.ged`
+20450. `isolate-geni-professori-leo-eino-aario-engman-1906-1998-espoo.ged`
+20451. `isolate-geni-qin-shi-huang-259-210.ged`
+20452. `isolate-geni-ragnar-schreiner-1915-d.ged`
+20453. `isolate-geni-ramon-prieto-bances-1889-1972-oviedo.ged`
+20454. `isolate-geni-raphael-jan-h-egh-krohn-krohn-1938-1988-b-rum.ged`
+20455. `isolate-geni-reginald-aubrey-fessenden-1866-1932.ged`
+20456. `isolate-geni-representative-garland-hale-barr-iv.ged`
+20457. `isolate-geni-richard-royce-schrock-1945-d.ged`
+20458. `isolate-geni-rinaldo-di-jenne-dei-conti-di-segni-c-1199-1261-viterbo.ged`
+20459. `isolate-geni-risto-kalevi-tuomikoski-1911-1989-helsinki.ged`
+20460. `isolate-geni-rjan-lindberger-1912-2005-stockholm.ged`
+20461. `isolate-geni-rkebiskop-anton-niklas-sundberg-1818-1900-uppsala.ged`
+20462. `isolate-geni-rni-magn-sson-1663-1730-k-benhavn.ged`
+20463. `isolate-geni-robert-francis-prevost-osa.ged`
+20464. `isolate-geni-roderic-llan-ol-i-de-borja-borja-pope-alexander-vi-1431-1503-rome.ged`
+20465. `isolate-geni-rolf-rainer-otto-robert-westman-1927-2017-bo.ged`
+20466. `isolate-geni-roman-august-adelheim-1881-1938.ged`
+20467. `isolate-geni-romanus-di-tuscolo-b-1032-roma.ged`
+20468. `isolate-geni-rudolf-beck-1919-c1941.ged`
+20469. `isolate-geni-rudolf-max-isay-1886-1956-bonn.ged`
+20470. `isolate-geni-rudolph-sophus-bergh-1859-1924-davos.ged`
+20471. `isolate-geni-s-ren-tobias-aarstad-1861-1928.ged`
+20472. `isolate-geni-salomon-munk-1803-1867-paris.ged`
+20473. `isolate-geni-samson-eitrheim-1872-1966-oslo.ged`
+20474. `isolate-geni-samuel-karl-anders-wide-pettersson-1861-1918-uppsala.ged`
+20475. `isolate-geni-sergius-864-911-roma.ged`
+20476. `isolate-geni-shah-sultan-hossein-safavi-1668-1726.ged`
+20477. `isolate-geni-sigurd-erixon-1888-1968.ged`
+20478. `isolate-geni-sigurd-some-s-rensen-1889-1984-copenhagen.ged`
+20479. `isolate-geni-sigurd-teodoro-arentsen-steeger-arentsen.ged`
+20480. `isolate-geni-silvio-edmundo-elia-1913-d.ged`
+20481. `isolate-geni-simon-de-brion-martinus-iv-c-1210-1285-perugia.ged`
+20482. `isolate-geni-sinibaldo-fieschi-pope-innocent-iv-c-1195-1254-naples.ged`
+20483. `isolate-geni-sir-frederick-gowland-hopkins-1861-1947-cambridge.ged`
+20484. `isolate-geni-sogneprest-i-spydeberg-jacob-nicolai-wilse-1735-1801.ged`
+20485. `isolate-geni-solveig-tandberg-1898.ged`
+20486. `isolate-geni-sophia-elisabeth-sahlin-1789.ged`
+20487. `isolate-geni-ssu-nien-fu-1896-1950.ged`
+20488. `isolate-geni-st-le-eskeland-1943-2015-oslo.ged`
+20489. `isolate-geni-stinius-fredriksen-1902-1977-oslo.ged`
+20490. `isolate-geni-suidger-von-morsleben-pope-clement-ii-1005-1047.ged`
+20491. `isolate-geni-sultan-jalal-al-din-muhammad-gurkani-1542-1605-fatehpur-sikri.ged`
+20492. `isolate-geni-sun-cheng-e-1911-1991.ged`
+20493. `isolate-geni-svein-geirfinn-molaug-1914-2007-oslo.ged`
+20494. `isolate-geni-svein-isaksen-rosseland-1894-1985.ged`
+20495. `isolate-geni-sven-adolf-diego-helander-1889-1970-stockholm.ged`
+20496. `isolate-geni-sven-axel-hoflund-1906-1979-kalmar-h.ged`
+20497. `isolate-geni-sven-emanuel-dedering-1897-1986.ged`
+20498. `isolate-geni-sven-magnus-en-carlsen.ged`
+20499. `isolate-geni-sven-nielsen-1883-1958-stavanger.ged`
+20500. `isolate-geni-sverre-tonning-olsen-bruland-1923-2013-oslo.ged`
+20501. `isolate-geni-sylvi-inkeri-anttila-mets-mies-1916-2013-helsinki.ged`
+20502. `isolate-geni-tage-gillis-torsten-carleman-1892-1949-danderyd.ged`
+20503. `isolate-geni-tage-kemp-1896-1964-k-benhavn-k-benhavn-sogn.ged`
+20504. `isolate-geni-tem-jin-borjigin-khan-khagan-of-the-mongol-empire-c-1162-1227.ged`
+20505. `isolate-geni-teobaldo-visconti-c-1210-1276-arezzo.ged`
+20506. `isolate-geni-theodor-theodorsen-dahl-1886-1946-stavanger.ged`
+20507. `isolate-geni-theophylactos-rangabe-byzantine-co-emperor-c-792-849.ged`
+20508. `isolate-geni-theophylactus-di-tuscolo-c-1012-c-1056-2-roma.ged`
+20509. `isolate-geni-theophylactus-di-tuscolo-c-1012-c-1056-roma.ged`
+20510. `isolate-geni-theophylactus-di-tuscolo-c-980-1024-rome.ged`
+20511. `isolate-geni-thomas-j-nsson-thor-n-thorild-1759-1808.ged`
+20512. `isolate-geni-thomas-starr-1813.ged`
+20513. `isolate-geni-thor-abrosius-helliesen-1855-1914-stavanger.ged`
+20514. `isolate-geni-thor-emanuel-ekecrantz-1856-1939.ged`
+20515. `isolate-geni-thoralf-albert-skolem-1887-1963.ged`
+20516. `isolate-geni-thore-michelsen-1888-d.ged`
+20517. `isolate-geni-thorleif-oscar-karlsen-1909-2010.ged`
+20518. `isolate-geni-thorvald-buch-1863-1925.ged`
+20519. `isolate-geni-thure-georg-sahama-sahlstein-1910-1983-helsinki.ged`
+20520. `isolate-geni-thure-magnus-julius-hastrup-1903-1989.ged`
+20521. `isolate-geni-timo-veijola-1947-2005-hyvink.ged`
+20522. `isolate-geni-tommaso-parentuccelli-lucando-1397-1455-rome.ged`
+20523. `isolate-geni-tore-renberg.ged`
+20524. `isolate-geni-torger-torgerson-vetteland-1829-1914-stavanger.ged`
+20525. `isolate-geni-torkel-opsahl-1931-1993-gen-ve.ged`
+20526. `isolate-geni-torsten-h-gerstrand-1916-d.ged`
+20527. `isolate-geni-torsten-ludvig-thunberg-1873-1952-lund.ged`
+20528. `isolate-geni-tove-b-rheim-holtermann-1917-2005-stavanger.ged`
+20529. `isolate-geni-tuomo-seppo-mannermaa-1937-2015-espoo.ged`
+20530. `isolate-geni-uberto-umberto-crivelli-1120-1187-ferrara.ged`
+20531. `isolate-geni-ugolino-anagni-dei-conti-di-segni-pope-gregory-ix-c-1170-1241-roma.ged`
+20532. `isolate-geni-ulf-arne-s-derblom-1930-2016.ged`
+20533. `isolate-geni-ulrich-oskar-zech-1927-2010-munich.ged`
+20534. `isolate-geni-univ-prof-dr-phil-et-med-walther-poppelreuter-1886-1939.ged`
+20535. `isolate-geni-unto-uuno-uotila-1910-1977-helsinki.ged`
+20536. `isolate-geni-v-in-gr-nholm-1868-1936-helsinki.ged`
+20537. `isolate-geni-vasilijs-sinaiskis-1876-1949-brussels.ged`
+20538. `isolate-geni-verner-panton-1926-1998.ged`
+20539. `isolate-geni-viggo-brun-1885-1978.ged`
+20540. `isolate-geni-viktor-georg-von-wolff-1886.ged`
+20541. `isolate-geni-vil-m-du-an-lambl-1824-1895-warsaw.ged`
+20542. `isolate-geni-vilhelm-eliel-viktorinus-wessman-1879-1958-eken-s.ged`
+20543. `isolate-geni-viljo-johannes-mansikka-1884-1947-helsinki.ged`
+20544. `isolate-geni-vincenzo-francesco-maria-errante-1890-1951.ged`
+20545. `isolate-geni-viola-marie-sibylle-gr-fin-von-bethusy-huc-1927-d.ged`
+20546. `isolate-geni-vladi-marmo-forsblom-1914-1969-jyv-skyl.ged`
+20547. `isolate-geni-walter-courvoisier-1875-1931-orselina.ged`
+20548. `isolate-geni-walter-louis-moritz-laqueur-1921-2018-washington.ged`
+20549. `isolate-geni-walter-weisbach-1889-1962-den-haag.ged`
+20550. `isolate-geni-wiktor-marian-dega-1896-1995-pozna.ged`
+20551. `isolate-geni-wilfried-karl-theodor-schlau-1917-2010-friedrichsdorf.ged`
+20552. `isolate-geni-wilhelm-adolf-diesterweg-1782-1835-bonn.ged`
+20553. `isolate-geni-wilhelm-lanzky-otto-1909-1991.ged`
+20554. `isolate-geni-wilhelm-wiget-1885-1934-herisau.ged`
+20555. `isolate-geni-willem-joseph-andries-geb-diehl-jonckbloet-1817-1885-wi.ged`
+20556. `isolate-geni-william-christopher-zeise-1836-ridder-af-dannebrog-1789.ged`
+20557. `isolate-geni-william-coucheron-aamot-1868-1948.ged`
+20558. `isolate-geni-william-wilhelm-franz-latzko-md-1863-1945-new-york.ged`
+20559. `isolate-geni-wolfgang-anton-de-boor-1917-2014-cologne.ged`
+20560. `isolate-geni-wolmar-jammi-nyberg-1919-1973-sibbo.ged`
+20561. `isolate-geni-yngve-zotterman-1898-1982-stockholm.ged`
+20562. `isolate-geni-yrj-henrik-kajava-nylund-1884-1929-helsinki.ged`
+20563. `jimmu.ged`
+20564. `lady-palsu-of-the-jin-clan.ged`
+20565. `madgacen-300-d.ged`
+20566. `makeda-queen-of-sheba-1013-982.ged`
+20567. `makeda-to-enlil-nirari.ged`
+20568. `makeda-to-marguerite.ged`
+20569. `makeda-to-matthew.ged`
+20570. `nn-basse.ged`
+20571. `nn-daughter-of-berenice.ged`
+20572. `nn-of-malwa.ged`
+20573. `nn.ged`
+20574. `pasuti.ged`
+20575. `princess-nn.ged`
+20576. `psamtik-ii-pharaoh-of-egypt-b-589.ged`
+20577. `r-chaim-itzkowitz-volozhiner.ged`
+20578. `rabbi-yisrael-gershon-soloveitchik.ged`
+20579. `randolph-paulus-borsheim.ged`
+20580. `saved-349440463640013536.ged`
+20581. `saved-365466687720012045.ged`
+20582. `saved-3696730.ged`
+20583. `saved-375738756460004676.ged`
+20584. `saved-4077210.ged`
+20585. `saved-4077390.ged`
+20586. `saved-4103872.ged`
+20587. `saved-4366030.ged`
+20588. `saved-4376103.ged`
+20589. `saved-4627273.ged`
+20590. `saved-4946518870490042172.ged`
+20591. `saved-4976573922110117540.ged`
+20592. `saved-4984086862270100347.ged`
+20593. `saved-5235605714220070458.ged`
+20594. `saved-5271489675500023723.ged`
+20595. `saved-5305294636990124817.ged`
+20596. `saved-5441313740220126371.ged`
+20597. `saved-5447505087810135067.ged`
+20598. `saved-5502964838900085605.ged`
+20599. `saved-6000000000012602183.ged`
+20600. `saved-6000000000135924403.ged`
+20601. `saved-6000000000136616524.ged`
+20602. `saved-6000000000136688085.ged`
+20603. `saved-6000000000139648597.ged`
+20604. `saved-6000000000186421249.ged`
+20605. `saved-6000000000196218118.ged`
+20606. `saved-6000000000351087662.ged`
+20607. `saved-6000000000351087701.ged`
+20608. `saved-6000000000424848932.ged`
+20609. `saved-6000000000437044109.ged`
+20610. `saved-6000000000437316601.ged`
+20611. `saved-6000000000437327174.ged`
+20612. `saved-6000000000437669873.ged`
+20613. `saved-6000000000467542216.ged`
+20614. `saved-6000000000574078388.ged`
+20615. `saved-6000000000638286399.ged`
+20616. `saved-6000000000666780234.ged`
+20617. `saved-6000000000687421882.ged`
+20618. `saved-6000000000694158525.ged`
+20619. `saved-6000000000728299766.ged`
+20620. `saved-6000000000756952602.ged`
+20621. `saved-6000000000757999620.ged`
+20622. `saved-6000000000758079676.ged`
+20623. `saved-6000000000768957873.ged`
+20624. `saved-6000000000866353020.ged`
+20625. `saved-6000000000873947684.ged`
+20626. `saved-6000000000891680343.ged`
+20627. `saved-6000000001088154772.ged`
+20628. `saved-6000000001138735296.ged`
+20629. `saved-6000000001139071013.ged`
+20630. `saved-6000000001144914191.ged`
+20631. `saved-6000000001169154976.ged`
+20632. `saved-6000000001169171714.ged`
+20633. `saved-6000000001169235389.ged`
+20634. `saved-6000000001169238166.ged`
+20635. `saved-6000000001169313832.ged`
+20636. `saved-6000000001196257237.ged`
+20637. `saved-6000000001198860794.ged`
+20638. `saved-6000000001199993264.ged`
+20639. `saved-6000000001200028258.ged`
+20640. `saved-6000000001311917463.ged`
+20641. `saved-6000000001412881746.ged`
+20642. `saved-6000000001506899998.ged`
+20643. `saved-6000000001584382671.ged`
+20644. `saved-6000000001584801190.ged`
+20645. `saved-6000000001593637951.ged`
+20646. `saved-6000000001614845637.ged`
+20647. `saved-6000000001651460598.ged`
+20648. `saved-6000000001651502714.ged`
+20649. `saved-6000000001651629109.ged`
+20650. `saved-6000000001708363985.ged`
+20651. `saved-6000000001711091993.ged`
+20652. `saved-6000000001770188397.ged`
+20653. `saved-6000000001770214443.ged`
+20654. `saved-6000000001821102369.ged`
+20655. `saved-6000000001827575240.ged`
+20656. `saved-6000000001827582117.ged`
+20657. `saved-6000000001827610153.ged`
+20658. `saved-6000000001838607806.ged`
+20659. `saved-6000000001838879990.ged`
+20660. `saved-6000000001969506851.ged`
+20661. `saved-6000000001969599119.ged`
+20662. `saved-6000000001995109345.ged`
+20663. `saved-6000000002017898070.ged`
+20664. `saved-6000000002043263103.ged`
+20665. `saved-6000000002078094635.ged`
+20666. `saved-6000000002078126382.ged`
+20667. `saved-6000000002163543379.ged`
+20668. `saved-6000000002187796542.ged`
+20669. `saved-6000000002187851434.ged`
+20670. `saved-6000000002188110562.ged`
+20671. `saved-6000000002188289908.ged`
+20672. `saved-6000000002188578738.ged`
+20673. `saved-6000000002226068159.ged`
+20674. `saved-6000000002245279564.ged`
+20675. `saved-6000000002267060138.ged`
+20676. `saved-6000000002277862058.ged`
+20677. `saved-6000000002330980548.ged`
+20678. `saved-6000000002342416311.ged`
+20679. `saved-6000000002391959353.ged`
+20680. `saved-6000000002434214184.ged`
+20681. `saved-6000000002463510938.ged`
+20682. `saved-6000000002481819312.ged`
+20683. `saved-6000000002482084257.ged`
+20684. `saved-6000000002482165558.ged`
+20685. `saved-6000000002512346178.ged`
+20686. `saved-6000000002516491073.ged`
+20687. `saved-6000000002527461568.ged`
+20688. `saved-6000000002572699392.ged`
+20689. `saved-6000000002572701505.ged`
+20690. `saved-6000000002572783163.ged`
+20691. `saved-6000000002588347233.ged`
+20692. `saved-6000000002744891329.ged`
+20693. `saved-6000000002748554800.ged`
+20694. `saved-6000000002750545795.ged`
+20695. `saved-6000000002847945015.ged`
+20696. `saved-6000000002866077692.ged`
+20697. `saved-6000000002866078652.ged`
+20698. `saved-6000000002893299341.ged`
+20699. `saved-6000000002893299372.ged`
+20700. `saved-6000000002893316227.ged`
+20701. `saved-6000000002893322314.ged`
+20702. `saved-6000000002893330286.ged`
+20703. `saved-6000000002893335701.ged`
+20704. `saved-6000000002916189513.ged`
+20705. `saved-6000000002920620224.ged`
+20706. `saved-6000000003012468747.ged`
+20707. `saved-6000000003025853747.ged`
+20708. `saved-6000000003026039395.ged`
+20709. `saved-6000000003043806217.ged`
+20710. `saved-6000000003049156212.ged`
+20711. `saved-6000000003076221220.ged`
+20712. `saved-6000000003087080306.ged`
+20713. `saved-6000000003094916337.ged`
+20714. `saved-6000000003094967990.ged`
+20715. `saved-6000000003094971035.ged`
+20716. `saved-6000000003095003918.ged`
+20717. `saved-6000000003095060610.ged`
+20718. `saved-6000000003095080287.ged`
+20719. `saved-6000000003101980999.ged`
+20720. `saved-6000000003102253400.ged`
+20721. `saved-6000000003102295068.ged`
+20722. `saved-6000000003125438035.ged`
+20723. `saved-6000000003152860875.ged`
+20724. `saved-6000000003253261775.ged`
+20725. `saved-6000000003253460860.ged`
+20726. `saved-6000000003253601093.ged`
+20727. `saved-6000000003332799114.ged`
+20728. `saved-6000000003332823073.ged`
+20729. `saved-6000000003355801643.ged`
+20730. `saved-6000000003367976924.ged`
+20731. `saved-6000000003401838954.ged`
+20732. `saved-6000000003418900347.ged`
+20733. `saved-6000000003484293276.ged`
+20734. `saved-6000000003491988509.ged`
+20735. `saved-6000000003491988584.ged`
+20736. `saved-6000000003491988599.ged`
+20737. `saved-6000000003491988619.ged`
+20738. `saved-6000000003492029785.ged`
+20739. `saved-6000000003492033993.ged`
+20740. `saved-6000000003492057788.ged`
+20741. `saved-6000000003492064709.ged`
+20742. `saved-6000000003559734445.ged`
+20743. `saved-6000000003645919492.ged`
+20744. `saved-6000000003645919625.ged`
+20745. `saved-6000000003645940658.ged`
+20746. `saved-6000000003646023820.ged`
+20747. `saved-6000000003646023907.ged`
+20748. `saved-6000000003783022260.ged`
+20749. `saved-6000000003805720033.ged`
+20750. `saved-6000000003827445550.ged`
+20751. `saved-6000000003858704239.ged`
+20752. `saved-6000000003869622559.ged`
+20753. `saved-6000000003887729856.ged`
+20754. `saved-6000000003897585979.ged`
+20755. `saved-6000000003958968521.ged`
+20756. `saved-6000000004027712640.ged`
+20757. `saved-6000000004105285975.ged`
+20758. `saved-6000000004214433404.ged`
+20759. `saved-6000000004533176419.ged`
+20760. `saved-6000000004647605698.ged`
+20761. `saved-6000000004671044584.ged`
+20762. `saved-6000000004863275809.ged`
+20763. `saved-6000000004863611375.ged`
+20764. `saved-6000000004863761158.ged`
+20765. `saved-6000000004863823276.ged`
+20766. `saved-6000000004869049343.ged`
+20767. `saved-6000000004870648136.ged`
+20768. `saved-6000000005074489379.ged`
+20769. `saved-6000000005381997903.ged`
+20770. `saved-6000000005382299298.ged`
+20771. `saved-6000000005414590318.ged`
+20772. `saved-6000000005545740001.ged`
+20773. `saved-6000000005581573549.ged`
+20774. `saved-6000000005598851255.ged`
+20775. `saved-6000000005606851579.ged`
+20776. `saved-6000000005606886765.ged`
+20777. `saved-6000000005606886780.ged`
+20778. `saved-6000000005606886827.ged`
+20779. `saved-6000000005606976930.ged`
+20780. `saved-6000000005607042284.ged`
+20781. `saved-6000000005607042309.ged`
+20782. `saved-6000000005607119313.ged`
+20783. `saved-6000000005607123730.ged`
+20784. `saved-6000000005607268671.ged`
+20785. `saved-6000000005607282941.ged`
+20786. `saved-6000000005607296161.ged`
+20787. `saved-6000000005607335640.ged`
+20788. `saved-6000000005607365269.ged`
+20789. `saved-6000000005607439733.ged`
+20790. `saved-6000000005607599821.ged`
+20791. `saved-6000000005607884543.ged`
+20792. `saved-6000000005608934604.ged`
+20793. `saved-6000000005609028769.ged`
+20794. `saved-6000000005609304829.ged`
+20795. `saved-6000000005609304839.ged`
+20796. `saved-6000000005609458561.ged`
+20797. `saved-6000000005609518095.ged`
+20798. `saved-6000000005609522416.ged`
+20799. `saved-6000000005609522426.ged`
+20800. `saved-6000000005609547535.ged`
+20801. `saved-6000000005609547544.ged`
+20802. `saved-6000000005609547691.ged`
+20803. `saved-6000000005744994368.ged`
+20804. `saved-6000000005744994427.ged`
+20805. `saved-6000000005795638082.ged`
+20806. `saved-6000000005795638104.ged`
+20807. `saved-6000000005856163014.ged`
+20808. `saved-6000000006127859612.ged`
+20809. `saved-6000000006171259545.ged`
+20810. `saved-6000000006183866418.ged`
+20811. `saved-6000000006253433055.ged`
+20812. `saved-6000000006253635635.ged`
+20813. `saved-6000000006277556378.ged`
+20814. `saved-6000000006589193224.ged`
+20815. `saved-6000000006602653847.ged`
+20816. `saved-6000000006769001160.ged`
+20817. `saved-6000000006776171892.ged`
+20818. `saved-6000000006776187362.ged`
+20819. `saved-6000000006776187394.ged`
+20820. `saved-6000000006776187410.ged`
+20821. `saved-6000000006991041605.ged`
+20822. `saved-6000000007006053264.ged`
+20823. `saved-6000000007020763500.ged`
+20824. `saved-6000000007058802262.ged`
+20825. `saved-6000000007062931743.ged`
+20826. `saved-6000000007062987558.ged`
+20827. `saved-6000000007114444629.ged`
+20828. `saved-6000000007225974316.ged`
+20829. `saved-6000000007243462851.ged`
+20830. `saved-6000000007259558393.ged`
+20831. `saved-6000000007304150583.ged`
+20832. `saved-6000000007339101221.ged`
+20833. `saved-6000000007511564057.ged`
+20834. `saved-6000000007549309545.ged`
+20835. `saved-6000000007559278400.ged`
+20836. `saved-6000000007581296353.ged`
+20837. `saved-6000000007588187341.ged`
+20838. `saved-6000000007588187344.ged`
+20839. `saved-6000000007589095414.ged`
+20840. `saved-6000000007635630874.ged`
+20841. `saved-6000000007635630965.ged`
+20842. `saved-6000000007635631030.ged`
+20843. `saved-6000000007661859262.ged`
+20844. `saved-6000000007676113728.ged`
+20845. `saved-6000000007773104021.ged`
+20846. `saved-6000000007826003451.ged`
+20847. `saved-6000000007958767639.ged`
+20848. `saved-6000000007959864423.ged`
+20849. `saved-6000000007980520044.ged`
+20850. `saved-6000000008034160064.ged`
+20851. `saved-6000000008106241912.ged`
+20852. `saved-6000000008115020929.ged`
+20853. `saved-6000000008115048412.ged`
+20854. `saved-6000000008205346192.ged`
+20855. `saved-6000000008469756742.ged`
+20856. `saved-6000000008715164518.ged`
+20857. `saved-6000000008765536305.ged`
+20858. `saved-6000000008933309505.ged`
+20859. `saved-6000000008961666136.ged`
+20860. `saved-6000000009170017937.ged`
+20861. `saved-6000000009465627532.ged`
+20862. `saved-6000000009499609049.ged`
+20863. `saved-6000000009500754533.ged`
+20864. `saved-6000000009544774015.ged`
+20865. `saved-6000000009875303979.ged`
+20866. `saved-6000000010160609967.ged`
+20867. `saved-6000000010222435520.ged`
+20868. `saved-6000000010226740465.ged`
+20869. `saved-6000000010259352985.ged`
+20870. `saved-6000000010331792637.ged`
+20871. `saved-6000000010463529059.ged`
+20872. `saved-6000000010642992694.ged`
+20873. `saved-6000000010888345851.ged`
+20874. `saved-6000000011043803107.ged`
+20875. `saved-6000000011078549071.ged`
+20876. `saved-6000000011078726908.ged`
+20877. `saved-6000000011078807545.ged`
+20878. `saved-6000000011078829655.ged`
+20879. `saved-6000000011078886609.ged`
+20880. `saved-6000000011078918407.ged`
+20881. `saved-6000000011079271617.ged`
+20882. `saved-6000000011079343735.ged`
+20883. `saved-6000000011183696687.ged`
+20884. `saved-6000000011239201122.ged`
+20885. `saved-6000000011239545575.ged`
+20886. `saved-6000000011399221611.ged`
+20887. `saved-6000000011647607597.ged`
+20888. `saved-6000000011769042441.ged`
+20889. `saved-6000000011807777264.ged`
+20890. `saved-6000000012108249741.ged`
+20891. `saved-6000000012245669731.ged`
+20892. `saved-6000000012455272755.ged`
+20893. `saved-6000000012503281124.ged`
+20894. `saved-6000000012587690898.ged`
+20895. `saved-6000000012724604098.ged`
+20896. `saved-6000000013205833004.ged`
+20897. `saved-6000000013214878518.ged`
+20898. `saved-6000000013618082642.ged`
+20899. `saved-6000000014224378935.ged`
+20900. `saved-6000000014265035290.ged`
+20901. `saved-6000000014287321085.ged`
+20902. `saved-6000000014300629210.ged`
+20903. `saved-6000000014512537406.ged`
+20904. `saved-6000000014522158621.ged`
+20905. `saved-6000000015117490925.ged`
+20906. `saved-6000000015117958521.ged`
+20907. `saved-6000000015302506749.ged`
+20908. `saved-6000000015399620672.ged`
+20909. `saved-6000000015423592428.ged`
+20910. `saved-6000000015485735160.ged`
+20911. `saved-6000000015843590321.ged`
+20912. `saved-6000000016426352456.ged`
+20913. `saved-6000000016524856961.ged`
+20914. `saved-6000000016959316252.ged`
+20915. `saved-6000000017093875188.ged`
+20916. `saved-6000000017512587298.ged`
+20917. `saved-6000000017535961052.ged`
+20918. `saved-6000000017799612472.ged`
+20919. `saved-6000000018212260392.ged`
+20920. `saved-6000000018448055702.ged`
+20921. `saved-6000000018528235866.ged`
+20922. `saved-6000000018752060667.ged`
+20923. `saved-6000000019410166019.ged`
+20924. `saved-6000000020013489270.ged`
+20925. `saved-6000000020344692199.ged`
+20926. `saved-6000000020344732085.ged`
+20927. `saved-6000000020344842981.ged`
+20928. `saved-6000000021139261439.ged`
+20929. `saved-6000000021143457434.ged`
+20930. `saved-6000000021546131052.ged`
+20931. `saved-6000000021651776645.ged`
+20932. `saved-6000000021652410546.ged`
+20933. `saved-6000000023250155337.ged`
+20934. `saved-6000000023666472983.ged`
+20935. `saved-6000000024431753429.ged`
+20936. `saved-6000000024431778428.ged`
+20937. `saved-6000000024841032051.ged`
+20938. `saved-6000000026191425197.ged`
+20939. `saved-6000000026258097510.ged`
+20940. `saved-6000000026534693043.ged`
+20941. `saved-6000000027507886451.ged`
+20942. `saved-6000000027593736914.ged`
+20943. `saved-6000000028408939773.ged`
+20944. `saved-6000000029363285200.ged`
+20945. `saved-6000000030009027971.ged`
+20946. `saved-6000000030042669829.ged`
+20947. `saved-6000000030775253849.ged`
+20948. `saved-6000000031833079710.ged`
+20949. `saved-6000000031873939968.ged`
+20950. `saved-6000000032068841409.ged`
+20951. `saved-6000000034357465956.ged`
+20952. `saved-6000000035169497997.ged`
+20953. `saved-6000000035525393426.ged`
+20954. `saved-6000000035525469386.ged`
+20955. `saved-6000000035525833995.ged`
+20956. `saved-6000000035525972877.ged`
+20957. `saved-6000000035842865927.ged`
+20958. `saved-6000000036357505108.ged`
+20959. `saved-6000000036357582274.ged`
+20960. `saved-6000000037061491552.ged`
+20961. `saved-6000000039766619938.ged`
+20962. `saved-6000000043649084885.ged`
+20963. `saved-6000000047943564981.ged`
+20964. `saved-6000000050635310838.ged`
+20965. `saved-6000000051276273861.ged`
+20966. `saved-6000000054990622176.ged`
+20967. `saved-6000000057175128821.ged`
+20968. `saved-6000000057327773067.ged`
+20969. `saved-6000000057959889971.ged`
+20970. `saved-6000000065991527068.ged`
+20971. `saved-6000000067502220858.ged`
+20972. `saved-6000000069050151452.ged`
+20973. `saved-6000000069466362236.ged`
+20974. `saved-6000000070497375043.ged`
+20975. `saved-6000000071638439878.ged`
+20976. `saved-6000000073132490036.ged`
+20977. `saved-6000000077297672317.ged`
+20978. `saved-6000000077297739021.ged`
+20979. `saved-6000000077316240007.ged`
+20980. `saved-6000000077667834821.ged`
+20981. `saved-6000000077762121855.ged`
+20982. `saved-6000000079267271590.ged`
+20983. `saved-6000000080929243843.ged`
+20984. `saved-6000000081001962237.ged`
+20985. `saved-6000000082819939353.ged`
+20986. `saved-6000000082822675871.ged`
+20987. `saved-6000000082862457204.ged`
+20988. `saved-6000000093411354957.ged`
+20989. `saved-6000000099934709827.ged`
+20990. `saved-6000000100733843835.ged`
+20991. `saved-6000000103633571840.ged`
+20992. `saved-6000000105712682826.ged`
+20993. `saved-6000000116694298987.ged`
+20994. `saved-6000000126234285831.ged`
+20995. `saved-6000000141086236875.ged`
+20996. `saved-6000000155055551821.ged`
+20997. `saved-6000000161721983869.ged`
+20998. `saved-6000000161721983881.ged`
+20999. `saved-6000000161721983893.ged`
+21000. `saved-6000000169037819865.ged`
+21001. `saved-6000000177463770840.ged`
+21002. `saved-6000000177920129831.ged`
+21003. `saved-6000000177921458827.ged`
+21004. `saved-6000000177921458833.ged`
+21005. `saved-6000000177921458845.ged`
+21006. `saved-6000000177921458863.ged`
+21007. `saved-6000000177921458990.ged`
+21008. `saved-6000000177921458999.ged`
+21009. `saved-6000000177921459033.ged`
+21010. `saved-6000000177921459052.ged`
+21011. `saved-6000000177921459056.ged`
+21012. `saved-6000000177921459066.ged`
+21013. `saved-6000000177921459072.ged`
+21014. `saved-6000000177921459078.ged`
+21015. `saved-6000000177921459094.ged`
+21016. `saved-6000000177921459104.ged`
+21017. `saved-6000000177921459114.ged`
+21018. `saved-6000000177921459129.ged`
+21019. `saved-6000000177921459134.ged`
+21020. `saved-6000000177921459169.ged`
+21021. `saved-6000000177921516822.ged`
+21022. `saved-6000000177921516839.ged`
+21023. `saved-6000000177921516859.ged`
+21024. `saved-6000000177944025822.ged`
+21025. `saved-6000000178670150833.ged`
+21026. `saved-6000000180285636825.ged`
+21027. `saved-6000000182737012832.ged`
+21028. `saved-6000000183986957910.ged`
+21029. `saved-6000000184169690842.ged`
+21030. `saved-6000000185157445888.ged`
+21031. `saved-6000000185158249846.ged`
+21032. `saved-6000000202543587856.ged`
+21033. `saved-6000000207769838867.ged`
+21034. `saved-6000000207770099821.ged`
+21035. `saved-6000000207770887863.ged`
+21036. `saved-6000000216588272880.ged`
+21037. `scorpion-i.ged`
+21038. `tadlaf-al-qaydari.ged`
+21039. `tem-jin-borjigin-khan-khagan-of-the-mong.ged`
+21040. `wen-jifu.ged`
+21041. `zeng-yuan.ged`
+21042. `1053448.ged`
+21043. `1054227.ged`
+21044. `1108959.ged`
+21045. `1414400.ged`
+21046. `1435328.ged`
+21047. `1544998.ged`
+21048. `1602143.ged`
+21049. `1605703.ged`
+21050. `1620416.ged`
+21051. `16755.ged`
+21052. `1696952.ged`
+21053. `1722187.ged`
+21054. `1793039.ged`
+21055. `1898299.ged`
+21056. `2093306.ged`
+21057. `2120676.ged`
+21058. `2249131.ged`
+21059. `2316244.ged`
+21060. `2316512.ged`
+21061. `2316972.ged`
+21062. `2317000.ged`
+21063. `2341427.ged`
+21064. `2348876.ged`
+21065. `292373984150002914.ged`
+21066. `292375499530004720.ged`
+21067. `292375614100003130.ged`
+21068. `292375719740008518.ged`
+21069. `292376429810004785.ged`
+21070. `292391597660006813.ged`
+21071. `3724849.ged`
+21072. `3724940.ged`
+21073. `3724946.ged`
+21074. `6000000000785786199.ged`
+21075. `6000000000872878006.ged`
+21076. `6000000001517526463.ged`
+21077. `6000000002028537662.ged`
+21078. `6000000006101354494.ged`
+21079. `6000000008174402366.ged`
+21080. `6000000008174466264.ged`
+21081. `6000000008176509969.ged`
+21082. `6000000008176622061.ged`
+21083. `6000000008176934493.ged`
+21084. `6000000008176981279.ged`
+21085. `6000000008177059370.ged`
+21086. `6000000008209329558.ged`
+21087. `6000000008209364679.ged`
+21088. `6000000008209406512.ged`
+21089. `6000000008209471202.ged`
+21090. `6000000008209474398.ged`
+21091. `6000000008209478282.ged`
+21092. `6000000008239556189.ged`
+21093. `6000000008239559135.ged`
+21094. `6000000008239590629.ged`
+21095. `6000000008461425733.ged`
+21096. `6000000008881168092.ged`
+21097. `6000000008881260729.ged`
+21098. `6000000008881347600.ged`
+21099. `6000000008881365723.ged`
+21100. `6000000008881370696.ged`
+21101. `6000000008881398025.ged`
+21102. `6000000008881463848.ged`
+21103. `6000000009583760174.ged`
+21104. `6000000009584254696.ged`
+21105. `6000000009584324661.ged`
+21106. `6000000009584383436.ged`
+21107. `6000000009593134620.ged`
+21108. `6000000009593580544.ged`
+21109. `6000000009593804483.ged`
+21110. `6000000009602576325.ged`
+21111. `6000000009749349185.ged`
+21112. `6000000009750181705.ged`
+21113. `6000000011489518934.ged`
+21114. `6000000015251760335.ged`
+21115. `6000000015251864613.ged`
+21116. `6000000017598776819.ged`
+21117. `6000000017599430239.ged`
+21118. `6000000017599452029.ged`
+21119. `6000000017601292551.ged`
+21120. `6000000017602027283.ged`
+21121. `6000000017602416858.ged`
+21122. `6000000017602461524.ged`
+21123. `6000000017602541883.ged`
+21124. `6000000017602671987.ged`
+21125. `6000000017602752341.ged`
+21126. `6000000017602840367.ged`
+21127. `6000000017602871867.ged`
+21128. `6000000017602909346.ged`
+21129. `6000000017603017344.ged`
+21130. `6000000017603043149.ged`
+21131. `6000000017603108393.ged`
+21132. `6000000017603116673.ged`
+21133. `6000000017603119240.ged`
+21134. `6000000017603127342.ged`
+21135. `6000000017603244042.ged`
+21136. `6000000018391674002.ged`
+21137. `6000000018394859816.ged`
+21138. `6000000018395600056.ged`
+21139. `6000000018809378584.ged`
+21140. `6000000033302814796.ged`
+21141. `6000000033303439023.ged`
+21142. `6000000036853250505.ged`
+21143. `6000000036854364270.ged`
+21144. `6000000036854711943.ged`
+21145. `6000000038555523003.ged`
+21146. `6000000038555630138.ged`
+21147. `6000000039315561835.ged`
+21148. `6000000039319367337.ged`
+21149. `6000000041985855247.ged`
+21150. `6000000041985856069.ged`
+21151. `6000000041985978113.ged`
+21152. `6000000041988558440.ged`
+21153. `6000000041988800141.ged`
+21154. `6000000074712812884.ged`
+21155. `6000000081001962237.ged`
+21156. `6000000081561097142.ged`
+21157. `6000000081561262442.ged`
+21158. `6000000081561784858.ged`
+21159. `6000000081561820879.ged`
+21160. `6000000081561965958.ged`
+21161. `6000000081561973861.ged`
+21162. `6000000081701543832.ged`
+21163. `6000000082250162949.ged`
+21164. `6000000082251726895.ged`
+21165. `6000000082417150189.ged`
+21166. `6000000082417620821.ged`
+21167. `6000000083040500385.ged`
+21168. `6000000169646834857.ged`
+21169. `6000000174013443429.ged`
+21170. `6000000174013690383.ged`
+21171. `6000000174772224635.ged`
+21172. `6000000174772526456.ged`
+21173. `6000000174773429162.ged`
+21174. `6000000174773610146.ged`
+21175. `6000000174773679865.ged`
+21176. `6000000174774123984.ged`
+21177. `6000000174774135958.ged`
+21178. `6000000174774257861.ged`
+21179. `6000000174774399824.ged`
+21180. `6000000174774419939.ged`
+21181. `6000000174774486989.ged`
+21182. `6000000174775367866.ged`
+21183. `6000000176227546848.ged`
+21184. `6000000186886974842.ged`
+21185. `family-1548918.ged`
+21186. `family-1610437.ged`
+21187. `family-1623833.ged`
+21188. `family-1793600.ged`
+21189. `family-2077926.ged`
+21190. `family-2120676.ged`
+21191. `family-2125635.ged`
+21192. `family-2128292.ged`
+21193. `family-2399215.ged`
+21194. `family-2800320.ged`
+21195. `family-283298045420002957.ged`
+21196. `family-292350426030002931.ged`
+21197. `family-304413571170007106.ged`
+21198. `family-304413670430008270.ged`
+21199. `family-316216248270002934.ged`
+21200. `family-346534886220012248.ged`
+21201. `family-346535323980012266.ged`
+21202. `family-349440463640013536.ged`
+21203. `family-360492189060012549.ged`
+21204. `family-361843381280007976.ged`
+21205. `family-365313857240013083.ged`
+21206. `family-365314124540003500.ged`
+21207. `family-365314894420003448.ged`
+21208. `family-365315518800010569.ged`
+21209. `family-365466687720012045.ged`
+21210. `family-365471060260013162.ged`
+21211. `family-365471464220013205.ged`
+21212. `family-365488721470011625.ged`
+21213. `family-367359078190012517.ged`
+21214. `family-368713820640003185.ged`
+21215. `family-368714154710012201.ged`
+21216. `family-3696730.ged`
+21217. `family-375738756460004676.ged`
+21218. `family-375744715040013128.ged`
+21219. `family-375784306260002721.ged`
+21220. `family-379735685930012896.ged`
+21221. `family-3810353.ged`
+21222. `family-381761530540011401.ged`
+21223. `family-388449893270012482.ged`
+21224. `family-388450329300012525.ged`
+21225. `family-388613596210002012.ged`
+21226. `family-4058826330830122137.ged`
+21227. `family-4077210.ged`
+21228. `family-4077390.ged`
+21229. `family-4079111.ged`
+21230. `family-4103872.ged`
+21231. `family-4195891192880058503.ged`
+21232. `family-4195938644320058013.ged`
+21233. `family-4198641.ged`
+21234. `family-4229916861440069622.ged`
+21235. `family-4246255674440079332.ged`
+21236. `family-4248013140250038185.ged`
+21237. `family-4259042.ged`
+21238. `family-4259048.ged`
+21239. `family-4259086.ged`
+21240. `family-4263630100270128037.ged`
+21241. `family-4275395618020068615.ged`
+21242. `family-4275583289130033084.ged`
+21243. `family-4275641755920033011.ged`
+21244. `family-4304466546090010445.ged`
+21245. `family-4315742410860030603.ged`
+21246. `family-4362903.ged`
+21247. `family-4365730.ged`
+21248. `family-4366030.ged`
+21249. `family-4376103.ged`
+21250. `family-4419858038520054927.ged`
+21251. `family-4520147.ged`
+21252. `family-4520166.ged`
+21253. `family-4592410796700031770.ged`
+21254. `family-4627273.ged`
+21255. `family-4722085825290038085.ged`
+21256. `family-4760501467940073096.ged`
+21257. `family-4773551769190080963.ged`
+21258. `family-4776154.ged`
+21259. `family-4880315912470047216.ged`
+21260. `family-4924448917970137597.ged`
+21261. `family-4924448933160137503.ged`
+21262. `family-4946518870490042172.ged`
+21263. `family-4976573922110117540.ged`
+21264. `family-4984086862270100347.ged`
+21265. `family-5001362652110128116.ged`
+21266. `family-5058899407670133169.ged`
+21267. `family-5105745500030114706.ged`
+21268. `family-5106195884670114511.ged`
+21269. `family-5119671559010045041.ged`
+21270. `family-5131571863040103622.ged`
+21271. `family-5200066333790031078.ged`
+21272. `family-5207146906010118647.ged`
+21273. `family-5207146917280118653.ged`
+21274. `family-5219301786390025586.ged`
+21275. `family-5235605714220070458.ged`
+21276. `family-5251653855510129840.ged`
+21277. `family-5254038781340071824.ged`
+21278. `family-5267211996730068114.ged`
+21279. `family-5271489675500023723.ged`
+21280. `family-5304572722780119951.ged`
+21281. `family-5304606047970088500.ged`
+21282. `family-5304611081740076756.ged`
+21283. `family-5305294636990124817.ged`
+21284. `family-5328971090140130337.ged`
+21285. `family-5336768638830104036.ged`
+21286. `family-5336815803180122126.ged`
+21287. `family-5389087141070079885.ged`
+21288. `family-5441266921810062407.ged`
+21289. `family-5441313740220126371.ged`
+21290. `family-5447505087810135067.ged`
+21291. `family-5502961102630086048.ged`
+21292. `family-5502964838900085605.ged`
+21293. `family-5551057844540081310.ged`
+21294. `family-5551063057940043140.ged`
+21295. `family-5562350241840082253.ged`
+21296. `family-5590818860100073608.ged`
+21297. `family-5617518918050122036.ged`
+21298. `family-5617538511300106313.ged`
+21299. `family-5679634808960060299.ged`
+21300. `family-5680189981660060613.ged`
+21301. `family-5697265345310133911.ged`
+21302. `family-6000000000010678591.ged`
+21303. `family-6000000000012602183.ged`
+21304. `family-6000000000019972451.ged`
+21305. `family-6000000000023930647.ged`
+21306. `family-6000000000037785008.ged`
+21307. `family-6000000000041470596.ged`
+21308. `family-6000000000060201977.ged`
+21309. `family-6000000000073797328.ged`
+21310. `family-6000000000085100177.ged`
+21311. `family-6000000000099770180.ged`
+21312. `family-6000000000101143665.ged`
+21313. `family-6000000000113843065.ged`
+21314. `family-6000000000113843072.ged`
+21315. `family-6000000000125793641.ged`
+21316. `family-6000000000127612116.ged`
+21317. `family-6000000000127612134.ged`
+21318. `family-6000000000133689969.ged`
+21319. `family-6000000000135924403.ged`
+21320. `family-6000000000136616524.ged`
+21321. `family-6000000000136688085.ged`
+21322. `family-6000000000139648597.ged`
+21323. `family-6000000000160892628.ged`
+21324. `family-6000000000186421249.ged`
+21325. `family-6000000000196218118.ged`
+21326. `family-6000000000207082579.ged`
+21327. `family-6000000000207082672.ged`
+21328. `family-6000000000252324893.ged`
+21329. `family-6000000000252931854.ged`
+21330. `family-6000000000311762065.ged`
+21331. `family-6000000000351087662.ged`
+21332. `family-6000000000351087701.ged`
+21333. `family-6000000000361052707.ged`
+21334. `family-6000000000378545599.ged`
+21335. `family-6000000000388939419.ged`
+21336. `family-6000000000424848932.ged`
+21337. `family-6000000000424851399.ged`
+21338. `family-6000000000437044109.ged`
+21339. `family-6000000000437130447.ged`
+21340. `family-6000000000437316601.ged`
+21341. `family-6000000000437327174.ged`
+21342. `family-6000000000437654736.ged`
+21343. `family-6000000000437669873.ged`
+21344. `family-6000000000449416629.ged`
+21345. `family-6000000000458217244.ged`
+21346. `family-6000000000460790288.ged`
+21347. `family-6000000000467542216.ged`
+21348. `family-6000000000484083511.ged`
+21349. `family-6000000000484249023.ged`
+21350. `family-6000000000496970049.ged`
+21351. `family-6000000000497643885.ged`
+21352. `family-6000000000498185763.ged`
+21353. `family-6000000000504150428.ged`
+21354. `family-6000000000518902212.ged`
+21355. `family-6000000000537527004.ged`
+21356. `family-6000000000565230800.ged`
+21357. `family-6000000000565416578.ged`
+21358. `family-6000000000568379999.ged`
+21359. `family-6000000000568695494.ged`
+21360. `family-6000000000571789704.ged`
+21361. `family-6000000000574078388.ged`
+21362. `family-6000000000576766420.ged`
+21363. `family-6000000000589541967.ged`
+21364. `family-6000000000593379030.ged`
+21365. `family-6000000000593738894.ged`
+21366. `family-6000000000594454726.ged`
+21367. `family-6000000000607356949.ged`
+21368. `family-6000000000607426990.ged`
+21369. `family-6000000000631615727.ged`
+21370. `family-6000000000634953446.ged`
+21371. `family-6000000000638286399.ged`
+21372. `family-6000000000646636987.ged`
+21373. `family-6000000000646740659.ged`
+21374. `family-6000000000649121564.ged`
+21375. `family-6000000000650837721.ged`
+21376. `family-6000000000659810695.ged`
+21377. `family-6000000000663149325.ged`
+21378. `family-6000000000663258163.ged`
+21379. `family-6000000000666780234.ged`
+21380. `family-6000000000671061765.ged`
+21381. `family-6000000000679344754.ged`
+21382. `family-6000000000685125230.ged`
+21383. `family-6000000000687421882.ged`
+21384. `family-6000000000687631539.ged`
+21385. `family-6000000000692661835.ged`
+21386. `family-6000000000694158525.ged`
+21387. `family-6000000000708789795.ged`
+21388. `family-6000000000709334357.ged`
+21389. `family-6000000000725159715.ged`
+21390. `family-6000000000726846049.ged`
+21391. `family-6000000000728299766.ged`
+21392. `family-6000000000735554252.ged`
+21393. `family-6000000000756952602.ged`
+21394. `family-6000000000757999620.ged`
+21395. `family-6000000000758079676.ged`
+21396. `family-6000000000764818098.ged`
+21397. `family-6000000000764844009.ged`
+21398. `family-6000000000768957873.ged`
+21399. `family-6000000000781697178.ged`
+21400. `family-6000000000794832014.ged`
+21401. `family-6000000000796891248.ged`
+21402. `family-6000000000851745139.ged`
+21403. `family-6000000000855618243.ged`
+21404. `family-6000000000866353020.ged`
+21405. `family-6000000000873947684.ged`
+21406. `family-6000000000879803071.ged`
+21407. `family-6000000000891680343.ged`
+21408. `family-6000000000925356216.ged`
+21409. `family-6000000000982525534.ged`
+21410. `family-6000000000987948392.ged`
+21411. `family-6000000000988688239.ged`
+21412. `family-6000000001012125847.ged`
+21413. `family-6000000001024705277.ged`
+21414. `family-6000000001045079246.ged`
+21415. `family-6000000001056501127.ged`
+21416. `family-6000000001062725047.ged`
+21417. `family-6000000001063167523.ged`
+21418. `family-6000000001063289132.ged`
+21419. `family-6000000001088018839.ged`
+21420. `family-6000000001088021553.ged`
+21421. `family-6000000001088154772.ged`
+21422. `family-6000000001094868777.ged`
+21423. `family-6000000001094898430.ged`
+21424. `family-6000000001095058592.ged`
+21425. `family-6000000001116583134.ged`
+21426. `family-6000000001131192746.ged`
+21427. `family-6000000001138735296.ged`
+21428. `family-6000000001139071013.ged`
+21429. `family-6000000001139144268.ged`
+21430. `family-6000000001142363908.ged`
+21431. `family-6000000001143919155.ged`
+21432. `family-6000000001143966322.ged`
+21433. `family-6000000001144914191.ged`
+21434. `family-6000000001169154976.ged`
+21435. `family-6000000001169171714.ged`
+21436. `family-6000000001169235389.ged`
+21437. `family-6000000001169238166.ged`
+21438. `family-6000000001169313832.ged`
+21439. `family-6000000001196257237.ged`
+21440. `family-6000000001198262405.ged`
+21441. `family-6000000001198860794.ged`
+21442. `family-6000000001199993264.ged`
+21443. `family-6000000001200028258.ged`
+21444. `family-6000000001249504219.ged`
+21445. `family-6000000001311917463.ged`
+21446. `family-6000000001322198340.ged`
+21447. `family-6000000001322198603.ged`
+21448. `family-6000000001338193719.ged`
+21449. `family-6000000001353276458.ged`
+21450. `family-6000000001353537105.ged`
+21451. `family-6000000001372350889.ged`
+21452. `family-6000000001372368326.ged`
+21453. `family-6000000001372528092.ged`
+21454. `family-6000000001381274001.ged`
+21455. `family-6000000001412881746.ged`
+21456. `family-6000000001475097615.ged`
+21457. `family-6000000001498704022.ged`
+21458. `family-6000000001498704055.ged`
+21459. `family-6000000001498704338.ged`
+21460. `family-6000000001499154903.ged`
+21461. `family-6000000001500854738.ged`
+21462. `family-6000000001500893042.ged`
+21463. `family-6000000001500929374.ged`
+21464. `family-6000000001501057114.ged`
+21465. `family-6000000001504281165.ged`
+21466. `family-6000000001504702346.ged`
+21467. `family-6000000001504816842.ged`
+21468. `family-6000000001504987829.ged`
+21469. `family-6000000001506899998.ged`
+21470. `family-6000000001584382671.ged`
+21471. `family-6000000001584687363.ged`
+21472. `family-6000000001584801190.ged`
+21473. `family-6000000001593637951.ged`
+21474. `family-6000000001594051535.ged`
+21475. `family-6000000001613759071.ged`
+21476. `family-6000000001613970246.ged`
+21477. `family-6000000001614845637.ged`
+21478. `family-6000000001624111597.ged`
+21479. `family-6000000001651460598.ged`
+21480. `family-6000000001651502714.ged`
+21481. `family-6000000001651629109.ged`
+21482. `family-6000000001708363985.ged`
+21483. `family-6000000001711091993.ged`
+21484. `family-6000000001713373908.ged`
+21485. `family-6000000001722370024.ged`
+21486. `family-6000000001732153525.ged`
+21487. `family-6000000001732177195.ged`
+21488. `family-6000000001770188397.ged`
+21489. `family-6000000001770214443.ged`
+21490. `family-6000000001784502814.ged`
+21491. `family-6000000001784535509.ged`
+21492. `family-6000000001784558539.ged`
+21493. `family-6000000001801026836.ged`
+21494. `family-6000000001813250098.ged`
+21495. `family-6000000001821102369.ged`
+21496. `family-6000000001827531760.ged`
+21497. `family-6000000001827575240.ged`
+21498. `family-6000000001827582117.ged`
+21499. `family-6000000001827585947.ged`
+21500. `family-6000000001827593928.ged`
+21501. `family-6000000001827596078.ged`
+21502. `family-6000000001827610153.ged`
+21503. `family-6000000001829589817.ged`
+21504. `family-6000000001833628324.ged`
+21505. `family-6000000001838607806.ged`
+21506. `family-6000000001838879990.ged`
+21507. `family-6000000001865773260.ged`
+21508. `family-6000000001873530609.ged`
+21509. `family-6000000001875558003.ged`
+21510. `family-6000000001891957076.ged`
+21511. `family-6000000001900007557.ged`
+21512. `family-6000000001919547668.ged`
+21513. `family-6000000001919812645.ged`
+21514. `family-6000000001969506851.ged`
+21515. `family-6000000001969599119.ged`
+21516. `family-6000000001994951163.ged`
+21517. `family-6000000001995109345.ged`
+21518. `family-6000000002017898070.ged`
+21519. `family-6000000002031285960.ged`
+21520. `family-6000000002043263103.ged`
+21521. `family-6000000002067072170.ged`
+21522. `family-6000000002078094635.ged`
+21523. `family-6000000002078126382.ged`
+21524. `family-6000000002106139599.ged`
+21525. `family-6000000002163543379.ged`
+21526. `family-6000000002176658451.ged`
+21527. `family-6000000002187796542.ged`
+21528. `family-6000000002187796550.ged`
+21529. `family-6000000002187851405.ged`
+21530. `family-6000000002187851434.ged`
+21531. `family-6000000002188050061.ged`
+21532. `family-6000000002188081857.ged`
+21533. `family-6000000002188110562.ged`
+21534. `family-6000000002188289908.ged`
+21535. `family-6000000002188304379.ged`
+21536. `family-6000000002188307463.ged`
+21537. `family-6000000002188307934.ged`
+21538. `family-6000000002188578738.ged`
+21539. `family-6000000002188578769.ged`
+21540. `family-6000000002188579271.ged`
+21541. `family-6000000002188625450.ged`
+21542. `family-6000000002222709933.ged`
+21543. `family-6000000002226068159.ged`
+21544. `family-6000000002228252084.ged`
+21545. `family-6000000002228278394.ged`
+21546. `family-6000000002244380726.ged`
+21547. `family-6000000002244397924.ged`
+21548. `family-6000000002244397940.ged`
+21549. `family-6000000002245279564.ged`
+21550. `family-6000000002267060138.ged`
+21551. `family-6000000002277862058.ged`
+21552. `family-6000000002278450149.ged`
+21553. `family-6000000002280344494.ged`
+21554. `family-6000000002280411009.ged`
+21555. `family-6000000002330980548.ged`
+21556. `family-6000000002336577815.ged`
+21557. `family-6000000002336697043.ged`
+21558. `family-6000000002342416311.ged`
+21559. `family-6000000002358756663.ged`
+21560. `family-6000000002370640619.ged`
+21561. `family-6000000002375565387.ged`
+21562. `family-6000000002391959353.ged`
+21563. `family-6000000002403898091.ged`
+21564. `family-6000000002403898117.ged`
+21565. `family-6000000002434214184.ged`
+21566. `family-6000000002449490697.ged`
+21567. `family-6000000002457013227.ged`
+21568. `family-6000000002463510938.ged`
+21569. `family-6000000002481819312.ged`
+21570. `family-6000000002482084257.ged`
+21571. `family-6000000002482165558.ged`
+21572. `family-6000000002503678686.ged`
+21573. `family-6000000002512241178.ged`
+21574. `family-6000000002512246810.ged`
+21575. `family-6000000002512246864.ged`
+21576. `family-6000000002512346178.ged`
+21577. `family-6000000002516491073.ged`
+21578. `family-6000000002517120513.ged`
+21579. `family-6000000002517120595.ged`
+21580. `family-6000000002517586322.ged`
+21581. `family-6000000002517869069.ged`
+21582. `family-6000000002527461568.ged`
+21583. `family-6000000002553650991.ged`
+21584. `family-6000000002565671528.ged`
+21585. `family-6000000002572699392.ged`
+21586. `family-6000000002572701505.ged`
+21587. `family-6000000002572783163.ged`
+21588. `family-6000000002585455740.ged`
+21589. `family-6000000002585562372.ged`
+21590. `family-6000000002588347233.ged`
+21591. `family-6000000002600987455.ged`
+21592. `family-6000000002602162553.ged`
+21593. `family-6000000002607381870.ged`
+21594. `family-6000000002625917550.ged`
+21595. `family-6000000002626238951.ged`
+21596. `family-6000000002664914535.ged`
+21597. `family-6000000002744891329.ged`
+21598. `family-6000000002748554800.ged`
+21599. `family-6000000002750545795.ged`
+21600. `family-6000000002764956522.ged`
+21601. `family-6000000002766488352.ged`
+21602. `family-6000000002767708000.ged`
+21603. `family-6000000002770849622.ged`
+21604. `family-6000000002770896230.ged`
+21605. `family-6000000002785337209.ged`
+21606. `family-6000000002801147492.ged`
+21607. `family-6000000002813633340.ged`
+21608. `family-6000000002823437299.ged`
+21609. `family-6000000002832115884.ged`
+21610. `family-6000000002837456927.ged`
+21611. `family-6000000002847207216.ged`
+21612. `family-6000000002847945015.ged`
+21613. `family-6000000002866077692.ged`
+21614. `family-6000000002866078652.ged`
+21615. `family-6000000002866250576.ged`
+21616. `family-6000000002877958100.ged`
+21617. `family-6000000002890270426.ged`
+21618. `family-6000000002893299341.ged`
+21619. `family-6000000002893299372.ged`
+21620. `family-6000000002893316227.ged`
+21621. `family-6000000002893322314.ged`
+21622. `family-6000000002893330286.ged`
+21623. `family-6000000002893335701.ged`
+21624. `family-6000000002906400227.ged`
+21625. `family-6000000002916189513.ged`
+21626. `family-6000000002920620224.ged`
+21627. `family-6000000002969078825.ged`
+21628. `family-6000000002969217246.ged`
+21629. `family-6000000002979875144.ged`
+21630. `family-6000000003002231602.ged`
+21631. `family-6000000003002364630.ged`
+21632. `family-6000000003002538177.ged`
+21633. `family-6000000003012468747.ged`
+21634. `family-6000000003025853747.ged`
+21635. `family-6000000003026039395.ged`
+21636. `family-6000000003043806217.ged`
+21637. `family-6000000003049156212.ged`
+21638. `family-6000000003058583726.ged`
+21639. `family-6000000003058905240.ged`
+21640. `family-6000000003076221220.ged`
+21641. `family-6000000003086332874.ged`
+21642. `family-6000000003086434645.ged`
+21643. `family-6000000003087080306.ged`
+21644. `family-6000000003094916337.ged`
+21645. `family-6000000003094967990.ged`
+21646. `family-6000000003094971035.ged`
+21647. `family-6000000003094977911.ged`
+21648. `family-6000000003095003918.ged`
+21649. `family-6000000003095038547.ged`
+21650. `family-6000000003095060610.ged`
+21651. `family-6000000003095060659.ged`
+21652. `family-6000000003095080287.ged`
+21653. `family-6000000003095084974.ged`
+21654. `family-6000000003095113068.ged`
+21655. `family-6000000003095156945.ged`
+21656. `family-6000000003095195374.ged`
+21657. `family-6000000003098215498.ged`
+21658. `family-6000000003101980999.ged`
+21659. `family-6000000003102253400.ged`
+21660. `family-6000000003102295068.ged`
+21661. `family-6000000003111305140.ged`
+21662. `family-6000000003116379849.ged`
+21663. `family-6000000003116743788.ged`
+21664. `family-6000000003116932225.ged`
+21665. `family-6000000003122317247.ged`
+21666. `family-6000000003122318746.ged`
+21667. `family-6000000003122354841.ged`
+21668. `family-6000000003125122695.ged`
+21669. `family-6000000003125438035.ged`
+21670. `family-6000000003149897197.ged`
+21671. `family-6000000003152600818.ged`
+21672. `family-6000000003152860875.ged`
+21673. `family-6000000003152872621.ged`
+21674. `family-6000000003187090488.ged`
+21675. `family-6000000003196492775.ged`
+21676. `family-6000000003220505291.ged`
+21677. `family-6000000003242618875.ged`
+21678. `family-6000000003242944978.ged`
+21679. `family-6000000003252172731.ged`
+21680. `family-6000000003252323043.ged`
+21681. `family-6000000003253261775.ged`
+21682. `family-6000000003253460860.ged`
+21683. `family-6000000003253601093.ged`
+21684. `family-6000000003306757977.ged`
+21685. `family-6000000003307054576.ged`
+21686. `family-6000000003319932530.ged`
+21687. `family-6000000003332799114.ged`
+21688. `family-6000000003332823073.ged`
+21689. `family-6000000003344565684.ged`
+21690. `family-6000000003344745168.ged`
+21691. `family-6000000003353135663.ged`
+21692. `family-6000000003353178311.ged`
+21693. `family-6000000003355801643.ged`
+21694. `family-6000000003367976924.ged`
+21695. `family-6000000003379144766.ged`
+21696. `family-6000000003379409803.ged`
+21697. `family-6000000003389294519.ged`
+21698. `family-6000000003401838954.ged`
+21699. `family-6000000003417361345.ged`
+21700. `family-6000000003418900347.ged`
+21701. `family-6000000003484293276.ged`
+21702. `family-6000000003484293288.ged`
+21703. `family-6000000003491933538.ged`
+21704. `family-6000000003491947054.ged`
+21705. `family-6000000003491958558.ged`
+21706. `family-6000000003491986946.ged`
+21707. `family-6000000003491988189.ged`
+21708. `family-6000000003491988489.ged`
+21709. `family-6000000003491988509.ged`
+21710. `family-6000000003491988584.ged`
+21711. `family-6000000003491988599.ged`
+21712. `family-6000000003491988619.ged`
+21713. `family-6000000003491988831.ged`
+21714. `family-6000000003492005116.ged`
+21715. `family-6000000003492005126.ged`
+21716. `family-6000000003492029785.ged`
+21717. `family-6000000003492033784.ged`
+21718. `family-6000000003492033799.ged`
+21719. `family-6000000003492033993.ged`
+21720. `family-6000000003492057788.ged`
+21721. `family-6000000003492064709.ged`
+21722. `family-6000000003492064827.ged`
+21723. `family-6000000003492068105.ged`
+21724. `family-6000000003492068120.ged`
+21725. `family-6000000003492068938.ged`
+21726. `family-6000000003492535579.ged`
+21727. `family-6000000003493162078.ged`
+21728. `family-6000000003495348795.ged`
+21729. `family-6000000003495384814.ged`
+21730. `family-6000000003500144245.ged`
+21731. `family-6000000003521493989.ged`
+21732. `family-6000000003535740332.ged`
+21733. `family-6000000003559734445.ged`
+21734. `family-6000000003568661683.ged`
+21735. `family-6000000003574693022.ged`
+21736. `family-6000000003588755565.ged`
+21737. `family-6000000003615417006.ged`
+21738. `family-6000000003620618740.ged`
+21739. `family-6000000003645825338.ged`
+21740. `family-6000000003645870789.ged`
+21741. `family-6000000003645919492.ged`
+21742. `family-6000000003645919625.ged`
+21743. `family-6000000003645940658.ged`
+21744. `family-6000000003646023820.ged`
+21745. `family-6000000003646023907.ged`
+21746. `family-6000000003665102809.ged`
+21747. `family-6000000003665181171.ged`
+21748. `family-6000000003665414365.ged`
+21749. `family-6000000003721939858.ged`
+21750. `family-6000000003732742137.ged`
+21751. `family-6000000003758378211.ged`
+21752. `family-6000000003781494806.ged`
+21753. `family-6000000003783022260.ged`
+21754. `family-6000000003805665380.ged`
+21755. `family-6000000003805720033.ged`
+21756. `family-6000000003813808900.ged`
+21757. `family-6000000003823851202.ged`
+21758. `family-6000000003824461685.ged`
+21759. `family-6000000003824564617.ged`
+21760. `family-6000000003827445550.ged`
+21761. `family-6000000003827661670.ged`
+21762. `family-6000000003828248652.ged`
+21763. `family-6000000003828248658.ged`
+21764. `family-6000000003828250057.ged`
+21765. `family-6000000003828250078.ged`
+21766. `family-6000000003841524471.ged`
+21767. `family-6000000003842233263.ged`
+21768. `family-6000000003854400441.ged`
+21769. `family-6000000003858704239.ged`
+21770. `family-6000000003858716758.ged`
+21771. `family-6000000003858749453.ged`
+21772. `family-6000000003869622559.ged`
+21773. `family-6000000003887680399.ged`
+21774. `family-6000000003887729856.ged`
+21775. `family-6000000003895768777.ged`
+21776. `family-6000000003897531253.ged`
+21777. `family-6000000003897585979.ged`
+21778. `family-6000000003902489870.ged`
+21779. `family-6000000003905140955.ged`
+21780. `family-6000000003913667969.ged`
+21781. `family-6000000003915237097.ged`
+21782. `family-6000000003953393939.ged`
+21783. `family-6000000003958968521.ged`
+21784. `family-6000000003979582810.ged`
+21785. `family-6000000004016043175.ged`
+21786. `family-6000000004027712640.ged`
+21787. `family-6000000004028320232.ged`
+21788. `family-6000000004032942523.ged`
+21789. `family-6000000004034893096.ged`
+21790. `family-6000000004035037156.ged`
+21791. `family-6000000004078906672.ged`
+21792. `family-6000000004104829407.ged`
+21793. `family-6000000004104838733.ged`
+21794. `family-6000000004105285975.ged`
+21795. `family-6000000004131116716.ged`
+21796. `family-6000000004140735934.ged`
+21797. `family-6000000004170305961.ged`
+21798. `family-6000000004183977279.ged`
+21799. `family-6000000004187651020.ged`
+21800. `family-6000000004214433404.ged`
+21801. `family-6000000004236514062.ged`
+21802. `family-6000000004238176240.ged`
+21803. `family-6000000004281397219.ged`
+21804. `family-6000000004389585513.ged`
+21805. `family-6000000004407798014.ged`
+21806. `family-6000000004456080013.ged`
+21807. `family-6000000004457022019.ged`
+21808. `family-6000000004483455009.ged`
+21809. `family-6000000004533176419.ged`
+21810. `family-6000000004533503066.ged`
+21811. `family-6000000004533503379.ged`
+21812. `family-6000000004533510674.ged`
+21813. `family-6000000004533774585.ged`
+21814. `family-6000000004534272864.ged`
+21815. `family-6000000004647605698.ged`
+21816. `family-6000000004650708520.ged`
+21817. `family-6000000004671044584.ged`
+21818. `family-6000000004691642355.ged`
+21819. `family-6000000004838388133.ged`
+21820. `family-6000000004862474531.ged`
+21821. `family-6000000004863275809.ged`
+21822. `family-6000000004863611375.ged`
+21823. `family-6000000004863761158.ged`
+21824. `family-6000000004863823276.ged`
+21825. `family-6000000004868825651.ged`
+21826. `family-6000000004868825686.ged`
+21827. `family-6000000004868846058.ged`
+21828. `family-6000000004868846355.ged`
+21829. `family-6000000004868851834.ged`
+21830. `family-6000000004868858899.ged`
+21831. `family-6000000004869049343.ged`
+21832. `family-6000000004869093634.ged`
+21833. `family-6000000004870648136.ged`
+21834. `family-6000000004884044177.ged`
+21835. `family-6000000004968284614.ged`
+21836. `family-6000000004974123682.ged`
+21837. `family-6000000004974523185.ged`
+21838. `family-6000000005013705987.ged`
+21839. `family-6000000005016701444.ged`
+21840. `family-6000000005025304600.ged`
+21841. `family-6000000005074489379.ged`
+21842. `family-6000000005246487476.ged`
+21843. `family-6000000005381997903.ged`
+21844. `family-6000000005382299298.ged`
+21845. `family-6000000005391128983.ged`
+21846. `family-6000000005391699089.ged`
+21847. `family-6000000005398287081.ged`
+21848. `family-6000000005414590318.ged`
+21849. `family-6000000005440591069.ged`
+21850. `family-6000000005441081725.ged`
+21851. `family-6000000005441559089.ged`
+21852. `family-6000000005442236186.ged`
+21853. `family-6000000005545740001.ged`
+21854. `family-6000000005576602065.ged`
+21855. `family-6000000005581573549.ged`
+21856. `family-6000000005581573602.ged`
+21857. `family-6000000005598851255.ged`
+21858. `family-6000000005606851579.ged`
+21859. `family-6000000005606851647.ged`
+21860. `family-6000000005606873183.ged`
+21861. `family-6000000005606886765.ged`
+21862. `family-6000000005606886780.ged`
+21863. `family-6000000005606886827.ged`
+21864. `family-6000000005606886909.ged`
+21865. `family-6000000005606907877.ged`
+21866. `family-6000000005606976930.ged`
+21867. `family-6000000005607042284.ged`
+21868. `family-6000000005607042309.ged`
+21869. `family-6000000005607042593.ged`
+21870. `family-6000000005607119313.ged`
+21871. `family-6000000005607123730.ged`
+21872. `family-6000000005607187224.ged`
+21873. `family-6000000005607264518.ged`
+21874. `family-6000000005607268671.ged`
+21875. `family-6000000005607282941.ged`
+21876. `family-6000000005607296161.ged`
+21877. `family-6000000005607335640.ged`
+21878. `family-6000000005607339190.ged`
+21879. `family-6000000005607365269.ged`
+21880. `family-6000000005607377021.ged`
+21881. `family-6000000005607439733.ged`
+21882. `family-6000000005607481550.ged`
+21883. `family-6000000005607599821.ged`
+21884. `family-6000000005607880384.ged`
+21885. `family-6000000005607884543.ged`
+21886. `family-6000000005608851471.ged`
+21887. `family-6000000005608851479.ged`
+21888. `family-6000000005608851503.ged`
+21889. `family-6000000005608873060.ged`
+21890. `family-6000000005608873104.ged`
+21891. `family-6000000005608873211.ged`
+21892. `family-6000000005608884093.ged`
+21893. `family-6000000005608934604.ged`
+21894. `family-6000000005609028769.ged`
+21895. `family-6000000005609064474.ged`
+21896. `family-6000000005609095725.ged`
+21897. `family-6000000005609102300.ged`
+21898. `family-6000000005609102344.ged`
+21899. `family-6000000005609304829.ged`
+21900. `family-6000000005609304839.ged`
+21901. `family-6000000005609458561.ged`
+21902. `family-6000000005609466031.ged`
+21903. `family-6000000005609518095.ged`
+21904. `family-6000000005609522416.ged`
+21905. `family-6000000005609522426.ged`
+21906. `family-6000000005609534511.ged`
+21907. `family-6000000005609534659.ged`
+21908. `family-6000000005609547367.ged`
+21909. `family-6000000005609547535.ged`
+21910. `family-6000000005609547544.ged`
+21911. `family-6000000005609547691.ged`
+21912. `family-6000000005739075955.ged`
+21913. `family-6000000005739942225.ged`
+21914. `family-6000000005744994368.ged`
+21915. `family-6000000005744994427.ged`
+21916. `family-6000000005795638082.ged`
+21917. `family-6000000005795638104.ged`
+21918. `family-6000000005856163014.ged`
+21919. `family-6000000005942135258.ged`
+21920. `family-6000000006080715460.ged`
+21921. `family-6000000006127214913.ged`
+21922. `family-6000000006127322318.ged`
+21923. `family-6000000006127859612.ged`
+21924. `family-6000000006127996485.ged`
+21925. `family-6000000006127996492.ged`
+21926. `family-6000000006127996498.ged`
+21927. `family-6000000006128227797.ged`
+21928. `family-6000000006171259545.ged`
+21929. `family-6000000006183866418.ged`
+21930. `family-6000000006205826134.ged`
+21931. `family-6000000006253433055.ged`
+21932. `family-6000000006253635635.ged`
+21933. `family-6000000006270512063.ged`
+21934. `family-6000000006271032335.ged`
+21935. `family-6000000006277556378.ged`
+21936. `family-6000000006293783777.ged`
+21937. `family-6000000006327229028.ged`
+21938. `family-6000000006336803890.ged`
+21939. `family-6000000006351988253.ged`
+21940. `family-6000000006352209093.ged`
+21941. `family-6000000006400320009.ged`
+21942. `family-6000000006402064518.ged`
+21943. `family-6000000006444130321.ged`
+21944. `family-6000000006444270409.ged`
+21945. `family-6000000006444357812.ged`
+21946. `family-6000000006444364312.ged`
+21947. `family-6000000006563253878.ged`
+21948. `family-6000000006565863003.ged`
+21949. `family-6000000006565930017.ged`
+21950. `family-6000000006575266506.ged`
+21951. `family-6000000006579278268.ged`
+21952. `family-6000000006580951114.ged`
+21953. `family-6000000006589193197.ged`
+21954. `family-6000000006589193210.ged`
+21955. `family-6000000006589193224.ged`
+21956. `family-6000000006589193300.ged`
+21957. `family-6000000006589193735.ged`
+21958. `family-6000000006589193752.ged`
+21959. `family-6000000006589261586.ged`
+21960. `family-6000000006589261605.ged`
+21961. `family-6000000006589261737.ged`
+21962. `family-6000000006589269376.ged`
+21963. `family-6000000006590075574.ged`
+21964. `family-6000000006602653847.ged`
+21965. `family-6000000006604342018.ged`
+21966. `family-6000000006694787002.ged`
+21967. `family-6000000006727823308.ged`
+21968. `family-6000000006744570542.ged`
+21969. `family-6000000006764979093.ged`
+21970. `family-6000000006769001160.ged`
+21971. `family-6000000006769847598.ged`
+21972. `family-6000000006776171892.ged`
+21973. `family-6000000006776187362.ged`
+21974. `family-6000000006776187394.ged`
+21975. `family-6000000006776187410.ged`
+21976. `family-6000000006792569099.ged`
+21977. `family-6000000006802626827.ged`
+21978. `family-6000000006802748484.ged`
+21979. `family-6000000006804155423.ged`
+21980. `family-6000000006807994202.ged`
+21981. `family-6000000006828562507.ged`
+21982. `family-6000000006828783137.ged`
+21983. `family-6000000006845609473.ged`
+21984. `family-6000000006892741240.ged`
+21985. `family-6000000006909919760.ged`
+21986. `family-6000000006909980800.ged`
+21987. `family-6000000006910119673.ged`
+21988. `family-6000000006910218376.ged`
+21989. `family-6000000006910371360.ged`
+21990. `family-6000000006910524128.ged`
+21991. `family-6000000006927613398.ged`
+21992. `family-6000000006932496197.ged`
+21993. `family-6000000006963936279.ged`
+21994. `family-6000000006964093867.ged`
+21995. `family-6000000006979657520.ged`
+21996. `family-6000000006991041605.ged`
+21997. `family-6000000007006053264.ged`
+21998. `family-6000000007020763500.ged`
+21999. `family-6000000007035211375.ged`
+22000. `family-6000000007040744781.ged`
+22001. `family-6000000007051275051.ged`
+22002. `family-6000000007051737771.ged`
+22003. `family-6000000007058475918.ged`
+22004. `family-6000000007058802262.ged`
+22005. `family-6000000007059008284.ged`
+22006. `family-6000000007059036372.ged`
+22007. `family-6000000007060635081.ged`
+22008. `family-6000000007062931743.ged`
+22009. `family-6000000007062987558.ged`
+22010. `family-6000000007084491319.ged`
+22011. `family-6000000007090217253.ged`
+22012. `family-6000000007096021931.ged`
+22013. `family-6000000007097847692.ged`
+22014. `family-6000000007114444629.ged`
+22015. `family-6000000007149829030.ged`
+22016. `family-6000000007150056822.ged`
+22017. `family-6000000007159201467.ged`
+22018. `family-6000000007168006559.ged`
+22019. `family-6000000007168150360.ged`
+22020. `family-6000000007182167503.ged`
+22021. `family-6000000007182299647.ged`
+22022. `family-6000000007182710798.ged`
+22023. `family-6000000007182829201.ged`
+22024. `family-6000000007184836787.ged`
+22025. `family-6000000007184914927.ged`
+22026. `family-6000000007210899736.ged`
+22027. `family-6000000007211481443.ged`
+22028. `family-6000000007218725750.ged`
+22029. `family-6000000007225974316.ged`
+22030. `family-6000000007242265283.ged`
+22031. `family-6000000007243462851.ged`
+22032. `family-6000000007243504597.ged`
+22033. `family-6000000007243779310.ged`
+22034. `family-6000000007259558393.ged`
+22035. `family-6000000007272507672.ged`
+22036. `family-6000000007279272308.ged`
+22037. `family-6000000007293685319.ged`
+22038. `family-6000000007295507866.ged`
+22039. `family-6000000007304150583.ged`
+22040. `family-6000000007320702667.ged`
+22041. `family-6000000007335744612.ged`
+22042. `family-6000000007335974610.ged`
+22043. `family-6000000007339101221.ged`
+22044. `family-6000000007356944447.ged`
+22045. `family-6000000007367810201.ged`
+22046. `family-6000000007389262598.ged`
+22047. `family-6000000007392290792.ged`
+22048. `family-6000000007393382928.ged`
+22049. `family-6000000007404085354.ged`
+22050. `family-6000000007404267211.ged`
+22051. `family-6000000007424024447.ged`
+22052. `family-6000000007425369965.ged`
+22053. `family-6000000007453699167.ged`
+22054. `family-6000000007464365206.ged`
+22055. `family-6000000007507069278.ged`
+22056. `family-6000000007507095358.ged`
+22057. `family-6000000007511564057.ged`
+22058. `family-6000000007511564070.ged`
+22059. `family-6000000007511832794.ged`
+22060. `family-6000000007537666559.ged`
+22061. `family-6000000007538343204.ged`
+22062. `family-6000000007549179716.ged`
+22063. `family-6000000007549309545.ged`
+22064. `family-6000000007559278400.ged`
+22065. `family-6000000007581296353.ged`
+22066. `family-6000000007581383931.ged`
+22067. `family-6000000007587625693.ged`
+22068. `family-6000000007587694720.ged`
+22069. `family-6000000007588187341.ged`
+22070. `family-6000000007588187344.ged`
+22071. `family-6000000007588356972.ged`
+22072. `family-6000000007589095312.ged`
+22073. `family-6000000007589095414.ged`
+22074. `family-6000000007604938431.ged`
+22075. `family-6000000007604938444.ged`
+22076. `family-6000000007614477274.ged`
+22077. `family-6000000007618351978.ged`
+22078. `family-6000000007630944209.ged`
+22079. `family-6000000007632160030.ged`
+22080. `family-6000000007635630874.ged`
+22081. `family-6000000007635630965.ged`
+22082. `family-6000000007635631030.ged`
+22083. `family-6000000007661859262.ged`
+22084. `family-6000000007676113728.ged`
+22085. `family-6000000007676466396.ged`
+22086. `family-6000000007692423610.ged`
+22087. `family-6000000007732495237.ged`
+22088. `family-6000000007770332213.ged`
+22089. `family-6000000007770373058.ged`
+22090. `family-6000000007773104021.ged`
+22091. `family-6000000007782302849.ged`
+22092. `family-6000000007826003451.ged`
+22093. `family-6000000007826127365.ged`
+22094. `family-6000000007875679261.ged`
+22095. `family-6000000007958767639.ged`
+22096. `family-6000000007959631642.ged`
+22097. `family-6000000007959864423.ged`
+22098. `family-6000000007980369200.ged`
+22099. `family-6000000007980520044.ged`
+22100. `family-6000000007980693054.ged`
+22101. `family-6000000008008010549.ged`
+22102. `family-6000000008019212360.ged`
+22103. `family-6000000008019682504.ged`
+22104. `family-6000000008034160064.ged`
+22105. `family-6000000008034415513.ged`
+22106. `family-6000000008062966266.ged`
+22107. `family-6000000008063252550.ged`
+22108. `family-6000000008100776194.ged`
+22109. `family-6000000008101228513.ged`
+22110. `family-6000000008106241912.ged`
+22111. `family-6000000008115020929.ged`
+22112. `family-6000000008115048412.ged`
+22113. `family-6000000008177438021.ged`
+22114. `family-6000000008205346192.ged`
+22115. `family-6000000008205535747.ged`
+22116. `family-6000000008230605732.ged`
+22117. `family-6000000008260238995.ged`
+22118. `family-6000000008286490755.ged`
+22119. `family-6000000008286846382.ged`
+22120. `family-6000000008352466911.ged`
+22121. `family-6000000008366453417.ged`
+22122. `family-6000000008370497662.ged`
+22123. `family-6000000008379218961.ged`
+22124. `family-6000000008406419757.ged`
+22125. `family-6000000008406511750.ged`
+22126. `family-6000000008469756742.ged`
+22127. `family-6000000008477543238.ged`
+22128. `family-6000000008507821635.ged`
+22129. `family-6000000008516116524.ged`
+22130. `family-6000000008529438853.ged`
+22131. `family-6000000008630356444.ged`
+22132. `family-6000000008630356466.ged`
+22133. `family-6000000008630587231.ged`
+22134. `family-6000000008636268768.ged`
+22135. `family-6000000008673173801.ged`
+22136. `family-6000000008687044864.ged`
+22137. `family-6000000008687180600.ged`
+22138. `family-6000000008715164518.ged`
+22139. `family-6000000008764977184.ged`
+22140. `family-6000000008765237558.ged`
+22141. `family-6000000008765536305.ged`
+22142. `family-6000000008787687730.ged`
+22143. `family-6000000008787855478.ged`
+22144. `family-6000000008798323789.ged`
+22145. `family-6000000008798575043.ged`
+22146. `family-6000000008798585431.ged`
+22147. `family-6000000008816674509.ged`
+22148. `family-6000000008931923941.ged`
+22149. `family-6000000008933309505.ged`
+22150. `family-6000000008961666136.ged`
+22151. `family-6000000008975808174.ged`
+22152. `family-6000000009006496259.ged`
+22153. `family-6000000009043901113.ged`
+22154. `family-6000000009099803774.ged`
+22155. `family-6000000009100005728.ged`
+22156. `family-6000000009110468637.ged`
+22157. `family-6000000009134934503.ged`
+22158. `family-6000000009134991508.ged`
+22159. `family-6000000009170017937.ged`
+22160. `family-6000000009189190206.ged`
+22161. `family-6000000009196213139.ged`
+22162. `family-6000000009196500176.ged`
+22163. `family-6000000009196991377.ged`
+22164. `family-6000000009214903611.ged`
+22165. `family-6000000009217651803.ged`
+22166. `family-6000000009275550955.ged`
+22167. `family-6000000009288970429.ged`
+22168. `family-6000000009412979361.ged`
+22169. `family-6000000009465627532.ged`
+22170. `family-6000000009499609049.ged`
+22171. `family-6000000009500754533.ged`
+22172. `family-6000000009511458815.ged`
+22173. `family-6000000009512037044.ged`
+22174. `family-6000000009512050024.ged`
+22175. `family-6000000009512185823.ged`
+22176. `family-6000000009512394794.ged`
+22177. `family-6000000009512397570.ged`
+22178. `family-6000000009512632295.ged`
+22179. `family-6000000009543700841.ged`
+22180. `family-6000000009544774015.ged`
+22181. `family-6000000009551480095.ged`
+22182. `family-6000000009657862393.ged`
+22183. `family-6000000009665002660.ged`
+22184. `family-6000000009706835506.ged`
+22185. `family-6000000009745740734.ged`
+22186. `family-6000000009777136574.ged`
+22187. `family-6000000009875160931.ged`
+22188. `family-6000000009875224601.ged`
+22189. `family-6000000009875303979.ged`
+22190. `family-6000000009879586250.ged`
+22191. `family-6000000009894903775.ged`
+22192. `family-6000000009915578140.ged`
+22193. `family-6000000009916465367.ged`
+22194. `family-6000000009916611254.ged`
+22195. `family-6000000010076488689.ged`
+22196. `family-6000000010160609967.ged`
+22197. `family-6000000010173695472.ged`
+22198. `family-6000000010201060159.ged`
+22199. `family-6000000010222435520.ged`
+22200. `family-6000000010226740465.ged`
+22201. `family-6000000010229568198.ged`
+22202. `family-6000000010229747719.ged`
+22203. `family-6000000010239991822.ged`
+22204. `family-6000000010240000883.ged`
+22205. `family-6000000010240260367.ged`
+22206. `family-6000000010240577298.ged`
+22207. `family-6000000010259352985.ged`
+22208. `family-6000000010288168143.ged`
+22209. `family-6000000010288326033.ged`
+22210. `family-6000000010288779197.ged`
+22211. `family-6000000010288870971.ged`
+22212. `family-6000000010288911760.ged`
+22213. `family-6000000010288921953.ged`
+22214. `family-6000000010289043219.ged`
+22215. `family-6000000010289067232.ged`
+22216. `family-6000000010289095311.ged`
+22217. `family-6000000010293642737.ged`
+22218. `family-6000000010293673038.ged`
+22219. `family-6000000010293952225.ged`
+22220. `family-6000000010329851747.ged`
+22221. `family-6000000010331432922.ged`
+22222. `family-6000000010331792637.ged`
+22223. `family-6000000010341338258.ged`
+22224. `family-6000000010351510999.ged`
+22225. `family-6000000010354381155.ged`
+22226. `family-6000000010375411929.ged`
+22227. `family-6000000010407268537.ged`
+22228. `family-6000000010449304150.ged`
+22229. `family-6000000010449349615.ged`
+22230. `family-6000000010449454103.ged`
+22231. `family-6000000010449616852.ged`
+22232. `family-6000000010449889350.ged`
+22233. `family-6000000010463529059.ged`
+22234. `family-6000000010513431062.ged`
+22235. `family-6000000010534596447.ged`
+22236. `family-6000000010546157120.ged`
+22237. `family-6000000010546205936.ged`
+22238. `family-6000000010581886947.ged`
+22239. `family-6000000010598672967.ged`
+22240. `family-6000000010642074199.ged`
+22241. `family-6000000010642543165.ged`
+22242. `family-6000000010642679959.ged`
+22243. `family-6000000010642992694.ged`
+22244. `family-6000000010643107861.ged`
+22245. `family-6000000010644712727.ged`
+22246. `family-6000000010648239432.ged`
+22247. `family-6000000010659609679.ged`
+22248. `family-6000000010659664086.ged`
+22249. `family-6000000010671353360.ged`
+22250. `family-6000000010680123679.ged`
+22251. `family-6000000010680345246.ged`
+22252. `family-6000000010760898759.ged`
+22253. `family-6000000010807476638.ged`
+22254. `family-6000000010877248442.ged`
+22255. `family-6000000010888314829.ged`
+22256. `family-6000000010888345851.ged`
+22257. `family-6000000010888345895.ged`
+22258. `family-6000000011000125945.ged`
+22259. `family-6000000011036078569.ged`
+22260. `family-6000000011040229514.ged`
+22261. `family-6000000011043803107.ged`
+22262. `family-6000000011048419126.ged`
+22263. `family-6000000011078549071.ged`
+22264. `family-6000000011078726908.ged`
+22265. `family-6000000011078807545.ged`
+22266. `family-6000000011078829655.ged`
+22267. `family-6000000011078886609.ged`
+22268. `family-6000000011078918407.ged`
+22269. `family-6000000011079271617.ged`
+22270. `family-6000000011079343735.ged`
+22271. `family-6000000011093637021.ged`
+22272. `family-6000000011157772349.ged`
+22273. `family-6000000011158087194.ged`
+22274. `family-6000000011169272123.ged`
+22275. `family-6000000011169570980.ged`
+22276. `family-6000000011183696687.ged`
+22277. `family-6000000011235467397.ged`
+22278. `family-6000000011239201122.ged`
+22279. `family-6000000011239402589.ged`
+22280. `family-6000000011239545575.ged`
+22281. `family-6000000011244838043.ged`
+22282. `family-6000000011245746417.ged`
+22283. `family-6000000011249640031.ged`
+22284. `family-6000000011252874344.ged`
+22285. `family-6000000011274338852.ged`
+22286. `family-6000000011276917624.ged`
+22287. `family-6000000011302378738.ged`
+22288. `family-6000000011315288524.ged`
+22289. `family-6000000011330161333.ged`
+22290. `family-6000000011357531284.ged`
+22291. `family-6000000011380063304.ged`
+22292. `family-6000000011392245825.ged`
+22293. `family-6000000011399221611.ged`
+22294. `family-6000000011428579002.ged`
+22295. `family-6000000011429638227.ged`
+22296. `family-6000000011433727968.ged`
+22297. `family-6000000011460254487.ged`
+22298. `family-6000000011489252646.ged`
+22299. `family-6000000011503175034.ged`
+22300. `family-6000000011536465369.ged`
+22301. `family-6000000011540389372.ged`
+22302. `family-6000000011546841461.ged`
+22303. `family-6000000011558107669.ged`
+22304. `family-6000000011568319792.ged`
+22305. `family-6000000011568373884.ged`
+22306. `family-6000000011570928590.ged`
+22307. `family-6000000011570983149.ged`
+22308. `family-6000000011601412945.ged`
+22309. `family-6000000011613442175.ged`
+22310. `family-6000000011623099406.ged`
+22311. `family-6000000011647607597.ged`
+22312. `family-6000000011648048242.ged`
+22313. `family-6000000011717304476.ged`
+22314. `family-6000000011769042441.ged`
+22315. `family-6000000011774471387.ged`
+22316. `family-6000000011787526724.ged`
+22317. `family-6000000011807777264.ged`
+22318. `family-6000000011811245484.ged`
+22319. `family-6000000011821706820.ged`
+22320. `family-6000000011843556332.ged`
+22321. `family-6000000011862113693.ged`
+22322. `family-6000000011870629601.ged`
+22323. `family-6000000011955281927.ged`
+22324. `family-6000000011970410034.ged`
+22325. `family-6000000012013655297.ged`
+22326. `family-6000000012108249741.ged`
+22327. `family-6000000012139250763.ged`
+22328. `family-6000000012139788237.ged`
+22329. `family-6000000012198494299.ged`
+22330. `family-6000000012242523692.ged`
+22331. `family-6000000012243172431.ged`
+22332. `family-6000000012245669731.ged`
+22333. `family-6000000012284316316.ged`
+22334. `family-6000000012293585755.ged`
+22335. `family-6000000012293596475.ged`
+22336. `family-6000000012294304415.ged`
+22337. `family-6000000012307860943.ged`
+22338. `family-6000000012308553479.ged`
+22339. `family-6000000012336650452.ged`
+22340. `family-6000000012337711888.ged`
+22341. `family-6000000012449602209.ged`
+22342. `family-6000000012455272755.ged`
+22343. `family-6000000012503281124.ged`
+22344. `family-6000000012504273407.ged`
+22345. `family-6000000012566391180.ged`
+22346. `family-6000000012587690898.ged`
+22347. `family-6000000012591881202.ged`
+22348. `family-6000000012617461291.ged`
+22349. `family-6000000012640023947.ged`
+22350. `family-6000000012640245221.ged`
+22351. `family-6000000012641619750.ged`
+22352. `family-6000000012654395608.ged`
+22353. `family-6000000012696708415.ged`
+22354. `family-6000000012724604098.ged`
+22355. `family-6000000012734378784.ged`
+22356. `family-6000000012754388121.ged`
+22357. `family-6000000012801048713.ged`
+22358. `family-6000000012827520384.ged`
+22359. `family-6000000012878346373.ged`
+22360. `family-6000000012880340255.ged`
+22361. `family-6000000012904227535.ged`
+22362. `family-6000000012938156179.ged`
+22363. `family-6000000012952101595.ged`
+22364. `family-6000000012956997840.ged`
+22365. `family-6000000012987643357.ged`
+22366. `family-6000000013019602706.ged`
+22367. `family-6000000013020969736.ged`
+22368. `family-6000000013021605891.ged`
+22369. `family-6000000013059926666.ged`
+22370. `family-6000000013071838546.ged`
+22371. `family-6000000013118070141.ged`
+22372. `family-6000000013122624376.ged`
+22373. `family-6000000013134497484.ged`
+22374. `family-6000000013153614307.ged`
+22375. `family-6000000013166100337.ged`
+22376. `family-6000000013184965702.ged`
+22377. `family-6000000013195069123.ged`
+22378. `family-6000000013205833004.ged`
+22379. `family-6000000013214852442.ged`
+22380. `family-6000000013214878518.ged`
+22381. `family-6000000013281880387.ged`
+22382. `family-6000000013291844252.ged`
+22383. `family-6000000013394214983.ged`
+22384. `family-6000000013487830550.ged`
+22385. `family-6000000013538823820.ged`
+22386. `family-6000000013618082642.ged`
+22387. `family-6000000013694127827.ged`
+22388. `family-6000000013694337126.ged`
+22389. `family-6000000013733469109.ged`
+22390. `family-6000000013761079106.ged`
+22391. `family-6000000013776824344.ged`
+22392. `family-6000000013837414558.ged`
+22393. `family-6000000013854218635.ged`
+22394. `family-6000000013859263377.ged`
+22395. `family-6000000013863648329.ged`
+22396. `family-6000000013938289487.ged`
+22397. `family-6000000013951497709.ged`
+22398. `family-6000000013984937135.ged`
+22399. `family-6000000013986579880.ged`
+22400. `family-6000000014024359812.ged`
+22401. `family-6000000014044436728.ged`
+22402. `family-6000000014044440566.ged`
+22403. `family-6000000014044468426.ged`
+22404. `family-6000000014164192090.ged`
+22405. `family-6000000014164331457.ged`
+22406. `family-6000000014167861941.ged`
+22407. `family-6000000014224378935.ged`
+22408. `family-6000000014253280113.ged`
+22409. `family-6000000014265035290.ged`
+22410. `family-6000000014287203465.ged`
+22411. `family-6000000014287321085.ged`
+22412. `family-6000000014300507795.ged`
+22413. `family-6000000014300629210.ged`
+22414. `family-6000000014300860839.ged`
+22415. `family-6000000014301252922.ged`
+22416. `family-6000000014301322889.ged`
+22417. `family-6000000014301339457.ged`
+22418. `family-6000000014301359938.ged`
+22419. `family-6000000014329905514.ged`
+22420. `family-6000000014347515827.ged`
+22421. `family-6000000014349023517.ged`
+22422. `family-6000000014360883324.ged`
+22423. `family-6000000014394601788.ged`
+22424. `family-6000000014438228368.ged`
+22425. `family-6000000014487411458.ged`
+22426. `family-6000000014493706045.ged`
+22427. `family-6000000014507656819.ged`
+22428. `family-6000000014512537406.ged`
+22429. `family-6000000014522158621.ged`
+22430. `family-6000000014545722296.ged`
+22431. `family-6000000014619027420.ged`
+22432. `family-6000000014640008112.ged`
+22433. `family-6000000014652275852.ged`
+22434. `family-6000000014652351128.ged`
+22435. `family-6000000014670000527.ged`
+22436. `family-6000000014814372062.ged`
+22437. `family-6000000014846941321.ged`
+22438. `family-6000000014853129253.ged`
+22439. `family-6000000014912086026.ged`
+22440. `family-6000000014946390383.ged`
+22441. `family-6000000015034892465.ged`
+22442. `family-6000000015052941471.ged`
+22443. `family-6000000015117399351.ged`
+22444. `family-6000000015117490925.ged`
+22445. `family-6000000015117958521.ged`
+22446. `family-6000000015165484143.ged`
+22447. `family-6000000015204381777.ged`
+22448. `family-6000000015211178776.ged`
+22449. `family-6000000015245604334.ged`
+22450. `family-6000000015248558209.ged`
+22451. `family-6000000015271224733.ged`
+22452. `family-6000000015302506749.ged`
+22453. `family-6000000015309255172.ged`
+22454. `family-6000000015309299285.ged`
+22455. `family-6000000015319810478.ged`
+22456. `family-6000000015350503911.ged`
+22457. `family-6000000015353381395.ged`
+22458. `family-6000000015357707513.ged`
+22459. `family-6000000015394330678.ged`
+22460. `family-6000000015399099546.ged`
+22461. `family-6000000015399620672.ged`
+22462. `family-6000000015423318064.ged`
+22463. `family-6000000015423592428.ged`
+22464. `family-6000000015423722158.ged`
+22465. `family-6000000015423962219.ged`
+22466. `family-6000000015433000757.ged`
+22467. `family-6000000015456306509.ged`
+22468. `family-6000000015458018093.ged`
+22469. `family-6000000015485735160.ged`
+22470. `family-6000000015518649039.ged`
+22471. `family-6000000015518684068.ged`
+22472. `family-6000000015518685084.ged`
+22473. `family-6000000015521070849.ged`
+22474. `family-6000000015521370780.ged`
+22475. `family-6000000015521590083.ged`
+22476. `family-6000000015548836652.ged`
+22477. `family-6000000015593753615.ged`
+22478. `family-6000000015694585880.ged`
+22479. `family-6000000015762582857.ged`
+22480. `family-6000000015770704042.ged`
+22481. `family-6000000015783617174.ged`
+22482. `family-6000000015843590321.ged`
+22483. `family-6000000015851698695.ged`
+22484. `family-6000000015896566917.ged`
+22485. `family-6000000015960507216.ged`
+22486. `family-6000000015995643669.ged`
+22487. `family-6000000015998729022.ged`
+22488. `family-6000000016035515278.ged`
+22489. `family-6000000016176464141.ged`
+22490. `family-6000000016303264136.ged`
+22491. `family-6000000016303283134.ged`
+22492. `family-6000000016360042741.ged`
+22493. `family-6000000016409836515.ged`
+22494. `family-6000000016425918956.ged`
+22495. `family-6000000016426352456.ged`
+22496. `family-6000000016426580160.ged`
+22497. `family-6000000016476125295.ged`
+22498. `family-6000000016479087543.ged`
+22499. `family-6000000016498484905.ged`
+22500. `family-6000000016524697799.ged`
+22501. `family-6000000016524856961.ged`
+22502. `family-6000000016534042672.ged`
+22503. `family-6000000016582078281.ged`
+22504. `family-6000000016585253178.ged`
+22505. `family-6000000016623538002.ged`
+22506. `family-6000000016645354674.ged`
+22507. `family-6000000016651651794.ged`
+22508. `family-6000000016662825611.ged`
+22509. `family-6000000016772114903.ged`
+22510. `family-6000000016959316252.ged`
+22511. `family-6000000016982342071.ged`
+22512. `family-6000000017004933881.ged`
+22513. `family-6000000017016113858.ged`
+22514. `family-6000000017055223022.ged`
+22515. `family-6000000017089393301.ged`
+22516. `family-6000000017093875188.ged`
+22517. `family-6000000017204494763.ged`
+22518. `family-6000000017335445640.ged`
+22519. `family-6000000017353079059.ged`
+22520. `family-6000000017394131513.ged`
+22521. `family-6000000017430262394.ged`
+22522. `family-6000000017460802463.ged`
+22523. `family-6000000017512579814.ged`
+22524. `family-6000000017512587298.ged`
+22525. `family-6000000017512648427.ged`
+22526. `family-6000000017512682319.ged`
+22527. `family-6000000017512797708.ged`
+22528. `family-6000000017513039586.ged`
+22529. `family-6000000017535961052.ged`
+22530. `family-6000000017625357021.ged`
+22531. `family-6000000017627448734.ged`
+22532. `family-6000000017768865194.ged`
+22533. `family-6000000017799612472.ged`
+22534. `family-6000000017857202967.ged`
+22535. `family-6000000017871912470.ged`
+22536. `family-6000000018098723109.ged`
+22537. `family-6000000018110421350.ged`
+22538. `family-6000000018145628151.ged`
+22539. `family-6000000018212260392.ged`
+22540. `family-6000000018212464007.ged`
+22541. `family-6000000018319921158.ged`
+22542. `family-6000000018338407673.ged`
+22543. `family-6000000018348056712.ged`
+22544. `family-6000000018426488633.ged`
+22545. `family-6000000018448055702.ged`
+22546. `family-6000000018448271481.ged`
+22547. `family-6000000018464035156.ged`
+22548. `family-6000000018528235866.ged`
+22549. `family-6000000018569141035.ged`
+22550. `family-6000000018604811298.ged`
+22551. `family-6000000018672086759.ged`
+22552. `family-6000000018698796190.ged`
+22553. `family-6000000018752060667.ged`
+22554. `family-6000000018758779136.ged`
+22555. `family-6000000018816467565.ged`
+22556. `family-6000000018821123732.ged`
+22557. `family-6000000018905914346.ged`
+22558. `family-6000000018908930497.ged`
+22559. `family-6000000018909038179.ged`
+22560. `family-6000000018909112139.ged`
+22561. `family-6000000018941002216.ged`
+22562. `family-6000000018958663014.ged`
+22563. `family-6000000019023540872.ged`
+22564. `family-6000000019023649207.ged`
+22565. `family-6000000019032360275.ged`
+22566. `family-6000000019103963083.ged`
+22567. `family-6000000019172017966.ged`
+22568. `family-6000000019275691564.ged`
+22569. `family-6000000019382922858.ged`
+22570. `family-6000000019410166019.ged`
+22571. `family-6000000019418600064.ged`
+22572. `family-6000000019442981782.ged`
+22573. `family-6000000019483266692.ged`
+22574. `family-6000000019509377608.ged`
+22575. `family-6000000019519065150.ged`
+22576. `family-6000000019557061076.ged`
+22577. `family-6000000019594325656.ged`
+22578. `family-6000000019644306540.ged`
+22579. `family-6000000019698408474.ged`
+22580. `family-6000000019772246227.ged`
+22581. `family-6000000019775225537.ged`
+22582. `family-6000000019775649283.ged`
+22583. `family-6000000019821504114.ged`
+22584. `family-6000000019857924817.ged`
+22585. `family-6000000019907960509.ged`
+22586. `family-6000000019922963015.ged`
+22587. `family-6000000019932176283.ged`
+22588. `family-6000000019941023277.ged`
+22589. `family-6000000020013489270.ged`
+22590. `family-6000000020104796553.ged`
+22591. `family-6000000020109737178.ged`
+22592. `family-6000000020128946533.ged`
+22593. `family-6000000020146576832.ged`
+22594. `family-6000000020146931228.ged`
+22595. `family-6000000020182272013.ged`
+22596. `family-6000000020254004837.ged`
+22597. `family-6000000020344692199.ged`
+22598. `family-6000000020344732085.ged`
+22599. `family-6000000020344842981.ged`
+22600. `family-6000000020377095239.ged`
+22601. `family-6000000020409245654.ged`
+22602. `family-6000000020473563984.ged`
+22603. `family-6000000020475622749.ged`
+22604. `family-6000000020475690473.ged`
+22605. `family-6000000020492202008.ged`
+22606. `family-6000000020500645225.ged`
+22607. `family-6000000020669241036.ged`
+22608. `family-6000000020676480769.ged`
+22609. `family-6000000020761326856.ged`
+22610. `family-6000000020882809831.ged`
+22611. `family-6000000021026235857.ged`
+22612. `family-6000000021039674210.ged`
+22613. `family-6000000021039691973.ged`
+22614. `family-6000000021079935250.ged`
+22615. `family-6000000021131949939.ged`
+22616. `family-6000000021132026143.ged`
+22617. `family-6000000021139261439.ged`
+22618. `family-6000000021143457434.ged`
+22619. `family-6000000021175859420.ged`
+22620. `family-6000000021228638868.ged`
+22621. `family-6000000021276439919.ged`
+22622. `family-6000000021331531124.ged`
+22623. `family-6000000021331531144.ged`
+22624. `family-6000000021399265460.ged`
+22625. `family-6000000021423524876.ged`
+22626. `family-6000000021423552972.ged`
+22627. `family-6000000021438775306.ged`
+22628. `family-6000000021442678985.ged`
+22629. `family-6000000021499390330.ged`
+22630. `family-6000000021500013763.ged`
+22631. `family-6000000021501319830.ged`
+22632. `family-6000000021516078682.ged`
+22633. `family-6000000021545325820.ged`
+22634. `family-6000000021546131052.ged`
+22635. `family-6000000021635152223.ged`
+22636. `family-6000000021649357634.ged`
+22637. `family-6000000021649684059.ged`
+22638. `family-6000000021651776645.ged`
+22639. `family-6000000021652410546.ged`
+22640. `family-6000000021656391531.ged`
+22641. `family-6000000021829378478.ged`
+22642. `family-6000000021857308049.ged`
+22643. `family-6000000022067361271.ged`
+22644. `family-6000000022131214019.ged`
+22645. `family-6000000022149778278.ged`
+22646. `family-6000000022189959429.ged`
+22647. `family-6000000022461604952.ged`
+22648. `family-6000000022469409599.ged`
+22649. `family-6000000022699116782.ged`
+22650. `family-6000000022731943835.ged`
+22651. `family-6000000022820413342.ged`
+22652. `family-6000000022823598236.ged`
+22653. `family-6000000022823987873.ged`
+22654. `family-6000000022826443643.ged`
+22655. `family-6000000022905307808.ged`
+22656. `family-6000000022905487598.ged`
+22657. `family-6000000022905768215.ged`
+22658. `family-6000000022945004064.ged`
+22659. `family-6000000022980324190.ged`
+22660. `family-6000000022981121872.ged`
+22661. `family-6000000023007521972.ged`
+22662. `family-6000000023045918112.ged`
+22663. `family-6000000023047704443.ged`
+22664. `family-6000000023093166835.ged`
+22665. `family-6000000023130178145.ged`
+22666. `family-6000000023142034990.ged`
+22667. `family-6000000023188954676.ged`
+22668. `family-6000000023189437982.ged`
+22669. `family-6000000023250155337.ged`
+22670. `family-6000000023286661837.ged`
+22671. `family-6000000023589579983.ged`
+22672. `family-6000000023666472983.ged`
+22673. `family-6000000023680996844.ged`
+22674. `family-6000000023738942040.ged`
+22675. `family-6000000023739078847.ged`
+22676. `family-6000000023768343105.ged`
+22677. `family-6000000023855089493.ged`
+22678. `family-6000000023858289958.ged`
+22679. `family-6000000023858480076.ged`
+22680. `family-6000000023880019324.ged`
+22681. `family-6000000023921242233.ged`
+22682. `family-6000000023952656979.ged`
+22683. `family-6000000023968161832.ged`
+22684. `family-6000000023968655929.ged`
+22685. `family-6000000023969704238.ged`
+22686. `family-6000000024048967766.ged`
+22687. `family-6000000024105547515.ged`
+22688. `family-6000000024106601099.ged`
+22689. `family-6000000024131740264.ged`
+22690. `family-6000000024196128518.ged`
+22691. `family-6000000024207739062.ged`
+22692. `family-6000000024304661912.ged`
+22693. `family-6000000024431661697.ged`
+22694. `family-6000000024431753429.ged`
+22695. `family-6000000024431778428.ged`
+22696. `family-6000000024488925033.ged`
+22697. `family-6000000024548549483.ged`
+22698. `family-6000000024583594541.ged`
+22699. `family-6000000024583905275.ged`
+22700. `family-6000000024617396092.ged`
+22701. `family-6000000024666502056.ged`
+22702. `family-6000000024670994885.ged`
+22703. `family-6000000024831949073.ged`
+22704. `family-6000000024841032051.ged`
+22705. `family-6000000024851923471.ged`
+22706. `family-6000000025124793875.ged`
+22707. `family-6000000025153348204.ged`
+22708. `family-6000000025221850026.ged`
+22709. `family-6000000025259188072.ged`
+22710. `family-6000000025293310764.ged`
+22711. `family-6000000025350996418.ged`
+22712. `family-6000000025453703378.ged`
+22713. `family-6000000025563581024.ged`
+22714. `family-6000000025590724230.ged`
+22715. `family-6000000025592868536.ged`
+22716. `family-6000000025592868542.ged`
+22717. `family-6000000025593726671.ged`
+22718. `family-6000000025607889400.ged`
+22719. `family-6000000025807997232.ged`
+22720. `family-6000000025819589873.ged`
+22721. `family-6000000025848437161.ged`
+22722. `family-6000000025945112600.ged`
+22723. `family-6000000025988216933.ged`
+22724. `family-6000000026051778638.ged`
+22725. `family-6000000026173188815.ged`
+22726. `family-6000000026173349636.ged`
+22727. `family-6000000026173714009.ged`
+22728. `family-6000000026191425197.ged`
+22729. `family-6000000026226697810.ged`
+22730. `family-6000000026241080028.ged`
+22731. `family-6000000026258097510.ged`
+22732. `family-6000000026302854914.ged`
+22733. `family-6000000026392951320.ged`
+22734. `family-6000000026423927151.ged`
+22735. `family-6000000026534693043.ged`
+22736. `family-6000000026651136015.ged`
+22737. `family-6000000026800312845.ged`
+22738. `family-6000000026827467145.ged`
+22739. `family-6000000026893410996.ged`
+22740. `family-6000000026937882544.ged`
+22741. `family-6000000026972756419.ged`
+22742. `family-6000000026975287820.ged`
+22743. `family-6000000027109936984.ged`
+22744. `family-6000000027340643370.ged`
+22745. `family-6000000027438971715.ged`
+22746. `family-6000000027439182158.ged`
+22747. `family-6000000027448463340.ged`
+22748. `family-6000000027507886451.ged`
+22749. `family-6000000027592523666.ged`
+22750. `family-6000000027593736914.ged`
+22751. `family-6000000027645833651.ged`
+22752. `family-6000000027654634894.ged`
+22753. `family-6000000027665609376.ged`
+22754. `family-6000000027815692857.ged`
+22755. `family-6000000027842049766.ged`
+22756. `family-6000000027842200337.ged`
+22757. `family-6000000028067294245.ged`
+22758. `family-6000000028098760888.ged`
+22759. `family-6000000028190860420.ged`
+22760. `family-6000000028258191964.ged`
+22761. `family-6000000028278117400.ged`
+22762. `family-6000000028408939773.ged`
+22763. `family-6000000028418914022.ged`
+22764. `family-6000000029226917736.ged`
+22765. `family-6000000029363285200.ged`
+22766. `family-6000000029363526786.ged`
+22767. `family-6000000029364339263.ged`
+22768. `family-6000000029364391060.ged`
+22769. `family-6000000029456827620.ged`
+22770. `family-6000000029654225288.ged`
+22771. `family-6000000029742178286.ged`
+22772. `family-6000000029744513021.ged`
+22773. `family-6000000029855059699.ged`
+22774. `family-6000000030008527586.ged`
+22775. `family-6000000030008915196.ged`
+22776. `family-6000000030009027971.ged`
+22777. `family-6000000030042669829.ged`
+22778. `family-6000000030193699033.ged`
+22779. `family-6000000030384467074.ged`
+22780. `family-6000000030611671005.ged`
+22781. `family-6000000030646126873.ged`
+22782. `family-6000000030756190508.ged`
+22783. `family-6000000030756257752.ged`
+22784. `family-6000000030775253849.ged`
+22785. `family-6000000031001900951.ged`
+22786. `family-6000000031009109101.ged`
+22787. `family-6000000031052850655.ged`
+22788. `family-6000000031097643683.ged`
+22789. `family-6000000031247349696.ged`
+22790. `family-6000000031344931074.ged`
+22791. `family-6000000031495668940.ged`
+22792. `family-6000000031507231301.ged`
+22793. `family-6000000031521916552.ged`
+22794. `family-6000000031522057461.ged`
+22795. `family-6000000031616467030.ged`
+22796. `family-6000000031820552726.ged`
+22797. `family-6000000031824797548.ged`
+22798. `family-6000000031833079710.ged`
+22799. `family-6000000031873939968.ged`
+22800. `family-6000000032009421109.ged`
+22801. `family-6000000032020782138.ged`
+22802. `family-6000000032045186110.ged`
+22803. `family-6000000032068841409.ged`
+22804. `family-6000000032372405206.ged`
+22805. `family-6000000032392264556.ged`
+22806. `family-6000000032658035873.ged`
+22807. `family-6000000032758429626.ged`
+22808. `family-6000000032943569850.ged`
+22809. `family-6000000032943742081.ged`
+22810. `family-6000000032976700619.ged`
+22811. `family-6000000033096911541.ged`
+22812. `family-6000000033181822821.ged`
+22813. `family-6000000033438633013.ged`
+22814. `family-6000000033442136907.ged`
+22815. `family-6000000033547075516.ged`
+22816. `family-6000000033547208139.ged`
+22817. `family-6000000033547397933.ged`
+22818. `family-6000000033849935940.ged`
+22819. `family-6000000033864312339.ged`
+22820. `family-6000000034067577422.ged`
+22821. `family-6000000034121728391.ged`
+22822. `family-6000000034197727224.ged`
+22823. `family-6000000034255327598.ged`
+22824. `family-6000000034357465956.ged`
+22825. `family-6000000034357760862.ged`
+22826. `family-6000000034945147419.ged`
+22827. `family-6000000035094969490.ged`
+22828. `family-6000000035169266389.ged`
+22829. `family-6000000035169497997.ged`
+22830. `family-6000000035239314374.ged`
+22831. `family-6000000035306669685.ged`
+22832. `family-6000000035451537211.ged`
+22833. `family-6000000035525393426.ged`
+22834. `family-6000000035525469386.ged`
+22835. `family-6000000035525833995.ged`
+22836. `family-6000000035525972877.ged`
+22837. `family-6000000035740078536.ged`
+22838. `family-6000000035842865927.ged`
+22839. `family-6000000035953773820.ged`
+22840. `family-6000000035956517862.ged`
+22841. `family-6000000036123664824.ged`
+22842. `family-6000000036357505108.ged`
+22843. `family-6000000036357582274.ged`
+22844. `family-6000000036645041986.ged`
+22845. `family-6000000036805346568.ged`
+22846. `family-6000000037035247723.ged`
+22847. `family-6000000037035530796.ged`
+22848. `family-6000000037061234630.ged`
+22849. `family-6000000037061491552.ged`
+22850. `family-6000000037080891969.ged`
+22851. `family-6000000037499373524.ged`
+22852. `family-6000000037499674070.ged`
+22853. `family-6000000037581589491.ged`
+22854. `family-6000000037704028766.ged`
+22855. `family-6000000037807931214.ged`
+22856. `family-6000000037849985024.ged`
+22857. `family-6000000038251598792.ged`
+22858. `family-6000000038337943245.ged`
+22859. `family-6000000038523658661.ged`
+22860. `family-6000000039148821945.ged`
+22861. `family-6000000039348882765.ged`
+22862. `family-6000000039632819016.ged`
+22863. `family-6000000039737494589.ged`
+22864. `family-6000000039766619938.ged`
+22865. `family-6000000040126197216.ged`
+22866. `family-6000000040203264557.ged`
+22867. `family-6000000040374803004.ged`
+22868. `family-6000000040464859483.ged`
+22869. `family-6000000040532128866.ged`
+22870. `family-6000000040535638865.ged`
+22871. `family-6000000040679616715.ged`
+22872. `family-6000000040680043077.ged`
+22873. `family-6000000040687433581.ged`
+22874. `family-6000000040845899938.ged`
+22875. `family-6000000040996845017.ged`
+22876. `family-6000000041071183503.ged`
+22877. `family-6000000041095187891.ged`
+22878. `family-6000000041173248960.ged`
+22879. `family-6000000041217429865.ged`
+22880. `family-6000000041308652692.ged`
+22881. `family-6000000041360141789.ged`
+22882. `family-6000000041536548158.ged`
+22883. `family-6000000041537287092.ged`
+22884. `family-6000000042155450074.ged`
+22885. `family-6000000042325644869.ged`
+22886. `family-6000000042729202545.ged`
+22887. `family-6000000042754216220.ged`
+22888. `family-6000000042855696961.ged`
+22889. `family-6000000042927624852.ged`
+22890. `family-6000000042992733943.ged`
+22891. `family-6000000043001895996.ged`
+22892. `family-6000000043290200075.ged`
+22893. `family-6000000043443420498.ged`
+22894. `family-6000000043648786217.ged`
+22895. `family-6000000043649084885.ged`
+22896. `family-6000000043649220131.ged`
+22897. `family-6000000043810712869.ged`
+22898. `family-6000000043815150026.ged`
+22899. `family-6000000044128793940.ged`
+22900. `family-6000000044160484143.ged`
+22901. `family-6000000044240464914.ged`
+22902. `family-6000000044635685330.ged`
+22903. `family-6000000044729937058.ged`
+22904. `family-6000000044870041882.ged`
+22905. `family-6000000045486688897.ged`
+22906. `family-6000000046011846033.ged`
+22907. `family-6000000046134296028.ged`
+22908. `family-6000000046292822989.ged`
+22909. `family-6000000046869458870.ged`
+22910. `family-6000000047233092984.ged`
+22911. `family-6000000047427831893.ged`
+22912. `family-6000000047943564981.ged`
+22913. `family-6000000048017768881.ged`
+22914. `family-6000000048131669306.ged`
+22915. `family-6000000049134640939.ged`
+22916. `family-6000000050559373987.ged`
+22917. `family-6000000050635310838.ged`
+22918. `family-6000000050669648872.ged`
+22919. `family-6000000051276273861.ged`
+22920. `family-6000000051326549095.ged`
+22921. `family-6000000051555644950.ged`
+22922. `family-6000000051556352836.ged`
+22923. `family-6000000051633524915.ged`
+22924. `family-6000000051850936836.ged`
+22925. `family-6000000052215030827.ged`
+22926. `family-6000000052215334833.ged`
+22927. `family-6000000052215809962.ged`
+22928. `family-6000000053406365148.ged`
+22929. `family-6000000053452245068.ged`
+22930. `family-6000000053680417825.ged`
+22931. `family-6000000054107766878.ged`
+22932. `family-6000000054754245892.ged`
+22933. `family-6000000054990622176.ged`
+22934. `family-6000000054992850924.ged`
+22935. `family-6000000056330118941.ged`
+22936. `family-6000000056333864823.ged`
+22937. `family-6000000056836304898.ged`
+22938. `family-6000000056945714362.ged`
+22939. `family-6000000057172875007.ged`
+22940. `family-6000000057175128821.ged`
+22941. `family-6000000057327773067.ged`
+22942. `family-6000000057959889971.ged`
+22943. `family-6000000057959975839.ged`
+22944. `family-6000000058002247415.ged`
+22945. `family-6000000059766262845.ged`
+22946. `family-6000000059786571001.ged`
+22947. `family-6000000059809756110.ged`
+22948. `family-6000000060737985956.ged`
+22949. `family-6000000060993725243.ged`
+22950. `family-6000000061177284916.ged`
+22951. `family-6000000063114008888.ged`
+22952. `family-6000000063114171008.ged`
+22953. `family-6000000063114223064.ged`
+22954. `family-6000000064115854341.ged`
+22955. `family-6000000064755109128.ged`
+22956. `family-6000000065291349821.ged`
+22957. `family-6000000065604186021.ged`
+22958. `family-6000000065875328000.ged`
+22959. `family-6000000065951815821.ged`
+22960. `family-6000000065981704822.ged`
+22961. `family-6000000065991527068.ged`
+22962. `family-6000000066263754251.ged`
+22963. `family-6000000066264516851.ged`
+22964. `family-6000000066264526835.ged`
+22965. `family-6000000066264650876.ged`
+22966. `family-6000000066481522948.ged`
+22967. `family-6000000066817305822.ged`
+22968. `family-6000000067502220858.ged`
+22969. `family-6000000068446181861.ged`
+22970. `family-6000000069050151452.ged`
+22971. `family-6000000069051592822.ged`
+22972. `family-6000000069152308976.ged`
+22973. `family-6000000069315166881.ged`
+22974. `family-6000000069381438156.ged`
+22975. `family-6000000069466362236.ged`
+22976. `family-6000000069597808829.ged`
+22977. `family-6000000069988689021.ged`
+22978. `family-6000000070182208157.ged`
+22979. `family-6000000070396611338.ged`
+22980. `family-6000000070497375043.ged`
+22981. `family-6000000070666622029.ged`
+22982. `family-6000000071408689846.ged`
+22983. `family-6000000071637497156.ged`
+22984. `family-6000000071638053857.ged`
+22985. `family-6000000071638234914.ged`
+22986. `family-6000000071638302829.ged`
+22987. `family-6000000071638439878.ged`
+22988. `family-6000000071765934146.ged`
+22989. `family-6000000071766422896.ged`
+22990. `family-6000000071768187852.ged`
+22991. `family-6000000071769436089.ged`
+22992. `family-6000000072050755070.ged`
+22993. `family-6000000072112528902.ged`
+22994. `family-6000000072404632839.ged`
+22995. `family-6000000072574257633.ged`
+22996. `family-6000000072962073961.ged`
+22997. `family-6000000073011630896.ged`
+22998. `family-6000000073057747827.ged`
+22999. `family-6000000073120561949.ged`
+23000. `family-6000000073125297058.ged`
+23001. `family-6000000073132490036.ged`
+23002. `family-6000000073622488100.ged`
+23003. `family-6000000073631541927.ged`
+23004. `family-6000000074341208894.ged`
+23005. `family-6000000074341809000.ged`
+23006. `family-6000000074342040898.ged`
+23007. `family-6000000074687899978.ged`
+23008. `family-6000000075001015838.ged`
+23009. `family-6000000075700805895.ged`
+23010. `family-6000000075962834013.ged`
+23011. `family-6000000076365776966.ged`
+23012. `family-6000000076714784457.ged`
+23013. `family-6000000076761806976.ged`
+23014. `family-6000000076771736071.ged`
+23015. `family-6000000076805697475.ged`
+23016. `family-6000000076807199992.ged`
+23017. `family-6000000076826620559.ged`
+23018. `family-6000000076985626326.ged`
+23019. `family-6000000077107182863.ged`
+23020. `family-6000000077297672317.ged`
+23021. `family-6000000077297739021.ged`
+23022. `family-6000000077316240007.ged`
+23023. `family-6000000077550921671.ged`
+23024. `family-6000000077625189026.ged`
+23025. `family-6000000077667834821.ged`
+23026. `family-6000000077753636156.ged`
+23027. `family-6000000077762121855.ged`
+23028. `family-6000000077795945062.ged`
+23029. `family-6000000078280348682.ged`
+23030. `family-6000000078378778833.ged`
+23031. `family-6000000078379065845.ged`
+23032. `family-6000000078418098808.ged`
+23033. `family-6000000078718774172.ged`
+23034. `family-6000000078925988112.ged`
+23035. `family-6000000079267271590.ged`
+23036. `family-6000000079290762052.ged`
+23037. `family-6000000080562610272.ged`
+23038. `family-6000000080929243843.ged`
+23039. `family-6000000081000509607.ged`
+23040. `family-6000000081001770518.ged`
+23041. `family-6000000081001960578.ged`
+23042. `family-6000000081001962237.ged`
+23043. `family-6000000081003033570.ged`
+23044. `family-6000000081003222288.ged`
+23045. `family-6000000081003290197.ged`
+23046. `family-6000000081003784512.ged`
+23047. `family-6000000081003814187.ged`
+23048. `family-6000000081003838952.ged`
+23049. `family-6000000081003840360.ged`
+23050. `family-6000000081003941823.ged`
+23051. `family-6000000081004270036.ged`
+23052. `family-6000000081531861332.ged`
+23053. `family-6000000081729286896.ged`
+23054. `family-6000000082033862114.ged`
+23055. `family-6000000082819939353.ged`
+23056. `family-6000000082822675871.ged`
+23057. `family-6000000082862457204.ged`
+23058. `family-6000000082894655175.ged`
+23059. `family-6000000082895620836.ged`
+23060. `family-6000000083072935969.ged`
+23061. `family-6000000083767537112.ged`
+23062. `family-6000000083767648821.ged`
+23063. `family-6000000083768071842.ged`
+23064. `family-6000000084318378867.ged`
+23065. `family-6000000084591209979.ged`
+23066. `family-6000000084659844821.ged`
+23067. `family-6000000084892311057.ged`
+23068. `family-6000000085676763948.ged`
+23069. `family-6000000086903454833.ged`
+23070. `family-6000000087535357291.ged`
+23071. `family-6000000087669641938.ged`
+23072. `family-6000000088057306880.ged`
+23073. `family-6000000088332676834.ged`
+23074. `family-6000000089076927053.ged`
+23075. `family-6000000089141178845.ged`
+23076. `family-6000000089141527885.ged`
+23077. `family-6000000089171988019.ged`
+23078. `family-6000000089437494952.ged`
+23079. `family-6000000090358245316.ged`
+23080. `family-6000000091076114844.ged`
+23081. `family-6000000091079224839.ged`
+23082. `family-6000000091348678858.ged`
+23083. `family-6000000091348678867.ged`
+23084. `family-6000000091348678897.ged`
+23085. `family-6000000091525536068.ged`
+23086. `family-6000000091525814902.ged`
+23087. `family-6000000091526339970.ged`
+23088. `family-6000000091526612901.ged`
+23089. `family-6000000091528437842.ged`
+23090. `family-6000000091529796831.ged`
+23091. `family-6000000091602117821.ged`
+23092. `family-6000000091812725828.ged`
+23093. `family-6000000093411354957.ged`
+23094. `family-6000000094193729218.ged`
+23095. `family-6000000094194176187.ged`
+23096. `family-6000000094725759821.ged`
+23097. `family-6000000094788864010.ged`
+23098. `family-6000000094843612867.ged`
+23099. `family-6000000095213396844.ged`
+23100. `family-6000000095688098893.ged`
+23101. `family-6000000095751934040.ged`
+23102. `family-6000000096398991038.ged`
+23103. `family-6000000096399963028.ged`
+23104. `family-6000000096400842905.ged`
+23105. `family-6000000097137888972.ged`
+23106. `family-6000000098665956865.ged`
+23107. `family-6000000099934709827.ged`
+23108. `family-6000000100082504307.ged`
+23109. `family-6000000100167913878.ged`
+23110. `family-6000000100302352316.ged`
+23111. `family-6000000100733843835.ged`
+23112. `family-6000000101507800897.ged`
+23113. `family-6000000103633571840.ged`
+23114. `family-6000000103707895007.ged`
+23115. `family-6000000103752573902.ged`
+23116. `family-6000000104523744806.ged`
+23117. `family-6000000104580051843.ged`
+23118. `family-6000000104759702112.ged`
+23119. `family-6000000105712682826.ged`
+23120. `family-6000000105715318851.ged`
+23121. `family-6000000106643828977.ged`
+23122. `family-6000000108092245955.ged`
+23123. `family-6000000108322400841.ged`
+23124. `family-6000000109139929839.ged`
+23125. `family-6000000109741693968.ged`
+23126. `family-6000000110231426840.ged`
+23127. `family-6000000111817455021.ged`
+23128. `family-6000000111817701912.ged`
+23129. `family-6000000112537545366.ged`
+23130. `family-6000000112538736189.ged`
+23131. `family-6000000112538853251.ged`
+23132. `family-6000000112539226128.ged`
+23133. `family-6000000112539233010.ged`
+23134. `family-6000000112539909876.ged`
+23135. `family-6000000112539932868.ged`
+23136. `family-6000000112540071069.ged`
+23137. `family-6000000114756258161.ged`
+23138. `family-6000000115667769821.ged`
+23139. `family-6000000115668545101.ged`
+23140. `family-6000000115668584966.ged`
+23141. `family-6000000116694298987.ged`
+23142. `family-6000000118648470833.ged`
+23143. `family-6000000120565302852.ged`
+23144. `family-6000000120884050897.ged`
+23145. `family-6000000121159833867.ged`
+23146. `family-6000000122243199821.ged`
+23147. `family-6000000122450336924.ged`
+23148. `family-6000000123032991857.ged`
+23149. `family-6000000123450888831.ged`
+23150. `family-6000000123493262823.ged`
+23151. `family-6000000125874088975.ged`
+23152. `family-6000000125982458050.ged`
+23153. `family-6000000126167468930.ged`
+23154. `family-6000000126234285831.ged`
+23155. `family-6000000127314445823.ged`
+23156. `family-6000000129556183032.ged`
+23157. `family-6000000130196882830.ged`
+23158. `family-6000000130515775874.ged`
+23159. `family-6000000130516552831.ged`
+23160. `family-6000000134112435839.ged`
+23161. `family-6000000136584255821.ged`
+23162. `family-6000000136783038551.ged`
+23163. `family-6000000137763536821.ged`
+23164. `family-6000000139388764299.ged`
+23165. `family-6000000139834612831.ged`
+23166. `family-6000000140114350029.ged`
+23167. `family-6000000140996282158.ged`
+23168. `family-6000000140996692829.ged`
+23169. `family-6000000140997657859.ged`
+23170. `family-6000000140998307832.ged`
+23171. `family-6000000141085184010.ged`
+23172. `family-6000000141086236875.ged`
+23173. `family-6000000141991252871.ged`
+23174. `family-6000000143231712883.ged`
+23175. `family-6000000145232539849.ged`
+23176. `family-6000000145925461838.ged`
+23177. `family-6000000146318796826.ged`
+23178. `family-6000000147798365860.ged`
+23179. `family-6000000148779404114.ged`
+23180. `family-6000000153693421821.ged`
+23181. `family-6000000155055551821.ged`
+23182. `family-6000000158031596887.ged`
+23183. `family-6000000161721983869.ged`
+23184. `family-6000000161721983881.ged`
+23185. `family-6000000161721983893.ged`
+23186. `family-6000000162064187855.ged`
+23187. `family-6000000162662189884.ged`
+23188. `family-6000000163452220850.ged`
+23189. `family-6000000166423479878.ged`
+23190. `family-6000000167856262821.ged`
+23191. `family-6000000167857079822.ged`
+23192. `family-6000000169035317870.ged`
+23193. `family-6000000169037819865.ged`
+23194. `family-6000000170028735922.ged`
+23195. `family-6000000171058400024.ged`
+23196. `family-6000000171523443015.ged`
+23197. `family-6000000171685356124.ged`
+23198. `family-6000000172054164872.ged`
+23199. `family-6000000172736611835.ged`
+23200. `family-6000000173732509833.ged`
+23201. `family-6000000173916064919.ged`
+23202. `family-6000000174047945870.ged`
+23203. `family-6000000174091841233.ged`
+23204. `family-6000000174348348858.ged`
+23205. `family-6000000174681148875.ged`
+23206. `family-6000000174847323565.ged`
+23207. `family-6000000174849656050.ged`
+23208. `family-6000000175635238922.ged`
+23209. `family-6000000175680503879.ged`
+23210. `family-6000000175911091017.ged`
+23211. `family-6000000176566961861.ged`
+23212. `family-6000000176630979904.ged`
+23213. `family-6000000176741416911.ged`
+23214. `family-6000000177211840836.ged`
+23215. `family-6000000177462988887.ged`
+23216. `family-6000000177463069892.ged`
+23217. `family-6000000177463770840.ged`
+23218. `family-6000000177920129831.ged`
+23219. `family-6000000177921458827.ged`
+23220. `family-6000000177921458833.ged`
+23221. `family-6000000177921458845.ged`
+23222. `family-6000000177921458863.ged`
+23223. `family-6000000177921458990.ged`
+23224. `family-6000000177921458999.ged`
+23225. `family-6000000177921459033.ged`
+23226. `family-6000000177921459052.ged`
+23227. `family-6000000177921459056.ged`
+23228. `family-6000000177921459066.ged`
+23229. `family-6000000177921459072.ged`
+23230. `family-6000000177921459078.ged`
+23231. `family-6000000177921459094.ged`
+23232. `family-6000000177921459104.ged`
+23233. `family-6000000177921459114.ged`
+23234. `family-6000000177921459129.ged`
+23235. `family-6000000177921459134.ged`
+23236. `family-6000000177921459169.ged`
+23237. `family-6000000177921516822.ged`
+23238. `family-6000000177921516839.ged`
+23239. `family-6000000177921516859.ged`
+23240. `family-6000000177944025822.ged`
+23241. `family-6000000177987312850.ged`
+23242. `family-6000000178190991871.ged`
+23243. `family-6000000178669824833.ged`
+23244. `family-6000000178670150833.ged`
+23245. `family-6000000178918011846.ged`
+23246. `family-6000000178918422849.ged`
+23247. `family-6000000178955260842.ged`
+23248. `family-6000000179031212825.ged`
+23249. `family-6000000179688632838.ged`
+23250. `family-6000000180280592858.ged`
+23251. `family-6000000180285636825.ged`
+23252. `family-6000000180557973855.ged`
+23253. `family-6000000180614517834.ged`
+23254. `family-6000000180745893830.ged`
+23255. `family-6000000180823601861.ged`
+23256. `family-6000000181163135859.ged`
+23257. `family-6000000181166108829.ged`
+23258. `family-6000000181289074845.ged`
+23259. `family-6000000182737012832.ged`
+23260. `family-6000000182795670852.ged`
+23261. `family-6000000182814226840.ged`
+23262. `family-6000000182913870868.ged`
+23263. `family-6000000183986957910.ged`
+23264. `family-6000000184015123841.ged`
+23265. `family-6000000184169690842.ged`
+23266. `family-6000000184224755837.ged`
+23267. `family-6000000184267864840.ged`
+23268. `family-6000000184442109821.ged`
+23269. `family-6000000184590962909.ged`
+23270. `family-6000000184888139875.ged`
+23271. `family-6000000185157445888.ged`
+23272. `family-6000000185158249846.ged`
+23273. `family-6000000185447097943.ged`
+23274. `family-6000000186115707839.ged`
+23275. `family-6000000186276535130.ged`
+23276. `family-6000000186609053824.ged`
+23277. `family-6000000189814354825.ged`
+23278. `family-6000000191391773823.ged`
+23279. `family-6000000194783603884.ged`
+23280. `family-6000000195872904695.ged`
+23281. `family-6000000197656493859.ged`
+23282. `family-6000000197657301823.ged`
+23283. `family-6000000197657328821.ged`
+23284. `family-6000000198076694823.ged`
+23285. `family-6000000200892917834.ged`
+23286. `family-6000000202543587856.ged`
+23287. `family-6000000207618037836.ged`
+23288. `family-6000000207769838867.ged`
+23289. `family-6000000207770099821.ged`
+23290. `family-6000000207770887863.ged`
+23291. `family-6000000209042542914.ged`
+23292. `family-6000000209053003954.ged`
+23293. `family-6000000209058145828.ged`
+23294. `family-6000000209068285866.ged`
+23295. `family-6000000210475473863.ged`
+23296. `family-6000000210483284822.ged`
+23297. `family-6000000210521076830.ged`
+23298. `family-6000000210867309854.ged`
+23299. `family-6000000210977860839.ged`
+23300. `family-6000000211785248844.ged`
+23301. `family-6000000212213503823.ged`
+23302. `family-6000000212213649822.ged`
+23303. `family-6000000212832088822.ged`
+23304. `family-6000000212832554822.ged`
+23305. `family-6000000213334348871.ged`
+23306. `family-6000000216588093869.ged`
+23307. `family-6000000216588272880.ged`
+23308. `family-6000000216825684836.ged`
+23309. `family-6000000218365400850.ged`
+23310. `family-6000000218930532858.ged`
+23311. `family-6000000220958151877.ged`
+23312. `family-6000000221151631885.ged`
+23313. `family-6000000221151780844.ged`
+23314. `family-6000000222599111823.ged`
+23315. `family-6000000225776538839.ged`
+23316. `saved-1548918.ged`
+23317. `saved-1610437.ged`
+23318. `saved-2077926.ged`
+23319. `saved-2120676.ged`
+23320. `saved-2125635.ged`
+23321. `saved-2128292.ged`
+23322. `saved-2399215.ged`
+23323. `saved-292350426030002931.ged`
+23324. `saved-304413571170007106.ged`
+23325. `saved-304413670430008270.ged`
+23326. `saved-316216248270002934.ged`
+23327. `saved-346534886220012248.ged`
+23328. `saved-346535323980012266.ged`
+23329. `saved-349440463640013536.ged`
+23330. `saved-361843381280007976.ged`
+23331. `saved-365313857240013083.ged`
+23332. `saved-365314124540003500.ged`
+23333. `saved-365314894420003448.ged`
+23334. `saved-365315518800010569.ged`
+23335. `saved-365466687720012045.ged`
+23336. `saved-365471060260013162.ged`
+23337. `saved-365471464220013205.ged`
+23338. `saved-367359078190012517.ged`
+23339. `saved-368713820640003185.ged`
+23340. `saved-368714154710012201.ged`
+23341. `saved-3696730.ged`
+23342. `saved-375738756460004676.ged`
+23343. `saved-375744715040013128.ged`
+23344. `saved-3810353.ged`
+23345. `saved-381761530540011401.ged`
+23346. `saved-388449893270012482.ged`
+23347. `saved-388450329300012525.ged`
+23348. `saved-388613596210002012.ged`
+23349. `saved-4077210.ged`
+23350. `saved-4077390.ged`
+23351. `saved-4079111.ged`
+23352. `saved-4103872.ged`
+23353. `saved-4195891192880058503.ged`
+23354. `saved-4195938644320058013.ged`
+23355. `saved-4198641.ged`
+23356. `saved-4229916861440069622.ged`
+23357. `saved-4248013140250038185.ged`
+23358. `saved-4259042.ged`
+23359. `saved-4259048.ged`
+23360. `saved-4259086.ged`
+23361. `saved-4263630100270128037.ged`
+23362. `saved-4275395618020068615.ged`
+23363. `saved-4275583289130033084.ged`
+23364. `saved-4275641755920033011.ged`
+23365. `saved-4362903.ged`
+23366. `saved-4365730.ged`
+23367. `saved-4366030.ged`
+23368. `saved-4376103.ged`
+23369. `saved-4520147.ged`
+23370. `saved-4520166.ged`
+23371. `saved-4592410796700031770.ged`
+23372. `saved-4627273.ged`
+23373. `saved-4722085825290038085.ged`
+23374. `saved-4924448917970137597.ged`
+23375. `saved-4924448933160137503.ged`
+23376. `saved-4946518870490042172.ged`
+23377. `saved-4976573922110117540.ged`
+23378. `saved-4984086862270100347.ged`
+23379. `saved-5001362652110128116.ged`
+23380. `saved-5105745500030114706.ged`
+23381. `saved-5106195884670114511.ged`
+23382. `saved-5119671559010045041.ged`
+23383. `saved-5131571863040103622.ged`
+23384. `saved-5200066333790031078.ged`
+23385. `saved-5207146906010118647.ged`
+23386. `saved-5207146917280118653.ged`
+23387. `saved-5219301786390025586.ged`
+23388. `saved-5235605714220070458.ged`
+23389. `saved-5251653855510129840.ged`
+23390. `saved-5267211996730068114.ged`
+23391. `saved-5271489675500023723.ged`
+23392. `saved-5304572722780119951.ged`
+23393. `saved-5304606047970088500.ged`
+23394. `saved-5304611081740076756.ged`
+23395. `saved-5305294636990124817.ged`
+23396. `saved-5328971090140130337.ged`
+23397. `saved-5336768638830104036.ged`
+23398. `saved-5336815803180122126.ged`
+23399. `saved-5389087141070079885.ged`
+23400. `saved-5441266921810062407.ged`
+23401. `saved-5441313740220126371.ged`
+23402. `saved-5447505087810135067.ged`
+23403. `saved-5502961102630086048.ged`
+23404. `saved-5502964838900085605.ged`
+23405. `saved-5551057844540081310.ged`
+23406. `saved-5551063057940043140.ged`
+23407. `saved-5562350241840082253.ged`
+23408. `saved-5617518918050122036.ged`
+23409. `saved-5617538511300106313.ged`
+23410. `saved-5679634808960060299.ged`
+23411. `saved-5680189981660060613.ged`
+23412. `saved-6000000000010678591.ged`
+23413. `saved-6000000000012602183.ged`
+23414. `saved-6000000000019972451.ged`
+23415. `saved-6000000000023930647.ged`
+23416. `saved-6000000000041470596.ged`
+23417. `saved-6000000000060201977.ged`
+23418. `saved-6000000000073797328.ged`
+23419. `saved-6000000000085100177.ged`
+23420. `saved-6000000000099770180.ged`
+23421. `saved-6000000000101143665.ged`
+23422. `saved-6000000000113843065.ged`
+23423. `saved-6000000000113843072.ged`
+23424. `saved-6000000000125793641.ged`
+23425. `saved-6000000000127612116.ged`
+23426. `saved-6000000000127612134.ged`
+23427. `saved-6000000000135924403.ged`
+23428. `saved-6000000000136616524.ged`
+23429. `saved-6000000000136688085.ged`
+23430. `saved-6000000000139648597.ged`
+23431. `saved-6000000000186421249.ged`
+23432. `saved-6000000000196218118.ged`
+23433. `saved-6000000000207082579.ged`
+23434. `saved-6000000000207082672.ged`
+23435. `saved-6000000000252931854.ged`
+23436. `saved-6000000000351087662.ged`
+23437. `saved-6000000000351087701.ged`
+23438. `saved-6000000000361052707.ged`
+23439. `saved-6000000000424848932.ged`
+23440. `saved-6000000000424851399.ged`
+23441. `saved-6000000000437044109.ged`
+23442. `saved-6000000000437130447.ged`
+23443. `saved-6000000000437316601.ged`
+23444. `saved-6000000000437327174.ged`
+23445. `saved-6000000000437669873.ged`
+23446. `saved-6000000000460790288.ged`
+23447. `saved-6000000000467542216.ged`
+23448. `saved-6000000000484083511.ged`
+23449. `saved-6000000000484249023.ged`
+23450. `saved-6000000000496970049.ged`
+23451. `saved-6000000000497643885.ged`
+23452. `saved-6000000000537527004.ged`
+23453. `saved-6000000000565230800.ged`
+23454. `saved-6000000000565416578.ged`
+23455. `saved-6000000000568379999.ged`
+23456. `saved-6000000000568695494.ged`
+23457. `saved-6000000000571789704.ged`
+23458. `saved-6000000000574078388.ged`
+23459. `saved-6000000000576766420.ged`
+23460. `saved-6000000000589541967.ged`
+23461. `saved-6000000000593738894.ged`
+23462. `saved-6000000000594454726.ged`
+23463. `saved-6000000000607356949.ged`
+23464. `saved-6000000000607426990.ged`
+23465. `saved-6000000000634953446.ged`
+23466. `saved-6000000000638286399.ged`
+23467. `saved-6000000000646636987.ged`
+23468. `saved-6000000000646740659.ged`
+23469. `saved-6000000000649121564.ged`
+23470. `saved-6000000000650837721.ged`
+23471. `saved-6000000000659810695.ged`
+23472. `saved-6000000000663149325.ged`
+23473. `saved-6000000000663258163.ged`
+23474. `saved-6000000000666780234.ged`
+23475. `saved-6000000000671061765.ged`
+23476. `saved-6000000000679344754.ged`
+23477. `saved-6000000000687421882.ged`
+23478. `saved-6000000000687631539.ged`
+23479. `saved-6000000000694158525.ged`
+23480. `saved-6000000000709334357.ged`
+23481. `saved-6000000000725159715.ged`
+23482. `saved-6000000000728299766.ged`
+23483. `saved-6000000000735554252.ged`
+23484. `saved-6000000000756952602.ged`
+23485. `saved-6000000000757999620.ged`
+23486. `saved-6000000000758079676.ged`
+23487. `saved-6000000000764818098.ged`
+23488. `saved-6000000000764844009.ged`
+23489. `saved-6000000000768957873.ged`
+23490. `saved-6000000000781697178.ged`
+23491. `saved-6000000000796891248.ged`
+23492. `saved-6000000000855618243.ged`
+23493. `saved-6000000000866353020.ged`
+23494. `saved-6000000000873947684.ged`
+23495. `saved-6000000000879803071.ged`
+23496. `saved-6000000000891680343.ged`
+23497. `saved-6000000000982525534.ged`
+23498. `saved-6000000001012125847.ged`
+23499. `saved-6000000001056501127.ged`
+23500. `saved-6000000001062725047.ged`
+23501. `saved-6000000001063167523.ged`
+23502. `saved-6000000001088018839.ged`
+23503. `saved-6000000001088021553.ged`
+23504. `saved-6000000001088154772.ged`
+23505. `saved-6000000001116583134.ged`
+23506. `saved-6000000001131192746.ged`
+23507. `saved-6000000001138735296.ged`
+23508. `saved-6000000001139071013.ged`
+23509. `saved-6000000001139144268.ged`
+23510. `saved-6000000001144914191.ged`
+23511. `saved-6000000001169154976.ged`
+23512. `saved-6000000001169171714.ged`
+23513. `saved-6000000001169235389.ged`
+23514. `saved-6000000001169238166.ged`
+23515. `saved-6000000001169313832.ged`
+23516. `saved-6000000001196257237.ged`
+23517. `saved-6000000001198262405.ged`
+23518. `saved-6000000001198860794.ged`
+23519. `saved-6000000001199993264.ged`
+23520. `saved-6000000001200028258.ged`
+23521. `saved-6000000001311917463.ged`
+23522. `saved-6000000001322198340.ged`
+23523. `saved-6000000001322198603.ged`
+23524. `saved-6000000001338193719.ged`
+23525. `saved-6000000001353276458.ged`
+23526. `saved-6000000001353537105.ged`
+23527. `saved-6000000001372350889.ged`
+23528. `saved-6000000001372368326.ged`
+23529. `saved-6000000001372528092.ged`
+23530. `saved-6000000001412881746.ged`
+23531. `saved-6000000001498704022.ged`
+23532. `saved-6000000001498704055.ged`
+23533. `saved-6000000001498704338.ged`
+23534. `saved-6000000001500854738.ged`
+23535. `saved-6000000001500893042.ged`
+23536. `saved-6000000001500929374.ged`
+23537. `saved-6000000001501057114.ged`
+23538. `saved-6000000001504281165.ged`
+23539. `saved-6000000001504702346.ged`
+23540. `saved-6000000001504816842.ged`
+23541. `saved-6000000001506899998.ged`
+23542. `saved-6000000001584382671.ged`
+23543. `saved-6000000001584687363.ged`
+23544. `saved-6000000001584801190.ged`
+23545. `saved-6000000001593637951.ged`
+23546. `saved-6000000001594051535.ged`
+23547. `saved-6000000001613759071.ged`
+23548. `saved-6000000001613970246.ged`
+23549. `saved-6000000001614845637.ged`
+23550. `saved-6000000001624111597.ged`
+23551. `saved-6000000001651460598.ged`
+23552. `saved-6000000001651502714.ged`
+23553. `saved-6000000001651629109.ged`
+23554. `saved-6000000001708363985.ged`
+23555. `saved-6000000001711091993.ged`
+23556. `saved-6000000001713373908.ged`
+23557. `saved-6000000001722370024.ged`
+23558. `saved-6000000001732153525.ged`
+23559. `saved-6000000001732177195.ged`
+23560. `saved-6000000001770188397.ged`
+23561. `saved-6000000001770214443.ged`
+23562. `saved-6000000001784502814.ged`
+23563. `saved-6000000001784535509.ged`
+23564. `saved-6000000001784558539.ged`
+23565. `saved-6000000001801026836.ged`
+23566. `saved-6000000001821102369.ged`
+23567. `saved-6000000001827531760.ged`
+23568. `saved-6000000001827575240.ged`
+23569. `saved-6000000001827582117.ged`
+23570. `saved-6000000001827585947.ged`
+23571. `saved-6000000001827593928.ged`
+23572. `saved-6000000001827596078.ged`
+23573. `saved-6000000001827610153.ged`
+23574. `saved-6000000001833628324.ged`
+23575. `saved-6000000001838607806.ged`
+23576. `saved-6000000001838879990.ged`
+23577. `saved-6000000001873530609.ged`
+23578. `saved-6000000001891957076.ged`
+23579. `saved-6000000001900007557.ged`
+23580. `saved-6000000001919547668.ged`
+23581. `saved-6000000001919812645.ged`
+23582. `saved-6000000001969506851.ged`
+23583. `saved-6000000001969599119.ged`
+23584. `saved-6000000001994951163.ged`
+23585. `saved-6000000001995109345.ged`
+23586. `saved-6000000002017898070.ged`
+23587. `saved-6000000002031285960.ged`
+23588. `saved-6000000002043263103.ged`
+23589. `saved-6000000002078094635.ged`
+23590. `saved-6000000002078126382.ged`
+23591. `saved-6000000002106139599.ged`
+23592. `saved-6000000002163543379.ged`
+23593. `saved-6000000002176658451.ged`
+23594. `saved-6000000002187796542.ged`
+23595. `saved-6000000002187796550.ged`
+23596. `saved-6000000002187851434.ged`
+23597. `saved-6000000002188050061.ged`
+23598. `saved-6000000002188081857.ged`
+23599. `saved-6000000002188110562.ged`
+23600. `saved-6000000002188289908.ged`
+23601. `saved-6000000002188304379.ged`
+23602. `saved-6000000002188307463.ged`
+23603. `saved-6000000002188307934.ged`
+23604. `saved-6000000002188578738.ged`
+23605. `saved-6000000002188578769.ged`
+23606. `saved-6000000002188579271.ged`
+23607. `saved-6000000002188625450.ged`
+23608. `saved-6000000002222709933.ged`
+23609. `saved-6000000002226068159.ged`
+23610. `saved-6000000002228252084.ged`
+23611. `saved-6000000002228278394.ged`
+23612. `saved-6000000002244380726.ged`
+23613. `saved-6000000002244397924.ged`
+23614. `saved-6000000002244397940.ged`
+23615. `saved-6000000002245279564.ged`
+23616. `saved-6000000002267060138.ged`
+23617. `saved-6000000002277862058.ged`
+23618. `saved-6000000002278450149.ged`
+23619. `saved-6000000002280344494.ged`
+23620. `saved-6000000002280411009.ged`
+23621. `saved-6000000002330980548.ged`
+23622. `saved-6000000002336577815.ged`
+23623. `saved-6000000002336697043.ged`
+23624. `saved-6000000002342416311.ged`
+23625. `saved-6000000002358756663.ged`
+23626. `saved-6000000002370640619.ged`
+23627. `saved-6000000002391959353.ged`
+23628. `saved-6000000002403898091.ged`
+23629. `saved-6000000002403898117.ged`
+23630. `saved-6000000002434214184.ged`
+23631. `saved-6000000002463510938.ged`
+23632. `saved-6000000002481819312.ged`
+23633. `saved-6000000002482084257.ged`
+23634. `saved-6000000002482165558.ged`
+23635. `saved-6000000002503678686.ged`
+23636. `saved-6000000002512241178.ged`
+23637. `saved-6000000002512246810.ged`
+23638. `saved-6000000002512246864.ged`
+23639. `saved-6000000002512346178.ged`
+23640. `saved-6000000002516491073.ged`
+23641. `saved-6000000002517120513.ged`
+23642. `saved-6000000002517120595.ged`
+23643. `saved-6000000002527461568.ged`
+23644. `saved-6000000002553650991.ged`
+23645. `saved-6000000002572699392.ged`
+23646. `saved-6000000002572701505.ged`
+23647. `saved-6000000002572783163.ged`
+23648. `saved-6000000002585455740.ged`
+23649. `saved-6000000002585562372.ged`
+23650. `saved-6000000002588347233.ged`
+23651. `saved-6000000002600987455.ged`
+23652. `saved-6000000002602162553.ged`
+23653. `saved-6000000002626238951.ged`
+23654. `saved-6000000002664914535.ged`
+23655. `saved-6000000002744891329.ged`
+23656. `saved-6000000002748554800.ged`
+23657. `saved-6000000002750545795.ged`
+23658. `saved-6000000002766488352.ged`
+23659. `saved-6000000002767708000.ged`
+23660. `saved-6000000002770849622.ged`
+23661. `saved-6000000002770896230.ged`
+23662. `saved-6000000002785337209.ged`
+23663. `saved-6000000002801147492.ged`
+23664. `saved-6000000002813633340.ged`
+23665. `saved-6000000002832115884.ged`
+23666. `saved-6000000002837456927.ged`
+23667. `saved-6000000002847207216.ged`
+23668. `saved-6000000002847945015.ged`
+23669. `saved-6000000002866077692.ged`
+23670. `saved-6000000002866078652.ged`
+23671. `saved-6000000002866250576.ged`
+23672. `saved-6000000002877958100.ged`
+23673. `saved-6000000002890270426.ged`
+23674. `saved-6000000002893299341.ged`
+23675. `saved-6000000002893299372.ged`
+23676. `saved-6000000002893316227.ged`
+23677. `saved-6000000002893322314.ged`
+23678. `saved-6000000002893330286.ged`
+23679. `saved-6000000002893335701.ged`
+23680. `saved-6000000002906400227.ged`
+23681. `saved-6000000002916189513.ged`
+23682. `saved-6000000002920620224.ged`
+23683. `saved-6000000002969078825.ged`
+23684. `saved-6000000002969217246.ged`
+23685. `saved-6000000002979875144.ged`
+23686. `saved-6000000003002231602.ged`
+23687. `saved-6000000003002364630.ged`
+23688. `saved-6000000003002538177.ged`
+23689. `saved-6000000003012468747.ged`
+23690. `saved-6000000003025853747.ged`
+23691. `saved-6000000003026039395.ged`
+23692. `saved-6000000003043806217.ged`
+23693. `saved-6000000003049156212.ged`
+23694. `saved-6000000003058583726.ged`
+23695. `saved-6000000003058905240.ged`
+23696. `saved-6000000003076221220.ged`
+23697. `saved-6000000003086332874.ged`
+23698. `saved-6000000003086434645.ged`
+23699. `saved-6000000003087080306.ged`
+23700. `saved-6000000003094916337.ged`
+23701. `saved-6000000003094967990.ged`
+23702. `saved-6000000003094971035.ged`
+23703. `saved-6000000003094977911.ged`
+23704. `saved-6000000003095003918.ged`
+23705. `saved-6000000003095060610.ged`
+23706. `saved-6000000003095060659.ged`
+23707. `saved-6000000003095080287.ged`
+23708. `saved-6000000003095084974.ged`
+23709. `saved-6000000003095113068.ged`
+23710. `saved-6000000003095156945.ged`
+23711. `saved-6000000003095195374.ged`
+23712. `saved-6000000003101980999.ged`
+23713. `saved-6000000003102253400.ged`
+23714. `saved-6000000003102295068.ged`
+23715. `saved-6000000003111305140.ged`
+23716. `saved-6000000003116379849.ged`
+23717. `saved-6000000003116743788.ged`
+23718. `saved-6000000003116932225.ged`
+23719. `saved-6000000003125122695.ged`
+23720. `saved-6000000003125438035.ged`
+23721. `saved-6000000003152600818.ged`
+23722. `saved-6000000003152860875.ged`
+23723. `saved-6000000003152872621.ged`
+23724. `saved-6000000003187090488.ged`
+23725. `saved-6000000003196492775.ged`
+23726. `saved-6000000003242618875.ged`
+23727. `saved-6000000003252172731.ged`
+23728. `saved-6000000003252323043.ged`
+23729. `saved-6000000003253261775.ged`
+23730. `saved-6000000003253460860.ged`
+23731. `saved-6000000003253601093.ged`
+23732. `saved-6000000003306757977.ged`
+23733. `saved-6000000003307054576.ged`
+23734. `saved-6000000003319932530.ged`
+23735. `saved-6000000003332799114.ged`
+23736. `saved-6000000003332823073.ged`
+23737. `saved-6000000003344565684.ged`
+23738. `saved-6000000003344745168.ged`
+23739. `saved-6000000003353135663.ged`
+23740. `saved-6000000003353178311.ged`
+23741. `saved-6000000003355801643.ged`
+23742. `saved-6000000003367976924.ged`
+23743. `saved-6000000003379144766.ged`
+23744. `saved-6000000003379409803.ged`
+23745. `saved-6000000003389294519.ged`
+23746. `saved-6000000003401838954.ged`
+23747. `saved-6000000003417361345.ged`
+23748. `saved-6000000003418900347.ged`
+23749. `saved-6000000003484293276.ged`
+23750. `saved-6000000003484293288.ged`
+23751. `saved-6000000003491933538.ged`
+23752. `saved-6000000003491947054.ged`
+23753. `saved-6000000003491958558.ged`
+23754. `saved-6000000003491986946.ged`
+23755. `saved-6000000003491988189.ged`
+23756. `saved-6000000003491988489.ged`
+23757. `saved-6000000003491988509.ged`
+23758. `saved-6000000003491988584.ged`
+23759. `saved-6000000003491988599.ged`
+23760. `saved-6000000003491988619.ged`
+23761. `saved-6000000003491988831.ged`
+23762. `saved-6000000003492005126.ged`
+23763. `saved-6000000003492029785.ged`
+23764. `saved-6000000003492033784.ged`
+23765. `saved-6000000003492033799.ged`
+23766. `saved-6000000003492033993.ged`
+23767. `saved-6000000003492057788.ged`
+23768. `saved-6000000003492064709.ged`
+23769. `saved-6000000003492064827.ged`
+23770. `saved-6000000003492068105.ged`
+23771. `saved-6000000003492068120.ged`
+23772. `saved-6000000003492068938.ged`
+23773. `saved-6000000003492535579.ged`
+23774. `saved-6000000003493162078.ged`
+23775. `saved-6000000003495348795.ged`
+23776. `saved-6000000003495384814.ged`
+23777. `saved-6000000003521493989.ged`
+23778. `saved-6000000003535740332.ged`
+23779. `saved-6000000003559734445.ged`
+23780. `saved-6000000003568661683.ged`
+23781. `saved-6000000003588755565.ged`
+23782. `saved-6000000003615417006.ged`
+23783. `saved-6000000003620618740.ged`
+23784. `saved-6000000003645825338.ged`
+23785. `saved-6000000003645919492.ged`
+23786. `saved-6000000003645919625.ged`
+23787. `saved-6000000003645940658.ged`
+23788. `saved-6000000003646023820.ged`
+23789. `saved-6000000003646023907.ged`
+23790. `saved-6000000003665102809.ged`
+23791. `saved-6000000003665181171.ged`
+23792. `saved-6000000003665414365.ged`
+23793. `saved-6000000003721939858.ged`
+23794. `saved-6000000003732742137.ged`
+23795. `saved-6000000003781494806.ged`
+23796. `saved-6000000003783022260.ged`
+23797. `saved-6000000003805720033.ged`
+23798. `saved-6000000003823851202.ged`
+23799. `saved-6000000003824461685.ged`
+23800. `saved-6000000003824564617.ged`
+23801. `saved-6000000003827445550.ged`
+23802. `saved-6000000003827661670.ged`
+23803. `saved-6000000003828248652.ged`
+23804. `saved-6000000003828248658.ged`
+23805. `saved-6000000003828250057.ged`
+23806. `saved-6000000003828250078.ged`
+23807. `saved-6000000003842233263.ged`
+23808. `saved-6000000003854400441.ged`
+23809. `saved-6000000003858704239.ged`
+23810. `saved-6000000003858716758.ged`
+23811. `saved-6000000003858749453.ged`
+23812. `saved-6000000003869622559.ged`
+23813. `saved-6000000003887729856.ged`
+23814. `saved-6000000003897585979.ged`
+23815. `saved-6000000003902489870.ged`
+23816. `saved-6000000003905140955.ged`
+23817. `saved-6000000003953393939.ged`
+23818. `saved-6000000003958968521.ged`
+23819. `saved-6000000003979582810.ged`
+23820. `saved-6000000004027712640.ged`
+23821. `saved-6000000004028320232.ged`
+23822. `saved-6000000004032942523.ged`
+23823. `saved-6000000004034893096.ged`
+23824. `saved-6000000004035037156.ged`
+23825. `saved-6000000004078906672.ged`
+23826. `saved-6000000004104838733.ged`
+23827. `saved-6000000004105285975.ged`
+23828. `saved-6000000004131116716.ged`
+23829. `saved-6000000004140735934.ged`
+23830. `saved-6000000004214433404.ged`
+23831. `saved-6000000004281397219.ged`
+23832. `saved-6000000004389585513.ged`
+23833. `saved-6000000004456080013.ged`
+23834. `saved-6000000004457022019.ged`
+23835. `saved-6000000004533176419.ged`
+23836. `saved-6000000004533503066.ged`
+23837. `saved-6000000004533503379.ged`
+23838. `saved-6000000004533510674.ged`
+23839. `saved-6000000004534272864.ged`
+23840. `saved-6000000004647605698.ged`
+23841. `saved-6000000004650708520.ged`
+23842. `saved-6000000004671044584.ged`
+23843. `saved-6000000004691642355.ged`
+23844. `saved-6000000004838388133.ged`
+23845. `saved-6000000004862474531.ged`
+23846. `saved-6000000004863275809.ged`
+23847. `saved-6000000004863611375.ged`
+23848. `saved-6000000004863761158.ged`
+23849. `saved-6000000004863823276.ged`
+23850. `saved-6000000004868825651.ged`
+23851. `saved-6000000004868825686.ged`
+23852. `saved-6000000004868846058.ged`
+23853. `saved-6000000004868846355.ged`
+23854. `saved-6000000004868851834.ged`
+23855. `saved-6000000004868858899.ged`
+23856. `saved-6000000004869049343.ged`
+23857. `saved-6000000004870648136.ged`
+23858. `saved-6000000004974123682.ged`
+23859. `saved-6000000004974523185.ged`
+23860. `saved-6000000005013705987.ged`
+23861. `saved-6000000005025304600.ged`
+23862. `saved-6000000005074489379.ged`
+23863. `saved-6000000005246487476.ged`
+23864. `saved-6000000005381997903.ged`
+23865. `saved-6000000005382299298.ged`
+23866. `saved-6000000005391128983.ged`
+23867. `saved-6000000005398287081.ged`
+23868. `saved-6000000005414590318.ged`
+23869. `saved-6000000005441081725.ged`
+23870. `saved-6000000005441559089.ged`
+23871. `saved-6000000005442236186.ged`
+23872. `saved-6000000005545740001.ged`
+23873. `saved-6000000005576602065.ged`
+23874. `saved-6000000005581573549.ged`
+23875. `saved-6000000005581573602.ged`
+23876. `saved-6000000005598851255.ged`
+23877. `saved-6000000005606851579.ged`
+23878. `saved-6000000005606851647.ged`
+23879. `saved-6000000005606873183.ged`
+23880. `saved-6000000005606886765.ged`
+23881. `saved-6000000005606886780.ged`
+23882. `saved-6000000005606886827.ged`
+23883. `saved-6000000005606886909.ged`
+23884. `saved-6000000005606907877.ged`
+23885. `saved-6000000005606976930.ged`
+23886. `saved-6000000005607042284.ged`
+23887. `saved-6000000005607042309.ged`
+23888. `saved-6000000005607042593.ged`
+23889. `saved-6000000005607119313.ged`
+23890. `saved-6000000005607123730.ged`
+23891. `saved-6000000005607187224.ged`
+23892. `saved-6000000005607264518.ged`
+23893. `saved-6000000005607268671.ged`
+23894. `saved-6000000005607282941.ged`
+23895. `saved-6000000005607296161.ged`
+23896. `saved-6000000005607335640.ged`
+23897. `saved-6000000005607339190.ged`
+23898. `saved-6000000005607365269.ged`
+23899. `saved-6000000005607377021.ged`
+23900. `saved-6000000005607439733.ged`
+23901. `saved-6000000005607481550.ged`
+23902. `saved-6000000005607599821.ged`
+23903. `saved-6000000005607880384.ged`
+23904. `saved-6000000005607884543.ged`
+23905. `saved-6000000005608851471.ged`
+23906. `saved-6000000005608851479.ged`
+23907. `saved-6000000005608851503.ged`
+23908. `saved-6000000005608873060.ged`
+23909. `saved-6000000005608873104.ged`
+23910. `saved-6000000005608873211.ged`
+23911. `saved-6000000005608884093.ged`
+23912. `saved-6000000005608934604.ged`
+23913. `saved-6000000005609028769.ged`
+23914. `saved-6000000005609064474.ged`
+23915. `saved-6000000005609102300.ged`
+23916. `saved-6000000005609102344.ged`
+23917. `saved-6000000005609304829.ged`
+23918. `saved-6000000005609304839.ged`
+23919. `saved-6000000005609458561.ged`
+23920. `saved-6000000005609466031.ged`
+23921. `saved-6000000005609518095.ged`
+23922. `saved-6000000005609522416.ged`
+23923. `saved-6000000005609522426.ged`
+23924. `saved-6000000005609534511.ged`
+23925. `saved-6000000005609534659.ged`
+23926. `saved-6000000005609547367.ged`
+23927. `saved-6000000005609547535.ged`
+23928. `saved-6000000005609547544.ged`
+23929. `saved-6000000005609547691.ged`
+23930. `saved-6000000005739075955.ged`
+23931. `saved-6000000005739942225.ged`
+23932. `saved-6000000005744994368.ged`
+23933. `saved-6000000005744994427.ged`
+23934. `saved-6000000005795638082.ged`
+23935. `saved-6000000005795638104.ged`
+23936. `saved-6000000005856163014.ged`
+23937. `saved-6000000005942135258.ged`
+23938. `saved-6000000006127214913.ged`
+23939. `saved-6000000006127322318.ged`
+23940. `saved-6000000006127859612.ged`
+23941. `saved-6000000006127996485.ged`
+23942. `saved-6000000006127996492.ged`
+23943. `saved-6000000006127996498.ged`
+23944. `saved-6000000006128227797.ged`
+23945. `saved-6000000006171259545.ged`
+23946. `saved-6000000006183866418.ged`
+23947. `saved-6000000006253433055.ged`
+23948. `saved-6000000006253635635.ged`
+23949. `saved-6000000006277556378.ged`
+23950. `saved-6000000006293783777.ged`
+23951. `saved-6000000006336803890.ged`
+23952. `saved-6000000006351988253.ged`
+23953. `saved-6000000006352209093.ged`
+23954. `saved-6000000006400320009.ged`
+23955. `saved-6000000006402064518.ged`
+23956. `saved-6000000006444130321.ged`
+23957. `saved-6000000006444270409.ged`
+23958. `saved-6000000006444357812.ged`
+23959. `saved-6000000006444364312.ged`
+23960. `saved-6000000006565863003.ged`
+23961. `saved-6000000006565930017.ged`
+23962. `saved-6000000006575266506.ged`
+23963. `saved-6000000006589193197.ged`
+23964. `saved-6000000006589193210.ged`
+23965. `saved-6000000006589193224.ged`
+23966. `saved-6000000006589193735.ged`
+23967. `saved-6000000006589193752.ged`
+23968. `saved-6000000006589261586.ged`
+23969. `saved-6000000006589261605.ged`
+23970. `saved-6000000006589261737.ged`
+23971. `saved-6000000006602653847.ged`
+23972. `saved-6000000006727823308.ged`
+23973. `saved-6000000006744570542.ged`
+23974. `saved-6000000006769001160.ged`
+23975. `saved-6000000006769847598.ged`
+23976. `saved-6000000006776171892.ged`
+23977. `saved-6000000006776187362.ged`
+23978. `saved-6000000006776187394.ged`
+23979. `saved-6000000006776187410.ged`
+23980. `saved-6000000006792569099.ged`
+23981. `saved-6000000006802626827.ged`
+23982. `saved-6000000006802748484.ged`
+23983. `saved-6000000006804155423.ged`
+23984. `saved-6000000006807994202.ged`
+23985. `saved-6000000006828562507.ged`
+23986. `saved-6000000006828783137.ged`
+23987. `saved-6000000006845609473.ged`
+23988. `saved-6000000006892741240.ged`
+23989. `saved-6000000006909919760.ged`
+23990. `saved-6000000006909980800.ged`
+23991. `saved-6000000006910119673.ged`
+23992. `saved-6000000006910218376.ged`
+23993. `saved-6000000006910371360.ged`
+23994. `saved-6000000006910524128.ged`
+23995. `saved-6000000006927613398.ged`
+23996. `saved-6000000006932496197.ged`
+23997. `saved-6000000006963936279.ged`
+23998. `saved-6000000006964093867.ged`
+23999. `saved-6000000006991041605.ged`
+24000. `saved-6000000007006053264.ged`
+24001. `saved-6000000007020763500.ged`
+24002. `saved-6000000007035211375.ged`
+24003. `saved-6000000007040744781.ged`
+24004. `saved-6000000007051275051.ged`
+24005. `saved-6000000007051737771.ged`
+24006. `saved-6000000007058475918.ged`
+24007. `saved-6000000007058802262.ged`
+24008. `saved-6000000007059008284.ged`
+24009. `saved-6000000007059036372.ged`
+24010. `saved-6000000007060635081.ged`
+24011. `saved-6000000007062931743.ged`
+24012. `saved-6000000007062987558.ged`
+24013. `saved-6000000007090217253.ged`
+24014. `saved-6000000007096021931.ged`
+24015. `saved-6000000007114444629.ged`
+24016. `saved-6000000007149829030.ged`
+24017. `saved-6000000007150056822.ged`
+24018. `saved-6000000007159201467.ged`
+24019. `saved-6000000007168006559.ged`
+24020. `saved-6000000007168150360.ged`
+24021. `saved-6000000007182167503.ged`
+24022. `saved-6000000007182299647.ged`
+24023. `saved-6000000007182710798.ged`
+24024. `saved-6000000007182829201.ged`
+24025. `saved-6000000007210899736.ged`
+24026. `saved-6000000007211481443.ged`
+24027. `saved-6000000007218725750.ged`
+24028. `saved-6000000007225974316.ged`
+24029. `saved-6000000007243462851.ged`
+24030. `saved-6000000007243504597.ged`
+24031. `saved-6000000007243779310.ged`
+24032. `saved-6000000007259558393.ged`
+24033. `saved-6000000007272507672.ged`
+24034. `saved-6000000007279272308.ged`
+24035. `saved-6000000007295507866.ged`
+24036. `saved-6000000007304150583.ged`
+24037. `saved-6000000007335744612.ged`
+24038. `saved-6000000007335974610.ged`
+24039. `saved-6000000007339101221.ged`
+24040. `saved-6000000007367810201.ged`
+24041. `saved-6000000007392290792.ged`
+24042. `saved-6000000007393382928.ged`
+24043. `saved-6000000007404085354.ged`
+24044. `saved-6000000007404267211.ged`
+24045. `saved-6000000007425369965.ged`
+24046. `saved-6000000007507069278.ged`
+24047. `saved-6000000007507095358.ged`
+24048. `saved-6000000007511564057.ged`
+24049. `saved-6000000007511564070.ged`
+24050. `saved-6000000007511832794.ged`
+24051. `saved-6000000007538343204.ged`
+24052. `saved-6000000007549179716.ged`
+24053. `saved-6000000007549309545.ged`
+24054. `saved-6000000007559278400.ged`
+24055. `saved-6000000007581296353.ged`
+24056. `saved-6000000007581383931.ged`
+24057. `saved-6000000007587625693.ged`
+24058. `saved-6000000007587694720.ged`
+24059. `saved-6000000007588187341.ged`
+24060. `saved-6000000007588187344.ged`
+24061. `saved-6000000007588356972.ged`
+24062. `saved-6000000007589095312.ged`
+24063. `saved-6000000007589095414.ged`
+24064. `saved-6000000007604938431.ged`
+24065. `saved-6000000007604938444.ged`
+24066. `saved-6000000007614477274.ged`
+24067. `saved-6000000007618351978.ged`
+24068. `saved-6000000007630944209.ged`
+24069. `saved-6000000007632160030.ged`
+24070. `saved-6000000007635630874.ged`
+24071. `saved-6000000007635630965.ged`
+24072. `saved-6000000007635631030.ged`
+24073. `saved-6000000007661859262.ged`
+24074. `saved-6000000007676113728.ged`
+24075. `saved-6000000007676466396.ged`
+24076. `saved-6000000007770332213.ged`
+24077. `saved-6000000007773104021.ged`
+24078. `saved-6000000007782302849.ged`
+24079. `saved-6000000007826003451.ged`
+24080. `saved-6000000007826127365.ged`
+24081. `saved-6000000007958767639.ged`
+24082. `saved-6000000007959631642.ged`
+24083. `saved-6000000007959864423.ged`
+24084. `saved-6000000007980369200.ged`
+24085. `saved-6000000007980520044.ged`
+24086. `saved-6000000007980693054.ged`
+24087. `saved-6000000008008010549.ged`
+24088. `saved-6000000008019682504.ged`
+24089. `saved-6000000008034160064.ged`
+24090. `saved-6000000008034415513.ged`
+24091. `saved-6000000008063252550.ged`
+24092. `saved-6000000008100776194.ged`
+24093. `saved-6000000008101228513.ged`
+24094. `saved-6000000008106241912.ged`
+24095. `saved-6000000008115020929.ged`
+24096. `saved-6000000008115048412.ged`
+24097. `saved-6000000008205346192.ged`
+24098. `saved-6000000008205535747.ged`
+24099. `saved-6000000008286490755.ged`
+24100. `saved-6000000008286846382.ged`
+24101. `saved-6000000008352466911.ged`
+24102. `saved-6000000008366453417.ged`
+24103. `saved-6000000008379218961.ged`
+24104. `saved-6000000008406419757.ged`
+24105. `saved-6000000008406511750.ged`
+24106. `saved-6000000008469756742.ged`
+24107. `saved-6000000008477543238.ged`
+24108. `saved-6000000008507821635.ged`
+24109. `saved-6000000008516116524.ged`
+24110. `saved-6000000008630356444.ged`
+24111. `saved-6000000008630356466.ged`
+24112. `saved-6000000008630587231.ged`
+24113. `saved-6000000008687044864.ged`
+24114. `saved-6000000008687180600.ged`
+24115. `saved-6000000008715164518.ged`
+24116. `saved-6000000008764977184.ged`
+24117. `saved-6000000008765237558.ged`
+24118. `saved-6000000008765536305.ged`
+24119. `saved-6000000008787687730.ged`
+24120. `saved-6000000008787855478.ged`
+24121. `saved-6000000008798323789.ged`
+24122. `saved-6000000008798575043.ged`
+24123. `saved-6000000008798585431.ged`
+24124. `saved-6000000008931923941.ged`
+24125. `saved-6000000008933309505.ged`
+24126. `saved-6000000008961666136.ged`
+24127. `saved-6000000008975808174.ged`
+24128. `saved-6000000009006496259.ged`
+24129. `saved-6000000009099803774.ged`
+24130. `saved-6000000009100005728.ged`
+24131. `saved-6000000009110468637.ged`
+24132. `saved-6000000009134934503.ged`
+24133. `saved-6000000009134991508.ged`
+24134. `saved-6000000009170017937.ged`
+24135. `saved-6000000009189190206.ged`
+24136. `saved-6000000009196500176.ged`
+24137. `saved-6000000009196991377.ged`
+24138. `saved-6000000009214903611.ged`
+24139. `saved-6000000009217651803.ged`
+24140. `saved-6000000009288970429.ged`
+24141. `saved-6000000009412979361.ged`
+24142. `saved-6000000009465627532.ged`
+24143. `saved-6000000009499609049.ged`
+24144. `saved-6000000009500754533.ged`
+24145. `saved-6000000009511458815.ged`
+24146. `saved-6000000009512037044.ged`
+24147. `saved-6000000009512050024.ged`
+24148. `saved-6000000009512394794.ged`
+24149. `saved-6000000009512397570.ged`
+24150. `saved-6000000009512632295.ged`
+24151. `saved-6000000009544774015.ged`
+24152. `saved-6000000009551480095.ged`
+24153. `saved-6000000009657862393.ged`
+24154. `saved-6000000009706835506.ged`
+24155. `saved-6000000009875160931.ged`
+24156. `saved-6000000009875224601.ged`
+24157. `saved-6000000009875303979.ged`
+24158. `saved-6000000009879586250.ged`
+24159. `saved-6000000009916465367.ged`
+24160. `saved-6000000009916611254.ged`
+24161. `saved-6000000010076488689.ged`
+24162. `saved-6000000010160609967.ged`
+24163. `saved-6000000010222435520.ged`
+24164. `saved-6000000010226740465.ged`
+24165. `saved-6000000010229568198.ged`
+24166. `saved-6000000010229747719.ged`
+24167. `saved-6000000010239991822.ged`
+24168. `saved-6000000010240000883.ged`
+24169. `saved-6000000010240260367.ged`
+24170. `saved-6000000010259352985.ged`
+24171. `saved-6000000010288168143.ged`
+24172. `saved-6000000010288326033.ged`
+24173. `saved-6000000010288779197.ged`
+24174. `saved-6000000010288870971.ged`
+24175. `saved-6000000010288911760.ged`
+24176. `saved-6000000010288921953.ged`
+24177. `saved-6000000010289043219.ged`
+24178. `saved-6000000010289067232.ged`
+24179. `saved-6000000010289095311.ged`
+24180. `saved-6000000010331432922.ged`
+24181. `saved-6000000010331792637.ged`
+24182. `saved-6000000010341338258.ged`
+24183. `saved-6000000010351510999.ged`
+24184. `saved-6000000010407268537.ged`
+24185. `saved-6000000010449304150.ged`
+24186. `saved-6000000010449454103.ged`
+24187. `saved-6000000010449616852.ged`
+24188. `saved-6000000010449889350.ged`
+24189. `saved-6000000010463529059.ged`
+24190. `saved-6000000010513431062.ged`
+24191. `saved-6000000010534596447.ged`
+24192. `saved-6000000010546157120.ged`
+24193. `saved-6000000010546205936.ged`
+24194. `saved-6000000010598672967.ged`
+24195. `saved-6000000010642992694.ged`
+24196. `saved-6000000010644712727.ged`
+24197. `saved-6000000010659609679.ged`
+24198. `saved-6000000010659664086.ged`
+24199. `saved-6000000010671353360.ged`
+24200. `saved-6000000010680123679.ged`
+24201. `saved-6000000010680345246.ged`
+24202. `saved-6000000010807476638.ged`
+24203. `saved-6000000010888314829.ged`
+24204. `saved-6000000010888345851.ged`
+24205. `saved-6000000010888345895.ged`
+24206. `saved-6000000011036078569.ged`
+24207. `saved-6000000011040229514.ged`
+24208. `saved-6000000011043803107.ged`
+24209. `saved-6000000011048419126.ged`
+24210. `saved-6000000011078549071.ged`
+24211. `saved-6000000011078726908.ged`
+24212. `saved-6000000011078807545.ged`
+24213. `saved-6000000011078829655.ged`
+24214. `saved-6000000011078886609.ged`
+24215. `saved-6000000011078918407.ged`
+24216. `saved-6000000011079271617.ged`
+24217. `saved-6000000011079343735.ged`
+24218. `saved-6000000011169272123.ged`
+24219. `saved-6000000011169570980.ged`
+24220. `saved-6000000011183696687.ged`
+24221. `saved-6000000011239201122.ged`
+24222. `saved-6000000011239402589.ged`
+24223. `saved-6000000011239545575.ged`
+24224. `saved-6000000011244838043.ged`
+24225. `saved-6000000011245746417.ged`
+24226. `saved-6000000011252874344.ged`
+24227. `saved-6000000011274338852.ged`
+24228. `saved-6000000011276917624.ged`
+24229. `saved-6000000011315288524.ged`
+24230. `saved-6000000011330161333.ged`
+24231. `saved-6000000011380063304.ged`
+24232. `saved-6000000011392245825.ged`
+24233. `saved-6000000011399221611.ged`
+24234. `saved-6000000011428579002.ged`
+24235. `saved-6000000011429638227.ged`
+24236. `saved-6000000011433727968.ged`
+24237. `saved-6000000011460254487.ged`
+24238. `saved-6000000011489252646.ged`
+24239. `saved-6000000011536465369.ged`
+24240. `saved-6000000011540389372.ged`
+24241. `saved-6000000011546841461.ged`
+24242. `saved-6000000011568319792.ged`
+24243. `saved-6000000011568373884.ged`
+24244. `saved-6000000011570928590.ged`
+24245. `saved-6000000011570983149.ged`
+24246. `saved-6000000011601412945.ged`
+24247. `saved-6000000011613442175.ged`
+24248. `saved-6000000011623099406.ged`
+24249. `saved-6000000011647607597.ged`
+24250. `saved-6000000011648048242.ged`
+24251. `saved-6000000011769042441.ged`
+24252. `saved-6000000011774471387.ged`
+24253. `saved-6000000011807777264.ged`
+24254. `saved-6000000011811245484.ged`
+24255. `saved-6000000011821706820.ged`
+24256. `saved-6000000011843556332.ged`
+24257. `saved-6000000011870629601.ged`
+24258. `saved-6000000011970410034.ged`
+24259. `saved-6000000012013655297.ged`
+24260. `saved-6000000012108249741.ged`
+24261. `saved-6000000012139250763.ged`
+24262. `saved-6000000012139788237.ged`
+24263. `saved-6000000012198494299.ged`
+24264. `saved-6000000012242523692.ged`
+24265. `saved-6000000012243172431.ged`
+24266. `saved-6000000012245669731.ged`
+24267. `saved-6000000012293585755.ged`
+24268. `saved-6000000012293596475.ged`
+24269. `saved-6000000012294304415.ged`
+24270. `saved-6000000012307860943.ged`
+24271. `saved-6000000012308553479.ged`
+24272. `saved-6000000012336650452.ged`
+24273. `saved-6000000012337711888.ged`
+24274. `saved-6000000012455272755.ged`
+24275. `saved-6000000012503281124.ged`
+24276. `saved-6000000012504273407.ged`
+24277. `saved-6000000012566391180.ged`
+24278. `saved-6000000012587690898.ged`
+24279. `saved-6000000012591881202.ged`
+24280. `saved-6000000012617461291.ged`
+24281. `saved-6000000012640023947.ged`
+24282. `saved-6000000012640245221.ged`
+24283. `saved-6000000012641619750.ged`
+24284. `saved-6000000012724604098.ged`
+24285. `saved-6000000012754388121.ged`
+24286. `saved-6000000012878346373.ged`
+24287. `saved-6000000012904227535.ged`
+24288. `saved-6000000012952101595.ged`
+24289. `saved-6000000012987643357.ged`
+24290. `saved-6000000013019602706.ged`
+24291. `saved-6000000013021605891.ged`
+24292. `saved-6000000013071838546.ged`
+24293. `saved-6000000013122624376.ged`
+24294. `saved-6000000013166100337.ged`
+24295. `saved-6000000013184965702.ged`
+24296. `saved-6000000013195069123.ged`
+24297. `saved-6000000013205833004.ged`
+24298. `saved-6000000013214852442.ged`
+24299. `saved-6000000013214878518.ged`
+24300. `saved-6000000013281880387.ged`
+24301. `saved-6000000013291844252.ged`
+24302. `saved-6000000013487830550.ged`
+24303. `saved-6000000013538823820.ged`
+24304. `saved-6000000013618082642.ged`
+24305. `saved-6000000013694127827.ged`
+24306. `saved-6000000013694337126.ged`
+24307. `saved-6000000013938289487.ged`
+24308. `saved-6000000013986579880.ged`
+24309. `saved-6000000014024359812.ged`
+24310. `saved-6000000014044436728.ged`
+24311. `saved-6000000014044440566.ged`
+24312. `saved-6000000014044468426.ged`
+24313. `saved-6000000014164331457.ged`
+24314. `saved-6000000014224378935.ged`
+24315. `saved-6000000014253280113.ged`
+24316. `saved-6000000014265035290.ged`
+24317. `saved-6000000014287203465.ged`
+24318. `saved-6000000014287321085.ged`
+24319. `saved-6000000014300507795.ged`
+24320. `saved-6000000014300629210.ged`
+24321. `saved-6000000014300860839.ged`
+24322. `saved-6000000014301252922.ged`
+24323. `saved-6000000014301322889.ged`
+24324. `saved-6000000014301339457.ged`
+24325. `saved-6000000014301359938.ged`
+24326. `saved-6000000014349023517.ged`
+24327. `saved-6000000014360883324.ged`
+24328. `saved-6000000014394601788.ged`
+24329. `saved-6000000014493706045.ged`
+24330. `saved-6000000014507656819.ged`
+24331. `saved-6000000014512537406.ged`
+24332. `saved-6000000014522158621.ged`
+24333. `saved-6000000014545722296.ged`
+24334. `saved-6000000014652275852.ged`
+24335. `saved-6000000014652351128.ged`
+24336. `saved-6000000014814372062.ged`
+24337. `saved-6000000014846941321.ged`
+24338. `saved-6000000014853129253.ged`
+24339. `saved-6000000014946390383.ged`
+24340. `saved-6000000015117399351.ged`
+24341. `saved-6000000015117490925.ged`
+24342. `saved-6000000015117958521.ged`
+24343. `saved-6000000015204381777.ged`
+24344. `saved-6000000015211178776.ged`
+24345. `saved-6000000015245604334.ged`
+24346. `saved-6000000015302506749.ged`
+24347. `saved-6000000015309255172.ged`
+24348. `saved-6000000015309299285.ged`
+24349. `saved-6000000015319810478.ged`
+24350. `saved-6000000015357707513.ged`
+24351. `saved-6000000015394330678.ged`
+24352. `saved-6000000015399099546.ged`
+24353. `saved-6000000015399620672.ged`
+24354. `saved-6000000015423318064.ged`
+24355. `saved-6000000015423592428.ged`
+24356. `saved-6000000015423722158.ged`
+24357. `saved-6000000015423962219.ged`
+24358. `saved-6000000015485735160.ged`
+24359. `saved-6000000015518649039.ged`
+24360. `saved-6000000015518684068.ged`
+24361. `saved-6000000015518685084.ged`
+24362. `saved-6000000015521070849.ged`
+24363. `saved-6000000015521370780.ged`
+24364. `saved-6000000015521590083.ged`
+24365. `saved-6000000015593753615.ged`
+24366. `saved-6000000015694585880.ged`
+24367. `saved-6000000015770704042.ged`
+24368. `saved-6000000015843590321.ged`
+24369. `saved-6000000015851698695.ged`
+24370. `saved-6000000015998729022.ged`
+24371. `saved-6000000016303264136.ged`
+24372. `saved-6000000016303283134.ged`
+24373. `saved-6000000016360042741.ged`
+24374. `saved-6000000016425918956.ged`
+24375. `saved-6000000016426352456.ged`
+24376. `saved-6000000016426580160.ged`
+24377. `saved-6000000016476125295.ged`
+24378. `saved-6000000016479087543.ged`
+24379. `saved-6000000016524697799.ged`
+24380. `saved-6000000016524856961.ged`
+24381. `saved-6000000016582078281.ged`
+24382. `saved-6000000016623538002.ged`
+24383. `saved-6000000016662825611.ged`
+24384. `saved-6000000016772114903.ged`
+24385. `saved-6000000016959316252.ged`
+24386. `saved-6000000016982342071.ged`
+24387. `saved-6000000017093875188.ged`
+24388. `saved-6000000017335445640.ged`
+24389. `saved-6000000017394131513.ged`
+24390. `saved-6000000017512579814.ged`
+24391. `saved-6000000017512587298.ged`
+24392. `saved-6000000017512648427.ged`
+24393. `saved-6000000017512682319.ged`
+24394. `saved-6000000017512797708.ged`
+24395. `saved-6000000017513039586.ged`
+24396. `saved-6000000017535961052.ged`
+24397. `saved-6000000017625357021.ged`
+24398. `saved-6000000017627448734.ged`
+24399. `saved-6000000017799612472.ged`
+24400. `saved-6000000017871912470.ged`
+24401. `saved-6000000018110421350.ged`
+24402. `saved-6000000018145628151.ged`
+24403. `saved-6000000018212260392.ged`
+24404. `saved-6000000018212464007.ged`
+24405. `saved-6000000018348056712.ged`
+24406. `saved-6000000018426488633.ged`
+24407. `saved-6000000018448055702.ged`
+24408. `saved-6000000018448271481.ged`
+24409. `saved-6000000018464035156.ged`
+24410. `saved-6000000018528235866.ged`
+24411. `saved-6000000018752060667.ged`
+24412. `saved-6000000018821123732.ged`
+24413. `saved-6000000018908930497.ged`
+24414. `saved-6000000018909038179.ged`
+24415. `saved-6000000018909112139.ged`
+24416. `saved-6000000019023540872.ged`
+24417. `saved-6000000019023649207.ged`
+24418. `saved-6000000019032360275.ged`
+24419. `saved-6000000019103963083.ged`
+24420. `saved-6000000019382922858.ged`
+24421. `saved-6000000019410166019.ged`
+24422. `saved-6000000019509377608.ged`
+24423. `saved-6000000019557061076.ged`
+24424. `saved-6000000019594325656.ged`
+24425. `saved-6000000019698408474.ged`
+24426. `saved-6000000019775225537.ged`
+24427. `saved-6000000019775649283.ged`
+24428. `saved-6000000019857924817.ged`
+24429. `saved-6000000019941023277.ged`
+24430. `saved-6000000020013489270.ged`
+24431. `saved-6000000020109737178.ged`
+24432. `saved-6000000020146576832.ged`
+24433. `saved-6000000020146931228.ged`
+24434. `saved-6000000020182272013.ged`
+24435. `saved-6000000020344692199.ged`
+24436. `saved-6000000020344732085.ged`
+24437. `saved-6000000020344842981.ged`
+24438. `saved-6000000020377095239.ged`
+24439. `saved-6000000020473563984.ged`
+24440. `saved-6000000020475622749.ged`
+24441. `saved-6000000020475690473.ged`
+24442. `saved-6000000020492202008.ged`
+24443. `saved-6000000021039674210.ged`
+24444. `saved-6000000021039691973.ged`
+24445. `saved-6000000021079935250.ged`
+24446. `saved-6000000021131949939.ged`
+24447. `saved-6000000021132026143.ged`
+24448. `saved-6000000021139261439.ged`
+24449. `saved-6000000021143457434.ged`
+24450. `saved-6000000021331531124.ged`
+24451. `saved-6000000021331531144.ged`
+24452. `saved-6000000021399265460.ged`
+24453. `saved-6000000021423524876.ged`
+24454. `saved-6000000021423552972.ged`
+24455. `saved-6000000021438775306.ged`
+24456. `saved-6000000021442678985.ged`
+24457. `saved-6000000021499390330.ged`
+24458. `saved-6000000021500013763.ged`
+24459. `saved-6000000021501319830.ged`
+24460. `saved-6000000021545325820.ged`
+24461. `saved-6000000021546131052.ged`
+24462. `saved-6000000021635152223.ged`
+24463. `saved-6000000021649357634.ged`
+24464. `saved-6000000021649684059.ged`
+24465. `saved-6000000021651776645.ged`
+24466. `saved-6000000021652410546.ged`
+24467. `saved-6000000021656391531.ged`
+24468. `saved-6000000021829378478.ged`
+24469. `saved-6000000022067361271.ged`
+24470. `saved-6000000022699116782.ged`
+24471. `saved-6000000022823598236.ged`
+24472. `saved-6000000022823987873.ged`
+24473. `saved-6000000022826443643.ged`
+24474. `saved-6000000022905307808.ged`
+24475. `saved-6000000022905487598.ged`
+24476. `saved-6000000022980324190.ged`
+24477. `saved-6000000022981121872.ged`
+24478. `saved-6000000023007521972.ged`
+24479. `saved-6000000023045918112.ged`
+24480. `saved-6000000023047704443.ged`
+24481. `saved-6000000023093166835.ged`
+24482. `saved-6000000023188954676.ged`
+24483. `saved-6000000023189437982.ged`
+24484. `saved-6000000023250155337.ged`
+24485. `saved-6000000023666472983.ged`
+24486. `saved-6000000023680996844.ged`
+24487. `saved-6000000023738942040.ged`
+24488. `saved-6000000023739078847.ged`
+24489. `saved-6000000023768343105.ged`
+24490. `saved-6000000023855089493.ged`
+24491. `saved-6000000023858289958.ged`
+24492. `saved-6000000023858480076.ged`
+24493. `saved-6000000023921242233.ged`
+24494. `saved-6000000024105547515.ged`
+24495. `saved-6000000024106601099.ged`
+24496. `saved-6000000024304661912.ged`
+24497. `saved-6000000024431661697.ged`
+24498. `saved-6000000024431753429.ged`
+24499. `saved-6000000024431778428.ged`
+24500. `saved-6000000024548549483.ged`
+24501. `saved-6000000024583594541.ged`
+24502. `saved-6000000024583905275.ged`
+24503. `saved-6000000024617396092.ged`
+24504. `saved-6000000024666502056.ged`
+24505. `saved-6000000024841032051.ged`
+24506. `saved-6000000024851923471.ged`
+24507. `saved-6000000025124793875.ged`
+24508. `saved-6000000025153348204.ged`
+24509. `saved-6000000025592868536.ged`
+24510. `saved-6000000025592868542.ged`
+24511. `saved-6000000025819589873.ged`
+24512. `saved-6000000026173188815.ged`
+24513. `saved-6000000026173349636.ged`
+24514. `saved-6000000026173714009.ged`
+24515. `saved-6000000026191425197.ged`
+24516. `saved-6000000026226697810.ged`
+24517. `saved-6000000026241080028.ged`
+24518. `saved-6000000026258097510.ged`
+24519. `saved-6000000026534693043.ged`
+24520. `saved-6000000026893410996.ged`
+24521. `saved-6000000026972756419.ged`
+24522. `saved-6000000026975287820.ged`
+24523. `saved-6000000027109936984.ged`
+24524. `saved-6000000027340643370.ged`
+24525. `saved-6000000027438971715.ged`
+24526. `saved-6000000027439182158.ged`
+24527. `saved-6000000027507886451.ged`
+24528. `saved-6000000027592523666.ged`
+24529. `saved-6000000027593736914.ged`
+24530. `saved-6000000027645833651.ged`
+24531. `saved-6000000027654634894.ged`
+24532. `saved-6000000027665609376.ged`
+24533. `saved-6000000027842049766.ged`
+24534. `saved-6000000027842200337.ged`
+24535. `saved-6000000028278117400.ged`
+24536. `saved-6000000028408939773.ged`
+24537. `saved-6000000029363285200.ged`
+24538. `saved-6000000029363526786.ged`
+24539. `saved-6000000029364339263.ged`
+24540. `saved-6000000029364391060.ged`
+24541. `saved-6000000029742178286.ged`
+24542. `saved-6000000030008527586.ged`
+24543. `saved-6000000030008915196.ged`
+24544. `saved-6000000030009027971.ged`
+24545. `saved-6000000030042669829.ged`
+24546. `saved-6000000030384467074.ged`
+24547. `saved-6000000030756190508.ged`
+24548. `saved-6000000030756257752.ged`
+24549. `saved-6000000030775253849.ged`
+24550. `saved-6000000031001900951.ged`
+24551. `saved-6000000031009109101.ged`
+24552. `saved-6000000031247349696.ged`
+24553. `saved-6000000031495668940.ged`
+24554. `saved-6000000031521916552.ged`
+24555. `saved-6000000031522057461.ged`
+24556. `saved-6000000031833079710.ged`
+24557. `saved-6000000031873939968.ged`
+24558. `saved-6000000032045186110.ged`
+24559. `saved-6000000032068841409.ged`
+24560. `saved-6000000032658035873.ged`
+24561. `saved-6000000032943742081.ged`
+24562. `saved-6000000032976700619.ged`
+24563. `saved-6000000033096911541.ged`
+24564. `saved-6000000033438633013.ged`
+24565. `saved-6000000033442136907.ged`
+24566. `saved-6000000033547075516.ged`
+24567. `saved-6000000033547208139.ged`
+24568. `saved-6000000033547397933.ged`
+24569. `saved-6000000033864312339.ged`
+24570. `saved-6000000034197727224.ged`
+24571. `saved-6000000034255327598.ged`
+24572. `saved-6000000034357465956.ged`
+24573. `saved-6000000034357760862.ged`
+24574. `saved-6000000034945147419.ged`
+24575. `saved-6000000035169266389.ged`
+24576. `saved-6000000035169497997.ged`
+24577. `saved-6000000035306669685.ged`
+24578. `saved-6000000035451537211.ged`
+24579. `saved-6000000035525393426.ged`
+24580. `saved-6000000035525469386.ged`
+24581. `saved-6000000035525833995.ged`
+24582. `saved-6000000035525972877.ged`
+24583. `saved-6000000035842865927.ged`
+24584. `saved-6000000035953773820.ged`
+24585. `saved-6000000035956517862.ged`
+24586. `saved-6000000036357505108.ged`
+24587. `saved-6000000036357582274.ged`
+24588. `saved-6000000037035247723.ged`
+24589. `saved-6000000037035530796.ged`
+24590. `saved-6000000037061234630.ged`
+24591. `saved-6000000037061491552.ged`
+24592. `saved-6000000037080891969.ged`
+24593. `saved-6000000037499373524.ged`
+24594. `saved-6000000037499674070.ged`
+24595. `saved-6000000039348882765.ged`
+24596. `saved-6000000039632819016.ged`
+24597. `saved-6000000039766619938.ged`
+24598. `saved-6000000040374803004.ged`
+24599. `saved-6000000040464859483.ged`
+24600. `saved-6000000040996845017.ged`
+24601. `saved-6000000041536548158.ged`
+24602. `saved-6000000041537287092.ged`
+24603. `saved-6000000042729202545.ged`
+24604. `saved-6000000043648786217.ged`
+24605. `saved-6000000043649084885.ged`
+24606. `saved-6000000043649220131.ged`
+24607. `saved-6000000043815150026.ged`
+24608. `saved-6000000044128793940.ged`
+24609. `saved-6000000046292822989.ged`
+24610. `saved-6000000047943564981.ged`
+24611. `saved-6000000049134640939.ged`
+24612. `saved-6000000050635310838.ged`
+24613. `saved-6000000051276273861.ged`
+24614. `saved-6000000051555644950.ged`
+24615. `saved-6000000051556352836.ged`
+24616. `saved-6000000051633524915.ged`
+24617. `saved-6000000052215030827.ged`
+24618. `saved-6000000052215334833.ged`
+24619. `saved-6000000052215809962.ged`
+24620. `saved-6000000054990622176.ged`
+24621. `saved-6000000054992850924.ged`
+24622. `saved-6000000056330118941.ged`
+24623. `saved-6000000056333864823.ged`
+24624. `saved-6000000056945714362.ged`
+24625. `saved-6000000057172875007.ged`
+24626. `saved-6000000057175128821.ged`
+24627. `saved-6000000057327773067.ged`
+24628. `saved-6000000057959889971.ged`
+24629. `saved-6000000057959975839.ged`
+24630. `saved-6000000058002247415.ged`
+24631. `saved-6000000059809756110.ged`
+24632. `saved-6000000060993725243.ged`
+24633. `saved-6000000063114008888.ged`
+24634. `saved-6000000063114171008.ged`
+24635. `saved-6000000063114223064.ged`
+24636. `saved-6000000065981704822.ged`
+24637. `saved-6000000065991527068.ged`
+24638. `saved-6000000066263754251.ged`
+24639. `saved-6000000066264516851.ged`
+24640. `saved-6000000066264526835.ged`
+24641. `saved-6000000066264650876.ged`
+24642. `saved-6000000067502220858.ged`
+24643. `saved-6000000069050151452.ged`
+24644. `saved-6000000069051592822.ged`
+24645. `saved-6000000069466362236.ged`
+24646. `saved-6000000070396611338.ged`
+24647. `saved-6000000070497375043.ged`
+24648. `saved-6000000071637497156.ged`
+24649. `saved-6000000071638053857.ged`
+24650. `saved-6000000071638234914.ged`
+24651. `saved-6000000071638302829.ged`
+24652. `saved-6000000071638439878.ged`
+24653. `saved-6000000071768187852.ged`
+24654. `saved-6000000071769436089.ged`
+24655. `saved-6000000072112528902.ged`
+24656. `saved-6000000072962073961.ged`
+24657. `saved-6000000073011630896.ged`
+24658. `saved-6000000073057747827.ged`
+24659. `saved-6000000073120561949.ged`
+24660. `saved-6000000073132490036.ged`
+24661. `saved-6000000073622488100.ged`
+24662. `saved-6000000074341208894.ged`
+24663. `saved-6000000074341809000.ged`
+24664. `saved-6000000074342040898.ged`
+24665. `saved-6000000076761806976.ged`
+24666. `saved-6000000076805697475.ged`
+24667. `saved-6000000076807199992.ged`
+24668. `saved-6000000077107182863.ged`
+24669. `saved-6000000077297672317.ged`
+24670. `saved-6000000077297739021.ged`
+24671. `saved-6000000077316240007.ged`
+24672. `saved-6000000077667834821.ged`
+24673. `saved-6000000077762121855.ged`
+24674. `saved-6000000077795945062.ged`
+24675. `saved-6000000078378778833.ged`
+24676. `saved-6000000078379065845.ged`
+24677. `saved-6000000079267271590.ged`
+24678. `saved-6000000080929243843.ged`
+24679. `saved-6000000081000509607.ged`
+24680. `saved-6000000081001770518.ged`
+24681. `saved-6000000081001960578.ged`
+24682. `saved-6000000081001962237.ged`
+24683. `saved-6000000081003033570.ged`
+24684. `saved-6000000081003222288.ged`
+24685. `saved-6000000081003290197.ged`
+24686. `saved-6000000081003784512.ged`
+24687. `saved-6000000081003814187.ged`
+24688. `saved-6000000081003838952.ged`
+24689. `saved-6000000081003840360.ged`
+24690. `saved-6000000081003941823.ged`
+24691. `saved-6000000081004270036.ged`
+24692. `saved-6000000081729286896.ged`
+24693. `saved-6000000082033862114.ged`
+24694. `saved-6000000082819939353.ged`
+24695. `saved-6000000082822675871.ged`
+24696. `saved-6000000082862457204.ged`
+24697. `saved-6000000082894655175.ged`
+24698. `saved-6000000082895620836.ged`
+24699. `saved-6000000083072935969.ged`
+24700. `saved-6000000083767537112.ged`
+24701. `saved-6000000083767648821.ged`
+24702. `saved-6000000083768071842.ged`
+24703. `saved-6000000085676763948.ged`
+24704. `saved-6000000086903454833.ged`
+24705. `saved-6000000087535357291.ged`
+24706. `saved-6000000089141178845.ged`
+24707. `saved-6000000089141527885.ged`
+24708. `saved-6000000089171988019.ged`
+24709. `saved-6000000089437494952.ged`
+24710. `saved-6000000091348678858.ged`
+24711. `saved-6000000091348678867.ged`
+24712. `saved-6000000091348678897.ged`
+24713. `saved-6000000091525536068.ged`
+24714. `saved-6000000091525814902.ged`
+24715. `saved-6000000091526339970.ged`
+24716. `saved-6000000091526612901.ged`
+24717. `saved-6000000091528437842.ged`
+24718. `saved-6000000091529796831.ged`
+24719. `saved-6000000091602117821.ged`
+24720. `saved-6000000093411354957.ged`
+24721. `saved-6000000094193729218.ged`
+24722. `saved-6000000094194176187.ged`
+24723. `saved-6000000094725759821.ged`
+24724. `saved-6000000094788864010.ged`
+24725. `saved-6000000096398991038.ged`
+24726. `saved-6000000096399963028.ged`
+24727. `saved-6000000096400842905.ged`
+24728. `saved-6000000099934709827.ged`
+24729. `saved-6000000100082504307.ged`
+24730. `saved-6000000100302352316.ged`
+24731. `saved-6000000100733843835.ged`
+24732. `saved-6000000103633571840.ged`
+24733. `saved-6000000103752573902.ged`
+24734. `saved-6000000105712682826.ged`
+24735. `saved-6000000105715318851.ged`
+24736. `saved-6000000108322400841.ged`
+24737. `saved-6000000111817455021.ged`
+24738. `saved-6000000111817701912.ged`
+24739. `saved-6000000112537545366.ged`
+24740. `saved-6000000112538736189.ged`
+24741. `saved-6000000112538853251.ged`
+24742. `saved-6000000112539226128.ged`
+24743. `saved-6000000112539233010.ged`
+24744. `saved-6000000112539909876.ged`
+24745. `saved-6000000112539932868.ged`
+24746. `saved-6000000112540071069.ged`
+24747. `saved-6000000115667769821.ged`
+24748. `saved-6000000115668545101.ged`
+24749. `saved-6000000115668584966.ged`
+24750. `saved-6000000116694298987.ged`
+24751. `saved-6000000120884050897.ged`
+24752. `saved-6000000122450336924.ged`
+24753. `saved-6000000126234285831.ged`
+24754. `saved-6000000127314445823.ged`
+24755. `saved-6000000129556183032.ged`
+24756. `saved-6000000130515775874.ged`
+24757. `saved-6000000130516552831.ged`
+24758. `saved-6000000136584255821.ged`
+24759. `saved-6000000137763536821.ged`
+24760. `saved-6000000140114350029.ged`
+24761. `saved-6000000140996282158.ged`
+24762. `saved-6000000140997657859.ged`
+24763. `saved-6000000140998307832.ged`
+24764. `saved-6000000141085184010.ged`
+24765. `saved-6000000141086236875.ged`
+24766. `saved-6000000141991252871.ged`
+24767. `saved-6000000147798365860.ged`
+24768. `saved-6000000155055551821.ged`
+24769. `saved-6000000161721983869.ged`
+24770. `saved-6000000161721983881.ged`
+24771. `saved-6000000161721983893.ged`
+24772. `saved-6000000167856262821.ged`
+24773. `saved-6000000167857079822.ged`
+24774. `saved-6000000169037819865.ged`
+24775. `saved-6000000171058400024.ged`
+24776. `saved-6000000172054164872.ged`
+24777. `saved-6000000174847323565.ged`
+24778. `saved-6000000174849656050.ged`
+24779. `saved-6000000175680503879.ged`
+24780. `saved-6000000177462988887.ged`
+24781. `saved-6000000177463069892.ged`
+24782. `saved-6000000177463770840.ged`
+24783. `saved-6000000177920129831.ged`
+24784. `saved-6000000177921458827.ged`
+24785. `saved-6000000177921458833.ged`
+24786. `saved-6000000177921458845.ged`
+24787. `saved-6000000177921458863.ged`
+24788. `saved-6000000177921458990.ged`
+24789. `saved-6000000177921458999.ged`
+24790. `saved-6000000177921459033.ged`
+24791. `saved-6000000177921459052.ged`
+24792. `saved-6000000177921459056.ged`
+24793. `saved-6000000177921459066.ged`
+24794. `saved-6000000177921459072.ged`
+24795. `saved-6000000177921459078.ged`
+24796. `saved-6000000177921459094.ged`
+24797. `saved-6000000177921459104.ged`
+24798. `saved-6000000177921459114.ged`
+24799. `saved-6000000177921459129.ged`
+24800. `saved-6000000177921459134.ged`
+24801. `saved-6000000177921459169.ged`
+24802. `saved-6000000177921516822.ged`
+24803. `saved-6000000177921516839.ged`
+24804. `saved-6000000177921516859.ged`
+24805. `saved-6000000177944025822.ged`
+24806. `saved-6000000177987312850.ged`
+24807. `saved-6000000178669824833.ged`
+24808. `saved-6000000178670150833.ged`
+24809. `saved-6000000180280592858.ged`
+24810. `saved-6000000180285636825.ged`
+24811. `saved-6000000180745893830.ged`
+24812. `saved-6000000180823601861.ged`
+24813. `saved-6000000181163135859.ged`
+24814. `saved-6000000181166108829.ged`
+24815. `saved-6000000181289074845.ged`
+24816. `saved-6000000182737012832.ged`
+24817. `saved-6000000183986957910.ged`
+24818. `saved-6000000184169690842.ged`
+24819. `saved-6000000184267864840.ged`
+24820. `saved-6000000184442109821.ged`
+24821. `saved-6000000184590962909.ged`
+24822. `saved-6000000184888139875.ged`
+24823. `saved-6000000185157445888.ged`
+24824. `saved-6000000185158249846.ged`
+24825. `saved-6000000185447097943.ged`
+24826. `saved-6000000186115707839.ged`
+24827. `saved-6000000186609053824.ged`
+24828. `saved-6000000191391773823.ged`
+24829. `saved-6000000194783603884.ged`
+24830. `saved-6000000197656493859.ged`
+24831. `saved-6000000197657301823.ged`
+24832. `saved-6000000197657328821.ged`
+24833. `saved-6000000200892917834.ged`
+24834. `saved-6000000202543587856.ged`
+24835. `saved-6000000207618037836.ged`
+24836. `saved-6000000207769838867.ged`
+24837. `saved-6000000207770099821.ged`
+24838. `saved-6000000207770887863.ged`
+24839. `saved-6000000212832088822.ged`
+24840. `saved-6000000212832554822.ged`
+24841. `saved-6000000216588093869.ged`
+24842. `saved-6000000216588272880.ged`
+24843. `saved-6000000216825684836.ged`
+24844. `saved-6000000218930532858.ged`
+24845. `saved-6000000221151631885.ged`
+24846. `saved-6000000221151780844.ged`
+24847. `saved-6000000222599111823.ged`
+24848. `export-Descendants-6000000227668434852.ged`
+24849. `export-Descendants-6000000227676315909.ged`
+24850. `export-Forest-6000000227668434852.ged`
+24851. `export-Forest-6000000227676315909.ged`
+24852. `export-Forest-6000000227145774838.ged`
+24853. `export-Forest-6000000227147141927.ged`
+24854. `export-Forest-6000000227145420853.ged`
+24855. `export-Ancestors-6000000227739381826.ged`
+24856. `export-Ancestors-6000000227805352866.ged`
+24857. `export-Ancestors-6000000227816621867.ged`
+24858. `export-Descendants-6000000227036719829-refresh-20260913.ged`
+24859. `export-Descendants-6000000227036719829.ged`
+24860. `export-Descendants-6000000227733569883.ged`
+24861. `export-Descendants-6000000227733837031.ged`
+24862. `export-Descendants-6000000227735175860.ged`
+24863. `export-Descendants-6000000227735855842.ged`
+24864. `export-Descendants-6000000227749221232.ged`
+24865. `export-Descendants-6000000227750261857.ged`
+24866. `export-Descendants-6000000227804005917.ged`
+24867. `export-Descendants-6000000227805012893.ged`
+24868. `export-Descendants-6000000227816621867.ged`
+24869. `export-Forest-6000000178918141824-refresh.ged`
+24870. `export-Forest-6000000178918141824.ged`
+24871. `export-Forest-6000000227036719829-refresh-20260913.ged`
+24872. `export-Forest-6000000227036719829.ged`
+24873. `export-Forest-6000000227297029878-refresh-20260917.ged`
+24874. `export-Forest-6000000227413001839.ged`
+24875. `export-Forest-6000000227413445871.ged`
+24876. `export-Forest-6000000227413852831.ged`
+24877. `export-Forest-6000000227414103872.ged`
+24878. `export-Forest-6000000227415008926.ged`
+24879. `export-Forest-6000000227558482822.ged`
+24880. `export-Forest-6000000227558664902.ged`
+24881. `export-Forest-6000000227715260898.ged`
+24882. `export-Forest-6000000227739381826.ged`
+24883. `export-Forest-6000000227755683825.ged`
+24884. `export-Forest-6000000227802407043.ged`
+24885. `export-Forest-6000000227802431855.ged`
+24886. `export-Forest-6000000227802432937.ged`
+24887. `export-Forest-6000000227802697066.ged`
+24888. `export-Forest-6000000227802697137.ged`
+24889. `export-Forest-6000000227803023862.ged`
+24890. `export-Forest-6000000227803023904.ged`
+24891. `export-Forest-6000000227803024957.ged`
+24892. `export-Forest-6000000227803024982.ged`
+24893. `export-Forest-6000000227803024989.ged`
+24894. `export-Forest-6000000227803027847.ged`
+24895. `export-Forest-6000000227803029977.ged`
+24896. `export-Forest-6000000227803031913.ged`
+24897. `export-Forest-6000000227803032874.ged`
+24898. `export-Forest-6000000227803038858.ged`
+24899. `export-Forest-6000000227803041902.ged`
+24900. `export-Forest-6000000227803041931.ged`
+24901. `export-Forest-6000000227803060855.ged`
+24902. `export-Forest-6000000227803060959.ged`
+24903. `export-Forest-6000000227803061825.ged`
+24904. `export-Forest-6000000227803068881.ged`
+24905. `export-Forest-6000000227803073849.ged`
+24906. `export-Forest-6000000227803077823.ged`
+24907. `export-Forest-6000000227803089850.ged`
+24908. `export-Forest-6000000227803089879.ged`
+24909. `export-Forest-6000000227803089951.ged`
+24910. `export-Forest-6000000227803090852.ged`
+24911. `export-Forest-6000000227803104825.ged`
+24912. `export-Forest-6000000227805012893.ged`
+24913. `export-Forest-6000000227805073902.ged`
+24914. `export-Forest-6000000227805124882.ged`
+24915. `export-Forest-6000000227805352866.ged`
+24916. `export-Forest-6000000227805421869.ged`
+24917. `export-Forest-6000000227805430843.ged`
+24918. `export-Forest-6000000227811549827-2026-09-18T2314.ged`
+24919. `export-Forest-6000000227811549827.ged`
+24920. `export-Forest-6000000227815618073.ged`
+24921. `export-Forest-6000000227816205043.ged`
+24922. `export-Forest-6000000227816313859.ged`
+24923. `export-Forest-6000000227816363824.ged`
+24924. `export-Forest-6000000227816411855.ged`
+24925. `export-Forest-6000000227816541821.ged`
+24926. `export-Forest-6000000227816551825.ged`
+24927. `export-Forest-6000000227816621867.ged`
+24928. `export-Forest-6000000227816628912.ged`
+24929. `export-Forest-6000000227816629854.ged`
+24930. `export-Forest-6000000227816685869.ged`
+24931. `export-Forest-6000000227831634917.ged`
+24932. `export-Forest-6000000227831999861.ged`
+24933. `hotfix-romer-ingrid-parentage.ged`
+24934. `wikidata-qid-links.ged`
+24935. `identifications-now.ged`
+24936. `identifications-jan1.ged`
+24937. `identifications-passive.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 1033670 |
-| INDI | 2189295 |
+| FAM | 1036721 |
+| INDI | 2185241 |
 | SUBM | 58713 |
 
 ## What each source contributed
@@ -22949,54 +25082,54 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227746863827.ged` | 504 | 1072 | 11 | 5580 | 631 |
 | `export-Forest-6000000227712700862.ged` | 2517 | 4220 | 72 | 1611 | 356 |
 | `export-Forest-6000000227723403845.ged` | 439 | 825 | 1 | 7336 | 285 |
-| `export-Ancestors-3.ged` | 477 | 673 | 4 | 743 | 118 |
-| `export-BloodTree-38.ged` | 1887 | 3759 | 116 | 251 | 116 |
-| `export-BloodTree-8.ged` | 1233 | 3069 | 25 | 1336 | 399 |
-| `export-Descendants-20.ged` | 1588 | 1836 | 20 | 3585 | 733 |
-| `export-Descendants-33.ged` | 1276 | 2504 | 51 | 2364 | 407 |
+| `export-Ancestors-6000000220974565012.ged` | 0 | 0 | 0 | 1897 | 0 |
+| `export-BloodTree-6000000209755304828.ged` | 1887 | 3759 | 116 | 251 | 116 |
+| `export-BloodTree-6000000220631599842.ged` | 1233 | 3069 | 25 | 1336 | 399 |
 | `export-Descendants-45.ged` | 2005 | 3743 | 136 | 497 | 141 |
-| `export-Descendants-7.ged` | 1024 | 1799 | 30 | 3326 | 18 |
-| `export-Forest-10.ged` | 143 | 260 | 5 | 6263 | 268 |
-| `export-Forest-11.ged` | 0 | 0 | 0 | 6676 | 20 |
-| `export-Forest-12.ged` | 673 | 1222 | 11 | 4921 | 730 |
-| `export-Forest-13.ged` | 432 | 911 | 1 | 4724 | 253 |
-| `export-Forest-14.ged` | 947 | 2087 | 26 | 2955 | 308 |
-| `export-Forest-15.ged` | 2324 | 3921 | 333 | 594 | 79 |
-| `export-Forest-16.ged` | 360 | 720 | 5 | 5265 | 218 |
-| `export-Forest-17.ged` | 150 | 217 | 3 | 6015 | 86 |
-| `export-Forest-18.ged` | 441 | 1122 | 24 | 4331 | 295 |
-| `export-Forest-19.ged` | 941 | 3601 | 18 | 777 | 1199 |
-| `export-Forest-2.ged` | 209 | 407 | 10 | 1703 | 21 |
-| `export-Forest-21.ged` | 485 | 1369 | 6 | 3976 | 885 |
+| `export-Descendants-6000000210034958823.ged` | 1276 | 2504 | 51 | 2364 | 407 |
+| `export-Descendants-6000000211987119821.ged` | 20 | 170 | 0 | 8040 | 380 |
+| `export-Descendants-6000000220876233832.ged` | 15 | 34 | 2 | 8424 | 16 |
 | `export-Forest-22.ged` | 410 | 1676 | 40 | 3423 | 560 |
 | `export-Forest-23.ged` | 293 | 610 | 2 | 5138 | 170 |
-| `export-Forest-24.ged` | 916 | 2551 | 24 | 2150 | 709 |
-| `export-Forest-25.ged` | 224 | 580 | 3 | 5574 | 449 |
-| `export-Forest-26.ged` | 348 | 693 | 0 | 5089 | 160 |
-| `export-Forest-27.ged` | 1126 | 3686 | 264 | 687 | 112 |
-| `export-Forest-28.ged` | 1203 | 3892 | 1 | 202 | 226 |
-| `export-Forest-29.ged` | 1 | 113 | 0 | 6426 | 127 |
-| `export-Forest-30.ged` | 436 | 1171 | 16 | 4354 | 1042 |
-| `export-Forest-31.ged` | 754 | 1002 | 7 | 5693 | 781 |
-| `export-Forest-32.ged` | 320 | 594 | 3 | 5301 | 460 |
-| `export-Forest-34.ged` | 740 | 2749 | 106 | 1981 | 594 |
-| `export-Forest-35.ged` | 894 | 2472 | 31 | 2455 | 808 |
-| `export-Forest-36.ged` | 221 | 917 | 1 | 4541 | 904 |
-| `export-Forest-37.ged` | 948 | 1332 | 8 | 4413 | 812 |
-| `export-Forest-39.ged` | 901 | 3071 | 63 | 1420 | 419 |
 | `export-Forest-40.ged` | 1073 | 1463 | 20 | 5101 | 738 |
 | `export-Forest-41.ged` | 523 | 1656 | 15 | 3774 | 909 |
 | `export-Forest-42.ged` | 201 | 317 | 0 | 6190 | 416 |
 | `export-Forest-43.ged` | 667 | 1096 | 11 | 5102 | 635 |
 | `export-Forest-44.ged` | 167 | 281 | 1 | 6088 | 49 |
-| `export-Forest-46.ged` | 0 | 0 | 0 | 1919 | 0 |
-| `export-Forest-47.ged` | 583 | 1005 | 4 | 4952 | 141 |
-| `export-Forest-48.ged` | 15 | 34 | 0 | 6429 | 29 |
-| `export-Forest-49.ged` | 1 | 0 | 0 | 6387 | 2 |
-| `export-Forest-5.ged` | 403 | 641 | 6 | 5578 | 209 |
-| `export-Forest-50.ged` | 934 | 1585 | 5 | 3672 | 679 |
-| `export-Forest-6.ged` | 55 | 126 | 0 | 5798 | 80 |
-| `export-Forest-9.ged` | 0 | 6 | 0 | 6230 | 6 |
+| `export-Forest-46.ged` | 608 | 1171 | 17 | 123 | 68 |
+| `export-Forest-47.ged` | 1019 | 1790 | 17 | 3718 | 191 |
+| `export-Forest-48.ged` | 220 | 358 | 3 | 5897 | 199 |
+| `export-Forest-49.ged` | 9 | 3 | 0 | 6376 | 18 |
+| `export-Forest-50.ged` | 941 | 1593 | 5 | 3657 | 687 |
+| `export-Forest-6000000178918422849.ged` | 0 | 0 | 0 | 6860 | 0 |
+| `export-Forest-6000000179131571831.ged` | 1474 | 2589 | 5 | 2253 | 918 |
+| `export-Forest-6000000209042542914.ged` | 934 | 2201 | 21 | 2795 | 490 |
+| `export-Forest-6000000209053003954.ged` | 2291 | 3585 | 54 | 735 | 230 |
+| `export-Forest-6000000209058145828.ged` | 5 | 10 | 1 | 1407 | 8 |
+| `export-Forest-6000000209068285866.ged` | 0 | 0 | 0 | 1919 | 0 |
+| `export-Forest-6000000209078072833.ged` | 243 | 439 | 1 | 5789 | 250 |
+| `export-Forest-6000000209297192824.ged` | 220 | 359 | 3 | 5924 | 79 |
+| `export-Forest-6000000209508060845.ged` | 150 | 738 | 7 | 5120 | 674 |
+| `export-Forest-6000000209655085851.ged` | 9 | 88 | 3 | 6078 | 88 |
+| `export-Forest-6000000209782032914.ged` | 895 | 1582 | 14 | 3904 | 458 |
+| `export-Forest-6000000209934958825.ged` | 192 | 286 | 0 | 5860 | 262 |
+| `export-Forest-6000000210034958823.ged` | 448 | 730 | 25 | 4992 | 257 |
+| `export-Forest-6000000210455153850.ged` | 202 | 376 | 0 | 5626 | 308 |
+| `export-Forest-6000000210455841916.ged` | 45 | 82 | 0 | 6010 | 93 |
+| `export-Forest-6000000210483097857.ged` | 640 | 1040 | 0 | 4407 | 61 |
+| `export-Forest-6000000210483284822.ged` | 44 | 92 | 0 | 5900 | 16 |
+| `export-Forest-6000000210521076830.ged` | 827 | 1517 | 23 | 4134 | 668 |
+| `export-Forest-6000000210521625836.ged` | 1493 | 3858 | 174 | 92 | 1 |
+| `export-Forest-6000000210977860839.ged` | 54 | 76 | 0 | 6343 | 24 |
+| `export-Forest-6000000211785248844.ged` | 70 | 146 | 3 | 6061 | 27 |
+| `export-Forest-6000000211987119821.ged` | 57 | 66 | 1 | 7942 | 147 |
+| `export-Forest-6000000211988500829.ged` | 860 | 1582 | 21 | 4198 | 1647 |
+| `export-Forest-6000000212213503823.ged` | 211 | 379 | 1 | 5794 | 128 |
+| `export-Forest-6000000212213649822.ged` | 149 | 302 | 2 | 5897 | 59 |
+| `export-Forest-6000000220876233832.ged` | 104 | 133 | 2 | 7779 | 156 |
+| `export-Forest-6000000220974565012.ged` | 425 | 706 | 8 | 5489 | 188 |
+| `export-Forest-6000000221219228904.ged` | 1475 | 2650 | 23 | 2416 | 339 |
+| `export-Forest-6000000227039926826.ged` | 103 | 219 | 1 | 7921 | 230 |
 | `export-Descendants-6000000227725484834.ged` | 1832 | 4966 | 175 | 147 | 122 |
 | `export-Descendants-6000000227741310007.ged` | 1417 | 4077 | 128 | 1368 | 289 |
 | `export-Descendants-6000000227741680915.ged` | 1413 | 3491 | 120 | 2446 | 814 |
@@ -23564,9 +25697,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-41.ged` | 523 | 1656 | 15 | 3774 | 909 |
 | `export-Forest-42.ged` | 201 | 317 | 0 | 6190 | 416 |
 | `export-Forest-43.ged` | 667 | 1096 | 11 | 5102 | 635 |
-| `sweep-parsed-2026-09-24-01.ged` | 0 | 183571 | 0 | 16429 | 20174 |
-| `sweep-parsed-2026-09-24-02.ged` | 11232 | 179907 | 0 | 8861 | 9580 |
-| `sweep-parsed-2026-09-24-03.ged` | 140235 | 0 | 0 | 0 | 0 |
+| `sweep-parsed-2026-09-24-01.ged` | 0 | 183672 | 0 | 16328 | 20093 |
+| `sweep-parsed-2026-09-24-02.ged` | 17805 | 173326 | 0 | 8869 | 9608 |
+| `sweep-parsed-2026-09-24-03.ged` | 131122 | 0 | 0 | 0 | 0 |
 | `export-Forest-6000000227351174975.ged` | 128 | 230 | 0 | 7548 | 81 |
 | `andrew-andy-roy-gibb.ged` | 37 | 12 | 0 | 26 | 15 |
 | `arne-garborg-to-johannes-bureus-geni.ged` | 17 | 0 | 0 | 18 | 12 |
@@ -29657,7 +31790,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000012827873428-blood.ged` | 2 | 2 | 0 | 119 | 0 |
 | `harvested-path-geni-6000000012832882801-inlaw.ged` | 1 | 1 | 0 | 33 | 0 |
 | `harvested-path-geni-6000000012835798208-blood.ged` | 9 | 9 | 0 | 75 | 0 |
-| `harvested-path-geni-6000000012835798208-inlaw.ged` | 13 | 9 | 0 | 43 | 5 |
+| `harvested-path-geni-6000000012835798208-inlaw.ged` | 13 | 8 | 0 | 44 | 7 |
 | `harvested-path-geni-6000000012836337680-blood.ged` | 13 | 12 | 0 | 80 | 1 |
 | `harvested-path-geni-6000000012838158474-inlaw.ged` | 6 | 1 | 0 | 60 | 2 |
 | `harvested-path-geni-6000000012838698894-inlaw.ged` | 7 | 6 | 0 | 28 | 1 |
@@ -33319,7 +35452,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000023142034990-inlaw.ged` | 6 | 1 | 0 | 32 | 4 |
 | `harvested-path-geni-6000000023158223706-inlaw.ged` | 1 | 1 | 0 | 41 | 0 |
 | `harvested-path-geni-6000000023158878828-inlaw.ged` | 9 | 5 | 0 | 29 | 4 |
-| `harvested-path-geni-6000000023163552008-inlaw.ged` | 5 | 2 | 0 | 42 | 6 |
+| `harvested-path-geni-6000000023163552008-inlaw.ged` | 5 | 1 | 0 | 43 | 8 |
 | `harvested-path-geni-6000000023165120920-blood.ged` | 0 | 0 | 0 | 107 | 0 |
 | `harvested-path-geni-6000000023165532930-blood.ged` | 9 | 9 | 0 | 85 | 0 |
 | `harvested-path-geni-6000000023175163384-blood.ged` | 12 | 8 | 0 | 53 | 4 |
@@ -34568,7 +36701,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000027312303230-inlaw.ged` | 15 | 10 | 0 | 24 | 5 |
 | `harvested-path-geni-6000000027321190623-inlaw.ged` | 13 | 11 | 0 | 23 | 2 |
 | `harvested-path-geni-6000000027323585554-blood.ged` | 17 | 17 | 0 | 77 | 0 |
-| `harvested-path-geni-6000000027327450610-inlaw.ged` | 10 | 9 | 0 | 32 | 2 |
+| `harvested-path-geni-6000000027327450610-inlaw.ged` | 10 | 8 | 0 | 33 | 4 |
 | `harvested-path-geni-6000000027340741738-inlaw.ged` | 10 | 10 | 0 | 25 | 0 |
 | `harvested-path-geni-6000000027343025282-blood.ged` | 8 | 8 | 0 | 87 | 0 |
 | `harvested-path-geni-6000000027344269640-blood.ged` | 12 | 12 | 0 | 87 | 0 |
@@ -36039,7 +38172,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000035323950642-inlaw.ged` | 9 | 9 | 0 | 29 | 0 |
 | `harvested-path-geni-6000000035324104408-blood.ged` | 2 | 2 | 0 | 93 | 0 |
 | `harvested-path-geni-6000000035324184157-blood.ged` | 0 | 0 | 0 | 95 | 0 |
-| `harvested-path-geni-6000000035334671266-blood.ged` | 13 | 3 | 0 | 79 | 19 |
+| `harvested-path-geni-6000000035334671266-blood.ged` | 13 | 4 | 0 | 78 | 17 |
 | `harvested-path-geni-6000000035334671266-inlaw.ged` | 11 | 10 | 0 | 26 | 0 |
 | `harvested-path-geni-6000000035335980839-inlaw.ged` | 7 | 3 | 0 | 35 | 0 |
 | `harvested-path-geni-6000000035356611926-blood.ged` | 9 | 9 | 0 | 27 | 0 |
@@ -39125,7 +41258,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000075481223852-inlaw.ged` | 5 | 5 | 0 | 119 | 0 |
 | `harvested-path-geni-6000000075490703109-inlaw.ged` | 2 | 2 | 0 | 39 | 0 |
 | `harvested-path-geni-6000000075495703033-inlaw.ged` | 1 | 1 | 0 | 17 | 0 |
-| `harvested-path-geni-6000000075567549954-inlaw.ged` | 3 | 3 | 0 | 43 | 0 |
+| `harvested-path-geni-6000000075567549954-inlaw.ged` | 3 | 2 | 0 | 44 | 2 |
 | `harvested-path-geni-6000000075579391435-inlaw.ged` | 1 | 1 | 0 | 27 | 0 |
 | `harvested-path-geni-6000000075593516901-blood.ged` | 7 | 7 | 0 | 89 | 0 |
 | `harvested-path-geni-6000000075598175865-blood.ged` | 4 | 1 | 0 | 82 | 2 |
@@ -40462,7 +42595,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000109043858229-blood.ged` | 2 | 0 | 0 | 41 | 2 |
 | `harvested-path-geni-6000000109045682834-inlaw.ged` | 10 | 5 | 0 | 36 | 7 |
 | `harvested-path-geni-6000000109074105880-inlaw.ged` | 14 | 8 | 0 | 25 | 6 |
-| `harvested-path-geni-6000000109107266011-inlaw.ged` | 9 | 8 | 0 | 38 | 2 |
+| `harvested-path-geni-6000000109107266011-inlaw.ged` | 9 | 7 | 0 | 39 | 4 |
 | `harvested-path-geni-6000000109139929839-blood.ged` | 8 | 0 | 0 | 109 | 7 |
 | `harvested-path-geni-6000000109252496833-blood.ged` | 11 | 11 | 0 | 59 | 0 |
 | `harvested-path-geni-6000000109254614917-inlaw.ged` | 16 | 15 | 0 | 24 | 1 |
@@ -40810,7 +42943,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000135075172901-blood.ged` | 6 | 4 | 0 | 41 | 2 |
 | `harvested-path-geni-6000000135075172901-inlaw.ged` | 1 | 0 | 0 | 42 | 0 |
 | `harvested-path-geni-6000000135098065874-blood.ged` | 6 | 6 | 0 | 89 | 0 |
-| `harvested-path-geni-6000000135144905835-inlaw.ged` | 5 | 2 | 0 | 38 | 2 |
+| `harvested-path-geni-6000000135144905835-inlaw.ged` | 5 | 1 | 0 | 39 | 4 |
 | `harvested-path-geni-6000000135502095821-inlaw.ged` | 1 | 1 | 0 | 49 | 0 |
 | `harvested-path-geni-6000000135503074821-inlaw.ged` | 1 | 1 | 0 | 49 | 0 |
 | `harvested-path-geni-6000000135504232821-inlaw.ged` | 1 | 1 | 0 | 49 | 0 |
@@ -41147,7 +43280,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000168144416228-inlaw.ged` | 2 | 2 | 0 | 45 | 0 |
 | `harvested-path-geni-6000000168149215921-inlaw.ged` | 2 | 2 | 0 | 47 | 0 |
 | `harvested-path-geni-6000000168176616213-inlaw.ged` | 9 | 5 | 0 | 39 | 4 |
-| `harvested-path-geni-6000000168178130923-inlaw.ged` | 7 | 6 | 0 | 36 | 1 |
+| `harvested-path-geni-6000000168178130923-inlaw.ged` | 7 | 5 | 0 | 37 | 3 |
 | `harvested-path-geni-6000000168178131045-inlaw.ged` | 1 | 1 | 0 | 47 | 0 |
 | `harvested-path-geni-6000000168178131054-inlaw.ged` | 1 | 1 | 0 | 47 | 0 |
 | `harvested-path-geni-6000000168178131067-inlaw.ged` | 1 | 1 | 0 | 47 | 0 |
@@ -43019,6 +45152,7 @@ Sources in merge order (later sources win value conflicts):
 | `isolate-geni-hugo-bernhard-raham-gi-1886-1941.ged` | 0 | 0 | 0 | 37 | 0 |
 | `isolate-geni-ignacio-braulio-anzo-tegui-s-enz-1905-1978-buenos-aires.ged` | 0 | 0 | 0 | 103 | 0 |
 | `isolate-geni-ignaz-paul-vital-troxler-1780-1866-aarau.ged` | 0 | 0 | 0 | 69 | 0 |
+| `isolate-geni-inger-axelsdatter-g-ntersberg-1571-1613-voss.ged` | 24 | 11 | 0 | 18 | 10 |
 | `isolate-geni-ingvald-enersen-1859-1938.ged` | 0 | 0 | 0 | 40 | 0 |
 | `isolate-geni-isak-bj-rklund-1686-1740-turku-bo.ged` | 0 | 0 | 0 | 41 | 0 |
 | `isolate-geni-ivar-christian-hallstr-m-1826-1901.ged` | 5 | 0 | 0 | 111 | 4 |
@@ -43030,6 +45164,7 @@ Sources in merge order (later sources win value conflicts):
 | `isolate-geni-jacques-jacob-ludvig-borelius-1859-1921-lund.ged` | 0 | 0 | 0 | 114 | 0 |
 | `isolate-geni-jakob-lennart-simons-1905-1986-helsingfors.ged` | 0 | 0 | 0 | 45 | 0 |
 | `isolate-geni-james-fred-rippy-phd-1892-1977-wilmington.ged` | 0 | 0 | 0 | 111 | 0 |
+| `isolate-geni-james-vi-i-stewart-king-of-scots-king-of-england-irelan.ged` | 3 | 0 | 0 | 89 | 0 |
 | `isolate-geni-jan-arvid-hellstr-m-1941-1994-v-xj.ged` | 0 | 0 | 0 | 106 | 0 |
 | `isolate-geni-jan-groth-1938-2022.ged` | 0 | 0 | 0 | 72 | 0 |
 | `isolate-geni-jarl-axel-wasastjerna-1896-1972-helsinki.ged` | 0 | 0 | 0 | 82 | 0 |
@@ -43398,447 +45533,447 @@ Sources in merge order (later sources win value conflicts):
 | `r-chaim-itzkowitz-volozhiner.ged` | 6 | 0 | 0 | 69 | 4 |
 | `rabbi-yisrael-gershon-soloveitchik.ged` | 1 | 1 | 0 | 83 | 0 |
 | `randolph-paulus-borsheim.ged` | 0 | 0 | 0 | 36 | 0 |
-| `saved-349440463640013536.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-365466687720012045.ged` | 5 | 4 | 0 | 5 | 1 |
-| `saved-3696730.ged` | 4 | 1 | 0 | 12 | 4 |
-| `saved-375738756460004676.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-4077210.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-4077390.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-4103872.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-349440463640013536.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-365466687720012045.ged` | 5 | 0 | 0 | 9 | 1 |
+| `saved-3696730.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-375738756460004676.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4077210.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4077390.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4103872.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-4366030.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-4376103.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-4627273.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-4946518870490042172.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-4976573922110117540.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-4984086862270100347.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-5235605714220070458.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-5271489675500023723.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-5305294636990124817.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-5441313740220126371.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-5447505087810135067.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-5502964838900085605.ged` | 4 | 3 | 0 | 7 | 2 |
-| `saved-6000000000012602183.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000135924403.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000000136616524.ged` | 4 | 0 | 0 | 11 | 8 |
-| `saved-6000000000136688085.ged` | 4 | 0 | 0 | 8 | 4 |
-| `saved-6000000000139648597.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-4376103.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-4627273.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4946518870490042172.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-4976573922110117540.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-4984086862270100347.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-5235605714220070458.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5271489675500023723.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5305294636990124817.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-5441313740220126371.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-5447505087810135067.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5502964838900085605.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000000012602183.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000135924403.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000136616524.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000000136688085.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000000139648597.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000000186421249.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000000196218118.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000000351087662.ged` | 6 | 0 | 0 | 13 | 4 |
-| `saved-6000000000351087701.ged` | 5 | 3 | 0 | 10 | 3 |
-| `saved-6000000000424848932.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000000437044109.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000000437316601.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000000437327174.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000437669873.ged` | 6 | 0 | 0 | 13 | 2 |
-| `saved-6000000000467542216.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000000574078388.ged` | 6 | 0 | 0 | 13 | 4 |
-| `saved-6000000000638286399.ged` | 4 | 10 | 0 | 3 | 1 |
-| `saved-6000000000666780234.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000687421882.ged` | 5 | 6 | 0 | 7 | 1 |
-| `saved-6000000000694158525.ged` | 4 | 0 | 0 | 14 | 11 |
-| `saved-6000000000728299766.ged` | 2 | 0 | 0 | 13 | 4 |
-| `saved-6000000000756952602.ged` | 2 | 0 | 0 | 13 | 7 |
+| `saved-6000000000196218118.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000351087662.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000351087701.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000424848932.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000437044109.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000437316601.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000000437327174.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000437669873.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000467542216.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000574078388.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000638286399.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000666780234.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000687421882.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000694158525.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000000728299766.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000000756952602.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000000757999620.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000000758079676.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000000768957873.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000000866353020.ged` | 4 | 3 | 0 | 10 | 5 |
-| `saved-6000000000873947684.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000000891680343.ged` | 6 | 0 | 0 | 13 | 2 |
-| `saved-6000000001088154772.ged` | 3 | 1 | 0 | 4 | 1 |
-| `saved-6000000001138735296.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000001139071013.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001144914191.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000001169154976.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000001169171714.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001169235389.ged` | 6 | 0 | 0 | 13 | 8 |
-| `saved-6000000001169238166.ged` | 4 | 2 | 0 | 11 | 6 |
-| `saved-6000000001169313832.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001196257237.ged` | 3 | 0 | 0 | 15 | 8 |
+| `saved-6000000000758079676.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000768957873.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000866353020.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000000873947684.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000891680343.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000001088154772.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000001138735296.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001139071013.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001144914191.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001169154976.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001169171714.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000001169235389.ged` | 6 | 0 | 0 | 13 | 2 |
+| `saved-6000000001169238166.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000001169313832.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001196257237.ged` | 3 | 0 | 0 | 15 | 2 |
 | `saved-6000000001198860794.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000001199993264.ged` | 4 | 0 | 0 | 10 | 7 |
-| `saved-6000000001200028258.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000001311917463.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000001412881746.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000001506899998.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000001584382671.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001584801190.ged` | 4 | 0 | 0 | 10 | 6 |
-| `saved-6000000001593637951.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000001614845637.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000001199993264.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000001200028258.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001311917463.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000001412881746.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001506899998.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001584382671.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001584801190.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000001593637951.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000001614845637.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000001651460598.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000001651502714.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000001651629109.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001708363985.ged` | 5 | 0 | 0 | 12 | 4 |
-| `saved-6000000001711091993.ged` | 5 | 0 | 0 | 13 | 2 |
-| `saved-6000000001770188397.ged` | 5 | 0 | 0 | 13 | 9 |
-| `saved-6000000001770214443.ged` | 3 | 0 | 0 | 5 | 2 |
-| `saved-6000000001821102369.ged` | 6 | 0 | 0 | 13 | 4 |
+| `saved-6000000001651629109.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001708363985.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000001711091993.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001770188397.ged` | 5 | 0 | 0 | 13 | 3 |
+| `saved-6000000001770214443.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000001821102369.ged` | 6 | 0 | 0 | 13 | 1 |
 | `saved-6000000001827575240.ged` | 1 | 0 | 0 | 14 | 2 |
-| `saved-6000000001827582117.ged` | 2 | 0 | 0 | 14 | 3 |
+| `saved-6000000001827582117.ged` | 2 | 0 | 0 | 14 | 2 |
 | `saved-6000000001827610153.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000001838607806.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000001838879990.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-6000000001969506851.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001969599119.ged` | 3 | 0 | 0 | 14 | 3 |
+| `saved-6000000001838607806.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001838879990.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000001969506851.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001969599119.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000001995109345.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000002017898070.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000002043263103.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000002078094635.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000002078126382.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000002163543379.ged` | 3 | 0 | 0 | 10 | 8 |
-| `saved-6000000002187796542.ged` | 4 | 4 | 0 | 10 | 5 |
-| `saved-6000000002187851434.ged` | 4 | 0 | 0 | 12 | 6 |
+| `saved-6000000002017898070.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002043263103.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002078094635.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002078126382.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002163543379.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-6000000002187796542.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000002187851434.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000002188110562.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002188289908.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000002188578738.ged` | 3 | 0 | 0 | 9 | 3 |
-| `saved-6000000002226068159.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000002188289908.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002188578738.ged` | 3 | 0 | 0 | 9 | 2 |
+| `saved-6000000002226068159.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000002245279564.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002267060138.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000002277862058.ged` | 5 | 5 | 0 | 8 | 6 |
-| `saved-6000000002330980548.ged` | 5 | 1 | 0 | 8 | 5 |
-| `saved-6000000002342416311.ged` | 5 | 0 | 0 | 13 | 3 |
+| `saved-6000000002267060138.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000002277862058.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002330980548.ged` | 5 | 0 | 0 | 9 | 1 |
+| `saved-6000000002342416311.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000002391959353.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000002434214184.ged` | 4 | 0 | 0 | 14 | 3 |
+| `saved-6000000002434214184.ged` | 4 | 0 | 0 | 14 | 2 |
 | `saved-6000000002463510938.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000002481819312.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000002482084257.ged` | 4 | 0 | 0 | 14 | 9 |
-| `saved-6000000002482165558.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000002481819312.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000002482084257.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000002482165558.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000002512346178.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000002516491073.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000002527461568.ged` | 4 | 0 | 0 | 7 | 2 |
-| `saved-6000000002572699392.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000002572701505.ged` | 4 | 0 | 0 | 9 | 3 |
-| `saved-6000000002572783163.ged` | 4 | 0 | 0 | 14 | 5 |
-| `saved-6000000002588347233.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000002744891329.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000002748554800.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000002750545795.ged` | 3 | 0 | 0 | 8 | 6 |
-| `saved-6000000002847945015.ged` | 3 | 4 | 0 | 2 | 1 |
-| `saved-6000000002866077692.ged` | 3 | 0 | 0 | 13 | 5 |
+| `saved-6000000002516491073.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002527461568.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000002572699392.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002572701505.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000002572783163.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000002588347233.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000002744891329.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000002748554800.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002750545795.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000002847945015.ged` | 3 | 0 | 0 | 6 | 1 |
+| `saved-6000000002866077692.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000002866078652.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000002893299341.ged` | 6 | 0 | 0 | 12 | 7 |
+| `saved-6000000002893299341.ged` | 6 | 0 | 0 | 12 | 1 |
 | `saved-6000000002893299372.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000002893316227.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002893322314.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000002893330286.ged` | 3 | 0 | 0 | 13 | 2 |
-| `saved-6000000002893335701.ged` | 5 | 1 | 0 | 12 | 7 |
-| `saved-6000000002916189513.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000002920620224.ged` | 6 | 0 | 0 | 13 | 4 |
-| `saved-6000000003012468747.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003025853747.ged` | 4 | 0 | 0 | 10 | 7 |
+| `saved-6000000002893322314.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002893330286.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002893335701.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002916189513.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002920620224.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000003012468747.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003025853747.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000003026039395.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003043806217.ged` | 5 | 0 | 0 | 11 | 3 |
-| `saved-6000000003049156212.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000003076221220.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000003087080306.ged` | 7 | 0 | 0 | 13 | 4 |
-| `saved-6000000003094916337.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003094967990.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000003094971035.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000003095003918.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000003095060610.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000003095080287.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003101980999.ged` | 5 | 2 | 0 | 11 | 2 |
-| `saved-6000000003102253400.ged` | 3 | 2 | 0 | 5 | 3 |
-| `saved-6000000003102295068.ged` | 4 | 0 | 0 | 9 | 4 |
-| `saved-6000000003125438035.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003152860875.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000003253261775.ged` | 3 | 0 | 0 | 13 | 7 |
+| `saved-6000000003043806217.ged` | 5 | 0 | 0 | 11 | 1 |
+| `saved-6000000003049156212.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003076221220.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003087080306.ged` | 7 | 0 | 0 | 13 | 1 |
+| `saved-6000000003094916337.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000003094967990.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000003094971035.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095003918.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003095060610.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095080287.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000003101980999.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003102253400.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000003102295068.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000003125438035.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003152860875.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003253261775.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000003253460860.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000003253601093.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000003332799114.ged` | 4 | 1 | 0 | 12 | 8 |
-| `saved-6000000003332823073.ged` | 4 | 1 | 0 | 12 | 1 |
-| `saved-6000000003355801643.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003253601093.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003332799114.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003332823073.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003355801643.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000003367976924.ged` | 1 | 0 | 0 | 4 | 1 |
-| `saved-6000000003401838954.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003418900347.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000003484293276.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000003491988509.ged` | 3 | 0 | 0 | 13 | 7 |
+| `saved-6000000003401838954.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003418900347.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003484293276.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003491988509.ged` | 3 | 0 | 0 | 13 | 5 |
 | `saved-6000000003491988584.ged` | 2 | 0 | 0 | 14 | 2 |
 | `saved-6000000003491988599.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003491988619.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000003492029785.ged` | 4 | 3 | 0 | 10 | 6 |
-| `saved-6000000003492033993.ged` | 4 | 0 | 0 | 14 | 4 |
-| `saved-6000000003492057788.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000003492064709.ged` | 3 | 0 | 0 | 12 | 3 |
-| `saved-6000000003559734445.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000003645919492.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000003645919625.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000003645940658.ged` | 3 | 0 | 0 | 12 | 4 |
-| `saved-6000000003646023820.ged` | 4 | 0 | 0 | 6 | 2 |
+| `saved-6000000003491988619.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000003492029785.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492033993.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000003492057788.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492064709.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000003559734445.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003645919492.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003645919625.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003645940658.ged` | 3 | 0 | 0 | 12 | 2 |
+| `saved-6000000003646023820.ged` | 4 | 0 | 0 | 6 | 1 |
 | `saved-6000000003646023907.ged` | 4 | 0 | 0 | 14 | 1 |
-| `saved-6000000003783022260.ged` | 3 | 0 | 0 | 12 | 7 |
+| `saved-6000000003783022260.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000003805720033.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000003827445550.ged` | 1 | 0 | 0 | 13 | 1 |
-| `saved-6000000003858704239.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000003869622559.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003887729856.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000003897585979.ged` | 3 | 0 | 0 | 7 | 2 |
-| `saved-6000000003958968521.ged` | 2 | 10 | 0 | 2 | 1 |
-| `saved-6000000004027712640.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000004105285975.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000004214433404.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000004533176419.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000004647605698.ged` | 4 | 0 | 0 | 12 | 8 |
-| `saved-6000000004671044584.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000004863275809.ged` | 4 | 0 | 0 | 7 | 3 |
+| `saved-6000000003858704239.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003869622559.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003887729856.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003897585979.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000003958968521.ged` | 2 | 0 | 0 | 12 | 1 |
+| `saved-6000000004027712640.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004105285975.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004214433404.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000004533176419.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000004647605698.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000004671044584.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004863275809.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000004863611375.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000004863761158.ged` | 3 | 0 | 0 | 9 | 7 |
+| `saved-6000000004863761158.ged` | 3 | 0 | 0 | 9 | 1 |
 | `saved-6000000004863823276.ged` | 0 | 0 | 0 | 5 | 1 |
 | `saved-6000000004869049343.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000004870648136.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000005074489379.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000005381997903.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000005382299298.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000005414590318.ged` | 6 | 0 | 0 | 13 | 7 |
-| `saved-6000000005545740001.ged` | 4 | 11 | 0 | 2 | 1 |
-| `saved-6000000005581573549.ged` | 4 | 5 | 0 | 8 | 6 |
-| `saved-6000000005598851255.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000005606851579.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000005606886765.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000005606886780.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000005606886827.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000005606976930.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000005607042284.ged` | 5 | 0 | 0 | 13 | 5 |
+| `saved-6000000005381997903.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005382299298.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005414590318.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000005545740001.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000005581573549.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005598851255.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606851579.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606886765.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606886780.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000005606886827.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000005606976930.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607042284.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000005607042309.ged` | 3 | 0 | 0 | 8 | 1 |
-| `saved-6000000005607119313.ged` | 2 | 0 | 0 | 13 | 12 |
+| `saved-6000000005607119313.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000005607123730.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000005607268671.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000005607282941.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000005607296161.ged` | 6 | 0 | 0 | 13 | 3 |
-| `saved-6000000005607335640.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000005607365269.ged` | 6 | 2 | 0 | 11 | 7 |
-| `saved-6000000005607439733.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000005607599821.ged` | 4 | 0 | 0 | 13 | 4 |
+| `saved-6000000005607268671.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000005607282941.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000005607296161.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607335640.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607365269.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607439733.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607599821.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-6000000005607884543.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000005608934604.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000005609028769.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000005609304829.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000005609304839.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000005609458561.ged` | 3 | 0 | 0 | 12 | 5 |
-| `saved-6000000005609518095.ged` | 3 | 0 | 0 | 14 | 3 |
+| `saved-6000000005608934604.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005609028769.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000005609304829.ged` | 2 | 0 | 0 | 13 | 4 |
+| `saved-6000000005609304839.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000005609458561.ged` | 3 | 0 | 0 | 12 | 2 |
+| `saved-6000000005609518095.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000005609522416.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000005609522426.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000005609547535.ged` | 5 | 0 | 0 | 13 | 2 |
 | `saved-6000000005609547544.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000005609547691.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000005744994368.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000005744994427.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000005795638082.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000005795638104.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000005856163014.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000006127859612.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000006171259545.ged` | 4 | 2 | 0 | 11 | 3 |
+| `saved-6000000005609547691.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000005744994368.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005744994427.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005795638082.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000005795638104.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005856163014.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006127859612.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006171259545.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-6000000006183866418.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000006253433055.ged` | 4 | 7 | 0 | 6 | 1 |
-| `saved-6000000006253635635.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000006277556378.ged` | 8 | 0 | 0 | 15 | 7 |
-| `saved-6000000006589193224.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000006253433055.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006253635635.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000006277556378.ged` | 8 | 0 | 0 | 15 | 2 |
+| `saved-6000000006589193224.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000006602653847.ged` | 5 | 0 | 0 | 13 | 2 |
-| `saved-6000000006769001160.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000006776171892.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000006776187362.ged` | 4 | 0 | 0 | 12 | 3 |
-| `saved-6000000006776187394.ged` | 3 | 0 | 0 | 9 | 2 |
-| `saved-6000000006776187410.ged` | 4 | 6 | 0 | 6 | 2 |
-| `saved-6000000006991041605.ged` | 4 | 2 | 0 | 11 | 2 |
-| `saved-6000000007006053264.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000007020763500.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000007058802262.ged` | 4 | 8 | 0 | 5 | 2 |
-| `saved-6000000007062931743.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000007062987558.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000007114444629.ged` | 3 | 6 | 0 | 5 | 1 |
-| `saved-6000000007225974316.ged` | 4 | 0 | 0 | 9 | 2 |
-| `saved-6000000007243462851.ged` | 3 | 9 | 0 | 4 | 3 |
-| `saved-6000000007259558393.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000007304150583.ged` | 6 | 8 | 0 | 5 | 2 |
-| `saved-6000000007339101221.ged` | 3 | 4 | 0 | 3 | 1 |
-| `saved-6000000007511564057.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000007549309545.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000007559278400.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000007581296353.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000006769001160.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000006776171892.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006776187362.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000006776187394.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000006776187410.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000006991041605.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007006053264.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000007020763500.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007058802262.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007062931743.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007062987558.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000007114444629.ged` | 3 | 0 | 0 | 11 | 1 |
+| `saved-6000000007225974316.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000007243462851.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007259558393.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000007304150583.ged` | 6 | 0 | 0 | 13 | 6 |
+| `saved-6000000007339101221.ged` | 3 | 0 | 0 | 7 | 3 |
+| `saved-6000000007511564057.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007549309545.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000007559278400.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007581296353.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000007588187341.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000007588187344.ged` | 4 | 0 | 0 | 8 | 2 |
-| `saved-6000000007589095414.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000007588187344.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000007589095414.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000007635630874.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000007635630965.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000007635631030.ged` | 5 | 0 | 0 | 14 | 5 |
-| `saved-6000000007661859262.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000007676113728.ged` | 3 | 3 | 0 | 9 | 8 |
+| `saved-6000000007635631030.ged` | 5 | 0 | 0 | 14 | 2 |
+| `saved-6000000007661859262.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007676113728.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000007773104021.ged` | 3 | 0 | 0 | 12 | 1 |
-| `saved-6000000007826003451.ged` | 4 | 0 | 0 | 9 | 8 |
-| `saved-6000000007958767639.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000007959864423.ged` | 4 | 1 | 0 | 11 | 2 |
-| `saved-6000000007980520044.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000008034160064.ged` | 6 | 1 | 0 | 12 | 7 |
-| `saved-6000000008106241912.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000008115020929.ged` | 3 | 0 | 0 | 14 | 3 |
+| `saved-6000000007826003451.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000007958767639.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007959864423.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007980520044.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000008034160064.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000008106241912.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008115020929.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000008115048412.ged` | 4 | 0 | 0 | 14 | 2 |
-| `saved-6000000008205346192.ged` | 4 | 8 | 0 | 2 | 1 |
-| `saved-6000000008469756742.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000008715164518.ged` | 4 | 4 | 0 | 6 | 1 |
-| `saved-6000000008765536305.ged` | 4 | 5 | 0 | 8 | 2 |
-| `saved-6000000008933309505.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000008961666136.ged` | 2 | 0 | 0 | 13 | 9 |
-| `saved-6000000009170017937.ged` | 4 | 3 | 0 | 7 | 1 |
-| `saved-6000000009465627532.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-6000000009499609049.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000009500754533.ged` | 3 | 0 | 0 | 14 | 4 |
+| `saved-6000000008205346192.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000008469756742.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008715164518.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000008765536305.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008933309505.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000008961666136.ged` | 2 | 0 | 0 | 13 | 7 |
+| `saved-6000000009170017937.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000009465627532.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000009499609049.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000009500754533.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000009544774015.ged` | 2 | 0 | 0 | 5 | 1 |
-| `saved-6000000009875303979.ged` | 3 | 0 | 0 | 11 | 4 |
-| `saved-6000000010160609967.ged` | 4 | 0 | 0 | 13 | 4 |
+| `saved-6000000009875303979.ged` | 3 | 0 | 0 | 11 | 1 |
+| `saved-6000000010160609967.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000010222435520.ged` | 4 | 0 | 0 | 9 | 1 |
-| `saved-6000000010226740465.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000010259352985.ged` | 2 | 6 | 0 | 2 | 1 |
+| `saved-6000000010226740465.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000010259352985.ged` | 2 | 0 | 0 | 8 | 1 |
 | `saved-6000000010331792637.ged` | 1 | 0 | 0 | 4 | 1 |
 | `saved-6000000010463529059.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000010642992694.ged` | 1 | 0 | 0 | 4 | 1 |
-| `saved-6000000010888345851.ged` | 2 | 0 | 0 | 5 | 4 |
-| `saved-6000000011043803107.ged` | 4 | 1 | 0 | 12 | 3 |
-| `saved-6000000011078549071.ged` | 3 | 0 | 0 | 13 | 2 |
-| `saved-6000000011078726908.ged` | 2 | 0 | 0 | 13 | 4 |
+| `saved-6000000010888345851.ged` | 2 | 0 | 0 | 5 | 1 |
+| `saved-6000000011043803107.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000011078549071.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000011078726908.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000011078807545.ged` | 1 | 0 | 0 | 14 | 2 |
-| `saved-6000000011078829655.ged` | 4 | 0 | 0 | 11 | 3 |
+| `saved-6000000011078829655.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000011078886609.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000011078918407.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000011079271617.ged` | 3 | 0 | 0 | 9 | 1 |
 | `saved-6000000011079343735.ged` | 3 | 0 | 0 | 7 | 2 |
-| `saved-6000000011183696687.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000011239201122.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000011183696687.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011239201122.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000011239545575.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000011399221611.ged` | 3 | 0 | 0 | 14 | 4 |
-| `saved-6000000011647607597.ged` | 5 | 0 | 0 | 13 | 12 |
-| `saved-6000000011769042441.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000011807777264.ged` | 3 | 0 | 0 | 9 | 6 |
+| `saved-6000000011399221611.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000011647607597.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000011769042441.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000011807777264.ged` | 3 | 0 | 0 | 9 | 1 |
 | `saved-6000000012108249741.ged` | 3 | 0 | 0 | 15 | 2 |
 | `saved-6000000012245669731.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000012455272755.ged` | 4 | 0 | 0 | 12 | 1 |
-| `saved-6000000012503281124.ged` | 4 | 0 | 0 | 14 | 10 |
-| `saved-6000000012587690898.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000012724604098.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000013205833004.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000013214878518.ged` | 4 | 0 | 0 | 12 | 3 |
+| `saved-6000000012503281124.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000012587690898.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012724604098.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000013205833004.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000013214878518.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000013618082642.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000014224378935.ged` | 3 | 0 | 0 | 10 | 1 |
-| `saved-6000000014265035290.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000014287321085.ged` | 1 | 1 | 0 | 8 | 1 |
+| `saved-6000000014265035290.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000014287321085.ged` | 1 | 0 | 0 | 9 | 1 |
 | `saved-6000000014300629210.ged` | 2 | 0 | 0 | 6 | 1 |
 | `saved-6000000014512537406.ged` | 4 | 0 | 0 | 9 | 1 |
-| `saved-6000000014522158621.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000015117490925.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000015117958521.ged` | 3 | 0 | 0 | 7 | 4 |
-| `saved-6000000015302506749.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000015399620672.ged` | 4 | 2 | 0 | 6 | 1 |
-| `saved-6000000015423592428.ged` | 3 | 2 | 0 | 3 | 1 |
-| `saved-6000000015485735160.ged` | 4 | 6 | 0 | 2 | 1 |
+| `saved-6000000014522158621.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015117490925.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000015117958521.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000015302506749.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000015399620672.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000015423592428.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000015485735160.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000015843590321.ged` | 1 | 0 | 0 | 9 | 2 |
-| `saved-6000000016426352456.ged` | 2 | 1 | 0 | 4 | 2 |
+| `saved-6000000016426352456.ged` | 2 | 0 | 0 | 5 | 1 |
 | `saved-6000000016524856961.ged` | 2 | 0 | 0 | 7 | 1 |
 | `saved-6000000016959316252.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000017093875188.ged` | 3 | 0 | 0 | 10 | 3 |
-| `saved-6000000017512587298.ged` | 3 | 0 | 0 | 7 | 5 |
-| `saved-6000000017535961052.ged` | 4 | 0 | 0 | 10 | 2 |
+| `saved-6000000017093875188.ged` | 3 | 0 | 0 | 10 | 2 |
+| `saved-6000000017512587298.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000017535961052.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000017799612472.ged` | 4 | 0 | 0 | 8 | 1 |
-| `saved-6000000018212260392.ged` | 3 | 5 | 0 | 2 | 1 |
+| `saved-6000000018212260392.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000018448055702.ged` | 3 | 0 | 0 | 4 | 0 |
 | `saved-6000000018528235866.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-6000000018752060667.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000019410166019.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000020013489270.ged` | 2 | 1 | 0 | 8 | 5 |
-| `saved-6000000020344692199.ged` | 4 | 0 | 0 | 12 | 8 |
+| `saved-6000000018752060667.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000019410166019.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000020013489270.ged` | 2 | 0 | 0 | 9 | 1 |
+| `saved-6000000020344692199.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000020344732085.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000020344842981.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000021139261439.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000021143457434.ged` | 3 | 2 | 0 | 3 | 1 |
+| `saved-6000000021139261439.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000021143457434.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000021546131052.ged` | 3 | 0 | 0 | 12 | 2 |
-| `saved-6000000021651776645.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000021652410546.ged` | 4 | 0 | 0 | 14 | 3 |
-| `saved-6000000023250155337.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000023666472983.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000024431753429.ged` | 4 | 0 | 0 | 11 | 5 |
-| `saved-6000000024431778428.ged` | 4 | 0 | 0 | 12 | 3 |
+| `saved-6000000021651776645.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000021652410546.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000023250155337.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000023666472983.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000024431753429.ged` | 4 | 0 | 0 | 11 | 3 |
+| `saved-6000000024431778428.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000024841032051.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000026191425197.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000026258097510.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000026534693043.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000027507886451.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000027593736914.ged` | 3 | 1 | 0 | 12 | 10 |
-| `saved-6000000028408939773.ged` | 3 | 2 | 0 | 7 | 1 |
-| `saved-6000000029363285200.ged` | 3 | 0 | 0 | 12 | 7 |
-| `saved-6000000030009027971.ged` | 4 | 5 | 0 | 5 | 1 |
-| `saved-6000000030042669829.ged` | 4 | 5 | 0 | 3 | 2 |
-| `saved-6000000030775253849.ged` | 3 | 0 | 0 | 13 | 7 |
+| `saved-6000000026534693043.ged` | 3 | 0 | 0 | 13 | 4 |
+| `saved-6000000027507886451.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000027593736914.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000028408939773.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000029363285200.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000030009027971.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000030042669829.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000030775253849.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000031833079710.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000031873939968.ged` | 1 | 0 | 0 | 15 | 3 |
-| `saved-6000000032068841409.ged` | 3 | 0 | 0 | 14 | 7 |
-| `saved-6000000034357465956.ged` | 3 | 3 | 0 | 6 | 2 |
-| `saved-6000000035169497997.ged` | 1 | 2 | 0 | 4 | 2 |
-| `saved-6000000035525393426.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000035525469386.ged` | 4 | 0 | 0 | 12 | 4 |
+| `saved-6000000031873939968.ged` | 1 | 0 | 0 | 15 | 1 |
+| `saved-6000000032068841409.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000034357465956.ged` | 3 | 0 | 0 | 9 | 2 |
+| `saved-6000000035169497997.ged` | 1 | 0 | 0 | 6 | 2 |
+| `saved-6000000035525393426.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000035525469386.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000035525833995.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000035525972877.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000035842865927.ged` | 4 | 1 | 0 | 12 | 8 |
-| `saved-6000000036357505108.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000036357582274.ged` | 2 | 0 | 0 | 14 | 7 |
-| `saved-6000000037061491552.ged` | 3 | 6 | 0 | 4 | 2 |
-| `saved-6000000039766619938.ged` | 2 | 5 | 0 | 2 | 1 |
+| `saved-6000000035525972877.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000035842865927.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000036357505108.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000036357582274.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000037061491552.ged` | 3 | 0 | 0 | 10 | 2 |
+| `saved-6000000039766619938.ged` | 2 | 0 | 0 | 7 | 1 |
 | `saved-6000000043649084885.ged` | 1 | 0 | 0 | 6 | 1 |
-| `saved-6000000047943564981.ged` | 2 | 0 | 0 | 13 | 3 |
-| `saved-6000000050635310838.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000047943564981.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000050635310838.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000051276273861.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000054990622176.ged` | 4 | 7 | 0 | 3 | 1 |
+| `saved-6000000054990622176.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000057175128821.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000057327773067.ged` | 2 | 0 | 0 | 7 | 1 |
-| `saved-6000000057959889971.ged` | 2 | 0 | 0 | 5 | 4 |
+| `saved-6000000057959889971.ged` | 2 | 0 | 0 | 5 | 1 |
 | `saved-6000000065991527068.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000067502220858.ged` | 1 | 0 | 0 | 6 | 1 |
-| `saved-6000000069050151452.ged` | 1 | 1 | 0 | 2 | 1 |
+| `saved-6000000069050151452.ged` | 1 | 0 | 0 | 3 | 1 |
 | `saved-6000000069466362236.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000070497375043.ged` | 3 | 5 | 0 | 7 | 1 |
+| `saved-6000000070497375043.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000071638439878.ged` | 1 | 0 | 0 | 6 | 1 |
 | `saved-6000000073132490036.ged` | 4 | 0 | 0 | 6 | 1 |
 | `saved-6000000077297672317.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000077297739021.ged` | 5 | 0 | 0 | 13 | 9 |
+| `saved-6000000077297739021.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000077316240007.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000077667834821.ged` | 2 | 0 | 0 | 3 | 1 |
 | `saved-6000000077762121855.ged` | 3 | 0 | 0 | 15 | 2 |
 | `saved-6000000079267271590.ged` | 1 | 0 | 0 | 6 | 1 |
 | `saved-6000000080929243843.ged` | 2 | 0 | 0 | 10 | 1 |
-| `saved-6000000081001962237.ged` | 2 | 0 | 0 | 7 | 2 |
-| `saved-6000000082819939353.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000081001962237.ged` | 2 | 0 | 0 | 7 | 1 |
+| `saved-6000000082819939353.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000082822675871.ged` | 1 | 0 | 0 | 10 | 2 |
-| `saved-6000000082862457204.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000093411354957.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000082862457204.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000093411354957.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-6000000099934709827.ged` | 1 | 0 | 0 | 5 | 1 |
 | `saved-6000000100733843835.ged` | 3 | 0 | 0 | 10 | 1 |
 | `saved-6000000103633571840.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000105712682826.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000116694298987.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000126234285831.ged` | 4 | 7 | 0 | 2 | 1 |
-| `saved-6000000141086236875.ged` | 2 | 2 | 0 | 5 | 2 |
-| `saved-6000000155055551821.ged` | 3 | 3 | 0 | 5 | 2 |
-| `saved-6000000161721983869.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000161721983881.ged` | 3 | 0 | 0 | 13 | 9 |
+| `saved-6000000105712682826.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000116694298987.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000126234285831.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000141086236875.ged` | 2 | 0 | 0 | 7 | 2 |
+| `saved-6000000155055551821.ged` | 3 | 0 | 0 | 8 | 2 |
+| `saved-6000000161721983869.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000161721983881.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000161721983893.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000169037819865.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000177463770840.ged` | 1 | 1 | 0 | 7 | 4 |
+| `saved-6000000169037819865.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000177463770840.ged` | 1 | 0 | 0 | 8 | 2 |
 | `saved-6000000177920129831.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000177921458827.ged` | 3 | 0 | 0 | 8 | 4 |
+| `saved-6000000177921458827.ged` | 3 | 0 | 0 | 8 | 1 |
 | `saved-6000000177921458833.ged` | 2 | 0 | 0 | 14 | 2 |
 | `saved-6000000177921458845.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921458863.ged` | 2 | 0 | 0 | 11 | 2 |
 | `saved-6000000177921458990.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000177921458999.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921459033.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000177921459052.ged` | 4 | 0 | 0 | 8 | 5 |
-| `saved-6000000177921459056.ged` | 3 | 0 | 0 | 12 | 7 |
+| `saved-6000000177921459052.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000177921459056.ged` | 3 | 0 | 0 | 12 | 2 |
 | `saved-6000000177921459066.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000177921459072.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000177921459078.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000177921459094.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000177921459104.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000177921459114.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000177921459129.ged` | 2 | 0 | 0 | 11 | 4 |
-| `saved-6000000177921459134.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000177921459169.ged` | 4 | 0 | 0 | 13 | 7 |
+| `saved-6000000177921459104.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000177921459114.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000177921459129.ged` | 2 | 0 | 0 | 11 | 3 |
+| `saved-6000000177921459134.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000177921459169.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000177921516822.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921516839.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921516859.ged` | 3 | 0 | 0 | 7 | 1 |
@@ -43847,9 +45982,9 @@ Sources in merge order (later sources win value conflicts):
 | `saved-6000000180285636825.ged` | 2 | 0 | 0 | 9 | 1 |
 | `saved-6000000182737012832.ged` | 5 | 0 | 0 | 9 | 1 |
 | `saved-6000000183986957910.ged` | 2 | 0 | 0 | 5 | 1 |
-| `saved-6000000184169690842.ged` | 3 | 0 | 0 | 7 | 3 |
-| `saved-6000000185157445888.ged` | 6 | 0 | 0 | 13 | 8 |
-| `saved-6000000185158249846.ged` | 4 | 0 | 0 | 14 | 5 |
+| `saved-6000000184169690842.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000185157445888.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000185158249846.ged` | 4 | 0 | 0 | 14 | 2 |
 | `saved-6000000202543587856.ged` | 3 | 0 | 0 | 11 | 2 |
 | `saved-6000000207769838867.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000207770099821.ged` | 2 | 0 | 0 | 11 | 2 |
@@ -44003,1522 +46138,3653 @@ Sources in merge order (later sources win value conflicts):
 | `6000000174775367866.ged` | 1 | 0 | 0 | 7 | 0 |
 | `6000000176227546848.ged` | 0 | 0 | 0 | 6 | 1 |
 | `6000000186886974842.ged` | 1 | 0 | 0 | 4 | 0 |
-| `saved-1548918.ged` | 4 | 2 | 0 | 11 | 9 |
-| `saved-1610437.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-2077926.ged` | 3 | 0 | 0 | 13 | 11 |
+| `family-1548918.ged` | 5 | 2 | 0 | 11 | 8 |
+| `family-1610437.ged` | 3 | 0 | 0 | 17 | 11 |
+| `family-1623833.ged` | 3 | 0 | 0 | 15 | 10 |
+| `family-1793600.ged` | 3 | 0 | 0 | 14 | 10 |
+| `family-2077926.ged` | 3 | 0 | 0 | 18 | 15 |
+| `family-2120676.ged` | 2 | 0 | 0 | 35 | 19 |
+| `family-2125635.ged` | 2 | 0 | 0 | 14 | 10 |
+| `family-2128292.ged` | 2 | 1 | 0 | 5 | 1 |
+| `family-2399215.ged` | 3 | 0 | 0 | 23 | 15 |
+| `family-2800320.ged` | 4 | 0 | 0 | 11 | 9 |
+| `family-283298045420002957.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-292350426030002931.ged` | 4 | 0 | 0 | 17 | 11 |
+| `family-304413571170007106.ged` | 2 | 0 | 0 | 26 | 21 |
+| `family-304413670430008270.ged` | 2 | 0 | 0 | 26 | 11 |
+| `family-316216248270002934.ged` | 2 | 0 | 0 | 15 | 8 |
+| `family-346534886220012248.ged` | 2 | 0 | 0 | 22 | 5 |
+| `family-346535323980012266.ged` | 4 | 0 | 0 | 14 | 3 |
+| `family-349440463640013536.ged` | 4 | 0 | 0 | 13 | 6 |
+| `family-360492189060012549.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-361843381280007976.ged` | 3 | 1 | 0 | 19 | 15 |
+| `family-365313857240013083.ged` | 3 | 8 | 0 | 3 | 0 |
+| `family-365314124540003500.ged` | 2 | 0 | 0 | 8 | 2 |
+| `family-365314894420003448.ged` | 4 | 3 | 0 | 9 | 0 |
+| `family-365315518800010569.ged` | 2 | 0 | 0 | 8 | 2 |
+| `family-365466687720012045.ged` | 3 | 4 | 0 | 6 | 0 |
+| `family-365471060260013162.ged` | 0 | 0 | 0 | 7 | 0 |
+| `family-365471464220013205.ged` | 1 | 0 | 0 | 8 | 4 |
+| `family-365488721470011625.ged` | 3 | 18 | 0 | 4 | 1 |
+| `family-367359078190012517.ged` | 3 | 0 | 0 | 14 | 7 |
+| `family-368713820640003185.ged` | 2 | 0 | 0 | 10 | 3 |
+| `family-368714154710012201.ged` | 4 | 0 | 0 | 14 | 6 |
+| `family-3696730.ged` | 4 | 1 | 0 | 27 | 8 |
+| `family-375738756460004676.ged` | 2 | 0 | 0 | 14 | 4 |
+| `family-375744715040013128.ged` | 3 | 2 | 0 | 9 | 1 |
+| `family-375784306260002721.ged` | 7 | 0 | 0 | 44 | 25 |
+| `family-379735685930012896.ged` | 1 | 2 | 0 | 6 | 2 |
+| `family-3810353.ged` | 3 | 0 | 0 | 31 | 20 |
+| `family-381761530540011401.ged` | 3 | 0 | 0 | 18 | 13 |
+| `family-388449893270012482.ged` | 2 | 0 | 0 | 15 | 15 |
+| `family-388450329300012525.ged` | 2 | 6 | 0 | 8 | 0 |
+| `family-388613596210002012.ged` | 4 | 6 | 0 | 8 | 0 |
+| `family-4058826330830122137.ged` | 4 | 6 | 0 | 2 | 0 |
+| `family-4077210.ged` | 3 | 0 | 0 | 16 | 3 |
+| `family-4077390.ged` | 3 | 0 | 0 | 15 | 3 |
+| `family-4079111.ged` | 3 | 0 | 0 | 13 | 9 |
+| `family-4103872.ged` | 4 | 0 | 0 | 13 | 4 |
+| `family-4195891192880058503.ged` | 3 | 0 | 0 | 11 | 3 |
+| `family-4195938644320058013.ged` | 1 | 0 | 0 | 6 | 2 |
+| `family-4198641.ged` | 3 | 0 | 0 | 31 | 16 |
+| `family-4229916861440069622.ged` | 7 | 0 | 0 | 22 | 11 |
+| `family-4246255674440079332.ged` | 2 | 5 | 0 | 3 | 0 |
+| `family-4248013140250038185.ged` | 3 | 16 | 0 | 5 | 0 |
+| `family-4259042.ged` | 2 | 0 | 0 | 14 | 8 |
+| `family-4259048.ged` | 2 | 4 | 0 | 10 | 1 |
+| `family-4259086.ged` | 0 | 0 | 0 | 8 | 0 |
+| `family-4263630100270128037.ged` | 3 | 0 | 0 | 17 | 12 |
+| `family-4275395618020068615.ged` | 3 | 0 | 0 | 7 | 1 |
+| `family-4275583289130033084.ged` | 2 | 0 | 0 | 12 | 5 |
+| `family-4275641755920033011.ged` | 3 | 0 | 0 | 14 | 4 |
+| `family-4304466546090010445.ged` | 4 | 0 | 0 | 22 | 16 |
+| `family-4315742410860030603.ged` | 3 | 8 | 0 | 2 | 0 |
+| `family-4362903.ged` | 3 | 0 | 0 | 13 | 9 |
+| `family-4365730.ged` | 2 | 0 | 0 | 21 | 3 |
+| `family-4366030.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-4376103.ged` | 4 | 0 | 0 | 11 | 3 |
+| `family-4419858038520054927.ged` | 2 | 0 | 0 | 9 | 6 |
+| `family-4520147.ged` | 2 | 0 | 0 | 17 | 2 |
+| `family-4520166.ged` | 2 | 0 | 0 | 23 | 3 |
+| `family-4592410796700031770.ged` | 3 | 0 | 0 | 14 | 7 |
+| `family-4627273.ged` | 3 | 0 | 0 | 14 | 8 |
+| `family-4722085825290038085.ged` | 3 | 0 | 0 | 7 | 3 |
+| `family-4760501467940073096.ged` | 2 | 4 | 0 | 3 | 0 |
+| `family-4773551769190080963.ged` | 3 | 0 | 0 | 12 | 7 |
+| `family-4776154.ged` | 2 | 0 | 0 | 9 | 3 |
+| `family-4880315912470047216.ged` | 3 | 0 | 0 | 18 | 13 |
+| `family-4924448917970137597.ged` | 10 | 0 | 0 | 37 | 11 |
+| `family-4924448933160137503.ged` | 2 | 0 | 0 | 21 | 1 |
+| `family-4946518870490042172.ged` | 3 | 0 | 0 | 24 | 7 |
+| `family-4976573922110117540.ged` | 3 | 0 | 0 | 19 | 8 |
+| `family-4984086862270100347.ged` | 3 | 0 | 0 | 16 | 4 |
+| `family-5001362652110128116.ged` | 4 | 0 | 0 | 18 | 10 |
+| `family-5058899407670133169.ged` | 3 | 2 | 0 | 4 | 0 |
+| `family-5105745500030114706.ged` | 4 | 0 | 0 | 17 | 2 |
+| `family-5106195884670114511.ged` | 3 | 0 | 0 | 16 | 7 |
+| `family-5119671559010045041.ged` | 3 | 0 | 0 | 14 | 8 |
+| `family-5131571863040103622.ged` | 2 | 0 | 0 | 34 | 24 |
+| `family-5200066333790031078.ged` | 3 | 4 | 0 | 9 | 6 |
+| `family-5207146906010118647.ged` | 1 | 0 | 0 | 17 | 10 |
+| `family-5207146917280118653.ged` | 2 | 1 | 0 | 8 | 3 |
+| `family-5219301786390025586.ged` | 2 | 0 | 0 | 9 | 4 |
+| `family-5235605714220070458.ged` | 6 | 0 | 0 | 39 | 18 |
+| `family-5251653855510129840.ged` | 3 | 2 | 0 | 10 | 4 |
+| `family-5254038781340071824.ged` | 3 | 16 | 0 | 4 | 0 |
+| `family-5267211996730068114.ged` | 5 | 7 | 0 | 8 | 5 |
+| `family-5271489675500023723.ged` | 2 | 0 | 0 | 19 | 6 |
+| `family-5304572722780119951.ged` | 2 | 0 | 0 | 10 | 4 |
+| `family-5304606047970088500.ged` | 4 | 0 | 0 | 24 | 17 |
+| `family-5304611081740076756.ged` | 3 | 0 | 0 | 16 | 2 |
+| `family-5305294636990124817.ged` | 4 | 0 | 0 | 20 | 8 |
+| `family-5328971090140130337.ged` | 3 | 0 | 0 | 13 | 6 |
+| `family-5336768638830104036.ged` | 5 | 0 | 0 | 22 | 18 |
+| `family-5336815803180122126.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-5389087141070079885.ged` | 3 | 0 | 0 | 18 | 14 |
+| `family-5441266921810062407.ged` | 3 | 0 | 0 | 22 | 14 |
+| `family-5441313740220126371.ged` | 4 | 0 | 0 | 23 | 9 |
+| `family-5447505087810135067.ged` | 4 | 0 | 0 | 15 | 11 |
+| `family-5502961102630086048.ged` | 4 | 0 | 0 | 13 | 8 |
+| `family-5502964838900085605.ged` | 2 | 3 | 0 | 8 | 1 |
+| `family-5551057844540081310.ged` | 3 | 7 | 0 | 8 | 4 |
+| `family-5551063057940043140.ged` | 3 | 0 | 0 | 20 | 10 |
+| `family-5562350241840082253.ged` | 5 | 4 | 0 | 9 | 1 |
+| `family-5590818860100073608.ged` | 3 | 8 | 0 | 3 | 0 |
+| `family-5617518918050122036.ged` | 3 | 0 | 0 | 34 | 28 |
+| `family-5617538511300106313.ged` | 3 | 0 | 0 | 14 | 8 |
+| `family-5679634808960060299.ged` | 3 | 4 | 0 | 17 | 8 |
+| `family-5680189981660060613.ged` | 4 | 5 | 0 | 16 | 1 |
+| `family-5697265345310133911.ged` | 3 | 0 | 0 | 8 | 6 |
+| `family-6000000000010678591.ged` | 4 | 0 | 0 | 38 | 12 |
+| `family-6000000000012602183.ged` | 3 | 0 | 0 | 13 | 1 |
+| `family-6000000000019972451.ged` | 5 | 0 | 0 | 29 | 26 |
+| `family-6000000000023930647.ged` | 6 | 0 | 0 | 31 | 19 |
+| `family-6000000000037785008.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000000041470596.ged` | 4 | 0 | 0 | 19 | 7 |
+| `family-6000000000060201977.ged` | 4 | 0 | 0 | 19 | 9 |
+| `family-6000000000073797328.ged` | 3 | 0 | 0 | 10 | 5 |
+| `family-6000000000085100177.ged` | 3 | 0 | 0 | 19 | 16 |
+| `family-6000000000099770180.ged` | 3 | 0 | 0 | 20 | 7 |
+| `family-6000000000101143665.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000000113843065.ged` | 4 | 6 | 0 | 17 | 14 |
+| `family-6000000000113843072.ged` | 3 | 0 | 0 | 15 | 3 |
+| `family-6000000000125793641.ged` | 5 | 0 | 0 | 16 | 4 |
+| `family-6000000000127612116.ged` | 4 | 0 | 0 | 17 | 5 |
+| `family-6000000000127612134.ged` | 3 | 0 | 0 | 13 | 1 |
+| `family-6000000000133689969.ged` | 2 | 5 | 0 | 6 | 3 |
+| `family-6000000000135924403.ged` | 3 | 0 | 0 | 13 | 7 |
+| `family-6000000000136616524.ged` | 3 | 0 | 0 | 11 | 7 |
+| `family-6000000000136688085.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000000139648597.ged` | 3 | 0 | 0 | 18 | 10 |
+| `family-6000000000160892628.ged` | 4 | 0 | 0 | 16 | 12 |
+| `family-6000000000186421249.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000000196218118.ged` | 3 | 0 | 0 | 15 | 3 |
+| `family-6000000000207082579.ged` | 3 | 6 | 0 | 13 | 5 |
+| `family-6000000000207082672.ged` | 3 | 0 | 0 | 26 | 7 |
+| `family-6000000000252324893.ged` | 4 | 8 | 0 | 3 | 0 |
+| `family-6000000000252931854.ged` | 1 | 0 | 0 | 14 | 3 |
+| `family-6000000000311762065.ged` | 5 | 7 | 0 | 2 | 0 |
+| `family-6000000000351087662.ged` | 3 | 0 | 0 | 15 | 3 |
+| `family-6000000000351087701.ged` | 4 | 3 | 0 | 11 | 3 |
+| `family-6000000000361052707.ged` | 4 | 1 | 0 | 30 | 14 |
+| `family-6000000000378545599.ged` | 2 | 0 | 0 | 9 | 7 |
+| `family-6000000000388939419.ged` | 14 | 0 | 0 | 23 | 5 |
+| `family-6000000000424848932.ged` | 3 | 0 | 0 | 14 | 5 |
+| `family-6000000000424851399.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000000437044109.ged` | 4 | 0 | 0 | 22 | 8 |
+| `family-6000000000437130447.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000000437316601.ged` | 3 | 0 | 0 | 15 | 2 |
+| `family-6000000000437327174.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000000437654736.ged` | 2 | 0 | 0 | 8 | 3 |
+| `family-6000000000437669873.ged` | 4 | 0 | 0 | 17 | 3 |
+| `family-6000000000449416629.ged` | 1 | 0 | 0 | 4 | 2 |
+| `family-6000000000458217244.ged` | 4 | 9 | 0 | 2 | 0 |
+| `family-6000000000460790288.ged` | 3 | 0 | 0 | 15 | 8 |
+| `family-6000000000467542216.ged` | 3 | 0 | 0 | 15 | 5 |
+| `family-6000000000484083511.ged` | 3 | 0 | 0 | 14 | 5 |
+| `family-6000000000484249023.ged` | 3 | 0 | 0 | 23 | 9 |
+| `family-6000000000496970049.ged` | 4 | 0 | 0 | 26 | 20 |
+| `family-6000000000497643885.ged` | 2 | 0 | 0 | 6 | 2 |
+| `family-6000000000498185763.ged` | 3 | 0 | 0 | 12 | 9 |
+| `family-6000000000504150428.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000000518902212.ged` | 3 | 6 | 0 | 8 | 4 |
+| `family-6000000000537527004.ged` | 3 | 5 | 0 | 9 | 4 |
+| `family-6000000000565230800.ged` | 3 | 0 | 0 | 21 | 16 |
+| `family-6000000000565416578.ged` | 3 | 0 | 0 | 20 | 7 |
+| `family-6000000000568379999.ged` | 3 | 4 | 0 | 11 | 7 |
+| `family-6000000000568695494.ged` | 3 | 0 | 0 | 16 | 2 |
+| `family-6000000000571789704.ged` | 5 | 0 | 0 | 15 | 7 |
+| `family-6000000000574078388.ged` | 6 | 0 | 0 | 17 | 8 |
+| `family-6000000000576766420.ged` | 4 | 0 | 0 | 17 | 11 |
+| `family-6000000000589541967.ged` | 4 | 0 | 0 | 20 | 2 |
+| `family-6000000000593379030.ged` | 3 | 5 | 0 | 4 | 0 |
+| `family-6000000000593738894.ged` | 3 | 0 | 0 | 14 | 9 |
+| `family-6000000000594454726.ged` | 1 | 0 | 0 | 21 | 10 |
+| `family-6000000000607356949.ged` | 4 | 0 | 0 | 12 | 3 |
+| `family-6000000000607426990.ged` | 3 | 0 | 0 | 13 | 2 |
+| `family-6000000000631615727.ged` | 4 | 16 | 0 | 2 | 1 |
+| `family-6000000000634953446.ged` | 1 | 1 | 0 | 4 | 0 |
+| `family-6000000000638286399.ged` | 3 | 13 | 0 | 3 | 0 |
+| `family-6000000000646636987.ged` | 4 | 0 | 0 | 21 | 7 |
+| `family-6000000000646740659.ged` | 3 | 3 | 0 | 11 | 0 |
+| `family-6000000000649121564.ged` | 3 | 0 | 0 | 12 | 10 |
+| `family-6000000000650837721.ged` | 3 | 0 | 0 | 16 | 8 |
+| `family-6000000000659810695.ged` | 2 | 7 | 0 | 7 | 3 |
+| `family-6000000000663149325.ged` | 2 | 0 | 0 | 15 | 9 |
+| `family-6000000000663258163.ged` | 2 | 2 | 0 | 9 | 1 |
+| `family-6000000000666780234.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000000671061765.ged` | 3 | 0 | 0 | 6 | 3 |
+| `family-6000000000679344754.ged` | 4 | 0 | 0 | 13 | 0 |
+| `family-6000000000685125230.ged` | 2 | 14 | 0 | 4 | 1 |
+| `family-6000000000687421882.ged` | 3 | 8 | 0 | 8 | 0 |
+| `family-6000000000687631539.ged` | 2 | 13 | 0 | 6 | 1 |
+| `family-6000000000692661835.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000000694158525.ged` | 5 | 0 | 0 | 26 | 16 |
+| `family-6000000000708789795.ged` | 4 | 4 | 0 | 5 | 1 |
+| `family-6000000000709334357.ged` | 4 | 0 | 0 | 16 | 10 |
+| `family-6000000000725159715.ged` | 2 | 0 | 0 | 19 | 6 |
+| `family-6000000000726846049.ged` | 4 | 8 | 0 | 3 | 2 |
+| `family-6000000000728299766.ged` | 3 | 0 | 0 | 21 | 4 |
+| `family-6000000000735554252.ged` | 3 | 0 | 0 | 20 | 13 |
+| `family-6000000000756952602.ged` | 3 | 0 | 0 | 17 | 7 |
+| `family-6000000000757999620.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000000758079676.ged` | 4 | 0 | 0 | 13 | 2 |
+| `family-6000000000764818098.ged` | 3 | 0 | 0 | 16 | 10 |
+| `family-6000000000764844009.ged` | 1 | 0 | 0 | 25 | 0 |
+| `family-6000000000768957873.ged` | 5 | 0 | 0 | 19 | 6 |
+| `family-6000000000781697178.ged` | 3 | 0 | 0 | 25 | 0 |
+| `family-6000000000794832014.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000000796891248.ged` | 9 | 0 | 0 | 34 | 6 |
+| `family-6000000000851745139.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000000855618243.ged` | 3 | 0 | 0 | 19 | 16 |
+| `family-6000000000866353020.ged` | 5 | 9 | 0 | 10 | 4 |
+| `family-6000000000873947684.ged` | 3 | 0 | 0 | 24 | 14 |
+| `family-6000000000879803071.ged` | 4 | 0 | 0 | 15 | 6 |
+| `family-6000000000891680343.ged` | 5 | 0 | 0 | 27 | 1 |
+| `family-6000000000925356216.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000000982525534.ged` | 3 | 0 | 0 | 16 | 4 |
+| `family-6000000000987948392.ged` | 3 | 13 | 0 | 2 | 0 |
+| `family-6000000000988688239.ged` | 2 | 0 | 0 | 11 | 7 |
+| `family-6000000001012125847.ged` | 4 | 9 | 0 | 5 | 0 |
+| `family-6000000001024705277.ged` | 2 | 6 | 0 | 12 | 7 |
+| `family-6000000001045079246.ged` | 5 | 3 | 0 | 14 | 3 |
+| `family-6000000001056501127.ged` | 2 | 0 | 0 | 17 | 11 |
+| `family-6000000001062725047.ged` | 3 | 0 | 0 | 12 | 4 |
+| `family-6000000001063167523.ged` | 4 | 0 | 0 | 14 | 4 |
+| `family-6000000001063289132.ged` | 1 | 0 | 0 | 10 | 3 |
+| `family-6000000001088018839.ged` | 3 | 4 | 0 | 3 | 0 |
+| `family-6000000001088021553.ged` | 3 | 2 | 0 | 5 | 0 |
+| `family-6000000001088154772.ged` | 2 | 1 | 0 | 4 | 0 |
+| `family-6000000001094868777.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000001094898430.ged` | 1 | 0 | 0 | 4 | 1 |
+| `family-6000000001095058592.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000001116583134.ged` | 2 | 3 | 0 | 16 | 0 |
+| `family-6000000001131192746.ged` | 3 | 8 | 0 | 10 | 0 |
+| `family-6000000001138735296.ged` | 3 | 0 | 0 | 14 | 5 |
+| `family-6000000001139071013.ged` | 3 | 0 | 0 | 14 | 4 |
+| `family-6000000001139144268.ged` | 4 | 0 | 0 | 13 | 9 |
+| `family-6000000001142363908.ged` | 3 | 2 | 0 | 11 | 7 |
+| `family-6000000001143919155.ged` | 3 | 0 | 0 | 9 | 4 |
+| `family-6000000001143966322.ged` | 3 | 0 | 0 | 9 | 5 |
+| `family-6000000001144914191.ged` | 3 | 0 | 0 | 16 | 0 |
+| `family-6000000001169154976.ged` | 5 | 0 | 0 | 13 | 6 |
+| `family-6000000001169171714.ged` | 4 | 0 | 0 | 13 | 5 |
+| `family-6000000001169235389.ged` | 5 | 0 | 0 | 14 | 8 |
+| `family-6000000001169238166.ged` | 3 | 3 | 0 | 12 | 9 |
+| `family-6000000001169313832.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000001196257237.ged` | 2 | 0 | 0 | 41 | 9 |
+| `family-6000000001198262405.ged` | 3 | 0 | 0 | 32 | 0 |
+| `family-6000000001198860794.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000001199993264.ged` | 5 | 0 | 0 | 10 | 6 |
+| `family-6000000001200028258.ged` | 4 | 0 | 0 | 20 | 10 |
+| `family-6000000001249504219.ged` | 4 | 6 | 0 | 2 | 0 |
+| `family-6000000001311917463.ged` | 4 | 0 | 0 | 20 | 11 |
+| `family-6000000001322198340.ged` | 3 | 0 | 0 | 13 | 9 |
+| `family-6000000001322198603.ged` | 4 | 0 | 0 | 20 | 8 |
+| `family-6000000001338193719.ged` | 3 | 0 | 0 | 25 | 0 |
+| `family-6000000001353276458.ged` | 3 | 0 | 0 | 19 | 9 |
+| `family-6000000001353537105.ged` | 3 | 0 | 0 | 22 | 5 |
+| `family-6000000001372350889.ged` | 4 | 11 | 0 | 15 | 11 |
+| `family-6000000001372368326.ged` | 3 | 0 | 0 | 20 | 17 |
+| `family-6000000001372528092.ged` | 2 | 0 | 0 | 27 | 5 |
+| `family-6000000001381274001.ged` | 6 | 0 | 0 | 24 | 0 |
+| `family-6000000001412881746.ged` | 4 | 0 | 0 | 31 | 0 |
+| `family-6000000001475097615.ged` | 2 | 0 | 0 | 9 | 5 |
+| `family-6000000001498704022.ged` | 2 | 9 | 0 | 9 | 4 |
+| `family-6000000001498704055.ged` | 2 | 0 | 0 | 15 | 7 |
+| `family-6000000001498704338.ged` | 4 | 0 | 0 | 14 | 4 |
+| `family-6000000001499154903.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000001500854738.ged` | 4 | 0 | 0 | 18 | 3 |
+| `family-6000000001500893042.ged` | 4 | 0 | 0 | 18 | 10 |
+| `family-6000000001500929374.ged` | 5 | 0 | 0 | 18 | 3 |
+| `family-6000000001501057114.ged` | 3 | 0 | 0 | 17 | 5 |
+| `family-6000000001504281165.ged` | 2 | 0 | 0 | 10 | 6 |
+| `family-6000000001504702346.ged` | 3 | 0 | 0 | 18 | 15 |
+| `family-6000000001504816842.ged` | 2 | 0 | 0 | 15 | 7 |
+| `family-6000000001504987829.ged` | 1 | 0 | 0 | 16 | 13 |
+| `family-6000000001506899998.ged` | 2 | 0 | 0 | 18 | 2 |
+| `family-6000000001584382671.ged` | 3 | 0 | 0 | 17 | 6 |
+| `family-6000000001584687363.ged` | 3 | 0 | 0 | 18 | 5 |
+| `family-6000000001584801190.ged` | 3 | 0 | 0 | 10 | 5 |
+| `family-6000000001593637951.ged` | 3 | 0 | 0 | 18 | 8 |
+| `family-6000000001594051535.ged` | 5 | 0 | 0 | 19 | 2 |
+| `family-6000000001613759071.ged` | 3 | 0 | 0 | 21 | 5 |
+| `family-6000000001613970246.ged` | 2 | 0 | 0 | 22 | 12 |
+| `family-6000000001614845637.ged` | 4 | 0 | 0 | 14 | 4 |
+| `family-6000000001624111597.ged` | 3 | 0 | 0 | 25 | 15 |
+| `family-6000000001651460598.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000001651502714.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000001651629109.ged` | 4 | 0 | 0 | 24 | 5 |
+| `family-6000000001708363985.ged` | 4 | 0 | 0 | 12 | 3 |
+| `family-6000000001711091993.ged` | 3 | 0 | 0 | 15 | 1 |
+| `family-6000000001713373908.ged` | 3 | 0 | 0 | 14 | 7 |
+| `family-6000000001722370024.ged` | 5 | 2 | 0 | 12 | 3 |
+| `family-6000000001732153525.ged` | 5 | 0 | 0 | 13 | 7 |
+| `family-6000000001732177195.ged` | 3 | 0 | 0 | 15 | 4 |
+| `family-6000000001770188397.ged` | 4 | 0 | 0 | 21 | 15 |
+| `family-6000000001770214443.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000001784502814.ged` | 3 | 0 | 0 | 21 | 4 |
+| `family-6000000001784535509.ged` | 4 | 0 | 0 | 25 | 12 |
+| `family-6000000001784558539.ged` | 2 | 0 | 0 | 23 | 0 |
+| `family-6000000001801026836.ged` | 3 | 0 | 0 | 15 | 2 |
+| `family-6000000001813250098.ged` | 3 | 4 | 0 | 3 | 0 |
+| `family-6000000001821102369.ged` | 4 | 0 | 0 | 21 | 6 |
+| `family-6000000001827531760.ged` | 2 | 0 | 0 | 8 | 0 |
+| `family-6000000001827575240.ged` | 2 | 0 | 0 | 28 | 0 |
+| `family-6000000001827582117.ged` | 3 | 0 | 0 | 16 | 1 |
+| `family-6000000001827585947.ged` | 3 | 9 | 0 | 12 | 9 |
+| `family-6000000001827593928.ged` | 3 | 0 | 0 | 19 | 14 |
+| `family-6000000001827596078.ged` | 3 | 0 | 0 | 19 | 12 |
+| `family-6000000001827610153.ged` | 2 | 0 | 0 | 17 | 2 |
+| `family-6000000001829589817.ged` | 5 | 0 | 0 | 16 | 6 |
+| `family-6000000001833628324.ged` | 3 | 0 | 0 | 12 | 7 |
+| `family-6000000001838607806.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000001838879990.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000001865773260.ged` | 3 | 5 | 0 | 5 | 2 |
+| `family-6000000001873530609.ged` | 3 | 0 | 0 | 17 | 10 |
+| `family-6000000001875558003.ged` | 2 | 5 | 0 | 3 | 0 |
+| `family-6000000001891957076.ged` | 5 | 0 | 0 | 19 | 2 |
+| `family-6000000001900007557.ged` | 2 | 0 | 0 | 14 | 2 |
+| `family-6000000001919547668.ged` | 3 | 0 | 0 | 22 | 16 |
+| `family-6000000001919812645.ged` | 3 | 0 | 0 | 29 | 1 |
+| `family-6000000001969506851.ged` | 2 | 0 | 0 | 17 | 5 |
+| `family-6000000001969599119.ged` | 2 | 0 | 0 | 18 | 2 |
+| `family-6000000001994951163.ged` | 3 | 0 | 0 | 35 | 14 |
+| `family-6000000001995109345.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000002017898070.ged` | 2 | 0 | 0 | 20 | 0 |
+| `family-6000000002031285960.ged` | 3 | 0 | 0 | 17 | 1 |
+| `family-6000000002043263103.ged` | 5 | 0 | 0 | 22 | 7 |
+| `family-6000000002067072170.ged` | 3 | 4 | 0 | 7 | 5 |
+| `family-6000000002078094635.ged` | 3 | 0 | 0 | 17 | 2 |
+| `family-6000000002078126382.ged` | 5 | 0 | 0 | 17 | 6 |
+| `family-6000000002106139599.ged` | 3 | 0 | 0 | 23 | 17 |
+| `family-6000000002163543379.ged` | 4 | 0 | 0 | 10 | 7 |
+| `family-6000000002176658451.ged` | 6 | 0 | 0 | 15 | 6 |
+| `family-6000000002187796542.ged` | 3 | 6 | 0 | 12 | 4 |
+| `family-6000000002187796550.ged` | 3 | 0 | 0 | 16 | 2 |
+| `family-6000000002187851405.ged` | 3 | 0 | 0 | 14 | 7 |
+| `family-6000000002187851434.ged` | 2 | 0 | 0 | 13 | 0 |
+| `family-6000000002188050061.ged` | 3 | 0 | 0 | 13 | 3 |
+| `family-6000000002188081857.ged` | 2 | 0 | 0 | 12 | 4 |
+| `family-6000000002188110562.ged` | 1 | 0 | 0 | 19 | 3 |
+| `family-6000000002188289908.ged` | 4 | 0 | 0 | 13 | 8 |
+| `family-6000000002188304379.ged` | 2 | 0 | 0 | 23 | 3 |
+| `family-6000000002188307463.ged` | 6 | 2 | 0 | 12 | 5 |
+| `family-6000000002188307934.ged` | 3 | 5 | 0 | 15 | 6 |
+| `family-6000000002188578738.ged` | 1 | 0 | 0 | 9 | 1 |
+| `family-6000000002188578769.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000002188579271.ged` | 3 | 0 | 0 | 15 | 1 |
+| `family-6000000002188625450.ged` | 4 | 0 | 0 | 18 | 4 |
+| `family-6000000002222709933.ged` | 3 | 0 | 0 | 26 | 14 |
+| `family-6000000002226068159.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000002228252084.ged` | 2 | 0 | 0 | 28 | 9 |
+| `family-6000000002228278394.ged` | 2 | 0 | 0 | 29 | 0 |
+| `family-6000000002244380726.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000002244397924.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000002244397940.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000002245279564.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000002267060138.ged` | 3 | 0 | 0 | 19 | 13 |
+| `family-6000000002277862058.ged` | 6 | 7 | 0 | 9 | 6 |
+| `family-6000000002278450149.ged` | 4 | 5 | 0 | 5 | 1 |
+| `family-6000000002280344494.ged` | 3 | 0 | 0 | 16 | 4 |
+| `family-6000000002280411009.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000002330980548.ged` | 5 | 1 | 0 | 8 | 4 |
+| `family-6000000002336577815.ged` | 2 | 0 | 0 | 10 | 4 |
+| `family-6000000002336697043.ged` | 2 | 0 | 0 | 10 | 4 |
+| `family-6000000002342416311.ged` | 3 | 0 | 0 | 15 | 1 |
+| `family-6000000002358756663.ged` | 3 | 5 | 0 | 13 | 7 |
+| `family-6000000002370640619.ged` | 3 | 0 | 0 | 11 | 7 |
+| `family-6000000002375565387.ged` | 1 | 0 | 0 | 5 | 2 |
+| `family-6000000002391959353.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000002403898091.ged` | 2 | 0 | 0 | 15 | 10 |
+| `family-6000000002403898117.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000002434214184.ged` | 3 | 0 | 0 | 15 | 1 |
+| `family-6000000002449490697.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000002457013227.ged` | 10 | 0 | 0 | 41 | 1 |
+| `family-6000000002463510938.ged` | 3 | 0 | 0 | 10 | 0 |
+| `family-6000000002481819312.ged` | 3 | 0 | 0 | 11 | 2 |
+| `family-6000000002482084257.ged` | 4 | 0 | 0 | 28 | 9 |
+| `family-6000000002482165558.ged` | 3 | 0 | 0 | 20 | 3 |
+| `family-6000000002503678686.ged` | 3 | 0 | 0 | 16 | 4 |
+| `family-6000000002512241178.ged` | 4 | 1 | 0 | 14 | 5 |
+| `family-6000000002512246810.ged` | 3 | 0 | 0 | 19 | 7 |
+| `family-6000000002512246864.ged` | 5 | 0 | 0 | 14 | 2 |
+| `family-6000000002512346178.ged` | 2 | 0 | 0 | 34 | 0 |
+| `family-6000000002516491073.ged` | 3 | 0 | 0 | 22 | 15 |
+| `family-6000000002517120513.ged` | 3 | 0 | 0 | 20 | 4 |
+| `family-6000000002517120595.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000002517586322.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000002517869069.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000002527461568.ged` | 3 | 0 | 0 | 7 | 1 |
+| `family-6000000002553650991.ged` | 2 | 0 | 0 | 13 | 7 |
+| `family-6000000002565671528.ged` | 3 | 16 | 0 | 3 | 0 |
+| `family-6000000002572699392.ged` | 3 | 0 | 0 | 17 | 4 |
+| `family-6000000002572701505.ged` | 3 | 0 | 0 | 9 | 2 |
+| `family-6000000002572783163.ged` | 3 | 0 | 0 | 19 | 6 |
+| `family-6000000002585455740.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000002585562372.ged` | 1 | 0 | 0 | 17 | 6 |
+| `family-6000000002588347233.ged` | 3 | 0 | 0 | 9 | 1 |
+| `family-6000000002600987455.ged` | 2 | 0 | 0 | 9 | 1 |
+| `family-6000000002602162553.ged` | 4 | 0 | 0 | 17 | 14 |
+| `family-6000000002607381870.ged` | 4 | 0 | 0 | 30 | 27 |
+| `family-6000000002625917550.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000002626238951.ged` | 6 | 0 | 0 | 12 | 3 |
+| `family-6000000002664914535.ged` | 3 | 0 | 0 | 24 | 12 |
+| `family-6000000002744891329.ged` | 3 | 0 | 0 | 12 | 1 |
+| `family-6000000002748554800.ged` | 3 | 0 | 0 | 20 | 14 |
+| `family-6000000002750545795.ged` | 3 | 0 | 0 | 8 | 6 |
+| `family-6000000002764956522.ged` | 4 | 0 | 0 | 12 | 8 |
+| `family-6000000002766488352.ged` | 3 | 0 | 0 | 31 | 20 |
+| `family-6000000002767708000.ged` | 2 | 0 | 0 | 18 | 2 |
+| `family-6000000002770849622.ged` | 2 | 0 | 0 | 10 | 5 |
+| `family-6000000002770896230.ged` | 2 | 2 | 0 | 7 | 0 |
+| `family-6000000002785337209.ged` | 1 | 0 | 0 | 11 | 2 |
+| `family-6000000002801147492.ged` | 3 | 0 | 0 | 16 | 6 |
+| `family-6000000002813633340.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000002823437299.ged` | 4 | 0 | 0 | 10 | 7 |
+| `family-6000000002832115884.ged` | 3 | 0 | 0 | 12 | 3 |
+| `family-6000000002837456927.ged` | 4 | 3 | 0 | 13 | 1 |
+| `family-6000000002847207216.ged` | 3 | 4 | 0 | 12 | 7 |
+| `family-6000000002847945015.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000002866077692.ged` | 3 | 0 | 0 | 19 | 7 |
+| `family-6000000002866078652.ged` | 2 | 0 | 0 | 19 | 2 |
+| `family-6000000002866250576.ged` | 3 | 6 | 0 | 12 | 0 |
+| `family-6000000002877958100.ged` | 2 | 0 | 0 | 19 | 5 |
+| `family-6000000002890270426.ged` | 3 | 0 | 0 | 17 | 11 |
+| `family-6000000002893299341.ged` | 6 | 0 | 0 | 12 | 6 |
+| `family-6000000002893299372.ged` | 3 | 0 | 0 | 6 | 0 |
+| `family-6000000002893316227.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000002893322314.ged` | 4 | 0 | 0 | 13 | 3 |
+| `family-6000000002893330286.ged` | 5 | 0 | 0 | 14 | 1 |
+| `family-6000000002893335701.ged` | 5 | 1 | 0 | 15 | 9 |
+| `family-6000000002906400227.ged` | 3 | 0 | 0 | 18 | 9 |
+| `family-6000000002916189513.ged` | 4 | 0 | 0 | 15 | 6 |
+| `family-6000000002920620224.ged` | 4 | 0 | 0 | 20 | 3 |
+| `family-6000000002969078825.ged` | 2 | 9 | 0 | 5 | 0 |
+| `family-6000000002969217246.ged` | 2 | 4 | 0 | 11 | 0 |
+| `family-6000000002979875144.ged` | 3 | 0 | 0 | 21 | 8 |
+| `family-6000000003002231602.ged` | 3 | 0 | 0 | 17 | 3 |
+| `family-6000000003002364630.ged` | 2 | 0 | 0 | 12 | 1 |
+| `family-6000000003002538177.ged` | 3 | 0 | 0 | 11 | 2 |
+| `family-6000000003012468747.ged` | 3 | 0 | 0 | 14 | 4 |
+| `family-6000000003025853747.ged` | 3 | 0 | 0 | 10 | 6 |
+| `family-6000000003026039395.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000003043806217.ged` | 4 | 0 | 0 | 11 | 1 |
+| `family-6000000003049156212.ged` | 3 | 0 | 0 | 28 | 11 |
+| `family-6000000003058583726.ged` | 5 | 0 | 0 | 19 | 7 |
+| `family-6000000003058905240.ged` | 2 | 0 | 0 | 17 | 3 |
+| `family-6000000003076221220.ged` | 4 | 0 | 0 | 18 | 1 |
+| `family-6000000003086332874.ged` | 3 | 5 | 0 | 15 | 2 |
+| `family-6000000003086434645.ged` | 3 | 0 | 0 | 15 | 7 |
+| `family-6000000003087080306.ged` | 6 | 0 | 0 | 16 | 2 |
+| `family-6000000003094916337.ged` | 3 | 0 | 0 | 18 | 5 |
+| `family-6000000003094967990.ged` | 2 | 0 | 0 | 21 | 7 |
+| `family-6000000003094971035.ged` | 3 | 0 | 0 | 16 | 1 |
+| `family-6000000003094977911.ged` | 4 | 0 | 0 | 17 | 5 |
+| `family-6000000003095003918.ged` | 3 | 0 | 0 | 13 | 5 |
+| `family-6000000003095038547.ged` | 3 | 2 | 0 | 10 | 8 |
+| `family-6000000003095060610.ged` | 2 | 0 | 0 | 14 | 5 |
+| `family-6000000003095060659.ged` | 3 | 0 | 0 | 10 | 2 |
+| `family-6000000003095080287.ged` | 2 | 0 | 0 | 20 | 6 |
+| `family-6000000003095084974.ged` | 3 | 5 | 0 | 14 | 11 |
+| `family-6000000003095113068.ged` | 3 | 0 | 0 | 20 | 15 |
+| `family-6000000003095156945.ged` | 3 | 0 | 0 | 20 | 7 |
+| `family-6000000003095195374.ged` | 3 | 7 | 0 | 10 | 0 |
+| `family-6000000003098215498.ged` | 1 | 0 | 0 | 10 | 4 |
+| `family-6000000003101980999.ged` | 4 | 3 | 0 | 17 | 1 |
+| `family-6000000003102253400.ged` | 3 | 0 | 0 | 7 | 1 |
+| `family-6000000003102295068.ged` | 2 | 0 | 0 | 10 | 3 |
+| `family-6000000003111305140.ged` | 3 | 0 | 0 | 19 | 6 |
+| `family-6000000003116379849.ged` | 3 | 0 | 0 | 21 | 13 |
+| `family-6000000003116743788.ged` | 3 | 0 | 0 | 32 | 15 |
+| `family-6000000003116932225.ged` | 2 | 1 | 0 | 12 | 0 |
+| `family-6000000003122317247.ged` | 1 | 0 | 0 | 16 | 11 |
+| `family-6000000003122318746.ged` | 1 | 0 | 0 | 8 | 6 |
+| `family-6000000003122354841.ged` | 2 | 0 | 0 | 13 | 6 |
+| `family-6000000003125122695.ged` | 2 | 0 | 0 | 24 | 9 |
+| `family-6000000003125438035.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000003149897197.ged` | 1 | 4 | 0 | 5 | 1 |
+| `family-6000000003152600818.ged` | 3 | 0 | 0 | 13 | 9 |
+| `family-6000000003152860875.ged` | 2 | 0 | 0 | 15 | 10 |
+| `family-6000000003152872621.ged` | 2 | 0 | 0 | 21 | 0 |
+| `family-6000000003187090488.ged` | 2 | 0 | 0 | 16 | 1 |
+| `family-6000000003196492775.ged` | 4 | 0 | 0 | 14 | 7 |
+| `family-6000000003220505291.ged` | 5 | 12 | 0 | 2 | 0 |
+| `family-6000000003242618875.ged` | 4 | 0 | 0 | 13 | 5 |
+| `family-6000000003242944978.ged` | 1 | 0 | 0 | 4 | 1 |
+| `family-6000000003252172731.ged` | 3 | 0 | 0 | 27 | 10 |
+| `family-6000000003252323043.ged` | 2 | 0 | 0 | 15 | 4 |
+| `family-6000000003253261775.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000003253460860.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000003253601093.ged` | 3 | 0 | 0 | 20 | 0 |
+| `family-6000000003306757977.ged` | 2 | 0 | 0 | 16 | 11 |
+| `family-6000000003307054576.ged` | 2 | 0 | 0 | 20 | 4 |
+| `family-6000000003319932530.ged` | 3 | 11 | 0 | 5 | 0 |
+| `family-6000000003332799114.ged` | 3 | 1 | 0 | 12 | 9 |
+| `family-6000000003332823073.ged` | 4 | 1 | 0 | 17 | 0 |
+| `family-6000000003344565684.ged` | 3 | 0 | 0 | 12 | 7 |
+| `family-6000000003344745168.ged` | 4 | 0 | 0 | 13 | 1 |
+| `family-6000000003353135663.ged` | 4 | 3 | 0 | 11 | 0 |
+| `family-6000000003353178311.ged` | 3 | 2 | 0 | 12 | 5 |
+| `family-6000000003355801643.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000003367976924.ged` | 0 | 0 | 0 | 4 | 0 |
+| `family-6000000003379144766.ged` | 1 | 0 | 0 | 9 | 3 |
+| `family-6000000003379409803.ged` | 2 | 1 | 0 | 5 | 1 |
+| `family-6000000003389294519.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000003401838954.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000003417361345.ged` | 3 | 0 | 0 | 12 | 2 |
+| `family-6000000003418900347.ged` | 3 | 0 | 0 | 12 | 3 |
+| `family-6000000003484293276.ged` | 4 | 0 | 0 | 15 | 5 |
+| `family-6000000003484293288.ged` | 4 | 0 | 0 | 14 | 3 |
+| `family-6000000003491933538.ged` | 3 | 0 | 0 | 17 | 5 |
+| `family-6000000003491947054.ged` | 3 | 0 | 0 | 18 | 2 |
+| `family-6000000003491958558.ged` | 2 | 0 | 0 | 14 | 4 |
+| `family-6000000003491986946.ged` | 2 | 0 | 0 | 19 | 3 |
+| `family-6000000003491988189.ged` | 1 | 0 | 0 | 23 | 2 |
+| `family-6000000003491988489.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000003491988509.ged` | 3 | 0 | 0 | 18 | 7 |
+| `family-6000000003491988584.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000003491988599.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000003491988619.ged` | 1 | 0 | 0 | 16 | 2 |
+| `family-6000000003491988831.ged` | 2 | 0 | 0 | 11 | 6 |
+| `family-6000000003492005116.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000003492005126.ged` | 1 | 0 | 0 | 23 | 7 |
+| `family-6000000003492029785.ged` | 3 | 3 | 0 | 11 | 5 |
+| `family-6000000003492033784.ged` | 3 | 0 | 0 | 20 | 10 |
+| `family-6000000003492033799.ged` | 2 | 0 | 0 | 21 | 9 |
+| `family-6000000003492033993.ged` | 3 | 0 | 0 | 16 | 2 |
+| `family-6000000003492057788.ged` | 2 | 0 | 0 | 15 | 2 |
+| `family-6000000003492064709.ged` | 2 | 0 | 0 | 13 | 2 |
+| `family-6000000003492064827.ged` | 3 | 0 | 0 | 15 | 6 |
+| `family-6000000003492068105.ged` | 3 | 0 | 0 | 15 | 3 |
+| `family-6000000003492068120.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000003492068938.ged` | 2 | 0 | 0 | 8 | 1 |
+| `family-6000000003492535579.ged` | 3 | 4 | 0 | 10 | 0 |
+| `family-6000000003493162078.ged` | 3 | 0 | 0 | 19 | 6 |
+| `family-6000000003495348795.ged` | 4 | 1 | 0 | 21 | 3 |
+| `family-6000000003495384814.ged` | 3 | 7 | 0 | 6 | 4 |
+| `family-6000000003500144245.ged` | 3 | 6 | 0 | 3 | 0 |
+| `family-6000000003521493989.ged` | 3 | 0 | 0 | 23 | 7 |
+| `family-6000000003535740332.ged` | 3 | 0 | 0 | 22 | 7 |
+| `family-6000000003559734445.ged` | 3 | 0 | 0 | 12 | 1 |
+| `family-6000000003568661683.ged` | 3 | 0 | 0 | 11 | 1 |
+| `family-6000000003574693022.ged` | 4 | 9 | 0 | 2 | 0 |
+| `family-6000000003588755565.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000003615417006.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000003620618740.ged` | 3 | 0 | 0 | 28 | 17 |
+| `family-6000000003645825338.ged` | 4 | 0 | 0 | 13 | 2 |
+| `family-6000000003645870789.ged` | 3 | 0 | 0 | 10 | 5 |
+| `family-6000000003645919492.ged` | 3 | 0 | 0 | 18 | 4 |
+| `family-6000000003645919625.ged` | 4 | 0 | 0 | 22 | 1 |
+| `family-6000000003645940658.ged` | 1 | 0 | 0 | 13 | 0 |
+| `family-6000000003646023820.ged` | 2 | 0 | 0 | 7 | 1 |
+| `family-6000000003646023907.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000003665102809.ged` | 3 | 0 | 0 | 20 | 14 |
+| `family-6000000003665181171.ged` | 4 | 0 | 0 | 19 | 5 |
+| `family-6000000003665414365.ged` | 3 | 0 | 0 | 20 | 9 |
+| `family-6000000003721939858.ged` | 3 | 3 | 0 | 7 | 3 |
+| `family-6000000003732742137.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000003758378211.ged` | 4 | 5 | 0 | 4 | 1 |
+| `family-6000000003781494806.ged` | 2 | 3 | 0 | 8 | 0 |
+| `family-6000000003783022260.ged` | 5 | 0 | 0 | 12 | 6 |
+| `family-6000000003805665380.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000003805720033.ged` | 1 | 0 | 0 | 30 | 0 |
+| `family-6000000003813808900.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-6000000003823851202.ged` | 5 | 0 | 0 | 14 | 5 |
+| `family-6000000003824461685.ged` | 4 | 11 | 0 | 6 | 2 |
+| `family-6000000003824564617.ged` | 3 | 0 | 0 | 26 | 11 |
+| `family-6000000003827445550.ged` | 1 | 0 | 0 | 14 | 0 |
+| `family-6000000003827661670.ged` | 3 | 0 | 0 | 7 | 2 |
+| `family-6000000003828248652.ged` | 1 | 1 | 0 | 5 | 1 |
+| `family-6000000003828248658.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000003828250057.ged` | 1 | 0 | 0 | 6 | 1 |
+| `family-6000000003828250078.ged` | 2 | 0 | 0 | 8 | 4 |
+| `family-6000000003841524471.ged` | 4 | 0 | 0 | 19 | 11 |
+| `family-6000000003842233263.ged` | 3 | 0 | 0 | 20 | 16 |
+| `family-6000000003854400441.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000003858704239.ged` | 3 | 0 | 0 | 30 | 4 |
+| `family-6000000003858716758.ged` | 2 | 0 | 0 | 13 | 3 |
+| `family-6000000003858749453.ged` | 4 | 0 | 0 | 16 | 0 |
+| `family-6000000003869622559.ged` | 4 | 0 | 0 | 13 | 4 |
+| `family-6000000003887680399.ged` | 1 | 0 | 0 | 6 | 3 |
+| `family-6000000003887729856.ged` | 3 | 0 | 0 | 19 | 8 |
+| `family-6000000003895768777.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000003897531253.ged` | 1 | 0 | 0 | 10 | 6 |
+| `family-6000000003897585979.ged` | 3 | 0 | 0 | 7 | 1 |
+| `family-6000000003902489870.ged` | 2 | 0 | 0 | 30 | 6 |
+| `family-6000000003905140955.ged` | 3 | 5 | 0 | 11 | 6 |
+| `family-6000000003913667969.ged` | 1 | 1 | 0 | 4 | 1 |
+| `family-6000000003915237097.ged` | 3 | 0 | 0 | 13 | 9 |
+| `family-6000000003953393939.ged` | 4 | 0 | 0 | 11 | 8 |
+| `family-6000000003958968521.ged` | 1 | 10 | 0 | 2 | 0 |
+| `family-6000000003979582810.ged` | 3 | 0 | 0 | 23 | 20 |
+| `family-6000000004016043175.ged` | 3 | 0 | 0 | 8 | 6 |
+| `family-6000000004027712640.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000004028320232.ged` | 2 | 0 | 0 | 23 | 1 |
+| `family-6000000004032942523.ged` | 3 | 0 | 0 | 15 | 6 |
+| `family-6000000004034893096.ged` | 3 | 0 | 0 | 16 | 6 |
+| `family-6000000004035037156.ged` | 3 | 0 | 0 | 13 | 4 |
+| `family-6000000004078906672.ged` | 4 | 0 | 0 | 27 | 17 |
+| `family-6000000004104829407.ged` | 2 | 0 | 0 | 5 | 3 |
+| `family-6000000004104838733.ged` | 3 | 0 | 0 | 20 | 4 |
+| `family-6000000004105285975.ged` | 2 | 0 | 0 | 18 | 1 |
+| `family-6000000004131116716.ged` | 4 | 0 | 0 | 12 | 1 |
+| `family-6000000004140735934.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000004170305961.ged` | 2 | 0 | 0 | 15 | 4 |
+| `family-6000000004183977279.ged` | 1 | 5 | 0 | 2 | 0 |
+| `family-6000000004187651020.ged` | 2 | 4 | 0 | 3 | 0 |
+| `family-6000000004214433404.ged` | 3 | 0 | 0 | 11 | 2 |
+| `family-6000000004236514062.ged` | 2 | 1 | 0 | 13 | 9 |
+| `family-6000000004238176240.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000004281397219.ged` | 5 | 1 | 0 | 11 | 1 |
+| `family-6000000004389585513.ged` | 3 | 0 | 0 | 17 | 12 |
+| `family-6000000004407798014.ged` | 2 | 5 | 0 | 2 | 0 |
+| `family-6000000004456080013.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000004457022019.ged` | 3 | 0 | 0 | 19 | 12 |
+| `family-6000000004483455009.ged` | 1 | 0 | 0 | 9 | 6 |
+| `family-6000000004533176419.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000004533503066.ged` | 3 | 0 | 0 | 13 | 7 |
+| `family-6000000004533503379.ged` | 8 | 0 | 0 | 31 | 27 |
+| `family-6000000004533510674.ged` | 3 | 0 | 0 | 20 | 10 |
+| `family-6000000004533774585.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000004534272864.ged` | 4 | 0 | 0 | 17 | 6 |
+| `family-6000000004647605698.ged` | 3 | 0 | 0 | 12 | 7 |
+| `family-6000000004650708520.ged` | 1 | 0 | 0 | 23 | 2 |
+| `family-6000000004671044584.ged` | 4 | 0 | 0 | 13 | 8 |
+| `family-6000000004691642355.ged` | 4 | 4 | 0 | 8 | 0 |
+| `family-6000000004838388133.ged` | 3 | 0 | 0 | 34 | 10 |
+| `family-6000000004862474531.ged` | 4 | 0 | 0 | 17 | 14 |
+| `family-6000000004863275809.ged` | 3 | 0 | 0 | 7 | 2 |
+| `family-6000000004863611375.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000004863761158.ged` | 1 | 0 | 0 | 10 | 6 |
+| `family-6000000004863823276.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000004868825651.ged` | 3 | 0 | 0 | 6 | 0 |
+| `family-6000000004868825686.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000004868846058.ged` | 3 | 0 | 0 | 9 | 5 |
+| `family-6000000004868846355.ged` | 3 | 0 | 0 | 14 | 2 |
+| `family-6000000004868851834.ged` | 3 | 0 | 0 | 11 | 6 |
+| `family-6000000004868858899.ged` | 3 | 0 | 0 | 6 | 3 |
+| `family-6000000004869049343.ged` | 1 | 0 | 0 | 8 | 0 |
+| `family-6000000004869093634.ged` | 6 | 0 | 0 | 10 | 6 |
+| `family-6000000004870648136.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000004884044177.ged` | 1 | 5 | 0 | 3 | 0 |
+| `family-6000000004968284614.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000004974123682.ged` | 2 | 0 | 0 | 14 | 7 |
+| `family-6000000004974523185.ged` | 2 | 0 | 0 | 19 | 5 |
+| `family-6000000005013705987.ged` | 3 | 0 | 0 | 16 | 2 |
+| `family-6000000005016701444.ged` | 1 | 0 | 0 | 13 | 4 |
+| `family-6000000005025304600.ged` | 4 | 0 | 0 | 17 | 8 |
+| `family-6000000005074489379.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000005246487476.ged` | 3 | 0 | 0 | 17 | 13 |
+| `family-6000000005381997903.ged` | 3 | 0 | 0 | 21 | 13 |
+| `family-6000000005382299298.ged` | 3 | 2 | 0 | 17 | 0 |
+| `family-6000000005391128983.ged` | 5 | 0 | 0 | 13 | 6 |
+| `family-6000000005391699089.ged` | 1 | 1 | 0 | 4 | 0 |
+| `family-6000000005398287081.ged` | 4 | 0 | 0 | 18 | 2 |
+| `family-6000000005414590318.ged` | 5 | 0 | 0 | 24 | 2 |
+| `family-6000000005440591069.ged` | 2 | 0 | 0 | 6 | 4 |
+| `family-6000000005441081725.ged` | 3 | 0 | 0 | 17 | 14 |
+| `family-6000000005441559089.ged` | 3 | 0 | 0 | 21 | 0 |
+| `family-6000000005442236186.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000005545740001.ged` | 3 | 11 | 0 | 2 | 0 |
+| `family-6000000005576602065.ged` | 3 | 0 | 0 | 15 | 6 |
+| `family-6000000005581573549.ged` | 3 | 7 | 0 | 11 | 6 |
+| `family-6000000005581573602.ged` | 4 | 4 | 0 | 11 | 8 |
+| `family-6000000005598851255.ged` | 3 | 0 | 0 | 15 | 2 |
+| `family-6000000005606851579.ged` | 3 | 0 | 0 | 17 | 8 |
+| `family-6000000005606851647.ged` | 2 | 0 | 0 | 28 | 11 |
+| `family-6000000005606873183.ged` | 2 | 0 | 0 | 19 | 0 |
+| `family-6000000005606886765.ged` | 2 | 0 | 0 | 22 | 8 |
+| `family-6000000005606886780.ged` | 2 | 0 | 0 | 25 | 9 |
+| `family-6000000005606886827.ged` | 1 | 0 | 0 | 13 | 1 |
+| `family-6000000005606886909.ged` | 2 | 0 | 0 | 25 | 19 |
+| `family-6000000005606907877.ged` | 2 | 0 | 0 | 21 | 6 |
+| `family-6000000005606976930.ged` | 3 | 1 | 0 | 19 | 2 |
+| `family-6000000005607042284.ged` | 4 | 0 | 0 | 14 | 5 |
+| `family-6000000005607042309.ged` | 1 | 0 | 0 | 10 | 0 |
+| `family-6000000005607042593.ged` | 3 | 0 | 0 | 23 | 0 |
+| `family-6000000005607119313.ged` | 3 | 0 | 0 | 21 | 4 |
+| `family-6000000005607123730.ged` | 2 | 0 | 0 | 20 | 6 |
+| `family-6000000005607187224.ged` | 3 | 6 | 0 | 5 | 1 |
+| `family-6000000005607264518.ged` | 3 | 0 | 0 | 24 | 7 |
+| `family-6000000005607268671.ged` | 3 | 0 | 0 | 15 | 4 |
+| `family-6000000005607282941.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000005607296161.ged` | 4 | 0 | 0 | 20 | 3 |
+| `family-6000000005607335640.ged` | 3 | 1 | 0 | 15 | 6 |
+| `family-6000000005607339190.ged` | 2 | 0 | 0 | 20 | 0 |
+| `family-6000000005607365269.ged` | 5 | 2 | 0 | 11 | 4 |
+| `family-6000000005607377021.ged` | 3 | 2 | 0 | 15 | 7 |
+| `family-6000000005607439733.ged` | 3 | 0 | 0 | 13 | 5 |
+| `family-6000000005607481550.ged` | 2 | 0 | 0 | 16 | 2 |
+| `family-6000000005607599821.ged` | 4 | 0 | 0 | 13 | 3 |
+| `family-6000000005607880384.ged` | 5 | 0 | 0 | 14 | 8 |
+| `family-6000000005607884543.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000005608851471.ged` | 2 | 8 | 0 | 10 | 6 |
+| `family-6000000005608851479.ged` | 1 | 1 | 0 | 15 | 0 |
+| `family-6000000005608851503.ged` | 2 | 0 | 0 | 11 | 3 |
+| `family-6000000005608873060.ged` | 4 | 7 | 0 | 7 | 4 |
+| `family-6000000005608873104.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000005608873211.ged` | 2 | 3 | 0 | 6 | 0 |
+| `family-6000000005608884093.ged` | 2 | 0 | 0 | 27 | 0 |
+| `family-6000000005608934604.ged` | 3 | 0 | 0 | 14 | 5 |
+| `family-6000000005609028769.ged` | 2 | 0 | 0 | 9 | 2 |
+| `family-6000000005609064474.ged` | 4 | 11 | 0 | 6 | 0 |
+| `family-6000000005609095725.ged` | 2 | 11 | 0 | 4 | 0 |
+| `family-6000000005609102300.ged` | 2 | 0 | 0 | 12 | 5 |
+| `family-6000000005609102344.ged` | 2 | 0 | 0 | 15 | 6 |
+| `family-6000000005609304829.ged` | 3 | 0 | 0 | 24 | 11 |
+| `family-6000000005609304839.ged` | 3 | 0 | 0 | 30 | 1 |
+| `family-6000000005609458561.ged` | 2 | 0 | 0 | 12 | 3 |
+| `family-6000000005609466031.ged` | 2 | 0 | 0 | 20 | 9 |
+| `family-6000000005609518095.ged` | 2 | 0 | 0 | 14 | 1 |
+| `family-6000000005609522416.ged` | 2 | 0 | 0 | 23 | 7 |
+| `family-6000000005609522426.ged` | 2 | 0 | 0 | 14 | 1 |
+| `family-6000000005609534511.ged` | 2 | 0 | 0 | 18 | 10 |
+| `family-6000000005609534659.ged` | 3 | 0 | 0 | 19 | 2 |
+| `family-6000000005609547367.ged` | 3 | 0 | 0 | 17 | 0 |
+| `family-6000000005609547535.ged` | 5 | 0 | 0 | 16 | 1 |
+| `family-6000000005609547544.ged` | 1 | 0 | 0 | 12 | 0 |
+| `family-6000000005609547691.ged` | 4 | 0 | 0 | 17 | 7 |
+| `family-6000000005739075955.ged` | 3 | 0 | 0 | 18 | 8 |
+| `family-6000000005739942225.ged` | 4 | 0 | 0 | 13 | 8 |
+| `family-6000000005744994368.ged` | 3 | 0 | 0 | 29 | 6 |
+| `family-6000000005744994427.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000005795638082.ged` | 4 | 0 | 0 | 14 | 7 |
+| `family-6000000005795638104.ged` | 3 | 0 | 0 | 13 | 4 |
+| `family-6000000005856163014.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000005942135258.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000006080715460.ged` | 3 | 15 | 0 | 2 | 0 |
+| `family-6000000006127214913.ged` | 4 | 0 | 0 | 18 | 5 |
+| `family-6000000006127322318.ged` | 3 | 0 | 0 | 16 | 0 |
+| `family-6000000006127859612.ged` | 2 | 0 | 0 | 19 | 4 |
+| `family-6000000006127996485.ged` | 2 | 0 | 0 | 9 | 2 |
+| `family-6000000006127996492.ged` | 3 | 0 | 0 | 9 | 1 |
+| `family-6000000006127996498.ged` | 2 | 0 | 0 | 13 | 3 |
+| `family-6000000006128227797.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000006171259545.ged` | 4 | 0 | 0 | 18 | 1 |
+| `family-6000000006183866418.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000006205826134.ged` | 2 | 11 | 0 | 3 | 0 |
+| `family-6000000006253433055.ged` | 3 | 7 | 0 | 13 | 0 |
+| `family-6000000006253635635.ged` | 3 | 0 | 0 | 13 | 1 |
+| `family-6000000006270512063.ged` | 3 | 8 | 0 | 4 | 1 |
+| `family-6000000006271032335.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000006277556378.ged` | 10 | 0 | 0 | 30 | 4 |
+| `family-6000000006293783777.ged` | 2 | 0 | 0 | 13 | 5 |
+| `family-6000000006327229028.ged` | 3 | 0 | 0 | 10 | 6 |
+| `family-6000000006336803890.ged` | 3 | 3 | 0 | 8 | 4 |
+| `family-6000000006351988253.ged` | 4 | 0 | 0 | 24 | 2 |
+| `family-6000000006352209093.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000006400320009.ged` | 3 | 2 | 0 | 18 | 12 |
+| `family-6000000006402064518.ged` | 2 | 8 | 0 | 4 | 0 |
+| `family-6000000006444130321.ged` | 4 | 0 | 0 | 24 | 0 |
+| `family-6000000006444270409.ged` | 3 | 0 | 0 | 28 | 0 |
+| `family-6000000006444357812.ged` | 3 | 0 | 0 | 27 | 7 |
+| `family-6000000006444364312.ged` | 4 | 0 | 0 | 13 | 0 |
+| `family-6000000006563253878.ged` | 3 | 0 | 0 | 16 | 14 |
+| `family-6000000006565863003.ged` | 3 | 8 | 0 | 12 | 7 |
+| `family-6000000006565930017.ged` | 3 | 0 | 0 | 14 | 2 |
+| `family-6000000006575266506.ged` | 3 | 0 | 0 | 8 | 2 |
+| `family-6000000006579278268.ged` | 3 | 4 | 0 | 3 | 0 |
+| `family-6000000006580951114.ged` | 4 | 5 | 0 | 2 | 0 |
+| `family-6000000006589193197.ged` | 4 | 0 | 0 | 13 | 4 |
+| `family-6000000006589193210.ged` | 3 | 0 | 0 | 13 | 6 |
+| `family-6000000006589193224.ged` | 3 | 0 | 0 | 19 | 5 |
+| `family-6000000006589193300.ged` | 3 | 0 | 0 | 22 | 19 |
+| `family-6000000006589193735.ged` | 3 | 0 | 0 | 16 | 3 |
+| `family-6000000006589193752.ged` | 3 | 0 | 0 | 13 | 7 |
+| `family-6000000006589261586.ged` | 3 | 0 | 0 | 17 | 4 |
+| `family-6000000006589261605.ged` | 4 | 0 | 0 | 16 | 1 |
+| `family-6000000006589261737.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000006589269376.ged` | 3 | 3 | 0 | 10 | 7 |
+| `family-6000000006590075574.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000006602653847.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000006604342018.ged` | 2 | 0 | 0 | 6 | 4 |
+| `family-6000000006694787002.ged` | 4 | 7 | 0 | 7 | 4 |
+| `family-6000000006727823308.ged` | 2 | 0 | 0 | 23 | 0 |
+| `family-6000000006744570542.ged` | 2 | 0 | 0 | 25 | 1 |
+| `family-6000000006764979093.ged` | 2 | 8 | 0 | 2 | 0 |
+| `family-6000000006769001160.ged` | 3 | 0 | 0 | 17 | 4 |
+| `family-6000000006769847598.ged` | 3 | 0 | 0 | 13 | 10 |
+| `family-6000000006776171892.ged` | 3 | 0 | 0 | 13 | 2 |
+| `family-6000000006776187362.ged` | 4 | 0 | 0 | 12 | 2 |
+| `family-6000000006776187394.ged` | 3 | 0 | 0 | 9 | 1 |
+| `family-6000000006776187410.ged` | 3 | 6 | 0 | 7 | 1 |
+| `family-6000000006792569099.ged` | 2 | 0 | 0 | 19 | 4 |
+| `family-6000000006802626827.ged` | 3 | 4 | 0 | 9 | 6 |
+| `family-6000000006802748484.ged` | 4 | 4 | 0 | 15 | 5 |
+| `family-6000000006804155423.ged` | 4 | 0 | 0 | 18 | 1 |
+| `family-6000000006807994202.ged` | 2 | 0 | 0 | 8 | 3 |
+| `family-6000000006828562507.ged` | 4 | 0 | 0 | 17 | 10 |
+| `family-6000000006828783137.ged` | 2 | 0 | 0 | 17 | 9 |
+| `family-6000000006845609473.ged` | 4 | 0 | 0 | 15 | 5 |
+| `family-6000000006892741240.ged` | 3 | 2 | 0 | 10 | 6 |
+| `family-6000000006909919760.ged` | 2 | 3 | 0 | 4 | 0 |
+| `family-6000000006909980800.ged` | 2 | 0 | 0 | 7 | 3 |
+| `family-6000000006910119673.ged` | 3 | 2 | 0 | 5 | 0 |
+| `family-6000000006910218376.ged` | 3 | 0 | 0 | 6 | 0 |
+| `family-6000000006910371360.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000006910524128.ged` | 2 | 0 | 0 | 10 | 0 |
+| `family-6000000006927613398.ged` | 4 | 0 | 0 | 13 | 9 |
+| `family-6000000006932496197.ged` | 3 | 0 | 0 | 26 | 17 |
+| `family-6000000006963936279.ged` | 2 | 0 | 0 | 25 | 10 |
+| `family-6000000006964093867.ged` | 3 | 0 | 0 | 15 | 4 |
+| `family-6000000006979657520.ged` | 1 | 6 | 0 | 2 | 1 |
+| `family-6000000006991041605.ged` | 1 | 2 | 0 | 13 | 1 |
+| `family-6000000007006053264.ged` | 1 | 0 | 0 | 19 | 0 |
+| `family-6000000007020763500.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000007035211375.ged` | 3 | 0 | 0 | 12 | 2 |
+| `family-6000000007040744781.ged` | 2 | 3 | 0 | 8 | 2 |
+| `family-6000000007051275051.ged` | 3 | 1 | 0 | 7 | 1 |
+| `family-6000000007051737771.ged` | 3 | 9 | 0 | 9 | 6 |
+| `family-6000000007058475918.ged` | 2 | 0 | 0 | 19 | 6 |
+| `family-6000000007058802262.ged` | 5 | 13 | 0 | 7 | 1 |
+| `family-6000000007059008284.ged` | 3 | 0 | 0 | 27 | 8 |
+| `family-6000000007059036372.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000007060635081.ged` | 3 | 2 | 0 | 16 | 14 |
+| `family-6000000007062931743.ged` | 3 | 0 | 0 | 12 | 3 |
+| `family-6000000007062987558.ged` | 2 | 0 | 0 | 12 | 1 |
+| `family-6000000007084491319.ged` | 3 | 1 | 0 | 18 | 12 |
+| `family-6000000007090217253.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000007096021931.ged` | 3 | 0 | 0 | 25 | 14 |
+| `family-6000000007097847692.ged` | 1 | 0 | 0 | 3 | 0 |
+| `family-6000000007114444629.ged` | 3 | 2 | 0 | 9 | 0 |
+| `family-6000000007149829030.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000007150056822.ged` | 1 | 0 | 0 | 11 | 0 |
+| `family-6000000007159201467.ged` | 3 | 0 | 0 | 16 | 8 |
+| `family-6000000007168006559.ged` | 3 | 0 | 0 | 15 | 4 |
+| `family-6000000007168150360.ged` | 3 | 0 | 0 | 10 | 0 |
+| `family-6000000007182167503.ged` | 3 | 6 | 0 | 3 | 0 |
+| `family-6000000007182299647.ged` | 2 | 5 | 0 | 5 | 0 |
+| `family-6000000007182710798.ged` | 3 | 0 | 0 | 17 | 9 |
+| `family-6000000007182829201.ged` | 2 | 1 | 0 | 15 | 4 |
+| `family-6000000007184836787.ged` | 4 | 9 | 0 | 2 | 0 |
+| `family-6000000007184914927.ged` | 3 | 0 | 0 | 15 | 11 |
+| `family-6000000007210899736.ged` | 5 | 0 | 0 | 25 | 12 |
+| `family-6000000007211481443.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000007218725750.ged` | 4 | 1 | 0 | 12 | 5 |
+| `family-6000000007225974316.ged` | 4 | 0 | 0 | 9 | 1 |
+| `family-6000000007242265283.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000007243462851.ged` | 2 | 14 | 0 | 5 | 2 |
+| `family-6000000007243504597.ged` | 3 | 5 | 0 | 15 | 12 |
+| `family-6000000007243779310.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000007259558393.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000007272507672.ged` | 1 | 0 | 0 | 29 | 8 |
+| `family-6000000007279272308.ged` | 3 | 2 | 0 | 9 | 0 |
+| `family-6000000007293685319.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-6000000007295507866.ged` | 3 | 0 | 0 | 24 | 6 |
+| `family-6000000007304150583.ged` | 5 | 4 | 0 | 26 | 0 |
+| `family-6000000007320702667.ged` | 3 | 0 | 0 | 7 | 5 |
+| `family-6000000007335744612.ged` | 3 | 0 | 0 | 15 | 8 |
+| `family-6000000007335974610.ged` | 3 | 0 | 0 | 16 | 11 |
+| `family-6000000007339101221.ged` | 2 | 4 | 0 | 4 | 0 |
+| `family-6000000007356944447.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000007367810201.ged` | 3 | 5 | 0 | 9 | 0 |
+| `family-6000000007389262598.ged` | 2 | 5 | 0 | 3 | 0 |
+| `family-6000000007392290792.ged` | 2 | 0 | 0 | 25 | 0 |
+| `family-6000000007393382928.ged` | 2 | 0 | 0 | 14 | 2 |
+| `family-6000000007404085354.ged` | 4 | 0 | 0 | 16 | 7 |
+| `family-6000000007404267211.ged` | 4 | 2 | 0 | 11 | 1 |
+| `family-6000000007424024447.ged` | 2 | 0 | 0 | 6 | 3 |
+| `family-6000000007425369965.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000007453699167.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000007464365206.ged` | 3 | 0 | 0 | 21 | 15 |
+| `family-6000000007507069278.ged` | 3 | 8 | 0 | 13 | 0 |
+| `family-6000000007507095358.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000007511564057.ged` | 2 | 0 | 0 | 13 | 1 |
+| `family-6000000007511564070.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000007511832794.ged` | 3 | 0 | 0 | 28 | 2 |
+| `family-6000000007537666559.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000007538343204.ged` | 3 | 0 | 0 | 15 | 7 |
+| `family-6000000007549179716.ged` | 5 | 0 | 0 | 29 | 15 |
+| `family-6000000007549309545.ged` | 2 | 0 | 0 | 11 | 1 |
+| `family-6000000007559278400.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000007581296353.ged` | 4 | 0 | 0 | 14 | 2 |
+| `family-6000000007581383931.ged` | 3 | 0 | 0 | 21 | 7 |
+| `family-6000000007587625693.ged` | 2 | 0 | 0 | 14 | 4 |
+| `family-6000000007587694720.ged` | 3 | 13 | 0 | 8 | 0 |
+| `family-6000000007588187341.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000007588187344.ged` | 3 | 0 | 0 | 9 | 1 |
+| `family-6000000007588356972.ged` | 4 | 0 | 0 | 21 | 10 |
+| `family-6000000007589095312.ged` | 2 | 0 | 0 | 19 | 7 |
+| `family-6000000007589095414.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000007604938431.ged` | 3 | 0 | 0 | 37 | 11 |
+| `family-6000000007604938444.ged` | 5 | 0 | 0 | 35 | 18 |
+| `family-6000000007614477274.ged` | 2 | 0 | 0 | 18 | 13 |
+| `family-6000000007618351978.ged` | 4 | 0 | 0 | 31 | 22 |
+| `family-6000000007630944209.ged` | 3 | 5 | 0 | 4 | 1 |
+| `family-6000000007632160030.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000007635630874.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000007635630965.ged` | 2 | 0 | 0 | 26 | 0 |
+| `family-6000000007635631030.ged` | 2 | 0 | 0 | 19 | 0 |
+| `family-6000000007661859262.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000007676113728.ged` | 5 | 3 | 0 | 9 | 7 |
+| `family-6000000007676466396.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000007692423610.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000007732495237.ged` | 4 | 11 | 0 | 2 | 0 |
+| `family-6000000007770332213.ged` | 4 | 0 | 0 | 7 | 2 |
+| `family-6000000007770373058.ged` | 2 | 10 | 0 | 6 | 2 |
+| `family-6000000007773104021.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000007782302849.ged` | 4 | 11 | 0 | 7 | 0 |
+| `family-6000000007826003451.ged` | 3 | 0 | 0 | 9 | 7 |
+| `family-6000000007826127365.ged` | 4 | 0 | 0 | 13 | 6 |
+| `family-6000000007875679261.ged` | 6 | 0 | 0 | 19 | 2 |
+| `family-6000000007958767639.ged` | 3 | 0 | 0 | 21 | 1 |
+| `family-6000000007959631642.ged` | 4 | 0 | 0 | 14 | 8 |
+| `family-6000000007959864423.ged` | 4 | 1 | 0 | 11 | 0 |
+| `family-6000000007980369200.ged` | 3 | 0 | 0 | 13 | 8 |
+| `family-6000000007980520044.ged` | 3 | 0 | 0 | 11 | 3 |
+| `family-6000000007980693054.ged` | 3 | 0 | 0 | 18 | 5 |
+| `family-6000000008008010549.ged` | 3 | 0 | 0 | 17 | 0 |
+| `family-6000000008019212360.ged` | 5 | 2 | 0 | 24 | 20 |
+| `family-6000000008019682504.ged` | 3 | 0 | 0 | 15 | 3 |
+| `family-6000000008034160064.ged` | 4 | 1 | 0 | 20 | 6 |
+| `family-6000000008034415513.ged` | 1 | 0 | 0 | 14 | 0 |
+| `family-6000000008062966266.ged` | 3 | 7 | 0 | 3 | 0 |
+| `family-6000000008063252550.ged` | 3 | 0 | 0 | 14 | 2 |
+| `family-6000000008100776194.ged` | 4 | 0 | 0 | 18 | 3 |
+| `family-6000000008101228513.ged` | 3 | 6 | 0 | 9 | 0 |
+| `family-6000000008106241912.ged` | 2 | 0 | 0 | 14 | 4 |
+| `family-6000000008115020929.ged` | 1 | 0 | 0 | 18 | 0 |
+| `family-6000000008115048412.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000008177438021.ged` | 1 | 0 | 0 | 8 | 1 |
+| `family-6000000008205346192.ged` | 2 | 8 | 0 | 3 | 0 |
+| `family-6000000008205535747.ged` | 2 | 4 | 0 | 9 | 0 |
+| `family-6000000008230605732.ged` | 1 | 5 | 0 | 2 | 0 |
+| `family-6000000008260238995.ged` | 3 | 0 | 0 | 17 | 13 |
+| `family-6000000008286490755.ged` | 4 | 0 | 0 | 13 | 9 |
+| `family-6000000008286846382.ged` | 6 | 2 | 0 | 21 | 0 |
+| `family-6000000008352466911.ged` | 1 | 0 | 0 | 13 | 0 |
+| `family-6000000008366453417.ged` | 3 | 0 | 0 | 20 | 0 |
+| `family-6000000008370497662.ged` | 3 | 12 | 0 | 3 | 1 |
+| `family-6000000008379218961.ged` | 4 | 0 | 0 | 16 | 10 |
+| `family-6000000008406419757.ged` | 3 | 0 | 0 | 18 | 7 |
+| `family-6000000008406511750.ged` | 4 | 0 | 0 | 17 | 9 |
+| `family-6000000008469756742.ged` | 3 | 0 | 0 | 17 | 7 |
+| `family-6000000008477543238.ged` | 8 | 0 | 0 | 35 | 6 |
+| `family-6000000008507821635.ged` | 3 | 0 | 0 | 28 | 0 |
+| `family-6000000008516116524.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000008529438853.ged` | 1 | 7 | 0 | 2 | 0 |
+| `family-6000000008630356444.ged` | 3 | 0 | 0 | 21 | 17 |
+| `family-6000000008630356466.ged` | 4 | 0 | 0 | 38 | 20 |
+| `family-6000000008630587231.ged` | 2 | 0 | 0 | 39 | 15 |
+| `family-6000000008636268768.ged` | 1 | 0 | 0 | 10 | 5 |
+| `family-6000000008673173801.ged` | 1 | 0 | 0 | 4 | 1 |
+| `family-6000000008687044864.ged` | 2 | 0 | 0 | 10 | 2 |
+| `family-6000000008687180600.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000008715164518.ged` | 3 | 4 | 0 | 6 | 0 |
+| `family-6000000008764977184.ged` | 3 | 0 | 0 | 8 | 2 |
+| `family-6000000008765237558.ged` | 3 | 4 | 0 | 7 | 1 |
+| `family-6000000008765536305.ged` | 3 | 5 | 0 | 8 | 1 |
+| `family-6000000008787687730.ged` | 4 | 11 | 0 | 6 | 2 |
+| `family-6000000008787855478.ged` | 3 | 4 | 0 | 24 | 8 |
+| `family-6000000008798323789.ged` | 1 | 0 | 0 | 10 | 0 |
+| `family-6000000008798575043.ged` | 1 | 0 | 0 | 12 | 7 |
+| `family-6000000008798585431.ged` | 3 | 0 | 0 | 20 | 9 |
+| `family-6000000008816674509.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000008931923941.ged` | 4 | 0 | 0 | 20 | 3 |
+| `family-6000000008933309505.ged` | 3 | 0 | 0 | 23 | 0 |
+| `family-6000000008961666136.ged` | 3 | 0 | 0 | 18 | 10 |
+| `family-6000000008975808174.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000009006496259.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000009043901113.ged` | 2 | 3 | 0 | 7 | 3 |
+| `family-6000000009099803774.ged` | 4 | 0 | 0 | 25 | 16 |
+| `family-6000000009100005728.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000009110468637.ged` | 2 | 0 | 0 | 8 | 0 |
+| `family-6000000009134934503.ged` | 10 | 0 | 0 | 31 | 23 |
+| `family-6000000009134991508.ged` | 3 | 0 | 0 | 16 | 10 |
+| `family-6000000009170017937.ged` | 3 | 3 | 0 | 7 | 0 |
+| `family-6000000009189190206.ged` | 4 | 0 | 0 | 33 | 1 |
+| `family-6000000009196213139.ged` | 4 | 10 | 0 | 2 | 0 |
+| `family-6000000009196500176.ged` | 3 | 5 | 0 | 14 | 9 |
+| `family-6000000009196991377.ged` | 2 | 0 | 0 | 10 | 1 |
+| `family-6000000009214903611.ged` | 4 | 1 | 0 | 19 | 3 |
+| `family-6000000009217651803.ged` | 2 | 0 | 0 | 9 | 1 |
+| `family-6000000009275550955.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000009288970429.ged` | 3 | 0 | 0 | 15 | 11 |
+| `family-6000000009412979361.ged` | 3 | 6 | 0 | 6 | 0 |
+| `family-6000000009465627532.ged` | 2 | 0 | 0 | 16 | 2 |
+| `family-6000000009499609049.ged` | 3 | 0 | 0 | 15 | 8 |
+| `family-6000000009500754533.ged` | 2 | 0 | 0 | 17 | 2 |
+| `family-6000000009511458815.ged` | 3 | 0 | 0 | 19 | 11 |
+| `family-6000000009512037044.ged` | 3 | 0 | 0 | 18 | 7 |
+| `family-6000000009512050024.ged` | 2 | 1 | 0 | 6 | 3 |
+| `family-6000000009512185823.ged` | 3 | 10 | 0 | 6 | 0 |
+| `family-6000000009512394794.ged` | 2 | 0 | 0 | 10 | 3 |
+| `family-6000000009512397570.ged` | 1 | 0 | 0 | 17 | 0 |
+| `family-6000000009512632295.ged` | 3 | 0 | 0 | 11 | 3 |
+| `family-6000000009543700841.ged` | 1 | 6 | 0 | 2 | 0 |
+| `family-6000000009544774015.ged` | 1 | 0 | 0 | 5 | 0 |
+| `family-6000000009551480095.ged` | 3 | 0 | 0 | 13 | 4 |
+| `family-6000000009657862393.ged` | 4 | 0 | 0 | 11 | 3 |
+| `family-6000000009665002660.ged` | 3 | 6 | 0 | 3 | 0 |
+| `family-6000000009706835506.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000009745740734.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000009777136574.ged` | 19 | 12 | 0 | 33 | 11 |
+| `family-6000000009875160931.ged` | 1 | 0 | 0 | 9 | 1 |
+| `family-6000000009875224601.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000009875303979.ged` | 2 | 0 | 0 | 12 | 3 |
+| `family-6000000009879586250.ged` | 3 | 7 | 0 | 3 | 0 |
+| `family-6000000009894903775.ged` | 2 | 4 | 0 | 4 | 0 |
+| `family-6000000009915578140.ged` | 2 | 0 | 0 | 17 | 13 |
+| `family-6000000009916465367.ged` | 3 | 0 | 0 | 18 | 10 |
+| `family-6000000009916611254.ged` | 3 | 0 | 0 | 9 | 2 |
+| `family-6000000010076488689.ged` | 2 | 0 | 0 | 27 | 3 |
+| `family-6000000010160609967.ged` | 4 | 0 | 0 | 25 | 2 |
+| `family-6000000010173695472.ged` | 2 | 10 | 0 | 3 | 0 |
+| `family-6000000010201060159.ged` | 2 | 3 | 0 | 4 | 0 |
+| `family-6000000010222435520.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000010226740465.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000010229568198.ged` | 3 | 0 | 0 | 17 | 4 |
+| `family-6000000010229747719.ged` | 2 | 2 | 0 | 11 | 2 |
+| `family-6000000010239991822.ged` | 4 | 3 | 0 | 10 | 3 |
+| `family-6000000010240000883.ged` | 4 | 0 | 0 | 11 | 3 |
+| `family-6000000010240260367.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000010240577298.ged` | 2 | 0 | 0 | 13 | 8 |
+| `family-6000000010259352985.ged` | 1 | 6 | 0 | 2 | 0 |
+| `family-6000000010288168143.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000010288326033.ged` | 3 | 0 | 0 | 10 | 7 |
+| `family-6000000010288779197.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000010288870971.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000010288911760.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000010288921953.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000010289043219.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000010289067232.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000010289095311.ged` | 3 | 0 | 0 | 8 | 1 |
+| `family-6000000010293642737.ged` | 1 | 0 | 0 | 8 | 5 |
+| `family-6000000010293673038.ged` | 1 | 0 | 0 | 6 | 3 |
+| `family-6000000010293952225.ged` | 2 | 0 | 0 | 7 | 4 |
+| `family-6000000010329851747.ged` | 1 | 0 | 0 | 6 | 2 |
+| `family-6000000010331432922.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000010331792637.ged` | 0 | 0 | 0 | 4 | 0 |
+| `family-6000000010341338258.ged` | 3 | 0 | 0 | 18 | 7 |
+| `family-6000000010351510999.ged` | 1 | 0 | 0 | 14 | 8 |
+| `family-6000000010354381155.ged` | 4 | 0 | 0 | 21 | 9 |
+| `family-6000000010375411929.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000010407268537.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000010449304150.ged` | 2 | 0 | 0 | 8 | 4 |
+| `family-6000000010449349615.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000010449454103.ged` | 1 | 0 | 0 | 5 | 1 |
+| `family-6000000010449616852.ged` | 3 | 0 | 0 | 7 | 1 |
+| `family-6000000010449889350.ged` | 3 | 0 | 0 | 9 | 2 |
+| `family-6000000010463529059.ged` | 3 | 0 | 0 | 20 | 0 |
+| `family-6000000010513431062.ged` | 3 | 0 | 0 | 22 | 6 |
+| `family-6000000010534596447.ged` | 1 | 0 | 0 | 12 | 0 |
+| `family-6000000010546157120.ged` | 2 | 0 | 0 | 22 | 0 |
+| `family-6000000010546205936.ged` | 4 | 0 | 0 | 13 | 6 |
+| `family-6000000010581886947.ged` | 2 | 2 | 0 | 3 | 0 |
+| `family-6000000010598672967.ged` | 4 | 2 | 0 | 9 | 3 |
+| `family-6000000010642074199.ged` | 1 | 0 | 0 | 7 | 3 |
+| `family-6000000010642543165.ged` | 1 | 0 | 0 | 6 | 1 |
+| `family-6000000010642679959.ged` | 2 | 0 | 0 | 7 | 3 |
+| `family-6000000010642992694.ged` | 0 | 0 | 0 | 4 | 0 |
+| `family-6000000010643107861.ged` | 1 | 1 | 0 | 7 | 0 |
+| `family-6000000010644712727.ged` | 0 | 0 | 0 | 6 | 0 |
+| `family-6000000010648239432.ged` | 0 | 0 | 0 | 7 | 0 |
+| `family-6000000010659609679.ged` | 2 | 11 | 0 | 13 | 0 |
+| `family-6000000010659664086.ged` | 3 | 0 | 0 | 17 | 0 |
+| `family-6000000010671353360.ged` | 3 | 0 | 0 | 10 | 2 |
+| `family-6000000010680123679.ged` | 3 | 6 | 0 | 19 | 15 |
+| `family-6000000010680345246.ged` | 3 | 1 | 0 | 29 | 10 |
+| `family-6000000010760898759.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000010807476638.ged` | 3 | 0 | 0 | 16 | 12 |
+| `family-6000000010877248442.ged` | 3 | 3 | 0 | 10 | 6 |
+| `family-6000000010888314829.ged` | 3 | 0 | 0 | 8 | 5 |
+| `family-6000000010888345851.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000010888345895.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000011000125945.ged` | 3 | 0 | 0 | 14 | 12 |
+| `family-6000000011036078569.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000011040229514.ged` | 3 | 7 | 0 | 8 | 5 |
+| `family-6000000011043803107.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000011048419126.ged` | 1 | 0 | 0 | 14 | 8 |
+| `family-6000000011078549071.ged` | 3 | 0 | 0 | 13 | 1 |
+| `family-6000000011078726908.ged` | 3 | 0 | 0 | 24 | 11 |
+| `family-6000000011078807545.ged` | 2 | 0 | 0 | 24 | 0 |
+| `family-6000000011078829655.ged` | 3 | 0 | 0 | 11 | 2 |
+| `family-6000000011078886609.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000011078918407.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000011079271617.ged` | 1 | 0 | 0 | 10 | 0 |
+| `family-6000000011079343735.ged` | 1 | 0 | 0 | 8 | 0 |
+| `family-6000000011093637021.ged` | 2 | 5 | 0 | 3 | 0 |
+| `family-6000000011157772349.ged` | 5 | 10 | 0 | 2 | 0 |
+| `family-6000000011158087194.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000011169272123.ged` | 3 | 0 | 0 | 12 | 4 |
+| `family-6000000011169570980.ged` | 2 | 0 | 0 | 13 | 2 |
+| `family-6000000011183696687.ged` | 3 | 0 | 0 | 15 | 5 |
+| `family-6000000011235467397.ged` | 3 | 0 | 0 | 22 | 20 |
+| `family-6000000011239201122.ged` | 4 | 0 | 0 | 18 | 1 |
+| `family-6000000011239402589.ged` | 5 | 0 | 0 | 22 | 16 |
+| `family-6000000011239545575.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000011244838043.ged` | 2 | 5 | 0 | 8 | 3 |
+| `family-6000000011245746417.ged` | 2 | 0 | 0 | 10 | 0 |
+| `family-6000000011249640031.ged` | 4 | 0 | 0 | 9 | 3 |
+| `family-6000000011252874344.ged` | 4 | 0 | 0 | 20 | 7 |
+| `family-6000000011274338852.ged` | 3 | 0 | 0 | 9 | 4 |
+| `family-6000000011276917624.ged` | 2 | 0 | 0 | 12 | 1 |
+| `family-6000000011302378738.ged` | 3 | 2 | 0 | 14 | 9 |
+| `family-6000000011315288524.ged` | 2 | 0 | 0 | 10 | 4 |
+| `family-6000000011330161333.ged` | 2 | 0 | 0 | 19 | 9 |
+| `family-6000000011357531284.ged` | 1 | 8 | 0 | 3 | 0 |
+| `family-6000000011380063304.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000011392245825.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000011399221611.ged` | 1 | 0 | 0 | 21 | 2 |
+| `family-6000000011428579002.ged` | 3 | 0 | 0 | 13 | 5 |
+| `family-6000000011429638227.ged` | 3 | 0 | 0 | 25 | 15 |
+| `family-6000000011433727968.ged` | 2 | 0 | 0 | 8 | 3 |
+| `family-6000000011460254487.ged` | 4 | 0 | 0 | 12 | 4 |
+| `family-6000000011489252646.ged` | 3 | 0 | 0 | 14 | 4 |
+| `family-6000000011503175034.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000011536465369.ged` | 4 | 0 | 0 | 11 | 4 |
+| `family-6000000011540389372.ged` | 3 | 0 | 0 | 23 | 21 |
+| `family-6000000011546841461.ged` | 3 | 0 | 0 | 16 | 6 |
+| `family-6000000011558107669.ged` | 2 | 3 | 0 | 3 | 0 |
+| `family-6000000011568319792.ged` | 3 | 0 | 0 | 18 | 11 |
+| `family-6000000011568373884.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000011570928590.ged` | 3 | 5 | 0 | 9 | 1 |
+| `family-6000000011570983149.ged` | 4 | 3 | 0 | 14 | 5 |
+| `family-6000000011601412945.ged` | 4 | 4 | 0 | 11 | 6 |
+| `family-6000000011613442175.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000011623099406.ged` | 3 | 0 | 0 | 19 | 2 |
+| `family-6000000011647607597.ged` | 4 | 0 | 0 | 14 | 12 |
+| `family-6000000011648048242.ged` | 3 | 0 | 0 | 21 | 1 |
+| `family-6000000011717304476.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000011769042441.ged` | 2 | 0 | 0 | 24 | 0 |
+| `family-6000000011774471387.ged` | 3 | 0 | 0 | 12 | 4 |
+| `family-6000000011787526724.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000011807777264.ged` | 4 | 0 | 0 | 9 | 5 |
+| `family-6000000011811245484.ged` | 3 | 1 | 0 | 10 | 0 |
+| `family-6000000011821706820.ged` | 4 | 0 | 0 | 25 | 7 |
+| `family-6000000011843556332.ged` | 4 | 0 | 0 | 19 | 14 |
+| `family-6000000011862113693.ged` | 2 | 0 | 0 | 8 | 6 |
+| `family-6000000011870629601.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000011955281927.ged` | 1 | 1 | 0 | 5 | 1 |
+| `family-6000000011970410034.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000012013655297.ged` | 2 | 6 | 0 | 6 | 0 |
+| `family-6000000012108249741.ged` | 1 | 0 | 0 | 22 | 0 |
+| `family-6000000012139250763.ged` | 4 | 0 | 0 | 13 | 4 |
+| `family-6000000012139788237.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000012198494299.ged` | 4 | 0 | 0 | 30 | 3 |
+| `family-6000000012242523692.ged` | 3 | 2 | 0 | 4 | 1 |
+| `family-6000000012243172431.ged` | 3 | 3 | 0 | 10 | 0 |
+| `family-6000000012245669731.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000012284316316.ged` | 2 | 4 | 0 | 4 | 0 |
+| `family-6000000012293585755.ged` | 2 | 0 | 0 | 16 | 11 |
+| `family-6000000012293596475.ged` | 2 | 0 | 0 | 13 | 0 |
+| `family-6000000012294304415.ged` | 1 | 7 | 0 | 9 | 0 |
+| `family-6000000012307860943.ged` | 3 | 4 | 0 | 10 | 0 |
+| `family-6000000012308553479.ged` | 4 | 0 | 0 | 29 | 9 |
+| `family-6000000012336650452.ged` | 3 | 0 | 0 | 19 | 7 |
+| `family-6000000012337711888.ged` | 3 | 0 | 0 | 20 | 5 |
+| `family-6000000012449602209.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000012455272755.ged` | 2 | 0 | 0 | 13 | 0 |
+| `family-6000000012503281124.ged` | 3 | 0 | 0 | 14 | 8 |
+| `family-6000000012504273407.ged` | 3 | 0 | 0 | 22 | 11 |
+| `family-6000000012566391180.ged` | 3 | 0 | 0 | 13 | 2 |
+| `family-6000000012587690898.ged` | 3 | 0 | 0 | 23 | 1 |
+| `family-6000000012591881202.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000012617461291.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000012640023947.ged` | 2 | 0 | 0 | 24 | 12 |
+| `family-6000000012640245221.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000012641619750.ged` | 4 | 0 | 0 | 15 | 1 |
+| `family-6000000012654395608.ged` | 2 | 0 | 0 | 14 | 10 |
+| `family-6000000012696708415.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000012724604098.ged` | 1 | 0 | 0 | 17 | 1 |
+| `family-6000000012734378784.ged` | 1 | 0 | 0 | 9 | 4 |
+| `family-6000000012754388121.ged` | 4 | 0 | 0 | 21 | 9 |
+| `family-6000000012801048713.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000012827520384.ged` | 3 | 0 | 0 | 8 | 5 |
+| `family-6000000012878346373.ged` | 3 | 1 | 0 | 17 | 2 |
+| `family-6000000012880340255.ged` | 3 | 6 | 0 | 3 | 0 |
+| `family-6000000012904227535.ged` | 2 | 5 | 0 | 11 | 6 |
+| `family-6000000012938156179.ged` | 2 | 3 | 0 | 3 | 0 |
+| `family-6000000012952101595.ged` | 3 | 0 | 0 | 19 | 5 |
+| `family-6000000012956997840.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000012987643357.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000013019602706.ged` | 3 | 0 | 0 | 10 | 4 |
+| `family-6000000013020969736.ged` | 10 | 0 | 0 | 35 | 22 |
+| `family-6000000013021605891.ged` | 2 | 0 | 0 | 22 | 0 |
+| `family-6000000013059926666.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000013071838546.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000013118070141.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000013122624376.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000013134497484.ged` | 3 | 10 | 0 | 7 | 0 |
+| `family-6000000013153614307.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000013166100337.ged` | 3 | 0 | 0 | 11 | 1 |
+| `family-6000000013184965702.ged` | 4 | 0 | 0 | 23 | 13 |
+| `family-6000000013195069123.ged` | 3 | 0 | 0 | 18 | 3 |
+| `family-6000000013205833004.ged` | 3 | 0 | 0 | 22 | 6 |
+| `family-6000000013214852442.ged` | 3 | 0 | 0 | 11 | 3 |
+| `family-6000000013214878518.ged` | 2 | 0 | 0 | 14 | 2 |
+| `family-6000000013281880387.ged` | 2 | 0 | 0 | 24 | 4 |
+| `family-6000000013291844252.ged` | 2 | 3 | 0 | 4 | 0 |
+| `family-6000000013394214983.ged` | 3 | 4 | 0 | 4 | 1 |
+| `family-6000000013487830550.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000013538823820.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000013618082642.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000013694127827.ged` | 3 | 4 | 0 | 6 | 3 |
+| `family-6000000013694337126.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000013733469109.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000013761079106.ged` | 3 | 0 | 0 | 10 | 7 |
+| `family-6000000013776824344.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000013837414558.ged` | 1 | 0 | 0 | 6 | 3 |
+| `family-6000000013854218635.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000013859263377.ged` | 4 | 0 | 0 | 9 | 0 |
+| `family-6000000013863648329.ged` | 3 | 0 | 0 | 9 | 7 |
+| `family-6000000013938289487.ged` | 5 | 0 | 0 | 12 | 7 |
+| `family-6000000013951497709.ged` | 1 | 0 | 0 | 10 | 7 |
+| `family-6000000013984937135.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000013986579880.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000014024359812.ged` | 4 | 0 | 0 | 25 | 8 |
+| `family-6000000014044436728.ged` | 1 | 0 | 0 | 24 | 5 |
+| `family-6000000014044440566.ged` | 2 | 0 | 0 | 11 | 6 |
+| `family-6000000014044468426.ged` | 3 | 0 | 0 | 16 | 0 |
+| `family-6000000014164192090.ged` | 2 | 8 | 0 | 3 | 0 |
+| `family-6000000014164331457.ged` | 3 | 0 | 0 | 21 | 8 |
+| `family-6000000014167861941.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000014224378935.ged` | 2 | 0 | 0 | 13 | 0 |
+| `family-6000000014253280113.ged` | 3 | 0 | 0 | 19 | 1 |
+| `family-6000000014265035290.ged` | 4 | 0 | 0 | 11 | 3 |
+| `family-6000000014287203465.ged` | 3 | 11 | 0 | 4 | 0 |
+| `family-6000000014287321085.ged` | 0 | 0 | 0 | 10 | 0 |
+| `family-6000000014300507795.ged` | 3 | 0 | 0 | 12 | 9 |
+| `family-6000000014300629210.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000014300860839.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000014301252922.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000014301322889.ged` | 2 | 0 | 0 | 14 | 7 |
+| `family-6000000014301339457.ged` | 3 | 0 | 0 | 22 | 6 |
+| `family-6000000014301359938.ged` | 3 | 0 | 0 | 21 | 9 |
+| `family-6000000014329905514.ged` | 2 | 0 | 0 | 14 | 10 |
+| `family-6000000014347515827.ged` | 2 | 11 | 0 | 4 | 2 |
+| `family-6000000014349023517.ged` | 3 | 2 | 0 | 9 | 0 |
+| `family-6000000014360883324.ged` | 2 | 0 | 0 | 22 | 8 |
+| `family-6000000014394601788.ged` | 3 | 2 | 0 | 19 | 1 |
+| `family-6000000014438228368.ged` | 3 | 0 | 0 | 8 | 5 |
+| `family-6000000014487411458.ged` | 4 | 12 | 0 | 3 | 0 |
+| `family-6000000014493706045.ged` | 3 | 0 | 0 | 17 | 0 |
+| `family-6000000014507656819.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000014512537406.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000014522158621.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000014545722296.ged` | 1 | 0 | 0 | 22 | 6 |
+| `family-6000000014619027420.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-6000000014640008112.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000014652275852.ged` | 3 | 0 | 0 | 15 | 2 |
+| `family-6000000014652351128.ged` | 1 | 0 | 0 | 19 | 0 |
+| `family-6000000014670000527.ged` | 3 | 3 | 0 | 2 | 0 |
+| `family-6000000014814372062.ged` | 3 | 3 | 0 | 11 | 5 |
+| `family-6000000014846941321.ged` | 2 | 0 | 0 | 8 | 0 |
+| `family-6000000014853129253.ged` | 1 | 0 | 0 | 14 | 0 |
+| `family-6000000014912086026.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000014946390383.ged` | 3 | 0 | 0 | 17 | 8 |
+| `family-6000000015034892465.ged` | 4 | 14 | 0 | 5 | 0 |
+| `family-6000000015052941471.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000015117399351.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000015117490925.ged` | 3 | 0 | 0 | 20 | 15 |
+| `family-6000000015117958521.ged` | 3 | 0 | 0 | 7 | 3 |
+| `family-6000000015165484143.ged` | 2 | 0 | 0 | 7 | 5 |
+| `family-6000000015204381777.ged` | 3 | 0 | 0 | 17 | 8 |
+| `family-6000000015211178776.ged` | 3 | 0 | 0 | 14 | 11 |
+| `family-6000000015245604334.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000015248558209.ged` | 4 | 5 | 0 | 2 | 0 |
+| `family-6000000015271224733.ged` | 2 | 6 | 0 | 2 | 0 |
+| `family-6000000015302506749.ged` | 1 | 0 | 0 | 15 | 12 |
+| `family-6000000015309255172.ged` | 2 | 0 | 0 | 19 | 11 |
+| `family-6000000015309299285.ged` | 1 | 0 | 0 | 20 | 5 |
+| `family-6000000015319810478.ged` | 4 | 0 | 0 | 8 | 5 |
+| `family-6000000015350503911.ged` | 1 | 0 | 0 | 5 | 2 |
+| `family-6000000015353381395.ged` | 2 | 8 | 0 | 4 | 0 |
+| `family-6000000015357707513.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000015394330678.ged` | 2 | 0 | 0 | 13 | 2 |
+| `family-6000000015399099546.ged` | 3 | 8 | 0 | 6 | 1 |
+| `family-6000000015399620672.ged` | 3 | 2 | 0 | 6 | 0 |
+| `family-6000000015423318064.ged` | 3 | 0 | 0 | 11 | 1 |
+| `family-6000000015423592428.ged` | 1 | 2 | 0 | 4 | 0 |
+| `family-6000000015423722158.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000015423962219.ged` | 4 | 1 | 0 | 9 | 0 |
+| `family-6000000015433000757.ged` | 1 | 0 | 0 | 4 | 1 |
+| `family-6000000015456306509.ged` | 5 | 7 | 0 | 6 | 0 |
+| `family-6000000015458018093.ged` | 4 | 8 | 0 | 2 | 0 |
+| `family-6000000015485735160.ged` | 4 | 6 | 0 | 2 | 0 |
+| `family-6000000015518649039.ged` | 3 | 0 | 0 | 7 | 4 |
+| `family-6000000015518684068.ged` | 4 | 1 | 0 | 9 | 3 |
+| `family-6000000015518685084.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000015521070849.ged` | 3 | 0 | 0 | 11 | 5 |
+| `family-6000000015521370780.ged` | 3 | 2 | 0 | 8 | 0 |
+| `family-6000000015521590083.ged` | 4 | 7 | 0 | 6 | 1 |
+| `family-6000000015548836652.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000015593753615.ged` | 3 | 0 | 0 | 15 | 4 |
+| `family-6000000015694585880.ged` | 2 | 2 | 0 | 6 | 0 |
+| `family-6000000015762582857.ged` | 3 | 10 | 0 | 4 | 0 |
+| `family-6000000015770704042.ged` | 2 | 6 | 0 | 11 | 0 |
+| `family-6000000015783617174.ged` | 3 | 7 | 0 | 3 | 0 |
+| `family-6000000015843590321.ged` | 1 | 0 | 0 | 9 | 0 |
+| `family-6000000015851698695.ged` | 3 | 0 | 0 | 18 | 7 |
+| `family-6000000015896566917.ged` | 4 | 9 | 0 | 2 | 0 |
+| `family-6000000015960507216.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000015995643669.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000015998729022.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000016035515278.ged` | 3 | 0 | 0 | 13 | 11 |
+| `family-6000000016176464141.ged` | 3 | 6 | 0 | 6 | 2 |
+| `family-6000000016303264136.ged` | 4 | 20 | 0 | 12 | 9 |
+| `family-6000000016303283134.ged` | 4 | 0 | 0 | 26 | 1 |
+| `family-6000000016360042741.ged` | 3 | 1 | 0 | 12 | 8 |
+| `family-6000000016409836515.ged` | 3 | 14 | 0 | 2 | 0 |
+| `family-6000000016425918956.ged` | 2 | 0 | 0 | 7 | 2 |
+| `family-6000000016426352456.ged` | 1 | 1 | 0 | 4 | 1 |
+| `family-6000000016426580160.ged` | 3 | 0 | 0 | 10 | 2 |
+| `family-6000000016476125295.ged` | 2 | 1 | 0 | 19 | 0 |
+| `family-6000000016479087543.ged` | 2 | 2 | 0 | 10 | 1 |
+| `family-6000000016498484905.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000016524697799.ged` | 4 | 8 | 0 | 3 | 0 |
+| `family-6000000016524856961.ged` | 1 | 0 | 0 | 8 | 0 |
+| `family-6000000016534042672.ged` | 2 | 3 | 0 | 3 | 0 |
+| `family-6000000016582078281.ged` | 3 | 0 | 0 | 18 | 15 |
+| `family-6000000016585253178.ged` | 2 | 8 | 0 | 2 | 0 |
+| `family-6000000016623538002.ged` | 1 | 0 | 0 | 20 | 5 |
+| `family-6000000016645354674.ged` | 2 | 0 | 0 | 11 | 9 |
+| `family-6000000016651651794.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000016662825611.ged` | 2 | 0 | 0 | 23 | 0 |
+| `family-6000000016772114903.ged` | 3 | 0 | 0 | 20 | 0 |
+| `family-6000000016959316252.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000016982342071.ged` | 4 | 1 | 0 | 10 | 4 |
+| `family-6000000017004933881.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000017016113858.ged` | 2 | 0 | 0 | 10 | 5 |
+| `family-6000000017055223022.ged` | 3 | 3 | 0 | 6 | 1 |
+| `family-6000000017089393301.ged` | 2 | 2 | 0 | 9 | 5 |
+| `family-6000000017093875188.ged` | 2 | 0 | 0 | 10 | 1 |
+| `family-6000000017204494763.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000017335445640.ged` | 4 | 0 | 0 | 20 | 1 |
+| `family-6000000017353079059.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000017394131513.ged` | 2 | 0 | 0 | 13 | 0 |
+| `family-6000000017430262394.ged` | 3 | 9 | 0 | 3 | 0 |
+| `family-6000000017460802463.ged` | 3 | 6 | 0 | 7 | 4 |
+| `family-6000000017512579814.ged` | 2 | 0 | 0 | 6 | 2 |
+| `family-6000000017512587298.ged` | 2 | 0 | 0 | 8 | 4 |
+| `family-6000000017512648427.ged` | 2 | 0 | 0 | 8 | 3 |
+| `family-6000000017512682319.ged` | 2 | 0 | 0 | 6 | 2 |
+| `family-6000000017512797708.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000017513039586.ged` | 3 | 0 | 0 | 9 | 2 |
+| `family-6000000017535961052.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000017625357021.ged` | 3 | 0 | 0 | 14 | 1 |
+| `family-6000000017627448734.ged` | 3 | 0 | 0 | 16 | 0 |
+| `family-6000000017768865194.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000017799612472.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000017857202967.ged` | 2 | 4 | 0 | 4 | 0 |
+| `family-6000000017871912470.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000018098723109.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-6000000018110421350.ged` | 3 | 0 | 0 | 24 | 6 |
+| `family-6000000018145628151.ged` | 3 | 0 | 0 | 16 | 0 |
+| `family-6000000018212260392.ged` | 2 | 5 | 0 | 3 | 0 |
+| `family-6000000018212464007.ged` | 3 | 10 | 0 | 7 | 0 |
+| `family-6000000018319921158.ged` | 2 | 11 | 0 | 2 | 0 |
+| `family-6000000018338407673.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000018348056712.ged` | 3 | 0 | 0 | 22 | 3 |
+| `family-6000000018426488633.ged` | 3 | 0 | 0 | 13 | 3 |
+| `family-6000000018448055702.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000018448271481.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000018464035156.ged` | 3 | 1 | 0 | 16 | 0 |
+| `family-6000000018528235866.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000018569141035.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000018604811298.ged` | 1 | 4 | 0 | 5 | 1 |
+| `family-6000000018672086759.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000018698796190.ged` | 1 | 2 | 0 | 2 | 1 |
+| `family-6000000018752060667.ged` | 4 | 0 | 0 | 15 | 2 |
+| `family-6000000018758779136.ged` | 2 | 0 | 0 | 10 | 4 |
+| `family-6000000018816467565.ged` | 2 | 10 | 0 | 3 | 0 |
+| `family-6000000018821123732.ged` | 4 | 0 | 0 | 8 | 5 |
+| `family-6000000018905914346.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000018908930497.ged` | 4 | 0 | 0 | 26 | 23 |
+| `family-6000000018909038179.ged` | 3 | 0 | 0 | 11 | 7 |
+| `family-6000000018909112139.ged` | 3 | 0 | 0 | 11 | 1 |
+| `family-6000000018941002216.ged` | 3 | 2 | 0 | 6 | 4 |
+| `family-6000000018958663014.ged` | 1 | 0 | 0 | 14 | 11 |
+| `family-6000000019023540872.ged` | 1 | 5 | 0 | 11 | 0 |
+| `family-6000000019023649207.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000019032360275.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000019103963083.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000019172017966.ged` | 4 | 2 | 0 | 7 | 5 |
+| `family-6000000019275691564.ged` | 3 | 0 | 0 | 16 | 13 |
+| `family-6000000019382922858.ged` | 3 | 3 | 0 | 10 | 3 |
+| `family-6000000019410166019.ged` | 4 | 0 | 0 | 15 | 10 |
+| `family-6000000019418600064.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000019442981782.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000019483266692.ged` | 3 | 6 | 0 | 7 | 4 |
+| `family-6000000019509377608.ged` | 3 | 0 | 0 | 17 | 10 |
+| `family-6000000019519065150.ged` | 3 | 3 | 0 | 4 | 1 |
+| `family-6000000019557061076.ged` | 2 | 1 | 0 | 9 | 0 |
+| `family-6000000019594325656.ged` | 3 | 0 | 0 | 7 | 1 |
+| `family-6000000019644306540.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000019698408474.ged` | 2 | 0 | 0 | 26 | 0 |
+| `family-6000000019772246227.ged` | 1 | 0 | 0 | 18 | 12 |
+| `family-6000000019775225537.ged` | 3 | 9 | 0 | 9 | 0 |
+| `family-6000000019775649283.ged` | 1 | 0 | 0 | 19 | 0 |
+| `family-6000000019821504114.ged` | 3 | 14 | 0 | 2 | 0 |
+| `family-6000000019857924817.ged` | 2 | 0 | 0 | 12 | 1 |
+| `family-6000000019907960509.ged` | 2 | 4 | 0 | 5 | 2 |
+| `family-6000000019922963015.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000019932176283.ged` | 4 | 6 | 0 | 5 | 2 |
+| `family-6000000019941023277.ged` | 3 | 0 | 0 | 14 | 6 |
+| `family-6000000020013489270.ged` | 1 | 1 | 0 | 8 | 4 |
+| `family-6000000020104796553.ged` | 3 | 0 | 0 | 9 | 6 |
+| `family-6000000020109737178.ged` | 4 | 0 | 0 | 23 | 14 |
+| `family-6000000020128946533.ged` | 1 | 0 | 0 | 3 | 1 |
+| `family-6000000020146576832.ged` | 1 | 0 | 0 | 6 | 1 |
+| `family-6000000020146931228.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000020182272013.ged` | 2 | 0 | 0 | 21 | 0 |
+| `family-6000000020254004837.ged` | 2 | 8 | 0 | 4 | 0 |
+| `family-6000000020344692199.ged` | 2 | 0 | 0 | 13 | 7 |
+| `family-6000000020344732085.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000020344842981.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000020377095239.ged` | 5 | 0 | 0 | 18 | 0 |
+| `family-6000000020409245654.ged` | 1 | 3 | 0 | 4 | 0 |
+| `family-6000000020473563984.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000020475622749.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000020475690473.ged` | 1 | 0 | 0 | 9 | 0 |
+| `family-6000000020492202008.ged` | 3 | 0 | 0 | 14 | 3 |
+| `family-6000000020500645225.ged` | 4 | 9 | 0 | 3 | 0 |
+| `family-6000000020669241036.ged` | 2 | 6 | 0 | 2 | 0 |
+| `family-6000000020676480769.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000020761326856.ged` | 3 | 16 | 0 | 4 | 0 |
+| `family-6000000020882809831.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000021026235857.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000021039674210.ged` | 3 | 0 | 0 | 14 | 4 |
+| `family-6000000021039691973.ged` | 2 | 0 | 0 | 15 | 1 |
+| `family-6000000021079935250.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000021131949939.ged` | 3 | 8 | 0 | 15 | 1 |
+| `family-6000000021132026143.ged` | 3 | 0 | 0 | 11 | 4 |
+| `family-6000000021139261439.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000021143457434.ged` | 2 | 2 | 0 | 4 | 0 |
+| `family-6000000021175859420.ged` | 3 | 13 | 0 | 2 | 0 |
+| `family-6000000021228638868.ged` | 2 | 0 | 0 | 14 | 11 |
+| `family-6000000021276439919.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000021331531124.ged` | 4 | 0 | 0 | 13 | 9 |
+| `family-6000000021331531144.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000021399265460.ged` | 3 | 0 | 0 | 22 | 16 |
+| `family-6000000021423524876.ged` | 2 | 0 | 0 | 8 | 1 |
+| `family-6000000021423552972.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000021438775306.ged` | 3 | 5 | 0 | 9 | 0 |
+| `family-6000000021442678985.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000021499390330.ged` | 2 | 9 | 0 | 9 | 5 |
+| `family-6000000021500013763.ged` | 2 | 0 | 0 | 16 | 7 |
+| `family-6000000021501319830.ged` | 3 | 0 | 0 | 21 | 0 |
+| `family-6000000021516078682.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000021545325820.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000021546131052.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000021635152223.ged` | 3 | 0 | 0 | 19 | 1 |
+| `family-6000000021649357634.ged` | 3 | 0 | 0 | 7 | 4 |
+| `family-6000000021649684059.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000021651776645.ged` | 2 | 0 | 0 | 13 | 3 |
+| `family-6000000021652410546.ged` | 3 | 0 | 0 | 21 | 5 |
+| `family-6000000021656391531.ged` | 2 | 0 | 0 | 13 | 0 |
+| `family-6000000021829378478.ged` | 2 | 0 | 0 | 9 | 0 |
+| `family-6000000021857308049.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000022067361271.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000022131214019.ged` | 2 | 0 | 0 | 11 | 7 |
+| `family-6000000022149778278.ged` | 5 | 13 | 0 | 2 | 0 |
+| `family-6000000022189959429.ged` | 2 | 5 | 0 | 2 | 0 |
+| `family-6000000022461604952.ged` | 3 | 0 | 0 | 19 | 17 |
+| `family-6000000022469409599.ged` | 2 | 0 | 0 | 4 | 2 |
+| `family-6000000022699116782.ged` | 3 | 0 | 0 | 17 | 4 |
+| `family-6000000022731943835.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000022820413342.ged` | 4 | 8 | 0 | 5 | 3 |
+| `family-6000000022823598236.ged` | 3 | 0 | 0 | 27 | 22 |
+| `family-6000000022823987873.ged` | 2 | 0 | 0 | 17 | 10 |
+| `family-6000000022826443643.ged` | 3 | 0 | 0 | 28 | 0 |
+| `family-6000000022905307808.ged` | 3 | 0 | 0 | 8 | 5 |
+| `family-6000000022905487598.ged` | 3 | 0 | 0 | 7 | 4 |
+| `family-6000000022905768215.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000022945004064.ged` | 2 | 0 | 0 | 7 | 3 |
+| `family-6000000022980324190.ged` | 3 | 0 | 0 | 12 | 3 |
+| `family-6000000022981121872.ged` | 4 | 0 | 0 | 13 | 5 |
+| `family-6000000023007521972.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000023045918112.ged` | 3 | 0 | 0 | 10 | 3 |
+| `family-6000000023047704443.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000023093166835.ged` | 4 | 1 | 0 | 19 | 1 |
+| `family-6000000023130178145.ged` | 1 | 9 | 0 | 2 | 0 |
+| `family-6000000023142034990.ged` | 2 | 6 | 0 | 4 | 0 |
+| `family-6000000023188954676.ged` | 2 | 0 | 0 | 11 | 5 |
+| `family-6000000023189437982.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000023250155337.ged` | 3 | 0 | 0 | 19 | 15 |
+| `family-6000000023286661837.ged` | 2 | 9 | 0 | 3 | 0 |
+| `family-6000000023589579983.ged` | 3 | 0 | 0 | 6 | 3 |
+| `family-6000000023666472983.ged` | 3 | 0 | 0 | 20 | 3 |
+| `family-6000000023680996844.ged` | 3 | 0 | 0 | 21 | 4 |
+| `family-6000000023738942040.ged` | 2 | 4 | 0 | 5 | 1 |
+| `family-6000000023739078847.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000023768343105.ged` | 2 | 0 | 0 | 14 | 8 |
+| `family-6000000023855089493.ged` | 4 | 0 | 0 | 15 | 3 |
+| `family-6000000023858289958.ged` | 3 | 0 | 0 | 16 | 6 |
+| `family-6000000023858480076.ged` | 3 | 0 | 0 | 16 | 5 |
+| `family-6000000023880019324.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000023921242233.ged` | 2 | 0 | 0 | 21 | 0 |
+| `family-6000000023952656979.ged` | 2 | 5 | 0 | 5 | 0 |
+| `family-6000000023968161832.ged` | 3 | 3 | 0 | 3 | 0 |
+| `family-6000000023968655929.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000023969704238.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000024048967766.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000024105547515.ged` | 3 | 0 | 0 | 15 | 1 |
+| `family-6000000024106601099.ged` | 3 | 0 | 0 | 20 | 11 |
+| `family-6000000024131740264.ged` | 1 | 0 | 0 | 5 | 0 |
+| `family-6000000024196128518.ged` | 2 | 0 | 0 | 8 | 5 |
+| `family-6000000024207739062.ged` | 3 | 9 | 0 | 3 | 0 |
+| `family-6000000024304661912.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000024431661697.ged` | 3 | 0 | 0 | 21 | 4 |
+| `family-6000000024431753429.ged` | 3 | 0 | 0 | 11 | 5 |
+| `family-6000000024431778428.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000024488925033.ged` | 4 | 11 | 0 | 2 | 0 |
+| `family-6000000024548549483.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000024583594541.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000024583905275.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000024617396092.ged` | 3 | 0 | 0 | 6 | 0 |
+| `family-6000000024666502056.ged` | 0 | 0 | 0 | 12 | 0 |
+| `family-6000000024670994885.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000024831949073.ged` | 3 | 9 | 0 | 4 | 0 |
+| `family-6000000024841032051.ged` | 3 | 0 | 0 | 8 | 0 |
+| `family-6000000024851923471.ged` | 3 | 0 | 0 | 17 | 8 |
+| `family-6000000025124793875.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000025153348204.ged` | 2 | 0 | 0 | 25 | 9 |
+| `family-6000000025221850026.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000025259188072.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000025293310764.ged` | 1 | 1 | 0 | 4 | 2 |
+| `family-6000000025350996418.ged` | 3 | 0 | 0 | 20 | 16 |
+| `family-6000000025453703378.ged` | 1 | 7 | 0 | 2 | 0 |
+| `family-6000000025563581024.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000025590724230.ged` | 1 | 0 | 0 | 9 | 5 |
+| `family-6000000025592868536.ged` | 1 | 0 | 0 | 18 | 2 |
+| `family-6000000025592868542.ged` | 3 | 4 | 0 | 6 | 0 |
+| `family-6000000025593726671.ged` | 3 | 4 | 0 | 10 | 8 |
+| `family-6000000025607889400.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000025807997232.ged` | 4 | 25 | 0 | 5 | 0 |
+| `family-6000000025819589873.ged` | 2 | 0 | 0 | 25 | 6 |
+| `family-6000000025848437161.ged` | 2 | 7 | 0 | 2 | 0 |
+| `family-6000000025945112600.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000025988216933.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-6000000026051778638.ged` | 2 | 2 | 0 | 7 | 1 |
+| `family-6000000026173188815.ged` | 2 | 0 | 0 | 6 | 2 |
+| `family-6000000026173349636.ged` | 2 | 0 | 0 | 7 | 1 |
+| `family-6000000026173714009.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000026191425197.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000026226697810.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000026241080028.ged` | 3 | 0 | 0 | 11 | 8 |
+| `family-6000000026258097510.ged` | 2 | 0 | 0 | 18 | 1 |
+| `family-6000000026302854914.ged` | 2 | 7 | 0 | 3 | 0 |
+| `family-6000000026392951320.ged` | 3 | 7 | 0 | 7 | 3 |
+| `family-6000000026423927151.ged` | 3 | 8 | 0 | 2 | 0 |
+| `family-6000000026534693043.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000026651136015.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000026800312845.ged` | 3 | 4 | 0 | 3 | 0 |
+| `family-6000000026827467145.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000026893410996.ged` | 3 | 0 | 0 | 20 | 0 |
+| `family-6000000026937882544.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000026972756419.ged` | 2 | 1 | 0 | 11 | 0 |
+| `family-6000000026975287820.ged` | 2 | 4 | 0 | 8 | 1 |
+| `family-6000000027109936984.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000027340643370.ged` | 3 | 0 | 0 | 24 | 11 |
+| `family-6000000027438971715.ged` | 1 | 0 | 0 | 8 | 0 |
+| `family-6000000027439182158.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000027448463340.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000027507886451.ged` | 3 | 0 | 0 | 23 | 12 |
+| `family-6000000027592523666.ged` | 1 | 0 | 0 | 16 | 1 |
+| `family-6000000027593736914.ged` | 4 | 1 | 0 | 12 | 9 |
+| `family-6000000027645833651.ged` | 3 | 8 | 0 | 5 | 0 |
+| `family-6000000027654634894.ged` | 3 | 6 | 0 | 11 | 0 |
+| `family-6000000027665609376.ged` | 4 | 1 | 0 | 12 | 3 |
+| `family-6000000027815692857.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000027842049766.ged` | 2 | 0 | 0 | 14 | 6 |
+| `family-6000000027842200337.ged` | 2 | 0 | 0 | 13 | 3 |
+| `family-6000000028067294245.ged` | 2 | 2 | 0 | 5 | 2 |
+| `family-6000000028098760888.ged` | 1 | 5 | 0 | 3 | 0 |
+| `family-6000000028190860420.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000028258191964.ged` | 3 | 6 | 0 | 3 | 1 |
+| `family-6000000028278117400.ged` | 2 | 0 | 0 | 25 | 10 |
+| `family-6000000028408939773.ged` | 2 | 2 | 0 | 8 | 0 |
+| `family-6000000028418914022.ged` | 3 | 0 | 0 | 13 | 6 |
+| `family-6000000029226917736.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000029363285200.ged` | 3 | 0 | 0 | 13 | 6 |
+| `family-6000000029363526786.ged` | 2 | 0 | 0 | 11 | 1 |
+| `family-6000000029364339263.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000029364391060.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000029456827620.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000029654225288.ged` | 4 | 0 | 0 | 8 | 6 |
+| `family-6000000029742178286.ged` | 4 | 0 | 0 | 12 | 3 |
+| `family-6000000029744513021.ged` | 2 | 10 | 0 | 2 | 0 |
+| `family-6000000029855059699.ged` | 2 | 2 | 0 | 3 | 0 |
+| `family-6000000030008527586.ged` | 4 | 3 | 0 | 9 | 6 |
+| `family-6000000030008915196.ged` | 3 | 0 | 0 | 17 | 0 |
+| `family-6000000030009027971.ged` | 3 | 5 | 0 | 5 | 0 |
+| `family-6000000030042669829.ged` | 3 | 5 | 0 | 3 | 1 |
+| `family-6000000030193699033.ged` | 3 | 4 | 0 | 4 | 1 |
+| `family-6000000030384467074.ged` | 1 | 0 | 0 | 13 | 0 |
+| `family-6000000030611671005.ged` | 2 | 12 | 0 | 3 | 0 |
+| `family-6000000030646126873.ged` | 3 | 8 | 0 | 4 | 0 |
+| `family-6000000030756190508.ged` | 2 | 0 | 0 | 20 | 14 |
+| `family-6000000030756257752.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000030775253849.ged` | 2 | 0 | 0 | 28 | 0 |
+| `family-6000000031001900951.ged` | 3 | 0 | 0 | 12 | 4 |
+| `family-6000000031009109101.ged` | 3 | 4 | 0 | 7 | 3 |
+| `family-6000000031052850655.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000031097643683.ged` | 2 | 12 | 0 | 2 | 0 |
+| `family-6000000031247349696.ged` | 0 | 0 | 0 | 13 | 0 |
+| `family-6000000031344931074.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000031495668940.ged` | 2 | 0 | 0 | 21 | 0 |
+| `family-6000000031507231301.ged` | 2 | 0 | 0 | 11 | 5 |
+| `family-6000000031521916552.ged` | 3 | 4 | 0 | 3 | 0 |
+| `family-6000000031522057461.ged` | 2 | 0 | 0 | 7 | 0 |
+| `family-6000000031616467030.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000031820552726.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000031824797548.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000031833079710.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000031873939968.ged` | 0 | 0 | 0 | 17 | 2 |
+| `family-6000000032009421109.ged` | 1 | 8 | 0 | 2 | 0 |
+| `family-6000000032020782138.ged` | 3 | 0 | 0 | 8 | 6 |
+| `family-6000000032045186110.ged` | 2 | 0 | 0 | 20 | 10 |
+| `family-6000000032068841409.ged` | 2 | 0 | 0 | 18 | 5 |
+| `family-6000000032372405206.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000032392264556.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000032658035873.ged` | 3 | 9 | 0 | 6 | 0 |
+| `family-6000000032758429626.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000032943569850.ged` | 3 | 0 | 0 | 7 | 3 |
+| `family-6000000032943742081.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000032976700619.ged` | 1 | 0 | 0 | 16 | 4 |
+| `family-6000000033096911541.ged` | 4 | 0 | 0 | 13 | 2 |
+| `family-6000000033181822821.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000033438633013.ged` | 2 | 0 | 0 | 10 | 2 |
+| `family-6000000033442136907.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000033547075516.ged` | 2 | 0 | 0 | 18 | 13 |
+| `family-6000000033547208139.ged` | 2 | 0 | 0 | 11 | 2 |
+| `family-6000000033547397933.ged` | 2 | 1 | 0 | 6 | 0 |
+| `family-6000000033849935940.ged` | 3 | 0 | 0 | 7 | 3 |
+| `family-6000000033864312339.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000034067577422.ged` | 2 | 3 | 0 | 3 | 0 |
+| `family-6000000034121728391.ged` | 3 | 3 | 0 | 3 | 0 |
+| `family-6000000034197727224.ged` | 3 | 0 | 0 | 18 | 1 |
+| `family-6000000034255327598.ged` | 3 | 0 | 0 | 13 | 4 |
+| `family-6000000034357465956.ged` | 2 | 3 | 0 | 6 | 0 |
+| `family-6000000034357760862.ged` | 3 | 7 | 0 | 6 | 0 |
+| `family-6000000034945147419.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000035094969490.ged` | 2 | 0 | 0 | 9 | 2 |
+| `family-6000000035169266389.ged` | 2 | 4 | 0 | 5 | 0 |
+| `family-6000000035169497997.ged` | 2 | 2 | 0 | 4 | 1 |
+| `family-6000000035239314374.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000035306669685.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000035451537211.ged` | 4 | 6 | 0 | 8 | 1 |
+| `family-6000000035525393426.ged` | 3 | 0 | 0 | 14 | 1 |
+| `family-6000000035525469386.ged` | 3 | 0 | 0 | 12 | 3 |
+| `family-6000000035525833995.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000035525972877.ged` | 1 | 0 | 0 | 21 | 5 |
+| `family-6000000035740078536.ged` | 6 | 10 | 0 | 3 | 1 |
+| `family-6000000035842865927.ged` | 4 | 1 | 0 | 13 | 6 |
+| `family-6000000035953773820.ged` | 2 | 0 | 0 | 16 | 4 |
+| `family-6000000035956517862.ged` | 1 | 0 | 0 | 19 | 0 |
+| `family-6000000036123664824.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000036357505108.ged` | 3 | 0 | 0 | 16 | 6 |
+| `family-6000000036357582274.ged` | 1 | 0 | 0 | 28 | 5 |
+| `family-6000000036645041986.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000036805346568.ged` | 1 | 4 | 0 | 2 | 0 |
+| `family-6000000037035247723.ged` | 3 | 0 | 0 | 14 | 6 |
+| `family-6000000037035530796.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000037061234630.ged` | 2 | 7 | 0 | 5 | 1 |
+| `family-6000000037061491552.ged` | 3 | 6 | 0 | 4 | 0 |
+| `family-6000000037080891969.ged` | 0 | 0 | 0 | 9 | 0 |
+| `family-6000000037499373524.ged` | 3 | 0 | 0 | 9 | 4 |
+| `family-6000000037499674070.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000037581589491.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000037704028766.ged` | 1 | 1 | 0 | 4 | 0 |
+| `family-6000000037807931214.ged` | 1 | 9 | 0 | 3 | 0 |
+| `family-6000000037849985024.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000038251598792.ged` | 6 | 18 | 0 | 2 | 0 |
+| `family-6000000038337943245.ged` | 1 | 5 | 0 | 2 | 0 |
+| `family-6000000038523658661.ged` | 3 | 10 | 0 | 3 | 0 |
+| `family-6000000039148821945.ged` | 2 | 8 | 0 | 2 | 0 |
+| `family-6000000039348882765.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000039632819016.ged` | 3 | 0 | 0 | 18 | 4 |
+| `family-6000000039737494589.ged` | 1 | 5 | 0 | 3 | 0 |
+| `family-6000000039766619938.ged` | 1 | 5 | 0 | 3 | 0 |
+| `family-6000000040126197216.ged` | 2 | 3 | 0 | 3 | 1 |
+| `family-6000000040203264557.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000040374803004.ged` | 3 | 0 | 0 | 16 | 6 |
+| `family-6000000040464859483.ged` | 3 | 1 | 0 | 13 | 2 |
+| `family-6000000040532128866.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000040535638865.ged` | 1 | 8 | 0 | 3 | 0 |
+| `family-6000000040679616715.ged` | 2 | 0 | 0 | 4 | 1 |
+| `family-6000000040680043077.ged` | 2 | 0 | 0 | 6 | 2 |
+| `family-6000000040687433581.ged` | 4 | 10 | 0 | 3 | 0 |
+| `family-6000000040845899938.ged` | 4 | 5 | 0 | 3 | 0 |
+| `family-6000000040996845017.ged` | 2 | 1 | 0 | 7 | 0 |
+| `family-6000000041071183503.ged` | 3 | 7 | 0 | 3 | 1 |
+| `family-6000000041095187891.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000041173248960.ged` | 3 | 0 | 0 | 6 | 4 |
+| `family-6000000041217429865.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000041308652692.ged` | 2 | 6 | 0 | 3 | 0 |
+| `family-6000000041360141789.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000041536548158.ged` | 3 | 0 | 0 | 24 | 11 |
+| `family-6000000041537287092.ged` | 3 | 0 | 0 | 18 | 2 |
+| `family-6000000042155450074.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000042325644869.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000042729202545.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000042754216220.ged` | 3 | 2 | 0 | 8 | 3 |
+| `family-6000000042855696961.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000042927624852.ged` | 5 | 10 | 0 | 2 | 0 |
+| `family-6000000042992733943.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000043001895996.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000043290200075.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000043443420498.ged` | 3 | 0 | 0 | 7 | 5 |
+| `family-6000000043648786217.ged` | 3 | 0 | 0 | 8 | 5 |
+| `family-6000000043649084885.ged` | 0 | 0 | 0 | 6 | 0 |
+| `family-6000000043649220131.ged` | 2 | 0 | 0 | 13 | 5 |
+| `family-6000000043810712869.ged` | 4 | 11 | 0 | 2 | 0 |
+| `family-6000000043815150026.ged` | 1 | 0 | 0 | 7 | 0 |
+| `family-6000000044128793940.ged` | 0 | 0 | 0 | 13 | 0 |
+| `family-6000000044160484143.ged` | 4 | 10 | 0 | 2 | 0 |
+| `family-6000000044240464914.ged` | 4 | 13 | 0 | 2 | 0 |
+| `family-6000000044635685330.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000044729937058.ged` | 2 | 8 | 0 | 3 | 0 |
+| `family-6000000044870041882.ged` | 3 | 3 | 0 | 9 | 5 |
+| `family-6000000045486688897.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000046011846033.ged` | 2 | 4 | 0 | 3 | 0 |
+| `family-6000000046134296028.ged` | 1 | 9 | 0 | 2 | 0 |
+| `family-6000000046292822989.ged` | 3 | 0 | 0 | 20 | 9 |
+| `family-6000000046869458870.ged` | 4 | 12 | 0 | 2 | 0 |
+| `family-6000000047233092984.ged` | 3 | 7 | 0 | 3 | 0 |
+| `family-6000000047427831893.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000047943564981.ged` | 2 | 0 | 0 | 21 | 0 |
+| `family-6000000048017768881.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000048131669306.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000049134640939.ged` | 1 | 1 | 0 | 10 | 0 |
+| `family-6000000050559373987.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000050635310838.ged` | 2 | 0 | 0 | 18 | 11 |
+| `family-6000000050669648872.ged` | 2 | 4 | 0 | 3 | 1 |
+| `family-6000000051276273861.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000051326549095.ged` | 3 | 10 | 0 | 3 | 1 |
+| `family-6000000051555644950.ged` | 3 | 1 | 0 | 20 | 7 |
+| `family-6000000051556352836.ged` | 3 | 0 | 0 | 20 | 9 |
+| `family-6000000051633524915.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000051850936836.ged` | 3 | 5 | 0 | 3 | 0 |
+| `family-6000000052215030827.ged` | 3 | 0 | 0 | 11 | 3 |
+| `family-6000000052215334833.ged` | 4 | 0 | 0 | 13 | 6 |
+| `family-6000000052215809962.ged` | 3 | 0 | 0 | 16 | 0 |
+| `family-6000000053406365148.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000053452245068.ged` | 1 | 0 | 0 | 3 | 1 |
+| `family-6000000053680417825.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000054107766878.ged` | 3 | 3 | 0 | 2 | 0 |
+| `family-6000000054754245892.ged` | 3 | 8 | 0 | 3 | 0 |
+| `family-6000000054990622176.ged` | 2 | 7 | 0 | 4 | 0 |
+| `family-6000000054992850924.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000056330118941.ged` | 2 | 0 | 0 | 15 | 10 |
+| `family-6000000056333864823.ged` | 3 | 0 | 0 | 19 | 8 |
+| `family-6000000056836304898.ged` | 3 | 0 | 0 | 8 | 6 |
+| `family-6000000056945714362.ged` | 3 | 0 | 0 | 14 | 2 |
+| `family-6000000057172875007.ged` | 4 | 0 | 0 | 19 | 1 |
+| `family-6000000057175128821.ged` | 0 | 0 | 0 | 16 | 0 |
+| `family-6000000057327773067.ged` | 1 | 0 | 0 | 7 | 0 |
+| `family-6000000057959889971.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000057959975839.ged` | 1 | 0 | 0 | 9 | 1 |
+| `family-6000000058002247415.ged` | 2 | 0 | 0 | 14 | 5 |
+| `family-6000000059766262845.ged` | 3 | 2 | 0 | 9 | 2 |
+| `family-6000000059786571001.ged` | 1 | 0 | 0 | 4 | 2 |
+| `family-6000000059809756110.ged` | 3 | 2 | 0 | 14 | 2 |
+| `family-6000000060737985956.ged` | 4 | 6 | 0 | 3 | 1 |
+| `family-6000000060993725243.ged` | 3 | 0 | 0 | 14 | 1 |
+| `family-6000000061177284916.ged` | 3 | 0 | 0 | 25 | 23 |
+| `family-6000000063114008888.ged` | 3 | 0 | 0 | 8 | 1 |
+| `family-6000000063114171008.ged` | 3 | 0 | 0 | 12 | 4 |
+| `family-6000000063114223064.ged` | 3 | 0 | 0 | 11 | 1 |
+| `family-6000000064115854341.ged` | 3 | 0 | 0 | 5 | 3 |
+| `family-6000000064755109128.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000065291349821.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000065604186021.ged` | 2 | 6 | 0 | 4 | 0 |
+| `family-6000000065875328000.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000065951815821.ged` | 1 | 0 | 0 | 9 | 7 |
+| `family-6000000065981704822.ged` | 3 | 0 | 0 | 15 | 0 |
+| `family-6000000065991527068.ged` | 2 | 0 | 0 | 18 | 1 |
+| `family-6000000066263754251.ged` | 3 | 0 | 0 | 22 | 3 |
+| `family-6000000066264516851.ged` | 3 | 4 | 0 | 4 | 0 |
+| `family-6000000066264526835.ged` | 3 | 2 | 0 | 8 | 2 |
+| `family-6000000066264650876.ged` | 2 | 0 | 0 | 10 | 0 |
+| `family-6000000066481522948.ged` | 2 | 0 | 0 | 5 | 3 |
+| `family-6000000066817305822.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000067502220858.ged` | 0 | 0 | 0 | 6 | 0 |
+| `family-6000000068446181861.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000069050151452.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000069051592822.ged` | 1 | 0 | 0 | 10 | 0 |
+| `family-6000000069152308976.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000069315166881.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000069381438156.ged` | 7 | 6 | 0 | 3 | 0 |
+| `family-6000000069466362236.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000069597808829.ged` | 2 | 4 | 0 | 3 | 0 |
+| `family-6000000069988689021.ged` | 4 | 8 | 0 | 11 | 7 |
+| `family-6000000070182208157.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000070396611338.ged` | 3 | 13 | 0 | 3 | 0 |
+| `family-6000000070497375043.ged` | 3 | 2 | 0 | 10 | 0 |
+| `family-6000000070666622029.ged` | 4 | 19 | 0 | 3 | 0 |
+| `family-6000000071408689846.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000071637497156.ged` | 3 | 5 | 0 | 3 | 0 |
+| `family-6000000071638053857.ged` | 2 | 0 | 0 | 9 | 1 |
+| `family-6000000071638234914.ged` | 2 | 3 | 0 | 5 | 0 |
+| `family-6000000071638302829.ged` | 3 | 0 | 0 | 9 | 4 |
+| `family-6000000071638439878.ged` | 0 | 0 | 0 | 6 | 0 |
+| `family-6000000071765934146.ged` | 1 | 0 | 0 | 7 | 4 |
+| `family-6000000071766422896.ged` | 1 | 0 | 0 | 3 | 1 |
+| `family-6000000071768187852.ged` | 3 | 0 | 0 | 9 | 0 |
+| `family-6000000071769436089.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000072050755070.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000072112528902.ged` | 3 | 0 | 0 | 18 | 4 |
+| `family-6000000072404632839.ged` | 2 | 7 | 0 | 5 | 1 |
+| `family-6000000072574257633.ged` | 1 | 0 | 0 | 5 | 2 |
+| `family-6000000072962073961.ged` | 2 | 0 | 0 | 7 | 3 |
+| `family-6000000073011630896.ged` | 3 | 0 | 0 | 11 | 0 |
+| `family-6000000073057747827.ged` | 3 | 0 | 0 | 10 | 3 |
+| `family-6000000073120561949.ged` | 2 | 0 | 0 | 7 | 1 |
+| `family-6000000073125297058.ged` | 3 | 6 | 0 | 3 | 0 |
+| `family-6000000073132490036.ged` | 2 | 0 | 0 | 7 | 0 |
+| `family-6000000073622488100.ged` | 2 | 0 | 0 | 22 | 0 |
+| `family-6000000073631541927.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000074341208894.ged` | 4 | 0 | 0 | 18 | 15 |
+| `family-6000000074341809000.ged` | 2 | 0 | 0 | 19 | 4 |
+| `family-6000000074342040898.ged` | 2 | 0 | 0 | 16 | 5 |
+| `family-6000000074687899978.ged` | 1 | 5 | 0 | 2 | 0 |
+| `family-6000000075001015838.ged` | 2 | 2 | 0 | 3 | 0 |
+| `family-6000000075700805895.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000075962834013.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000076365776966.ged` | 2 | 14 | 0 | 3 | 0 |
+| `family-6000000076714784457.ged` | 1 | 0 | 0 | 8 | 6 |
+| `family-6000000076761806976.ged` | 1 | 0 | 0 | 15 | 0 |
+| `family-6000000076771736071.ged` | 3 | 5 | 0 | 3 | 0 |
+| `family-6000000076805697475.ged` | 1 | 0 | 0 | 14 | 0 |
+| `family-6000000076807199992.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000076826620559.ged` | 2 | 2 | 0 | 3 | 0 |
+| `family-6000000076985626326.ged` | 4 | 9 | 0 | 2 | 0 |
+| `family-6000000077107182863.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000077297672317.ged` | 2 | 0 | 0 | 22 | 0 |
+| `family-6000000077297739021.ged` | 3 | 0 | 0 | 21 | 8 |
+| `family-6000000077316240007.ged` | 1 | 0 | 0 | 19 | 0 |
+| `family-6000000077550921671.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000077625189026.ged` | 3 | 0 | 0 | 13 | 8 |
+| `family-6000000077667834821.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000077753636156.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000077762121855.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000077795945062.ged` | 4 | 0 | 0 | 9 | 3 |
+| `family-6000000078280348682.ged` | 3 | 19 | 0 | 2 | 0 |
+| `family-6000000078378778833.ged` | 2 | 2 | 0 | 7 | 0 |
+| `family-6000000078379065845.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000078418098808.ged` | 2 | 5 | 0 | 2 | 0 |
+| `family-6000000078718774172.ged` | 3 | 9 | 0 | 3 | 0 |
+| `family-6000000078925988112.ged` | 2 | 3 | 0 | 3 | 1 |
+| `family-6000000079267271590.ged` | 1 | 0 | 0 | 7 | 0 |
+| `family-6000000079290762052.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000080562610272.ged` | 2 | 0 | 0 | 8 | 4 |
+| `family-6000000080929243843.ged` | 1 | 0 | 0 | 11 | 0 |
+| `family-6000000081000509607.ged` | 3 | 0 | 0 | 9 | 4 |
+| `family-6000000081001770518.ged` | 5 | 0 | 0 | 10 | 2 |
+| `family-6000000081001960578.ged` | 4 | 0 | 0 | 10 | 5 |
+| `family-6000000081001962237.ged` | 1 | 0 | 0 | 9 | 2 |
+| `family-6000000081003033570.ged` | 3 | 0 | 0 | 7 | 3 |
+| `family-6000000081003222288.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000081003290197.ged` | 4 | 0 | 0 | 8 | 5 |
+| `family-6000000081003784512.ged` | 1 | 0 | 0 | 5 | 1 |
+| `family-6000000081003814187.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000081003838952.ged` | 2 | 0 | 0 | 10 | 0 |
+| `family-6000000081003840360.ged` | 3 | 0 | 0 | 20 | 15 |
+| `family-6000000081003941823.ged` | 2 | 0 | 0 | 8 | 0 |
+| `family-6000000081004270036.ged` | 2 | 0 | 0 | 20 | 0 |
+| `family-6000000081531861332.ged` | 4 | 2 | 0 | 11 | 9 |
+| `family-6000000081729286896.ged` | 3 | 0 | 0 | 12 | 0 |
+| `family-6000000082033862114.ged` | 2 | 0 | 0 | 13 | 1 |
+| `family-6000000082819939353.ged` | 2 | 0 | 0 | 21 | 1 |
+| `family-6000000082822675871.ged` | 0 | 0 | 0 | 12 | 0 |
+| `family-6000000082862457204.ged` | 3 | 0 | 0 | 22 | 0 |
+| `family-6000000082894655175.ged` | 2 | 0 | 0 | 13 | 2 |
+| `family-6000000082895620836.ged` | 1 | 0 | 0 | 10 | 0 |
+| `family-6000000083072935969.ged` | 2 | 0 | 0 | 12 | 8 |
+| `family-6000000083767537112.ged` | 2 | 0 | 0 | 6 | 2 |
+| `family-6000000083767648821.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000083768071842.ged` | 1 | 0 | 0 | 9 | 0 |
+| `family-6000000084318378867.ged` | 3 | 4 | 0 | 3 | 0 |
+| `family-6000000084591209979.ged` | 2 | 0 | 0 | 11 | 8 |
+| `family-6000000084659844821.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000084892311057.ged` | 1 | 0 | 0 | 10 | 7 |
+| `family-6000000085676763948.ged` | 1 | 0 | 0 | 16 | 6 |
+| `family-6000000086903454833.ged` | 4 | 1 | 0 | 13 | 0 |
+| `family-6000000087535357291.ged` | 1 | 0 | 0 | 4 | 2 |
+| `family-6000000087669641938.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000088057306880.ged` | 3 | 8 | 0 | 2 | 0 |
+| `family-6000000088332676834.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000089076927053.ged` | 1 | 13 | 0 | 2 | 0 |
+| `family-6000000089141178845.ged` | 2 | 0 | 0 | 14 | 5 |
+| `family-6000000089141527885.ged` | 4 | 0 | 0 | 14 | 5 |
+| `family-6000000089171988019.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000089437494952.ged` | 0 | 0 | 0 | 17 | 0 |
+| `family-6000000090358245316.ged` | 2 | 0 | 0 | 8 | 6 |
+| `family-6000000091076114844.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000091079224839.ged` | 1 | 0 | 0 | 4 | 1 |
+| `family-6000000091348678858.ged` | 1 | 0 | 0 | 24 | 7 |
+| `family-6000000091348678867.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000091348678897.ged` | 2 | 0 | 0 | 14 | 1 |
+| `family-6000000091525536068.ged` | 3 | 0 | 0 | 7 | 4 |
+| `family-6000000091525814902.ged` | 3 | 0 | 0 | 7 | 0 |
+| `family-6000000091526339970.ged` | 3 | 0 | 0 | 17 | 4 |
+| `family-6000000091526612901.ged` | 1 | 0 | 0 | 10 | 0 |
+| `family-6000000091528437842.ged` | 3 | 0 | 0 | 10 | 2 |
+| `family-6000000091529796831.ged` | 2 | 1 | 0 | 5 | 0 |
+| `family-6000000091602117821.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000091812725828.ged` | 2 | 3 | 0 | 3 | 0 |
+| `family-6000000093411354957.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000094193729218.ged` | 2 | 0 | 0 | 16 | 8 |
+| `family-6000000094194176187.ged` | 3 | 0 | 0 | 21 | 0 |
+| `family-6000000094725759821.ged` | 1 | 0 | 0 | 5 | 1 |
+| `family-6000000094788864010.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000094843612867.ged` | 3 | 0 | 0 | 10 | 5 |
+| `family-6000000095213396844.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000095688098893.ged` | 2 | 4 | 0 | 3 | 0 |
+| `family-6000000095751934040.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000096398991038.ged` | 2 | 0 | 0 | 11 | 2 |
+| `family-6000000096399963028.ged` | 2 | 0 | 0 | 7 | 1 |
+| `family-6000000096400842905.ged` | 1 | 0 | 0 | 11 | 0 |
+| `family-6000000097137888972.ged` | 4 | 3 | 0 | 3 | 1 |
+| `family-6000000098665956865.ged` | 3 | 4 | 0 | 5 | 3 |
+| `family-6000000099934709827.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000100082504307.ged` | 3 | 0 | 0 | 13 | 3 |
+| `family-6000000100167913878.ged` | 2 | 6 | 0 | 2 | 0 |
+| `family-6000000100302352316.ged` | 3 | 0 | 0 | 12 | 5 |
+| `family-6000000100733843835.ged` | 2 | 0 | 0 | 10 | 0 |
+| `family-6000000101507800897.ged` | 2 | 3 | 0 | 2 | 0 |
+| `family-6000000103633571840.ged` | 3 | 0 | 0 | 19 | 0 |
+| `family-6000000103707895007.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000103752573902.ged` | 2 | 0 | 0 | 17 | 6 |
+| `family-6000000104523744806.ged` | 3 | 8 | 0 | 2 | 0 |
+| `family-6000000104580051843.ged` | 3 | 4 | 0 | 2 | 0 |
+| `family-6000000104759702112.ged` | 1 | 6 | 0 | 2 | 1 |
+| `family-6000000105712682826.ged` | 1 | 0 | 0 | 20 | 1 |
+| `family-6000000105715318851.ged` | 1 | 0 | 0 | 14 | 0 |
+| `family-6000000106643828977.ged` | 1 | 0 | 0 | 9 | 7 |
+| `family-6000000108092245955.ged` | 4 | 9 | 0 | 2 | 0 |
+| `family-6000000108322400841.ged` | 3 | 0 | 0 | 31 | 0 |
+| `family-6000000109139929839.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000109741693968.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000110231426840.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000111817455021.ged` | 1 | 0 | 0 | 17 | 5 |
+| `family-6000000111817701912.ged` | 1 | 0 | 0 | 23 | 0 |
+| `family-6000000112537545366.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000112538736189.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000112538853251.ged` | 2 | 0 | 0 | 4 | 0 |
+| `family-6000000112539226128.ged` | 1 | 0 | 0 | 6 | 1 |
+| `family-6000000112539233010.ged` | 1 | 0 | 0 | 5 | 0 |
+| `family-6000000112539909876.ged` | 2 | 0 | 0 | 15 | 2 |
+| `family-6000000112539932868.ged` | 1 | 0 | 0 | 13 | 0 |
+| `family-6000000112540071069.ged` | 0 | 0 | 0 | 8 | 0 |
+| `family-6000000114756258161.ged` | 4 | 7 | 0 | 2 | 0 |
+| `family-6000000115667769821.ged` | 3 | 0 | 0 | 9 | 4 |
+| `family-6000000115668545101.ged` | 1 | 0 | 0 | 11 | 2 |
+| `family-6000000115668584966.ged` | 2 | 0 | 0 | 9 | 2 |
+| `family-6000000116694298987.ged` | 3 | 0 | 0 | 10 | 1 |
+| `family-6000000118648470833.ged` | 3 | 9 | 0 | 3 | 0 |
+| `family-6000000120565302852.ged` | 1 | 1 | 0 | 2 | 0 |
+| `family-6000000120884050897.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000121159833867.ged` | 1 | 0 | 0 | 4 | 2 |
+| `family-6000000122243199821.ged` | 2 | 11 | 0 | 3 | 0 |
+| `family-6000000122450336924.ged` | 2 | 0 | 0 | 8 | 0 |
+| `family-6000000123032991857.ged` | 3 | 5 | 0 | 3 | 0 |
+| `family-6000000123450888831.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000123493262823.ged` | 1 | 0 | 0 | 3 | 1 |
+| `family-6000000125874088975.ged` | 4 | 8 | 0 | 3 | 0 |
+| `family-6000000125982458050.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000126167468930.ged` | 3 | 8 | 0 | 2 | 0 |
+| `family-6000000126234285831.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000127314445823.ged` | 1 | 0 | 0 | 11 | 0 |
+| `family-6000000129556183032.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000130196882830.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000130515775874.ged` | 2 | 0 | 0 | 7 | 1 |
+| `family-6000000130516552831.ged` | 3 | 0 | 0 | 11 | 1 |
+| `family-6000000134112435839.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000136584255821.ged` | 2 | 2 | 0 | 10 | 1 |
+| `family-6000000136783038551.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000137763536821.ged` | 3 | 0 | 0 | 16 | 2 |
+| `family-6000000139388764299.ged` | 3 | 7 | 0 | 2 | 0 |
+| `family-6000000139834612831.ged` | 1 | 0 | 0 | 5 | 2 |
+| `family-6000000140114350029.ged` | 2 | 0 | 0 | 14 | 9 |
+| `family-6000000140996282158.ged` | 2 | 6 | 0 | 6 | 1 |
+| `family-6000000140996692829.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000140997657859.ged` | 3 | 2 | 0 | 9 | 0 |
+| `family-6000000140998307832.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000141085184010.ged` | 2 | 2 | 0 | 6 | 0 |
+| `family-6000000141086236875.ged` | 2 | 2 | 0 | 5 | 0 |
+| `family-6000000141991252871.ged` | 5 | 12 | 0 | 5 | 0 |
+| `family-6000000143231712883.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000145232539849.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000145925461838.ged` | 1 | 9 | 0 | 2 | 0 |
+| `family-6000000146318796826.ged` | 4 | 10 | 0 | 2 | 0 |
+| `family-6000000147798365860.ged` | 3 | 0 | 0 | 13 | 0 |
+| `family-6000000148779404114.ged` | 1 | 0 | 0 | 10 | 8 |
+| `family-6000000153693421821.ged` | 2 | 10 | 0 | 4 | 0 |
+| `family-6000000155055551821.ged` | 2 | 3 | 0 | 5 | 0 |
+| `family-6000000158031596887.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000161721983869.ged` | 3 | 0 | 0 | 13 | 2 |
+| `family-6000000161721983881.ged` | 2 | 0 | 0 | 19 | 0 |
+| `family-6000000161721983893.ged` | 1 | 0 | 0 | 17 | 0 |
+| `family-6000000162064187855.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000162662189884.ged` | 3 | 9 | 0 | 2 | 0 |
+| `family-6000000163452220850.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000166423479878.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000167856262821.ged` | 2 | 0 | 0 | 6 | 1 |
+| `family-6000000167857079822.ged` | 2 | 0 | 0 | 7 | 0 |
+| `family-6000000169035317870.ged` | 3 | 5 | 0 | 5 | 3 |
+| `family-6000000169037819865.ged` | 2 | 0 | 0 | 23 | 9 |
+| `family-6000000170028735922.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000171058400024.ged` | 4 | 0 | 0 | 27 | 10 |
+| `family-6000000171523443015.ged` | 3 | 6 | 0 | 2 | 0 |
+| `family-6000000171685356124.ged` | 1 | 1 | 0 | 3 | 0 |
+| `family-6000000172054164872.ged` | 4 | 1 | 0 | 12 | 7 |
+| `family-6000000172736611835.ged` | 4 | 0 | 0 | 10 | 6 |
+| `family-6000000173732509833.ged` | 2 | 6 | 0 | 2 | 0 |
+| `family-6000000173916064919.ged` | 2 | 5 | 0 | 3 | 0 |
+| `family-6000000174047945870.ged` | 2 | 2 | 0 | 2 | 0 |
+| `family-6000000174091841233.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000174348348858.ged` | 3 | 7 | 0 | 4 | 0 |
+| `family-6000000174681148875.ged` | 3 | 8 | 0 | 2 | 0 |
+| `family-6000000174847323565.ged` | 1 | 0 | 0 | 7 | 0 |
+| `family-6000000174849656050.ged` | 2 | 2 | 0 | 6 | 2 |
+| `family-6000000175635238922.ged` | 2 | 3 | 0 | 4 | 0 |
+| `family-6000000175680503879.ged` | 3 | 0 | 0 | 10 | 0 |
+| `family-6000000175911091017.ged` | 3 | 10 | 0 | 2 | 0 |
+| `family-6000000176566961861.ged` | 2 | 6 | 0 | 2 | 0 |
+| `family-6000000176630979904.ged` | 1 | 2 | 0 | 2 | 0 |
+| `family-6000000176741416911.ged` | 3 | 3 | 0 | 2 | 0 |
+| `family-6000000177211840836.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000177462988887.ged` | 2 | 1 | 0 | 13 | 0 |
+| `family-6000000177463069892.ged` | 2 | 4 | 0 | 10 | 1 |
+| `family-6000000177463770840.ged` | 2 | 1 | 0 | 7 | 0 |
+| `family-6000000177920129831.ged` | 2 | 0 | 0 | 24 | 0 |
+| `family-6000000177921458827.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000177921458833.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000177921458845.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000177921458863.ged` | 1 | 0 | 0 | 12 | 0 |
+| `family-6000000177921458990.ged` | 0 | 0 | 0 | 16 | 0 |
+| `family-6000000177921458999.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000177921459033.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000177921459052.ged` | 3 | 0 | 0 | 8 | 3 |
+| `family-6000000177921459056.ged` | 2 | 0 | 0 | 12 | 5 |
+| `family-6000000177921459066.ged` | 3 | 0 | 0 | 10 | 0 |
+| `family-6000000177921459072.ged` | 3 | 0 | 0 | 18 | 0 |
+| `family-6000000177921459078.ged` | 2 | 0 | 0 | 18 | 0 |
+| `family-6000000177921459094.ged` | 2 | 0 | 0 | 16 | 0 |
+| `family-6000000177921459104.ged` | 3 | 0 | 0 | 23 | 3 |
+| `family-6000000177921459114.ged` | 3 | 0 | 0 | 19 | 7 |
+| `family-6000000177921459129.ged` | 3 | 0 | 0 | 11 | 2 |
+| `family-6000000177921459134.ged` | 2 | 0 | 0 | 14 | 0 |
+| `family-6000000177921459169.ged` | 3 | 0 | 0 | 17 | 0 |
+| `family-6000000177921516822.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000177921516839.ged` | 2 | 0 | 0 | 6 | 0 |
+| `family-6000000177921516859.ged` | 1 | 0 | 0 | 8 | 0 |
+| `family-6000000177944025822.ged` | 1 | 0 | 0 | 12 | 0 |
+| `family-6000000177987312850.ged` | 3 | 0 | 0 | 9 | 1 |
+| `family-6000000178190991871.ged` | 3 | 3 | 0 | 2 | 0 |
+| `family-6000000178669824833.ged` | 3 | 4 | 0 | 6 | 0 |
+| `family-6000000178670150833.ged` | 0 | 0 | 0 | 7 | 0 |
+| `family-6000000178918011846.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000178918422849.ged` | 6 | 0 | 0 | 24 | 3 |
+| `family-6000000178955260842.ged` | 3 | 5 | 0 | 2 | 0 |
+| `family-6000000179031212825.ged` | 4 | 5 | 0 | 2 | 0 |
+| `family-6000000179688632838.ged` | 1 | 0 | 0 | 7 | 5 |
+| `family-6000000180280592858.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000180285636825.ged` | 1 | 0 | 0 | 9 | 0 |
+| `family-6000000180557973855.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000180614517834.ged` | 2 | 4 | 0 | 2 | 0 |
+| `family-6000000180745893830.ged` | 1 | 0 | 0 | 15 | 1 |
+| `family-6000000180823601861.ged` | 5 | 6 | 0 | 8 | 0 |
+| `family-6000000181163135859.ged` | 3 | 0 | 0 | 23 | 16 |
+| `family-6000000181166108829.ged` | 1 | 0 | 0 | 19 | 1 |
+| `family-6000000181289074845.ged` | 2 | 0 | 0 | 19 | 2 |
+| `family-6000000182737012832.ged` | 3 | 0 | 0 | 10 | 0 |
+| `family-6000000182795670852.ged` | 1 | 7 | 0 | 2 | 0 |
+| `family-6000000182814226840.ged` | 3 | 0 | 0 | 9 | 7 |
+| `family-6000000182913870868.ged` | 1 | 6 | 0 | 2 | 0 |
+| `family-6000000183986957910.ged` | 1 | 0 | 0 | 5 | 0 |
+| `family-6000000184015123841.ged` | 1 | 0 | 0 | 6 | 2 |
+| `family-6000000184169690842.ged` | 3 | 0 | 0 | 7 | 2 |
+| `family-6000000184224755837.ged` | 2 | 12 | 0 | 4 | 0 |
+| `family-6000000184267864840.ged` | 2 | 0 | 0 | 10 | 6 |
+| `family-6000000184442109821.ged` | 1 | 1 | 0 | 7 | 0 |
+| `family-6000000184590962909.ged` | 1 | 0 | 0 | 8 | 0 |
+| `family-6000000184888139875.ged` | 3 | 0 | 0 | 12 | 3 |
+| `family-6000000185157445888.ged` | 3 | 0 | 0 | 25 | 7 |
+| `family-6000000185158249846.ged` | 2 | 0 | 0 | 21 | 3 |
+| `family-6000000185447097943.ged` | 2 | 0 | 0 | 15 | 0 |
+| `family-6000000186115707839.ged` | 2 | 4 | 0 | 11 | 0 |
+| `family-6000000186276535130.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000186609053824.ged` | 2 | 0 | 0 | 16 | 1 |
+| `family-6000000189814354825.ged` | 1 | 3 | 0 | 2 | 0 |
+| `family-6000000191391773823.ged` | 3 | 0 | 0 | 14 | 0 |
+| `family-6000000194783603884.ged` | 3 | 0 | 0 | 19 | 8 |
+| `family-6000000195872904695.ged` | 1 | 2 | 0 | 3 | 0 |
+| `family-6000000197656493859.ged` | 2 | 0 | 0 | 20 | 5 |
+| `family-6000000197657301823.ged` | 1 | 0 | 0 | 22 | 7 |
+| `family-6000000197657328821.ged` | 2 | 0 | 0 | 19 | 0 |
+| `family-6000000198076694823.ged` | 4 | 8 | 0 | 3 | 1 |
+| `family-6000000200892917834.ged` | 2 | 0 | 0 | 17 | 0 |
+| `family-6000000202543587856.ged` | 2 | 0 | 0 | 11 | 0 |
+| `family-6000000207618037836.ged` | 2 | 0 | 0 | 8 | 0 |
+| `family-6000000207769838867.ged` | 1 | 0 | 0 | 16 | 0 |
+| `family-6000000207770099821.ged` | 0 | 0 | 0 | 12 | 0 |
+| `family-6000000207770887863.ged` | 0 | 0 | 0 | 18 | 0 |
+| `family-6000000209042542914.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000209053003954.ged` | 2 | 0 | 0 | 7 | 4 |
+| `family-6000000209058145828.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000209068285866.ged` | 4 | 0 | 0 | 10 | 1 |
+| `family-6000000210475473863.ged` | 0 | 0 | 0 | 5 | 0 |
+| `family-6000000210483284822.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000210521076830.ged` | 1 | 0 | 0 | 4 | 0 |
+| `family-6000000210867309854.ged` | 2 | 0 | 0 | 7 | 4 |
+| `family-6000000210977860839.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000211785248844.ged` | 1 | 0 | 0 | 3 | 0 |
+| `family-6000000212213503823.ged` | 0 | 0 | 0 | 3 | 0 |
+| `family-6000000212213649822.ged` | 1 | 0 | 0 | 3 | 1 |
+| `family-6000000212832088822.ged` | 1 | 0 | 0 | 10 | 5 |
+| `family-6000000212832554822.ged` | 1 | 0 | 0 | 14 | 0 |
+| `family-6000000213334348871.ged` | 1 | 7 | 0 | 2 | 0 |
+| `family-6000000216588093869.ged` | 1 | 0 | 0 | 19 | 1 |
+| `family-6000000216588272880.ged` | 1 | 0 | 0 | 9 | 0 |
+| `family-6000000216825684836.ged` | 2 | 0 | 0 | 12 | 0 |
+| `family-6000000218365400850.ged` | 1 | 0 | 0 | 5 | 3 |
+| `family-6000000218930532858.ged` | 4 | 0 | 0 | 19 | 12 |
+| `family-6000000220958151877.ged` | 1 | 3 | 0 | 3 | 0 |
+| `family-6000000221151631885.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000221151780844.ged` | 1 | 0 | 0 | 6 | 0 |
+| `family-6000000222599111823.ged` | 2 | 3 | 0 | 14 | 6 |
+| `family-6000000225776538839.ged` | 1 | 2 | 0 | 3 | 0 |
+| `saved-1548918.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-1610437.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-2077926.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-2120676.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-2125635.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-2128292.ged` | 3 | 1 | 0 | 4 | 2 |
-| `saved-2399215.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-292350426030002931.ged` | 6 | 0 | 0 | 13 | 10 |
-| `saved-304413571170007106.ged` | 2 | 0 | 0 | 13 | 12 |
+| `saved-2125635.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-2128292.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-2399215.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-292350426030002931.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-304413571170007106.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-304413670430008270.ged` | 1 | 0 | 0 | 14 | 2 |
-| `saved-316216248270002934.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-346534886220012248.ged` | 2 | 0 | 0 | 13 | 2 |
-| `saved-346535323980012266.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-349440463640013536.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-361843381280007976.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-365313857240013083.ged` | 4 | 8 | 0 | 3 | 1 |
-| `saved-365314124540003500.ged` | 4 | 0 | 0 | 7 | 3 |
-| `saved-365314894420003448.ged` | 4 | 3 | 0 | 9 | 1 |
-| `saved-365315518800010569.ged` | 3 | 0 | 0 | 8 | 4 |
-| `saved-365466687720012045.ged` | 5 | 4 | 0 | 5 | 1 |
+| `saved-316216248270002934.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-346534886220012248.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-346535323980012266.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-349440463640013536.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-361843381280007976.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-365313857240013083.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-365314124540003500.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-365314894420003448.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-365315518800010569.ged` | 3 | 0 | 0 | 8 | 2 |
+| `saved-365466687720012045.ged` | 5 | 0 | 0 | 9 | 1 |
 | `saved-365471060260013162.ged` | 2 | 0 | 0 | 6 | 1 |
-| `saved-365471464220013205.ged` | 2 | 0 | 0 | 8 | 6 |
-| `saved-367359078190012517.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-368713820640003185.ged` | 4 | 0 | 0 | 9 | 4 |
-| `saved-368714154710012201.ged` | 3 | 0 | 0 | 14 | 8 |
-| `saved-3696730.ged` | 4 | 1 | 0 | 12 | 4 |
-| `saved-375738756460004676.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-375744715040013128.ged` | 3 | 2 | 0 | 8 | 2 |
-| `saved-3810353.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-381761530540011401.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-388449893270012482.ged` | 4 | 0 | 0 | 13 | 15 |
-| `saved-388450329300012525.ged` | 3 | 6 | 0 | 8 | 2 |
-| `saved-388613596210002012.ged` | 4 | 5 | 0 | 8 | 1 |
-| `saved-4077210.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-4077390.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-4079111.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-4103872.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-4195891192880058503.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-4195938644320058013.ged` | 2 | 0 | 0 | 5 | 3 |
+| `saved-365471464220013205.ged` | 2 | 0 | 0 | 8 | 2 |
+| `saved-367359078190012517.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-368713820640003185.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-368714154710012201.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-3696730.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-375738756460004676.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-375744715040013128.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-3810353.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-381761530540011401.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-388449893270012482.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-388450329300012525.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-388613596210002012.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4077210.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4077390.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4079111.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4103872.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-4195891192880058503.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-4195938644320058013.ged` | 2 | 0 | 0 | 5 | 1 |
 | `saved-4198641.ged` | 2 | 0 | 0 | 13 | 1 |
-| `saved-4229916861440069622.ged` | 5 | 0 | 0 | 14 | 8 |
-| `saved-4248013140250038185.ged` | 5 | 10 | 0 | 3 | 1 |
-| `saved-4259042.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-4259048.ged` | 3 | 4 | 0 | 10 | 3 |
+| `saved-4229916861440069622.ged` | 5 | 0 | 0 | 14 | 1 |
+| `saved-4248013140250038185.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-4259042.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4259048.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-4259086.ged` | 1 | 0 | 0 | 8 | 1 |
-| `saved-4263630100270128037.ged` | 2 | 0 | 0 | 13 | 10 |
-| `saved-4275395618020068615.ged` | 3 | 0 | 0 | 7 | 2 |
-| `saved-4275583289130033084.ged` | 4 | 0 | 0 | 11 | 6 |
-| `saved-4275641755920033011.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-4362903.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-4365730.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-4263630100270128037.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-4275395618020068615.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-4275583289130033084.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-4275641755920033011.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4362903.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4365730.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-4366030.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-4376103.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-4520147.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-4520166.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-4592410796700031770.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-4627273.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-4722085825290038085.ged` | 3 | 0 | 0 | 7 | 4 |
-| `saved-4924448917970137597.ged` | 8 | 0 | 0 | 14 | 6 |
+| `saved-4376103.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-4520147.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4520166.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4592410796700031770.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4627273.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-4722085825290038085.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-4924448917970137597.ged` | 8 | 0 | 0 | 14 | 1 |
 | `saved-4924448933160137503.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-4946518870490042172.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-4976573922110117540.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-4984086862270100347.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-5001362652110128116.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-5105745500030114706.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-5106195884670114511.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-5119671559010045041.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-5131571863040103622.ged` | 2 | 0 | 0 | 13 | 8 |
-| `saved-5200066333790031078.ged` | 4 | 4 | 0 | 9 | 7 |
-| `saved-5207146906010118647.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-5207146917280118653.ged` | 3 | 1 | 0 | 8 | 5 |
-| `saved-5219301786390025586.ged` | 4 | 0 | 0 | 8 | 5 |
-| `saved-5235605714220070458.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-5251653855510129840.ged` | 4 | 2 | 0 | 9 | 5 |
-| `saved-5267211996730068114.ged` | 5 | 5 | 0 | 8 | 6 |
-| `saved-5271489675500023723.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-5304572722780119951.ged` | 4 | 0 | 0 | 9 | 5 |
-| `saved-5304606047970088500.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-5304611081740076756.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-5305294636990124817.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-5328971090140130337.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-5336768638830104036.ged` | 4 | 0 | 0 | 13 | 12 |
-| `saved-5336815803180122126.ged` | 5 | 0 | 0 | 12 | 9 |
-| `saved-5389087141070079885.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-5441266921810062407.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-5441313740220126371.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-5447505087810135067.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-5502961102630086048.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-5502964838900085605.ged` | 4 | 3 | 0 | 7 | 2 |
-| `saved-5551057844540081310.ged` | 4 | 6 | 0 | 7 | 4 |
-| `saved-5551063057940043140.ged` | 3 | 0 | 0 | 13 | 11 |
-| `saved-5562350241840082253.ged` | 5 | 5 | 0 | 8 | 3 |
-| `saved-5617518918050122036.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-5617538511300106313.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-5679634808960060299.ged` | 4 | 3 | 0 | 10 | 2 |
-| `saved-5680189981660060613.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000000010678591.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000000012602183.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000019972451.ged` | 4 | 0 | 0 | 13 | 12 |
-| `saved-6000000000023930647.ged` | 5 | 0 | 0 | 14 | 10 |
-| `saved-6000000000041470596.ged` | 8 | 0 | 0 | 13 | 6 |
-| `saved-6000000000060201977.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000000073797328.ged` | 4 | 0 | 0 | 10 | 6 |
-| `saved-6000000000085100177.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000000099770180.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000000101143665.ged` | 4 | 0 | 0 | 8 | 4 |
-| `saved-6000000000113843065.ged` | 4 | 4 | 0 | 9 | 7 |
-| `saved-6000000000113843072.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000000125793641.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000000127612116.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000000127612134.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000000135924403.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000000136616524.ged` | 4 | 0 | 0 | 11 | 8 |
-| `saved-6000000000136688085.ged` | 4 | 0 | 0 | 8 | 4 |
-| `saved-6000000000139648597.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-4946518870490042172.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-4976573922110117540.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-4984086862270100347.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-5001362652110128116.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-5105745500030114706.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-5106195884670114511.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5119671559010045041.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5131571863040103622.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-5200066333790031078.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5207146906010118647.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5207146917280118653.ged` | 3 | 0 | 0 | 9 | 2 |
+| `saved-5219301786390025586.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-5235605714220070458.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5251653855510129840.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-5267211996730068114.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-5271489675500023723.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5304572722780119951.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-5304606047970088500.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5304611081740076756.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5305294636990124817.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-5328971090140130337.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5336768638830104036.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5336815803180122126.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-5389087141070079885.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-5441266921810062407.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5441313740220126371.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-5447505087810135067.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5502961102630086048.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5502964838900085605.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-5551057844540081310.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5551063057940043140.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-5562350241840082253.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-5617518918050122036.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5617538511300106313.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5679634808960060299.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-5680189981660060613.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000010678591.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000012602183.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000019972451.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000023930647.ged` | 5 | 0 | 0 | 14 | 1 |
+| `saved-6000000000041470596.ged` | 8 | 0 | 0 | 13 | 1 |
+| `saved-6000000000060201977.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000073797328.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000000085100177.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000099770180.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000101143665.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000000113843065.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000113843072.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000125793641.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000127612116.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000127612134.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000000135924403.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000136616524.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000000136688085.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000000139648597.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000000186421249.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000000196218118.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000000207082579.ged` | 4 | 6 | 0 | 7 | 2 |
-| `saved-6000000000207082672.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000000252931854.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000000351087662.ged` | 6 | 0 | 0 | 13 | 4 |
-| `saved-6000000000351087701.ged` | 5 | 3 | 0 | 10 | 3 |
-| `saved-6000000000361052707.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000000424848932.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000000424851399.ged` | 3 | 0 | 0 | 8 | 4 |
-| `saved-6000000000437044109.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000000437130447.ged` | 3 | 0 | 0 | 5 | 2 |
-| `saved-6000000000437316601.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000000437327174.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000437669873.ged` | 6 | 0 | 0 | 13 | 2 |
-| `saved-6000000000460790288.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000000467542216.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000000484083511.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000000484249023.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000000496970049.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000000497643885.ged` | 3 | 0 | 0 | 5 | 3 |
-| `saved-6000000000537527004.ged` | 5 | 5 | 0 | 8 | 6 |
-| `saved-6000000000565230800.ged` | 3 | 0 | 0 | 13 | 11 |
-| `saved-6000000000565416578.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000000568379999.ged` | 4 | 4 | 0 | 9 | 6 |
-| `saved-6000000000568695494.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000000571789704.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000000574078388.ged` | 6 | 0 | 0 | 13 | 4 |
-| `saved-6000000000576766420.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000000589541967.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000000593738894.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000000594454726.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000000607356949.ged` | 4 | 0 | 0 | 12 | 6 |
-| `saved-6000000000607426990.ged` | 5 | 0 | 0 | 12 | 2 |
-| `saved-6000000000634953446.ged` | 3 | 1 | 0 | 3 | 1 |
-| `saved-6000000000638286399.ged` | 4 | 10 | 0 | 3 | 1 |
-| `saved-6000000000646636987.ged` | 5 | 0 | 0 | 13 | 8 |
-| `saved-6000000000646740659.ged` | 3 | 3 | 0 | 11 | 2 |
-| `saved-6000000000649121564.ged` | 4 | 0 | 0 | 12 | 10 |
-| `saved-6000000000650837721.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000000659810695.ged` | 4 | 7 | 0 | 6 | 4 |
-| `saved-6000000000663149325.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000000663258163.ged` | 3 | 2 | 0 | 9 | 3 |
-| `saved-6000000000666780234.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000671061765.ged` | 3 | 0 | 0 | 6 | 4 |
+| `saved-6000000000196218118.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000207082579.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000207082672.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000252931854.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000351087662.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000351087701.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000361052707.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000424848932.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000424851399.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000000437044109.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000437130447.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000000437316601.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000000437327174.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000437669873.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000460790288.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000467542216.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000484083511.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000484249023.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000496970049.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000497643885.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000000537527004.ged` | 5 | 0 | 0 | 13 | 2 |
+| `saved-6000000000565230800.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000565416578.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000568379999.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000568695494.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000571789704.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000574078388.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000576766420.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000589541967.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000593738894.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000594454726.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000607356949.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000000607426990.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000000634953446.ged` | 3 | 0 | 0 | 4 | 1 |
+| `saved-6000000000638286399.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000646636987.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000646740659.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000000649121564.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000000650837721.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000659810695.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000663149325.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000663258163.ged` | 3 | 0 | 0 | 11 | 2 |
+| `saved-6000000000666780234.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000671061765.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000000679344754.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000000687421882.ged` | 5 | 6 | 0 | 7 | 1 |
-| `saved-6000000000687631539.ged` | 5 | 9 | 0 | 4 | 2 |
-| `saved-6000000000694158525.ged` | 4 | 0 | 0 | 14 | 11 |
-| `saved-6000000000709334357.ged` | 5 | 0 | 0 | 13 | 8 |
-| `saved-6000000000725159715.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000000728299766.ged` | 2 | 0 | 0 | 13 | 4 |
-| `saved-6000000000735554252.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000000756952602.ged` | 2 | 0 | 0 | 13 | 7 |
+| `saved-6000000000687421882.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000687631539.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000694158525.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000000709334357.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000725159715.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000728299766.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000000735554252.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000756952602.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000000757999620.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000000758079676.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000000764818098.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000000764844009.ged` | 3 | 0 | 0 | 14 | 6 |
-| `saved-6000000000768957873.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000000781697178.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000000796891248.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000000855618243.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000000866353020.ged` | 4 | 3 | 0 | 10 | 5 |
-| `saved-6000000000873947684.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000000879803071.ged` | 5 | 0 | 0 | 14 | 8 |
-| `saved-6000000000891680343.ged` | 6 | 0 | 0 | 13 | 2 |
-| `saved-6000000000982525534.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000001012125847.ged` | 5 | 8 | 0 | 5 | 1 |
-| `saved-6000000001056501127.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000001062725047.ged` | 4 | 0 | 0 | 12 | 5 |
-| `saved-6000000001063167523.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000001088018839.ged` | 4 | 4 | 0 | 3 | 1 |
-| `saved-6000000001088021553.ged` | 4 | 2 | 0 | 5 | 1 |
-| `saved-6000000001088154772.ged` | 3 | 1 | 0 | 4 | 1 |
-| `saved-6000000001116583134.ged` | 1 | 2 | 0 | 12 | 2 |
-| `saved-6000000001131192746.ged` | 4 | 3 | 0 | 10 | 2 |
-| `saved-6000000001138735296.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000001139071013.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001139144268.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000001144914191.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000001169154976.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000001169171714.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001169235389.ged` | 6 | 0 | 0 | 13 | 8 |
-| `saved-6000000001169238166.ged` | 4 | 2 | 0 | 11 | 6 |
-| `saved-6000000001169313832.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001196257237.ged` | 3 | 0 | 0 | 15 | 8 |
-| `saved-6000000001198262405.ged` | 2 | 0 | 0 | 13 | 7 |
+| `saved-6000000000758079676.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000000764818098.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000764844009.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000000768957873.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000781697178.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000000796891248.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000000855618243.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000866353020.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000000873947684.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000000879803071.ged` | 5 | 0 | 0 | 14 | 2 |
+| `saved-6000000000891680343.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000000982525534.ged` | 5 | 0 | 0 | 13 | 2 |
+| `saved-6000000001012125847.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001056501127.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001062725047.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000001063167523.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001088018839.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000001088021553.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000001088154772.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000001116583134.ged` | 1 | 0 | 0 | 14 | 2 |
+| `saved-6000000001131192746.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001138735296.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001139071013.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001139144268.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001144914191.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001169154976.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001169171714.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000001169235389.ged` | 6 | 0 | 0 | 13 | 2 |
+| `saved-6000000001169238166.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000001169313832.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001196257237.ged` | 3 | 0 | 0 | 15 | 2 |
+| `saved-6000000001198262405.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000001198860794.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000001199993264.ged` | 4 | 0 | 0 | 10 | 7 |
-| `saved-6000000001200028258.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000001311917463.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000001322198340.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000001322198603.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000001338193719.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001353276458.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000001353537105.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000001372350889.ged` | 3 | 11 | 0 | 2 | 1 |
-| `saved-6000000001372368326.ged` | 3 | 0 | 0 | 13 | 11 |
+| `saved-6000000001199993264.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000001200028258.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001311917463.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000001322198340.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001322198603.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001338193719.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001353276458.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001353537105.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001372350889.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001372368326.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000001372528092.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000001412881746.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000001498704022.ged` | 4 | 6 | 0 | 7 | 5 |
-| `saved-6000000001498704055.ged` | 3 | 0 | 0 | 14 | 8 |
-| `saved-6000000001498704338.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000001500854738.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000001500893042.ged` | 5 | 0 | 0 | 13 | 8 |
-| `saved-6000000001500929374.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000001501057114.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000001504281165.ged` | 4 | 0 | 0 | 9 | 7 |
-| `saved-6000000001504702346.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000001504816842.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000001506899998.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000001584382671.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001584687363.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001584801190.ged` | 4 | 0 | 0 | 10 | 6 |
-| `saved-6000000001593637951.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000001594051535.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000001613759071.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001613970246.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000001614845637.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000001624111597.ged` | 2 | 0 | 0 | 13 | 10 |
+| `saved-6000000001412881746.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001498704022.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001498704055.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000001498704338.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001500854738.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001500893042.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001500929374.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001501057114.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001504281165.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000001504702346.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001504816842.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001506899998.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001584382671.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001584687363.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001584801190.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000001593637951.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000001594051535.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001613759071.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001613970246.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001614845637.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001624111597.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000001651460598.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000001651502714.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000001651629109.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000001708363985.ged` | 5 | 0 | 0 | 12 | 4 |
-| `saved-6000000001711091993.ged` | 5 | 0 | 0 | 13 | 2 |
-| `saved-6000000001713373908.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000001722370024.ged` | 4 | 2 | 0 | 11 | 4 |
-| `saved-6000000001732153525.ged` | 6 | 0 | 0 | 13 | 8 |
-| `saved-6000000001732177195.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000001770188397.ged` | 5 | 0 | 0 | 13 | 9 |
-| `saved-6000000001770214443.ged` | 3 | 0 | 0 | 5 | 2 |
-| `saved-6000000001784502814.ged` | 2 | 0 | 0 | 13 | 4 |
-| `saved-6000000001784535509.ged` | 6 | 0 | 0 | 13 | 6 |
-| `saved-6000000001784558539.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000001801026836.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000001821102369.ged` | 6 | 0 | 0 | 13 | 4 |
+| `saved-6000000001651629109.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001708363985.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000001711091993.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000001713373908.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001722370024.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001732153525.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000001732177195.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001770188397.ged` | 5 | 0 | 0 | 13 | 3 |
+| `saved-6000000001770214443.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000001784502814.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000001784535509.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000001784558539.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001801026836.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001821102369.ged` | 6 | 0 | 0 | 13 | 1 |
 | `saved-6000000001827531760.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000001827575240.ged` | 1 | 0 | 0 | 14 | 2 |
-| `saved-6000000001827582117.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000001827585947.ged` | 3 | 1 | 0 | 12 | 10 |
-| `saved-6000000001827593928.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000001827596078.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000001827582117.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000001827585947.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001827593928.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001827596078.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000001827610153.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000001833628324.ged` | 4 | 0 | 0 | 12 | 8 |
-| `saved-6000000001838607806.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000001838879990.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-6000000001873530609.ged` | 3 | 0 | 0 | 13 | 11 |
-| `saved-6000000001891957076.ged` | 4 | 0 | 0 | 14 | 8 |
-| `saved-6000000001900007557.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000001919547668.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000001919812645.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000001969506851.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000001969599119.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000001994951163.ged` | 2 | 0 | 0 | 13 | 11 |
+| `saved-6000000001833628324.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000001838607806.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001838879990.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000001873530609.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001891957076.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000001900007557.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001919547668.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001919812645.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000001969506851.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000001969599119.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000001994951163.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000001995109345.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000002017898070.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000002031285960.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000002043263103.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000002078094635.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000002078126382.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000002106139599.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000002163543379.ged` | 3 | 0 | 0 | 10 | 8 |
-| `saved-6000000002176658451.ged` | 8 | 0 | 0 | 14 | 8 |
-| `saved-6000000002187796542.ged` | 4 | 4 | 0 | 10 | 5 |
-| `saved-6000000002187796550.ged` | 4 | 2 | 0 | 11 | 3 |
-| `saved-6000000002187851434.ged` | 4 | 0 | 0 | 12 | 6 |
-| `saved-6000000002188050061.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000002188081857.ged` | 4 | 0 | 0 | 11 | 5 |
+| `saved-6000000002017898070.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002031285960.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002043263103.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002078094635.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002078126382.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002106139599.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002163543379.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-6000000002176658451.ged` | 8 | 0 | 0 | 14 | 2 |
+| `saved-6000000002187796542.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000002187796550.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002187851434.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000002188050061.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002188081857.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000002188110562.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002188289908.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000002188304379.ged` | 4 | 0 | 0 | 14 | 4 |
-| `saved-6000000002188307463.ged` | 5 | 2 | 0 | 11 | 6 |
-| `saved-6000000002188307934.ged` | 3 | 5 | 0 | 8 | 3 |
-| `saved-6000000002188578738.ged` | 3 | 0 | 0 | 9 | 3 |
+| `saved-6000000002188289908.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002188304379.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000002188307463.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002188307934.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002188578738.ged` | 3 | 0 | 0 | 9 | 2 |
 | `saved-6000000002188578769.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002188579271.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000002188625450.ged` | 8 | 0 | 0 | 13 | 7 |
-| `saved-6000000002222709933.ged` | 2 | 0 | 0 | 13 | 8 |
-| `saved-6000000002226068159.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000002228252084.ged` | 2 | 0 | 0 | 13 | 9 |
-| `saved-6000000002228278394.ged` | 2 | 0 | 0 | 13 | 5 |
+| `saved-6000000002188579271.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002188625450.ged` | 8 | 0 | 0 | 13 | 1 |
+| `saved-6000000002222709933.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000002226068159.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002228252084.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000002228278394.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000002244380726.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000002244397924.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000002244397940.ged` | 2 | 0 | 0 | 15 | 2 |
 | `saved-6000000002245279564.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002267060138.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000002277862058.ged` | 5 | 5 | 0 | 8 | 6 |
-| `saved-6000000002278450149.ged` | 4 | 5 | 0 | 5 | 2 |
-| `saved-6000000002280344494.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000002280411009.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000002330980548.ged` | 5 | 1 | 0 | 8 | 5 |
-| `saved-6000000002336577815.ged` | 4 | 0 | 0 | 9 | 5 |
-| `saved-6000000002336697043.ged` | 3 | 0 | 0 | 10 | 6 |
-| `saved-6000000002342416311.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000002358756663.ged` | 5 | 5 | 0 | 8 | 5 |
-| `saved-6000000002370640619.ged` | 4 | 0 | 0 | 11 | 8 |
+| `saved-6000000002267060138.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000002277862058.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002278450149.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000002280344494.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002280411009.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002330980548.ged` | 5 | 0 | 0 | 9 | 1 |
+| `saved-6000000002336577815.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000002336697043.ged` | 3 | 0 | 0 | 10 | 2 |
+| `saved-6000000002342416311.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002358756663.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002370640619.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000002391959353.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000002403898091.ged` | 4 | 0 | 0 | 13 | 10 |
+| `saved-6000000002403898091.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000002403898117.ged` | 2 | 0 | 0 | 15 | 2 |
-| `saved-6000000002434214184.ged` | 4 | 0 | 0 | 14 | 3 |
+| `saved-6000000002434214184.ged` | 4 | 0 | 0 | 14 | 2 |
 | `saved-6000000002463510938.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000002481819312.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000002482084257.ged` | 4 | 0 | 0 | 14 | 9 |
-| `saved-6000000002482165558.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000002503678686.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000002512241178.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000002512246810.ged` | 3 | 8 | 0 | 5 | 2 |
-| `saved-6000000002512246864.ged` | 5 | 0 | 0 | 13 | 9 |
+| `saved-6000000002481819312.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000002482084257.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000002482165558.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002503678686.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002512241178.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002512246810.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002512246864.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000002512346178.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000002516491073.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000002517120513.ged` | 2 | 0 | 0 | 13 | 10 |
-| `saved-6000000002517120595.ged` | 4 | 0 | 0 | 10 | 6 |
-| `saved-6000000002527461568.ged` | 4 | 0 | 0 | 7 | 2 |
-| `saved-6000000002553650991.ged` | 4 | 0 | 0 | 12 | 8 |
-| `saved-6000000002572699392.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000002572701505.ged` | 4 | 0 | 0 | 9 | 3 |
-| `saved-6000000002572783163.ged` | 4 | 0 | 0 | 14 | 5 |
-| `saved-6000000002585455740.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000002585562372.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000002588347233.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000002600987455.ged` | 4 | 0 | 0 | 8 | 2 |
-| `saved-6000000002602162553.ged` | 4 | 0 | 0 | 13 | 12 |
-| `saved-6000000002626238951.ged` | 5 | 0 | 0 | 12 | 6 |
-| `saved-6000000002664914535.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000002744891329.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000002748554800.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000002750545795.ged` | 3 | 0 | 0 | 8 | 6 |
-| `saved-6000000002766488352.ged` | 2 | 0 | 0 | 13 | 11 |
-| `saved-6000000002767708000.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000002770849622.ged` | 4 | 0 | 0 | 9 | 6 |
-| `saved-6000000002770896230.ged` | 3 | 2 | 0 | 7 | 2 |
-| `saved-6000000002785337209.ged` | 3 | 0 | 0 | 10 | 3 |
-| `saved-6000000002801147492.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000002813633340.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000002832115884.ged` | 4 | 0 | 0 | 12 | 5 |
-| `saved-6000000002837456927.ged` | 6 | 3 | 0 | 10 | 3 |
-| `saved-6000000002847207216.ged` | 3 | 2 | 0 | 11 | 8 |
-| `saved-6000000002847945015.ged` | 3 | 4 | 0 | 2 | 1 |
-| `saved-6000000002866077692.ged` | 3 | 0 | 0 | 13 | 5 |
+| `saved-6000000002516491073.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002517120513.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000002517120595.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000002527461568.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000002553650991.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000002572699392.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002572701505.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000002572783163.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000002585455740.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002585562372.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002588347233.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000002600987455.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000002602162553.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002626238951.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000002664914535.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000002744891329.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000002748554800.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002750545795.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000002766488352.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000002767708000.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002770849622.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000002770896230.ged` | 3 | 0 | 0 | 9 | 2 |
+| `saved-6000000002785337209.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-6000000002801147492.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002813633340.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002832115884.ged` | 4 | 0 | 0 | 12 | 2 |
+| `saved-6000000002837456927.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000002847207216.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002847945015.ged` | 3 | 0 | 0 | 6 | 1 |
+| `saved-6000000002866077692.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000002866078652.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000002866250576.ged` | 4 | 6 | 0 | 7 | 1 |
-| `saved-6000000002877958100.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000002890270426.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000002893299341.ged` | 6 | 0 | 0 | 12 | 7 |
+| `saved-6000000002866250576.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002877958100.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000002890270426.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002893299341.ged` | 6 | 0 | 0 | 12 | 1 |
 | `saved-6000000002893299372.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000002893316227.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000002893322314.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000002893330286.ged` | 3 | 0 | 0 | 13 | 2 |
-| `saved-6000000002893335701.ged` | 5 | 1 | 0 | 12 | 7 |
-| `saved-6000000002906400227.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000002916189513.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000002920620224.ged` | 6 | 0 | 0 | 13 | 4 |
-| `saved-6000000002969078825.ged` | 3 | 9 | 0 | 5 | 2 |
-| `saved-6000000002969217246.ged` | 4 | 4 | 0 | 9 | 1 |
-| `saved-6000000002979875144.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000003002231602.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000003002364630.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000003002538177.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000003012468747.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003025853747.ged` | 4 | 0 | 0 | 10 | 7 |
+| `saved-6000000002893322314.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002893330286.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000002893335701.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002906400227.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002916189513.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000002920620224.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000002969078825.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000002969217246.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000002979875144.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003002231602.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003002364630.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000003002538177.ged` | 4 | 0 | 0 | 11 | 2 |
+| `saved-6000000003012468747.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003025853747.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000003026039395.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003043806217.ged` | 5 | 0 | 0 | 11 | 3 |
-| `saved-6000000003049156212.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000003058583726.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000003058905240.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000003076221220.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000003086332874.ged` | 4 | 2 | 0 | 11 | 2 |
-| `saved-6000000003086434645.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000003087080306.ged` | 7 | 0 | 0 | 13 | 4 |
-| `saved-6000000003094916337.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003094967990.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000003094971035.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000003094977911.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000003095003918.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000003095060610.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000003095060659.ged` | 4 | 0 | 0 | 10 | 3 |
-| `saved-6000000003095080287.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003095084974.ged` | 4 | 5 | 0 | 8 | 6 |
-| `saved-6000000003095113068.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000003095156945.ged` | 2 | 0 | 0 | 13 | 8 |
-| `saved-6000000003095195374.ged` | 4 | 7 | 0 | 6 | 1 |
-| `saved-6000000003101980999.ged` | 5 | 2 | 0 | 11 | 2 |
-| `saved-6000000003102253400.ged` | 3 | 2 | 0 | 5 | 3 |
-| `saved-6000000003102295068.ged` | 4 | 0 | 0 | 9 | 4 |
-| `saved-6000000003111305140.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000003116379849.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000003116743788.ged` | 2 | 0 | 0 | 13 | 8 |
-| `saved-6000000003116932225.ged` | 4 | 1 | 0 | 11 | 1 |
-| `saved-6000000003125122695.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000003125438035.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003152600818.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000003152860875.ged` | 3 | 0 | 0 | 13 | 10 |
+| `saved-6000000003043806217.ged` | 5 | 0 | 0 | 11 | 1 |
+| `saved-6000000003049156212.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003058583726.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003058905240.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003076221220.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003086332874.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003086434645.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003087080306.ged` | 7 | 0 | 0 | 13 | 1 |
+| `saved-6000000003094916337.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000003094967990.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000003094971035.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003094977911.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095003918.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003095060610.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095060659.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000003095080287.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000003095084974.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095113068.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095156945.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000003095195374.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003101980999.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003102253400.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000003102295068.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000003111305140.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003116379849.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003116743788.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000003116932225.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003125122695.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003125438035.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003152600818.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003152860875.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000003152872621.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000003187090488.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000003196492775.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000003242618875.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000003252172731.ged` | 7 | 0 | 0 | 14 | 6 |
-| `saved-6000000003252323043.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000003253261775.ged` | 3 | 0 | 0 | 13 | 7 |
+| `saved-6000000003187090488.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003196492775.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003242618875.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003252172731.ged` | 7 | 0 | 0 | 14 | 1 |
+| `saved-6000000003252323043.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003253261775.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000003253460860.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000003253601093.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000003306757977.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000003307054576.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003319932530.ged` | 4 | 8 | 0 | 5 | 1 |
-| `saved-6000000003332799114.ged` | 4 | 1 | 0 | 12 | 8 |
-| `saved-6000000003332823073.ged` | 4 | 1 | 0 | 12 | 1 |
-| `saved-6000000003344565684.ged` | 4 | 0 | 0 | 12 | 8 |
-| `saved-6000000003344745168.ged` | 3 | 0 | 0 | 13 | 2 |
-| `saved-6000000003353135663.ged` | 5 | 3 | 0 | 10 | 1 |
-| `saved-6000000003353178311.ged` | 3 | 2 | 0 | 11 | 6 |
-| `saved-6000000003355801643.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003253601093.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003306757977.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003307054576.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003319932530.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003332799114.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003332823073.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003344565684.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003344745168.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003353135663.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003353178311.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000003355801643.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000003367976924.ged` | 1 | 0 | 0 | 4 | 1 |
-| `saved-6000000003379144766.ged` | 3 | 0 | 0 | 8 | 4 |
-| `saved-6000000003379409803.ged` | 4 | 1 | 0 | 4 | 2 |
+| `saved-6000000003379144766.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000003379409803.ged` | 4 | 0 | 0 | 5 | 1 |
 | `saved-6000000003389294519.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-6000000003401838954.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003417361345.ged` | 4 | 0 | 0 | 12 | 3 |
-| `saved-6000000003418900347.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000003484293276.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000003484293288.ged` | 3 | 0 | 0 | 13 | 6 |
+| `saved-6000000003401838954.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003417361345.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003418900347.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003484293276.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003484293288.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000003491933538.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000003491947054.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003491958558.ged` | 3 | 0 | 0 | 14 | 6 |
-| `saved-6000000003491986946.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000003491988189.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000003491988489.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000003491988509.ged` | 3 | 0 | 0 | 13 | 7 |
+| `saved-6000000003491947054.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003491958558.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000003491986946.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003491988189.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003491988489.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000003491988509.ged` | 3 | 0 | 0 | 13 | 5 |
 | `saved-6000000003491988584.ged` | 2 | 0 | 0 | 14 | 2 |
 | `saved-6000000003491988599.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003491988619.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000003491988831.ged` | 4 | 0 | 0 | 10 | 7 |
-| `saved-6000000003492005126.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000003492029785.ged` | 4 | 3 | 0 | 10 | 6 |
-| `saved-6000000003492033784.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000003492033799.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000003492033993.ged` | 4 | 0 | 0 | 14 | 4 |
-| `saved-6000000003492057788.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000003492064709.ged` | 3 | 0 | 0 | 12 | 3 |
-| `saved-6000000003492064827.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000003492068105.ged` | 4 | 0 | 0 | 13 | 4 |
+| `saved-6000000003491988619.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000003491988831.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000003492005126.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492029785.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492033784.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492033799.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492033993.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000003492057788.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003492064709.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000003492064827.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000003492068105.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000003492068120.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003492068938.ged` | 4 | 0 | 0 | 7 | 2 |
-| `saved-6000000003492535579.ged` | 4 | 4 | 0 | 9 | 1 |
-| `saved-6000000003493162078.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000003495348795.ged` | 4 | 1 | 0 | 12 | 2 |
-| `saved-6000000003495384814.ged` | 4 | 7 | 0 | 6 | 5 |
-| `saved-6000000003521493989.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000003535740332.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000003559734445.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000003568661683.ged` | 4 | 0 | 0 | 11 | 2 |
-| `saved-6000000003588755565.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000003492068938.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000003492535579.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003493162078.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000003495348795.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003495384814.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003521493989.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003535740332.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003559734445.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000003568661683.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000003588755565.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000003615417006.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003620618740.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000003645825338.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000003645919492.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000003645919625.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000003645940658.ged` | 3 | 0 | 0 | 12 | 4 |
-| `saved-6000000003646023820.ged` | 4 | 0 | 0 | 6 | 2 |
+| `saved-6000000003620618740.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003645825338.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003645919492.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000003645919625.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003645940658.ged` | 3 | 0 | 0 | 12 | 2 |
+| `saved-6000000003646023820.ged` | 4 | 0 | 0 | 6 | 1 |
 | `saved-6000000003646023907.ged` | 4 | 0 | 0 | 14 | 1 |
-| `saved-6000000003665102809.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000003665181171.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000003665414365.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000003721939858.ged` | 4 | 3 | 0 | 7 | 4 |
+| `saved-6000000003665102809.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003665181171.ged` | 3 | 0 | 0 | 13 | 4 |
+| `saved-6000000003665414365.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000003721939858.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000003732742137.ged` | 3 | 0 | 0 | 8 | 1 |
-| `saved-6000000003781494806.ged` | 4 | 5 | 0 | 5 | 1 |
-| `saved-6000000003783022260.ged` | 3 | 0 | 0 | 12 | 7 |
+| `saved-6000000003781494806.ged` | 4 | 0 | 0 | 10 | 2 |
+| `saved-6000000003783022260.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000003805720033.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000003823851202.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003824461685.ged` | 4 | 7 | 0 | 6 | 3 |
-| `saved-6000000003824564617.ged` | 3 | 4 | 0 | 9 | 2 |
+| `saved-6000000003823851202.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003824461685.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003824564617.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000003827445550.ged` | 1 | 0 | 0 | 13 | 1 |
-| `saved-6000000003827661670.ged` | 3 | 0 | 0 | 7 | 3 |
-| `saved-6000000003828248652.ged` | 3 | 1 | 0 | 4 | 2 |
+| `saved-6000000003827661670.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000003828248652.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000003828248658.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000003828250057.ged` | 2 | 0 | 0 | 6 | 3 |
-| `saved-6000000003828250078.ged` | 4 | 0 | 0 | 7 | 5 |
-| `saved-6000000003842233263.ged` | 4 | 0 | 0 | 13 | 10 |
+| `saved-6000000003828250057.ged` | 2 | 0 | 0 | 6 | 2 |
+| `saved-6000000003828250078.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000003842233263.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000003854400441.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000003858704239.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000003858716758.ged` | 3 | 0 | 0 | 13 | 4 |
+| `saved-6000000003858704239.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003858716758.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000003858749453.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000003869622559.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000003887729856.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000003897585979.ged` | 3 | 0 | 0 | 7 | 2 |
+| `saved-6000000003869622559.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003887729856.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000003897585979.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000003902489870.ged` | 1 | 0 | 0 | 16 | 3 |
-| `saved-6000000003905140955.ged` | 4 | 5 | 0 | 8 | 4 |
-| `saved-6000000003953393939.ged` | 4 | 0 | 0 | 11 | 9 |
-| `saved-6000000003958968521.ged` | 2 | 10 | 0 | 2 | 1 |
-| `saved-6000000003979582810.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000004027712640.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000004028320232.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000004032942523.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000004034893096.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000004035037156.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000004078906672.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000004104838733.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000004105285975.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000004131116716.ged` | 4 | 0 | 0 | 12 | 3 |
+| `saved-6000000003905140955.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000003953393939.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000003958968521.ged` | 2 | 0 | 0 | 12 | 1 |
+| `saved-6000000003979582810.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004027712640.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004028320232.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000004032942523.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004034893096.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004035037156.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004078906672.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004104838733.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000004105285975.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004131116716.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000004140735934.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000004214433404.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000004281397219.ged` | 5 | 1 | 0 | 11 | 6 |
-| `saved-6000000004389585513.ged` | 4 | 0 | 0 | 13 | 10 |
+| `saved-6000000004214433404.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000004281397219.ged` | 5 | 0 | 0 | 12 | 2 |
+| `saved-6000000004389585513.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000004456080013.ged` | 4 | 0 | 0 | 12 | 1 |
-| `saved-6000000004457022019.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000004533176419.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000004533503066.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000004533503379.ged` | 6 | 0 | 0 | 14 | 12 |
-| `saved-6000000004533510674.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000004534272864.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000004647605698.ged` | 4 | 0 | 0 | 12 | 8 |
-| `saved-6000000004650708520.ged` | 3 | 0 | 0 | 14 | 4 |
-| `saved-6000000004671044584.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000004691642355.ged` | 4 | 4 | 0 | 7 | 2 |
-| `saved-6000000004838388133.ged` | 2 | 0 | 0 | 13 | 8 |
-| `saved-6000000004862474531.ged` | 5 | 0 | 0 | 13 | 11 |
-| `saved-6000000004863275809.ged` | 4 | 0 | 0 | 7 | 3 |
+| `saved-6000000004457022019.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004533176419.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000004533503066.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004533503379.ged` | 6 | 0 | 0 | 14 | 1 |
+| `saved-6000000004533510674.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004534272864.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004647605698.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000004650708520.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000004671044584.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004691642355.ged` | 4 | 0 | 0 | 11 | 2 |
+| `saved-6000000004838388133.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000004862474531.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000004863275809.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000004863611375.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000004863761158.ged` | 3 | 0 | 0 | 9 | 7 |
+| `saved-6000000004863761158.ged` | 3 | 0 | 0 | 9 | 1 |
 | `saved-6000000004863823276.ged` | 0 | 0 | 0 | 5 | 1 |
 | `saved-6000000004868825651.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000004868825686.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000004868846058.ged` | 4 | 0 | 0 | 9 | 6 |
-| `saved-6000000004868846355.ged` | 4 | 0 | 0 | 14 | 4 |
-| `saved-6000000004868851834.ged` | 4 | 0 | 0 | 11 | 7 |
-| `saved-6000000004868858899.ged` | 3 | 0 | 0 | 6 | 4 |
+| `saved-6000000004868846058.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000004868846355.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000004868851834.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000004868858899.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000004869049343.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000004870648136.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-6000000004974123682.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000004974523185.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000005013705987.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000005025304600.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000004974123682.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000004974523185.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005013705987.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005025304600.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000005074489379.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000005246487476.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000005381997903.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000005382299298.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000005391128983.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000005246487476.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005381997903.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005382299298.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005391128983.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000005398287081.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000005414590318.ged` | 6 | 0 | 0 | 13 | 7 |
-| `saved-6000000005441081725.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000005441559089.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000005442236186.ged` | 3 | 4 | 0 | 10 | 2 |
-| `saved-6000000005545740001.ged` | 4 | 11 | 0 | 2 | 1 |
-| `saved-6000000005576602065.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000005581573549.ged` | 4 | 5 | 0 | 8 | 6 |
-| `saved-6000000005581573602.ged` | 4 | 2 | 0 | 11 | 9 |
-| `saved-6000000005598851255.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000005606851579.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000005606851647.ged` | 2 | 0 | 0 | 13 | 10 |
+| `saved-6000000005414590318.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000005441081725.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005441559089.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005442236186.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000005545740001.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000005576602065.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000005581573549.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005581573602.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005598851255.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606851579.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606851647.ged` | 2 | 0 | 0 | 13 | 4 |
 | `saved-6000000005606873183.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000005606886765.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000005606886780.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000005606886827.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000005606886909.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000005606907877.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000005606976930.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000005607042284.ged` | 5 | 0 | 0 | 13 | 5 |
+| `saved-6000000005606886765.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606886780.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000005606886827.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000005606886909.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606907877.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005606976930.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607042284.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000005607042309.ged` | 3 | 0 | 0 | 8 | 1 |
-| `saved-6000000005607042593.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000005607119313.ged` | 2 | 0 | 0 | 13 | 12 |
+| `saved-6000000005607042593.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607119313.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000005607123730.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000005607187224.ged` | 4 | 6 | 0 | 5 | 2 |
-| `saved-6000000005607264518.ged` | 5 | 0 | 0 | 13 | 8 |
-| `saved-6000000005607268671.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000005607282941.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000005607296161.ged` | 6 | 0 | 0 | 13 | 3 |
-| `saved-6000000005607335640.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000005607339190.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000005607365269.ged` | 6 | 2 | 0 | 11 | 7 |
-| `saved-6000000005607377021.ged` | 4 | 0 | 0 | 14 | 7 |
-| `saved-6000000005607439733.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000005607481550.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000005607599821.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000005607880384.ged` | 4 | 0 | 0 | 14 | 9 |
+| `saved-6000000005607187224.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000005607264518.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607268671.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000005607282941.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000005607296161.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607335640.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607339190.ged` | 5 | 0 | 0 | 13 | 2 |
+| `saved-6000000005607365269.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607377021.ged` | 4 | 0 | 0 | 14 | 3 |
+| `saved-6000000005607439733.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005607481550.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000005607599821.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000005607880384.ged` | 4 | 0 | 0 | 14 | 1 |
 | `saved-6000000005607884543.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000005608851471.ged` | 4 | 5 | 0 | 8 | 7 |
-| `saved-6000000005608851479.ged` | 4 | 3 | 0 | 10 | 1 |
-| `saved-6000000005608851503.ged` | 3 | 0 | 0 | 11 | 5 |
-| `saved-6000000005608873060.ged` | 3 | 6 | 0 | 7 | 5 |
+| `saved-6000000005608851471.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005608851479.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005608851503.ged` | 3 | 0 | 0 | 11 | 2 |
+| `saved-6000000005608873060.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000005608873104.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000005608873211.ged` | 4 | 4 | 0 | 4 | 1 |
-| `saved-6000000005608884093.ged` | 2 | 0 | 0 | 13 | 10 |
-| `saved-6000000005608934604.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000005609028769.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000005609064474.ged` | 6 | 9 | 0 | 5 | 2 |
-| `saved-6000000005609102300.ged` | 4 | 0 | 0 | 11 | 6 |
-| `saved-6000000005609102344.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000005609304829.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000005609304839.ged` | 2 | 0 | 0 | 14 | 3 |
-| `saved-6000000005609458561.ged` | 3 | 0 | 0 | 12 | 5 |
-| `saved-6000000005609466031.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000005609518095.ged` | 3 | 0 | 0 | 14 | 3 |
+| `saved-6000000005608873211.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000005608884093.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000005608934604.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005609028769.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000005609064474.ged` | 6 | 0 | 0 | 14 | 2 |
+| `saved-6000000005609102300.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000005609102344.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005609304829.ged` | 2 | 0 | 0 | 13 | 4 |
+| `saved-6000000005609304839.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000005609458561.ged` | 3 | 0 | 0 | 12 | 2 |
+| `saved-6000000005609466031.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005609518095.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000005609522416.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000005609522426.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000005609534511.ged` | 3 | 0 | 0 | 14 | 8 |
-| `saved-6000000005609534659.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000005609534511.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000005609534659.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000005609547367.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000005609547535.ged` | 5 | 0 | 0 | 13 | 2 |
 | `saved-6000000005609547544.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000005609547691.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000005739075955.ged` | 4 | 0 | 0 | 14 | 7 |
-| `saved-6000000005739942225.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000005744994368.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000005744994427.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000005795638082.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000005795638104.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000005856163014.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000005942135258.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000006127214913.ged` | 6 | 0 | 0 | 14 | 8 |
-| `saved-6000000006127322318.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000006127859612.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000006127996485.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000006127996492.ged` | 3 | 0 | 0 | 8 | 2 |
-| `saved-6000000006127996498.ged` | 3 | 0 | 0 | 13 | 5 |
+| `saved-6000000005609547691.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000005739075955.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000005739942225.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005744994368.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005744994427.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000005795638082.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000005795638104.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005856163014.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000005942135258.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006127214913.ged` | 6 | 0 | 0 | 14 | 2 |
+| `saved-6000000006127322318.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006127859612.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006127996485.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000006127996492.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000006127996498.ged` | 3 | 0 | 0 | 13 | 2 |
 | `saved-6000000006128227797.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000006171259545.ged` | 4 | 2 | 0 | 11 | 3 |
+| `saved-6000000006171259545.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-6000000006183866418.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000006253433055.ged` | 4 | 7 | 0 | 6 | 1 |
-| `saved-6000000006253635635.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000006277556378.ged` | 8 | 0 | 0 | 15 | 7 |
-| `saved-6000000006293783777.ged` | 4 | 0 | 0 | 12 | 6 |
-| `saved-6000000006336803890.ged` | 3 | 3 | 0 | 7 | 5 |
-| `saved-6000000006351988253.ged` | 4 | 0 | 0 | 13 | 7 |
+| `saved-6000000006253433055.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006253635635.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000006277556378.ged` | 8 | 0 | 0 | 15 | 2 |
+| `saved-6000000006293783777.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000006336803890.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-6000000006351988253.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000006352209093.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000006400320009.ged` | 3 | 2 | 0 | 11 | 8 |
-| `saved-6000000006402064518.ged` | 4 | 8 | 0 | 3 | 1 |
-| `saved-6000000006444130321.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000006444270409.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000006444357812.ged` | 2 | 0 | 0 | 13 | 9 |
-| `saved-6000000006444364312.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000006565863003.ged` | 4 | 8 | 0 | 5 | 3 |
-| `saved-6000000006565930017.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000006575266506.ged` | 3 | 0 | 0 | 7 | 3 |
-| `saved-6000000006589193197.ged` | 5 | 0 | 0 | 13 | 9 |
-| `saved-6000000006589193210.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000006589193224.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000006589193735.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000006589193752.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000006589261586.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000006589261605.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000006589261737.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000006400320009.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000006402064518.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000006444130321.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006444270409.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006444357812.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000006444364312.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000006565863003.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006565930017.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000006575266506.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000006589193197.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589193210.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589193224.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589193735.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589193752.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589261586.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589261605.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006589261737.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-6000000006602653847.ged` | 5 | 0 | 0 | 13 | 2 |
-| `saved-6000000006727823308.ged` | 3 | 0 | 0 | 14 | 6 |
-| `saved-6000000006744570542.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000006769001160.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000006769847598.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000006776171892.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000006776187362.ged` | 4 | 0 | 0 | 12 | 3 |
-| `saved-6000000006776187394.ged` | 3 | 0 | 0 | 9 | 2 |
-| `saved-6000000006776187410.ged` | 4 | 6 | 0 | 6 | 2 |
-| `saved-6000000006792569099.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000006802626827.ged` | 4 | 4 | 0 | 9 | 7 |
-| `saved-6000000006802748484.ged` | 4 | 1 | 0 | 12 | 6 |
-| `saved-6000000006804155423.ged` | 6 | 0 | 0 | 13 | 2 |
-| `saved-6000000006807994202.ged` | 3 | 0 | 0 | 7 | 4 |
-| `saved-6000000006828562507.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000006828783137.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000006845609473.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000006892741240.ged` | 4 | 2 | 0 | 10 | 7 |
-| `saved-6000000006909919760.ged` | 4 | 3 | 0 | 3 | 1 |
-| `saved-6000000006909980800.ged` | 4 | 0 | 0 | 6 | 4 |
-| `saved-6000000006910119673.ged` | 4 | 2 | 0 | 5 | 1 |
+| `saved-6000000006727823308.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000006744570542.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006769001160.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000006769847598.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006776171892.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006776187362.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000006776187394.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000006776187410.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000006792569099.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006802626827.ged` | 4 | 0 | 0 | 13 | 4 |
+| `saved-6000000006802748484.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000006804155423.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000006807994202.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000006828562507.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000006828783137.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000006845609473.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000006892741240.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000006909919760.ged` | 4 | 0 | 0 | 6 | 1 |
+| `saved-6000000006909980800.ged` | 4 | 0 | 0 | 6 | 1 |
+| `saved-6000000006910119673.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000006910218376.ged` | 3 | 0 | 0 | 6 | 1 |
-| `saved-6000000006910371360.ged` | 2 | 0 | 0 | 6 | 3 |
+| `saved-6000000006910371360.ged` | 2 | 0 | 0 | 6 | 2 |
 | `saved-6000000006910524128.ged` | 4 | 0 | 0 | 8 | 1 |
-| `saved-6000000006927613398.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000006932496197.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000006963936279.ged` | 3 | 0 | 0 | 13 | 11 |
-| `saved-6000000006964093867.ged` | 3 | 0 | 0 | 14 | 6 |
-| `saved-6000000006991041605.ged` | 4 | 2 | 0 | 11 | 2 |
-| `saved-6000000007006053264.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000007020763500.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000007035211375.ged` | 4 | 5 | 0 | 7 | 3 |
-| `saved-6000000007040744781.ged` | 3 | 3 | 0 | 8 | 3 |
-| `saved-6000000007051275051.ged` | 4 | 1 | 0 | 7 | 2 |
-| `saved-6000000007051737771.ged` | 4 | 4 | 0 | 9 | 7 |
-| `saved-6000000007058475918.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000007058802262.ged` | 4 | 8 | 0 | 5 | 2 |
-| `saved-6000000007059008284.ged` | 2 | 0 | 0 | 13 | 4 |
+| `saved-6000000006927613398.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000006932496197.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000006963936279.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000006964093867.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000006991041605.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007006053264.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000007020763500.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007035211375.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007040744781.ged` | 3 | 0 | 0 | 11 | 1 |
+| `saved-6000000007051275051.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000007051737771.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007058475918.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007058802262.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007059008284.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000007059036372.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000007060635081.ged` | 4 | 2 | 0 | 11 | 9 |
-| `saved-6000000007062931743.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000007062987558.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000007090217253.ged` | 5 | 0 | 0 | 8 | 2 |
-| `saved-6000000007096021931.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000007114444629.ged` | 3 | 6 | 0 | 5 | 1 |
+| `saved-6000000007060635081.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000007062931743.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007062987558.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000007090217253.ged` | 5 | 0 | 0 | 8 | 1 |
+| `saved-6000000007096021931.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007114444629.ged` | 3 | 0 | 0 | 11 | 1 |
 | `saved-6000000007149829030.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000007150056822.ged` | 2 | 0 | 0 | 11 | 2 |
-| `saved-6000000007159201467.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000007168006559.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000007168150360.ged` | 4 | 0 | 0 | 10 | 3 |
-| `saved-6000000007182167503.ged` | 4 | 6 | 0 | 2 | 1 |
-| `saved-6000000007182299647.ged` | 3 | 5 | 0 | 4 | 1 |
-| `saved-6000000007182710798.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000007182829201.ged` | 2 | 1 | 0 | 13 | 5 |
-| `saved-6000000007210899736.ged` | 4 | 0 | 0 | 14 | 12 |
-| `saved-6000000007211481443.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000007218725750.ged` | 4 | 1 | 0 | 12 | 6 |
-| `saved-6000000007225974316.ged` | 4 | 0 | 0 | 9 | 2 |
-| `saved-6000000007243462851.ged` | 3 | 9 | 0 | 4 | 3 |
-| `saved-6000000007243504597.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000007243779310.ged` | 4 | 5 | 0 | 7 | 2 |
-| `saved-6000000007259558393.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000007272507672.ged` | 2 | 0 | 0 | 13 | 9 |
-| `saved-6000000007279272308.ged` | 4 | 3 | 0 | 8 | 1 |
-| `saved-6000000007295507866.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000007304150583.ged` | 6 | 8 | 0 | 5 | 2 |
-| `saved-6000000007335744612.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000007335974610.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000007339101221.ged` | 3 | 4 | 0 | 3 | 1 |
-| `saved-6000000007367810201.ged` | 5 | 5 | 0 | 8 | 2 |
-| `saved-6000000007392290792.ged` | 2 | 0 | 0 | 13 | 6 |
-| `saved-6000000007393382928.ged` | 3 | 0 | 0 | 14 | 4 |
-| `saved-6000000007404085354.ged` | 5 | 0 | 0 | 13 | 8 |
-| `saved-6000000007404267211.ged` | 3 | 2 | 0 | 11 | 3 |
+| `saved-6000000007159201467.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007168006559.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007168150360.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000007182167503.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000007182299647.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000007182710798.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007182829201.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000007210899736.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000007211481443.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007218725750.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007225974316.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000007243462851.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007243504597.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000007243779310.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007259558393.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000007272507672.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000007279272308.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000007295507866.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007304150583.ged` | 6 | 0 | 0 | 13 | 6 |
+| `saved-6000000007335744612.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007335974610.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007339101221.ged` | 3 | 0 | 0 | 7 | 3 |
+| `saved-6000000007367810201.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000007392290792.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000007393382928.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000007404085354.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000007404267211.ged` | 3 | 0 | 0 | 13 | 2 |
 | `saved-6000000007425369965.ged` | 3 | 0 | 0 | 9 | 1 |
-| `saved-6000000007507069278.ged` | 4 | 5 | 0 | 9 | 4 |
-| `saved-6000000007507095358.ged` | 4 | 3 | 0 | 10 | 1 |
-| `saved-6000000007511564057.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000007511564070.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000007511832794.ged` | 4 | 0 | 0 | 14 | 8 |
-| `saved-6000000007538343204.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000007549179716.ged` | 4 | 0 | 0 | 14 | 12 |
-| `saved-6000000007549309545.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000007559278400.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000007581296353.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000007581383931.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000007587625693.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-6000000007587694720.ged` | 4 | 7 | 0 | 6 | 1 |
+| `saved-6000000007507069278.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000007507095358.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007511564057.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007511564070.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000007511832794.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000007538343204.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007549179716.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000007549309545.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000007559278400.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007581296353.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007581383931.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007587625693.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000007587694720.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000007588187341.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000007588187344.ged` | 4 | 0 | 0 | 8 | 2 |
-| `saved-6000000007588356972.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000007589095312.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000007589095414.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000007604938431.ged` | 2 | 0 | 0 | 13 | 10 |
-| `saved-6000000007604938444.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000007614477274.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000007618351978.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000007630944209.ged` | 4 | 5 | 0 | 4 | 2 |
+| `saved-6000000007588187344.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000007588356972.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007589095312.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000007589095414.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007604938431.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000007604938444.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000007614477274.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007618351978.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007630944209.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000007632160030.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000007635630874.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000007635630965.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000007635631030.ged` | 5 | 0 | 0 | 14 | 5 |
-| `saved-6000000007661859262.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000007676113728.ged` | 3 | 3 | 0 | 9 | 8 |
+| `saved-6000000007635631030.ged` | 5 | 0 | 0 | 14 | 2 |
+| `saved-6000000007661859262.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007676113728.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000007676466396.ged` | 6 | 0 | 0 | 12 | 4 |
-| `saved-6000000007770332213.ged` | 4 | 0 | 0 | 7 | 3 |
+| `saved-6000000007770332213.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000007773104021.ged` | 3 | 0 | 0 | 12 | 1 |
-| `saved-6000000007782302849.ged` | 4 | 7 | 0 | 6 | 1 |
-| `saved-6000000007826003451.ged` | 4 | 0 | 0 | 9 | 8 |
-| `saved-6000000007826127365.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000007958767639.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000007959631642.ged` | 5 | 0 | 0 | 13 | 9 |
-| `saved-6000000007959864423.ged` | 4 | 1 | 0 | 11 | 2 |
-| `saved-6000000007980369200.ged` | 3 | 0 | 0 | 12 | 9 |
-| `saved-6000000007980520044.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000007980693054.ged` | 5 | 0 | 0 | 13 | 6 |
+| `saved-6000000007782302849.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007826003451.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000007826127365.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000007958767639.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000007959631642.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000007959864423.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000007980369200.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000007980520044.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000007980693054.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000008008010549.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000008019682504.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000008034160064.ged` | 6 | 1 | 0 | 12 | 7 |
+| `saved-6000000008019682504.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008034160064.ged` | 6 | 0 | 0 | 13 | 1 |
 | `saved-6000000008034415513.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000008063252550.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000008100776194.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000008101228513.ged` | 5 | 6 | 0 | 7 | 1 |
-| `saved-6000000008106241912.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000008115020929.ged` | 3 | 0 | 0 | 14 | 3 |
+| `saved-6000000008063252550.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000008100776194.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000008101228513.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000008106241912.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008115020929.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000008115048412.ged` | 4 | 0 | 0 | 14 | 2 |
-| `saved-6000000008205346192.ged` | 4 | 8 | 0 | 2 | 1 |
-| `saved-6000000008205535747.ged` | 3 | 4 | 0 | 9 | 2 |
-| `saved-6000000008286490755.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000008286846382.ged` | 5 | 5 | 0 | 9 | 2 |
+| `saved-6000000008205346192.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000008205535747.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000008286490755.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008286846382.ged` | 5 | 0 | 0 | 14 | 1 |
 | `saved-6000000008352466911.ged` | 2 | 0 | 0 | 13 | 2 |
 | `saved-6000000008366453417.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000008379218961.ged` | 3 | 0 | 0 | 13 | 11 |
-| `saved-6000000008406419757.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000008406511750.ged` | 5 | 0 | 0 | 13 | 8 |
-| `saved-6000000008469756742.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000008477543238.ged` | 5 | 0 | 0 | 14 | 9 |
-| `saved-6000000008507821635.ged` | 2 | 0 | 0 | 13 | 10 |
-| `saved-6000000008516116524.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000008630356444.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000008630356466.ged` | 4 | 0 | 0 | 14 | 11 |
-| `saved-6000000008630587231.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000008687044864.ged` | 4 | 0 | 0 | 9 | 3 |
+| `saved-6000000008379218961.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000008406419757.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008406511750.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000008469756742.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008477543238.ged` | 5 | 0 | 0 | 14 | 1 |
+| `saved-6000000008507821635.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000008516116524.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008630356444.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008630356466.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000008630587231.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000008687044864.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000008687180600.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000008715164518.ged` | 4 | 4 | 0 | 6 | 1 |
-| `saved-6000000008764977184.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000008765237558.ged` | 4 | 4 | 0 | 7 | 2 |
-| `saved-6000000008765536305.ged` | 4 | 5 | 0 | 8 | 2 |
-| `saved-6000000008787687730.ged` | 3 | 7 | 0 | 6 | 3 |
-| `saved-6000000008787855478.ged` | 3 | 4 | 0 | 9 | 7 |
+| `saved-6000000008715164518.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000008764977184.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000008765237558.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000008765536305.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000008787687730.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000008787855478.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000008798323789.ged` | 3 | 0 | 0 | 9 | 1 |
-| `saved-6000000008798575043.ged` | 2 | 0 | 0 | 11 | 8 |
-| `saved-6000000008798585431.ged` | 4 | 0 | 0 | 14 | 6 |
-| `saved-6000000008931923941.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000008933309505.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000008961666136.ged` | 2 | 0 | 0 | 13 | 9 |
-| `saved-6000000008975808174.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000009006496259.ged` | 4 | 0 | 0 | 8 | 4 |
-| `saved-6000000009099803774.ged` | 4 | 0 | 0 | 13 | 10 |
+| `saved-6000000008798575043.ged` | 2 | 0 | 0 | 11 | 1 |
+| `saved-6000000008798585431.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000008931923941.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000008933309505.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000008961666136.ged` | 2 | 0 | 0 | 13 | 7 |
+| `saved-6000000008975808174.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000009006496259.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000009099803774.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000009100005728.ged` | 2 | 0 | 0 | 14 | 2 |
 | `saved-6000000009110468637.ged` | 3 | 0 | 0 | 8 | 2 |
-| `saved-6000000009134934503.ged` | 6 | 0 | 0 | 13 | 10 |
-| `saved-6000000009134991508.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000009170017937.ged` | 4 | 3 | 0 | 7 | 1 |
-| `saved-6000000009189190206.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000009196500176.ged` | 5 | 5 | 0 | 8 | 5 |
-| `saved-6000000009196991377.ged` | 4 | 0 | 0 | 9 | 2 |
-| `saved-6000000009214903611.ged` | 4 | 5 | 0 | 8 | 6 |
-| `saved-6000000009217651803.ged` | 3 | 0 | 0 | 9 | 2 |
-| `saved-6000000009288970429.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000009412979361.ged` | 4 | 8 | 0 | 4 | 1 |
-| `saved-6000000009465627532.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-6000000009499609049.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000009500754533.ged` | 3 | 0 | 0 | 14 | 4 |
-| `saved-6000000009511458815.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000009512037044.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000009512050024.ged` | 4 | 1 | 0 | 5 | 3 |
-| `saved-6000000009512394794.ged` | 3 | 0 | 0 | 10 | 4 |
-| `saved-6000000009512397570.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000009512632295.ged` | 4 | 0 | 0 | 11 | 4 |
+| `saved-6000000009134934503.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000009134991508.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000009170017937.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000009189190206.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000009196500176.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000009196991377.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000009214903611.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000009217651803.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000009288970429.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000009412979361.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000009465627532.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000009499609049.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000009500754533.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000009511458815.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000009512037044.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000009512050024.ged` | 4 | 0 | 0 | 6 | 1 |
+| `saved-6000000009512394794.ged` | 3 | 0 | 0 | 10 | 2 |
+| `saved-6000000009512397570.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000009512632295.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000009544774015.ged` | 2 | 0 | 0 | 5 | 1 |
-| `saved-6000000009551480095.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000009657862393.ged` | 4 | 0 | 0 | 11 | 4 |
+| `saved-6000000009551480095.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000009657862393.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000009706835506.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000009875160931.ged` | 3 | 0 | 0 | 8 | 2 |
+| `saved-6000000009875160931.ged` | 3 | 0 | 0 | 8 | 1 |
 | `saved-6000000009875224601.ged` | 4 | 0 | 0 | 12 | 1 |
-| `saved-6000000009875303979.ged` | 3 | 0 | 0 | 11 | 4 |
-| `saved-6000000009879586250.ged` | 4 | 7 | 0 | 3 | 1 |
-| `saved-6000000009916465367.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000009916611254.ged` | 4 | 0 | 0 | 9 | 7 |
-| `saved-6000000010076488689.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000010160609967.ged` | 4 | 0 | 0 | 13 | 4 |
+| `saved-6000000009875303979.ged` | 3 | 0 | 0 | 11 | 1 |
+| `saved-6000000009879586250.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000009916465367.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000009916611254.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000010076488689.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000010160609967.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000010222435520.ged` | 4 | 0 | 0 | 9 | 1 |
-| `saved-6000000010226740465.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000010229568198.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000010229747719.ged` | 3 | 2 | 0 | 11 | 4 |
-| `saved-6000000010239991822.ged` | 5 | 3 | 0 | 9 | 4 |
-| `saved-6000000010240000883.ged` | 4 | 0 | 0 | 11 | 6 |
+| `saved-6000000010226740465.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000010229568198.ged` | 5 | 0 | 0 | 13 | 4 |
+| `saved-6000000010229747719.ged` | 3 | 0 | 0 | 13 | 2 |
+| `saved-6000000010239991822.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000010240000883.ged` | 4 | 0 | 0 | 11 | 3 |
 | `saved-6000000010240260367.ged` | 5 | 0 | 0 | 10 | 1 |
-| `saved-6000000010259352985.ged` | 2 | 6 | 0 | 2 | 1 |
+| `saved-6000000010259352985.ged` | 2 | 0 | 0 | 8 | 1 |
 | `saved-6000000010288168143.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000010288326033.ged` | 4 | 0 | 0 | 10 | 8 |
+| `saved-6000000010288326033.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000010288779197.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000010288870971.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000010288911760.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000010288921953.ged` | 3 | 0 | 0 | 5 | 2 |
-| `saved-6000000010289043219.ged` | 3 | 0 | 0 | 5 | 2 |
+| `saved-6000000010288921953.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000010289043219.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000010289067232.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000010289095311.ged` | 3 | 0 | 0 | 8 | 2 |
-| `saved-6000000010331432922.ged` | 5 | 0 | 0 | 13 | 4 |
+| `saved-6000000010289095311.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000010331432922.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000010331792637.ged` | 1 | 0 | 0 | 4 | 1 |
-| `saved-6000000010341338258.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000010351510999.ged` | 2 | 0 | 0 | 14 | 10 |
-| `saved-6000000010407268537.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000010449304150.ged` | 4 | 0 | 0 | 7 | 5 |
+| `saved-6000000010341338258.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000010351510999.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000010407268537.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000010449304150.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000010449454103.ged` | 2 | 0 | 0 | 4 | 1 |
-| `saved-6000000010449616852.ged` | 3 | 0 | 0 | 7 | 2 |
-| `saved-6000000010449889350.ged` | 4 | 0 | 0 | 8 | 3 |
+| `saved-6000000010449616852.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000010449889350.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000010463529059.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000010513431062.ged` | 2 | 3 | 0 | 10 | 1 |
+| `saved-6000000010513431062.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000010534596447.ged` | 3 | 0 | 0 | 11 | 1 |
-| `saved-6000000010546157120.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000010546205936.ged` | 5 | 0 | 0 | 13 | 10 |
-| `saved-6000000010598672967.ged` | 5 | 2 | 0 | 9 | 4 |
+| `saved-6000000010546157120.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000010546205936.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000010598672967.ged` | 5 | 0 | 0 | 11 | 1 |
 | `saved-6000000010642992694.ged` | 1 | 0 | 0 | 4 | 1 |
 | `saved-6000000010644712727.ged` | 1 | 0 | 0 | 5 | 1 |
-| `saved-6000000010659609679.ged` | 2 | 1 | 0 | 13 | 2 |
-| `saved-6000000010659664086.ged` | 2 | 10 | 0 | 3 | 1 |
-| `saved-6000000010671353360.ged` | 4 | 0 | 0 | 10 | 7 |
-| `saved-6000000010680123679.ged` | 4 | 6 | 0 | 7 | 4 |
-| `saved-6000000010680345246.ged` | 2 | 0 | 0 | 13 | 8 |
-| `saved-6000000010807476638.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000010888314829.ged` | 4 | 0 | 0 | 8 | 6 |
-| `saved-6000000010888345851.ged` | 2 | 0 | 0 | 5 | 4 |
+| `saved-6000000010659609679.ged` | 2 | 0 | 0 | 14 | 3 |
+| `saved-6000000010659664086.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000010671353360.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000010680123679.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000010680345246.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000010807476638.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000010888314829.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000010888345851.ged` | 2 | 0 | 0 | 5 | 1 |
 | `saved-6000000010888345895.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000011036078569.ged` | 4 | 0 | 0 | 12 | 1 |
-| `saved-6000000011040229514.ged` | 4 | 7 | 0 | 6 | 3 |
-| `saved-6000000011043803107.ged` | 4 | 1 | 0 | 12 | 3 |
-| `saved-6000000011048419126.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000011078549071.ged` | 3 | 0 | 0 | 13 | 2 |
-| `saved-6000000011078726908.ged` | 2 | 0 | 0 | 13 | 4 |
+| `saved-6000000011040229514.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000011043803107.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000011048419126.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000011078549071.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000011078726908.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000011078807545.ged` | 1 | 0 | 0 | 14 | 2 |
-| `saved-6000000011078829655.ged` | 4 | 0 | 0 | 11 | 3 |
+| `saved-6000000011078829655.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000011078886609.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000011078918407.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000011079271617.ged` | 3 | 0 | 0 | 9 | 1 |
 | `saved-6000000011079343735.ged` | 3 | 0 | 0 | 7 | 2 |
-| `saved-6000000011169272123.ged` | 4 | 0 | 0 | 12 | 5 |
-| `saved-6000000011169570980.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000011183696687.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000011239201122.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000011239402589.ged` | 4 | 0 | 0 | 13 | 11 |
+| `saved-6000000011169272123.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000011169570980.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000011183696687.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011239201122.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011239402589.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000011239545575.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000011244838043.ged` | 4 | 5 | 0 | 7 | 4 |
+| `saved-6000000011244838043.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000011245746417.ged` | 3 | 0 | 0 | 10 | 2 |
-| `saved-6000000011252874344.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000011274338852.ged` | 4 | 0 | 0 | 9 | 5 |
-| `saved-6000000011276917624.ged` | 4 | 0 | 0 | 11 | 8 |
-| `saved-6000000011315288524.ged` | 3 | 0 | 0 | 8 | 5 |
-| `saved-6000000011330161333.ged` | 5 | 0 | 0 | 13 | 7 |
+| `saved-6000000011252874344.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000011274338852.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000011276917624.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000011315288524.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000011330161333.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000011380063304.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000011392245825.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000011399221611.ged` | 3 | 0 | 0 | 14 | 4 |
-| `saved-6000000011428579002.ged` | 5 | 0 | 0 | 12 | 6 |
-| `saved-6000000011429638227.ged` | 3 | 0 | 0 | 14 | 13 |
-| `saved-6000000011433727968.ged` | 4 | 0 | 0 | 7 | 4 |
-| `saved-6000000011460254487.ged` | 4 | 0 | 0 | 12 | 5 |
-| `saved-6000000011489252646.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000011536465369.ged` | 4 | 0 | 0 | 11 | 5 |
-| `saved-6000000011540389372.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000011546841461.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000011568319792.ged` | 2 | 0 | 0 | 13 | 12 |
+| `saved-6000000011392245825.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011399221611.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000011428579002.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000011429638227.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000011433727968.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000011460254487.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000011489252646.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011536465369.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000011540389372.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000011546841461.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011568319792.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000011568373884.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000011570928590.ged` | 4 | 5 | 0 | 8 | 2 |
-| `saved-6000000011570983149.ged` | 5 | 3 | 0 | 10 | 6 |
-| `saved-6000000011601412945.ged` | 4 | 4 | 0 | 9 | 6 |
+| `saved-6000000011570928590.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011570983149.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000011601412945.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000011613442175.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000011623099406.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000011647607597.ged` | 5 | 0 | 0 | 13 | 12 |
-| `saved-6000000011648048242.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000011769042441.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000011774471387.ged` | 4 | 0 | 0 | 12 | 5 |
-| `saved-6000000011807777264.ged` | 3 | 0 | 0 | 9 | 6 |
-| `saved-6000000011811245484.ged` | 5 | 1 | 0 | 9 | 2 |
-| `saved-6000000011821706820.ged` | 6 | 0 | 0 | 13 | 9 |
-| `saved-6000000011843556332.ged` | 3 | 0 | 0 | 13 | 10 |
+| `saved-6000000011623099406.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011647607597.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000011648048242.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000011769042441.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000011774471387.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000011807777264.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000011811245484.ged` | 5 | 0 | 0 | 10 | 2 |
+| `saved-6000000011821706820.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000011843556332.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000011870629601.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000011970410034.ged` | 4 | 0 | 0 | 8 | 5 |
-| `saved-6000000012013655297.ged` | 3 | 6 | 0 | 6 | 2 |
+| `saved-6000000011970410034.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000012013655297.ged` | 3 | 0 | 0 | 12 | 2 |
 | `saved-6000000012108249741.ged` | 3 | 0 | 0 | 15 | 2 |
-| `saved-6000000012139250763.ged` | 5 | 0 | 0 | 13 | 6 |
+| `saved-6000000012139250763.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000012139788237.ged` | 3 | 0 | 0 | 8 | 1 |
-| `saved-6000000012198494299.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000012242523692.ged` | 3 | 2 | 0 | 4 | 2 |
-| `saved-6000000012243172431.ged` | 3 | 3 | 0 | 9 | 1 |
+| `saved-6000000012198494299.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000012242523692.ged` | 3 | 0 | 0 | 6 | 1 |
+| `saved-6000000012243172431.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000012245669731.ged` | 4 | 0 | 0 | 9 | 1 |
-| `saved-6000000012293585755.ged` | 4 | 0 | 0 | 13 | 10 |
+| `saved-6000000012293585755.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000012293596475.ged` | 2 | 0 | 0 | 13 | 2 |
-| `saved-6000000012294304415.ged` | 4 | 7 | 0 | 6 | 1 |
-| `saved-6000000012307860943.ged` | 4 | 4 | 0 | 9 | 1 |
-| `saved-6000000012308553479.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000012336650452.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000012337711888.ged` | 3 | 0 | 0 | 13 | 6 |
+| `saved-6000000012294304415.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012307860943.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012308553479.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012336650452.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012337711888.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000012455272755.ged` | 4 | 0 | 0 | 12 | 1 |
-| `saved-6000000012503281124.ged` | 4 | 0 | 0 | 14 | 10 |
-| `saved-6000000012504273407.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000012566391180.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000012587690898.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000012503281124.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000012504273407.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012566391180.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012587690898.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000012591881202.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000012617461291.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000012640023947.ged` | 2 | 0 | 0 | 13 | 13 |
+| `saved-6000000012617461291.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012640023947.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000012640245221.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000012641619750.ged` | 3 | 0 | 0 | 13 | 5 |
-| `saved-6000000012724604098.ged` | 5 | 0 | 0 | 13 | 3 |
-| `saved-6000000012754388121.ged` | 5 | 0 | 0 | 14 | 5 |
-| `saved-6000000012878346373.ged` | 5 | 1 | 0 | 12 | 3 |
-| `saved-6000000012904227535.ged` | 4 | 3 | 0 | 10 | 7 |
-| `saved-6000000012952101595.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000012641619750.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000012724604098.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000012754388121.ged` | 5 | 0 | 0 | 14 | 2 |
+| `saved-6000000012878346373.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000012904227535.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000012952101595.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000012987643357.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000013019602706.ged` | 4 | 0 | 0 | 10 | 5 |
-| `saved-6000000013021605891.ged` | 3 | 0 | 0 | 14 | 4 |
+| `saved-6000000013019602706.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000013021605891.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000013071838546.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000013122624376.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000013166100337.ged` | 4 | 0 | 0 | 11 | 2 |
-| `saved-6000000013184965702.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000013195069123.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000013205833004.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000013214852442.ged` | 4 | 0 | 0 | 11 | 5 |
-| `saved-6000000013214878518.ged` | 4 | 0 | 0 | 12 | 3 |
-| `saved-6000000013281880387.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000013291844252.ged` | 2 | 3 | 0 | 3 | 1 |
-| `saved-6000000013487830550.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000013538823820.ged` | 4 | 0 | 0 | 9 | 4 |
+| `saved-6000000013166100337.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000013184965702.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000013195069123.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000013205833004.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000013214852442.ged` | 4 | 0 | 0 | 11 | 2 |
+| `saved-6000000013214878518.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000013281880387.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000013291844252.ged` | 2 | 0 | 0 | 6 | 2 |
+| `saved-6000000013487830550.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000013538823820.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000013618082642.ged` | 4 | 0 | 0 | 8 | 1 |
-| `saved-6000000013694127827.ged` | 4 | 4 | 0 | 6 | 4 |
+| `saved-6000000013694127827.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000013694337126.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000013938289487.ged` | 5 | 0 | 0 | 12 | 8 |
-| `saved-6000000013986579880.ged` | 5 | 0 | 0 | 13 | 2 |
-| `saved-6000000014024359812.ged` | 3 | 0 | 0 | 13 | 8 |
-| `saved-6000000014044436728.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000014044440566.ged` | 3 | 0 | 0 | 11 | 8 |
+| `saved-6000000013938289487.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000013986579880.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000014024359812.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000014044436728.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000014044440566.ged` | 3 | 0 | 0 | 11 | 2 |
 | `saved-6000000014044468426.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000014164331457.ged` | 4 | 0 | 0 | 13 | 9 |
+| `saved-6000000014164331457.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000014224378935.ged` | 3 | 0 | 0 | 10 | 1 |
-| `saved-6000000014253280113.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000014265035290.ged` | 4 | 0 | 0 | 11 | 4 |
-| `saved-6000000014287203465.ged` | 4 | 10 | 0 | 3 | 1 |
-| `saved-6000000014287321085.ged` | 1 | 1 | 0 | 8 | 1 |
-| `saved-6000000014300507795.ged` | 4 | 0 | 0 | 12 | 10 |
+| `saved-6000000014253280113.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000014265035290.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000014287203465.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000014287321085.ged` | 1 | 0 | 0 | 9 | 1 |
+| `saved-6000000014300507795.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000014300629210.ged` | 2 | 0 | 0 | 6 | 1 |
-| `saved-6000000014300860839.ged` | 4 | 0 | 0 | 10 | 2 |
+| `saved-6000000014300860839.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000014301252922.ged` | 4 | 0 | 0 | 8 | 1 |
-| `saved-6000000014301322889.ged` | 3 | 0 | 0 | 14 | 9 |
+| `saved-6000000014301322889.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000014301339457.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000014301359938.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000014349023517.ged` | 4 | 2 | 0 | 9 | 2 |
+| `saved-6000000014301359938.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000014349023517.ged` | 4 | 0 | 0 | 11 | 2 |
 | `saved-6000000014360883324.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000014394601788.ged` | 2 | 0 | 0 | 13 | 4 |
-| `saved-6000000014493706045.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000014394601788.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000014493706045.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000014507656819.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000014512537406.ged` | 4 | 0 | 0 | 9 | 1 |
-| `saved-6000000014522158621.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000014545722296.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000014652275852.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000014522158621.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000014545722296.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000014652275852.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000014652351128.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000014814372062.ged` | 3 | 3 | 0 | 11 | 7 |
+| `saved-6000000014814372062.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000014846941321.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000014853129253.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000014946390383.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000015117399351.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000015117490925.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000015117958521.ged` | 3 | 0 | 0 | 7 | 4 |
-| `saved-6000000015204381777.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000015211178776.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000015245604334.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000015302506749.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000015309255172.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000015309299285.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000015319810478.ged` | 3 | 0 | 0 | 8 | 6 |
+| `saved-6000000014946390383.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015117399351.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015117490925.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000015117958521.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000015204381777.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000015211178776.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015245604334.ged` | 2 | 0 | 0 | 13 | 3 |
+| `saved-6000000015302506749.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000015309255172.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000015309299285.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015319810478.ged` | 3 | 0 | 0 | 8 | 1 |
 | `saved-6000000015357707513.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-6000000015394330678.ged` | 4 | 0 | 0 | 11 | 3 |
-| `saved-6000000015399099546.ged` | 4 | 7 | 0 | 6 | 2 |
-| `saved-6000000015399620672.ged` | 4 | 2 | 0 | 6 | 1 |
-| `saved-6000000015423318064.ged` | 4 | 0 | 0 | 11 | 2 |
-| `saved-6000000015423592428.ged` | 3 | 2 | 0 | 3 | 1 |
+| `saved-6000000015394330678.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000015399099546.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015399620672.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000015423318064.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000015423592428.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000015423722158.ged` | 2 | 0 | 0 | 6 | 2 |
-| `saved-6000000015423962219.ged` | 4 | 1 | 0 | 9 | 1 |
-| `saved-6000000015485735160.ged` | 4 | 6 | 0 | 2 | 1 |
-| `saved-6000000015518649039.ged` | 4 | 0 | 0 | 7 | 5 |
-| `saved-6000000015518684068.ged` | 5 | 1 | 0 | 9 | 4 |
+| `saved-6000000015423962219.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000015485735160.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000015518649039.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000015518684068.ged` | 5 | 0 | 0 | 10 | 1 |
 | `saved-6000000015518685084.ged` | 4 | 0 | 0 | 8 | 1 |
-| `saved-6000000015521070849.ged` | 4 | 0 | 0 | 11 | 6 |
-| `saved-6000000015521370780.ged` | 4 | 2 | 0 | 8 | 1 |
-| `saved-6000000015521590083.ged` | 4 | 7 | 0 | 6 | 2 |
-| `saved-6000000015593753615.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000015694585880.ged` | 3 | 2 | 0 | 6 | 1 |
-| `saved-6000000015770704042.ged` | 4 | 6 | 0 | 7 | 1 |
+| `saved-6000000015521070849.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000015521370780.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000015521590083.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000015593753615.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000015694585880.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000015770704042.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000015843590321.ged` | 1 | 0 | 0 | 9 | 2 |
-| `saved-6000000015851698695.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000015851698695.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000015998729022.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000016303264136.ged` | 3 | 6 | 0 | 7 | 6 |
-| `saved-6000000016303283134.ged` | 3 | 10 | 0 | 3 | 2 |
-| `saved-6000000016360042741.ged` | 4 | 1 | 0 | 12 | 9 |
-| `saved-6000000016425918956.ged` | 4 | 0 | 0 | 6 | 3 |
-| `saved-6000000016426352456.ged` | 2 | 1 | 0 | 4 | 2 |
-| `saved-6000000016426580160.ged` | 4 | 0 | 0 | 10 | 3 |
-| `saved-6000000016476125295.ged` | 4 | 2 | 0 | 12 | 2 |
-| `saved-6000000016479087543.ged` | 4 | 2 | 0 | 9 | 2 |
-| `saved-6000000016524697799.ged` | 5 | 8 | 0 | 3 | 1 |
+| `saved-6000000016303264136.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000016303283134.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000016360042741.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000016425918956.ged` | 4 | 0 | 0 | 6 | 1 |
+| `saved-6000000016426352456.ged` | 2 | 0 | 0 | 5 | 1 |
+| `saved-6000000016426580160.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000016476125295.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000016479087543.ged` | 4 | 0 | 0 | 11 | 3 |
+| `saved-6000000016524697799.ged` | 5 | 0 | 0 | 11 | 1 |
 | `saved-6000000016524856961.ged` | 2 | 0 | 0 | 7 | 1 |
-| `saved-6000000016582078281.ged` | 4 | 0 | 0 | 13 | 11 |
-| `saved-6000000016623538002.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000016662825611.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000016772114903.ged` | 3 | 0 | 0 | 13 | 11 |
+| `saved-6000000016582078281.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000016623538002.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000016662825611.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000016772114903.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000016959316252.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000016982342071.ged` | 5 | 1 | 0 | 10 | 5 |
-| `saved-6000000017093875188.ged` | 3 | 0 | 0 | 10 | 3 |
-| `saved-6000000017335445640.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000017394131513.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000017512579814.ged` | 3 | 0 | 0 | 5 | 3 |
-| `saved-6000000017512587298.ged` | 3 | 0 | 0 | 7 | 5 |
-| `saved-6000000017512648427.ged` | 4 | 0 | 0 | 7 | 4 |
-| `saved-6000000017512682319.ged` | 3 | 0 | 0 | 5 | 3 |
+| `saved-6000000016982342071.ged` | 5 | 0 | 0 | 11 | 3 |
+| `saved-6000000017093875188.ged` | 3 | 0 | 0 | 10 | 2 |
+| `saved-6000000017335445640.ged` | 5 | 0 | 0 | 13 | 3 |
+| `saved-6000000017394131513.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000017512579814.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000017512587298.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000017512648427.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000017512682319.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000017512797708.ged` | 3 | 0 | 0 | 7 | 1 |
-| `saved-6000000017513039586.ged` | 2 | 0 | 0 | 9 | 4 |
-| `saved-6000000017535961052.ged` | 4 | 0 | 0 | 10 | 2 |
+| `saved-6000000017513039586.ged` | 2 | 0 | 0 | 9 | 2 |
+| `saved-6000000017535961052.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000017625357021.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000017627448734.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000017799612472.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000017871912470.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000018110421350.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000018145628151.ged` | 4 | 2 | 0 | 11 | 2 |
-| `saved-6000000018212260392.ged` | 3 | 5 | 0 | 2 | 1 |
-| `saved-6000000018212464007.ged` | 4 | 8 | 0 | 6 | 2 |
-| `saved-6000000018348056712.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000018426488633.ged` | 4 | 0 | 0 | 13 | 11 |
+| `saved-6000000018110421350.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000018145628151.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000018212260392.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000018212464007.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000018348056712.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000018426488633.ged` | 4 | 0 | 0 | 13 | 2 |
 | `saved-6000000018448055702.ged` | 3 | 0 | 0 | 4 | 0 |
 | `saved-6000000018448271481.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000018464035156.ged` | 5 | 2 | 0 | 11 | 1 |
+| `saved-6000000018464035156.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000018528235866.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-6000000018752060667.ged` | 3 | 0 | 0 | 13 | 3 |
-| `saved-6000000018821123732.ged` | 5 | 0 | 0 | 8 | 6 |
-| `saved-6000000018908930497.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000018909038179.ged` | 4 | 0 | 0 | 11 | 8 |
-| `saved-6000000018909112139.ged` | 4 | 0 | 0 | 11 | 2 |
-| `saved-6000000019023540872.ged` | 4 | 5 | 0 | 8 | 1 |
+| `saved-6000000018752060667.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000018821123732.ged` | 5 | 0 | 0 | 8 | 1 |
+| `saved-6000000018908930497.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000018909038179.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000018909112139.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000019023540872.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000019023649207.ged` | 2 | 0 | 0 | 13 | 2 |
-| `saved-6000000019032360275.ged` | 4 | 0 | 0 | 13 | 3 |
+| `saved-6000000019032360275.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000019103963083.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000019382922858.ged` | 4 | 3 | 0 | 9 | 4 |
-| `saved-6000000019410166019.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000019509377608.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000019557061076.ged` | 4 | 1 | 0 | 8 | 1 |
-| `saved-6000000019594325656.ged` | 4 | 0 | 0 | 7 | 2 |
-| `saved-6000000019698408474.ged` | 1 | 3 | 0 | 11 | 2 |
-| `saved-6000000019775225537.ged` | 5 | 5 | 0 | 8 | 1 |
+| `saved-6000000019382922858.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000019410166019.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000019509377608.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000019557061076.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000019594325656.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000019698408474.ged` | 1 | 0 | 0 | 14 | 2 |
+| `saved-6000000019775225537.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000019775649283.ged` | 2 | 0 | 0 | 15 | 2 |
-| `saved-6000000019857924817.ged` | 3 | 0 | 0 | 12 | 2 |
-| `saved-6000000019941023277.ged` | 5 | 0 | 0 | 13 | 7 |
-| `saved-6000000020013489270.ged` | 2 | 1 | 0 | 8 | 5 |
-| `saved-6000000020109737178.ged` | 3 | 0 | 0 | 14 | 9 |
-| `saved-6000000020146576832.ged` | 3 | 0 | 0 | 4 | 2 |
+| `saved-6000000019857924817.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000019941023277.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000020013489270.ged` | 2 | 0 | 0 | 9 | 1 |
+| `saved-6000000020109737178.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000020146576832.ged` | 3 | 0 | 0 | 4 | 1 |
 | `saved-6000000020146931228.ged` | 3 | 0 | 0 | 7 | 1 |
-| `saved-6000000020182272013.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000020344692199.ged` | 4 | 0 | 0 | 12 | 8 |
+| `saved-6000000020182272013.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000020344692199.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000020344732085.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000020344842981.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000020377095239.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000020473563984.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000020473563984.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000020475622749.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000020475690473.ged` | 2 | 0 | 0 | 9 | 2 |
-| `saved-6000000020492202008.ged` | 5 | 0 | 0 | 13 | 4 |
-| `saved-6000000021039674210.ged` | 4 | 0 | 0 | 14 | 5 |
-| `saved-6000000021039691973.ged` | 3 | 0 | 0 | 14 | 3 |
+| `saved-6000000020492202008.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000021039674210.ged` | 4 | 0 | 0 | 14 | 1 |
+| `saved-6000000021039691973.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000021079935250.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000021131949939.ged` | 4 | 8 | 0 | 5 | 2 |
-| `saved-6000000021132026143.ged` | 4 | 0 | 0 | 11 | 5 |
-| `saved-6000000021139261439.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000021143457434.ged` | 3 | 2 | 0 | 3 | 1 |
-| `saved-6000000021331531124.ged` | 4 | 0 | 0 | 13 | 10 |
+| `saved-6000000021131949939.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000021132026143.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000021139261439.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000021143457434.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000021331531124.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000021331531144.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000021399265460.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000021423524876.ged` | 4 | 0 | 0 | 7 | 2 |
+| `saved-6000000021399265460.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000021423524876.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000021423552972.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000021438775306.ged` | 4 | 4 | 0 | 9 | 1 |
+| `saved-6000000021438775306.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000021442678985.ged` | 3 | 0 | 0 | 8 | 1 |
-| `saved-6000000021499390330.ged` | 4 | 5 | 0 | 8 | 6 |
-| `saved-6000000021500013763.ged` | 3 | 0 | 0 | 14 | 8 |
-| `saved-6000000021501319830.ged` | 3 | 4 | 0 | 9 | 1 |
+| `saved-6000000021499390330.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000021500013763.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000021501319830.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000021545325820.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000021546131052.ged` | 3 | 0 | 0 | 12 | 2 |
-| `saved-6000000021635152223.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000021649357634.ged` | 4 | 0 | 0 | 7 | 5 |
+| `saved-6000000021635152223.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000021649357634.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000021649684059.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000021651776645.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000021652410546.ged` | 4 | 0 | 0 | 14 | 3 |
+| `saved-6000000021651776645.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000021652410546.ged` | 4 | 0 | 0 | 14 | 2 |
 | `saved-6000000021656391531.ged` | 3 | 0 | 0 | 13 | 2 |
 | `saved-6000000021829378478.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000022067361271.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000022699116782.ged` | 5 | 0 | 0 | 13 | 5 |
-| `saved-6000000022823598236.ged` | 3 | 0 | 0 | 13 | 12 |
-| `saved-6000000022823987873.ged` | 3 | 0 | 0 | 14 | 9 |
-| `saved-6000000022826443643.ged` | 2 | 0 | 0 | 13 | 4 |
-| `saved-6000000022905307808.ged` | 3 | 0 | 0 | 8 | 6 |
-| `saved-6000000022905487598.ged` | 4 | 0 | 0 | 7 | 5 |
-| `saved-6000000022980324190.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000022981121872.ged` | 5 | 0 | 0 | 13 | 6 |
+| `saved-6000000022699116782.ged` | 5 | 0 | 0 | 13 | 2 |
+| `saved-6000000022823598236.ged` | 3 | 0 | 0 | 13 | 4 |
+| `saved-6000000022823987873.ged` | 3 | 0 | 0 | 14 | 6 |
+| `saved-6000000022826443643.ged` | 2 | 0 | 0 | 13 | 2 |
+| `saved-6000000022905307808.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000022905487598.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000022980324190.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000022981121872.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000023007521972.ged` | 5 | 0 | 0 | 12 | 1 |
-| `saved-6000000023045918112.ged` | 4 | 0 | 0 | 10 | 4 |
+| `saved-6000000023045918112.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000023047704443.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000023093166835.ged` | 5 | 1 | 0 | 13 | 4 |
-| `saved-6000000023188954676.ged` | 4 | 0 | 0 | 10 | 6 |
+| `saved-6000000023093166835.ged` | 5 | 0 | 0 | 14 | 2 |
+| `saved-6000000023188954676.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000023189437982.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000023250155337.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000023666472983.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000023680996844.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000023738942040.ged` | 4 | 4 | 0 | 4 | 2 |
+| `saved-6000000023250155337.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000023666472983.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000023680996844.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000023738942040.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000023739078847.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000023768343105.ged` | 3 | 0 | 0 | 14 | 9 |
-| `saved-6000000023855089493.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000023858289958.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000023858480076.ged` | 3 | 0 | 0 | 14 | 6 |
-| `saved-6000000023921242233.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000024105547515.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000024106601099.ged` | 2 | 0 | 0 | 13 | 10 |
-| `saved-6000000024304661912.ged` | 3 | 1 | 0 | 13 | 2 |
-| `saved-6000000024431661697.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000024431753429.ged` | 4 | 0 | 0 | 11 | 5 |
-| `saved-6000000024431778428.ged` | 4 | 0 | 0 | 12 | 3 |
-| `saved-6000000024548549483.ged` | 2 | 0 | 0 | 13 | 7 |
+| `saved-6000000023768343105.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000023855089493.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000023858289958.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000023858480076.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000023921242233.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000024105547515.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000024106601099.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000024304661912.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000024431661697.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000024431753429.ged` | 4 | 0 | 0 | 11 | 3 |
+| `saved-6000000024431778428.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000024548549483.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000024583594541.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000024583905275.ged` | 3 | 0 | 0 | 5 | 2 |
+| `saved-6000000024583905275.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000024617396092.ged` | 3 | 0 | 0 | 6 | 1 |
-| `saved-6000000024666502056.ged` | 3 | 2 | 0 | 8 | 1 |
+| `saved-6000000024666502056.ged` | 3 | 0 | 0 | 10 | 1 |
 | `saved-6000000024841032051.ged` | 4 | 0 | 0 | 8 | 1 |
-| `saved-6000000024851923471.ged` | 4 | 0 | 0 | 13 | 9 |
+| `saved-6000000024851923471.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000025124793875.ged` | 3 | 0 | 0 | 12 | 2 |
-| `saved-6000000025153348204.ged` | 2 | 0 | 0 | 13 | 3 |
-| `saved-6000000025592868536.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000025592868542.ged` | 3 | 4 | 0 | 6 | 2 |
-| `saved-6000000025819589873.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000026173188815.ged` | 3 | 0 | 0 | 5 | 3 |
-| `saved-6000000026173349636.ged` | 3 | 0 | 0 | 6 | 2 |
+| `saved-6000000025153348204.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000025592868536.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000025592868542.ged` | 3 | 0 | 0 | 10 | 2 |
+| `saved-6000000025819589873.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000026173188815.ged` | 3 | 0 | 0 | 5 | 1 |
+| `saved-6000000026173349636.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000026173714009.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000026191425197.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000026226697810.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000026241080028.ged` | 4 | 0 | 0 | 11 | 9 |
+| `saved-6000000026241080028.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000026258097510.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000026534693043.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000026893410996.ged` | 2 | 0 | 0 | 13 | 11 |
-| `saved-6000000026972756419.ged` | 4 | 1 | 0 | 10 | 1 |
-| `saved-6000000026975287820.ged` | 3 | 4 | 0 | 8 | 4 |
+| `saved-6000000026534693043.ged` | 3 | 0 | 0 | 13 | 4 |
+| `saved-6000000026893410996.ged` | 2 | 0 | 0 | 13 | 2 |
+| `saved-6000000026972756419.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000026975287820.ged` | 3 | 0 | 0 | 12 | 3 |
 | `saved-6000000027109936984.ged` | 4 | 0 | 0 | 12 | 1 |
-| `saved-6000000027340643370.ged` | 3 | 0 | 0 | 13 | 9 |
+| `saved-6000000027340643370.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000027438971715.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000027439182158.ged` | 2 | 0 | 0 | 6 | 2 |
-| `saved-6000000027507886451.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000027592523666.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000027593736914.ged` | 3 | 1 | 0 | 12 | 10 |
-| `saved-6000000027645833651.ged` | 4 | 8 | 0 | 5 | 1 |
-| `saved-6000000027654634894.ged` | 4 | 2 | 0 | 11 | 1 |
-| `saved-6000000027665609376.ged` | 5 | 5 | 0 | 8 | 4 |
-| `saved-6000000027842049766.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000027842200337.ged` | 2 | 0 | 0 | 13 | 5 |
-| `saved-6000000028278117400.ged` | 3 | 0 | 0 | 13 | 11 |
-| `saved-6000000028408939773.ged` | 3 | 2 | 0 | 7 | 1 |
-| `saved-6000000029363285200.ged` | 3 | 0 | 0 | 12 | 7 |
+| `saved-6000000027507886451.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000027592523666.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000027593736914.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000027645833651.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000027654634894.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000027665609376.ged` | 5 | 0 | 0 | 13 | 3 |
+| `saved-6000000027842049766.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000027842200337.ged` | 2 | 0 | 0 | 13 | 2 |
+| `saved-6000000028278117400.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000028408939773.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000029363285200.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000029363526786.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000029364339263.ged` | 3 | 0 | 0 | 11 | 8 |
+| `saved-6000000029364339263.ged` | 3 | 0 | 0 | 11 | 1 |
 | `saved-6000000029364391060.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000029742178286.ged` | 3 | 0 | 0 | 12 | 4 |
-| `saved-6000000030008527586.ged` | 4 | 3 | 0 | 9 | 7 |
+| `saved-6000000029742178286.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000030008527586.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000030008915196.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000030009027971.ged` | 4 | 5 | 0 | 5 | 1 |
-| `saved-6000000030042669829.ged` | 4 | 5 | 0 | 3 | 2 |
+| `saved-6000000030009027971.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000030042669829.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000030384467074.ged` | 3 | 0 | 0 | 12 | 1 |
-| `saved-6000000030756190508.ged` | 4 | 0 | 0 | 13 | 9 |
+| `saved-6000000030756190508.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000030756257752.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000030775253849.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000031001900951.ged` | 5 | 0 | 0 | 11 | 5 |
-| `saved-6000000031009109101.ged` | 4 | 4 | 0 | 6 | 4 |
-| `saved-6000000031247349696.ged` | 2 | 0 | 0 | 12 | 7 |
+| `saved-6000000030775253849.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000031001900951.ged` | 5 | 0 | 0 | 11 | 1 |
+| `saved-6000000031009109101.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000031247349696.ged` | 2 | 0 | 0 | 12 | 2 |
 | `saved-6000000031495668940.ged` | 3 | 0 | 0 | 13 | 1 |
-| `saved-6000000031521916552.ged` | 3 | 4 | 0 | 3 | 1 |
+| `saved-6000000031521916552.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000031522057461.ged` | 4 | 0 | 0 | 6 | 1 |
 | `saved-6000000031833079710.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000031873939968.ged` | 1 | 0 | 0 | 15 | 3 |
-| `saved-6000000032045186110.ged` | 3 | 0 | 0 | 14 | 6 |
-| `saved-6000000032068841409.ged` | 3 | 0 | 0 | 14 | 7 |
-| `saved-6000000032658035873.ged` | 4 | 7 | 0 | 6 | 1 |
+| `saved-6000000031873939968.ged` | 1 | 0 | 0 | 15 | 1 |
+| `saved-6000000032045186110.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000032068841409.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000032658035873.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000032943742081.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000032976700619.ged` | 3 | 0 | 0 | 14 | 5 |
-| `saved-6000000033096911541.ged` | 4 | 0 | 0 | 12 | 3 |
-| `saved-6000000033438633013.ged` | 4 | 0 | 0 | 9 | 3 |
+| `saved-6000000032976700619.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000033096911541.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000033438633013.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000033442136907.ged` | 3 | 0 | 0 | 9 | 2 |
-| `saved-6000000033547075516.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000033547208139.ged` | 4 | 0 | 0 | 10 | 3 |
-| `saved-6000000033547397933.ged` | 2 | 1 | 0 | 6 | 2 |
+| `saved-6000000033547075516.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000033547208139.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000033547397933.ged` | 2 | 0 | 0 | 7 | 2 |
 | `saved-6000000033864312339.ged` | 4 | 0 | 0 | 9 | 1 |
-| `saved-6000000034197727224.ged` | 5 | 0 | 0 | 13 | 2 |
-| `saved-6000000034255327598.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000034357465956.ged` | 3 | 3 | 0 | 6 | 2 |
-| `saved-6000000034357760862.ged` | 4 | 7 | 0 | 6 | 1 |
-| `saved-6000000034945147419.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000035169266389.ged` | 3 | 4 | 0 | 4 | 1 |
-| `saved-6000000035169497997.ged` | 1 | 2 | 0 | 4 | 2 |
+| `saved-6000000034197727224.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000034255327598.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000034357465956.ged` | 3 | 0 | 0 | 9 | 2 |
+| `saved-6000000034357760862.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000034945147419.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000035169266389.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000035169497997.ged` | 1 | 0 | 0 | 6 | 2 |
 | `saved-6000000035306669685.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000035451537211.ged` | 4 | 6 | 0 | 8 | 3 |
-| `saved-6000000035525393426.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000035525469386.ged` | 4 | 0 | 0 | 12 | 4 |
+| `saved-6000000035451537211.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000035525393426.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000035525469386.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000035525833995.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000035525972877.ged` | 3 | 0 | 0 | 13 | 6 |
-| `saved-6000000035842865927.ged` | 4 | 1 | 0 | 12 | 8 |
-| `saved-6000000035953773820.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000035525972877.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000035842865927.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000035953773820.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000035956517862.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000036357505108.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000036357582274.ged` | 2 | 0 | 0 | 14 | 7 |
-| `saved-6000000037035247723.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000037035530796.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000037061234630.ged` | 4 | 7 | 0 | 4 | 2 |
-| `saved-6000000037061491552.ged` | 3 | 6 | 0 | 4 | 2 |
+| `saved-6000000036357505108.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000036357582274.ged` | 2 | 0 | 0 | 14 | 2 |
+| `saved-6000000037035247723.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000037035530796.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000037061234630.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000037061491552.ged` | 3 | 0 | 0 | 10 | 2 |
 | `saved-6000000037080891969.ged` | 1 | 0 | 0 | 9 | 2 |
-| `saved-6000000037499373524.ged` | 4 | 0 | 0 | 9 | 5 |
+| `saved-6000000037499373524.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000037499674070.ged` | 4 | 0 | 0 | 11 | 1 |
 | `saved-6000000039348882765.ged` | 2 | 0 | 0 | 15 | 2 |
-| `saved-6000000039632819016.ged` | 5 | 0 | 0 | 14 | 4 |
-| `saved-6000000039766619938.ged` | 2 | 5 | 0 | 2 | 1 |
-| `saved-6000000040374803004.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000040464859483.ged` | 3 | 2 | 0 | 12 | 3 |
-| `saved-6000000040996845017.ged` | 4 | 1 | 0 | 6 | 1 |
-| `saved-6000000041536548158.ged` | 2 | 0 | 0 | 13 | 12 |
-| `saved-6000000041537287092.ged` | 4 | 0 | 0 | 14 | 4 |
+| `saved-6000000039632819016.ged` | 5 | 0 | 0 | 14 | 2 |
+| `saved-6000000039766619938.ged` | 2 | 0 | 0 | 7 | 1 |
+| `saved-6000000040374803004.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000040464859483.ged` | 3 | 0 | 0 | 14 | 1 |
+| `saved-6000000040996845017.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000041536548158.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000041537287092.ged` | 4 | 0 | 0 | 14 | 2 |
 | `saved-6000000042729202545.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000043648786217.ged` | 4 | 0 | 0 | 8 | 6 |
+| `saved-6000000043648786217.ged` | 4 | 0 | 0 | 8 | 1 |
 | `saved-6000000043649084885.ged` | 1 | 0 | 0 | 6 | 1 |
-| `saved-6000000043649220131.ged` | 3 | 0 | 0 | 12 | 6 |
+| `saved-6000000043649220131.ged` | 3 | 0 | 0 | 12 | 1 |
 | `saved-6000000043815150026.ged` | 3 | 0 | 0 | 6 | 1 |
-| `saved-6000000044128793940.ged` | 1 | 0 | 0 | 13 | 3 |
-| `saved-6000000046292822989.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000047943564981.ged` | 2 | 0 | 0 | 13 | 3 |
-| `saved-6000000049134640939.ged` | 3 | 1 | 0 | 9 | 1 |
-| `saved-6000000050635310838.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000044128793940.ged` | 1 | 0 | 0 | 13 | 2 |
+| `saved-6000000046292822989.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000047943564981.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000049134640939.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-6000000050635310838.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000051276273861.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000051555644950.ged` | 4 | 1 | 0 | 12 | 8 |
-| `saved-6000000051556352836.ged` | 3 | 0 | 0 | 13 | 10 |
-| `saved-6000000051633524915.ged` | 3 | 0 | 0 | 13 | 7 |
-| `saved-6000000052215030827.ged` | 4 | 0 | 0 | 10 | 4 |
-| `saved-6000000052215334833.ged` | 5 | 0 | 0 | 13 | 7 |
+| `saved-6000000051555644950.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000051556352836.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000051633524915.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000052215030827.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000052215334833.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000052215809962.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000054990622176.ged` | 4 | 7 | 0 | 3 | 1 |
+| `saved-6000000054990622176.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000054992850924.ged` | 3 | 0 | 0 | 11 | 2 |
-| `saved-6000000056330118941.ged` | 4 | 0 | 0 | 13 | 10 |
-| `saved-6000000056333864823.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000056945714362.ged` | 4 | 0 | 0 | 13 | 3 |
-| `saved-6000000057172875007.ged` | 3 | 0 | 0 | 13 | 7 |
+| `saved-6000000056330118941.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000056333864823.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000056945714362.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000057172875007.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000057175128821.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000057327773067.ged` | 2 | 0 | 0 | 7 | 1 |
-| `saved-6000000057959889971.ged` | 2 | 0 | 0 | 5 | 4 |
-| `saved-6000000057959975839.ged` | 3 | 0 | 0 | 8 | 2 |
-| `saved-6000000058002247415.ged` | 3 | 0 | 0 | 14 | 7 |
-| `saved-6000000059809756110.ged` | 4 | 2 | 0 | 12 | 4 |
-| `saved-6000000060993725243.ged` | 3 | 2 | 0 | 11 | 1 |
-| `saved-6000000063114008888.ged` | 4 | 0 | 0 | 8 | 3 |
-| `saved-6000000063114171008.ged` | 4 | 0 | 0 | 12 | 5 |
-| `saved-6000000063114223064.ged` | 4 | 0 | 0 | 11 | 2 |
-| `saved-6000000065981704822.ged` | 4 | 0 | 0 | 13 | 4 |
+| `saved-6000000057959889971.ged` | 2 | 0 | 0 | 5 | 1 |
+| `saved-6000000057959975839.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000058002247415.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000059809756110.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000060993725243.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000063114008888.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000063114171008.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000063114223064.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000065981704822.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000065991527068.ged` | 3 | 0 | 0 | 14 | 2 |
-| `saved-6000000066263754251.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000066264516851.ged` | 4 | 4 | 0 | 4 | 1 |
-| `saved-6000000066264526835.ged` | 5 | 2 | 0 | 7 | 3 |
+| `saved-6000000066263754251.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000066264516851.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000066264526835.ged` | 5 | 0 | 0 | 9 | 1 |
 | `saved-6000000066264650876.ged` | 3 | 0 | 0 | 10 | 2 |
 | `saved-6000000067502220858.ged` | 1 | 0 | 0 | 6 | 1 |
-| `saved-6000000069050151452.ged` | 1 | 1 | 0 | 2 | 1 |
+| `saved-6000000069050151452.ged` | 1 | 0 | 0 | 3 | 1 |
 | `saved-6000000069051592822.ged` | 3 | 0 | 0 | 9 | 1 |
 | `saved-6000000069466362236.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000070396611338.ged` | 4 | 10 | 0 | 3 | 1 |
-| `saved-6000000070497375043.ged` | 3 | 5 | 0 | 7 | 1 |
-| `saved-6000000071637497156.ged` | 3 | 5 | 0 | 3 | 1 |
-| `saved-6000000071638053857.ged` | 4 | 0 | 0 | 8 | 2 |
-| `saved-6000000071638234914.ged` | 4 | 3 | 0 | 4 | 1 |
-| `saved-6000000071638302829.ged` | 3 | 0 | 0 | 9 | 6 |
+| `saved-6000000070396611338.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000070497375043.ged` | 3 | 0 | 0 | 12 | 1 |
+| `saved-6000000071637497156.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000071638053857.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000071638234914.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000071638302829.ged` | 3 | 0 | 0 | 9 | 2 |
 | `saved-6000000071638439878.ged` | 1 | 0 | 0 | 6 | 1 |
 | `saved-6000000071768187852.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000071769436089.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000072112528902.ged` | 4 | 0 | 0 | 13 | 5 |
-| `saved-6000000072962073961.ged` | 3 | 0 | 0 | 7 | 4 |
+| `saved-6000000072112528902.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000072962073961.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000073011630896.ged` | 4 | 0 | 0 | 11 | 1 |
-| `saved-6000000073057747827.ged` | 4 | 0 | 0 | 10 | 6 |
-| `saved-6000000073120561949.ged` | 3 | 0 | 0 | 6 | 2 |
+| `saved-6000000073057747827.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000073120561949.ged` | 3 | 0 | 0 | 6 | 1 |
 | `saved-6000000073132490036.ged` | 4 | 0 | 0 | 6 | 1 |
 | `saved-6000000073622488100.ged` | 1 | 0 | 0 | 14 | 2 |
-| `saved-6000000074341208894.ged` | 4 | 0 | 0 | 13 | 12 |
-| `saved-6000000074341809000.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000074341208894.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000074341809000.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000074342040898.ged` | 3 | 0 | 0 | 14 | 5 |
 | `saved-6000000076761806976.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000076805697475.ged` | 2 | 0 | 0 | 12 | 1 |
 | `saved-6000000076807199992.ged` | 2 | 0 | 0 | 5 | 1 |
-| `saved-6000000077107182863.ged` | 4 | 0 | 0 | 13 | 9 |
+| `saved-6000000077107182863.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000077297672317.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000077297739021.ged` | 5 | 0 | 0 | 13 | 9 |
+| `saved-6000000077297739021.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000077316240007.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000077667834821.ged` | 2 | 0 | 0 | 3 | 1 |
 | `saved-6000000077762121855.ged` | 3 | 0 | 0 | 15 | 2 |
-| `saved-6000000077795945062.ged` | 4 | 0 | 0 | 9 | 4 |
-| `saved-6000000078378778833.ged` | 3 | 2 | 0 | 6 | 2 |
+| `saved-6000000077795945062.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000078378778833.ged` | 3 | 0 | 0 | 8 | 2 |
 | `saved-6000000078379065845.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000079267271590.ged` | 1 | 0 | 0 | 6 | 1 |
 | `saved-6000000080929243843.ged` | 2 | 0 | 0 | 10 | 1 |
-| `saved-6000000081000509607.ged` | 5 | 0 | 0 | 8 | 5 |
-| `saved-6000000081001770518.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000081001960578.ged` | 4 | 0 | 0 | 10 | 6 |
-| `saved-6000000081001962237.ged` | 2 | 0 | 0 | 7 | 2 |
-| `saved-6000000081003033570.ged` | 4 | 0 | 0 | 6 | 4 |
-| `saved-6000000081003222288.ged` | 4 | 0 | 0 | 9 | 2 |
-| `saved-6000000081003290197.ged` | 3 | 0 | 0 | 8 | 6 |
-| `saved-6000000081003784512.ged` | 2 | 0 | 0 | 4 | 2 |
+| `saved-6000000081000509607.ged` | 5 | 0 | 0 | 8 | 1 |
+| `saved-6000000081001770518.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000081001960578.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000081001962237.ged` | 2 | 0 | 0 | 7 | 1 |
+| `saved-6000000081003033570.ged` | 4 | 0 | 0 | 6 | 1 |
+| `saved-6000000081003222288.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000081003290197.ged` | 3 | 0 | 0 | 8 | 1 |
+| `saved-6000000081003784512.ged` | 2 | 0 | 0 | 4 | 1 |
 | `saved-6000000081003814187.ged` | 2 | 0 | 0 | 5 | 1 |
 | `saved-6000000081003838952.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000081003840360.ged` | 2 | 0 | 0 | 13 | 12 |
+| `saved-6000000081003840360.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000081003941823.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000081004270036.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000081729286896.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000082033862114.ged` | 4 | 0 | 0 | 12 | 2 |
-| `saved-6000000082819939353.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000081729286896.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000082033862114.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000082819939353.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000082822675871.ged` | 1 | 0 | 0 | 10 | 2 |
-| `saved-6000000082862457204.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000082894655175.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000082862457204.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000082894655175.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000082895620836.ged` | 3 | 0 | 0 | 9 | 1 |
-| `saved-6000000083072935969.ged` | 2 | 0 | 0 | 12 | 9 |
-| `saved-6000000083767537112.ged` | 3 | 0 | 0 | 5 | 3 |
+| `saved-6000000083072935969.ged` | 2 | 0 | 0 | 12 | 1 |
+| `saved-6000000083767537112.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000083767648821.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000083768071842.ged` | 3 | 0 | 0 | 8 | 1 |
-| `saved-6000000085676763948.ged` | 4 | 0 | 0 | 14 | 8 |
-| `saved-6000000086903454833.ged` | 3 | 1 | 0 | 12 | 1 |
-| `saved-6000000087535357291.ged` | 2 | 0 | 0 | 4 | 1 |
-| `saved-6000000089141178845.ged` | 5 | 0 | 0 | 12 | 6 |
-| `saved-6000000089141527885.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000085676763948.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000086903454833.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000087535357291.ged` | 2 | 0 | 0 | 4 | 0 |
+| `saved-6000000089141178845.ged` | 5 | 0 | 0 | 12 | 1 |
+| `saved-6000000089141527885.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000089171988019.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000089437494952.ged` | 2 | 0 | 0 | 15 | 2 |
-| `saved-6000000091348678858.ged` | 3 | 0 | 0 | 13 | 9 |
+| `saved-6000000091348678858.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000091348678867.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000091348678897.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000091525536068.ged` | 4 | 0 | 0 | 7 | 5 |
+| `saved-6000000091348678897.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000091525536068.ged` | 4 | 0 | 0 | 7 | 1 |
 | `saved-6000000091525814902.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000091526339970.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000091526339970.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000091526612901.ged` | 3 | 0 | 0 | 9 | 1 |
-| `saved-6000000091528437842.ged` | 4 | 0 | 0 | 9 | 3 |
-| `saved-6000000091529796831.ged` | 2 | 1 | 0 | 5 | 2 |
+| `saved-6000000091528437842.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000091529796831.ged` | 2 | 0 | 0 | 6 | 2 |
 | `saved-6000000091602117821.ged` | 1 | 0 | 0 | 6 | 2 |
-| `saved-6000000093411354957.ged` | 4 | 0 | 0 | 13 | 8 |
-| `saved-6000000094193729218.ged` | 3 | 0 | 0 | 14 | 9 |
-| `saved-6000000094194176187.ged` | 3 | 0 | 0 | 13 | 2 |
-| `saved-6000000094725759821.ged` | 1 | 0 | 0 | 5 | 2 |
+| `saved-6000000093411354957.ged` | 4 | 0 | 0 | 13 | 2 |
+| `saved-6000000094193729218.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000094194176187.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000094725759821.ged` | 1 | 0 | 0 | 5 | 1 |
 | `saved-6000000094788864010.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000096398991038.ged` | 4 | 0 | 0 | 10 | 3 |
-| `saved-6000000096399963028.ged` | 2 | 0 | 0 | 7 | 3 |
-| `saved-6000000096400842905.ged` | 4 | 0 | 0 | 9 | 4 |
+| `saved-6000000096398991038.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000096399963028.ged` | 2 | 0 | 0 | 7 | 2 |
+| `saved-6000000096400842905.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000099934709827.ged` | 1 | 0 | 0 | 5 | 1 |
-| `saved-6000000100082504307.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000100302352316.ged` | 4 | 0 | 0 | 12 | 6 |
+| `saved-6000000100082504307.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000100302352316.ged` | 4 | 0 | 0 | 12 | 1 |
 | `saved-6000000100733843835.ged` | 3 | 0 | 0 | 10 | 1 |
 | `saved-6000000103633571840.ged` | 5 | 0 | 0 | 13 | 1 |
-| `saved-6000000103752573902.ged` | 4 | 0 | 0 | 13 | 7 |
-| `saved-6000000105712682826.ged` | 4 | 0 | 0 | 13 | 2 |
-| `saved-6000000105715318851.ged` | 3 | 0 | 0 | 13 | 4 |
-| `saved-6000000108322400841.ged` | 4 | 0 | 0 | 13 | 6 |
-| `saved-6000000111817455021.ged` | 4 | 0 | 0 | 13 | 6 |
+| `saved-6000000103752573902.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000105712682826.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000105715318851.ged` | 3 | 0 | 0 | 13 | 3 |
+| `saved-6000000108322400841.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000111817455021.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000111817701912.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000112537545366.ged` | 2 | 0 | 0 | 3 | 1 |
 | `saved-6000000112538736189.ged` | 1 | 0 | 0 | 4 | 1 |
 | `saved-6000000112538853251.ged` | 2 | 0 | 0 | 4 | 1 |
-| `saved-6000000112539226128.ged` | 2 | 0 | 0 | 5 | 2 |
+| `saved-6000000112539226128.ged` | 2 | 0 | 0 | 5 | 1 |
 | `saved-6000000112539233010.ged` | 2 | 0 | 0 | 4 | 1 |
-| `saved-6000000112539909876.ged` | 2 | 0 | 0 | 13 | 3 |
+| `saved-6000000112539909876.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000112539932868.ged` | 2 | 0 | 0 | 12 | 2 |
 | `saved-6000000112540071069.ged` | 1 | 0 | 0 | 6 | 1 |
-| `saved-6000000115667769821.ged` | 4 | 0 | 0 | 9 | 5 |
-| `saved-6000000115668545101.ged` | 3 | 0 | 0 | 10 | 3 |
-| `saved-6000000115668584966.ged` | 3 | 0 | 0 | 9 | 4 |
-| `saved-6000000116694298987.ged` | 4 | 0 | 0 | 10 | 2 |
-| `saved-6000000120884050897.ged` | 3 | 0 | 0 | 13 | 5 |
+| `saved-6000000115667769821.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000115668545101.ged` | 3 | 0 | 0 | 10 | 1 |
+| `saved-6000000115668584966.ged` | 3 | 0 | 0 | 9 | 2 |
+| `saved-6000000116694298987.ged` | 4 | 0 | 0 | 10 | 1 |
+| `saved-6000000120884050897.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000122450336924.ged` | 4 | 0 | 0 | 7 | 1 |
-| `saved-6000000126234285831.ged` | 4 | 7 | 0 | 2 | 1 |
+| `saved-6000000126234285831.ged` | 4 | 0 | 0 | 9 | 1 |
 | `saved-6000000127314445823.ged` | 3 | 0 | 0 | 10 | 1 |
 | `saved-6000000129556183032.ged` | 1 | 0 | 0 | 5 | 1 |
-| `saved-6000000130515775874.ged` | 2 | 0 | 0 | 7 | 3 |
-| `saved-6000000130516552831.ged` | 3 | 0 | 0 | 9 | 2 |
-| `saved-6000000136584255821.ged` | 3 | 2 | 0 | 10 | 3 |
-| `saved-6000000137763536821.ged` | 3 | 0 | 0 | 15 | 5 |
-| `saved-6000000140114350029.ged` | 3 | 0 | 0 | 14 | 11 |
-| `saved-6000000140996282158.ged` | 4 | 6 | 0 | 5 | 2 |
-| `saved-6000000140997657859.ged` | 4 | 2 | 0 | 8 | 1 |
+| `saved-6000000130515775874.ged` | 2 | 0 | 0 | 7 | 2 |
+| `saved-6000000130516552831.ged` | 3 | 0 | 0 | 9 | 1 |
+| `saved-6000000136584255821.ged` | 3 | 0 | 0 | 12 | 3 |
+| `saved-6000000137763536821.ged` | 3 | 0 | 0 | 15 | 3 |
+| `saved-6000000140114350029.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000140996282158.ged` | 4 | 0 | 0 | 11 | 1 |
+| `saved-6000000140997657859.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000140998307832.ged` | 4 | 0 | 0 | 14 | 2 |
-| `saved-6000000141085184010.ged` | 4 | 2 | 0 | 5 | 1 |
-| `saved-6000000141086236875.ged` | 2 | 2 | 0 | 5 | 2 |
-| `saved-6000000141991252871.ged` | 5 | 9 | 0 | 4 | 1 |
+| `saved-6000000141085184010.ged` | 4 | 0 | 0 | 7 | 1 |
+| `saved-6000000141086236875.ged` | 2 | 0 | 0 | 7 | 2 |
+| `saved-6000000141991252871.ged` | 5 | 0 | 0 | 13 | 1 |
 | `saved-6000000147798365860.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000155055551821.ged` | 3 | 3 | 0 | 5 | 2 |
-| `saved-6000000161721983869.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000161721983881.ged` | 3 | 0 | 0 | 13 | 9 |
+| `saved-6000000155055551821.ged` | 3 | 0 | 0 | 8 | 2 |
+| `saved-6000000161721983869.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000161721983881.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000161721983893.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000167856262821.ged` | 3 | 0 | 0 | 5 | 2 |
+| `saved-6000000167856262821.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000167857079822.ged` | 3 | 0 | 0 | 7 | 2 |
-| `saved-6000000169037819865.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000171058400024.ged` | 3 | 0 | 0 | 13 | 9 |
-| `saved-6000000172054164872.ged` | 4 | 1 | 0 | 12 | 8 |
+| `saved-6000000169037819865.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000171058400024.ged` | 3 | 0 | 0 | 13 | 1 |
+| `saved-6000000172054164872.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000174847323565.ged` | 3 | 0 | 0 | 6 | 1 |
-| `saved-6000000174849656050.ged` | 3 | 2 | 0 | 6 | 4 |
+| `saved-6000000174849656050.ged` | 3 | 0 | 0 | 8 | 2 |
 | `saved-6000000175680503879.ged` | 4 | 0 | 0 | 10 | 1 |
-| `saved-6000000177462988887.ged` | 4 | 1 | 0 | 13 | 2 |
-| `saved-6000000177463069892.ged` | 3 | 4 | 0 | 7 | 1 |
-| `saved-6000000177463770840.ged` | 1 | 1 | 0 | 7 | 4 |
+| `saved-6000000177462988887.ged` | 4 | 0 | 0 | 14 | 2 |
+| `saved-6000000177463069892.ged` | 3 | 0 | 0 | 11 | 1 |
+| `saved-6000000177463770840.ged` | 1 | 0 | 0 | 8 | 2 |
 | `saved-6000000177920129831.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000177921458827.ged` | 3 | 0 | 0 | 8 | 4 |
+| `saved-6000000177921458827.ged` | 3 | 0 | 0 | 8 | 1 |
 | `saved-6000000177921458833.ged` | 2 | 0 | 0 | 14 | 2 |
 | `saved-6000000177921458845.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921458863.ged` | 2 | 0 | 0 | 11 | 2 |
 | `saved-6000000177921458990.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000177921458999.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921459033.ged` | 3 | 0 | 0 | 5 | 1 |
-| `saved-6000000177921459052.ged` | 4 | 0 | 0 | 8 | 5 |
-| `saved-6000000177921459056.ged` | 3 | 0 | 0 | 12 | 7 |
+| `saved-6000000177921459052.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000177921459056.ged` | 3 | 0 | 0 | 12 | 2 |
 | `saved-6000000177921459066.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000177921459072.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000177921459078.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000177921459094.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000177921459104.ged` | 2 | 0 | 0 | 13 | 7 |
-| `saved-6000000177921459114.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000177921459129.ged` | 2 | 0 | 0 | 11 | 4 |
-| `saved-6000000177921459134.ged` | 4 | 0 | 0 | 13 | 4 |
-| `saved-6000000177921459169.ged` | 4 | 0 | 0 | 13 | 7 |
+| `saved-6000000177921459104.ged` | 2 | 0 | 0 | 13 | 1 |
+| `saved-6000000177921459114.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000177921459129.ged` | 2 | 0 | 0 | 11 | 3 |
+| `saved-6000000177921459134.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000177921459169.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000177921516822.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921516839.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000177921516859.ged` | 3 | 0 | 0 | 7 | 1 |
 | `saved-6000000177944025822.ged` | 3 | 0 | 0 | 10 | 1 |
-| `saved-6000000177987312850.ged` | 4 | 0 | 0 | 8 | 2 |
-| `saved-6000000178669824833.ged` | 4 | 4 | 0 | 6 | 1 |
+| `saved-6000000177987312850.ged` | 4 | 0 | 0 | 8 | 1 |
+| `saved-6000000178669824833.ged` | 4 | 0 | 0 | 10 | 1 |
 | `saved-6000000178670150833.ged` | 1 | 0 | 0 | 7 | 1 |
 | `saved-6000000180280592858.ged` | 3 | 0 | 0 | 14 | 1 |
 | `saved-6000000180285636825.ged` | 2 | 0 | 0 | 9 | 1 |
-| `saved-6000000180745893830.ged` | 3 | 0 | 0 | 14 | 3 |
-| `saved-6000000180823601861.ged` | 4 | 6 | 0 | 7 | 1 |
-| `saved-6000000181163135859.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000181166108829.ged` | 3 | 0 | 0 | 13 | 6 |
+| `saved-6000000180745893830.ged` | 3 | 0 | 0 | 14 | 2 |
+| `saved-6000000180823601861.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000181163135859.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000181166108829.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000181289074845.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000182737012832.ged` | 5 | 0 | 0 | 9 | 1 |
 | `saved-6000000183986957910.ged` | 2 | 0 | 0 | 5 | 1 |
-| `saved-6000000184169690842.ged` | 3 | 0 | 0 | 7 | 3 |
-| `saved-6000000184267864840.ged` | 4 | 0 | 0 | 9 | 7 |
-| `saved-6000000184442109821.ged` | 2 | 1 | 0 | 7 | 2 |
+| `saved-6000000184169690842.ged` | 3 | 0 | 0 | 7 | 1 |
+| `saved-6000000184267864840.ged` | 4 | 0 | 0 | 9 | 1 |
+| `saved-6000000184442109821.ged` | 2 | 0 | 0 | 8 | 2 |
 | `saved-6000000184590962909.ged` | 2 | 0 | 0 | 8 | 2 |
-| `saved-6000000184888139875.ged` | 4 | 0 | 0 | 12 | 4 |
-| `saved-6000000185157445888.ged` | 6 | 0 | 0 | 13 | 8 |
-| `saved-6000000185158249846.ged` | 4 | 0 | 0 | 14 | 5 |
+| `saved-6000000184888139875.ged` | 4 | 0 | 0 | 12 | 1 |
+| `saved-6000000185157445888.ged` | 6 | 0 | 0 | 13 | 1 |
+| `saved-6000000185158249846.ged` | 4 | 0 | 0 | 14 | 2 |
 | `saved-6000000185447097943.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000186115707839.ged` | 3 | 4 | 0 | 11 | 3 |
+| `saved-6000000186115707839.ged` | 3 | 0 | 0 | 15 | 3 |
 | `saved-6000000186609053824.ged` | 2 | 0 | 0 | 13 | 1 |
 | `saved-6000000191391773823.ged` | 4 | 0 | 0 | 13 | 1 |
-| `saved-6000000194783603884.ged` | 4 | 0 | 0 | 13 | 9 |
-| `saved-6000000197656493859.ged` | 5 | 0 | 0 | 13 | 6 |
-| `saved-6000000197657301823.ged` | 4 | 0 | 0 | 13 | 8 |
+| `saved-6000000194783603884.ged` | 4 | 0 | 0 | 13 | 1 |
+| `saved-6000000197656493859.ged` | 5 | 0 | 0 | 13 | 1 |
+| `saved-6000000197657301823.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000197657328821.ged` | 3 | 0 | 0 | 14 | 2 |
 | `saved-6000000200892917834.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000202543587856.ged` | 3 | 0 | 0 | 11 | 2 |
@@ -45526,19 +49792,19 @@ Sources in merge order (later sources win value conflicts):
 | `saved-6000000207769838867.ged` | 3 | 0 | 0 | 13 | 1 |
 | `saved-6000000207770099821.ged` | 2 | 0 | 0 | 11 | 2 |
 | `saved-6000000207770887863.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000212832088822.ged` | 2 | 0 | 0 | 10 | 7 |
+| `saved-6000000212832088822.ged` | 2 | 0 | 0 | 10 | 2 |
 | `saved-6000000212832554822.ged` | 2 | 0 | 0 | 14 | 2 |
-| `saved-6000000216588093869.ged` | 4 | 0 | 0 | 13 | 5 |
+| `saved-6000000216588093869.ged` | 4 | 0 | 0 | 13 | 1 |
 | `saved-6000000216588272880.ged` | 2 | 0 | 0 | 9 | 2 |
 | `saved-6000000216825684836.ged` | 3 | 0 | 0 | 11 | 1 |
-| `saved-6000000218930532858.ged` | 5 | 0 | 0 | 15 | 11 |
+| `saved-6000000218930532858.ged` | 5 | 0 | 0 | 15 | 3 |
 | `saved-6000000221151631885.ged` | 3 | 0 | 0 | 5 | 1 |
 | `saved-6000000221151780844.ged` | 2 | 0 | 0 | 6 | 2 |
-| `saved-6000000222599111823.ged` | 2 | 1 | 0 | 14 | 9 |
+| `saved-6000000222599111823.ged` | 2 | 0 | 0 | 15 | 3 |
 | `export-Descendants-6000000227668434852.ged` | 13 | 15 | 0 | 8107 | 16 |
 | `export-Descendants-6000000227676315909.ged` | 0 | 0 | 0 | 8294 | 0 |
 | `export-Forest-6000000227668434852.ged` | 49 | 5 | 0 | 7856 | 54 |
-| `export-Forest-6000000227676315909.ged` | 735 | 1915 | 21 | 5015 | 2431 |
+| `export-Forest-6000000227676315909.ged` | 735 | 1914 | 21 | 5016 | 2450 |
 | `export-Forest-6000000227145774838.ged` | 1913 | 3397 | 144 | 1274 | 434 |
 | `export-Forest-6000000227147141927.ged` | 10 | 197 | 4 | 6879 | 247 |
 | `export-Forest-6000000227145420853.ged` | 1298 | 3628 | 100 | 748 | 264 |
@@ -45551,9 +49817,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227733837031.ged` | 118 | 246 | 0 | 7573 | 114 |
 | `export-Descendants-6000000227735175860.ged` | 1 | 0 | 0 | 8542 | 8 |
 | `export-Descendants-6000000227735855842.ged` | 1 | 0 | 0 | 8542 | 6 |
-| `export-Descendants-6000000227749221232.ged` | 549 | 877 | 6 | 7005 | 3555 |
+| `export-Descendants-6000000227749221232.ged` | 549 | 877 | 6 | 7005 | 3545 |
 | `export-Descendants-6000000227750261857.ged` | 0 | 0 | 0 | 8601 | 0 |
-| `export-Descendants-6000000227804005917.ged` | 657 | 1139 | 24 | 6117 | 7998 |
+| `export-Descendants-6000000227804005917.ged` | 657 | 1136 | 24 | 6120 | 8040 |
 | `export-Descendants-6000000227805012893.ged` | 461 | 1209 | 22 | 5932 | 1275 |
 | `export-Descendants-6000000227816621867.ged` | 1104 | 2500 | 50 | 4823 | 1654 |
 | `export-Forest-6000000178918141824-refresh.ged` | 0 | 0 | 0 | 8332 | 0 |
@@ -45571,18 +49837,18 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227715260898.ged` | 42 | 178 | 0 | 7636 | 123 |
 | `export-Forest-6000000227739381826.ged` | 106 | 427 | 1 | 7298 | 836 |
 | `export-Forest-6000000227755683825.ged` | 8 | 51 | 0 | 7569 | 62 |
-| `export-Forest-6000000227802407043.ged` | 1319 | 1775 | 40 | 6462 | 1976 |
+| `export-Forest-6000000227802407043.ged` | 1319 | 1773 | 40 | 6464 | 2001 |
 | `export-Forest-6000000227802431855.ged` | 1778 | 3048 | 51 | 3118 | 1956 |
 | `export-Forest-6000000227802432937.ged` | 254 | 867 | 7 | 6466 | 1097 |
 | `export-Forest-6000000227802697066.ged` | 101 | 177 | 2 | 8013 | 506 |
-| `export-Forest-6000000227802697137.ged` | 2217 | 3786 | 25 | 1807 | 5928 |
-| `export-Forest-6000000227803023862.ged` | 230 | 664 | 5 | 6803 | 927 |
+| `export-Forest-6000000227802697137.ged` | 2217 | 3785 | 25 | 1808 | 5938 |
+| `export-Forest-6000000227803023862.ged` | 230 | 662 | 5 | 6805 | 950 |
 | `export-Forest-6000000227803023904.ged` | 1099 | 2804 | 23 | 3258 | 3746 |
 | `export-Forest-6000000227803024957.ged` | 98 | 201 | 1 | 8239 | 324 |
 | `export-Forest-6000000227803024982.ged` | 217 | 593 | 8 | 7388 | 464 |
 | `export-Forest-6000000227803024989.ged` | 190 | 472 | 6 | 8048 | 594 |
 | `export-Forest-6000000227803027847.ged` | 251 | 767 | 10 | 6932 | 1279 |
-| `export-Forest-6000000227803029977.ged` | 241 | 474 | 6 | 7603 | 862 |
+| `export-Forest-6000000227803029977.ged` | 241 | 472 | 6 | 7605 | 882 |
 | `export-Forest-6000000227803031913.ged` | 1467 | 3691 | 17 | 2041 | 1069 |
 | `export-Forest-6000000227803032874.ged` | 1169 | 1534 | 7 | 6228 | 910 |
 | `export-Forest-6000000227803038858.ged` | 2 | 5 | 0 | 8315 | 263 |
@@ -45608,7 +49874,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227811549827-2026-09-18T2314.ged` | 0 | 0 | 0 | 8406 | 0 |
 | `export-Forest-6000000227811549827.ged` | 0 | 0 | 0 | 8406 | 0 |
 | `export-Forest-6000000227815618073.ged` | 482 | 1652 | 8 | 5204 | 1245 |
-| `export-Forest-6000000227816205043.ged` | 382 | 1090 | 1 | 6036 | 2275 |
+| `export-Forest-6000000227816205043.ged` | 382 | 1088 | 1 | 6038 | 2303 |
 | `export-Forest-6000000227816313859.ged` | 645 | 1192 | 8 | 6332 | 3384 |
 | `export-Forest-6000000227816363824.ged` | 427 | 542 | 3 | 8066 | 514 |
 | `export-Forest-6000000227816411855.ged` | 34 | 773 | 11 | 6120 | 1405 |
@@ -45636,7 +49902,7 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**17035** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**17146** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
@@ -45647,7 +49913,7 @@ By path:
 | `INDI.DEAT.DATE` | 3355 |
 | `INDI.DEAT` | 875 |
 | `INDI.BURI.DATE` | 653 |
-| `FAM.HUSB` | 468 |
+| `FAM.HUSB` | 579 |
 | `INDI.SEX` | 74 |
 | `FAM.DIV` | 21 |
 
