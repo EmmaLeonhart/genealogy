@@ -47387,3 +47387,12 @@ Asked through `AskUserQuestion` rather than prose:
 
 Also recorded in `CLAUDE.md` § *Working*: a classifier refusal is put to Emma as an
 `AskUserQuestion` every time. Two earlier refusals this session were explained in prose instead.
+
+## 2026-09-25 — `_plan.tsv` finished: 35 archived exports renamed to their seed ids
+
+The plan listed 35 files, not the 34 the queue said. For each one, the old-layout source
+(`export-geni (N)/export-<Kind>.ged`) was mapped to the file it had become
+(`export-geni/export-<Kind>-N.ged`). The file's first `INDI` matched the id in its new name in all
+35 cases, and none of the new names already existed. They were renamed with `git mv --sparse`,
+all `R100`: the same content under new names, nothing overwritten. `_plan.tsv` is deleted. 13
+files in `export-geni/` were never in the plan and keep their counter names.
