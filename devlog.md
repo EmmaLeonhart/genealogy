@@ -47657,3 +47657,21 @@ transition summary per rule.
 | marker narrowing | 113,790 | 59,471 | ~105k given names and initials recovered | ~7-8k: relation words, `z`/`e`/`y`, `N N`, titles |
 
 Each "looks wrong" set is now a queue item with its counts and examples.
+
+## 2026-09-25 — the marker rule's measured misreads fixed
+
+From the census of the 2026-09-24 narrowing, four fixes in `namemodel.classify_fields`:
+- **A relationship phrase is a description, not a name.** A `GIVN` opening on a relationship word
+  followed by a connector, a number or `nr` (`Wife of William`, `Søn 1`, `Barn nr 4`), or saying
+  the name is `not known`, yields no given name, as a stillborn description does.
+- **An initial is a capital letter.** `z` (Polish *of*), `e`/`y` (*and*), `o`, `h.` are words.
+- **Two leading `N`s arm the marker** like `NN` does (`N N Asbjørnsdatter`).
+- **`unnamed`, `dummy`, `unbaptised`/`unbaptized` join `UNKNOWN_MARKERS`.**
+
+**Measured, committed model against this one over all 2,728,649 name records:** 3,597 tokens stop
+being given names or patronymics. All but 176 are the target words (`Wife` 592, `z` 470, `N.`
+159, `Daughter`/`daughter` 307, `e`/`y`/`o` 391, `Name`/`Not` 208, `Unnamed` 96). **The 176 are
+all inside descriptive phrases**, e.g. `Wife 2: Zhōu` (the wife's family name), `Hustru til Nils`
+(the husband), `Unnamed Boy` and `n. n. Diez`; none is the person's own given name. Left queued:
+the Indonesian/Malay titles (a word list would hit real given names) and the regnal
+numerals under a dynasty `SURN` (needs a ruling).

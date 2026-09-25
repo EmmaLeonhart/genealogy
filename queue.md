@@ -29,14 +29,14 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Fix the marker rule's four measured misreads** (`reports/name-rule-census/marker.csv.gz`,
-  2026-09-25). The 2026-09-24 narrowing recovered ~105k real given names and initials, and now lets
-  through: relationship words as given names (`Wife of William Lantham`, `Daughter of`, `Søn 1`,
-  1,841), lower-case connectors read as initials (`z` Polish *of* 520, `e`/`y` *and*, `o`, `h.`,
-  `b`; 1,446), `N N` read as two initials (159), and descriptive words (`Name not known`,
-  `Unnamed`; 275). Also exposed: Indonesian/Malay titles (`Raden`, `Raja`, `Sultan`, `Daeng`;
-  2,532) missing from the title list, and 175 regnal `I`/`V` with a dynasty in `SURN`
-  (`Christian I /Oldenburg/`) now given.
+- **Indonesian/Malay titles in `GIVN`, and regnal numerals under a dynasty `SURN`** (left over
+  from the marker fix, `reports/name-rule-census/marker.csv.gz`). `Raden` 427, `Ratu` 203,
+  `Daeng` 182, `Karaeng` 150, `Kyai` 110 become given names; `Raja`, `Sultan`, `Mas` and `Ayu` are
+  also real given names, so a blanket title list would do its own damage. Needs a rule on
+  position (a title opening `GIVN` before a name) rather than a word list. And 175
+  `Christian I /Oldenburg/`-shaped regnal numerals are read as initials because Geni files the
+  dynasty in `SURN`, which the 2026-09-24 initials ruling ("a surname means not regnal") did not
+  foresee: NEEDS-DECISION, Emma's ruling.
 - **Guard the `-ae` genitive in `SURN`** (`reports/name-rule-census/ae.csv`). Right in `GIVN`
   (`Petrus Jonæ`); wrong for ~70 inherited surnames: the Tübingen `Andreae` family (~62,
   `Johann Valentin /Andreae/`), Danish `Zachariae` (4), and the Romanian given name `Nicolae`

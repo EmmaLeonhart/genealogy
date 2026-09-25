@@ -691,6 +691,9 @@ PARTICLES = {
 UNKNOWN_MARKERS = {
     "?", "??", "???", "anonyma", "anonymus", "anonym", "incognita", "incognito",
     "okänd", "ukjent", "ukendt", "unknown", "n.n.", "nn", "no name", "namn okänt",
+    # Added 2026-09-25 from the census of the marker narrowing (`reports/name-rule-census/`):
+    # each stood in `GIVN` and became a given name once only real markers armed the rule.
+    "unnamed", "dummy", "unbaptised", "unbaptized",
 }
 
 #: **A stillborn child is DESCRIBED, not named, and the description is not a name.**
@@ -2873,6 +2876,24 @@ def classify_fields(givn: str, surn: str, nick: str = "",
                       and (name_shape(t)[0].casefold() in UNKNOWN_MARKERS
                            or name_shape(t)[0].casefold() in _unknown_markers())
                       for t in _givn_tokens)
+    # ⛔ **`N N` AND `N. N.` ARE THE UNKNOWN-NAME MARKER WRITTEN AS TWO TOKENS**, and each half
+    # alone read as an initial: `N N Asbjørnsdatter` made the second `N` a given name, 159 times
+    # (census 2026-09-25). Two leading `N`s arm the rule like `NN` does.
+    if len(_givn_tokens) >= 2 and all(re.fullmatch(r"[Nn]\.?", t) for t in _givn_tokens[:2]):
+        _has_marker = True
+
+    # ⛔ **A RELATIONSHIP PHRASE IS A DESCRIPTION, NOT A NAME.** `Wife of William /Lantham/`,
+    # `Daughter of Nebridius`, `Søn 1 /Juul/`, `Barn nr 4`, `Kind 2`, `Name not known`: once only
+    # real markers armed the rule, the leading word became a `given` name -- 1,841 relation words
+    # and 104 `Name` in the census of 2026-09-25. A `GIVN` that OPENS on a relationship word
+    # followed by a connector, a number or `nr`, or that says the name is `not known`, names
+    # nobody and yields no given name, the same way a stillborn description does.
+    _low = [t.casefold().rstrip(".,:") for t in _givn_tokens]
+    _relation_phrase = bool(_low) and len(_low) > 1 and _low[0] in relationship_words() and (
+        _low[1] in NOT_NAME_WORDS or _low[1] in ("of", "nr", "no", "til", "af", "av", "von")
+        or _low[1].isdigit())
+    if re.search(r"\bnot known\b", raw_givn or "", re.I):
+        _relation_phrase = True
 
     # ⛔ **A SINGLE LETTER AFTER A GIVEN NAME IS AN INITIAL, WHATEVER THE LETTER.** Ruled
     # 2026-09-24: `Carl I. Berg` has an initial `I.`, not the ordinal one. A person with a
@@ -2890,11 +2911,15 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # is an epithet or an alias, not a given name -- counted before these were kept, so that
     # keeping `Heinrich` does not mint `Gute` as a `P735`.
     _after_connector = False
-    for position, token in enumerate([] if is_description(raw_givn)
+    for position, token in enumerate([] if (is_description(raw_givn) or _relation_phrase)
                                      else join_particles(_givn_tokens)):
         if name_shape(token)[0].casefold() in NOT_NAME_WORDS:
             _after_connector = True
-        if position and _MARKER_EXEMPT.match(token) and not _has_marker:
+        # An initial is a CAPITAL letter: `z` (Polish *of*), `e`/`y` (*and*), `o`, `h.` are words
+        # and abbreviations, and read as initials they became given names -- 1,446 in the
+        # census of 2026-09-25.
+        if (position and _MARKER_EXEMPT.match(token) and token[:1].isupper()
+                and not _has_marker):
             _roman = token.rstrip(".").upper() in "IVXLCDM"
             if not _roman or (_has_surname and (token.endswith(".") or not _styled)):
                 ordinal += 1
