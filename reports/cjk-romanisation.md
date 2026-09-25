@@ -2,21 +2,21 @@
 
 Built by `scripts/build-cjk-romanisation.py`. **Nothing is transliterated** — every reading is read off a Wikidata name item that carries both the Han form and the Latin form, so it is a published reading of that character *as a name*.
 
-- people with a CJK name and no Latin label: **47,527**
-- culture settled: **45,785**
-- romanised: **19,331** — zh **19,101**, ko **0**, ja **230**
+- people with a CJK name and no Latin label: **47,540**
+- culture settled: **45,798**
+- romanised: **19,326** — zh **19,094**, ko **0**, ja **232**
 
 ## How culture was settled, in the specified order of evidence
 
 | evidence | people |
 | --- | ---: |
-| neighbours' script | 31,229 |
+| neighbours' script | 31,261 |
 | a Chinese clan seat (郡望) | 11,278 |
-| unclassified | 1,709 |
+| unclassified | 1,690 |
 | a Japanese given-name ending | 1,047 |
 | a simplified-only Chinese character | 336 |
 | a character that exists only in Japanese | 186 |
-| **total** | **45,785** |
+| **total** | **45,798** |
 
 ## Japanese is separated on purpose
 
