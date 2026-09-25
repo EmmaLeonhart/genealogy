@@ -47211,3 +47211,23 @@ be. The parent's own sex picks the slot; the other name stays an in-law label.
 
 Re-rendered with `--corpus-rev baf607e99`. Still open on the queue item: the 33,059, the 1,817
 conflicts, 1,605 unsplittable parent strings, and the unused `immediate_family` siblings.
+
+## 2026-09-24 — the repo's content assessed, 52 junk files deleted
+
+`reports/repo-content.md` is the assessment and `reports/repo-content.csv` has every directory
+(to two levels) and every root file, with its size and how many workflows, scripts, tests and docs
+name it. At `bdfd04c` the repo was **115,651 files, 20.00 GB**: `exports/` 6.58 GB (the corpus),
+`wikidata/items/` 4.55 GB, `reports/` 3.66 GB, `paths_for_wikidata_isolates/` 2.88 GB,
+`preservation/` 1.38 GB, `out/` 468 MB, and everything else under 150 MB each.
+
+Deleted on a yes: `_regions.pkl`, `compose-garborg.log`, `address the problem in this image.PNG`
+(handled 2026-09-14), `address_this.html` and `address_this_files/`, and 34 loose `.txt`/`.log`/`.zip`
+files in `out/` that scripts wrote and nothing reads. 52 files, about 8.5 MB. `out/name-item-qids/`
+was first listed as junk and is not: it is `collect-name-item-qids.py`'s cache.
+
+**Not deleted: the saved pages' `*_files/` folders, 2.89 GB.** The first draft called them junk
+as one lump. 2.6 GB of them is Geni's own JavaScript and CSS, saved again with each page, but
+2,284 extensionless files, 1,998 inner `.html` frames and 2,948 `.jpg` were never opened, and a
+lump verdict over unopened files is exactly what it looked like. It is queued to be opened file
+by file, with `_plan.tsv` (a seed-id rename of `exports/archive/` that was never applied),
+`wikidata_isolates_to_clear/` and 1,347 loose report files no code names.
