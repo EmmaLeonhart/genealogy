@@ -47375,3 +47375,15 @@ Deleted, overlap checked by id before asking: `bureatten-remaining.tsv` (all 100
 batch; the committed batch is `pathrun-batch.js`), `patronymic-pairs-to-create.tsv` (stale, wrong
 counterparts; `pipeline.yml` recomputes the pairs), `rejected-parents-network.tsv` (all 162 ids in
 `rejected-parents.tsv`), and `sibling-pair-scrape-targets.tsv` (all ids in `sibling-pair-worklist.tsv`).
+
+## 2026-09-25 — the noticeboard questions asked; two rulings into CLAUDE.md
+
+Asked through `AskUserQuestion` rather than prose:
+- **Permission rule for the gate lift:** added; go ahead (the lift is the next item).
+- **Reply on the noticeboard thread:** no. The matter is done.
+- **The pasted QuickStatements half:** *"you were doing quickstatements and such in the same
+  way"*. Everything goes through the maxlag-respecting sender, and nothing is published for
+  pasting. Recorded in `CLAUDE.md` beside *AND THE EDITS ARE LIVE*.
+
+Also recorded in `CLAUDE.md` § *Working*: a classifier refusal is put to Emma as an
+`AskUserQuestion` every time. Two earlier refusals this session were explained in prose instead.

@@ -31,7 +31,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Ask Emma about the Administrators' noticeboard matter with AskUserQuestion, now, before anything else.** Put the open questions on the noticeboard matter to her through the AskUserQuestion tool, not as prose in chat. Also, from now on, whenever a classifier refusal happens, consistently ask Emma with AskUserQuestion. Record that standing rule in `CLAUDE.md` (rulings live there, not in the queue).
 - **Lift the Administrators' noticeboard hold so today's edits go through (Emma, 2026-09-25).** Remove the noticeboard rule, or at least hold it, so that today's (2026-09-25) Wikidata edits go through. If the noon edits did not happen, make them happen by fixing the pipeline. The current noticeboard matter is considered done. Set it up so that in ten days, on 2026-10-05, the noticeboard check starts acting as a filter again.
 - **Finish `_plan.tsv`: rename the 34 `exports/archive/export-geni/` files to their seed ids.**
   Ruled 2026-09-24. The move into `export-geni/` happened; the rename to

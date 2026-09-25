@@ -205,6 +205,13 @@ push, and let the pipeline run it.
 08:07. The Pages site publishes the disjoint remainder for a person to paste. Nobody has to
 start it.
 
+**⛔ NOTHING GOES OUT THROUGH PASTED QUICKSTATEMENTS. EVERY EDIT GOES THROUGH THE SENDER. Ruled
+2026-09-25**, after `日巫女` topped the edit-volume list in the Administrators' noticeboard thread
+*Undeclared bots/quickstatements not obeying maxlag*: *"you were doing quickstatements and such in
+the same way"*. QuickStatements kept editing while maxlag held every well-behaved bot back.
+`wikidata-edit-run.py` sends `maxlag` and waits it out, so the whole day's batch goes through it,
+and nothing is published for pasting. The paragraph above describes the split this replaces.
+
 ## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
 
 Ruled 2026-09-24: *"We should be having the zipper do all of the familysearch stuff. I want
@@ -477,6 +484,11 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   narration and go unanswered, and then the work stalls on an answer nobody was asked for.
   Every option must be one that can actually be picked, and **the axis is part of the question** —
   four options on one wrong premise is one option.
+- **⛔ A CLASSIFIER REFUSAL IS PUT TO EMMA AS AN `AskUserQuestion`, EVERY TIME. Ruled 2026-09-25**,
+  after a permission-classifier refusal (the noticeboard-gate lift) was explained twice in prose
+  and went unanswered: *"Why haven't I been AskUserQuestioned"*. When Claude Code's classifier
+  refuses an action, stop, do not route around it, and ask at once with options that can be
+  picked (add a permission rule, do it by hand, skip it).
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
 - **"Add it to the end of the queue" means WRITE IT DOWN AND STOP.** No investigation, no
