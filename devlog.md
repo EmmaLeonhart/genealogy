@@ -47521,3 +47521,13 @@ fetched (no devlog run after the 2026-09-20 pause), and the owner-ancestry to RÃ
 Four need Geni and sit at the end of the queue: resume the sweep from cursor 8,993, the
 managing-account join, the sibling scrape, and resume the permalink chain walk. Not reviewed:
 the separately parked `docs/queue-archive/geni-blocked-campaigns-2026-09*.md`.
+
+## 2026-09-25 â€” the fetched chains split and made into tiny GEDCOMs: 7,195 new paths
+
+`split-path-chains.py` over the eight `reports/path-chains-*.tsv` shards, run in scratch against
+HEAD's `harvested-paths/`: 32,266 chains, 251 skipped (empty, single-step or no viewer). Of those,
+**7,195 were not in the repo**; they are added to `harvested-paths/`, with **7,182
+`exports/tiny-paths/harvested-path-geni-*.ged`** built by `build-tiny-gedcoms.path_gedcom` (13
+chains make no GEDCOM). Every file is new: each was checked against HEAD before copying, and none
+overwrites anything. 146 existing chains came out different (133 longer, 13 with different rows).
+Their `.ged` already exists, so they are left as they were and queued for a ruling.
