@@ -47319,3 +47319,30 @@ so that the CICD actually runs. I significantly overestimated how bad the situat
   noticeboard still mentions 日巫女 (ArthurPSmith's *Undeclared bots/quickstatements not obeying
   maxlag* thread, which reports lag back under a minute at 01:28 UTC), and the gate stops every
   pipeline event. A one-shot session cron does it; the standing queue item says so.
+
+## 2026-09-25 — every saved page's family extracted: 2,131 tiny profiles from the text view and cards
+
+All 2,250 saved pages were read: the 695 in `paths_for_wikidata_isolates/` and `geni_pages/`, plus the
+1,555 `geni-scraping/` pages restored from `30786275d^`. Each was read from the immediate-family
+text-view table (`th`/`td` and each anchor's `data-profile-id`) together with the photo cards, and
+unioned per subject. The result is **2,131 `exports/tiny-profiles/family-<id>.ged`**, 2,155 subjects,
+of which 24 are private with no family block. They are new files beside the card-only
+`saved-<id>.ged`; nothing was overwritten. The two paths reported missing (Inger Axelsdatter
+Güntersberg, James VI/I) are extracted (`83e32b58c`), so every page's path is in a GEDCOM too.
+
+- **Parent slots come from stated sex, never position.** Sex comes from a card word, or from the
+  same person's word on any of the 2,250 pages: 12,925 people, 0 contradictions. 77 parents with
+  no stated sex anywhere are left out and listed.
+- **Children get only the subject as parent.** The page doesn't say which spouse a child is by,
+  so the other parent isn't asserted.
+- **The old card-only files carried 853 false edges.** 848 stepchildren and stepmothers were
+  written as birth relatives, 6 fiancé(e)s as spouses, and one biological mother was married to
+  the adoptive mother. None of those are in the new files. The old files also named every
+  subject `NN`.
+- **The relatives the pages count but don't show are not in the HTML.** Every link in all 2,250
+  tables is a person with an id or one of 2,524 `N others`/`« less` toggles, and no cell has a
+  bare name. So the 132 (and 1,827 on the restored pages) can't be recovered from these files.
+- **Residuals:** `reports/saved-page-family-residuals.tsv`, 2,334 relatives that went into no
+  family (half-siblings, stepchildren, fiancé(e)s, the 77 unsexed parents, 4 contradictions).
+
+The HTML deletion is queued behind a yes.

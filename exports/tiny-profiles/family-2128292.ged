@@ -1,0 +1,36 @@
+0 HEAD
+1 SOUR genimerge-tiny
+1 CHAR UTF-8
+1 NOTE one tiny GEDCOM per saved Geni profile page, read from the immediate-family TEXT VIEW table and the photo cards together. Built by scripts/build-tiny-gedcoms.py. Invents nobody: every INDI is a real Geni profile and an unknown parent is an absent slot.
+1 NOTE subject geni:2128292
+0 @I2128292@ INDI
+1 NAME Adriane Bording
+1 SEX F
+1 RFN geni:2128292
+0 @I6000000010534596447@ INDI
+1 NAME Jacob Boeyens
+1 SEX M
+1 RFN geni:6000000010534596447
+0 @I6000000007393187362@ INDI
+1 NAME NN
+1 SEX F
+1 RFN geni:6000000007393187362
+0 @I2128288@ INDI
+1 NAME Nicolaus Bording
+1 SEX M
+1 RFN geni:2128288
+0 @I6000000003389294519@ INDI
+1 NAME Jacob Nicolaus Bording
+1 SEX M
+1 RFN geni:6000000003389294519
+0 @F9990187710094046524@ FAM
+1 HUSB @I6000000010534596447@
+1 WIFE @I6000000007393187362@
+1 CHIL @I2128292@
+0 @F9990059809662700609@ FAM
+1 WIFE @I2128292@
+1 CHIL @I6000000003389294519@
+0 @F9990068819589042117@ FAM
+1 HUSB @I2128288@
+1 WIFE @I2128292@
+0 TRLR

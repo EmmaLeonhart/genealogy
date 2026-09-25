@@ -73,3 +73,43 @@ every page:
 **The family is where the loss was.** The 2026-09-14 extraction read the photo cards, 15,995
 people. The text-view tables on the same pages hold 20,079. Table and cards together give 20,637
 of the 22,464 the pages count. 1,532 pages carry a table.
+
+## Extracted, 2026-09-25: every page's path and family are in GEDCOMs
+
+**Paths.** The two missing paths are extracted:
+`paths/isolate-geni-inger-axelsdatter-g-ntersberg-1571-1613-voss.tsv` (27 steps) and
+`paths/isolate-geni-james-vi-i-stewart-king-of-scots-king-of-england-irelan.tsv` (51 steps), each
+with its `exports/tiny-paths/<same stem>.ged`. They were built by `genimerge path-from-html` and
+`build-tiny-gedcoms.path_gedcom`, and committed in `83e32b58c`. So all 695, plus the 457 real paths
+among the 1,555, are in GEDCOMs.
+
+**Family.** All 2,250 pages (695 here, 1,555 restored) were read by the text-view table
+(`th`/`td` plus each anchor's `data-profile-id`) and the photo cards. They were unioned per
+subject (2,155 subjects, since some are saved more than once) and rendered with
+`build-tiny-gedcoms.render`. The result is **2,131 `exports/tiny-profiles/family-<id>.ged`**. The other
+24 subjects are private profiles with no family block. They are new files beside the old
+`saved-<id>.ged`, not overwrites. The merge joins on the Geni id, so the two fuse.
+
+    parent slot       from the relative's own stated sex (card word, or the same person's
+                      word on any of the 2,250 pages: 12,925 people, 0 contradictions),
+                      never from position
+    siblings          full siblings go in the birth family; half-siblings are not paired
+    children          the subject is the one parent; the other parent is NOT asserted, because
+                      the page doesn't say which spouse a child is by
+    adoptive/foster   own family, with the attested PEDI/ADOP shape
+    step-parent       married to the birth parent of the other sex; the subject is not a CHIL
+
+**What the old card-only files said that this doesn't: 853 edges, every one false.** Old
+edges not in the new files: 848 stepchildren and stepmothers written as birth children and
+parents, 6 fiancé(e)s written as spouses, and one biological mother married to the adoptive
+mother. The old files also named the subject `NN`; the new ones use the page's `h1`.
+
+**The 132 (and 1,827 on the restored pages) are not in the HTML.** Every link in every text-view
+cell on all 2,250 pages is either a person with a `data-profile-id` (hidden "and N others"
+spans included) or one of 2,524 `N others`/`« less` toggles. No cell carries a bare name. The
+`Showing N people` count is larger than what Geni rendered, and the HTML can't close the gap.
+
+**Residuals: `saved-page-family-residuals.tsv`, 2,334 rows.** These are relatives on a page that
+went into no family. 2,253 have a relation with no family shape (half-siblings, stepchildren,
+fiancé(e)s, `ex-partner's son` and similar). 77 are parents whose sex no page states. 4 are
+contradictions. They stay because the HTML is going.
