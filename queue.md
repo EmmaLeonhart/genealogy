@@ -29,10 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **CI slow lane red: 11 failures, all `exports/sweep-parsed/`** (run `36011859223`).
-  `test_gedcom_real_exports.py` does not know the `sweep-parsed` header or its `IL`/`FL` label
-  prefixes. Fast lane green on 3.10 and 3.13.
-
 - **Restore the open work the queue rewrite archived.** `docs/queue-archive/queue-before-2026-09-24-rewrite.md`
   holds real, unfinished items that left view on 2026-09-24. Re-read it end to end and bring back
   every open work item (not rulings, not history) into this list.

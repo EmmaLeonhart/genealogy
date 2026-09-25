@@ -161,6 +161,12 @@ def test_every_individual_xref_encodes_its_geni_profile_id(export):
                     f"{indi.xref} is written on a Geni id and its RFN does not say so")
         return
     individuals = export.by_tag("INDI")
+    # The sweep render is SHARDED, people first and families after, so its last shard may
+    # carry families only -- the same rule `test_every_known_prefix_is_actually_present` states.
+    # Every INDI that IS present is still checked below.
+    if _source_of(export) == "sweep-parsed" and not individuals:
+        assert export.by_tag("FAM"), "an empty sweep-parsed shard"
+        return
     assert individuals
 
     for indi in individuals:

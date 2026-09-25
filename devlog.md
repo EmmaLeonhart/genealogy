@@ -47493,3 +47493,20 @@ Closed after the re-render (`efea23d96`). What remains can't be resolved from th
 and is recorded here rather than queued: 2,349 children with `<private>` parents, about 1,160 whose
 parent appears in no report, 838 conflicting slots with no usable years, and 1,128 title strings
 that no cut splits.
+
+## 2026-09-25 — CI red to green: fast lane 4 failures, slow lane 1
+
+CI had been disabled since 2026-09-24, so these had accumulated unseen:
+- **`wikidata_lockout.py` networked** (2 tests pin it as the local-only start-date gate). The
+  noticeboard check moved, unchanged, into `wikidata-edit-run.py`, using the sender's
+  `BOT_USER_AGENT` instead of a repository link (`0a671020c`).
+- **The married-surname test classified raw fields.** The model cleans them first, so the test
+  flagged `Sverige` (`i Sverige`), `Corsock`, `Heimnes` and `Skälboö` (`NSFX till Skälboö`). The
+  cleaning is now `namemodel.clean_fields`, which both use (`0d8b9d598`). The assertion is
+  unchanged.
+- **Slow lane:** the sweep-parsed shards were already understood by the test (the `IL`/`FL` map and
+  the label-only rule). The one failure was shard 03 holding only families, and the per-shard rule
+  already stated for prefixes now also applies to the INDI check.
+
+Run `36167119362`: fast lane green on 3.10 and 3.13, slow lane 199,475 passed and 1 failed. That
+failure is the one fixed here.
