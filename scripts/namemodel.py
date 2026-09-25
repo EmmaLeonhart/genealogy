@@ -728,6 +728,28 @@ GIVN_TITLE_WORDS = frozenset({
     "tubagus", "datu", "datuk", "opu", "puang", "teuku", "pangeran",
 })
 
+#: ⛔ **REGNAL NUMERALS UNDER A DYNASTY `SURN` ARE NAMED EXCEPTIONS, NOT A RULE.** Ruled 2026-09-25:
+#: *"you are trying way too hard to create a generalized rule on a minuscule population ... It's
+#: very easy to just figure this shit out with these individuals."* The initials ruling (a surname
+#: means not regnal) misreads `Christian I /Oldenburg/` because Geni files the house in `SURN`.
+#: `reports/regnal-numerals.tsv` lists every such record by its exact `GIVN` and `SURN`, each with
+#: its evidence: a Wikidata item, or a birth before 1700 (`I`/`V`/`X` then are overwhelmingly
+#: regnal, and `C`/`D`/`L`/`M` after 1800 are initials). Those keep the numeral.
+_REGNAL = None
+
+
+def regnal_exceptions():
+    global _REGNAL
+    if _REGNAL is None:
+        _REGNAL = set()
+        path = Path(__file__).resolve().parent.parent / "reports" / "regnal-numerals.tsv"
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    _REGNAL.add((row["givn"].strip(), row["surn"].strip()))
+    return _REGNAL
+
+
 DESCRIPTION_MARKERS = {
     "dødfød", "dødfødt", "dødfødte", "dødfodt",
     "dödfödd", "dödfött", "dödfödda", "dodfodd",
@@ -2932,7 +2954,9 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         if (position and _MARKER_EXEMPT.match(token) and token[:1].isupper()
                 and not _has_marker):
             _roman = token.rstrip(".").upper() in "IVXLCDM"
-            if not _roman or (_has_surname and (token.endswith(".") or not _styled)):
+            _regnal = _roman and ((raw_givn or "").strip(), (surn or "").strip()) in regnal_exceptions()
+            if not _roman or (_has_surname and not _regnal
+                              and (token.endswith(".") or not _styled)):
                 ordinal += 1
                 out.append((token, "given", ordinal))
                 continue

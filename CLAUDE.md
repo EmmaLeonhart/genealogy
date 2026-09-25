@@ -636,6 +636,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   machinery is what resolves them, the same way the duplicate-label bot above is. Do not queue
   the 622, do not emit corrections for them, and do not count them again.
 - **A middle initial keeps its Latin letter in every language.** A bare lowercase letter is a word.
+- **⛔ A REGNAL NUMERAL UNDER A DYNASTY SURNAME IS A NAMED EXCEPTION, NOT A RULE. Ruled 2026-09-25:**
+  *"you are trying way too hard to create a generalized rule on a minuscule population ... It's
+  very easy to just figure this shit out with these individuals."* `reports/regnal-numerals.tsv`
+  lists them by exact `GIVN`/`SURN` with evidence; add to it rather than generalising.
 
 ## Editing Wikidata → [wikidata-editing](docs/rules/wikidata-editing.md)
 

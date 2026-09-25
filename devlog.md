@@ -47685,3 +47685,18 @@ as given names and are left out on purpose. **Measured against the committed mod
 2,728,649 name records: 3,836 tokens change, every one of them a listed title word** (`Raden`
 1,103, `Ratu` 567, `Kyai` 352, `Nyai` 335, `Tengku` 330, `Daeng` 244 ...), and no other token
 moves. The regnal-numeral half of the item is left as NEEDS-DECISION for Emma.
+
+## 2026-09-25 — regnal numerals under a dynasty surname: 927 named exceptions
+
+Asked and answered: not a general rule, *"flag these as specific exceptions"*. Every record with an
+undotted `I`/`V`/`X`/`L`/`C`/`D`/`M` after a given name and a plain surname was enumerated (4,583
+records). By letter and era: `C`/`D`/`L`/`M` are overwhelmingly born 1800 or later (initials:
+`Freddie C Hufford`), while `I`/`V`/`X` are overwhelmingly born before 1700. Of the 342 with a
+Wikidata item, 190 carry the numeral in the item's own label (`Frederick V of the Palatinate`,
+`John V Palaiologos`, `Feodor I of Russia`), and the rest read as royals whose label leaves it out
+(`John, King of Denmark`, `Joseph I, Holy Roman Emperor`).
+
+`reports/regnal-numerals.tsv`: **927** `I`/`V`/`X` records (808/131/16) with a Wikidata item or a
+birth year before 1700, each with its evidence. `namemodel.regnal_exceptions()` reads it, and the
+initials branch keeps the numeral for exactly those `GIVN`/`SURN` pairs. `Nettie V Sweatland` and
+`Carl I. Berg` stay initials. The ruling is in `CLAUDE.md` § Names.

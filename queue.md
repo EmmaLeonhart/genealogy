@@ -29,12 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **NEEDS-DECISION (Emma): regnal numerals under a dynasty `SURN`.** 175 people shaped like
-  `Christian I /Oldenburg/`, `Friedrich V /Wittelsbach, Pfalz-Simmern/`, `August I /Wettin,
-  Albertiner/` have their `I`/`V` read as a middle initial, because the 2026-09-24 initials
-  ruling says a surname means the name is not regnal, and Geni files the dynasty in `SURN`.
-  Decide: keep the ruling, or treat a dynasty/house `SURN` as regnal (needs a way to tell a
-  house from a surname). `reports/name-rule-census/marker.csv.gz` has them.
 - **Guard the `-ae` genitive in `SURN`** (`reports/name-rule-census/ae.csv`). Right in `GIVN`
   (`Petrus Jonæ`); wrong for ~70 inherited surnames: the Tübingen `Andreae` family (~62,
   `Johann Valentin /Andreae/`), Danish `Zachariae` (4), and the Romanian given name `Nicolae`
