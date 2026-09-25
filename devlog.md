@@ -47353,3 +47353,25 @@ With every page's path and family in GEDCOMs (entry above), the 695 pages (693 `
 127.6 MB) in `paths_for_wikidata_isolates/` and `geni_pages/` were removed with `git rm`. Asked
 first, answered *yes, delete the 695 pages*. The 3,077 photos in their `_files/` folders stay,
 per `reports/repo-content.md`. The pages remain in history at `243b2a0e0`.
+
+## 2026-09-25 — the 165 unexplained `reports/` files judged one by one; 7 deleted on a yes
+
+The 227 loose report files that no code names by a literal string, minus the 62 named `path-*`
+records, were each opened, their writer and readers searched for by built-name fragments,
+and their citations checked. One row per file is in `reports/loose-reports-judged.csv`:
+
+    kept as record   141   most writers were deleted scripts, so these cannot be regenerated;
+                           the Monte Carlo round files have no writer at all (hand-copied drains)
+                           and are the campaign's record
+    kept, live        15   9 descent-from-*-trunk.csv (trunk-roster -> monte-carlo-pick),
+                           2 familysearch-zipper tsvs (tree.yml), files CI tests read by name
+    deleted            7   each a subset or copy of a kept file, or a probe
+    kept on the ask    2   wikidata-join-garborg-links.qs (empty batch) and its -skipped.tsv:
+                           deleting a .qs reds the batch-inventory test until a pipeline run
+
+Deleted, overlap checked by id before asking: `bureatten-remaining.tsv` (all 100 in
+`bureatten-export-targets.tsv`), `isolate-batch-queue.json` (the 24 of `isolate-batch-2026-09-12.tsv`),
+`isolate-path-pilot-probe.tsv` (one-row parser probe), `pathrun-batch-current.js` (a stray 8,000-id
+batch; the committed batch is `pathrun-batch.js`), `patronymic-pairs-to-create.tsv` (stale, wrong
+counterparts; `pipeline.yml` recomputes the pairs), `rejected-parents-network.tsv` (all 162 ids in
+`rejected-parents.tsv`), and `sibling-pair-scrape-targets.tsv` (all ids in `sibling-pair-worklist.tsv`).
