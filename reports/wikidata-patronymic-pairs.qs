@@ -195,6 +195,15 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 
+# Ragnvaldsdotter -- the counterpart of Ragnvaldsson (19 bearer(s))
+CREATE
+LAST	Len	"Ragnvaldsdotter"
+LAST	Lmul	"Ragnvaldsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+
 # Joakimsen -- the counterpart of Joakimsdatter (18 bearer(s))
 CREATE
 LAST	Len	"Joakimsen"
@@ -351,15 +360,6 @@ LAST	P31	Q10476255
 CREATE
 LAST	Len	"Haldorsdotter"
 LAST	Lmul	"Haldorsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-
-# Ogmundsdotter -- the counterpart of Ogmundsson (13 bearer(s))
-CREATE
-LAST	Len	"Ogmundsdotter"
-LAST	Lmul	"Ogmundsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179

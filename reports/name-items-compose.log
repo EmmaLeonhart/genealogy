@@ -1,9 +1,9 @@
-840 people across 1 Garborg batches, 10428 already holding a QID
-2298 token(s) are already pointed at by their own bearers
+840 people across 1 Garborg batches, 10625 already holding a QID
+2320 token(s) are already pointed at by their own bearers
 5113 tokens already have an item and are linked, not created
 2493 need creating, 0 are ambiguous and are not
 98 token(s) held: never a first given name in the corpus but attested as a family name -- Laurentii (5), lll (3), Byre (2), Viby (2), Ænes (2), Rosenberg (2)
-138 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
+139 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Adalasia             given        Q62102498
    Adalhaid             given        Q354633
    Al-Dahhak            given        Q63929644
@@ -20,6 +20,7 @@
    Drake af Hagelsrum   family       Q16869662
    Eadwin               given        Q240931
    Erskine of Dun       family       Q16869843
+   Evensen              patronymic   Q141271297
    Fleming af Liebelitz family       Q1427982
    Fleuri               given        Q19914619
    Garzía               given        Q29551139
@@ -83,7 +84,7 @@
    Æbba                 given        Q2242896
    Симонида             given        Q602977
    蟜極                   given        Q125319074
-63 token(s) RESCUED by the live check -- these would have been created a second time:
+62 token(s) RESCUED by the live check -- these would have been created a second time:
    Larssen              patronymic   already Q27888992
    Umayya               given        already Q141530101
    Skiftun              family       already Q141500917
@@ -128,7 +129,6 @@
    Haraldsson           patronymic   already Q30347058
    Pedersdatter         family       already Q122838114
    Alexandrovich        patronymic   already Q59102957
-   Evensen              patronymic   already Q27887943
    Aslaksen             family       already Q27892779
    Gunnarsson           patronymic   already Q69821535
    Kierstin             given        already Q141235334
@@ -147,10 +147,10 @@
    Kierstin             given        already Q141235334
    Skiftun              family       already Q141500917
    Isaksson             patronymic   already Q21450297
-1304 token(s) the ring is about to need are ranked first
+1284 token(s) the ring is about to need are ranked first
 
-checking 2,043 existing name items for a missing description
-   0 of them have no English description; 2,043 already do
+checking 2,058 existing name items for a missing description
+   0 of them have no English description; 2,058 already do
    1 are DUPLICATES of an existing name item -- the description was refused, not emitted; see duplicate-name-items-found.tsv
 
 checking 353 existing patronymic items for P144 based on and P460
@@ -158,7 +158,7 @@ checking 353 existing patronymic items for P144 based on and P460
    0 P144 statement(s) to remove
    4 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 2481 carried to a later run), 23 statements linking an EXISTING person to one, in the same run
+wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 2481 carried to a later run), 27 statements linking an EXISTING person to one, in the same run
 4 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
   create  Laurentii            patronymic   7
   create  Halvardsdatter       family       6
