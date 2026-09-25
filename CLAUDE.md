@@ -489,6 +489,13 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   and went unanswered: *"Why haven't I been AskUserQuestioned"*. When Claude Code's classifier
   refuses an action, stop, do not route around it, and ask at once with options that can be
   picked (add a permission rule, do it by hand, skip it).
+  **Ask for explicit authorization of the named action.** Ruled the same day: *"Put it in
+  claude.md that explicit AskUserQuestion things like this work"*. An `AskUserQuestion` naming the
+  exact command and asking *"Do you explicitly authorize me to …"* is Emma's consent on the record,
+  and on 2026-09-25 it cleared two refusals: `git sparse-checkout add .github scripts`, and reading
+  the `pipeline.yml` gate. It did **not** clear the third, the edit to the three workflow gates.
+  So ask, retry once with the authorization, and if it is refused again, ask again. Never
+  rephrase the action to slip past the check.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
 - **"Add it to the end of the queue" means WRITE IT DOWN AND STOP.** No investigation, no
