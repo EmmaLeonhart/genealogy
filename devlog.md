@@ -47531,3 +47531,16 @@ HEAD's `harvested-paths/`: 32,266 chains, 251 skipped (empty, single-step or no 
 chains make no GEDCOM). Every file is new: each was checked against HEAD before copying, and none
 overwrites anything. 146 existing chains came out different (133 longer, 13 with different rows).
 Their `.ged` already exists, so they are left as they were and queued for a ruling.
+
+## 2026-09-25 — the 146 re-split chains written beside the originals; CI fully green
+
+**Guessed and recorded, per the queue rule; Emma had asked for no questions for six hours.** The
+item asked whether to add a new file beside each of the 146 or replace it. The guess is the one
+that deletes nothing. Each re-split chain is a new `harvested-paths/<stem>-resplit-2026-09-25.tsv`
+with its `exports/tiny-paths/<stem>-resplit-2026-09-25.ged`: 292 files, all new, each checked
+against HEAD first. The merge joins on the Geni id, so a longer chain's extra people arrive and the
+old files are untouched. If a replacement is wanted instead, deleting the old 146 pairs is the
+whole of it.
+
+**CI run `36176127336` is fully green**: fast lane on 3.10 and 3.13, and slow lane. That confirms
+`f2541a391`, which closed the slow-lane item before the run had finished.

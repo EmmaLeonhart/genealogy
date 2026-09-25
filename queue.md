@@ -30,12 +30,6 @@ the tool not being throttled correctly."*
 ## Now
 
 - **Label Q141492819 "Marite Bergesdatter Talgje" (Emma: "really egregious").** https://www.wikidata.org/wiki/Q141492819 is labelled only "Talgje". Schedule for the next run `Q141492819|Lmul|"Marite Bergesdatter Talgje"` and the same label in en, fr, de, no and sv, plus the CJK labels under this repo's CJK conventions. Find out why it happened. Apply a specific manual fix to this one, plus general fixes that look backwards over past runs as well as forward. And reverse course on the undo of the married-name handling. The edits themselves go out under whatever the noticeboard rule allows at the time.
-- **146 harvested chains differ from their committed copies; their `.ged` can't be replaced
-  without a ruling.** Re-splitting `reports/path-chains-*.tsv` on 2026-09-25 found 133 chains
-  now longer than `harvested-paths/` holds (the committed copy was cut short; e.g. a chain now
-  running on to Christian I and Mary, Queen of Scots) and 13 with different rows. Each has an
-  `exports/tiny-paths/*.ged`, and the corpus rule is never overwrite a `.ged`. Decide: a new
-  file beside it (the merge joins on the Geni id), or a sanctioned replace.
 - **Record the missing parent link between the owner's ancestry and the Rømer ring seed.** It is
   one unrecorded link; `Q141450322` Olfvir / Ølver Rømer (`6000000002621242041`) is a
   `PRIORITY_ANCESTOR_SEEDS` ring seed. Work it from data on disk or FamilySearch; no Geni fetch.
