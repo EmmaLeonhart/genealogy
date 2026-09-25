@@ -47396,3 +47396,22 @@ The plan listed 35 files, not the 34 the queue said. For each one, the old-layou
 35 cases, and none of the new names already existed. They were renamed with `git mv --sparse`,
 all `R100`: the same content under new names, nothing overwritten. `_plan.tsv` is deleted. 13
 files in `export-geni/` were never in the plan and keep their counter names.
+
+## 2026-09-25 — descendant reports: the real residual is 3,713 children, not 33,059
+
+A dry run of `parse-sweep-trees.py` over all 8,959 reports gives 28,227 "couples with neither
+parent resolved". That stat counts rows, and one child is swept in many reports. Counted per
+distinct child, **3,713 get a Geni-id parent from no report**. 2,349 have `<private>` parents and
+1,364 have named ones. None are dropped: each gets a label-only pair.
+
+Two levers were tried and measured, and neither is kept:
+- **Full siblings** (`Brother of`/`Sister of`, unused until now): a child takes the parents its
+  listed full siblings resolved in the same report. 219 rows, 0 distinct children, because those
+  children already resolve elsewhere.
+- **The cross-report join** in the zipper had never run. `parent_ids` holds (id, position) pairs
+  and the join tested for bare strings. Fixed, it identified 48 fewer people (15,864 -> 15,816)
+  and added more ambiguity than matches. The dead lines are deleted, and the dry-run output is
+  byte-identical to before.
+
+Queue item rewritten with these numbers. Left: the 1,364 named, 1,833 conflicting slots, and
+1,605 unsplittable parent strings.

@@ -677,14 +677,11 @@ def main() -> int:
         rec = labels[key]
         props, method = set(), ""
         for child in sorted(rec["children"]):
-            cands = (c_fathers if rec["sex"] == "M" else c_mothers).get(child, [])
-            # ⛔ **THE CROSS-REPORT JOIN, 2026-09-24.** An in-law named only as text in one report
-            # is often a descendant ROW in another, and that report resolved this very child to
-            # their Geni id. The parser has read every report, so `parent_ids` already holds it:
-            # any resolved parent of the child who is not the known co-parent and whose sex fits.
-            own = [x for x in p.parent_ids.get(child, ()) if isinstance(x, str)
-                   and x.isdigit() and x != rec["co"] and p.sex.get(x, "") in (rec["sex"], "")]
-            cands = sorted(set(cands) | set(own))
+            # ⛔ **NO CROSS-REPORT JOIN HERE.** One was written 2026-09-24 and never matched:
+            # `parent_ids` holds (id, position) pairs and it tested for bare strings. Made to
+            # work, 2026-09-25, it identified 48 FEWER people (15,864 -> 15,816), because the
+            # extra candidates turned solo matches ambiguous. So only the corpus proposes.
+            cands = sorted(set((c_fathers if rec["sex"] == "M" else c_mothers).get(child, [])))
             if len(cands) == 1:
                 props.add(cands[0]); method = method or "solo"
             elif cands:

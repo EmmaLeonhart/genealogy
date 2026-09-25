@@ -34,10 +34,12 @@ the tool not being throttled correctly."*
 - **Lift the Administrators' noticeboard hold so today's edits go through (Emma, 2026-09-25).** Remove the noticeboard rule, or at least hold it, so that today's (2026-09-25) Wikidata edits go through. If the noon edits did not happen, make them happen by fixing the pipeline. The current noticeboard matter is considered done. Set it up so that in ten days, on 2026-10-05, the noticeboard check starts acting as a filter again.
 - **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24,
   reopened. Done since: the exact-generation tie-break, the report subject at generation 1, and
-  parents placed by ROW ORDER (8,446) -- couples with no parent resolved 74,440 -> 33,059.
-  Left: those **33,059** (mostly `<private>` living people and spelling variants whose block sits
-  between anchors with several candidates), **1,817 conflicting parent slots**, 1,605 parent
-  strings with no split, and the `immediate_family` siblings/spouses, unused.
+  parents placed by row order. **Measured per CHILD on 2026-09-25**, not per row: 3,713 distinct
+  children get a Geni-id parent from no report at all. 2,349 of them have `<private>` parents and
+  1,364 have named ones, and each still gets a label-only pair. (The old 33,059 counted every row
+  in every report.) Left: the **1,364 named**, **1,833 conflicting parent slots** (one child, two
+  ids for one parent across reports), and **1,605 parent strings with no split**. Ruled out by
+  measurement: full-sibling propagation (0 distinct children) and the cross-report join (net -48).
 - **CI slow lane red: 11 failures, all `exports/sweep-parsed/`** (run `36011859223`).
   `test_gedcom_real_exports.py` does not know the `sweep-parsed` header or its `IL`/`FL` label
   prefixes. Fast lane green on 3.10 and 3.13.
