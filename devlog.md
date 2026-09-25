@@ -47455,3 +47455,14 @@ the slot is still dropped. All 10 sampled decisions are right.
 Dry run: 998 slots decided, dropped 1,834 -> 836, parents added onto existing corpus families
 19 -> 173. The zipper identifies 52 fewer label people, because those slots now hold the real
 Geni id directly.
+
+## 2026-09-25 — descendant reports: a parent placed by its own row listing the child
+
+For the 1,379 children whose parents' names reach no row: a generation-g-1 row's `Father of A;
+B and C` names its children. Where exactly one such row lists the child by name, that row is the
+parent. `parse-sweep-trees.py` uses it only where name and row order have both failed. Measured
+first: 213 of the 1,379 have one listing parent in some report. The other ~85% have no row in
+any captured report that lists them, so their parent is absent from the capture.
+
+Dry run: 510 parents placed this way, and children with no Geni-id parent 3,734 -> 3,517 (-217).
+Conflicting slots 836 -> 838.

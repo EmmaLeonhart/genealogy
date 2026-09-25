@@ -361,6 +361,20 @@ class Parse:
             return None
 
         order_parent = self._order_parents(rows, depth, resolve)
+        # ⛔ **THE PARENT'S OWN ROW LISTS THE CHILD.** `Father of A; B and C` on a generation-g-1
+        # row names its children; where exactly one such row lists a child by name, that row is
+        # the parent. Measured 2026-09-25 over the 1,379 children whose parents' names reach no
+        # row: 213 have one listing parent in some report. Used only where name and row order
+        # both failed (see `_parents`).
+        listed_by = collections.defaultdict(set)
+        for gid, _n, _r, fam, _h in rows:
+            r = roles(fam)
+            for role in ("Father of", "Mother of"):
+                for k in listed(r.get(role, "")):
+                    listed_by[(fold(k), depth[gid] + 1)].add(gid)
+        self._listing = {gid: next(iter(ps)) for gid, name_text, _r, _f, _h in rows
+                         for ps in [listed_by.get((fold(split_name(name_text)[0]), depth[gid]), set())]
+                         if len(ps) == 1}
         for gid, _name, rel, fam, _href in rows:
             self.stats["rows"] += 1
             g = depth[gid]
@@ -520,6 +534,12 @@ class Parse:
                 ra, rb = (op, None) if self.sex[op] == "M" else (None, op)
                 resolved = [(ra, "M")] if ra else [(rb, "F")]
                 self.stats["parents placed by row order"] += 1
+        if not resolved and a and b and gid in getattr(self, "_listing", {}):
+            lp = self._listing[gid]
+            if self.sex.get(lp) in ("M", "F"):
+                ra, rb = (lp, None) if self.sex[lp] == "M" else (None, lp)
+                resolved = [(ra, "M")] if ra else [(rb, "F")]
+                self.stats["parents placed by the parent listing the child"] += 1
         if not resolved:
             if a and b:
                 self.stats["couples with neither parent resolved (made as a label pair)"] += 1
