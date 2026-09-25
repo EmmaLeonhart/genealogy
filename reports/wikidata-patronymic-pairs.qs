@@ -257,6 +257,15 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 
+# Lauritzsdotter -- the counterpart of Lauritzson (16 bearer(s))
+CREATE
+LAST	Len	"Lauritzsdotter"
+LAST	Lmul	"Lauritzsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+
 # Oddsdotter -- the counterpart of Oddson (16 bearer(s))
 CREATE
 LAST	Len	"Oddsdotter"
@@ -355,12 +364,4 @@ LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
-
-# Pålsen -- the counterpart of Pålsdatter (13 bearer(s))
-CREATE
-LAST	Len	"Pålsen"
-LAST	Lmul	"Pålsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
 

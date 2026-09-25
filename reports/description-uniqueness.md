@@ -6,12 +6,12 @@ so a description that repeats under a different label costs nothing.
 
 | | |
 |---|---|
-| people | 2,193,916 |
-| with a description | 1,410,087 (64.3%) |
-| **no description at all** | **783,829** (35.7%) |
-| distinct (label, description) | 1,386,358 |
-| colliding pairs | 1,179 |
-| people in a collision | 2,533 |
+| people | 2,189,295 |
+| with a description | 1,410,265 (64.4%) |
+| **no description at all** | **779,030** (35.6%) |
+| distinct (label, description) | 1,386,534 |
+| colliding pairs | 1,181 |
+| people in a collision | 2,537 |
 
 ## The worst collisions
 
