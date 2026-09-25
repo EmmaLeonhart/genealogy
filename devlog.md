@@ -47346,3 +47346,10 @@ Güntersberg, James VI/I) are extracted (`83e32b58c`), so every page's path is i
   family (half-siblings, stepchildren, fiancé(e)s, the 77 unsexed parents, 4 contradictions).
 
 The HTML deletion is queued behind a yes.
+
+## 2026-09-25 — the 695 saved pages deleted, on a yes
+
+With every page's path and family in GEDCOMs (entry above), the 695 pages (693 `.html`, 2 `.mhtml`,
+127.6 MB) in `paths_for_wikidata_isolates/` and `geni_pages/` were removed with `git rm`. Asked
+first, answered *yes, delete the 695 pages*. The 3,077 photos in their `_files/` folders stay,
+per `reports/repo-content.md`. The pages remain in history at `243b2a0e0`.

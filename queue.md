@@ -31,11 +31,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Delete the saved-page HTML: the extraction is done (2026-09-25), the deletion needs a yes.**
-  Every page's path and family are in GEDCOMs (`reports/saved-page-extraction.md` § *Extracted,
-  2026-09-25*; residuals in `reports/saved-page-family-residuals.tsv`). Left: `git rm` the `.html`/`.mhtml`
-  pages in `paths_for_wikidata_isolates/` and `geni_pages/`, keeping the photos per
-  `reports/repo-content.md`. Asked through `AskUserQuestion` before it happens.
 - **The other 227 loose `reports/` files no code names by a literal string**, each opened and
   judged by content, never as a lump. A name search misses built names: `descent-from-*-trunk.csv`
   looked unread and `monte-carlo-pick.py` reads it. So each file needs its writer found (an
