@@ -30,6 +30,7 @@ the tool not being throttled correctly."*
 
 ## Now
 
+- **Continue the tasks the crash interrupted.** Before taking anything else below, pick up the work that was in progress when the session crashed and carry it on from where it stopped.
 - **Extract both tiny GEDCOMs from every saved page, then delete the HTML.** Ruled 2026-09-24:
   *"as soon as both of those are clear, extracted from them, we can remove all the HTML files.
   It's just a matter of these need to be extracted."* The two kinds are the relationship path
