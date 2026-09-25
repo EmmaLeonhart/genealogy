@@ -47251,3 +47251,20 @@ Deleted on a yes: 35,199 files, 2.88 GB, 14% of the repo's bytes. The 3,077 thum
 the only content in the folders and stay, with every `.html` page. The names had understated
 it: 2,284 extensionless files were stylesheets, scripts and 68 photos, and all 2,145 inner `.html`
 files were frames with no text.
+
+## 2026-09-24 — the path reports, the 19 URLs and `_plan.tsv`
+
+Three more of the assessment's open ends, each on a yes:
+
+- **`reports/path-isolate-*.md`/`.json`, 1,120 files, 11.8 MB, deleted.** Written by
+  `genimerge connectors --write-paths`, which no workflow runs. They were measured against a
+  472,655-person tree, and nothing reads them. Rerunning the command regenerates them from `paths/`.
+- **`wikidata_isolates_to_clear/New Text Document.txt`**, 19 Geni URLs (Ovid, Aesop, Horace,
+  Hobbes and others), moved verbatim into `undigested.md`. The folder is gone.
+- **`_plan.tsv` is half-applied, and the rest is queued.** Its 34 sources mix the old
+  `export-geni (N)/export-<Kind>.ged` layout with the current `export-geni/export-<Kind>-<N>.ged`,
+  so the move happened and the rename to seed ids never did.
+
+**A literal name search is not proof a report is unread.** `descent-from-*-trunk.csv` matched
+nothing and `monte-carlo-pick.py` reads it through a built name. So the remaining 227 unnamed
+report files are queued to have their writer found one by one, not judged by a string match.

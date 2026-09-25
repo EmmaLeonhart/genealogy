@@ -30,10 +30,15 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Settle what `reports/repo-content.md` § *Not settled* leaves open.** `_plan.tsv` (applied,
-  pending or replaced?), `wikidata_isolates_to_clear/`, and the 1,347 loose `reports/` files no
-  code names, each opened and judged by content, never as a lump. Deletions go through
+- **The other 227 loose `reports/` files no code names by a literal string**, each opened and
+  judged by content, never as a lump. A name search misses built names: `descent-from-*-trunk.csv`
+  looked unread and `monte-carlo-pick.py` reads it. So each file needs its writer found (an
+  f-string or glob in `scripts/` or `src/`) before it is called unread. Deletions go through
   `AskUserQuestion` first.
+- **Finish `_plan.tsv`: rename the 34 `exports/archive/export-geni/` files to their seed ids.**
+  Ruled 2026-09-24. The move into `export-geni/` happened; the rename to
+  `export-<Kind>-<seed id>.ged` did not. `git mv` each file, confirm the id in its new name is
+  the file's first `INDI`, never overwrite an existing path, then delete `_plan.tsv`.
 - **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24,
   reopened. Done since: the exact-generation tie-break, the report subject at generation 1, and
   parents placed by ROW ORDER (8,446) -- couples with no parent resolved 74,440 -> 33,059.

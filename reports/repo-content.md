@@ -70,17 +70,22 @@ file classified by its content rather than its name**, one row per distinct cont
 The `.html` pages and `chats/` `.md` extracts are untouched. The pages lose their styling in a
 browser, and none of their text.
 
+**`reports/path-isolate-*.md` and `.json`: 1,120 files, 11.8 MB, deleted on a yes.** One pair per
+saved path in `paths/`, written by `genimerge connectors --write-paths` (`src/genimerge/cli.py`),
+which no workflow runs. They were measured against a 472,655-person tree, far smaller than
+today's, and nothing reads them. Rerunning that command regenerates them.
+
+**`wikidata_isolates_to_clear/`** held one file of 19 Geni URLs. Moved verbatim into
+`undigested.md`, and the folder deleted.
+
 ## Not settled
 
-- **`_plan.tsv`** (3 KB): renames `exports/archive/export-geni (N)/export-<Kind>.ged` to
-  `export-<Kind>-<seed id>.ged`. It was never applied: the archive is named
-  `export-geni/export-<Kind>-<N>.ged`, and none of the planned names exist. It is either pending
-  work (CLAUDE.md: *disambiguate with the seed id*) or a plan that was replaced.
-- **`wikidata_isolates_to_clear/New Text Document.txt`**: 18 Geni URLs (Ovid, Aesop, Horace,
-  Hobbes and others). It is an unprocessed work list, not junk. It belongs in the queue or in
-  `undigested.md`.
-- **1,347 loose `reports/` files (48 MB)** match no name or pattern in the pipeline code. Most
-  are one-off measurements that `devlog.md` cites as evidence. Deciding each one is a separate
-  pass.
+- **`_plan.tsv`** is half-applied: the `exports/archive/` files were moved into `export-geni/`
+  under counter names, and never renamed to the seed-id names it lists. Ruled 2026-09-24:
+  finish it. Queued.
+- **227 loose `reports/` files** match no literal name in the pipeline code, and 97 of them are
+  cited in `devlog.md` or `docs/`. A literal search is not proof a file is unread:
+  `descent-from-*-trunk.csv` matched nothing and `monte-carlo-pick.py` reads it through a built
+  name. Each one needs its writer found. Queued.
 - **Deleting a file removes it from checkouts, not from history.** A full clone stays about
   20 GB until history is rewritten, and rewriting history is a separate decision.
