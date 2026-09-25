@@ -47510,3 +47510,14 @@ CI had been disabled since 2026-09-24, so these had accumulated unseen:
 
 Run `36167119362`: fast lane green on 3.10 and 3.13, slow lane 199,475 passed and 1 failed. That
 failure is the one fixed here.
+
+## 2026-09-25 — the archived queue re-read; 6 open items restored
+
+`docs/queue-archive/queue-before-2026-09-24-rewrite.md` was read end to end, and every work item
+was judged against the devlog and git log. Result: 14 done (each with a devlog line or commit), 3
+already queued, 8 groups superseded or not work items, and 6 restored. Two can be done now: run
+`split-path-chains.py` and `build-tiny-gedcoms.py` over the 31,819 chains the paused walk
+fetched (no devlog run after the 2026-09-20 pause), and the owner-ancestry to Rømer-seed link.
+Four need Geni and sit at the end of the queue: resume the sweep from cursor 8,993, the
+managing-account join, the sibling scrape, and resume the permalink chain walk. Not reviewed:
+the separately parked `docs/queue-archive/geni-blocked-campaigns-2026-09*.md`.
