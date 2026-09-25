@@ -5,18 +5,18 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **2,185,059 people**.
+One row per person in `reports/derived-labels.csv` — **2,234,545 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 2,062,592 | 94.4% |
-| CJK only — needs translation for en | 54,143 | 2.5% |
-| no usable name at all | 29,681 | 1.4% |
-| other script only — needs translation for en | 22,624 | 1.0% |
-| mixed-script only — no clean Latin label | 12,718 | 0.6% |
-| Latin and CJK | 3,301 | 0.2% |
+| Latin only | 2,111,496 | 94.5% |
+| CJK only — needs translation for en | 54,210 | 2.4% |
+| no usable name at all | 29,679 | 1.3% |
+| other script only — needs translation for en | 23,192 | 1.0% |
+| mixed-script only — no clean Latin label | 12,666 | 0.6% |
+| Latin and CJK | 3,302 | 0.1% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
 so everyone in a *needs translation* row has no derivable English label at all —
@@ -27,11 +27,11 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 2,443,997 |
-| CJK | 133,232 |
-| other | 63,188 |
-| mixed | 36,923 |
-| none | 525 |
+| Latin | 2,501,248 |
+| CJK | 133,347 |
+| other | 63,936 |
+| mixed | 37,056 |
+| none | 526 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-80,330 people have both a derived Latin label and a Wikidata English
-label. **21,984 match exactly (27.4%).**
+89,868 people have both a derived Latin label and a Wikidata English
+label. **25,899 match exactly (28.8%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
