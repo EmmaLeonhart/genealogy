@@ -220,12 +220,21 @@ def drop_clan_labels(edits, today: datetime.date | None = None):
 #: opened again. Checked by the sender's live path, the `wikidata-edits` gate, and every
 #: `pipeline` and `daily-batch-email` run -- no event and no `force` bypasses it. **Fails CLOSED**: a page that
 #: cannot be read is treated as a page that mentions it.
+#:
+#: ⛔ **SUSPENDED UNTIL 2026-10-05.** Ruled 2026-09-25: *"The current noticeboard matter is
+#: considered done. Set it up so that in ten days, on 2026-10-05, the noticeboard check starts
+#: acting as a filter again."* Before `NOTICEBOARD_RESUMES` (UTC) the check passes without
+#: reading the page; from that date it is the fail-closed filter above, unchanged. The same date
+#: is in the `wikidata-edits`, `pipeline` and `daily-batch-email` gates.
 NOTICEBOARD = "Wikidata:Administrators' noticeboard"
 NOTICEBOARD_MARK = "日巫女"
+NOTICEBOARD_RESUMES = datetime.date(2026, 10, 5)
 
 
 def noticeboard_clear() -> tuple[bool, str]:
     """(clear, detail): False while the noticeboard's wikitext contains `NOTICEBOARD_MARK`."""
+    if datetime.datetime.now(datetime.timezone.utc).date() < NOTICEBOARD_RESUMES:
+        return True, f"noticeboard check suspended until {NOTICEBOARD_RESUMES.isoformat()}"
     import urllib.parse
     import urllib.request
     url = "https://www.wikidata.org/w/index.php?" + urllib.parse.urlencode(

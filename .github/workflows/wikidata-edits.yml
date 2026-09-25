@@ -128,6 +128,8 @@ jobs:
         run: |
           noticeboard_clear() {
             local page
+            # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, wikidata_lockout.NOTICEBOARD_RESUMES).
+            if [[ "$(date -u +%F)" < "2026-10-05" ]]; then echo "noticeboard check suspended until 2026-10-05"; return 0; fi
             page=$(curl -fsSL --retry 3 --max-time 60 \
               -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
               "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""

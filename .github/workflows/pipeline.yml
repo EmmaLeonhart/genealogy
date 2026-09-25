@@ -107,11 +107,18 @@ jobs:
       # Ruled 2026-09-24: *"only runs of even generations of quickstatements happen only after
       # the string is not present on that page."* Every event -- schedule, push, dispatch, call,
       # `force` included; nothing bypasses it. Fails closed: unreadable == held.
+      # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, scripts/wikidata_lockout.py
+      # NOTICEBOARD_RESUMES): before that date (UTC) the page is not read.
       - id: check
         run: |
+          if [[ "$(date -u +%F)" < "2026-10-05" ]]; then
+            echo "noticeboard check suspended until 2026-10-05"
+            page="suspended"
+          else
           page=$(curl -fsSL --retry 3 --max-time 60 \
             -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
             "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
+          fi
           if [ -z "$page" ] || grep -qF '日巫女' <<<"$page"; then
             echo "HELD: the Administrators' noticeboard mentions 日巫女, or could not be read"
             echo "run=false" >> "$GITHUB_OUTPUT"
