@@ -635,6 +635,37 @@ def main() -> int:
     sex = lambda g: c_sex.get(g) or p.sex.get(g, "")
 
     # --- the child's parent slots from the votes -------------------------------------------
+    # ⛔ **TWO IDS FOR ONE PARENT ARE NAMESAKES A GENERATION APART, AND YEARS DECIDE.** Sampled
+    # 2026-09-25: Zita of Bourbon-Parma (b. 1892) voted both Maria Antónia de Bragança b. 1862 and
+    # her namesake b. 1903. `CLAUDE.md` -- *names lie and years decide*. A candidate fits when born
+    # 13 to 70 years before the child (55 for a mother) and not dead before the birth (a father a
+    # year before); exactly one fitting candidate takes the slot. Report years first, then corpus.
+    def year(v):
+        m = re.search(r"\d{3,4}", v or "")
+        return int(m.group()) if m else None
+    wanted = set()
+    for child, ids in p.parent_ids.items():
+        if len({x for x, _ in ids}) > 1:
+            wanted |= {child} | {x for x, _ in ids}
+    fact_years = {}
+    with gzip.open(FACTS, "rt", encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            if row["geni_id"] in wanted:
+                fact_years[row["geni_id"]] = (year(row["birth_date_year"]), year(row["death_date_year"]))
+
+    def years(g):
+        b, d = (year(v) for v in p.years.get(g, ("", "")))
+        fb, fd = fact_years.get(g, (None, None))
+        return (b if b is not None else fb), (d if d is not None else fd)
+
+    def fits(par, child, s):
+        (pb, pd), (cb, _cd) = years(par), years(child)
+        if pb is None or cb is None:
+            return None
+        if not 13 <= cb - pb <= (55 if s == "F" else 70):
+            return False
+        return pd is None or pd >= cb - (1 if s == "M" else 0)
+
     father, mother = {}, {}          # child -> geni id or label key
     for child, ids in sorted(p.parent_ids.items()):
         by_sex = collections.defaultdict(set)
@@ -644,7 +675,13 @@ def main() -> int:
             if len(by_sex[s]) == 1:
                 slot[child] = next(iter(by_sex[s]))
             elif len(by_sex[s]) > 1:
-                st["parent slots with conflicting geni ids (dropped)"] += 1
+                verdicts = {x: fits(x, child, s) for x in by_sex[s]}
+                ok = [x for x, v in verdicts.items() if v]
+                if None not in verdicts.values() and len(ok) == 1:
+                    slot[child] = ok[0]
+                    st["conflicting parent slots decided by years"] += 1
+                else:
+                    st["parent slots with conflicting geni ids (dropped)"] += 1
 
     # --- the label-only individuals --------------------------------------------------------
     labels: dict[tuple, dict] = {}   # key -> {display, sex, children, co}
