@@ -47675,3 +47675,13 @@ all inside descriptive phrases**, e.g. `Wife 2: Zhōu` (the wife's family name),
 (the husband), `Unnamed Boy` and `n. n. Diez`; none is the person's own given name. Left queued:
 the Indonesian/Malay titles (a word list would hit real given names) and the regnal
 numerals under a dynasty `SURN` (needs a ruling).
+
+## 2026-09-25 — Indonesian and Malay honorifics are not given names
+
+`GIVN_TITLE_WORDS` in `namemodel`: `Raden`, `Ratu`, `Daeng`, `Karaeng`, `Kyai`/`Kiai`, `Nyai`,
+`Gusti`, `Tengku`, `Tubagus`, `Datu`/`Datuk`, `Opu`, `Puang`, `Teuku` and `Pangeran` are
+`unknown` wherever they stand in `GIVN`. `Raja`, `Sultan`, `Mas`, `Ayu` and `Andi` are also borne
+as given names and are left out on purpose. **Measured against the committed model over all
+2,728,649 name records: 3,836 tokens change, every one of them a listed title word** (`Raden`
+1,103, `Ratu` 567, `Kyai` 352, `Nyai` 335, `Tengku` 330, `Daeng` 244 ...), and no other token
+moves. The regnal-numeral half of the item is left as NEEDS-DECISION for Emma.

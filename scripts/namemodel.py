@@ -717,6 +717,17 @@ UNKNOWN_MARKERS = {
 #: given name recorded beside a stillborn word would be dropped with it. It would be
 #: falsified by a `GIVN` such as `Anna dödfödd`, and there is none -- the co-occurring tokens
 #: measured are all structural (`son` 43, `barn` 17, `gossebarn` 15, `daughter` 14).
+#: **Indonesian and Malay honorifics are not given names.** Measured 2026-09-25 in the census of
+#: the marker narrowing (`reports/name-rule-census/marker.csv.gz`): once only a real marker armed
+#: the suppression, these became `P735` given names -- `Raden` 435, `Ratu` 211, `Daeng` 186,
+#: `Karaeng` 150, `Kyai` 118 ... in fields like `RADEN TUMENGGUNG COKRODIPURO`. Only the words
+#: that are titles and never given names are here: `Raja`, `Sultan`, `Mas`, `Ayu` and `Andi` are
+#: also borne as given names and are left out on purpose.
+GIVN_TITLE_WORDS = frozenset({
+    "raden", "ratu", "daeng", "karaeng", "kyai", "kiai", "nyai", "gusti", "tengku",
+    "tubagus", "datu", "datuk", "opu", "puang", "teuku", "pangeran",
+})
+
 DESCRIPTION_MARKERS = {
     "dødfød", "dødfødt", "dødfødte", "dødfodt",
     "dödfödd", "dödfött", "dödfödda", "dodfodd",
@@ -2925,6 +2936,9 @@ def classify_fields(givn: str, surn: str, nick: str = "",
                 ordinal += 1
                 out.append((token, "given", ordinal))
                 continue
+        if token.casefold().strip(".,'’") in GIVN_TITLE_WORDS:
+            out.append((token, "unknown", 0))
+            continue
         # **`name_shape` runs on `GIVN` too.** It did not until 2026-08-31, so every marker
         # already in `UNKNOWN_MARKERS` became a `given` name when it sat in the given-name
         # field: `NN`, `Unknown`, `okänd` and `anonyma` each produced a `P735` proposal.
