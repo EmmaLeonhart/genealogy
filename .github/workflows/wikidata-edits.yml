@@ -121,14 +121,14 @@ jobs:
     timeout-minutes: 355
     steps:
       # ⛔ AND WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, NOTHING RUNS -- not even
-      # a dry run. Ruled 2026-09-24; scripts/wikidata_lockout.py § NOTICEBOARD carries the ruling
+      # a dry run. Ruled 2026-09-24; scripts/wikidata-edit-run.py § NOTICEBOARD carries the ruling
       # and the sender checks it again on its live path. Fails closed: unreadable == held.
       - name: Hold until the start date
         id: gate
         run: |
           noticeboard_clear() {
             local page
-            # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, wikidata_lockout.NOTICEBOARD_RESUMES).
+            # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, wikidata-edit-run.py NOTICEBOARD_RESUMES).
             if [[ "$(date -u +%F)" < "2026-10-05" ]]; then echo "noticeboard check suspended until 2026-10-05"; return 0; fi
             page=$(curl -fsSL --retry 3 --max-time 60 \
               -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \

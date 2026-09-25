@@ -35,6 +35,7 @@ list of ids already applied so a resumed run is not blocked by work that is done
 from __future__ import annotations
 
 import argparse
+import datetime
 import csv
 import json
 import math
@@ -55,6 +56,46 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
 from genimerge.editorder import Blocked, runnable_order  # noqa: E402
+
+
+#: It lives HERE, in the sender, and not in `wikidata_lockout.py`: that module is the local-only
+#: start-date gate, and `tests/test_wikidata_start_date.py` pins that it never reaches the network.
+#: ⛔ **WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, NOTHING RUNS.** Ruled 2026-09-24,
+#: replacing the two-week hold: *"as long as there is any mention of 日巫女 at
+#: Wikidata:Administrators' noticeboard then there will be no edits ever ... if there is then it
+#: does not do anything at all. No updating quickstatements no editing at all."* Read live on
+#: every run, so it lifts itself when the thread is archived off the page and returns if one is
+#: opened again. Checked here, on the sender's live path, and by the `wikidata-edits` gate, and every
+#: `pipeline` and `daily-batch-email` run -- no event and no `force` bypasses it. **Fails CLOSED**: a page that
+#: cannot be read is treated as a page that mentions it.
+#:
+#: ⛔ **SUSPENDED UNTIL 2026-10-05.** Ruled 2026-09-25: *"The current noticeboard matter is
+#: considered done. Set it up so that in ten days, on 2026-10-05, the noticeboard check starts
+#: acting as a filter again."* Before `NOTICEBOARD_RESUMES` (UTC) the check passes without
+#: reading the page; from that date it is the fail-closed filter above, unchanged. The same date
+#: is in the `wikidata-edits`, `pipeline` and `daily-batch-email` gates.
+NOTICEBOARD = "Wikidata:Administrators' noticeboard"
+NOTICEBOARD_MARK = "日巫女"
+NOTICEBOARD_RESUMES = datetime.date(2026, 10, 5)
+
+
+def noticeboard_clear() -> tuple[bool, str]:
+    """(clear, detail): False while the noticeboard's wikitext contains `NOTICEBOARD_MARK`."""
+    if datetime.datetime.now(datetime.timezone.utc).date() < NOTICEBOARD_RESUMES:
+        return True, f"noticeboard check suspended until {NOTICEBOARD_RESUMES.isoformat()}"
+    url = "https://www.wikidata.org/w/index.php?" + urllib.parse.urlencode(
+        {"title": NOTICEBOARD, "action": "raw"})
+    req = urllib.request.Request(url, headers={"User-Agent": BOT_USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            text = r.read().decode("utf-8")
+    except Exception as e:  # noqa: BLE001 -- any failure is a closed gate
+        return False, f"LOCKED (fail-closed): {NOTICEBOARD} unreadable: {e}"
+    if not text.strip():
+        return False, f"LOCKED (fail-closed): {NOTICEBOARD} came back empty"
+    if NOTICEBOARD_MARK in text:
+        return False, f"LOCKED: {NOTICEBOARD} mentions {NOTICEBOARD_MARK}"
+    return True, f"{NOTICEBOARD} does not mention {NOTICEBOARD_MARK}"
 API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 
 #: The stated cadence was 10-100 edits a day; the ceiling has been doubled with every
@@ -1102,7 +1143,7 @@ def main() -> int:
         print(f"The date is scripts/wikidata_lockout.py START_DATE "
               f"({wikidata_lockout.START_DATE}).")
         return 0
-    clear, why = wikidata_lockout.noticeboard_clear()
+    clear, why = noticeboard_clear()
     if not clear:
         print(f"\nHELD — no live run. {why}")
         return 0

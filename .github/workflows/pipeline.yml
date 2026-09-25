@@ -107,7 +107,7 @@ jobs:
       # Ruled 2026-09-24: *"only runs of even generations of quickstatements happen only after
       # the string is not present on that page."* Every event -- schedule, push, dispatch, call,
       # `force` included; nothing bypasses it. Fails closed: unreadable == held.
-      # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, scripts/wikidata_lockout.py
+      # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, scripts/wikidata-edit-run.py
       # NOTICEBOARD_RESUMES): before that date (UTC) the page is not read.
       - id: check
         run: |
