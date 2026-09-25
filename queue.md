@@ -66,3 +66,4 @@ the tool not being throttled correctly."*
 - **Review what actually happened on Wikidata's Administrators' noticeboard.** Research it and determine the course of action.
 - **Check out the RootsMagic GEDCOM exports.** The earlier FamilySearch GEDCOM export failed to get a lot of individuals, so a RootsMagic export should be better. If access to it can be gained, use it.
 - **Research what the known French ancestry adds.** With it, the family tree is substantially larger than previously believed. Research whether the larger number of relatives gives matches that weren't there before.
+- **CJK names through the name combinatorics: feasibility assessment, then implement.** Earlier in the project's history we were trying to switch to CJK versions of names as what the label gets derived from. In a sense the items do not get immediate CJK labels, but they are added through the name combinatorics. Do a feasibility assessment on that and try to implement it.
