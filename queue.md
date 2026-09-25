@@ -26,11 +26,11 @@ on that page"* -- the gate in `pipeline.yml` stops every event, dispatch and `fo
 *"This is indication I was editing too aggressively but it was mostly a quickstatements issue of
 the tool not being throttled correctly."*
 
-- **Re-enable the seven workflows on 2026-10-01** (`gh workflow enable <file>`).
+- **Moved up to 12:00 2026-09-25 (ruled that morning): re-enable the seven workflows and lift the
+  noticeboard gate.** A one-shot session cron does both; if the session is gone by then, do it by hand.
 
 ## Now
 
-- **Continue the tasks the crash interrupted.** Before taking anything else below, pick up the work that was in progress when the session crashed and carry it on from where it stopped.
 - **Extract both tiny GEDCOMs from every saved page, then delete the HTML.** Ruled 2026-09-24:
   *"as soon as both of those are clear, extracted from them, we can remove all the HTML files.
   It's just a matter of these need to be extracted."* The two kinds are the relationship path

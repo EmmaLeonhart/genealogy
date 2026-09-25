@@ -47300,3 +47300,22 @@ Measured over the 695 pages still here (`reports/saved-page-extraction.md`, a ro
 
 Queued at the top: extract both tiny GEDCOMs from every page, re-extract the 1,555 from history
 through the text view, then delete the HTML.
+
+## 2026-09-25 — the crash picked up: loops running, noon lift of the lockout scheduled
+
+The previous session crashed while answering *"is it finished? Did you clear off the people? Is the
+work loop running? If it is not then start it. And set a cron job that will at 12pm change things
+so that the CICD actually runs. I significantly overestimated how bad the situation was."*
+
+- **Not finished.** "Clear off the people" means the saved pages: extract both tiny GEDCOMs (path
+  and family) from the 695 pages and the 1,555 restored ones, then delete the HTML. Nothing of it
+  has started; it is now the first item under *Now*.
+- **The work loop was not running** (no crons after the crash). Work-loop `0,30`, auto-flush `:15`
+  and the standing `exports/2026-09-19` merge `:41` are recreated as session crons.
+  `.claude/cron-jobs.md` still names the old `geni` path and a local pytest; the prompts used
+  point at this directory and leave tests to CI.
+- **12:00 today: all seven workflows enabled AND the noticeboard gate removed.** Asked, and
+  answered *enable all 7, lift the gate*. Enabling alone would have changed nothing: the
+  noticeboard still mentions 日巫女 (ArthurPSmith's *Undeclared bots/quickstatements not obeying
+  maxlag* thread, which reports lag back under a minute at 01:28 UTC), and the gate stops every
+  pipeline event. A one-shot session cron does it; the standing queue item says so.
