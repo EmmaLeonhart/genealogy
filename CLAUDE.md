@@ -579,6 +579,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 
 - **`name modelling.txt` is the authority and beats this file.** A patronymic is `P5056`, parallel
   to `P735`/`P734`, with `P144` pointing at the **father, the person**.
+- **⛔ A PATRONYMIC REQUIRES THE FATHER. Ruled 2026-09-25:** *"patronymics are supposed to require
+  the father ... if the father has the Latin derived name"*. `Jonæ` is a patronymic when the
+  father is Jonas or Jon; `Andreae` with no such father is an inherited surname (the Tübingen
+  family). The father-free `-ae` rule of 2026-09-24 is gone.
 - **PARSE PATRONYMICS BY FORM. Never parse a name positionally.** Positional parsing is the
   ultimate cause of most name defects here. Both `GIVN` and `SURN` are checked.
 - **A TITLE IS NOT A NAME** — Geni already said so in `NSFX`. Drop titles, keep ordinals.

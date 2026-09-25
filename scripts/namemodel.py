@@ -1567,23 +1567,13 @@ def given_name_run(words):
 #: the tree records as `Per`, not `Petrus` -- clergy latinised their own names, not their
 #: fathers' -- so matching the genitive only against a LATIN father left `Erici`, `Olai`, `Petri`
 #: and `Olavi` classed as second given names, their bearers on `P735` and never `P5056`.
-#: Latin given names in `-as`, whose genitive is `-ae`/`-æ`: `Jonas` -> `Jonæ`. That ending is a
-#: patronymic by FORM -- no given name or surname looks like it, unlike `-i`, where the Finnish
-#: given name `Olavi` is real -- so it needs no father to confirm it (ruled 2026-09-24:
-#: *"Jonæ is a patronymic thing"*; 193 records carry `Jonæ`/`Jonae`).
-LATIN_AS_NAMES = frozenset("""
-    jonas andreas matthias elias tobias zacharias esaias jeremias josias lucas thomas
-    nicolas barnabas ananias
-""".split())
-
-
-def ae_patronymic(token: str) -> bool:
-    """`Jonæ`, `Andreae`, `Matthiæ`: the `-ae` genitive of a Latin `-as` given name."""
-    if not _fold(token).endswith("ae") and not token.casefold().endswith("æ"):
-        return False
-    return any(stem + "as" in LATIN_AS_NAMES for stem in latin_genitive_stems(token))
-
-
+#: ⛔ **A PATRONYMIC REQUIRES THE FATHER. Ruled 2026-09-25**, reversing the father-free `-ae` rule of
+#: 2026-09-24 (*"Jonæ is a patronymic thing"*): *"patronymics are supposed to require the father
+#: ... if the father has the Latin derived name"*. `Jonæ` is a patronymic when the father is Jonas
+#: or Jon, and `latin_patronymic` already tests exactly that, `-ae` stems included. The bypass that
+#: skipped the father (`ae_patronymic`, with its `LATIN_AS_NAMES`) is deleted: it read the Tübingen
+#: `Andreae` family (~62), Danish `Zachariae` and Romanian `Nicolae` as patronymics
+#: (`reports/name-rule-census/ae.csv`).
 LATIN_VERNACULAR = {
     "petrus": {"per", "pehr", "peder", "peter", "petter", "peer", "par"},
     "olaus": {"olof", "olov", "ole", "ola", "olav", "oluf", "olle"},
@@ -2981,7 +2971,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             continue
         if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
-        elif latin_patronymic(token, father_given) or ae_patronymic(token):
+        elif latin_patronymic(token, father_given):
             # `Nicolaus Iohannis Johansson`, `Magnus Jonæ Uhr`, `Georgius Andreae Troninus`:
             # the Latin genitive stands where a middle name would and is not one.
             out.append((token, "patronymic", 0))
@@ -3018,7 +3008,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             continue
         if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
-        elif latin_patronymic(token, father_given) or ae_patronymic(token):
+        elif latin_patronymic(token, father_given):
             out.append((token, "patronymic", 0))
         else:
             out.append((token, "family", 0))

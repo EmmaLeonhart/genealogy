@@ -29,10 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Guard the `-ae` genitive in `SURN`** (`reports/name-rule-census/ae.csv`). Right in `GIVN`
-  (`Petrus Jonæ`); wrong for ~70 inherited surnames: the Tübingen `Andreae` family (~62,
-  `Johann Valentin /Andreae/`), Danish `Zachariae` (4), and the Romanian given name `Nicolae`
-  (4). Unlike `LATIN_VERNACULAR` it has no father check.
 - **Guard `LATIN_VERNACULAR` by position** (`reports/name-rule-census/latin_vernacular.csv`). ~76
   of 541 are 19th-century Norwegian/Danish/Finnish given names turned patronymic because the father
   carries the vernacular name: `Olai Olsen` (41), `Nicolai Edvard /Nielsen/` (30), `Olavi` (5,

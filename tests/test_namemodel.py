@@ -1510,13 +1510,21 @@ def test_a_lone_letter_in_a_surname_field_is_never_a_family_name():
     assert ("김", "family", 0) in namemodel.classify_fields(givn="민수", surn="김")
 
 
-@pytest.mark.parametrize("givn, surn, token, kind", [
-    ("Petrus Jonæ", "", "Jonæ", "patronymic"),     # ruled 2026-09-24, no father needed
-    ("Petrus", "Jonæ", "Jonæ", "patronymic"),
-    ("Anders Andreae", "Berg", "Andreae", "patronymic"),
-    ("Petrus Thomae", "", "Thomae", "patronymic"),
-    ("Anna", "Blæ", "Blæ", "family"),              # an -æ surname that is no Latin genitive
+@pytest.mark.parametrize("givn, surn, father_given, token, kind", [
+    # Ruled 2026-09-25: a patronymic requires the father, who carries the Latin-derived name.
+    ("Petrus Jonæ", "", "Jonas", "Jonæ", "patronymic"),
+    ("Petrus", "Jonæ", "Jon", "Jonæ", "patronymic"),
+    ("Anders Andreae", "Berg", "Anders", "Andreae", "patronymic"),
+    ("Petrus Thomae", "", "Thomas", "Thomae", "patronymic"),
+    # No father carrying it: an inherited surname (the Tübingen Andreae), not a patronymic.
+    ("Johann Valentin", "Andreae", "Johannes", "Andreae", "family"),
+    ("Petrus Jonæ", "", "", "Jonæ", None),
+    ("Anna", "Blæ", "", "Blæ", "family"),          # an -æ surname that is no Latin genitive
 ])
-def test_the_ae_genitive_is_a_patronymic_by_form(givn, surn, token, kind):
-    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn)}
-    assert got[token] == kind
+def test_the_ae_genitive_is_a_patronymic_only_with_the_father(givn, surn, father_given, token, kind):
+    got = {t: k for t, k, _ in namemodel.classify_fields(givn=givn, surn=surn,
+                                                        father_given=father_given)}
+    if kind is None:
+        assert got.get(token) != "patronymic"
+    else:
+        assert got[token] == kind

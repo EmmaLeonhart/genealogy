@@ -47700,3 +47700,15 @@ Wikidata item, 190 carry the numeral in the item's own label (`Frederick V of th
 birth year before 1700, each with its evidence. `namemodel.regnal_exceptions()` reads it, and the
 initials branch keeps the numeral for exactly those `GIVN`/`SURN` pairs. `Nettie V Sweatland` and
 `Carl I. Berg` stay initials. The ruling is in `CLAUDE.md` § Names.
+
+## 2026-09-25 — a patronymic requires the father: the `-ae` bypass removed
+
+*"patronymics are supposed to require the father ... if the father has the Latin derived name."*
+`latin_patronymic` already confirms an `-ae` genitive against the father's given name (`Jonæ`
+with Jonas or Jon, `Andreae` with Andreas or Anders, via `LATIN_VERNACULAR`). `ae_patronymic` was
+a bypass that skipped the father, and it is deleted with its `LATIN_AS_NAMES`. From the census
+(`reports/name-rule-census/ae.csv`, 194 changed tokens): 7 have a confirming father and stay
+patronymics; the other 187 no longer become patronymics. That covers the ~62 Tübingen `Andreae`,
+the Danish `Zachariae` and the Romanian `Nicolae`, and also clergy genitives whose father is not
+on record, which now wait for the father. `test_the_ae_genitive_is_a_patronymic_only_with_the_father`
+replaces the test that pinned the old ruling. The ruling is in `CLAUDE.md` § Names.
