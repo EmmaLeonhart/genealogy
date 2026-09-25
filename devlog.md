@@ -47544,3 +47544,24 @@ whole of it.
 
 **CI run `36176127336` is fully green**: fast lane on 3.10 and 3.13, and slow lane. That confirms
 `f2541a391`, which closed the slow-lane item before the run had finished.
+
+## 2026-09-25 — `Q141492819` Marite Bergesdatter Talgje: the hand fix, and why it happened
+
+*"really egregious"*: the item was created by this account on 2026-09-17 at 19:57 UTC, from a
+pasted QuickStatements batch, labelled `Talgje` alone, with her married surname as `mul`/`en` and
+the CJK three read off it (`タルイェ`, `塔尔耶`, `탈게`), and `Bergesdatter` as the only alias.
+
+**The manual fix** is in `reports/label-applications.tsv`, the hand-supplied channel the composer
+emits verbatim: `Lmul`, `en`, `fr`, `de`, `no` and `sv` read `Marite Bergesdatter Talgje` (her
+value), and `ja` `マリテ・ベルゲスダッテル・タルイェ`, `zh` `马里特·贝尔盖斯达特·塔尔耶`, `ko`
+`마리테 베르게스다테르 탈게` (this repo's token readings, joined as `label_in` joins them). They go
+out on the next run under the label cap like any label edit, and the noticeboard hold is suspended
+to 2026-10-05.
+
+**Why, so far.** Her `CREATE` block in batch `17189bb` (the last composed before 19:57) shows the
+composer's married branch building `given + _MARNM` with `given` EMPTY: label `Talgje`, birth alias
+`Bergesdatter`. Ruled out with that commit's own code and data: her `display-names` row
+(`GIVN Marita Bergesdatter`, `_MARNM Talgje`) was intact, that `classify_fields` returns
+`Marita/given`, that `drop_marker_surname` keeps it, and `names_a_relative` is false. Not
+reproduced yet, so the forward fix is a guard on the SHAPE: a married label that does not carry
+the person's given name is never emitted. That is the next commit.
