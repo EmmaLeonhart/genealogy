@@ -30,6 +30,11 @@ the tool not being throttled correctly."*
 
 ## Now
 
+- **Clear up the junk in the repo and assess what it contains.** Go through what the repo holds
+  (the root holds `_plan.tsv`, `_regions.pkl`, `compose-garborg.log`,
+  `address the problem in this image.PNG`, `address_this.html` and more) and write an assessment
+  of the content: what each part is, whether the pipeline reads it, and what is junk. Deletions are
+  proposed through `AskUserQuestion` first; nothing is removed without a yes.
 - **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24,
   reopened. Done since: the exact-generation tie-break, the report subject at generation 1, and
   parents placed by ROW ORDER (8,446) -- couples with no parent resolved 74,440 -> 33,059.
