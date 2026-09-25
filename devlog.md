@@ -47268,3 +47268,13 @@ Three more of the assessment's open ends, each on a yes:
 **A literal name search is not proof a report is unread.** `descent-from-*-trunk.csv` matched
 nothing and `monte-carlo-pick.py` reads it through a built name. So the remaining 227 unnamed
 report files are queued to have their writer found one by one, not judged by a string match.
+
+## 2026-09-24 — the named path reports are records, not junk
+
+Proposed deleting the 58 `reports/path-<person>.json`/`.md` files (Scorpion I, Makeda, Jimmu,
+Hata, Gong Liu and others) on the same grounds as the 1,120 `path-isolate-*`: `genimerge path`
+wrote them, nothing reads them, and they were measured against 472,655- and 1,324,229-person
+trees. **Refused:** *"these are some of the most important files"*. Being unread and stale is
+evidence that the pipeline doesn't need a file. It says nothing about whether the file matters.
+They are listed under *Kept as records* in `reports/repo-content.md`, and the queue item for the
+other 169 unnamed report files carries the distinction.

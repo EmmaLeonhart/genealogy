@@ -33,6 +33,7 @@ reference counts.
 | `chats/` | 4 MB | 33 | saved conversations that decided things (`chats/README.md`) |
 | `docs/queued-analysis/` | 18.5 MB | 9 | screenshots of the 2026-09-11 reverts |
 | `reports/sources/` | 1 MB | 3 | Samaritan source PDFs |
+| `reports/path-<person>.json`/`.md` | 2 MB | 58 | the named relationship paths (Scorpion I, Makeda, Jimmu, Hata, Gong Liu and others), written by `genimerge path`. **Among the most important files in the repo** (ruled 2026-09-24), although nothing reads them and they were measured against older trees. Read-by-nothing is not junk |
 
 ## Junk, deleted 2026-09-24
 
@@ -83,7 +84,7 @@ today's, and nothing reads them. Rerunning that command regenerates them.
 - **`_plan.tsv`** is half-applied: the `exports/archive/` files were moved into `export-geni/`
   under counter names, and never renamed to the seed-id names it lists. Ruled 2026-09-24:
   finish it. Queued.
-- **227 loose `reports/` files** match no literal name in the pipeline code, and 97 of them are
+- **227 loose `reports/` files** (58 of them the named path reports above, kept) match no literal name in the pipeline code, and 97 of them are
   cited in `devlog.md` or `docs/`. A literal search is not proof a file is unread:
   `descent-from-*-trunk.csv` matched nothing and `monte-carlo-pick.py` reads it through a built
   name. Each one needs its writer found. Queued.
