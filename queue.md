@@ -26,12 +26,9 @@ on that page"* -- the gate in `pipeline.yml` stops every event, dispatch and `fo
 *"This is indication I was editing too aggressively but it was mostly a quickstatements issue of
 the tool not being throttled correctly."*
 
-- **Moved up to 12:00 2026-09-25 (ruled that morning): re-enable the seven workflows and lift the
-  noticeboard gate.** A one-shot session cron does both; if the session is gone by then, do it by hand.
 
 ## Now
 
-- **Lift the Administrators' noticeboard hold so today's edits go through (Emma, 2026-09-25).** Remove the noticeboard rule, or at least hold it, so that today's (2026-09-25) Wikidata edits go through. If the noon edits did not happen, make them happen by fixing the pipeline. The current noticeboard matter is considered done. Set it up so that in ten days, on 2026-10-05, the noticeboard check starts acting as a filter again.
 - **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24,
   reopened. Done since: the exact-generation tie-break, the report subject at generation 1, and
   parents placed by row order. **Measured per CHILD on 2026-09-25**, not per row: 3,713 distinct

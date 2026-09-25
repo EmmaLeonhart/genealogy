@@ -47415,3 +47415,12 @@ Two levers were tried and measured, and neither is kept:
 
 Queue item rewritten with these numbers. Left: the 1,364 named, 1,833 conflicting slots, and
 1,605 unsplittable parent strings.
+
+## 2026-09-25 — the noticeboard hold lifted until 2026-10-05; the seven workflows back on
+
+The noticeboard check is suspended until 2026-10-05 in all four places (`7fe7109ad`):
+`wikidata-edits.yml`, `pipeline.yml`, `daily-batch-email.yml` and
+`wikidata_lockout.noticeboard_clear` (`NOTICEBOARD_RESUMES`). From that date it fails closed as
+before. `ci`, `wikidata-edits`, `daily-batch-email`, `pipeline`, `pages`, `tree` and `review-decks`
+are re-enabled, ahead of 2026-10-01. Pipeline run `36147502168` passed the gate. The item's
+wording was to remove the hold, and that is done.
