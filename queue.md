@@ -30,6 +30,25 @@ the tool not being throttled correctly."*
 
 ## Now
 
+- **Extract both tiny GEDCOMs from every saved page, then delete the HTML.** Ruled 2026-09-24:
+  *"as soon as both of those are clear, extracted from them, we can remove all the HTML files.
+  It's just a matter of these need to be extracted."* The two kinds are the relationship path
+  (`exports/tiny-paths/`) and the immediate family (`exports/tiny-profiles/`). Measured
+  2026-09-24 over the 695 pages in `paths_for_wikidata_isolates/` and `geni_pages/`
+  (`reports/saved-page-extraction.md`):
+  - **Paths:** 693 of 695 are extracted identically, step for step, into `paths/*.tsv`, with a
+    tiny GEDCOM for each. Two are not extracted at all: Inger Axelsdatter Güntersberg (27 steps)
+    and James VI/I Stewart (51 steps). Extract them.
+  - **Immediate family:** read the `div.text_view_only table.data_table` (every relative, one row
+    per relation) together with the photo cards (195 people appear only there). Between them they
+    hold 5,552 of the 5,667 relatives the pages count. Find the other 132 (44 pages) before
+    calling them absent. The family blocks of these 695 pages look never extracted; confirm per
+    page by the subject's 19-digit id.
+  - **The 1,555 `geni-scraping/` pages deleted 2026-09-14 were read from their 12 photo cards
+    only.** Their text views were never read. Restore them from history, extract the text view,
+    and redo those tiny profiles.
+  - The HTML goes only when every page's path and family are in GEDCOMs; photos per
+    `reports/repo-content.md` stay.
 - **The other 227 loose `reports/` files no code names by a literal string**, each opened and
   judged by content, never as a lump. A name search misses built names: `descent-from-*-trunk.csv`
   looked unread and `monte-carlo-pick.py` reads it. So each file needs its writer found (an

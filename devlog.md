@@ -47278,3 +47278,25 @@ trees. **Refused:** *"these are some of the most important files"*. Being unread
 evidence that the pipeline doesn't need a file. It says nothing about whether the file matters.
 They are listed under *Kept as records* in `reports/repo-content.md`, and the queue item for the
 other 169 unnamed report files carries the distinction.
+
+## 2026-09-24 — ⛔ the saved pages were not truncated: the text view holds the whole family
+
+Emma did not believe that the saved pages had lost anything, and was right. Every saved profile
+page renders its Immediate Family twice: a photo view (`Showing 12 of 46 people`, 12 cards) and a
+**text view** (`Showing 46 people`, a `table.data_table` with one row per relation). The
+2026-09-14 entry *THE SAVED PAGES WERE TRUNCATED AND THE NUMBER IS 6,477* read only the cards
+and wrote that the rest *"were never in the files"*. They were in the table beside the cards.
+The 1,555 `geni-scraping/` pages were deleted on that reading, and their tiny profiles hold at
+most 12 relatives each. The pages are still in history.
+
+Measured over the 695 pages still here (`reports/saved-page-extraction.md`, a row per page in the
+`.csv`):
+
+    paths: identical to paths/*.tsv, step for step by Geni id        693
+           not extracted: Inger Axelsdatter Güntersberg, James VI/I     2
+    family: the pages count                                         5,667
+            text view + cards                                       5,552   (195 are on a card only)
+            in neither, not yet found                                 132   on 44 pages
+
+Queued at the top: extract both tiny GEDCOMs from every page, re-extract the 1,555 from history
+through the text view, then delete the HTML.
