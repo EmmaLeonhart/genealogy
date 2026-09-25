@@ -47486,3 +47486,10 @@ year tie-break. Against the previous shards, child by child:
 
 208,383 new Geni people, 209,743 child edges, and 15,803 zipper identifications in
 `reports/sweep-parsed-zipper.tsv`.
+
+## 2026-09-25 — the descendant-reports item closed, on a yes
+
+Closed after the re-render (`efea23d96`). What remains can't be resolved from the captured reports,
+and is recorded here rather than queued: 2,349 children with `<private>` parents, about 1,160 whose
+parent appears in no report, 838 conflicting slots with no usable years, and 1,128 title strings
+that no cut splits.
