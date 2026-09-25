@@ -47231,3 +47231,23 @@ as one lump. 2.6 GB of them is Geni's own JavaScript and CSS, saved again with e
 lump verdict over unopened files is exactly what it looked like. It is queued to be opened file
 by file, with `_plan.tsv` (a seed-id rename of `exports/archive/` that was never applied),
 `wikidata_isolates_to_clear/` and 1,347 loose report files no code names.
+
+## 2026-09-24 — the saved pages' asset folders opened file by file; 35,199 deleted
+
+The lump verdict from the entry above was not earned, so every one of the 38,276 files in
+`paths_for_wikidata_isolates/`, `geni_pages/` and `chats/` `*_files/` folders was read and
+classified by its **content** (magic bytes, then text shape), never by its name. They are copies
+of **3,214 distinct contents**, one row each in `reports/saved-page-assets.csv`.
+
+    site code (Geni JS/CSS, a Claude chat's bundle)  2.84 GB  20,405 files  351 distinct   deleted
+    Facebook like-button frames                     20.5 MB     693         692           deleted
+    icons and interface images                      17.7 MB  11,956          58           deleted
+    reCAPTCHA frames                                 1.2 MB      36          34           deleted
+    blank or stub frames                             0.3 MB   1,416           4           deleted
+    empty files                                          0      693           1           deleted
+    profile photo thumbnails                         9.1 MB   3,077       2,074           KEPT
+
+Deleted on a yes: 35,199 files, 2.88 GB, 14% of the repo's bytes. The 3,077 thumbnails are
+the only content in the folders and stay, with every `.html` page. The names had understated
+it: 2,284 extensionless files were stylesheets, scripts and 68 photos, and all 2,145 inner `.html`
+files were frames with no text.

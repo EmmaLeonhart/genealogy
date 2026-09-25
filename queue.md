@@ -30,12 +30,10 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Settle what `reports/repo-content.md` § *Not settled* leaves open.** Open the parts of the
-  saved pages' `*_files/` folders nobody has looked at (2,284 extensionless files, 1,998 inner
-  `.html` frames, 2,948 `.jpg`) and say file by file what they are. Nothing in those folders is
-  deleted as a lump. Then `_plan.tsv` (applied, pending or replaced?),
-  `wikidata_isolates_to_clear/`, and the 1,347 loose `reports/` files no code names. Deletions
-  go through `AskUserQuestion` first.
+- **Settle what `reports/repo-content.md` § *Not settled* leaves open.** `_plan.tsv` (applied,
+  pending or replaced?), `wikidata_isolates_to_clear/`, and the 1,347 loose `reports/` files no
+  code names, each opened and judged by content, never as a lump. Deletions go through
+  `AskUserQuestion` first.
 - **The descendant reports are NOT yet a full family tree.** Closed too early on 2026-09-24,
   reopened. Done since: the exact-generation tie-break, the report subject at generation 1, and
   parents placed by ROW ORDER (8,446) -- couples with no parent resolved 74,440 -> 33,059.

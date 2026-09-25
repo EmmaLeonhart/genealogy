@@ -50,27 +50,28 @@ reference counts.
 them, and nothing reads any of them. `out/name-item-qids/` is not junk: it is the cache for
 `collect-name-item-qids.py`.
 
+**The saved pages' `*_files/` folders: 35,199 of 38,276 files, 2.88 GB, deleted on a yes.**
+Saving a page in the browser writes `Name.html` plus a folder holding every file the page loaded.
+No code reads the folders, and every CI workflow leaves them out of its checkout. The first draft
+of this page called them junk as one lump without opening them. They were then opened, **every
+file classified by its content rather than its name**, one row per distinct content in
+`saved-page-assets.csv`:
+
+| content | size | files | distinct | verdict |
+| --- | ---: | ---: | ---: | --- |
+| site code (Geni's JavaScript and CSS, a saved Claude chat's app bundle) | 2.84 GB | 20,405 | 351 | deleted |
+| Facebook like-button frames | 20.5 MB | 693 | 692 | deleted |
+| icons and interface images | 17.7 MB | 11,956 | 58 | deleted |
+| reCAPTCHA frames | 1.2 MB | 36 | 34 | deleted |
+| blank or stub frames | 0.3 MB | 1,416 | 4 | deleted |
+| empty files | 0 | 693 | 1 | deleted |
+| **profile photo thumbnails** | 9.1 MB | 3,077 | 2,074 | **kept** |
+
+The `.html` pages and `chats/` `.md` extracts are untouched. The pages lose their styling in a
+browser, and none of their text.
+
 ## Not settled
 
-- **The saved pages' `*_files/` folders: 2.89 GB, 38,276 files, 14% of the repo. Kept.** A
-  browser's *save page* writes `Name.html` plus a `Name_files/` folder. No code reads the
-  folders, and every CI workflow leaves them out of its checkout. The first draft of this page
-  called them junk as one lump, which was not earned. Broken down for
-  `paths_for_wikidata_isolates/`:
-
-  | type | size | files | what it is |
-  | --- | ---: | ---: | --- |
-  | `.download` | 1.67 GB | 13,985 | Geni's JavaScript (`all.js`, `common.js`, `geni-loader-*.js`), the same files saved again with every page |
-  | `.css` | 945 MB | 3,996 | Geni's stylesheets, likewise repeated |
-  | no extension | 103 MB | 2,284 | **not opened** |
-  | `.html` | 20 MB | 1,998 | frames inside the page (`blank.html` and others), **not opened** |
-  | images | 25 MB | 14,447 | icons and silhouettes (`void.png`, `close.gif`), plus 2,948 `.jpg` that may be profile photos |
-
-  The JavaScript and stylesheets (2.6 GB) are Geni's own site code. The extensionless files, the
-  inner `.html` frames and the `.jpg`s have not been looked at, so nothing here is called junk
-  until they have. The pages themselves were harvested into `paths/` on 2026-09-02, so whether
-  the saved pages need to stay at all is a separate question. `geni_pages/*_files/` (126 MB) and
-  `chats/*_files/` (4 MB) have the same shape.
 - **`_plan.tsv`** (3 KB): renames `exports/archive/export-geni (N)/export-<Kind>.ged` to
   `export-<Kind>-<seed id>.ged`. It was never applied: the archive is named
   `export-geni/export-<Kind>-<N>.ged`, and none of the planned names exist. It is either pending
