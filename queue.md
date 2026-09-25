@@ -29,6 +29,7 @@ the tool not being throttled correctly."*
 
 ## Now
 
+- **Label Q141492819 "Marite Bergesdatter Talgje" (Emma: "really egregious").** https://www.wikidata.org/wiki/Q141492819 is labelled only "Talgje". Schedule for the next run `Q141492819|Lmul|"Marite Bergesdatter Talgje"` and the same label in en, fr, de, no and sv, plus the CJK labels under this repo's CJK conventions. Find out why it happened. Apply a specific manual fix to this one, plus general fixes that look backwards over past runs as well as forward. And reverse course on the undo of the married-name handling. The edits themselves go out under whatever the noticeboard rule allows at the time.
 - **Run `split-path-chains.py` and `build-tiny-gedcoms.py` over the chains already fetched.** The
   paused walk left 31,819 chains held (192,556 distinct people) and neither script was run after
   it; no workflow calls either. `build-tiny-gedcoms.py` writes corpus `.ged` files under
