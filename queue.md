@@ -45,8 +45,10 @@ the tool not being throttled correctly."*
     calling them absent. The family blocks of these 695 pages look never extracted; confirm per
     page by the subject's 19-digit id.
   - **The 1,555 `geni-scraping/` pages deleted 2026-09-14 were read from their 12 photo cards
-    only.** Their text views were never read. Restore them from history, extract the text view,
-    and redo those tiny profiles.
+    only.** Restore them from history (`30786275d^`) and redo their tiny profiles from the text
+    view plus the cards: 20,637 people against the 15,995 extracted. Their paths are already
+    done: all 457 real paths are in `exports/tiny-paths/saved-<id>.ged`. The other 1,088 pages
+    were saved before Geni computed a path (`no paths loaded`), so they have none to extract.
   - The HTML goes only when every page's path and family are in GEDCOMs; photos per
     `reports/repo-content.md` stay.
 - **The other 227 loose `reports/` files no code names by a literal string**, each opened and

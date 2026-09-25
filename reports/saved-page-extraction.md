@@ -54,3 +54,22 @@ The text-view table has the shape the 2026-09-10 ruling moved away from: a relat
 a run of names. It is a table cell, not prose, and every name in a row takes that row's relation
 (`Father of | Alexander IV Aegus; Heracles and Alexander of Megalopolis`). Read it by the
 `th`/`td` structure and the `data-profile-id` of each anchor, never by splitting text.
+
+## The 1,555 deleted `geni-scraping/` pages (restored from `30786275d^`)
+
+These are profile pages, not path pages, but each has the same relationship panel. Measured on
+every page:
+
+    a real path on the page                                   457
+      4+ steps                                                452
+      2-3 steps (parents and grandparents)                      5
+      every step already in exports/tiny-paths/saved-<id>.ged  457 of 457
+    saved before Geni computed a path                        1,088
+      "<!-- no paths loaded -->" and the unclicked "How are you related?" button;
+      the page holds only You -> ? -> subject, so there is no path to extract
+    no path on the page                                         10
+      the account's own profile, and 9 with an empty relationship panel
+
+**The family is where the loss was.** The 2026-09-14 extraction read the photo cards, 15,995
+people. The text-view tables on the same pages hold 20,079. Table and cards together give 20,637
+of the 22,464 the pages count. 1,532 pages carry a table.
