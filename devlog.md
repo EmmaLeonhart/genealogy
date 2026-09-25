@@ -47466,3 +47466,23 @@ any captured report that lists them, so their parent is absent from the capture.
 
 Dry run: 510 parents placed this way, and children with no Geni-id parent 3,734 -> 3,517 (-217).
 Conflicting slots 836 -> 838.
+
+## 2026-09-25 — `exports/sweep-parsed/` re-rendered with the day's parser fixes
+
+`parse-sweep-trees.py --date 2026-09-24 --replace --corpus-rev baf607e99` (the pre-merge tree, as
+ruled). The render now carries the widow roles, the unsplit-string and listing fallbacks, and the
+year tie-break. Against the previous shards, child by child:
+
+    parent slots unchanged                     410,440
+    label-only parent -> real Geni id            1,247
+    slots that gained a parent                     350
+    one Geni id -> another                          91   every one sampled is a correction:
+                                                         the old parent was born AFTER the
+                                                         child (Ferdinand Graf von Galen b. 1921
+                                                         as father of a child b. 1872)
+    slots no longer emitted                         25   a wrong namesake replaced by the right
+                                                         parent the corpus already holds, or a
+                                                         conflict years cannot decide (dropped)
+
+208,383 new Geni people, 209,743 child edges, and 15,803 zipper identifications in
+`reports/sweep-parsed-zipper.tsv`.
