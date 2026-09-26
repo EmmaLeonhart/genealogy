@@ -235,11 +235,11 @@
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q118174972",
-        "numeric-id": 118174972
+        "id": "Q15845368",
+        "numeric-id": 15845368
        }
       },
-      "hash": "d20a06c890ecab37a1a1027032108d6c706f56ad",
+      "hash": "0c1e255885f97446f25d5567a01371943bb2fdb7",
       "property": "P26",
       "snaktype": "value"
      },
@@ -664,8 +664,8 @@
     "value": "Fredric Ulric Wallenstråle"
    }
   },
-  "lastrevid": 2547190724,
-  "modified": "2026-09-17T23:45:29Z",
+  "lastrevid": 2549481504,
+  "modified": "2026-09-26T02:10:34Z",
   "ns": 0,
   "pageid": 98754323,
   "sitelinks": {},
@@ -131771,11 +131771,11 @@
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q141457263",
-        "numeric-id": 141457263
+        "id": "Q123411329",
+        "numeric-id": 123411329
        }
       },
-      "hash": "04ce43ec096091413fd9c6dab63709b9bd586f76",
+      "hash": "cf903f833fbeae5f89c0af45b0cbe61005210999",
       "property": "P40",
       "snaktype": "value"
      },
@@ -132071,8 +132071,8 @@
     "value": "约翰·克里斯托弗·夫雷伊伊塔格"
    }
   },
-  "lastrevid": 2547160623,
-  "modified": "2026-09-17T21:47:13Z",
+  "lastrevid": 2549485257,
+  "modified": "2026-09-26T02:30:59Z",
   "ns": 0,
   "pageid": 135010492,
   "sitelinks": {},
@@ -235487,6 +235487,70 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141533722$29C18226-C8BE-4A65-8D61-A80DA375B472",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141561999",
+        "numeric-id": 141561999
+       }
+      },
+      "hash": "f3f4358e6383c91f1e0d708ecdadea94a02cf617",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P144": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q141533514",
+          "numeric-id": 141533514
+         }
+        },
+        "hash": "ac1b7a2fc248f8660fa0324ad0b8d9e8519650dd",
+        "property": "P144",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P144"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "158d88762dce5d61603fd2ea8ffef6016fb4b453",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003601908314"
+          },
+          "hash": "8fe679252b52a677281d0b60b6903c2e313fa6c2",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141533722$A9AB59B8-EAA3-4519-A804-B567555C9AA7",
@@ -235667,8 +235731,8 @@
     "value": "尼尔斯·克丽丝滕森·约通"
    }
   },
-  "lastrevid": 2549093700,
-  "modified": "2026-09-24T20:42:21Z",
+  "lastrevid": 2549484062,
+  "modified": "2026-09-26T02:24:53Z",
   "ns": 0,
   "pageid": 135093712,
   "sitelinks": {},
@@ -246143,6 +246207,47 @@
      },
      "rank": "normal",
      "type": "statement"
+    },
+    {
+     "id": "Q141538922$E3FCDFAD-F6A0-48BB-B79F-F10D8D252F3B",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141561990",
+        "numeric-id": 141561990
+       }
+      },
+      "hash": "b6068fa9b78d7e2ccef4a863390eb0eb48ff6164",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "5be0a3e7066e48b042d7065ab0f6fcc418371923",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000005609223431"
+          },
+          "hash": "b6f244775d2a3c78f9462e55d9fbeed1ff7cefe2",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P570": [
@@ -246263,8 +246368,8 @@
     "value": "拉斯穆斯·克努森·赫兰德"
    }
   },
-  "lastrevid": 2548998130,
-  "modified": "2026-09-24T10:05:06Z",
+  "lastrevid": 2549482549,
+  "modified": "2026-09-26T02:16:19Z",
   "ns": 0,
   "pageid": 135098662,
   "sitelinks": {},

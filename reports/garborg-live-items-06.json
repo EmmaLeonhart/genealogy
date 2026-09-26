@@ -54029,11 +54029,11 @@
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q141488208",
-        "numeric-id": 141488208
+        "id": "Q141487976",
+        "numeric-id": 141487976
        }
       },
-      "hash": "1dfb6cbbd94e50b738006613fadb294ceb8a9d1b",
+      "hash": "1ac51bacf0ea7f044b4226bae5456926fb9a860c",
       "property": "P26",
       "snaktype": "value"
      },
@@ -54316,8 +54316,8 @@
     "value": "埃里克·古托尔姆松"
    }
   },
-  "lastrevid": 2546986354,
-  "modified": "2026-09-17T10:38:08Z",
+  "lastrevid": 2549484675,
+  "modified": "2026-09-26T02:28:21Z",
   "ns": 0,
   "pageid": 134680893,
   "sitelinks": {},
@@ -144084,6 +144084,70 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141518278$8DCB599B-837C-4D53-9A7C-3FCBF9D94C82",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141561992",
+        "numeric-id": 141561992
+       }
+      },
+      "hash": "d29af03ebfaca2fed2e5acde0ce484dee91856f1",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P144": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q141513556",
+          "numeric-id": 141513556
+         }
+        },
+        "hash": "5eeb1a8db43d7e16ddacc7fca78cbac6da62d58d",
+        "property": "P144",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P144"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "19b09e60943aee3648703fa20a36fbb0ae5915f5",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003491976516"
+          },
+          "hash": "a8dba4e2f4c874bd90992639c930c75ad3c29d19",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141518278$358FA36B-186B-499A-B7D7-B4E40B0FCAC7",
@@ -144246,8 +144310,8 @@
     "value": "托雷斯·托雷松·奥斯特雷·斯坦格兰"
    }
   },
-  "lastrevid": 2548087721,
-  "modified": "2026-09-21T08:05:55Z",
+  "lastrevid": 2549482945,
+  "modified": "2026-09-26T02:18:32Z",
   "ns": 0,
   "pageid": 135078058,
   "sitelinks": {},

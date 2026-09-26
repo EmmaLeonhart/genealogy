@@ -74762,11 +74762,11 @@
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q141440602",
-        "numeric-id": 141440602
+        "id": "Q20652942",
+        "numeric-id": 20652942
        }
       },
-      "hash": "69ec77d61c3e5908d6c24de2779db998b944a705",
+      "hash": "7b51cfd8a05424e0d4a34cc936f4b43034e8fc81",
       "property": "P22",
       "snaktype": "value"
      },
@@ -75329,8 +75329,8 @@
     "value": "卡塔里纳·古斯塔娃·林德格伦"
    }
   },
-  "lastrevid": 2548264362,
-  "modified": "2026-09-22T02:00:08Z",
+  "lastrevid": 2549485432,
+  "modified": "2026-09-26T02:31:42Z",
   "ns": 0,
   "pageid": 134851448,
   "sitelinks": {},
@@ -93268,11 +93268,11 @@
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q141442351",
-        "numeric-id": 141442351
+        "id": "Q121172577",
+        "numeric-id": 121172577
        }
       },
-      "hash": "1d1b672aeb1e4be14b8f8051908ea749127a7358",
+      "hash": "2ea4b5aafa21a772d8c3f511b10e726ee1087328",
       "property": "P40",
       "snaktype": "value"
      },
@@ -93652,8 +93652,8 @@
     "value": "乌尔里卡·卡塔里娜·卡斯托林"
    }
   },
-  "lastrevid": 2547159970,
-  "modified": "2026-09-17T21:43:51Z",
+  "lastrevid": 2549485415,
+  "modified": "2026-09-26T02:31:33Z",
   "ns": 0,
   "pageid": 135000078,
   "sitelinks": {},
@@ -122454,6 +122454,70 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141492828$A3BE7EF4-46E9-4E83-820C-5B066CB96FDE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141561998",
+        "numeric-id": 141561998
+       }
+      },
+      "hash": "aabf782290c8c61964dbe1558b063c002ec0a03c",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P144": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q141528854",
+          "numeric-id": 141528854
+         }
+        },
+        "hash": "a2e7a136b3e2c9abd9cf655cf317eb61d80b048f",
+        "property": "P144",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P144"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "80371c0bb1f5e7b462a19cd22643cf3fd8fc93ff",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000013724973335"
+          },
+          "hash": "131e0c92cc4f2565cd77a0aba8ab19b09a43672e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141492828$5D3FEE8B-CAB6-4FDD-8B80-657EA1054A10",
@@ -122592,8 +122656,8 @@
     "value": "奥拉·克伦松·里韦兰德"
    }
   },
-  "lastrevid": 2549056628,
-  "modified": "2026-09-24T15:54:45Z",
+  "lastrevid": 2549483546,
+  "modified": "2026-09-26T02:21:42Z",
   "ns": 0,
   "pageid": 135051994,
   "sitelinks": {},
@@ -246074,6 +246138,49 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141560076$7B218BCC-D1E9-40C8-B9FC-F05A8116A4B9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141562003",
+        "numeric-id": 141562003
+       }
+      },
+      "hash": "eab44b5832cd2cf6c975c8cd384caf1747acccf7",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bcc7457c7bf45f0d0da0cba6cd59e68f60fd7627",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000005609547747"
+          },
+          "hash": "796f9dc2b1317c032ffb98b020aaaedcd8e2ea8e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141560076$4FFF8EA4-1AC1-4D21-AF4F-5D730F779E9F",
@@ -246238,8 +246345,8 @@
     "value": "拉尔斯·克里斯托费尔松·斯卡德贝尔格"
    }
   },
-  "lastrevid": 2549312534,
-  "modified": "2026-09-25T17:15:47Z",
+  "lastrevid": 2549484243,
+  "modified": "2026-09-26T02:25:49Z",
   "ns": 0,
   "pageid": 135118961,
   "sitelinks": {},
