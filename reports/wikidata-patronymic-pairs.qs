@@ -177,6 +177,15 @@ LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 
+# Berntsdotter -- the counterpart of Berntson (20 bearer(s))
+CREATE
+LAST	Len	"Berntsdotter"
+LAST	Lmul	"Berntsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+
 # Olesdotter -- the counterpart of Oleson (19 bearer(s))
 CREATE
 LAST	Len	"Olesdotter"
@@ -338,28 +347,19 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 
+# Taralsdotter -- the counterpart of Taralson (14 bearer(s))
+CREATE
+LAST	Len	"Taralsdotter"
+LAST	Lmul	"Taralsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+
 # Gardsdotter -- the counterpart of Gardsson (13 bearer(s))
 CREATE
 LAST	Len	"Gardsdotter"
 LAST	Lmul	"Gardsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-
-# Gjermundsdotter -- the counterpart of Gjermundson (13 bearer(s))
-CREATE
-LAST	Len	"Gjermundsdotter"
-LAST	Lmul	"Gjermundsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-
-# Haldorsdotter -- the counterpart of Haldorson (13 bearer(s))
-CREATE
-LAST	Len	"Haldorsdotter"
-LAST	Lmul	"Haldorsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
