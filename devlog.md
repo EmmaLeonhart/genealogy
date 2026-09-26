@@ -47828,3 +47828,10 @@ It is keyed on `_FSFTID` exactly like the downloads, so it was moved (`git mv`, 
 overwritten) to `gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-25.ged`, where the bridge, the
 renderer and the zipper all read `*.ged`. The next `tree.yml` run zips it in. The `.rmtree`
 databases stay in `rootsmagic/` (`*.rmtree` is gitignored going forward).
+
+## 2026-09-25 — the RootsMagic export moved back
+
+The move above was wrong: `rootsmagic/` is Emma's working folder (`second_attempt.rmtree` is being
+edited in RootsMagic now). The move was index-only (a sparse checkout; the `.rmtree` was never
+touched), but the file is back at `rootsmagic/potentially_corrupted_file.ged` as she left it. It
+is not fed to the FamilySearch pipeline until she says how.
