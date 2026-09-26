@@ -48114,3 +48114,17 @@ day and the names rule it quoted ("never a name item"). The `P734` used to point
   people carry no family-name link rather than the stem.
 - The names rules page (the parenthesised-name table and its paragraph) and the `PARTICLES`
   comment were changed with the code. Tests pin the joins and the untouched patronymic particle.
+
+## 2026-09-26 — the repo reframed: a family tree for Wikidata, later the Gaiad
+
+- **README**: the title and "What this is" now say it builds a family tree for Wikidata, and later
+  one for the Gaiad at genealogy.order.life. The sources are listed with FamilySearch first, as
+  the direction the project is moving in. Geni is described as the current bulk rather than the
+  point. The stale 45-export counts are gone; the exact-join explanation and the path method stay.
+- **Pages site**: the QuickStatements batch stays the front page, as the item says. It gains the
+  framing line and a link to People.
+- **Per-individual pages** (`ed91a8f268`): `build-pages-site.py --people`, adapted from
+  order.life's `build.py` character pages. One page per QID, 12,114 of them, with parents,
+  spouses and children linked when they have a page too (others named from `derived-labels`), and
+  records listed Wikidata, FamilySearch, Geni. `pages.yml` builds them at deploy time and they
+  are gitignored, never committed. Built offline: 12,114 pages, 17.5 MB.

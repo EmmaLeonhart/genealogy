@@ -1,73 +1,48 @@
 # Synoptic
 
-One genealogy assembled from many sources, reconciled against Wikidata, and used
-to create the people Wikidata is missing.
+**A family tree for Wikidata, and later for the Gaiad at
+[genealogy.order.life](https://genealogy.order.life).**
 
-Geni.com is the source it is furthest along with and not what it is *for*. The
-tree is the thing; Geni exports are how a large part of it currently arrives, and
-Wikidata is where the result goes.
+One genealogy is assembled from many sources, reconciled against Wikidata, and used to add the
+people and relationships Wikidata is missing. Later the same tree becomes the family tree of the
+Gaiad, published at genealogy.order.life.
 
 > Scaffolded with [cleanvibe](https://github.com/Immanuelle/cleanvibe).
 
 ## What this is
 
-Geni.com exports a family tree as GEDCOM, and **each export is bounded at a few
-thousand people** — the 45 merged so far hold between 876 and 3864 individuals
-apiece, most of them at the ceiling. They overlap far less than that suggests:
+The tree is the thing. Several sources feed it, and none of them is what it is *for*:
 
-| | individuals | families |
-| --- | ---: | ---: |
-| largest single export | 3864 | 2620 |
-| all 45 merged | **89474** | **48254** |
-| present in every export | 0 | 0 |
+| source | what it brings |
+| --- | --- |
+| **FamilySearch** | downloads under `gedcom/familysearch/`, keyed on the FamilySearch tree id (`_FSFTID`) and walked against the tree by `zipper-join.py --familysearch`. This is the direction the project is moving in. |
+| **Wikidata** | the people who already have items, and the relationships between them, joined on their identifiers. |
+| **Geni** | GEDCOM exports under `exports/`, the bulk of the tree as it stands. Geni writes its profile id as the GEDCOM xref, so merging exports is an exact join, never a name match. |
+| **RootsMagic** | a hand-kept tree, exported as GEDCOM. |
 
-So the exports are overlapping slices of one tree rather than copies of it, and
-getting the whole tree means merging many slices. That is the first half of this
-project. The second half is reconciling the merged tree against Wikidata, and
-eventually generating the edits that would put the missing people *into*
-Wikidata.
+Everything is merged into one tree, `out/merged.ged`, and joined to Wikidata. What Wikidata lacks
+goes out as edits: today as a daily QuickStatements batch, generated in CI, sent partly by an
+automatic run and published for pasting on the [Pages site](https://emmaleonhart.github.io/genealogy/).
+QuickStatements are the main part of that site for now and will become less prominent as the
+project moves away from them; the site also has a page for every person the tree has paired with a
+Wikidata item.
 
-Those numbers cluster, but they are **not** a cap Geni enforces — see
-`genimerge.seeds.GENI_EXPORT_CAP`, which records what is actually known rather
-than the pattern they suggest. The most that can be said: the ceiling rose from
-3836 to 3864 over five days, and long runs of consecutive exports from different
-seeds in different styles come back with the identical count, so whatever the
-bound is, it is global rather than per-seed or per-style. Exports well under it
-(876, 1073, 1192) exhausted their branch before filling.
-
-Merging is exact, not fuzzy. Geni writes the profile ID as the GEDCOM xref
-itself:
+How the Geni side is merged is exact rather than fuzzy. Geni writes the profile ID as the GEDCOM
+xref itself:
 
 ```
 0 @I6000000001846508982@ INDI
 1 RFN geni:6000000001846508982
 ```
 
-so every record carries a stable primary key across exports, and the same ID is
-the join key to Wikidata via **P2600 (Geni.com profile ID)**.
+so every record carries a stable primary key across exports, and the same ID is the join key to
+Wikidata via **P2600 (Geni.com profile ID)**. **Later sources win** a value conflict, because the
+newer export holds the correction.
 
-The merge of all 45 currently produces 89474 individuals and 48254 families —
-see `reports/merge.md`. Conflicts are rare and so far entirely `INDI.CHAN.DATE`,
-the profile's own last-edited stamp, disagreeing because the profile was edited
-between two exports. **Later sources win**, so the newer stamp is the one kept.
-
-It is **one connected tree**, as of 2026-08-04. It was two for the days before
-that: the Norwegian material and the Japanese mythological line rooted at
-Kunino-tokotachi-no-mikoto, sharing no person and no family. `reports/frontier.md`
-tracks the components, and a future export reaching somewhere nothing else does
-can split it again — that is normal, not a defect. Disjoint components do not
-conflict; they just never meet.
-
-**How the two halves were joined.** `reports/path-jimmu.md` checks an 83-step
-Geni relationship path — Empress Jingū to Emperor Jimmu — against the merged
-tree, joining on the profile ID at every step. It went **62/83 held, then 77/83,
-then 83/83**: a 21-step gap attacked from both ends, then closed by two exports
-seeded in the six people that were left. Every step of that path is now walkable
-inside our own data.
-
-That is the method, not a one-off: save the Geni page for someone you want to
-reach, extract the path, and it tells you precisely which people stand between
-you and them.
+A Geni relationship path can be checked against the tree step by step on the profile ID:
+`reports/path-jimmu.md` walked an 83-step path, Empress Jingū to Emperor Jimmu, from 62 of 83 steps
+held to 83 of 83. That is the method, not a one-off: extract the path to someone you want to reach,
+and it tells you precisely which people stand between you and them.
 
 ## Layout
 
