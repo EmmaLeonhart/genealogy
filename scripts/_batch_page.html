@@ -30,13 +30,17 @@ a{color:var(--accent)}
   <button id="select">Select all</button>
   <span class="sub" id="said"></span>
 </div>
-<!-- ⛔ THE LINK TO THE ONE ACTION THAT REDOES EVERYTHING. Ruled 2026-09-20. The site is public
-     and this link is safe to publish: workflow_dispatch requires WRITE access, so a visitor can
-     read the page and only somebody who can push can start it. -->
-<p class="sub">Rebuild the tree, refresh the ledger, recompose the batch and send it:
-<a href="https://github.com/EmmaLeonhart/genealogy/actions/workflows/redo-everything.yml"
-   target="_blank" rel="noopener">Redo everything</a>
-— one Action, run in order. Only a repository writer can start it.</p>
+<!-- ⛔ THE LINK TO THE PIPELINE THAT ACTUALLY MAKES THIS PAGE. Ruled 2026-09-20 as a link to
+     redo-everything.yml; ruled 2026-09-26 that it must start the real pipeline instead: that
+     workflow was not the one generating the working QuickStatements, and its last six runs were
+     cancelled, failed or never started. pipeline.yml composes this batch and publishes this page.
+     The site is public and the link is safe to publish: workflow_dispatch requires WRITE access,
+     so a visitor can read the page and only somebody who can push can start it. -->
+<p class="sub">Recompose the batch and republish this page:
+<a href="https://github.com/EmmaLeonhart/genealogy/actions/workflows/pipeline.yml"
+   target="_blank" rel="noopener">Run the pipeline</a>
+— tick <em>force</em> to run it even when the account has not edited in six hours. Only a
+repository writer can start it. The daily edit run sends the automatic share on its own.</p>
 <pre id="qs">%s</pre>
 <script>
 /* **The copy button did not work and this is three fixes, not one.** 2026-09-04:

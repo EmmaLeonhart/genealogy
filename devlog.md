@@ -48087,3 +48087,11 @@ Killed the pipeline run in progress, `36265563272`, which had run from 12:17 PM 
 1:55 PM PDT (1 h 37 min), and the pending push run `36270815889`. Dispatched `36271114265` with
 `force=true` at 1:54 PM PDT; it was running by 1:55 PM PDT. As ruled, this run still carries the
 particle error, which is queued after the QuickStatements-page button.
+
+## 2026-09-26 — the QuickStatements page's button runs the real pipeline
+
+The page's link went to `redo-everything.yml`. Its last six runs were cancelled or failed, one never
+started, and it is not the workflow that generates the working QuickStatements. The link in
+`scripts/_batch_page.html` now opens `pipeline.yml`, which composes the batch and publishes this
+page. The text says to tick `force` when the account has not edited in six hours, and that sending
+is the daily edit run's job. `redo-everything.yml` itself is left in place and is no longer linked.
