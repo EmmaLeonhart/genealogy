@@ -48128,3 +48128,12 @@ day and the names rule it quoted ("never a name item"). The `P734` used to point
   spouses and children linked when they have a page too (others named from `derived-labels`), and
   records listed Wikidata, FamilySearch, Geni. `pages.yml` builds them at deploy time and they
   are gitignored, never committed. Built offline: 12,114 pages, 17.5 MB.
+
+## 2026-09-26 — order.life and RootsMagic items moved to the end of the queue
+
+On Emma's ruling, after `git sparse-checkout add order.life` removed two committed files from
+`rootsmagic/` at 2:09 PM PDT (restored from git at 2:11 PM PDT, nothing lost): the order.life
+submodule, the RootsMagic extraction and the comprehensive order.life pass go to the end of the
+queue, in that order. The RootsMagic work had only read `.gitignore` and a private temp copy of the
+committed `.rmtree`, taken from git, which is now deleted. `rootsmagic/second_attempt.rmtree` is
+git-ignored (`.gitignore:661 *.rmtree`), as expected.
