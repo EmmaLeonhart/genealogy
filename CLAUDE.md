@@ -205,12 +205,10 @@ push, and let the pipeline run it.
 08:07. The Pages site publishes the disjoint remainder for a person to paste. Nobody has to
 start it.
 
-**⛔ NOTHING GOES OUT THROUGH PASTED QUICKSTATEMENTS. EVERY EDIT GOES THROUGH THE SENDER. Ruled
-2026-09-25**, after `日巫女` topped the edit-volume list in the Administrators' noticeboard thread
-*Undeclared bots/quickstatements not obeying maxlag*: *"you were doing quickstatements and such in
-the same way"*. QuickStatements kept editing while maxlag held every well-behaved bot back.
-`wikidata-edit-run.py` sends `maxlag` and waits it out, so the whole day's batch goes through it,
-and nothing is published for pasting. The paragraph above describes the split this replaces.
+**The pasted half stays. Ruled 2026-09-25:** asked whether to stop publishing the batch for
+pasting (the Pages page and the Daily batch issue), the answer was *keep both*. The sender sends
+the rationed `-auto` share; the Pages page and the Daily batch issue keep handing over the whole
+batch for QuickStatements.
 
 ## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
 

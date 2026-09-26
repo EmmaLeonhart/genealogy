@@ -47806,3 +47806,11 @@ QuickStatements traffic in question. Queued as the next item.
 
 The shape check flagged "Ruled 2026-09-25 ... not yet built" in the send-through-the-sender item
 as status written into work. The item now states the action and points at the `CLAUDE.md` rule.
+
+## 2026-09-25 — the pasted half stays: a misread ruling corrected
+
+Earlier today `CLAUDE.md` gained *NOTHING GOES OUT THROUGH PASTED QUICKSTATEMENTS*, read from an
+angry answer (*"you were doing quickstatements and such in the same way"*). Asked directly before
+building it (remove the Pages batch page and disable the Daily batch issue?), Emma answered
+*keep both*. The block is replaced with that ruling, and the queue item is removed; nothing was
+changed in the pipeline.
