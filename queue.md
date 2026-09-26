@@ -13,11 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **The ration and the pacing, seen working end to end (BLOCKED-ON-EXTERNAL: the 08:07 UTC
-  scheduled `wikidata-edits` run of 2026-09-26).** Run `36054472568` (2026-09-24) sent nothing: its
-  first create waited out maxlag for 900 s (`still lagged after 900s of waiting`, the day of the
-  WDQS lag) and the run was cancelled at 20:45. Read the next run's log for: names -> 30 people ->
-  ring going out in that order, 20-50 s apart, and what stops it.
 - **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
   here is only to hold the identifiers and what the tree says (the archived queue has both).
 
@@ -69,3 +64,9 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 - **Look into Alfheid: the person created and then merged soon after.** The Alfheid item was placed very oddly, in a way that suggests the run may have been reading from the wrong source, or not treating the privileged directory as prominently as it should. Emma thinks it was an isolated case, possibly from a merge that was not done properly, but it is worth checking: find how Alfheid was created and placed, whether the privileged directory was read with the priority it should have, and whether any other person was affected the same way.
 - **Places: our interpretation as the value, the exact source string as `object named as` (P1932).** For place of birth, place of death, place of marriage and locations generally, record our interpretation (the place item) as the statement value, and the exact string from the source as the qualifier `object named as` (P1932) on that statement. That keeps the raw text beside our reading, so full parsing is not needed up front and every interpretation stays checkable. Emma: "use the qualifier object named as to give whatever the actual string was in the source and then our interpretation of the string." This belongs with the place-resolution item above.
 - **Analyse Q141522207, created about 19:15 on 2026-09-25 and clearly wrong.** https://www.wikidata.org/wiki/Q141522207, as Emma screenshotted it seconds after creation (`../inbox/2026-09-25-screenshots/Q141522207-1915.png` in the parent repo): en label "father of Britta Olsdotter", fr "père de Britta Olsdotter", en-ca and en-us "Ols NN", no descriptions. So the en and fr labels are placeholders describing a relationship, not a name, and the en-ca/en-us label takes "Ols" from the daughter's patronymic as if it were a given name. Find which run and code path created it, why a placeholder became the label, why the English variants disagree with en, and fix the item plus every other item made the same way. This was created by the current edit runs, so check whether they should keep going before it is fixed.
+- **The ration and the pacing, seen working end to end.** When this needs an edit run, START ONE
+  IMMEDIATELY (`gh workflow run wikidata-edits.yml -f dry_run=false -f limit=500 -f
+  batch=reports/wikidata-garborg-day-auto.txt`); never wait for the schedule. Then read its log
+  for: names -> 30 people -> ring going out in that order, 20-50 s apart, and what stops it.
+  Run `36054472568` (2026-09-24) sent nothing (maxlag, 900 s) and `36210995253` (2026-09-26) was
+  cancelled.
