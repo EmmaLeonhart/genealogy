@@ -47718,3 +47718,15 @@ replaces the test that pinned the old ruling. The ruling is in `CLAUDE.md` § Na
 Queue item from Emma: commit and push after every meaningful change, never in batches at the end
 of an item. Recorded as a standing rule in `CLAUDE.md` § *The hard ones*, above the push-to-`main`
 rule.
+
+## 2026-09-25 — a Latin genitive among vernacular names is a given name
+
+`LATIN_VERNACULAR` let a father named Ole/Niels confirm `Olai`/`Nicolai` wherever they stood.
+`classify_fields` now reads a father-confirmed Latin genitive in `GIVN` as a given name when it
+opens the field (`Nicolai Edvard /Nielsen/`), or when the first given name is vernacular and a
+vernacular patronymic already names the father (`Johan Nicolai Nilsson`, `Hans Olai /Olsen/`). The
+clergy form keeps it: a Latin first name, or no vernacular patronymic (`Ericus Benedicti`,
+`Olaus Laurentii`). **Measured on the census's 541 rows, each with its father's name:** 86 move
+from patronymic to given, the census's ~76 clear errors plus ~10 ambiguous; 443 stay patronymics.
+Found on the way, and older than this change: `Iohannis` is not matched to Johannes (I/J
+spelling), so `Nicolaus Iohannis Johansson` reads `Iohannis` as given.

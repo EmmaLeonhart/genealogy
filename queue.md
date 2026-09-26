@@ -29,10 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Guard `LATIN_VERNACULAR` by position** (`reports/name-rule-census/latin_vernacular.csv`). ~76
-  of 541 are 19th-century Norwegian/Danish/Finnish given names turned patronymic because the father
-  carries the vernacular name: `Olai Olsen` (41), `Nicolai Edvard /Nielsen/` (30), `Olavi` (5,
-  though the code comment itself says `Olavi` is a Finnish given name).
 - **Lone-letter surname: `Å` and `Ö` are real one-letter farm names** (5 records,
   `Ingvald /Å/`) and are now `unknown`. The other 1,056 of 1,061 changes are right (`N.`, `Y.`,
   `Ø`, connectors `é`/`á`/`í`).

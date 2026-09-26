@@ -2934,6 +2934,21 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # is an epithet or an alias, not a given name -- counted before these were kept, so that
     # keeping `Heinrich` does not mint `Gute` as a `P735`.
     _after_connector = False
+
+    # ⛔ **A LATIN GENITIVE THAT OPENS `GIVN`, OR STANDS AMONG VERNACULAR NAMES, IS A GIVEN NAME.**
+    # Census 2026-09-25 (`reports/name-rule-census/latin_vernacular.csv`): `Olai`, `Nicolai` and
+    # `Olavi` are 19th-century Norwegian/Danish/Finnish GIVEN names, and a father named Ole/Niels
+    # was enough to make them patronymics: `Nicolai Edvard /Nielsen/` (opens the field, 43 such)
+    # and `Johan Nicolai Nilsson` (a vernacular first name, and the vernacular patronymic already
+    # names the father, 29). The clergy form keeps its patronymic: a Latin first name
+    # (`Nicolaus Iohannis Johansson`) or no vernacular patronymic (`Ericus Benedicti`).
+    _first = (_givn_tokens or [""])[0]
+    _first_latin = _fold(_first).endswith(("us", "as", "es")) or _fold(_first) in LATIN_VERNACULAR
+    _vernacular_patronymic = any(is_patronymic(t) for t in _givn_tokens + (surn or "").split())
+
+    def _latin_is_given(position):
+        return position == 0 or (_vernacular_patronymic and not _first_latin)
+
     for position, token in enumerate([] if (is_description(raw_givn) or _relation_phrase)
                                      else join_particles(_givn_tokens)):
         if name_shape(token)[0].casefold() in NOT_NAME_WORDS:
@@ -2971,7 +2986,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             continue
         if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
-        elif latin_patronymic(token, father_given):
+        elif latin_patronymic(token, father_given) and not _latin_is_given(position):
             # `Nicolaus Iohannis Johansson`, `Magnus Jonæ Uhr`, `Georgius Andreae Troninus`:
             # the Latin genitive stands where a middle name would and is not one.
             out.append((token, "patronymic", 0))
