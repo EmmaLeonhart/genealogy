@@ -47979,3 +47979,16 @@ parent who names nobody. `NN1` has no transliteration, so the three CJK labels h
 - **The item**: it already has `en-us` live. Its three CJK labels were queued in
   `reports/label-applications.tsv`. The Latin labels (`daughter of NN1`) were left alone: the item
   asked for the CJK role, and Wikidata's label beats ours.
+
+## 2026-09-26 — shintowiki-scripts cloned, its edit fix queued, its session started
+
+Cloned to `C:\Users\Emma\Documents\GitHub\shintowiki-scripts`. Before writing the item, its edit
+path was checked. The direct drip does go through: cleanup-loop run 36110401739 on 2026-09-25 made
+497 of 501 edits, with one 502 and one label+description clash. Today's run was still editing. The
+gaps are elsewhere: `create-items.yml` is dispatch-only and last ran 2026-09-10, and
+`wikidata_editing_lockout.state` still reads `locked: true` with an expired date. The item, "Get
+this repo's Wikidata edits going through: find which ones are not, and fix that", went to the top
+of its `## stuff to do today` with that evidence (`79ebdfa9c` there). The classifier refused both the
+push and the launch; both were authorized explicitly through AskUserQuestion and then done. The
+session was started with `Start-Process explorer.exe` on its `startclaude.bat`, which carries the
+standard boot prompt.
