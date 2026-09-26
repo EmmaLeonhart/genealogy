@@ -47903,3 +47903,13 @@ Measured on the live labels read today (8,006 items): the item reading replaces 
 item readings are often the better ones: `Johannes` ko `요하네스` for `조한네스`, `Ingeborg`
 `잉게보르크` for `이에보륵`. It governs what is composed from now on; no established label is
 rewritten for it.
+
+## 2026-09-26 — the work loop was already every 30 minutes; the gaps were idle ticks
+
+Checked the session's crons: the work loop is `0,30 * * * *` (every 30 minutes) and has been
+since the session began; auto-flush `:15` and the exports merge `:41` are hourly. So nothing
+needed re-creating. The idle gaps of 2026-09-25 (35-107 minutes) were ticks that fired and
+found nothing to start. The 107-minute gap (17:43-19:31) was the first item blocked on the
+08:07 scheduled edit run, reported `nothing actionable` tick after tick; Emma then moved that
+item to the end, with *start an edit run immediately when needed*. Other gaps were waits on CI
+runs. A blocked first item should be made actionable, not waited on.
