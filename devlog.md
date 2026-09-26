@@ -47814,3 +47814,17 @@ angry answer (*"you were doing quickstatements and such in the same way"*). Aske
 building it (remove the Pages batch page and disable the Daily batch issue?), Emma answered
 *keep both*. The block is replaced with that ruling, and the queue item is removed; nothing was
 changed in the pipeline.
+
+## 2026-09-25 — the RootsMagic export joins the FamilySearch inputs: +22,417 people
+
+`rootsmagic/potentially_corrupted_file.ged` (committed by Emma, RootsMagic export of 2026-09-25,
+rooted on `PFR5-LDS`) was checked before use: **29,073 INDI, 24,761 FAM, every INDI carrying a
+unique `_FSFTID`, and no dangling FAMC/FAMS/CHIL/HUSB/WIFE pointer**, so it is not corrupted where
+it matters. Against the two `getmyancestors` downloads: 6,656 people in both, **22,417 only in
+RootsMagic**, and 21,098 only in the downloads, so the earlier FamilySearch export did miss a
+lot, as the item said.
+
+It is keyed on `_FSFTID` exactly like the downloads, so it was moved (`git mv`, nothing
+overwritten) to `gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-25.ged`, where the bridge, the
+renderer and the zipper all read `*.ged`. The next `tree.yml` run zips it in. The `.rmtree`
+databases stay in `rootsmagic/` (`*.rmtree` is gitignored going forward).
