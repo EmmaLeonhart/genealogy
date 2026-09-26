@@ -394,6 +394,56 @@ def is_relationship_description(text):
     return any(low.startswith(p) for p in RELATIONSHIP_PREFIXES)
 
 
+
+#: ⛔ **THE SIXTEEN STANDARDIZED SCRIPTS, on every creation.** `queue.md`, 2026-09-25: *"Finally
+#: implement standardized labels in Russian, Ukrainian, Greek, Hindi, Arabic, Persian, Bengali,
+#: Hebrew, Tamil, Cherokee, Inuktitut, Ethiopian, Maldivian, Armenian, Georgian and zgh."*
+#: `scripts/translit_scripts.py` holds the engines, letter for letter from the Latin `mul`
+#: label; "Ethiopian" is Amharic (`am`) and "Maldivian" is Dhivehi (`dv`).
+STANDARD_SCRIPT_CODES = ("ru", "uk", "el", "hi", "ar", "fa", "bn", "he", "ta", "chr", "iu",
+                         "am", "dv", "hy", "ka", "zgh")
+
+
+def standard_script_labels(label):
+    """`{code: label}` for the sixteen, or `{}` when the label is not one to transcribe.
+
+    Only a wholly Latin label is transcribed, and not one carrying an unknown-name marker
+    (`NN`, `NN1`, `Unknown`): those have descriptive labels in the languages that have the
+    words, and spelling `NN` out in Cherokee is not a name. A Roman numeral (`II`) or an
+    initial (`A.`) keeps its Latin letters in every script, as it does in CJK.
+    """
+    from labels import WORDS_MEANING_UNKNOWN
+    from translit_scripts import SCRIPTS, _CASED, _CLUSTERS
+    tokens = (label or "").split()
+    if not tokens or any(ch.isalpha() and not ("A" <= ch <= "z" or "\u00c0" <= ch <= "\u024f")
+                         for ch in label):
+        return {}
+    unknown = {w.lower() for w in WORDS_MEANING_UNKNOWN if " " not in w} | {"nn", "unknown"}
+    if any(re.fullmatch(r"nn\d*", t.lower().strip(".,")) or t.lower().strip(".,") in unknown
+           for t in tokens):
+        return {}
+    out = {}
+    for code in STANDARD_SCRIPT_CODES:
+        words = []
+        for token in tokens:
+            if re.fullmatch(r"[IVXLC]+|[A-Z]\.?", token.strip(",")):
+                words.append(token)
+                continue
+            low = token.lower()
+            for a, b in _CLUSTERS:
+                low = low.replace(a, b)
+            got = SCRIPTS[code](low)
+            if not got:
+                words = []
+                break
+            # A cased script follows the source token's case: `von` stays lower case.
+            up = code in _CASED and token[:1].isupper()
+            words.append(got[0].upper() + got[1:] if up else got)
+        if words:
+            out[code] = " ".join(words)
+    return out
+
+
 def describe_all(geni_id, facts, father, mother, labels, table,
                  children=None, spouses=None, siblings=None,
                  qid_of=None, live_labels=None, fields=None):
@@ -7914,6 +7964,8 @@ def main():
                 # includes Korean. Without this the gate could require `ko`
                 # while the CREATE block never wrote one.
                 lines.append(f'LAST\tLko\t"{ko}"')
+                for _code, _label in standard_script_labels(mul_form).items():
+                    lines.append(f'LAST\tL{_code}\t"{qs(_label)}"')
                 # **A TRANSLITERATED birth name is not a `ja`/`zh` alias**, ruled 2026-08-30:
                 # the transliteration of the Geni display name does not go into Japanese or
                 # Chinese aliases at all.
