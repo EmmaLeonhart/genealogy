@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **2,235,572 people**, 
-of whom 96,978 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **2,250,893 people**, 
+of whom 96,982 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 2,230,263 | 99.8% |
-| occupation | 205,344 | 9.2% |
-| birth date | 1,328,700 | 59.4% |
+| sex | 2,245,581 | 99.8% |
+| occupation | 205,270 | 9.1% |
+| birth date | 1,343,576 | 59.7% |
 | birth place | 0 | 0.0% |
-| death date | 1,077,450 | 48.2% |
+| death date | 1,085,757 | 48.2% |
 | death place | 0 | 0.0% |
-| burial date | 117,085 | 5.2% |
+| burial date | 118,743 | 5.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,27 +48,27 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**9,175 date values**, 6,927 distinct, parsed to no year. They keep their raw
+**6,434 date values**, 5,111 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
-| `about 1670` | 36 |
-| `about 1650` | 33 |
-| `about 1680` | 27 |
-| `about 1660` | 27 |
-| `about 1665` | 26 |
-| `about 1700` | 25 |
-| `about 1250` | 24 |
-| `about 1300` | 24 |
-| `about 1280` | 21 |
-| `about 1630` | 21 |
-| `about 1685` | 21 |
-| `about 1320` | 20 |
-| `about 1655` | 20 |
-| `about 1290` | 18 |
-| `about 1690` | 18 |
+| `about 1670` | 29 |
+| `about 1650` | 24 |
+| `about 1680` | 23 |
+| `about 1700` | 21 |
+| `about 1660` | 19 |
+| `about 1350` | 17 |
+| `about 1300` | 17 |
+| `about 1665` | 16 |
+| `ABT` | 16 |
+| `about 1685` | 15 |
+| `about 1320` | 14 |
+| `about 1340` | 14 |
+| `about 1330` | 13 |
+| `about 1400` | 13 |
+| `about 1690` | 13 |
 
 `reports/impossible-years.md` has the full account of these: bare modifiers with
 no operand, and cosmological years in the hundreds of millions belonging to
