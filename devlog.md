@@ -47962,3 +47962,20 @@ von Öhningen`, `Gunnhild Persdatter Berge`) and are correct live, so the items 
   the maiden-name swap gave `Berge`. This is the `Talgje` defect, which already has a guard
   (2026-09-25). Everyone has been labelled under the married name since 2026-09-25, so the current code
   builds `Gunnhild Underberge`, with `Gunnhild Berge` as the alias.
+
+## 2026-09-26 — Q141550971: en-us on creations, and numbered NN names nobody
+
+`Q141550971` was created `Lmul "Mariet NN"`, `Len "Mariet, daughter of NN1"`, with `ja`/`zh`/`ko`
+as the bare name (`マリエト`). Both of Geni's parents for her are numbered placeholders, `NN2` and
+`NN1`. `describe_all`'s `usable` caught `NN` but not `NN1`, so the description was built on a
+parent who names nobody. `NN1` has no transliteration, so the three CJK labels had no role.
+
+- **Numbered `NN` is now a marker in `usable`** (`nn\d+`), so the walk falls through to the next
+  relative. For Mariet that is her husband: `Mariet, wife of Jon Karlsson`,
+  `ジョン・カルルソンの妻マリエト`, `乔恩·卡尔松之妻马里埃特`, `존 칼손의 아내 마리에트`. These are
+  the outputs of the fixed `describe_all`. 27 people carry an `NN<n>` label.
+- **`en-us` on every creation where `en` differs from `mul`**: a pass over each CREATE block after
+  deduplication copies `Len` to `Len-us`, unless the block already sets one. Checked on sample blocks.
+- **The item**: it already has `en-us` live. Its three CJK labels were queued in
+  `reports/label-applications.tsv`. The Latin labels (`daughter of NN1`) were left alone: the item
+  asked for the CJK role, and Wikidata's label beats ours.

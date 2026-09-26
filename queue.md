@@ -13,7 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **Look over https://www.wikidata.org/wiki/Q141550971 for two errors, and fix both.** First, American English (en-us) labels should be put on items where the mul and en labels differ. Second, the Chinese, Japanese and Korean labels do not have the role in them, and that needs to be fixed.
 - **Clone shintowiki-scripts, queue the fix that gets its edits through, and start a session for it.** Clone https://github.com/EmmaLeonhart/shintowiki-scripts to `C:\Users\Emma\Documents\GitHub\shintowiki-scripts` (there is no local clone yet). Add an item to its `queue.md` to get things fixed so its edits go through, then commit and push that. Then open a Claude session in it the standard way: its startup launcher started through explorer.exe, with the usual boot prompt.
 - **Adopt shintowiki-scripts' editing pacing.** After the item above, analyse how shintowiki-scripts edits Wikidata (its editing algorithms: pacing, throttling, batching and the like) and adopt those in this repo. Creation stays unchanged; only the pacing and how edits are sent change.
 - **Finally implement standardized labels in Russian, Ukrainian, Greek, Hindi, Arabic, Persian, Bengali, Hebrew, Tamil, Cherokee, Inuktitut, Ethiopian, Maldivian, Armenian, Georgian and zgh.**

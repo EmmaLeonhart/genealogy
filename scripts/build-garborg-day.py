@@ -468,6 +468,12 @@ def describe_all(geni_id, facts, father, mother, labels, table,
             tokens = low.replace("/", " ").split()
             if any(t in single_word for t in tokens):
                 return ""
+            # **A NUMBERED `NN` NAMES NOBODY EITHER.** Geni numbers its placeholders (`NN1`,
+            # `NN2`), and `Q141550971` went out as `Mariet, daughter of NN1` with a bare
+            # transliterated name in `ja`/`zh`/`ko`, because `NN1` has no reading. Falling through
+            # reaches her husband Jon Karlsson. 27 people are labelled this way (2026-09-26).
+            if any(re.fullmatch(r"nn\d+", t) for t in tokens):
+                return ""
             # **A relative whose own label is one of these descriptions names nobody either**,
             # and it composes into nonsense rather than stopping: `daughter of father of`, and
             # `wife of Son of Menon III Pharsalos`. 21 of those are sitting in
@@ -8324,6 +8330,41 @@ def main():
     if repeats:
         print(f"repeated statements: {repeats} line(s) dropped")
     kept = deduped
+
+    # ---- `en-us` WHEREVER `mul` AND `en` DIFFER, on everything we create -------------------
+    #
+    # Asked 2026-09-26 on `Q141550971`, created `Lmul "Mariet NN"` + `Len "Mariet, daughter of
+    # NN1"`: American English labels go on items where the `mul` and `en` labels differ. `en-us`
+    # falls back to `mul` before `en`, so without its own label a US reader sees the `mul` form
+    # and not the English one. Per CREATE block, the `en` value is copied to `en-us` right after
+    # its `Len` line, unless the block already sets one.
+    with_us, block, added_us = [], [], 0
+
+    def _flush_block():
+        nonlocal added_us
+        vals = {}
+        for ln in block:
+            parts = ln.strip().split("\t")
+            if len(parts) == 3 and parts[0] == "LAST" and parts[1] in ("Lmul", "Len", "Len-us"):
+                vals.setdefault(parts[1], parts[2])
+        if "Len" in vals and "Len-us" not in vals and vals["Len"] != vals.get("Lmul"):
+            for ln in block:
+                with_us.append(ln)
+                if ln.strip().split("\t")[:2] == ["LAST", "Len"]:
+                    with_us.append(f'LAST\tLen-us\t{vals["Len"]}')
+            added_us += 1
+        else:
+            with_us.extend(block)
+        block.clear()
+
+    for ln in kept:
+        if ln.strip() == "CREATE":
+            _flush_block()
+        (block if block or ln.strip() == "CREATE" else with_us).append(ln)
+    _flush_block()
+    if added_us:
+        print(f"en-us: {added_us} creation(s) given an en-us label (en differs from mul)")
+    kept = with_us
 
     # ---- THE HOLD: nothing we emit may edit an item that editor has touched -------------
     #
