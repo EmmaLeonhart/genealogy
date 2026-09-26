@@ -21,7 +21,7 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# på -- family, 7 bearer(s) in the batches
+# på -- family, 10 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "på"
@@ -43,45 +43,95 @@ LAST	P1705	mul:"på"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
 
-# Torsdatter -- patronymic, 5 bearer(s) in the batches
+# Grødaland -- family, 5 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Torsdatter"
-LAST	Len	"Torsdatter"
-#   set the mul label to "Torsdatter"
-LAST	Lmul	"Torsdatter"
-#   set the ja label to "トルスダッテル"
-LAST	Lja	"トルスダッテル"
-#   set the zh label to "托尔斯达特"
-LAST	Lzh	"托尔斯达特"
-#   set the ko label to "토르스다테르"
-LAST	Lko	"토르스다테르"
+#   set the en label to "Grødaland"
+LAST	Len	"Grødaland"
+#   set the mul label to "Grødaland"
+LAST	Lmul	"Grødaland"
+#   set the ja label to "グロダランド"
+LAST	Lja	"グロダランド"
+#   set the zh label to "格罗达兰德"
+LAST	Lzh	"格罗达兰德"
+#   set the ko label to "그뢰다란드"
+LAST	Lko	"그뢰다란드"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Grødaland"
+LAST	P1705	mul:"Grødaland"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141552039 Ragnhild Paulsdatter Grødaland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141552039	P734	LAST	P3831	Q2507958	S2600	"6000000014564781620"
+#   Q141551307 Ragnhild Torstensdatter Grødaland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141551307	P734	LAST	P3831	Q2507958	S2600	"6000000116684086922"
+#   Q141519881 Elen Jonsdatter Kvalbein: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141519881	P734	LAST	P3831	Q28418670	S2600	"6000000225388191902"
+
+# Knudsen -- patronymic, 5 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Knudsen"
+LAST	Len	"Knudsen"
+#   set the mul label to "Knudsen"
+LAST	Lmul	"Knudsen"
+#   set the ja label to "クヌードセン"
+LAST	Lja	"クヌードセン"
+#   set the zh label to "克努森"
+LAST	Lzh	"克努森"
+#   set the ko label to "크누드센"
+LAST	Lko	"크누드센"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P1705 native label = mul:"Torsdatter"
-LAST	P1705	mul:"Torsdatter"
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P1705 native label = mul:"Knudsen"
+LAST	P1705	mul:"Knudsen"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q1548096 Tore
-LAST	P144	Q1548096
-#   P144 based on = Q19818192 Tor
-LAST	P144	Q19818192
-#   P144 based on = Q23047611 Thore
-LAST	P144	Q23047611
-#   P144 based on = Q2428812 Thor
-LAST	P144	Q2428812
-#   Q141519376 N Torsdatter: P5056 patronym or matronym = the item just created
-Q141519376	P5056	LAST	S2600	"6000000011034872761"
-#   Q141511379 Marta Torsdatter Usken: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538993 Tore Toresen Lerang
-Q141511379	P5056	LAST	P144	Q141538993	S2600	"6000000049442686865"
-#   Q141548390 Ingeborg Torsdatter Årsvoll: P5056 patronym or matronym = the item just created
-Q141548390	P5056	LAST	S2600	"6000000196335427822"
+#   P144 based on = Q18565341 Knud
+LAST	P144	Q18565341
+#   P144 based on = Q943881 Knut
+LAST	P144	Q943881
+#   Q141538922 Rasmus Knudsen Helland: P5056 patronym or matronym = the item just created
+Q141538922	P5056	LAST	S2600	"6000000005609223431"
+#   Q28467896 Erik Knudsen: P5056 patronym or matronym = the item just created, qualified P144 based on Q3743799 Knut Valdemarsson Duke of Estland, Blekinge and Lolland
+Q28467896	P5056	LAST	P144	Q3743799	S2600	"6000000005619727117"
+#   Q141521687 Nils Knudsen Nesheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141288979 Knut Nilsson Nesheim
+Q141521687	P5056	LAST	P144	Q141288979	S2600	"6000000014395245767"
+
+# Ols -- given, 5 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ols"
+LAST	Len	"Ols"
+#   set the mul label to "Ols"
+LAST	Lmul	"Ols"
+#   set the ja label to "オルス"
+LAST	Lja	"オルス"
+#   set the zh label to "奥尔斯"
+LAST	Lzh	"奥尔斯"
+#   set the ko label to "올스"
+LAST	Lko	"올스"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Ols"
+LAST	P1705	mul:"Ols"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141560585 Ols Kolnes: P735 given name = the item just created
+Q141560585	P735	LAST	S2600	"6000000178136068824"
+#   Q141522207 Ols: P735 given name = the item just created
+Q141522207	P735	LAST	S2600	"6000000178277552977"
+#   Q141524363 Ols father of Karen: P735 given name = the item just created
+Q141524363	P735	LAST	S2600	"6000000227258580845"
 
 # Tøresson -- patronymic, 5 bearer(s) in the batches
 # create a new item
@@ -117,87 +167,99 @@ Q141442961	P5056	LAST	P144	Q141219349	S2600	"6000000005608888417"
 #   Q141520264 Hans Tøresson Sande: P5056 patronym or matronym = the item just created
 Q141520264	P5056	LAST	S2600	"6000000005608897152"
 
-# Grødaland -- family, 4 bearer(s) in the batches
+# Fossmork -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Grødaland"
-LAST	Len	"Grødaland"
-#   set the mul label to "Grødaland"
-LAST	Lmul	"Grødaland"
-#   set the ja label to "グロダランド"
-LAST	Lja	"グロダランド"
-#   set the zh label to "格罗达兰德"
-LAST	Lzh	"格罗达兰德"
-#   set the ko label to "그뢰다란드"
-LAST	Lko	"그뢰다란드"
+#   the item just created: set the en label to "Fossmork"
+LAST	Len	"Fossmork"
+#   set the mul label to "Fossmork"
+LAST	Lmul	"Fossmork"
+#   set the ja label to "フォッスモルク"
+LAST	Lja	"フォッスモルク"
+#   set the zh label to "福斯莫尔克"
+LAST	Lzh	"福斯莫尔克"
+#   set the ko label to "포스모르크"
+LAST	Lko	"포스모르크"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Grødaland"
-LAST	P1705	mul:"Grødaland"
+#   P1705 native label = mul:"Fossmork"
+LAST	P1705	mul:"Fossmork"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141552039 Ragnhild Paulsdatter Grødaland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141552039	P734	LAST	P3831	Q2507958	S2600	"6000000014564781620"
-#   Q141551307 Ragnhild Torstensdatter Grødaland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141551307	P734	LAST	P3831	Q2507958	S2600	"6000000116684086922"
-#   Q141519881 Elen Jonsdatter Kvalbein: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141519881	P734	LAST	P3831	Q28418670	S2600	"6000000225388191902"
+#   Q141549413 Per Taraldson Fosmark: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141549413	P734	LAST	P3831	Q2507958	S2600	"6000000002735003381"
+#   Q141560107 Magla Olsdatter Fossmork: P734 family name = the item just created
+Q141560107	P734	LAST	S2600	"6000000003094919467"
+#   Q141560756 Taral II Jonson Øvre Fossmork: P734 family name = the item just created
+Q141560756	P734	LAST	S2600	"6000000007581050929"
 
-# Gustafschöld -- family, 4 bearer(s) in the batches
+# Klengson -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Gustafschöld"
-LAST	Len	"Gustafschöld"
-#   set the mul label to "Gustafschöld"
-LAST	Lmul	"Gustafschöld"
-#   set the ja label to "グスタフショルド"
-LAST	Lja	"グスタフショルド"
-#   set the zh label to "古斯塔夫肖尔德"
-LAST	Lzh	"古斯塔夫肖尔德"
-#   set the ko label to "구스타프쇨드"
-LAST	Lko	"구스타프쇨드"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Gustafschöld"
-LAST	P1705	mul:"Gustafschöld"
+#   the item just created: set the en label to "Klengson"
+LAST	Len	"Klengson"
+#   set the mul label to "Klengson"
+LAST	Lmul	"Klengson"
+#   set the ja label to "クレングソン"
+LAST	Lja	"クレングソン"
+#   set the zh label to "克伦松"
+LAST	Lzh	"克伦松"
+#   set the ko label to "크렝손"
+LAST	Lko	"크렝손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P1705 native label = mul:"Klengson"
+LAST	P1705	mul:"Klengson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141559605 Gustaf Gustafschöld: P734 family name = the item just created
-Q141559605	P734	LAST	S2600	"6000000012576806054"
-#   Q141518019 Eleonora Christina Gustafschöld: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141518019	P734	LAST	P3831	Q28418670	S2600	"6000000012577951299"
-#   Q141550975 Gustaf Abraham Johan Gustafschöld: P734 family name = the item just created
-Q141550975	P734	LAST	S2600	"6000000014521414857"
+#   Q141487988 Ommund Klengson Bjerga: P5056 patronym or matronym = the item just created, qualified P144 based on Q141522621 Kleng Helgeson Løland Sr.
+Q141487988	P5056	LAST	P144	Q141522621	S2600	"6000000007980672752"
+#   Q141492828 Ola Klengson Riveland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528854 Kleng Osmundson Sedberg
+Q141492828	P5056	LAST	P144	Q141528854	S2600	"6000000013724973335"
 
-# Hommeland -- family, 4 bearer(s) in the batches
+# Kristensen -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Hommeland"
-LAST	Len	"Hommeland"
-#   set the mul label to "Hommeland"
-LAST	Lmul	"Hommeland"
-#   set the ja label to "ホムメランド"
-LAST	Lja	"ホムメランド"
-#   set the zh label to "霍梅兰德"
-LAST	Lzh	"霍梅兰德"
-#   set the ko label to "홈메란드"
-LAST	Lko	"홈메란드"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Hommeland"
-LAST	P1705	mul:"Hommeland"
+#   the item just created: set the en label to "Kristensen"
+LAST	Len	"Kristensen"
+#   set the mul label to "Kristensen"
+LAST	Lmul	"Kristensen"
+#   set the ja label to "クリステンセン"
+LAST	Lja	"クリステンセン"
+#   set the zh label to "克丽丝滕森"
+LAST	Lzh	"克丽丝滕森"
+#   set the ko label to "크리스텐센"
+LAST	Lko	"크리스텐센"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P1705 native label = mul:"Kristensen"
+LAST	P1705	mul:"Kristensen"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141533560 Madli Ånensdatter Hommeland: P734 family name = the item just created
-Q141533560	P734	LAST	S2600	"6000000006462578008"
-#   Q141559716 Ingeborg Svensdatter Hommeland: P734 family name = the item just created
-Q141559716	P734	LAST	S2600	"6000000006979615138"
+#   P144 based on = Q11279730 Kristen
+LAST	P144	Q11279730
+#   P144 based on = Q21034625 Christen
+LAST	P144	Q21034625
+#   P144 based on = Q12794332 Kristian
+LAST	P144	Q12794332
+#   Q141516035 Berg Kristensen Langhus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141520514 Kristen Tollaksen Grøsareid
+Q141516035	P5056	LAST	P144	Q141520514	S2600	"6000000003087847287"
+#   Q141533924 Teofilius Kristensen Stangeland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141512726 Christen Gabrielsen Austrått
+Q141533924	P5056	LAST	P144	Q141512726	S2600	"6000000003492072191"
+#   Q141533722 Nils Kristensen Jåtun: P5056 patronym or matronym = the item just created, qualified P144 based on Q141533514 Kristen Isaksen Jåtun
+Q141533722	P5056	LAST	P144	Q141533514	S2600	"6000000003601908314"
 
 # Kristofferson -- patronymic, 4 bearer(s) in the batches
 # create a new item
@@ -237,33 +299,33 @@ Q141549848	P5056	LAST	S2600	"6000000006979663414"
 #   Q141533227 Elling Kristofferson Tjåland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538731 Kristoffer Torgrimson Tjåland
 Q141533227	P5056	LAST	P144	Q141538731	S2600	"6000000010526527018"
 
-# Lochnæus -- family, 4 bearer(s) in the batches
+# Lintjørn -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Lochnæus"
-LAST	Len	"Lochnæus"
-#   set the mul label to "Lochnæus"
-LAST	Lmul	"Lochnæus"
-#   set the ja label to "ロクネウス"
-LAST	Lja	"ロクネウス"
-#   set the zh label to "洛克内乌斯"
-LAST	Lzh	"洛克内乌斯"
-#   set the ko label to "로츠내우스"
-LAST	Lko	"로츠내우스"
+#   the item just created: set the en label to "Lintjørn"
+LAST	Len	"Lintjørn"
+#   set the mul label to "Lintjørn"
+LAST	Lmul	"Lintjørn"
+#   set the ja label to "リントヨルン"
+LAST	Lja	"リントヨルン"
+#   set the zh label to "林特约尔恩"
+LAST	Lzh	"林特约尔恩"
+#   set the ko label to "린최른"
+LAST	Lko	"린최른"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Lochnæus"
-LAST	P1705	mul:"Lochnæus"
+#   P1705 native label = mul:"Lintjørn"
+LAST	P1705	mul:"Lintjørn"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141529656 Matthias Nicolai Lochnæus: P734 family name = the item just created
-Q141529656	P734	LAST	S2600	"6000000000866278029"
-#   Q136913895 Jonas Matthiæ Lochnæus: P734 family name = the item just created
-Q136913895	P734	LAST	S2600	"6000000017153112941"
-#   Q141533417 Johan Jonæ Lochnæus: P734 family name = the item just created
-Q141533417	P734	LAST	S2600	"6000000017182989030"
+#   Q141548267 Halvard Olson Lintjørn: P734 family name = the item just created
+Q141548267	P734	LAST	S2600	"6000000005607411041"
+#   Q141538028 Anna Halvardsdatter Lintjørn: P734 family name = the item just created
+Q141538028	P734	LAST	S2600	"6000000008725835288"
+#   Q141550418 Ingeborg Halvardsdatter Lintjørn: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141550418	P734	LAST	P3831	Q2507958	S2600	"6000000219893953854"
 
 # Neilsoune -- family, 4 bearer(s) in the batches
 # create a new item
@@ -288,34 +350,6 @@ LAST	P1705	mul:"Neilsoune"
 LAST	P282	Q8229
 #   Q141559317 Catharina Neilsoune: P734 family name = the item just created
 Q141559317	P734	LAST	S2600	"6000000009318673531"
-
-# Ols -- given, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Ols"
-LAST	Len	"Ols"
-#   set the mul label to "Ols"
-LAST	Lmul	"Ols"
-#   set the ja label to "オルス"
-LAST	Lja	"オルス"
-#   set the zh label to "奥尔斯"
-LAST	Lzh	"奥尔斯"
-#   set the ko label to "올스"
-LAST	Lko	"올스"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Ols"
-LAST	P1705	mul:"Ols"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141560585 Ols Kolnes: P735 given name = the item just created
-Q141560585	P735	LAST	S2600	"6000000178136068824"
-#   Q141522207 Ols: P735 given name = the item just created
-Q141522207	P735	LAST	S2600	"6000000178277552977"
-#   Q141524363 Ols father of Karen: P735 given name = the item just created
-Q141524363	P735	LAST	S2600	"6000000227258580845"
 
 # Sivertsdatter -- patronymic, 4 bearer(s) in the batches
 # create a new item
@@ -353,47 +387,21 @@ Q141551230	P5056	LAST	P144	Q141538967	S2600	"6000000026976904366"
 #   Q141532603 Berta Sivertsdatter Wiik: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538967 Sivert Monsen Wiik
 Q141532603	P5056	LAST	P144	Q141538967	S2600	"6000000026977162146"
 
-# Skreå -- family, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Skreå"
-LAST	Len	"Skreå"
-#   set the mul label to "Skreå"
-LAST	Lmul	"Skreå"
-#   set the ja label to "スクレオー"
-LAST	Lja	"スクレオー"
-#   set the zh label to "斯克雷奥"
-LAST	Lzh	"斯克雷奥"
-#   set the ko label to "스크레오"
-LAST	Lko	"스크레오"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Skreå"
-LAST	P1705	mul:"Skreå"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141558035 Astrid Olsdatter Skreå: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141558035	P734	LAST	P3831	Q2507958	S2600	"6000000006787341423"
-#   Q141499879 Tollak Pederson Skreå: P734 family name = the item just created
-Q141499879	P734	LAST	S2600	"6000000173855449858"
-
-# 2581 more name items are needed and wait for a later
+# 2606 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
+#   Skreå (family), 4 bearer(s)
+#   Thomasdotter (patronymic), 4 bearer(s)
 #   Tjølson (patronymic), 4 bearer(s)
 #   Torsnes (family), 4 bearer(s)
 #   Åmli (family), 4 bearer(s)
 #   Amundson (patronymic), 3 bearer(s)
+#   Christophersdotter (patronymic), 3 bearer(s)
 #   Erlingsdatter (patronymic), 3 bearer(s)
-#   Fossmork (family), 3 bearer(s)
 #   Grødeland (family), 3 bearer(s)
+#   Gustafschöld (family), 3 bearer(s)
 #   Helgevoll (family), 3 bearer(s)
-#   Jöransdotter (patronymic), 3 bearer(s)
-#   Klausson (patronymic), 3 bearer(s)
-#   Knudsen (patronymic), 3 bearer(s)
-#   Kristensen (patronymic), 3 bearer(s)
-#   ... and 2569 more
+#   Henrikson (patronymic), 3 bearer(s)
+#   ... and 2594 more
 
 
 # ======================================================================
@@ -424,8 +432,8 @@ Q141552146	P460	Q141550386
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   90 people, 119 edits; 3493 edits held for a later run
-#   across 3301 more people. A repeat is a no-op, so nothing is lost.
+#   90 people, 106 edits; 3416 edits held for a later run
+#   across 3216 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
 #   Q141560819 Ådne Larsson Kråkedal: add a mul alias "Ådne Larsson Haukemork"
 Q141560819	Amul	"Ådne Larsson Haukemork"
@@ -517,389 +525,132 @@ Q141560485	Amul	"Nils Jensson Tunheim"
 Q141560481	Amul	"Nils Erikson"
 #   Q141560472 Nicolaus Martini: add a mul alias "Nicolaus Mårtensson"
 Q141560472	Amul	"Nicolaus Mårtensson"
-#   add a mul alias "Morten Jørgensen Jørgensen *"
-Q141560299	Amul	"Morten Jørgensen Jørgensen *"
-#   Q141560279 Mauritz Berdinesson Nor Kolnes: add a mul alias "Mauritz Berdinesson Berdinesson"
-Q141560279	Amul	"Mauritz Berdinesson Berdinesson"
-#   add a mul alias "Marit Omundsdatter Omundsdatter d.e"
-Q141560184	Amul	"Marit Omundsdatter Omundsdatter d.e"
-#   add a mul alias "Margarethe Margarethe von Schwerin countess"
-Q141560138	Amul	"Margarethe Margarethe von Schwerin countess"
-#   add a mul alias "Laurits Olsen Madland"
-Q141560091	Amul	"Laurits Olsen Madland"
-#   add a mul alias "Lars Kristofferson Brualand"
-Q141560076	Amul	"Lars Kristofferson Brualand"
-#   add a mul alias "Lars Håkansson"
-Q141560072	Amul	"Lars Håkansson"
-#   Q141560059 Lars Fontell: add a mul alias "Lars Fontelius"
-Q141560059	Amul	"Lars Fontelius"
-#   Q141560026 Kristoffer Olson Osaland: add a mul alias "Kristofer Olson Kjosavik"
-Q141560026	Amul	"Kristofer Olson Kjosavik"
-#   Q141560024 Kristoffer Nilsson Mört: add a mul alias "Kristoffer Nilsson"
-Q141560024	Amul	"Kristoffer Nilsson"
-#   Q141560011 Kristen Olavsson Austrått: add a mul alias "Kristen Olavsson Austrått"
-Q141560011	Amul	"Kristen Olavsson Austrått"
-#   add a mul alias "Kristen Jensson Aase"
-Q141560004	Amul	"Kristen Jensson Aase"
-#   add a mul alias "Kolbein Berdorsen Bolt av Tveiten"
-Q141560001	Amul	"Kolbein Berdorsen Bolt av Tveiten"
-#   add a mul alias "Knut Ullrik Roos af Hjelmsäter"
-Q141559992	Amul	"Knut Ullrik Roos af Hjelmsäter"
-#   add a mul alias "Kari Rasmusdotter Nærland !"
-Q141559883	Amul	"Kari Rasmusdotter Nærland !"
+#   Q141549908 Anna Jonsdatter Jonsdotter Trones: add a mul alias "Anna Jonsdatter Jonsdotter Trones"
+Q141549908	Amul	"Anna Jonsdatter Jonsdotter Trones"
+#   Q141548981: en label, hand-supplied -- reports/label-applications.tsv
+Q141548981	Len	"Matthias von Stauden II"
+#   Q141548981: mul label, hand-supplied -- reports/label-applications.tsv (Backward fix of the Q141492819 defect, 2026-09-25: live label was "von Stauden", surname words only. Composed in the married-name shape (GIVN with Geni marks *?, dropped, then _MARNM); CJK from garborg-name-transliterations.tsv.)
+Q141548981	Lmul	"Matthias von Stauden II"
+#   Q141548981: ja label, hand-supplied -- reports/label-applications.tsv
+Q141548981	Lja	"マッティアス・ヴォン・スタウデン2世"
+#   Q141548981: zh label, hand-supplied -- reports/label-applications.tsv
+Q141548981	Lzh	"马蒂阿斯·翁·斯塔乌登二世"
+#   Q141548981: ko label, hand-supplied -- reports/label-applications.tsv
+Q141548981	Lko	"마티아스 본 스타우덴 2세"
 #   Q141538802 Martha Henriksdtr. Egge: add a mul alias "Martha Henriksdtr. Egge"
 Q141538802	Amul	"Martha Henriksdtr. Egge"
-#   Q141521531: set the da label to 'Jon Jonson Laland d.e.', the generation suffix as da writes it
-Q141521531	Lda	"Jon Jonson Laland d.e."
-#   Q141521531: set the nb label to 'Jon Jonson Laland d.e.', the generation suffix as nb writes it
-Q141521531	Lnb	"Jon Jonson Laland d.e."
-#   Q141521531: set the nn label to 'Jon Jonson Laland d.e.', the generation suffix as nn writes it
-Q141521531	Lnn	"Jon Jonson Laland d.e."
-#   Q141521531: set the no label to 'Jon Jonson Laland d.e.', the generation suffix as no writes it
-Q141521531	Lno	"Jon Jonson Laland d.e."
-#   Q141520831: ca label 'esposa de Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: da label 'hustru til Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: de label 'Ehefrau von Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: en label 'wife of Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: es label 'esposa de Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: fr label 'épouse de Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: it label 'moglie di Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: nb label 'hustru til Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: nl label 'echtgenote van Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: pt label 'esposa de Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: sv label 'maka till Matts Nilsson' is only a relation; the given name is 'Mariet'
-#   Q141520831: ja label 'マッツ・ニルソンの妻' is only a relation; the given name is 'Mariet'
-#   Q141520831: zh label '马特斯·尼尔松之妻' is only a relation; the given name is 'Mariet'
-#   Q141520831: ko label '마트스 닐손의 아내' is only a relation; the given name is 'Mariet'
-#   Q141520898: set the da label to 'Salomon Olsen Skretting d.e.', the generation suffix as da writes it
-Q141520898	Lda	"Salomon Olsen Skretting d.e."
-#   Q141520898: set the nb label to 'Salomon Olsen Skretting d.e.', the generation suffix as nb writes it
-Q141520898	Lnb	"Salomon Olsen Skretting d.e."
-#   Q141520898: set the nn label to 'Salomon Olsen Skretting d.e.', the generation suffix as nn writes it
-Q141520898	Lnn	"Salomon Olsen Skretting d.e."
-#   Q141520898: set the no label to 'Salomon Olsen Skretting d.e.', the generation suffix as no writes it
-Q141520898	Lno	"Salomon Olsen Skretting d.e."
-#   Q141519659: set the nn label to 'Tørresdotter Kleppe d.y.', the generation suffix as nn writes it
-#   Q141519659: set the no label to 'Tørresdotter Kleppe d.y.', the generation suffix as no writes it
-#   Q141519983: ca label 'pare de Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: da label 'far til Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: de label 'Vater von Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: en label 'father of Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: es label 'padre de Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: fr label 'père de Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: it label 'padre di Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: nb label 'far til Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: nl label 'vader van Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: pt label 'pai de Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: sv label 'far till Peder Ellingson Stokka' is only a relation; the given name is 'Elling'
-#   Q141519983: ja label 'ペーダー・エリングソン・ストッカの父' is only a relation; the given name is 'Elling'
-#   Q141519983: zh label '彼泽·埃林松·斯托卡之父' is only a relation; the given name is 'Elling'
-#   Q141519983: ko label '페데르 엘링손 스토카의 아버지' is only a relation; the given name is 'Elling'
-#   Q141520066: ca label 'pare de Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: da label 'far til Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: de label 'Vater von Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: en label 'father of Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: es label 'padre de Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: fr label 'père de Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: it label 'padre di Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: nb label 'far til Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: nl label 'vader van Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: pt label 'pai de Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: sv label 'far till Ånund Olsen Vigre' is only a relation; the given name is 'Ola'
-#   Q141520066: ja label 'オーヌンド・オルセン・ヴィグレの父' is only a relation; the given name is 'Ola'
-#   Q141520066: zh label '奥农德·奥尔森·维格雷之父' is only a relation; the given name is 'Ola'
-#   Q141520066: ko label '오눈드 올센 비그레의 아버지' is only a relation; the given name is 'Ola'
-#   Q141520302: ca label 'mare de Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: da label 'mor til Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: de label 'Mutter von Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: en label 'mother of Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: es label 'madre de Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: fr label 'mère de Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: it label 'madre di Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: nb label 'mor til Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: nl label 'moeder van Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: pt label 'mãe de Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: sv label 'mor till Brita Cajsa Söderberg' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: ja label 'ブリッタ・カイサ・ソデルベルグの母' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: zh label '布里塔·卡伊萨·索德尔贝尔格之母' is only a relation; the given name is 'Ingeborg'
-#   Q141520302: ko label '브리타 카즈사 쇠데르베륵의 어머니' is only a relation; the given name is 'Ingeborg'
-#   Q141520451: ca label 'filla de Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: da label 'datter af Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: de label 'Tochter von Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: en label 'daughter of Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: es label 'hija de Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: fr label 'fille de Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: it label 'figlia di Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: nb label 'datter av Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: nl label 'dochter van Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: pt label 'filha de Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: sv label 'dotter till Per Larsson Ryss' is only a relation; the given name is 'Kerstin'
-#   Q141520451: ja label 'ペール・ラーション・リッスの娘' is only a relation; the given name is 'Kerstin'
-#   Q141520451: zh label '佩尔·拉森·里斯之女' is only a relation; the given name is 'Kerstin'
-#   Q141520451: ko label '페르 라르손 리스의 딸' is only a relation; the given name is 'Kerstin'
-#   Q141520712: set the da label to 'Rasmus Fanuelson Madland d.y.', the generation suffix as da writes it
-Q141520712	Lda	"Rasmus Fanuelson Madland d.y."
-#   Q141520712: set the nb label to 'Rasmus Fanuelson Madland d.y.', the generation suffix as nb writes it
-Q141520712	Lnb	"Rasmus Fanuelson Madland d.y."
-#   Q141520712: set the nn label to 'Rasmus Fanuelson Madland d.y.', the generation suffix as nn writes it
-Q141520712	Lnn	"Rasmus Fanuelson Madland d.y."
-#   Q141520712: set the no label to 'Rasmus Fanuelson Madland d.y.', the generation suffix as no writes it
-Q141520712	Lno	"Rasmus Fanuelson Madland d.y."
-#   Q141520712: set the sv label to 'Rasmus Fanuelson Madland d.y.', the generation suffix as sv writes it
-Q141520712	Lsv	"Rasmus Fanuelson Madland d.y."
-#   add a mul alias "Marita Olsd Grannes"
-Q141520602	Amul	"Marita Olsd Grannes"
-#   Q141520378 Omund Larsson Kluge: add a mul alias "Omund Larsson Kluge"
-Q141520378	Amul	"Omund Larsson Kluge"
-#   Q141520305 Ingeborg Ivarsdatter: add a mul alias "Ingeborg Ivarsdatter"
-Q141520305	Amul	"Ingeborg Ivarsdatter"
-#   Q141520285 Helga: add a mul alias "Helga"
-Q141520285	Amul	"Helga"
-#   Q141520098 Henning Von Koller: add a mul alias "Henning Von Koller"
-Q141520098	Amul	"Henning Von Koller"
-#   Q141519348: set the da label to 'Berit Albretsdatter Voll d.y.', the generation suffix as da writes it
-Q141519348	Lda	"Berit Albretsdatter Voll d.y."
-#   Q141519348: set the nb label to 'Berit Albretsdatter Voll d.y.', the generation suffix as nb writes it
-Q141519348	Lnb	"Berit Albretsdatter Voll d.y."
-#   Q141519348: set the nn label to 'Berit Albretsdatter Voll d.y.', the generation suffix as nn writes it
-Q141519348	Lnn	"Berit Albretsdatter Voll d.y."
-#   Q141519348: set the no label to 'Berit Albretsdatter Voll d.y.', the generation suffix as no writes it
-Q141519348	Lno	"Berit Albretsdatter Voll d.y."
-#   Q141519348: set the sv label to 'Berit Albretsdatter Voll d.y.', the generation suffix as sv writes it
-Q141519348	Lsv	"Berit Albretsdatter Voll d.y."
-#   Q141518906 Gunnhild Johannesd Leikvam: add a mul alias "Gunnhild Johannesd Leikvam"
-Q141518906	Amul	"Gunnhild Johannesd Leikvam"
-#   Q141518756 Anders Hök, adlad Hedersköld: add a mul alias "Anders Hök, adlad Hedersköld"
-Q141518756	Amul	"Anders Hök, adlad Hedersköld"
-#   Q141518317: ca label 'pare de Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: da label 'far til Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: de label 'Vater von Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: en label 'father of Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: es label 'padre de Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: fr label 'père de Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: it label 'padre di Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: nb label 'far til Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: nl label 'vader van Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: pt label 'pai de Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: sv label 'far till Kari Gjermundsdatter Bore' is only a relation; the given name is 'Gjermund'
-#   Q141518317: ja label 'カリ・イェルムンドスダッテル・ボレの父' is only a relation; the given name is 'Gjermund'
-#   Q141518317: zh label '卡里·耶尔蒙德斯达特·博雷之父' is only a relation; the given name is 'Gjermund'
-#   Q141518317: ko label '카리 게르문드스다테르 보레의 아버지' is only a relation; the given name is 'Gjermund'
-#   Q141518660: set the da label to 'Johannes Olson Olsen Hommersaak d.e.', the generation suffix as da writes it
-Q141518660	Lda	"Johannes Olson Olsen Hommersaak d.e."
-#   Q141518660: set the nb label to 'Johannes Olson Olsen Hommersaak d.e.', the generation suffix as nb writes it
-Q141518660	Lnb	"Johannes Olson Olsen Hommersaak d.e."
-#   Q141518660: set the nn label to 'Johannes Olson Olsen Hommersaak d.e.', the generation suffix as nn writes it
-Q141518660	Lnn	"Johannes Olson Olsen Hommersaak d.e."
-#   Q141518660: set the no label to 'Johannes Olson Olsen Hommersaak d.e.', the generation suffix as no writes it
-Q141518660	Lno	"Johannes Olson Olsen Hommersaak d.e."
-#   Q141518296 Berta Olsdatter Øvre-Haugland: add a mul alias "Berta Olsdatter Øvre-Haugland"
-Q141518296	Amul	"Berta Olsdatter Øvre-Haugland"
-#   Q141518276: set the da label to 'Ågot Ormsdatter d.y.', the generation suffix as da writes it
-Q141518276	Lda	"Ågot Ormsdatter d.y."
-#   Q141518276: set the nb label to 'Ågot Ormsdatter d.y.', the generation suffix as nb writes it
-Q141518276	Lnb	"Ågot Ormsdatter d.y."
-#   Q141518276: set the nn label to 'Ågot Ormsdatter d.y.', the generation suffix as nn writes it
-Q141518276	Lnn	"Ågot Ormsdatter d.y."
-#   Q141518276: set the no label to 'Ågot Ormsdatter d.y.', the generation suffix as no writes it
-Q141518276	Lno	"Ågot Ormsdatter d.y."
-#   Q141518276: set the sv label to 'Ågot Ormsdatter d.y.', the generation suffix as sv writes it
-Q141518276	Lsv	"Ågot Ormsdatter d.y."
-#   Q141514696: ca label 'pare de Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: da label 'far til Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: de label 'Vater von Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: en label 'father of Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: es label 'padre de Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: fr label 'père de Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: it label 'padre di Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: nb label 'far til Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: nl label 'vader van Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: pt label 'pai de Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: sv label 'far till Ola Einarsen øystre Bore' is only a relation; the given name is 'Einar'
-#   Q141514696: ja label 'オーラ・エイナルセン・オイストレ・ボレの父' is only a relation; the given name is 'Einar'
-#   Q141514696: zh label '奥拉·艾纳尔森·奥伊斯特雷·博雷之父' is only a relation; the given name is 'Einar'
-#   Q141514696: ko label '오라 에이나르센 외이스트레 보레의 아버지' is only a relation; the given name is 'Einar'
-#   Q141514934: ca label 'pare de Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: da label 'far til Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: de label 'Vater von Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: en label 'father of Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: es label 'padre de Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: fr label 'père de Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: it label 'padre di Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: nb label 'far til Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: nl label 'vader van Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: pt label 'pai de Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: sv label 'far till Anna Eriksdatter Skretting' is only a relation; the given name is 'Erik'
-#   Q141514934: ja label 'アンナ・エリクスダッテル・スクレッティングの父' is only a relation; the given name is 'Erik'
-#   Q141514934: zh label '安娜·埃里克斯达特·斯克雷廷之父' is only a relation; the given name is 'Erik'
-#   Q141514934: ko label '안나 에리크스다테르 스크레팅의 아버지' is only a relation; the given name is 'Erik'
-#   Q141516384: ca label 'pare de Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: da label 'far til Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: de label 'Vater von Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: en label 'father of Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: es label 'padre de Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: fr label 'père de Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: it label 'padre di Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: nb label 'far til Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: nl label 'vader van Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: pt label 'pai de Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: sv label 'far till Anders Nilsson' is only a relation; the given name is 'Nils'
-#   Q141516384: ja label 'アンデルス・ニルソンの父' is only a relation; the given name is 'Nils'
-#   Q141516384: zh label '安德斯·尼尔松之父' is only a relation; the given name is 'Nils'
-#   Q141516384: ko label '안데르스 닐손의 아버지' is only a relation; the given name is 'Nils'
-#   Q141516507: ca label 'marit de Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: da label 'ægtemand til Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: de label 'Ehemann von Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: en label 'husband of Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: es label 'esposo de Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: fr label 'époux de Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: it label 'marito di Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: nb label 'ektemann til Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: nl label 'echtgenoot van Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: pt label 'marido de Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: sv label 'make till Goro Jensdatter' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: ja label 'ゴロ・イェンスダッテルの夫' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: zh label '戈罗·延斯达特之夫' is only a relation; the given name is 'Kristoffer'
-#   Q141516507: ko label '고로 젠스다테르의 남편' is only a relation; the given name is 'Kristoffer'
-#   Q141517488: set the da label to 'Berita Torgersdotter Høle d.y.', the generation suffix as da writes it
-Q141517488	Lda	"Berita Torgersdotter Høle d.y."
-#   Q141517488: set the nb label to 'Berita Torgersdotter Høle d.y.', the generation suffix as nb writes it
-Q141517488	Lnb	"Berita Torgersdotter Høle d.y."
-#   Q141517488: set the nn label to 'Berita Torgersdotter Høle d.y.', the generation suffix as nn writes it
-Q141517488	Lnn	"Berita Torgersdotter Høle d.y."
-#   Q141517488: set the no label to 'Berita Torgersdotter Høle d.y.', the generation suffix as no writes it
-Q141517488	Lno	"Berita Torgersdotter Høle d.y."
-#   Q141517488: set the sv label to 'Berita Torgersdotter Høle d.y.', the generation suffix as sv writes it
-Q141517488	Lsv	"Berita Torgersdotter Høle d.y."
-#   Q141516438 Knut Matssen: add a mul alias "Knut Matssen"
-Q141516438	Amul	"Knut Matssen"
-#   Q141516380 Berit Halvardsdatter Austvoll: add a mul alias "Berit Halvardsdatter Austvoll"
-Q141516380	Amul	"Berit Halvardsdatter Austvoll"
-#   Q141515093 Helge Dagfinnsen Risa: add a mul alias "Helge Dagfinnsen Risa"
-Q141515093	Amul	"Helge Dagfinnsen Risa"
-#   Q141515084 Jakub Kaszuba von Güntersberg: add a mul alias "Jakub Kaszuba von Güntersberg"
-Q141515084	Amul	"Jakub Kaszuba von Güntersberg"
-#   Q141514318 Vilhelm: add a mul alias "Vilhelm"
-Q141514318	Amul	"Vilhelm"
-#   Q141499898: ca label 'pare de Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: da label 'far til Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: de label 'Vater von Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: en label 'father of Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: es label 'padre de Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: fr label 'père de Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: it label 'padre di Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: nb label 'far til Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: nl label 'vader van Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: pt label 'pai de Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: sv label 'far till Karen Joa' is only a relation; the given name is 'Torstein'
-#   Q141499898: ja label 'カレン・ヨアの父' is only a relation; the given name is 'Torstein'
-#   Q141499898: zh label '凯伦·约阿之父' is only a relation; the given name is 'Torstein'
-#   Q141499898: ko label '카렌 조아의 아버지' is only a relation; the given name is 'Torstein'
-#   Q141502926: ca label 'esposa de Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: da label 'hustru til Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: de label 'Ehefrau von Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: en label 'wife of Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: es label 'esposa de Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: fr label 'épouse de Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: it label 'moglie di Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: nb label 'hustru til Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: nl label 'echtgenote van Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: pt label 'esposa de Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: sv label 'maka till Nils Olofsson' is only a relation; the given name is 'Sigrid'
-#   Q141502926: ja label 'ニルス・オロフソンの妻' is only a relation; the given name is 'Sigrid'
-#   Q141502926: zh label '尼尔斯·奥洛夫松之妻' is only a relation; the given name is 'Sigrid'
-#   Q141502926: ko label '닐스 오로프손의 아내' is only a relation; the given name is 'Sigrid'
-#   Q141502929: ca label 'pare de Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: da label 'far til Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: de label 'Vater von Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: en label 'father of Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: es label 'padre de Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: fr label 'père de Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: it label 'padre di Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: nb label 'far til Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: nl label 'vader van Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: pt label 'pai de Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: sv label 'far till Guri Simonsdatter Njærheim' is only a relation; the given name is 'Simon'
-#   Q141502929: ja label 'グリ・シモンスダッテル・ニェルヘイムの父' is only a relation; the given name is 'Simon'
-#   Q141502929: zh label '古里·西蒙斯达特·内尔赫伊姆之父' is only a relation; the given name is 'Simon'
-#   Q141502929: ko label '구리 시몬스다테르 내르헤임의 아버지' is only a relation; the given name is 'Simon'
-#   Q141502935: ca label 'pare de Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: da label 'far til Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: de label 'Vater von Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: en label 'father of Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: es label 'padre de Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: fr label 'père de Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: it label 'padre di Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: nb label 'far til Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: nl label 'vader van Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: pt label 'pai de Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: sv label 'far till Gregorius Thomae Arctopolitanus' is only a relation; the given name is 'Thomas'
-#   Q141502935: ja label 'グレゴリウス・トマエ・アルクトポリタヌスの父' is only a relation; the given name is 'Thomas'
-#   Q141502935: zh label '格雷戈里乌斯·托马埃·阿尔克托波利塔努斯之父' is only a relation; the given name is 'Thomas'
-#   Q141502935: ko label '그레고류스 토매 아르크토포리타누스의 아버지' is only a relation; the given name is 'Thomas'
-#   Q141510781: ca label 'pare de Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: da label 'far til Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: de label 'Vater von Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: en label 'father of Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: es label 'padre de Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: fr label 'père de Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: it label 'padre di Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: nb label 'far til Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: nl label 'vader van Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: pt label 'pai de Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: sv label 'far till Ragnhild Johannesdatter Lende' is only a relation; the given name is 'Johannes'
-#   Q141510781: ja label 'ラグンヒル・ヨハンネスダッテル・レンデの父' is only a relation; the given name is 'Johannes'
-#   Q141510781: zh label '拉格希尔德·约翰内斯达特·伦德之父' is only a relation; the given name is 'Johannes'
-#   Q141510781: ko label '락느힐드 조한네스다테르 렌데의 아버지' is only a relation; the given name is 'Johannes'
-#   Q141512850: ca label 'pare de Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: da label 'far til Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: de label 'Vater von Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: en label 'father of Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: es label 'padre de Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: fr label 'père de Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: it label 'padre di Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: nb label 'far til Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: nl label 'vader van Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: pt label 'pai de Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: sv label 'far till Gard Toresson Talgje' is only a relation; the given name is 'Tore'
-#   Q141512850: ja label 'ガルド・トレソン・タルイェの父' is only a relation; the given name is 'Tore'
-#   Q141512850: zh label '加尔德·托雷松·塔尔耶之父' is only a relation; the given name is 'Tore'
-#   Q141512850: ko label '가르드 토레손 탈게의 아버지' is only a relation; the given name is 'Tore'
-#   Q141513220: set the da label to 'Anna Eriksdatter Gausland d.y.', the generation suffix as da writes it
-Q141513220	Lda	"Anna Eriksdatter Gausland d.y."
-#   Q141513220: set the nb label to 'Anna Eriksdatter Gausland d.y.', the generation suffix as nb writes it
-Q141513220	Lnb	"Anna Eriksdatter Gausland d.y."
-#   Q141513220: set the nn label to 'Anna Eriksdatter Gausland d.y.', the generation suffix as nn writes it
-Q141513220	Lnn	"Anna Eriksdatter Gausland d.y."
-#   Q141513220: set the no label to 'Anna Eriksdatter Gausland d.y.', the generation suffix as no writes it
-Q141513220	Lno	"Anna Eriksdatter Gausland d.y."
-#   Q141513220: set the sv label to 'Anna Eriksdatter Gausland d.y.', the generation suffix as sv writes it
-Q141513220	Lsv	"Anna Eriksdatter Gausland d.y."
-#   Q141513216 Anna Eivindsd. HÅLAND: add a mul alias "Anna Eivindsd. HÅLAND"
-Q141513216	Amul	"Anna Eivindsd. HÅLAND"
-#   Q141510121: no description; set the en description to 'daughter of Anders Olson Auglend'
-#   Q141510717: no description; set the en description to 'wife of Heinrich Stromer'
-#   Q141510781: no description; set the en description to 'Johannes, father of Ragnhild Johannesdatter Lende'
-#   Q141511196: no description; set the en description to 'wife of Johan Jannikinus Kruckow'
-#   Q141511202: no description; set the en description to 'mother of Niels Valdemarsson'
-#   Q141511340: no description; set the en description to 'wife of Erling von Kruckow'
-#   Q141511382: no description; set the en description to 'son of Astri Torchelsdatter Øvre Time'
-#   Q141511385: no description; set the en description to 'son of Norman Charles Tunheim'
-#   Q141511514: no description; set the en description to 'wife of Helge Torkelsen Lima'
-#   Q141512851: no description; set the en description to 'wife of Torgeir Ingemundsson Spånheim, d.a.'
-#   Q141512970: no description; set the en description to 'son of Alfred Erikson Dahle'
-#   Q141512973: no description; set the en description to 'daughter of Helmik Tobiasson Rangen'
-#   Q141512979: no description; set the en description to 'daughter of Einar Gustav Simers'
-#   Q141512987: no description; set the en description to '23 Apr 1872 - 22 Aug 1945 Lidingö'
-Q141512987	Den	"23 Apr 1872 - 22 Aug 1945 Lidingö"
-#   Q141511491 Kari Gjermundsdtr.: add a mul alias "Kari Gjermundsdtr."
-Q141511491	Amul	"Kari Gjermundsdtr."
-#   Q141511199 Ola Karlson Orstad: add a mul alias "Ola Karlson ØKSENVAD"
-Q141511199	Amul	"Ola Karlson ØKSENVAD"
-#   Q141511190 von Güntersberg, Herr auf Grutkow Bytów, Kaliski, Kenstek, Reweinstein, Arenwald and Zadow: add a mul alias "von Güntersberg, Herr auf Grutkow Bytów, Kaliski, Kenstek, Reweinstein, Arenwald and Zadow"
-Q141511190	Amul	"von Güntersberg, Herr auf Grutkow Bytów, Kaliski, Kenstek, Reweinstein, Arenwald and Zadow"
-#   Q141510783 Ola Tørresson Lunde: add a mul alias "Ola Toresson Lunde Soma"
-Q141510783	Amul	"Ola Toresson Lunde Soma"
+#   Q141533935: en label, hand-supplied -- reports/label-applications.tsv
+Q141533935	Len	"Tollak Torkelsen Grøsfjell"
+#   Q141533935: mul label, hand-supplied -- reports/label-applications.tsv (Backward fix of the Q141492819 defect, 2026-09-25: live label was "Grøsfjell", surname words only. Composed in the married-name shape (GIVN with Geni marks *?, dropped, then _MARNM); CJK from garborg-name-transliterations.tsv.)
+Q141533935	Lmul	"Tollak Torkelsen Grøsfjell"
+#   Q141533935: ja label, hand-supplied -- reports/label-applications.tsv
+Q141533935	Lja	"トラク・トルケルセン・グロスフィェル"
+#   Q141533935: zh label, hand-supplied -- reports/label-applications.tsv
+Q141533935	Lzh	"托拉克·托尔凯尔森·格罗斯费尔"
+#   Q141533935: ko label, hand-supplied -- reports/label-applications.tsv
+Q141533935	Lko	"톨라크 토르켈센 그뢰스펠"
+#   Q141529094: en label, hand-supplied -- reports/label-applications.tsv
+Q141529094	Len	"Osmund Eirikson Stokka Viland"
+#   Q141529094: mul label, hand-supplied -- reports/label-applications.tsv (Backward fix of the Q141492819 defect, 2026-09-25: live label was "Viland", surname words only. Composed in the married-name shape (GIVN with Geni marks *?, dropped, then _MARNM); CJK from garborg-name-transliterations.tsv.)
+Q141529094	Lmul	"Osmund Eirikson Stokka Viland"
+#   Q141529094: ja label, hand-supplied -- reports/label-applications.tsv
+Q141529094	Lja	"オスムンド・エイリクソン・ストッカ・ヴィランド"
+#   Q141529094: zh label, hand-supplied -- reports/label-applications.tsv
+Q141529094	Lzh	"奥斯蒙德·艾里克松·斯托卡·维兰德"
+#   Q141529094: ko label, hand-supplied -- reports/label-applications.tsv
+Q141529094	Lko	"오스문드 에이리크손 스토카 비란드"
+#   Q141511317: en label, hand-supplied -- reports/label-applications.tsv
+Q141511317	Len	"Berit Eriksdatter Braut"
+#   Q141511317: mul label, hand-supplied -- reports/label-applications.tsv (Backward fix of the Q141492819 defect, 2026-09-25: live label was "Eriksdatter Braut", surname words only. Composed in the married-name shape (GIVN with Geni marks *?, dropped, then _MARNM); CJK from garborg-name-transliterations.tsv.)
+Q141511317	Lmul	"Berit Eriksdatter Braut"
+#   Q141511317: ja label, hand-supplied -- reports/label-applications.tsv
+Q141511317	Lja	"ベリット・エリクスダッテル・ブラウト"
+#   Q141511317: zh label, hand-supplied -- reports/label-applications.tsv
+Q141511317	Lzh	"贝里特·埃里克斯达特·布拉乌特"
+#   Q141511317: ko label, hand-supplied -- reports/label-applications.tsv
+Q141511317	Lko	"베리트 에리크스다테르 브라우트"
+#   Q141499127: no description; set the en description to 'died Bef 1721'
+Q141499127	Den	"died Bef 1721"
+#   Q141499126: no description; set the en description to '5 Jul 1754 Blåbergsliden - 15 Jan 1785 Gävle gästgiverigård'
+Q141499126	Den	"5 Jul 1754 Blåbergsliden - 15 Jan 1785 Gävle gästgiverigård"
+#   Q141499125: no description; set the en description to 'born 1793'
+Q141499125	Den	"born 1793"
+#   Q141499123: no description; set the en description to 'circa 1595 Kyllingstad, Gjestal, Norwy - circa 1648 Gjesdal, Rogaland, Norway'
+Q141499123	Den	"circa 1595 Kyllingstad, Gjestal, Norwy - circa 1648 Gjesdal, Rogaland, Norway"
+#   Q141499122: no description; set the en description to '1747 Grannes bruk 7. Sola s96 nr. 4.6 - 1747 Grannes bruk 7. Sola s96 nr. 4.6'
+Q141499122	Den	"1747 Grannes bruk 7. Sola s96 nr. 4.6 - 1747 Grannes bruk 7. Sola s96 nr. 4.6"
+#   Q141499121: no description; set the en description to '18 May 1722 - 31 Dec 1771'
+Q141499121	Den	"18 May 1722 - 31 Dec 1771"
+#   Q141499120: no description; set the en description to 'born 16 Aug 1823'
+Q141499120	Den	"born 16 Aug 1823"
+#   Q141499119: no description; set the en description to 'born circa 1560'
+Q141499119	Den	"born circa 1560"
+#   Q141499115: no description; set the en description to 'born 1578 Klepp, Rogaland, Norway'
+#   Q141499118: no description; set the en description to 'circa 1661 Riska farm - Bef 27 Mar 1749 Riska farm'
+Q141499118	Den	"circa 1661 Riska farm - Bef 27 Mar 1749 Riska farm"
+#   Q141499113: no description; set the en description to '21 Mar 1829 Øystre Bore, Klepp, Rogaland - 19 Oct 1910 Øystre Bore, Klepp, Rogaland'
+Q141499113	Den	"21 Mar 1829 Øystre Bore, Klepp, Rogaland - 19 Oct 1910 Øystre Bore, Klepp, Rogaland"
+#   Q141499112: no description; set the en description to 'born 1575 Kjosavik, Hoyland, Rogaland, Norway'
+Q141499112	Den	"born 1575 Kjosavik, Hoyland, Rogaland, Norway"
+#   Q141499111: no description; set the en description to '25 Jul 1664 - 24 Apr 1696'
+Q141499111	Den	"25 Jul 1664 - 24 Apr 1696"
+#   Q141499110: no description; set the en description to '1748 Grude - 6 May 1814 Tu'
+Q141499110	Den	"1748 Grude - 6 May 1814 Tu"
+#   Q141499109: no description; set the en description to '1650 Sveinsvoll i Klepp; jfr g og æ s 265 nr 20f - Lea'
+Q141499109	Den	"1650 Sveinsvoll i Klepp; jfr g og æ s 265 nr 20f - Lea"
+#   Q141499108: no description; set the en description to '20 Feb 1890 - 16 Mar 1977'
+Q141499108	Den	"20 Feb 1890 - 16 Mar 1977"
+#   Q141499107: no description; set the en description to '15 Nov 1841 - 1918'
+Q141499107	Den	"15 Nov 1841 - 1918"
+#   Q141499106: no description; set the en description to '25 Oct 1852 - 25 Nov 1930'
+Q141499106	Den	"25 Oct 1852 - 25 Nov 1930"
+#   Q141499105: no description; set the en description to '20 Feb 1733 Medle - 29 Jun 1823 Ersmark 12'
+Q141499105	Den	"20 Feb 1733 Medle - 29 Jun 1823 Ersmark 12"
+#   Q141499103: no description; set the en description to 'born circa 1490'
+Q141499103	Den	"born circa 1490"
+#   Q141499102: no description; set the en description to '1672 - 1725'
+Q141499102	Den	"1672 - 1725"
+#   Q141499101: no description; set the en description to '1572 Liesniemi - 1624'
+Q141499101	Den	"1572 Liesniemi - 1624"
+#   Q141499100: no description; set the en description to '2 Jun 1673 - 18 Jun 1728'
+Q141499100	Den	"2 Jun 1673 - 18 Jun 1728"
+#   Q141499099: no description; set the en description to 'circa 1560 Opstad i. Hå g og æ bok 1 side 437 - 1624 Norway'
+Q141499099	Den	"circa 1560 Opstad i. Hå g og æ bok 1 side 437 - 1624 Norway"
+#   Q141499098: no description; set the en description to '1625 Time, Rogaland, Norge - 1676 Vashus, Klepp, Rogaland, Norway'
+Q141499098	Den	"1625 Time, Rogaland, Norge - 1676 Vashus, Klepp, Rogaland, Norway"
+#   Q141499095: no description; set the en description to 'born 1554 Of Opstad, Naerbo, Rogaland, Norway'
+#   Q141499096: no description; set the en description to 'Mons, father of Dagfinn Monsson Risa'
+#   Q141499097: no description; set the en description to '1721 Vestly, Time, Rogaland, Norway - 23 Dec 1810 Øvre-Time'
+Q141499097	Den	"1721 Vestly, Time, Rogaland, Norway - 23 Dec 1810 Øvre-Time"
+#   Q141499094: no description; set the en description to 'born Høle, Sandnes, Rogaland'
+Q141499094	Den	"born Høle, Sandnes, Rogaland"
+#   Q141499093: no description; set the en description to '1610 Gjesdal n 16 - 1676 Kyllingstad, Gjesdal'
+Q141499093	Den	"1610 Gjesdal n 16 - 1676 Kyllingstad, Gjesdal"
+#   Q141499091: no description; set the en description to '11 Dec 1742 Prästegård - 25 Nov 1812'
+Q141499091	Den	"11 Dec 1742 Prästegård - 25 Nov 1812"
+#   Q141499090: no description; set the en description to 'born 26 Feb 1767'
+Q141499090	Den	"born 26 Feb 1767"
+#   Q141499088: no description; set the en description to '24 Jun 1731 Bore, Klepp, Rogaland, Norway - circa 20 Apr 1789 Bore'
+Q141499088	Den	"24 Jun 1731 Bore, Klepp, Rogaland, Norway - circa 20 Apr 1789 Bore"
+#   Q141499085: no description; set the en description to 'Ulvåse, husband of Ramfrid Gustavsdotter Lejon'
+#   Q141499086: no description; set the en description to '1672 Time, Rogaland, Norway - Ogna, Rogaland, Norway'
+Q141499086	Den	"1672 Time, Rogaland, Norway - Ogna, Rogaland, Norway"
+#   Q141499083: no description; set the en description to 'circa 1565 Grude i Klepp s100 nr 4 - 1642 Grude, Kleppe, Norway'
+Q141499083	Den	"circa 1565 Grude i Klepp s100 nr 4 - 1642 Grude, Kleppe, Norway"
+#   Q141499082: no description; set the en description to '1711 Meling, Sola, Rogaland - 1785 Grannes bruk 7. Sola s95 nr 4'
+Q141499082	Den	"1711 Meling, Sola, Rogaland - 1785 Grannes bruk 7. Sola s95 nr 4"
+#   Q141499081: no description; set the en description to 'circa 1640 Hognestad i Time; jfr g og æ bok 2 s 422 - 1712 Orre, Klepp, Rogaland'
+Q141499081	Den	"circa 1640 Hognestad i Time; jfr g og æ bok 2 s 422 - 1712 Orre, Klepp, Rogaland"
+#   Q141499080: no description; set the en description to 'wife of Stephen Borsheim'
+Q141499080	Den	"wife of Stephen Borsheim"
+#   Q141499078: no description; set the en description to '1570 - 20 Feb 1636'
+Q141499078	Den	"1570 - 20 Feb 1636"
+#   Q141499077: no description; set the en description to 'about 1608 Bjerkreim, Rogaland, Norge - about 1667 Bjerkreim, Rogaland, Norge'
+Q141499077	Den	"about 1608 Bjerkreim, Rogaland, Norge - about 1667 Bjerkreim, Rogaland, Norge"
+#   Q141499076: no description; set the en description to '3 Mar 1822 Evanger, Voss, Hardaland Co. , Norway - 7 Nov 1900 buried Big Canoe Cemetery'
+Q141499076	Den	"3 Mar 1822 Evanger, Voss, Hardaland Co. , Norway - 7 Nov 1900 buried Big Canoe Cemetery"
+#   Q141499075: no description; set the en description to '1769 Ersmark - 20 Jun 1828 Lund'
+Q141499075	Den	"1769 Ersmark - 20 Jun 1828 Lund"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -1374,20 +1125,20 @@ LAST	P735	Q347181
 
 # create a new item
 CREATE
-#   set the en label to "Adelus von Bergen"
-LAST	Len	"Adelus von Bergen"
+#   set the en label to "Adelus Andersdatter"
+LAST	Len	"Adelus Andersdatter"
 #   set the en description to "1530 - 1577 Meloya"
 LAST	Den	"1530 - 1577 Meloya"
-#   set the mul label to "Adelus von Bergen"
-LAST	Lmul	"Adelus von Bergen"
-#   add a mul alias "Adelus Andersdatter"
-LAST	Amul	"Adelus Andersdatter"
-#   set the ja label to "アデルス・ヴォン・バーゲン"
-LAST	Lja	"アデルス・ヴォン・バーゲン"
-#   set the zh label to "阿德卢斯·翁·伯根"
-LAST	Lzh	"阿德卢斯·翁·伯根"
-#   set the ko label to "아데루스 본 베르겐"
-LAST	Lko	"아데루스 본 베르겐"
+#   set the mul label to "Adelus Andersdatter"
+LAST	Lmul	"Adelus Andersdatter"
+#   add a mul alias "Adelus von Bergen"
+LAST	Amul	"Adelus von Bergen"
+#   set the ja label to "アデルス・アンデルスダッテル"
+LAST	Lja	"アデルス・アンデルスダッテル"
+#   set the zh label to "阿德卢斯·安德尔斯达特"
+LAST	Lzh	"阿德卢斯·安德尔斯达特"
+#   set the ko label to "아데루스 안데르스다테르"
+LAST	Lko	"아데루스 안데르스다테르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -1413,20 +1164,20 @@ LAST	P5056	Q141429497
 
 # create a new item
 CREATE
-#   set the en label to "Adlaug Halvardsdatter Skeie"
-LAST	Len	"Adlaug Halvardsdatter Skeie"
+#   set the en label to "Adlaug Halvardsdatter Skreå"
+LAST	Len	"Adlaug Halvardsdatter Skreå"
 #   set the en description to "circa 1685 Skeie i Sirdal ; jfr g og æ bok 1 s 717 - Skreaa"
 LAST	Den	"circa 1685 Skeie i Sirdal ; jfr g og æ bok 1 s 717 - Skreaa"
-#   set the mul label to "Adlaug Halvardsdatter Skeie"
-LAST	Lmul	"Adlaug Halvardsdatter Skeie"
-#   add a mul alias "Adlaug Halvardsdatter Skreå"
-LAST	Amul	"Adlaug Halvardsdatter Skreå"
-#   set the ja label to "アドラウグ・ハルヴァルドスダッテル・スケイエ"
-LAST	Lja	"アドラウグ・ハルヴァルドスダッテル・スケイエ"
-#   set the zh label to "阿德拉乌格·哈尔瓦尔德斯达特·斯凯伊埃"
-LAST	Lzh	"阿德拉乌格·哈尔瓦尔德斯达特·斯凯伊埃"
-#   set the ko label to "아드라욱 할바르드스다테르 스케이에"
-LAST	Lko	"아드라욱 할바르드스다테르 스케이에"
+#   set the mul label to "Adlaug Halvardsdatter Skreå"
+LAST	Lmul	"Adlaug Halvardsdatter Skreå"
+#   add a mul alias "Adlaug Halvardsdatter Skeie"
+LAST	Amul	"Adlaug Halvardsdatter Skeie"
+#   set the ja label to "アドラウグ・ハルヴァルドスダッテル・スクレオー"
+LAST	Lja	"アドラウグ・ハルヴァルドスダッテル・スクレオー"
+#   set the zh label to "阿德拉乌格·哈尔瓦尔德斯达特·斯克雷奥"
+LAST	Lzh	"阿德拉乌格·哈尔瓦尔德斯达特·斯克雷奥"
+#   set the ko label to "아드라욱 할바르드스다테르 스크레오"
+LAST	Lko	"아드라욱 할바르드스다테르 스크레오"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -1477,20 +1228,20 @@ Q141534008	P22	LAST	S2600	"6000000016726446433"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Agneta Adlerstråhle"
-LAST	Len	"Agneta Adlerstråhle"
+#   the item just created: set the en label to "Agneta Barnekow"
+LAST	Len	"Agneta Barnekow"
 #   set the en description to "14 May 1779 - 1805"
 LAST	Den	"14 May 1779 - 1805"
-#   set the mul label to "Agneta Adlerstråhle"
-LAST	Lmul	"Agneta Adlerstråhle"
-#   add a mul alias "Agneta Barnekow"
-LAST	Amul	"Agneta Barnekow"
-#   set the ja label to "アグニェータ・アドレルストローレ"
-LAST	Lja	"アグニェータ・アドレルストローレ"
-#   set the zh label to "阿格内塔·阿德莱尔斯特罗莱"
-LAST	Lzh	"阿格内塔·阿德莱尔斯特罗莱"
-#   set the ko label to "악네타 아드레르스트로흐레"
-LAST	Lko	"악네타 아드레르스트로흐레"
+#   set the mul label to "Agneta Barnekow"
+LAST	Lmul	"Agneta Barnekow"
+#   add a mul alias "Agneta Adlerstråhle"
+LAST	Amul	"Agneta Adlerstråhle"
+#   set the ja label to "アグニェータ・バルネコヴ"
+LAST	Lja	"アグニェータ・バルネコヴ"
+#   set the zh label to "阿格内塔·巴尔内科夫"
+LAST	Lzh	"阿格内塔·巴尔内科夫"
+#   set the ko label to "악네타 바르네코우"
+LAST	Lko	"악네타 바르네코우"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -1652,20 +1403,20 @@ LAST	Amul	"Alf Atlungstad"
 
 # create a new item
 CREATE
-#   set the en label to "Alma Gunvor Margareta Fernström"
-LAST	Len	"Alma Gunvor Margareta Fernström"
+#   set the en label to "Alma Gunvor Margareta Moitessier"
+LAST	Len	"Alma Gunvor Margareta Moitessier"
 #   set the en description to "born 30 Oct 1908 Sternö gård, Asarum (K)"
 LAST	Den	"born 30 Oct 1908 Sternö gård, Asarum (K)"
-#   set the mul label to "Alma Gunvor Margareta Fernström"
-LAST	Lmul	"Alma Gunvor Margareta Fernström"
-#   add a mul alias "Alma Gunvor Margareta Moitessier"
-LAST	Amul	"Alma Gunvor Margareta Moitessier"
-#   set the ja label to "アルマ・グンヴォル・マルガレータ・フェルンストロム"
-LAST	Lja	"アルマ・グンヴォル・マルガレータ・フェルンストロム"
-#   set the zh label to "阿尔玛·贡沃尔·瑪格麗塔·费尔恩斯特罗姆"
-LAST	Lzh	"阿尔玛·贡沃尔·瑪格麗塔·费尔恩斯特罗姆"
-#   set the ko label to "알마 군보르 마르가레타 페른스트룀"
-LAST	Lko	"알마 군보르 마르가레타 페른스트룀"
+#   set the mul label to "Alma Gunvor Margareta Moitessier"
+LAST	Lmul	"Alma Gunvor Margareta Moitessier"
+#   add a mul alias "Alma Gunvor Margareta Fernström"
+LAST	Amul	"Alma Gunvor Margareta Fernström"
+#   set the ja label to "アルマ・グンヴォル・マルガレータ・モイテッシエル"
+LAST	Lja	"アルマ・グンヴォル・マルガレータ・モイテッシエル"
+#   set the zh label to "阿尔玛·贡沃尔·瑪格麗塔·莫伊特西埃尔"
+LAST	Lzh	"阿尔玛·贡沃尔·瑪格麗塔·莫伊特西埃尔"
+#   set the ko label to "알마 군보르 마르가레타 모이테시에르"
+LAST	Lko	"알마 군보르 마르가레타 모이테시에르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -2226,7 +1977,32 @@ LAST	P734	Q15829860
 
 # create a new item
 CREATE
-#   set the en label to "Anders Olsson Knape"
+#   set the en label to "Anders Olofsson"
+LAST	Len	"Anders Olofsson"
+#   set the en description to "son of Brita Andersdotter"
+LAST	Den	"son of Brita Andersdotter"
+#   set the mul label to "Anders Olofsson"
+LAST	Lmul	"Anders Olofsson"
+#   set the ja label to "アンデルス・オロフソン"
+LAST	Lja	"アンデルス・オロフソン"
+#   set the zh label to "安德斯·奥洛夫松"
+LAST	Lzh	"安德斯·奥洛夫松"
+#   set the ko label to "안데르스 오로프손"
+LAST	Lko	"안데르스 오로프손"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000027297486429 Anders Olofsson, qualified P1810 subject named as Anders Olofsson
+LAST	P2600	"6000000027297486429"	P1810	"Anders Olofsson"
+#   P25 mother = Q141492533 Brita Andersdotter
+LAST	P25	Q141492533	S2600	"6000000027297486429"
+#   Q141492533 Brita Andersdotter: P40 child = the item just created
+Q141492533	P40	LAST	S2600	"6000000027297486429"
+
+# create a new item
+CREATE
+#   the item just created: set the en label to "Anders Olsson Knape"
 LAST	Len	"Anders Olsson Knape"
 #   set the en description to "4 Aug 1628 - 3 Feb 1705 Råa Knapegården Onsala"
 LAST	Den	"4 Aug 1628 - 3 Feb 1705 Råa Knapegården Onsala"
@@ -2744,20 +2520,20 @@ LAST	P734	Q122835853
 
 # create a new item
 CREATE
-#   set the en label to "Anna Johannesdatter Svantesvold"
-LAST	Len	"Anna Johannesdatter Svantesvold"
+#   set the en label to "Anna Johannesdatter Elleflot"
+LAST	Len	"Anna Johannesdatter Elleflot"
 #   set the en description to "1759 Svantevoll - 1844 Elleflot"
 LAST	Den	"1759 Svantevoll - 1844 Elleflot"
-#   set the mul label to "Anna Johannesdatter Svantesvold"
-LAST	Lmul	"Anna Johannesdatter Svantesvold"
-#   add a mul alias "Anna Johannesdatter Elleflot"
-LAST	Amul	"Anna Johannesdatter Elleflot"
-#   set the ja label to "アンナ・ヨハンネスダッテル・スヴァンテスヴォルド"
-LAST	Lja	"アンナ・ヨハンネスダッテル・スヴァンテスヴォルド"
-#   set the zh label to "安娜·约翰内斯达特·斯万特斯沃尔德"
-LAST	Lzh	"安娜·约翰内斯达特·斯万特斯沃尔德"
-#   set the ko label to "안나 조한네스다테르 스반테스볼드"
-LAST	Lko	"안나 조한네스다테르 스반테스볼드"
+#   set the mul label to "Anna Johannesdatter Elleflot"
+LAST	Lmul	"Anna Johannesdatter Elleflot"
+#   add a mul alias "Anna Johannesdatter Svantesvold"
+LAST	Amul	"Anna Johannesdatter Svantesvold"
+#   set the ja label to "アンナ・ヨハンネスダッテル・エレフロト"
+LAST	Lja	"アンナ・ヨハンネスダッテル・エレフロト"
+#   set the zh label to "安娜·约翰内斯达特·埃莱夫洛特"
+LAST	Lzh	"安娜·约翰内斯达特·埃莱夫洛特"
+#   set the ko label to "안나 조한네스다테르 엘레프로트"
+LAST	Lko	"안나 조한네스다테르 엘레프로트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -2855,20 +2631,20 @@ LAST	P734	Q39874740
 
 # create a new item
 CREATE
-#   set the en label to "Anna Kristine Svensdatter Lunde"
-LAST	Len	"Anna Kristine Svensdatter Lunde"
+#   set the en label to "Anna Kristine Svensdatter Orstad"
+LAST	Len	"Anna Kristine Svensdatter Orstad"
 #   set the en description to "1775 - 1801"
 LAST	Den	"1775 - 1801"
-#   set the mul label to "Anna Kristine Svensdatter Lunde"
-LAST	Lmul	"Anna Kristine Svensdatter Lunde"
-#   add a mul alias "Anna Kristine Svensdatter Orstad"
-LAST	Amul	"Anna Kristine Svensdatter Orstad"
-#   set the ja label to "アンナ・クリスティン・スヴェンスダッテル・ルンデ"
-LAST	Lja	"アンナ・クリスティン・スヴェンスダッテル・ルンデ"
-#   set the zh label to "安娜·克丽丝汀·斯文斯达特·伦德"
-LAST	Lzh	"安娜·克丽丝汀·斯文斯达特·伦德"
-#   set the ko label to "안나 크리스티네 스벤스다테르 룬데"
-LAST	Lko	"안나 크리스티네 스벤스다테르 룬데"
+#   set the mul label to "Anna Kristine Svensdatter Orstad"
+LAST	Lmul	"Anna Kristine Svensdatter Orstad"
+#   add a mul alias "Anna Kristine Svensdatter Lunde"
+LAST	Amul	"Anna Kristine Svensdatter Lunde"
+#   set the ja label to "アンナ・クリスティン・スヴェンスダッテル・オルスタド"
+LAST	Lja	"アンナ・クリスティン・スヴェンスダッテル・オルスタド"
+#   set the zh label to "安娜·克丽丝汀·斯文斯达特·奥尔斯塔德"
+LAST	Lzh	"安娜·克丽丝汀·斯文斯达特·奥尔斯塔德"
+#   set the ko label to "안나 크리스티네 스벤스다테르 오르스타드"
+LAST	Lko	"안나 크리스티네 스벤스다테르 오르스타드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -2947,20 +2723,20 @@ LAST	Amul	"Anna Orre"
 
 # create a new item
 CREATE
-#   set the en label to "Anna Malena Ommundsdatter Braut"
-LAST	Len	"Anna Malena Ommundsdatter Braut"
+#   set the en label to "Anna Malena Ommundsdatter Orstad"
+LAST	Len	"Anna Malena Ommundsdatter Orstad"
 #   set the en description to "26 Nov 1776 Nord-Braut - 18 Sep 1824 Orstad"
 LAST	Den	"26 Nov 1776 Nord-Braut - 18 Sep 1824 Orstad"
-#   set the mul label to "Anna Malena Ommundsdatter Braut"
-LAST	Lmul	"Anna Malena Ommundsdatter Braut"
-#   add a mul alias "Anna Malena Ommundsdatter Orstad"
-LAST	Amul	"Anna Malena Ommundsdatter Orstad"
-#   set the ja label to "アンナ・マレーナ・オムムンドスダッテル・ブラウト"
-LAST	Lja	"アンナ・マレーナ・オムムンドスダッテル・ブラウト"
-#   set the zh label to "安娜·马莱纳·奥蒙德斯达特·布拉乌特"
-LAST	Lzh	"安娜·马莱纳·奥蒙德斯达特·布拉乌特"
-#   set the ko label to "안나 마레나 옴문드스다테르 브라우트"
-LAST	Lko	"안나 마레나 옴문드스다테르 브라우트"
+#   set the mul label to "Anna Malena Ommundsdatter Orstad"
+LAST	Lmul	"Anna Malena Ommundsdatter Orstad"
+#   add a mul alias "Anna Malena Ommundsdatter Braut"
+LAST	Amul	"Anna Malena Ommundsdatter Braut"
+#   set the ja label to "アンナ・マレーナ・オムムンドスダッテル・オルスタド"
+LAST	Lja	"アンナ・マレーナ・オムムンドスダッテル・オルスタド"
+#   set the zh label to "安娜·马莱纳·奥蒙德斯达特·奥尔斯塔德"
+LAST	Lzh	"安娜·马莱纳·奥蒙德斯达特·奥尔斯塔德"
+#   set the ko label to "안나 마레나 옴문드스다테르 오르스타드"
+LAST	Lko	"안나 마레나 옴문드스다테르 오르스타드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -2994,20 +2770,20 @@ LAST	Amul	"Anna Malena Orstad"
 
 # create a new item
 CREATE
-#   set the en label to "Anna Malena Ådnesdatter Malena Ådnesdotter"
-LAST	Len	"Anna Malena Ådnesdatter Malena Ådnesdotter"
+#   set the en label to "Anna Malena Ådnesdatter Figgve"
+LAST	Len	"Anna Malena Ådnesdatter Figgve"
 #   set the en description to "18 Jun 1713 Figve i Høyland- se side 127 nr 6 - 6 Jul 1765 Orstad, Klepp, Rogaland"
 LAST	Den	"18 Jun 1713 Figve i Høyland- se side 127 nr 6 - 6 Jul 1765 Orstad, Klepp, Rogaland"
-#   set the mul label to "Anna Malena Ådnesdatter Malena Ådnesdotter"
-LAST	Lmul	"Anna Malena Ådnesdatter Malena Ådnesdotter"
-#   add a mul alias "Anna Malena Ådnesdatter Figgve"
-LAST	Amul	"Anna Malena Ådnesdatter Figgve"
-#   set the ja label to "アンナ・マレーナ・オードネスダッテル・マレーナ・オードネスドッテル"
-LAST	Lja	"アンナ・マレーナ・オードネスダッテル・マレーナ・オードネスドッテル"
-#   set the zh label to "安娜·马莱纳·奥德内斯达特·马莱纳·奥德内斯多特"
-LAST	Lzh	"安娜·马莱纳·奥德内斯达特·马莱纳·奥德内斯多特"
-#   set the ko label to "안나 마레나 오드네스다테르 마레나 오드네스도테르"
-LAST	Lko	"안나 마레나 오드네스다테르 마레나 오드네스도테르"
+#   set the mul label to "Anna Malena Ådnesdatter Figgve"
+LAST	Lmul	"Anna Malena Ådnesdatter Figgve"
+#   add a mul alias "Anna Malena Ådnesdatter Malena Ådnesdotter"
+LAST	Amul	"Anna Malena Ådnesdatter Malena Ådnesdotter"
+#   set the ja label to "アンナ・マレーナ・オードネスダッテル・フィッグヴェ"
+LAST	Lja	"アンナ・マレーナ・オードネスダッテル・フィッグヴェ"
+#   set the zh label to "安娜·马莱纳·奥德内斯达特·菲格韦"
+LAST	Lzh	"安娜·马莱纳·奥德内斯达特·菲格韦"
+#   set the ko label to "안나 마레나 오드네스다테르 픽베"
+LAST	Lko	"안나 마레나 오드네스다테르 픽베"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -3035,20 +2811,20 @@ LAST	Amul	"Anna Malena Figgve"
 
 # create a new item
 CREATE
-#   set the en label to "Anna Maria Brodersen Larsdatter Bore"
-LAST	Len	"Anna Maria Brodersen Larsdatter Bore"
+#   set the en label to "Anna Maria Brodersen Larsdatter Øystre Bore"
+LAST	Len	"Anna Maria Brodersen Larsdatter Øystre Bore"
 #   set the en description to "1791 Bore - 18 Apr 1873 Øystre Bore"
 LAST	Den	"1791 Bore - 18 Apr 1873 Øystre Bore"
-#   set the mul label to "Anna Maria Brodersen Larsdatter Bore"
-LAST	Lmul	"Anna Maria Brodersen Larsdatter Bore"
-#   add a mul alias "Anna Maria Brodersen Larsdatter Øystre Bore"
-LAST	Amul	"Anna Maria Brodersen Larsdatter Øystre Bore"
-#   set the ja label to "アンナ・マリア・ブロデルセン・ラーシュダッテル・ボレ"
-LAST	Lja	"アンナ・マリア・ブロデルセン・ラーシュダッテル・ボレ"
-#   set the zh label to "安娜·玛丽亚·布罗德尔森·拉尔斯达特·博雷"
-LAST	Lzh	"安娜·玛丽亚·布罗德尔森·拉尔斯达特·博雷"
-#   set the ko label to "안나 마리아 브로데르센 라르스다테르 보레"
-LAST	Lko	"안나 마리아 브로데르센 라르스다테르 보레"
+#   set the mul label to "Anna Maria Brodersen Larsdatter Øystre Bore"
+LAST	Lmul	"Anna Maria Brodersen Larsdatter Øystre Bore"
+#   add a mul alias "Anna Maria Brodersen Larsdatter Bore"
+LAST	Amul	"Anna Maria Brodersen Larsdatter Bore"
+#   set the ja label to "アンナ・マリア・ブロデルセン・ラーシュダッテル・オイストレ・ボレ"
+LAST	Lja	"アンナ・マリア・ブロデルセン・ラーシュダッテル・オイストレ・ボレ"
+#   set the zh label to "安娜·玛丽亚·布罗德尔森·拉尔斯达特·奥伊斯特雷·博雷"
+LAST	Lzh	"安娜·玛丽亚·布罗德尔森·拉尔斯达特·奥伊斯特雷·博雷"
+#   set the ko label to "안나 마리아 브로데르센 라르스다테르 외이스트레 보레"
+LAST	Lko	"안나 마리아 브로데르센 라르스다테르 외이스트레 보레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -3123,20 +2899,20 @@ LAST	Amul	"Anna Olofsdotter"
 
 # create a new item
 CREATE
-#   set the en label to "Anna Olluffsdatter Gausland"
-LAST	Len	"Anna Olluffsdatter Gausland"
+#   set the en label to "Anna Olluffsdatter Grødeland"
+LAST	Len	"Anna Olluffsdatter Grødeland"
 #   set the en description to "circa 1594 Gausland på Nærbø i Hå- jfr bok 1 s 394 - 1674 Grødaland"
 LAST	Den	"circa 1594 Gausland på Nærbø i Hå- jfr bok 1 s 394 - 1674 Grødaland"
-#   set the mul label to "Anna Olluffsdatter Gausland"
-LAST	Lmul	"Anna Olluffsdatter Gausland"
-#   add a mul alias "Anna Olluffsdatter Grødeland"
-LAST	Amul	"Anna Olluffsdatter Grødeland"
-#   set the ja label to "アンナ・オルッフスダッテル・ガウスランド"
-LAST	Lja	"アンナ・オルッフスダッテル・ガウスランド"
-#   set the zh label to "安娜·奥卢夫斯达特·加乌斯兰德"
-LAST	Lzh	"安娜·奥卢夫斯达特·加乌斯兰德"
-#   set the ko label to "안나 올루프스다테르 가우스란드"
-LAST	Lko	"안나 올루프스다테르 가우스란드"
+#   set the mul label to "Anna Olluffsdatter Grødeland"
+LAST	Lmul	"Anna Olluffsdatter Grødeland"
+#   add a mul alias "Anna Olluffsdatter Gausland"
+LAST	Amul	"Anna Olluffsdatter Gausland"
+#   set the ja label to "アンナ・オルッフスダッテル・グロデランド"
+LAST	Lja	"アンナ・オルッフスダッテル・グロデランド"
+#   set the zh label to "安娜·奥卢夫斯达特·格罗德兰德"
+LAST	Lzh	"安娜·奥卢夫斯达特·格罗德兰德"
+#   set the ko label to "안나 올루프스다테르 그뢰데란드"
+LAST	Lko	"안나 올루프스다테르 그뢰데란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -3226,20 +3002,20 @@ LAST	P735	Q18201520	P1545	"2"	P3831	Q245025
 
 # create a new item
 CREATE
-#   set the en label to "Anna Torsdatter Jåtten"
-LAST	Len	"Anna Torsdatter Jåtten"
+#   set the en label to "Anna Torsdatter Nord-Braut"
+LAST	Len	"Anna Torsdatter Nord-Braut"
 #   set the en description to "1733 Jåtten - 3 Oct 1813"
 LAST	Den	"1733 Jåtten - 3 Oct 1813"
-#   set the mul label to "Anna Torsdatter Jåtten"
-LAST	Lmul	"Anna Torsdatter Jåtten"
-#   add a mul alias "Anna Torsdatter Nord-Braut"
-LAST	Amul	"Anna Torsdatter Nord-Braut"
-#   set the ja label to "アンナ・トルスダッテル・ヨーッテン"
-LAST	Lja	"アンナ・トルスダッテル・ヨーッテン"
-#   set the zh label to "安娜·托尔斯达特·约滕"
-LAST	Lzh	"安娜·托尔斯达特·约滕"
-#   set the ko label to "안나 토르스다테르 조텐"
-LAST	Lko	"안나 토르스다테르 조텐"
+#   set the mul label to "Anna Torsdatter Nord-Braut"
+LAST	Lmul	"Anna Torsdatter Nord-Braut"
+#   add a mul alias "Anna Torsdatter Jåtten"
+LAST	Amul	"Anna Torsdatter Jåtten"
+#   set the ja label to "アンナ・トルスダッテル・ノルドブラウト"
+LAST	Lja	"アンナ・トルスダッテル・ノルドブラウト"
+#   set the zh label to "安娜·托尔斯达特·诺尔德布拉乌特"
+LAST	Lzh	"安娜·托尔斯达特·诺尔德布拉乌特"
+#   set the ko label to "안나 토르스다테르 노르듭라우트"
+LAST	Lko	"안나 토르스다테르 노르듭라우트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -3265,20 +3041,20 @@ LAST	Amul	"Anna Nord-Braut"
 
 # create a new item
 CREATE
-#   set the en label to "Anna Ulrika Margareta af Harmens"
-LAST	Len	"Anna Ulrika Margareta af Harmens"
+#   set the en label to "Anna Ulrika Margareta Harmens"
+LAST	Len	"Anna Ulrika Margareta Harmens"
 #   set the en description to "27 Mar 1795 - 2 Mar 1830 Kalmar, Kalmar, Sweden"
 LAST	Den	"27 Mar 1795 - 2 Mar 1830 Kalmar, Kalmar, Sweden"
-#   set the mul label to "Anna Ulrika Margareta af Harmens"
-LAST	Lmul	"Anna Ulrika Margareta af Harmens"
-#   add a mul alias "Anna Ulrika Margareta Harmens"
-LAST	Amul	"Anna Ulrika Margareta Harmens"
-#   set the ja label to "アンナ・ウルリカ・マルガレータ・アフ・ハルメンス"
-LAST	Lja	"アンナ・ウルリカ・マルガレータ・アフ・ハルメンス"
-#   set the zh label to "安娜·乌尔里卡·瑪格麗塔·阿夫·哈尔门斯"
-LAST	Lzh	"安娜·乌尔里卡·瑪格麗塔·阿夫·哈尔门斯"
-#   set the ko label to "안나 울리카 마르가레타 아프 하르멘스"
-LAST	Lko	"안나 울리카 마르가레타 아프 하르멘스"
+#   set the mul label to "Anna Ulrika Margareta Harmens"
+LAST	Lmul	"Anna Ulrika Margareta Harmens"
+#   add a mul alias "Anna Ulrika Margareta af Harmens"
+LAST	Amul	"Anna Ulrika Margareta af Harmens"
+#   set the ja label to "アンナ・ウルリカ・マルガレータ・ハルメンス"
+LAST	Lja	"アンナ・ウルリカ・マルガレータ・ハルメンス"
+#   set the zh label to "安娜·乌尔里卡·瑪格麗塔·哈尔门斯"
+LAST	Lzh	"安娜·乌尔里卡·瑪格麗塔·哈尔门斯"
+#   set the ko label to "안나 울리카 마르가레타 하르멘스"
+LAST	Lko	"안나 울리카 마르가레타 하르멘스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -3466,47 +3242,6 @@ Q141556480	P22	LAST	S2600	"6000000006776185212"
 LAST	P735	Q16419537
 #   P734 family name = Q37517948 Voll
 LAST	P734	Q37517948
-
-# create a new item
-CREATE
-#   set the en label to "Asgjerd Mauritsdatter Osen"
-LAST	Len	"Asgjerd Mauritsdatter Osen"
-#   set the en description to "Bet 1590 and 1600 Osen - circa 1655 Espeland"
-LAST	Den	"Bet 1590 and 1600 Osen - circa 1655 Espeland"
-#   set the mul label to "Asgjerd Mauritsdatter Osen"
-LAST	Lmul	"Asgjerd Mauritsdatter Osen"
-#   add a mul alias "Asgjerd Mauritsdatter Øvre Maudal/ Espeland"
-LAST	Amul	"Asgjerd Mauritsdatter Øvre Maudal/ Espeland"
-#   set the ja label to "アスイェルド・マウリトスダッテル・オセン"
-LAST	Lja	"アスイェルド・マウリトスダッテル・オセン"
-#   set the zh label to "阿斯耶尔德·马乌里特斯达特·奥森"
-LAST	Lzh	"阿斯耶尔德·马乌里特斯达特·奥森"
-#   set the ko label to "아스게르드 마우리트스다테르 오센"
-LAST	Lko	"아스게르드 마우리트스다테르 오센"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000001818445637 Asgjerd Mauritsdatter Osen, qualified P1810 subject named as Asgjerd Mauritsdatter Osen
-LAST	P2600	"6000000001818445637"	P1810	"Asgjerd Mauritsdatter Osen"
-#   P569 date of birth = +1590-00-00T00:00:00Z/9, qualified P1319 earliest date +1590-00-00T00:00:00Z/9, P1326 latest date +1600-00-00T00:00:00Z/9
-LAST	P569	+1590-00-00T00:00:00Z/9	P1319	+1590-00-00T00:00:00Z/9	P1326	+1600-00-00T00:00:00Z/9	S2600	"6000000001818445637"
-#   P570 date of death = +1655-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P570	+1655-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000001818445637"
-#   P40 child = Q141551654 Marit Vetlesdatter Espeland
-LAST	P40	Q141551654	S2600	"6000000001818445637"
-#   Q141551654 Marit Vetlesdatter Espeland: P25 mother = the item just created
-Q141551654	P25	LAST	S2600	"6000000001818445637"
-#   the item just created: P735 given name = Q141546507
-LAST	P735	Q141546507
-#   P5056 patronym or matronym = Q141527234
-LAST	P5056	Q141527234
-#   P734 family name = Q47085823, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q47085823	P3831	Q28418670
-#   P734 family name = Q27888994, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q27888994	P3831	Q28418670
-#   add a mul alias "Asgjerd Øvre Maudal/ Espeland"
-LAST	Amul	"Asgjerd Øvre Maudal/ Espeland"
 
 # create a new item
 CREATE
@@ -3741,20 +3476,20 @@ LAST	P5056	Q130232969	P144	Q136375935
 
 # create a new item
 CREATE
-#   set the en label to "Barbro Larsdatter Torland"
-LAST	Len	"Barbro Larsdatter Torland"
+#   set the en label to "Barbro Larsdatter Nord-Braut"
+LAST	Len	"Barbro Larsdatter Nord-Braut"
 #   set the en description to "1650 Tårland i Nærbø Hå - 1700 N Braut i Klepp"
 LAST	Den	"1650 Tårland i Nærbø Hå - 1700 N Braut i Klepp"
-#   set the mul label to "Barbro Larsdatter Torland"
-LAST	Lmul	"Barbro Larsdatter Torland"
-#   add a mul alias "Barbro Larsdatter Nord-Braut"
-LAST	Amul	"Barbro Larsdatter Nord-Braut"
-#   set the ja label to "バーブロ・ラーシュダッテル・トルランド"
-LAST	Lja	"バーブロ・ラーシュダッテル・トルランド"
-#   set the zh label to "巴尔布罗·拉尔斯达特·托尔兰德"
-LAST	Lzh	"巴尔布罗·拉尔斯达特·托尔兰德"
-#   set the ko label to "바릅로 라르스다테르 토란드"
-LAST	Lko	"바릅로 라르스다테르 토란드"
+#   set the mul label to "Barbro Larsdatter Nord-Braut"
+LAST	Lmul	"Barbro Larsdatter Nord-Braut"
+#   add a mul alias "Barbro Larsdatter Torland"
+LAST	Amul	"Barbro Larsdatter Torland"
+#   set the ja label to "バーブロ・ラーシュダッテル・ノルドブラウト"
+LAST	Lja	"バーブロ・ラーシュダッテル・ノルドブラウト"
+#   set the zh label to "巴尔布罗·拉尔斯达特·诺尔德布拉乌特"
+LAST	Lzh	"巴尔布罗·拉尔斯达特·诺尔德布拉乌特"
+#   set the ko label to "바릅로 라르스다테르 노르듭라우트"
+LAST	Lko	"바릅로 라르스다테르 노르듭라우트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -3831,20 +3566,20 @@ LAST	P734	Q30079966
 
 # create a new item
 CREATE
-#   set the en label to "Beata Eliaantytär Forselius"
-LAST	Len	"Beata Eliaantytär Forselius"
+#   set the en label to "Beata Eliaantytär Forselia"
+LAST	Len	"Beata Eliaantytär Forselia"
 #   set the en description to "12 Apr 1686 - May 1686"
 LAST	Den	"12 Apr 1686 - May 1686"
-#   set the mul label to "Beata Eliaantytär Forselius"
-LAST	Lmul	"Beata Eliaantytär Forselius"
-#   add a mul alias "Beata Eliaantytär Forselia"
-LAST	Amul	"Beata Eliaantytär Forselia"
-#   set the ja label to "ベアタ・エリオーンティテル・フォルセリウス"
-LAST	Lja	"ベアタ・エリオーンティテル・フォルセリウス"
-#   set the zh label to "贝阿塔·埃利翁蒂特尔·福尔塞利乌斯"
-LAST	Lzh	"贝阿塔·埃利翁蒂特尔·福尔塞利乌斯"
-#   set the ko label to "베아타 에리아안티테르 포르세류스"
-LAST	Lko	"베아타 에리아안티테르 포르세류스"
+#   set the mul label to "Beata Eliaantytär Forselia"
+LAST	Lmul	"Beata Eliaantytär Forselia"
+#   add a mul alias "Beata Eliaantytär Forselius"
+LAST	Amul	"Beata Eliaantytär Forselius"
+#   set the ja label to "ベアタ・エリオーンティテル・フォルセリア"
+LAST	Lja	"ベアタ・エリオーンティテル・フォルセリア"
+#   set the zh label to "贝阿塔·埃利翁蒂特尔·福尔塞利阿"
+LAST	Lzh	"贝阿塔·埃利翁蒂特尔·福尔塞利阿"
+#   set the ko label to "베아타 에리아안티테르 포르세리아"
+LAST	Lko	"베아타 에리아안티테르 포르세리아"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4053,20 +3788,20 @@ LAST	Amul	"Bardr Smidr"
 
 # create a new item
 CREATE
-#   set the en label to "Berete Halvardsdatter Mauland"
-LAST	Len	"Berete Halvardsdatter Mauland"
+#   set the en label to "Berete Halvardsdatter Njå"
+LAST	Len	"Berete Halvardsdatter Njå"
 #   set the en description to "Mauland, Time, Rogaland - Njå, Time"
 LAST	Den	"Mauland, Time, Rogaland - Njå, Time"
-#   set the mul label to "Berete Halvardsdatter Mauland"
-LAST	Lmul	"Berete Halvardsdatter Mauland"
-#   add a mul alias "Berete Halvardsdatter Njå"
-LAST	Amul	"Berete Halvardsdatter Njå"
-#   set the ja label to "ベレテ・ハルヴァルドスダッテル・マウランド"
-LAST	Lja	"ベレテ・ハルヴァルドスダッテル・マウランド"
-#   set the zh label to "贝雷特·哈尔瓦尔德斯达特·马乌兰德"
-LAST	Lzh	"贝雷特·哈尔瓦尔德斯达特·马乌兰德"
-#   set the ko label to "베레테 할바르드스다테르 마우란드"
-LAST	Lko	"베레테 할바르드스다테르 마우란드"
+#   set the mul label to "Berete Halvardsdatter Njå"
+LAST	Lmul	"Berete Halvardsdatter Njå"
+#   add a mul alias "Berete Halvardsdatter Mauland"
+LAST	Amul	"Berete Halvardsdatter Mauland"
+#   set the ja label to "ベレテ・ハルヴァルドスダッテル・ニョー"
+LAST	Lja	"ベレテ・ハルヴァルドスダッテル・ニョー"
+#   set the zh label to "贝雷特·哈尔瓦尔德斯达特·诺"
+LAST	Lzh	"贝雷特·哈尔瓦尔德斯达特·诺"
+#   set the ko label to "베레테 할바르드스다테르 노"
+LAST	Lko	"베레테 할바르드스다테르 노"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4090,20 +3825,20 @@ LAST	Amul	"Berete Njå"
 
 # create a new item
 CREATE
-#   set the en label to "Berete Larsdatter Lende"
-LAST	Len	"Berete Larsdatter Lende"
+#   set the en label to "Berete Larsdatter Garborg"
+LAST	Len	"Berete Larsdatter Garborg"
 #   set the en description to "circa 1710 Lende - 1758 Garborg"
 LAST	Den	"circa 1710 Lende - 1758 Garborg"
-#   set the mul label to "Berete Larsdatter Lende"
-LAST	Lmul	"Berete Larsdatter Lende"
-#   add a mul alias "Berete Larsdatter Garborg"
-LAST	Amul	"Berete Larsdatter Garborg"
-#   set the ja label to "ベレテ・ラーシュダッテル・レンデ"
-LAST	Lja	"ベレテ・ラーシュダッテル・レンデ"
-#   set the zh label to "贝雷特·拉尔斯达特·伦德"
-LAST	Lzh	"贝雷特·拉尔斯达特·伦德"
-#   set the ko label to "베레테 라르스다테르 렌데"
-LAST	Lko	"베레테 라르스다테르 렌데"
+#   set the mul label to "Berete Larsdatter Garborg"
+LAST	Lmul	"Berete Larsdatter Garborg"
+#   add a mul alias "Berete Larsdatter Lende"
+LAST	Amul	"Berete Larsdatter Lende"
+#   set the ja label to "ベレテ・ラーシュダッテル・ガルボルグ"
+LAST	Lja	"ベレテ・ラーシュダッテル・ガルボルグ"
+#   set the zh label to "贝雷特·拉尔斯达特·加尔博格"
+LAST	Lzh	"贝雷特·拉尔斯达特·加尔博格"
+#   set the ko label to "베레테 라르스다테르 가르보륵"
+LAST	Lko	"베레테 라르스다테르 가르보륵"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4133,30 +3868,30 @@ LAST	Amul	"Berete Garborg"
 
 # create a new item
 CREATE
-#   set the en label to "Berit Eriksdatter Hobberstad Jr."
-LAST	Len	"Berit Eriksdatter Hobberstad Jr."
-#   set the da label to "Berit Eriksdatter Hobberstad d.y."
-LAST	Lda	"Berit Eriksdatter Hobberstad d.y."
-#   set the nb label to "Berit Eriksdatter Hobberstad d.y."
-LAST	Lnb	"Berit Eriksdatter Hobberstad d.y."
-#   set the nn label to "Berit Eriksdatter Hobberstad d.y."
-LAST	Lnn	"Berit Eriksdatter Hobberstad d.y."
-#   set the no label to "Berit Eriksdatter Hobberstad d.y."
-LAST	Lno	"Berit Eriksdatter Hobberstad d.y."
-#   set the sv label to "Berit Eriksdatter Hobberstad d.y."
-LAST	Lsv	"Berit Eriksdatter Hobberstad d.y."
+#   set the en label to "Berit Eriksdatter Obrestad Jr."
+LAST	Len	"Berit Eriksdatter Obrestad Jr."
+#   set the da label to "Berit Eriksdatter Obrestad d.y."
+LAST	Lda	"Berit Eriksdatter Obrestad d.y."
+#   set the nb label to "Berit Eriksdatter Obrestad d.y."
+LAST	Lnb	"Berit Eriksdatter Obrestad d.y."
+#   set the nn label to "Berit Eriksdatter Obrestad d.y."
+LAST	Lnn	"Berit Eriksdatter Obrestad d.y."
+#   set the no label to "Berit Eriksdatter Obrestad d.y."
+LAST	Lno	"Berit Eriksdatter Obrestad d.y."
+#   set the sv label to "Berit Eriksdatter Obrestad d.y."
+LAST	Lsv	"Berit Eriksdatter Obrestad d.y."
 #   set the en description to "1726 Hobberstad, Time, - 1757 Obrestad, Hå, Rogaland, Norway"
 LAST	Den	"1726 Hobberstad, Time, - 1757 Obrestad, Hå, Rogaland, Norway"
-#   set the mul label to "Berit Eriksdatter Hobberstad II"
-LAST	Lmul	"Berit Eriksdatter Hobberstad II"
-#   add a mul alias "Berit Eriksdatter Obrestad"
-LAST	Amul	"Berit Eriksdatter Obrestad"
-#   set the ja label to "ベリット・エリクスダッテル・ホッベルスタド2世"
-LAST	Lja	"ベリット・エリクスダッテル・ホッベルスタド2世"
-#   set the zh label to "贝里特·埃里克斯达特·霍贝尔斯塔德二世"
-LAST	Lzh	"贝里特·埃里克斯达特·霍贝尔斯塔德二世"
-#   set the ko label to "베리트 에리크스다테르 호베르스타드 2세"
-LAST	Lko	"베리트 에리크스다테르 호베르스타드 2세"
+#   set the mul label to "Berit Eriksdatter Obrestad II"
+LAST	Lmul	"Berit Eriksdatter Obrestad II"
+#   add a mul alias "Berit Eriksdatter Hobberstad"
+LAST	Amul	"Berit Eriksdatter Hobberstad"
+#   set the ja label to "ベリット・エリクスダッテル・オブレスタド2世"
+LAST	Lja	"ベリット・エリクスダッテル・オブレスタド2世"
+#   set the zh label to "贝里特·埃里克斯达特·奥布雷斯塔德二世"
+LAST	Lzh	"贝里特·埃里克斯达特·奥布雷斯塔德二世"
+#   set the ko label to "베리트 에리크스다테르 옵레스타드 2세"
+LAST	Lko	"베리트 에리크스다테르 옵레스타드 2세"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4250,20 +3985,20 @@ LAST	P734	Q30086760
 
 # create a new item
 CREATE
-#   set the en label to "Berte Jørgensdatter Fidjeland"
-LAST	Len	"Berte Jørgensdatter Fidjeland"
+#   set the en label to "Berte Jørgensdatter Vatnedal"
+LAST	Len	"Berte Jørgensdatter Vatnedal"
 #   set the en description to "1807 - 5 May 1900"
 LAST	Den	"1807 - 5 May 1900"
-#   set the mul label to "Berte Jørgensdatter Fidjeland"
-LAST	Lmul	"Berte Jørgensdatter Fidjeland"
-#   add a mul alias "Berte Jørgensdatter Vatnedal"
-LAST	Amul	"Berte Jørgensdatter Vatnedal"
-#   set the ja label to "ベルテ・ヨルゲンスダッテル・フィドイェランド"
-LAST	Lja	"ベルテ・ヨルゲンスダッテル・フィドイェランド"
-#   set the zh label to "贝尔特·约尔根斯达特·菲德耶兰德"
-LAST	Lzh	"贝尔特·约尔根斯达特·菲德耶兰德"
-#   set the ko label to "베르테 죄르겐스다테르 피제란드"
-LAST	Lko	"베르테 죄르겐스다테르 피제란드"
+#   set the mul label to "Berte Jørgensdatter Vatnedal"
+LAST	Lmul	"Berte Jørgensdatter Vatnedal"
+#   add a mul alias "Berte Jørgensdatter Fidjeland"
+LAST	Amul	"Berte Jørgensdatter Fidjeland"
+#   set the ja label to "ベルテ・ヨルゲンスダッテル・ヴァトネダル"
+LAST	Lja	"ベルテ・ヨルゲンスダッテル・ヴァトネダル"
+#   set the zh label to "贝尔特·约尔根斯达特·瓦特内达尔"
+LAST	Lzh	"贝尔特·约尔根斯达特·瓦特内达尔"
+#   set the ko label to "베르테 죄르겐스다테르 바트네달"
+LAST	Lko	"베르테 죄르겐스다테르 바트네달"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4433,20 +4168,20 @@ LAST	Amul	"Bertil Ruuth"
 
 # create a new item
 CREATE
-#   set the en label to "Birgitte Fechtel"
-LAST	Len	"Birgitte Fechtel"
+#   set the en label to "Birgitte Jacobsdotter Fectil"
+LAST	Len	"Birgitte Jacobsdotter Fectil"
 #   set the en description to "1572 - 1623"
 LAST	Den	"1572 - 1623"
-#   set the mul label to "Birgitte Fechtel"
-LAST	Lmul	"Birgitte Fechtel"
-#   add a mul alias "Birgitte Jacobsdotter Fectil"
-LAST	Amul	"Birgitte Jacobsdotter Fectil"
-#   set the ja label to "ビルギッテ・フェクテル"
-LAST	Lja	"ビルギッテ・フェクテル"
-#   set the zh label to "比尔吉特·费克特尔"
-LAST	Lzh	"比尔吉特·费克特尔"
-#   set the ko label to "비르기테 페츠텔"
-LAST	Lko	"비르기테 페츠텔"
+#   set the mul label to "Birgitte Jacobsdotter Fectil"
+LAST	Lmul	"Birgitte Jacobsdotter Fectil"
+#   add a mul alias "Birgitte Fechtel"
+LAST	Amul	"Birgitte Fechtel"
+#   set the ja label to "ビルギッテ・ヤコブスドッテル・フェクティル"
+LAST	Lja	"ビルギッテ・ヤコブスドッテル・フェクティル"
+#   set the zh label to "比尔吉特·雅科布斯多特·费克蒂尔"
+LAST	Lzh	"比尔吉特·雅科布斯多特·费克蒂尔"
+#   set the ko label to "비르기테 자콥스도테르 페크틸"
+LAST	Lko	"비르기테 자콥스도테르 페크틸"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4649,20 +4384,20 @@ LAST	P734	Q27892902
 
 # create a new item
 CREATE
-#   set the en label to "Bodil Pedersdatter"
-LAST	Len	"Bodil Pedersdatter"
+#   set the en label to "Bodil Håland"
+LAST	Len	"Bodil Håland"
 #   set the en description to "Bodil, wife of Jacob Håland"
 LAST	Den	"Bodil, wife of Jacob Håland"
-#   set the mul label to "Bodil Pedersdatter"
-LAST	Lmul	"Bodil Pedersdatter"
-#   add a mul alias "Bodil Håland"
-LAST	Amul	"Bodil Håland"
-#   set the ja label to "ボディル・ペーデシュダッテル"
-LAST	Lja	"ボディル・ペーデシュダッテル"
-#   set the zh label to "博迪尔·佩德斯达特"
-LAST	Lzh	"博迪尔·佩德斯达特"
-#   set the ko label to "보딜 페데르스다테르"
-LAST	Lko	"보딜 페데르스다테르"
+#   set the mul label to "Bodil Håland"
+LAST	Lmul	"Bodil Håland"
+#   add a mul alias "Bodil Pedersdatter"
+LAST	Amul	"Bodil Pedersdatter"
+#   set the ja label to "ボディル・ホーランド"
+LAST	Lja	"ボディル・ホーランド"
+#   set the zh label to "博迪尔·霍兰"
+LAST	Lzh	"博迪尔·霍兰"
+#   set the ko label to "보딜 호란드"
+LAST	Lko	"보딜 호란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4874,20 +4609,20 @@ LAST	P735	Q918013
 
 # create a new item
 CREATE
-#   set the en label to "Brita Jacobsdotter Latvo"
-LAST	Len	"Brita Jacobsdotter Latvo"
+#   set the en label to "Brita Jacobsdotter Käkölä"
+LAST	Len	"Brita Jacobsdotter Käkölä"
 #   set the en description to "Aft 1600 Latvo - Bet 1645 and 1652 Käkölä, Luonnonmaa"
 LAST	Den	"Aft 1600 Latvo - Bet 1645 and 1652 Käkölä, Luonnonmaa"
-#   set the mul label to "Brita Jacobsdotter Latvo"
-LAST	Lmul	"Brita Jacobsdotter Latvo"
-#   add a mul alias "Brita Jacobsdotter Käkölä"
-LAST	Amul	"Brita Jacobsdotter Käkölä"
-#   set the ja label to "ブリッタ・ヤコブスドッテル・ラトヴォ"
-LAST	Lja	"ブリッタ・ヤコブスドッテル・ラトヴォ"
-#   set the zh label to "布里塔·雅科布斯多特·拉特沃"
-LAST	Lzh	"布里塔·雅科布斯多特·拉特沃"
-#   set the ko label to "브리타 자콥스도테르 라트보"
-LAST	Lko	"브리타 자콥스도테르 라트보"
+#   set the mul label to "Brita Jacobsdotter Käkölä"
+LAST	Lmul	"Brita Jacobsdotter Käkölä"
+#   add a mul alias "Brita Jacobsdotter Latvo"
+LAST	Amul	"Brita Jacobsdotter Latvo"
+#   set the ja label to "ブリッタ・ヤコブスドッテル・ケコレ"
+LAST	Lja	"ブリッタ・ヤコブスドッテル・ケコレ"
+#   set the zh label to "布里塔·雅科布斯多特·凯科莱"
+LAST	Lzh	"布里塔·雅科布斯多特·凯科莱"
+#   set the ko label to "브리타 자콥스도테르 케쾨레"
+LAST	Lko	"브리타 자콥스도테르 케쾨레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -4939,6 +4674,49 @@ Q141557453	P25	LAST	S2600	"6000000026102897817"
 LAST	P735	Q918013
 #   P5056 patronym or matronym = Q141290188
 LAST	P5056	Q141290188
+
+# create a new item
+CREATE
+#   set the en label to "Brita Olofsdotter Nerbelius"
+LAST	Len	"Brita Olofsdotter Nerbelius"
+#   set the en description to "circa 1590 - circa 1675 Närby"
+LAST	Den	"circa 1590 - circa 1675 Närby"
+#   set the mul label to "Brita Olofsdotter Nerbelius"
+LAST	Lmul	"Brita Olofsdotter Nerbelius"
+#   add a mul alias "Brita Olofsdotter Krook/Chrochius"
+LAST	Amul	"Brita Olofsdotter Krook/Chrochius"
+#   set the ja label to "ブリッタ・オロフスドッテル・ネルベリウス"
+LAST	Lja	"ブリッタ・オロフスドッテル・ネルベリウス"
+#   set the zh label to "布里塔·奥洛夫斯多特·内尔贝利乌斯"
+LAST	Lzh	"布里塔·奥洛夫斯多特·内尔贝利乌斯"
+#   set the ko label to "브리타 오로프스도테르 네르베류스"
+LAST	Lko	"브리타 오로프스도테르 네르베류스"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 4659640 Brita Olofsdotter Krook Chrochius, qualified P1810 subject named as Brita Olofsdotter Krook Chrochius
+LAST	P2600	"4659640"	P1810	"Brita Olofsdotter Krook Chrochius"
+#   P569 date of birth = +1590-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1590-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"4659640"
+#   P570 date of death = +1675-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1675-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"4659640"
+#   P26 spouse = Q141560077 Lars Källbjörnsson
+LAST	P26	Q141560077	S2600	"4659640"
+#   P40 child = Q141550798 Lars Larsson Nerbelius
+LAST	P40	Q141550798	S2600	"4659640"
+#   Q141560077 Lars Källbjörnsson: P26 spouse = the item just created
+Q141560077	P26	LAST	S2600	"4659640"
+#   Q141550798 Lars Larsson Nerbelius: P25 mother = the item just created
+Q141550798	P25	LAST	S2600	"4659640"
+#   the item just created: P735 given name = Q918013
+LAST	P735	Q918013
+#   P5056 patronym or matronym = Q141250201
+LAST	P5056	Q141250201
+#   add a mul alias "Krook"
+LAST	Amul	"Krook"
+#   add a mul alias "Brita Nerbelius"
+LAST	Amul	"Brita Nerbelius"
 
 # create a new item
 CREATE
@@ -5332,20 +5110,20 @@ LAST	P734	Q450765
 
 # create a new item
 CREATE
-#   set the en label to "Catharina Isaksdotter Voigt"
-LAST	Len	"Catharina Isaksdotter Voigt"
+#   set the en label to "Catharina Isaksdotter Pincier"
+LAST	Len	"Catharina Isaksdotter Pincier"
 #   set the en description to "22 Dec 1640 Gamla stan - 13 Sep 1710 Gamla stan"
 LAST	Den	"22 Dec 1640 Gamla stan - 13 Sep 1710 Gamla stan"
-#   set the mul label to "Catharina Isaksdotter Voigt"
-LAST	Lmul	"Catharina Isaksdotter Voigt"
-#   add a mul alias "Catharina Isaksdotter Pincier"
-LAST	Amul	"Catharina Isaksdotter Pincier"
-#   set the ja label to "カタリーナ・イサクスドッテル・フォークト"
-LAST	Lja	"カタリーナ・イサクスドッテル・フォークト"
-#   set the zh label to "卡塔里娜·伊萨克斯多特·沃伊格特"
-LAST	Lzh	"卡塔里娜·伊萨克斯多特·沃伊格特"
-#   set the ko label to "카타리나 이사크스도테르 보익트"
-LAST	Lko	"카타리나 이사크스도테르 보익트"
+#   set the mul label to "Catharina Isaksdotter Pincier"
+LAST	Lmul	"Catharina Isaksdotter Pincier"
+#   add a mul alias "Catharina Isaksdotter Voigt"
+LAST	Amul	"Catharina Isaksdotter Voigt"
+#   set the ja label to "カタリーナ・イサクスドッテル・ピンシエル"
+LAST	Lja	"カタリーナ・イサクスドッテル・ピンシエル"
+#   set the zh label to "卡塔里娜·伊萨克斯多特·平西埃尔"
+LAST	Lzh	"卡塔里娜·伊萨克斯多特·平西埃尔"
+#   set the ko label to "카타리나 이사크스도테르 핀키에르"
+LAST	Lko	"카타리나 이사크스도테르 핀키에르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -5472,20 +5250,20 @@ LAST	P735	Q1067071
 
 # create a new item
 CREATE
-#   set the en label to "Charlotta Vilhelmina Skepling"
-LAST	Len	"Charlotta Vilhelmina Skepling"
+#   set the en label to "Charlotta Vilhelmina Johansson"
+LAST	Len	"Charlotta Vilhelmina Johansson"
 #   set the en description to "7 Nov 1854 - 7 Feb 1944"
 LAST	Den	"7 Nov 1854 - 7 Feb 1944"
-#   set the mul label to "Charlotta Vilhelmina Skepling"
-LAST	Lmul	"Charlotta Vilhelmina Skepling"
-#   add a mul alias "Charlotta Vilhelmina Johansson"
-LAST	Amul	"Charlotta Vilhelmina Johansson"
-#   set the ja label to "カルロッタ・ヴィルヘルミナ・スケプリング"
-LAST	Lja	"カルロッタ・ヴィルヘルミナ・スケプリング"
-#   set the zh label to "卡尔洛塔·维尔赫尔米纳·斯凯普林"
-LAST	Lzh	"卡尔洛塔·维尔赫尔米纳·斯凯普林"
-#   set the ko label to "차로타 빌헬미나 스케프링"
-LAST	Lko	"차로타 빌헬미나 스케프링"
+#   set the mul label to "Charlotta Vilhelmina Johansson"
+LAST	Lmul	"Charlotta Vilhelmina Johansson"
+#   add a mul alias "Charlotta Vilhelmina Skepling"
+LAST	Amul	"Charlotta Vilhelmina Skepling"
+#   set the ja label to "カルロッタ・ヴィルヘルミナ・ヨハンソン"
+LAST	Lja	"カルロッタ・ヴィルヘルミナ・ヨハンソン"
+#   set the zh label to "卡尔洛塔·维尔赫尔米纳·约翰松"
+LAST	Lzh	"卡尔洛塔·维尔赫尔米纳·约翰松"
+#   set the ko label to "차로타 빌헬미나 조한손"
+LAST	Lko	"차로타 빌헬미나 조한손"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -6634,20 +6412,20 @@ LAST	P734	Q30080230
 
 # create a new item
 CREATE
-#   set the en label to "Eli Josefsdatter Kalberg"
-LAST	Len	"Eli Josefsdatter Kalberg"
+#   set the en label to "Eli Josefsdatter Storhaug"
+LAST	Len	"Eli Josefsdatter Storhaug"
 #   set the en description to "circa 1767 Kalberg, Time, Rogaland, Norway - 1793 Storhaug, Rogaland, Norway"
 LAST	Den	"circa 1767 Kalberg, Time, Rogaland, Norway - 1793 Storhaug, Rogaland, Norway"
-#   set the mul label to "Eli Josefsdatter Kalberg"
-LAST	Lmul	"Eli Josefsdatter Kalberg"
-#   add a mul alias "Eli Josefsdatter Storhaug"
-LAST	Amul	"Eli Josefsdatter Storhaug"
-#   set the ja label to "イーライ・ヨセフスダッテル・カルベルグ"
-LAST	Lja	"イーライ・ヨセフスダッテル・カルベルグ"
-#   set the zh label to "伊莱·约塞夫斯达特·卡尔贝尔格"
-LAST	Lzh	"伊莱·约塞夫斯达特·卡尔贝尔格"
-#   set the ko label to "에리 조세프스다테르 칼베륵"
-LAST	Lko	"에리 조세프스다테르 칼베륵"
+#   set the mul label to "Eli Josefsdatter Storhaug"
+LAST	Lmul	"Eli Josefsdatter Storhaug"
+#   add a mul alias "Eli Josefsdatter Kalberg"
+LAST	Amul	"Eli Josefsdatter Kalberg"
+#   set the ja label to "イーライ・ヨセフスダッテル・ストルハウグ"
+LAST	Lja	"イーライ・ヨセフスダッテル・ストルハウグ"
+#   set the zh label to "伊莱·约塞夫斯达特·斯托尔哈乌格"
+LAST	Lzh	"伊莱·约塞夫斯达特·斯托尔哈乌格"
+#   set the ko label to "에리 조세프스다테르 스토르하욱"
+LAST	Lko	"에리 조세프스다테르 스토르하욱"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -6724,14 +6502,14 @@ LAST	P735	Q19833184
 
 # create a new item
 CREATE
-#   set the en label to "Eline Eriksdatter Orm til Vatne"
-LAST	Len	"Eline Eriksdatter Orm til Vatne"
+#   set the en label to "Eline Eriksdatter Orm til Kjærland"
+LAST	Len	"Eline Eriksdatter Orm til Kjærland"
 #   set the en description to "circa 1541 Vatne, Valvatne, Stord - 16 Feb 1609 Kjerland"
 LAST	Den	"circa 1541 Vatne, Valvatne, Stord - 16 Feb 1609 Kjerland"
-#   set the mul label to "Eline Eriksdatter Orm til Vatne"
-LAST	Lmul	"Eline Eriksdatter Orm til Vatne"
-#   add a mul alias "Eline Eriksdatter Orm til Kjærland"
-LAST	Amul	"Eline Eriksdatter Orm til Kjærland"
+#   set the mul label to "Eline Eriksdatter Orm til Kjærland"
+LAST	Lmul	"Eline Eriksdatter Orm til Kjærland"
+#   add a mul alias "Eline Eriksdatter Orm til Vatne"
+LAST	Amul	"Eline Eriksdatter Orm til Vatne"
 #   set the ja label to "エリネ・エリクスダッテル・オルム"
 LAST	Lja	"エリネ・エリクスダッテル・オルム"
 #   set the zh label to "埃利内·埃里克斯达特·奥尔姆"
@@ -6796,20 +6574,20 @@ LAST	P735	Q16423275
 
 # create a new item
 CREATE
-#   set the en label to "Elisabet Hansdatter Hansdatter"
-LAST	Len	"Elisabet Hansdatter Hansdatter"
+#   set the en label to "Elisabet Hansdatter store Vatne"
+LAST	Len	"Elisabet Hansdatter store Vatne"
 #   set the en description to "1682 Store Vatne, Høyland - Sor-Braut, Kleppe"
 LAST	Den	"1682 Store Vatne, Høyland - Sor-Braut, Kleppe"
-#   set the mul label to "Elisabet Hansdatter Hansdatter"
-LAST	Lmul	"Elisabet Hansdatter Hansdatter"
-#   add a mul alias "Elisabet Hansdatter store Vatne"
-LAST	Amul	"Elisabet Hansdatter store Vatne"
-#   set the ja label to "エリーザベト・ハンスダッテル・ハンスダッテル"
-LAST	Lja	"エリーザベト・ハンスダッテル・ハンスダッテル"
-#   set the zh label to "伊丽莎白·汉斯达特·汉斯达特"
-LAST	Lzh	"伊丽莎白·汉斯达特·汉斯达特"
-#   set the ko label to "에리사베트 한스다테르 한스다테르"
-LAST	Lko	"에리사베트 한스다테르 한스다테르"
+#   set the mul label to "Elisabet Hansdatter store Vatne"
+LAST	Lmul	"Elisabet Hansdatter store Vatne"
+#   add a mul alias "Elisabet Hansdatter Hansdatter"
+LAST	Amul	"Elisabet Hansdatter Hansdatter"
+#   set the ja label to "エリーザベト・ハンスダッテル・ストレ・ヴァトネ"
+LAST	Lja	"エリーザベト・ハンスダッテル・ストレ・ヴァトネ"
+#   set the zh label to "伊丽莎白·汉斯达特·斯托雷·瓦特内"
+LAST	Lzh	"伊丽莎白·汉斯达特·斯托雷·瓦特内"
+#   set the ko label to "에리사베트 한스다테르 스토레 바트네"
+LAST	Lko	"에리사베트 한스다테르 스토레 바트네"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -6974,20 +6752,20 @@ LAST	Amul	"Elisabeth NN"
 
 # create a new item
 CREATE
-#   set the en label to "Elisabeth Carolina Swartz"
-LAST	Len	"Elisabeth Carolina Swartz"
+#   set the en label to "Elisabeth Carolina Janse"
+LAST	Len	"Elisabeth Carolina Janse"
 #   set the en description to "born 6 Nov 1856 Sankt Olai"
 LAST	Den	"born 6 Nov 1856 Sankt Olai"
-#   set the mul label to "Elisabeth Carolina Swartz"
-LAST	Lmul	"Elisabeth Carolina Swartz"
-#   add a mul alias "Elisabeth Carolina Janse"
-LAST	Amul	"Elisabeth Carolina Janse"
-#   set the ja label to "エリーザベト・カロリーナ・スヴァルトズ"
-LAST	Lja	"エリーザベト・カロリーナ・スヴァルトズ"
-#   set the zh label to "伊丽莎白·卡罗琳娜·斯瓦尔特兹"
-LAST	Lzh	"伊丽莎白·卡罗琳娜·斯瓦尔特兹"
-#   set the ko label to "에리사베트 카로리나 스와르츠"
-LAST	Lko	"에리사베트 카로리나 스와르츠"
+#   set the mul label to "Elisabeth Carolina Janse"
+LAST	Lmul	"Elisabeth Carolina Janse"
+#   add a mul alias "Elisabeth Carolina Swartz"
+LAST	Amul	"Elisabeth Carolina Swartz"
+#   set the ja label to "エリーザベト・カロリーナ・ヤンセ"
+LAST	Lja	"エリーザベト・カロリーナ・ヤンセ"
+#   set the zh label to "伊丽莎白·卡罗琳娜·扬塞"
+LAST	Lzh	"伊丽莎白·卡罗琳娜·扬塞"
+#   set the ko label to "에리사베트 카로리나 잔세"
+LAST	Lko	"에리사베트 카로리나 잔세"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -7083,20 +6861,20 @@ LAST	P734	Q37076085
 
 # create a new item
 CREATE
-#   set the en label to "Elsebe von Hesten"
-LAST	Len	"Elsebe von Hesten"
+#   set the en label to "Elsebe Grønnow"
+LAST	Len	"Elsebe Grønnow"
 #   set the en description to "Elsebe, wife of Falchor Grønnow"
 LAST	Den	"Elsebe, wife of Falchor Grønnow"
-#   set the mul label to "Elsebe von Hesten"
-LAST	Lmul	"Elsebe von Hesten"
-#   add a mul alias "Elsebe Grønnow"
-LAST	Amul	"Elsebe Grønnow"
-#   set the ja label to "エルセベ・ヴォン・ヘステン"
-LAST	Lja	"エルセベ・ヴォン・ヘステン"
-#   set the zh label to "埃尔塞贝·翁·赫斯滕"
-LAST	Lzh	"埃尔塞贝·翁·赫斯滕"
-#   set the ko label to "엘세베 본 헤스텐"
-LAST	Lko	"엘세베 본 헤스텐"
+#   set the mul label to "Elsebe Grønnow"
+LAST	Lmul	"Elsebe Grønnow"
+#   add a mul alias "Elsebe von Hesten"
+LAST	Amul	"Elsebe von Hesten"
+#   set the ja label to "エルセベ・グロンノヴ"
+LAST	Lja	"エルセベ・グロンノヴ"
+#   set the zh label to "埃尔塞贝·格罗诺夫"
+LAST	Lzh	"埃尔塞贝·格罗诺夫"
+#   set the ko label to "엘세베 그뢴노우"
+LAST	Lko	"엘세베 그뢴노우"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -7868,20 +7646,20 @@ Q141550416	P22	LAST	S2600	"6000000177943346870"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Esther Ornstein"
-LAST	Len	"Esther Ornstein"
+#   the item just created: set the en label to "Esther Ettinger"
+LAST	Len	"Esther Ettinger"
 #   set the en description to "Esther, wife of Isaac Aaron Ettinger"
 LAST	Den	"Esther, wife of Isaac Aaron Ettinger"
-#   set the mul label to "Esther Ornstein"
-LAST	Lmul	"Esther Ornstein"
-#   add a mul alias "Esther Ettinger"
-LAST	Amul	"Esther Ettinger"
-#   set the ja label to "エスター・オルンステイン"
-LAST	Lja	"エスター・オルンステイン"
-#   set the zh label to "埃丝特·奥尔恩斯特因"
-LAST	Lzh	"埃丝特·奥尔恩斯特因"
-#   set the ko label to "에스테르 오른스테인"
-LAST	Lko	"에스테르 오른스테인"
+#   set the mul label to "Esther Ettinger"
+LAST	Lmul	"Esther Ettinger"
+#   add a mul alias "Esther Ornstein"
+LAST	Amul	"Esther Ornstein"
+#   set the ja label to "エスター・エッティンガー"
+LAST	Lja	"エスター・エッティンガー"
+#   set the zh label to "埃丝特·埃廷盖尔"
+LAST	Lzh	"埃丝特·埃廷盖尔"
+#   set the ko label to "에스테르 에티에르"
+LAST	Lko	"에스테르 에티에르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -7963,20 +7741,20 @@ Q141559966	P22	LAST	S2600	"6000000076539128821"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Fanny Maria Grafström"
-LAST	Len	"Fanny Maria Grafström"
+#   the item just created: set the en label to "Fanny Maria Ljungberg"
+LAST	Len	"Fanny Maria Ljungberg"
 #   set the en description to "1842 - 1871"
 LAST	Den	"1842 - 1871"
-#   set the mul label to "Fanny Maria Grafström"
-LAST	Lmul	"Fanny Maria Grafström"
-#   add a mul alias "Fanny Maria Ljungberg"
-LAST	Amul	"Fanny Maria Ljungberg"
-#   set the ja label to "ファニー・マリア・グラフストロム"
-LAST	Lja	"ファニー・マリア・グラフストロム"
-#   set the zh label to "范妮·玛丽亚·格拉夫斯特罗姆"
-LAST	Lzh	"范妮·玛丽亚·格拉夫斯特罗姆"
-#   set the ko label to "판니 마리아 그라프스트룀"
-LAST	Lko	"판니 마리아 그라프스트룀"
+#   set the mul label to "Fanny Maria Ljungberg"
+LAST	Lmul	"Fanny Maria Ljungberg"
+#   add a mul alias "Fanny Maria Grafström"
+LAST	Amul	"Fanny Maria Grafström"
+#   set the ja label to "ファニー・マリア・ルユングベルグ"
+LAST	Lja	"ファニー・マリア・ルユングベルグ"
+#   set the zh label to "范妮·玛丽亚·尔云贝尔格"
+LAST	Lzh	"范妮·玛丽亚·尔云贝尔格"
+#   set the ko label to "판니 마리아 룽베륵"
+LAST	Lko	"판니 마리아 룽베륵"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8037,20 +7815,20 @@ LAST	P735	Q84565750
 
 # create a new item
 CREATE
-#   set the en label to "Frederikke Severine Schive"
-LAST	Len	"Frederikke Severine Schive"
+#   set the en label to "Frederikke Severine Tollakson"
+LAST	Len	"Frederikke Severine Tollakson"
 #   set the en description to "1767 Prestegården - 13 Jun 1823 Bore"
 LAST	Den	"1767 Prestegården - 13 Jun 1823 Bore"
-#   set the mul label to "Frederikke Severine Schive"
-LAST	Lmul	"Frederikke Severine Schive"
-#   add a mul alias "Frederikke Severine Tollakson"
-LAST	Amul	"Frederikke Severine Tollakson"
-#   set the ja label to "フレデリッケ・セヴェリネ・シヴェ"
-LAST	Lja	"フレデリッケ・セヴェリネ・シヴェ"
-#   set the zh label to "夫雷德里凯·塞韦里内·西韦"
-LAST	Lzh	"夫雷德里凯·塞韦里内·西韦"
-#   set the ko label to "프레데리케 세베리네 시베"
-LAST	Lko	"프레데리케 세베리네 시베"
+#   set the mul label to "Frederikke Severine Tollakson"
+LAST	Lmul	"Frederikke Severine Tollakson"
+#   add a mul alias "Frederikke Severine Schive"
+LAST	Amul	"Frederikke Severine Schive"
+#   set the ja label to "フレデリッケ・セヴェリネ・トラクソン"
+LAST	Lja	"フレデリッケ・セヴェリネ・トラクソン"
+#   set the zh label to "夫雷德里凯·塞韦里内·托拉克松"
+LAST	Lzh	"夫雷德里凯·塞韦里内·托拉克松"
+#   set the ko label to "프레데리케 세베리네 톨라크손"
+LAST	Lko	"프레데리케 세베리네 톨라크손"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8245,20 +8023,20 @@ LAST	P735	Q18180972
 
 # create a new item
 CREATE
-#   set the en label to "Gitlaug Pedersdotter Kartevoll"
-LAST	Len	"Gitlaug Pedersdotter Kartevoll"
+#   set the en label to "Gitlaug Pedersdotter Mellomstrand"
+LAST	Len	"Gitlaug Pedersdotter Mellomstrand"
 #   set the en description to "born 1747 Hjelmeland,Rog,Nor"
 LAST	Den	"born 1747 Hjelmeland,Rog,Nor"
-#   set the mul label to "Gitlaug Pedersdotter Kartevoll"
-LAST	Lmul	"Gitlaug Pedersdotter Kartevoll"
-#   add a mul alias "Gitlaug Pedersdotter Mellomstrand"
-LAST	Amul	"Gitlaug Pedersdotter Mellomstrand"
-#   set the ja label to "ギトラウグ・ペデルスドッテル・カルテヴォル"
-LAST	Lja	"ギトラウグ・ペデルスドッテル・カルテヴォル"
-#   set the zh label to "吉特拉乌格·佩德尔斯多特·卡尔特沃尔"
-LAST	Lzh	"吉特拉乌格·佩德尔斯多特·卡尔特沃尔"
-#   set the ko label to "기트라욱 페데르스도테르 카르테볼"
-LAST	Lko	"기트라욱 페데르스도테르 카르테볼"
+#   set the mul label to "Gitlaug Pedersdotter Mellomstrand"
+LAST	Lmul	"Gitlaug Pedersdotter Mellomstrand"
+#   add a mul alias "Gitlaug Pedersdotter Kartevoll"
+LAST	Amul	"Gitlaug Pedersdotter Kartevoll"
+#   set the ja label to "ギトラウグ・ペデルスドッテル・メロムストランド"
+LAST	Lja	"ギトラウグ・ペデルスドッテル・メロムストランド"
+#   set the zh label to "吉特拉乌格·佩德尔斯多特·梅洛姆斯特兰德"
+LAST	Lzh	"吉特拉乌格·佩德尔斯多特·梅洛姆斯特兰德"
+#   set the ko label to "기트라욱 페데르스도테르 멜롬스트란드"
+LAST	Lko	"기트라욱 페데르스도테르 멜롬스트란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8391,20 +8169,20 @@ LAST	Amul	"Gjertrud Erlingsdotter"
 
 # create a new item
 CREATE
-#   set the en label to "Gjertrud Sjursdatter Sjursdatter"
-LAST	Len	"Gjertrud Sjursdatter Sjursdatter"
+#   set the en label to "Gjertrud Sjursdatter Øksnevad"
+LAST	Len	"Gjertrud Sjursdatter Øksnevad"
 #   set the en description to "circa 1555 Nedre Øksnevad - circa 1618 Bjelland"
 LAST	Den	"circa 1555 Nedre Øksnevad - circa 1618 Bjelland"
-#   set the mul label to "Gjertrud Sjursdatter Sjursdatter"
-LAST	Lmul	"Gjertrud Sjursdatter Sjursdatter"
-#   add a mul alias "Gjertrud Sjursdatter Øksnevad"
-LAST	Amul	"Gjertrud Sjursdatter Øksnevad"
-#   set the ja label to "イェルトルド・シュルスダッテル・シュルスダッテル"
-LAST	Lja	"イェルトルド・シュルスダッテル・シュルスダッテル"
-#   set the zh label to "耶尔特鲁德·舒尔斯达特·舒尔斯达特"
-LAST	Lzh	"耶尔特鲁德·舒尔斯达特·舒尔斯达特"
-#   set the ko label to "게르트루드 수르스다테르 수르스다테르"
-LAST	Lko	"게르트루드 수르스다테르 수르스다테르"
+#   set the mul label to "Gjertrud Sjursdatter Øksnevad"
+LAST	Lmul	"Gjertrud Sjursdatter Øksnevad"
+#   add a mul alias "Gjertrud Sjursdatter Sjursdatter"
+LAST	Amul	"Gjertrud Sjursdatter Sjursdatter"
+#   set the ja label to "イェルトルド・シュルスダッテル・エクスネヴァード"
+LAST	Lja	"イェルトルド・シュルスダッテル・エクスネヴァード"
+#   set the zh label to "耶尔特鲁德·舒尔斯达特·厄克斯内瓦"
+LAST	Lzh	"耶尔特鲁德·舒尔斯达特·厄克斯内瓦"
+#   set the ko label to "게르트루드 수르스다테르 외크스네바드"
+LAST	Lko	"게르트루드 수르스다테르 외크스네바드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8533,20 +8311,20 @@ LAST	Amul	"Georg Eriksson"
 
 # create a new item
 CREATE
-#   set the en label to "Gudrun Ormsdatter Ormsdotter"
-LAST	Len	"Gudrun Ormsdatter Ormsdotter"
+#   set the en label to "Gudrun Ormsdatter Lydvo"
+LAST	Len	"Gudrun Ormsdatter Lydvo"
 #   set the en description to "circa 1455 Lydvo - circa 1538 Aga"
 LAST	Den	"circa 1455 Lydvo - circa 1538 Aga"
-#   set the mul label to "Gudrun Ormsdatter Ormsdotter"
-LAST	Lmul	"Gudrun Ormsdatter Ormsdotter"
-#   add a mul alias "Gudrun Ormsdatter Lydvo"
-LAST	Amul	"Gudrun Ormsdatter Lydvo"
-#   set the ja label to "グドルーン・オルムスダッテル・オルムスドッテル"
-LAST	Lja	"グドルーン・オルムスダッテル・オルムスドッテル"
-#   set the zh label to "古德龙·奥尔姆斯达特·奥尔姆斯多特"
-LAST	Lzh	"古德龙·奥尔姆斯达特·奥尔姆斯多特"
-#   set the ko label to "구드룬 오름스다테르 오름스도테르"
-LAST	Lko	"구드룬 오름스다테르 오름스도테르"
+#   set the mul label to "Gudrun Ormsdatter Lydvo"
+LAST	Lmul	"Gudrun Ormsdatter Lydvo"
+#   add a mul alias "Gudrun Ormsdatter Ormsdotter"
+LAST	Amul	"Gudrun Ormsdatter Ormsdotter"
+#   set the ja label to "グドルーン・オルムスダッテル・リドヴォ"
+LAST	Lja	"グドルーン・オルムスダッテル・リドヴォ"
+#   set the zh label to "古德龙·奥尔姆斯达特·利德沃"
+LAST	Lzh	"古德龙·奥尔姆斯达特·利德沃"
+#   set the ko label to "구드룬 오름스다테르 리드보"
+LAST	Lko	"구드룬 오름스다테르 리드보"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8665,20 +8443,20 @@ LAST	P735	Q1067071	P1545	"2"	P3831	Q245025
 
 # create a new item
 CREATE
-#   set the en label to "Gunhild Gudlaugsdatter Hamre"
-LAST	Len	"Gunhild Gudlaugsdatter Hamre"
+#   set the en label to "Gunhild Gudlaugsdatter Augland"
+LAST	Len	"Gunhild Gudlaugsdatter Augland"
 #   set the en description to "1555 Hamre - 1624 Augland øvre"
 LAST	Den	"1555 Hamre - 1624 Augland øvre"
-#   set the mul label to "Gunhild Gudlaugsdatter Hamre"
-LAST	Lmul	"Gunhild Gudlaugsdatter Hamre"
-#   add a mul alias "Gunhild Gudlaugsdatter Augland"
-LAST	Amul	"Gunhild Gudlaugsdatter Augland"
-#   set the ja label to "グンヒルド・グドラウグスダッテル・ハムレ"
-LAST	Lja	"グンヒルド・グドラウグスダッテル・ハムレ"
-#   set the zh label to "贡希尔德·古德拉乌格斯达特·哈姆雷"
-LAST	Lzh	"贡希尔德·古德拉乌格斯达特·哈姆雷"
-#   set the ko label to "군힐드 구드라욱스다테르 함레"
-LAST	Lko	"군힐드 구드라욱스다테르 함레"
+#   set the mul label to "Gunhild Gudlaugsdatter Augland"
+LAST	Lmul	"Gunhild Gudlaugsdatter Augland"
+#   add a mul alias "Gunhild Gudlaugsdatter Hamre"
+LAST	Amul	"Gunhild Gudlaugsdatter Hamre"
+#   set the ja label to "グンヒルド・グドラウグスダッテル・アウグランド"
+LAST	Lja	"グンヒルド・グドラウグスダッテル・アウグランド"
+#   set the zh label to "贡希尔德·古德拉乌格斯达特·奥格兰德"
+LAST	Lzh	"贡希尔德·古德拉乌格斯达特·奥格兰德"
+#   set the ko label to "군힐드 구드라욱스다테르 아욱란드"
+LAST	Lko	"군힐드 구드라욱스다테르 아욱란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8704,20 +8482,20 @@ LAST	Amul	"Gunhild Augland"
 
 # create a new item
 CREATE
-#   set the en label to "Gunhild Malena Rasmusparten"
-LAST	Len	"Gunhild Malena Rasmusparten"
+#   set the en label to "Gunhild Malena Underberge"
+LAST	Len	"Gunhild Malena Underberge"
 #   set the en description to "circa 1539 - 1572"
 LAST	Den	"circa 1539 - 1572"
-#   set the mul label to "Gunhild Malena Rasmusparten"
-LAST	Lmul	"Gunhild Malena Rasmusparten"
-#   add a mul alias "Gunhild Malena Underberge"
-LAST	Amul	"Gunhild Malena Underberge"
-#   set the ja label to "グンヒルド・マレーナ・ラスムスパルテン"
-LAST	Lja	"グンヒルド・マレーナ・ラスムスパルテン"
-#   set the zh label to "贡希尔德·马莱纳·拉斯穆斯帕尔滕"
-LAST	Lzh	"贡希尔德·马莱纳·拉斯穆斯帕尔滕"
-#   set the ko label to "군힐드 마레나 라스무스파르텐"
-LAST	Lko	"군힐드 마레나 라스무스파르텐"
+#   set the mul label to "Gunhild Malena Underberge"
+LAST	Lmul	"Gunhild Malena Underberge"
+#   add a mul alias "Gunhild Malena Rasmusparten"
+LAST	Amul	"Gunhild Malena Rasmusparten"
+#   set the ja label to "グンヒルド・マレーナ・ウンデルベルゲ"
+LAST	Lja	"グンヒルド・マレーナ・ウンデルベルゲ"
+#   set the zh label to "贡希尔德·马莱纳·温德尔贝尔盖"
+LAST	Lzh	"贡希尔德·马莱纳·温德尔贝尔盖"
+#   set the ko label to "군힐드 마레나 운데르베르게"
+LAST	Lko	"군힐드 마레나 운데르베르게"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -8743,20 +8521,20 @@ LAST	Amul	"Mrs Tore Toresen"
 
 # create a new item
 CREATE
-#   set the en label to "Gunhild Nilsdatter Lyse"
-LAST	Len	"Gunhild Nilsdatter Lyse"
+#   set the en label to "Gunhild Nilsdatter Litle Nerabø"
+LAST	Len	"Gunhild Nilsdatter Litle Nerabø"
 #   set the en description to "1695 Lyse, Forsand, Rogaland - Sporaland, Hoyland, Rogaland, Norway"
 LAST	Den	"1695 Lyse, Forsand, Rogaland - Sporaland, Hoyland, Rogaland, Norway"
-#   set the mul label to "Gunhild Nilsdatter Lyse"
-LAST	Lmul	"Gunhild Nilsdatter Lyse"
-#   add a mul alias "Gunhild Nilsdatter Litle Nerabø"
-LAST	Amul	"Gunhild Nilsdatter Litle Nerabø"
-#   set the ja label to "グンヒルド・ニルスダッテル・リセ"
-LAST	Lja	"グンヒルド・ニルスダッテル・リセ"
-#   set the zh label to "贡希尔德·尼尔斯达特·利塞"
-LAST	Lzh	"贡希尔德·尼尔斯达特·利塞"
-#   set the ko label to "군힐드 닐스다테르 리세"
-LAST	Lko	"군힐드 닐스다테르 리세"
+#   set the mul label to "Gunhild Nilsdatter Litle Nerabø"
+LAST	Lmul	"Gunhild Nilsdatter Litle Nerabø"
+#   add a mul alias "Gunhild Nilsdatter Lyse"
+LAST	Amul	"Gunhild Nilsdatter Lyse"
+#   set the ja label to "グンヒルド・ニルスダッテル・リトレ・ネラボ"
+LAST	Lja	"グンヒルド・ニルスダッテル・リトレ・ネラボ"
+#   set the zh label to "贡希尔德·尼尔斯达特·利特莱·内拉博"
+LAST	Lzh	"贡希尔德·尼尔斯达特·利特莱·内拉博"
+#   set the ko label to "군힐드 닐스다테르 리트레 네라뵈"
+LAST	Lko	"군힐드 닐스다테르 리트레 네라뵈"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -9074,20 +8852,20 @@ LAST	Amul	"Gunzelin von Schwerin-Hagen"
 
 # create a new item
 CREATE
-#   set the en label to "Ingeleiv Oddsdotter Styve"
-LAST	Len	"Ingeleiv Oddsdotter Styve"
+#   set the en label to "Ingeleiv Oddsdotter Bjørgås"
+LAST	Len	"Ingeleiv Oddsdotter Bjørgås"
 #   set the en description to "1667 Gol, Buskerud, Norway - 1727 Evanger"
 LAST	Den	"1667 Gol, Buskerud, Norway - 1727 Evanger"
-#   set the mul label to "Ingeleiv Oddsdotter Styve"
-LAST	Lmul	"Ingeleiv Oddsdotter Styve"
-#   add a mul alias "Ingeleiv Oddsdotter Bjørgås"
-LAST	Amul	"Ingeleiv Oddsdotter Bjørgås"
-#   set the ja label to "インゲレイヴ・オッドスドッテル・スティヴェ"
-LAST	Lja	"インゲレイヴ・オッドスドッテル・スティヴェ"
-#   set the zh label to "因盖莱伊夫·奥德斯多特·斯蒂韦"
-LAST	Lzh	"因盖莱伊夫·奥德斯多特·斯蒂韦"
-#   set the ko label to "잉에레입 오드스도테르 스티베"
-LAST	Lko	"잉에레입 오드스도테르 스티베"
+#   set the mul label to "Ingeleiv Oddsdotter Bjørgås"
+LAST	Lmul	"Ingeleiv Oddsdotter Bjørgås"
+#   add a mul alias "Ingeleiv Oddsdotter Styve"
+LAST	Amul	"Ingeleiv Oddsdotter Styve"
+#   set the ja label to "インゲレイヴ・オッドスドッテル・ビョルゴース"
+LAST	Lja	"インゲレイヴ・オッドスドッテル・ビョルゴース"
+#   set the zh label to "因盖莱伊夫·奥德斯多特·博尔戈斯"
+LAST	Lzh	"因盖莱伊夫·奥德斯多特·博尔戈斯"
+#   set the ko label to "잉에레입 오드스도테르 뵈르고스"
+LAST	Lko	"잉에레입 오드스도테르 뵈르고스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -9115,20 +8893,20 @@ LAST	Amul	"Ingeleiv Bjørgås"
 
 # create a new item
 CREATE
-#   set the en label to "Karen Larsdotter"
-LAST	Len	"Karen Larsdotter"
+#   set the en label to "Karen Larsson"
+LAST	Len	"Karen Larsson"
 #   set the en description to "1640 Gol, Nes, Buskerud, Norway - 1720 Gol, Buskerud, Norway"
 LAST	Den	"1640 Gol, Nes, Buskerud, Norway - 1720 Gol, Buskerud, Norway"
-#   set the mul label to "Karen Larsdotter"
-LAST	Lmul	"Karen Larsdotter"
-#   add a mul alias "Karen Larsson"
-LAST	Amul	"Karen Larsson"
-#   set the ja label to "カレン・ラーシュドッテル"
-LAST	Lja	"カレン・ラーシュドッテル"
-#   set the zh label to "凯伦·拉尔斯多特"
-LAST	Lzh	"凯伦·拉尔斯多特"
-#   set the ko label to "카렌 라르스도테르"
-LAST	Lko	"카렌 라르스도테르"
+#   set the mul label to "Karen Larsson"
+LAST	Lmul	"Karen Larsson"
+#   add a mul alias "Karen Larsdotter"
+LAST	Amul	"Karen Larsdotter"
+#   set the ja label to "カレン・ラーション"
+LAST	Lja	"カレン・ラーション"
+#   set the zh label to "凯伦·拉森"
+LAST	Lzh	"凯伦·拉森"
+#   set the ko label to "카렌 라르손"
+LAST	Lko	"카렌 라르손"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -9152,20 +8930,20 @@ LAST	P734	Q21504742	P3831	Q28418670
 
 # create a new item
 CREATE
-#   set the en label to "Guri Kjetilsdatter Søyland"
-LAST	Len	"Guri Kjetilsdatter Søyland"
+#   set the en label to "Guri Kjetilsdatter Nord-Braut"
+LAST	Len	"Guri Kjetilsdatter Nord-Braut"
 #   set the en description to "14 Jul 1771 - 14 Nov 1859"
 LAST	Den	"14 Jul 1771 - 14 Nov 1859"
-#   set the mul label to "Guri Kjetilsdatter Søyland"
-LAST	Lmul	"Guri Kjetilsdatter Søyland"
-#   add a mul alias "Guri Kjetilsdatter Nord-Braut"
-LAST	Amul	"Guri Kjetilsdatter Nord-Braut"
-#   set the ja label to "グリ・ヒェティルスダッテル・ソイランド"
-LAST	Lja	"グリ・ヒェティルスダッテル・ソイランド"
-#   set the zh label to "古里·谢蒂尔斯达特·索伊兰德"
-LAST	Lzh	"古里·谢蒂尔斯达特·索伊兰德"
-#   set the ko label to "구리 케틸스다테르 쇠이란드"
-LAST	Lko	"구리 케틸스다테르 쇠이란드"
+#   set the mul label to "Guri Kjetilsdatter Nord-Braut"
+LAST	Lmul	"Guri Kjetilsdatter Nord-Braut"
+#   add a mul alias "Guri Kjetilsdatter Søyland"
+LAST	Amul	"Guri Kjetilsdatter Søyland"
+#   set the ja label to "グリ・ヒェティルスダッテル・ノルドブラウト"
+LAST	Lja	"グリ・ヒェティルスダッテル・ノルドブラウト"
+#   set the zh label to "古里·谢蒂尔斯达特·诺尔德布拉乌特"
+LAST	Lzh	"古里·谢蒂尔斯达特·诺尔德布拉乌特"
+#   set the ko label to "구리 케틸스다테르 노르듭라우트"
+LAST	Lko	"구리 케틸스다테르 노르듭라우트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -9629,20 +9407,20 @@ LAST	P734	Q27892902
 
 # create a new item
 CREATE
-#   set the en label to "Gyrid Ivarsdatter"
-LAST	Len	"Gyrid Ivarsdatter"
+#   set the en label to "Gyrid Jonsson Gran-Meløy"
+LAST	Len	"Gyrid Jonsson Gran-Meløy"
 #   set the en description to "1497 - 1567"
 LAST	Den	"1497 - 1567"
-#   set the mul label to "Gyrid Ivarsdatter"
-LAST	Lmul	"Gyrid Ivarsdatter"
-#   add a mul alias "Gyrid Jonsson Gran-Meløy"
-LAST	Amul	"Gyrid Jonsson Gran-Meløy"
-#   set the ja label to "ギリド・イーヴァシュダッテル"
-LAST	Lja	"ギリド・イーヴァシュダッテル"
-#   set the zh label to "吉里德·伊瓦斯达特"
-LAST	Lzh	"吉里德·伊瓦斯达特"
-#   set the ko label to "기리드 이바르스다테르"
-LAST	Lko	"기리드 이바르스다테르"
+#   set the mul label to "Gyrid Jonsson Gran-Meløy"
+LAST	Lmul	"Gyrid Jonsson Gran-Meløy"
+#   add a mul alias "Gyrid Ivarsdatter"
+LAST	Amul	"Gyrid Ivarsdatter"
+#   set the ja label to "ギリド・ヨンソン・グランメロイ"
+LAST	Lja	"ギリド・ヨンソン・グランメロイ"
+#   set the zh label to "吉里德·永松·格兰梅洛伊"
+LAST	Lzh	"吉里德·永松·格兰梅洛伊"
+#   set the ko label to "기리드 존손 그란메뢰이"
+LAST	Lko	"기리드 존손 그란메뢰이"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -10853,20 +10631,20 @@ LAST	P734	Q1427982
 
 # create a new item
 CREATE
-#   set the en label to "Hervor Helgesdatter"
-LAST	Len	"Hervor Helgesdatter"
+#   set the en label to "Hervor Helgesdotter"
+LAST	Len	"Hervor Helgesdotter"
 #   set the en description to "Hervor, wife of Yngwin av Götaland of Gotaland"
 LAST	Den	"Hervor, wife of Yngwin av Götaland of Gotaland"
-#   set the mul label to "Hervor Helgesdatter"
-LAST	Lmul	"Hervor Helgesdatter"
-#   add a mul alias "Hervor Helgesdotter"
-LAST	Amul	"Hervor Helgesdotter"
-#   set the ja label to "ヘルヴォル・ヘルゲスダッテル"
-LAST	Lja	"ヘルヴォル・ヘルゲスダッテル"
-#   set the zh label to "赫尔沃尔·赫尔盖斯达特"
-LAST	Lzh	"赫尔沃尔·赫尔盖斯达特"
-#   set the ko label to "헤르보르 헬게스다테르"
-LAST	Lko	"헤르보르 헬게스다테르"
+#   set the mul label to "Hervor Helgesdotter"
+LAST	Lmul	"Hervor Helgesdotter"
+#   add a mul alias "Hervor Helgesdatter"
+LAST	Amul	"Hervor Helgesdatter"
+#   set the ja label to "ヘルヴォル・ヘルゲスドッテル"
+LAST	Lja	"ヘルヴォル・ヘルゲスドッテル"
+#   set the zh label to "赫尔沃尔·赫尔盖斯多特"
+LAST	Lzh	"赫尔沃尔·赫尔盖斯多特"
+#   set the ko label to "헤르보르 헬게스도테르"
+LAST	Lko	"헤르보르 헬게스도테르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -10888,20 +10666,20 @@ LAST	Amul	"Helvor Helgisdottir"
 
 # create a new item
 CREATE
-#   set the en label to "Hilda Charlotta Fredrika Nordén"
-LAST	Len	"Hilda Charlotta Fredrika Nordén"
+#   set the en label to "Hilda Charlotta Fredrika Wikblad"
+LAST	Len	"Hilda Charlotta Fredrika Wikblad"
 #   set the en description to "31 Oct 1845 - 15 Feb 1927 Torsgatan 21"
 LAST	Den	"31 Oct 1845 - 15 Feb 1927 Torsgatan 21"
-#   set the mul label to "Hilda Charlotta Fredrika Nordén"
-LAST	Lmul	"Hilda Charlotta Fredrika Nordén"
-#   add a mul alias "Hilda Charlotta Fredrika Wikblad"
-LAST	Amul	"Hilda Charlotta Fredrika Wikblad"
-#   set the ja label to "ヒルダ・カルロッタ・フレデリカ・ノルデン"
-LAST	Lja	"ヒルダ・カルロッタ・フレデリカ・ノルデン"
-#   set the zh label to "希尔达·卡尔洛塔·夫雷德里卡·诺尔登"
-LAST	Lzh	"希尔达·卡尔洛塔·夫雷德里卡·诺尔登"
-#   set the ko label to "힐다 차로타 프레드리카 노르덴"
-LAST	Lko	"힐다 차로타 프레드리카 노르덴"
+#   set the mul label to "Hilda Charlotta Fredrika Wikblad"
+LAST	Lmul	"Hilda Charlotta Fredrika Wikblad"
+#   add a mul alias "Hilda Charlotta Fredrika Nordén"
+LAST	Amul	"Hilda Charlotta Fredrika Nordén"
+#   set the ja label to "ヒルダ・カルロッタ・フレデリカ・ヴィクブラド"
+LAST	Lja	"ヒルダ・カルロッタ・フレデリカ・ヴィクブラド"
+#   set the zh label to "希尔达·卡尔洛塔·夫雷德里卡·维克布拉德"
+LAST	Lzh	"希尔达·卡尔洛塔·夫雷德里卡·维克布拉德"
+#   set the ko label to "힐다 차로타 프레드리카 위큽라드"
+LAST	Lko	"힐다 차로타 프레드리카 위큽라드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -11042,20 +10820,20 @@ LAST	P5056	Q141283709
 
 # create a new item
 CREATE
-#   set the en label to "Ingebjørg Larsdatter Larsdatter Uppheim"
-LAST	Len	"Ingebjørg Larsdatter Larsdatter Uppheim"
+#   set the en label to "Ingebjørg Larsdatter Uppheim"
+LAST	Len	"Ingebjørg Larsdatter Uppheim"
 #   set the en description to "circa 1670 Uppheim - 1703 Sæve"
 LAST	Den	"circa 1670 Uppheim - 1703 Sæve"
-#   set the mul label to "Ingebjørg Larsdatter Larsdatter Uppheim"
-LAST	Lmul	"Ingebjørg Larsdatter Larsdatter Uppheim"
-#   add a mul alias "Ingebjørg Larsdatter Uppheim"
-LAST	Amul	"Ingebjørg Larsdatter Uppheim"
-#   set the ja label to "インゲビョルグ・ラーシュダッテル・ラーシュダッテル・ウップヘイム"
-LAST	Lja	"インゲビョルグ・ラーシュダッテル・ラーシュダッテル・ウップヘイム"
-#   set the zh label to "因盖博尔格·拉尔斯达特·拉尔斯达特·乌普赫伊姆"
-LAST	Lzh	"因盖博尔格·拉尔斯达特·拉尔斯达特·乌普赫伊姆"
-#   set the ko label to "이에뵈륵 라르스다테르 라르스다테르 우페임"
-LAST	Lko	"이에뵈륵 라르스다테르 라르스다테르 우페임"
+#   set the mul label to "Ingebjørg Larsdatter Uppheim"
+LAST	Lmul	"Ingebjørg Larsdatter Uppheim"
+#   add a mul alias "Ingebjørg Larsdatter Larsdatter Uppheim"
+LAST	Amul	"Ingebjørg Larsdatter Larsdatter Uppheim"
+#   set the ja label to "インゲビョルグ・ラーシュダッテル・ウップヘイム"
+LAST	Lja	"インゲビョルグ・ラーシュダッテル・ウップヘイム"
+#   set the zh label to "因盖博尔格·拉尔斯达特·乌普赫伊姆"
+LAST	Lzh	"因盖博尔格·拉尔斯达特·乌普赫伊姆"
+#   set the ko label to "이에뵈륵 라르스다테르 우페임"
+LAST	Lko	"이에뵈륵 라르스다테르 우페임"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -11149,20 +10927,20 @@ LAST	Amul	"Ingeborg Haukamork"
 
 # create a new item
 CREATE
-#   set the en label to "Ingeborg Johannesdatter Johannesdatter"
-LAST	Len	"Ingeborg Johannesdatter Johannesdatter"
+#   set the en label to "Ingeborg Johannesdatter Årsvoll"
+LAST	Len	"Ingeborg Johannesdatter Årsvoll"
 #   set the en description to "circa 1681 Årsvoll - Oct 1763 Årsvoll, Høyland, Rogaland, Norge"
 LAST	Den	"circa 1681 Årsvoll - Oct 1763 Årsvoll, Høyland, Rogaland, Norge"
-#   set the mul label to "Ingeborg Johannesdatter Johannesdatter"
-LAST	Lmul	"Ingeborg Johannesdatter Johannesdatter"
-#   add a mul alias "Ingeborg Johannesdatter Årsvoll"
-LAST	Amul	"Ingeborg Johannesdatter Årsvoll"
-#   set the ja label to "インゲボルグ・ヨハンネスダッテル・ヨハンネスダッテル"
-LAST	Lja	"インゲボルグ・ヨハンネスダッテル・ヨハンネスダッテル"
-#   set the zh label to "英格堡·约翰内斯达特·约翰内斯达特"
-LAST	Lzh	"英格堡·约翰内斯达特·约翰内斯达特"
-#   set the ko label to "이에보륵 조한네스다테르 조한네스다테르"
-LAST	Lko	"이에보륵 조한네스다테르 조한네스다테르"
+#   set the mul label to "Ingeborg Johannesdatter Årsvoll"
+LAST	Lmul	"Ingeborg Johannesdatter Årsvoll"
+#   add a mul alias "Ingeborg Johannesdatter Johannesdatter"
+LAST	Amul	"Ingeborg Johannesdatter Johannesdatter"
+#   set the ja label to "インゲボルグ・ヨハンネスダッテル・オールスヴォル"
+LAST	Lja	"インゲボルグ・ヨハンネスダッテル・オールスヴォル"
+#   set the zh label to "英格堡·约翰内斯达特·奥尔斯沃尔"
+LAST	Lzh	"英格堡·约翰内斯达特·奥尔斯沃尔"
+#   set the ko label to "이에보륵 조한네스다테르 오르스볼"
+LAST	Lko	"이에보륵 조한네스다테르 오르스볼"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -11266,20 +11044,20 @@ LAST	Amul	"Ingeborg Usken"
 
 # create a new item
 CREATE
-#   set the en label to "Ingeborg Olsdatter Tjåland"
-LAST	Len	"Ingeborg Olsdatter Tjåland"
+#   set the en label to "Ingeborg Olsdatter Vik"
+LAST	Len	"Ingeborg Olsdatter Vik"
 #   set the en description to "1694 Tjåland - Vik, Rogaland, Norway"
 LAST	Den	"1694 Tjåland - Vik, Rogaland, Norway"
-#   set the mul label to "Ingeborg Olsdatter Tjåland"
-LAST	Lmul	"Ingeborg Olsdatter Tjåland"
-#   add a mul alias "Ingeborg Olsdatter Vik"
-LAST	Amul	"Ingeborg Olsdatter Vik"
-#   set the ja label to "インゲボルグ・オルスダッテル・トヨーランド"
-LAST	Lja	"インゲボルグ・オルスダッテル・トヨーランド"
-#   set the zh label to "英格堡·奥尔斯达特·特约兰德"
-LAST	Lzh	"英格堡·奥尔斯达特·特约兰德"
-#   set the ko label to "이에보륵 올스다테르 초란드"
-LAST	Lko	"이에보륵 올스다테르 초란드"
+#   set the mul label to "Ingeborg Olsdatter Vik"
+LAST	Lmul	"Ingeborg Olsdatter Vik"
+#   add a mul alias "Ingeborg Olsdatter Tjåland"
+LAST	Amul	"Ingeborg Olsdatter Tjåland"
+#   set the ja label to "インゲボルグ・オルスダッテル・ヴィク"
+LAST	Lja	"インゲボルグ・オルスダッテル・ヴィク"
+#   set the zh label to "英格堡·奥尔斯达特·维克"
+LAST	Lzh	"英格堡·奥尔斯达特·维克"
+#   set the ko label to "이에보륵 올스다테르 비크"
+LAST	Lko	"이에보륵 올스다테르 비크"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -11305,20 +11083,20 @@ LAST	Amul	"Ingeborg Vik"
 
 # create a new item
 CREATE
-#   set the en label to "Ingeborg Ommundsdatter"
-LAST	Len	"Ingeborg Ommundsdatter"
+#   set the en label to "Ingeborg Orre"
+LAST	Len	"Ingeborg Orre"
 #   set the en description to "1588 Ukjend kor ho kjem frå - 1670 Orre . Klepp s 174 nr 18"
 LAST	Den	"1588 Ukjend kor ho kjem frå - 1670 Orre . Klepp s 174 nr 18"
-#   set the mul label to "Ingeborg Ommundsdatter"
-LAST	Lmul	"Ingeborg Ommundsdatter"
-#   add a mul alias "Ingeborg Orre"
-LAST	Amul	"Ingeborg Orre"
-#   set the ja label to "インゲボルグ・オムムンドスダッテル"
-LAST	Lja	"インゲボルグ・オムムンドスダッテル"
-#   set the zh label to "英格堡·奥蒙德斯达特"
-LAST	Lzh	"英格堡·奥蒙德斯达特"
-#   set the ko label to "이에보륵 옴문드스다테르"
-LAST	Lko	"이에보륵 옴문드스다테르"
+#   set the mul label to "Ingeborg Orre"
+LAST	Lmul	"Ingeborg Orre"
+#   add a mul alias "Ingeborg Ommundsdatter"
+LAST	Amul	"Ingeborg Ommundsdatter"
+#   set the ja label to "インゲボルグ・オレ"
+LAST	Lja	"インゲボルグ・オレ"
+#   set the zh label to "英格堡·奥雷"
+LAST	Lzh	"英格堡·奥雷"
+#   set the ko label to "이에보륵 오르레"
+LAST	Lko	"이에보륵 오르레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -11486,20 +11264,20 @@ LAST	Amul	"Ingebret Motland"
 
 # create a new item
 CREATE
-#   set the en label to "Ingrid Eriksdatter Eriksdatter"
-LAST	Len	"Ingrid Eriksdatter Eriksdatter"
+#   set the en label to "Ingrid Eriksdatter Dale"
+LAST	Len	"Ingrid Eriksdatter Dale"
 #   set the en description to "Dale, Riska - Dale, Sandnes, Rogaland, Norway"
 LAST	Den	"Dale, Riska - Dale, Sandnes, Rogaland, Norway"
-#   set the mul label to "Ingrid Eriksdatter Eriksdatter"
-LAST	Lmul	"Ingrid Eriksdatter Eriksdatter"
-#   add a mul alias "Ingrid Eriksdatter Dale"
-LAST	Amul	"Ingrid Eriksdatter Dale"
-#   set the ja label to "イングリッド・エリクスダッテル・エリクスダッテル"
-LAST	Lja	"イングリッド・エリクスダッテル・エリクスダッテル"
-#   set the zh label to "英格丽·埃里克斯达特·埃里克斯达特"
-LAST	Lzh	"英格丽·埃里克斯达特·埃里克斯达特"
-#   set the ko label to "잉리드 에리크스다테르 에리크스다테르"
-LAST	Lko	"잉리드 에리크스다테르 에리크스다테르"
+#   set the mul label to "Ingrid Eriksdatter Dale"
+LAST	Lmul	"Ingrid Eriksdatter Dale"
+#   add a mul alias "Ingrid Eriksdatter Eriksdatter"
+LAST	Amul	"Ingrid Eriksdatter Eriksdatter"
+#   set the ja label to "イングリッド・エリクスダッテル・デイル"
+LAST	Lja	"イングリッド・エリクスダッテル・デイル"
+#   set the zh label to "英格丽·埃里克斯达特·戴尔"
+LAST	Lzh	"英格丽·埃里克斯达特·戴尔"
+#   set the ko label to "잉리드 에리크스다테르 다레"
+LAST	Lko	"잉리드 에리크스다테르 다레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -11634,20 +11412,20 @@ LAST	P734	Q122837647
 
 # create a new item
 CREATE
-#   set the en label to "Ingrid Alvsdatter Alvseike"
-LAST	Len	"Ingrid Alvsdatter Alvseike"
+#   set the en label to "Ingrid Alvsdatter Sjurseike"
+LAST	Len	"Ingrid Alvsdatter Sjurseike"
 #   set the en description to "Alvseike - circa 1670 Sjurseike"
 LAST	Den	"Alvseike - circa 1670 Sjurseike"
-#   set the mul label to "Ingrid Alvsdatter Alvseike"
-LAST	Lmul	"Ingrid Alvsdatter Alvseike"
-#   add a mul alias "Ingrid Alvsdatter Sjurseike"
-LAST	Amul	"Ingrid Alvsdatter Sjurseike"
-#   set the ja label to "イングリッド・アルヴスダッテル・アルヴセイケ"
-LAST	Lja	"イングリッド・アルヴスダッテル・アルヴセイケ"
-#   set the zh label to "英格丽·阿尔夫斯达特·阿尔夫塞伊凯"
-LAST	Lzh	"英格丽·阿尔夫斯达特·阿尔夫塞伊凯"
-#   set the ko label to "잉리드 알브스다테르 알브세이케"
-LAST	Lko	"잉리드 알브스다테르 알브세이케"
+#   set the mul label to "Ingrid Alvsdatter Sjurseike"
+LAST	Lmul	"Ingrid Alvsdatter Sjurseike"
+#   add a mul alias "Ingrid Alvsdatter Alvseike"
+LAST	Amul	"Ingrid Alvsdatter Alvseike"
+#   set the ja label to "イングリッド・アルヴスダッテル・シュルセイケ"
+LAST	Lja	"イングリッド・アルヴスダッテル・シュルセイケ"
+#   set the zh label to "英格丽·阿尔夫斯达特·舒尔塞伊凯"
+LAST	Lzh	"英格丽·阿尔夫斯达特·舒尔塞伊凯"
+#   set the ko label to "잉리드 알브스다테르 수르세이케"
+LAST	Lko	"잉리드 알브스다테르 수르세이케"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -12827,32 +12605,7 @@ LAST	P735	Q18964343	P1545	"2"	P3831	Q245025
 
 # create a new item
 CREATE
-#   set the en label to "Johan Olofsson"
-LAST	Len	"Johan Olofsson"
-#   set the en description to "son of Brita Andersdotter"
-LAST	Den	"son of Brita Andersdotter"
-#   set the mul label to "Johan Olofsson"
-LAST	Lmul	"Johan Olofsson"
-#   set the ja label to "ヨハン・オロフソン"
-LAST	Lja	"ヨハン・オロフソン"
-#   set the zh label to "约翰·奥洛夫松"
-LAST	Lzh	"约翰·奥洛夫松"
-#   set the ko label to "조한 오로프손"
-LAST	Lko	"조한 오로프손"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000026491583209 Johan Olofsson, qualified P1810 subject named as Johan Olofsson
-LAST	P2600	"6000000026491583209"	P1810	"Johan Olofsson"
-#   P25 mother = Q141492533 Brita Andersdotter
-LAST	P25	Q141492533	S2600	"6000000026491583209"
-#   Q141492533 Brita Andersdotter: P40 child = the item just created
-Q141492533	P40	LAST	S2600	"6000000026491583209"
-
-# create a new item
-CREATE
-#   the item just created: set the en label to "Johan Peter Schön"
+#   set the en label to "Johan Peter Schön"
 LAST	Len	"Johan Peter Schön"
 #   set the en description to "21 Apr 1795 - 23 Oct 1853 Högantorp"
 LAST	Den	"21 Apr 1795 - 23 Oct 1853 Högantorp"
@@ -13902,20 +13655,20 @@ LAST	P734	Q27892826
 
 # create a new item
 CREATE
-#   set the en label to "Josefine Kjeldsen"
-LAST	Len	"Josefine Kjeldsen"
+#   set the en label to "Josefine Wendt"
+LAST	Len	"Josefine Wendt"
 #   set the en description to "1863 - 1918"
 LAST	Den	"1863 - 1918"
-#   set the mul label to "Josefine Kjeldsen"
-LAST	Lmul	"Josefine Kjeldsen"
-#   add a mul alias "Josefine Wendt"
-LAST	Amul	"Josefine Wendt"
-#   set the ja label to "ヨセフィネ・ヒェルドセン"
-LAST	Lja	"ヨセフィネ・ヒェルドセン"
-#   set the zh label to "约塞菲内·谢尔德森"
-LAST	Lzh	"约塞菲内·谢尔德森"
-#   set the ko label to "조세피네 켈드센"
-LAST	Lko	"조세피네 켈드센"
+#   set the mul label to "Josefine Wendt"
+LAST	Lmul	"Josefine Wendt"
+#   add a mul alias "Josefine Kjeldsen"
+LAST	Amul	"Josefine Kjeldsen"
+#   set the ja label to "ヨセフィネ・ヴェント"
+LAST	Lja	"ヨセフィネ・ヴェント"
+#   set the zh label to "约塞菲内·温特"
+LAST	Lzh	"约塞菲内·温特"
+#   set the ko label to "조세피네 웬트"
+LAST	Lko	"조세피네 웬트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -14198,20 +13951,20 @@ LAST	P5056	Q141549475
 
 # create a new item
 CREATE
-#   set the en label to "Jøran Knutsdotter Hytta"
-LAST	Len	"Jøran Knutsdotter Hytta"
+#   set the en label to "Jøran Knutsdotter Lillegård"
+LAST	Len	"Jøran Knutsdotter Lillegård"
 #   set the en description to "1815 - 1847"
 LAST	Den	"1815 - 1847"
-#   set the mul label to "Jøran Knutsdotter Hytta"
-LAST	Lmul	"Jøran Knutsdotter Hytta"
-#   add a mul alias "Jøran Knutsdotter Lillegård"
-LAST	Amul	"Jøran Knutsdotter Lillegård"
-#   set the ja label to "ヨラン・クヌトスドッテル・ヒッタ"
-LAST	Lja	"ヨラン・クヌトスドッテル・ヒッタ"
-#   set the zh label to "约兰·克努特斯多特·希塔"
-LAST	Lzh	"约兰·克努特斯多特·希塔"
-#   set the ko label to "죄란 크누트스도테르 히타"
-LAST	Lko	"죄란 크누트스도테르 히타"
+#   set the mul label to "Jøran Knutsdotter Lillegård"
+LAST	Lmul	"Jøran Knutsdotter Lillegård"
+#   add a mul alias "Jøran Knutsdotter Hytta"
+LAST	Amul	"Jøran Knutsdotter Hytta"
+#   set the ja label to "ヨラン・クヌトスドッテル・リレゴールド"
+LAST	Lja	"ヨラン・クヌトスドッテル・リレゴールド"
+#   set the zh label to "约兰·克努特斯多特·利莱戈尔德"
+LAST	Lzh	"约兰·克努特斯多特·利莱戈尔德"
+#   set the ko label to "죄란 크누트스도테르 릴레고르드"
+LAST	Lko	"죄란 크누트스도테르 릴레고르드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -14410,20 +14163,20 @@ LAST	Amul	"Lippes"
 
 # create a new item
 CREATE
-#   set the en label to "Karen Atlaksdatter Atlaksdatter"
-LAST	Len	"Karen Atlaksdatter Atlaksdatter"
+#   set the en label to "Karen Atlaksdatter Tengs"
+LAST	Len	"Karen Atlaksdatter Tengs"
 #   set the en description to "circa 1639 Tengs - Bet 1696 and 1702 Bjerkreim farm"
 LAST	Den	"circa 1639 Tengs - Bet 1696 and 1702 Bjerkreim farm"
-#   set the mul label to "Karen Atlaksdatter Atlaksdatter"
-LAST	Lmul	"Karen Atlaksdatter Atlaksdatter"
-#   add a mul alias "Karen Atlaksdatter Tengs"
-LAST	Amul	"Karen Atlaksdatter Tengs"
-#   set the ja label to "カレン・アトラクスダッテル・アトラクスダッテル"
-LAST	Lja	"カレン・アトラクスダッテル・アトラクスダッテル"
-#   set the zh label to "凯伦·阿特拉克斯达特·阿特拉克斯达特"
-LAST	Lzh	"凯伦·阿特拉克斯达特·阿特拉克斯达特"
-#   set the ko label to "카렌 아트라크스다테르 아트라크스다테르"
-LAST	Lko	"카렌 아트라크스다테르 아트라크스다테르"
+#   set the mul label to "Karen Atlaksdatter Tengs"
+LAST	Lmul	"Karen Atlaksdatter Tengs"
+#   add a mul alias "Karen Atlaksdatter Atlaksdatter"
+LAST	Amul	"Karen Atlaksdatter Atlaksdatter"
+#   set the ja label to "カレン・アトラクスダッテル・テングス"
+LAST	Lja	"カレン・アトラクスダッテル・テングス"
+#   set the zh label to "凯伦·阿特拉克斯达特·滕斯"
+LAST	Lzh	"凯伦·阿特拉克斯达特·滕斯"
+#   set the ko label to "카렌 아트라크스다테르 텡스"
+LAST	Lko	"카렌 아트라크스다테르 텡스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -14480,20 +14233,20 @@ LAST	P734	Q38906892
 
 # create a new item
 CREATE
-#   set the en label to "Karen Henriksdatter"
-LAST	Len	"Karen Henriksdatter"
+#   set the en label to "Karen Johannesson Mjølsnes"
+LAST	Len	"Karen Johannesson Mjølsnes"
 #   set the en description to "1645 Steinnes - 1691 Mjølsnes nere"
 LAST	Den	"1645 Steinnes - 1691 Mjølsnes nere"
-#   set the mul label to "Karen Henriksdatter"
-LAST	Lmul	"Karen Henriksdatter"
-#   add a mul alias "Karen Johannesson Mjølsnes"
-LAST	Amul	"Karen Johannesson Mjølsnes"
-#   set the ja label to "カレン・ヘンリクスダッテル"
-LAST	Lja	"カレン・ヘンリクスダッテル"
-#   set the zh label to "凯伦·亨里克斯达特"
-LAST	Lzh	"凯伦·亨里克斯达特"
-#   set the ko label to "카렌 헨리크스다테르"
-LAST	Lko	"카렌 헨리크스다테르"
+#   set the mul label to "Karen Johannesson Mjølsnes"
+LAST	Lmul	"Karen Johannesson Mjølsnes"
+#   add a mul alias "Karen Henriksdatter"
+LAST	Amul	"Karen Henriksdatter"
+#   set the ja label to "カレン・ヨハンネソン・ミョルスネス"
+LAST	Lja	"カレン・ヨハンネソン・ミョルスネス"
+#   set the zh label to "凯伦·约哈内松·莫尔斯内斯"
+LAST	Lzh	"凯伦·约哈内松·莫尔斯内斯"
+#   set the ko label to "카렌 조한네손 묄스네스"
+LAST	Lko	"카렌 조한네손 묄스네스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -14711,20 +14464,20 @@ LAST	P5056	Q141383169
 
 # create a new item
 CREATE
-#   set the en label to "Karina Torjusdatter Rosstøl"
-LAST	Len	"Karina Torjusdatter Rosstøl"
+#   set the en label to "Karina Torjusdatter Vig"
+LAST	Len	"Karina Torjusdatter Vig"
 #   set the en description to "born 1844"
 LAST	Den	"born 1844"
-#   set the mul label to "Karina Torjusdatter Rosstøl"
-LAST	Lmul	"Karina Torjusdatter Rosstøl"
-#   add a mul alias "Karina Torjusdatter Vig"
-LAST	Amul	"Karina Torjusdatter Vig"
-#   set the ja label to "カリーナ・トリュスダッテル・ロッストル"
-LAST	Lja	"カリーナ・トリュスダッテル・ロッストル"
-#   set the zh label to "卡琳娜·托鲁斯达特·罗斯托尔"
-LAST	Lzh	"卡琳娜·托鲁斯达特·罗斯托尔"
-#   set the ko label to "카리나 토르주스다테르 로스퇼"
-LAST	Lko	"카리나 토르주스다테르 로스퇼"
+#   set the mul label to "Karina Torjusdatter Vig"
+LAST	Lmul	"Karina Torjusdatter Vig"
+#   add a mul alias "Karina Torjusdatter Rosstøl"
+LAST	Amul	"Karina Torjusdatter Rosstøl"
+#   set the ja label to "カリーナ・トリュスダッテル・ヴィグ"
+LAST	Lja	"カリーナ・トリュスダッテル・ヴィグ"
+#   set the zh label to "卡琳娜·托鲁斯达特·维格"
+LAST	Lzh	"卡琳娜·托鲁斯达特·维格"
+#   set the ko label to "카리나 토르주스다테르 빅"
+LAST	Lko	"카리나 토르주스다테르 빅"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -15158,20 +14911,20 @@ LAST	P734	Q141456289
 
 # create a new item
 CREATE
-#   set the en label to "Kirsti Toresdatter Horpestad"
-LAST	Len	"Kirsti Toresdatter Horpestad"
+#   set the en label to "Kirsti Toresdatter Reve"
+LAST	Len	"Kirsti Toresdatter Reve"
 #   set the en description to "1751 Nedre Horpestad, Klepp, Rogaland - 16 Mar 1842 Reve"
 LAST	Den	"1751 Nedre Horpestad, Klepp, Rogaland - 16 Mar 1842 Reve"
-#   set the mul label to "Kirsti Toresdatter Horpestad"
-LAST	Lmul	"Kirsti Toresdatter Horpestad"
-#   add a mul alias "Kirsti Toresdatter Reve"
-LAST	Amul	"Kirsti Toresdatter Reve"
-#   set the ja label to "キルスティ・トーレスダッテル・ホルペスタド"
-LAST	Lja	"キルスティ・トーレスダッテル・ホルペスタド"
-#   set the zh label to "基尔斯蒂·托雷斯达特·霍尔佩斯塔德"
-LAST	Lzh	"基尔斯蒂·托雷斯达特·霍尔佩斯塔德"
-#   set the ko label to "키르스티 토레스다테르 호르페스타드"
-LAST	Lko	"키르스티 토레스다테르 호르페스타드"
+#   set the mul label to "Kirsti Toresdatter Reve"
+LAST	Lmul	"Kirsti Toresdatter Reve"
+#   add a mul alias "Kirsti Toresdatter Horpestad"
+LAST	Amul	"Kirsti Toresdatter Horpestad"
+#   set the ja label to "キルスティ・トーレスダッテル・レヴェ"
+LAST	Lja	"キルスティ・トーレスダッテル・レヴェ"
+#   set the zh label to "基尔斯蒂·托雷斯达特·雷韦"
+LAST	Lzh	"基尔斯蒂·托雷斯达特·雷韦"
+#   set the ko label to "키르스티 토레스다테르 레베"
+LAST	Lko	"키르스티 토레스다테르 레베"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -15723,20 +15476,20 @@ LAST	Amul	"Lauritsen"
 
 # create a new item
 CREATE
-#   set the en label to "Kristine Marie Olsdotter Ueland"
-LAST	Len	"Kristine Marie Olsdotter Ueland"
+#   set the en label to "Kristine Marie Olsdotter Moi"
+LAST	Len	"Kristine Marie Olsdotter Moi"
 #   set the en description to "17 Sep 1846 Heskestad - 19 Apr 1915"
 LAST	Den	"17 Sep 1846 Heskestad - 19 Apr 1915"
-#   set the mul label to "Kristine Marie Olsdotter Ueland"
-LAST	Lmul	"Kristine Marie Olsdotter Ueland"
-#   add a mul alias "Kristine Marie Olsdotter Moi"
-LAST	Amul	"Kristine Marie Olsdotter Moi"
-#   set the ja label to "クリスティン・マリー・オルスドッテル・ウエランド"
-LAST	Lja	"クリスティン・マリー・オルスドッテル・ウエランド"
-#   set the zh label to "克丽丝汀·玛丽·奥尔斯多特·乌埃兰德"
-LAST	Lzh	"克丽丝汀·玛丽·奥尔斯多特·乌埃兰德"
-#   set the ko label to "크리스티네 마리에 올스도테르 웨란드"
-LAST	Lko	"크리스티네 마리에 올스도테르 웨란드"
+#   set the mul label to "Kristine Marie Olsdotter Moi"
+LAST	Lmul	"Kristine Marie Olsdotter Moi"
+#   add a mul alias "Kristine Marie Olsdotter Ueland"
+LAST	Amul	"Kristine Marie Olsdotter Ueland"
+#   set the ja label to "クリスティン・マリー・オルスドッテル・モイ"
+LAST	Lja	"クリスティン・マリー・オルスドッテル・モイ"
+#   set the zh label to "克丽丝汀·玛丽·奥尔斯多特·莫伊"
+LAST	Lzh	"克丽丝汀·玛丽·奥尔斯多特·莫伊"
+#   set the ko label to "크리스티네 마리에 올스도테르 모이"
+LAST	Lko	"크리스티네 마리에 올스도테르 모이"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -16828,20 +16581,20 @@ Q141548901	P25	LAST	S2600	"6000000227892144211"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Lucretia Gautesdotter Dal"
-LAST	Len	"Lucretia Gautesdotter Dal"
+#   the item just created: set the en label to "Lucretia Gautesdotter Semmelinge"
+LAST	Len	"Lucretia Gautesdotter Semmelinge"
 #   set the en description to "died 1557 Semelinge,Valdres,Oppland,Norway"
 LAST	Den	"died 1557 Semelinge,Valdres,Oppland,Norway"
-#   set the mul label to "Lucretia Gautesdotter Dal"
-LAST	Lmul	"Lucretia Gautesdotter Dal"
-#   add a mul alias "Lucretia Gautesdotter Semmelinge"
-LAST	Amul	"Lucretia Gautesdotter Semmelinge"
-#   set the ja label to "ルクレティア・ガウテスドッテル・ダル"
-LAST	Lja	"ルクレティア・ガウテスドッテル・ダル"
-#   set the zh label to "卢克丽霞·加乌特斯多特·达尔"
-LAST	Lzh	"卢克丽霞·加乌特斯多特·达尔"
-#   set the ko label to "루크레티아 가우테스도테르 달"
-LAST	Lko	"루크레티아 가우테스도테르 달"
+#   set the mul label to "Lucretia Gautesdotter Semmelinge"
+LAST	Lmul	"Lucretia Gautesdotter Semmelinge"
+#   add a mul alias "Lucretia Gautesdotter Dal"
+LAST	Amul	"Lucretia Gautesdotter Dal"
+#   set the ja label to "ルクレティア・ガウテスドッテル・センメリンゲ"
+LAST	Lja	"ルクレティア・ガウテスドッテル・センメリンゲ"
+#   set the zh label to "卢克丽霞·加乌特斯多特·塞梅林盖"
+LAST	Lzh	"卢克丽霞·加乌特斯多特·塞梅林盖"
+#   set the ko label to "루크레티아 가우테스도테르 셈메링에"
+LAST	Lko	"루크레티아 가우테스도테르 셈메링에"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17063,20 +16816,20 @@ LAST	P5056	Q141314124
 
 # create a new item
 CREATE
-#   set the en label to "Malena Rasmusdatter Fuglestad"
-LAST	Len	"Malena Rasmusdatter Fuglestad"
+#   set the en label to "Malena Rasmusdatter Bø"
+LAST	Len	"Malena Rasmusdatter Bø"
 #   set the en description to "circa 1630 Fuglestad - 1719 Bø"
 LAST	Den	"circa 1630 Fuglestad - 1719 Bø"
-#   set the mul label to "Malena Rasmusdatter Fuglestad"
-LAST	Lmul	"Malena Rasmusdatter Fuglestad"
-#   add a mul alias "Malena Rasmusdatter Bø"
-LAST	Amul	"Malena Rasmusdatter Bø"
-#   set the ja label to "マレーナ・ラスムスダッテル・フグレスタド"
-LAST	Lja	"マレーナ・ラスムスダッテル・フグレスタド"
-#   set the zh label to "马莱纳·拉斯穆斯达特·富格莱斯塔德"
-LAST	Lzh	"马莱纳·拉斯穆斯达特·富格莱斯塔德"
-#   set the ko label to "마레나 라스무스다테르 푸그레스타드"
-LAST	Lko	"마레나 라스무스다테르 푸그레스타드"
+#   set the mul label to "Malena Rasmusdatter Bø"
+LAST	Lmul	"Malena Rasmusdatter Bø"
+#   add a mul alias "Malena Rasmusdatter Fuglestad"
+LAST	Amul	"Malena Rasmusdatter Fuglestad"
+#   set the ja label to "マレーナ・ラスムスダッテル・ベー"
+LAST	Lja	"マレーナ・ラスムスダッテル・ベー"
+#   set the zh label to "马莱纳·拉斯穆斯达特·鲍伊"
+LAST	Lzh	"马莱纳·拉斯穆斯达特·鲍伊"
+#   set the ko label to "마레나 라스무스다테르 뵈"
+LAST	Lko	"마레나 라스무스다테르 뵈"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17238,20 +16991,20 @@ LAST	P735	Q18369928
 
 # create a new item
 CREATE
-#   set the en label to "Maren Eriksdatter Torland"
-LAST	Len	"Maren Eriksdatter Torland"
+#   set the en label to "Maren Bjorland"
+LAST	Len	"Maren Bjorland"
 #   set the en description to "1578 - 1687"
 LAST	Den	"1578 - 1687"
-#   set the mul label to "Maren Eriksdatter Torland"
-LAST	Lmul	"Maren Eriksdatter Torland"
-#   add a mul alias "Maren Bjorland"
-LAST	Amul	"Maren Bjorland"
-#   set the ja label to "マレン・エリクスダッテル・トルランド"
-LAST	Lja	"マレン・エリクスダッテル・トルランド"
-#   set the zh label to "马伦·埃里克斯达特·托尔兰德"
-LAST	Lzh	"马伦·埃里克斯达特·托尔兰德"
-#   set the ko label to "마렌 에리크스다테르 토란드"
-LAST	Lko	"마렌 에리크스다테르 토란드"
+#   set the mul label to "Maren Bjorland"
+LAST	Lmul	"Maren Bjorland"
+#   add a mul alias "Maren Eriksdatter Torland"
+LAST	Amul	"Maren Eriksdatter Torland"
+#   set the ja label to "マレン・ビョルランド"
+LAST	Lja	"マレン・ビョルランド"
+#   set the zh label to "马伦·博尔兰德"
+LAST	Lzh	"马伦·博尔兰德"
+#   set the ko label to "마렌 보란드"
+LAST	Lko	"마렌 보란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17474,20 +17227,20 @@ LAST	P735	Q8274988
 
 # create a new item
 CREATE
-#   set the en label to "Margareta Elisabet Cajanus"
-LAST	Len	"Margareta Elisabet Cajanus"
+#   set the en label to "Margareta Elisabet Keckman"
+LAST	Len	"Margareta Elisabet Keckman"
 #   set the en description to "6 Dec 1730 - 26 Sep 1792"
 LAST	Den	"6 Dec 1730 - 26 Sep 1792"
-#   set the mul label to "Margareta Elisabet Cajanus"
-LAST	Lmul	"Margareta Elisabet Cajanus"
-#   add a mul alias "Margareta Elisabet Keckman"
-LAST	Amul	"Margareta Elisabet Keckman"
-#   set the ja label to "マルガレータ・エリーザベト・カヤヌス"
-LAST	Lja	"マルガレータ・エリーザベト・カヤヌス"
-#   set the zh label to "瑪格麗塔·伊丽莎白·卡雅努斯"
-LAST	Lzh	"瑪格麗塔·伊丽莎白·卡雅努斯"
-#   set the ko label to "마르가레타 에리사베트 카자누스"
-LAST	Lko	"마르가레타 에리사베트 카자누스"
+#   set the mul label to "Margareta Elisabet Keckman"
+LAST	Lmul	"Margareta Elisabet Keckman"
+#   add a mul alias "Margareta Elisabet Cajanus"
+LAST	Amul	"Margareta Elisabet Cajanus"
+#   set the ja label to "マルガレータ・エリーザベト・ケクマン"
+LAST	Lja	"マルガレータ・エリーザベト・ケクマン"
+#   set the zh label to "瑪格麗塔·伊丽莎白·凯克曼"
+LAST	Lzh	"瑪格麗塔·伊丽莎白·凯克曼"
+#   set the ko label to "마르가레타 에리사베트 케크만"
+LAST	Lko	"마르가레타 에리사베트 케크만"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17705,20 +17458,20 @@ LAST	P735	Q8274988
 
 # create a new item
 CREATE
-#   set the en label to "Margaretha von Zwifel, a. Ellefer"
-LAST	Len	"Margaretha von Zwifel, a. Ellefer"
+#   set the en label to "Margaretha von Zweiffeln"
+LAST	Len	"Margaretha von Zweiffeln"
 #   set the en description to "Livland, Baltikum - circa 1633 Niemi, Hollola, Tavastland, Finland"
 LAST	Den	"Livland, Baltikum - circa 1633 Niemi, Hollola, Tavastland, Finland"
-#   set the mul label to "Margaretha von Zwifel, a. Ellefer"
-LAST	Lmul	"Margaretha von Zwifel, a. Ellefer"
-#   add a mul alias "Margaretha von Zweiffeln"
-LAST	Amul	"Margaretha von Zweiffeln"
-#   set the ja label to "マルガレータ・ヴォン・ズヴィフェル・a・エレフェル"
-LAST	Lja	"マルガレータ・ヴォン・ズヴィフェル・a・エレフェル"
-#   set the zh label to "马尔加雷塔·翁·兹维费尔·a·埃莱费尔"
-LAST	Lzh	"马尔加雷塔·翁·兹维费尔·a·埃莱费尔"
-#   set the ko label to "마르가레타 본 즈위펠 a 엘레페르"
-LAST	Lko	"마르가레타 본 즈위펠 a 엘레페르"
+#   set the mul label to "Margaretha von Zweiffeln"
+LAST	Lmul	"Margaretha von Zweiffeln"
+#   add a mul alias "Margaretha von Zwifel, a. Ellefer"
+LAST	Amul	"Margaretha von Zwifel, a. Ellefer"
+#   set the ja label to "マルガレータ・ヴォン・ズヴェイッフェルン"
+LAST	Lja	"マルガレータ・ヴォン・ズヴェイッフェルン"
+#   set the zh label to "马尔加雷塔·翁·兹韦伊费尔恩"
+LAST	Lzh	"马尔加雷塔·翁·兹韦伊费尔恩"
+#   set the ko label to "마르가레타 본 즈우에이펠느"
+LAST	Lko	"마르가레타 본 즈우에이펠느"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17771,20 +17524,20 @@ LAST	P734	Q42121148
 
 # create a new item
 CREATE
-#   set the en label to "Margrete Hansdatter"
-LAST	Len	"Margrete Hansdatter"
+#   set the en label to "Margrete Skiftun"
+LAST	Len	"Margrete Skiftun"
 #   set the en description to "circa 1575 Hjelmeland, Rogaland - Aft 1614 Skiftun"
 LAST	Den	"circa 1575 Hjelmeland, Rogaland - Aft 1614 Skiftun"
-#   set the mul label to "Margrete Hansdatter"
-LAST	Lmul	"Margrete Hansdatter"
-#   add a mul alias "Margrete Skiftun"
-LAST	Amul	"Margrete Skiftun"
-#   set the ja label to "マルグレテ・ハンスダッテル"
-LAST	Lja	"マルグレテ・ハンスダッテル"
-#   set the zh label to "马尔格雷特·汉斯达特"
-LAST	Lzh	"马尔格雷特·汉斯达特"
-#   set the ko label to "마륵레테 한스다테르"
-LAST	Lko	"마륵레테 한스다테르"
+#   set the mul label to "Margrete Skiftun"
+LAST	Lmul	"Margrete Skiftun"
+#   add a mul alias "Margrete Hansdatter"
+LAST	Amul	"Margrete Hansdatter"
+#   set the ja label to "マルグレテ・スキフトン"
+LAST	Lja	"マルグレテ・スキフトン"
+#   set the zh label to "马尔格雷特·斯基夫通"
+LAST	Lzh	"马尔格雷特·斯基夫通"
+#   set the ko label to "마륵레테 스키프툰"
+LAST	Lko	"마륵레테 스키프툰"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17843,20 +17596,20 @@ LAST	Amul	"Mari Sveen"
 
 # create a new item
 CREATE
-#   set the en label to "Mari Olsdatter Halvorsbøle, Lynne"
-LAST	Len	"Mari Olsdatter Halvorsbøle, Lynne"
+#   set the en label to "Mari Olsdatter Moger"
+LAST	Len	"Mari Olsdatter Moger"
 #   set the en description to "2 Jan 1780 Halvorsbøle - 10 Nov 1871 Moger"
 LAST	Den	"2 Jan 1780 Halvorsbøle - 10 Nov 1871 Moger"
-#   set the mul label to "Mari Olsdatter Halvorsbøle, Lynne"
-LAST	Lmul	"Mari Olsdatter Halvorsbøle, Lynne"
-#   add a mul alias "Mari Olsdatter Moger"
-LAST	Amul	"Mari Olsdatter Moger"
-#   set the ja label to "マリ・オルスダッテル・ハルヴォルスボレ・リン"
-LAST	Lja	"マリ・オルスダッテル・ハルヴォルスボレ・リン"
-#   set the zh label to "马里·奥尔斯达特·哈尔沃尔斯博莱·林恩"
-LAST	Lzh	"马里·奥尔斯达特·哈尔沃尔斯博莱·林恩"
-#   set the ko label to "마리 올스다테르 할보르스뵈레 린네"
-LAST	Lko	"마리 올스다테르 할보르스뵈레 린네"
+#   set the mul label to "Mari Olsdatter Moger"
+LAST	Lmul	"Mari Olsdatter Moger"
+#   add a mul alias "Mari Olsdatter Halvorsbøle, Lynne"
+LAST	Amul	"Mari Olsdatter Halvorsbøle, Lynne"
+#   set the ja label to "マリ・オルスダッテル・モゲル"
+LAST	Lja	"マリ・オルスダッテル・モゲル"
+#   set the zh label to "马里·奥尔斯达特·莫盖尔"
+LAST	Lzh	"马里·奥尔斯达特·莫盖尔"
+#   set the ko label to "마리 올스다테르 모게르"
+LAST	Lko	"마리 올스다테르 모게르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -17915,20 +17668,20 @@ LAST	P735	Q1083457	P1545	"3"	P3831	Q245025
 
 # create a new item
 CREATE
-#   set the en label to "Maria Eleonora Taube af Odenkat"
-LAST	Len	"Maria Eleonora Taube af Odenkat"
+#   set the en label to "Maria Eleonora Ribbing"
+LAST	Len	"Maria Eleonora Ribbing"
 #   set the en description to "29 Oct 1777 Davo - 21 May 1829"
 LAST	Den	"29 Oct 1777 Davo - 21 May 1829"
-#   set the mul label to "Maria Eleonora Taube af Odenkat"
-LAST	Lmul	"Maria Eleonora Taube af Odenkat"
-#   add a mul alias "Maria Eleonora Ribbing"
-LAST	Amul	"Maria Eleonora Ribbing"
-#   set the ja label to "マリア・エレオノーラ・タウベ・アフ・オデンカト"
-LAST	Lja	"マリア・エレオノーラ・タウベ・アフ・オデンカト"
-#   set the zh label to "玛丽亚·埃莱奥诺拉·陶布·阿夫·奥登卡特"
-LAST	Lzh	"玛丽亚·埃莱奥诺拉·陶布·阿夫·奥登卡特"
-#   set the ko label to "마리아 에레오노라 타우베 아프 오덴카트"
-LAST	Lko	"마리아 에레오노라 타우베 아프 오덴카트"
+#   set the mul label to "Maria Eleonora Ribbing"
+LAST	Lmul	"Maria Eleonora Ribbing"
+#   add a mul alias "Maria Eleonora Taube af Odenkat"
+LAST	Amul	"Maria Eleonora Taube af Odenkat"
+#   set the ja label to "マリア・エレオノーラ・リッビング"
+LAST	Lja	"マリア・エレオノーラ・リッビング"
+#   set the zh label to "玛丽亚·埃莱奥诺拉·里宾"
+LAST	Lzh	"玛丽亚·埃莱奥诺拉·里宾"
+#   set the ko label to "마리아 에레오노라 리빙"
+LAST	Lko	"마리아 에레오노라 리빙"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -18106,20 +17859,20 @@ LAST	Amul	"Marit Skas"
 
 # create a new item
 CREATE
-#   set the en label to "Marit Jonsdatter Jonsdatter"
-LAST	Len	"Marit Jonsdatter Jonsdatter"
+#   set the en label to "Marit Jonsdatter Tøtland"
+LAST	Len	"Marit Jonsdatter Tøtland"
 #   set the en description to "Tøtland - 1654 Oppsal"
 LAST	Den	"Tøtland - 1654 Oppsal"
-#   set the mul label to "Marit Jonsdatter Jonsdatter"
-LAST	Lmul	"Marit Jonsdatter Jonsdatter"
-#   add a mul alias "Marit Jonsdatter Tøtland"
-LAST	Amul	"Marit Jonsdatter Tøtland"
-#   set the ja label to "マリット・ヨンスダッテル・ヨンスダッテル"
-LAST	Lja	"マリット・ヨンスダッテル・ヨンスダッテル"
-#   set the zh label to "马里特·永斯达特·永斯达特"
-LAST	Lzh	"马里特·永斯达特·永斯达特"
-#   set the ko label to "마리트 존스다테르 존스다테르"
-LAST	Lko	"마리트 존스다테르 존스다테르"
+#   set the mul label to "Marit Jonsdatter Tøtland"
+LAST	Lmul	"Marit Jonsdatter Tøtland"
+#   add a mul alias "Marit Jonsdatter Jonsdatter"
+LAST	Amul	"Marit Jonsdatter Jonsdatter"
+#   set the ja label to "マリット・ヨンスダッテル・トトランド"
+LAST	Lja	"マリット・ヨンスダッテル・トトランド"
+#   set the zh label to "马里特·永斯达特·托特兰德"
+LAST	Lzh	"马里特·永斯达特·托特兰德"
+#   set the ko label to "마리트 존스다테르 퇴트란드"
+LAST	Lko	"마리트 존스다테르 퇴트란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -18188,20 +17941,20 @@ LAST	P734	Q47491511
 
 # create a new item
 CREATE
-#   set the en label to "Marita Askjelsdatter Fadnes"
-LAST	Len	"Marita Askjelsdatter Fadnes"
+#   set the en label to "Marita Askjelsdatter Tyssen"
+LAST	Len	"Marita Askjelsdatter Tyssen"
 #   set the en description to "1687 Evanger, Voss, Hordaland, Norway - Fadnes bnr. 3, Voss, Norge"
 LAST	Den	"1687 Evanger, Voss, Hordaland, Norway - Fadnes bnr. 3, Voss, Norge"
-#   set the mul label to "Marita Askjelsdatter Fadnes"
-LAST	Lmul	"Marita Askjelsdatter Fadnes"
-#   add a mul alias "Marita Askjelsdatter Tyssen"
-LAST	Amul	"Marita Askjelsdatter Tyssen"
-#   set the ja label to "マリタ・アシェルスダッテル・ファドネス"
-LAST	Lja	"マリタ・アシェルスダッテル・ファドネス"
-#   set the zh label to "马里塔·阿谢尔斯达特·法德内斯"
-LAST	Lzh	"马里塔·阿谢尔斯达特·法德内斯"
-#   set the ko label to "마리타 아셀스다테르 파드네스"
-LAST	Lko	"마리타 아셀스다테르 파드네스"
+#   set the mul label to "Marita Askjelsdatter Tyssen"
+LAST	Lmul	"Marita Askjelsdatter Tyssen"
+#   add a mul alias "Marita Askjelsdatter Fadnes"
+LAST	Amul	"Marita Askjelsdatter Fadnes"
+#   set the ja label to "マリタ・アシェルスダッテル・ティセン"
+LAST	Lja	"マリタ・アシェルスダッテル・ティセン"
+#   set the zh label to "马里塔·阿谢尔斯达特·蒂森"
+LAST	Lzh	"马里塔·阿谢尔斯达特·蒂森"
+#   set the ko label to "마리타 아셀스다테르 티센"
+LAST	Lko	"마리타 아셀스다테르 티센"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -18222,49 +17975,6 @@ LAST	P734	Q40100078	P3831	Q2507958
 LAST	P734	Q33120450	P3831	Q28418670
 #   add a mul alias "Marita Tyssen"
 LAST	Amul	"Marita Tyssen"
-
-# create a new item
-CREATE
-#   set the en label to "Marta Olsdatter Auklend"
-LAST	Len	"Marta Olsdatter Auklend"
-#   set the en description to "circa 1615 Auklend - Aft 1685 Høle farm"
-LAST	Den	"circa 1615 Auklend - Aft 1685 Høle farm"
-#   set the mul label to "Marta Olsdatter Auklend"
-LAST	Lmul	"Marta Olsdatter Auklend"
-#   add a mul alias "Marta Olsdatter Auklend/ Høle"
-LAST	Amul	"Marta Olsdatter Auklend/ Høle"
-#   set the ja label to "マルタ・オルスダッテル・アウクレンド"
-LAST	Lja	"マルタ・オルスダッテル・アウクレンド"
-#   set the zh label to "玛尔塔·奥尔斯达特·奥克伦德"
-LAST	Lzh	"玛尔塔·奥尔斯达特·奥克伦德"
-#   set the ko label to "마르타 올스다테르 아우크렌드"
-LAST	Lko	"마르타 올스다테르 아우크렌드"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000003094967068 Marita Olsdatter, qualified P1810 subject named as Marita Olsdatter
-LAST	P2600	"6000000003094967068"	P1810	"Marita Olsdatter"
-#   P569 date of birth = +1615-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P569	+1615-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000003094967068"
-#   P570 date of death = +1685-00-00T00:00:00Z/9, qualified P1319 earliest date +1685-00-00T00:00:00Z/9
-LAST	P570	+1685-00-00T00:00:00Z/9	P1319	+1685-00-00T00:00:00Z/9	S2600	"6000000003094967068"
-#   P40 child = Q141559682 Helge Trondsen Riska
-LAST	P40	Q141559682	S2600	"6000000003094967068"
-#   Q141559682 Helge Trondsen Riska: P25 mother = the item just created
-Q141559682	P25	LAST	S2600	"6000000003094967068"
-#   the item just created: P735 given name = Q846741 Marta
-LAST	P735	Q846741
-#   P5056 patronym or matronym = Q51885688 Olsdatter
-LAST	P5056	Q51885688
-#   P734 family name = Q122835391, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q122835391	P3831	Q2507958
-#   P734 family name = Q141290186, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q141290186	P3831	Q28418670
-#   add a mul alias "Maria Olsdatter Auklend"
-LAST	Amul	"Maria Olsdatter Auklend"
-#   add a mul alias "Marta Auklend/ Høle"
-LAST	Amul	"Marta Auklend/ Høle"
 
 # create a new item
 CREATE
@@ -18637,20 +18347,20 @@ LAST	P734	Q28151033
 
 # create a new item
 CREATE
-#   set the en label to "Mette Sørensdatter Sonderhaug"
-LAST	Len	"Mette Sørensdatter Sonderhaug"
+#   set the en label to "Mette Sørensdatter Døsen"
+LAST	Len	"Mette Sørensdatter Døsen"
 #   set the en description to "1652 Luster - 1692"
 LAST	Den	"1652 Luster - 1692"
-#   set the mul label to "Mette Sørensdatter Sonderhaug"
-LAST	Lmul	"Mette Sørensdatter Sonderhaug"
-#   add a mul alias "Mette Sørensdatter Døsen"
-LAST	Amul	"Mette Sørensdatter Døsen"
-#   set the ja label to "メット・ソレンスダッテル・ソンデルハウグ"
-LAST	Lja	"メット・ソレンスダッテル・ソンデルハウグ"
-#   set the zh label to "梅特·索伦斯达特·松德尔哈乌格"
-LAST	Lzh	"梅特·索伦斯达特·松德尔哈乌格"
-#   set the ko label to "메테 쇠렌스다테르 손데르하욱"
-LAST	Lko	"메테 쇠렌스다테르 손데르하욱"
+#   set the mul label to "Mette Sørensdatter Døsen"
+LAST	Lmul	"Mette Sørensdatter Døsen"
+#   add a mul alias "Mette Sørensdatter Sonderhaug"
+LAST	Amul	"Mette Sørensdatter Sonderhaug"
+#   set the ja label to "メット・ソレンスダッテル・ドセン"
+LAST	Lja	"メット・ソレンスダッテル・ドセン"
+#   set the zh label to "梅特·索伦斯达特·多森"
+LAST	Lzh	"梅特·索伦斯达特·多森"
+#   set the ko label to "메테 쇠렌스다테르 되센"
+LAST	Lko	"메테 쇠렌스다테르 되센"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -18913,20 +18623,20 @@ LAST	P735	Q1576232
 
 # create a new item
 CREATE
-#   set the en label to "N. Asgautdotter Asgautdotter"
-LAST	Len	"N. Asgautdotter Asgautdotter"
+#   set the en label to "N. Asgautdotter Halland"
+LAST	Len	"N. Asgautdotter Halland"
 #   set the en description to "Bet 1572 and 1576 - Bet 1626 and 1632"
 LAST	Den	"Bet 1572 and 1576 - Bet 1626 and 1632"
-#   set the mul label to "N. Asgautdotter Asgautdotter"
-LAST	Lmul	"N. Asgautdotter Asgautdotter"
-#   add a mul alias "N. Asgautdotter Halland"
-LAST	Amul	"N. Asgautdotter Halland"
-#   set the ja label to "N・アスガウトドッテル・アスガウトドッテル"
-LAST	Lja	"N・アスガウトドッテル・アスガウトドッテル"
-#   set the zh label to "N·阿斯加乌特多特·阿斯加乌特多特"
-LAST	Lzh	"N·阿斯加乌特多特·阿斯加乌特多特"
-#   set the ko label to "N 아스가우트도테르 아스가우트도테르"
-LAST	Lko	"N 아스가우트도테르 아스가우트도테르"
+#   set the mul label to "N. Asgautdotter Halland"
+LAST	Lmul	"N. Asgautdotter Halland"
+#   add a mul alias "N. Asgautdotter Asgautdotter"
+LAST	Amul	"N. Asgautdotter Asgautdotter"
+#   set the ja label to "N・アスガウトドッテル・ハランド"
+LAST	Lja	"N・アスガウトドッテル・ハランド"
+#   set the zh label to "N·阿斯加乌特多特·哈兰德"
+LAST	Lzh	"N·阿斯加乌特多特·哈兰德"
+#   set the ko label to "N 아스가우트도테르 할란드"
+LAST	Lko	"N 아스가우트도테르 할란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -19205,10 +18915,10 @@ Q141524226	P25	LAST	S2600	"6000000012246167471"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN Ukjent"
-LAST	Lmul	"NN Ukjent"
-#   add a mul alias "NN Kyllingstad"
-LAST	Amul	"NN Kyllingstad"
+#   the item just created: set the mul label to "NN Kyllingstad"
+LAST	Lmul	"NN Kyllingstad"
+#   add a mul alias "NN Ukjent"
+LAST	Amul	"NN Ukjent"
 #   set the ca label to "esposa de Ingebret Pederson Kyllingstad"
 LAST	Lca	"esposa de Ingebret Pederson Kyllingstad"
 #   set the da label to "hustru til Ingebret Pederson Kyllingstad"
@@ -19258,10 +18968,10 @@ LAST	P734	Q30080230	P3831	Q28418670
 
 # create a new item
 CREATE
-#   set the mul label to "NN Ukjent"
-LAST	Lmul	"NN Ukjent"
-#   add a mul alias "NN Skas"
-LAST	Amul	"NN Skas"
+#   set the mul label to "NN Skas"
+LAST	Lmul	"NN Skas"
+#   add a mul alias "NN Ukjent"
+LAST	Amul	"NN Ukjent"
 #   set the ca label to "esposa de Halvard Skas"
 LAST	Lca	"esposa de Halvard Skas"
 #   set the da label to "hustru til Halvard Skas"
@@ -19413,10 +19123,10 @@ Q141534010	P25	LAST	S2600	"6000000005609398914"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN ukjent"
-LAST	Lmul	"NN ukjent"
-#   add a mul alias "NN Lindland"
-LAST	Amul	"NN Lindland"
+#   the item just created: set the mul label to "NN Lindland"
+LAST	Lmul	"NN Lindland"
+#   add a mul alias "NN ukjent"
+LAST	Amul	"NN ukjent"
 #   set the ca label to "esposa de Bergulv Bellestsen Mydland"
 LAST	Lca	"esposa de Bergulv Bellestsen Mydland"
 #   set the da label to "hustru til Bergulv Bellestsen Mydland"
@@ -19844,10 +19554,10 @@ Q141533824	P25	LAST	S2600	"6000000004851138430"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN N"
-LAST	Lmul	"NN N"
-#   add a mul alias "NN NN"
-LAST	Amul	"NN NN"
+#   the item just created: set the mul label to "NN NN"
+LAST	Lmul	"NN NN"
+#   add a mul alias "NN N"
+LAST	Amul	"NN N"
 #   set the ca label to "esposa de Anders"
 LAST	Lca	"esposa de Anders"
 #   set the da label to "hustru til Anders"
@@ -20310,10 +20020,10 @@ Q141551050	P25	LAST	S2600	"6000000011881007780"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN NN"
-LAST	Lmul	"NN NN"
-#   add a mul alias "NN Foss"
-LAST	Amul	"NN Foss"
+#   the item just created: set the mul label to "NN Foss"
+LAST	Lmul	"NN Foss"
+#   add a mul alias "NN NN"
+LAST	Amul	"NN NN"
 #   set the ca label to "esposa de Odd Foss"
 LAST	Lca	"esposa de Odd Foss"
 #   set the da label to "hustru til Odd Foss"
@@ -21203,10 +20913,10 @@ Q141529766	P25	LAST	S2600	"6000000003083835549"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN ?"
-LAST	Lmul	"NN ?"
-#   add a mul alias "NN de Osta"
-LAST	Amul	"NN de Osta"
+#   the item just created: set the mul label to "NN de Osta"
+LAST	Lmul	"NN de Osta"
+#   add a mul alias "NN ?"
+LAST	Amul	"NN ?"
 #   set the ca label to "esposa de Rudolf de Osta"
 LAST	Lca	"esposa de Rudolf de Osta"
 #   set the da label to "hustru til Rudolf de Osta"
@@ -21744,10 +21454,10 @@ LAST	P734	Q36930490	P3831	Q28418670
 
 # create a new item
 CREATE
-#   set the mul label to "NN Seim"
-LAST	Lmul	"NN Seim"
-#   add a mul alias "NN Holter"
-LAST	Amul	"NN Holter"
+#   set the mul label to "NN Holter"
+LAST	Lmul	"NN Holter"
+#   add a mul alias "NN Seim"
+LAST	Amul	"NN Seim"
 #   set the ca label to "esposa de Jon Holteson Holter"
 LAST	Lca	"esposa de Jon Holteson Holter"
 #   set the da label to "hustru til Jon Holteson Holter"
@@ -21846,10 +21556,10 @@ LAST	P734	Q30132574	P3831	Q28418670
 
 # create a new item
 CREATE
-#   set the mul label to "NN Gunnarson"
-LAST	Lmul	"NN Gunnarson"
-#   add a mul alias "NN Torve"
-LAST	Amul	"NN Torve"
+#   set the mul label to "NN Torve"
+LAST	Lmul	"NN Torve"
+#   add a mul alias "NN Gunnarson"
+LAST	Amul	"NN Gunnarson"
 #   set the ca label to "esposa de Hallvard Gunnarsson Torve"
 LAST	Lca	"esposa de Hallvard Gunnarsson Torve"
 #   set the da label to "hustru til Hallvard Gunnarsson Torve"
@@ -22183,10 +21893,10 @@ LAST	P5056	Q141290187
 
 # create a new item
 CREATE
-#   set the mul label to "NN Dahlslee"
-LAST	Lmul	"NN Dahlslee"
-#   add a mul alias "NN Ile"
-LAST	Amul	"NN Ile"
+#   set the mul label to "NN Ile"
+LAST	Lmul	"NN Ile"
+#   add a mul alias "NN Dahlslee"
+LAST	Amul	"NN Dahlslee"
 #   set the ca label to "esposa de Torgils Amundson Ile"
 LAST	Lca	"esposa de Torgils Amundson Ile"
 #   set the da label to "hustru til Torgils Amundson Ile"
@@ -22381,10 +22091,10 @@ LAST	P734	Q122838329	P3831	Q28418670
 
 # create a new item
 CREATE
-#   set the mul label to "NN Stokka"
-LAST	Lmul	"NN Stokka"
-#   add a mul alias "NN Sveen"
-LAST	Amul	"NN Sveen"
+#   set the mul label to "NN Sveen"
+LAST	Lmul	"NN Sveen"
+#   add a mul alias "NN Stokka"
+LAST	Amul	"NN Stokka"
 #   set the ca label to "filla de Johannes Osmundsen"
 LAST	Lca	"filla de Johannes Osmundsen"
 #   set the da label to "datter af Johannes Osmundsen"
@@ -22536,10 +22246,10 @@ Q141560409	P25	LAST	S2600	"6000000011864469634"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN N."
-LAST	Lmul	"NN N."
-#   add a mul alias "NN von Eickstedt"
-LAST	Amul	"NN von Eickstedt"
+#   the item just created: set the mul label to "NN von Eickstedt"
+LAST	Lmul	"NN von Eickstedt"
+#   add a mul alias "NN N."
+LAST	Amul	"NN N."
 #   set the ca label to "esposa de Theodoricus von Eickstedt I"
 LAST	Lca	"esposa de Theodoricus von Eickstedt I"
 #   set the da label to "hustru til Theodoricus von Eickstedt I"
@@ -23570,10 +23280,10 @@ LAST	P734	Q12678727
 
 # create a new item
 CREATE
-#   set the mul label to "NN ukjent"
-LAST	Lmul	"NN ukjent"
-#   add a mul alias "NN Knut Reiarson"
-LAST	Amul	"NN Knut Reiarson"
+#   set the mul label to "NN Knut Reiarson"
+LAST	Lmul	"NN Knut Reiarson"
+#   add a mul alias "NN ukjent"
+LAST	Amul	"NN ukjent"
 #   set the ca label to "esposa de Knut Reiarson Øvre Sedberg"
 LAST	Lca	"esposa de Knut Reiarson Øvre Sedberg"
 #   set the da label to "hustru til Knut Reiarson Øvre Sedberg"
@@ -23617,10 +23327,10 @@ Q141560645	P25	LAST	S2600	"6000000157744463821"
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN ukjent"
-LAST	Lmul	"NN ukjent"
-#   add a mul alias "NN Hommersåk"
-LAST	Amul	"NN Hommersåk"
+#   the item just created: set the mul label to "NN Hommersåk"
+LAST	Lmul	"NN Hommersåk"
+#   add a mul alias "NN ukjent"
+LAST	Amul	"NN ukjent"
 #   set the ca label to "esposa de Lars Hommersåk"
 LAST	Lca	"esposa de Lars Hommersåk"
 #   set the da label to "hustru til Lars Hommersåk"
@@ -24146,20 +23856,20 @@ Q141550998	P25	LAST	S2600	"6000000009946935165"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Nella Antonia Voldnes"
-LAST	Len	"Nella Antonia Voldnes"
+#   the item just created: set the en label to "Nella Antonia Nilsen"
+LAST	Len	"Nella Antonia Nilsen"
 #   set the en description to "born 28 Sep 1870 Vålnes"
 LAST	Den	"born 28 Sep 1870 Vålnes"
-#   set the mul label to "Nella Antonia Voldnes"
-LAST	Lmul	"Nella Antonia Voldnes"
-#   add a mul alias "Nella Antonia Nilsen"
-LAST	Amul	"Nella Antonia Nilsen"
-#   set the ja label to "ネラ・アントニア・ヴォルドネス"
-LAST	Lja	"ネラ・アントニア・ヴォルドネス"
-#   set the zh label to "内拉·安东尼娅·沃尔德内斯"
-LAST	Lzh	"内拉·安东尼娅·沃尔德内斯"
-#   set the ko label to "넬라 안토니아 볼드네스"
-LAST	Lko	"넬라 안토니아 볼드네스"
+#   set the mul label to "Nella Antonia Nilsen"
+LAST	Lmul	"Nella Antonia Nilsen"
+#   add a mul alias "Nella Antonia Voldnes"
+LAST	Amul	"Nella Antonia Voldnes"
+#   set the ja label to "ネラ・アントニア・ニルセン"
+LAST	Lja	"ネラ・アントニア・ニルセン"
+#   set the zh label to "内拉·安东尼娅·尼尔森"
+LAST	Lzh	"内拉·安东尼娅·尼尔森"
+#   set the ko label to "넬라 안토니아 닐센"
+LAST	Lko	"넬라 안토니아 닐센"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -24897,20 +24607,20 @@ LAST	Amul	"Årsvoll"
 
 # create a new item
 CREATE
-#   set the en label to "Oda von Lüchow"
-LAST	Len	"Oda von Lüchow"
+#   set the en label to "Oda von Schwerin"
+LAST	Len	"Oda von Schwerin"
 #   set the en description to "1130 - 14 Oct 1191"
 LAST	Den	"1130 - 14 Oct 1191"
-#   set the mul label to "Oda von Lüchow"
-LAST	Lmul	"Oda von Lüchow"
-#   add a mul alias "Oda von Schwerin"
-LAST	Amul	"Oda von Schwerin"
-#   set the ja label to "オーダ・ヴォン・リコヴ"
-LAST	Lja	"オーダ・ヴォン・リコヴ"
-#   set the zh label to "奥达·翁·利科夫"
-LAST	Lzh	"奥达·翁·利科夫"
-#   set the ko label to "오다 본 뤼초우"
-LAST	Lko	"오다 본 뤼초우"
+#   set the mul label to "Oda von Schwerin"
+LAST	Lmul	"Oda von Schwerin"
+#   add a mul alias "Oda von Lüchow"
+LAST	Amul	"Oda von Lüchow"
+#   set the ja label to "オーダ・ヴォン・シュヴェリーン"
+LAST	Lja	"オーダ・ヴォン・シュヴェリーン"
+#   set the zh label to "奥达·翁·斯克韦林"
+LAST	Lzh	"奥达·翁·斯克韦林"
+#   set the ko label to "오다 본 스웨린"
+LAST	Lko	"오다 본 스웨린"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -25620,20 +25330,20 @@ LAST	P734	Q47085823
 
 # create a new item
 CREATE
-#   set the en label to "Olaug Aslaksdotter Jortveit"
-LAST	Len	"Olaug Aslaksdotter Jortveit"
+#   set the en label to "Olaug Aslaksdotter Ytre Dåsvatn"
+LAST	Len	"Olaug Aslaksdotter Ytre Dåsvatn"
 #   set the en description to "died Aft 1736 bnr 1 der oppe"
 LAST	Den	"died Aft 1736 bnr 1 der oppe"
-#   set the mul label to "Olaug Aslaksdotter Jortveit"
-LAST	Lmul	"Olaug Aslaksdotter Jortveit"
-#   add a mul alias "Olaug Aslaksdotter Ytre Dåsvatn"
-LAST	Amul	"Olaug Aslaksdotter Ytre Dåsvatn"
-#   set the ja label to "オラウグ・アスラクスドッテル・ヨルトヴェイト"
-LAST	Lja	"オラウグ・アスラクスドッテル・ヨルトヴェイト"
-#   set the zh label to "奥拉乌格·阿斯拉克斯多特·约尔特韦伊特"
-LAST	Lzh	"奥拉乌格·阿斯拉克斯多特·约尔特韦伊特"
-#   set the ko label to "오라욱 아스라크스도테르 조르트베이트"
-LAST	Lko	"오라욱 아스라크스도테르 조르트베이트"
+#   set the mul label to "Olaug Aslaksdotter Ytre Dåsvatn"
+LAST	Lmul	"Olaug Aslaksdotter Ytre Dåsvatn"
+#   add a mul alias "Olaug Aslaksdotter Jortveit"
+LAST	Amul	"Olaug Aslaksdotter Jortveit"
+#   set the ja label to "オラウグ・アスラクスドッテル・イトレ・ドースヴァトン"
+LAST	Lja	"オラウグ・アスラクスドッテル・イトレ・ドースヴァトン"
+#   set the zh label to "奥拉乌格·阿斯拉克斯多特·伊特雷·多斯瓦特恩"
+LAST	Lzh	"奥拉乌格·阿斯拉克斯多特·伊特雷·多斯瓦特恩"
+#   set the ko label to "오라욱 아스라크스도테르 이트레 도스바튼"
+LAST	Lko	"오라욱 아스라크스도테르 이트레 도스바튼"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -25655,20 +25365,20 @@ LAST	Amul	"Olaug Ytre Dåsvatn"
 
 # create a new item
 CREATE
-#   set the en label to "Olaug Ormsdatter Årsvoll"
-LAST	Len	"Olaug Ormsdatter Årsvoll"
+#   set the en label to "Olaug Ormsdatter Sør-Kolnes"
+LAST	Len	"Olaug Ormsdatter Sør-Kolnes"
 #   set the en description to "1652 - 1733 Sør-Kolnes"
 LAST	Den	"1652 - 1733 Sør-Kolnes"
-#   set the mul label to "Olaug Ormsdatter Årsvoll"
-LAST	Lmul	"Olaug Ormsdatter Årsvoll"
-#   add a mul alias "Olaug Ormsdatter Sør-Kolnes"
-LAST	Amul	"Olaug Ormsdatter Sør-Kolnes"
-#   set the ja label to "オラウグ・オルムスダッテル・オールスヴォル"
-LAST	Lja	"オラウグ・オルムスダッテル・オールスヴォル"
-#   set the zh label to "奥拉乌格·奥尔姆斯达特·奥尔斯沃尔"
-LAST	Lzh	"奥拉乌格·奥尔姆斯达特·奥尔斯沃尔"
-#   set the ko label to "오라욱 오름스다테르 오르스볼"
-LAST	Lko	"오라욱 오름스다테르 오르스볼"
+#   set the mul label to "Olaug Ormsdatter Sør-Kolnes"
+LAST	Lmul	"Olaug Ormsdatter Sør-Kolnes"
+#   add a mul alias "Olaug Ormsdatter Årsvoll"
+LAST	Amul	"Olaug Ormsdatter Årsvoll"
+#   set the ja label to "オラウグ・オルムスダッテル・ソルコルネス"
+LAST	Lja	"オラウグ・オルムスダッテル・ソルコルネス"
+#   set the zh label to "奥拉乌格·奥尔姆斯达特·索尔科尔内斯"
+LAST	Lzh	"奥拉乌格·奥尔姆斯达特·索尔科尔内斯"
+#   set the ko label to "오라욱 오름스다테르 쇠르콜네스"
+LAST	Lko	"오라욱 오름스다테르 쇠르콜네스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -26384,20 +26094,20 @@ LAST	Amul	"Mogens Bjørgås"
 
 # create a new item
 CREATE
-#   set the en label to "Olina Olsdatter Netland"
-LAST	Len	"Olina Olsdatter Netland"
+#   set the en label to "Olina Olsdatter Lende"
+LAST	Len	"Olina Olsdatter Lende"
 #   set the en description to "1810 Netland - 28 May 1839 Lende"
 LAST	Den	"1810 Netland - 28 May 1839 Lende"
-#   set the mul label to "Olina Olsdatter Netland"
-LAST	Lmul	"Olina Olsdatter Netland"
-#   add a mul alias "Olina Olsdatter Lende"
-LAST	Amul	"Olina Olsdatter Lende"
-#   set the ja label to "オリナ・オルスダッテル・ネトランド"
-LAST	Lja	"オリナ・オルスダッテル・ネトランド"
-#   set the zh label to "奥利纳·奥尔斯达特·内特兰德"
-LAST	Lzh	"奥利纳·奥尔斯达特·内特兰德"
-#   set the ko label to "오리나 올스다테르 네트란드"
-LAST	Lko	"오리나 올스다테르 네트란드"
+#   set the mul label to "Olina Olsdatter Lende"
+LAST	Lmul	"Olina Olsdatter Lende"
+#   add a mul alias "Olina Olsdatter Netland"
+LAST	Amul	"Olina Olsdatter Netland"
+#   set the ja label to "オリナ・オルスダッテル・レンデ"
+LAST	Lja	"オリナ・オルスダッテル・レンデ"
+#   set the zh label to "奥利纳·奥尔斯达特·伦德"
+LAST	Lzh	"奥利纳·奥尔斯达特·伦德"
+#   set the ko label to "오리나 올스다테르 렌데"
+LAST	Lko	"오리나 올스다테르 렌데"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -28506,20 +28216,20 @@ LAST	P734	Q19970604
 
 # create a new item
 CREATE
-#   set the en label to "Ragnhild Jonsdatter Aukland"
-LAST	Len	"Ragnhild Jonsdatter Aukland"
+#   set the en label to "Ragnhild Jonsdatter Ile"
+LAST	Len	"Ragnhild Jonsdatter Ile"
 #   set the en description to "circa 1460 Ile - circa 1523 Ile"
 LAST	Den	"circa 1460 Ile - circa 1523 Ile"
-#   set the mul label to "Ragnhild Jonsdatter Aukland"
-LAST	Lmul	"Ragnhild Jonsdatter Aukland"
-#   add a mul alias "Ragnhild Jonsdatter Ile"
-LAST	Amul	"Ragnhild Jonsdatter Ile"
-#   set the ja label to "ラグンヒル・ヨンスダッテル・アウクランド"
-LAST	Lja	"ラグンヒル・ヨンスダッテル・アウクランド"
-#   set the zh label to "拉格希尔德·永斯达特·奥克兰德"
-LAST	Lzh	"拉格希尔德·永斯达特·奥克兰德"
-#   set the ko label to "락느힐드 존스다테르 아우크란드"
-LAST	Lko	"락느힐드 존스다테르 아우크란드"
+#   set the mul label to "Ragnhild Jonsdatter Ile"
+LAST	Lmul	"Ragnhild Jonsdatter Ile"
+#   add a mul alias "Ragnhild Jonsdatter Aukland"
+LAST	Amul	"Ragnhild Jonsdatter Aukland"
+#   set the ja label to "ラグンヒル・ヨンスダッテル・イレ"
+LAST	Lja	"ラグンヒル・ヨンスダッテル・イレ"
+#   set the zh label to "拉格希尔德·永斯达特·伊莱"
+LAST	Lzh	"拉格希尔德·永斯达特·伊莱"
+#   set the ko label to "락느힐드 존스다테르 이레"
+LAST	Lko	"락느힐드 존스다테르 이레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -29224,20 +28934,20 @@ LAST	P735	Q12717110
 
 # create a new item
 CREATE
-#   set the en label to "Birgitte Knudsdatter Knudsdatter"
-LAST	Len	"Birgitte Knudsdatter Knudsdatter"
+#   set the en label to "Birgitte Knudsdatter Versland"
+LAST	Len	"Birgitte Knudsdatter Versland"
 #   set the en description to "abt. 1590 Versland i Bjerkreim; jfr Bjerkreimsboka III s2127 - Versland i Bjerkreim; jfr Bjerkreimsboka III s2127"
 LAST	Den	"abt. 1590 Versland i Bjerkreim; jfr Bjerkreimsboka III s2127 - Versland i Bjerkreim; jfr Bjerkreimsboka III s2127"
-#   set the mul label to "Birgitte Knudsdatter Knudsdatter"
-LAST	Lmul	"Birgitte Knudsdatter Knudsdatter"
-#   add a mul alias "Birgitte Knudsdatter Versland"
-LAST	Amul	"Birgitte Knudsdatter Versland"
-#   set the ja label to "ビルギッテ・クヌドスダッテル・クヌドスダッテル"
-LAST	Lja	"ビルギッテ・クヌドスダッテル・クヌドスダッテル"
-#   set the zh label to "比尔吉特·克努德斯达特·克努德斯达特"
-LAST	Lzh	"比尔吉特·克努德斯达特·克努德斯达特"
-#   set the ko label to "비르기테 크누드스다테르 크누드스다테르"
-LAST	Lko	"비르기테 크누드스다테르 크누드스다테르"
+#   set the mul label to "Birgitte Knudsdatter Versland"
+LAST	Lmul	"Birgitte Knudsdatter Versland"
+#   add a mul alias "Birgitte Knudsdatter Knudsdatter"
+LAST	Amul	"Birgitte Knudsdatter Knudsdatter"
+#   set the ja label to "ビルギッテ・クヌドスダッテル・ヴェルスランド"
+LAST	Lja	"ビルギッテ・クヌドスダッテル・ヴェルスランド"
+#   set the zh label to "比尔吉特·克努德斯达特·韦尔斯兰德"
+LAST	Lzh	"比尔吉特·克努德斯达特·韦尔斯兰德"
+#   set the ko label to "비르기테 크누드스다테르 베르스란드"
+LAST	Lko	"비르기테 크누드스다테르 베르스란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -29617,57 +29327,20 @@ LAST	P5056	Q141499517	P144	Q141533891
 
 # create a new item
 CREATE
-#   set the en label to "Siri Atlaksdatter Hompland"
-LAST	Len	"Siri Atlaksdatter Hompland"
-#   set the en description to "Bet 1644 and 1653 Hompland - Bet 1694 and 1699 Fossmork"
-LAST	Den	"Bet 1644 and 1653 Hompland - Bet 1694 and 1699 Fossmork"
-#   set the mul label to "Siri Atlaksdatter Hompland"
-LAST	Lmul	"Siri Atlaksdatter Hompland"
-#   add a mul alias "Siri Atlaksdatter Tveiten/ Fossmork?"
-LAST	Amul	"Siri Atlaksdatter Tveiten/ Fossmork?"
-#   set the ja label to "シリ・アトラクスダッテル・ホムプランド"
-LAST	Lja	"シリ・アトラクスダッテル・ホムプランド"
-#   set the zh label to "西里·阿特拉克斯达特·霍姆普兰德"
-LAST	Lzh	"西里·阿特拉克斯达特·霍姆普兰德"
-#   set the ko label to "시리 아트라크스다테르 홈프란드"
-LAST	Lko	"시리 아트라크스다테르 홈프란드"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000006871110690 Siri Atlaksdatter Hompland, qualified P1810 subject named as Siri Atlaksdatter Hompland
-LAST	P2600	"6000000006871110690"	P1810	"Siri Atlaksdatter Hompland"
-#   P569 date of birth = +1644-00-00T00:00:00Z/9, qualified P1319 earliest date +1644-00-00T00:00:00Z/9, P1326 latest date +1653-00-00T00:00:00Z/9
-LAST	P569	+1644-00-00T00:00:00Z/9	P1319	+1644-00-00T00:00:00Z/9	P1326	+1653-00-00T00:00:00Z/9	S2600	"6000000006871110690"
-#   P570 date of death = +1694-00-00T00:00:00Z/9, qualified P1319 earliest date +1694-00-00T00:00:00Z/9, P1326 latest date +1699-00-00T00:00:00Z/9
-LAST	P570	+1694-00-00T00:00:00Z/9	P1319	+1694-00-00T00:00:00Z/9	P1326	+1699-00-00T00:00:00Z/9	S2600	"6000000006871110690"
-#   P40 child = Q141560756 Taral II Jonson Øvre Fossmork
-LAST	P40	Q141560756	S2600	"6000000006871110690"
-#   Q141560756 Taral II Jonson Øvre Fossmork: P25 mother = the item just created
-Q141560756	P25	LAST	S2600	"6000000006871110690"
-#   the item just created: P735 given name = Q1772342 Siri
-LAST	P735	Q1772342
-#   P734 family name = Q47458871
-LAST	P734	Q47458871
-#   add a mul alias "Siri Tveiten/ Fossmork?"
-LAST	Amul	"Siri Tveiten/ Fossmork?"
-
-# create a new item
-CREATE
-#   set the en label to "Siri Johannesdatter Fintland"
-LAST	Len	"Siri Johannesdatter Fintland"
+#   set the en label to "Siri Johannesdatter Liland"
+LAST	Len	"Siri Johannesdatter Liland"
 #   set the en description to "1663 Fintland - 1742"
 LAST	Den	"1663 Fintland - 1742"
-#   set the mul label to "Siri Johannesdatter Fintland"
-LAST	Lmul	"Siri Johannesdatter Fintland"
-#   add a mul alias "Siri Johannesdatter Liland"
-LAST	Amul	"Siri Johannesdatter Liland"
-#   set the ja label to "シリ・ヨハンネスダッテル・フィントランド"
-LAST	Lja	"シリ・ヨハンネスダッテル・フィントランド"
-#   set the zh label to "西里·约翰内斯达特·芬特兰德"
-LAST	Lzh	"西里·约翰内斯达特·芬特兰德"
-#   set the ko label to "시리 조한네스다테르 핀트란드"
-LAST	Lko	"시리 조한네스다테르 핀트란드"
+#   set the mul label to "Siri Johannesdatter Liland"
+LAST	Lmul	"Siri Johannesdatter Liland"
+#   add a mul alias "Siri Johannesdatter Fintland"
+LAST	Amul	"Siri Johannesdatter Fintland"
+#   set the ja label to "シリ・ヨハンネスダッテル・リランド"
+LAST	Lja	"シリ・ヨハンネスダッテル・リランド"
+#   set the zh label to "西里·约翰内斯达特·利兰德"
+LAST	Lzh	"西里·约翰内斯达特·利兰德"
+#   set the ko label to "시리 조한네스다테르 리란드"
+LAST	Lko	"시리 조한네스다테르 리란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -29693,20 +29366,20 @@ LAST	Amul	"Siri Liland"
 
 # create a new item
 CREATE
-#   set the en label to "Siri Nordås"
-LAST	Len	"Siri Nordås"
+#   set the en label to "Siri Madland"
+LAST	Len	"Siri Madland"
 #   set the en description to "born circa 1534"
 LAST	Den	"born circa 1534"
-#   set the mul label to "Siri Nordås"
-LAST	Lmul	"Siri Nordås"
-#   add a mul alias "Siri Madland"
-LAST	Amul	"Siri Madland"
-#   set the ja label to "シリ・ノルドース"
-LAST	Lja	"シリ・ノルドース"
-#   set the zh label to "西里·诺尔多斯"
-LAST	Lzh	"西里·诺尔多斯"
-#   set the ko label to "시리 노르도스"
-LAST	Lko	"시리 노르도스"
+#   set the mul label to "Siri Madland"
+LAST	Lmul	"Siri Madland"
+#   add a mul alias "Siri Nordås"
+LAST	Amul	"Siri Nordås"
+#   set the ja label to "シリ・マドランド"
+LAST	Lja	"シリ・マドランド"
+#   set the zh label to "西里·马德兰德"
+LAST	Lzh	"西里·马德兰德"
+#   set the ko label to "시리 마드란드"
+LAST	Lko	"시리 마드란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -29763,20 +29436,20 @@ LAST	Amul	"Siri Byre"
 
 # create a new item
 CREATE
-#   set the en label to "Siri Olsdatter Vølstad"
-LAST	Len	"Siri Olsdatter Vølstad"
+#   set the en label to "Siri Olsdatter Bjelland"
+LAST	Len	"Siri Olsdatter Bjelland"
 #   set the en description to "circa 1685 Vølstad - 1768 Berge"
 LAST	Den	"circa 1685 Vølstad - 1768 Berge"
-#   set the mul label to "Siri Olsdatter Vølstad"
-LAST	Lmul	"Siri Olsdatter Vølstad"
-#   add a mul alias "Siri Olsdatter Bjelland"
-LAST	Amul	"Siri Olsdatter Bjelland"
-#   set the ja label to "シリ・オルスダッテル・ヴォルスタド"
-LAST	Lja	"シリ・オルスダッテル・ヴォルスタド"
-#   set the zh label to "西里·奥尔斯达特·沃尔斯塔德"
-LAST	Lzh	"西里·奥尔斯达特·沃尔斯塔德"
-#   set the ko label to "시리 올스다테르 뵐스타드"
-LAST	Lko	"시리 올스다테르 뵐스타드"
+#   set the mul label to "Siri Olsdatter Bjelland"
+LAST	Lmul	"Siri Olsdatter Bjelland"
+#   add a mul alias "Siri Olsdatter Vølstad"
+LAST	Amul	"Siri Olsdatter Vølstad"
+#   set the ja label to "シリ・オルスダッテル・ビェランド"
+LAST	Lja	"シリ・オルスダッテル・ビェランド"
+#   set the zh label to "西里·奥尔斯达特·贝兰德"
+LAST	Lzh	"西里·奥尔斯达特·贝兰德"
+#   set the ko label to "시리 올스다테르 벨란드"
+LAST	Lko	"시리 올스다테르 벨란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -30158,20 +29831,20 @@ LAST	P735	Q18201520
 
 # create a new item
 CREATE
-#   set the en label to "Sofia Jöransdotter"
-LAST	Len	"Sofia Jöransdotter"
+#   set the en label to "Sofia Schröder"
+LAST	Len	"Sofia Schröder"
 #   set the en description to "8 Mar 1628 - 30 Mar 1689"
 LAST	Den	"8 Mar 1628 - 30 Mar 1689"
-#   set the mul label to "Sofia Jöransdotter"
-LAST	Lmul	"Sofia Jöransdotter"
-#   add a mul alias "Sofia Schröder"
-LAST	Amul	"Sofia Schröder"
-#   set the ja label to "ソフィア・ヨランスドッテル"
-LAST	Lja	"ソフィア・ヨランスドッテル"
-#   set the zh label to "索菲娅·约兰斯多特"
-LAST	Lzh	"索菲娅·约兰斯多特"
-#   set the ko label to "소피아 죄란스도테르"
-LAST	Lko	"소피아 죄란스도테르"
+#   set the mul label to "Sofia Schröder"
+LAST	Lmul	"Sofia Schröder"
+#   add a mul alias "Sofia Jöransdotter"
+LAST	Amul	"Sofia Jöransdotter"
+#   set the ja label to "ソフィア・シュレーダー"
+LAST	Lja	"ソフィア・シュレーダー"
+#   set the zh label to "索菲娅·斯克罗德尔"
+LAST	Lzh	"索菲娅·斯克罗德尔"
+#   set the ko label to "소피아 스크뢰데르"
+LAST	Lko	"소피아 스크뢰데르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -30329,20 +30002,20 @@ LAST	P5056	Q51885688
 
 # create a new item
 CREATE
-#   set the en label to "Stine Pedersdatter Tjøtta"
-LAST	Len	"Stine Pedersdatter Tjøtta"
+#   set the en label to "Stine Pedersdatter Horpestad"
+LAST	Len	"Stine Pedersdatter Horpestad"
 #   set the en description to "1771 Tjøtta - 4 Jan 1824 Nedre Horpestad"
 LAST	Den	"1771 Tjøtta - 4 Jan 1824 Nedre Horpestad"
-#   set the mul label to "Stine Pedersdatter Tjøtta"
-LAST	Lmul	"Stine Pedersdatter Tjøtta"
-#   add a mul alias "Stine Pedersdatter Horpestad"
-LAST	Amul	"Stine Pedersdatter Horpestad"
-#   set the ja label to "スティーネ・ペーデシュダッテル・トヨッタ"
-LAST	Lja	"スティーネ・ペーデシュダッテル・トヨッタ"
-#   set the zh label to "斯蒂内·佩德斯达特·特约塔"
-LAST	Lzh	"斯蒂内·佩德斯达特·特约塔"
-#   set the ko label to "스티네 페데르스다테르 최타"
-LAST	Lko	"스티네 페데르스다테르 최타"
+#   set the mul label to "Stine Pedersdatter Horpestad"
+LAST	Lmul	"Stine Pedersdatter Horpestad"
+#   add a mul alias "Stine Pedersdatter Tjøtta"
+LAST	Amul	"Stine Pedersdatter Tjøtta"
+#   set the ja label to "スティーネ・ペーデシュダッテル・ホルペスタド"
+LAST	Lja	"スティーネ・ペーデシュダッテル・ホルペスタド"
+#   set the zh label to "斯蒂内·佩德斯达特·霍尔佩斯塔德"
+LAST	Lzh	"斯蒂内·佩德斯达特·霍尔佩斯塔德"
+#   set the ko label to "스티네 페데르스다테르 호르페스타드"
+LAST	Lko	"스티네 페데르스다테르 호르페스타드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -30406,6 +30079,41 @@ LAST	P734	Q27892877	P3831	Q2507958
 LAST	P734	Q16479900
 #   add a mul alias "Styrkår Berge"
 LAST	Amul	"Styrkår Berge"
+
+# create a new item
+CREATE
+#   set the en label to "Susanna Leonardsdatter"
+LAST	Len	"Susanna Leonardsdatter"
+#   set the en description to "circa 1530 - Aft 21 Sep 1584"
+LAST	Den	"circa 1530 - Aft 21 Sep 1584"
+#   set the mul label to "Susanna Leonardsdatter"
+LAST	Lmul	"Susanna Leonardsdatter"
+#   add a mul alias "Susanna Mitens??"
+LAST	Amul	"Susanna Mitens??"
+#   set the ja label to "スザンナ・レオナルドスダッテル"
+LAST	Lja	"スザンナ・レオナルドスダッテル"
+#   set the zh label to "苏珊娜·莱奥纳尔德斯达特"
+LAST	Lzh	"苏珊娜·莱奥纳尔德斯达特"
+#   set the ko label to "수산나 레오나르드스다테르"
+LAST	Lko	"수산나 레오나르드스다테르"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000001506763855 Susanna Mitens??, qualified P1810 subject named as Susanna Mitens??
+LAST	P2600	"6000000001506763855"	P1810	"Susanna Mitens??"
+#   P569 date of birth = +1530-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1530-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000001506763855"
+#   P570 date of death = +1584-09-21T00:00:00Z/11, qualified P1319 earliest date +1584-09-21T00:00:00Z/11
+LAST	P570	+1584-09-21T00:00:00Z/11	P1319	+1584-09-21T00:00:00Z/11	S2600	"6000000001506763855"
+#   P40 child = Q141556459 Adriane Jensdatter Schielderup
+LAST	P40	Q141556459	S2600	"6000000001506763855"
+#   Q141556459 Adriane Jensdatter Schielderup: P25 mother = the item just created
+Q141556459	P25	LAST	S2600	"6000000001506763855"
+#   the item just created: P735 given name = Q14936808 Susanna
+LAST	P735	Q14936808
+#   add a mul alias "Susanne Lennertsdatter Capeteyn"
+LAST	Amul	"Susanne Lennertsdatter Capeteyn"
 
 # create a new item
 CREATE
@@ -30659,20 +30367,20 @@ LAST	Amul	"Sven Hommeland"
 
 # create a new item
 CREATE
-#   set the en label to "Sygni Kristoffersdatter"
-LAST	Len	"Sygni Kristoffersdatter"
+#   set the en label to "Sygni Motland"
+LAST	Len	"Sygni Motland"
 #   set the en description to "Sygni, wife of Ingebret Torbjørnson Motland"
 LAST	Den	"Sygni, wife of Ingebret Torbjørnson Motland"
-#   set the mul label to "Sygni Kristoffersdatter"
-LAST	Lmul	"Sygni Kristoffersdatter"
-#   add a mul alias "Sygni Motland"
-LAST	Amul	"Sygni Motland"
-#   set the ja label to "シグニ・クリストッフェシュダッテル"
-LAST	Lja	"シグニ・クリストッフェシュダッテル"
-#   set the zh label to "西格尼·克里斯托弗斯达特"
-LAST	Lzh	"西格尼·克里斯托弗斯达特"
-#   set the ko label to "식니 크리스토페르스다테르"
-LAST	Lko	"식니 크리스토페르스다테르"
+#   set the mul label to "Sygni Motland"
+LAST	Lmul	"Sygni Motland"
+#   add a mul alias "Sygni Kristoffersdatter"
+LAST	Amul	"Sygni Kristoffersdatter"
+#   set the ja label to "シグニ・モトランド"
+LAST	Lja	"シグニ・モトランド"
+#   set the zh label to "西格尼·莫特兰德"
+LAST	Lzh	"西格尼·莫特兰德"
+#   set the ko label to "식니 모트란드"
+LAST	Lko	"식니 모트란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -30690,20 +30398,20 @@ LAST	P734	Q122837705	P3831	Q28418670
 
 # create a new item
 CREATE
-#   set the en label to "Synneve Olsdotter Digernes"
-LAST	Len	"Synneve Olsdotter Digernes"
+#   set the en label to "Synneve Olsdotter Liadal"
+LAST	Len	"Synneve Olsdotter Liadal"
 #   set the en description to "1809 Liadal - 1 Jan 1864 Digernes"
 LAST	Den	"1809 Liadal - 1 Jan 1864 Digernes"
-#   set the mul label to "Synneve Olsdotter Digernes"
-LAST	Lmul	"Synneve Olsdotter Digernes"
-#   add a mul alias "Synneve Olsdotter Liadal"
-LAST	Amul	"Synneve Olsdotter Liadal"
-#   set the ja label to "シンネヴェ・オルスドッテル・ディゲルネス"
-LAST	Lja	"シンネヴェ・オルスドッテル・ディゲルネス"
-#   set the zh label to "西内韦·奥尔斯多特·迪盖尔内斯"
-LAST	Lzh	"西内韦·奥尔斯多特·迪盖尔内斯"
-#   set the ko label to "신네베 올스도테르 디게르네스"
-LAST	Lko	"신네베 올스도테르 디게르네스"
+#   set the mul label to "Synneve Olsdotter Liadal"
+LAST	Lmul	"Synneve Olsdotter Liadal"
+#   add a mul alias "Synneve Olsdotter Digernes"
+LAST	Amul	"Synneve Olsdotter Digernes"
+#   set the ja label to "シンネヴェ・オルスドッテル・リアダル"
+LAST	Lja	"シンネヴェ・オルスドッテル・リアダル"
+#   set the zh label to "西内韦·奥尔斯多特·利阿达尔"
+LAST	Lzh	"西内韦·奥尔斯多特·利阿达尔"
+#   set the ko label to "신네베 올스도테르 리아달"
+LAST	Lko	"신네베 올스도테르 리아달"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -31162,20 +30870,20 @@ LAST	P735	Q1546318
 
 # create a new item
 CREATE
-#   set the en label to "Tora Einarsdatter Rolstad"
-LAST	Len	"Tora Einarsdatter Rolstad"
+#   set the en label to "Tora Einarsdatter Listad"
+LAST	Len	"Tora Einarsdatter Listad"
 #   set the en description to "Tora Einarsdatter, wife of Guttorm Haldorsson Rolstad"
 LAST	Den	"Tora Einarsdatter, wife of Guttorm Haldorsson Rolstad"
-#   set the mul label to "Tora Einarsdatter Rolstad"
-LAST	Lmul	"Tora Einarsdatter Rolstad"
-#   add a mul alias "Tora Einarsdatter Listad"
-LAST	Amul	"Tora Einarsdatter Listad"
-#   set the ja label to "トーラ・エイナルスダッテル・ロルスタド"
-LAST	Lja	"トーラ・エイナルスダッテル・ロルスタド"
-#   set the zh label to "托拉·艾纳尔斯达特·罗尔斯塔德"
-LAST	Lzh	"托拉·艾纳尔斯达特·罗尔斯塔德"
-#   set the ko label to "토라 에이나르스다테르 롤스타드"
-LAST	Lko	"토라 에이나르스다테르 롤스타드"
+#   set the mul label to "Tora Einarsdatter Listad"
+LAST	Lmul	"Tora Einarsdatter Listad"
+#   add a mul alias "Tora Einarsdatter Rolstad"
+LAST	Amul	"Tora Einarsdatter Rolstad"
+#   set the ja label to "トーラ・エイナルスダッテル・リスタド"
+LAST	Lja	"トーラ・エイナルスダッテル・リスタド"
+#   set the zh label to "托拉·艾纳尔斯达特·利斯塔德"
+LAST	Lzh	"托拉·艾纳尔斯达特·利斯塔德"
+#   set the ko label to "토라 에이나르스다테르 리스타드"
+LAST	Lko	"토라 에이나르스다테르 리스타드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -31814,20 +31522,20 @@ LAST	Amul	"Tosten Rafoss"
 
 # create a new item
 CREATE
-#   set the en label to "Trine Jørgensdatter Heier"
-LAST	Len	"Trine Jørgensdatter Heier"
+#   set the en label to "Trine Jørgensdatter Tronrud"
+LAST	Len	"Trine Jørgensdatter Tronrud"
 #   set the en description to "4 Apr 1872 - 18 Nov 1909"
 LAST	Den	"4 Apr 1872 - 18 Nov 1909"
-#   set the mul label to "Trine Jørgensdatter Heier"
-LAST	Lmul	"Trine Jørgensdatter Heier"
-#   add a mul alias "Trine Jørgensdatter Tronrud"
-LAST	Amul	"Trine Jørgensdatter Tronrud"
-#   set the ja label to "トリーネ・ヨルゲンスダッテル・ヘイエル"
-LAST	Lja	"トリーネ・ヨルゲンスダッテル・ヘイエル"
-#   set the zh label to "特里内·约尔根斯达特·赫伊埃尔"
-LAST	Lzh	"特里内·约尔根斯达特·赫伊埃尔"
-#   set the ko label to "트리네 죄르겐스다테르 헤이에르"
-LAST	Lko	"트리네 죄르겐스다테르 헤이에르"
+#   set the mul label to "Trine Jørgensdatter Tronrud"
+LAST	Lmul	"Trine Jørgensdatter Tronrud"
+#   add a mul alias "Trine Jørgensdatter Heier"
+LAST	Amul	"Trine Jørgensdatter Heier"
+#   set the ja label to "トリーネ・ヨルゲンスダッテル・トロンルド"
+LAST	Lja	"トリーネ・ヨルゲンスダッテル・トロンルド"
+#   set the zh label to "特里内·约尔根斯达特·特龙鲁德"
+LAST	Lzh	"特里内·约尔根斯达特·特龙鲁德"
+#   set the ko label to "트리네 죄르겐스다테르 트론루드"
+LAST	Lko	"트리네 죄르겐스다테르 트론루드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -32120,20 +31828,20 @@ Q141523344	P25	LAST	S2600	"6000000116751173945"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ulrika Eleonora Simming"
-LAST	Len	"Ulrika Eleonora Simming"
+#   the item just created: set the en label to "Ulrika Eleonora Simmingsköld"
+LAST	Len	"Ulrika Eleonora Simmingsköld"
 #   set the en description to "10 Jun 1710 - 14 Feb 1751"
 LAST	Den	"10 Jun 1710 - 14 Feb 1751"
-#   set the mul label to "Ulrika Eleonora Simming"
-LAST	Lmul	"Ulrika Eleonora Simming"
-#   add a mul alias "Ulrika Eleonora Simmingsköld"
-LAST	Amul	"Ulrika Eleonora Simmingsköld"
-#   set the ja label to "ウルリカ・エレオノーラ・シムミング"
-LAST	Lja	"ウルリカ・エレオノーラ・シムミング"
-#   set the zh label to "乌尔里卡·埃莱奥诺拉·西明"
-LAST	Lzh	"乌尔里卡·埃莱奥诺拉·西明"
-#   set the ko label to "울리카 에레오노라 심밍"
-LAST	Lko	"울리카 에레오노라 심밍"
+#   set the mul label to "Ulrika Eleonora Simmingsköld"
+LAST	Lmul	"Ulrika Eleonora Simmingsköld"
+#   add a mul alias "Ulrika Eleonora Simming"
+LAST	Amul	"Ulrika Eleonora Simming"
+#   set the ja label to "ウルリカ・エレオノーラ・シンミングスコルド"
+LAST	Lja	"ウルリカ・エレオノーラ・シンミングスコルド"
+#   set the zh label to "乌尔里卡·埃莱奥诺拉·西明斯科尔德"
+LAST	Lzh	"乌尔里卡·埃莱奥诺拉·西明斯科尔德"
+#   set the ko label to "울리카 에레오노라 심밍스쾰드"
+LAST	Lko	"울리카 에레오노라 심밍스쾰드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -32467,20 +32175,20 @@ LAST	Amul	"Ådne Nomeland"
 
 # create a new item
 CREATE
-#   set the en label to "Åsa Bjørnsdatter Guddal"
-LAST	Len	"Åsa Bjørnsdatter Guddal"
+#   set the en label to "Åsa Bjørnsdatter Skeie"
+LAST	Len	"Åsa Bjørnsdatter Skeie"
 #   set the en description to "Bet 1644 and 1666 Guddal - Bef 15 Feb 1698 Skeie"
 LAST	Den	"Bet 1644 and 1666 Guddal - Bef 15 Feb 1698 Skeie"
-#   set the mul label to "Åsa Bjørnsdatter Guddal"
-LAST	Lmul	"Åsa Bjørnsdatter Guddal"
-#   add a mul alias "Åsa Bjørnsdatter Skeie"
-LAST	Amul	"Åsa Bjørnsdatter Skeie"
-#   set the ja label to "オーサ・ビョルンスダッテル・グッダル"
-LAST	Lja	"オーサ・ビョルンスダッテル・グッダル"
-#   set the zh label to "奥萨·博尔恩斯达特·古达尔"
-LAST	Lzh	"奥萨·博尔恩斯达特·古达尔"
-#   set the ko label to "오사 뵈른스다테르 구달"
-LAST	Lko	"오사 뵈른스다테르 구달"
+#   set the mul label to "Åsa Bjørnsdatter Skeie"
+LAST	Lmul	"Åsa Bjørnsdatter Skeie"
+#   add a mul alias "Åsa Bjørnsdatter Guddal"
+LAST	Amul	"Åsa Bjørnsdatter Guddal"
+#   set the ja label to "オーサ・ビョルンスダッテル・スケイエ"
+LAST	Lja	"オーサ・ビョルンスダッテル・スケイエ"
+#   set the zh label to "奥萨·博尔恩斯达特·斯凯伊埃"
+LAST	Lzh	"奥萨·博尔恩斯达特·斯凯伊埃"
+#   set the ko label to "오사 뵈른스다테르 스케이에"
+LAST	Lko	"오사 뵈른스다테르 스케이에"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -33066,12 +32774,16 @@ Q141559835	P26	Q141559887	S2600	"6000000003483741013"
 Q141559471	P26	Q141560720	S2600	"6000000003483783114"
 #   Q141560720 Simon Jönsson: P26 spouse = Q141559471 Elin Larsdotter
 Q141560720	P26	Q141559471	S2600	"6000000003483825112"
+#   Q141512641 Berit Bergsdatter Riska: P40 child = Q141549908 Anna Jonsdatter Jonsdotter Trones
+Q141512641	P40	Q141549908	S2600	"6000000003491933963"
 #   Q141559433 Elen Olsdatter Stangeland: P26 spouse = Q141559818 Johannes Svenson Austre Stangeland
 Q141559433	P26	Q141559818	S2600	"6000000003491940979"
 #   Q141560704 Salmund Ommundson Utsola: P26 spouse = Q141560444 NN Utsoladatter
 Q141560704	P26	Q141560444	S2600	"6000000003491944826"
 #   Q141559818 Johannes Svenson Austre Stangeland: P26 spouse = Q141559433 Elen Olsdatter Stangeland
 Q141559818	P26	Q141559433	S2600	"6000000003491944857"
+#   Q141152512 Eivind Aadnesson Garborg: P40 child = Q140568870 Emma Leonhart
+Q141152512	P40	Q140568870	S2600	"6000000003492005111"
 #   Q141559847 Jon Olsen Tu: P26 spouse = Q141559598 Guri Gunnarsdatter
 Q141559847	P26	Q141559598	S2600	"6000000003492007883"
 #   Q141560551 Ole Johannes Salomonsen Hodne: P40 child = Q141559041 Berta Helene Olsdatter Hodne
@@ -33642,6 +33354,10 @@ Q141551989	P26	Q141550586	S2600	"6000000074804050189"
 Q141550586	P26	Q141551989	S2600	"6000000074804326068"
 #   Q141522036 Katarina Mattsdotter Gröön: P40 child = Q126098808 Jacob Johansson Turdfjell
 Q141522036	P40	Q126098808	S2600	"6000000087012384878"
+#   Q140568870 Emma Leonhart: P40 child = Q43974 Louis I
+Q140568870	P40	Q43974	S2600	"6000000087535357291"
+#   P40 child = Q9511624 Huaxu
+Q140568870	P40	Q9511624	S2600	"6000000087535357291"
 #   Q141559669 Hans Tjøstelsen Stensrud: P26 spouse = Q141560658 Ragnild Gundraadsdatter
 Q141559669	P26	Q141560658	S2600	"6000000103633571840"
 #   Q141559815 Johannes Svalesen Geitreim: P26 spouse = Q141559702 Ingebor Siversdatter Fra Holmen
@@ -33722,6 +33438,8 @@ Q141560787	P26	Q141560100	S2600	"6000000191540948828"
 Q141560100	P26	Q141560787	S2600	"6000000191544348829"
 #   Q141559695 Hildor Edvard Vogel: P40 child = Q141559692 Hildegard Emilia Margareta Vogel
 Q141559695	P40	Q141559692	S2600	"6000000194680358904"
+#   Q9511624 Huaxu: P25 mother = Q140568870 Emma Leonhart
+Q9511624	P25	Q140568870	S2600	"6000000195149174838"
 #   Q141559432 Eldrid Halvardsdotter Torland: P26 spouse = Q141560481 Nils Erikson Bryne
 Q141559432	P26	Q141560481	S2600	"6000000201537137830"
 #   Q141551772 NN Hustru Jansdatter: P26 spouse = Q141551138 Ivar Jansen Ocker
