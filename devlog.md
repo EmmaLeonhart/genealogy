@@ -48156,3 +48156,27 @@ other's counts.
 Chinese surnames and their bottlenecks, shrines.order.life with temples.order.life redirecting,
 a religious-buildings database beyond Wikidata, and every deity as having a genealogy. Filed under
 "Context for later, not work now", as the item asked, and nothing was started.
+
+## 2026-09-26 — Q141550288's patronymic, and the same error elsewhere
+
+`Q141550288` *Gitlaug Tørresdtr. Trones* had an abbreviated patronymic in its labels and no `P5056`
+at all.
+- **Cause:** `reports/abbreviated-patronymics.csv`, the per-person census deciding each `-dtr` as
+  `-datter` or `-dotter`, was a one-off snapshot that no workflow regenerated, so she was not in
+  it. Even for people who were in it, only the LABEL was expanded: the name model read the raw
+  `Tørresdtr.`, which has no name item.
+- **The same error elsewhere:** the name-item creator minted `Alvsdtr.` (`Q141456302`) and
+  `Rasmusdtr.` (`Q141442244`) as patronymic items. A handful of our person items carry an
+  abbreviated label; the regenerated census expands five of them.
+- **Fixed** (`a680b3ec2c`): `namemodel.expand_abbreviated` is the one reader of the census; both
+  emitters expand the name fields before classifying; `pipeline.yml` regenerates the census before
+  every compose. Checked offline: Gitlaug gets `P5056 Q141436732` *Tørresdatter* and the label
+  `Gitlaug Tørresdatter Trones`. The label-correction pass and the name-link path fix her item and
+  the others as the pipeline runs, within their caps.
+- **The two abbreviated name items:** Emma approved merging them into the full forms. Nothing here
+  can merge: the sender has no merge operation, and the credentials live only in Actions secrets.
+  The two merges, by hand:
+  - <https://www.wikidata.org/wiki/Special:MergeItems?fromid=Q141456302&toid=Q141498623>
+    (`Alvsdtr.` into `Alvsdatter`)
+  - <https://www.wikidata.org/wiki/Special:MergeItems?fromid=Q141442244&toid=Q141223475>
+    (`Rasmusdtr.` into `Rasmusdatter`)
