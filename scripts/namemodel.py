@@ -750,6 +750,12 @@ def regnal_exceptions():
     return _REGNAL
 
 
+#: **Real one-letter farm names**, which the lone-letter surname rule must not take: `Å` is a
+#: Norwegian farm (`Ingvald /Å/`, `Knut Sjurson /Å/`), `Ö` its Swedish twin. Census 2026-09-25
+#: (`reports/name-rule-census/lone_letter.csv`): 5 of 1,061, the only wrong ones. `Ø` is left
+#: out: alone it is as often the `Øvre` abbreviation.
+ONE_LETTER_FARMS = frozenset({"Å", "Ö"})
+
 DESCRIPTION_MARKERS = {
     "dødfød", "dødfødt", "dødfødte", "dødfodt",
     "dödfödd", "dödfött", "dödfödda", "dodfodd",
@@ -2217,7 +2223,8 @@ def load_plan(path: Path | None = None) -> dict:
         for row in csv.DictReader(f):
             # A lone Latin letter is never a family name (`N.` is Nordre/Nedre on a farm): a
             # stale plan row must not create one. See `classify_fields`, SURN loop.
-            if row["usage"] in ("family", "married") and _MARKER_EXEMPT.match(row["token"]):
+            if (row["usage"] in ("family", "married") and _MARKER_EXEMPT.match(row["token"])
+                    and row["token"] not in ONE_LETTER_FARMS):
                 continue
             out[(row["token"], row["usage"])] = (
                 (row.get("existing_qid") or "").strip(),
@@ -3015,7 +3022,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         # after the batch created `N.` as a family-name item twice and was killed by hand:
         # `Ingemund Olson /N. Eiane/`, married `N. Espedal`. In a farm name `N.` is Nordre or
         # Nedre, as `S.` is Søndre and `Ø.` Øvre -- a qualifier on the farm, not a name.
-        if _MARKER_EXEMPT.match(token):
+        if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
             out.append((token, "unknown", 0))
             continue
         if shape:
@@ -3032,7 +3039,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
         for raw in married.split():
             token, shape = name_shape(raw)
-            if _MARKER_EXEMPT.match(token):
+            if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
                 out.append((token, "unknown", 0))
                 continue
             # **`_MARNM` gets the patronymic test too, and it did not until 2026-09-04.**

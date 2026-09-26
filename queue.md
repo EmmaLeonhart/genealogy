@@ -29,9 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Lone-letter surname: `Å` and `Ö` are real one-letter farm names** (5 records,
-  `Ingvald /Å/`) and are now `unknown`. The other 1,056 of 1,061 changes are right (`N.`, `Y.`,
-  `Ø`, connectors `é`/`á`/`í`).
 - **The ration and the pacing, seen working end to end.** Edit run `36054472568` (dispatched
   2026-09-24, 500, live) is the first test: confirm names -> 30 people -> ring go out in order,
   20-50 s apart, and what stops it.

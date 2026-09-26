@@ -47730,3 +47730,10 @@ clergy form keeps it: a Latin first name, or no vernacular patronymic (`Ericus B
 from patronymic to given, the census's ~76 clear errors plus ~10 ambiguous; 443 stay patronymics.
 Found on the way, and older than this change: `Iohannis` is not matched to Johannes (I/J
 spelling), so `Nicolaus Iohannis Johansson` reads `Iohannis` as given.
+
+## 2026-09-25 — `Å` and `Ö` are farm names, not lone-letter qualifiers
+
+The census found the lone-letter surname rule wrong on 5 of 1,061: `Å` (a Norwegian farm,
+`Ingvald /Å/`) and `Ö`. `ONE_LETTER_FARMS` exempts both, in the `SURN` and `_MARNM` loops of
+`classify_fields` and in `load_plan`'s stale-row drop. `N.`, `Y.`, `S.` stay qualifiers; `Ø` alone
+is left as a qualifier because it is as often the `Øvre` abbreviation.
