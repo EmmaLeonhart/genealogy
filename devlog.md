@@ -47843,3 +47843,25 @@ written from the committed blob so nothing in `rootsmagic/` was read or touched,
 `gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-25.ged`. The bridge, the renderer and the zipper
 read it from there on the next `tree.yml` run: 29,073 people, 22,417 of them not in the
 `getmyancestors` downloads.
+
+## 2026-09-25 — what the French ancestry adds: 176 new Wikidata matches, 64 of them French
+
+Measured on the RootsMagic export (`gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-25.ged`)
+against the two `getmyancestors` downloads and the live `P2889` roster:
+- **3,933 people are placed in France**, and all but one are new (not in the downloads). The
+  RootsMagic export as a whole adds 22,417 people.
+- **Matches that weren't there before: 193 RootsMagic people have a Wikidata item through
+  `P2889`, 176 of them new**; the downloads had 17. **64 are French-placed, all new**, and they
+  reach straight into the royal lines: Eleanor of Aquitaine `Q178525`, Henry I of England
+  `Q101384`, Philippe II Auguste `Q34428`, Guillaume I of Burgundy `Q519641`, Umberto III of
+  Savoy `Q664561`, William de Braose `Q3779058`, Hilduin IV de Montdidier `Q3135626` ...
+
+Each is an exact identifier join, which is what the FamilySearch zipper takes as an anchor
+(`bridge-familysearch-qids.py`), so the next `tree.yml` run walks out from 176 more anchors.
+Every match is in `reports/rootsmagic-wikidata-matches.tsv`.
+
+**A mistake on the way, recorded:** the first attempt used an UNQUOTED heredoc, so bash ran the
+backtick-quoted words in this very entry. It executed the `.ged` as a shell script (every line
+failed as "command not found"; the file is unchanged, and its hash matches HEAD) and started
+`getmyancestors` with no arguments, which waited for input. Emma: leave the stray processes. A
+heredoc that carries prose is always quoted (`<<'EOF'`).
