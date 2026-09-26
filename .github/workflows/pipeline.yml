@@ -500,6 +500,24 @@ jobs:
             echo "appended $(grep -c S2600 reports/wikidata-relationship-sources.qs) to the manual half"
           fi
 
+      # ⛔ **PATRONYMICS IN PAIRS, AND THE PAIRS GO OUT.** This step ran after the site build and
+      # appended nowhere, so `wikidata-patronymic-pairs.qs` was composed every run and never sent
+      # or published -- which is why no pair appeared on Wikidata (found 2026-09-26, no
+      # `Helgesson`). Appended to all three day files like the growth passes above, before the
+      # Tanba strip, the locality gate and the site.
+      - name: Patronymic gendered pairs
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/build-patronymic-pairs.py
+          if [ -s reports/wikidata-patronymic-pairs.qs ]; then
+            for f in reports/wikidata-garborg-day.txt reports/wikidata-garborg-day-auto.txt reports/wikidata-garborg-day-manual.txt; do
+              cat reports/wikidata-patronymic-pairs.qs >> "$f"
+            done
+            echo "appended $(grep -c '^CREATE' reports/wikidata-patronymic-pairs.qs) pair creations to the day files"
+          fi
+
       # ⛔ TANBA LAST. The composer drops Tanba lines, then the split and the appends above write
       # all three day files again, and the site on 2026-09-24 still showed 178 Tanba QIDs from
       # halves nothing re-checked. Dropped here, after every writer, comments included.
@@ -571,13 +589,6 @@ jobs:
         env:
           PYTHONPATH: src
         run: python scripts/build-name-item-cjk.py
-
-      # Patronymics are made in pairs, and the description uniqueness measurement.
-      - name: Patronymic gendered pairs
-        continue-on-error: true
-        env:
-          PYTHONPATH: src
-        run: python scripts/build-patronymic-pairs.py
 
       - name: Refresh the batch inventory
         continue-on-error: true

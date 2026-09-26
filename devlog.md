@@ -47913,3 +47913,13 @@ found nothing to start. The 107-minute gap (17:43-19:31) was the first item bloc
 08:07 scheduled edit run, reported `nothing actionable` tick after tick; Emma then moved that
 item to the end, with *start an edit run immediately when needed*. Other gaps were waits on CI
 runs. A blocked first item should be made actionable, not waited on.
+
+## 2026-09-26 — the patronymic pairs were composed every run and never sent
+
+`build-patronymic-pairs.py` has run in `pipeline.yml` since 2026-09-14 and writes
+`reports/wikidata-patronymic-pairs.qs` (40 `CREATE`s in the committed copy, each carrying `P5278`
+both ways). But the step ran after the site build and appended to nothing, so no day file, no
+sent share and no published page ever carried a pair. That is why no pair shows on Wikidata.
+The step now runs beside the growth passes and appends to all three day files, before the Tanba
+strip, the locality gate and the site. (The script's body is stored as a zlib/base64 blob; it
+was decoded and read before being relied on. It reads committed files only.)
