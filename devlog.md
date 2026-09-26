@@ -48180,3 +48180,17 @@ at all.
     (`Alvsdtr.` into `Alvsdatter`)
   - <https://www.wikidata.org/wiki/Special:MergeItems?fromid=Q141442244&toid=Q141223475>
     (`Rasmusdtr.` into `Rasmusdatter`)
+
+## 2026-09-26 — the reverse pipeline: SPARQL to GEDCOM
+
+`scripts/build-wikidata-gedcom.py --sparql FILE` runs a SPARQL query at query.wikidata.org and
+takes every item it returns, in any column, as the people. Their family links come from the
+committed `out/wikidata/relations.tsv`, read live for anyone the table does not hold. The families
+among them are written as GEDCOM, named from their items. The output is a new file,
+`exports/wikidata/export-SPARQL-<query name>.ged`, and it refuses to overwrite, like the `--seed`
+exports. The family-restriction logic is now shared with `--seed` (`restrict`), and both live
+look-ups wait out a 429.
+
+Tried on `Elizabeth II + her P40 children`, written to a temp file (not `exports/`): 5 people, 1
+family (her as `WIFE`, four `CHIL`), all five named. Birth and death years are filled only where
+the offline store is present, which it is not locally; the CI runners have it.

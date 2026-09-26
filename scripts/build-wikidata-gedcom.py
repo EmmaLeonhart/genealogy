@@ -206,6 +206,25 @@ def read_rows(path):
                         for c in ("p22", "p25", "p40", "p26", "p3373")}
 
 
+def _fetch_json(url, agent):
+    """GET `url` as JSON, waiting out a 429 (`Retry-After`) up to six times."""
+    import json
+    import time
+    import urllib.error
+    import urllib.request
+    for _ in range(6):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": agent or
+                                                       "genealogy-reverse-pipeline/1.0"})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code != 429:
+                raise
+            time.sleep(int(e.headers.get("Retry-After") or 30))
+    raise RuntimeError("Wikidata kept answering 429: " + url[:120])
+
+
 def live_labels(nodes):
     """`Q<digits>` node -> its `mul` (else `en`) label, read live, 50 items a request.
 
@@ -223,15 +242,65 @@ def live_labels(nodes):
         url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({
             "action": "wbgetentities", "ids": "|".join(ids[i:i + 50]), "props": "labels",
             "languages": "mul|en", "format": "json", "maxlag": 5})
-        req = urllib.request.Request(url, headers={"User-Agent": BOT_USER_AGENT})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            for q, e in json.load(r).get("entities", {}).items():
-                lab = e.get("labels", {})
-                v = (lab.get("mul") or lab.get("en") or {}).get("value", "")
-                if v:
-                    out[q] = v
+        for q, e in _fetch_json(url, BOT_USER_AGENT).get("entities", {}).items():
+            lab = e.get("labels", {})
+            v = (lab.get("mul") or lab.get("en") or {}).get("value", "")
+            if v:
+                out[q] = v
         time.sleep(1)
     return out
+
+
+def sparql_qids(path):
+    """Every item a SPARQL query returns, in any column, from query.wikidata.org."""
+    import json
+    import urllib.parse
+    import urllib.request
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from bot_identity import BOT_USER_AGENT
+    query = pathlib.Path(path).read_text(encoding="utf-8")
+    url = "https://query.wikidata.org/sparql?" + urllib.parse.urlencode(
+        {"query": query, "format": "json"})
+    req = urllib.request.Request(url, headers={"User-Agent": BOT_USER_AGENT or
+                                               "genealogy-reverse-pipeline/1.0"})
+    with urllib.request.urlopen(req, timeout=300) as r:
+        got = json.load(r)
+    out = set()
+    for b in got.get("results", {}).get("bindings", []):
+        for v in b.values():
+            val = v.get("value", "")
+            if v.get("type") == "uri" and "/entity/Q" in val:
+                out.add(val.rsplit("/", 1)[-1])
+    return out
+
+
+def live_relations(qids):
+    """`(qid, cols)` rows like `read_rows`, read live, for items the committed table lacks."""
+    import json
+    import time
+    import urllib.parse
+    import urllib.request
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from bot_identity import BOT_USER_AGENT
+    ids = sorted(qids)
+    for i in range(0, len(ids), 50):
+        url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({
+            "action": "wbgetentities", "ids": "|".join(ids[i:i + 50]), "props": "claims",
+            "format": "json", "maxlag": 5})
+        ents = _fetch_json(url, BOT_USER_AGENT).get("entities", {})
+        for q, e in sorted(ents.items()):
+            claims = e.get("claims", {})
+
+            def ids_of(prop):
+                out = []
+                for c in claims.get(prop, []):
+                    v = c.get("mainsnak", {}).get("datavalue", {}).get("value")
+                    if isinstance(v, dict) and v.get("id"):
+                        out.append(v["id"])
+                return out
+            yield q, {"p22": ids_of("P22"), "p25": ids_of("P25"), "p40": ids_of("P40"),
+                      "p26": ids_of("P26"), "p3373": ids_of("P3373")}
+        time.sleep(1)
 
 
 def walk_from(seed, walk, cap, couples, qid_geni):
@@ -269,6 +338,11 @@ def walk_from(seed, walk, cap, couples, qid_geni):
             queue.extend((x, False) for x in sorted(partners[n]))
         else:
             queue.extend((x, True) for x in sorted(parents[n] | children[n] | partners[n]))
+    return got, restrict(couples, got)
+
+
+def restrict(couples, got):
+    """The families among `got`: a couple both of whose named parents are in it."""
     kept = {k: {c for c in v if c in got} for k, v in couples.items()
             if (not k[0] or k[0] in got) and (not k[1] or k[1] in got)
             and (k[0] in got or k[1] in got)}
@@ -282,7 +356,7 @@ def walk_from(seed, walk, cap, couples, qid_geni):
             by_parent[m] |= v
     kept = {k: v for k, v in kept.items()
             if (k[0] and k[1]) or not v <= by_parent[k[0] or k[1]]}
-    return got, kept
+    return kept
 
 
 def main() -> int:
@@ -303,8 +377,27 @@ def main() -> int:
     ap.add_argument("--seed", help="QID to export around, e.g. Q660913")
     ap.add_argument("--walk", choices=("Ancestors", "Descendants", "Forest"), default="Forest")
     ap.add_argument("--max", type=int, default=5000, help="people cap, as Geni's export")
+    # ⛔ **THE REVERSE PIPELINE.** `queue.md`, 2026-09-26: query Wikidata with SPARQL to find
+    # individuals and build GEDCOMs from them. The query picks the people (every item it returns,
+    # in any column); their family links come from the committed relations table, read live for
+    # anyone it does not hold. Written like a `--seed` export: a NEW file under exports/wikidata/.
+    ap.add_argument("--sparql", help="file holding a SPARQL query; its items are the people")
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
+    selected = set()
+    if args.sparql:
+        selected = sparql_qids(args.sparql)
+        print("--sparql %s: %d items" % (args.sparql, len(selected)), flush=True)
+        if not selected:
+            print("REFUSING: the query returned no items")
+            return 1
+        args.with_content = True
+        if args.out == str(OUT):
+            args.out = str(ROOT / "exports" / "wikidata" / (
+                "export-SPARQL-%s.ged" % pathlib.Path(args.sparql).stem))
+        if pathlib.Path(args.out).exists():
+            print("REFUSING: %s exists -- a new export is always a new file" % args.out)
+            return 1
     if args.seed:
         args.with_content = True
         if args.out == str(OUT):
@@ -319,9 +412,20 @@ def main() -> int:
     print("%d qids carry a P2600 (%d profiles); %d sexes known from our tree"
           % (len(qid_geni), sum(len(v) for v in qid_geni.values()), len(our_sex)), flush=True)
 
+    extra = []
+    if selected:
+        held = {q for q, _c in read_rows(RELATIONS)}
+        extra = list(live_relations(selected - held))
+        print("%d of them read live (not in the committed relations table)" % len(extra),
+              flush=True)
+
+    def all_rows():
+        yield from read_rows(RELATIONS)
+        yield from extra
+
     # PASS 1 -- sex from the file itself. Anybody's P22 is male, anybody's P25 is female.
     wd_sex = {}
-    for _, cols in read_rows(RELATIONS):
+    for _, cols in all_rows():
         for q in cols["p22"]:
             wd_sex[q] = "M"
         for q in cols["p25"]:
@@ -347,7 +451,7 @@ def main() -> int:
     people = set()
     n_sib = slot_guessed = 0
 
-    for qid, cols in read_rows(RELATIONS):
+    for qid, cols in all_rows():
         mine = nodes(qid)
         people.update(mine)
         n_sib += len(cols["p3373"])
@@ -444,6 +548,11 @@ def main() -> int:
               % (sum(1 for p in in_fams if p.startswith("Q") and len(in_fams[p]) <= 1),
                  len(edgeless)), flush=True)
 
+    if selected:
+        got = {n for q in selected for n in nodes(q)}
+        people, couples = got, restrict(couples, got)
+        print("--sparql: %d people, %d families among them" % (len(people), len(couples)),
+              flush=True)
     if args.seed:
         people, couples = walk_from(args.seed, args.walk, args.max, couples, qid_geni)
         print("--seed %s --walk %s: %d people, %d families (cap %d)"
@@ -488,8 +597,8 @@ def main() -> int:
         wd_name, wd_born, wd_died = load_content(
             LABELS, DATES, {p for p in people if p.startswith("Q")})
         # A per-person export stands alone, so its Geni-keyed people are named too (from their item).
-        geni_qid = {g: q for q, gs in qid_geni.items() for g in gs} if args.seed else {}
-        if args.seed and not LABELS.exists():
+        geni_qid = {g: q for q, gs in qid_geni.items() for g in gs} if (args.seed or selected) else {}
+        if (args.seed or selected) and not LABELS.exists():
             wanted = {p for p in people if p.startswith("Q")}
             wanted |= {"Q" + geni_qid[p][1:] for p in people if p in geni_qid}
             wd_name.update(live_labels(wanted))
@@ -527,7 +636,7 @@ def main() -> int:
                 n_qid += 1
             else:
                 fh.write("1 RFN geni:%s%s" % (node, NL))
-                if args.seed and wd_name.get(node):
+                if (args.seed or selected) and wd_name.get(node):
                     fh.write("1 NAME %s%s" % (wd_name[node].replace("/", " ").strip(), NL))
                     n_named += 1
                 n_geni += 1
