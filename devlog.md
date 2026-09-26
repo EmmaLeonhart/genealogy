@@ -47992,3 +47992,28 @@ of its `## stuff to do today` with that evidence (`79ebdfa9c` there). The classi
 push and the launch; both were authorized explicitly through AskUserQuestion and then done. The
 session was started with `Start-Process explorer.exe` on its `startclaude.bat`, which carries the
 standard boot prompt.
+
+## 2026-09-26 — shintowiki-scripts' editing pacing, compared and adopted
+
+Read `modern-quickstatements/direct_daily_edits.py` in shintowiki-scripts against
+`scripts/wikidata-edit-run.py`. Its editor made 497 of 501 edits on 2026-09-25.
+
+| shintowiki | here |
+| --- | --- |
+| random 20-50 s between edits | already adopted 2026-09-24 (`MIN_GAP`, `MAX_GAP`) |
+| stop the run on the first 429; the rest retry next run | already adopted (`RATE_LIMITED`) |
+| random order across the day's lines | already here (`genimerge.editorder`) |
+| 2 s between the halves of a paired edit | already here (`--delay` 2.0 between sub-calls) |
+| 500 a day, sized to GitHub's 6 h job kill | **adopted** in `d47496f4d5`: `MAX_EDITS_PER_RUN` 1000 -> 500 |
+| one run a day | already here (the 08:07 cron) |
+| `bot=1` | **not adopted**: this account is not in the `bot` group, and the flag made every attachment `permissiondenied` (run 35381709519) |
+
+Creation is unchanged. The schedule already passed `limit=500`, so the only change in behaviour is
+that a hand dispatch can no longer ask for more than fits in six hours.
+
+While checking, the scheduled edit run 36243640877 turned out to have sent nothing: the patronymic
+pairs appended on 2026-09-26 duplicated two name-item creations, and the pre-send guard stopped the
+run. Fixed in `961601d99b`.
+
+This entry and the queue deletion are a separate commit from `d47496f4d5` because a failed
+`git pull` short-circuited the `&&` chain that should have carried them.
