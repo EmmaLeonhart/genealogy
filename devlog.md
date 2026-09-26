@@ -47754,3 +47754,13 @@ pacing: its first line, a create, was refused on maxlag for the full 900 s budge
 lag the noticeboard thread was about, and the run was cancelled at 20:45 UTC. The four scheduled
 runs before it (2026-09-21 to -24) failed. The workflows are enabled again, so the queue item now
 waits on the scheduled 08:07 UTC run of 2026-09-26.
+
+## 2026-09-25 — the Kruto item off the queue: it held facts, not work
+
+`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H` are Emma's own investigation. The item's
+only job was to hold the identifiers and what the tree says, and they are held in
+`docs/queue-archive/queue-before-2026-09-24-rewrite.md` lines 695-822: Kruto `P2600`
+`6000000007690981645` (no parents or children on Wikidata; `Crito von Rügen` in the tree), his
+mother `Slavina von Rügen` `6000000059830466964` and wife `Slawina von Rügen` `Q111239463`, one
+letter apart, and `MBW7-P7H` = Inger Axelsdatter Güntersberg `Q141493478`. Per the queue's own
+rule (non-actions go in `docs/queue-archive/`), the item is removed; nothing is lost.

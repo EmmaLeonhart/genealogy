@@ -13,9 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
-  here is only to hold the identifiers and what the tree says (the archived queue has both).
-
 - build a gedcom exporter from wikidata
 - **Review what actually happened on Wikidata's Administrators' noticeboard.** Research it and determine the course of action.
 - **Check out the RootsMagic GEDCOM exports.** The earlier FamilySearch GEDCOM export failed to get a lot of individuals, so a RootsMagic export should be better. If access to it can be gained, use it.
