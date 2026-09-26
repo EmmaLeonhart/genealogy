@@ -48229,3 +48229,29 @@ Trial on the 25 most-used strings (`reports/place-qids.tsv`, seeded with it): 8 
 `Bø`). It took 21 minutes, partly because it ran beside other Wikidata calls, so `pipeline.yml` runs
 it with `--budget 40` under a 25-minute step cap. It grows the cache and emits no edit; turning
 the mapping into `P19`/`P20` statements is the queued "our interpretation as the value" item.
+
+## 2026-09-26 — Alfheid: how she was duplicated, and who else was
+
+**What happened.** On 2026-09-25 at 12:32 UTC a pasted QuickStatements batch
+(`temporary_batch_1790336415532`) created `Q141556503` *Alvhild Tumesdatter* from Geni profile
+`6000000227816516922`. It had `P26` spouse on both `Q141499439` *Álfheiði Tumisdottir* (the same
+woman, already created on 2026-09-19 from Geni `6000000032057186093`) and her real husband
+Ingemund Grimsson (`Q141499443`), and its description read "Alvhild, wife of Álfheiði Tumisdottir".
+Five minutes later the account removed the cross-link and merged it into `Q141499439`.
+
+**Why.** Geni held two profiles for one woman: the original, and one in the `60000002278…` id range
+that Geni issued this month. Our tree keeps both, as the rule says (if Geni holds two, we hold
+two), so the second was composed as a new person. What made it odd is that in the tree the two
+profiles were also linked to each other as spouses, which produced the "wife of" description and
+the `P26`. Today's tree gives `6000000227816516922` no family links at all, so Geni has since
+resolved it, and the merge on Wikidata matches that.
+
+**The privileged directory.** No directory is named that: in this repo's rules "privileged" is a
+property of the corpus and of exports that skip the presence check. So whether one was read with
+the right priority could not be checked as asked; the evidence points at Geni's duplicate profile,
+not at a read order.
+
+**Anyone else.** 57 ledger items are paired with Geni profiles in that recent id range. Checked live,
+one more was merged away: `Q141524083` *wife of Sigurd Onarheim*, now `Q141517313`. So 2 of 57, and
+Emma's reading of Alfheid as a near-isolated case holds. No code change: creating one item per Geni
+profile is the rule, and the merges were the right correction.
