@@ -669,9 +669,10 @@ PATRONYMIC_PARTICLE = frozenset({
 #: `Turesson (Bielke)`, `Weirman (Weyerman)`, `Levine (?)`.
 PAREN = re.compile(r"^\((.+)\)$")
 
-#: **Particles and honorifics go into the LABEL and never become items**, ruled 2026-08-26:
-#: they are parts of the `mul` label, because they are integral parts of what the people are
-#: called. The nine bracketed ones are the whole bracketed population measured in
+#: **Particles and honorifics go into the LABEL**, ruled 2026-08-26: they are parts of the
+#: `mul` label, because they are integral parts of what the people are called. ⛔ **And since
+#: 2026-09-26 a nobiliary particle is part of the FAMILY NAME item too** -- see
+#: `NOBILIARY_PARTICLE` and `join_nobiliary`; `de Geer` is one name, not `Geer`. The nine bracketed ones are the whole bracketed population measured in
 #: `reports/paren-tokens.md`; the unbracketed forms are far commoner -- bare `de` occurs
 #: **125,328** times and bare `von` 60,951 -- and until now every one of them became a `P734`
 #: *family name* lookup of its own.
@@ -1771,6 +1772,36 @@ def join_particles(tokens: list[str]) -> list[str]:
         i += 1
     return out
 
+
+
+#: ⛔ **A NOBILIARY PARTICLE IS PART OF THE FAMILY NAME.** Ruled 2026-09-26, reversing the
+#: 2026-08-26 reading that particles go into the label and never into an item: *"the particles
+#: are part of the name."* So `de Geer` is the family name `de Geer`, not `Geer`, and
+#: `van der Noot` is one name. The label always kept them; now the `P734` item does too.
+NOBILIARY_PARTICLE = {"von", "van", "vander", "de", "d.", "du", "des", "del", "della", "der",
+                      "den", "di", "da", "das", "dos", "af", "av", "zu", "zur", "ter", "ten",
+                      "le", "la"}
+
+
+def join_nobiliary(tokens: list[str]) -> list[str]:
+    """`['van', 'der', 'Noot']` -> `['van der Noot']`: a run of particles joins the name after it.
+
+    Used on the SURNAME fields only, where a particle opens the family name; in `GIVN` the same
+    words are connectives and stay apart. A trailing particle with nothing after it is left alone.
+    """
+    out: list[str] = []
+    i = 0
+    while i < len(tokens):
+        j = i
+        while j < len(tokens) and tokens[j].strip(",").casefold() in NOBILIARY_PARTICLE:
+            j += 1
+        if j > i and j < len(tokens):
+            out.append(" ".join(tokens[i:j + 1]))
+            i = j + 1
+            continue
+        out.append(tokens[i])
+        i += 1
+    return out
 
 def _bare_word(token: str) -> str:
     """The token stripped of the punctuation Geni wraps these in.
@@ -3043,7 +3074,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     surn_field = _unwrap_surn(surn or "")
     surn_tokens = join_compound_surname(
         [t for t in re.split(r"\s+", surn_field.strip()) if t])
-    for raw in join_particles(surn_tokens):
+    for raw in join_particles(join_nobiliary(surn_tokens)):
         token, shape = name_shape(raw)
         # ⛔ **A LONE LETTER IN A SURNAME FIELD IS NEVER A FAMILY NAME.** Reported 2026-09-24,
         # after the batch created `N.` as a family-name item twice and was killed by hand:
@@ -3064,7 +3095,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
 
     married = " ".join((marnm or "").split())
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
-        for raw in married.split():
+        for raw in join_nobiliary(married.split()):
             token, shape = name_shape(raw)
             if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
                 out.append((token, "unknown", 0))
@@ -3269,6 +3300,11 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # separate "married" kind.
         lookup = "family" if usage == "married" else usage
         qid, action = plan.get((token, lookup), ("", "not in the plan"))
+        # A token the plan has never seen can still have an item: `von Linné` is `Q111584388`,
+        # and since particles joined the family name (2026-09-26) the plan's stems no longer
+        # match those tokens at all. `store_name_item` reads our created items and the store.
+        if not qid and action == "not in the plan":
+            qid = store_name_item(token, lookup)
         if not qid:
             notes.append(f"{token} ({usage}): {action or 'no item'}")
             continue

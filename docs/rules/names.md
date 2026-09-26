@@ -1182,12 +1182,19 @@ from the raw records.
 | shape | example | tokens / occurrences | ruling |
 | --- | --- | ---: | --- |
 | **any name-shaped token** | `Turesson (Bielke)`, `Weirman (Weyerman)` | 2,478 / 5,553 | **BOTH** — a second `P734` *family name* with the parens stripped, **coequal and unqualified**, plus an `Amul` alias carrying the bracketed form |
-| **particle or honorific** | `(de) Worms`, `Henriques (D.)` | 9 / 205 | **into the `mul` label**, never a name item |
+| **particle or honorific** | `(de) Worms`, `Henriques (D.)` | 9 / 205 | **into the `mul` label**; a nobiliary particle is also part of the family name item (2026-09-26) |
 | **unknown-name marker** | `(anonyma)`, `(incognita)`, `(?)` | 8 / 108 | **an NN marker** — joins `Private`/`NN`/`Ukjent` |
 
 **A particle belongs in the `mul` label**, because it is an integral part of what the people are
-called. So `de` is not dropped and is not an item — it belongs in the label the person is read
-by. `(de)` occurs 97 times and bare `de` 125,328, so this
+called. So `de` is not dropped and is not an item of its own — it belongs in the label the person
+is read by.
+
+**⛔ AND A NOBILIARY PARTICLE IS PART OF THE FAMILY NAME. Ruled 2026-09-26:** *"the particles are
+part of the name."* This used to end *"never a name item"*, and the `P734` pointed at the stem:
+`de Geer` linked `Q28605695` *Geer*. Now `de Geer`, `van der Noot` and `von Öhningen` are one family
+name each (`namemodel.join_nobiliary`, on `SURN` and `_MARNM` only). 181,903 people carry one, over
+28,728 distinct names, 3,461 of which already had an item on 2026-09-26; the name-item creator finds
+or creates the rest at its usual cap. `(de)` occurs 97 times and bare `de` 125,328, so this
 governs a large population beyond the parenthesised ones.
 
 **Nothing tells a noble house from a spelling variant, and nothing needs to.** The two shapes

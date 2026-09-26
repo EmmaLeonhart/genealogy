@@ -1545,3 +1545,26 @@ def test_the_ae_genitive_is_a_patronymic_only_with_the_father(givn, surn, father
 def test_a_title_cut_keeps_the_persons_own_particle_surname(label, surn, expected):
     cut = namemodel.drop_label_title(label)
     assert namemodel.keep_own_surname(label, cut, surn) == expected
+
+
+# --- a nobiliary particle is part of the family name (ruled 2026-09-26) ------
+
+@pytest.mark.parametrize("surn, family", [
+    ("de Geer", "de Geer"),
+    ("van der Noot", "van der Noot"),
+    ("von Öhningen", "von Öhningen"),
+])
+def test_a_particle_joins_the_family_name(surn, family):
+    tokens = namemodel.classify_fields("Anna", surn)
+    assert (family, "family", 0) in tokens
+    assert not any(t in ("de", "van", "der", "von") for t, _u, _o in tokens)
+
+
+def test_a_married_particle_name_is_one_name():
+    tokens = namemodel.classify_fields("Maria", "Olsdatter", "", "von Arnim")
+    assert ("von Arnim", "married", 0) in tokens
+
+
+def test_a_patronymic_particle_is_untouched():
+    tokens = namemodel.classify_fields("Abisha", "ben Phinhas")
+    assert ("ben Phinhas", "patronymic", 0) in tokens

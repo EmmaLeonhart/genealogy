@@ -48095,3 +48095,22 @@ started, and it is not the workflow that generates the working QuickStatements. 
 `scripts/_batch_page.html` now opens `pipeline.yml`, which composes the batch and publishes this
 page. The text says to tick `force` when the account has not edited in six hours, and that sending
 is the daily edit run's job. `redo-everything.yml` itself is left in place and is no longer linked.
+
+## 2026-09-26 — particles are part of the family name
+
+Ruled 2026-09-26: *"the particles are part of the name."* This corrects my report earlier the same
+day and the names rule it quoted ("never a name item"). The `P734` used to point at the stem:
+`de Geer` linked `Q28605695` *Geer*.
+
+- `namemodel.join_nobiliary()` joins a run of nobiliary particles to the name after it, in `SURN`
+  and `_MARNM` only. So `de Geer`, `van der Noot`, `von Öhningen` and married `von Arnim` are one
+  family name each. Patronymic particles (`ben Phinhas`) are untouched: they have `join_particles`.
+- `statements_for` now asks `store_name_item` for a token the plan has never seen, so `von Linné`
+  links `Q111584388`.
+- The reach, measured over `display-names.csv`: 181,903 people carry a particle surname, over
+  28,728 distinct joined names. 3,461 of those names already have an item (26% of occurrences).
+  For the rest, `build-garborg-name-items.py` classifies through the same function and checks
+  the store, the bearers and live Wikidata before creating, at its usual cap. Until then those
+  people carry no family-name link rather than the stem.
+- The names rules page (the parenthesised-name table and its paragraph) and the `PARTICLES`
+  comment were changed with the code. Tests pin the joins and the untouched patronymic particle.
