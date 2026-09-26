@@ -208,7 +208,10 @@ start it.
 **The pasted half stays. Ruled 2026-09-25:** asked whether to stop publishing the batch for
 pasting (the Pages page and the Daily batch issue), the answer was *keep both*. The sender sends
 the rationed `-auto` share; the Pages page and the Daily batch issue keep handing over the whole
-batch for QuickStatements.
+batch for QuickStatements. **The overlap is allowed on purpose, and descriptions are why** (Emma, same
+day: *"the reason we are doing descriptions is to allow for overlap"*): a creation carries a
+description, and Wikidata refuses a second item with the same label and description, so a
+person both pasted and sent is created once.
 
 ## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
 
