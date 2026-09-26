@@ -1159,6 +1159,10 @@ def drop_label_title(label: str) -> str:
 FARM_OPENERS = TERRITORIAL_OPENERS - {"of"}
 
 
+#: The lower-case particles that open a family name: `von Arnim`, `de Ponthieu`, `van Leuven`.
+NOBILIARY_PARTICLES = {"von", "van", "zu", "de", "du", "des", "der", "da", "di", "af"}
+
+
 def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = "") -> str:
     """Put back a farm surname the title rule cut away, when it leaves a bare given name.
 
@@ -1197,6 +1201,19 @@ def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = ""
     if len(truncated.split()) != 1 or not label.startswith(truncated):
         return truncated
     parts = label[len(truncated):].strip().lstrip(",").strip().split()
+    # **A NOBILIARY SURNAME AFTER A TITLE IS THE FAMILY NAME.** Found 2026-09-26 on
+    # `Q141550395`, created as bare `Hemma` and corrected by hand to `Hemma von Öhningen`. Geni
+    # files her `Hemma Countess of /von Öhningen/`: the title sits in `GIVN` and her own `SURN`
+    # is the particle name, so the tail the title rule cuts ends with her family name. Kept when
+    # the cut leaves one token and the tail ENDS with her own `SURN`/`_MARNM` opening with a
+    # particle -- `Rosemarie Baroness von Arnim`, `Walram count von Jülich`, `Marie Comtesse de
+    # Ponthieu`. `Judith of Flanders` is untouched: her record files no surname.
+    tail = " ".join(parts)
+    for own in (surn, marnm):
+        own = " ".join((own or "").split()).rstrip(",")
+        if (len(own.split()) > 1 and own.split()[0] in NOBILIARY_PARTICLES
+                and tail.endswith(own) and tail != own):
+            return f"{truncated} {own}"
     if len(parts) < 2 or parts[0].casefold() not in FARM_OPENERS:
         return truncated
     rest = " ".join(parts[1:])

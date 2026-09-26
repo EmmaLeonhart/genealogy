@@ -47943,3 +47943,21 @@ Run offline against the committed plan: 40 pairs (the cap), most-borne first (`J
 `Helgesson` is now eligible and comes as the larger ones drain. `build-patronymic-pairs.py` is
 stored as a zlib/base64 blob; it was decoded, edited and repacked, and the round trip is
 byte-identical.
+
+## 2026-09-26 — the two weird creations: a title cut that took a particle surname
+
+`Q141550395` and `Q141550315` were created on 2026-09-24 labelled **`Hemma`** and **`Berge`**,
+read from the first revision of each. Both labels were corrected by hand on 2026-09-25 (`Hemma
+von Öhningen`, `Gunnhild Persdatter Berge`) and are correct live, so the items needed no edit.
+
+- **`Hemma`**: Geni files her `Hemma Countess of /von Öhningen/`, with the title in `GIVN`.
+  `drop_label_title` cut `Countess of von Öhningen` as a territorial tail and left a bare given
+  name. `keep_own_surname` already rescued that shape, but only for a farm tail (`Ånon i Byre`).
+  It now also keeps the person's own `SURN`/`_MARNM` when the cut leaves one token, the tail ends
+  with it, and the name opens with a particle (`von`, `van`, `zu`, `de` ...). Measured over
+  `display-names.csv`: 292 people move, for example `Rosemarie von Arnim`, `Walram von Jülich`,
+  `Marie de Ponthieu`. `Judith of Flanders` stays `Judith` because her record has no surname.
+  Test added.
+- **`Berge`**: the married-name branch with no given tokens made the label the bare surname, and
+  the maiden-name swap gave `Berge`. This is the `Talgje` defect, which already has a guard
+  (2026-09-25). The current code builds `Gunnhild Berge`, with `Gunnhild Underberge` as the alias.

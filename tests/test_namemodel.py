@@ -1528,3 +1528,20 @@ def test_the_ae_genitive_is_a_patronymic_only_with_the_father(givn, surn, father
         assert got.get(token) != "patronymic"
     else:
         assert got[token] == kind
+
+
+# --- a particle surname after a title ----------------------------------------
+
+@pytest.mark.parametrize("label, surn, expected", [
+    # `Q141550395`, created as bare `Hemma` on 2026-09-24 and corrected by hand.
+    ("Hemma Countess of von Öhningen", "von Öhningen", "Hemma von Öhningen"),
+    ("Rosemarie Baroness von Arnim", "von Arnim", "Rosemarie von Arnim"),
+    ("Marie Comtesse de Ponthieu", "de Ponthieu", "Marie de Ponthieu"),
+    # No surname on the record: the territorial rule stands.
+    ("Judith of Flanders", "", "Judith"),
+    # The farm rescue is unchanged.
+    ("Ånon i Byre", "Byre", "Ånon Byre"),
+])
+def test_a_title_cut_keeps_the_persons_own_particle_surname(label, surn, expected):
+    cut = namemodel.drop_label_title(label)
+    assert namemodel.keep_own_surname(label, cut, surn) == expected
