@@ -47835,3 +47835,11 @@ The move above was wrong: `rootsmagic/` is Emma's working folder (`second_attemp
 edited in RootsMagic now). The move was index-only (a sparse checkout; the `.rmtree` was never
 touched), but the file is back at `rootsmagic/potentially_corrupted_file.ged` as she left it. It
 is not fed to the FamilySearch pipeline until she says how.
+
+## 2026-09-25 — the RootsMagic export copied into the FamilySearch inputs
+
+Emma: copy it, don't move it. A byte-identical copy of `rootsmagic/potentially_corrupted_file.ged`,
+written from the committed blob so nothing in `rootsmagic/` was read or touched, is at
+`gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-25.ged`. The bridge, the renderer and the zipper
+read it from there on the next `tree.yml` run: 29,073 people, 22,417 of them not in the
+`getmyancestors` downloads.
