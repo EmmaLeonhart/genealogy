@@ -48150,3 +48150,9 @@ descends from them; none descends from a paternal ancestor, which points at miss
 Most export campaigns are seeded outside the owner's ancestry. The per-source sum came up 253,482
 short, which traced to a merge-report defect (`6a06af2298`): shared file names overwrote each
 other's counts.
+
+## 2026-09-26 — four notes filed in todo.md as context
+
+Chinese surnames and their bottlenecks, shrines.order.life with temples.order.life redirecting,
+a religious-buildings database beyond Wikidata, and every deity as having a genealogy. Filed under
+"Context for later, not work now", as the item asked, and nothing was started.

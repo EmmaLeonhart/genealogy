@@ -875,3 +875,12 @@ works: a class is pointed at as a class **and** carries no genealogy of its own.
 
 Added 2026-09-17 by instruction. Written down and not investigated — § *"Add it to the end of
 the queue" means WRITE IT DOWN AND STOP*.
+
+## Context for later, not work now (filed 2026-09-26)
+
+Filed from the queue as context, on Emma's instruction; none of this is to be started yet.
+
+- **Chinese surnames and their bottlenecks**, for the Gaiad writing.
+- **shrines.order.life** for the Shinto wiki scripts, with **temples.order.life** redirecting there.
+- **A religious-buildings database beyond Wikidata.**
+- **Every deity treated as having a genealogy.**
