@@ -48137,3 +48137,5 @@ submodule, the RootsMagic extraction and the comprehensive order.life pass go to
 queue, in that order. The RootsMagic work had only read `.gitignore` and a private temp copy of the
 committed `.rmtree`, taken from git, which is now deleted. `rootsmagic/second_attempt.rmtree` is
 git-ignored (`.gitignore:661 *.rmtree`), as expected.
+- The French-ancestry item follows them to the very end, on Emma's ruling the same day: it reads
+  the RootsMagic ancestors.
