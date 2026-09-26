@@ -354,13 +354,29 @@ def merge_files(
         prev = places.get(gid, ("", ""))
         places[gid] = (birth or prev[0], death or prev[1])
 
+    # **A file name is only a report key when it is unique.** 530 names were shared by 1,064
+    # exports on 2026-09-26 (the same `export-Descendants-<seed>.ged` in two campaign folders),
+    # and `report.new_records[name]` let the second overwrite the first: the per-source table summed
+    # to 1,997,411 new people against 2,250,893 merged. Those few now carry their path; every
+    # unique name reads exactly as before. The merged tree was never affected -- records are keyed
+    # on the Geni id, not the file.
+    _names = Counter(p.name for p in paths)
+
+    def _label(path):
+        if _names[path.name] == 1:
+            return path.name
+        try:
+            return path.resolve().relative_to(Path.cwd().resolve()).as_posix()
+        except ValueError:
+            return path.as_posix()
+
     for path in paths:
         records = gedcom.stream_file(path)
         if connectivity:
             records = slim_mod.prune_stream(records, slim_mod.CONNECTIVITY_TAGS)
         elif slim:
             records = slim_mod.prune_stream(records, places=_place)
-        merger.add_source(path.name, records)
+        merger.add_source(_label(path), records)
     # Hung on the report rather than returned, because `merge_files` has two callers that
     # unpack exactly two values and a third element would break the one that writes nothing.
     merger.report.places = places

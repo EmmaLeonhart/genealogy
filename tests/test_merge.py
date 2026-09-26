@@ -369,3 +369,22 @@ def test_single_valued_paths_are_measured_from_the_files(tmp_path):
     assert "INDI.SEX" in paths
     assert "INDI.BIRT.DATE" in paths
     assert "INDI.NAME" not in paths  # seen twice under one INDI
+
+
+def test_two_exports_with_one_file_name_are_counted_separately(tmp_path):
+    """530 file names were shared by 1,064 exports on 2026-09-26, and the per-source table let
+    the second overwrite the first: it summed to 1,997,411 new people against 2,250,893 merged."""
+    (tmp_path / "a").mkdir()
+    (tmp_path / "b").mkdir()
+    (tmp_path / "a" / "export-Descendants-1.ged").write_text(
+        "0 HEAD\n0 @I1@ INDI\n1 NAME A /X/\n0 TRLR\n", encoding="utf-8")
+    (tmp_path / "b" / "export-Descendants-1.ged").write_text(
+        "0 HEAD\n0 @I2@ INDI\n1 NAME B /Y/\n0 @I3@ INDI\n1 NAME C /Z/\n0 TRLR\n", encoding="utf-8")
+    (tmp_path / "b" / "unique.ged").write_text(
+        "0 HEAD\n0 @I4@ INDI\n1 NAME D /W/\n0 TRLR\n", encoding="utf-8")
+    paths = [tmp_path / "a" / "export-Descendants-1.ged",
+             tmp_path / "b" / "export-Descendants-1.ged", tmp_path / "b" / "unique.ged"]
+    _doc, report = merge.merge_files(paths)
+    assert len(report.new_records) == 3
+    assert sum(c["INDI"] for c in report.new_records.values()) == report.totals["INDI"] == 4
+    assert "unique.ged" in report.new_records
