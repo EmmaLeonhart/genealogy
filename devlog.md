@@ -48194,3 +48194,5 @@ look-ups wait out a 429.
 Tried on `Elizabeth II + her P40 children`, written to a temp file (not `exports/`): 5 people, 1
 family (her as `WIFE`, four `CHIL`), all five named. Birth and death years are filled only where
 the offline store is present, which it is not locally; the CI runners have it.
+- The two further order.life items (merge its `genealogy` branch into `master`, then write this
+  repo's handoff directory there) follow the other order.life items to the end, under the same ruling.
