@@ -47960,4 +47960,5 @@ von Öhningen`, `Gunnhild Persdatter Berge`) and are correct live, so the items 
   Test added.
 - **`Berge`**: the married-name branch with no given tokens made the label the bare surname, and
   the maiden-name swap gave `Berge`. This is the `Talgje` defect, which already has a guard
-  (2026-09-25). The current code builds `Gunnhild Berge`, with `Gunnhild Underberge` as the alias.
+  (2026-09-25). Everyone has been labelled under the married name since 2026-09-25, so the current code
+  builds `Gunnhild Underberge`, with `Gunnhild Berge` as the alias.
