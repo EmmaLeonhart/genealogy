@@ -1803,6 +1803,45 @@ def join_nobiliary(tokens: list[str]) -> list[str]:
         i += 1
     return out
 
+
+_ABBREVIATED = None
+
+
+def expand_abbreviated(text: str, geni_id: str) -> str:
+    """`Guri Pedersdtr. Foss` -> `Guri Pedersdatter Foss`, per person, from the census.
+
+    `reports/abbreviated-patronymics.csv` (`scripts/census-abbreviated-patronymics.py`) decides
+    each person's `-dtr` as `-datter` or `-dotter` and records why. **The rule lives here so both
+    emitters apply it** (CLAUDE.md § *A GUARD IN ONE EMITTER IS NOT A GUARD*). Until 2026-09-26
+    only the label was expanded, so the name model still read `Tørresdtr.`: `Q141550288` got no
+    `P5056` at all, and the name-item creator minted `Alvsdtr.` (`Q141456302`) and `Rasmusdtr.`
+    (`Q141442244`) as patronymic items.
+    """
+    global _ABBREVIATED
+    if _ABBREVIATED is None:
+        _ABBREVIATED = {}
+        path = ROOT / "reports" / "abbreviated-patronymics.csv"
+        if path.exists():
+            with open(path, encoding="utf-8") as fh:
+                for row in csv.DictReader(fh):
+                    _ABBREVIATED.setdefault(row["geni_id"], []).append(
+                        (row["token"].rstrip("."), row["expansion"]))
+    out = text or ""
+    for token, expansion in _ABBREVIATED.get(geni_id, ()):
+        for form in (token + ".", token):
+            if form in out:
+                out = out.replace(form, expansion)
+                break
+    return " ".join(out.split())
+
+
+def expand_abbreviated_fields(fields: dict, geni_id: str) -> dict:
+    """The same expansion over a person's `givn`/`surn`/`marnm`, for the name model."""
+    if not fields:
+        return fields
+    return {**fields, **{k: expand_abbreviated(fields[k], geni_id)
+                         for k in ("givn", "surn", "marnm") if fields.get(k)}}
+
 def _bare_word(token: str) -> str:
     """The token stripped of the punctuation Geni wraps these in.
 

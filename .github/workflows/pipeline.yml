@@ -261,6 +261,16 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-description-audit.py
 
+      # ⛔ **BEFORE THE COMPOSE, and every run.** The census of abbreviated patronymics (`-dtr`
+      # -> `-datter`/`-dotter`, per person) was a one-off snapshot, so everyone added after it
+      # kept `Tørresdtr.`: `Q141550288` got no `P5056`, and `Alvsdtr.`/`Rasmusdtr.` were created
+      # as name items (found 2026-09-26). Both emitters read it through `namemodel`.
+      - name: Census of abbreviated patronymics
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/census-abbreviated-patronymics.py
+
       - name: Ledger refresh and QuickStatements rebuild
         env:
           BOT_CONTACT: emma@topazcomputing.com

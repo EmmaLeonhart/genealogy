@@ -2282,7 +2282,6 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     return head + lines
 
 
-_ABBREV_EXPANSIONS = None
 
 
 def expand_abbreviations(label, geni_id):
@@ -2307,23 +2306,10 @@ def expand_abbreviations(label, geni_id):
     Only **11** of the 10,923 are on people who already hold a Wikidata item, so this changes
     almost nothing today and everything about what future creations look like.
     """
-    global _ABBREV_EXPANSIONS
-    if _ABBREV_EXPANSIONS is None:
-        _ABBREV_EXPANSIONS = {}
-        path = ROOT / "reports" / "abbreviated-patronymics.csv"
-        if path.exists():
-            for row in csv.DictReader(path.open(encoding="utf-8")):
-                _ABBREV_EXPANSIONS.setdefault(row["geni_id"], []).append(
-                    (row["token"], row["expansion"]))
-    out = label
-    for token, expansion in _ABBREV_EXPANSIONS.get(geni_id, ()):
-        # The census records the token without a trailing stop; the label may carry one, and
-        # `Pedersdtr.Foss` -- no space -- occurs too, so replace the longest form first.
-        for form in (token + ".", token):
-            if form in out:
-                out = out.replace(form, expansion)
-                break
-    return " ".join(out.split())
+    # The census is read in one place, `namemodel.expand_abbreviated`, so the label and the
+    # name model cannot disagree about a person's patronymic.
+    from namemodel import expand_abbreviated
+    return expand_abbreviated(label, geni_id)
 
 
 #: **`without_nickname` now lives in `scripts/namemodel.py`**, the module that models a name,
@@ -2831,6 +2817,9 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
     the same line: `LAST<TAB>P735<TAB>Q629347<TAB>P1545<TAB>"1"<TAB>P7452<TAB>Q3409033`.
     """
     out, notes = [], []
+    from namemodel import expand_abbreviated, expand_abbreviated_fields
+    label = expand_abbreviated(label, geni_id)
+    fields = expand_abbreviated_fields(fields, geni_id)
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
                                 fields=fields, sex=sex, father_name=father_name,
                                 father_aka=father_aka, father_given=father_given)

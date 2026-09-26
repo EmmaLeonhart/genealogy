@@ -752,6 +752,10 @@ def main():
     # the dict. The father's OWN `givn` and `nick` are the other half of `father_aka` and are
     # only there when he is himself in the batch -- `nick` is where Geni keeps the vernacular
     # form of a Latinised name, which is exactly what the test needs.
+    from namemodel import expand_abbreviated_fields
+    for geni_id in list(fields):
+        # `Alvsdtr.` and `Rasmusdtr.` were created as patronymic items from the raw field.
+        fields[geni_id] = expand_abbreviated_fields(fields[geni_id], geni_id)
     for geni_id, person in fields.items():
         dad = father_of.get(geni_id)
         person["father_name"] = labels_of.get(dad, "") if dad else ""
