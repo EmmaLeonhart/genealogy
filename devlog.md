@@ -47745,3 +47745,12 @@ MENTIONS 日巫女; NO CRON JOBS TO 2026-10-01` was a banner: all-capitals prece
 text with no items. It was also out of date (the hold is suspended to 2026-10-05, and the
 workflows are back on). Removed from `queue.md`. Its ruling, in its current form, is in
 `CLAUDE.md` § *The hard ones*; its history is in this devlog (2026-09-24 and 2026-09-25) and in git.
+
+## 2026-09-25 — the ration/pacing test run sent nothing
+
+Edit run `36054472568` (dispatched 2026-09-24, limit 500, live) never reached the ordering or the
+pacing: its first line, a create, was refused on maxlag for the full 900 s budget
+(`qs-create-a9998d3bb8d3 create FAILED: still lagged after 900s of waiting`), on the day of the WDQS
+lag the noticeboard thread was about, and the run was cancelled at 20:45 UTC. The four scheduled
+runs before it (2026-09-21 to -24) failed. The workflows are enabled again, so the queue item now
+waits on the scheduled 08:07 UTC run of 2026-09-26.

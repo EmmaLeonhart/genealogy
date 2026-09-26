@@ -13,9 +13,11 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **The ration and the pacing, seen working end to end.** Edit run `36054472568` (dispatched
-  2026-09-24, 500, live) is the first test: confirm names -> 30 people -> ring go out in order,
-  20-50 s apart, and what stops it.
+- **The ration and the pacing, seen working end to end (BLOCKED-ON-EXTERNAL: the 08:07 UTC
+  scheduled `wikidata-edits` run of 2026-09-26).** Run `36054472568` (2026-09-24) sent nothing: its
+  first create waited out maxlag for 900 s (`still lagged after 900s of waiting`, the day of the
+  WDQS lag) and the run was cancelled at 20:45. Read the next run's log for: names -> 30 people ->
+  ring going out in that order, 20-50 s apart, and what stops it.
 - **`Q660913` Kruto the Wend and FamilySearch `MBW7-P7H`** are Emma's own investigation. The job
   here is only to hold the identifiers and what the tree says (the archived queue has both).
 
