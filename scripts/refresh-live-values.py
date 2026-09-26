@@ -304,6 +304,59 @@ def main():
     print(f"{len(items):,} whole items -> reports/garborg-live-items-NN.json "
           f"({SHARDS} shards, {size / 1024 / 1024:.1f} MB)")
 
+    name_item_cjk_labels()
+
+
+#: **The name items' own CJK readings, the source of each word's reading.** Ruled 2026-09-14:
+#: the name items carry our CJK-isations and *"should even be the source of it in the logic"*.
+#: `build-garborg-day.label_in` reads this file per word. Labels only, ja/zh/ko, for the name
+#: items the plan knows (~8,000), 50 a request, 3 s apart, `Retry-After` honoured: at 0.5 s
+#: Wikidata answered 429 on 74 of 161 requests (2026-09-25).
+NAME_ITEM_CJK_OUT = ROOT / "reports" / "name-item-cjk-labels.tsv"
+
+
+def name_item_cjk_labels():
+    import time
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+    plan = ROOT / "reports" / "name-item-plan.csv"
+    if not plan.exists():
+        print("no name-item-plan.csv; name item CJK labels not refreshed")
+        return
+    with open(plan, encoding="utf-8", newline="") as fh:
+        qids = sorted({(r.get("existing_qid") or "").strip() for r in csv.DictReader(fh)} - {""})
+    rows, i, waits = [], 0, 0
+    while i < len(qids) and waits < 10:
+        url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({
+            "action": "wbgetentities", "ids": "|".join(qids[i:i + 50]), "props": "labels",
+            "languages": "ja|zh|ko", "format": "json", "maxlag": 5})
+        req = urllib.request.Request(url, headers={"User-Agent": _bot_agent()})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                got = json.load(r).get("entities", {})
+        except urllib.error.HTTPError as e:
+            waits += 1
+            time.sleep(int(e.headers.get("Retry-After") or 60))
+            continue
+        for qid, ent in sorted(got.items()):
+            for lang in ("ja", "zh", "ko"):
+                v = (ent.get("labels", {}).get(lang) or {}).get("value")
+                if v:
+                    rows.append({"qid": qid, "lang": lang, "label": v})
+        i += 50
+        time.sleep(3)
+    if i < len(qids):
+        print(f"name item CJK labels: stopped at {i} of {len(qids)} after repeated 429s; "
+              "the last good file is kept")
+        return
+    with open(NAME_ITEM_CJK_OUT, "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["qid", "lang", "label"], delimiter="	")
+        w.writeheader()
+        w.writerows(rows)
+    print(f"{len(rows):,} name item CJK labels over {len(qids)} items -> "
+          f"{NAME_ITEM_CJK_OUT.resolve().relative_to(ROOT)}")
+
 
 if __name__ == "__main__":
     main()

@@ -2566,6 +2566,46 @@ def _render_token(token):
     return ja, zh, ko
 
 
+_NAME_ITEM_CJK = None
+
+
+def _is_katakana(text):
+    return bool(text) and all("゠" <= ch <= "ヿ" for ch in text)
+
+
+def _is_han(text):
+    return bool(text) and all("一" <= ch <= "鿿" or ch == "·" for ch in text)
+
+
+def _is_hangul(text):
+    return bool(text) and all("가" <= ch <= "힣" or ch == " " for ch in text)
+
+
+def name_item_cjk():
+    """`{token: {lang: label}}` from the name items' live CJK labels, for tokens whose name item
+    is unambiguous. Empty when `reports/name-item-cjk-labels.tsv` is absent."""
+    global _NAME_ITEM_CJK
+    if _NAME_ITEM_CJK is None:
+        _NAME_ITEM_CJK = {}
+        labels_path = ROOT / "reports" / "name-item-cjk-labels.tsv"
+        plan_path = ROOT / "reports" / "name-item-plan.csv"
+        if labels_path.exists() and plan_path.exists():
+            by_qid = collections.defaultdict(dict)
+            with open(labels_path, encoding="utf-8", newline="") as fh:
+                for r in csv.DictReader(fh, delimiter="	"):
+                    by_qid[r["qid"]][r["lang"]] = r["label"]
+            qids_of = collections.defaultdict(set)
+            with open(plan_path, encoding="utf-8", newline="") as fh:
+                for r in csv.DictReader(fh):
+                    q = (r.get("existing_qid") or "").strip()
+                    if q:
+                        qids_of[r["token"]].add(q)
+            for token, qs in qids_of.items():
+                if len(qs) == 1 and next(iter(qs)) in by_qid:
+                    _NAME_ITEM_CJK[token] = by_qid[next(iter(qs))]
+    return _NAME_ITEM_CJK
+
+
 def label_in(label, table):
     """(ja, zh, ko) for a whole name, or (None, None, None) if any token is unknown.
 
@@ -2674,6 +2714,19 @@ def label_in(label, table):
                         or (final and clean in FINAL_ORDINALS))
         a, b = transliterate_token(clean, table, final=final)
         c = transliterate_token_ko(clean, table, final=final)
+        # The name item's own reading wins where it has one (ruled 2026-09-14, "they should even
+        # be the source of it"); `ja` only when it is katakana, since a kanji `ja` flips the
+        # person into the Sinosphere (`CLAUDE.md` § THE KANJI SIGNAL).
+        item = name_item_cjk().get(clean)
+        if item:
+            if item.get("ja") and _is_katakana(item["ja"]):
+                a = item["ja"]
+            # zh only in Han and ko only in Hangul: items carry `William` as a zh label and the
+            # Hanja `臣` as a ko one, and either would put the wrong script into the person's label.
+            if item.get("zh") and _is_han(item["zh"]):
+                b = item["zh"]
+            if item.get("ko") and _is_hangul(item["ko"]):
+                c = item["ko"]
         if a is None or c is None:
             # **THE FUNNEL, at the call rather than only in the pipeline.** Ruled 2026-08-29:
             # anything that would otherwise generate without katakana or Chinese characters goes

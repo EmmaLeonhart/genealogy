@@ -47885,3 +47885,21 @@ Measured live (8,006 name items with a QID in `name-item-plan.csv`; Wikidata ans
 So whole-name composition would change almost nothing now. The workable form is word by word:
 the name item's reading where it has one, the table's otherwise. The item is rewritten as those
 two steps, with the kanji guard (only a katakana `ja` is taken from an item).
+
+## 2026-09-25 — CJK person labels now read each word from its name item
+
+The 2026-09-14 ruling (the name items are the source of CJK readings), built word by word:
+- `refresh-live-values.py` (which the composer runs first) also writes
+  `reports/name-item-cjk-labels.tsv`: the ja/zh/ko labels of the name items in
+  `name-item-plan.csv`, 50 a request, 3 s apart, `Retry-After` honoured. After repeated 429s it
+  keeps the last good file.
+- `label_in` takes each word's reading from its name item where the token's item is unambiguous
+  and the reading is in the right script: **ja only in katakana** (a kanji `ja` flips a person
+  into the Sinosphere), **zh only in Han**, **ko only in Hangul**. Otherwise it uses the table.
+
+Measured on the live labels read today (8,006 items): the item reading replaces the table's for
+696 ja, 1,515 zh and 222 ko words, and supplies 741/801/80 the table lacked. It is ignored for
+114/355/15 in the wrong script (items carry `William` as a zh label and `臣` as a ko one). The
+item readings are often the better ones: `Johannes` ko `요하네스` for `조한네스`, `Ingeborg`
+`잉게보르크` for `이에보륵`. It governs what is composed from now on; no established label is
+rewritten for it.
