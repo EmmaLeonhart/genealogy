@@ -48196,3 +48196,20 @@ family (her as `WIFE`, four `CHIL`), all five named. Birth and death years are f
 the offline store is present, which it is not locally; the CI runners have it.
 - The two further order.life items (merge its `genealogy` branch into `master`, then write this
   repo's handoff directory there) follow the other order.life items to the end, under the same ruling.
+
+## 2026-09-26 — the mother's-side leads, and a cycle through the owner
+
+Tested against the derived tables (`reports/maternal-leads-baltic-rus-caucasus.csv`, written up in
+`reports/repo-analysis.md`).
+- **Baltic Germans:** one lead only. Per Andersson Roth (generation 10, born 1683) died in Livland.
+  The hypothesis is not supported as the tree stands.
+- **Rurikids:** yes, on both sides. Yuri Dolgoruky is an ancestor, 29 generations up the mother's
+  line through Swedish nobility and Hedvig of Gdańsk, and 26 up the father's through the Bille
+  family.
+- **Caucasus:** through Byzantine Armenians (Romanos I Lekapenos, generation 33), as a lead.
+
+**Found while doing it:** the owner's profile has five fathers, three mothers and eleven children,
+one of them Louis the Pious. That closes a cycle, so every figure split by side was an artifact.
+The 9,708/283 split and the "51% of the tree" in the analysis written earlier today are withdrawn
+in the report. Queued as its own item at the end of `## Now`: the source file is not the Louis
+path or the owner's saved-page family, and finding it through `exports/` would be a corpus sweep.
