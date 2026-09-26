@@ -13,7 +13,13 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **CJK names through the name combinatorics: feasibility assessment, then implement.** Earlier in the project's history we were trying to switch to CJK versions of names as what the label gets derived from. In a sense the items do not get immediate CJK labels, but they are added through the name combinatorics. Do a feasibility assessment on that and try to implement it.
+- **CJK person labels from the name items, word by word** (feasibility measured 2026-09-25, see
+  devlog). Two steps: (1) the daily live refresh (`refresh-live-values.py`) also reads the ja/zh/ko
+  labels of the ~8,006 name items in `reports/name-item-plan.csv` (`existing_qid`), politely:
+  50 a request, >= 3 s apart, honouring `Retry-After`; (2) `label_in` in `build-garborg-day.py`
+  takes each word's reading from its name item where the item carries one, else from
+  `garborg-name-transliterations.tsv`. **`ja` only when the item's reading is katakana**: a kanji
+  `ja` flips a person into the Sinosphere (`CLAUDE.md` § *THE KANJI SIGNAL*).
 - **Actually create patronymics (and matronymics, where they exist) in male/female pairs, and connect each pair.** Emma asked for the workflow to make them in pairs and link them, and this does not appear to have been happening at all: there is no "Helgesson", for example. Look in particular at https://www.wikidata.org/wiki/Q141515178; Emma is not sure what is going on with it. Also make clear which language each patronymic is from. That is a significant problem in itself, but the forms are consistent within a language: -datter vs -dotter vs -dottir, -sson vs -ssen, and so on.
 - **Analyse why https://www.wikidata.org/wiki/Q141550395 and https://www.wikidata.org/wiki/Q141550315 were created with such weird labels, and fix the cause.** Find what in the pipeline produced those labels, fix it so it does not happen again, and correct these two items.
 - **Look over https://www.wikidata.org/wiki/Q141550971 for two errors, and fix both.** First, American English (en-us) labels should be put on items where the mul and en labels differ. Second, the Chinese, Japanese and Korean labels do not have the role in them, and that needs to be fixed.

@@ -47865,3 +47865,23 @@ backtick-quoted words in this very entry. It executed the `.ged` as a shell scri
 failed as "command not found"; the file is unchanged, and its hash matches HEAD) and started
 `getmyancestors` with no arguments, which waited for input. Emma: leave the stray processes. A
 heredoc that carries prose is always quoted (`<<'EOF'`).
+
+## 2026-09-25 — CJK labels through the name items: feasibility measured
+
+The 2026-09-14 ruling made the name items the source of CJK readings (*"they should even be the
+source of it in the logic"*). Only half was built: name items get `Lja`/`Lzh`/`Lko` from
+`garborg-name-transliterations.tsv`, and person labels read that table directly.
+
+Measured live (8,006 name items with a QID in `name-item-plan.csv`; Wikidata answered 429 at
+0.5 s a request, so it was re-read at 3 s with `Retry-After`):
+- **422 of 8,006 name items carry all of ja/zh/ko.** That coverage is the bottleneck.
+- **Composing a person's CJK labels wholly from their name items is possible for 8 of the 8,350
+  people this account created**; every other person has a word whose item lacks a reading.
+- Where both exist they sometimes disagree (`Karin`: item `カーリン`, person `カリン`; `Isaac`
+  ko `아이작` against `이사아크`).
+- `garborg-live-labels.tsv` holds none of the name items, so the composer cannot see their live
+  labels today.
+
+So whole-name composition would change almost nothing now. The workable form is word by word:
+the name item's reading where it has one, the table's otherwise. The item is rewritten as those
+two steps, with the kanji guard (only a katakana `ja` is taken from an item).
