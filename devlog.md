@@ -47801,3 +47801,8 @@ not one large query.
 2026-10-05. The one gap is that the "every edit through the sender" ruling is not built:
 `pipeline.yml` still writes a `-manual` half and Pages publishes it for pasting, which was the
 QuickStatements traffic in question. Queued as the next item.
+
+## 2026-09-25 — queue shape: status taken out of an item
+
+The shape check flagged "Ruled 2026-09-25 ... not yet built" in the send-through-the-sender item
+as status written into work. The item now states the action and points at the `CLAUDE.md` rule.

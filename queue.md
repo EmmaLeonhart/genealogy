@@ -13,12 +13,11 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **Fix this queue's shape: 1 finding from ontology-harness's shape check.** line 16, item "Send the whole day's batch through the sender; stop publi...": status-in-place (item says 'Ruled'; status written onto work; delete done items and log them in devlog.md). The rules are `../docs/queue-shape.md` (the parent repo). Fix them the way this repo's own queue rules say, then delete this item.
-- **Send the whole day's batch through the sender; stop publishing a half for pasting.** Ruled
-  2026-09-25 (`CLAUDE.md` § *NOTHING GOES OUT THROUGH PASTED QUICKSTATEMENTS*), not yet built:
-  `pipeline.yml` still writes `reports/wikidata-garborg-day-manual.txt` (lines ~471, ~498 append
-  to it) and `pages.yml` publishes it for pasting. Route every line through `wikidata-edit-run.py`
-  (maxlag-respecting) instead, and drop the Pages copy.
+- **Send the whole day's batch through the sender; stop publishing a half for pasting.** Per
+  `CLAUDE.md` § *NOTHING GOES OUT THROUGH PASTED QUICKSTATEMENTS*: `pipeline.yml` writes
+  `reports/wikidata-garborg-day-manual.txt` (lines ~471, ~498 append to it) and `pages.yml`
+  publishes it for pasting. Route every line through `wikidata-edit-run.py` (maxlag-respecting)
+  and drop the Pages copy.
 - **Check out the RootsMagic GEDCOM exports.** The earlier FamilySearch GEDCOM export failed to get a lot of individuals, so a RootsMagic export should be better. If access to it can be gained, use it.
 - **Research what the known French ancestry adds.** With it, the family tree is substantially larger than previously believed. Research whether the larger number of relatives gives matches that weren't there before.
 - **CJK names through the name combinatorics: feasibility assessment, then implement.** Earlier in the project's history we were trying to switch to CJK versions of names as what the label gets derived from. In a sense the items do not get immediate CJK labels, but they are added through the name combinatorics. Do a feasibility assessment on that and try to implement it.
