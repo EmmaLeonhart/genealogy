@@ -511,11 +511,47 @@ jobs:
           PYTHONPATH: src
         run: |
           python scripts/build-patronymic-pairs.py
+          # A pair block whose label + description the day file already CREATEs is skipped: the
+          # name-item emitter mints `Jonsdotter` "patronymic" itself, and appending it again made
+          # the pre-send duplicate guard fail edit run 36243640877 (2026-09-26), so nothing went out.
           if [ -s reports/wikidata-patronymic-pairs.qs ]; then
-            for f in reports/wikidata-garborg-day.txt reports/wikidata-garborg-day-auto.txt reports/wikidata-garborg-day-manual.txt; do
-              cat reports/wikidata-patronymic-pairs.qs >> "$f"
-            done
-            echo "appended $(grep -c '^CREATE' reports/wikidata-patronymic-pairs.qs) pair creations to the day files"
+            python - <<'EOF'
+          import re
+          from pathlib import Path
+          LABEL = re.compile(r'^LAST\t(?:Lmul|Len)\t"(.*)"$')
+          DEN = re.compile(r'^LAST\tDen\t"(.*)"$')
+
+          def blocks(lines):
+              starts = [n for n, l in enumerate(lines) if l.strip() == "CREATE"]
+              for i, a in enumerate(starts):
+                  b = starts[i + 1] if i + 1 < len(starts) else len(lines)
+                  yield a, b
+
+          def keys(lines, a, b):
+              labels = {m.group(1) for l in lines[a:b] for m in [LABEL.match(l)] if m}
+              dens = [m.group(1) for l in lines[a:b] for m in [DEN.match(l)] if m]
+              return {(x, dens[0]) for x in labels} if dens else set()
+
+          pairs = Path("reports/wikidata-patronymic-pairs.qs").read_text(encoding="utf-8").splitlines()
+          head = pairs[:next((n for n, l in enumerate(pairs) if l.strip() == "CREATE"), len(pairs))]
+          for name in ("wikidata-garborg-day.txt", "wikidata-garborg-day-auto.txt",
+                       "wikidata-garborg-day-manual.txt"):
+              day = Path("reports") / name
+              lines = day.read_text(encoding="utf-8").splitlines()
+              made = set().union(*(keys(lines, a, b) for a, b in blocks(lines))) if lines else set()
+              out, added, skipped = list(head), 0, 0
+              for a, b in blocks(pairs):
+                  k = keys(pairs, a, b)
+                  if k & made:
+                      skipped += 1
+                      continue
+                  made |= k
+                  out.extend(pairs[a:b])
+                  added += 1
+              with day.open("a", encoding="utf-8", newline="\n") as f:
+                  f.write("\n".join(out) + "\n")
+              print(f"{name}: appended {added} pair creations, skipped {skipped} already created")
+          EOF
           fi
 
       # ⛔ TANBA LAST. The composer drops Tanba lines, then the split and the appends above write
