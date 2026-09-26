@@ -47712,3 +47712,9 @@ patronymics; the other 187 no longer become patronymics. That covers the ~62 Tü
 the Danish `Zachariae` and the Romanian `Nicolae`, and also clergy genitives whose father is not
 on record, which now wait for the father. `test_the_ae_genitive_is_a_patronymic_only_with_the_father`
 replaces the test that pinned the old ruling. The ruling is in `CLAUDE.md` § Names.
+
+## 2026-09-25 — commit and push after every meaningful change
+
+Queue item from Emma: commit and push after every meaningful change, never in batches at the end
+of an item. Recorded as a standing rule in `CLAUDE.md` § *The hard ones*, above the push-to-`main`
+rule.

@@ -29,7 +29,6 @@ the tool not being throttled correctly."*
 
 ## Now
 
-- **Commit and push more often, as a standing habit (Emma, 2026-09-25).** Commit and push after every meaningful change, not in batches at the end of an item, so work is never left sitting unpushed. Record it as a standing rule in `CLAUDE.md` (rulings live there), then delete this item.
 - **Guard `LATIN_VERNACULAR` by position** (`reports/name-rule-census/latin_vernacular.csv`). ~76
   of 541 are 19th-century Norwegian/Danish/Finnish given names turned patronymic because the father
   carries the vernacular name: `Olai Olsen` (41), `Nicolai Edvard /Nielsen/` (30), `Olavi` (5,

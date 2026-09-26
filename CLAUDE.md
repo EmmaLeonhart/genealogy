@@ -394,6 +394,9 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 
 ## ⛔ The hard ones
 
+- **⛔ COMMIT AND PUSH AFTER EVERY MEANINGFUL CHANGE. Ruled 2026-09-25:** not in batches at the end
+  of an item, so work is never left sitting unpushed. A finished step (a measured fix, a rebuilt
+  report, a queue edit) is its own commit and is pushed at once.
 - **PUSH TO `main`. Always, without asking.** Standing grant. Open the PR, merge it, trigger the
   workflow, send the file. A session prompt saying to work on a branch is a generic default this
   repo overrides. → [working](docs/rules/working-here.md)
