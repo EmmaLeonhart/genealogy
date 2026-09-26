@@ -206,6 +206,85 @@ def read_rows(path):
                         for c in ("p22", "p25", "p40", "p26", "p3373")}
 
 
+def live_labels(nodes):
+    """`Q<digits>` node -> its `mul` (else `en`) label, read live, 50 items a request.
+
+    Only for a `--seed` export, which is a few thousand people at most: the offline store is
+    196 MB and not in the repo, and a per-person export without names is unreadable.
+    """
+    import json
+    import time
+    import urllib.parse
+    import urllib.request
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from bot_identity import BOT_USER_AGENT
+    ids, out = sorted(nodes), {}
+    for i in range(0, len(ids), 50):
+        url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({
+            "action": "wbgetentities", "ids": "|".join(ids[i:i + 50]), "props": "labels",
+            "languages": "mul|en", "format": "json", "maxlag": 5})
+        req = urllib.request.Request(url, headers={"User-Agent": BOT_USER_AGENT})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            for q, e in json.load(r).get("entities", {}).items():
+                lab = e.get("labels", {})
+                v = (lab.get("mul") or lab.get("en") or {}).get("value", "")
+                if v:
+                    out[q] = v
+        time.sleep(1)
+    return out
+
+
+def walk_from(seed, walk, cap, couples, qid_geni):
+    """The people and families one export reaches from `seed`, breadth-first to `cap` people.
+
+    Ancestors follows child -> parents; Descendants parent -> children, keeping each child's other
+    parent so the family is whole; Forest follows every family link, spouses included.
+    """
+    parents, children, partners = (collections.defaultdict(set) for _ in range(3))
+    for (f, m), kids in couples.items():
+        for k in kids:
+            for p in (f, m):
+                if p and k:
+                    parents[k].add(p)
+                    children[p].add(k)
+        if f and m:
+            partners[f].add(m)
+            partners[m].add(f)
+    start = qid_geni.get(seed) or ["Q" + seed[1:]]
+    # (node, walks-on): in Descendants a spouse is included but not walked through, so their
+    # children by another marriage stay out, as in Geni's export.
+    queue = collections.deque((n, True) for n in start)
+    got = set()
+    while queue and len(got) < cap:
+        n, walks = queue.popleft()
+        if n in got:
+            continue
+        got.add(n)
+        if not walks:
+            continue
+        if walk == "Ancestors":
+            queue.extend((x, True) for x in sorted(parents[n]))
+        elif walk == "Descendants":
+            queue.extend((x, True) for x in sorted(children[n]))
+            queue.extend((x, False) for x in sorted(partners[n]))
+        else:
+            queue.extend((x, True) for x in sorted(parents[n] | children[n] | partners[n]))
+    kept = {k: {c for c in v if c in got} for k, v in couples.items()
+            if (not k[0] or k[0] in got) and (not k[1] or k[1] in got)
+            and (k[0] in got or k[1] in got)}
+    kept = {k: v for k, v in kept.items() if v or (k[0] and k[1])}
+    # A one-parent family whose children the full couple already holds is the same family stated
+    # from one side (`P40` on the father only) and would appear twice in the export.
+    by_parent = collections.defaultdict(set)
+    for (f, m), v in kept.items():
+        if f and m:
+            by_parent[f] |= v
+            by_parent[m] |= v
+    kept = {k: v for k, v in kept.items()
+            if (k[0] and k[1]) or not v <= by_parent[k[0] or k[1]]}
+    return got, kept
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Wikidata's genealogy as a mergeable GEDCOM")
     ap.add_argument("-o", "--out", default=str(OUT))
@@ -217,8 +296,23 @@ def main() -> int:
                          "family and people in no family at all. Preserves connectivity between "
                          "Geni people, and drops real people to save memory, which is a decision "
                          "rather than an optimisation.")
+    # ⛔ **ONE PERSON, LIKE A GENI EXPORT.** Ruled 2026-09-25: a Geni-style export for one QID,
+    # straight off Wikidata's P22/P25/P40/P26 -- Ancestors (up), Descendants (down, with the
+    # co-parents), or Forest (every family link), capped like Geni's 5,000. Written to a NEW file
+    # under exports/wikidata/, never over an existing one, with names and years always on.
+    ap.add_argument("--seed", help="QID to export around, e.g. Q660913")
+    ap.add_argument("--walk", choices=("Ancestors", "Descendants", "Forest"), default="Forest")
+    ap.add_argument("--max", type=int, default=5000, help="people cap, as Geni's export")
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
+    if args.seed:
+        args.with_content = True
+        if args.out == str(OUT):
+            args.out = str(ROOT / "exports" / "wikidata"
+                           / ("export-%s-%s.ged" % (args.walk, args.seed)))
+        if pathlib.Path(args.out).exists():
+            print("REFUSING: %s exists -- a new export is always a new file" % args.out)
+            return 1
 
     qid_geni = load_p2600(P2600)
     our_sex = load_sex(FACTS)
@@ -350,6 +444,14 @@ def main() -> int:
               % (sum(1 for p in in_fams if p.startswith("Q") and len(in_fams[p]) <= 1),
                  len(edgeless)), flush=True)
 
+    if args.seed:
+        people, couples = walk_from(args.seed, args.walk, args.max, couples, qid_geni)
+        print("--seed %s --walk %s: %d people, %d families (cap %d)"
+              % (args.seed, args.walk, len(people), len(couples), args.max), flush=True)
+        if not people:
+            print("REFUSING: %s has no family on Wikidata's relations" % args.seed)
+            return 1
+
     # a couple that is ALREADY a geni family defers to the geni family id
     corpus_fam = {}
     fs = ROOT / "out" / "family-structure.tsv"
@@ -385,6 +487,15 @@ def main() -> int:
     if args.with_content:
         wd_name, wd_born, wd_died = load_content(
             LABELS, DATES, {p for p in people if p.startswith("Q")})
+        # A per-person export stands alone, so its Geni-keyed people are named too (from their item).
+        geni_qid = {g: q for q, gs in qid_geni.items() for g in gs} if args.seed else {}
+        if args.seed and not LABELS.exists():
+            wanted = {p for p in people if p.startswith("Q")}
+            wanted |= {"Q" + geni_qid[p][1:] for p in people if p in geni_qid}
+            wd_name.update(live_labels(wanted))
+        for p in people:
+            if p in geni_qid and ("Q" + geni_qid[p][1:]) in wd_name:
+                wd_name[p] = wd_name["Q" + geni_qid[p][1:]]
         print("--with-content: %d names, %d birth years, %d death years"
               % (len(wd_name), len(wd_born), len(wd_died)), flush=True)
     else:
@@ -416,6 +527,9 @@ def main() -> int:
                 n_qid += 1
             else:
                 fh.write("1 RFN geni:%s%s" % (node, NL))
+                if args.seed and wd_name.get(node):
+                    fh.write("1 NAME %s%s" % (wd_name[node].replace("/", " ").strip(), NL))
+                    n_named += 1
                 n_geni += 1
             for x in fams.get(node, ()):
                 fh.write("1 FAMS @%s@%s" % (x, NL))

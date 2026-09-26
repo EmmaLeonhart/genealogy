@@ -47764,3 +47764,20 @@ only job was to hold the identifiers and what the tree says, and they are held i
 mother `Slavina von Rügen` `6000000059830466964` and wife `Slawina von Rügen` `Q111239463`, one
 letter apart, and `MBW7-P7H` = Inger Axelsdatter Güntersberg `Q141493478`. Per the queue's own
 rule (non-actions go in `docs/queue-archive/`), the item is removed; nothing is lost.
+
+## 2026-09-25 — a Geni-style GEDCOM export for one Wikidata person
+
+Asked: *"build a gedcom exporter from wikidata"* means per person, like Geni's. So
+`build-wikidata-gedcom.py` takes `--seed QID --walk Ancestors|Descendants|Forest --max N`
+(default 5000, as Geni's cap) and writes `exports/wikidata/export-<Walk>-<QID>.ged`. It refuses to
+overwrite an existing export. The walk runs over the same P22/P25/P40/P26 families the whole-tree
+render builds. Ancestors goes up. Descendants goes down and includes spouses without walking
+through them, so step-children stay out. Forest follows every family link. A per-person export
+carries names and years for everyone, the Geni-keyed people included, from their item's label.
+When the 196 MB label store is absent, those labels are read live, 50 at a time. A one-parent
+family whose children the couple family already holds is dropped as a repeat.
+
+Tried: Kruto (`Q660913`): Ancestors 1 and Descendants 2, which is right, since Wikidata gives him
+only a spouse; Forest capped at 300. Charlemagne (`Q3044`), cap 120: Ancestors 82 people / 64
+families (Charles Martel, Pepin the Short, Pepin of Herstal ...), Descendants 120 / 38. A re-run
+over an existing file is refused.
