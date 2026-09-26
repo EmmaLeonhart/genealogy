@@ -11,25 +11,8 @@ not an action goes in `docs/queue-archive/`. The file this replaced, verbatim, i
 it. Each session re-creates the hourly `exports/2026-09-19` merge cron and starts with
 `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER*.
 
-## ⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女; NO CRON JOBS TO 2026-10-01
-
-Ruled 2026-09-24, replacing the two-week hold: *"as long as there is any mention of 日巫女 at
-Wikidata:Administrators' noticeboard then there will be no edits ever ... No updating
-quickstatements no editing at all."* Read live on every run and fails closed:
-`wikidata-edits.yml` gate, `pipeline.yml` gate (every event), `daily-batch-email.yml`, and
-the sender's live path (`scripts/wikidata_lockout.py` § NOTICEBOARD). **No cron job runs for a
-week**: `wikidata-edits`, `pipeline`, `ci`, `daily-batch-email`, `pages`, `tree`, `review-decks`
-stay DISABLED in GitHub until 2026-10-01; after that `gh workflow enable <file>` and the
-noticeboard gate governs. **No exception, no one-off run**: ruled the same evening, *"no run at
-all only runs of even generations of quickstatements happen only after the string is not present
-on that page"* -- the gate in `pipeline.yml` stops every event, dispatch and `force` included.
-*"This is indication I was editing too aggressively but it was mostly a quickstatements issue of
-the tool not being throttled correctly."*
-
-
 ## Now
 
-- **Fix this queue's shape: 2 findings from ontology-harness's shape check.** line 14, heading "⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS...": priority-inflation (heading: ⛔, all capitals; position is the priority, so drop the claim of precedence). line 14, heading "⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS...": text-only-section (no items, 12 lines of text; a heading with no items is a banner; rulings go in CLAUDE.md, history in devlog.md). The rules are `../docs/queue-shape.md` (the parent repo). Fix them the way this repo's own queue rules say, then delete this item.
 - **The ration and the pacing, seen working end to end.** Edit run `36054472568` (dispatched
   2026-09-24, 500, live) is the first test: confirm names -> 30 people -> ring go out in order,
   20-50 s apart, and what stops it.

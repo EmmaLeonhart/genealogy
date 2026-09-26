@@ -397,6 +397,11 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **⛔ COMMIT AND PUSH AFTER EVERY MEANINGFUL CHANGE. Ruled 2026-09-25:** not in batches at the end
   of an item, so work is never left sitting unpushed. A finished step (a measured fix, a rebuilt
   report, a queue edit) is its own commit and is pushed at once.
+- **⛔ THE ADMINISTRATORS' NOTICEBOARD CHECK IS SUSPENDED UNTIL 2026-10-05.** Ruled 2026-09-24:
+  no edits while `Wikidata:Administrators' noticeboard` mentions `日巫女` (read live, fail-closed).
+  Ruled 2026-09-25: *"the current noticeboard matter is considered done"*; the check is suspended
+  until 2026-10-05 (`NOTICEBOARD_RESUMES` in `scripts/wikidata-edit-run.py` and the three workflow
+  gates) and filters again from that date. The seven workflows were re-enabled the same day.
 - **PUSH TO `main`. Always, without asking.** Standing grant. Open the PR, merge it, trigger the
   workflow, send the file. A session prompt saying to work on a branch is a generic default this
   repo overrides. → [working](docs/rules/working-here.md)

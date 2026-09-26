@@ -47737,3 +47737,11 @@ The census found the lone-letter surname rule wrong on 5 of 1,061: `Å` (a Norwe
 `Ingvald /Å/`) and `Ö`. `ONE_LETTER_FARMS` exempts both, in the `SURN` and `_MARNM` loops of
 `classify_fields` and in `load_plan`'s stale-row drop. `N.`, `Y.`, `S.` stay qualifiers; `Ø` alone
 is left as a qualifier because it is as often the `Øvre` abbreviation.
+
+## 2026-09-25 — queue shape: the noticeboard banner section removed
+
+ontology-harness's shape check found the section `⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD
+MENTIONS 日巫女; NO CRON JOBS TO 2026-10-01` was a banner: all-capitals precedence and 12 lines of
+text with no items. It was also out of date (the hold is suspended to 2026-10-05, and the
+workflows are back on). Removed from `queue.md`. Its ruling, in its current form, is in
+`CLAUDE.md` § *The hard ones*; its history is in this devlog (2026-09-24 and 2026-09-25) and in git.
