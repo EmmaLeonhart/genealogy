@@ -756,6 +756,9 @@ def regnal_exceptions():
 #: out: alone it is as often the `Øvre` abbreviation.
 ONE_LETTER_FARMS = frozenset({"Å", "Ö"})
 
+#: Locative prepositions that stand before a farm name in a name field and never name anyone.
+LOCATIVE_WORDS = frozenset({"på"})
+
 DESCRIPTION_MARKERS = {
     "dødfød", "dødfødt", "dødfødte", "dødfodt",
     "dödfödd", "dödfött", "dödfödda", "dodfodd",
@@ -2164,6 +2167,11 @@ def name_shape(token):
     # It runs AFTER `PAREN` has stripped a matched pair, so `(de)` is still read as `de`.
     if not_a_name(bare):
         return bare, "unknown"
+    # ⛔ **`på` IS A PREPOSITION, NOT A NAME.** `Torstein /på Heimnes/` means *Torstein at Heimnes*;
+    # read raw, `på` came out a `P734` family name and the name-item batch created an item for it
+    # twice (`Q141562005`, deleted by hand both times, 2026-09-25). The farm after it stays.
+    if low in LOCATIVE_WORDS:
+        return bare, "unknown"
     if is_numeral(bare):
         return bare, "unknown"
     # ⛔ An ABBREVIATED patronymic is refused here, ruled 2026-09-15 -- see
@@ -2225,6 +2233,8 @@ def load_plan(path: Path | None = None) -> dict:
             # stale plan row must not create one. See `classify_fields`, SURN loop.
             if (row["usage"] in ("family", "married") and _MARKER_EXEMPT.match(row["token"])
                     and row["token"] not in ONE_LETTER_FARMS):
+                continue
+            if row["token"] in LOCATIVE_WORDS:     # `på`, 2026-09-25: never an item
                 continue
             out[(row["token"], row["usage"])] = (
                 (row.get("existing_qid") or "").strip(),
