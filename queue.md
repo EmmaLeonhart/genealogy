@@ -13,7 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **Link an individual's names at the moment the individual is created.** When a person is created and their name objects (given name, family name) already exist, the new item should carry those name links from the start, not have them added later. Emma believes they are linked later today but is not sure how the algorithm actually works, so first establish how it works now, then change it. The pipeline already creates name objects and links them to people as part of creation; the point is to link any name objects that already exist at creation time. Also check a clarification Emma thinks already holds: noble particles are always kept in the name, and the surname clearly gives them priority (Emma described them as being at the end of the name; confirm how the pipeline treats them). Why: this is part of the gradual shift toward the name objects' different-language versions being what takes priority for a person's names.
 - **Resume the descendants sweep from its cursor (needs Geni; not before 2026-10-21).** The queue
   is `reports/sweep-queue-6000000227822546944.txt` and the cursor stood at 8,993 of 29,366 when
   Geni's WAF began answering 403 on 2026-09-21. The 209 people in

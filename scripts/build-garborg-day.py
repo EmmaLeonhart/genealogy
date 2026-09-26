@@ -7272,6 +7272,14 @@ def main():
     # edited by hand. Eivind is the case: he carries P735/P734/P5056 added by hand.
     state.update(live_state())
     live_values = read_live_values()
+    _live_props_of = collections.defaultdict(set)
+    for _q, _prop, _v in live_values:
+        _live_props_of[_q].add(_prop)
+    # The items this account CREATED, as against existing items it only gave a Geni id: the
+    # ledger's note says `(P2600 added to an existing item)` for the second kind.
+    with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as _f:
+        _created_by_us = {r["qid"] for r in csv.DictReader(_f, delimiter="\t")
+                          if r.get("qid") and "existing item" not in (r.get("note") or "")}
     suppressed = read_suppressed()
     suppressed_hits = set()
     # **The order of the two sections is the spec and it is structurally rigid.** Set
@@ -7459,7 +7467,20 @@ def main():
         # **CAPPED AT `NAME_ADD_CAP` PEOPLE.** Uncapped this emitted 2,033 statements on 1,269
         # items in a single batch. The window rolls: the ledger is walked in a stable order, so
         # the people held today are first in line tomorrow.
-        if (absent(q, "P735") and absent(q, "P734")
+        # ⛔ **LIVE, AND OUR OWN CREATIONS GET WHAT THEY ARE MISSING.** Measured 2026-09-26: in CI
+        # the store index is absent, so `absent()` is always True and this gate let everyone
+        # through -- and the SAME ~25 people (23 of 29 from 2026-09-24 still there today) were
+        # re-emitted statements they already held, `Q141244207 P735 Q666578` among them, a
+        # merged no-op that used up the `NAME_ADD_CAP` slots every day. Meanwhile a person created
+        # the same day as one of their name items (68 on 2026-09-26) can never be linked in the
+        # creating batch -- `LAST` names only the latest creation -- and waited for a slot the
+        # no-ops held. So: a line already live is never emitted; an item WE created gets every
+        # name link it lacks; anybody else's item keeps the old rule, read live, that one
+        # carrying `P735` or `P734` is not ours to add names to.
+        _live_props = _live_props_of.get(q, set())
+        _ours = q in _created_by_us
+        if ((_ours or ("P735" not in _live_props and "P734" not in _live_props
+                       and absent(q, "P735") and absent(q, "P734")))
                 and len(_name_added) < NAME_ADD_CAP):
             dad = father.get(g)
             # The father's NAME, not just his QID: the test reads his given name and
@@ -7476,6 +7497,9 @@ def main():
                                    father_name=labels.get(dad, "") if dad else "",
                                    father_aka=aka.get(dad, "") if dad else "",
                                    father_given=given_name.get(dad, "") if dad else "")[0]:
+                _parts = line.split("\t")
+                if (q, _parts[1], _parts[2]) in live_values:
+                    continue
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
                 # **The cap counts people who actually GAIN a statement, not people who reach
                 # the block.** Counting arrivals burnt 48 of the 60 slots on people whose tokens

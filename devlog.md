@@ -48043,3 +48043,40 @@ report, and today's batch carried 0 labels in any of these languages over 861 cr
 
 Existing items are not relabelled: the 2026-08-31 builder scoped the four scripts to 43,680
 existing items, and label edits on existing items stay under `LABEL_EDIT_CAP`.
+
+## 2026-09-26 — names at creation: how it works, and the fix
+
+**How it works.** A CREATE block links every name item that already exists, through
+`name_lines()` → `statements_for()`. "Exists" means the plan's `existing_qid`, the local store
+index, or `reports/created-name-items.tsv` (refreshed by every pipeline rebuild). On the committed
+batch, 671 of 809 person creations carry at least one name link. A name item that does not exist
+yet is created in the name-items block, which links its already-existing bearers there
+(`Qperson P734 LAST`, 80 links today). The one case that cannot be linked at creation is a person
+created in the same batch as their new name item, because `LAST` names only the latest creation:
+68 people today.
+
+**What was wrong: "linked later" mostly never happened.** Those people depend on the
+existing-person name path, and in CI that path was blind. The store index is absent there, so
+`absent()` is always true, and the same ~25 people were re-emitted statements they already held
+every day. For example `Q141244207 P735 Q666578` is live, and 23 of the 29 people from 2026-09-24
+were still in today's list. Those no-ops used up the 50-person `NAME_ADD_CAP`.
+
+**The fix** (`build-garborg-day.py`):
+- a name line already in `reports/garborg-live-values.tsv` is never emitted;
+- an item this account created (the ledger note is not "existing item") gets every name link it
+  lacks;
+- anybody else's item keeps the old rule, now read live: an item with `P735` or `P734` gets no
+  names from us.
+
+Not measured yet: the full composer does not run locally, so the check is the next pipeline batch.
+The existing-item name lines should stop repeating the same people.
+
+**Also in this item:** the patronymic pairs proposed 37 already-existing counterparts
+(`ef21f38a77`), found through Aagota Johannesdatter Straume, who is linked to the
+`Johannesdatter` the pairs file was about to create again.
+
+**Particles, as asked.** The particle is kept in the label (`Hemma von Öhningen`, `Anna de Geer`),
+where it sits before the surname at the end of the name. It is never its own name item: the
+names rules page, § the parenthesised-name table, says *"A particle belongs in the `mul` label ...
+never a name item"*. The `P734` family name is the stem: `de Geer` links `Q28605695` *Geer*, and
+`van der Noot` links `Q21493058` *Noot*.
