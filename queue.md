@@ -13,7 +13,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
-- **Run the pipeline again, now.** Ruled 2026-09-26: kill any pipeline run that is in progress so this one can start, then start a fresh full `pipeline.yml` run to regenerate the QuickStatements. This run is expected to still carry the particle error below; that is accepted.
 - **Make the button on the QuickStatements page run the proper pipeline.** The "redo everything" pipeline linked from the QuickStatements page is not the pipeline that has actually been generating the working QuickStatements, and it keeps failing. Point the button at the real one (`pipeline.yml`).
 - **Particles are part of the name.** Ruled 2026-09-26, correcting the names rule ("a particle belongs in the `mul` label ... never a name item"): a noble particle belongs to the surname, so `de Geer` links a family name item `de Geer`, not `Geer`. Fix the name model and the rule text together.
 - **Resume the descendants sweep from its cursor (needs Geni; not before 2026-10-21).** The queue

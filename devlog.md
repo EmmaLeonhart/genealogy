@@ -48080,3 +48080,10 @@ where it sits before the surname at the end of the name. It is never its own nam
 names rules page, § the parenthesised-name table, says *"A particle belongs in the `mul` label ...
 never a name item"*. The `P734` family name is the stem: `de Geer` links `Q28605695` *Geer*, and
 `van der Noot` links `Q21493058` *Noot*.
+
+## 2026-09-26 — the pipeline rerun, as ruled
+
+Killed the pipeline run in progress, `36265563272`, which had run from 12:17 PM PDT to about
+1:55 PM PDT (1 h 37 min), and the pending push run `36270815889`. Dispatched `36271114265` with
+`force=true` at 1:54 PM PDT; it was running by 1:55 PM PDT. As ruled, this run still carries the
+particle error, which is queued after the QuickStatements-page button.
