@@ -47781,3 +47781,23 @@ Tried: Kruto (`Q660913`): Ancestors 1 and Descendants 2, which is right, since W
 only a spouse; Forest capped at 300. Charlemagne (`Q3044`), cap 120: Ancestors 82 people / 64
 families (Charles Martel, Pepin the Short, Pepin of Herstal ...), Descendants 120 / 38. A re-run
 over an existing file is refused.
+
+## 2026-09-25 — what happened on the Administrators' noticeboard, and what follows
+
+The thread *Undeclared bots/quickstatements not obeying maxlag* (ArthurPSmith, 24 Sep): WDQS lag
+reached ~30 minutes, well-behaved bots backed off on maxlag, and QuickStatements kept editing,
+with `日巫女` at the top of WikiScan's 6-hour edit-volume list. Others were named too. Lag was
+back under a minute by 01:28 UTC on the 25th. **The WMF reply (RKemper, 25 Sep 21:56 UTC):** WDQS
+had several separate incidents that week (automated query traffic toppling the service, a
+datacentre switchover, a partial codfw outage, excess query load), and *"I haven't seen any
+evidence that QuickStatements caused any of these recent incidents."* One client issuing
+expensive queries can stall the service. Nobody asked the account anything directly.
+
+**Our own query traffic was checked**, since that is what the WMF names: no CI workflow runs a
+WDQS script, and the daily `refresh-p2600-all.py` roster fetch is partitioned with a 1 s delay,
+not one large query.
+
+**Course of action:** no reply (Emma: the matter is done). The check stays suspended to
+2026-10-05. The one gap is that the "every edit through the sender" ruling is not built:
+`pipeline.yml` still writes a `-manual` half and Pages publishes it for pasting, which was the
+QuickStatements traffic in question. Queued as the next item.
