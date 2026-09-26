@@ -265,6 +265,16 @@ jobs:
       # -> `-datter`/`-dotter`, per person) was a one-off snapshot, so everyone added after it
       # kept `Tørresdtr.`: `Q141550288` got no `P5056`, and `Alvsdtr.`/`Rasmusdtr.` were created
       # as name items (found 2026-09-26). Both emitters read it through `namemodel`.
+      # Places to Wikidata items, a later pipeline stage (queue, 2026-09-26). It emits no edit: it
+      # grows `reports/place-qids.tsv` by a small budget each run, most-used places first, and the
+      # step is capped so a slow Wikidata never holds the batch up.
+      - name: Resolve places to Wikidata items (a little each run)
+        continue-on-error: true
+        timeout-minutes: 25
+        env:
+          PYTHONPATH: src
+        run: python scripts/resolve-places.py --budget 40
+
       - name: Census of abbreviated patronymics
         continue-on-error: true
         env:

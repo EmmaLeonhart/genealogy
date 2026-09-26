@@ -48213,3 +48213,19 @@ one of them Louis the Pious. That closes a cycle, so every figure split by side 
 The 9,708/283 split and the "51% of the tree" in the analysis written earlier today are withdrawn
 in the report. Queued as its own item at the end of `## Now`: the source file is not the Louis
 path or the owner's saved-page family, and finding it through `exports/` would be a corpus sweep.
+
+## 2026-09-26 — places resolved to Wikidata items, a stage that grows each run
+
+`scripts/resolve-places.py` resolves the places of birth and death of people with an item (5,616
+distinct strings) to Wikidata items. It works right to left, each part inside the one after it.
+Directly inside (`P131`) beats merely the same country, a current state beats a historical one,
+and candidates are searched across seven languages. A string resolves to its most specific
+placeable part, with `depth` saying how far that is from the whole. A lone name with more than
+one place of that name stays unresolved rather than guessed.
+
+Trial on the 25 most-used strings (`reports/place-qids.tsv`, seeded with it): 8 resolved in full
+(`Gjesdal, Rogaland, Norway` is `Q255148`, `Norway` is `Q20`), 1 to its county
+(`Stockholm, Stockholms län, Sverige`), 16 left alone (farm names, and ambiguous lone names like
+`Bø`). It took 21 minutes, partly because it ran beside other Wikidata calls, so `pipeline.yml` runs
+it with `--budget 40` under a 25-minute step cap. It grows the cache and emits no edit; turning
+the mapping into `P19`/`P20` statements is the queued "our interpretation as the value" item.
