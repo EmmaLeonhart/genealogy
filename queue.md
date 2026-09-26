@@ -13,6 +13,7 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
+- **Fix this queue's shape: 1 finding from ontology-harness's shape check.** line 16, item "Send the whole day's batch through the sender; stop publi...": status-in-place (item says 'Ruled'; status written onto work; delete done items and log them in devlog.md). The rules are `../docs/queue-shape.md` (the parent repo). Fix them the way this repo's own queue rules say, then delete this item.
 - **Send the whole day's batch through the sender; stop publishing a half for pasting.** Ruled
   2026-09-25 (`CLAUDE.md` § *NOTHING GOES OUT THROUGH PASTED QUICKSTATEMENTS*), not yet built:
   `pipeline.yml` still writes `reports/wikidata-garborg-day-manual.txt` (lines ~471, ~498 append
