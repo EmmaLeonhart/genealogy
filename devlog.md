@@ -47923,3 +47923,23 @@ sent share and no published page ever carried a pair. That is why no pair shows 
 The step now runs beside the growth passes and appends to all three day files, before the Tanba
 strip, the locality gate and the site. (The script's body is stored as a zlib/base64 blob; it
 was decoded and read before being relied on. It reads committed files only.)
+
+## 2026-09-26 — patronymic pairs: why there was no Helgesson, and the language of each
+
+Three faults behind *"there is no Helgesson"*:
+- **The pairs never left the pipeline** (fixed above): composed every run, appended nowhere.
+- **A counterpart counted as existing if it was merely in the plan.** `Q141515178` is
+  `Helgesdotter`; the plan knows `Helgesson` as a `create` with no QID (23 bearers), which the
+  10-a-run name-item cap may never reach, and the pair builder took the plan row as proof the
+  pair was complete. It now counts only a counterpart WITH an item.
+- **No language was stated.** Each new patronymic, and the existing half when it has an item,
+  now carries `P407` *language of work or name* by ending: `-sdotter`/`-sson` Swedish `Q9027`;
+  `-sdatter`/`-sen`/`-søn` Norwegian `Q9043` and Danish `Q9035` (a shared register);
+  `-sdóttir` Icelandic `Q294`; `-npoika`/`-ntytär` Finnish `Q1412`; `-zoon`/`-dochter` Dutch
+  `Q7411`. A bare `-son` (`Helgeson`) could be English or Swedish and gets none.
+
+Run offline against the committed plan: 40 pairs (the cap), most-borne first (`Jensdatter` +
+`Jensen`, `Eriksdatter` + `Eriksen`, `Jonsson` + `Jonsdotter` ...), 70 `P407` lines.
+`Helgesson` is now eligible and comes as the larger ones drain. `build-patronymic-pairs.py` is
+stored as a zlib/base64 blob; it was decoded, edited and repacked, and the round trip is
+byte-identical.
