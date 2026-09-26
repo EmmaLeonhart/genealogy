@@ -48139,3 +48139,14 @@ committed `.rmtree`, taken from git, which is now deleted. `rootsmagic/second_at
 git-ignored (`.gitignore:661 *.rmtree`), as expected.
 - The French-ancestry item follows them to the very end, on Emma's ruling the same day: it reads
   the RootsMagic ancestors.
+
+## 2026-09-26 — what the repo holds, and the tree against the owner's ancestors
+
+`reports/repo-analysis.md`, with every instance in `reports/repo-individuals-by-source.csv` and
+`reports/exports-vs-owner-ancestors.csv`. Read through derived tables and file names only. The
+merged tree holds 2,250,893 people from 32,266 files, led by the chain seeds (551,440) and the swept
+pages (356,998). 9,708 of the 9,991 known ancestors are maternal (the Bure line), and 51% of the tree
+descends from them; none descends from a paternal ancestor, which points at missing child links.
+Most export campaigns are seeded outside the owner's ancestry. The per-source sum came up 253,482
+short, which traced to a merge-report defect (`6a06af2298`): shared file names overwrote each
+other's counts.

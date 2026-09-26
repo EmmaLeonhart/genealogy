@@ -34,7 +34,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   the list with `build-chain-batch.py --skip-covered` (27,808 left) and upload it as a file; set
   `C.i` from `localStorage.chains_cursor`. The run is finished when `i >= of` and `C.failed` is
   empty, so `C.reseedFailed()` is owed at the end.
-- **Analyse what the repo holds, then the synoptic tree.** A real analysis of where individuals are in the repository and what the distribution is. Then analyse the synoptic tree: how the descendant exports and the rest relate to Emma's newfound ancestors, who are far more widespread across Europe through Emma's mother's side, the Bure clan. That is the line Emma wants the story told through, though both sides matter. First read this repo's own rules on how its data may be read, and read it only that way.
 - **Resolve places to Wikidata items.** A later pipeline stage: take the places of birth, death, marriage and so on (FamilySearch standardises them) and resolve each to its Wikidata item so they link properly, as part of a comprehensive ontology.
 - **Reverse pipeline: from Wikidata to GEDCOM.** Query Wikidata with SPARQL to find individuals and build GEDCOMs from them, the reverse of the GEDCOM-to-Wikidata work.
 - **File these in `todo.md` as context for later, not as work now:** Chinese surnames and their bottlenecks, for the Gaiad writing; shrines.order.life for the Shinto wiki scripts, with temples.order.life redirecting there; a religious-buildings database beyond Wikidata; every deity treated as having a genealogy.
