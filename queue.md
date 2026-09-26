@@ -29,6 +29,7 @@ the tool not being throttled correctly."*
 
 ## Now
 
+- **Fix this queue's shape: 2 findings from ontology-harness's shape check.** line 14, heading "⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS...": priority-inflation (heading: ⛔, all capitals; position is the priority, so drop the claim of precedence). line 14, heading "⛔ NO EDITS WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS...": text-only-section (no items, 12 lines of text; a heading with no items is a banner; rulings go in CLAUDE.md, history in devlog.md). The rules are `../docs/queue-shape.md` (the parent repo). Fix them the way this repo's own queue rules say, then delete this item.
 - **The ration and the pacing, seen working end to end.** Edit run `36054472568` (dispatched
   2026-09-24, 500, live) is the first test: confirm names -> 30 people -> ring go out in order,
   20-50 s apart, and what stops it.
