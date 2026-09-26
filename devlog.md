@@ -48017,3 +48017,29 @@ run. Fixed in `961601d99b`.
 
 This entry and the queue deletion are a separate commit from `d47496f4d5` because a failed
 `git pull` short-circuited the `&&` chain that should have carried them.
+
+## 2026-09-26 — standardized labels in the sixteen scripts
+
+The queue item named sixteen languages. Four had engines since 2026-08-31 (`ru`, `el`, `hi`, `ar`
+in `scripts/translit_scripts.py`), but nothing emitted them to Wikidata: that builder only wrote a
+report, and today's batch carried 0 labels in any of these languages over 861 creations.
+
+- **Twelve new engines** (`8686369735`), letter for letter from the Latin form under the module's
+  standard (an imperfect transcription is acceptable, a different name is not):
+  - alphabets `uk`, `hy`, `ka`, `zgh`;
+  - abjads `fa`, `he`;
+  - abugidas `bn`, `ta`;
+  - syllabaries `chr`, `iu`, `am`, `dv`, over one syllable cutter.
+  "Ethiopian" is Amharic (`am`) and "Maldivian" is Dhivehi (`dv`). Georgian is never upper-cased
+  (Python would turn it into Mtavruli). Tamil takes a final pulli. Tifinagh reads a vowel `y` as `ⵉ`.
+- **Wired into creation** (`4eb771952b`): `standard_script_labels()` in `build-garborg-day.py`
+  writes one label per script into each CREATE block, right after `ko`. A label that is not wholly
+  Latin, or carries an unknown-name marker (`NN`, `NN1`), gets none. Roman numerals and initials
+  keep their Latin letters. A cased script follows the source token's case, so `von` stays lower
+  case. The labels ride inside the one create call, so the edit count does not change.
+- **Tests**: `tests/test_translit_scripts.py` checks that every script's output is in its own
+  Unicode script with the word count intact, plus the three script-specific rules. The same
+  conditions were checked directly (not with pytest) and hold.
+
+Existing items are not relabelled: the 2026-08-31 builder scoped the four scripts to 43,680
+existing items, and label edits on existing items stay under `LABEL_EDIT_CAP`.
