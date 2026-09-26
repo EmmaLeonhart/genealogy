@@ -106,7 +106,13 @@ API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 #: 400 -> 1000 on 2026-09-17, because the batch outgrew it: 411 composed against a 400
 #: ceiling and a 100 limit, so two thirds of every day was handed to a person. Ruled that
 #: day: *"Run all 411"*. The ceiling exists to stop a runaway, not to ration the work.
-MAX_EDITS_PER_RUN = 1000
+#: ⛔ **1000 -> 500 on 2026-09-26, shintowiki-scripts' cap** (`_DEFAULT_MAX_EDITS`), which it
+#: sets from the same arithmetic as the gap below: GitHub kills a hosted job at six hours
+#: whatever `timeout-minutes` says, and at a 35 s mean gap 500 edits is ~4.9 h while 1000 is
+#: ~9.7 h. The schedule already passed `limit=500`; a hand dispatch could still ask for 1000
+#: and be cut off halfway, as one was on 2026-09-19. A run that stops short resumes from
+#: the receipt.
+MAX_EDITS_PER_RUN = 500
 
 #: ⛔ **PACING, TAKEN FROM `shintowiki-scripts`** (`modern-quickstatements/direct_daily_edits.py`),
 #: ruled 2026-09-24: *"use the shintowiki-scripts rate limiting since it works really really
