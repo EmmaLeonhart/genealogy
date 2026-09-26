@@ -86,6 +86,11 @@ jobs:
             /out/patronymic-identifications.html
             /out/duplicate-surnames.html
             /out/duplicate-name-items-we-made.html
+            /reports/garborg-qids.tsv
+            /reports/derived-family.csv.gz
+            /reports/derived-facts.csv.gz
+            /reports/derived-labels.csv.gz
+            /reports/familysearch-zipper-pairs.tsv
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
@@ -101,6 +106,13 @@ jobs:
 
       - name: Build the site
         run: PYTHONPATH=src python scripts/build-pages-site.py
+
+      # One page per person with a Wikidata item, adapted from order.life (queue, 2026-09-26).
+      # Built here at deploy time and never committed. A failure here must not hold back the
+      # batch page, which is still the site's front door.
+      - name: Build the people pages
+        continue-on-error: true
+        run: PYTHONPATH=src python scripts/build-pages-site.py --people
 
       # Fail loudly rather than publishing an empty page. A site that builds to nothing looks
       # like a working deploy, which is the failure mode this repo keeps hitting in other places.

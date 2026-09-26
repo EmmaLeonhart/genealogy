@@ -660,3 +660,6 @@ reports/description-audit.csv
 gedcom/familysearch/MBW7-P7H.log
 *.rmtree
 *.rmtree-journal
+
+# Per-person pages: built by pages.yml at deploy time, never committed.
+/out/site/people/
