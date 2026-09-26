@@ -48255,3 +48255,18 @@ not at a read order.
 one more was merged away: `Q141524083` *wife of Sigurd Onarheim*, now `Q141517313`. So 2 of 57, and
 Emma's reading of Alfheid as a near-isolated case holds. No code change: creating one item per Geni
 profile is the rule, and the merges were the right correction.
+
+## 2026-09-26 — place of birth and death: our reading as the value, the source's string as P1932
+
+Every creation now carries `P19` *place of birth* and `P20` *place of death* where
+`reports/place-qids.tsv` reads the person's place. The value is our reading, and the qualifier
+`P1932` *object named as* holds the exact source string, with the usual Geni reference. For example
+`LAST P19 Q255148 P1932 "Gjesdal, Rogaland, Norway"`. A string that resolved only as far as its
+country is left out as too coarse; a string that was just a country is stated as written. Checked
+on the trial cache: `Gjesdal, Rogaland, Norway` gives `Q255148`, `Norway` gives `Q20`,
+`Stockholm, Stockholms län, Sverige` gives the county `Q104231`, and `Bø` gives nothing.
+
+**Places of marriage are NEEDS-DECISION (Emma):** on Wikidata a place of marriage is itself a
+qualifier (`P2842` on the `P26` spouse statement), and a qualifier cannot carry its own `P1932`.
+So the item's model does not carry over as written: either the place goes on without the source
+string, or the raw text needs another home.

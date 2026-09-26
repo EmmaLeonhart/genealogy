@@ -1187,6 +1187,30 @@ def life_description(facts_row, places_row):
     return out[:DESC_MAX].rstrip(" -,")
 
 
+
+_PLACE_QIDS = None
+
+
+def place_qid(raw):
+    """The item `reports/place-qids.tsv` reads `raw` as, or `""` when it reads nothing usable.
+
+    A string that resolved no further than its country (`Stokka, Gjesdal, Rogaland, Norge` reaching
+    only `Norge`) is too coarse to state as where somebody was born, so it is left out; a string
+    that WAS just a country (`Norway`) is stated as written.
+    """
+    global _PLACE_QIDS
+    if _PLACE_QIDS is None:
+        _PLACE_QIDS = {}
+        path = ROOT / "reports" / "place-qids.tsv"
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    depth, parts = int(row.get("depth") or 0), int(row.get("parts") or 0)
+                    if row.get("qid") and (depth >= 2 or parts == 1):
+                        _PLACE_QIDS[row["place"]] = row["qid"]
+    return _PLACE_QIDS.get(raw, "") if raw else ""
+
+
 def _places_table():
     """`{geni_id: {"birth_place", "death_place"}}` from the file the merge writes beside the tree.
 
@@ -8044,6 +8068,16 @@ def main():
             if iso and prec:
                 lines.append(f"LAST\t{prop}\t{iso}/{prec}"
                              f"{date_quals(mod, iso, prec, end)}{ref(g)}")
+        # ⛔ **PLACE OF BIRTH AND DEATH: OUR READING AS THE VALUE, THE SOURCE'S STRING AS `P1932`.**
+        # Ruled 2026-09-26: *"use the qualifier object named as to give whatever the actual string
+        # was in the source and then our interpretation of the string."* The reading comes from
+        # `reports/place-qids.tsv` (`scripts/resolve-places.py`), so every value stays checkable
+        # against the text it was read from.
+        for prop, key in (("P19", "birth_place"), ("P20", "death_place")):
+            raw = " ".join(((_PLACES.get(g) or {}).get(key) or "").split())
+            qid = place_qid(raw)
+            if qid:
+                lines.append(f'LAST\t{prop}\t{qid}\tP1932\t"{qs(raw)}"{ref(g)}')
         # **`LAST` IS valid as a VALUE, and this batch never used it.**
         #
         # Reported 2026-08-25: two-way relationship adding at creation time is completely
