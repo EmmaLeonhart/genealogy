@@ -782,6 +782,16 @@ def read_reverted_labels():
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="	"):
             out.add((row["qid"], row["lang"]))
+    # ⛔ **AND THE SLOTS A HUMAN CORRECTED AFTER OUR VALUE WENT LIVE.** Measured 2026-09-27 from
+    # the item histories (Emma: a correction on Wikidata is evidence, not a gap): 42 corrected by
+    # Emma by hand, 5 by other editors, and 12 changed by a merge or restore, of the label slots
+    # whose live value differs from what we emitted. `reports/corrected-label-slots.tsv` is
+    # committed and only grows; `reverted-labels.tsv` above is rebuilt every run.
+    corrected = ROOT / "reports" / "corrected-label-slots.tsv"
+    if corrected.exists():
+        with open(corrected, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                out.add((row["qid"], row["lang"]))
     return out
 
 
