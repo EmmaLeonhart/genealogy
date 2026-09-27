@@ -48717,3 +48717,11 @@ Each edit was judged against the universe as it stood when it was made, not toda
 - **53 edits on 15 items truly outside**, none carrying the QuickStatements tag (35,690 of the window's edits carry it): merges (`Q55230238`, `Q141521481`, `Q141529261`, `Q141456302`), `mul`/`en` labels set by hand (`Q126691474` Bojan, `Q141475617`, `Q136783900`, `Q136817141`, `Q21051279` Ziehvater, `Q98697743` Matts Boberg), `P1889` *different from* `Q21051279` on three items, and one `P21`. These are hand edits under the account, not the pipeline.
 
 So the cause of a live breach is not in the pipeline for the judged window. What is live is the lag above: a batch composed right after a creation can hold lines on the new item that `check-batch-locality.py` then strips, which delays those edits a day but sends nothing outside. Every non-inside edit is listed in `reports/edits-outside-universe.csv`.
+
+## 2026-09-27 -- the stem-name relabels undone, and the stem-name rule deleted
+
+Emma's decision (queue, 2026-09-27): `Q141560585` keeps "Ols Kolnes", `Q141524363` keeps "Ols father of Karen", `Q141447158` becomes "Jans" (not "Jans abu Anna", not NN), `Q141566035` keeps "Ols Orre", and only `Q141522207` stays NN (her own reading). The given-name item `Q141561983` "Ols" and its `P735` links stay. Live labels on 2026-09-27: all five "Ols" people carry their Ols labels and `P735` Ols, and `Q141447158` reads "Jans abu Anna".
+
+Done: the NN relabel rows for `Q141560585`, `Q141524363` and `Q141447158` are out of `reports/label-applications.tsv`; `Q141522207`'s `mul` NN row stays; `reports/forced-labels.tsv` sets `Q141447158` `mul` and `en` to "Jans" while the live label differs. I first asked Emma this again by AskUserQuestion without reading her decision already in the queue. That was my mistake.
+
+**The cause, deleted:** `namemodel.is_stem_name` (added 2026-09-26) classified a rare first name ending in the genitive `-s` (`Ols`, `Pers`, `Jons`) as not a name when a child's patronymic matched, so the person was treated as unknown: the rule that reached Ols Orre. It is removed with its call in `classify_fields` and its constants; `Ols Orre` now classifies as given name `Ols` plus family name `Orre`. Nothing else used it.
