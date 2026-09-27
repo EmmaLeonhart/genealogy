@@ -1230,8 +1230,8 @@ def test_a_marriage_place_goes_on_P26_as_P2842_and_P6375():
     src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
     assert r'''return f'\tP2842\t{qid}\tP6375\tund:"{qs(raw)}"' if qid else ""''' in src
     assert 'add(q, "P26", our_items[sp], g, marriage_qualifiers(g, sp))' in src
-    assert r"""lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g)}")""" in src
-    assert 'reciprocal.append((our_items[sp], "P26", g, _mq))' in src
+    assert r"""lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g, 'spouse', sp)}")""" in src
+    assert 'reciprocal.append((our_items[sp], "P26", g, _mq, ("spouse", sp)))' in src
     text = BATCH.read_text(encoding="utf-8")
     for line in text.splitlines():
         if "\tP2842\t" in line or "\tP6375\t" in line:
