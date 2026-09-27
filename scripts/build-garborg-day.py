@@ -7878,14 +7878,23 @@ def main():
         # So the ladder is fixed and has no bottom rung that emits nothing:
         #
         #     1. the life description        `circa 1518 Bergen, Norway - 1580`
-        #     2. the relationship phrase     `daughter of Arne Olaus Fjørtoft Garborg`
-        #     3. THE GENI ID                 `Geni 6000000000757999620`
+        #     2. the occupation              `Kyrkoherde` (added 2026-09-26)
+        #     3. the relationship phrase     `daughter of Arne Olaus Fjørtoft Garborg`
+        #     4. THE GENI ID                 `Geni 6000000000757999620`
         #
-        # Rung 3 is unique by construction -- it is the primary key of this whole project --
+        # Rung 4 is unique by construction -- it is the primary key of this whole project --
         # so two items of ours can never again collide on label plus description. It is a
         # pointer rather than a sentence, which is the point: it describes the record we hold
         # when nothing is known about the person, instead of describing nobody.
         _desc = life_description(f, _PLACES.get(g))
+        # ⛔ **RUNG 2 IS THE OCCUPATION, ruled 2026-09-26:** with no dates to describe a person by,
+        # the occupation string is the first fallback, before the relationship phrase and the Geni
+        # id. A RESOLVED occupation would give its English label, as a place does; nothing
+        # resolves occupations yet, so it is the raw string, the first of the `|`-separated values.
+        if not _desc:
+            _occ = ((f.get("occupations") or "").split(" | ")[0]).strip()
+            if _occ and _occ.casefold() not in {"unknown", "ukjent", "okänd", "?", "nn"}:
+                _desc = _occ[:DESC_MAX].rstrip(" -,")
         if not _desc:
             _rel = describe_all(g, facts, father, mother, referred_to_as, table,
                                 children, spouses, siblings,

@@ -48397,3 +48397,11 @@ which holds the queue there until she confirms.
   `life_description` uses it through `place_label`. Checked: `Gjesdal, Rogaland, Norway` becomes
   `Gjesdal Municipality`, and `Stokka` stays `Stokka`. The same rule for occupations is the next
   queue item.
+
+## 2026-09-26 — the description ladder: occupation before the relationship phrase and the Geni id
+
+A new person's description is now: the life description (dates and places), else **the
+occupation**, else the relationship phrase, else `Geni <id>`. The occupation is the first of the
+`|`-separated values in `derived-facts.csv` (205,270 people have one), with unknown markers
+skipped, and it is the raw string: nothing resolves occupations yet, and a resolved occupation
+would give its English label the way a place now does (Emma's rule, 2026-09-26).
