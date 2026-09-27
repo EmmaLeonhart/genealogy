@@ -1273,6 +1273,24 @@ def cite(g, relation=None, relative=None):
     return fs_ref if src == "fs" else geni + fs_ref
 
 
+def cite_sibling(a, b, fam_rows):
+    """The reference for `a P3373 b`: a database gives a sibling link when it links BOTH to the
+    same parent (`build-relationship-sources-backfill.reference_for` applies the same rule).
+    Siblings with no shared parent on record stay `S2600`, as every sibling was cited before."""
+    fa, ma = _parents(a, fam_rows)
+    fb, mb = _parents(b, fam_rows)
+    shared = [(rel, par) for rel, pa, pb in (("father", fa, fb), ("mother", ma, mb))
+              for par in pa if par in pb]
+    pairs = [(family_source(a, rel, par), family_source(b, rel, par)) for rel, par in shared]
+    geni = not pairs or any(all(x != "fs" for x in pr) for pr in pairs)
+    fs = any(all(x != "geni" for x in pr) for pr in pairs)
+    fs_id = _FS_IDS.get(a) or _FS_IDS.get(b, "")
+    out = f'\tS2600\t"{a}"' if geni else ""
+    if fs and fs_id:
+        out += f'\tS2889\t"{fs_id}"'
+    return out
+
+
 _DATE_SOURCES = None
 
 
@@ -7447,10 +7465,13 @@ def main():
 
 
     def ref(g, relation=None, relative=None):
+        if relation == "sibling" and relative:
+            return cite_sibling(g, relative, fam_rows)
         return cite(g, relation, relative)
 
-    #: `P22`/`P25`/`P26`/`P40` read from the subject's side, for `family_source`.
-    RELATION_OF = {"P22": "father", "P25": "mother", "P26": "spouse", "P40": "child"}
+    #: `P22`/`P25`/`P26`/`P40`/`P3373` read from the subject's side, for `family_source`.
+    RELATION_OF = {"P22": "father", "P25": "mother", "P26": "spouse", "P40": "child",
+                   "P3373": "sibling"}
     _geni_of_qid = {q: gg for gg, q in our_items.items()}
 
     # ---- 1. everything missing from people who ALREADY have QIDs ------------
@@ -7900,7 +7921,7 @@ def main():
                     continue
                 kin = sibling_kinship(geni_of[q], geni_of[v], fam_rows, facts)
                 if kin:
-                    lines.append(f"{q}\tP3373\t{v}{kin}{ref(geni_of[q])}")
+                    lines.append(f"{q}\tP3373\t{v}{kin}{ref(geni_of[q], 'sibling', geni_of[v])}")
                     repaired += 1
                     if repaired >= SIBLING_KINSHIP_REPAIR_CAP:
                         break
@@ -8343,7 +8364,8 @@ def main():
             raw = " ".join(((_PLACES.get(g) or {}).get(key) or "").split())
             qid = place_qid(raw)
             if qid:
-                lines.append(f'LAST\t{prop}\t{qid}\tP1932\t"{qs(raw)}"{ref(g)}')
+                _ev = "BIRT PLAC" if prop == "P19" else "DEAT PLAC"
+                lines.append(f'LAST\t{prop}\t{qid}\tP1932\t"{qs(raw)}"{cite_date(g, _ev, raw)}')
         # `P106` *occupation* the same way: our reading as the value, the source string as `P1932`.
         _occ_raw = ((f.get("occupations") or "").split(" | ")[0]).strip()
         _occ_qid = occupation_of(_occ_raw)[0]
@@ -8395,9 +8417,10 @@ def main():
                     continue
                 _siblings_emitted.append(("LAST", our_items[sib]))
                 lines.append(f"LAST\tP3373\t{our_items[sib]}"
-                             f"{sibling_kinship(g, sib, fam_rows, facts)}{ref(g)}")
+                             f"{sibling_kinship(g, sib, fam_rows, facts)}"
+                             f"{ref(g, 'sibling', sib)}")
                 reciprocal.append((our_items[sib], "P3373", g,
-                                   sibling_kinship(sib, g, fam_rows, facts)))
+                                   sibling_kinship(sib, g, fam_rows, facts), ("sibling", sib)))
         for kid in sorted(children.get(g, ())):
             if our_items.get(kid) in editable:
                 lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g, 'child', kid)}")

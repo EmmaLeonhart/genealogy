@@ -137,3 +137,40 @@ def test_a_date_cites_the_database_that_gives_it(tmp_path):
     assert cite_date("1", "DEAT", "ABT  1761") == '\tS2889\t"AAA"'
     assert cite_date("1", "DEAT", "1760") == '\tS2600\t"1"'
     assert cite_date("2", "BIRT", "1701") == '\tS2600\t"2"'
+
+
+def test_a_sibling_cites_the_database_that_links_both_to_a_shared_parent(tmp_path):
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
+                         if isinstance(n, ast.FunctionDef)
+                         and n.name in ("family_source", "cite_sibling", "_parents"))
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "derived-family-sources.csv").write_text(
+        "geni_id,relation,relative,source\n"
+        "2,father,1,both\n5,mother,3,fs\n6,mother,3,fs\n6,fs_id,FFF,fs\n", encoding="utf-8")
+    ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {}}
+    exec(code, ns)
+    rows = {"2": {"fathers": "1"}, "4": {"fathers": "1"}, "5": {"mothers": "3"},
+            "6": {"mothers": "3"}, "7": {}}
+    sib = ns["cite_sibling"]
+    assert sib("2", "4", rows) == '\tS2600\t"2"'           # only child 2 is linked in FamilySearch
+    assert sib("6", "5", rows) == '\tS2889\t"FFF"'         # FamilySearch links both to mother 3
+    assert sib("2", "7", rows) == '\tS2600\t"2"'           # no shared parent on record
+
+
+def test_the_merge_records_places_beside_dates(tmp_path):
+    import sys
+    sys.path.insert(0, str(REPO / "src"))
+    from genimerge import merge
+    (tmp_path / "familysearch").mkdir()
+    (tmp_path / "geni").mkdir()
+    (tmp_path / "familysearch" / "r.ged").write_text(
+        "0 HEAD\n0 @I1@ INDI\n1 BIRT\n2 DATE 1700\n2 PLAC Klepp, Norway\n0 TRLR\n", encoding="utf-8")
+    (tmp_path / "geni" / "a.ged").write_text(
+        "0 HEAD\n0 @I1@ INDI\n1 BIRT\n2 PLAC Klepp,  Norway\n0 TRLR\n", encoding="utf-8")
+    _doc, report = merge.merge_files([tmp_path / "familysearch" / "r.ged",
+                                      tmp_path / "geni" / "a.ged"], slim=True)
+    got = {k: sorted(v) for k, v in report.date_sources.items()}
+    assert got[("1", "BIRT PLAC", "Klepp, Norway")] == ["fs", "geni"]
+    assert got[("1", "BIRT", "1700")] == ["fs"]

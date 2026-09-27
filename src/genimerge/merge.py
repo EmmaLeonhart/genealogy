@@ -394,10 +394,13 @@ def merge_files(
                 gid = record.xref[2:-1]
                 for event in ("BIRT", "DEAT"):
                     node = record.get(event)
-                    date = node.get("DATE") if node is not None else None
-                    value = " ".join((date.value or "").split()) if date is not None else ""
-                    if value:
-                        date_sources.setdefault((gid, event, value), set()).add(kind)
+                    # The date, and the place under the same event (`BIRT PLAC`), which the
+                    # composer cites the same way; read before the prune drops `PLAC`.
+                    for tag, key in (("DATE", event), ("PLAC", event + " PLAC")):
+                        sub = node.get(tag) if node is not None else None
+                        value = " ".join((sub.value or "").split()) if sub is not None else ""
+                        if value:
+                            date_sources.setdefault((gid, key, value), set()).add(kind)
             yield record
 
     for path in paths:
