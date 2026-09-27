@@ -117,3 +117,10 @@ def test_already_present_is_a_success_not_a_failure():
         "The statement has already a reference with hash 1a2b3c")
     assert not edit_run.is_already_present("The save has failed.")
     assert not edit_run.is_already_present("")
+
+
+def test_creations_are_at_least_a_minute_apart():
+    # Ruled 2026-09-27: "an absolute floor in time between the creation of items: 1 minute".
+    assert edit_run.CREATION_FLOOR >= 60
+    src = (REPO / "scripts" / "wikidata-edit-run.py").read_text(encoding="utf-8")
+    assert 'CREATION_FLOOR - (time.monotonic() - last_create)' in src

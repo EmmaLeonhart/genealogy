@@ -123,6 +123,15 @@ MAX_EDITS_PER_RUN = 500
 #: six-hour job ceiling.
 MIN_GAP, MAX_GAP = 20, 50
 
+#: ⛔ **AN ABSOLUTE FLOOR OF ONE MINUTE BETWEEN ITEM CREATIONS. Ruled 2026-09-27:** *"make it so
+#: that the CICD editing pipeline has an absolute floor in time between the creation of items:
+#: 1 minute. That should be an absolute floor."* The working reading is that the limit Wikidata
+#: enforces is on the RATE of creations, not a daily count, so the 20-50 s gap above let two
+#: creations land closer together than a minute. The floor is measured from when the previous
+#: create was SENT, refused or not, and holds whatever the gap between other edits is. Interleaving
+#: non-creating edits into that wait is queued, not done.
+CREATION_FLOOR = 60
+
 #: Wikidata saying *slow down*: stop the run at once rather than spend four more refusals
 #: finding out. Tomorrow's run resumes from the receipt.
 RATE_LIMITED = ("ratelimited", "no-automatic-entity-id", "429 Too Many Requests")
@@ -1244,6 +1253,7 @@ def main() -> int:
     consecutive = 0
     # Seeded from the receipt, so a create skipped as already-applied still answers
     # the LAST that points at it.
+    last_create = float("-inf")
     for e in edits[:limit]:
         # ONE BAD EDIT MUST NOT COST THE DAY. An unattended run that stopped on the
         # first refusal would lose the rest of the batch to something as ordinary
@@ -1258,6 +1268,11 @@ def main() -> int:
             failed[e["id"]] = f"skipped: depends on {blocked[0]}, which failed"
             print(f"       {e['id']}  {e['kind']:<9} SKIPPED (needs {blocked[0]})")
             continue
+        if args.live and e.get("kind") == "create":
+            _wait = CREATION_FLOOR - (time.monotonic() - last_create)
+            if _wait > 0:
+                time.sleep(_wait)
+            last_create = time.monotonic()
         try:
             qid = session.apply(e, token, minted, delay=args.delay)
         except EditFailed as exc:

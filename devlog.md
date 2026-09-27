@@ -48614,3 +48614,7 @@ the day before assumed transliteration was easy, and it is not.
 ## 2026-09-27 -- queue shape: the RootsMagic gate reworded
 
 The parent repo's shape check flagged the RootsMagic gate item as status-in-place ("Ruled 2026-09-26:"). The wording now attributes the instruction instead ("(Emma, 2026-09-26)"); the gate itself is unchanged. The fix item is deleted.
+
+## 2026-09-27 -- a one-minute floor between creations in the sender
+
+Emma: the CI sender's limits are probably a rate on creations, not a daily cap. `wikidata-edit-run.py` now waits until at least `CREATION_FLOOR` (60 s) has passed since the previous create was sent, on live runs, whatever the 20-50 s gap between other edits is. A test in `test_claim_merge.py` pins it. Two queue items were added before the RootsMagic gate: unique label+description pairs for NN people, and the interleaving of creations with other edits, with an analysis of the limits.
