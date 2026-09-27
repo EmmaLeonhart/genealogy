@@ -1245,3 +1245,23 @@ def test_a_marriage_place_goes_on_P26_as_P2842_and_P6375():
     for line in text.splitlines():
         if "\tP2842\t" in line or "\tP6375\t" in line:
             assert re.search(r'\tP26\t\S+\tP2842\tQ\d+\tP6375\tund:"[^"]+"', line), line
+
+
+def test_half_sibling_kinship_comes_from_the_family_objects():
+    # Ruled 2026-09-26, grounded 2026-09-27: half only for children of two families sharing one
+    # parent with a different KNOWN other parent each; same family means no qualifier.
+    import ast
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
+                       if (isinstance(n, ast.FunctionDef) and n.name == "sibling_kinship")
+                       or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") == "KINSHIP"
+                                                             for t in n.targets)))
+    ns = {"HALF_SIBLINGS": {("a", "b"): "paternal", ("b", "a"): "paternal"}}
+    exec(code, ns)
+    facts = {"b": {"sex": "F"}, "a": {"sex": "M"}, "c": {"sex": "M"}}
+    assert ns["sibling_kinship"]("a", "b", {}, facts) == "\tP1039\tQ19595228"   # paternal half-sister
+    assert ns["sibling_kinship"]("b", "a", {}, facts) == "\tP1039\tQ19595226"   # paternal half-brother
+    assert ns["sibling_kinship"]("a", "c", {}, facts) == ""                      # same family: none
+    # the guard that keeps a duplicate family for one couple from reading as a second marriage
+    assert "if len(o1) != 1 or len(o2) != 1 or o1 == o2:" in src

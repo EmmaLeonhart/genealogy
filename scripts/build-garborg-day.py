@@ -1411,30 +1411,27 @@ def _parents(g, fam_rows):
     return split(row.get("fathers") or row.get("father")), split(row.get("mothers") or row.get("mother"))
 
 
+#: `(a, b) -> "paternal" | "maternal"` for half-siblings, filled from the family objects in `main`.
+HALF_SIBLINGS = {}
+
+
 def sibling_kinship(subject, sibling, fam_rows, facts):
     """The `P1039` qualifier fragment for `sibling` as the subject's half-sibling, or `""`.
 
-    ⛔ **STRICT, RULED 2026-09-26.** Only when EACH of the two has exactly one father and exactly
-    one mother, all four known, and they share exactly one of them: the same father and a
-    different mother is a *paternal* half-sibling, the same mother and a different father a
-    *maternal* one. Nothing else is labelled -- not full siblings, and not any person with two
-    fathers or two mothers or another mixed combination. Those are edge cases for the queued
-    analysis, which is to ground this in the GEDCOM family objects rather than recorded parents.
+    ⛔ **FROM THE FAMILY OBJECTS. Ruled 2026-09-26 (Emma): siblings are about the GEDCOM family
+    objects, and the family objects are the core thing** (grounded 2026-09-27). Two children of the
+    SAME family are siblings with no qualifier, whether full or unknown. Two children of DIFFERENT
+    families are half-siblings only when those families share one parent and each has a different,
+    known other parent; the shared parent's sex makes it paternal or maternal. `HALF_SIBLINGS` holds
+    those pairs (built in `main`, where the family maps are read). The recorded-parent rule this
+    replaces could not tell a second family from a duplicate of the same couple.
     """
-    fs, ms = _parents(subject, fam_rows)
-    fb, mb = _parents(sibling, fam_rows)
-    if not (len(fs) == len(ms) == len(fb) == len(mb) == 1):
-        return ""
-    if fs == fb and ms != mb:
-        kind = "paternal"
-    elif ms == mb and fs != fb:
-        kind = "maternal"
-    else:
+    kind = HALF_SIBLINGS.get((subject, sibling))
+    if not kind:
         return ""
     sex = ((facts.get(sibling) or {}).get("sex") or "").upper()
     qid = KINSHIP.get((kind, sex))
     return f"\tP1039\t{qid}" if qid else ""
-
 
 def _places_table():
     """`{geni_id: {"birth_place", "death_place"}}` from the file the merge writes beside the tree.
@@ -7327,6 +7324,35 @@ def main():
             for b in kids:
                 if a != b:
                     siblings[a].add(b)
+    # ⛔ **HALF-SIBLINGS, FROM THE FAMILY OBJECTS** (see `sibling_kinship`). Children of two
+    # different families sharing one parent, where each family has a different KNOWN other parent,
+    # so a duplicate family for the same couple (a FamilySearch render beside a Geni export) is
+    # never read as a second marriage. Linked as siblings with `P1039` paternal/maternal half:
+    # 1,128 such pairs among our items were never linked at all (measured 2026-09-27).
+    _fams_of_parent = collections.defaultdict(list)
+    for fam, parents in fam_p.items():
+        for p in parents:
+            _fams_of_parent[p].append(fam)
+    for p, fams in _fams_of_parent.items():
+        if len(fams) < 2:
+            continue
+        side = "paternal" if (facts.get(p, {}).get("sex") or "").upper() == "M" else (
+            "maternal" if (facts.get(p, {}).get("sex") or "").upper() == "F" else "")
+        if not side:
+            continue
+        for i, f1 in enumerate(fams):
+            o1 = set(fam_p.get(f1, ())) - {p}
+            for f2 in fams[i + 1:]:
+                o2 = set(fam_p.get(f2, ())) - {p}
+                if len(o1) != 1 or len(o2) != 1 or o1 == o2:
+                    continue
+                for a in fam_c.get(f1, ()):
+                    for b in fam_c.get(f2, ()):
+                        if a != b and b not in siblings[a]:
+                            siblings[a].add(b)
+                            siblings[b].add(a)
+                            HALF_SIBLINGS[(a, b)] = side
+                            HALF_SIBLINGS[(b, a)] = side
 
     def _best_parent(candidates):
         """The parent worth pointing at: one with a QID, else a real profile, else the first."""
