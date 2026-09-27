@@ -48290,3 +48290,6 @@ failed five tests; the last green run was `120df951fc` that morning.
 - `test_the_contiguous_group_matches_what_is_known_to_be_outside_it`: not from these changes. The
   edit universe grew to 10,799 items against a hand-set bound of 10,000, a bound meant to catch
   an escape into the 1.34-million world tree. Raising it is Emma's call, so it is left as is.
+- The universe-size bound is removed on Emma's ruling the same evening: *"the universe could
+  contain all wikidata genealogy items in the future. Size is irrelevant."* The named inside and
+  outside assertions stay; they are what catch an escaping walk.

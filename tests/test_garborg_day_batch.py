@@ -1048,8 +1048,10 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
         assert qid not in group, (
             f"{qid} {who} is in the group and is recorded as outside it — the walk has escaped "
             f"the account's own items, most likely through Bureus into the world tree")
-    assert len(group) < 10_000, (
-        f"the group is {len(group):,} items; that is the world tree, not the neighbourhood")
+    # ⛔ **NO SIZE BOUND.** Ruled 2026-09-26: *"the universe could contain all wikidata
+    # genealogy items in the future. Size is irrelevant."* A `< 10_000` stood here and failed at
+    # 10,799 on ordinary growth. What catches a walk escaping is the named people above, who
+    # must stay outside, not a count.
 
 
 def _carries_marker():
