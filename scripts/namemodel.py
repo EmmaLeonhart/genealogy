@@ -2756,6 +2756,57 @@ def _usage_of(token: str) -> str:
     return got[0][1] if got else ""
 
 
+
+#: A first name used fewer times than this as a FIRST given name, across the corpus, is rare.
+STEM_NAME_RARE = 50
+#: A name used at least this often as a first given name is common enough to have a genitive.
+STEM_BASE_COMMON = 500
+_STEM_DATA = None
+
+
+def is_stem_name(token: str) -> bool:
+    """True for a "first name" that is only a child's patronymic minus its ending.
+
+    Ruled 2026-09-26, a general rule rather than a list: Geni names some unnamed fathers by the
+    genitive stem of their child's patronymic. `Q141522207` is *Ols*, father of Britta
+    **Ols**dotter, and it went out as `Ols NN` with a given-name item `Ols` (`Q141561983`) made for
+    it. So a token is not a given name when it ends in the genitive `-s`, its patronymic form
+    (`Olsdotter`, `Persson`, `Jonsson`) is an attested patronymic, and it is a first given name
+    fewer than `STEM_NAME_RARE` times: `Ols` 8, `Pers` 5, `Jons` 18, and it is the genitive of
+    a common name (see below). `Nils` is a first name 10,431
+    times and stays one, although `Nilsson` is a patronymic too.
+
+    Reads `reports/given-name-attestation.tsv` and the patronymics in
+    `reports/name-item-plan.csv`; with either missing, nothing is refused.
+    """
+    global _STEM_DATA
+    if _STEM_DATA is None:
+        first, patronymics = {}, set()
+        att = ROOT / "reports" / "given-name-attestation.tsv"
+        plan = ROOT / "reports" / "name-item-plan.csv"
+        if att.exists() and plan.exists():
+            with open(att, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    first[row["token"]] = int(row.get("first_given") or 0)
+            with open(plan, encoding="utf-8", newline="") as fh:
+                patronymics = {r["token"].casefold() for r in csv.DictReader(fh)
+                               if r.get("usage") == "patronymic"}
+        _STEM_DATA = (first, patronymics)
+    first, patronymics = _STEM_DATA
+    t = (token or "").strip(".,")
+    if len(t) < 3 or not t.endswith("s") or not patronymics or t not in first:
+        return False
+    if first[t] >= STEM_NAME_RARE:
+        return False
+    low = t.casefold()
+    if not any(low + end in patronymics for end in ("dotter", "datter", "son", "sen", "døtter")):
+        return False
+    # **And it must be the GENITIVE OF A COMMON NAME**, which is what separates `Ols` (Ola, Ole,
+    # Olof), `Pers` (Per) and `Jons` (Jon) from real names that merely end in `-s`: `Tørris`,
+    # `Ellis`, `Nis`, `Magnús` and `Þorgils` all passed the test above and are names.
+    stem = t[:-1]
+    return any(first.get(stem + end, 0) >= STEM_BASE_COMMON for end in ("", "a", "e", "of"))
+
 def own_given_name(fields) -> str:
     """The person's OWN given name, or `""` when the field does not carry one.
 
@@ -3095,6 +3146,9 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             # the Latin genitive stands where a middle name would and is not one.
             out.append((token, "patronymic", 0))
         elif _after_connector:
+            out.append((token, "unknown", 0))
+        elif is_stem_name(token):
+            # `Ols`, father of Britta Olsdotter: a child's patronymic stem, not a name.
             out.append((token, "unknown", 0))
         elif not _has_marker:
             ordinal += 1

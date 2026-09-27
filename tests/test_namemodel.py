@@ -1571,3 +1571,19 @@ def test_a_married_particle_name_is_one_name():
 def test_a_patronymic_particle_is_untouched():
     tokens = namemodel.classify_fields("Abisha", "ben Phinhas")
     assert ("ben Phinhas", "patronymic", 0) in tokens
+
+
+# --- a child's patronymic stem is not a given name (ruled 2026-09-26) --------
+
+@pytest.mark.parametrize("token", ["Ols", "Pers", "Jons"])
+def test_a_patronymic_stem_is_not_a_given_name(token):
+    """`Q141522207` is *Ols*, father of Britta Olsdotter: a stem, not a name."""
+    if not (namemodel.ROOT / "reports" / "given-name-attestation.tsv").exists():
+        pytest.skip("no attestation census")
+    assert namemodel.is_stem_name(token)
+    assert ("given" not in {u for _t, u, _o in namemodel.classify_fields(token, "")})
+
+
+@pytest.mark.parametrize("token", ["Nils", "Tørris", "Ellis", "Nis", "Magnús", "Þorgils", "Hans"])
+def test_a_real_name_ending_in_s_stays_a_name(token):
+    assert not namemodel.is_stem_name(token)

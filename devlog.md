@@ -48293,3 +48293,25 @@ failed five tests; the last green run was `120df951fc` that morning.
 - The universe-size bound is removed on Emma's ruling the same evening: *"the universe could
   contain all wikidata genealogy items in the future. Size is irrelevant."* The named inside and
   outside assertions stay; they are what catch an escaping walk.
+
+## 2026-09-26 — Q141522207 "father of Britta Olsdotter" / "Ols NN"
+
+- **Which run:** a pasted QuickStatements batch (`temporary_batch_1789978237165`), 2026-09-21 at
+  7:07 AM PDT, from Geni profile `6000000178277552977`, whose only name on Geni is `Ols`.
+- **Why a placeholder became the label:** `Ols` is not a name. It is the genitive stem of his
+  daughter's patronymic *Olsdotter*, used as a first name 8 times in the tree against thousands for
+  Ola/Olof/Ole. The model read it as a given name, so `mul` became `Ols NN`. The other 14 languages
+  got the relational form, and at that time a relational label did not lead with the given name.
+- **Why the English variants disagreed:** the item had no `en-us`/`en-ca` label, so Wikidata showed
+  the `mul` fallback `Ols NN` beside `en` "father of …". Since today creations carry `en-us`
+  whenever `en` differs from `mul`.
+- **Fix, a general rule as Emma chose:** `namemodel.is_stem_name` refuses a first-name token when it
+  ends in the genitive `-s`, its patronymic form is attested, it is a first given name fewer than
+  50 times, and it is the genitive of a common name. That catches 76 tokens and 88 uses (`Jons`,
+  `Johans`, `Ols`, `Knuts`, `Pers`, `Eriks` …). A first version without the last condition also
+  caught real names (`Tørris`, `Ellis`, `Nis`, `Magnús`, `Þorgils`) and was tightened. Tests pin
+  both sides.
+- **The item and the others:** we had made a given-name item `Q141561983` "Ols" and linked five
+  people to it. Emma chose to queue that (end of `## Now`). Of our items with a relational `en`
+  label, 66 have something in `GIVN`, much of it not a name (`Female`, `(Frille)`, `Bror`), so no
+  mass relabel was done.

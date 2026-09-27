@@ -34,7 +34,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   the list with `build-chain-batch.py --skip-covered` (27,808 left) and upload it as a file; set
   `C.i` from `localStorage.chains_cursor`. The run is finished when `i >= of` and `C.failed` is
   empty, so `C.reseedFailed()` is owed at the end.
-- **Analyse Q141522207, created about 19:15 on 2026-09-25 and clearly wrong.** https://www.wikidata.org/wiki/Q141522207, as Emma screenshotted it seconds after creation (`../inbox/2026-09-25-screenshots/Q141522207-1915.png` in the parent repo): en label "father of Britta Olsdotter", fr "père de Britta Olsdotter", en-ca and en-us "Ols NN", no descriptions. So the en and fr labels are placeholders describing a relationship, not a name, and the en-ca/en-us label takes "Ols" from the daughter's patronymic as if it were a given name. Find which run and code path created it, why a placeholder became the label, why the English variants disagree with en, and fix the item plus every other item made the same way. This was created by the current edit runs, so check whether they should keep going before it is fixed.
 - **The ration and the pacing, seen working end to end.** When this needs an edit run, START ONE
   IMMEDIATELY (`gh workflow run wikidata-edits.yml -f dry_run=false -f limit=500 -f
   batch=reports/wikidata-garborg-day-auto.txt`); never wait for the schedule. Then read its log
