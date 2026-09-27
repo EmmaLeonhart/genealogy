@@ -1587,3 +1587,11 @@ def test_a_patronymic_stem_is_not_a_given_name(token):
 @pytest.mark.parametrize("token", ["Nils", "Tørris", "Ellis", "Nis", "Magnús", "Þorgils", "Hans"])
 def test_a_real_name_ending_in_s_stays_a_name(token):
     assert not namemodel.is_stem_name(token)
+
+
+def test_a_married_honorific_names_the_husband_not_her():
+    # Q141574870 is `Mrs. ANDERS /Vang/`; ANDERS is her husband, not her given name (2026-09-27).
+    for givn in ("Mrs. ANDERS", "Mrs Ole", "Fru Tore", "Mme Jean", "Frau Hans"):
+        assert namemodel.names_a_relative(givn), givn
+        assert namemodel.own_given_name({"givn": givn}) == "", givn
+    assert namemodel.own_given_name({"givn": "Anna"}) == "Anna"

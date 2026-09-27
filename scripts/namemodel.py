@@ -2733,7 +2733,18 @@ def names_a_relative(field: str) -> bool:
         return False
     markers = {m.casefold() for m in _unknown_markers()}
     low = [tok.casefold().strip(".,") for tok in tokens]
+    # ⛔ **A MARRIED WOMAN'S HONORIFIC NAMES HER HUSBAND.** Found 2026-09-27 on `Q141574870`,
+    # recorded as `Mrs. ANDERS /Vang/`: the relabel pass read `ANDERS` as her given name and
+    # wrote `ANDERS, wife of Anders Vang`. `Mrs. ANDERS`, `Mrs Ole Jaatun`, `Fru Tore` are the
+    # wife of Anders, Ole, Tore -- the same shape as `NN ektefelle Søren`, said with a title.
+    if low[0] in MARRIED_HONORIFICS:
+        return True
     return low[0] in markers and any(tok in relationship_words() for tok in low[1:])
+
+
+#: Titles that put a woman under her HUSBAND's name: `Mrs. John Smith`, `Fru Tore`. Counted in
+#: `display-names.csv` 2026-09-27: Mrs 341, Fru 86, Frau 10, Madame 6, Mme 4 opening a `GIVN`.
+MARRIED_HONORIFICS = frozenset({"mrs", "mme", "madame", "fru", "frau"})
 
 
 _MARKERS: frozenset | None = None
