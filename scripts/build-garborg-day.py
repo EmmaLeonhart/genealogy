@@ -1214,11 +1214,8 @@ def place_qid(raw):
 
 
 #: `P1039` *kinship to subject* on a `P3373` *sibling* statement: what the VALUE is to the
-#: subject. Labels read live 2026-09-26.
+#: subject. Labels read live 2026-09-26. Half-siblings only; see `sibling_kinship`.
 KINSHIP = {
-    ("full", "M"): "Q131277844",        # full brother
-    ("full", "F"): "Q131277857",        # full sister
-    ("full", ""): "Q41798757",          # full sibling
     ("paternal", "M"): "Q19595226",     # paternal half-brother
     ("paternal", "F"): "Q19595228",     # paternal half-sister
     ("maternal", "M"): "Q19595227",     # maternal half-brother
@@ -1226,28 +1223,33 @@ KINSHIP = {
 }
 
 
-def sibling_kinship(subject, sibling, father, mother, facts):
-    """The `P1039` qualifier fragment for `sibling` as the subject's sibling, or `""`.
+def _parents(g, fam_rows):
+    row = fam_rows.get(g) or {}
+    split = lambda v: tuple(x.strip() for x in (v or "").split(" | ") if x.strip())
+    return split(row.get("fathers") or row.get("father")), split(row.get("mothers") or row.get("mother"))
 
-    ⛔ Queued 2026-09-26 from Wikidata's own modelling (`sibling` = Anscar of Spoleto, `kinship to
-    subject` = *paternal half-brother*): when the parents are known, say whether a sibling is full
-    or a paternal or maternal half-sibling. **All four parents must be known**; with one missing,
-    full and half cannot be told apart and nothing is said.
+
+def sibling_kinship(subject, sibling, fam_rows, facts):
+    """The `P1039` qualifier fragment for `sibling` as the subject's half-sibling, or `""`.
+
+    ⛔ **STRICT, RULED 2026-09-26.** Only when EACH of the two has exactly one father and exactly
+    one mother, all four known, and they share exactly one of them: the same father and a
+    different mother is a *paternal* half-sibling, the same mother and a different father a
+    *maternal* one. Nothing else is labelled -- not full siblings, and not any person with two
+    fathers or two mothers or another mixed combination. Those are edge cases for the queued
+    analysis, which is to ground this in the GEDCOM family objects rather than recorded parents.
     """
-    fs, ms = father.get(subject), mother.get(subject)
-    fb, mb = father.get(sibling), mother.get(sibling)
-    if not (fs and ms and fb and mb):
+    fs, ms = _parents(subject, fam_rows)
+    fb, mb = _parents(sibling, fam_rows)
+    if not (len(fs) == len(ms) == len(fb) == len(mb) == 1):
         return ""
-    if fs == fb and ms == mb:
-        kind = "full"
-    elif fs == fb:
+    if fs == fb and ms != mb:
         kind = "paternal"
-    elif ms == mb:
+    elif ms == mb and fs != fb:
         kind = "maternal"
     else:
         return ""
     sex = ((facts.get(sibling) or {}).get("sex") or "").upper()
-    sex = sex if sex in ("M", "F") else ""
     qid = KINSHIP.get((kind, sex))
     return f"\tP1039\t{qid}" if qid else ""
 
@@ -7451,7 +7453,7 @@ def main():
                     continue
                 _siblings_emitted.append((q, our_items[sib]))
                 add(q, "P3373", our_items[sib], g,
-                    sibling_kinship(g, sib, father, mother, facts))
+                    sibling_kinship(g, sib, fam_rows, facts))
         for sp in sorted(spouses.get(g, ())):
             if sp in our_items:
                 add(q, "P26", our_items[sp], g)
@@ -7726,8 +7728,8 @@ def main():
     print(f"{len(seen)} statements added to existing items")
 
     # ⛔ **THE SIBLING KINSHIP REPAIR, 40 A DAY.** Ruled 2026-09-26: the sibling statements this
-    # repo already made get `P1039` *kinship to subject* at the sibling cap's pace. 530 were
-    # qualifiable when measured. The line repeats the existing statement WITH the qualifier;
+    # repo already made get `P1039` *kinship to subject* at the sibling cap's pace, under the same
+    # strict half-sibling rule as new statements (`sibling_kinship`). The line repeats the existing statement WITH the qualifier;
     # the sender attaches a qualifier to the live claim additively (`wbsetqualifier` on its GUID),
     # so it never makes a second statement. A statement that already carries `P1039` is skipped,
     # read from the live items, so the pass stops by itself once they are all done.
@@ -7748,7 +7750,7 @@ def main():
                 v = v.get("id") if isinstance(v, dict) else None
                 if not v or v not in geni_of:
                     continue
-                kin = sibling_kinship(geni_of[q], geni_of[v], father, mother, facts)
+                kin = sibling_kinship(geni_of[q], geni_of[v], fam_rows, facts)
                 if kin:
                     lines.append(f"{q}\tP3373\t{v}{kin}{ref(geni_of[q])}")
                     repaired += 1
@@ -8196,9 +8198,9 @@ def main():
                     continue
                 _siblings_emitted.append(("LAST", our_items[sib]))
                 lines.append(f"LAST\tP3373\t{our_items[sib]}"
-                             f"{sibling_kinship(g, sib, father, mother, facts)}{ref(g)}")
+                             f"{sibling_kinship(g, sib, fam_rows, facts)}{ref(g)}")
                 reciprocal.append((our_items[sib], "P3373", g,
-                                   sibling_kinship(sib, g, father, mother, facts)))
+                                   sibling_kinship(sib, g, fam_rows, facts)))
         for kid in sorted(children.get(g, ())):
             if our_items.get(kid) in editable:
                 lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g)}")

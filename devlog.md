@@ -48341,3 +48341,8 @@ maternal half-sister `Q19595229`.
   already carrying `P1039` in the live items. The sender attaches the qualifier to the live claim
   (`wbsetqualifier` on its GUID), so no second statement is made, and the pass ends by itself when
   the 530 are done. The 4 statements with no shared parent are not touched.
+- **Tightened the same evening, on Emma's ruling:** only half-siblings are labelled, and only when
+  each person has exactly one father and exactly one mother and they share exactly one. Full
+  siblings, missing parents, and anyone with two fathers or two mothers get nothing; those are
+  edge cases for the family-object analysis now queued last. On our live statements that leaves
+  12 paternal and 2 maternal half-siblings for the 40-a-day repair.
