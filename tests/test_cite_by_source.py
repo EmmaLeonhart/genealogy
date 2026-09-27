@@ -55,21 +55,38 @@ def test_the_backfill_never_cites_geni_for_a_familysearch_only_link():
     code = "\n\n".join(
         ast.get_source_segment(src, n) for n in tree.body
         if (isinstance(n, ast.FunctionDef) and n.name in ("reference_for", "qs"))
-        or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") in ("TAB", "RELATION_OF")
+        or (isinstance(n, ast.Assign) and any(getattr(t, "id", "") in ("TAB", "RELATION_OF",
+                                                                        "FS_FAMILY_PREFIX")
                                               for t in n.targets)))
     ns = {}
     exec(code, ns)
     ref = ns["reference_for"]
     links = {("2", "father", "1"): "both", ("2", "mother", "3"): "fs", ("5", "mother", "3"): "fs"}
     fs_ids = {"2": "BBB"}
-    father, mother = {"2": "1", "4": "1"}, {"2": "3", "5": "3"}
-    args = (links, fs_ids, father, mother)
+    # the families each is a CHILD of: 2 and 4 share Geni family 77; 2 and 5 share FamilySearch
+    # family FSX1; 2 and 6 share both kinds
+    famc = {"2": {"77", "FSX1", "FSX2", "88"}, "4": {"77"}, "5": {"FSX1"}, "6": {"FSX2", "88"},
+            "7": {"99"}}
+    args = (links, fs_ids, famc)
     assert ref("P22", "2", "1", *args) == '\tS2600\t"2"\tS2889\t"BBB"'
     assert ref("P25", "2", "3", *args) == '\tS2889\t"BBB"'
     assert ref("P26", "2", "9", *args) == '\tS2600\t"2"'
-    # siblings: a database gives the link only when it links BOTH to the shared parent
+    # siblings: the source of the family object they are both children of (ruled 2026-09-26)
     assert ref("P3373", "2", "4", *args) == '\tS2600\t"2"'
     assert ref("P3373", "2", "5", *args) == '\tS2889\t"BBB"'
+    assert ref("P3373", "2", "6", *args) == '\tS2600\t"2"\tS2889\t"BBB"'
+
+
+def test_the_backfill_siblings_are_children_of_one_family_object():
+    src = (REPO / "scripts" / "build-relationship-sources-backfill.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = [ast.get_source_segment(src, n) for n in tree.body
+            if isinstance(n, ast.FunctionDef) and n.name == "sibling_index"][0]
+    ns = {}
+    exec(code, ns)
+    # 1 and 2 are CHIL of F10; 3 shares a parent with them but sits in another family, F11
+    sib = ns["sibling_index"]({"1": {"F10"}, "2": {"F10"}, "3": {"F11"}})
+    assert sib == {"1": {"2"}, "2": {"1"}}
 
 
 GENI = """0 HEAD

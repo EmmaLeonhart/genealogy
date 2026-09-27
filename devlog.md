@@ -48775,3 +48775,9 @@ A new pass in `build-garborg-day.py`, just before the ring, runs over our items 
 ## 2026-09-27 -- the label-history read started, rate limited
 
 Emma said yes, both in the session and through ontology-harness's AskUserQuestion. The read covers 1,029 items (the 1,621 label slots that differ from what we sent): one `prop=revisions` request per item, a 1.5 s pause and `maxlag=5`, saved per item so it resumes. A human edit counts as a correction to leave alone, and an unapplied batch line as ours. Lesson recorded: a decision that is Emma's goes to her as an AskUserQuestion. The question left in terminal text did not reach her, and the top item sat waiting on it. The OK item is deleted.
+
+## 2026-09-27 -- siblings who share no family object
+
+Measured over the live `P3373` statements on our items, against the family objects in `out/family-structure.tsv.gz` (`fam_c`/`famc`): 316 pairs are children of a shared family, 3 have a side with no family object, 2,406 have an end outside the ledger, and 10 share no family object. Only 1 of the 10 carries our Geni citation: `Q819556`-`Q1045160`, which share a parent but no family. The other 9 are uncited, from other editors or from before our batches cited. None is removed.
+
+**Which part of the pipeline makes such pairs:** not the composer, which builds siblings from `fam_c`, children of the same family, exactly as Emma ruled on 2026-09-26. It was `build-relationship-sources-backfill.py`, whose `sibling_index` counted anyone sharing a father or a mother, so it attested and cited siblings the family objects do not hold. It now reads the family objects (`family_index`, `sibling_index(famc)`), and a sibling's source is the source of the family they share (`FS…` is FamilySearch's, any other is Geni's). Tests in `tests/test_cite_by_source.py`. The item is closed; the next item, grounding kinship in the family objects, follows on from it.
