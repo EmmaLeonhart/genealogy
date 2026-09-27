@@ -48335,3 +48335,9 @@ maternal half-sister `Q19595229`.
   **4 with no shared parent at all, which are suspect sibling claims**; 2,419 whose other side is
   not ours. Not done: the additions path skips statements already live, so this needs its own
   paced pass, and the pace is Emma's call.
+- **The repair, 40 a day** (Emma's choice the same evening): after the additions loop the composer
+  repeats up to `SIBLING_KINSHIP_REPAIR_CAP` = 40 existing sibling statements a day WITH the
+  `P1039` qualifier. Only statements between two of our items, on an editable item, and not
+  already carrying `P1039` in the live items. The sender attaches the qualifier to the live claim
+  (`wbsetqualifier` on its GUID), so no second statement is made, and the pass ends by itself when
+  the 530 are done. The 4 statements with no shared parent are not touched.

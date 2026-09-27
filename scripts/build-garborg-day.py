@@ -84,6 +84,8 @@ ROOT = Path(__file__).resolve().parent.parent
 #: batch, so it is shared with `build-missing-reciprocals.py`, and the overflow is carried
 #: rather than dropped: the statements are correct, there are just too many at once.
 SIBLING_CAP = 60
+#: Existing sibling statements given `P1039` a day (ruled 2026-09-26: 40, like siblings).
+SIBLING_KINSHIP_REPAIR_CAP = 40
 _siblings_emitted = []
 
 #: ⛔ **`P3448` STEPPARENT, ruled 2026-09-15:** *"our general relationship emitter stuff should be
@@ -7722,6 +7724,38 @@ def main():
             if fixed != value and f'{q}\tL{code}\t"{qs(fixed)}"' not in lines:
                 lines.append(f'{q}\tL{code}\t"{qs(fixed)}"')
     print(f"{len(seen)} statements added to existing items")
+
+    # ⛔ **THE SIBLING KINSHIP REPAIR, 40 A DAY.** Ruled 2026-09-26: the sibling statements this
+    # repo already made get `P1039` *kinship to subject* at the sibling cap's pace. 530 were
+    # qualifiable when measured. The line repeats the existing statement WITH the qualifier;
+    # the sender attaches a qualifier to the live claim additively (`wbsetqualifier` on its GUID),
+    # so it never makes a second statement. A statement that already carries `P1039` is skipped,
+    # read from the live items, so the pass stops by itself once they are all done.
+    geni_of = {q: g for g, q in our_items.items()}
+    repaired = 0
+    for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json")):
+        if repaired >= SIBLING_KINSHIP_REPAIR_CAP:
+            break
+        for q, entity in sorted(json.loads(shard.read_text(encoding="utf-8")).items()):
+            if repaired >= SIBLING_KINSHIP_REPAIR_CAP:
+                break
+            if q not in editable or q not in geni_of:
+                continue
+            for claim in ((entity or {}).get("claims") or {}).get("P3373", []):
+                if "P1039" in (claim.get("qualifiers") or {}):
+                    continue
+                v = (((claim.get("mainsnak") or {}).get("datavalue") or {}).get("value") or {})
+                v = v.get("id") if isinstance(v, dict) else None
+                if not v or v not in geni_of:
+                    continue
+                kin = sibling_kinship(geni_of[q], geni_of[v], father, mother, facts)
+                if kin:
+                    lines.append(f"{q}\tP3373\t{v}{kin}{ref(geni_of[q])}")
+                    repaired += 1
+                    if repaired >= SIBLING_KINSHIP_REPAIR_CAP:
+                        break
+    print(f"sibling kinship repair: {repaired} existing statement(s) qualified "
+          f"(cap {SIBLING_KINSHIP_REPAIR_CAP})")
     lines.append("")
 
     # ---- 2. the next ring ---------------------------------------------------
