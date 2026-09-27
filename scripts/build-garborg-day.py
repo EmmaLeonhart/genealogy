@@ -1224,6 +1224,55 @@ def place_qid(raw):
 
 _PLACE_LABELS = {}
 
+_FAMILY_SOURCES = None
+_FS_IDS = {}
+
+
+def family_source(g, relation, relative):
+    """`fs`, `both` or `geni`: which database gives the link `g` -[relation]-> `relative`.
+
+    ⛔ **A LINK ONLY FAMILYSEARCH GIVES IS NOT CITED TO GENI** (the citation queue item,
+    2026-09-27). The merged tree carries FamilySearch renders on Geni xrefs, so without this every
+    such link went out as `S2600`: a false citation. `derive-family.py` writes the provenance to
+    `reports/derived-family-sources.csv` from the family records (`@FFS…@` against
+    `@F<digits>@`); a link with no row there is Geni's alone. A missing file means `geni`
+    everywhere, which is how every link was cited before.
+    """
+    global _FAMILY_SOURCES
+    if _FAMILY_SOURCES is None:
+        _FAMILY_SOURCES = {}
+        path = ROOT / "reports" / "derived-family-sources.csv"
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh):
+                    if row["relation"] == "fs_id":
+                        _FS_IDS.setdefault(row["geni_id"], row["relative"])
+                    else:
+                        _FAMILY_SOURCES[(row["geni_id"], row["relation"],
+                                         row["relative"])] = row["source"]
+    return _FAMILY_SOURCES.get((g, relation, relative), "geni")
+
+
+def cite(g, relation=None, relative=None):
+    """The reference fragment for a statement about `g`, by the source that gives it.
+
+    `S2600` Geni for a Geni link and for everything not yet traced (dates, places, siblings);
+    `S2889` FamilySearch for a link only FamilySearch gives; both snaks in ONE reference when
+    both give it (a second line would reach the sender as a second, duplicate statement, since
+    a CREATE's claims are sent as a list). The FamilySearch id is `g`'s own, else the relative's;
+    a FamilySearch-only link with neither goes out uncited rather than cited to Geni.
+    """
+    geni = f'\tS2600\t"{g}"'
+    if not relation:
+        return geni
+    src = family_source(g, relation, relative)
+    if src == "geni":
+        return geni
+    fs = _FS_IDS.get(g) or _FS_IDS.get(relative, "")
+    fs_ref = f'\tS2889\t"{fs}"' if fs else ""
+    return fs_ref if src == "fs" else geni + fs_ref
+
+
 _MARRIAGE_PLACES = None
 
 
@@ -7371,8 +7420,12 @@ def main():
               f"({dist.get(ring_order[0], '?')}-{dist.get(ring_order[-1], '?')} steps)")
 
 
-    def ref(g):
-        return f'\tS2600\t"{g}"'
+    def ref(g, relation=None, relative=None):
+        return cite(g, relation, relative)
+
+    #: `P22`/`P25`/`P26`/`P40` read from the subject's side, for `family_source`.
+    RELATION_OF = {"P22": "father", "P25": "mother", "P26": "spouse", "P40": "child"}
+    _geni_of_qid = {q: gg for gg, q in our_items.items()}
 
     # ---- 1. everything missing from people who ALREADY have QIDs ------------
     # Asked 2026-08-24 whether to add properties to items that already exist: yes.
@@ -7489,7 +7542,8 @@ def main():
         #
         # The CREATE path already had this right -- it emits `LAST P2600 "..." P1810 "..."`
         # with no reference -- so this is the two paths disagreeing, not a new rule.
-        reference = "" if prop == "P2600" else ref(g)
+        reference = ("" if prop == "P2600" else
+                     ref(g, RELATION_OF.get(prop), _geni_of_qid.get(value)))
         lines.append(f"{q}\t{prop}\t{value}{qual}{reference}")
 
     def absent(q, prop):
@@ -8290,13 +8344,14 @@ def main():
             # A link to an item we may not edit goes in NEITHER direction: the reciprocal would
             # be an edit on it, and a one-way link is what the both-directions test refuses.
             if target and our_items.get(target) in editable:
-                lines.append(f"LAST\t{prop}\t{our_items[target]}{ref(g)}")
-                reciprocal.append((our_items[target], back, g))
+                _rel = (RELATION_OF[prop], target)
+                lines.append(f"LAST\t{prop}\t{our_items[target]}{ref(g, *_rel)}")
+                reciprocal.append((our_items[target], back, g, "", _rel))
         for sp in sorted(spouses.get(g, ())):
             if our_items.get(sp) in editable:
                 _mq = marriage_qualifiers(g, sp)
-                lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g)}")
-                reciprocal.append((our_items[sp], "P26", g, _mq))
+                lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g, 'spouse', sp)}")
+                reciprocal.append((our_items[sp], "P26", g, _mq, ("spouse", sp)))
         # **The cap is 10 a day ACROSS EVERY BATCH, and this site was escaping it.**
         # `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"A builder emitting
         # siblings must count them and stop."* The additions pass counted; this one, on the
@@ -8317,15 +8372,20 @@ def main():
                                    sibling_kinship(sib, g, fam_rows, facts)))
         for kid in sorted(children.get(g, ())):
             if our_items.get(kid) in editable:
-                lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g)}")
+                lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g, 'child', kid)}")
                 sex_of = (facts.get(g, {}) or {}).get("sex", "")
-                reciprocal.append((our_items[kid], "P22" if sex_of == "M" else "P25", g))
+                reciprocal.append((our_items[kid], "P22" if sex_of == "M" else "P25", g, "",
+                                   ("child", kid)))
 
         # **The other direction, in the SAME run.** `Q… P… LAST` -- the subject already
         # exists, so QuickStatements resolves `LAST` to the item created just above.
         # This is what makes the batch two-way instead of leaving one-way links behind.
-        for subject, prop, source, *qual in reciprocal:
-            lines.append(f"{subject}\t{prop}\tLAST{qual[0] if qual else ''}{ref(source)}")
+        # The reciprocal is the same link read from the other end, so it cites the same way;
+        # the fifth element is `(relation, relative)` from the created person's side.
+        for subject, prop, source, *rest in reciprocal:
+            qual = rest[0] if rest else ""
+            rel = rest[1] if len(rest) > 1 else (None, None)
+            lines.append(f"{subject}\t{prop}\tLAST{qual}{ref(source, *rel)}")
 
         # The name model. Ruled 2026-08-24: the names are to be modelled properly, which
         # the earlier version did not do. Only tokens whose item ALREADY exists --
