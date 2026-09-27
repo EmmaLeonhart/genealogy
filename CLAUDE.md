@@ -645,6 +645,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **A generation suffix goes LAST; a regnal ordinal stays put.** It is a fact about the person,
   not about one name string, and it must not reach an item somebody else labelled.
 - **Wikidata's label beats ours.** An existing `mul` is not ours to overwrite.
+- **⛔ A CORRECTION ON WIKIDATA IS EVIDENCE, NOT A GAP. Ruled 2026-09-27.** The pipeline pushes our model onto Wikidata, and that *"goes a bit too far"*: when a human (Emma under the account, or anyone) changes or removes something, the model has to learn from it, not re-assert it. Never re-send a value somebody changed; take the correction back into our data. Emma's hand edits run under the pipeline's own account and are told apart by their tags (`wikidata-ui`, revert tags; batch edits carry `OAuth CID`).
 - **⛔ AN APPLICATION IS APPLIED UNTIL IT IS LIVE, THEN IT IS DATA. Ruled 2026-09-27.** A hand table that pushes a value onto Wikidata (`label-applications.tsv`, `forced-labels.tsv`) sends a row every run until Wikidata holds it, and the run that sees it live removes the row (`retire_applied_labels`). A row that is never retired turns into a claim asserted forever, and it reverts every later hand correction.
 - **⛔ A LANGUAGE LABEL DUPLICATING `mul` IS NOT OUR PROBLEM. A BOT ALREADY DOES IT.** Ruled
   2026-09-13: *"There is a bot that periodically takes language labels that duplicate the
