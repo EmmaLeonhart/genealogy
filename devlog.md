@@ -48638,3 +48638,7 @@ Checked for the citation queue item. `build-garborg-day.py` cites every derived 
 ## 2026-09-27 -- which source gives each family link
 
 First step of the citation item. `derive-family.py` now writes `reports/derived-family-sources.csv`: for every link a FamilySearch family (`@FFS…@`) gives, a row `geni_id, relation, relative, source` with `fs`, or `both` when a Geni family (`@F<digits>@`) gives it too; a Geni-only link has no row. It also writes each person's FamilySearch id from `REFN fs:`. Smoke-tested on the `MBW7-P7H` render (3,103 ids) and on a small mixed tree, which is also the new CI test `tests/test_derive_family_sources.py`. `tree.yml` commits the file on its next rebuild. The citation item keeps the remaining steps.
+
+## 2026-09-27 -- the queue is read from the top, every time
+
+The rule is in CLAUDE.md under Working: re-read `queue.md` from the top of `## Now` on every tick and before every new item, never by line number. This session's work-loop cron already names the first item under `## Now` by position, and its ticks read it with `awk '/^## Now/…'` from the top each time, so the cron prompt needed no change.
