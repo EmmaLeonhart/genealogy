@@ -8898,6 +8898,46 @@ def main():
         print(f"abbreviated female patronymics: {_expanded} value(s) expanded to -dotter")
     kept = _gated
 
+    # And the same `Amul` when the CENSUS expanded the name upstream, at creation: the person's
+    # Geni name had `Pedersdtr.`, the label now reads `Pedersdatter`, and the other long form
+    # goes on as an alias (ruled 2026-09-27). The block's `P2600` names the person.
+    _census = collections.defaultdict(set)
+    _cpath = ROOT / "reports" / "abbreviated-patronymics.csv"
+    if _cpath.exists():
+        with open(_cpath, encoding="utf-8", newline="") as _fh:
+            for _r in csv.DictReader(_fh):
+                if _r.get("expansion"):
+                    _census[_r["geni_id"]].add(_r["expansion"])
+    if _census:
+        _with_alias, _block, _added = [], [], 0
+
+        def _flush():
+            nonlocal _added
+            geni = next((l.split("\t")[2].strip('"') for l in _block
+                         if l.startswith("LAST\tP2600\t")), "")
+            mul = next((l.split("\t")[2] for l in _block if l.startswith("LAST\tLmul\t")), "")
+            aliases = {l.split("\t")[2] for l in _block if l.startswith("LAST\tAmul\t")}
+            _with_alias.extend(_block)
+            for exp in sorted(_census.get(geni, ())):
+                if exp in mul:
+                    swap = (exp[:-6] + "datter") if exp.endswith("dotter") else (
+                        exp[:-6] + "dotter" if exp.endswith("datter") else "")
+                    other = mul.replace(exp, swap) if swap else ""
+                    if other and other not in aliases:
+                        _with_alias.append(f"LAST\tAmul\t{other}")
+                        aliases.add(other)
+                        _added += 1
+            _block.clear()
+
+        for ln in kept:
+            if ln.strip() == "CREATE":
+                _flush()
+            (_block if _block or ln.strip() == "CREATE" else _with_alias).append(ln)
+        _flush()
+        if _added:
+            print(f"abbreviated female patronymics: {_added} creation(s) given the other long form as an Amul")
+        kept = _with_alias
+
     # ⛔ **A DESCRIPTION MAY NOT EQUAL THE LABEL.** Wikibase refuses the whole creation:
     # *"Label and description for language code en can not have the same value."* Edit run
     # `36285263118` (2026-09-26) stopped on five of these in a row after 159 edits. A person with no
