@@ -48490,3 +48490,21 @@ it raises a constraint warning), then counted live on the query service:
   general container for a source string (`Grannes bruk 7. Sola s95 nr 4`), it would assert an
   address that is not one. It fits where a GEDCOM place really is a street address, which is rare
   in this corpus, so it is not worth building now.
+
+## 2026-09-26 — the Q141522207 addendum: stem-named people relabelled, backwards-looking
+
+Emma's reading, via narrative_identity: his given name is Ol(of), deduced from the daughter's
+patronymic *Olsdotter*, and his surname is unknown, so label him by the rules for unknown persons
+and fix the others made the same way, as the Talgje fix did. The forward fix is the stem-name rule
+(`namemodel.is_stem_name`) from earlier today. Backwards, five of our items have a Geni first name
+that is only such a stem. Their labels are queued in `reports/label-applications.tsv`:
+
+| item | was (`mul`) | now |
+| --- | --- | --- |
+| `Q141522207` | Ols NN | `mul` NN (`en` stays *father of Britta Olsdotter*) |
+| `Q141566035` | Ols Orre | NN Orre (`mul` and `en`) |
+| `Q141560585` | Ols Kolnes | NN Kolnes (`mul` and `en`) |
+| `Q141524363` | Ols father of Karen | `mul` NN, `en` *father of Karen* (the SURN field held the phrase) |
+| `Q141447158` | Jans abu Anna | NN (`mul` and `en`). `abu Anna` is *father of Anna*; the other records disagree (`Johan`, `Jansdotter`), so no name is guessed |
+
+The `P735` links to the `Ols` given-name item stay with the item queued for it at the end.
