@@ -132,6 +132,8 @@ def strip(path, allowed, kanji) -> int:
     for line in lines:
         m = SUBJECT.match(line)
         k = LABEL_EDIT.match(line)
+        if wikidata_lockout.touches_protected(line):
+            dropped.append(m.group(1) if m else "protected"); continue
         if m and (m.group(1) not in allowed
                   or m.group(1) in wikidata_lockout.NEVER_EDIT):
             dropped.append(m.group(1)); continue
@@ -182,8 +184,33 @@ def strip(path, allowed, kanji) -> int:
     return len(dropped) + len(orphaned)
 
 
+def strip_protected() -> int:
+    """Remove every line naming the owner's item or a protected Geni profile, from EVERY batch.
+
+    Not only the day files: `wikidata-from-diff.qs` carried `Q141498271 P40 Q140568870` on
+    2026-09-27, so this reads every `reports/*.qs` and `*.txt` batch. It refuses nothing else, so
+    it is safe on files the locality rule does not govern. `wikidata_lockout.PROTECTED_*`.
+    """
+    bad = 0
+    paths = sorted(set((ROOT / "reports").glob("*.qs")) | {ROOT / r for r in BATCHES})
+    for path in paths:
+        if not path.exists():
+            continue
+        lines = path.read_text(encoding="utf-8").split(chr(10))
+        keep = [l for l in lines if not wikidata_lockout.touches_protected(l)]
+        if len(keep) != len(lines):
+            keep, _orphaned = qs_v1.drop_orphaned_creations(keep)
+            path.write_text(chr(10).join(keep), encoding="utf-8")
+            bad += len(lines) - len(keep)
+            print("%s: STRIPPED %d line(s) naming a protected item or Geni profile"
+                  % (path.name, len(lines) - len(keep)))
+    return bad
+
+
 def main() -> int:
     fix = "--fix" in sys.argv
+    if fix:
+        strip_protected()
     allowed = universe()
     if allowed is None:
         print("REFUSING TO PASS: out/wikidata/edit-universe.json is missing or empty, so "

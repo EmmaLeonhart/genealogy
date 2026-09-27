@@ -855,6 +855,12 @@ def _refuse_outside_the_universe(edits, path):
     never = set(wikidata_lockout.NEVER_EDIT)
     for e in edits:
         qid = e.get("qid")
+        if wikidata_lockout.protected_in(e):
+            # ⛔ The owner's item or Geni profile, anywhere in the edit. See `PROTECTED_ITEMS`.
+            print(f"  REFUSED {e.get('id')}: names a protected item or Geni profile "
+                  f"(scripts/wikidata_lockout.PROTECTED_*)")
+            refused.append(qid or e.get("id"))
+            continue
         if qid and qid in never:
             # ⛔ Named items an edit of ours already damaged. Never again, whatever else says.
             print(f"  REFUSED {qid}: scripts/wikidata_lockout.NEVER_EDIT")

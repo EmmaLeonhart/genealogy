@@ -8797,6 +8797,21 @@ def main():
               f"({', '.join(f'{k} {v}' for k, v in _langs_dropped.most_common(8))})")
     kept = _gated
 
+    # ⛔ **NOTHING NAMES THE OWNER'S ITEM OR GENI PROFILE. Ruled 2026-09-27** (*"extremely
+    # dangerous"*): the cycle through the owner's profile put `P40`/`P25` links to `Q140568870` on
+    # strangers. `wikidata_lockout.touches_protected`, one definition read here, by
+    # `check-batch-locality.py` over every batch file, and by the sender.
+    import importlib.util as _ilu
+    _spec = _ilu.spec_from_file_location("wikidata_lockout",
+                                         str(Path(__file__).resolve().parent / "wikidata_lockout.py"))
+    _lockout = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_lockout)
+    _protected = [ln for ln in kept if _lockout.touches_protected(ln)]
+    if _protected:
+        kept = [ln for ln in kept if not _lockout.touches_protected(ln)]
+        print(f"protected: {len(_protected)} line(s) naming the owner's item or a protected Geni "
+              f"profile dropped, e.g. {_protected[0].strip()[:80]}")
+
     # ⛔ **A DESCRIPTION MAY NOT EQUAL THE LABEL.** Wikibase refuses the whole creation:
     # *"Label and description for language code en can not have the same value."* Edit run
     # `36285263118` (2026-09-26) stopped on five of these in a row after 159 edits. A person with no

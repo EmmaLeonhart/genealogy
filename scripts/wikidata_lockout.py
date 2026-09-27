@@ -240,4 +240,34 @@ if __name__ == "__main__":
 #:   scripts/build-garborg-day.py      -- never emits a line whose subject is here
 #:   scripts/check-batch-locality.py   -- CI fails if one reaches a batch anyway
 #:   scripts/wikidata-edit-run.py      -- the sender refuses it hours later
-NEVER_EDIT = frozenset({"Q347480"})
+NEVER_EDIT = frozenset({"Q347480", "Q140568870"})
+
+#: ⛔ **NOTHING MAY POINT AT THE OWNER'S ITEM OR CARRY THE OWNER'S GENI PROFILE. Ruled 2026-09-27**
+#: (*"extremely dangerous"*). Our account sent `P40` child = `Q140568870` (Emma Leonhart) onto
+#: `Q141152512` Eivind Aadnesson Garborg, `P25` mother = `Q140568870` onto `Q9511624` Huaxu, and
+#: `P40` child = Louis the Pious and = Huaxu onto `Q140568870` itself, each cited to a Geni
+#: profile: the cycle through the owner's profile in the merged tree, sent to Wikidata. So a
+#: line is refused wherever these appear in it -- subject, value, qualifier or reference -- not
+#: only as the subject `NEVER_EDIT` covers.
+#:
+#: `6000000195149174838` is the Geni profile the batch tied to Huaxu (`Q9511624 P2600`) with the
+#: mother link cited to it; it is blocked with the owner's until the investigation says what it is.
+PROTECTED_ITEMS = frozenset({"Q140568870"})
+PROTECTED_GENI = frozenset({"6000000087535357291", "6000000195149174838"})
+_PROTECTED = PROTECTED_ITEMS | PROTECTED_GENI
+
+
+def touches_protected(line):
+    """True when a QuickStatements line names a protected item or Geni profile anywhere in it."""
+    if not line or line.lstrip().startswith("#"):
+        return False
+    return any(f.strip().strip('"') in _PROTECTED for f in line.rstrip("\r\n").split("\t"))
+
+
+def protected_in(obj):
+    """True when a parsed edit object carries a protected item or Geni profile anywhere."""
+    if isinstance(obj, dict):
+        return any(protected_in(v) for v in obj.values())
+    if isinstance(obj, (list, tuple)):
+        return any(protected_in(v) for v in obj)
+    return isinstance(obj, str) and obj.strip('"') in _PROTECTED
