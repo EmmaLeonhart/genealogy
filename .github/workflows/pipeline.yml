@@ -55,10 +55,18 @@ on:
     # account has neither `noratelimit` nor `apihighlimits`. Everything past the cap comes back
     # `no-automatic-entity-id`, so the extra runs bought refusals, not people.
     #
-    # 07:23 is the slot kept, and the reason is unchanged: `wikidata-edits.yml` sends at 08:07,
-    # so this lands after the rebuild and before the send. Off the hour because every scheduled
-    # workflow on GitHub fires at :00 and the queue is worst there.
-    - cron: "23 7 * * *"
+    # (07:23 UTC was the slot until 2026-09-27; the Pacific times below replace it.)
+    # ⛔ **06:00 AND 18:00 PACIFIC, EVERY DAY. Ruled 2026-09-26** (queue item): the regular
+    # scheduled runs start at 6 a.m. and 6 p.m. Pacific. GitHub cron is UTC and ignores daylight
+    # saving, so all four UTC hours are scheduled -- 13:00/01:00 under PDT, 14:00/02:00 under
+    # PST -- and a scheduled run whose cron is the other
+    # daylight-saving slot stops at once. It matches the CRON, not the clock, so a start GitHub
+    # delays past the hour still runs. Pinned by
+    # tests/test_pacific_schedule.py on both sides of the switch.
+    - cron: "0 13 * * *"
+    - cron: "0 1 * * *"
+    - cron: "0 14 * * *"
+    - cron: "0 2 * * *"
   # ⛔ `workflow_call`, so `redo-everything.yml` can chain this. A workflow dispatched
   # with GITHUB_TOKEN creates no run, so chaining cannot go through `gh workflow run`.
   workflow_call:
@@ -111,6 +119,12 @@ jobs:
       # NOTICEBOARD_RESUMES): before that date (UTC) the page is not read.
       - id: check
         run: |
+          pacific_slot() { case "$(TZ=America/Los_Angeles date -d "@${NOW:-$(date +%s)}" +%Z):$1" in "PDT:0 13 * * *"|"PDT:0 1 * * *"|"PST:0 14 * * *"|"PST:0 2 * * *") return 0;; esac; return 1; }
+          if [[ "${{ github.event_name }}" == "schedule" ]] && ! pacific_slot "${{ github.event.schedule }}"; then
+            echo "cron '${{ github.event.schedule }}' is the other daylight-saving slot: not 06:00 or 18:00 Pacific today"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           if [[ "$(date -u +%F)" < "2026-10-05" ]]; then
             echo "noticeboard check suspended until 2026-10-05"
             page="suspended"

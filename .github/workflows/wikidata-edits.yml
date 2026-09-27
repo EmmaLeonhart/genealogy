@@ -58,14 +58,20 @@ on:
         # ever bit a dispatch, which is why it survived. A default that is wrong for every
         # caller who does not override it is not a default, it is a trap.
         default: "reports/wikidata-garborg-day-auto.txt"
-  # 08:07 UTC, and the time is chosen rather than arbitrary: pipeline.yml runs at
-  # 01:23/07:23/13:23/19:23, so this lands after the 07:23 rebuild has refreshed
-  # the ledger, regenerated the batch and pushed it. An earlier slot would send a
-  # batch built against a ledger seven hours stale, which is the shape CLAUDE.md
-  # § "The ledger refresh is PART OF THE RUN" is written against. Off the hour so
-  # it does not queue behind everything that fires at :00.
+  # (08:07 UTC was the slot until 2026-09-27, placed after the pipeline's 07:23 rebuild. Both
+  # now start at the same Pacific times, so a run sends the batch the previous rebuild committed.)
   schedule:
-    - cron: "7 8 * * *"
+    # ⛔ **06:00 AND 18:00 PACIFIC, EVERY DAY. Ruled 2026-09-26** (queue item): the regular
+    # scheduled runs start at 6 a.m. and 6 p.m. Pacific. GitHub cron is UTC and ignores daylight
+    # saving, so all four UTC hours are scheduled -- 13:00/01:00 under PDT, 14:00/02:00 under
+    # PST -- and a scheduled run whose cron is the other
+    # daylight-saving slot stops at once. It matches the CRON, not the clock, so a start GitHub
+    # delays past the hour still runs. Pinned by
+    # tests/test_pacific_schedule.py on both sides of the switch.
+    - cron: "0 13 * * *"
+    - cron: "0 1 * * *"
+    - cron: "0 14 * * *"
+    - cron: "0 2 * * *"
 
 concurrency:
   group: wikidata-edits
@@ -138,7 +144,11 @@ jobs:
             echo "the Administrators' noticeboard does not mention 日巫女"
           }
           today=$(date -u +%F)
-          if [[ "$EDITS_HELD" == "yes" ]]; then
+          pacific_slot() { case "$(TZ=America/Los_Angeles date -d "@${NOW:-$(date +%s)}" +%Z):$1" in "PDT:0 13 * * *"|"PDT:0 1 * * *"|"PST:0 14 * * *"|"PST:0 2 * * *") return 0;; esac; return 1; }
+          if [[ "${{ github.event_name }}" == "schedule" ]] && ! pacific_slot "${{ github.event.schedule }}"; then
+            echo "cron '${{ github.event.schedule }}' is the other daylight-saving slot: not 06:00 or 18:00 Pacific today"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$EDITS_HELD" == "yes" ]]; then
             echo "EDITS_HELD=yes - editing is held by hand, nothing runs (not even a dry run)"
             echo "go=false" >> "$GITHUB_OUTPUT"
           elif [[ "$today" < "$START_DATE" ]]; then
