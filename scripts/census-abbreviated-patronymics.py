@@ -99,7 +99,10 @@ OUT = ROOT / "reports" / "abbreviated-patronymics.csv"
 #: `Þorbjörg Ormsdóttir` match as `Ormsd` — the Icelandic full form — and the census offered to
 #: "expand" it to `Ormsdatter`, rewriting an Icelandic name into a Norwegian one. `\w` with
 #: `re.UNICODE` covers `ó`, `ø`, `ä` and the rest.
-ABBREV = re.compile(r"\b(\w+?)(dtr|s(?:d|dr|dt|dtt|dttr))\.?(?!\w)", re.I)
+#: ⛔ `datr`, `dat`, `dotr`, `dott`, `dter` added 2026-09-27: counted in `display-names.csv` that day
+#: (`Andersdatr` 8, `Olsdatr.` 4, `Pettersdat` 3, `Arentsdotr` 2, `Mattsdott` 2, `Sigfridsdter` 2,
+#: `Johansdat.` 1), none of them expanded before; `Q141419773` went out `Ellingsdatr`.
+ABBREV = re.compile(r"\b(\w+?)(dtr|s(?:d|dr|dt|dtt|dttr|datr|dat|dotr|dott|dter))\.?(?!\w)", re.I)
 
 #: The forms added on 2026-09-04. They are held to a stricter standard than `dtr`: see the
 #: `no evidence` guard in `main`.

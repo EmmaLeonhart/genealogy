@@ -8876,11 +8876,11 @@ def main():
     # 2026-09-27** (*"one of the worst things that could be done"*). The census expands each
     # person's own name upstream; what still reaches here is a relative's name copied into a
     # phrase (`son of Anna Olsdtr. Atletveit`) or a person the census does not cover. The
-    # Scandinavian forms (`dtr`, `dttr`, `datr`, `dtt`) are expanded with the ruled default,
+    # Scandinavian forms (`dtr`, `dttr`, `datr`, `dtt`, `dat`, `dotr`, `dott`, `dter`) are expanded with the ruled default,
     # `-dotter` (`-datter` only where the family shows it, which the census decides upstream).
     # Dutch `-dr` is left alone: its long form is `dochter`. An expanded label also gets the
     # other long form as an `Amul`, as ruled.
-    _abbrev = re.compile(r"\b(\w+?s)(dtr|dttr|datr|dtt)\.?(?=[\s,\"]|$)", re.I)
+    _abbrev = re.compile(r"\b(\w+?s)(dtr|dttr|datr|dtt|dat|dotr|dott|dter)\.?(?=[\s,\"]|$)", re.I)
     _expanded, _gated = 0, []
     for ln in kept:
         parts = ln.split("\t")

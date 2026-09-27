@@ -48747,3 +48747,15 @@ The parent repo's shape check flagged "Done 2026-09-27" in the item about the ba
 ## 2026-09-27 -- the other long form as an alias at creation too
 
 A creation whose name the census expanded (`Pedersdtr.` to `Pedersdatter`) now also gets the other long form as an `Amul` (`… Pedersdotter …`). The composer finds the person by the block's `P2600`, looks up their expansion in `reports/abbreviated-patronymics.csv`, and adds the alias at the end of the CREATE block. Before this, only values expanded by the final gate got it.
+
+## 2026-09-27 -- why the abbreviated "daughter" was sticky
+
+The 12 live items that carried an abbreviation, by cause:
+- **5 were created before the per-person census existed, and existing labels were never revisited** (`Q141523518`, `Q141532590`, `Q141548948`, `Q141550288`, `Q141559596`). All five now have a census expansion.
+- **3 were spellings the census did not catch** (`Q141419773` `Ellingsdatr`; `Q141548458` `Jonsdtr`, `Q141550124` `Nielsdtr`, both without a dot). `datr` was not in its pattern. The two dotless `dtr` forms match the pattern, but the person's derived `mul` label read differently from the live one, so no row was made; the composer's final gate now expands any that reach a batch.
+- **1 is a relational label copying a relative's name** (`Q141447199` `son of Anna Olsdtr. Atletveit`); the choice of relative is its own queue item.
+- **2 are labels frozen from an older Geni name that Geni has since corrected** (`Q141216494`, now `N.N. Jacobsdatter Koll` on Geni; `Q141492678`, now `Dorthea Toresdotter Talgje`).
+
+**What kept them alive**, which is Emma's `P1810` lead in a slightly different form: the composer adds the Geni form of the name as the `P1810` qualifier and ALSO as a `mul` alias, and its `mul` consensus reads the item's live labels, so an abbreviated label already on Wikidata was voted back into `mul`. The final gate now expands every label, alias and description value on the way out, so neither route can send an abbreviation again.
+
+**Variants in the Geni names** (`display-names.csv`, given, surname and married-name fields): `-sdtr.` 5,888, `-sdtr` 2,152, `-sdr` 452, `-sd` 347, `-sdr.` 68, `-sd.` 61, `-sdt.` 15, `-sdt` 10, `-sdatr` 8, `-sdatr.` 4, `-sdat` 3, `-sdotr` 2, `-sdott` 2, `-sdter` 2, `-sdat.` 1. The census and the gate now also take `datr`, `dat`, `dotr`, `dott` and `dter`; `-sdr`/`-sd` stay with the census, which already leaves Dutch forms (long form `dochter`) unexpanded without evidence. The item is closed.
