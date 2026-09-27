@@ -706,6 +706,25 @@ jobs:
           # fails here with its name in the log, instead of five rejected pushes and a
           # `cancelled` conclusion that means two different things.
           python scripts/check-file-sizes.py --strict
+          # ⛔ **THE NEWEST GATE, NOT THE ONE THIS RUN STARTED WITH.** Run 36322541253 checked out
+          # its code at 06:28 on 2026-09-27, before the gate on Emma's item existed (07:21), and
+          # its 09:06 commit put four lines naming `Q140568870` back into `wikidata-from-diff.qs`.
+          # A run's own gate is only as new as its checkout, so the protected-item filter is
+          # fetched from main HERE, at commit time, and applied to every batch file. It lives in
+          # /tmp so the fetched copy is never committed over the run's own scripts.
+          git fetch -q --depth=1 --filter=blob:none origin main
+          git show origin/main:scripts/wikidata_lockout.py > /tmp/wikidata_lockout.py
+          python - <<'EOF'
+          import glob, sys
+          sys.path.insert(0, "/tmp")
+          import wikidata_lockout as w
+          for path in sorted(set(glob.glob("reports/*.qs") + glob.glob("reports/wikidata-*-day*.txt"))):
+              lines = open(path, encoding="utf-8").read().split("\n")
+              keep = [l for l in lines if not w.touches_protected(l)]
+              if len(keep) != len(lines):
+                  open(path, "w", encoding="utf-8", newline="").write("\n".join(keep))
+                  print(f"{path}: {len(lines) - len(keep)} line(s) naming a protected item removed at commit")
+          EOF
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A

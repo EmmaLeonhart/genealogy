@@ -243,6 +243,21 @@ jobs:
       - name: Commit the rebuilt tree
         run: |
           python scripts/pack-derived.py
+          # The newest protected-item gate from main, applied at commit time; see the same step in
+          # pipeline.yml (a run whose checkout predates a gate commits without it otherwise).
+          git fetch -q --depth=1 --filter=blob:none origin main
+          git show origin/main:scripts/wikidata_lockout.py > /tmp/wikidata_lockout.py
+          python - <<'EOF'
+          import glob, sys
+          sys.path.insert(0, "/tmp")
+          import wikidata_lockout as w
+          for path in sorted(set(glob.glob("reports/*.qs") + glob.glob("reports/wikidata-*-day*.txt"))):
+              lines = open(path, encoding="utf-8").read().split("\n")
+              keep = [l for l in lines if not w.touches_protected(l)]
+              if len(keep) != len(lines):
+                  open(path, "w", encoding="utf-8", newline="").write("\n".join(keep))
+                  print(f"{path}: {len(lines) - len(keep)} line(s) naming a protected item removed at commit")
+          EOF
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
