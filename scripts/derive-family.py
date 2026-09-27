@@ -17,8 +17,9 @@ Two halves, and they are very different in kind:
 Matching is genealogical only — the governing rule — so nothing here uses a name
 to decide anything. Names are used solely to *label* an invented parent.
 
-Writes `reports/derived-family.csv` (one row per person) and
-`reports/invented-parents.csv` (one row per placeholder). Offline.
+Writes `reports/derived-family.csv` (one row per person),
+`reports/invented-parents.csv` (one row per placeholder) and
+`reports/derived-family-sources.csv` (which source gives a link, see `OUT_SOURCES`). Offline.
 
     py scripts/derive-family.py
 """
@@ -40,6 +41,18 @@ PAIRS = REPO_ROOT / "out" / "wikidata" / "p2600-all.tsv"
 LABELS = REPO_ROOT / "reports" / "derived-labels.csv"
 OUT_PEOPLE = REPO_ROOT / "reports" / "derived-family.csv"
 OUT_INVENTED = REPO_ROOT / "reports" / "invented-parents.csv"
+#: ⛔ **WHICH SOURCE GIVES EACH LINK, SO A CITATION NAMES THE RIGHT ONE** (queue item, 2026-09-27).
+#: The merged tree holds FamilySearch renders beside the Geni exports, with FamilySearch people
+#: written on their Geni xrefs, so `derived-family.csv` alone cannot say whether FamilySearch,
+#: Geni or both state a link, and everything was being cited to Geni. The family record says it:
+#: every FamilySearch family is `@FFS…@` (`render-familysearch-gedcom.py`) and every Geni family
+#: `@F<digits>@`. Rows: `geni_id, relation, relative, source`, with `relation` one of
+#: `father`/`mother`/`spouse`/`child` and `source` `fs` or `both`. A link with no row is Geni's
+#: alone, which keeps the file to the FamilySearch part. One more row per person carrying a
+#: FamilySearch id: `relation` `fs_id`, `relative` the id (from `REFN fs:`), `source` `fs`.
+OUT_SOURCES = REPO_ROOT / "reports" / "derived-family-sources.csv"
+#: The family key drops the leading `@F`, so `@FFS…@` is keyed `FS…` and `@F<digits>@` digits.
+FS_FAMILY_PREFIX = "FS"
 
 csv.field_size_limit(10_000_000)
 
@@ -93,6 +106,7 @@ def main() -> int:
     print(f"reading {MERGED}", flush=True)
     families: dict[str, dict] = {}
     people: set[str] = set()
+    fs_ids: dict[str, str] = {}
     current: str | None = None
     kind = ""
 
@@ -107,7 +121,12 @@ def main() -> int:
                         current, kind = xref[2:-1], "FAM"
                         families[current] = {"husb": "", "wife": "", "chil": []}
                     elif parts[2] == "INDI" and xref.startswith("@I"):
-                        people.add(xref[2:-1])
+                        current, kind = xref[2:-1], "INDI"
+                        people.add(current)
+                continue
+            if kind == "INDI":
+                if line.startswith("1 REFN fs:"):
+                    fs_ids.setdefault(current, line[len("1 REFN fs:"):].strip())
                 continue
             if kind != "FAM" or current is None:
                 continue
@@ -154,9 +173,19 @@ def main() -> int:
 
     shapes: Counter[str] = Counter()
     needs_parents: list[tuple[str, list[str]]] = []
+    link_sources: dict[tuple[str, str, str], set[str]] = defaultdict(set)
 
     for fam_id, fam in families.items():
         husb, wife, chil = fam["husb"], fam["wife"], fam["chil"]
+        src = "fs" if fam_id.startswith(FS_FAMILY_PREFIX) else "geni"
+        if husb and wife:
+            link_sources[(husb, "spouse", wife)].add(src)
+            link_sources[(wife, "spouse", husb)].add(src)
+        for child in chil:
+            for parent, role in ((husb, "father"), (wife, "mother")):
+                if parent:
+                    link_sources[(child, role, parent)].add(src)
+                    link_sources[(parent, "child", child)].add(src)
 
         if husb and wife:
             if wife not in spouses[husb]:
@@ -216,6 +245,18 @@ def main() -> int:
                 " | ".join(fathers.get(person, [])),
                 " | ".join(mothers.get(person, [])),
             ])
+
+    source_rows = sorted(
+        [(p, rel, other, "both" if len(srcs) > 1 else "fs")
+         for (p, rel, other), srcs in link_sources.items() if "fs" in srcs]
+        + [(p, "fs_id", fs, "fs") for p, fs in fs_ids.items()])
+    with open(OUT_SOURCES, "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["geni_id", "relation", "relative", "source"])
+        writer.writerows(source_rows)
+    by_source = Counter(r[3] for r in source_rows if r[1] != "fs_id")
+    print(f"wrote {OUT_SOURCES} ({len(source_rows):,} rows: {by_source['fs']:,} links FamilySearch "
+          f"alone gives, {by_source['both']:,} both give, {len(fs_ids):,} FamilySearch ids)")
 
     def name_of(geni_id: str) -> str:
         return labels.get(geni_id) or geni_id
