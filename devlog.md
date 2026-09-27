@@ -48376,3 +48376,12 @@ minutes. The resolver also saved only at the end, so the capped run kept nothing
   `_description_removals` emits `Q… Den ""` for each, only while the live description still
   equals the recorded text, through the usual locality gate and label cap. The parser turns that
   into an empty `en` description, which Wikidata treats as removal.
+
+## 2026-09-26 — RootsMagic and order.life behind a gate at the end of the queue
+
+Ruled by Emma: RootsMagic is extracting people into `rootsmagic/second_attempt.rmtree` (about
+80,000 when she looked) in a way where any touch of that file costs 48 more hours of running. So
+every RootsMagic and order.life item now sits at the very end: the submodule, the extraction, the
+order.life pass, the French-ancestry look, the order.life merge, and the handoff directory. In
+front of them is one gate item, an AskUserQuestion asking whether the extraction has finished,
+which holds the queue there until she confirms.
