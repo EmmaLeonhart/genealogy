@@ -174,3 +174,24 @@ def test_the_merge_records_places_beside_dates(tmp_path):
     got = {k: sorted(v) for k, v in report.date_sources.items()}
     assert got[("1", "BIRT PLAC", "Klepp, Norway")] == ["fs", "geni"]
     assert got[("1", "BIRT", "1700")] == ["fs"]
+
+
+def test_a_hand_label_row_retires_once_it_is_live(tmp_path):
+    # Ruled 2026-09-27: applied until live, then removed, so a later hand correction stands.
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = [ast.get_source_segment(src, n) for n in tree.body
+            if isinstance(n, ast.FunctionDef) and n.name == "retire_applied_labels"][0]
+    ns = {}
+    exec(code, ns)
+    f = tmp_path / "label-applications.tsv"
+    f.write_text("qid\tkind\tlang\tvalue\tsource\n"
+                 "Q1\tL\tmul\tOls Orre\tEmma\n"        # live: retires
+                 "Q2\tL\tmul\tJans\tEmma\n"            # live differs: stays
+                 "Q3\tL\ten\tX\tEmma\n"                # live unknown: stays
+                 "Q4\tA\tmul\tAlias\tEmma\n", encoding="utf-8")  # alias: stays
+    live = {("Q1", "mul"): "Ols Orre", ("Q2", "mul"): "Jans abu Anna"}
+    assert ns["retire_applied_labels"](f, live) == 1
+    rows = f.read_text(encoding="utf-8").splitlines()
+    assert [r.split("\t")[0] for r in rows[1:]] == ["Q2", "Q3", "Q4"]
+    assert ns["retire_applied_labels"](f, live) == 0

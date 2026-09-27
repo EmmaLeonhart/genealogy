@@ -1711,6 +1711,41 @@ def _description_overwrites():
     return out
 
 
+def retire_applied_labels(path, live_labels):
+    """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
+
+    ⛔ **A LABEL IS APPLIED UNTIL IT IS LIVE, THEN IT IS JUST DATA. Ruled 2026-09-27** (Emma):
+    `label-applications.tsv` and `forced-labels.tsv` rows were never retired -- skipped while the
+    live label matched, and SENT AGAIN the moment anybody changed it -- so a hand correction on
+    Wikidata was reverted by the next batch, *"a persistently asserted claim ... no matter how much
+    I try to correct it, it reverts"*. Now a row is emitted every run until the live label equals
+    it, and the run that sees it live removes the row, which the pipeline commits. From then on a
+    later hand correction stands. Only a known live value retires a row: a missing one means
+    "do not know" and the row stays. Aliases (`A` rows) have no live value to compare and stay.
+    """
+    if not path.exists() or not live_labels:
+        return 0
+    text = path.read_text(encoding="utf-8")
+    nl = "\r\n" if "\r\n" in text else "\n"
+    lines = text.split(nl)
+    head = lines[0].split("\t")
+    col = {name: i for i, name in enumerate(head)}
+    keep, retired = [lines[0]], 0
+    for line in lines[1:]:
+        f = line.split("\t")
+        if len(f) > max(col.get("qid", 0), col.get("lang", 0), col.get("value", 0)) and line[:1] == "Q":
+            kind = f[col["kind"]].strip().upper() if "kind" in col else "L"
+            qid, lang, value = f[col["qid"]].strip(), f[col["lang"]].strip(), f[col["value"]].strip()
+            if kind == "L" and live_labels.get((qid, lang)) == value:
+                retired += 1
+                continue
+        keep.append(line)
+    if retired:
+        path.write_text(nl.join(keep), encoding="utf-8", newline="")
+        print(f"{path.name}: {retired} row(s) retired -- their labels are live on Wikidata")
+    return retired
+
+
 def _forced_labels(live_labels=None, path=None):
     """`reports/forced-labels.tsv` as label lines, for every row the live label does not match.
 
@@ -1720,6 +1755,7 @@ def _forced_labels(live_labels=None, path=None):
     path = path or FORCED_LABELS_FILE
     if not path.exists():
         return []
+    retire_applied_labels(path, live_labels)
     out = []
     for row in csv.DictReader(path.open(encoding="utf-8"), delimiter="\t"):
         qid, lang, value = row["qid"], row["lang"], row["value"]
@@ -1827,6 +1863,7 @@ def _hand_label_applications(live_labels=None, path=None):
     what stronger means. **Stronger is that it WINS ITS SLOT** — `_without_hand_covered` drops
     the derived edit for a slot set by hand — and when it goes out is the cap's business.
     """
+    retire_applied_labels(path or LABEL_APPLICATIONS_FILE, live_labels)
     rows = hand_label_applications(path)
     if not rows:
         return []
