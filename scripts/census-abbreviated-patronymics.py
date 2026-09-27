@@ -43,14 +43,18 @@ to have been recorded in the same parish register by the same hand.
                                 chain rather than being replaced by it.
     2. the mother               her patronymic's ending, from `reports/derived-family.csv`.
     3. the paternal grandmother `mother[father[x]]` -- the father's mother.
-    4. `-datter`                the given default. Not a measurement and not to be replaced by
+    4. `-dotter`                the given default. Not a measurement and not to be replaced by
                                 one; a terminal default is what makes the algorithm total.
+                                ⛔ Changed 2026-09-27 (Emma): *"D O T T E R is the default long
+                                form, and D A T T E R is ... only done if the person's female
+                                relatives are proven to use d-a-t-t-e-r."* Steps 1-3 are that
+                                proof; the 2026-09-15 default was `-datter`.
 
 **`-dóttir` is taken from a relative when a relative is what attests it**, though the ruling names
 only the two Scandinavian forms. Guessed under § *while working the queue, GUESS and record it*:
 the whole force of the rule is that the family's register decides, and expanding an Icelandic
 woman's `Olsdtr.` to `Olsdatter` because her mother is `Jónsdóttir` would invert the reason for
-consulting the mother. It is never the DEFAULT — step 4 is `-datter` exactly as ruled.
+consulting the mother. It is never the DEFAULT — step 4 is `-dotter` (2026-09-27).
 
 Nothing is guessed silently: every row carries `basis` and the counts behind it.
 
@@ -102,6 +106,8 @@ ABBREV = re.compile(r"\b(\w+?)(dtr|s(?:d|dr|dt|dtt|dttr))\.?(?!\w)", re.I)
 NEW_FORMS = ("sd", "sdr", "sdt", "sdtt", "sdttr")
 #: `Rasmusdatter` / `Rasmusdotter`, for learning what a stem expands to.
 FULL = re.compile(r"\b(\w+?)(datter|dotter)\b", re.I)
+#: The terminal default, ruled 2026-09-27 (was `datter`): see the docstring, step 4.
+DEFAULT_SUFFIX = "dotter"
 
 
 FAMILY = ROOT / "reports" / "derived-family.csv"
@@ -241,14 +247,14 @@ def main():
                         # because it predates this and is Norwegian by construction.
                         if m.group(2).lower() in NEW_FORMS:
                             continue
-                        suffix, basis = "datter", "the default; no family evidence"
+                        suffix, basis = DEFAULT_SUFFIX, "the default; no family evidence"
                     else:
                         # **The ruled default, and the corpus counts are no longer consulted
                         # to pick.** They stay in the CSV's two count columns as context a
                         # reader can disagree with, but they decide nothing: a stem majority
                         # is a fact about every family at once and this is a question about
                         # one family.
-                        suffix, basis = "datter", "the default; no family evidence"
+                        suffix, basis = DEFAULT_SUFFIX, "the default; no family evidence"
                 by_basis[basis] += 1
                 rows.append({
                     "geni_id": row["geni_id"], "qid": row.get("qid", ""),

@@ -8872,6 +8872,32 @@ def main():
         print(f"protected: {len(_protected)} line(s) naming the owner's item or a protected Geni "
               f"profile dropped, e.g. {_protected[0].strip()[:80]}")
 
+    # ⛔ **A FEMALE PATRONYMIC ABBREVIATION IS NEVER ACCEPTED IN ANYTHING WE WRITE. Ruled
+    # 2026-09-27** (*"one of the worst things that could be done"*). The census expands each
+    # person's own name upstream; what still reaches here is a relative's name copied into a
+    # phrase (`son of Anna Olsdtr. Atletveit`) or a person the census does not cover. The
+    # Scandinavian forms (`dtr`, `dttr`, `datr`, `dtt`) are expanded with the ruled default,
+    # `-dotter` (`-datter` only where the family shows it, which the census decides upstream).
+    # Dutch `-dr` is left alone: its long form is `dochter`. An expanded label also gets the
+    # other long form as an `Amul`, as ruled.
+    _abbrev = re.compile(r"\b(\w+?s)(dtr|dttr|datr|dtt)\.?(?=[\s,\"]|$)", re.I)
+    _expanded, _gated = 0, []
+    for ln in kept:
+        parts = ln.split("\t")
+        if (len(parts) >= 3 and re.fullmatch(r"[LAD][a-z-]+", parts[1])
+                and _abbrev.search(parts[2])):
+            value = _abbrev.sub(lambda m: m.group(1) + "dotter", parts[2])
+            _gated.append("\t".join(parts[:2] + [value] + parts[3:]))
+            _expanded += 1
+            if parts[1].startswith("L"):
+                other = _abbrev.sub(lambda m: m.group(1) + "datter", parts[2])
+                _gated.append(f"{parts[0]}\tAmul\t{other}")
+            continue
+        _gated.append(ln)
+    if _expanded:
+        print(f"abbreviated female patronymics: {_expanded} value(s) expanded to -dotter")
+    kept = _gated
+
     # ⛔ **A DESCRIPTION MAY NOT EQUAL THE LABEL.** Wikibase refuses the whole creation:
     # *"Label and description for language code en can not have the same value."* Edit run
     # `36285263118` (2026-09-26) stopped on five of these in a row after 159 edits. A person with no

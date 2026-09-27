@@ -48737,3 +48737,9 @@ Found: `suppressed-statements.tsv`, which keeps a removed statement from being r
 ## 2026-09-27 -- queue shape: a status removed from the arguing item
 
 The parent repo's shape check flagged "Done 2026-09-27" in the item about the batches arguing with edits on Wikidata (status-in-place). That part is logged here already (hand label rows retire once live), so the item now states it as a fact with a pointer to the devlog and keeps only the work left. The fix item is deleted.
+
+## 2026-09-27 -- female patronymic abbreviations: Emma's rulings in the pipeline
+
+- `census-abbreviated-patronymics.py`: the terminal default is now `-dotter` (`DEFAULT_SUFFIX`); `-datter` only when the person's own records, mother or paternal grandmother show it (the 2026-09-15 default was `-datter`).
+- `build-garborg-day.py`: a final gate expands any Scandinavian abbreviation (`dtr`, `dttr`, `datr`, `dtt`) still in a label, alias or description value to `-dotter`, and gives an expanded label the other long form as an `Amul`. Dutch `-dr` is left alone (its long form is `dochter`). The 2026-09-27 batch already had none.
+- `reports/label-applications.tsv`: 30 rows for the 12 live items whose `mul`/`en` label carries an abbreviation, 21 labels and 9 `Amul` aliases. The expansion is the census's where the family shows it, `-dotter` otherwise. `Q141492678` "Dorthea Toresdotter Toresdtr" becomes "Dorthea Toresdotter" (the repeat dropped). The other-language relational labels on `Q141447199` are outside the languages we write and were left. The rows retire once live.
