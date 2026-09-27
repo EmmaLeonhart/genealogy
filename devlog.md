@@ -48771,3 +48771,7 @@ Emma's example `Q141447199` reads `son of Anna Olsdtr. Atletveit`, though his fa
 ## 2026-09-27 -- relational labels re-anchored on the father
 
 A new pass in `build-garborg-day.py`, just before the ring, runs over our items whose live `en` label is still our own relational wording (`_our_relational_phrase`). Where today's `describe_all` phrase names the father (`son of …`, `daughter of …`) and the live label does not, it emits the new `en` label, and `ja`/`zh`/`ko` where those are also still ours. It is capped at `RELATION_RELABEL_CAP` = 100 a run (95 measured). A label a human wrote is never touched. `test_a_label_is_never_written_over_an_item_that_already_has_one` now lets a label through when the live value it replaces is a relational phrase: that is not a name, and the given-name lead pass of 2026-09-21 does the same. A name still needs its `Amul`. The queue item is closed; the effect shows in the next composed batch.
+
+## 2026-09-27 -- the label-history read started, rate limited
+
+Emma said yes, both in the session and through ontology-harness's AskUserQuestion. The read covers 1,029 items (the 1,621 label slots that differ from what we sent): one `prop=revisions` request per item, a 1.5 s pause and `maxlag=5`, saved per item so it resumes. A human edit counts as a correction to leave alone, and an unapplied batch line as ours. Lesson recorded: a decision that is Emma's goes to her as an AskUserQuestion. The question left in terminal text did not reach her, and the top item sat waiting on it. The OK item is deleted.
