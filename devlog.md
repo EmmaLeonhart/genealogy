@@ -48610,3 +48610,7 @@ the day before assumed transliteration was easy, and it is not.
   label from canonical forms of every name in it (the name items' own labels), with a person
   eligible only when every part has one. That is a long tail, possibly a decade for Inuktitut, with
   no rush. Transliteration is not easy; Korean alone took many rounds of fixes.
+
+## 2026-09-27 -- queue shape: the RootsMagic gate reworded
+
+The parent repo's shape check flagged the RootsMagic gate item as status-in-place ("Ruled 2026-09-26:"). The wording now attributes the instruction instead ("(Emma, 2026-09-26)"); the gate itself is unchanged. The fix item is deleted.
