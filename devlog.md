@@ -48346,3 +48346,15 @@ maternal half-sister `Q19595229`.
   siblings, missing parents, and anyone with two fathers or two mothers get nothing; those are
   edge cases for the family-object analysis now queued last. On our live statements that leaves
   12 paternal and 2 maternal half-siblings for the 40-a-day repair.
+
+## 2026-09-26 — the places step timed out the pipeline; it has its own workflow now
+
+Pipeline run `36278861460` (4:15 PM PDT), the first with all of the day's code, was killed by its
+150-minute job limit at 6:45 PM PDT, before it committed a batch. The places resolver added that
+afternoon ran its full 25-minute step cap, and the previous successful run already took 140
+minutes. The resolver also saved only at the end, so the capped run kept nothing.
+
+- The step is out of `pipeline.yml`.
+- `.github/workflows/places.yml` runs the resolver daily (and on dispatch) with a budget of 80 and a
+  75-minute cap, then commits `reports/place-qids.tsv`.
+- `resolve-places.py` now saves after every place, so a capped run keeps what it resolved.

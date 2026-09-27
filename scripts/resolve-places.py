@@ -21,7 +21,7 @@ a dozen. With nothing to place it inside, a part with more than one place-like c
 that exact label is left unresolved.
 
 **Incremental.** `reports/place-qids.tsv` is the cache and the output; a run resolves at most
-`--budget` new strings, most-used first, so the pipeline can grow it a little every day.
+`--budget` new strings, most-used first, so `places.yml` grows it a little every day on its own clock.
 """
 from __future__ import annotations
 
@@ -173,15 +173,23 @@ def main() -> int:
     todo = [p for p, _n in sorted(uses.items(), key=lambda kv: (-kv[1], kv[0])) if p not in done]
     print(f"{len(uses)} places in scope, {len(done)} cached, {len(todo)} to go; "
           f"resolving {min(len(todo), args.budget)}")
+    def save():
+        rows = sorted(done.values(), key=lambda r: r["place"])
+        tmp = OUT.with_suffix(".tmp")
+        with open(tmp, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=FIELDS, delimiter="\t", lineterminator="\n")
+            w.writeheader()
+            w.writerows(rows)
+        tmp.replace(OUT)
+        return rows
+
+    # Saved after every place, so a run cut short by its time cap keeps what it resolved.
     for place in todo[:args.budget]:
         got = resolve(place)
         if got:
             done[place] = got
-    rows = sorted(done.values(), key=lambda r: r["place"])
-    with open(OUT, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS, delimiter="\t", lineterminator="\n")
-        w.writeheader()
-        w.writerows(rows)
+            save()
+    rows = save()
     full = sum(1 for r in rows if r["qid"] and int(r["depth"]) == int(r["parts"]))
     part = sum(1 for r in rows if r["qid"] and int(r["depth"]) < int(r["parts"]))
     print(f"{len(rows)} cached: {full} resolved in full, {part} to a containing place, "
