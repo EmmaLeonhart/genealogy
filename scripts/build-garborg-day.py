@@ -1527,34 +1527,6 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
 FORCED_LABELS_FILE = ROOT / "reports" / "forced-labels.tsv"
 
 
-def _description_backfill(editable_items, describe):
-    """`Den` for our established items that have no English description. Queued 2026-09-24.
-
-    ~4,380 of our items were made before descriptions were written (2026-09-19). Ruled: *"a
-    backfilling with dates and relatives, but do not bother with anything that has the geni id"*
-    -- the Geni-id rung is strictly the anti-duplication guard for fresh creations -- and
-    *"never ever ever overwrite existing descriptions"*. So: only an item the live store holds
-    and shows with no `en` description, only a life-date or relationship description, and an
-    item with neither is left alone. `describe(geni_id)` returns that text or `""`.
-    """
-    have, seen = set(), set()
-    for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json")):
-        for qid, entity in json.loads(shard.read_text(encoding="utf-8")).items():
-            seen.add(qid)
-            if ((entity or {}).get("descriptions") or {}).get("en"):
-                have.add(qid)
-    out = []
-    for g, qid in sorted(editable_items.items(), key=lambda kv: kv[1]):
-        if qid not in seen or qid in have:
-            continue
-        text = describe(g)
-        if not text:
-            continue
-        out.append(f"#   {qid}: no description; set the en description to {text!r}")
-        out.append(f'{qid}	Den	"{qs(text)}"')
-    return out
-
-
 def _forced_labels(live_labels=None, path=None):
     """`reports/forced-labels.tsv` as label lines, for every row the live label does not match.
 
@@ -8666,17 +8638,13 @@ def main():
     # tree — § *The MARRIED name is the real name* — while the pipe fix only knows how to read
     # one broken string. 11 of the 201 resolved rows carry a Geni id at all, so the overlap is
     # small; the ordering is what decides it when it happens.
-    def _dates_or_relatives(g):
-        text = life_description(facts.get(g) or {}, _PLACES.get(g))
-        if not text:
-            text = (describe_all(g, facts, father, mother, referred_to_as, table, children,
-                                 spouses, siblings, qid_of=our_items, live_labels=live_labels,
-                                 fields=fields).get("en") or "").strip()
-        return text
-
+    # ⛔ **NO DESCRIPTION BACKFILL ON EXISTING ITEMS.** Ruled 2026-09-26: descriptions are mainly
+    # a matter for new items, and backfilling existing ones is not desired. `_description_backfill`
+    # wrote an `en` description onto every editable item of ours that had none; on 26 September
+    # batch `temporary_batch_1790391174856` put raw source text onto a run of them ("jfr g og æ
+    # bok 2 s 422", "Grannes bruk 7. Sola s95 nr 4"), from Geni place fields. It is deleted.
     derived_labels = (
-        _description_backfill(editable_items, _dates_or_relatives)
-        + _piped_label_fixes(live_labels)
+        _piped_label_fixes(live_labels)
         + _label_corrections(editable_items, labels, table, state, fields, generation,
                              live_labels)
         + _cjk_follows_mul(table)
