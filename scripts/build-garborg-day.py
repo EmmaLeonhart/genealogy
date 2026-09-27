@@ -86,6 +86,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SIBLING_CAP = 60
 #: Existing sibling statements given `P1039` a day (ruled 2026-09-26: 40, like siblings).
 SIBLING_KINSHIP_REPAIR_CAP = 40
+#: Relational labels re-anchored on the father per run (queue item 2026-09-27; 95 measured).
+RELATION_RELABEL_CAP = 100
 _siblings_emitted = []
 
 #: ⛔ **`P3448` STEPPARENT, ruled 2026-09-15:** *"our general relationship emitter stuff should be
@@ -7964,6 +7966,40 @@ def main():
                         break
     print(f"sibling kinship repair: {repaired} existing statement(s) qualified "
           f"(cap {SIBLING_KINSHIP_REPAIR_CAP})")
+    lines.append("")
+
+    # ⛔ **A RELATIONAL LABEL ANCHORS ON THE FATHER WHEN THE TREE NAMES HIM. Queue item,
+    # 2026-09-27** (Emma: relational descriptions *"define the person ... based off of the primary
+    # relationship that already exists on Wikidata"*). The retired `build-nn-label-batch.py`
+    # chose the nearest relative recorded ON WIKIDATA, so a father not yet linked there was
+    # skipped for the mother or a spouse: 95 of our 668 relational `en` labels, measured that
+    # day. `describe_all` chooses from our tree, father first, so its phrase replaces the old one
+    # where the old one is still OUR wording (`_our_relational_phrase`; a label a human wrote is
+    # left alone) and the new one names the father while the old one does not. `ja`/`zh`/`ko`
+    # follow where they too are still ours.
+    _child_of = re.compile(r"(?:^|, )(?:son|daughter|child) of (.+)$")
+    _relabelled = 0
+    for g, q in sorted(our_items.items(), key=lambda kv: kv[1]):
+        if _relabelled >= RELATION_RELABEL_CAP:
+            break
+        have = live_labels.get((q, "en"), "")
+        if not have or not _our_relational_phrase(have, "en") or not father.get(g):
+            continue
+        new = describe_all(g, facts, father, mother, referred_to_as, table,
+                           children, spouses, siblings, qid_of=our_items,
+                           live_labels=live_labels, fields=fields)
+        m = _child_of.search(new.get("en") or "")
+        if not m or new.get("en") == have or m.group(1) in have:
+            continue
+        lines.append(f"#   {q}: en label {have!r} anchors on another relative; the father is named")
+        lines.append(f'{q}\tLen\t"{qs(new["en"])}"')
+        for code in ("ja", "zh", "ko"):
+            old = live_labels.get((q, code), "")
+            if new.get(code) and old and _our_cjk_relational_phrase(old, code) and new[code] != old:
+                lines.append(f'{q}\tL{code}\t"{qs(new[code])}"')
+        _relabelled += 1
+    if _relabelled:
+        print(f"relational labels re-anchored on the father: {_relabelled} (cap {RELATION_RELABEL_CAP})")
     lines.append("")
 
     # ---- 2. the next ring ---------------------------------------------------

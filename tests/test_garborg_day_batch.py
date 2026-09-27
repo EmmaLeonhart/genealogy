@@ -556,12 +556,19 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
     # `Q1814297`. Read from `reports/garborg-live-labels.tsv`, written by the same fetch as the
     # live statements, so this is evidence and not an exemption list. An item that DOES hold
     # the language still needs its `Amul` rescue, which is the property being pinned.
-    held = {}
+    held, held_value = {}, {}
     live = REPO / "reports" / "garborg-live-labels.tsv"
     if live.exists():
         with open(live, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
                 held.setdefault(row["qid"], set()).add(row["lang"])
+                held_value[(row["qid"], row["lang"])] = row["label"]
+    # A RELATIONAL PHRASE IS NOT A NAME, so replacing one destroys nothing a curator chose: the
+    # given-name lead (`Tora, mother of …`, 2026-09-21) and the father-first re-anchoring
+    # (2026-09-27) both replace our own `son of …` wording. The exemption is the OLD value's
+    # shape, read live, so a real name still cannot be overwritten without its `Amul`.
+    relational = re.compile(r"(?:^|, )(?:son|daughter|child|wife|husband|spouse|father|mother"
+                            r"|parent|brother|sister|sibling) of \S")
 
     bad = []
     for ln in lines():
@@ -572,6 +579,8 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
         if lang == "mul" and qid in cjk:
             continue
         if qid in preserved:
+            continue
+        if relational.search(held_value.get((qid, lang), "")):
             continue
         if qid in held and lang not in held[qid]:
             continue
