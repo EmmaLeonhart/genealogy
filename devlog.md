@@ -48435,3 +48435,11 @@ by the English relationship phrase without the name in front (`mother of Brita D
 Berg`). Before, they were LABELLED `Tora, mother of …` in every language. An NN person with no name
 keeps the relational labels and is described `Geni <id>`. Applying this to old items is queued at
 the end: Emma said it is allowed but not always worth it.
+
+## 2026-09-26 — the pipeline's job limit, 150 -> 240 minutes
+
+The last green pipeline run took 140 minutes against a 150-minute job limit, and run
+`36278861460` was killed at exactly 150. Run `36286453788` (on `c6633fc6ee`, started 6:44 PM PDT)
+still carries the places step and the old limit, and will likely die the same way at about
+9:14 PM PDT. The limit is now 240, by the reasoning its comment already gave for 90 -> 150: restore
+the margin on a job measured and trending up. That is well under GitHub's six-hour ceiling.

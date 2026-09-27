@@ -151,7 +151,13 @@ jobs:
     # The last green run took 1h00m, so 90 left ten minutes of headroom against a corpus that
     # grows every day. 150 is not a guess at the new runtime -- it is the old margin restored on
     # top of a job that has been measured at an hour and is trending up.
-    timeout-minutes: 150
+    #
+    # ⛔ **150 -> 240 on 2026-09-26, by the same reasoning.** The last green run took 140 minutes,
+    # so the margin was gone: run 36278861460 was killed at exactly 150 minutes inside a backfill
+    # step, before it committed a batch (a places step added that afternoon, since moved to its
+    # own workflow, was what pushed it over). 240 restores the margin and stays well under
+    # GitHub's hard six-hour ceiling.
+    timeout-minutes: 240
     # The commit this job PUSHES, so the site job can build from it. Empty when nothing
     # changed, and the site then falls back to github.sha.
     outputs:
