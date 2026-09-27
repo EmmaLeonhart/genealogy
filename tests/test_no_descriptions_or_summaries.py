@@ -20,6 +20,9 @@ description check reads statement lines only.
 
 from __future__ import annotations
 
+import csv
+import functools
+import gzip
 import re
 from pathlib import Path
 
@@ -136,6 +139,34 @@ RELATIONSHIP_DESCRIPTION = re.compile(
 #: The bracketed form on the end of an otherwise ordinary description.
 ID_SUFFIX = re.compile(r" \((?:Geni \d+|FamilySearch [A-Z0-9-]+)\)$")
 
+#: ⛔ **AND THE OCCUPATION IS A RUNG TOO. Ruled 2026-09-26:** with no dates, the occupation is
+#: the first fallback, before the relationship phrase and the Geni id -- the raw Geni string
+#: (`Kyrkoherde`), or its English label once `reports/occupation-qids.tsv` resolves it (`vicar`).
+#: So an occupation description is allowed exactly when it is one of those strings: the first
+#: `occupations` value of somebody in `reports/derived-facts.csv(.gz)`, or a resolved `label_en`.
+@functools.lru_cache(maxsize=1)
+def occupation_descriptions():
+    out = set()
+    cache = REPO / "reports" / "occupation-qids.tsv"
+    if cache.exists():
+        with open(cache, encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if row.get("label_en"):
+                    out.add(row["label_en"])
+    facts = REPO / "reports" / "derived-facts.csv"
+    packed = facts.with_name(facts.name + ".gz")
+    opener = (lambda: open(facts, encoding="utf-8", newline="")) if facts.exists() else (
+        (lambda: gzip.open(packed, "rt", encoding="utf-8", newline="")) if packed.exists() else None)
+    if opener:
+        csv.field_size_limit(10_000_000)
+        with opener() as fh:
+            for row in csv.DictReader(fh):
+                first = (row.get("occupations") or "").split(" | ")[0].strip()
+                if first:
+                    out.add(first)
+    return frozenset(out)
+
+
 #: `DESC_MAX` in `build-garborg-day.py`. A description longer than this did not come from there.
 #: The bracketed identifier is added AFTER the truncation, so it is allowed past the limit.
 DESC_MAX = 240
@@ -160,7 +191,8 @@ def test_no_batch_carries_a_description():
                 stem = ID_SUFFIX.sub("", text)
                 if len(stem) <= DESC_MAX and (stem in ALLOWED_DESCRIPTIONS
                                               or LIFE_DESCRIPTION.match(stem)
-                                              or RELATIONSHIP_DESCRIPTION.match(stem)):
+                                              or RELATIONSHIP_DESCRIPTION.match(stem)
+                                              or stem in occupation_descriptions()):
                     continue
             offenders.append(f"{path.name}:{n} sets {m.group(1)}  {line.strip()[:60]}")
     assert not offenders, (

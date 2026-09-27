@@ -820,8 +820,12 @@ def test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere():
             f"no {lang} label anywhere; the description is supposed to be formulaic "
             f"across languages, not English-only")
 
-    # Nothing describes a person by an unnamed relative.
-    assert not re.search(r'L(en|nb|da|sv)\t"[^"]*\b(NN|Private|unknown)\b', text), (
+    # Nothing describes a person by an unnamed relative. Since 2026-09-27 an NN person's own
+    # `Len` IS `NN` / `Anders NN` (queue item: the explicit en label is what lets Wikidata refuse
+    # a duplicate), so the check is on what it was always about: a relationship phrase pointing
+    # at a relative with no name, `wife of NN`.
+    assert not re.search(r'L(en|nb|da|sv)\t"[^"]*\b(of|til|av|till)\s+(NN|Private|unknown)\b',
+                         text), (
         "a description names nobody — it should fall through to the next relative")
 
 
@@ -869,7 +873,7 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
     """
     import sys
     sys.path.insert(0, str(REPO / "scripts"))
-    from namemodel import classify_fields, clean_fields, load_plan
+    from namemodel import classify_fields, clean_fields, load_plan, store_name_item
 
     if not NAME_ITEMS.exists():
         pytest.skip("no name-items batch generated")
@@ -904,6 +908,11 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
             # Nothing here needs to know about brackets any more.
             if plan.get((token, "family"), ("", ""))[0]:
                 continue          # Wikidata already has it
+            # The model's own fallback for a token the plan never saw (`statements_for`): since
+            # particles joined the family name on 2026-09-26, `von Eickstedt` is not a plan stem,
+            # and the batch links it through `store_name_item` (`Q50331883`).
+            if " " in token and store_name_item(token, "family"):
+                continue          # linked through the store
             if proposed.get(token):
                 continue          # this run is creating it
             missing.append((geni_id, token))
