@@ -7957,15 +7957,29 @@ def main():
             lines.append(f'LAST\tLmul\t"{mul_value}"')
             if _nn_birth and _nn_birth != mul_value:
                 lines.append(f'LAST\tAmul\t"{_nn_birth}"')
+            # ⛔ **RULED 2026-09-26: FOR AN NN PERSON THE RELATIONSHIP PHRASE IS THE DESCRIPTION
+            # WHEN THE FIRST NAME IS KNOWN, AND THE GENI ID IS THE DESCRIPTION WHEN IT IS NOT.**
+            # *"the relational thing on the NN people becomes their description"* if their first
+            # name is known -- so `Tora NN` is labelled by her name (the `mul` above) and described
+            # `mother of Brita Danielsdotter Berg`, where she used to be LABELLED `Tora, mother of
+            # …` in every language. With no name at all the phrase stays the label, and *"the Geni
+            # ID thing would be the thing that's used … on the NN people"* as the description.
+            own = own_given_name(fields.get(g))
             described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings,
                                      qid_of=our_items, live_labels=live_labels,
-                                     fields=fields)
-            for code, value in sorted(described.items()):
-                lines.append(f'LAST\tL{code}\t"{value}"')
-                if code == "en" and _desc and not _desc_emitted:
-                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                                     fields={} if own else fields)
+            if own:
+                phrase = (described.get("en") or "").strip()
+                if phrase:
+                    lines.append(f'LAST\tDen\t"{qs(phrase)}"')
                     _desc_emitted = True
+            else:
+                for code, value in sorted(described.items()):
+                    lines.append(f'LAST\tL{code}\t"{value}"')
+                    if code == "en" and not _desc_emitted:
+                        lines.append(f'LAST\tDen\t"Geni {g}"')
+                        _desc_emitted = True
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:

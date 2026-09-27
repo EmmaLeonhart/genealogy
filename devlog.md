@@ -48425,3 +48425,13 @@ Azure runner (`ACCOUNT IS BLOCKED … Microsoft Azure`, 0 edits). The re-dispatc
 **Fixed** in `build-garborg-day.py`: a pass over each CREATE block, beside the `en-us` pass,
 replaces a description equal to the English label with the last rung, `Geni <id>`, taken from the
 block's own `P2600`. It applies from the next composed batch.
+
+## 2026-09-26 — NN people: the relationship phrase is the description when the first name is known
+
+Ruled by Emma: *"the relational thing on the NN people becomes their description"* when their
+first name is known, and the Geni id is the description for NN people with no name. For a new NN
+person with a first name, the batch now writes only the `mul` label (`Tora NN`) and describes them
+by the English relationship phrase without the name in front (`mother of Brita Danielsdotter
+Berg`). Before, they were LABELLED `Tora, mother of …` in every language. An NN person with no name
+keeps the relational labels and is described `Geni <id>`. Applying this to old items is queued at
+the end: Emma said it is allowed but not always worth it.
