@@ -630,6 +630,17 @@ jobs:
         # a reason that is not this one.
         run: python scripts/check-batch-locality.py --fix
 
+      # ⛔ **LAST OF ALL, EVERY FILE INTO THE COHORT ORDER** (Emma, 2026-09-27: *"it feels very odd
+      # and chaotic"*). The split runs before the backfills and the patronymic pairs are appended,
+      # and the locality fix drops lines, so the order is put right here, over the finished files:
+      # edits on existing items (relationship pairs, then single-item properties), the random
+      # individuals, the ring shuffled, the names, the rest shuffled -- each under a header, with
+      # every comment next to the line it describes. `split-daily-batch.py` § THE ORDER PASS.
+      - name: Put every batch file into the cohort order
+        env:
+          PYTHONPATH: src
+        run: python scripts/split-daily-batch.py --order
+
       - name: Refresh the committed site snapshot
         continue-on-error: true
         env:

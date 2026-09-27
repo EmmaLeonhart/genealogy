@@ -65,6 +65,7 @@ from __future__ import annotations
 
 import datetime
 import random
+import re
 import sys
 from pathlib import Path
 
@@ -127,19 +128,336 @@ def blocks(text):
     # cut the bearer lines away: `Q141451028 P5056 LAST` starts with `Q`, and on its own it is
     # `LAST as a value with no CREATE above it`. Anything between two `CREATE`s may bind
     # backwards, so nothing between them may be separated from the first.
-    out, cur = [], []
+    #
+    # ⛔ **AND THE COMMENTS ABOVE A `CREATE` GO WITH IT.** The composer writes a name item's
+    # header and its `# create a new item` directly ABOVE the `CREATE`, so cutting at the
+    # `CREATE` itself left them at the tail of the block before -- and once the reorder of
+    # `efa65d434e` moved blocks around, the file listed `af Trystorp` under NAME ITEMS at the
+    # top with its `CREATE` 15,000 lines further down (found 2026-09-27). The comment and blank
+    # lines that end a block move down into the `CREATE` they introduce; a statement before the
+    # first `CREATE` keeps the comments above it the same way.
+    out, cur, pending = [], [], []
     for line in text.splitlines():
-        if line.strip().upper() == "CREATE":
+        t = line.strip()
+        if t.upper() == "CREATE":
+            src = cur if cur else pending
+            tail = []
+            while src and (not src[-1].strip() or src[-1].lstrip().startswith("#")):
+                tail.insert(0, src.pop())
             if cur:
                 out.append(cur)
-            cur = [line]
+            elif pending:
+                out.append(pending)
+            pending = []
+            cur = tail + [line]
         elif cur:
             cur.append(line)
+        elif not t or t.startswith("#"):
+            pending.append(line)
         else:
-            out.append([line])
+            out.append(pending + [line])
+            pending = []
     if cur:
         out.append(cur)
+    if pending:
+        out.append(pending)
     return out
+
+
+def _subject_of(block):
+    for line in block:
+        t = line.strip()
+        if not t or t.startswith("#"):
+            continue
+        if t.upper() == "CREATE":
+            return None                  # a creation is its own unit, always
+        return t.split("\t", 1)[0]
+    return ""                            # comment-only: belongs with whatever it precedes
+
+
+def _last_subject_of(block):
+    """The subject of the LAST statement line in a block.
+
+    ⛔ Not the first. A `CREATE` block runs to the next `CREATE`, so it carries the new
+    item's `LAST` lines AND the bearer lines that point at it -- `Q141353755 P735 LAST ...`
+    -- and those end the block under a different subject. Comparing first subjects left one
+    item straddling the cut and the assertion came back one over.
+    """
+    for line in reversed(block):
+        t = line.strip()
+        if not t or t.startswith("#") or t.upper() == "CREATE":
+            continue
+        return t.split("\t", 1)[0]
+    return None
+
+
+def build_units(bs):
+    """Blocks welded into units: consecutive blocks about one subject are one unit (see `main`)."""
+    units, cur, cur_tail = [], [], None
+    for b in bs:
+        subj = _subject_of(b)
+        # A comment-only run joins the unit it introduces rather than ending one; a block whose
+        # first subject continues the previous unit's last subject is the same item still.
+        same = cur and subj is not None and (subj == "" or subj == cur_tail)
+        if same:
+            cur.extend(b)
+        else:
+            if cur:
+                units.append(cur)
+            cur = list(b)
+        t = _last_subject_of(b)
+        if t is not None:
+            cur_tail = t
+    if cur:
+        units.append(cur)
+    return units
+
+
+def is_person_create(u):
+    """Whether a unit creates a human (`P31` `Q5`)."""
+    if not any(l.strip().upper() == "CREATE" for l in u):
+        return False
+    for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
+        if e.get("kind") != "create":
+            continue
+        for c in e.get("claims") or ():
+            v = c.get("value")
+            if c.get("property") == "P31" and isinstance(v, dict) and v.get("id") == "Q5":
+                return True
+    return False
+
+
+def load_ring_ids():
+    """The Geni ids of the priority ancestor ring, from `out/wikidata/priority-ring.json`."""
+    ring_file = REPO / "out" / "wikidata" / "priority-ring.json"
+    if not ring_file.exists():
+        return set()
+    import json as _json
+    return set(_json.loads(ring_file.read_text(encoding="utf-8")))
+
+
+def ring_geni_ids(u):
+    """The `P2600` values a unit's creations carry, so a ring person can be recognised."""
+    out = set()
+    for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
+        for c in e.get("claims") or ():
+            if c.get("property") == "P2600":
+                # ⛔ **`qs_v1` HANDS BACK A DICT, NOT A STRING.** A `P2600` claim parses to
+                # `{'type': 'string', 'value': '6000000...'}`, and the first version of this
+                # tested `isinstance(v, str)` -- so it matched nothing and the run reported
+                # `0 creation(s) forced automatic` while looking like it had worked. Both
+                # shapes are accepted now rather than the one that happens to be current.
+                v = c.get("value")
+                if isinstance(v, dict):
+                    v = v.get("value")
+                if isinstance(v, str):
+                    out.add(v.strip('"'))
+    return out
+
+
+def _bound_to_create(line):
+    """True for a line that binds to the `CREATE` above it, None for a comment or blank."""
+    t = line.strip()
+    if not t or t.startswith("#"):
+        return None
+    if t.upper() == "CREATE":
+        return True
+    parts = t.split("\t")
+    if parts[0] == "LAST":
+        return True
+    return any(x == "LAST" for x in parts[1:])
+
+
+# ---- THE ORDER PASS -------------------------------------------------------------------------
+#
+# ⛔ **EVERY FILE IN EMMA'S ORDER, LABELLED BY COHORT. Ruled 2026-09-27** (*"it feels very odd and
+# chaotic"*): about twenty random individuals (thirty in the automatic share), the whole ring
+# shuffled, the names, the rest of the individuals shuffled -- and the edits that create nothing
+# first, flagged by kind. The split above runs before three pipeline steps APPEND to the files
+# (the subject-named-as and relationship-sources backfills, and the patronymic pairs), which is
+# how 40 names ended up after every person and the source backfill at the very end. So this pass
+# runs LAST, over each finished file, and puts everything where it belongs.
+#
+# **The file explains itself, and a comment only stays if its line does.** A short header opens
+# each cohort. An item comment (`#   …`) is kept only when the line it describes follows it, so
+# the labels the language gate dropped no longer leave their comments behind, and the old section
+# banners are replaced by the headers rather than added to. The commands themselves are only
+# reordered: the check below refuses to write a file whose set of commands changed, or where a
+# `LAST` precedes every `CREATE`.
+HEADER = "# ▶ "
+RELATIONSHIPS = {"P22": "parent", "P25": "parent", "P40": "parent", "P26": "P26", "P3373": "P3373"}
+
+
+#: `set the fr label to`, `set the en description to`, `add a mul alias` -- the composer's words.
+_TERM_COMMENT = re.compile(r"(?:set the (\S+) (label|description) to|add an? (\S+) alias)")
+
+
+def _term_code(m):
+    """`Lfr` / `Den` / `Amul` for a term comment."""
+    if m.group(3):
+        return "A" + m.group(3)
+    return ("L" if m.group(2) == "label" else "D") + m.group(1)
+
+
+def _clean_comments(lines):
+    """Drop the old headers, banners and prose, and every item comment whose line is not there."""
+    out = []
+    n = len(lines)
+    for i, line in enumerate(lines):
+        t = line.strip()
+        if not t.startswith("#"):
+            out.append(line)
+            continue
+        if line.startswith(HEADER):
+            continue
+        if line.startswith("#   "):
+            nxt = lines[i + 1].strip() if i + 1 < n else ""
+            if nxt and not nxt.startswith("#"):
+                # A label, alias or description comment names its language, so it must sit on
+                # exactly that command: the gate that drops `LAST Lfr` leaves the `fr` comment
+                # directly above an unrelated line, which is still not its line.
+                m = _TERM_COMMENT.search(line)
+                parts = nxt.split("\t")
+                if not m or (len(parts) > 1 and parts[1] == _term_code(m)):
+                    out.append(line)
+            continue
+        # Anything else survives only as the name header / `# create a new item` directly above
+        # a `CREATE` (at most the two comment lines before it).
+        j = i + 1
+        while j < n and lines[j].strip().startswith("#"):
+            j += 1
+        if j < n and lines[j].strip().upper() == "CREATE" and j - i <= 2:
+            out.append(line)
+    return out
+
+
+def _statements(lines):
+    """`[(comment lines, command line)]` for a run of free-standing statements."""
+    out, pending = [], []
+    for line in lines:
+        t = line.strip()
+        if not t:
+            continue
+        if t.startswith("#"):
+            pending.append(line)
+            continue
+        out.append((pending, line))
+        pending = []
+    return out
+
+
+def order_file(text, first_people, ring_ids, seed):
+    """`text` reordered into the cohorts, each under a header. Commands are only moved."""
+    lines = _clean_comments(text.splitlines())
+    units = build_units(blocks(chr(10).join(lines)))
+    person = [i for i, u in enumerate(units) if is_person_create(u)]
+    ring = [i for i in person if ring_geni_ids(units[i]) & ring_ids]
+    ring_set = set(ring)
+    others = [i for i in person if i not in ring_set]
+    names = [i for i, u in enumerate(units) if name_kind(u)]
+    creation = set(person) | set(names)
+
+    bound_of, rest = {}, []
+    for i, u in enumerate(units):
+        if i not in creation:
+            rest.extend(u)
+            continue
+        bound, pending = [], []
+        for line in u:
+            b = _bound_to_create(line)
+            if b is None:
+                pending.append(line)
+                continue
+            if b:
+                bound.extend(pending + [line])
+            else:
+                rest.extend(pending + [line])
+            pending = []
+        bound.extend(pending)
+        bound_of[i] = bound
+
+    # The edits that create nothing: relationships grouped so both directions go together, then
+    # the properties of single items in their own order (an `Amul` must stay above its `Lmul`).
+    groups, props = {}, []
+    for comments, line in _statements(rest):
+        parts = line.split("\t")
+        kind = RELATIONSHIPS.get(parts[1]) if len(parts) > 2 else None
+        if kind and parts[0].startswith("Q") and parts[2].startswith("Q"):
+            key = (min(parts[0], parts[2]), max(parts[0], parts[2]), kind)
+            groups.setdefault(key, []).append(comments + [line])
+        else:
+            props.append(comments + [line])
+    both_ways = sum(1 for g in groups.values() if len(g) > 1)
+
+    # Shuffled from a SORTED start, so the order depends on the day's seed and the people, never
+    # on the order they arrived in: running the pass twice gives the same file.
+    def by_id(i):
+        return tuple(sorted(ring_geni_ids(units[i])))
+    rng = random.Random(seed)
+    ring_order = sorted(ring, key=by_id)
+    rng.shuffle(ring_order)
+    first, later = others[:first_people], sorted(others[first_people:], key=by_id)
+    rng.shuffle(later)
+
+    out = []
+
+    def section(title, chunks, gap):
+        """A header, then each chunk's lines; `gap` puts a blank line before each chunk."""
+        if not chunks:
+            return
+        out.extend(["", HEADER + title])
+        for chunk in chunks:
+            if gap:
+                out.append("")
+            out.extend(l for l in chunk if l.strip())
+
+    if groups or props:
+        out.append(HEADER + "EDITS ON ITEMS THAT ALREADY EXIST: nothing created in this batch "
+                   "is needed for them")
+    section(f"(a) relationships: {sum(len(g) for g in groups.values())} statements, "
+            f"{both_ways} pairs sent both ways together",
+            [[l for part in g for l in part] for g in groups.values()], False)
+    section(f"(b) properties of one item: {len(props)} statements", props, False)
+    section(f"RANDOM INDIVIDUALS: {len(first)} people from the day's pick, not ring",
+            [bound_of[i] for i in first], True)
+    section(f"THE RING: all {len(ring_order)} ancestor-ring people, shuffled",
+            [bound_of[i] for i in ring_order], True)
+    section(f"NAME ITEMS: {len(names)}, each followed by the links to the people who bear it",
+            [bound_of[i] for i in names], True)
+    section(f"THE REST OF THE INDIVIDUALS: {len(later)}, shuffled",
+            [bound_of[i] for i in later], True)
+    result = chr(10).join(out).strip(chr(10)) + chr(10)
+
+    import collections as _c
+
+    def commands(t):
+        return _c.Counter(l for l in t.splitlines() if l.strip() and not l.lstrip().startswith("#"))
+    if commands(result) != commands(text):
+        lost, extra = commands(text) - commands(result), commands(result) - commands(text)
+        raise SystemExit(f"the order pass changed the commands: {sum(lost.values())} lost, "
+                         f"{sum(extra.values())} extra, e.g. {list((lost or extra).elements())[:2]}")
+    seen_create = False
+    for l in result.splitlines():
+        t = l.strip()
+        if t.upper() == "CREATE":
+            seen_create = True
+        elif t.split("\t", 1)[0] == "LAST" and not seen_create:
+            raise SystemExit(f"the order pass put a LAST line above every CREATE: {t[:70]}")
+    return result
+
+
+def order_all() -> int:
+    """Put each finished batch file into the cohort order, in place."""
+    ring_ids = load_ring_ids()
+    seed = datetime.date.today().isoformat()
+    for path, first in ((AUTO, INDIVIDUALS), (MANUAL, PAGE_INDIVIDUALS), (SRC, PAGE_INDIVIDUALS)):
+        if not path.exists():
+            continue
+        before = path.read_text(encoding="utf-8")
+        after = order_file(before, first, ring_ids, seed)
+        path.write_text(after, encoding="utf-8", newline="\n")
+        print(f"{path.name}: ordered; {len(before.splitlines())} -> {len(after.splitlines())} lines")
+    return 0
 
 
 def main() -> int:
@@ -175,49 +493,8 @@ def main() -> int:
     # morning and leave their `P734` on the web page.
     #
     # So consecutive blocks about the same subject are welded into one unit first, and the
-    # stride runs over units.
-    def subject_of(block):
-        for line in block:
-            t = line.strip()
-            if not t or t.startswith("#"):
-                continue
-            if t.upper() == "CREATE":
-                return None                  # a creation is its own unit, always
-            return t.split("\t", 1)[0]
-        return ""                            # comment-only: belongs with whatever it precedes
-
-    def last_subject_of(block):
-        """The subject of the LAST statement line in a block.
-
-        ⛔ Not the first. A `CREATE` block runs to the next `CREATE`, so it carries the new
-        item's `LAST` lines AND the bearer lines that point at it -- `Q141353755 P735 LAST ...`
-        -- and those end the block under a different subject. Comparing first subjects left one
-        item straddling the cut and the assertion came back one over.
-        """
-        for line in reversed(block):
-            t = line.strip()
-            if not t or t.startswith("#") or t.upper() == "CREATE":
-                continue
-            return t.split("	", 1)[0]
-        return None
-
-    units, cur, cur_tail = [], [], None
-    for b in bs:
-        subj = subject_of(b)
-        # A comment-only run joins the unit it introduces rather than ending one; a block whose
-        # first subject continues the previous unit's last subject is the same item still.
-        same = cur and subj is not None and (subj == "" or subj == cur_tail)
-        if same:
-            cur.extend(b)
-        else:
-            if cur:
-                units.append(cur)
-            cur = list(b)
-        t = last_subject_of(b)
-        if t is not None:
-            cur_tail = t
-    if cur:
-        units.append(cur)
+    # stride runs over units (`build_units`).
+    units = build_units(bs)
 
     # \u26d4 **THE STRIDE IS OVER UNITS, AND IT FILLS GREEDILY.**
     #
@@ -291,19 +568,7 @@ def main() -> int:
     # This is the end of the pipeline and the ruling puts the split at the beginning. The effect
     # is the same file-for-file, and moving the partition into `build-garborg-day` is a separate
     # change to an 8,000-line composer; doing it here first makes the behaviour correct today
-    # without that risk.
-    def is_person_create(u):
-        joined = chr(10).join(u)
-        if not any(l.strip().upper() == "CREATE" for l in u):
-            return False
-        for e in qs_v1.edit_objects(qs_v1.parse(joined)):
-            if e.get("kind") != "create":
-                continue
-            for c in e.get("claims") or ():
-                v = c.get("value")
-                if c.get("property") == "P31" and isinstance(v, dict) and v.get("id") == "Q5":
-                    return True
-        return False
+    # without that risk. (`is_person_create`.)
 
     # ⛔ **THE PRIORITY RING'S PEOPLE GO AUTOMATIC WHATEVER THE ARITHMETIC SAYS.**
     # `build-garborg-day.priority_ancestor_ring` unions its people into `to_create` AFTER
@@ -311,29 +576,7 @@ def main() -> int:
     # manual half -- which is published for a person to paste, not sent. On 2026-09-19 that is
     # where Olver's parents landed and the scheduled sender was never going to touch them.
     # *"Every run should add a full ring to their ancestry"* is about what runs BY ITSELF.
-    ring_ids = set()
-    ring_file = REPO / "out" / "wikidata" / "priority-ring.json"
-    if ring_file.exists():
-        import json as _json
-        ring_ids = set(_json.loads(ring_file.read_text(encoding="utf-8")))
-
-    def ring_geni_ids(u):
-        """The `P2600` values a unit's creations carry, so a ring person can be recognised."""
-        out = set()
-        for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
-            for c in e.get("claims") or ():
-                if c.get("property") == "P2600":
-                    # ⛔ **`qs_v1` HANDS BACK A DICT, NOT A STRING.** A `P2600` claim parses to
-                    # `{'type': 'string', 'value': '6000000...'}`, and the first version of this
-                    # tested `isinstance(v, str)` -- so it matched nothing and the run reported
-                    # `0 creation(s) forced automatic` while looking like it had worked. Both
-                    # shapes are accepted now rather than the one that happens to be current.
-                    v = c.get("value")
-                    if isinstance(v, dict):
-                        v = v.get("value")
-                    if isinstance(v, str):
-                        out.add(v.strip('"'))
-        return out
+    ring_ids = load_ring_ids()
 
     # ⛔ **THE AUTOMATIC HALF IS RATIONED, IN THE ORDER IT IS SENT. Ruled 2026-09-24:** five given
     # names, five patronymics and five family names; then thirty individuals; then EVERY
@@ -367,16 +610,7 @@ def main() -> int:
     # Only a `LAST`-subject line and a line using `LAST` as a VALUE cannot leave their `CREATE`;
     # the rest stands on its own and goes out with everything else -- *"as far as connectivity
     # stuff goes ... we have it 100% on both of them."*
-    def bound_to_create(line):
-        t = line.strip()
-        if not t or t.startswith("#"):
-            return None                      # a comment follows whatever it introduces
-        if t.upper() == "CREATE":
-            return True
-        parts = t.split("\t")
-        if parts[0] == "LAST":
-            return True
-        return any(x == "LAST" for x in parts[1:])
+    bound_to_create = _bound_to_create
 
     bound_of, rest = {}, []
     for i, u in enumerate(units):
@@ -599,4 +833,6 @@ def verify() -> int:
 if __name__ == "__main__":
     if "--verify" in sys.argv[1:]:
         raise SystemExit(verify())
+    if "--order" in sys.argv[1:]:
+        raise SystemExit(order_all())
     raise SystemExit(main())
