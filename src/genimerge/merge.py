@@ -370,8 +370,40 @@ def merge_files(
         except ValueError:
             return path.as_posix()
 
+    # ⛔ **WHICH DATABASE GIVES EACH BIRTH AND DEATH DATE, BESIDE THE TREE** (the citation queue
+    # item, 2026-09-27). The FamilySearch renders (`exports/familysearch/`) put ~14,700 people on
+    # their Geni xrefs, and the merge keeps one value per date and forgets where it came from --
+    # an agreeing second source leaves no trace at all -- so every date went out cited to Geni.
+    # Only the people a render puts on a Geni xref can have two sources, so only they are
+    # tracked, found by a cheap text scan of the renders before the merge. Read on the pass the
+    # merge already makes, before the prune, like the places.
+    fs_paths = {p for p in paths if "familysearch" in p.parts}
+    tracked: set[str] = set()
+    for p in fs_paths:
+        with open(p, encoding="utf-8", errors="replace") as fh:
+            for line in fh:
+                if line.startswith("0 @I") and line.rstrip().endswith("@ INDI"):
+                    x = line.split()[1][2:-1]
+                    if x.isdigit():
+                        tracked.add(x)
+    date_sources: dict[tuple[str, str, str], set[str]] = {}
+
+    def _dates(records, kind):
+        for record in records:
+            if record.tag == "INDI" and record.xref and record.xref[2:-1] in tracked:
+                gid = record.xref[2:-1]
+                for event in ("BIRT", "DEAT"):
+                    node = record.get(event)
+                    date = node.get("DATE") if node is not None else None
+                    value = " ".join((date.value or "").split()) if date is not None else ""
+                    if value:
+                        date_sources.setdefault((gid, event, value), set()).add(kind)
+            yield record
+
     for path in paths:
         records = gedcom.stream_file(path)
+        if tracked and not connectivity:
+            records = _dates(records, "fs" if path in fs_paths else "geni")
         if connectivity:
             records = slim_mod.prune_stream(records, slim_mod.CONNECTIVITY_TAGS)
         elif slim:
@@ -380,6 +412,7 @@ def merge_files(
     # Hung on the report rather than returned, because `merge_files` has two callers that
     # unpack exactly two values and a third element would break the one that writes nothing.
     merger.report.places = places
+    merger.report.date_sources = date_sources
     return merger.result(), merger.report
 
 

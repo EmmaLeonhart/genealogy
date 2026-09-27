@@ -190,6 +190,19 @@ def _cmd_merge(args: argparse.Namespace) -> int:
                 w.writerow([gid, b, d])
         print(f"wrote {places_out}: {len(_places)} people with a birth or death place")
 
+    # Which database gives each birth and death date of the people the FamilySearch renders put
+    # on Geni xrefs: `fs`, `geni` or `both` per value (see `merge_files`). Read by the composer's
+    # citations; a date with no row is Geni's.
+    _dates = getattr(report, "date_sources", None) or {}
+    if _dates:
+        dates_out = (output.parent if args.output else ws.reports) / "derived-date-sources.csv"
+        with open(dates_out, "w", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, lineterminator=chr(10))
+            w.writerow(["geni_id", "event", "date", "source"])
+            for (gid, event, value), kinds in sorted(_dates.items()):
+                w.writerow([gid, event, value, "both" if len(kinds) > 1 else next(iter(kinds))])
+        print(f"wrote {dates_out}: {len(_dates)} dates of people FamilySearch also gives")
+
     # The reports describe *this* merge, so they follow the file they describe.
     # Sending the GEDCOM elsewhere and leaving the reports in the workspace
     # overwrites the workspace's description of a different merge, which is

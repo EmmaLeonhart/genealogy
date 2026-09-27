@@ -70,3 +70,70 @@ def test_the_backfill_never_cites_geni_for_a_familysearch_only_link():
     # siblings: a database gives the link only when it links BOTH to the shared parent
     assert ref("P3373", "2", "4", *args) == '\tS2600\t"2"'
     assert ref("P3373", "2", "5", *args) == '\tS2889\t"BBB"'
+
+
+GENI = """0 HEAD
+0 @I1@ INDI
+1 RFN geni:1
+1 BIRT
+2 DATE 1700
+1 DEAT
+2 DATE 1760
+0 @I2@ INDI
+1 RFN geni:2
+1 BIRT
+2 DATE 1701
+0 TRLR
+"""
+FAMILYSEARCH = """0 HEAD
+0 @I1@ INDI
+1 RFN geni:1
+1 REFN fs:AAA
+1 BIRT
+2 DATE 1700
+1 DEAT
+2 DATE ABT 1761
+0 @IFSX9@ INDI
+1 BIRT
+2 DATE 1650
+0 TRLR
+"""
+
+
+def test_the_merge_records_which_database_gives_each_date(tmp_path):
+    import sys
+    sys.path.insert(0, str(REPO / "src"))
+    from genimerge import merge
+    (tmp_path / "familysearch").mkdir()
+    (tmp_path / "geni").mkdir()
+    (tmp_path / "familysearch" / "r.ged").write_text(FAMILYSEARCH, encoding="utf-8")
+    (tmp_path / "geni" / "a.ged").write_text(GENI, encoding="utf-8")
+    _doc, report = merge.merge_files([tmp_path / "familysearch" / "r.ged",
+                                      tmp_path / "geni" / "a.ged"], slim=True)
+    got = {k: sorted(v) for k, v in report.date_sources.items()}
+    # only the people a FamilySearch render puts on a Geni xref are tracked
+    assert got == {("1", "BIRT", "1700"): ["fs", "geni"],
+                   ("1", "DEAT", "1760"): ["geni"],
+                   ("1", "DEAT", "ABT 1761"): ["fs"]}
+
+
+def test_a_date_cites_the_database_that_gives_it(tmp_path):
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
+                         if isinstance(n, ast.FunctionDef)
+                         and n.name in ("family_source", "cite_date"))
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "derived-family-sources.csv").write_text(
+        "geni_id,relation,relative,source\n1,fs_id,AAA,fs\n", encoding="utf-8")
+    (tmp_path / "reports" / "derived-date-sources.csv").write_text(
+        "geni_id,event,date,source\n1,BIRT,1700,both\n1,DEAT,ABT 1761,fs\n1,DEAT,1760,geni\n",
+        encoding="utf-8")
+    ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {},
+          "_DATE_SOURCES": None}
+    exec(code, ns)
+    cite_date = ns["cite_date"]
+    assert cite_date("1", "BIRT", "1700") == '\tS2600\t"1"\tS2889\t"AAA"'
+    assert cite_date("1", "DEAT", "ABT  1761") == '\tS2889\t"AAA"'
+    assert cite_date("1", "DEAT", "1760") == '\tS2600\t"1"'
+    assert cite_date("2", "BIRT", "1701") == '\tS2600\t"2"'

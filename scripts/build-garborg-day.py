@@ -1273,6 +1273,32 @@ def cite(g, relation=None, relative=None):
     return fs_ref if src == "fs" else geni + fs_ref
 
 
+_DATE_SOURCES = None
+
+
+def cite_date(g, event, raw):
+    """The reference for `g`'s `event` (`BIRT`/`DEAT`) date `raw`, by the database that gives it.
+
+    `reports/derived-date-sources.csv` is written by the merge (`genimerge.merge.merge_files`)
+    for the people the FamilySearch renders put on Geni xrefs: `fs`, `geni` or `both` per date
+    value. A date with no row is Geni's, as every date was cited before. Same shapes as `cite`.
+    """
+    global _DATE_SOURCES
+    if _DATE_SOURCES is None:
+        _DATE_SOURCES = {}
+        path = ROOT / "reports" / "derived-date-sources.csv"
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh):
+                    _DATE_SOURCES[(row["geni_id"], row["event"], row["date"])] = row["source"]
+    family_source(g, None, None)          # loads the FamilySearch ids
+    src = _DATE_SOURCES.get((g, event, " ".join((raw or "").split())), "geni")
+    geni = f'\tS2600\t"{g}"'
+    fs = _FS_IDS.get(g, "")
+    fs_ref = f'\tS2889\t"{fs}"' if fs else ""
+    return geni if src == "geni" else (fs_ref if src == "fs" else geni + fs_ref)
+
+
 _MARRIAGE_PLACES = None
 
 
@@ -8298,14 +8324,16 @@ def main():
         # was never the missing part: that file has carried `birth_date_modifier` and
         # `birth_date_year_end` all along, and `genimerge.dates` is the authority on the
         # grammar. Only the emission was absent.
-        for prop, iso, prec, mod, end in (
+        for prop, iso, prec, mod, end, event, raw in (
                 ("P569", f["birth_date_iso"], f["birth_date_precision"],
-                 f.get("birth_date_modifier", ""), f.get("birth_date_year_end", "")),
+                 f.get("birth_date_modifier", ""), f.get("birth_date_year_end", ""),
+                 "BIRT", f.get("birth_date_raw", "")),
                 ("P570", f["death_date_iso"], f["death_date_precision"],
-                 f.get("death_date_modifier", ""), f.get("death_date_year_end", ""))):
+                 f.get("death_date_modifier", ""), f.get("death_date_year_end", ""),
+                 "DEAT", f.get("death_date_raw", ""))):
             if iso and prec:
                 lines.append(f"LAST\t{prop}\t{iso}/{prec}"
-                             f"{date_quals(mod, iso, prec, end)}{ref(g)}")
+                             f"{date_quals(mod, iso, prec, end)}{cite_date(g, event, raw)}")
         # ⛔ **PLACE OF BIRTH AND DEATH: OUR READING AS THE VALUE, THE SOURCE'S STRING AS `P1932`.**
         # Ruled 2026-09-26: *"use the qualifier object named as to give whatever the actual string
         # was in the source and then our interpretation of the string."* The reading comes from
