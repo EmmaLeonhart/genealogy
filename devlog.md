@@ -48654,3 +48654,7 @@ Third step of the citation item. `cite()` in `build-garborg-day.py` reads `repor
 ## 2026-09-27 -- Q141566035 gets "Ols Orre" back
 
 CI's one remaining failure (`test_a_label_is_never_written_over_an_item_that_already_has_one`) was the stem-name relabel still in the batch as `Q141566035 Len/Lmul "NN Orre"`, which Emma's queue item says is wrong: he is Ols, father of Laurits Olsen Orre. Both rows are removed from `reports/label-applications.tsv`, and `reports/forced-labels.tsv` sets `mul` and `en` back to "Ols Orre"; forced labels go out only while the live label differs, and the test accepts them. The four other relabelled items have no lines left in the batch, and are not touched; they wait on Emma's answer, as the item says. Both files are outside the sparse checkout, so they were written from the committed blobs and added with `git add --sparse`; no sparse-checkout command was run.
+
+## 2026-09-27 -- the reference backfill cites by source too
+
+Fourth step of the citation item. `build-relationship-sources-backfill.py` adds references to existing uncited relationships, and it now reads `reports/derived-family-sources.csv`: `S2600` where Geni gives the link, `S2889` where only FamilySearch does, both in one reference where both do. A link with no source it can cite is skipped and counted as unattested, never cited to Geni. Siblings: a database gives the link when it links both siblings to the same parent, so a sibling pair where only one child is linked to the shared parent in FamilySearch stays Geni's. Tested in `tests/test_cite_by_source.py`.

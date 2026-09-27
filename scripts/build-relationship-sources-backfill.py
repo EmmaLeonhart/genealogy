@@ -84,6 +84,12 @@ from live_name_items import _get as api_get  # noqa: E402
 LEDGER = REPO / "reports" / "garborg-qids.tsv"
 LIVE = REPO / "reports" / "garborg-live-values.tsv"
 FAMILY = REPO / "reports" / "derived-family.csv"
+#: ⛔ **WHICH DATABASE GIVES THE LINK** (the citation queue item, 2026-09-27). `derive-family.py`
+#: writes it from the family records: `fs` for a link only a FamilySearch family gives, `both`,
+#: and no row for Geni's alone. The merged tree carries FamilySearch renders on Geni xrefs, so
+#: `derived-family.csv` alone would have this script cite Geni for a FamilySearch-only link.
+SOURCES = REPO / "reports" / "derived-family-sources.csv"
+RELATION_OF = {"P22": "father", "P25": "mother", "P26": "spouse", "P40": "child"}
 OUT = REPO / "reports" / "wikidata-relationship-sources.qs"
 AUTO_OUT = REPO / "reports" / "wikidata-relationship-sources-auto.qs"
 
@@ -264,6 +270,46 @@ def read_our_tree():
     return tree, father, mother
 
 
+def read_sources():
+    """`({(geni_id, relation, relative): "fs"|"both"}, {geni_id: FamilySearch id})`; empty without the file."""
+    links, fs_ids = {}, {}
+    if SOURCES.exists():
+        with open(SOURCES, encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh):
+                if row["relation"] == "fs_id":
+                    fs_ids.setdefault(row["geni_id"], row["relative"])
+                else:
+                    links[(row["geni_id"], row["relation"], row["relative"])] = row["source"]
+    return links, fs_ids
+
+
+def reference_for(prop, a, b, links, fs_ids, father, mother):
+    """The reference snaks for `a -[prop]-> b`, or `""` when no database can be cited.
+
+    `S2600` when Geni gives the link, `S2889` when only FamilySearch does, both in one
+    reference when both do. A sibling is derived from a shared parent, so it is Geni's when some
+    shared parent is linked to both by a Geni family, and FamilySearch's otherwise.
+    """
+    if prop == "P3373":
+        shared = [(rel, par) for rel, pmap in (("father", father), ("mother", mother))
+                  for par in [pmap.get(a)] if par and pmap.get(b) == par]
+        src_of = [(links.get((a, rel, par), "geni"), links.get((b, rel, par), "geni"))
+                  for rel, par in shared]
+        # A database gives the sibling link when it links BOTH of them to the same parent.
+        geni = any(all(x != "fs" for x in pair) for pair in src_of)
+        fs = any(all(x != "geni" for x in pair) for pair in src_of)
+        src = "both" if geni and fs else ("fs" if fs else "geni")
+    else:
+        src = links.get((a, RELATION_OF[prop], b), "geni")
+    fs_id = fs_ids.get(a) or fs_ids.get(b, "")
+    out = ""
+    if src in ("geni", "both"):
+        out += f'{TAB}S2600{TAB}"{qs(a)}"'
+    if src in ("fs", "both") and fs_id:
+        out += f'{TAB}S2889{TAB}"{qs(fs_id)}"'
+    return out
+
+
 def sibling_index(father, mother):
     """`{geni_id: {sibling geni_id, ...}}` -- somebody sharing a father or a mother.
 
@@ -290,6 +336,8 @@ def main() -> int:
 
     tree, father, mother = read_our_tree()
     siblings = sibling_index(father, mother)
+    links, fs_ids = read_sources()
+    print(f"link sources: {len(links):,} FamilySearch-given links, {len(fs_ids):,} FamilySearch ids")
     print(f"our tree: {len(tree):,} people with a relationship; "
           f"{len(siblings):,} with a sibling")
 
@@ -376,9 +424,12 @@ def main() -> int:
                     if not attested:
                         unattested += 1
                         continue
-                    line = (f"{qid}{TAB}{prop}{TAB}{other}{TAB}S2600{TAB}"
-                            f'"{qs(subject_geni)}"')
-                    rows.append((qid, prop, other, line))
+                    reference = reference_for(prop, subject_geni, other_geni, links, fs_ids,
+                                              father, mother)
+                    if not reference:
+                        unattested += 1
+                        continue
+                    rows.append((qid, prop, other, f"{qid}{TAB}{prop}{TAB}{other}{reference}"))
 
     # The universe first, then the adjacent ring, so a short day spends its budget on our own
     # items before it spends it claiming new ones.
