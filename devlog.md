@@ -48618,3 +48618,7 @@ The parent repo's shape check flagged the RootsMagic gate item as status-in-plac
 ## 2026-09-27 -- a one-minute floor between creations in the sender
 
 Emma: the CI sender's limits are probably a rate on creations, not a daily cap. `wikidata-edit-run.py` now waits until at least `CREATION_FLOOR` (60 s) has passed since the previous create was sent, on live runs, whatever the 20-50 s gap between other edits is. A test in `test_claim_merge.py` pins it. Two queue items were added before the RootsMagic gate: unique label+description pairs for NN people, and the interleaving of creations with other edits, with an analysis of the limits.
+
+## 2026-09-27 -- the batch issue stops being assigned from 2026-10-05; Geni items to the end
+
+Both workflows that open the daily batch issue (`daily-batch-email.yml`, and the rebuild issue in `pipeline.yml`) now take their assignees from a one-line helper, `assigneesOn(today, owner)`: the owner before 2026-10-05, nobody from that day. The issue is still opened and the QuickStatements still generated. `tests/test_batch_issue_assignment.py` runs the helper with node on 2026-10-04, 2026-10-05 and 2027-01-01. Queue: at Emma's word the descendants-sweep item went to the end; the three other items that need Geni (not before 2026-10-21) went with it without her asking, since each would have stopped the queue the same way.
