@@ -623,7 +623,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **⛔ LABELS ONLY IN ENGLISH, JAPANESE, CHINESE AND KOREAN (plus `mul`, `en-us`). Ruled 2026-09-27:**
   *"the only actual languages that I consider remotely like we should be including are Japanese,
   Chinese, Korean, and English."* Sixteen transliterated scripts were switched on 2026-09-26 on the
-  assumption that transliteration is easy; it is not, and they were withdrawn. The NN relationship
+  assumption that transliteration is easy; it is not, and they were disabled (commented out, not
+  removed). What was asked was different: COMPOSE a language's label from canonical forms of each
+  name in that language (name items' labels), a person eligible only when every part has one -- a
+  long tail, never transliteration. See `todo.md`. The NN relationship
   labels in Polish, French, German and the rest go too. One gate on the written batch
   (`LABEL_LANGUAGES` in `build-garborg-day.py`) drops any other label or alias; Emma's own hand
   labels pass. Other languages are `todo.md` work, not batch work.

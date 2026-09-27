@@ -899,13 +899,31 @@ timeouts), and there can be several runs a day.
 ## Labels in languages beyond English, Japanese, Chinese and Korean (filed 2026-09-27)
 
 Not batch work now: the batches write labels only in `mul`, `en`/`en-us`, `ja`, `zh` and `ko`
-(Emma, 2026-09-27). Deferred here:
-- **Transliterated scripts:** Russian, Ukrainian, Greek, Hindi, Arabic, Persian, Bengali, Hebrew,
-  Tamil, Cherokee, Inuktitut, Amharic, Dhivehi, Armenian, Georgian and Tamazight. Letter-for-letter
-  engines were written and switched on 2026-09-26 on the assumption that transliteration is easy,
-  then withdrawn. They are in git history (`8686369735`), along with the older four in
-  `scripts/translit_scripts.py`. Doing these properly means a real reading of each language, not
-  a letter table.
-- **The NN relationship labels in other languages** (ca, da, de, es, fr, it, nb, nl, pl, pt, sv
-  and the rest) that the `WORDS` table produces.
-- **The native generation-suffix labels** (`d.y.`/`d.e.` in the Scandinavian languages).
+(Emma, 2026-09-27). CJK is in by necessity, because a universe of people enforces it; nothing
+enforces the rest.
+
+**What was asked, and what was built instead.** The request (2026-09-25, the sixteen-language item)
+was never transliteration. It was to set up the pipeline equipment so that, **once each name has an
+established canonical representation in a language, the label in that language is COMPOSED from
+those representations**, the way the Chinese labels partly use name items' own labels. What was
+built on 2026-09-26 was letter-for-letter transliteration engines. That misread the request, and
+they are now disabled (commented out in `scripts/translit_scripts.py` and `build-garborg-day.py`,
+not removed).
+
+**Transliteration is not easy.** Korean alone took many rounds of fixes to get right. So a letter
+table cannot be trusted for Arabic, Inuktitut or Armenian, and the names have to be right.
+
+**The design, for when it is done:**
+- a language's label for a person is composed only from canonical forms of each of their names
+  in that language, which in practice means the name items' labels in it;
+- a person is eligible only when EVERY part of their name has one;
+- so it is a long tail: labels appear as names gain canonical forms, possibly over years
+  (Inuktitut perhaps a ten-year tail). There is no rush.
+
+**Measured 2026-09-26:** of 8,006 name items, how many already carry a label in each language:
+Russian 4,537, Arabic 3,238, Hebrew 2,247, Ukrainian 1,882, Greek 871, Bengali 547, Georgian 255,
+Persian 255, Armenian 213, Hindi 165, Tamil 104, Cherokee 38, Inuktitut 37, Amharic 24, Dhivehi 16,
+Tamazight 12.
+
+Also deferred: the NN relationship labels in other languages (ca, da, de, es, fr, it, nb, nl, pl,
+pt, sv and the rest), and the native generation-suffix labels (`d.y.`/`d.e.`).

@@ -48602,3 +48602,11 @@ the day before assumed transliteration was easy, and it is not.
   each in sv, no and fr).
 - The redacted-person test now expects en/ja/zh and refuses any label outside the set.
 - The rule is in CLAUDE.md; the deferred languages are in `todo.md`.
+- **Corrected the same hour (Emma): commented out, not removed.** The twelve engines are restored
+  in `scripts/translit_scripts.py` with their registration commented out. The emitter
+  `standard_script_labels` and its call are restored as comments in `build-garborg-day.py`. The
+  engine tests are restored and skipped with the reason. **The misreading is recorded in
+  `todo.md`:** the request was never transliteration but equipment to COMPOSE each language's
+  label from canonical forms of every name in it (the name items' own labels), with a person
+  eligible only when every part has one. That is a long tail, possibly a decade for Inuktitut, with
+  no rush. Transliteration is not easy; Korean alone took many rounds of fixes.
