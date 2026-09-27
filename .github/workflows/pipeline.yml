@@ -860,9 +860,9 @@ jobs:
               title: `Garborg batch ${when} UTC - ${process.env.CREATES} creations`,
               body,
               // Kept, ruled 2026-09-26: the QuickStatements stay part of the pipeline, created and
-              // assigned to Emma for at least a week (to 2026-10-03). They run beside the sender safely,
-              // because each creation's English label + description pair is unique. The queue carries
-              // the later change: from 2026-10-05 stop assigning, keep creating.
+              // assigned to Emma until the dated queue item takes over (from 2026-10-05: stop
+              // assigning, keep creating). They run beside the sender safely, because each
+              // creation's English label + description pair is unique.
               assignees: [context.repo.owner],
             });
             core.info(`opened #${issue.data.number}: ${issue.data.html_url}`);

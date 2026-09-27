@@ -82,6 +82,8 @@ MANUAL = REPO / "reports" / "wikidata-garborg-day-manual.txt"
 #: The one-third share sent 240 creations a day and tripped Wikidata's anti-abuse creation limit.
 NAMES_PER_KIND = 5
 INDIVIDUALS = 30
+#: The random individuals at the head of the PAGE's creations (Emma: "~20").
+PAGE_INDIVIDUALS = 20
 
 #: `P31` on a name-item creation -> which of the three allocations it draws on. A matronymic
 #: draws on the patronymic five.
@@ -394,10 +396,15 @@ def main() -> int:
             bound_of[i] = chr(10).join(bound)
         if free:
             rest.append(chr(10).join(free))
-    auto = ([bound_of[i] for i in chosen_names if i in bound_of]
+    # ⛔ **THE ORDER OF A BATCH, ruled 2026-09-25 (the correction to the restructure item):**
+    # relationships and every other statement on existing items FIRST, since a batch can spend
+    # all day creating people; then the random individuals, the top priority among creations;
+    # then the full rings; then the names, each with the links to its bearers so a name is never
+    # created and left sitting; then (on the page) everybody else. Names used to lead.
+    auto = (rest
             + [bound_of[i] for i in chosen_people if i in bound_of]
             + [bound_of[i] for i in shuffled_ring if i in bound_of]
-            + rest)
+            + [bound_of[i] for i in chosen_names if i in bound_of])
     manual = []
 
     a_text = "\n".join(auto).rstrip() + "\n"
@@ -425,7 +432,28 @@ def main() -> int:
     # local -- `text = chr(10).join(u)` -- so assigning from it here took the LAST UNIT
     # instead of the whole batch, and the QuickStatements file came out as one block.
     # Read the source again rather than relying on a name the loop has shadowed.
-    m_text = SRC.read_text(encoding="utf-8")
+    # The page carries the WHOLE batch, as ruled ("keep both"), now in the same priority order:
+    # the auto half's order, then the individuals and names the ration left out. The first
+    # PAGE_INDIVIDUALS people are the random ones Emma called the top priority (about 20).
+    page_people = other_people[:PAGE_INDIVIDUALS]
+    later_people = other_people[PAGE_INDIVIDUALS:]
+    ring_set_order = [i for i in ring_units]
+    all_names = [i for kind in NAME_KINDS for i in name_units.get(kind, [])]
+    placed = set(page_people) | set(ring_set_order) | set(all_names) | set(later_people)
+    leftover = [i for i in sorted(creation_units) if i not in placed]
+    manual = (rest
+              + [bound_of[i] for i in page_people if i in bound_of]
+              + [bound_of[i] for i in ring_set_order if i in bound_of]
+              + [bound_of[i] for i in all_names if i in bound_of]
+              + [bound_of[i] for i in later_people + leftover if i in bound_of])
+    m_text = "\n".join(manual).rstrip() + "\n"
+    # Reordered, never trimmed: the page must hold exactly the composed batch's lines.
+    import collections as _c
+    _src = _c.Counter(ln for ln in SRC.read_text(encoding="utf-8").splitlines() if ln.strip())
+    _pg = _c.Counter(ln for ln in m_text.splitlines() if ln.strip())
+    if _src != _pg:
+        raise SystemExit(f"the page batch differs from the composed batch: "
+                         f"{sum((_src - _pg).values())} missing, {sum((_pg - _src).values())} extra")
 
     # ⛔ **THE ASSERTIONS CHANGED SHAPE WHEN DUPLICATION BECAME THE DESIGN.** They used to check
     # that the two files were a PARTITION -- every line exactly once. That is now false on

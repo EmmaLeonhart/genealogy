@@ -48535,3 +48535,23 @@ the ruling (keep through at least 2026-10-03), so nothing trims it early. The la
 assigning from 2026-10-05 and keep creating, is the queue item that already says so. The two
 paths run side by side safely: each creation's English label + description pair is unique, so a
 person sent by one and pasted from the other is created once.
+
+## 2026-09-26 — the QuickStatements follow the ration's priority order
+
+The restructure item, as its correction (Emma, 2026-09-25 21:5x) settled it. `split-daily-batch.py`
+now writes both files in this order:
+1. everything that is not a creation (relationships and other statements on existing items),
+   because a batch can spend all day creating people;
+2. the random individuals, the top priority among creations: 30 in the automatic share, the first
+   20 on the page;
+3. the full rings;
+4. the names, each carrying the links to its bearers, so a name is never created and left sitting;
+5. on the page, everyone else.
+
+Names used to lead both files. The page still carries the WHOLE batch, now reordered, and a new
+check refuses a page file whose lines are not exactly the composed batch's.
+
+Run offline on the committed batch: both files open with about 895 lines of statements on existing
+items. Page creations run 445 people (20 random plus 425 ring), then 51 names, then 289 people. The
+auto share runs 455 people, then 10 names. Point (g) of the correction is applied to the comment at
+the issue assignment: it now defers to the dated 2026-10-05 item.
