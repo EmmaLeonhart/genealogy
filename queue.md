@@ -13,6 +13,7 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 ## Now
 
+- **Fix this queue's shape: 1 finding from ontology-harness's shape check.** line 63, item "GATE: ask Emma whether the RootsMagic extraction has fini...": status-in-place (item says 'Ruled'; status written onto work; delete done items and log them in devlog.md). The rules are `../docs/queue-shape.md` (the parent repo). Fix them the way this repo's own queue rules say, then delete this item.
 - **Resume the descendants sweep from its cursor (needs Geni; not before 2026-10-21).** The queue
   is `reports/sweep-queue-6000000227822546944.txt` and the cursor stood at 8,993 of 29,366 when
   Geni's WAF began answering 403 on 2026-09-21. The 209 people in
