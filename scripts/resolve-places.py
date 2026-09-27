@@ -267,6 +267,14 @@ def main() -> int:
                     v = (r.get(k) or "").strip()
                     if v:
                         uses[v] += 1
+    # Places of marriage too (ruled 2026-09-27): `P2842` on the `P26` of a couple with an item of ours.
+    marriages = ROOT / "reports" / "derived-marriages.csv"
+    if marriages.exists():
+        with open(marriages, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                v = " ".join((r.get("marriage_place") or "").split())
+                if v and (r.get("husband") in ours or r.get("wife") in ours):
+                    uses[v] += 1
     done = {}
     if OUT.exists():
         with open(OUT, encoding="utf-8") as f:

@@ -1222,3 +1222,17 @@ def test_nn_people_always_carry_an_en_label():
     src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
     assert src.count(r"""lines.append(f'LAST\tLen\t"{mul_value}"')""") == 2
     assert r"""_nn_en.append(f'{_q}\tLen\t"{qs(_l["mul"])}"')""" in src
+
+
+def test_a_marriage_place_goes_on_P26_as_P2842_and_P6375():
+    # Ruled 2026-09-27: our resolved place as `P2842`, Geni's exact string as `P6375` (monolingual,
+    # `und`), on the spouse statement in both directions, and only for a place that resolves.
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert r'''return f'\tP2842\t{qid}\tP6375\tund:"{qs(raw)}"' if qid else ""''' in src
+    assert 'add(q, "P26", our_items[sp], g, marriage_qualifiers(g, sp))' in src
+    assert r"""lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g)}")""" in src
+    assert 'reciprocal.append((our_items[sp], "P26", g, _mq))' in src
+    text = BATCH.read_text(encoding="utf-8")
+    for line in text.splitlines():
+        if "\tP2842\t" in line or "\tP6375\t" in line:
+            assert re.search(r'\tP26\t\S+\tP2842\tQ\d+\tP6375\tund:"[^"]+"', line), line

@@ -1224,6 +1224,37 @@ def place_qid(raw):
 
 _PLACE_LABELS = {}
 
+_MARRIAGE_PLACES = None
+
+
+def marriage_qualifiers(a, b):
+    """The qualifiers a `P26` between Geni people `a` and `b` carries for where they married.
+
+    ⛔ **RULED 2026-09-27 (the marriage-places item):** `P2842` *place of marriage* with our reading
+    of the place, and ALSO `P6375` *street address* holding Geni's exact place string, the way
+    `P1932` holds it on a birth or death place -- *"not strictly an address, but an address is the
+    usual home for this information"*. Checked live the same day: `P6375` is monolingual text, its
+    property scope allows qualifier use, and `P26`'s allowed-qualifiers constraint lists both; the
+    live `P26`s already qualified with it report no violation. The language is `und`
+    (undetermined, used on 1,138 `P6375` values already): Geni's strings mix languages
+    (`Klepp, Rogaland, Norway`) and guessing one per string is the inference refused for
+    nicknames. Only a place `place_qid` resolves goes out, as for birth and death: an unresolved
+    string (`4 born` is one) sends nothing. `""` when there is nothing to say.
+    """
+    global _MARRIAGE_PLACES
+    if _MARRIAGE_PLACES is None:
+        _MARRIAGE_PLACES = {}
+        path = ROOT / "reports" / "derived-marriages.csv"
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh):
+                    raw = " ".join((row.get("marriage_place") or "").split())
+                    if raw and row.get("husband") and row.get("wife"):
+                        _MARRIAGE_PLACES.setdefault(frozenset((row["husband"], row["wife"])), raw)
+    raw = _MARRIAGE_PLACES.get(frozenset((a, b)), "")
+    qid = place_qid(raw)
+    return f'\tP2842\t{qid}\tP6375\tund:"{qs(raw)}"' if qid else ""
+
 
 def place_label(raw):
     """The English label of the place `raw` resolves to, or `""` when it does not resolve."""
@@ -7437,7 +7468,10 @@ def main():
         # `P40`, `P26` and `P3373` never consulted it at all, so every child, spouse and
         # sibling link went out on every run. QuickStatements merges a duplicate rather than
         # failing, which is why nothing ever broke.
-        if (q, prop, value.strip('"')) in live_values:
+        # A `P26` the item already states still goes out when it carries a marriage place: the
+        # sender (`plan_attachments`) and QuickStatements both add the qualifiers to the existing
+        # statement rather than making a second one.
+        if (q, prop, value.strip('"')) in live_values and "\tP2842\t" not in qual:
             return
         # **Never re-add what another editor removed.** `read_suppressed` carries the why.
         # This sits after the live-values check on purpose: a statement the item still holds
@@ -7490,7 +7524,7 @@ def main():
                     sibling_kinship(g, sib, fam_rows, facts))
         for sp in sorted(spouses.get(g, ())):
             if sp in our_items:
-                add(q, "P26", our_items[sp], g)
+                add(q, "P26", our_items[sp], g, marriage_qualifiers(g, sp))
         # ⛔ **`P3448` stepparent — derived from the family objects.** See `STEP_CAP`. A
         # step-parent is the other spouse of one of my parents who is not my parent; there is no
         # tag for it in GEDCOM and none is looked for.
@@ -8260,8 +8294,9 @@ def main():
                 reciprocal.append((our_items[target], back, g))
         for sp in sorted(spouses.get(g, ())):
             if our_items.get(sp) in editable:
-                lines.append(f"LAST\tP26\t{our_items[sp]}{ref(g)}")
-                reciprocal.append((our_items[sp], "P26", g))
+                _mq = marriage_qualifiers(g, sp)
+                lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g)}")
+                reciprocal.append((our_items[sp], "P26", g, _mq))
         # **The cap is 10 a day ACROSS EVERY BATCH, and this site was escaping it.**
         # `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"A builder emitting
         # siblings must count them and stop."* The additions pass counted; this one, on the
