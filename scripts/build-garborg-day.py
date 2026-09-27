@@ -711,6 +711,17 @@ def read_suppressed():
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="	"):
             out.add((row["qid"], row["property"], row["value"]))
+    # ⛔ **AND EVERY REMOVAL SEEN IN AN ITEM'S HISTORY, BY EMMA OR ANYONE.** 2026-09-27 (the
+    # queue item on the batches arguing with edits on Wikidata): read from the histories of the
+    # items whose labels we checked, 21 removals by Emma by hand and 774 by other editors (bots
+    # resolving a merged item's redirect among them, which must not be re-added either). The
+    # snapshot above is one editor's and is rewritten when its script runs; this file is
+    # committed and only grows.
+    removed = ROOT / "reports" / "removed-statements.tsv"
+    if removed.exists():
+        with open(removed, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                out.add((row["qid"], row["property"], row["value"]))
     return out
 
 

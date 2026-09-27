@@ -48791,3 +48791,7 @@ At Emma's OK the last 100 revisions of the 1,029 items were read, one request ea
 - 24: changed by our own later batch (our rule changed); not protected.
 - 12: our value went live and the slot changed with no label edit (a merge or restore); protected, since leaving a label alone is the safe direction.
 The 59 protected slots are in `reports/corrected-label-slots.tsv`, which `read_reverted_labels` now also reads, so the composer drops any label line on them. That file is committed and only grows, unlike `reverted-labels.tsv`, which is rebuilt every run. Every verdict is in `reports/label-history-verdicts.csv`.
+
+## 2026-09-27 -- removed statements from the item histories already read
+
+The 1,029 histories read for the labels also hold every statement removal on those items. Extracted with no new requests: 795 removals, 21 by Emma by hand and 774 by other editors, many of them bots (KrBot) resolving a link to a merged item. That makes 764 distinct `(item, property, value)` statements, written to `reports/removed-statements.tsv`, which `read_suppressed` now also reads, so the composer never re-adds them. Our own batches' removals are left out. Like the corrected label slots, the file is committed and only grows. The one-editor snapshot `suppressed-statements.tsv` is rewritten when its script runs, so these are kept apart from it. Our other ledger items (about 12,000) were not read.
