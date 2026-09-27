@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **2,250,893 people**, 
+One row per person in `reports/derived-facts.csv` — **2,250,742 people**, 
 of whom 96,982 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 2,245,581 | 99.8% |
-| occupation | 205,270 | 9.1% |
-| birth date | 1,343,576 | 59.7% |
+| sex | 2,245,430 | 99.8% |
+| occupation | 205,268 | 9.1% |
+| birth date | 1,343,468 | 59.7% |
 | birth place | 0 | 0.0% |
-| death date | 1,085,757 | 48.2% |
+| death date | 1,085,671 | 48.2% |
 | death place | 0 | 0.0% |
-| burial date | 118,743 | 5.3% |
+| burial date | 118,719 | 5.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,7 +48,7 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**6,434 date values**, 5,111 distinct, parsed to no year. They keep their raw
+**6,404 date values**, 5,081 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 

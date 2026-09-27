@@ -5,16 +5,16 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **2,250,714 people**.
+One row per person in `reports/derived-labels.csv` — **2,250,563 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 2,127,571 | 94.5% |
+| Latin only | 2,127,416 | 94.5% |
 | CJK only — needs translation for en | 54,223 | 2.4% |
-| no usable name at all | 29,738 | 1.3% |
-| other script only — needs translation for en | 23,216 | 1.0% |
+| no usable name at all | 29,741 | 1.3% |
+| other script only — needs translation for en | 23,217 | 1.0% |
 | mixed-script only — no clean Latin label | 12,664 | 0.6% |
 | Latin and CJK | 3,302 | 0.1% |
 
@@ -27,9 +27,9 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 2,523,889 |
+| Latin | 2,523,876 |
 | CJK | 133,363 |
-| other | 63,993 |
+| other | 63,994 |
 | mixed | 37,064 |
 | none | 529 |
 
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 326,464 people
+## Aliases from married names — 326,461 people
 
 A married name plugs into the name to produce an alias.
 
@@ -56,7 +56,7 @@ them.
 ## Against Wikidata, where both exist
 
 90,463 people have both a derived Latin label and a Wikidata English
-label. **26,682 match exactly (29.5%).**
+label. **26,683 match exactly (29.5%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
