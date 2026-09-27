@@ -48569,3 +48569,20 @@ statements on existing items, then 30 or 20 random individuals, then the ring, t
 then the rest on the page. Against Emma's understanding: the ring is unconditional, as she thought.
 The ~20 at the start exists as of today (before, names led). The rest does come at the end, on the
 page only. And the 500-a-day creation figure is reported, never enforced.
+
+## 2026-09-27 — two QuickStatements ideas filed in todo.md
+
+As asked, filed as ideas Emma is considering and not started: a daily batch that creates every
+individual it is allowed to, in priority order, running on indefinitely; and a small second
+generation started once a ring is fully built, which she thinks is probably a bad idea. Also
+recorded there: the rings take about 100 runs.
+
+The 9:14 PM PDT pipeline run (`36293744579`) succeeded in 148 minutes, under the new 240-minute
+limit, and committed a batch composed with most of 2026-09-26's changes. Of 716 person creations:
+- 467 carry the sixteen standardized scripts (the rest are NN people, left out by design);
+- 153 carry `en-us`;
+- 14 have a place of birth, 10 a place of death and 2 an occupation, each with `P1932` (the
+  resolver caches are still small);
+- none has a description equal to its label (208 did before).
+
+The batch also has 2 half-sibling kinship qualifiers. CI (`36302419839`) now runs against it.

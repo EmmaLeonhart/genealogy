@@ -884,3 +884,14 @@ Filed from the queue as context, on Emma's instruction; none of this is to be st
 - **shrines.order.life** for the Shinto wiki scripts, with **temples.order.life** redirecting there.
 - **A religious-buildings database beyond Wikidata.**
 - **Every deity treated as having a genealogy.**
+
+## QuickStatements ideas Emma is considering (filed 2026-09-27, not work now)
+
+- **Daily QuickStatements that create every individual they are allowed to, in priority order,
+  running on indefinitely.** On a good maxlag day that could get a very large number of creations
+  done. The cost: a long batch builds a fatter tree inside the pool of eligible individuals.
+- **A small second QuickStatements generation started as soon as a ring is fully built**, in
+  automatic running. Emma thinks this is probably a bad idea but wants it recorded.
+
+Context: completing the mandatory rings is expected to take about 100 runs (possibly more with
+timeouts), and there can be several runs a day.
