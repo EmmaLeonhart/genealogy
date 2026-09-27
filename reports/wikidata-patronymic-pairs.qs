@@ -271,21 +271,6 @@ Q141502662	P5278	LAST
 Q141502662	P407	Q9043
 Q141502662	P407	Q9035
 
-# Arnesdatter -- the counterpart of Arnesen (76 bearer(s))
-CREATE
-LAST	Len	"Arnesdatter"
-LAST	Lmul	"Arnesdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141448439
-Q141448439	P5278	LAST
-Q141448439	P407	Q9043
-Q141448439	P407	Q9035
-
 # Axelsen -- the counterpart of Axelsdatter (75 bearer(s))
 CREATE
 LAST	Len	"Axelsen"
@@ -309,6 +294,17 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
+
+# Berntsdatter -- the counterpart of Berntsen (74 bearer(s))
+CREATE
+LAST	Len	"Berntsdatter"
+LAST	Lmul	"Berntsdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
 
 # Eivindsdotter -- the counterpart of Eivindson (74 bearer(s))
 CREATE
