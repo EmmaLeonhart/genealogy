@@ -5,6 +5,7 @@
 # per the 2026-08-30 ruling that neither form of private gets a qualifier.
 # Re-stating property+value attaches the qualifier; it does not add a second P2600.
 
+Q18326058	P2600	"6000000012641538298"	P1810	"Anders Gyllenborg"
 Q18347113	P2600	"6000000006636594711"	P1810	"Anna Swedenborg"
 Q18988	P2600	"6000000002198946285"	P1810	"Arnulf"
 Q19316514	P2600	"6000000007118512238"	P1810	"Salomon Gottschalk Bengtsson Geijer"
