@@ -226,6 +226,14 @@ VOCABULARY = {
     "Q9035",        # Danish
     "Q1412",        # Finnish
     "Q7411",        # Dutch
+    # `P1039` *kinship to subject* on `P3373` siblings (2026-09-26), labels read live.
+    "Q131277844",   # full brother
+    "Q131277857",   # full sister
+    "Q41798757",    # full sibling
+    "Q19595226",    # paternal half-brother
+    "Q19595228",    # paternal half-sister
+    "Q19595227",    # maternal half-brother
+    "Q19595229",    # maternal half-sister
 }
 
 

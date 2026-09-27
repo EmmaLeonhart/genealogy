@@ -1211,6 +1211,45 @@ def place_qid(raw):
     return _PLACE_QIDS.get(raw, "") if raw else ""
 
 
+#: `P1039` *kinship to subject* on a `P3373` *sibling* statement: what the VALUE is to the
+#: subject. Labels read live 2026-09-26.
+KINSHIP = {
+    ("full", "M"): "Q131277844",        # full brother
+    ("full", "F"): "Q131277857",        # full sister
+    ("full", ""): "Q41798757",          # full sibling
+    ("paternal", "M"): "Q19595226",     # paternal half-brother
+    ("paternal", "F"): "Q19595228",     # paternal half-sister
+    ("maternal", "M"): "Q19595227",     # maternal half-brother
+    ("maternal", "F"): "Q19595229",     # maternal half-sister
+}
+
+
+def sibling_kinship(subject, sibling, father, mother, facts):
+    """The `P1039` qualifier fragment for `sibling` as the subject's sibling, or `""`.
+
+    ⛔ Queued 2026-09-26 from Wikidata's own modelling (`sibling` = Anscar of Spoleto, `kinship to
+    subject` = *paternal half-brother*): when the parents are known, say whether a sibling is full
+    or a paternal or maternal half-sibling. **All four parents must be known**; with one missing,
+    full and half cannot be told apart and nothing is said.
+    """
+    fs, ms = father.get(subject), mother.get(subject)
+    fb, mb = father.get(sibling), mother.get(sibling)
+    if not (fs and ms and fb and mb):
+        return ""
+    if fs == fb and ms == mb:
+        kind = "full"
+    elif fs == fb:
+        kind = "paternal"
+    elif ms == mb:
+        kind = "maternal"
+    else:
+        return ""
+    sex = ((facts.get(sibling) or {}).get("sex") or "").upper()
+    sex = sex if sex in ("M", "F") else ""
+    qid = KINSHIP.get((kind, sex))
+    return f"\tP1039\t{qid}" if qid else ""
+
+
 def _places_table():
     """`{geni_id: {"birth_place", "death_place"}}` from the file the merge writes beside the tree.
 
@@ -7409,7 +7448,8 @@ def main():
                                     f"{SIBLING_CAP}-a-day cap"))
                     continue
                 _siblings_emitted.append((q, our_items[sib]))
-                add(q, "P3373", our_items[sib], g)
+                add(q, "P3373", our_items[sib], g,
+                    sibling_kinship(g, sib, father, mother, facts))
         for sp in sorted(spouses.get(g, ())):
             if sp in our_items:
                 add(q, "P26", our_items[sp], g)
@@ -8121,8 +8161,10 @@ def main():
                                     f"{SIBLING_CAP}-a-day cap"))
                     continue
                 _siblings_emitted.append(("LAST", our_items[sib]))
-                lines.append(f"LAST\tP3373\t{our_items[sib]}{ref(g)}")
-                reciprocal.append((our_items[sib], "P3373", g))
+                lines.append(f"LAST\tP3373\t{our_items[sib]}"
+                             f"{sibling_kinship(g, sib, father, mother, facts)}{ref(g)}")
+                reciprocal.append((our_items[sib], "P3373", g,
+                                   sibling_kinship(sib, g, father, mother, facts)))
         for kid in sorted(children.get(g, ())):
             if our_items.get(kid) in editable:
                 lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g)}")
@@ -8132,8 +8174,8 @@ def main():
         # **The other direction, in the SAME run.** `Q… P… LAST` -- the subject already
         # exists, so QuickStatements resolves `LAST` to the item created just above.
         # This is what makes the batch two-way instead of leaving one-way links behind.
-        for subject, prop, source in reciprocal:
-            lines.append(f"{subject}\t{prop}\tLAST{ref(source)}")
+        for subject, prop, source, *qual in reciprocal:
+            lines.append(f"{subject}\t{prop}\tLAST{qual[0] if qual else ''}{ref(source)}")
 
         # The name model. Ruled 2026-08-24: the names are to be modelled properly, which
         # the earlier version did not do. Only tokens whose item ALREADY exists --

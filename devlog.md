@@ -48315,3 +48315,23 @@ failed five tests; the last green run was `120df951fc` that morning.
   people to it. Emma chose to queue that (end of `## Now`). Of our items with a relational `en`
   label, 66 have something in `GIVN`, much of it not a name (`Female`, `(Frille)`, `Bror`), so no
   mass relabel was done.
+
+## 2026-09-26 — sibling statements say full, paternal half or maternal half (P1039)
+
+Wikidata's modelling, as Emma found it on Anscar of Spoleto: `P3373` *sibling* = X, qualified
+`P1039` *kinship to subject* = what X is to the subject. Every value exists (labels read live):
+full brother `Q131277844`, full sister `Q131277857`, full sibling `Q41798757`, paternal
+half-brother `Q19595226`, paternal half-sister `Q19595228`, maternal half-brother `Q19595227`,
+maternal half-sister `Q19595229`.
+
+- **New sibling statements** now carry it (`sibling_kinship` in `build-garborg-day.py`), on
+  creations in both directions and on the additions path. The two siblings' parents decide it:
+  both shared means full, only the father means paternal half, only the mother means maternal
+  half. The value's sex picks brother or sister. With any of the four parents unknown nothing is
+  said, since full and half cannot be told apart. Checked on the four cases. The CI vocabulary
+  knows the seven items.
+- **Repairing the existing ones, measured** over the 2,963 live `P3373` statements on our items:
+  514 full, 14 paternal half and 2 maternal half, so 530 qualifiable; 10 with a parent unknown;
+  **4 with no shared parent at all, which are suspect sibling claims**; 2,419 whose other side is
+  not ours. Not done: the additions path skips statements already live, so this needs its own
+  paced pass, and the pace is Emma's call.
