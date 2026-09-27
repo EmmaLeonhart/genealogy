@@ -1527,6 +1527,29 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
 FORCED_LABELS_FILE = ROOT / "reports" / "forced-labels.tsv"
 
 
+
+def _description_removals():
+    """`Q… Den ""` for each backfilled description Emma ruled junk, while it still reads so.
+
+    Ruled 2026-09-26, "clear only the junk": the description backfill (deleted the same day) put
+    raw source text on ten existing items -- `jfr g og æ bok 2 s 422`, `buried Big Canoe
+    Cemetery`. `reports/description-removals.tsv` lists them with the exact text. A removal is
+    emitted only while the live description still equals that text, so one somebody has since
+    changed is never touched, and the list retires itself as they go.
+    """
+    path = ROOT / "reports" / "description-removals.tsv"
+    if not path.exists():
+        return []
+    want = {r["qid"]: r["description"] for r in csv.DictReader(path.open(encoding="utf-8"), delimiter="\t")}
+    out = []
+    for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json")):
+        for qid, entity in json.loads(shard.read_text(encoding="utf-8")).items():
+            if qid in want and ((((entity or {}).get("descriptions") or {}).get("en") or {})
+                                .get("value")) == want[qid]:
+                out.append(f"#   {qid}: remove the raw-source-text description")
+                out.append(f'{qid}\tDen\t""')
+    return out
+
 def _forced_labels(live_labels=None, path=None):
     """`reports/forced-labels.tsv` as label lines, for every row the live label does not match.
 
@@ -8644,7 +8667,8 @@ def main():
     # batch `temporary_batch_1790391174856` put raw source text onto a run of them ("jfr g og æ
     # bok 2 s 422", "Grannes bruk 7. Sola s95 nr 4"), from Geni place fields. It is deleted.
     derived_labels = (
-        _piped_label_fixes(live_labels)
+        _description_removals()
+        + _piped_label_fixes(live_labels)
         + _label_corrections(editable_items, labels, table, state, fields, generation,
                              live_labels)
         + _cjk_follows_mul(table)

@@ -48358,3 +48358,21 @@ minutes. The resolver also saved only at the end, so the capped run kept nothing
 - `.github/workflows/places.yml` runs the resolver daily (and on dispatch) with a budget of 80 and a
   75-minute cap, then commits `reports/place-qids.tsv`.
 - `resolve-places.py` now saves after every place, so a capped run keeps what it resolved.
+
+## 2026-09-26 — the description backfill on existing items, stopped and cleaned
+
+- **What scheduled it:** `_description_backfill` in `build-garborg-day.py` wrote an `en`
+  description onto every editable item of ours that had none, from dates and places or else
+  relatives, inside the daily label edits. Deleted with its helper (`4caaf2c610`); descriptions now
+  go only on items a run creates.
+- **The raw text:** it comes from Geni place fields that hold source citations or notes
+  (`jfr g og æ bok 2 s 422`, `buried Big Canoe Cemetery`), which the description copies verbatim.
+  Emma chose to leave new-item descriptions as they are.
+- **The ones already added, "clear only the junk":** 393 of our 8,071 `en` descriptions match
+  raw-source patterns. The first revision of each shows 383 were written at creation (left alone,
+  as ruled) and **10 were added later by the backfill**: `Q141498688`, `Q141498731`,
+  `Q141498967`, `Q141499076`, `Q141499081`, `Q141499082`, `Q141499083`, `Q141499099`,
+  `Q141499109`, `Q141499122`. They are listed in `reports/description-removals.tsv`.
+  `_description_removals` emits `Q… Den ""` for each, only while the live description still
+  equals the recorded text, through the usual locality gate and label cap. The parser turns that
+  into an empty `en` description, which Wikidata treats as removal.
