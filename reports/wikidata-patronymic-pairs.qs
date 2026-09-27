@@ -7,20 +7,6 @@
 #
 # The genitive s is shared: Rasmussen -> Rasmusdatter, never Rasmussdatter.
 
-# Mikkelsen -- the counterpart of Mikkelsdatter (91 bearer(s))
-CREATE
-LAST	Len	"Mikkelsen"
-LAST	Lmul	"Mikkelsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141498381
-Q141498381	P5278	LAST
-Q141498381	P407	Q9043
-Q141498381	P407	Q9035
-
 # Berntsdatter -- the counterpart of Berntsen (74 bearer(s))
 CREATE
 LAST	Len	"Berntsdatter"
@@ -31,32 +17,6 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
-
-# Sjursen -- the counterpart of Sjursdatter (74 bearer(s))
-CREATE
-LAST	Len	"Sjursen"
-LAST	Lmul	"Sjursen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141528086
-Q141528086	P5278	LAST
-Q141528086	P407	Q9043
-Q141528086	P407	Q9035
-
-# Knudsdotter -- the counterpart of Knudson (59 bearer(s))
-CREATE
-LAST	Len	"Knudsdotter"
-LAST	Lmul	"Knudsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141419272
-Q141419272	P5278	LAST
 
 # Martinsen -- the counterpart of Martinsdatter (58 bearer(s))
 CREATE
@@ -484,4 +444,41 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
+
+# Simensdatter -- the counterpart of Simensen (36 bearer(s))
+CREATE
+LAST	Len	"Simensdatter"
+LAST	Lmul	"Simensdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Endresdotter -- the counterpart of Endreson (34 bearer(s))
+CREATE
+LAST	Len	"Endresdotter"
+LAST	Lmul	"Endresdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+LAST	P5278	Q141528089
+Q141528089	P5278	LAST
+
+# Bertelsen -- the counterpart of Bertelsdatter (33 bearer(s))
+CREATE
+LAST	Len	"Bertelsen"
+LAST	Lmul	"Bertelsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141574662
+Q141574662	P5278	LAST
+Q141574662	P407	Q9043
+Q141574662	P407	Q9035
 
