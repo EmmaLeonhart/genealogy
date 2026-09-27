@@ -48458,3 +48458,35 @@ the margin on a job measured and trending up. That is well under GitHub's six-ho
   `P1932` *object named as*, as places of birth and death already do. That closes the "P1932 on
   both" item. The description's occupation rung gives the English label when resolved and the raw
   string otherwise. The CI existence test knows the occupation items.
+
+## 2026-09-26 — research: string-valued ways to keep the source text on place of birth, date, place of death
+
+**What exists.** Read from each property's own *allowed qualifiers* constraint (a qualifier outside
+it raises a constraint warning), then counted live on the query service:
+
+| qualifier | type | allowed on | uses on P19 / P20 / P569 / P570 |
+| --- | --- | --- | --- |
+| `P1932` *object named as* | string | all four | 2,243 / 856 / 2,586 / 315 |
+| `P6375` *street address* | monolingual text | P19, P20 | 214 / 1,597 / 0 / 2 |
+| `P8338` *applies to name of object* | monolingual text | P19, P20 | 7 / 15 / 0 / 0 |
+| `P670` *house number* | string | P19, P20 | (address detail) |
+| `P1683` *quotation* | monolingual text | none of the four | n/a |
+
+**How they are used in practice** (sampled values):
+- `P1932` on a place holds the source's own spelling beside the item: `Lyons` on Lyon, `H.` on a
+  place the source abbreviated.
+- `P1932` on a date holds the source's raw date text: `17.01.1878`, `1591 or 1607`, `18..`,
+  `74 years old`. That is exactly the GEDCOM-string-as-evidence use.
+- `P6375` holds a real street address inside the place: `Marienstraße 22`,
+  `7 boulevard Malesherbes, 75008 Paris`. It is mostly on places of death (addresses of a house
+  or hospital).
+
+**Recommendation.**
+- **`P1932` for all three.** It is allowed on every one, it is the common practice, and it already
+  goes on `P19`/`P20` since today. The natural next step is the raw GEDCOM date string on
+  `P569`/`P570` (`ABT 1518`, `BET 848 AND 850`), beside the qualifiers the dates already carry
+  (`P1480` *sourcing circumstances*, `P1319`/`P1326` earliest/latest).
+- **The address qualifier only for real addresses.** `P6375` means *street address*. Used as a
+  general container for a source string (`Grannes bruk 7. Sola s95 nr 4`), it would assert an
+  address that is not one. It fits where a GEDCOM place really is a street address, which is rare
+  in this corpus, so it is not worth building now.
