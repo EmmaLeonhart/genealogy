@@ -45,7 +45,7 @@ except Exception:                                                   # noqa: BLE0
 UA = BOT_USER_AGENT or "genealogy-place-resolver/1.0"
 API = "https://www.wikidata.org/w/api.php"
 OUT = ROOT / "reports" / "place-qids.tsv"
-FIELDS = ["place", "qid", "resolved_part", "depth", "parts", "method"]
+FIELDS = ["place", "qid", "resolved_part", "depth", "parts", "method", "label_en"]
 
 #: `P31` values that make an item a country, which may stand at the right end with no parent.
 COUNTRY_CLASSES = {"Q6256", "Q3624078", "Q3024240", "Q7275", "Q1763527", "Q417175"}
@@ -93,7 +93,7 @@ def candidates(name):
     need = [q for q in ids if q not in _entity_cache]
     for i in range(0, len(need), 50):
         got = api({"action": "wbgetentities", "ids": "|".join(need[i:i + 50]),
-                   "props": "claims"})
+                   "props": "claims|labels", "languages": "en"})
         for q, ent in got.get("entities", {}).items():
             claims = ent.get("claims", {})
 
@@ -105,7 +105,8 @@ def candidates(name):
                         out.add(v["id"])
                 return out
             _entity_cache[q] = {"p31": vals("P31"), "p17": vals("P17"), "p131": vals("P131"),
-                                "coords": "P625" in claims}
+                                "coords": "P625" in claims,
+                                "label": ((ent.get("labels") or {}).get("en") or {}).get("value", "")}
     out = [(q, _entity_cache[q]) for q in ids if q in _entity_cache]
     # A place has coordinates or sits in a country; everything else (a person, a ship, a
     # family name) is not a candidate for where somebody was born.
@@ -148,7 +149,22 @@ def resolve(place):
         qid, part, depth = parent, name, i + 1
         method = "hierarchy" if len(parts) > 1 else "unique"
     return {"place": place, "qid": qid, "resolved_part": part, "depth": depth,
-            "parts": len(parts), "method": method if qid else method}
+            "parts": len(parts), "method": method,
+            "label_en": (_entity_cache.get(qid) or {}).get("label", "") if qid else ""}
+
+
+def fill_labels(rows):
+    """The English label for cached rows written before labels were recorded."""
+    need = sorted({r["qid"] for r in rows if r.get("qid") and not r.get("label_en")})
+    got = {}
+    for i in range(0, len(need), 50):
+        data = api({"action": "wbgetentities", "ids": "|".join(need[i:i + 50]),
+                    "props": "labels", "languages": "en"})
+        for q, e in data.get("entities", {}).items():
+            got[q] = ((e.get("labels") or {}).get("en") or {}).get("value", "")
+    for r in rows:
+        if r.get("qid") and not r.get("label_en"):
+            r["label_en"] = got.get(r["qid"], "")
 
 
 def main() -> int:
@@ -170,6 +186,7 @@ def main() -> int:
     if OUT.exists():
         with open(OUT, encoding="utf-8") as f:
             done = {r["place"]: r for r in csv.DictReader(f, delimiter="\t")}
+    fill_labels(list(done.values()))
     todo = [p for p, _n in sorted(uses.items(), key=lambda kv: (-kv[1], kv[0])) if p not in done]
     print(f"{len(uses)} places in scope, {len(done)} cached, {len(todo)} to go; "
           f"resolving {min(len(todo), args.budget)}")

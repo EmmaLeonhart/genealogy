@@ -1174,7 +1174,11 @@ def life_description(facts_row, places_row):
 
     def side(date_key, place_key):
         d = normalise_date_case(" ".join((f.get(date_key) or "").split()))
-        pl = " ".join((p.get(place_key) or "").split())
+        raw = " ".join((p.get(place_key) or "").split())
+        # ⛔ Ruled 2026-09-26: a RESOLVED place gives its English label, an unresolved one its
+        # raw source string. A description exists to be unique, not good, so the raw string is
+        # the default and the label is a compromise with Wikidata.
+        pl = place_label(raw) or raw
         return " ".join(x for x in (d, pl) if x)
 
     born, died = side("birth_date_raw", "birth_place"), side("death_date_raw", "death_place")
@@ -1210,7 +1214,17 @@ def place_qid(raw):
                     depth, parts = int(row.get("depth") or 0), int(row.get("parts") or 0)
                     if row.get("qid") and (depth >= 2 or parts == 1):
                         _PLACE_QIDS[row["place"]] = row["qid"]
+                        _PLACE_LABELS[row["place"]] = (row.get("label_en") or "").strip()
     return _PLACE_QIDS.get(raw, "") if raw else ""
+
+
+_PLACE_LABELS = {}
+
+
+def place_label(raw):
+    """The English label of the place `raw` resolves to, or `""` when it does not resolve."""
+    place_qid(raw)
+    return _PLACE_LABELS.get(raw, "") if raw else ""
 
 
 #: `P1039` *kinship to subject* on a `P3373` *sibling* statement: what the VALUE is to the

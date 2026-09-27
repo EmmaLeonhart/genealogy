@@ -48390,3 +48390,10 @@ which holds the queue there until she confirms.
   removals are withdrawn. Only the one plain-nonsense case is changed: `Q141499081`'s description
   loses its citation (`; jfr g og æ bok 2 s 422`) and keeps its dates and places, via
   `reports/description-overwrites.tsv`, emitted once while the live text still matches.
+- **The description rule, as Emma stated it:** a description exists to be unique, not good. A
+  RESOLVED place gives its English label; an unresolved one gives its raw source string. The label
+  is a compromise with Wikidata, and the raw string is the default. `resolve-places.py` now
+  records each item's English label (`label_en`, filled for the cached rows), and
+  `life_description` uses it through `place_label`. Checked: `Gjesdal, Rogaland, Norway` becomes
+  `Gjesdal Municipality`, and `Stokka` stays `Stokka`. The same rule for occupations is the next
+  queue item.
