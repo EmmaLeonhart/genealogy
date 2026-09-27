@@ -48508,3 +48508,20 @@ that is only such a stem. Their labels are queued in `reports/label-applications
 | `Q141447158` | Jans abu Anna | NN (`mul` and `en`). `abu Anna` is *father of Anna*; the other records disagree (`Johan`, `Jansdotter`), so no name is guessed |
 
 The `P735` links to the `Ols` given-name item stay with the item queued for it at the end.
+
+## 2026-09-26 — label + description stays unique with the occupation as the description
+
+Measured over the whole tree: **9,735 people** would take the occupation rung (no dates, no
+places, an occupation). Of their `(label, occupation)` pairs, **11 collide, over 23 people
+(0.24%)**, so Emma's expectation holds almost everywhere. The worst:
+- `MacMahon` / *Lord of Corkabaiskin*, 3 people;
+- then pairs of 2: *borgmästare i Gävle* (`Olof Jonsson`), *Rebslager i Varde* (`Niels Nielsen`),
+  *kurl. Kanzler* (`Georg von Tiesenhausen`), *Trabajo En Casa* under `NNN NNNN`, and others.
+
+Some look like one person held twice on Geni.
+
+**The fallback is the one already built:** the Geni id, unique by construction. But the corpus-wide
+audit (`scripts/build-description-audit.py`) computed only the dates-and-places rung, so occupation
+collisions were never listed, and `descriptions.deduplicate` gives the Geni id only to people the
+audit lists (and to repeats within one batch). The audit now uses the composer's own occupation
+rung, so the 23 get the Geni id from the next run.

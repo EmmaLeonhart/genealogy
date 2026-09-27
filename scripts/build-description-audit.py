@@ -49,13 +49,29 @@ csv.field_size_limit(10 ** 9)
 
 
 def _emitter():
-    """`life_description` from the composer itself, never a copy of it."""
+    """The composer's own first two description rungs, never a copy of them.
+
+    ⛔ **The occupation rung too (2026-09-26).** With no dates or places the description is now
+    the occupation (its English label when resolved, else the raw string), so the audit has to
+    produce the same text or occupation collisions would never be listed, and the composer's
+    `descriptions.deduplicate` gives a Geni id only to what this lists. Measured that day: 9,735
+    people take the occupation rung, 11 (label, occupation) pairs collide over 23 people.
+    """
     spec = importlib.util.spec_from_file_location(
         "bgd", os.path.join(ROOT, "scripts", "build-garborg-day.py"))
     m = importlib.util.module_from_spec(spec)
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     spec.loader.exec_module(m)
-    return m.life_description
+
+    def describe(row, places_row):
+        text = m.life_description(row, places_row)
+        if text:
+            return text
+        occ = ((row.get("occupations") or "").split(" | ")[0]).strip()
+        if occ and occ.casefold() not in {"unknown", "ukjent", "okänd", "?", "nn"}:
+            return (m.occupation_of(occ)[1] or occ)[:m.DESC_MAX].rstrip(" -,")
+        return ""
+    return describe
 
 
 def _places():
