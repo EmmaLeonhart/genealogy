@@ -33,6 +33,8 @@ jobs:
             /reports/derived-places.csv
             /reports/garborg-qids.tsv
             /reports/place-qids.tsv
+            /reports/derived-facts.csv.gz
+            /reports/occupation-qids.tsv
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
@@ -47,16 +49,27 @@ jobs:
           BOT_CONTACT: emma@topazcomputing.com
         run: python scripts/resolve-places.py --budget "${{ inputs.budget || '80' }}"
 
+      # Occupations the same way (P106), on the same clock and the same save-as-it-goes.
+      - name: Resolve occupations
+        timeout-minutes: 40
+        continue-on-error: true
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+        run: python scripts/resolve-places.py --occupations --budget 60
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add --sparse reports/place-qids.tsv
+          if [ -f reports/occupation-qids.tsv ]; then
+            git add --sparse reports/occupation-qids.tsv
+          fi
           if git diff --cached --quiet; then
             echo "no new places; nothing to commit"
             exit 0
           fi
-          git commit -m "places: resolve more place strings to Wikidata items"
+          git commit -m "places and occupations: resolve more strings to Wikidata items"
           # The pipeline pushes on its own schedule, so losing this race is ordinary.
           for i in 1 2 3 4 5; do
             git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main \

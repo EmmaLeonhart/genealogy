@@ -48443,3 +48443,18 @@ The last green pipeline run took 140 minutes against a 150-minute job limit, and
 still carries the places step and the old limit, and will likely die the same way at about
 9:14 PM PDT. The limit is now 240, by the reasoning its comment already gave for 90 -> 150: restore
 the margin on a job measured and trending up. That is well under GitHub's six-hour ceiling.
+
+## 2026-09-26 — occupations resolved to Wikidata items (P106), with the source string as P1932
+
+- `scripts/resolve-places.py --occupations` resolves the first occupation string of each person
+  with an item (2,270 distinct) to an item whose `P31` is an occupation, profession or position.
+  It requires an exact match on a LABEL, not an alias, and refuses anything that is also a noble
+  title or a military rank. The first trial matched through aliases and was wrong twice (`Major`
+  became *Meier*, `Grevinna` became *count*). The tightened trial resolved Brukspatron to
+  ironmaster, Farmer to farmer and Kyrkoherde to vicar, and left titles, ranks and the ambiguous
+  `Bonde` alone. `reports/occupation-qids.tsv` is seeded with those 15. `places.yml` grows it daily
+  beside the places, saving as it goes.
+- New people get `P106` *occupation* with our reading as the value and the exact source string as
+  `P1932` *object named as*, as places of birth and death already do. That closes the "P1932 on
+  both" item. The description's occupation rung gives the English label when resolved and the raw
+  string otherwise. The CI existence test knows the occupation items.

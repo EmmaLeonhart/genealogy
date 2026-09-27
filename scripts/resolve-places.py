@@ -167,10 +167,95 @@ def fill_labels(rows):
             r["label_en"] = got.get(r["qid"], "")
 
 
+
+# ---------------------------------------------------------------------------------------
+# ⛔ OCCUPATIONS, THE SAME WAY (queue, 2026-09-26): resolve an occupation string to its Wikidata
+# item for `P106` *occupation*. Not hierarchical, so one part: an item whose label or alias is
+# exactly the string (case folded; `bonde` and `Bonde` are the same word) and whose `P31` is an
+# occupation, a profession or a position. A noble title (`Friherrinna`) or a military rank
+# (`Major`) is none of those and is not an occupation, so it is left unresolved rather than
+# made a `P106`. More than one such item leaves it unresolved.
+OCC_OUT = ROOT / "reports" / "occupation-qids.tsv"
+OCC_FIELDS = ["occupation", "qid", "method", "label_en"]
+OCC_CLASSES = {"Q12737077", "Q28640", "Q4164871"}   # occupation, profession, position
+NOT_OCCUPATION = {"Q355567", "Q56019"}                # noble title, military rank
+UNKNOWN = {"unknown", "ukjent", "okänd", "?", "nn", "ukendt"}
+
+
+def resolve_occupation(name):
+    ids = []
+    for lang in ("en", "mul", "nb", "sv", "da", "de", "fr"):
+        got = api({"action": "wbsearchentities", "search": name, "language": lang,
+                   "strictlanguage": 0, "type": "item", "limit": 20})
+        # A LABEL match only: an alias match put `Major` on `Q17428947` *Meier* and `Grevinna`
+        # on `Q3519259` *count* in the first trial.
+        ids += [h["id"] for h in got.get("search", [])
+                if h.get("match", {}).get("type") == "label"
+                and h.get("match", {}).get("text", "").casefold() == name.casefold()]
+    ids = list(dict.fromkeys(ids))
+    hits = []
+    for i in range(0, len(ids), 50):
+        got = api({"action": "wbgetentities", "ids": "|".join(ids[i:i + 50]),
+                   "props": "claims|labels", "languages": "en"})
+        for q, ent in got.get("entities", {}).items():
+            p31 = {((c.get("mainsnak") or {}).get("datavalue") or {}).get("value", {}).get("id")
+                   for c in (ent.get("claims") or {}).get("P31", [])}
+            if p31 & OCC_CLASSES and not p31 & NOT_OCCUPATION:
+                hits.append((q, ((ent.get("labels") or {}).get("en") or {}).get("value", "")))
+    if len(hits) == 1:
+        return {"occupation": name, "qid": hits[0][0], "method": "unique", "label_en": hits[0][1]}
+    return {"occupation": name, "qid": "", "label_en": "",
+            "method": "ambiguous" if hits else "unresolved"}
+
+
+def occupations_main(budget):
+    import gzip
+    with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as f:
+        ours = {r["geni_id"] for r in csv.DictReader(f, delimiter="\t") if r.get("qid")}
+    facts = ROOT / "reports" / "derived-facts.csv"
+    fh = (open(facts, encoding="utf-8", newline="") if facts.exists()
+          else gzip.open(str(facts) + ".gz", "rt", encoding="utf-8", newline=""))
+    uses = collections.Counter()
+    with fh:
+        for r in csv.DictReader(fh):
+            if r["geni_id"] in ours:
+                o = ((r.get("occupations") or "").split(" | ")[0]).strip()
+                if o and o.casefold() not in UNKNOWN:
+                    uses[o] += 1
+    done = {}
+    if OCC_OUT.exists():
+        with open(OCC_OUT, encoding="utf-8") as f:
+            done = {r["occupation"]: r for r in csv.DictReader(f, delimiter="\t")}
+    todo = [o for o, _n in sorted(uses.items(), key=lambda kv: (-kv[1], kv[0])) if o not in done]
+    print(f"{len(uses)} occupations in scope, {len(done)} cached, {len(todo)} to go; "
+          f"resolving {min(len(todo), budget)}")
+
+    def save():
+        rows = sorted(done.values(), key=lambda r: r["occupation"])
+        tmp = OCC_OUT.with_suffix(".tmp")
+        with open(tmp, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=OCC_FIELDS, delimiter="\t", lineterminator="\n")
+            w.writeheader()
+            w.writerows(rows)
+        tmp.replace(OCC_OUT)
+        return rows
+
+    for o in todo[:budget]:
+        done[o] = resolve_occupation(o)
+        save()
+    rows = save()
+    print(f"{len(rows)} cached: {sum(1 for r in rows if r['qid'])} resolved")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=int, default=200, help="new strings to resolve this run")
+    ap.add_argument("--occupations", action="store_true",
+                    help="resolve occupation strings instead of places")
     args = ap.parse_args()
+    if args.occupations:
+        return occupations_main(args.budget)
     csv.field_size_limit(1 << 30)
     with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as f:
         ours = {r["geni_id"] for r in csv.DictReader(f, delimiter="\t") if r.get("qid")}

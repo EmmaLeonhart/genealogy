@@ -1227,6 +1227,23 @@ def place_label(raw):
     return _PLACE_LABELS.get(raw, "") if raw else ""
 
 
+_OCCUPATIONS = None
+
+
+def occupation_of(raw):
+    """`(qid, English label)` that `reports/occupation-qids.tsv` reads `raw` as, else `("", "")`."""
+    global _OCCUPATIONS
+    if _OCCUPATIONS is None:
+        _OCCUPATIONS = {}
+        path = ROOT / "reports" / "occupation-qids.tsv"
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    if row.get("qid"):
+                        _OCCUPATIONS[row["occupation"]] = (row["qid"], row.get("label_en") or "")
+    return _OCCUPATIONS.get(raw, ("", "")) if raw else ("", "")
+
+
 #: `P1039` *kinship to subject* on a `P3373` *sibling* statement: what the VALUE is to the
 #: subject. Labels read live 2026-09-26. Half-siblings only; see `sibling_kinship`.
 KINSHIP = {
@@ -7894,7 +7911,7 @@ def main():
         if not _desc:
             _occ = ((f.get("occupations") or "").split(" | ")[0]).strip()
             if _occ and _occ.casefold() not in {"unknown", "ukjent", "okänd", "?", "nn"}:
-                _desc = _occ[:DESC_MAX].rstrip(" -,")
+                _desc = (occupation_of(_occ)[1] or _occ)[:DESC_MAX].rstrip(" -,")
         if not _desc:
             _rel = describe_all(g, facts, father, mother, referred_to_as, table,
                                 children, spouses, siblings,
@@ -8188,6 +8205,11 @@ def main():
             qid = place_qid(raw)
             if qid:
                 lines.append(f'LAST\t{prop}\t{qid}\tP1932\t"{qs(raw)}"{ref(g)}')
+        # `P106` *occupation* the same way: our reading as the value, the source string as `P1932`.
+        _occ_raw = ((f.get("occupations") or "").split(" | ")[0]).strip()
+        _occ_qid = occupation_of(_occ_raw)[0]
+        if _occ_qid:
+            lines.append(f'LAST\tP106\t{_occ_qid}\tP1932\t"{qs(_occ_raw)}"{ref(g)}')
         # **`LAST` IS valid as a VALUE, and this batch never used it.**
         #
         # Reported 2026-08-25: two-way relationship adding at creation time is completely

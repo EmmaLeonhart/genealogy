@@ -234,9 +234,10 @@ VOCABULARY = {
 }
 
 
-def known_place_items():
-    """The places `P19`/`P20` point at: `reports/place-qids.tsv`, resolved live from Wikidata."""
-    path = REPO / "reports" / "place-qids.tsv"
+def known_place_items(path=None):
+    """Items resolved live from Wikidata: the places `P19`/`P20` point at
+    (`reports/place-qids.tsv`), or with `path` the occupations `P106` points at."""
+    path = path or REPO / "reports" / "place-qids.tsv"
     if not path.exists():
         return set()
     with open(path, encoding="utf-8") as f:
@@ -245,7 +246,8 @@ def known_place_items():
 
 def test_every_qid_the_batch_points_at_already_exists():
     """The single-run rule. A value not in the ledger cannot resolve mid-run."""
-    known = known_qids() | VOCABULARY | known_name_items() | known_place_items()
+    known = (known_qids() | VOCABULARY | known_name_items() | known_place_items()
+             | known_place_items(REPO / "reports" / "occupation-qids.tsv"))
     unknown = []
     for ln in lines():
         m = QID_VALUE.match(ln)
