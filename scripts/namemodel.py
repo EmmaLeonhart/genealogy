@@ -3342,7 +3342,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # A token the plan has never seen can still have an item: `von Linné` is `Q111584388`,
         # and since particles joined the family name (2026-09-26) the plan's stems no longer
         # match those tokens at all. `store_name_item` reads our created items and the store.
-        if not qid and action == "not in the plan":
+        if not qid and action == "not in the plan" and " " in token:
             qid = store_name_item(token, lookup)
         if not qid:
             notes.append(f"{token} ({usage}): {action or 'no item'}")

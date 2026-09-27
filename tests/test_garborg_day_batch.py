@@ -218,12 +218,29 @@ VOCABULARY = {
     "Q10673705",    # son name
     "Q10476255",    # daughter name
     "Q8229",        # Latin script -- the P282 writing system every Latin name item carries
+    # The `P407` *language of work or name* values the patronymic pairs carry (2026-09-26),
+    # labels read live from Wikidata the same day.
+    "Q294",         # Icelandic
+    "Q9027",        # Swedish
+    "Q9043",        # Norwegian
+    "Q9035",        # Danish
+    "Q1412",        # Finnish
+    "Q7411",        # Dutch
 }
+
+
+def known_place_items():
+    """The places `P19`/`P20` point at: `reports/place-qids.tsv`, resolved live from Wikidata."""
+    path = REPO / "reports" / "place-qids.tsv"
+    if not path.exists():
+        return set()
+    with open(path, encoding="utf-8") as f:
+        return {r["qid"] for r in csv.DictReader(f, delimiter="\t") if r.get("qid")}
 
 
 def test_every_qid_the_batch_points_at_already_exists():
     """The single-run rule. A value not in the ledger cannot resolve mid-run."""
-    known = known_qids() | VOCABULARY | known_name_items()
+    known = known_qids() | VOCABULARY | known_name_items() | known_place_items()
     unknown = []
     for ln in lines():
         m = QID_VALUE.match(ln)

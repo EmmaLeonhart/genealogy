@@ -48270,3 +48270,23 @@ on the trial cache: `Gjesdal, Rogaland, Norway` gives `Q255148`, `Norway` gives 
 qualifier (`P2842` on the `P26` spouse statement), and a qualifier cannot carry its own `P1932`.
 So the item's model does not carry over as written: either the place goes on without the source
 string, or the raw text needs another home.
+
+## 2026-09-26 — CI after today's changes: five failures, four of them mine
+
+CI run `36280295068` (dispatched at 4:42 PM PDT on `3d3596189d`, the first run of today's tests)
+failed five tests; the last green run was `120df951fc` that morning.
+- `test_the_same_spelling_in_two_usages_needs_two_items`: my store fallback in `statements_for`
+  read the real name-item files even under a test's own plan. Narrowed to what it was for, joined
+  particle names (a token with a space).
+- `test_a_conjunction_joins_one_family_name_rather_than_separating_two`: it pinned
+  `von Thurgau und Nellenburg` to `Thurgau und Nellenburg`, which the particle ruling reverses.
+  The expectation now follows the ruling, with a comment saying so.
+- `test_every_qid_the_batch_points_at_already_exists`: the pairs' `P407` language values were not
+  in its vocabulary. Six language items added, labels read live; the place items `P19`/`P20` will
+  point at are read from `reports/place-qids.tsv`.
+- `test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created`: new code (particles
+  joined, `von Lüchow`) against a batch composed by the old code, whose carry-forward has the
+  stems. It clears when the next pipeline run composes with the new code.
+- `test_the_contiguous_group_matches_what_is_known_to_be_outside_it`: not from these changes. The
+  edit universe grew to 10,799 items against a hand-set bound of 10,000, a bound meant to catch
+  an escape into the 1.34-million world tree. Raising it is Emma's call, so it is left as is.

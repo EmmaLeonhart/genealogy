@@ -856,14 +856,17 @@ def test_a_conjunction_joins_one_family_name_rather_than_separating_two():
         return [t for t, usage, _o in namemodel.classify_fields(givn="X", surn=surn)
                 if usage == "family"]
 
-    assert families("von Thurgau und Nellenburg") == ["Thurgau und Nellenburg"]
+    # ⛔ Since 2026-09-26 a nobiliary particle is part of the family name (Emma: "the
+    # particles are part of the name"), so `von` stays on it; before that ruling this read
+    # `Thurgau und Nellenburg`.
+    assert families("von Thurgau und Nellenburg") == ["von Thurgau und Nellenburg"]
     assert families("Natt och Dag") == ["Natt och Dag"]
     assert families("Durán y Chávez") == ["Durán y Chávez"]
     assert families("Grant of Freuchie") == ["Grant of Freuchie"]
     assert families("Oxenstierna af Korsholm och Wasa") == ["Oxenstierna af Korsholm och Wasa"]
     # a connector needs a name on BOTH sides; a trailing one joins nothing
     assert families("Natt och") == ["Natt"]
-    assert families("af Sweden") == ["Sweden"]
+    assert families("af Sweden") == ["af Sweden"]
 
 
 def test_a_surn_that_is_entirely_bracketed_is_the_name_inside_the_brackets():
