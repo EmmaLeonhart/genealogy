@@ -397,55 +397,6 @@ def is_relationship_description(text):
 
 
 
-#: ⛔ **THE SIXTEEN STANDARDIZED SCRIPTS, on every creation.** `queue.md`, 2026-09-25: *"Finally
-#: implement standardized labels in Russian, Ukrainian, Greek, Hindi, Arabic, Persian, Bengali,
-#: Hebrew, Tamil, Cherokee, Inuktitut, Ethiopian, Maldivian, Armenian, Georgian and zgh."*
-#: `scripts/translit_scripts.py` holds the engines, letter for letter from the Latin `mul`
-#: label; "Ethiopian" is Amharic (`am`) and "Maldivian" is Dhivehi (`dv`).
-STANDARD_SCRIPT_CODES = ("ru", "uk", "el", "hi", "ar", "fa", "bn", "he", "ta", "chr", "iu",
-                         "am", "dv", "hy", "ka", "zgh")
-
-
-def standard_script_labels(label):
-    """`{code: label}` for the sixteen, or `{}` when the label is not one to transcribe.
-
-    Only a wholly Latin label is transcribed, and not one carrying an unknown-name marker
-    (`NN`, `NN1`, `Unknown`): those have descriptive labels in the languages that have the
-    words, and spelling `NN` out in Cherokee is not a name. A Roman numeral (`II`) or an
-    initial (`A.`) keeps its Latin letters in every script, as it does in CJK.
-    """
-    from labels import WORDS_MEANING_UNKNOWN
-    from translit_scripts import SCRIPTS, _CASED, _CLUSTERS
-    tokens = (label or "").split()
-    if not tokens or any(ch.isalpha() and not ("A" <= ch <= "z" or "\u00c0" <= ch <= "\u024f")
-                         for ch in label):
-        return {}
-    unknown = {w.lower() for w in WORDS_MEANING_UNKNOWN if " " not in w} | {"nn", "unknown"}
-    if any(re.fullmatch(r"nn\d*", t.lower().strip(".,")) or t.lower().strip(".,") in unknown
-           for t in tokens):
-        return {}
-    out = {}
-    for code in STANDARD_SCRIPT_CODES:
-        words = []
-        for token in tokens:
-            if re.fullmatch(r"[IVXLC]+|[A-Z]\.?", token.strip(",")):
-                words.append(token)
-                continue
-            low = token.lower()
-            for a, b in _CLUSTERS:
-                low = low.replace(a, b)
-            got = SCRIPTS[code](low)
-            if not got:
-                words = []
-                break
-            # A cased script follows the source token's case: `von` stays lower case.
-            up = code in _CASED and token[:1].isupper()
-            words.append(got[0].upper() + got[1:] if up else got)
-        if words:
-            out[code] = " ".join(words)
-    return out
-
-
 def describe_all(geni_id, facts, father, mother, labels, table,
                  children=None, spouses=None, siblings=None,
                  qid_of=None, live_labels=None, fields=None):
@@ -2199,6 +2150,8 @@ P2600_LEAD_CAP = 60
 #: 151,320 labels, § *THE RULINGS OF 2026-09-01* — read from that module rather than restated, so
 #: adding a language there moves it up this list for free.
 LABEL_LANGUAGE_ORDER = ("en", "mul", "ja", "zh", "ko")
+#: The only label and alias languages a batch writes (ruled 2026-09-27). `en-us` is English.
+LABEL_LANGUAGES = frozenset({"mul", "en", "en-us", "ja", "zh", "ko"})
 
 
 def _supported_languages():
@@ -8128,8 +8081,6 @@ def main():
                 # includes Korean. Without this the gate could require `ko`
                 # while the CREATE block never wrote one.
                 lines.append(f'LAST\tLko\t"{ko}"')
-                for _code, _label in standard_script_labels(mul_form).items():
-                    lines.append(f'LAST\tL{_code}\t"{qs(_label)}"')
                 # **A TRANSLITERATED birth name is not a `ja`/`zh` alias**, ruled 2026-08-30:
                 # the transliteration of the Geni display name does not go into Japanese or
                 # Chinese aliases at all.
@@ -8598,6 +8549,36 @@ def main():
     if added_us:
         print(f"en-us: {added_us} creation(s) given an en-us label (en differs from mul)")
     kept = with_us
+
+    # ⛔ **LABELS AND ALIASES ONLY IN THESE LANGUAGES. Ruled 2026-09-27:** *"the only actual
+    # languages that I consider remotely like we should be including are Japanese, Chinese,
+    # Korean, and English."* Everything else waits in `todo.md`: the sixteen transliterated
+    # scripts added on 2026-09-26 (transliteration is not the easy thing it was assumed to be),
+    # the relationship labels of NN people in Polish, French, German and the rest, and the
+    # generation-suffix labels. One gate on the written batch, because a guard in one emitter is
+    # not a guard: it drops any `L`/`A` line in another language, on a creation or an existing item.
+    # Emma's OWN hand labels (`reports/label-applications.tsv`, source `Emma`) are deliberate
+    # values, not generated ones, so they pass whatever their language.
+    _hand_emma = set()
+    _hand_path = ROOT / "reports" / "label-applications.tsv"
+    if _hand_path.exists():
+        with open(_hand_path, encoding="utf-8", newline="") as _fh:
+            for _r in csv.DictReader(_fh, delimiter="\t"):
+                if (_r.get("source") or "").strip() == "Emma":
+                    _hand_emma.add((_r["qid"], (_r.get("kind") or "L") + _r["lang"]))
+    _langs_dropped = collections.Counter()
+    _gated = []
+    for ln in kept:
+        parts = ln.strip().split("\t")
+        m = re.fullmatch(r"[LA]([a-z]{2,3}(?:-[a-z0-9]+)*)", parts[1]) if len(parts) >= 3 else None
+        if m and m.group(1) not in LABEL_LANGUAGES and (parts[0], parts[1]) not in _hand_emma:
+            _langs_dropped[m.group(1)] += 1
+            continue
+        _gated.append(ln)
+    if _langs_dropped:
+        print(f"labels outside {sorted(LABEL_LANGUAGES)}: {sum(_langs_dropped.values())} dropped "
+              f"({', '.join(f'{k} {v}' for k, v in _langs_dropped.most_common(8))})")
+    kept = _gated
 
     # ⛔ **A DESCRIPTION MAY NOT EQUAL THE LABEL.** Wikibase refuses the whole creation:
     # *"Label and description for language code en can not have the same value."* Edit run

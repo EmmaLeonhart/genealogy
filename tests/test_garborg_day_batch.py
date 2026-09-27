@@ -799,9 +799,22 @@ def test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere():
     if not with_surname:
         pytest.skip("every NN person here has no Latin name to preserve")
 
-    # And the description exists in more than English, in the languages the
-    # relationship table covers.
-    for lang in ("en", "nb", "da", "sv", "de", "nl", "ja", "zh"):
+    # And the description exists beyond English, in the label languages a batch writes. Since
+    # 2026-09-27 that is en, ja, zh and ko only (Emma: those are the languages to include; the
+    # rest wait in todo.md), so nb/da/sv/de/nl are no longer expected here.
+    allowed = {"mul", "en", "en-us", "ja", "zh", "ko"}
+    # Emma's own hand labels pass whatever their language, exactly as the composer's gate lets them.
+    hand = set()
+    apps = REPO / "reports" / "label-applications.tsv"
+    if apps.exists():
+        with open(apps, encoding="utf-8") as f:
+            hand = {(r["qid"], (r.get("kind") or "L") + r["lang"])
+                    for r in csv.DictReader(f, delimiter="\t") if r.get("source") == "Emma"}
+    stray = sorted({m.group(2) for m in re.finditer(
+        r'^(LAST|Q\d+)\t[LA]([a-z]{2,3}(?:-[a-z0-9]+)*)\t', text, re.M)
+        if (m.group(1), m.group(0).split("\t")[1]) not in hand} - allowed)
+    assert not stray, f"labels in languages outside {sorted(allowed)}: {stray}"
+    for lang in ("en", "ja", "zh"):
         assert re.search(rf'L{lang}\t"[^"]+ ', text) or re.search(rf'L{lang}\t"[^"]+"',
                                                                   text), (
             f"no {lang} label anywhere; the description is supposed to be formulaic "

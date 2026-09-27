@@ -895,3 +895,17 @@ Filed from the queue as context, on Emma's instruction; none of this is to be st
 
 Context: completing the mandatory rings is expected to take about 100 runs (possibly more with
 timeouts), and there can be several runs a day.
+
+## Labels in languages beyond English, Japanese, Chinese and Korean (filed 2026-09-27)
+
+Not batch work now: the batches write labels only in `mul`, `en`/`en-us`, `ja`, `zh` and `ko`
+(Emma, 2026-09-27). Deferred here:
+- **Transliterated scripts:** Russian, Ukrainian, Greek, Hindi, Arabic, Persian, Bengali, Hebrew,
+  Tamil, Cherokee, Inuktitut, Amharic, Dhivehi, Armenian, Georgian and Tamazight. Letter-for-letter
+  engines were written and switched on 2026-09-26 on the assumption that transliteration is easy,
+  then withdrawn. They are in git history (`8686369735`), along with the older four in
+  `scripts/translit_scripts.py`. Doing these properly means a real reading of each language, not
+  a letter table.
+- **The NN relationship labels in other languages** (ca, da, de, es, fr, it, nb, nl, pl, pt, sv
+  and the rest) that the `WORDS` table produces.
+- **The native generation-suffix labels** (`d.y.`/`d.e.` in the Scandinavian languages).

@@ -620,6 +620,13 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   CLASSIFICATION: the person stops reading as Sinosphere, falls into the Latin pipeline, and the
   corruption compounds. Nine went out 2026-09-18 and were reverted by hand.
   → [names](docs/rules/names.md)
+- **⛔ LABELS ONLY IN ENGLISH, JAPANESE, CHINESE AND KOREAN (plus `mul`, `en-us`). Ruled 2026-09-27:**
+  *"the only actual languages that I consider remotely like we should be including are Japanese,
+  Chinese, Korean, and English."* Sixteen transliterated scripts were switched on 2026-09-26 on the
+  assumption that transliteration is easy; it is not, and they were withdrawn. The NN relationship
+  labels in Polish, French, German and the rest go too. One gate on the written batch
+  (`LABEL_LANGUAGES` in `build-garborg-day.py`) drops any other label or alias; Emma's own hand
+  labels pass. Other languages are `todo.md` work, not batch work.
 - **The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN.** All three readings are produced for
   everyone; culture only picks which is promoted to `mul`.
 - **A title inside a label takes the NATIVE form in CJK**, never a transliteration. An unknown

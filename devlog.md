@@ -48586,3 +48586,19 @@ limit, and committed a batch composed with most of 2026-09-26's changes. Of 716 
 - none has a description equal to its label (208 did before).
 
 The batch also has 2 half-sibling kinship qualifiers. CI (`36302419839`) now runs against it.
+
+## 2026-09-27 — labels only in English, Japanese, Chinese and Korean
+
+Ruled by Emma: *"I do not think that most of these languages have any business having their
+labels made in them right now … the only actual languages that I consider remotely like we should
+be including are Japanese, Chinese, Korean, and English."* The sixteen-script labels I switched on
+the day before assumed transliteration was easy, and it is not.
+- **The emitter is removed** (`standard_script_labels`), and `scripts/translit_scripts.py` is back to
+  its state before 2026-09-26. The twelve engines and their test are gone; they are in git history.
+- **One gate on the written batch**, `LABEL_LANGUAGES` (`mul`, `en`, `en-us`, `ja`, `zh`, `ko`), drops
+  any other label or alias, whatever emitted it. On the current batch that is 26 languages: the
+  sixteen scripts, the NN relationship labels in ca/da/de/es/fr/it/nb/nl/pt/sv, and the
+  generation-suffix labels. Emma's own hand labels in `reports/label-applications.tsv` pass (one
+  each in sv, no and fr).
+- The redacted-person test now expects en/ja/zh and refuses any label outside the set.
+- The rule is in CLAUDE.md; the deferred languages are in `todo.md`.
