@@ -98,6 +98,16 @@ def main():
             for row in csv.DictReader(fh, delimiter="	"):
                 chains.setdefault((row["to_id"], row["kind"]), []).append(row)
 
+    # The viewer's own name, as the id-less first steps carry it: 29,096 of 31,049 on 2026-09-27
+    # read `Emma Leonhart 命玥`. Read from the data, the same way `default_viewer` reads the id.
+    first_names = {}
+    for rows in chains.values():
+        first = min(rows, key=lambda r: int(r["step"]))
+        if not first["profile_id"]:
+            first_names[first["name"]] = first_names.get(first["name"], 0) + 1
+    viewer_name = (max(sorted(first_names), key=lambda n: first_names[n])
+                   if first_names else None)
+
     if not os.path.isdir(OUT):
         os.makedirs(OUT)
     written = skipped = 0
@@ -106,9 +116,22 @@ def main():
         if any(r["step"] == "-1" for r in rows) or len(rows) < 2:
             skipped += 1
             continue
+        # ⛔ **STEP 0 IS THE VIEWER ONLY WHEN IT IS NAMED AS THE VIEWER.** Found 2026-09-27 (Emma:
+        # *"extremely dangerous"*): this filled every id-less step 0 with the viewer's id, on the
+        # belief that step 0 is always the viewer. It is not: of 31,049 id-less first steps, 1,953
+        # were somebody else -- `Naruhito, Emperor of Japan` 1,129, `NN NN NN` 582, `NN Father of
+        # Huaxu` 193, `Charlemagne` 21 -- and each was given the OWNER's Geni id. That made the
+        # owner the father of Huaxu and of Louis the Pious in the merged tree, and those edges went
+        # to Wikidata as `P25`/`P40` links on `Q140568870`. Now the viewer's id goes only on a
+        # step 0 carrying the viewer's own name (the name the id-less first steps overwhelmingly
+        # carry); any other id-less step 0 is dropped, so its chain starts at step 1 and nobody
+        # is given an id that is not theirs.
         if not rows[0]["profile_id"]:
-            rows[0]["profile_id"] = froms.get((to_id, kind), "") or fallback or ""
-        if not rows[0]["profile_id"]:
+            if rows[0]["name"] == viewer_name:
+                rows[0]["profile_id"] = froms.get((to_id, kind), "") or fallback or ""
+            else:
+                rows = rows[1:]
+        if len(rows) < 2 or not rows[0]["profile_id"]:
             skipped += 1
             continue
         # ⛔ NOT `isolate-geni-`. These are HARVESTED paths, and 224 of the first 294 are
