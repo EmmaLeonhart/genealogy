@@ -48555,3 +48555,17 @@ Run offline on the committed batch: both files open with about 895 lines of stat
 items. Page creations run 445 people (20 random plus 425 ring), then 51 names, then 289 people. The
 auto share runs 455 people, then 10 names. Point (g) of the correction is applied to the comment at
 the issue assignment: it now defers to the dated 2026-10-05 item.
+
+## 2026-09-26 — how the pipeline decides who is created, written up
+
+`docs/creation-order.md`, read from the code. The pick:
+- the spine always;
+- a random regular pick of up to 200 children and 200 parents, plus free parents;
+- the uncapped priority ancestor ring, the whole next generation above the hand-picked seeds;
+- the names.
+
+The gates carry people forward rather than lose them. The order is the one set today:
+statements on existing items, then 30 or 20 random individuals, then the ring, then the names,
+then the rest on the page. Against Emma's understanding: the ring is unconditional, as she thought.
+The ~20 at the start exists as of today (before, names led). The rest does come at the end, on the
+page only. And the 500-a-day creation figure is reported, never enforced.
