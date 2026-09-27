@@ -7992,10 +7992,26 @@ def main():
                                      children, spouses, siblings,
                                      qid_of=our_items, live_labels=live_labels,
                                      fields={} if own else fields)
+            # ⛔ **AN NN CREATION ALWAYS CARRIES ITS OWN `en` LABEL (queue item, 2026-09-25).**
+            # Wikidata refuses a second item only on a matching label AND description in ONE
+            # language. `Q141562038` went out `Lmul "NN"` + `Den "Geni …"` with no `Len`, so the
+            # `en` pair the refusal needs did not exist and nothing stopped a second creation.
+            # 94 of the 716 people in the 2026-09-27 batch were shaped that way, every one an NN
+            # person. The label is the `mul` value itself; the en-us pass leaves it alone, since
+            # `en` and `mul` agree.
             if own:
                 phrase = (described.get("en") or "").strip()
+                lines.append(f'LAST\tLen\t"{mul_value}"')
                 if phrase:
                     lines.append(f'LAST\tDen\t"{qs(phrase)}"')
+                    _desc_emitted = True
+                elif not _desc_emitted:
+                    lines.append(f'LAST\tDen\t"Geni {g}"')
+                    _desc_emitted = True
+            elif not described:
+                lines.append(f'LAST\tLen\t"{mul_value}"')
+                if not _desc_emitted:
+                    lines.append(f'LAST\tDen\t"Geni {g}"')
                     _desc_emitted = True
             else:
                 for code, value in sorted(described.items()):
@@ -8605,6 +8621,28 @@ def main():
     if added_us:
         print(f"en-us: {added_us} creation(s) given an en-us label (en differs from mul)")
     kept = with_us
+
+    # ---- `en` ON OUR EXISTING NN ITEMS THAT HAVE NONE (queue item, 2026-09-25) -------------
+    #
+    # The creation fix above covers new items; this covers the ones already made. An item of
+    # ours whose live `mul` has an `NN` token and which has no live `en` label gets `Len` = its
+    # `mul`, so the label + description pair that stops a duplicate exists in `en`. Only items
+    # the live-label file lists, so an item it does not know about is never assumed empty.
+    _live_langs = collections.defaultdict(dict)
+    for (_q, _lang), _lab in live_labels.items():
+        _live_langs[_q][_lang] = _lab
+    _ours = set(our_items.values()) if isinstance(our_items, dict) else set(our_items)
+    from labels import UNNAMED_MARKER as _NN_MARK
+    _nn_en = []
+    for _q in sorted(_live_langs, key=lambda q: int(q[1:]) if q[1:].isdigit() else 0):
+        _l = _live_langs[_q]
+        if (_q in _ours and "en" not in _l
+                and _NN_MARK in (_l.get("mul") or "").split()):
+            _nn_en.append(f'{_q}\tLen\t"{qs(_l["mul"])}"')
+    if _nn_en:
+        kept.append("# en labels on our existing NN items that have none, so a duplicate is refused")
+        kept.extend(_nn_en)
+        print(f"NN en labels: {len(_nn_en)} existing item(s) given Len = their mul")
 
     # ⛔ **LABELS AND ALIASES ONLY IN THESE LANGUAGES. Ruled 2026-09-27:** *"the only actual
     # languages that I consider remotely like we should be including are Japanese, Chinese,

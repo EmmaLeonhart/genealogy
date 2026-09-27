@@ -1205,3 +1205,11 @@ def test_the_cjk_half_of_the_relational_label_fix_touches_only_our_phrase(label,
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     assert mod._our_cjk_relational_phrase(label, lang) is ours
+
+
+def test_nn_people_always_carry_an_en_label():
+    # Queue item 2026-09-25: Q141562038 went out `Lmul "NN"` with no `Len`, so Wikidata's
+    # label+description refusal had no `en` pair to match and a second creation would pass.
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert src.count(r"""lines.append(f'LAST\tLen\t"{mul_value}"')""") == 2
+    assert r"""_nn_en.append(f'{_q}\tLen\t"{qs(_l["mul"])}"')""" in src
