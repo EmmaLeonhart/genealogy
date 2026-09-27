@@ -48525,3 +48525,13 @@ audit (`scripts/build-description-audit.py`) computed only the dates-and-places 
 collisions were never listed, and `descriptions.deduplicate` gives the Geni id only to people the
 audit lists (and to repeats within one batch). The audit now uses the composer's own occupation
 rung, so the 23 get the Geni id from the next run.
+
+## 2026-09-26 — the QuickStatements stay: created and assigned for at least a week
+
+Checked, not changed: every pipeline run opens a "Garborg batch" issue assigned to Emma (#288 to
+#292 on 2026-09-26, 785 to 861 creations each), and neither `pipeline.yml` nor
+`daily-batch-email.yml` gates the assignment by date. A comment at the `assignees` line now records
+the ruling (keep through at least 2026-10-03), so nothing trims it early. The later change, to stop
+assigning from 2026-10-05 and keep creating, is the queue item that already says so. The two
+paths run side by side safely: each creation's English label + description pair is unique, so a
+person sent by one and pasted from the other is created once.
