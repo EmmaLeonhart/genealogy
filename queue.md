@@ -35,12 +35,6 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
   the list with `build-chain-batch.py --skip-covered` (27,808 left) and upload it as a file; set
   `C.i` from `localStorage.chains_cursor`. The run is finished when `i >= of` and `C.failed` is
   empty, so `C.reseedFailed()` is owed at the end.
-- **The ration and the pacing, seen working end to end.** When this needs an edit run, START ONE
-  IMMEDIATELY (`gh workflow run wikidata-edits.yml -f dry_run=false -f limit=500 -f
-  batch=reports/wikidata-garborg-day-auto.txt`); never wait for the schedule. Then read its log
-  for: names -> 30 people -> ring going out in that order, 20-50 s apart, and what stops it.
-  Run `36054472568` (2026-09-24) sent nothing (maxlag, 900 s) and `36210995253` (2026-09-26) was
-  cancelled.
 - **Occupations: do for them what was done (or tried) for locations.** Resolve occupation strings from the sources to Wikidata occupation items (`occupation`, P106), the same way the place-resolution work resolves places to items.
 - **`object named as` (P1932) on both places and occupations, as the evidence.** On place statements and occupation statements alike, add the qualifier `object named as` carrying the exact string that was in the GEDCOM, so the source text stands as the evidence for our interpretation. This builds on the two items above and the earlier places / P1932 item.
 - **Research on Wikidata: string-valued ways to record the source text for place of birth, date, and place of death.** For those three kinds of statement, find out whether there are string properties or qualifiers that could hold the raw source text, including address-related ones (addresses exist on Wikidata; Emma doesn't know yet how to use them). One alternative to evaluate: the address as a qualifier carrying the string, in the same way as `object named as`. Report what exists, how it is used in practice, and a recommendation.

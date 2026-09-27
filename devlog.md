@@ -48405,3 +48405,23 @@ occupation**, else the relationship phrase, else `Geni <id>`. The occupation is 
 `|`-separated values in `derived-facts.csv` (205,270 people have one), with unknown markers
 skipped, and it is the raw string: nothing resolves occupations yet, and a resolved occupation
 would give its English label the way a place now does (Emma's rule, 2026-09-26).
+
+## 2026-09-26 — the ration and the pacing, seen end to end; a label-equals-description stop, fixed
+
+Started live runs at once, as the item says. The first, `36284863488` (6:13 PM PDT), drew a blocked
+Azure runner (`ACCOUNT IS BLOCKED … Microsoft Azure`, 0 edits). The re-dispatch, `36285263118`
+(6:21 PM PDT), drew a clean one. Its log:
+- **Went out:** 159 edits. 10 creations were refused as ALREADY EXISTING and bound to the existing
+  items (the label-and-description guard working).
+- **Order:** person by person, each creation followed at once by its own statements.
+- **Pacing:** the success lines' timestamps are buffered and print in bursts, so they cannot be
+  read one by one. The span holds up: 159 edits from 6:21 to about 7:35 PM PDT, about 28 s each,
+  inside the 20-50 s gap. Failures skip the gap, which is why they cluster.
+- **What stopped it:** five creations in a row refused with `Label and description for language
+  code en can not have the same value`. For a person with no name, the English label is the
+  relationship phrase ("father of X"), and the description ladder falls back to that same phrase.
+  **208 creations** in the committed auto batch had this.
+
+**Fixed** in `build-garborg-day.py`: a pass over each CREATE block, beside the `en-us` pass,
+replaces a description equal to the English label with the last rung, `Geni <id>`, taken from the
+block's own `P2600`. It applies from the next composed batch.

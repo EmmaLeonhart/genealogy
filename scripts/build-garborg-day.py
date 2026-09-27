@@ -8563,6 +8563,29 @@ def main():
         print(f"en-us: {added_us} creation(s) given an en-us label (en differs from mul)")
     kept = with_us
 
+    # ⛔ **A DESCRIPTION MAY NOT EQUAL THE LABEL.** Wikibase refuses the whole creation:
+    # *"Label and description for language code en can not have the same value."* Edit run
+    # `36285263118` (2026-09-26) stopped on five of these in a row after 159 edits. A person with no
+    # name is LABELLED by the relationship phrase ("father of X") and the description ladder falls
+    # back to the same phrase. Where the two meet, the description drops to the last rung, the
+    # Geni id, which is unique by construction.
+    same, out = 0, []
+    starts = [n for n, ln in enumerate(kept) if ln.strip() == "CREATE"] + [len(kept)]
+    out.extend(kept[:starts[0]])
+    for a, b in zip(starts, starts[1:]):
+        blk = kept[a:b]
+        en = next((l.split("\t", 2)[2] for l in blk if l.startswith("LAST\tLen\t")), None)
+        geni = next((l.split("\t")[2].strip('"') for l in blk if l.startswith("LAST\tP2600\t")), "")
+        if en is not None and geni:
+            for n, l in enumerate(blk):
+                if l.startswith("LAST\tDen\t") and l.split("\t", 2)[2] == en:
+                    blk[n] = f'LAST\tDen\t"Geni {geni}"'
+                    same += 1
+        out.extend(blk)
+    if same:
+        print(f"description equal to the label: {same} creation(s) given the Geni id instead")
+    kept = out
+
     # ---- THE HOLD: nothing we emit may edit an item that editor has touched -------------
     #
     # `held_items()` carries the reasoning. It is applied here, at the last thing that touches
