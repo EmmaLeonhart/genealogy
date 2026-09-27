@@ -48385,3 +48385,8 @@ every RootsMagic and order.life item now sits at the very end: the submodule, th
 order.life pass, the French-ancestry look, the order.life merge, and the handoff directory. In
 front of them is one gate item, an AskUserQuestion asking whether the extraction has finished,
 which holds the queue there until she confirms.
+- **Corrected the same evening (Emma):** descriptions exist to be unique, not good, so the raw
+  place strings in them are intended, and the descriptions we made are not to be fixed. The 10
+  removals are withdrawn. Only the one plain-nonsense case is changed: `Q141499081`'s description
+  loses its citation (`; jfr g og æ bok 2 s 422`) and keeps its dates and places, via
+  `reports/description-overwrites.tsv`, emitted once while the live text still matches.
