@@ -222,6 +222,8 @@ Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner,
 
 The noticeboard rule below still applies before any run.
 
+**⛔ WHEN SOMETHING ABOUT THE BATCH IS UNCLEAR, DON'T STOP TO ASK: IMPLEMENT, REGENERATE, RUN. Ruled 2026-09-27 (Emma).** Overlapping batches, a possible duplicate, which order is current: implement the batch-structure changes Emma has asked for, regenerate the batch, and when the regeneration finishes, open another tab and run it. The batch order is the ring first (shuffled), then the name items, then every other person one at a time with a slice of the edits on existing items; the next lean rebuild is dispatched as soon as the running batch's ring is created, not when the whole batch ends.
+
 ## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
 
 Ruled 2026-09-24: *"We should be having the zipper do all of the familysearch stuff. I want

@@ -48836,3 +48836,11 @@ and `P734` on Q576388 and Q1174096); they are appended to `reports/removed-state
 the composer does not send them again. 38 undid our `P2600` removals of 2026-09-20 (the id is back
 on the item, nothing to suppress). One qualifier and one alias undo are not covered by any file
 yet. Restores and the rest of the histories are still open, in the queue item.
+
+## 2026-09-27 19:30 PDT: the loop's "don't stop to ask" ruling, in CLAUDE.md
+
+Emma's external addition (19:26 PDT): when something about the batch is unclear, implement the
+changes she asked for, regenerate, and run the new batch in another tab. Recorded beside the
+session-start loop rule in CLAUDE.md, with the batch order and the ring-complete rebuild trigger
+the loop now runs on (first ring-first batch 1790561540112 started 19:12 PDT; its ring was
+created by 19:24 and the next lean rebuild, run 36369715696, was dispatched then).
