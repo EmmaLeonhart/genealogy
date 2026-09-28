@@ -49138,3 +49138,13 @@ automatic sender), so nothing is changed here. On the caps: raised 5x, by AskUse
 follows (it was 40, already behind the builder's 60), and CLAUDE.md's caps line is updated. The
 interleaving the item began with is the order pass (each non-ring person followed by a slice of
 the edits on existing items, 2026-09-27). Item deleted.
+
+## 2026-09-28 03:00 PDT: the FamilySearch batch had not been rebuilt since 2026-09-24
+
+Found while reading a full run's log for the subject-named-as item: the step "The FamilySearch
+batch, its own file" ends `No .ged under exports/familysearch` / exit code 1 on every run. The
+pipeline's sparse checkout has excluded `/exports` since bdfd04c3e4 (2026-09-24, the repo junk
+clean-up), and `build-familysearch-day.py` reads `exports/familysearch/`; `continue-on-error`
+hid it. So the committed `wikidata-familysearch-day.txt` is the 2026-09-24 file, and the new
+FamilySearch page and the ten-person section at the head of each batch were built from it.
+`/exports/familysearch/` (3 files, 57 MB) is now re-included after `!/exports`.

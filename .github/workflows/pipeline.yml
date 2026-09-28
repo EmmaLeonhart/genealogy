@@ -200,6 +200,10 @@ jobs:
       # `out/` is needed for the name-item store the live reuse check reads, `reports/` for the
       # derived CSVs compose reads. `exports/` is NOT needed: nothing here touches the corpus,
       # which is what makes this affordable where a tree rebuild is not.
+      # ⛔ EXCEPT `exports/familysearch/` (3 files, 57 MB): `build-familysearch-day.py` reads it, and
+      # with the whole of `exports/` excluded it failed on every run from 2026-09-24 ("No .ged under
+      # exports/familysearch", hidden by continue-on-error), so the FamilySearch batch, its page and
+      # the ten FamilySearch people at the head of each batch all came from the 2026-09-24 file.
       - uses: actions/checkout@v4
         with:
           filter: blob:none
@@ -208,6 +212,7 @@ jobs:
             !/wikidata
             !/paths_for_wikidata_isolates
             !/exports
+            /exports/familysearch/
             !/geni-scraping
             !/orderlife
             !/geni_pages
