@@ -481,7 +481,13 @@ def test_a_redacted_person_is_created_and_described_not_left_unlabelled():
         pytest.skip("no redacted people in this frontier")
 
     text = BATCH.read_text(encoding="utf-8")
+    # Held for ANOTHER reason as well (no relationship to link, the duplicate guard, a missing
+    # name item, the 180-person cap the order pass records): the redaction rule is not what kept
+    # them out, and a later run picks them again (2026-09-28).
+    elsewhere = {r["geni_id"] for r in rows if "redacted" not in r["why"]}
     for row in redacted:
+        if row["geni_id"] in elsewhere:
+            continue
         assert f'P2600\t"{row["geni_id"]}"' in text, (
             f"{row['geni_id']} is redacted but was not created at all — "
             f"CLAUDE.md says the person is created, only the label is withheld")
@@ -1239,8 +1245,10 @@ def test_a_marriage_place_goes_on_P26_as_P2842_and_P6375():
     src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
     assert r'''return f'\tP2842\t{qid}\tP6375\tund:"{qs(raw)}"' if qid else ""''' in src
     assert 'add(q, "P26", our_items[sp], g, marriage_qualifiers(g, sp))' in src
-    assert r"""lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g, 'spouse', sp)}")""" in src
-    assert 'reciprocal.append((our_items[sp], "P26", g, _mq, ("spouse", sp)))' in src
+    # `_rq(sp)` since 2026-09-28: a creation links to a relative Wikidata already has, not only a
+    # ledger one; the marriage qualifiers ride on the same line.
+    assert r"""lines.append(f"LAST\tP26\t{_rq(sp)}{_mq}{ref(g, 'spouse', sp)}")""" in src
+    assert 'reciprocal.append((_rq(sp), "P26", g, _mq, ("spouse", sp)))' in src
     text = BATCH.read_text(encoding="utf-8")
     for line in text.splitlines():
         if "\tP2842\t" in line or "\tP6375\t" in line:

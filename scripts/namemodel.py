@@ -695,6 +695,11 @@ UNKNOWN_MARKERS = {
     # Added 2026-09-25 from the census of the marker narrowing (`reports/name-rule-census/`):
     # each stood in `GIVN` and became a given name once only real markers armed the rule.
     "unnamed", "dummy", "unbaptised", "unbaptized",
+    # Added 2026-09-28 (queue error report on `Q141579674` "Ukjend NN", Emma): "unknown" in the
+    # other languages Geni uses, each a placeholder for a missing name, never a name.
+    "ukjend", "ukjende", "ukjendt", "unbekannt", "unbekannte", "not known", "tuntematon",
+    "nieznany", "nieznana", "inconnu", "inconnue", "desconocido", "desconocida",
+    "sconosciuto", "sconosciuta", "onbekend", "óþekktur", "óþekkt", "neznámý", "neznámá",
 }
 
 #: **A stillborn child is DESCRIBED, not named, and the description is not a name.**
@@ -3151,11 +3156,25 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     for _k, raw in enumerate(_surn_parts):
         if _one_surname is not None:
             _t, _sh = name_shape(raw)
-            if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS):
+            # A separator (`Latimer / de Latimer`) divides two spellings of the surname: the
+            # one being gathered ends there, and what follows starts afresh.
+            if _t in ("/", "|"):
+                out[out.index(None)] = (" ".join(_one_surname), "family", 0)
+                _one_surname = None
                 out.append((_t, _sh or "unknown", 0))
+                continue
+            # A bracketed part (`Høeg (Banner)`) is a variant or a second family, a naming
+            # question left open on purpose: it ends the surname being gathered and is read
+            # on its own, as before.
+            if raw.startswith("("):
+                out[out.index(None)] = (" ".join(_one_surname), "family", 0)
+                _one_surname = None
             else:
-                _one_surname.append(_t)
-            continue
+                if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS):
+                    out.append((_t, _sh or "unknown", 0))
+                else:
+                    _one_surname.append(_t)
+                continue
         token, shape = name_shape(raw)
         # ⛔ **A LONE LETTER IN A SURNAME FIELD IS NEVER A FAMILY NAME.** Reported 2026-09-24,
         # after the batch created `N.` as a family-name item twice and was killed by hand:

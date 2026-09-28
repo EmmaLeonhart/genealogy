@@ -49308,3 +49308,22 @@ was a married name too. Now: any daughter form (`-datter`, `-dotter`, `-dóttir`
 (`_father_attests`); otherwise a son form stays the married surname (a woman with `-son`/`-sen` is
 a surname, Emma's slam dunk). Tests added. The item stays open for the given-name slot and for
 Geni's own mix-ups of this kind.
+
+## 2026-09-28 07:40 PDT: CI 36457286058, five failures, all addressed
+
+- `test_a_marriage_place_goes_on_P26_as_P2842_and_P6375` pins source lines; they read `_rq(sp)` since
+  the ring-linking change (a creation links to a relative Wikidata already has). Updated.
+- `test_a_surn_that_is_entirely_bracketed_…` and `test_both_real_spellings_survive_the_separator`:
+  the one-surname rule ran across a separator and a bracketed part. A `/` or `|` now ends the
+  surname being gathered (`Latimer / de Latimer` is two spellings), and so does a bracketed part
+  (`Høeg (Banner)` stays two, a naming question left open on purpose). Code fixed; tests unchanged.
+- `test_a_label_is_never_written_over_…`: the batch relabelled `Q141579674` from `NN` to `Ukjend
+  NN`. "Ukjend" is Nynorsk for "unknown" (the queued error report): it and its relatives in the
+  languages Geni uses (Ukjend, Unbekannt, Tuntematon, Nieznany, Inconnu, Desconocido,
+  Sconosciuto, Onbekend, Óþekkt, Neznámý, and forms) are now placeholders, never given names.
+  Test added. The item's live label is already `NN`.
+- `test_a_redacted_person_is_created_…`: the person (6000000054349869839) was held for another
+  reason too ("no relationship could be emitted"). The test now leaves out anyone held for a
+  non-redaction reason, and the order pass records the people the 180-person cap cuts in
+  `garborg-carry-forward.tsv` (`record_cap_cuts`), so a composed person missing from the batch is
+  always accounted for.

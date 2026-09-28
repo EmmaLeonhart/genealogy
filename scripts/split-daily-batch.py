@@ -525,6 +525,21 @@ def familysearch_test_units(ring_ids):
     return out
 
 
+def record_cap_cuts(before, after):
+    """Append the people the 180-person cap cut to `reports/garborg-carry-forward.tsv`, so a
+    person composed but not in the batch is accounted for (2026-09-28)."""
+    carry = REPO / "reports" / "garborg-carry-forward.tsv"
+    if not carry.exists():
+        return
+    pattern = re.compile(r'^LAST\tP2600\t"(\d+)"', re.M)
+    cut = sorted(set(pattern.findall(before)) - set(pattern.findall(after)))
+    if cut:
+        with open(carry, "a", encoding="utf-8", newline="") as fh:
+            for g in cut:
+                fh.write(f"{g}\t\tcut by the 180-person cap; a later run picks again\n")
+        print(f"{len(cut)} people cut by the 180-person cap, recorded in the carry-forward")
+
+
 def order_all() -> int:
     """Put each finished batch file into the cohort order, in place."""
     ring_ids = load_ring_ids()
@@ -537,6 +552,8 @@ def order_all() -> int:
         # The FamilySearch test goes in the files a person runs, never in the unattended half.
         after = order_file(before, first, ring_ids, seed, () if path == AUTO else fs)
         path.write_text(after, encoding="utf-8", newline="\n")
+        if path == SRC:
+            record_cap_cuts(before, after)
         print(f"{path.name}: ordered; {len(before.splitlines())} -> {len(after.splitlines())} lines")
     summarise_candidates()
     return 0
