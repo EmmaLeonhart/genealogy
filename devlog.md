@@ -49075,7 +49075,7 @@ item by item. Item deleted from the queue.
 
 ## 2026-09-28 01:10 PDT: the automatic sender resumes 48 hours out, by the date
 
-Emma asked for no more runs today. The browser loop's session cron was removed and the queued
+Emma asked for no more runs today. THIS session's loop cron was removed and the queued
 lean rebuild cancelled; the batch already running in its tab was left alone. Asked whether to
 disable the automatic sender for the day, Emma refused that mechanism outright: automatic
 editing starts 48 hours from now and it must be DATE gating, since a disable and a re-enable make
@@ -49092,3 +49092,10 @@ ontology-harness's shape check flagged the arguing item for status written in pl
 parts (1) and (2)). That item was finished and deleted in d91acbe4de, with its record here in
 the devlog, so the finding has nothing left to fix; no other `## Now` item carries a status word.
 The fix item is deleted.
+
+## 2026-09-28 01:40 PDT: the browser loop still starts with every session
+
+Emma: the browser QuickStatements loop is supposed to start automatically every session. It does:
+the pause above covered only the rest of this session (her "no more runs today"), by deleting
+this session's cron. The session-start rule in CLAUDE.md (§ AT SESSION START: THE BROWSER
+QUICKSTATEMENTS LOOP) is unchanged, and `ring-watch.yml` keeps chaining the generations in CI.
