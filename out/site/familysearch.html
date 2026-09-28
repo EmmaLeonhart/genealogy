@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FamilySearch — QuickStatements</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f4f6f8;--surface:#fff;--ink:#141820;--muted:#5f6875;--line:#dce1e8;--accent:#2f4f8f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116;--surface:#161a21;--ink:#e7eaf0;--muted:#98a1b0;--line:#262d38;--accent:#8aa9e8}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:24px 20px 60px;
+  font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font:600 22px/1.2 "IBM Plex Sans",sans-serif;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+.bar{display:flex;gap:9px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+button,a.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 15px;
+  font:500 13.5px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;
+  overflow:auto;max-height:74vh;font:400 12.5px/1.5 "IBM Plex Mono",monospace;
+  white-space:pre;tab-size:8}
+a{color:var(--accent)}
+</style></head><body><div class="wrap">
+<p class="sub">A family tree for Wikidata, and later for the Gaiad at genealogy.order.life ·
+<a href="people/index.html">People</a></p>
+<h1>FamilySearch</h1>
+<p class="sub">36 creations · 554 · the FamilySearch people, their own batch: look it over before running statement lines · generated 2026-09-28 · paste into
+<a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
+(version 1 syntax, tab-separated)</p>
+<div class="bar">
+  <button id="copy">Copy all</button>
+  <button id="select">Select all</button>
+  <span class="sub" id="said"></span>
+</div>
+<!-- ⛔ THE LINK TO THE PIPELINE THAT ACTUALLY MAKES THIS PAGE. Ruled 2026-09-20 as a link to
+     redo-everything.yml; ruled 2026-09-26 that it must start the real pipeline instead: that
+     workflow was not the one generating the working QuickStatements, and its last six runs were
+     cancelled, failed or never started. pipeline.yml composes this batch and publishes this page.
+     The site is public and the link is safe to publish: workflow_dispatch requires WRITE access,
+     so a visitor can read the page and only somebody who can push can start it. -->
+<p class="sub">Recompose the batch and republish this page:
+<a href="https://github.com/EmmaLeonhart/genealogy/actions/workflows/pipeline.yml"
+   target="_blank" rel="noopener">Run the pipeline</a>
+— tick <em>force</em> to run it even when the account has not edited in six hours. Only a
+repository writer can start it. The daily edit run sends the automatic share on its own.</p>
+<pre id="qs"># ========================================================================
+# FAMILYSEARCH. A SEPARATE FILE, AND THE DUPLICATES ARE THE DESIGN.
+# Ruled 2026-09-21. A FamilySearch person gets their own item even where a
+# Geni person for the same human already has one; a human merges the pair on
+# Wikidata afterwards, which is one click there and leaves a redirect.
+#
+# P2889 goes on every item created here -- it is the only identifier these
+# people have, and it is what lets the next bridge run resolve them. Without it
+# nobody, including the person doing the merge, can join the item to anything.
+# ========================================================================
+
+CREATE
+LAST	Lmul	&quot;Anna Jonsdatter Haar&quot;
+LAST	Len	&quot;Anna Jonsdatter Haar&quot;
+LAST	Den	&quot;1510 Gjersvik, Tysnes, Hordaland, Norway - 27 Nov 1569 Bergen, Hordaland, Norway&quot;
+LAST	Lja	&quot;アンナ・ヨンスダッテル・ハール&quot;
+LAST	Lzh	&quot;安娜·永斯达特·霍尔&quot;
+LAST	Lko	&quot;안나 존스다테르 하아르&quot;
+LAST	Amul	&quot;Anne Haar&quot;
+LAST	Amul	&quot;Anna Benkestok&quot;
+LAST	Amul	&quot;Anna Hård&quot;
+LAST	Amul	&quot;Anna Haard&quot;
+LAST	Amul	&quot;Anna NN&quot;
+LAST	Amul	&quot;Anne Jensdatter Haar&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;L6L1-BHL&quot;
+LAST	P569	+1510-00-00T00:00:00Z/9	S2889	&quot;L6L1-BHL&quot;
+LAST	P570	+1569-11-27T00:00:00Z/11	S2889	&quot;L6L1-BHL&quot;
+LAST	P40	Q141493463	S2889	&quot;L6L1-BHL&quot;
+Q141493463	P25	LAST	S2889	&quot;L6L1-BHL&quot;
+
+CREATE
+LAST	Lmul	&quot;Adeleitze Johansdottir&quot;
+LAST	Len	&quot;Adeleitze Johansdottir&quot;
+LAST	Den	&quot;1495 Kroken, Sogn og Fjordane, Norway - 27 Feb 1569 Brønnøy Prestegjeld, Nordland, Norway&quot;
+LAST	Lja	&quot;アデレイトゼ・ヨハンスドッティル&quot;
+LAST	Lzh	&quot;阿德莱伊特泽·约汉斯多蒂尔&quot;
+LAST	Lko	&quot;아데레이체 조한스도티르&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;LZ46-4Q2&quot;
+LAST	P569	+1495-00-00T00:00:00Z/9	S2889	&quot;LZ46-4Q2&quot;
+LAST	P570	+1569-02-27T00:00:00Z/11	S2889	&quot;LZ46-4Q2&quot;
+LAST	P26	Q141498496	S2889	&quot;LZ46-4Q2&quot;
+LAST	P40	Q792154	S2889	&quot;LZ46-4Q2&quot;
+Q141498496	P26	LAST	S2889	&quot;LZ46-4Q2&quot;
+Q792154	P25	LAST	S2889	&quot;LZ46-4Q2&quot;
+
+CREATE
+LAST	Lmul	&quot;Trond Torleivsson Benkestok&quot;
+LAST	Len	&quot;Trond Torleivsson Benkestok&quot;
+LAST	Den	&quot;1 Jan 1508 Joranger, Luster, Sogn og Fjordane, Norvège - 14 Feb 1558 Bergen, Hordaland, Norway&quot;
+LAST	Lja	&quot;トロンド・トルレイヴソン・ベンケストク&quot;
+LAST	Lzh	&quot;特龙德·托尔莱伊夫松·本凯斯托克&quot;
+LAST	Lko	&quot;트론드 토레입손 벤케스토크&quot;
+LAST	Amul	&quot;Trond Tordson Benkestok&quot;
+LAST	Amul	&quot;Trond Torleifson Benkestok&quot;
+LAST	Amul	&quot;Trond Benkestok&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;LTW1-ZVD&quot;
+LAST	P569	+1508-01-01T00:00:00Z/11	S2889	&quot;LTW1-ZVD&quot;
+LAST	P570	+1558-02-14T00:00:00Z/11	S2889	&quot;LTW1-ZVD&quot;
+LAST	P40	Q141493463	S2889	&quot;LTW1-ZVD&quot;
+Q141493463	P22	LAST	S2889	&quot;LTW1-ZVD&quot;
+
+CREATE
+LAST	Lmul	&quot;Anna Katharina von Köller&quot;
+LAST	Len	&quot;Anna Katharina von Köller&quot;
+LAST	Den	&quot;1475 Kantreck, Kammin, Pommern, Preußen, Tyskland - Petznick, Templin, Brandenburg, Germany&quot;
+LAST	Lja	&quot;アンナ・カタリーナ・ヴォン・コレル&quot;
+LAST	Lzh	&quot;安娜·卡塔琳娜·翁·科莱尔&quot;
+LAST	Lko	&quot;안나 카타리나 본 쾰레르&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;L2PF-C5T&quot;
+LAST	P569	+1475-00-00T00:00:00Z/9	S2889	&quot;L2PF-C5T&quot;
+LAST	P26	Q141498687	S2889	&quot;L2PF-C5T&quot;
+LAST	P40	Q141498496	S2889	&quot;L2PF-C5T&quot;
+Q141498687	P26	LAST	S2889	&quot;L2PF-C5T&quot;
+Q141498496	P25	LAST	S2889	&quot;L2PF-C5T&quot;
+
+CREATE
+LAST	Lmul	&quot;Simon von Güntersberg, Herr auf Wulkow&quot;
+LAST	Len	&quot;Simon von Güntersberg, Herr auf Wulkow&quot;
+LAST	Den	&quot;1440 Petznick, Pyritz, Pomerania, Prussia, Germany - 1517 Petznick, Petznick, Uckermark, Brandenburg, Germany&quot;
+LAST	Lja	&quot;サイモン・ヴォン・ギンテルスベルグ・ヘル・アウフ・ヴルコヴ&quot;
+LAST	Lzh	&quot;西蒙·翁·金特尔斯贝尔格·赫尔·奥夫·武尔科夫&quot;
+LAST	Lko	&quot;시몬 본 귄테르스베륵 헤르 아우프 우울코우&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;GZFW-9Q6&quot;
+LAST	P569	+1440-00-00T00:00:00Z/9	S2889	&quot;GZFW-9Q6&quot;
+LAST	P570	+1517-00-00T00:00:00Z/9	S2889	&quot;GZFW-9Q6&quot;
+LAST	P40	Q141498687	S2889	&quot;GZFW-9Q6&quot;
+Q141498687	P22	LAST	S2889	&quot;GZFW-9Q6&quot;
+
+CREATE
+LAST	Lmul	&quot;Margareta von Flemming&quot;
+LAST	Len	&quot;Margareta von Flemming&quot;
+LAST	Den	&quot;circa 1440 Kallies, Dramburg, Pomerania, Prussia, Germany - 1499 Petznick, Pyritz, Pomerania, Prussia, Germany&quot;
+LAST	Lja	&quot;マルガレータ・ヴォン・フレムミング&quot;
+LAST	Lzh	&quot;瑪格麗塔·翁·夫莱明&quot;
+LAST	Lko	&quot;마르가레타 본 프렘밍&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;GZF7-Y6N&quot;
+LAST	P569	+1440-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;GZF7-Y6N&quot;
+LAST	P570	+1499-00-00T00:00:00Z/9	S2889	&quot;GZF7-Y6N&quot;
+LAST	P40	Q141498687	S2889	&quot;GZF7-Y6N&quot;
+Q141498687	P25	LAST	S2889	&quot;GZF7-Y6N&quot;
+
+CREATE
+LAST	Lmul	&quot;Trond Trondsson III&quot;
+LAST	Len	&quot;Trond Trondsson III&quot;
+LAST	Den	&quot;1335 Tysnes, Hordaland, Norway - 1427 Talgø, Finnøy, Ryfylke, Rogaland, Norway&quot;
+LAST	Lja	&quot;トロンド・トロンドソン3世&quot;
+LAST	Lzh	&quot;特龙德·特龙德松三世&quot;
+LAST	Lko	&quot;트론드 트론드손 3세&quot;
+LAST	Amul	&quot;Tøre NN&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;GHLZ-26K&quot;
+LAST	P569	+1335-00-00T00:00:00Z/9	S2889	&quot;GHLZ-26K&quot;
+LAST	P570	+1427-00-00T00:00:00Z/9	S2889	&quot;GHLZ-26K&quot;
+LAST	P40	Q141216369	S2889	&quot;GHLZ-26K&quot;
+Q141216369	P22	LAST	S2889	&quot;GHLZ-26K&quot;
+
+CREATE
+LAST	Lmul	&quot;Steinvor Eriksdotter&quot;
+LAST	Len	&quot;Steinvor Eriksdotter&quot;
+LAST	Den	&quot;born circa 1340 Strand, Västra Götaland, Sweden&quot;
+LAST	Lja	&quot;ステインヴォル・エリクスドッテル&quot;
+LAST	Lzh	&quot;斯特因沃尔·埃里克斯多塔&quot;
+LAST	Lko	&quot;스테인보르 에리크스도테르&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;L8SC-C1N&quot;
+LAST	P569	+1340-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;L8SC-C1N&quot;
+LAST	P40	Q141216369	S2889	&quot;L8SC-C1N&quot;
+Q141216369	P25	LAST	S2889	&quot;L8SC-C1N&quot;
+
+CREATE
+LAST	Lmul	&quot;Sissel Axelsdatter Gyntersberg&quot;
+LAST	Len	&quot;Sissel Axelsdatter Gyntersberg&quot;
+LAST	Den	&quot;1557 Snillfjord, , Sør-Trøndelag, Norway - 1593 Kroken, Tydjebyn, Västra Götaland, Sweden&quot;
+LAST	Lja	&quot;シッセル・アクスエルスダッテル・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;西塞尔·阿克斯埃尔斯达特·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;시셀 아그셀스다테르 긴테르스베륵&quot;
+LAST	Amul	&quot;Trond Gyntersberg&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;MZ6X-M51&quot;
+LAST	P569	+1557-00-00T00:00:00Z/9	S2889	&quot;MZ6X-M51&quot;
+LAST	P570	+1593-00-00T00:00:00Z/9	S2889	&quot;MZ6X-M51&quot;
+LAST	P22	Q792154	S2889	&quot;MZ6X-M51&quot;
+LAST	P25	Q141493463	S2889	&quot;MZ6X-M51&quot;
+Q792154	P40	LAST	S2889	&quot;MZ6X-M51&quot;
+Q141493463	P40	LAST	S2889	&quot;MZ6X-M51&quot;
+
+CREATE
+LAST	Lmul	&quot;Eske Güntersberg Henricksen&quot;
+LAST	Len	&quot;Eske Güntersberg Henricksen&quot;
+LAST	Den	&quot;born 1527 Pomellen, , Mecklenburg-Vorpommern, Germany&quot;
+LAST	Lja	&quot;エスケ・ギンテルスベルグ・ヘンリクセン&quot;
+LAST	Lzh	&quot;埃斯凯·金特尔斯贝尔格·亨里克森&quot;
+LAST	Lko	&quot;에스케 귄테르스베륵 헨리크센&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;L2PF-CXH&quot;
+LAST	P569	+1527-00-00T00:00:00Z/9	S2889	&quot;L2PF-CXH&quot;
+LAST	P22	Q141498496	S2889	&quot;L2PF-CXH&quot;
+Q141498496	P40	LAST	S2889	&quot;L2PF-CXH&quot;
+
+CREATE
+LAST	Lmul	&quot;Mathias von Güntersberg&quot;
+LAST	Len	&quot;Mathias von Güntersberg&quot;
+LAST	Den	&quot;born 1497&quot;
+LAST	Lja	&quot;マティアス・ヴォン・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;马蒂亚斯·翁·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;마티아스 본 귄테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;G6HP-3NS&quot;
+LAST	P569	+1497-00-00T00:00:00Z/9	S2889	&quot;G6HP-3NS&quot;
+LAST	P22	Q141498687	S2889	&quot;G6HP-3NS&quot;
+Q141498687	P40	LAST	S2889	&quot;G6HP-3NS&quot;
+
+CREATE
+LAST	Lmul	&quot;Magdalena Axelsdatter Gyntersberg&quot;
+LAST	Len	&quot;Magdalena Axelsdatter Gyntersberg&quot;
+LAST	Den	&quot;1549 Snillfjord, , Sør-Trøndelag, Norway - 1589 Copenhagen, , Københavns Amt, Denmark&quot;
+LAST	Lja	&quot;マグダレーナ・アクスエルスダッテル・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;马格达莱纳·阿克斯埃尔斯达特·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;막다레나 아그셀스다테르 긴테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;2S22-RCK&quot;
+LAST	P569	+1549-00-00T00:00:00Z/9	S2889	&quot;2S22-RCK&quot;
+LAST	P570	+1589-00-00T00:00:00Z/9	S2889	&quot;2S22-RCK&quot;
+LAST	P22	Q792154	S2889	&quot;2S22-RCK&quot;
+LAST	P25	Q141493463	S2889	&quot;2S22-RCK&quot;
+Q792154	P40	LAST	S2889	&quot;2S22-RCK&quot;
+Q141493463	P40	LAST	S2889	&quot;2S22-RCK&quot;
+
+CREATE
+LAST	Lmul	&quot;Arne Olversen Aga&quot;
+LAST	Len	&quot;Arne Olversen Aga&quot;
+LAST	Den	&quot;1312 Aga, Ullensvang, Hardanger, Norway - Ullensvang, Hordaland, Norway&quot;
+LAST	Lja	&quot;アルネ・オルヴェルセン・アガ&quot;
+LAST	Lzh	&quot;阿恩·奥尔韦尔森·阿加&quot;
+LAST	Lko	&quot;아르네 올베르센 아가&quot;
+LAST	Amul	&quot;Arne NN&quot;
+LAST	Amul	&quot;Arne Olvirssen&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;LBNC-B75&quot;
+LAST	P569	+1312-00-00T00:00:00Z/9	S2889	&quot;LBNC-B75&quot;
+LAST	P40	Q141314046	S2889	&quot;LBNC-B75&quot;
+Q141314046	P22	LAST	S2889	&quot;LBNC-B75&quot;
+
+CREATE
+LAST	Lmul	&quot;Jacob Jørgenssøn Lydvo&quot;
+LAST	Len	&quot;Jacob Jørgenssøn Lydvo&quot;
+LAST	Den	&quot;1565 Halsnøya, Hordaland, Norway - 1615 Mel, Kvinnherad, Hordaland, Norway&quot;
+LAST	Lja	&quot;ジェイコブ・ヨルゲンッソン・リドヴォ&quot;
+LAST	Lzh	&quot;雅各布·约尔根松·利德沃&quot;
+LAST	Lko	&quot;자콥 죄르겐쇤 리드보&quot;
+LAST	Amul	&quot;Jacob Jorgensen Mossefind&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;G8CC-V47&quot;
+LAST	P569	+1565-00-00T00:00:00Z/9	S2889	&quot;G8CC-V47&quot;
+LAST	P570	+1615-00-00T00:00:00Z/9	S2889	&quot;G8CC-V47&quot;
+LAST	P26	Q141493478	S2889	&quot;G8CC-V47&quot;
+Q141493478	P26	LAST	S2889	&quot;G8CC-V47&quot;
+
+CREATE
+LAST	Lmul	&quot;Hippolyta von Güntersberg&quot;
+LAST	Len	&quot;Hippolyta von Güntersberg&quot;
+LAST	Den	&quot;born 1520&quot;
+LAST	Lja	&quot;ヒッポリタ・ヴォン・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;希波利塔·翁·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;히포리타 본 귄테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;G6HP-W56&quot;
+LAST	P569	+1520-00-00T00:00:00Z/9	S2889	&quot;G6HP-W56&quot;
+LAST	P22	Q141498687	S2889	&quot;G6HP-W56&quot;
+Q141498687	P40	LAST	S2889	&quot;G6HP-W56&quot;
+
+CREATE
+LAST	Lmul	&quot;Anna Axelsdatter Gyntersberg&quot;
+LAST	Len	&quot;Anna Axelsdatter Gyntersberg&quot;
+LAST	Den	&quot;1553 Snillfjord, , Sør-Trøndelag, Norway - 1613 Oslo, , Oslo, Norway&quot;
+LAST	Lja	&quot;アンナ・アクスエルスダッテル・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;安娜·阿克斯埃尔斯达特·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;안나 아그셀스다테르 긴테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;2CY8-ZPY&quot;
+LAST	P569	+1553-00-00T00:00:00Z/9	S2889	&quot;2CY8-ZPY&quot;
+LAST	P570	+1613-00-00T00:00:00Z/9	S2889	&quot;2CY8-ZPY&quot;
+LAST	P22	Q792154	S2889	&quot;2CY8-ZPY&quot;
+LAST	P25	Q141493463	S2889	&quot;2CY8-ZPY&quot;
+Q792154	P40	LAST	S2889	&quot;2CY8-ZPY&quot;
+Q141493463	P40	LAST	S2889	&quot;2CY8-ZPY&quot;
+
+CREATE
+LAST	Lmul	&quot;Henric Axelsen Gyntersberg&quot;
+LAST	Len	&quot;Henric Axelsen Gyntersberg&quot;
+LAST	Den	&quot;1547 Snillfjord, Sør-Trøndelag, Norway - 1582 Kongeberga, Södermanland, Sweden&quot;
+LAST	Lja	&quot;ヘンリク・アクセルセン・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;亨里克·阿克塞尔森·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;헨리크 아그셀센 긴테르스베륵&quot;
+LAST	Amul	&quot;Henrie Gyntersberg&quot;
+LAST	Amul	&quot;Henrik Gyntersberg Axelson&quot;
+LAST	Amul	&quot;Henrik 1 Axelsson Gyntersberg- Mel&quot;
+LAST	Amul	&quot;Henrik Axelsen Gyntersberg&quot;
+LAST	Amul	&quot;Henrik 2 Axelsson Gyntersberg- Mel&quot;
+LAST	Amul	&quot;Henrik Gyntersberg&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;KNXD-V3H&quot;
+LAST	P569	+1547-00-00T00:00:00Z/9	S2889	&quot;KNXD-V3H&quot;
+LAST	P570	+1582-00-00T00:00:00Z/9	S2889	&quot;KNXD-V3H&quot;
+LAST	P22	Q792154	S2889	&quot;KNXD-V3H&quot;
+LAST	P25	Q141493463	S2889	&quot;KNXD-V3H&quot;
+Q792154	P40	LAST	S2889	&quot;KNXD-V3H&quot;
+Q141493463	P40	LAST	S2889	&quot;KNXD-V3H&quot;
+
+CREATE
+LAST	Lmul	&quot;Karen Axelsdatter Gyntersberg&quot;
+LAST	Len	&quot;Karen Axelsdatter Gyntersberg&quot;
+LAST	Den	&quot;1546 Snillfjord, Sør-Trøndelag, Norway - 1589 Norway&quot;
+LAST	Lja	&quot;カレン・アクスエルスダッテル・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;凯伦·阿克斯埃尔斯达特·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;카렌 아그셀스다테르 긴테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;L8QL-QCT&quot;
+LAST	P569	+1546-00-00T00:00:00Z/9	S2889	&quot;L8QL-QCT&quot;
+LAST	P570	+1589-00-00T00:00:00Z/9	S2889	&quot;L8QL-QCT&quot;
+LAST	P22	Q792154	S2889	&quot;L8QL-QCT&quot;
+LAST	P25	Q141493463	S2889	&quot;L8QL-QCT&quot;
+Q792154	P40	LAST	S2889	&quot;L8QL-QCT&quot;
+Q141493463	P40	LAST	S2889	&quot;L8QL-QCT&quot;
+
+CREATE
+LAST	Lmul	&quot;Adelus Jacobsdatter Lydvø&quot;
+LAST	Len	&quot;Adelus Jacobsdatter Lydvø&quot;
+LAST	Den	&quot;1585 Bergen, Hordaland, Norway - 1657 Norway&quot;
+LAST	Lja	&quot;アデルス・ヤコブスダッテル・リドヴォ&quot;
+LAST	Lzh	&quot;阿德卢斯·雅科布斯达特·利德沃&quot;
+LAST	Lko	&quot;아데루스 자콥스다테르 리드뵈&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;9K4K-WPT&quot;
+LAST	P569	+1585-00-00T00:00:00Z/9	S2889	&quot;9K4K-WPT&quot;
+LAST	P570	+1657-00-00T00:00:00Z/9	S2889	&quot;9K4K-WPT&quot;
+LAST	P25	Q141493478	S2889	&quot;9K4K-WPT&quot;
+Q141493478	P40	LAST	S2889	&quot;9K4K-WPT&quot;
+
+CREATE
+LAST	Lmul	&quot;Joachim von Güntersberg&quot;
+LAST	Len	&quot;Joachim von Güntersberg&quot;
+LAST	Den	&quot;1495 - 1568&quot;
+LAST	Lja	&quot;ヨアヒム・ヴォン・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;约阿希姆·翁·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;조아침 본 귄테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;G6HP-77L&quot;
+LAST	P569	+1495-00-00T00:00:00Z/9	S2889	&quot;G6HP-77L&quot;
+LAST	P570	+1568-00-00T00:00:00Z/9	S2889	&quot;G6HP-77L&quot;
+LAST	P22	Q141498687	S2889	&quot;G6HP-77L&quot;
+Q141498687	P40	LAST	S2889	&quot;G6HP-77L&quot;
+
+CREATE
+LAST	Lmul	&quot;Axelsen Guntersberg&quot;
+LAST	Len	&quot;Axelsen Guntersberg&quot;
+LAST	Den	&quot;born circa 1564 Norway&quot;
+LAST	Lja	&quot;アクセルセン・グンテルスベルグ&quot;
+LAST	Lzh	&quot;阿克塞尔森·贡特尔斯贝尔格&quot;
+LAST	Lko	&quot;아그셀센 군테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;G64K-ZP7&quot;
+LAST	P569	+1564-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;G64K-ZP7&quot;
+LAST	P22	Q792154	S2889	&quot;G64K-ZP7&quot;
+LAST	P25	Q141493463	S2889	&quot;G64K-ZP7&quot;
+Q792154	P40	LAST	S2889	&quot;G64K-ZP7&quot;
+Q141493463	P40	LAST	S2889	&quot;G64K-ZP7&quot;
+
+CREATE
+LAST	Lmul	&quot;Margrethe Axelsdatter Günthersberg&quot;
+LAST	Len	&quot;Margrethe Axelsdatter Günthersberg&quot;
+LAST	Den	&quot;born circa 1560 Norway&quot;
+LAST	Lja	&quot;マルグレーテ・アクスエルスダッテル・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;马尔格雷特·阿克斯埃尔斯达特·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;마륵레테 아그셀스다테르 귄테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;G64K-DCQ&quot;
+LAST	P569	+1560-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;G64K-DCQ&quot;
+LAST	P22	Q792154	S2889	&quot;G64K-DCQ&quot;
+LAST	P25	Q141493463	S2889	&quot;G64K-DCQ&quot;
+Q792154	P40	LAST	S2889	&quot;G64K-DCQ&quot;
+Q141493463	P40	LAST	S2889	&quot;G64K-DCQ&quot;
+
+CREATE
+LAST	Lmul	&quot;Sofie Axelsdatter Gyntersberg&quot;
+LAST	Len	&quot;Sofie Axelsdatter Gyntersberg&quot;
+LAST	Den	&quot;1547 Kvinnherad, Seim, Hordaland, Norway - 1607 Aalborg, Nordjylland, Denmark&quot;
+LAST	Lja	&quot;ソフィー・アクスエルスダッテル・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;索菲埃·阿克斯埃尔斯达特·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;소피에 아그셀스다테르 긴테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;LZXM-NYG&quot;
+LAST	P569	+1547-00-00T00:00:00Z/9	S2889	&quot;LZXM-NYG&quot;
+LAST	P570	+1607-00-00T00:00:00Z/9	S2889	&quot;LZXM-NYG&quot;
+LAST	P22	Q792154	S2889	&quot;LZXM-NYG&quot;
+LAST	P25	Q141493463	S2889	&quot;LZXM-NYG&quot;
+Q792154	P40	LAST	S2889	&quot;LZXM-NYG&quot;
+Q141493463	P40	LAST	S2889	&quot;LZXM-NYG&quot;
+
+CREATE
+LAST	Lmul	&quot;Kirsten Jakobsdotter&quot;
+LAST	Len	&quot;Kirsten Jakobsdotter&quot;
+LAST	Den	&quot;circa 1600 Gulating, Sogn og Fjordane, Norway - 1682 Mosafinn farm in Voss, Hordaland, Norway&quot;
+LAST	Lja	&quot;キルステン・ヤコブスドッテル&quot;
+LAST	Lzh	&quot;柯尔斯滕·雅科布斯多特&quot;
+LAST	Lko	&quot;키르스텐 자콥스도테르&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;GLX4-X45&quot;
+LAST	P569	+1600-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;GLX4-X45&quot;
+LAST	P570	+1682-00-00T00:00:00Z/9	S2889	&quot;GLX4-X45&quot;
+LAST	P25	Q141493478	S2889	&quot;GLX4-X45&quot;
+Q141493478	P40	LAST	S2889	&quot;GLX4-X45&quot;
+
+CREATE
+LAST	Lmul	&quot;Trond Axelssen&quot;
+LAST	Len	&quot;Trond Axelssen&quot;
+LAST	Den	&quot;born 1558 Snillfjord, , Sør-Trøndelag, Norway&quot;
+LAST	Lja	&quot;トロンド・アクスエルセン&quot;
+LAST	Lzh	&quot;特龙德·阿克斯埃尔森&quot;
+LAST	Lko	&quot;트론드 아그셀센&quot;
+LAST	Amul	&quot;Trond 1 Axelsson Gyntersberg&quot;
+LAST	Amul	&quot;Trond Axelson Ntersberg&quot;
+LAST	Amul	&quot;Trond Axelson Güntersberg&quot;
+LAST	Amul	&quot;Trond Gyntersberg&quot;
+LAST	Amul	&quot;Trond 2 Axelssson Gyntersberg&quot;
+LAST	Amul	&quot;Trond Gyntersberg Axelson&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;L7PH-Q44&quot;
+LAST	P569	+1558-00-00T00:00:00Z/9	S2889	&quot;L7PH-Q44&quot;
+LAST	P22	Q792154	S2889	&quot;L7PH-Q44&quot;
+LAST	P25	Q141493463	S2889	&quot;L7PH-Q44&quot;
+Q792154	P40	LAST	S2889	&quot;L7PH-Q44&quot;
+Q141493463	P40	LAST	S2889	&quot;L7PH-Q44&quot;
+
+CREATE
+LAST	Lmul	&quot;Axelsen Guntersberg&quot;
+LAST	Len	&quot;Axelsen Guntersberg&quot;
+LAST	Den	&quot;born circa 1562 Norway&quot;
+LAST	Lja	&quot;アクセルセン・グンテルスベルグ&quot;
+LAST	Lzh	&quot;阿克塞尔森·贡特尔斯贝尔格&quot;
+LAST	Lko	&quot;아그셀센 군테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;G64K-H5Q&quot;
+LAST	P569	+1562-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;G64K-H5Q&quot;
+LAST	P22	Q792154	S2889	&quot;G64K-H5Q&quot;
+LAST	P25	Q141493463	S2889	&quot;G64K-H5Q&quot;
+Q792154	P40	LAST	S2889	&quot;G64K-H5Q&quot;
+Q141493463	P40	LAST	S2889	&quot;G64K-H5Q&quot;
+
+CREATE
+LAST	Lmul	&quot;Eske von Güntersberg&quot;
+LAST	Len	&quot;Eske von Güntersberg&quot;
+LAST	Den	&quot;born 1500&quot;
+LAST	Lja	&quot;エスケ・ヴォン・ギンテルスベルグ&quot;
+LAST	Lzh	&quot;埃斯凯·翁·金特尔斯贝尔格&quot;
+LAST	Lko	&quot;에스케 본 귄테르스베륵&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;G6HP-4ZL&quot;
+LAST	P569	+1500-00-00T00:00:00Z/9	S2889	&quot;G6HP-4ZL&quot;
+LAST	P22	Q141498687	S2889	&quot;G6HP-4ZL&quot;
+Q141498687	P40	LAST	S2889	&quot;G6HP-4ZL&quot;
+
+CREATE
+LAST	Lmul	&quot;Gunnbjørn Gardson&quot;
+LAST	Len	&quot;Gunnbjørn Gardson&quot;
+LAST	Den	&quot;born 1402 Finnoy. Rogaland, Norway&quot;
+LAST	Lja	&quot;グンビョルン・ガルドソン&quot;
+LAST	Lzh	&quot;贡博尔恩·加尔德松&quot;
+LAST	Lko	&quot;군뵈른 가르드손&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;GQ79-KLB&quot;
+LAST	P569	+1402-00-00T00:00:00Z/9	S2889	&quot;GQ79-KLB&quot;
+LAST	P22	Q141216369	S2889	&quot;GQ79-KLB&quot;
+LAST	P25	Q141216350	S2889	&quot;GQ79-KLB&quot;
+Q141216369	P40	LAST	S2889	&quot;GQ79-KLB&quot;
+Q141216350	P40	LAST	S2889	&quot;GQ79-KLB&quot;
+
+CREATE
+LAST	Lmul	&quot;Katrina Gardsdottor Talgø&quot;
+LAST	Len	&quot;Katrina Gardsdottor Talgø&quot;
+LAST	Den	&quot;born 1391 Talgø, Finnøy, Norway&quot;
+LAST	Lja	&quot;カトリーナ・ガルドスドットル・タルゴ&quot;
+LAST	Lzh	&quot;卡特里纳·加尔德斯多托尔·塔尔戈&quot;
+LAST	Lko	&quot;카트리나 가르드스도토르 탈괴&quot;
+LAST	Amul	&quot;Katarina Gardsen&quot;
+LAST	Amul	&quot;Katarina Gardsdtr&quot;
+LAST	Amul	&quot;Katarina Gardsdotter Garå&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;GPJH-BLH&quot;
+LAST	P569	+1391-00-00T00:00:00Z/9	S2889	&quot;GPJH-BLH&quot;
+LAST	P22	Q141216369	S2889	&quot;GPJH-BLH&quot;
+LAST	P25	Q141216350	S2889	&quot;GPJH-BLH&quot;
+Q141216369	P40	LAST	S2889	&quot;GPJH-BLH&quot;
+Q141216350	P40	LAST	S2889	&quot;GPJH-BLH&quot;
+
+CREATE
+LAST	Lmul	&quot;Ragnhild Gardsdatter&quot;
+LAST	Len	&quot;Ragnhild Gardsdatter&quot;
+LAST	Den	&quot;1408 Gara, Talgje, Rogaland, Norway - circa 1460 Norway&quot;
+LAST	Lja	&quot;ラグンヒル・ガルドスダッテル&quot;
+LAST	Lzh	&quot;拉格希尔德·加尔德斯达特&quot;
+LAST	Lko	&quot;락느힐드 가르드스다테르&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;LD3S-FWF&quot;
+LAST	P569	+1408-00-00T00:00:00Z/9	S2889	&quot;LD3S-FWF&quot;
+LAST	P570	+1460-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;LD3S-FWF&quot;
+LAST	P22	Q141216369	S2889	&quot;LD3S-FWF&quot;
+LAST	P25	Q141216350	S2889	&quot;LD3S-FWF&quot;
+Q141216369	P40	LAST	S2889	&quot;LD3S-FWF&quot;
+Q141216350	P40	LAST	S2889	&quot;LD3S-FWF&quot;
+
+CREATE
+LAST	Lmul	&quot;Osmund Gardson&quot;
+LAST	Len	&quot;Osmund Gardson&quot;
+LAST	Den	&quot;born circa 1405 Underberge, Fossan, Rogaland, Norway&quot;
+LAST	Lja	&quot;オスムンド・ガルドソン&quot;
+LAST	Lzh	&quot;奥斯蒙德·加尔德松&quot;
+LAST	Lko	&quot;오스문드 가르드손&quot;
+LAST	Amul	&quot;Osmund Gardson Underberge&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;KVL6-L5J&quot;
+LAST	P569	+1405-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;KVL6-L5J&quot;
+LAST	P22	Q141216369	S2889	&quot;KVL6-L5J&quot;
+LAST	P25	Q141216350	S2889	&quot;KVL6-L5J&quot;
+Q141216369	P40	LAST	S2889	&quot;KVL6-L5J&quot;
+Q141216350	P40	LAST	S2889	&quot;KVL6-L5J&quot;
+
+CREATE
+LAST	Lmul	&quot;Torbjorn Gardson Garaa&quot;
+LAST	Len	&quot;Torbjorn Gardson Garaa&quot;
+LAST	Den	&quot;born 1410 Talgje, Rogaland, Norway&quot;
+LAST	Lja	&quot;トルビョルン・ガルドソン・ガロー&quot;
+LAST	Lzh	&quot;托尔博尔恩·加尔德松·加罗&quot;
+LAST	Lko	&quot;토르보른 가르드손 가라아&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;LKLY-CGM&quot;
+LAST	P569	+1410-00-00T00:00:00Z/9	S2889	&quot;LKLY-CGM&quot;
+LAST	P22	Q141216369	S2889	&quot;LKLY-CGM&quot;
+LAST	P25	Q141216350	S2889	&quot;LKLY-CGM&quot;
+Q141216369	P40	LAST	S2889	&quot;LKLY-CGM&quot;
+Q141216350	P40	LAST	S2889	&quot;LKLY-CGM&quot;
+
+CREATE
+LAST	Lmul	&quot;Knut or Israel Gardson&quot;
+LAST	Len	&quot;Knut or Israel Gardson&quot;
+LAST	Den	&quot;born Talgje, Rogaland, Norway&quot;
+LAST	Lja	&quot;クヌート・オル・イスラエル・ガルドソン&quot;
+LAST	Lzh	&quot;克努特·奥尔·伊斯雷尔·加尔德松&quot;
+LAST	Lko	&quot;크누트 오르 이스랠 가르드손&quot;
+LAST	Amul	&quot;Knut ( Israel) Gardson Garå&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;MR8L-LFZ&quot;
+LAST	P22	Q141216369	S2889	&quot;MR8L-LFZ&quot;
+LAST	P25	Q141216350	S2889	&quot;MR8L-LFZ&quot;
+Q141216369	P40	LAST	S2889	&quot;MR8L-LFZ&quot;
+Q141216350	P40	LAST	S2889	&quot;MR8L-LFZ&quot;
+
+CREATE
+LAST	Lmul	&quot;Gunnar Gardsen Idse&quot;
+LAST	Len	&quot;Gunnar Gardsen Idse&quot;
+LAST	Den	&quot;born 1403 Talgje, Finnøy, Rogaland, Norway&quot;
+LAST	Lja	&quot;グンナー・ガルドセン・イドセ&quot;
+LAST	Lzh	&quot;贡纳尔·加尔德森·伊德塞&quot;
+LAST	Lko	&quot;군나르 가르드센 이드세&quot;
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2889	&quot;GPJC-3LQ&quot;
+LAST	P569	+1403-00-00T00:00:00Z/9	S2889	&quot;GPJC-3LQ&quot;
+LAST	P22	Q141216369	S2889	&quot;GPJC-3LQ&quot;
+LAST	P25	Q141216350	S2889	&quot;GPJC-3LQ&quot;
+Q141216369	P40	LAST	S2889	&quot;GPJC-3LQ&quot;
+Q141216350	P40	LAST	S2889	&quot;GPJC-3LQ&quot;
+
+CREATE
+LAST	Lmul	&quot;Bergljot Sigursdatter Aga&quot;
+LAST	Len	&quot;Bergljot Sigursdatter Aga&quot;
+LAST	Den	&quot;1295 Ullengsvang, Hordaland, Norway - Ullengsvang, Hordaland, Norway&quot;
+LAST	Lja	&quot;ベルグルヨト・シグルスダッテル・アガ&quot;
+LAST	Lzh	&quot;贝尔格尔约特·西古尔斯达特·阿加&quot;
+LAST	Lko	&quot;베륵로트 시구르스다테르 아가&quot;
+LAST	Amul	&quot;Bergljot NN&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;LBNC-GSG&quot;
+LAST	P569	+1295-00-00T00:00:00Z/9	S2889	&quot;LBNC-GSG&quot;
+LAST	P40	Q141314046	S2889	&quot;LBNC-GSG&quot;
+Q141314046	P25	LAST	S2889	&quot;LBNC-GSG&quot;
+
+CREATE
+LAST	Lmul	&quot;Kirsten Lavesdatter&quot;
+LAST	Len	&quot;Kirsten Lavesdatter&quot;
+LAST	Den	&quot;born circa 1505&quot;
+LAST	Lja	&quot;キルステン・ラヴェスダッテル&quot;
+LAST	Lzh	&quot;柯尔斯滕·拉韦斯达特&quot;
+LAST	Lko	&quot;키르스텐 라베스다테르&quot;
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	&quot;9QLT-N13&quot;
+LAST	P569	+1505-00-00T00:00:00Z/9	P1480	Q5727902	S2889	&quot;9QLT-N13&quot;
+LAST	P26	Q141498496	S2889	&quot;9QLT-N13&quot;
+Q141498496	P26	LAST	S2889	&quot;9QLT-N13&quot;
+
+</pre>
+<script>
+/* **The copy button did not work and this is three fixes, not one.** 2026-09-04:
+   *"fix the daily batch quickstatements page since the copy button does not work"*. The
+   screenshots come from an iPhone, and iOS Safari is where every one of these bites.
+
+   The old handler was one line of `navigator.clipboard.writeText(...).then(ok, fail)`:
+
+   1. **It went SILENT when `navigator.clipboard` was absent.** Reading `.writeText` off
+      `undefined` throws a TypeError before either callback exists, so the button did
+      nothing at all and said nothing either. A button with no feedback is
+      indistinguishable from a broken page.
+   2. **There was no fallback.** A rejected promise printed "select the text instead" and
+      left the reader to do it by hand on a 93 KB page.
+   3. **Nothing let her select the text without copying.** On iOS a selection gives the
+      native Copy menu, which works when everything else refuses.
+
+   So: try the async API, fall back to `execCommand` over a real textarea, and fall back
+   again to selecting the `<pre>` and saying so. `Select all` does that last step on
+   demand. iOS ignores `select()` on a `readonly` field, which is why the textarea is
+   plain and uses `setSelectionRange`. */
+(function () {
+  var said = document.getElementById("said");
+  var pre = document.getElementById("qs");
+
+  function report(msg) { said.textContent = msg; }
+  function lines(t) { return t.split("\n").length; }
+
+  function selectPre() {
+    var range = document.createRange();
+    range.selectNodeContents(pre);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  /* `execCommand` is deprecated and is still the only thing that works in an older
+     WebView. It needs a node that is in the document and visibly laid out, so the
+     textarea is moved off-screen rather than hidden -- `display:none` copies nothing. */
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("aria-hidden", "true");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    var ok = false;
+    try {
+      ta.focus();
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      ok = document.execCommand("copy");
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var text = pre.textContent;
+    var n = lines(text);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          report("copied " + n + " lines");
+        }, function () {
+          if (legacyCopy(text)) { report("copied " + n + " lines"); }
+          else { selectPre(); report("selected " + n + " lines - press Copy"); }
+        });
+        return;
+      }
+    } catch (e) { /* fall through to the same place a rejection goes */ }
+    if (legacyCopy(text)) { report("copied " + n + " lines"); }
+    else { selectPre(); report("selected " + n + " lines - press Copy"); }
+  });
+
+  document.getElementById("select").addEventListener("click", function () {
+    selectPre();
+    report("selected " + lines(pre.textContent) + " lines");
+  });
+})();
+</script>
+</div></body></html>
