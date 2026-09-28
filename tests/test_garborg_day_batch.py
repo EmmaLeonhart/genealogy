@@ -1265,3 +1265,19 @@ def test_half_sibling_kinship_comes_from_the_family_objects():
     assert ns["sibling_kinship"]("a", "c", {}, facts) == ""                      # same family: none
     # the guard that keeps a duplicate family for one couple from reading as a second marriage
     assert "if len(o1) != 1 or len(o2) != 1 or o1 == o2:" in src
+
+
+def test_an_english_description_from_an_occupation_is_latin_script():
+    """2026-09-27: `Moshe Rothenburg` went out with `Den "אבד אלטונה והמבורג"`, the raw Hebrew
+    occupation; an unresolved occupation in another script is not an English description."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    for text in ("Bonde", "Kjøpmann i Bergen", "Kyrkoherde", "Sóknarprestur"):
+        assert mod.is_latin_text(text), text
+    for text in ("אבד אלטונה והמבורג", "Священник", "農民", ""):
+        assert not mod.is_latin_text(text), text

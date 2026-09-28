@@ -45,7 +45,7 @@ jobs:
           BATCH_SHA: ${{ inputs.batch_sha }}
         run: |
           set -u
-          UA="genealogy-ring-watch/1.0 (https://github.com/EmmaLeonhart/genealogy)"
+          UA="genealogy-ring-watch/1.0"
           deadline=$(( $(date +%s) + 345 * 60 ))
           while :; do
             now_sha=$(gh api "repos/${GITHUB_REPOSITORY}/commits?path=reports/wikidata-garborg-day-manual.txt&per_page=1" --jq '.[0].sha')

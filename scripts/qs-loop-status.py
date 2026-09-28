@@ -27,9 +27,13 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from bot_identity import agent as _bot_agent  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 ACCOUNT = "日巫女"
-UA = {"User-Agent": "genealogy-pipeline/1.0 (https://github.com/EmmaLeonhart/genealogy)"}
+UA = {"User-Agent": _bot_agent() or "genealogy-pipeline/1.0"}
 BATCH_TAG = re.compile(r"#temporary_batch_(\d+)")
 HEADER = re.compile(r"^# ▶ (RANDOM INDIVIDUALS|THE RING): (?:all )?(\d+)")
 

@@ -1185,6 +1185,13 @@ def normalise_date_case(raw):
     """`25 OCT 1801` -> `25 Oct 1801`; `BET 848 AND 850` -> `Bet 848 and 850`."""
     return " ".join(DATE_WORDS.get(tok, tok) for tok in (raw or "").split())
 
+def is_latin_text(text):
+    """True when every letter in `text` is a Latin letter (an English description's script)."""
+    import unicodedata
+    letters = [ch for ch in text if ch.isalpha()]
+    return bool(letters) and all(unicodedata.name(ch, "").startswith("LATIN") for ch in letters)
+
+
 def life_description(facts_row, places_row):
     """`12 Mar 1550 Bergen - Aft 1596 Isnäinen, Pernaja` or `""`.
 
@@ -8172,7 +8179,12 @@ def main():
         if not _desc:
             _occ = ((f.get("occupations") or "").split(" | ")[0]).strip()
             if _occ and _occ.casefold() not in {"unknown", "ukjent", "okänd", "?", "nn"}:
-                _desc = (occupation_of(_occ)[1] or _occ)[:DESC_MAX].rstrip(" -,")
+                # ⛔ **An `en` description is in Latin script.** 2026-09-27: `Moshe Rothenburg`
+                # went out with `Den "אבד אלטונה והמבורג"` (a rabbinic title in Hebrew), the raw
+                # Geni occupation. An unresolved occupation in another script falls through to
+                # the relationship phrase and the Geni id.
+                _en = occupation_of(_occ)[1] or (_occ if is_latin_text(_occ) else "")
+                _desc = _en[:DESC_MAX].rstrip(" -,")
         if not _desc:
             _rel = describe_all(g, facts, father, mother, referred_to_as, table,
                                 children, spouses, siblings,

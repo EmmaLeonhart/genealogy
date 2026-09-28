@@ -48899,3 +48899,22 @@ still does not exist then (QuickStatements skipped that creation, or no tab is r
 batch), it starts the next generation anyway, so one missing creation cannot stall the chain.
 `pipeline.yml` gains `actions: write` for the dispatch. CLAUDE.md's loop section now states the
 goal and that CI, not the session, starts each generation.
+
+## 2026-09-27 21:15 PDT: CI run 36373025512 failed on two things, both fixed
+
+- `test_no_source_file_links_a_repository`: `qs-loop-status.py` (mine, today) put the repository
+  URL in its User-Agent. It now uses `bot_identity.agent()` like every other script, and
+  `ring-watch.yml`'s agent names no host either.
+- `test_no_batch_carries_a_description`: batch df28db90c6 (run in the browser at 19:12 PDT)
+  created `Moshe Rothenburg` with `Den "אבד אלטונה והמבורג"`, a rabbinic title in Hebrew. It
+  came from rung 2 of the description ladder, the raw Geni occupation string, added 2026-09-26,
+  which took any script. An unresolved occupation now becomes the `en` description only when
+  every letter is Latin (`is_latin_text`); otherwise the ladder goes on to the relationship
+  phrase and the Geni id. Test added. The item already created on Wikidata keeps that
+  description; it is not corrected from here.
+
+The same test is the sender's pre-send gate ("Nothing is sent while a creation has no
+description"), so this is also what would have stopped the next automatic send. The 17:37 UTC
+failure Emma queued was the occupation rung's first day (`Kjøpmann i Bergen`, `Bonde`), which the
+test has accepted since; the 18:02 UTC run was held and skipped every step. Both queue items stay
+until CI is green and a send goes through.
