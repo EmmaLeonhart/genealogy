@@ -471,6 +471,8 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     between builds (`Gjesdal, Rogaland, Norway` to `Gjesdal Municipality`). A description is the
     deduplication key, so it must come out identical from every build: never change how a creation's
     description is generated, however much it could be improved. Improving it IS the defect.
+    The frozen logic is the one in place on 2026-09-28, including that day's rule that an unresolved
+    occupation becomes an `en` description only in Latin script (kept by Emma, same day).
   - **⛔ NO DESCRIPTIVE LABELS ON PEOPLE IN ENGLISH. Ruled 2026-09-28:** an NN person is `NN` in `mul`
     and `NN` in `en`, never `wife of …` as a label. A descriptive label is the same liability as an
     improvable description.
