@@ -153984,16 +153984,64 @@
  },
  "Q141497501": {
   "aliases": {
+   "en": [
+    {
+     "language": "en",
+     "value": "Anna Jonsdatter Haar"
+    }
+   ],
+   "ja": [
+    {
+     "language": "ja",
+     "value": "アンナ・ヨンスダッテル・ハール"
+    }
+   ],
+   "ko": [
+    {
+     "language": "ko",
+     "value": "안나 존스다테르 하아르"
+    }
+   ],
    "mul": [
     {
      "language": "mul",
      "value": "Anna Haard"
+    },
+    {
+     "language": "mul",
+     "value": "Anna Jonsdatter Haar"
+    },
+    {
+     "language": "mul",
+     "value": "Anne Haar"
+    },
+    {
+     "language": "mul",
+     "value": "Anna Benkestok"
+    },
+    {
+     "language": "mul",
+     "value": "Anna Hård"
+    },
+    {
+     "language": "mul",
+     "value": "Anna NN"
+    },
+    {
+     "language": "mul",
+     "value": "Anne Jensdatter Haar"
     }
    ],
    "nb": [
     {
      "language": "nb",
      "value": "Anna Benkestok"
+    }
+   ],
+   "zh": [
+    {
+     "language": "zh",
+     "value": "安娜·永斯达特·霍尔"
     }
    ]
   },
@@ -154182,6 +154230,23 @@
      "type": "statement"
     }
    ],
+   "P2889": [
+    {
+     "id": "Q141497501$A2BC08CD-C628-42FC-86D9-56EAE7FCD8CB",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "L6L1-BHL"
+      },
+      "hash": "1f3112c7d61c831769a46ec32a7f4c8e6e6627c5",
+      "property": "P2889",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P2949": [
     {
      "id": "Q141497501$dd74862d-482f-9f9a-4c97-2d9ddaba11cc",
@@ -154257,6 +154322,26 @@
        },
        "snaks-order": [
         "P2600"
+       ]
+      },
+      {
+       "hash": "8eb58f4f8ff61da92d8cfea673d3ecb00d7178be",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L6L1-BHL"
+          },
+          "hash": "1f3112c7d61c831769a46ec32a7f4c8e6e6627c5",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
        ]
       }
      ],
@@ -154470,6 +154555,50 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141497501$0DD02F82-389D-42A5-A47A-205415F7FC70",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1510-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "6d4a99c7271fd7d19ea07d98d465fc6521137a52",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "8eb58f4f8ff61da92d8cfea673d3ecb00d7178be",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L6L1-BHL"
+          },
+          "hash": "1f3112c7d61c831769a46ec32a7f4c8e6e6627c5",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P570": [
@@ -154512,6 +154641,26 @@
        },
        "snaks-order": [
         "P2600"
+       ]
+      },
+      {
+       "hash": "8eb58f4f8ff61da92d8cfea673d3ecb00d7178be",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L6L1-BHL"
+          },
+          "hash": "1f3112c7d61c831769a46ec32a7f4c8e6e6627c5",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
        ]
       }
      ],
@@ -154561,24 +154710,29 @@
     }
    ]
   },
-  "descriptions": {},
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "1510 Gjersvik, Tysnes, Hordaland, Norway - 27 Nov 1569 Bergen, Hordaland, Norway"
+   }
+  },
   "id": "Q141497501",
   "labels": {
    "en": {
     "language": "en",
-    "value": "Anna Benkestok"
+    "value": "Anna Jonsdatter Haar"
    },
    "ja": {
     "language": "ja",
-    "value": "アンナ・ベンケストク"
+    "value": "アンナ・ヨンスダッテル・ハール"
    },
    "ko": {
     "language": "ko",
-    "value": "안나 벤케스토크"
+    "value": "안나 존스다테르 하아르"
    },
    "mul": {
     "language": "mul",
-    "value": "Anna Benkestok"
+    "value": "Anna Jonsdatter Haar"
    },
    "nb": {
     "language": "nb",
@@ -154586,11 +154740,11 @@
    },
    "zh": {
     "language": "zh",
-    "value": "安娜·本凯斯托克"
+    "value": "安娜·永斯达特·霍尔"
    }
   },
-  "lastrevid": 2550140270,
-  "modified": "2026-09-27T19:15:01Z",
+  "lastrevid": 2550568313,
+  "modified": "2026-09-28T17:35:15Z",
   "ns": 0,
   "pageid": 135056860,
   "sitelinks": {},

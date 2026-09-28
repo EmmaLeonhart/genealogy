@@ -73257,6 +73257,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141216369$420CA632-34F7-4813-A01D-5D9D1A15C5F9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141593713",
+        "numeric-id": 141593713
+       }
+      },
+      "hash": "3d62a78ffd5f2bd7effbad65740b6ab9f361926f",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "c3af7443827dc32ddf44d302421e93e07f540a3a",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "GHLZ-26K"
+          },
+          "hash": "1df0ff081d67fc87d9116533be196e97c21753d1",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P25": [
@@ -73296,6 +73337,47 @@
        },
        "snaks-order": [
         "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q141216369$74FAF830-D90F-4E7F-8051-17C371814696",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141593718",
+        "numeric-id": 141593718
+       }
+      },
+      "hash": "b30f8a3b87a8da2e865c59d85fa0fc2ec20047db",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "dd23d6aaf19e09c790b2e0c4184b71f07b4264da",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L8SC-C1N"
+          },
+          "hash": "472e126e526dfc958181507a1507361aee1e5073",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
        ]
       }
      ],
@@ -73845,8 +73927,8 @@
     "value": "加尔德·托雷松·塔尔耶"
    }
   },
-  "lastrevid": 2549351743,
-  "modified": "2026-09-25T19:21:45Z",
+  "lastrevid": 2550568597,
+  "modified": "2026-09-28T17:37:08Z",
   "ns": 0,
   "pageid": 134670731,
   "sitelinks": {},

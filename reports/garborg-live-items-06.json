@@ -116969,6 +116969,26 @@
        "snaks-order": [
         "P2600"
        ]
+      },
+      {
+       "hash": "4d61c1c916e5914fbc7cf76721b3c9a4b3f9831d",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L2PF-C5T"
+          },
+          "hash": "0f4f5dbd9e477e2d826d2357508dacbc3ae5bdd2",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
       }
      ],
      "type": "statement"
@@ -117004,6 +117024,23 @@
      "qualifiers-order": [
       "P1810"
      ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2889": [
+    {
+     "id": "Q141498614$B7B8A07D-B7A0-4359-A3CB-40CCFD0C29AA",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "L2PF-C5T"
+      },
+      "hash": "0f4f5dbd9e477e2d826d2357508dacbc3ae5bdd2",
+      "property": "P2889",
+      "snaktype": "value"
+     },
      "rank": "normal",
      "type": "statement"
     }
@@ -117066,6 +117103,72 @@
        },
        "snaks-order": [
         "P2600"
+       ]
+      },
+      {
+       "hash": "4d61c1c916e5914fbc7cf76721b3c9a4b3f9831d",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L2PF-C5T"
+          },
+          "hash": "0f4f5dbd9e477e2d826d2357508dacbc3ae5bdd2",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q141498614$94903556-B04A-4DC0-A25B-0747A00D4A47",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1475-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "c723624eaaae830a273952ace7f8b37102ee5271",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "4d61c1c916e5914fbc7cf76721b3c9a4b3f9831d",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L2PF-C5T"
+          },
+          "hash": "0f4f5dbd9e477e2d826d2357508dacbc3ae5bdd2",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
        ]
       }
      ],
@@ -117231,7 +117334,12 @@
     }
    ]
   },
-  "descriptions": {},
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "1475 Kantreck, Kammin, Pommern, Preußen, Tyskland - Petznick, Templin, Brandenburg, Germany"
+   }
+  },
   "id": "Q141498614",
   "labels": {
    "en": {
@@ -117255,8 +117363,8 @@
     "value": "安娜·卡塔琳娜·翁·科莱尔"
    }
   },
-  "lastrevid": 2547664380,
-  "modified": "2026-09-19T05:10:38Z",
+  "lastrevid": 2550572395,
+  "modified": "2026-09-28T17:51:12Z",
   "ns": 0,
   "pageid": 135057949,
   "sitelinks": {},
@@ -253344,356 +253452,6 @@
   "pageid": 135118472,
   "sitelinks": {},
   "title": "Q141559574",
-  "type": "item"
- },
- "Q141559606": {
-  "aliases": {},
-  "claims": {
-   "P21": [
-    {
-     "id": "Q141559606$368E16F1-499F-463A-936F-81614510AB65",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q6581097",
-        "numeric-id": 6581097
-       }
-      },
-      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
-      "property": "P21",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P22": [
-    {
-     "id": "Q141559606$2894AFE2-B265-44B1-BDE0-AB57D0994B7F",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q5803979",
-        "numeric-id": 5803979
-       }
-      },
-      "hash": "3aae90cc1eb4346170594e67aa7851edc7ebdbb3",
-      "property": "P22",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "6c8fd75436c20e6ab08830aec69f9f2722f52710",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000014741074223"
-          },
-          "hash": "6126de29cb5a0ad7a1b932adb8cb9e905e2701b1",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P25": [
-    {
-     "id": "Q141559606$DEFE7FBF-FFBC-4AE9-A26A-5F6C629B3C2B",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141546830",
-        "numeric-id": 141546830
-       }
-      },
-      "hash": "95ddd891237ef27a1b0ebb50db34600d585c6cd2",
-      "property": "P25",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "6c8fd75436c20e6ab08830aec69f9f2722f52710",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000014741074223"
-          },
-          "hash": "6126de29cb5a0ad7a1b932adb8cb9e905e2701b1",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P2600": [
-    {
-     "id": "Q141559606$92EAF021-95D9-4A1F-807D-F65A32A63FB4",
-     "mainsnak": {
-      "datatype": "external-id",
-      "datavalue": {
-       "type": "string",
-       "value": "6000000014741074223"
-      },
-      "hash": "6126de29cb5a0ad7a1b932adb8cb9e905e2701b1",
-      "property": "P2600",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P1810": [
-       {
-        "datatype": "string",
-        "datavalue": {
-         "type": "string",
-         "value": "Gustaf Hesselius"
-        },
-        "hash": "823dc77ea0cfa7cdf1d20060b5c600a24652a345",
-        "property": "P1810",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P1810"
-     ],
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P2949": [
-    {
-     "id": "Q141559606$C55847BC-7893-4AAC-9E69-4F5EE9BCC460",
-     "mainsnak": {
-      "datatype": "external-id",
-      "datavalue": {
-       "type": "string",
-       "value": "Hesselius-28"
-      },
-      "hash": "c3182a3a960c58492037b522ea87cacc0f404a31",
-      "property": "P2949",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P1810": [
-       {
-        "datatype": "string",
-        "datavalue": {
-         "type": "string",
-         "value": "Gustavus Gustaf Hesselius (31 Oct 1727 - 4 Sep 1775)"
-        },
-        "hash": "a0d55fc955e1621dddb9ac3795e78f465f31eb35",
-        "property": "P1810",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P1810"
-     ],
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P31": [
-    {
-     "id": "Q141559606$15983289-BFCF-4B0E-A735-7312EBF4B531",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q5",
-        "numeric-id": 5
-       }
-      },
-      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
-      "property": "P31",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P569": [
-    {
-     "id": "Q141559606$738C5AFD-DACE-4F3E-B7FF-545D034C51D3",
-     "mainsnak": {
-      "datatype": "time",
-      "datavalue": {
-       "type": "time",
-       "value": {
-        "after": 0,
-        "before": 0,
-        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
-        "precision": 9,
-        "time": "+1727-00-00T00:00:00Z",
-        "timezone": 0
-       }
-      },
-      "hash": "9cca0fd478445ebacf06d88d59f1a1e365fd80f6",
-      "property": "P569",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "6c8fd75436c20e6ab08830aec69f9f2722f52710",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000014741074223"
-          },
-          "hash": "6126de29cb5a0ad7a1b932adb8cb9e905e2701b1",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P570": [
-    {
-     "id": "Q141559606$22E8FF49-D1E2-4E3B-8F17-E0D77B2E5EE8",
-     "mainsnak": {
-      "datatype": "time",
-      "datavalue": {
-       "type": "time",
-       "value": {
-        "after": 0,
-        "before": 0,
-        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
-        "precision": 10,
-        "time": "+1775-09-00T00:00:00Z",
-        "timezone": 0
-       }
-      },
-      "hash": "0c69be83505688e42088aa8c0b057c539ced3daa",
-      "property": "P570",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "6c8fd75436c20e6ab08830aec69f9f2722f52710",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000014741074223"
-          },
-          "hash": "6126de29cb5a0ad7a1b932adb8cb9e905e2701b1",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P735": [
-    {
-     "id": "Q141559606$ED639317-6D8B-4A18-9FAD-F47AC005D3B1",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q15646212",
-        "numeric-id": 15646212
-       }
-      },
-      "hash": "c7f68778ad14ac090d11f2ee231a38d081f35bc1",
-      "property": "P735",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ]
-  },
-  "descriptions": {
-   "en": {
-    "language": "en",
-    "value": "1727 Gagnef - Sep 1775"
-   }
-  },
-  "id": "Q141559606",
-  "labels": {
-   "en": {
-    "language": "en",
-    "value": "Gustaf Hesselius"
-   },
-   "ja": {
-    "language": "ja",
-    "value": "グスタフ・ヘッセリウス"
-   },
-   "ko": {
-    "language": "ko",
-    "value": "구스타프 헤세류스"
-   },
-   "mul": {
-    "language": "mul",
-    "value": "Gustaf Hesselius"
-   },
-   "zh": {
-    "language": "zh",
-    "value": "古斯塔夫·赫塞利乌斯"
-   }
-  },
-  "lastrevid": 2550177932,
-  "modified": "2026-09-27T21:34:23Z",
-  "ns": 0,
-  "pageid": 135118502,
-  "sitelinks": {},
-  "title": "Q141559606",
   "type": "item"
  },
  "Q141559622": {

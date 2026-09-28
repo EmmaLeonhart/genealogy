@@ -554526,6 +554526,20 @@
  },
  "Q7845461": {
   "aliases": {
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Trond Tordson Benkestok"
+    },
+    {
+     "language": "mul",
+     "value": "Trond Torleifson Benkestok"
+    },
+    {
+     "language": "mul",
+     "value": "Trond Benkestok"
+    }
+   ],
    "nb": [
     {
      "language": "nb",
@@ -554845,6 +554859,23 @@
      "type": "statement"
     }
    ],
+   "P2889": [
+    {
+     "id": "Q7845461$5BC00E53-A8BB-4D08-8468-F8D7A76B479C",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "LTW1-ZVD"
+      },
+      "hash": "3520b36290f8ac7186aeee054d0e27851e09f21d",
+      "property": "P2889",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P2949": [
     {
      "id": "Q7845461$5972453D-16D7-402A-ABB1-8478CDFA77A1",
@@ -554992,6 +555023,28 @@
       "snaktype": "value"
      },
      "rank": "normal",
+     "references": [
+      {
+       "hash": "21f79390523db16e7f1720371fb1d38bac3fe0c2",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "LTW1-ZVD"
+          },
+          "hash": "3520b36290f8ac7186aeee054d0e27851e09f21d",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
      "type": "statement"
     },
     {
@@ -555240,6 +555293,50 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q7845461$C1F0BAA7-9645-4A7C-BE64-B92375F08CF9",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 11,
+        "time": "+1508-01-01T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "50f912ba1434c46cf954046e0a10c8c4536ed7ab",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "21f79390523db16e7f1720371fb1d38bac3fe0c2",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "LTW1-ZVD"
+          },
+          "hash": "3520b36290f8ac7186aeee054d0e27851e09f21d",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P570": [
@@ -555263,6 +555360,50 @@
       "snaktype": "value"
      },
      "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q7845461$BBBF2DC4-B082-4D53-B1CE-BA415A0EE2D7",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 11,
+        "time": "+1558-02-14T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "23e316be1e2f085ead2b96dd99d0c3197d8dcdec",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "21f79390523db16e7f1720371fb1d38bac3fe0c2",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "LTW1-ZVD"
+          },
+          "hash": "3520b36290f8ac7186aeee054d0e27851e09f21d",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
      "type": "statement"
     }
    ],
@@ -555415,6 +555556,14 @@
     "language": "ga",
     "value": "Trond Torleivsson Benkestok"
    },
+   "ja": {
+    "language": "ja",
+    "value": "トロンド・トルレイヴソン・ベンケストク"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "트론드 토레입손 벤케스토크"
+   },
    "mul": {
     "language": "mul",
     "value": "Trond Torleivsson Benkestok"
@@ -555438,10 +555587,14 @@
    "sv": {
     "language": "sv",
     "value": "Trond Torleivsson Benkestok"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "特龙德·托尔莱伊夫松·本凯斯托克"
    }
   },
-  "lastrevid": 2550138742,
-  "modified": "2026-09-27T19:10:17Z",
+  "lastrevid": 2550568394,
+  "modified": "2026-09-28T17:35:47Z",
   "ns": 0,
   "pageid": 7780046,
   "sitelinks": {

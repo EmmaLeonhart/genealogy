@@ -190168,6 +190168,51 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141528252$91be313b-b6bf-420b-bad7-3164568deb3d",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141594010",
+        "numeric-id": 141594010
+       }
+      },
+      "hash": "8cc4b0f56c3a5bdc39c1644a251fa01cf8cec0c9",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "1f8ad12bcfe3b7fea3d389573b01d1dc0d39d9ec",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q2621214",
+            "numeric-id": 2621214
+           }
+          },
+          "hash": "a530ed07ceeaafb2beb2a5313f820de5d82d2adb",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -190355,8 +190400,8 @@
     "value": "伊丽莎白·維納布爾"
    }
   },
-  "lastrevid": 2549060876,
-  "modified": "2026-09-24T16:30:38Z",
+  "lastrevid": 2550590910,
+  "modified": "2026-09-28T18:54:30Z",
   "ns": 0,
   "pageid": 135088225,
   "sitelinks": {},

@@ -144514,6 +144514,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141498496$EEAA586E-A326-441C-9DCB-12B2499D5EF7",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141593708",
+        "numeric-id": 141593708
+       }
+      },
+      "hash": "ba3cdfe7438c32c4c8224040c56d21fc2818fbfb",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "4d61c1c916e5914fbc7cf76721b3c9a4b3f9831d",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L2PF-C5T"
+          },
+          "hash": "0f4f5dbd9e477e2d826d2357508dacbc3ae5bdd2",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P26": [
@@ -144639,6 +144680,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141498496$DC6445A8-6BE9-4D26-994A-CF2F9DB49116",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141593702",
+        "numeric-id": 141593702
+       }
+      },
+      "hash": "52e94bc95b02d64395c4407067dee6ae5db33fcc",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "8b3014059531de1a075083fbf9ae217af0665a62",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "LZ46-4Q2"
+          },
+          "hash": "d2f44574b86ab540b2bc1d7ddd98d7c6ff094d96",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P2600": [
@@ -144750,6 +144832,47 @@
        },
        "snaks-order": [
         "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q141498496$4C4668D0-E1A2-477A-A074-DBE9A5F1DD80",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141593726",
+        "numeric-id": 141593726
+       }
+      },
+      "hash": "a253c44e0c64bd3cb5ecb515b674f4f6b6445d99",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "9e897fd53b1a7331109eb917df9bfb1ff8fb9458",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "L2PF-CXH"
+          },
+          "hash": "ecf3c969e3f91036cfee174fc10a09b503a9dba3",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
        ]
       }
      ],
@@ -144936,8 +145059,8 @@
     "value": "海因里希·金特尔斯贝尔格"
    }
   },
-  "lastrevid": 2550387789,
-  "modified": "2026-09-28T08:03:32Z",
+  "lastrevid": 2550568849,
+  "modified": "2026-09-28T17:38:44Z",
   "ns": 0,
   "pageid": 135057832,
   "sitelinks": {},
@@ -182395,28 +182518,7 @@
        "snaks-order": [
         "P2600"
        ]
-      }
-     ],
-     "type": "statement"
-    },
-    {
-     "id": "Q141519696$EFFE9571-0EC5-4A42-AB44-2E7C7CA80196",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q98545640",
-        "numeric-id": 98545640
-       }
       },
-      "hash": "9124e170f80a46d27eb7101b3484d76976b76804",
-      "property": "P26",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
       {
        "hash": "bfda792e49bdb4cefa3451a3297236883a3f98a2",
        "snaks": {
@@ -182868,11 +182970,17 @@
     "value": "卡尔·阿尔丰斯·赫尔梅林"
    }
   },
-  "lastrevid": 2550373595,
-  "modified": "2026-09-28T07:25:34Z",
+  "lastrevid": 2550590309,
+  "modified": "2026-09-28T18:53:03Z",
   "ns": 0,
   "pageid": 135079454,
-  "sitelinks": {},
+  "sitelinks": {
+   "svwiki": {
+    "badges": [],
+    "site": "svwiki",
+    "title": "Carl Alfons Hermelin"
+   }
+  },
   "title": "Q141519696",
   "type": "item"
  },
