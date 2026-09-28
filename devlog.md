@@ -49026,3 +49026,15 @@ The rate-limited history read finished: 14,530 items (one record kept per item).
 `reports/removed-statements.tsv` is now 2,494 rows and `reports/corrected-label-slots.tsv` 95;
 the composer never re-sends either. Left on the queue item: (3) the model half and the
 `applied-facts.csv` build.
+
+## 2026-09-28 00:45 PDT: `reports/applied-facts.csv`, built
+
+The arguing item's build step, as Emma specified it. `update_applied_facts()` runs on the assembled
+batch just before it is written. Every label or statement line on an existing item (`Q…` subject)
+is a fact `(qid, kind, slot, value)`. New facts enter as `pending`. A fact the live snapshots
+(`garborg-live-labels.tsv`, `garborg-live-values.tsv`, already downloaded every run) show on its
+item becomes `live` with `first_live`. A live fact the item no longer holds becomes `gone`, with
+`gone_since` and `replaced_by` (the slot's value now). A `gone` fact's line is dropped from the
+batch, so it is never sent again. An item missing from the snapshot is never judged. Creations are
+not tracked until they have a QID. Left on the item: part (3), feeding a `gone` fact with a
+`replaced_by` back into our data.

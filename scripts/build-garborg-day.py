@@ -1874,6 +1874,88 @@ def write_creation_candidates(candidates, ring, why, carried):
           f"{len(set(candidates) | set(ring) | set(why)):,} possible creations")
 
 
+#: ⛔ **WHAT WE APPLIED, AND WHAT BECAME OF IT. Built 2026-09-28 (Emma's queue item on the batches
+#: arguing with edits on Wikidata).** One row per label or statement a batch sends to an EXISTING
+#: item: `pending` when first sent, `live` once the item is seen holding it, `gone` when it was
+#: live and is not any more (`gone_since`, and `replaced_by`: what the slot holds now). Updated
+#: every run from the live snapshots the pipeline already downloads; no extra requests. Only a
+#: fact seen live counts as ours, so a batch that never ran is never mistaken for a correction,
+#: and a `gone` fact is never sent again: somebody took it off.
+APPLIED_FACTS = ROOT / "reports" / "applied-facts.csv"
+APPLIED_FIELDS = ["qid", "kind", "slot", "value", "first_live", "status", "gone_since",
+                  "replaced_by"]
+
+
+def _fact_of(line):
+    """`(qid, kind, slot, value)` for a label or statement line on an existing item, else None."""
+    parts = line.rstrip("\n").split("\t")
+    if len(parts) < 3 or not re.fullmatch(r"Q\d+", parts[0]):
+        return None
+    slot, raw = parts[1], parts[2]
+    if re.fullmatch(r"L[a-z]{2,3}(?:-[a-z0-9]+)*", slot):
+        return parts[0], "label", slot, raw.strip('"')
+    if re.fullmatch(r"P\d+", slot):
+        value = raw.strip('"')
+        if value[:1] in "+-" and "T" in value:
+            value = value.split("T")[0]
+        return parts[0], "statement", slot, value
+    return None
+
+
+def update_applied_facts(lines, live_labels, live_values, today, path=APPLIED_FACTS):
+    """Update `path` from this run's snapshots and batch, and return `lines` without the
+    facts that are `gone`. Nothing is marked gone for an item the snapshot does not hold."""
+    rows = {}
+    if path.exists():
+        with open(path, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                rows[(r["qid"], r["kind"], r["slot"], r["value"])] = r
+    seen = {q for q, _p, _v in live_values} | {q for q, _l in live_labels}
+    by_slot = collections.defaultdict(list)
+    for q, p, v in live_values:
+        by_slot[(q, p)].append(v)
+
+    def now_holds(key):
+        q, kind, slot, value = key
+        if kind == "label":
+            return live_labels.get((q, slot[1:])) == value
+        return (q, slot, value) in live_values
+
+    def replaced(key):
+        q, kind, slot, _value = key
+        if kind == "label":
+            return live_labels.get((q, slot[1:]), "")
+        return " | ".join(sorted(by_slot.get((q, slot), [])))
+
+    for key, r in rows.items():
+        if key[0] not in seen:
+            continue
+        if now_holds(key):
+            r["status"], r["gone_since"], r["replaced_by"] = "live", "", ""
+            r["first_live"] = r["first_live"] or today
+        elif r["status"] == "live":
+            r["status"], r["gone_since"], r["replaced_by"] = "gone", today, replaced(key)
+    kept, dropped = [], 0
+    for line in lines:
+        key = _fact_of(line)
+        if key and rows.get(key, {}).get("status") == "gone":
+            dropped += 1
+            continue
+        if key and key not in rows:
+            rows[key] = {"qid": key[0], "kind": key[1], "slot": key[2], "value": key[3],
+                         "first_live": "", "status": "pending", "gone_since": "", "replaced_by": ""}
+        kept.append(line)
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=APPLIED_FIELDS, lineterminator="\n")
+        w.writeheader()
+        for key in sorted(rows):
+            w.writerow(rows[key])
+    status = collections.Counter(r["status"] for r in rows.values())
+    print(f"applied facts: {len(rows):,} ({', '.join(f'{k} {v:,}' for k, v in sorted(status.items()))})"
+          f"; {dropped} line(s) dropped: a fact that was live and was taken off is not re-sent")
+    return kept
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -9561,6 +9643,8 @@ def main():
         if _held:
             print(f"{_held} bare restatement(s) dropped from the assembled batch, head included")
     _final_lines = gate_label_languages(_final_lines)
+    _final_lines = update_applied_facts(_final_lines, live_labels, live_values,
+                                        datetime.date.today().isoformat())
     _final_lines, _orphans = qs_v1.drop_orphaned_creations(_final_lines)
     if _orphans:
         print(f"{len(_orphans)} creation(s) dropped: the gate stripped the only relationship "

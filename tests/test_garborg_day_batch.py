@@ -1300,3 +1300,26 @@ def test_the_ancestor_ring_walks_through_people_already_on_wikidata():
     assert set(mod.priority_ancestor_ring({}, fam_p, famc)) >= {"P"}
     ring = mod.priority_ancestor_ring({}, fam_p, famc, on_wikidata={"P"})
     assert "P" not in ring and "GP" in ring
+
+
+def test_a_fact_taken_off_wikidata_is_never_sent_again(tmp_path):
+    """The applied-facts table (Emma, 2026-09-27): pending when sent, live once seen, gone when a
+    person takes it off; a gone fact leaves every later batch, and a pending one keeps going."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    path = tmp_path / "applied-facts.csv"
+    lines = ['Q1\tLen\t"Anna"', 'Q1\tP26\tQ2\tS2600\t"1"', "Q9\tP40\tQ3", "CREATE"]
+    assert mod.update_applied_facts(lines, {}, {("Q1", "P31", "Q5")}, "d1", path) == lines
+    mod.update_applied_facts(lines, {("Q1", "en"): "Anna"}, {("Q1", "P26", "Q2")}, "d2", path)
+    kept = mod.update_applied_facts(lines, {("Q1", "en"): "Anna Olsdotter"},
+                                    {("Q1", "P31", "Q5")}, "d3", path)
+    assert kept == ["Q9\tP40\tQ3", "CREATE"]
+    rows = {(r["slot"], r["value"]): r for r in __import__("csv").DictReader(open(path))}
+    assert rows[("Len", "Anna")]["status"] == "gone"
+    assert rows[("Len", "Anna")]["replaced_by"] == "Anna Olsdotter"
+    assert rows[("P40", "Q3")]["status"] == "pending"
