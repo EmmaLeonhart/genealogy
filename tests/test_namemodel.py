@@ -1671,3 +1671,10 @@ def test_a_patronymic_in_the_married_name_field(givn, surn, marnm, father, want)
 def test_unknown_in_other_languages_is_no_given_name(givn):
     """2026-09-28, the `Q141579674` "Ukjend NN" report: a placeholder is never a name."""
     assert "given" not in {u for _t, u, _o in namemodel.classify_fields(givn, "Byberg")}
+
+
+@pytest.mark.parametrize("givn", ["Not Known", "not known", "No Name"])
+def test_a_placeholder_of_several_words_is_no_given_name(givn):
+    """2026-09-28, `Q141570927` "Not Known Almondsdatter": `Not` and `Known` each passed as a
+    given name, and the description read "Not, wife of …"."""
+    assert "given" not in {u for _t, u, _o in namemodel.classify_fields(givn, "Almondsdatter")}

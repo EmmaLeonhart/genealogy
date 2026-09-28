@@ -49349,3 +49349,20 @@ in `SURN` after the patronymics is one surname, a separator or a bracketed part 
 `_MARNM` stays a second family name. The measurement: 230 items carry an extra `P734` from the old
 split reading (`reports/multiple-family-names.csv`), which the separate queue item on reviewing
 split surnames works. Item deleted.
+
+## 2026-09-28 08:45 PDT: "Not Known" and "Ukjend", closed
+
+Why they got through: the placeholder list was matched a token at a time, so the two-word
+`Not Known` was `Not` + `Known`, two given names (and the description "Not, wife of Sigurd
+Arnbjørnsen Åkra"); and `Ukjend` (Nynorsk "unknown") and its relatives in other languages were not
+on the list at all. Now the whole `GIVN` is compared too (`not known`, `no name`, `namn okänt`),
+and "unknown" in the languages Geni uses is on the list; both caught at creation. Tests added.
+Other items made the same way, from our live `mul`/`en` labels (`reports/placeholder-name-labels.csv`):
+6, of which 2 are ours; the other 4 are `en` labels on older items we did not make ("unknown
+daughter Cameron" and the like), not ours to relabel. Fixed through `label-applications.tsv`:
+`Q141570927` to `NN Almondsdatter` and `Q141499112` ("ukjend ektefelle Ola Kjosavik", married name
+Kjosavik) to `NN Kjosavik`, in `mul`/`en`/`en-us`; `Q141570927`'s description to "wife of Sigurd
+Arnbjørnsen Åkra" through `description-overwrites.tsv` (sent only while the live text still reads
+"Not, wife of …"). `Q141579674`'s live `mul` is already `NN`, and the batch no longer relabels it.
+Their `ja`/`zh`/`ko` labels are transliterations of the placeholder; they follow the corrected
+name when the tree's derived labels are next rebuilt. Both items deleted.

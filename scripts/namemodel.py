@@ -3041,6 +3041,14 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # (census 2026-09-25). Two leading `N`s arm the rule like `NN` does.
     if len(_givn_tokens) >= 2 and all(re.fullmatch(r"[Nn]\.?", t) for t in _givn_tokens[:2]):
         _has_marker = True
+    # ⛔ **AND A MARKER OF SEVERAL WORDS IS READ WHOLE. 2026-09-28** (`Q141570927` "Not Known
+    # Almondsdatter", Emma's error report): the list holds `not known`, `no name`, `namn okänt`,
+    # but it was matched a token at a time, so `Not` and `Known` each passed as a given name and
+    # the description came out "Not, wife of …". The whole field is compared as well.
+    _whole_givn = " ".join(_givn_tokens).casefold()
+    if " " in _whole_givn and (_whole_givn in UNKNOWN_MARKERS
+                               or _whole_givn in _unknown_markers()):
+        _has_marker = True
 
     # ⛔ **A RELATIONSHIP PHRASE IS A DESCRIPTION, NOT A NAME.** `Wife of William /Lantham/`,
     # `Daughter of Nebridius`, `Søn 1 /Juul/`, `Barn nr 4`, `Kind 2`, `Name not known`: once only
