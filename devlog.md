@@ -48844,3 +48844,13 @@ changes she asked for, regenerate, and run the new batch in another tab. Recorde
 session-start loop rule in CLAUDE.md, with the batch order and the ring-complete rebuild trigger
 the loop now runs on (first ring-first batch 1790561540112 started 19:12 PDT; its ring was
 created by 19:24 and the next lean rebuild, run 36369715696, was dispatched then).
+
+## 2026-09-27 19:45 PDT: restores that dropped our edits
+
+The arguing item, part (2), restores. A restore names only the revision it goes back to, so that
+revision's timestamp was fetched (one request) and our QuickStatements edits between it and the
+restore are what it dropped; no diffs needed. Of 14 restores by other editors on the histories
+read so far, one dropped an edit of ours: Q3656094 `P735` Q130396475 (Epìdosis, 2026-09-11). Of 6
+hand restores by the account, two statements (Q2183430 `P735` Q20899047; Q9511624 `P25`
+Q140568870, the protected item) and the `mul` label "Zhu Cao" on Q45383466 (its `ja`/`zh` were
+already recorded). Appended to `removed-statements.tsv` and `corrected-label-slots.tsv`.
