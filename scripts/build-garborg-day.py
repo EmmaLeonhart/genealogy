@@ -1106,7 +1106,7 @@ PRIORITY_ANCESTOR_SEEDS = (
 )
 
 
-def priority_ancestor_ring(our_items, fam_p, famc):
+def priority_ancestor_ring(our_items, fam_p, famc, on_wikidata=()):
     """The next FULL generation of ancestors of `PRIORITY_ANCESTOR_SEEDS`, uncapped.
 
     Walks up from the seeds THROUGH people who already hold a QID and stops at the first person
@@ -1121,6 +1121,12 @@ def priority_ancestor_ring(our_items, fam_p, famc):
     **It is a frontier and not a depth.** Where one branch is already on Wikidata six
     generations up and another stops at two, this returns both boundaries at once. A depth
     counter would hold the deep branch back to the shallow one's pace.
+
+    ⛔ **AND IT WALKS THROUGH EVERYBODY WIKIDATA ALREADY HAS, NOT ONLY THE LEDGER.** Measured
+    2026-09-27: the ring was 689 people, and about 400 of them were dropped from the batch
+    because Wikidata already carries their `P2600` or the correspondence already pairs them
+    (`on_wikidata`). Stopping at them returned the same people every run and never reached
+    their parents, so the ring looked nearly finished (58 new a run) while it was stuck.
     """
     frontier, seen, stack = {}, set(), [g for g in PRIORITY_ANCESTOR_SEEDS]
     while stack:
@@ -1130,7 +1136,7 @@ def priority_ancestor_ring(our_items, fam_p, famc):
         seen.add(g)
         for fam in famc.get(g, []):
             for parent in fam_p.get(fam, []):
-                if parent in our_items:
+                if parent in our_items or parent in on_wikidata:
                     stack.append(parent)
                 else:
                     frontier.setdefault(parent, fam)
@@ -7146,7 +7152,8 @@ def main():
         # generation a day. So the ring is unioned in afterwards, uncapped. Every other guard
         # below still applies: the duplicate check, `--exclude`, the label-collision hold and
         # the locality gate all run after this point.
-        _ring = priority_ancestor_ring(our_items, fam_p, famc)
+        _ring = priority_ancestor_ring(our_items, fam_p, famc,
+                                       set(any_wikidata_item) | set(known_pair))
         _added = {g: f for g, f in _ring.items() if g not in to_create}
         to_create.update(_added)
         print(f"priority ancestor ring: {len(_ring)} people directly above the ancestry of "

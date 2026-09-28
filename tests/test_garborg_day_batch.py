@@ -1281,3 +1281,22 @@ def test_an_english_description_from_an_occupation_is_latin_script():
         assert mod.is_latin_text(text), text
     for text in ("אבד אלטונה והמבורג", "Священник", "農民", ""):
         assert not mod.is_latin_text(text), text
+
+
+def test_the_ancestor_ring_walks_through_people_already_on_wikidata():
+    """2026-09-27: the ring stopped at people Wikidata already has (by `P2600` or the
+    correspondence) because only ledger items were walked through, so it returned the same ~400
+    people every run and never reached their parents."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    seed = mod.PRIORITY_ANCESTOR_SEEDS[0]
+    famc = {seed: ["F1"], "P": ["F2"]}
+    fam_p = {"F1": ["P"], "F2": ["GP"]}
+    assert set(mod.priority_ancestor_ring({}, fam_p, famc)) >= {"P"}
+    ring = mod.priority_ancestor_ring({}, fam_p, famc, on_wikidata={"P"})
+    assert "P" not in ring and "GP" in ring

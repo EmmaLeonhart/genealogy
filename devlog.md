@@ -48948,3 +48948,17 @@ commit (8565953a08) was pushed with an external queue addition on top, and GitHu
 ci]` from the newest commit of a push only; the push touched workflows and scripts, so the paths
 filter let it through. A full run holds the `pipeline` concurrency group for about 2 h 50 min,
 and the ring watcher's lean rebuild would have queued behind it.
+
+## 2026-09-27 22:40 PDT: why the ring looked nearly done, and one of the two causes fixed
+
+Emma asked how close the ring is to complete; the batches showed a shrinking ring (135, 115,
+116, 94, 64, 58). The builder's own log for run 36374915021: the ring was **689** people (the
+seeds' full next generation, uncapped), and the batch kept 58. Counted over the tree and the
+ledger: of the 703 people on the ring's boundary, **386 are FamilySearch-only** (`FS…` ids, no
+Geni profile), and the batch creates none of them, so every line through one stops there. Of the
+317 Geni people, about 400 drops (227 "Wikidata already carries a P2600", 177 "already
+identified by the correspondence") cover most: they exist on Wikidata but not in our ledger, and
+`priority_ancestor_ring` walked only through ledger items, so it returned them every run and
+never reached their parents. Fixed: the walk also passes through `any_wikidata_item` and
+`known_pair`. Test added. The FamilySearch-only half is a question for Emma (whether and how
+they are created), queued.
