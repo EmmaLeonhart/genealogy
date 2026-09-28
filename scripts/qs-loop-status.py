@@ -42,13 +42,22 @@ def ring_target(text):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch-file", default=str(ROOT / "reports" / "wikidata-garborg-day-manual.txt"))
+    ap.add_argument("--pages", type=int, default=4)
     args = ap.parse_args()
     p = {"action": "query", "list": "usercontribs", "ucuser": ACCOUNT, "uclimit": "500",
          "ucprop": "title|timestamp|comment", "format": "json"}
-    url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode(p)
-    contribs = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60))
+    # Up to `--pages` pages of 500 (default 4, one request each): a batch past 500 edits would
+    # otherwise have its early creations fall out of view and the ring point come late.
+    rows, cont = [], {}
+    for _ in range(args.pages):
+        url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({**p, **cont})
+        data = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60))
+        rows += data["query"]["usercontribs"]
+        if "continue" not in data:
+            break
+        cont = {"uccontinue": data["continue"]["uccontinue"], "continue": data["continue"]["continue"]}
     batches = {}
-    for c in contribs["query"]["usercontribs"]:
+    for c in rows:
         m = BATCH_TAG.search(c.get("comment") or "")
         if not m:
             continue
@@ -65,7 +74,7 @@ def main() -> int:
     path = Path(args.batch_file)
     target = ring_target(path.read_text(encoding="utf-8")) if path.exists() else None
     print(json.dumps({"now": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "ring_target_creations": target,
-                      "batches_in_last_500_edits": batches}, indent=1, ensure_ascii=False))
+                      "batches_in_recent_edits": batches}, indent=1, ensure_ascii=False))
     return 0
 
 
