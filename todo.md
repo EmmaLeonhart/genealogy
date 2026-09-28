@@ -927,3 +927,5 @@ Tamazight 12.
 
 Also deferred: the NN relationship labels in other languages (ca, da, de, es, fr, it, nb, nl, pl,
 pt, sv and the rest), and the native generation-suffix labels (`d.y.`/`d.e.`).
+
+**Ruled 2026-09-27 (AskUserQuestion): yes, strictly.** Labels are composed from the name items' labels in every language, CJK included, a language written only when every name part has a label in it; transliteration is phased out over time. The build is a queue item.
