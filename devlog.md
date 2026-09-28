@@ -48825,3 +48825,14 @@ The first lean rebuild of the loop (run 36364175168) sat pending behind a full r
 ## 2026-09-27 -- NN people and repeated label + description pairs: measured, none left
 
 The queue item said several NN people were given one identical `en` label and description, so Wikidata refused all but the first. Measured today: the committed batch has 523 creations with an `en` label and description and no pair used twice, and the 9,919 live items of ours with both share none (Wikidata enforces that itself). What prevents it now is the composer's guards: every NN creation carries an explicit `en` label; a description may not equal the label; and `build-description-audit.py` gives the Geni id as the description to anyone whose description would collide anywhere in the corpus. The item is closed; the people refused earlier are picked again by later batches.
+
+## 2026-09-27 (evening, PDT): undos of our edits, resolved
+
+The arguing item, part (2). In the 6,200 item histories read so far, 62 edits undo a revision
+made by the account. Each undo names only the revision it undid, so the undone revisions were
+fetched (50 per request) and their comments parsed. 9 were statements no suppression file held
+(6 undone by Emma by hand, `P734` on the Q141189041 family and Q2183430; 3 by StarTrekker, `P735`
+and `P734` on Q576388 and Q1174096); they are appended to `reports/removed-statements.tsv`, so
+the composer does not send them again. 38 undid our `P2600` removals of 2026-09-20 (the id is back
+on the item, nothing to suppress). One qualifier and one alias undo are not covered by any file
+yet. Restores and the rest of the histories are still open, in the queue item.
