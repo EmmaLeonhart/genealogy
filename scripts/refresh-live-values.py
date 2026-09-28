@@ -304,7 +304,16 @@ def main():
     print(f"{len(items):,} whole items -> reports/garborg-live-items-NN.json "
           f"({SHARDS} shards, {size / 1024 / 1024:.1f} MB)")
 
-    name_item_cjk_labels()
+    # Every name item our people's name statements point at, not only the plan's (2026-09-28: 69%
+    # of people carried a name item the plan never listed, so no label of theirs could compose).
+    used = set()
+    for entity in items.values():
+        for prop in ("P735", "P5056", "P734"):
+            for st in ((entity or {}).get("claims") or {}).get(prop) or []:
+                v = ((st.get("mainsnak") or {}).get("datavalue") or {}).get("value") or {}
+                if isinstance(v, dict) and v.get("id"):
+                    used.add(v["id"])
+    name_item_cjk_labels(used)
 
 
 #: **The name items' own CJK readings, the source of each word's reading.** Ruled 2026-09-14:
@@ -317,7 +326,7 @@ def main():
 NAME_ITEM_CJK_OUT = ROOT / "reports" / "name-item-cjk-labels.tsv"
 
 
-def name_item_cjk_labels():
+def name_item_cjk_labels(extra=()):
     import time
     import urllib.error
     import urllib.parse
@@ -327,7 +336,8 @@ def name_item_cjk_labels():
         print("no name-item-plan.csv; name item CJK labels not refreshed")
         return
     with open(plan, encoding="utf-8", newline="") as fh:
-        qids = sorted({(r.get("existing_qid") or "").strip() for r in csv.DictReader(fh)} - {""})
+        qids = sorted(({(r.get("existing_qid") or "").strip() for r in csv.DictReader(fh)}
+                       | set(extra)) - {""})
     rows, i, waits = [], 0, 0
     while i < len(qids) and waits < 10:
         url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({

@@ -49269,3 +49269,13 @@ QIDs, so they had nothing to attach to. A creation's parent, spouse and child li
 relative's QID from the `P2600` roster or the correspondence too (`_known_qid`, `_rq`), under the
 same locality gate (`editable`: universe or one step), so such a chain advances a generation a run
 and each edit makes the next item ours. Siblings stay ledger-only.
+
+## 2026-09-28 06:20 PDT: why the composer composed so little
+
+The first real `composed-labels.tsv` (full run 36384572584): en 661, ja 228, zh 212, ko 5 of 14,780
+people. On 4 of the 16 item shards (3,799 people): 2,621 carry a name item that
+`name-item-cjk-labels.tsv` does not hold, because the refresher fetched labels only for the
+name-item plan's items, not for every name item a person actually bears (`Q666578` and the
+like, made by others); 1,004 are the intended refusal (the statements do not cover the whole name:
+`Lars Silfverstolpe` with only `Lars`); 174 compose. `refresh-live-values.py` now also fetches every
+name item the ledger items' `P735`/`P5056`/`P734` point at (same requests, 50 at a time).
