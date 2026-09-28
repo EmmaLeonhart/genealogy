@@ -49023,6 +49023,6 @@ The rate-limited history read finished: 14,530 items (one record kept per item).
 - **Labels corrected after our batch set them:** a label our batch wrote, later changed or
   removed in the same language by a person (bots skipped): 32, all by Emma by hand (`ko` 11,
   `zh` 8, `ja` 7, `mul` 5, `en` 1).
-`reports/removed-statements.tsv` is now 2,491 rows and `reports/corrected-label-slots.tsv` 98;
+`reports/removed-statements.tsv` is now 2,494 rows and `reports/corrected-label-slots.tsv` 95;
 the composer never re-sends either. Left on the queue item: (3) the model half and the
 `applied-facts.csv` build.
