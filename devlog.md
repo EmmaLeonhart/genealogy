@@ -49399,3 +49399,16 @@ two or more items in our Q141… range** (68 on four, 28 on three, 40 on two),
   batch while an older tab still runs its tail, and the new batch is composed from a ledger that
   does not yet hold the people the older tab has not reached).
 Merging and a fix for the overlap are put to Emma.
+
+## 2026-09-28 10:15 PDT: the 136 sets, checked before anything is merged
+
+Emma: first find out which are still unmerged, and check before fixing; she does not believe they
+are duplicates. So the evidence, `reports/duplicate-creations-evidence.csv`: all 136 sets still
+have two or more live items (none is a redirect). Compared on label, description, birth, death,
+father, mother, spouse and children: 111 sets agree on everything they state; 19 differ only in a
+label or description; 6 carry different spouses, and those are three couples each created several
+times, every copy married to a different copy of the partner. The creation edits of the 34
+non-NN sets: every copy came from a DIFFERENT batch, hours apart (Gunhild Simonsdatter Oftedal
+at 2026-09-27 08:18 and 11:52 UTC), so my earlier explanation (two batches racing) was wrong. Why
+the later batch did not know the earlier item, and why Wikidata did not refuse an identical label
+and description, is not established. Nothing merged.
