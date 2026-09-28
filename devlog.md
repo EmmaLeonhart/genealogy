@@ -49448,3 +49448,12 @@ same day, in CLAUDE.md: the description logic is frozen, even when bad, and an N
 in `mul` and `en`, with no descriptive English label. `P2889` now goes on as a statement wherever
 we cite FamilySearch (GZWDer's second ask). The merges are Emma's, through the Wikidata user
 interface only (the merge gadget); nothing here performs one. Item deleted.
+
+## 2026-09-28 12:50 PDT: edits through CI/CD held
+
+Emma: keep working, but send nothing, and disable sending edits through CI/CD too. Done with the
+repo's own stop order, not by disabling a workflow: `HELD = True` in `scripts/wikidata_lockout.py`
+and `EDITS_HELD: "yes"` in `wikidata-edits.yml` (a test keeps the two in step). The workflow stops
+at its first step and the sender's live path refuses on `HELD` as well. `wikidata-edits.yml` is the
+only workflow that sends. The pipeline and the ring watcher still rebuild files, which send
+nothing, and the browser loop stays off. Lifted only by Emma.

@@ -97,7 +97,9 @@ env:
   # edits need neither, and 261,084 people at ~900/hour made the slow half the pacemaker for
   # the fast one. The agent now does the browser work once a session; CI/CD does the rest
   # continuously. See the long note on HELD in scripts/wikidata_lockout.py.
-  EDITS_HELD: "no"
+  # HELD BY HAND AGAIN, 2026-09-28 (Emma): no edits through CI/CD while the duplicate creations are
+  # sorted out. Mirrors HELD in scripts/wikidata_lockout.py. Lifted only by her.
+  EDITS_HELD: "yes"
   START_DATE: "2026-09-01"
   # A UTC TIMESTAMP since 2026-09-28 (Emma: automatic editing starts 48 hours from now, gated on the
   # date, never disabled by hand). Mirrors scripts/wikidata_lockout.py; the test pins the two.
