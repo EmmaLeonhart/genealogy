@@ -1689,3 +1689,15 @@ def test_the_call_name_asterisk_is_stripped(givn, want):
     """2026-09-28: the German call-name `*` is not part of the name (2,981 people carry one)."""
     got = [t for t, u, _o in namemodel.classify_fields(givn, "Schmidt") if u == "given"]
     assert got == want
+
+
+@pytest.mark.parametrize("token, want", [
+    ("Jansz", True), ("Jacobsz", True), ("Pietersz", True),        # Dutch -sz
+    ("Tomasz", False), ("Łukasz", False), ("Kalisz", False), ("Kárász", False),
+    ("Alexandrovitch", True), ("Yaroslavich", True), ("Hartvich", False),
+    ("Fitz Hugh", True), ("fitz Richard", True),
+])
+def test_the_patronymic_catalogue_additions(token, want):
+    """2026-09-28, `reports/patronymic-forms-catalogue.csv`: forms the model missed, and the
+    lookalikes it must still refuse."""
+    assert namemodel.is_patronymic(token) is want

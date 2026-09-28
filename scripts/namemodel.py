@@ -147,7 +147,13 @@ PATRONYMIC = re.compile(
     r"s(?:dtr|d|dr|dt|dtt|dttr)|"              # the abbreviations, genitive kept
     r"npoika|ntyt[äa]r|"                      # Finnish, genitive n -- see FINNISH_PATRONYMIC
     r"s?zoon|s?[dt]ochter|"                    # Dutch/German -- see DUTCH_PATRONYMIC
-    r"[oe]vich|[oe]vna|[oe]vi[cć]|wicz"        # Slavic -- see the note on -ević below
+    r"[oe]vich|[oe]vna|[oe]vi[cć]|wicz|"       # Slavic -- see the note on -ević below
+    # Added 2026-09-28 from the catalogue (`reports/patronymic-forms-catalogue.csv`): the French
+    # spelling `-ovitch`/`-evitch` (`Alexandrovitch` 43) and `-slavich` (`Yaroslavich` 31); and the
+    # Dutch abbreviation `-sz` (`Jansz` 98, `Jacobsz` 44, `Pietersz` 37), only after a consonant,
+    # never after a vowel: Polish given names (`Tomasz`, `Łukasz`) and Hungarian, Polish and Yiddish
+    # surnames (`Kárász`, `Kalisz`, `Klepfisz`) end the same way. `Cornelisz`, `Claesz` are missed.
+    r"[oe]vitch|slavich|(?<=[bdfgkmnprtvw])sz"
     r")\.?$", re.I)
 
 #: **A standalone token that makes the NEXT token a patronymic.** These are the named forms
@@ -159,7 +165,8 @@ PATRONYMIC = re.compile(
 #: In this corpus they are ATTACHED and inherited — `MacKinnon`, `McIntosh`, `Fitzalan`,
 #: `O'Neill`, 9,670 occurrences and not one of them a separate token. They are surnames by the
 #: time they reach us; treating them as live patronymics would put a `P5056` on people whose
-#: great-grandfather is the one it names. A separate `Fitz` token would qualify and none occurs.
+#: great-grandfather is the one it names. A SEPARATE `Fitz` token does occur (159, `Fitz Hugh`,
+#: `fitz Richard`, catalogue of 2026-09-28) and is a particle like `ap`; the attached `Fitzalan` is not.
 #: **The DAUGHTER forms alone**, which is a narrower question than `PATRONYMIC` and answers a
 #: different one: *can this token possibly be a married name?* It cannot. A woman takes her
 #: husband's name, and no husband is called `-dotter`.
@@ -630,6 +637,7 @@ PATRONYMIC_PARTICLE = frozenset({
     "ben", "bin", "ibn", "bint", "bar", "bat",  # Semitic
     "ua", "uí", "ní", "nic",                   # Gaelic
     "mac", "ó",                                # Gaelic, added 2026-09-15
+    "fitz",                                    # Norman, added 2026-09-28: 159 separate `Fitz Hugh`
 })
 #: **`mac` and `ó` were missing, and `mac` is the commonest Gaelic particle there is.** Ruled
 #: 2026-09-14: *"I still think we do not have support for other languages like Semitic languages

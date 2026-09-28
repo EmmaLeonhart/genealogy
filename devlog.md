@@ -49465,3 +49465,17 @@ to day (`Anna*` 62, `Carl*` 54, `Elisabeth*` 53, `Friedrich*` 53 …); kept on t
 no given-name item. `classify_fields` strips a trailing `*` from `GIVN` words. The call-name fact
 has nowhere to go: `P7452` *usual forename* is no longer emitted at all (ruled 2026-09-14). Test
 added. Item deleted. (Nothing sent: edits are held.)
+
+## 2026-09-28 13:40 PDT: the catalogue of patronymic forms (item closed)
+
+`reports/patronymic-forms-catalogue.csv`: every patronymic-shaped token in the corpus by tradition,
+with how often the model reads it as a patronymic. Already caught: Norse 278,027 (100%), Icelandic
+123,695 (100%), Finnish 23,222 (99.9%), Slavic `-ovna` 99%, and the prefix forms `ap`, `ab`,
+`ferch`/`verch`, `ben`, `bin`, `ibn`, `bint`, `bat`, `ó`, `ní`, `mac` at or near 100%. Latin
+genitives read 0% by form, correctly: they need the father (`latin_patronymic`). `-ez` and `-ian`
+are surnames and given names here, as the existing note says. Grown, with the lookalikes checked
+over the whole corpus: a separate `Fitz` (159, `Fitz Hugh`) is a particle; `-ovitch`/`-evitch`
+and `-slavich` (`Alexandrovitch` 43, `Yaroslavich` 31); the Dutch `-sz` after a consonant (`Jansz`
+98, `Jacobsz` 44, `Pietersz` 37), never after a vowel, because Polish given names (`Tomasz`) and
+Hungarian, Polish and Yiddish surnames (`Kárász`, `Kalisz`, `Klepfisz`) end the same way; the
+vowel-stem Dutch forms (`Cornelisz`, `Claesz`) stay missed rather than risk those. Tests added.
