@@ -465,6 +465,15 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     DELETED. It held 12 real people — `Margareta` against eleven unrelated items, `NN` against
     ten — on a name match, for a refusal that could not happen. A refusal costs one edit and the
     sender already carries on past it; a hold costs that person every run forever.
+  - **⛔ THE DESCRIPTION LOGIC IS FROZEN, EVEN WHEN IT IS BAD. Ruled 2026-09-28** (Emma), from the
+    136 duplicate creations: Wikidata refuses a second item only on the same label AND description,
+    and on 2026-09-27 the same people were created again because the description wording changed
+    between builds (`Gjesdal, Rogaland, Norway` to `Gjesdal Municipality`). A description is the
+    deduplication key, so it must come out identical from every build: never change how a creation's
+    description is generated, however much it could be improved. Improving it IS the defect.
+  - **⛔ NO DESCRIPTIVE LABELS ON PEOPLE IN ENGLISH. Ruled 2026-09-28:** an NN person is `NN` in `mul`
+    and `NN` in `en`, never `wife of …` as a label. A descriptive label is the same liability as an
+    improvable description.
   → [wikidata](docs/rules/wikidata-editing.md)
 - **Wikidata editing starts 2026-09-01; the schedule sends from 2026-09-30 08:00 UTC.** Two dates, each
   written twice and pinned by a test. A start date is not a blocker. **⛔ The schedule is paused by
