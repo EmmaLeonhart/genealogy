@@ -49327,3 +49327,16 @@ Geni's own mix-ups of this kind.
   non-redaction reason, and the order pass records the people the 180-person cap cuts in
   `garborg-carry-forward.tsv` (`record_cap_cuts`), so a composed person missing from the batch is
   always accounted for.
+
+## 2026-09-28 08:00 PDT: patronymic mix-ups, the given-name field (item closed)
+
+`reports/patronymic-mixups-given.csv`: every patronymic in a `GIVN` after its first token, checked
+against the father and the spouses. Corpus / ours: 182,194 / 5,177 attested by the father as the
+person's own; 59,769 / 747 with no father to check; 40,714 / 425 with a father who does not attest
+it (mostly spelling variants the stem test misses, `Lagesdatter` of Lave); 442 / 29 a spouse's
+patronymic, which on reading are either the relational form `NN ektefelle Kleng Helgeson` (a
+sentence about the husband, handled since 2026-09-07 by `names_a_relative`) or the same spelling
+variants. No code change there. With the `_MARNM` fix above (a patronymic in the married-name
+field is a patronymic: any daughter form, a son form the father attests), the item is done: the
+readings that turned one person's patronymic into another's name are in the married-name field,
+and they are fixed. Item deleted.
