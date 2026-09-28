@@ -49099,3 +49099,31 @@ Emma: the browser QuickStatements loop is supposed to start automatically every 
 the pause above covered only the rest of this session (her "no more runs today"), by deleting
 this session's cron. The session-start rule in CLAUDE.md (§ AT SESSION START: THE BROWSER
 QUICKSTATEMENTS LOOP) is unchanged, and `ring-watch.yml` keeps chaining the generations in CI.
+
+## 2026-09-28 02:30 PDT: what limits the edits, measured
+
+The creations-and-edits item asked for the limits to be analysed from the run logs and the
+QuickStatements results before proposing anything. Two tables, committed first:
+`reports/sender-run-limits.csv` (the automatic sender's last 30 runs) and
+`reports/browser-run-rates.csv` (tonight's browser QuickStatements runs, from the account's
+16,925 edits since 2026-09-27 23:30 UTC, read in 500s with the server's back-off honoured).
+
+- **The browser, from Emma's connection, is not limited in any way that shows.** Five full runs:
+  38 to 49 edits a minute, 288 to 365 creations an hour (a median of 7 to 10 seconds between
+  creations), no gap between creations over 10 minutes, no refusal. About 2,020 people and 16,800
+  edits in seven and a half hours. The "one creation a minute" theory does not hold here.
+- **The automatic sender, on GitHub's runners, is.** In the last 30 runs: `maxlag` waits until the
+  job was cancelled (2026-09-20/21), `permissiondenied` (the account blocked on the runner's IP,
+  the Azure range: 09-20, 09-21, 09-24, 09-27), `no-automatic-entity-id` on creations (38 and 42
+  refusals, 09-22 and 09-23), and the pre-send test gate (09-26, 09-27). Its receipt grew by about
+  190 edits in four days.
+- Emma's screenshots of earlier QuickStatements runs show the other failure: creations that got no
+  QID ("Last created item"), so every line for that person had nothing to attach to. Tonight's runs
+  show none of it.
+
+**Proposal.** Creations belong to the browser runs, where they succeed; the automatic sender
+keeps the edits that create nothing (links, labels, siblings), which are the ones the item says to
+spend the waiting on. And the per-run caps set for the old QuickStatements (`SIBLING_CAP` 60,
+`LABEL_EDIT_CAP` 90 people, `NAME_ADD_CAP` 50, `P2600_LEAD_CAP` 60, `MANUAL_P2600_PER_RUN` 30)
+are far under what a browser run absorbs (~2,500 to 3,000 edits an hour), so they can be raised.
+Put to Emma as a question.
