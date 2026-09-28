@@ -49457,3 +49457,11 @@ and `EDITS_HELD: "yes"` in `wikidata-edits.yml` (a test keeps the two in step). 
 at its first step and the sender's live path refuses on `HELD` as well. `wikidata-edits.yml` is the
 only workflow that sends. The pipeline and the ring watcher still rebuild files, which send
 nothing, and the browser loop stays off. Lifted only by Emma.
+
+## 2026-09-28 13:10 PDT: the German call-name asterisk (item closed)
+
+2,981 people in the corpus carry a given name ending in `*`, the German mark for the name used day
+to day (`Anna*` 62, `Carl*` 54, `Elisabeth*` 53, `Friedrich*` 53 …); kept on the token, it matched
+no given-name item. `classify_fields` strips a trailing `*` from `GIVN` words. The call-name fact
+has nowhere to go: `P7452` *usual forename* is no longer emitted at all (ruled 2026-09-14). Test
+added. Item deleted. (Nothing sent: edits are held.)

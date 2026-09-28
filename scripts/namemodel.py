@@ -2981,6 +2981,12 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     nicknames = [m.group("token") or m.group("apos") or m.group("paren")
                  for m in QUOTED.finditer(raw_givn)]
     plain = QUOTED.sub(" ", raw_givn)
+    # ⛔ **THE GERMAN CALL-NAME ASTERISK IS NOT PART OF THE NAME. 2026-09-28** (queue item):
+    # `August Nikolai* Christfried` marks the name used day to day, and the kept `*` meant
+    # `Nikolai*` could match no given-name item; 2,981 people in the corpus carry one. It is
+    # stripped. The call-name fact has nowhere to go: `P7452` *usual forename* is no longer
+    # emitted at all (ruled 2026-09-14).
+    plain = re.sub(r"(?<=\w)\*(?=\s|$)", "", plain)
 
     # **A stillbirth description yields no given names at all.** `DESCRIPTION_MARKERS`
     # carries the reasoning; `Bielke` still reaches `SURN` below, so the person keeps a

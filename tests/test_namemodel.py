@@ -1678,3 +1678,14 @@ def test_a_placeholder_of_several_words_is_no_given_name(givn):
     """2026-09-28, `Q141570927` "Not Known Almondsdatter": `Not` and `Known` each passed as a
     given name, and the description read "Not, wife of …"."""
     assert "given" not in {u for _t, u, _o in namemodel.classify_fields(givn, "Almondsdatter")}
+
+
+@pytest.mark.parametrize("givn, want", [
+    ("Nikolai*", ["Nikolai"]),
+    ("Elsa* Hildegard", ["Elsa", "Hildegard"]),
+    ("August Nikolai* Christfried", ["August", "Nikolai", "Christfried"]),
+])
+def test_the_call_name_asterisk_is_stripped(givn, want):
+    """2026-09-28: the German call-name `*` is not part of the name (2,981 people carry one)."""
+    got = [t for t, u, _o in namemodel.classify_fields(givn, "Schmidt") if u == "given"]
+    assert got == want
