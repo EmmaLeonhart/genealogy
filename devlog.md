@@ -49085,3 +49085,10 @@ the session the point of failure. `AUTOMATION_START_DATE` (in `wikidata_lockout.
 06:00 PDT run on 2026-09-30. The workflow compares `date -u +%Y-%m-%dT%H:%M` as a string, and
 `automation_allowed` compares datetimes (a bare date means the end of that day, so a day that
 starts locked never reads as allowed). Test added for the minute itself.
+
+## 2026-09-28 01:30 PDT: queue shape finding, already resolved
+
+ontology-harness's shape check flagged the arguing item for status written in place ("DONE" on
+parts (1) and (2)). That item was finished and deleted in d91acbe4de, with its record here in
+the devlog, so the finding has nothing left to fix; no other `## Now` item carries a status word.
+The fix item is deleted.
