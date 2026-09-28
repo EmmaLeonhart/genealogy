@@ -339,18 +339,27 @@ def name_item_cjk_labels(extra=()):
         qids = sorted(({(r.get("existing_qid") or "").strip() for r in csv.DictReader(fh)}
                        | set(extra)) - {""})
     rows, i, waits = [], 0, 0
-    while i < len(qids) and waits < 10:
+    while i < len(qids) and waits < 60:
         url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({
             "action": "wbgetentities", "ids": "|".join(qids[i:i + 50]), "props": "labels",
             "languages": "mul|en|ja|zh|ko", "format": "json", "maxlag": 5})
         req = urllib.request.Request(url, headers={"User-Agent": _bot_agent()})
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
-                got = json.load(r).get("entities", {})
+                body = json.load(r)
         except urllib.error.HTTPError as e:
             waits += 1
             time.sleep(int(e.headers.get("Retry-After") or 60))
             continue
+        # ⛔ **AN ERROR ANSWER IS A RETRY, NOT AN EMPTY CHUNK. 2026-09-28:** with `maxlag` set, a
+        # lagging Wikidata answers 200 with `{"error": {"code": "maxlag"}}` and no entities; that
+        # was read as "no labels" and the chunk was skipped, so the 2026-09-28 full run kept 2,167
+        # labels of 10,256 items. The same chunk is asked again after the wait it names.
+        if "error" in body:
+            waits += 1
+            time.sleep(int((body["error"].get("lag") or 5)) + 5)
+            continue
+        got = body.get("entities", {})
         for qid, ent in sorted(got.items()):
             for lang in ("mul", "en", "ja", "zh", "ko"):
                 v = (ent.get("labels", {}).get(lang) or {}).get("value")

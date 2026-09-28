@@ -49495,3 +49495,14 @@ make the batches: keep both, 06:00 and 18:00 Pacific. Which run does what: the t
 are the full pipeline (ledger refresh, compose, decks, universe-growth backfills, FamilySearch
 batch, site, inventories, the issue); the `batch_only` runs, started by `ring-watch.yml`, rebuild
 the day batch only. No schedule change. Item deleted.
+
+## 2026-09-28 16:10 PDT: the name-item label refresh lost most of its answers (fixed)
+
+The 12:55 PDT full run (36475512336) asked Wikidata for the labels of 10,256 name items (the plan's
+plus every name item our people bear, since this morning) and kept 2,167: the requests carry
+`maxlag=5`, a lagging Wikidata answers with an `error` and no entities, and that was read as "no
+labels" and skipped. More requests meant more lag hits. So composable labels fell to en 10, ja 3,
+zh 3. Now an error answer retries the same chunk after the lag it names, and the retry budget is 60
+waits (it was 10; when it runs out the last good file is kept). The damaged file is replaced by the
+last good one (24,143 labels, from rebuild e2795bc3e), because the batch builder also reads it for
+the name items' CJK readings. Nothing is sent: edits are held.
