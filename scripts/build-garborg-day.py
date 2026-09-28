@@ -6996,8 +6996,15 @@ def main():
             sys.exit("the live-values refresh failed, so every duplicate check would silently "
                      "pass and the batch would re-emit statements already on Wikidata:\n"
                      + (r.stderr or r.stdout)[-800:])
-        print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
-              "live values refreshed")
+        # ⛔ **AND ITS REDIRECT WARNING, NOT ONLY ITS LAST LINE.** The refresh names every requested
+        # item that did not come back (merged away, so a redirect, or deleted); keeping only the
+        # last line dropped that list from every run's log, which is how an item forced onto a
+        # redirect goes unseen (queue item on scripts that force redirects, 2026-09-28).
+        _lines = (r.stdout or "").strip().splitlines()
+        _warn = next((k for k, l in enumerate(_lines) if "did not come back" in l), None)
+        if _warn is not None:
+            print(chr(10).join(_lines[_warn:_warn + 40]))
+        print(_lines[-1] if _lines else "live values refreshed")
 
         # **And the name items already created, which is the SAME BUG a third time.**
         # Reported 2026-09-05: the most recently run QuickStatements tried to make duplicate
