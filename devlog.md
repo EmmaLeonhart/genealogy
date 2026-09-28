@@ -49245,7 +49245,7 @@ item instead of the redirect. Test added. Item deleted.
 
 **What is mis-read as a nickname: the `NICK` field.** The code has long treated it as Geni's
 "also known as" rather than a byname, and the census confirms it: over 153,360 `NICK` fields
-(`reports/nickname-field-kinds.csv`), 29% hold a full other name (`Sally Miller`, `Olof Persson`),
+(`reports/nickname-field-kinds.csv` keeps the 2,253 on our own people; the corpus counts are these), 29% hold a full other name (`Sally Miller`, `Olof Persson`),
 25% several words that are not a name (titles and epithets, `King of the Isle of Man and of
 Dublin`, other-script names), 3% a lone patronymic (`Eiriksson`), 1.7% a surname spelling, 1.2%
 the given name again, and 40% a single other word (true nicknames, but also maiden surnames,
