@@ -1,8 +1,8 @@
 195 people across 1 Garborg batches, 16543 already holding a QID
-2961 token(s) are already pointed at by their own bearers
+2962 token(s) are already pointed at by their own bearers
 6395 tokens already have an item and are linked, not created
-3693 need creating, 0 are ambiguous and are not
-128 token(s) held: never a first given name in the corpus but attested as a family name -- Laurentii (5), Byre (3), lll (3), Grimelund (3), Georgii (2), Lauritzen (2)
+3694 need creating, 0 are ambiguous and are not
+127 token(s) held: never a first given name in the corpus but attested as a family name -- Laurentii (5), Byre (3), lll (3), Grimelund (3), Georgii (2), Lauritzen (2)
 542 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Adalasia             given        Q62102498
    Adalhaid             given        Q354633
@@ -506,7 +506,7 @@
    Meijendorff von Yxkull family       already Q61693229
    von Malortie         family       already Q115913524
    Ragnvaldsson         patronymic   already Q113006412
-3747 token(s) the ring is about to need are ranked first
+3748 token(s) the ring is about to need are ranked first
 
 checking 2,651 existing name items for a missing description
    1 of them have no English description; 2,650 already do
@@ -517,7 +517,7 @@ checking 491 existing patronymic items for P144 based on and P460
    0 P144 statement(s) to remove
    40 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3681 carried to a later run), 43 statements linking an EXISTING person to one, in the same run
+wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3682 carried to a later run), 43 statements linking an EXISTING person to one, in the same run
 8 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
    1 created WITHOUT a P144: Kjeranson
   create  Laurentii            patronymic   11
@@ -3351,7 +3351,7 @@ wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3681 carri
   create  Sverige              family       1
   create  Sverkerska Kungaätten family       1
   create  Sverkersson          patronymic   1
-  create  Sviatoslavich        given        1
+  create  Sviatoslavich        patronymic   1
   create  Svinakulla           family       1
   create  Svän                 given        1
   create  Svåva                given        1
@@ -3880,6 +3880,7 @@ wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3681 carri
   create  drengebarn           given        1
   create  ektefelle            given        1
   create  ferch Cadifor        patronymic   1
+  create  fitz Conan           patronymic   1
   create  fra Giske            family       1
   create  från                 family       1
   create  hjorthorn            family       1
