@@ -49148,3 +49148,19 @@ clean-up), and `build-familysearch-day.py` reads `exports/familysearch/`; `conti
 hid it. So the committed `wikidata-familysearch-day.txt` is the 2026-09-24 file, and the new
 FamilySearch page and the ten-person section at the head of each batch were built from it.
 `/exports/familysearch/` (3 files, 57 MB) is now re-included after `!/exports`.
+
+## 2026-09-28 03:15 PDT: how far the subject-named-as edits reach, measured (item closed)
+
+`build-subject-named-as-backfill.py` picks from the ledger (the universe) plus the items those
+point at through `P22`/`P25`/`P26`/`P40`/`P3373` (the one-step ring), and `check-batch-locality.py
+--fix` runs after it and strips any line beyond. So nothing lands further than one step, by
+construction. Every item the backfill has edited, from the 15 commits of its two output files
+(`reports/subject-named-as-reach.csv`): 302 items, 286 in the ledger today and 16 still one step
+out; an adjacent item joins the ledger once it has been edited, which is the growth the ruling
+of 2026-09-14 describes, so the 286 includes items that were adjacent when edited. That is the
+intended reach, and it goes beyond it nowhere.
+
+One thing found: the backfill is a full-run step, skipped by the lean `batch_only` rebuilds that
+the browser loop runs on, so tonight's generations did no universe growth through it. The pace
+Emma set (40 into the batch a person runs, 20 into the automatic half) is per run; running it in
+lean runs too would multiply it by the number of generations a day. Left as it is.
