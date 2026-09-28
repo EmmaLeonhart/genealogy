@@ -121,6 +121,42 @@ def render_candidates():
     print("candidates.html -> %s kinds" % len(body))
 
 
+#: The patronymic audit (`reports/patronymic-audit.csv`, 2026-09-28): the live `P5056` that fail
+#: Emma's surname tests, for her to review before anything live is changed (AskUserQuestion).
+PATRONYMIC_AUDIT = ROOT / "reports" / "patronymic-audit.csv"
+REVIEW_VERDICTS = ("father carries the same token (a surname)", "model reads it as a surname",
+                   "father known, no match (kept as patronymic)")
+
+
+def render_patronymic_review():
+    """`patronymic-review.html`: the live patronymic statements our own tests now reject."""
+    if not PATRONYMIC_AUDIT.exists():
+        print("no %s; patronymic review not built" % PATRONYMIC_AUDIT.name)
+        return
+    rows = [r for r in csv.DictReader(io.open(PATRONYMIC_AUDIT, encoding="utf-8"))
+            if r["source"] == "live" and r["verdict"] in REVIEW_VERDICTS]
+    wd = "https://www.wikidata.org/wiki/"
+    body = "".join(
+        "<tr><td><a href='%s%s'>%s</a><br><small>%s</small></td><td><a href='%s%s'>%s</a></td>"
+        "<td>%s</td><td>%s</td></tr>"
+        % (wd, esc(r["qid"]), esc(r["person"] or r["qid"]), esc(r["qid"]), wd,
+           esc(r["patronymic_qid"]), esc(r["token"] or r["patronymic_qid"]), esc(r["father"]),
+           esc(r["verdict"])) for r in rows)
+    page = ("<!doctype html><meta charset=utf-8><meta name=viewport "
+            "content='width=device-width,initial-scale=1'><title>Patronymic review</title>"
+            "<style>body{font:15px system-ui;margin:16px;max-width:1000px}table{border-collapse:"
+            "collapse;width:100%%}td,th{border-bottom:1px solid #ddd;padding:6px 8px;text-align:left;"
+            "vertical-align:top}small{color:#666}</style><h1>Patronymic review</h1>"
+            "<p>%d live <code>P5056</code> patronymic statements on our items that fail the surname "
+            "tests (the father carries the same token; the model reads it as a surname; the root "
+            "does not match the father). Nothing changes on Wikidata until they are reviewed. "
+            "Built %s from <code>reports/patronymic-audit.csv</code>.</p><div style='overflow-x:auto'>"
+            "<table><tr><th>person</th><th>patronymic</th><th>father</th><th>why</th></tr>%s</table>"
+            "</div>" % (len(rows), datetime.date.today().isoformat(), body))
+    io.open(OUT.parent / "patronymic-review.html", "w", encoding="utf-8", newline="").write(page)
+    print("patronymic-review.html -> %d rows" % len(rows))
+
+
 def render(source, name, title, note, tpl):
     """Write one batch page. Returns (creations, statement lines, bytes) or None if absent."""
     if not source.exists():
@@ -282,6 +318,7 @@ def main() -> int:
               % (name, got[0], format(got[1], ","), format(got[2], ",")))
 
     render_candidates()
+    render_patronymic_review()
 
     for extra in ALONGSIDE:
         if not extra.exists():

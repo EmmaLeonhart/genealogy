@@ -49186,3 +49186,17 @@ So about 78% are attested by the father. The 91 plus 235 are live `P5056` where 
 says family name, and the 1,047 have no father to attest them, which the 2026-09-25 ruling says a
 patronymic needs. Nothing is changed from here yet: correcting live statements is a decision, put
 to Emma.
+
+## 2026-09-28 04:00 PDT: the 331 go to a review page, not to Wikidata
+
+Emma's rulings (queue, the patronymic catalogue item) make three surname slam-dunks: a woman with
+a male `-son`, a patronymic the father also carries, a root that does not match the father. By
+them 331 live `P5056` fail (91 + 235 + 5). Asked what to do with the live ones: list them for
+review first (AskUserQuestion). `patronymic-review.html` on the site, built by
+`build-pages-site.py` from `reports/patronymic-audit.csv`, lists them with the person, the token,
+the father and why. Nothing live changes. A caution for the review: `patronymic_or_surname` only
+knows suffix forms, so prefix patronymics (`ferch Lewys`, and likely `ap`/`ibn`) sit in the
+"model reads it as a surname" group wrongly; that is the catalogue item's work.
+
+Also: Chrome killed at Emma's word (04:00 PDT); the QuickStatements batch that was running in it
+(1790576777185) stopped with it.
