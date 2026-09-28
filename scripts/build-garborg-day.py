@@ -1738,6 +1738,73 @@ def _description_overwrites():
     return out
 
 
+#: The report of labels composed from the name items, beside what each item holds live.
+COMPOSED_LABELS_OUT = ROOT / "reports" / "composed-labels.tsv"
+COMPOSED_LANGS = ("en", "ja", "zh", "ko")
+
+
+def _name_parts(entity):
+    """The QIDs of a person's name items in name order: given names by `P1545` (then as listed),
+    then patronymics, then family names. Deprecated statements are skipped."""
+    def ordered(prop):
+        out = []
+        for i, st in enumerate((entity.get("claims") or {}).get(prop) or []):
+            if st.get("rank") == "deprecated":
+                continue
+            v = ((st.get("mainsnak") or {}).get("datavalue") or {}).get("value") or {}
+            if not isinstance(v, dict) or not v.get("id"):
+                continue
+            ords = [((q.get("datavalue") or {}).get("value") or "")
+                    for q in (st.get("qualifiers") or {}).get("P1545") or []]
+            try:
+                key = int(ords[0]) if ords else 10_000
+            except ValueError:
+                key = 10_000
+            out.append((key, i, v["id"]))
+        return [q for _k, _i, q in sorted(out)]
+    return ordered("P735") + ordered("P5056") + ordered("P734")
+
+
+def write_composed_labels():
+    """`reports/composed-labels.tsv`: for every person in the live item shards, the label their
+    name items compose to in each language (`namemodel.compose_label`, strictly), beside the live
+    label. REPORT ONLY (2026-09-27): nothing here reaches the batch; each language is switched over
+    on its own once the report shows coverage allows (queue, label composition)."""
+    from namemodel import compose_label
+    labels_path = ROOT / "reports" / "name-item-cjk-labels.tsv"
+    if not labels_path.exists():
+        print("composed labels: no reports/name-item-cjk-labels.tsv; report not written")
+        return
+    names = collections.defaultdict(dict)
+    with open(labels_path, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="	"):
+            names[r["qid"]][r["lang"]] = r["label"]
+    rows, done = [], collections.Counter()
+    people = 0
+    for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json")):
+        for qid, entity in sorted(json.loads(shard.read_text(encoding="utf-8")).items()):
+            entity = entity or {}
+            parts = _name_parts(entity)
+            if not parts:
+                continue
+            live = {k: (v or {}).get("value", "") for k, v in (entity.get("labels") or {}).items()}
+            whole = live.get("mul") or live.get("en") or ""
+            people += 1
+            for lang in COMPOSED_LANGS:
+                got = compose_label(parts, lang, lambda q, l: names.get(q, {}).get(l), whole)
+                if got:
+                    done[lang] += 1
+                    rows.append({"qid": qid, "lang": lang, "composed": got,
+                                 "live": live.get(lang, "")})
+    with open(COMPOSED_LABELS_OUT, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=["qid", "lang", "composed", "live"], delimiter="	")
+        w.writeheader()
+        w.writerows(rows)
+    print(f"composed labels: {people:,} people with name statements; composable " +
+          ", ".join(f"{l} {done[l]:,}" for l in COMPOSED_LANGS) +
+          f" -> {COMPOSED_LABELS_OUT.relative_to(ROOT)}")
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -7019,6 +7086,7 @@ def main():
         }), encoding="utf-8")
         print(f"wrote {_universe_out.relative_to(ROOT)} "
               f"({len(our_wikidata_subgraph):,} + {len(one_step_qids):,} QIDs)")
+        write_composed_labels()
         print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through the "
               f"account's own "
               f"items: {len(our_wikidata_subgraph)} items; {len(ring_seeds)} of {len(our_items)} ledger people seed")

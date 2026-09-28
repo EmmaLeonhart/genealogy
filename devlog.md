@@ -48918,3 +48918,14 @@ description"), so this is also what would have stopped the next automatic send. 
 failure Emma queued was the occupation rung's first day (`Kjøpmann i Bergen`, `Bonde`), which the
 test has accepted since; the 18:02 UTC run was held and skipped every step. Both queue items stay
 until CI is green and a send goes through.
+
+## 2026-09-27 21:40 PDT: the label composer runs in the pipeline, as a report
+
+The top queue item still waits on the history read (11,500 of 13,501). Label composition:
+`build-garborg-day.py --compose` now calls `write_composed_labels()`, which reads every person in
+the live item shards, takes their name items in name order (`P735` by `P1545`, then `P5056`,
+then `P734`), composes `en`/`ja`/`zh`/`ko` with `namemodel.compose_label` and writes
+`reports/composed-labels.tsv` beside the live labels. Report only: no language is switched.
+Tried locally on shard 03 (856 people with name statements): nothing composes yet, because the
+name-item label file on main has no `mul`/`en` rows until a run with today's refresher change;
+the whole-name check then refuses everything, which is the strict behaviour.
