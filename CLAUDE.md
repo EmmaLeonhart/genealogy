@@ -466,8 +466,11 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     ten — on a name match, for a refusal that could not happen. A refusal costs one edit and the
     sender already carries on past it; a hold costs that person every run forever.
   → [wikidata](docs/rules/wikidata-editing.md)
-- **Wikidata editing starts 2026-09-01; the schedule sends from 2026-09-15.** Two dates, each
-  written twice and pinned by a test. A start date is not a blocker.
+- **Wikidata editing starts 2026-09-01; the schedule sends from 2026-09-30 08:00 UTC.** Two dates, each
+  written twice and pinned by a test. A start date is not a blocker. **⛔ The schedule is paused by
+  the DATE, never by disabling it. Ruled 2026-09-28:** *"automatic editing is great. And it starts 48
+  hours from now ... it has to be based off of date related gating"*; a disable-and-re-enable makes a
+  session the point of failure. `AUTOMATION_START_DATE` is a UTC timestamp for that reason.
 - **THE STUPIDER AND MORE SPECIFIC THE INSTRUCTION, THE MORE THOUGHT WENT INTO IT.** An odd
   instruction is the output of thinking already done. Implement it exactly; do not ship the
   version that makes more sense to you.

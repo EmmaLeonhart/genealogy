@@ -49072,3 +49072,16 @@ and a gone fact is not re-sent; a hand-corrected name is the name. Part (4), nam
 re-created after a merge or deletion, was measured on 2026-09-27 (none); a deleted item leaves no
 trace in the account's contributions, so specific surnames Emma has in mind would be checked
 item by item. Item deleted from the queue.
+
+## 2026-09-28 01:10 PDT: the automatic sender resumes 48 hours out, by the date
+
+Emma asked for no more runs today. The browser loop's session cron was removed and the queued
+lean rebuild cancelled; the batch already running in its tab was left alone. Asked whether to
+disable the automatic sender for the day, Emma refused that mechanism outright: automatic
+editing starts 48 hours from now and it must be DATE gating, since a disable and a re-enable make
+the session the point of failure. `AUTOMATION_START_DATE` (in `wikidata_lockout.py` and
+`wikidata-edits.yml`, pinned by `test_wikidata_start_date.py`) is now the UTC timestamp
+`2026-09-30T08:00` (01:00 PDT): scheduled runs before it are dry runs, the first live one is the
+06:00 PDT run on 2026-09-30. The workflow compares `date -u +%Y-%m-%dT%H:%M` as a string, and
+`automation_allowed` compares datetimes (a bare date means the end of that day, so a day that
+starts locked never reads as allowed). Test added for the minute itself.

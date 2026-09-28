@@ -11,7 +11,7 @@ name: wikidata-edits
 #
 # TWO DATES, and they gate different things.
 #   START_DATE            2026-09-01  may this repo edit Wikidata at all
-#   AUTOMATION_START_DATE 2026-09-15  may the SCHEDULE send them by itself
+#   AUTOMATION_START_DATE 2026-09-30T08:00 (UTC)  may the SCHEDULE send them by itself
 # On the 15th all of this starts running automatically, and what starts is the
 # daily Garborg batch, through the bot-password API.
 # Before the 15th the schedule still runs -- as a DRY RUN, so the wiring is
@@ -99,7 +99,9 @@ env:
   # continuously. See the long note on HELD in scripts/wikidata_lockout.py.
   EDITS_HELD: "no"
   START_DATE: "2026-09-01"
-  AUTOMATION_START_DATE: "2026-09-15"
+  # A UTC TIMESTAMP since 2026-09-28 (Emma: automatic editing starts 48 hours from now, gated on the
+  # date, never disabled by hand). Mirrors scripts/wikidata_lockout.py; the test pins the two.
+  AUTOMATION_START_DATE: "2026-09-30T08:00"
   # The daily batch: what runs by itself, chosen 2026-09-05.
   # ⛔ The AUTO half, not the whole batch. scripts/split-daily-batch.py writes the two
   # halves and they are disjoint by construction; the Pages site serves the other one.
@@ -258,9 +260,10 @@ jobs:
             # the increase and the hand-run keeps the volume it had. `limit` stays as the
             # hard ceiling on top of it.
             # no fraction: the batch file IS the share. One place computes the split.
-            if [[ ! "$today" < "$AUTOMATION_START_DATE" ]]; then
+            now=$(date -u +%Y-%m-%dT%H:%M)
+            if [[ ! "$now" < "$AUTOMATION_START_DATE" ]]; then
               echo "mode=--live" >> "$GITHUB_OUTPUT"
-              echo "::notice title=Automation live::$today is on or after $AUTOMATION_START_DATE"
+              echo "::notice title=Automation live::$now UTC is on or after $AUTOMATION_START_DATE"
             else
               echo "mode=--dry-run" >> "$GITHUB_OUTPUT"
               echo "::notice title=Automation not yet::dry run until $AUTOMATION_START_DATE"

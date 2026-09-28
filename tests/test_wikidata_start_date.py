@@ -126,7 +126,7 @@ def test_nothing_in_the_gate_reaches_the_network():
 
 def workflow_automation_start_date():
     text = WORKFLOW.read_text(encoding="utf-8")
-    m = re.search(r'^\s*AUTOMATION_START_DATE:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"\s*$',
+    m = re.search(r'^\s*AUTOMATION_START_DATE:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2}(?:T[0-9]{2}:[0-9]{2})?)"\s*$',
                   text, re.M)
     assert m, "no AUTOMATION_START_DATE in wikidata-edits.yml"
     return m.group(1)
@@ -138,19 +138,19 @@ def test_the_two_copies_of_the_automation_date_agree():
 
 
 def test_the_automation_date_is_a_real_date():
-    datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
+    datetime.datetime.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
 
 
 def test_the_automation_starts_no_earlier_than_editing_does():
     """A schedule that went live before editing was allowed would be a gate that
     opens a door behind a locked one. Ordering them is cheaper than reasoning
     about which check fires first."""
-    assert (datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
+    assert (datetime.datetime.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE).date()
             >= datetime.date.fromisoformat(wikidata_lockout.START_DATE))
 
 
 def test_the_automation_is_locked_the_day_before_and_open_on_the_day(dates_only):
-    start = datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
+    start = datetime.datetime.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE).date()
     before, why = wikidata_lockout.automation_allowed(
         start - datetime.timedelta(days=1))
     assert not before, why
@@ -350,3 +350,14 @@ def test_a_name_item_whose_label_is_not_a_name_is_never_created():
     kept = run._refuse_unnameable_name_items([bad, good], REPO / "x.txt")
     assert bad not in kept
     assert good in kept
+
+
+def test_the_automation_opens_at_its_minute_and_not_before(dates_only):
+    """Ruled 2026-09-28: automatic editing starts 48 hours out, gated on the timestamp, so the
+    schedule's 01:00 UTC run that day is still a dry run and the 13:00 UTC one is live."""
+    start = datetime.datetime.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE).replace(
+        tzinfo=datetime.timezone.utc)
+    early, why = wikidata_lockout.automation_allowed(start - datetime.timedelta(minutes=1))
+    assert not early, why
+    on, why = wikidata_lockout.automation_allowed(start)
+    assert on, why

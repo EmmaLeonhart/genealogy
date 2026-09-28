@@ -102,7 +102,13 @@ START_DATE = "2026-09-01"
 #: for the same reason as ``START_DATE``: the workflow gates before it checks the
 #: repo out and cannot import this module. `tests/test_wikidata_start_date.py` fails
 #: if the two disagree.
-AUTOMATION_START_DATE = "2026-09-15"
+#:
+#: ⛔ **A UTC TIMESTAMP SINCE 2026-09-28, AND IT IS 48 HOURS OUT. Ruled 2026-09-28 (Emma):**
+#: *"automatic editing is great. And it starts 48 hours from now ... it has to be based off of
+#: date related gating"* -- never a disable and a re-enable, which would make a session the point
+#: of failure. So the schedule is a dry run until 2026-09-30 08:00 UTC (01:00 PDT) and live after
+#: it, with nobody to switch it back on. A bare date (`YYYY-MM-DD`) still reads as midnight UTC.
+AUTOMATION_START_DATE = "2026-09-30T08:00"
 
 #: Escape hatch for a dry run against a date that has not arrived. Never set in
 #: CI: the workflow gates on its own ``START_DATE`` before this module is reached.
@@ -139,7 +145,7 @@ def editing_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
                   today, "editing")
 
 
-def automation_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
+def automation_allowed(today: datetime.date | datetime.datetime | None = None) -> tuple[bool, str]:
     """(allowed, detail) for the SCHEDULED run, which starts later than the manual one.
 
     A caller must pass both gates: this one says the schedule may go live, and
@@ -149,8 +155,24 @@ def automation_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
     """
     if HELD:
         return False, f"HELD - {HELD_REASON}"
-    return _after(os.environ.get(_AUTOMATION_OVERRIDE, "").strip()
-                  or AUTOMATION_START_DATE, today, "automation")
+    raw = os.environ.get(_AUTOMATION_OVERRIDE, "").strip() or AUTOMATION_START_DATE
+    try:
+        start = datetime.datetime.fromisoformat(raw)
+    except ValueError:
+        return False, f"LOCKED (fail-closed): unparseable start date {raw!r}"
+    start = start.replace(tzinfo=datetime.timezone.utc) if start.tzinfo is None else start
+    if today is None:
+        now = datetime.datetime.now(datetime.timezone.utc)
+    elif isinstance(today, datetime.datetime):
+        now = today if today.tzinfo else today.replace(tzinfo=datetime.timezone.utc)
+    else:
+        # A bare date means the END of that day: the gate is open on a date only when it is
+        # open for all of it, so a day that starts locked never reads as allowed.
+        now = datetime.datetime.combine(today, datetime.time(23, 59, 59),
+                                        tzinfo=datetime.timezone.utc)
+    if now >= start:
+        return True, f"automation allowed - {now:%Y-%m-%d %H:%M} UTC is on or after {raw}"
+    return False, f"LOCKED until {raw} UTC - now is {now:%Y-%m-%d %H:%M} UTC"
 
 
 #: ⛔ **THE CLAN LABELS DO NOT GO OUT BEFORE THIS DATE.** Ruled 2026-08-29: *"we block the clan
