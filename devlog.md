@@ -49164,3 +49164,25 @@ One thing found: the backfill is a full-run step, skipped by the lean `batch_onl
 the browser loop runs on, so tonight's generations did no universe growth through it. The pace
 Emma set (40 into the batch a person runs, 20 into the automatic half) is per run; running it in
 lean runs too would multiply it by the number of generations a day. Left as it is.
+
+## 2026-09-28 03:40 PDT: the patronymic audit, the whole population
+
+`reports/patronymic-audit.csv`: every `P5056` we have applied (6,337 live on ledger items, from
+`garborg-live-values.tsv`) or would apply (232 in batch 3cc14f09e9), with the person, the token
+(the patronymic item's name, from the name-item plan and our created name items), the father from
+the tree, his display name, and a verdict against the rulings (a patronymic requires the father,
+2026-09-25; read by form, never by position), using `namemodel`'s own tests:
+
+| verdict | live | batch |
+| --- | ---: | ---: |
+| the stem matches the father's given name | 4,940 | 167 |
+| no father in the tree | 1,047 | 41 |
+| the father carries the same token (an inherited surname) | 91 | 1 |
+| the model now reads the token as a surname | 235 | 8 |
+| father known, no match (kept as a patronymic) | 5 | 0 |
+| token not in our name-item lists | 19 | 15 |
+
+So about 78% are attested by the father. The 91 plus 235 are live `P5056` where our own model now
+says family name, and the 1,047 have no father to attest them, which the 2026-09-25 ruling says a
+patronymic needs. Nothing is changed from here yet: correcting live statements is a decision, put
+to Emma.
