@@ -312,6 +312,8 @@ def main():
 #: `build-garborg-day.label_in` reads this file per word. Labels only, ja/zh/ko, for the name
 #: items the plan knows (~8,000), 50 a request, 3 s apart, `Retry-After` honoured: at 0.5 s
 #: Wikidata answered 429 on 74 of 161 requests (2026-09-25).
+#: `mul` and `en` ride on the same requests since 2026-09-27: `namemodel.compose_label` checks
+#: that a person's name items account for their whole name, which needs each item's Latin form.
 NAME_ITEM_CJK_OUT = ROOT / "reports" / "name-item-cjk-labels.tsv"
 
 
@@ -330,7 +332,7 @@ def name_item_cjk_labels():
     while i < len(qids) and waits < 10:
         url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({
             "action": "wbgetentities", "ids": "|".join(qids[i:i + 50]), "props": "labels",
-            "languages": "ja|zh|ko", "format": "json", "maxlag": 5})
+            "languages": "mul|en|ja|zh|ko", "format": "json", "maxlag": 5})
         req = urllib.request.Request(url, headers={"User-Agent": _bot_agent()})
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
@@ -340,7 +342,7 @@ def name_item_cjk_labels():
             time.sleep(int(e.headers.get("Retry-After") or 60))
             continue
         for qid, ent in sorted(got.items()):
-            for lang in ("ja", "zh", "ko"):
+            for lang in ("mul", "en", "ja", "zh", "ko"):
                 v = (ent.get("labels", {}).get(lang) or {}).get("value")
                 if v:
                     rows.append({"qid": qid, "lang": lang, "label": v})

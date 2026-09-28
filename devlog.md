@@ -48868,3 +48868,13 @@ ranges are written as ASCII escapes. Not wired yet; tests in `test_namemodel.py`
 Also in this commit: the two tests of `is_stem_name`, the rule deleted on Emma's Ols ruling, are
 replaced by one pinning that ruling (`Ols Orre` is given name Ols plus family name Orre). They
 would have failed CI on the missing function.
+
+## 2026-09-27 20:40 PDT: name items' Latin labels reach CI for the composer
+
+The top queue item still waits on the history read (9,400 of 13,501). Label composition, next
+step: `refresh-live-values.py` already fetched every planned name item's `ja`/`zh`/`ko` label into
+`reports/name-item-cjk-labels.tsv`, 50 a request, 3 s apart. It now asks for `mul` and `en` on the
+same requests (no extra requests), which `compose_label` needs to check that a person's name
+items account for their whole name. The existing reader (`name_item_cjk`) looks only at the CJK
+keys, so the extra rows change nothing it does. Next: wire the composer against these and the
+live item shards.
