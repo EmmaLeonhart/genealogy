@@ -7382,6 +7382,11 @@ def main():
         print(f"{len(dup)} dropped: Wikidata already carries a P2600 for them")
 
     # The same rule, from the correspondence rather than the P2600 snapshot. See the note above.
+    #: Every Geni id Wikidata already has an item for, whatever the route: the `P2600` roster and
+    #: the correspondence. Used to LINK a new creation to such a relative (see `_rq` below).
+    _known_qid = {g: q for g, q in any_wikidata_item.items() if str(q).startswith("Q")}
+    _known_qid.update({g: v[0] for g, v in known_pair.items()
+                       if g not in _known_qid and str(v[0]).startswith("Q")})
     corr_dup = [g for g in to_create if g in known_pair and g not in our_items]
     for g in corr_dup:
         q, src = known_pair[g]
@@ -8820,19 +8825,26 @@ def main():
         # exists only because of it. Every relationship to somebody who ALREADY has a QID is
         # now emitted in both directions in the same run.
         reciprocal = []
+        # ⛔ **A RELATIVE WIKIDATA ALREADY HAS IS LINKED BY ITS QID, NOT ONLY A LEDGER ONE.
+        # 2026-09-28:** the ancestor ring now walks through people Wikidata holds by `P2600` or by
+        # the correspondence, and the parents above them were held (1,452 on 2026-09-28, "no
+        # relationship could be emitted") because only ledger QIDs were linked. The locality gate
+        # (`editable`) is unchanged, so the chain advances one generation a run.
+        def _rq(x):
+            return our_items.get(x) or _known_qid.get(x)
         for prop, target, back in (("P22", father.get(g), "P40"),
                                    ("P25", mother.get(g), "P40")):
             # A link to an item we may not edit goes in NEITHER direction: the reciprocal would
             # be an edit on it, and a one-way link is what the both-directions test refuses.
-            if target and our_items.get(target) in editable:
+            if target and _rq(target) in editable:
                 _rel = (RELATION_OF[prop], target)
-                lines.append(f"LAST\t{prop}\t{our_items[target]}{ref(g, *_rel)}")
-                reciprocal.append((our_items[target], back, g, "", _rel))
+                lines.append(f"LAST\t{prop}\t{_rq(target)}{ref(g, *_rel)}")
+                reciprocal.append((_rq(target), back, g, "", _rel))
         for sp in sorted(spouses.get(g, ())):
-            if our_items.get(sp) in editable:
+            if _rq(sp) in editable:
                 _mq = marriage_qualifiers(g, sp)
-                lines.append(f"LAST\tP26\t{our_items[sp]}{_mq}{ref(g, 'spouse', sp)}")
-                reciprocal.append((our_items[sp], "P26", g, _mq, ("spouse", sp)))
+                lines.append(f"LAST\tP26\t{_rq(sp)}{_mq}{ref(g, 'spouse', sp)}")
+                reciprocal.append((_rq(sp), "P26", g, _mq, ("spouse", sp)))
         # **The cap is 10 a day ACROSS EVERY BATCH, and this site was escaping it.**
         # `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"A builder emitting
         # siblings must count them and stop."* The additions pass counted; this one, on the
@@ -8853,10 +8865,10 @@ def main():
                 reciprocal.append((our_items[sib], "P3373", g,
                                    sibling_kinship(sib, g, fam_rows, facts), ("sibling", sib)))
         for kid in sorted(children.get(g, ())):
-            if our_items.get(kid) in editable:
-                lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g, 'child', kid)}")
+            if _rq(kid) in editable:
+                lines.append(f"LAST\tP40\t{_rq(kid)}{ref(g, 'child', kid)}")
                 sex_of = (facts.get(g, {}) or {}).get("sex", "")
-                reciprocal.append((our_items[kid], "P22" if sex_of == "M" else "P25", g, "",
+                reciprocal.append((_rq(kid), "P22" if sex_of == "M" else "P25", g, "",
                                    ("child", kid)))
 
         # **The other direction, in the SAME run.** `Q… P… LAST` -- the subject already

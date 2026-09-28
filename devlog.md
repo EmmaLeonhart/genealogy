@@ -49256,3 +49256,16 @@ Eiriksson`, § a bare surname is not a name), and a `NICK` carrying a title give
 TITLE IS NOT A NAME). Tests added. **Not fixed, reported:** a single word that is a maiden
 surname or a widow's farm name cannot be told from a true nickname with what the model has; they
 still go out bare.
+
+## 2026-09-28 06:05 PDT: the first full run with tonight's changes, and a ring gap closed
+
+Run 36384572584 (scheduled, 23:00 PDT) is the first with everything from tonight: the batch is
+10 FamilySearch people, a ring of 75, 52 name items and 120 others; `applied-facts.csv` started
+(895 pending); `candidates.html` data: 41,943 possible creations. The ring fix grew the ring's
+boundary to 1,763 Geni people and 669 FamilySearch-only people, but 1,687 of the Geni ones were
+held, and the carry-forward says why: 1,452 "no relationship could be emitted". The ring now walks
+through people Wikidata already has, and the parents above them could only be linked to LEDGER
+QIDs, so they had nothing to attach to. A creation's parent, spouse and child links now take the
+relative's QID from the `P2600` roster or the correspondence too (`_known_qid`, `_rq`), under the
+same locality gate (`editable`: universe or one step), so such a chain advances a generation a run
+and each edit makes the next item ours. Siblings stay ledger-only.
