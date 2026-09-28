@@ -80,6 +80,15 @@ on:
         description: "Run even if the last contribution is older than six hours"
         type: boolean
         default: false
+      # ⛔ **THE LEAN RUN FOR THE BROWSER QUICKSTATEMENTS LOOP** (Emma, 2026-09-27): only the
+      # ledger refresh and the day batch (compose, split, pairs, gates, order, commit), about
+      # an hour instead of nearly three. The decks, the backfills, the site, the inventories and
+      # the issue are skipped. The ledger refresh is what lets the next ring grow from the one
+      # just created.
+      batch_only:
+        description: "Only rebuild the day batch (for the browser QuickStatements loop)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -338,6 +347,7 @@ jobs:
       # `continue-on-error` for the same reason the deck has it: the Garborg batch is the
       # deliverable and must not be lost to a failure in a batch that rides along.
       - name: Build the regnal-ordinal and diff batches
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
@@ -392,6 +402,7 @@ jobs:
       # a failure in the widest deck still leaves the two before it rebuilt, which is the ordering
       # `review-decks.yml` uses and for the same reason.
       - name: Rebuild the parent deck
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
@@ -401,6 +412,7 @@ jobs:
       # The child and sibling slots. Thousands of cards against the parent deck's handful, so
       # this is where the label fetch actually costs minutes.
       - name: Rebuild the child and sibling deck
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
@@ -414,6 +426,7 @@ jobs:
       # polite about the rate* -- so this is minutes, not seconds. It runs last so a failure here
       # leaves both decks above already rebuilt.
       - name: Rebuild the pick-one deck
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
@@ -423,6 +436,7 @@ jobs:
       # Pure local work -- it reads two tracked TSVs and writes the page, no network at all --
       # so it is the cheapest thing in this block and the one that had never run in CI.
       - name: Rebuild the patronymic identifications page
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -463,6 +477,7 @@ jobs:
       # WRITTEN but never CALLED is not done*: the bridge grows every time one of these items
       # gets a `P2889`, so a snapshot committed by hand is wrong the day after it is made.
       - name: The FamilySearch batch, its own file
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -486,6 +501,7 @@ jobs:
       # The day batch is the composition; a half is a share of it. A half holding lines the
       # composition does not is not a share of anything.
       - name: Subject-named-as backfill, the universe-growth pass
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -513,6 +529,7 @@ jobs:
       # checked against our own tree first and a relationship Geni does not state is left
       # alone rather than cited to Geni. See the script's docstring.
       - name: Relationship-sources backfill, the universe-growth pass
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -642,6 +659,7 @@ jobs:
         run: python scripts/split-daily-batch.py --order
 
       - name: Refresh the committed site snapshot
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -662,12 +680,14 @@ jobs:
       # name items runs every pipeline, capped at LABEL_EDIT_CAP, so the 7,516 items missing a
       # reading drain steadily instead of waiting for someone to remember the script.
       - name: CJK readings for the name items this corpus bears
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
         run: python scripts/build-name-item-cjk.py
 
       - name: Refresh the batch inventory
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -681,6 +701,7 @@ jobs:
       # because the answer to *is this something that should be in CI but isn't* is the whole
       # category, not the one instance that happened to go red first.
       - name: Refresh the repo freshness census
+        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src
@@ -856,6 +877,7 @@ jobs:
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Open the issue
+        if: ${{ !inputs.batch_only }}
         uses: actions/github-script@v7
         env:
           CREATES: ${{ steps.batch.outputs.creates }}
@@ -925,6 +947,7 @@ jobs:
   # A called workflow does not inherit job-level permissions, so Pages needs its own here.
   site:
     needs: pipeline
+    if: ${{ !inputs.batch_only }}
     permissions:
       contents: read
       pages: write
