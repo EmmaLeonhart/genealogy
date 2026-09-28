@@ -1636,3 +1636,18 @@ def test_a_title_in_nick_is_no_alias():
 def test_a_full_other_name_in_nick_stays_the_alias():
     assert namemodel.aliases_for({"givn": "Sarah", "surn": "Miller",
                                   "nick": "Sally Miller"}) == ["Sally Miller"]
+
+
+@pytest.mark.parametrize("givn, surn, father, want", [
+    ("Ulrich", "Stromer von Reichenbach", "", [("Stromer von Reichenbach", "family")]),
+    ("Anna", "Sør-Kolnes", "", [("Sør-Kolnes", "family")]),
+    ("Anna", "Sør Kolnes", "", [("Sør Kolnes", "family")]),
+    ("Trond", "Eriksen Lunde", "Erik", [("Eriksen", "patronymic"), ("Lunde", "family")]),
+    ("Ola", "Lunde Eriksen", "Erik", [("Lunde Eriksen", "family")]),
+])
+def test_the_rest_of_the_surname_field_is_one_surname(givn, surn, father, want):
+    """Ruled 2026-09-27: patronymics out by form; from the first token that is not one, the rest
+    of the surname field is ONE family name, spaces and all."""
+    got = [(t, u) for t, u, _o in namemodel.classify_fields(givn, surn, father_name=father)
+           if u in ("family", "patronymic")]
+    assert got == want

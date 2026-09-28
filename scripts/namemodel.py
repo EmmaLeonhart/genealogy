@@ -3125,7 +3125,21 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     surn_field = _unwrap_surn(surn or "")
     surn_tokens = join_compound_surname(
         [t for t in re.split(r"\s+", surn_field.strip()) if t])
-    for raw in join_particles(join_nobiliary(surn_tokens)):
+    # ⛔ **EVERYTHING LEFT IN THE SURNAME FIELD IS ONE SURNAME. Ruled 2026-09-27 (Emma), built
+    # 2026-09-28:** parse by field and by form, never by position. Patronymics are taken out by
+    # form; from the first token that is clearly not one, the rest of the field is ONE family
+    # name, spaces and all (`Sør Kolnes`, `Stromer von Reichenbach`, `Lunde Eriksen`), not a
+    # family name per word. Markers (`NN`, a lone farm letter) keep their own handling.
+    _surn_parts = list(join_particles(join_nobiliary(surn_tokens)))
+    _one_surname = None
+    for _k, raw in enumerate(_surn_parts):
+        if _one_surname is not None:
+            _t, _sh = name_shape(raw)
+            if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS):
+                out.append((_t, _sh or "unknown", 0))
+            else:
+                _one_surname.append(_t)
+            continue
         token, shape = name_shape(raw)
         # ⛔ **A LONE LETTER IN A SURNAME FIELD IS NEVER A FAMILY NAME.** Reported 2026-09-24,
         # after the batch created `N.` as a family-name item twice and was killed by hand:
@@ -3137,12 +3151,16 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         if shape:
             out.append((token, shape, 0))
             continue
-        if is_patronymic(token):
-            out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
+        if is_patronymic(token) and patronymic_or_surname(
+                token, father_name, father_aka) == "patronymic":
+            out.append((token, "patronymic", 0))
         elif latin_patronymic(token, father_given):
             out.append((token, "patronymic", 0))
         else:
-            out.append((token, "family", 0))
+            _one_surname = [token]
+            out.append(None)                      # the place the one surname goes
+    if _one_surname is not None:
+        out[out.index(None)] = (" ".join(_one_surname), "family", 0)
 
     married = " ".join((marnm or "").split())
     if married and married.casefold() != " ".join((surn or "").split()).casefold():

@@ -49279,3 +49279,14 @@ name-item plan's items, not for every name item a person actually bears (`Q66657
 like, made by others); 1,004 are the intended refusal (the statements do not cover the whole name:
 `Lars Silfverstolpe` with only `Lars`); 174 compose. `refresh-live-values.py` now also fetches every
 name item the ledger items' `P735`/`P5056`/`P734` point at (same requests, 50 at a time).
+
+## 2026-09-28 06:45 PDT: the surname field is one surname (the surname-definition item, the change)
+
+`classify_fields` read every word left in `SURN` as its own family name, so `Sør Kolnes` became two
+`P734` and `Lunde Eriksen` two surnames. Per Emma's ruling (field and form, not position):
+patronymics are taken out by form (a patronymic-looking token the surname tests reject counts as
+not a patronymic), and from the first token that is not a patronymic, the rest of the field is ONE
+family name (`Stromer von Reichenbach`, `Sør-Kolnes`, `Sør Kolnes`, `Lunde Eriksen`); markers
+(`NN`, a lone farm letter) keep their own handling. `_MARNM` is untouched, so a married surname is
+still a second `P734`. Tests added; the item stays open for its measurement half (how many people
+carry more than one `P734` because of the old reading) and the review of existing items it names.
