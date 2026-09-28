@@ -49423,3 +49423,16 @@ batches `…422628` (about 08:18) and `…775346` (about 11:52); the other sets 
 pair of batch tags. So neither the racing-batches explanation nor a ledger miss holds; what is
 established is that one batch was run twice and Wikidata did not refuse the second creation despite
 the same label and description. Why it did not is still open. Nothing merged, nothing changed.
+
+## 2026-09-28 10:55 PDT: why Wikidata did not refuse the second copy (established)
+
+The first revisions of Gunhild Simonsdatter Oftedal's two items: `Q141573998` (08:18) was created
+with the description "1607 Nedre Oftedal - Aft 1645 Gjesdal, Rogaland, Norway" and labels in
+en/mul/ja/zh/ko; `Q141576081` (11:52) with "1607 Nedre Oftedal - Aft 1645 Gjesdal Municipality"
+and the same labels plus the sixteen transliterated scripts switched on 2026-09-26 and off on
+09-27. So the second came from an OLDER batch file (a 09-26 build), run after a newer one had
+created her, and between those builds the place in the description changed wording. The
+label-and-description guard refuses only an exact match, so it did not fire. The earlier entry's
+"one file run twice" was wrong on that point: my check looked only at batch files from 09-26 18:00
+on. The mechanism is a stale batch run late; the guard's weakness is that descriptions are not
+stable from one build to the next.
