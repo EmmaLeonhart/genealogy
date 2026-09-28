@@ -49487,3 +49487,11 @@ usual, inside the repo only; nothing sent to Wikidata and no batch or edit file 
 written without her explicit go-ahead on that step; the description logic frozen; name and label
 changes written and tested only; the patronymic audit waits on her review. Recorded as a hard rule
 in CLAUDE.md so every session reads it. Item deleted.
+
+## 2026-09-28 14:20 PDT: the full pipeline keeps both daily runs (item closed)
+
+Asked (AskUserQuestion) whether the full pipeline should drop to once a day now that lean rebuilds
+make the batches: keep both, 06:00 and 18:00 Pacific. Which run does what: the two scheduled runs
+are the full pipeline (ledger refresh, compose, decks, universe-growth backfills, FamilySearch
+batch, site, inventories, the issue); the `batch_only` runs, started by `ring-watch.yml`, rebuild
+the day batch only. No schedule change. Item deleted.
