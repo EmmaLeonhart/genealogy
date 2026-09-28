@@ -49412,3 +49412,14 @@ non-NN sets: every copy came from a DIFFERENT batch, hours apart (Gunhild Simons
 at 2026-09-27 08:18 and 11:52 UTC), so my earlier explanation (two batches racing) was wrong. Why
 the later batch did not know the earlier item, and why Wikidata did not refuse an identical label
 and description, is not established. Nothing merged.
+
+## 2026-09-28 10:35 PDT: correction, the duplicates were not a ledger miss either
+
+Checked against the committed batch files: Gunhild Simonsdatter Oftedal's CREATE is in exactly
+one batch file (built 2026-09-27 06:41 UTC, 2ede15c0c). Every later batch refers to her existing
+item `Q141573998` (her Geni id in them is only an `S2600` reference), and the ledger held her from
+the next rebuild on. The two copies came from that ONE file being run twice, as QuickStatements
+batches `…422628` (about 08:18) and `…775346` (about 11:52); the other sets sampled show the same
+pair of batch tags. So neither the racing-batches explanation nor a ledger miss holds; what is
+established is that one batch was run twice and Wikidata did not refuse the second creation despite
+the same label and description. Why it did not is still open. Nothing merged, nothing changed.
