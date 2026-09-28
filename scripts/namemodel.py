@@ -3546,3 +3546,44 @@ def aliases_for(fields, surn="", marnm=""):
             if full not in out:
                 out.append(full)
     return out
+
+
+# ⛔ **A LABEL COMPOSED FROM THE NAME ITEMS, STRICTLY. Ruled 2026-09-27 by AskUserQuestion.** A
+# person's label in a language is the labels their name items carry in that language, joined in
+# name order (given names by `P1545`, patronymics, family names), and it is written only when EVERY
+# part has one. Transliteration is phased out over time in favour of this; nothing is guessed. Two
+# preconditions measured the same day: a part whose label is in the wrong script for the language
+# counts as unlabelled (100 of 3,839 name items, `reports/name-item-labels-wrong-script.csv`: a zh
+# label that is the Latin name reused), and the parts must cover the whole name, since many items
+# hold only a `P735` (`Q102856512` would compose to just セミョン). Not yet wired: each language is
+# switched over on its own once coverage allows (queue).
+_HAN = "\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff"
+LABEL_SCRIPT = {
+    "ja": re.compile("^[\u3040-\u30ff\u31f0-\u31ff" + _HAN + "\u30fb\uff65=\uff1d]+$"),
+    "zh": re.compile("^[" + _HAN + "\u00b7\u2027\u30fb]+$"),
+    "ko": re.compile("^[\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f" + _HAN + r"\s-]+$"),
+}
+LABEL_JOIN = {"ja": "\u30fb", "zh": "\u00b7"}
+
+
+def compose_label(parts, lang, label_of, whole):
+    """The `lang` label composed from the name items `parts` (QIDs in name order), or None.
+
+    `label_of(qid, lang)` gives a name item's label in a language (None when it has none);
+    `whole` is the person's full name in Latin letters (the derived label). None when a part has no
+    label in `lang`, when one is in the wrong script, or when the parts' own `mul` (else `en`)
+    labels do not account for every word of `whole`.
+    """
+    if not parts or not whole.strip():
+        return None
+    got = []
+    for q in parts:
+        text = (label_of(q, lang) or "").strip()
+        script = LABEL_SCRIPT.get(lang)
+        if not text or (script and not script.match(text)):
+            return None
+        got.append(text)
+    latin = " ".join((label_of(q, "mul") or label_of(q, "en") or "") for q in parts)
+    if sorted(latin.casefold().split()) != sorted(whole.casefold().split()):
+        return None
+    return LABEL_JOIN.get(lang, " ").join(got)

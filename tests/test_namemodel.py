@@ -1573,20 +1573,45 @@ def test_a_patronymic_particle_is_untouched():
     assert ("ben Phinhas", "patronymic", 0) in tokens
 
 
-# --- a child's patronymic stem is not a given name (ruled 2026-09-26) --------
+# --- a first name ending in -s is a name (the stem rule of 2026-09-26 deleted) --------
 
-@pytest.mark.parametrize("token", ["Ols", "Pers", "Jons"])
-def test_a_patronymic_stem_is_not_a_given_name(token):
-    """`Q141522207` is *Ols*, father of Britta Olsdotter: a stem, not a name."""
-    if not (namemodel.ROOT / "reports" / "given-name-attestation.tsv").exists():
-        pytest.skip("no attestation census")
-    assert namemodel.is_stem_name(token)
-    assert ("given" not in {u for _t, u, _o in namemodel.classify_fields(token, "")})
+@pytest.mark.parametrize("givn", ["Ols", "Pers", "Jons", "Nils", "Hans"])
+def test_a_first_name_ending_in_s_is_a_given_name(givn):
+    """Emma, 2026-09-27: Ols Orre (`Q141566035`) is given name Ols and family name Orre; the rule
+    that read "Ols" as a child's patronymic stem, and not a name, is deleted."""
+    got = {(t, u) for t, u, _o in namemodel.classify_fields(givn, "Orre")}
+    assert (givn, "given") in got
 
 
-@pytest.mark.parametrize("token", ["Nils", "Tørris", "Ellis", "Nis", "Magnús", "Þorgils", "Hans"])
-def test_a_real_name_ending_in_s_stays_a_name(token):
-    assert not namemodel.is_stem_name(token)
+# --- labels composed from the name items (Emma, 2026-09-27: strictly) ----------------
+
+NAMES = {"Q1": {"mul": "Anna", "ja": "アンナ", "zh": "安娜", "ko": "안나"},
+         "Q2": {"mul": "Olsdotter", "ja": "オルスドッテル", "zh": "奥尔斯多特"},
+         "Q3": {"mul": "Garborg", "ja": "ガルボルグ", "zh": "Garborg", "ko": "가르보르그"}}
+
+
+def compose(parts, lang, whole="Anna Olsdotter Garborg"):
+    return namemodel.compose_label(parts, lang, lambda q, l: NAMES.get(q, {}).get(l), whole)
+
+
+def test_a_label_is_the_name_items_labels_joined_in_name_order():
+    assert compose(["Q1", "Q2", "Q3"], "ja") == "アンナ・オルスドッテル・ガルボルグ"
+    assert compose(["Q1", "Q3"], "ko", whole="Anna Garborg") == "안나 가르보르그"
+
+
+def test_nothing_is_composed_unless_every_part_has_a_label():
+    assert compose(["Q1", "Q2", "Q3"], "ko") is None           # Q2 has no ko label
+
+
+def test_a_part_labelled_in_the_wrong_script_counts_as_unlabelled():
+    assert compose(["Q1", "Q2", "Q3"], "zh") is None           # zh "Garborg" is the Latin reused
+
+
+def test_the_name_statements_must_cover_the_whole_name():
+    # Q102856512 holds only a P735, so its parts compose to the given name alone.
+    assert compose(["Q1"], "ja") is None
+    assert compose(["Q1", "Q3"], "ja", whole="Anna Garborg") == "アンナ・ガルボルグ"
+    assert compose([], "ja", whole="") is None
 
 
 def test_a_married_honorific_names_the_husband_not_her():

@@ -48854,3 +48854,17 @@ read so far, one dropped an edit of ours: Q3656094 `P735` Q130396475 (Epìdosis,
 hand restores by the account, two statements (Q2183430 `P735` Q20899047; Q9511624 `P25`
 Q140568870, the protected item) and the `mul` label "Zhu Cao" on Q45383466 (its `ja`/`zh` were
 already recorded). Appended to `removed-statements.tsv` and `corrected-label-slots.tsv`.
+
+## 2026-09-27 20:15 PDT: the label composer, with both preconditions in it
+
+The top queue item (arguing with corrections) waits on the item-history read (8,300 of 13,501)
+for parts (1) and (2), and its build is gated on that analysis; per CLAUDE.md the next item was
+taken. `namemodel.compose_label(parts, lang, label_of, whole)` joins the name items' labels in
+name order (`・` for `ja`, `·` for `zh`, a space otherwise) and returns None unless every part has
+a label in the language's script and the parts' `mul`/`en` labels account for every word of the
+full name (so an item with only a `P735` never composes to its given name alone). The script
+ranges are written as ASCII escapes. Not wired yet; tests in `test_namemodel.py`.
+
+Also in this commit: the two tests of `is_stem_name`, the rule deleted on Emma's Ols ruling, are
+replaced by one pinning that ruling (`Ols Orre` is given name Ols plus family name Orre). They
+would have failed CI on the missing function.
