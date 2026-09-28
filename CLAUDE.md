@@ -213,6 +213,15 @@ day: *"the reason we are doing descriptions is to allow for overlap"*): a creati
 description, and Wikidata refuses a second item with the same label and description, so a
 person both pasted and sent is created once.
 
+## ⛔ AT SESSION START: THE BROWSER QUICKSTATEMENTS LOOP
+
+Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner, and it starts with the session. Immediately after a session opens: open a NEW QuickStatements tab, load the current `reports/wikidata-garborg-day-manual.txt` (fetch it from raw.githubusercontent into the batch textarea), Import, and press **Run** (never "Run in background" unless she asks). Then start a session cron every 10 minutes that runs `scripts/qs-loop-status.py` and, once the running batch has created the random individuals plus the ring (the `ring_target_creations` it prints), dispatches the lean rebuild (`gh workflow run pipeline.yml -f batch_only=true -f force=true`, about an hour: ledger refresh and day batch only). When the new batch lands, run it in another NEW tab. Overlap between runs is fine: QuickStatements rate-limits each run.
+
+    ⛔ NEVER navigate, reload or close a tab that is running a batch. A QuickStatements run done in
+    the browser lives in the page; closing the tab killed Emma's run on 2026-09-27. Only open new tabs.
+
+The noticeboard rule below still applies before any run.
+
 ## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
 
 Ruled 2026-09-24: *"We should be having the zipper do all of the familysearch stuff. I want
