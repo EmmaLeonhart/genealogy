@@ -49479,3 +49479,11 @@ and `-slavich` (`Alexandrovitch` 43, `Yaroslavich` 31); the Dutch `-sz` after a 
 98, `Jacobsz` 44, `Pietersz` 37), never after a vowel, because Polish given names (`Tomasz`) and
 Hungarian, Polish and Yiddish surnames (`Kárász`, `Kalisz`, `Klepfisz`) end the same way; the
 vowel-stem Dutch forms (`Cornelisz`, `Claesz`) stay missed rather than risk those. Tests added.
+
+## 2026-09-28 14:10 PDT: resume, repo-only (recorded in CLAUDE.md)
+
+Emma's standing instruction for resuming after the 13:40 pause (queue item): work the queue as
+usual, inside the repo only; nothing sent to Wikidata and no batch or edit file meant to be run is
+written without her explicit go-ahead on that step; the description logic frozen; name and label
+changes written and tested only; the patronymic audit waits on her review. Recorded as a hard rule
+in CLAUDE.md so every session reads it. Item deleted.

@@ -410,6 +410,13 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 
 ## ⛔ The hard ones
 
+- **⛔ REPO-ONLY UNTIL EMMA SAYS OTHERWISE. Ruled 2026-09-28** (after the duplicate creations):
+  the queue is worked as usual, but everything changed stays in the repo (code, tests, reports,
+  queue, devlog). Nothing is sent to Wikidata, and no batch or edit file meant to be run is written,
+  until Emma gives an explicit go-ahead on that specific step. Edits through CI/CD are held
+  (`HELD`/`EDITS_HELD`). Name and label changes may be written and tested; they reach Wikidata only
+  with her go-ahead. A step that needs her decision is asked with AskUserQuestion, and the next
+  workable item is taken meanwhile.
 - **⛔ COMMIT AND PUSH AFTER EVERY MEANINGFUL CHANGE. Ruled 2026-09-25:** not in batches at the end
   of an item, so work is never left sitting unpushed. A finished step (a measured fix, a rebuilt
   report, a queue edit) is its own commit and is pushed at once.
