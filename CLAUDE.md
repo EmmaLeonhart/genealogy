@@ -697,8 +697,9 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   at each other.
 - **The ledger refresh is PART OF THE RUN.** Regenerating QuickStatements always regenerates the
   ledger; it almost never rebuilds the tree.
-- **Caps:** `P3373` **40 pairs/day**, `NAME_ADD_CAP` **60 people**, `P2600_LEAD_CAP` **40**,
-  `MANUAL_P2600_PER_RUN` **20**, `LABEL_EDIT_CAP` **60**. `P22`/`P25`/`P40`/`P26` are uncapped.
+- **Caps (5x on 2026-09-28, Emma):** `SIBLING_CAP` **300 pairs**, `NAME_ADD_CAP` **250 people**,
+  `P2600_LEAD_CAP` **300**, `MANUAL_P2600_PER_RUN` **150**, `LABEL_EDIT_CAP` **450**. `P22`/`P25`/`P40`/`P26`
+  are uncapped. The browser runs absorb ~2,500 to 3,000 edits an hour (`reports/browser-run-rates.csv`).
 - **A sibling step gets a placeholder parent in OUR TREE and never on Wikidata** — Wikidata has
   `P3373` and needs no invented parent.
 - **A second Geni ID on one item is NOT a conflict**, and a duplicate parent value is

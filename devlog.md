@@ -49127,3 +49127,14 @@ spend the waiting on. And the per-run caps set for the old QuickStatements (`SIB
 `LABEL_EDIT_CAP` 90 people, `NAME_ADD_CAP` 50, `P2600_LEAD_CAP` 60, `MANUAL_P2600_PER_RUN` 30)
 are far under what a browser run absorbs (~2,500 to 3,000 edits an hour), so they can be raised.
 Put to Emma as a question.
+
+## 2026-09-28 02:45 PDT: creations and other edits, closed
+
+The findings above were put to Emma. On sending creations only through the browser: *"this is
+solved later in the queue"* (the item on adopting the shintowiki-scripts editing structure and the
+automatic sender), so nothing is changed here. On the caps: raised 5x, by AskUserQuestion:
+`SIBLING_CAP` 60 to 300 pairs, `LABEL_EDIT_CAP` 90 to 450 people, `NAME_ADD_CAP` 50 to 250,
+`P2600_LEAD_CAP` 60 to 300, `MANUAL_P2600_PER_RUN` 30 to 150. `test_p2600_batches.SIBLING_CAP`
+follows (it was 40, already behind the builder's 60), and CLAUDE.md's caps line is updated. The
+interleaving the item began with is the order pass (each non-ring person followed by a slice of
+the edits on existing items, 2026-09-27). Item deleted.

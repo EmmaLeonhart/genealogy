@@ -57,7 +57,8 @@ P2600_SNAPSHOT = REPO / "out" / "wikidata" / "p2600-all.tsv"
 #: the honest bound on lines is twice this. And the loop selects on `.txt` names while
 #: `BATCHES` globs `.qs`, so it currently matches nothing and asserts nothing -- which is why
 #: it sat at 10 through the first doubling without going red.
-SIBLING_CAP = 40
+#: 300 pairs since 2026-09-28 (Emma raised the caps 5x; `build-garborg-day.SIBLING_CAP`).
+SIBLING_CAP = 300
 
 SPENT_BATCHES = {
     "wikidata-garborg-day-1.qs": "the first day batch, 9 creations + 362 statements",

@@ -83,7 +83,9 @@ ROOT = Path(__file__).resolve().parent.parent
 #: balanced by people is mostly sibling links by statement. The cap is per DAY across every
 #: batch, so it is shared with `build-missing-reciprocals.py`, and the overflow is carried
 #: rather than dropped: the statements are correct, there are just too many at once.
-SIBLING_CAP = 60
+#: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
+#: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
+SIBLING_CAP = 300
 #: Existing sibling statements given `P1039` a day (ruled 2026-09-26: 40, like siblings).
 SIBLING_KINSHIP_REPAIR_CAP = 40
 #: Relational labels re-anchored on the father per run (queue item 2026-09-27; 95 measured).
@@ -888,7 +890,9 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 #: How many manual `P2600` statements go out per run. Specified 2026-09-01: the pipeline
 #: generates a fixed number of QuickStatements adding the Geni id to the individuals at the
 #: start of each generation, taken from the CSV rows found not to be present already.
-MANUAL_P2600_PER_RUN = 30
+#: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
+#: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
+MANUAL_P2600_PER_RUN = 150
 
 
 def _jan1_pairs():
@@ -2583,7 +2587,9 @@ def _label_corrections(our_items, labels, table, state, fields=None,
 #: **A label at CREATION time is not capped and is not counted.** The distinction, same message:
 #: a label added AFTER item creation is a risk, and one added DURING creation is good. So this
 #: counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
-LABEL_EDIT_CAP = 90
+#: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
+#: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
+LABEL_EDIT_CAP = 450
 
 #: **How many EXISTING people may gain name statements in one run.** Ruled 2026-09-09, on a
 #: 4,081-statement batch carrying seemingly uncapped Geni ids and other things: they should be
@@ -2607,14 +2613,18 @@ LABEL_EDIT_CAP = 90
 #: the third it takes is exactly the 50% that was added -- `1.5 / 3 = 0.5`. The hand-run keeps
 #: the volume it has today and the autonomous run is purely the increase, which is what
 #: *"an additional smaller amount of edits ... run autonomously"* asks for.
-NAME_ADD_CAP = 50
+#: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
+#: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
+NAME_ADD_CAP = 250
 
 #: **A ceiling on the `P2600` lead**, which is exempt from `MANUAL_P2600_PER_RUN` by design: an
 #: id must never be withheld from an item this run is labelling. That exemption is right and is
 #: kept -- but it made the id count a FUNCTION of how many items the run touched, so 1,269
 #: touched items produced 47 `P2600` where the cap says 20. Capping the pass above fixes it at
 #: the cause; this is the backstop.
-P2600_LEAD_CAP = 60
+#: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
+#: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
+P2600_LEAD_CAP = 300
 
 
 #: **The order label edits go out in, by LANGUAGE. Set 2026-09-04:**
