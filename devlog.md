@@ -48979,3 +48979,13 @@ keeps its order and the pass stays idempotent. `pipeline.yml` builds the FamilyS
 lean runs too (it was full runs only, and the file on main dated from 2026-09-24). On batch
 364ce184ce this gives 10 + 58 ring + 49 name items + 122 others = 239 creations instead of 410.
 Tests in `test_batch_order.py`.
+
+## 2026-09-27 23:30 PDT: the FamilySearch batch gets its own page
+
+Emma: the FamilySearch people are the hard part (the ring felt clean because it held none of
+them), and the pipeline's handling of them is not yet trusted, so their QuickStatements go on a
+page of their own to be looked over by hand: `familysearch.html` on the Pages site
+(emmaleonhart.github.io/genealogy/familysearch), from `reports/wikidata-familysearch-day.txt`,
+which lean runs now rebuild too. Asked whether the ten FamilySearch people should still lead the
+loop batches: both (AskUserQuestion). `build-pages-site.BATCHES` and `pages.yml`'s sparse
+checkout both list the file.

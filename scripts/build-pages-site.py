@@ -62,6 +62,11 @@ BATCHES = (
     (ROOT / "reports" / "wikidata-garborg-name-items.txt",
      "wikidata-garborg-name-items.html",
      "Name items", "the name items the daily batch links to"),
+    # ⛔ **FAMILYSEARCH, ITS OWN PAGE. Ruled 2026-09-27 (Emma):** the FamilySearch people are the
+    # hard part and the pipeline's handling of them is not yet trusted, so their batch is on a
+    # page of its own, to be looked over by hand. Ten of them also lead every loop batch.
+    (ROOT / "reports" / "wikidata-familysearch-day.txt", "familysearch.html",
+     "FamilySearch", "the FamilySearch people, their own batch: look it over before running"),
 )
 
 #: The one that must exist. A run with no day batch is a failed run; a run with no name items
