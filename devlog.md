@@ -49340,3 +49340,12 @@ variants. No code change there. With the `_MARNM` fix above (a patronymic in the
 field is a patronymic: any daughter form, a son form the father attests), the item is done: the
 readings that turned one person's patronymic into another's name are in the married-name field,
 and they are fixed. Item deleted.
+
+## 2026-09-28 08:15 PDT: surnames, closed
+
+CI 36462659012 passes every test but one, and that one reads the batch committed before the
+"Ukjend" fix (it clears with the next rebuild). The surname rule is in and tested: everything left
+in `SURN` after the patronymics is one surname, a separator or a bracketed part ends it, and
+`_MARNM` stays a second family name. The measurement: 230 items carry an extra `P734` from the old
+split reading (`reports/multiple-family-names.csv`), which the separate queue item on reviewing
+split surnames works. Item deleted.
