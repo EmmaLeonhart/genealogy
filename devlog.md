@@ -49038,3 +49038,19 @@ item becomes `live` with `first_live`. A live fact the item no longer holds beco
 batch, so it is never sent again. An item missing from the snapshot is never judged. Creations are
 not tracked until they have a QID. Left on the item: part (3), feeding a `gone` fact with a
 `replaced_by` back into our data.
+
+## 2026-09-28 01:10 PDT: the model half, relationships: a removal blocks its inverse
+
+The arguing item, part (3). `reports/relationship-corrections.csv` lists every relationship
+(`P22`/`P25`/`P40`/`P26`) removal between two ledger people, from the 2,494 recorded removals:
+128. 56 by bots (mostly redirect resolution, where our tree still has the edge on the merged
+item), 41 by a person where our tree does not assert the edge, and **31 by a person where our
+tree still asserts it** (Marcus.linneberg 15, Salgo60 6, Emma 1, …). The composer already never
+re-sent the removed statement, but it could send the same relationship from the other side: a
+`P40` taken off the parent, then `P22`/`P25` sent from the child. `read_suppressed` now adds the
+inverse of every removed relationship (`P40` ↔ `P22`/`P25`, `P26` ↔ `P26`), so a correction
+holds in both directions. The tree itself is not changed: it mirrors Geni, and the question there
+is whether our tree matches Geni. Also fixed: a missing `suppressed-statements.tsv` returned
+early and skipped `removed-statements.tsv` too. Test added. Labels: the corrected slots are
+already never re-sent, and the relational descriptions already name a relative by their live
+Wikidata label, so a hand correction to a name there already flows into descriptions.

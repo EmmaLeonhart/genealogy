@@ -707,10 +707,10 @@ def read_suppressed():
         print("WARNING: reports/suppressed-statements.tsv missing - the batch may re-add "
               "statements another editor deleted. Run "
               "scripts/refresh-suppressed-statements.py")
-        return out
-    with open(path, encoding="utf-8") as f:
-        for row in csv.DictReader(f, delimiter="	"):
-            out.add((row["qid"], row["property"], row["value"]))
+    else:
+        with open(path, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="	"):
+                out.add((row["qid"], row["property"], row["value"]))
     # ⛔ **AND EVERY REMOVAL SEEN IN AN ITEM'S HISTORY, BY EMMA OR ANYONE.** 2026-09-27 (the
     # queue item on the batches arguing with edits on Wikidata): read from the histories of the
     # items whose labels we checked, 21 removals by Emma by hand and 774 by other editors (bots
@@ -722,6 +722,16 @@ def read_suppressed():
         with open(removed, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
                 out.add((row["qid"], row["property"], row["value"]))
+    # ⛔ **A REMOVED RELATIONSHIP BLOCKS ITS INVERSE TOO. 2026-09-28** (the model half of the
+    # arguing item): a person who takes `P40` child off the parent has said the two are not parent
+    # and child, and re-sending `P22`/`P25` from the child's side is the same claim again. 31
+    # relationships between two of our people were removed by a person while our tree still
+    # asserts them (`reports/relationship-corrections.csv`); each now stays off in both directions.
+    inverse = {"P40": ("P22", "P25"), "P22": ("P40",), "P25": ("P40",), "P26": ("P26",)}
+    for qid, prop, value in list(out):
+        if value.startswith("Q"):
+            for back in inverse.get(prop, ()):
+                out.add((value, back, qid))
     return out
 
 

@@ -1323,3 +1323,24 @@ def test_a_fact_taken_off_wikidata_is_never_sent_again(tmp_path):
     assert rows[("Len", "Anna")]["status"] == "gone"
     assert rows[("Len", "Anna")]["replaced_by"] == "Anna Olsdotter"
     assert rows[("P40", "Q3")]["status"] == "pending"
+
+
+def test_a_removed_relationship_stays_off_from_the_other_side_too(tmp_path):
+    """2026-09-28: `P40` child taken off a parent by a person means `P22`/`P25` is not sent from
+    the child either; the same for `P26` both ways."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "removed-statements.tsv").write_text(
+        "qid\tproperty\tvalue\tremoved_by\twhen\n"
+        "Q1\tP40\tQ2\tEmma by hand\t2026-09-27\n"
+        "Q3\tP26\tQ4\tanother editor: X\t2026-09-27\n", encoding="utf-8")
+    mod.ROOT = tmp_path
+    got = mod.read_suppressed()
+    assert {("Q1", "P40", "Q2"), ("Q2", "P22", "Q1"), ("Q2", "P25", "Q1"),
+            ("Q3", "P26", "Q4"), ("Q4", "P26", "Q3")} <= got
