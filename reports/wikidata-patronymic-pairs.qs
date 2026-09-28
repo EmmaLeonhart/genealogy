@@ -21,6 +21,16 @@ Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 
+# Mikalsdotter -- the counterpart of Mikalson (32 bearer(s))
+CREATE
+LAST	Len	"Mikalsdotter"
+LAST	Lmul	"Mikalsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
 LAST	Len	"Gunnarsson"
@@ -42,6 +52,16 @@ LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Frederiksen -- the counterpart of Frederiksdatter (15 bearer(s))
+CREATE
+LAST	Len	"Frederiksen"
+LAST	Lmul	"Frederiksen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
@@ -68,6 +88,20 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
+
+# Tjøstelsen -- the counterpart of Tjøstelsdatter (13 bearer(s))
+CREATE
+LAST	Len	"Tjøstelsen"
+LAST	Lmul	"Tjøstelsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141586326
+Q141586326	P5278	LAST
+Q141586326	P407	Q9043
+Q141586326	P407	Q9035
 
 # Atlaksen -- the counterpart of Atlaksdatter (12 bearer(s))
 CREATE
@@ -456,40 +490,4 @@ LAST	P31	Q10476255
 LAST	P407	Q9027
 LAST	P5278	Q141575698
 Q141575698	P5278	LAST
-
-# Gjertsen -- the counterpart of Gjertsdatter (9 bearer(s))
-CREATE
-LAST	Len	"Gjertsen"
-LAST	Lmul	"Gjertsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141586335
-Q141586335	P5278	LAST
-Q141586335	P407	Q9043
-Q141586335	P407	Q9035
-
-# Gulliksdotter -- the counterpart of Gullikson (9 bearer(s))
-CREATE
-LAST	Len	"Gulliksdotter"
-LAST	Lmul	"Gulliksdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141572224
-Q141572224	P5278	LAST
-
-# Halvarsen -- the counterpart of Halvarsdatter (9 bearer(s))
-CREATE
-LAST	Len	"Halvarsen"
-LAST	Lmul	"Halvarsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
 
