@@ -2549,6 +2549,22 @@ def _same_name(stem: str, given: str) -> bool:
     return a == b or a.rstrip("s") == b.rstrip("s")
 
 
+def _father_attests(token: str, father_name: str, also_known_as: str = "") -> bool:
+    """Whether a `-son`/`-sen` token's stem is the father's given name (in any recorded spelling).
+    False without a father: an unattested son form is not assumed to be a patronymic."""
+    m = PATRONYMIC_PARTS.match(token or "")
+    if not (m and father_name):
+        return False
+    raw = m.group(1).casefold()
+    for given in f"{father_name} {also_known_as or ''}".split():
+        if is_patronymic(given):
+            continue
+        g = given.casefold()
+        if g.rstrip("s") == raw.rstrip("s") or _same_name(raw, g):
+            return True
+    return False
+
+
 def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "") -> str:
     """`"patronymic"` or `"family"` for a `-sen`/`-son` token, using the FATHER.
 
@@ -3177,6 +3193,17 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             # `Q28418670` *married name* role. Only the DAUGHTER forms, which cannot be a
             # married name at all; see `DAUGHTER_PATRONYMIC`.
             if not shape and is_daughter_patronymic(token):
+                out.append((token, "patronymic", 0))
+                continue
+            # ⛔ **AND A DAUGHTER FORM WHATEVER ITS STEM; A SON FORM THE FATHER ATTESTS. 2026-09-28**
+            # (the patronymic mix-ups audit, `reports/patronymic-mixups.csv`): `Karen / /
+            # Lauritzdatter` became the married family name `Lauritzdatter`, because
+            # `is_daughter_patronymic` wants an `s` before `-datter`. A son form stays a married
+            # name (a woman carrying `-son` is a surname, Emma's slam dunk) unless the father's
+            # given name is its stem, as with `Jonas / / Hansson` son of Hans: then it is his own.
+            if not shape and is_patronymic(token) and (
+                    re.search(r"(?:datter|dotter|d[oó]ttir|dochter)\.?$", token, re.I)
+                    or _father_attests(token, father_name, father_aka)):
                 out.append((token, "patronymic", 0))
                 continue
             # **`Olai Plantin` is a patronymic and a family name, in that order.** The worked

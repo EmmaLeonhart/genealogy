@@ -49295,3 +49295,16 @@ Measured the same hour (`reports/multiple-family-names.csv`): of 8,386 ledger it
 1,818 carry more than one; 1,395 because of a married name (intended), **230 because the old
 reading split the surname field** (114 on its own, 116 alongside a married name), 104 not in our
 name fields, 89 other. The 230 are what the separate queue item on reviewing split surnames works.
+
+## 2026-09-28 07:10 PDT: patronymic mix-ups in the married-name field
+
+`reports/patronymic-mixups.csv` (our 1,680 people; corpus counts in brackets): a patronymic in
+`_MARNM` that is her own repeated 735 (59,061), a spouse's 113 (11,545), whose is unknown 832
+(95,903). The model read `_MARNM` as a married family name unless `is_daughter_patronymic`
+matched, and that test wants an `s` before `-datter`, so `Karen / / Lauritzdatter` got the married
+family name `Lauritzdatter`; and a man's own patronymic there (`Jonas / / Hansson`, son of Hans)
+was a married name too. Now: any daughter form (`-datter`, `-dotter`, `-dóttir`, `-dochter`) in
+`_MARNM` is a patronymic, and a son form is one when the father's given name is its stem
+(`_father_attests`); otherwise a son form stays the married surname (a woman with `-son`/`-sen` is
+a surname, Emma's slam dunk). Tests added. The item stays open for the given-name slot and for
+Geni's own mix-ups of this kind.

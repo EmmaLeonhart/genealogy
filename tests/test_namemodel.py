@@ -1651,3 +1651,16 @@ def test_the_rest_of_the_surname_field_is_one_surname(givn, surn, father, want):
     got = [(t, u) for t, u, _o in namemodel.classify_fields(givn, surn, father_name=father)
            if u in ("family", "patronymic")]
     assert got == want
+
+
+@pytest.mark.parametrize("givn, surn, marnm, father, want", [
+    ("Karen", "", "Lauritzdatter", "", "patronymic"),     # a daughter form, whatever the stem
+    ("Jonas", "", "Hansson", "Hans Olsson", "patronymic"),  # a son form the father attests
+    ("Jonas", "", "Hansson", "", "married"),               # unattested: stays a married name
+    ("Anna", "Olsdatter", "Hansen", "Ola", "married"),     # a woman with -sen: a surname
+])
+def test_a_patronymic_in_the_married_name_field(givn, surn, marnm, father, want):
+    """2026-09-28, the patronymic mix-ups audit: a patronymic is its own thing in any slot."""
+    got = dict((t, u) for t, u, _o in namemodel.classify_fields(givn, surn, marnm=marnm,
+                                                                father_name=father))
+    assert got[marnm] == want
