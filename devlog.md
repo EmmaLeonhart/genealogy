@@ -48821,3 +48821,7 @@ Emma, for the browser QuickStatements loop: the ring goes up as early as possibl
 ## 2026-09-27 -- notes-only pushes no longer start a full pipeline run
 
 The first lean rebuild of the loop (run 36364175168) sat pending behind a full run started by an earlier push (36359720296, 23:44 UTC), which was cancelled so the rebuild could start. To stop that recurring, `pipeline.yml`'s push trigger now has `paths-ignore` for `queue.md`, `devlog.md`, `todo.md`, `CLAUDE.md` and `docs/**`: queue additions from ontology-harness and the session's own notes no longer rebuild. A code push still does, and during the loop those go with `[skip ci]`.
+
+## 2026-09-27 -- NN people and repeated label + description pairs: measured, none left
+
+The queue item said several NN people were given one identical `en` label and description, so Wikidata refused all but the first. Measured today: the committed batch has 523 creations with an `en` label and description and no pair used twice, and the 9,919 live items of ours with both share none (Wikidata enforces that itself). What prevents it now is the composer's guards: every NN creation carries an explicit `en` label; a description may not equal the label; and `build-description-audit.py` gives the Geni id as the description to anyone whose description would collide anywhere in the corpus. The item is closed; the people refused earlier are picked again by later batches.
