@@ -49212,3 +49212,19 @@ with, **82** whose father carries the same token, **104** whose root does not ma
 1,047 with no father in the tree, 19 with an unknown token; in the batch, 172 / 1 / 3 / 41 / 15.
 `reports/patronymic-audit.csv` and `patronymic-review.html` now use these verdicts (186 rows to
 review). The patronymic audit item stays open on the review.
+
+## 2026-09-28 05:10 PDT: scripts that force redirects (item closed)
+
+Measured: of the 15,564 ledger QIDs, 2 are redirects in the live item shards (`Q118174971` to
+`Q6231116`, `Q118174972` to `Q15845368`), and neither is named by any batch line or hand table.
+Of the 2,065 QIDs the day batch and the FamilySearch batch name, the 603 outside the shards were
+checked on Wikidata (`titles=…&redirects=1`, 50 a request, spaced out): none is a redirect. So
+nothing is being forced onto a redirect today; the old cases (the entry points of 2026-09-21)
+were resolved by hand earlier.
+
+Two changes so it stays that way. The builder printed only the last line of the live-values
+refresh, dropping the refresh's list of requested items that did not come back (the merged-away
+ones); it now prints that list (7f9d11087). And the ledger follows a merge: `ledger_redirects()`
+reads the redirect record `wbgetentities` puts in the shards, and `our_items` maps every
+merged-away QID to its target before anything is composed, so statements go to the surviving
+item instead of the redirect. Test added. Item deleted.

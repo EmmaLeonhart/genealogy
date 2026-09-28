@@ -1987,6 +1987,18 @@ def hand_corrected_names():
     return out
 
 
+def ledger_redirects():
+    """`{old_qid: target_qid}` for ledger items Wikidata has merged away, from the redirect
+    record `wbgetentities` puts on each entity in the live item shards."""
+    out = {}
+    for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json")):
+        for qid, entity in json.loads(shard.read_text(encoding="utf-8")).items():
+            to = (((entity or {}).get("redirects") or {}).get("to") or "")
+            if to and to != qid:
+                out[qid] = to
+    return out
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -7039,6 +7051,15 @@ def main():
               "created name items refreshed")
 
     our_items = ledger()
+    # ⛔ **A MERGED ITEM IS FOLLOWED TO ITS TARGET, NEVER EDITED. 2026-09-28** (queue item on
+    # scripts that force redirects): the ledger keeps the QID an item had when we first met it,
+    # and a merge since leaves that QID a redirect; every statement then went to the redirect.
+    # The live item shards record each redirect (`from` -> `to`), so the ledger follows them here.
+    _merged = ledger_redirects()
+    if _merged:
+        our_items = {g: _merged.get(q, q) for g, q in our_items.items()}
+        print(f"ledger: {len(_merged)} merged-away QID(s) followed to their targets, e.g. "
+              f"{sorted(_merged.items())[:3]}")
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
     #
     # These are two different questions and conflating them cost a run: `have` seeds the

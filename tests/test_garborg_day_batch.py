@@ -1365,3 +1365,21 @@ def test_a_name_a_person_corrected_on_wikidata_becomes_the_name(tmp_path):
         "Q3\tmul\tEmma by hand\t\tY\t2026-09-27\n", encoding="utf-8")
     mod.ROOT = tmp_path
     assert mod.hand_corrected_names() == {"Q1": "Segrid NN"}
+
+
+def test_a_merged_ledger_item_is_followed_to_its_target(tmp_path):
+    """2026-09-28: a ledger QID that Wikidata has merged away resolves to the surviving item."""
+    import importlib.util
+    import json
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "garborg-live-items-00.json").write_text(json.dumps({
+        "Q1": {"id": "Q9", "redirects": {"from": "Q1", "to": "Q9"}},
+        "Q2": {"id": "Q2"}}), encoding="utf-8")
+    mod.ROOT = tmp_path
+    assert mod.ledger_redirects() == {"Q1": "Q9"}
