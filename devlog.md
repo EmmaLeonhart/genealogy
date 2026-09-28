@@ -49436,3 +49436,15 @@ label-and-description guard refuses only an exact match, so it did not fire. The
 "one file run twice" was wrong on that point: my check looked only at batch files from 09-26 18:00
 on. The mechanism is a stale batch run late; the guard's weakness is that descriptions are not
 stable from one build to the next.
+
+## 2026-09-28 12:30 PDT: the duplicate parent items, closed
+
+GZWDer's three examples are one Geni person created twice each. Across our items, 136 Geni ids sit
+on two to four items (`reports/duplicate-creations-evidence.csv`), none contradicting another on
+any fact. What happened: the description logic changed between builds, so a later creation's
+description did not match the earlier one's and Wikidata did not refuse it; and NN copies without
+an `en` label could not be matched at all. The cause is addressed by Emma's two rulings of the
+same day, in CLAUDE.md: the description logic is frozen, even when bad, and an NN person is `NN`
+in `mul` and `en`, with no descriptive English label. `P2889` now goes on as a statement wherever
+we cite FamilySearch (GZWDer's second ask). The merges are Emma's, through the Wikidata user
+interface only (the merge gadget); nothing here performs one. Item deleted.
