@@ -1391,3 +1391,24 @@ def test_a_merged_ledger_item_is_followed_to_its_target(tmp_path):
         "Q2": {"id": "Q2"}}), encoding="utf-8")
     mod.ROOT = tmp_path
     assert mod.ledger_redirects() == {"Q1": "Q9"}
+
+
+def test_a_familysearch_id_we_cite_is_also_a_statement():
+    """GZWDer on Wikidata, 2026-09-28: P2889 as a top-level statement, not only a reference."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod._FAMILY_SOURCES = {}
+    mod._FS_IDS.clear()
+    mod._FS_IDS.update({"100": "AAAA-111", "200": "BBBB-222"})
+    lines = ["CREATE", 'LAST\tLmul\t"A"', 'LAST\tP2600\t"100"', "LAST\tP31\tQ5",
+             'Q7\tP22\tQ8\tS2889\t"BBBB-222"']
+    out = mod.add_fs_id_statements(lines, {"200": "Q7"}, set())
+    assert out.index('LAST\tP2889\t"AAAA-111"') == out.index('LAST\tP2600\t"100"') + 1
+    assert 'Q7\tP2889\t"BBBB-222"' in out
+    held = mod.add_fs_id_statements(lines, {"200": "Q7"}, {("Q7", "P2889", "BBBB-222")})
+    assert 'Q7\tP2889\t"BBBB-222"' not in held

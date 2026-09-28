@@ -1999,6 +1999,44 @@ def ledger_redirects():
     return out
 
 
+def add_fs_id_statements(lines, our_items, live_values):
+    """`P2889` *FamilySearch person ID* as a statement wherever we cite it, not only as a reference.
+
+    Asked on Wikidata (GZWDer, `User talk:日巫女`, 2026-09-28): an item we cite FamilySearch on
+    should carry its own FamilySearch id as a top-level statement. A person being created gets it
+    beside their `P2600`; an existing item a line cites `S2889` on gets it once, unless it already
+    holds it. Only the item's OWN id is used, never a relative's (a reference may cite either).
+    """
+    family_source("", "", "")                       # loads `_FS_IDS`
+    qid_to_geni = {q: g for g, q in our_items.items()}
+    out, added, current_geni, block_has = [], 0, None, False
+    cited, stated = set(), {q for q, p, _v in live_values if p == "P2889"}
+    for ln in lines:
+        parts = ln.split("\t")
+        if ln.strip().upper() == "CREATE":
+            current_geni, block_has = None, False
+        elif parts[0] == "LAST" and len(parts) >= 3 and parts[1] == "P2889":
+            block_has = True
+        out.append(ln)
+        if parts[0] == "LAST" and len(parts) >= 3 and parts[1] == "P2600" and not block_has:
+            current_geni = parts[2].strip('"')
+            fs = _FS_IDS.get(current_geni)
+            if fs:
+                out.append(f'LAST\tP2889\t"{fs}"')
+                block_has, added = True, added + 1
+        if re.fullmatch(r"Q\d+", parts[0]) and "\tS2889\t" in ln:
+            cited.add(parts[0])
+    for q in sorted(cited - stated, key=lambda x: int(x[1:])):
+        fs = _FS_IDS.get(qid_to_geni.get(q, ""))
+        if fs:
+            out.append(f"#   {q}: its FamilySearch person ID as a statement, not only a reference")
+            out.append(f'{q}\tP2889\t"{fs}"')
+            added += 1
+    if added:
+        print(f"FamilySearch ids: {added} P2889 statement(s) added where we cite FamilySearch")
+    return out
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -9732,6 +9770,7 @@ def main():
         _final_lines, _held = drop_held_restatements(_final_lines, live_values)
         if _held:
             print(f"{_held} bare restatement(s) dropped from the assembled batch, head included")
+    _final_lines = add_fs_id_statements(_final_lines, our_items, live_values or set())
     _final_lines = gate_label_languages(_final_lines)
     _final_lines = update_applied_facts(_final_lines, live_labels, live_values,
                                         datetime.date.today().isoformat())

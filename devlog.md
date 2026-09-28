@@ -49366,3 +49366,21 @@ Arnbjørnsen Åkra" through `description-overwrites.tsv` (sent only while the li
 "Not, wife of …"). `Q141579674`'s live `mul` is already `NN`, and the batch no longer relabels it.
 Their `ja`/`zh`/`ko` labels are transliterations of the placeholder; they follow the corrected
 name when the tree's derived labels are next rebuilt. Both items deleted.
+
+## 2026-09-28 09:20 PDT: duplicate parent items (GZWDer's report), the cause, and P2889 as a statement
+
+GZWDer's three examples each have two `P22` fathers, and each pair is ONE Geni person created
+twice (the same `P2600` on both): `Q141498685`/`Q141498880` Olof NN and `Q141498701`/`Q141498838`
+Lars Anfinnsen Tu II, first by the automatic sender (2026-09-19 02:52 and 02:54 UTC), again an hour
+later by a pasted QuickStatements batch; `Q141488009`/`Q141492839` Tormod Ström by two consecutive
+batches (09-17 09:01 and 20:00 UTC). The pipeline sends a person both ways on purpose and relies on
+Wikidata refusing a second item with the same label AND description in one language; on 09-17 to
+09-19 that guard could not fire (descriptions only became mandatory on 09-19, and until that
+day's fix the description was the LAST line of a creation, so an item was born without it). Every
+creation in today's and last night's batches carries its `Len` and `Den` together. The full count
+of such pairs among our items is a query to the query service, which is rate-limiting to one
+request a minute during an outage; it is retrying.
+
+The same message asks for `P2889` as a statement, not only a reference: `add_fs_id_statements`
+adds it beside `P2600` on a creation whose FamilySearch id we know, and once on an existing item a
+line cites `S2889` on, unless Wikidata already holds it. Only the item's own id. Test added.
