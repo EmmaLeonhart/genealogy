@@ -47,6 +47,15 @@ on:
   # and do not push again while waiting on one if the point is to watch that run.
   push:
     branches: [main]
+    # ⛔ A PUSH THAT ONLY TOUCHES THE WORK NOTES DOES NOT REBUILD (2026-09-27). With the browser
+    # QuickStatements loop, every push that started a full run made the loop's lean rebuild wait
+    # behind nearly three hours of work, and queue additions from ontology-harness push often.
+    paths-ignore:
+      - queue.md
+      - devlog.md
+      - todo.md
+      - CLAUDE.md
+      - 'docs/**'
   schedule:
     # ⛔ **ONCE A DAY, PLUS ON PUSH. Ruled 2026-09-19:** *"this thing runs once a day and
     # also at push"*. It was every six hours -- `23 1,7,13,19` -- and that is now wrong for a
