@@ -1,0 +1,69 @@
+# ⛔ **THE GENERATIONS CHAIN THEMSELVES. Ruled 2026-09-27 (Emma).** The ring people are what limits
+# the work: they connect to each other, so the next ring can only grow from a ring that exists.
+# Several QuickStatements runs go at once in the browser, and whether a batch's non-ring tail ever
+# finishes does not matter. So a generation is DONE when the LAST ring person in its batch's order
+# exists on Wikidata, and at that moment the next lean rebuild starts, with nobody watching.
+#
+# `pipeline.yml` dispatches this after every day-batch commit, with the Geni id of that batch's last
+# ring person (`qs-loop-status.py --last-ring`). This checks every 15 minutes for an item carrying
+# that `P2600` (search, `haswbstatement`), and dispatches `pipeline.yml -f batch_only=true -f
+# force=true` when it appears. The session only opens each new batch in a new browser tab.
+#
+# Stops without dispatching when a newer batch has landed on main (that batch has its own watcher,
+# so only one chain runs). One job waits about 5 h 45 min at most; if the person still does not
+# exist then, the next generation starts anyway, so one creation QuickStatements skipped cannot
+# stall the chain (a guess, recorded in devlog 2026-09-27; Emma may rule otherwise).
+name: Ring watch
+
+on:
+  workflow_dispatch:
+    inputs:
+      geni:
+        description: "Geni id of the batch's last ring person"
+        required: true
+      batch_sha:
+        description: "The commit that last changed reports/wikidata-garborg-day-manual.txt"
+        required: true
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: ring-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Wait for the last ring person, then start the next generation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GENI: ${{ inputs.geni }}
+          BATCH_SHA: ${{ inputs.batch_sha }}
+        run: |
+          set -u
+          UA="genealogy-ring-watch/1.0 (https://github.com/EmmaLeonhart/genealogy)"
+          deadline=$(( $(date +%s) + 345 * 60 ))
+          while :; do
+            now_sha=$(gh api "repos/${GITHUB_REPOSITORY}/commits?path=reports/wikidata-garborg-day-manual.txt&per_page=1" --jq '.[0].sha')
+            case "$now_sha" in
+              "$BATCH_SHA"*) ;;
+              *) echo "a newer batch ($now_sha) is on main; its own watcher takes over"; exit 0 ;;
+            esac
+            hits=$(curl -sfA "$UA" "https://www.wikidata.org/w/api.php?action=query&list=search&srsearch=haswbstatement:P2600=${GENI}&srlimit=1&format=json" \
+                   | python3 -c 'import json,sys; print(json.load(sys.stdin)["query"]["searchinfo"]["totalhits"])' || echo 0)
+            if [ "${hits:-0}" -gt 0 ]; then
+              echo "last ring person (Geni ${GENI}) exists: starting the next generation"
+              break
+            fi
+            if [ "$(date +%s)" -ge "$deadline" ]; then
+              echo "::warning::Geni ${GENI} still not on Wikidata after ~5h45m; starting the next generation anyway"
+              break
+            fi
+            echo "$(date -u +%H:%M) Geni ${GENI} not created yet"
+            sleep 900
+          done
+          gh workflow run pipeline.yml --repo "$GITHUB_REPOSITORY" --ref main -f batch_only=true -f force=true

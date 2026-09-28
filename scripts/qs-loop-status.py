@@ -39,11 +39,32 @@ def ring_target(text):
     return sum(int(m.group(2)) for m in map(HEADER.match, text.splitlines()) if m)
 
 
+def last_ring_geni(text):
+    """The Geni id of the LAST ring person in the batch's order, or "" when there is no ring.
+
+    A generation is done when this person exists on Wikidata: QuickStatements runs the file top
+    to bottom and the ring comes first, so the last ring creation is the one the next rebuild
+    waits for (`ring-watch.yml`, Emma 2026-09-27). The non-ring tail does not matter to it.
+    """
+    in_ring, last = False, ""
+    for line in text.splitlines():
+        if line.startswith("# ▶ "):
+            in_ring = line.startswith("# ▶ THE RING")
+        elif in_ring and line.startswith("LAST	P2600	"):
+            last = line.split("	")[2].strip('"')
+    return last
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch-file", default=str(ROOT / "reports" / "wikidata-garborg-day-manual.txt"))
     ap.add_argument("--pages", type=int, default=4)
+    ap.add_argument("--last-ring", action="store_true",
+                    help="print the Geni id of the batch file's last ring person and stop")
     args = ap.parse_args()
+    if args.last_ring:
+        print(last_ring_geni(Path(args.batch_file).read_text(encoding="utf-8")))
+        return 0
     p = {"action": "query", "list": "usercontribs", "ucuser": ACCOUNT, "uclimit": "500",
          "ucprop": "title|timestamp|comment", "format": "json"}
     # Up to `--pages` pages of 500 (default 4, one request each): a batch past 500 edits would

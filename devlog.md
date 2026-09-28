@@ -48878,3 +48878,24 @@ same requests (no extra requests), which `compose_label` needs to check that a p
 items account for their whole name. The existing reader (`name_item_cjk`) looks only at the CJK
 keys, so the extra rows change nothing it does. Next: wire the composer against these and the
 live item shards.
+
+## 2026-09-27 21:10 PDT: the generations chain themselves in CI (`ring-watch.yml`)
+
+Emma, clarifying the loop: the ring people are the limiting factor (they connect to each other,
+so a ring grows only from a ring that exists), the non-ring tail is not the point, and whether a
+batch finishes does not matter. What she wants: the runner makes the QuickStatements, then waits,
+checks every 15 minutes whether the LAST person in its ordered ring is created, and when it is,
+starts another generation by itself. The session only opens each new batch in a new tab.
+
+Built: every day-batch commit in `pipeline.yml` now dispatches `ring-watch.yml` with the batch's
+last ring person (`qs-loop-status.py --last-ring`, the last `LAST P2600` inside the THE RING
+section). The watcher searches Wikidata for `haswbstatement:P2600=<id>` every 15 minutes and
+dispatches `pipeline.yml -f batch_only=true -f force=true` when it is there; the lean run commits
+the next batch and starts the next watcher. A newer watcher cancels an older one (concurrency
+group), and a watcher whose batch has been superseded on main exits, so one chain runs.
+
+**A guess, for Emma to overrule:** a watcher job waits about 5 h 45 min at most. If the person
+still does not exist then (QuickStatements skipped that creation, or no tab is running the
+batch), it starts the next generation anyway, so one missing creation cannot stall the chain.
+`pipeline.yml` gains `actions: write` for the dispatch. CLAUDE.md's loop section now states the
+goal and that CI, not the session, starts each generation.

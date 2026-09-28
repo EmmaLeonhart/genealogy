@@ -102,6 +102,8 @@ on:
 permissions:
   contents: write
   issues: write
+  # `actions: write` lets the run dispatch `ring-watch.yml`, which starts the next generation.
+  actions: write
 
 # Never two pipelines at once, and never cancel one that is mid-push.
 concurrency:
@@ -884,6 +886,23 @@ jobs:
           # AFTER the rebase and push: this is the sha now on main, and the one the site
           # must be built from. Without it the site publishes this commit's parent.
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # ⛔ **THE NEXT GENERATION STARTS ITSELF (Emma, 2026-09-27).** A generation is done when the
+      # last ring person in this batch's order exists on Wikidata; `ring-watch.yml` checks for
+      # that person every 15 minutes and then dispatches the next lean rebuild, which comes back
+      # here and starts the next watcher. A newer watcher cancels an older one, so one chain runs.
+      - name: Start the ring watch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          geni=$(python scripts/qs-loop-status.py --last-ring)
+          if [ -z "$geni" ]; then
+            echo "the batch has no ring section; no watcher started"
+            exit 0
+          fi
+          sha=$(gh api "repos/${GITHUB_REPOSITORY}/commits?path=reports/wikidata-garborg-day-manual.txt&per_page=1" --jq '.[0].sha')
+          echo "watching for Geni $geni (batch $sha)"
+          gh workflow run ring-watch.yml --repo "$GITHUB_REPOSITORY" --ref main -f geni="$geni" -f batch_sha="$sha"
 
       - name: Open the issue
         if: ${{ !inputs.batch_only }}
