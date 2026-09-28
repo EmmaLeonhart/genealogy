@@ -1344,3 +1344,24 @@ def test_a_removed_relationship_stays_off_from_the_other_side_too(tmp_path):
     got = mod.read_suppressed()
     assert {("Q1", "P40", "Q2"), ("Q2", "P22", "Q1"), ("Q2", "P25", "Q1"),
             ("Q3", "P26", "Q4"), ("Q4", "P26", "Q3")} <= got
+
+
+def test_a_name_a_person_corrected_on_wikidata_becomes_the_name(tmp_path):
+    """2026-09-28: the `mul` a human corrected our label to (else `en`) is the name the other
+    languages are derived from; a correction that removed the label gives nothing."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "corrected-label-slots.tsv").write_text(
+        "qid\tlang\tcorrected_by\tvalue_now\tours_was\tfound\n"
+        "Q1\ten\tEmma by hand\tSegrid\tmother of Malin\t2026-09-27\n"
+        "Q1\tmul\tEmma by hand\tSegrid NN\tmother of Malin\t2026-09-27\n"
+        "Q2\tja\tEmma by hand\t\tX\t2026-09-27\n"
+        "Q3\tmul\tEmma by hand\t\tY\t2026-09-27\n", encoding="utf-8")
+    mod.ROOT = tmp_path
+    assert mod.hand_corrected_names() == {"Q1": "Segrid NN"}

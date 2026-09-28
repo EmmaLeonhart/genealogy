@@ -49054,3 +49054,21 @@ is whether our tree matches Geni. Also fixed: a missing `suppressed-statements.t
 early and skipped `removed-statements.tsv` too. Test added. Labels: the corrected slots are
 already never re-sent, and the relational descriptions already name a relative by their live
 Wikidata label, so a hand correction to a name there already flows into descriptions.
+
+## 2026-09-28 01:45 PDT: the arguing item, closed
+
+Last part, labels: `hand_corrected_names()` reads `corrected-label-slots.tsv` and, where a human
+changed our `mul` (else `en`) label to another value, that value becomes the person's label in
+the composer, so the other languages are derived from the corrected name (22 such slots today,
+e.g. `Q141224907` "mother of Malin Olofsdotter" to "Segrid NN"). The corrected slot itself is
+still never re-sent. Test added.
+
+The item as a whole (Emma, 2026-09-27: the batches argue with her edits and other people's, and
+the model has to learn from corrections): every item history read at her OK, rate limited
+(14,530 items); 2,494 removed statements and 95 corrected label slots recorded and never
+re-sent; undos and restores resolved; a removed relationship blocks its inverse;
+`reports/applied-facts.csv` tracks every fact we send to an existing item (pending, live, gone)
+and a gone fact is not re-sent; a hand-corrected name is the name. Part (4), name items
+re-created after a merge or deletion, was measured on 2026-09-27 (none); a deleted item leaves no
+trace in the account's contributions, so specific surnames Emma has in mind would be checked
+item by item. Item deleted from the queue.

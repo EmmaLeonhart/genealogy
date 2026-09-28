@@ -1966,6 +1966,23 @@ def update_applied_facts(lines, live_labels, live_values, today, path=APPLIED_FA
     return kept
 
 
+def hand_corrected_names():
+    """`{qid: name}` from `reports/corrected-label-slots.tsv`: the `mul` label a human corrected
+    ours to (else the `en` one), where the correction left a value rather than removing it."""
+    path = ROOT / "reports" / "corrected-label-slots.tsv"
+    out = {}
+    if not path.exists():
+        return out
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="	"):
+            value = (row.get("value_now") or "").strip()
+            if not value or row["lang"] not in ("mul", "en"):
+                continue
+            if row["lang"] == "mul" or row["qid"] not in out:
+                out[row["qid"]] = value
+    return out
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -7439,6 +7456,19 @@ def main():
                 # `name_lines` where birth and married surnames are two DIFFERENT `P734`
                 # statements (`Q2507958` birth name, `Q28418670` married name).
                 referred_to_as[row["geni_id"]] = raw_label
+    # ⛔ **A NAME A PERSON CORRECTED ON WIKIDATA IS THE NAME. 2026-09-28** (the model half of the
+    # arguing item, labels): where a human changed our `mul` (else `en`) label after it went live,
+    # that value becomes the person's label here, so the other languages are derived from the
+    # corrected name instead of from the one they rejected. The corrected slot itself is never
+    # re-sent (`read_reverted_labels`).
+    _hand_names = hand_corrected_names()
+    _took = 0
+    for _g, _q in our_items.items():
+        if _q in _hand_names and _g in labels and labels[_g] != _hand_names[_q]:
+            labels[_g] = _hand_names[_q]
+            _took += 1
+    if _took:
+        print(f"hand-corrected names: {_took} person(s) take the name a human gave them on Wikidata")
 
     # **The GEDCOM name FIELDS, which is where name objects come from.** Caught
     # 2026-08-24: name objects are resolved from the fields, not by choosing which name
