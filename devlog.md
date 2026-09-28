@@ -49011,3 +49011,18 @@ reason to `out/wikidata/creation-candidates.tsv` (not committed; ~40,000 rows); 
 21:49 PDT) to turn ~1,300 candidates into the batch, so all of them would be many hours, past a
 runner's limit. The page lists the candidates by kind instead; generating QuickStatements for
 every one needs a different approach, left open.
+
+## 2026-09-28 00:20 PDT: the arguing item, parts (1) and (2), over every item history
+
+The rate-limited history read finished: 14,530 items (one record kept per item). Over all of them:
+- **Removals:** every `wbremoveclaims-remove` not made by our QuickStatements batches. 1,710
+  not yet recorded (Jura1 315, Marcus.linneberg 146, Salgo60 97, Dexbot 70, Epìdosis 54, Emma by
+  hand 53 …; `P7`/`P9`/`P107` are old properties we never send, harmless to hold).
+- **Undos and restores:** the same resolution as before (the undone revision's comment; our
+  QuickStatements edits inside a restore's window). 8 more statements, 3 more label slots.
+- **Labels corrected after our batch set them:** a label our batch wrote, later changed or
+  removed in the same language by a person (bots skipped): 32, all by Emma by hand (`ko` 11,
+  `zh` 8, `ja` 7, `mul` 5, `en` 1).
+`reports/removed-statements.tsv` is now 2,491 rows and `reports/corrected-label-slots.tsv` 98;
+the composer never re-sends either. Left on the queue item: (3) the model half and the
+`applied-facts.csv` build.
