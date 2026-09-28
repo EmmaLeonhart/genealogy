@@ -538,7 +538,60 @@ def order_all() -> int:
         after = order_file(before, first, ring_ids, seed, () if path == AUTO else fs)
         path.write_text(after, encoding="utf-8", newline="\n")
         print(f"{path.name}: ordered; {len(before.splitlines())} -> {len(after.splitlines())} lines")
+    summarise_candidates()
     return 0
+
+
+CANDIDATES = REPO / "out" / "wikidata" / "creation-candidates.tsv"
+CANDIDATES_SUMMARY = REPO / "reports" / "creation-candidates-summary.tsv"
+
+
+def summarise_candidates():
+    """How every possible creation of this run divides, against the batch a person runs.
+
+    Emma, 2026-09-27: of the people a batch makes, how many are ring and how many are the other
+    kinds, and what is possible beyond them. `build-garborg-day.py` writes each candidate's
+    category to `out/wikidata/creation-candidates.tsv`; this counts them by what became of them
+    in the finished `wikidata-garborg-day-manual.txt`, into a small committed table."""
+    if not CANDIDATES.exists() or not MANUAL.exists():
+        return
+    made = set()
+    for u in build_units(blocks(MANUAL.read_text(encoding="utf-8"))):
+        if not is_person_create(u):
+            continue
+        for line in u:
+            parts = line.split("\t")
+            if len(parts) >= 3 and parts[0] == "LAST" and parts[1] == "P2600":
+                made.add(parts[2].strip('"'))
+            elif len(parts) >= 3 and parts[0] == "LAST" and parts[1] == "P2889":
+                made.add("FS" + parts[2].strip('"').replace("-", ""))
+    import collections as _c
+    import csv as _csv
+    counts = _c.defaultdict(_c.Counter)
+    with open(CANDIDATES, encoding="utf-8", newline="") as fh:
+        for r in _csv.DictReader(fh, delimiter="\t"):
+            cat = r["category"]
+            if r["geni_id"] in made:
+                what = "in the batch"
+            elif cat == "not picked this run":
+                what = "not picked"
+            elif r["held"]:
+                what = "held back"
+            else:
+                what = "cut (the 180-person cap or a later gate)"
+            counts[cat][what] += 1
+    cols = ["in the batch", "held back", "cut (the 180-person cap or a later gate)", "not picked"]
+    order = ["ring (Geni)", "ring (FamilySearch)", "child", "spouse (no child to add)", "parent",
+             "free parent", "not picked this run"]
+    with open(CANDIDATES_SUMMARY, "w", encoding="utf-8", newline="") as fh:
+        w = _csv.writer(fh, delimiter="\t", lineterminator="\n")
+        w.writerow(["category"] + cols + ["total"])
+        for cat in order + sorted(set(counts) - set(order)):
+            if cat in counts:
+                w.writerow([cat] + [counts[cat][c] for c in cols] + [sum(counts[cat].values())])
+    print(f"{CANDIDATES_SUMMARY.relative_to(REPO)}: "
+          f"{sum(sum(c.values()) for c in counts.values()):,} possible creations, "
+          f"{sum(c['in the batch'] for c in counts.values())} in the batch")
 
 
 def main() -> int:

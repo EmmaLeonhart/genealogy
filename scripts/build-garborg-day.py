@@ -1841,6 +1841,39 @@ def gate_label_languages(lines):
     return out
 
 
+#: Every possible creation this run, with why it would be made and what became of it. Written to
+#: `out/` (not committed: tens of thousands of rows a run); `split-daily-batch.py --order` counts it
+#: against the finished batch into `reports/creation-candidates-summary.tsv`, which the site shows.
+CREATION_CANDIDATES_OUT = ROOT / "out" / "wikidata" / "creation-candidates.tsv"
+
+
+def creation_category(g, ring, why):
+    """The kind of creation a candidate is (Emma, 2026-09-27: how the people of a batch divide)."""
+    if g in ring:
+        return "ring (FamilySearch)" if str(g).startswith("FS") else "ring (Geni)"
+    reason = why.get(g) or ""
+    for prefix, name in (("child of", "child"), ("spouse of childless", "spouse (no child to add)"),
+                         ("parent of", "parent"), ("free parent", "free parent")):
+        if reason.startswith(prefix):
+            return name
+    return "not picked this run"
+
+
+def write_creation_candidates(candidates, ring, why, carried):
+    """`out/wikidata/creation-candidates.tsv`: geni_id, category, held (the reason a picked person
+    was held back, if they were). Every uncreated person one relationship from our items, plus the
+    ring."""
+    held = {g: r for g, _label, r in carried}
+    CREATION_CANDIDATES_OUT.parent.mkdir(parents=True, exist_ok=True)
+    with open(CREATION_CANDIDATES_OUT, "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh, delimiter="	")
+        w.writerow(["geni_id", "category", "held"])
+        for g in sorted(set(candidates) | set(ring) | set(why)):
+            w.writerow([g, creation_category(g, ring, why), (held.get(g) or "")[:120]])
+    print(f"wrote {CREATION_CANDIDATES_OUT.relative_to(ROOT)}: "
+          f"{len(set(candidates) | set(ring) | set(why)):,} possible creations")
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -7141,6 +7174,7 @@ def main():
         for line in why:
             print("   " + line)
         before = len(to_create)
+        _candidates = set(to_create)
         to_create = {g: to_create.get(g, "") for g in picked}
         compose_why = picked
         print(f"composed batch: {len(to_create)} people to create "
@@ -9532,6 +9566,8 @@ def main():
         print(f"{len(_orphans)} creation(s) dropped: the gate stripped the only relationship "
               f"they had, e.g. {_orphans[:4]}")
     out.write_text(NEWLINE.join(_final_lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
+    write_creation_candidates(locals().get("_candidates", set()), locals().get("_ring", {}),
+                              compose_why if isinstance(compose_why, dict) else {}, carried)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 
     cf = ROOT / "reports" / "garborg-carry-forward.tsv"

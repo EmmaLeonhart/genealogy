@@ -48989,3 +48989,25 @@ page of their own to be looked over by hand: `familysearch.html` on the Pages si
 which lean runs now rebuild too. Asked whether the ten FamilySearch people should still lead the
 loop batches: both (AskUserQuestion). `build-pages-site.BATCHES` and `pages.yml`'s sparse
 checkout both list the file.
+
+## 2026-09-27 23:55 PDT: a page of every possible creation, by kind
+
+Emma asked for a page of every possible individual creation (the Geni ring, the FamilySearch
+ring, all the other individuals) and how the non-ring people of a batch divide, since the
+picker changed as the pipeline sped up. The picker is still the original algorithm
+(`compose`): up to 200 people each get one uncreated child, or their spouse when the marriage has
+no child left; up to 200 each get one parent; and the other parent of anyone half-attached comes
+free (20 plus half the rest). On run 36374915021: 182 children, 18 spouses, 200 parents, 431 free
+parents, 831 picked out of 39,168 possible (everyone uncreated one relationship from our items),
+plus the ring of 689. The one difference from Emma's description: a person gets ONE parent per
+pick and the other arrives as a free parent, in the same run or the next.
+
+Built: `build-garborg-day.py` writes every possible creation with its kind and any hold-back
+reason to `out/wikidata/creation-candidates.tsv` (not committed; ~40,000 rows); `split-daily-batch
+--order` counts it against the finished batch into `reports/creation-candidates-summary.tsv`;
+`build-pages-site.py` shows it as `candidates.html`.
+
+**Full QuickStatements for all ~40,000 are not cheap:** the builder took 32 minutes (21:17 to
+21:49 PDT) to turn ~1,300 candidates into the batch, so all of them would be many hours, past a
+runner's limit. The page lists the candidates by kind instead; generating QuickStatements for
+every one needs a different approach, left open.

@@ -92,6 +92,35 @@ def esc(s):
     return html.escape(str(s or ""), quote=True)
 
 
+#: How every possible creation of the last run divides (`split-daily-batch.summarise_candidates`).
+CANDIDATES = ROOT / "reports" / "creation-candidates-summary.tsv"
+
+
+def render_candidates():
+    """`candidates.html`: the table of possible creations by kind and by what became of them."""
+    if not CANDIDATES.exists():
+        print("no %s; candidates page not built" % CANDIDATES.name)
+        return
+    rows = list(csv.reader(io.open(CANDIDATES, encoding="utf-8"), delimiter="	"))
+    head, body = rows[0], rows[1:]
+    cells = "".join("<th>%s</th>" % esc(h) for h in head)
+    lines = "".join("<tr>%s</tr>" % "".join(
+        ("<td>%s</td>" if k == 0 else "<td class=n>%s</td>") % esc(v) for k, v in enumerate(r))
+        for r in body)
+    page = ("<!doctype html><meta charset=utf-8><meta name=viewport "
+            "content='width=device-width,initial-scale=1'><title>Possible creations</title>"
+            "<style>body{font:15px system-ui;margin:16px;max-width:900px}table{border-collapse:"
+            "collapse;width:100%%}td,th{border-bottom:1px solid #ddd;padding:6px 8px;text-align:left}"
+            ".n{text-align:right;font-variant-numeric:tabular-nums}</style>"
+            "<h1>Possible creations</h1><p>Every uncreated person one relationship from our items, "
+            "plus the ancestor ring, by kind, against the batch of the last run "
+            "(<a href='index.html'>the daily batch</a>, <a href='familysearch.html'>FamilySearch</a>)"
+            ". Built %s.</p><div style='overflow-x:auto'><table><tr>%s</tr>%s</table></div>"
+            % (datetime.date.today().isoformat(), cells, lines))
+    io.open(OUT.parent / "candidates.html", "w", encoding="utf-8", newline="").write(page)
+    print("candidates.html -> %s kinds" % len(body))
+
+
 def render(source, name, title, note, tpl):
     """Write one batch page. Returns (creations, statement lines, bytes) or None if absent."""
     if not source.exists():
@@ -251,6 +280,8 @@ def main() -> int:
             continue
         print("%s -> %s creations, %s statement lines, %s bytes"
               % (name, got[0], format(got[1], ","), format(got[2], ",")))
+
+    render_candidates()
 
     for extra in ALONGSIDE:
         if not extra.exists():
