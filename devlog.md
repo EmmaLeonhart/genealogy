@@ -49200,3 +49200,15 @@ knows suffix forms, so prefix patronymics (`ferch Lewys`, and likely `ap`/`ibn`)
 
 Also: Chrome killed at Emma's word (04:00 PDT); the QuickStatements batch that was running in it
 (1790576777185) stopped with it.
+
+## 2026-09-28 04:25 PDT: the patronymic audit, corrected: 186, not 331
+
+The first audit called `patronymic_or_surname` with the father's display name only. The batch
+builder also passes the father's other spellings (alias names, further Latin names, `givn`,
+`nick`), which is what matches `Pedersdatter` to Per, `Larsson` to Laurentius, `Ingebretsen` to
+Ingebrigt. Without them the "model reads it as a surname" group (235) was mostly real
+patronymics. Recomputed with the builder's own inputs: live, 5,085 patronymics the model agrees
+with, **82** whose father carries the same token, **104** whose root does not match the father,
+1,047 with no father in the tree, 19 with an unknown token; in the batch, 172 / 1 / 3 / 41 / 15.
+`reports/patronymic-audit.csv` and `patronymic-review.html` now use these verdicts (186 rows to
+review). The patronymic audit item stays open on the review.

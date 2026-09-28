@@ -124,8 +124,8 @@ def render_candidates():
 #: The patronymic audit (`reports/patronymic-audit.csv`, 2026-09-28): the live `P5056` that fail
 #: Emma's surname tests, for her to review before anything live is changed (AskUserQuestion).
 PATRONYMIC_AUDIT = ROOT / "reports" / "patronymic-audit.csv"
-REVIEW_VERDICTS = ("father carries the same token (a surname)", "model reads it as a surname",
-                   "father known, no match (kept as patronymic)")
+REVIEW_VERDICTS = ("surname: the father carries the same token",
+                   "surname: the root does not match the father")
 
 
 def render_patronymic_review():
@@ -148,8 +148,8 @@ def render_patronymic_review():
             "collapse;width:100%%}td,th{border-bottom:1px solid #ddd;padding:6px 8px;text-align:left;"
             "vertical-align:top}small{color:#666}</style><h1>Patronymic review</h1>"
             "<p>%d live <code>P5056</code> patronymic statements on our items that fail the surname "
-            "tests (the father carries the same token; the model reads it as a surname; the root "
-            "does not match the father). Nothing changes on Wikidata until they are reviewed. "
+            "tests (the father carries the same token, or the root does not match the father, "
+            "read the way the batch builder reads it). Nothing changes on Wikidata until they are reviewed. "
             "Built %s from <code>reports/patronymic-audit.csv</code>.</p><div style='overflow-x:auto'>"
             "<table><tr><th>person</th><th>patronymic</th><th>father</th><th>why</th></tr>%s</table>"
             "</div>" % (len(rows), datetime.date.today().isoformat(), body))
