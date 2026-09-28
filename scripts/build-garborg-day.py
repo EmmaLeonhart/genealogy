@@ -1805,6 +1805,36 @@ def write_composed_labels():
           f" -> {COMPOSED_LABELS_OUT.relative_to(ROOT)}")
 
 
+def gate_label_languages(lines):
+    """Drop every `L`/`A` line outside `LABEL_LANGUAGES`, except Emma's own hand labels.
+
+    The gate for the ruling of 2026-09-27 (labels only in en, ja, zh, ko; see the call in
+    `main`). It runs on the composed lines AND on the final ones just before the file is written:
+    the label-correction pass is added after the first call, and on 2026-09-27 it put
+    generation-suffix labels (`d.y.`, `d.e.`) in da/nb/nn/no/sv into the batch past it.
+    """
+    hand_emma = set()
+    hand_path = ROOT / "reports" / "label-applications.tsv"
+    if hand_path.exists():
+        with open(hand_path, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="	"):
+                if (r.get("source") or "").strip() == "Emma":
+                    hand_emma.add((r["qid"], (r.get("kind") or "L") + r["lang"]))
+    dropped = collections.Counter()
+    out = []
+    for ln in lines:
+        parts = ln.strip().split("	")
+        m = re.fullmatch(r"[LA]([a-z]{2,3}(?:-[a-z0-9]+)*)", parts[1]) if len(parts) >= 3 else None
+        if m and m.group(1) not in LABEL_LANGUAGES and (parts[0], parts[1]) not in hand_emma:
+            dropped[m.group(1)] += 1
+            continue
+        out.append(ln)
+    if dropped:
+        print(f"labels outside {sorted(LABEL_LANGUAGES)}: {sum(dropped.values())} dropped "
+              f"({', '.join(f'{k} {v}' for k, v in dropped.most_common(8))})")
+    return out
+
+
 def retire_applied_labels(path, live_labels):
     """Drop every LABEL row of `path` whose value Wikidata already holds. Returns how many went.
 
@@ -8999,26 +9029,7 @@ def main():
     # not a guard: it drops any `L`/`A` line in another language, on a creation or an existing item.
     # Emma's OWN hand labels (`reports/label-applications.tsv`, source `Emma`) are deliberate
     # values, not generated ones, so they pass whatever their language.
-    _hand_emma = set()
-    _hand_path = ROOT / "reports" / "label-applications.tsv"
-    if _hand_path.exists():
-        with open(_hand_path, encoding="utf-8", newline="") as _fh:
-            for _r in csv.DictReader(_fh, delimiter="\t"):
-                if (_r.get("source") or "").strip() == "Emma":
-                    _hand_emma.add((_r["qid"], (_r.get("kind") or "L") + _r["lang"]))
-    _langs_dropped = collections.Counter()
-    _gated = []
-    for ln in kept:
-        parts = ln.strip().split("\t")
-        m = re.fullmatch(r"[LA]([a-z]{2,3}(?:-[a-z0-9]+)*)", parts[1]) if len(parts) >= 3 else None
-        if m and m.group(1) not in LABEL_LANGUAGES and (parts[0], parts[1]) not in _hand_emma:
-            _langs_dropped[m.group(1)] += 1
-            continue
-        _gated.append(ln)
-    if _langs_dropped:
-        print(f"labels outside {sorted(LABEL_LANGUAGES)}: {sum(_langs_dropped.values())} dropped "
-              f"({', '.join(f'{k} {v}' for k, v in _langs_dropped.most_common(8))})")
-    kept = _gated
+    kept = gate_label_languages(kept)
 
     # ⛔ **NOTHING NAMES THE OWNER'S ITEM OR GENI PROFILE. Ruled 2026-09-27** (*"extremely
     # dangerous"*): the cycle through the owner's profile put `P40`/`P25` links to `Q140568870` on
@@ -9508,6 +9519,7 @@ def main():
         _final_lines, _held = drop_held_restatements(_final_lines, live_values)
         if _held:
             print(f"{_held} bare restatement(s) dropped from the assembled batch, head included")
+    _final_lines = gate_label_languages(_final_lines)
     _final_lines, _orphans = qs_v1.drop_orphaned_creations(_final_lines)
     if _orphans:
         print(f"{len(_orphans)} creation(s) dropped: the gate stripped the only relationship "

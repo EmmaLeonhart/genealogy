@@ -48929,3 +48929,22 @@ then `P734`), composes `en`/`ja`/`zh`/`ko` with `namemodel.compose_label` and wr
 Tried locally on shard 03 (856 people with name statements): nothing composes yet, because the
 name-item label file on main has no `mul`/`en` rows until a run with today's refresher change;
 the whole-name check then refuses everything, which is the strict behaviour.
+
+## 2026-09-27 22:05 PDT: the label-language gate runs on the final batch too
+
+CI run 36376894445 passed the two failures fixed at 21:15 and failed one more:
+`test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere` found `da`, `nb`,
+`nn`, `no` and `sv` labels in the batch (`Q141584945 Lda "Gilius de Flon d.y."`, `Q141583574
+... d.y.`, `Q141584305 ... d.e.`): the generation-suffix labels on existing items, from
+`_label_corrections`, which is added to the batch AFTER the 2026-09-27 language gate ran. The
+gate is now `gate_label_languages()` and runs twice, on the composed lines and on the final ones
+just before the file is written, so no emitter can come after it. Batches b4ce2858cb and
+364ce184ce (both run in the browser tonight) carried these lines; they are live or going live
+on the items listed, as additions in languages the ruling excludes. They are not removed from
+here.
+
+Also cancelled: push-triggered full pipeline run 36375714701. It started because my `[skip ci]`
+commit (8565953a08) was pushed with an external queue addition on top, and GitHub reads `[skip
+ci]` from the newest commit of a push only; the push touched workflows and scripts, so the paths
+filter let it through. A full run holds the `pipeline` concurrency group for about 2 h 50 min,
+and the ring watcher's lean rebuild would have queued behind it.
