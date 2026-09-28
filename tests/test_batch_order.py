@@ -87,3 +87,29 @@ def test_commands_are_only_moved_and_the_pass_is_idempotent():
     cmds = lambda t: sorted(l for l in t.splitlines() if l.strip() and not l.startswith("#"))
     assert cmds(out) == cmds(BATCH)
     assert ordered(out) == out
+
+
+def test_a_batch_keeps_120_non_ring_people_or_enough_to_reach_180():
+    # Ruled 2026-09-27 (Emma): max(120, 180 - ring) non-ring people; the rest wait for a later run.
+    many = "\n".join(sum((person(str(1000 + k), f"Other {k}") for k in range(200)), [])
+                     + person("300", "Ring One") + person("500", "Ring Two")) + "\n"
+    out = split.order_file(many, first_people=2, ring_ids={"300", "500"}, seed="2026-09-27")
+    others = sum(1 for k in range(200) if f'"Other {k}"' in out)
+    assert others == 178                         # 180 - 2 ring people, above the floor of 120
+    assert '"Ring One"' in out and '"Ring Two"' in out
+    assert split.order_file(out, first_people=2, ring_ids={"300", "500"}, seed="2026-09-27") == out
+
+
+def test_ten_familysearch_people_lead_the_batch():
+    # Ruled 2026-09-27 (Emma): a separate population; ten at the start of every batch, as a test.
+    fs = [["CREATE", f'LAST\tLmul\t"FS {k}"', "LAST\tP31\tQ5", f'LAST\tP2889\t"AB{k:02d}-XYZ"']
+          for k in range(12)]
+    out = split.order_file(BATCH, first_people=2, ring_ids={"300", "500"}, seed="2026-09-27",
+                           familysearch=fs)
+    heads = [l for l in out.splitlines() if l.startswith(split.HEADER)]
+    assert heads[0].startswith("# ▶ FAMILYSEARCH: 10 people")
+    assert sum(1 for k in range(12) if f'"FS {k}"' in out) == 10
+    assert out.index('"FS 0"') < out.index('"Ring One"')
+    again = split.order_file(out, first_people=2, ring_ids={"300", "500"}, seed="2026-09-27",
+                             familysearch=fs)
+    assert again == out

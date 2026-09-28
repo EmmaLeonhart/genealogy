@@ -48962,3 +48962,20 @@ identified by the correspondence") cover most: they exist on Wikidata but not in
 never reached their parents. Fixed: the walk also passes through `any_wikidata_item` and
 `known_pair`. Test added. The FamilySearch-only half is a question for Emma (whether and how
 they are created), queued.
+
+## 2026-09-27 23:10 PDT: 180 people a batch, and ten FamilySearch people first
+
+Emma, after the ring measurement: ~300 non-ring people a batch is too many beside a ring of
+~60. Ruled: a batch keeps `max(120, 180 - ring)` non-ring people (120, or enough to reach 180
+when the ring is under 60; a bigger ring still gets 120). And FamilySearch people are a separate
+population: ten of them lead every batch, as a test that they come out well formed.
+
+`split-daily-batch.py --order`: the non-ring people are cut to that number (the rest are picked
+again by a later run; every run composes afresh), and a FAMILYSEARCH section of ten creations
+from `reports/wikidata-familysearch-day.txt` opens the files a person runs (not the unattended
+auto half), people on the ancestor ring's FamilySearch boundary first. The later non-ring people
+are now ordered by a hash of the day's seed and the person instead of a shuffle, so a cut subset
+keeps its order and the pass stays idempotent. `pipeline.yml` builds the FamilySearch batch in
+lean runs too (it was full runs only, and the file on main dated from 2026-09-24). On batch
+364ce184ce this gives 10 + 58 ring + 49 name items + 122 others = 239 creations instead of 410.
+Tests in `test_batch_order.py`.

@@ -487,8 +487,10 @@ jobs:
       # It regenerates here rather than in a session because `CLAUDE.md` § *Code that is
       # WRITTEN but never CALLED is not done*: the bridge grows every time one of these items
       # gets a `P2889`, so a snapshot committed by hand is wrong the day after it is made.
+      # ⛔ AND THE LEAN RUN BUILDS IT TOO (Emma, 2026-09-27): ten FamilySearch people lead every
+      # batch as a test (`split-daily-batch.py` § FAMILYSEARCH_TEST), taken from this file, so it
+      # has to be as current as the batch it goes into.
       - name: The FamilySearch batch, its own file
-        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src

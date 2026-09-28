@@ -290,6 +290,20 @@ def _bound_to_create(line):
 # reordered: the check below refuses to write a file whose set of commands changed, or where a
 # `LAST` precedes every `CREATE`.
 HEADER = "# ▶ "
+
+#: ⛔ **A BATCH AIMS AT 180 PEOPLE. Ruled 2026-09-27 (Emma):** the ring is what limits the work,
+#: and ~300 other people a batch was too many beside a ring of ~60. So a batch keeps at least
+#: `NON_RING_MIN` non-ring people, and more when the ring is small, up to `BATCH_PEOPLE` in all:
+#: `max(120, 180 - ring)`. A ring over 60 still gets 120 (the batch passes 180). The people left
+#: out are not lost: every run composes afresh and picks again.
+BATCH_PEOPLE = 180
+NON_RING_MIN = 120
+#: ⛔ **TEN FAMILYSEARCH PEOPLE LEAD EACH BATCH, AS A TEST. Ruled 2026-09-27 (Emma):**
+#: FamilySearch people are a separate population, and ten of them go at the start of every batch
+#: to see whether they come out well formed. Taken from `reports/wikidata-familysearch-day.txt`,
+#: the people on the ancestor ring's FamilySearch boundary first.
+FAMILYSEARCH_TEST = 10
+FAMILYSEARCH_FILE = REPO / "reports" / "wikidata-familysearch-day.txt"
 RELATIONSHIPS = {"P22": "parent", "P25": "parent", "P40": "parent", "P26": "P26", "P3373": "P3373"}
 
 
@@ -351,14 +365,19 @@ def _statements(lines):
     return out
 
 
-def order_file(text, first_people, ring_ids, seed):
+def order_file(text, first_people, ring_ids, seed, familysearch=()):
     """`text` reordered into the cohorts, each under a header. Commands are only moved."""
     lines = _clean_comments(text.splitlines())
     units = build_units(blocks(chr(10).join(lines)))
     person = [i for i, u in enumerate(units) if is_person_create(u)]
     ring = [i for i in person if ring_geni_ids(units[i]) & ring_ids]
     ring_set = set(ring)
-    others = [i for i in person if i not in ring_set]
+    # A FamilySearch-only creation already in the file (a `P2889` and no `P2600`) stays in the
+    # FamilySearch section, so the pass gives the same file when it runs on its own output.
+    fs_here = [i for i in person if i not in ring_set
+               and any(l.startswith("LAST	P2889	") for l in units[i])
+               and not any(l.startswith("LAST	P2600	") for l in units[i])]
+    others = [i for i in person if i not in ring_set and i not in fs_here]
     names = [i for i, u in enumerate(units) if name_kind(u)]
     creation = set(person) | set(names)
 
@@ -401,8 +420,15 @@ def order_file(text, first_people, ring_ids, seed):
     rng = random.Random(seed)
     ring_order = sorted(ring, key=by_id)
     rng.shuffle(ring_order)
-    first, later = others[:first_people], sorted(others[first_people:], key=by_id)
-    rng.shuffle(later)
+    # The later people are ordered by a hash of the day's seed and the person, not shuffled: a
+    # batch keeps only the first of them (`keep` below), and a hash order puts a subset in the
+    # same relative order, so running the pass again on its own output changes nothing.
+    import hashlib
+
+    def by_hash(i):
+        return (hashlib.sha1((seed + "|" + "|".join(by_id(i))).encode("utf-8")).hexdigest(),
+                by_id(i))
+    first, later = others[:first_people], sorted(others[first_people:], key=by_hash)
 
     out = []
 
@@ -424,11 +450,22 @@ def order_file(text, first_people, ring_ids, seed):
     # (relationship pairs never split), so creations slow down and the waiting between them is
     # spent on edits. This replaces the 2026-09-27-morning order, which put all the existing-item
     # edits first and the random individuals before the ring.
+    present = set(text.splitlines())
+    fs_units = [u for u in familysearch
+                if not any(l in present for l in u if l.startswith("LAST	P2889	"))]
+    fs_units = fs_units[:max(0, FAMILYSEARCH_TEST - len(fs_here))]
+    fs_new = fs_units
+    fs_units = [bound_of[i] for i in fs_here] + fs_units
+    section(f"FAMILYSEARCH: {len(fs_units)} people, a test that they come out well formed",
+            fs_units, True)
     section(f"THE RING: all {len(ring_order)} ancestor-ring people, shuffled",
             [bound_of[i] for i in ring_order], True)
     section(f"NAME ITEMS: {len(names)}, each followed by the links to the people who bear it",
             [bound_of[i] for i in names], True)
     people = first + later
+    keep = max(NON_RING_MIN, BATCH_PEOPLE - len(ring_order))
+    dropped = [l for i in people[keep:] for l in bound_of[i]]
+    people = people[:keep]
     rest_chunks = [[l for part in g for l in part] for g in groups.values()] + props
     per = -(-len(rest_chunks) // len(people)) if people else len(rest_chunks)
     if people or rest_chunks:
@@ -450,8 +487,10 @@ def order_file(text, first_people, ring_ids, seed):
 
     def commands(t):
         return _c.Counter(l for l in t.splitlines() if l.strip() and not l.lstrip().startswith("#"))
-    if commands(result) != commands(text):
-        lost, extra = commands(text) - commands(result), commands(result) - commands(text)
+    expected = (commands(text) - commands(chr(10).join(dropped))
+                + commands(chr(10).join(l for u in fs_new for l in u)))
+    if commands(result) != expected:
+        lost, extra = expected - commands(result), commands(result) - expected
         raise SystemExit(f"the order pass changed the commands: {sum(lost.values())} lost, "
                          f"{sum(extra.values())} extra, e.g. {list((lost or extra).elements())[:2]}")
     seen_create = False
@@ -464,15 +503,39 @@ def order_file(text, first_people, ring_ids, seed):
     return result
 
 
+def familysearch_test_units(ring_ids):
+    """The FamilySearch batch's person creations, ring-boundary people first (`FS` + the
+    `P2889` id without its dash is how the tree keys a FamilySearch-only person)."""
+    if not FAMILYSEARCH_FILE.exists():
+        return []
+    units = [u for u in build_units(blocks(FAMILYSEARCH_FILE.read_text(encoding="utf-8")))
+             if is_person_create(u)]
+
+    def on_ring(u):
+        for line in u:
+            parts = line.split("	")
+            if len(parts) >= 3 and parts[0] == "LAST" and parts[1] == "P2889":
+                return ("FS" + parts[2].strip('"').replace("-", "")) in ring_ids
+        return False
+    units.sort(key=lambda u: not on_ring(u))
+    out = []
+    for u in units:
+        start = next(k for k, l in enumerate(u) if l.strip().upper() == "CREATE")
+        out.append([l for l in u[start:] if l.strip()])   # the file's banner stays behind
+    return out
+
+
 def order_all() -> int:
     """Put each finished batch file into the cohort order, in place."""
     ring_ids = load_ring_ids()
     seed = datetime.date.today().isoformat()
+    fs = familysearch_test_units(ring_ids)
     for path, first in ((AUTO, INDIVIDUALS), (MANUAL, PAGE_INDIVIDUALS), (SRC, PAGE_INDIVIDUALS)):
         if not path.exists():
             continue
         before = path.read_text(encoding="utf-8")
-        after = order_file(before, first, ring_ids, seed)
+        # The FamilySearch test goes in the files a person runs, never in the unattended half.
+        after = order_file(before, first, ring_ids, seed, () if path == AUTO else fs)
         path.write_text(after, encoding="utf-8", newline="\n")
         print(f"{path.name}: ordered; {len(before.splitlines())} -> {len(after.splitlines())} lines")
     return 0
