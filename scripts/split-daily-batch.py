@@ -240,6 +240,11 @@ def ring_geni_ids(u):
     """The `P2600` values a unit's creations carry, so a ring person can be recognised."""
     out = set()
     for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
+        # Only the CREATED item's own `P2600`: since 2026-09-27 a person's block is followed by
+        # edits on existing items, and a hand identification there (`Q… P2600 "<ring id>"`)
+        # made the person in front of it read as a ring person on the next pass.
+        if e.get("kind") != "create":
+            continue
         for c in e.get("claims") or ():
             if c.get("property") == "P2600":
                 # ⛔ **`qs_v1` HANDS BACK A DICT, NOT A STRING.** A `P2600` claim parses to
@@ -411,21 +416,34 @@ def order_file(text, first_people, ring_ids, seed):
                 out.append("")
             out.extend(l for l in chunk if l.strip())
 
-    if groups or props:
-        out.append(HEADER + "EDITS ON ITEMS THAT ALREADY EXIST: nothing created in this batch "
-                   "is needed for them")
-    section(f"(a) relationships: {sum(len(g) for g in groups.values())} statements, "
-            f"{both_ways} pairs sent both ways together",
-            [[l for part in g for l in part] for g in groups.values()], False)
-    section(f"(b) properties of one item: {len(props)} statements", props, False)
-    section(f"RANDOM INDIVIDUALS: {len(first)} people from the day's pick, not ring",
-            [bound_of[i] for i in first], True)
+    # ⛔ **THE RING FIRST, THEN ONE PERSON AND A SLICE OF THE OTHER EDITS AT A TIME. Ruled
+    # 2026-09-27** (Emma, for the browser QuickStatements loop): the ring is created as early as
+    # possible (still shuffled), because once it is up the next rebuild can start from it; the
+    # name items follow, since the people after them link to them; then every other person is
+    # created one at a time, each followed by an equal slice of the edits on existing items
+    # (relationship pairs never split), so creations slow down and the waiting between them is
+    # spent on edits. This replaces the 2026-09-27-morning order, which put all the existing-item
+    # edits first and the random individuals before the ring.
     section(f"THE RING: all {len(ring_order)} ancestor-ring people, shuffled",
             [bound_of[i] for i in ring_order], True)
     section(f"NAME ITEMS: {len(names)}, each followed by the links to the people who bear it",
             [bound_of[i] for i in names], True)
-    section(f"THE REST OF THE INDIVIDUALS: {len(later)}, shuffled",
-            [bound_of[i] for i in later], True)
+    people = first + later
+    rest_chunks = [[l for part in g for l in part] for g in groups.values()] + props
+    per = -(-len(rest_chunks) // len(people)) if people else len(rest_chunks)
+    if people or rest_chunks:
+        out.extend(["", HEADER + f"THE OTHER INDIVIDUALS, ONE AT A TIME: {len(people)} people, "
+                    f"each followed by up to {per} edits on items that already exist "
+                    f"({sum(len(g) for g in groups.values())} relationship statements, "
+                    f"{both_ways} pairs sent both ways together; {len(props)} properties)"])
+    for k, i in enumerate(people):
+        out.append("")
+        out.extend(l for l in bound_of[i] if l.strip())
+        for chunk in rest_chunks[k * per:(k + 1) * per]:
+            out.extend(l for l in chunk if l.strip())
+    if not people:
+        for chunk in rest_chunks:
+            out.extend(l for l in chunk if l.strip())
     result = chr(10).join(out).strip(chr(10)) + chr(10)
 
     import collections as _c

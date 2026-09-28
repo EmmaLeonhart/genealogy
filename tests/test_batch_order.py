@@ -40,16 +40,26 @@ def ordered(text=BATCH):
 
 
 def test_cohorts_in_order_with_headers():
+    # Ruled 2026-09-27 (evening): the ring first, then the names, then the other people one at a
+    # time, each followed by a slice of the edits on existing items.
     out = ordered()
     heads = [l for l in out.splitlines() if l.startswith(split.HEADER)]
     assert [h.split(":")[0] for h in heads] == [
-        "# ▶ EDITS ON ITEMS THAT ALREADY EXIST", "# ▶ (a) relationships",
-        "# ▶ (b) properties of one item", "# ▶ RANDOM INDIVIDUALS", "# ▶ THE RING",
-        "# ▶ NAME ITEMS", "# ▶ THE REST OF THE INDIVIDUALS"]
+        "# ▶ THE RING", "# ▶ NAME ITEMS", "# ▶ THE OTHER INDIVIDUALS, ONE AT A TIME"]
     pos = {k: out.index(f'"{k}"') for k in ("Random One", "Random Two", "Ring One", "Ring Two",
                                              "Garborg", "Rest One")}
-    assert pos["Random One"] < pos["Random Two"] < min(pos["Ring One"], pos["Ring Two"])
-    assert max(pos["Ring One"], pos["Ring Two"]) < pos["Garborg"] < pos["Rest One"]
+    assert max(pos["Ring One"], pos["Ring Two"]) < pos["Garborg"]
+    assert pos["Garborg"] < min(pos["Random One"], pos["Random Two"], pos["Rest One"])
+
+
+def test_existing_item_edits_are_spread_between_the_people():
+    lines = ordered().splitlines()
+    creates = [i for i, l in enumerate(lines) if l == "CREATE"]
+    edits = [i for i, l in enumerate(lines) if l.startswith("Q") and "\t" in l and "LAST" not in l]
+    last_ring_or_name = creates[2]             # two ring people, then the one name item
+    between = [sum(1 for e in edits if a < e < b) for a, b in zip(creates[3:], creates[4:])]
+    assert all(e > last_ring_or_name for e in edits)
+    assert between and all(n >= 1 for n in between)
 
 
 def test_a_relationship_pair_goes_together_and_amul_stays_above_lmul():
