@@ -49384,3 +49384,18 @@ request a minute during an outage; it is retrying.
 The same message asks for `P2889` as a statement, not only a reference: `add_fs_id_statements`
 adds it beside `P2600` on a creation whose FamilySearch id we know, and once on an existing item a
 line cites `S2889` on, unless Wikidata already holds it. Only the item's own id. Test added.
+
+## 2026-09-28 09:50 PDT: duplicate creations, the full count
+
+The query service throttled this machine (one request a minute, "active wdqs outage"), so the
+query ran from a GitHub runner through `fetch-url.yml` (run 36468826227): **136 Geni ids sit on
+two or more items in our Q141… range** (68 on four, 28 on three, 40 on two),
+`reports/duplicate-creations.csv`. Most are recent (Q14157…). Classified from the items:
+- 102 are NN people with some copies lacking an `en` label (`Elisabeth NN`, "wife of Olaus Nicolai
+  Kanik", four times): Wikidata refuses a duplicate on label AND description in one language, and
+  NN creations had only `mul` until the 2026-09-27 ruling gave them an explicit `Len`. Fixed then.
+- 19 have `en` labels and identical descriptions on every copy, and 15 have descriptions that
+  differ: the same person created by two batches running at once (the browser loop starts a new
+  batch while an older tab still runs its tail, and the new batch is composed from a ledger that
+  does not yet hold the people the older tab has not reached).
+Merging and a fix for the overlap are put to Emma.
