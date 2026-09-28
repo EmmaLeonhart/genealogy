@@ -49290,3 +49290,8 @@ family name (`Stromer von Reichenbach`, `Sør-Kolnes`, `Sør Kolnes`, `Lunde Eri
 (`NN`, a lone farm letter) keep their own handling. `_MARNM` is untouched, so a married surname is
 still a second `P734`. Tests added; the item stays open for its measurement half (how many people
 carry more than one `P734` because of the old reading) and the review of existing items it names.
+
+Measured the same hour (`reports/multiple-family-names.csv`): of 8,386 ledger items with a `P734`,
+1,818 carry more than one; 1,395 because of a married name (intended), **230 because the old
+reading split the surname field** (114 on its own, 116 alongside a married name), 104 not in our
+name fields, 89 other. The 230 are what the separate queue item on reviewing split surnames works.
