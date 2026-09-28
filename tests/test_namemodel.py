@@ -1620,3 +1620,19 @@ def test_a_married_honorific_names_the_husband_not_her():
         assert namemodel.names_a_relative(givn), givn
         assert namemodel.own_given_name({"givn": givn}) == "", givn
     assert namemodel.own_given_name({"givn": "Anna"}) == "Anna"
+
+
+def test_a_bare_patronymic_in_nick_takes_the_given_names():
+    # 2026-09-28, the aliases audit: `NICK Eiriksson` went out as the alias `Eiriksson`.
+    assert namemodel.aliases_for({"givn": "Trond", "surn": "Eriksen Lunde",
+                                  "nick": "Eiriksson"}) == ["Trond Eiriksson"]
+
+
+def test_a_title_in_nick_is_no_alias():
+    assert namemodel.aliases_for({"givn": "Godred", "surn": "Haraldsson",
+                                  "nick": "King of the Isle of Man and of Dublin"}) == []
+
+
+def test_a_full_other_name_in_nick_stays_the_alias():
+    assert namemodel.aliases_for({"givn": "Sarah", "surn": "Miller",
+                                  "nick": "Sally Miller"}) == ["Sally Miller"]

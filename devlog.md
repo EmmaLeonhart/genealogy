@@ -49228,3 +49228,31 @@ ones); it now prints that list (7f9d11087). And the ledger follows a merge: `led
 reads the redirect record `wbgetentities` puts in the shards, and `our_items` maps every
 merged-away QID to its target before anything is composed, so statements go to the surviving
 item instead of the redirect. Test added. Item deleted.
+
+## 2026-09-28 05:40 PDT: the aliases audit (item closed)
+
+**Every kind of alias the pipeline writes, and its source** (all `Amul`; never `Aen`):
+1. **Geni's `NICK` field, verbatim** (`namemodel.aliases_for`): the largest source by far.
+2. **A quoted name inside `GIVN`** (`Sigrid "Sally" Manilva`): a real byname; the alias is the
+   byname with the (married) surname, `Sally Ekman`.
+3. **The full married name** under `_MARNM`, and **the birth name** when the married form is
+   the label (the 2026-09-25 ruling: married name primary, birth form the `Amul`).
+4. **The bracketed surname form** (`(Ulf af Horsnäs)`), so the person is findable as Geni
+   writes them.
+5. **The other long form of an abbreviated patronymic** (`-dotter`/`-datter`, 2026-09-27).
+6. **The old label, kept as an alias** when an existing item's label is overwritten.
+7. **Emma's hand applications** with kind `A` (`label-applications.tsv`).
+
+**What is mis-read as a nickname: the `NICK` field.** The code has long treated it as Geni's
+"also known as" rather than a byname, and the census confirms it: over 153,360 `NICK` fields
+(`reports/nickname-field-kinds.csv`), 29% hold a full other name (`Sally Miller`, `Olof Persson`),
+25% several words that are not a name (titles and epithets, `King of the Isle of Man and of
+Dublin`, other-script names), 3% a lone patronymic (`Eiriksson`), 1.7% a surname spelling, 1.2%
+the given name again, and 40% a single other word (true nicknames, but also maiden surnames,
+`Crocker`, and farm-widow names, `Bjølstadenka`). All of it went out verbatim as an alias.
+
+**Fixed** (both under existing rulings): a lone patronymic takes the given names (`Trond
+Eiriksson`, § a bare surname is not a name), and a `NICK` carrying a title gives no alias (§ A
+TITLE IS NOT A NAME). Tests added. **Not fixed, reported:** a single word that is a maiden
+surname or a widow's farm name cannot be told from a true nickname with what the model has; they
+still go out bare.

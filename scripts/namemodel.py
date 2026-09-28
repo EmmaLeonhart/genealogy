@@ -3516,6 +3516,17 @@ def aliases_for(fields, surn="", marnm=""):
             bare = token.strip()
             if bare not in quoted:
                 full = bare
+                # ⛔ **A BARE PATRONYMIC TAKES THE GIVEN NAMES; A TITLE IS NO ALIAS. 2026-09-28**
+                # (the aliases audit, `reports/nickname-field-kinds.csv`): 3% of `NICK` fields
+                # are a lone patronymic (`Trond Eriksen Lunde`, `NICK Eiriksson`), which went out
+                # as the alias `Eiriksson`, a name nobody is looked up by (§ a bare surname is not
+                # a name); it becomes `Trond Eiriksson`. And a `NICK` that is a title or an
+                # epithet (`King of the Isle of Man and of Dublin`) is not a name at all
+                # (§ A TITLE IS NOT A NAME), so it gives no alias.
+                if drop_label_title(bare) != bare:
+                    continue
+                if " " not in bare and is_patronymic(bare) and given:
+                    full = f"{' '.join(given)} {bare}"
             elif surname and bare.casefold().endswith(surname.casefold()):
                 full = bare
             else:
