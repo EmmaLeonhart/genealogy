@@ -1701,3 +1701,15 @@ def test_the_patronymic_catalogue_additions(token, want):
     """2026-09-28, `reports/patronymic-forms-catalogue.csv`: forms the model missed, and the
     lookalikes it must still refuse."""
     assert namemodel.is_patronymic(token) is want
+
+
+def test_composition_is_in_order_and_refuses_a_hiragana_reading():
+    """2026-09-28: `Øvre Bjørheim` (split into two items) composed backwards passed a sorted
+    comparison; and `まりえ` (hiragana) is no reading of Marie."""
+    names = {"Q1": {"mul": "Marie", "ja": "まりえ"}, "Q5": {"mul": "Marie", "ja": "マリー"},
+             "Q2": {"mul": "Bakke", "ja": "バッケ"},
+             "Q3": {"mul": "Bjørheim"}, "Q4": {"mul": "Øvre"}}
+    label = lambda q, l: names.get(q, {}).get(l)
+    assert namemodel.compose_label(["Q1", "Q2"], "ja", label, "Marie Bakke") is None
+    assert namemodel.compose_label(["Q5", "Q2"], "ja", label, "Marie Bakke") == "マリー・バッケ"
+    assert namemodel.compose_label(["Q3", "Q4"], "mul", label, "Øvre Bjørheim") is None

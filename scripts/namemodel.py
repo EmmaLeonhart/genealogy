@@ -3661,6 +3661,9 @@ LABEL_SCRIPT = {
     "ko": re.compile("^[\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f" + _HAN + r"\s-]+$"),
 }
 LABEL_JOIN = {"ja": "\u30fb", "zh": "\u00b7"}
+#: A `ja` name-item label written only in hiragana (`\u307e\u308a\u3048` for Marie, 2026-09-28) is no reading of
+#: a Western name, which is katakana; such a part counts as unlabelled.
+_ONLY_HIRAGANA = re.compile("^[\u3040-\u309f\u30fc\u30fb]+$")
 
 
 def compose_label(parts, lang, label_of, whole):
@@ -3677,10 +3680,13 @@ def compose_label(parts, lang, label_of, whole):
     for q in parts:
         text = (label_of(q, lang) or "").strip()
         script = LABEL_SCRIPT.get(lang)
-        if not text or (script and not script.match(text)):
+        if not text or (script and not script.match(text)) or (
+                lang == "ja" and _ONLY_HIRAGANA.match(text)):
             return None
         got.append(text)
     latin = " ".join((label_of(q, "mul") or label_of(q, "en") or "") for q in parts)
-    if sorted(latin.casefold().split()) != sorted(whole.casefold().split()):
+    # In ORDER, not as a bag of words (2026-09-28): `Øvre Bjørheim`, split by the old surname
+    # reading into two items, composed `Bjørheim Øvre` and passed a sorted comparison.
+    if latin.casefold().split() != whole.casefold().split():
         return None
     return LABEL_JOIN.get(lang, " ").join(got)

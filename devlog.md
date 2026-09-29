@@ -49523,3 +49523,12 @@ First of the four composer defects. `_name_parts` sent a given name with no `P15
 `Q141550240` (Efraim unnumbered, Wilhelm numbered 2) composed `Wilhelm Efraim`. An unnumbered
 statement now takes the lowest position the numbered ones leave free, in the order listed. Test
 added. Report only; nothing reaches the batch.
+
+## 2026-09-28 18:00 PDT: composer, the order check and hiragana readings
+
+The composer's whole-name check compared the words as a sorted bag, so `Øvre Bjørheim` (the old
+reading's two family-name items) composed `Bjørheim Øvre` and passed; it now compares in order.
+A `ja` name-item label written only in hiragana (`まりえ` for Marie) counts as unlabelled. The
+dropped titles (`Baroness Lovisa Thott`) are not a composer defect: that is a live `en` label by
+someone else beside a `mul` without the title, and a switched language must only fill empty
+slots. Tests added. Report only; nothing reaches the batch.
