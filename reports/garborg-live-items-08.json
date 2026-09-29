@@ -501046,6 +501046,66 @@
      "type": "statement"
     }
    ],
+   "P20": [
+    {
+     "id": "Q5429464$F08B6820-2AAC-4E80-8ED5-C6370302B83F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5684",
+        "numeric-id": 5684
+       }
+      },
+      "hash": "4947d7ba01a273e34a5896bf1a117818ac8ff7b6",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "266d5338c60bb1e2402cafcf2fe0a91cf34fbc47",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=263479368"
+          },
+          "hash": "04e85f701e8a21536053d837bdebbbb3050fcc08",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "Q5429464$0e10bd9c-4a10-ab26-8dc3-ccdfa28f7567",
@@ -501988,8 +502048,8 @@
     "value": "波斯公主斯塔蒂拉二世"
    }
   },
-  "lastrevid": 2547186406,
-  "modified": "2026-09-17T23:31:04Z",
+  "lastrevid": 2550862436,
+  "modified": "2026-09-29T12:44:29Z",
   "ns": 0,
   "pageid": 5192122,
   "sitelinks": {
