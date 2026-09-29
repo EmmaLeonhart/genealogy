@@ -49506,3 +49506,13 @@ zh 3. Now an error answer retries the same chunk after the lag it names, and the
 waits (it was 10; when it runs out the last good file is kept). The damaged file is replaced by the
 last good one (24,143 labels, from rebuild e2795bc3e), because the batch builder also reads it for
 the name items' CJK readings. Nothing is sent: edits are held.
+
+## 2026-09-28 17:00 PDT: composed labels measured against the live ones
+
+With the name-item label file whole again (rebuild 645fbfe32): composable en 4,287, ja 571, zh 521,
+ko 51 of 15,100 people. Where a live label exists: en 4,196 equal, 82 differ; ja 297 / 199; zh
+215 / 242; ko 21 / 27. The differences are four defects of the composer's inputs, not of the rule:
+given-name order (`Efraim Wilhelm` / `Wilhelm Efraim`), surnames the old reading split into two
+items composed in the wrong order (`Øvre Bjørheim`), titles the label keeps dropped (`Baroness`,
+`1st Lord Zouche`), and bad name-item labels taken as they are (`まりえ` in hiragana, `埃米莉亚利亞`).
+No language is switched; the composer stays a report. Recorded on the queue item.
