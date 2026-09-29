@@ -9258,6 +9258,126 @@
      "type": "statement"
     }
    ],
+   "P19": [
+    {
+     "id": "Q108554162$10519BA3-B0E0-45F4-9295-0B5CB97FB533",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q507165",
+        "numeric-id": 507165
+       }
+      },
+      "hash": "c2d990f56d0e79503973d3fa877b75b4a662defb",
+      "property": "P19",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "7b73f79abfd72785aa3c28565473448d19dafb3f",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=215631075"
+          },
+          "hash": "02c14acde8b66a056da4a6875d08f5570521592c",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P20": [
+    {
+     "id": "Q108554162$0450575C-707F-4940-8EDA-72C5B7351D8D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q490025",
+        "numeric-id": 490025
+       }
+      },
+      "hash": "31c49600066e6d871ae645bd6159aff54f26c073",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "7b73f79abfd72785aa3c28565473448d19dafb3f",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=215631075"
+          },
+          "hash": "02c14acde8b66a056da4a6875d08f5570521592c",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "Q108554162$8F844971-0129-40D1-A756-6F06C101ECC1",
@@ -10205,8 +10325,8 @@
     "value": "Georg Ludwig von Bülow"
    }
   },
-  "lastrevid": 2543613979,
-  "modified": "2026-09-11T00:09:28Z",
+  "lastrevid": 2550937608,
+  "modified": "2026-09-29T17:27:09Z",
   "ns": 0,
   "pageid": 103790134,
   "sitelinks": {
@@ -539839,6 +539959,66 @@
      "type": "statement"
     }
    ],
+   "P20": [
+    {
+     "id": "Q75245778$4E111234-51A8-418B-9DF2-56F687A0B325",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q14819",
+        "numeric-id": 14819
+       }
+      },
+      "hash": "edbc381a9fb6672d54775c2d53da724a2b7df204",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "8d8d12b2927b584b45a1ce3cc27e9800be893321",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=253172013"
+          },
+          "hash": "49d53ea3852cc03243fac1d16f9f98f164c2451c",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "Q75245778$D6BC456A-D824-4738-9732-4F0ECCF30151",
@@ -540335,8 +540515,8 @@
     "value": "Anne von Schwarzburg-Sondershausen"
    }
   },
-  "lastrevid": 2544992803,
-  "modified": "2026-09-13T10:52:26Z",
+  "lastrevid": 2550984048,
+  "modified": "2026-09-29T20:02:39Z",
   "ns": 0,
   "pageid": 74737264,
   "sitelinks": {

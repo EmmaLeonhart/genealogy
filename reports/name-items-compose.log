@@ -1,7 +1,7 @@
 243 people across 1 Garborg batches, 16544 already holding a QID
 2961 token(s) are already pointed at by their own bearers
-6409 tokens already have an item and are linked, not created
-3710 need creating, 0 are ambiguous and are not
+6410 tokens already have an item and are linked, not created
+3709 need creating, 0 are ambiguous and are not
 127 token(s) held: never a first given name in the corpus but attested as a family name -- Laurentii (5), Byre (3), lll (3), Grimelund (3), Georgii (2), Lauritzen (2)
 543 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Adalasia             given        Q62102498
@@ -269,7 +269,7 @@
    øystre Bore          family       Q16860245
    Симонида             given        Q602977
    蟜極                   given        Q125319074
-237 token(s) RESCUED by the live check -- these would have been created a second time:
+239 token(s) RESCUED by the live check -- these would have been created a second time:
    von Wrangell         family       already Q112692214
    von Mentzer          family       already Q47472748
    von Haartman         family       already Q47036010
@@ -354,6 +354,8 @@
    Wendula              given        already Q141106909
    Gunnarsson           patronymic   already Q69821535
    Einarsson            patronymic   already Q1305970
+   Tufto                family       already Q141599609
+   Tufto                family       already Q141599609
    de Geer              family       already Q42181347
    De Geer              family       already Q42181347
    von Schlieben        family       already Q112764161
@@ -518,7 +520,7 @@ checking 491 existing patronymic items for P144 based on and P460
    0 P144 statement(s) to remove
    40 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3698 carried to a later run), 45 statements linking an EXISTING person to one, in the same run
+wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3697 carried to a later run), 45 statements linking an EXISTING person to one, in the same run
 7 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
    1 created WITHOUT a P144: Kjeranson
   create  Laurentii            patronymic   11
@@ -1197,7 +1199,6 @@ wrote reports/wikidata-garborg-name-items.txt: 12 name items (cap 12, 3698 carri
   create  Torpa                family       2
   create  Torresdatter         patronymic   2
   create  Trulsen              patronymic   2
-  create  Tufto                family       2
   create  Turdfjäll            family       2
   create  Tårnsdatter          patronymic   2
   create  Tøres                given        2

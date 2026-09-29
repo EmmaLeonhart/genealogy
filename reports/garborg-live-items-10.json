@@ -553233,6 +553233,66 @@
    ]
   },
   "claims": {
+   "P20": [
+    {
+     "id": "Q792154$97F20BB7-699B-42F4-9DCC-141DD18CFF25",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q484070",
+        "numeric-id": 484070
+       }
+      },
+      "hash": "3c09b904d23ef9890e9c04b69e2d3dcd432c4134",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "989eb6da05e2f476573f3804fb33757f5d6e0fe1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=206048779"
+          },
+          "hash": "4f78d1759e4d64361970462c9518f2d61faf85c3",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "q792154$F8E18F46-6652-404A-ADC3-71FAAB1A125A",
@@ -554028,8 +554088,8 @@
     "value": "阿克塞尔·金特尔斯贝尔格"
    }
   },
-  "lastrevid": 2550579468,
-  "modified": "2026-09-28T18:11:52Z",
+  "lastrevid": 2550879233,
+  "modified": "2026-09-29T13:51:52Z",
   "ns": 0,
   "pageid": 745163,
   "sitelinks": {

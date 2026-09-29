@@ -444785,6 +444785,66 @@
      "type": "statement"
     }
    ],
+   "P20": [
+    {
+     "id": "Q18748299$0AE91816-E5AE-4400-8252-7CD1835EA541",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q167141",
+        "numeric-id": 167141
+       }
+      },
+      "hash": "8c79df66b5582d2831bd15afea47dae9a0f8d420",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "9bf39841dfecb40afe6879e7c5a07954dfc0caa3",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=259792940"
+          },
+          "hash": "b3fdd8624fcb59f701a26306b9d968217ac7cdf7",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "Q18748299$29CC19AD-E75B-4151-8976-6401B6F67BE2",
@@ -445755,8 +445815,8 @@
     "value": "Jeanne de Flandre"
    }
   },
-  "lastrevid": 2549043749,
-  "modified": "2026-09-24T14:30:56Z",
+  "lastrevid": 2550975616,
+  "modified": "2026-09-29T19:30:41Z",
   "ns": 0,
   "pageid": 20277095,
   "sitelinks": {

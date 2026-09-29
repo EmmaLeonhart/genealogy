@@ -5637,6 +5637,66 @@
    ]
   },
   "claims": {
+   "P20": [
+    {
+     "id": "Q105944783$181F1B30-5E16-4D2B-AFA6-5AF8CA451A67",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q896509",
+        "numeric-id": 896509
+       }
+      },
+      "hash": "348d085c420157d3510c8621a8ef69b39bd73ac1",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "21f50fb7e0bb81bf7b8ebc5a0d7306802ff2144b",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=257136640"
+          },
+          "hash": "4cd12a38ead32474b07ef9374470173a5222cb5a",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "Q105944783$ae0b8ad6-492c-e8bf-3209-ddcba9d3cd51",
@@ -6275,8 +6335,8 @@
     "value": "Agnes von Lichtenberg"
    }
   },
-  "lastrevid": 2547190997,
-  "modified": "2026-09-17T23:46:34Z",
+  "lastrevid": 2550978737,
+  "modified": "2026-09-29T19:43:41Z",
   "ns": 0,
   "pageid": 101287064,
   "sitelinks": {

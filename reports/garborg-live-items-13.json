@@ -446307,6 +446307,66 @@
      "type": "statement"
     }
    ],
+   "P20": [
+    {
+     "id": "Q15069149$D1020DA9-8498-4226-B0D6-C5755E3A5F8B",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q656",
+        "numeric-id": 656
+       }
+      },
+      "hash": "bea65ab900b48f88da7644e58b2b815ab0f95657",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "a3c070138db080ade3c5af6abaad8fa49a3e649e",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=267369809"
+          },
+          "hash": "e9226ba0f144bd2e21786034fb812dab05841b5d",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "Q15069149$8AF5D3D4-B6D2-4866-9D5C-0C8C14E587CD",
@@ -447337,8 +447397,8 @@
     "value": "Eduard Albert Collins"
    }
   },
-  "lastrevid": 2540854359,
-  "modified": "2026-09-06T05:05:44Z",
+  "lastrevid": 2550945323,
+  "modified": "2026-09-29T17:52:28Z",
   "ns": 0,
   "pageid": 16733911,
   "sitelinks": {
