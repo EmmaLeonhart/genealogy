@@ -49516,3 +49516,10 @@ given-name order (`Efraim Wilhelm` / `Wilhelm Efraim`), surnames the old reading
 items composed in the wrong order (`Øvre Bjørheim`), titles the label keeps dropped (`Baroness`,
 `1st Lord Zouche`), and bad name-item labels taken as they are (`まりえ` in hiragana, `埃米莉亚利亞`).
 No language is switched; the composer stays a report. Recorded on the queue item.
+
+## 2026-09-28 17:30 PDT: composer, given-name order fixed
+
+First of the four composer defects. `_name_parts` sent a given name with no `P1545` to the end, so
+`Q141550240` (Efraim unnumbered, Wilhelm numbered 2) composed `Wilhelm Efraim`. An unnumbered
+statement now takes the lowest position the numbered ones leave free, in the order listed. Test
+added. Report only; nothing reaches the batch.

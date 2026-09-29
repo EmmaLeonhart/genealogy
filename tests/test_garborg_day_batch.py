@@ -1412,3 +1412,23 @@ def test_a_familysearch_id_we_cite_is_also_a_statement():
     assert 'Q7\tP2889\t"BBBB-222"' in out
     held = mod.add_fs_id_statements(lines, {"200": "Q7"}, {("Q7", "P2889", "BBBB-222")})
     assert 'Q7\tP2889\t"BBBB-222"' not in held
+
+
+def test_an_unnumbered_given_name_takes_the_free_position():
+    """2026-09-28, `Q141550240`: Efraim unnumbered, Wilhelm `P1545` 2, composed `Efraim Wilhelm`."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    def st(q, o=None):
+        d = {"mainsnak": {"datavalue": {"value": {"id": q}}}, "rank": "normal"}
+        if o:
+            d["qualifiers"] = {"P1545": [{"datavalue": {"value": o}}]}
+        return d
+    assert mod._name_parts({"claims": {"P735": [st("Q1"), st("Q2", "2")]}}) == ["Q1", "Q2"]
+    assert mod._name_parts({"claims": {"P735": [st("Q2", "2"), st("Q1", "1"), st("Q3")]}}) == \
+        ["Q1", "Q2", "Q3"]

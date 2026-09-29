@@ -1777,10 +1777,16 @@ def _name_parts(entity):
             ords = [((q.get("datavalue") or {}).get("value") or "")
                     for q in (st.get("qualifiers") or {}).get("P1545") or []]
             try:
-                key = int(ords[0]) if ords else 10_000
+                key = int(ords[0]) if ords else None
             except ValueError:
-                key = 10_000
+                key = None
             out.append((key, i, v["id"]))
+        # A statement with no `P1545` takes the lowest position the numbered ones leave free, in
+        # the order listed (2026-09-28: `Q141550240` has Efraim unnumbered and Wilhelm numbered 2,
+        # and sending the unnumbered one last composed `Wilhelm Efraim`).
+        taken = {k for k, _i, _q in out if k is not None}
+        free = (n for n in range(1, len(out) + len(taken) + 2) if n not in taken)
+        out = [(k if k is not None else next(free), i, q) for k, i, q in out]
         return [q for _k, _i, q in sorted(out)]
     return ordered("P735") + ordered("P5056") + ordered("P734")
 
