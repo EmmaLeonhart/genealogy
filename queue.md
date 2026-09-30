@@ -11,6 +11,10 @@ not an action goes in `docs/queue-archive/`. The file this replaced, verbatim, i
 it. Each session re-creates the hourly `exports/2026-09-19` merge cron and starts with
 `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER*.
 
+## Question
+
+Also what the fuck is going on with the sparse checkout on the ontology hanress version it looks like a different repo altogether
+
 ## New stuff
 
 So a lot has changed. A lot has changed since earlier. You can look in this repo and see the email that was sent by Jenny to me, and I'm not sure whether it's a trap or something. I'm not sure what the actual ideal response is to it.
@@ -44,7 +48,7 @@ But yeah, no, we'll just be continuously doing badges and such with the January 
 
 Yeah, the strategic situation is generally that there's no need to stick to being local. I am going to say, probably, we might want to specifically add certain things to the entry points. I'm not really sure, but I guess my big thing is our earlier algorithm was overconfident with the Kanji as a different universe. If we're confident on it, we just drop the thing immediately. 
 
-Also what the fuck is going on with the sparse checkout on the ontology hanress version it looks like a different repo altogether
+
 
 ## Now
 
