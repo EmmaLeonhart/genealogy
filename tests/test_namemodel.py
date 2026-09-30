@@ -1713,14 +1713,3 @@ def test_composition_is_in_order_and_refuses_a_hiragana_reading():
     assert namemodel.compose_label(["Q1", "Q2"], "ja", label, "Marie Bakke") is None
     assert namemodel.compose_label(["Q5", "Q2"], "ja", label, "Marie Bakke") == "マリー・バッケ"
     assert namemodel.compose_label(["Q3", "Q4"], "mul", label, "Øvre Bjørheim") is None
-
-
-def test_composition_refuses_a_ja_label_mixing_kana_and_kanji():
-    """2026-09-30: the Lang name item's `ja` label is the kanji 郎, and `Jørgen Lang` composed
-    イェルゲン・郎; a kanji part flips a Western person to Sinosphere. All kanji still composes."""
-    names = {"Q1": {"mul": "Jørgen", "ja": "イェルゲン"}, "Q2": {"mul": "Lang", "ja": "郎"},
-             "Q3": {"mul": "Taro", "ja": "太郎"}, "Q4": {"mul": "Yamada", "ja": "山田"}}
-    label = lambda q, l: names.get(q, {}).get(l)
-    assert namemodel.compose_label(["Q1", "Q2"], "ja", label, "Jørgen Lang") is None
-    assert namemodel.compose_label(["Q3", "Q4"], "ja", label, "Taro Yamada") == "太郎・山田"
-

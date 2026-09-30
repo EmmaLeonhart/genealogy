@@ -3664,7 +3664,6 @@ LABEL_JOIN = {"ja": "\u30fb", "zh": "\u00b7"}
 #: A `ja` name-item label written only in hiragana (`\u307e\u308a\u3048` for Marie, 2026-09-28) is no reading of
 #: a Western name, which is katakana; such a part counts as unlabelled.
 _ONLY_HIRAGANA = re.compile("^[\u3040-\u309f\u30fc\u30fb]+$")
-_HAN_CHAR = re.compile("[" + _HAN + "]")
 
 
 def compose_label(parts, lang, label_of, whole):
@@ -3689,12 +3688,5 @@ def compose_label(parts, lang, label_of, whole):
     # In ORDER, not as a bag of words (2026-09-28): `Øvre Bjørheim`, split by the old surname
     # reading into two items, composed `Bjørheim Øvre` and passed a sorted comparison.
     if latin.casefold().split() != whole.casefold().split():
-        return None
-    # ⛔ A `ja` label mixing kana and kanji parts is refused (2026-09-30): the Lang name item's `ja`
-    # label is the kanji 郎, so `Jørgen Lang` composed イェルゲン・郎. A kanji in a `ja` label is the
-    # Sinosphere signal (CLAUDE.md), so one kanji part flips a Western person's classification. All
-    # kanji (a Japanese name) or all kana composes; a mixture does not.
-    if lang == "ja" and any(_HAN_CHAR.search(x) for x in got) and any(
-            not _HAN_CHAR.search(x) for x in got):
         return None
     return LABEL_JOIN.get(lang, " ").join(got)
