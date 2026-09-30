@@ -49577,3 +49577,14 @@ person-slots with more than one parent; 397 involve a FamilySearch parent, 236 o
 Published at https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj with a `db` store (`verdicts`, empty at
 publish). The 2026-08-25 `multi-parents-ours.tsv` predated the FamilySearch data and was not used.
 
+## 2026-09-30 17:40 PDT: composer re-measured; mixed kana/kanji `ja` refused
+
+The 2026-09-29 composed-labels report (after the order fixes) against live labels: en 4,228 the
+same and 26 different (82 before), ja 300 / 190, zh 215 / 242, ko 21 / 27. The en differences are
+live labels by others that carry titles or places, which fill-only-empty already leaves alone, and a
+few bad name-item labels (`No Name`, `Johan Henrik Wegelin family`, `Zur Lippe`). Six `ja`
+compositions mixed katakana with a kanji part: the Lang name item's `ja` label is 郎, so
+`Jørgen Lang` composed イェルゲン・郎, which would flip the person into the Sinosphere universe.
+`compose_label` now refuses a `ja` label that mixes kana and kanji parts; all-kanji still composes.
+Test added; CI runs it. Report only; nothing reaches the batch.
+
