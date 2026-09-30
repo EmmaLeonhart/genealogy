@@ -4841,7 +4841,7 @@ LAST	P407	Q9027
 LAST	P5278	Q141575698
 Q141575698	P5278	LAST
 
-# ▶ THE OTHER INDIVIDUALS, ONE AT A TIME: 30 people, each followed by up to 31 edits on items that already exist (526 relationship statements, 150 pairs sent both ways together; 534 properties)
+# ▶ THE OTHER INDIVIDUALS, ONE AT A TIME: 30 people, each followed by up to 31 edits on items that already exist (532 relationship statements, 153 pairs sent both ways together; 536 properties)
 
 # create a new item
 CREATE
@@ -5455,6 +5455,10 @@ Q141586425	P26	Q141588511	S2600	"6000000004671825432"
 Q141585944	P40	Q141585795	S2600	"6000000002786529327"
 #   Q141585795 Maria Trotzig: P22 father = Q141585944 Peter Trotzig
 Q141585795	P22	Q141585944	S2600	"6000000019936630404"
+#   Q141560502 Ola Lauritson Grude: P26 spouse = Q141559703 Ingeborg Asgautsdatter Voll, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Kleppe, Rogaland, Norway"
+Q141560502	P26	Q141559703	P2842	Q50624	P6375	und:"Kleppe, Rogaland, Norway"	S2600	"6000000002801145781"	S2889	"LHN9-L2R"
+#   Q141559703 Ingeborg Asgautsdatter Voll: P26 spouse = Q141560502 Ola Lauritson Grude, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Kleppe, Rogaland, Norway"
+Q141559703	P26	Q141560502	P2842	Q50624	P6375	und:"Kleppe, Rogaland, Norway"	S2600	"6000000002801145791"	S2889	"L8R2-RP2"
 #   Q141494528 Lisebet Pedersdatter Grude: P26 spouse = Q141494468 Ingebrigt Rasmusson Grude, qualified P2842 place of marriage Q20 Norway, P6375 street address und:"Norway"
 Q141494528	P26	Q141494468	P2842	Q20	P6375	und:"Norway"	S2600	"6000000002806742588"	S2889	"KLZY-KV1"
 #   Q141494468 Ingebrigt Rasmusson Grude: P26 spouse = Q141494528 Lisebet Pedersdatter Grude, qualified P2842 place of marriage Q20 Norway, P6375 street address und:"Norway"
@@ -5487,10 +5491,6 @@ Q141586259	P26	Q141586223	P2842	Q20	P6375	und:"Norway"	S2600	"600000000359056362
 Q141586079	P26	Q141586063	S2600	"6000000003073515887"
 #   Q141586063 NN Sveinsdatter Eigeland: P26 spouse = Q141586079 Torger Bergsson Årstad
 Q141586063	P26	Q141586079	S2600	"6000000012198354483"
-#   Q141586884 Kjeran Anderson Rossavik: P40 child = Q141586104 Gunbjørn Kjeranson Rossavik
-Q141586884	P40	Q141586104	S2600	"6000000003094925975"
-#   Q141586104 Gunbjørn Kjeranson Rossavik: P22 father = Q141586884 Kjeran Anderson Rossavik
-Q141586104	P22	Q141586884	S2600	"6000000003095034950"
 
 # create a new item
 CREATE
@@ -5532,6 +5532,10 @@ Q141584564	P22	LAST	S2600	"6000000227891353760"
 LAST	P735	Q8843357
 #   add a mul alias "Anders Holgersson"
 LAST	Amul	"Anders Holgersson"
+#   Q141586884 Kjeran Anderson Rossavik: P40 child = Q141586104 Gunbjørn Kjeranson Rossavik
+Q141586884	P40	Q141586104	S2600	"6000000003094925975"
+#   Q141586104 Gunbjørn Kjeranson Rossavik: P22 father = Q141586884 Kjeran Anderson Rossavik
+Q141586104	P22	Q141586884	S2600	"6000000003095034950"
 #   Q141518884 Gunnar Olsen Mele-Nordland: P26 spouse = Q141549795 Tora Bjørnsdatter Lunde?/ Tveiten/ Nordland, qualified P2842 place of marriage Q484309, P6375 street address und:"Forsand, Rogaland, Norway"
 Q141518884	P26	Q141549795	P2842	Q484309	P6375	und:"Forsand, Rogaland, Norway"	S2600	"6000000003094935070"	S2889	"LB71-1TM"
 #   Q141549795 Tora Bjørnsdatter Lunde?/ Tveiten/ Nordland: P26 spouse = Q141518884 Gunnar Olsen Mele-Nordland, qualified P2842 place of marriage Q484309, P6375 street address und:"Forsand, Rogaland, Norway"
@@ -5640,10 +5644,6 @@ Q141519696	P26	Q98545640	S2600	"6000000004148454439"
 Q141586401	P40	Q141589436	S2600	"6000000004535678210"
 #   Q141589436 Magdalena Johannesdotter Tornberg: P22 father = Q141586401 Johan Johansson Tornberg
 Q141589436	P22	Q141586401	S2600	"6000000050514003350"
-#   Q141586109 Syver Rolfsen Kjeverud: P26 spouse = Q141585992 Inger Torsdatter Kjeverud
-Q141586109	P26	Q141585992	S2600	"6000000004870566232"
-#   Q141585992 Inger Torsdatter Kjeverud: P26 spouse = Q141586109 Syver Rolfsen Kjeverud
-Q141585992	P26	Q141586109	S2600	"6000000007908582523"
 
 # create a new item
 CREATE
@@ -5689,6 +5689,10 @@ LAST	P734	Q122838342
 LAST	Amul	"GARNE FAMILY"
 #   add a mul alias "Anders Øvre Rossavik"
 LAST	Amul	"Anders Øvre Rossavik"
+#   Q141586109 Syver Rolfsen Kjeverud: P26 spouse = Q141585992 Inger Torsdatter Kjeverud
+Q141586109	P26	Q141585992	S2600	"6000000004870566232"
+#   Q141585992 Inger Torsdatter Kjeverud: P26 spouse = Q141586109 Syver Rolfsen Kjeverud
+Q141585992	P26	Q141586109	S2600	"6000000007908582523"
 #   Q141585818 Gustaf Adolf Hedersköld: P25 mother = Q141585935 Maria Eriksdotter
 Q141585818	P25	Q141585935	S2600	"6000000004994700645"
 #   Q141585935 Maria Eriksdotter: P40 child = Q141585818 Gustaf Adolf Hedersköld
@@ -5703,6 +5707,10 @@ Q141586380	P40	Q141588288	S2600	"6000000005608884100"
 Q141587336	P40	Q141586355	S2600	"6000000005606930748"
 #   Q141586355: P25 mother = Q141587336 Mathilde Olsdatter Skjæveland
 Q141586355	P25	Q141587336	S2600	"6000000005607247446"
+#   Q141511387 Jon Monsen Sele: P26 spouse = Q141519380 Berit Tjærandsdatter Øvre Haugland, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Kleppe, Rogaland, Norway"
+Q141511387	P26	Q141519380	P2842	Q50624	P6375	und:"Kleppe, Rogaland, Norway"	S2600	"6000000005607506571"
+#   Q141519380 Berit Tjærandsdatter Øvre Haugland: P26 spouse = Q141511387 Jon Monsen Sele, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Kleppe, Rogaland, Norway"
+Q141519380	P26	Q141511387	P2842	Q50624	P6375	und:"Kleppe, Rogaland, Norway"	S2600	"6000000008914281965"
 #   Q141588554 Einer Nilsson Nilsen: P26 spouse = Q141586859 Anna Torkelsdatter Solberg
 Q141588554	P26	Q141586859	S2600	"6000000005607533399"
 #   Q141586859 Anna Torkelsdatter Solberg: P26 spouse = Q141588554 Einer Nilsson Nilsen
@@ -5723,6 +5731,10 @@ Q141550871	P26	Q141533447	P2842	Q20	P6375	und:"Norway"	S2600	"600000000560920737
 Q141588546	P26	Q141588447	S2600	"6000000005609275874"
 #   Q141588447 Anna Knutsdatter Vestbø: P26 spouse = Q141588546 Jon Jensson Selvåg
 Q141588447	P26	Q141588546	S2600	"6000000005609275886"
+#   Q141533928 Tjærand Jonsen Sele: P26 spouse = Q141520464 Kirsten Jonsdatter Sele, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Kleppe, Rogaland, Norway"
+Q141533928	P26	Q141520464	P2842	Q50624	P6375	und:"Kleppe, Rogaland, Norway"	S2600	"6000000005609581272"
+#   Q141520464 Kirsten Jonsdatter Sele: P26 spouse = Q141533928 Tjærand Jonsen Sele, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Kleppe, Rogaland, Norway"
+Q141520464	P26	Q141533928	P2842	Q50624	P6375	und:"Kleppe, Rogaland, Norway"	S2600	"6000000005609581282"
 #   Q141522145 Tjøl Olason Brekko: P26 spouse = Q141510078 Berit Ommundsdotter Kluge, qualified P2842 place of marriage Q20 Norway, P6375 street address und:"Norge"
 Q141522145	P26	Q141510078	P2842	Q20	P6375	und:"Norge"	S2600	"6000000005953500314"	S2889	"MFGH-FKB"
 #   Q141510078 Berit Ommundsdotter Kluge: P26 spouse = Q141522145 Tjøl Olason Brekko, qualified P2842 place of marriage Q20 Norway, P6375 street address und:"Norge"
@@ -5795,18 +5807,6 @@ Q141585599	P40	Q141585813	S2600	"6000000007224161902"
 Q141585813	P25	Q141585584	S2600	"6000000007224161621"
 #   Q141585584 Gunnhild Askjellsdatter Bjørke: P40 child = Q141585813 Askjell Havtorsson Gjerdeskvål
 Q141585584	P40	Q141585813	S2600	"6000000007224161906"
-#   P26 spouse = Q141585701 Anna
-Q141585813	P26	Q141585701	S2600	"6000000007224161621"
-#   Q141585701 Anna: P26 spouse = Q141585813 Askjell Havtorsson Gjerdeskvål
-Q141585701	P26	Q141585813	S2600	"6000000102783829851"
-#   Q141586262 Eindride Brynjulfson Eid: P26 spouse = Q141586248 NN Eid
-Q141586262	P26	Q141586248	S2600	"6000000007348713588"	S2889	"LRR3-9YG"
-#   Q141586248 NN Eid: P26 spouse = Q141586262 Eindride Brynjulfson Eid
-Q141586248	P26	Q141586262	S2600	"6000000018192706377"	S2889	"G33Q-BFW"
-#   Q141586290 Mordechai Gershon Katz: P26 spouse = Q141586269 Falka Katz
-Q141586290	P26	Q141586269	S2600	"6000000007376612710"
-#   Q141586269 Falka Katz: P26 spouse = Q141586290 Mordechai Gershon Katz
-Q141586269	P26	Q141586290	S2600	"6000000008931789797"
 
 # create a new item
 CREATE
@@ -5836,6 +5836,18 @@ Q141586053	P26	LAST	S2600	"4984145906220108517"
 LAST	P735	Q8843357
 #   P734 family name = Q21504742 Larsson
 LAST	P734	Q21504742
+#   P26 spouse = Q141585701 Anna
+Q141585813	P26	Q141585701	S2600	"6000000007224161621"
+#   Q141585701 Anna: P26 spouse = Q141585813 Askjell Havtorsson Gjerdeskvål
+Q141585701	P26	Q141585813	S2600	"6000000102783829851"
+#   Q141586262 Eindride Brynjulfson Eid: P26 spouse = Q141586248 NN Eid
+Q141586262	P26	Q141586248	S2600	"6000000007348713588"	S2889	"LRR3-9YG"
+#   Q141586248 NN Eid: P26 spouse = Q141586262 Eindride Brynjulfson Eid
+Q141586248	P26	Q141586262	S2600	"6000000018192706377"	S2889	"G33Q-BFW"
+#   Q141586290 Mordechai Gershon Katz: P26 spouse = Q141586269 Falka Katz
+Q141586290	P26	Q141586269	S2600	"6000000007376612710"
+#   Q141586269 Falka Katz: P26 spouse = Q141586290 Mordechai Gershon Katz
+Q141586269	P26	Q141586290	S2600	"6000000008931789797"
 #   Q141586242 Ogmund Olavson Pust: P26 spouse = Q141586234 Birgit Pust
 Q141586242	P26	Q141586234	S2600	"6000000007384364227"
 #   Q141586234 Birgit Pust: P26 spouse = Q141586242 Ogmund Olavson Pust
@@ -5932,12 +5944,6 @@ Q141219062	P40	Q5613471	S2600	"6000000012888307497"
 Q141219062	P40	Q141559889	S2600	"6000000012888307497"
 #   P40 child = Q141430121 Salomon Adolf Gustaf Cronhielm af Hakunge
 Q141219062	P40	Q141430121	S2600	"6000000012888307497"
-#   P40 child = Q141584214 Ottiliana Carolina Cronhielm af Hakunge
-Q141219062	P40	Q141584214	S2600	"6000000012888307497"
-#   P40 child = Q141528386 Hedvig Fredrika Gustava Cronhielm af Hakunge
-Q141219062	P40	Q141528386	S2600	"6000000012888307497"
-#   P40 child = Q141444581 Fredrik Cronhielm af Hakunge
-Q141219062	P40	Q141444581	S2600	"6000000012888307497"
 
 # create a new item
 CREATE
@@ -5977,6 +5983,12 @@ LAST	P735	Q666578
 LAST	P5056	Q141249690	P144	Q141532512
 #   P734 family name = Q122837705
 LAST	P734	Q122837705
+#   P40 child = Q141584214 Ottiliana Carolina Cronhielm af Hakunge
+Q141219062	P40	Q141584214	S2600	"6000000012888307497"
+#   P40 child = Q141528386 Hedvig Fredrika Gustava Cronhielm af Hakunge
+Q141219062	P40	Q141528386	S2600	"6000000012888307497"
+#   P40 child = Q141444581 Fredrik Cronhielm af Hakunge
+Q141219062	P40	Q141444581	S2600	"6000000012888307497"
 #   Q141586247 Arne Sigurdson Sandnes: P26 spouse = Q141586251 NN Sandnes
 Q141586247	P26	Q141586251	S2600	"6000000014201008429"
 #   Q141586251 NN Sandnes: P26 spouse = Q141586247 Arne Sigurdson Sandnes
@@ -6069,12 +6081,6 @@ Q138474188	P40	Q141336990	S2600	"6000000021197598122"
 Q138474188	P40	Q141352377	S2600	"6000000021197598122"
 #   P40 child = Q141579397 Sigrid Poulsen
 Q138474188	P40	Q141579397	S2600	"6000000021197598122"
-#   P40 child = Q141589036 Ingrid Mesel
-Q138474188	P40	Q141589036	S2600	"6000000021197598122"
-#   P40 child = Q141533208 Ellen Nyvold
-Q138474188	P40	Q141533208	S2600	"6000000021197598122"
-#   P40 child = Q141318615 Sverre Nyvold
-Q138474188	P40	Q141318615	S2600	"6000000021197598122"
 
 # create a new item
 CREATE
@@ -6106,6 +6112,12 @@ Q141513066	P40	LAST	S2600	"6000000007911905317"
 Q141576828	P40	LAST	S2600	"6000000007911905317"
 #   the item just created: P735 given name = Q666578 Anna
 LAST	P735	Q666578
+#   P40 child = Q141589036 Ingrid Mesel
+Q138474188	P40	Q141589036	S2600	"6000000021197598122"
+#   P40 child = Q141533208 Ellen Nyvold
+Q138474188	P40	Q141533208	S2600	"6000000021197598122"
+#   P40 child = Q141318615 Sverre Nyvold
+Q138474188	P40	Q141318615	S2600	"6000000021197598122"
 #   P40 child = Q141528465 Helga Nyvold
 Q138474188	P40	Q141528465	S2600	"6000000021197598122"
 #   P40 child = Q141584327 Signe Nyvold
@@ -6174,12 +6186,6 @@ Q141189076	P40	Q141268096	S2600	"6000000029302543031"
 Q141189076	P40	Q141514190	S2600	"6000000029302543031"
 #   P26 spouse = Q141268099 Rakel Jorina Olsdatter Nord-Varhaug
 Q141189076	P26	Q141268099	S2600	"6000000029302543031"
-#   Q141169062 Thoralf Tunheim: P40 child = Q141283107 Rosanne Thompson
-Q141169062	P40	Q141283107	S2600	"6000000033773881611"
-#   P26 spouse = Q141283095 Ida Klaris Tunheim
-Q141169062	P26	Q141283095	S2600	"6000000033773881611"
-#   Q141168787 Alma Matilda Bring Iverson: P40 child = Q141511445 Ardelle Shirley Stengrim
-Q141168787	P40	Q141511445	S2600	"6000000033774070464"
 
 # create a new item
 CREATE
@@ -6215,6 +6221,12 @@ Q141583471	P25	LAST	S2600	"6000000174246808832"
 LAST	P735	Q666578
 #   P5056 patronym or matronym = Q130232912 Eriksdotter
 LAST	P5056	Q130232912
+#   Q141169062 Thoralf Tunheim: P40 child = Q141283107 Rosanne Thompson
+Q141169062	P40	Q141283107	S2600	"6000000033773881611"
+#   P26 spouse = Q141283095 Ida Klaris Tunheim
+Q141169062	P26	Q141283095	S2600	"6000000033773881611"
+#   Q141168787 Alma Matilda Bring Iverson: P40 child = Q141511445 Ardelle Shirley Stengrim
+Q141168787	P40	Q141511445	S2600	"6000000033774070464"
 #   P40 child = Q141288903 Gordon Evonne Bring
 Q141168787	P40	Q141288903	S2600	"6000000033774070464"
 #   P40 child = Q141313883
@@ -6301,12 +6313,6 @@ Q141585843	P25	Q141586055	S2600	"6000000209915007651"
 Q141205912	P40	Q141436661	S2600	"6000000221449607942"
 #   P40 child = Q141512845 Kristian Helmiksen Sør-Reime
 Q141205912	P40	Q141512845	S2600	"6000000221449607942"
-#   P40 child = Q141499616 Elisabet Olava Helmiksdatter Sør-Reime
-Q141205912	P40	Q141499616	S2600	"6000000221449607942"
-#   P40 child = Q141318851
-Q141205912	P40	Q141318851	S2600	"6000000221449607942"
-#   Q141189067 Helmik Kristiansen Sør-Reime: P40 child = Q141436661 Jon Helmiksen Sør-Reime
-Q141189067	P40	Q141436661	S2600	"6000000221449620901"
 
 # create a new item
 CREATE
@@ -6340,6 +6346,12 @@ Q141586013	P40	LAST	S2600	"4005744870490034294"
 LAST	P735	Q666578
 #   P5056 patronym or matronym = Q141585058
 LAST	P5056	Q141585058
+#   P40 child = Q141499616 Elisabet Olava Helmiksdatter Sør-Reime
+Q141205912	P40	Q141499616	S2600	"6000000221449607942"
+#   P40 child = Q141318851
+Q141205912	P40	Q141318851	S2600	"6000000221449607942"
+#   Q141189067 Helmik Kristiansen Sør-Reime: P40 child = Q141436661 Jon Helmiksen Sør-Reime
+Q141189067	P40	Q141436661	S2600	"6000000221449620901"
 #   P40 child = Q141512845 Kristian Helmiksen Sør-Reime
 Q141189067	P40	Q141512845	S2600	"6000000221449620901"
 #   P40 child = Q141499616 Elisabet Olava Helmiksdatter Sør-Reime
@@ -6398,12 +6410,6 @@ Q141583370	P144	Q5920537
 Q141583370	P144	Q21143984
 #   P144 based on = Q11864419 Iisakki
 Q141583370	P144	Q11864419
-#   P144 based on = Q581723 Isaak
-Q141583370	P144	Q581723
-#   P144 based on = Q67748849 Iisak
-Q141583370	P144	Q67748849
-#   P144 based on = Q134411324 Isacus
-Q141583370	P144	Q134411324
 
 # create a new item
 CREATE
@@ -6442,6 +6448,12 @@ LAST	P5056	Q141189036
 LAST	P734	Q21487823	P3831	Q28418670
 #   add a mul alias "Anna Hauge"
 LAST	Amul	"Anna Hauge"
+#   P144 based on = Q581723 Isaak
+Q141583370	P144	Q581723
+#   P144 based on = Q67748849 Iisak
+Q141583370	P144	Q67748849
+#   P144 based on = Q134411324 Isacus
+Q141583370	P144	Q134411324
 #   Q141585037: P144 based on = Q646303 Trond
 Q141585037	P144	Q646303
 #   Q141585043: P144 based on = Q19798835 Eirik
@@ -6498,12 +6510,6 @@ Q141440461	P460	Q141583359
 Q141583359	P460	Q141440461
 #   Q141456530: P460 said to be the same as = Q141582518
 Q141456530	P460	Q141582518
-#   Q141582518: P460 said to be the same as = Q141456530
-Q141582518	P460	Q141456530
-#   Q141456534: P460 said to be the same as = Q141582529
-Q141456534	P460	Q141582529
-#   Q141582529: P460 said to be the same as = Q141456534
-Q141582529	P460	Q141456534
 
 # create a new item
 CREATE
@@ -6545,6 +6551,12 @@ LAST	P735	Q666578	P1545	"1"
 LAST	P735	Q16277703	P1545	"2"	P3831	Q245025
 #   P734 family name = Q12035675 Martin, qualified P3831 object of statement has role Q28418670 married name
 LAST	P734	Q12035675	P3831	Q28418670
+#   Q141582518: P460 said to be the same as = Q141456530
+Q141582518	P460	Q141456530
+#   Q141456534: P460 said to be the same as = Q141582529
+Q141456534	P460	Q141582529
+#   Q141582529: P460 said to be the same as = Q141456534
+Q141582529	P460	Q141456534
 #   Q141500869: P460 said to be the same as = Q141586295
 Q141500869	P460	Q141586295
 #   Q141586295: P460 said to be the same as = Q141500869
@@ -6601,12 +6613,6 @@ Q141585075	P460	Q141580657
 Q141582450	P460	Q141585071
 #   Q141585071: P460 said to be the same as = Q141582450
 Q141585071	P460	Q141582450
-#   Q141442316 Jonas Hansson: P5056 patronym or matronym = Q141283710, qualified P144 based on Q141451022 Hans Mikaelsson
-Q141442316	P5056	Q141283710	P144	Q141451022
-#   Q141442328 Margret Olofsdotter: P3448 stepparent = Q141589207 Margareta Jakobsdotter
-Q141442328	P3448	Q141589207	S2600	"1899631"
-#   P3448 stepparent = Q141559783 Johan Borgström Adelheim
-Q141586925	P3448	Q141559783	S2600	"287569542710008940"
 
 # create a new item
 CREATE
@@ -6638,6 +6644,12 @@ Q141583514	P25	LAST	S2600	"6000000040634493220"
 LAST	P735	Q666578
 #   P734 family name = Q21075626 Brun
 LAST	P734	Q21075626
+#   Q141442316 Jonas Hansson: P5056 patronym or matronym = Q141283710, qualified P144 based on Q141451022 Hans Mikaelsson
+Q141442316	P5056	Q141283710	P144	Q141451022
+#   Q141442328 Margret Olofsdotter: P3448 stepparent = Q141589207 Margareta Jakobsdotter
+Q141442328	P3448	Q141589207	S2600	"1899631"
+#   P3448 stepparent = Q141559783 Johan Borgström Adelheim
+Q141586925	P3448	Q141559783	S2600	"287569542710008940"
 #   Q141562159 Börje Larsson Hvass: P5056 patronym or matronym = Q141290425, qualified P144 based on Q141565659 Lars Hvas
 Q141562159	P5056	Q141290425	P144	Q141565659
 #   P5056 patronym or matronym = Q141244186, qualified P144 based on Q141216403 Olof Nilsson
@@ -6694,12 +6706,6 @@ Q141516071	P5056	Q141574653	P144	Q141560586
 Q141314174	P5056	Q141352780	P144	Q141205942
 #   Q141579185 Nils Larsson: P5056 patronym or matronym = Q141290425, qualified P144 based on Q141551488 Lars Östensson
 Q141579185	P5056	Q141290425	P144	Q141551488
-#   Q141583308 Hakon Gautesen Reve: P5056 patronym or matronym = Q141586316, qualified P144 based on Q141583963 Gaute Erlingsson Talgje
-Q141583308	P5056	Q141586316	P144	Q141583963
-#   Q141515002 Gunnar Gunnarson Ænes: P5056 patronym or matronym = Q141257126, qualified P144 based on Q141517865 Gunnar Narvesson Hof
-Q141515002	P5056	Q141257126	P144	Q141517865
-#   Q141546767 Berdines Mauritsen Nor Kolnes: P5056 patronym or matronym = Q141586323, qualified P144 based on Q141560279 Mauritz Berdinesson Nor Kolnes
-Q141546767	P5056	Q141586323	P144	Q141560279
 
 # create a new item
 CREATE
@@ -6747,6 +6753,12 @@ LAST	P734	Q30085492	P3831	Q2507958
 LAST	P734	Q30085492	P3831	Q28418670
 #   add a mul alias "Anna Ølberg"
 LAST	Amul	"Anna Ølberg"
+#   Q141583308 Hakon Gautesen Reve: P5056 patronym or matronym = Q141586316, qualified P144 based on Q141583963 Gaute Erlingsson Talgje
+Q141583308	P5056	Q141586316	P144	Q141583963
+#   Q141515002 Gunnar Gunnarson Ænes: P5056 patronym or matronym = Q141257126, qualified P144 based on Q141517865 Gunnar Narvesson Hof
+Q141515002	P5056	Q141257126	P144	Q141517865
+#   Q141546767 Berdines Mauritsen Nor Kolnes: P5056 patronym or matronym = Q141586323, qualified P144 based on Q141560279 Mauritz Berdinesson Nor Kolnes
+Q141546767	P5056	Q141586323	P144	Q141560279
 #   Q141533936 Tolleiv Halvardsen Halvardson: P5056 patronym or matronym = Q141537980, qualified P144 based on Q141559621 Hallvard Ytre Lima
 Q141533936	P5056	Q141537980	P144	Q141559621
 #   P734 family name = Q141586301
@@ -6803,12 +6815,6 @@ Q141493140	P5056	Q141493148	P144	Q141520108
 Q141585450	P5056	Q141585008
 #   Q141436600 Agneta Gabrielsdotter Arctopolitanus: P5056 patronym or matronym = Q141436539, qualified P144 based on Q141457276 Gabriel Grelsson Arctopolitanus
 Q141436600	P5056	Q141436539	P144	Q141457276
-#   Q141528699 Jochum Jacobsen Kirsebom: P5056 patronym or matronym = Q141574640
-Q141528699	P5056	Q141574640
-#   Q135479880 Margareta Königsdotter: P735 given name = Q8274988 Margareta
-Q135479880	P735	Q8274988
-#   Q115631696 König Olofsson: P5056 patronym or matronym = Q141244186
-Q115631696	P5056	Q141244186
 
 # create a new item
 CREATE
@@ -6858,6 +6864,12 @@ LAST	P734	Q37444190	P3831	Q2507958
 LAST	P734	Q37526508	P3831	Q28418670
 #   add a mul alias "Anna Maria Vagle"
 LAST	Amul	"Anna Maria Vagle"
+#   Q141528699 Jochum Jacobsen Kirsebom: P5056 patronym or matronym = Q141574640
+Q141528699	P5056	Q141574640
+#   Q135479880 Margareta Königsdotter: P735 given name = Q8274988 Margareta
+Q135479880	P735	Q8274988
+#   Q115631696 König Olofsson: P5056 patronym or matronym = Q141244186
+Q115631696	P5056	Q141244186
 #   Q141569872 Jens Taraldsen Lyse: P5056 patronym or matronym = Q141582487, qualified P144 based on Q141575498 Tarald Torgersen Store Ådnøy
 Q141569872	P5056	Q141582487	P144	Q141575498
 #   Q141569367 Anna Ellefsdatter Lyse: P5056 patronym or matronym = Q141585044, qualified P144 based on Q141573827 Elef Lyse
@@ -6914,12 +6926,6 @@ Q141565133	P734	Q141564544
 Q141562588	P5056	Q141579847	P144	Q141565137
 #   Q141563032 Tore Toreson, VI: P5056 patronym or matronym = Q141403363, qualified P144 based on Q141566242 Tore Toreson Underberge V
 Q141563032	P5056	Q141403363	P144	Q141566242
-#   Q141457253 Anna Ersdotter Stenbock: P5056 patronym or matronym = Q141457237
-Q141457253	P5056	Q141457237
-#   Q141521650 Jon Olofsson: P5056 patronym or matronym = Q141244186, qualified P144 based on Q141579555 Olof
-Q141521650	P5056	Q141244186	P144	Q141579555
-#   Q141519372 Gyrete Henningsdatter: P5056 patronym or matronym = Q141585668, qualified P144 based on Q141498442 Henning von Rømer
-Q141519372	P5056	Q141585668	P144	Q141498442
 
 # create a new item
 CREATE
@@ -6949,6 +6955,12 @@ Q141569468	P40	LAST	S2600	"6000000207717824855"
 LAST	P735	Q666578	P1545	"1"
 #   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 LAST	P735	Q325872	P1545	"2"	P3831	Q245025
+#   Q141457253 Anna Ersdotter Stenbock: P5056 patronym or matronym = Q141457237
+Q141457253	P5056	Q141457237
+#   Q141521650 Jon Olofsson: P5056 patronym or matronym = Q141244186, qualified P144 based on Q141579555 Olof
+Q141521650	P5056	Q141244186	P144	Q141579555
+#   Q141519372 Gyrete Henningsdatter: P5056 patronym or matronym = Q141585668, qualified P144 based on Q141498442 Henning von Rømer
+Q141519372	P5056	Q141585668	P144	Q141498442
 #   Q141584946 Åsulf Guttormsson på Rein: P5056 patronym or matronym = Q141585016, qualified P144 based on Q19061035 Guttorm Àsulfsson à Rein
 Q141584946	P5056	Q141585016	P144	Q19061035
 #   Q141571159 Torkel Gunnarsen Fintland: P734 family name = Q141569057
@@ -7005,12 +7017,6 @@ Q141565162	P5056	Q141574661	P144	Q141570031
 Q141570317	P734	Q141569057
 #   Q141569996 Jørgen Torjeisen Lunde: P5056 patronym or matronym = Q141585663, qualified P144 based on Q141575597 Tolleiv Bjørnsson
 Q141569996	P5056	Q141585663	P144	Q141575597
-#   Q141576671 Jørund Olavsson Kvåle: P5056 patronym or matronym = Q141583339, qualified P144 based on Q141580586 Olav Gunnarson Kvåle
-Q141576671	P5056	Q141583339	P144	Q141580586
-#   Q141575597 Tolleiv Bjørnsson: P5056 patronym or matronym = Q141572234, qualified P144 based on Q141559167 Bjørn Ådnesen Lunde
-Q141575597	P5056	Q141572234	P144	Q141559167
-#   Q136375836 Agnes Hülphers: P735 given name = Q394431 Agnes
-Q136375836	P735	Q394431
 
 # create a new item
 CREATE
@@ -7058,6 +7064,12 @@ LAST	P734	Q21487823	P3831	Q28418670
 LAST	Amul	"Hauge"
 #   add a mul alias "Anna Hauge Hoyland"
 LAST	Amul	"Anna Hauge Hoyland"
+#   Q141576671 Jørund Olavsson Kvåle: P5056 patronym or matronym = Q141583339, qualified P144 based on Q141580586 Olav Gunnarson Kvåle
+Q141576671	P5056	Q141583339	P144	Q141580586
+#   Q141575597 Tolleiv Bjørnsson: P5056 patronym or matronym = Q141572234, qualified P144 based on Q141559167 Bjørn Ådnesen Lunde
+Q141575597	P5056	Q141572234	P144	Q141559167
+#   Q136375836 Agnes Hülphers: P735 given name = Q394431 Agnes
+Q136375836	P735	Q394431
 #   P5056 patronym or matronym = Q141443235
 Q136375836	P5056	Q141443235
 #   Q140425963 Johanna Sophia Arosenius: P735 given name = Q4120836 Johanna, qualified P1545 series ordinal 1
@@ -7114,12 +7126,6 @@ Q141577821	P734	Q141577966
 Q141576062	P734	Q141577966
 #   Q141519444 Halvard Pederson Flystveit: P734 family name = Q141518534
 Q141519444	P734	Q141518534
-#   Q141573921 Gase Torkildsen Rafoss: P734 family name = Q30133374, qualified P3831 object of statement has role Q2507958 birth name
-Q141573921	P734	Q30133374	P3831	Q2507958
-#   Q140387943 Elisabet Schultin: P735 given name = Q16423275 Elisabet
-Q140387943	P735	Q16423275
-#   Q141219269 Kari Tollaksdatter Kartevoll: P5056 patronym or matronym = Q141403245, qualified P144 based on Q141314175 Tollak Tollakson Kartevoll II
-Q141219269	P5056	Q141403245	P144	Q141314175
 
 # create a new item
 CREATE
@@ -7157,6 +7163,12 @@ LAST	P735	Q564684
 LAST	P734	Q18328036	P3831	Q2507958
 #   add a mul alias "Anne Nagel"
 LAST	Amul	"Anne Nagel"
+#   Q141573921 Gase Torkildsen Rafoss: P734 family name = Q30133374, qualified P3831 object of statement has role Q2507958 birth name
+Q141573921	P734	Q30133374	P3831	Q2507958
+#   Q140387943 Elisabet Schultin: P735 given name = Q16423275 Elisabet
+Q140387943	P735	Q16423275
+#   Q141219269 Kari Tollaksdatter Kartevoll: P5056 patronym or matronym = Q141403245, qualified P144 based on Q141314175 Tollak Tollakson Kartevoll II
+Q141219269	P5056	Q141403245	P144	Q141314175
 #   Q141570997 Peder Tollefsen: P5056 patronym or matronym = Q141574676, qualified P144 based on Q141584359 Tollef Jonson Tjensvoll
 Q141570997	P5056	Q141574676	P144	Q141584359
 #   Q141562911 Peder Klausson Stangeland: P5056 patronym or matronym = Q141562033, qualified P144 based on Q141548575 Klaus Pederson Stangeland
@@ -7213,12 +7225,6 @@ Q141429874	P5056	Q141429559	P144	Q141443326
 Q141216632	P5056	Q141450142	P144	Q141522146
 #   Q141225673 Anders Rasmusson Lea: P5056 patronym or matronym = Q141419249, qualified P144 based on Q141268100 Rasmus Viby Andersson Øystre Bore
 Q141225673	P5056	Q141419249	P144	Q141268100
-#   Q141219065 Marta Torbjørnsdotter Gjesdal: P5056 patronym or matronym = Q141579852, qualified P144 based on Q141318985 Torbjørn Monsson Gjesdal
-Q141219065	P5056	Q141579852	P144	Q141318985
-#   Q141585121 Anna Ånensdatter Marvik: P5056 patronym or matronym = Q141585684, qualified P144 based on Q141551557 Ånon Ormsen Byre
-Q141585121	P5056	Q141585684	P144	Q141551557
-#   Q141244234 Torstein Gunnarson Frafjord: P734 family name = Q656767 Gundersen, qualified P3831 object of statement has role Q2507958 birth name
-Q141244234	P734	Q656767	P3831	Q2507958
 
 # create a new item
 CREATE
@@ -7260,6 +7266,12 @@ LAST	P5056	Q122837798
 LAST	P734	Q39000064	P3831	Q28418670
 #   add a mul alias "Anne Skei"
 LAST	Amul	"Anne Skei"
+#   Q141219065 Marta Torbjørnsdotter Gjesdal: P5056 patronym or matronym = Q141579852, qualified P144 based on Q141318985 Torbjørn Monsson Gjesdal
+Q141219065	P5056	Q141579852	P144	Q141318985
+#   Q141585121 Anna Ånensdatter Marvik: P5056 patronym or matronym = Q141585684, qualified P144 based on Q141551557 Ånon Ormsen Byre
+Q141585121	P5056	Q141585684	P144	Q141551557
+#   Q141244234 Torstein Gunnarson Frafjord: P734 family name = Q656767 Gundersen, qualified P3831 object of statement has role Q2507958 birth name
+Q141244234	P734	Q656767	P3831	Q2507958
 #   Q141436692 Peder Larsson Raunes: P734 family name = Q141436517
 Q141436692	P734	Q141436517
 #   Q141492834 Torborg Olasdatter Norheim: P5056 patronym or matronym = Q141492432, qualified P144 based on Q141502868 Ola Erikson Norheim
@@ -7282,7 +7294,7 @@ Q141450282	P5056	Q141450142	P144	Q141522177
 Q141581946	P734	Q141580670
 #   Q141551478 Lars Knutson Tjesseim: P734 family name = Q30340218 Knutson
 Q141551478	P734	Q30340218
-#   Q141511387 Jon Monsen Sele: P734 family name = Q1945255 Monsen
+#   P734 family name = Q1945255 Monsen
 Q141511387	P734	Q1945255
 #   Q141523352 Håkon Guttormsen på Hundorp: P5056 patronym or matronym = Q141572735, qualified P144 based on Q141528338 Guttorm Gudbrandsen Hundorp
 Q141523352	P5056	Q141572735	P144	Q141528338
@@ -7316,12 +7328,6 @@ Q141498731	P734	Q141498658
 Q141533443	P734	Q33072561	P3831	Q2507958
 #   P5056 patronym or matronym = Q141574681, qualified P144 based on Q141512276 Peder Enoksson Stangeland
 Q141447174	P5056	Q141574681	P144	Q141512276
-#   Q141448493 Malena Samuelsdatter Thrane: P5056 patronym or matronym = Q141448434, qualified P144 based on Q141457332 Samuel Pedersen Vatne
-Q141448493	P5056	Q141448434	P144	Q141457332
-#   Q141450157 Anna Abrahamsdatter Helland: P5056 patronym or matronym = Q141450131, qualified P144 based on Q141498371 Abraham Ommundsen Helland
-Q141450157	P5056	Q141450131	P144	Q141498371
-#   Q141562486 Jon Tørreson Sr.: P5056 patronym or matronym = Q141561992, qualified P144 based on Q141498445 Tørres Tørresson Grannes
-Q141562486	P5056	Q141561992	P144	Q141498445
 
 # create a new item
 CREATE
@@ -7361,6 +7367,12 @@ Q141566141	P40	LAST	S2600	"6000000012535651500"
 LAST	Amul	"Rebecca Kagan"
 #   add a mul alias "Annette Kagan"
 LAST	Amul	"Annette Kagan"
+#   Q141448493 Malena Samuelsdatter Thrane: P5056 patronym or matronym = Q141448434, qualified P144 based on Q141457332 Samuel Pedersen Vatne
+Q141448493	P5056	Q141448434	P144	Q141457332
+#   Q141450157 Anna Abrahamsdatter Helland: P5056 patronym or matronym = Q141450131, qualified P144 based on Q141498371 Abraham Ommundsen Helland
+Q141450157	P5056	Q141450131	P144	Q141498371
+#   Q141562486 Jon Tørreson Sr.: P5056 patronym or matronym = Q141561992, qualified P144 based on Q141498445 Tørres Tørresson Grannes
+Q141562486	P5056	Q141561992	P144	Q141498445
 #   Q141454529 Karen Kirstine Tøresdatter: P5056 patronym or matronym = Q141446969, qualified P144 based on Q141219349 Tørres Jonson Grannes
 Q141454529	P5056	Q141446969	P144	Q141219349
 #   Q141436611 Berta Maria Jakobsdatter Sande: P5056 patronym or matronym = Q141436741, qualified P144 based on Q141440573 Jakob Nilsson Sande
@@ -7417,12 +7429,6 @@ Q141492797	P5056	Q141492648	P144	Q141493444
 Q141516532	P5056	Q141515176	P144	Q141519467
 #   Q141574646 Lars Mikkelson Vashus: P5056 patronym or matronym = Q141586293
 Q141574646	P5056	Q141586293
-#   Q141579297 Ljøde Torsteinsen Nerabø I: P5056 patronym or matronym = Q141582503, qualified P144 based on Q141583249 Torstein Tørressen Øvre Eiane I
-Q141579297	P5056	Q141582503	P144	Q141583249
-#   Q141562407 Holger Holgerson Ytre Fiskå: P5056 patronym or matronym = Q141582515, qualified P144 based on Q141584993 Holger Rasmussen Ur
-Q141562407	P5056	Q141582515	P144	Q141584993
-#   Q141318616 Vebrand Hallvardsson: P5056 patronym or matronym = Q141572737, qualified P144 based on Q141290198 Hallvard Skjalgsson
-Q141318616	P5056	Q141572737	P144	Q141290198
 
 # create a new item
 CREATE
@@ -7458,6 +7464,12 @@ LAST	P5056	Q141448430	P144	Q141550574
 LAST	P734	Q21488986
 #   add a mul alias "Arne Lunde"
 LAST	Amul	"Arne Lunde"
+#   Q141579297 Ljøde Torsteinsen Nerabø I: P5056 patronym or matronym = Q141582503, qualified P144 based on Q141583249 Torstein Tørressen Øvre Eiane I
+Q141579297	P5056	Q141582503	P144	Q141583249
+#   Q141562407 Holger Holgerson Ytre Fiskå: P5056 patronym or matronym = Q141582515, qualified P144 based on Q141584993 Holger Rasmussen Ur
+Q141562407	P5056	Q141582515	P144	Q141584993
+#   Q141318616 Vebrand Hallvardsson: P5056 patronym or matronym = Q141572737, qualified P144 based on Q141290198 Hallvard Skjalgsson
+Q141318616	P5056	Q141572737	P144	Q141290198
 #   Q141498372 Anna Mikkelsdatter Tunheim: P5056 patronym or matronym = Q141498381, qualified P144 based on Q141498441 Mikkel Salomonsen Skretting
 Q141498372	P5056	Q141498381	P144	Q141498441
 #   Q141529183 Tollak Gulliksen Store Ege: P5056 patronym or matronym = Q141585045
@@ -7514,12 +7526,6 @@ Q141337254	P2889	"G3WC-9DP"
 Q141403651	P2889	"P31X-4V2"
 #   Q141419455: its FamilySearch person ID as a statement, not only a reference
 Q141419455	P2889	"GJGD-JGG"
-#   Q141419904: its FamilySearch person ID as a statement, not only a reference
-Q141419904	P2889	"LZB7-ZF9"
-#   Q141422325: its FamilySearch person ID as a statement, not only a reference
-Q141422325	P2889	"LVD9-93W"
-#   Q141440519: its FamilySearch person ID as a statement, not only a reference
-Q141440519	P2889	"L78H-7LN"
 
 # create a new item
 CREATE
@@ -7553,6 +7559,12 @@ Q141528221	P40	LAST	S2600	"6000000009232349223"
 LAST	P735	Q717011
 #   P734 family name = Q141500276
 LAST	P734	Q141500276
+#   Q141419904: its FamilySearch person ID as a statement, not only a reference
+Q141419904	P2889	"LZB7-ZF9"
+#   Q141422325: its FamilySearch person ID as a statement, not only a reference
+Q141422325	P2889	"LVD9-93W"
+#   Q141440519: its FamilySearch person ID as a statement, not only a reference
+Q141440519	P2889	"L78H-7LN"
 #   Q141440647: its FamilySearch person ID as a statement, not only a reference
 Q141440647	P2889	"L78H-722"
 #   Q141442974: its FamilySearch person ID as a statement, not only a reference
@@ -7609,12 +7621,6 @@ Q141498394	P2889	"LHXN-S9G"
 Q141498476	P2889	"LQRR-8XP"
 #   Q141498482: its FamilySearch person ID as a statement, not only a reference
 Q141498482	P2889	"LH8Y-MN7"
-#   Q141499582: its FamilySearch person ID as a statement, not only a reference
-Q141499582	P2889	"L8SC-C1N"
-#   Q141510078: its FamilySearch person ID as a statement, not only a reference
-Q141510078	P2889	"2S22-J3K"
-#   Q141510769: its FamilySearch person ID as a statement, not only a reference
-Q141510769	P2889	"KJPD-NPH"
 
 # create a new item
 CREATE
@@ -7648,6 +7654,12 @@ Q141514993	P22	LAST	S2600	"6000000012813132235"
 LAST	P735	Q1457563
 #   add a mul alias "Aslak Fåle"
 LAST	Amul	"Aslak Fåle"
+#   Q141499582: its FamilySearch person ID as a statement, not only a reference
+Q141499582	P2889	"L8SC-C1N"
+#   Q141510078: its FamilySearch person ID as a statement, not only a reference
+Q141510078	P2889	"2S22-J3K"
+#   Q141510769: its FamilySearch person ID as a statement, not only a reference
+Q141510769	P2889	"KJPD-NPH"
 #   Q141511413: its FamilySearch person ID as a statement, not only a reference
 Q141511413	P2889	"KLBM-XMZ"
 #   Q141511449: its FamilySearch person ID as a statement, not only a reference
@@ -7704,12 +7716,6 @@ Q141548400	P2889	"27SF-837"
 Q141548406	P2889	"KJ5M-GML"
 #   Q141549795: its FamilySearch person ID as a statement, not only a reference
 Q141549795	P2889	"LBWM-DHM"
-#   Q141550310: its FamilySearch person ID as a statement, not only a reference
-Q141550310	P2889	"GZMP-KCV"
-#   Q141550486: its FamilySearch person ID as a statement, not only a reference
-Q141550486	P2889	"PWGH-QQ5"
-#   Q141550574: its FamilySearch person ID as a statement, not only a reference
-Q141550574	P2889	"KC53-1Q6"
 
 # create a new item
 CREATE
@@ -7757,6 +7763,12 @@ LAST	P5056	Q141450954	P144	Q141518884
 LAST	P734	Q37149189	P3831	Q28418670
 #   add a mul alias "Astri Nordland"
 LAST	Amul	"Astri Nordland"
+#   Q141550310: its FamilySearch person ID as a statement, not only a reference
+Q141550310	P2889	"GZMP-KCV"
+#   Q141550486: its FamilySearch person ID as a statement, not only a reference
+Q141550486	P2889	"PWGH-QQ5"
+#   Q141550574: its FamilySearch person ID as a statement, not only a reference
+Q141550574	P2889	"KC53-1Q6"
 #   Q141551134: its FamilySearch person ID as a statement, not only a reference
 Q141551134	P2889	"L78B-1W6"
 #   Q141551313: its FamilySearch person ID as a statement, not only a reference
@@ -7771,12 +7783,16 @@ Q141556332	P2889	"MGPB-NH8"
 Q141557956	P2889	"LCML-XNV"
 #   Q141559589: its FamilySearch person ID as a statement, not only a reference
 Q141559589	P2889	"L2ZK-BBG"
+#   Q141559703: its FamilySearch person ID as a statement, not only a reference
+Q141559703	P2889	"L8R2-RP2"
 #   Q141559885: its FamilySearch person ID as a statement, not only a reference
 Q141559885	P2889	"L4SB-7WZ"
 #   Q141560392: its FamilySearch person ID as a statement, not only a reference
 Q141560392	P2889	"KLZY-KLG"
 #   Q141560426: its FamilySearch person ID as a statement, not only a reference
 Q141560426	P2889	"LHX1-1YK"
+#   Q141560502: its FamilySearch person ID as a statement, not only a reference
+Q141560502	P2889	"LHN9-L2R"
 #   Q141560604: its FamilySearch person ID as a statement, not only a reference
 Q141560604	P2889	"KLZY-K2Q"
 #   Q141560691: its FamilySearch person ID as a statement, not only a reference
@@ -7809,16 +7825,6 @@ Q141569464	P2889	"LW1R-DZZ"
 Q141569763	P2889	"KLH1-K1H"
 #   Q141569769: its FamilySearch person ID as a statement, not only a reference
 Q141569769	P2889	"MFXK-JNX"
-#   Q141570929: its FamilySearch person ID as a statement, not only a reference
-Q141570929	P2889	"GMDQ-DDG"
-#   Q141571153: its FamilySearch person ID as a statement, not only a reference
-Q141571153	P2889	"L43M-KPP"
-#   Q141574483: its FamilySearch person ID as a statement, not only a reference
-Q141574483	P2889	"L78B-1HD"
-#   Q141574725: its FamilySearch person ID as a statement, not only a reference
-Q141574725	P2889	"L3SC-TMC"
-#   Q141577108: its FamilySearch person ID as a statement, not only a reference
-Q141577108	P2889	"KLZY-27T"
 
 # create a new item
 CREATE
@@ -7850,6 +7856,16 @@ LAST	P26	Q141585758	S2600	"6000000080507730821"
 Q141585758	P26	LAST	S2600	"6000000080507730821"
 #   the item just created: P735 given name = Q153957 Barbara
 LAST	P735	Q153957
+#   Q141570929: its FamilySearch person ID as a statement, not only a reference
+Q141570929	P2889	"GMDQ-DDG"
+#   Q141571153: its FamilySearch person ID as a statement, not only a reference
+Q141571153	P2889	"L43M-KPP"
+#   Q141574483: its FamilySearch person ID as a statement, not only a reference
+Q141574483	P2889	"L78B-1HD"
+#   Q141574725: its FamilySearch person ID as a statement, not only a reference
+Q141574725	P2889	"L3SC-TMC"
+#   Q141577108: its FamilySearch person ID as a statement, not only a reference
+Q141577108	P2889	"KLZY-27T"
 #   Q141578734: its FamilySearch person ID as a statement, not only a reference
 Q141578734	P2889	"KL6W-MNK"
 #   Q141579592: its FamilySearch person ID as a statement, not only a reference
@@ -7902,16 +7918,6 @@ Q141585949	P2889	"KJHF-T3D"
 Q141585994	P2889	"LCX2-BCP"
 #   Q141586106: its FamilySearch person ID as a statement, not only a reference
 Q141586106	P2889	"L454-YT8"
-#   Q141586223: its FamilySearch person ID as a statement, not only a reference
-Q141586223	P2889	"GNCQ-8PW"
-#   Q141586228: its FamilySearch person ID as a statement, not only a reference
-Q141586228	P2889	"KVL6-L6T"
-#   Q141586248: its FamilySearch person ID as a statement, not only a reference
-Q141586248	P2889	"G33Q-BFW"
-#   Q141586252: its FamilySearch person ID as a statement, not only a reference
-Q141586252	P2889	"KVL6-LDT"
-#   Q141586254: its FamilySearch person ID as a statement, not only a reference
-Q141586254	P2889	"GQKX-Y8C"
 
 # create a new item
 CREATE
@@ -7941,6 +7947,16 @@ LAST	P40	Q141560238	S2600	"6000000003423128068"
 Q141560238	P25	LAST	S2600	"6000000003423128068"
 #   the item just created: P735 given name = Q807877 Barbro
 LAST	P735	Q807877
+#   Q141586223: its FamilySearch person ID as a statement, not only a reference
+Q141586223	P2889	"GNCQ-8PW"
+#   Q141586228: its FamilySearch person ID as a statement, not only a reference
+Q141586228	P2889	"KVL6-L6T"
+#   Q141586248: its FamilySearch person ID as a statement, not only a reference
+Q141586248	P2889	"G33Q-BFW"
+#   Q141586252: its FamilySearch person ID as a statement, not only a reference
+Q141586252	P2889	"KVL6-LDT"
+#   Q141586254: its FamilySearch person ID as a statement, not only a reference
+Q141586254	P2889	"GQKX-Y8C"
 #   Q141586256: its FamilySearch person ID as a statement, not only a reference
 Q141586256	P2889	"GYQ7-KBX"
 #   Q141586259: its FamilySearch person ID as a statement, not only a reference
@@ -7990,11 +8006,6 @@ Q141588555	P2889	"MFFG-B76"
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 Q141579837	P407	Q9043
-Q141579837	P407	Q9035
-Q141585643	P407	Q9043
-Q141585643	P407	Q9035
-Q141582461	P407	Q9027
-Q141336469	P407	Q9027
 
 # create a new item
 CREATE
@@ -8026,6 +8037,11 @@ LAST	P40	Q141569447	S2600	"6000000002943877223"
 Q141569447	P22	LAST	S2600	"6000000002943877223"
 #   the item just created: P735 given name = Q63341347 Berent
 LAST	P735	Q63341347
+Q141579837	P407	Q9035
+Q141585643	P407	Q9043
+Q141585643	P407	Q9035
+Q141582461	P407	Q9027
+Q141336469	P407	Q9027
 Q141550375	P407	Q9043
 Q141550375	P407	Q9035
 Q141502661	P407	Q9043

@@ -8515,7 +8515,14 @@
   "type": "item"
  },
  "Q110325932": {
-  "aliases": {},
+  "aliases": {
+   "cs": [
+    {
+     "language": "cs",
+     "value": "Mechtilde von Schonenberg"
+    }
+   ]
+  },
   "claims": {
    "P1819": [
     {
@@ -8743,6 +8750,10 @@
   },
   "id": "Q110325932",
   "labels": {
+   "cs": {
+    "language": "cs",
+    "value": "Mechtilda z Schonenbergu"
+   },
    "en": {
     "language": "en",
     "value": "Mechtilde von Schonenberg"
@@ -8756,8 +8767,8 @@
     "value": "Mechtilde von Schonenberg"
    }
   },
-  "lastrevid": 2542569060,
-  "modified": "2026-09-09T06:01:15Z",
+  "lastrevid": 2551347018,
+  "modified": "2026-09-30T14:28:48Z",
   "ns": 0,
   "pageid": 105387962,
   "sitelinks": {},
@@ -133242,93 +133253,11 @@
       }
      ],
      "type": "statement"
-    },
-    {
-     "id": "Q141498492$5527E3FE-55A5-4682-8683-E98EE92216BD",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141498697",
-        "numeric-id": 141498697
-       }
-      },
-      "hash": "1e37033200ccbe68c3d83a17956507af85c56ef0",
-      "property": "P22",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "2c40f1704cbe349dd853d220b50d4beab9dde055",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000002512230550"
-          },
-          "hash": "b2272e35355458df155851824270ba94f0a3de53",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
     }
    ],
    "P25": [
     {
      "id": "Q141498492$B6C97FC0-130A-4CAB-8F66-3B552FE50EAE",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141498732",
-        "numeric-id": 141498732
-       }
-      },
-      "hash": "84a11fff3ff6558be70ff57ed92d0bebcbb4cb7e",
-      "property": "P25",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "b5bb8cb67f92ef2f78e54ee6539c84d66417cef7",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000002893327285"
-          },
-          "hash": "3af836439545e5deea76830fe6fb559af2be3ec9",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    },
-    {
-     "id": "Q141498492$B0D6D5F4-E29D-47CE-9CC1-6CD59BCD19C8",
      "mainsnak": {
       "datatype": "wikibase-item",
       "datavalue": {
@@ -133895,8 +133824,8 @@
     "value": "吉达·奥拉夫斯达特·罗梅尔"
    }
   },
-  "lastrevid": 2550387590,
-  "modified": "2026-09-28T08:02:58Z",
+  "lastrevid": 2551354300,
+  "modified": "2026-09-30T14:53:11Z",
   "ns": 0,
   "pageid": 135057828,
   "sitelinks": {},
