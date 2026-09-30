@@ -56580,6 +56580,66 @@
    ]
   },
   "claims": {
+   "P20": [
+    {
+     "id": "Q139719231$8404CF8C-D14E-4D78-9D4D-242005135B2D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q1005637",
+        "numeric-id": 1005637
+       }
+      },
+      "hash": "d01b5c9dd0be9e08e3bd928451d36c30e6909cf1",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "911f9ac0ad114f7fa5e00a916e644c9bd7e8a8f8",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q48183",
+            "numeric-id": 48183
+           }
+          },
+          "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ],
+        "P4656": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "https://de.wikipedia.org/w/index.php?oldid=267196108"
+          },
+          "hash": "58519132a407be99b6b30e746912fe3999ce98e7",
+          "property": "P4656",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143",
+        "P4656"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P21": [
     {
      "id": "q139719231$3ef74dc9-4fab-1d52-3ee0-473adb453679",
@@ -57118,8 +57178,8 @@
     "value": "克努特·克努特森·博尔戈"
    }
   },
-  "lastrevid": 2550020307,
-  "modified": "2026-09-27T13:04:19Z",
+  "lastrevid": 2551037821,
+  "modified": "2026-09-29T22:46:30Z",
   "ns": 0,
   "pageid": 133175239,
   "sitelinks": {
@@ -469722,10 +469782,6 @@
     },
     {
      "language": "ru",
-     "value": "Ханс Аксель фон Ферзен"
-    },
-    {
-     "language": "ru",
      "value": "Ферзен, Ханс Аксель фон"
     }
    ],
@@ -475214,6 +475270,10 @@
     "language": "et",
     "value": "Hans Axel von Fersen"
    },
+   "fa": {
+    "language": "fa",
+    "value": "هانس اکسل فون فرسن"
+   },
    "fi": {
     "language": "fi",
     "value": "Hans Axel von Fersen"
@@ -475315,8 +475375,8 @@
     "value": "汉斯·阿克塞尔·冯·费尔森"
    }
   },
-  "lastrevid": 2548446023,
-  "modified": "2026-09-22T13:24:47Z",
+  "lastrevid": 2551107048,
+  "modified": "2026-09-30T01:47:14Z",
   "ns": 0,
   "pageid": 429322,
   "sitelinks": {
