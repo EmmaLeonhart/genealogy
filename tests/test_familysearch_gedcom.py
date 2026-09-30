@@ -254,6 +254,10 @@ def builder():
     spec = util.spec_from_file_location("fsday", BUILDER)
     mod = util.module_from_spec(spec)
     spec.loader.exec_module(mod)
+    # The creations are paused (Emma, 2026-09-30) but the tests below pin what a creation looks
+    # like when it goes out, so they build with the pause off; `test_creations_paused` pins the
+    # pause itself.
+    mod.CREATIONS_PAUSED = False
     return mod
 
 
@@ -369,6 +373,30 @@ def test_nothing_lands_on_an_existing_item_outside_the_universe(builder, tmp_pat
     assert "LAST\tP26\tQ99999999" in text, "the forward statement"
     assert "Q99999999\tP26\tLAST" in text, "and the other direction, in the same run"
 
+
+
+def test_creations_paused(builder, tmp_path, monkeypatch):
+    """⛔ Emma, 2026-09-30: FamilySearch importing waits on the zipper merge. The switch ships
+    on, and while it is on the file creates nobody and carries every would-be creation."""
+    import argparse
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("fsday_shipped", BUILDER)
+    shipped = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(shipped)
+    assert shipped.CREATIONS_PAUSED is True
+
+    src = tmp_path / "sample.ged"
+    src.write_text(BATCH_GED, encoding="utf-8")
+    monkeypatch.setattr(builder, "CREATIONS_PAUSED", True)
+    monkeypatch.setattr(builder, "OUT", tmp_path / "out.txt")
+    monkeypatch.setattr(builder, "CARRY", tmp_path / "carry.tsv")
+    monkeypatch.setattr(builder, "BRIDGE", tmp_path / "bridge.tsv")
+    monkeypatch.setattr(builder, "UNIVERSE", tmp_path / "universe.json")
+    builder.BRIDGE.write_text(BATCH_BRIDGE, encoding="utf-8")
+    builder.UNIVERSE.write_text(BATCH_UNIVERSE, encoding="utf-8")
+    builder.build(argparse.Namespace(gedcom=[str(src)], limit=0))
+    assert "CREATE" not in builder.OUT.read_text(encoding="utf-8").split()
+    assert "paused:" in builder.CARRY.read_text(encoding="utf-8")
 
 def test_a_multi_word_marker_leading_a_label_is_caught(builder):
     """⛔ `leads_with_a_marker` read `tokens[0]` and the vocabulary has held phrases all along.

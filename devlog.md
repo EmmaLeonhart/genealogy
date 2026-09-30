@@ -49532,3 +49532,17 @@ A `ja` name-item label written only in hiragana (`まりえ` for Marie) counts a
 dropped titles (`Baroness Lovisa Thott`) are not a composer defect: that is a live `en` label by
 someone else beside a `mul` without the title, and a switched language must only fill empty
 slots. Tests added. Report only; nothing reaches the batch.
+
+## 2026-09-30 15:50 PDT: FamilySearch creations paused for the zipper merge
+
+Emma: *"try drop familysearch importing for a while since lack of zipper merge is kinda egregious
+and then to start the work"*. What was paused: `build-familysearch-day.py` now creates nobody
+(`CREATIONS_PAUSED = True`); each would-be creation is carried with the reason `paused`. That empties
+the FamilySearch batch and, through it, the ten FamilySearch test people `split-daily-batch.py` puts at
+the head of every batch, and the `familysearch.html` page. What still runs: the zipper, bridge and
+render in `tree.yml`, and the capped `P2889` additions on items the zipper paired (those are the
+zipper's output). No new downloads go into `gedcom/familysearch/`; the RootsMagic files stay
+untouched behind their gate. Where it stands: 11,770 zipper pairs, 3,286 refused slots, and 5,480
+creations the last FamilySearch file held. The pause ships with a test that it is on and that a
+paused build writes no `CREATE`; the existing builder tests pin the creation shape with it off. The
+queue item now names the zipper work that follows.

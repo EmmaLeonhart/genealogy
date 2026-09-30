@@ -112,6 +112,15 @@ P2600_ALL = ROOT / "out" / "wikidata" / "p2600-all.tsv"
 #: shape of edit, and the universe gate applies to it as to every edit.
 P2889_ADD_CAP = 40
 
+#: ⛔ **FAMILYSEARCH CREATIONS ARE PAUSED. Emma, 2026-09-30:** *"try drop familysearch importing
+#: for a while since lack of zipper merge is kinda egregious and then to start the work"*. Every
+#: person this file would create is a FamilySearch item beside a Geni one the zipper failed to
+#: pair, so nobody is created until the zipper does its job on what is already imported; each is
+#: carried with the reason `paused`. The `P2889` additions above still go out: they ARE the
+#: zipper's output. With no creations here, `split-daily-batch.py` gets no FamilySearch test
+#: people either. Only Emma lifts it.
+CREATIONS_PAUSED = True
+
 
 def garborg():
     """The daily builder, imported for its choke points rather than copied.
@@ -553,6 +562,10 @@ def build(args):
         if fs in bridge:
             carried.append((fs, "", f"already on Wikidata as {bridge[fs]}: takes "
                                     f"statements, not a creation"))
+            continue
+        if CREATIONS_PAUSED:
+            carried.append((fs, "", "paused: FamilySearch creations wait on the zipper merge "
+                                    "(Emma, 2026-09-30)"))
             continue
         primary, aliases = name_plan(rec)
         if not primary:
