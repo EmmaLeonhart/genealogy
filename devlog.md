@@ -49569,3 +49569,11 @@ tune the zipper's assumptions about lines of parents. `review-decks.yml` dispatc
 36788684805) while a pipeline run was going, at her instruction. The FamilySearch deck's
 `decisions` store held no verdicts. Queue item reworded to the deck loop.
 
+## 2026-09-30 17:10 PDT: FamilySearch parent deck published
+
+Emma: a person with several fathers (or mothers) gets a card, and she says whether they are the same
+person or different people; FamilySearch only, her ancestors first. The current tree holds 8,370
+person-slots with more than one parent; 397 involve a FamilySearch parent, 236 of them on her lines.
+Published at https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj with a `db` store (`verdicts`, empty at
+publish). The 2026-08-25 `multi-parents-ours.tsv` predated the FamilySearch data and was not used.
+
