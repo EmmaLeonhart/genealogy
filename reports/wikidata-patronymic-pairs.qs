@@ -21,15 +21,16 @@ Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 
-# Mikalsdotter -- the counterpart of Mikalson (32 bearer(s))
+# Asdatter -- the counterpart of Asen (35 bearer(s))
 CREATE
-LAST	Len	"Mikalsdotter"
-LAST	Lmul	"Mikalsdotter"
+LAST	Len	"Asdatter"
+LAST	Lmul	"Asdatter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
-LAST	P407	Q9027
+LAST	P407	Q9043
+LAST	P407	Q9035
 
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
@@ -43,27 +44,6 @@ LAST	P407	Q9027
 LAST	P5278	Q141574647
 Q141574647	P5278	LAST
 Q141574647	P407	Q9027
-
-# Henrichsdatter -- the counterpart of Henrichsen (18 bearer(s))
-CREATE
-LAST	Len	"Henrichsdatter"
-LAST	Lmul	"Henrichsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Frederiksen -- the counterpart of Frederiksdatter (15 bearer(s))
-CREATE
-LAST	Len	"Frederiksen"
-LAST	Lmul	"Frederiksen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
 
 # Thoresen -- the counterpart of Thoresdatter (15 bearer(s))
 CREATE
@@ -89,405 +69,404 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Tjøstelsen -- the counterpart of Tjøstelsdatter (13 bearer(s))
+# Anundsson -- the counterpart of Anundsdotter (9 bearer(s))
 CREATE
-LAST	Len	"Tjøstelsen"
-LAST	Lmul	"Tjøstelsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141586326
-Q141586326	P5278	LAST
-Q141586326	P407	Q9043
-Q141586326	P407	Q9035
-
-# Atlaksen -- the counterpart of Atlaksdatter (12 bearer(s))
-CREATE
-LAST	Len	"Atlaksen"
-LAST	Lmul	"Atlaksen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141585643
-Q141585643	P5278	LAST
-Q141585643	P407	Q9043
-Q141585643	P407	Q9035
-
-# Ådnesson -- the counterpart of Ådnesdotter (11 bearer(s))
-CREATE
-LAST	Len	"Ådnesson"
-LAST	Lmul	"Ådnesson"
+LAST	Len	"Anundsson"
+LAST	Lmul	"Anundsson"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P31	Q10673705
 LAST	P407	Q9027
-LAST	P5278	Q141584071
-Q141584071	P5278	LAST
-Q141584071	P407	Q9027
+LAST	P5278	Q141585685
+Q141585685	P5278	LAST
+Q141585685	P407	Q9027
 
-# Amundsdotter -- the counterpart of Amundson (10 bearer(s))
+# Gjertsen -- the counterpart of Gjertsdatter (9 bearer(s))
 CREATE
-LAST	Len	"Amundsdotter"
-LAST	Lmul	"Amundsdotter"
+LAST	Len	"Gjertsen"
+LAST	Lmul	"Gjertsen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141563131
-Q141563131	P5278	LAST
-
-# Eilefsdotter -- the counterpart of Eilefson (10 bearer(s))
-CREATE
-LAST	Len	"Eilefsdotter"
-LAST	Lmul	"Eilefsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Gitlesdatter -- the counterpart of Gitlesen (10 bearer(s))
-CREATE
-LAST	Len	"Gitlesdatter"
-LAST	Lmul	"Gitlesdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
+LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
-LAST	P5278	Q141584086
-Q141584086	P5278	LAST
-Q141584086	P407	Q9043
-Q141584086	P407	Q9035
+LAST	P5278	Q141586335
+Q141586335	P5278	LAST
+Q141586335	P407	Q9043
+Q141586335	P407	Q9035
 
-# Gudbrandsdotter -- the counterpart of Gudbrandsson (10 bearer(s))
+# Gulliksdotter -- the counterpart of Gullikson (9 bearer(s))
 CREATE
-LAST	Len	"Gudbrandsdotter"
-LAST	Lmul	"Gudbrandsdotter"
+LAST	Len	"Gulliksdotter"
+LAST	Lmul	"Gulliksdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
+LAST	P5278	Q141572224
+Q141572224	P5278	LAST
 
-# Håvardsdatter -- the counterpart of Håvardsen (10 bearer(s))
+# Halvarsen -- the counterpart of Halvarsdatter (9 bearer(s))
 CREATE
-LAST	Len	"Håvardsdatter"
-LAST	Lmul	"Håvardsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141585658
-Q141585658	P5278	LAST
-Q141585658	P407	Q9043
-Q141585658	P407	Q9035
-
-# Ingemundsen -- the counterpart of Ingemundsdatter (10 bearer(s))
-CREATE
-LAST	Len	"Ingemundsen"
-LAST	Lmul	"Ingemundsen"
+LAST	Len	"Halvarsen"
+LAST	Lmul	"Halvarsen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
-# Josefsdotter -- the counterpart of Josefson (10 bearer(s))
+# Jochumsen -- the counterpart of Jochumsdatter (9 bearer(s))
 CREATE
-LAST	Len	"Josefsdotter"
-LAST	Lmul	"Josefsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141586292
-Q141586292	P5278	LAST
-
-# Kristoffersson -- the counterpart of Kristoffersdotter (10 bearer(s))
-CREATE
-LAST	Len	"Kristoffersson"
-LAST	Lmul	"Kristoffersson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141582461
-Q141582461	P5278	LAST
-Q141582461	P407	Q9027
-
-# Königsdotter -- the counterpart of Königsson (10 bearer(s))
-CREATE
-LAST	Len	"Königsdotter"
-LAST	Lmul	"Königsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141336469
-Q141336469	P5278	LAST
-Q141336469	P407	Q9027
-
-# Mortensdotter -- the counterpart of Mortenson (10 bearer(s))
-CREATE
-LAST	Len	"Mortensdotter"
-LAST	Lmul	"Mortensdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141514269
-Q141514269	P5278	LAST
-
-# Njellsen -- the counterpart of Njellsdatter (10 bearer(s))
-CREATE
-LAST	Len	"Njellsen"
-LAST	Lmul	"Njellsen"
+LAST	Len	"Jochumsen"
+LAST	Lmul	"Jochumsen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
-LAST	P5278	Q141550375
-Q141550375	P5278	LAST
-Q141550375	P407	Q9043
-Q141550375	P407	Q9035
+LAST	P5278	Q141586318
+Q141586318	P5278	LAST
+Q141586318	P407	Q9043
+Q141586318	P407	Q9035
 
-# Omundsdotter -- the counterpart of Omundson (10 bearer(s))
+# Josefsen -- the counterpart of Josefsdatter (9 bearer(s))
 CREATE
-LAST	Len	"Omundsdotter"
-LAST	Lmul	"Omundsdotter"
+LAST	Len	"Josefsen"
+LAST	Lmul	"Josefsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141564542
+Q141564542	P5278	LAST
+Q141564542	P407	Q9043
+Q141564542	P407	Q9035
+
+# Josephsdotter -- the counterpart of Josephsson (9 bearer(s))
+CREATE
+LAST	Len	"Josephsdotter"
+LAST	Lmul	"Josephsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
-LAST	P5278	Q141577949
-Q141577949	P5278	LAST
 
-# Paulsdotter -- the counterpart of Paulson (10 bearer(s))
+# Steffensen -- the counterpart of Steffensdatter (9 bearer(s))
 CREATE
-LAST	Len	"Paulsdotter"
-LAST	Lmul	"Paulsdotter"
+LAST	Len	"Steffensen"
+LAST	Lmul	"Steffensen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141498960
+Q141498960	P5278	LAST
+Q141498960	P407	Q9043
+Q141498960	P407	Q9035
+
+# Tjerandsdotter -- the counterpart of Tjerandson (9 bearer(s))
+CREATE
+LAST	Len	"Tjerandsdotter"
+LAST	Lmul	"Tjerandsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+LAST	P5278	Q141442909
+Q141442909	P5278	LAST
+
+# Tordsdotter -- the counterpart of Tordson (9 bearer(s))
+CREATE
+LAST	Len	"Tordsdotter"
+LAST	Lmul	"Tordsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Samsonsson -- the counterpart of Samsonsdotter (10 bearer(s))
+# Torgrimsen -- the counterpart of Torgrimsdatter (9 bearer(s))
 CREATE
-LAST	Len	"Samsonsson"
-LAST	Lmul	"Samsonsson"
+LAST	Len	"Torgrimsen"
+LAST	Lmul	"Torgrimsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141549527
+Q141549527	P5278	LAST
+Q141549527	P407	Q9043
+Q141549527	P407	Q9035
+
+# Torkelsson -- the counterpart of Torkelsdotter (9 bearer(s))
+CREATE
+LAST	Len	"Torkelsson"
+LAST	Lmul	"Torkelsson"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P31	Q10673705
 LAST	P407	Q9027
+LAST	P5278	Q141574687
+Q141574687	P5278	LAST
+Q141574687	P407	Q9027
 
-# Sjovatsdotter -- the counterpart of Sjovatson (10 bearer(s))
+# Tøresen -- the counterpart of Tøresdatter (9 bearer(s))
 CREATE
-LAST	Len	"Sjovatsdotter"
-LAST	Lmul	"Sjovatsdotter"
+LAST	Len	"Tøresen"
+LAST	Lmul	"Tøresen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141446969
+Q141446969	P5278	LAST
+Q141446969	P407	Q9043
+Q141446969	P407	Q9035
+
+# Ulvsdotter -- the counterpart of Ulvsson (9 bearer(s))
+CREATE
+LAST	Len	"Ulvsdotter"
+LAST	Lmul	"Ulvsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Sunesdatter -- the counterpart of Sunesen (10 bearer(s))
+# Åsulvsen -- the counterpart of Åsulvsdatter (9 bearer(s))
 CREATE
-LAST	Len	"Sunesdatter"
-LAST	Lmul	"Sunesdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Svalesen -- the counterpart of Svalesdatter (10 bearer(s))
-CREATE
-LAST	Len	"Svalesen"
-LAST	Lmul	"Svalesen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141502661
-Q141502661	P5278	LAST
-Q141502661	P407	Q9043
-Q141502661	P407	Q9035
-
-# Syvertsdatter -- the counterpart of Syvertsen (10 bearer(s))
-CREATE
-LAST	Len	"Syvertsdatter"
-LAST	Lmul	"Syvertsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141442902
-Q141442902	P5278	LAST
-Q141442902	P407	Q9043
-Q141442902	P407	Q9035
-
-# Søfrensen -- the counterpart of Søfrensdatter (10 bearer(s))
-CREATE
-LAST	Len	"Søfrensen"
-LAST	Lmul	"Søfrensen"
+LAST	Len	"Åsulvsen"
+LAST	Lmul	"Åsulvsen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
-# Taralsen -- the counterpart of Taralsdatter (10 bearer(s))
+# Albretsdotter -- the counterpart of Albretson (8 bearer(s))
 CREATE
-LAST	Len	"Taralsen"
-LAST	Lmul	"Taralsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Tjølsdotter -- the counterpart of Tjølson (10 bearer(s))
-CREATE
-LAST	Len	"Tjølsdotter"
-LAST	Lmul	"Tjølsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141563129
-Q141563129	P5278	LAST
-
-# Tøresdotter -- the counterpart of Tøresson (10 bearer(s))
-CREATE
-LAST	Len	"Tøresdotter"
-LAST	Lmul	"Tøresdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141561992
-Q141561992	P5278	LAST
-Q141561992	P407	Q9027
-
-# Ånensen -- the counterpart of Ånensdatter (10 bearer(s))
-CREATE
-LAST	Len	"Ånensen"
-LAST	Lmul	"Ånensen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141585684
-Q141585684	P5278	LAST
-Q141585684	P407	Q9043
-Q141585684	P407	Q9035
-
-# Alfsen -- the counterpart of Alfsdatter (9 bearer(s))
-CREATE
-LAST	Len	"Alfsen"
-LAST	Lmul	"Alfsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141528090
-Q141528090	P5278	LAST
-Q141528090	P407	Q9043
-Q141528090	P407	Q9035
-
-# Bergesdotter -- the counterpart of Bergeson (9 bearer(s))
-CREATE
-LAST	Len	"Bergesdotter"
-LAST	Lmul	"Bergesdotter"
+LAST	Len	"Albretsdotter"
+LAST	Lmul	"Albretsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Brynjulfsdotter -- the counterpart of Brynjulfson (9 bearer(s))
+# Algotsdotter -- the counterpart of Algotsson (8 bearer(s))
 CREATE
-LAST	Len	"Brynjulfsdotter"
-LAST	Lmul	"Brynjulfsdotter"
+LAST	Len	"Algotsdotter"
+LAST	Lmul	"Algotsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Eilevsdatter -- the counterpart of Eilevsen (9 bearer(s))
+# Bendiksen -- the counterpart of Bendiksdatter (8 bearer(s))
 CREATE
-LAST	Len	"Eilevsdatter"
-LAST	Lmul	"Eilevsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141585070
-Q141585070	P5278	LAST
-Q141585070	P407	Q9043
-Q141585070	P407	Q9035
-
-# Enevaldsen -- the counterpart of Enevaldsdatter (9 bearer(s))
-CREATE
-LAST	Len	"Enevaldsen"
-LAST	Lmul	"Enevaldsen"
+LAST	Len	"Bendiksen"
+LAST	Lmul	"Bendiksen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
-# Erlingsson -- the counterpart of Erlingsdotter (9 bearer(s))
+# Einarsson -- the counterpart of Einarsdotter (8 bearer(s))
 CREATE
-LAST	Len	"Erlingsson"
-LAST	Lmul	"Erlingsson"
+LAST	Len	"Einarsson"
+LAST	Lmul	"Einarsson"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P31	Q10673705
 LAST	P407	Q9027
-LAST	P5278	Q141583375
-Q141583375	P5278	LAST
-Q141583375	P407	Q9027
+LAST	P5278	Q141584056
+Q141584056	P5278	LAST
+Q141584056	P407	Q9027
 
-# Gautesdotter -- the counterpart of Gauteson (9 bearer(s))
+# Erlendsen -- the counterpart of Erlendsdatter (8 bearer(s))
 CREATE
-LAST	Len	"Gautesdotter"
-LAST	Lmul	"Gautesdotter"
+LAST	Len	"Erlendsen"
+LAST	Lmul	"Erlendsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Halldorsdotter -- the counterpart of Halldorson (8 bearer(s))
+CREATE
+LAST	Len	"Halldorsdotter"
+LAST	Lmul	"Halldorsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
-LAST	P5278	Q141575698
-Q141575698	P5278	LAST
+
+# Halvarsdatter -- the counterpart of Halvarsen (8 bearer(s))
+CREATE
+LAST	Len	"Halvarsdatter"
+LAST	Lmul	"Halvarsdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Ingebrigtsdotter -- the counterpart of Ingebrigtsson (8 bearer(s))
+CREATE
+LAST	Len	"Ingebrigtsdotter"
+LAST	Lmul	"Ingebrigtsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
+# Ingemundsdatter -- the counterpart of Ingemundsen (8 bearer(s))
+CREATE
+LAST	Len	"Ingemundsdatter"
+LAST	Lmul	"Ingemundsdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141610461
+Q141610461	P5278	LAST
+Q141610461	P407	Q9043
+Q141610461	P407	Q9035
+
+# Jöransson -- the counterpart of Jöransdotter (8 bearer(s))
+CREATE
+LAST	Len	"Jöransson"
+LAST	Lmul	"Jöransson"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P31	Q10673705
+LAST	P407	Q9027
+LAST	P5278	Q141572219
+Q141572219	P5278	LAST
+Q141572219	P407	Q9027
+
+# Kjetilsson -- the counterpart of Kjetilsdotter (8 bearer(s))
+CREATE
+LAST	Len	"Kjetilsson"
+LAST	Lmul	"Kjetilsson"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P31	Q10673705
+LAST	P407	Q9027
+
+# Olafsen -- the counterpart of Olafsdatter (8 bearer(s))
+CREATE
+LAST	Len	"Olafsen"
+LAST	Lmul	"Olafsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Rolfsdotter -- the counterpart of Rolfsson (8 bearer(s))
+CREATE
+LAST	Len	"Rolfsdotter"
+LAST	Lmul	"Rolfsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
+# Steinsdotter -- the counterpart of Steinson (8 bearer(s))
+CREATE
+LAST	Len	"Steinsdotter"
+LAST	Lmul	"Steinsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
+# Stensdotter -- the counterpart of Stensson (8 bearer(s))
+CREATE
+LAST	Len	"Stensdotter"
+LAST	Lmul	"Stensdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
+# Sveinungsen -- the counterpart of Sveinungsdatter (8 bearer(s))
+CREATE
+LAST	Len	"Sveinungsen"
+LAST	Lmul	"Sveinungsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Søfrensdatter -- the counterpart of Søfrensen (8 bearer(s))
+CREATE
+LAST	Len	"Søfrensdatter"
+LAST	Lmul	"Søfrensdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141610474
+Q141610474	P5278	LAST
+Q141610474	P407	Q9043
+Q141610474	P407	Q9035
+
+# Tostensdotter -- the counterpart of Tostenson (8 bearer(s))
+CREATE
+LAST	Len	"Tostensdotter"
+LAST	Lmul	"Tostensdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
+# Åsmundsen -- the counterpart of Åsmundsdatter (8 bearer(s))
+CREATE
+LAST	Len	"Åsmundsen"
+LAST	Lmul	"Åsmundsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Åsmundsdotter -- the counterpart of Åsmundson (8 bearer(s))
+CREATE
+LAST	Len	"Åsmundsdotter"
+LAST	Lmul	"Åsmundsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
 
