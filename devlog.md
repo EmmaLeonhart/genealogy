@@ -49546,3 +49546,19 @@ untouched behind their gate. Where it stands: 11,770 zipper pairs, 3,286 refused
 creations the last FamilySearch file held. The pause ships with a test that it is on and that a
 paused build writes no `CREATE`; the existing builder tests pin the creation shape with it off. The
 queue item now names the zipper work that follows.
+
+## 2026-09-30 16:30 PDT: why the FamilySearch zipper refuses slots (measured, not shipped)
+
+A local run of `zipper-join.py --familysearch` (outputs captured, nothing written to `reports/`)
+gives 11,779 pairs and 3,282 refusals. Tagging the three places that file a refusal shows that
+2,266 of them (2,055 child, 211 spouse) are the LEFTOVER of a slot: the date or name step paired
+some of it, and the rest are filed as refused. The anchor is not in the next round's frontier
+(only the new pairs are), so the slot is never looked at again. A leftover of one on each side
+never gets the one-each-side pairing it would get in any other slot: 131 spouse refusals have that
+shape. The other refusals are ordinary: 896 child slots where neither dates nor names decide, and
+246 one-each-side child slots refused by the lopsided-sibship rule, as designed.
+
+Re-checking those anchors in the next round: 11,779 -> 13,307 pairs (+1,551, 23 lost, 21 changed).
+Distinct pairs that fail the sex check go from 171 to 216, and most of the rise is in one-each-side
+pairings (14 -> 43), so the new pairs are not free. Emma chose to write it up and not ship it.
+
