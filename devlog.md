@@ -49562,3 +49562,10 @@ Re-checking those anchors in the next round: 11,779 -> 13,307 pairs (+1,551, 23 
 Distinct pairs that fail the sex check go from 171 to 216, and most of the rise is in one-each-side
 pairings (14 -> 43), so the new pairs are not free. Emma chose to write it up and not ship it.
 
+## 2026-09-30 16:05 PDT: FamilySearch work is the deck loop
+
+Emma: the job is to make the decks so she can say which FamilySearch people are the same, not to
+tune the zipper's assumptions about lines of parents. `review-decks.yml` dispatched (run
+36788684805) while a pipeline run was going, at her instruction. The FamilySearch deck's
+`decisions` store held no verdicts. Queue item reworded to the deck loop.
+
