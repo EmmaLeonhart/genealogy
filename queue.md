@@ -15,6 +15,10 @@ it. Each session re-creates the hourly `exports/2026-09-19` merge cron and start
 
 Also what the fuck is going on with the sparse checkout on the ontology hanress version it looks like a different repo altogether
 
+I think that you just randomly decided without my consent to only check out certain files, and you basically completely torched the entire idea of being able to run this program with the ontology harness. Again, there's so much shit that is involved with this project, and we should be putting at the end of the queue something about cleaning it up. We've been trying to clean up this project for ages, but if you just sparse-check out whatever the fuck is going on with this project, you're going to end up just losing your ability to fucking work on this project, okay? 
+
+You always have a 10. I don't know why it is you thought that was remotely acceptable. 
+
 ## New stuff
 
 So a lot has changed. A lot has changed since earlier. You can look in this repo and see the email that was sent by Jenny to me, and I'm not sure whether it's a trap or something. I'm not sure what the actual ideal response is to it.
