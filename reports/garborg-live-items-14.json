@@ -440463,6 +440463,92 @@
      "type": "statement"
     }
    ],
+   "P22": [
+    {
+     "id": "Q141612078$6334890D-8728-487C-AA9B-90D2C89EE47F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141614114",
+        "numeric-id": 141614114
+       }
+      },
+      "hash": "24b10bcf1517430b37768ae08c5d36a390118955",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "ac3911bcd7af6daeffa18d40e5205ec755d5066e",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000011320862058"
+          },
+          "hash": "41b78ce3aaea10c07e21ac8d01e944b225364e64",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141612078$69679BFB-1251-45DB-8B0A-C475C5B987DB",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141614094",
+        "numeric-id": 141614094
+       }
+      },
+      "hash": "1102c27bd313709a406f568291c44272a2f0191d",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "7d25af2795901d1495134a540fded7219dce00a2",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000011320912700"
+          },
+          "hash": "f8772e4fe3e005aeacc9d8eeb906b755bfcefd93",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141612078$C2F62623-84D1-4E02-B320-BD250CD8147A",
@@ -440798,8 +440884,8 @@
     "value": "索菲娅·玛格达莱娜·洛伦特兹多特·斯托尔姆哈特"
    }
   },
-  "lastrevid": 2551690720,
-  "modified": "2026-10-01T08:30:01Z",
+  "lastrevid": 2551840245,
+  "modified": "2026-10-01T17:04:38Z",
   "ns": 0,
   "pageid": 135186772,
   "sitelinks": {},
@@ -441073,6 +441159,62 @@
       "snaktype": "value"
      },
      "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q141612126$1ABCEC75-6F00-4D63-8908-7E8D13ECA8BE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141613826",
+        "numeric-id": 141613826
+       }
+      },
+      "hash": "4381f283e3d97d0b52e299048d0559d19405bc6b",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "131f06695d12f695ea2ddd945f0ca3ea0a15d14c",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000007583144253"
+          },
+          "hash": "444ad82762fa6dba0642be8f3a0930a965ed2864",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ],
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "GDG9-6WH"
+          },
+          "hash": "35fefdecc12d65915eaf4be901ad20c9cb721f41",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600",
+        "P2889"
+       ]
+      }
+     ],
      "type": "statement"
     }
    ],
@@ -441424,8 +441566,8 @@
     "value": "托雷·格雷伊普松"
    }
   },
-  "lastrevid": 2551691829,
-  "modified": "2026-10-01T08:33:14Z",
+  "lastrevid": 2551835423,
+  "modified": "2026-10-01T16:48:47Z",
   "ns": 0,
   "pageid": 135186875,
   "sitelinks": {},

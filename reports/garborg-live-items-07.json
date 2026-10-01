@@ -421945,6 +421945,49 @@
      "type": "statement"
     }
    ],
+   "P26": [
+    {
+     "id": "Q141612055$AAD8C499-B004-429C-8B4E-6BD8980D908F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141613840",
+        "numeric-id": 141613840
+       }
+      },
+      "hash": "6dae603e9f4b0983f3a65da23f81949f357648ef",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "70c187d59166c4c4196d5db0cb6b55511592bfdc",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000001499005705"
+          },
+          "hash": "70acc77f6b2bb098a41467734723c4f4db7a57b5",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141612055$8001A862-173E-4774-97E3-388832879C7C",
@@ -422063,8 +422106,8 @@
     "value": "菲利普·托尔内松·永尔托尔恩之妻"
    }
   },
-  "lastrevid": 2551689989,
-  "modified": "2026-10-01T08:28:09Z",
+  "lastrevid": 2551835836,
+  "modified": "2026-10-01T16:50:23Z",
   "ns": 0,
   "pageid": 135186721,
   "sitelinks": {},
@@ -426662,6 +426705,208 @@
   "pageid": 135188505,
   "sitelinks": {},
   "title": "Q141612631",
+  "type": "item"
+ },
+ "Q141613815": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141613815$B7D27008-7690-497C-AF4C-2F10B93FCA60",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141613815$9707F6A6-1545-4885-AD7C-1C4E153A3588",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000096380623847"
+      },
+      "hash": "a6cfd1aedd4f771947112742afaad53b04e875d8",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Steinvor Øysteinsdatter Taklo"
+        },
+        "hash": "9a7365861252687f1634cffe94d61c59dd3f96b6",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141613815$4D9FE69F-F7CF-4997-BC1B-DB2DCE0C171E",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141613815$7CEF8170-F2F7-4CC7-89FB-7EB92B48AD2A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612185",
+        "numeric-id": 141612185
+       }
+      },
+      "hash": "636e21bc38686bcede1f44b3a22fd432212151bb",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "ba22fc1697913f2f51b8e837c37494b16bdb35a7",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000096380623847"
+          },
+          "hash": "a6cfd1aedd4f771947112742afaad53b04e875d8",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P5056": [
+    {
+     "id": "Q141613815$EEFDB823-737A-4305-B801-8AAB995914D2",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612216",
+        "numeric-id": 141612216
+       }
+      },
+      "hash": "56d2ad78ecb7b69631dd8afafaa04b3ec9ca23a9",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141613815$0A2B0547-6718-4263-98FF-516A42EF5F3E",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q16427439",
+        "numeric-id": 16427439
+       }
+      },
+      "hash": "b56ac5bc360bad42e2ec10f524209252e49df13e",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "Geni 6000000096380623847"
+   }
+  },
+  "id": "Q141613815",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Steinvor Øysteinsdatter Taklo"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "ステインヴォル・オイステインスダッテル・タクロ"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "스테인보르 외이스테인스다테르 타크로"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Steinvor Øysteinsdatter Taklo"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "斯特因沃尔·奥伊斯特因斯达特·塔克洛"
+   }
+  },
+  "lastrevid": 2551835293,
+  "modified": "2026-10-01T16:48:12Z",
+  "ns": 0,
+  "pageid": 135191095,
+  "sitelinks": {},
+  "title": "Q141613815",
   "type": "item"
  },
  "Q15057415": {

@@ -449361,6 +449361,62 @@
      "type": "statement"
     }
    ],
+   "P22": [
+    {
+     "id": "Q141612107$B85E6437-B520-4755-9DC2-68318E98B8CF",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141614255",
+        "numeric-id": 141614255
+       }
+      },
+      "hash": "a495f77aaa7637f2b61e511359954774e9e8f6a3",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b0ba0e1219c9a44e12e9baa1431cd545001ba545",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000008113408123"
+          },
+          "hash": "38a290bd23dc58fa0254e2e2faf1ca074e440fc8",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ],
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "GYQ7-81D"
+          },
+          "hash": "4d15ef1586d6c50220292e30e3f6d2eb5dc11663",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600",
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141612107$BEFFCA7A-7D05-4963-AB0F-5463944544B5",
@@ -449599,8 +449655,8 @@
     "value": "拉格尼尔德·洛德蒙德斯达特·阿夫·奥克斯维格"
    }
   },
-  "lastrevid": 2551691336,
-  "modified": "2026-10-01T08:31:51Z",
+  "lastrevid": 2551841339,
+  "modified": "2026-10-01T17:06:31Z",
   "ns": 0,
   "pageid": 135186832,
   "sitelinks": {},

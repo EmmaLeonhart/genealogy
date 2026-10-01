@@ -390612,6 +390612,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141583860$F45EF0EA-5B43-45E3-9F30-CDF9B4D9A551",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141613875",
+        "numeric-id": 141613875
+       }
+      },
+      "hash": "66b92508ba3a067c67e8f7795ae6e2576dff4b7a",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "f13ebcfd73ddb69fbeb16ce6afb7777edba26bad",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000007384129915"
+          },
+          "hash": "56733c9ca0c44276761cb2445d27ab3be13292b7",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -390778,8 +390819,8 @@
     "value": "托尔古纳·谢蒂尔斯达特·比尔谢兰德"
    }
   },
-  "lastrevid": 2550309022,
-  "modified": "2026-09-28T03:58:56Z",
+  "lastrevid": 2551838058,
+  "modified": "2026-10-01T17:00:05Z",
   "ns": 0,
   "pageid": 135143338,
   "sitelinks": {},
@@ -433255,6 +433296,60 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141612068$1FA3AE07-6CE7-45F4-9883-9ACD751E428F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141613936",
+        "numeric-id": 141613936
+       }
+      },
+      "hash": "a927d025597e7c9d5593286c4a1d9386c8615ebb",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3338921b01580824ca7b7d623385ef93e3df55a5",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000007573171415"
+          },
+          "hash": "336f33866a1dc71591befbffd2f50a54c57dba23",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ],
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "GTSS-6MM"
+          },
+          "hash": "b48a4fc9104d44fa609e3083b6c15fe078af1e3d",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600",
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -433392,8 +433487,8 @@
     "value": "因格比约尔格·斯科拉内塞特·阿斯克赫伊姆"
    }
   },
-  "lastrevid": 2551690419,
-  "modified": "2026-10-01T08:29:17Z",
+  "lastrevid": 2551839056,
+  "modified": "2026-10-01T17:02:12Z",
   "ns": 0,
   "pageid": 135186751,
   "sitelinks": {},
@@ -433568,6 +433663,49 @@
       "snaktype": "value"
      },
      "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141612148$2E4211E2-0328-4BE3-8A08-2864D6DC63DE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141614175",
+        "numeric-id": 141614175
+       }
+      },
+      "hash": "f4188da9b65eeeba589e22336b2a79fc3e034e3b",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "9204b6490cc166f87141aaa0e6e812edbc6c7bac",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000084433074934"
+          },
+          "hash": "16526fc41f864799d5b5de2623429c472837ba86",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
      "type": "statement"
     }
    ],
@@ -433927,8 +434065,8 @@
     "value": "贡纳尔·塔拉尔德森·凯恩"
    }
   },
-  "lastrevid": 2551692436,
-  "modified": "2026-10-01T08:34:53Z",
+  "lastrevid": 2551840750,
+  "modified": "2026-10-01T17:05:33Z",
   "ns": 0,
   "pageid": 135186930,
   "sitelinks": {},
