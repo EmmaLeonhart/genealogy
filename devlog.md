@@ -49629,3 +49629,13 @@ Emma: only her ancestors matter, no sibling matching. Her FamilySearch ancestors
 `PFR5-LDS`; with `owner-ancestors.tsv` on the Geni side, 907 of the 960 cards have a direct ancestor on one
 side and stay, 53 are gone. The ancestor-against-candidate cards (Agnes/Karin) stay, per the correction.
 Answers already given are kept. Rule recorded in `CLAUDE.md`; both queue items done.
+
+## 2026-09-30 18:35 PDT: User:日巫女 declares the account
+
+GZWDer asked (talk page, 2026-09-29) for the alternative account to be disclosed on `User:日巫女` with
+`Template:User alternative account`. Emma named the main account (Immanuelle) and approved the text; the
+page was created through her browser at 18:32 PDT with `{{User alternative account|Immanuelle}}` and no
+summary of ours. Nothing was posted on the talk page. His other points: the duplicate parent items to
+merge (its own queue item, through the UI merge), and `P2889` as a top-level statement as well as a
+reference (in the composer since 2026-09-28). He did not say how he does imports, so no import-method
+item was added.
