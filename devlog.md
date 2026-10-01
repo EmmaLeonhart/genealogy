@@ -49682,3 +49682,7 @@ needs a screenshot (or a visible tab) before the link appears.
 ## 2026-09-30 22:00 PDT: why the 16:09 pipeline run took so long
 
 Not a hang: `36789601188` queued 29 min, then 3 h 8 min of work (ledger refresh 74 min, decks 36 min, two backfills ~30 min each) and committed `b2470b167`. A push-triggered run does every step. `36809761592` (queued) builds the fresh batch; pushes are held until it starts so it is not superseded.
+
+## 2026-09-30 22:10 PDT: entry-points items folded together
+
+The end item `6e1e3b5e6` (three new entry points, all 2027-01-01 starts moved to 2026-09-01) is folded into the gate-removal item in its own place, per the correction; both extra items deleted.
