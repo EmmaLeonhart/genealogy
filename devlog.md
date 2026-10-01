@@ -49731,3 +49731,7 @@ not touched) was converted with `rootsmagic-import/rmtree_to_gedcom.py`: 53,985 
 where `tree.yml`'s FamilySearch zipper and render read it, so it joins the synoptic tree on the next
 rebuild. FamilySearch creations stay paused. The older first attempt (`potentially_corrupted_file`) is
 superseded by this one and not imported.
+
+## 2026-10-01 00:10 PDT: order.life genealogy moved here
+
+The pass through order.life (repo grep, no website): its genealogy is the wikibase (3,876 pages) as extracted in `wikibase/analysis/persons.tsv`, `edges.tsv`, `spouses.tsv`; `Gaiad/genealogy/` is the epic's own word index. The three extracts and a GEDCOM from order.life's own exporter (106,883 individuals, 56,865 families) are in `order-life-genealogy/`. Not merged into the synoptic tree: it includes mythic people and divine fathers, so merging is Emma's call.
