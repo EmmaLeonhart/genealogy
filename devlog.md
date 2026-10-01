@@ -49720,3 +49720,14 @@ Emma: no label-item work wired in. `_composed_labels_fill` and its test are remo
 ## 2026-09-30 23:35 PDT: order.life is a submodule
 
 `order.life/` added as a full-history submodule (1,604 commits, objects borrowed from the local checkout through `--reference`, no re-download), tracking `master`. No separate `genealogy` branch: the later queue item moves order.life work to `master`. No CI workflow checks out submodules, so CI is unaffected.
+
+## 2026-09-30 23:55 PDT: the finished RootsMagic extraction is in the corpus
+
+The finished `second_attempt.rmtree` (2026-09-30 11:15, sha256 `62c994e1…`, read from the read-only archive
+in `Documents\rootsmagic-archive\2026-09-30\`, copied to the scratchpad; the live `rootsmagic/` folder was
+not touched) was converted with `rootsmagic-import/rmtree_to_gedcom.py`: 53,985 people, 26,547 families,
+33,020 child links, 5,837 inferred B.C. Every person carries `_FSFTID`. Added as
+`gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-30.ged` beside the 2026-09-25 export (29,073 people),
+where `tree.yml`'s FamilySearch zipper and render read it, so it joins the synoptic tree on the next
+rebuild. FamilySearch creations stay paused. The older first attempt (`potentially_corrupted_file`) is
+superseded by this one and not imported.
