@@ -49641,3 +49641,11 @@ reference (in the composer since 2026-09-28). He did not say how he does imports
 item was added.
 
 The four talk-page items it replaced (`c7f94beee`, `a263f3cdf` and the two from the notes) are deleted with it.
+
+## 2026-09-30 18:55 PDT: RootsMagic gate open
+
+Emma confirmed by AskUserQuestion that the RootsMagic extraction is finished. The GATE item is deleted and
+the rule is in `CLAUDE.md`: the day's `.rmtree`/`.ged` files are archived read-only in
+`Documents\rootsmagic-archive\2026-09-30\`, and `rootsmagic-import` already converts the second attempt to a
+cleaned GEDCOM. The FamilySearch creations pause stays; its RootsMagic/GEDCOM-import wording is lifted. The
+RootsMagic and order.life items keep their place after the Wikidata items.
