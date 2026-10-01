@@ -49708,3 +49708,7 @@ word in kanji (`エイナル・レンデの妻`), not a Sinosphere signal. In `c
 the composer's label gate. Items treated as Sinosphere: 1,172 -> 419. Test added. Queue: the three
 pipeline/QuickStatements items removed (Emma: not queue items); the private-people item and the
 FamilySearch parent deck moved to the end; the kanji item done.
+
+## 2026-09-30 23:20 PDT: composed en labels wired; label items to the end of the queue
+
+Composed `en` labels now go into the batch where an item has no live `en` label (8 on the current report), via `_composed_labels_fill`; test added. Emma: the three label items go to the very end of the queue, after order.life and RootsMagic.

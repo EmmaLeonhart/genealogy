@@ -2998,6 +2998,29 @@ def _cjk_follows_mul(table):
     return out
 
 
+#: The languages whose composed label goes into the batch. Switched one at a time (queue, label
+#: composition); `en` first, Emma's choice on 2026-09-30.
+COMPOSED_LIVE_LANGS = ("en",)
+
+
+def _composed_labels_fill():
+    """`L<lang>` edits from `reports/composed-labels.tsv`, only where the item has no live label in
+    that language. A composed label never overwrites one somebody wrote."""
+    if not COMPOSED_LABELS_OUT.exists():
+        return []
+    out = []
+    with open(COMPOSED_LABELS_OUT, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="\t"):
+            if r["lang"] in COMPOSED_LIVE_LANGS and r["composed"] and not r["live"]:
+                out.append(f"#   {r['qid']}: {r['lang']} composed from its name items")
+                out.append(f'{r["qid"]}\tL{r["lang"]}\t"{r["composed"]}"')
+    if out:
+        out = ["", "# " + "-" * 72,
+               "# COMPOSED LABELS -- built from the name items' own labels, empty slots only.",
+               "# " + "-" * 72] + out
+    return out
+
+
 #: Words that introduce a place a person was *of*, rather than a further name token.
 #:
 #: **`van`, `von`, `af` and `av` are deliberately NOT here, and the first draft had them.** They
@@ -9526,7 +9549,8 @@ def main():
         + _label_corrections(editable_items, labels, table, state, fields, generation,
                              live_labels)
         + _cjk_follows_mul(table)
-        + _missing_cjk_labels(editable_items, labels, table, live_labels))
+        + _missing_cjk_labels(editable_items, labels, table, live_labels)
+        + _composed_labels_fill())
     # ⛔ **LOCALITY, ON EVERY DERIVED LABEL EDIT. THIS IS THE ALARM.**
     #
     # Ruled 2026-09-18, after nine `ja` labels were set on `Q135525010`, `Q135579354` and seven
