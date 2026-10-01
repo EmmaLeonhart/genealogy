@@ -49712,3 +49712,7 @@ FamilySearch parent deck moved to the end; the kanji item done.
 ## 2026-09-30 23:20 PDT: composed en labels wired; label items to the end of the queue
 
 Composed `en` labels now go into the batch where an item has no live `en` label (8 on the current report), via `_composed_labels_fill`; test added. Emma: the three label items go to the very end of the queue, after order.life and RootsMagic.
+
+## 2026-09-30 23:30 PDT: composed en wiring removed
+
+Emma: no label-item work wired in. `_composed_labels_fill` and its test are removed; the label items stay at the end of the queue untouched.
