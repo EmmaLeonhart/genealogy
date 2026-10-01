@@ -49790,3 +49790,12 @@ handoff (the order.life map, content audit, planning digest, Emma's verdicts, th
 notice, the suggestions from her 2026-09-25 walk). PR EmmaLeonhart/order.life#12 merged it
 (`45177d35d`). The `order.life` submodule here was already on `master` and now points at the
 merge. order.life edits from this repo go on `master` from now on.
+
+## 2026-09-30 23:55 PDT: the handoff directory
+
+`handoff/genealogy-agent/README.md` is this repo's reply to order.life's
+`handoff/2026-09-25-narrative-identity/`. It covers what was decided about order.life (copied, not
+moved; not merged into the tree), where the 2026-09-30 session departed from its instructions
+(queue drift, a false "merged" report, the platonic-zipper detour, relational descriptions), where
+it reads things differently from the audit, and the two open decisions for Emma. It is in this
+repo, not in order.life, because the queue item asked for this repo's own directory.
