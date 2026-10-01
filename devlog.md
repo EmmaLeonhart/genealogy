@@ -49622,3 +49622,10 @@ Emma. The deck cards stay live and the cron keeps reading her answers.
 ## 2026-09-30 19:05 PDT: parent deck, 25 more answers
 
 25 rows appended to `reports/emma-judgments.tsv` (4 SAME, 21 DIFFERENT); 419 pairs answered in all.
+
+## 2026-09-30 19:15 PDT: the deck is direct ancestors only
+
+Emma: only her ancestors matter, no sibling matching. Her FamilySearch ancestors are the 11,360 people above
+`PFR5-LDS`; with `owner-ancestors.tsv` on the Geni side, 907 of the 960 cards have a direct ancestor on one
+side and stay, 53 are gone. The ancestor-against-candidate cards (Agnes/Karin) stay, per the correction.
+Answers already given are kept. Rule recorded in `CLAUDE.md`; both queue items done.

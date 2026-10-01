@@ -256,6 +256,8 @@ round 3.
          its verdicts go into emma-judgments.tsv with the fs_id in `qid` and come back as anchors)
       3. then the three decks below
 
+**⛔ THE HAND WORK IS ON EMMA'S DIRECT ANCESTORS ONLY. Ruled 2026-09-30:** *"the zipping that I'm asking you to do is only on the ancestors ... I don't care about identifying siblings with each other."* A deck card or any manual zipper work needs one side to be her direct ancestor: Geni side in `reports/owner-ancestors.tsv`, FamilySearch side an ancestor of her own record `PFR5-LDS`. Siblings, children and spouses' relatives get no cards. A card that asks whether a FamilySearch person is her ancestor (Agnes Jonsdotter / Karin Jonsdotter) is ancestor matching and stays.
+
 **The FamilySearch side is keyed on `_FSFTID`, never on a file's own counter**, and it is read
 from the raw downloads in `gedcom/familysearch/`, never from the renders.
 **FamilySearch holds duplicates of its own** — two records, one person, the same parents
