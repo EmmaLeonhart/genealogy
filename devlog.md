@@ -49699,3 +49699,12 @@ entry-point groups start 2026-09-01 (they were 2027-01-01), so entry points go f
 added with their Geni ids; `Q701641` Youlan is added with no Geni id (none on Wikidata), so she is live
 once her item carries one. New `tests/test_entry_point_dates.py` pins both sides of the date. Nothing
 is sent by this commit; the next pipeline run composes from it.
+
+## 2026-09-30 23:00 PDT: kanji rule fixed; queue reshaped by Emma
+
+Kanji rule, as Emma put it: the kanji check stays, and AFTER it the NN items we made are taken back out
+(an `NN` token in the item's `mul`/`en` label). Their `ja` label is ours, a katakana name with a kinship
+word in kanji (`エイナル・レンデの妻`), not a Sinosphere signal. In `check-batch-locality.kanji_items` and
+the composer's label gate. Items treated as Sinosphere: 1,172 -> 419. Test added. Queue: the three
+pipeline/QuickStatements items removed (Emma: not queue items); the private-people item and the
+FamilySearch parent deck moved to the end; the kanji item done.

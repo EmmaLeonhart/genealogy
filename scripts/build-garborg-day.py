@@ -9580,6 +9580,13 @@ def main():
     _is_kanji = lambda v: bool(_HAN.search(_ORDINAL.sub("", v or "")))
     _kanji_items = {q for (q, lang), v in (live_labels or {}).items()
                     if lang == "ja" and _is_kanji(v)}
+    # ⛔ Then the NN items we made come back out (Emma, 2026-09-30): their `ja` label is ours, a
+    # katakana name with a kinship word in kanji, and is no Sinosphere signal. Checked AFTER the
+    # kanji test, as she put it.
+    _nn = re.compile(r"(^|\s)NN(\s|$)")
+    _kanji_items = {q for q in _kanji_items
+                    if not any(_nn.search((live_labels or {}).get((q, lang)) or "")
+                               for lang in ("mul", "en"))}
     if _kanji_items:
         print(f"label edits: {len(_kanji_items)} item(s) hold a KANJI ja label and are excluded "
               f"from every label edit, any language")

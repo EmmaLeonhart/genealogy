@@ -83,16 +83,32 @@ def universe():
     return allowed or None
 
 
+#: An `NN` token in an item's `mul`/`en` label marks one of the NN items we made.
+NN_TOKEN = re.compile(r"(^|\s)NN(\s|$)")
+
+
+def is_our_nn(labels):
+    """True when the item's `mul` or `en` label is one of our NN labels (`NN Lende`, `Ulvåse NN`)."""
+    return any(NN_TOKEN.search(labels.get(lang) or "") for lang in ("mul", "en"))
+
+
 def kanji_items():
-    """`{qid}` whose LIVE `ja` label is kanji once a regnal ordinal is stripped."""
+    """`{qid}` whose LIVE `ja` label is kanji once a regnal ordinal is stripped.
+
+    ⛔ Then the NN items we made are taken back out (Emma, 2026-09-30: "we can identify the labels on
+    the NN items that we made and our check to see if something is one of those comes after our
+    check to see if a kanji is in the name"). Their `ja` label is ours, a katakana name with a
+    kinship word in kanji, and says nothing about the person being Sinosphere.
+    """
     if not LIVE_LABELS.exists():
         return set()
-    out = set()
+    labels = {}
     for row in LIVE_LABELS.read_text(encoding="utf-8").split("\n"):
         p = row.split("\t")
-        if len(p) >= 3 and p[1] == "ja" and HAN.search(ORDINAL.sub("", p[2] or "")):
-            out.add(p[0])
-    return out
+        if len(p) >= 3:
+            labels.setdefault(p[0], {})[p[1]] = p[2]
+    out = {q for q, ls in labels.items() if HAN.search(ORDINAL.sub("", ls.get("ja") or ""))}
+    return {q for q in out if not is_our_nn(labels[q])}
 
 
 def offenders(path, allowed, kanji):

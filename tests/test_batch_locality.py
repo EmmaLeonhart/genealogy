@@ -173,3 +173,16 @@ def test_a_name_item_a_universe_person_bears_is_editable(tmp_path, monkeypatch):
                    encoding="utf-8")
     monkeypatch.setattr(check, "UNIVERSE", uni)
     assert check.universe() == {"Q1", "Q900"}
+
+
+def test_our_nn_items_are_not_sinosphere_but_kanji_names_still_are(tmp_path, monkeypatch):
+    """Emma, 2026-09-30: the kanji check first, then the NN items we made come back out. Our NN
+    label in Japanese is a katakana name with a kinship word in kanji; a kanji-only name stays."""
+    live = tmp_path / "live.tsv"
+    live.write_text(
+        "Q1\tmul\tNN Lende\nQ1\tja\tエイナル・レンデの妻\n"
+        "Q2\tmul\tHigashiyama\nQ2\tja\t東山天皇\n"
+        "Q3\tmul\tUlvåse NN\nQ3\tja\tラムフリド・グスタヴスドッテル・レヨンの夫\n",
+        encoding="utf-8")
+    monkeypatch.setattr(check, "LIVE_LABELS", live)
+    assert check.kanji_items() == {"Q2"}
