@@ -50208,3 +50208,16 @@ created is `Q141620130` Austre Stangaland. `Håland i Gjesdal` goes in without j
 since only part of its name has a reading.
 
 **2026-10-01, deck answer.** One new verdict ingested from the unmatched-ancestor deck: 6000000001669620081 / PXPY-MM4 DIFFERENT.
+
+**2026-10-01, error report Q141224900 "Samuelis".** It was created on 2026-08-30, six days before
+the Latin genitive rule (`ba1331d2c`, 2026-09-05), so `Samuelis` went out as a second `P735`.
+Today's model reads it right: `latin_patronymic_source("Samuelis", "Samuel Klemetsson")` is `Samuel`,
+and the third declension (`Davidis`, `Danielis`, `Michaelis`, `Isaaci`, `Josephi`, `Jacobi`,
+`Abrahami`) is all confirmed against the father already. Swept every item whose name has a Latin
+patronymic confirmed by the father (56 rows, 55 items) against live Wikidata: six carry it as `P735`. Five were added
+by this account (Q141224900 Samuelis, Q141225793 Andreae, Q456456 and Q5562579 Petri, Q5960165
+Nicolai); Q108586077's `P735` Olai is another editor's from 2023 and is left. The two added after
+2026-09-05 (Q141225793, Q456456) went out before their fathers were in the tree; with the father
+present both now classify as patronymic. `reports/wikidata-latin-patronymic-fixes.qs` creates the
+missing patronymic items Samuelis and Andreae, adds `P5056` (with `P144` the father) and removes the
+wrong `P735`; it waits on Emma's go-ahead. The missing description is not backfilled.
