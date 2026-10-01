@@ -49735,3 +49735,35 @@ superseded by this one and not imported.
 ## 2026-10-01 00:10 PDT: order.life genealogy moved here
 
 The pass through order.life (repo grep, no website): its genealogy is the wikibase (3,876 pages) as extracted in `wikibase/analysis/persons.tsv`, `edges.tsv`, `spouses.tsv`; `Gaiad/genealogy/` is the epic's own word index. The three extracts and a GEDCOM from order.life's own exporter (106,883 individuals, 56,865 families) are in `order-life-genealogy/`. Not merged into the synoptic tree: it includes mythic people and divine fathers, so merging is Emma's call.
+
+## 2026-09-30 22:40 PDT: the French ancestry, redone on the finished RootsMagic export
+
+Every French-placed person in `gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-30.ged` (a `PLAC`
+naming France, Frankrike or Frankrig) is a row of `reports/french-ancestry.tsv`. Each row is joined
+to the zipper pairs, the synoptic tree, the Geni-side owner ancestors, every `descent-from-*.csv`
+and `list-descendants-*.tsv`, and the `P2889` roster.
+
+- **8,592 French-placed people, 4,245 of them direct ancestors of `PFR5-LDS`** (the rest are
+  relatives the extraction carried). 4,637 are new since the 2026-09-25 export.
+- **What it adds to the tree:** 1,294 are zipper-paired to a Geni id, and every one of those is
+  already in the synoptic tree. 335 are on the Geni side's `owner-ancestors.tsv`. **3,341 French
+  ancestors have neither a Geni pair nor a Wikidata item**, and 2,440 of those arrived after
+  2026-09-25. That is an upper bound: the zipper has not run on the 2026-09-30 export yet
+  (`tree.yml` reads every `.ged` in `gedcom/familysearch/`), so the next tree run will pair some.
+- **Descendants reports:** 687 rows (389 ancestors) are in a descendants report. 667 are under
+  Charlemagne (`6000000002457013227`, `Q3044`), 391 under `6000000000183188387` (unnamed), and 2
+  under NN de Coimbra.
+- **Wikidata:** 73 have an item through `P2889` (50 ancestors). The 2026-09-25 count was 64
+  French-placed matches.
+- **It is medieval.** By birth century, the ancestors are 900s 1,192, 1000s 918, 800s 662, 1100s
+  305, and only 18 after 1400. They sit 21 to 51 generations up, peaking at 33 to 35.
+- **Where the lines enter:** 640 French ancestors have a child, towards `PFR5-LDS`, who is not
+  French-placed. The nearest are the early-modern Constant / de Flon line: Anna Maria Thierry
+  (Château-Thierry, 1610) at generation 12, Jean Constant de Flon (1570) at 13, Antoine Constant
+  (Aire-sur-la-Lys, about 1500) at 15. Then a medieval band from generation 20 on: Malesmains,
+  Marmier, Aspremont, Chiny, Mortagne de Tournai, Adèle de Flandre (into the Danish royal line).
+- **The places are not all trustworthy.** FamilySearch puts Folke Filbyter in Anjou and Finn
+  Håreksson of Tjøtta in the Somme. The table keeps the place as written, and a row is French only
+  by its place string.
+- **Regions:** Hauts-de-France / Picardie / Nord-Pas-de-Calais lead (about 1,600 together), then
+  Champagne-Ardenne, Normandy, Burgundy, Lorraine and Brittany. 1,408 give only the country.
