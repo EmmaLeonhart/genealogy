@@ -50153,3 +50153,18 @@ Emma, by AskUserQuestion ("Track both"): the `*.rmtree` / `*.rmtree-journal` ign
 (24 MB, 53,265 people, all of them also in the committed 2026-09-30 GEDCOM) are committed. No
 directory was ever ignored; `second_attempt.ged` was untracked only because this session's rules
 said never to commit it.
+
+## 2026-10-01 15:40 PDT: "f." and the other birth markers (item closed)
+
+Counted in `derived-labels.csv`: capital `F.` 907 (middle initials), lowercase `f.` 46 (född/født:
+a birth surname or, once, a place: `Hans Lauritsen Krabbe f. Norge`), `f.d.` (före detta, a former
+married name), født 88, född 27, geb. 27, née/nee 290, "(born X)". None of our created items'
+live labels carries one (the only hit, `Ne Esel Asinus`, is the given name Ne), so nothing is
+backfilled.
+
+Rule adopted by Emma (AskUserQuestion, "Adopt it"): `namemodel.split_birth_marker`, wired into
+`derive-labels.py` after the title and surname clean-ups. The label is the given names (`GIVN`
+where known) plus the surname after the marker; the form before it becomes a `mul` alias; the
+marker never reaches a label. Lowercase `f.` and `née` only (`F.` and `Ne` are names); `f.d. X`
+adds an alias only; a place after the marker is dropped. Tests in `tests/test_namemodel.py`;
+rule in CLAUDE.md. It reaches labels at the next tree rebuild.

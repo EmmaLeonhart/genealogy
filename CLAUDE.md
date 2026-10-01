@@ -649,6 +649,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **PARSE PATRONYMICS BY FORM. Never parse a name positionally.** Positional parsing is the
   ultimate cause of most name defects here. Both `GIVN` and `SURN` are checked.
 - **A TITLE IS NOT A NAME** — Geni already said so in `NSFX`. Drop titles, keep ordinals.
+- **⛔ A BIRTH MARKER NEVER REACHES A LABEL. Ruled 2026-10-01 by AskUserQuestion ("Adopt it").** Lowercase `f.`, `født`, `född`, `geb.`, `née`/`nee` and `(born X)` introduce the birth surname: the label is the given names plus that surname, the form before the marker a `mul` alias (`namemodel.split_birth_marker`, wired in `derive-labels.py`). Capital `F.` is a middle initial; `Ne` is a given name; `f.d.` (före detta) gives an alias only; a place after the marker (`f. Norge`) is dropped.
 - **A DESCRIPTION MARKER COMES OUT OF THE LABEL**; a title stays in it. A title is a thing the
   person was; a marker is an annotation about the record.
 - **A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME** — Geni puts the husband in `GIVN`.

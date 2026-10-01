@@ -1719,3 +1719,28 @@ def test_composition_is_in_order_and_refuses_a_hiragana_reading():
     assert namemodel.compose_label(["Q1", "Q2"], "ja", label, "Marie Bakke") is None
     assert namemodel.compose_label(["Q5", "Q2"], "ja", label, "Marie Bakke") == "マリー・バッケ"
     assert namemodel.compose_label(["Q3", "Q4"], "mul", label, "Øvre Bjørheim") is None
+
+
+def test_a_birth_marker_never_reaches_a_label():
+    """Ruled 2026-10-01 ("Adopt it"): lowercase f., født, född, geb., née and (born X) mark the
+    birth surname; the label is given names + birth surname, the leading form an alias."""
+    from namemodel import split_birth_marker as s
+    assert s("Ludwig Söderman f. Smedberg", "Ludwig") == ("Ludwig Smedberg", ["Ludwig Söderman"])
+    assert s("Jonas Ögren (född Jonsson)", "Jonas") == ("Jonas Jonsson", ["Jonas Ögren"])
+    assert s("Margarethe Chytraeus (geb. Pagel)") == ("Margarethe Pagel", ["Margarethe Chytraeus"])
+    assert s("Elizabeth Vickers nee Rose") == ("Elizabeth Rose", ["Elizabeth Vickers"])
+    assert s("Johanne født Tonstad Lindø") == ("Johanne Tonstad Lindø", [])
+
+
+def test_capital_f_is_an_initial_and_a_place_is_dropped():
+    from namemodel import split_birth_marker as s
+    assert s("George F. Meacham") == ("George F. Meacham", [])
+    assert s("Hans Lauritsen Krabbe f. Norge") == ("Hans Lauritsen Krabbe", [])
+    assert s("Ne Esel Asinus") == ("Ne Esel Asinus", [])
+    assert s("Ane Ne Kristensdatter") == ("Ane Ne Kristensdatter", [])
+
+
+def test_fore_detta_is_an_alias_only():
+    from namemodel import split_birth_marker as s
+    assert s("Stina Maria f.d. Munsterhjelm, f. Almark", "Stina Maria") == (
+        "Stina Maria Almark", ["Stina Maria Munsterhjelm"])

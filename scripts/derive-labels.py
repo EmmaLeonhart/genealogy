@@ -46,7 +46,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
-    drop_clan_suffix, drop_description_suffix, drop_label_title,
+    drop_clan_suffix, drop_description_suffix, drop_label_title, split_birth_marker,
     drop_doubled_particle, drop_repeated_patronymic, generation_suffix_in_label,
     generation_suffix_key,
     keep_own_surname, married_is_primary, married_name_of,
@@ -293,6 +293,13 @@ def main() -> int:
                 rendered = keep_own_surname(
                     rendered, drop_label_title(rendered), clean(record["surn"]),
                     clean(record["marnm"]))
+            # ⛔ **A BIRTH MARKER NEVER REACHES A LABEL. Ruled 2026-10-01** (`f.`, `født`, `född`,
+            # `geb.`, `née`, `(born X)`): the label is the given names plus the birth surname, the
+            # form before the marker an alias. `namemodel.split_birth_marker`.
+            rendered, _marker_aliases = split_birth_marker(rendered, clean(record["givn"]))
+            for _a in _marker_aliases:
+                if _a and _a != rendered and _a not in aliases:
+                    aliases.append(_a)
             if not rendered:
                 continue
             group = script_group(record["scripts"])

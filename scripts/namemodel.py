@@ -1132,6 +1132,56 @@ def drop_clan_suffix(label: str, nsfx: str) -> str:
     return " ".join(toks).strip() or label
 
 
+#: A birth-name marker inside a name string. Ruled 2026-10-01 by AskUserQuestion ("Adopt it"):
+#: lowercase `f.`, `født`, `född`, `geb.`, `née`/`nee`/`né` and `(born X)` introduce the BIRTH
+#: surname; capital `F.` is a middle initial and is never matched. `f.d.` (före detta) marks a
+#: former married name, matched separately. Lowercase `f.` and `née`/`nee`/`né` are matched
+#: case-sensitively on purpose: `Ne` is a given name (`Ne Esel Asinus`, `Ne de Lesparre`).
+_BIRTH_MARKER = re.compile(
+    r"(?:^|\s)\(?(?:f\.|n[ée]e?|(?i:født|född|geb\.?|born))\s+([^()|,]+?)\)?\s*$")
+_FORMER_MARKER = re.compile(r"(?:^|\s)f\.d\.\s+([^()|,]+?)\s*(?:,|$)")
+#: A place after a birth marker ("Hans Lauritsen Krabbe f. Norge", born in Norway) is dropped.
+_BIRTH_PLACE_WORDS = frozenset({
+    "norge", "sverige", "danmark", "tyskland", "finland", "island", "england", "skottland",
+    "amerika", "norway", "sweden", "denmark", "germany", "deutschland",
+})
+
+
+def split_birth_marker(name: str, given: str = "") -> tuple[str, list[str]]:
+    """`(label, aliases)` for a name carrying a birth marker; `(name, [])` when it carries none.
+
+    Ruled 2026-10-01 (Emma, "Adopt it"), under the birth-name rule of the same day: the label is
+    the given names plus the surname after the marker, the form before the marker becomes an
+    alias, and the marker word never reaches a label. `f.d. X` (före detta) adds `given X` as an
+    alias only. A place after the marker is dropped. `given` is the record's own `GIVN` where
+    known; otherwise every word of the leading part but its last is taken as the given names.
+    """
+    aliases: list[str] = []
+    name = " ".join((name or "").split())
+    fm = _FORMER_MARKER.search(name)
+    if fm:
+        before = name[:fm.start()].strip(" ,")
+        g = given or " ".join(before.split()[:-1]) or before
+        aliases.append(f"{g} {fm.group(1).strip()}".strip())
+        name = (before + " " + name[fm.end():]).strip(" ,")
+    m = _BIRTH_MARKER.search(name)
+    if not m:
+        return name, aliases
+    before = name[:m.start()].strip(" ,(")
+    after = m.group(1).strip()
+    if not before:
+        return name, aliases
+    if after.split()[0].casefold() in _BIRTH_PLACE_WORDS:
+        return before, aliases
+    words = before.split()
+    g = given or (" ".join(words[:-1]) if len(words) > 1 else before)
+    label = f"{g} {after}".strip()
+    # The leading part is the married form only when it holds more than the given names.
+    if before not in (label, g):
+        aliases.insert(0, before)
+    return label, aliases
+
+
 def drop_label_title(label: str) -> str:
     """`label` with a leading title and a trailing title phrase removed. For a LABEL.
 
