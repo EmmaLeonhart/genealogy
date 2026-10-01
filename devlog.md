@@ -50070,3 +50070,7 @@ Live on 2026-10-01: `mul`/`en` "Åsa eller Åsta Kyllingstad", ja/zh/ko built fr
 and `en` "Åsta Kyllingstad", `mul` alias "Åsa Kyllingstad", and ja `オースタ・キリングスタド`, zh
 `奥斯塔·基林斯塔德`, ko `오스타 킬링스타드`: the item's own readings with the "Åsa eller" words dropped.
 They go out with the next batch and retire once live.
+
+## 2026-10-01 11:10 PDT: FamilySearch parent deck, 87 more answers saved
+
+87 verdicts from the deck store (23 SAME, 64 DIFFERENT) appended to `reports/emma-judgments.tsv`. The deck was republished sorted by generation; the store kept every answer (353 documents).
