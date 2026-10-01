@@ -49782,3 +49782,11 @@ committed batches still carry 20 relational descriptions (15 in the auto half) u
 pipeline this push starts rewrites them. `tests/test_no_descriptions_or_summaries.py` no longer
 allows the shape and has two new tests: none in any batch, and no `describe_all` rung in the
 composer.
+
+## 2026-09-30 23:35 PDT: order.life's `genealogy` branch merged into `master`
+
+order.life's `genealogy` branch was 3 commits ahead of `master` and 0 behind: narrative_identity's
+handoff (the order.life map, content audit, planning digest, Emma's verdicts, the do-not-touch
+notice, the suggestions from her 2026-09-25 walk). PR EmmaLeonhart/order.life#12 merged it
+(`45177d35d`). The `order.life` submodule here was already on `master` and now points at the
+merge. order.life edits from this repo go on `master` from now on.
