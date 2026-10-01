@@ -49678,3 +49678,7 @@ and every set has exactly one live item. Before this session only one set had be
 statement that they were merged was wrong. Practical note for the gadget: in a background tab Chrome does
 not render, and the gadget adds its "Merge with..." link only after a frame is drawn, so each page load
 needs a screenshot (or a visible tab) before the link appears.
+
+## 2026-09-30 22:00 PDT: why the 16:09 pipeline run took so long
+
+Not a hang: `36789601188` queued 29 min, then 3 h 8 min of work (ledger refresh 74 min, decks 36 min, two backfills ~30 min each) and committed `b2470b167`. A push-triggered run does every step. `36809761592` (queued) builds the fresh batch; pushes are held until it starts so it is not superseded.
