@@ -50022,3 +50022,16 @@ New fix: the re-anchor pass in `build-garborg-day.py` no longer writes `Len` (th
 no relationship phrase as an English label); only its `ja`/`zh`/`ko` re-anchoring stays. The batch
 test now also catches the `Given, father of …` shape. `Q141522207`'s `en` is left as it is for
 Emma (old items are not rewritten, per her 2026-10-01 answer on descriptions).
+
+## 2026-10-01 09:55 PDT: the description items closed; the second batch is running
+
+- Three queue items about names and relationships in descriptions are closed. The 2026-09-27 one
+  ("the relationship fallback is the relationship only") and the 2026-09-30 one with its
+  correction are settled by `8fa17bc86`: no description carries a relationship phrase or the
+  person's name, and the ladder is life description, occupation, `Geni <id>`. The rewrite of
+  descriptions already on Wikidata (step 3) was declined by Emma on 2026-09-30 ("only new ones").
+- The batch `eeabe8db0` (16:17 UTC; its pipeline ran before the 2026-10-01 relational-label fix)
+  is running in a new QuickStatements tab: 273 creations, 3,382 commands. The three
+  `Len "daughter of …"` lines on existing items it still carried were left out in the browser.
+  The old tab keeps running. Pipeline run `36890544136` (`a9ab529e2`) failed on a Wikidata read
+  timeout in the compose step and was re-run.
