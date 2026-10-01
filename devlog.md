@@ -49767,3 +49767,18 @@ and `list-descendants-*.tsv`, and the `P2889` roster.
   by its place string.
 - **Regions:** Hauts-de-France / Picardie / Nord-Pas-de-Calais lead (about 1,600 together), then
   Champagne-Ardenne, Normandy, Burgundy, Lorraine and Brittany. 1,408 give only the country.
+
+## 2026-09-30 23:05 PDT: no relationship phrase in a description
+
+Emma, on `Q141611110` (described `Ingjald Olavson, father of Engel Olavsdotter Osgjerd` by our
+creation, later fixed by another editor): *"get rid of all relational things from descriptions.
+It's Geni ID, its occupation, or its birth to death"*, and kill every run. Both pipeline runs
+(`36817707037`, `36818008855`) were cancelled.
+
+`build-garborg-day.py`: the description ladder lost its relationship rung (`describe_all`), and
+the NN branch, which described a named NN person by the phrase, now writes the same `_desc` as
+everyone else: life description, occupation, `Geni <id>`. Relational LABELS are untouched. The
+committed batches still carry 20 relational descriptions (15 in the auto half) until the
+pipeline this push starts rewrites them. `tests/test_no_descriptions_or_summaries.py` no longer
+allows the shape and has two new tests: none in any batch, and no `describe_all` rung in the
+composer.

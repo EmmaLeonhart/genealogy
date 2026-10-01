@@ -8512,10 +8512,10 @@ def main():
         #
         #     1. the life description        `circa 1518 Bergen, Norway - 1580`
         #     2. the occupation              `Kyrkoherde` (added 2026-09-26)
-        #     3. the relationship phrase     `daughter of Arne Olaus Fjørtoft Garborg`
-        #     4. THE GENI ID                 `Geni 6000000000757999620`
+        #     3. THE GENI ID                 `Geni 6000000000757999620`
+        #     (the relationship phrase was rung 3 until 2026-09-30, removed by Emma)
         #
-        # Rung 4 is unique by construction -- it is the primary key of this whole project --
+        # Rung 3 is unique by construction -- it is the primary key of this whole project --
         # so two items of ours can never again collide on label plus description. It is a
         # pointer rather than a sentence, which is the point: it describes the record we hold
         # when nothing is known about the person, instead of describing nobody.
@@ -8533,12 +8533,10 @@ def main():
                 # the relationship phrase and the Geni id.
                 _en = occupation_of(_occ)[1] or (_occ if is_latin_text(_occ) else "")
                 _desc = _en[:DESC_MAX].rstrip(" -,")
-        if not _desc:
-            _rel = describe_all(g, facts, father, mother, referred_to_as, table,
-                                children, spouses, siblings,
-                                qid_of=our_items, live_labels=live_labels,
-                                fields=fields)
-            _desc = (_rel.get("en") or "").strip()
+        # ⛔ **NO RELATIONSHIP PHRASE IN A DESCRIPTION, EVER. Ruled 2026-09-30 (Emma):** *"get rid
+        # of all relational things from descriptions. It's Geni ID, its occupation, or its birth
+        # to death."* The old rung 3 put `Ingjald Olavson, father of Engel Olavsdotter Osgjerd`
+        # on `Q141611110`. The ladder is three rungs now: life description, occupation, Geni id.
         if not _desc:
             _desc = f"Geni {g}"
         _desc_emitted = False
@@ -8614,25 +8612,19 @@ def main():
             # 94 of the 716 people in the 2026-09-27 batch were shaped that way, every one an NN
             # person. The label is the `mul` value itself; the en-us pass leaves it alone, since
             # `en` and `mul` agree.
-            if own:
-                phrase = (described.get("en") or "").strip()
-                lines.append(f'LAST\tLen\t"{mul_value}"')
-                if phrase:
-                    lines.append(f'LAST\tDen\t"{qs(phrase)}"')
-                    _desc_emitted = True
-                elif not _desc_emitted:
-                    lines.append(f'LAST\tDen\t"Geni {g}"')
-                    _desc_emitted = True
-            elif not described:
+            # ⛔ **Ruled 2026-09-30 (Emma): the description is the life description, the
+            # occupation or the Geni id (`_desc`), never the relationship phrase**, for an NN
+            # person as for anyone else.
+            if own or not described:
                 lines.append(f'LAST\tLen\t"{mul_value}"')
                 if not _desc_emitted:
-                    lines.append(f'LAST\tDen\t"Geni {g}"')
+                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
                     _desc_emitted = True
             else:
                 for code, value in sorted(described.items()):
                     lines.append(f'LAST\tL{code}\t"{value}"')
                     if code == "en" and not _desc_emitted:
-                        lines.append(f'LAST\tDen\t"Geni {g}"')
+                        lines.append(f'LAST\tDen\t"{qs(_desc)}"')
                         _desc_emitted = True
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))

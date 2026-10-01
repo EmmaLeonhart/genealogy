@@ -133,6 +133,10 @@ ID_DESCRIPTION = re.compile(r"^(?:Geni \d+|FamilySearch [A-Z0-9-]+)$")
 #: `Agmund Unge Dans, son of Hallkel Agmundssøn Krøkedans` and
 #: `Anna Kornelia, wife of Carl Gökman`; a regex anchored on the relation word alone called
 #: every one of them a hand-written sentence.
+#:
+#: ⛔ **AND IT IS NO LONGER ALLOWED. Ruled 2026-09-30 (Emma):** *"get rid of all relational
+#: things from descriptions. It's Geni ID, its occupation, or its birth to death."* The regex
+#: stays so `test_no_description_is_a_relationship_phrase` can name the shape it refuses.
 RELATION_WORD = r"son|daughter|child|husband|wife|spouse|father|mother|parent"
 RELATIONSHIP_DESCRIPTION = re.compile(
     rf"^(?:[^,]{{1,120}}, )?(?:{RELATION_WORD}) of \S")
@@ -191,7 +195,6 @@ def test_no_batch_carries_a_description():
                 stem = ID_SUFFIX.sub("", text)
                 if len(stem) <= DESC_MAX and (stem in ALLOWED_DESCRIPTIONS
                                               or LIFE_DESCRIPTION.match(stem)
-                                              or RELATIONSHIP_DESCRIPTION.match(stem)
                                               or stem in occupation_descriptions()):
                     continue
             offenders.append(f"{path.name}:{n} sets {m.group(1)}  {line.strip()[:60]}")
@@ -199,6 +202,27 @@ def test_no_batch_carries_a_description():
         "a description is Den, and is either a name string "
         f"{sorted(ALLOWED_DESCRIPTIONS)} or a life description from life_description "
         f"-- ruled 2026-09-19: {offenders[:8]}")
+
+
+def test_no_description_is_a_relationship_phrase():
+    """Ruled 2026-09-30 (Emma), on `Q141611110` (`Ingjald Olavson, father of Engel Olavsdotter
+    Osgjerd`): a description is the life description, the occupation or the Geni id, never a
+    relationship phrase, and never the person's own name."""
+    offenders = []
+    for path in sorted({p for pattern in BATCHES for p in REPO.glob(pattern)}):
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            m = DEN.match(line)
+            if m and RELATIONSHIP_DESCRIPTION.match(ID_SUFFIX.sub("", m.group(1))):
+                offenders.append(f"{path.name}:{n} {m.group(1)[:80]}")
+    assert not offenders, f"{len(offenders)} relational descriptions: {offenders[:8]}"
+
+
+def test_the_composer_never_describes_by_relationship():
+    """The generator half: the description ladder in `build-garborg-day.py` has no
+    `describe_all` rung, so the batch cannot regrow one."""
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert r'Den\t"{qs(phrase)}"' not in src
+    assert "_rel = describe_all(" not in src
 
 
 def test_nothing_sets_an_edit_summary():
