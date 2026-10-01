@@ -49618,3 +49618,7 @@ at the front of the FamilySearch deck, each side with its own family. Answers fl
 ## 2026-09-30 18:55 PDT: ancestry zipper item to the end of the queue
 
 Emma. The deck cards stay live and the cron keeps reading her answers.
+
+## 2026-09-30 19:05 PDT: parent deck, 25 more answers
+
+25 rows appended to `reports/emma-judgments.tsv` (4 SAME, 21 DIFFERENT); 419 pairs answered in all.
