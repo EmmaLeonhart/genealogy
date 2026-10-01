@@ -49991,9 +49991,12 @@ without seeing that item. Asked by AskUserQuestion; Emma: approve, keep it. The 
 deleted, and so is the untracked duplicate `handoff/court-rank-people/` (byte-identical to the
 shintowiki-scripts original).
 
-## 2026-10-01 08:35 PDT: the court-rank handoff is in the repo
+## 2026-10-01 09:05 PDT: description junk stays; the duplicate court-rank copy removed again
 
-Emma authorized the commit by AskUserQuestion. The untracked copy from 2026-10-01 03:38 was no
-longer on disk, so `shintowiki-scripts\handoff\court-rank-people` was copied again, unchanged
-(16 files, scanned for credentials: none), into `handoff/court-rank-people/`. The skip item is
-deleted; the court-rank item is now first in the queue.
+**Ruled by Emma, 2026-10-01:** the cut-at-marker filter and the rewrite of the 617 descriptions
+are not happening. Descriptions are not filtered or rewritten. The NEEDS-DECISION item is deleted.
+The audit CSV stays as the record.
+
+8d8b9e62c re-added `handoff/court-rank-people/` as a duplicate after another session had already
+imported and ported it (`b0f96c8a2`, `33f79992b`) and removed the copy (`5d8e4eb64`). This
+session did not re-read the git log before copying. Reverted here.

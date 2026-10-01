@@ -13,7 +13,6 @@ it. Each session starts with
 
 
 
-- **NEEDS-DECISION (Emma): the junk in descriptions, cut it or leave it (from the 2026-10-01 audit).** 617 items we created carry a raw place or date that is not a place or date (`reports/description-junk.csv`; mostly Rogaland "jfr g og æ bok 2 s 422 nr 9" citations). The filter would cut a place string at its first junk marker (`;`, ` - `, `jfr`, `g og æ`/`G&Æ`, `bok`, `s|side N`, `gnr|bnr|nr N`, `bruk N`, `?`, `ukjent`/`probably`), and drop the side when nothing is left. That leaves a clean place for 570 of the 605 strings. Two decisions: (1) put the filter into `life_description` for new creations, against the 2026-09-28 freeze on description logic; (2) rewrite the 617 live descriptions through `description-overwrites.tsv`, against the 2026-09-26 ruling that descriptions we made are not fixed.
 - **Resume the descendants sweep from its cursor (needs Geni; not before 2026-10-21).** The queue
   is `reports/sweep-queue-6000000227822546944.txt` and the cursor stood at 8,993 of 29,366 when
   Geni's WAF began answering 403 on 2026-09-21. The 209 people in

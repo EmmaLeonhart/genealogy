@@ -488,6 +488,9 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     description is generated, however much it could be improved. Improving it IS the defect.
     The frozen logic is the one in place on 2026-09-28, including that day's rule that an unresolved
     occupation becomes an `en` description only in Latin script (kept by Emma, same day).
+    **Junk in a description stays too. Ruled 2026-10-01:** the 617 descriptions carrying bygdebok
+    citations (`reports/description-junk.csv`) are not rewritten, and no junk filter goes into
+    `life_description`. Do not propose either again.
   - **⛔ NO RELATIONSHIP PHRASE IN ANY DESCRIPTION. Ruled 2026-09-30 (Emma), overriding the freeze
     above for this one rung:** *"get rid of all relational things from descriptions. It's Geni ID,
     its occupation, or its birth to death."* `Q141611110` went out described `Ingjald Olavson,
