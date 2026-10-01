@@ -49799,3 +49799,14 @@ moved; not merged into the tree), where the 2026-09-30 session departed from its
 (queue drift, a false "merged" report, the platonic-zipper detour, relational descriptions), where
 it reads things differently from the audit, and the two open decisions for Emma. It is in this
 repo, not in order.life, because the queue item asked for this repo's own directory.
+
+## 2026-09-30 23:30 PDT: no `## Now` heading; the NN-description item dropped
+
+- The `## Now` line is gone from `queue.md` (Emma: "get rid of the now thing"). The opening text
+  and `CLAUDE.md` now say "the first item in the queue". No items were reordered. Note that
+  ontology-harness's `queue_gui.append --prepend --section Now` looks for that heading, so a
+  prepend through it needs another anchor now.
+- "Apply the NN description rule to old items" is deleted, together with the item that asked for
+  it to go. It would have written relationship phrases, which `8fa17bc86` bans.
+- The QuickStatements item stays at the top: pipeline run `36818286605` (the description fix) has
+  not finished, so per its text it is skipped this tick.

@@ -569,7 +569,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   sample, not the top 100.
 - **CHECK before raising an alarm.** Run the check that would falsify it first.
 - **Queue items are BULLET POINTS, never numbered.** A number is a promise it will still be there.
-- **⛔ READ THE QUEUE FROM THE TOP, EVERY TIME. Ruled 2026-09-27.** Every tick, and before starting any new item, re-read `queue.md` from the top of `## Now` and take the first item as the file stands at that moment. Never carry a line number (`sed -n 38p queue.md`) or an earlier reading from one tick to the next: items are added at the top between ticks. On 2026-09-27 ticks read by line number from 03:12 to 07:42 UTC and a fix item at the top went unseen for 4.5 hours.
+- **⛔ READ THE QUEUE FROM THE TOP, EVERY TIME. Ruled 2026-09-27.** Every tick, and before starting any new item, re-read `queue.md` from the top and take the first item in the queue as the file stands at that moment. Never carry a line number (`sed -n 38p queue.md`) or an earlier reading from one tick to the next: items are added at the top between ticks. On 2026-09-27 ticks read by line number from 03:12 to 07:42 UTC and a fix item at the top went unseen for 4.5 hours.
 - **⛔ WHEN THE TOP ITEM IS WAITING, TAKE THE NEXT ONE THAT ISN'T. Ruled 2026-09-27.** An item blocked on something outside the session (a CI run, a tree rebuild) does not make the tick "nothing actionable": work the first item below it that can move, and come back to the top one when its blocker clears.
 - **A cron only fires while the session is idle.** Never schedule a long job into active work.
 - **A ten-minute ceiling is not a wall — background it.** Never hand a long job back.
