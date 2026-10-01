@@ -50094,3 +50094,7 @@ Appended to `reports/emma-judgments.tsv`. The tree rebuild (run 36905782584, wit
 ## 2026-10-01 13:30 PDT: unmatched-ancestor deck, 182 more answers saved
 
 Appended to `reports/emma-judgments.tsv` (second round of the deck, built on tree `20bbf8ae9`).
+
+## 2026-10-01 13:45 PDT: batch d6d220847 running
+
+The batch committed in `d6d220847` (259 creations, 2,989 commands; no relationship phrase in any label or description) is running in a new QuickStatements tab, Run not in background. The earlier tabs had been closed. One creation carries the Geni name field as its label, "Julia-Malka wife, Yitzhak of Ellenbogen" (a name field naming a relative), which the label tests do not catch yet.
