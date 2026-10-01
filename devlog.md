@@ -49830,3 +49830,13 @@ Queue item (Emma, 2026-09-26, "a firm decision"), parts (1) and (3), and the rec
   put to Emma.
 
 `tests/test_daily_batch_wiring.py` pins the exit code, the re-dispatch step and its cap.
+
+## 2026-10-01 01:30 PDT: the batch with no relational descriptions is running
+
+Pipeline run `36818286605` (the description fix, `8fa17bc86`) finished and committed the batch in
+`30b61a451` at 08:19 UTC. Its manual half has 293 creations, 3,520 commands, and no relationship
+phrase in any description. It was loaded from raw.githubusercontent at that commit into a new
+QuickStatements tab (refreshed once to log in), imported, and Run (not in the background).
+Before Run, 20 creations were found carrying a relationship phrase as their `Len`
+(`wife of Halvard Guttormsson? Såstad`); Emma chose to run it as it was. The composer fix is the
+next queue item.
