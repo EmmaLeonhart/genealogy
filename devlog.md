@@ -50206,3 +50206,5 @@ name in the field (`Borsheim Isaac`, `Sigmund Madland`).
 was imported into a NEW QuickStatements tab (445 commands) and Run was pressed; the first item
 created is `Q141620130` Austre Stangaland. `Håland i Gjesdal` goes in without ja/zh/ko labels,
 since only part of its name has a reading.
+
+**2026-10-01, deck answer.** One new verdict ingested from the unmatched-ancestor deck: 6000000001669620081 / PXPY-MM4 DIFFERENT.
