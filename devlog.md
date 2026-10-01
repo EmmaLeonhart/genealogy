@@ -49639,3 +49639,5 @@ summary of ours. Nothing was posted on the talk page. His other points: the dupl
 merge (its own queue item, through the UI merge), and `P2889` as a top-level statement as well as a
 reference (in the composer since 2026-09-28). He did not say how he does imports, so no import-method
 item was added.
+
+The four talk-page items it replaced (`c7f94beee`, `a263f3cdf` and the two from the notes) are deleted with it.
