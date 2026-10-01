@@ -50144,3 +50144,12 @@ Not changed, reported: `Kirsten Eller Lomeland` (`Eller` capitalised, probably a
 "or"); parentheses (51) and commas (28) are mostly farm names, titles or a second given name, not
 alternatives; the two question-mark labels (`NN Erlends kone? Erlendsdatter`,
 `NN wife of Gase ( Christensdotter?)`) are name-field junk, a different problem.
+
+## 2026-10-01 15:10 PDT: the RootsMagic files are tracked
+
+Emma, by AskUserQuestion ("Track both"): the `*.rmtree` / `*.rmtree-journal` ignore lines (added
+2026-09-25 in two "Update .gitignore" commits) are removed, and `rootsmagic/second_attempt.rmtree`
+(84 MB, the finished extraction's database, 2026-09-30 20:07) and `rootsmagic/second_attempt.ged`
+(24 MB, 53,265 people, all of them also in the committed 2026-09-30 GEDCOM) are committed. No
+directory was ever ignored; `second_attempt.ged` was untracked only because this session's rules
+said never to commit it.
