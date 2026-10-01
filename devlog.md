@@ -50201,3 +50201,8 @@ the halves; plus the 16 whose whole item already existed. 215 removals in all. N
 existed on Wikidata (searched first). Left out: three junk surname fields
 (`(Olsen) Hamre Jørstad (Haland) …`, `Frafjord øvre - Espedal`, `N. Eiane`) and two with a given
 name in the field (`Borsheim Isaac`, `Sigmund Madland`).
+
+**2026-10-01, split-surname batch running.** Emma asked for it to be run with the extension. It
+was imported into a NEW QuickStatements tab (445 commands) and Run was pressed; the first item
+created is `Q141620130` Austre Stangaland. `Håland i Gjesdal` goes in without ja/zh/ko labels,
+since only part of its name has a reading.
