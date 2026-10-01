@@ -49608,3 +49608,9 @@ already resolved. This also clears the two queue-shape findings, so that item an
 ## 2026-09-30 18:30 PDT: parent deck, 25 more answers
 
 25 Geni-FamilySearch rows appended to `reports/emma-judgments.tsv` (6 SAME, 19 DIFFERENT); 394 pairs answered in all.
+
+## 2026-09-30 18:50 PDT: your ancestors into the deck
+
+Of 9,991 ancestors in `owner-ancestors.tsv`, 3,941 are paired to FamilySearch. The zipper's refused slots
+holding one of the other ancestors (238 slots, 155 ancestors) became 556 ancestor-against-candidate cards
+at the front of the FamilySearch deck, each side with its own family. Answers flow through the same cron.
