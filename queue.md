@@ -14,6 +14,7 @@ it. Each session starts with
 ## Now
 
 
+- **Once the pipeline has actually finished, run the QuickStatements again (Emma, 2026-09-30).** This item has its own critical path: until a pipeline run has finished and committed a new batch, SKIP it and work the general queue below as usual. Don't wait on it and don't stop for it. Check it again each tick. When a run has finished, load the batch that run committed (never one from before it) and run it in QuickStatements through Emma's browser, without the FamilySearch section while creations are paused. Then delete this item.
 - **Merge the duplicates we created, through the browser.** Use the Wikidata UI merge (never `wbmergeitems` or a QuickStatements MERGE). Emma thinks the duplicate creation files were committed and then deleted, so look in the git history for them. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
 - **Put together a clear strategy for what to do on Wikidata, with Emma.** Includes whether to add particular people to the entry points (she is unsure). From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
 - **Then run the current batch from our site in the browser.** QuickStatements, from the Pages site. Under the repo-only rule this needs Emma's explicit go-ahead at that step. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
