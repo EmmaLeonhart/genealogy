@@ -50176,3 +50176,17 @@ chain walk) moved verbatim to `docs/queue-archive/geni-blocked-campaigns-2026-09
 as decided: the runner-IP question ("there's no more edit runs") and the removal of transliterated
 and NN relational labels already on Wikidata ("we're not removing those"). All three recorded in
 CLAUDE.md.
+
+## 2026-10-01 16:40 PDT: split surnames reviewed
+
+Over the 14,696 items this account created: 1,786 carry two or more `P734`; 206 of them have a
+Geni surname field with a space. Read with today's rule (after the patronymics, the rest of the
+field is one surname), 111 are splits: 95 carry only the halves (`Store` + `Oma`, `Nedre` +
+`Rossavik`, `Posse` + `Säby`) and 16 carry the halves alongside the whole surname. 95 are not
+splits (a patronymic plus a farm, or two separate surnames). Every case is in
+`reports/split-surnames-review.tsv` with its Geni surname field and the live `P734` labels.
+
+`reports/wikidata-split-surname-fixes.qs` fixes the 16 whose whole-surname item exists: the
+whole `P734` where it is missing, and a removal of each half. The other 95 need an item for their
+whole surname first (55 surnames, led by `Øystre Bore` 7, `Store Vatne` 6, `Austre Stangeland` 5);
+that is the item left in the queue.
