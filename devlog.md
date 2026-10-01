@@ -50098,3 +50098,12 @@ Appended to `reports/emma-judgments.tsv` (second round of the deck, built on tre
 ## 2026-10-01 13:45 PDT: batch d6d220847 running
 
 The batch committed in `d6d220847` (259 creations, 2,989 commands; no relationship phrase in any label or description) is running in a new QuickStatements tab, Run not in background. The earlier tabs had been closed. One creation carries the Geni name field as its label, "Julia-Malka wife, Yitzhak of Ellenbogen" (a name field naming a relative), which the label tests do not catch yet.
+
+## 2026-10-01 14:00 PDT: women go under their maiden names again
+
+Emma, by AskUserQuestion ("Maiden name again"), after `Julia-Malka wife, Yitzhak of Ellenbogen`
+(Geni's married-name record for `6000000001926373746`) went out as a label in batch `d6d220847`.
+`namemodel.married_is_primary` returns false for `F` again, so all three emitters
+(`build-garborg-day.py`, `build-familysearch-day.py`, `derive-labels.py`) label a woman by her
+birth name and put the married form in the `Amul`. Men and unknown sex keep the married form.
+Applies to new creations; nothing established is relabelled. Test and CLAUDE.md updated.

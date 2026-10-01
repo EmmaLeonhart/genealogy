@@ -1395,11 +1395,11 @@ def test_own_given_name_refuses_a_marker_and_a_relatives_name():
     assert own_given_name(None) == ""
 
 
-def test_everybody_goes_under_the_married_name_again():
-    """Reversed 2026-09-25 (*"reverse course on the undo of the married-name handling"*): the
-    2026-09-21 maiden-name switch for women is undone, so the married name leads for every sex."""
+def test_a_woman_goes_under_her_maiden_name_again():
+    """Ruled 2026-10-01 ("Maiden name again"), reversing the 2026-09-25 married-name rule: a woman
+    is labelled by her birth name, a man and an unknown sex by the married form."""
     from namemodel import married_is_primary
-    assert married_is_primary("F") is True
+    assert married_is_primary("F") is False
     assert married_is_primary("M") is True
     assert married_is_primary("") is True
 
