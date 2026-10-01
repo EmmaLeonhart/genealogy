@@ -49881,7 +49881,7 @@ still holds 3 such lines until the next pipeline run rewrites it),
 `test_the_nn_label_refuses_a_name_field_that_names_a_relative`, and
 `test_the_relational_labels_of_batch_30b61a451_are_corrected`.
 
-## 2026-10-01 01:20 PDT: the many-language labels on NN people, reviewed; the emitters were already off
+## 2026-10-01 05:40 PDT: the many-language labels on NN people, reviewed; the emitters were already off
 
 **Two code paths, and neither puts transliterations on NN people.**
 - **The sixteen transliterated scripts** (`translit_scripts.py` via `standard_script_labels()`,
