@@ -23,9 +23,9 @@ input, which is what made it buildable in Actions at all.
 ## Where the pipeline is pointed right now
 
 **At the Bure kinship in Sweden and the surrounding Scandinavian genealogy.** That is deliberate
-and narrow. **On 2027-01-01 it broadens**, driven by
-`exports/post-merge/wikidata-qid-links.ged` — the file of Wikidata identifications that turns
-into entry points on that date.
+and narrow. **It broadened on 2026-09-01** (moved forward from 2027-01-01 by Emma on 2026-09-30),
+driven by `exports/post-merge/wikidata-qid-links.ged` — the file of Wikidata identifications that
+turned into entry points on that date — and the seven entry-point groups.
 
 ## What is left
 

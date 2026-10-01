@@ -49690,3 +49690,12 @@ The end item `6e1e3b5e6` (three new entry points, all 2027-01-01 starts moved to
 ## 2026-09-30 22:15 PDT: the Wikidata strategy
 
 Emma agreed the five-step strategy (duplicates merged and account declared; continuous batches from finished pipeline runs; all entry points now plus Youlan, Prince Chun, Puyi; FamilySearch creations paused; private people only as connectors after the current batch). Written into `CLAUDE.md`; item done.
+
+## 2026-09-30 22:30 PDT: the 2027-01-01 gate is open
+
+Emma's go-ahead came with the strategy. `ledgers.JAN1_DATE` is now 2026-09-01 and all seven
+entry-point groups start 2026-09-01 (they were 2027-01-01), so entry points go from 28 (2026-08-31) to
+478 (today); the 445 January pairs are all live. `Q144348` Zaifeng, Prince Chun and `Q185152` Puyi are
+added with their Geni ids; `Q701641` Youlan is added with no Geni id (none on Wikidata), so she is live
+once her item carries one. New `tests/test_entry_point_dates.py` pins both sides of the date. Nothing
+is sent by this commit; the next pipeline run composes from it.

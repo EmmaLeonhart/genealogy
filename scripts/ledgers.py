@@ -132,7 +132,9 @@ def dated_pairs(today: datetime.date | None = None) -> list[tuple[str, str]]:
     return out
 
 #: The one date in the system. The January bucket becomes entry points on it and not before.
-JAN1_DATE = datetime.date(2027, 1, 1)
+#: Moved from 2027-01-01 to 2026-09-01 (Emma, 2026-09-30): "enable all Jan 1 entry points right now, as
+#: in to say make them start at September 1". The name stays; it is the bucket's name, not its date.
+JAN1_DATE = datetime.date(2026, 9, 1)
 
 
 def _read(path: Path) -> list[tuple[str, str]]:
