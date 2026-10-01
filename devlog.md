@@ -50168,3 +50168,11 @@ where known) plus the surname after the marker; the form before it becomes a `mu
 marker never reaches a label. Lowercase `f.` and `née` only (`F.` and `Ne` are names); `f.d. X`
 adds an alias only; a place after the marker is dropped. Tests in `tests/test_namemodel.py`;
 rule in CLAUDE.md. It reaches labels at the next tree rebuild.
+
+## 2026-10-01 16:00 PDT: Geni items out of the queue; two decisions recorded
+
+The four Geni-gated items (descendants sweep, managing-accounts join, sibling scrape, permalink
+chain walk) moved verbatim to `docs/queue-archive/geni-blocked-campaigns-2026-09-cont.md`. Deleted
+as decided: the runner-IP question ("there's no more edit runs") and the removal of transliterated
+and NN relational labels already on Wikidata ("we're not removing those"). All three recorded in
+CLAUDE.md.

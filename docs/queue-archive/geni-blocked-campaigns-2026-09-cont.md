@@ -239,3 +239,26 @@ step 2 of the procedure is what keeps that from re-sampling ground already taken
 
 ---
 
+## Moved out of queue.md 2026-10-01 (Emma: "We have a special file for them. We're never even touching it anymore.")
+
+- **Resume the descendants sweep from its cursor (needs Geni; not before 2026-10-21).** The queue
+  is `reports/sweep-queue-6000000227822546944.txt` and the cursor stood at 8,993 of 29,366 when
+  Geni's WAF began answering 403 on 2026-09-21. The 209 people in
+  `reports/sweep-partial-incapsula-2026-09-21.txt` have empty or truncated captures from the
+  block and need capturing again; their archived files are the WAF's output, not Geni's.
+- **Join common managing accounts across the descendants and the owner's ancestors (needs Geni;
+  not before 2026-10-21).** The name halves are done (`reports/descendant-ancestry-leads.csv`,
+  1,874 shared tokens; `reports/fuzzy-name-matches.csv`, 943 pairs >= 0.82). The roster carries
+  `managed_by`, the ~8,254 ancestors in `owner-ancestors.tsv` do not; only a Geni ancestors
+  report supplies it. Then join managers in `match-descendants-to-ancestry.py`, keeping the
+  manager (the first 6N batch dropped it).
+- **Run the sibling scrape over `reports/sibling-pair-worklist.tsv` (needs Geni; not before
+  2026-10-21).** Every member of a pair, not one of each, so each side's account of the parents
+  merges on the Geni id. The driver is `scripts/siblingscrape.js` with
+  `build-sibling-scrape-batch.py` and `write-sibling-scrapes.py`; it is a real page load per
+  person at the extension's pace, and not while the path requester is running.
+- **Resume the permalink chain walk (needs Geni; not before 2026-10-21).** `scripts/pathchains.js`
+  over `reports/path-permalinks.tsv` (47,692), paused 2026-09-20 at 12,911. At the restart, build
+  the list with `build-chain-batch.py --skip-covered` (27,808 left) and upload it as a file; set
+  `C.i` from `localStorage.chains_cursor`. The run is finished when `i >= of` and `C.failed` is
+  empty, so `C.reseedFailed()` is owed at the end.

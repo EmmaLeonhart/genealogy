@@ -418,6 +418,16 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 
 ## ⛔ The hard ones
 
+- **⛔ GENI WORK IS NOT IN THE QUEUE. Ruled 2026-10-01 (Emma):** the Geni-gated campaigns (descendants
+  sweep, managing-accounts join, sibling scrape, permalink chain walk) live in
+  `docs/queue-archive/geni-blocked-campaigns-2026-09-cont.md`: *"if we were to ever actually go back to
+  Geni, this was what we would do ... We're never even touching it anymore."* Nothing Geni-gated goes
+  back into `queue.md`, and no agent works on it.
+- **There are no more edit runs (Emma, 2026-10-01).** The question of skipping known-blocked runner IPs is
+  closed; editing is the browser QuickStatements loop.
+- **The transliterated and NN relational labels already on Wikidata stay (Emma, 2026-10-01):** *"No, we're
+  not removing those."*
+
 - **⛔ REPO-ONLY UNTIL EMMA SAYS OTHERWISE. Ruled 2026-09-28** (after the duplicate creations):
   the queue is worked as usual, but everything changed stays in the repo (code, tests, reports,
   queue, devlog). Nothing is sent to Wikidata, and no batch or edit file meant to be run is written,
