@@ -14,7 +14,6 @@ it. Each session starts with
 ## Now
 
 
-- **Review the FamilySearch download.** Emma: the download from FamilySearch is complete, but it needs reviewing. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
 - **Merge the duplicates we created, through the browser.** Use the Wikidata UI merge (never `wbmergeitems` or a QuickStatements MERGE). Emma thinks the duplicate creation files were committed and then deleted, so look in the git history for them. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
 - **Put together a clear strategy for what to do on Wikidata, with Emma.** Includes whether to add particular people to the entry points (she is unsure). From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
 - **Then run the current batch from our site in the browser.** QuickStatements, from the Pages site. Under the repo-only rule this needs Emma's explicit go-ahead at that step. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.

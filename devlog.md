@@ -49653,3 +49653,18 @@ RootsMagic and order.life items keep their place after the Wikidata items.
 ## 2026-09-30 19:10 PDT: Geni email item to the end of the queue
 
 Read the suspension email (Geni #201578); Emma wants the account restored. Item moved to the end at her word, with the email's asks noted on it.
+
+## 2026-09-30 19:20 PDT: the FamilySearch download, reviewed
+
+Files in `gedcom/familysearch/`: `PFR5-LDS-a12-d2.ged` (34 MB, 16,427 records, Emma's own tree),
+`rootsmagic-PFR5-LDS-2026-09-25.ged` (12 MB, 29,073), `MBW7-P7H-a12-d2.ged` (3.6 MB, 3,103), and
+`PFR5-LDS-test.ged`, which is empty. Together: 41,947 distinct FamilySearch people (27 FamilySearch
+duplicates folded), 34,678 with a date.
+
+Emma's ancestors (everyone above `PFR5-LDS`): 11,360, of whom 10,426 are dated and 5,338 are paired to a
+Geni profile. By generation the pairing is near complete to generation 12 (309 of 408), then falls away
+through the medieval band: generation 16 has 76 of 252 paired, generation 18 only 34 of 239, and it climbs
+back from generation 24 (126 of 385) into the early lines (generation 32: 554 of 990). Generation 5 already
+holds 26 people, not 32, so six great-great-great-grandparents are missing from FamilySearch's tree.
+FamilySearch's own data gives 94 people two or more fathers and 115 two or more mothers (Adelus
+Eriksdatter is one). The unpaired ancestors in the refused slots are on the deck.
