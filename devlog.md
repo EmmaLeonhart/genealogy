@@ -49853,3 +49853,9 @@ batch fails it until the next pipeline run rewrites it.
 A different shape was also seen, and is not touched here: `NN wife of Eirik` as both `mul` and `en`.
 That is the Geni name field itself carrying the relative (CLAUDE.md § *A name field that names a
 relative is not a name*), so it comes through the named branch.
+
+## 2026-10-01 02:00 PDT: the re-dispatch item closed; IP skipping waits at the end
+
+Parts (1) and (3) and the recording half of (2) shipped in `3de4b33d1`. The remaining question
+(skip recently blocked runner IPs at start, given the block-evasion concern) was asked and got no
+decision, so it now sits at the end of the queue as NEEDS-DECISION.
