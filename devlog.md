@@ -49577,3 +49577,13 @@ person-slots with more than one parent; 397 involve a FamilySearch parent, 236 o
 Published at https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj with a `db` store (`verdicts`, empty at
 publish). The 2026-08-25 `multi-parents-ours.tsv` predated the FamilySearch data and was not used.
 
+
+## 2026-09-30 17:30 PDT: FamilySearch parent deck answers in
+
+The deck (https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj) was rebuilt as one card per pair, each
+person shown with their own parents, spouses and children, after Emma found one verdict per set of
+three or more parents unusable and the Previous button broken. 359 pairs answered (153 carried from
+two-parent cards of the first deck, 206 new): 293 Geni-FamilySearch rows appended to
+`reports/emma-judgments.tsv` as `familysearch-parent-deck` (173 SAME, 120 DIFFERENT), FamilySearch id
+in `qid`; the SAME ones come back as zipper anchors at the next tree rebuild. 66
+FamilySearch-FamilySearch pairs are not written (no slot for them in the file).
