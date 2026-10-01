@@ -49840,3 +49840,16 @@ QuickStatements tab (refreshed once to log in), imported, and Run (not in the ba
 Before Run, 20 creations were found carrying a relationship phrase as their `Len`
 (`wife of Halvard Guttormsson? Såstad`); Emma chose to run it as it was. The composer fix is the
 next queue item.
+
+## 2026-10-01 01:45 PDT: no relationship phrase as an English label
+
+The NN branch of `build-garborg-day.py` wrote `describe_all`'s phrases as labels in every language
+for an NN person with no known first name, `en` included (`Len "wife of Halvard Guttormsson?
+Såstad"`, 20 in batch `30b61a451`). The 2026-09-28 rule bans that. Now `en` gets the `mul` value
+(`NN`, or `NN <surname>`), the description is `_desc`, and the `ja`/`zh`/`ko` phrases stay.
+`test_no_person_is_labelled_by_a_relationship_phrase_in_english` checks the batches. The committed
+batch fails it until the next pipeline run rewrites it.
+
+A different shape was also seen, and is not touched here: `NN wife of Eirik` as both `mul` and `en`.
+That is the Geni name field itself carrying the relative (CLAUDE.md § *A name field that names a
+relative is not a name*), so it comes through the named branch.

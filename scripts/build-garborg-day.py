@@ -8621,11 +8621,17 @@ def main():
                     lines.append(f'LAST\tDen\t"{qs(_desc)}"')
                     _desc_emitted = True
             else:
+                # ⛔ **NO RELATIONSHIP PHRASE AS AN ENGLISH LABEL. Ruled 2026-09-28, enforced
+                # 2026-10-01** (20 creations in batch `30b61a451` went out as `Len "wife of …"`):
+                # an NN person is `NN` in `mul` and `NN` in `en`. The CJK phrases stay.
+                lines.append(f'LAST\tLen\t"{mul_value}"')
+                if not _desc_emitted:
+                    lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                    _desc_emitted = True
                 for code, value in sorted(described.items()):
+                    if code in ("en", "en-us"):
+                        continue
                     lines.append(f'LAST\tL{code}\t"{value}"')
-                    if code == "en" and not _desc_emitted:
-                        lines.append(f'LAST\tDen\t"{qs(_desc)}"')
-                        _desc_emitted = True
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:
