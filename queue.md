@@ -13,6 +13,7 @@ it. Each session starts with
 
 
 
+- **Take the Geni items out of this queue, and delete two settled decision items (Emma, 2026-10-01).** (1) The four "needs Geni; not before 2026-10-21" items (the descendants sweep, the managing-accounts join, the sibling scrape, the permalink chain walk) are queue pollution. Emma: "if we were to ever actually go back to Geni, this was what we would do. We have a special file for them. We're never even touching it anymore." Move them verbatim to the end of `docs/queue-archive/geni-blocked-campaigns-2026-09-cont.md` and delete them here. No agent is to think about them; nothing Geni-gated goes back into this queue. (2) Delete "NEEDS-DECISION (Emma): skip known-blocked runner IPs at the start of an edit run?". Emma: "there's no more edit runs." (3) Delete "Remove the transliterated and NN relational labels already on Wikidata? NEEDS-DECISION (Emma)". Emma: "No, we're not removing those." Both were already decided. Record the three in `CLAUDE.md`, then delete this item.
 - **Resume the descendants sweep from its cursor (needs Geni; not before 2026-10-21).** The queue
   is `reports/sweep-queue-6000000227822546944.txt` and the cursor stood at 8,993 of 29,366 when
   Geni's WAF began answering 403 on 2026-09-21. The 209 people in
