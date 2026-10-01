@@ -5,17 +5,17 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **2,250,563 people**.
+One row per person in `reports/derived-labels.csv` — **2,273,409 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 2,127,416 | 94.5% |
-| CJK only — needs translation for en | 54,223 | 2.4% |
-| no usable name at all | 29,741 | 1.3% |
-| other script only — needs translation for en | 23,217 | 1.0% |
-| mixed-script only — no clean Latin label | 12,664 | 0.6% |
+| Latin only | 2,149,524 | 94.6% |
+| CJK only — needs translation for en | 54,472 | 2.4% |
+| no usable name at all | 29,767 | 1.3% |
+| other script only — needs translation for en | 23,658 | 1.0% |
+| mixed-script only — no clean Latin label | 12,686 | 0.6% |
 | Latin and CJK | 3,302 | 0.1% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
@@ -27,11 +27,11 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 2,523,876 |
-| CJK | 133,363 |
-| other | 63,994 |
-| mixed | 37,064 |
-| none | 529 |
+| Latin | 2,551,043 |
+| CJK | 133,612 |
+| other | 64,454 |
+| mixed | 37,093 |
+| none | 531 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 326,461 people
+## Aliases from married names — 326,457 people
 
 A married name plugs into the name to produce an alias.
 
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-90,463 people have both a derived Latin label and a Wikidata English
-label. **26,683 match exactly (29.5%).**
+90,464 people have both a derived Latin label and a Wikidata English
+label. **26,684 match exactly (29.5%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the

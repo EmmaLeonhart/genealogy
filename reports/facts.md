@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **2,250,742 people**, 
-of whom 96,982 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **2,273,588 people**, 
+of whom 96,983 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 2,245,430 | 99.8% |
-| occupation | 205,268 | 9.1% |
-| birth date | 1,343,468 | 59.7% |
+| sex | 2,268,280 | 99.8% |
+| occupation | 205,276 | 9.0% |
+| birth date | 1,363,377 | 60.0% |
 | birth place | 0 | 0.0% |
-| death date | 1,085,671 | 48.2% |
+| death date | 1,095,728 | 48.2% |
 | death place | 0 | 0.0% |
-| burial date | 118,719 | 5.3% |
+| burial date | 120,088 | 5.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,27 +48,27 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**6,404 date values**, 5,081 distinct, parsed to no year. They keep their raw
+**11,525 date values**, 7,187 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
 | `about 1670` | 29 |
+| `ABT 199 B.C.` | 27 |
+| `2179 B.C.` | 25 |
+| `about 1680` | 24 |
 | `about 1650` | 24 |
-| `about 1680` | 23 |
+| `1 MAR 1948 B.C.` | 23 |
 | `about 1700` | 21 |
+| `49 B.C.` | 21 |
+| `ABT 399 B.C.` | 20 |
+| `99 B.C.` | 20 |
+| `14 B.C.` | 20 |
+| `39 B.C.` | 19 |
 | `about 1660` | 19 |
-| `about 1350` | 17 |
-| `about 1300` | 17 |
-| `about 1665` | 16 |
-| `ABT` | 16 |
-| `about 1685` | 15 |
-| `about 1320` | 14 |
-| `about 1340` | 14 |
-| `about 1330` | 13 |
-| `about 1400` | 13 |
-| `about 1690` | 13 |
+| `ABT 149 B.C.` | 18 |
+| `ABT 179 B.C.` | 17 |
 
 `reports/impossible-years.md` has the full account of these: bare modifiers with
 no operand, and cosmological years in the hundreds of millions belonging to
