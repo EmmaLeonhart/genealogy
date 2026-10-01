@@ -49604,3 +49604,7 @@ The "Question" and "New stuff" sections at the top of `queue.md` (no items, so t
 now ten items in her order, placed ahead of label composition, plus the project clean-up at the end. The
 notes are kept verbatim in `docs/queue-archive/emma-notes-2026-09-30.md`. The sparse-checkout question was
 already resolved. This also clears the two queue-shape findings, so that item and the notes item are deleted.
+
+## 2026-09-30 18:30 PDT: parent deck, 25 more answers
+
+25 Geni-FamilySearch rows appended to `reports/emma-judgments.tsv` (6 SAME, 19 DIFFERENT); 394 pairs answered in all.
