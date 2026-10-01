@@ -50221,3 +50221,6 @@ Nicolai); Q108586077's `P735` Olai is another editor's from 2023 and is left. Th
 present both now classify as patronymic. `reports/wikidata-latin-patronymic-fixes.qs` creates the
 missing patronymic items Samuelis and Andreae, adds `P5056` (with `P144` the father) and removes the
 wrong `P735`; it waits on Emma's go-ahead. The missing description is not backfilled.
+Run with Emma's go-ahead (AskUserQuestion, "Run it") in a new QuickStatements tab, 22 commands.
+Created `Q141620184` Samuelis and `Q141620190` Andreae (patronymic); all five items now hold
+`P5056` and no longer hold the wrong `P735`, checked live. Queue item done.
