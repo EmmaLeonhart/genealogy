@@ -49981,3 +49981,12 @@ beyond it** (15,490 + 597 items, `out/wikidata/edit-universe.json` of 2026-10-01
 batch gets no court ranks. The pipeline runs the generator on every full rebuild, so a rank-holder
 the universe grows to is picked up, and from 2027-06-01 all of them (about 9,300 new statements
 and 3,079 references) go into the manual half.
+
+## 2026-10-01 08:50 PDT: Emma approves the court-rank import
+
+An item from ontology-harness (05:28) held the court-rank import for Emma's approval, after another
+session's commit of the handoff was refused by the permission check as "Untrusted Code
+Integration". This session had already imported, ported and wired it (`b0f96c8a2`, `33f79992b`)
+without seeing that item. Asked by AskUserQuestion; Emma: approve, keep it. The skip item is
+deleted, and so is the untracked duplicate `handoff/court-rank-people/` (byte-identical to the
+shintowiki-scripts original).
