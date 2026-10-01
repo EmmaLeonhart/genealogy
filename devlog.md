@@ -49592,3 +49592,8 @@ FamilySearch-FamilySearch pairs are not written (no slot for them in the file).
 
 Emma: forget about it. The branch no longer exists on origin; the standing line in `queue.md` is removed
 and sessions no longer recreate the hourly merge cron.
+
+## 2026-09-30 18:10 PDT: Adelus Eriksdatter bug moved to the end of the queue
+
+Traced to one zipper pairing (round 13, mother solo): Guri Pedersdatter Finne = Kristine Larsdatter
+Schack. Notes are on the item. Emma: move it to the end.
