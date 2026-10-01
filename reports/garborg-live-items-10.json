@@ -398686,6 +398686,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141583898$DF7E22C7-C94C-489F-9B72-DFD88A15A5B9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612162",
+        "numeric-id": 141612162
+       }
+      },
+      "hash": "9b3d8b303ed7e2d4d40ca64071b6fc5c1c29c9ce",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "12b576ecae0e7a28943f57826a8d25c5ddfcd2ad",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000019072335308"
+          },
+          "hash": "5fbd6730bf61b9476dc39e787a0f6bf6fc6e507a",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ]
   },
@@ -398722,8 +398763,8 @@
     "value": "菲恩·加乌特松之妻"
    }
   },
-  "lastrevid": 2550310991,
-  "modified": "2026-09-28T04:04:00Z",
+  "lastrevid": 2551692905,
+  "modified": "2026-10-01T08:36:41Z",
   "ns": 0,
   "pageid": 135143410,
   "sitelinks": {},
@@ -434950,6 +434991,62 @@
      "type": "statement"
     }
    ],
+   "P22": [
+    {
+     "id": "Q141611066$D2D38EF1-9B73-47C0-B90E-ED9F3A1FB846",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612124",
+        "numeric-id": 141612124
+       }
+      },
+      "hash": "8648b8a81082619134c1437e921d611b96c4e61f",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "889c7c8e43baa09dccce4b7f17bb4f55f94ba13b",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000007496532550"
+          },
+          "hash": "7894ff5d3e07ac72658ee3837c1ef04d3e154bef",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ],
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "GY3G-ZT6"
+          },
+          "hash": "e37b7e5972b5a3bef1419ff36e678beb53c2cc82",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600",
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141611066$CCB079E2-A84C-4A47-8026-98D7ABDA92EF",
@@ -435284,8 +435381,8 @@
     "value": "阿尔恩维德·埃林松·诺尔赫伊姆之妻"
    }
   },
-  "lastrevid": 2551591148,
-  "modified": "2026-10-01T03:02:27Z",
+  "lastrevid": 2551691744,
+  "modified": "2026-10-01T08:33:00Z",
   "ns": 0,
   "pageid": 135182659,
   "sitelinks": {},
@@ -435415,6 +435512,103 @@
        },
        "snaks-order": [
         "P2600",
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P26": [
+    {
+     "id": "Q141611082$121B52F2-D84C-415E-9644-8E727447F132",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612064",
+        "numeric-id": 141612064
+       }
+      },
+      "hash": "7d0c8aacdd7cb0a2c89552efc4b75e9849d86614",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "7bd52d9d6688c2efa3ff17bd11c256a1667a9b60",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003390264867"
+          },
+          "hash": "5ca5b9b914c28b629306f8fda9cdef9ffa7da7bb",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ],
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "LYK3-X4Z"
+          },
+          "hash": "0cb3417b6b271508913925ddd3825b969f9cf618",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600",
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q141611082$15B6BEC0-CF0F-4BB6-B717-15AEAA848C12",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612148",
+        "numeric-id": 141612148
+       }
+      },
+      "hash": "58a1323e89c7579f9dfbc41e233773c5160adce5",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3abf4bf3734f513fd7cc34e4ae45586fe2b84c34",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "MTP1-BFL"
+          },
+          "hash": "72e0d14357eeb4e5cf5410459bf1c33f4f0efae0",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
         "P2889"
        ]
       }
@@ -435742,8 +435936,8 @@
     "value": "马尔格雷特·佩特尔斯达特·桑德文"
    }
   },
-  "lastrevid": 2551591689,
-  "modified": "2026-10-01T03:04:05Z",
+  "lastrevid": 2551692413,
+  "modified": "2026-10-01T08:34:49Z",
   "ns": 0,
   "pageid": 135182688,
   "sitelinks": {},
@@ -436368,6 +436562,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141611130$4D5A1A52-A773-4A45-9C74-1E21E916181B",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141612101",
+        "numeric-id": 141612101
+       }
+      },
+      "hash": "6e36236f7d5130a4c2646498a2c6f65efd8b217a",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "dd988474538b79e319bb79e4ccd6531e29f77783",
+       "snaks": {
+        "P2889": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "LDK4-YV9"
+          },
+          "hash": "da9eb5ff3cbed89d24352489377a470bc96473b4",
+          "property": "P2889",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2889"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141611130$D908F84C-64DB-4FED-BCE7-AAC00A567658",
@@ -436605,8 +436842,8 @@
     "value": "伊瓦尔·古托尔姆松之妻"
    }
   },
-  "lastrevid": 2551593204,
-  "modified": "2026-10-01T03:08:30Z",
+  "lastrevid": 2551691237,
+  "modified": "2026-10-01T08:31:31Z",
   "ns": 0,
   "pageid": 135182773,
   "sitelinks": {},
