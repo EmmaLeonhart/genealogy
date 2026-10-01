@@ -654,8 +654,8 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME** — Geni puts the husband in `GIVN`.
 - **A GUARD IN ONE EMITTER IS NOT A GUARD.** There are two emitters; rules live in `namemodel`.
 - **No given name is not no name** — a redacted person's surname is still a `P734`.
-- **⛔ A WOMAN GOES UNDER HER MAIDEN NAME AGAIN. Ruled 2026-10-01 by AskUserQuestion ("Maiden name again")**, after `Julia-Malka wife, Yitzhak of Ellenbogen` went out from Geni's married-name record: `namemodel.married_is_primary` is false for `F`, so her birth name is the label and the married form the `Amul`; men keep the married form. New creations only, no backfill. The ruling below is superseded.
-- **Superseded 2026-10-01: ⛔ EVERYBODY GOES UNDER THE MARRIED NAME — AND IT CARRIES THE GIVEN NAME. Reversed 2026-09-25**
+- **⛔ THE BIRTH NAME IS THE LABEL, FOR EVERYONE; THE MARRIED NAME IS AN ALIAS. Ruled 2026-10-01 (Emma):** *"Birth names are the default, and multiple languages and married name is an alias. I am taking this with the full accountability that it's going to mass-change a very large amount of names."* `namemodel.married_is_primary` is false for every sex, and `_label_corrections` backfills our established items: a live married-form label becomes the birth name, the married form an `Amul`, paced by `LABEL_EDIT_CAP`. The entry below recorded her 2026-09-25 reversal the wrong way round (what she reversed was an earlier ruling of hers) and is superseded.
+- **Superseded 2026-10-01 (mis-recorded): ⛔ EVERYBODY GOES UNDER THE MARRIED NAME — AND IT CARRIES THE GIVEN NAME. Reversed 2026-09-25**
   (*"reverse course on the undo of the married-name handling"*, on `Q141492819`, whose label was
   given as `Marite Bergesdatter Talgje`). The 2026-09-21 switch that put women under their maiden
   names is undone: `mul` carries the married form for every sex and the birth form is the `Amul`.

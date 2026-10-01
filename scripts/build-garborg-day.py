@@ -55,7 +55,7 @@ from namemodel import (  # noqa: E402
     qualifier_value,
     aliases_for, classify, classify_fields, load_plan,
     names_a_relative as _namemodel_names_a_relative,
-    lead_with_given_name, own_given_name, married_is_primary,
+    lead_with_given_name, own_given_name, married_is_primary, married_name_of,
     drop_description_suffix, generation_suffix_key,
     normalise_generation_suffix, native_generation_labels, statements_for,
     suffix_is_native)
@@ -2621,11 +2621,26 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                     out.append(f"#   {qid}: set the {code} label")
                     out.append(f'{qid}\tL{code}\t"{value}"')
             continue
-        # The BIRTH-NAME ground is DELETED, 2026-09-24. It finished the 2026-08-29 switch to
-        # married labels; three weeks on, all it still found was policy drift -- 45 of its 50
-        # corrections moved an established woman from her married to her maiden name after
-        # the 2026-09-21 ruling, *"a waste of edits"*, and the other five made labels worse
-        # (`Madela Tolleivsdatter Tolleivsdtr Norheim`). A policy change is not backfilled.
+        # ⛔ **THE BIRTH-NAME GROUND IS BACK, AND IT IS A BACKFILL. Ruled 2026-10-01 (Emma):**
+        # *"Birth names are the default ... married name is an alias. I am taking this with the
+        # full accountability that it's going to mass-change a very large amount of names."*
+        # An item of ours whose live label is the MARRIED form (Geni's `_MARNM` is in it and not
+        # in the birth form we now want) gets the birth form as `mul`/`en`, the married form as
+        # an `Amul`, and CJK labels re-read from the birth form where the live ones are ours
+        # (katakana `ja`, never kanji). `LABEL_EDIT_CAP` paces it batch by batch.
+        _married = married_name_of((fields or {}).get(geni_id) or {})
+        if (_married and _married in have and _married not in want
+                and not _their_en and not _their_mul):
+            out.append(f"#   {qid}: holds the married form {have!r}; the birth name {want!r} is the label")
+            out.append(f'{qid}\tAmul\t"{have}"')
+            out.append(f'{qid}\tLmul\t"{want}"')
+            out.append(f'{qid}\tLen\t"{want}"')
+            ja, zh, ko = label_in(want, table)
+            old_ja, old_zh, old_ko = label_in(have, table)
+            for code, value, old in (("ja", ja, old_ja), ("zh", zh, old_zh), ("ko", ko, old_ko)):
+                live_cjk = (live_labels or {}).get((qid, code))
+                if value and (not live_cjk or live_cjk == old):
+                    out.append(f'{qid}\tL{code}\t"{value}"')
     if out:
         out = ["", "# " + "-" * 72,
                "# LABEL CORRECTIONS -- our own items: an abbreviation expanded, a generation",

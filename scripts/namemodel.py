@@ -596,11 +596,12 @@ def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
 def married_is_primary(sex: str) -> bool:
     """Whether the MARRIED name is the label (`mul`/`en`) and the birth name the `Amul`.
 
-    ⛔ **A WOMAN GOES UNDER HER MAIDEN NAME AGAIN. Ruled 2026-10-01 by AskUserQuestion** ("Maiden
-    name again"), after `Julia-Malka wife, Yitzhak of Ellenbogen` went out as a label from Geni's
-    married-name record. The 2026-09-21 rule is back: `F` takes the birth name as the label and the
-    married form as the `Amul`; a man and an unknown sex keep the married form. New creations only;
-    nothing established is relabelled (the 2026-09-24 no-backfill ruling stands).
+    ⛔ **THE BIRTH NAME IS THE LABEL, FOR EVERYONE; THE MARRIED NAME IS AN ALIAS. Ruled 2026-10-01
+    (Emma):** *"Birth names are the default, and multiple languages and married name is an alias.
+    I am taking this with the full accountability that it's going to mass-change a very large
+    amount of names."* She did not reverse this on 2026-09-25; what she reversed then was an earlier
+    ruling of hers, and this file recorded it the wrong way round. It applies to new creations and
+    is backfilled onto our established items (`_label_corrections`' birth-name ground).
 
     Superseded 2026-10-01: ⛔ **EVERYBODY GOES UNDER THE MARRIED NAME AGAIN. Reversed 2026-09-25**, on the queue item for
     `Q141492819`: *"reverse course on the undo of the married-name handling"*, with her own label
@@ -619,7 +620,7 @@ def married_is_primary(sex: str) -> bool:
     So only `F` flips to the maiden form. An unknown sex keeps the married form, the rule as it
     stood, because the ruling is about women and nothing says who an unknown is.
     """
-    return (sex or "").strip().upper() != "F"
+    return False
 
 
 def married_name_of(fields) -> str:

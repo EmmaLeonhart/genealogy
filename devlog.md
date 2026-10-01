@@ -50107,3 +50107,18 @@ Emma, by AskUserQuestion ("Maiden name again"), after `Julia-Malka wife, Yitzhak
 (`build-garborg-day.py`, `build-familysearch-day.py`, `derive-labels.py`) label a woman by her
 birth name and put the married form in the `Amul`. Men and unknown sex keep the married form.
 Applies to new creations; nothing established is relabelled. Test and CLAUDE.md updated.
+
+## 2026-10-01 14:20 PDT: birth name for everyone, backfilled; the 2026-09-25 record was wrong
+
+Correcting the 14:00 entry. Emma: *"I didn't reverse it ... Birth names are the default, and
+multiple languages and married name is an alias. I am taking this with the full accountability
+that it's going to mass-change a very large amount of names."* What she reversed on 2026-09-25
+was an earlier ruling of hers; this repo recorded it as "everybody under the married name".
+- `namemodel.married_is_primary` returns false for every sex, so all three emitters label by the
+  birth name with the married form as an `Amul`.
+- `_label_corrections` has a birth-name ground again, a backfill: an item of ours whose live label
+  contains Geni's married surname (`_MARNM`) and whose birth form does not, and which nobody
+  outside the project labelled, gets `Lmul`/`Len` = the birth name, `Amul` = the outgoing married
+  form, and ja/zh/ko re-read from the birth form where the live ones are ours. `LABEL_EDIT_CAP`
+  (450) paces it per batch. The labels it wants come from `derived-labels.csv`, so it starts after
+  the next tree rebuild re-derives them under the new rule.

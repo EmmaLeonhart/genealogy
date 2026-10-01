@@ -1395,13 +1395,19 @@ def test_own_given_name_refuses_a_marker_and_a_relatives_name():
     assert own_given_name(None) == ""
 
 
-def test_a_woman_goes_under_her_maiden_name_again():
-    """Ruled 2026-10-01 ("Maiden name again"), reversing the 2026-09-25 married-name rule: a woman
-    is labelled by her birth name, a man and an unknown sex by the married form."""
+def test_the_birth_name_is_the_label_for_everyone():
+    """Ruled 2026-10-01 (Emma): "Birth names are the default ... married name is an alias", for
+    every sex, and backfilled onto established items."""
     from namemodel import married_is_primary
     assert married_is_primary("F") is False
-    assert married_is_primary("M") is True
-    assert married_is_primary("") is True
+    assert married_is_primary("M") is False
+    assert married_is_primary("") is False
+
+
+def test_the_composer_backfills_birth_names_onto_our_items():
+    src = (Path(__file__).resolve().parent.parent / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert "THE BIRTH-NAME GROUND IS BACK, AND IT IS A BACKFILL" in src
+    assert "married_name_of((fields or {}).get(geni_id) or {})" in src
 
 
 def test_own_given_name_refuses_what_is_not_a_first_name():
