@@ -49716,3 +49716,7 @@ Composed `en` labels now go into the batch where an item has no live `en` label 
 ## 2026-09-30 23:30 PDT: composed en wiring removed
 
 Emma: no label-item work wired in. `_composed_labels_fill` and its test are removed; the label items stay at the end of the queue untouched.
+
+## 2026-09-30 23:35 PDT: order.life is a submodule
+
+`order.life/` added as a full-history submodule (1,604 commits, objects borrowed from the local checkout through `--reference`, no re-download), tracking `master`. No separate `genealogy` branch: the later queue item moves order.life work to `master`. No CI workflow checks out submodules, so CI is unaffected.
