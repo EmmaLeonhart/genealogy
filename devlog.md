@@ -50190,3 +50190,14 @@ splits (a patronymic plus a farm, or two separate surnames). Every case is in
 whole `P734` where it is missing, and a removal of each half. The other 95 need an item for their
 whole surname first (55 surnames, led by `Øystre Bore` 7, `Store Vatne` 6, `Austre Stangeland` 5);
 that is the item left in the queue.
+
+## 2026-10-01 17:10 PDT: split surnames, the batch
+
+Emma: make one QuickStatements batch that creates the whole-surname items and applies them, and
+run it. `reports/wikidata-split-surname-fixes.qs`: 50 family-name items created in the
+name-item builder's shape (`Den "family name"`, `P31 Q101352`, `P1705`, `P282`, ja/zh/ko from
+`_cjk_readings`), each followed by its 90 bearers' `P734 LAST` (cited `S2600`), then removal of
+the halves; plus the 16 whose whole item already existed. 215 removals in all. None of the 50
+existed on Wikidata (searched first). Left out: three junk surname fields
+(`(Olsen) Hamre Jørstad (Haland) …`, `Frafjord øvre - Espedal`, `N. Eiane`) and two with a given
+name in the field (`Borsheim Isaac`, `Sigmund Madland`).
