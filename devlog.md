@@ -49649,3 +49649,7 @@ the rule is in `CLAUDE.md`: the day's `.rmtree`/`.ged` files are archived read-o
 `Documents\rootsmagic-archive\2026-09-30\`, and `rootsmagic-import` already converts the second attempt to a
 cleaned GEDCOM. The FamilySearch creations pause stays; its RootsMagic/GEDCOM-import wording is lifted. The
 RootsMagic and order.life items keep their place after the Wikidata items.
+
+## 2026-09-30 19:10 PDT: Geni email item to the end of the queue
+
+Read the suspension email (Geni #201578); Emma wants the account restored. Item moved to the end at her word, with the email's asks noted on it.
