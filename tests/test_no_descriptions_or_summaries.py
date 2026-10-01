@@ -228,7 +228,7 @@ def test_the_composer_never_describes_by_relationship():
 def test_no_person_is_labelled_by_a_relationship_phrase_in_english():
     """Ruled 2026-09-28 (an NN person is `NN` in `mul` and `NN` in `en`), enforced 2026-10-01:
     batch `30b61a451` still created 20 people as `Len "wife of Halvard Guttormsson? Såstad"`."""
-    label = re.compile(rf'^(?:LAST|Q[1-9][0-9]*)	Len(?:-us)?	"(?:{RELATION_WORD}) of ')
+    label = re.compile(rf'^(?:LAST|Q[1-9][0-9]*)	Len(?:-us)?	"(?:[^",]{{1,120}}, )?(?:{RELATION_WORD}) of ')
     offenders = []
     for path in sorted({p for pattern in BATCHES for p in REPO.glob(pattern)}):
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):

@@ -8394,7 +8394,9 @@ def main():
         if not m or new.get("en") == have or m.group(1) in have:
             continue
         lines.append(f"#   {q}: en label {have!r} anchors on another relative; the father is named")
-        lines.append(f'{q}\tLen\t"{qs(new["en"])}"')
+        # ⛔ **NO `Len` HERE. Ruled 2026-09-28 (no relationship phrase as an English label),
+        # enforced 2026-10-01:** batch `30b61a451` relabelled `Q141522207` `en` to "Ols, father of
+        # Britta Olsdotter" from this line. Only the CJK phrases are re-anchored.
         for code in ("ja", "zh", "ko"):
             old = live_labels.get((q, code), "")
             if new.get(code) and old and _our_cjk_relational_phrase(old, code) and new[code] != old:

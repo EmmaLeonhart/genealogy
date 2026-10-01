@@ -50000,3 +50000,25 @@ The audit CSV stays as the record.
 8d8b9e62c re-added `handoff/court-rank-people/` as a duplicate after another session had already
 imported and ported it (`b0f96c8a2`, `33f79992b`) and removed the copy (`5d8e4eb64`). This
 session did not re-read the git log before copying. Reverted here.
+
+## 2026-10-01 09:30 PDT: the Q141566035 "NN Orre" items closed; one relational label stopped
+
+Live histories read 2026-10-01 (labels only):
+- `Q141566035`: "NN Orre" **did reach Wikidata**. Batch `temporary_batch_1790507776667` set `en`
+  and `mul` at 2026-09-27 11:18 UTC, and Emma restored "Ols Orre" by hand at 11:22 (`mul`, `en`,
+  plus `en-us`/`fr`/`es`). It is "Ols Orre" now, so the forced-labels row sends nothing.
+- `Q141560585` "Ols Kolnes" and `Q141524363` "Ols father of Karen": no label edit since creation;
+  the NN rows never went out.
+- `Q141447158`: set to "Jans" (`mul`, `en`) on 2026-09-28 by the forced-labels row, as Emma decided.
+- `Q141522207`: `mul` still "Ols NN" (the NN row has not landed). But **today's batch
+  (`temporary_batch_1790843200776`, 09:27 UTC) set its `en` to "Ols, father of Britta Olsdotter"**,
+  with CJK phrases, from the composer's re-anchor-on-the-father pass.
+
+The cause of the NN relabel, `namemodel.is_stem_name`, was already deleted on 2026-09-27
+(`6d1527632`): it treated a rare genitive first name (`Ols`) as no name when a child's patronymic
+matched.
+
+New fix: the re-anchor pass in `build-garborg-day.py` no longer writes `Len` (the 2026-09-28 rule:
+no relationship phrase as an English label); only its `ja`/`zh`/`ko` re-anchoring stays. The batch
+test now also catches the `Given, father of …` shape. `Q141522207`'s `en` is left as it is for
+Emma (old items are not rewritten, per her 2026-10-01 answer on descriptions).
