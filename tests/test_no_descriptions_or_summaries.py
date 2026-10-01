@@ -237,7 +237,36 @@ def test_no_person_is_labelled_by_a_relationship_phrase_in_english():
     assert not offenders, f"{len(offenders)} relational en labels: {offenders[:8]}"
 
 
-def test_nothing_sets_an_edit_summary():
+def test_no_nn_label_carries_a_relative_from_the_name_field():
+    """Batch `30b61a451` created `Q141612062` as `Lmul "NN wife of Eirik"`: Geni's name field was
+    `Unknown wife of Eirik`, and only the marker was swapped. Such a field is not a name."""
+    label = re.compile(rf'^(?:LAST|Q[1-9][0-9]*)	L(?:mul|en|en-us)	"NN (?:{RELATION_WORD}) of ')
+    offenders = []
+    for path in sorted({p for pattern in BATCHES for p in REPO.glob(pattern)}):
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if label.match(line):
+                offenders.append(f"{path.name}:{n} {line[:80]}")
+    assert not offenders, f"{len(offenders)} NN labels naming a relative: {offenders[:8]}"
+
+
+def test_the_nn_label_refuses_a_name_field_that_names_a_relative():
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert "if names_a_relative(mul_value):" in src
+
+
+def test_the_relational_labels_of_batch_30b61a451_are_corrected():
+    """The 21 items that batch created with a relationship phrase as their `en` label (or `mul`)
+    get their `mul` value back in `en` and `en-us` through `label-applications.tsv`."""
+    rows = [line.split("\t") for line in
+            (REPO / "reports" / "label-applications.tsv").read_text(encoding="utf-8").splitlines()]
+    fixed = {(r[0], r[2]): r[3] for r in rows if len(r) > 3 and r[1] == "L"}
+    for qid in ("Q141612054", "Q141612062", "Q141612168", "Q141612504"):
+        # `Q141612062` was created with no `en-us`, so it gets none.
+        for lang in ("en",) if qid == "Q141612062" else ("en", "en-us"):
+            value = fixed.get((qid, lang), "")
+            assert value.startswith("NN") and " of " not in value, (qid, lang, value)
+    assert fixed[("Q141612062", "mul")] == "NN"
+    assert fixed[("Q141612168", "mul")] == "NN"
     offenders = []
     for pattern in ("scripts/*.py", "src/genimerge/*.py", ".github/workflows/*.yml"):
         for path in sorted(REPO.glob(pattern)):

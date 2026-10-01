@@ -8568,6 +8568,15 @@ def main():
             # these people is the surname rather than the given name. A label that is already
             # two tokens, or is the bare marker, is returned untouched.
             mul_value = _nn_surname(mul_value, *_name_fields(fields.get(g)))
+            # ⛔ **A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME, IN THE LABEL EITHER.**
+            # Batch `30b61a451` (2026-10-01) created `Q141612062` as `NN wife of Eirik` and
+            # `Q141612168` as `NN mother of Sigrlinn`: Geni's whole name is `Unknown wife of
+            # Eirik`, and the marker was swapped for `NN` with the sentence kept. `classify_fields`
+            # already empties such a field; the label read the raw string. Marker plus surname.
+            if names_a_relative(mul_value):
+                _rel_surn = _name_fields(fields.get(g))[1]
+                _rel_surn = "" if names_a_relative(_rel_surn) else _rel_surn
+                mul_value = f"{UNNAMED_MARKER} {qs(_rel_surn)}".strip()
 
             # **A married NN woman has TWO recorded surnames and was keeping one.**
             # This branch set `birth = ""` and never reached the alias block below, so

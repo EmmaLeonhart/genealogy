@@ -49859,3 +49859,24 @@ relative is not a name*), so it comes through the named branch.
 Parts (1) and (3) and the recording half of (2) shipped in `3de4b33d1`. The remaining question
 (skip recently blocked runner IPs at start, given the block-evasion concern) was asked and got no
 decision, so it now sits at the end of the queue as NEEDS-DECISION.
+
+## 2026-10-01 PDT: the relational labels of batch `30b61a451` corrected
+
+Batch `30b61a451` created 293 people. 21 of them went out with a relationship phrase as their
+`en` label, and all 21 are live (`Q141612054` to `Q141612504`, found by `haswbstatement:P2600`).
+None is in `corrected-label-slots.tsv`, and none had been changed by hand on Wikidata. 19 are the
+NN branch's `wife of …` / `son of …` / `daughter of …` / `mother of …` as `Len` and `Len-us`.
+`c55a75bfb` already stops that branch.
+
+The other two carry it in `mul` too: `Q141612062` `NN wife of Eirik` (Geni: `Unknown wife of Eirik`)
+and `Q141612168` `NN mother of Sigrlinn` (Geni: `N.N. mother of Sigrlinn`). `classify_fields`
+already empties such a field through `names_a_relative`. The NN label read the raw string instead
+and swapped only the marker. Now `build-garborg-day.py` gives the label the marker plus any real
+surname when `names_a_relative(mul_value)` holds.
+
+`reports/label-applications.tsv` has 43 new rows: `en` and `en-us` (where the item has one) set to
+the `mul` value for all 21, and `mul` set to `NN` for the two. They retire once live. Tests:
+`test_no_nn_label_carries_a_relative_from_the_name_field` (on the batches; the committed batch
+still holds 3 such lines until the next pipeline run rewrites it),
+`test_the_nn_label_refuses_a_name_field_that_names_a_relative`, and
+`test_the_relational_labels_of_batch_30b61a451_are_corrected`.
