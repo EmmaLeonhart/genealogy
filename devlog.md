@@ -49686,3 +49686,7 @@ Not a hang: `36789601188` queued 29 min, then 3 h 8 min of work (ledger refresh 
 ## 2026-09-30 22:10 PDT: entry-points items folded together
 
 The end item `6e1e3b5e6` (three new entry points, all 2027-01-01 starts moved to 2026-09-01) is folded into the gate-removal item in its own place, per the correction; both extra items deleted.
+
+## 2026-09-30 22:15 PDT: the Wikidata strategy
+
+Emma agreed the five-step strategy (duplicates merged and account declared; continuous batches from finished pipeline runs; all entry points now plus Youlan, Prince Chun, Puyi; FamilySearch creations paused; private people only as connectors after the current batch). Written into `CLAUDE.md`; item done.

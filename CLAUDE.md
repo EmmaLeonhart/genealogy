@@ -213,6 +213,10 @@ day: *"the reason we are doing descriptions is to allow for overlap"*): a creati
 description, and Wikidata refuses a second item with the same label and description, so a
 person both pasted and sent is created once.
 
+## ⛔ THE WIKIDATA STRATEGY (Emma, 2026-09-30, by AskUserQuestion)
+
+In this order: (1) the 136 duplicate sets are merged and `User:日巫女` declares the account (done 2026-09-30); (2) batches run continuously, each from a pipeline run that has finished and committed it; (3) every entry point starts now, plus `Q701641` Youlan, `Q144348` Zaifeng, Prince Chun and `Q185152` Puyi; (4) FamilySearch creations stay paused (`CREATIONS_PAUSED`) until the zipper work on her ancestors is further along; (5) after the current batch, a private person goes on Wikidata only when they link two or more families.
+
 ## ⛔ AT SESSION START: THE BROWSER QUICKSTATEMENTS LOOP
 
 Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner, and it starts with the session. Immediately after a session opens: open a NEW QuickStatements tab, load the current `reports/wikidata-garborg-day-manual.txt` (fetch it from raw.githubusercontent into the batch textarea), Import, and press **Run** (never "Run in background" unless she asks).
