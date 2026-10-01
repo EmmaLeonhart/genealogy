@@ -49971,3 +49971,13 @@ over). Ported here:
 Not yet measured: how many universe people hold a rank (a local dry run is still running). The
 imported `court-rank/test_court_rank_is_referenced.py` is outside `tests/` and is not collected;
 it checks the old `|` format and a sibling script that only exists in the shrine repo.
+
+## 2026-10-01 04:10 PDT: court ranks measured: none in the universe yet (item closed)
+
+Dry run of the ported generator against live Wikidata and ja.wikipedia: 114 court-rank items, 42
+rank categories resolved, 5,418 P14005 statements already on Wikidata (2,339 referenced, 3,079
+bare). The categories hold **12,473 people, and 0 of them are in the edit universe or one step
+beyond it** (15,490 + 597 items, `out/wikidata/edit-universe.json` of 2026-10-01). So today's
+batch gets no court ranks. The pipeline runs the generator on every full rebuild, so a rank-holder
+the universe grows to is picked up, and from 2027-06-01 all of them (about 9,300 new statements
+and 3,079 references) go into the manual half.
