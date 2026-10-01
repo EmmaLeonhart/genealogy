@@ -1,9 +1,9 @@
-300 people across 1 Garborg batches, 16712 already holding a QID
-3017 token(s) are already pointed at by their own bearers
-6493 tokens already have an item and are linked, not created
-3685 need creating, 0 are ambiguous and are not
+300 people across 1 Garborg batches, 16854 already holding a QID
+3068 token(s) are already pointed at by their own bearers
+6494 tokens already have an item and are linked, not created
+3684 need creating, 0 are ambiguous and are not
 130 token(s) held: never a first given name in the corpus but attested as a family name -- Laurentii (5), Byre (3), lll (3), Grimelund (3), Georgii (2), Lauritzen (2)
-544 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
+545 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Adalasia             given        Q62102498
    Adalhaid             given        Q354633
    Al-Dahhak            given        Q63929644
@@ -229,6 +229,7 @@
    von Güntersberg      family       Q141493482
    von Hagen            family       Q1568372
    von Hals             family       Q11973763
+   von Hauenschild      family       Q132162524
    von Hengebach        family       Q37476182
    von Hermansson       family       Q21508239
    von Hohenzollern     family       Q88458721
@@ -513,19 +514,19 @@
    Meijendorff von Yxkull family       already Q61693229
    von Malortie         family       already Q115913524
    Ragnvaldsson         patronymic   already Q113006412
-3733 token(s) the ring is about to need are ranked first
+3703 token(s) the ring is about to need are ranked first
 
-checking 2,696 existing name items for a missing description
-   1 of them have no English description; 2,695 already do
+checking 2,738 existing name items for a missing description
+   1 of them have no English description; 2,737 already do
    1 are DUPLICATES of an existing name item -- the description was refused, not emitted; see duplicate-name-items-found.tsv
 
-checking 509 existing patronymic items for P144 based on and P460
-   6 P144 statement(s) to add
+checking 537 existing patronymic items for P144 based on and P460
+   66 P144 statement(s) to add
    0 P144 statement(s) to remove
-   14 P460 statement(s) to add
+   40 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 3645 carried to a later run), 101 statements linking an EXISTING person to one, in the same run
-29 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
+wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 3644 carried to a later run), 93 statements linking an EXISTING person to one, in the same run
+30 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
    1 created WITHOUT a P144: Klengsdatter
   create  Laurentii            patronymic   11
   create  af Gennäs            family       10
@@ -3970,7 +3971,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 3645 carri
   create  von Güntersberg vel Kaliska family       1
   create  von Hagemeister      family       1
   create  von Hagendorn        family       1
-  create  von Hauenschild      family       1
   create  von Hegardt          family       1
   create  von Heijne-Lillienberg family       1
   create  von Heinsberg-Valkenburg family       1
