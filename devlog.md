@@ -49587,3 +49587,8 @@ two-parent cards of the first deck, 206 new): 293 Geni-FamilySearch rows appende
 `reports/emma-judgments.tsv` as `familysearch-parent-deck` (173 SAME, 120 DIFFERENT), FamilySearch id
 in `qid`; the SAME ones come back as zipper anchors at the next tree rebuild. 66
 FamilySearch-FamilySearch pairs are not written (no slot for them in the file).
+
+## 2026-09-30 17:45 PDT: the exports/2026-09-19 merge cron is dropped
+
+Emma: forget about it. The branch no longer exists on origin; the standing line in `queue.md` is removed
+and sessions no longer recreate the hourly merge cron.

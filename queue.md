@@ -8,7 +8,7 @@ not an action goes in `docs/queue-archive/`. The file this replaced, verbatim, i
 `docs/queue-archive/queue-before-2026-09-24-rewrite.md`.
 
 **Standing, not items:** no contact with geni.com until at least 2026-10-21, and only Emma lifts
-it. Each session re-creates the hourly `exports/2026-09-19` merge cron and starts with
+it. Each session starts with
 `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH ZIPPER*.
 
 ## Question
