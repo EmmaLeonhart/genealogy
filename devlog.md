@@ -50122,3 +50122,25 @@ was an earlier ruling of hers; this repo recorded it as "everybody under the mar
   form, and ja/zh/ko re-read from the birth form where the live ones are ours. `LABEL_EDIT_CAP`
   (450) paces it per batch. The labels it wants come from `derived-labels.csv`, so it starts after
   the next tree rebuild re-derives them under the new rule.
+
+## 2026-10-01 14:50 PDT: mass review of our labels for alternative names
+
+Scanned the live `mul`/`en` labels of the 14,696 items this account created (`garborg-qids.tsv`,
+not the P2600-only rows) against `garborg-live-labels.tsv`. Every hit is in
+`reports/label-alternatives-review.tsv` (346 rows): parentheses 51 items, comma 28, `vel` 6,
+`eller` 2, `or` 2, `ou` 2, slash 2, question mark 2 (counts on `mul`). "f." is left out, per the
+item after this one.
+
+Corrected through `reports/label-applications.tsv` (63 rows, 12 items; chosen name as label, the
+other form as a `mul` alias, ja/zh/ko re-read from the chosen name where the live `ja` has no kanji;
+human-corrected slots and our old relational `en` labels left alone):
+`Alv Ottarsen Rode` (alias `Røde`), `Hedvig Ida Agusta Koglin` (alias `Hattie …`), `Alice de Mons`
+(alias `Adélaïde de Mons`), `Hadwige de Bazoches` (was `ou Hadwige …`), `NN Gjedrem` (alias
+`NN Grøsfjell`), `NN Hompland` (alias `NN Fintland`), and six `X von Güntersberg vel Kaliski`
+people as `X von Güntersberg` with `X Kaliski`/`Kaliska` as the alias. `Q141510769` was done
+earlier today.
+
+Not changed, reported: `Kirsten Eller Lomeland` (`Eller` capitalised, probably a farm name, not
+"or"); parentheses (51) and commas (28) are mostly farm names, titles or a second given name, not
+alternatives; the two question-mark labels (`NN Erlends kone? Erlendsdatter`,
+`NN wife of Gase ( Christensdotter?)`) are name-field junk, a different problem.
