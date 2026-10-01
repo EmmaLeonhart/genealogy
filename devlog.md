@@ -49597,3 +49597,10 @@ and sessions no longer recreate the hourly merge cron.
 
 Traced to one zipper pairing (round 13, mother solo): Guri Pedersdatter Finne = Kristine Larsdatter
 Schack. Notes are on the item. Emma: move it to the end.
+
+## 2026-09-30 18:25 PDT: Emma's notes turned into queue items
+
+The "Question" and "New stuff" sections at the top of `queue.md` (no items, so they were read past) are
+now ten items in her order, placed ahead of label composition, plus the project clean-up at the end. The
+notes are kept verbatim in `docs/queue-archive/emma-notes-2026-09-30.md`. The sparse-checkout question was
+already resolved. This also clears the two queue-shape findings, so that item and the notes item are deleted.
