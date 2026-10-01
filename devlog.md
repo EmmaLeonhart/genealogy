@@ -50090,3 +50090,7 @@ New verdicts from the unmatched-ancestor deck appended to `reports/emma-judgment
 ## 2026-10-01 13:00 PDT: unmatched-ancestor deck, 71 more answers saved
 
 Appended to `reports/emma-judgments.tsv`. The tree rebuild (run 36905782584, with the finished RootsMagic export) landed as `20bbf8ae9`.
+
+## 2026-10-01 13:30 PDT: unmatched-ancestor deck, 182 more answers saved
+
+Appended to `reports/emma-judgments.tsv` (second round of the deck, built on tree `20bbf8ae9`).
