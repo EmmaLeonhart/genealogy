@@ -50078,3 +50078,7 @@ They go out with the next batch and retire once live.
 ## 2026-10-01 11:45 PDT: unmatched-ancestor deck, 144 answers saved
 
 144 verdicts (105 SAME, 39 DIFFERENT) appended to `reports/emma-judgments.tsv` from the three deck stores, mostly the unmatched-ancestor deck. The 98 FamilySearch-to-FamilySearch pairs (the copy cards of its first version) are not written. The SAME rows become zipper anchors on the tree rebuild after run 36905782584.
+
+## 2026-10-01 12:00 PDT: unmatched-ancestor deck, more answers saved
+
+New verdicts from the unmatched-ancestor deck appended to `reports/emma-judgments.tsv` (count in the commit).
