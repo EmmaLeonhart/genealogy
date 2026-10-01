@@ -49668,3 +49668,13 @@ back from generation 24 (126 of 385) into the early lines (generation 32: 554 of
 holds 26 people, not 32, so six great-great-great-grandparents are missing from FamilySearch's tree.
 FamilySearch's own data gives 94 people two or more fathers and 115 two or more mothers (Adelus
 Eriksdatter is one). The unpaired ancestors in the refused slots are on the deck.
+
+## 2026-09-30 21:30 PDT: the duplicate creations are merged
+
+All 136 duplicate sets in `reports/duplicate-creations.csv` are merged on Wikidata through the merge gadget
+in Emma's browser (Tools > Merge with..., always into the oldest item), 298 merges this session plus 2
+done earlier. Checked against the API afterwards: of the 436 items, 136 are live and 300 are redirects,
+and every set has exactly one live item. Before this session only one set had been merged; any earlier
+statement that they were merged was wrong. Practical note for the gadget: in a background tab Chrome does
+not render, and the gadget adds its "Merge with..." link only after a frame is drawn, so each page load
+needs a screenshot (or a visible tab) before the link appears.
