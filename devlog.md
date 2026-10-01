@@ -49880,3 +49880,32 @@ the `mul` value for all 21, and `mul` set to `NN` for the two. They retire once 
 still holds 3 such lines until the next pipeline run rewrites it),
 `test_the_nn_label_refuses_a_name_field_that_names_a_relative`, and
 `test_the_relational_labels_of_batch_30b61a451_are_corrected`.
+
+## 2026-10-01 01:20 PDT: the many-language labels on NN people, reviewed; the emitters were already off
+
+**Two code paths, and neither puts transliterations on NN people.**
+- **The sixteen transliterated scripts** (`translit_scripts.py` via `standard_script_labels()`,
+  live 2026-09-26, commented out 2026-09-27) skipped any label carrying `NN`. On Wikidata (WDQS,
+  our items above Q141000000 with a `P2600`), **313 items carry all sixteen**, none of them NN.
+  That is 5,008 labels. The Georgian in the queue item belongs here, on named people.
+- **The NN people's extra labels are relationship phrases**, not transliterations: `daughter of
+  Erling Juel Wendt` in ca/da/de/es/fr/it/nb/nl/pt/sv. That is **523 NN items and 5,169 labels**.
+  They were banned on 2026-09-27 (labels only in mul/en/en-us/ja/zh/ko) and 2026-09-30 (no
+  relative in a label).
+
+**Stopped:** `gate_label_languages` in `build-garborg-day.py` drops every `L`/`A` line outside
+`LABEL_LANGUAGES` (except Emma's own hand labels), on the composed lines and on the final ones.
+Today's three batch files carry only mul/en/en-us/ja/zh/ko. Nothing new was needed.
+
+**Not sound.** `reports/script-labels-given-name-check-2026-10-01.csv` compares each item's
+first transliterated token with the established label, in that language, of its first `P735` name item.
+Where an established form exists, the transliteration agrees: ru 159/243, uk 115/169, hy 70/82,
+he 70/147, ka 17/64, ar 20/212, el 12/117, fa 1/26, bn 0/74, ta 0/40, hi 0/12, chr 0/10. Typical
+misses are a doubled letter kept where the language drops it (`ანნა` against `ანა`, `أننا`
+against `آنا`) and a letter-for-letter cluster (`Ανντρεας` against `Ανδρέας`). Every label is
+in `reports/script-labels-audit-2026-10-01.csv`. A full-label composition from name items rarely
+applies, because most items lack labels in these languages on their name items.
+
+**Removing them is ~10,177 label edits** (5,008 + 5,169). It is queued as NEEDS-DECISION
+(repo-only rule): before any removal, each item is re-downloaded and a label someone changed since
+our write is skipped.
