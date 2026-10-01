@@ -50035,3 +50035,30 @@ Emma (old items are not rewritten, per her 2026-10-01 answer on descriptions).
   `Len "daughter of …"` lines on existing items it still carried were left out in the browser.
   The old tab keeps running. Pipeline run `36890544136` (`a9ab529e2`) failed on a Wikidata read
   timeout in the compose step and was re-run.
+
+## 2026-10-01 10:20 PDT: what was taken from shintowiki-scripts' drip
+
+Read its DEVLOG for `bdb9a0841`, `5f894feb9`, `7713d3415` and `de992b123` (2026-09-27) against
+`wikidata-edit-run.py` and `wikidata-edits.yml`.
+
+**Taken:**
+- **Stop at the first block error.** Its 0-edit runs were a *global* IP-range block
+  (`globalblocking-blockedtext-range`), which shows on each save and not at login. Our sender only
+  checked `whoami` at login. Now `is_block_error` stops the run at the first such error with
+  `BLOCKED_EXIT` (75).
+- **Fail fast when nothing lands.** When the existing five-failures-in-a-row stop fires before
+  any edit has landed, the run exits 75 too, so a new runner is drawn instead of a red run.
+- **Retry every 15 minutes, up to 12 times** (Emma's choice there). Our re-dispatch was immediate
+  with a cap of 4. It now waits 900 s and allows attempts up to 13.
+- **Each runner's IP recorded:** already here since `3de4b33d1` (`reports/runner-ips.tsv`).
+
+**Not taken:**
+- **Generate only after edits land.** Here the batch is composed by `pipeline.yml` and edits run
+  from Emma's browser; CI sends are held (`EDITS_HELD`), so there is no generate-then-drip cycle
+  to reorder.
+- **No-op lines counted as already there.** Our sender already records "already exists" for
+  creations and keeps a receipt, so a resent line is not re-counted as a failure.
+- **The slow description generators out of the generation step.** Not applicable: descriptions
+  here are composed in-line by `build-garborg-day.py`.
+
+None of it runs while `EDITS_HELD` is `yes`.

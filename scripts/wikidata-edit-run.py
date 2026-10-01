@@ -188,6 +188,15 @@ BLOCK_HINT = (
 #: `wikidata-edits.yml` reads it and re-dispatches itself on a new runner (Emma, 2026-09-26).
 BLOCKED_EXIT = 75
 
+#: What a save refused for a block says. `globalblocking-blockedtext-range` is the global IP-range
+#: block shintowiki-scripts measured on 2026-09-27; the others are the local forms.
+BLOCK_ERROR_MARKS = ("globalblocking", "blockedtext", "[blocked")
+
+
+def is_block_error(message: str) -> bool:
+    """True when an API error says the edit was refused because the address is blocked."""
+    return any(mark in message for mark in BLOCK_ERROR_MARKS)
+
 
 PERMISSION_HINT = (
     "",
@@ -1321,6 +1330,15 @@ def main() -> int:
             if "maxlag" not in str(exc):
                 consecutive += 1
             print(f"       {e['id']}  {e['kind']:<9} FAILED: {exc}", file=sys.stderr)
+            # ⛔ **A GLOBAL RANGE BLOCK SHOWS UP ONLY ON THE EDIT, NOT AT LOGIN.** Adopted from
+            # shintowiki-scripts (`5f894feb9`, 2026-09-27): its 0-edit runs logged
+            # `globalblocking-blockedtext-range` on every save, a global block on the runner's IP
+            # range that `whoami` does not report. The first such error stops the run as blocked,
+            # and the workflow draws a new runner.
+            if is_block_error(str(exc)):
+                print("\nBLOCKED: the runner's address is blocked (%s)." % str(exc)[:200],
+                      file=sys.stderr)
+                return BLOCKED_EXIT
             if any(tag in str(exc) for tag in RATE_LIMITED):
                 print("\nSTOPPED: Wikidata is rate-limiting this account; the rest waits for "
                       "the next run.", file=sys.stderr)
@@ -1361,6 +1379,11 @@ def main() -> int:
                     if missing:
                         print("  and separately, rights this session does NOT hold: %s"
                               % ", ".join(missing), file=sys.stderr)
+                # ⛔ **FAIL FAST ON A RUN THAT HAS LANDED NOTHING** (shintowiki-scripts
+                # `bdb9a0841`, 2026-09-27): every write failing from the start is the runner,
+                # not the batch, so the run is treated as blocked and a new runner is drawn.
+                if done == 0:
+                    return BLOCKED_EXIT
                 break
             continue
         consecutive = 0

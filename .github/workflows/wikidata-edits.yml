@@ -354,11 +354,11 @@ jobs:
           if [[ $rc == 75 ]]; then echo "blocked=true" >> "$GITHUB_OUTPUT"; fi
           exit $rc
 
-      # ⛔ **A BLOCKED RUNNER RE-DISPATCHES THE RUN, AT MOST THREE TIMES. Emma, 2026-09-26, a firm
-      # decision.** GitHub-hosted runners are Azure; Wikimedia blocks some Azure addresses as
+      # ⛔ **A BLOCKED RUNNER RE-DISPATCHES THE RUN, EVERY 15 MINUTES, AT MOST 12 TIMES. Emma, 2026-09-26,
+      # a firm decision; the cadence is the one she chose for shintowiki-scripts (`de992b123`).** GitHub-hosted runners are Azure; Wikimedia blocks some Azure addresses as
       # webhosts and not others, so a new run draws a new runner (see the 2026-09-17 measurement
       # in scripts/wikidata-edit-run.py). The sender exits 75 at login when `whoami` says
-      # blocked, before any edit, so nothing is half-sent. The concurrency group queues the new
+      # blocked, at the first global-block error, or when nothing at all has landed. The concurrency group queues the new
       # run behind this one. reports/runner-ips.tsv records each runner's address and result.
       - name: Re-dispatch on a blocked runner
         if: always() && steps.run.outputs.blocked == 'true' && steps.plan.outputs.mode == '--live'
@@ -366,10 +366,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           attempt="${{ inputs.attempt || '1' }}"
-          if (( attempt >= 4 )); then
+          if (( attempt >= 13 )); then
             echo "::error title=Blocked runner::attempt $attempt was blocked too; not re-dispatching again"
             exit 1
           fi
+          sleep 900
           gh workflow run wikidata-edits.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" \
             -f dry_run=false -f limit="${{ steps.plan.outputs.limit }}" \
             -f batch="${{ steps.plan.outputs.batch }}" -f attempt="$((attempt + 1))"
