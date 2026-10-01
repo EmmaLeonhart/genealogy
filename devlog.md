@@ -50062,3 +50062,11 @@ Read its DEVLOG for `bdb9a0841`, `5f894feb9`, `7713d3415` and `de992b123` (2026-
   here are composed in-line by `build-garborg-day.py`.
 
 None of it runs while `EDITS_HELD` is `yes`.
+
+## 2026-10-01 10:40 PDT: Q141510769 "Åsa eller Åsta Kyllingstad" queued for correction
+
+Live on 2026-10-01: `mul`/`en` "Åsa eller Åsta Kyllingstad", ja/zh/ko built from the same form,
+`mul` aliases "Åsta Kyllingstad" and "Åsa". Six rows in `reports/label-applications.tsv`: `mul`
+and `en` "Åsta Kyllingstad", `mul` alias "Åsa Kyllingstad", and ja `オースタ・キリングスタド`, zh
+`奥斯塔·基林斯塔德`, ko `오스타 킬링스타드`: the item's own readings with the "Åsa eller" words dropped.
+They go out with the next batch and retire once live.
