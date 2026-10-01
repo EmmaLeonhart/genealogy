@@ -178,16 +178,15 @@ BLOCK_HINT = (
     "  THE SESSION IS BLOCKED. This is not the bot password and not the batch.",
     "",
     "  Wikimedia blocks open proxies and webhosts, and GitHub-hosted runners are Microsoft",
-    "  Azure, so every scheduled run edits from a blocked address. Three ways out:",
-    "",
-    "    IP block exemption   ask on Wikidata for `ipblock-exempt` on the bot account;",
-    "                         it is the normal remedy for a bot on cloud infrastructure",
-    "    run it off Actions   a self-hosted runner, or send the batch from the machine that",
-    "                         already edits Wikidata by hand",
-    "    do nothing           the batch keeps composing and waits; nothing is lost, and the",
-    "                         Pages site still publishes the half a person pastes",
+    "  Azure. Only some runner addresses are blocked, so a send is a lottery: re-dispatching",
+    "  draws a new runner (ruled; an `ipblock-exempt` request is not wanted). The workflow",
+    "  re-dispatches itself on this exit code, a few times at most.",
     "",
 )
+
+#: The sender's exit code when `whoami` reports the session blocked, before any edit is tried.
+#: `wikidata-edits.yml` reads it and re-dispatches itself on a new runner (Emma, 2026-09-26).
+BLOCKED_EXIT = 75
 
 
 PERMISSION_HINT = (
@@ -1192,7 +1191,7 @@ def main() -> int:
         raise SystemExit(
             f"refusing a live run on {rel}: {len(undescribed)} CREATE block(s) carry no "
             f"description, e.g. {undescribed[:5]}. Every individual gets one — the life "
-            "description, else a relationship phrase, else the identifier (`Geni <id>`). "
+            "description, else the occupation, else the identifier (`Geni <id>`). "
             "scripts/descriptions.py writes it; recompose the batch."
         )
 
@@ -1240,6 +1239,11 @@ def main() -> int:
     blocked = bool(info.get("blockid"))
     if blocked:
         print("  ACCOUNT IS BLOCKED: %s" % info.get("blockreason", ""))
+        # ⛔ **A BLOCKED SESSION STOPS HERE, BEFORE ITS FIRST EDIT.** Every edit would fail
+        # `permissiondenied`; exiting with BLOCKED_EXIT lets the workflow draw a new runner.
+        for line in BLOCK_HINT:
+            print(line, file=sys.stderr)
+        return BLOCKED_EXIT
     # Carried to the stop message so the diagnosis there is made of what was MEASURED here
     # rather than inferred from the shape of the failures.
     globals()["_SESSION_BLOCKED"] = blocked

@@ -77,3 +77,23 @@ def test_the_daily_batch_may_be_executed_live():
     assert batch in reviewed(), (
         f"DAILY_BATCH={batch} is not in REVIEWED_BATCHES {sorted(reviewed())}; "
         "a live run refuses it")
+
+
+def test_a_blocked_runner_redispatches_the_run_a_few_times_at_most():
+    """Emma, 2026-09-26, a firm decision: a scheduled run on a blocked runner re-dispatches itself.
+
+    The sender stops at login with exit 75 when `whoami` says the session is blocked, before any
+    edit; the workflow reads 75, records the runner's address in `reports/runner-ips.tsv`, and
+    dispatches the next attempt, stopping after the fourth.
+    """
+    runner = RUNNER.read_text(encoding="utf-8")
+    assert re.search(r"^BLOCKED_EXIT = 75$", runner, re.M)
+    assert "return BLOCKED_EXIT" in runner
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    assert "actions: write" in wf
+    assert "rc == 75" in wf and 'blocked=true' in wf
+    assert "name: Re-dispatch on a blocked runner" in wf
+    assert "(( attempt >= 4 ))" in wf
+    assert re.search(r"gh workflow run wikidata-edits\.yml .*\n.*-f dry_run=false", wf)
+    assert 'attempt="$((attempt + 1))"' in wf
+    assert "reports/runner-ips.tsv" in wf

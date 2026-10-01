@@ -49810,3 +49810,23 @@ repo, not in order.life, because the queue item asked for this repo's own direct
   it to go. It would have written relationship phrases, which `8fa17bc86` bans.
 - The QuickStatements item stays at the top: pipeline run `36818286605` (the description fix) has
   not finished, so per its text it is skipped this tick.
+
+## 2026-10-01 00:05 PDT: a blocked edit runner re-dispatches itself
+
+Queue item (Emma, 2026-09-26, "a firm decision"), parts (1) and (3), and the recording half of (2):
+- **(3) What the block is:** already measured (2026-09-17, in `scripts/wikidata-edit-run.py`).
+  `whoami` reports the session blocked as `[[m:NOP|Open proxy/Webhost]] <!-- Microsoft Azure -->`:
+  Wikimedia's open-proxy/webhost range block, and only some Azure runner addresses fall in it.
+- **(1)** `wikidata-edit-run.py` now stops at login with exit 75 (`BLOCKED_EXIT`) when the session
+  is blocked, before any edit, and no longer suggests `ipblock-exempt` (Emma ruled re-dispatching
+  instead). `wikidata-edits.yml` reads 75 and dispatches itself again with `attempt` + 1, live and
+  with the same batch and limit. It stops after attempt 4. The concurrency group queues the new
+  run behind the old one. The workflow gains `actions: write`.
+- **(2), recording:** every run that reaches the sender appends `utc, run_id, attempt, ip, result`
+  (`ok` / `blocked` / `failed:N` / `dry`) to `reports/runner-ips.tsv`, committed with the receipt.
+  The address comes from `api.ipify.org`.
+- **(2), skipping known-blocked addresses at start:** not built. The item says to report first,
+  because choosing addresses to get around a Wikimedia block can count as block evasion. That is
+  put to Emma.
+
+`tests/test_daily_batch_wiring.py` pins the exit code, the re-dispatch step and its cap.

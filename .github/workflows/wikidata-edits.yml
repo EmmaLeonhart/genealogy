@@ -34,6 +34,9 @@ on:
       batch:
         type: string
         default: "reports/wikidata-garborg-day-auto.txt"
+      attempt:
+        type: string
+        default: "1"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -58,6 +61,10 @@ on:
         # ever bit a dispatch, which is why it survived. A default that is wrong for every
         # caller who does not override it is not a default, it is a trap.
         default: "reports/wikidata-garborg-day-auto.txt"
+      attempt:
+        description: "Which try this is; a run on a blocked runner re-dispatches itself with the next"
+        type: string
+        default: "1"
   # (08:07 UTC was the slot until 2026-09-27, placed after the pipeline's 07:23 rebuild. Both
   # now start at the same Pacific times, so a run sends the batch the previous rebuild committed.)
   schedule:
@@ -81,6 +88,8 @@ permissions:
   # write, because a live run commits its receipt. Without that the next run reads
   # an empty receipt and re-creates everything the last one made.
   contents: write
+  # actions: write, so a run on a blocked runner can re-dispatch this workflow (2026-09-30).
+  actions: write
 
 env:
   WIKIDATA_API: https://www.wikidata.org/w/api.php
@@ -199,6 +208,7 @@ jobs:
             /reports/wikidata-garborg-day*.txt
             /reports/wikidata-familysearch-day.txt
             /reports/wikidata-edits-applied.tsv
+            /reports/runner-ips.tsv
             /out/wikidata/unlinked-items.json
             /out/wikidata/edit-universe.json
             /reports/tanba-qids.json
@@ -316,6 +326,7 @@ jobs:
           python -m pytest -q tests/test_no_descriptions_or_summaries.py
 
       - name: Run the batch
+        id: run
         if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
         env:
           USERNAME: ${{ secrets.USERNAME }}
@@ -324,11 +335,45 @@ jobs:
           BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
           PYTHONPATH: src
         run: |
+          # The runner's address, recorded with what Wikidata made of it, so the pattern of the
+          # Azure blocks can be measured rather than guessed (queue item, 2026-09-26).
+          ip=$(curl -fsS --max-time 10 https://api.ipify.org || echo unknown)
+          set +e
           python scripts/wikidata-edit-run.py \
             --batch "${{ steps.plan.outputs.batch }}" \
             --limit "${{ steps.plan.outputs.limit }}" \
             --receipt "$RECEIPT" \
             ${{ steps.plan.outputs.mode }}
+          rc=$?
+          set -e
+          result=ok; [[ $rc == 75 ]] && result=blocked; [[ $rc != 0 && $rc != 75 ]] && result="failed:$rc"
+          [[ "${{ steps.plan.outputs.mode }}" == "--live" ]] || result=dry
+          [[ -f reports/runner-ips.tsv ]] || printf 'utc\trun_id\tattempt\tip\tresult\n' > reports/runner-ips.tsv
+          printf '%s\t%s\t%s\t%s\t%s\n' "$(date -u +%FT%TZ)" "$GITHUB_RUN_ID" "${{ inputs.attempt || '1' }}" "$ip" "$result" >> reports/runner-ips.tsv
+          echo "runner $ip: $result"
+          if [[ $rc == 75 ]]; then echo "blocked=true" >> "$GITHUB_OUTPUT"; fi
+          exit $rc
+
+      # ⛔ **A BLOCKED RUNNER RE-DISPATCHES THE RUN, AT MOST THREE TIMES. Emma, 2026-09-26, a firm
+      # decision.** GitHub-hosted runners are Azure; Wikimedia blocks some Azure addresses as
+      # webhosts and not others, so a new run draws a new runner (see the 2026-09-17 measurement
+      # in scripts/wikidata-edit-run.py). The sender exits 75 at login when `whoami` says
+      # blocked, before any edit, so nothing is half-sent. The concurrency group queues the new
+      # run behind this one. reports/runner-ips.tsv records each runner's address and result.
+      - name: Re-dispatch on a blocked runner
+        if: always() && steps.run.outputs.blocked == 'true' && steps.plan.outputs.mode == '--live'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          attempt="${{ inputs.attempt || '1' }}"
+          if (( attempt >= 4 )); then
+            echo "::error title=Blocked runner::attempt $attempt was blocked too; not re-dispatching again"
+            exit 1
+          fi
+          gh workflow run wikidata-edits.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" \
+            -f dry_run=false -f limit="${{ steps.plan.outputs.limit }}" \
+            -f batch="${{ steps.plan.outputs.batch }}" -f attempt="$((attempt + 1))"
+          echo "::notice title=Blocked runner::re-dispatched as attempt $((attempt + 1))"
 
       # The receipt is the run's only durable output and it is worthless uncommitted.
       # `always()` because a run that died halfway still applied what it applied --
@@ -338,11 +383,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -z "$(git status --porcelain "$RECEIPT")" ]]; then
+          if [[ -z "$(git status --porcelain "$RECEIPT" reports/runner-ips.tsv)" ]]; then
             echo "nothing applied; no receipt to commit"
             exit 0
           fi
-          git add "$RECEIPT"
+          git add "$RECEIPT" reports/runner-ips.tsv
           git commit -m "wikidata-edits: receipt for $(date -u +%F)"
           for i in 1 2 3 4; do
             git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
