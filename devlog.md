@@ -49614,3 +49614,7 @@ already resolved. This also clears the two queue-shape findings, so that item an
 Of 9,991 ancestors in `owner-ancestors.tsv`, 3,941 are paired to FamilySearch. The zipper's refused slots
 holding one of the other ancestors (238 slots, 155 ancestors) became 556 ancestor-against-candidate cards
 at the front of the FamilySearch deck, each side with its own family. Answers flow through the same cron.
+
+## 2026-09-30 18:55 PDT: ancestry zipper item to the end of the queue
+
+Emma. The deck cards stay live and the cron keeps reading her answers.
