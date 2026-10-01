@@ -570,6 +570,25 @@ jobs:
       # or published -- which is why no pair appeared on Wikidata (found 2026-09-26, no
       # `Helgesson`). Appended to all three day files like the growth passes above, before the
       # Tanba strip, the locality gate and the site.
+      # ⛔ COURT RANKS (P14005) ON PEOPLE, handed over from shintowiki-scripts (court-rank/README.md;
+      # Emma, 2026-09-26). Every rank a person held, read from ja.wikipedia's rank-recipient
+      # categories, each with the jawiki article as its reference. A person in the universe or one
+      # step beyond it only, until wikidata_lockout.COURT_RANK_ANYONE_FROM (2027-06-01); anyone
+      # after. Appended to the manual half (the browser run), and the locality gate below applies.
+      - name: Court ranks on people
+        if: ${{ !inputs.batch_only }}
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+          BOT_CONTACT: emma@topazcomputing.com
+        run: |
+          python court-rank/generate_court_rank_quickstatements.py
+          if [ -s reports/wikidata-court-rank.qs ]; then
+            cat reports/wikidata-court-rank.qs >> reports/wikidata-garborg-day-manual.txt
+            cat reports/wikidata-court-rank.qs >> reports/wikidata-garborg-day.txt
+            echo "appended $(grep -c P14005 reports/wikidata-court-rank.qs) court ranks to the manual half"
+          fi
+
       - name: Patronymic gendered pairs
         continue-on-error: true
         env:

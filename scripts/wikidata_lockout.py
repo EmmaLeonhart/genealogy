@@ -223,6 +223,18 @@ def clan_labels_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
     return False, f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (ruled 2026-08-29)"
 
 
+#: ⛔ **COURT RANKS (P14005) GO ON ANYONE FROM THIS DATE. Emma, 2026-09-26** (the court-rank
+#: handoff item): until then a court rank goes only on a person in the universe or one step
+#: beyond it, like every other edit; from 2027-06-01 *"anyone becomes fair game"*.
+#: `court-rank/generate_court_rank_quickstatements.py` and `check-batch-locality.py` both read it.
+COURT_RANK_ANYONE_FROM = datetime.date(2027, 6, 1)
+
+
+def court_rank_anyone(today: datetime.date | None = None) -> bool:
+    """True once a court rank may be added to a person outside the universe."""
+    return (today or datetime.date.today()) >= COURT_RANK_ANYONE_FROM
+
+
 def drop_clan_labels(edits, today: datetime.date | None = None):
     """`(kept, dropped)` -- the clan-seat labels removed while the gate is shut."""
     allowed, _why = clan_labels_allowed(today)

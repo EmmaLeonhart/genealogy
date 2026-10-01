@@ -72,6 +72,16 @@ HAN = re.compile("[一-鿿㐀-䶿豈-﫿]")
 ORDINAL = re.compile("[0-9]+世")
 
 
+#: A court rank (P14005) line. From `wikidata_lockout.COURT_RANK_ANYONE_FROM` (2027-06-01) it may
+#: go on anyone, inside the universe or not (Emma, 2026-09-26).
+COURT_RANK = re.compile(r"^Q\d+\tP14005\t")
+
+
+def court_rank_anywhere(line, today=None) -> bool:
+    """True for a court-rank line once the date has come; such a line is never non-local."""
+    return bool(COURT_RANK.match(line)) and wikidata_lockout.court_rank_anyone(today)
+
+
 def universe():
     """`{qid}` for the universe and its one-step ring, or `None` when it cannot be read."""
     if not UNIVERSE.exists():
@@ -116,7 +126,7 @@ def offenders(path, allowed, kanji):
     non_local, on_kanji, never = {}, {}, {}
     for n, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
         m = SUBJECT.match(line)
-        if m and m.group(1) not in allowed:
+        if m and m.group(1) not in allowed and not court_rank_anywhere(line):
             non_local.setdefault(m.group(1), n)
         k = LABEL_EDIT.match(line)
         if k and k.group(1) in kanji:
@@ -150,7 +160,7 @@ def strip(path, allowed, kanji) -> int:
         k = LABEL_EDIT.match(line)
         if wikidata_lockout.touches_protected(line):
             dropped.append(m.group(1) if m else "protected"); continue
-        if m and (m.group(1) not in allowed
+        if m and ((m.group(1) not in allowed and not court_rank_anywhere(line))
                   or m.group(1) in wikidata_lockout.NEVER_EDIT):
             dropped.append(m.group(1)); continue
         if k and k.group(1) in kanji:

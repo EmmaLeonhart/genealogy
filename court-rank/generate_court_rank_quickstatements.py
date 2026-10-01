@@ -30,10 +30,15 @@ Pipeline
    (`audit_model_adoption.py`, 2026-09-15): the generator produced unreferenced
    statements and then refused to ever look at them again.
 
-Output (atomic): modern-quickstatements/court_rank_people.txt
-Like every generator here, this ONLY writes the .txt. Wikidata is edited solely
-by the daily QuickStatements submitter (submit_daily_batch.py) — no bespoke
-direct-API editing, no edit summaries (see CLAUDE.md "Wikidata editing").
+Output: reports/wikidata-court-rank.qs, tab-separated QuickStatements, which
+`pipeline.yml` appends to the manual half of the day batch. It only writes the file.
+
+IN THIS REPOSITORY (ported 2026-10-01 from shintowiki-scripts, see README.md here):
+the shrine-repo helpers are replaced by `genimerge.wikidata` (User-Agent from
+BOT_CONTACT, 429/503 waited out), and a person is kept only when they are in the
+edit universe or one step beyond it (`out/wikidata/edit-universe.json`), until
+`wikidata_lockout.COURT_RANK_ANYONE_FROM` (2027-06-01), after which anyone holding
+a rank gets it (Emma, 2026-09-26).
 
 Flags
 -----
@@ -59,39 +64,48 @@ wikidata-daily-fire=false), so the first court-rank lines can land no earlier th
 that. Confirmed still in force by Emma on 2026-07-28.
 """
 
+import datetime
+import json
 import os
 import re
 import sys
 import time
 import argparse
 import urllib.parse
-import requests
-import os as _uos, sys as _usys
-_uar = _uos.path.dirname(_uos.path.abspath(__file__))
-while _uar != _uos.path.dirname(_uar) and not _uos.path.isdir(_uos.path.join(_uar, "shinto_miraheze")):
-    _uar = _uos.path.dirname(_uar)
-if _uar not in _usys.path:
-    _usys.path.insert(0, _uar)
-
-from shinto_miraheze.ua_contact import contact
-
-from shinto_miraheze.wikidata_user_agent import WIKIDATA_USER_AGENT
-
-# Plain module import, matching the other three adopters — test_wdqs_transport.py
-# checks for exactly this line as the evidence a file has not grown its own
-# urlopen back.
-import wdqs_transport
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "court_rank_people.txt")
+ROOT = os.path.dirname(HERE)
+sys.path.insert(0, os.path.join(ROOT, "src"))
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+
+from genimerge.wikidata import SPARQL_ENDPOINT, _http_fetch  # noqa: E402
+import wikidata_lockout  # noqa: E402
+
+OUT = os.path.join(ROOT, "reports", "wikidata-court-rank.qs")
+UNIVERSE = os.path.join(ROOT, "out", "wikidata", "edit-universe.json")
 
 JA_API = "https://ja.wikipedia.org/w/api.php"
 PARENT_CAT = "Category:日本の位階受位者"
 RANK_SUFFIX = "受位者"
 
-# The WDQS endpoint and its Accept header moved into wdqs_transport with the
-# transport itself. UA stays: the ja.wikipedia API calls below still use it.
-UA = {"User-Agent": WIKIDATA_USER_AGENT}
+
+def allowed_people(today=None):
+    """`None` when anyone may get a court rank, else the universe and its one-step ring.
+
+    Fails closed: before the date, a missing or empty universe file means nobody."""
+    if wikidata_lockout.court_rank_anyone(today):
+        return None
+    try:
+        with open(UNIVERSE, encoding="utf-8") as fh:
+            d = json.load(fh)
+    except OSError:
+        return set()
+    return set(d.get("universe") or ()) | set(d.get("one_step") or ())
+
+
+def qs_line(person, rank, url):
+    """One tab-separated QuickStatements line with the jawiki reference."""
+    return f'{person}\tP14005\t{rank}\tS143\tQ177837\tS4656\t"{url}"'
 
 
 def _utf8():
@@ -102,7 +116,9 @@ def _utf8():
 
 
 def _sparql(query):
-    """Delegates to the shared throttled transport.
+    """WDQS through this repository's own fetch (User-Agent, 429/503 waited out).
+
+    The history below is shintowiki-scripts', kept as it was handed over.
 
     ⛔ THIS FILE'S OWN TRANSPORT SPACED ITS QUERIES 0.5s APART. That is not a
     near-miss on the 2.5s floor — 0.5s is the exact figure CLAUDE.md names when it
@@ -123,25 +139,18 @@ def _sparql(query):
     with no VALUES clause, so nothing here can hit the 414 the module documents.
     Same endpoint (`query-main.wikidata.org`), so nothing else changes.
     """
-    return wdqs_transport.query(query)
+    time.sleep(2.5)
+    body = urllib.parse.urlencode({"query": query, "format": "json"}).encode()
+    raw = _http_fetch(SPARQL_ENDPOINT, data=body,
+                      headers={"Accept": "application/sparql-results+json",
+                               "Content-Type": "application/x-www-form-urlencoded"})
+    return json.loads(raw)["results"]["bindings"]
 
 
 def _ja_api(params):
     params = dict(params, format="json")
-    for attempt in range(4):
-        time.sleep(0.3)
-        try:
-            r = requests.get(JA_API, params=params, headers=UA, timeout=60)
-            if r.status_code == 429:
-                raise SystemExit("429 from ja.wikipedia — bailing.")
-            r.raise_for_status()
-            return r.json()
-        except SystemExit:
-            raise
-        except Exception as e:
-            print(f"  [ja.wp retry {attempt+1}] {e}", flush=True)
-            time.sleep(3 * (attempt + 1))
-    raise RuntimeError("ja.wikipedia API failed after retries")
+    time.sleep(0.3)
+    return json.loads(_http_fetch(JA_API + "?" + urllib.parse.urlencode(params)))
 
 
 COURT_RANK_CLASS = "Q99196082"  # "court rank in Japan"
@@ -329,6 +338,14 @@ def main():
             # they could have cited.
             person_ranks.setdefault(pq, []).append((rank_qid, rank_name, title))
 
+    allowed = allowed_people()
+    if allowed is not None:
+        before = len(person_ranks)
+        person_ranks = {pq: r for pq, r in person_ranks.items() if pq in allowed}
+        print(f"  universe gate (until {wikidata_lockout.COURT_RANK_ANYONE_FROM}): "
+              f"{len(person_ranks)} of {before} people are in the universe or one step beyond",
+              flush=True)
+
     lines = []
     new_stmts = enriched = 0
     for pq, ranks in person_ranks.items():
@@ -348,7 +365,7 @@ def main():
                 new_stmts += 1
             url = ("https://ja.wikipedia.org/wiki/"
                    + urllib.parse.quote(title.replace(" ", "_")))
-            lines.append(f'{pq}|P14005|{rank_qid}|S143|Q177837|S4656|"{url}"')
+            lines.append(qs_line(pq, rank_qid, url))
 
     # de-dup lines while preserving order
     seen, uniq = set(), []

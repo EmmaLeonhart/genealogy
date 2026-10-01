@@ -49950,3 +49950,24 @@ Done together, the two queue items (Q141570682, 2026-09-27, and the filter item 
 Not done, NEEDS-DECISION (Emma), queued: the filter goes against the 2026-09-28 freeze on how
 descriptions are generated, and rewriting the 617 goes against the 2026-09-26 ruling that our
 descriptions are not fixed. The `?` resolution found on the way was fixed in 69995f5c7.
+
+## 2026-10-01 03:45 PDT: court ranks on people, ported and wired
+
+The court-rank handoff from shintowiki-scripts is in `court-rank/` (`b0f96c8a2`, copied as handed
+over). Ported here:
+- `generate_court_rank_quickstatements.py` now fetches through `genimerge.wikidata` (User-Agent
+  from `BOT_CONTACT`, 429/503 waited out) instead of the shrine repo's three helpers, and writes
+  `reports/wikidata-court-rank.qs` as tab-separated lines, each citing the jawiki article
+  (`S143 Q177837`, `S4656`). The data rules are unchanged: every rank held, refuse 无位, skip a
+  pair already referenced, add a reference to a bare one, add-only.
+- **The date switch:** `wikidata_lockout.COURT_RANK_ANYONE_FROM = 2027-06-01`. Before it, a
+  person is kept only if they are in the edit universe or one step beyond it (a missing universe
+  file means nobody). From it, anyone holding a rank. `check-batch-locality.py` reads the same
+  date, so from then on a P14005 line is not stripped as non-local. `tests/test_court_rank.py`
+  tests both sides.
+- `pipeline.yml` runs it after the backfill passes and appends it to the manual half, before the
+  locality gate.
+
+Not yet measured: how many universe people hold a rank (a local dry run is still running). The
+imported `court-rank/test_court_rank_is_referenced.py` is outside `tests/` and is not collected;
+it checks the old `|` format and a sibling script that only exists in the shrine repo.
