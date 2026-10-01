@@ -569,6 +569,16 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   rephrase the action to slip past the check.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
+- **AN ERROR REPORT IS A STANDING KIND OF QUEUE ITEM (Emma, 2026-09-27).** It is a screenshot of
+  one item (usually Wikidata, often from a phone) and a line or two on what is wrong: `Q141224900`
+  *Samuelis*, `Q141566035` *NN Orre*, `Q141570927` *Not Known*, `Q141510769` *eller*. Handling it:
+  read the item and its history (who added the wrong value, and when); say exactly what is wrong
+  and why; fix that item (labels through `label-applications.tsv`, statements as a batch, never
+  over a human correction or another editor's statement); find the rule or step that caused it and
+  fix that, or show it is already fixed and since when; sweep for every other item made the same
+  way and fix those too; record it in the devlog. AskUserQuestion only where the fix is a real
+  choice, and for the go-ahead to send anything. Error reports go at the end of the queue unless
+  Emma says otherwise.
 - **"Add it to the end of the queue" means WRITE IT DOWN AND STOP.** No investigation, no
   questions, no gathering evidence first.
 - **Every two hours, put the blockers up as an `AskUserQuestion`** — 10, 12, 14, 16, 18, 20, 22,

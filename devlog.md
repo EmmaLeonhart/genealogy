@@ -50224,3 +50224,5 @@ wrong `P735`; it waits on Emma's go-ahead. The missing description is not backfi
 Run with Emma's go-ahead (AskUserQuestion, "Run it") in a new QuickStatements tab, 22 commands.
 Created `Q141620184` Samuelis and `Q141620190` Andreae (patronymic); all five items now hold
 `P5056` and no longer hold the wrong `P735`, checked live. Queue item done.
+
+**2026-10-01, error reports documented.** CLAUDE.md § Working now says what an error report is and how one is handled (read the item and its history, fix it, fix or date the cause, sweep for the rest, devlog, ask only for a real choice or a go-ahead). No separate doc: it fits in the rule. Queue item done.
