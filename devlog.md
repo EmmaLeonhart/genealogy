@@ -49920,3 +49920,33 @@ Q141612117, Torberg Iversson Berge and Gudrun Tordsdatter Ådnenes). It is on no
 string with no letter, the cached row is unresolved, and
 `test_a_place_with_no_letter_resolves_to_nothing` pins both. The batch files are left to the next
 pipeline run to rewrite.
+
+## 2026-10-01 08:20 PDT: garbage descriptions audited; a filter is easy, the resolver is no help
+
+Done together, the two queue items (Q141570682, 2026-09-27, and the filter item of the same day).
+`reports/description-junk.csv` has one row per raw string found inside a live `en` description
+(13,526 descriptions in `garborg-live-items-*.json`), joined through `P2600` to
+`derived-places.csv`/`derived-facts.csv`, tagged `junk` or `noise`.
+
+- **617 items carry junk, all created by us.** 601 from a place field, 16 from a date. Per raw
+  string: page references (`s 114`, `side 1612`) 556, citations (`jfr`, `g og æ`, `G&Æ`, `bok`,
+  `Forsandboka`) 369, a `;` before a note 271, uncertainty (`?`, `ukjent`, `Probably Holland`) 93.
+  These are the Rogaland bygdebok citations written into Geni's place fields, as Emma expected:
+  few patterns, repeated.
+- **Noise, not junk: 399 more items** carry a farm or house number (`gnr 18`, `bnr 1`, `Åbyn 3`,
+  `Gummark nr 2`) or a ` - ` inside the place (`Aust - Agder`). They are places.
+- **Dates are nearly clean.** The 17 unparsed raws are mostly written-out months (`27 February
+  1731`, `21. juni 1685`); only `Deceased`, `før 1741` and `ca. 1220` are junk.
+- **The whole tree** has 4,391 junk place strings of 235,084 distinct (6,299 uses), the pool new
+  creations would draw from.
+- **The resolver covers 3 of 605 (0.5%).** 570 junk strings have no comma, and a lone part needs
+  an exact label match. Of the 35 with commas, `resolve()` run live made 3 usable, and those
+  reach only `Rogaland` or `Bjerkreim Municipality`.
+- **A filter works.** Cutting the place at its first junk marker leaves a clean place for 570 of
+  605, digits left in 22 (`Assheim 1.1`), nothing in 9 (`ukjent`, `?`: drop that side).
+- **Q141570682 is already right live:** `1738 - 19 Oct 1822`, changed 2026-09-27 09:01 UTC.
+  No overwrite row was needed.
+
+Not done, NEEDS-DECISION (Emma), queued: the filter goes against the 2026-09-28 freeze on how
+descriptions are generated, and rewriting the 617 goes against the 2026-09-26 ruling that our
+descriptions are not fixed. The `?` resolution found on the way was fixed in 69995f5c7.
