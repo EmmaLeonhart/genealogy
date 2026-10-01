@@ -162,9 +162,6 @@ Q141586023	P734	LAST	S2600	"6000000150604795843"
 CREATE
 LAST	Len	"Håland i Gjesdal"
 LAST	Lmul	"Håland i Gjesdal"
-LAST	Lja	"ホーランド"
-LAST	Lzh	"霍兰"
-LAST	Lko	"호란드"
 LAST	Den	"family name"
 LAST	P31	Q101352
 LAST	P1705	mul:"Håland i Gjesdal"
