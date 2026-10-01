@@ -123,6 +123,11 @@ def resolve(place):
     parts = [p.strip() for p in place.split(",") if p.strip()]
     if not parts:
         return None
+    # A part with no letter in it is not a name (2026-10-01: `?` matched `Q3048853`, a tavern in
+    # Belgrade labelled `?`, and went out as a place of marriage).
+    if not any(ch.isalpha() for ch in place):
+        return {"place": place, "qid": "", "resolved_part": "", "depth": 0,
+                "parts": len(parts), "method": "unresolved", "label_en": ""}
     qid, part, depth, method = "", "", 0, "unresolved"
     parent = None
     for i, name in enumerate(reversed(parts)):

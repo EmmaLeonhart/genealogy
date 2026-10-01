@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import csv
 import functools
+import importlib.util
 import re
 from pathlib import Path
 
@@ -1432,3 +1433,20 @@ def test_an_unnumbered_given_name_takes_the_free_position():
     assert mod._name_parts({"claims": {"P735": [st("Q1"), st("Q2", "2")]}}) == ["Q1", "Q2"]
     assert mod._name_parts({"claims": {"P735": [st("Q2", "2"), st("Q1", "1"), st("Q3")]}}) == \
         ["Q1", "Q2", "Q3"]
+
+
+def test_a_place_with_no_letter_resolves_to_nothing():
+    """`?` matched `Q3048853` (a Belgrade tavern labelled `?`) and went out as a place of
+    marriage (2026-10-01). A string with no letter is not a place name, in the resolver or in
+    its committed cache."""
+    spec = importlib.util.spec_from_file_location("resolve_places", REPO / "scripts" / "resolve-places.py")
+    rp = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(rp)
+    for s in ("?", "? ?", "3"):
+        assert rp.resolve(s)["qid"] == ""
+    path = REPO / "reports" / "place-qids.tsv"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            bad = [r["place"] for r in csv.DictReader(f, delimiter="\t")
+                   if r.get("qid") and not any(ch.isalpha() for ch in r["place"])]
+        assert not bad, bad

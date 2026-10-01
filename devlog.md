@@ -49909,3 +49909,14 @@ applies, because most items lack labels in these languages on their name items.
 **Removing them is ~10,177 label edits** (5,008 + 5,169). It is queued as NEEDS-DECISION
 (repo-only rule): before any removal, each item is re-downloaded and a label someone changed since
 our write is skipped.
+
+## 2026-10-01 07:50 PDT: the place `?` resolved to a Belgrade tavern; the resolver now refuses strings with no letter
+
+Found during the garbage-descriptions audit. `reports/place-qids.tsv` read the raw place `?` as
+`Q3048853` (labelled `?`, "tavern in Belgrade, Serbia"), method `unique`. Today's three batch files
+carry it as `P2842` place of marriage on two `P26` statements each way (Q141611112 and
+Q141612117, Torberg Iversson Berge and Gudrun Tordsdatter Ådnenes). It is on no live statement in
+`garborg-live-values.tsv`. `resolve()` in `scripts/resolve-places.py` now returns unresolved for a
+string with no letter, the cached row is unresolved, and
+`test_a_place_with_no_letter_resolves_to_nothing` pins both. The batch files are left to the next
+pipeline run to rewrite.
