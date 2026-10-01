@@ -50082,3 +50082,7 @@ They go out with the next batch and retire once live.
 ## 2026-10-01 12:00 PDT: unmatched-ancestor deck, more answers saved
 
 New verdicts from the unmatched-ancestor deck appended to `reports/emma-judgments.tsv` (count in the commit).
+
+## 2026-10-01 12:20 PDT: tree.yml also rebuilds on a FamilySearch export
+
+`tree.yml` ran on pushes to `exports/**` only, so the finished RootsMagic export (`gedcom/familysearch/`, `19efa81e0`, 2026-09-30) was never read by a rebuild until one was dispatched by hand today (run 36905782584). `gedcom/familysearch/**` now triggers it too. Correction of an earlier statement today: `exports/frisk` was committed 2026-09-23 and is in the 2026-09-27 tree; only the RootsMagic export was missing.

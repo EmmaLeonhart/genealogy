@@ -44,6 +44,10 @@ on:
     branches: [main]
     paths:
       - "exports/**"
+      # The FamilySearch side the zipper reads (the downloads and the RootsMagic exports). The
+      # finished RootsMagic export (19efa81e0, 2026-09-30) sat here unread by any rebuild until
+      # one was dispatched by hand on 2026-10-01, because only exports/ triggered.
+      - "gedcom/familysearch/**"
 
 permissions:
   contents: write
