@@ -50239,3 +50239,4 @@ mother `Q141533639`, whose relational labels in 11 languages name `Mette Børges
 in aliases or descriptions; no `-dotterotter`, `-sdatterdatter` or `-datterter` anywhere. The
 current batches and `derived-labels.csv` carry none. `reports/wikidata-datteratter-fixes.qs` (39
 label edits) corrects the 15 and waits on Emma's go-ahead.
+Run with Emma's go-ahead (AskUserQuestion, "Run all 39") in a new QuickStatements tab; all 39 labels on the 15 items now read `-datter`, checked live. Queue item done.
