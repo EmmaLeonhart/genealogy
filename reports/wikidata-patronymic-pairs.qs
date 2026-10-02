@@ -251,6 +251,16 @@ LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
+# Christoffersdotter -- the counterpart of Christofferson (5 bearer(s))
+CREATE
+LAST	Len	"Christoffersdotter"
+LAST	Lmul	"Christoffersdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Ditlefsen -- the counterpart of Ditlefsdatter (5 bearer(s))
 CREATE
 LAST	Len	"Ditlefsen"
@@ -446,14 +456,4 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
-
-# Sigvardsen -- the counterpart of Sigvardsdatter (5 bearer(s))
-CREATE
-LAST	Len	"Sigvardsen"
-LAST	Lmul	"Sigvardsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
 
