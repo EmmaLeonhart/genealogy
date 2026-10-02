@@ -50280,3 +50280,5 @@ Same day: P1810 subject named as (Geni display name, as the pipeline writes it) 
 **2026-10-01, P2889 removals prepared (Emma).** `reports/wikidata-p2889-removals.qs`: P2889 off the 574 name mismatches and 118 unnamed items; analysis queued at the end.
 
 **2026-10-01, the FamilySearch zipper no longer pairs by position (Emma).** `zip_sides(..., allow_solo=False)` for `--familysearch`: a 1 x 1 slot now needs a matching year or name, like any other slot. The Geni-Wikidata join is unchanged. The next tree rebuild redoes the 8,146 solo pairings.
+
+**2026-10-01, one wrong link from the solo pairings removed (Emma).** Of 61 FamilySearch-only links through position-only pairings, 5 relationships reached Wikidata. Johan Filipsson (Q5884317) married to Ingegerd Svantepolksdotter (Q101247444) was ours and wrong: his wife was her sister Ingeborg. The P26 both ways and the wrong P2889 9HGY-52X (Ingeborg) on Q101247444 were removed. Reginald I to Alberada (2016, another editor) is disputed in the sources and not ours; left.
