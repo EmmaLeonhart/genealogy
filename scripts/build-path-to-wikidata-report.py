@@ -42,7 +42,7 @@ INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 OUT_MD = REPO_ROOT / "reports" / "path-to-wikidata.md"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000001846508982"
+from wikidata_lockout import OWNER_GENI as EMMA  # noqa: E402 -- the owner, one constant
 RELATION_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
 

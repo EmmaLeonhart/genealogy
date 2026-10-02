@@ -39,7 +39,7 @@ FACTS = REPO / "reports" / "derived-facts.csv"
 OUT = REPO / "reports" / "nearest-wikidata.md"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000001846508982"
+from wikidata_lockout import OWNER_GENI as EMMA  # noqa: E402 -- the owner, one constant
 
 
 def _ids(field: str | None) -> list[str]:

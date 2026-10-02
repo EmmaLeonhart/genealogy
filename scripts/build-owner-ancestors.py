@@ -26,7 +26,7 @@ import io
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OWNER = "6000000087535357291"
+from wikidata_lockout import OWNER_GENI as OWNER  # noqa: E402 -- one constant for every script
 OUT = os.path.join(ROOT, "reports", "owner-ancestors.tsv")
 
 csv.field_size_limit(10 ** 9)

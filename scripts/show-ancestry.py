@@ -18,7 +18,7 @@ LABELS = REPO_ROOT / "reports" / "derived-labels.csv"
 FACTS = REPO_ROOT / "reports" / "derived-facts.csv"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000001846508982"
+from wikidata_lockout import OWNER_GENI as EMMA  # noqa: E402 -- the owner, one constant
 
 
 def main() -> int:
