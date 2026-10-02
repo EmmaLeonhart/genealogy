@@ -21,7 +21,7 @@ the same kind (that is a conflict for a person, not a gap); an id already on ano
 would make a duplicate; and any pair Emma had removed (`reports/wikidata-p2889-removals.qs`).
 The item's current claims are read live, just before the batch is written.
 
-Writes `reports/wikidata-id-backfill.qs`.
+Writes `reports/wikidata-id-backfill.qs`. `--refilter` re-applies `guard` to that file alone.
 """
 
 from __future__ import annotations
@@ -105,6 +105,152 @@ def display_names():
     return out
 
 
+def guard():
+    """`excluded(qid, prop, value) -> reason or ""`: the lines this batch must never write.
+
+    Found on the first build, 2026-10-02: a FamilySearch person rendered on a Geni xref carries a
+    placeholder `FS…` id, which is not a Geni profile; and the ledger's entry-point rows name items
+    the account never identified, Tanba and Izumo clan items among them, which are blocked.
+    """
+    import tanba_batch_block
+    import wikidata_lockout
+    blocked = set(tanba_batch_block.tanba_blocked_qids()) | set(wikidata_lockout.NEVER_EDIT)
+    entry_points = set()
+    with open(LEDGER, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh, delimiter=TAB):
+            if (row.get("note") or "").startswith("entry point"):
+                entry_points.add((row.get("qid") or "").strip())
+    removed = set()
+    for path in sorted((REPO / "reports").glob("*.qs")):
+        for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            parts = line.split(TAB)
+            if len(parts) >= 3 and parts[0].startswith("-Q"):
+                removed.add((parts[0][1:], parts[1], parts[2].strip('"')))
+    for name in ("removed-statements.tsv", "suppressed-statements.tsv"):
+        path = REPO / "reports" / name
+        if path.exists():
+            with open(path, encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter=TAB):
+                    removed.add((row["qid"], row["property"], row["value"]))
+
+    def excluded(q, prop, val):
+        if prop == "P2600" and not val.isdigit():
+            return "P2600 value is a FamilySearch placeholder, not a Geni id"
+        if q in blocked:
+            return "item is blocked (Tanba or NEVER_EDIT)"
+        if wikidata_lockout.touches_protected(f"{q}	{prop}	\"{val}\""):
+            return "protected item or profile"
+        if (q, prop, val) in removed:
+            return "a removal of this exact statement is on record"
+        if prop == "P2600" and q in entry_points:
+            return "entry-point row of the ledger, not an identification"
+        return ""
+    return excluded
+
+
+def fs_names():
+    """`{FamilySearch id: NAME}` from the raw downloads in `gedcom/familysearch/`, first seen wins."""
+    out = {}
+    for path in sorted((REPO / "gedcom" / "familysearch").glob("*.ged")):
+        name = None
+        with open(path, encoding="utf-8-sig", errors="replace") as fh:
+            for line in fh:
+                if line.startswith("0 "):
+                    name = None
+                elif line.startswith("1 NAME ") and name is None:
+                    name = line[7:].strip().replace("/", " ")
+                elif line.startswith("1 _FSFTID ") and name:
+                    out.setdefault(line[10:].strip(), " ".join(name.split()))
+    return out
+
+
+def _first(name):
+    import unicodedata
+    toks = [t for t in re.split(r"[\s,.'\"„“]+", name or "") if t]
+    if not toks:
+        return ""
+    s = unicodedata.normalize("NFKD", toks[0].casefold())
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
+
+
+def first_names_agree(a, b):
+    """The 2026-10-01 removal test: the first given names agree (one a prefix of the other)."""
+    x, y = _first(a), _first(b)
+    if len(x) < 2 or len(y) < 2:
+        return False
+    return x == y or (min(len(x), len(y)) >= 3 and (x.startswith(y) or y.startswith(x)))
+
+
+def name_check():
+    """Drop every line whose source name and the item's live label disagree on the first name.
+
+    Found on the first build, 2026-10-02: `Q618605` Höfða-Þórður Bjarnarson was given Geni
+    `Sæmundur suðureyski` through a FamilySearch pairing the zipper made on a birth year alone
+    (402 of the 654 `P2889` lines are such `date` pairings). The 2026-10-01 removals were exactly
+    this case, so the same test runs before the batch: Geni's display name for `P2600`, the
+    FamilySearch download's name for `P2889`, each against the item's `mul`/`en` label and aliases.
+    An id with no name to compare is dropped too.
+    """
+    fsn = fs_names()
+    lines = OUT.read_text(encoding="utf-8").split(NL)
+    items = sorted({l.split(TAB)[0] for l in lines if l.startswith("Q")}, key=lambda q: int(q[1:]))
+    labels = {}
+    for k in range(0, len(items), 50):
+        data = api_get({"action": "wbgetentities", "format": "json", "props": "labels|aliases",
+                        "languages": "mul|en", "ids": "|".join(items[k:k + 50])}, AGENT)
+        for q, ent in (data.get("entities") or {}).items():
+            names = [v.get("value", "") for v in (ent.get("labels") or {}).values()]
+            for al in (ent.get("aliases") or {}).values():
+                names += [a.get("value", "") for a in al]
+            labels[q] = names
+    keep, counts, dropped = [], collections.Counter(), []
+    for line in lines:
+        parts = line.split(TAB)
+        if len(parts) >= 3 and parts[0].startswith("Q"):
+            q, prop, val = parts[0], parts[1], parts[2].strip('"')
+            source = (parts[4].strip('"') if prop == "P2600" and len(parts) >= 5
+                      else fsn.get(val, "") if prop == "P2889" else "")
+            if not source:
+                counts[f"{prop}: no source name to compare"] += 1
+                dropped.append((q, prop, val, "", "; ".join(labels.get(q, []))))
+                continue
+            if not any(first_names_agree(source, n) for n in labels.get(q, [])):
+                counts[f"{prop}: first name differs"] += 1
+                dropped.append((q, prop, val, source, "; ".join(labels.get(q, []))))
+                continue
+        keep.append(line)
+    OUT.write_text(NL.join(keep), encoding="utf-8", newline=NL)
+    with open(REPO / "reports" / "id-backfill-name-dropped.tsv", "w", encoding="utf-8",
+              newline=NL) as fh:
+        fh.write(TAB.join(("qid", "property", "value", "source_name", "item_names")) + NL)
+        for row in dropped:
+            fh.write(TAB.join(row) + NL)
+    for k, v in sorted(counts.items()):
+        print(f"   dropped, {k}: {v:,}")
+    print(f"{sum(1 for l in keep if l.startswith('Q')):,} lines left in {OUT.relative_to(REPO)}")
+
+
+def refilter():
+    """Apply `guard` to the written batch without reading Wikidata again."""
+    excluded = guard()
+    lines = OUT.read_text(encoding="utf-8").split(NL)
+    keep, counts = [], collections.Counter()
+    for line in lines:
+        parts = line.split(TAB)
+        if len(parts) >= 3 and parts[0].startswith("Q"):
+            why = excluded(parts[0], parts[1], parts[2].strip('"'))
+            if why:
+                counts[why] += 1
+                continue
+        keep.append(line)
+    OUT.write_text(NL.join(keep), encoding="utf-8", newline=NL)
+    for k, v in sorted(counts.items()):
+        print(f"   dropped, {k}: {v:,}")
+    print(f"{sum(1 for l in keep if l.startswith('Q')):,} lines left in {OUT.relative_to(REPO)}")
+    name_check()
+    return 0
+
+
 def main() -> int:
     csv.field_size_limit(1 << 30)
     geni_by_id, geni_by_q = roster(P2600_ALL)
@@ -181,6 +327,7 @@ def main() -> int:
     print(f"{len(want):,} items to read live")
 
     names = display_names()
+    excluded = guard()
     lines = []
     ids = sorted(want, key=lambda q: int(q[1:]))
     for k in range(0, len(ids), 50):
@@ -199,6 +346,8 @@ def main() -> int:
                     counts[f"{prop} already on the item"] += 1
                 elif prop == "P2889" and have[prop]:
                     counts["P2889 item holds a different FamilySearch id"] += 1
+                elif excluded(q, prop, val):
+                    counts[excluded(q, prop, val)] += 1
                 else:
                     qual = ""
                     if prop == "P2600" and names.get(val):
@@ -216,8 +365,9 @@ def main() -> int:
     for key, n in sorted(counts.items()):
         print(f"   {key}: {n:,}")
     print(f"{len(lines):,} lines -> {OUT.relative_to(REPO)}")
+    name_check()
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(refilter() if "--refilter" in sys.argv else main())
