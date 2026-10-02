@@ -226,6 +226,76 @@ def main() -> int:
         else:
             shapes["empty"] += 1
 
+    # ⛔ **AN EXTRA PARENT BORN AT AN IMPOSSIBLE TIME IS DROPPED. Ruled 2026-10-02 (Emma, "fix
+    # this").** The merge unions every `FAMC`, so a second father or mother survives from any
+    # export that ever carried one, and some are impossible: Jelena of Hungary (born 1115) had
+    # Immanuel Bang (born 1874) as a third father, Bogislaw II (born 1178) Ulla Celsing (born
+    # 1854) as a second mother, and the path finder crossed them. A parent after the first
+    # listed one is dropped, with the child's entry in its `children`, when both birth years are
+    # known and the parent is born after the child, under 12 years before, or over 80 before;
+    # with no birth year, by the parent's death year (below).
+    # The first-listed parent is never dropped: that one is the Geni tree as Geni has it.
+    facts_path = REPO_ROOT / "reports" / "derived-facts.csv"
+    born: dict[str, int] = {}
+    died: dict[str, int] = {}
+    if facts_path.exists():
+        csv.field_size_limit(1 << 30)
+        with open(facts_path, encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh):
+                iso = (row.get("birth_date_iso") or "").strip()
+                if len(iso) >= 5 and iso[1:5].isdigit():
+                    born[row["geni_id"]] = int(iso[:5])
+                iso = (row.get("death_date_iso") or "").strip()
+                if len(iso) >= 5 and iso[1:5].isdigit():
+                    died[row["geni_id"]] = int(iso[:5])
+    else:
+        print(f"WARNING: {facts_path.name} absent, so no impossible extra parent is dropped",
+              flush=True)
+    # A parent with no birth year in the tree takes Wikidata's, through the item its Geni id is
+    # on (`out/wikidata/dates.tsv`): Immanuel Bang has no date in any export, and his item
+    # `Q123437796` says 1874.
+    wd_dates = REPO_ROOT / "out" / "wikidata" / "dates.tsv"
+    if wd_dates.exists():
+        by_qid = {}
+        with open(wd_dates, encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                y = (row.get("birth_year") or "").strip().lstrip("+")
+                if y.lstrip("-").isdigit():
+                    by_qid[row["qid"]] = int(y)
+        for person in people:
+            q = qids.get(person)
+            if person not in born and q in by_qid:
+                born[person] = by_qid[q]
+    dropped_parents = []
+    for plist, primary, role in ((fathers, father, "father"), (mothers, mother, "mother")):
+        for child, parents in plist.items():
+            if len(parents) < 2 or child not in born:
+                continue
+            keep = []
+            for parent in parents:
+                gap = born[child] - born[parent] if parent in born else None
+                # No birth year for the parent: the death year decides instead. Dying over a year
+                # before the child's birth, or over 120 years after it, is impossible too
+                # (Immanuel Bang, Jelena's third father, has only a death year).
+                late = (died[parent] - born[child]) if (gap is None and parent in died) else None
+                if (parent != primary.get(child)
+                        and ((gap is not None and (gap < 12 or gap > 80))
+                             or (late is not None and (late < -1 or late > 120)))):
+                    dropped_parents.append((child, role, parent, born[child],
+                                            born.get(parent, ""), died.get(parent, "")))
+                    if child in children.get(parent, []):
+                        children[parent].remove(child)
+                    continue
+                keep.append(parent)
+            plist[child] = keep
+    with open(REPO_ROOT / "reports" / "dropped-impossible-parents.csv", "w", encoding="utf-8",
+              newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["child", "slot", "parent", "child_born", "parent_born", "parent_died"])
+        writer.writerows(sorted(dropped_parents))
+    print(f"dropped {len(dropped_parents):,} impossible extra parent(s) "
+          f"-> reports/dropped-impossible-parents.csv", flush=True)
+
     OUT_PEOPLE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PEOPLE, "w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
