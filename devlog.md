@@ -50265,3 +50265,4 @@ the Frisk Geni id on a different item from the FamilySearch match, likely duplic
 (`reports/frisk-duplicate-items.tsv`); 47 FamilySearch ids are on no item. Emma, same day: several
 Geni ids on one item is intended, each is a canonical representation, and Wikidata is what matters.
 Emma then ordered the batch run: the remaining 74 Frisk Geni ids went to a new QuickStatements tab.
+Same day: P1810 subject named as (Geni display name, as the pipeline writes it) on all 124 Frisk Geni ids, `reports/wikidata-frisk-geni-ids-named-as.qs`, running. CLAUDE.md: an incomplete operation is worse than a completed wrong one (Emma).

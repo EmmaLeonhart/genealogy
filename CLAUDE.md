@@ -569,6 +569,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   rephrase the action to slip past the check.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
+- **⛔ AN INCOMPLETE OPERATION IS WORSE THAN A COMPLETED WRONG ONE. Ruled 2026-10-01 (Emma),
+  knowingly against Wikimedia consensus.** Once an operation is under way, finish it the way the
+  pipeline would (a Geni id carries its `P1810` display name, and so on). Do not stop it halfway
+  to audit individual values; a wrong value is corrected later, a half-done operation is not.
 - **AN ERROR REPORT IS A STANDING KIND OF QUEUE ITEM (Emma, 2026-09-27).** It is a screenshot of
   one item (usually Wikidata, often from a phone) and a line or two on what is wrong: `Q141224900`
   *Samuelis*, `Q141566035` *NN Orre*, `Q141570927` *Not Known*, `Q141510769` *eller*. Handling it:
