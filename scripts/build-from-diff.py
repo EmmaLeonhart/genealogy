@@ -175,7 +175,10 @@ def main():
                 if verdict == "CONFLICT":
                     f.write(f"# {prop} disagrees with what the item already states, which STAYS. "
                             f"This goes in beside it.\n")
-                f.write(f'{qid}\t{prop}\t{value}\tS2600\t"{geni}"\n')
+                # `P2600` is the Geni id itself, and an identifier is not evidence for itself
+                # (ruled 2026-08-31): no reference on it.
+                cite = "" if prop == "P2600" else f'\tS2600\t"{geni}"'
+                f.write(f'{qid}\t{prop}\t{value}{cite}\n')
 
     print(f"\n{len(emitted)} statements over {len({e[0] for e in emitted})} items "
           f"-> {out.resolve().relative_to(ROOT)}")

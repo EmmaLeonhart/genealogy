@@ -8071,7 +8071,9 @@ def main():
         `P1810` on a NAMED person is unchanged and still carries what Geni renders.
         """
         raw = (fields.get(g) or {}).get("display_name", "")
-        if not raw or _carries_marker(raw) or "<private>" in raw.casefold():
+        # A hyphen glued to the marker (`NN- Kona til Tore fra Bjarkøy`) hid it from the token test.
+        if (not raw or _carries_marker(re.sub(r"[-\u2013]", " ", raw))
+                or "<private>" in raw.casefold()):
             return ""
         return f'\tP1810\t"{qs(raw)}"'
 
@@ -8361,7 +8363,8 @@ def main():
             # The Geni rendering is an ALIAS on `mul`, never a label and never a CJK alias.
             # A redaction marker is not a name and does not become one here either.
             geni_name = (fields.get(g) or {}).get("display_name", "")
-            if (geni_name and geni_name != mul and not _carries_marker(geni_name)
+            if (geni_name and geni_name != mul
+                    and not _carries_marker(re.sub(r"[-\u2013]", " ", geni_name))
                     and "<private>" not in geni_name.casefold()
                     and geni_name not in {v for (qq, _l), v in live_labels.items() if qq == q}):
                 lines.append(f'{q}\tAmul\t"{qs(geni_name)}"')
