@@ -401,7 +401,7 @@ def main():
 
 
 def zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year, their_year,
-              sex_refutes, max_rounds=MAX_ROUNDS):
+              sex_refutes, max_rounds=MAX_ROUNDS, allow_solo=True):
     """The rounds, for any two trees shaped like ours and like `relations.tsv`.
 
     `ours` is keyed by Geni id with `father`/`mother`/`spouses`/`children` cells; `theirs` by
@@ -449,7 +449,11 @@ def zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year, 
                 if not (left and right):
                     continue
                 # The cascade. Solo first, then dates, then names within the closed slot.
-                if len(left) == 1 and len(right) == 1:
+                # ⛔ **NO SOLO PAIRING FOR FAMILYSEARCH (Emma, 2026-10-01).** Position alone fused
+                # differently named lines (Kerstin Olofsdotter / Elisabet Matsdotter above Eric
+                # Ericsson, rounds 7-9). With `allow_solo=False` a 1 x 1 slot still needs a date
+                # or a name to pair, like any other slot.
+                if allow_solo and len(left) == 1 and len(right) == 1:
                     # **A solo CHILD slot is refused when the sibship is lopsided.**
                     #
                     # Ruled before any of it was measured: a solo child says nothing unless
@@ -736,7 +740,7 @@ def main_familysearch():
         stated_g[g].add(fs)
         stated_q[fs].add(g)
     result = zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year,
-                       their_year, refuter(our_sex, their_sex), FS_MAX_ROUNDS)
+                       their_year, refuter(our_sex, their_sex), FS_MAX_ROUNDS, allow_solo=False)
     write_outputs("familysearch-zipper", "fs_id", *result)
 
 

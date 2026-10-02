@@ -50278,3 +50278,5 @@ Same day: P1810 subject named as (Geni display name, as the pipeline writes it) 
 **2026-10-01, P2889 backfill stopped (Emma, "Stop it now").** 3,187 of 3,893 landed before the stop, 2,038 of them FamilySearch ids from solo-slot zipper pairings (`reports/p2889-backfill-landed.tsv`). All QuickStatements tabs are finished or stopped; nothing is running.
 
 **2026-10-01, P2889 removals prepared (Emma).** `reports/wikidata-p2889-removals.qs`: P2889 off the 574 name mismatches and 118 unnamed items; analysis queued at the end.
+
+**2026-10-01, the FamilySearch zipper no longer pairs by position (Emma).** `zip_sides(..., allow_solo=False)` for `--familysearch`: a 1 x 1 slot now needs a matching year or name, like any other slot. The Geni-Wikidata join is unchanged. The next tree rebuild redoes the 8,146 solo pairings.
