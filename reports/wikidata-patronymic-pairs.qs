@@ -32,6 +32,16 @@ Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 
+# Dagsdotter -- the counterpart of Dagsson (19 bearer(s))
+CREATE
+LAST	Len	"Dagsdotter"
+LAST	Lmul	"Dagsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
 LAST	Len	"Gunnarsson"
@@ -280,6 +290,16 @@ LAST	P407	Q9027
 LAST	P5278	Q141611151
 Q141611151	P5278	LAST
 
+# Agnarsdotter -- the counterpart of Agnarsson (5 bearer(s))
+CREATE
+LAST	Len	"Agnarsdotter"
+LAST	Lmul	"Agnarsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Askjelsdotter -- the counterpart of Askjelson (5 bearer(s))
 CREATE
 LAST	Len	"Askjelsdotter"
@@ -441,26 +461,6 @@ LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Gotskalksdotter -- the counterpart of Gotskalksson (5 bearer(s))
-CREATE
-LAST	Len	"Gotskalksdotter"
-LAST	Lmul	"Gotskalksdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Gudbrandsen -- the counterpart of Gudbrandsdatter (5 bearer(s))
-CREATE
-LAST	Len	"Gudbrandsen"
-LAST	Lmul	"Gudbrandsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
