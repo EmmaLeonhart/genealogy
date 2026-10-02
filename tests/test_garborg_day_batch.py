@@ -249,10 +249,24 @@ def known_place_items(path=None):
         return {r["qid"] for r in csv.DictReader(f, delimiter="\t") if r.get("qid")}
 
 
+def known_live_values():
+    """Every item a live claim of ours already points at (`reports/garborg-live-values.tsv`,
+    the claims of the fetched items). It exists by construction: the role backfill
+    (`patronymic_role_repairs`) repeats a live `P5056` value with its `P3831` role, and on
+    2026-10-02 that value was `Q141555919` *Tjølsdatter*, a second name item for the same
+    string that the plan does not list -- live, so pointable, and not a half-run."""
+    path = REPO / "reports" / "garborg-live-values.tsv"
+    if not path.exists():
+        return set()
+    with open(path, encoding="utf-8") as f:
+        return {r["value"] for r in csv.DictReader(f, delimiter="	")
+                if (r.get("value") or "").startswith("Q")}
+
+
 def test_every_qid_the_batch_points_at_already_exists():
     """The single-run rule. A value not in the ledger cannot resolve mid-run."""
     known = (known_qids() | VOCABULARY | known_name_items() | known_place_items()
-             | known_place_items(REPO / "reports" / "occupation-qids.tsv"))
+             | known_place_items(REPO / "reports" / "occupation-qids.tsv") | known_live_values())
     unknown = []
     for ln in lines():
         m = QID_VALUE.match(ln)

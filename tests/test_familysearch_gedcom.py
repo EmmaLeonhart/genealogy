@@ -536,6 +536,8 @@ def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_per
     # Trond (BBBB-222), Torleiv's son, is created and linked to Q66666666 both ways.
     assert 'LAST\tP2889\t"BBBB-222"' in text
     assert "LAST\tP22\tQ66666666" in text and "Q66666666\tP40\tLAST" in text
-    # Torleiv is not created a second time: he is carried as the day batch's person.
-    assert '"FFFF-666"' not in text
+    # Torleiv is not created a second time: he is carried as the day batch's person. His item
+    # still takes the id (`Q66666666 P2889 "FFFF-666"`), as every zipped person's does.
+    assert 'LAST	P2889	"FFFF-666"' not in text
+    assert 'Q66666666	P2889	"FFFF-666"' in text
     assert "FFFF-666\t\tpaired to Geni profile 6000000000000000009" in carry
