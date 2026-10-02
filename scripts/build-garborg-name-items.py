@@ -97,8 +97,8 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
     qualifier_value,
-    PATRONYMIC_CLASS, PATRONYMIC_PARTS, classify_fields, load_plan, statements_for,
-    store_name_item)
+    PATRONYMIC_CLASS, PATRONYMIC_PARTS, classify_fields, load_plan, patronymic_culture,
+    statements_for, store_name_item)
 from live_name_items import (LookupUnavailable,                   # noqa: E402
                               existing_item as live_existing_item,
                               _get as api_get)
@@ -357,6 +357,10 @@ def _finer_classes(token, kind):
         out.append(DAUGHTER_NAME)
     elif any(low.endswith(s) for s in SON_WORD_SUFFIXES):
         out.append(SON_NAME)
+    #: Its culture, Emma's model on `Q141562457` (2026-09-27): `Erici` is `P31` *Latin
+    #: patronymic*, `Ersson` *Scandinavian patronymic*. See `namemodel.LATIN_PATRONYMIC_ROLE`.
+    if kind == "patronymic" and patronymic_culture(token):
+        out.append(patronymic_culture(token))
     return out
 
 
@@ -1240,7 +1244,7 @@ def main():
                 claims_of[qid] = {
                     prop: {st["mainsnak"].get("datavalue", {}).get("value", {}).get("id")
                            for st in claims.get(prop, [])}
-                    for prop in (BASED_ON, SAME_AS)}
+                    for prop in (BASED_ON, SAME_AS, INSTANCE_OF)}
         added = [f"{qid}\t{BASED_ON}\t{target}"
                  for qid in ids if qid in claims_of
                  for target in backfill[qid][1]
@@ -1256,6 +1260,22 @@ def main():
             lines.extend(added)
         print(f"   {len(added):,} P144 statement(s) to add"
               + (f"; {held:,} item(s) held, the live read failed" if held else ""))
+
+        # ---- P31 culture class, on the patronymic items WE made ---------------------
+        #
+        # Emma's model on `Q141562457` (2026-09-27): a patronymic item is `P31` its culture as
+        # well as `Q110874`. The `CREATE` blocks carry it from 2026-10-02 (`_finer_classes`);
+        # this adds it to the ones made before, ours only, and only where it is not live.
+        classed = [f"{qid}	{INSTANCE_OF}	{patronymic_culture(ours[qid])}"
+                   for qid in ids if qid in claims_of and qid in ours
+                   and patronymic_culture(ours[qid])
+                   and patronymic_culture(ours[qid]) not in claims_of[qid][INSTANCE_OF]]
+        if classed:
+            lines.append("")
+            lines.append("# P31 culture class (Latin / Scandinavian patronymic) on patronymic")
+            lines.append("# items this repo created. Emma's model on Q141562457.")
+            lines.extend(classed)
+        print(f"   {len(classed):,} P31 culture class(es) to add")
 
         # ---- P144 REMOVALS: the values the old source rule put on items we made ------
         #

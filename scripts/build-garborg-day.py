@@ -57,7 +57,7 @@ from namemodel import (  # noqa: E402
     names_a_relative as _namemodel_names_a_relative,
     lead_with_given_name, own_given_name, married_is_primary, married_name_of,
     drop_description_suffix, generation_suffix_key,
-    normalise_generation_suffix, native_generation_labels, statements_for,
+    normalise_generation_suffix, native_generation_labels, patronymic_culture, statements_for,
     suffix_is_native)
 
 
@@ -88,6 +88,9 @@ ROOT = Path(__file__).resolve().parent.parent
 SIBLING_CAP = 300
 #: Existing sibling statements given `P1039` a day (ruled 2026-09-26: 40, like siblings).
 SIBLING_KINSHIP_REPAIR_CAP = 40
+#: Existing `P5056` statements given their culture role a day (the Spak model, 2026-10-02;
+#: 358 measured on 180 people).
+PATRONYMIC_ROLE_REPAIR_CAP = 100
 #: Relational labels re-anchored on the father per run (queue item 2026-09-27; 95 measured).
 RELATION_RELABEL_CAP = 100
 _siblings_emitted = []
@@ -1449,6 +1452,39 @@ def _parents(g, fam_rows):
 
 #: `(a, b) -> "paternal" | "maternal"` for half-siblings, filled from the family objects in `main`.
 HALF_SIBLINGS = {}
+
+
+def patronymic_role_repairs(entities, ours, item_label, cap):
+    """`Qperson P5056 Qitem P3831 Qrole` lines for live patronymic statements lacking their role.
+
+    Emma's model on `Q141562457` (2026-09-27, `docs/rules/names.md`): a person with more than one
+    patronymic carries each one's culture as `P3831`. `statements_for` writes it on new
+    statements; this brings the live ones of people we created to it. The line repeats the
+    statement WITH the qualifier, which the sender attaches by GUID (`plan_attachments`) and
+    QuickStatements adds to the existing statement. A statement already carrying `P3831` is
+    skipped, so the pass stops by itself. `entities` is `[(qid, entity)]`, `item_label(qid)`
+    the name item's Latin label.
+    """
+    out = []
+    for q, entity in entities:
+        if q not in ours:
+            continue
+        claims = [c for c in ((entity or {}).get("claims") or {}).get("P5056", [])
+                  if c.get("rank") != "deprecated"]
+
+        def value(c):
+            v = ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value") or {}
+            return v.get("id") if isinstance(v, dict) else None
+        if len({value(c) for c in claims} - {None}) < 2:
+            continue
+        for c in claims:
+            if len(out) >= cap:
+                return out
+            v = value(c)
+            role = patronymic_culture(item_label(v) or "") if v else ""
+            if role and "P3831" not in (c.get("qualifiers") or {}):
+                out.append(f"{q}	P5056	{v}	P3831	{role}")
+    return out
 
 
 def sibling_kinship(subject, sibling, fam_rows, facts):
@@ -8413,6 +8449,22 @@ def main():
                         break
     print(f"sibling kinship repair: {repaired} existing statement(s) qualified "
           f"(cap {SIBLING_KINSHIP_REPAIR_CAP})")
+    # The culture role on live patronymic statements (the Spak model), `patronymic_role_repairs`.
+    _item_names = collections.defaultdict(dict)
+    _names_path = ROOT / "reports" / "name-item-cjk-labels.tsv"
+    if _names_path.exists():
+        with open(_names_path, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="	"):
+                _item_names[r["qid"]][r["lang"]] = r["label"]
+    _roles = patronymic_role_repairs(
+        ((q, e) for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json"))
+         for q, e in sorted(json.loads(shard.read_text(encoding="utf-8")).items())
+         if q in editable),
+        _created_by_us, lambda v: _item_names[v].get("mul") or _item_names[v].get("en"),
+        PATRONYMIC_ROLE_REPAIR_CAP)
+    lines.extend(_roles)
+    print(f"patronymic role repair: {len(_roles)} existing statement(s) qualified "
+          f"(cap {PATRONYMIC_ROLE_REPAIR_CAP})")
     lines.append("")
 
     # ⛔ **A RELATIONAL LABEL ANCHORS ON THE FATHER WHEN THE TREE NAMES HIM. Queue item,

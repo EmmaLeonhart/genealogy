@@ -289,8 +289,10 @@ def test_every_created_name_item_says_what_kind_of_name_it_is(name):
     assert not bad, f"{name}: every CREATE needs exactly one base P31 — {bad[:5]}"
 
 
-# masculine patronymic, feminine patronymic, son name, daughter name
-FINER_NAME_CLASSES = {"Q130444148", "Q130444179", "Q10673705", "Q10476255"}
+# masculine patronymic, feminine patronymic, son name, daughter name, and the culture
+# classes of Emma's Spak model (2026-09-27): Latin patronymic, Scandinavian patronymic
+FINER_NAME_CLASSES = {"Q130444148", "Q130444179", "Q10673705", "Q10476255",
+                      "Q141584748", "Q141584760"}
 
 
 def test_no_two_batches_create_the_same_person():

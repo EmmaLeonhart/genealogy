@@ -1485,5 +1485,9 @@ P143 imported from Wikimedia project.
   behind a vernacular first name is a patronymic (only `Olai`, `Nicolai`, `Olavi` are also given
   names, `LATIN_FORMS_USED_AS_GIVEN`); `Ersson` is Erik's son (`CONTRACTED_PATRONYMIC_STEMS`);
   `Spak` stays the family name.
-- Code: `namemodel.patronymic_culture`, `statements_for`. Tests: `test_spak_*` in
-  `tests/test_namemodel.py`.
+- Code: `namemodel.patronymic_culture`, `statements_for` (new statements);
+  `build-garborg-day.patronymic_role_repairs` (the role onto live statements of people we
+  created, `PATRONYMIC_ROLE_REPAIR_CAP` a run); `build-garborg-name-items._finer_classes` (the
+  culture `P31` on a created patronymic item) and its existing-item pass (the `P31` onto
+  patronymic items we made before). Tests: `test_spak_*` in `tests/test_namemodel.py`,
+  `tests/test_patronymic_roles.py`.
