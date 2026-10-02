@@ -157,3 +157,7 @@ def test_the_last_ring_person_may_be_a_familysearch_person():
     assert status.last_ring_geni(text) == "fs:AAAA-111"
     geni_last = text.replace('LAST\tP2889\t"AAAA-111"', 'LAST\tP2600\t"500"')
     assert status.last_ring_geni(geni_last) == "500"
+    # A Geni ring person created with a FamilySearch id too (`P2600` then `P2889` in one block)
+    # is reported by the Geni id: batch 58dfcdfc6 (2026-10-02) read as `fs:GGZR-Y2K` otherwise.
+    both = text.replace('LAST\tP2889\t"AAAA-111"', 'LAST\tP2600\t"500"\nLAST\tP2889\t"GGZR-Y2K"')
+    assert status.last_ring_geni(both) == "500"

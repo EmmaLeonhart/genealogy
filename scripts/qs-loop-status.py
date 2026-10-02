@@ -52,14 +52,29 @@ def last_ring_geni(text):
     to bottom and the ring comes first, so the last ring creation is the one the next rebuild
     waits for (`ring-watch.yml`, Emma 2026-09-27). The non-ring tail does not matter to it.
     """
-    in_ring, last = False, ""
+    # Decided per CREATE block: a Geni ring person created with a FamilySearch id too carries
+    # `LAST P2889` after `LAST P2600`, and reading line by line reported the batch of
+    # 2026-10-02 15:18 as `fs:GGZR-Y2K` while its ring held no FamilySearch creation at all.
+    in_ring, last, geni, fs = False, "", "", ""
+
+    def flush():
+        nonlocal last, geni, fs
+        if geni:
+            last = geni
+        elif fs:
+            last = "fs:" + fs
+        geni, fs = "", ""
     for line in text.splitlines():
         if line.startswith("# ▶ "):
+            flush()
             in_ring = line.startswith("# ▶ THE RING")
+        elif in_ring and line.strip().upper() == "CREATE":
+            flush()
         elif in_ring and line.startswith("LAST	P2600	"):
-            last = line.split("	")[2].strip('"')
+            geni = line.split("	")[2].strip('"')
         elif in_ring and line.startswith("LAST	P2889	"):
-            last = "fs:" + line.split("	")[2].strip('"')
+            fs = line.split("	")[2].strip('"')
+    flush()
     return last
 
 
