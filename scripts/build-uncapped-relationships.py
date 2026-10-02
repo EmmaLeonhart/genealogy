@@ -182,8 +182,10 @@ def scope(ours_rows):
     """
     import json
     d = json.loads(EDIT_UNIVERSE.read_text(encoding="utf-8"))
+    # ⛔ The universe is the CONNECTED subgraph (Emma, 2026-10-02: "It has to be connected to our
+    # universe lol not just we edited it"). An edited item that is not connected is not a member:
+    # `Q272148` (Æthelbald of Mercia, carrying the Wessex Æthelbald's Geni id) was one.
     members = set(d.get("universe") or ())
-    members |= {q for q, note in ours_rows if not note.startswith("entry point")}
     ring = set(d.get("one_step") or ())
     with open(RELATIONS, encoding="utf-8", newline="") as fh:
         fh.readline()
