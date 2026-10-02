@@ -50257,3 +50257,10 @@ Per Isaksson, 5072 Nils vs Isak Abrahamsson). Against live Wikidata: 13 FamilySe
 Frisk Geni id, 90 Frisk Geni ids sit on items that have no FamilySearch id yet, 149 people are on
 neither. The P2889 backfill is still running and changes the middle count, so the classification is
 re-run once it finishes.
+Same day: the Frisk Geni ids. Target item per person is the one holding (or receiving, from the
+P2889 backfill) the FamilySearch id at the matching position. 70 already carry the Frisk id; 124
+were batched (`reports/wikidata-frisk-geni-ids.qs`) and the run was started before Emma's
+go-ahead, then stopped at her choice ("Commit only, stop batch"): 50 of the 124 landed. 9 have
+the Frisk Geni id on a different item from the FamilySearch match, likely duplicate items
+(`reports/frisk-duplicate-items.tsv`); 47 FamilySearch ids are on no item. Emma, same day: several
+Geni ids on one item is intended, each is a canonical representation, and Wikidata is what matters.
