@@ -293,6 +293,32 @@ def _block_end(lines, start, limit):
     return n
 
 
+def creation_relatives(lines):
+    """`{qid}` an item created in this batch is linked to, read from its own `CREATE` block.
+
+    ⛔ **ONE HOP FROM AN EDITED ITEM IS IN THE UNIVERSE, AND A CREATION IS AN EDITED ITEM.** Ruled
+    2026-10-02 (Emma): *"Anything one hop over from edited items is a part of the universe"*, and
+    *"The created people were supposed to at their creation have all relationships possible to
+    add for them added"*. So the father, mother, spouse, child or sibling a new person is linked
+    to is a member the moment the batch runs, both for the `LAST P22 Q…` line and for the
+    reciprocal `Q… P40 LAST` on that relative. The locality gates read this set as part of the
+    universe; without it they strip exactly the links a creation exists for.
+    """
+    out = set()
+    starts = [n for n, l in enumerate(lines) if l.strip() == "CREATE"]
+    for i, start in enumerate(starts):
+        end = _block_end(lines, start, starts[i + 1] if i + 1 < len(starts) else len(lines))
+        for n in range(start, end):
+            parts = lines[n].split("	")
+            if len(parts) < 3 or parts[1] not in RELATIONSHIP_PROPS:
+                continue
+            if parts[0] == "LAST" and _QID.match(parts[2]):
+                out.add(parts[2])
+            elif _QID.match(parts[0]) and parts[2] == "LAST":
+                out.add(parts[0])
+    return out
+
+
 def drop_orphaned_creations(lines):
     """Remove every `CREATE` block left with no relationship statement. Returns `(lines, [label])`.
 

@@ -124,7 +124,10 @@ def kanji_items():
 def offenders(path, allowed, kanji):
     """`(non_local, on_kanji, never)` -- all three `{qid: first line number}`."""
     non_local, on_kanji, never = {}, {}, {}
-    for n, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
+    text = path.read_text(encoding="utf-8").split("\n")
+    # A relative of a person this batch creates is one hop from an edited item: in the universe.
+    allowed = set(allowed) | qs_v1.creation_relatives(text)
+    for n, line in enumerate(text, 1):
         m = SUBJECT.match(line)
         if m and m.group(1) not in allowed and not court_rank_anywhere(line):
             non_local.setdefault(m.group(1), n)
@@ -154,6 +157,7 @@ def strip(path, allowed, kanji) -> int:
     check and the filter reading it together.
     """
     lines = path.read_text(encoding="utf-8").split(chr(10))
+    allowed = set(allowed) | qs_v1.creation_relatives(lines)
     keep, dropped = [], []
     for line in lines:
         m = SUBJECT.match(line)

@@ -186,3 +186,27 @@ def test_our_nn_items_are_not_sinosphere_but_kanji_names_still_are(tmp_path, mon
         encoding="utf-8")
     monkeypatch.setattr(check, "LIVE_LABELS", live)
     assert check.kanji_items() == {"Q2"}
+
+
+def test_a_creations_relatives_are_in_the_universe():
+    """Emma, 2026-10-02: one hop from an edited item is in the universe, and a creation is one.
+
+    The father a new person links to, and the reciprocal on him, pass the gate; an unrelated item
+    outside the universe in the same file does not.
+    """
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    import qs_v1
+    lines = ["CREATE", 'LAST\tLmul\t"Ola NN"', "LAST\tP31\tQ5", "LAST\tP22\tQ900001",
+             "Q900001\tP40\tLAST", "Q900002\tP3373\tLAST", "", "Q900003\tP22\tQ900004"]
+    rel = qs_v1.creation_relatives(lines)
+    assert rel == {"Q900001", "Q900002"}
+
+
+def test_the_strip_keeps_a_creations_links(tmp_path):
+    batch = tmp_path / "day.txt"
+    batch.write_text("\n".join(["CREATE", 'LAST\tLmul\t"Ola NN"', "LAST\tP31\tQ5",
+                                "LAST\tP22\tQ900001", "Q900001\tP40\tLAST", "",
+                                "Q900003\tP22\tQ900004", ""]), encoding="utf-8")
+    non_local, _, _ = check.offenders(batch, {"Q1"}, set())
+    assert set(non_local) == {"Q900003"}

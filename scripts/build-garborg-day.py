@@ -1690,6 +1690,9 @@ def refuse_non_local(lines, allowed):
         raise ValueError("refuse_non_local called with an empty universe -- that is the absence "
                          "of the gate, not permission; recompose the universe first")
     never = _never_edit()
+    # A relative of a person this batch creates is one hop from an edited item, so a member
+    # (Emma, 2026-10-02); `qs_v1.creation_relatives` carries the ruling.
+    allowed = set(allowed) | qs_v1.creation_relatives(lines)
     kept, dropped = [], []
     for ln in lines:
         m = re.match(r"^(Q\d+)	", ln)
@@ -9265,14 +9268,15 @@ def main():
             return our_items.get(x) or _known_qid.get(x)
         for prop, target, back in (("P22", father.get(g), "P40"),
                                    ("P25", mother.get(g), "P40")):
-            # A link to an item we may not edit goes in NEITHER direction: the reciprocal would
-            # be an edit on it, and a one-way link is what the both-directions test refuses.
-            if target and _rq(target) in editable:
+            # ⛔ No locality test on a creation's own relatives (Emma, 2026-10-02): the new item
+            # is edited, so everyone one hop from it is in the universe, and the gates read
+            # them as members through `qs_v1.creation_relatives`.
+            if target and _rq(target):
                 _rel = (RELATION_OF[prop], target)
                 lines.append(f"LAST\t{prop}\t{_rq(target)}{ref(g, *_rel)}")
                 reciprocal.append((_rq(target), back, g, "", _rel))
         for sp in sorted(spouses.get(g, ())):
-            if _rq(sp) in editable:
+            if _rq(sp):
                 _mq = marriage_qualifiers(g, sp)
                 lines.append(f"LAST\tP26\t{_rq(sp)}{_mq}{ref(g, 'spouse', sp)}")
                 reciprocal.append((_rq(sp), "P26", g, _mq, ("spouse", sp)))
@@ -9283,20 +9287,21 @@ def main():
         # **28 uncapped**, 38 in a file whose whole reason for the cap is that sibling links
         # are too numerous to send in one batch. `_siblings_emitted` is shared module state
         # precisely so both sites draw on one budget.
+        #
+        # ⛔ **SUPERSEDED FOR CREATIONS, 2026-10-02 (Emma):** *"The created people were supposed
+        # to at their creation have all relationships possible to add for them added."* A new
+        # person gets every sibling with an item, Wikidata's as well as ours, and the cap does
+        # not hold them back; the budget is still drawn on so the additions pass sees them.
         for sib in sorted(siblings.get(g, ())):
-            if our_items.get(sib) in editable:
-                if sibling_budget_left() <= 0:
-                    carried.append((g, label, f"P3373 sibling {our_items[sib]} held: over the "
-                                    f"{SIBLING_CAP}-a-day cap"))
-                    continue
-                _siblings_emitted.append(("LAST", our_items[sib]))
-                lines.append(f"LAST\tP3373\t{our_items[sib]}"
+            if _rq(sib):
+                _siblings_emitted.append(("LAST", _rq(sib)))
+                lines.append(f"LAST\tP3373\t{_rq(sib)}"
                              f"{sibling_kinship(g, sib, fam_rows, facts)}"
                              f"{ref(g, 'sibling', sib)}")
-                reciprocal.append((our_items[sib], "P3373", g,
+                reciprocal.append((_rq(sib), "P3373", g,
                                    sibling_kinship(sib, g, fam_rows, facts), ("sibling", sib)))
         for kid in sorted(children.get(g, ())):
-            if _rq(kid) in editable:
+            if _rq(kid):
                 lines.append(f"LAST\tP40\t{_rq(kid)}{ref(g, 'child', kid)}")
                 sex_of = (facts.get(g, {}) or {}).get("sex", "")
                 reciprocal.append((_rq(kid), "P22" if sex_of == "M" else "P25", g, "",
