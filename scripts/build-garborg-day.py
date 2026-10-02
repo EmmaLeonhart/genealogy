@@ -2519,6 +2519,177 @@ def _piped_label_fixes(live_labels=None, path=None):
     return out
 
 
+
+#: The 118 unnamed items that kept their `P2889` on 2026-10-01, against the FamilySearch names
+#: (`reports/p2889-unnamed-fs-names.tsv`, columns qid, wikidata_label, fs_id, familysearch_name,
+#: item_sex, fs_sex, class), and the renders the raw `NAME` is read from.
+UNNAMED_FS_NAMES = ROOT / "reports" / "p2889-unnamed-fs-names.tsv"
+#: A FamilySearch record whose given-name slot holds the relationship (`Mother /Anders/`,
+#: `P3VD-VBF`) or the Norwegian article (`Ei /Ormsdatter Byre/`, `L2NR-LZV`: *a daughter of
+#: Orm*, an unnamed woman) instead of a name, 2026-10-02. Named by what was seen, not generalised.
+RELATION_WORDS_AS_GIVEN = frozenset({"mother", "father", "wife", "husband", "widow", "daughter",
+                                     "son", "mrs", "mr", "miss", "mor", "far", "hustru", "enke",
+                                     "ei", "en", "ein"})
+
+
+def _patronymic_root(label):
+    """The root of the first patronymic token of a label (`Jonsdatter` -> `jon`), or `""`."""
+    from namemodel import SCANDINAVIAN_PATRONYMIC
+    for token, usage, _o in classify(label or ""):
+        if usage == "patronymic":
+            m = SCANDINAVIAN_PATRONYMIC.match(token)
+            return (token[:m.start(1)] if m else token).casefold().rstrip("s")
+    return ""
+FS_RENDERS = ROOT / "exports" / "familysearch"
+
+
+def _unnamed_take_familysearch_names(live_labels, table, path=None, renders=None,
+                                     relatives=None):
+    """`Amul`/`Lmul`/`Len`/`Lja`/`Lzh`/`Lko` for our unnamed items whose FamilySearch record
+    names them. **Ruled 2026-10-01 (Emma):** the 118 unnamed or `NN` items keep their `P2889`,
+    and *the FamilySearch person's name becomes the item's name*: it replaces the Latin labels,
+    and the CJK labels are re-read from it. Through the pipeline, not a hand batch.
+
+    **The name goes through the same choke point as a Geni name.** The raw `1 NAME` of the
+    FamilySearch record (`exports/familysearch/`, the first untyped form) is read by
+    `labels.labels_for`, so markers (`Ukendt //`), titles and the surname slashes are handled
+    the way every creation's are. Four refusals, each measured on the 118 (2026-10-02):
+    a record whose given-name slot holds no given name (`Bjørnsdatter /Tau/`,
+    ` /Olsdatter Skjelbrei/`, `på /Kartevoll/`: a patronymic, a farm or a preposition is not a
+    name to put on a person); a record whose sex differs from the item's; a name that is a
+    RELATIVE's in our tree (`NN (Frille)`, wife of Knut Algotsson, has `Knut /Algotsson/` as
+    her FamilySearch name: the husband written in the wife's record, the same shape as Geni's
+    *a name field that names a relative is not a name*); and an item whose live labels are not
+    held (unknown is not empty). The outgoing `mul` is kept as an `Amul` so the surname form
+    the item was found under stays searchable.
+
+    `mul`/`en` only: `LABEL_LANGUAGES` drops anything else, and the relational labels in other
+    languages stay by the 2026-10-01 ruling. `ja` is re-read only where the live `ja` is empty
+    or katakana (never over kanji); `zh`/`ko` follow it. Capped with every other label edit by
+    `LABEL_EDIT_CAP`.
+    """
+    from labels import labels_for, leads_with_a_marker, UNNAMED_MARKER
+    path = UNNAMED_FS_NAMES if path is None else path
+    renders = FS_RENDERS if renders is None else renders
+    if not path.exists() or not live_labels:
+        return []
+    rows = [r for r in csv.DictReader(path.open(encoding="utf-8", newline=""), delimiter="\t")
+            if (r.get("qid") or "").startswith("Q") and r.get("fs_id")]
+    if not rows:
+        return []
+    want_fs = {r["fs_id"] for r in rows}
+    raw_name = {}
+    for ged in sorted(Path(renders).glob("*.ged")) if Path(renders).is_dir() else []:
+        text = ged.read_text(encoding="utf-8")
+        for m in re.finditer(r"^0 @[^@]+@ INDI\n((?:(?!^0 ).*\n)*)", text, re.M):
+            body = m.group(1)
+            fs = re.search(r"^1 _FSFTID (\S+)", body, re.M)
+            if not fs or fs.group(1) not in want_fs or fs.group(1) in raw_name:
+                continue
+            # The first untyped NAME: a `2 TYPE married`/`aka` form is not the person's name.
+            for nm in re.finditer(r"^1 NAME (.*)\n((?:2 .*\n)*)", body, re.M):
+                if "2 TYPE" not in nm.group(2):
+                    raw_name[fs.group(1)] = nm.group(1).strip()
+                    break
+    if relatives is None:
+        relatives = _geni_relative_names({r["qid"] for r in rows})
+    out, why = [], collections.Counter()
+    for r in sorted(rows, key=lambda r: int(r["qid"][1:])):
+        qid, fs = r["qid"], r["fs_id"]
+        raw = raw_name.get(fs, "")
+        if not raw:
+            why["no NAME in the renders"] += 1
+            continue
+        if (qid, "mul") not in live_labels and (qid, "en") not in live_labels:
+            why["live labels not held"] += 1
+            continue
+        givn, _, rest = raw.partition("/")
+        surn = rest.rstrip("/").strip()
+        if not any(u == "given" for _t, u, _o in classify_fields(givn.strip(), surn)):
+            why["no given name in the record"] += 1
+            continue
+        if r.get("item_sex") and r.get("fs_sex") and r["item_sex"] != r["fs_sex"]:
+            why["sex differs"] += 1
+            continue
+        from namemodel import drop_label_title
+        new = qs(drop_label_title(labels_for(raw).get("mul", "").strip()))
+        if not new or new == UNNAMED_MARKER or leads_with_a_marker(new):
+            why["the name is a marker"] += 1
+            continue
+        if len(new.split()) == 1:
+            why["a bare given name is not a label"] += 1
+            continue
+        first = new.split()[0].casefold()
+        if any(first and rel.split() and rel.split()[0].casefold() == first
+               for rel in relatives.get(qid, ())):
+            why["a relative's name in the record"] += 1
+            continue
+        old_mul = (live_labels.get((qid, "mul")) or "").strip()
+        if old_mul and old_mul != UNNAMED_MARKER and not leads_with_a_marker(old_mul):
+            # `p2889-name-comparison.tsv` called a first name it could not compare "unknown",
+            # which swept in named people (`Abel of Denmark`, `Bjaðǫk`); only an item still
+            # labelled with the marker is unnamed.
+            why["the item is named"] += 1
+            continue
+        if givn.strip().split()[0].casefold() in RELATION_WORDS_AS_GIVEN:
+            why["a relationship word where the given name should be"] += 1
+            continue
+        if old_mul == new:
+            why["already live"] += 1
+            continue
+        old_root, new_root = _patronymic_root(old_mul), _patronymic_root(new)
+        if old_root and new_root and old_root != new_root:
+            # `NN Jonsdatter Stillufseike` against `Magla Oddsdatter Fevoll`: the item already
+            # knows the father's name, and the record names another man's daughter.
+            why["the patronymic disagrees with the item's"] += 1
+            continue
+        out.append(f"#   {qid}: unnamed ({old_mul or live_labels.get((qid, 'en')) or '-'}); "
+                   f"FamilySearch {fs} names them {new!r} (Emma, 2026-10-01)")
+        if old_mul:
+            out.append(f'{qid}\tAmul\t"{qs(old_mul)}"')
+        out.append(f'{qid}\tLmul\t"{new}"')
+        out.append(f'{qid}\tLen\t"{new}"')
+        ja, zh, ko = label_in(new, table)
+        live_ja = (live_labels.get((qid, "ja")) or "").strip()
+        if ja and (not live_ja or _is_katakana(live_ja)):
+            for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
+                if value and (live_labels.get((qid, code)) or "").strip() != value:
+                    out.append(f'{qid}\tL{code}\t"{qs(value)}"')
+    if out or why:
+        print(f"unnamed items named from FamilySearch: {sum(1 for l in out if l.startswith('#'))} "
+              f"of {len(rows)}; refused: " + ", ".join(f"{n} {k}" for k, n in why.most_common()))
+    return out
+
+
+def _geni_relative_names(qids):
+    """`{qid: [labels of the Geni person's spouses and parents]}`, from the derived CSVs."""
+    geni_of = {}
+    ledger = ROOT / "reports" / "garborg-qids.tsv"
+    if ledger.exists():
+        for row in csv.DictReader(ledger.open(encoding="utf-8"), delimiter="\t"):
+            if row.get("qid") in qids and row.get("geni_id"):
+                geni_of.setdefault(row["geni_id"], row["qid"])
+    fam = ROOT / "reports" / "derived-family.csv"
+    rel_ids = {}
+    if geni_of and fam.exists():
+        csv.field_size_limit(10 ** 8)
+        with open(fam, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                if row["geni_id"] in geni_of:
+                    ids = [x.strip() for col in ("spouses", "fathers", "mothers")
+                           for x in (row.get(col) or "").split("|") if x.strip()]
+                    rel_ids[geni_of[row["geni_id"]]] = ids
+    need = {x for ids in rel_ids.values() for x in ids}
+    names = {}
+    lab = ROOT / "reports" / "derived-labels.csv"
+    if need and lab.exists():
+        with open(lab, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                if row["geni_id"] in need:
+                    names[row["geni_id"]] = row["label_en"] or row["label_mul"]
+    return {q: [names[x] for x in ids if names.get(x)] for q, ids in rel_ids.items()}
+
+
 def _our_relational_phrase(label, lang):
     """Is `label` a relation phrase in the exact shape OUR emitter writes -- `mother of X`,
     `mor til X`, `Mutter von X` -- built from `WORDS`, the table `describe_all` uses?
@@ -9732,7 +9903,8 @@ def main():
                              live_labels)
         + _cjk_follows_mul(table)
         + _missing_cjk_labels(editable_items, labels, table, live_labels)
-        + _composed_en_labels(editable_items, live_labels))
+        + _composed_en_labels(editable_items, live_labels)
+        + _unnamed_take_familysearch_names(live_labels, table))
     # ⛔ **LOCALITY, ON EVERY DERIVED LABEL EDIT. THIS IS THE ALARM.**
     #
     # Ruled 2026-09-18, after nine `ja` labels were set on `Q135525010`, `Q135579354` and seven

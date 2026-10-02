@@ -1502,3 +1502,72 @@ def test_a_name_item_with_no_han_zh_label_does_not_crash_the_cjk_composer():
         assert (ja, zh, ko) == (None, None, None) or (
             ja == mod._NAME_ITEM_CJK[token]["ja"] and ko == mod._NAME_ITEM_CJK[token]["ko"]
             and isinstance(zh, str) and zh and mod._is_han(zh)), (token, ja, zh, ko)
+
+
+def test_an_unnamed_item_takes_its_familysearch_name_through_the_choke_point(tmp_path):
+    """Emma, 2026-10-01: the 118 unnamed items take the FamilySearch person's name, through the
+    pipeline. The raw NAME goes through `labels_for`; a record with no given name, a marker, a
+    sex that differs, a relative's name, or an item whose live labels are not held is refused;
+    the outgoing `mul` is kept as an alias; CJK is re-read, never over kanji."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_fs_names", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    tsv = tmp_path / "unnamed.tsv"
+    tsv.write_text(
+        "qid\twikidata_label\tfs_id\tfamilysearch_name\titem_sex\tfs_sex\tclass\n"
+        "Q1\tNN of Kiev\tAAAA-111\tRogneda Mstislavna\tF\tF\tusable\n"
+        "Q2\tNN Bjørnsdatter Tau\tBBBB-222\tBjørnsdatter Tau\tF\tF\tusable\n"
+        "Q3\tNN (Frille)\tCCCC-333\tKnut Algotsson\tF\tF\tusable\n"
+        "Q4\tNN Pedersdatter\tDDDD-444\tUkendt\tF\tF\tmarker/empty\n"
+        "Q5\tNN\tEEEE-555\tLucia Andersdotter Bure\tF\tM\tusable\n"
+        "Q6\tNN\tFFFF-666\tTollak Jonsen Aukland\tM\tM\tusable\n"
+        "Q7\tNN Næs\tGGGG-777\tHafrid Sigtryggsdotter\tF\tF\tusable\n"
+        "Q8\tAbel of Denmark\tHHHH-888\tAbel Valdemarsøn\tM\tM\tno given name\n"
+        "Q9\tNN\tIIII-999\tMother Anders\tF\tF\tusable\n"
+        "Q10\tNN Jonsdatter Stillufseike\tJJJJ-100\tMagla Oddsdatter Fevoll\tF\tF\tusable\n"
+        "Q11\tNN\tKKKK-110\tJon\tM\tM\tusable\n"
+        "Q12\tNN\tLLLL-120\tBishop Eirik Ogmundson Ims\tM\tM\tusable\n"
+        "Q13\tNN Komp\tMMMM-130\tEi Olufsd Komp\tF\tF\tusable\n",
+        encoding="utf-8")
+    (tmp_path / "renders").mkdir()
+    (tmp_path / "renders" / "a.ged").write_text("\n".join([
+        "0 HEAD",
+        "0 @I1@ INDI", "1 NAME Rogneda /Mstislavna/", "1 SEX F", "1 _FSFTID AAAA-111",
+        "0 @I2@ INDI", "1 NAME Bjørnsdatter /Tau/", "1 _FSFTID BBBB-222",
+        "0 @I3@ INDI", "1 NAME Knut /Algotsson/", "1 _FSFTID CCCC-333",
+        "0 @I4@ INDI", "1 NAME Ukendt //", "1 _FSFTID DDDD-444",
+        "0 @I5@ INDI", "1 NAME Lucia /Andersdotter Bure/", "1 _FSFTID EEEE-555",
+        "0 @I6@ INDI", "1 NAME Tollak /Jonsen Aukland/", "1 _FSFTID FFFF-666",
+        "0 @I7@ INDI", "1 NAME Hafrid /Boberg/", "2 TYPE married", "1 NAME Hafrid /Sigtryggsdotter/",
+        "1 _FSFTID GGGG-777",
+        "0 @I8@ INDI", "1 NAME Abel /Valdemarsøn/", "1 _FSFTID HHHH-888",
+        "0 @I9@ INDI", "1 NAME Mother /Anders/", "1 _FSFTID IIII-999",
+        "0 @I10@ INDI", "1 NAME Magla /Oddsdatter Fevoll/", "1 _FSFTID JJJJ-100",
+        "0 @I11@ INDI", "1 NAME Jon //", "1 _FSFTID KKKK-110",
+        "0 @I12@ INDI", "1 NAME Bishop Eirik /Ogmundson Ims/", "1 _FSFTID LLLL-120",
+        "0 @I13@ INDI", "1 NAME Ei /Olufsd Komp/", "1 _FSFTID MMMM-130",
+        "0 TRLR", ""]), encoding="utf-8")
+    live = {("Q1", "mul"): "NN of Kiev", ("Q1", "en"): "NN of Kiev", ("Q1", "ja"): "キエフのNN",
+            ("Q2", "mul"): "NN Bjørnsdatter Tau", ("Q3", "mul"): "NN (Frille)",
+            ("Q4", "mul"): "NN Pedersdatter", ("Q5", "mul"): "NN",
+            ("Q7", "mul"): "NN Næs", ("Q7", "ja"): "金田一",           # Q6: labels not held
+            ("Q8", "mul"): "Abel of Denmark", ("Q9", "mul"): "NN",
+            ("Q10", "mul"): "NN Jonsdatter Stillufseike", ("Q11", "mul"): "NN",
+            ("Q12", "mul"): "NN", ("Q13", "mul"): "NN Komp"}
+    out = mod._unnamed_take_familysearch_names(live, mod.translit(), path=tsv,
+                                               renders=tmp_path / "renders",
+                                               relatives={"Q3": ["Knut Algotsson"]})
+    cmds = [l for l in out if l.startswith("Q")]
+    assert 'Q1\tAmul\t"NN of Kiev"' in cmds
+    assert 'Q1\tLmul\t"Rogneda Mstislavna"' in cmds and 'Q1\tLen\t"Rogneda Mstislavna"' in cmds
+    assert any(l.startswith("Q1\tLja\t") for l in cmds), "ja re-read over our katakana"
+    assert 'Q7\tLmul\t"Hafrid Sigtryggsdotter"' in cmds, "the untyped NAME, not the married one"
+    assert not any(l.startswith("Q7\tLja\t") for l in cmds), "never over kanji"
+    assert 'Q12\tLmul\t"Eirik Ogmundson Ims"' in cmds, "the title comes off"
+    # Q8 is named already; Q9 "Mother"; Q10 another father's daughter; Q11 a bare given name;
+    # Q13 the article "Ei", an unnamed daughter of Oluf.
+    for refused in ("Q2", "Q3", "Q4", "Q5", "Q6", "Q8", "Q9", "Q10", "Q11", "Q13"):
+        assert not any(l.startswith(refused + "\t") for l in cmds), refused
+    assert "Bjørnsdatter Tau" not in "\n".join(cmds) and "Knut" not in "\n".join(cmds)
