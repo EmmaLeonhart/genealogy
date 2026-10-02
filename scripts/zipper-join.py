@@ -619,6 +619,33 @@ FS_ROOTS = {"PFR5-LDS": "6000000087535357291"}
 FS_MAX_ROUNDS = 40
 
 
+def read_verdicts(path=None):
+    """`(same, refused)` from Emma's FamilySearch-deck verdicts in `emma-judgments.tsv`: `same`
+    is `{fs_id: geni_id}` for every pair whose LAST verdict is SAME, `refused` the
+    `(geni_id, fs_id)` pairs whose last verdict is DIFFERENT.
+
+    **The last verdict on a pair wins.** The file is append-only and the deck keeps one verdict
+    per pair, so a later row is a correction of an earlier one. Found 2026-10-02 on Kari "Wind"
+    Fornjotsson (`6000000001669620081`) against `PXPY-MM4` Frosti Kari Karrasson, his son: SAME
+    on 2026-10-01, then DIFFERENT the same day; the walk took every SAME as an anchor and only
+    blocked proposals on the DIFFERENT, so the anchor stood and the whole Fornjot line was paired
+    one generation off (Geni Frosti to FamilySearch Frosti's son, "born 240 vs 240"). Three
+    pairs in the file carried both verdicts that day. The render reads this too.
+    """
+    path = JUDGMENTS if path is None else path
+    last = {}
+    if path.exists():
+        with open(path, encoding="utf-8", newline="") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                fs, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
+                verdict = (row.get("verdict") or "").strip().upper()
+                if FS_ID.match(fs) and g and verdict in ("SAME", "DIFFERENT"):
+                    last[(g, fs)] = verdict
+    same = {fs: g for (g, fs), v in last.items() if v == "SAME"}
+    refused = {(g, fs) for (g, fs), v in last.items() if v == "DIFFERENT"}
+    return same, refused
+
+
 def load_familysearch():
     """Every FamilySearch download as the other side of the zipper, keyed by `_FSFTID`.
 
@@ -735,18 +762,12 @@ def main_familysearch():
     # walk exactly as a bridge row does.
     # A `DIFFERENT` there refuses that exact pairing (Adelus Eriksdatter, 2026-10-02: the walk
     # read only `SAME`, so a pairing Emma had refused could still be proposed).
-    judged, refused = 0, set()
-    if JUDGMENTS.exists():
-        with open(JUDGMENTS, encoding="utf-8", newline="") as f:
-            for row in csv.DictReader(f, delimiter="\t"):
-                fs, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-                verdict = (row.get("verdict") or "").strip().upper()
-                if FS_ID.match(fs) and g and verdict == "SAME":
-                    anchors.setdefault(fs, g)
-                    judged += 1
-                elif FS_ID.match(fs) and g and verdict == "DIFFERENT":
-                    refused.add((g, fs))
-    print(f"{judged} FamilySearch deck verdicts read back as anchors, {len(refused)} refusals")
+    # The LAST verdict on a pair wins (`read_verdicts`): a SAME later judged DIFFERENT anchors
+    # nothing (the Fornjot line, 2026-10-02).
+    same, refused = read_verdicts()
+    for fs, g in same.items():
+        anchors.setdefault(fs, g)
+    print(f"{len(same)} FamilySearch deck verdicts read back as anchors, {len(refused)} refusals")
     for fs, g in anchors.items():
         stated_g[g].add(fs)
         stated_q[fs].add(g)

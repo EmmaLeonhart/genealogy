@@ -78,3 +78,25 @@ def test_a_different_verdict_refuses_the_pairing():
                                                refused=frozenset({("f", "FF")}))
     assert "f" not in pairs
     assert any(c["geni_id"] == "f" and c["recorded_qid"] == "DIFFERENT" for c in conflicts)
+
+
+def test_the_last_verdict_on_a_pair_wins(tmp_path):
+    """Kari "Wind" Fornjotsson against `PXPY-MM4` (2026-10-02): SAME, then DIFFERENT, and the
+    walk kept the SAME as an anchor while only blocking proposals on the DIFFERENT, so the whole
+    Fornjot line was paired one generation off. `read_verdicts` keeps the last verdict per pair:
+    a SAME later judged DIFFERENT is a refusal, and a DIFFERENT later judged SAME an anchor."""
+    zj = _zipper()
+    path = tmp_path / "judgments.tsv"
+    path.write_text(
+        "date\tbatch\tn\tround\tgeni_id\tour_name\tqid\ttheir_name\tverdict\ther_words\n"
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t1\tKari\tPXPY-MM4\tFrosti Kari\tSAME\t\n"
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t1\tKari\tPXPY-MM4\tFrosti Kari\tDIFFERENT\t\n"
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t2\tA\tAAAA-111\tA\tDIFFERENT\t\n"
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t2\tA\tAAAA-111\tA\tSAME\t\n"
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t3\tB\tBBBB-222\tB\tSAME\t\n"
+        "2026-10-01\tparent-deck\t\t\t4\tC\tQ123\tC\tSAME\t\n",      # a Wikidata verdict, not ours
+        encoding="utf-8")
+    same, refused = zj.read_verdicts(path)
+    assert same == {"AAAA-111": "2", "BBBB-222": "3"}
+    assert refused == {("1", "PXPY-MM4")}
+    assert zj.read_verdicts(tmp_path / "missing.tsv") == ({}, set())

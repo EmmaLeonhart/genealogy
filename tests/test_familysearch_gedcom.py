@@ -440,9 +440,14 @@ def test_the_render_puts_a_verdict_anchor_on_its_geni_id(tmp_path):
         "2026-09-30\tfamilysearch-parent-deck\t\t\t6000000003281256924\tErich\tL89V-S6W\tErich\tSAME\t\n"
         "2026-09-30\tfamilysearch-parent-deck\t\t\t6000000003281256924\tErich\tPCFL-GSL\tErik\tDIFFERENT\t\n"
         "2026-09-30\tfamilysearch-parent-deck\t\t\t444\tX\tGVBB-VT7\tX\tSAME\t\n"
-        "2026-09-30\tfamilysearch-parent-deck\t\t\t555\tY\tAAAA-BBB\tY\tSAME\t\n",
+        "2026-09-30\tfamilysearch-parent-deck\t\t\t555\tY\tAAAA-BBB\tY\tSAME\t\n"
+        # Kari "Wind" Fornjotsson (2026-10-02): SAME, then DIFFERENT. The later verdict wins, so
+        # this FamilySearch record is NOT keyed on the Geni id.
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t666\tKari\tPXPY-MM4\tFrosti Kari\tSAME\t\n"
+        "2026-10-01\tfamilysearch-parent-deck\t\t\t666\tKari\tPXPY-MM4\tFrosti Kari\tDIFFERENT\t\n",
         encoding="utf-8")
     got = mod.load_bridge(bridge, zipper, judged)
+    assert "PXPY-MM4" not in got
     assert got["L89V-S6W"] == "6000000003281256924"
     assert "PCFL-GSL" not in got
     assert got["GVBB-VT7"] == "444"

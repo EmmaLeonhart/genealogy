@@ -92,6 +92,15 @@ def clean(fs_id: str) -> str:
     return re.sub(r"[^0-9A-Za-z]", "", fs_id).upper()
 
 
+def _zipper():
+    """`scripts/zipper-join.py` as a module, for the verdict reader the walk itself uses."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zipper_join", ROOT / "scripts" / "zipper-join.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER,
                 judgments: Path = JUDGMENTS) -> dict[str, str]:
     """`{fs_id: geni_id}` for every FamilySearch person the bridge OR THE ZIPPER puts on a Geni id.
@@ -114,13 +123,10 @@ def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER,
             return {r["fs_id"]: r["geni_id"] for r in csv.DictReader(fh, delimiter="\t")
                     if r.get("fs_id") and r.get("geni_id")}
     out = rows(zipper)
-    if judgments.exists():
-        with open(judgments, encoding="utf-8", newline="") as fh:
-            out.update({r["qid"].strip(): r["geni_id"].strip()
-                        for r in csv.DictReader(fh, delimiter="\t")
-                        if FS_ID.match((r.get("qid") or "").strip())
-                        and (r.get("geni_id") or "").strip()
-                        and (r.get("verdict") or "").strip().upper() == "SAME"})
+    # The zipper's own reader, so the two cannot disagree about a verdict: the LAST verdict on
+    # a pair wins, and a SAME later judged DIFFERENT anchors nothing (the Fornjot line,
+    # 2026-10-02: Kari "Wind" Fornjotsson stayed keyed to his son's FamilySearch record).
+    out.update(_zipper().read_verdicts(judgments)[0])
     out.update(rows(path))
     out.update(FS_ROOTS)
     return out
