@@ -567,6 +567,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   the `pipeline.yml` gate. It did **not** clear the third, the edit to the three workflow gates.
   So ask, retry once with the authorization, and if it is refused again, ask again. Never
   rephrase the action to slip past the check.
+- **⛔ REPORT THE UNEXPECTED FIRST. Ruled 2026-10-02 (Emma):** *"Oftentimes, the repo skips over unexpected stuff, like it's not important ... it kind of refuses to give the information because it prejudged it as being unimportant. I think that's kind of the core issue."* When work turns up something surprising (a parent link that cannot be real, a constant pointing at the wrong person, a row that contradicts itself, a result from a different source than expected, a removed value back on Wikidata), say it first and plainly, in the reply and the devlog. Never filter it out, work around it silently, or leave it as an aside.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
 - **⛔ AN INCOMPLETE OPERATION IS WORSE THAN A COMPLETED WRONG ONE. Ruled 2026-10-01 (Emma),

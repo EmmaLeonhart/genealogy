@@ -2113,6 +2113,17 @@ def ledger_redirects():
     return out
 
 
+def removed_fs_ids():
+    """The `P2889` values removed on Emma's order, from `FS_ID_REMOVALS`."""
+    removed = set()
+    if FS_ID_REMOVALS.exists():
+        for rl in FS_ID_REMOVALS.read_text(encoding="utf-8").splitlines():
+            rp = rl.split("\t")
+            if len(rp) == 3 and rp[0].startswith("-Q") and rp[1] == "P2889":
+                removed.add(rp[2].strip('"'))
+    return removed
+
+
 def add_fs_id_statements(lines, our_items, live_values):
     """`P2889` *FamilySearch person ID* as a statement wherever we cite it, not only as a reference.
 
@@ -2123,6 +2134,11 @@ def add_fs_id_statements(lines, our_items, live_values):
     """
     family_source("", "", "")                       # loads `_FS_IDS`
     qid_to_geni = {q: g for g, q in our_items.items()}
+    # ⛔ A value removed on Emma's order (2026-10-01) is never sent again, BY ANY PASS BELOW.
+    # Only the backfill checked it, so the cited pass put 55 of the 574 back on 2026-10-02
+    # (`G644-GSR` on `Q101247862` among them, batch 1790931548881), and the `P1810` repair pass
+    # restated them.
+    removed = removed_fs_ids()
     out, added, current_geni, block_has = [], 0, None, False
     cited, stated = set(), {q for q, p, _v in live_values if p == "P2889"}
     for ln in lines:
@@ -2142,19 +2158,12 @@ def add_fs_id_statements(lines, our_items, live_values):
             cited.add(parts[0])
     for q in sorted(cited - stated, key=lambda x: int(x[1:])):
         fs = _FS_IDS.get(qid_to_geni.get(q, ""))
-        if fs:
+        if fs and fs not in removed:
             out.append(f"#   {q}: its FamilySearch person ID as a statement, not only a reference")
             out.append(f'{q}\tP2889\t"{fs}"{fs_named_as(fs)}')
             added += 1
     # Backfill: an existing item whose claims we hold (so "no P2889" is known, not guessed) and
-    # that has none gets its own id, at most FS_ID_BACKFILL_PER_RUN a run. A value removed on
-    # Emma's order is never sent again.
-    removed = set()
-    if FS_ID_REMOVALS.exists():
-        for rl in FS_ID_REMOVALS.read_text(encoding="utf-8").splitlines():
-            rp = rl.split("\t")
-            if len(rp) == 3 and rp[0].startswith("-Q") and rp[1] == "P2889":
-                removed.add(rp[2].strip('"'))
+    # that has none gets its own id, at most FS_ID_BACKFILL_PER_RUN a run.
     known = {q for q, _p, _v in live_values if re.fullmatch(r"Q\d+", q)}
     backfill = []
     for q in sorted(known - cited - stated, key=lambda x: int(x[1:])):
@@ -2175,6 +2184,7 @@ def add_fs_id_statements(lines, our_items, live_values):
         ((q, e) for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json"))
          for q, e in sorted(json.loads(shard.read_text(encoding="utf-8")).items())),
         set(qid_to_geni), fs_named_as, FS_NAMED_AS_PER_RUN)
+    named = [ln for ln in named if not any(f'"{fs}"' in ln for fs in removed)]
     out.extend(named)
     print(f"FamilySearch ids: {len(named)} live P2889 given P1810 (cap {FS_NAMED_AS_PER_RUN})")
     return out

@@ -1464,6 +1464,27 @@ def test_an_existing_item_with_no_familysearch_id_is_backfilled_capped():
     assert not any("\tP2889\t" in ln for ln in mod.add_fs_id_statements([], items, live))
 
 
+def test_a_removed_familysearch_id_is_not_restated_from_a_citation():
+    """2026-10-02: the cited pass put `G644-GSR` back on `Q101247862` (55 of the 574 removed on
+    Emma's order) because only the backfill read the removal list."""
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod._FAMILY_SOURCES = {}
+    mod._FS_IDS.clear()
+    mod._FS_IDS.update({"4": "G644-GSR", "5": "EEEE-555"})
+    mod.FS_ID_BACKFILL_PER_RUN = 0
+    mod.FS_NAMED_AS_PER_RUN = 0
+    lines = ['Q101247862\tP26\tQ9\tS2889\t"G644-GSR"', 'Q5\tP26\tQ9\tS2889\t"EEEE-555"']
+    out = mod.add_fs_id_statements(lines, {"4": "Q101247862", "5": "Q5"}, set())
+    assert not any(ln.startswith("Q101247862\tP2889") for ln in out)
+    assert 'Q5\tP2889\t"EEEE-555"' in out
+
+
 def test_an_unnumbered_given_name_takes_the_free_position():
     """2026-09-28, `Q141550240`: Efraim unnumbered, Wilhelm `P1545` 2, composed `Efraim Wilhelm`."""
     import importlib.util
