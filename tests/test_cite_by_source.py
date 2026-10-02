@@ -212,3 +212,30 @@ def test_a_hand_label_row_retires_once_it_is_live(tmp_path):
     rows = f.read_text(encoding="utf-8").splitlines()
     assert [r.split("\t")[0] for r in rows[1:]] == ["Q2", "Q3", "Q4"]
     assert ns["retire_applied_labels"](f, live) == 0
+
+
+def test_a_live_familysearch_id_gets_its_subject_named_as():
+    """Emma, 2026-10-01: every `P2889` carries `P1810`, the FamilySearch name, as a Geni id carries
+    the Geni name. Live statements without it are repeated WITH it (the sender attaches it by
+    GUID); one that has it, a deprecated one, someone else's item and a name the reader refuses
+    are left alone, and the pass stops at its cap."""
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
+                       if isinstance(n, ast.FunctionDef) and n.name == "fs_named_as_repairs")
+    ns = {}
+    exec(code, ns)
+    repair = ns["fs_named_as_repairs"]
+
+    def claim(fs, quals=None, rank="normal"):
+        return {"mainsnak": {"datavalue": {"value": fs}}, "rank": rank, "qualifiers": quals or {}}
+    names = {"AAAA-111": '\tP1810\t"Kari Toresdatter"', "BBBB-222": '\tP1810\t"Ola"'}
+    ents = [("Q1", {"claims": {"P2889": [claim("AAAA-111")]}}),
+            ("Q2", {"claims": {"P2889": [claim("BBBB-222", {"P1810": [{}]})]}}),
+            ("Q3", {"claims": {"P2889": [claim("BBBB-222", rank="deprecated")]}}),
+            ("Q4", {"claims": {"P2889": [claim("AAAA-111")]}}),
+            ("Q5", {"claims": {"P2889": [claim("CCCC-333")]}})]
+    named = lambda fs: names.get(fs, "")
+    assert repair(ents, {"Q1", "Q2", "Q3", "Q5"}, named, 10) == [
+        'Q1\tP2889\t"AAAA-111"\tP1810\t"Kari Toresdatter"']
+    assert repair(ents, {"Q1", "Q4"}, named, 1) == ['Q1\tP2889\t"AAAA-111"\tP1810\t"Kari Toresdatter"']

@@ -906,6 +906,41 @@ FS_ID_BACKFILL_PER_RUN = 150
 #: FamilySearch person). The backfill never sends one again.
 FS_ID_REMOVALS = ROOT / "reports" / "wikidata-p2889-removals.qs"
 
+#: Live `P2889` statements given their `P1810` *subject named as* a run (Emma, 2026-10-01).
+FS_NAMED_AS_PER_RUN = 150
+_FS_NAMES = None
+
+
+def familysearch_names():
+    """`{fs_id: name}` as the FamilySearch downloads give it, from the zipper's own reader.
+
+    Emma, 2026-10-01: every `P2889` carries `P1810` *subject named as*, the FamilySearch name,
+    the way a Geni id carries the Geni name. Empty when the downloads are absent.
+    """
+    global _FS_NAMES
+    if _FS_NAMES is None:
+        _FS_NAMES = {}
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location(
+                "zipper_join", ROOT / "scripts" / "zipper-join.py")
+            zj = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(zj)
+            _FS_NAMES = {fs: " ".join(n.split()) for fs, n in zj.load_familysearch()[1].items()
+                         if n and n.split()}
+        except Exception as exc:                                    # noqa: BLE001
+            print(f"FamilySearch names unavailable ({exc}); P2889 goes out without P1810")
+    return _FS_NAMES
+
+
+def fs_named_as(fs):
+    """The `\\tP1810\\t"..."` qualifier for FamilySearch id `fs`, or `""`; never a marker name."""
+    name = familysearch_names().get(fs, "")
+    if (not name or _carries_marker(re.sub(r"[-–]", " ", name))
+            or "private" in name.casefold()):
+        return ""
+    return f'\tP1810\t"{qs(name)}"'
+
 
 def _jan1_pairs():
     """`{geni_id: qid}` from `build-qid-links-gedcom.PAIRS` -- the pairs that become entry
@@ -2073,7 +2108,7 @@ def add_fs_id_statements(lines, our_items, live_values):
             current_geni = parts[2].strip('"')
             fs = _FS_IDS.get(current_geni)
             if fs:
-                out.append(f'LAST\tP2889\t"{fs}"')
+                out.append(f'LAST\tP2889\t"{fs}"{fs_named_as(fs)}')
                 block_has, added = True, added + 1
         if re.fullmatch(r"Q\d+", parts[0]) and "\tS2889\t" in ln:
             cited.add(parts[0])
@@ -2081,7 +2116,7 @@ def add_fs_id_statements(lines, our_items, live_values):
         fs = _FS_IDS.get(qid_to_geni.get(q, ""))
         if fs:
             out.append(f"#   {q}: its FamilySearch person ID as a statement, not only a reference")
-            out.append(f'{q}\tP2889\t"{fs}"')
+            out.append(f'{q}\tP2889\t"{fs}"{fs_named_as(fs)}')
             added += 1
     # Backfill: an existing item whose claims we hold (so "no P2889" is known, not guessed) and
     # that has none gets its own id, at most FS_ID_BACKFILL_PER_RUN a run. A value removed on
@@ -2102,10 +2137,37 @@ def add_fs_id_statements(lines, our_items, live_values):
         out.append(f"#   FamilySearch person ID backfill: {min(len(backfill), FS_ID_BACKFILL_PER_RUN)}"
                    f" of {len(backfill)} existing items with none")
     for q, fs in backfill[:FS_ID_BACKFILL_PER_RUN]:
-        out.append(f'{q}\tP2889\t"{fs}"')
+        out.append(f'{q}\tP2889\t"{fs}"{fs_named_as(fs)}')
         added += 1
     if added:
         print(f"FamilySearch ids: {added} P2889 statement(s) added where we cite FamilySearch")
+    # The live `P2889`s with no `P1810`: the statement again WITH the qualifier, which the sender
+    # attaches by GUID and QuickStatements adds to the existing statement (as for `P1039`).
+    named = fs_named_as_repairs(
+        ((q, e) for shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json"))
+         for q, e in sorted(json.loads(shard.read_text(encoding="utf-8")).items())),
+        set(qid_to_geni), fs_named_as, FS_NAMED_AS_PER_RUN)
+    out.extend(named)
+    print(f"FamilySearch ids: {len(named)} live P2889 given P1810 (cap {FS_NAMED_AS_PER_RUN})")
+    return out
+
+
+def fs_named_as_repairs(entities, ours, named_as, cap):
+    """`Q P2889 "id" P1810 "name"` for live `P2889` statements of our items that carry no
+    `P1810` (Emma, 2026-10-01). `named_as(fs)` is the qualifier fragment or `""`."""
+    out = []
+    for q, entity in entities:
+        if q not in ours:
+            continue
+        for c in ((entity or {}).get("claims") or {}).get("P2889", []):
+            if len(out) >= cap:
+                return out
+            if c.get("rank") == "deprecated" or "P1810" in (c.get("qualifiers") or {}):
+                continue
+            fs = ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value")
+            qual = named_as(fs) if isinstance(fs, str) else ""
+            if qual:
+                out.append(f'{q}\tP2889\t"{fs}"{qual}')
     return out
 
 
