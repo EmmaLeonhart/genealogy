@@ -164,9 +164,45 @@ def removed():
     return out
 
 
+#: ⛔ **UNCAPPED FOR THE UNIVERSE AND ITS RING, NOT FOR EVERYTHING. Ruled 2026-10-02 (Emma):**
+#: *"it was supposed to be an uncapped thing for relationships within our universe and from our
+#: universe to other things. It was supposed to be uncapped for the ring, not just for
+#: everything."* The first build (`d12c26ab2`) took any ledger row as an anchor and had no
+#: universe gate; its run was stopped at 731 edits.
+EDIT_UNIVERSE = REPO / "out" / "wikidata" / "edit-universe.json"
+
+
+def scope(ours_rows):
+    """`(members, ring)`.
+
+    Members: the composer's universe, plus every item the account edited (the ledger, without
+    its entry-point rows, which name items nobody edited). A statement needs one end a member;
+    the other end is then one step beyond by the link itself. Ring (the composer's one-step set
+    and what Wikidata already links to a member) is returned for reporting only.
+    """
+    import json
+    d = json.loads(EDIT_UNIVERSE.read_text(encoding="utf-8"))
+    members = set(d.get("universe") or ())
+    members |= {q for q, note in ours_rows if not note.startswith("entry point")}
+    ring = set(d.get("one_step") or ())
+    with open(RELATIONS, encoding="utf-8", newline="") as fh:
+        fh.readline()
+        for line in fh:
+            parts = line.rstrip(NL).split(TAB)
+            linked = {v for cell in parts[1:6] for v in cell.split(";") if v}
+            if parts[0] in members:
+                ring |= linked
+            elif linked & members:
+                ring.add(parts[0])
+    return members, ring - members
+
+
 def main() -> int:
     csv.field_size_limit(1 << 30)
     ours, placed, ambiguous = identities()
+    members, ring = scope([(r["qid"].strip(), r.get("note") or "") for r in read_tsv(LEDGER)
+                           if (r.get("qid") or "").startswith("Q")])
+    print(f"scope: {len(members):,} members, {len(ring):,} in the ring")
     links, fs_ids = read_sources()
     by_fs = fs_roster()
     print(f"our items: {len(ours):,}; Geni ids placed on one item: {len(placed):,} "
@@ -253,8 +289,9 @@ def main() -> int:
         if qa == qb:
             counts["both ends are one item"] += 1
             continue
-        if qa not in ours and qb not in ours:
-            counts["neither end is ours"] += 1
+        # The other end is a relative of a member, so one step beyond it by this very link.
+        if qa not in members and qb not in members:
+            counts["outside the universe and its ring"] += 1
             continue
         key = (qa, prop, qb)
         if key in seen:
@@ -271,8 +308,8 @@ def main() -> int:
 
     lines.sort(key=lambda r: (r[0][0], int(r[0][1:]), r[1], int(r[2][1:])))
     header = [
-        "# Every relationship our tree gives between our items and any item we can place,",
-        "# both directions, uncapped and without the universe gate. Emma, 2026-10-02.",
+        "# Every relationship our tree gives inside the universe and its ring, both directions,",
+        "# uncapped inside that scope. Emma, 2026-10-02.",
         "# Skips what Wikidata already holds and anything a person removed.",
     ]
     OUT.write_text(NL.join(header + [r[3] for r in lines]) + NL, encoding="utf-8", newline=NL)
