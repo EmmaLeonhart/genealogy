@@ -535709,32 +535709,6 @@
       "P582"
      ],
      "rank": "normal",
-     "references": [
-      {
-       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
-       "snaks": {
-        "P143": [
-         {
-          "datatype": "wikibase-item",
-          "datavalue": {
-           "type": "wikibase-entityid",
-           "value": {
-            "entity-type": "item",
-            "id": "Q328",
-            "numeric-id": 328
-           }
-          },
-          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
-          "property": "P143",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P143"
-       ]
-      }
-     ],
      "type": "statement"
     },
     {
@@ -535753,6 +535727,86 @@
       "property": "P39",
       "snaktype": "value"
      },
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q298263$bb6a0ef8-4bbd-2d51-0120-d1e8a6f00278",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q890021",
+        "numeric-id": 890021
+       }
+      },
+      "hash": "3c00881522ddb0e1d7227337759e8517804a7849",
+      "property": "P39",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1365": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q327849",
+          "numeric-id": 327849
+         }
+        },
+        "hash": "a090376970632cf3fa9e8a97d47a1c055a7826ed",
+        "property": "P1365",
+        "snaktype": "value"
+       }
+      ],
+      "P580": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+          "precision": 9,
+          "time": "+0841-00-00T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "05bbcc7296fe11af379923cdf1228ffb3124b9e9",
+        "property": "P580",
+        "snaktype": "value"
+       }
+      ],
+      "P582": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+          "precision": 9,
+          "time": "+0850-00-00T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "7e9e2b62327ba0adfb667032dfb001b83f612eec",
+        "property": "P582",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P580",
+      "P582",
+      "P1365"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -536988,8 +537042,8 @@
     "value": "肯尼思一世"
    }
   },
-  "lastrevid": 2551976727,
-  "modified": "2026-10-02T01:05:14Z",
+  "lastrevid": 2552188021,
+  "modified": "2026-10-02T14:19:20Z",
   "ns": 0,
   "pageid": 287589,
   "sitelinks": {
