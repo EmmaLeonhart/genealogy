@@ -1465,3 +1465,25 @@ closely.
 
 **References** — P248 stated in, P854 reference URL, P813 retrieved,
 P143 imported from Wikimedia project.
+
+## ⛔ More than one patronymic: Emma's model on `Q141562457` (2026-09-27)
+
+`Johan Erici Ersson Spak`, son of Erik Olofsson Spak, as Emma modelled him by hand:
+
+    P735  Johan
+    P5056 Erici   (Q141313537)  P144 father  P3831 Q141584748 Latin patronymic
+    P5056 Ersson  (Q141584718)  P144 father  P3831 Q141584760 Scandinavian patronymic
+    P734  Spak
+
+- **Each patronymic is its own `P5056`**, each qualified `P144` with the father (the person) and,
+  when the person has more than one, `P3831` *object has role* naming its culture:
+  `Q141584748` *Latin patronymic* or `Q141584760` *Scandinavian patronymic*. Both classes are
+  `P279` `Q110874`. A form of any other culture gets no role (no class item exists).
+- **Each patronymic item is `P31` both `Q110874` and its culture class** (`Erici`: Latin,
+  `Ersson`: Scandinavian).
+- **Patronymics are read by form before the surname field takes the rest**: `Erici` in `GIVN`
+  behind a vernacular first name is a patronymic (only `Olai`, `Nicolai`, `Olavi` are also given
+  names, `LATIN_FORMS_USED_AS_GIVEN`); `Ersson` is Erik's son (`CONTRACTED_PATRONYMIC_STEMS`);
+  `Spak` stays the family name.
+- Code: `namemodel.patronymic_culture`, `statements_for`. Tests: `test_spak_*` in
+  `tests/test_namemodel.py`.

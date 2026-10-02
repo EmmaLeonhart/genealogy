@@ -112,6 +112,25 @@ NICKNAME = "P1449"           # nickname
 BIRTH_NAME_ROLE = "Q2507958"   # birth name
 MARRIED_NAME_ROLE = "Q28418670"  # married name
 
+#: ⛔ **A PERSON WITH MORE THAN ONE PATRONYMIC CARRIES ITS CULTURE AS A ROLE.** Emma's hand
+#: model on `Q141562457` *Johan Erici Ersson Spak* (2026-09-27): each `P5056` keeps `P144` the
+#: father and adds `P3831` *object has role*, `Erici` -> `Q141584748` *Latin patronymic*,
+#: `Ersson` -> `Q141584760` *Scandinavian patronymic*; both classes are `P279` `Q110874`, and
+#: each patronymic item is `P31` both `Q110874` and its class. A form of any other culture
+#: gets no role: no class item exists for it. See `patronymic_culture`.
+#: Latin genitives that are ALSO vernacular given names (census 2026-09-25,
+#: `reports/name-rule-census/latin_vernacular.csv`): only these read as a given name when they
+#: stand among vernacular names in `GIVN`. Folded.
+LATIN_FORMS_USED_AS_GIVEN = {"olai", "nicolai", "olavi"}
+
+#: Contracted Scandinavian patronymic stems and the father's given names they come from.
+CONTRACTED_PATRONYMIC_STEMS = {"er": {"erik", "eric", "erick", "erich", "ericu"}}
+
+LATIN_PATRONYMIC_ROLE = "Q141584748"         # Latin patronymic
+SCANDINAVIAN_PATRONYMIC_ROLE = "Q141584760"  # Scandinavian patronymic
+SCANDINAVIAN_PATRONYMIC = re.compile(
+    r".+?(sen|son|sson|søn|sønn|datter|dotter|d[oó]ttir|s(?:dtr|d|dr|dt|dtt|dttr))\.?$", re.I)
+
 #: `-sen`, `-son`, `-sson`, `-datter`, `-sdatter`. On the Norwegian material the daughter
 #: and son forms are the same thing — one category, not two.
 #: **`dotter` is the Swedish form and was missing.** `datter` is Norwegian and Danish;
@@ -1697,6 +1716,21 @@ LATIN_VERNACULAR = {
 }
 
 
+def patronymic_culture(token: str) -> str:
+    """The `P3831` role naming a patronymic's culture, or `''` (see `LATIN_PATRONYMIC_ROLE`).
+
+    Scandinavian by its suffix (`Ersson`, `Jonsdotter`, `Pedersdtr`); Latin when it is no
+    vernacular form and ends in a Latin genitive (`Erici`, `Jonæ`, `Svenonis`). The caller has
+    already established it IS a patronymic, with the father; this only names the culture.
+    """
+    if SCANDINAVIAN_PATRONYMIC.match(token or ""):
+        return SCANDINAVIAN_PATRONYMIC_ROLE
+    if token and not is_patronymic(token) and _fold(token).endswith(
+            tuple(_fold(e) for e in LATIN_GENITIVE_ENDINGS)):
+        return LATIN_PATRONYMIC_ROLE
+    return ""
+
+
 def latin_patronymic_source(token: str, father_given: str) -> str:
     """The father's given name `token` is the Latin genitive of, or `""`.
 
@@ -2727,6 +2761,13 @@ def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "")
         return "patronymic"
     raw = m.group(1).casefold()
     stem = raw.rstrip("s")
+    # ⛔ **`Ersson` IS ERIK'S SON.** The Swedish contraction shares no stem with the father's
+    # name, so 575 `Ersson`/`Ersdotter` children of an `Erik`/`Eric` read as an inherited
+    # family name (`Q141562457`, Emma's Spak model, 2026-09-27). Named, not generalised.
+    if stem in CONTRACTED_PATRONYMIC_STEMS and any(
+            t.casefold().rstrip("s") in CONTRACTED_PATRONYMIC_STEMS[stem]
+            for t in parts + (also_known_as or "").split()):
+        return "patronymic"
     # The other spellings join the GIVEN names and nothing else -- see the docstring: they are
     # evidence about which name the father bore, never about which token he was called by.
     parts += [t for t in re.split(r"\s+", (also_known_as or "").strip()) if t]
@@ -3186,8 +3227,13 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     _first_latin = _fold(_first).endswith(("us", "as", "es")) or _fold(_first) in LATIN_VERNACULAR
     _vernacular_patronymic = any(is_patronymic(t) for t in _givn_tokens + (surn or "").split())
 
+    # ⛔ **ONLY THE FORMS THE CENSUS NAMED.** The second branch was written for `Olai`, `Nicolai`
+    # and `Olavi`, which ARE vernacular given names; it caught every Latin genitive behind a
+    # vernacular first name, so `Johan Erici /Ersson Spak/` (`Q141562457`, Emma's Spak model,
+    # 2026-09-27) lost `Erici` to a `P735`. `Erici`, `Petri`, `Johannis` are never given names.
     def _latin_is_given(position):
-        return position == 0 or (_vernacular_patronymic and not _first_latin)
+        return position == 0 or (_vernacular_patronymic and not _first_latin
+                                 and _fold(_givn_tokens[position]) in LATIN_FORMS_USED_AS_GIVEN)
 
     for position, token in enumerate([] if (is_description(raw_givn) or _relation_phrase)
                                      else join_particles(_givn_tokens)):
@@ -3449,6 +3495,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     carries `P3831` -> `Q28418670` *married name*. On a man it does not -- see below.
     """
     lines, notes = [], []
+    _culture = {}                      # line index -> patronymic culture role
     aliases = []
     given_count = 0
 
@@ -3573,6 +3620,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         elif usage == "patronymic":
             quals = [("P144", father_qid)] if father_qid else []
             lines.append((PATRONYM, qid, quals))
+            _culture[len(lines) - 1] = patronymic_culture(token)
         elif usage == "married":
             # Ruled 2026-08-24: a SECOND `P734`, qualified married against birth.
             # **`Q28418670` *married name* only on a woman**, ruled the same day: a married
@@ -3609,6 +3657,11 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     # general de-duplication pass over the data. This drops a byte-identical repeat of one
     # statement inside one generated batch, which asserts nothing the first did not.
     # Leaving it in was the call made earlier today and the suite was right to refuse it.
+    # The culture role goes on only where the person has more than one patronymic (the
+    # Spak model, see `LATIN_PATRONYMIC_ROLE`): with one there is nothing to tell apart.
+    if len({v for p, v, _q in lines if p == PATRONYM}) > 1:
+        lines = [(p, v, q + [(HAS_ROLE, _culture[i])] if _culture.get(i) else q)
+                 for i, (p, v, q) in enumerate(lines)]
     deduped, seen = [], set()
     for prop, value, quals in lines:
         key = (prop, value, tuple(quals))

@@ -1778,3 +1778,44 @@ def test_a_latin_patronymic_outside_the_plan_links_our_created_item(monkeypatch)
     lines, _ = statements_for("Olof Jonsson", plan, "1", None,
                               fields={"givn": "Olof", "surn": "", "nick": "", "marnm": ""})
     assert not any(v == "Q999" for _p, v, _q in lines)
+
+
+def test_spak_two_patronymics_and_a_surname_follow_emmas_model():
+    """`Q141562457` *Johan Erici Ersson Spak* (Emma's hand model, 2026-09-27): `GIVN` Johan
+    Erici, `SURN` Ersson Spak, father Erik Olofsson Spak. Erici is the Latin patronymic,
+    Ersson the Scandinavian one, Spak the family name; each patronymic carries its culture."""
+    toks = namemodel.classify_fields("Johan Erici", "Ersson Spak", "", "",
+                                     "Erik Olofsson Spak", "", "Erik")
+    assert toks == [("Johan", "given", 1), ("Erici", "patronymic", 0),
+                    ("Ersson", "patronymic", 0), ("Spak", "family", 0)]
+    plan = {("Johan", "given"): ("Q10989273", "link"),
+            ("Ersson", "patronymic"): ("Q141584718", "link"),
+            ("Erici", "patronymic"): ("Q141313537", "link"),
+            ("Spak", "family"): ("Q37140936", "link")}
+    lines, notes = statements_for(
+        "Johan Erici Ersson Spak", plan, "6000000037597268342", "Q141499615",
+        fields={"givn": "Johan Erici", "surn": "Ersson Spak", "nick": "", "marnm": ""},
+        sex="M", father_name="Erik Olofsson Spak", father_given="Erik")
+    assert (PATRONYM, "Q141313537", [("P144", "Q141499615"), ("P3831", "Q141584748")]) in lines
+    assert (PATRONYM, "Q141584718", [("P144", "Q141499615"), ("P3831", "Q141584760")]) in lines
+    assert (FAMILY_NAME, "Q37140936", []) in lines
+    assert not notes
+
+
+def test_one_patronymic_gets_no_culture_role():
+    plan = {("Ersson", "patronymic"): ("Q141584718", "link")}
+    lines, _ = statements_for("Anders Ersson", plan, "2700192", "Q1",
+                              fields={"givn": "Anders", "surn": "Ersson", "nick": "", "marnm": ""},
+                              father_name="Erik Persson", father_given="Erik")
+    assert (PATRONYM, "Q141584718", [("P144", "Q1")]) in lines
+
+
+def test_nicolai_among_vernacular_names_is_still_a_given_name():
+    toks = namemodel.classify_fields("Johan Nicolai", "Nilsson", "", "", "Nils Olsen", "", "Nils")
+    assert ("Nicolai", "given", 2) in toks
+
+
+def test_ersson_is_eriks_son_not_a_family_name():
+    assert namemodel.patronymic_or_surname("Ersson", "Erik Persson") == "patronymic"
+    assert namemodel.patronymic_or_surname("Ersdotter", "Eric Jansson") == "patronymic"
+    assert namemodel.patronymic_or_surname("Ersson", "Nils Ersson") == "family"
