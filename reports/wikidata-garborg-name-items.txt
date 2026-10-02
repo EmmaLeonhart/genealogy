@@ -16,167 +16,247 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# de Picquigny -- family, 6 bearer(s) in the batches
+# af Gennäs -- family, 10 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "de Picquigny"
-LAST	Len	"de Picquigny"
-#   set the mul label to "de Picquigny"
-LAST	Lmul	"de Picquigny"
+#   the item just created: set the en label to "af Gennäs"
+LAST	Len	"af Gennäs"
+#   set the mul label to "af Gennäs"
+LAST	Lmul	"af Gennäs"
+#   set the ja label to "アフ・ゲンネス"
+LAST	Lja	"アフ・ゲンネス"
+#   set the zh label to "阿夫·盖内斯"
+LAST	Lzh	"阿夫·盖内斯"
+#   set the ko label to "아프 겐네스"
+LAST	Lko	"아프 겐네스"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"de Picquigny"
-LAST	P1705	mul:"de Picquigny"
+#   P1705 native label = mul:"af Gennäs"
+LAST	P1705	mul:"af Gennäs"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q1357094 Guermond de Picquigny: P734 family name = the item just created
-Q1357094	P734	LAST	S2600	"6000000001323506976"
-#   Q115633976 Gérard Ier de Picquigny: P734 family name = the item just created
-Q115633976	P734	LAST	S2600	"6000000002198392736"
-#   Q115633979 Arnoul de Picquigny: P734 family name = the item just created
-Q115633979	P734	LAST	S2600	"6000000003828058140"
-#   Q115633980 Eustache I de Picquigny: P734 family name = the item just created
-Q115633980	P734	LAST	S2600	"6000000003828058154"
+#   Q141569467 Brita Beata Kalitin: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141569467	P734	LAST	P3831	Q28418670	S2600	"6000000007631852226"
+#   Q61963169 Margareta Boije: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q61963169	P734	LAST	P3831	Q28418670	S2600	"6000000007787345019"
+#   Q5580881 Carl Gustaf Boije af Gennäs: P734 family name = the item just created
+Q5580881	P734	LAST	S2600	"6000000011536457635"
+#   Q141219062 Hedvig Ulrika Boije af Gennäs: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
+#   Q141529429 Erik Ernst Boije af Gennäs: P734 family name = the item just created
+Q141529429	P734	LAST	S2600	"6000000012888566217"
+#   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
+Q5580892	P734	LAST	S2600	"6000000020865415341"
+#   Q141500851 Fredrik Eriksson Boije af Gennäs: P734 family name = the item just created
+Q141500851	P734	LAST	S2600	"6000000020865417405"
+#   Q141518007 Göran Vilhelm Boije af Gennäs: P734 family name = the item just created
+Q141518007	P734	LAST	S2600	"6000000039479021935"
+#   Q141516265 Carl Henrik Boije af Gennäs: P734 family name = the item just created
+Q141516265	P734	LAST	S2600	"6000000039510457629"
 
-# Isserles -- family, 5 bearer(s) in the batches
+# Gjerdeskvål -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Isserles"
-LAST	Len	"Isserles"
-#   set the mul label to "Isserles"
-LAST	Lmul	"Isserles"
-#   set the ja label to "イッセルレス"
-LAST	Lja	"イッセルレス"
-#   set the zh label to "伊塞尔莱斯"
-LAST	Lzh	"伊塞尔莱斯"
-#   set the ko label to "이세레스"
-LAST	Lko	"이세레스"
+#   the item just created: set the en label to "Gjerdeskvål"
+LAST	Len	"Gjerdeskvål"
+#   set the mul label to "Gjerdeskvål"
+LAST	Lmul	"Gjerdeskvål"
+#   set the ja label to "イェルデスクヴォール"
+LAST	Lja	"イェルデスクヴォール"
+#   set the zh label to "耶尔德斯克沃尔"
+LAST	Lzh	"耶尔德斯克沃尔"
+#   set the ko label to "게르데스크볼"
+LAST	Lko	"게르데스크볼"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Isserles"
-LAST	P1705	mul:"Isserles"
+#   P1705 native label = mul:"Gjerdeskvål"
+LAST	P1705	mul:"Gjerdeskvål"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q21033409 Israel Joseph Luria [RaMA father]: P734 family name = the item just created
-Q21033409	P734	LAST	S2600	"6000000001281392853"
-#   Q141624592 Gittel Auerbach: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141624592	P734	LAST	P3831	Q28418670	S2600	"6000000001281430548"
-#   Q141621928 Kendel Isserles: P734 family name = the item just created
-Q141621928	P734	LAST	S2600	"6000000003275047400"
-#   Q141624442 Dinah Malka Schrentzel [RaMA mother]: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141624442	P734	LAST	P3831	Q28418670	S2600	"6000000007370492712"
+#   Q141585813 Askjell Havtorsson Gjerdeskvål: P734 family name = the item just created
+Q141585813	P734	LAST	S2600	"6000000007224161621"
+#   Q141585599 Havtor Geirmundsen Gjerdeskvål: P734 family name = the item just created
+Q141585599	P734	LAST	S2600	"6000000007224161902"
+#   Q141584878 Bothilda Havtorsdatter Gjerdeskvål: P734 family name = the item just created
+Q141584878	P734	LAST	S2600	"6000000007481535717"
 
-# Gjosdal -- family, 4 bearer(s) in the batches
+# Idse -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Gjosdal"
-LAST	Len	"Gjosdal"
-#   set the mul label to "Gjosdal"
-LAST	Lmul	"Gjosdal"
-#   set the ja label to "ヨスダル"
-LAST	Lja	"ヨスダル"
-#   set the zh label to "永斯达尔"
-LAST	Lzh	"永斯达尔"
-#   set the ko label to "고스달"
-LAST	Lko	"고스달"
+#   the item just created: set the en label to "Idse"
+LAST	Len	"Idse"
+#   set the mul label to "Idse"
+LAST	Lmul	"Idse"
+#   set the ja label to "イドセ"
+LAST	Lja	"イドセ"
+#   set the zh label to "伊德塞"
+LAST	Lzh	"伊德塞"
+#   set the ko label to "이드세"
+LAST	Lko	"이드세"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Gjosdal"
-LAST	P1705	mul:"Gjosdal"
+#   P1705 native label = mul:"Idse"
+LAST	P1705	mul:"Idse"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141624601 Gunnleiv Kolbeinsen Gjosdal: P734 family name = the item just created
-Q141624601	P734	LAST	S2600	"6000000003174783638"
-#   Q141621970 Anders Madsen Gjosdal I: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141621970	P734	LAST	P3831	Q2507958	S2600	"6000000005607392793"
-#   Q141624419 Mads Gjosdal: P734 family name = the item just created
-Q141624419	P734	LAST	S2600	"6000000007288534394"
+#   Q141589317 Sæbjørn Endreson Idse: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141589317	P734	LAST	P3831	Q2507958	S2600	"6000000003095071767"
+#   Q141574606 Kristoffer Kristofferson Idse: P734 family name = the item just created
+Q141574606	P734	LAST	S2600	"6000000003095230248"
+#   Q141584633 Guri Toresdatter Idse: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141584633	P734	LAST	P3831	Q2507958	S2600	"6000000106794621824"
 
-# Gulleiksdatter -- patronymic, 4 bearer(s) in the batches
+# Ångerman -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Gulleiksdatter"
-LAST	Len	"Gulleiksdatter"
-#   set the mul label to "Gulleiksdatter"
-LAST	Lmul	"Gulleiksdatter"
-#   set the ja label to "グレイクスダッテル"
-LAST	Lja	"グレイクスダッテル"
-#   set the zh label to "古莱伊克斯达特"
-LAST	Lzh	"古莱伊克斯达特"
-#   set the ko label to "굴레이크스다테르"
-LAST	Lko	"굴레이크스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Gulleiksdatter"
-LAST	P1705	mul:"Gulleiksdatter"
+#   the item just created: set the en label to "Ångerman"
+LAST	Len	"Ångerman"
+#   set the mul label to "Ångerman"
+LAST	Lmul	"Ångerman"
+#   set the ja label to "オーンゲルマン"
+LAST	Lja	"オーンゲルマン"
+#   set the zh label to "翁盖尔曼"
+LAST	Lzh	"翁盖尔曼"
+#   set the ko label to "오에르만"
+LAST	Lko	"오에르만"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Ångerman"
+LAST	P1705	mul:"Ångerman"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q30177689 Gullik
-LAST	P144	Q30177689
-#   Q141575821 Anne Gulleiksdatter: P5056 patronym or matronym = the item just created
-Q141575821	P5056	LAST	S2600	"6000000178414705940"
-#   Q141569642 Gunjorg Gulleiksdatter: P5056 patronym or matronym = the item just created
-Q141569642	P5056	LAST	S2600	"6000000178415432929"
-#   Q141571025 Ragnilda Gulleiksdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141576068 Gulleik Jonsen
-Q141571025	P5056	LAST	P144	Q141576068	S2600	"6000000178416036862"
-#   Q141578199 Elisabet Gulleiksdatter Heigre: P5056 patronym or matronym = the item just created, qualified P144 based on Q141583623 Gulleik Larsson Heigre
-Q141578199	P5056	LAST	P144	Q141583623	S2600	"6000000214739112823"
+#   Q141499119 Margareta Persdotter Ångerman: P734 family name = the item just created
+Q141499119	P734	LAST	S2600	"6000000001890371912"
+#   Q141538909 Per Ångerman: P734 family name = the item just created
+Q141538909	P734	LAST	S2600	"6000000003309914706"
+#   Q141225779 Kristina Eriksdotter Ångerman: P734 family name = the item just created
+Q141225779	P734	LAST	S2600	"6000000038458498753"
 
-# Hrolf -- given, 4 bearer(s) in the batches
+# Dalecarlus -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Hrolf"
-LAST	Len	"Hrolf"
-#   set the mul label to "Hrolf"
-LAST	Lmul	"Hrolf"
-#   set the ja label to "ロルフ"
-LAST	Lja	"ロルフ"
-#   set the zh label to "罗尔夫"
-LAST	Lzh	"罗尔夫"
-#   set the ko label to "흐롤프"
-LAST	Lko	"흐롤프"
+#   the item just created: set the en label to "Dalecarlus"
+LAST	Len	"Dalecarlus"
+#   set the mul label to "Dalecarlus"
+LAST	Lmul	"Dalecarlus"
+#   set the ja label to "ダレカルルス"
+LAST	Lja	"ダレカルルス"
+#   set the zh label to "达莱卡尔卢斯"
+LAST	Lzh	"达莱卡尔卢斯"
+#   set the ko label to "다레카루스"
+LAST	Lko	"다레카루스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Dalecarlus"
+LAST	P1705	mul:"Dalecarlus"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141562844 Olaus Andersson: P734 family name = the item just created
+Q141562844	P734	LAST	S2600	"3979654713390122372"
+#   Q141585247 Daniel Andrae Andreæ Dalecarlus: P734 family name = the item just created
+Q141585247	P734	LAST	S2600	"6000000006595700537"
+
+# Gjemnes -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gjemnes"
+LAST	Len	"Gjemnes"
+#   set the mul label to "Gjemnes"
+LAST	Lmul	"Gjemnes"
+#   set the ja label to "イェムネス"
+LAST	Lja	"イェムネス"
+#   set the zh label to "耶姆内斯"
+LAST	Lzh	"耶姆内斯"
+#   set the ko label to "겜네스"
+LAST	Lko	"겜네스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Gjemnes"
+LAST	P1705	mul:"Gjemnes"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141583454 Aslak Tordsson Gjemnes: P734 family name = the item just created
+Q141583454	P734	LAST	S2600	"6000000077554584817"
+#   Q141583664 Gro Sveinsdatter Gjemnes: P734 family name = the item just created
+Q141583664	P734	LAST	S2600	"6000000077555069491"
+
+# Kvåvik -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kvåvik"
+LAST	Len	"Kvåvik"
+#   set the mul label to "Kvåvik"
+LAST	Lmul	"Kvåvik"
+#   set the ja label to "クヴォーヴィク"
+LAST	Lja	"クヴォーヴィク"
+#   set the zh label to "克沃维克"
+LAST	Lzh	"克沃维克"
+#   set the ko label to "크보비크"
+LAST	Lko	"크보비크"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Kvåvik"
+LAST	P1705	mul:"Kvåvik"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141337259 Øystein Kvåvik: P734 family name = the item just created
+Q141337259	P734	LAST	S2600	"6000000004648044280"
+#   Q141580727 Bjørn Jonsson Skofteland: P734 family name = the item just created
+Q141580727	P734	LAST	S2600	"6000000092561212956"
+
+# König -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "König"
+LAST	Len	"König"
+#   set the mul label to "König"
+LAST	Lmul	"König"
+#   set the ja label to "ケーニヒ"
+LAST	Lja	"ケーニヒ"
+#   set the zh label to "科尼格"
+LAST	Lzh	"科尼格"
+#   set the ko label to "쾨닉"
+LAST	Lko	"쾨닉"
 #   set the en description to "given name"
 LAST	Den	"given name"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
-#   P1705 native label = mul:"Hrolf"
-LAST	P1705	mul:"Hrolf"
+#   P1705 native label = mul:"König"
+LAST	P1705	mul:"König"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q5903799 Hrolf Nefja: P735 given name = the item just created
-Q5903799	P735	LAST	S2600	"6000000001209426947"
-#   Q141520534 Hrolf Ingjaldsson: P735 given name = the item just created
-Q141520534	P735	LAST	S2600	"6000000063146792863"
-#   Q141528561 Hrolf Ingjaldsson: P735 given name = the item just created
-Q141528561	P735	LAST	S2600	"6000000063146846829"
+#   Q115631696 König Olofsson: P735 given name = the item just created
+Q115631696	P735	LAST	S2600	"6000000003562241294"
+#   Q141578667 König Hansson Granlund: P735 given name = the item just created
+Q141578667	P735	LAST	S2600	"6000000004129750728"
 
-# Ingjaldsson -- patronymic, 3 bearer(s) in the batches
+# Mauritsson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ingjaldsson"
-LAST	Len	"Ingjaldsson"
-#   set the mul label to "Ingjaldsson"
-LAST	Lmul	"Ingjaldsson"
-#   set the ja label to "イングヤルドソン"
-LAST	Lja	"イングヤルドソン"
-#   set the zh label to "因雅尔德松"
-LAST	Lzh	"因雅尔德松"
-#   set the ko label to "잉잘드손"
-LAST	Lko	"잉잘드손"
+#   the item just created: set the en label to "Mauritsson"
+LAST	Len	"Mauritsson"
+#   set the mul label to "Mauritsson"
+LAST	Lmul	"Mauritsson"
+#   set the ja label to "マウリトソン"
+LAST	Lja	"マウリトソン"
+#   set the zh label to "马乌里特松"
+LAST	Lzh	"马乌里特松"
+#   set the ko label to "마우리트손"
+LAST	Lko	"마우리트손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -187,56 +267,58 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Ingjaldsson"
-LAST	P1705	mul:"Ingjaldsson"
+#   P1705 native label = mul:"Mauritsson"
+LAST	P1705	mul:"Mauritsson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q11162089 Ólafur Ingjaldsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q6032521 Ingjald Helgasson
-Q11162089	P5056	LAST	P144	Q6032521	S2600	"6000000000161343538"
-#   Q141520534 Hrolf Ingjaldsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q6032521 Ingjald Helgasson
-Q141520534	P5056	LAST	P144	Q6032521	S2600	"6000000063146792863"
+#   P144 based on = Q8315038 Maurits
+LAST	P144	Q8315038
+#   P144 based on = Q18760871 Mauritz
+LAST	P144	Q18760871
+#   Q141552075 Rasmus Mauritsson Maudal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551695 Maurits Kolbeinsen Øvre Maudal
+Q141552075	P5056	LAST	P144	Q141551695	S2600	"6000000007223272031"
+#   Q141560797 Tormod Mauritsson Dirdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141529032 Mauritz Tormodsen Dirdal
+Q141560797	P5056	LAST	P144	Q141529032	S2600	"6000000172251423864"
 
-# Ogna -- family, 3 bearer(s) in the batches
+# Nerbelia -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ogna"
-LAST	Len	"Ogna"
-#   set the mul label to "Ogna"
-LAST	Lmul	"Ogna"
-#   set the ja label to "オグナ"
-LAST	Lja	"オグナ"
-#   set the zh label to "奥格纳"
-LAST	Lzh	"奥格纳"
-#   set the ko label to "옥나"
-LAST	Lko	"옥나"
+#   the item just created: set the en label to "Nerbelia"
+LAST	Len	"Nerbelia"
+#   set the mul label to "Nerbelia"
+LAST	Lmul	"Nerbelia"
+#   set the ja label to "ネルベリア"
+LAST	Lja	"ネルベリア"
+#   set the zh label to "内尔贝利阿"
+LAST	Lzh	"内尔贝利阿"
+#   set the ko label to "네르베리아"
+LAST	Lko	"네르베리아"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Ogna"
-LAST	P1705	mul:"Ogna"
+#   P1705 native label = mul:"Nerbelia"
+LAST	P1705	mul:"Nerbelia"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141529186 Tolleiv Kristoffersen Ogna: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141529186	P734	LAST	P3831	Q2507958	S2600	"6000000005607672935"
-#   Q141551458 Kristoffer Aslaksen Opstad: P734 family name = the item just created
-Q141551458	P734	LAST	S2600	"6000000005607672946"
-#   Q141586430 Kirsten Kristoffersdatter Ogna: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141586430	P734	LAST	P3831	Q2507958	S2600	"6000000005607685507"
+#   Q141565400 Helena Larsdotter Nerbelia: P734 family name = the item just created
+Q141565400	P734	LAST	S2600	"359219912690012054"
+#   Q141518940 Anna Nerbelia: P734 family name = the item just created
+Q141518940	P734	LAST	S2600	"6000000018519603374"
 
-# Torjusson -- patronymic, 3 bearer(s) in the batches
+# Nikolaison -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Torjusson"
-LAST	Len	"Torjusson"
-#   set the mul label to "Torjusson"
-LAST	Lmul	"Torjusson"
-#   set the ja label to "トリュソン"
-LAST	Lja	"トリュソン"
-#   set the zh label to "托鲁松"
-LAST	Lzh	"托鲁松"
-#   set the ko label to "토르주손"
-LAST	Lko	"토르주손"
+#   the item just created: set the en label to "Nikolaison"
+LAST	Len	"Nikolaison"
+#   set the mul label to "Nikolaison"
+LAST	Lmul	"Nikolaison"
+#   set the ja label to "ニコライソン"
+LAST	Lja	"ニコライソン"
+#   set the zh label to "尼古拉松"
+LAST	Lzh	"尼古拉松"
+#   set the ko label to "니코라이손"
+LAST	Lko	"니코라이손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -247,114 +329,58 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Torjusson"
-LAST	P1705	mul:"Torjusson"
+#   P1705 native label = mul:"Nikolaison"
+LAST	P1705	mul:"Nikolaison"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q12007064 Torjus
-LAST	P144	Q12007064
-#   Q141611420 Johans Torjusson Nomeland: P5056 patronym or matronym = the item just created
-Q141611420	P5056	LAST	S2600	"6000000002311286618"
-#   Q141611427 Jørgen Torjusson Øvstabø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141610639 Torjei Olsen Eigeland Sr.
-Q141611427	P5056	LAST	P144	Q141610639	S2600	"6000000003094973998"
-#   Q141574359 Jon Torjusson Byberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141583605 Torjus Hansson
-Q141574359	P5056	LAST	P144	Q141583605	S2600	"6000000008363019159"
+#   P144 based on = Q30442370 Nikolai
+LAST	P144	Q30442370
+#   P144 based on = Q19830590 Nicolai
+LAST	P144	Q19830590
+#   Q141584883 Kjetil Nikolaison Hovland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585567 Nikolai Sylfestsen Hovland
+Q141584883	P5056	LAST	P144	Q141585567	S2600	"6000000005607854405"
+#   Q141551489 Tor Nikolaison Grude: P5056 patronym or matronym = the item just created, qualified P144 based on Q141521677 Nikolai Nilsson Grude
+Q141551489	P5056	LAST	P144	Q141521677	S2600	"6000000007280563540"
 
-# av Norge -- family, 3 bearer(s) in the batches
+# Rødser -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "av Norge"
-LAST	Len	"av Norge"
-#   set the mul label to "av Norge"
-LAST	Lmul	"av Norge"
-#   set the ja label to "アヴ・ノルゲ"
-LAST	Lja	"アヴ・ノルゲ"
-#   set the zh label to "阿夫·诺尔盖"
-LAST	Lzh	"阿夫·诺尔盖"
-#   set the ko label to "압 노르게"
-LAST	Lko	"압 노르게"
+#   the item just created: set the en label to "Rødser"
+LAST	Len	"Rødser"
+#   set the mul label to "Rødser"
+LAST	Lmul	"Rødser"
+#   set the ja label to "ロドセル"
+LAST	Lja	"ロドセル"
+#   set the zh label to "罗德塞尔"
+LAST	Lzh	"罗德塞尔"
+#   set the ko label to "뢰드세르"
+LAST	Lko	"뢰드세르"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"av Norge"
-LAST	P1705	mul:"av Norge"
+#   P1705 native label = mul:"Rødser"
+LAST	P1705	mul:"Rødser"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q1991150 Margareta Eriksdotter av Norge: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q1991150	P734	LAST	P3831	Q28418670	S2600	"6000000001251580171"
-#   Q287511 Ingeborg Eriksdatter af Danmark: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q287511	P734	LAST	P3831	Q28418670	S2600	"6000000001651502714"
-#   Q75291907 Sverre Magnus Haakonsson av Norge: P734 family name = the item just created
-Q75291907	P734	LAST	S2600	"6000000008040106385"
+#   Q141583243 Ole Rødser: P734 family name = the item just created
+Q141583243	P734	LAST	S2600	"6000000019086969181"
+#   Q141583299 NN Rødser: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141583299	P734	LAST	P3831	Q28418670	S2600	"6000000178414001829"
 
-# d'Ardres -- family, 3 bearer(s) in the batches
+# Samson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "d'Ardres"
-LAST	Len	"d'Ardres"
-#   set the mul label to "d'Ardres"
-LAST	Lmul	"d'Ardres"
-#   set the ja label to "ドアルドレス"
-LAST	Lja	"ドアルドレス"
-#   set the zh label to "德阿尔德雷斯"
-LAST	Lzh	"德阿尔德雷斯"
-#   set the ko label to "다르드레스"
-LAST	Lko	"다르드레스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"d'Ardres"
-LAST	P1705	mul:"d'Ardres"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141621815 Jeanne d'Ardres: P734 family name = the item just created
-Q141621815	P734	LAST	S2600	"6000000002188140346"
-#   Q141624563 Geoffroy d'Ardres: P734 family name = the item just created
-Q141624563	P734	LAST	S2600	"6000000009305166955"
-#   Q141624499 Lucille de Colembert: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141624499	P734	LAST	P3831	Q28418670	S2600	"6000000055888430239"
-
-# von Babenberg -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "von Babenberg"
-LAST	Len	"von Babenberg"
-#   set the mul label to "von Babenberg"
-LAST	Lmul	"von Babenberg"
-#   set the ja label to "ヴォン・バーベンベルク"
-LAST	Lja	"ヴォン・バーベンベルク"
-#   set the zh label to "翁·巴本贝尔格"
-LAST	Lzh	"翁·巴本贝尔格"
-#   set the ko label to "본 바벤베륵"
-LAST	Lko	"본 바벤베륵"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"von Babenberg"
-LAST	P1705	mul:"von Babenberg"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q437303 Leopold von Babenberg: P734 family name = the item just created
-Q437303	P734	LAST	S2600	"6000000001598971185"
-#   Q451397 Ernst von Babenberg: P734 family name = the item just created
-Q451397	P734	LAST	S2600	"6000000003494774759"
-
-# Åmundson -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Åmundson"
-LAST	Len	"Åmundson"
-#   set the mul label to "Åmundson"
-LAST	Lmul	"Åmundson"
-#   set the ja label to "オームンドソン"
-LAST	Lja	"オームンドソン"
-#   set the zh label to "奥蒙德松"
-LAST	Lzh	"奥蒙德松"
-#   set the ko label to "오문드손"
-LAST	Lko	"오문드손"
+#   the item just created: set the en label to "Samson"
+LAST	Len	"Samson"
+#   set the mul label to "Samson"
+LAST	Lmul	"Samson"
+#   set the ja label to "サムソン"
+LAST	Lja	"サムソン"
+#   set the zh label to "萨姆森"
+LAST	Lzh	"萨姆森"
+#   set the ko label to "삼손"
+LAST	Lko	"삼손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -365,30 +391,28 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Åmundson"
-LAST	P1705	mul:"Åmundson"
+#   P1705 native label = mul:"Samson"
+LAST	P1705	mul:"Samson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141612561 Reinert Åmundson Helgevold: P5056 patronym or matronym = the item just created
-Q141612561	P5056	LAST	S2600	"6000000002367171040"
-#   Q141581429 Rasmus Åmundson Skaret: P5056 patronym or matronym = the item just created
-Q141581429	P5056	LAST	S2600	"6000000005608909837"
-#   Q141529171 Svein Åmundson Skjelnes: P5056 patronym or matronym = the item just created
-Q141529171	P5056	LAST	S2600	"6000000007480592893"
+#   Q141577735 Samson: P5056 patronym or matronym = the item just created
+Q141577735	P5056	LAST	S2600	"6000000008928599620"
+#   Q141566150 Samson de la Motte Sr.: P5056 patronym or matronym = the item just created
+Q141566150	P5056	LAST	S2600	"6000000009508651872"
 
-# Halvdansson -- patronymic, 2 bearer(s) in the batches
+# Ulvsson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Halvdansson"
-LAST	Len	"Halvdansson"
-#   set the mul label to "Halvdansson"
-LAST	Lmul	"Halvdansson"
-#   set the ja label to "ハルヴダンソン"
-LAST	Lja	"ハルヴダンソン"
-#   set the zh label to "哈尔夫丹松"
-LAST	Lzh	"哈尔夫丹松"
-#   set the ko label to "할브단손"
-LAST	Lko	"할브단손"
+#   the item just created: set the en label to "Ulvsson"
+LAST	Len	"Ulvsson"
+#   set the mul label to "Ulvsson"
+LAST	Lmul	"Ulvsson"
+#   set the ja label to "ウルヴソン"
+LAST	Lja	"ウルヴソン"
+#   set the zh label to "乌尔夫松"
+LAST	Lzh	"乌尔夫松"
+#   set the ko label to "울브손"
+LAST	Lko	"울브손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -399,244 +423,74 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Halvdansson"
-LAST	P1705	mul:"Halvdansson"
+#   P1705 native label = mul:"Ulvsson"
+LAST	P1705	mul:"Ulvsson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q25114282 Halvdan
-LAST	P144	Q25114282
-#   Q2448909 Gudrød «the Hunter» Halvdansson: P5056 patronym or matronym = the item just created, qualified P144 based on Q2521540 Halfdan Eysteinsson
-Q2448909	P5056	LAST	P144	Q2521540	S2600	"6000000000172794330"
-#   Q3108524 Sigurd Halfdansson Halvdansson: P5056 patronym or matronym = the item just created, qualified P144 based on Q75291813 Halvdan Sigurdsson, P3831 object of statement has role Q141584760
-Q3108524	P5056	LAST	P144	Q75291813	P3831	Q141584760	S2600	"6000000001200208116"
+#   Q141573604 Bjug Ulvsson Berg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141577916 Ulv Taraldsson Åmli
+Q141573604	P5056	LAST	P144	Q141577916	S2600	"6000000014302386480"
 
-# Kalv -- given, 2 bearer(s) in the batches
+# Under-Berge -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Kalv"
-LAST	Len	"Kalv"
-#   set the mul label to "Kalv"
-LAST	Lmul	"Kalv"
-#   set the ja label to "カルヴ"
-LAST	Lja	"カルヴ"
-#   set the zh label to "卡尔夫"
-LAST	Lzh	"卡尔夫"
-#   set the ko label to "칼브"
-LAST	Lko	"칼브"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Kalv"
-LAST	P1705	mul:"Kalv"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q75460 Kalv Arnesson: P735 given name = the item just created
-Q75460	P735	LAST	S2600	"6000000000437626271"
-#   Q141613871 Kalv Torsnes: P735 given name = the item just created
-Q141613871	P735	LAST	S2600	"6000000007312523885"
-
-# Kjetilsen -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kjetilsen"
-LAST	Len	"Kjetilsen"
-#   set the mul label to "Kjetilsen"
-LAST	Lmul	"Kjetilsen"
-#   set the ja label to "ヒェティルセン"
-LAST	Lja	"ヒェティルセン"
-#   set the zh label to "谢蒂尔森"
-LAST	Lzh	"谢蒂尔森"
-#   set the ko label to "케틸센"
-LAST	Lko	"케틸센"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Kjetilsen"
-LAST	P1705	mul:"Kjetilsen"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q1744078 Kjetil
-LAST	P144	Q1744078
-#   Q141200067 Rasmus Kjetilson Kjetilsen Høle: P5056 patronym or matronym = the item just created, qualified P144 based on Q141499094 Kjetil Rasmusson Høle
-Q141200067	P5056	LAST	P144	Q141499094	S2600	"6000000003095034915"
-#   Q141621908 Tron Kjetilsen Feed: P5056 patronym or matronym = the item just created, qualified P144 based on Q141624555 Kjetil Ljødesen Espetveit
-Q141621908	P5056	LAST	P144	Q141624555	S2600	"6000000007522552204"
-
-# Kvåvig -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kvåvig"
-LAST	Len	"Kvåvig"
-#   set the mul label to "Kvåvig"
-LAST	Lmul	"Kvåvig"
-#   set the ja label to "クヴォーヴィグ"
-LAST	Lja	"クヴォーヴィグ"
-#   set the zh label to "克沃维格"
-LAST	Lzh	"克沃维格"
-#   set the ko label to "크보빅"
-LAST	Lko	"크보빅"
+#   the item just created: set the en label to "Under-Berge"
+LAST	Len	"Under-Berge"
+#   set the mul label to "Under-Berge"
+LAST	Lmul	"Under-Berge"
+#   set the ja label to "ウンデルベルゲ"
+LAST	Lja	"ウンデルベルゲ"
+#   set the zh label to "温德尔贝尔盖"
+LAST	Lzh	"温德尔贝尔盖"
+#   set the ko label to "운데르베르게"
+LAST	Lko	"운데르베르게"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Kvåvig"
-LAST	P1705	mul:"Kvåvig"
+#   P1705 native label = mul:"Under-Berge"
+LAST	P1705	mul:"Under-Berge"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141242383 Bjørn Gunnbjørnsson Tengs: P734 family name = the item just created
-Q141242383	P734	LAST	S2600	"6000000004569609494"
-#   Q141560769 Torbjørg Bjørnsdotter Kvåvig: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141560769	P734	LAST	P3831	Q28418670	S2600	"6000000139301517823"
+#   Q141571144 Tore Halvarsen Under-Berge: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141571144	P734	LAST	P3831	Q2507958	S2600	"6000000003094982285"
+#   Q141576184 Halvar Toreson Under-Berge: P734 family name = the item just created
+Q141576184	P734	LAST	S2600	"6000000003094982293"
 
-# Laukhammer -- family, 2 bearer(s) in the batches
+# Wessex -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Laukhammer"
-LAST	Len	"Laukhammer"
-#   set the mul label to "Laukhammer"
-LAST	Lmul	"Laukhammer"
-#   set the ja label to "ラウクハムメル"
-LAST	Lja	"ラウクハムメル"
-#   set the zh label to "拉乌克哈梅尔"
-LAST	Lzh	"拉乌克哈梅尔"
-#   set the ko label to "라우캄메르"
-LAST	Lko	"라우캄메르"
+#   the item just created: set the en label to "Wessex"
+LAST	Len	"Wessex"
+#   set the mul label to "Wessex"
+LAST	Lmul	"Wessex"
+#   set the ja label to "ウェセックス"
+LAST	Lja	"ウェセックス"
+#   set the zh label to "韦塞克斯"
+LAST	Lzh	"韦塞克斯"
+#   set the ko label to "웨세그스"
+LAST	Lko	"웨세그스"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Laukhammer"
-LAST	P1705	mul:"Laukhammer"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141619334 Rolf Laukhammer: P734 family name = the item just created
-Q141619334	P734	LAST	S2600	"6000000007582694632"
-#   Q141613826 Greip Rolfson Laukhammer: P734 family name = the item just created
-Q141613826	P734	LAST	S2600	"6000000007583144253"
-
-# Magnusdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Magnusdatter"
-LAST	Len	"Magnusdatter"
-#   set the mul label to "Magnusdatter"
-LAST	Lmul	"Magnusdatter"
-#   set the ja label to "マグヌスダッテル"
-LAST	Lja	"マグヌスダッテル"
-#   set the zh label to "马格努斯达特"
-LAST	Lzh	"马格努斯达特"
-#   set the ko label to "막누스다테르"
-LAST	Lko	"막누스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Magnusdatter"
-LAST	P1705	mul:"Magnusdatter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q18109457 Magnus
-LAST	P144	Q18109457
-#   Q4809203 Þóra Tora Magnúsdóttir: P5056 patronym or matronym = the item just created, qualified P144 based on Q311996 Magnus Olavsson
-Q4809203	P5056	LAST	P144	Q311996	S2600	"4073318"
-#   Q141621981 NN Magnusdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q343088 Magnus Haraldsson II
-Q141621981	P5056	LAST	P144	Q343088	S2600	"6000000006961806584"
-
-# Northumbria -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Northumbria"
-LAST	Len	"Northumbria"
-#   set the mul label to "Northumbria"
-LAST	Lmul	"Northumbria"
-#   set the ja label to "ノルトムブリア"
-LAST	Lja	"ノルトムブリア"
-#   set the zh label to "诺尔图姆布里阿"
-LAST	Lzh	"诺尔图姆布里阿"
-#   set the ko label to "노르툼브리아"
-LAST	Lko	"노르툼브리아"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Northumbria"
-LAST	P1705	mul:"Northumbria"
+#   P1705 native label = mul:"Wessex"
+LAST	P1705	mul:"Wessex"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
 
-# Saltensee -- family, 2 bearer(s) in the batches
+# Zachrisson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Saltensee"
-LAST	Len	"Saltensee"
-#   set the mul label to "Saltensee"
-LAST	Lmul	"Saltensee"
-#   set the ja label to "サルテンセエ"
-LAST	Lja	"サルテンセエ"
-#   set the zh label to "萨尔滕塞埃"
-LAST	Lzh	"萨尔滕塞埃"
-#   set the ko label to "살텐시"
-LAST	Lko	"살텐시"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Saltensee"
-LAST	P1705	mul:"Saltensee"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# Shrentzel -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Shrentzel"
-LAST	Len	"Shrentzel"
-#   set the mul label to "Shrentzel"
-LAST	Lmul	"Shrentzel"
-#   set the ja label to "スレントゼル"
-LAST	Lja	"スレントゼル"
-#   set the zh label to "斯伦特泽尔"
-LAST	Lzh	"斯伦特泽尔"
-#   set the ko label to "스렌첼"
-LAST	Lko	"스렌첼"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Shrentzel"
-LAST	P1705	mul:"Shrentzel"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141584897 Rivka Katz: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141584897	P734	LAST	P3831	Q28418670	S2600	"6000000007743985851"
-#   Q141614075 Dreizel Shrentzel: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141614075	P734	LAST	P3831	Q2507958	S2600	"6000000019129193734"
-
-# Sivertson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Sivertson"
-LAST	Len	"Sivertson"
-#   set the mul label to "Sivertson"
-LAST	Lmul	"Sivertson"
-#   set the ja label to "シヴェルトソン"
-LAST	Lja	"シヴェルトソン"
-#   set the zh label to "西韦尔特松"
-LAST	Lzh	"西韦尔特松"
-#   set the ko label to "시베르트손"
-LAST	Lko	"시베르트손"
+#   set the en label to "Zachrisson"
+LAST	Len	"Zachrisson"
+#   set the mul label to "Zachrisson"
+LAST	Lmul	"Zachrisson"
+#   set the ja label to "ザクリソン"
+LAST	Lja	"ザクリソン"
+#   set the zh label to "扎克里松"
+LAST	Lzh	"扎克里松"
+#   set the ko label to "자크리손"
+LAST	Lko	"자크리손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -647,219 +501,51 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Sivertson"
-LAST	P1705	mul:"Sivertson"
+#   P1705 native label = mul:"Zachrisson"
+LAST	P1705	mul:"Zachrisson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q19869345 Sivert
-LAST	P144	Q19869345
-#   Q141551259 Peder Sivertson Ohm: P5056 patronym or matronym = the item just created
-Q141551259	P5056	LAST	S2600	"6000000015811703175"
-#   Q141521195 Mons Sivertson Wiik: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538967 Sivert Monson ØKSNEVAD
-Q141521195	P5056	LAST	P144	Q141538967	S2600	"6000000026976701462"
+#   P144 based on = Q61957868 Zachris
+LAST	P144	Q61957868
+#   P144 based on = Q20174193
+LAST	P144	Q20174193
+#   P144 based on = Q41796451 Zakarias
+LAST	P144	Q41796451
+#   P144 based on = Q108491635 Zackarias
+LAST	P144	Q108491635
+#   P144 based on = Q19868629 Sakari
+LAST	P144	Q19868629
+#   Q141549181 Olaus Zachrisson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141588575 Zacharias Larsson
+Q141549181	P5056	LAST	P144	Q141588575	S2600	"6000000006453195821"
+#   Q141319316 Peter Zachrisson Uf: P5056 patronym or matronym = the item just created
+Q141319316	P5056	LAST	S2600	"6000000106419123913"
 
-# Skjalmsen -- patronymic, 2 bearer(s) in the batches
+# de Baliol -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Skjalmsen"
-LAST	Len	"Skjalmsen"
-#   set the mul label to "Skjalmsen"
-LAST	Lmul	"Skjalmsen"
-#   set the ja label to "シャルムセン"
-LAST	Lja	"シャルムセン"
-#   set the zh label to "沙尔姆森"
-LAST	Lzh	"沙尔姆森"
-#   set the ko label to "살므센"
-LAST	Lko	"살므센"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Skjalmsen"
-LAST	P1705	mul:"Skjalmsen"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q118558260
-LAST	P144	Q118558260
-#   Q11959415 Asser Skjalmsen Hvide: P5056 patronym or matronym = the item just created
-Q11959415	P5056	LAST	S2600	"6000000000901150478"
-#   Q12309311 Ebbe Skjalmsen Hvide: P5056 patronym or matronym = the item just created, qualified P144 based on Q953640 Skjalm Hvide
-Q12309311	P5056	LAST	P144	Q953640	S2600	"6000000003865794618"
-
-# Skofte -- given, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Skofte"
-LAST	Len	"Skofte"
-#   set the mul label to "Skofte"
-LAST	Lmul	"Skofte"
-#   set the ja label to "スコフテ"
-LAST	Lja	"スコフテ"
-#   set the zh label to "斯科夫特"
-LAST	Lzh	"斯科夫特"
-#   set the ko label to "스코프테"
-LAST	Lko	"스코프테"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Skofte"
-LAST	P1705	mul:"Skofte"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141624559 Skofte Skoftesson: P735 given name = the item just created
-Q141624559	P735	LAST	S2600	"6000000011428850169"
-#   Q12001101 Skofte Ogmundsson Giske: P735 given name = the item just created
-Q12001101	P735	LAST	S2600	"6000000180815172825"
-
-# Slatte -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Slatte"
-LAST	Len	"Slatte"
-#   set the mul label to "Slatte"
-LAST	Lmul	"Slatte"
-#   set the ja label to "スラッテ"
-LAST	Lja	"スラッテ"
-#   set the zh label to "斯拉特"
-LAST	Lzh	"斯拉特"
-#   set the ko label to "스라테"
-LAST	Lko	"스라테"
+#   the item just created: set the en label to "de Baliol"
+LAST	Len	"de Baliol"
+#   set the mul label to "de Baliol"
+LAST	Lmul	"de Baliol"
+#   set the ja label to "デ・バリオル"
+LAST	Lja	"デ・バリオル"
+#   set the zh label to "德·巴利奥尔"
+LAST	Lzh	"德·巴利奥尔"
+#   set the ko label to "데 바리올"
+LAST	Lko	"데 바리올"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Slatte"
-LAST	P1705	mul:"Slatte"
+#   P1705 native label = mul:"de Baliol"
+LAST	P1705	mul:"de Baliol"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141588511 Catharina Andersdotter Slatte: P734 family name = the item just created
-Q141588511	P734	LAST	S2600	"6000000002784270215"
-#   Q141576402 Ingeborg Bengtsdotter Slatte: P734 family name = the item just created
-Q141576402	P734	LAST	S2600	"6000000002937637209"
-
-# Slettestrand -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Slettestrand"
-LAST	Len	"Slettestrand"
-#   set the mul label to "Slettestrand"
-LAST	Lmul	"Slettestrand"
-#   set the ja label to "スレッテストランド"
-LAST	Lja	"スレッテストランド"
-#   set the zh label to "斯莱特斯特兰德"
-LAST	Lzh	"斯莱特斯特兰德"
-#   set the ko label to "스레테스트란드"
-LAST	Lko	"스레테스트란드"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Slettestrand"
-LAST	P1705	mul:"Slettestrand"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141352521 Sven Jenson Slettestrand: P734 family name = the item just created
-Q141352521	P734	LAST	S2600	"6000000014276970304"
-#   Q141548948 Marta Jensdtr. Slettestrand: P734 family name = the item just created
-Q141548948	P734	LAST	S2600	"6000000151185004963"
-
-# Torgeirsdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Torgeirsdatter"
-LAST	Len	"Torgeirsdatter"
-#   set the mul label to "Torgeirsdatter"
-LAST	Lmul	"Torgeirsdatter"
-#   set the ja label to "トルゲイルスダッテル"
-LAST	Lja	"トルゲイルスダッテル"
-#   set the zh label to "托尔盖伊尔斯达特"
-LAST	Lzh	"托尔盖伊尔斯达特"
-#   set the ko label to "토르게이르스다테르"
-LAST	Lko	"토르게이르스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Torgeirsdatter"
-LAST	P1705	mul:"Torgeirsdatter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q1584196 Torgeir
-LAST	P144	Q1584196
-#   P144 based on = Q2444019 Torger
-LAST	P144	Q2444019
-#   Q141585262 Berit Torgeirsdatter Øye: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549846 Torgeir Gundersen Øye Sr.
-Q141585262	P5056	LAST	P144	Q141549846	S2600	"6000000007980957761"
-#   Q141538469 Kari Torgersdatter Vang: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538994 Torger Larsen Vang, P3831 object of statement has role Q141584760
-Q141538469	P5056	LAST	P144	Q141538994	P3831	Q141584760	S2600	"6000000180360007865"
-
-# Torsteinsson -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Torsteinsson"
-LAST	Len	"Torsteinsson"
-#   set the mul label to "Torsteinsson"
-LAST	Lmul	"Torsteinsson"
-#   set the ja label to "トルステインソン"
-LAST	Lja	"トルステインソン"
-#   set the zh label to "托尔斯特因松"
-LAST	Lzh	"托尔斯特因松"
-#   set the ko label to "토르스테인손"
-LAST	Lko	"토르스테인손"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Torsteinsson"
-LAST	P1705	mul:"Torsteinsson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141569598 Erik Torsteinsson Orm av Vatne: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141569598	P734	LAST	P3831	Q2507958	S2600	"6000000017337197146"
-#   Q141562815 Nils Torsteinsson: P734 family name = the item just created
-Q141562815	P734	LAST	S2600	"6000000198332616845"
-
-# Vasshus -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Vasshus"
-LAST	Len	"Vasshus"
-#   set the mul label to "Vasshus"
-LAST	Lmul	"Vasshus"
-#   set the ja label to "ヴァッスフス"
-LAST	Lja	"ヴァッスフス"
-#   set the zh label to "瓦斯胡斯"
-LAST	Lzh	"瓦斯胡斯"
-#   set the ko label to "바수스"
-LAST	Lko	"바수스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Vasshus"
-LAST	P1705	mul:"Vasshus"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141523890 Marit Jonsdatter Vasshus: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141523890	P734	LAST	P3831	Q2507958	S2600	"6000000003095260318"
-#   Q141198454 Lisabeth Larsdotter Vasshus: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141198454	P734	LAST	P3831	Q2507958	S2600	"6000000011198310542"
 
 # de Montlhéry -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "de Montlhéry"
+#   set the en label to "de Montlhéry"
 LAST	Len	"de Montlhéry"
 #   set the mul label to "de Montlhéry"
 LAST	Lmul	"de Montlhéry"
@@ -877,26 +563,54 @@ LAST	P31	Q101352
 LAST	P1705	mul:"de Montlhéry"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
+#   Q116005748 Mélisende de Montlhéry: P734 family name = the item just created
+Q116005748	P734	LAST	S2600	"6000000001210401775"
+#   Q2929504 Beatrix de Montlhéry !\: P734 family name = the item just created
+Q2929504	P734	LAST	S2600	"6000000004085125581"
 
-# de Warenne -- family, 2 bearer(s) in the batches
+# de Rennes -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "de Warenne"
-LAST	Len	"de Warenne"
-#   set the mul label to "de Warenne"
-LAST	Lmul	"de Warenne"
-#   set the ja label to "デ・ヴァレンネ"
-LAST	Lja	"デ・ヴァレンネ"
-#   set the zh label to "德·瓦雷内"
-LAST	Lzh	"德·瓦雷内"
-#   set the ko label to "데 와렌네"
-LAST	Lko	"데 와렌네"
+#   the item just created: set the en label to "de Rennes"
+LAST	Len	"de Rennes"
+#   set the mul label to "de Rennes"
+LAST	Lmul	"de Rennes"
+#   set the ja label to "デ・レンネス"
+LAST	Lja	"デ・レンネス"
+#   set the zh label to "德·雷内斯"
+LAST	Lzh	"德·雷内斯"
+#   set the ko label to "데 렌네스"
+LAST	Lko	"데 렌네스"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"de Warenne"
-LAST	P1705	mul:"de Warenne"
+#   P1705 native label = mul:"de Rennes"
+LAST	P1705	mul:"de Rennes"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q465187 Geoffrey I de Rennes: P734 family name = the item just created
+Q465187	P734	LAST	S2600	"6000000002447185479"
+
+# de Vergy -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "de Vergy"
+LAST	Len	"de Vergy"
+#   set the mul label to "de Vergy"
+LAST	Lmul	"de Vergy"
+#   set the ja label to "デ・ヴェルギ"
+LAST	Lja	"デ・ヴェルギ"
+#   set the zh label to "德·韦尔吉"
+LAST	Lzh	"德·韦尔吉"
+#   set the ko label to "데 베르기"
+LAST	Lko	"데 베르기"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"de Vergy"
+LAST	P1705	mul:"de Vergy"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
 
@@ -926,25 +640,25 @@ Q141624500	P734	LAST	P3831	Q28418670	S2600	"6000000000437150261"
 #   Q536899 Welf I von Altdorf Graf in Schwaben: P734 family name = the item just created
 Q536899	P734	LAST	S2600	"6000000002198362511"
 
-# von Goseck -- family, 2 bearer(s) in the batches
+# von Bregenz-Pfullendorf -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "von Goseck"
-LAST	Len	"von Goseck"
-#   set the mul label to "von Goseck"
-LAST	Lmul	"von Goseck"
-#   set the ja label to "ヴォン・ゴセク"
-LAST	Lja	"ヴォン・ゴセク"
-#   set the zh label to "翁·戈塞克"
-LAST	Lzh	"翁·戈塞克"
-#   set the ko label to "본 고세크"
-LAST	Lko	"본 고세크"
+#   the item just created: set the en label to "von Bregenz-Pfullendorf"
+LAST	Len	"von Bregenz-Pfullendorf"
+#   set the mul label to "von Bregenz-Pfullendorf"
+LAST	Lmul	"von Bregenz-Pfullendorf"
+#   set the ja label to "ヴォン・ブレゲンズプフレンドルフ"
+LAST	Lja	"ヴォン・ブレゲンズプフレンドルフ"
+#   set the zh label to "翁·布雷根兹普富伦多尔夫"
+LAST	Lzh	"翁·布雷根兹普富伦多尔夫"
+#   set the ko label to "본 브레겐즈프풀렌도르프"
+LAST	Lko	"본 브레겐즈프풀렌도르프"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"von Goseck"
-LAST	P1705	mul:"von Goseck"
+#   P1705 native label = mul:"von Bregenz-Pfullendorf"
+LAST	P1705	mul:"von Bregenz-Pfullendorf"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
 
@@ -972,32 +686,10 @@ LAST	P282	Q8229
 #   Q16584942 Otelhildis von Haldensleben: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q16584942	P734	LAST	P3831	Q2507958	S2600	"6000000002212152431"
 
-# von Koss -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "von Koss"
-LAST	Len	"von Koss"
-#   set the mul label to "von Koss"
-LAST	Lmul	"von Koss"
-#   set the ja label to "ヴォン・コッス"
-LAST	Lja	"ヴォン・コッス"
-#   set the zh label to "翁·科斯"
-LAST	Lzh	"翁·科斯"
-#   set the ko label to "본 코스"
-LAST	Lko	"본 코스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"von Koss"
-LAST	P1705	mul:"von Koss"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
 # von Kärnten -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "von Kärnten"
+#   the item just created: set the en label to "von Kärnten"
 LAST	Len	"von Kärnten"
 #   set the mul label to "von Kärnten"
 LAST	Lmul	"von Kärnten"
@@ -1064,32 +756,10 @@ LAST	P282	Q8229
 #   Q91003 Bertha von Schwaben: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q91003	P734	LAST	P3831	Q2507958	S2600	"6000000001595814236"
 
-# von Sommerschenburg -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "von Sommerschenburg"
-LAST	Len	"von Sommerschenburg"
-#   set the mul label to "von Sommerschenburg"
-LAST	Lmul	"von Sommerschenburg"
-#   set the ja label to "ヴォン・ソムメルシェンブルグ"
-LAST	Lja	"ヴォン・ソムメルシェンブルグ"
-#   set the zh label to "翁·索梅尔申布尔格"
-LAST	Lzh	"翁·索梅尔申布尔格"
-#   set the ko label to "본 솜메르센부륵"
-LAST	Lko	"본 솜메르센부륵"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"von Sommerschenburg"
-LAST	P1705	mul:"von Sommerschenburg"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
 # von Sponheim -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "von Sponheim"
+#   the item just created: set the en label to "von Sponheim"
 LAST	Len	"von Sponheim"
 #   set the mul label to "von Sponheim"
 LAST	Lmul	"von Sponheim"
@@ -1108,21 +778,333 @@ LAST	P1705	mul:"von Sponheim"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
 
-# 4634 more name items are needed and wait for a later
+# von Streitberg -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "von Streitberg"
+LAST	Len	"von Streitberg"
+#   set the mul label to "von Streitberg"
+LAST	Lmul	"von Streitberg"
+#   set the ja label to "ヴォン・ストレイトベルグ"
+LAST	Lja	"ヴォン・ストレイトベルグ"
+#   set the zh label to "翁·斯特雷伊特贝尔格"
+LAST	Lzh	"翁·斯特雷伊特贝尔格"
+#   set the ko label to "본 스트레이트베륵"
+LAST	Lko	"본 스트레이트베륵"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"von Streitberg"
+LAST	P1705	mul:"von Streitberg"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141583566 Gerhauss von Streitberg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141583566	P734	LAST	P3831	Q28418670	S2600	"6000000072065098276"
+#   Q141620070 Michael von Streitberg zu Streitberg, Greisenstein und Heiligenstadt: P734 family name = the item just created
+Q141620070	P734	LAST	S2600	"6000000073625942912"
+
+# Ålov -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ålov"
+LAST	Len	"Ålov"
+#   set the mul label to "Ålov"
+LAST	Lmul	"Ålov"
+#   set the ja label to "オーロヴ"
+LAST	Lja	"オーロヴ"
+#   set the zh label to "奥洛夫"
+LAST	Lzh	"奥洛夫"
+#   set the ko label to "오롭"
+LAST	Lko	"오롭"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Ålov"
+LAST	P1705	mul:"Ålov"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q5559529 Ålov Årbot Haraldsdatter: P735 given name = the item just created, qualified P1545 series ordinal 1
+Q5559529	P735	LAST	P1545	"1"	S2600	"6000000001205118569"
+#   Q12341816 Ålov Einarsdotter Lade: P735 given name = the item just created
+Q12341816	P735	LAST	S2600	"6000000001210506430"
+
+# Abjörn -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Abjörn"
+LAST	Len	"Abjörn"
+#   set the mul label to "Abjörn"
+LAST	Lmul	"Abjörn"
+#   set the ja label to "アビョルン"
+LAST	Lja	"アビョルン"
+#   set the zh label to "阿博尔恩"
+LAST	Lzh	"阿博尔恩"
+#   set the ko label to "아뵈른"
+LAST	Lko	"아뵈른"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Abjörn"
+LAST	P1705	mul:"Abjörn"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Adamsdatter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Adamsdatter"
+LAST	Len	"Adamsdatter"
+#   set the mul label to "Adamsdatter"
+LAST	Lmul	"Adamsdatter"
+#   set the ja label to "アダムスダッテル"
+LAST	Lja	"アダムスダッテル"
+#   set the zh label to "阿达姆斯达特"
+LAST	Lzh	"阿达姆斯达特"
+#   set the ko label to "아담스다테르"
+LAST	Lko	"아담스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Adamsdatter"
+LAST	P1705	mul:"Adamsdatter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q347181 Adam
+LAST	P144	Q347181
+#   Q141518287 Karen Maria Adamsdatter Berge: P5056 patronym or matronym = the item just created, qualified P144 based on Q141575738 Adam Toreson Sviland
+Q141518287	P5056	LAST	P144	Q141575738	S2600	"6000000003095111778"
+
+# Adélaïs -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Adélaïs"
+LAST	Len	"Adélaïs"
+#   set the mul label to "Adélaïs"
+LAST	Lmul	"Adélaïs"
+#   set the ja label to "アデライス"
+LAST	Lja	"アデライス"
+#   set the zh label to "阿德拉伊斯"
+LAST	Lzh	"阿德拉伊斯"
+#   set the ko label to "아데라이스"
+LAST	Lko	"아데라이스"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Adélaïs"
+LAST	P1705	mul:"Adélaïs"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q354934 Adélaïs Aélis de Tours: P735 given name = the item just created, qualified P1545 series ordinal 1
+Q354934	P735	LAST	P1545	"1"	S2600	"6000000012468581950"
+
+# Ådnesdatter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ådnesdatter"
+LAST	Len	"Ådnesdatter"
+#   set the mul label to "Ådnesdatter"
+LAST	Lmul	"Ådnesdatter"
+#   set the ja label to "オードネスダッテル"
+LAST	Lja	"オードネスダッテル"
+#   set the zh label to "奥德内斯达特"
+LAST	Lzh	"奥德内斯达特"
+#   set the ko label to "아드네스다테르"
+LAST	Lko	"아드네스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Ådnesdatter"
+LAST	P1705	mul:"Ådnesdatter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141616203 Barbro Ådnesdatter Line: P5056 patronym or matronym = the item just created
+Q141616203	P5056	LAST	S2600	"6000000006776176555"
+
+# Ådneson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ådneson"
+LAST	Len	"Ådneson"
+#   set the mul label to "Ådneson"
+LAST	Lmul	"Ådneson"
+#   set the ja label to "オードネソン"
+LAST	Lja	"オードネソン"
+#   set the zh label to "奥德内松"
+LAST	Lzh	"奥德内松"
+#   set the ko label to "아드네손"
+LAST	Lko	"아드네손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Ådneson"
+LAST	P1705	mul:"Ådneson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Berggrener -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Berggrener"
+LAST	Len	"Berggrener"
+#   set the mul label to "Berggrener"
+LAST	Lmul	"Berggrener"
+#   set the ja label to "ベルッグレネル"
+LAST	Lja	"ベルッグレネル"
+#   set the zh label to "贝尔格雷内尔"
+LAST	Lzh	"贝尔格雷内尔"
+#   set the ko label to "베륵레네르"
+LAST	Lko	"베륵레네르"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Berggrener"
+LAST	P1705	mul:"Berggrener"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141578888 Maria Dorotea Tranchell: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141578888	P734	LAST	P3831	Q28418670	S2600	"6000000189014157835"
+
+# Berlukarisdottir -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Berlukarisdottir"
+LAST	Len	"Berlukarisdottir"
+#   set the mul label to "Berlukarisdottir"
+LAST	Lmul	"Berlukarisdottir"
+#   set the ja label to "ベルルカリスドッティル"
+LAST	Lja	"ベルルカリスドッティル"
+#   set the zh label to "贝尔卢卡里斯多蒂尔"
+LAST	Lzh	"贝尔卢卡里斯多蒂尔"
+#   set the ko label to "베루카리스도티르"
+LAST	Lko	"베루카리스도티르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Berlukarisdottir"
+LAST	P1705	mul:"Berlukarisdottir"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Bratt -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Bratt"
+LAST	Len	"Bratt"
+#   set the mul label to "Bratt"
+LAST	Lmul	"Bratt"
+#   set the ja label to "ブラット"
+LAST	Lja	"ブラット"
+#   set the zh label to "布拉特"
+LAST	Lzh	"布拉特"
+#   set the ko label to "브라트"
+LAST	Lko	"브라트"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Bratt"
+LAST	P1705	mul:"Bratt"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141518104 Bratt Oxehode: P735 given name = the item just created
+Q141518104	P735	LAST	S2600	"6000000007226222201"
+
+# Båt -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Båt"
+LAST	Len	"Båt"
+#   set the mul label to "Båt"
+LAST	Lmul	"Båt"
+#   set the ja label to "ボート"
+LAST	Lja	"ボート"
+#   set the zh label to "博特"
+LAST	Lzh	"博特"
+#   set the ko label to "보트"
+LAST	Lko	"보트"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Båt"
+LAST	P1705	mul:"Båt"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141575723 Ture Karlsson Båt: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141575723	P734	LAST	P3831	Q2507958	S2600	"6000000007980337359"
+
+# Candelberg -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Candelberg"
+LAST	Len	"Candelberg"
+#   set the mul label to "Candelberg"
+LAST	Lmul	"Candelberg"
+#   set the ja label to "カンデルベルグ"
+LAST	Lja	"カンデルベルグ"
+#   set the zh label to "坎德尔贝尔格"
+LAST	Lzh	"坎德尔贝尔格"
+#   set the ko label to "칸델베륵"
+LAST	Lko	"칸델베륵"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Candelberg"
+LAST	P1705	mul:"Candelberg"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141533604 Margareta Fransdotter Franzén: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141533604	P734	LAST	P3831	Q28418670	S2600	"6000000016202313853"
+
+# 4631 more name items are needed and wait for a later
 # run -- 40 a day is the cap, not a limit of the data:
-#   von Streitberg (family), 2 bearer(s)
-#   Ålov (given), 2 bearer(s)
-#   Abjörn (given), 1 bearer(s)
-#   Adélaïs (given), 1 bearer(s)
-#   Ådnesdatter (patronymic), 1 bearer(s)
-#   Ådneson (patronymic), 1 bearer(s)
-#   Berlukarisdottir (patronymic), 1 bearer(s)
-#   Bratt (given), 1 bearer(s)
-#   Bråstein (family), 1 bearer(s)
-#   Båt (family), 1 bearer(s)
-#   Christenson (patronymic), 1 bearer(s)
-#   Chronander (family), 1 bearer(s)
-#   ... and 4622 more
+#   Dotter (given), 1 bearer(s)
+#   Einridesdatter (patronymic), 1 bearer(s)
+#   Eustachie (given), 1 bearer(s)
+#   Eysteinsdatter (patronymic), 1 bearer(s)
+#   Filippusdatter (patronymic), 1 bearer(s)
+#   Fru (given), 1 bearer(s)
+#   Gottschalksdotter (patronymic), 1 bearer(s)
+#   Gregersson (patronymic), 1 bearer(s)
+#   Grimsson (family), 1 bearer(s)
+#   Grjotgard (given), 1 bearer(s)
+#   Gudrødsson (patronymic), 1 bearer(s)
+#   Gumsehuvud (family), 1 bearer(s)
+#   ... and 4619 more
 
 
 # ======================================================================
@@ -1131,1355 +1113,13 @@ LAST	P282	Q8229
 # resolution rule reads: a bearer gets P5056 when their father's
 # P735 item is among these values. Patronymics only -- never people.
 # ======================================================================
-#   Q141579848: P144 based on = Q140865828
-Q141579848	P144	Q140865828
-#   Q141583346: P144 based on = Q19798835 Eirik
-Q141583346	P144	Q19798835
-#   P144 based on = Q750186 Erik
-Q141583346	P144	Q750186
-#   P144 based on = Q15277196 Erich
-Q141583346	P144	Q15277196
-#   Q141583356: P144 based on = Q2097883 Ole
-Q141583356	P144	Q2097883
-#   Q141585040: P144 based on = Q19828989 Torbjørn
-Q141585040	P144	Q19828989
-#   P144 based on = Q30129148 Thorbjørn
-Q141585040	P144	Q30129148
-#   P144 based on = Q2140988 Torbjörn
-Q141585040	P144	Q2140988
-#   Q141585674: P144 based on = Q30134538 Baard
-Q141585674	P144	Q30134538
-#   P144 based on = Q3482542
-Q141585674	P144	Q3482542
 #   Q141610460: P144 based on = Q12715173 Gudbrand
 Q141610460	P144	Q12715173
-#   Q141611219: P144 based on = Q1715178 Jöran
-Q141611219	P144	Q1715178
-#   Q141614679: P144 based on = Q19798835 Eirik
-Q141614679	P144	Q19798835
-#   P144 based on = Q15277196 Erich
-Q141614679	P144	Q15277196
-#   P144 based on = Q750186 Erik
-Q141614679	P144	Q750186
-#   Q141614688: P144 based on = Q1457563 Aslak
-Q141614688	P144	Q1457563
-#   Q141614691: P144 based on = Q30134715 Bendiks
-Q141614691	P144	Q30134715
-#   P144 based on = Q11960527 Bendik
-Q141614691	P144	Q11960527
-#   Q141614697: P144 based on = Q30147470
-Q141614697	P144	Q30147470
-#   P144 based on = Q15362369 Ellef
-Q141614697	P144	Q15362369
-#   Q141614703: P144 based on = Q1744078 Kjetil
-Q141614703	P144	Q1744078
-#   P144 based on = Q16800918 Kettil
-Q141614703	P144	Q16800918
-#   Q141614730: P144 based on = Q905954 Sigmund
-Q141614730	P144	Q905954
 
 # P31 culture class (Latin / Scandinavian patronymic) on patronymic
 # items this repo created. Emma's model on Q141562457.
-#   Q141189036: P31 instance of = Q141584760
-Q141189036	P31	Q141584760
-#   Q141189042: P31 instance of = Q141584760
-Q141189042	P31	Q141584760
-#   Q141189045: P31 instance of = Q141584760
-Q141189045	P31	Q141584760
-#   Q141223473: P31 instance of = Q141584760
-Q141223473	P31	Q141584760
-#   Q141223475: P31 instance of = Q141584760
-Q141223475	P31	Q141584760
-#   Q141223482: P31 instance of = Q141584760
-Q141223482	P31	Q141584760
-#   Q141223487: P31 instance of = Q141584760
-Q141223487	P31	Q141584760
-#   Q141223748: P31 instance of = Q141584760
-Q141223748	P31	Q141584760
-#   Q141242306: P31 instance of = Q141584760
-Q141242306	P31	Q141584760
-#   Q141242342: P31 instance of = Q141584760
-Q141242342	P31	Q141584760
-#   Q141244186: P31 instance of = Q141584760
-Q141244186	P31	Q141584760
-#   Q141249587: P31 instance of = Q141584760
-Q141249587	P31	Q141584760
-#   Q141249667: P31 instance of = Q141584760
-Q141249667	P31	Q141584760
-#   Q141249669: P31 instance of = Q141584760
-Q141249669	P31	Q141584760
-#   Q141249690: P31 instance of = Q141584760
-Q141249690	P31	Q141584760
-#   Q141250201: P31 instance of = Q141584760
-Q141250201	P31	Q141584760
-#   Q141257126: P31 instance of = Q141584760
-Q141257126	P31	Q141584760
-#   Q141257144: P31 instance of = Q141584760
-Q141257144	P31	Q141584760
-#   Q141267893: P31 instance of = Q141584760
-Q141267893	P31	Q141584760
-#   Q141267899: P31 instance of = Q141584760
-Q141267899	P31	Q141584760
-#   Q141271270: P31 instance of = Q141584760
-Q141271270	P31	Q141584760
-#   Q141271297: P31 instance of = Q141584760
-Q141271297	P31	Q141584760
-#   Q141271452: P31 instance of = Q141584760
-Q141271452	P31	Q141584760
-#   Q141283333: P31 instance of = Q141584760
-Q141283333	P31	Q141584760
-#   Q141283474: P31 instance of = Q141584760
-Q141283474	P31	Q141584760
-#   Q141283477: P31 instance of = Q141584760
-Q141283477	P31	Q141584760
-#   Q141283709: P31 instance of = Q141584760
-Q141283709	P31	Q141584760
-#   Q141283710: P31 instance of = Q141584760
-Q141283710	P31	Q141584760
-#   Q141283711: P31 instance of = Q141584760
-Q141283711	P31	Q141584760
-#   Q141290187: P31 instance of = Q141584760
-Q141290187	P31	Q141584760
-#   Q141290188: P31 instance of = Q141584760
-Q141290188	P31	Q141584760
-#   Q141290425: P31 instance of = Q141584760
-Q141290425	P31	Q141584760
-#   Q141290435: P31 instance of = Q141584760
-Q141290435	P31	Q141584760
-#   Q141312460: P31 instance of = Q141584760
-Q141312460	P31	Q141584760
-#   Q141312503: P31 instance of = Q141584760
-Q141312503	P31	Q141584760
-#   Q141313056: P31 instance of = Q141584748
-Q141313056	P31	Q141584748
-#   Q141313471: P31 instance of = Q141584760
-Q141313471	P31	Q141584760
-#   Q141313474: P31 instance of = Q141584760
-Q141313474	P31	Q141584760
-#   Q141313547: P31 instance of = Q141584760
-Q141313547	P31	Q141584760
-#   Q141313804: P31 instance of = Q141584760
-Q141313804	P31	Q141584760
-#   Q141313837: P31 instance of = Q141584760
-Q141313837	P31	Q141584760
-#   Q141314115: P31 instance of = Q141584748
-Q141314115	P31	Q141584748
-#   Q141314124: P31 instance of = Q141584760
-Q141314124	P31	Q141584760
-#   Q141314142: P31 instance of = Q141584760
-Q141314142	P31	Q141584760
-#   Q141314143: P31 instance of = Q141584760
-Q141314143	P31	Q141584760
-#   Q141318548: P31 instance of = Q141584760
-Q141318548	P31	Q141584760
-#   Q141318566: P31 instance of = Q141584760
-Q141318566	P31	Q141584760
-#   Q141318568: P31 instance of = Q141584760
-Q141318568	P31	Q141584760
-#   Q141318571: P31 instance of = Q141584760
-Q141318571	P31	Q141584760
-#   Q141318792: P31 instance of = Q141584760
-Q141318792	P31	Q141584760
-#   Q141318796: P31 instance of = Q141584760
-Q141318796	P31	Q141584760
-#   Q141318999: P31 instance of = Q141584760
-Q141318999	P31	Q141584760
-#   Q141319002: P31 instance of = Q141584760
-Q141319002	P31	Q141584760
-#   Q141319007: P31 instance of = Q141584760
-Q141319007	P31	Q141584760
-#   Q141336454: P31 instance of = Q141584760
-Q141336454	P31	Q141584760
-#   Q141336468: P31 instance of = Q141584760
-Q141336468	P31	Q141584760
-#   Q141336966: P31 instance of = Q141584760
-Q141336966	P31	Q141584760
-#   Q141336969: P31 instance of = Q141584760
-Q141336969	P31	Q141584760
-#   Q141336973: P31 instance of = Q141584760
-Q141336973	P31	Q141584760
-#   Q141336975: P31 instance of = Q141584760
-Q141336975	P31	Q141584760
-#   Q141352058: P31 instance of = Q141584760
-Q141352058	P31	Q141584760
-#   Q141352059: P31 instance of = Q141584760
-Q141352059	P31	Q141584760
-#   Q141352777: P31 instance of = Q141584760
-Q141352777	P31	Q141584760
-#   Q141352780: P31 instance of = Q141584760
-Q141352780	P31	Q141584760
-#   Q141352782: P31 instance of = Q141584760
-Q141352782	P31	Q141584760
-#   Q141352787: P31 instance of = Q141584760
-Q141352787	P31	Q141584760
-#   Q141352792: P31 instance of = Q141584760
-Q141352792	P31	Q141584760
-#   Q141352794: P31 instance of = Q141584760
-Q141352794	P31	Q141584760
-#   Q141381254: P31 instance of = Q141584760
-Q141381254	P31	Q141584760
-#   Q141381264: P31 instance of = Q141584760
-Q141381264	P31	Q141584760
-#   Q141381271: P31 instance of = Q141584760
-Q141381271	P31	Q141584760
-#   Q141383169: P31 instance of = Q141584760
-Q141383169	P31	Q141584760
-#   Q141383170: P31 instance of = Q141584760
-Q141383170	P31	Q141584760
-#   Q141383226: P31 instance of = Q141584760
-Q141383226	P31	Q141584760
-#   Q141383280: P31 instance of = Q141584760
-Q141383280	P31	Q141584760
-#   Q141383300: P31 instance of = Q141584760
-Q141383300	P31	Q141584760
-#   Q141383339: P31 instance of = Q141584760
-Q141383339	P31	Q141584760
-#   Q141403289: P31 instance of = Q141584760
-Q141403289	P31	Q141584760
-#   Q141403299: P31 instance of = Q141584760
-Q141403299	P31	Q141584760
-#   Q141403300: P31 instance of = Q141584760
-Q141403300	P31	Q141584760
-#   Q141403304: P31 instance of = Q141584760
-Q141403304	P31	Q141584760
-#   Q141403306: P31 instance of = Q141584760
-Q141403306	P31	Q141584760
-#   Q141403349: P31 instance of = Q141584760
-Q141403349	P31	Q141584760
-#   Q141403363: P31 instance of = Q141584760
-Q141403363	P31	Q141584760
-#   Q141419249: P31 instance of = Q141584760
-Q141419249	P31	Q141584760
-#   Q141419268: P31 instance of = Q141584760
-Q141419268	P31	Q141584760
-#   Q141419270: P31 instance of = Q141584760
-Q141419270	P31	Q141584760
-#   Q141419272: P31 instance of = Q141584760
-Q141419272	P31	Q141584760
-#   Q141421829: P31 instance of = Q141584760
-Q141421829	P31	Q141584760
-#   Q141421831: P31 instance of = Q141584760
-Q141421831	P31	Q141584760
-#   Q141421834: P31 instance of = Q141584760
-Q141421834	P31	Q141584760
-#   Q141421840: P31 instance of = Q141584760
-Q141421840	P31	Q141584760
-#   Q141421855: P31 instance of = Q141584760
-Q141421855	P31	Q141584760
-#   Q141421871: P31 instance of = Q141584760
-Q141421871	P31	Q141584760
-#   Q141421878: P31 instance of = Q141584760
-Q141421878	P31	Q141584760
-#   Q141421887: P31 instance of = Q141584760
-Q141421887	P31	Q141584760
-#   Q141429494: P31 instance of = Q141584760
-Q141429494	P31	Q141584760
-#   Q141429497: P31 instance of = Q141584760
-Q141429497	P31	Q141584760
-#   Q141429499: P31 instance of = Q141584760
-Q141429499	P31	Q141584760
-#   Q141429556: P31 instance of = Q141584760
-Q141429556	P31	Q141584760
-#   Q141429559: P31 instance of = Q141584760
-Q141429559	P31	Q141584760
-#   Q141429560: P31 instance of = Q141584760
-Q141429560	P31	Q141584760
-#   Q141429562: P31 instance of = Q141584760
-Q141429562	P31	Q141584760
-#   Q141429564: P31 instance of = Q141584760
-Q141429564	P31	Q141584760
-#   Q141436525: P31 instance of = Q141584760
-Q141436525	P31	Q141584760
-#   Q141436530: P31 instance of = Q141584760
-Q141436530	P31	Q141584760
-#   Q141436533: P31 instance of = Q141584760
-Q141436533	P31	Q141584760
-#   Q141436537: P31 instance of = Q141584760
-Q141436537	P31	Q141584760
-#   Q141436539: P31 instance of = Q141584760
-Q141436539	P31	Q141584760
-#   Q141436541: P31 instance of = Q141584760
-Q141436541	P31	Q141584760
-#   Q141436544: P31 instance of = Q141584760
-Q141436544	P31	Q141584760
-#   Q141436545: P31 instance of = Q141584760
-Q141436545	P31	Q141584760
-#   Q141436732: P31 instance of = Q141584760
-Q141436732	P31	Q141584760
-#   Q141436737: P31 instance of = Q141584760
-Q141436737	P31	Q141584760
-#   Q141436741: P31 instance of = Q141584760
-Q141436741	P31	Q141584760
-#   Q141440447: P31 instance of = Q141584760
-Q141440447	P31	Q141584760
-#   Q141440449: P31 instance of = Q141584760
-Q141440449	P31	Q141584760
-#   Q141440450: P31 instance of = Q141584760
-Q141440450	P31	Q141584760
-#   Q141440453: P31 instance of = Q141584760
-Q141440453	P31	Q141584760
-#   Q141440460: P31 instance of = Q141584760
-Q141440460	P31	Q141584760
-#   Q141440461: P31 instance of = Q141584760
-Q141440461	P31	Q141584760
-#   Q141440462: P31 instance of = Q141584760
-Q141440462	P31	Q141584760
-#   Q141442235: P31 instance of = Q141584760
-Q141442235	P31	Q141584760
-#   Q141442236: P31 instance of = Q141584760
-Q141442236	P31	Q141584760
-#   Q141442237: P31 instance of = Q141584760
-Q141442237	P31	Q141584760
-#   Q141442239: P31 instance of = Q141584760
-Q141442239	P31	Q141584760
-#   Q141442240: P31 instance of = Q141584760
-Q141442240	P31	Q141584760
-#   Q141442241: P31 instance of = Q141584760
-Q141442241	P31	Q141584760
-#   Q141442901: P31 instance of = Q141584760
-Q141442901	P31	Q141584760
-#   Q141442902: P31 instance of = Q141584760
-Q141442902	P31	Q141584760
-#   Q141442907: P31 instance of = Q141584760
-Q141442907	P31	Q141584760
-#   Q141442908: P31 instance of = Q141584760
-Q141442908	P31	Q141584760
-#   Q141442909: P31 instance of = Q141584760
-Q141442909	P31	Q141584760
-#   Q141442910: P31 instance of = Q141584760
-Q141442910	P31	Q141584760
-#   Q141443233: P31 instance of = Q141584760
-Q141443233	P31	Q141584760
-#   Q141443235: P31 instance of = Q141584760
-Q141443235	P31	Q141584760
-#   Q141443239: P31 instance of = Q141584760
-Q141443239	P31	Q141584760
-#   Q141443240: P31 instance of = Q141584760
-Q141443240	P31	Q141584760
-#   Q141443241: P31 instance of = Q141584760
-Q141443241	P31	Q141584760
-#   Q141443242: P31 instance of = Q141584760
-Q141443242	P31	Q141584760
-#   Q141444377: P31 instance of = Q141584760
-Q141444377	P31	Q141584760
-#   Q141444379: P31 instance of = Q141584760
-Q141444379	P31	Q141584760
-#   Q141444382: P31 instance of = Q141584760
-Q141444382	P31	Q141584760
-#   Q141444391: P31 instance of = Q141584760
-Q141444391	P31	Q141584760
-#   Q141444398: P31 instance of = Q141584760
-Q141444398	P31	Q141584760
-#   Q141446952: P31 instance of = Q141584760
-Q141446952	P31	Q141584760
-#   Q141446961: P31 instance of = Q141584760
-Q141446961	P31	Q141584760
-#   Q141446967: P31 instance of = Q141584760
-Q141446967	P31	Q141584760
-#   Q141446968: P31 instance of = Q141584760
-Q141446968	P31	Q141584760
-#   Q141446969: P31 instance of = Q141584760
-Q141446969	P31	Q141584760
-#   Q141448430: P31 instance of = Q141584760
-Q141448430	P31	Q141584760
-#   Q141448431: P31 instance of = Q141584760
-Q141448431	P31	Q141584760
-#   Q141448432: P31 instance of = Q141584760
-Q141448432	P31	Q141584760
-#   Q141448433: P31 instance of = Q141584760
-Q141448433	P31	Q141584760
-#   Q141448434: P31 instance of = Q141584760
-Q141448434	P31	Q141584760
-#   Q141448436: P31 instance of = Q141584760
-Q141448436	P31	Q141584760
-#   Q141448437: P31 instance of = Q141584760
-Q141448437	P31	Q141584760
-#   Q141448438: P31 instance of = Q141584760
-Q141448438	P31	Q141584760
-#   Q141448439: P31 instance of = Q141584760
-Q141448439	P31	Q141584760
-#   Q141450131: P31 instance of = Q141584760
-Q141450131	P31	Q141584760
-#   Q141450133: P31 instance of = Q141584760
-Q141450133	P31	Q141584760
-#   Q141450137: P31 instance of = Q141584760
-Q141450137	P31	Q141584760
-#   Q141450139: P31 instance of = Q141584760
-Q141450139	P31	Q141584760
-#   Q141450140: P31 instance of = Q141584760
-Q141450140	P31	Q141584760
-#   Q141450142: P31 instance of = Q141584760
-Q141450142	P31	Q141584760
-#   Q141450953: P31 instance of = Q141584760
-Q141450953	P31	Q141584760
-#   Q141450954: P31 instance of = Q141584760
-Q141450954	P31	Q141584760
-#   Q141450960: P31 instance of = Q141584760
-Q141450960	P31	Q141584760
-#   Q141450961: P31 instance of = Q141584760
-Q141450961	P31	Q141584760
-#   Q141450963: P31 instance of = Q141584760
-Q141450963	P31	Q141584760
-#   Q141454273: P31 instance of = Q141584760
-Q141454273	P31	Q141584760
-#   Q141454275: P31 instance of = Q141584760
-Q141454275	P31	Q141584760
-#   Q141454277: P31 instance of = Q141584760
-Q141454277	P31	Q141584760
-#   Q141454278: P31 instance of = Q141584760
-Q141454278	P31	Q141584760
-#   Q141454279: P31 instance of = Q141584760
-Q141454279	P31	Q141584760
-#   Q141454281: P31 instance of = Q141584760
-Q141454281	P31	Q141584760
-#   Q141455638: P31 instance of = Q141584760
-Q141455638	P31	Q141584760
-#   Q141455639: P31 instance of = Q141584760
-Q141455639	P31	Q141584760
-#   Q141455640: P31 instance of = Q141584760
-Q141455640	P31	Q141584760
-#   Q141455641: P31 instance of = Q141584760
-Q141455641	P31	Q141584760
-#   Q141455680: P31 instance of = Q141584760
-Q141455680	P31	Q141584760
-#   Q141455690: P31 instance of = Q141584760
-Q141455690	P31	Q141584760
-#   Q141455696: P31 instance of = Q141584760
-Q141455696	P31	Q141584760
-#   Q141455697: P31 instance of = Q141584760
-Q141455697	P31	Q141584760
-#   Q141455708: P31 instance of = Q141584760
-Q141455708	P31	Q141584760
-#   Q141456290: P31 instance of = Q141584760
-Q141456290	P31	Q141584760
-#   Q141456293: P31 instance of = Q141584760
-Q141456293	P31	Q141584760
-#   Q141456295: P31 instance of = Q141584760
-Q141456295	P31	Q141584760
-#   Q141456297: P31 instance of = Q141584760
-Q141456297	P31	Q141584760
-#   Q141456300: P31 instance of = Q141584760
-Q141456300	P31	Q141584760
-#   Q141456528: P31 instance of = Q141584760
-Q141456528	P31	Q141584760
-#   Q141456530: P31 instance of = Q141584760
-Q141456530	P31	Q141584760
-#   Q141456531: P31 instance of = Q141584760
-Q141456531	P31	Q141584760
-#   Q141456534: P31 instance of = Q141584760
-Q141456534	P31	Q141584760
-#   Q141456535: P31 instance of = Q141584760
-Q141456535	P31	Q141584760
-#   Q141457235: P31 instance of = Q141584760
-Q141457235	P31	Q141584760
-#   Q141457236: P31 instance of = Q141584760
-Q141457236	P31	Q141584760
-#   Q141457238: P31 instance of = Q141584760
-Q141457238	P31	Q141584760
-#   Q141457240: P31 instance of = Q141584760
-Q141457240	P31	Q141584760
-#   Q141474271: P31 instance of = Q141584760
-Q141474271	P31	Q141584760
-#   Q141488194: P31 instance of = Q141584760
-Q141488194	P31	Q141584760
-#   Q141492432: P31 instance of = Q141584760
-Q141492432	P31	Q141584760
-#   Q141492648: P31 instance of = Q141584760
-Q141492648	P31	Q141584760
-#   Q141493128: P31 instance of = Q141584760
-Q141493128	P31	Q141584760
-#   Q141493136: P31 instance of = Q141584760
-Q141493136	P31	Q141584760
-#   Q141493148: P31 instance of = Q141584760
-Q141493148	P31	Q141584760
-#   Q141493361: P31 instance of = Q141584760
-Q141493361	P31	Q141584760
-#   Q141493362: P31 instance of = Q141584760
-Q141493362	P31	Q141584760
-#   Q141493363: P31 instance of = Q141584760
-Q141493363	P31	Q141584760
-#   Q141493368: P31 instance of = Q141584760
-Q141493368	P31	Q141584760
-#   Q141493369: P31 instance of = Q141584760
-Q141493369	P31	Q141584760
-#   Q141493372: P31 instance of = Q141584760
-Q141493372	P31	Q141584760
-#   Q141497414: P31 instance of = Q141584748
-Q141497414	P31	Q141584748
-#   Q141498336: P31 instance of = Q141584760
-Q141498336	P31	Q141584760
-#   Q141498347: P31 instance of = Q141584760
-Q141498347	P31	Q141584760
-#   Q141498359: P31 instance of = Q141584760
-Q141498359	P31	Q141584760
-#   Q141498362: P31 instance of = Q141584760
-Q141498362	P31	Q141584760
-#   Q141498377: P31 instance of = Q141584760
-Q141498377	P31	Q141584760
-#   Q141498381: P31 instance of = Q141584760
-Q141498381	P31	Q141584760
-#   Q141498407: P31 instance of = Q141584760
-Q141498407	P31	Q141584760
-#   Q141498409: P31 instance of = Q141584760
-Q141498409	P31	Q141584760
-#   Q141498412: P31 instance of = Q141584760
-Q141498412	P31	Q141584760
-#   Q141498611: P31 instance of = Q141584760
-Q141498611	P31	Q141584760
-#   Q141498623: P31 instance of = Q141584760
-Q141498623	P31	Q141584760
-#   Q141498629: P31 instance of = Q141584760
-Q141498629	P31	Q141584760
-#   Q141498634: P31 instance of = Q141584760
-Q141498634	P31	Q141584760
-#   Q141498636: P31 instance of = Q141584760
-Q141498636	P31	Q141584760
-#   Q141498657: P31 instance of = Q141584760
-Q141498657	P31	Q141584760
-#   Q141498661: P31 instance of = Q141584760
-Q141498661	P31	Q141584760
-#   Q141498665: P31 instance of = Q141584760
-Q141498665	P31	Q141584760
-#   Q141498960: P31 instance of = Q141584760
-Q141498960	P31	Q141584760
-#   Q141498972: P31 instance of = Q141584760
-Q141498972	P31	Q141584760
-#   Q141499007: P31 instance of = Q141584760
-Q141499007	P31	Q141584760
-#   Q141499014: P31 instance of = Q141584760
-Q141499014	P31	Q141584760
-#   Q141499015: P31 instance of = Q141584760
-Q141499015	P31	Q141584760
-#   Q141499047: P31 instance of = Q141584760
-Q141499047	P31	Q141584760
-#   Q141499558: P31 instance of = Q141584760
-Q141499558	P31	Q141584760
-#   Q141499585: P31 instance of = Q141584760
-Q141499585	P31	Q141584760
-#   Q141499638: P31 instance of = Q141584760
-Q141499638	P31	Q141584760
-#   Q141499673: P31 instance of = Q141584760
-Q141499673	P31	Q141584760
-#   Q141499674: P31 instance of = Q141584760
-Q141499674	P31	Q141584760
-#   Q141499747: P31 instance of = Q141584760
-Q141499747	P31	Q141584760
-#   Q141500773: P31 instance of = Q141584760
-Q141500773	P31	Q141584760
-#   Q141500869: P31 instance of = Q141584760
-Q141500869	P31	Q141584760
-#   Q141500895: P31 instance of = Q141584760
-Q141500895	P31	Q141584760
-#   Q141500898: P31 instance of = Q141584760
-Q141500898	P31	Q141584760
-#   Q141502514: P31 instance of = Q141584760
-Q141502514	P31	Q141584760
-#   Q141502612: P31 instance of = Q141584760
-Q141502612	P31	Q141584760
-#   Q141502662: P31 instance of = Q141584760
-Q141502662	P31	Q141584760
-#   Q141502673: P31 instance of = Q141584760
-Q141502673	P31	Q141584760
-#   Q141510578: P31 instance of = Q141584760
-Q141510578	P31	Q141584760
-#   Q141511184: P31 instance of = Q141584760
-Q141511184	P31	Q141584760
-#   Q141511191: P31 instance of = Q141584760
-Q141511191	P31	Q141584760
-#   Q141511314: P31 instance of = Q141584760
-Q141511314	P31	Q141584760
-#   Q141511350: P31 instance of = Q141584760
-Q141511350	P31	Q141584760
-#   Q141512896: P31 instance of = Q141584760
-Q141512896	P31	Q141584760
-#   Q141512899: P31 instance of = Q141584760
-Q141512899	P31	Q141584760
-#   Q141512911: P31 instance of = Q141584760
-Q141512911	P31	Q141584760
-#   Q141512914: P31 instance of = Q141584760
-Q141512914	P31	Q141584760
-#   Q141512916: P31 instance of = Q141584760
-Q141512916	P31	Q141584760
-#   Q141512921: P31 instance of = Q141584760
-Q141512921	P31	Q141584760
-#   Q141512923: P31 instance of = Q141584760
-Q141512923	P31	Q141584760
-#   Q141512936: P31 instance of = Q141584760
-Q141512936	P31	Q141584760
-#   Q141514230: P31 instance of = Q141584760
-Q141514230	P31	Q141584760
-#   Q141514269: P31 instance of = Q141584760
-Q141514269	P31	Q141584760
-#   Q141515162: P31 instance of = Q141584760
-Q141515162	P31	Q141584760
-#   Q141515165: P31 instance of = Q141584760
-Q141515165	P31	Q141584760
-#   Q141515171: P31 instance of = Q141584760
-Q141515171	P31	Q141584760
-#   Q141515172: P31 instance of = Q141584760
-Q141515172	P31	Q141584760
-#   Q141515176: P31 instance of = Q141584760
-Q141515176	P31	Q141584760
-#   Q141515178: P31 instance of = Q141584760
-Q141515178	P31	Q141584760
-#   Q141515179: P31 instance of = Q141584760
-Q141515179	P31	Q141584760
-#   Q141515181: P31 instance of = Q141584760
-Q141515181	P31	Q141584760
-#   Q141515185: P31 instance of = Q141584760
-Q141515185	P31	Q141584760
-#   Q141517310: P31 instance of = Q141584760
-Q141517310	P31	Q141584760
-#   Q141517413: P31 instance of = Q141584760
-Q141517413	P31	Q141584760
-#   Q141517519: P31 instance of = Q141584760
-Q141517519	P31	Q141584760
-#   Q141517598: P31 instance of = Q141584760
-Q141517598	P31	Q141584760
-#   Q141517665: P31 instance of = Q141584760
-Q141517665	P31	Q141584760
-#   Q141517710: P31 instance of = Q141584760
-Q141517710	P31	Q141584760
-#   Q141518427: P31 instance of = Q141584760
-Q141518427	P31	Q141584760
-#   Q141518473: P31 instance of = Q141584760
-Q141518473	P31	Q141584760
-#   Q141518521: P31 instance of = Q141584760
-Q141518521	P31	Q141584760
-#   Q141518527: P31 instance of = Q141584760
-Q141518527	P31	Q141584760
-#   Q141521145: P31 instance of = Q141584760
-Q141521145	P31	Q141584760
-#   Q141522774: P31 instance of = Q141584760
-Q141522774	P31	Q141584760
-#   Q141523556: P31 instance of = Q141584760
-Q141523556	P31	Q141584760
-#   Q141527207: P31 instance of = Q141584760
-Q141527207	P31	Q141584760
-#   Q141527219: P31 instance of = Q141584760
-Q141527219	P31	Q141584760
-#   Q141527234: P31 instance of = Q141584760
-Q141527234	P31	Q141584760
-#   Q141527440: P31 instance of = Q141584760
-Q141527440	P31	Q141584760
-#   Q141527454: P31 instance of = Q141584760
-Q141527454	P31	Q141584760
-#   Q141527472: P31 instance of = Q141584760
-Q141527472	P31	Q141584760
-#   Q141527490: P31 instance of = Q141584760
-Q141527490	P31	Q141584760
-#   Q141527509: P31 instance of = Q141584760
-Q141527509	P31	Q141584760
-#   Q141527521: P31 instance of = Q141584760
-Q141527521	P31	Q141584760
-#   Q141528086: P31 instance of = Q141584760
-Q141528086	P31	Q141584760
-#   Q141528089: P31 instance of = Q141584760
-Q141528089	P31	Q141584760
-#   Q141528090: P31 instance of = Q141584760
-Q141528090	P31	Q141584760
-#   Q141528091: P31 instance of = Q141584760
-Q141528091	P31	Q141584760
-#   Q141528092: P31 instance of = Q141584760
-Q141528092	P31	Q141584760
-#   Q141528098: P31 instance of = Q141584760
-Q141528098	P31	Q141584760
-#   Q141529294: P31 instance of = Q141584760
-Q141529294	P31	Q141584760
-#   Q141529296: P31 instance of = Q141584760
-Q141529296	P31	Q141584760
-#   Q141529300: P31 instance of = Q141584760
-Q141529300	P31	Q141584760
-#   Q141529301: P31 instance of = Q141584760
-Q141529301	P31	Q141584760
-#   Q141529302: P31 instance of = Q141584760
-Q141529302	P31	Q141584760
-#   Q141532384: P31 instance of = Q141584760
-Q141532384	P31	Q141584760
-#   Q141532390: P31 instance of = Q141584760
-Q141532390	P31	Q141584760
-#   Q141532391: P31 instance of = Q141584760
-Q141532391	P31	Q141584760
-#   Q141532394: P31 instance of = Q141584760
-Q141532394	P31	Q141584760
-#   Q141537968: P31 instance of = Q141584760
-Q141537968	P31	Q141584760
-#   Q141537975: P31 instance of = Q141584760
-Q141537975	P31	Q141584760
-#   Q141537979: P31 instance of = Q141584760
-Q141537979	P31	Q141584760
-#   Q141537980: P31 instance of = Q141584760
-Q141537980	P31	Q141584760
-#   Q141537981: P31 instance of = Q141584760
-Q141537981	P31	Q141584760
-#   Q141546493: P31 instance of = Q141584760
-Q141546493	P31	Q141584760
-#   Q141546498: P31 instance of = Q141584760
-Q141546498	P31	Q141584760
-#   Q141546499: P31 instance of = Q141584760
-Q141546499	P31	Q141584760
-#   Q141546501: P31 instance of = Q141584760
-Q141546501	P31	Q141584760
-#   Q141546504: P31 instance of = Q141584760
-Q141546504	P31	Q141584760
-#   Q141549475: P31 instance of = Q141584760
-Q141549475	P31	Q141584760
-#   Q141549488: P31 instance of = Q141584760
-Q141549488	P31	Q141584760
-#   Q141549496: P31 instance of = Q141584760
-Q141549496	P31	Q141584760
-#   Q141549527: P31 instance of = Q141584760
-Q141549527	P31	Q141584760
-#   Q141549532: P31 instance of = Q141584760
-Q141549532	P31	Q141584760
-#   Q141549538: P31 instance of = Q141584760
-Q141549538	P31	Q141584760
-#   Q141550361: P31 instance of = Q141584760
-Q141550361	P31	Q141584760
-#   Q141550373: P31 instance of = Q141584760
-Q141550373	P31	Q141584760
-#   Q141550375: P31 instance of = Q141584760
-Q141550375	P31	Q141584760
-#   Q141550382: P31 instance of = Q141584760
-Q141550382	P31	Q141584760
-#   Q141550386: P31 instance of = Q141584760
-Q141550386	P31	Q141584760
-#   Q141552146: P31 instance of = Q141584760
-Q141552146	P31	Q141584760
-#   Q141552172: P31 instance of = Q141584760
-Q141552172	P31	Q141584760
-#   Q141552233: P31 instance of = Q141584748
-Q141552233	P31	Q141584748
-#   Q141552246: P31 instance of = Q141584760
-Q141552246	P31	Q141584760
-#   Q141555929: P31 instance of = Q141584760
-Q141555929	P31	Q141584760
-#   Q141555933: P31 instance of = Q141584760
-Q141555933	P31	Q141584760
-#   Q141561990: P31 instance of = Q141584760
-Q141561990	P31	Q141584760
-#   Q141561992: P31 instance of = Q141584760
-Q141561992	P31	Q141584760
-#   Q141561999: P31 instance of = Q141584760
-Q141561999	P31	Q141584760
-#   Q141562003: P31 instance of = Q141584760
-Q141562003	P31	Q141584760
-#   Q141562033: P31 instance of = Q141584760
-Q141562033	P31	Q141584760
-#   Q141563124: P31 instance of = Q141584760
-Q141563124	P31	Q141584760
-#   Q141563128: P31 instance of = Q141584760
-Q141563128	P31	Q141584760
-#   Q141563130: P31 instance of = Q141584760
-Q141563130	P31	Q141584760
-#   Q141563131: P31 instance of = Q141584760
-Q141563131	P31	Q141584760
-#   Q141563133: P31 instance of = Q141584760
-Q141563133	P31	Q141584760
-#   Q141564534: P31 instance of = Q141584760
-Q141564534	P31	Q141584760
-#   Q141564535: P31 instance of = Q141584760
-Q141564535	P31	Q141584760
-#   Q141564538: P31 instance of = Q141584760
-Q141564538	P31	Q141584760
-#   Q141564539: P31 instance of = Q141584760
-Q141564539	P31	Q141584760
-#   Q141564542: P31 instance of = Q141584760
-Q141564542	P31	Q141584760
-#   Q141569058: P31 instance of = Q141584760
-Q141569058	P31	Q141584760
-#   Q141569060: P31 instance of = Q141584760
-Q141569060	P31	Q141584760
-#   Q141569061: P31 instance of = Q141584760
-Q141569061	P31	Q141584760
-#   Q141569063: P31 instance of = Q141584760
-Q141569063	P31	Q141584760
-#   Q141569077: P31 instance of = Q141584760
-Q141569077	P31	Q141584760
-#   Q141569101: P31 instance of = Q141584760
-Q141569101	P31	Q141584760
-#   Q141569127: P31 instance of = Q141584760
-Q141569127	P31	Q141584760
-#   Q141570018: P31 instance of = Q141584748
-Q141570018	P31	Q141584748
-#   Q141572219: P31 instance of = Q141584760
-Q141572219	P31	Q141584760
-#   Q141572224: P31 instance of = Q141584760
-Q141572224	P31	Q141584760
-#   Q141572227: P31 instance of = Q141584760
-Q141572227	P31	Q141584760
-#   Q141572231: P31 instance of = Q141584760
-Q141572231	P31	Q141584760
-#   Q141572234: P31 instance of = Q141584760
-Q141572234	P31	Q141584760
-#   Q141572735: P31 instance of = Q141584760
-Q141572735	P31	Q141584760
-#   Q141572737: P31 instance of = Q141584760
-Q141572737	P31	Q141584760
-#   Q141574629: P31 instance of = Q141584760
-Q141574629	P31	Q141584760
-#   Q141574632: P31 instance of = Q141584760
-Q141574632	P31	Q141584760
-#   Q141574637: P31 instance of = Q141584760
-Q141574637	P31	Q141584760
-#   Q141574640: P31 instance of = Q141584760
-Q141574640	P31	Q141584760
-#   Q141574641: P31 instance of = Q141584760
-Q141574641	P31	Q141584760
-#   Q141574644: P31 instance of = Q141584760
-Q141574644	P31	Q141584760
-#   Q141574647: P31 instance of = Q141584760
-Q141574647	P31	Q141584760
-#   Q141574650: P31 instance of = Q141584760
-Q141574650	P31	Q141584760
-#   Q141574651: P31 instance of = Q141584760
-Q141574651	P31	Q141584760
-#   Q141574653: P31 instance of = Q141584760
-Q141574653	P31	Q141584760
-#   Q141574654: P31 instance of = Q141584760
-Q141574654	P31	Q141584760
-#   Q141574655: P31 instance of = Q141584760
-Q141574655	P31	Q141584760
-#   Q141574658: P31 instance of = Q141584760
-Q141574658	P31	Q141584760
-#   Q141574660: P31 instance of = Q141584760
-Q141574660	P31	Q141584760
-#   Q141574661: P31 instance of = Q141584760
-Q141574661	P31	Q141584760
-#   Q141574662: P31 instance of = Q141584760
-Q141574662	P31	Q141584760
-#   Q141574663: P31 instance of = Q141584760
-Q141574663	P31	Q141584760
-#   Q141574669: P31 instance of = Q141584760
-Q141574669	P31	Q141584760
-#   Q141574673: P31 instance of = Q141584760
-Q141574673	P31	Q141584760
-#   Q141574676: P31 instance of = Q141584760
-Q141574676	P31	Q141584760
-#   Q141574679: P31 instance of = Q141584760
-Q141574679	P31	Q141584760
-#   Q141574681: P31 instance of = Q141584760
-Q141574681	P31	Q141584760
-#   Q141574682: P31 instance of = Q141584760
-Q141574682	P31	Q141584760
-#   Q141574683: P31 instance of = Q141584760
-Q141574683	P31	Q141584760
-#   Q141574684: P31 instance of = Q141584760
-Q141574684	P31	Q141584760
-#   Q141574686: P31 instance of = Q141584760
-Q141574686	P31	Q141584760
-#   Q141574687: P31 instance of = Q141584760
-Q141574687	P31	Q141584760
-#   Q141574689: P31 instance of = Q141584760
-Q141574689	P31	Q141584760
-#   Q141574690: P31 instance of = Q141584760
-Q141574690	P31	Q141584760
-#   Q141574695: P31 instance of = Q141584760
-Q141574695	P31	Q141584760
-#   Q141575690: P31 instance of = Q141584760
-Q141575690	P31	Q141584760
-#   Q141575693: P31 instance of = Q141584760
-Q141575693	P31	Q141584760
-#   Q141575698: P31 instance of = Q141584760
-Q141575698	P31	Q141584760
-#   Q141575699: P31 instance of = Q141584760
-Q141575699	P31	Q141584760
-#   Q141576533: P31 instance of = Q141584760
-Q141576533	P31	Q141584760
-#   Q141576552: P31 instance of = Q141584760
-Q141576552	P31	Q141584760
-#   Q141576574: P31 instance of = Q141584760
-Q141576574	P31	Q141584760
-#   Q141577949: P31 instance of = Q141584760
-Q141577949	P31	Q141584760
-#   Q141579697: P31 instance of = Q141584760
-Q141579697	P31	Q141584760
-#   Q141579837: P31 instance of = Q141584760
-Q141579837	P31	Q141584760
-#   Q141579838: P31 instance of = Q141584760
-Q141579838	P31	Q141584760
-#   Q141579839: P31 instance of = Q141584760
-Q141579839	P31	Q141584760
-#   Q141579840: P31 instance of = Q141584760
-Q141579840	P31	Q141584760
-#   Q141579843: P31 instance of = Q141584760
-Q141579843	P31	Q141584760
-#   Q141579846: P31 instance of = Q141584760
-Q141579846	P31	Q141584760
-#   Q141579847: P31 instance of = Q141584760
-Q141579847	P31	Q141584760
-#   Q141579848: P31 instance of = Q141584760
-Q141579848	P31	Q141584760
-#   Q141579849: P31 instance of = Q141584760
-Q141579849	P31	Q141584760
-#   Q141579851: P31 instance of = Q141584760
-Q141579851	P31	Q141584760
-#   Q141579852: P31 instance of = Q141584760
-Q141579852	P31	Q141584760
-#   Q141580646: P31 instance of = Q141584760
-Q141580646	P31	Q141584760
-#   Q141580651: P31 instance of = Q141584760
-Q141580651	P31	Q141584760
-#   Q141580657: P31 instance of = Q141584760
-Q141580657	P31	Q141584760
-#   Q141580665: P31 instance of = Q141584760
-Q141580665	P31	Q141584760
-#   Q141582447: P31 instance of = Q141584760
-Q141582447	P31	Q141584760
-#   Q141582450: P31 instance of = Q141584760
-Q141582450	P31	Q141584760
-#   Q141582461: P31 instance of = Q141584760
-Q141582461	P31	Q141584760
-#   Q141582465: P31 instance of = Q141584760
-Q141582465	P31	Q141584760
-#   Q141582469: P31 instance of = Q141584760
-Q141582469	P31	Q141584760
-#   Q141582483: P31 instance of = Q141584760
-Q141582483	P31	Q141584760
-#   Q141582487: P31 instance of = Q141584760
-Q141582487	P31	Q141584760
-#   Q141582500: P31 instance of = Q141584760
-Q141582500	P31	Q141584760
-#   Q141582503: P31 instance of = Q141584760
-Q141582503	P31	Q141584760
-#   Q141582515: P31 instance of = Q141584760
-Q141582515	P31	Q141584760
-#   Q141582516: P31 instance of = Q141584760
-Q141582516	P31	Q141584760
-#   Q141582518: P31 instance of = Q141584760
-Q141582518	P31	Q141584760
-#   Q141582521: P31 instance of = Q141584760
-Q141582521	P31	Q141584760
-#   Q141582523: P31 instance of = Q141584760
-Q141582523	P31	Q141584760
-#   Q141582527: P31 instance of = Q141584760
-Q141582527	P31	Q141584760
-#   Q141582529: P31 instance of = Q141584760
-Q141582529	P31	Q141584760
-#   Q141582530: P31 instance of = Q141584760
-Q141582530	P31	Q141584760
-#   Q141582533: P31 instance of = Q141584760
-Q141582533	P31	Q141584760
-#   Q141582537: P31 instance of = Q141584760
-Q141582537	P31	Q141584760
-#   Q141583323: P31 instance of = Q141584760
-Q141583323	P31	Q141584760
-#   Q141583324: P31 instance of = Q141584760
-Q141583324	P31	Q141584760
-#   Q141583325: P31 instance of = Q141584760
-Q141583325	P31	Q141584760
-#   Q141583326: P31 instance of = Q141584760
-Q141583326	P31	Q141584760
-#   Q141583327: P31 instance of = Q141584760
-Q141583327	P31	Q141584760
-#   Q141583329: P31 instance of = Q141584760
-Q141583329	P31	Q141584760
-#   Q141583336: P31 instance of = Q141584760
-Q141583336	P31	Q141584760
-#   Q141583337: P31 instance of = Q141584760
-Q141583337	P31	Q141584760
-#   Q141583338: P31 instance of = Q141584760
-Q141583338	P31	Q141584760
-#   Q141583339: P31 instance of = Q141584760
-Q141583339	P31	Q141584760
-#   Q141583341: P31 instance of = Q141584760
-Q141583341	P31	Q141584760
-#   Q141583342: P31 instance of = Q141584760
-Q141583342	P31	Q141584760
-#   Q141583343: P31 instance of = Q141584760
-Q141583343	P31	Q141584760
-#   Q141583345: P31 instance of = Q141584760
-Q141583345	P31	Q141584760
-#   Q141583346: P31 instance of = Q141584760
-Q141583346	P31	Q141584760
-#   Q141583348: P31 instance of = Q141584760
-Q141583348	P31	Q141584760
-#   Q141583350: P31 instance of = Q141584760
-Q141583350	P31	Q141584760
-#   Q141583352: P31 instance of = Q141584760
-Q141583352	P31	Q141584760
-#   Q141583354: P31 instance of = Q141584760
-Q141583354	P31	Q141584760
-#   Q141583355: P31 instance of = Q141584760
-Q141583355	P31	Q141584760
-#   Q141583356: P31 instance of = Q141584760
-Q141583356	P31	Q141584760
-#   Q141583357: P31 instance of = Q141584760
-Q141583357	P31	Q141584760
-#   Q141583358: P31 instance of = Q141584760
-Q141583358	P31	Q141584760
-#   Q141583359: P31 instance of = Q141584760
-Q141583359	P31	Q141584760
-#   Q141583360: P31 instance of = Q141584760
-Q141583360	P31	Q141584760
-#   Q141583364: P31 instance of = Q141584760
-Q141583364	P31	Q141584760
-#   Q141583367: P31 instance of = Q141584760
-Q141583367	P31	Q141584760
-#   Q141583370: P31 instance of = Q141584760
-Q141583370	P31	Q141584760
-#   Q141583375: P31 instance of = Q141584760
-Q141583375	P31	Q141584760
-#   Q141584034: P31 instance of = Q141584760
-Q141584034	P31	Q141584760
-#   Q141584036: P31 instance of = Q141584760
-Q141584036	P31	Q141584760
-#   Q141584056: P31 instance of = Q141584760
-Q141584056	P31	Q141584760
-#   Q141584061: P31 instance of = Q141584760
-Q141584061	P31	Q141584760
-#   Q141584064: P31 instance of = Q141584760
-Q141584064	P31	Q141584760
-#   Q141584067: P31 instance of = Q141584760
-Q141584067	P31	Q141584760
-#   Q141584071: P31 instance of = Q141584760
-Q141584071	P31	Q141584760
-#   Q141584075: P31 instance of = Q141584760
-Q141584075	P31	Q141584760
-#   Q141584076: P31 instance of = Q141584760
-Q141584076	P31	Q141584760
-#   Q141584079: P31 instance of = Q141584760
-Q141584079	P31	Q141584760
-#   Q141584080: P31 instance of = Q141584760
-Q141584080	P31	Q141584760
-#   Q141584084: P31 instance of = Q141584760
-Q141584084	P31	Q141584760
-#   Q141584087: P31 instance of = Q141584760
-Q141584087	P31	Q141584760
-#   Q141584089: P31 instance of = Q141584760
-Q141584089	P31	Q141584760
-#   Q141585008: P31 instance of = Q141584760
-Q141585008	P31	Q141584760
-#   Q141585012: P31 instance of = Q141584760
-Q141585012	P31	Q141584760
-#   Q141585014: P31 instance of = Q141584760
-Q141585014	P31	Q141584760
-#   Q141585016: P31 instance of = Q141584760
-Q141585016	P31	Q141584760
-#   Q141585018: P31 instance of = Q141584760
-Q141585018	P31	Q141584760
-#   Q141585021: P31 instance of = Q141584760
-Q141585021	P31	Q141584760
-#   Q141585023: P31 instance of = Q141584760
-Q141585023	P31	Q141584760
-#   Q141585024: P31 instance of = Q141584760
-Q141585024	P31	Q141584760
-#   Q141585037: P31 instance of = Q141584760
-Q141585037	P31	Q141584760
-#   Q141585040: P31 instance of = Q141584760
-Q141585040	P31	Q141584760
-#   Q141585041: P31 instance of = Q141584760
-Q141585041	P31	Q141584760
-#   Q141585043: P31 instance of = Q141584760
-Q141585043	P31	Q141584760
-#   Q141585044: P31 instance of = Q141584760
-Q141585044	P31	Q141584760
-#   Q141585045: P31 instance of = Q141584760
-Q141585045	P31	Q141584760
-#   Q141585046: P31 instance of = Q141584760
-Q141585046	P31	Q141584760
-#   Q141585047: P31 instance of = Q141584760
-Q141585047	P31	Q141584760
-#   Q141585048: P31 instance of = Q141584760
-Q141585048	P31	Q141584760
-#   Q141585052: P31 instance of = Q141584760
-Q141585052	P31	Q141584760
-#   Q141585054: P31 instance of = Q141584760
-Q141585054	P31	Q141584760
-#   Q141585058: P31 instance of = Q141584760
-Q141585058	P31	Q141584760
-#   Q141585070: P31 instance of = Q141584760
-Q141585070	P31	Q141584760
-#   Q141585071: P31 instance of = Q141584760
-Q141585071	P31	Q141584760
-#   Q141585075: P31 instance of = Q141584760
-Q141585075	P31	Q141584760
-#   Q141585636: P31 instance of = Q141584760
-Q141585636	P31	Q141584760
-#   Q141585638: P31 instance of = Q141584760
-Q141585638	P31	Q141584760
-#   Q141585639: P31 instance of = Q141584760
-Q141585639	P31	Q141584760
-#   Q141585641: P31 instance of = Q141584760
-Q141585641	P31	Q141584760
-#   Q141585651: P31 instance of = Q141584760
-Q141585651	P31	Q141584760
-#   Q141585654: P31 instance of = Q141584760
-Q141585654	P31	Q141584760
-#   Q141585658: P31 instance of = Q141584760
-Q141585658	P31	Q141584760
-#   Q141585663: P31 instance of = Q141584760
-Q141585663	P31	Q141584760
-#   Q141585665: P31 instance of = Q141584760
-Q141585665	P31	Q141584760
-#   Q141585667: P31 instance of = Q141584760
-Q141585667	P31	Q141584760
-#   Q141585668: P31 instance of = Q141584760
-Q141585668	P31	Q141584760
-#   Q141585674: P31 instance of = Q141584760
-Q141585674	P31	Q141584760
-#   Q141585679: P31 instance of = Q141584760
-Q141585679	P31	Q141584760
-#   Q141585683: P31 instance of = Q141584760
-Q141585683	P31	Q141584760
-#   Q141585684: P31 instance of = Q141584760
-Q141585684	P31	Q141584760
-#   Q141585686: P31 instance of = Q141584760
-Q141585686	P31	Q141584760
-#   Q141586292: P31 instance of = Q141584760
-Q141586292	P31	Q141584760
-#   Q141586293: P31 instance of = Q141584760
-Q141586293	P31	Q141584760
-#   Q141586294: P31 instance of = Q141584760
-Q141586294	P31	Q141584760
-#   Q141586295: P31 instance of = Q141584760
-Q141586295	P31	Q141584760
-#   Q141586297: P31 instance of = Q141584760
-Q141586297	P31	Q141584760
-#   Q141586298: P31 instance of = Q141584760
-Q141586298	P31	Q141584760
-#   Q141586300: P31 instance of = Q141584760
-Q141586300	P31	Q141584760
-#   Q141586308: P31 instance of = Q141584760
-Q141586308	P31	Q141584760
-#   Q141586316: P31 instance of = Q141584760
-Q141586316	P31	Q141584760
-#   Q141586323: P31 instance of = Q141584760
-Q141586323	P31	Q141584760
-#   Q141586327: P31 instance of = Q141584760
-Q141586327	P31	Q141584760
-#   Q141586329: P31 instance of = Q141584760
-Q141586329	P31	Q141584760
-#   Q141586331: P31 instance of = Q141584760
-Q141586331	P31	Q141584760
-#   Q141586335: P31 instance of = Q141584760
-Q141586335	P31	Q141584760
-#   Q141586338: P31 instance of = Q141584760
-Q141586338	P31	Q141584760
-#   Q141586342: P31 instance of = Q141584760
-Q141586342	P31	Q141584760
-#   Q141586344: P31 instance of = Q141584760
-Q141586344	P31	Q141584760
-#   Q141586347: P31 instance of = Q141584760
-Q141586347	P31	Q141584760
-#   Q141610381: P31 instance of = Q141584760
-Q141610381	P31	Q141584760
-#   Q141610382: P31 instance of = Q141584760
-Q141610382	P31	Q141584760
-#   Q141610383: P31 instance of = Q141584760
-Q141610383	P31	Q141584760
-#   Q141610387: P31 instance of = Q141584760
-Q141610387	P31	Q141584760
-#   Q141610389: P31 instance of = Q141584760
-Q141610389	P31	Q141584760
-#   Q141610390: P31 instance of = Q141584760
-Q141610390	P31	Q141584760
-#   Q141610392: P31 instance of = Q141584760
-Q141610392	P31	Q141584760
-#   Q141610395: P31 instance of = Q141584760
-Q141610395	P31	Q141584760
-#   Q141610396: P31 instance of = Q141584760
-Q141610396	P31	Q141584760
-#   Q141610401: P31 instance of = Q141584760
-Q141610401	P31	Q141584760
-#   Q141610403: P31 instance of = Q141584760
-Q141610403	P31	Q141584760
-#   Q141610410: P31 instance of = Q141584760
-Q141610410	P31	Q141584760
-#   Q141610411: P31 instance of = Q141584760
-Q141610411	P31	Q141584760
-#   Q141610414: P31 instance of = Q141584760
-Q141610414	P31	Q141584760
-#   Q141610415: P31 instance of = Q141584760
-Q141610415	P31	Q141584760
-#   Q141610459: P31 instance of = Q141584760
-Q141610459	P31	Q141584760
-#   Q141610460: P31 instance of = Q141584760
+#   P31 instance of = Q141584760
 Q141610460	P31	Q141584760
-#   Q141610461: P31 instance of = Q141584760
-Q141610461	P31	Q141584760
-#   Q141610474: P31 instance of = Q141584760
-Q141610474	P31	Q141584760
-#   Q141610480: P31 instance of = Q141584760
-Q141610480	P31	Q141584760
-#   Q141610483: P31 instance of = Q141584760
-Q141610483	P31	Q141584760
-#   Q141610485: P31 instance of = Q141584760
-Q141610485	P31	Q141584760
-#   Q141611151: P31 instance of = Q141584760
-Q141611151	P31	Q141584760
-#   Q141611152: P31 instance of = Q141584760
-Q141611152	P31	Q141584760
-#   Q141611153: P31 instance of = Q141584760
-Q141611153	P31	Q141584760
-#   Q141611154: P31 instance of = Q141584760
-Q141611154	P31	Q141584760
-#   Q141611155: P31 instance of = Q141584760
-Q141611155	P31	Q141584760
-#   Q141611156: P31 instance of = Q141584760
-Q141611156	P31	Q141584760
-#   Q141611157: P31 instance of = Q141584760
-Q141611157	P31	Q141584760
-#   Q141611158: P31 instance of = Q141584760
-Q141611158	P31	Q141584760
-#   Q141611159: P31 instance of = Q141584760
-Q141611159	P31	Q141584760
-#   Q141611160: P31 instance of = Q141584760
-Q141611160	P31	Q141584760
-#   Q141611161: P31 instance of = Q141584760
-Q141611161	P31	Q141584760
-#   Q141611162: P31 instance of = Q141584760
-Q141611162	P31	Q141584760
-#   Q141611163: P31 instance of = Q141584760
-Q141611163	P31	Q141584760
-#   Q141611164: P31 instance of = Q141584760
-Q141611164	P31	Q141584760
-#   Q141611167: P31 instance of = Q141584760
-Q141611167	P31	Q141584760
-#   Q141611168: P31 instance of = Q141584760
-Q141611168	P31	Q141584760
-#   Q141611196: P31 instance of = Q141584760
-Q141611196	P31	Q141584760
-#   Q141611198: P31 instance of = Q141584760
-Q141611198	P31	Q141584760
-#   Q141611199: P31 instance of = Q141584760
-Q141611199	P31	Q141584760
-#   Q141611203: P31 instance of = Q141584760
-Q141611203	P31	Q141584760
-#   Q141611206: P31 instance of = Q141584760
-Q141611206	P31	Q141584760
-#   Q141611209: P31 instance of = Q141584760
-Q141611209	P31	Q141584760
-#   Q141611212: P31 instance of = Q141584760
-Q141611212	P31	Q141584760
-#   Q141611216: P31 instance of = Q141584760
-Q141611216	P31	Q141584760
-#   Q141611218: P31 instance of = Q141584760
-Q141611218	P31	Q141584760
-#   Q141611219: P31 instance of = Q141584760
-Q141611219	P31	Q141584760
-#   Q141611227: P31 instance of = Q141584760
-Q141611227	P31	Q141584760
-#   Q141612215: P31 instance of = Q141584760
-Q141612215	P31	Q141584760
-#   Q141612216: P31 instance of = Q141584760
-Q141612216	P31	Q141584760
-#   Q141612217: P31 instance of = Q141584760
-Q141612217	P31	Q141584760
-#   Q141612219: P31 instance of = Q141584760
-Q141612219	P31	Q141584760
-#   Q141612220: P31 instance of = Q141584760
-Q141612220	P31	Q141584760
-#   Q141612221: P31 instance of = Q141584760
-Q141612221	P31	Q141584760
-#   Q141612222: P31 instance of = Q141584760
-Q141612222	P31	Q141584760
-#   Q141612223: P31 instance of = Q141584760
-Q141612223	P31	Q141584760
-#   Q141612229: P31 instance of = Q141584760
-Q141612229	P31	Q141584760
-#   Q141612230: P31 instance of = Q141584760
-Q141612230	P31	Q141584760
-#   Q141612231: P31 instance of = Q141584760
-Q141612231	P31	Q141584760
-#   Q141612232: P31 instance of = Q141584760
-Q141612232	P31	Q141584760
-#   Q141612267: P31 instance of = Q141584760
-Q141612267	P31	Q141584760
-#   Q141612273: P31 instance of = Q141584760
-Q141612273	P31	Q141584760
-#   Q141612277: P31 instance of = Q141584760
-Q141612277	P31	Q141584760
-#   Q141612280: P31 instance of = Q141584760
-Q141612280	P31	Q141584760
-#   Q141612291: P31 instance of = Q141584760
-Q141612291	P31	Q141584760
-#   Q141612295: P31 instance of = Q141584760
-Q141612295	P31	Q141584760
-#   Q141612298: P31 instance of = Q141584760
-Q141612298	P31	Q141584760
-#   Q141612300: P31 instance of = Q141584760
-Q141612300	P31	Q141584760
-#   Q141614422: P31 instance of = Q141584760
-Q141614422	P31	Q141584760
-#   Q141614430: P31 instance of = Q141584760
-Q141614430	P31	Q141584760
-#   Q141614437: P31 instance of = Q141584760
-Q141614437	P31	Q141584760
-#   Q141614444: P31 instance of = Q141584760
-Q141614444	P31	Q141584760
-#   Q141614450: P31 instance of = Q141584760
-Q141614450	P31	Q141584760
-#   Q141614461: P31 instance of = Q141584760
-Q141614461	P31	Q141584760
-#   Q141614465: P31 instance of = Q141584760
-Q141614465	P31	Q141584760
-#   Q141614467: P31 instance of = Q141584760
-Q141614467	P31	Q141584760
-#   Q141614479: P31 instance of = Q141584760
-Q141614479	P31	Q141584760
-#   Q141614501: P31 instance of = Q141584760
-Q141614501	P31	Q141584760
-#   Q141614516: P31 instance of = Q141584760
-Q141614516	P31	Q141584760
-#   Q141614679: P31 instance of = Q141584760
-Q141614679	P31	Q141584760
-#   Q141614688: P31 instance of = Q141584760
-Q141614688	P31	Q141584760
-#   Q141614691: P31 instance of = Q141584760
-Q141614691	P31	Q141584760
-#   Q141614697: P31 instance of = Q141584760
-Q141614697	P31	Q141584760
-#   Q141614703: P31 instance of = Q141584760
-Q141614703	P31	Q141584760
-#   Q141614730: P31 instance of = Q141584760
-Q141614730	P31	Q141584760
-#   Q141619378: P31 instance of = Q141584760
-Q141619378	P31	Q141584760
-#   Q141619402: P31 instance of = Q141584760
-Q141619402	P31	Q141584760
-#   Q141619423: P31 instance of = Q141584760
-Q141619423	P31	Q141584760
-#   Q141619435: P31 instance of = Q141584760
-Q141619435	P31	Q141584760
-#   Q141619438: P31 instance of = Q141584760
-Q141619438	P31	Q141584760
-#   Q141619440: P31 instance of = Q141584760
-Q141619440	P31	Q141584760
-#   Q141619443: P31 instance of = Q141584760
-Q141619443	P31	Q141584760
-#   Q141620184: P31 instance of = Q141584748
-Q141620184	P31	Q141584748
-#   Q141620190: P31 instance of = Q141584748
-Q141620190	P31	Q141584748
-#   Q141622032: P31 instance of = Q141584760
-Q141622032	P31	Q141584760
-#   Q141622033: P31 instance of = Q141584760
-Q141622033	P31	Q141584760
-#   Q141622035: P31 instance of = Q141584760
-Q141622035	P31	Q141584760
-#   Q141622037: P31 instance of = Q141584760
-Q141622037	P31	Q141584760
-#   Q141622038: P31 instance of = Q141584760
-Q141622038	P31	Q141584760
-#   Q141622040: P31 instance of = Q141584760
-Q141622040	P31	Q141584760
-#   Q141622041: P31 instance of = Q141584760
-Q141622041	P31	Q141584760
-#   Q141622043: P31 instance of = Q141584760
-Q141622043	P31	Q141584760
-#   Q141622044: P31 instance of = Q141584760
-Q141622044	P31	Q141584760
-#   Q141622045: P31 instance of = Q141584760
-Q141622045	P31	Q141584760
-#   Q141622048: P31 instance of = Q141584760
-Q141622048	P31	Q141584760
-#   Q141622052: P31 instance of = Q141584760
-Q141622052	P31	Q141584760
-#   Q51885688 Olsdatter: P31 instance of = Q141584760
-Q51885688	P31	Q141584760
-#   Q69821896 Björnsson: P31 instance of = Q141584760
-Q69821896	P31	Q141584760
 
 # ======================================================================
 # P460 SAID TO BE THE SAME AS, between spellings of one patronymic.
@@ -2487,55 +1127,7 @@ Q69821896	P31	Q141584760
 # where the two items share a P144 source, a stem and a gendered
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
-#   Q141436737: P460 said to be the same as = Q141622043
-Q141436737	P460	Q141622043
-#   Q141622043: P460 said to be the same as = Q141436737
-Q141622043	P460	Q141436737
-#   Q141493128: P460 said to be the same as = Q141585040
-Q141493128	P460	Q141585040
-#   Q141585040: P460 said to be the same as = Q141493128
-Q141585040	P460	Q141493128
-#   Q141499585: P460 said to be the same as = Q141622044
-Q141499585	P460	Q141622044
-#   Q141622044: P460 said to be the same as = Q141499585
-Q141622044	P460	Q141499585
-#   Q141532391: P460 said to be the same as = Q141585040
-Q141532391	P460	Q141585040
-#   Q141585040: P460 said to be the same as = Q141532391
-Q141585040	P460	Q141532391
-#   Q141550386: P460 said to be the same as = Q141614688
-Q141550386	P460	Q141614688
-#   Q141614688: P460 said to be the same as = Q141550386
-Q141614688	P460	Q141550386
-#   Q141552146: P460 said to be the same as = Q141614688
-Q141552146	P460	Q141614688
-#   Q141614688: P460 said to be the same as = Q141552146
-Q141614688	P460	Q141552146
-#   Q141583346: P460 said to be the same as = Q141611161
-Q141583346	P460	Q141611161
-#   Q141611161: P460 said to be the same as = Q141583346
-Q141611161	P460	Q141583346
-#   Q141583356: P460 said to be the same as = Q141585024
-Q141583356	P460	Q141585024
-#   Q141585024: P460 said to be the same as = Q141583356
-Q141585024	P460	Q141583356
-#   Q141584067: P460 said to be the same as = Q141622052
-Q141584067	P460	Q141622052
-#   Q141622052: P460 said to be the same as = Q141584067
-Q141622052	P460	Q141584067
-#   Q141585023: P460 said to be the same as = Q141614703
-Q141585023	P460	Q141614703
-#   Q141614703: P460 said to be the same as = Q141585023
-Q141614703	P460	Q141585023
-#   Q141585043: P460 said to be the same as = Q141614679
-Q141585043	P460	Q141614679
-#   Q141614679: P460 said to be the same as = Q141585043
-Q141614679	P460	Q141585043
-#   Q141610382: P460 said to be the same as = Q141622045
-Q141610382	P460	Q141622045
-#   Q141622045: P460 said to be the same as = Q141610382
-Q141622045	P460	Q141610382
-#   Q141611212: P460 said to be the same as = Q141622037
-Q141611212	P460	Q141622037
-#   Q141622037: P460 said to be the same as = Q141611212
-Q141622037	P460	Q141611212
+#   Q141457238: P460 said to be the same as = Q141625194
+Q141457238	P460	Q141625194
+#   Q141625194: P460 said to be the same as = Q141457238
+Q141625194	P460	Q141457238
