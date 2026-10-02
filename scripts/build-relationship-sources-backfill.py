@@ -283,18 +283,21 @@ def read_sources():
     return links, fs_ids
 
 
-def reference_for(prop, a, b, links, fs_ids, famc):
+def reference_for(prop, a, b, links, fs_ids, father, mother):
     """The reference snaks for `a -[prop]-> b`, or `""` when no database can be cited.
 
     `S2600` when Geni gives the link, `S2889` when only FamilySearch does, both in one
-    reference when both do. A sibling is a child of the same FAMILY OBJECT (see
-    `sibling_index`), so its source is the source of the families they share: a `FS…` family is
-    FamilySearch's, any other is Geni's.
+    reference when both do. A sibling is derived from a shared parent, so it is Geni's when some
+    shared parent is linked to both by a Geni family, and FamilySearch's otherwise.
     """
     if prop == "P3373":
-        shared = famc.get(a, set()) & famc.get(b, set())
-        geni = any(not f.startswith(FS_FAMILY_PREFIX) for f in shared)
-        fs = any(f.startswith(FS_FAMILY_PREFIX) for f in shared)
+        shared = [(rel, par) for rel, pmap in (("father", father), ("mother", mother))
+                  for par in [pmap.get(a)] if par and pmap.get(b) == par]
+        src_of = [(links.get((a, rel, par), "geni"), links.get((b, rel, par), "geni"))
+                  for rel, par in shared]
+        # A database gives the sibling link when it links BOTH of them to the same parent.
+        geni = any(all(x != "fs" for x in pair) for pair in src_of)
+        fs = any(all(x != "geni" for x in pair) for pair in src_of)
         src = "both" if geni and fs else ("fs" if fs else "geni")
     else:
         src = links.get((a, RELATION_OF[prop], b), "geni")
@@ -307,47 +310,22 @@ def reference_for(prop, a, b, links, fs_ids, famc):
     return out
 
 
-#: The family objects of the merged tree, as `build-family-structure.py` writes them.
-FAMILY_STRUCTURE = REPO / "out" / "family-structure.tsv.gz"
-#: A FamilySearch family is `@FFS…@`, keyed `FS…` once the leading `@F` is dropped.
-FS_FAMILY_PREFIX = "FS"
+def sibling_index(father, mother):
+    """`{geni_id: {sibling geni_id, ...}}` -- somebody sharing a father or a mother.
 
+    `derived-family.csv` carries no sibling column, and this is what Geni means by one. Built
+    from the two parent maps rather than from the `children` column, so a half-sibling recorded
+    on only one side is still found.
 
-def family_index():
-    """`{geni_id: {family, ...}}` -- the families a person is a CHILD of (`fam_c` and `famc`)."""
-    import gzip
-    out = {}
-    if not FAMILY_STRUCTURE.exists():
-        print(f"WARNING: {FAMILY_STRUCTURE.name} missing -- no sibling can be cited")
-        return out
-    with gzip.open(FAMILY_STRUCTURE, "rt", encoding="utf-8") as fh:
-        for line in fh:
-            parts = line.rstrip("\n").split("\t")
-            if len(parts) < 3:
-                continue
-            if parts[0] == "fam_c":
-                for child in parts[2].split():
-                    out.setdefault(child, set()).add(parts[1])
-            elif parts[0] == "famc":
-                out.setdefault(parts[1], set()).update(parts[2].split())
-    return out
-
-
-def sibling_index(famc):
-    """`{geni_id: {sibling geni_id, ...}}` -- children of the same FAMILY OBJECT.
-
-    ⛔ **RULED 2026-09-26 (Emma): siblings are about the family objects** in the GEDCOM (`FAM`,
-    the two being `CHIL` of the same one), not about which parents happen to be recorded. This
-    used to count anyone sharing a father or a mother, which is how `Q819556`-`Q1045160` got an
-    `S2600` citation although no family object holds them both (measured 2026-09-27: the one
-    such pair our account cited; the composer already builds siblings from `fam_c`).
+    ⛔ **RESTORED 2026-10-02 (Emma): "I think the change is the problem."** The 2026-09-27 change
+    counted only children of the same family object; people who share a father or a mother are
+    siblings, and their `P3373` is sourced like any other relationship.
     """
-    by_family = {}
-    for child, fams in famc.items():
-        for fam in fams:
-            by_family.setdefault(fam, set()).add(child)
+    by_parent = {}
+    for child, parent in list(father.items()) + list(mother.items()):
+        by_parent.setdefault(parent, set()).add(child)
     out = {}
-    for kids in by_family.values():
+    for kids in by_parent.values():
         if len(kids) < 2:
             continue
         for kid in kids:
@@ -361,8 +339,7 @@ def main() -> int:
     print(f"universe: {len(core):,} items; adjacent: {len(near):,}")
 
     tree, father, mother = read_our_tree()
-    famc = family_index()
-    siblings = sibling_index(famc)
+    siblings = sibling_index(father, mother)
     links, fs_ids = read_sources()
     print(f"link sources: {len(links):,} FamilySearch-given links, {len(fs_ids):,} FamilySearch ids")
     print(f"our tree: {len(tree):,} people with a relationship; "
@@ -451,7 +428,8 @@ def main() -> int:
                     if not attested:
                         unattested += 1
                         continue
-                    reference = reference_for(prop, subject_geni, other_geni, links, fs_ids, famc)
+                    reference = reference_for(prop, subject_geni, other_geni, links, fs_ids,
+                                              father, mother)
                     if not reference:
                         unattested += 1
                         continue
