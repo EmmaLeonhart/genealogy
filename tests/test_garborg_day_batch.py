@@ -216,6 +216,10 @@ VOCABULARY = {
     # something if the label was looked up.
     "Q130444148",   # masculine patronymic
     "Q130444179",   # feminine patronymic
+    # The culture roles of 2026-09-27 (`namemodel.patronymic_culture`), each `P279` patronymic
+    # and `P31` on the patronymic items of that culture; labels read live 2026-10-02.
+    "Q141584748",   # Latin patronymic
+    "Q141584760",   # Scandinavian patronymic
     "Q10673705",    # son name
     "Q10476255",    # daughter name
     "Q8229",        # Latin script -- the P282 writing system every Latin name item carries

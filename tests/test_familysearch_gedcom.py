@@ -508,7 +508,7 @@ def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_per
     person in the tree: the day batch creates them with `P2600` and `P2889`, so this file
     carries them, never a second item (Emma, 2026-09-24: skip them, add P2889 instead)."""
     import argparse
-    ged = BATCH_GED.replace("0 @IFS6@ INDI", "0 @I6000000000000000009@ INDI")
+    ged = BATCH_GED.replace("@IFS6@", "@I6000000000000000009@")   # the INDI and the FAM's HUSB
     src = tmp_path / "sample.ged"
     src.write_text(ged, encoding="utf-8")
     monkeypatch.setattr(builder, "OUT", tmp_path / "out.txt")
