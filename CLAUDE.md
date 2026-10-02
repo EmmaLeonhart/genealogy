@@ -710,7 +710,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   labels in Polish, French, German and the rest go too. One gate on the written batch
   (`LABEL_LANGUAGES` in `build-garborg-day.py`) drops any other label or alias; Emma's own hand
   labels pass. Other languages are `todo.md` work, not batch work.
-- **⛔ LONG-TERM, A LABEL IS COMPOSED FROM THE NAME ITEMS, STRICTLY. Ruled 2026-09-27 by AskUserQuestion.** A person's label in any language, `ja`/`zh`/`ko` included, is built from the labels their name items (given names, patronymics, family names) carry in that language, and a language is written for a person only once EVERY part of the name has a label there. Transliteration is phased out over time in favour of this; it is a long tail and nothing is guessed.
+- **⛔ LONG-TERM, A LABEL IS COMPOSED FROM THE NAME ITEMS, STRICTLY. Ruled 2026-09-27 by AskUserQuestion.** A person's label in any language, `ja`/`zh`/`ko` included, is built from the labels their name items (given names, patronymics, family names) carry in that language, and a language is written for a person only once EVERY part of the name has a label there. Transliteration is phased out over time in favour of this; it is a long tail and nothing is guessed. **English is switched on (Emma, 2026-10-02, by AskUserQuestion):** `COMPOSED_LANGS_LIVE` in `build-garborg-day.py` fills an empty `en` slot from the name items, never overwriting; `ja`/`zh`/`ko` stay on transliteration for now.
 - **The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN.** All three readings are produced for
   everyone; culture only picks which is promoted to `mul`.
 - **A title inside a label takes the NATIVE form in CJK**, never a transliteration. An unknown

@@ -1871,6 +1871,31 @@ def _name_parts(entity):
     return ordered("P735") + ordered("P5056") + ordered("P734")
 
 
+#: The languages whose label is filled from the name items (`composed-labels.tsv`). Emma,
+#: 2026-10-02 by AskUserQuestion: English only for now; ja/zh/ko stay on transliteration.
+COMPOSED_LANGS_LIVE = ("en",)
+
+
+def _composed_en_labels(our_items, live_labels):
+    """`Q Len "…"` for an item of ours with NO live label in a switched-on language, from the
+    label its name items compose to (`write_composed_labels`). Empty slots only, never an
+    overwrite; nothing at all when the live labels are unknown."""
+    if not live_labels or not COMPOSED_LABELS_OUT.exists():
+        return []
+    ours = set(our_items.values()) if isinstance(our_items, dict) else set(our_items)
+    out = []
+    with open(COMPOSED_LABELS_OUT, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="\t"):
+            q, lang, composed = r["qid"], r["lang"], r["composed"]
+            if (lang in COMPOSED_LANGS_LIVE and composed and not r["live"] and q in ours
+                    and not live_labels.get((q, lang))):
+                out.append(f'{q}\tL{lang}\t"{qs(composed)}"')
+    if out:
+        print(f"composed labels: {len(out)} empty {'/'.join(COMPOSED_LANGS_LIVE)} label(s) filled "
+              f"from the name items")
+    return out
+
+
 def write_composed_labels():
     """`reports/composed-labels.tsv`: for every person in the live item shards, the label their
     name items compose to in each language (`namemodel.compose_label`, strictly), beside the live
@@ -9697,7 +9722,8 @@ def main():
         + _label_corrections(editable_items, labels, table, state, fields, generation,
                              live_labels)
         + _cjk_follows_mul(table)
-        + _missing_cjk_labels(editable_items, labels, table, live_labels))
+        + _missing_cjk_labels(editable_items, labels, table, live_labels)
+        + _composed_en_labels(editable_items, live_labels))
     # ⛔ **LOCALITY, ON EVERY DERIVED LABEL EDIT. THIS IS THE ALARM.**
     #
     # Ruled 2026-09-18, after nine `ja` labels were set on `Q135525010`, `Q135579354` and seven

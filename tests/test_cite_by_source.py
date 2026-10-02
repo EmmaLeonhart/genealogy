@@ -239,3 +239,27 @@ def test_a_live_familysearch_id_gets_its_subject_named_as():
     assert repair(ents, {"Q1", "Q2", "Q3", "Q5"}, named, 10) == [
         'Q1\tP2889\t"AAAA-111"\tP1810\t"Kari Toresdatter"']
     assert repair(ents, {"Q1", "Q4"}, named, 1) == ['Q1\tP2889\t"AAAA-111"\tP1810\t"Kari Toresdatter"']
+
+
+def test_a_composed_label_fills_only_an_empty_slot_in_a_switched_on_language(tmp_path):
+    """Emma, 2026-10-02: English labels come from the name items now, ja/zh/ko not yet. A
+    composed label goes out only where the item has none live, only for our items, and nothing
+    goes out when the live labels are unknown."""
+    src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+    code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
+                       if isinstance(n, ast.FunctionDef) and n.name == "_composed_en_labels")
+    report = tmp_path / "composed.tsv"
+    report.write_text("qid\tlang\tcomposed\tlive\n"
+                      "Q1\ten\tSara Behm\t\n"
+                      "Q2\ten\tWilliam Zouche\tWilliam Zouche, 1st Lord Zouche\n"
+                      "Q3\tja\tサラ・ベーム\t\n"
+                      "Q4\ten\tOscar Oldberg\t\n"
+                      "Q5\ten\tHans Nyvold\t\n", encoding="utf-8")
+    ns = {"csv": csv, "COMPOSED_LABELS_OUT": report, "COMPOSED_LANGS_LIVE": ("en",),
+          "qs": lambda s: s}
+    exec(code, ns)
+    fill = ns["_composed_en_labels"]
+    live = {("Q5", "en"): "Hans Syvertsen Nyvold"}
+    assert fill({"g1": "Q1", "g2": "Q2", "g3": "Q3", "g5": "Q5"}, live) == ['Q1\tLen\t"Sara Behm"']
+    assert fill({"g1": "Q1"}, {}) == []
