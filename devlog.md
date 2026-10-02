@@ -50264,3 +50264,4 @@ go-ahead, then stopped at her choice ("Commit only, stop batch"): 50 of the 124 
 the Frisk Geni id on a different item from the FamilySearch match, likely duplicate items
 (`reports/frisk-duplicate-items.tsv`); 47 FamilySearch ids are on no item. Emma, same day: several
 Geni ids on one item is intended, each is a canonical representation, and Wikidata is what matters.
+Emma then ordered the batch run: the remaining 74 Frisk Geni ids went to a new QuickStatements tab.
