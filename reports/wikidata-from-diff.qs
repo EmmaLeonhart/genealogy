@@ -21,6 +21,10 @@ Q469962	P734	Q45304202	S2600	"1551393"
 # Anna Olofsdotter Gestricius  Q141610363  <- geni:1610437
 Q141610363	P26	Q141610363	S2600	"1610437"
 
+# Louis II  Q182840  <- geni:2430192
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q182840	P735	Q97156058	S2600	"2430192"
+
 # Gilius Wilhelmsson de Besche Sr.  Q5618220  <- geni:2470149
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5618220	P569	+1540-00-00T00:00:00Z/9	S2600	"2470149"
@@ -46,7 +50,17 @@ Q3301	P569	+0686-08-23T00:00:00Z/11	S2600	"288390320120001964"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q354300	P570	+0789-00-00T00:00:00Z/9	S2600	"305960689340007097"
 
+# Håkon Ogmundsson Bolt  Q120728560  <- geni:307468276350008265
+Q120728560	P22	Q141570929	S2600	"307468276350008265"
+Q120728560	P25	Q141611060	S2600	"307468276350008265"
+
+# Bengt Folkesson  Q1621801  <- geni:3080341
+Q1621801	P40	Q141528104	S2600	"3080341"
+Q1621801	P5056	Q141619443	S2600	"3080341"
+
 # Gro Jonsdatter Dall  Q141559583  <- geni:309761166900008246
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141559583	P22	Q11979148	S2600	"309761166900008246"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141559583	P25	Q141569368	S2600	"309761166900008246"
 
@@ -54,8 +68,69 @@ Q141559583	P25	Q141569368	S2600	"309761166900008246"
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141518682	P22	Q30337045	S2600	"310975189770006483"
 
+# Egill Hrifluson  Q133796445  <- geni:3128066
+Q133796445	P569	+1002-00-00T00:00:00Z/9	S2600	"3128066"
+Q133796445	P735	Q96575354	S2600	"3128066"
+
+# Hrifla Þorsteinsson  Q133796446  <- geni:3128084
+Q133796446	P569	+0965-00-00T00:00:00Z/9	S2600	"3128084"
+
+# Bjalki Ôgmundsson  Q4919484  <- geni:3128249
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4919484	P569	+0760-00-00T00:00:00Z/9	S2600	"3128249"
+Q4919484	P570	+0835-00-00T00:00:00Z/9	S2600	"3128249"
+
+# Hallbera Úlfsdóttir  Q5642805  <- geni:3137288
+Q5642805	P569	+0790-00-00T00:00:00Z/9	S2600	"3137288"
+
+# Salbjörg Berðlu-Káradóttir  Q7403744  <- geni:3137346
+Q7403744	P25	Q141613890	S2600	"3137346"
+Q7403744	P569	+0830-00-00T00:00:00Z/9	S2600	"3137346"
+Q7403744	P570	+0860-00-00T00:00:00Z/9	S2600	"3137346"
+
+# Sigríður Þórarinsdóttir  Q133796450  <- geni:3137573
+Q133796450	P26	Q16634952	S2600	"3137573"
+Q133796450	P569	+1025-00-00T00:00:00Z/9	S2600	"3137573"
+Q133796450	P735	Q66829605	S2600	"3137573"
+
+# Þórarinn Fálkason  Q133796451  <- geni:3137588
+Q133796451	P569	+1006-00-00T00:00:00Z/9	S2600	"3137588"
+Q133796451	P570	+1042-00-00T00:00:00Z/9	S2600	"3137588"
+Q133796451	P735	Q16421223	S2600	"3137588"
+
+# Falki Þórarinsson  Q133796453  <- geni:3137599
+Q133796453	P5056	Q8079570	S2600	"3137599"
+Q133796453	P569	+0970-00-00T00:00:00Z/9	S2600	"3137599"
+Q133796453	P570	+1030-00-00T00:00:00Z/9	S2600	"3137599"
+
+# Thorvaldur Refsson  Q16652509  <- geni:3137656
+Q16652509	P26	Q135529234	S2600	"3137656"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16652509	P569	+0935-00-00T00:00:00Z/9	S2600	"3137656"
+
+# Þórir Hamundarson  Q15901190  <- geni:3137665
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q15901190	P569	+0900-00-00T00:00:00Z/9	S2600	"3137665"
+Q15901190	P570	+0970-00-00T00:00:00Z/9	S2600	"3137665"
+Q15901190	P735	Q64404734	S2600	"3137665"
+
+# Hasteinn Atlason  Q16574141  <- geni:3140001
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16574141	P569	+0850-00-00T00:00:00Z/9	S2600	"3140001"
+
+# Atli Hundolfsson  Q4816931  <- geni:3140024
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4816931	P569	+0820-00-00T00:00:00Z/9	S2600	"3140024"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4816931	P570	+0900-00-00T00:00:00Z/9	S2600	"3140024"
+Q4816931	P735	Q21476706	S2600	"3140024"
+
 # Mattias Georgii Ilsbodinus  Q141570690  <- geni:315879690770004867
 Q141570690	P5056	Q141610396	S2600	"315879690770004867"
+
+# Snorri Sturluson  Q102323  <- geni:3250062
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q102323	P570	+1241-09-22T00:00:00Z/11	S2600	"3250062"
 
 # Joren Jørgensdatter Omli  Q141611308  <- geni:335843332820006053
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -83,8 +158,67 @@ Q141518837	P22	Q116997551	S2600	"339851487210011998"
 # Israel Eriksson  Q141620316  <- geni:340011898470012468
 Q141620316	P734	Q1354604	S2600	"340011898470012468"
 
+# Melkorka O'Neill  Q5474834  <- geni:342515586390012023
+Q5474834	P26	Q3480155	S2600	"342515586390012023"
+Q5474834	P40	Q10516384	S2600	"342515586390012023"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5474834	P569	+0910-00-00T00:00:00Z/9	S2600	"342515586390012023"
+Q5474834	P734	Q16931305	S2600	"342515586390012023"
+
 # Elizabeth Venable  Q141528252  <- geni:346535323980012266
 Q141528252	P26	Q141528252	S2600	"346535323980012266"
+
+# Sigrid Storråda Storråda  Q242746  <- geni:347655337870012697
+Q242746	P26	Q3108524	S2600	"347655337870012697"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q242746	P569	+0955-00-00T00:00:00Z/9	S2600	"347655337870012697"
+
+# Cnut The Great Sweynsson  Q134128  <- geni:347803456540001332
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q134128	P569	+0995-00-00T00:00:00Z/9	S2600	"347803456540001332"
+
+# Sigurd Ragnarsson  Q41864  <- geni:347812287200006062
+Q41864	P26	Q141533640	S2600	"347812287200006062"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41864	P40	Q141519283	S2600	"347812287200006062"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41864	P40	Q5892228	S2600	"347812287200006062"
+Q41864	P5056	Q21448180	S2600	"347812287200006062"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41864	P569	+0780-00-00T00:00:00Z/9	S2600	"347812287200006062"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41864	P570	+0890-00-00T00:00:00Z/9	S2600	"347812287200006062"
+
+# Oluf Hunger Svendsøn  Q266495  <- geni:347868854190012671
+Q266495	P25	Q141610262	S2600	"347868854190012671"
+
+# Tora Guttormsdotter Vik  Q122961015  <- geni:353440830330013057
+Q122961015	P26	Q350498	S2600	"353440830330013057"
+Q122961015	P5056	Q141583367	S2600	"353440830330013057"
+Q122961015	P734	Q21446378	S2600	"353440830330013057"
+Q122961015	P735	Q19967624	S2600	"353440830330013057"
+
+# Ingeborg Magnusdotter of Sweden Queen of Denmark  Q1883688  <- geni:355281657880011354
+Q1883688	P5056	Q141457238	S2600	"355281657880011354"
+
+# Haakon Haakonsson  Q888209  <- geni:356575805210011493
+Q888209	P5056	Q56245178	S2600	"356575805210011493"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q888209	P569	+1232-11-10T00:00:00Z/11	S2600	"356575805210011493"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q888209	P570	+1257-04-30T00:00:00Z/11	S2600	"356575805210011493"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q888209	P735	Q9383939	S2600	"356575805210011493"
+
+# Ingeborga Tryggvės duktė  Q6032078  <- geni:3624121
+Q6032078	P569	+0960-00-00T00:00:00Z/9	S2600	"3624121"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6032078	P570	+1019-00-00T00:00:00Z/9	S2600	"3624121"
+
+# Håkon Eriksson Earl of Lade  Q31721  <- geni:3624768
+Q31721	P5056	Q130232913	S2600	"3624768"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31721	P569	+0998-00-00T00:00:00Z/9	S2600	"3624768"
 
 # Sune Sverkersson Sik  Q3736064  <- geni:363554498970006647
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -98,6 +232,10 @@ Q3623119	P569	+0932-00-00T00:00:00Z/9	S2600	"371370707100003086"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3623119	P570	+0976-00-00T00:00:00Z/9	S2600	"371370707100003086"
 
+# Anna  Q20499093  <- geni:371383033520011121
+Q20499093	P569	+1030-00-00T00:00:00Z/9	S2600	"371383033520011121"
+Q20499093	P570	+1065-00-00T00:00:00Z/9	S2600	"371383033520011121"
+
 # Vittorio Emanuele Ferdinando Maria Gennaro di Savoia  Q150642  <- geni:376469227150012924
 Q150642	P734	Q114970715	S2600	"376469227150012924"
 Q150642	P735	Q325872	S2600	"376469227150012924"
@@ -108,11 +246,52 @@ Q141620286	P734	Q141614665	S2600	"3810303"
 # NN Vikingsdotter Nordbø  Q141570862  <- geni:382365552280005357
 Q141570862	P26	Q141570862	S2600	"382365552280005357"
 
+# Zoe Porphyrogenita byzantine empress  Q41659  <- geni:385912840740007136
+Q41659	P26	Q151090	S2600	"385912840740007136"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41659	P569	+0980-00-00T00:00:00Z/9	S2600	"385912840740007136"
+
+# Romanos III Argyros emperor of Constantinople  Q41657  <- geni:385914949520010150
+Q41657	P734	Q21504647	S2600	"385914949520010150"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41657	P735	Q130711774	S2600	"385914949520010150"
+
+# Constantine IX Monomachos byzantine emperor  Q30594  <- geni:385935664970005621
+Q30594	P26	Q110384610	S2600	"385935664970005621"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q30594	P735	Q19327451	S2600	"385935664970005621"
+
+# Constantine Porphyrogennetos  Q41608  <- geni:385953397470012188
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41608	P569	+0905-05-17T00:00:00Z/11	S2600	"385953397470012188"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41608	P735	Q19327451	S2600	"385953397470012188"
+
+# Haraldr Hårfagre Hálfdanarson  Q206123  <- geni:3950516705030063754
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q206123	P25	Q11996956	S2600	"3950516705030063754"
+Q206123	P26	Q1769527	S2600	"3950516705030063754"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q206123	P569	+0850-00-00T00:00:00Z/9	S2600	"3950516705030063754"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q206123	P570	+0932-00-00T00:00:00Z/9	S2600	"3950516705030063754"
+
+# Pr. St. Adelaide von Bourgogne (Welf)  Q76802  <- geni:3953135291130122872
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q76802	P735	Q354633	S2600	"3953135291130122872"
+
 # Berte Gunleivsdatter Øvre Maudal  Q141620346  <- geni:3967488
 Q141620346	P26	Q141620321	S2600	"3967488"
 
 # Per Toreson Underberge I  Q141583262  <- geni:3967845
 Q141583262	P5056	Q141403363	S2600	"3967845"
+
+# Åslaug Sigurdsdatter {Ragnars Saga}  Q732678  <- geni:3970714729430045179
+# P31 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q732678	P31	Q5	S2600	"3970714729430045179"
+Q732678	P5056	Q83873546	S2600	"3970714729430045179"
+Q732678	P569	+0765-00-00T00:00:00Z/9	S2600	"3970714729430045179"
+Q732678	P570	+0842-00-00T00:00:00Z/9	S2600	"3970714729430045179"
 
 # Bryngeira Asksdotter Aslesdatter  Q141564797  <- geni:3981195
 Q141564797	P569	+1406-00-00T00:00:00Z/9	S2600	"3981195"
@@ -121,9 +300,62 @@ Q141564797	P569	+1406-00-00T00:00:00Z/9	S2600	"3981195"
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141448495	P22	Q16649308	S2600	"4063046"
 
+# Sæmundur Jónsson  Q568500  <- geni:4073267
+Q568500	P5056	Q69822132	S2600	"4073267"
+
+# Þóra Tora Magnúsdóttir  Q4809203  <- geni:4073318
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4809203	P25	Q122931811	S2600	"4073318"
+Q4809203	P735	Q163495	S2600	"4073318"
+
+# Loftur Sæmundsson  Q3481458  <- geni:4074661
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3481458	P570	+1163-00-00T00:00:00Z/9	S2600	"4074661"
+
+# Eystein Magnusson  Q314595  <- geni:4075666
+Q314595	P25	Q122931811	S2600	"4075666"
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q314595	P5056	Q141283477	S2600	"4075666"
+
+# Magnus «the Blind» Sigurdsson  Q343101  <- geni:4075734
+Q343101	P734	Q21506553	S2600	"4075734"
+
+# Magnus Erlingsson  Q350213  <- geni:4076388
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q350213	P25	Q141610376	S2600	"4076388"
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q350213	P5056	Q141610485	S2600	"4076388"
+
+# Ingeborg Haakonsdatter  Q467530  <- geni:4077210
+Q467530	P26	Q467530	S2600	"4077210"
+
+# Eufemia Eriksdotter  Q463711  <- geni:4077390
+Q463711	P26	Q463711	S2600	"4077390"
+Q463711	P5056	Q130232912	S2600	"4077390"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q463711	P570	+1370-04-10T00:00:00Z/11	S2600	"4077390"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q463711	P735	Q76706504	S2600	"4077390"
+
 # Ingeborg Knutsdotter (Aspenäs)  Q4955696  <- geni:4081817
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q4955696	P569	+1300-00-00T00:00:00Z/9	S2600	"4081817"
+
+# Canute I Eriksson King of Sweden  Q442876  <- geni:4102701
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q442876	P22	Q310152	S2600	"4102701"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q442876	P40	Q365103	S2600	"4102701"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q442876	P569	+1145-00-00T00:00:00Z/9	S2600	"4102701"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q442876	P570	+1196-04-08T00:00:00Z/11	S2600	"4102701"
+Q442876	P734	Q1354604	S2600	"4102701"
+
+# Erik Knutsson  Q365103  <- geni:4102767
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q365103	P22	Q442876	S2600	"4102767"
+Q365103	P5056	Q141403300	S2600	"4102767"
 
 # Olav Henriksen Blank  Q141422325  <- geni:4112011304930055529
 Q141422325	P5056	Q141421834	S2600	"4112011304930055529"
@@ -131,6 +363,29 @@ Q141422325	P5056	Q141421834	S2600	"4112011304930055529"
 # Sofia Margareta Nordenskiöld  Q136386660  <- geni:4140700
 Q136386660	P569	+1807-09-05T00:00:00Z/11	S2600	"4140700"
 Q136386660	P570	+1860-01-26T00:00:00Z/11	S2600	"4140700"
+
+# Eberhard I Graf im Zürichgau  Q44191455  <- geni:4169309791820025850
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q44191455	P570	+0889-06-27T00:00:00Z/11	S2600	"4169309791820025850"
+Q44191455	P735	Q1278816	S2600	"4169309791820025850"
+
+# Eric Jedvardsson Den helige IX  Q310152  <- geni:4181250114820035915
+Q310152	P40	Q442876	S2600	"4181250114820035915"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q310152	P735	Q12788459	S2600	"4181250114820035915"
+
+# Æthelflæd  Q235250  <- geni:4190875500120027949
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q235250	P569	+0869-00-00T00:00:00Z/9	S2600	"4190875500120027949"
+
+# Geoffrey  Q111490  <- geni:4194887957440076070
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q111490	P735	Q7041317	S2600	"4194887957440076070"
+
+# Melisende d'Édesse  Q232151  <- geni:4195082387770067939
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232151	P569	+1105-06-02T00:00:00Z/11	S2600	"4195082387770067939"
+Q232151	P734	Q105107617	S2600	"4195082387770067939"
 
 # Leonard Magnus Nordenfelt  Q6014635  <- geni:4198655
 Q6014635	P735	Q18109457	S2600	"4198655"
@@ -145,6 +400,18 @@ Q141500899	P734	Q141500283	S2600	"4246288"
 Q466257	P26	Q466257	S2600	"4258970970100070152"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q466257	P569	+0952-00-00T00:00:00Z/9	S2600	"4258970970100070152"
+
+# Karl Sverkersson  Q315055  <- geni:4293237
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q315055	P735	Q136771753	S2600	"4293237"
+
+# Bure d'Ancy-le-Franc  Q136125812  <- geni:4320895910700022259
+Q136125812	P569	+1188-00-00T00:00:00Z/9	S2600	"4320895910700022259"
+Q136125812	P570	+1223-03-31T00:00:00Z/11	S2600	"4320895910700022259"
+
+# Jacques van Avenne  Q1386429  <- geni:4321093289530030615
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1386429	P735	Q941049	S2600	"4321093289530030615"
 
 # Ragnhild Rasmusdatter Giljabrekken Rage  Q141529732  <- geni:4366030
 Q141529732	P26	Q141529732	S2600	"4366030"
@@ -170,6 +437,20 @@ Q30527468	P25	Q141612189	S2600	"4534175580120071045"
 Q30527468	P734	Q60168802	S2600	"4534175580120071045"
 Q30527468	P735	Q58315377	S2600	"4534175580120071045"
 Q30527468	P735	Q9302723	S2600	"4534175580120071045"
+
+# Olaf Magnusson  Q350385  <- geni:4570664
+Q350385	P5056	Q141283477	S2600	"4570664"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q350385	P735	Q3881452	S2600	"4570664"
+
+# Elisabeth Eriksdatter Krummedige  Q96240818  <- geni:4588640
+Q96240818	P26	Q96240817	S2600	"4588640"
+Q96240818	P5056	Q141223487	S2600	"4588640"
+Q96240818	P569	+1402-00-00T00:00:00Z/9	S2600	"4588640"
+Q96240818	P570	+1451-00-00T00:00:00Z/9	S2600	"4588640"
+Q96240818	P734	Q51059378	S2600	"4588640"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240818	P735	Q63611044	S2600	"4588640"
 
 # Margareta Stensdotter (Bielke)  Q123158323  <- geni:4612958
 Q123158323	P5056	Q141611225	S2600	"4612958"
@@ -199,9 +480,34 @@ Q141583184	P5056	Q141318548	S2600	"4677764"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5803979	P569	+1677-05-03T00:00:00Z/11	S2600	"4680164"
 
+# Agnes or Avice de Stigand  Q616117  <- geni:4720136557250026822
+# P21 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q616117	P21	Q6581072	S2600	"4720136557250026822"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q616117	P569	+1067-00-00T00:00:00Z/9	S2600	"4720136557250026822"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q616117	P570	+1107-00-00T00:00:00Z/9	S2600	"4720136557250026822"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q616117	P735	Q394431	S2600	"4720136557250026822"
+
 # Aldetrude  Q141498621  <- geni:4729782856380028421
+Q141498621	P40	Q533927	S2600	"4729782856380028421"
 Q141498621	P569	+0750-00-00T00:00:00Z/9	S2600	"4729782856380028421"
 Q141498621	P570	+0839-06-16T00:00:00Z/11	S2600	"4729782856380028421"
+
+# Katarina Bonde  Q2305403  <- geni:4753263
+Q2305403	P5056	Q141450140	S2600	"4753263"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2305403	P735	Q16277703	S2600	"4753263"
+
+# Leuthard  Q600581  <- geni:4764222
+Q600581	P569	+0785-00-00T00:00:00Z/9	S2600	"4764222"
+
+# Bruno von Kärnthen  Q58571  <- geni:4776154
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58571	P570	+0999-02-18T00:00:00Z/11	S2600	"4776154"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58571	P735	Q1874605	S2600	"4776154"
 
 # Tarald Torgersen Store Ådnøy  Q141575498  <- geni:4819810754900042161
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -221,8 +527,51 @@ Q112914540	P734	Q141614622	S2600	"4885074634600058124"
 Q110703067	P5056	Q141583375	S2600	"4921273998360102568"
 Q110703067	P569	+0992-00-00T00:00:00Z/9	S2600	"4921273998360102568"
 
+# Sigurd Haakonsson  Q29324  <- geni:4921285889400035515
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q29324	P569	+0890-00-00T00:00:00Z/9	S2600	"4921285889400035515"
+
+# Eirik  Q5349865  <- geni:4922464856720066618
+Q5349865	P569	+0820-00-00T00:00:00Z/9	S2600	"4922464856720066618"
+Q5349865	P570	+0872-07-18T00:00:00Z/11	S2600	"4922464856720066618"
+
+# Reginald I of Ivrea count palatine of Burgundy  Q723932  <- geni:4927683959580122814
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q723932	P735	Q16280865	S2600	"4927683959580122814"
+
+# Henry  Q60171  <- geni:4927794328070059657
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q60171	P569	+1074-00-00T00:00:00Z/9	S2600	"4927794328070059657"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q60171	P735	Q1158477	S2600	"4927794328070059657"
+
 # Judith  Q273181  <- geni:4927821238910067084
 Q273181	P26	Q273181	S2600	"4927821238910067084"
+
+# Willa de Provence  Q2527781  <- geni:4932522491620040585
+Q2527781	P26	Q2527781	S2600	"4932522491620040585"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2527781	P570	+0924-00-00T00:00:00Z/9	S2600	"4932522491620040585"
+
+# Roricon  Q533927  <- geni:4951476631580041873
+Q533927	P25	Q141498621	S2600	"4951476631580041873"
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q533927	P26	Q269691	S2600	"4951476631580041873"
+Q533927	P569	+0770-00-00T00:00:00Z/9	S2600	"4951476631580041873"
+
+# Adelais d’Anjou  Q17507967  <- geni:4956689915380130680
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17507967	P569	+0855-00-00T00:00:00Z/9	S2600	"4956689915380130680"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17507967	P570	+0890-00-00T00:00:00Z/9	S2600	"4956689915380130680"
+Q17507967	P734	Q21491535	S2600	"4956689915380130680"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17507967	P735	Q21153711	S2600	"4956689915380130680"
+
+# Johannes Lauritzen Laurisen Galte til Torsnes  Q110302785  <- geni:4968422205310029120
+Q110302785	P26	Q110302793	S2600	"4968422205310029120"
+Q110302785	P734	Q141569087	S2600	"4968422205310029120"
+Q110302785	P734	Q16911570	S2600	"4968422205310029120"
 
 # Kristine Trondsdatter Benkestok  Q141493463  <- geni:4976573922110117540
 Q141493463	P26	Q141493463	S2600	"4976573922110117540"
@@ -243,15 +592,39 @@ Q66196079	P570	+1379-00-00T00:00:00Z/9	S2600	"5127285429390045668"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2746812	P569	+0539-00-00T00:00:00Z/9	S2600	"5152366561060066977"
 
+# Louis V 'le Fainéant’ de France Roi de Francie Occidentale  Q205289  <- geni:5156110937780025265
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q205289	P570	+0987-05-21T00:00:00Z/11	S2600	"5156110937780025265"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q205289	P735	Q97156058	S2600	"5156110937780025265"
+
 # Ruben Frans Isendorf Nilson  Q6011791  <- geni:5162596157650107309
 Q6011791	P5056	Q141511184	S2600	"5162596157650107309"
+
+# Katarina Birgersdotter Finsta  Q4958287  <- geni:5190165704780132662
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4958287	P5056	Q141583354	S2600	"5190165704780132662"
+Q4958287	P569	+1306-00-00T00:00:00Z/9	S2600	"5190165704780132662"
+Q4958287	P570	+1364-00-00T00:00:00Z/9	S2600	"5190165704780132662"
+
+# Sancho Ramirez King of Aragón, Spain  Q344802  <- geni:5233386757510064451
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q344802	P569	+1042-00-00T00:00:00Z/9	S2600	"5233386757510064451"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q344802	P734	Q27902606	S2600	"5233386757510064451"
 
 # Hodierne de Courtenay  Q22678387  <- geni:5233598181900029993
 Q22678387	P569	+1062-00-00T00:00:00Z/9	S2600	"5233598181900029993"
 Q22678387	P570	+1110-00-00T00:00:00Z/9	S2600	"5233598181900029993"
 
+# Margrethe Ingesdotter Fredkulla  Q262305  <- geni:5234818062140033220
+Q262305	P26	Q75393457	S2600	"5234818062140033220"
+Q262305	P40	Q260543	S2600	"5234818062140033220"
+Q262305	P40	Q314595	S2600	"5234818062140033220"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q262305	P735	Q17458337	S2600	"5234818062140033220"
+
 # Rikissa of Sweden Nowogrodzka (Piast)  Q2241510  <- geni:5235605714220070458
-# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2241510	P26	Q2241510	S2600	"5235605714220070458"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2241510	P570	+1155-12-25T00:00:00Z/11	S2600	"5235605714220070458"
@@ -262,6 +635,21 @@ Q2241510	P735	Q133521419	S2600	"5235605714220070458"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5493305	P734	Q99662413	S2600	"5266989282800037950"
 
+# Géza I Arpad Duke of Hungary, (7th) King of Hungary  Q82687  <- geni:5287530087430075153
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q82687	P569	+1044-00-00T00:00:00Z/9	S2600	"5287530087430075153"
+Q82687	P734	Q132192462	S2600	"5287530087430075153"
+
+# Eric V Christofferson of Danmark King of Denmark  Q359588  <- geni:5304611081740076756
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q359588	P735	Q12788459	S2600	"5304611081740076756"
+
+# Dagmar Margretha von Bohemia Queen Consort of Denmark  Q263412  <- geni:5311616200170125363
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q263412	P735	Q1157241	S2600	"5311616200170125363"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q263412	P735	Q21142589	S2600	"5311616200170125363"
+
 # Olof Hersesson  Q50368774  <- geni:5328189268700111491
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q50368774	P570	+1430-00-00T00:00:00Z/9	S2600	"5328189268700111491"
@@ -269,7 +657,21 @@ Q50368774	P570	+1430-00-00T00:00:00Z/9	S2600	"5328189268700111491"
 # Ingeborg Omundsdatter  Q141533353  <- geni:5336755918170112652
 Q141533353	P569	+1693-00-00T00:00:00Z/9	S2600	"5336755918170112652"
 
+# Ulv Høgneson Skjalge Skjalge den skjeløyde  Q11705582  <- geni:5336782484500024661
+Q11705582	P22	Q141569766	S2600	"5336782484500024661"
+Q11705582	P25	Q141569768	S2600	"5336782484500024661"
+Q11705582	P26	Q130320401	S2600	"5336782484500024661"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11705582	P569	+0845-00-00T00:00:00Z/9	S2600	"5336782484500024661"
+Q11705582	P570	+0871-00-00T00:00:00Z/9	S2600	"5336782484500024661"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11705582	P735	Q141612214	S2600	"5336782484500024661"
+
+# Robert I de Guines Robert  Q2180145  <- geni:5340710055950059116
+Q2180145	P735	Q4927937	S2600	"5340710055950059116"
+
 # Sigurd II Munn Haraldsøn Haraldsson  Q350498  <- geni:5381159762450127210
+Q350498	P26	Q122961015	S2600	"5381159762450127210"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q350498	P734	Q30347058	S2600	"5381159762450127210"
 
@@ -278,6 +680,21 @@ Q311996	P26	Q122931811	S2600	"5381202464070053447"
 Q311996	P5056	Q141498629	S2600	"5381202464070053447"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q311996	P734	Q47064733	S2600	"5381202464070053447"
+
+# Rannveig Hallsdóttir  Q16652406  <- geni:5391921583590136706
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16652406	P569	+1030-00-00T00:00:00Z/9	S2600	"5391921583590136706"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16652406	P570	+1074-00-00T00:00:00Z/9	S2600	"5391921583590136706"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16652406	P735	Q1816320	S2600	"5391921583590136706"
+
+# Þorkell EYJÓLFSSON  Q16652425  <- geni:5391978847630081731
+Q16652425	P735	Q12719075	S2600	"5391978847630081731"
+
+# Guðrún Osvifursdottir  Q1557767  <- geni:5391978861750081737
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1557767	P569	+0970-00-00T00:00:00Z/9	S2600	"5391978861750081737"
 
 # Adélaïde Capet  Q232425  <- geni:5411162182100027072
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -305,6 +722,36 @@ Q141562282	P26	Q141562282	S2600	"5447505087810135067"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141562282	P734	Q30134985	S2600	"5447505087810135067"
 
+# Esbern Assersen Snare (Hvide)  Q725253  <- geni:5522265801180023798
+Q725253	P5056	Q141549496	S2600	"5522265801180023798"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q725253	P569	+1130-00-00T00:00:00Z/9	S2600	"5522265801180023798"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q725253	P734	Q55222347	S2600	"5522265801180023798"
+
+# Skjalm Hvide  Q953640  <- geni:5522320867850060430
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q953640	P569	+1050-00-00T00:00:00Z/9	S2600	"5522320867850060430"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q953640	P570	+1102-00-00T00:00:00Z/9	S2600	"5522320867850060430"
+
+# Pépin ll d'Héristal Mayor of the Palace of Austrasia  Q91392  <- geni:5535353244920040751
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91392	P26	Q141534132	S2600	"5535353244920040751"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91392	P569	+0640-00-00T00:00:00Z/9	S2600	"5535353244920040751"
+
+# Ansegisel de Metz  Q453739  <- geni:5535400391550125499
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q453739	P25	Q141523778	S2600	"5535400391550125499"
+
+# Þórður Ólafsson  Q6175110  <- geni:5539547008520089205
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6175110	P569	+0900-00-00T00:00:00Z/9	S2600	"5539547008520089205"
+Q6175110	P734	Q21446387	S2600	"5539547008520089205"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6175110	P735	Q8079578	S2600	"5539547008520089205"
+
 # Anna Göransdotter Snakenborg  Q101247544  <- geni:5542933444820063488
 Q101247544	P5056	Q141586338	S2600	"5542933444820063488"
 
@@ -327,8 +774,27 @@ Q105819709	P570	+1584-00-00T00:00:00Z/9	S2600	"5576581004760066388"
 # Alexander Mikaelsson Maexmontan  Q141578976  <- geni:5585876805330107482
 Q141578976	P5056	Q141586300	S2600	"5585876805330107482"
 
+# Ragnar Sigurdsson  Q314492  <- geni:5604233735830047570
+Q314492	P5056	Q21506553	S2600	"5604233735830047570"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q314492	P569	+0749-00-00T00:00:00Z/9	S2600	"5604233735830047570"
+
+# Randver Rádbardsson {Mythical  Q2335581  <- geni:5605575857030117371
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2335581	P569	+0670-00-00T00:00:00Z/9	S2600	"5605575857030117371"
+Q2335581	P570	+0730-00-00T00:00:00Z/9	S2600	"5605575857030117371"
+
+# Inge Bårdson  Q365035  <- geni:5690292675140034936
+Q365035	P5056	Q141612221	S2600	"5690292675140034936"
+
 # Åsa Ellingsdatter Edland  Q141571182  <- geni:5701539714260053034
 Q141571182	P5056	Q141443239	S2600	"5701539714260053034"
+
+# Henri de Bourgogne  Q2351549  <- geni:6000000000008770128
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2351549	P570	+1070-01-27T00:00:00Z/11	S2600	"6000000000008770128"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2351549	P735	Q4497249	S2600	"6000000000008770128"
 
 # Abraham Henriksson Schaefer  Q73762240  <- geni:6000000000063327697
 Q73762240	P5056	Q141436541	S2600	"6000000000063327697"
@@ -340,6 +806,30 @@ Q73762240	P735	Q4055996	S2600	"6000000000063327697"
 # Ximena Alfonso de León  Q8199849  <- geni:6000000000114360346
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q8199849	P734	Q134266098	S2600	"6000000000114360346"
+
+# Frederick de Hohenstaufen  Q552414  <- geni:6000000000125394145
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q552414	P735	Q3273004	S2600	"6000000000125394145"
+
+# Irena Komnena  Q232714  <- geni:6000000000125517845
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232714	P569	+1067-00-00T00:00:00Z/9	S2600	"6000000000125517845"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232714	P570	+1133-02-19T00:00:00Z/11	S2600	"6000000000125517845"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232714	P734	Q141619636	S2600	"6000000000125517845"
+Q232714	P735	Q1370330	S2600	"6000000000125517845"
+
+# Ioannes Komnenos  Q3767041  <- geni:6000000000125596647
+Q3767041	P734	Q80702611	S2600	"6000000000125596647"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3767041	P735	Q17493832	S2600	"6000000000125596647"
+
+# Alexios Komnenos  Q41600  <- geni:6000000000125674313
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41600	P569	+1056-00-00T00:00:00Z/9	S2600	"6000000000125674313"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41600	P735	Q61741983	S2600	"6000000000125674313"
 
 # Ingeleiv Ormsdatter Årstad  Q141559720  <- geni:6000000000136616524
 Q141559720	P26	Q141559720	S2600	"6000000000136616524"
@@ -353,6 +843,7 @@ Q141550996	P569	+1475-00-00T00:00:00Z/9	S2600	"6000000000139383141"
 
 # Kristina Magnusdotter Folkunga  Q141534288  <- geni:6000000000139648597
 Q141534288	P26	Q141534288	S2600	"6000000000139648597"
+Q141534288	P40	Q61982215	S2600	"6000000000139648597"
 Q141534288	P569	+1178-00-00T00:00:00Z/9	S2600	"6000000000139648597"
 Q141534288	P570	+1231-00-00T00:00:00Z/9	S2600	"6000000000139648597"
 
@@ -364,12 +855,69 @@ Q5325617	P569	+0624-00-00T00:00:00Z/9	S2600	"6000000000148442846"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q18577248	P569	+1276-12-18T00:00:00Z/11	S2600	"6000000000152491239"
 
+# Baudouin V de Hainaut  Q469598  <- geni:6000000000156978511
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q469598	P735	Q19961822	S2600	"6000000000156978511"
+
+# Pierre II de Courtenay  Q354672  <- geni:6000000000157044029
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q354672	P570	+1217-00-00T00:00:00Z/9	S2600	"6000000000157044029"
+
+# Pierre de France, Seigneur de Courtenay  Q531495  <- geni:6000000000157075199
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q531495	P570	+1180-03-10T00:00:00Z/11	S2600	"6000000000157075199"
+
+# Æthelred  Q272209  <- geni:6000000000157796200
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q272209	P569	+0879-00-00T00:00:00Z/9	S2600	"6000000000157796200"
+
+# Þorfinnr hausakljúfr  Q3525824  <- geni:6000000000160866853
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3525824	P569	+0890-00-00T00:00:00Z/9	S2600	"6000000000160866853"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3525824	P570	+0976-00-00T00:00:00Z/9	S2600	"6000000000160866853"
+
 # Juan Fernandez de Castro  Q116003885  <- geni:6000000000160873181
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q116003885	P734	Q99662413	S2600	"6000000000160873181"
 
+# Cerbhall Írakonungr king of Osraige in Ireland  Q773609  <- geni:6000000000161001437
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q773609	P569	+0800-00-00T00:00:00Z/9	S2600	"6000000000161001437"
+
+# Cunigundis  Q23979522  <- geni:6000000000161097536
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q23979522	P569	+0795-00-00T00:00:00Z/9	S2600	"6000000000161097536"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q23979522	P570	+0835-06-15T00:00:00Z/11	S2600	"6000000000161097536"
+
+# Þorsteinn Reyði Ólafsson  Q500833  <- geni:6000000000161219866
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q500833	P569	+0853-00-00T00:00:00Z/9	S2600	"6000000000161219866"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q500833	P570	+0888-00-00T00:00:00Z/9	S2600	"6000000000161219866"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q500833	P735	Q16282077	S2600	"6000000000161219866"
+
+# Ivar Halfdansson Opplendingejarl  Q16580286  <- geni:6000000000161230827
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16580286	P569	+0760-00-00T00:00:00Z/9	S2600	"6000000000161230827"
+Q16580286	P570	+0824-00-00T00:00:00Z/9	S2600	"6000000000161230827"
+Q16580286	P734	Q5641869	S2600	"6000000000161230827"
+
+# Ólafur Ingjaldsson  Q11162089  <- geni:6000000000161343538
+Q11162089	P25	Q141524126	S2600	"6000000000161343538"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11162089	P569	+0830-00-00T00:00:00Z/9	S2600	"6000000000161343538"
+Q11162089	P570	+0871-00-00T00:00:00Z/9	S2600	"6000000000161343538"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11162089	P735	Q262439	S2600	"6000000000161343538"
+
 # Eorcongota  Q27102470  <- geni:6000000000161626571
 Q27102470	P569	+0651-00-00T00:00:00Z/9	S2600	"6000000000161626571"
+
+# Baldwin de Hainaut  Q704403  <- geni:6000000000162318926
+Q704403	P40	Q141562053	S2600	"6000000000162318926"
 
 # Torkel Tollaksen Nedre Hetland  Q141560796  <- geni:6000000000172040444
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -394,6 +942,16 @@ Q141524055	P569	+1260-00-00T00:00:00Z/9	S2600	"6000000000172095508"
 # Isabeau de Mayenne  Q107315159  <- geni:6000000000172363594
 Q107315159	P734	Q141612258	S2600	"6000000000172363594"
 
+# Halfdan «Whiteshanks» Olafsson  Q2521523  <- geni:6000000000172750514
+Q2521523	P25	Q141529844	S2600	"6000000000172750514"
+Q2521523	P734	Q37549132	S2600	"6000000000172750514"
+
+# Gudrød «the Hunter» Veidekonge Konge av Vestfold  Q2448909  <- geni:6000000000172794330
+Q2448909	P25	Q75292013	S2600	"6000000000172794330"
+# P31 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2448909	P31	Q5	S2600	"6000000000172794330"
+Q2448909	P569	+0780-00-00T00:00:00Z/9	S2600	"6000000000172794330"
+
 # Christina Catherina De la Gardie  Q12360621  <- geni:6000000000181955453
 Q12360621	P735	Q5052494	S2600	"6000000000181955453"
 
@@ -411,8 +969,42 @@ Q4942240	P734	Q93871117	S2600	"6000000000192128168"
 Q141498725	P569	+0770-00-00T00:00:00Z/9	S2600	"6000000000196425114"
 Q141498725	P570	+0819-00-00T00:00:00Z/9	S2600	"6000000000196425114"
 
+# Bertha van Holland  Q77254  <- geni:6000000000207859767
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q77254	P569	+1058-00-00T00:00:00Z/9	S2600	"6000000000207859767"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q77254	P570	+1093-07-30T00:00:00Z/11	S2600	"6000000000207859767"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q77254	P735	Q16420820	S2600	"6000000000207859767"
+
+# Béatrice De Falaise  Q61883631  <- geni:6000000000232618899
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61883631	P570	+1180-00-00T00:00:00Z/9	S2600	"6000000000232618899"
+
+# Sturla Þórðarson  Q9080161  <- geni:6000000000266081784
+Q9080161	P26	Q133796430	S2600	"6000000000266081784"
+Q9080161	P26	Q133796460	S2600	"6000000000266081784"
+Q9080161	P5056	Q125050602	S2600	"6000000000266081784"
+
+# Guðný Böðvarsdóttir  Q133796430  <- geni:6000000000266176253
+Q133796430	P26	Q9080161	S2600	"6000000000266176253"
+Q133796430	P40	Q3480327	S2600	"6000000000266176253"
+Q133796430	P40	Q9099047	S2600	"6000000000266176253"
+Q133796430	P569	+1147-00-00T00:00:00Z/9	S2600	"6000000000266176253"
+Q133796430	P570	+1221-11-17T00:00:00Z/11	S2600	"6000000000266176253"
+Q133796430	P735	Q33101440	S2600	"6000000000266176253"
+
+# Gidsken Hermannsdatter Lange  Q135941940  <- geni:6000000000292339120
+Q135941940	P569	+1590-00-00T00:00:00Z/9	S2600	"6000000000292339120"
+Q135941940	P734	Q16102227	S2600	"6000000000292339120"
+Q135941940	P735	Q123417879	S2600	"6000000000292339120"
+
 # Ingeborg Nilsdotter  Q141574581  <- geni:6000000000305409410
 Q141574581	P26	Q141574581	S2600	"6000000000305409410"
+
+# Guillaume de Normandie III  Q378249  <- geni:6000000000307267733
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q378249	P735	Q18190448	S2600	"6000000000307267733"
 
 # Máel Coluim IV mac Eanric  Q122479  <- geni:6000000000307274628
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -430,6 +1022,13 @@ Q141519923	P22	Q6170433	S2600	"6000000000321166181"
 Q109835785	P5056	Q141318548	S2600	"6000000000321819626"
 Q109835785	P569	+1621-00-00T00:00:00Z/9	S2600	"6000000000321819626"
 
+# Karl Knutsson Bonde  Q310433  <- geni:6000000000345666785
+Q310433	P5056	Q141403300	S2600	"6000000000345666785"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q310433	P569	+1408-09-29T00:00:00Z/11	S2600	"6000000000345666785"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q310433	P735	Q136771753	S2600	"6000000000345666785"
+
 # Saul Babad Teomim  Q30527465  <- geni:6000000000348795510
 Q30527465	P26	Q141612189	S2600	"6000000000348795510"
 Q30527465	P569	+1655-00-00T00:00:00Z/9	S2600	"6000000000348795510"
@@ -442,6 +1041,36 @@ Q30527465	P735	Q9302723	S2600	"6000000000348795510"
 Q141612189	P26	Q30527465	S2600	"6000000000348813702"
 Q141612189	P40	Q30527468	S2600	"6000000000348813702"
 
+# Thyra Haraldsdottir  Q459894  <- geni:6000000000350890514
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q459894	P735	Q19963461	S2600	"6000000000350890514"
+
+# Gyda Svendsdatter af Danmark  Q9283247  <- geni:6000000000350890610
+Q9283247	P5056	Q141502662	S2600	"6000000000350890610"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q9283247	P570	+1000-00-00T00:00:00Z/9	S2600	"6000000000350890610"
+
+# Estrid Margrethe Svendsdatter Jelling  Q2981947  <- geni:6000000000351011235
+Q2981947	P5056	Q141456535	S2600	"6000000000351011235"
+Q2981947	P5056	Q141502662	S2600	"6000000000351011235"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2981947	P570	+1074-05-09T00:00:00Z/11	S2600	"6000000000351011235"
+Q2981947	P735	Q17458337	S2600	"6000000000351011235"
+
+# Håkon V Magnusson  Q313153  <- geni:6000000000351087662
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q313153	P5056	Q69841190	S2600	"6000000000351087662"
+Q313153	P734	Q23536498	S2600	"6000000000351087662"
+
+# Haakon Håkonsson  Q316039  <- geni:6000000000351087701
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316039	P22	Q141584019	S2600	"6000000000351087701"
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316039	P25	Q141583869	S2600	"6000000000351087701"
+Q316039	P5056	Q56245178	S2600	"6000000000351087701"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316039	P735	Q9383939	S2600	"6000000000351087701"
+
 # Ismail al-Mubarak Al-Husayni  Q1650217  <- geni:6000000000390270298
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q1650217	P569	+0718-00-00T00:00:00Z/9	S2600	"6000000000390270298"
@@ -451,25 +1080,154 @@ Q1650217	P570	+0765-00-00T00:00:00Z/9	S2600	"6000000000390270298"
 # Anna Olsdatter Atletveit  Q141444560  <- geni:6000000000414402424
 Q141444560	P5056	Q51885688	S2600	"6000000000414402424"
 
+# Igor  Q203501  <- geni:6000000000420341047
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q203501	P569	+0877-00-00T00:00:00Z/9	S2600	"6000000000420341047"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q203501	P735	Q432161	S2600	"6000000000420341047"
+
+# Gundred de St. Omer  Q5618674  <- geni:6000000000424570082
+Q5618674	P734	Q37538258	S2600	"6000000000424570082"
+
+# Emma  Q3082675  <- geni:6000000000424629314
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3082675	P569	+0947-00-00T00:00:00Z/9	S2600	"6000000000424629314"
+
 # Gilbert de Roucy  Q3107795  <- geni:6000000000424640138
 Q3107795	P734	Q104832231	S2600	"6000000000424640138"
 
 # Adela Vicomtesse de Carlat  Q141498426  <- geni:6000000000424678903
 Q141498426	P570	+1060-00-00T00:00:00Z/9	S2600	"6000000000424678903"
 
+# Willa d'Angelica  Q15730031  <- geni:6000000000424683366
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q15730031	P26	Q15730031	S2600	"6000000000424683366"
+Q15730031	P569	+0893-00-00T00:00:00Z/9	S2600	"6000000000424683366"
+Q15730031	P570	+0967-00-00T00:00:00Z/9	S2600	"6000000000424683366"
+
 # Q116923358  Q116923358  <- geni:6000000000424707053
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q116923358	P31	Q5	S2600	"6000000000424707053"
+
+# Marie de France, comtesse  Q236293  <- geni:6000000000424802891
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q236293	P735	Q106674406	S2600	"6000000000424802891"
+
+# Robert I de France duc de Bourgogne  Q346934  <- geni:6000000000424810067
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q346934	P570	+1076-03-18T00:00:00Z/11	S2600	"6000000000424810067"
+
+# Waleran Udo van Limburg II  Q113058  <- geni:6000000000424904289
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q113058	P570	+1139-07-16T00:00:00Z/11	S2600	"6000000000424904289"
+Q113058	P734	Q138672468	S2600	"6000000000424904289"
+Q113058	P734	Q37024863	S2600	"6000000000424904289"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q113058	P735	Q1465588	S2600	"6000000000424904289"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q113058	P735	Q65069674	S2600	"6000000000424904289"
+
+# Henry  Q68668  <- geni:6000000000424920263
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q68668	P735	Q1158477	S2600	"6000000000424920263"
 
 # Liudger Graf von Sachsen  Q75322562  <- geni:6000000000436378898
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75322562	P734	Q60605147	S2600	"6000000000436378898"
 
+# Agnes of Hainaut of Montferrat  Q660333  <- geni:6000000000436589775
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q660333	P735	Q394431	S2600	"6000000000436589775"
+
+# Donnchad Mac Domnaill High  Q16199842  <- geni:6000000000437016471
+Q16199842	P569	+0680-00-00T00:00:00Z/9	S2600	"6000000000437016471"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16199842	P570	+0743-00-00T00:00:00Z/9	S2600	"6000000000437016471"
+
+# Diarmait Dian Uí Néill  Q16203778  <- geni:6000000000437016503
+Q16203778	P569	+0590-00-00T00:00:00Z/9	S2600	"6000000000437016503"
+
+# Airmetach Caech Uí Néill  Q7876369  <- geni:6000000000437016513
+Q7876369	P569	+0560-00-00T00:00:00Z/9	S2600	"6000000000437016513"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q7876369	P570	+0602-00-00T00:00:00Z/9	S2600	"6000000000437016513"
+
+# Conall Guthbinn Ui Neill  Q8076544  <- geni:6000000000437016526
+Q8076544	P569	+0530-00-00T00:00:00Z/9	S2600	"6000000000437016526"
+
+# Suibne Mac Colmáin  Q5332852  <- geni:6000000000437016536
+Q5332852	P569	+0500-00-00T00:00:00Z/9	S2600	"6000000000437016536"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5332852	P570	+0551-00-00T00:00:00Z/9	S2600	"6000000000437016536"
+
 # Coel ap Gweirydd  Q116112557  <- geni:6000000000437027691
 Q116112557	P569	+0975-00-00T00:00:00Z/9	S2600	"6000000000437027691"
 
+# Leo  Q41618  <- geni:6000000000437064603
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41618	P735	Q606764	S2600	"6000000000437064603"
+
+# Peter I of Savoy de Maurienne  Q548171  <- geni:6000000000437316601
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q548171	P735	Q2793400	S2600	"6000000000437316601"
+
+# Anna  Q2042216  <- geni:6000000000437327174
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2042216	P26	Q2042216	S2600	"6000000000437327174"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2042216	P40	Q2357762	S2600	"6000000000437327174"
+
+# Adela von Hamaland  Q353832  <- geni:6000000000437348457
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q353832	P569	+0945-00-00T00:00:00Z/9	S2600	"6000000000437348457"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q353832	P570	+1020-07-06T00:00:00Z/11	S2600	"6000000000437348457"
+
+# Louis van Chiny comte de Chiny  Q141610365  <- geni:6000000000437438150
+Q141610365	P26	Q291762	S2600	"6000000000437438150"
+
+# Kalv Giske til Egge  Q75460  <- geni:6000000000437626271
+Q75460	P25	Q16726143	S2600	"6000000000437626271"
+Q75460	P5056	Q141580665	S2600	"6000000000437626271"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75460	P734	Q30573628	S2600	"6000000000437626271"
+
 # Thomas Campbell  Q76323606  <- geni:6000000000438187193
 Q76323606	P569	+1455-00-00T00:00:00Z/9	S2600	"6000000000438187193"
+
+# Henry von Sachsen I  Q150620  <- geni:6000000000444676198
+Q150620	P734	Q60605147	S2600	"6000000000444676198"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q150620	P735	Q1158477	S2600	"6000000000444676198"
+
+# Grote Johan Ivensson Krummedige  Q101248355  <- geni:6000000000445113430
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248355	P569	+1280-00-00T00:00:00Z/9	S2600	"6000000000445113430"
+Q101248355	P734	Q51059378	S2600	"6000000000445113430"
+Q101248355	P735	Q10989273	S2600	"6000000000445113430"
+
+# Segebod Johansen Krummedige  Q96240791  <- geni:6000000000445140415
+Q96240791	P26	Q96240792	S2600	"6000000000445140415"
+Q96240791	P5056	Q141450139	S2600	"6000000000445140415"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240791	P570	+1395-00-00T00:00:00Z/9	S2600	"6000000000445140415"
+Q96240791	P734	Q51059378	S2600	"6000000000445140415"
+
+# Grote Iven Krummedige  Q101248358  <- geni:6000000000445151481
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248358	P569	+1260-00-00T00:00:00Z/9	S2600	"6000000000445151481"
+Q101248358	P734	Q51059378	S2600	"6000000000445151481"
+Q101248358	P735	Q1532302	S2600	"6000000000445151481"
+
+# Cecilie Pedersdatter Skram  Q96240792  <- geni:6000000000445188752
+Q96240792	P26	Q96240791	S2600	"6000000000445188752"
+Q96240792	P5056	Q141257144	S2600	"6000000000445188752"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240792	P569	+1320-00-00T00:00:00Z/9	S2600	"6000000000445188752"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240792	P570	+1392-00-00T00:00:00Z/9	S2600	"6000000000445188752"
+Q96240792	P734	Q40190249	S2600	"6000000000445188752"
+Q96240792	P735	Q16275183	S2600	"6000000000445188752"
 
 # Anna Maria Nordenskiöld  Q136386662  <- geni:6000000000446794995
 Q136386662	P569	+1840-06-18T00:00:00Z/11	S2600	"6000000000446794995"
@@ -478,6 +1236,20 @@ Q136386662	P570	+1924-05-01T00:00:00Z/11	S2600	"6000000000446794995"
 # Fredrika Sofia Fock  Q136386692  <- geni:6000000000447025467
 Q136386692	P569	+1777-09-13T00:00:00Z/11	S2600	"6000000000447025467"
 Q136386692	P570	+1849-03-08T00:00:00Z/11	S2600	"6000000000447025467"
+
+# Herman Duke of Swabia II  Q715062  <- geni:6000000000469455971
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q715062	P570	+1003-04-05T00:00:00Z/11	S2600	"6000000000469455971"
+
+# Willem van Horne en Altena II  Q2135866  <- geni:6000000000474064373
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2135866	P569	+1244-00-00T00:00:00Z/9	S2600	"6000000000474064373"
+Q2135866	P734	Q36858698	S2600	"6000000000474064373"
+Q2135866	P734	Q36940575	S2600	"6000000000474064373"
+
+# Pepin de Landen  Q313373  <- geni:6000000000490564196
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q313373	P569	+0575-00-00T00:00:00Z/9	S2600	"6000000000490564196"
 
 # Erik Knutson Nærland  Q141498421  <- geni:6000000000496947634
 Q141498421	P569	+1550-00-00T00:00:00Z/9	S2600	"6000000000496947634"
@@ -508,14 +1280,55 @@ Q141533310	P570	+1744-08-16T00:00:00Z/11	S2600	"6000000000496983071"
 # NN Mortensdatter Fotland  Q141560411  <- geni:6000000000496983281
 Q141560411	P569	+1528-00-00T00:00:00Z/9	S2600	"6000000000496983281"
 
+# Hugh IV duke of Burgundy  Q536174  <- geni:6000000000501021489
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536174	P569	+1212-03-09T00:00:00Z/11	S2600	"6000000000501021489"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536174	P735	Q839387	S2600	"6000000000501021489"
+
 # Osmund Osmundsen Trones  Q141440644  <- geni:6000000000503317361
 Q141440644	P5056	Q141440450	S2600	"6000000000503317361"
+
+# Hugh III  Q464908  <- geni:6000000000531580778
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q464908	P735	Q839387	S2600	"6000000000531580778"
+
+# Odo  Q536101  <- geni:6000000000531704637
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536101	P569	+1111-00-00T00:00:00Z/9	S2600	"6000000000531704637"
+
+# Baldwin Flanders de Constantinople Count of Flanders & Hainault  Q298896  <- geni:6000000000537218162
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q298896	P569	+1171-07-00T00:00:00Z/10	S2600	"6000000000537218162"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q298896	P570	+1205-06-11T00:00:00Z/11	S2600	"6000000000537218162"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q298896	P735	Q19961822	S2600	"6000000000537218162"
 
 # Þorgerður  Q141618578  <- geni:6000000000540017309
 Q141618578	P40	Q141619922	S2600	"6000000000540017309"
 
+# Hamall Þormóðsson  Q5905951  <- geni:6000000000555404040
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5905951	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000000555404040"
+Q5905951	P570	+1040-00-00T00:00:00Z/9	S2600	"6000000000555404040"
+
+# Sæmundur Suðreyjar  Q618605  <- geni:6000000000555445317
+Q618605	P26	Q135529250	S2600	"6000000000555445317"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q618605	P570	+0933-00-00T00:00:00Z/9	S2600	"6000000000555445317"
+
+# Roger I of Hauteville the great count of Sicily  Q315297  <- geni:6000000000559573962
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q315297	P25	Q174452	S2600	"6000000000559573962"
+
 # Bengt Eriksson Tranander  Q141620097  <- geni:6000000000563399753
 Q141620097	P26	Q141620004	S2600	"6000000000563399753"
+
+# Sölvör Hundoltdotter  Q12215791  <- geni:6000000000571761309
+Q12215791	P40	Q11996956	S2600	"6000000000571761309"
+Q12215791	P569	+0815-00-00T00:00:00Z/9	S2600	"6000000000571761309"
+Q12215791	P570	+0852-00-00T00:00:00Z/9	S2600	"6000000000571761309"
 
 # Ebba Kristina Siöblad  Q136376387  <- geni:6000000000572428039
 Q136376387	P5056	Q141574629	S2600	"6000000000572428039"
@@ -527,12 +1340,57 @@ Q110302794	P569	+1525-00-00T00:00:00Z/9	S2600	"6000000000573841785"
 # Audun Rolfsson Semeleng  Q141562108  <- geni:6000000000574180222
 Q141562108	P569	+1355-00-00T00:00:00Z/9	S2600	"6000000000574180222"
 
+# Mathilde de Château-du-Loir  Q56285210  <- geni:6000000000579619347
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56285210	P570	+1108-00-00T00:00:00Z/9	S2600	"6000000000579619347"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56285210	P735	Q12326416	S2600	"6000000000579619347"
+
+# Ósvífur Helgason den Vise  Q15660885  <- geni:6000000000583441911
+Q15660885	P40	Q141612091	S2600	"6000000000583441911"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q15660885	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000000583441911"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q15660885	P570	+1010-00-00T00:00:00Z/9	S2600	"6000000000583441911"
+
+# Anastasia Yaroslavna of Kiev Rurikid  Q234724  <- geni:6000000000599365568
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q234724	P735	Q781387	S2600	"6000000000599365568"
+
+# Otto  Q65006  <- geni:6000000000608202281
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q65006	P569	+1015-00-00T00:00:00Z/9	S2600	"6000000000608202281"
+
+# Elizabeth Yaroslavna of Kyiv  Q2284422  <- geni:6000000000624307198
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2284422	P569	+1032-00-00T00:00:00Z/9	S2600	"6000000000624307198"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2284422	P570	+1070-00-00T00:00:00Z/9	S2600	"6000000000624307198"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2284422	P735	Q385468	S2600	"6000000000624307198"
+
 # Barbara Josefsdatter Pipping  Q73762646  <- geni:6000000000624795275
 Q73762646	P5056	Q141564542	S2600	"6000000000624795275"
+
+# Hallkjell Jonson Huk paa Blindheim, Lm, paa Sondmore  Q26970861  <- geni:6000000000628841483
+Q26970861	P22	Q141448486	S2600	"6000000000628841483"
+Q26970861	P25	Q141448503	S2600	"6000000000628841483"
+Q26970861	P5056	Q141249667	S2600	"6000000000628841483"
+Q26970861	P569	+1095-00-00T00:00:00Z/9	S2600	"6000000000628841483"
+Q26970861	P570	+1160-00-00T00:00:00Z/9	S2600	"6000000000628841483"
+
+# Baugeid Dagsdatter  Q16172172  <- geni:6000000000628841520
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16172172	P569	+1100-00-00T00:00:00Z/9	S2600	"6000000000628841520"
+Q16172172	P570	+1161-00-00T00:00:00Z/9	S2600	"6000000000628841520"
 
 # Elisabet Olofsdotter Bure  Q112974047  <- geni:6000000000631832372
 Q112974047	P569	+1615-01-23T00:00:00Z/11	S2600	"6000000000631832372"
 Q112974047	P570	+1670-00-00T00:00:00Z/9	S2600	"6000000000631832372"
+
+# Conan IV de Penthièvre  Q338985  <- geni:6000000000632008496
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q338985	P734	Q104871041	S2600	"6000000000632008496"
 
 # Æðelswyð  Q3577177  <- geni:6000000000632011834
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -545,12 +1403,37 @@ Q129094825	P735	Q4205426	S2600	"6000000000640931229"
 # Françoise DE CASTELLANE  Q116003424  <- geni:6000000000641025836
 Q116003424	P734	Q63951643	S2600	"6000000000641025836"
 
+# Þorkell Þorsteinsson  Q9099045  <- geni:6000000000653261197
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q9099045	P569	+0915-00-00T00:00:00Z/9	S2600	"6000000000653261197"
+Q9099045	P735	Q12719075	S2600	"6000000000653261197"
+
+# Guillaume d'Aquitaine IX  Q5351  <- geni:6000000000656950354
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5351	P735	Q18190448	S2600	"6000000000656950354"
+
 # Faydive de Toulouse  Q5429645  <- geni:6000000000665528130
 Q5429645	P734	Q104837165	S2600	"6000000000665528130"
+
+# Conrad  Q506442  <- geni:6000000000676856258
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q506442	P569	+0925-00-00T00:00:00Z/9	S2600	"6000000000676856258"
 
 # Adalasia  Q380380  <- geni:6000000000680981057
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q380380	P570	+1199-08-00T00:00:00Z/10	S2600	"6000000000680981057"
+
+# Ivan Vladislav Komitopulos  Q381288  <- geni:6000000000683579442
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q381288	P569	+0965-00-00T00:00:00Z/9	S2600	"6000000000683579442"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q381288	P735	Q830350	S2600	"6000000000683579442"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q381288	P735	Q945863	S2600	"6000000000683579442"
+
+# Aron Komitopulos  Q4170906  <- geni:6000000000686067806
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4170906	P569	+0934-00-00T00:00:00Z/9	S2600	"6000000000686067806"
 
 # Hugo Hugo of de Châlon  Q974912  <- geni:6000000000690137100
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -560,19 +1443,84 @@ Q974912	P734	Q141610431	S2600	"6000000000690137100"
 # Ingjerd Clausdatter Miltzow  Q141562427  <- geni:6000000000694158525
 Q141562427	P26	Q141562427	S2600	"6000000000694158525"
 
+# Lutgardis  Q2670053  <- geni:6000000000700873631
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2670053	P40	Q2135066	S2600	"6000000000700873631"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2670053	P570	+1005-05-13T00:00:00Z/11	S2600	"6000000000700873631"
+
+# Hildegard  Q76299122  <- geni:6000000000700969811
+Q76299122	P569	+0925-00-00T00:00:00Z/9	S2600	"6000000000700969811"
+Q76299122	P570	+0976-03-15T00:00:00Z/11	S2600	"6000000000700969811"
+Q76299122	P735	Q3135653	S2600	"6000000000700969811"
+
+# Eyestein «Fret Fjert» Halfdansson  Q2581232  <- geni:6000000000700972962
+Q2581232	P40	Q5666589	S2600	"6000000000700972962"
+Q2581232	P40	Q75292014	S2600	"6000000000700972962"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2581232	P569	+0706-00-00T00:00:00Z/9	S2600	"6000000000700972962"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2581232	P570	+0780-00-00T00:00:00Z/9	S2600	"6000000000700972962"
+
 # Anicius Auchenius Bassus Auchenius  Q1174096  <- geni:6000000000701068622
 Q1174096	P734	Q37571708	S2600	"6000000000701068622"
+
+# Anastasia Yaropolkovna княгиня Минская  Q12078166  <- geni:6000000000701224748
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12078166	P570	+1159-01-03T00:00:00Z/11	S2600	"6000000000701224748"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12078166	P735	Q781387	S2600	"6000000000701224748"
+
+# Rudolph  Q442257  <- geni:6000000000701225390
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q442257	P569	+0890-00-00T00:00:00Z/9	S2600	"6000000000701225390"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q442257	P735	Q18028739	S2600	"6000000000701225390"
+
+# Fulbert de Falaise  Q5507789  <- geni:6000000000701225901
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5507789	P570	+1017-00-00T00:00:00Z/9	S2600	"6000000000701225901"
 
 # Bernad III de Bearn comde de Bigòrra  Q1941773  <- geni:6000000000709168438
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q1941773	P570	+1123-00-00T00:00:00Z/9	S2600	"6000000000709168438"
 
+# Inge Stenkilsson Sr.  Q375309  <- geni:6000000000709541555
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q375309	P570	+1110-00-00T00:00:00Z/9	S2600	"6000000000709541555"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q375309	P735	Q8085241	S2600	"6000000000709541555"
+
+# Sophia Eriksdatter  Q2321295  <- geni:6000000000709878499
+Q2321295	P5056	Q141223487	S2600	"6000000000709878499"
+
+# Teresa Alfónsez Condesa de Portugal  Q237987  <- geni:6000000000717776836
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q237987	P569	+1083-00-00T00:00:00Z/9	S2600	"6000000000717776836"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q237987	P570	+1130-11-01T00:00:00Z/11	S2600	"6000000000717776836"
+Q237987	P734	Q18327317	S2600	"6000000000717776836"
+
 # NN Brynjulfsdatter  Q141448503  <- geni:6000000000722124788
+Q141448503	P40	Q26970861	S2600	"6000000000722124788"
 Q141448503	P570	+1115-00-00T00:00:00Z/9	S2600	"6000000000722124788"
 
 # Adolf Aminoff  Q110399748  <- geni:6000000000725969435
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q110399748	P735	Q18145837	S2600	"6000000000725969435"
+
+# Sikelgaita Hauteville  Q640793  <- geni:6000000000728657032
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q640793	P569	+1030-00-00T00:00:00Z/9	S2600	"6000000000728657032"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q640793	P570	+1090-07-27T00:00:00Z/11	S2600	"6000000000728657032"
+Q640793	P734	Q98208631	S2600	"6000000000728657032"
+
+# Ermentrude  Q1913065  <- geni:6000000000728689157
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1913065	P569	+0952-00-00T00:00:00Z/9	S2600	"6000000000728689157"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1913065	P570	+1003-03-05T00:00:00Z/11	S2600	"6000000000728689157"
 
 # Inger Axelsdatter Güntersberg  Q141493478  <- geni:6000000000757999620
 Q141493478	P26	Q141493478	S2600	"6000000000757999620"
@@ -583,12 +1531,41 @@ Q141497501	P26	Q141497501	S2600	"6000000000758079676"
 # Jakob Jørgenson Bolstad  Q141520352  <- geni:6000000000758124033
 Q141520352	P569	+1565-00-00T00:00:00Z/9	S2600	"6000000000758124033"
 
+# Manuel I Komnenos byzantine emperor  Q41610  <- geni:6000000000759679062
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41610	P735	Q11113719	S2600	"6000000000759679062"
+
 # Guy de Mauvoisin  Q116005186  <- geni:6000000000760532621
 Q116005186	P734	Q123020130	S2600	"6000000000760532621"
+
+# Louis II d'Italie Emperor of Italy and of the Franks  Q215204  <- geni:6000000000761701017
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q215204	P735	Q97156058	S2600	"6000000000761701017"
+
+# Sophia von Oberlothringen  Q291762  <- geni:6000000000765100226
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q291762	P26	Q141610365	S2600	"6000000000765100226"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q291762	P569	+1013-00-00T00:00:00Z/9	S2600	"6000000000765100226"
 
 # Esther Sidonia von Raschau  Q115870613  <- geni:6000000000766294297
 Q115870613	P569	+1720-05-07T00:00:00Z/11	S2600	"6000000000766294297"
 Q115870613	P570	+1800-02-12T00:00:00Z/11	S2600	"6000000000766294297"
+
+# Peder Lauridsen Saltensee  Q101248373  <- geni:6000000000767226677
+Q101248373	P569	+1261-00-00T00:00:00Z/9	S2600	"6000000000767226677"
+Q101248373	P735	Q10622039	S2600	"6000000000767226677"
+
+# Richeza Adelaide Mieszkówna of Poland  Q447333  <- geni:6000000000768942057
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q447333	P735	Q133538381	S2600	"6000000000768942057"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q447333	P735	Q354633	S2600	"6000000000768942057"
+
+# Mieszko II Lambert Пяст  Q28468  <- geni:6000000000768959047
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q28468	P570	+1034-10-05T00:00:00Z/11	S2600	"6000000000768959047"
+Q28468	P735	Q492730	S2600	"6000000000768959047"
 
 # Gunnhild Knutsdottir af Danmark  Q254545  <- geni:6000000000769926059
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -596,6 +1573,11 @@ Q254545	P569	+1019-00-00T00:00:00Z/9	S2600	"6000000000769926059"
 
 # Erlend Arnesson Losna  Q141569601  <- geni:6000000000771264210
 Q141569601	P5056	Q141585014	S2600	"6000000000771264210"
+
+# Olav Haraldsson  Q316042  <- geni:6000000000771264415
+Q316042	P734	Q30347058	S2600	"6000000000771264415"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316042	P735	Q16511262	S2600	"6000000000771264415"
 
 # Ingrid Svendsdatter  Q3494397  <- geni:6000000000771264665
 Q3494397	P5056	Q141502662	S2600	"6000000000771264665"
@@ -605,6 +1587,9 @@ Q141216349	P570	+1180-00-00T00:00:00Z/9	S2600	"6000000000771986019"
 
 # Elizabeth FitzPayne  Q75775634  <- geni:6000000000796824466
 Q75775634	P570	+1393-05-21T00:00:00Z/11	S2600	"6000000000796824466"
+
+# Rotrude  Q269691  <- geni:6000000000826993411
+Q269691	P26	Q533927	S2600	"6000000000826993411"
 
 # Wendla Sophia von Willebrand  Q23040684  <- geni:6000000000839773497
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -616,6 +1601,14 @@ Q23698839	P735	Q19816474	S2600	"6000000000840095188"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q23698839	P735	Q64412279	S2600	"6000000000840095188"
 
+# Bjarni Gautski Hrolfsson  Q16537926  <- geni:6000000000855468076
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16537926	P570	+0870-00-00T00:00:00Z/9	S2600	"6000000000855468076"
+
+# Бегга Арнульфинг  Q266765  <- geni:6000000000860259173
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q266765	P569	+0613-06-02T00:00:00Z/11	S2600	"6000000000860259173"
+
 # Gunnhild Johannesdatter Fadnes  Q141559595  <- geni:6000000000866353020
 Q141559595	P26	Q141559595	S2600	"6000000000866353020"
 
@@ -623,12 +1616,37 @@ Q141559595	P26	Q141559595	S2600	"6000000000866353020"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3879462	P734	Q141614622	S2600	"6000000000868541973"
 
+# Peder Jensen Schielderup  Q14942564  <- geni:6000000000873947684
+Q14942564	P25	Q141563001	S2600	"6000000000873947684"
+Q14942564	P5056	Q141500869	S2600	"6000000000873947684"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q14942564	P734	Q141619445	S2600	"6000000000873947684"
+
 # Valdemar Valdemarson Knudsen II  Q157799  <- geni:6000000000891680343
 Q157799	P734	Q21452407	S2600	"6000000000891680343"
 
+# Louis  Q193658  <- geni:6000000000894017358
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q193658	P735	Q97156058	S2600	"6000000000894017358"
+
+# Asser Skjalmsen Hvide  Q11959415  <- geni:6000000000901150478
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11959415	P569	+1078-00-00T00:00:00Z/9	S2600	"6000000000901150478"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11959415	P570	+1150-00-00T00:00:00Z/9	S2600	"6000000000901150478"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11959415	P734	Q55222347	S2600	"6000000000901150478"
+
 # Judith  Q169547  <- geni:6000000000904661585
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q169547	P22	Q536899	S2600	"6000000000904661585"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q169547	P569	+0805-00-00T00:00:00Z/9	S2600	"6000000000904661585"
+
+# Olaf Haraldsen  Q2632997  <- geni:6000000000923023748
+Q2632997	P5056	Q141582500	S2600	"6000000000923023748"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2632997	P735	Q3881452	S2600	"6000000000923023748"
 
 # Avraham HaLevi Mintz  Q4669260  <- geni:6000000000961693966
 Q4669260	P40	Q141612131	S2600	"6000000000961693966"
@@ -645,9 +1663,60 @@ Q320139	P31	Q5	S2600	"6000000000961704850"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q225212	P569	+1042-00-00T00:00:00Z/9	S2600	"6000000001009241218"
 
+# Hallkjell Agmundson Krøkedans  Q116977061  <- geni:6000000001023157027
+Q116977061	P26	Q101247950	S2600	"6000000001023157027"
+
 # Sigrid Huk  Q141499012  <- geni:6000000001024438875
+Q141499012	P22	Q18418043	S2600	"6000000001024438875"
 Q141499012	P25	Q11996949	S2600	"6000000001024438875"
 Q141499012	P569	+1194-00-00T00:00:00Z/9	S2600	"6000000001024438875"
+
+# Margarite Arnesdotter Stovreim  Q101248137  <- geni:6000000001024948055
+Q101248137	P26	Q26965895	S2600	"6000000001024948055"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248137	P40	Q75532153	S2600	"6000000001024948055"
+Q101248137	P5056	Q141582530	S2600	"6000000001024948055"
+Q101248137	P569	+1132-00-00T00:00:00Z/9	S2600	"6000000001024948055"
+Q101248137	P570	+1190-00-00T00:00:00Z/9	S2600	"6000000001024948055"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248137	P735	Q112049341	S2600	"6000000001024948055"
+
+# Sigurd "Digri the Stout" Hlodvesson Orkneyjarl  Q614802  <- geni:6000000001041474621
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q614802	P569	+0965-00-00T00:00:00Z/9	S2600	"6000000001041474621"
+
+# Cináed MacAlpín  Q298263  <- geni:6000000001041559796
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q298263	P570	+0859-02-13T00:00:00Z/11	S2600	"6000000001041559796"
+
+# Brusi Sigurdsson  Q2927059  <- geni:6000000001041560317
+Q2927059	P5056	Q21506553	S2600	"6000000001041560317"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2927059	P569	+0987-00-00T00:00:00Z/9	S2600	"6000000001041560317"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2927059	P570	+1031-00-00T00:00:00Z/9	S2600	"6000000001041560317"
+
+# Einarr Rögnvaldsson Orkneyjarl  Q3049451  <- geni:6000000001045369865
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3049451	P569	+0852-00-00T00:00:00Z/9	S2600	"6000000001045369865"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3049451	P570	+0910-00-00T00:00:00Z/9	S2600	"6000000001045369865"
+
+# Thórður Sturluson  Q9099047  <- geni:6000000001045999255
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q9099047	P25	Q133796430	S2600	"6000000001045999255"
+
+# Þórfinnr Inn Riki Sigurdsson II, Jarl of Orkney  Q719528  <- geni:6000000001052002306
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q719528	P570	+1060-00-00T00:00:00Z/9	S2600	"6000000001052002306"
+Q719528	P734	Q21506553	S2600	"6000000001052002306"
+
+# Ingibjörg Finnsdóttir  Q2453222  <- geni:6000000001052011900
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2453222	P735	Q16429104	S2600	"6000000001052011900"
+
+# Gunnar Arnbjørnsson Bolt  Q141550304  <- geni:6000000001052273460
+Q141550304	P22	Q106528141	S2600	"6000000001052273460"
 
 # Ivar Guttormsson på Norheim  Q141611108  <- geni:6000000001052476194
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -663,13 +1732,28 @@ Q1019325	P734	Q25521651	S2600	"6000000001052543006"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q1019325	P735	Q122958929	S2600	"6000000001052543006"
 
+# Hrollaug Ragnvaldsson Eyjafjörður Íslands  Q16428399  <- geni:6000000001065449177
+Q16428399	P569	+0859-00-00T00:00:00Z/9	S2600	"6000000001065449177"
+Q16428399	P570	+0896-00-00T00:00:00Z/9	S2600	"6000000001065449177"
+
 # Blanche fitzJohn  Q75387333  <- geni:6000000001065696635
 Q75387333	P569	+1359-00-00T00:00:00Z/9	S2600	"6000000001065696635"
 Q75387333	P570	+1388-00-00T00:00:00Z/9	S2600	"6000000001065696635"
 
+# Ivar Ragnvaldsson  Q5923298  <- geni:6000000001084436332
+Q5923298	P569	+0850-00-00T00:00:00Z/9	S2600	"6000000001084436332"
+Q5923298	P570	+0872-00-00T00:00:00Z/9	S2600	"6000000001084436332"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5923298	P735	Q127069	S2600	"6000000001084436332"
+
 # Margaretha van Beveren  Q50840389  <- geni:6000000001087319255
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q50840389	P734	Q48980173	S2600	"6000000001087319255"
+
+# Tora Torsteinsdatter Galge  Q16726143  <- geni:6000000001088848284
+Q16726143	P40	Q75460	S2600	"6000000001088848284"
+Q16726143	P5056	Q141448431	S2600	"6000000001088848284"
+Q16726143	P569	+0970-00-00T00:00:00Z/9	S2600	"6000000001088848284"
 
 # Ellen Sofia Falkenberg  Q141512987  <- geni:6000000001108772970
 Q141512987	P569	+1872-04-23T00:00:00Z/11	S2600	"6000000001108772970"
@@ -678,6 +1762,10 @@ Q141512987	P570	+1945-08-22T00:00:00Z/11	S2600	"6000000001108772970"
 # Ludmila  Q118087  <- geni:6000000001120089414
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q118087	P569	+0855-00-00T00:00:00Z/9	S2600	"6000000001120089414"
+
+# Margareta Eriksdotter Krummedige  Q4965630  <- geni:6000000001130898363
+Q4965630	P5056	Q130232912	S2600	"6000000001130898363"
+Q4965630	P734	Q51059378	S2600	"6000000001130898363"
 
 # Trond Tordsson Benkestokk  Q141498431  <- geni:6000000001136798072
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -700,15 +1788,170 @@ Q141612356	P734	Q21450475	S2600	"6000000001139132216"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q17153107	P569	+0778-00-00T00:00:00Z/9	S2600	"6000000001141145118"
 
+# Ermengarde  Q2506063  <- geni:6000000001142564337
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2506063	P569	+1092-07-01T00:00:00Z/11	S2600	"6000000001142564337"
+
+# Gōdwine Wulfnothsson  Q318142  <- geni:6000000001156548017
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q318142	P40	Q141534225	S2600	"6000000001156548017"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q318142	P569	+0987-00-00T00:00:00Z/9	S2600	"6000000001156548017"
+
+# Gytha Þorkelsdōttir countess of Wessex  Q2634369  <- geni:6000000001156548028
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2634369	P40	Q141534225	S2600	"6000000001156548028"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2634369	P569	+0997-00-00T00:00:00Z/9	S2600	"6000000001156548028"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2634369	P570	+1069-00-00T00:00:00Z/9	S2600	"6000000001156548028"
+
+# Ramborg Cecilia Nilsdotter Vasa  Q4973957  <- geni:6000000001156936455
+Q4973957	P5056	Q141383169	S2600	"6000000001156936455"
+Q4973957	P570	+1438-00-00T00:00:00Z/9	S2600	"6000000001156936455"
+Q4973957	P734	Q16291152	S2600	"6000000001156936455"
+Q4973957	P735	Q859234	S2600	"6000000001156936455"
+
+# Jon Gautesson Dall  Q11979148  <- geni:6000000001169087690
+Q11979148	P22	Q141565143	S2600	"6000000001169087690"
+Q11979148	P25	Q141565233	S2600	"6000000001169087690"
+Q11979148	P26	Q141569368	S2600	"6000000001169087690"
+Q11979148	P40	Q141559583	S2600	"6000000001169087690"
+Q11979148	P569	+1480-00-00T00:00:00Z/9	S2600	"6000000001169087690"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11979148	P570	+1567-05-07T00:00:00Z/11	S2600	"6000000001169087690"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11979148	P734	Q33123348	S2600	"6000000001169087690"
+
+# Erlend Eindridesson Losna  Q111989188  <- geni:6000000001169121895
+Q111989188	P5056	Q141612217	S2600	"6000000001169121895"
+Q111989188	P569	+1400-00-00T00:00:00Z/9	S2600	"6000000001169121895"
+Q111989188	P570	+1452-00-00T00:00:00Z/9	S2600	"6000000001169121895"
+Q111989188	P734	Q141564544	S2600	"6000000001169121895"
+Q111989188	P735	Q19944837	S2600	"6000000001169121895"
+
+# Magnus Henriksson II  Q856159  <- geni:6000000001169124236
+Q856159	P5056	Q141436541	S2600	"6000000001169124236"
+
 # Ingeborg Jonsdatter Smør  Q141498698  <- geni:6000000001169143193
 Q141498698	P569	+1387-00-00T00:00:00Z/9	S2600	"6000000001169143193"
 
+# Einar Eindrideson Tambarskjelve  Q31706  <- geni:6000000001169154590
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31706	P569	+0972-00-00T00:00:00Z/9	S2600	"6000000001169154590"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31706	P735	Q1305819	S2600	"6000000001169154590"
+
+# Gunhild Erlendsdóttir  Q75532148  <- geni:6000000001169154976
+Q75532148	P26	Q75532148	S2600	"6000000001169154976"
+Q75532148	P569	+1077-00-00T00:00:00Z/9	S2600	"6000000001169154976"
+Q75532148	P735	Q2634697	S2600	"6000000001169154976"
+
+# Egill Skallagrímsson  Q314454  <- geni:6000000001169157138
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q314454	P735	Q96575354	S2600	"6000000001169157138"
+
+# Þorsteinn Egilsson  Q16652447  <- geni:6000000001169157255
+Q16652447	P735	Q16282077	S2600	"6000000001169157255"
+
+# Ólafur Höskuldsson  Q3481137  <- geni:6000000001169157325
+Q3481137	P5056	Q131323423	S2600	"6000000001169157325"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3481137	P735	Q262439	S2600	"6000000001169157325"
+
 # Sigrid Gregoriusdatter Stovreim  Q141583864  <- geni:6000000001169171714
+Q141583864	P25	Q75393578	S2600	"6000000001169171714"
 Q141583864	P26	Q141583864	S2600	"6000000001169171714"
+
+# Brigida Haraldsdotter av Sverige  Q2925391  <- geni:6000000001169174151
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2925391	P25	Q122949820	S2600	"6000000001169174151"
+Q2925391	P5056	Q141574669	S2600	"6000000001169174151"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2925391	P569	+1130-00-00T00:00:00Z/9	S2600	"6000000001169174151"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2925391	P570	+1202-10-22T00:00:00Z/11	S2600	"6000000001169174151"
+
+# Folkvid  Q5464626  <- geni:6000000001169174384
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5464626	P569	+1145-00-00T00:00:00Z/9	S2600	"6000000001169174384"
+
+# Úlfur Óargi Grimsson  Q6219122  <- geni:6000000001169174487
+Q6219122	P570	+0791-00-00T00:00:00Z/9	S2600	"6000000001169174487"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6219122	P735	Q16422176	S2600	"6000000001169174487"
+
+# Gunnhildur Hálfdanardóttir  Q141610221  <- geni:6000000001169174965
+Q141610221	P40	Q741327	S2600	"6000000001169174965"
+
+# Eyvindr skáldaspillir Finsson  Q741327  <- geni:6000000001169174983
+Q741327	P22	Q141612137	S2600	"6000000001169174983"
+Q741327	P25	Q141610221	S2600	"6000000001169174983"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q741327	P569	+0920-00-00T00:00:00Z/9	S2600	"6000000001169174983"
+
+# Höskuldur Dala Kollsson  Q3480155  <- geni:6000000001169179252
+Q3480155	P25	Q2836747	S2600	"6000000001169179252"
+Q3480155	P26	Q5474834	S2600	"6000000001169179252"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3480155	P569	+0903-00-00T00:00:00Z/9	S2600	"6000000001169179252"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3480155	P570	+0965-00-00T00:00:00Z/9	S2600	"6000000001169179252"
+
+# Ketil Wether Hersir in Ringerike  Q16728989  <- geni:6000000001169186866
+Q16728989	P569	+0780-00-00T00:00:00Z/9	S2600	"6000000001169186866"
+Q16728989	P570	+0806-00-00T00:00:00Z/9	S2600	"6000000001169186866"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16728989	P735	Q19827695	S2600	"6000000001169186866"
+
+# Helgi Bjolan Ketilsson  Q13611173  <- geni:6000000001169186884
+Q13611173	P735	Q26271987	S2600	"6000000001169186884"
+
+# Thorun Ketilsdottir  Q16729143  <- geni:6000000001169186893
+Q16729143	P569	+0848-00-00T00:00:00Z/9	S2600	"6000000001169186893"
+Q16729143	P570	+0900-00-00T00:00:00Z/9	S2600	"6000000001169186893"
+
+# Eyvindur Bjarnason austmaður  Q5853737  <- geni:6000000001169186902
+Q5853737	P26	Q130320417	S2600	"6000000001169186902"
+Q5853737	P40	Q16726161	S2600	"6000000001169186902"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5853737	P569	+0830-00-00T00:00:00Z/9	S2600	"6000000001169186902"
+
+# Thurid Eyvinsdotter Eyvindsdóttir  Q16726161  <- geni:6000000001169186947
+Q16726161	P22	Q5853737	S2600	"6000000001169186947"
+Q16726161	P25	Q130320417	S2600	"6000000001169186947"
+Q16726161	P569	+0847-00-00T00:00:00Z/9	S2600	"6000000001169186947"
+Q16726161	P570	+0888-00-00T00:00:00Z/9	S2600	"6000000001169186947"
+
+# Bjørg Eyvindardottir  Q130320401  <- geni:6000000001169204330
+Q130320401	P26	Q11705582	S2600	"6000000001169204330"
+Q130320401	P569	+0848-00-00T00:00:00Z/9	S2600	"6000000001169204330"
+Q130320401	P570	+0871-00-00T00:00:00Z/9	S2600	"6000000001169204330"
+Q130320401	P735	Q3356271	S2600	"6000000001169204330"
+
+# Þorleikur Höskuldsson  Q15709618  <- geni:6000000001169204750
+Q15709618	P5056	Q131323423	S2600	"6000000001169204750"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q15709618	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000001169204750"
+
+# Guttorm Thorirsson of Torarson  Q75393553  <- geni:6000000001169224467
+Q75393553	P735	Q20755782	S2600	"6000000001169224467"
 
 # Nevstein Haldorsen  Q75291924  <- geni:6000000001169224783
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75291924	P569	+1012-00-00T00:00:00Z/9	S2600	"6000000001169224783"
+
+# Katarína or Katrine Canutsdatter  Q141610376  <- geni:6000000001169228232
+Q141610376	P22	Q313005	S2600	"6000000001169228232"
+Q141610376	P25	Q1445064	S2600	"6000000001169228232"
+Q141610376	P26	Q725219	S2600	"6000000001169228232"
+Q141610376	P40	Q350213	S2600	"6000000001169228232"
+
+# Orm Dagson  Q25433328  <- geni:6000000001169228992
+Q25433328	P40	Q141586237	S2600	"6000000001169228992"
+Q25433328	P569	+1110-00-00T00:00:00Z/9	S2600	"6000000001169228992"
+Q25433328	P570	+1150-00-00T00:00:00Z/9	S2600	"6000000001169228992"
+Q25433328	P735	Q5199298	S2600	"6000000001169228992"
 
 # Anna Olavsdatter Nesheim  Q141283486  <- geni:6000000001169233297
 Q141283486	P5056	Q141421829	S2600	"6000000001169233297"
@@ -736,25 +1979,155 @@ Q5643219	P735	Q18002157	S2600	"6000000001169296643"
 Q6270833	P569	+1350-00-00T00:00:00Z/9	S2600	"6000000001169296726"
 Q6270833	P570	+1395-00-00T00:00:00Z/9	S2600	"6000000001169296726"
 
+# Svale Jonson Smør  Q7651616  <- geni:6000000001169296802
+Q7651616	P25	Q141499537	S2600	"6000000001169296802"
+Q7651616	P26	Q141577746	S2600	"6000000001169296802"
+Q7651616	P40	Q141573617	S2600	"6000000001169296802"
+Q7651616	P5056	Q141249667	S2600	"6000000001169296802"
+Q7651616	P569	+1370-00-00T00:00:00Z/9	S2600	"6000000001169296802"
+Q7651616	P570	+1442-00-00T00:00:00Z/9	S2600	"6000000001169296802"
+Q7651616	P734	Q7546835	S2600	"6000000001169296802"
+Q7651616	P735	Q141584025	S2600	"6000000001169296802"
+
 # Gaute Jonsson  Q103783296  <- geni:6000000001169297770
 Q103783296	P569	+1190-00-00T00:00:00Z/9	S2600	"6000000001169297770"
 Q103783296	P570	+1270-00-00T00:00:00Z/9	S2600	"6000000001169297770"
 
+# Olav Håkonsen Nesøya  Q111989192  <- geni:6000000001169317924
+Q111989192	P26	Q111989195	S2600	"6000000001169317924"
+Q111989192	P569	+1370-00-00T00:00:00Z/9	S2600	"6000000001169317924"
+Q111989192	P570	+1458-00-00T00:00:00Z/9	S2600	"6000000001169317924"
+Q111989192	P735	Q16511262	S2600	"6000000001169317924"
+
 # Nikolás Pálsson Kuvung  Q141498456  <- geni:6000000001169340539
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141498456	P25	Q141571083	S2600	"6000000001169340539"
+Q141498456	P40	Q75291937	S2600	"6000000001169340539"
 Q141498456	P569	+1140-00-00T00:00:00Z/9	S2600	"6000000001169340539"
 Q141498456	P570	+1217-00-00T00:00:00Z/9	S2600	"6000000001169340539"
+
+# Rogneda Anastasia  Q2298294  <- geni:6000000001172213829
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2298294	P569	+0962-00-00T00:00:00Z/9	S2600	"6000000001172213829"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2298294	P570	+1002-00-00T00:00:00Z/9	S2600	"6000000001172213829"
+Q2298294	P735	Q781387	S2600	"6000000001172213829"
+
+# Hermann Billung  Q550803  <- geni:6000000001183913030
+Q550803	P734	Q55293747	S2600	"6000000001183913030"
+
+# Eoppa  Q5381849  <- geni:6000000001183968441
+Q5381849	P570	+0797-00-00T00:00:00Z/9	S2600	"6000000001183968441"
+
+# Eaba  Q3567571  <- geni:6000000001184040598
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3567571	P570	+0796-00-00T00:00:00Z/9	S2600	"6000000001184040598"
+
+# Borghild Haakonsdatter Bolt  Q141611060  <- geni:6000000001195438853
+Q141611060	P40	Q120728560	S2600	"6000000001195438853"
+
+# Ogmund Haraldsson Bolt  Q141570929  <- geni:6000000001195468133
+Q141570929	P40	Q120728560	S2600	"6000000001195468133"
+
+# Jon Marteinsønn Martinsson [stjärna]  Q101247940  <- geni:6000000001195495695
+Q101247940	P25	Q141610334	S2600	"6000000001195495695"
+Q101247940	P26	Q101247942	S2600	"6000000001195495695"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101247940	P569	+1350-00-00T00:00:00Z/9	S2600	"6000000001195495695"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101247940	P570	+1393-00-00T00:00:00Z/9	S2600	"6000000001195495695"
+Q101247940	P734	Q1310261	S2600	"6000000001195495695"
+Q101247940	P735	Q13501137	S2600	"6000000001195495695"
 
 # Haakon Bolt Tinghatt Toreson Erkebiskop i Nidaros  Q1642655  <- geni:6000000001195536539
 Q1642655	P5056	Q141518427	S2600	"6000000001195536539"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q1642655	P735	Q9383939	S2600	"6000000001195536539"
 
+# Agnes Sigurdsdotter Stjerne  Q101247942  <- geni:6000000001195574393
+Q101247942	P26	Q101247940	S2600	"6000000001195574393"
+Q101247942	P5056	Q83873546	S2600	"6000000001195574393"
+Q101247942	P569	+1350-00-00T00:00:00Z/9	S2600	"6000000001195574393"
+Q101247942	P570	+1404-00-00T00:00:00Z/9	S2600	"6000000001195574393"
+
+# Alv Haraldsson Bolt  Q101247909  <- geni:6000000001195589379
+Q101247909	P26	Q101247939	S2600	"6000000001195589379"
+Q101247909	P569	+1336-00-00T00:00:00Z/9	S2600	"6000000001195589379"
+Q101247909	P570	+1412-03-13T00:00:00Z/11	S2600	"6000000001195589379"
+
+# Tore Bolt Haakonson  Q15851234  <- geni:6000000001195604575
+Q15851234	P25	Q141612173	S2600	"6000000001195604575"
+Q15851234	P26	Q101247950	S2600	"6000000001195604575"
+
+# Otto Duke of Saxony Duke of Saxony  Q324116  <- geni:6000000001196707179
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q324116	P569	+0836-11-23T00:00:00Z/11	S2600	"6000000001196707179"
+Q324116	P734	Q60605147	S2600	"6000000001196707179"
+
+# Skúli Bårdsson  Q725206  <- geni:6000000001198751004
+Q725206	P40	Q141498982	S2600	"6000000001198751004"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q725206	P735	Q122958929	S2600	"6000000001198751004"
+
+# Cicilia Haakonsdatter  Q75393578  <- geni:6000000001198860794
+Q75393578	P26	Q75393578	S2600	"6000000001198860794"
+Q75393578	P40	Q141583864	S2600	"6000000001198860794"
+Q75393578	P569	+1222-00-00T00:00:00Z/9	S2600	"6000000001198860794"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75393578	P570	+1249-10-00T00:00:00Z/10	S2600	"6000000001198860794"
+
+# Toralde Gunnarsen  Q75393575  <- geni:6000000001198951480
+Q75393575	P40	Q141584867	S2600	"6000000001198951480"
+Q75393575	P5056	Q141537979	S2600	"6000000001198951480"
+Q75393575	P569	+1204-00-00T00:00:00Z/9	S2600	"6000000001198951480"
+Q75393575	P570	+1225-00-00T00:00:00Z/9	S2600	"6000000001198951480"
+
+# Ulvhild Olavsdatter  Q3121005  <- geni:6000000001200023579
+Q3121005	P5056	Q141450953	S2600	"6000000001200023579"
+
+# Olav Haraldsson  Q208331  <- geni:6000000001200091331
+Q208331	P26	Q106608743	S2600	"6000000001200091331"
+Q208331	P734	Q30347058	S2600	"6000000001200091331"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q208331	P735	Q16511262	S2600	"6000000001200091331"
+
+# Haakon Sigurdsson King of Norway  Q31704  <- geni:6000000001200100841
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31704	P735	Q9383939	S2600	"6000000001200100841"
+
+# Bergljot Toresdatter  Q16174021  <- geni:6000000001200187654
+Q16174021	P5056	Q141313474	S2600	"6000000001200187654"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16174021	P569	+0915-00-00T00:00:00Z/9	S2600	"6000000001200187654"
+Q16174021	P570	+0940-00-00T00:00:00Z/9	S2600	"6000000001200187654"
+
+# Eldrid Jonsdatter Blindheim  Q141216467  <- geni:6000000001200204262
+Q141216467	P40	Q75292005	S2600	"6000000001200204262"
+
+# Sigurd Halfdansson Syr  Q3108524  <- geni:6000000001200208116
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3108524	P26	Q242746	S2600	"6000000001200208116"
+
 # Gudrun Nevsteinsdatter  Q11973158  <- geni:6000000001200219073
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q11973158	P569	+1050-00-00T00:00:00Z/9	S2600	"6000000001200219073"
 Q11973158	P570	+1090-00-00T00:00:00Z/9	S2600	"6000000001200219073"
+
+# Halvdan «the Black» Gudrødsson King in Uppland  Q504932  <- geni:6000000001200495470
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q504932	P569	+0797-00-00T00:00:00Z/9	S2600	"6000000001200495470"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q504932	P570	+0862-00-00T00:00:00Z/9	S2600	"6000000001200495470"
+Q504932	P735	Q25114282	S2600	"6000000001200495470"
+
+# Ålov Årbot Haraldsdatter  Q5559529  <- geni:6000000001205118569
+Q5559529	P5056	Q141611167	S2600	"6000000001205118569"
+
+# Gyda Eiriksdatter  Q973678  <- geni:6000000001205206213
+Q973678	P40	Q213791	S2600	"6000000001205206213"
+Q973678	P5056	Q141611161	S2600	"6000000001205206213"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q973678	P570	+0932-00-00T00:00:00Z/9	S2600	"6000000001205206213"
 
 # Astrid Tryggvesdatter  Q12302384  <- geni:6000000001205324797
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -763,14 +2136,91 @@ Q12302384	P569	+0962-00-00T00:00:00Z/9	S2600	"6000000001205324797"
 Q12302384	P570	+1027-00-00T00:00:00Z/9	S2600	"6000000001205324797"
 
 # Gudrun Thordsdatter  Q141550486  <- geni:6000000001205369626
+Q141550486	P22	Q5654629	S2600	"6000000001205369626"
+Q141550486	P25	Q12341816	S2600	"6000000001205369626"
+Q141550486	P40	Q26327689	S2600	"6000000001205369626"
 Q141550486	P569	+1029-00-00T00:00:00Z/9	S2600	"6000000001205369626"
 Q141550486	P570	+1095-00-00T00:00:00Z/9	S2600	"6000000001205369626"
+
+# Sigurd Magnusson  Q313005  <- geni:6000000001205606328
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q313005	P25	Q122931811	S2600	"6000000001205606328"
+Q313005	P26	Q1445064	S2600	"6000000001205606328"
+Q313005	P40	Q141610376	S2600	"6000000001205606328"
+Q313005	P5056	Q141283477	S2600	"6000000001205606328"
+
+# Erling Skjalgsson  Q936090  <- geni:6000000001209109374
+Q936090	P40	Q5654629	S2600	"6000000001209109374"
+
+# Sigtrygg Haraldsson Halvdansson  Q5647561  <- geni:6000000001209304592
+Q5647561	P5056	Q141585679	S2600	"6000000001209304592"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5647561	P569	+0880-00-00T00:00:00Z/9	S2600	"6000000001209304592"
+
+# Ragnhild Hrólfsdóttir  Q2722233  <- geni:6000000001209415397
+Q2722233	P5056	Q113001280	S2600	"6000000001209415397"
+Q2722233	P570	+0892-00-00T00:00:00Z/9	S2600	"6000000001209415397"
+
+# Hrolf av Trondheim  Q5903799  <- geni:6000000001209426947
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5903799	P569	+0768-00-00T00:00:00Z/9	S2600	"6000000001209426947"
+Q5903799	P570	+0837-00-00T00:00:00Z/9	S2600	"6000000001209426947"
+
+# Robert de Vermandois  Q772443  <- geni:6000000001209857715
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q772443	P569	+0910-00-00T00:00:00Z/9	S2600	"6000000001209857715"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q772443	P570	+0966-06-19T00:00:00Z/11	S2600	"6000000001209857715"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q772443	P735	Q4927937	S2600	"6000000001209857715"
+
+# NN  Q141533640  <- geni:6000000001209951455
+Q141533640	P26	Q41864	S2600	"6000000001209951455"
+
+# Mélisende de Montlhéry  Q116005748  <- geni:6000000001210401775
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q116005748	P40	Q3298994	S2600	"6000000001210401775"
+Q116005748	P569	+1032-00-00T00:00:00Z/9	S2600	"6000000001210401775"
+Q116005748	P570	+1097-00-00T00:00:00Z/9	S2600	"6000000001210401775"
+
+# Otto  Q681146  <- geni:6000000001210422424
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q681146	P570	+1004-10-04T00:00:00Z/11	S2600	"6000000001210422424"
+
+# Thord Foleson  Q5654629  <- geni:6000000001210456367
+Q5654629	P22	Q936090	S2600	"6000000001210456367"
+Q5654629	P40	Q141550486	S2600	"6000000001210456367"
+Q5654629	P40	Q141583226	S2600	"6000000001210456367"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5654629	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000001210456367"
+Q5654629	P735	Q20730759	S2600	"6000000001210456367"
+
+# Ålov Einarsdotter Lade  Q12341816  <- geni:6000000001210506430
+Q12341816	P40	Q141550486	S2600	"6000000001210506430"
+Q12341816	P40	Q141583226	S2600	"6000000001210506430"
+Q12341816	P5056	Q141584056	S2600	"6000000001210506430"
+Q12341816	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000001210506430"
+Q12341816	P570	+1031-00-00T00:00:00Z/9	S2600	"6000000001210506430"
+
+# Heinrich I von Stade Graf von Stade, Graf im Heilangau  Q21660657  <- geni:6000000001210528558
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q21660657	P40	Q4267365	S2600	"6000000001210528558"
 
 # Elisabet Aminoff  Q112969920  <- geni:6000000001229631201
 Q112969920	P26	Q112969916	S2600	"6000000001229631201"
 Q112969920	P40	Q141520400	S2600	"6000000001229631201"
 Q112969920	P569	+1650-00-00T00:00:00Z/9	S2600	"6000000001229631201"
 Q112969920	P735	Q63611044	S2600	"6000000001229631201"
+
+# Johan Christiernsson Vasa  Q5884381  <- geni:6000000001229904356
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5884381	P570	+1477-04-06T00:00:00Z/11	S2600	"6000000001229904356"
+Q5884381	P734	Q16291152	S2600	"6000000001229904356"
+
+# Margareta Eriksdotter av Norge  Q1991150  <- geni:6000000001251580171
+Q1991150	P5056	Q130232912	S2600	"6000000001251580171"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1991150	P735	Q8274988	S2600	"6000000001251580171"
 
 # Shmuel Yehuda Katzenellenbogen MaHaShiks, MaHaRaM son #1  Q7411889  <- geni:6000000001287970346
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -785,13 +2235,42 @@ Q870692	P570	+1564-01-12T00:00:00Z/11	S2600	"6000000001288063190"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q870692	P735	Q98962084	S2600	"6000000001288063190"
 
+# Gerard II De Picquigny, Vidame D'amiens  Q110385602  <- geni:6000000001323231241
+Q110385602	P569	+1205-00-00T00:00:00Z/9	S2600	"6000000001323231241"
+Q110385602	P735	Q1261347	S2600	"6000000001323231241"
+
+# Guermond de Picquigny  Q1357094  <- geni:6000000001323506976
+Q1357094	P22	Q115633979	S2600	"6000000001323506976"
+Q1357094	P25	Q115633982	S2600	"6000000001323506976"
+Q1357094	P40	Q115633976	S2600	"6000000001323506976"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1357094	P570	+1131-00-00T00:00:00Z/9	S2600	"6000000001323506976"
+
+# Birgitta Abrahamsdotter Tjurhuvud  Q109502322  <- geni:6000000001329622158
+Q109502322	P5056	Q141443235	S2600	"6000000001329622158"
+Q109502322	P569	+1382-00-00T00:00:00Z/9	S2600	"6000000001329622158"
+Q109502322	P570	+1415-00-00T00:00:00Z/9	S2600	"6000000001329622158"
+Q109502322	P735	Q19816187	S2600	"6000000001329622158"
+
+# Sten Turesson Bielke  Q6188565  <- geni:6000000001330899240
+Q6188565	P5056	Q130232969	S2600	"6000000001330899240"
+Q6188565	P734	Q37547315	S2600	"6000000001330899240"
+
 # Anna Boije af Gennäs  Q112970892  <- geni:6000000001343238712
 Q112970892	P569	+1616-00-00T00:00:00Z/9	S2600	"6000000001343238712"
 Q112970892	P570	+1656-00-00T00:00:00Z/9	S2600	"6000000001343238712"
 Q112970892	P734	Q125384388	S2600	"6000000001343238712"
 
+# Yngvildr Ketilsdotter Ketilsdóttir  Q16728867  <- geni:6000000001351760995
+Q16728867	P40	Q611633	S2600	"6000000001351760995"
+Q16728867	P569	+0810-00-00T00:00:00Z/9	S2600	"6000000001351760995"
+Q16728867	P570	+0880-00-00T00:00:00Z/9	S2600	"6000000001351760995"
+
 # August Frederik von Wackenitz General  Q12302454  <- geni:6000000001360687712
 Q12302454	P735	Q17539077	S2600	"6000000001360687712"
+
+# Magnus Gudmarsson Ulvåsa  Q5971807  <- geni:6000000001361669297
+Q5971807	P570	+1357-00-00T00:00:00Z/9	S2600	"6000000001361669297"
 
 # Q198180  Q198180  <- geni:6000000001381123265
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -808,8 +2287,42 @@ Q29201	P569	-2711-00-00T00:00:00Z/9	S2600	"6000000001381274001"
 # Gotinha Porcellos de Castilla  Q141498652  <- geni:6000000001412873288
 Q141498652	P569	+0850-00-00T00:00:00Z/9	S2600	"6000000001412873288"
 
+# Aimery I of Narbonne  Q14643112  <- geni:6000000001412929958
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q14643112	P570	+1106-00-00T00:00:00Z/9	S2600	"6000000001412929958"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q14643112	P735	Q19914412	S2600	"6000000001412929958"
+
 # Guillaume 'Tête d'étoupe' d'Aquitaine III  Q543880  <- geni:6000000001412937598
 Q543880	P569	+0915-04-03T00:00:00Z/11	S2600	"6000000001412937598"
+
+# Godfried van Leuven III  Q280016  <- geni:6000000001412952494
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q280016	P570	+1190-09-10T00:00:00Z/11	S2600	"6000000001412952494"
+Q280016	P734	Q29645473	S2600	"6000000001412952494"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q280016	P735	Q18674686	S2600	"6000000001412952494"
+
+# Eustache Ier de Boulogne  Q941303  <- geni:6000000001412952663
+Q941303	P569	+0989-08-11T00:00:00Z/11	S2600	"6000000001412952663"
+Q941303	P734	Q104854476	S2600	"6000000001412952663"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q941303	P735	Q18929064	S2600	"6000000001412952663"
+
+# Knut Tordsson Bonde  Q5915902  <- geni:6000000001437731307
+Q5915902	P5056	Q141498336	S2600	"6000000001437731307"
+
+# Sighvatur Sturluson  Q3480327  <- geni:6000000001459213485
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3480327	P25	Q133796430	S2600	"6000000001459213485"
+
+# Halldora Tumadottir  Q1593081  <- geni:6000000001459290517
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1593081	P569	+1177-00-00T00:00:00Z/9	S2600	"6000000001459290517"
+
+# Lambrecht van Leuven  Q955409  <- geni:6000000001462712746
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q955409	P735	Q492730	S2600	"6000000001462712746"
 
 # Gunnar II Toraldesson Kane II  Q103781665  <- geni:6000000001463188427
 Q103781665	P569	+1310-00-00T00:00:00Z/9	S2600	"6000000001463188427"
@@ -818,6 +2331,31 @@ Q103781665	P570	+1425-00-00T00:00:00Z/9	S2600	"6000000001463188427"
 # Gyrid Eriksdatter Galtung  Q103781680  <- geni:6000000001463345179
 Q103781680	P569	+1340-00-00T00:00:00Z/9	S2600	"6000000001463345179"
 Q103781680	P570	+1380-00-00T00:00:00Z/9	S2600	"6000000001463345179"
+
+# Gissur Hallsson  Q555665  <- geni:6000000001469860196
+Q555665	P735	Q33101255	S2600	"6000000001469860196"
+
+# Teitur marglati Isleifsson  Q3180929  <- geni:6000000001471800317
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3180929	P569	+1040-00-00T00:00:00Z/9	S2600	"6000000001471800317"
+
+# Hallur Teitsson  Q796586  <- geni:6000000001471905062
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q796586	P569	+1090-00-00T00:00:00Z/9	S2600	"6000000001471905062"
+
+# Ísleifur Gissurarson  Q291836  <- geni:6000000001472330022
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q291836	P570	+1080-06-05T00:00:00Z/11	S2600	"6000000001472330022"
+
+# Rudolf I von Habsburg Römisch-Deutscher  Q76956  <- geni:6000000001500890965
+Q76956	P734	Q16880125	S2600	"6000000001500890965"
+
+# Theodoros Laskaris  Q37086  <- geni:6000000001501010534
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q37086	P569	+1175-00-00T00:00:00Z/9	S2600	"6000000001501010534"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q37086	P570	+1222-08-00T00:00:00Z/10	S2600	"6000000001501010534"
+Q37086	P734	Q37023247	S2600	"6000000001501010534"
 
 # Marguerite d'Ibelin  Q58378893  <- geni:6000000001501047037
 Q58378893	P570	+1240-00-00T00:00:00Z/9	S2600	"6000000001501047037"
@@ -835,8 +2373,25 @@ Q110304710	P734	Q105543860	S2600	"6000000001504232472"
 # Joachim Engelke von Bernstorff  Q94910724  <- geni:6000000001504723577
 Q94910724	P734	Q83383970	S2600	"6000000001504723577"
 
+# Susanna Mitens??  Q141563001  <- geni:6000000001506763855
+Q141563001	P26	Q11978440	S2600	"6000000001506763855"
+Q141563001	P40	Q14942564	S2600	"6000000001506763855"
+
+# Jens Pedersen Schielderup  Q11978440  <- geni:6000000001506883754
+Q11978440	P22	Q141529098	S2600	"6000000001506883754"
+Q11978440	P26	Q141563001	S2600	"6000000001506883754"
+Q11978440	P40	Q141556459	S2600	"6000000001506883754"
+Q11978440	P5056	Q130233025	S2600	"6000000001506883754"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11978440	P734	Q141619445	S2600	"6000000001506883754"
+
 # Adriane Jensdatter Schielderup  Q141556459  <- geni:6000000001506899998
+Q141556459	P22	Q11978440	S2600	"6000000001506899998"
+Q141556459	P26	Q11979685	S2600	"6000000001506899998"
 Q141556459	P26	Q141556459	S2600	"6000000001506899998"
+
+# Peder Jensen  Q141529098  <- geni:6000000001507025206
+Q141529098	P40	Q11978440	S2600	"6000000001507025206"
 
 # August Alexander Blom  Q12300943  <- geni:6000000001519116433
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -846,19 +2401,81 @@ Q12300943	P570	+1902-00-00T00:00:00Z/9	S2600	"6000000001519116433"
 Q141529840	P569	+1480-00-00T00:00:00Z/9	S2600	"6000000001520375930"
 Q141529840	P570	+1552-00-00T00:00:00Z/9	S2600	"6000000001520375930"
 
+# Eufemia von Rügen Queen of Norway  Q287581  <- geni:6000000001526567662
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q287581	P735	Q76706504	S2600	"6000000001526567662"
+
+# Bothilda Svalesdatter Smør  Q141573617  <- geni:6000000001541142366
+Q141573617	P22	Q7651616	S2600	"6000000001541142366"
+
+# Robert de Dreux  Q377480  <- geni:6000000001544431739
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q377480	P569	+1124-00-00T00:00:00Z/9	S2600	"6000000001544431739"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q377480	P570	+1188-10-10T00:00:00Z/11	S2600	"6000000001544431739"
+
+# Archambaud de Vermandois  Q110621887  <- geni:6000000001544453303
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110621887	P569	+0930-00-00T00:00:00Z/9	S2600	"6000000001544453303"
+Q110621887	P570	+0968-08-29T00:00:00Z/11	S2600	"6000000001544453303"
+
+# Alice de France Comtesse de Blois  Q235637  <- geni:6000000001544491104
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q235637	P569	+1151-00-00T00:00:00Z/9	S2600	"6000000001544491104"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q235637	P734	Q2937271	S2600	"6000000001544491104"
+
 # Hanna Katzenellenbogen  Q141612131  <- geni:6000000001551112652
 Q141612131	P22	Q4669260	S2600	"6000000001551112652"
 Q141612131	P26	Q870692	S2600	"6000000001551112652"
 
+# Henry V von Braunschweig Count Palatine of the Rhine  Q68259  <- geni:6000000001563248087
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q68259	P735	Q1158477	S2600	"6000000001563248087"
+
 # Enguerrand Le Bâtisseur de Coucy III  Q933505  <- geni:6000000001563350714
 Q933505	P734	Q99539203	S2600	"6000000001563350714"
+
+# Hildegarde  Q5761624  <- geni:6000000001588461811
+Q5761624	P735	Q20819061	S2600	"6000000001588461811"
+
+# Gaitelgrima di Salerno, regent  Q3757380  <- geni:6000000001588464379
+Q3757380	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000001588464379"
 
 # Albrecht I von Brandenburg  Q156041  <- geni:6000000001593637951
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q156041	P569	+1096-00-00T00:00:00Z/9	S2600	"6000000001593637951"
 
+# Albert III of Namur  Q930741  <- geni:6000000001593947330
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q930741	P569	+1035-08-10T00:00:00Z/11	S2600	"6000000001593947330"
+
+# Sophia Árpád dynasty  Q450332  <- geni:6000000001593972605
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q450332	P569	+1044-00-00T00:00:00Z/9	S2600	"6000000001593972605"
+
+# Ida  Q3147770  <- geni:6000000001593991258
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3147770	P569	+1046-00-00T00:00:00Z/9	S2600	"6000000001593991258"
+
+# Alice de Hainault  Q279770  <- geni:6000000001594086076
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q279770	P570	+1169-07-25T00:00:00Z/11	S2600	"6000000001594086076"
+
 # Eva Charlotta Bielke  Q110304559  <- geni:6000000001594445025
 Q110304559	P735	Q64412279	S2600	"6000000001594445025"
+
+# Bertha de Lorraine  Q91003  <- geni:6000000001595814236
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91003	P25	Q2039212	S2600	"6000000001595814236"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91003	P40	Q178007	S2600	"6000000001595814236"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91003	P569	+1123-00-00T00:00:00Z/9	S2600	"6000000001595814236"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91003	P570	+1194-00-00T00:00:00Z/9	S2600	"6000000001595814236"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91003	P735	Q16420820	S2600	"6000000001595814236"
 
 # Hedvig Catharina Katarina Lillie  Q2403800  <- geni:6000000001603193592
 Q2403800	P735	Q16277703	S2600	"6000000001603193592"
@@ -870,9 +2487,99 @@ Q52046055	P569	+1145-00-00T00:00:00Z/9	S2600	"6000000001612457094"
 Q52046055	P570	+1190-00-00T00:00:00Z/9	S2600	"6000000001612457094"
 Q52046055	P734	Q141612258	S2600	"6000000001612457094"
 
+# Gervais de Château-du-Loir II  Q16838883  <- geni:6000000001623717001
+Q16838883	P26	Q56285213	S2600	"6000000001623717001"
+Q16838883	P40	Q56285210	S2600	"6000000001623717001"
+
+# Liudolf  Q1866171  <- geni:6000000001631291699
+Q1866171	P735	Q65507807	S2600	"6000000001631291699"
+
+# Liudolf  Q504535  <- geni:6000000001632206444
+Q504535	P735	Q65507807	S2600	"6000000001632206444"
+
+# Judyta von Sachsen-Wittenberg  Q63389795  <- geni:6000000001643397812
+Q63389795	P569	+1152-00-00T00:00:00Z/9	S2600	"6000000001643397812"
+Q63389795	P570	+1201-12-12T00:00:00Z/11	S2600	"6000000001643397812"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q63389795	P735	Q20741323	S2600	"6000000001643397812"
+
+# Ingeborg Eriksdatter av Norge  Q287511  <- geni:6000000001651502714
+Q287511	P26	Q287511	S2600	"6000000001651502714"
+Q287511	P5056	Q141223487	S2600	"6000000001651502714"
+
+# Albrecht I. of Saxony-Wittenberg  Q674931  <- geni:6000000001651629109
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q674931	P25	Q63389795	S2600	"6000000001651629109"
+
+# Oluf Svensson Galde  Q5750377  <- geni:6000000001652920058
+Q5750377	P26	Q141569378	S2600	"6000000001652920058"
+Q5750377	P5056	Q141450963	S2600	"6000000001652920058"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5750377	P570	+1530-00-00T00:00:00Z/9	S2600	"6000000001652920058"
+
+# Arnulf Bårdsson  Q75291984  <- geni:6000000001655553744
+Q75291984	P5056	Q141612273	S2600	"6000000001655553744"
+Q75291984	P735	Q18978276	S2600	"6000000001655553744"
+
 # Benkt Nicolasson Foss  Q112971001  <- geni:6000000001669592321
 Q112971001	P569	+1350-00-00T00:00:00Z/9	S2600	"6000000001669592321"
 Q112971001	P570	+1400-03-23T00:00:00Z/11	S2600	"6000000001669592321"
+
+# Gudrun Olavsdatter Kjællingmule/Bolt  Q111989191  <- geni:6000000001669615722
+Q111989191	P26	Q6271657	S2600	"6000000001669615722"
+Q111989191	P5056	Q141450953	S2600	"6000000001669615722"
+Q111989191	P569	+1415-00-00T00:00:00Z/9	S2600	"6000000001669615722"
+Q111989191	P570	+1475-00-00T00:00:00Z/9	S2600	"6000000001669615722"
+Q111989191	P735	Q1553074	S2600	"6000000001669615722"
+
+# Ingrid Ragnvaldsdatter of Norway  Q438469  <- geni:6000000001669615869
+Q438469	P26	Q134955037	S2600	"6000000001669615869"
+
+# Håkon Folkvidsson Galen  Q967845  <- geni:6000000001669618094
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q967845	P569	+1170-00-00T00:00:00Z/9	S2600	"6000000001669618094"
+Q967845	P734	Q37435394	S2600	"6000000001669618094"
+
+# Ogmund Finnsson  Q17131015  <- geni:6000000001669618233
+Q17131015	P735	Q141515183	S2600	"6000000001669618233"
+
+# Adelheid van Mochental  Q61314170  <- geni:6000000001669640454
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61314170	P25	Q141523777	S2600	"6000000001669640454"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61314170	P569	+1075-00-00T00:00:00Z/9	S2600	"6000000001669640454"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61314170	P735	Q4057477	S2600	"6000000001669640454"
+
+# Harald Eriksen Kesja  Q3127251  <- geni:6000000001669640549
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3127251	P25	Q2741817	S2600	"6000000001669640549"
+Q3127251	P5056	Q141436533	S2600	"6000000001669640549"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3127251	P569	+1083-00-00T00:00:00Z/9	S2600	"6000000001669640549"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3127251	P570	+1132-00-00T00:00:00Z/9	S2600	"6000000001669640549"
+
+# Mathilde de Mortain  Q56037077  <- geni:6000000001669649864
+Q56037077	P569	+1039-00-00T00:00:00Z/9	S2600	"6000000001669649864"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56037077	P735	Q12326416	S2600	"6000000001669649864"
+
+# Ingibjörg Thorkildsdatter  Q101248742  <- geni:6000000001669654419
+Q101248742	P26	Q2974985	S2600	"6000000001669654419"
+Q101248742	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000001669654419"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248742	P735	Q16429104	S2600	"6000000001669654419"
+
+# Gerberga  Q2195469  <- geni:6000000001669662405
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2195469	P735	Q65237017	S2600	"6000000001669662405"
+
+# Karolus de France  Q469603  <- geni:6000000001669662426
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q469603	P570	+0991-06-12T00:00:00Z/11	S2600	"6000000001669662426"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q469603	P735	Q21148114	S2600	"6000000001669662426"
 
 # Sofia Hansdotter Boije af Gennäs  Q136029046  <- geni:6000000001700031457
 Q136029046	P569	+1613-00-00T00:00:00Z/9	S2600	"6000000001700031457"
@@ -881,12 +2588,47 @@ Q136029046	P570	+1657-02-23T00:00:00Z/11	S2600	"6000000001700031457"
 # Anna Larsdotter Hordeel  Q104550195  <- geni:6000000001700071842
 Q104550195	P5056	Q141436525	S2600	"6000000001700071842"
 
+# Bouchard IV d'Avesnes seigneur d'Avesnes  Q983640  <- geni:6000000001704006610
+Q983640	P734	Q105107547	S2600	"6000000001704006610"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q983640	P735	Q76527367	S2600	"6000000001704006610"
+
+# Guttorm Nilsson Nilssen  Q141578324  <- geni:6000000001708363985
+Q141578324	P25	Q135527736	S2600	"6000000001708363985"
+
 # Ita von Öhningen  Q141610369  <- geni:6000000001744806659
+Q141610369	P22	Q704902	S2600	"6000000001744806659"
 Q141610369	P26	Q141610310	S2600	"6000000001744806659"
 Q141610369	P734	Q141614659	S2600	"6000000001744806659"
 
+# Odo  Q378889  <- geni:6000000001744822677
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q378889	P569	+0983-00-00T00:00:00Z/9	S2600	"6000000001744822677"
+
+# Reginar III ‘Langhals’  Q128210  <- geni:6000000001744825392
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q128210	P25	Q168669	S2600	"6000000001744825392"
+
 # Refil Björnsson  Q7307192  <- geni:6000000001744828835
 Q7307192	P569	+0832-00-00T00:00:00Z/9	S2600	"6000000001744828835"
+
+# Arnoulf II de Boulogne  Q697677  <- geni:6000000001744842862
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q697677	P570	+0972-01-31T00:00:00Z/11	S2600	"6000000001744842862"
+Q697677	P734	Q104854476	S2600	"6000000001744842862"
+
+# Adalard  Q348227  <- geni:6000000001744880606
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q348227	P569	+0800-00-00T00:00:00Z/9	S2600	"6000000001744880606"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q348227	P570	+0870-00-00T00:00:00Z/9	S2600	"6000000001744880606"
+
+# Guillaume IV Taillefer d'Angoulême  Q527458  <- geni:6000000001744898194
+Q527458	P734	Q106549161	S2600	"6000000001744898194"
+
+# Frederick de Hohenstaufen  Q281245  <- geni:6000000001744902183
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q281245	P735	Q3273004	S2600	"6000000001744902183"
 
 # Rudolf  Q141610310  <- geni:6000000001744915539
 Q141610310	P26	Q141610369	S2600	"6000000001744915539"
@@ -896,6 +2638,19 @@ Q141610310	P26	Q141610369	S2600	"6000000001744915539"
 Q23930942	P569	+0758-00-00T00:00:00Z/9	S2600	"6000000001744971918"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q23930942	P570	+0762-00-00T00:00:00Z/9	S2600	"6000000001744971918"
+
+# Henry III Welf  Q105378  <- geni:6000000001744974942
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q105378	P735	Q1158477	S2600	"6000000001744974942"
+
+# Iziaslav Dmitri Yaroslavich Rurik  Q332516  <- geni:6000000001745033558
+Q332516	P734	Q210398	S2600	"6000000001745033558"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q332516	P735	Q19812227	S2600	"6000000001745033558"
+
+# Theoderic  Q224958  <- geni:6000000001745058525
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q224958	P569	+1099-00-00T00:00:00Z/9	S2600	"6000000001745058525"
 
 # Conrad Fredrik Christian Blixen-Finecke  Q110304532  <- geni:6000000001753122419
 Q110304532	P735	Q18001597	S2600	"6000000001753122419"
@@ -957,17 +2712,30 @@ Q250731	P569	+1068-00-00T00:00:00Z/9	S2600	"6000000001821187530"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q250731	P570	+1127-09-01T00:00:00Z/11	S2600	"6000000001821187530"
 
+# Abjörn Sixtensson Sparre av Tofta  Q5551333  <- geni:6000000001823740415
+Q5551333	P734	Q30136491	S2600	"6000000001823740415"
+
+# Christina Petersdatter  Q141619795  <- geni:6000000001827548938
+Q141619795	P40	Q110302793	S2600	"6000000001827548938"
+
 # Eirik Sigurdsson Galtung  Q103781693  <- geni:6000000001827562398
+Q103781693	P40	Q111732089	S2600	"6000000001827562398"
 Q103781693	P5056	Q21506553	S2600	"6000000001827562398"
 Q103781693	P569	+1310-00-00T00:00:00Z/9	S2600	"6000000001827562398"
 Q103781693	P570	+1350-00-00T00:00:00Z/9	S2600	"6000000001827562398"
 Q103781693	P734	Q5519382	S2600	"6000000001827562398"
+
+# Margrethe Bondesdatter Due til Sørup og Bollerup  Q137393503  <- geni:6000000001827575071
+Q137393503	P569	+1333-00-00T00:00:00Z/9	S2600	"6000000001827575071"
+Q137393503	P734	Q30872569	S2600	"6000000001827575071"
+Q137393503	P735	Q17458337	S2600	"6000000001827575071"
 
 # Axel Heinrichssen  Q792154  <- geni:6000000001827582117
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q792154	P734	Q141493482	S2600	"6000000001827582117"
 
 # Ragnfrid Erlingsdotter  Q75291932  <- geni:6000000001827585415
+Q75291932	P40	Q11957619	S2600	"6000000001827585415"
 Q75291932	P569	+1150-00-00T00:00:00Z/9	S2600	"6000000001827585415"
 Q75291932	P570	+1194-00-00T00:00:00Z/9	S2600	"6000000001827585415"
 
@@ -976,8 +2744,21 @@ Q11596350	P2600	"6000000001835522164"	S2600	"6000000001835522164"
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q11596350	P31	Q5	S2600	"6000000001835522164"
 
+# Jørgen Erikssøn  Q11979685  <- geni:6000000001838588451
+Q11979685	P26	Q141556459	S2600	"6000000001838588451"
+Q11979685	P40	Q141533403	S2600	"6000000001838588451"
+
+# Jens Jørgensen  Q141533403  <- geni:6000000001838607806
+Q141533403	P22	Q11979685	S2600	"6000000001838607806"
+
 # Kirsten Christensdatter Thrane  Q141533497  <- geni:6000000001838879990
 Q141533497	P26	Q141533497	S2600	"6000000001838879990"
+
+# Bertrade de Prüm  Q266215  <- geni:6000000001842551452
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q266215	P570	+0720-00-00T00:00:00Z/9	S2600	"6000000001842551452"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q266215	P735	Q76527355	S2600	"6000000001842551452"
 
 # Harima no Inabi no Ōiratsume  Q11078587  <- geni:6000000001844033355
 Q11078587	P2600	"6000000001844033355"	S2600	"6000000001844033355"
@@ -989,6 +2770,20 @@ Q11078587	P735	Q21148356	S2600	"6000000001844033355"
 Q232803	P2600	"6000000001846508982"	S2600	"6000000001846508982"
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q232803	P31	Q5	S2600	"6000000001846508982"
+
+# Itta De Nivelles  Q259551  <- geni:6000000001867425629
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q259551	P735	Q56314892	S2600	"6000000001867425629"
+
+# Þórey Eyjólfsdóttir  Q135529135  <- geni:6000000001886850943
+Q135529135	P569	+1028-00-00T00:00:00Z/9	S2600	"6000000001886850943"
+Q135529135	P570	+1070-00-00T00:00:00Z/9	S2600	"6000000001886850943"
+
+# Ruprecht von Laurenburg  Q2176702  <- geni:6000000001889982546
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2176702	P569	+1125-00-00T00:00:00Z/9	S2600	"6000000001889982546"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2176702	P570	+1154-05-13T00:00:00Z/11	S2600	"6000000001889982546"
 
 # Ata-no-mikoto no Mikoto  Q135579362  <- geni:6000000001893413214
 Q135579362	P21	Q6581097	S2600	"6000000001893413214"
@@ -1004,6 +2799,23 @@ Q136908598	P2600	"6000000001893436003"	S2600	"6000000001893436003"
 # Maria Hedvig Posse af Säby  Q141538782  <- geni:6000000001919312698
 Q141538782	P734	Q141620199	S2600	"6000000001919312698"
 
+# Bjørn Haraldsen Ironside  Q2905211  <- geni:6000000001935619159
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2905211	P26	Q75292005	S2600	"6000000001935619159"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2905211	P40	Q3494473	S2600	"6000000001935619159"
+Q2905211	P5056	Q141582500	S2600	"6000000001935619159"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2905211	P569	+1100-00-00T00:00:00Z/9	S2600	"6000000001935619159"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2905211	P735	Q18918288	S2600	"6000000001935619159"
+
+# Bo Nilsson (Natt och Dag)  Q5580030  <- geni:6000000001950981568
+Q5580030	P5056	Q130233015	S2600	"6000000001950981568"
+Q5580030	P570	+1322-00-00T00:00:00Z/9	S2600	"6000000001950981568"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5580030	P735	Q96239827	S2600	"6000000001950981568"
+
 # Erik Valdemarsson Folkungaätt  Q324783  <- geni:6000000001962224550
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q324783	P569	+1271-00-00T00:00:00Z/9	S2600	"6000000001962224550"
@@ -1014,12 +2826,64 @@ Q141244084	P26	Q141244084	S2600	"6000000001994951163"
 # Endride  Q141614037  <- geni:6000000001995109887
 Q141614037	P26	Q141613992	S2600	"6000000001995109887"
 
+# Knut Jonsson  Q6301913  <- geni:6000000002017407378
+Q6301913	P26	Q110548741	S2600	"6000000002017407378"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6301913	P40	Q141571024	S2600	"6000000002017407378"
+Q6301913	P5056	Q141242306	S2600	"6000000002017407378"
+Q6301913	P569	+1389-00-00T00:00:00Z/9	S2600	"6000000002017407378"
+Q6301913	P570	+1444-00-00T00:00:00Z/9	S2600	"6000000002017407378"
+
 # Jon Trondson Benkestok  Q6271694  <- geni:6000000002017898070
 Q6271694	P570	+1593-00-00T00:00:00Z/9	S2600	"6000000002017898070"
 Q6271694	P734	Q42857954	S2600	"6000000002017898070"
 
 # Ikofutsu Mononobe  Q24890131  <- geni:6000000002039751362
 Q24890131	P2600	"6000000002039751362"	S2600	"6000000002039751362"
+
+# Geoffroy II de Gâtinais  Q1310403  <- geni:6000000002041979470
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1310403	P570	+1045-04-30T00:00:00Z/11	S2600	"6000000002041979470"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1310403	P735	Q18763665	S2600	"6000000002041979470"
+
+# Papia de Normandie  Q75384680  <- geni:6000000002043178550
+Q75384680	P569	+0980-00-00T00:00:00Z/9	S2600	"6000000002043178550"
+Q75384680	P570	+1055-00-00T00:00:00Z/9	S2600	"6000000002043178550"
+
+# Matilda de Huntingdon  Q2327302  <- geni:6000000002043184119
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2327302	P569	+1071-00-00T00:00:00Z/9	S2600	"6000000002043184119"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2327302	P735	Q2054021	S2600	"6000000002043184119"
+
+# Lambert  Q1801414  <- geni:6000000002043192249
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1801414	P569	+1025-00-00T00:00:00Z/9	S2600	"6000000002043192249"
+
+# Hildegarde de Beaugency  Q75402865  <- geni:6000000002043192318
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75402865	P569	+1044-00-00T00:00:00Z/9	S2600	"6000000002043192318"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75402865	P570	+1070-00-00T00:00:00Z/9	S2600	"6000000002043192318"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75402865	P735	Q20819061	S2600	"6000000002043192318"
+
+# Agnès  Q262192  <- geni:6000000002043195323
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q262192	P569	+1024-00-00T00:00:00Z/9	S2600	"6000000002043195323"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q262192	P735	Q19689363	S2600	"6000000002043195323"
+
+# Reginar De Hainaut  Q735666  <- geni:6000000002043195442
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q735666	P569	+0892-00-00T00:00:00Z/9	S2600	"6000000002043195442"
+
+# Cunigonde  Q1834693  <- geni:6000000002043204073
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1834693	P569	+0870-00-00T00:00:00Z/9	S2600	"6000000002043204073"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1834693	P570	+0915-02-07T00:00:00Z/11	S2600	"6000000002043204073"
 
 # Q1441379  Q1441379  <- geni:6000000002048439278
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1051,13 +2915,42 @@ Q115974235	P735	Q338015	S2600	"6000000002058144041"
 # Inger Lauritsdatter Heiberg  Q141565491  <- geni:6000000002078126382
 Q141565491	P26	Q141565491	S2600	"6000000002078126382"
 
+# Godfrey II of de Lorraine  Q552234  <- geni:6000000002082113861
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q552234	P570	+1069-12-24T00:00:00Z/11	S2600	"6000000002082113861"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q552234	P735	Q19828531	S2600	"6000000002082113861"
+
 # Solveig Halfdansdatter  Q141529844  <- geni:6000000002106194792
+Q141529844	P40	Q2521523	S2600	"6000000002106194792"
 Q141529844	P569	+0688-00-00T00:00:00Z/9	S2600	"6000000002106194792"
 Q141529844	P570	+0715-00-00T00:00:00Z/9	S2600	"6000000002106194792"
 Q141529844	P735	Q1533508	S2600	"6000000002106194792"
 
 # Janet Erskine  Q76090518  <- geni:6000000002115996328
 Q76090518	P570	+1550-02-00T00:00:00Z/10	S2600	"6000000002115996328"
+
+# Marie de Boulogne-Blois  Q237900  <- geni:6000000002131803922
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q237900	P735	Q106674406	S2600	"6000000002131803922"
+
+# Leopold I "the Illustrious"  Q348137  <- geni:6000000002134762341
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q348137	P569	+0950-00-00T00:00:00Z/9	S2600	"6000000002134762341"
+
+# Herbert de Vermandois  Q1609951  <- geni:6000000002134787037
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1609951	P569	+0919-00-00T00:00:00Z/9	S2600	"6000000002134787037"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1609951	P570	+0995-12-28T00:00:00Z/11	S2600	"6000000002134787037"
+
+# Giselbert de Bourgogne  Q549930  <- geni:6000000002134952259
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q549930	P569	+0890-00-00T00:00:00Z/9	S2600	"6000000002134952259"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q549930	P570	+0956-04-16T00:00:00Z/11	S2600	"6000000002134952259"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q549930	P735	Q65120788	S2600	"6000000002134952259"
 
 # Rotrude  Q469702  <- geni:6000000002154297114
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1078,6 +2971,8 @@ Q76267330	P734	Q101014826	S2600	"6000000002173066125"
 Q98962364	P569	+1366-00-00T00:00:00Z/9	S2600	"6000000002187564405"
 
 # Agnes von Wettin  Q75247799  <- geni:6000000002187651710
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75247799	P25	Q52504190	S2600	"6000000002187651710"
 Q75247799	P569	+1031-00-00T00:00:00Z/9	S2600	"6000000002187651710"
 
 # Frédéric  Q2014842  <- geni:6000000002187651950
@@ -1095,12 +2990,36 @@ Q2069863	P734	Q141610431	S2600	"6000000002187700979"
 Q102144011	P569	+0930-00-00T00:00:00Z/9	S2600	"6000000002187721530"
 Q102144011	P570	+1004-00-00T00:00:00Z/9	S2600	"6000000002187721530"
 
+# Friedrich von Luxemburg Herzog von Niederlothringen  Q666836  <- geni:6000000002187723758
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q666836	P569	+0995-00-00T00:00:00Z/9	S2600	"6000000002187723758"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q666836	P735	Q14038597	S2600	"6000000002187723758"
+
 # Thomas Randolph  Q2426674  <- geni:6000000002187742462
 Q2426674	P569	+1305-00-00T00:00:00Z/9	S2600	"6000000002187742462"
 
 # Bernat de Barcelona Infant de Barcelona  Q123252155  <- geni:6000000002187750363
 Q123252155	P569	+1116-00-00T00:00:00Z/9	S2600	"6000000002187750363"
 Q123252155	P570	+1117-00-00T00:00:00Z/9	S2600	"6000000002187750363"
+
+# Eric Stenkilsson  Q1049817  <- geni:6000000002187757470
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1049817	P735	Q12788459	S2600	"6000000002187757470"
+
+# Baudouin de Courtenay  Q269573  <- geni:6000000002187757944
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q269573	P735	Q19961822	S2600	"6000000002187757944"
+
+# Clemence de Ponthieu  Q115633982  <- geni:6000000002187764877
+Q115633982	P26	Q115633979	S2600	"6000000002187764877"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q115633982	P40	Q1357094	S2600	"6000000002187764877"
+Q115633982	P569	+1035-00-00T00:00:00Z/9	S2600	"6000000002187764877"
+Q115633982	P570	+1087-00-00T00:00:00Z/9	S2600	"6000000002187764877"
+Q115633982	P734	Q26454382	S2600	"6000000002187764877"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q115633982	P735	Q21082600	S2600	"6000000002187764877"
 
 # Frederik I van Altena Graf von Altena  Q76081  <- geni:6000000002187794955
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1109,22 +3028,85 @@ Q76081	P735	Q14038597	S2600	"6000000002187794955"
 Q76081	P735	Q19803506	S2600	"6000000002187794955"
 
 # Godefroy de Boulogne  Q3101164  <- geni:6000000002187798351
+Q3101164	P25	Q1885815	S2600	"6000000002187798351"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3101164	P734	Q104854476	S2600	"6000000002187798351"
+
+# Johann von Sponheim-Starkenburg I, Graf von Sayn  Q1694682  <- geni:6000000002187820156
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1694682	P569	+1209-00-00T00:00:00Z/9	S2600	"6000000002187820156"
+Q1694682	P734	Q30504340	S2600	"6000000002187820156"
 
 # Jean de Valois  Q20003478  <- geni:6000000002187820623
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q20003478	P735	Q4160311	S2600	"6000000002187820623"
 
+# Alusian  Q3311234  <- geni:6000000002187821414
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3311234	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000002187821414"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3311234	P570	+1041-00-00T00:00:00Z/9	S2600	"6000000002187821414"
+
+# John I Tzimiskēs Kourkouas basileus Rhomaiôn  Q41603  <- geni:6000000002187823066
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41603	P735	Q4925477	S2600	"6000000002187823066"
+
+# Ludwig von Schauenburg  Q586924  <- geni:6000000002187823743
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q586924	P735	Q14159020	S2600	"6000000002187823743"
+
+# Yuri Vladimirovich Dolgorukiy of Kiev and Suzdal, Founder of Moscow  Q275106  <- geni:6000000002187826932
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q275106	P570	+1157-12-15T00:00:00Z/11	S2600	"6000000002187826932"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q275106	P735	Q18585594	S2600	"6000000002187826932"
+
 # Poppo von Berg-Schelklingen zu Roggenstein  Q141529847  <- geni:6000000002187828621
+Q141529847	P40	Q30301558	S2600	"6000000002187828621"
 Q141529847	P569	+1035-00-00T00:00:00Z/9	S2600	"6000000002187828621"
 Q141529847	P570	+1100-00-00T00:00:00Z/9	S2600	"6000000002187828621"
 Q141529847	P735	Q28059997	S2600	"6000000002187828621"
+
+# Rogvolod Boris? Vselavich of Polotsk  Q2594607  <- geni:6000000002187837843
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2594607	P569	+1057-00-00T00:00:00Z/9	S2600	"6000000002187837843"
+
+# Ferry I de Lorraine  Q178007  <- geni:6000000002187845876
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q178007	P25	Q91003	S2600	"6000000002187845876"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q178007	P570	+1206-04-07T00:00:00Z/11	S2600	"6000000002187845876"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q178007	P735	Q20630238	S2600	"6000000002187845876"
+
+# Philipp II von Bolanden  Q29424565  <- geni:6000000002187876077
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q29424565	P570	+1199-00-00T00:00:00Z/9	S2600	"6000000002187876077"
+
+# Guy of Hauteville duke of Amalfi  Q1747051  <- geni:6000000002187891645
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1747051	P570	+1108-07-05T00:00:00Z/11	S2600	"6000000002187891645"
+
+# Constantine Diogenes  Q17720341  <- geni:6000000002187891981
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17720341	P570	+1074-00-00T00:00:00Z/9	S2600	"6000000002187891981"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17720341	P735	Q19327451	S2600	"6000000002187891981"
 
 # James Douglas  Q75388539  <- geni:6000000002187894278
 Q75388539	P569	+1466-00-00T00:00:00Z/9	S2600	"6000000002187894278"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75388539	P570	+1504-00-00T00:00:00Z/9	S2600	"6000000002187894278"
+
+# Sophia Phokaina  Q12294462  <- geni:6000000002187952991
+Q12294462	P570	+0956-00-00T00:00:00Z/9	S2600	"6000000002187952991"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12294462	P735	Q2302787	S2600	"6000000002187952991"
+
+# Sigurd Sigurdsson Markusfostre  Q887959  <- geni:6000000002187978884
+Q887959	P5056	Q21506553	S2600	"6000000002187978884"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q887959	P569	+1148-00-00T00:00:00Z/9	S2600	"6000000002187978884"
 
 # Mariot Fleming  Q76178084  <- geni:6000000002188001383
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1133,6 +3115,14 @@ Q76178084	P569	+1433-00-00T00:00:00Z/9	S2600	"6000000002188001383"
 # Albrecht  Q88207  <- geni:6000000002188018296
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q88207	P735	Q18180401	S2600	"6000000002188018296"
+
+# Valevska Volodarsdatter  Q141539012  <- geni:6000000002188018967
+Q141539012	P22	Q2632610	S2600	"6000000002188018967"
+
+# Henri de Haute-Lorraine de Bayon seigneur de Bayon  Q75291448  <- geni:6000000002188021911
+Q75291448	P569	+1190-00-00T00:00:00Z/9	S2600	"6000000002188021911"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75291448	P735	Q4497249	S2600	"6000000002188021911"
 
 # Eustachia Sutherland  Q76360503  <- geni:6000000002188035127
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1146,6 +3136,14 @@ Q76048004	P569	+1466-00-00T00:00:00Z/9	S2600	"6000000002188045152"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q9738	P569	+0625-00-00T00:00:00Z/9	S2600	"6000000002188099903"
 
+# Berthe Alda of Italy  Q60040730  <- geni:6000000002188110562
+Q60040730	P40	Q2042216	S2600	"6000000002188110562"
+Q60040730	P40	Q41663	S2600	"6000000002188110562"
+Q60040730	P40	Q41833	S2600	"6000000002188110562"
+Q60040730	P569	+0927-00-00T00:00:00Z/9	S2600	"6000000002188110562"
+Q60040730	P735	Q18180820	S2600	"6000000002188110562"
+Q60040730	P735	Q3315273	S2600	"6000000002188110562"
+
 # Mechtild von Urach Gräfin  Q140795508  <- geni:6000000002188113422
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q140795508	P569	+1056-00-00T00:00:00Z/9	S2600	"6000000002188113422"
@@ -1154,14 +3152,64 @@ Q140795508	P569	+1056-00-00T00:00:00Z/9	S2600	"6000000002188113422"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2679174	P734	Q29645473	S2600	"6000000002188118590"
 
+# Maurice of Oldenburg Count  Q87064  <- geni:6000000002188170341
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q87064	P735	Q221978	S2600	"6000000002188170341"
+
 # Friedrich III  Q76300006  <- geni:6000000002188286798
 Q76300006	P569	+1301-00-00T00:00:00Z/9	S2600	"6000000002188286798"
+
+# Rostislav Vsevolodovich Mikhail  Q845767  <- geni:6000000002188303602
+Q845767	P5056	Q134496011	S2600	"6000000002188303602"
+Q845767	P735	Q15621289	S2600	"6000000002188303602"
 
 # Franz Stephan da Silva Graf von Silva-Tarouca  Q12017722  <- geni:6000000002188461935
 Q12017722	P734	Q66385622	S2600	"6000000002188461935"
 
+# Heinrich Graf von Wettin I  Q16855964  <- geni:6000000002188556282
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16855964	P735	Q2018484	S2600	"6000000002188556282"
+
+# Walram von Laurenburg  Q316847  <- geni:6000000002188563071
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316847	P570	+1197-07-05T00:00:00Z/11	S2600	"6000000002188563071"
+
+# Arnold II von Laurenburg  Q46700274  <- geni:6000000002188563086
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q46700274	P569	+1123-00-00T00:00:00Z/9	S2600	"6000000002188563086"
+
+# Heinrich von Laurenburg  Q1595490  <- geni:6000000002188563093
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1595490	P569	+1148-00-00T00:00:00Z/9	S2600	"6000000002188563093"
+
+# Otto von Nassau-Siegen  Q462493  <- geni:6000000002188563201
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q462493	P569	+1226-00-00T00:00:00Z/9	S2600	"6000000002188563201"
+
 # Mattheus  Q75291383  <- geni:6000000002188569099
 Q75291383	P569	+1284-00-00T00:00:00Z/9	S2600	"6000000002188569099"
+
+# Richard d'Ardennes  Q559316  <- geni:6000000002197813080
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q559316	P40	Q168669	S2600	"6000000002197813080"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q559316	P569	+0867-00-00T00:00:00Z/9	S2600	"6000000002197813080"
+Q559316	P734	Q105496580	S2600	"6000000002197813080"
+
+# Welf I Of Swabia Graf in Schwaben  Q536899  <- geni:6000000002198362511
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536899	P25	Q141523079	S2600	"6000000002198362511"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536899	P40	Q169547	S2600	"6000000002198362511"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536899	P569	+0776-00-00T00:00:00Z/9	S2600	"6000000002198362511"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q536899	P570	+0825-00-00T00:00:00Z/9	S2600	"6000000002198362511"
+
+# Gérard Ier de Picquigny  Q115633976  <- geni:6000000002198392736
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q115633976	P22	Q1357094	S2600	"6000000002198392736"
+Q115633976	P735	Q13480879	S2600	"6000000002198392736"
 
 # Arnulf  Q18988  <- geni:6000000002198946285
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1170,17 +3218,84 @@ Q18988	P735	Q18978276	S2600	"6000000002198946285"
 # Brita Ersdotter  Q141575943  <- geni:6000000002207791665
 Q141575943	P5056	Q141457237	S2600	"6000000002207791665"
 
+# Otelhildis von Haldensleben-Nordmark Abbess of Metelin & Herford  Q16584942  <- geni:6000000002212152431
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16584942	P569	+0992-00-00T00:00:00Z/9	S2600	"6000000002212152431"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16584942	P570	+1039-05-27T00:00:00Z/11	S2600	"6000000002212152431"
+
+# Arnulf  Q469638  <- geni:6000000002213340177
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q469638	P735	Q18978276	S2600	"6000000002213340177"
+
+# Eustace II de Boulogne comte de Boulogne  Q451790  <- geni:6000000002215326285
+Q451790	P569	+1020-00-00T00:00:00Z/9	S2600	"6000000002215326285"
+Q451790	P734	Q104854476	S2600	"6000000002215326285"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q451790	P735	Q18929064	S2600	"6000000002215326285"
+
 # Maren Karlsdatter Kleppe  Q141610690  <- geni:6000000002222709933
 Q141610690	P26	Q141610690	S2600	"6000000002222709933"
+
+# Gozelon the Great  Q714885  <- geni:6000000002224010720
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q714885	P569	+0968-00-00T00:00:00Z/9	S2600	"6000000002224010720"
+
+# Ida de Bouillon comtessa de Boulogne  Q2072769  <- geni:6000000002224166476
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2072769	P569	+1038-00-00T00:00:00Z/9	S2600	"6000000002224166476"
 
 # Rakel Gurine Pedersdatter Espedal  Q141586940  <- geni:6000000002226068159
 Q141586940	P26	Q141586940	S2600	"6000000002226068159"
 
+# Charles des Francs  Q150712  <- geni:6000000002240775864
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q150712	P735	Q2958359	S2600	"6000000002240775864"
+
+# Judith de Welfos  Q2039212  <- geni:6000000002240801354
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2039212	P40	Q91003	S2600	"6000000002240801354"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2039212	P569	+1103-00-00T00:00:00Z/9	S2600	"6000000002240801354"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2039212	P570	+1135-02-22T00:00:00Z/11	S2600	"6000000002240801354"
+
+# Giselbert I of Luxemburg Count of Salm and of Longwy  Q1351773  <- geni:6000000002247834869
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1351773	P569	+0997-00-00T00:00:00Z/9	S2600	"6000000002247834869"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1351773	P570	+1059-10-14T00:00:00Z/11	S2600	"6000000002247834869"
+Q1351773	P735	Q65120788	S2600	"6000000002247834869"
+
+# Brun  Q476342  <- geni:6000000002266209421
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q476342	P569	+0965-00-00T00:00:00Z/9	S2600	"6000000002266209421"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q476342	P735	Q29550724	S2600	"6000000002266209421"
+
+# Gisele Konradin von Swabia empress  Q62033  <- geni:6000000002266231326
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q62033	P569	+0989-09-11T00:00:00Z/11	S2600	"6000000002266231326"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q62033	P735	Q16880343	S2600	"6000000002266231326"
+
+# Ernest  Q63307  <- geni:6000000002266243417
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q63307	P569	+0985-00-00T00:00:00Z/9	S2600	"6000000002266243417"
+
 # Gudve Rognaldsdatter Nestås  Q141502733  <- geni:6000000002267060138
 Q141502733	P26	Q141502733	S2600	"6000000002267060138"
 
+# Judith de Nantes  Q3188019  <- geni:6000000002277151794
+Q3188019	P569	+1000-10-00T00:00:00Z/10	S2600	"6000000002277151794"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3188019	P570	+1058-00-00T00:00:00Z/9	S2600	"6000000002277151794"
+
 # Liva Olesdatter Nessa  Q141511485  <- geni:6000000002277862058
 Q141511485	P26	Q141511485	S2600	"6000000002277862058"
+
+# Mael Muire ingen Kenneth  Q6949547  <- geni:6000000002278189311
+Q6949547	P735	Q20000081	S2600	"6000000002278189311"
 
 # Rasmus Hallvardson Ims  Q141549523  <- geni:6000000002280842017
 Q141549523	P5056	Q141585018	S2600	"6000000002280842017"
@@ -1201,11 +3316,31 @@ Q16124683	P570	+0570-00-00T00:00:00Z/9	S2600	"6000000002307392273"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q6145888	P734	Q53657363	S2600	"6000000002309876747"
 
+# Henry VII Jordan Hohenstaufen king of the Romans  Q163102  <- geni:6000000002322291872
+Q163102	P735	Q14021944	S2600	"6000000002322291872"
+
+# Ruggero d'Altavilla  Q468687  <- geni:6000000002322298434
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q468687	P735	Q10862457	S2600	"6000000002322298434"
+
 # Catharina Elisabet de Carnall  Q124369291  <- geni:6000000002325070448
 Q124369291	P735	Q16423275	S2600	"6000000002325070448"
 Q124369291	P735	Q17317997	S2600	"6000000002325070448"
 
+# Bodil Håkonsdatter  Q101248740  <- geni:6000000002325801413
+Q101248740	P5056	Q141611168	S2600	"6000000002325801413"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248740	P569	+1010-00-00T00:00:00Z/9	S2600	"6000000002325801413"
+Q101248740	P735	Q889848	S2600	"6000000002325801413"
+
+# Þórgunnr Vagnadóttir  Q12339267  <- geni:6000000002325801622
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12339267	P569	+1026-00-00T00:00:00Z/9	S2600	"6000000002325801622"
+Q12339267	P570	+1080-00-00T00:00:00Z/9	S2600	"6000000002325801622"
+
 # Tostig Godwinsson Jarl of Northumbria  Q141534225  <- geni:6000000002325842230
+Q141534225	P22	Q318142	S2600	"6000000002325842230"
+Q141534225	P25	Q2634369	S2600	"6000000002325842230"
 Q141534225	P569	+1025-00-00T00:00:00Z/9	S2600	"6000000002325842230"
 Q141534225	P570	+1066-09-25T00:00:00Z/11	S2600	"6000000002325842230"
 
@@ -1214,6 +3349,10 @@ Q75393579	P569	+1209-00-00T00:00:00Z/9	S2600	"6000000002325844220"
 Q75393579	P570	+1246-01-03T00:00:00Z/11	S2600	"6000000002325844220"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75393579	P735	Q18558712	S2600	"6000000002325844220"
+
+# Erling Alvsøn Tanberg  Q5717887  <- geni:6000000002325844350
+Q5717887	P26	Q101248014	S2600	"6000000002325844350"
+Q5717887	P5056	Q83866230	S2600	"6000000002325844350"
 
 # Cecilia Knutsdotter (Bjälboätten)  Q62007901  <- geni:6000000002325859340
 Q62007901	P5056	Q141456528	S2600	"6000000002325859340"
@@ -1229,6 +3368,11 @@ Q141319249	P5056	Q141440447	S2600	"6000000002335691083"
 # Torleiv Trondssøn Benkestok  Q7825898  <- geni:6000000002342409509
 Q7825898	P569	+1453-00-00T00:00:00Z/9	S2600	"6000000002342409509"
 Q7825898	P570	+1502-04-18T00:00:00Z/11	S2600	"6000000002342409509"
+
+# Kettil Bielke  Q6142675  <- geni:6000000002350777345
+Q6142675	P569	+1237-00-00T00:00:00Z/9	S2600	"6000000002350777345"
+Q6142675	P570	+1273-00-00T00:00:00Z/9	S2600	"6000000002350777345"
+Q6142675	P734	Q37547315	S2600	"6000000002350777345"
 
 # Gunnar Kristensson Opsal  Q141562347  <- geni:6000000002366878836
 Q141562347	P734	Q30250650	S2600	"6000000002366878836"
@@ -1254,14 +3398,74 @@ Q141560407	P22	Q141549122	S2600	"6000000002379493186"
 Q141560407	P25	Q141538356	S2600	"6000000002379493186"
 Q141560407	P570	+1563-00-00T00:00:00Z/9	S2600	"6000000002379493186"
 
+# Eline Eriksdatter Orm til Kjærland  Q141562280  <- geni:6000000002391761511
+Q141562280	P22	Q110302808	S2600	"6000000002391761511"
+
+# Erik Ormson  Q110302808  <- geni:6000000002391786177
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110302808	P40	Q141562280	S2600	"6000000002391786177"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110302808	P40	Q141569368	S2600	"6000000002391786177"
+Q110302808	P5056	Q141511191	S2600	"6000000002391786177"
+Q110302808	P569	+1495-00-00T00:00:00Z/9	S2600	"6000000002391786177"
+Q110302808	P570	+1564-07-05T00:00:00Z/11	S2600	"6000000002391786177"
+Q110302808	P735	Q750186	S2600	"6000000002391786177"
+
+# Salomea Piast  Q68567  <- geni:6000000002400782615
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q68567	P569	+1099-00-00T00:00:00Z/9	S2600	"6000000002400782615"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q68567	P735	Q20088057	S2600	"6000000002400782615"
+
 # Ernst Gustaf von Willebrand  Q11858495  <- geni:6000000002406907995
 Q11858495	P735	Q15646212	S2600	"6000000002406907995"
+
+# Guri Pedersdatter Finne  Q141565233  <- geni:6000000002416344770
+Q141565233	P40	Q11979148	S2600	"6000000002416344770"
+
+# Gaute Ivarsson Dall til Valen  Q141565143  <- geni:6000000002416554006
+Q141565143	P40	Q11979148	S2600	"6000000002416554006"
 
 # Anne Mogensdatter Eid (Ey)  Q141569397  <- geni:6000000002422824182
 Q141569397	P5056	Q141612222	S2600	"6000000002422824182"
 
+# Romanos I Lekapenos byzantine emperor  Q41646  <- geni:6000000002433994667
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41646	P735	Q130711774	S2600	"6000000002433994667"
+
+# Constantine  Q41663  <- geni:6000000002434151612
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41663	P570	+1028-11-11T00:00:00Z/11	S2600	"6000000002434151612"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41663	P735	Q19327451	S2600	"6000000002434151612"
+
+# Romanos II Byzantine Emperor  Q41847  <- geni:6000000002434214184
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41847	P569	+0929-00-00T00:00:00Z/9	S2600	"6000000002434214184"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41847	P735	Q130711774	S2600	"6000000002434214184"
+
+# Gertrude de Nesle  Q3052490  <- geni:6000000002447118580
+Q3052490	P569	+1170-00-00T00:00:00Z/9	S2600	"6000000002447118580"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3052490	P570	+1220-09-12T00:00:00Z/11	S2600	"6000000002447118580"
+Q3052490	P734	Q74087678	S2600	"6000000002447118580"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3052490	P735	Q2837257	S2600	"6000000002447118580"
+
+# Angilbert abbé de Saint-Riquier  Q539434  <- geni:6000000002447238331
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q539434	P569	+0750-00-00T00:00:00Z/9	S2600	"6000000002447238331"
+
 # Carl Wilhelm Cedercreutz  Q21508077  <- geni:6000000002450172130
 Q21508077	P735	Q11027623	S2600	"6000000002450172130"
+
+# Adélaïde d'Anjou  Q261934  <- geni:6000000002453715498
+Q261934	P569	+0946-00-00T00:00:00Z/9	S2600	"6000000002453715498"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q261934	P734	Q63453818	S2600	"6000000002453715498"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q261934	P735	Q62102498	S2600	"6000000002453715498"
 
 # NN ingen Cináed  Q75382729  <- geni:6000000002459825098
 Q75382729	P569	+0834-00-00T00:00:00Z/9	S2600	"6000000002459825098"
@@ -1273,6 +3477,12 @@ Q22813806	P570	+1737-00-00T00:00:00Z/9	S2600	"6000000002460337190"
 Q22813806	P735	Q2793400	S2600	"6000000002460337190"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q22813806	P735	Q923	S2600	"6000000002460337190"
+
+# Adalbert de Vermandois  Q347441  <- geni:6000000002466110291
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q347441	P569	+0920-00-00T00:00:00Z/9	S2600	"6000000002466110291"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q347441	P735	Q347243	S2600	"6000000002466110291"
 
 # Q721756  Q721756  <- geni:6000000002481253260
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1336,6 +3546,15 @@ Q1793048	P570	+0877-00-00T00:00:00Z/9	S2600	"6000000002512264965"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q1793048	P735	Q1385925	S2600	"6000000002512264965"
 
+# Thorolfur Kveldulfsson  Q2472709  <- geni:6000000002512264976
+Q2472709	P26	Q141614016	S2600	"6000000002512264976"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2472709	P569	+0860-00-00T00:00:00Z/9	S2600	"6000000002512264976"
+Q2472709	P570	+0900-00-00T00:00:00Z/9	S2600	"6000000002512264976"
+
+# Berdla-Kåre Vemundsson  Q3638589  <- geni:6000000002512272005
+Q3638589	P26	Q141613890	S2600	"6000000002512272005"
+
 # Tora Torbergsdatter  Q3356544  <- geni:6000000002512272407
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3356544	P569	+1026-00-00T00:00:00Z/9	S2600	"6000000002512272407"
@@ -1345,12 +3564,38 @@ Q3356544	P570	+1070-00-00T00:00:00Z/9	S2600	"6000000002512272407"
 Q3356544	P735	Q19967624	S2600	"6000000002512272407"
 
 # Sofia Volodarsdatter af Minsk Queen of Denmark  Q2026887  <- geni:6000000002512346178
-# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2026887	P26	Q2026887	S2600	"6000000002512346178"
+
+# Johannes von Thienen  Q96240794  <- geni:6000000002515736290
+Q96240794	P26	Q96240795	S2600	"6000000002515736290"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240794	P570	+1397-00-00T00:00:00Z/9	S2600	"6000000002515736290"
+Q96240794	P734	Q131361190	S2600	"6000000002515736290"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240794	P735	Q2117521	S2600	"6000000002515736290"
+
+# Claus Ottesen Limbek kaldet Mulerch  Q12306503  <- geni:6000000002515749552
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12306503	P569	+1315-00-00T00:00:00Z/9	S2600	"6000000002515749552"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12306503	P570	+1373-02-01T00:00:00Z/11	S2600	"6000000002515749552"
+
+# Christiern Nilsson (Vasa)  Q5923254  <- geni:6000000002515809784
+Q5923254	P5056	Q130233015	S2600	"6000000002515809784"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5923254	P734	Q16291152	S2600	"6000000002515809784"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5923254	P735	Q125989484	S2600	"6000000002515809784"
 
 # Arne Armodsson  Q16532663  <- geni:6000000002527618911
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q16532663	P569	+0965-00-00T00:00:00Z/9	S2600	"6000000002527618911"
+
+# Sigrid Finnsdatter Austrått  Q98697974  <- geni:6000000002527704016
+Q98697974	P5056	Q141614467	S2600	"6000000002527704016"
+Q98697974	P569	+1020-00-00T00:00:00Z/9	S2600	"6000000002527704016"
+Q98697974	P570	+1100-00-00T00:00:00Z/9	S2600	"6000000002527704016"
+Q98697974	P734	Q141318793	S2600	"6000000002527704016"
 
 # Salomon Jacobsen  Q141318574  <- geni:6000000002528697383
 Q141318574	P5056	Q141574640	S2600	"6000000002528697383"
@@ -1371,8 +3616,26 @@ Q141314174	P569	+1433-00-00T00:00:00Z/9	S2600	"6000000002550225209"
 # NN Bellestsdatter Årstad  Q141521251  <- geni:6000000002550253028
 Q141521251	P569	+1435-00-00T00:00:00Z/9	S2600	"6000000002550253028"
 
+# Finn Håreksson av Tjøtta  Q101247287  <- geni:6000000002553629374
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101247287	P569	+1020-00-00T00:00:00Z/9	S2600	"6000000002553629374"
+Q101247287	P570	+1100-00-00T00:00:00Z/9	S2600	"6000000002553629374"
+Q101247287	P735	Q1940938	S2600	"6000000002553629374"
+
 # Finn Eyvindsson Tjøtta  Q141612137  <- geni:6000000002553678303
 Q141612137	P22	Q1793048	S2600	"6000000002553678303"
+Q141612137	P40	Q741327	S2600	"6000000002553678303"
+
+# Märta Ulfsdotter (Ulvåsa)  Q4968637  <- geni:6000000002572783163
+Q4968637	P5056	Q141586350	S2600	"6000000002572783163"
+
+# Magnus Bengtsson (Folkungaätten)  Q5971771  <- geni:6000000002572920173
+Q5971771	P26	Q96240861	S2600	"6000000002572920173"
+Q5971771	P5056	Q141515162	S2600	"6000000002572920173"
+Q5971771	P569	+1205-00-00T00:00:00Z/9	S2600	"6000000002572920173"
+
+# Sigrid Sigurdsdatter av Sandnes  Q141614016  <- geni:6000000002574194585
+Q141614016	P26	Q2472709	S2600	"6000000002574194585"
 
 # Wasyli Domont Czerkaszanin  Q127598480  <- geni:6000000002598234929
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1401,6 +3664,24 @@ Q127598467	P735	Q1035239	S2600	"6000000002598519099"
 
 # Henriette Elisabeth Cederström  Q134989340  <- geni:6000000002601845636
 Q134989340	P735	Q63611044	S2600	"6000000002601845636"
+
+# Birger Persson  Q5576561  <- geni:6000000002601866292
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5576561	P22	Q141610327	S2600	"6000000002601866292"
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5576561	P25	Q141612136	S2600	"6000000002601866292"
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5576561	P5056	Q141314124	S2600	"6000000002601866292"
+
+# Hugh de Gournay IV  Q111699042  <- geni:6000000002603390248
+Q111699042	P569	+1098-00-00T00:00:00Z/9	S2600	"6000000002603390248"
+Q111699042	P570	+1180-00-00T00:00:00Z/9	S2600	"6000000002603390248"
+Q111699042	P734	Q105107554	S2600	"6000000002603390248"
+Q111699042	P735	Q839387	S2600	"6000000002603390248"
+
+# Igor Yaroslavich Vladimir Volynsk Duke  Q4197646  <- geni:6000000002603403806
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4197646	P735	Q432161	S2600	"6000000002603403806"
 
 # Torgrim Hansson Tjåland  Q141563037  <- geni:6000000002619360784
 Q141563037	P570	+1766-03-12T00:00:00Z/11	S2600	"6000000002619360784"
@@ -1455,9 +3736,21 @@ Q141538937	P734	Q30087270	S2600	"6000000002748554800"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141538937	P734	Q30134985	S2600	"6000000002748554800"
 
+# Siegfried I von Sponheim Graf im Pustertal  Q91590  <- geni:6000000002750141103
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91590	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000002750141103"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q91590	P570	+1065-02-07T00:00:00Z/11	S2600	"6000000002750141103"
+
 # Isaac Aaron Ettinger  Q119984629  <- geni:6000000002764956528
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q119984629	P22	Q25492370	S2600	"6000000002764956528"
+
+# Milon de Tonnerre  Q130781139  <- geni:6000000002774361183
+Q130781139	P569	+0995-00-00T00:00:00Z/9	S2600	"6000000002774361183"
+Q130781139	P570	+1046-00-00T00:00:00Z/9	S2600	"6000000002774361183"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q130781139	P735	Q136353196	S2600	"6000000002774361183"
 
 # Magnus Lundström  Q141578752  <- geni:6000000002786638100
 Q141578752	P5056	Q141318548	S2600	"6000000002786638100"
@@ -1505,11 +3798,45 @@ Q141525115	P5056	Q141577949	S2600	"6000000002842136430"
 # Peder Enoksson Stangeland  Q141512276  <- geni:6000000002845973133
 Q141512276	P40	Q141574503	S2600	"6000000002845973133"
 
+# Havard Thorfinsson  Q3128682  <- geni:6000000002855667029
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3128682	P569	+0918-00-00T00:00:00Z/9	S2600	"6000000002855667029"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3128682	P570	+0981-00-00T00:00:00Z/9	S2600	"6000000002855667029"
+
 # Stine Olsdatter Bore  Q141268106  <- geni:6000000002866077692
 Q141268106	P26	Q141268106	S2600	"6000000002866077692"
 
+# Heribert Capet évêque d'Auxerre  Q3145021  <- geni:6000000002890000547
+Q3145021	P25	Q15040856	S2600	"6000000002890000547"
+
+# Eirik Galtung Sigurdsen  Q11967797  <- geni:6000000002893008651
+Q11967797	P22	Q141565133	S2600	"6000000002893008651"
+Q11967797	P25	Q141565474	S2600	"6000000002893008651"
+Q11967797	P26	Q141499537	S2600	"6000000002893008651"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11967797	P735	Q19798835	S2600	"6000000002893008651"
+
+# Hallgerður Höskuldsdóttir  Q10516384  <- geni:6000000002893035561
+Q10516384	P25	Q5474834	S2600	"6000000002893035561"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q10516384	P569	+0930-00-00T00:00:00Z/9	S2600	"6000000002893035561"
+
 # Torleik på Berge  Q141613869  <- geni:6000000002893309570
 Q141613869	P26	Q141614360	S2600	"6000000002893309570"
+
+# Samson Filippusson Øye  Q138310804  <- geni:6000000002893319563
+Q138310804	P22	Q141559564	S2600	"6000000002893319563"
+Q138310804	P25	Q141559612	S2600	"6000000002893319563"
+Q138310804	P569	+1415-00-00T00:00:00Z/9	S2600	"6000000002893319563"
+Q138310804	P734	Q30132788	S2600	"6000000002893319563"
+
+# Håkon Grjotgardsson  Q31695  <- geni:6000000002893322873
+Q31695	P40	Q141614066	S2600	"6000000002893322873"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31695	P569	+0830-00-00T00:00:00Z/9	S2600	"6000000002893322873"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31695	P570	+0917-00-00T00:00:00Z/9	S2600	"6000000002893322873"
 
 # Margreta Håkonsdatter Reve  Q141579303  <- geni:6000000002893330286
 Q141579303	P26	Q141579303	S2600	"6000000002893330286"
@@ -1522,6 +3849,13 @@ Q141550397	P5056	Q141585655	S2600	"6000000002893714406"
 
 # Rigborg Steendatter Bille  Q141583437  <- geni:6000000002895743093
 Q141583437	P22	Q5576049	S2600	"6000000002895743093"
+
+# Henry van Brabant  Q461045  <- geni:6000000002903773792
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q461045	P570	+1235-09-03T00:00:00Z/11	S2600	"6000000002903773792"
+Q461045	P734	Q105543415	S2600	"6000000002903773792"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q461045	P735	Q1158477	S2600	"6000000002903773792"
 
 # John Erskine  Q75257539  <- geni:6000000002907270961
 Q75257539	P569	+1482-00-00T00:00:00Z/9	S2600	"6000000002907270961"
@@ -1545,6 +3879,17 @@ Q5576049	P5056	Q141500869	S2600	"6000000002930666979"
 
 # Rigborg Hansdatter Lindenov  Q141620119  <- geni:6000000002930702308
 Q141620119	P735	Q141619363	S2600	"6000000002930702308"
+
+# Sigrid Sveinsdatter  Q141612129  <- geni:6000000002941305140
+Q141612129	P22	Q31709	S2600	"6000000002941305140"
+Q141612129	P25	Q29042590	S2600	"6000000002941305140"
+
+# Heinrich I von Berg-Schelklingen Grave  Q30301558  <- geni:6000000002947577496
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q30301558	P22	Q141529847	S2600	"6000000002947577496"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q30301558	P570	+1116-09-24T00:00:00Z/11	S2600	"6000000002947577496"
+Q30301558	P734	Q12785738	S2600	"6000000002947577496"
 
 # Jon Knutson Nærland  Q141533445  <- geni:6000000002951191547
 Q141533445	P569	+1571-00-00T00:00:00Z/9	S2600	"6000000002951191547"
@@ -1585,6 +3930,29 @@ Q141560522	P5056	Q141614730	S2600	"6000000002964352135"
 # Domild Svensdatter  Q141570661  <- geni:6000000002964690254
 # P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141570661	P5056	Q141314143	S2600	"6000000002964690254"
+
+# Adelheid de Boulogne  Q2135066  <- geni:6000000002979879011
+Q2135066	P25	Q2670053	S2600	"6000000002979879011"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2135066	P569	+0974-00-00T00:00:00Z/9	S2600	"6000000002979879011"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2135066	P735	Q4057477	S2600	"6000000002979879011"
+
+# Hedwig von Nordgau  Q3622064  <- geni:6000000002979969991
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3622064	P569	+0937-00-00T00:00:00Z/9	S2600	"6000000002979969991"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3622064	P570	+0992-12-13T00:00:00Z/11	S2600	"6000000002979969991"
+
+# Otto I  Q74016  <- geni:6000000002980019814
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q74016	P570	+1207-10-22T00:00:00Z/11	S2600	"6000000002980019814"
+
+# Etienne de Bourgogne  Q1339109  <- geni:6000000002980191996
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1339109	P569	+1065-00-00T00:00:00Z/9	S2600	"6000000002980191996"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1339109	P570	+1102-05-18T00:00:00Z/11	S2600	"6000000002980191996"
 
 # Zacharias Jonæ  Q121199578  <- geni:6000000002994865324
 Q121199578	P5056	Q141242306	S2600	"6000000002994865324"
@@ -1639,8 +4007,21 @@ Q141521960	P569	+1665-00-00T00:00:00Z/9	S2600	"6000000003025545796"
 # Tora Gunnarsdatter Vølstad  Q141353771  <- geni:6000000003025853747
 Q141353771	P26	Q141353771	S2600	"6000000003025853747"
 
+# Thibaud III de Blois  Q462881  <- geni:6000000003026008879
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q462881	P570	+1089-09-29T00:00:00Z/11	S2600	"6000000003026008879"
+
+# Matilda Van Boulogne  Q3455783  <- geni:6000000003026034126
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3455783	P735	Q2054021	S2600	"6000000003026034126"
+
 # Kristi Gunnarsdatter Vølstad  Q141498669  <- geni:6000000003026039395
 Q141498669	P26	Q141498669	S2600	"6000000003026039395"
+
+# Anna von Lembeck  Q96240795  <- geni:6000000003036664249
+Q96240795	P26	Q96240794	S2600	"6000000003036664249"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240795	P570	+1411-00-00T00:00:00Z/9	S2600	"6000000003036664249"
 
 # Sissel Jonsdatter Talje  Q141200101  <- geni:6000000003043806217
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1649,9 +4030,19 @@ Q141200101	P22	Q141502792	S2600	"6000000003043806217"
 Q141200101	P25	Q141502847	S2600	"6000000003043806217"
 Q141200101	P26	Q141200101	S2600	"6000000003043806217"
 
+# Mathilde de Saint-Valery  Q103568200  <- geni:6000000003051107082
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q103568200	P569	+1122-00-00T00:00:00Z/9	S2600	"6000000003051107082"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q103568200	P570	+1151-00-00T00:00:00Z/9	S2600	"6000000003051107082"
+Q103568200	P735	Q12326416	S2600	"6000000003051107082"
+
 # Edward Trevor  Q75241251  <- geni:6000000003051115387
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75241251	P569	+1380-00-00T00:00:00Z/9	S2600	"6000000003051115387"
+
+# Guillaume de Saint Omer  Q116005489  <- geni:6000000003051199817
+Q116005489	P735	Q18190448	S2600	"6000000003051199817"
 
 # Eleanore Flandre  Q3173713  <- geni:6000000003051245269
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1661,9 +4052,28 @@ Q3173713	P734	Q63139622	S2600	"6000000003051245269"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3173713	P735	Q88380191	S2600	"6000000003051245269"
 
+# Basile I de Constantinople le Grand  Q41622  <- geni:6000000003051267350
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41622	P569	+0840-01-19T00:00:00Z/11	S2600	"6000000003051267350"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41622	P570	+0867-09-23T00:00:00Z/11	S2600	"6000000003051267350"
+
+# Milo de Tonnerre  Q18277901  <- geni:6000000003051267456
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q18277901	P40	Q18275567	S2600	"6000000003051267456"
+Q18277901	P569	+0910-00-00T00:00:00Z/9	S2600	"6000000003051267456"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q18277901	P570	+0980-07-00T00:00:00Z/10	S2600	"6000000003051267456"
+Q18277901	P735	Q18760887	S2600	"6000000003051267456"
+
 # Robert Sherburne  Q75464065  <- geni:6000000003051311476
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75464065	P569	+1432-00-00T00:00:00Z/9	S2600	"6000000003051311476"
+
+# Aganitrude DE BRUGES  Q116005490  <- geni:6000000003051322583
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q116005490	P569	+1049-00-00T00:00:00Z/9	S2600	"6000000003051322583"
+Q116005490	P570	+1085-00-00T00:00:00Z/9	S2600	"6000000003051322583"
 
 # Stoislaw 1. von Rügen  Q1761066  <- geni:6000000003063208081
 Q1761066	P569	+1140-00-00T00:00:00Z/9	S2600	"6000000003063208081"
@@ -1672,6 +4082,11 @@ Q1761066	P570	+1194-00-00T00:00:00Z/9	S2600	"6000000003063208081"
 
 # Friedrich Frommhold von Knorring  Q94938559  <- geni:6000000003081207122
 Q94938559	P734	Q20726377	S2600	"6000000003081207122"
+
+# Ragna Nikolausdatter  Q3364492  <- geni:6000000003082460872
+Q3364492	P26	Q16650106	S2600	"6000000003082460872"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3364492	P570	+1162-00-00T00:00:00Z/9	S2600	"6000000003082460872"
 
 # Johannes Erici Gestrinius  Q141581035  <- geni:6000000003086254653
 Q141581035	P735	Q110012183	S2600	"6000000003086254653"
@@ -1684,9 +4099,27 @@ Q387368	P570	+1037-00-00T00:00:00Z/9	S2600	"6000000003086706954"
 Q141498230	P569	+0725-00-00T00:00:00Z/9	S2600	"6000000003086991707"
 Q141498230	P570	+0793-00-00T00:00:00Z/9	S2600	"6000000003086991707"
 
+# Christina Ingesdotter  Q2616032  <- geni:6000000003087125859
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2616032	P735	Q1083457	S2600	"6000000003087125859"
+
 # Bretislav II Przemyslides  Q251752  <- geni:6000000003087193552
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q251752	P569	+1058-00-00T00:00:00Z/9	S2600	"6000000003087193552"
+
+# Auðr Ketilsdóttir  Q611633  <- geni:6000000003088649491
+Q611633	P25	Q16728867	S2600	"6000000003088649491"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q611633	P569	+0830-00-00T00:00:00Z/9	S2600	"6000000003088649491"
+
+# Frode Haraldsson  Q213791  <- geni:6000000003094359287
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q213791	P25	Q973678	S2600	"6000000003094359287"
+Q213791	P5056	Q141585679	S2600	"6000000003094359287"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q213791	P569	+0885-00-00T00:00:00Z/9	S2600	"6000000003094359287"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q213791	P735	Q1420110	S2600	"6000000003094359287"
 
 # Kristi Rasmusdatter Maudal  Q141538683  <- geni:6000000003094912362
 Q141538683	P569	+1620-00-00T00:00:00Z/9	S2600	"6000000003094912362"
@@ -1809,8 +4242,30 @@ Q141528822	P570	+1726-00-00T00:00:00Z/9	S2600	"6000000003095174167"
 # Joan Neville the nun  Q75387472  <- geni:6000000003098031092
 Q75387472	P734	Q76908977	S2600	"6000000003098031092"
 
+# Roger de Montgomery  Q426907  <- geni:6000000003098078015
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q426907	P569	+0975-00-00T00:00:00Z/9	S2600	"6000000003098078015"
+
+# Yaropolk Izyaslavich Rurikid of Turov and Volhynia  Q1343016  <- geni:6000000003098118619
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1343016	P569	+1048-00-00T00:00:00Z/9	S2600	"6000000003098118619"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1343016	P570	+1085-11-25T00:00:00Z/11	S2600	"6000000003098118619"
+
+# Milon III de Bar-sur-Seine  Q48755146  <- geni:6000000003098208642
+Q48755146	P569	+1130-00-00T00:00:00Z/9	S2600	"6000000003098208642"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q48755146	P735	Q136353196	S2600	"6000000003098208642"
+
+# Bruno von Egisheim  Q58559  <- geni:6000000003098215498
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58559	P735	Q1874605	S2600	"6000000003098215498"
+
 # Ole Eivindson Koll  Q141513876  <- geni:6000000003102253400
 Q141513876	P570	+1535-00-00T00:00:00Z/9	S2600	"6000000003102253400"
+
+# Ingegerd Haraldsdotter  Q262187  <- geni:6000000003108752547
+Q262187	P5056	Q141574669	S2600	"6000000003108752547"
 
 # Magdalena Zachariasdotter Bure  Q140373616  <- geni:6000000003110862366
 Q140373616	P569	+1604-09-01T00:00:00Z/11	S2600	"6000000003110862366"
@@ -1829,6 +4284,31 @@ Q141199706	P26	Q141199706	S2600	"6000000003125438035"
 # X. Bendiksdatter Hammar  Q141577924  <- geni:6000000003136693183
 Q141577924	P5056	Q141614691	S2600	"6000000003136693183"
 
+# NN Svalesdatter Smjor  Q141499537  <- geni:6000000003140274840
+Q141499537	P26	Q11967797	S2600	"6000000003140274840"
+Q141499537	P40	Q7651616	S2600	"6000000003140274840"
+
+# Sigrid Gunnarsdatter Kane  Q141577746  <- geni:6000000003140415812
+Q141577746	P26	Q7651616	S2600	"6000000003140415812"
+Q141577746	P40	Q6271657	S2600	"6000000003140415812"
+
+# Adelaide  Q2415527  <- geni:6000000003146107101
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2415527	P569	+1029-00-00T00:00:00Z/9	S2600	"6000000003146107101"
+
+# Otto II van Chiny  Q24962987  <- geni:6000000003146957164
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q24962987	P569	+1060-00-00T00:00:00Z/9	S2600	"6000000003146957164"
+
+# Godfrey Graf von Löwen und Brüssel Duke of Lower Lotharingia  Q126237  <- geni:6000000003146957188
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q126237	P569	+1074-00-00T00:00:00Z/9	S2600	"6000000003146957188"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q126237	P570	+1139-01-23T00:00:00Z/11	S2600	"6000000003146957188"
+Q126237	P734	Q29645473	S2600	"6000000003146957188"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q126237	P735	Q18674686	S2600	"6000000003146957188"
+
 # Eli Eivinsdatter Sveinsvoll  Q141419531  <- geni:6000000003149690813
 Q141419531	P569	+1602-00-00T00:00:00Z/9	S2600	"6000000003149690813"
 Q141419531	P570	+1638-00-00T00:00:00Z/9	S2600	"6000000003149690813"
@@ -1839,6 +4319,15 @@ Q141538656	P569	+1613-00-00T00:00:00Z/9	S2600	"6000000003158673058"
 
 # Marit Oddsdatter Foss  Q141538792  <- geni:6000000003163663151
 Q141538792	P570	+1676-00-00T00:00:00Z/9	S2600	"6000000003163663151"
+
+# Ebbe Sunesen Hvide  Q16063657  <- geni:6000000003166417414
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16063657	P734	Q55222347	S2600	"6000000003166417414"
+
+# Knut Jonsson Aspenäs  Q5915860  <- geni:6000000003168965773
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5915860	P25	Q101247444	S2600	"6000000003168965773"
+Q5915860	P5056	Q141242306	S2600	"6000000003168965773"
 
 # Ola Sigmundsen Madland  Q141560520  <- geni:6000000003172069252
 # P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1857,15 +4346,80 @@ Q141616108	P26	Q141619804	S2600	"6000000003196294828"
 # Torborg Olsdatter Vestbø  Q141619804  <- geni:6000000003196371887
 Q141619804	P26	Q141616108	S2600	"6000000003196371887"
 
+# Henry  Q151707  <- geni:6000000003196869122
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q151707	P569	+1081-08-11T00:00:00Z/11	S2600	"6000000003196869122"
+
+# Kveld-Úlfur Bjálkason  Q6449678  <- geni:6000000003209091929
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6449678	P569	+0820-00-00T00:00:00Z/9	S2600	"6000000003209091929"
+
+# Skúli Egilsson  Q16634952  <- geni:6000000003209102653
+Q16634952	P26	Q133796450	S2600	"6000000003209102653"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16634952	P570	+1118-00-00T00:00:00Z/9	S2600	"6000000003209102653"
+Q16634952	P735	Q122958929	S2600	"6000000003209102653"
+
+# Þórður Skúlason  Q133796433  <- geni:6000000003209107789
+Q133796433	P569	+1076-00-00T00:00:00Z/9	S2600	"6000000003209107789"
+Q133796433	P570	+1143-00-00T00:00:00Z/9	S2600	"6000000003209107789"
+Q133796433	P735	Q8079578	S2600	"6000000003209107789"
+
+# Böðvar Þórðarson  Q133796431  <- geni:6000000003209182073
+Q133796431	P5056	Q125050602	S2600	"6000000003209182073"
+Q133796431	P569	+1116-00-00T00:00:00Z/9	S2600	"6000000003209182073"
+Q133796431	P570	+1187-02-16T00:00:00Z/11	S2600	"6000000003209182073"
+Q133796431	P735	Q16422277	S2600	"6000000003209182073"
+
 # Björn Brynjólfsson  Q141564774  <- geni:6000000003209438490
 Q141564774	P570	+0932-00-00T00:00:00Z/9	S2600	"6000000003209438490"
+
+# Þuríður Þórðardóttir  Q135529234  <- geni:6000000003214937261
+Q135529234	P26	Q16652509	S2600	"6000000003214937261"
+Q135529234	P5056	Q25434621	S2600	"6000000003214937261"
+Q135529234	P569	+0950-00-00T00:00:00Z/9	S2600	"6000000003214937261"
+Q135529234	P735	Q1799002	S2600	"6000000003214937261"
+
+# Ingólfur Árnarsson  Q209138  <- geni:6000000003214979783
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q209138	P569	+0844-00-00T00:00:00Z/9	S2600	"6000000003214979783"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q209138	P570	+0903-00-00T00:00:00Z/9	S2600	"6000000003214979783"
+
+# Þorsteinn Ingólfsson  Q6175099  <- geni:6000000003215053834
+Q6175099	P569	+0890-00-00T00:00:00Z/9	S2600	"6000000003215053834"
+Q6175099	P570	+0940-00-00T00:00:00Z/9	S2600	"6000000003215053834"
+Q6175099	P735	Q16282077	S2600	"6000000003215053834"
 
 # Arnmod Arnvidsson  Q16532667  <- geni:6000000003220313434
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q16532667	P569	+0945-00-00T00:00:00Z/9	S2600	"6000000003220313434"
 
+# Bergljót Thorbjórg Halvdansdatter  Q16726140  <- geni:6000000003220313927
+Q16726140	P569	+1010-00-00T00:00:00Z/9	S2600	"6000000003220313927"
+Q16726140	P570	+1041-00-00T00:00:00Z/9	S2600	"6000000003220313927"
+
+# Stephen I Arpad  Q177903  <- geni:6000000003232558141
+Q177903	P734	Q132192462	S2600	"6000000003232558141"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q177903	P735	Q4927100	S2600	"6000000003232558141"
+
 # Eadwin  Q4368928  <- geni:6000000003232558406
 Q4368928	P569	+0902-00-00T00:00:00Z/9	S2600	"6000000003232558406"
+
+# Helga Helgadóttir  Q135529142  <- geni:6000000003242376844
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q135529142	P40	Q135529140	S2600	"6000000003242376844"
+Q135529142	P5056	Q21450108	S2600	"6000000003242376844"
+Q135529142	P569	+0866-00-00T00:00:00Z/9	S2600	"6000000003242376844"
+Q135529142	P735	Q1035107	S2600	"6000000003242376844"
+
+# Einar Eyjólfsson  Q135529150  <- geni:6000000003242498183
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q135529150	P22	Q135529139	S2600	"6000000003242498183"
+Q135529150	P25	Q135529219	S2600	"6000000003242498183"
+Q135529150	P569	+0945-00-00T00:00:00Z/9	S2600	"6000000003242498183"
+Q135529150	P735	Q1305819	S2600	"6000000003242498183"
 
 # N N. Arnvidsdatter  Q141612082  <- geni:6000000003243017717
 Q141612082	P569	+0855-00-00T00:00:00Z/9	S2600	"6000000003243017717"
@@ -1873,13 +4427,45 @@ Q141612082	P569	+0855-00-00T00:00:00Z/9	S2600	"6000000003243017717"
 # Margaret Plantagenet  Q75384344  <- geni:6000000003243176060
 Q75384344	P570	+1352-00-00T00:00:00Z/9	S2600	"6000000003243176060"
 
+# Elisabeth of Hungary  Q5363813  <- geni:6000000003243185408
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5363813	P569	+1117-00-00T00:00:00Z/9	S2600	"6000000003243185408"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5363813	P570	+1155-10-03T00:00:00Z/11	S2600	"6000000003243185408"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5363813	P735	Q63611044	S2600	"6000000003243185408"
+
+# William  Q2573359  <- geni:6000000003243318225
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2573359	P569	+0975-01-02T00:00:00Z/11	S2600	"6000000003243318225"
+
 # Agnes Bardolf Baroness Bardolf  Q75382771  <- geni:6000000003243324634
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75382771	P569	+1297-00-00T00:00:00Z/9	S2600	"6000000003243324634"
 
+# Thora Mosterstong, mistress  Q1769527  <- geni:6000000003243418196
+Q1769527	P25	Q141570854	S2600	"6000000003243418196"
+Q1769527	P26	Q206123	S2600	"6000000003243418196"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1769527	P735	Q277783	S2600	"6000000003243418196"
+
+# Ring Haraldsson  Q6108972  <- geni:6000000003243418345
+Q6108972	P5056	Q141585679	S2600	"6000000003243418345"
+Q6108972	P735	Q69508653	S2600	"6000000003243418345"
+
+# Astrid,Princess  Q3355204  <- geni:6000000003243483198
+Q3355204	P5056	Q141250201	S2600	"6000000003243483198"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3355204	P569	+1001-00-00T00:00:00Z/9	S2600	"6000000003243483198"
+
 # NN Torleifsdotter  Q141570854  <- geni:6000000003243483251
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141570854	P25	Q141577238	S2600	"6000000003243483251"
+Q141570854	P40	Q1769527	S2600	"6000000003243483251"
+
+# Henri de Dreux  Q3132263  <- geni:6000000003243493403
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3132263	P735	Q4497249	S2600	"6000000003243493403"
 
 # Nils Samuelson Skei  Q141619283  <- geni:6000000003252859978
 Q141619283	P26	Q141620038	S2600	"6000000003252859978"
@@ -1905,6 +4491,12 @@ Q141549372	P734	Q141619485	S2600	"6000000003253761138"
 # Samuel Rasmusson Bloch  Q141571060  <- geni:6000000003253840296
 Q141571060	P734	Q141619485	S2600	"6000000003253840296"
 
+# Magnus Haakonsson  Q75291909  <- geni:6000000003262975685
+Q75291909	P5056	Q56245178	S2600	"6000000003262975685"
+
+# Olav Magnusson  Q75291908  <- geni:6000000003263030645
+Q75291908	P5056	Q141283477	S2600	"6000000003263030645"
+
 # Hans von Maydell  Q98698463  <- geni:6000000003263170452
 Q98698463	P569	+1450-00-00T00:00:00Z/9	S2600	"6000000003263170452"
 Q98698463	P570	+1514-00-00T00:00:00Z/9	S2600	"6000000003263170452"
@@ -1913,19 +4505,77 @@ Q98698463	P735	Q632842	S2600	"6000000003263170452"
 # Lars Sveinungson Haukamork  Q141562575  <- geni:6000000003265275183
 Q141562575	P569	+1723-08-08T00:00:00Z/11	S2600	"6000000003265275183"
 
+# Jon Raud Ivarsson till Sudrheim  Q101247943  <- geni:6000000003277299457
+Q101247943	P569	+1248-00-00T00:00:00Z/9	S2600	"6000000003277299457"
+Q101247943	P570	+1312-06-00T00:00:00Z/10	S2600	"6000000003277299457"
+Q101247943	P734	Q16286903	S2600	"6000000003277299457"
+Q101247943	P735	Q13501137	S2600	"6000000003277299457"
+
+# Arnoul  Q337189  <- geni:6000000003302337846
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q337189	P26	Q141523778	S2600	"6000000003302337846"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q337189	P735	Q65179481	S2600	"6000000003302337846"
+
 # Ole Olson Vik  Q141583429  <- geni:6000000003313160528
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141583429	P569	+1668-00-00T00:00:00Z/9	S2600	"6000000003313160528"
+
+# Thietburg von Haldensleben  Q75247727  <- geni:6000000003318546921
+Q75247727	P569	+0956-00-00T00:00:00Z/9	S2600	"6000000003318546921"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75247727	P570	+1009-03-23T00:00:00Z/11	S2600	"6000000003318546921"
 
 # Cesilie Jacobsdatter Jørstad  Q141514596  <- geni:6000000003332696353
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141514596	P25	Q141205922	S2600	"6000000003332696353"
 
+# Åsa Haraldsdatter  Q1772594  <- geni:6000000003341415472
+# P31 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1772594	P31	Q5	S2600	"6000000003341415472"
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1772594	P5056	Q141611167	S2600	"6000000003341415472"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1772594	P569	+0794-00-00T00:00:00Z/9	S2600	"6000000003341415472"
+
 # María de Luna y Bobadilla Maldonado  Q47457772  <- geni:6000000003344256309
 Q47457772	P734	Q113101640	S2600	"6000000003344256309"
 
+# Karl Karlsson Ulv  Q5900614  <- geni:6000000003349367528
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900614	P22	Q6175684	S2600	"6000000003349367528"
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900614	P25	Q141513750	S2600	"6000000003349367528"
+Q5900614	P5056	Q108828512	S2600	"6000000003349367528"
+Q5900614	P570	+1252-00-00T00:00:00Z/9	S2600	"6000000003349367528"
+Q5900614	P734	Q117808647	S2600	"6000000003349367528"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900614	P735	Q136771753	S2600	"6000000003349367528"
+
+# Birger Brosa  Q561866  <- geni:6000000003349637351
+Q561866	P5056	Q141515162	S2600	"6000000003349637351"
+
+# Karl Bengtsson  Q3739601  <- geni:6000000003349733094
+Q3739601	P5056	Q141515162	S2600	"6000000003349733094"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3739601	P569	+1165-00-00T00:00:00Z/9	S2600	"6000000003349733094"
+Q3739601	P734	Q21493506	S2600	"6000000003349733094"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3739601	P735	Q136771753	S2600	"6000000003349733094"
+
+# Bengt Magnusson  Q5569987  <- geni:6000000003353148560
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5569987	P22	Q141528104	S2600	"6000000003353148560"
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5569987	P25	Q468729	S2600	"6000000003353148560"
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5569987	P5056	Q141283477	S2600	"6000000003353148560"
+
 # Anna Mosesdotter  Q141493134  <- geni:6000000003355803428
 Q141493134	P26	Q141493134	S2600	"6000000003355803428"
+
+# Sigrid Huk Blindheim Åsulvsdatter  Q75291987  <- geni:6000000003358162246
+Q75291987	P5056	Q141612300	S2600	"6000000003358162246"
 
 # Alv Erlingsson Tornberg  Q448091  <- geni:6000000003362862571
 Q448091	P5056	Q141610485	S2600	"6000000003362862571"
@@ -1941,6 +4591,13 @@ Q141521986	P25	Q141353111	S2600	"6000000003376442169"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141457326	P25	Q141577196	S2600	"6000000003378683243"
 
+# Knut Håkonsson Galen  Q3198083  <- geni:6000000003398531458
+Q3198083	P5056	Q56245178	S2600	"6000000003398531458"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3198083	P569	+1206-00-00T00:00:00Z/9	S2600	"6000000003398531458"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3198083	P734	Q37435394	S2600	"6000000003398531458"
+
 # Mats Amundsen Ænes  Q141451067  <- geni:6000000003401838954
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141451067	P22	Q141569598	S2600	"6000000003401838954"
@@ -1954,10 +4611,27 @@ Q141457324	P5056	Q141610383	S2600	"6000000003403908544"
 # Svantepolk Knutsson  Q6197518  <- geni:6000000003418900347
 Q6197518	P5056	Q141403300	S2600	"6000000003418900347"
 
+# Otto III  Q151090  <- geni:6000000003439632313
+Q151090	P26	Q41659	S2600	"6000000003439632313"
+
+# Valdemar Birgersson  Q357200  <- geni:6000000003455608992
+Q357200	P26	Q3492100	S2600	"6000000003455608992"
+Q357200	P5056	Q141611160	S2600	"6000000003455608992"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q357200	P569	+1239-00-00T00:00:00Z/9	S2600	"6000000003455608992"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q357200	P735	Q19966563	S2600	"6000000003455608992"
+
+# Erik Magnusson  Q547911  <- geni:6000000003456051444
+Q547911	P5056	Q141283477	S2600	"6000000003456051444"
+
 # Anders Olofsson  Q141500816  <- geni:6000000003463610943
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141500816	P25	Q141576834	S2600	"6000000003463610943"
 Q141500816	P5056	Q141244186	S2600	"6000000003463610943"
+
+# Magnus Eriksson  Q314457  <- geni:6000000003464124153
+Q314457	P5056	Q130232913	S2600	"6000000003464124153"
 
 # Q1045160  Q1045160  <- geni:6000000003474166572
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -1966,6 +4640,9 @@ Q1045160	P31	Q5	S2600	"6000000003474166572"
 # Q819556  Q819556  <- geni:6000000003485847175
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q819556	P31	Q5	S2600	"6000000003485847175"
+
+# Sverker II Karlsson King of Sweden  Q365072  <- geni:6000000003491193955
+Q365072	P734	Q16455420	S2600	"6000000003491193955"
 
 # Rasmus Sømme  Q141566135  <- geni:6000000003491944918
 Q141566135	P569	+1507-00-00T00:00:00Z/9	S2600	"6000000003491944918"
@@ -2107,8 +4784,49 @@ Q3160326	P569	+1653-03-11T00:00:00Z/11	S2600	"6000000003493392105"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3160326	P734	Q29582810	S2600	"6000000003493392105"
 
+# Baldwin de Hainaut, 3rd Comte de Hainult et Comte de Hennegou III  Q562553  <- geni:6000000003494697312
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q562553	P570	+1119-06-00T00:00:00Z/10	S2600	"6000000003494697312"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q562553	P735	Q18190448	S2600	"6000000003494697312"
+
+# Adela  Q6051215  <- geni:6000000003494707647
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6051215	P569	+0893-00-00T00:00:00Z/9	S2600	"6000000003494707647"
+Q6051215	P570	+0942-03-05T00:00:00Z/11	S2600	"6000000003494707647"
+
+# Lothar Udo von Stade  Q4267365  <- geni:6000000003494757809
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4267365	P569	+0950-00-00T00:00:00Z/9	S2600	"6000000003494757809"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4267365	P570	+0994-06-23T00:00:00Z/11	S2600	"6000000003494757809"
+Q4267365	P735	Q1465588	S2600	"6000000003494757809"
+
+# Oda von der Ostmark  Q52504190  <- geni:6000000003494777697
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q52504190	P40	Q75247799	S2600	"6000000003494777697"
+Q52504190	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000003494777697"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q52504190	P570	+1068-00-00T00:00:00Z/9	S2600	"6000000003494777697"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q52504190	P735	Q1314360	S2600	"6000000003494777697"
+
+# Hemma von Öhningen  Q141550395  <- geni:6000000003495348827
+Q141550395	P22	Q704902	S2600	"6000000003495348827"
+
+# Frozza Adelheid Orseolo  Q1885480  <- geni:6000000003495351521
+Q1885480	P734	Q125964559	S2600	"6000000003495351521"
+Q1885480	P735	Q4057477	S2600	"6000000003495351521"
+
+# Leopold II of Babenberg Margrave of Austria  Q304409  <- geni:6000000003495414198
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q304409	P569	+1051-00-00T00:00:00Z/9	S2600	"6000000003495414198"
+
 # Margreta Fartegnsdatter Rose av Amla og Solvoren  Q141565714  <- geni:6000000003504931448
 Q141565714	P569	+1442-00-00T00:00:00Z/9	S2600	"6000000003504931448"
+
+# Filippus Fartegnsson Losna  Q141559564  <- geni:6000000003504974493
+Q141559564	P40	Q138310804	S2600	"6000000003504974493"
 
 # Jacob von Güntersberg  Q141498687  <- geni:6000000003505812453
 Q141498687	P570	+1563-00-00T00:00:00Z/9	S2600	"6000000003505812453"
@@ -2116,9 +4834,25 @@ Q141498687	P570	+1563-00-00T00:00:00Z/9	S2600	"6000000003505812453"
 # Sjur Sjursen Mæle  Q141571107  <- geni:6000000003511556211
 Q141571107	P5056	Q141576552	S2600	"6000000003511556211"
 
+# Edel Pedersdatter Saltensee  Q101248370  <- geni:6000000003513145688
+Q101248370	P5056	Q141257144	S2600	"6000000003513145688"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248370	P569	+1284-01-08T00:00:00Z/11	S2600	"6000000003513145688"
+Q101248370	P570	+1350-00-00T00:00:00Z/9	S2600	"6000000003513145688"
+Q101248370	P735	Q3480258	S2600	"6000000003513145688"
+
 # Phithia of Epirus  Q3239153  <- geni:6000000003513236861
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3239153	P569	+0100-00-00T00:00:00Z/9	S2600	"6000000003513236861"
+
+# Holmfrid Eriksdatter Eriksdotter  Q29042590  <- geni:6000000003513731919
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q29042590	P40	Q141612129	S2600	"6000000003513731919"
+Q29042590	P5056	Q130232912	S2600	"6000000003513731919"
+Q29042590	P5056	Q141223487	S2600	"6000000003513731919"
+Q29042590	P569	+0972-00-00T00:00:00Z/9	S2600	"6000000003513731919"
+Q29042590	P570	+1016-00-00T00:00:00Z/9	S2600	"6000000003513731919"
+Q29042590	P735	Q138381062	S2600	"6000000003513731919"
 
 # Fyodor Корибутович Nesvitsky and Podolsky  Q17565243  <- geni:6000000003524588434
 Q17565243	P26	Q122497559	S2600	"6000000003524588434"
@@ -2155,10 +4889,22 @@ Q141565858	P570	+1607-06-28T00:00:00Z/11	S2600	"6000000003570049107"
 # Inga Víkingadóttir  Q141614188  <- geni:6000000003575290734
 Q141614188	P26	Q141613871	S2600	"6000000003575290734"
 
+# Arnbjörn Jonsson  Q106528141  <- geni:6000000003575836084
+Q106528141	P25	Q141584990	S2600	"6000000003575836084"
+Q106528141	P26	Q141559713	S2600	"6000000003575836084"
+Q106528141	P40	Q141550295	S2600	"6000000003575836084"
+Q106528141	P40	Q141550304	S2600	"6000000003575836084"
+Q106528141	P5056	Q141242306	S2600	"6000000003575836084"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q106528141	P569	+1170-00-00T00:00:00Z/9	S2600	"6000000003575836084"
+
 # Wilhelm von Ascheberg  Q99202609  <- geni:6000000003587948825
 Q99202609	P734	Q127180377	S2600	"6000000003587948825"
 
 # Ekki  Q141613890  <- geni:6000000003602165145
+Q141613890	P26	Q3638589	S2600	"6000000003602165145"
+Q141613890	P40	Q384370	S2600	"6000000003602165145"
+Q141613890	P40	Q7403744	S2600	"6000000003602165145"
 Q141613890	P735	Q141619371	S2600	"6000000003602165145"
 
 # John Stewart  Q75243169  <- geni:6000000003615401747
@@ -2168,6 +4914,23 @@ Q75243169	P569	+1278-00-00T00:00:00Z/9	S2600	"6000000003615401747"
 # Walter Oliphant  Q75824781  <- geni:6000000003615880852
 Q75824781	P570	+1411-00-00T00:00:00Z/9	S2600	"6000000003615880852"
 
+# Halkjell Jonsson Huk  Q18418043  <- geni:6000000003645671274
+Q18418043	P25	Q26965894	S2600	"6000000003645671274"
+Q18418043	P40	Q141499012	S2600	"6000000003645671274"
+Q18418043	P40	Q141499643	S2600	"6000000003645671274"
+Q18418043	P5056	Q141242306	S2600	"6000000003645671274"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q18418043	P569	+1158-00-00T00:00:00Z/9	S2600	"6000000003645671274"
+
+# Bláthóc Bjaðǫk  Q4811064  <- geni:6000000003645671347
+Q4811064	P26	Q260543	S2600	"6000000003645671347"
+Q4811064	P570	+1142-00-00T00:00:00Z/9	S2600	"6000000003645671347"
+
+# Lif Dagsdotter  Q75292013  <- geni:6000000003645671786
+Q75292013	P40	Q2448909	S2600	"6000000003645671786"
+Q75292013	P569	+0766-00-00T00:00:00Z/9	S2600	"6000000003645671786"
+Q75292013	P570	+0810-00-00T00:00:00Z/9	S2600	"6000000003645671786"
+
 # Ingjald Helgasson  Q6032521  <- geni:6000000003645672529
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q6032521	P569	+0820-00-00T00:00:00Z/9	S2600	"6000000003645672529"
@@ -2175,21 +4938,75 @@ Q6032521	P570	+0842-00-00T00:00:00Z/9	S2600	"6000000003645672529"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q6032521	P735	Q138380744	S2600	"6000000003645672529"
 
+# Rafertach ingen Cearbhaill  Q130320417  <- geni:6000000003645672860
+Q130320417	P26	Q5853737	S2600	"6000000003645672860"
+Q130320417	P40	Q11708852	S2600	"6000000003645672860"
+Q130320417	P40	Q16726161	S2600	"6000000003645672860"
+Q130320417	P569	+0820-00-00T00:00:00Z/9	S2600	"6000000003645672860"
+Q130320417	P570	+0848-00-00T00:00:00Z/9	S2600	"6000000003645672860"
+
+# Hrolfur Solgasson  Q130320412  <- geni:6000000003645672881
+Q130320412	P569	+0762-00-00T00:00:00Z/9	S2600	"6000000003645672881"
+Q130320412	P570	+0794-00-00T00:00:00Z/9	S2600	"6000000003645672881"
+
+# Tryggve Olafssonas King of Viken, Norway (Vingulmark & Rånrike)  Q2520347  <- geni:6000000003645683278
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2520347	P569	+0928-00-00T00:00:00Z/9	S2600	"6000000003645683278"
+
 # Astrid Eiriksdatter  Q11959446  <- geni:6000000003645683288
 Q11959446	P5056	Q141583346	S2600	"6000000003645683288"
 Q11959446	P5056	Q141611161	S2600	"6000000003645683288"
 Q11959446	P569	+0925-00-00T00:00:00Z/9	S2600	"6000000003645683288"
 Q11959446	P570	+0968-00-00T00:00:00Z/9	S2600	"6000000003645683288"
 
+# Ingrid Sigurdsdatter  Q75291923  <- geni:6000000003645683752
+Q75291923	P5056	Q83873546	S2600	"6000000003645683752"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75291923	P569	+1010-00-00T00:00:00Z/9	S2600	"6000000003645683752"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75291923	P735	Q903741	S2600	"6000000003645683752"
+
+# Alfarin  Q5666589  <- geni:6000000003645697274
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5666589	P569	+0769-00-00T00:00:00Z/9	S2600	"6000000003645697274"
+
+# Magdalena Karlsdotter Thott  Q4813065  <- geni:6000000003645716538
+Q4813065	P5056	Q141450140	S2600	"6000000003645716538"
+Q4813065	P734	Q47528688	S2600	"6000000003645716538"
+
+# Ingeborg Bårdsdotter (Rein)  Q19375604  <- geni:6000000003645734140
+Q19375604	P5056	Q141585054	S2600	"6000000003645734140"
+Q19375604	P569	+1194-00-00T00:00:00Z/9	S2600	"6000000003645734140"
+Q19375604	P570	+1250-00-00T00:00:00Z/9	S2600	"6000000003645734140"
+
+# Andres Gregoriusson Pott Baron  Q101248133  <- geni:6000000003645734242
+Q101248133	P569	+1244-00-00T00:00:00Z/9	S2600	"6000000003645734242"
+Q101248133	P570	+1273-00-00T00:00:00Z/9	S2600	"6000000003645734242"
+
+# Jon Torbergsson  Q11979186  <- geni:6000000003645734368
+Q11979186	P40	Q75291937	S2600	"6000000003645734368"
+
 # Ragnhild Erlingsdatter Randeberg  Q11996949  <- geni:6000000003645734375
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q11996949	P25	Q141610376	S2600	"6000000003645734375"
-# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q11996949	P26	Q1019325	S2600	"6000000003645734375"
 Q11996949	P40	Q141499012	S2600	"6000000003645734375"
 Q11996949	P40	Q141499643	S2600	"6000000003645734375"
+Q11996949	P40	Q75291937	S2600	"6000000003645734375"
 Q11996949	P5056	Q141569077	S2600	"6000000003645734375"
 Q11996949	P570	+1210-00-00T00:00:00Z/9	S2600	"6000000003645734375"
+
+# Erling Ormsson  Q725219  <- geni:6000000003645734381
+Q725219	P26	Q141610376	S2600	"6000000003645734381"
+
+# Kristin Sigurdsdatter  Q642075  <- geni:6000000003645734389
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q642075	P569	+1124-00-00T00:00:00Z/9	S2600	"6000000003645734389"
+
+# Malmfrid Kijewskaja  Q2919957  <- geni:6000000003645734414
+Q2919957	P26	Q260543	S2600	"6000000003645734414"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2919957	P569	+1105-00-00T00:00:00Z/9	S2600	"6000000003645734414"
 
 # Erling Ivarsson til Bjarkøy  Q56808255  <- geni:6000000003645734748
 Q56808255	P5056	Q141444398	S2600	"6000000003645734748"
@@ -2198,18 +5015,127 @@ Q56808255	P569	+1220-00-00T00:00:00Z/9	S2600	"6000000003645734748"
 Q56808255	P570	+1263-12-17T00:00:00Z/11	S2600	"6000000003645734748"
 Q56808255	P734	Q122835529	S2600	"6000000003645734748"
 
+# Jon Arnesson  Q12176823  <- geni:6000000003645734792
+Q12176823	P25	Q141562331	S2600	"6000000003645734792"
+Q12176823	P26	Q101248143	S2600	"6000000003645734792"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12176823	P569	+1033-00-00T00:00:00Z/9	S2600	"6000000003645734792"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12176823	P570	+1097-00-00T00:00:00Z/9	S2600	"6000000003645734792"
+Q12176823	P734	Q15784002	S2600	"6000000003645734792"
+
+# Orm Eilivsson Opplandsjarl  Q9053166  <- geni:6000000003645746479
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q9053166	P569	+1010-00-00T00:00:00Z/9	S2600	"6000000003645746479"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q9053166	P570	+1055-00-00T00:00:00Z/9	S2600	"6000000003645746479"
+
 # Ivar Sigtryggsson  Q141614051  <- geni:6000000003645753962
 Q141614051	P26	Q141613954	S2600	"6000000003645753962"
 
+# Magnus Haraldsson II  Q343088  <- geni:6000000003645760032
+Q343088	P5056	Q141585679	S2600	"6000000003645760032"
+
+# Ranveig Ragnhild Sigurdsdatter  Q101248143  <- geni:6000000003645760154
+Q101248143	P26	Q12176823	S2600	"6000000003645760154"
+Q101248143	P5056	Q83873546	S2600	"6000000003645760154"
+Q101248143	P569	+1035-00-00T00:00:00Z/9	S2600	"6000000003645760154"
+Q101248143	P570	+1080-00-00T00:00:00Z/9	S2600	"6000000003645760154"
+Q101248143	P735	Q30836047	S2600	"6000000003645760154"
+
+# Sigurd Toresson Hund  Q19654347  <- geni:6000000003645760161
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q19654347	P22	Q2530678	S2600	"6000000003645760161"
+Q19654347	P5056	Q141518427	S2600	"6000000003645760161"
+Q19654347	P570	+1040-00-00T00:00:00Z/9	S2600	"6000000003645760161"
+
+# Tore Toreson Hund  Q2530678  <- geni:6000000003645760175
+Q2530678	P40	Q19654347	S2600	"6000000003645760175"
+Q2530678	P5056	Q141403363	S2600	"6000000003645760175"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2530678	P735	Q1548096	S2600	"6000000003645760175"
+
+# Tore Sigurdsson av Bjarkøy  Q3384935  <- geni:6000000003645772841
+Q3384935	P5056	Q21506553	S2600	"6000000003645772841"
+
+# Christence Pedersdatter Wirtenberg  Q103783751  <- geni:6000000003645806859
+Q103783751	P26	Q103783739	S2600	"6000000003645806859"
+Q103783751	P5056	Q141257144	S2600	"6000000003645806859"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q103783751	P569	+1310-00-00T00:00:00Z/9	S2600	"6000000003645806859"
+
+# Ragnhildur Eiríksdóttir  Q4806421  <- geni:6000000003645825602
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4806421	P569	+0930-00-00T00:00:00Z/9	S2600	"6000000003645825602"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4806421	P570	+0990-00-00T00:00:00Z/9	S2600	"6000000003645825602"
+
+# Nikephoros I  Q208754  <- geni:6000000003645870815
+Q208754	P735	Q19002758	S2600	"6000000003645870815"
+
 # Praeiecta  Q7237531  <- geni:6000000003645870907
 Q7237531	P569	+0520-00-00T00:00:00Z/9	S2600	"6000000003645870907"
+
+# Jorund Ulfsson  Q130320407  <- geni:6000000003645908755
+Q130320407	P569	+0881-00-00T00:00:00Z/9	S2600	"6000000003645908755"
+Q130320407	P570	+0970-00-00T00:00:00Z/9	S2600	"6000000003645908755"
+
+# Þórunn Þorfinnsdóttir  Q16421105  <- geni:6000000003645908760
+Q16421105	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000003645908760"
+Q16421105	P570	+1000-00-00T00:00:00Z/9	S2600	"6000000003645908760"
+Q16421105	P735	Q1158710	S2600	"6000000003645908760"
+
+# Þórður Snorasson  Q172345  <- geni:6000000003645908765
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q172345	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000003645908765"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q172345	P735	Q8079578	S2600	"6000000003645908765"
+
+# Þorfinnur Þórðarson  Q1771200  <- geni:6000000003645908780
+Q1771200	P40	Q597962	S2600	"6000000003645908780"
+Q1771200	P5056	Q125050602	S2600	"6000000003645908780"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1771200	P569	+0980-00-00T00:00:00Z/9	S2600	"6000000003645908780"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1771200	P570	+1030-00-00T00:00:00Z/9	S2600	"6000000003645908780"
+
+# Arnoul de Boulogne  Q2653152  <- geni:6000000003645977045
+Q2653152	P40	Q600483	S2600	"6000000003645977045"
+Q2653152	P569	+0942-00-00T00:00:00Z/9	S2600	"6000000003645977045"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2653152	P570	+0990-07-04T00:00:00Z/11	S2600	"6000000003645977045"
+Q2653152	P734	Q104854476	S2600	"6000000003645977045"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2653152	P735	Q65179481	S2600	"6000000003645977045"
 
 # Toralde Toraldesøn Kane på Berg  Q141614392  <- geni:6000000003645989693
 Q141614392	P26	Q141614175	S2600	"6000000003645989693"
 Q141614392	P5056	Q141586294	S2600	"6000000003645989693"
 
+# NN Kone til Toralde Gunnarsdatter Hvit  Q141584867  <- geni:6000000003645989712
+Q141584867	P25	Q75393575	S2600	"6000000003645989712"
+
 # Serker Jonsen  Q141614332  <- geni:6000000003646023820
 Q141614332	P26	Q141614205	S2600	"6000000003646023820"
+
+# Axel Til Herlev Aagesen Thott  Q103783739  <- geni:6000000003646032832
+Q103783739	P26	Q103783751	S2600	"6000000003646032832"
+Q103783739	P569	+1314-00-00T00:00:00Z/9	S2600	"6000000003646032832"
+Q103783739	P570	+1342-00-00T00:00:00Z/9	S2600	"6000000003646032832"
+Q103783739	P734	Q21488010	S2600	"6000000003646032832"
+Q103783739	P734	Q47528688	S2600	"6000000003646032832"
+Q103783739	P735	Q5407300	S2600	"6000000003646032832"
+
+# Wilhelm von Lüneburg Herr von Lüneburg  Q63301  <- geni:6000000003646057180
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q63301	P570	+1213-12-13T00:00:00Z/11	S2600	"6000000003646057180"
+
+# Ada de Lorraine  Q2341156  <- geni:6000000003649687777
+Q2341156	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000003649687777"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2341156	P570	+1044-10-23T00:00:00Z/11	S2600	"6000000003649687777"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2341156	P735	Q346047	S2600	"6000000003649687777"
 
 # Richard of Hauteville siniscalco of Aulia & Calabria  Q1527396  <- geni:6000000003649761996
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2219,6 +5145,21 @@ Q1527396	P570	+1118-00-00T00:00:00Z/9	S2600	"6000000003649761996"
 
 # Gaitelgrima I di Salerno  Q110581651  <- geni:6000000003649776335
 Q110581651	P570	+1087-01-00T00:00:00Z/10	S2600	"6000000003649776335"
+
+# Tore Ragnvaldsson  Q720262  <- geni:6000000003665048100
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q720262	P569	+0862-00-00T00:00:00Z/9	S2600	"6000000003665048100"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q720262	P570	+0940-00-00T00:00:00Z/9	S2600	"6000000003665048100"
+
+# Kristina Alvsdatter Tornberg  Q101247863  <- geni:6000000003667941298
+Q101247863	P25	Q141612065	S2600	"6000000003667941298"
+Q101247863	P26	Q101247862	S2600	"6000000003667941298"
+Q101247863	P5056	Q141498623	S2600	"6000000003667941298"
+Q101247863	P569	+1264-00-00T00:00:00Z/9	S2600	"6000000003667941298"
+Q101247863	P570	+1336-00-00T00:00:00Z/9	S2600	"6000000003667941298"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101247863	P735	Q19798802	S2600	"6000000003667941298"
 
 # Elizabeth Fleming  Q128851984  <- geni:6000000003669568307
 Q128851984	P734	Q1427982	S2600	"6000000003669568307"
@@ -2238,18 +5179,70 @@ Q141613900	P734	Q141614623	S2600	"6000000003708521708"
 # Humphrey Colquhoun  Q75614136  <- geni:6000000003714021181
 Q75614136	P570	+1559-10-29T00:00:00Z/11	S2600	"6000000003714021181"
 
+# Erik Segersäll  Q318912  <- geni:6000000003714580449
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q318912	P569	+0929-00-00T00:00:00Z/9	S2600	"6000000003714580449"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q318912	P570	+0992-00-00T00:00:00Z/9	S2600	"6000000003714580449"
+
 # Hildegard  Q234410  <- geni:6000000003715297906
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q234410	P735	Q3135653	S2600	"6000000003715297906"
 
+# Hadewig da Saxonia  Q43961  <- geni:6000000003726054418
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q43961	P570	+0958-01-09T00:00:00Z/11	S2600	"6000000003726054418"
+
+# Beatrix de Vermandois  Q263266  <- geni:6000000003726141100
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q263266	P570	+0931-03-26T00:00:00Z/11	S2600	"6000000003726141100"
+
 # Berit, Bereta Eriksdatter Braut søndre  Q141511317  <- geni:6000000003732806293
 Q141511317	P734	Q30132563	S2600	"6000000003732806293"
+
+# Erengisle Nilsson (Hammersta) Sr.  Q5714342  <- geni:6000000003734498678
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5714342	P5056	Q130233015	S2600	"6000000003734498678"
+
+# Bridget Birgersdotter  Q204996  <- geni:6000000003743377648
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q204996	P5056	Q141583354	S2600	"6000000003743377648"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q204996	P735	Q913810	S2600	"6000000003743377648"
 
 # Gunbjørn Sørbø  Q141559594  <- geni:6000000003744610354
 Q141559594	P569	+1530-00-00T00:00:00Z/9	S2600	"6000000003744610354"
 
 # Adolf Fredrik Munck  Q2478781  <- geni:6000000003748326674
 Q2478781	P734	Q132857633	S2600	"6000000003748326674"
+
+# Conrad II de Bourgogne Duke of Upper Burgundy  Q1782094  <- geni:6000000003768386624
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1782094	P25	Q354934	S2600	"6000000003768386624"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1782094	P40	Q437435	S2600	"6000000003768386624"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1782094	P569	+0825-00-00T00:00:00Z/9	S2600	"6000000003768386624"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1782094	P570	+0876-00-00T00:00:00Z/9	S2600	"6000000003768386624"
+
+# Rudolph I de Bourgogne King of Burgundy  Q437435  <- geni:6000000003768392839
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q437435	P22	Q1782094	S2600	"6000000003768392839"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q437435	P570	+0911-10-06T00:00:00Z/11	S2600	"6000000003768392839"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q437435	P735	Q18028739	S2600	"6000000003768392839"
+
+# Helene Ilona von Braunschweig-Lüneburg, Herzogin und Kurfürstin zu Sachsen  Q3721523  <- geni:6000000003771781380
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3721523	P735	Q1051881	S2600	"6000000003771781380"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3721523	P735	Q971710	S2600	"6000000003771781380"
+
+# Bertrade Carolingien  Q266751  <- geni:6000000003773899334
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q266751	P735	Q76527357	S2600	"6000000003773899334"
 
 # Peter Tokheim  Q135527732  <- geni:6000000003782918416
 Q135527732	P569	+1450-00-00T00:00:00Z/9	S2600	"6000000003782918416"
@@ -2260,15 +5253,59 @@ Q103783322	P569	+1120-00-00T00:00:00Z/9	S2600	"6000000003784400115"
 Q103783322	P570	+1160-00-00T00:00:00Z/9	S2600	"6000000003784400115"
 
 # Jon Gautsson Ænes  Q103783310  <- geni:6000000003784435027
+Q103783310	P40	Q106528141	S2600	"6000000003784435027"
 Q103783310	P569	+1140-00-00T00:00:00Z/9	S2600	"6000000003784435027"
 Q103783310	P570	+1181-00-00T00:00:00Z/9	S2600	"6000000003784435027"
 Q103783310	P734	Q141502692	S2600	"6000000003784435027"
+
+# Rikissa Birgersdotter Folkunga  Q441785  <- geni:6000000003801656372
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q441785	P5056	Q141583354	S2600	"6000000003801656372"
+
+# Heinrich I von Mecklenburg Herzog zu Mecklenburg-Werle  Q95549  <- geni:6000000003801815067
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q95549	P569	+1234-00-00T00:00:00Z/9	S2600	"6000000003801815067"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q95549	P734	Q37484532	S2600	"6000000003801815067"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q95549	P735	Q2018484	S2600	"6000000003801815067"
 
 # Bergljot Roarsdatter Øen  Q141611100  <- geni:6000000003820929909
 Q141611100	P26	Q141611100	S2600	"6000000003820929909"
 
 # Knut Gunnarson Gøysa  Q141616242  <- geni:6000000003820948482
 Q141616242	P5056	Q141257126	S2600	"6000000003820948482"
+
+# Alfhild Alfarinsdatter  Q122890477  <- geni:6000000003820951839
+Q122890477	P569	+0794-00-00T00:00:00Z/9	S2600	"6000000003820951839"
+Q122890477	P570	+0825-00-00T00:00:00Z/9	S2600	"6000000003820951839"
+Q122890477	P735	Q2778125	S2600	"6000000003820951839"
+
+# Kali Sæbjørnsson  Q112969077  <- geni:6000000003820968938
+Q112969077	P22	Q141563013	S2600	"6000000003820968938"
+Q112969077	P25	Q141570845	S2600	"6000000003820968938"
+Q112969077	P569	+1010-00-00T00:00:00Z/9	S2600	"6000000003820968938"
+Q112969077	P570	+1098-00-00T00:00:00Z/9	S2600	"6000000003820968938"
+Q112969077	P735	Q18681259	S2600	"6000000003820968938"
+
+# NN Sæbjørns kone  Q141570845  <- geni:6000000003820968955
+Q141570845	P40	Q112969077	S2600	"6000000003820968955"
+
+# Ingiríðr Ragnvaldsdóttir  Q75532153  <- geni:6000000003820968980
+Q75532153	P25	Q101248137	S2600	"6000000003820968980"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75532153	P40	Q141583869	S2600	"6000000003820968980"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75532153	P569	+1135-00-00T00:00:00Z/9	S2600	"6000000003820968980"
+Q75532153	P570	+1190-00-00T00:00:00Z/9	S2600	"6000000003820968980"
+
+# Eiríkr Eiríksson  Q75532157  <- geni:6000000003820968990
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75532157	P40	Q141583869	S2600	"6000000003820968990"
+Q75532157	P570	+1200-00-00T00:00:00Z/9	S2600	"6000000003820968990"
+Q75532157	P734	Q141611184	S2600	"6000000003820968990"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75532157	P735	Q27608351	S2600	"6000000003820968990"
 
 # NN Hallkjellsdatter fra Aurland  Q141614205  <- geni:6000000003820973890
 Q141614205	P26	Q141614332	S2600	"6000000003820973890"
@@ -2277,6 +5314,9 @@ Q141614205	P26	Q141614332	S2600	"6000000003820973890"
 Q141610610	P5056	Q130232998	S2600	"6000000003820977951"
 
 # NN  Q141583869  <- geni:6000000003820980882
+Q141583869	P22	Q75532157	S2600	"6000000003820980882"
+Q141583869	P25	Q75532153	S2600	"6000000003820980882"
+Q141583869	P40	Q316039	S2600	"6000000003820980882"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141583869	P569	+1182-00-00T00:00:00Z/9	S2600	"6000000003820980882"
 
@@ -2286,8 +5326,14 @@ Q141611054	P735	Q634916	S2600	"6000000003820985002"
 
 # Peter Israelsson (Finstaätten)  Q141610327  <- geni:6000000003820985279
 Q141610327	P40	Q141612136	S2600	"6000000003820985279"
+Q141610327	P40	Q5576561	S2600	"6000000003820985279"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141610327	P735	Q13582800	S2600	"6000000003820985279"
+
+# Ivar Sveinson  Q134955037  <- geni:6000000003820985316
+Q134955037	P26	Q438469	S2600	"6000000003820985316"
+Q134955037	P5056	Q141610389	S2600	"6000000003820985316"
+Q134955037	P570	+1170-00-00T00:00:00Z/9	S2600	"6000000003820985316"
 
 # Ingeborg Håland  Q141447146  <- geni:6000000003822845729
 Q141447146	P569	+1590-00-00T00:00:00Z/9	S2600	"6000000003822845729"
@@ -2299,17 +5345,73 @@ Q141444552	P22	Q141205909	S2600	"6000000003823025083"
 Q141444552	P25	Q141205930	S2600	"6000000003823025083"
 Q141444552	P5056	Q141283709	S2600	"6000000003823025083"
 
+# Gerberga von Lothringen  Q2394242  <- geni:6000000003827147258
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2394242	P25	Q4950137	S2600	"6000000003827147258"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2394242	P40	Q81085608	S2600	"6000000003827147258"
+Q2394242	P735	Q65237017	S2600	"6000000003827147258"
+
 # Israel Andersson  Q101247399  <- geni:6000000003827167316
 Q101247399	P569	+1218-00-00T00:00:00Z/9	S2600	"6000000003827167316"
 Q101247399	P570	+1269-05-31T00:00:00Z/11	S2600	"6000000003827167316"
+
+# Agnès  Q1185368  <- geni:6000000003827181035
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1185368	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000003827181035"
+
+# Gérard comte d'Auvergne  Q2702855  <- geni:6000000003827181172
+Q2702855	P569	+0795-00-00T00:00:00Z/9	S2600	"6000000003827181172"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2702855	P735	Q13480879	S2600	"6000000003827181172"
+
+# Agnes von Habsburg  Q61576919  <- geni:6000000003827280439
+Q61576919	P569	+1162-00-00T00:00:00Z/9	S2600	"6000000003827280439"
+Q61576919	P570	+1252-02-09T00:00:00Z/11	S2600	"6000000003827280439"
+Q61576919	P734	Q16880125	S2600	"6000000003827280439"
+
+# Gottfried Von Staufen I  Q61576982  <- geni:6000000003827280453
+Q61576982	P569	+1144-00-00T00:00:00Z/9	S2600	"6000000003827280453"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61576982	P570	+1198-00-00T00:00:00Z/9	S2600	"6000000003827280453"
+Q61576982	P735	Q16746939	S2600	"6000000003827280453"
+
+# Hedwig of Kyburg Countess of Habsburg  Q61576937  <- geni:6000000003827280468
+Q61576937	P569	+1192-00-00T00:00:00Z/9	S2600	"6000000003827280468"
+Q61576937	P735	Q19689438	S2600	"6000000003827280468"
+
+# Ruprecht von Laurenburg  Q317022  <- geni:6000000003827368213
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q317022	P569	+1095-00-00T00:00:00Z/9	S2600	"6000000003827368213"
+
+# Gró Þorsteinsdóttir (Donachadh)  Q16726163  <- geni:6000000003827374118
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16726163	P569	+0873-00-00T00:00:00Z/9	S2600	"6000000003827374118"
+Q16726163	P570	+0914-00-00T00:00:00Z/9	S2600	"6000000003827374118"
+Q16726163	P735	Q30153772	S2600	"6000000003827374118"
+
+# Ingeltrude de Brienne  Q75402838  <- geni:6000000003827384413
+Q75402838	P569	+0925-00-00T00:00:00Z/9	S2600	"6000000003827384413"
+Q75402838	P570	+0980-00-00T00:00:00Z/9	S2600	"6000000003827384413"
 
 # Manassès de Réthel  Q2596292  <- geni:6000000003827429561
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2596292	P570	+1273-00-00T00:00:00Z/9	S2600	"6000000003827429561"
 
+# Sophia von Sachsen Pfalzgräfin  Q75245920  <- geni:6000000003827438055
+Q75245920	P569	+1147-00-00T00:00:00Z/9	S2600	"6000000003827438055"
+Q75245920	P570	+1189-00-00T00:00:00Z/9	S2600	"6000000003827438055"
+Q75245920	P734	Q60605147	S2600	"6000000003827438055"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75245920	P735	Q2302787	S2600	"6000000003827438055"
+
 # Heinrich von Nassau-Beilstein  Q2253920  <- geni:6000000003827438391
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2253920	P569	+1340-00-00T00:00:00Z/9	S2600	"6000000003827438391"
+
+# Rudolf I von Bregenz-Pfullendorf  Q25344436  <- geni:6000000003827451485
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q25344436	P569	+1094-00-00T00:00:00Z/9	S2600	"6000000003827451485"
 
 # Swantepolk II Svantepolk II von Pomeren of Pomorze Gdanskie  Q696750  <- geni:6000000003827451613
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2317,19 +5419,91 @@ Q696750	P569	+1182-00-00T00:00:00Z/9	S2600	"6000000003827451613"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q696750	P570	+1266-01-10T00:00:00Z/11	S2600	"6000000003827451613"
 
+# Wilhelm von Jülich  Q196408  <- geni:6000000003827455469
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q196408	P735	Q11027623	S2600	"6000000003827455469"
+
+# Willem I von Jülich  Q195693  <- geni:6000000003827455489
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q195693	P735	Q15282375	S2600	"6000000003827455489"
+
+# Hugo van Goor van Twente  Q195692  <- geni:6000000003827455496
+Q195692	P569	+1090-00-00T00:00:00Z/9	S2600	"6000000003827455496"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q195692	P570	+1143-03-05T00:00:00Z/11	S2600	"6000000003827455496"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q195692	P735	Q1242555	S2600	"6000000003827455496"
+
+# Günther Il von Käfernburg-Schwarzburg und Hallermund  Q1431725  <- geni:6000000003827470068
+Q1431725	P735	Q17151892	S2600	"6000000003827470068"
+
 # Johann von Sayn II  Q26959922  <- geni:6000000003827477230
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q26959922	P569	+1319-00-00T00:00:00Z/9	S2600	"6000000003827477230"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q26959922	P570	+1360-12-25T00:00:00Z/11	S2600	"6000000003827477230"
 
+# Johann von Sayn I  Q26959921  <- geni:6000000003827477242
+Q26959921	P569	+1271-00-00T00:00:00Z/9	S2600	"6000000003827477242"
+
+# Gottfried von Sayn und Sponheim zu Sayn und Starkenburg I.  Q26877217  <- geni:6000000003827477254
+Q26877217	P570	+1283-10-31T00:00:00Z/11	S2600	"6000000003827477254"
+Q26877217	P734	Q30504340	S2600	"6000000003827477254"
+
 # Rudolf III von Homberg  Q59417412  <- geni:6000000003827524708
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q59417412	P569	+1095-00-00T00:00:00Z/9	S2600	"6000000003827524708"
 
+# Elisabeth von Meißen  Q1330461  <- geni:6000000003827542188
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1330461	P735	Q63611044	S2600	"6000000003827542188"
+
+# Johan von Thienen  Q101248380  <- geni:6000000003827561521
+Q101248380	P26	Q101248382	S2600	"6000000003827561521"
+Q101248380	P569	+1310-00-00T00:00:00Z/9	S2600	"6000000003827561521"
+Q101248380	P734	Q131361190	S2600	"6000000003827561521"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248380	P735	Q10989273	S2600	"6000000003827561521"
+
+# Anna von Thienen  Q101248382  <- geni:6000000003827561528
+Q101248382	P26	Q101248380	S2600	"6000000003827561528"
+Q101248382	P569	+1320-00-00T00:00:00Z/9	S2600	"6000000003827561528"
+Q101248382	P570	+1411-00-00T00:00:00Z/9	S2600	"6000000003827561528"
+Q101248382	P734	Q131361190	S2600	"6000000003827561528"
+Q101248382	P735	Q666578	S2600	"6000000003827561528"
+
+# Rénaud de Choiseul  Q84697137  <- geni:6000000003827576187
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q84697137	P569	+1183-00-00T00:00:00Z/9	S2600	"6000000003827576187"
+
+# Elisabeth de Mont Saint Jean des Barres  Q96245000  <- geni:6000000003827576299
+Q96245000	P569	+1198-00-00T00:00:00Z/9	S2600	"6000000003827576299"
+Q96245000	P570	+1218-00-00T00:00:00Z/9	S2600	"6000000003827576299"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96245000	P735	Q63611044	S2600	"6000000003827576299"
+
 # Hedwige de Roucy  Q48925112  <- geni:6000000003827590199
 Q48925112	P734	Q104832231	S2600	"6000000003827590199"
 Q48925112	P735	Q65177200	S2600	"6000000003827590199"
+
+# Isaac de Cambrai comte de Cambrai et de Valenciennes  Q3154787  <- geni:6000000003827606302
+Q3154787	P734	Q104803132	S2600	"6000000003827606302"
+
+# Bertha de Valenciennes comtesse de Cambrai  Q56682549  <- geni:6000000003827606309
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56682549	P569	+0893-00-00T00:00:00Z/9	S2600	"6000000003827606309"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56682549	P570	+0967-10-09T00:00:00Z/11	S2600	"6000000003827606309"
+Q56682549	P735	Q18180820	S2600	"6000000003827606309"
+
+# Briant de Châteaubriant  Q15966933  <- geni:6000000003827611157
+Q15966933	P569	+1040-00-00T00:00:00Z/9	S2600	"6000000003827611157"
+Q15966933	P570	+1063-00-00T00:00:00Z/9	S2600	"6000000003827611157"
+Q15966933	P734	Q44264148	S2600	"6000000003827611157"
+
+# Siegfried von Eppenstein  Q20745882  <- geni:6000000003827612603
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q20745882	P570	+1316-00-00T00:00:00Z/9	S2600	"6000000003827612603"
 
 # Anastasia von Leiningen  Q116169288  <- geni:6000000003827624264
 Q116169288	P569	+1363-00-00T00:00:00Z/9	S2600	"6000000003827624264"
@@ -2358,6 +5532,10 @@ Q116150015	P570	+1216-00-00T00:00:00Z/9	S2600	"6000000003827746052"
 Q96240837	P569	+1184-00-00T00:00:00Z/9	S2600	"6000000003827751497"
 Q96240837	P570	+1235-08-23T00:00:00Z/11	S2600	"6000000003827751497"
 
+# Azéca de Woevre  Q75402863  <- geni:6000000003827799354
+Q75402863	P569	+0985-00-00T00:00:00Z/9	S2600	"6000000003827799354"
+Q75402863	P570	+1068-00-00T00:00:00Z/9	S2600	"6000000003827799354"
+
 # Burga de Stuteville  Q125524814  <- geni:6000000003827809292
 Q125524814	P569	+1146-00-00T00:00:00Z/9	S2600	"6000000003827809292"
 Q125524814	P570	+1185-00-00T00:00:00Z/9	S2600	"6000000003827809292"
@@ -2376,9 +5554,36 @@ Q76356145	P569	+1317-00-00T00:00:00Z/9	S2600	"6000000003827883178"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q76356145	P570	+1399-00-00T00:00:00Z/9	S2600	"6000000003827883178"
 
+# Folmar Volmar von Blieskastel I  Q44192477  <- geni:6000000003827890294
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q44192477	P569	+1115-00-00T00:00:00Z/9	S2600	"6000000003827890294"
+
+# Arnoul de Picquigny  Q115633979  <- geni:6000000003828058140
+Q115633979	P26	Q115633982	S2600	"6000000003828058140"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q115633979	P40	Q1357094	S2600	"6000000003828058140"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q115633979	P569	+1040-00-00T00:00:00Z/9	S2600	"6000000003828058140"
+Q115633979	P735	Q65179481	S2600	"6000000003828058140"
+
+# Eustache I de Picquigny  Q115633980  <- geni:6000000003828058154
+Q115633980	P22	Q18214782	S2600	"6000000003828058154"
+Q115633980	P570	+1085-00-00T00:00:00Z/9	S2600	"6000000003828058154"
+Q115633980	P735	Q18929064	S2600	"6000000003828058154"
+
 # Béatrix de Walcourt  Q110641098  <- geni:6000000003828078936
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q110641098	P735	Q18177243	S2600	"6000000003828078936"
+
+# Romanos IV Diogenes Byzantine emperor  Q41834  <- geni:6000000003828287409
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41834	P569	+1020-00-00T00:00:00Z/9	S2600	"6000000003828287409"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q41834	P735	Q130711774	S2600	"6000000003828287409"
+
+# Raingarde  Q15040856  <- geni:6000000003828326587
+Q15040856	P40	Q3145021	S2600	"6000000003828326587"
+Q15040856	P569	+0898-00-00T00:00:00Z/9	S2600	"6000000003828326587"
 
 # Arnold I de Lutzelbourg  Q141613834  <- geni:6000000003828367025
 Q141613834	P26	Q141613927	S2600	"6000000003828367025"
@@ -2392,6 +5597,13 @@ Q91361630	P735	Q7385728	S2600	"6000000003828382547"
 # Anna Ivarsdatter Stokka  Q141216598  <- geni:6000000003830468150
 Q141216598	P570	+1600-00-00T00:00:00Z/9	S2600	"6000000003830468150"
 
+# Högni, Högne Oblaudsson den Hvite  Q141569766  <- geni:6000000003852586563
+Q141569766	P40	Q11705582	S2600	"6000000003852586563"
+
+# Gunnor  Q270777  <- geni:6000000003852730222
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q270777	P569	+0936-11-21T00:00:00Z/11	S2600	"6000000003852730222"
+
 # Eiríkur hvíti Hognasson  Q141564900  <- geni:6000000003852864012
 Q141564900	P570	+0872-00-00T00:00:00Z/9	S2600	"6000000003852864012"
 
@@ -2403,14 +5615,68 @@ Q16474622	P31	Q5	S2600	"6000000003858466398"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q4301841	P569	+1035-00-00T00:00:00Z/9	S2600	"6000000003858589577"
 
+# Sophia von Saarbrücken  Q20680020  <- geni:6000000003858683664
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q20680020	P569	+1148-00-00T00:00:00Z/9	S2600	"6000000003858683664"
+
 # Anna von Oettingen  Q44191988  <- geni:6000000003858686294
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q44191988	P569	+1382-00-00T00:00:00Z/9	S2600	"6000000003858686294"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q44191988	P570	+1442-07-22T00:00:00Z/11	S2600	"6000000003858686294"
 
+# Euphrosyne Misztiszlavovna  Q238341  <- geni:6000000003858704239
+Q238341	P26	Q238341	S2600	"6000000003858704239"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q238341	P735	Q29551454	S2600	"6000000003858704239"
+
+# Constance Capet princess of France, consort of Antioch  Q669639  <- geni:6000000003858710950
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q669639	P734	Q2937271	S2600	"6000000003858710950"
+
+# Albrecht II Herzog von Mecklenburg Herzog zu Mecklenburg-Schwerin  Q64251  <- geni:6000000003858754511
+Q64251	P734	Q37484532	S2600	"6000000003858754511"
+
+# Dedo I von Wettin  Q520301  <- geni:6000000003858812164
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q520301	P569	+0956-00-00T00:00:00Z/9	S2600	"6000000003858812164"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q520301	P570	+1009-10-13T00:00:00Z/11	S2600	"6000000003858812164"
+
 # NN Lima  Q141529050  <- geni:6000000003860275360
 Q141529050	P569	+1477-00-00T00:00:00Z/9	S2600	"6000000003860275360"
+
+# Ebbe Skjalmsen Hvide  Q12309311  <- geni:6000000003865794618
+Q12309311	P26	Q141498390	S2600	"6000000003865794618"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12309311	P40	Q141518004	S2600	"6000000003865794618"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12309311	P734	Q55222347	S2600	"6000000003865794618"
+
+# Olav I Tryggvason King of Norway  Q213801  <- geni:6000000003867333182
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q213801	P569	+0963-00-00T00:00:00Z/9	S2600	"6000000003867333182"
+
+# Jon Hafthorsson av Sørum  Q5890072  <- geni:6000000003869622559
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5890072	P40	Q141586268	S2600	"6000000003869622559"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5890072	P40	Q141610334	S2600	"6000000003869622559"
+Q5890072	P570	+1395-09-01T00:00:00Z/11	S2600	"6000000003869622559"
+
+# Ingeborg Jonsdatter Stjerne  Q111989195  <- geni:6000000003878804784
+Q111989195	P26	Q111989192	S2600	"6000000003878804784"
+Q111989195	P5056	Q141189036	S2600	"6000000003878804784"
+Q111989195	P569	+1378-00-00T00:00:00Z/9	S2600	"6000000003878804784"
+Q111989195	P570	+1415-00-00T00:00:00Z/9	S2600	"6000000003878804784"
+Q111989195	P735	Q656590	S2600	"6000000003878804784"
+
+# Bengt Turesson Bielke  Q5569998  <- geni:6000000003885415237
+Q5569998	P5056	Q130232969	S2600	"6000000003885415237"
+Q5569998	P569	+1291-00-00T00:00:00Z/9	S2600	"6000000003885415237"
+Q5569998	P570	+1358-00-00T00:00:00Z/9	S2600	"6000000003885415237"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5569998	P734	Q37547315	S2600	"6000000003885415237"
 
 # Sanchet d'Abrichecourt KG  Q3471698  <- geni:6000000003887962291
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2420,6 +5686,20 @@ Q3471698	P570	+1372-00-00T00:00:00Z/9	S2600	"6000000003887962291"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q136389130	P569	+1700-10-22T00:00:00Z/11	S2600	"6000000003894905625"
 
+# Kettil Nilsson  Q133320583  <- geni:6000000003897410576
+Q133320583	P5056	Q130233015	S2600	"6000000003897410576"
+
+# Vseslav Bryachislavich Полоцкий и Киевский  Q497915  <- geni:6000000003897549326
+Q497915	P734	Q27889288	S2600	"6000000003897549326"
+Q497915	P734	Q4195066	S2600	"6000000003897549326"
+
+# Ebba Eriksdotter Krummedige  Q103787973  <- geni:6000000003898167768
+Q103787973	P5056	Q130232912	S2600	"6000000003898167768"
+Q103787973	P569	+1396-00-00T00:00:00Z/9	S2600	"6000000003898167768"
+Q103787973	P570	+1465-08-24T00:00:00Z/11	S2600	"6000000003898167768"
+Q103787973	P734	Q51059378	S2600	"6000000003898167768"
+Q103787973	P735	Q2242896	S2600	"6000000003898167768"
+
 # Iain Dubh MacLean 1st Laird  Q6230226  <- geni:6000000003908208411
 Q6230226	P569	+1532-00-00T00:00:00Z/9	S2600	"6000000003908208411"
 Q6230226	P570	+1586-07-00T00:00:00Z/10	S2600	"6000000003908208411"
@@ -2428,9 +5708,17 @@ Q6230226	P570	+1586-07-00T00:00:00Z/10	S2600	"6000000003908208411"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75764198	P569	+1722-00-00T00:00:00Z/9	S2600	"6000000003914650776"
 
+# Sigrid Toresdatter Hund  Q12000373  <- geni:6000000003937145740
+Q12000373	P5056	Q141313474	S2600	"6000000003937145740"
+Q12000373	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000003937145740"
+Q12000373	P570	+1051-00-00T00:00:00Z/9	S2600	"6000000003937145740"
+
 # Oliba de Cerdanya bisbe de Vic  Q1974868  <- geni:6000000003937199019
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q1974868	P569	+0971-00-00T00:00:00Z/9	S2600	"6000000003937199019"
+
+# Gjertrud Erlingsdatter  Q141562331  <- geni:6000000003937334608
+Q141562331	P40	Q12176823	S2600	"6000000003937334608"
 
 # Peder Gabrielson Thingbø  Q141450304  <- geni:6000000003947567389
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2443,6 +5731,12 @@ Q141564779	P570	+1519-00-00T00:00:00Z/9	S2600	"6000000003948163151"
 
 # Woizero Menen Asfaw  Q913749  <- geni:6000000003957676451
 Q913749	P734	Q1926724	S2600	"6000000003957676451"
+
+# Carloman Pépin  Q299645  <- geni:6000000003962328571
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q299645	P569	+0773-04-00T00:00:00Z/10	S2600	"6000000003962328571"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q299645	P735	Q24075713	S2600	"6000000003962328571"
 
 # Adalhaid  Q23930953  <- geni:6000000003962400680
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2472,8 +5766,21 @@ Q6251491	P735	Q20730411	S2600	"6000000004032942523"
 # Mariet Larsdotter  Q141538791  <- geni:6000000004042643753
 Q141538791	P26	Q141538791	S2600	"6000000004042643753"
 
+# Henri Ier de Champagne-Blois  Q364517  <- geni:6000000004043097252
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q364517	P735	Q4497249	S2600	"6000000004043097252"
+
 # Sara Andersdotter  Q141620265  <- geni:6000000004043293307
 Q141620265	P40	Q141620134	S2600	"6000000004043293307"
+
+# Hallvard Ormsson  Q141586237  <- geni:6000000004066243273
+Q141586237	P22	Q25433328	S2600	"6000000004066243273"
+
+# Harald Rödskägg Granraude king of Agder  Q1772605  <- geni:6000000004081783364
+Q1772605	P570	+0821-00-00T00:00:00Z/9	S2600	"6000000004081783364"
+
+# Ketill „hængur“ Hallbjarnarson  Q115649575  <- geni:6000000004097274731
+Q115649575	P569	+0780-00-00T00:00:00Z/9	S2600	"6000000004097274731"
 
 # Mangold von Thurgau und Nellenburg III  Q61139384  <- geni:6000000004106003883
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2482,6 +5789,16 @@ Q61139384	P734	Q141612250	S2600	"6000000004106003883"
 
 # Inga Sofie Iversen Heggelund  Q141580064  <- geni:6000000004117205707
 Q141580064	P5056	Q141502673	S2600	"6000000004117205707"
+
+# Anscar  Q938220  <- geni:6000000004131819438
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q938220	P569	+0850-00-00T00:00:00Z/9	S2600	"6000000004131819438"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q938220	P570	+0902-03-00T00:00:00Z/10	S2600	"6000000004131819438"
+
+# Abraham Brodersøn Brodersson Tjurhuvud  Q2821814  <- geni:6000000004139873032
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2821814	P735	Q4055996	S2600	"6000000004139873032"
 
 # Anna Torkelsdotter  Q141502603  <- geni:6000000004140989099
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2497,11 +5814,22 @@ Q141551435	P25	Q98545640	S2600	"6000000004148419812"
 Q75614133	P569	+1430-00-00T00:00:00Z/9	S2600	"6000000004148910638"
 Q75614133	P570	+1506-01-00T00:00:00Z/10	S2600	"6000000004148910638"
 
+# Éremburge  Q56285213  <- geni:6000000004148992320
+Q56285213	P26	Q16838883	S2600	"6000000004148992320"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56285213	P569	+1032-00-00T00:00:00Z/9	S2600	"6000000004148992320"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q56285213	P570	+1110-00-00T00:00:00Z/9	S2600	"6000000004148992320"
+
 # Halvor Sveinsson Øen  Q141519482  <- geni:6000000004160546059
 Q141519482	P569	+1460-00-00T00:00:00Z/9	S2600	"6000000004160546059"
 
 # Anna Axelsdotter Posse  Q133680557  <- geni:6000000004160995319
 Q133680557	P5056	Q141546492	S2600	"6000000004160995319"
+
+# William d'Aquitaine III Count of Poitou, V Duke of Aquitaine  Q382339  <- geni:6000000004167822768
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q382339	P735	Q12344159	S2600	"6000000004167822768"
 
 # Hay  Q75965077  <- geni:6000000004180274327
 Q75965077	P569	+1445-00-00T00:00:00Z/9	S2600	"6000000004180274327"
@@ -2517,7 +5845,14 @@ Q141577547	P26	Q141577547	S2600	"6000000004211630381"
 
 # Gyrid Sigurdsdatter Torsnes  Q141559612  <- geni:6000000004214433404
 Q141559612	P26	Q141559612	S2600	"6000000004214433404"
+Q141559612	P40	Q138310804	S2600	"6000000004214433404"
 Q141559612	P569	+1365-00-00T00:00:00Z/9	S2600	"6000000004214433404"
+
+# Filippus Erlendsson Losna  Q141565133  <- geni:6000000004217685857
+Q141565133	P40	Q11967797	S2600	"6000000004217685857"
+
+# Eline Toraldesdatter Kane  Q141580450  <- geni:6000000004217715184
+Q141580450	P40	Q111732089	S2600	"6000000004217715184"
 
 # Peder Pedersson av Sandøy og Edøy  Q141613864  <- geni:6000000004217922452
 Q141613864	P26	Q141614312	S2600	"6000000004217922452"
@@ -2531,6 +5866,10 @@ Q246812	P570	+1074-04-28T00:00:00Z/11	S2600	"6000000004259810431"
 
 # Diego Rodríguez de Castilla conde de Castilla  Q141523068  <- geni:6000000004283193362
 Q141523068	P734	Q99907853	S2600	"6000000004283193362"
+
+# Adele de Vermandois  Q2038405  <- geni:6000000004286199184
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2038405	P569	+0935-00-00T00:00:00Z/9	S2600	"6000000004286199184"
 
 # William Munchensy II  Q7607263  <- geni:6000000004287302028
 Q7607263	P569	+1185-00-00T00:00:00Z/9	S2600	"6000000004287302028"
@@ -2568,14 +5907,103 @@ Q20016510	P734	Q30573628	S2600	"6000000004381834243"
 # Eleanor Venables  Q110396647  <- geni:6000000004382495289
 Q110396647	P735	Q988818	S2600	"6000000004382495289"
 
+# Håkon Finnsen af Tjøtta  Q75393457  <- geni:6000000004533138341
+Q75393457	P26	Q262305	S2600	"6000000004533138341"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75393457	P40	Q141612199	S2600	"6000000004533138341"
+Q75393457	P569	+1073-00-00T00:00:00Z/9	S2600	"6000000004533138341"
+Q75393457	P570	+1162-00-00T00:00:00Z/9	S2600	"6000000004533138341"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75393457	P735	Q15711061	S2600	"6000000004533138341"
+
+# Ragnhild Arnesdatter  Q101248726  <- geni:6000000004533138548
+Q101248726	P26	Q5493526	S2600	"6000000004533138548"
+Q101248726	P40	Q61854645	S2600	"6000000004533138548"
+Q101248726	P5056	Q141572231	S2600	"6000000004533138548"
+Q101248726	P569	+0994-00-00T00:00:00Z/9	S2600	"6000000004533138548"
+Q101248726	P570	+1052-00-00T00:00:00Z/9	S2600	"6000000004533138548"
+Q101248726	P735	Q1390292	S2600	"6000000004533138548"
+
+# Friedrich IV van Putelendorf  Q1460005  <- geni:6000000004533173415
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1460005	P570	+1129-06-26T00:00:00Z/11	S2600	"6000000004533173415"
+
+# Gormflaith Ingen Flainn Sinna Mac Aedh Queen of Tara, Munster, and Leinster  Q5586650  <- geni:6000000004533176050
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5586650	P570	+0947-00-00T00:00:00Z/9	S2600	"6000000004533176050"
+
+# Manasses de Rethel  Q936711  <- geni:6000000004533182470
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q936711	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000004533182470"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q936711	P570	+1056-00-00T00:00:00Z/9	S2600	"6000000004533182470"
+
+# Emich IV von Leiningen  Q25486172  <- geni:6000000004533196027
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q25486172	P570	+1197-00-00T00:00:00Z/9	S2600	"6000000004533196027"
+Q25486172	P734	Q131552976	S2600	"6000000004533196027"
+Q25486172	P735	Q98408079	S2600	"6000000004533196027"
+
+# Emich III von Leiningen  Q25480685  <- geni:6000000004533200040
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q25480685	P570	+1138-00-00T00:00:00Z/9	S2600	"6000000004533200040"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q25480685	P734	Q131552976	S2600	"6000000004533200040"
+
+# Eberhard von Hengebach  Q44191858  <- geni:6000000004533205803
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q44191858	P570	+1217-00-00T00:00:00Z/9	S2600	"6000000004533205803"
+Q44191858	P735	Q1278816	S2600	"6000000004533205803"
+
+# Margaretha von Gelre  Q14852996  <- geni:6000000004533221691
+Q14852996	P734	Q105543415	S2600	"6000000004533221691"
+
 # Mathilde  Q3298994  <- geni:6000000004533250087
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3298994	P25	Q116005748	S2600	"6000000004533250087"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3298994	P569	+1074-00-00T00:00:00Z/9	S2600	"6000000004533250087"
+
+# Sigrid Nikulasdatter Galle av Brunla  Q135218115  <- geni:6000000004533321109
+Q135218115	P569	+1345-00-00T00:00:00Z/9	S2600	"6000000004533321109"
+Q135218115	P735	Q634916	S2600	"6000000004533321109"
+
+# Björn Austraenni Ketilsson  Q3481428  <- geni:6000000004533384157
+Q3481428	P26	Q141610243	S2600	"6000000004533384157"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3481428	P569	+0842-00-00T00:00:00Z/9	S2600	"6000000004533384157"
+Q3481428	P570	+0895-00-00T00:00:00Z/9	S2600	"6000000004533384157"
+
+# Gjaflaug Kjallaksdóttir  Q141610243  <- geni:6000000004533384241
+Q141610243	P26	Q3481428	S2600	"6000000004533384241"
+
+# Ólafur Þorsteinsson  Q5390740  <- geni:6000000004533384319
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5390740	P570	+0911-00-00T00:00:00Z/9	S2600	"6000000004533384319"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5390740	P735	Q262439	S2600	"6000000004533384319"
+
+# Eldrid Bjørnsdatter  Q3494473  <- geni:6000000004533384397
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3494473	P22	Q2905211	S2600	"6000000004533384397"
+Q3494473	P5056	Q141283333	S2600	"6000000004533384397"
+Q3494473	P570	+1176-00-00T00:00:00Z/9	S2600	"6000000004533384397"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3494473	P735	Q12714450	S2600	"6000000004533384397"
 
 # Ugone Ebriaci di Pisa  Q7877879  <- geni:6000000004533522186
 Q7877879	P569	+1075-00-00T00:00:00Z/9	S2600	"6000000004533522186"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q7877879	P735	Q87075507	S2600	"6000000004533522186"
+
+# Ermengarde-Gerberga d'Anjou  Q75243076  <- geni:6000000004533604973
+Q75243076	P569	+0974-00-00T00:00:00Z/9	S2600	"6000000004533604973"
+Q75243076	P734	Q63453818	S2600	"6000000004533604973"
+
+# Guillaume d'Auvergne  Q2680280  <- geni:6000000004533613519
+Q2680280	P734	Q93972551	S2600	"6000000004533613519"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2680280	P735	Q18190448	S2600	"6000000004533613519"
 
 # Ogmund Ormson Krøkedans  Q7080145  <- geni:6000000004533635177
 Q7080145	P5056	Q141523556	S2600	"6000000004533635177"
@@ -2583,10 +6011,44 @@ Q7080145	P5056	Q141523556	S2600	"6000000004533635177"
 Q7080145	P569	+1200-00-00T00:00:00Z/9	S2600	"6000000004533635177"
 Q7080145	P735	Q141515183	S2600	"6000000004533635177"
 
+# þóra Skagadóttir  Q19392764  <- geni:6000000004533635453
+Q19392764	P25	Q141614066	S2600	"6000000004533635453"
+Q19392764	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000004533635453"
+Q19392764	P570	+0992-00-00T00:00:00Z/9	S2600	"6000000004533635453"
+
+# Karl Ingeborgason Lejonbalk  Q5900594  <- geni:6000000004533635970
+Q5900594	P569	+1220-00-00T00:00:00Z/9	S2600	"6000000004533635970"
+Q5900594	P570	+1266-00-00T00:00:00Z/9	S2600	"6000000004533635970"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900594	P735	Q136771753	S2600	"6000000004533635970"
+
+# Katarina Eriksdotter Blaka  Q4958289  <- geni:6000000004533679272
+Q4958289	P5056	Q130232912	S2600	"6000000004533679272"
+Q4958289	P570	+1209-00-00T00:00:00Z/9	S2600	"6000000004533679272"
+
 # Luitgard von Grögling-Hirschberg  Q141523777  <- geni:6000000004533709443
+Q141523777	P40	Q61314170	S2600	"6000000004533709443"
 Q141523777	P569	+1054-00-00T00:00:00Z/9	S2600	"6000000004533709443"
 Q141523777	P570	+1119-03-18T00:00:00Z/11	S2600	"6000000004533709443"
 Q141523777	P735	Q19760516	S2600	"6000000004533709443"
+
+# Jon Halkjellson Huk  Q26965895  <- geni:6000000004533725115
+Q26965895	P26	Q101248137	S2600	"6000000004533725115"
+Q26965895	P40	Q141612104	S2600	"6000000004533725115"
+Q26965895	P40	Q5578661	S2600	"6000000004533725115"
+
+# Dag Bratsberg Eilivsson  Q16187968  <- geni:6000000004533725607
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16187968	P569	+1075-00-00T00:00:00Z/9	S2600	"6000000004533725607"
+Q16187968	P570	+1135-00-00T00:00:00Z/9	S2600	"6000000004533725607"
+
+# Ragnhild Skoftesdatter  Q26327689  <- geni:6000000004533725621
+Q26327689	P40	Q141583272	S2600	"6000000004533725621"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q26327689	P569	+1080-00-00T00:00:00Z/9	S2600	"6000000004533725621"
+
+# Peder Wirtenberg  Q103783760  <- geni:6000000004533752108
+Q103783760	P735	Q10622039	S2600	"6000000004533752108"
 
 # Torbjørg Åsulvsdatter Austråt til Rein  Q141583853  <- geni:6000000004533762608
 Q141583853	P26	Q141583853	S2600	"6000000004533762608"
@@ -2596,20 +6058,51 @@ Q141612115	P22	Q98697954	S2600	"6000000004533866098"
 Q141612115	P25	Q98697956	S2600	"6000000004533866098"
 
 # Sune Ivarsson  Q98697954  <- geni:6000000004533866104
-# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q98697954	P40	Q141612115	S2600	"6000000004533866104"
 Q98697954	P5056	Q141552246	S2600	"6000000004533866104"
 Q98697954	P735	Q920329	S2600	"6000000004533866104"
 
 # Astrid Ogmundsdottir  Q98697956  <- geni:6000000004533866111
-# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q98697956	P40	Q141612115	S2600	"6000000004533866111"
 Q98697956	P569	+1070-00-00T00:00:00Z/9	S2600	"6000000004533866111"
 Q98697956	P570	+1100-00-00T00:00:00Z/9	S2600	"6000000004533866111"
 
+# Nikolaus Bergtorson Maase  Q75393545  <- geni:6000000004533872690
+Q75393545	P735	Q15728996	S2600	"6000000004533872690"
+
 # Arne Arnesson Lagi “The Short” Giske  Q141557806  <- geni:6000000004533872782
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141557806	P22	Q101248140	S2600	"6000000004533872782"
+
+# Sæbjörn Torleifsson av Agder  Q141563013  <- geni:6000000004533872794
+Q141563013	P40	Q112969077	S2600	"6000000004533872794"
+
+# Taksony Grand  Q347935  <- geni:6000000004543138179
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q347935	P569	+0915-00-00T00:00:00Z/9	S2600	"6000000004543138179"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q347935	P570	+0971-00-00T00:00:00Z/9	S2600	"6000000004543138179"
+
+# Ragnfrid Knutsdotter Smoer till Manvik  Q141571024  <- geni:6000000004577556193
+Q141571024	P22	Q6301913	S2600	"6000000004577556193"
+Q141571024	P25	Q110548741	S2600	"6000000004577556193"
+
+# alix De Montdidier  Q58674087  <- geni:6000000004586546893
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58674087	P25	Q48925204	S2600	"6000000004586546893"
+Q58674087	P569	+1014-00-00T00:00:00Z/9	S2600	"6000000004586546893"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58674087	P570	+1063-00-00T00:00:00Z/9	S2600	"6000000004586546893"
+Q58674087	P734	Q104832231	S2600	"6000000004586546893"
+Q58674087	P735	Q62102498	S2600	"6000000004586546893"
+
+# Harold Hafdansson  Q714874  <- geni:6000000004586565238
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q714874	P569	+0800-00-00T00:00:00Z/9	S2600	"6000000004586565238"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q714874	P570	+0846-00-00T00:00:00Z/9	S2600	"6000000004586565238"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q714874	P735	Q14647205	S2600	"6000000004586565238"
 
 # NN  Q141216495  <- geni:6000000004645401302
 Q141216495	P569	+1340-00-00T00:00:00Z/9	S2600	"6000000004645401302"
@@ -2631,8 +6124,20 @@ Q141610351	P25	Q110703067	S2600	"6000000004648710071"
 Q141529845	P569	+1020-00-00T00:00:00Z/9	S2600	"6000000004648710083"
 Q141529845	P570	+1050-00-00T00:00:00Z/9	S2600	"6000000004648710083"
 
+# Sigrid Tordsdatter  Q141583226  <- geni:6000000004648710324
+Q141583226	P22	Q5654629	S2600	"6000000004648710324"
+Q141583226	P25	Q12341816	S2600	"6000000004648710324"
+
 # Olav Gudbrandssen Ugjæva St.Olaf of Denmark  Q141613915  <- geni:6000000004653698228
 Q141613915	P26	Q141613904	S2600	"6000000004653698228"
+
+# Poul Pedersen Laxmand til Valden og Knabstrup  Q96240817  <- geni:6000000004664030523
+Q96240817	P26	Q96240818	S2600	"6000000004664030523"
+Q96240817	P5056	Q130233025	S2600	"6000000004664030523"
+Q96240817	P569	+1402-00-00T00:00:00Z/9	S2600	"6000000004664030523"
+Q96240817	P570	+1440-00-00T00:00:00Z/9	S2600	"6000000004664030523"
+Q96240817	P734	Q130312673	S2600	"6000000004664030523"
+Q96240817	P735	Q2106710	S2600	"6000000004664030523"
 
 # NN  Q141565802  <- geni:6000000004665688687
 Q141565802	P569	+1473-00-00T00:00:00Z/9	S2600	"6000000004665688687"
@@ -2648,7 +6153,17 @@ Q141521681	P25	Q141498689	S2600	"6000000004724273001"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141520361	P25	Q141498681	S2600	"6000000004816781002"
 
+# Estrid Queen d'Obotrites and Princess of Sweden Princess Of Sweden  Q2094063  <- geni:6000000004827276873
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2094063	P570	+1034-00-00T00:00:00Z/9	S2600	"6000000004827276873"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2094063	P735	Q35150419	S2600	"6000000004827276873"
+
+# Gundred de Warenne  Q61911606  <- geni:6000000004828308499
+Q61911606	P569	+1117-00-00T00:00:00Z/9	S2600	"6000000004828308499"
+
 # Regnild  Q141498390  <- geni:6000000004839304936
+Q141498390	P26	Q12309311	S2600	"6000000004839304936"
 Q141498390	P569	+1110-00-00T00:00:00Z/9	S2600	"6000000004839304936"
 Q141498390	P570	+1163-00-00T00:00:00Z/9	S2600	"6000000004839304936"
 
@@ -2658,6 +6173,10 @@ Q141548501	P570	+1707-00-00T00:00:00Z/9	S2600	"6000000004840296991"
 
 # Kerstin Mårtensdotter  Q141528850  <- geni:6000000004840460281
 Q141528850	P26	Q141528850	S2600	"6000000004840460281"
+
+# Sigurd of Haithabu II  Q75292030  <- geni:6000000004846529109
+Q75292030	P569	+0781-00-00T00:00:00Z/9	S2600	"6000000004846529109"
+Q75292030	P735	Q1315397	S2600	"6000000004846529109"
 
 # Per Eriksson Klut  Q141612501  <- geni:6000000004850171535
 Q141612501	P734	Q1354604	S2600	"6000000004850171535"
@@ -2718,15 +6237,43 @@ Q320908	P569	+2216-00-00T00:00:00Z/9	S2600	"6000000004869097266"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q320908	P570	+2142-00-00T00:00:00Z/9	S2600	"6000000004869097266"
 
+# Eivind Ogmundsson Byre på Høyland  Q141219176  <- geni:6000000004870612250
+Q141219176	P40	Q17131011	S2600	"6000000004870612250"
+
 # Ramborg Knutsdotter Lejon  Q141216350  <- geni:6000000004870648136
 Q141216350	P26	Q141216350	S2600	"6000000004870648136"
+
+# Brynhild Hallvardsdotter  Q141216603  <- geni:6000000004870702053
+Q141216603	P40	Q17131011	S2600	"6000000004870702053"
+
+# Hugues de France  Q715972  <- geni:6000000004875411358
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q715972	P570	+1025-08-28T00:00:00Z/11	S2600	"6000000004875411358"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q715972	P735	Q16276979	S2600	"6000000004875411358"
+
+# Adela of Flanders  Q353823  <- geni:6000000004903076002
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q353823	P735	Q16146675	S2600	"6000000004903076002"
 
 # Strange Jørgensen  Q141616130  <- geni:6000000004969547509
 Q141616130	P734	Q28858461	S2600	"6000000004969547509"
 
+# Gregers Birgersson  Q4959219  <- geni:6000000004973008243
+Q4959219	P26	Q141488014	S2600	"6000000004973008243"
+Q4959219	P40	Q141610339	S2600	"6000000004973008243"
+Q4959219	P569	+1230-00-00T00:00:00Z/9	S2600	"6000000004973008243"
+Q4959219	P734	Q21509361	S2600	"6000000004973008243"
+
 # Sigtrygg Bengtsson Boberg  Q6175684  <- geni:6000000004974372122
+Q6175684	P40	Q5900614	S2600	"6000000004974372122"
 Q6175684	P5056	Q141515162	S2600	"6000000004974372122"
 Q6175684	P570	+1252-10-22T00:00:00Z/11	S2600	"6000000004974372122"
+
+# Ulfhild Sigtryggsdotter Boberg  Q61982215  <- geni:6000000004974399295
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61982215	P25	Q141513750	S2600	"6000000004974399295"
+Q61982215	P734	Q27132293	S2600	"6000000004974399295"
 
 # Bengt Matsson (Boberg)  Q98697742  <- geni:6000000004974648050
 Q98697742	P5056	Q141456293	S2600	"6000000004974648050"
@@ -2737,6 +6284,22 @@ Q98697742	P734	Q27881920	S2600	"6000000004974648050"
 
 # Elin Bengtsdotter (Aspenäs)  Q131805898  <- geni:6000000004978130558
 Q131805898	P5056	Q141517310	S2600	"6000000004978130558"
+
+# Sten Bengtsson (Bielke)  Q6188543  <- geni:6000000004978756606
+Q6188543	P5056	Q141515162	S2600	"6000000004978756606"
+Q6188543	P734	Q37547315	S2600	"6000000004978756606"
+
+# Magnus Knutsson (Aspenäs)  Q5916057  <- geni:6000000004992848601
+Q5916057	P5056	Q141403300	S2600	"6000000004992848601"
+Q5916057	P569	+1299-00-00T00:00:00Z/9	S2600	"6000000004992848601"
+Q5916057	P570	+1366-07-06T00:00:00Z/11	S2600	"6000000004992848601"
+
+# Ragnhild Nicolasdotter  Q75291937  <- geni:6000000005005449637
+Q75291937	P22	Q11979186	S2600	"6000000005005449637"
+Q75291937	P25	Q11996949	S2600	"6000000005005449637"
+Q75291937	P40	Q141498982	S2600	"6000000005005449637"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75291937	P569	+1178-00-00T00:00:00Z/9	S2600	"6000000005005449637"
 
 # Joana de Noronha  Q132176605  <- geni:6000000005007286315
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2767,18 +6330,90 @@ Q136375836	P570	+1803-01-08T00:00:00Z/11	S2600	"6000000005021699890"
 Q140425963	P569	+1774-10-30T00:00:00Z/11	S2600	"6000000005021830799"
 Q140425963	P570	+1859-01-10T00:00:00Z/11	S2600	"6000000005021830799"
 
+# Mechtild  Q3299000  <- geni:6000000005035166996
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3299000	P735	Q55441211	S2600	"6000000005035166996"
+
+# Gudmar Magnusson  Q5775141  <- geni:6000000005037358032
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5775141	P569	+1260-00-00T00:00:00Z/9	S2600	"6000000005037358032"
+Q5775141	P734	Q23536498	S2600	"6000000005037358032"
+
 # NN Svendsdatter Egeland  Q141533665  <- geni:6000000005049030972
 Q141533665	P5056	Q141502662	S2600	"6000000005049030972"
 
+# Harald  Q5892228  <- geni:6000000005049052482
+Q5892228	P22	Q41864	S2600	"6000000005049052482"
+Q5892228	P570	+0852-00-00T00:00:00Z/9	S2600	"6000000005049052482"
+
+# Dag Av Vestmar  Q75292014  <- geni:6000000005049061681
+Q75292014	P569	+0725-00-00T00:00:00Z/9	S2600	"6000000005049061681"
+Q75292014	P570	+0770-00-00T00:00:00Z/9	S2600	"6000000005049061681"
+Q75292014	P735	Q2696851	S2600	"6000000005049061681"
+
+# Sigurd Brynjulfsson Aga  Q117477378  <- geni:6000000005059424801
+Q117477378	P22	Q141569481	S2600	"6000000005059424801"
+Q117477378	P25	Q141512851	S2600	"6000000005059424801"
+Q117477378	P26	Q141422357	S2600	"6000000005059424801"
+Q117477378	P26	Q141577137	S2600	"6000000005059424801"
+Q117477378	P40	Q141318905	S2600	"6000000005059424801"
+Q117477378	P40	Q141457326	S2600	"6000000005059424801"
+Q117477378	P40	Q141546842	S2600	"6000000005059424801"
+Q117477378	P5056	Q141611152	S2600	"6000000005059424801"
+Q117477378	P569	+1225-00-00T00:00:00Z/9	S2600	"6000000005059424801"
+Q117477378	P734	Q30264780	S2600	"6000000005059424801"
+Q117477378	P735	Q1315397	S2600	"6000000005059424801"
+
+# Bengt Jonsson Aspenäsätten  Q86456937  <- geni:6000000005060299205
+Q86456937	P5056	Q141242306	S2600	"6000000005060299205"
+Q86456937	P569	+1335-00-00T00:00:00Z/9	S2600	"6000000005060299205"
+Q86456937	P570	+1383-00-00T00:00:00Z/9	S2600	"6000000005060299205"
+Q86456937	P734	Q21509276	S2600	"6000000005060299205"
+
+# Mathilde van Brabant  Q264017  <- geni:6000000005063557395
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q264017	P569	+1224-12-24T00:00:00Z/11	S2600	"6000000005063557395"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q264017	P734	Q105543415	S2600	"6000000005063557395"
+
 # Agnes Hamilton  Q76148009  <- geni:6000000005066624523
 Q76148009	P570	+1597-00-00T00:00:00Z/9	S2600	"6000000005066624523"
+
+# Marie de Bourbon Dampierre  Q3292873  <- geni:6000000005076736656
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3292873	P735	Q106674406	S2600	"6000000005076736656"
 
 # Beorhtwulf  Q818588  <- geni:6000000005077386951
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q818588	P569	+0785-00-00T00:00:00Z/9	S2600	"6000000005077386951"
 
+# Sigrid  Q4978551  <- geni:6000000005080817262
+Q4978551	P569	+1240-00-00T00:00:00Z/9	S2600	"6000000005080817262"
+
 # N. Toresdatter Galte  Q141610236  <- geni:6000000005081497052
 Q141610236	P26	Q141610236	S2600	"6000000005081497052"
+
+# Gaute Erikssøn Galtung  Q111732089  <- geni:6000000005219236287
+Q111732089	P22	Q103781693	S2600	"6000000005219236287"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q111732089	P569	+1360-00-00T00:00:00Z/9	S2600	"6000000005219236287"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q111732089	P570	+1413-04-03T00:00:00Z/11	S2600	"6000000005219236287"
+Q111732089	P734	Q5519382	S2600	"6000000005219236287"
+Q111732089	P735	Q21451903	S2600	"6000000005219236287"
+
+# Ingeborg Magnusdotter Ulvåsa  Q18326113  <- geni:6000000005230642398
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q18326113	P5056	Q141457238	S2600	"6000000005230642398"
+
+# Henrik Svendsen af Danmark Prins  Q1344986  <- geni:6000000005240455263
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1344986	P569	+1080-00-00T00:00:00Z/9	S2600	"6000000005240455263"
+Q1344986	P734	Q21450611	S2600	"6000000005240455263"
+
+# Zbyslava Sviatopolkovna  Q3486464  <- geni:6000000005248835643
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3486464	P570	+1113-04-16T00:00:00Z/11	S2600	"6000000005248835643"
 
 # Mattias von Hartmansdorff  Q1910668  <- geni:6000000005250483978
 Q1910668	P734	Q87755926	S2600	"6000000005250483978"
@@ -2796,14 +6431,38 @@ Q141448450	P26	Q141448450	S2600	"6000000005381997903"
 # Birgitte Fartegnsdatter Bagge  Q141456590  <- geni:6000000005382299298
 Q141456590	P26	Q141456590	S2600	"6000000005382299298"
 
+# Sviatoslav Igorevitch Rurikid, Prince of Kiev and Novgorod  Q1058572  <- geni:6000000005407291287
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1058572	P26	Q141529842	S2600	"6000000005407291287"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1058572	P569	+0920-00-00T00:00:00Z/9	S2600	"6000000005407291287"
+
+# Bernhard III von Sachsen Herzog von Sachsen, Graf von Askanien und Ballenstedt, Herr zu B  Q565737  <- geni:6000000005414590318
+Q565737	P734	Q60605147	S2600	"6000000005414590318"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q565737	P735	Q221978	S2600	"6000000005414590318"
+
 # Lisbeth Olsdatter Torland  Q141498464  <- geni:6000000005415158955
 Q141498464	P569	+1553-00-00T00:00:00Z/9	S2600	"6000000005415158955"
 Q141498464	P570	+1620-00-00T00:00:00Z/9	S2600	"6000000005415158955"
 
+# Nils Blaka  Q5578661  <- geni:6000000005415226185
+Q5578661	P22	Q26965895	S2600	"6000000005415226185"
+Q5578661	P25	Q26965894	S2600	"6000000005415226185"
+Q5578661	P570	+1200-00-00T00:00:00Z/9	S2600	"6000000005415226185"
+
 # Berit Knutsdatter Grødem  Q141518340  <- geni:6000000005419737601
 Q141518340	P569	+1673-00-00T00:00:00Z/9	S2600	"6000000005419737601"
 
+# Mats Ödgislason (Lillie af Greger Mattssons ätt) till Lagnö  Q101248469  <- geni:6000000005424169754
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248469	P569	+1370-00-00T00:00:00Z/9	S2600	"6000000005424169754"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q101248469	P735	Q12370008	S2600	"6000000005424169754"
+
 # Tora Guttormsdatter Sudreim  Q122949820  <- geni:6000000005436371592
+Q122949820	P26	Q260543	S2600	"6000000005436371592"
+Q122949820	P40	Q2925391	S2600	"6000000005436371592"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q122949820	P569	+1100-00-00T00:00:00Z/9	S2600	"6000000005436371592"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -2836,9 +6495,20 @@ Q141583979	P735	Q2370957	S2600	"6000000005573764992"
 # Signy Nilsdatter Fidjeland  Q141620066  <- geni:6000000005573776714
 Q141620066	P26	Q141620237	S2600	"6000000005573776714"
 
+# Margaretha van Horne  Q110537822  <- geni:6000000005575403828
+Q110537822	P569	+1165-00-00T00:00:00Z/9	S2600	"6000000005575403828"
+Q110537822	P570	+1207-00-00T00:00:00Z/9	S2600	"6000000005575403828"
+
 # Elisabet Schultin  Q140387943  <- geni:6000000005583598693
 Q140387943	P569	+1661-00-00T00:00:00Z/9	S2600	"6000000005583598693"
 Q140387943	P570	+1698-00-00T00:00:00Z/9	S2600	"6000000005583598693"
+
+# Bernhard I Billung  Q220799  <- geni:6000000005587855694
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q220799	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000005587855694"
+Q220799	P734	Q55293747	S2600	"6000000005587855694"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q220799	P735	Q221978	S2600	"6000000005587855694"
 
 # Jens Hansson Bonde  Q141520455  <- geni:6000000005589937849
 Q141520455	P570	+1566-11-17T00:00:00Z/11	S2600	"6000000005589937849"
@@ -2846,6 +6516,15 @@ Q141520455	P570	+1566-11-17T00:00:00Z/11	S2600	"6000000005589937849"
 # Adalbert II Re d'Italia, Marchese d'Ivrea  Q347480  <- geni:6000000005597728020
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q347480	P570	+0971-04-30T00:00:00Z/11	S2600	"6000000005597728020"
+
+# Godfrey I of Namur  Q80714  <- geni:6000000005598872880
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q80714	P569	+1067-07-16T00:00:00Z/11	S2600	"6000000005598872880"
+
+# Gersende Comte de Blois-Champagne  Q7365775  <- geni:6000000005598904003
+Q7365775	P26	Q3101138	S2600	"6000000005598904003"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q7365775	P570	+1100-05-10T00:00:00Z/11	S2600	"6000000005598904003"
 
 # Marta Maria Larsdatter Lea  Q141574828  <- geni:6000000005606851579
 Q141574828	P26	Q141574828	S2600	"6000000005606851579"
@@ -2981,6 +6660,7 @@ Q141559498	P26	Q141559498	S2600	"6000000005607282941"
 Q141219065	P26	Q141219065	S2600	"6000000005607335640"
 
 # Brynjulf Sigurdsson Aga Jr.  Q141546842  <- geni:6000000005607365383
+Q141546842	P22	Q117477378	S2600	"6000000005607365383"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141546842	P25	Q141577137	S2600	"6000000005607365383"
 
@@ -3219,8 +6899,18 @@ Q141443315	P734	Q30087270	S2600	"6000000005609566518"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141443315	P734	Q30134985	S2600	"6000000005609566518"
 
+# Barnum Eriksen til Skarsholm  Q110549526  <- geni:6000000005619893152
+Q110549526	P26	Q110549527	S2600	"6000000005619893152"
+Q110549526	P569	+1280-00-00T00:00:00Z/9	S2600	"6000000005619893152"
+Q110549526	P570	+1329-00-00T00:00:00Z/9	S2600	"6000000005619893152"
+Q110549526	P734	Q27887926	S2600	"6000000005619893152"
+
 # Beata Margareta Stenbock  Q109835310  <- geni:6000000005620170816
 Q109835310	P735	Q8274988	S2600	"6000000005620170816"
+
+# William FitzPatric de Wessington  Q19303221  <- geni:6000000005631429001
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q19303221	P569	+1160-00-00T00:00:00Z/9	S2600	"6000000005631429001"
 
 # Johan Haraldsson Strömfelt till Strömhult  Q103773553  <- geni:6000000005656274004
 Q103773553	P5056	Q141585679	S2600	"6000000005656274004"
@@ -3237,6 +6927,10 @@ Q6237445	P735	Q13582800	S2600	"6000000005660668020"
 
 # Per Wester  Q141578092  <- geni:6000000005660743005
 Q141578092	P22	Q6237445	S2600	"6000000005660743005"
+
+# Béatrix de Hainaut  Q48925204  <- geni:6000000005703890001
+Q48925204	P40	Q58674087	S2600	"6000000005703890001"
+Q48925204	P735	Q18177243	S2600	"6000000005703890001"
 
 # Mathilde Fredrikke Thams  Q141205923  <- geni:6000000005718339007
 Q141205923	P5056	Q141383226	S2600	"6000000005718339007"
@@ -3268,6 +6962,46 @@ Q151805	P570	-2960-00-00T00:00:00Z/9	S2600	"6000000005747697181"
 # Nebre  Q152751  <- geni:6000000005747697264
 Q152751	P2600	"6000000005747697264"	S2600	"6000000005747697264"
 
+# Jorun Björnsdatter Kamp til Holter  Q101247920  <- geni:6000000005749641787
+Q101247920	P569	+1325-00-00T00:00:00Z/9	S2600	"6000000005749641787"
+Q101247920	P570	+1340-00-00T00:00:00Z/9	S2600	"6000000005749641787"
+
+# Agnes Alvsdatter Bolt  Q110548741  <- geni:6000000005749660523
+Q110548741	P26	Q6301913	S2600	"6000000005749660523"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110548741	P40	Q141571024	S2600	"6000000005749660523"
+Q110548741	P5056	Q141498623	S2600	"6000000005749660523"
+Q110548741	P569	+1398-00-00T00:00:00Z/9	S2600	"6000000005749660523"
+Q110548741	P570	+1472-00-00T00:00:00Z/9	S2600	"6000000005749660523"
+Q110548741	P734	Q16860206	S2600	"6000000005749660523"
+Q110548741	P735	Q394431	S2600	"6000000005749660523"
+
+# Katarina Jonsdotter Sudreheim  Q101247939  <- geni:6000000005750257054
+Q101247939	P26	Q101247909	S2600	"6000000005750257054"
+Q101247939	P569	+1378-00-00T00:00:00Z/9	S2600	"6000000005750257054"
+Q101247939	P570	+1455-00-00T00:00:00Z/9	S2600	"6000000005750257054"
+
+# Baldwin  Q366998  <- geni:6000000005758041019
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q366998	P569	+0864-00-00T00:00:00Z/9	S2600	"6000000005758041019"
+
+# Gerberga von Sachsen  Q168669  <- geni:6000000005767888778
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q168669	P22	Q559316	S2600	"6000000005767888778"
+Q168669	P40	Q128210	S2600	"6000000005767888778"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q168669	P569	+0914-00-00T00:00:00Z/9	S2600	"6000000005767888778"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q168669	P570	+0984-05-05T00:00:00Z/11	S2600	"6000000005767888778"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q168669	P734	Q60605147	S2600	"6000000005767888778"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q168669	P735	Q65237017	S2600	"6000000005767888778"
+
+# Louis VII "le Jeune le Pieux"  Q134259  <- geni:6000000005791896564
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q134259	P735	Q97156058	S2600	"6000000005791896564"
+
 # Ermengarde in de Haspengouw  Q231827  <- geni:6000000005792904234
 Q231827	P734	Q16262105	S2600	"6000000005792904234"
 
@@ -3283,6 +7017,18 @@ Q141521395	P26	Q141521395	S2600	"6000000005856163014"
 
 # Sevatsdatter Skiftun  Q141552170  <- geni:6000000005856490003
 Q141552170	P569	+1535-00-00T00:00:00Z/9	S2600	"6000000005856490003"
+
+# Rzepicha Piast  Q2575747  <- geni:6000000005863198667
+# P31 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2575747	P31	Q5	S2600	"6000000005863198667"
+Q2575747	P569	+0845-00-00T00:00:00Z/9	S2600	"6000000005863198667"
+Q2575747	P570	+0891-01-00T00:00:00Z/10	S2600	"6000000005863198667"
+
+# Hugues de Vermandois I  Q328755  <- geni:6000000005864637017
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q328755	P734	Q2937271	S2600	"6000000005864637017"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q328755	P735	Q16276979	S2600	"6000000005864637017"
 
 # Knut Oddsen Fevoll  Q141538484  <- geni:6000000005910134385
 Q141538484	P569	+1540-00-00T00:00:00Z/9	S2600	"6000000005910134385"
@@ -3329,6 +7075,7 @@ Q99301905	P5056	Q141498336	S2600	"6000000006098056564"
 Q99301905	P569	+1518-00-00T00:00:00Z/9	S2600	"6000000006098056564"
 
 # Alpaïde  Q141534132  <- geni:6000000006098393265
+Q141534132	P26	Q91392	S2600	"6000000006098393265"
 Q141534132	P569	+0654-00-00T00:00:00Z/9	S2600	"6000000006098393265"
 Q141534132	P570	+0705-12-16T00:00:00Z/11	S2600	"6000000006098393265"
 
@@ -3351,6 +7098,13 @@ Q1427539	P735	Q17297772	S2600	"6000000006101300493"
 # Alexander  Q313883  <- geni:6000000006101322866
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q313883	P735	Q923	S2600	"6000000006101322866"
+
+# Helen Monamachos  Q110384610  <- geni:6000000006101358064
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110384610	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000006101358064"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110384610	P570	+1033-00-00T00:00:00Z/9	S2600	"6000000006101358064"
+Q110384610	P735	Q13376892	S2600	"6000000006101358064"
 
 # Marit Ommundsdatter Motland Jr.  Q141533629  <- geni:6000000006111152118
 Q141533629	P569	+1612-00-00T00:00:00Z/9	S2600	"6000000006111152118"
@@ -3483,6 +7237,15 @@ Q141456337	P570	+1570-00-00T00:00:00Z/9	S2600	"6000000006129142264"
 Q141456336	P569	+1529-00-00T00:00:00Z/9	S2600	"6000000006129225351"
 Q141456336	P570	+1564-00-00T00:00:00Z/9	S2600	"6000000006129225351"
 
+# Ranulf II de Poitiers  Q724715  <- geni:6000000006129390166
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q724715	P570	+0892-07-00T00:00:00Z/10	S2600	"6000000006129390166"
+Q724715	P734	Q106626337	S2600	"6000000006129390166"
+
+# Hafthor Jonsson Jonsen af Sudreim  Q5781805  <- geni:6000000006151784313
+Q5781805	P5056	Q141242306	S2600	"6000000006151784313"
+Q5781805	P5056	Q141249587	S2600	"6000000006151784313"
+
 # Erik Toreson Underberge  Q141584511  <- geni:6000000006171226228
 Q141584511	P5056	Q141403363	S2600	"6000000006171226228"
 
@@ -3494,14 +7257,38 @@ Q115634021	P569	+1350-00-00T00:00:00Z/9	S2600	"6000000006174331130"
 Q115634021	P570	+1425-00-00T00:00:00Z/9	S2600	"6000000006174331130"
 Q115634021	P735	Q2438057	S2600	"6000000006174331130"
 
+# Nils Store Brandvik Ragnvaldsson  Q141583875  <- geni:6000000006183866418
+Q141583875	P26	Q135527736	S2600	"6000000006183866418"
+
+# Ragnhild Haraldsdotter  Q11996956  <- geni:6000000006187584476
+Q11996956	P25	Q12215791	S2600	"6000000006187584476"
+Q11996956	P40	Q206123	S2600	"6000000006187584476"
+Q11996956	P5056	Q141574669	S2600	"6000000006187584476"
+Q11996956	P570	+0879-00-00T00:00:00Z/9	S2600	"6000000006187584476"
+
 # Ole Aadnesen Fidjeland  Q141620237  <- geni:6000000006237641602
 Q141620237	P26	Q141620066	S2600	"6000000006237641602"
+
+# Margareta Pedersdotter Bonde  Q101247157  <- geni:6000000006271970257
+Q101247157	P5056	Q141403306	S2600	"6000000006271970257"
+Q101247157	P569	+1356-00-00T00:00:00Z/9	S2600	"6000000006271970257"
+Q101247157	P570	+1377-03-25T00:00:00Z/11	S2600	"6000000006271970257"
+
+# Geoffroy II de Mayenne  Q3101138  <- geni:6000000006277488391
+Q3101138	P26	Q7365775	S2600	"6000000006277488391"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3101138	P569	+1040-00-00T00:00:00Z/9	S2600	"6000000006277488391"
+Q3101138	P734	Q141612258	S2600	"6000000006277488391"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3101138	P735	Q18763665	S2600	"6000000006277488391"
 
 # Anna Olsdatter Tjåland  Q141564621  <- geni:6000000006281834819
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141564621	P569	+1687-00-00T00:00:00Z/9	S2600	"6000000006281834819"
 
 # Dode Clotilde De Schelde  Q141523778  <- geni:6000000006296799111
+Q141523778	P26	Q337189	S2600	"6000000006296799111"
+Q141523778	P40	Q453739	S2600	"6000000006296799111"
 Q141523778	P569	+0583-00-00T00:00:00Z/9	S2600	"6000000006296799111"
 Q141523778	P570	+0611-00-00T00:00:00Z/9	S2600	"6000000006296799111"
 Q141523778	P735	Q15921600	S2600	"6000000006296799111"
@@ -3520,6 +7307,11 @@ Q141529086	P40	Q141205902	S2600	"6000000006346873253"
 
 # Ole Hauge  Q141451091  <- geni:6000000006350945134
 Q141451091	P569	+1515-00-00T00:00:00Z/9	S2600	"6000000006350945134"
+
+# Ingeborg Bengtsdotter Lejon  Q18326118  <- geni:6000000006351173172
+Q18326118	P5056	Q141517310	S2600	"6000000006351173172"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q18326118	P569	+1275-00-00T00:00:00Z/9	S2600	"6000000006351173172"
 
 # Cecilia Olsdotter  Q141244091  <- geni:6000000006408507489
 Q141244091	P5056	Q141421829	S2600	"6000000006408507489"
@@ -3564,8 +7356,21 @@ Q5345401	P570	+1604-00-00T00:00:00Z/9	S2600	"6000000006444632113"
 # Gunnar Bengtsson Låstbom  Q141620083  <- geni:6000000006452668071
 Q141620083	P26	Q141619929	S2600	"6000000006452668071"
 
+# Svein Håkonsson Earl of Norway  Q31709  <- geni:6000000006513568001
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31709	P40	Q141612129	S2600	"6000000006513568001"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31709	P569	+0972-00-00T00:00:00Z/9	S2600	"6000000006513568001"
+Q31709	P734	Q55209315	S2600	"6000000006513568001"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31709	P735	Q18953711	S2600	"6000000006513568001"
+
 # Carl Edvard Taube af Odenkat  Q6204639  <- geni:6000000006558598179
 Q6204639	P735	Q278835	S2600	"6000000006558598179"
+
+# Imiza  Q81085608  <- geni:6000000006569555544
+Q81085608	P25	Q2394242	S2600	"6000000006569555544"
+Q81085608	P40	Q3198477	S2600	"6000000006569555544"
 
 # Ole Gabrielson Garborg  Q141522031  <- geni:6000000006583182042
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -3631,6 +7436,10 @@ Q25492367	P735	Q19965915	S2600	"6000000006712180695"
 # Carl Abraham Mankell  Q1036660  <- geni:6000000006713140702
 Q1036660	P735	Q4055996	S2600	"6000000006713140702"
 
+# Judith de Lens  Q530370  <- geni:6000000006714534494
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q530370	P570	+1090-00-00T00:00:00Z/9	S2600	"6000000006714534494"
+
 # Johan Adlerberg  Q141611414  <- geni:6000000006724877435
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141611414	P25	Q104549966	S2600	"6000000006724877435"
@@ -3650,12 +7459,25 @@ Q9391904	P569	+1451-00-00T00:00:00Z/9	S2600	"6000000006727858370"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q9391904	P570	+1478-00-00T00:00:00Z/9	S2600	"6000000006727858370"
 
+# Marie de Courtenay  Q2567128  <- geni:6000000006727871670
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2567128	P735	Q106674406	S2600	"6000000006727871670"
+
 # Maria Vladimirovna  Q21105949  <- geni:6000000006727873834
 Q21105949	P735	Q325872	S2600	"6000000006727873834"
+
+# Yaroslav Sviatopolkovich Rurikid of Volhynia  Q4538779  <- geni:6000000006727873998
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4538779	P569	+1071-00-00T00:00:00Z/9	S2600	"6000000006727873998"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4538779	P735	Q741	S2600	"6000000006727873998"
 
 # Millicent de Gournay Lady Cauntelo  Q48547792  <- geni:6000000006727940281
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q48547792	P734	Q105107554	S2600	"6000000006727940281"
+
+# Yolande de Coucy Viscountess de Dreux  Q57398928  <- geni:6000000006727959511
+Q57398928	P734	Q99539203	S2600	"6000000006727959511"
 
 # Neithhotep  Q255585  <- geni:6000000006743335611
 Q255585	P2600	"6000000006743335611"	S2600	"6000000006743335611"
@@ -3667,6 +7489,16 @@ Q453243	P40	Q230548	S2600	"6000000006743369482"
 
 # Ola Olsen Hobberstad  Q141519638  <- geni:6000000006744024597
 Q141519638	P5056	Q141223473	S2600	"6000000006744024597"
+
+# Thorkel Naundalsson  Q3990802  <- geni:6000000006763325794
+Q3990802	P26	Q115649736	S2600	"6000000006763325794"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3990802	P569	+0800-00-00T00:00:00Z/9	S2600	"6000000006763325794"
+Q3990802	P735	Q108704702	S2600	"6000000006763325794"
+
+# Hrafnhildur Ketilsdóttir  Q115649736  <- geni:6000000006763359957
+Q115649736	P26	Q3990802	S2600	"6000000006763359957"
+Q115649736	P569	+0810-00-00T00:00:00Z/9	S2600	"6000000006763359957"
 
 # Mariet Karlsdotter  Q141574819  <- geni:6000000006769001160
 Q141574819	P26	Q141574819	S2600	"6000000006769001160"
@@ -3692,6 +7524,26 @@ Q141529465	P5056	Q141583366	S2600	"6000000006776187410"
 
 # Peder Ommundsen Liland I  Q141611417  <- geni:6000000006787656195
 Q141611417	P569	+1682-00-00T00:00:00Z/9	S2600	"6000000006787656195"
+
+# Jón Loftsson  Q653125  <- geni:6000000006789450256
+Q653125	P26	Q135527804	S2600	"6000000006789450256"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q653125	P570	+1197-01-11T00:00:00Z/11	S2600	"6000000006789450256"
+
+# Sæmundr Sigfússon  Q283943  <- geni:6000000006798159405
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q283943	P570	+1133-05-11T00:00:00Z/11	S2600	"6000000006798159405"
+
+# Eyjólfur Valgerðarson  Q135529140  <- geni:6000000006802499812
+Q135529140	P25	Q135529142	S2600	"6000000006802499812"
+Q135529140	P569	+0922-00-00T00:00:00Z/9	S2600	"6000000006802499812"
+Q135529140	P570	+0985-00-00T00:00:00Z/9	S2600	"6000000006802499812"
+Q135529140	P735	Q16423533	S2600	"6000000006802499812"
+
+# Halfdan "the Mild" king of Romerike and Vestfold  Q2521540  <- geni:6000000006803712071
+# P31 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2521540	P31	Q5	S2600	"6000000006803712071"
+Q2521540	P40	Q75292030	S2600	"6000000006803712071"
 
 # Petrus Petri Ekelund  Q105740137  <- geni:6000000006822607166
 # P40 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -3723,14 +7575,50 @@ Q105726316	P734	Q128748650	S2600	"6000000006880491517"
 # Geirtrud Kvaale  Q141550286  <- geni:6000000006882532104
 Q141550286	P569	+1380-00-00T00:00:00Z/9	S2600	"6000000006882532104"
 
+# Helgi Óttarsson  Q17633616  <- geni:6000000006882977275
+Q17633616	P25	Q141559584	S2600	"6000000006882977275"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17633616	P569	+0910-00-00T00:00:00Z/9	S2600	"6000000006882977275"
+Q17633616	P735	Q26271987	S2600	"6000000006882977275"
+
 # Marta Endresdatter Madland  Q141499763  <- geni:6000000006890259710
 Q141499763	P569	+1667-00-00T00:00:00Z/9	S2600	"6000000006890259710"
+
+# Hårek Eyvindsson  Q5493526  <- geni:6000000006906224300
+Q5493526	P26	Q101248726	S2600	"6000000006906224300"
+
+# Grímur Vædder-Grim Åsison  Q122231634  <- geni:6000000006906412508
+Q122231634	P569	+0745-00-00T00:00:00Z/9	S2600	"6000000006906412508"
+Q122231634	P570	+0790-00-00T00:00:00Z/9	S2600	"6000000006906412508"
+Q122231634	P735	Q16425662	S2600	"6000000006906412508"
+
+# NN ektefelle Ingjald Kvite Helgesson småkonge i Irland  Q141524126  <- geni:6000000006906428841
+Q141524126	P40	Q11162089	S2600	"6000000006906428841"
 
 # Slavibor  Q9353042  <- geni:6000000006906428932
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q9353042	P569	+0820-00-00T00:00:00Z/9	S2600	"6000000006906428932"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q9353042	P570	+0870-00-00T00:00:00Z/9	S2600	"6000000006906428932"
+
+# Helgi Eyvindarson  Q11708852  <- geni:6000000006906447529
+Q11708852	P25	Q130320417	S2600	"6000000006906447529"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11708852	P569	+0835-00-00T00:00:00Z/9	S2600	"6000000006906447529"
+Q11708852	P570	+0908-05-20T00:00:00Z/11	S2600	"6000000006906447529"
+Q11708852	P735	Q26271987	S2600	"6000000006906447529"
+
+# Herman  Q64318  <- geni:6000000006906550197
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q64318	P569	+1005-00-00T00:00:00Z/9	S2600	"6000000006906550197"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q64318	P735	Q16276646	S2600	"6000000006906550197"
+
+# Philip I of Namur  Q646297  <- geni:6000000006906728258
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q646297	P570	+1212-10-08T00:00:00Z/11	S2600	"6000000006906728258"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q646297	P735	Q827311	S2600	"6000000006906728258"
 
 # Richard FitzJohn Lord FitzJohn  Q75527928  <- geni:6000000006906799871
 Q75527928	P569	+1242-00-00T00:00:00Z/9	S2600	"6000000006906799871"
@@ -3770,6 +7658,9 @@ Q141569412	P25	Q141550673	S2600	"6000000006979611525"
 # Marit Olsdatter Kjosavik  Q141562637  <- geni:6000000006979615114
 Q141562637	P569	+1643-00-00T00:00:00Z/9	S2600	"6000000006979615114"
 
+# Anna Pedersdotter Hatteberg  Q141569378  <- geni:6000000006979640733
+Q141569378	P26	Q5750377	S2600	"6000000006979640733"
+
 # Aslak Torbjørnsen Nødland  Q141514194  <- geni:6000000006979663876
 Q141514194	P570	+1597-00-00T00:00:00Z/9	S2600	"6000000006979663876"
 
@@ -3779,6 +7670,9 @@ Q141618686	P5056	Q141614444	S2600	"6000000006984620088"
 # Ethelind Adelinde  Q141585537  <- geni:6000000006994952065
 Q141585537	P570	+0829-00-00T00:00:00Z/9	S2600	"6000000006994952065"
 
+# Canute Eriksøn  Q434760  <- geni:6000000006997472376
+Q434760	P40	Q141610376	S2600	"6000000006997472376"
+
 # Marta Asbjørnsdatter Todnem  Q141523798  <- geni:6000000007012742542
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141523798	P25	Q141498689	S2600	"6000000007012742542"
@@ -3787,6 +7681,13 @@ Q141523798	P25	Q141498689	S2600	"6000000007012742542"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141562849	P25	Q141549795	S2600	"6000000007013347220"
 
+# Ardolf Ier de Guînes  Q2860749  <- geni:6000000007014054306
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2860749	P569	+0965-00-00T00:00:00Z/9	S2600	"6000000007014054306"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2860749	P570	+0996-00-00T00:00:00Z/9	S2600	"6000000007014054306"
+Q2860749	P734	Q104832186	S2600	"6000000007014054306"
+
 # Thomas Cave III, Kgt. & 1st Baronet  Q75449793  <- geni:6000000007015301723
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75449793	P569	+1621-12-22T00:00:00Z/11	S2600	"6000000007015301723"
@@ -3794,6 +7695,9 @@ Q75449793	P570	+1670-11-00T00:00:00Z/10	S2600	"6000000007015301723"
 
 # Anna Nilsdotter  Q141200604  <- geni:6000000007020763500
 Q141200604	P26	Q141200604	S2600	"6000000007020763500"
+
+# Niels Sveinsson  Q364751  <- geni:6000000007025559649
+Q364751	P25	Q141610262	S2600	"6000000007025559649"
 
 # Magnus Petri Aurivillius  Q5562579  <- geni:6000000007025966290
 Q5562579	P735	Q10625184	S2600	"6000000007025966290"
@@ -3824,6 +7728,12 @@ Q141548605	P26	Q141548605	S2600	"6000000007062931743"
 # Rådgärd Karlsdotter  Q141552151  <- geni:6000000007062987558
 Q141552151	P26	Q141552151	S2600	"6000000007062987558"
 
+# Margrethe Knudsdatter Lavard  Q11988171  <- geni:6000000007095800229
+Q11988171	P5056	Q141528098	S2600	"6000000007095800229"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11988171	P569	+1116-00-00T00:00:00Z/9	S2600	"6000000007095800229"
+Q11988171	P570	+1151-00-00T00:00:00Z/9	S2600	"6000000007095800229"
+
 # Christopherus Svenonis Brunius  Q136555866  <- geni:6000000007096357577
 Q136555866	P5056	Q141450963	S2600	"6000000007096357577"
 Q136555866	P569	+1548-00-00T00:00:00Z/9	S2600	"6000000007096357577"
@@ -3831,6 +7741,10 @@ Q136555866	P569	+1548-00-00T00:00:00Z/9	S2600	"6000000007096357577"
 Q136555866	P570	+1628-06-12T00:00:00Z/11	S2600	"6000000007096357577"
 
 # Johan, Jons Filipsson (Aspenäsätten)  Q5884317  <- geni:6000000007104160939
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5884317	P22	Q5730329	S2600	"6000000007104160939"
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5884317	P26	Q101247444	S2600	"6000000007104160939"
 Q5884317	P5056	Q141614700	S2600	"6000000007104160939"
 Q5884317	P569	+1212-00-00T00:00:00Z/9	S2600	"6000000007104160939"
 
@@ -3849,6 +7763,9 @@ Q2054995	P26	Q2054995	S2600	"6000000007141651300"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2054995	P570	+0963-00-00T00:00:00Z/9	S2600	"6000000007141651300"
 
+# Guy de Tonnerre  Q18275567  <- geni:6000000007151099425
+Q18275567	P569	+0935-00-00T00:00:00Z/9	S2600	"6000000007151099425"
+
 # Ebba Gabriella Emilia Cronstedt  Q141569539  <- geni:6000000007151600560
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141569539	P22	Q99209823	S2600	"6000000007151600560"
@@ -3859,6 +7776,13 @@ Q141620093	P5056	Q141619402	S2600	"6000000007160402695"
 # Brita Pehrsdotter Melartopaeus  Q141528198  <- geni:6000000007160725908
 Q141528198	P5056	Q141550361	S2600	"6000000007160725908"
 
+# Volodar Glebovich of Polotsk Prince of Minsk  Q2632610  <- geni:6000000007171629271
+Q2632610	P40	Q141539012	S2600	"6000000007171629271"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2632610	P569	+1100-10-23T00:00:00Z/11	S2600	"6000000007171629271"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2632610	P570	+1167-05-05T00:00:00Z/11	S2600	"6000000007171629271"
+
 # Nicholas ‘ ’ de Criol Jr.  Q110066505  <- geni:6000000007180791286
 Q110066505	P734	Q136359207	S2600	"6000000007180791286"
 
@@ -3868,6 +7792,10 @@ Q141514604	P734	Q141620199	S2600	"6000000007182882325"
 # Radulf bisbe d'Urgell  Q4387970  <- geni:6000000007215677278
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q4387970	P570	+0940-00-00T00:00:00Z/9	S2600	"6000000007215677278"
+
+# Anna Diogenissa  Q3932110  <- geni:6000000007215687165
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3932110	P569	+1074-00-00T00:00:00Z/9	S2600	"6000000007215687165"
 
 # Malin Olofsdotter  Q141532548  <- geni:6000000007220632437
 Q141532548	P40	Q141223547	S2600	"6000000007220632437"
@@ -3897,8 +7825,29 @@ Q141613883	P26	Q141614371	S2600	"6000000007239915124"
 # Ragna  Q141614371  <- geni:6000000007240168548
 Q141614371	P26	Q141613883	S2600	"6000000007240168548"
 
+# Thorsteinn Eiriksson  Q137732  <- geni:6000000007242658393
+Q137732	P5056	Q141614679	S2600	"6000000007242658393"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q137732	P569	+0975-00-00T00:00:00Z/9	S2600	"6000000007242658393"
+
+# Snorri Þorfinnsson  Q597962  <- geni:6000000007242731339
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q597962	P22	Q1771200	S2600	"6000000007242731339"
+
+# Þorbjörn Vífilsson  Q16128485  <- geni:6000000007243451633
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16128485	P569	+0955-00-00T00:00:00Z/9	S2600	"6000000007243451633"
+
+# Vífill Ketilsson  Q16129001  <- geni:6000000007248741353
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16129001	P569	+0900-00-00T00:00:00Z/9	S2600	"6000000007248741353"
+
 # Kari Olsdatter  Q141521911  <- geni:6000000007249000737
 Q141521911	P569	+1650-00-00T00:00:00Z/9	S2600	"6000000007249000737"
+
+# Fulcois du Perche  Q3090725  <- geni:6000000007249389502
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3090725	P570	+1031-00-00T00:00:00Z/9	S2600	"6000000007249389502"
 
 # Anna Jonsdatter Jonsdotter Trones  Q141549908  <- geni:6000000007257541989
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -3910,6 +7859,7 @@ Q141549908	P25	Q141512641	S2600	"6000000007257541989"
 Q5769269	P5056	Q141614692	S2600	"6000000007272531314"
 
 # Eudes II de Picquigny  Q18214782  <- geni:6000000007274283215
+Q18214782	P40	Q115633980	S2600	"6000000007274283215"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q18214782	P735	Q18763662	S2600	"6000000007274283215"
 
@@ -3954,11 +7904,28 @@ Q5620546	P40	Q141538281	S2600	"6000000007327658263"
 # Erik Guttormsson  Q141225702  <- geni:6000000007328872457
 Q141225702	P5056	Q141585016	S2600	"6000000007328872457"
 
+# Jean Ier de Picquigny  Q6171770  <- geni:6000000007330223786
+Q6171770	P569	+1249-00-00T00:00:00Z/9	S2600	"6000000007330223786"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6171770	P735	Q4160311	S2600	"6000000007330223786"
+
+# Wernher von Habsburg Landgraf von Habsburg  Q316104  <- geni:6000000007331031347
+Q316104	P569	+1106-00-00T00:00:00Z/9	S2600	"6000000007331031347"
+Q316104	P734	Q16880125	S2600	"6000000007331031347"
+
 # Elisabet Samuelsdotter Gyllenadler  Q104549966  <- geni:6000000007333625012
 Q104549966	P5056	Q141352777	S2600	"6000000007333625012"
 
+# Albrecht von Habsburg  Q458104  <- geni:6000000007337261308
+Q458104	P734	Q16880125	S2600	"6000000007337261308"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q458104	P735	Q18180401	S2600	"6000000007337261308"
+
 # Ramborg Magnusdotter av Hammersta  Q108410015  <- geni:6000000007345390409
 Q108410015	P569	+1340-00-00T00:00:00Z/9	S2600	"6000000007345390409"
+
+# Ulv Håkonsson  Q141612199  <- geni:6000000007349247294
+Q141612199	P22	Q75393457	S2600	"6000000007349247294"
 
 # Olof Nordenfeldt  Q116761407  <- geni:6000000007366278205
 Q116761407	P569	+1677-00-00T00:00:00Z/9	S2600	"6000000007366278205"
@@ -3969,8 +7936,20 @@ Q141224900	P735	Q22806387	S2600	"6000000007366595611"
 # Johan Hansson Stålbom  Q141492718  <- geni:6000000007367940467
 Q141492718	P5056	Q141283710	S2600	"6000000007367940467"
 
+# Alv Erlingsson til Tandberg  Q11957619  <- geni:6000000007368480488
+Q11957619	P5056	Q141610485	S2600	"6000000007368480488"
+Q11957619	P735	Q30131738	S2600	"6000000007368480488"
+
+# Gleb Vseslavich of Polotsk and Minsk  Q2991706  <- geni:6000000007377315413
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2991706	P569	+1068-00-00T00:00:00Z/9	S2600	"6000000007377315413"
+
 # Barbro Margareta Margareta Banér  Q14558299  <- geni:6000000007377863206
 Q14558299	P735	Q8274988	S2600	"6000000007377863206"
+
+# Adalolphe de Flandre  Q348293  <- geni:6000000007394963376
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q348293	P570	+0933-11-13T00:00:00Z/11	S2600	"6000000007394963376"
 
 # Fredrik Bogislaus von Schwerin  Q6170263  <- geni:6000000007400284855
 Q6170263	P26	Q136375983	S2600	"6000000007400284855"
@@ -3985,6 +7964,9 @@ Q178823	P569	+1740-00-00T00:00:00Z/9	S2600	"6000000007412720498"
 
 # Udilhilde von Dillingen  Q61140548  <- geni:6000000007417361268
 Q61140548	P570	+1309-05-11T00:00:00Z/11	S2600	"6000000007417361268"
+
+# Jon Arnesen Smiørbalt Lenderman in Maere  Q141448486  <- geni:6000000007420343457
+Q141448486	P40	Q26970861	S2600	"6000000007420343457"
 
 # Hervé de Vierzon  Q70840918  <- geni:6000000007427632264
 Q70840918	P569	+1236-00-00T00:00:00Z/9	S2600	"6000000007427632264"
@@ -4018,6 +8000,15 @@ Q141562820	P569	+1430-00-00T00:00:00Z/9	S2600	"6000000007469903387"
 # Anngunna Brynjulfsdatter Gjerde  Q141584924  <- geni:6000000007481252823
 Q141584924	P5056	Q141610390	S2600	"6000000007481252823"
 
+# Adelais Agnes d'Ardennes de Lorraine de Troyes  Q76021047  <- geni:6000000007510043633
+Q76021047	P569	+0953-00-00T00:00:00Z/9	S2600	"6000000007510043633"
+Q76021047	P570	+0991-00-00T00:00:00Z/9	S2600	"6000000007510043633"
+Q76021047	P734	Q105496580	S2600	"6000000007510043633"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q76021047	P735	Q21153711	S2600	"6000000007510043633"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q76021047	P735	Q394431	S2600	"6000000007510043633"
+
 # Lars Silfverstolpe  Q108936800  <- geni:6000000007510084248
 Q108936800	P570	+1814-08-13T00:00:00Z/11	S2600	"6000000007510084248"
 
@@ -4030,6 +8021,12 @@ Q141620283	P26	Q141619771	S2600	"6000000007511650606"
 # Anders Gustaf Lang  Q141538006  <- geni:6000000007511692829
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141538006	P22	Q135268178	S2600	"6000000007511692829"
+
+# Alvhild  Q106608743  <- geni:6000000007511733965
+Q106608743	P26	Q208331	S2600	"6000000007511733965"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q106608743	P570	+1040-00-00T00:00:00Z/9	S2600	"6000000007511733965"
+Q106608743	P735	Q18699311	S2600	"6000000007511733965"
 
 # Anna Olofsdotter  Q115631697  <- geni:6000000007511892998
 Q115631697	P569	+1525-00-00T00:00:00Z/9	S2600	"6000000007511892998"
@@ -4059,6 +8056,14 @@ Q141518855	P25	Q141314046	S2600	"6000000007548973143"
 # Kjetil Aslaksson Hodne  Q141521711  <- geni:6000000007549091857
 Q141521711	P5056	Q141614688	S2600	"6000000007549091857"
 
+# Haakon Jonsson Rose til Sudrheim  Q141586268  <- geni:6000000007549309545
+Q141586268	P22	Q5890072	S2600	"6000000007549309545"
+
+# Margrete Skulesdotter Rein  Q438646  <- geni:6000000007549309632
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q438646	P569	+1208-00-00T00:00:00Z/9	S2600	"6000000007549309632"
+Q438646	P734	Q25521651	S2600	"6000000007549309632"
+
 # Ottar Asulvsson Balli  Q141524627  <- geni:6000000007549309759
 Q141524627	P569	+1134-00-00T00:00:00Z/9	S2600	"6000000007549309759"
 
@@ -4074,6 +8079,12 @@ Q141529497	P26	Q141529497	S2600	"6000000007559278400"
 # Guri Pedersdotter Espeland  Q141510718  <- geni:6000000007560280097
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141510718	P569	+1645-00-00T00:00:00Z/9	S2600	"6000000007560280097"
+
+# Ingeborg Erengisledotter Bonde  Q110303042  <- geni:6000000007563637653
+Q110303042	P22	Q5714350	S2600	"6000000007563637653"
+Q110303042	P26	Q110303041	S2600	"6000000007563637653"
+Q110303042	P569	+1318-00-00T00:00:00Z/9	S2600	"6000000007563637653"
+Q110303042	P570	+1361-00-00T00:00:00Z/9	S2600	"6000000007563637653"
 
 # Pål Bårdsson  Q141613936  <- geni:6000000007573171415
 Q141613936	P26	Q141613985	S2600	"6000000007573171415"
@@ -4220,6 +8231,10 @@ Q141502792	P40	Q141200101	S2600	"6000000007887402307"
 # Isabel de Castañeda Guzmán  Q116004568  <- geni:6000000007915298090
 Q116004568	P734	Q105106775	S2600	"6000000007915298090"
 
+# Karlmann Hausmeier von Austrasien  Q310440  <- geni:6000000007922641252
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q310440	P569	+0713-00-00T00:00:00Z/9	S2600	"6000000007922641252"
+
 # Anna Eriksdotter Plantin  Q140373605  <- geni:6000000007945938756
 Q140373605	P570	+1716-08-12T00:00:00Z/11	S2600	"6000000007945938756"
 
@@ -4231,6 +8246,20 @@ Q115870913	P570	+1673-12-00T00:00:00Z/10	S2600	"6000000007947703025"
 
 # Charlotta Eleonora Hedvig von Krassow  Q110395711  <- geni:6000000007948266424
 Q110395711	P734	Q135953241	S2600	"6000000007948266424"
+
+# NN  Q110549527  <- geni:6000000007948312828
+Q110549527	P26	Q110549526	S2600	"6000000007948312828"
+Q110549527	P569	+1275-00-00T00:00:00Z/9	S2600	"6000000007948312828"
+Q110549527	P570	+1329-00-00T00:00:00Z/9	S2600	"6000000007948312828"
+
+# Ingeborg Mstislavna of Kiev  Q1445064  <- geni:6000000007958767639
+Q1445064	P26	Q1445064	S2600	"6000000007958767639"
+Q1445064	P26	Q313005	S2600	"6000000007958767639"
+Q1445064	P40	Q141610376	S2600	"6000000007958767639"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1445064	P569	+1099-00-00T00:00:00Z/9	S2600	"6000000007958767639"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1445064	P570	+1140-00-00T00:00:00Z/9	S2600	"6000000007958767639"
 
 # NN Grude  Q141521415  <- geni:6000000007979874771
 Q141521415	P569	+1590-00-00T00:00:00Z/9	S2600	"6000000007979874771"
@@ -4250,6 +8279,15 @@ Q141249722	P569	+1470-00-00T00:00:00Z/9	S2600	"6000000007980729100"
 # Lars Oleson Håland  Q141512696  <- geni:6000000007980739225
 Q141512696	P26	Q141353111	S2600	"6000000007980739225"
 Q141512696	P5056	Q141585024	S2600	"6000000007980739225"
+
+# Herborg Baardsdatter Torsnes  Q135527736  <- geni:6000000007980739327
+Q135527736	P26	Q141583875	S2600	"6000000007980739327"
+Q135527736	P40	Q141578324	S2600	"6000000007980739327"
+Q135527736	P5056	Q141585674	S2600	"6000000007980739327"
+Q135527736	P569	+1426-00-00T00:00:00Z/9	S2600	"6000000007980739327"
+Q135527736	P570	+1497-00-00T00:00:00Z/9	S2600	"6000000007980739327"
+Q135527736	P734	Q141562027	S2600	"6000000007980739327"
+Q135527736	P735	Q11975140	S2600	"6000000007980739327"
 
 # Jens Jenssen Bonde  Q141528681  <- geni:6000000007980957239
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4291,10 +8329,32 @@ Q141576960	P569	+1524-00-00T00:00:00Z/9	S2600	"6000000008019610345"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q167200	P569	+1275-00-00T00:00:00Z/9	S2600	"6000000008021045465"
 
+# Jon Svalesen Smør  Q6271657  <- geni:6000000008022984011
+Q6271657	P25	Q141577746	S2600	"6000000008022984011"
+Q6271657	P26	Q111989191	S2600	"6000000008022984011"
+Q6271657	P734	Q7546835	S2600	"6000000008022984011"
+
+# Anna Eriksdatter Orm  Q141569368  <- geni:6000000008039960834
+Q141569368	P22	Q110302808	S2600	"6000000008039960834"
+Q141569368	P26	Q11979148	S2600	"6000000008039960834"
+
+# Sverre Magnus Haakonsson av Norge  Q75291907  <- geni:6000000008040106385
+Q75291907	P5056	Q56245178	S2600	"6000000008040106385"
+Q75291907	P735	Q18109457	S2600	"6000000008040106385"
+
 # Hugues de Châlon  Q3142578  <- geni:6000000008053617504
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3142578	P569	+1334-00-00T00:00:00Z/9	S2600	"6000000008053617504"
 Q3142578	P734	Q141610431	S2600	"6000000008053617504"
+
+# Pall Jonsson  Q471905  <- geni:6000000008060356693
+Q471905	P5056	Q141242306	S2600	"6000000008060356693"
+
+# Ragnhildur Thorhallsdatter  Q135527804  <- geni:6000000008060425479
+Q135527804	P26	Q653125	S2600	"6000000008060425479"
+Q135527804	P40	Q796588	S2600	"6000000008060425479"
+Q135527804	P569	+1135-00-00T00:00:00Z/9	S2600	"6000000008060425479"
+Q135527804	P570	+1161-00-00T00:00:00Z/9	S2600	"6000000008060425479"
 
 # Marie van Brabant  Q76102567  <- geni:6000000008062132572
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4312,6 +8372,21 @@ Q141569754	P26	Q141569754	S2600	"6000000008115048412"
 # Steinvor Larsdatter Norheim  Q141533911  <- geni:6000000008152231206
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141533911	P25	Q141498707	S2600	"6000000008152231206"
+
+# Dag Ringsson  Q4994644  <- geni:6000000008177259164
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4994644	P569	+0930-00-00T00:00:00Z/9	S2600	"6000000008177259164"
+
+# Ogmund Ormsson  Q98697958  <- geni:6000000008177274736
+Q98697958	P26	Q141613959	S2600	"6000000008177274736"
+Q98697958	P5056	Q141586294	S2600	"6000000008177274736"
+Q98697958	P569	+1050-00-00T00:00:00Z/9	S2600	"6000000008177274736"
+Q98697958	P735	Q141515183	S2600	"6000000008177274736"
+
+# Thrand Bjǫrnsson  Q16640097  <- geni:6000000008177296942
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16640097	P569	+0847-00-00T00:00:00Z/9	S2600	"6000000008177296942"
+Q16640097	P570	+0915-00-00T00:00:00Z/9	S2600	"6000000008177296942"
 
 # Ottarsdatter Bjørnsson  Q141523779  <- geni:6000000008177323079
 Q141523779	P569	+0920-00-00T00:00:00Z/9	S2600	"6000000008177323079"
@@ -4337,17 +8412,85 @@ Q141538395	P22	Q141271422	S2600	"6000000008220656748"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141538395	P25	Q141271431	S2600	"6000000008220656748"
 
+# Birgitta Turesdotter Bielke  Q75393639  <- geni:6000000008229426187
+Q75393639	P5056	Q141429556	S2600	"6000000008229426187"
+Q75393639	P569	+1410-00-00T00:00:00Z/9	S2600	"6000000008229426187"
+Q75393639	P734	Q37547315	S2600	"6000000008229426187"
+
+# Ingebjørg Erlingsdatter  Q101247950  <- geni:6000000008242035482
+Q101247950	P26	Q116977061	S2600	"6000000008242035482"
+Q101247950	P26	Q15851234	S2600	"6000000008242035482"
+Q101247950	P5056	Q141569077	S2600	"6000000008242035482"
+Q101247950	P569	+1250-00-00T00:00:00Z/9	S2600	"6000000008242035482"
+Q101247950	P570	+1315-02-14T00:00:00Z/11	S2600	"6000000008242035482"
+Q101247950	P735	Q21452141	S2600	"6000000008242035482"
+
 # Arne Arnesson  Q101248140  <- geni:6000000008248136587
 Q101248140	P5056	Q141580665	S2600	"6000000008248136587"
 Q101248140	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000008248136587"
 Q101248140	P570	+1040-00-00T00:00:00Z/9	S2600	"6000000008248136587"
 
+# Geira Burislavsdatter  Q3100183  <- geni:6000000008248136726
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3100183	P570	+0990-00-00T00:00:00Z/9	S2600	"6000000008248136726"
+
 # Arnvid Torvidsson  Q141614123  <- geni:6000000008248147331
 Q141614123	P26	Q141613897	S2600	"6000000008248147331"
+
+# Tore «Steigar-Tore» Tordsson  Q6149119  <- geni:6000000008248195523
+Q6149119	P5056	Q141498336	S2600	"6000000008248195523"
+
+# Olve Ölvir Nuva „hnúfa“ Kåresson Berðlu-Kárason  Q384370  <- geni:6000000008248200771
+Q384370	P25	Q141613890	S2600	"6000000008248200771"
+
+# Eirik  Q112969063  <- geni:6000000008248200854
+Q112969063	P569	+1100-00-00T00:00:00Z/9	S2600	"6000000008248200854"
+Q112969063	P570	+1180-00-00T00:00:00Z/9	S2600	"6000000008248200854"
+Q112969063	P735	Q19798835	S2600	"6000000008248200854"
+
+# Domhnall Mac Murchada High  Q6933207  <- geni:6000000008248299023
+Q6933207	P569	+0650-00-00T00:00:00Z/9	S2600	"6000000008248299023"
+
+# Hugh De Ellington  Q451904  <- geni:6000000008248363443
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q451904	P735	Q839387	S2600	"6000000008248363443"
+
+# Eustachie de Tonnerre  Q60833254  <- geni:6000000008248363481
+Q60833254	P569	+1045-00-00T00:00:00Z/9	S2600	"6000000008248363481"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q60833254	P570	+1085-00-00T00:00:00Z/9	S2600	"6000000008248363481"
+
+# Vemund Vikingsson  Q15983010  <- geni:6000000008248363844
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q15983010	P569	+0780-00-00T00:00:00Z/9	S2600	"6000000008248363844"
+
+# Aed mac Diarmaith Dian  Q110702513  <- geni:6000000008250258163
+Q110702513	P569	+0620-00-00T00:00:00Z/9	S2600	"6000000008250258163"
+Q110702513	P570	+0654-00-00T00:00:00Z/9	S2600	"6000000008250258163"
+Q110702513	P735	Q2825500	S2600	"6000000008250258163"
+
+# Dunlaith Ingen Duach Flaithbhertach  Q76121929  <- geni:6000000008250385063
+Q76121929	P569	+0729-00-00T00:00:00Z/9	S2600	"6000000008250385063"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q76121929	P570	+0798-00-00T00:00:00Z/9	S2600	"6000000008250385063"
 
 # Alv Ottarsen Rode or Røde  Q141569278  <- geni:6000000008264795922
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141569278	P25	Q438469	S2600	"6000000008264795922"
+
+# Bodil Thrugotsdatter Queen consort of Denmark  Q2741817  <- geni:6000000008266067033
+Q2741817	P40	Q3127251	S2600	"6000000008266067033"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2741817	P569	+1065-00-00T00:00:00Z/9	S2600	"6000000008266067033"
+
+# Ospak Osvifsson  Q141612091  <- geni:6000000008276531908
+Q141612091	P22	Q15660885	S2600	"6000000008276531908"
+
+# Niðbjörg Bjolansdóttir  Q130629840  <- geni:6000000008277237018
+Q130629840	P569	+0910-00-00T00:00:00Z/9	S2600	"6000000008277237018"
+
+# Gró Geirleifsdóttir  Q141559584  <- geni:6000000008277327163
+Q141559584	P40	Q17633616	S2600	"6000000008277327163"
 
 # Carl Evert Fock  Q136289587  <- geni:6000000008285269555
 Q136289587	P569	+1692-00-00T00:00:00Z/9	S2600	"6000000008285269555"
@@ -4369,6 +8512,14 @@ Q60619097	P734	Q141611178	S2600	"6000000008316124870"
 
 # Margareta Jöransdotter Sabelfana  Q141523581  <- geni:6000000008367536363
 Q141523581	P5056	Q141572219	S2600	"6000000008367536363"
+
+# Karl Sunesson Gautland  Q5900679  <- geni:6000000008377420949
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900679	P569	+1098-00-00T00:00:00Z/9	S2600	"6000000008377420949"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900679	P570	+1145-00-00T00:00:00Z/9	S2600	"6000000008377420949"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5900679	P735	Q136771753	S2600	"6000000008377420949"
 
 # Maria Christina  Q122962093  <- geni:6000000008377576014
 Q122962093	P735	Q1083457	S2600	"6000000008377576014"
@@ -4392,6 +8543,13 @@ Q141562931	P735	Q19384399	S2600	"6000000008394694325"
 Q16594556	P570	+1816-02-14T00:00:00Z/11	S2600	"6000000008425628120"
 Q16594556	P735	Q64412279	S2600	"6000000008425628120"
 
+# Ragnrid Guttormsdatter Rein  Q75292005  <- geni:6000000008447464393
+Q75292005	P25	Q141216467	S2600	"6000000008447464393"
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75292005	P26	Q2905211	S2600	"6000000008447464393"
+Q75292005	P5056	Q141352794	S2600	"6000000008447464393"
+Q75292005	P734	Q25521651	S2600	"6000000008447464393"
+
 # Carl Georg von Krassow  Q110151671  <- geni:6000000008457153431
 Q110151671	P734	Q135953241	S2600	"6000000008457153431"
 Q110151671	P735	Q1985538	S2600	"6000000008457153431"
@@ -4403,6 +8561,12 @@ Q133825293	P22	Q139194901	S2600	"6000000008467554009"
 # Gustaf Reinhold Lagerhjelm  Q141499864  <- geni:6000000008474940545
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141499864	P22	Q5931291	S2600	"6000000008474940545"
+
+# Philipp III von Falkenstein-Münzenberg  Q2086860  <- geni:6000000008478214086
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2086860	P569	+1277-00-00T00:00:00Z/9	S2600	"6000000008478214086"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2086860	P570	+1321-11-19T00:00:00Z/11	S2600	"6000000008478214086"
 
 # Heinrich II von Henneberg-Hartenberg  Q26813209  <- geni:6000000008485882320
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4462,6 +8626,13 @@ Q24298875	P570	+1723-01-21T00:00:00Z/11	S2600	"6000000008541642430"
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141515243	P22	Q111448993	S2600	"6000000008549911673"
 
+# Erengisle Petersson Bonde  Q5714350  <- geni:6000000008562951192
+Q5714350	P40	Q110303042	S2600	"6000000008562951192"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5714350	P569	+1319-00-00T00:00:00Z/9	S2600	"6000000008562951192"
+Q5714350	P570	+1350-00-00T00:00:00Z/9	S2600	"6000000008562951192"
+Q5714350	P734	Q21487773	S2600	"6000000008562951192"
+
 # Peter Erengislesson Bonde  Q108410010  <- geni:6000000008563676101
 Q108410010	P570	+1393-00-00T00:00:00Z/9	S2600	"6000000008563676101"
 Q108410010	P735	Q2793400	S2600	"6000000008563676101"
@@ -4469,6 +8640,14 @@ Q108410010	P735	Q2793400	S2600	"6000000008563676101"
 # Adalbart II von Mainz von Saarbrücken Erzbischof  Q347484  <- geni:6000000008565564291
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q347484	P570	+1137-06-23T00:00:00Z/11	S2600	"6000000008565564291"
+
+# Adelheid van Leuven  Q4681825  <- geni:6000000008568510482
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4681825	P569	+1072-00-00T00:00:00Z/9	S2600	"6000000008568510482"
+Q4681825	P734	Q125423241	S2600	"6000000008568510482"
+Q4681825	P734	Q29645473	S2600	"6000000008568510482"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4681825	P735	Q4057477	S2600	"6000000008568510482"
 
 # Helena Dorothea von Burghausen  Q110619365  <- geni:6000000008572441706
 Q110619365	P735	Q1035239	S2600	"6000000008572441706"
@@ -4496,6 +8675,15 @@ Q104550303	P5056	Q141336973	S2600	"6000000008612246851"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q104550303	P735	Q8274988	S2600	"6000000008612246851"
 
+# Floris graaf van Holland  Q77243  <- geni:6000000008630617676
+Q77243	P40	Q346380	S2600	"6000000008630617676"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q77243	P569	+1145-00-00T00:00:00Z/9	S2600	"6000000008630617676"
+
+# Ludwig von Bayern König von Ost-Frankia  Q152463  <- geni:6000000008630635932
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q152463	P569	+0805-00-00T00:00:00Z/9	S2600	"6000000008630635932"
+
 # Landulf II of Capua  Q2587965  <- geni:6000000008630657256
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q2587965	P569	+0820-00-00T00:00:00Z/9	S2600	"6000000008630657256"
@@ -4514,6 +8702,32 @@ Q141560534	P569	+1510-00-00T00:00:00Z/9	S2600	"6000000008637404438"
 
 # Elseby Johansdotter Bukhorn  Q115870663  <- geni:6000000008638245654
 Q115870663	P570	+1504-00-00T00:00:00Z/9	S2600	"6000000008638245654"
+
+# Ermengarde de Tours  Q235653  <- geni:6000000008640434422
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q235653	P569	+0800-05-28T00:00:00Z/11	S2600	"6000000008640434422"
+
+# Baudouin de Boulogne  Q600483  <- geni:6000000008640434812
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q600483	P22	Q2653152	S2600	"6000000008640434812"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q600483	P570	+1032-00-00T00:00:00Z/9	S2600	"6000000008640434812"
+Q600483	P734	Q104854476	S2600	"6000000008640434812"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q600483	P735	Q19961822	S2600	"6000000008640434812"
+
+# Mathilde Van Leuven  Q1885815  <- geni:6000000008640434825
+Q1885815	P40	Q3101164	S2600	"6000000008640434825"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1885815	P570	+1068-00-00T00:00:00Z/9	S2600	"6000000008640434825"
+
+# Bonifazio III-IV di Canossa margrave of Tuscany  Q738416  <- geni:6000000008640480046
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q738416	P735	Q18643468	S2600	"6000000008640480046"
+
+# Dietrich Luf I. von Kleve  Q1223929  <- geni:6000000008640629738
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1223929	P570	+1277-05-25T00:00:00Z/11	S2600	"6000000008640629738"
 
 # James Graham  Q75272116  <- geni:6000000008640680934
 Q75272116	P734	Q2702454	S2600	"6000000008640680934"
@@ -4571,11 +8785,19 @@ Q141533945	P5056	Q141537980	S2600	"6000000008686149420"
 # Bjørn Halvardson Skeie I  Q141569462  <- geni:6000000008693795435
 Q141569462	P5056	Q141537980	S2600	"6000000008693795435"
 
+# Gudlaug Jonsdatter Ron  Q141610334  <- geni:6000000008707599012
+Q141610334	P22	Q5890072	S2600	"6000000008707599012"
+Q141610334	P40	Q101247940	S2600	"6000000008707599012"
+
 # Rasmus Lauritsson Fuglestad  Q141529127  <- geni:6000000008725486002
 Q141529127	P569	+1565-00-00T00:00:00Z/9	S2600	"6000000008725486002"
 
 # Anna Halvardsdatter Lintjørn  Q141538028  <- geni:6000000008725835288
 Q141538028	P569	+1632-00-00T00:00:00Z/9	S2600	"6000000008725835288"
+
+# Guttorm Bårdson  Q75291986  <- geni:6000000008726553805
+Q75291986	P5056	Q141612221	S2600	"6000000008726553805"
+Q75291986	P735	Q20755782	S2600	"6000000008726553805"
 
 # Märta Christina Rosenborg  Q141583796  <- geni:6000000008735773093
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4598,6 +8820,10 @@ Q122961984	P40	Q141519517	S2600	"6000000008778359174"
 # Charlotta Eleonora Carlsdotter Siöblad  Q116775791  <- geni:6000000008788896581
 Q116775791	P5056	Q141574629	S2600	"6000000008788896581"
 
+# Conan  Q728149  <- geni:6000000008789624608
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q728149	P569	+1093-00-00T00:00:00Z/9	S2600	"6000000008789624608"
+
 # Johannes Jacobi Jacobi Bureus  Q5590208  <- geni:6000000008798323789
 Q5590208	P569	+1623-00-00T00:00:00Z/9	S2600	"6000000008798323789"
 Q5590208	P734	Q141318794	S2600	"6000000008798323789"
@@ -4606,14 +8832,31 @@ Q5590208	P735	Q30510238	S2600	"6000000008798323789"
 # Johan von Scheffer  Q141588265  <- geni:6000000008798585431
 Q141588265	P26	Q141588265	S2600	"6000000008798585431"
 
+# Boson d'Autun  Q73806  <- geni:6000000008799837188
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q73806	P569	+0841-00-00T00:00:00Z/9	S2600	"6000000008799837188"
+Q73806	P734	Q98890125	S2600	"6000000008799837188"
+
 # Gunnar Klepp  Q141562346  <- geni:6000000008807359308
 Q141562346	P569	+1574-00-00T00:00:00Z/9	S2600	"6000000008807359308"
+
+# Gissur Teitsson  Q8964175  <- geni:6000000008826123095
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q8964175	P569	+0952-00-00T00:00:00Z/9	S2600	"6000000008826123095"
+Q8964175	P570	+0990-00-00T00:00:00Z/9	S2600	"6000000008826123095"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q8964175	P735	Q33101255	S2600	"6000000008826123095"
 
 # Carl Arvid Svensson Hallenborg  Q137213784  <- geni:6000000008830654894
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q137213784	P569	+1710-10-22T00:00:00Z/11	S2600	"6000000008830654894"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q137213784	P570	+1780-04-09T00:00:00Z/11	S2600	"6000000008830654894"
+
+# Helga Einarsdóttir  Q135529148  <- geni:6000000008832142276
+Q135529148	P5056	Q105303192	S2600	"6000000008832142276"
+Q135529148	P569	+0971-00-00T00:00:00Z/9	S2600	"6000000008832142276"
+Q135529148	P735	Q1035107	S2600	"6000000008832142276"
 
 # Elisabet Olofsdotter Luth  Q116779751  <- geni:6000000008847604706
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4639,6 +8882,12 @@ Q141521936	P569	+1605-00-00T00:00:00Z/9	S2600	"6000000008856669416"
 # Gabriel Lauritson Haga  Q141511473  <- geni:6000000008865656742
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141511473	P25	Q141577161	S2600	"6000000008865656742"
+
+# Nils Uddsson  Q110303041  <- geni:6000000008869540732
+Q110303041	P26	Q110303042	S2600	"6000000008869540732"
+Q110303041	P569	+1312-00-00T00:00:00Z/9	S2600	"6000000008869540732"
+Q110303041	P570	+1357-00-00T00:00:00Z/9	S2600	"6000000008869540732"
+Q110303041	P735	Q16423038	S2600	"6000000008869540732"
 
 # Sigmund Sigmundsen Berge  Q141581570  <- geni:6000000008870194139
 Q141581570	P5056	Q141614730	S2600	"6000000008870194139"
@@ -4696,6 +8945,10 @@ Q109835929	P735	Q17317997	S2600	"6000000008899900859"
 Q18326036	P735	Q17317997	S2600	"6000000008899932260"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q18326036	P735	Q666578	S2600	"6000000008899932260"
+
+# Adelheid von Wolfratshausen  Q4681926  <- geni:6000000008905633109
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4681926	P570	+1126-01-11T00:00:00Z/11	S2600	"6000000008905633109"
 
 # Johanna von Heinsberg-Valkenburg  Q76189596  <- geni:6000000008907612075
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4758,6 +9011,10 @@ Q108870661	P735	Q750186	S2600	"6000000009013810291"
 # Johan Fredrik Paykull till Türpsal  Q128044690  <- geni:6000000009014497802
 Q128044690	P569	+1640-00-00T00:00:00Z/9	S2600	"6000000009014497802"
 
+# Eudes Comte d'Orléans  Q1345866  <- geni:6000000009025893077
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1345866	P735	Q18763662	S2600	"6000000009025893077"
+
 # Theodora Asanina  Q111534150  <- geni:6000000009056498809
 Q111534150	P734	Q76544981	S2600	"6000000009056498809"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4809,6 +9066,23 @@ Q5876270	P735	Q19832216	S2600	"6000000009146206080"
 Q141578158	P734	Q30087270	S2600	"6000000009151812030"
 Q141578158	P734	Q30580079	S2600	"6000000009151812030"
 
+# Gottfried III von Eppenstein  Q24921025  <- geni:6000000009152980692
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q24921025	P22	Q23060572	S2600	"6000000009152980692"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q24921025	P40	Q20164829	S2600	"6000000009152980692"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q24921025	P569	+1220-00-00T00:00:00Z/9	S2600	"6000000009152980692"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q24921025	P570	+1283-00-00T00:00:00Z/9	S2600	"6000000009152980692"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q24921025	P735	Q16746939	S2600	"6000000009152980692"
+
+# Gottfried I von Eppstein  Q23060572  <- geni:6000000009164124151
+Q23060572	P40	Q24921025	S2600	"6000000009164124151"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q23060572	P569	+1160-00-00T00:00:00Z/9	S2600	"6000000009164124151"
+
 # Ingrid Alvsdatter Trosset  Q141565494  <- geni:6000000009170017937
 Q141565494	P26	Q141565494	S2600	"6000000009170017937"
 
@@ -4824,6 +9098,18 @@ Q61014344	P734	Q141497327	S2600	"6000000009209489764"
 Q61014344	P734	Q141619636	S2600	"6000000009209489764"
 Q61014344	P734	Q76151788	S2600	"6000000009209489764"
 Q61014344	P734	Q76413203	S2600	"6000000009209489764"
+
+# Raoul Barbeta de Vignory  Q115597197  <- geni:6000000009214504835
+Q115597197	P569	+0946-00-00T00:00:00Z/9	S2600	"6000000009214504835"
+Q115597197	P735	Q11487195	S2600	"6000000009214504835"
+
+# Guy de Vignory I  Q78439777  <- geni:6000000009214888459
+Q78439777	P569	+0970-00-00T00:00:00Z/9	S2600	"6000000009214888459"
+
+# Adélaïde-Wera de Bourgogne comtesse de Bourgogne et de Chalons  Q6701449  <- geni:6000000009232806925
+Q6701449	P569	+0915-00-00T00:00:00Z/9	S2600	"6000000009232806925"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6701449	P570	+0967-08-19T00:00:00Z/11	S2600	"6000000009232806925"
 
 # Iver Kjær Iversen  Q141523577  <- geni:6000000009233317499
 Q141523577	P5056	Q141502673	S2600	"6000000009233317499"
@@ -4875,6 +9161,10 @@ Q141521491	P22	Q141498706	S2600	"6000000009263394065"
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141513583	P22	Q141498706	S2600	"6000000009263941493"
 
+# Gerberge de la Rochefoucauld  Q21077152  <- geni:6000000009304951693
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q21077152	P735	Q23930997	S2600	"6000000009304951693"
+
 # Thomas IV de Coucy  Q116918815  <- geni:6000000009304988409
 Q116918815	P569	+1255-00-00T00:00:00Z/9	S2600	"6000000009304988409"
 Q116918815	P570	+1302-07-11T00:00:00Z/11	S2600	"6000000009304988409"
@@ -4889,11 +9179,20 @@ Q3138729	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000009305036318"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q3138729	P570	+1001-00-00T00:00:00Z/9	S2600	"6000000009305036318"
 
+# Wilhelm von Jülich IV  Q137639  <- geni:6000000009305044275
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q137639	P735	Q11027623	S2600	"6000000009305044275"
+
 # Adalbert von Saffenberg und Norvenich  Q81827036  <- geni:6000000009305060696
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q81827036	P569	+1130-00-00T00:00:00Z/9	S2600	"6000000009305060696"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q81827036	P735	Q347243	S2600	"6000000009305060696"
+
+# Solgi Haraldsson  Q130320413  <- geni:6000000009305082875
+Q130320413	P5056	Q141585679	S2600	"6000000009305082875"
+Q130320413	P569	+0730-00-00T00:00:00Z/9	S2600	"6000000009305082875"
+Q130320413	P570	+0762-00-00T00:00:00Z/9	S2600	"6000000009305082875"
 
 # Isabeau de Courtenay  Q141436727  <- geni:6000000009305096005
 Q141436727	P569	+1055-00-00T00:00:00Z/9	S2600	"6000000009305096005"
@@ -4913,6 +9212,11 @@ Q116004579	P735	Q18699663	S2600	"6000000009335540459"
 # Ingrid Persdotter  Q141382145  <- geni:6000000009375892665
 Q141382145	P5056	Q141429564	S2600	"6000000009375892665"
 
+# Gils Snorrasson  Q16571615  <- geni:6000000009380679852
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16571615	P569	+1045-00-00T00:00:00Z/9	S2600	"6000000009380679852"
+Q16571615	P570	+1118-00-00T00:00:00Z/9	S2600	"6000000009380679852"
+
 # Maria Gerdruta von Aderkas  Q131582026  <- geni:6000000009385903747
 Q131582026	P569	+1638-00-00T00:00:00Z/9	S2600	"6000000009385903747"
 Q131582026	P570	+1694-00-00T00:00:00Z/9	S2600	"6000000009385903747"
@@ -4929,11 +9233,33 @@ Q110304544	P734	Q41365468	S2600	"6000000009420748215"
 Q75382324	P569	+0998-00-00T00:00:00Z/9	S2600	"6000000009432043639"
 Q75382324	P570	+1042-00-00T00:00:00Z/9	S2600	"6000000009432043639"
 
+# Richard FitzRichard  Q312613  <- geni:6000000009432364977
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q312613	P570	+1026-08-28T00:00:00Z/11	S2600	"6000000009432364977"
+Q312613	P734	Q5455679	S2600	"6000000009432364977"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q312613	P735	Q1249148	S2600	"6000000009432364977"
+
+# Ogive  Q5260727  <- geni:6000000009432535049
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5260727	P569	+0995-09-04T00:00:00Z/11	S2600	"6000000009432535049"
+
+# Hild Eiriksdotter  Q76298981  <- geni:6000000009437417980
+Q76298981	P40	Q2521540	S2600	"6000000009437417980"
+Q76298981	P5056	Q141583346	S2600	"6000000009437417980"
+Q76298981	P569	+0725-00-00T00:00:00Z/9	S2600	"6000000009437417980"
+Q76298981	P570	+0762-00-00T00:00:00Z/9	S2600	"6000000009437417980"
+Q76298981	P735	Q19543528	S2600	"6000000009437417980"
+
 # Maria Elisabet Kruse af Kajbala  Q109296500  <- geni:6000000009437474869
 Q109296500	P569	+1648-00-00T00:00:00Z/9	S2600	"6000000009437474869"
 Q109296500	P734	Q21449748	S2600	"6000000009437474869"
 Q109296500	P735	Q16423275	S2600	"6000000009437474869"
 Q109296500	P735	Q325872	S2600	"6000000009437474869"
+
+# Herleva  Q259110  <- geni:6000000009437997026
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q259110	P569	+1003-00-00T00:00:00Z/9	S2600	"6000000009437997026"
 
 # Anders Hansson Moraeus  Q141612346  <- geni:6000000009441141604
 Q141612346	P5056	Q141283710	S2600	"6000000009441141604"
@@ -4952,6 +9278,16 @@ Q1553793	P735	Q136411189	S2600	"6000000009494103078"
 
 # Ane Justine Jensdatter Stangeland  Q141546603  <- geni:6000000009500754533
 Q141546603	P26	Q141546603	S2600	"6000000009500754533"
+
+# Margareta Haraldsdatter Gille  Q26965894  <- geni:6000000009503269198
+Q26965894	P40	Q141612104	S2600	"6000000009503269198"
+Q26965894	P40	Q18418043	S2600	"6000000009503269198"
+Q26965894	P40	Q5578661	S2600	"6000000009503269198"
+Q26965894	P5056	Q141611167	S2600	"6000000009503269198"
+Q26965894	P569	+1136-00-00T00:00:00Z/9	S2600	"6000000009503269198"
+Q26965894	P570	+1161-00-00T00:00:00Z/9	S2600	"6000000009503269198"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q26965894	P735	Q8274988	S2600	"6000000009503269198"
 
 # SĪTĀ aka JĀNAKI aka MYTHILI Rāma  Q191114  <- geni:6000000009514160940
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -4975,6 +9311,14 @@ Q61791331	P570	+1531-00-00T00:00:00Z/9	S2600	"6000000009542502714"
 Q61791331	P735	Q19968011	S2600	"6000000009542502714"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q61791331	P735	Q830350	S2600	"6000000009542502714"
+
+# Eudokia Makrembolitissa  Q232223  <- geni:6000000009545914191
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232223	P569	+1027-00-00T00:00:00Z/9	S2600	"6000000009545914191"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232223	P570	+1081-00-00T00:00:00Z/9	S2600	"6000000009545914191"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232223	P735	Q99188972	S2600	"6000000009545914191"
 
 # Helvig Adriansdatter Falkener  Q141620037  <- geni:6000000009547711299
 Q141620037	P5056	Q141614450	S2600	"6000000009547711299"
@@ -5013,14 +9357,27 @@ Q60366	P569	+1025-00-00T00:00:00Z/9	S2600	"6000000009616135019"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q60366	P735	Q20000045	S2600	"6000000009616135019"
 
+# Kristina Nikulasdotter Blaka  Q4959919  <- geni:6000000009649571091
+Q4959919	P40	Q141534290	S2600	"6000000009649571091"
+
 # Johannes Toresen Byberg  Q141583592  <- geni:6000000009655132008
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141583592	P25	Q141577912	S2600	"6000000009655132008"
+
+# Gottfried von Eppenstein IV  Q20164829  <- geni:6000000009665500123
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q20164829	P569	+1247-00-00T00:00:00Z/9	S2600	"6000000009665500123"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q20164829	P570	+1294-00-00T00:00:00Z/9	S2600	"6000000009665500123"
 
 # Heinrich von Isenburg-Grenzau Graf von Isenburg-Grenzau  Q26959917  <- geni:6000000009665780773
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q26959917	P569	+1213-00-00T00:00:00Z/9	S2600	"6000000009665780773"
 Q26959917	P570	+1278-09-29T00:00:00Z/11	S2600	"6000000009665780773"
+
+# Gerhard I von Eppenstein  Q23060578  <- geni:6000000009666834301
+Q23060578	P570	+1190-00-00T00:00:00Z/9	S2600	"6000000009666834301"
+Q23060578	P734	Q37529177	S2600	"6000000009666834301"
 
 # Juliana Gustafsdotter Faltzburg  Q141528807  <- geni:6000000009682532488
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -5096,6 +9453,9 @@ Q77601	P735	Q4160311	S2600	"6000000009695333621"
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q160213	P31	Q5	S2600	"6000000009704869636"
 
+# Kristín Knudsdatter Knútsdóttir  Q2555139  <- geni:6000000009705979434
+Q2555139	P5056	Q141528098	S2600	"6000000009705979434"
+
 # Steinar Sveinsson Bø  Q141578254  <- geni:6000000009710057148
 Q141578254	P569	+1458-00-00T00:00:00Z/9	S2600	"6000000009710057148"
 
@@ -5108,6 +9468,10 @@ Q139572415	P569	+1457-01-09T00:00:00Z/11	S2600	"6000000009737639054"
 Q139572415	P570	+1518-10-00T00:00:00Z/10	S2600	"6000000009737639054"
 Q139572415	P734	Q1605060	S2600	"6000000009737639054"
 
+# Eilica von Schweinfurt  Q4847195  <- geni:6000000009751578555
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4847195	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000009751578555"
+
 # Roman Romanovich von Anrep  Q114246730  <- geni:6000000009773037719
 Q114246730	P5056	Q114834115	S2600	"6000000009773037719"
 Q114246730	P735	Q933726	S2600	"6000000009773037719"
@@ -5118,6 +9482,22 @@ Q75242575	P734	Q54871338	S2600	"6000000009776748688"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75242575	P735	Q4160311	S2600	"6000000009776748688"
 
+# Gerberga von Henneberg von Zutpen  Q3198477  <- geni:6000000009782507443
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3198477	P25	Q81085608	S2600	"6000000009782507443"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3198477	P569	+0975-00-00T00:00:00Z/9	S2600	"6000000009782507443"
+Q3198477	P735	Q65237017	S2600	"6000000009782507443"
+
+# Konrad von Öhningen  Q704902  <- geni:6000000009783557218
+Q704902	P40	Q141550395	S2600	"6000000009783557218"
+Q704902	P40	Q141610369	S2600	"6000000009783557218"
+Q704902	P734	Q141614659	S2600	"6000000009783557218"
+
+# Orm Ivarsson  Q16650106  <- geni:6000000009796535940
+Q16650106	P26	Q3364492	S2600	"6000000009796535940"
+Q16650106	P5056	Q141552246	S2600	"6000000009796535940"
+
 # Ulrika Beata Rehbinder  Q136386693  <- geni:6000000009821739246
 Q136386693	P569	+1747-10-07T00:00:00Z/11	S2600	"6000000009821739246"
 Q136386693	P570	+1829-05-09T00:00:00Z/11	S2600	"6000000009821739246"
@@ -5125,6 +9505,19 @@ Q136386693	P570	+1829-05-09T00:00:00Z/11	S2600	"6000000009821739246"
 # Nils Rosén von Rosenstein  Q6080164  <- geni:6000000009855557161
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q6080164	P569	+1752-12-12T00:00:00Z/11	S2600	"6000000009855557161"
+
+# Ermentrude de France  Q4950137  <- geni:6000000009856419235
+Q4950137	P40	Q2394242	S2600	"6000000009856419235"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4950137	P569	+0908-00-00T00:00:00Z/9	S2600	"6000000009856419235"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4950137	P570	+0933-00-00T00:00:00Z/9	S2600	"6000000009856419235"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4950137	P735	Q22661356	S2600	"6000000009856419235"
+
+# Erik Segebodsen Krummedige  Q3429244  <- geni:6000000009878540640
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3429244	P569	+1351-00-00T00:00:00Z/9	S2600	"6000000009878540640"
 
 # Jürgen Johann Johann von Maydell  Q95243484  <- geni:6000000009886129821
 Q95243484	P569	+1698-00-00T00:00:00Z/9	S2600	"6000000009886129821"
@@ -5137,6 +9530,22 @@ Q141570887	P570	+1611-00-00T00:00:00Z/9	S2600	"6000000009887516008"
 # Tord Trondsøn Benkestok  Q141560780  <- geni:6000000009897859618
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141560780	P25	Q141498698	S2600	"6000000009897859618"
+
+# Æthelbald  Q272148  <- geni:6000000009901999247
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q272148	P569	+0834-00-00T00:00:00Z/9	S2600	"6000000009901999247"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q272148	P570	+0860-12-20T00:00:00Z/11	S2600	"6000000009901999247"
+
+# Ermengarde Gerberga d'Anjou  Q3223972  <- geni:6000000009909505293
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3223972	P569	+0958-11-11T00:00:00Z/11	S2600	"6000000009909505293"
+Q3223972	P734	Q63453818	S2600	"6000000009909505293"
+Q3223972	P735	Q65237017	S2600	"6000000009909505293"
+
+# Olve Grotgardson  Q9099027  <- geni:6000000009914517348
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q9099027	P570	+1021-00-00T00:00:00Z/9	S2600	"6000000009914517348"
 
 # Ralph Brereton  Q110582255  <- geni:6000000009918172702
 Q110582255	P734	Q16860404	S2600	"6000000009918172702"
@@ -5165,6 +9574,14 @@ Q141576708	P5056	Q141244186	S2600	"6000000010023888768"
 # Emil Theodore Mankell  Q28125353  <- geni:6000000010039754837
 Q28125353	P735	Q15875484	S2600	"6000000010039754837"
 
+# Judith Maria of Kiev  Q96239458  <- geni:6000000010107772824
+Q96239458	P569	+1089-00-00T00:00:00Z/9	S2600	"6000000010107772824"
+Q96239458	P570	+1112-00-00T00:00:00Z/9	S2600	"6000000010107772824"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96239458	P735	Q325872	S2600	"6000000010107772824"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96239458	P735	Q5954149	S2600	"6000000010107772824"
+
 # Tora Skoptisdóttir Giske  Q75291931  <- geni:6000000010119800396
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75291931	P570	+1135-00-00T00:00:00Z/9	S2600	"6000000010119800396"
@@ -5178,11 +9595,69 @@ Q4571352	P570	+1050-00-00T00:00:00Z/9	S2600	"6000000010120948699"
 Q4571352	P734	Q30573628	S2600	"6000000010120948699"
 
 # Ingrid Ylva Sunesdotter  Q468729  <- geni:6000000010160508821
+Q468729	P40	Q5569987	S2600	"6000000010160508821"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q468729	P569	+1158-00-00T00:00:00Z/9	S2600	"6000000010160508821"
 
+# Birger Magnusson (Folkungaätten)  Q316828  <- geni:6000000010160609967
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316828	P22	Q141528104	S2600	"6000000010160609967"
+Q316828	P26	Q98698088	S2600	"6000000010160609967"
+Q316828	P734	Q23536498	S2600	"6000000010160609967"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q316828	P735	Q773057	S2600	"6000000010160609967"
+
+# Beate Johansdatter von Thienen  Q96240793  <- geni:6000000010191066882
+Q96240793	P5056	Q141574632	S2600	"6000000010191066882"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240793	P570	+1406-00-00T00:00:00Z/9	S2600	"6000000010191066882"
+Q96240793	P734	Q131361190	S2600	"6000000010191066882"
+
+# Máel Dúin mac Mael Fithrich  Q6949535  <- geni:6000000010192397477
+Q6949535	P569	+0625-00-00T00:00:00Z/9	S2600	"6000000010192397477"
+
+# Bernard II Ii Billung  Q435137  <- geni:6000000010218558380
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q435137	P569	+0990-00-00T00:00:00Z/9	S2600	"6000000010218558380"
+Q435137	P734	Q55293747	S2600	"6000000010218558380"
+
+# Guðmundur Riki Eyjólfsson  Q135529137  <- geni:6000000010222371759
+Q135529137	P569	+0995-00-00T00:00:00Z/9	S2600	"6000000010222371759"
+Q135529137	P570	+1060-00-00T00:00:00Z/9	S2600	"6000000010222371759"
+Q135529137	P735	Q19805751	S2600	"6000000010222371759"
+
+# Guömundur Eyólfursson  Q135529139  <- geni:6000000010222371826
+Q135529139	P26	Q135529219	S2600	"6000000010222371826"
+Q135529139	P40	Q135529150	S2600	"6000000010222371826"
+Q135529139	P569	+0950-00-00T00:00:00Z/9	S2600	"6000000010222371826"
+Q135529139	P570	+1025-00-00T00:00:00Z/9	S2600	"6000000010222371826"
+Q135529139	P735	Q16423533	S2600	"6000000010222371826"
+
+# Hallbera Þóroddsdóttir  Q135529219  <- geni:6000000010222371833
+Q135529219	P26	Q135529139	S2600	"6000000010222371833"
+Q135529219	P40	Q135529150	S2600	"6000000010222371833"
+Q135529219	P569	+0950-00-00T00:00:00Z/9	S2600	"6000000010222371833"
+Q135529219	P570	+0996-00-00T00:00:00Z/9	S2600	"6000000010222371833"
+Q135529219	P735	Q16426621	S2600	"6000000010222371833"
+
+# Reginleif Sæmundardóttir  Q135529220  <- geni:6000000010222371843
+Q135529220	P569	+0910-00-00T00:00:00Z/9	S2600	"6000000010222371843"
+Q135529220	P570	+0923-00-00T00:00:00Z/9	S2600	"6000000010222371843"
+
+# NN Ingen Taidg  Q135529250  <- geni:6000000010222371854
+Q135529250	P26	Q618605	S2600	"6000000010222371854"
+Q135529250	P569	+0890-00-00T00:00:00Z/9	S2600	"6000000010222371854"
+
 # Snefrid Håkonsdotter  Q141585612  <- geni:6000000010222435520
 Q141585612	P26	Q141585612	S2600	"6000000010222435520"
+
+# Ormur Jónsson Breiðbælingur  Q796588  <- geni:6000000010232166971
+Q796588	P25	Q135527804	S2600	"6000000010232166971"
+Q796588	P5056	Q69822132	S2600	"6000000010232166971"
+
+# Hallveig Ormsdottir  Q16426752  <- geni:6000000010232249252
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16426752	P569	+1182-00-00T00:00:00Z/9	S2600	"6000000010232249252"
 
 # Patrick Graham  Q75388570  <- geni:6000000010262210706
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -5196,11 +9671,28 @@ Q115478582	P735	Q666578	S2600	"6000000010312162320"
 # Hector Munro  Q7527081  <- geni:6000000010321357074
 Q7527081	P569	+1600-00-00T00:00:00Z/9	S2600	"6000000010321357074"
 
+# Gerhard von Hagenhausen  Q61139993  <- geni:6000000010330967649
+Q61139993	P570	+1178-00-00T00:00:00Z/9	S2600	"6000000010330967649"
+Q61139993	P735	Q7996169	S2600	"6000000010330967649"
+
+# Audun Eivindsson Høyland  Q17131011  <- geni:6000000010389572289
+Q17131011	P22	Q141219176	S2600	"6000000010389572289"
+Q17131011	P25	Q141216603	S2600	"6000000010389572289"
+Q17131011	P569	+1390-00-00T00:00:00Z/9	S2600	"6000000010389572289"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q17131011	P734	Q27888882	S2600	"6000000010389572289"
+
 # Per Olof Moberger  Q106563045  <- geni:6000000010398679679
 Q106563045	P735	Q18089653	S2600	"6000000010398679679"
 
 # Anna Olsdatter Stangeland  Q141569377  <- geni:6000000010407268537
 Q141569377	P26	Q141569377	S2600	"6000000010407268537"
+
+# Ingegerd Haraldsdatter  Q75291808  <- geni:6000000010443158431
+Q75291808	P5056	Q141611167	S2600	"6000000010443158431"
+Q75291808	P569	+0870-00-00T00:00:00Z/9	S2600	"6000000010443158431"
+Q75291808	P570	+0920-00-00T00:00:00Z/9	S2600	"6000000010443158431"
+Q75291808	P735	Q3481175	S2600	"6000000010443158431"
 
 # Johan Olofsson  Q127270620  <- geni:6000000010459795393
 Q127270620	P569	+1708-05-08T00:00:00Z/11	S2600	"6000000010459795393"
@@ -5211,8 +9703,16 @@ Q121303370	P569	+1760-00-00T00:00:00Z/9	S2600	"6000000010502652451"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q121303370	P570	+1847-00-00T00:00:00Z/9	S2600	"6000000010502652451"
 
+# Judicaël Berenger de Rennes comte de Rennes  Q2989529  <- geni:6000000010506987053
+Q2989529	P569	+0901-00-00T00:00:00Z/9	S2600	"6000000010506987053"
+Q2989529	P735	Q105500126	S2600	"6000000010506987053"
+
 # Sigrid Saksesdotter  Q122931811  <- geni:6000000010521965469
 Q122931811	P26	Q311996	S2600	"6000000010521965469"
+Q122931811	P40	Q31080455	S2600	"6000000010521965469"
+Q122931811	P40	Q313005	S2600	"6000000010521965469"
+Q122931811	P40	Q314595	S2600	"6000000010521965469"
+Q122931811	P40	Q4809203	S2600	"6000000010521965469"
 Q122931811	P570	+1100-00-00T00:00:00Z/9	S2600	"6000000010521965469"
 Q122931811	P735	Q634916	S2600	"6000000010521965469"
 
@@ -5226,6 +9726,9 @@ Q141613849	P26	Q141613975	S2600	"6000000010522624671"
 Q110618642	P570	+1634-03-09T00:00:00Z/11	S2600	"6000000010535402819"
 Q110618642	P734	Q16869517	S2600	"6000000010535402819"
 Q110618642	P735	Q108631	S2600	"6000000010535402819"
+
+# Ingeborg Erlandsdatter Losna  Q141565474  <- geni:6000000010563690202
+Q141565474	P40	Q11967797	S2600	"6000000010563690202"
 
 # Maximiliana von Fraunberg zum Haag  Q99689971  <- geni:6000000010597890991
 Q99689971	P569	+1510-00-00T00:00:00Z/9	S2600	"6000000010597890991"
@@ -5241,6 +9744,12 @@ Q515731	P569	+1520-00-00T00:00:00Z/9	S2600	"6000000010609514111"
 # Bereta Børelsdatter Vestre Stangaland  Q141584361  <- geni:6000000010637083708
 Q141584361	P734	Q141312931	S2600	"6000000010637083708"
 
+# Urraca I Alfonsez Castile Leon Queen of León and Castilla  Q128701  <- geni:6000000010656307831
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q128701	P569	+1080-00-00T00:00:00Z/9	S2600	"6000000010656307831"
+Q128701	P734	Q16865437	S2600	"6000000010656307831"
+Q128701	P734	Q4258715	S2600	"6000000010656307831"
+
 # Ågot Ormsdatter Store Bokn Jr.  Q141518276  <- geni:6000000010665226927
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141518276	P734	Q122835614	S2600	"6000000010665226927"
@@ -5251,6 +9760,16 @@ Q141518276	P734	Q30087270	S2600	"6000000010665226927"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q20100264	P570	+1299-00-00T00:00:00Z/9	S2600	"6000000010669428008"
 Q20100264	P735	Q3315273	S2600	"6000000010669428008"
+
+# Hans Heinrich VonFlemming  Q110363741  <- geni:6000000010694283851
+Q110363741	P569	+1552-00-00T00:00:00Z/9	S2600	"6000000010694283851"
+Q110363741	P570	+1622-03-04T00:00:00Z/11	S2600	"6000000010694283851"
+
+# Otto von Flemming  Q116184293  <- geni:6000000010694502644
+Q116184293	P22	Q141560757	S2600	"6000000010694502644"
+Q116184293	P25	Q141500868	S2600	"6000000010694502644"
+Q116184293	P569	+1501-00-00T00:00:00Z/9	S2600	"6000000010694502644"
+Q116184293	P570	+1582-00-00T00:00:00Z/9	S2600	"6000000010694502644"
 
 # Louis de Rohan Seigneur de Guémené  Q110521323  <- geni:6000000010696104489
 Q110521323	P569	+1465-00-00T00:00:00Z/9	S2600	"6000000010696104489"
@@ -5279,6 +9798,10 @@ Q30527367	P569	+0960-00-00T00:00:00Z/9	S2600	"6000000010769393408"
 Q30527367	P570	+1058-00-00T00:00:00Z/9	S2600	"6000000010769393408"
 Q30527367	P735	Q29937870	S2600	"6000000010769393408"
 
+# Yolanda  Q232147  <- geni:6000000010787155837
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q232147	P735	Q21045740	S2600	"6000000010787155837"
+
 # Herman af Petersens till Ersta  Q131740910  <- geni:6000000010800923744
 Q131740910	P5056	Q141583352	S2600	"6000000010800923744"
 Q131740910	P569	+1743-07-12T00:00:00Z/11	S2600	"6000000010800923744"
@@ -5303,6 +9826,7 @@ Q141619926	P734	Q21504742	S2600	"6000000010807034444"
 Q141244213	P26	Q141244213	S2600	"6000000010807476638"
 
 # Malusha Malkovna Lubechanka  Q141529842  <- geni:6000000010821867444
+Q141529842	P26	Q1058572	S2600	"6000000010821867444"
 Q141529842	P569	+0942-00-00T00:00:00Z/9	S2600	"6000000010821867444"
 Q141529842	P570	+1002-00-00T00:00:00Z/9	S2600	"6000000010821867444"
 
@@ -5331,6 +9855,10 @@ Q4247739	P735	Q830350	S2600	"6000000010942468401"
 # Brita Skyttenhielm  Q141550155  <- geni:6000000010944540570
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141550155	P22	Q6170433	S2600	"6000000010944540570"
+
+# Bardas Skleros  Q744590  <- geni:6000000010974364252
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q744590	P570	+0991-03-06T00:00:00Z/11	S2600	"6000000010974364252"
 
 # Sofia Hermance Graf  Q134883589  <- geni:6000000010982420935
 Q134883589	P735	Q18201520	S2600	"6000000010982420935"
@@ -5435,12 +9963,20 @@ Q141569660	P26	Q141569660	S2600	"6000000011183696687"
 
 # Ingegerd Svantepolksdotter  Q101247444  <- geni:6000000011239201122
 Q101247444	P26	Q101247444	S2600	"6000000011239201122"
+Q101247444	P26	Q5884317	S2600	"6000000011239201122"
+Q101247444	P40	Q5915860	S2600	"6000000011239201122"
 Q101247444	P569	+1260-00-00T00:00:00Z/9	S2600	"6000000011239201122"
 Q101247444	P570	+1321-00-00T00:00:00Z/9	S2600	"6000000011239201122"
 
 # Bryniolf Bengtsson (Hafridssons ätt)  Q5588874  <- geni:6000000011239545575
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5588874	P22	Q141198381	S2600	"6000000011239545575"
+
+# Gerberga  Q3448444  <- geni:6000000011240920854
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3448444	P570	+1018-07-07T00:00:00Z/11	S2600	"6000000011240920854"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3448444	P735	Q65237017	S2600	"6000000011240920854"
 
 # Semyon Andryevich Kurakin Boyar  Q102856512  <- geni:6000000011242532340
 # P40 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -5452,6 +9988,13 @@ Q64229816	P569	+1562-00-00T00:00:00Z/9	S2600	"6000000011243047286"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q64229816	P570	+1626-00-00T00:00:00Z/9	S2600	"6000000011243047286"
 
+# Pétronille Gertrude d'Alsace  Q467022  <- geni:6000000011260574714
+Q467022	P734	Q104825226	S2600	"6000000011260574714"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q467022	P735	Q28042676	S2600	"6000000011260574714"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q467022	P735	Q509729	S2600	"6000000011260574714"
+
 # Agnès von Geroldseck  Q110380789  <- geni:6000000011268276903
 Q110380789	P569	+1280-00-00T00:00:00Z/9	S2600	"6000000011268276903"
 Q110380789	P570	+1342-00-00T00:00:00Z/9	S2600	"6000000011268276903"
@@ -5462,6 +10005,9 @@ Q110602583	P569	+1250-00-00T00:00:00Z/9	S2600	"6000000011285814290"
 Q110602583	P570	+1304-00-00T00:00:00Z/9	S2600	"6000000011285814290"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q110602583	P735	Q19968393	S2600	"6000000011285814290"
+
+# Erling Alvsson av Tanberg  Q141565124  <- geni:6000000011286698836
+Q141565124	P40	Q11957619	S2600	"6000000011286698836"
 
 # Smid Eiriksson Bolt  Q141566178  <- geni:6000000011295524392
 Q141566178	P5056	Q141614679	S2600	"6000000011295524392"
@@ -5477,7 +10023,16 @@ Q141614094	P26	Q141614114	S2600	"6000000011320912700"
 Q5620549	P40	Q141610590	S2600	"6000000011324390984"
 Q5620549	P5056	Q141436541	S2600	"6000000011324390984"
 
+# Greger Mattsson (Lillie af Greger Mattssons ätt)  Q5770435  <- geni:6000000011356501031
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5770435	P569	+1425-00-00T00:00:00Z/9	S2600	"6000000011356501031"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5770435	P570	+1493-03-23T00:00:00Z/11	S2600	"6000000011356501031"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5770435	P734	Q1550403	S2600	"6000000011356501031"
+
 # Ingeborg Folkesdotter Lama  Q141488014  <- geni:6000000011389885383
+Q141488014	P26	Q4959219	S2600	"6000000011389885383"
 Q141488014	P569	+1230-00-00T00:00:00Z/9	S2600	"6000000011389885383"
 
 # Johan Fredrik Fredriksson Paykull  Q128045809  <- geni:6000000011390596873
@@ -5551,11 +10106,33 @@ Q127270462	P569	+1656-00-00T00:00:00Z/9	S2600	"6000000011533077050"
 Q111989591	P569	+1694-07-15T00:00:00Z/11	S2600	"6000000011533226330"
 Q111989591	P570	+1761-06-30T00:00:00Z/11	S2600	"6000000011533226330"
 
+# Gunnar Hlíðarenda Hámundarson  Q3356280  <- geni:6000000011535573627
+Q3356280	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000011535573627"
+Q3356280	P570	+0992-00-00T00:00:00Z/9	S2600	"6000000011535573627"
+
+# Ada van Holland  Q346380  <- geni:6000000011536253175
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q346380	P22	Q77243	S2600	"6000000011536253175"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q346380	P569	+1160-00-00T00:00:00Z/9	S2600	"6000000011536253175"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q346380	P570	+1205-00-00T00:00:00Z/9	S2600	"6000000011536253175"
+
 # Carl Gustaf Boije af Gennäs  Q5580881  <- geni:6000000011536457635
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5580881	P735	Q15646212	S2600	"6000000011536457635"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5580881	P735	Q2529610	S2600	"6000000011536457635"
+
+# Þorvaldur Gissurarson  Q583148  <- geni:6000000011553005880
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q583148	P569	+1163-00-00T00:00:00Z/9	S2600	"6000000011553005880"
+
+# Hugues II de Ponthieu  Q58394  <- geni:6000000011593707136
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58394	P569	+1005-00-00T00:00:00Z/9	S2600	"6000000011593707136"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q58394	P735	Q16276979	S2600	"6000000011593707136"
 
 # Anna Maria Gavelius  Q141456562  <- geni:6000000011601412945
 Q141456562	P26	Q141456562	S2600	"6000000011601412945"
@@ -5565,6 +10142,11 @@ Q38156577	P569	+1681-00-00T00:00:00Z/9	S2600	"6000000011604374639"
 
 # Tosten Olavsson Rafoss  Q141563047  <- geni:6000000011609535197
 Q141563047	P5056	Q141583339	S2600	"6000000011609535197"
+
+# Birgitta Thordsdotter Tordsdotter Bonde  Q110548176  <- geni:6000000011620463995
+Q110548176	P5056	Q141611205	S2600	"6000000011620463995"
+Q110548176	P569	+1456-00-00T00:00:00Z/9	S2600	"6000000011620463995"
+Q110548176	P570	+1520-00-00T00:00:00Z/9	S2600	"6000000011620463995"
 
 # NN  Q141271431  <- geni:6000000011626537082
 Q141271431	P40	Q141538395	S2600	"6000000011626537082"
@@ -5585,6 +10167,14 @@ Q320229	P569	+1596-09-29T00:00:00Z/11	S2600	"6000000011627083509"
 # Norihito Takakura-tenno  Q357261  <- geni:6000000011627126557
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q357261	P570	+1181-02-06T00:00:00Z/11	S2600	"6000000011627126557"
+
+# Johann Andreasen Ulfeldt  Q110549495  <- geni:6000000011634209610
+Q110549495	P26	Q110549496	S2600	"6000000011634209610"
+Q110549495	P5056	Q141457235	S2600	"6000000011634209610"
+Q110549495	P569	+1198-00-00T00:00:00Z/9	S2600	"6000000011634209610"
+Q110549495	P570	+1268-00-00T00:00:00Z/9	S2600	"6000000011634209610"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110549495	P734	Q21508144	S2600	"6000000011634209610"
 
 # Gui I de Lusignan  Q432490  <- geni:6000000011638357492
 Q432490	P569	+1260-00-00T00:00:00Z/9	S2600	"6000000011638357492"
@@ -5617,6 +10207,12 @@ Q140381573	P735	Q18192718	S2600	"6000000011678613460"
 # NN  Q141613954  <- geni:6000000011690805196
 Q141613954	P26	Q141614051	S2600	"6000000011690805196"
 
+# Berthe d'Aumale  Q75301090  <- geni:6000000011715919276
+Q75301090	P569	+1005-00-00T00:00:00Z/9	S2600	"6000000011715919276"
+Q75301090	P570	+1052-00-00T00:00:00Z/9	S2600	"6000000011715919276"
+Q75301090	P734	Q106758788	S2600	"6000000011715919276"
+Q75301090	P735	Q18180820	S2600	"6000000011715919276"
+
 # Andres Eriksen  Q141511340  <- geni:6000000011745738364
 Q141511340	P5056	Q141436533	S2600	"6000000011745738364"
 Q141511340	P569	+1325-00-00T00:00:00Z/9	S2600	"6000000011745738364"
@@ -5643,6 +10239,9 @@ Q131727094	P570	+1759-10-26T00:00:00Z/11	S2600	"6000000011830675570"
 Q131726979	P569	+1721-01-31T00:00:00Z/11	S2600	"6000000011830814416"
 Q131726979	P570	+1767-06-20T00:00:00Z/11	S2600	"6000000011830814416"
 
+# Guillaume de Normandie de Fecamp  Q75384609  <- geni:6000000011851507259
+Q75384609	P569	+1007-00-00T00:00:00Z/9	S2600	"6000000011851507259"
+
 # Elisabet Charlotta In de Betou  Q135661264  <- geni:6000000011851554953
 Q135661264	P569	+1812-10-25T00:00:00Z/11	S2600	"6000000011851554953"
 Q135661264	P570	+1877-05-29T00:00:00Z/11	S2600	"6000000011851554953"
@@ -5651,6 +10250,9 @@ Q135661264	P734	Q137721209	S2600	"6000000011851554953"
 # Carl Reinhold von Essen af Zellie  Q135661262  <- geni:6000000011851638339
 Q135661262	P569	+1803-11-06T00:00:00Z/11	S2600	"6000000011851638339"
 Q135661262	P570	+1870-01-17T00:00:00Z/11	S2600	"6000000011851638339"
+
+# Sigrid Marteinsdotter Aga  Q141422357  <- geni:6000000011852487175
+Q141422357	P26	Q117477378	S2600	"6000000011852487175"
 
 # NN på Aga  Q141577196  <- geni:6000000011861707258
 Q141577196	P40	Q141318905	S2600	"6000000011861707258"
@@ -5661,8 +10263,20 @@ Q141577196	P570	+1320-00-00T00:00:00Z/9	S2600	"6000000011861707258"
 # NN Torsteinson Heimnes  Q141519553  <- geni:6000000011871425682
 Q141519553	P569	+1225-00-00T00:00:00Z/9	S2600	"6000000011871425682"
 
+# NN Filipsdotter  Q141612055  <- geni:6000000011895124234
+Q141612055	P22	Q5730329	S2600	"6000000011895124234"
+
+# Frederick I of Upper Lorraine Count of Bar, Duke of Upper Lorraine  Q610458  <- geni:6000000011926990323
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q610458	P569	+0913-05-00T00:00:00Z/10	S2600	"6000000011926990323"
+
 # Enok Erikson Stangeland  Q141514923  <- geni:6000000011927395396
 Q141514923	P5056	Q141242342	S2600	"6000000011927395396"
+
+# Dala-Kollur Veðrar-Grímsson  Q2836747  <- geni:6000000011946489855
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2836747	P569	+0875-00-00T00:00:00Z/9	S2600	"6000000011946489855"
+Q2836747	P570	+0919-00-00T00:00:00Z/9	S2600	"6000000011946489855"
 
 # Margaret Fraser  Q75256808  <- geni:6000000011970626764
 Q75256808	P569	+1597-00-00T00:00:00Z/9	S2600	"6000000011970626764"
@@ -5706,6 +10320,8 @@ Q141550917	P734	Q30087270	S2600	"6000000012012946312"
 Q141614360	P26	Q141613869	S2600	"6000000012058119164"
 
 # Ragnvaldsdatter Krøkedans  Q141499643  <- geni:6000000012059617577
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141499643	P22	Q18418043	S2600	"6000000012059617577"
 Q141499643	P25	Q11996949	S2600	"6000000012059617577"
 Q141499643	P569	+1192-00-00T00:00:00Z/9	S2600	"6000000012059617577"
 
@@ -5757,6 +10373,12 @@ Q75527986	P569	+1616-00-00T00:00:00Z/9	S2600	"6000000012170216271"
 Q75527986	P570	+1660-03-08T00:00:00Z/11	S2600	"6000000012170216271"
 Q75527986	P734	Q13552156	S2600	"6000000012170216271"
 
+# Ringardis  Q3936025  <- geni:6000000012177384035
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3936025	P569	+0803-00-00T00:00:00Z/9	S2600	"6000000012177384035"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3936025	P570	+0838-00-00T00:00:00Z/9	S2600	"6000000012177384035"
+
 # María García de Sousa  Q57983439  <- geni:6000000012240151321
 Q57983439	P734	Q55739047	S2600	"6000000012240151321"
 Q57983439	P734	Q980636	S2600	"6000000012240151321"
@@ -5765,6 +10387,10 @@ Q57983439	P735	Q18088640	S2600	"6000000012240151321"
 
 # Ludwig Karl von Schleswig-Holstein-Sonderburg-Franzhagen  Q276248  <- geni:6000000012273073209
 Q276248	P735	Q136771753	S2600	"6000000012273073209"
+
+# Roger de Montgommery  Q979358  <- geni:6000000012359979222
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q979358	P569	+1022-00-00T00:00:00Z/9	S2600	"6000000012359979222"
 
 # Ture Johansson Sandelin  Q136536614  <- geni:6000000012360773044
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -5792,6 +10418,29 @@ Q141571131	P26	Q141571131	S2600	"6000000012455272755"
 # Per Bring, adlad Lagerbring  Q101424903  <- geni:6000000012460614118
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q101424903	P570	+1799-08-07T00:00:00Z/11	S2600	"6000000012460614118"
+
+# Adélaïs Aélis de Tours  Q354934  <- geni:6000000012468581950
+Q354934	P40	Q1782094	S2600	"6000000012468581950"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q354934	P569	+0817-09-05T00:00:00Z/11	S2600	"6000000012468581950"
+
+# Clémence Von Wassenberg  Q1811683  <- geni:6000000012469454652
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1811683	P569	+1060-00-00T00:00:00Z/9	S2600	"6000000012469454652"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1811683	P735	Q14648406	S2600	"6000000012469454652"
+
+# Sigurd Haftorsson Av Suderheim, Giske og BjarkøySudrheim  Q28718180  <- geni:6000000012489268023
+Q28718180	P569	+1315-00-00T00:00:00Z/9	S2600	"6000000012489268023"
+Q28718180	P570	+1393-02-00T00:00:00Z/10	S2600	"6000000012489268023"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q28718180	P734	Q30573628	S2600	"6000000012489268023"
+
+# Ingeborg Erlingsdotter Bjarkøy  Q101247946  <- geni:6000000012489503487
+Q101247946	P5056	Q141583375	S2600	"6000000012489503487"
+Q101247946	P569	+1317-00-00T00:00:00Z/9	S2600	"6000000012489503487"
+Q101247946	P570	+1400-00-00T00:00:00Z/9	S2600	"6000000012489503487"
+Q101247946	P734	Q122835529	S2600	"6000000012489503487"
 
 # Tollak Larsen Håland  Q141583468  <- geni:6000000012494644841
 Q141583468	P5056	Q141440447	S2600	"6000000012494644841"
@@ -5891,6 +10540,12 @@ Q141499583	P735	Q750186	S2600	"6000000012673513328"
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141244122	P22	Q101570049	S2600	"6000000012736684384"
 
+# Mechtild af Danmark  Q287503  <- geni:6000000012743369722
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q287503	P569	+1220-00-00T00:00:00Z/9	S2600	"6000000012743369722"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q287503	P735	Q55441211	S2600	"6000000012743369722"
+
 # Anders Haraldsson Appelbom  Q109835787  <- geni:6000000012749277322
 Q109835787	P5056	Q141585679	S2600	"6000000012749277322"
 
@@ -5947,9 +10602,27 @@ Q131441907	P569	+1510-00-00T00:00:00Z/9	S2600	"6000000012823556417"
 Q131441907	P570	+1585-00-00T00:00:00Z/9	S2600	"6000000012823556417"
 Q131441907	P735	Q62092258	S2600	"6000000012823556417"
 
+# Guillaume de Nevers  Q703389  <- geni:6000000012852760213
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q703389	P735	Q18190448	S2600	"6000000012852760213"
+
+# Bengt Magnusson (Folkungaättens lagmansgren)  Q5569990  <- geni:6000000012961002090
+Q5569990	P5056	Q141515162	S2600	"6000000012961002090"
+
 # Gabriel Apiarie  Q141456343  <- geni:6000000012992859714
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141456343	P22	Q120714314	S2600	"6000000012992859714"
+
+# Constantine Angelos  Q1247876  <- geni:6000000013003314172
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1247876	P569	+1070-00-00T00:00:00Z/9	S2600	"6000000013003314172"
+Q1247876	P734	Q36890118	S2600	"6000000013003314172"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1247876	P735	Q19327451	S2600	"6000000013003314172"
+
+# Synadene  Q447076  <- geni:6000000013005079391
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q447076	P569	+1058-05-12T00:00:00Z/11	S2600	"6000000013005079391"
 
 # Ernald Mattsson Forbes of Corsindae  Q104550158  <- geni:6000000013007809177
 Q104550158	P569	+1568-00-00T00:00:00Z/9	S2600	"6000000013007809177"
@@ -5976,6 +10649,10 @@ Q141539011	P5056	Q141257144	S2600	"6000000013101580641"
 
 # Valborg Gundersdatter Tjørn  Q141451117  <- geni:6000000013102068612
 Q141451117	P5056	Q141450960	S2600	"6000000013102068612"
+
+# Kolbeinn Tumason  Q3480091  <- geni:6000000013133332495
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3480091	P569	+1171-00-00T00:00:00Z/9	S2600	"6000000013133332495"
 
 # Gonzalo de la Cerda y Alama marqués de la Adrada  Q110935100  <- geni:6000000013153509053
 Q110935100	P735	Q19901997	S2600	"6000000013153509053"
@@ -6007,6 +10684,9 @@ Q141529348	P22	Q26239943	S2600	"6000000013227561304"
 
 # Carl Jacob Sundevall  Q435781  <- geni:6000000013237452604
 Q435781	P735	Q25999604	S2600	"6000000013237452604"
+
+# Otto Von Habsburg  Q468031  <- geni:6000000013240192478
+Q468031	P734	Q16880125	S2600	"6000000013240192478"
 
 # Urban Hjärne  Q246091  <- geni:6000000013255684540
 Q246091	P26	Q141499795	S2600	"6000000013255684540"
@@ -6064,6 +10744,11 @@ Q131726338	P569	+1735-12-05T00:00:00Z/11	S2600	"6000000013401960220"
 Q131726338	P570	+1791-11-17T00:00:00Z/11	S2600	"6000000013401960220"
 Q131726338	P735	Q10989273	S2600	"6000000013401960220"
 
+# Þormóður Þorkelsson  Q6175097  <- geni:6000000013407255296
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6175097	P569	+0953-00-00T00:00:00Z/9	S2600	"6000000013407255296"
+Q6175097	P570	+1010-00-00T00:00:00Z/9	S2600	"6000000013407255296"
+
 # Håkan Östensson  Q141569761  <- geni:6000000013431312981
 Q141569761	P5056	Q141612267	S2600	"6000000013431312981"
 
@@ -6086,11 +10771,22 @@ Q1531283	P734	Q136488309	S2600	"6000000013580345354"
 Q1531283	P735	Q14159020	S2600	"6000000013580345354"
 Q1531283	P735	Q18029644	S2600	"6000000013580345354"
 
+# Herborg Torbjørnsdatter Galte  Q110302793  <- geni:6000000013592799972
+Q110302793	P25	Q141619795	S2600	"6000000013592799972"
+Q110302793	P26	Q110302785	S2600	"6000000013592799972"
+Q110302793	P5056	Q141448436	S2600	"6000000013592799972"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q110302793	P569	+1552-00-00T00:00:00Z/9	S2600	"6000000013592799972"
+Q110302793	P734	Q141569087	S2600	"6000000013592799972"
+
 # NN  Q141613992  <- geni:6000000013597167397
 Q141613992	P26	Q141614037	S2600	"6000000013597167397"
 
 # Karine Nilsdatter Torsnes  Q141580522  <- geni:6000000013618082642
 Q141580522	P26	Q141580522	S2600	"6000000013618082642"
+
+# Høgne  Q141569768  <- geni:6000000013668605252
+Q141569768	P40	Q11705582	S2600	"6000000013668605252"
 
 # Austrått  Q141529058  <- geni:6000000013716051196
 Q141529058	P570	+1625-00-00T00:00:00Z/9	S2600	"6000000013716051196"
@@ -6179,6 +10875,10 @@ Q141577267	P5056	Q141612216	S2600	"6000000014131059624"
 # Charlotte Gouffier  Q62287082  <- geni:6000000014149964011
 Q62287082	P734	Q74081663	S2600	"6000000014149964011"
 
+# Rogneda Mstislavna  Q130285855  <- geni:6000000014170256977
+Q130285855	P569	+1106-00-00T00:00:00Z/9	S2600	"6000000014170256977"
+Q130285855	P570	+1168-00-00T00:00:00Z/9	S2600	"6000000014170256977"
+
 # Olufine Bergithe Ekman  Q141216639  <- geni:6000000014196479728
 Q141216639	P5056	Q141586295	S2600	"6000000014196479728"
 
@@ -6238,6 +10938,9 @@ Q141576023	P5056	Q141614730	S2600	"6000000014233998119"
 
 # Bjørheim  Q141288725  <- geni:6000000014234029655
 Q141288725	P569	+1450-00-00T00:00:00Z/9	S2600	"6000000014234029655"
+
+# NN Torsnes  Q141577137  <- geni:6000000014264912327
+Q141577137	P26	Q117477378	S2600	"6000000014264912327"
 
 # Ingeborg Sveinsdatter Oddernes Ballestad  Q141565482  <- geni:6000000014265035290
 Q141565482	P26	Q141565482	S2600	"6000000014265035290"
@@ -6300,11 +11003,23 @@ Q141569666	P5056	Q141580665	S2600	"6000000014536603815"
 # Gunnhild Johannesdatter Kjosavik  Q141518906  <- geni:6000000014566184521
 Q141518906	P569	+1653-00-00T00:00:00Z/9	S2600	"6000000014566184521"
 
+# Gregorius Jonsson Huk  Q141612104  <- geni:6000000014604476442
+Q141612104	P22	Q26965895	S2600	"6000000014604476442"
+Q141612104	P25	Q26965894	S2600	"6000000014604476442"
+
+# Ólöf Vilhjálmsdóttir  Q133796460  <- geni:6000000014608225777
+Q133796460	P26	Q9080161	S2600	"6000000014608225777"
+Q133796460	P569	+1125-00-00T00:00:00Z/9	S2600	"6000000014608225777"
+Q133796460	P570	+1148-00-00T00:00:00Z/9	S2600	"6000000014608225777"
+
 # Fakhita Al-Hashemi  Q3738508  <- geni:6000000014618734837
 Q3738508	P734	Q48981616	S2600	"6000000014618734837"
 
 # Torgeir Simonsen Ku til Tomb  Q141613853  <- geni:6000000014620209449
 Q141613853	P26	Q141613968	S2600	"6000000014620209449"
+
+# Ingeborg Sirene Torsteinsdatter Ænes  Q141559713  <- geni:6000000014621597291
+Q141559713	P26	Q106528141	S2600	"6000000014621597291"
 
 # Anna Persdotter Gangia  Q141440511  <- geni:6000000014627765090
 Q141440511	P5056	Q141429564	S2600	"6000000014627765090"
@@ -6393,6 +11108,10 @@ Q48876810	P734	Q21510822	S2600	"6000000014863681028"
 
 # Marie de Vergy  Q111577322  <- geni:6000000014873498184
 Q111577322	P735	Q106674406	S2600	"6000000014873498184"
+
+# Lambert  Q476670  <- geni:6000000014913046823
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q476670	P569	+0992-00-00T00:00:00Z/9	S2600	"6000000014913046823"
 
 # Humbert de Luyrieux  Q110380868  <- geni:6000000014914287487
 Q110380868	P570	+1483-00-00T00:00:00Z/9	S2600	"6000000014914287487"
@@ -6631,6 +11350,12 @@ Q21116363	P734	Q98889499	S2600	"6000000015652647538"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q31191456	P570	+1586-00-00T00:00:00Z/9	S2600	"6000000015662377687"
 
+# Agnès de Tancarville  Q75896200  <- geni:6000000015715510049
+Q75896200	P569	+1183-00-00T00:00:00Z/9	S2600	"6000000015715510049"
+Q75896200	P570	+1214-00-00T00:00:00Z/9	S2600	"6000000015715510049"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q75896200	P735	Q19689363	S2600	"6000000015715510049"
+
 # Gaucher de Châtillon  Q65129455  <- geni:6000000015731027131
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q65129455	P569	+1281-00-00T00:00:00Z/9	S2600	"6000000015731027131"
@@ -6653,6 +11378,9 @@ Q18245754	P570	+1852-03-19T00:00:00Z/11	S2600	"6000000015741762018"
 Q109010841	P569	+1520-00-00T00:00:00Z/9	S2600	"6000000015743105753"
 Q109010841	P570	+1573-00-00T00:00:00Z/9	S2600	"6000000015743105753"
 Q109010841	P734	Q21492860	S2600	"6000000015743105753"
+
+# Bjørn Jonsson Kamp  Q141584019  <- geni:6000000015745662770
+Q141584019	P40	Q316039	S2600	"6000000015745662770"
 
 # Isabeau d'Avaugour  Q108312177  <- geni:6000000015765085772
 Q108312177	P734	Q104594088	S2600	"6000000015765085772"
@@ -6689,6 +11417,12 @@ Q141500264	P570	+1419-00-00T00:00:00Z/9	S2600	"6000000015837837619"
 
 # Margaretha von Güntersberg  Q141500721  <- geni:6000000015837840394
 Q141500721	P569	+1360-00-00T00:00:00Z/9	S2600	"6000000015837840394"
+
+# Thamme von Flemming  Q141560757  <- geni:6000000015841631236
+Q141560757	P40	Q116184293	S2600	"6000000015841631236"
+
+# Wibeke von Eickstedt  Q141500868  <- geni:6000000015841669087
+Q141500868	P40	Q116184293	S2600	"6000000015841669087"
 
 # Simon von Güntersberg, Herr auf Wulkow  Q141498963  <- geni:6000000015841751013
 Q141498963	P569	+1440-00-00T00:00:00Z/9	S2600	"6000000015841751013"
@@ -7046,12 +11780,30 @@ Q75944779	P734	Q21484673	S2600	"6000000017884113210"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q110102894	P735	Q17317997	S2600	"6000000017895846865"
 
+# Toke Trylle  Q12339511  <- geni:6000000017898259106
+Q12339511	P22	Q141513422	S2600	"6000000017898259106"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12339511	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000017898259106"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q12339511	P570	+1050-00-00T00:00:00Z/9	S2600	"6000000017898259106"
+
 # Zachris Samuelis Hornaeus  Q141443450  <- geni:6000000017985713924
 Q141443450	P735	Q22806387	S2600	"6000000017985713924"
 
 # Margareta Charlotta Heijkenskjöld  Q4953277  <- geni:6000000017986416972
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q4953277	P25	Q141223439	S2600	"6000000017986416972"
+
+# Filip Birgersson (Aspenäs) okända anor  Q5730329  <- geni:6000000017990892787
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5730329	P40	Q141612055	S2600	"6000000017990892787"
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5730329	P40	Q5884317	S2600	"6000000017990892787"
+Q5730329	P5056	Q141611160	S2600	"6000000017990892787"
+Q5730329	P569	+1180-00-00T00:00:00Z/9	S2600	"6000000017990892787"
+Q5730329	P570	+1280-00-00T00:00:00Z/9	S2600	"6000000017990892787"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q5730329	P735	Q827311	S2600	"6000000017990892787"
 
 # Axel Otto Mörner af Morlanda  Q792307  <- geni:6000000017999766001
 Q792307	P735	Q18029644	S2600	"6000000017999766001"
@@ -7094,6 +11846,16 @@ Q111076321	P569	+1680-00-00T00:00:00Z/9	S2600	"6000000018289061173"
 Q111076321	P570	+1710-00-00T00:00:00Z/9	S2600	"6000000018289061173"
 Q111076321	P735	Q666578	S2600	"6000000018289061173"
 Q111076321	P735	Q8274988	S2600	"6000000018289061173"
+
+# Harald IV Magnusson king of Norway  Q260543  <- geni:6000000018329271956
+Q260543	P25	Q141611134	S2600	"6000000018329271956"
+Q260543	P26	Q122949820	S2600	"6000000018329271956"
+Q260543	P26	Q2919957	S2600	"6000000018329271956"
+Q260543	P26	Q4811064	S2600	"6000000018329271956"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q260543	P569	+1103-00-00T00:00:00Z/9	S2600	"6000000018329271956"
+# P734 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q260543	P734	Q23536498	S2600	"6000000018329271956"
 
 # Alvaro Núñez de Lara  Q129912  <- geni:6000000018379174950
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -7141,6 +11903,12 @@ Q140736242	P735	Q10625184	S2600	"6000000018625242110"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q140736242	P735	Q594279	S2600	"6000000018625242110"
 
+# Kerdis Torvaldsdatter  Q1609690  <- geni:6000000018646295213
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1609690	P569	+1305-00-00T00:00:00Z/9	S2600	"6000000018646295213"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1609690	P570	+1362-00-00T00:00:00Z/9	S2600	"6000000018646295213"
+
 # Mencia de Walhain Glymes  Q76263144  <- geni:6000000018648234439
 Q76263144	P569	+1535-00-00T00:00:00Z/9	S2600	"6000000018648234439"
 Q76263144	P735	Q6010179	S2600	"6000000018648234439"
@@ -7155,6 +11923,15 @@ Q110383578	P735	Q19967625	S2600	"6000000018733901219"
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q110395712	P569	+1811-03-12T00:00:00Z/11	S2600	"6000000018737703194"
 
+# Agnes Jonsson Prinsessa av Norge  Q46666  <- geni:6000000018752060667
+Q46666	P26	Q46666	S2600	"6000000018752060667"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q46666	P569	+1292-00-00T00:00:00Z/9	S2600	"6000000018752060667"
+
+# Gertrude Adelhead  Q1884931  <- geni:6000000018832085528
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1884931	P569	+1033-00-00T00:00:00Z/9	S2600	"6000000018832085528"
+
 # Klaus Olsen  Q141450995  <- geni:6000000018851780623
 Q141450995	P569	+1743-00-00T00:00:00Z/9	S2600	"6000000018851780623"
 Q141450995	P570	+1812-00-00T00:00:00Z/9	S2600	"6000000018851780623"
@@ -7162,6 +11939,11 @@ Q141450995	P570	+1812-00-00T00:00:00Z/9	S2600	"6000000018851780623"
 # Regina Andreae  Q127867456  <- geni:6000000018883686130
 Q127867456	P569	+1592-00-00T00:00:00Z/9	S2600	"6000000018883686130"
 Q127867456	P570	+1635-00-00T00:00:00Z/9	S2600	"6000000018883686130"
+
+# Ida von Wulf-Pogwisch  Q101248388  <- geni:6000000018893239622
+Q101248388	P569	+1325-00-00T00:00:00Z/9	S2600	"6000000018893239622"
+Q101248388	P570	+1388-00-00T00:00:00Z/9	S2600	"6000000018893239622"
+Q101248388	P735	Q644599	S2600	"6000000018893239622"
 
 # Carl Emanuel von Snoilsky  Q133309309  <- geni:6000000018930892371
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -7200,11 +11982,23 @@ Q141422290	P570	+1598-00-00T00:00:00Z/9	S2600	"6000000019178967030"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141422290	P735	Q18198729	S2600	"6000000019178967030"
 
+# Aage Tordsen Thott  Q103783745  <- geni:6000000019195308964
+Q103783745	P5056	Q141498336	S2600	"6000000019195308964"
+Q103783745	P5056	Q141584070	S2600	"6000000019195308964"
+Q103783745	P569	+1270-00-00T00:00:00Z/9	S2600	"6000000019195308964"
+Q103783745	P570	+1335-00-00T00:00:00Z/9	S2600	"6000000019195308964"
+Q103783745	P734	Q47528688	S2600	"6000000019195308964"
+Q103783745	P735	Q8736877	S2600	"6000000019195308964"
+
 # Elin Luella Hallberg  Q108760600  <- geni:6000000019234545898
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q108760600	P735	Q19833184	S2600	"6000000019234545898"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q108760600	P735	Q55437489	S2600	"6000000019234545898"
+
+# Torvald Toresson Hjaltland  Q2445183  <- geni:6000000019263286045
+Q2445183	P5056	Q141518427	S2600	"6000000019263286045"
+Q2445183	P570	+1330-00-00T00:00:00Z/9	S2600	"6000000019263286045"
 
 # Waldemar II von Anhalt-Zerbst, Fürst  Q7961411  <- geni:6000000019270360342
 Q7961411	P569	+1330-00-00T00:00:00Z/9	S2600	"6000000019270360342"
@@ -7302,6 +12096,11 @@ Q135579478	P21	Q6581097	S2600	"6000000019460177052"
 Q135579478	P22	Q135579471	S2600	"6000000019460177052"
 Q135579478	P2600	"6000000019460177052"	S2600	"6000000019460177052"
 
+# Walram von Limburg IV  Q83660  <- geni:6000000019511741569
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q83660	P569	+1158-00-00T00:00:00Z/9	S2600	"6000000019511741569"
+Q83660	P734	Q138672468	S2600	"6000000019511741569"
+
 # Abraham Grafström  Q116439449  <- geni:6000000019583224446
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q116439449	P569	+1759-02-07T00:00:00Z/11	S2600	"6000000019583224446"
@@ -7329,6 +12128,10 @@ Q110411147	P735	Q4160311	S2600	"6000000019752077245"
 
 # Francesco d'Este signore di Reggio  Q17319639  <- geni:6000000019772400748
 Q17319639	P734	Q105701477	S2600	"6000000019772400748"
+
+# Hendrik van Gelre graaf van Gelre en Zutphen  Q73998  <- geni:6000000019774088407
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q73998	P735	Q1158181	S2600	"6000000019774088407"
 
 # Georg III von der Leyen zu Eltz und Leiningen  Q110415677  <- geni:6000000019797018175
 Q110415677	P570	+1611-00-00T00:00:00Z/9	S2600	"6000000019797018175"
@@ -7392,6 +12195,7 @@ Q4268330	P734	Q65925647	S2600	"6000000020107122663"
 # Elin Håkonsdatter Bolt  Q141612065  <- geni:6000000020117355203
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141612065	P25	Q141612173	S2600	"6000000020117355203"
+Q141612065	P40	Q101247863	S2600	"6000000020117355203"
 
 # Berge Birger Frondin  Q5745627  <- geni:6000000020128505901
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -7407,6 +12211,9 @@ Q141538470	P570	+1671-07-30T00:00:00Z/11	S2600	"6000000020133317480"
 # Radulf de Warenne  Q7288325  <- geni:6000000020170789302
 Q7288325	P569	+1115-00-00T00:00:00Z/9	S2600	"6000000020170789302"
 Q7288325	P570	+1148-00-00T00:00:00Z/9	S2600	"6000000020170789302"
+
+# Irmgard Gregersdotter  Q141610339  <- geni:6000000020198906060
+Q141610339	P22	Q4959219	S2600	"6000000020198906060"
 
 # Gustav Adolf Gundersen  Q141189065  <- geni:6000000020220981823
 # P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -7459,6 +12266,9 @@ Q5580892	P735	Q2529610	S2600	"6000000020865415341"
 # Gideon Herman De Rogier  Q141518508  <- geni:6000000020918482421
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141518508	P22	Q123286292	S2600	"6000000020918482421"
+
+# Aleidis de Hainaut  Q141562053  <- geni:6000000020947576228
+Q141562053	P22	Q704403	S2600	"6000000020947576228"
 
 # Per Anton Martin  Q139071345  <- geni:6000000020984145971
 Q139071345	P569	+1724-00-00T00:00:00Z/9	S2600	"6000000020984145971"
@@ -7537,6 +12347,12 @@ Q141516434	P5056	Q141381264	S2600	"6000000021198737113"
 # Augustin Rhaw  Q768049  <- geni:6000000021235198892
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q768049	P570	+1621-09-03T00:00:00Z/11	S2600	"6000000021235198892"
+
+# Ragnhild Magnusdotter  Q31080455  <- geni:6000000021274381997
+# P25 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q31080455	P25	Q122931811	S2600	"6000000021274381997"
+Q31080455	P5056	Q141457238	S2600	"6000000021274381997"
+Q31080455	P735	Q1390292	S2600	"6000000021274381997"
 
 # Amna Al-Umawi  Q106836569  <- geni:6000000021373007660
 Q106836569	P569	+0579-00-00T00:00:00Z/9	S2600	"6000000021373007660"
@@ -7650,6 +12466,7 @@ Q1658721	P569	+1790-03-11T00:00:00Z/11	S2600	"6000000022706277131"
 Q116172832	P735	Q2218095	S2600	"6000000022838744532"
 
 # Kristina  Q101248014  <- geni:6000000022850719029
+Q101248014	P26	Q5717887	S2600	"6000000022850719029"
 Q101248014	P569	+1224-00-00T00:00:00Z/9	S2600	"6000000022850719029"
 Q101248014	P570	+1320-00-00T00:00:00Z/9	S2600	"6000000022850719029"
 Q101248014	P735	Q19798802	S2600	"6000000022850719029"
@@ -7691,6 +12508,14 @@ Q5779412	P569	+1876-07-31T00:00:00Z/11	S2600	"6000000023024127836"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q5779412	P570	+1968-02-14T00:00:00Z/11	S2600	"6000000023024127836"
 
+# Torstein Eiriksson Galge  Q16640088  <- geni:6000000023109987927
+Q16640088	P5056	Q141614679	S2600	"6000000023109987927"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16640088	P569	+0940-00-00T00:00:00Z/9	S2600	"6000000023109987927"
+Q16640088	P570	+1000-00-00T00:00:00Z/9	S2600	"6000000023109987927"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16640088	P735	Q10993987	S2600	"6000000023109987927"
+
 # Orlacan MacMurrough  Q75382682  <- geni:6000000023118216712
 Q75382682	P569	+1120-00-00T00:00:00Z/9	S2600	"6000000023118216712"
 Q75382682	P570	+1200-00-00T00:00:00Z/9	S2600	"6000000023118216712"
@@ -7702,6 +12527,12 @@ Q127270437	P570	+1615-00-00T00:00:00Z/9	S2600	"6000000023140541858"
 # Q8262857  Q8262857  <- geni:6000000023167303575
 # P31 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q8262857	P31	Q5	S2600	"6000000023167303575"
+
+# Eystein Orri Torbergson Thorbergsson av Giske  Q8960628  <- geni:6000000023181639375
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q8960628	P569	+1013-00-00T00:00:00Z/9	S2600	"6000000023181639375"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q8960628	P735	Q5423028	S2600	"6000000023181639375"
 
 # Ole Tollefsen Storla  Q141560557  <- geni:6000000023204771104
 # P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -8085,6 +12916,11 @@ Q141223839	P734	Q51079163	S2600	"6000000026930814601"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141512154	P25	Q141551558	S2600	"6000000026976813300"
 
+# Einar Hårekson Fluga of Tjøtta  Q61854645  <- geni:6000000027107938535
+Q61854645	P25	Q101248726	S2600	"6000000027107938535"
+Q61854645	P569	+1025-00-00T00:00:00Z/9	S2600	"6000000027107938535"
+Q61854645	P735	Q1305819	S2600	"6000000027107938535"
+
 # Heinrich V von Kessel  Q64923003  <- geni:6000000027306491482
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q64923003	P569	+1262-00-00T00:00:00Z/9	S2600	"6000000027306491482"
@@ -8108,6 +12944,13 @@ Q137453049	P735	Q43464169	S2600	"6000000027578671774"
 
 # NN Aslaksdotter Årrestad  Q141565832  <- geni:6000000027648456302
 Q141565832	P5056	Q141564534	S2600	"6000000027648456302"
+
+# Ragnhild Karlsdotter (Bjälboätten)  Q96240861  <- geni:6000000027664661646
+Q96240861	P26	Q5971771	S2600	"6000000027664661646"
+Q96240861	P5056	Q141450140	S2600	"6000000027664661646"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q96240861	P570	+1263-00-00T00:00:00Z/9	S2600	"6000000027664661646"
+Q96240861	P735	Q1390292	S2600	"6000000027664661646"
 
 # Constantine Doukas  Q113367259  <- geni:6000000027725198242
 Q113367259	P570	+1179-00-00T00:00:00Z/9	S2600	"6000000027725198242"
@@ -8185,6 +13028,7 @@ Q141524256	P735	Q96675523	S2600	"6000000028707166940"
 Q31191493	P735	Q827311	S2600	"6000000028711363793"
 
 # Fin Ebbesen Hvide  Q141518004  <- geni:6000000028766464614
+Q141518004	P22	Q12309311	S2600	"6000000028766464614"
 Q141518004	P5056	Q141585055	S2600	"6000000028766464614"
 
 # 이 은  Q484866  <- geni:6000000028856413461
@@ -8267,6 +13111,12 @@ Q141533496	P5056	Q141574683	S2600	"6000000029513996568"
 # Arvid Jernstedt  Q108608118  <- geni:6000000029576112920
 Q108608118	P569	+1640-00-00T00:00:00Z/9	S2600	"6000000029576112920"
 
+# Bård Ljotsson  Q16539531  <- geni:6000000029815587639
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16539531	P569	+0942-00-00T00:00:00Z/9	S2600	"6000000029815587639"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q16539531	P570	+0990-00-00T00:00:00Z/9	S2600	"6000000029815587639"
+
 # Lovisa Ulrika von Ehrenheim  Q141550853  <- geni:6000000029841163704
 Q141550853	P734	Q97622732	S2600	"6000000029841163704"
 
@@ -8289,6 +13139,7 @@ Q141499013	P734	Q42857954	S2600	"6000000030141462966"
 Q141499013	P735	Q646303	S2600	"6000000030141462966"
 
 # Ermenane  Q141523079  <- geni:6000000030192750410
+Q141523079	P40	Q536899	S2600	"6000000030192750410"
 Q141523079	P569	+0745-00-00T00:00:00Z/9	S2600	"6000000030192750410"
 Q141523079	P570	+0776-00-00T00:00:00Z/9	S2600	"6000000030192750410"
 
@@ -8301,12 +13152,19 @@ Q76355889	P569	+1300-00-00T00:00:00Z/9	S2600	"6000000030449788965"
 Q76355889	P734	Q104870943	S2600	"6000000030449788965"
 Q76355889	P735	Q19793321	S2600	"6000000030449788965"
 
+# Gudrid Arnbjørnsdatter  Q141550295  <- geni:6000000030454975860
+Q141550295	P22	Q106528141	S2600	"6000000030454975860"
+
 # Anna Falkenberg af Trystorp  Q141576168  <- geni:6000000030487965254
 Q141576168	P734	Q141577961	S2600	"6000000030487965254"
 
 # Arnold Aaron Ettinger  Q141499566  <- geni:6000000030509806324
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141499566	P22	Q119984629	S2600	"6000000030509806324"
+
+# Tumi Sighvatsson  Q769011  <- geni:6000000030606748028
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q769011	P569	+1197-00-00T00:00:00Z/9	S2600	"6000000030606748028"
 
 # Elizabeth Gwyn  Q112528658  <- geni:6000000030710450142
 Q112528658	P734	Q37451939	S2600	"6000000030710450142"
@@ -8450,6 +13308,10 @@ Q27031142	P26	Q7569679	S2600	"6000000033241899724"
 Q27031142	P569	+1340-00-00T00:00:00Z/9	S2600	"6000000033241899724"
 Q27031142	P734	Q210398	S2600	"6000000033241899724"
 
+# Iziaslav Vladimirovich  Q2357762  <- geni:6000000033244662476
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2357762	P569	+0978-00-00T00:00:00Z/9	S2600	"6000000033244662476"
+
 # Christina Elisabeth Claesdotter von Stauden  Q141498639  <- geni:6000000033309481110
 Q141498639	P5056	Q141498661	S2600	"6000000033309481110"
 
@@ -8488,6 +13350,10 @@ Q141456621	P570	+1563-00-00T00:00:00Z/9	S2600	"6000000034364089225"
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141456621	P734	Q27889353	S2600	"6000000034364089225"
 
+# Joachim Puttkamer von Flemming  Q116184268  <- geni:6000000034372560627
+Q116184268	P569	+1545-00-00T00:00:00Z/9	S2600	"6000000034372560627"
+Q116184268	P570	+1620-01-12T00:00:00Z/11	S2600	"6000000034372560627"
+
 # Robert Stewart  Q75388134  <- geni:6000000034497404848
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75388134	P569	+1408-00-00T00:00:00Z/9	S2600	"6000000034497404848"
@@ -8495,6 +13361,13 @@ Q75388134	P569	+1408-00-00T00:00:00Z/9	S2600	"6000000034497404848"
 # Maria Charlotta Indebetou  Q141529008  <- geni:6000000034497591250
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141529008	P22	Q101570049	S2600	"6000000034497591250"
+
+# Grim Lodinkinn  Q115649654  <- geni:6000000034561731738
+Q115649654	P569	+0780-00-00T00:00:00Z/9	S2600	"6000000034561731738"
+
+# Ragnfrid Skulesdotter Stein  Q141498982  <- geni:6000000034738775724
+Q141498982	P22	Q725206	S2600	"6000000034738775724"
+Q141498982	P25	Q75291937	S2600	"6000000034738775724"
 
 # Jon Osmundson Kleppa  Q141569952  <- geni:6000000034770024232
 Q141569952	P570	+1749-00-00T00:00:00Z/9	S2600	"6000000034770024232"
@@ -8504,6 +13377,9 @@ Q75404358	P734	Q2701900	S2600	"6000000034822715212"
 
 # Rannveig Osmundsdatter Trones  Q141529743  <- geni:6000000034932579606
 Q141529743	P5056	Q141440449	S2600	"6000000034932579606"
+
+# NN Arnbjørnsdotter Ambe  Q141584990  <- geni:6000000034955442163
+Q141584990	P40	Q106528141	S2600	"6000000034955442163"
 
 # Jon Omundsen Ualand  Q141516024  <- geni:6000000034960792849
 Q141516024	P5056	Q141515185	S2600	"6000000034960792849"
@@ -8516,6 +13392,18 @@ Q141515122	P569	+1255-00-00T00:00:00Z/9	S2600	"6000000034997636014"
 
 # Margarete Geuschmid  Q141517484  <- geni:6000000034997728878
 Q141517484	P569	+1274-00-00T00:00:00Z/9	S2600	"6000000034997728878"
+
+# Maria Haraldsdotter Hårdrådesätten  Q28718414  <- geni:6000000035032058090
+Q28718414	P5056	Q141574669	S2600	"6000000035032058090"
+Q28718414	P569	+1136-00-00T00:00:00Z/9	S2600	"6000000035032058090"
+Q28718414	P570	+1150-00-00T00:00:00Z/9	S2600	"6000000035032058090"
+
+# Rane Rani  Q101247862  <- geni:6000000035338400732
+Q101247862	P26	Q101247863	S2600	"6000000035338400732"
+Q101247862	P5056	Q141249587	S2600	"6000000035338400732"
+Q101247862	P569	+1254-00-00T00:00:00Z/9	S2600	"6000000035338400732"
+Q101247862	P570	+1294-00-00T00:00:00Z/9	S2600	"6000000035338400732"
+Q101247862	P734	Q37531500	S2600	"6000000035338400732"
 
 # Alexander Fraser III, 5th of Philorth  Q76211437  <- geni:6000000035432825157
 Q76211437	P735	Q923	S2600	"6000000035432825157"
@@ -8540,6 +13428,11 @@ Q141556985	P5056	Q141440450	S2600	"6000000035704353028"
 # Jonatan De Rogier  Q141499111  <- geni:6000000036064812876
 # P734 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141499111	P734	Q42166524	S2600	"6000000036064812876"
+
+# Ljot Thorfinnsson  Q2863303  <- geni:6000000036144932033
+Q2863303	P5056	Q7796212	S2600	"6000000036144932033"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2863303	P569	+0920-00-00T00:00:00Z/9	S2600	"6000000036144932033"
 
 # Jens Gulbrandsen Ohren  Q141586008  <- geni:6000000036308511823
 Q141586008	P5056	Q141585636	S2600	"6000000036308511823"
@@ -8644,6 +13537,7 @@ Q141499582	P569	+1340-00-00T00:00:00Z/9	S2600	"6000000038245360914"
 Q141499582	P735	Q16427439	S2600	"6000000038245360914"
 
 # Slag Slau  Q141513422  <- geni:6000000038301808551
+Q141513422	P40	Q12339511	S2600	"6000000038301808551"
 Q141513422	P569	+1000-00-00T00:00:00Z/9	S2600	"6000000038301808551"
 Q141513422	P570	+1002-11-13T00:00:00Z/11	S2600	"6000000038301808551"
 
@@ -8703,12 +13597,20 @@ Q141551538	P735	Q141579690	S2600	"6000000039793269121"
 Q110540792	P569	+1488-00-00T00:00:00Z/9	S2600	"6000000039842937304"
 Q110540792	P570	+1549-08-07T00:00:00Z/11	S2600	"6000000039842937304"
 
+# Vagn Aagesen af Fyn  Q2974985  <- geni:6000000040089350482
+Q2974985	P26	Q101248742	S2600	"6000000040089350482"
+
 # Agnès von Forbach  Q105944783  <- geni:6000000040133332567
 Q105944783	P569	+1310-00-00T00:00:00Z/9	S2600	"6000000040133332567"
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q105944783	P570	+1377-05-30T00:00:00Z/11	S2600	"6000000040133332567"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q105944783	P735	Q19689363	S2600	"6000000040133332567"
+
+# Lucie  Q110549496  <- geni:6000000040166405197
+Q110549496	P26	Q110549495	S2600	"6000000040166405197"
+Q110549496	P569	+1205-00-00T00:00:00Z/9	S2600	"6000000040166405197"
+Q110549496	P735	Q1617357	S2600	"6000000040166405197"
 
 # Iñigo López de Orozco y Fernández de Valdés I Señor de Escamilla  Q101402700  <- geni:6000000040287657550
 Q101402700	P569	+1285-00-00T00:00:00Z/9	S2600	"6000000040287657550"
@@ -8870,6 +13772,9 @@ Q136376355	P735	Q2529610	S2600	"6000000045408586867"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q75628775	P735	Q29937870	S2600	"6000000045409061911"
 
+# n  Q98698088  <- geni:6000000046225596832
+Q98698088	P26	Q316828	S2600	"6000000046225596832"
+
 # Otto Johan Koskull  Q110386171  <- geni:6000000046399427920
 Q110386171	P570	+1685-00-00T00:00:00Z/9	S2600	"6000000046399427920"
 Q110386171	P735	Q10989273	S2600	"6000000046399427920"
@@ -8888,6 +13793,10 @@ Q116096233	P735	Q1423455	S2600	"6000000046767644745"
 # Anna von Heideck Gräfin  Q110260890  <- geni:6000000046770551944
 Q110260890	P570	+1409-00-00T00:00:00Z/9	S2600	"6000000046770551944"
 Q110260890	P735	Q666578	S2600	"6000000046770551944"
+
+# Alberada de Hauteville  Q174452  <- geni:6000000046941506825
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q174452	P40	Q315297	S2600	"6000000046941506825"
 
 # Hans Peter Benjamin Petter Benjamin Bergersen Næsmo  Q141550370  <- geni:6000000047074087871
 Q141550370	P5056	Q141189030	S2600	"6000000047074087871"
@@ -8940,6 +13849,10 @@ Q141523439	P734	Q97622732	S2600	"6000000048883663992"
 
 # Anna von Wedel  Q141611395  <- geni:6000000049333873567
 Q141611395	P734	Q141611179	S2600	"6000000049333873567"
+
+# Gottfried I (IV)  Q61140683  <- geni:6000000049933604878
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q61140683	P569	+1105-00-00T00:00:00Z/9	S2600	"6000000049933604878"
 
 # Samuel Samuelsson Pryss  Q141549611  <- geni:6000000049970812207
 Q141549611	P5056	Q141546501	S2600	"6000000049970812207"
@@ -9021,6 +13934,9 @@ Q1649531	P570	+0480-00-00T00:00:00Z/9	S2600	"6000000054411398049"
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141529026	P25	Q141578372	S2600	"6000000054642098980"
 Q141529026	P570	+1729-00-00T00:00:00Z/9	S2600	"6000000054642098980"
+
+# NN  Q141613959  <- geni:6000000054755271849
+Q141613959	P26	Q98697958	S2600	"6000000054755271849"
 
 # Elisabet Gabrielsdotter Arctopolitanus  Q141533106  <- geni:6000000054896951836
 # P25 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -9244,6 +14160,19 @@ Q108673638	P569	+1615-00-00T00:00:00Z/9	S2600	"6000000076005021009"
 # Arne Torgeirsson Flåm  Q141585554  <- geni:6000000076850531129
 Q141585554	P5056	Q141612295	S2600	"6000000076850531129"
 
+# Eiliv Baardsson  Q16559506  <- geni:6000000076851578760
+Q16559506	P570	+1016-00-00T00:00:00Z/9	S2600	"6000000076851578760"
+Q16559506	P735	Q124751105	S2600	"6000000076851578760"
+
+# Thorbar Ragnvaldsson av More  Q6146146  <- geni:6000000076852445934
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6146146	P569	+0900-00-00T00:00:00Z/9	S2600	"6000000076852445934"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6146146	P570	+0950-00-00T00:00:00Z/9	S2600	"6000000076852445934"
+
+# Ingebjørg Håkonsdatter  Q141614066  <- geni:6000000076910611204
+Q141614066	P40	Q19392764	S2600	"6000000076910611204"
+
 # ELISE Karoline Louise Eleonore Sophie Christiane Ernestine von Alvensleben  Q77059608  <- geni:6000000076917424213
 # P569 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q77059608	P569	+1811-12-23T00:00:00Z/11	S2600	"6000000076917424213"
@@ -9312,6 +14241,15 @@ Q124768845	P735	Q923	S2600	"6000000078818831214"
 
 # Fedor Adrianovich of Zvenigorod  Q107417504  <- geni:6000000078819245961
 Q107417504	P735	Q12765750	S2600	"6000000078819245961"
+
+# Oda von Sachsen  Q7163638  <- geni:6000000080003501639
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q7163638	P570	+0952-07-02T00:00:00Z/11	S2600	"6000000080003501639"
+Q7163638	P734	Q60605147	S2600	"6000000080003501639"
+
+# Q2632610  Q2632610  <- geni:6000000080879890850
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q2632610	P570	+1167-00-00T00:00:00Z/9	S2600	"6000000080879890850"
 
 # John Langford  Q122361491  <- geni:6000000081049364893
 Q122361491	P569	+1465-00-00T00:00:00Z/9	S2600	"6000000081049364893"
@@ -9467,6 +14405,10 @@ Q62083853	P735	Q21142175	S2600	"6000000092182105100"
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141514962	P22	Q141502935	S2600	"6000000092572878723"
 
+# Gerhard of Metz  Q1928688  <- geni:6000000092625553891
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q1928688	P735	Q7996169	S2600	"6000000092625553891"
+
 # Marta Svensdatter  Q141457306  <- geni:6000000092897155927
 Q141457306	P5056	Q141314143	S2600	"6000000092897155927"
 
@@ -9589,6 +14531,10 @@ Q28374049	P570	+1502-00-00T00:00:00Z/9	S2600	"6000000108377333949"
 
 # Augusta Johannesdatter Molde  Q141318584  <- geni:6000000108556750883
 Q141318584	P5056	Q141574640	S2600	"6000000108556750883"
+
+# Brynjulf På Aga  Q141569481  <- geni:6000000109043725549
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141569481	P40	Q117477378	S2600	"6000000109043725549"
 
 # Thorberg Flatabo  Q141613925  <- geni:6000000109043858229
 Q141613925	P26	Q141613857	S2600	"6000000109043858229"
@@ -9790,6 +14736,7 @@ Q141403592	P734	Q141403285	S2600	"6000000139391751970"
 
 # Ingegerd Birgersdotter  Q141612136  <- geni:6000000140689965871
 Q141612136	P22	Q141610327	S2600	"6000000140689965871"
+Q141612136	P40	Q5576561	S2600	"6000000140689965871"
 Q141612136	P735	Q3481175	S2600	"6000000140689965871"
 
 # Per Arvidsson  Q141454676  <- geni:6000000141887372877
@@ -9905,11 +14852,19 @@ Q141511465	P734	Q141620199	S2600	"6000000156630819556"
 Q141533651	P569	+1600-00-00T00:00:00Z/9	S2600	"6000000158324107846"
 Q141533651	P735	Q18089653	S2600	"6000000158324107846"
 
+# Stig Hvidelæder  Q6190417  <- geni:6000000160361429829
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q6190417	P569	+1115-00-00T00:00:00Z/9	S2600	"6000000160361429829"
+
 # Fredrika Lovisa Söderberg  Q141271415  <- geni:6000000161721983869
 Q141271415	P26	Q141271415	S2600	"6000000161721983869"
 
 # Anna Söderberg  Q141422019  <- geni:6000000161721983924
 Q141422019	P5056	Q141585072	S2600	"6000000161721983924"
+
+# n  Q141610262  <- geni:6000000163441491887
+Q141610262	P40	Q266495	S2600	"6000000163441491887"
+Q141610262	P40	Q364751	S2600	"6000000163441491887"
 
 # Peder Olson  Q141487995  <- geni:6000000163634239821
 Q141487995	P5056	Q141283709	S2600	"6000000163634239821"
@@ -10024,6 +14979,10 @@ Q141533639	P735	Q21452178	S2600	"6000000176653557926"
 # Salve Endresen Malmeim  Q141538935  <- geni:6000000177483445826
 Q141538935	P5056	Q141528092	S2600	"6000000177483445826"
 Q141538935	P569	+1540-00-00T00:00:00Z/9	S2600	"6000000177483445826"
+
+# William I  Q77251  <- geni:6000000177524980865
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q77251	P735	Q12344159	S2600	"6000000177524980865"
 
 # Faltin Anderssen  Q141587009  <- geni:6000000177582158831
 Q141587009	P5056	Q141563133	S2600	"6000000177582158831"
@@ -10436,6 +15395,7 @@ Q141564768	P5056	Q141585684	S2600	"6000000181130797872"
 Q141613857	P26	Q141613925	S2600	"6000000181844629857"
 
 # Jutta Eriksdotter of Denmark  Q3492100  <- geni:6000000182232565850
+Q3492100	P26	Q357200	S2600	"6000000182232565850"
 Q3492100	P5056	Q130232912	S2600	"6000000182232565850"
 
 # Shahr Banu Begum  Q86058502  <- geni:6000000182593254821
@@ -10479,6 +15439,9 @@ Q1054435	P735	Q24971900	S2600	"6000000185876121856"
 
 # Ingeborg Maria Trulsdatter Nedrebø  Q141448477  <- geni:6000000186044260922
 Q141448477	P5056	Q141448437	S2600	"6000000186044260922"
+
+# Eline Toresdatter Lekum  Q141612173  <- geni:6000000186064866385
+Q141612173	P40	Q15851234	S2600	"6000000186064866385"
 
 # Deokjang Buyeo  Q19657284  <- geni:6000000186285688253
 Q19657284	P569	+0650-00-00T00:00:00Z/9	S2600	"6000000186285688253"
@@ -10646,6 +15609,12 @@ Q313342	P569	-2305-00-00T00:00:00Z/9	S2600	"6000000195149451825"
 Q313342	P570	-2205-00-00T00:00:00Z/9	S2600	"6000000195149451825"
 Q313342	P735	Q96748301	S2600	"6000000195149451825"
 
+# Margareta Ulfsdotter Hiorthofud  Q101247393  <- geni:6000000195206694875
+Q101247393	P5056	Q141586350	S2600	"6000000195206694875"
+Q101247393	P569	+1265-00-00T00:00:00Z/9	S2600	"6000000195206694875"
+Q101247393	P570	+1341-00-00T00:00:00Z/9	S2600	"6000000195206694875"
+Q101247393	P734	Q117808647	S2600	"6000000195206694875"
+
 # Mari Olsdatter Dangstorp  Q141578869  <- geni:6000000195445719862
 Q141578869	P734	Q141580675	S2600	"6000000195445719862"
 
@@ -10662,6 +15631,13 @@ Q141520729	P570	+1751-00-00T00:00:00Z/9	S2600	"6000000195940532827"
 Q141498380	P569	+0500-00-00T00:00:00Z/9	S2600	"6000000196282195908"
 Q141498380	P570	+0565-00-00T00:00:00Z/9	S2600	"6000000196282195908"
 Q141498380	P734	Q5641869	S2600	"6000000196282195908"
+
+# Jutta von Hengebach  Q70901295  <- geni:6000000196291713844
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q70901295	P569	+1157-00-00T00:00:00Z/9	S2600	"6000000196291713844"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q70901295	P570	+1218-00-00T00:00:00Z/9	S2600	"6000000196291713844"
+Q70901295	P735	Q18194789	S2600	"6000000196291713844"
 
 # Eberhard III von Hengebach  Q76122651  <- geni:6000000196292852828
 # P570 disagrees with what the item already states, which STAYS. This goes in beside it.
@@ -10759,6 +15735,9 @@ Q70899	P31	Q5	S2600	"6000000201847373856"
 
 # Ola Marselius Eriksen Hogstad  Q141551139  <- geni:6000000202543587856
 Q141551139	P26	Q141551139	S2600	"6000000202543587856"
+
+# Bethoc Gillesdotter  Q141611134  <- geni:6000000203344430890
+Q141611134	P40	Q260543	S2600	"6000000203344430890"
 
 # Ivar Jansen Ocker  Q141551138  <- geni:6000000203668371827
 Q141551138	P5056	Q141585659	S2600	"6000000203668371827"
@@ -10921,8 +15900,15 @@ Q121290591	P735	Q4962685	S2600	"6000000212815092852"
 Q121189639	P735	Q20087580	S2600	"6000000212955993852"
 
 # Magnus Bengtsson  Q141528104  <- geni:6000000212996454827
+Q141528104	P22	Q1621801	S2600	"6000000212996454827"
+Q141528104	P40	Q316828	S2600	"6000000212996454827"
+Q141528104	P40	Q5569987	S2600	"6000000212996454827"
 Q141528104	P569	+1150-00-00T00:00:00Z/9	S2600	"6000000212996454827"
 Q141528104	P570	+1208-01-31T00:00:00Z/11	S2600	"6000000212996454827"
+
+# Kristina Hafrid Magnusdotter  Q141513750  <- geni:6000000212996495821
+Q141513750	P40	Q5900614	S2600	"6000000212996495821"
+Q141513750	P40	Q61982215	S2600	"6000000212996495821"
 
 # Helena bar. von Rahden  Q138202692  <- geni:6000000214195396821
 Q138202692	P569	+1836-00-00T00:00:00Z/9	S2600	"6000000214195396821"
@@ -11112,6 +16098,7 @@ Q141223431	P5056	Q141582487	S2600	"6000000226904207910"
 Q225212	P569	+1042-00-00T00:00:00Z/9	S2600	"6000000227048492827"
 
 # Peter Näf  Q141534290  <- geni:6000000227191441892
+Q141534290	P25	Q4959919	S2600	"6000000227191441892"
 Q141534290	P569	+1195-00-00T00:00:00Z/9	S2600	"6000000227191441892"
 Q141534290	P570	+1253-00-00T00:00:00Z/9	S2600	"6000000227191441892"
 Q141534290	P735	Q2793400	S2600	"6000000227191441892"
@@ -12528,6 +17515,9 @@ Q135524991	P22	Q135524990	S2600	"6000000227379231882"
 Q135524991	P2600	"6000000227379231882"	S2600	"6000000227379231882"
 Q135524991	P40	Q135524993	S2600	"6000000227379231882"
 
+# Baugeid Jonsdatter  Q141583272  <- geni:6000000227545958914
+Q141583272	P25	Q26327689	S2600	"6000000227545958914"
+
 # Erik Andresson  Q141511196  <- geni:6000000227803024982
 Q141511196	P569	+1365-00-00T00:00:00Z/9	S2600	"6000000227803024982"
 Q141511196	P735	Q750186	S2600	"6000000227803024982"
@@ -12543,20 +17533,210 @@ Q141510063	P735	Q19798835	S2600	"6000000227803073849"
 Q141499443	P22	Q623497	S2600	"6000000227816621867"
 
 # Brynjulv  Q141512851  <- geni:6000000227816628912
+Q141512851	P40	Q117477378	S2600	"6000000227816628912"
 Q141512851	P569	+1205-00-00T00:00:00Z/9	S2600	"6000000227816628912"
 Q141512851	P735	Q30135403	S2600	"6000000227816628912"
 
 # NN Vestre Bore  Q141577149  <- geni:6000000227831999861
 Q141577149	P734	Q38893530	S2600	"6000000227831999861"
 
+# Elly Olivia Andersson  Q141223907  <- geni:6000000227891340662
+Q141223907	P5056	Q141318548	S2600	"6000000227891340662"
+
+# Hedda Gustava Gustafsdotter  Q141529490  <- geni:6000000227891340747
+Q141529490	P735	Q21144392	S2600	"6000000227891340747"
+
+# Johanna Matilda Karlsdotter  Q141223427  <- geni:6000000227891340797
+Q141223427	P5056	Q141450140	S2600	"6000000227891340797"
+
+# Frans August Wedberg  Q141271410  <- geni:6000000227891340816
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141271410	P570	+1897-11-02T00:00:00Z/11	S2600	"6000000227891340816"
+
+# Anders Holgersson Panna  Q141610513  <- geni:6000000227891353760
+Q141610513	P22	Q141336545	S2600	"6000000227891353760"
+Q141610513	P25	Q141336618	S2600	"6000000227891353760"
+
+# Anna Pehrsdotter  Q141586037  <- geni:6000000227891353779
+Q141586037	P22	Q141314037	S2600	"6000000227891353779"
+Q141586037	P25	Q141318969	S2600	"6000000227891353779"
+
+# Holger Andersson  Q141336545  <- geni:6000000227891353799
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141336545	P40	Q141610513	S2600	"6000000227891353799"
+Q141336545	P569	+1655-00-00T00:00:00Z/9	S2600	"6000000227891353799"
+
+# Margareta Johansdotter  Q141336618  <- geni:6000000227891353804
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141336618	P40	Q141610513	S2600	"6000000227891353804"
+Q141336618	P569	+1657-00-00T00:00:00Z/9	S2600	"6000000227891353804"
+Q141336618	P570	+1699-00-00T00:00:00Z/9	S2600	"6000000227891353804"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141336618	P735	Q8274988	S2600	"6000000227891353804"
+
+# Barbro Persdotter  Q141500287  <- geni:6000000227891353815
+Q141500287	P569	+1631-00-00T00:00:00Z/9	S2600	"6000000227891353815"
+Q141500287	P570	+1694-06-01T00:00:00Z/11	S2600	"6000000227891353815"
+
+# Anders Andersson Wedberg  Q141528118  <- geni:6000000227891363561
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141528118	P569	+1807-00-00T00:00:00Z/9	S2600	"6000000227891363561"
+
+# Anna Greta Gabrielsson  Q141528137  <- geni:6000000227891363568
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141528137	P5056	Q141584036	S2600	"6000000227891363568"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141528137	P569	+1811-00-00T00:00:00Z/9	S2600	"6000000227891363568"
+Q141528137	P735	Q16639594	S2600	"6000000227891363568"
+
+# Erick Nilsson  Q141511388  <- geni:6000000227891441652
+Q141511388	P5056	Q130233015	S2600	"6000000227891441652"
+Q141511388	P570	+1789-03-06T00:00:00Z/11	S2600	"6000000227891441652"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141511388	P735	Q19828986	S2600	"6000000227891441652"
+
+# Karin Nilsdatter  Q141514163  <- geni:6000000227891441673
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141514163	P5056	Q122837798	S2600	"6000000227891441673"
+Q141514163	P570	+1798-11-24T00:00:00Z/11	S2600	"6000000227891441673"
+Q141514163	P735	Q1814118	S2600	"6000000227891441673"
+
+# Nils Pahrsson  Q141516372  <- geni:6000000227891441705
+Q141516372	P569	+1669-00-00T00:00:00Z/9	S2600	"6000000227891441705"
+Q141516372	P570	+1755-00-00T00:00:00Z/9	S2600	"6000000227891441705"
+
+# Erik Ersson  Q141313955  <- geni:6000000227891606387
+Q141313955	P5056	Q141584718	S2600	"6000000227891606387"
+
+# Anna Stina Broman  Q141313911  <- geni:6000000227891606391
+Q141313911	P735	Q666578	S2600	"6000000227891606391"
+
+# Erik Jönsson  Q141336531  <- geni:6000000227891606394
+Q141336531	P5056	Q141442237	S2600	"6000000227891606394"
+
+# Jonas Jonsson  Q141443371  <- geni:6000000227891606397
+Q141443371	P5056	Q141242306	S2600	"6000000227891606397"
+Q141443371	P570	+1791-06-25T00:00:00Z/11	S2600	"6000000227891606397"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141443371	P735	Q16646115	S2600	"6000000227891606397"
+
+# Carl Ersson  Q141219148  <- geni:6000000227891680348
+Q141219148	P5056	Q141584718	S2600	"6000000227891680348"
+
+# Ulrika Persdotter  Q141219071  <- geni:6000000227891680351
+# P22 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141219071	P22	Q141584329	S2600	"6000000227891680351"
+Q141219071	P5056	Q141429564	S2600	"6000000227891680351"
+
 # Daniel Pehrsson  Q141584329  <- geni:6000000227891680354
 # P22 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141584329	P22	Q141217431	S2600	"6000000227891680354"
+Q141584329	P26	Q141219284	S2600	"6000000227891680354"
+Q141584329	P40	Q141219071	S2600	"6000000227891680354"
 # P735 disagrees with what the item already states, which STAYS. This goes in beside it.
 Q141584329	P735	Q53787734	S2600	"6000000227891680354"
 
+# Maria Benjaminsdotter  Q141219284  <- geni:6000000227891680401
+# P26 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141219284	P26	Q141584329	S2600	"6000000227891680401"
+
+# Anna Nilsdotter  Q141250214  <- geni:6000000227891680487
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141250214	P569	+1731-00-00T00:00:00Z/9	S2600	"6000000227891680487"
+
+# Gustaf Söderberg  Q141312587  <- geni:6000000227891863224
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141312587	P570	+1878-08-08T00:00:00Z/11	S2600	"6000000227891863224"
+
+# Beata Catharina Jonsdotter  Q141312566  <- geni:6000000227891863252
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141312566	P735	Q17317997	S2600	"6000000227891863252"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141312566	P735	Q338015	S2600	"6000000227891863252"
+
+# Anna Johansdotter  Q141422019  <- geni:6000000227891863298
+Q141422019	P5056	Q141290188	S2600	"6000000227891863298"
+
+# Fredrik Johansson Söderberg  Q141521444  <- geni:6000000227891863314
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141521444	P570	+1773-01-11T00:00:00Z/11	S2600	"6000000227891863314"
+
+# Johan  Q141447158  <- geni:6000000227891863322
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141447158	P735	Q10989273	S2600	"6000000227891863322"
+
+# Jon  Q141529041  <- geni:6000000227891863325
+Q141529041	P735	Q13501137	S2600	"6000000227891863325"
+
+# Jonas Jönsson  Q141457283  <- geni:6000000227891931418
+Q141457283	P5056	Q141442237	S2600	"6000000227891931418"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141457283	P569	+1707-11-28T00:00:00Z/11	S2600	"6000000227891931418"
+
+# Eric Carlsson  Q141538320  <- geni:6000000227891947683
+Q141538320	P570	+1822-03-29T00:00:00Z/11	S2600	"6000000227891947683"
+
+# Brita Jonsdotter  Q141538269  <- geni:6000000227891947688
+Q141538269	P570	+1852-03-19T00:00:00Z/11	S2600	"6000000227891947688"
+
+# Gustaf Gustafsson  Q141538362  <- geni:6000000227892000153
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141538362	P569	+1768-10-16T00:00:00Z/11	S2600	"6000000227892000153"
+Q141538362	P570	+1795-06-17T00:00:00Z/11	S2600	"6000000227892000153"
+Q141538362	P735	Q15646212	S2600	"6000000227892000153"
+
+# Brita Larsdotter  Q141538273  <- geni:6000000227892000160
+Q141538273	P570	+1853-04-14T00:00:00Z/11	S2600	"6000000227892000160"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141538273	P735	Q918013	S2600	"6000000227892000160"
+
+# Gustaf Jönsson  Q141548261  <- geni:6000000227892000169
+Q141548261	P5056	Q141442237	S2600	"6000000227892000169"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141548261	P569	+1731-03-07T00:00:00Z/11	S2600	"6000000227892000169"
+
+# Kirstin Nilsdotter  Q141548567  <- geni:6000000227892000175
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141548567	P569	+1737-11-11T00:00:00Z/11	S2600	"6000000227892000175"
+
+# Lars Bengtsson  Q141548609  <- geni:6000000227892000182
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141548609	P569	+1733-04-00T00:00:00Z/10	S2600	"6000000227892000182"
+Q141548609	P570	+1805-07-19T00:00:00Z/11	S2600	"6000000227892000182"
+
+# Brita Jonsdotter  Q141546819  <- geni:6000000227892000190
+Q141546819	P570	+1809-07-28T00:00:00Z/11	S2600	"6000000227892000190"
+
+# Anna Jonsdotter  Q141538033  <- geni:6000000227892000202
+Q141538033	P5056	Q141319007	S2600	"6000000227892000202"
+
+# Brita Andersdotter  Q141546809  <- geni:6000000227892000210
+Q141546809	P570	+1818-08-16T00:00:00Z/11	S2600	"6000000227892000210"
+
+# Jonas Olofsson  Q141548521  <- geni:6000000227892000215
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141548521	P5056	Q141244186	S2600	"6000000227892000215"
+
 # Catharina Axelsdotter  Q141546859  <- geni:6000000227892032097
 Q141546859	P5056	Q141546492	S2600	"6000000227892032097"
+
+# Eric Ersson  Q141550275  <- geni:6000000227892101609
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141550275	P5056	Q141584718	S2600	"6000000227892101609"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141550275	P569	+1730-01-12T00:00:00Z/11	S2600	"6000000227892101609"
+
+# Bengt Frisk  Q141550693  <- geni:6000000227892155585
+Q141550693	P734	Q27877507	S2600	"6000000227892155585"
+
+# Pehr  Q141529110  <- geni:6000000227892156027
+Q141529110	P569	+1610-00-00T00:00:00Z/9	S2600	"6000000227892156027"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141529110	P735	Q18606368	S2600	"6000000227892156027"
+
+# Pehr  Q141529039  <- geni:6000000227892156031
+Q141529039	P569	+1610-00-00T00:00:00Z/9	S2600	"6000000227892156031"
+Q141529039	P735	Q18606368	S2600	"6000000227892156031"
 
 # Anders Pehrsson  Q141549809  <- geni:6000000227892225279
 Q141549809	P5056	Q141549475	S2600	"6000000227892225279"
@@ -12564,8 +17744,190 @@ Q141549809	P5056	Q141549475	S2600	"6000000227892225279"
 # Per Isaksson  Q141560618  <- geni:6000000227892225290
 Q141560618	P5056	Q141585071	S2600	"6000000227892225290"
 
+# Olof Jönsson Kuse  Q141533825  <- geni:6000000227892309306
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141533825	P569	+1590-00-00T00:00:00Z/9	S2600	"6000000227892309306"
+
+# Olof  Q141533651  <- geni:6000000227892309310
+Q141533651	P569	+1600-00-00T00:00:00Z/9	S2600	"6000000227892309310"
+Q141533651	P735	Q18089653	S2600	"6000000227892309310"
+
 # Ingeborg Ersson  Q141580508  <- geni:6000000227892341651
 Q141580508	P5056	Q141584718	S2600	"6000000227892341651"
+
+# Jonas Eriksson  Q141550618  <- geni:6000000227892352039
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141550618	P5056	Q130232913	S2600	"6000000227892352039"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141550618	P735	Q16646115	S2600	"6000000227892352039"
+
+# Mårten Pehrsson  Q141436677  <- geni:6000000227892364640
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141436677	P5056	Q141549475	S2600	"6000000227892364640"
+
+# Pehr Larsson Ryss  Q141511421  <- geni:6000000227892364671
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141511421	P735	Q18606368	S2600	"6000000227892364671"
+
+# Lisbeth Mårtensdotter  Q141517272  <- geni:6000000227892364680
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141517272	P570	+1756-00-00T00:00:00Z/9	S2600	"6000000227892364680"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141517272	P735	Q1827880	S2600	"6000000227892364680"
+
+# Lars Pehrsson  Q141523351  <- geni:6000000227892364687
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141523351	P5056	Q141549475	S2600	"6000000227892364687"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141523351	P569	+1638-00-00T00:00:00Z/9	S2600	"6000000227892364687"
+
+# Anna  Q141518679  <- geni:6000000227892364693
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141518679	P569	+1635-00-00T00:00:00Z/9	S2600	"6000000227892364693"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141518679	P570	+1709-00-00T00:00:00Z/9	S2600	"6000000227892364693"
+
+# Mårten Jonsson Furman  Q141529035  <- geni:6000000227892364698
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141529035	P569	+1630-00-00T00:00:00Z/9	S2600	"6000000227892364698"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141529035	P570	+1702-00-00T00:00:00Z/9	S2600	"6000000227892364698"
+
+# Magdlena Nikodemusdotter  Q141528983  <- geni:6000000227892364711
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141528983	P569	+1624-00-00T00:00:00Z/9	S2600	"6000000227892364711"
+
+# Mareta  Q141520670  <- geni:6000000227892364729
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141520670	P735	Q65177322	S2600	"6000000227892364729"
+
+# Fredrika Lovisa Söderberg  Q141271415  <- geni:6000000227892521836
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141271415	P570	+1859-10-16T00:00:00Z/11	S2600	"6000000227892521836"
+
+# Carl Johan Ersson  Q141223507  <- geni:6000000227892521848
+Q141223507	P5056	Q141584718	S2600	"6000000227892521848"
+Q141223507	P735	Q2529610	S2600	"6000000227892521848"
+
+# Christina Sofia Carlsdotter  Q141219160  <- geni:6000000227892521851
+Q141219160	P5056	Q141574629	S2600	"6000000227892521851"
+Q141219160	P735	Q1083457	S2600	"6000000227892521851"
+
+# Karl Anton Andersson  Q141225693  <- geni:6000000227892521854
+Q141225693	P5056	Q141318548	S2600	"6000000227892521854"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141225693	P735	Q136771753	S2600	"6000000227892521854"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141225693	P735	Q5401576	S2600	"6000000227892521854"
+
+# Emma Olivia Andersdotter  Q141539855  <- geni:6000000227892521858
+Q141539855	P5056	Q141318568	S2600	"6000000227892521858"
+Q141539855	P735	Q632264	S2600	"6000000227892521858"
+
+# Anders Peter Andersson  Q141318607  <- geni:6000000227892521867
+Q141318607	P569	+1858-01-01T00:00:00Z/11	S2600	"6000000227892521867"
+Q141318607	P570	+1934-03-19T00:00:00Z/11	S2600	"6000000227892521867"
+
+# Anna Matilda Johansdotter  Q141318975  <- geni:6000000227892521872
+Q141318975	P5056	Q141290188	S2600	"6000000227892521872"
+Q141318975	P735	Q2054021	S2600	"6000000227892521872"
+Q141318975	P735	Q666578	S2600	"6000000227892521872"
+
+# Anders Gustaf Olsson  Q141382445  <- geni:6000000227892521880
+Q141382445	P5056	Q141442235	S2600	"6000000227892521880"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141382445	P570	+1909-06-10T00:00:00Z/11	S2600	"6000000227892521880"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141382445	P735	Q15646212	S2600	"6000000227892521880"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141382445	P735	Q8843357	S2600	"6000000227892521880"
+
+# Anna Brita Andersdotter  Q141382447  <- geni:6000000227892521894
+Q141382447	P5056	Q141318568	S2600	"6000000227892521894"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141382447	P735	Q666578	S2600	"6000000227892521894"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141382447	P735	Q918013	S2600	"6000000227892521894"
+
+# Johan Söderberg  Q141528764  <- geni:6000000227892591865
+Q141528764	P569	+1711-00-00T00:00:00Z/9	S2600	"6000000227892591865"
+Q141528764	P570	+1762-00-00T00:00:00Z/9	S2600	"6000000227892591865"
+
+# Thomas Kettillsson  Q141523490  <- geni:6000000227892638482
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141523490	P569	+1602-00-00T00:00:00Z/9	S2600	"6000000227892638482"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141523490	P735	Q16428906	S2600	"6000000227892638482"
+
+# Per Andersson  Q141529109  <- geni:6000000227892668837
+Q141529109	P569	+1600-00-00T00:00:00Z/9	S2600	"6000000227892668837"
+Q141529109	P570	+1666-07-02T00:00:00Z/11	S2600	"6000000227892668837"
+
+# Karin Jonsson  Q141528849  <- geni:6000000227892668842
+Q141528849	P569	+1610-00-00T00:00:00Z/9	S2600	"6000000227892668842"
+
+# Johan Olofsson Utter  Q141528763  <- geni:6000000227892677824
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141528763	P569	+1626-00-00T00:00:00Z/9	S2600	"6000000227892677824"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141528763	P570	+1697-02-00T00:00:00Z/10	S2600	"6000000227892677824"
+
+# Margaretha Matsdotter  Q141529045  <- geni:6000000227892677833
+Q141529045	P5056	Q141614437	S2600	"6000000227892677833"
+Q141529045	P569	+1630-00-00T00:00:00Z/9	S2600	"6000000227892677833"
+Q141529045	P735	Q17459100	S2600	"6000000227892677833"
+
+# Pehr Olofsson  Q141314037  <- geni:6000000227892677838
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141314037	P40	Q141586037	S2600	"6000000227892677838"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141314037	P569	+1660-00-00T00:00:00Z/9	S2600	"6000000227892677838"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141314037	P735	Q18606368	S2600	"6000000227892677838"
+
+# Kerstin Larsdotter  Q141318969  <- geni:6000000227892677845
+# P40 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141318969	P40	Q141586037	S2600	"6000000227892677845"
+Q141318969	P5056	Q141436525	S2600	"6000000227892677845"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141318969	P569	+1662-00-00T00:00:00Z/9	S2600	"6000000227892677845"
+Q141318969	P570	+1756-00-00T00:00:00Z/9	S2600	"6000000227892677845"
+# P735 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141318969	P735	Q7618688	S2600	"6000000227892677845"
+
+# Olof Thomasson Frusen  Q141319311  <- geni:6000000227892677852
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141319311	P5056	Q141583327	S2600	"6000000227892677852"
+
+# Johan Nilsson  Q141528762  <- geni:6000000227892695870
+Q141528762	P569	+1659-00-00T00:00:00Z/9	S2600	"6000000227892695870"
+
+# Sara Svensdotter  Q141529137  <- geni:6000000227892695877
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141529137	P569	+1662-00-00T00:00:00Z/9	S2600	"6000000227892695877"
+
+# Nils Pehrsson  Q141533735  <- geni:6000000227892695882
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141533735	P5056	Q141549475	S2600	"6000000227892695882"
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141533735	P569	+1629-00-00T00:00:00Z/9	S2600	"6000000227892695882"
+
+# Märta Holgersdotter  Q141533637  <- geni:6000000227892695887
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141533637	P569	+1634-00-00T00:00:00Z/9	S2600	"6000000227892695887"
+
+# Sven Pehrsson  Q141533917  <- geni:6000000227892695892
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141533917	P569	+1630-00-00T00:00:00Z/9	S2600	"6000000227892695892"
+
+# Sven Pehrsson  Q141560754  <- geni:6000000227892695897
+Q141560754	P5056	Q141549475	S2600	"6000000227892695897"
+Q141560754	P569	+1635-00-00T00:00:00Z/9	S2600	"6000000227892695897"
+Q141560754	P735	Q2370957	S2600	"6000000227892695897"
+
+# Sven Pehrsson  Q141529172  <- geni:6000000227892695901
+# P5056 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q141529172	P5056	Q141549475	S2600	"6000000227892695901"
 
 # Eivind Jakobson Få  Q141585803  <- geni:865204
 Q141585803	P734	Q141585649	S2600	"865204"

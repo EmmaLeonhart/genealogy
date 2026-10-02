@@ -11407,540 +11407,6 @@
  },
  {
   "kind": "pick",
-  "id": "child|6000000001341078095|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Katharina von Baden-Durlach",
-   "id": "Q11913273",
-   "kind": "qid",
-   "sex": "F",
-   "life": [
-    "1677",
-    "1746"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Frederick VII, Margrave of Baden-Durlach",
-      "Augusta Maria of Holstein-Gottorp"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Margravine Albertine Friederike of Baden-Durlach",
-      "Johanna Elisabeth of Baden-Durlach",
-      "Karl III Wilhelm of Baden-Durlach",
-      "Christopher of Baden-Durlach"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Johann Friedrich von Leiningen-Dagsburg-Hartenburg"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich Magnus von Leiningen-Dagsburg-Hartenburg",
-      "Karl Ludwig von Leiningen-Dagsburg-Emichsburg",
-      "Anna Marie, Gräfin von Leiningen-Dagsburg-Hartenburg"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-    "id": "6000000011080019664",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1677",
-     "1746"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich Magnus von Baden-Durlach Markgraf",
-       "Friederika Augusta von Baden-Durlach Markgräfin",
-       "Christina Sofia von Baden-Durlach Markgräfin",
-       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
-       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
-       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-       "Albertine Frederike",
-       "Christoph von Baden-Durlach Markgraf",
-       "Charlotte Sofie von Baden-Durlach Markgräfin",
-       "Marie Anna von Baden-Durlach Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg (Leiningen), Graf",
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg, Graf",
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg Graf"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Karl Ludwig, greve von Leiningen",
-       "Friedrich Magnus Fürst zu Leiningen-Dagsburg-Hartenburg",
-       "Anne Marie Louise Gräfin zu Pappenheim"
-      ]
-     ]
-    ],
-    "geni": "6000000011080019664",
-    "qid": "Q11913273",
-    "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-    "cand": "Katharina von Baden-Durlach"
-   },
-   {
-    "name": "Marie Anna von Baden-Durlach Markgräfin",
-    "id": "6000000005598776082",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1688",
-     "1689"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich Magnus von Baden-Durlach Markgraf",
-       "Friederika Augusta von Baden-Durlach Markgräfin",
-       "Christina Sofia von Baden-Durlach Markgräfin",
-       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
-       "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
-       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-       "Albertine Frederike",
-       "Christoph von Baden-Durlach Markgraf",
-       "Charlotte Sofie von Baden-Durlach Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005598776082",
-    "qid": "Q11913273",
-    "our": "Marie Anna von Baden-Durlach Markgräfin",
-    "cand": "Katharina von Baden-Durlach"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "albertine",
-   "anna",
-   "augusta",
-   "badendurlach",
-   "elisabeth",
-   "friedrich",
-   "grafin",
-   "holsteingottorp",
-   "iii",
-   "johann",
-   "johanna",
-   "karl",
-   "leiningendagsburghartenburg",
-   "ludwig",
-   "magnus",
-   "marie",
-   "vii",
-   "von",
-   "wilhelm"
-  ],
-  "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-  "cand": "Katharina von Baden-Durlach"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000001341078095|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Katharina von Baden-Durlach",
-   "id": "Q11913273",
-   "kind": "qid",
-   "sex": "F",
-   "life": [
-    "1677",
-    "1746"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Frederick VII, Margrave of Baden-Durlach",
-      "Augusta Maria of Holstein-Gottorp"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Margravine Albertine Friederike of Baden-Durlach",
-      "Johanna Elisabeth of Baden-Durlach",
-      "Karl III Wilhelm of Baden-Durlach",
-      "Christopher of Baden-Durlach"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Johann Friedrich von Leiningen-Dagsburg-Hartenburg"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich Magnus von Leiningen-Dagsburg-Hartenburg",
-      "Karl Ludwig von Leiningen-Dagsburg-Emichsburg",
-      "Anna Marie, Gräfin von Leiningen-Dagsburg-Hartenburg"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-    "id": "6000000011080019664",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1677",
-     "1746"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich Magnus von Baden-Durlach Markgraf",
-       "Friederika Augusta von Baden-Durlach Markgräfin",
-       "Christina Sofia von Baden-Durlach Markgräfin",
-       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
-       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
-       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-       "Albertine Frederike",
-       "Christoph von Baden-Durlach Markgraf",
-       "Charlotte Sofie von Baden-Durlach Markgräfin",
-       "Marie Anna von Baden-Durlach Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg (Leiningen), Graf",
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg, Graf",
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg Graf"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Karl Ludwig, greve von Leiningen",
-       "Friedrich Magnus Fürst zu Leiningen-Dagsburg-Hartenburg",
-       "Anne Marie Louise Gräfin zu Pappenheim"
-      ]
-     ]
-    ],
-    "geni": "6000000011080019664",
-    "qid": "Q11913273",
-    "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-    "cand": "Katharina von Baden-Durlach"
-   },
-   {
-    "name": "Marie Anna von Baden-Durlach Markgräfin",
-    "id": "6000000005598776082",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1688",
-     "1689"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich Magnus von Baden-Durlach Markgraf",
-       "Friederika Augusta von Baden-Durlach Markgräfin",
-       "Christina Sofia von Baden-Durlach Markgräfin",
-       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
-       "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
-       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-       "Albertine Frederike",
-       "Christoph von Baden-Durlach Markgraf",
-       "Charlotte Sofie von Baden-Durlach Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005598776082",
-    "qid": "Q11913273",
-    "our": "Marie Anna von Baden-Durlach Markgräfin",
-    "cand": "Katharina von Baden-Durlach"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "albertine",
-   "anna",
-   "augusta",
-   "badendurlach",
-   "elisabeth",
-   "friedrich",
-   "grafin",
-   "holsteingottorp",
-   "iii",
-   "johann",
-   "johanna",
-   "karl",
-   "leiningendagsburghartenburg",
-   "ludwig",
-   "magnus",
-   "marie",
-   "vii",
-   "von",
-   "wilhelm"
-  ],
-  "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-  "cand": "Katharina von Baden-Durlach"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000001367662825|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Katharina von Baden-Durlach",
-   "id": "Q11913273",
-   "kind": "qid",
-   "sex": "F",
-   "life": [
-    "1677",
-    "1746"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Frederick VII, Margrave of Baden-Durlach",
-      "Augusta Maria of Holstein-Gottorp"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Margravine Albertine Friederike of Baden-Durlach",
-      "Johanna Elisabeth of Baden-Durlach",
-      "Karl III Wilhelm of Baden-Durlach",
-      "Christopher of Baden-Durlach"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Johann Friedrich von Leiningen-Dagsburg-Hartenburg"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich Magnus von Leiningen-Dagsburg-Hartenburg",
-      "Karl Ludwig von Leiningen-Dagsburg-Emichsburg",
-      "Anna Marie, Gräfin von Leiningen-Dagsburg-Hartenburg"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-    "id": "6000000011080019664",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1677",
-     "1746"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich Magnus von Baden-Durlach Markgraf",
-       "Friederika Augusta von Baden-Durlach Markgräfin",
-       "Christina Sofia von Baden-Durlach Markgräfin",
-       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
-       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
-       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-       "Albertine Frederike",
-       "Christoph von Baden-Durlach Markgraf",
-       "Charlotte Sofie von Baden-Durlach Markgräfin",
-       "Marie Anna von Baden-Durlach Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg (Leiningen), Graf",
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg, Graf",
-       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg Graf"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Karl Ludwig, greve von Leiningen",
-       "Friedrich Magnus Fürst zu Leiningen-Dagsburg-Hartenburg",
-       "Anne Marie Louise Gräfin zu Pappenheim"
-      ]
-     ]
-    ],
-    "geni": "6000000011080019664",
-    "qid": "Q11913273",
-    "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-    "cand": "Katharina von Baden-Durlach"
-   },
-   {
-    "name": "Marie Anna von Baden-Durlach Markgräfin",
-    "id": "6000000005598776082",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1688",
-     "1689"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
-       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich Magnus von Baden-Durlach Markgraf",
-       "Friederika Augusta von Baden-Durlach Markgräfin",
-       "Christina Sofia von Baden-Durlach Markgräfin",
-       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
-       "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
-       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-       "Albertine Frederike",
-       "Christoph von Baden-Durlach Markgraf",
-       "Charlotte Sofie von Baden-Durlach Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005598776082",
-    "qid": "Q11913273",
-    "our": "Marie Anna von Baden-Durlach Markgräfin",
-    "cand": "Katharina von Baden-Durlach"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "albertine",
-   "anna",
-   "augusta",
-   "badendurlach",
-   "elisabeth",
-   "friedrich",
-   "grafin",
-   "holsteingottorp",
-   "iii",
-   "johann",
-   "johanna",
-   "karl",
-   "leiningendagsburghartenburg",
-   "ludwig",
-   "magnus",
-   "marie",
-   "vii",
-   "von",
-   "wilhelm"
-  ],
-  "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
-  "cand": "Katharina von Baden-Durlach"
- },
- {
-  "kind": "pick",
   "id": "sibling|6000000002188445805|F|ours",
   "side": "ours",
   "slot": "sibling",
@@ -19539,6 +19005,537 @@
   ],
   "our": "Charlotte Auguste von Schwarzburg-Sondershausen",
   "cand": "Charlotte, Prinzessin von Schwarburg-Sondershausen"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000001341078095|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Katharina von Baden-Durlach",
+   "id": "Q11913273",
+   "kind": "qid",
+   "sex": "F",
+   "life": [
+    "1677",
+    "1746"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Frederick VII, Margrave of Baden-Durlach",
+      "Augusta Maria of Holstein-Gottorp"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Margravine Albertine Friederike of Baden-Durlach",
+      "Johanna Elisabeth of Baden-Durlach",
+      "Charles III William of Baden-Durlach",
+      "Christopher of Baden-Durlach"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Johann Friedrich von Leiningen-Dagsburg-Hartenburg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Friedrich Magnus von Leiningen-Dagsburg-Hartenburg",
+      "Karl Ludwig von Leiningen-Dagsburg-Emichsburg",
+      "Anna Marie, Gräfin von Leiningen-Dagsburg-Hartenburg"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+    "id": "6000000011080019664",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1677",
+     "1746"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Friedrich Magnus von Baden-Durlach Markgraf",
+       "Friederika Augusta von Baden-Durlach Markgräfin",
+       "Christina Sofia von Baden-Durlach Markgräfin",
+       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
+       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
+       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+       "Albertine Frederike",
+       "Christoph von Baden-Durlach Markgraf",
+       "Charlotte Sofie von Baden-Durlach Markgräfin",
+       "Marie Anna von Baden-Durlach Markgräfin"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg (Leiningen), Graf",
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg, Graf",
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg Graf"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Ludwig, greve von Leiningen",
+       "Friedrich Magnus Fürst zu Leiningen-Dagsburg-Hartenburg",
+       "Anne Marie Louise Gräfin zu Pappenheim"
+      ]
+     ]
+    ],
+    "geni": "6000000011080019664",
+    "qid": "Q11913273",
+    "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+    "cand": "Katharina von Baden-Durlach"
+   },
+   {
+    "name": "Marie Anna von Baden-Durlach Markgräfin",
+    "id": "6000000005598776082",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1688",
+     "1689"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Friedrich Magnus von Baden-Durlach Markgraf",
+       "Friederika Augusta von Baden-Durlach Markgräfin",
+       "Christina Sofia von Baden-Durlach Markgräfin",
+       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
+       "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
+       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+       "Albertine Frederike",
+       "Christoph von Baden-Durlach Markgraf",
+       "Charlotte Sofie von Baden-Durlach Markgräfin"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000005598776082",
+    "qid": "Q11913273",
+    "our": "Marie Anna von Baden-Durlach Markgräfin",
+    "cand": "Katharina von Baden-Durlach"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "albertine",
+   "anna",
+   "augusta",
+   "badendurlach",
+   "elisabeth",
+   "friedrich",
+   "grafin",
+   "holsteingottorp",
+   "iii",
+   "johann",
+   "johanna",
+   "karl",
+   "leiningendagsburghartenburg",
+   "ludwig",
+   "magnus",
+   "marie",
+   "vii",
+   "von"
+  ],
+  "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+  "cand": "Katharina von Baden-Durlach"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000001341078095|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Katharina von Baden-Durlach",
+   "id": "Q11913273",
+   "kind": "qid",
+   "sex": "F",
+   "life": [
+    "1677",
+    "1746"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Frederick VII, Margrave of Baden-Durlach",
+      "Augusta Maria of Holstein-Gottorp"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Margravine Albertine Friederike of Baden-Durlach",
+      "Johanna Elisabeth of Baden-Durlach",
+      "Charles III William of Baden-Durlach",
+      "Christopher of Baden-Durlach"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Johann Friedrich von Leiningen-Dagsburg-Hartenburg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Friedrich Magnus von Leiningen-Dagsburg-Hartenburg",
+      "Karl Ludwig von Leiningen-Dagsburg-Emichsburg",
+      "Anna Marie, Gräfin von Leiningen-Dagsburg-Hartenburg"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+    "id": "6000000011080019664",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1677",
+     "1746"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Friedrich Magnus von Baden-Durlach Markgraf",
+       "Friederika Augusta von Baden-Durlach Markgräfin",
+       "Christina Sofia von Baden-Durlach Markgräfin",
+       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
+       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
+       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+       "Albertine Frederike",
+       "Christoph von Baden-Durlach Markgraf",
+       "Charlotte Sofie von Baden-Durlach Markgräfin",
+       "Marie Anna von Baden-Durlach Markgräfin"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg (Leiningen), Graf",
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg, Graf",
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg Graf"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Ludwig, greve von Leiningen",
+       "Friedrich Magnus Fürst zu Leiningen-Dagsburg-Hartenburg",
+       "Anne Marie Louise Gräfin zu Pappenheim"
+      ]
+     ]
+    ],
+    "geni": "6000000011080019664",
+    "qid": "Q11913273",
+    "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+    "cand": "Katharina von Baden-Durlach"
+   },
+   {
+    "name": "Marie Anna von Baden-Durlach Markgräfin",
+    "id": "6000000005598776082",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1688",
+     "1689"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Friedrich Magnus von Baden-Durlach Markgraf",
+       "Friederika Augusta von Baden-Durlach Markgräfin",
+       "Christina Sofia von Baden-Durlach Markgräfin",
+       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
+       "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
+       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+       "Albertine Frederike",
+       "Christoph von Baden-Durlach Markgraf",
+       "Charlotte Sofie von Baden-Durlach Markgräfin"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000005598776082",
+    "qid": "Q11913273",
+    "our": "Marie Anna von Baden-Durlach Markgräfin",
+    "cand": "Katharina von Baden-Durlach"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "albertine",
+   "anna",
+   "augusta",
+   "badendurlach",
+   "elisabeth",
+   "friedrich",
+   "grafin",
+   "holsteingottorp",
+   "iii",
+   "johann",
+   "johanna",
+   "karl",
+   "leiningendagsburghartenburg",
+   "ludwig",
+   "magnus",
+   "marie",
+   "vii",
+   "von"
+  ],
+  "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+  "cand": "Katharina von Baden-Durlach"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000001367662825|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Katharina von Baden-Durlach",
+   "id": "Q11913273",
+   "kind": "qid",
+   "sex": "F",
+   "life": [
+    "1677",
+    "1746"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Frederick VII, Margrave of Baden-Durlach",
+      "Augusta Maria of Holstein-Gottorp"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Margravine Albertine Friederike of Baden-Durlach",
+      "Johanna Elisabeth of Baden-Durlach",
+      "Charles III William of Baden-Durlach",
+      "Christopher of Baden-Durlach"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Johann Friedrich von Leiningen-Dagsburg-Hartenburg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Friedrich Magnus von Leiningen-Dagsburg-Hartenburg",
+      "Karl Ludwig von Leiningen-Dagsburg-Emichsburg",
+      "Anna Marie, Gräfin von Leiningen-Dagsburg-Hartenburg"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+    "id": "6000000011080019664",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1677",
+     "1746"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Friedrich Magnus von Baden-Durlach Markgraf",
+       "Friederika Augusta von Baden-Durlach Markgräfin",
+       "Christina Sofia von Baden-Durlach Markgräfin",
+       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
+       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
+       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+       "Albertine Frederike",
+       "Christoph von Baden-Durlach Markgraf",
+       "Charlotte Sofie von Baden-Durlach Markgräfin",
+       "Marie Anna von Baden-Durlach Markgräfin"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg (Leiningen), Graf",
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg, Graf",
+       "Johann Friedrich von Leiningen-Dachsburg-Hardenburg Graf"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Ludwig, greve von Leiningen",
+       "Friedrich Magnus Fürst zu Leiningen-Dagsburg-Hartenburg",
+       "Anne Marie Louise Gräfin zu Pappenheim"
+      ]
+     ]
+    ],
+    "geni": "6000000011080019664",
+    "qid": "Q11913273",
+    "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+    "cand": "Katharina von Baden-Durlach"
+   },
+   {
+    "name": "Marie Anna von Baden-Durlach Markgräfin",
+    "id": "6000000005598776082",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1688",
+     "1689"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Friedrich VII Magnus Фридрих VII. Магнус von Baden-Durlach",
+       "Auguste Marie von Holstein-Gottorp Markgräfin zu Baden-Durlach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Friedrich Magnus von Baden-Durlach Markgraf",
+       "Friederika Augusta von Baden-Durlach Markgräfin",
+       "Christina Sofia von Baden-Durlach Markgräfin",
+       "Claudia Magdalene Elisabeth von Baden-Durlach Markgräfin",
+       "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+       "Karl III Wilhelm Karl III. Wilhelm von Baden-Durlach",
+       "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+       "Albertine Frederike",
+       "Christoph von Baden-Durlach Markgraf",
+       "Charlotte Sofie von Baden-Durlach Markgräfin"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000005598776082",
+    "qid": "Q11913273",
+    "our": "Marie Anna von Baden-Durlach Markgräfin",
+    "cand": "Katharina von Baden-Durlach"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Johanna Elisabeth von Baden-Durlach Herzogin zu Württemberg",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "albertine",
+   "anna",
+   "augusta",
+   "badendurlach",
+   "elisabeth",
+   "friedrich",
+   "grafin",
+   "holsteingottorp",
+   "iii",
+   "johann",
+   "johanna",
+   "karl",
+   "leiningendagsburghartenburg",
+   "ludwig",
+   "magnus",
+   "marie",
+   "vii",
+   "von"
+  ],
+  "our": "Katherina von Baden-Durlach Markgräfin, Gräfin zu Leiningen-Dachsburg-Hardenburg",
+  "cand": "Katharina von Baden-Durlach"
  },
  {
   "kind": "pick",
@@ -36319,7 +36316,7 @@
     [
      "Parents",
      [
-      "Karl Friedrich I, Grand Duke of Baden",
+      "Charles Frederick, Grand Duke of Baden",
       "Louise Caroline of Hochberg"
      ]
     ],
@@ -76763,175 +76760,6 @@
  },
  {
   "kind": "pick",
-  "id": "sibling|4107813|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Friedrich I, Grand Duke of Baden",
-   "id": "Q57483",
-   "kind": "qid",
-   "sex": "M",
-   "life": [
-    "1826",
-    "1907"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Leopold, Grand Duke of Baden",
-      "Princess Sophie of Sweden"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Princess Cecilie of Baden",
-      "Princess Alexandrine of Baden",
-      "Princess Marie of Baden",
-      "Ludwig II, Grand Duke of Baden",
-      "Prince William of Baden",
-      "Prince Karl of Baden"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Princess Louise of Prussia"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich II, Grand Duke of Baden",
-      "Victoria of Baden",
-      "Prince Louis of Baden"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-    "id": "4107893",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1826",
-     "1907"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold I Grand",
-       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-       "Ludwig von Baden Prinz",
-       "Ludwig II von Baden Großherzog",
-       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-       "Ludwig Wilhelm August von Baden Prinz",
-       "Charles Frederick Gustav William Maximilian von Baden Prince",
-       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
-       "Cäcilie Auguste von Baden Grand Duchess of Russia"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Friedrich II Wilhelm von Baden Großherzog",
-       "Sophia Maria Victoria von Baden Queen Consort of Sweden",
-       "Ludwig Prinz von Baden"
-      ]
-     ]
-    ],
-    "geni": "4107893",
-    "qid": "Q57483",
-    "our": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-    "cand": "Friedrich I, Grand Duke of Baden"
-   },
-   {
-    "name": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-    "id": "6000000190083242250",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1829",
-     "1858"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold I Grand",
-       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-       "Ludwig von Baden Prinz",
-       "Ludwig II von Baden Großherzog",
-       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-       "Ludwig Wilhelm August von Baden Prinz",
-       "Charles Frederick Gustav William Maximilian von Baden Prince",
-       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
-       "Cäcilie Auguste von Baden Grand Duchess of Russia"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000190083242250",
-    "qid": "Q57483",
-    "our": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-    "cand": "Friedrich I, Grand Duke of Baden"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "alexandrine",
-   "baden",
-   "duke",
-   "friedrich",
-   "grand",
-   "leopold",
-   "louis",
-   "ludwig",
-   "marie",
-   "prince",
-   "sophie",
-   "sweden",
-   "victoria",
-   "william"
-  ],
-  "our": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-  "cand": "Friedrich I, Grand Duke of Baden"
- },
- {
-  "kind": "pick",
   "id": "sibling|6000000003827305535|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -77399,275 +77227,6 @@
   ],
   "our": "Dietrich von MeiBen",
   "cand": "Theodoric I"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000000692792046|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Friedrich I, Grand Duke of Baden",
-   "id": "Q57483",
-   "kind": "qid",
-   "sex": "M",
-   "life": [
-    "1826",
-    "1907"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Leopold, Grand Duke of Baden",
-      "Princess Sophie of Sweden"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Princess Cecilie of Baden",
-      "Princess Alexandrine of Baden",
-      "Princess Marie of Baden",
-      "Ludwig II, Grand Duke of Baden",
-      "Prince William of Baden",
-      "Prince Karl of Baden"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Princess Louise of Prussia"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich II, Grand Duke of Baden",
-      "Victoria of Baden",
-      "Prince Louis of Baden"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Otto Herman Leopold Vitali",
-    "id": "6000000004010587413",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold I Grand",
-       "Sophia Vittali"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Carl Emil August Vitali",
-       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-       "Ludwig von Baden Prinz",
-       "Ludwig II von Baden Großherzog",
-       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-       "Ludwig Wilhelm August von Baden Prinz",
-       "Charles Frederick Gustav William Maximilian von Baden Prince",
-       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
-       "Cäcilie Auguste von Baden Grand Duchess of Russia"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000004010587413",
-    "qid": "Q57483",
-    "our": "Otto Herman Leopold Vitali",
-    "cand": "Friedrich I, Grand Duke of Baden"
-   },
-   {
-    "name": "Carl Emil August Vitali",
-    "id": "6000000004011159147",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold I Grand",
-       "Sophia Vittali"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Otto Herman Leopold Vitali",
-       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-       "Ludwig von Baden Prinz",
-       "Ludwig II von Baden Großherzog",
-       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-       "Ludwig Wilhelm August von Baden Prinz",
-       "Charles Frederick Gustav William Maximilian von Baden Prince",
-       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
-       "Cäcilie Auguste von Baden Grand Duchess of Russia"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Henriette Agate Vitali"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "August Carl Emil Vitali"
-      ]
-     ]
-    ],
-    "geni": "6000000004011159147",
-    "qid": "Q57483",
-    "our": "Carl Emil August Vitali",
-    "cand": "Friedrich I, Grand Duke of Baden"
-   },
-   {
-    "name": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-    "id": "4107893",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1826",
-     "1907"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold I Grand",
-       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Otto Herman Leopold Vitali",
-       "Carl Emil August Vitali",
-       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-       "Ludwig von Baden Prinz",
-       "Ludwig II von Baden Großherzog",
-       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-       "Ludwig Wilhelm August von Baden Prinz",
-       "Charles Frederick Gustav William Maximilian von Baden Prince",
-       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
-       "Cäcilie Auguste von Baden Grand Duchess of Russia"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Friedrich II Wilhelm von Baden Großherzog",
-       "Sophia Maria Victoria von Baden Queen Consort of Sweden",
-       "Ludwig Prinz von Baden"
-      ]
-     ]
-    ],
-    "geni": "4107893",
-    "qid": "Q57483",
-    "our": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-    "cand": "Friedrich I, Grand Duke of Baden"
-   },
-   {
-    "name": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-    "id": "6000000190083242250",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1829",
-     "1858"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold I Grand",
-       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Otto Herman Leopold Vitali",
-       "Carl Emil August Vitali",
-       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-       "Ludwig von Baden Prinz",
-       "Ludwig II von Baden Großherzog",
-       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
-       "Ludwig Wilhelm August von Baden Prinz",
-       "Charles Frederick Gustav William Maximilian von Baden Prince",
-       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
-       "Cäcilie Auguste von Baden Grand Duchess of Russia"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000190083242250",
-    "qid": "Q57483",
-    "our": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
-    "cand": "Friedrich I, Grand Duke of Baden"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "alexandrine",
-   "baden",
-   "duke",
-   "friedrich",
-   "grand",
-   "leopold",
-   "louis",
-   "ludwig",
-   "marie",
-   "prince",
-   "sophie",
-   "sweden",
-   "victoria",
-   "william"
-  ],
-  "our": "Otto Herman Leopold Vitali",
-  "cand": "Friedrich I, Grand Duke of Baden"
  },
  {
   "kind": "pick",
@@ -108237,6 +107796,174 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|4107813|M|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Frederick I, Grand Duke of Baden",
+   "id": "Q57483",
+   "kind": "qid",
+   "sex": "M",
+   "life": [
+    "1826",
+    "1907"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Leopold, Grand Duke of Baden",
+      "Princess Sophie of Sweden"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Princess Cecilie of Baden",
+      "Princess Alexandrine of Baden",
+      "Princess Marie of Baden",
+      "Louis II, Grand Duke of Baden",
+      "Prince William of Baden",
+      "Prince Karl of Baden"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Princess Louise of Prussia"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Frederick II, Grand Duke of Baden",
+      "Victoria of Baden",
+      "Prince Louis of Baden"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+    "id": "4107893",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1826",
+     "1907"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Leopold I Grand",
+       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+       "Ludwig von Baden Prinz",
+       "Ludwig II von Baden Großherzog",
+       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+       "Ludwig Wilhelm August von Baden Prinz",
+       "Charles Frederick Gustav William Maximilian von Baden Prince",
+       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
+       "Cäcilie Auguste von Baden Grand Duchess of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Friedrich II Wilhelm von Baden Großherzog",
+       "Sophia Maria Victoria von Baden Queen Consort of Sweden",
+       "Ludwig Prinz von Baden"
+      ]
+     ]
+    ],
+    "geni": "4107893",
+    "qid": "Q57483",
+    "our": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+    "cand": "Frederick I, Grand Duke of Baden"
+   },
+   {
+    "name": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+    "id": "6000000190083242250",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1829",
+     "1858"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Leopold I Grand",
+       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+       "Ludwig von Baden Prinz",
+       "Ludwig II von Baden Großherzog",
+       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+       "Ludwig Wilhelm August von Baden Prinz",
+       "Charles Frederick Gustav William Maximilian von Baden Prince",
+       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
+       "Cäcilie Auguste von Baden Grand Duchess of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000190083242250",
+    "qid": "Q57483",
+    "our": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+    "cand": "Frederick I, Grand Duke of Baden"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alexandrine",
+   "baden",
+   "duke",
+   "frederick",
+   "grand",
+   "leopold",
+   "louis",
+   "marie",
+   "prince",
+   "sophie",
+   "sweden",
+   "victoria",
+   "william"
+  ],
+  "our": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+  "cand": "Frederick I, Grand Duke of Baden"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000002187962151|M|ours",
   "side": "ours",
   "slot": "child",
@@ -108433,6 +108160,274 @@
   ],
   "our": "Walter Drummond",
   "cand": "David Drummond, 2nd Lord Drummond"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000000692792046|M|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Frederick I, Grand Duke of Baden",
+   "id": "Q57483",
+   "kind": "qid",
+   "sex": "M",
+   "life": [
+    "1826",
+    "1907"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Leopold, Grand Duke of Baden",
+      "Princess Sophie of Sweden"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Princess Cecilie of Baden",
+      "Princess Alexandrine of Baden",
+      "Princess Marie of Baden",
+      "Louis II, Grand Duke of Baden",
+      "Prince William of Baden",
+      "Prince Karl of Baden"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Princess Louise of Prussia"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Frederick II, Grand Duke of Baden",
+      "Victoria of Baden",
+      "Prince Louis of Baden"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Otto Herman Leopold Vitali",
+    "id": "6000000004010587413",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Leopold I Grand",
+       "Sophia Vittali"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Carl Emil August Vitali",
+       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+       "Ludwig von Baden Prinz",
+       "Ludwig II von Baden Großherzog",
+       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+       "Ludwig Wilhelm August von Baden Prinz",
+       "Charles Frederick Gustav William Maximilian von Baden Prince",
+       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
+       "Cäcilie Auguste von Baden Grand Duchess of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000004010587413",
+    "qid": "Q57483",
+    "our": "Otto Herman Leopold Vitali",
+    "cand": "Frederick I, Grand Duke of Baden"
+   },
+   {
+    "name": "Carl Emil August Vitali",
+    "id": "6000000004011159147",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Leopold I Grand",
+       "Sophia Vittali"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Otto Herman Leopold Vitali",
+       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+       "Ludwig von Baden Prinz",
+       "Ludwig II von Baden Großherzog",
+       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+       "Ludwig Wilhelm August von Baden Prinz",
+       "Charles Frederick Gustav William Maximilian von Baden Prince",
+       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
+       "Cäcilie Auguste von Baden Grand Duchess of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Henriette Agate Vitali"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "August Carl Emil Vitali"
+      ]
+     ]
+    ],
+    "geni": "6000000004011159147",
+    "qid": "Q57483",
+    "our": "Carl Emil August Vitali",
+    "cand": "Frederick I, Grand Duke of Baden"
+   },
+   {
+    "name": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+    "id": "4107893",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1826",
+     "1907"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Leopold I Grand",
+       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Otto Herman Leopold Vitali",
+       "Carl Emil August Vitali",
+       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+       "Ludwig von Baden Prinz",
+       "Ludwig II von Baden Großherzog",
+       "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+       "Ludwig Wilhelm August von Baden Prinz",
+       "Charles Frederick Gustav William Maximilian von Baden Prince",
+       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
+       "Cäcilie Auguste von Baden Grand Duchess of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Friedrich II Wilhelm von Baden Großherzog",
+       "Sophia Maria Victoria von Baden Queen Consort of Sweden",
+       "Ludwig Prinz von Baden"
+      ]
+     ]
+    ],
+    "geni": "4107893",
+    "qid": "Q57483",
+    "our": "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+    "cand": "Frederick I, Grand Duke of Baden"
+   },
+   {
+    "name": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+    "id": "6000000190083242250",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1829",
+     "1858"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Leopold I Grand",
+       "Sofia Vilhelmina Katarina Maria Lovisa Charlotta Anna av Sverige Großherzogin zu Baden"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Otto Herman Leopold Vitali",
+       "Carl Emil August Vitali",
+       "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+       "Ludwig von Baden Prinz",
+       "Ludwig II von Baden Großherzog",
+       "Fredrich I Wilhelm Ludwig von Baden Grand Duke",
+       "Ludwig Wilhelm August von Baden Prinz",
+       "Charles Frederick Gustav William Maximilian von Baden Prince",
+       "Marie Amalie Amelie Af von Baden Fürstin zu Leiningen",
+       "Cäcilie Auguste von Baden Grand Duchess of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000190083242250",
+    "qid": "Q57483",
+    "our": "Ludwig Carl Friedrich Aka Louis 2 Leopold",
+    "cand": "Frederick I, Grand Duke of Baden"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alexandrine Luise Amalie Friederike Elisabeth Sophie von Baden Herzogin zu Sachsen-Coburg und Gotha",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alexandrine",
+   "baden",
+   "duke",
+   "frederick",
+   "grand",
+   "leopold",
+   "louis",
+   "marie",
+   "prince",
+   "sophie",
+   "sweden",
+   "victoria",
+   "william"
+  ],
+  "our": "Otto Herman Leopold Vitali",
+  "cand": "Frederick I, Grand Duke of Baden"
  },
  {
   "kind": "pick",
@@ -144188,7 +144183,7 @@
      "Parents",
      [
       "Prince Francis, Count of Trapani",
-      "Archduchess Maria Isabella, Countess of Trapani"
+      "Archduchess Maria Isabella of Austria"
      ]
     ],
     [
@@ -144208,7 +144203,7 @@
      [
       "Prince Ferdinand Pius, Duke of Calabria",
       "Prince Carlos of the Two Sicilies",
-      "Archduchess Maria Cristina, Hereditary Grand Duchess of Tuscany",
+      "Princess Maria Cristina of Bourbon-Two Sicilies",
       "Princess Maria Pia of the Two Sicilies",
       "Prince Ranieri, Duke of Castro",
       "Prince Filippo of the Two Sicilies",
@@ -144314,9 +144309,9 @@
   "trigger_bold": "Karolina Maria Józefina Giuseppina Ferdinanda Zamoyski",
   "trigger_post": " holds an item naming siblings we cannot place one-to-one",
   "highlight": [
+   "austria",
    "bourbontwo",
    "caserta",
-   "countess",
    "francesco",
    "isabella",
    "maria",
@@ -144351,7 +144346,7 @@
      "Parents",
      [
       "Prince Francis, Count of Trapani",
-      "Archduchess Maria Isabella, Countess of Trapani"
+      "Archduchess Maria Isabella of Austria"
      ]
     ],
     [
@@ -144371,7 +144366,7 @@
      [
       "Prince Ferdinand Pius, Duke of Calabria",
       "Prince Carlos of the Two Sicilies",
-      "Archduchess Maria Cristina, Hereditary Grand Duchess of Tuscany",
+      "Princess Maria Cristina of Bourbon-Two Sicilies",
       "Princess Maria Pia of the Two Sicilies",
       "Prince Ranieri, Duke of Castro",
       "Prince Filippo of the Two Sicilies",
@@ -144477,9 +144472,9 @@
   "trigger_bold": "Karolina Maria Józefina Giuseppina Ferdinanda Zamoyski",
   "trigger_post": " holds an item naming siblings we cannot place one-to-one",
   "highlight": [
+   "austria",
    "bourbontwo",
    "caserta",
-   "countess",
    "francesco",
    "isabella",
    "maria",
@@ -158557,7 +158552,7 @@
     [
      "Spouse",
      [
-      "Prince Maximilian, Margrave of Baden"
+      "Maximilian, Margrave of Baden"
      ]
     ],
     [
@@ -159005,7 +159000,7 @@
     [
      "Spouse",
      [
-      "Prince Maximilian, Margrave of Baden"
+      "Maximilian, Margrave of Baden"
      ]
     ],
     [
@@ -164225,342 +164220,6 @@
   ],
   "our": "Stanisław Andrzej Kostka Zamojski h. Jelita",
   "cand": "Stanisław Kostka Zamoyski"
- },
- {
-  "kind": "pick",
-  "id": "child|4127866832950049628|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Princess Louise of Prussia",
-   "id": "Q233203",
-   "kind": "qid",
-   "sex": "F",
-   "life": [
-    "1838",
-    "1923"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Wilhelm I",
-      "Augusta of Saxe-Weimar-Eisenach"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Frederick III, German Emperor"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Friedrich I, Grand Duke of Baden"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich II, Grand Duke of Baden",
-      "Victoria of Baden",
-      "Prince Louis of Baden"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-    "id": "4107926",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1838",
-     "1923"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Wilhelm I Friedrich Ludwig von Preußen Kurfürst, Deutscher Kaiser",
-       "Augusta Maria Luise Katharina of Saxe-Weimar-Eisenach Emporer consort of Germany"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich III Wilhelm Nikolaus Karl of Preussia German Emperor",
-       "Caroline Sophia Agnes Dettmann",
-       "Bellon",
-       "Gustav Friedrich Moslener",
-       "John Francis Helm"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Fredrich I Wilhelm Ludwig von Baden Grand Duke"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Friedrich II Wilhelm von Baden Großherzog",
-       "Sophia Maria Victoria von Baden Queen Consort of Sweden",
-       "Ludwig Prinz von Baden"
-      ]
-     ]
-    ],
-    "geni": "4107926",
-    "qid": "Q233203",
-    "our": "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-    "cand": "Princess Louise of Prussia"
-   },
-   {
-    "name": "Caroline Sophia Agnes Dettmann",
-    "id": "6000000015704518302",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1824",
-     "1904"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Wilhelm I Friedrich Ludwig von Preußen Kurfürst, Deutscher Kaiser",
-       "Elisa Friederike Luise Martha von Preussen-Hohenzollern"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich III Wilhelm Nikolaus Karl of Preussia German Emperor",
-       "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-       "Bellon",
-       "Gustav Friedrich Moslener",
-       "John Francis Helm"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Karl Friedrich Ludwig Louis Dettmann",
-       "Karl Friedrich Ludwig Louis Dettmann"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "John Dettmann",
-       "Agnes Wills",
-       "Jane Dettmann",
-       "Louisa Dettmann",
-       "Clara Dettmann",
-       "Albert Dettmann",
-       "Sophia Dettmann",
-       "Louis Dettmann"
-      ]
-     ]
-    ],
-    "geni": "6000000015704518302",
-    "qid": "Q233203",
-    "our": "Caroline Sophia Agnes Dettmann",
-    "cand": "Princess Louise of Prussia"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Wilhelm I Friedrich Ludwig von Preußen Kurfürst, Deutscher Kaiser",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "augusta",
-   "baden",
-   "duke",
-   "emperor",
-   "friedrich",
-   "german",
-   "grand",
-   "iii",
-   "louis",
-   "saxeweimareisenach",
-   "victoria",
-   "wilhelm"
-  ],
-  "our": "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-  "cand": "Princess Louise of Prussia"
- },
- {
-  "kind": "pick",
-  "id": "sibling|4127866832950049628|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Princess Louise of Prussia",
-   "id": "Q233203",
-   "kind": "qid",
-   "sex": "F",
-   "life": [
-    "1838",
-    "1923"
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Wilhelm I",
-      "Augusta of Saxe-Weimar-Eisenach"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Frederick III, German Emperor"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Friedrich I, Grand Duke of Baden"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Friedrich II, Grand Duke of Baden",
-      "Victoria of Baden",
-      "Prince Louis of Baden"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-    "id": "4107926",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1838",
-     "1923"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Wilhelm I Friedrich Ludwig von Preußen Kurfürst, Deutscher Kaiser",
-       "Augusta Maria Luise Katharina of Saxe-Weimar-Eisenach Emporer consort of Germany"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich III Wilhelm Nikolaus Karl of Preussia German Emperor",
-       "Caroline Sophia Agnes Dettmann",
-       "Bellon",
-       "Gustav Friedrich Moslener",
-       "John Francis Helm"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Fredrich I Wilhelm Ludwig von Baden Grand Duke"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Friedrich II Wilhelm von Baden Großherzog",
-       "Sophia Maria Victoria von Baden Queen Consort of Sweden",
-       "Ludwig Prinz von Baden"
-      ]
-     ]
-    ],
-    "geni": "4107926",
-    "qid": "Q233203",
-    "our": "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-    "cand": "Princess Louise of Prussia"
-   },
-   {
-    "name": "Caroline Sophia Agnes Dettmann",
-    "id": "6000000015704518302",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1824",
-     "1904"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Wilhelm I Friedrich Ludwig von Preußen Kurfürst, Deutscher Kaiser",
-       "Elisa Friederike Luise Martha von Preussen-Hohenzollern"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Friedrich III Wilhelm Nikolaus Karl of Preussia German Emperor",
-       "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-       "Bellon",
-       "Gustav Friedrich Moslener",
-       "John Francis Helm"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Karl Friedrich Ludwig Louis Dettmann",
-       "Karl Friedrich Ludwig Louis Dettmann"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "John Dettmann",
-       "Agnes Wills",
-       "Jane Dettmann",
-       "Louisa Dettmann",
-       "Clara Dettmann",
-       "Albert Dettmann",
-       "Sophia Dettmann",
-       "Louis Dettmann"
-      ]
-     ]
-    ],
-    "geni": "6000000015704518302",
-    "qid": "Q233203",
-    "our": "Caroline Sophia Agnes Dettmann",
-    "cand": "Princess Louise of Prussia"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Friedrich III Wilhelm Nikolaus Karl of Preussia German Emperor",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "augusta",
-   "baden",
-   "duke",
-   "emperor",
-   "friedrich",
-   "german",
-   "grand",
-   "iii",
-   "louis",
-   "saxeweimareisenach",
-   "victoria",
-   "wilhelm"
-  ],
-  "our": "Luise Marie Elisabeth von Preußen Prinzessin, Großherzogin zu Baden",
-  "cand": "Princess Louise of Prussia"
  },
  {
   "kind": "pick",
@@ -199917,5 +199576,319 @@
   ],
   "our": "Angela Spalletti Trivelli",
   "cand": "Angela dei Principi del Drago"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000000307239489|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Grand Duchess Elizabeth Nikolaevna of Russia",
+   "id": "Q5594505",
+   "kind": "qid",
+   "sex": "F",
+   "life": [
+    "1826",
+    "1829"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Nicholas I of Russia",
+      "Alexandra Feodorovna"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Grand Duchess Maria Nikolaevna of Russia",
+      "Olga Nikolaevna of Russia",
+      "Grand Duchess Alexandra Nikolaevna of Russia",
+      "Grand Duke Michael Nikolaevich of Russia",
+      "Grand Duke Nicholas Nikolaevich of Russia",
+      "Grand Duke Konstantin Nikolayevich of Russia",
+      "Alexander II of Russia"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Elizabeth Nikolaievna Romanova Grand Duchess of Russia",
+    "id": "6000000001783912735",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1826",
+     "1829"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Nikolai I Pavlovich Romanov, of all the Russias",
+       "Friederike Luise Charlotte Wilhelmine Фёдоровна of Prussia Empress consort of All the Russias"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Alexander Nikolayevich Romanov, Emperor of Russia",
+       "Maria Nikolaevna Romanova Duchess of Leuchtenberg",
+       "NN Romanova",
+       "Olga Nikolaievna Romanova Queen consort of Württemberg",
+       "Unnamed Daughter Romanova",
+       "Aleksandra Nikolaievna Romanova Landgräfin von Hessen-Kassel",
+       "Konstantin Nikolajewitsch Romanow Grand",
+       "NN Romanova Princess of Russia",
+       "6000000000632155382",
+       "Mikhail Nikolaevich Romanov of Russia Grand Duke of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000001783912735",
+    "qid": "Q5594505",
+    "our": "Elizabeth Nikolaievna Romanova Grand Duchess of Russia",
+    "cand": "Grand Duchess Elizabeth Nikolaevna of Russia"
+   },
+   {
+    "name": "NN Romanova Princess of Russia",
+    "id": "6000000009550011324",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1829",
+     "1829"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Nikolai I Pavlovich Romanov, of all the Russias",
+       "Friederike Luise Charlotte Wilhelmine Фёдоровна of Prussia Empress consort of All the Russias"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Alexander Nikolayevich Romanov, Emperor of Russia",
+       "Maria Nikolaevna Romanova Duchess of Leuchtenberg",
+       "NN Romanova",
+       "Olga Nikolaievna Romanova Queen consort of Württemberg",
+       "Unnamed Daughter Romanova",
+       "Aleksandra Nikolaievna Romanova Landgräfin von Hessen-Kassel",
+       "Elizabeth Nikolaievna Romanova Grand Duchess of Russia",
+       "Konstantin Nikolajewitsch Romanow Grand",
+       "6000000000632155382",
+       "Mikhail Nikolaevich Romanov of Russia Grand Duke of Russia"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000009550011324",
+    "qid": "Q5594505",
+    "our": "NN Romanova Princess of Russia",
+    "cand": "Grand Duchess Elizabeth Nikolaevna of Russia"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alexander Nikolayevich Romanov, Emperor of Russia",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alexander",
+   "duchess",
+   "duke",
+   "grand",
+   "konstantin",
+   "maria",
+   "nikolaevich",
+   "nikolaevna",
+   "nikolayevich",
+   "olga",
+   "russia"
+  ],
+  "our": "Elizabeth Nikolaievna Romanova Grand Duchess of Russia",
+  "cand": "Grand Duchess Elizabeth Nikolaevna of Russia"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000002188496746|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Lady Alice Kerr",
+   "id": "Q75250929",
+   "kind": "qid",
+   "sex": "F",
+   "life": [
+    "1836",
+    "1892"
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "John Kerr, 7th Marquess of Lothian",
+      "Cecil Kerr"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Lord Ralph Drury Kerr",
+      "Schomberg Kerr, 9th Marquess of Lothian",
+      "Lord Walter Kerr",
+      "William Kerr, 8th Marquess of Lothian"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Thomas Gaisford"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Walter Thomas Gaisford",
+      "Hugh Gaisford"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Cecil Elizabeth Kerr",
+    "id": "6000000002188496947",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "John William Robert Kerr",
+       "Cecil Kerr, Marchioness"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Schomberg Kerr",
+       "Maj.-Gen. Lord Ralph Drury Kerr",
+       "Adm. Lord Walter Kerr",
+       "William Kerr",
+       "John Montagu Hobart Kerr",
+       "Alice Gaisford (Kerr)"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000002188496947",
+    "qid": "Q75250929",
+    "our": "Cecil Elizabeth Kerr",
+    "cand": "Lady Alice Kerr"
+   },
+   {
+    "name": "Alice Gaisford (Kerr)",
+    "id": "6000000002188496955",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1836",
+     "1892"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "John William Robert Kerr",
+       "Cecil Kerr, Marchioness"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Schomberg Kerr",
+       "Maj.-Gen. Lord Ralph Drury Kerr",
+       "Adm. Lord Walter Kerr",
+       "William Kerr",
+       "John Montagu Hobart Kerr",
+       "Cecil Elizabeth Kerr"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Thomas Gaisford"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000002188496955",
+    "qid": "Q75250929",
+    "our": "Alice Gaisford (Kerr)",
+    "cand": "Lady Alice Kerr"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Schomberg Kerr",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "cecil",
+   "drury",
+   "gaisford",
+   "john",
+   "kerr",
+   "lord",
+   "ralph",
+   "schomberg",
+   "thomas",
+   "walter",
+   "william"
+  ],
+  "our": "Cecil Elizabeth Kerr",
+  "cand": "Lady Alice Kerr"
  }
 ]
