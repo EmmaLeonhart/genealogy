@@ -1079,14 +1079,17 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
     inside = {"Q11959067": "Arne Olaus Fjørtoft Garborg",
               "Q633094": "Johannes Bureus",
               "Q141180409": "Magdalena Andersdotter"}
+    # Cecilie Ebbesdatter `Q116150300` and her children Cecilie Jonsdatter `Q141189062`, Tøre
+    # Jonsen `Q141189110` and Lave `Q141189080` were outside on 2026-08-28 and are inside on
+    # 2026-10-02 by ordinary growth, every edge between the account's own items: a root
+    # `Q141493461` -> N. N. `Q141510070` -> Sune Sik `Q3736064` -> Karl Sverkersson `Q315055` ->
+    # Sverker II `Q365072` -> Benedicta Ebbesdotter of Hvide `Q2183430` -> Cecilie. The group grows
+    # with the contributions by design; the four below have no such path and still guard it.
+    inside["Q116150300"] = "Cecilie Ebbesdatter"
     outside = {"Q232803": "Empress Jingū",
                "Q12598947": "Buyeo Taebi",
-               "Q116150300": "Cecilie Ebbesdatter",
                "Q19657284": "Buyeo Deokjang",
-               "Q116150298": "Jon Jonsen",
-               "Q141189062": "Cecilie Jonsdatter",
-               "Q141189110": "Tøre Jonsen",
-               "Q141189080": "Lave"}
+               "Q116150298": "Jon Jonsen"}
     for qid, who in inside.items():
         assert qid in group, f"{qid} {who} must be in the contiguous group"
     for qid, who in outside.items():

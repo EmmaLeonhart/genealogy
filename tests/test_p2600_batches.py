@@ -68,6 +68,9 @@ SPENT_BATCHES = {
     # hold one (`Q141178381`, `Q141178380`) and both are in the ledger, so running it is what
     # minted them: it is spent by the same evidence that would otherwise flag it.
     "wikidata-jon-parents.qs": "the Jon Samuelsen Raustad parents, run 2026-08-25",
+    # Two hand batches Emma had run on 2026-10-01 (devlog), kept as the record of what went out.
+    "wikidata-split-surname-fixes.qs": "the split surnames, run 2026-10-01",
+    "wikidata-datteratter-fixes.qs": "the 15 datteratter label fixes, run 2026-10-01",
 }
 
 BATCHES = sorted(REPORTS.glob("*.qs"))
@@ -197,6 +200,8 @@ def test_no_statement_is_repeated(name):
     is a defect only where the subject is the same — an explicit QID across the file,
     or a line repeated inside one CREATE block.
     """
+    if name in SPENT_BATCHES:
+        pytest.skip(f"{name} is a record of a batch already run; {SPENT_BATCHES[name]}")
     path = REPORTS / name
     explicit, dupes = set(), []
     block, inside = set(), False

@@ -296,16 +296,15 @@ def test_every_created_item_carries_P2889(batch):
     assert len(ids) == creates, "an item was created that nobody can ever join"
 
 
-def test_a_married_form_leads_only_when_it_carries_the_given_name(batch):
-    """⛔ Reversed 2026-09-25: the married name leads for everybody -- but Kirstine's FamilySearch
-    married form is `Henrikson Guntersberg`, surnames alone, and a label without the given name
-    is the `Q141492819` `Talgje` defect. So she keeps the full birth form and Trond (whose
-    married form `Trond Benkestok` carries his name) leads with it, as before.
-    """
+def test_the_birth_name_is_the_label_and_the_married_form_an_alias(batch):
+    """⛔ Emma, 2026-10-01: the birth name is the label for everyone and the married name an
+    alias (`CLAUDE.md` § *THE BIRTH NAME IS THE LABEL, FOR EVERYONE*), superseding the
+    2026-09-25 married-name rule this test used to pin. Kirstine's married form
+    `Henrikson Guntersberg` and Trond's `Trond Benkestok` are both aliases."""
     assert 'LAST\tLmul\t"Kirstine Trondsdatter Benkestok"' in batch
     assert 'LAST\tAmul\t"Henrikson Guntersberg"' in batch
-    assert 'LAST\tLmul\t"Trond Benkestok"' in batch
-    assert 'LAST\tAmul\t"Trond Torleivsson"' in batch
+    assert 'LAST\tLmul\t"Trond Torleivsson"' in batch
+    assert 'LAST\tAmul\t"Trond Benkestok"' in batch
 
 
 def test_the_description_is_the_life_description_with_the_gedcom_qualifier_written_out(batch):

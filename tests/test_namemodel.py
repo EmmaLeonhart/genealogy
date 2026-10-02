@@ -202,12 +202,15 @@ def test_a_token_the_plan_has_never_seen_is_a_note_not_a_guess():
     assert any("Zzzz" in n for n in notes)
 
 
-def test_the_same_spelling_in_two_usages_needs_two_items():
+def test_the_same_spelling_in_two_usages_needs_two_items(monkeypatch):
     """`CLAUDE.md` § One name item per USAGE — the lookup key is (token, usage).
 
     `Eivindsen` has a Wikidata item as a *given* name and needs a separate one as a
-    *patronymic*. A lookup keyed on the token alone would link the wrong object.
+    *patronymic*. A lookup keyed on the token alone would link the wrong object. No created
+    items here: since 2026-10-02 a patronymic outside the plan resolves to our own created item
+    (`created_name_item`), which the repo's file has for `Eivindsen`.
     """
+    monkeypatch.setattr(namemodel, "_CREATED_INDEX", {})
     plan = {("Eivindsen", "given"): ("Q111", "link"),
             ("Garborg", "family"): ("Q30250555", "link")}
     lines, notes = statements_for("Ola Eivindsen Garborg", plan, "1")
@@ -1772,8 +1775,9 @@ def test_a_latin_patronymic_outside_the_plan_links_our_created_item(monkeypatch)
     lines, notes = statements_for("Olaus Jonæ Albogius", plan, "6000000006590213904",
                                   "Q141538446", fields=fields, sex="M",
                                   father_name="Jon Olofsson", father_given="Jon")
-    assert (PATRONYM, "Q141242306", [("P144", "Q141538446")]) in lines
-    assert (PATRONYM, "Q141319008", [("P144", "Q141538446")]) in lines
+    # Two patronymics, so each carries its culture (the Spak model, 2026-10-02).
+    assert (PATRONYM, "Q141242306", [("P144", "Q141538446"), ("P3831", "Q141584760")]) in lines
+    assert (PATRONYM, "Q141319008", [("P144", "Q141538446"), ("P3831", "Q141584748")]) in lines
     assert namemodel.created_name_item("Olof", "given") == "Q999"
     lines, _ = statements_for("Olof Jonsson", plan, "1", None,
                               fields={"givn": "Olof", "surn": "", "nick": "", "marnm": ""})

@@ -231,6 +231,10 @@ def test_no_person_is_labelled_by_a_relationship_phrase_in_english():
     label = re.compile(rf'^(?:LAST|Q[1-9][0-9]*)	Len(?:-us)?	"(?:[^",]{{1,120}}, )?(?:{RELATION_WORD}) of ')
     offenders = []
     for path in sorted({p for pattern in BATCHES for p in REPO.glob(pattern)}):
+        # Records of hand batches already run (2026-08-29, 2026-10-01); what they wrote live is corrected
+        # through `label-applications.tsv`, not by rewriting the record.
+        if path.name in ("wikidata-datteratter-fixes.qs", "wikidata-q141198548-nn.qs"):
+            continue
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if label.match(line):
                 offenders.append(f"{path.name}:{n} {line[:80]}")
@@ -256,17 +260,25 @@ def test_the_nn_label_refuses_a_name_field_that_names_a_relative():
 
 def test_the_relational_labels_of_batch_30b61a451_are_corrected():
     """The 21 items that batch created with a relationship phrase as their `en` label (or `mul`)
-    get their `mul` value back in `en` and `en-us` through `label-applications.tsv`."""
+    get their `mul` value back in `en` and `en-us` through `label-applications.tsv`. A row is
+    retired once Wikidata holds it (2026-09-27, `retire_applied_labels`), so each label is either
+    a pending row or already live in `garborg-live-labels.tsv`."""
     rows = [line.split("\t") for line in
             (REPO / "reports" / "label-applications.tsv").read_text(encoding="utf-8").splitlines()]
     fixed = {(r[0], r[2]): r[3] for r in rows if len(r) > 3 and r[1] == "L"}
+    live = {}
+    live_path = REPO / "reports" / "garborg-live-labels.tsv"
+    if live_path.exists():
+        for line in live_path.read_text(encoding="utf-8").splitlines()[1:]:
+            q, lang, value = (line.split("\t") + ["", ""])[:3]
+            live[(q, lang)] = value
     for qid in ("Q141612054", "Q141612062", "Q141612168", "Q141612504"):
         # `Q141612062` was created with no `en-us`, so it gets none.
         for lang in ("en",) if qid == "Q141612062" else ("en", "en-us"):
-            value = fixed.get((qid, lang), "")
+            value = fixed.get((qid, lang)) or live.get((qid, lang), "")
             assert value.startswith("NN") and " of " not in value, (qid, lang, value)
-    assert fixed[("Q141612062", "mul")] == "NN"
-    assert fixed[("Q141612168", "mul")] == "NN"
+    for qid in ("Q141612062", "Q141612168"):
+        assert (fixed.get((qid, "mul")) or live.get((qid, "mul"))) == "NN", qid
     offenders = []
     for pattern in ("scripts/*.py", "src/genimerge/*.py", ".github/workflows/*.yml"):
         for path in sorted(REPO.glob(pattern)):
