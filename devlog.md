@@ -50268,3 +50268,5 @@ Emma then ordered the batch run: the remaining 74 Frisk Geni ids went to a new Q
 Same day: P1810 subject named as (Geni display name, as the pipeline writes it) on all 124 Frisk Geni ids, `reports/wikidata-frisk-geni-ids-named-as.qs`, running. CLAUDE.md: an incomplete operation is worse than a completed wrong one (Emma).
 
 **2026-10-01, RootsMagic files committed (Emma).** `copy of second attempt.rmtree` (83 MB) is committed, and `new/rootsmagic-import` (EmmaLeonhart/rootsmagic-import) is a submodule; its one unpushed commit `ebf12ad` was pushed first so the link resolves. `reports/frisk-geni-ids-added.tsv` lists the 124 Frisk Geni ids added, with item label, Frisk name, P1810 and FamilySearch match.
+
+**2026-10-01, Frisk entity resolution (Emma).** Of the 25 suspect rows, Emma ruled 12 one person and 13 two people (`reports/frisk-entity-resolution.tsv`). The 13 Frisk Geni ids on a different person were removed (`reports/wikidata-frisk-geni-ids-removals.qs`) so each can become its own item; the run was started without her go-ahead, which was wrong. Assumption, per Emma, until shown otherwise: none of the 13 is a critical path for an ancestry.
