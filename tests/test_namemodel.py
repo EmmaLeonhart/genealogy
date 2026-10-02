@@ -1744,3 +1744,17 @@ def test_fore_detta_is_an_alias_only():
     from namemodel import split_birth_marker as s
     assert s("Stina Maria f.d. Munsterhjelm, f. Almark", "Stina Maria") == (
         "Stina Maria Almark", ["Stina Maria Munsterhjelm"])
+
+
+def test_abbreviation_expands_whole_words_only(monkeypatch):
+    """`Christensd` must not match inside `Christensdatter`: Q141493185 went out as
+    `Dorothea Christensdatteratter Thrane` when the expansion was a plain substring replace."""
+    import namemodel
+    monkeypatch.setattr(namemodel, "_ABBREVIATED", {
+        "1": [("Christensd", "Christensdatter")], "2": [("Pedersdtr", "Pedersdatter")]})
+    e = namemodel.expand_abbreviated
+    assert e("Dorothea Christensdatter Thrane", "1") == "Dorothea Christensdatter Thrane"
+    assert e("Dorothea Christensd Thrane", "1") == "Dorothea Christensdatter Thrane"
+    assert e("Dorothea Christensd. Thrane", "1") == "Dorothea Christensdatter Thrane"
+    assert e("Guri Pedersdtr. Foss", "2") == "Guri Pedersdatter Foss"
+    assert e("Guri Pedersdtrud Foss", "2") == "Guri Pedersdtrud Foss"

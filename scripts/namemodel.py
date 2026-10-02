@@ -1896,12 +1896,14 @@ def expand_abbreviated(text: str, geni_id: str) -> str:
                 for row in csv.DictReader(fh):
                     _ABBREVIATED.setdefault(row["geni_id"], []).append(
                         (row["token"].rstrip("."), row["expansion"]))
+    # ⛔ **THE TOKEN IS A WHOLE WORD, NEVER A SUBSTRING.** A plain `str.replace` found the census
+    # token `Christensd` inside the already-written `Christensdatter` of the same person and
+    # left `Christensdatteratter` (`Q141493185`, 2026-09-27). No letter either side, trailing
+    # period optional -- the same pattern `expand-gedcom-abbreviations.py` has always used.
     out = text or ""
     for token, expansion in _ABBREVIATED.get(geni_id, ()):
-        for form in (token + ".", token):
-            if form in out:
-                out = out.replace(form, expansion)
-                break
+        pat = re.compile(r"(?<![^\W\d_])" + re.escape(token) + r"\.?(?![^\W\d_])")
+        out = pat.sub(lambda _m: expansion, out)
     return " ".join(out.split())
 
 

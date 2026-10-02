@@ -50226,3 +50226,16 @@ Created `Q141620184` Samuelis and `Q141620190` Andreae (patronymic); all five it
 `P5056` and no longer hold the wrong `P735`, checked live. Queue item done.
 
 **2026-10-01, error reports documented.** CLAUDE.md § Working now says what an error report is and how one is handled (read the item and its history, fix it, fix or date the cause, sweep for the rest, devlog, ask only for a real choice or a go-ahead). No separate doc: it fits in the rule. Queue item done.
+
+**2026-10-01, error report Q141493185 "Christensdatteratter".** Cause: `namemodel.expand_abbreviated`
+replaced the census token as a substring, so a person with both `Christensd` (one Geni name
+variant) and `Christensdatter` had the short form found inside the long one: `Christensd` +
+`atter`. The GEDCOM rewriter (`expand-gedcom-abbreviations.py`) always matched whole words; the
+label/field expander did not. Fixed to the same whole-word pattern, with a test
+(`test_abbreviation_expands_whole_words_only`). Emma's hand fix on Q141493185 is now in
+`corrected-label-slots.tsv` (en, mul). `insource:/[ao]tter[ao]tter/` finds 15 more items, all
+ours: 14 people with `mul`/`en` labels like `Cesilie Jacobsdatteratter Jørstad`, and the NN
+mother `Q141533639`, whose relational labels in 11 languages name `Mette Børgesdatteratter`. None
+in aliases or descriptions; no `-dotterotter`, `-sdatterdatter` or `-datterter` anywhere. The
+current batches and `derived-labels.csv` carry none. `reports/wikidata-datteratter-fixes.qs` (39
+label edits) corrects the 15 and waits on Emma's go-ahead.
