@@ -894,6 +894,15 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 #: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
 MANUAL_P2600_PER_RUN = 150
 
+#: How many existing items a run gives their own `P2889` *FamilySearch person ID*. Emma,
+#: 2026-10-01: the FamilySearch ids are pipeline output; the 706 lines of the hand batch that
+#: never ran (de Flon `Q141583911` among them) reach Wikidata this way. Paced like the line above.
+FS_ID_BACKFILL_PER_RUN = 150
+
+#: The `P2889` values removed on Emma's order, 2026-10-01 (the name did not match the
+#: FamilySearch person). The backfill never sends one again.
+FS_ID_REMOVALS = ROOT / "reports" / "wikidata-p2889-removals.qs"
+
 
 def _jan1_pairs():
     """`{geni_id: qid}` from `build-qid-links-gedcom.PAIRS` -- the pairs that become entry
@@ -2038,6 +2047,27 @@ def add_fs_id_statements(lines, our_items, live_values):
             out.append(f"#   {q}: its FamilySearch person ID as a statement, not only a reference")
             out.append(f'{q}\tP2889\t"{fs}"')
             added += 1
+    # Backfill: an existing item whose claims we hold (so "no P2889" is known, not guessed) and
+    # that has none gets its own id, at most FS_ID_BACKFILL_PER_RUN a run. A value removed on
+    # Emma's order is never sent again.
+    removed = set()
+    if FS_ID_REMOVALS.exists():
+        for rl in FS_ID_REMOVALS.read_text(encoding="utf-8").splitlines():
+            rp = rl.split("\t")
+            if len(rp) == 3 and rp[0].startswith("-Q") and rp[1] == "P2889":
+                removed.add(rp[2].strip('"'))
+    known = {q for q, _p, _v in live_values if re.fullmatch(r"Q\d+", q)}
+    backfill = []
+    for q in sorted(known - cited - stated, key=lambda x: int(x[1:])):
+        fs = _FS_IDS.get(qid_to_geni.get(q, ""))
+        if fs and fs not in removed:
+            backfill.append((q, fs))
+    if backfill:
+        out.append(f"#   FamilySearch person ID backfill: {min(len(backfill), FS_ID_BACKFILL_PER_RUN)}"
+                   f" of {len(backfill)} existing items with none")
+    for q, fs in backfill[:FS_ID_BACKFILL_PER_RUN]:
+        out.append(f'{q}\tP2889\t"{fs}"')
+        added += 1
     if added:
         print(f"FamilySearch ids: {added} P2889 statement(s) added where we cite FamilySearch")
     return out
