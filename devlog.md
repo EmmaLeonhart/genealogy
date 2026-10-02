@@ -50242,3 +50242,4 @@ label edits) corrects the 15 and waits on Emma's go-ahead.
 Run with Emma's go-ahead (AskUserQuestion, "Run all 39") in a new QuickStatements tab; all 39 labels on the 15 items now read `-datter`, checked live. Queue item done.
 
 **2026-10-01, queue.** Emma asked for an item at the top: every Geni and FamilySearch id on Wikidata, and the unmerged maternal-side duplicates that should carry several Geni ids. Prepended.
+Reworded the same day at Emma's correction: the multiple-Geni-id part is the Cameron Frisk ancestors only, essentially one export, not a general problem.
