@@ -116,6 +116,9 @@ FS_PROP = "P2889"
 
 ZIPPER_PAIRS = ROOT / "reports" / "familysearch-zipper-pairs.tsv"
 P2600_ALL = ROOT / "out" / "wikidata" / "p2600-all.tsv"
+#: The Geni-to-item correspondence union (`P2600` roster, structural, zipper), the same file
+#: `build-garborg-day.py` links a creation's relatives through (`_known_qid`, 2026-09-28).
+CORRESPONDENCE = ROOT / "reports" / "synoptic-correspondence.tsv"
 
 #: ⛔ **A person the zipper put on a Geni profile that ALREADY HAS AN ITEM is not created.**
 #: Decided when asked, 2026-09-24: *"Skip them; add P2889 instead"*. The intentional-duplicates
@@ -488,12 +491,17 @@ def read_ring():
     return {g[2:] for g in ids if isinstance(g, str) and g.startswith("FS")}
 
 
-def read_zipped_items(G):
-    """`fs_id -> qid` for every zipper pair whose Geni profile has an item.
+def read_geni_qids(G):
+    """`geni_id -> qid` for every Geni profile Wikidata has an item for, the way the day builder
+    links a creation's relatives: the live `P2600` roster, then the correspondence union
+    (`synoptic-correspondence.tsv`: structural and zipper pairs too), then
+    `build-garborg-day.ledger()` -- our ledger, the hand identifications and the judgments --
+    which wins. A Geni id that two items both claim is left out: that is Wikidata's duplicate,
+    and choosing one is not ours to do.
 
-    The Geni side is `build-garborg-day.ledger()` -- our ledger, the hand identifications and
-    the judgments -- over `p2600-all.tsv`, the live `P2600` roster. A Geni id that two items
-    both claim is left out: that is Wikidata's duplicate, and choosing one is not ours to do.
+    The correspondence joined on 2026-10-02: the ancestor ring walks THROUGH people it holds,
+    so a ring person's child was often known there and nowhere the builder read, and 235 of the
+    ring's 1,091 FamilySearch people were carried for "no relationship" on the dry run.
     """
     geni_q, twice = {}, set()
     if P2600_ALL.exists():
@@ -507,7 +515,20 @@ def read_zipped_items(G):
                 geni_q[g] = q
     for g in twice:
         geni_q.pop(g, None)
+    if CORRESPONDENCE.exists():
+        with open(CORRESPONDENCE, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                if g and q.startswith("Q") and g not in twice:
+                    geni_q.setdefault(g, q)
     geni_q.update(G.ledger())
+    return geni_q
+
+
+def read_zipped_items(G, geni_q=None):
+    """`fs_id -> qid` for every zipper pair whose Geni profile has an item (`read_geni_qids`)."""
+    if geni_q is None:
+        geni_q = read_geni_qids(G)
     out = {}
     if ZIPPER_PAIRS.exists():
         with open(ZIPPER_PAIRS, encoding="utf-8") as fh:
@@ -515,6 +536,20 @@ def read_zipped_items(G):
                 fs, g = (row.get("fs_id") or "").strip(), (row.get("geni_id") or "").strip()
                 if fs and geni_q.get(g):
                     out[fs] = geni_q[g]
+    return out
+
+
+def geni_keyed(people):
+    """`fs_id -> geni_id` for every FamilySearch person a render wrote on a Geni profile id
+    (`0 @I6000…@ INDI` rather than `@IFS…@`): the bridge, a zipper pair or one of Emma's SAME
+    verdicts identified them, and the tree holds them as that Geni person. The day batch
+    creates such a person with `P2600` and `P2889` both; creating them here as well would be a
+    duplicate of our own making (Emma, 2026-09-24: *"Skip them; add P2889 instead"*)."""
+    out = {}
+    for rec in people.values():
+        xref = rec["xref"].rpartition(":")[2]
+        if rec["fs_id"] and re.fullmatch(r"I\d+", xref):
+            out.setdefault(rec["fs_id"], xref[1:])
     return out
 
 
@@ -530,7 +565,13 @@ def build(args):
 
     people, father, mother, spouses, children = read_corpus(paths)
     bridge, universe = read_bridge(), read_universe()
-    zipped = {fs: q for fs, q in read_zipped_items(G).items() if fs not in bridge}
+    geni_q = read_geni_qids(G)
+    on_geni = geni_keyed(people)
+    zipped = {fs: q for fs, q in read_zipped_items(G, geni_q).items() if fs not in bridge}
+    # A render-keyed person whose Geni profile has an item is a zipped person too; one whose
+    # profile has none is the day batch's to create (carried below, never made twice).
+    zipped.update({fs: geni_q[g] for fs, g in on_geni.items()
+                   if fs not in bridge and fs not in zipped and geni_q.get(g)})
 
     # `fs_id` is the primary key on this side, the way the Geni profile id is on the other.
     # Two exports of overlapping trees hold the same person twice and the first record wins,
@@ -594,6 +635,10 @@ def build(args):
         if fs in bridge:
             carried.append((fs, "", f"already on Wikidata as {bridge[fs]}: takes "
                                     f"statements, not a creation"))
+            continue
+        if fs in on_geni:
+            carried.append((fs, "", f"paired to Geni profile {on_geni[fs]} (the render keys "
+                                    f"them on it): the day batch creates them, with P2889"))
             continue
         if CREATIONS_PAUSED:
             carried.append((fs, "", "paused: FamilySearch creations wait on the zipper merge "

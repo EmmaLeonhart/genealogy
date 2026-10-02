@@ -491,3 +491,46 @@ def test_ring_people_come_first_and_are_marked(builder, tmp_path, monkeypatch):
     # No ring file: nobody is on the ring, and nothing else changes.
     builder.RING.unlink()
     assert builder.read_ring() == set()
+
+
+def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_person_is_not_made(
+        builder, tmp_path, monkeypatch):
+    """Two causes of "no relationship could be emitted" on the ring's FamilySearch people,
+    measured 2026-10-02 (235 and 78 of 372): (1) the child's item was known to the synoptic
+    correspondence, which the ancestor ring walks through and the day builder links through
+    (`_known_qid`), but this builder read only the `P2600` roster and the ledger; (2) a person
+    the render writes on a Geni profile id (bridge, zipper pair or SAME verdict) is that Geni
+    person in the tree: the day batch creates them with `P2600` and `P2889`, so this file
+    carries them, never a second item (Emma, 2026-09-24: skip them, add P2889 instead)."""
+    import argparse
+    ged = BATCH_GED.replace("0 @IFS6@ INDI", "0 @I6000000000000000009@ INDI")
+    src = tmp_path / "sample.ged"
+    src.write_text(ged, encoding="utf-8")
+    monkeypatch.setattr(builder, "OUT", tmp_path / "out.txt")
+    monkeypatch.setattr(builder, "CARRY", tmp_path / "carry.tsv")
+    monkeypatch.setattr(builder, "BRIDGE", tmp_path / "bridge.tsv")
+    monkeypatch.setattr(builder, "UNIVERSE", tmp_path / "universe.json")
+    monkeypatch.setattr(builder, "RING", tmp_path / "ring.json")
+    monkeypatch.setattr(builder, "P2600_ALL", tmp_path / "p2600-all.tsv")
+    monkeypatch.setattr(builder, "ZIPPER_PAIRS", tmp_path / "pairs.tsv")
+    monkeypatch.setattr(builder, "CORRESPONDENCE", tmp_path / "correspondence.tsv")
+    monkeypatch.setattr(builder, "CREATIONS_PAUSED", False)
+    # Only Henrik (EEEE-555) is bridged; Torleiv (FFFF-666) is now keyed on a Geni profile that
+    # the correspondence, and nothing else, identifies with Q66666666.
+    builder.BRIDGE.write_text("fs_id\tqid\tgeni_id\nEEEE-555\tQ88888888\t\n", encoding="utf-8")
+    builder.CORRESPONDENCE.write_text(
+        "qid\tgeni_id\tsources\nQ66666666\t6000000000000000009\tstructural;zipper\n",
+        encoding="utf-8")
+    builder.UNIVERSE.write_text('{"universe": ["Q88888888", "Q66666666"], "one_step": []}',
+                                encoding="utf-8")
+    monkeypatch.setattr(builder.garborg(), "ledger", lambda: {})
+    assert builder.geni_keyed(builder.read_corpus([src])[0]) == {"FFFF-666": "6000000000000000009"}
+    builder.build(argparse.Namespace(gedcom=[str(src)], limit=0))
+    text = builder.OUT.read_text(encoding="utf-8")
+    carry = builder.CARRY.read_text(encoding="utf-8")
+    # Trond (BBBB-222), Torleiv's son, is created and linked to Q66666666 both ways.
+    assert 'LAST\tP2889\t"BBBB-222"' in text
+    assert "LAST\tP22\tQ66666666" in text and "Q66666666\tP40\tLAST" in text
+    # Torleiv is not created a second time: he is carried as the day batch's person.
+    assert '"FFFF-666"' not in text
+    assert "FFFF-666\t\tpaired to Geni profile 6000000000000000009" in carry
