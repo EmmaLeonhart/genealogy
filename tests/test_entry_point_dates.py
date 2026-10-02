@@ -46,3 +46,11 @@ def test_the_three_new_entry_points_are_listed():
     for qid in ("Q701641", "Q144348", "Q185152"):
         assert qid in rows
         assert rows[qid]["active_from"] == "2026-09-01"
+
+
+def test_sunjong_is_an_entry_point_from_now():
+    """Emma, 2026-09-30: `Q334111` Sunjong of the Korean Empire, starting now like the three above."""
+    with (ROOT / "reports" / "entry-points.tsv").open(encoding="utf-8") as fh:
+        rows = {row["qid"]: row for row in csv.DictReader(fh, delimiter="	")}
+    assert rows["Q334111"]["active_from"] == "2026-09-01"
+    assert rows["Q334111"]["geni_id"] == "6000000028714712399"
