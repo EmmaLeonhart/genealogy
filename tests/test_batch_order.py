@@ -113,3 +113,47 @@ def test_ten_familysearch_people_lead_the_batch():
     again = split.order_file(out, first_people=2, ring_ids={"300", "500"}, seed="2026-09-27",
                              familysearch=fs)
     assert again == out
+
+
+def test_familysearch_ring_people_join_the_ring():
+    # Emma, 2026-09-27 (AskUserQuestion): the ring's FamilySearch-only people are created with
+    # P2889 and go in THE RING, all of them; the ten-person test is the FamilySearch people who
+    # are not on the ring. The tree keys a FamilySearch-only person as FS + the id without its dash.
+    def fs(k, fsid):
+        return ["CREATE", f'LAST\tLmul\t"FS {k}"', "LAST\tP31\tQ5", f'LAST\tP2889\t"{fsid}"',
+                'LAST\tP40\tQ10\tS2889\t"' + fsid + '"', 'Q10\tP22\tLAST\tS2889\t"' + fsid + '"']
+    ring_fs = [fs("ring a", "AAAA-111"), fs("ring b", "BBBB-222")]
+    test_fs = [fs(k, f"CD{k:02d}-XYZ") for k in range(12)]
+    ring_ids = {"300", "500", "FSAAAA111", "FSBBBB222"}
+    assert split.ring_geni_ids(ring_fs[0]) == {"FSAAAA111"}
+    out = split.order_file(BATCH, first_people=2, ring_ids=ring_ids, seed="2026-09-27",
+                           familysearch=test_fs, familysearch_ring=ring_fs)
+    heads = [l for l in out.splitlines() if l.startswith(split.HEADER)]
+    assert heads[0].startswith("# ▶ FAMILYSEARCH: 10 people")
+    assert heads[1].startswith("# ▶ THE RING: all 4 ancestor-ring people")
+    ring_section = out.split("# ▶ THE RING")[1].split("# ▶ NAME ITEMS")[0]
+    for name in ("FS ring a", "FS ring b", "Ring One", "Ring Two"):
+        assert f'"{name}"' in ring_section
+    assert 'Q10\tP22\tLAST' in ring_section            # the child's link back travels with them
+    assert sum(1 for k in range(12) if f'"FS {k}"' in out) == 10
+    # Idempotent on its own output: the FamilySearch ring people are now in the file, so a second
+    # pass recognises them as ring people and copies nothing in twice.
+    again = split.order_file(out, first_people=2, ring_ids=ring_ids, seed="2026-09-27",
+                             familysearch=test_fs, familysearch_ring=ring_fs)
+    assert again == out
+    assert out.count('"AAAA-111"') == 3                 # P2889, the P40 source, the P22 source
+
+
+def test_the_last_ring_person_may_be_a_familysearch_person():
+    # ring-watch.yml waits for the LAST ring creation; a FamilySearch one is reported as
+    # `fs:<id>` so the watcher searches P2889 instead of P2600.
+    spec = importlib.util.spec_from_file_location("qs_loop_status",
+                                                  REPO / "scripts" / "qs-loop-status.py")
+    status = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(status)
+    text = "\n".join(["# ▶ THE RING: all 2 ancestor-ring people, shuffled", "CREATE",
+                      'LAST\tP2600\t"300"', "CREATE", 'LAST\tP2889\t"AAAA-111"',
+                      "# ▶ NAME ITEMS: 0", "CREATE", 'LAST\tP2600\t"999"'])
+    assert status.last_ring_geni(text) == "fs:AAAA-111"
+    geni_last = text.replace('LAST\tP2889\t"AAAA-111"', 'LAST\tP2600\t"500"')
+    assert status.last_ring_geni(geni_last) == "500"

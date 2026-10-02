@@ -3537,7 +3537,7 @@ def label_in(label, table):
                 b = item["zh"]
             if item.get("ko") and _is_hangul(item["ko"]):
                 c = item["ko"]
-        if a is None or c is None:
+        if a is None or b is None or c is None:
             # **THE FUNNEL, at the call rather than only in the pipeline.** Ruled 2026-08-29:
             # anything that would otherwise generate without katakana or Chinese characters goes
             # through the funnel, which adds the token to the library and then continues.
@@ -3552,8 +3552,17 @@ def label_in(label, table):
             # A rendered token is cached in `table` for the rest of the run and collected in
             # `MINTED_TOKENS`, which `main` appends to the shared file at the end. Writing
             # per-token would interleave writes into a file other scripts read.
-            a, b, c = _render_token(clean)
-            if a is None or c is None:
+            #
+            # **All three readings, or none.** The gate tested `ja` and `ko` only, so a name item
+            # with a katakana `ja`, a Hangul `ko` and no Han `zh` (`Benoit`, whose item's `zh` is
+            # `贝诺瓦 (名字)`; `Uthman`, whose item has none) passed it with `zh` still `None`
+            # and crashed the join below (found 2026-10-02 running the FamilySearch builder with
+            # its pause off; 4 of 66,799 names). The funnel fills only the readings that are
+            # missing, so the item's own readings still win where it has them.
+            ra, rb, rc = _render_token(clean)
+            a, b, c = (a if a is not None else ra, b if b is not None else rb,
+                       c if c is not None else rc)
+            if a is None or b is None or c is None:
                 return None, None, None
             table[clean] = (a, b, c)
             MINTED_TOKENS[clean] = (a, b, c)

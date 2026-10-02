@@ -56,9 +56,21 @@ component to Wikidata instead of leaving 2,975 items floating.
   parses to nothing, which is the safe direction: a date we cannot read never becomes a date we
   guessed.
 
-**Nothing here is folded into the daily batch.** Its own output, so the duplicates it creates
+**Nothing here is sent by the unattended run.** Its own output, so the duplicates it creates
 are reviewable and mergeable as a set rather than mixed into edits that are meant to be unique.
 `wikidata-edits.yml` sends `reports/wikidata-garborg-day-auto.txt` and this file is not it.
+`split-daily-batch.py --order` copies two groups from it into the files a person runs: ten
+people as a test (2026-09-27), and every person on the priority ancestor ring (below).
+
+⛔ **THE ANCESTOR RING'S FAMILYSEARCH-ONLY PEOPLE ARE CREATED HERE, WITH `P2889`. Emma,
+2026-09-27 (AskUserQuestion).** Measured that day: 386 of the 703 people on the ring's boundary
+were FamilySearch-only (`FS…` ids in the tree, no Geni profile), and the day batch created none
+of them, so every line of ancestry through one stopped there for good. They are created the way
+Geni ring people carry `P2600`: `P2889` cited to FamilySearch, with the `P40` to their child on
+Wikidata and the child's `P22`/`P25` back. `out/wikidata/priority-ring.json` names them; they go
+FIRST in this file, so `--limit` never cuts them, and the order pass puts them in THE RING
+section of the day batch, where the browser loop and `ring-watch.yml` see them. The pause below
+holds them like everyone else until Emma lifts it.
 
 Writes:
 
@@ -93,6 +105,9 @@ import namemodel                                                        # noqa: 
 CORPUS = ROOT / "exports" / "familysearch"
 BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
 UNIVERSE = ROOT / "out" / "wikidata" / "edit-universe.json"
+#: The priority ancestor ring, written by `build-garborg-day.py --compose`: Geni ids, and
+#: `FS` + the FamilySearch id without its dash for a FamilySearch-only person.
+RING = ROOT / "out" / "wikidata" / "priority-ring.json"
 OUT = ROOT / "reports" / "wikidata-familysearch-day.txt"
 CARRY = ROOT / "reports" / "familysearch-carry-forward.tsv"
 
@@ -464,6 +479,15 @@ def read_universe():
     return set(data.get("universe") or ()) | set(data.get("one_step") or ())
 
 
+def read_ring():
+    """The FamilySearch ids on the priority ancestor ring, without their dash (`FS2WJ9KZK` is
+    how the tree keys FamilySearch `2WJ9-KZK`). Empty when the ring file is absent."""
+    if not RING.exists():
+        return set()
+    ids = json.loads(RING.read_text(encoding="utf-8"))
+    return {g[2:] for g in ids if isinstance(g, str) and g.startswith("FS")}
+
+
 def read_zipped_items(G):
     """`fs_id -> qid` for every zipper pair whose Geni profile has an item.
 
@@ -518,13 +542,21 @@ def build(args):
         if fs and fs not in by_fs:
             by_fs[fs] = rec
             order.append(fs)
+    # The ancestor ring's people first (Emma, 2026-09-27): a stable sort, so the ring keeps the
+    # file order among itself and `--limit` cuts the tail, never the ring.
+    ring = read_ring()
+
+    def on_ring(fs):
+        return fs.replace("-", "") in ring
+    order.sort(key=lambda fs: not on_ring(fs))
+    ring_here = sum(1 for fs in order if on_ring(fs))
     # A zipped person's item is as good a link target as a bridged one: their relatives are
     # created pointing at it rather than floating.
     qid_of_key = {key: bridge.get(rec["fs_id"]) or zipped[rec["fs_id"]]
                   for key, rec in people.items()
                   if bridge.get(rec["fs_id"]) or zipped.get(rec["fs_id"])}
 
-    lines, carried, created = [], [], 0
+    lines, carried, created, ring_created = [], [], 0, 0
     lines += [
         "# ========================================================================",
         "# FAMILYSEARCH. A SEPARATE FILE, AND THE DUPLICATES ARE THE DESIGN.",
@@ -565,7 +597,8 @@ def build(args):
             continue
         if CREATIONS_PAUSED:
             carried.append((fs, "", "paused: FamilySearch creations wait on the zipper merge "
-                                    "(Emma, 2026-09-30)"))
+                                    "(Emma, 2026-09-30)"
+                                    + ("; on the ancestor ring" if on_ring(fs) else "")))
             continue
         primary, aliases = name_plan(rec)
         if not primary:
@@ -644,13 +677,19 @@ def build(args):
             if q and q in universe:
                 block.append(f"LAST\tP26\t{q}{ref}")
                 back.append((q, "P26"))
+        kids = []
         for kid in sorted(children.get(key, ())):
             q = qid_of_key.get(kid)
             if q and q in universe:
                 block.append(f"LAST\tP40\t{q}{ref}")
                 back.append((q, "P22" if rec["sex"] == "M" else "P25"))
+                kids.append(q)
         for subject, prop in back:
             block.append(f"{subject}\t{prop}\tLAST{ref}")
+        if on_ring(fs):
+            # The order pass keys the ring on this `P2889`; the comment is for the FamilySearch
+            # page, where a person looks the batch over.
+            block.insert(0, "# ancestor ring: parent of " + (", ".join(kids) or "nobody on Wikidata"))
 
         # ⛔ **A CREATION WITH NO RELATIONSHIP IS NOT SHIPPED. IT IS CARRIED.** The rule is from
         # 2026-08-29 and `build-garborg-day.compose` has obeyed it since: a bare `instance of
@@ -675,6 +714,7 @@ def build(args):
         lines += block
         lines.append("")
         created += 1
+        ring_created += on_ring(fs)
         if args.limit and created >= args.limit:
             break
 
@@ -703,6 +743,8 @@ def build(args):
     reasons = collections.Counter(r.split(":")[0] for _f, _l, r in carried)
     print(f"  {len(by_fs):,} distinct FamilySearch people over {len(paths)} file(s)")
     print(f"  {created:,} CREATE blocks")
+    print(f"  {ring_here:,} people on the priority ancestor ring in this corpus "
+          f"({len(ring):,} on the ring), {ring_created:,} created, first in the file")
     print(f"  {len(zipped):,} zipper pairs already on an item; {added:,} take {FS_PROP} this run "
           f"(cap {P2889_ADD_CAP}, universe-gated)")
     print(f"  {collided:,} descriptions collided and took their FamilySearch id")

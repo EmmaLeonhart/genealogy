@@ -237,7 +237,9 @@ def load_ring_ids():
 
 
 def ring_geni_ids(u):
-    """The `P2600` values a unit's creations carry, so a ring person can be recognised."""
+    """The ids a unit's creations carry, in the ring file's spelling: the `P2600` value for a
+    Geni person, `FS` + the `P2889` value without its dash for a FamilySearch-only person (the
+    way the tree keys them, so a FamilySearch ring creation is recognised too; Emma 2026-09-27)."""
     out = set()
     for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
         # Only the CREATED item's own `P2600`: since 2026-09-27 a person's block is followed by
@@ -246,7 +248,7 @@ def ring_geni_ids(u):
         if e.get("kind") != "create":
             continue
         for c in e.get("claims") or ():
-            if c.get("property") == "P2600":
+            if c.get("property") in ("P2600", "P2889"):
                 # ⛔ **`qs_v1` HANDS BACK A DICT, NOT A STRING.** A `P2600` claim parses to
                 # `{'type': 'string', 'value': '6000000...'}`, and the first version of this
                 # tested `isinstance(v, str)` -- so it matched nothing and the run reported
@@ -256,7 +258,8 @@ def ring_geni_ids(u):
                 if isinstance(v, dict):
                     v = v.get("value")
                 if isinstance(v, str):
-                    out.add(v.strip('"'))
+                    v = v.strip('"')
+                    out.add(v if c["property"] == "P2600" else "FS" + v.replace("-", ""))
     return out
 
 
@@ -300,8 +303,14 @@ BATCH_PEOPLE = 180
 NON_RING_MIN = 120
 #: ⛔ **TEN FAMILYSEARCH PEOPLE LEAD EACH BATCH, AS A TEST. Ruled 2026-09-27 (Emma):**
 #: FamilySearch people are a separate population, and ten of them go at the start of every batch
-#: to see whether they come out well formed. Taken from `reports/wikidata-familysearch-day.txt`,
-#: the people on the ancestor ring's FamilySearch boundary first.
+#: to see whether they come out well formed. Taken from `reports/wikidata-familysearch-day.txt`.
+#: ⛔ **AND THE RING'S FAMILYSEARCH-ONLY PEOPLE GO IN THE RING, ALL OF THEM. Emma, 2026-09-27
+#: (AskUserQuestion):** 386 of the ring's 703 boundary people were FamilySearch-only and the batch
+#: created none, so every line through one stopped. `build-familysearch-day.py` creates them with
+#: `P2889`; this pass takes every one of them out of that file into THE RING section (shuffled in
+#: with the Geni ring people, uncapped, keyed on `FS` + the id without its dash in
+#: `priority-ring.json`), so the browser loop and `ring-watch.yml` see them as ring people. The
+#: ten-person test is the FamilySearch people who are NOT on the ring.
 FAMILYSEARCH_TEST = 10
 FAMILYSEARCH_FILE = REPO / "reports" / "wikidata-familysearch-day.txt"
 RELATIONSHIPS = {"P22": "parent", "P25": "parent", "P40": "parent", "P26": "P26", "P3373": "P3373"}
@@ -365,8 +374,10 @@ def _statements(lines):
     return out
 
 
-def order_file(text, first_people, ring_ids, seed, familysearch=()):
-    """`text` reordered into the cohorts, each under a header. Commands are only moved."""
+def order_file(text, first_people, ring_ids, seed, familysearch=(), familysearch_ring=()):
+    """`text` reordered into the cohorts, each under a header. Commands are only moved, except
+    that `familysearch` (ten, the test) and `familysearch_ring` (all of them) are copied in from
+    the FamilySearch batch when the file does not hold them yet."""
     lines = _clean_comments(text.splitlines())
     units = build_units(blocks(chr(10).join(lines)))
     person = [i for i, u in enumerate(units) if is_person_create(u)]
@@ -418,8 +429,18 @@ def order_file(text, first_people, ring_ids, seed, familysearch=()):
     def by_id(i):
         return tuple(sorted(ring_geni_ids(units[i])))
     rng = random.Random(seed)
-    ring_order = sorted(ring, key=by_id)
-    rng.shuffle(ring_order)
+    # The FamilySearch ring people not in the file yet join the ring: one sorted list of
+    # (ids, lines) over both kinds, shuffled once, so the seed decides one order for the whole ring.
+    present = set(text.splitlines())
+
+    def not_here(u):
+        return not any(l in present for l in u if l.startswith("LAST	P2889	"))
+    fs_ring_new = [[l for l in u if l.strip()] for u in familysearch_ring if not_here(u)]
+    ring_chunks = ([(by_id(i), bound_of[i]) for i in ring]
+                   + [(tuple(sorted(ring_geni_ids(u))), u) for u in fs_ring_new])
+    ring_chunks.sort(key=lambda kv: kv[0])
+    rng.shuffle(ring_chunks)
+    ring_order = [lines_ for _ids, lines_ in ring_chunks]
     # The later people are ordered by a hash of the day's seed and the person, not shuffled: a
     # batch keeps only the first of them (`keep` below), and a hash order puts a subset in the
     # same relative order, so running the pass again on its own output changes nothing.
@@ -450,16 +471,14 @@ def order_file(text, first_people, ring_ids, seed, familysearch=()):
     # (relationship pairs never split), so creations slow down and the waiting between them is
     # spent on edits. This replaces the 2026-09-27-morning order, which put all the existing-item
     # edits first and the random individuals before the ring.
-    present = set(text.splitlines())
-    fs_units = [u for u in familysearch
-                if not any(l in present for l in u if l.startswith("LAST	P2889	"))]
+    fs_units = [u for u in familysearch if not_here(u)]
     fs_units = fs_units[:max(0, FAMILYSEARCH_TEST - len(fs_here))]
     fs_new = fs_units
     fs_units = [bound_of[i] for i in fs_here] + fs_units
     section(f"FAMILYSEARCH: {len(fs_units)} people, a test that they come out well formed",
             fs_units, True)
     section(f"THE RING: all {len(ring_order)} ancestor-ring people, shuffled",
-            [bound_of[i] for i in ring_order], True)
+            ring_order, True)
     section(f"NAME ITEMS: {len(names)}, each followed by the links to the people who bear it",
             [bound_of[i] for i in names], True)
     people = first + later
@@ -488,7 +507,7 @@ def order_file(text, first_people, ring_ids, seed, familysearch=()):
     def commands(t):
         return _c.Counter(l for l in t.splitlines() if l.strip() and not l.lstrip().startswith("#"))
     expected = (commands(text) - commands(chr(10).join(dropped))
-                + commands(chr(10).join(l for u in fs_new for l in u)))
+                + commands(chr(10).join(l for u in fs_new + fs_ring_new for l in u)))
     if commands(result) != expected:
         lost, extra = expected - commands(result), commands(result) - expected
         raise SystemExit(f"the order pass changed the commands: {sum(lost.values())} lost, "
@@ -504,25 +523,18 @@ def order_file(text, first_people, ring_ids, seed, familysearch=()):
 
 
 def familysearch_test_units(ring_ids):
-    """The FamilySearch batch's person creations, ring-boundary people first (`FS` + the
-    `P2889` id without its dash is how the tree keys a FamilySearch-only person)."""
+    """`(ring, test)`: the FamilySearch batch's person creations on the ancestor ring (all of
+    them), and the rest (the ten-person test is cut from these)."""
     if not FAMILYSEARCH_FILE.exists():
-        return []
+        return [], []
     units = [u for u in build_units(blocks(FAMILYSEARCH_FILE.read_text(encoding="utf-8")))
              if is_person_create(u)]
-
-    def on_ring(u):
-        for line in u:
-            parts = line.split("	")
-            if len(parts) >= 3 and parts[0] == "LAST" and parts[1] == "P2889":
-                return ("FS" + parts[2].strip('"').replace("-", "")) in ring_ids
-        return False
-    units.sort(key=lambda u: not on_ring(u))
-    out = []
+    ring, test = [], []
     for u in units:
         start = next(k for k, l in enumerate(u) if l.strip().upper() == "CREATE")
-        out.append([l for l in u[start:] if l.strip()])   # the file's banner stays behind
-    return out
+        unit = [l for l in u[start:] if l.strip()]   # the file's banner stays behind
+        (ring if ring_geni_ids(unit) & ring_ids else test).append(unit)
+    return ring, test
 
 
 def record_cap_cuts(before, after):
@@ -544,13 +556,14 @@ def order_all() -> int:
     """Put each finished batch file into the cohort order, in place."""
     ring_ids = load_ring_ids()
     seed = datetime.date.today().isoformat()
-    fs = familysearch_test_units(ring_ids)
+    fs_ring, fs = familysearch_test_units(ring_ids)
     for path, first in ((AUTO, INDIVIDUALS), (MANUAL, PAGE_INDIVIDUALS), (SRC, PAGE_INDIVIDUALS)):
         if not path.exists():
             continue
         before = path.read_text(encoding="utf-8")
-        # The FamilySearch test goes in the files a person runs, never in the unattended half.
-        after = order_file(before, first, ring_ids, seed, () if path == AUTO else fs)
+        # FamilySearch people go in the files a person runs, never in the unattended half.
+        after = order_file(before, first, ring_ids, seed, () if path == AUTO else fs,
+                           () if path == AUTO else fs_ring)
         path.write_text(after, encoding="utf-8", newline="\n")
         if path == SRC:
             record_cap_cuts(before, after)

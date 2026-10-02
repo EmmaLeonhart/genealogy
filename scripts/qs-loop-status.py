@@ -44,7 +44,9 @@ def ring_target(text):
 
 
 def last_ring_geni(text):
-    """The Geni id of the LAST ring person in the batch's order, or "" when there is no ring.
+    """The id of the LAST ring person in the batch's order, or "" when there is no ring: the
+    Geni id, or `fs:` and the FamilySearch id for a FamilySearch-only ring person (created with
+    `P2889`, Emma 2026-09-27), which `ring-watch.yml` searches under that property.
 
     A generation is done when this person exists on Wikidata: QuickStatements runs the file top
     to bottom and the ring comes first, so the last ring creation is the one the next rebuild
@@ -56,6 +58,8 @@ def last_ring_geni(text):
             in_ring = line.startswith("# ▶ THE RING")
         elif in_ring and line.startswith("LAST	P2600	"):
             last = line.split("	")[2].strip('"')
+        elif in_ring and line.startswith("LAST	P2889	"):
+            last = "fs:" + line.split("	")[2].strip('"')
     return last
 
 

@@ -448,3 +448,46 @@ def test_the_render_puts_a_verdict_anchor_on_its_geni_id(tmp_path):
     assert got["GVBB-VT7"] == "444"
     assert got["AAAA-BBB"] == "333"
     assert got["PFR5-LDS"] == "6000000087535357291"
+
+
+def test_ring_people_come_first_and_are_marked(builder, tmp_path, monkeypatch):
+    """Emma, 2026-09-27 (AskUserQuestion): the ancestor ring's FamilySearch-only people are
+    created with `P2889`, first in the file so `--limit` never cuts them, each marked for the
+    order pass and the FamilySearch page. `priority-ring.json` keys them as `FS` + the id
+    without its dash. Under the pause they are carried, and the carry says they are ring people."""
+    import argparse
+    src = tmp_path / "sample.ged"
+    src.write_text(BATCH_GED, encoding="utf-8")
+    monkeypatch.setattr(builder, "OUT", tmp_path / "out.txt")
+    monkeypatch.setattr(builder, "CARRY", tmp_path / "carry.tsv")
+    monkeypatch.setattr(builder, "BRIDGE", tmp_path / "bridge.tsv")
+    monkeypatch.setattr(builder, "UNIVERSE", tmp_path / "universe.json")
+    monkeypatch.setattr(builder, "RING", tmp_path / "ring.json")
+    builder.BRIDGE.write_text(BATCH_BRIDGE, encoding="utf-8")
+    builder.UNIVERSE.write_text(BATCH_UNIVERSE, encoding="utf-8")
+    # Trond (BBBB-222) is on the ring; Kirstine (AAAA-111) is not. Both are created (each has a
+    # bridged father), and Kirstine's record comes first in the file.
+    builder.RING.write_text('["6000000000000000001", "FSBBBB222"]', encoding="utf-8")
+    assert builder.read_ring() == {"BBBB222"}
+
+    monkeypatch.setattr(builder, "CREATIONS_PAUSED", False)
+    builder.build(argparse.Namespace(gedcom=[str(src)], limit=0))
+    text = builder.OUT.read_text(encoding="utf-8")
+    assert text.index('"BBBB-222"') < text.index('"AAAA-111"')
+    assert "# ancestor ring: parent of" in text
+    assert text.index("# ancestor ring:") < text.index('"BBBB-222"')
+    assert text.count("# ancestor ring:") == 1
+    # `--limit 1` keeps the ring person, not the first person in the file.
+    builder.build(argparse.Namespace(gedcom=[str(src)], limit=1))
+    text = builder.OUT.read_text(encoding="utf-8")
+    assert '"BBBB-222"' in text and '"AAAA-111"' not in text
+
+    monkeypatch.setattr(builder, "CREATIONS_PAUSED", True)
+    builder.build(argparse.Namespace(gedcom=[str(src)], limit=0))
+    carry = builder.CARRY.read_text(encoding="utf-8")
+    assert "BBBB-222\t\tpaused:" in carry and "; on the ancestor ring" in carry
+    assert carry.count("; on the ancestor ring") == 1
+
+    # No ring file: nobody is on the ring, and nothing else changes.
+    builder.RING.unlink()
+    assert builder.read_ring() == set()

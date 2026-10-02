@@ -1477,3 +1477,24 @@ def test_a_place_with_no_letter_resolves_to_nothing():
             bad = [r["place"] for r in csv.DictReader(f, delimiter="\t")
                    if r.get("qid") and not any(ch.isalpha() for ch in r["place"])]
         assert not bad, bad
+
+
+def test_a_name_item_with_no_han_zh_label_does_not_crash_the_cjk_composer():
+    """Found 2026-10-02 running `build-familysearch-day.py` with its pause off: `Benoit`'s name
+    item carries a katakana `ja` and a Hangul `ko` but its `zh` is `贝诺瓦 (名字)`, which fails
+    the Han test, and the table had no row -- so `ja`/`ko` were taken from the item, `zh` stayed
+    `None`, the all-three-or-none gate tested only `ja` and `ko`, and the join raised
+    `TypeError`. 4 of 66,799 FamilySearch names (`Benoit`, `Uthman`). The funnel now fills
+    whichever readings are missing; the item's own readings still win where it has them."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_cjk", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod._NAME_ITEM_CJK = {"Benoit": {"ja": "ブノワ", "zh": "贝诺瓦 (名字)", "ko": "브누아"},
+                          "Uthman": {"ja": "ウスマーン", "ko": "우스만"}}
+    for token in ("Benoit", "Uthman"):
+        ja, zh, ko = mod.label_in(token, {})      # an empty table: the item is all there is
+        assert (ja, zh, ko) == (None, None, None) or (
+            ja == mod._NAME_ITEM_CJK[token]["ja"] and ko == mod._NAME_ITEM_CJK[token]["ko"]
+            and isinstance(zh, str) and zh and mod._is_han(zh)), (token, ja, zh, ko)
