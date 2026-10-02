@@ -2459,6 +2459,28 @@ def store_name_item(token, usage):
     return _STORE_INDEX.get((token.casefold(), usage), "")
 
 
+_CREATED_INDEX = None
+
+
+def created_name_item(token, usage):
+    """The QID of a name item THIS account created for `(token, usage)`, or `''`.
+
+    `reports/created-name-items.tsv` only, never the store: each of our labels is one item
+    (refreshed through redirects), so there is no ambiguity to resolve. See `statements_for`.
+    """
+    global _CREATED_INDEX
+    if _CREATED_INDEX is None:
+        _CREATED_INDEX = {}
+        created = ROOT / "reports" / "created-name-items.tsv"
+        if created.exists():
+            with open(created, encoding="utf-8") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    if row["label"] and row["qid"]:
+                        _CREATED_INDEX.setdefault((row["label"].casefold(), row["kind"]),
+                                                  row["qid"])
+    return _CREATED_INDEX.get((token.casefold(), usage), "")
+
+
 def _load_store_index():
     """`{(folded label, kind): qid}` — name items CREATED by hand, then the local store.
 
@@ -3501,6 +3523,15 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # match those tokens at all. `store_name_item` reads our created items and the store.
         if not qid and action == "not in the plan" and " " in token:
             qid = store_name_item(token, lookup)
+        # ⛔ **A LATIN PATRONYMIC OUTSIDE THE PLAN STILL FINDS THE ITEM WE CREATED FOR IT.**
+        # Error report 2026-09-27, `Q141520180` *Olaus Jonæ Albogius*: `Jonæ` in `_MARNM` parses
+        # as his patronymic and `Q141319008` *Jonæ* was created 2026-09-06, but the plan
+        # (2026-09-17) has no `(Jonæ, patronymic)` row, so only `Jonsson` ever went out. 36 of
+        # our items had that shape (`reports/latin-patronymic-in-married-name.csv`). Only our
+        # OWN creations answer here, where each label is one item; the store keeps no
+        # ambiguity guard, so a bare token is never resolved against it.
+        if not qid and action == "not in the plan" and usage == "patronymic":
+            qid = created_name_item(token, lookup)
         if not qid:
             notes.append(f"{token} ({usage}): {action or 'no item'}")
             continue

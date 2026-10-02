@@ -1758,3 +1758,23 @@ def test_abbreviation_expands_whole_words_only(monkeypatch):
     assert e("Dorothea Christensd. Thrane", "1") == "Dorothea Christensdatter Thrane"
     assert e("Guri Pedersdtr. Foss", "2") == "Guri Pedersdatter Foss"
     assert e("Guri Pedersdtrud Foss", "2") == "Guri Pedersdtrud Foss"
+
+
+def test_a_latin_patronymic_outside_the_plan_links_our_created_item(monkeypatch):
+    """Error report 2026-09-27, `Q141520180` *Olaus Jonæ Albogius*: `SURN` Jonsson, `_MARNM`
+    `Jonæ Albogius`, father Jon. Both patronymics go out; `Jonæ` resolves to our own created
+    item though the plan has no row for it. A given name outside the plan does not."""
+    monkeypatch.setattr(namemodel, "_CREATED_INDEX", {("jonæ", "patronymic"): "Q141319008",
+                                                      ("olof", "given"): "Q999"})
+    plan = {("Jonsson", "patronymic"): ("Q141242306", "link"),
+            ("Olaus", "given"): ("Q10608165", "link")}
+    fields = {"givn": "Olaus", "surn": "Jonsson", "nick": "", "marnm": "Jonæ Albogius"}
+    lines, notes = statements_for("Olaus Jonæ Albogius", plan, "6000000006590213904",
+                                  "Q141538446", fields=fields, sex="M",
+                                  father_name="Jon Olofsson", father_given="Jon")
+    assert (PATRONYM, "Q141242306", [("P144", "Q141538446")]) in lines
+    assert (PATRONYM, "Q141319008", [("P144", "Q141538446")]) in lines
+    assert namemodel.created_name_item("Olof", "given") == "Q999"
+    lines, _ = statements_for("Olof Jonsson", plan, "1", None,
+                              fields={"givn": "Olof", "surn": "", "nick": "", "marnm": ""})
+    assert not any(v == "Q999" for _p, v, _q in lines)
