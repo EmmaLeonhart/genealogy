@@ -50244,3 +50244,16 @@ Run with Emma's go-ahead (AskUserQuestion, "Run all 39") in a new QuickStatement
 **2026-10-01, queue.** Emma asked for an item at the top: every Geni and FamilySearch id on Wikidata, and the unmerged maternal-side duplicates that should carry several Geni ids. Prepended.
 Reworded the same day at Emma's correction: the multiple-Geni-id part is the Cameron Frisk ancestors only, essentially one export, not a general problem.
 Emma, same day: the Frisk export is an exception because those ancestors were found after the Geni block; they are matched positionally against the first FamilySearch export (the web-extension one, not RootsMagic). The P2889 backfill (3,893, "All 3,893, via batch") is running in QuickStatements; `reports/wikidata-p2889-backfill.qs`.
+
+**2026-10-01, Frisk ancestors: the positional map.** Cameron Frisk (Geni `6000000227892448837`) is
+a cousin: his father Stephen is the brother of Helen Frisk, the mother in the owner's own
+FamilySearch pedigree (`PFR5-LDS`, the `PFR5-LDS-a12-d2.ged` download of 2026-09-23, the earlier
+one, not RootsMagic). So Cameron's paternal ahnentafel position `2·2^d + r` is the FamilySearch
+position `3·2^d + r`: Hans Bertil Frisk 4 -> 6, Elly Olivia Andersson 5 -> 7, Emma Olivia
+Andersdotter 11 -> 15. `reports/frisk-geni-familysearch-positional.tsv`: 442 Geni positions, 233
+agree on first name and birth year within 2, 188 have no FamilySearch person at that position,
+21 to check (mostly spelling and year drift; a few real disagreements, e.g. 2536 Per Nilsson vs
+Per Isaksson, 5072 Nils vs Isak Abrahamsson). Against live Wikidata: 13 FamilySearch items lack the
+Frisk Geni id, 90 Frisk Geni ids sit on items that have no FamilySearch id yet, 149 people are on
+neither. The P2889 backfill is still running and changes the middle count, so the classification is
+re-run once it finishes.
