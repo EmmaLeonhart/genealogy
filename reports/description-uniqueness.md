@@ -6,20 +6,22 @@ so a description that repeats under a different label costs nothing.
 
 | | |
 |---|---|
-| people | 2,250,742 |
-| with a description | 1,438,954 (63.9%) |
-| **no description at all** | **811,788** (36.1%) |
-| distinct (label, description) | 1,414,594 |
-| colliding pairs | 1,311 |
-| people in a collision | 2,851 |
+| people | 2,273,588 |
+| with a description | 1,459,408 (64.2%) |
+| **no description at all** | **814,180** (35.8%) |
+| distinct (label, description) | 1,434,169 |
+| colliding pairs | 1,512 |
+| people in a collision | 3,288 |
 
 ## The worst collisions
 
 | count | label | description |
 |---|---|---|
+| 23 | Saru' ibn Urghuwa | 2179 B.C. - 1 Mar 1948 B.C. |
 | 16 | 李 | died 771 |
 | 13 | 李 | born China |
 | 12 | 元 | born China |
+| 10 | Soter 1 Ptolemy | 344 B.C. - circa 282 B.C. |
 | 10 | 李 | died 812 |
 | 8 | Uknf | Europe - Europe |
 | 8 | NN | born circa 1290 |
@@ -31,9 +33,9 @@ so a description that repeats under a different label costs nothing.
 | 6 | NN Lee | born 한국 경북 경주시 |
 | 5 | NN | born circa 1440 |
 | 5 | NN | born circa 1560 |
-| 5 | NN | died Germany |
 | 5 | NN | China - China |
 | 5 | NN | Europe - Europe |
+| 5 | NN | born circa 1100 |
 | 5 | Gaius Servilius | born Rome, Roma, Italy |
 | 5 | NN | born circa 1620 |
 | 5 | NN | born circa 1500 |
@@ -50,10 +52,8 @@ so a description that repeats under a different label costs nothing.
 | 4 | NN | born circa 1300 |
 | 4 | NN | born circa 1340 |
 | 4 | NN | died France |
+| 4 | NN | died Germany |
 | 4 | NN | Egypt - Egypt |
 | 4 | NN | died (Iberia), Georgia |
 | 4 | NN | died Scotland |
 | 4 | NN | born circa 1390 |
-| 4 | NN | born circa 1400 |
-| 4 | NN | born circa 1575 |
-| 4 | Marcus Valerius | born Rome, Roma, Italy |
