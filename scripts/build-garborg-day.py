@@ -9842,7 +9842,12 @@ def main():
     # line whose SUBJECT is an existing item outside the universe and its ring. `CREATE` blocks
     # and their `LAST` lines are untouched: a creation has no QID yet and `compose` already picks
     # them from inside the universe.
-    lines = refuse_non_local(lines, editable)
+    # The name items universe people bear are editable too (ruled 2026-09-24), here as at the final
+    # gate below: a hand label row on one (`Q47246294` Eiane's CJK, 2026-10-02) was dropped here.
+    _universe_file = ROOT / "out" / "wikidata" / "edit-universe.json"
+    _bearable = (set(json.loads(_universe_file.read_text(encoding="utf-8")).get("name_items") or ())
+                 if _universe_file.exists() else set())
+    lines = refuse_non_local(lines, editable | _bearable)
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first**, ruled 2026-08-30: one file rather than two, names first and
