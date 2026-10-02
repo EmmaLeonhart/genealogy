@@ -3151,8 +3151,19 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     _, correction_edits = split(corrections, 0)
     _, clan_edits = split(clan_lines, 1)
     lines, line_edits = split(lines, 2)
-    every = [e for e in correction_edits + clan_edits + line_edits
-             if (e["qid"], e["slot"], e["value"]) not in done]
+    # ⛔ **AN ALIAS THAT RESCUES A LABEL TRAVELS WITH THE LABEL, DRAINED OR NOT.** The drain keys
+    # on `(qid, slot, value)`, so the `Amul` an earlier batch wrote for the outgoing label was
+    # dropped here while a NEW label value for the same item went out alone: `Q141574857`
+    # (`Lmul "Maurits Rasmusson Maudal"` with no alias for the live `Ø. Maudal` form),
+    # `Q141586230`, `Q141583446` on 2026-10-02, each failing the never-overwrite-without-rescue
+    # test. A repeated alias is a no-op on Wikidata; a label without its rescue is the thing the
+    # test exists to stop.
+    all_edits = correction_edits + clan_edits + line_edits
+    rescued = {e["qid"] for e in all_edits
+               if e["slot"].startswith("L") and (e["qid"], e["slot"], e["value"]) not in done}
+    every = [e for e in all_edits
+             if (e["qid"], e["slot"], e["value"]) not in done
+             or (e["slot"].startswith("A") and e["qid"] in rescued)]
 
     #: Language rank inside a person. Anything unnamed sorts last, stably.
     tiers = _label_tiers()

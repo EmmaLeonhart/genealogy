@@ -1456,7 +1456,11 @@ def test_an_existing_item_with_no_familysearch_id_is_backfilled_capped():
     assert not any(ln.startswith("Q2\tP2889") for ln in out)   # already holds it
     assert not any(ln.startswith("Q3\tP2889") for ln in out)   # claims unknown: not guessed
     assert not any("G644-GSR" in ln for ln in out)            # removed on Emma's order
+    # The cap at 0 sends no backfill. The P1810 repairs on LIVE P2889 statements are a separate
+    # pass with its own cap (`FS_NAMED_AS_PER_RUN`), and `Q101247862` is a real item whose live
+    # statement lacked the qualifier on 2026-10-02, so that cap is zeroed too.
     mod.FS_ID_BACKFILL_PER_RUN = 0
+    mod.FS_NAMED_AS_PER_RUN = 0
     assert not any("\tP2889\t" in ln for ln in mod.add_fs_id_statements([], items, live))
 
 
@@ -1563,7 +1567,7 @@ def test_an_unnamed_item_takes_its_familysearch_name_through_the_choke_point(tmp
         "0 @I12@ INDI", "1 NAME Bishop Eirik /Ogmundson Ims/", "1 _FSFTID LLLL-120",
         "0 @I13@ INDI", "1 NAME Ei /Olufsd Komp/", "1 _FSFTID MMMM-130",
         "0 TRLR", ""]), encoding="utf-8")
-    live = {("Q1", "mul"): "NN of Kiev", ("Q1", "en"): "NN of Kiev", ("Q1", "ja"): "キエフのNN",
+    live = {("Q1", "mul"): "NN of Kiev", ("Q1", "en"): "NN of Kiev", ("Q1", "ja"): "キエフノエヌエヌ",
             ("Q2", "mul"): "NN Bjørnsdatter Tau", ("Q3", "mul"): "NN (Frille)",
             ("Q4", "mul"): "NN Pedersdatter", ("Q5", "mul"): "NN",
             ("Q7", "mul"): "NN Næs", ("Q7", "ja"): "金田一",           # Q6: labels not held
@@ -1585,3 +1589,43 @@ def test_an_unnamed_item_takes_its_familysearch_name_through_the_choke_point(tmp
     for refused in ("Q2", "Q3", "Q4", "Q5", "Q6", "Q8", "Q9", "Q10", "Q11", "Q13"):
         assert not any(l.startswith(refused + "\t") for l in cmds), refused
     assert "Bjørnsdatter Tau" not in "\n".join(cmds) and "Knut" not in "\n".join(cmds)
+
+
+def test_a_rescue_alias_travels_with_its_label_even_when_drained(tmp_path):
+    """2026-10-02: the label-edit cap drains edits already emitted (`label-edits-emitted.tsv`,
+    keyed on qid, slot, value). The `Amul` an earlier batch wrote for an outgoing label was
+    drained while a NEW label value for the same item went out alone -- `Q141574857`
+    `Lmul "Maurits Rasmusson Maudal"` with no alias for the live `Ø. Maudal` form, failing
+    `test_a_label_is_never_written_over_an_item_that_already_has_one`. An alias for an item
+    whose label edit is fresh is kept, drained or not; a repeat alias is a no-op on Wikidata."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_cap", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "label-edits-emitted.tsv").write_text(
+        "qid\tslot\tvalue\tfirst_emitted\n"
+        "Q141574857\tAmul\tMaurits Rasmusson Ø. Maudal\t2026-09-30\n"
+        "Q141574857\tLmul\tMaurits Rasmusson Øvre Maudal\t2026-09-30\n"
+        "Q5\tAmul\tOld Five\t2026-09-30\n"
+        "Q5\tLmul\tNew Five\t2026-09-30\n",
+        encoding="utf-8")
+    scripts = tmp_path / "scripts"
+    scripts.mkdir()
+    (scripts / "build-four-script-labels.py").write_text("CODES = ()\n", encoding="utf-8")
+    mod.ROOT = tmp_path
+    corrections = [
+        "#   Q141574857: holds the married form",
+        'Q141574857\tAmul\t"Maurits Rasmusson Ø. Maudal"',
+        'Q141574857\tLmul\t"Maurits Rasmusson Maudal"',
+        'Q141574857\tLen\t"Maurits Rasmusson Maudal"',
+        'Q5\tAmul\t"Old Five"',          # fully drained: its label is not fresh either
+        'Q5\tLmul\t"New Five"',
+    ]
+    out = mod._cap_label_edits([], "", corrections)
+    assert 'Q141574857\tLmul\t"Maurits Rasmusson Maudal"' in out
+    assert 'Q141574857\tAmul\t"Maurits Rasmusson Ø. Maudal"' in out, "the rescue travels with the label"
+    assert out.index('Q141574857\tAmul\t"Maurits Rasmusson Ø. Maudal"') < out.index(
+        'Q141574857\tLmul\t"Maurits Rasmusson Maudal"')
+    assert not any(ln.startswith("Q5\t") for ln in out), "nothing fresh for Q5: still drained"

@@ -540,4 +540,6 @@ def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_per
     # still takes the id (`Q66666666 P2889 "FFFF-666"`), as every zipped person's does.
     assert 'LAST	P2889	"FFFF-666"' not in text
     assert 'Q66666666	P2889	"FFFF-666"' in text
-    assert "FFFF-666\t\tpaired to Geni profile 6000000000000000009" in carry
+    # His Geni profile has an item, so he is a zipped person (the id goes on Q66666666) rather
+    # than the day batch's creation; either way, never a second item.
+    assert "FFFF-666\t\tthe zipper put them on an existing item: Q66666666" in carry
