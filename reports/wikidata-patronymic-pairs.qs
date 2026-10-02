@@ -343,17 +343,6 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Palnesdatter -- the counterpart of Palnesen (8 bearer(s))
-CREATE
-LAST	Len	"Palnesdatter"
-LAST	Lmul	"Palnesdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
 # Sigtryggsdotter -- the counterpart of Sigtryggsson (8 bearer(s))
 CREATE
 LAST	Len	"Sigtryggsdotter"
@@ -441,6 +430,16 @@ Q141456297	P407	Q9027
 CREATE
 LAST	Len	"Vemundsdotter"
 LAST	Lmul	"Vemundsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
+# Godwinsdotter -- the counterpart of Godwinsson (6 bearer(s))
+CREATE
+LAST	Len	"Godwinsdotter"
+LAST	Lmul	"Godwinsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179

@@ -6,54 +6,54 @@ so a description that repeats under a different label costs nothing.
 
 | | |
 |---|---|
-| people | 2,273,588 |
-| with a description | 1,459,408 (64.2%) |
-| **no description at all** | **814,180** (35.8%) |
-| distinct (label, description) | 1,434,169 |
-| colliding pairs | 1,512 |
-| people in a collision | 3,288 |
+| people | 2,274,959 |
+| with a description | 1,460,540 (64.2%) |
+| **no description at all** | **814,419** (35.8%) |
+| distinct (label, description) | 1,421,674 |
+| colliding pairs | 1,549 |
+| people in a collision | 3,296 |
 
 ## The worst collisions
 
 | count | label | description |
 |---|---|---|
 | 23 | Saru' ibn Urghuwa | 2179 B.C. - 1 Mar 1948 B.C. |
-| 16 | 李 | died 771 |
-| 13 | 李 | born China |
-| 12 | 元 | born China |
 | 10 | Soter 1 Ptolemy | 344 B.C. - circa 282 B.C. |
-| 10 | 李 | died 812 |
 | 8 | Uknf | Europe - Europe |
 | 8 | NN | born circa 1290 |
-| 8 | NN 李 | died 706 |
-| 8 | 李 | died 864 |
+| 7 | NN | died Munster, Ireland |
 | 7 | NN | born circa 1200 |
-| 6 | NN | died Munster, Ireland |
+| 6 | NN | born circa 1560 |
+| 6 | NN | born circa 1100 |
 | 6 | NN | born circa 1590 |
 | 6 | NN Lee | born 한국 경북 경주시 |
 | 5 | NN | born circa 1440 |
-| 5 | NN | born circa 1560 |
+| 5 | NN | died Germany |
+| 5 | NN | Egypt - Egypt |
+| 5 | NN | died Scotland |
 | 5 | NN | China - China |
 | 5 | NN | Europe - Europe |
-| 5 | NN | born circa 1100 |
 | 5 | Gaius Servilius | born Rome, Roma, Italy |
 | 5 | NN | born circa 1620 |
 | 5 | NN | born circa 1500 |
 | 5 | NN | born circa 1630 |
-| 5 | NN 李 | died 608 |
-| 5 | NN 李 | died 679 |
-| 5 | 李 | died 881 |
 | 5 | Tatarkanof | died 1770 |
-| 5 | Taga | born Bef 1861 |
+| 5 | Watanabe | born Bef 1861 |
 | 4 | NN | born circa 1350 |
 | 4 | NN | born circa 1160 |
 | 4 | NN | born circa 1325 |
-| 4 | NN | born circa 1275 |
 | 4 | NN | born circa 1300 |
+| 4 | NN | born circa 1565 |
 | 4 | NN | born circa 1340 |
-| 4 | NN | died France |
-| 4 | NN | died Germany |
-| 4 | NN | Egypt - Egypt |
+| 4 | NN | France - France |
 | 4 | NN | died (Iberia), Georgia |
-| 4 | NN | died Scotland |
+| 4 | NN | died Armenia |
 | 4 | NN | born circa 1390 |
+| 4 | NN | born circa 1575 |
+| 4 | Marcus Valerius | born Rome, Roma, Italy |
+| 4 | NN | born circa 1510 |
+| 4 | NN | born circa 1230 |
+| 4 | Kone | died Jordanger, Luster, Sogn og Fjordane, Norway |
+| 4 | NN | born circa 1150 |
+| 4 | NN | born circa 1470 |
+| 4 | NN | born circa 1260 |
