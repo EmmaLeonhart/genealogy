@@ -146,6 +146,35 @@ def main() -> int:
 
     print(f"{len(people):,} people, {len(families):,} families", flush=True)
 
+    # ⛔ **THE FATHER IS THE MAN AND THE MOTHER THE WOMAN, WHICHEVER SLOT A FILE PUT THEM IN.**
+    # Found 2026-10-02 on the owner's own row: `exports/tiny-profiles/saved-6000000087535357291.ged`
+    # writes Helen Frisk as `HUSB` and Richard Borsheim as `WIFE`, because `build-tiny-gedcoms.py`
+    # filled the slots from a saved page's "son of X and Y" in page order. The saved pages were
+    # deleted on 2026-09-14 and a `.ged` is never overwritten, so the slots are read by sex here.
+    # Measured that day: 373 people had a woman as primary father, 358 a man as primary mother.
+    # A family with one person in both slots keeps them in the slot their sex gives.
+    sex_of: dict[str, str] = {}
+    facts_for_sex = REPO_ROOT / "reports" / "derived-facts.csv"
+    if facts_for_sex.exists():
+        csv.field_size_limit(1 << 30)
+        with open(facts_for_sex, encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh):
+                sex_of[row["geni_id"]] = (row.get("sex") or "").strip().upper()
+    swapped = 0
+    for fam in families.values():
+        husb, wife = fam["husb"], fam["wife"]
+        sh, sw = sex_of.get(husb, ""), sex_of.get(wife, "")
+        if husb and husb == wife:
+            if sh == "F":
+                fam["husb"] = ""
+            elif sh == "M":
+                fam["wife"] = ""
+            swapped += 1
+        elif (sh == "F" and sw != "F") or (sw == "M" and sh != "M"):
+            fam["husb"], fam["wife"] = wife, husb
+            swapped += 1
+    print(f"{swapped:,} families had their parents' slots corrected by sex", flush=True)
+
     # **A person can have more than one recorded father or mother, and 1,663 do.**
     # These were plain `dict[str, str]` and a second parent silently OVERWROTE the first,
     # so `derived-family.csv` could not represent the case at all -- it showed one parent,
