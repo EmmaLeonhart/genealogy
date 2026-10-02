@@ -401,13 +401,15 @@ def main():
 
 
 def zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year, their_year,
-              sex_refutes, max_rounds=MAX_ROUNDS, allow_solo=True):
+              sex_refutes, max_rounds=MAX_ROUNDS, allow_solo=True, refused=frozenset()):
     """The rounds, for any two trees shaped like ours and like `relations.tsv`.
 
     `ours` is keyed by Geni id with `father`/`mother`/`spouses`/`children` cells; `theirs` by
     the other side's id with `p22`/`p25`/`p26`/`p40`. `stated_g`/`stated_q` are the identities
     the other side ASSERTS -- they are the anchors where one-to-one, and they refute a proposal
     that contradicts them. Wikidata passes its `P2600`s; FamilySearch passes its bridge.
+    `refused` is `{(geni, other)}` pairs a person has judged DIFFERENT; such a proposal is a
+    conflict, never a pair.
     """
     g2q, q2g = {}, {}
     for g, qs in stated_g.items():
@@ -505,6 +507,11 @@ def zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year, 
                         refuted_by_sex.append({"round": rnd, "slot": slot, "method": method,
                                                "geni_id": a, "qid": b, "from_geni": g,
                                                "from_qid": q, "evidence": evidence})
+                        continue
+                    if (a, b) in refused:
+                        conflicts.append({"round": rnd, "slot": slot, "geni_id": a,
+                                          "proposed_qid": b, "recorded_qid": "DIFFERENT",
+                                          "from_geni": g, "from_qid": q})
                         continue
                     if stated_g.get(a) and b not in stated_g[a]:
                         conflicts.append({"round": rnd, "slot": slot, "geni_id": a,
@@ -726,21 +733,26 @@ def main_familysearch():
     # slots this walk refused; a `SAME` there is a hand-made pair, written into
     # `emma-judgments.tsv` with the FamilySearch id in the `qid` column, and it seeds the next
     # walk exactly as a bridge row does.
-    judged = 0
+    # A `DIFFERENT` there refuses that exact pairing (Adelus Eriksdatter, 2026-10-02: the walk
+    # read only `SAME`, so a pairing Emma had refused could still be proposed).
+    judged, refused = 0, set()
     if JUDGMENTS.exists():
         with open(JUDGMENTS, encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f, delimiter="\t"):
                 fs, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-                if (FS_ID.match(fs) and g
-                        and (row.get("verdict") or "").strip().upper() == "SAME"):
+                verdict = (row.get("verdict") or "").strip().upper()
+                if FS_ID.match(fs) and g and verdict == "SAME":
                     anchors.setdefault(fs, g)
                     judged += 1
-    print(f"{judged} FamilySearch deck verdicts read back as anchors")
+                elif FS_ID.match(fs) and g and verdict == "DIFFERENT":
+                    refused.add((g, fs))
+    print(f"{judged} FamilySearch deck verdicts read back as anchors, {len(refused)} refusals")
     for fs, g in anchors.items():
         stated_g[g].add(fs)
         stated_q[fs].add(g)
     result = zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year,
-                       their_year, refuter(our_sex, their_sex), FS_MAX_ROUNDS, allow_solo=False)
+                       their_year, refuter(our_sex, their_sex), refused=frozenset(refused),
+                       max_rounds=FS_MAX_ROUNDS, allow_solo=False)
     write_outputs("familysearch-zipper", "fs_id", *result)
 
 

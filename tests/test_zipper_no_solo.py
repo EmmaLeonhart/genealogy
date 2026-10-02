@@ -58,3 +58,23 @@ def test_position_only_pairing_is_what_allow_solo_true_would_do():
 def test_the_familysearch_run_passes_allow_solo_false():
     src = (ROOT / "scripts" / "zipper-join.py").read_text(encoding="utf-8")
     assert "FS_MAX_ROUNDS, allow_solo=False)" in src
+
+
+def test_a_different_verdict_refuses_the_pairing():
+    """Adelus Eriksdatter (2026-10-02): the walk read only `SAME` verdicts. A pairing judged
+    `DIFFERENT` is refused even when the years agree, and goes to the conflicts."""
+    zj = _zipper()
+    ours = {"c": {"father": "f", "mother": "", "spouses": "", "children": ""},
+            "f": {"father": "", "mother": "", "spouses": "", "children": "c"}}
+    theirs = {"FC": {"p22": "FF", "p25": "", "p26": "", "p40": ""},
+              "FF": {"p22": "", "p25": "", "p26": "", "p40": "FC"}}
+    args = (ours, theirs, {"c": {"FC"}}, {"FC": {"c"}},
+            {"c": "Adelus", "f": "Erich Andersen Kruckow"},
+            {"FC": "Adelus", "FF": "Erik Semundsson"}, {"f": 1430}, {"FF": 1430},
+            lambda a, b: False)
+    pairs, *_ = zj.zip_sides(*args, max_rounds=3, allow_solo=False)
+    assert "f" in pairs
+    pairs, _prov, conflicts, *_ = zj.zip_sides(*args, max_rounds=3, allow_solo=False,
+                                               refused=frozenset({("f", "FF")}))
+    assert "f" not in pairs
+    assert any(c["geni_id"] == "f" and c["recorded_qid"] == "DIFFERENT" for c in conflicts)

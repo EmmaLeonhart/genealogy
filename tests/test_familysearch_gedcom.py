@@ -418,3 +418,34 @@ def test_a_multi_word_marker_leading_a_label_is_caught(builder):
     # trailing single letter is a middle initial.
     assert not L.leads_with_a_marker("Nils Nilsson")
     assert L.labels_for("Laura /N/")["mul"] == "Laura N"
+
+
+def test_the_render_puts_a_verdict_anchor_on_its_geni_id(tmp_path):
+    """Adelus Eriksdatter (2026-10-02): the zipper anchors on Emma's FamilySearch-deck `SAME`
+    verdicts and on its root, and writes neither as a pair, so the render must read both or
+    the anchored person stays an `FS<id>` beside their Geni self. `L89V-S6W` Erich Andersson,
+    `SAME` as Geni `6000000003281256924`, sat as a second father that way. A `DIFFERENT`
+    verdict maps nothing; the bridge beats a verdict, and a verdict beats an inferred pair."""
+    from importlib import util
+    spec = util.spec_from_file_location("fsrender_bridge", RENDERER)
+    mod = util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    zipper = tmp_path / "pairs.tsv"
+    zipper.write_text("round\tgeni_id\tfs_id\n1\t111\tGVBB-VT7\n1\t222\tAAAA-BBB\n",
+                      encoding="utf-8")
+    bridge = tmp_path / "bridge.tsv"
+    bridge.write_text("fs_id\tqid\tgeni_id\nAAAA-BBB\tQ1\t333\nL89V-S6W\t\t\n", encoding="utf-8")
+    judged = tmp_path / "judgments.tsv"
+    judged.write_text(
+        "date\tbatch\tn\tround\tgeni_id\tour_name\tqid\ttheir_name\tverdict\ther_words\n"
+        "2026-09-30\tfamilysearch-parent-deck\t\t\t6000000003281256924\tErich\tL89V-S6W\tErich\tSAME\t\n"
+        "2026-09-30\tfamilysearch-parent-deck\t\t\t6000000003281256924\tErich\tPCFL-GSL\tErik\tDIFFERENT\t\n"
+        "2026-09-30\tfamilysearch-parent-deck\t\t\t444\tX\tGVBB-VT7\tX\tSAME\t\n"
+        "2026-09-30\tfamilysearch-parent-deck\t\t\t555\tY\tAAAA-BBB\tY\tSAME\t\n",
+        encoding="utf-8")
+    got = mod.load_bridge(bridge, zipper, judged)
+    assert got["L89V-S6W"] == "6000000003281256924"
+    assert "PCFL-GSL" not in got
+    assert got["GVBB-VT7"] == "444"
+    assert got["AAAA-BBB"] == "333"
+    assert got["PFR5-LDS"] == "6000000087535357291"

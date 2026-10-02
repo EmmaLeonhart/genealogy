@@ -63,6 +63,10 @@ SRC_DIR = ROOT / "gedcom" / "familysearch"
 OUT_DIR = ROOT / "exports" / "familysearch"
 BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
 ZIPPER = ROOT / "reports" / "familysearch-zipper-pairs.tsv"
+JUDGMENTS = ROOT / "reports" / "emma-judgments.tsv"
+#: The zipper's own anchors that are not pairs (`zipper-join.FS_ROOTS`, `FS_ID`).
+FS_ROOTS = {"PFR5-LDS": "6000000087535357291"}
+FS_ID = re.compile(r"^[A-Z0-9]{4}-[A-Z0-9]{3}$")
 
 #: The four record kinds `getmyancestors` emits, each mapped to the namespaced prefix. The
 #: letter pair is what makes the xref unparseable as a Geni id -- verified against
@@ -88,20 +92,37 @@ def clean(fs_id: str) -> str:
     return re.sub(r"[^0-9A-Za-z]", "", fs_id).upper()
 
 
-def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER) -> dict[str, str]:
+def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER,
+                judgments: Path = JUDGMENTS) -> dict[str, str]:
     """`{fs_id: geni_id}` for every FamilySearch person the bridge OR THE ZIPPER puts on a Geni id.
 
     ⛔ **THE ZIPPER DOES THE FAMILYSEARCH WORK. Ruled 2026-09-24.** The bridge on its own
     reached 11 people of 4,442; `zipper-join.py --familysearch` walks from those anchors and
     reached 4,866. The bridge wins a disagreement, because it is an identifier Wikidata states
     and the zipper is an inference from position.
+
+    ⛔ **AND EVERY ANCHOR THE ZIPPER WALKED FROM, NOT ONLY ITS PAIRS** (Adelus Eriksdatter,
+    2026-10-02). The zipper also anchors on Emma's FamilySearch-deck `SAME` verdicts and on
+    `FS_ROOTS`, and writes neither as a pair, so `L89V-S6W` Erich Andersson, `SAME` as Geni
+    `6000000003281256924`, stayed an `FSL89VS6W` father beside the Geni one. Precedence is the
+    zipper's: root, then bridge, then verdict, then inferred pair.
     """
-    out = {}
-    for p, col in ((zipper, "geni_id"), (path, "geni_id")):
-        if p.exists():
-            with open(p, encoding="utf-8", newline="") as fh:
-                out.update({r["fs_id"]: r[col] for r in csv.DictReader(fh, delimiter="\t")
-                            if r.get("fs_id") and r.get(col)})
+    def rows(p):
+        if not p.exists():
+            return {}
+        with open(p, encoding="utf-8", newline="") as fh:
+            return {r["fs_id"]: r["geni_id"] for r in csv.DictReader(fh, delimiter="\t")
+                    if r.get("fs_id") and r.get("geni_id")}
+    out = rows(zipper)
+    if judgments.exists():
+        with open(judgments, encoding="utf-8", newline="") as fh:
+            out.update({r["qid"].strip(): r["geni_id"].strip()
+                        for r in csv.DictReader(fh, delimiter="\t")
+                        if FS_ID.match((r.get("qid") or "").strip())
+                        and (r.get("geni_id") or "").strip()
+                        and (r.get("verdict") or "").strip().upper() == "SAME"})
+    out.update(rows(path))
+    out.update(FS_ROOTS)
     return out
 
 
