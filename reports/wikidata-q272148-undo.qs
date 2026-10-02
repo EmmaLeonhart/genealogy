@@ -1,0 +1,10 @@
+# Undo the wrong statements on Q272148 Æthelbald of Mercia, made because it carries Æthelbald of Wessex's Geni id (added 2022 by another editor). Emma, 2026-10-02.
+-Q272148	P22	Q272326
+-Q272326	P40	Q272148
+-Q272148	P3373	Q83476
+-Q83476	P3373	Q272148
+-Q272148	P3373	Q272233
+-Q272233	P3373	Q272148
+-Q272148	P3373	Q3577177
+-Q3577177	P3373	Q272148
+-Q272148	P2889	"M9B3-7DY"
