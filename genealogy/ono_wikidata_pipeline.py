@@ -40,6 +40,12 @@ CANNOT_CONFIRM = "Q25895909"   # reason for deprecated rank: cannot be confirmed
 ALLEGEDLY, DISPUTED = "Q32188232", "Q18912752"
 SUZUKI, KOSUGI, JAPANESE = "Q6536470", "Q6536257", "Q5287"
 
+# Labels (user, 2026-10-03): the characters in Japanese and Chinese; the
+# romanised name in English, multilingual, French, Indonesian and Spanish.
+# No Korean label.
+CJK_LANGS = ("ja", "zh")
+ROMAN_LANGS = ("en", "mul", "fr", "id", "es")
+
 GODS = {"1", "2", "W2", "3", "4", "5"} | {f"H{i}" for i in range(1, 11)}
 REAL = {"21", "21b"}  # real people: no parent links unless --link-real
 
@@ -113,9 +119,15 @@ def batch2():
         if key in g.WIKIDATA:  # already on Wikidata: just attach the source
             lines.append(f"{g.WIKIDATA[key]} | P1343 | {src}{ordinal}{cite(src, key)}")
             continue
-        en = g.EN[key]
-        lines += ["CREATE", f'LAST | Lja | "{p["name"]}"']
-        lines.append(f'LAST | Aen | "{en.rstrip("?")}"' if en.endswith("?") else f'LAST | Len | "{en}"')
+        en = g.EN[key].rstrip("?")
+        alias = ""
+        if " (" in en:  # "Tanate (Takenadeko)": label + alias
+            en, alias = en.rstrip(")").split(" (", 1)
+        lines.append("CREATE")
+        lines += [f'LAST | L{lang} | "{p["name"]}"' for lang in CJK_LANGS]
+        lines += [f'LAST | L{lang} | "{en}"' for lang in ROMAN_LANGS]
+        if alias:
+            lines.append(f'LAST | Aen | "{alias}"')
         lines += [
             'LAST | Den | "figure in the 1870 Ono family Inbe pedigree"',
             f"LAST | P31 | {KAMI if key in GODS else LEGENDARY}{cite(src, key)}",

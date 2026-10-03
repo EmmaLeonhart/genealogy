@@ -98,6 +98,12 @@ link tied to a source.
   going to be cited to that except for the dates, which are just estimations.
   So they are ... going to be deprecated estimations."
 
+- Labels for new people (2026-10-03): "they get the name in Japanese and
+  Chinese in the characters ... their English label, their multi-language
+  label, their French label, and their Indonesian label and their Spanish label
+  all are the same text that we usually would treat as being the English ...
+  I'm not going to make a claim about what the Korean label is going to be."
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no

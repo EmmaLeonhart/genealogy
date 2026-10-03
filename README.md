@@ -22,7 +22,13 @@ invented.
   Japanese names (`ono_inbe_honkeicho.ged`), English names
   (`_en.ged`), and English with estimated years and Wikidata links
   (`_en_dated.ged`). `_en_with_wikidata.ged` is the user's own edit in
-  MyHeritage.
+  MyHeritage. `ono_roster.md` / `.csv` list everyone with Japanese and
+  English names and Wikidata items (`make_ono_roster.py`).
+- `genealogy/ono_wikidata_pipeline.py` and `genealogy/wikidata/`:
+  QuickStatements 3.0 batches for putting the Ono pedigree on Wikidata.
+  Batch 1 makes the source item, batch 2 the people, batch 3 the cited family
+  links; each later batch looks up the previous one's items by SPARQL. Plan:
+  `research/notes/wikidata-import-plan.md`.
 - `data_lake/`: source material (`downloads/` is what the agent fetched).
 - `INTENT.md`, `queue.md`: what the project is for and what is next.
 

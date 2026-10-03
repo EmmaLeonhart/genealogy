@@ -81,8 +81,10 @@ Before each later batch, a SPARQL lookup finds what the earlier batch created.
    disputed by Kosugi Sugimura.
 2. `batch2` finds the source item by P9836 = 2538213, then **creates the
    people without linking them**:
-   - labels (Japanese, plus English, or an English alias where the reading is
-     a guess) and a description;
+   - labels: the characters as the **ja** and **zh** labels; the romanised
+     name as the **en, mul, fr, id and es** labels (the same text in each),
+     including the readings flagged as guesses; **no Korean label** (the
+     user's instruction, 2026-10-03); plus a description;
    - P31 kami or legendary figure, and P21 sex, both cited to the source;
    - **P1343 described by source = the source item, with qualifier P1545
      series ordinal = the pedigree id** (e.g. "H11"), which batch 3 uses to
