@@ -50801,3 +50801,11 @@ two mothers, Malin Olofsdotter and Karin Ersdotter (`GGQD-NJF`), on "born 1713 v
 parents, and the date rule settled it by coincidence. The render then wrote FamilySearch's family onto Malin's Geni id, so our tree
 gives her two fathers (Erik Persson, Olof abu Malin) and two husbands, and Eric two fathers. The chain is anchored on
 `6000000178275437038` and was paired by birth year from round 1. Not changed: whether to refuse Malin/Karin is Emma's call.
+
+## 2026-10-03 14:58 PDT: the ancestor work as reports
+
+`reports/owner-ancestor-frontier.csv`: every Geni-side ancestor of the owner the FamilySearch zipper has not paired (5,697), with
+why: no paired child below them, or a paired child where FamilySearch has no parent in that slot, a parent paired elsewhere, or an
+unpaired parent (the frontier). `reports/familysearch-ancestor-deck-cards.csv`: the 539 cards on deck version 8, refused-slot or
+frontier (iffy), with the answer each has. Also committed at Emma's word: the 17 SPARQL cache files, `Logs/` and `debug.log` left
+in the checkout.
