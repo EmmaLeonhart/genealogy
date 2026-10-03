@@ -166,6 +166,12 @@ def batch3(link_real=False):
     if missing:
         sys.exit(f"Not found yet (run batch 2 first, or wait for the query service): {missing}")
     lines = [f"/* source item: {src}; disputed family links, cited to it */"]
+
+    def dq(a, b):
+        # Between two items that existed before this import, the claim may already
+        # be on Wikidata from other sources: add the citation only, not "disputed".
+        return "" if a in g.WIKIDATA and b in g.WIKIDATA else f"|P1480|{DISPUTED}"
+
     for (father, mother), kids in g.families.items():
         for kid in kids:
             if kid in REAL and not link_real:
@@ -173,11 +179,11 @@ def batch3(link_real=False):
                 continue
             for par, prop in ((father, "P22"), (mother, "P25")):
                 if par:
-                    lines.append(f"{q[kid]}|{prop}|{q[par]}|P1480|{DISPUTED}{cite(src, kid)}")
-                    lines.append(f"{q[par]}|P40|{q[kid]}|P1480|{DISPUTED}{cite(src, kid)}")
+                    lines.append(f"{q[kid]}|{prop}|{q[par]}{dq(kid, par)}{cite(src, kid)}")
+                    lines.append(f"{q[par]}|P40|{q[kid]}{dq(kid, par)}{cite(src, kid)}")
         if father and mother:
-            lines.append(f"{q[father]}|P26|{q[mother]}|P1480|{DISPUTED}{cite(src, mother)}")
-            lines.append(f"{q[mother]}|P26|{q[father]}|P1480|{DISPUTED}{cite(src, mother)}")
+            lines.append(f"{q[father]}|P26|{q[mother]}{dq(father, mother)}{cite(src, mother)}")
+            lines.append(f"{q[mother]}|P26|{q[father]}{dq(father, mother)}{cite(src, mother)}")
     write("batch3_links.qs", lines)
     dates(q)
 
