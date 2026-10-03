@@ -50556,3 +50556,13 @@ reference edits (explained) and the mis-recorded `CLAUDE.md` rule (rewritten) al
 found. The EMERGENCY item (Haakon's foster father as a birth father; a placeholder created as a
 person) was cleared with the blocking of one Geni id and its own question unanswered; it is reopened
 as a queue item, source question only, since Emma ruled nothing is removed.
+
+## 2026-10-03: the "interrogate the source of errors" item closed
+
+All three parts are answered in today's entries: (1) the impossible extra parents come from 200
+spliced saved-path files read by `build-tiny-gedcoms.py` (cut at the target now; the links leave the
+tree at the rebuild running on `1020bf03c`); (2) the impossible primary-slot links against Wikidata
+are in `reports/impossible-parent-links-on-wikidata.csv` (239 live, 191 on items we never edited);
+(3) of the error items closed on 2026-10-02, only the EMERGENCY item lacked its source, and it is
+reopened. Follow-ups are their own items: the post-rebuild check, the 14 false statements for Emma's
+go-ahead, and the Haakon foster-father source.
