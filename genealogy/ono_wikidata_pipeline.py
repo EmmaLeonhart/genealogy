@@ -98,6 +98,7 @@ def wd_date(y):
 def write(name, lines):
     OUT.mkdir(exist_ok=True)
     path = OUT / name
+    lines = [l for l in lines if not l.startswith("/*")]  # plain QuickStatements: no comment lines
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"wrote {path} ({sum(1 for l in lines if l and l != 'CREATE')} commands)")
 
