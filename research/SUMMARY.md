@@ -31,7 +31,19 @@ It runs Hamanari → Hironari → … → Fumiyama (822–867) → … → Chika
 and Hamanari has no parents. No link above Chikazane cites a source, and the
 middle generations are too long. Details are in `notes/familysearch-survey.md`.
 
-**So far no documented chain links any real Inbe to Futodama.** Wikidata has
+**Three god-to-family pedigrees exist, all from 1870 and all judged doubtful.**
+The Awa Shrine (Takayama), Okajima and Ono (斎部宿禰本系帳) pedigrees are bound
+in one public-domain NDL volume (pid 2538213). Each runs from Ame no Hiwashi
+and Ame no Tomi (Futodama's grandson), through a marriage that founds the Awa
+Inbe, then gives one ancestor per legendary emperor down to the 8th century and
+beyond. The Awa and Okajima versions share the same list of names but space it
+differently: five generations fewer, and the same people 100+ years apart.
+Kosugi Sugimura judged all three forged or doubtful in 1876; the Ono one he
+attributed to the forger Suzuki Masatoshi. Confidence: high that these are the
+chains that exist and that they are late constructions. Details:
+`notes/inbe-pedigrees.md`.
+
+**No early or independent chain links any real Inbe to Futodama.** Wikidata has
 the gods down to Ame no Tomi. FamilySearch has people back to Hamanari. Nothing
 bridges the two. Confidence: high for these two databases; the primary texts
 and printed pedigrees are not yet checked.
@@ -49,4 +61,5 @@ and printed pedigrees are not yet checked.
 ## What changed
 
 - 2026-10-02: Research started. Wikidata survey done. FamilySearch survey done:
-  found the 14-generation line, unsourced, ending at Hamanari.
+  found the 14-generation line, unsourced, ending at Hamanari. Found and
+  began transcribing the three 1870 pedigrees (Awa, Okajima, Ono).
