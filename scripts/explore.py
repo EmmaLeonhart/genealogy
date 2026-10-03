@@ -79,7 +79,8 @@ class Graph:
     def _put(self, a, b, rel, mark):
         old = self.adj[a].get(b)
         # A plain edge beats a marked one: if any source asserts the link cleanly, it is clean.
-        if old is None or (old[1] and not mark):
+        # A named parent slot beats the bare "parent" a `children` cell gives.
+        if old is None or (old[1] and not mark) or (old[0] == "parent" and rel != "parent"):
             self.adj[a][b] = (rel, mark)
 
 
