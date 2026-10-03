@@ -92,3 +92,5 @@ record-keeping more than reality. Details: `notes/origin-theories.md`,
   FamilySearch's line to Nakata Norinobu (Suzuki Masatoshi's ally). Shinsen
   Shōjiroku entries checked. Kogo Shūi
   checked; Ono GEDCOM (Japanese and English) built.
+- 2026-10-03: Ono roster built; Wikidata import plan and QuickStatements
+  draft written (not run).
