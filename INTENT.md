@@ -74,6 +74,13 @@ link tied to a source.
   understanding it very well." Default from now on: genealogy outputs get an
   English-first version, with the Japanese in notes, and that is the one opened.
 
+- Dates in GEDCOMs: plain years, no "EST" qualifier ("Your EST is just kinda
+  ruining everything remove it", 2026-10-02).
+- The user edits the GEDCOMs in MyHeritage and saves them at the top level,
+  adding Wikidata links (and created Q141627252 for Tahiko no Sukune). Handle each
+  one the same way: commit as landed, push, `git mv` into `genealogy/`, and fold
+  any new QIDs into `make_ono_gedcom.py`.
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no

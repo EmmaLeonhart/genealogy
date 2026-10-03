@@ -66,11 +66,13 @@ ROLE = {
 }
 assert set(EN) == set(people), set(people) ^ set(EN)
 
-# Wikidata items: the five the user linked in ono_inbe_honkeicho_en_with_wikidata.ged,
+# Wikidata items: those the user linked in her MyHeritage edits,
 # plus three confirmed in research/notes/wikidata-survey.md.
 WIKIDATA = {
     "1": "Q125400", "2": "Q11059539", "3": "Q110064736", "4": "Q24899653",
     "21": "Q11490720", "21b": "Q11490725", "H8": "Q10939697", "W2": "Q85879124",
+    # Added by the user in ono_inbe_honkeicho_en_dated2_additional_qid.ged:
+    "14": "Q141627252", "H1": "Q3275901", "H9": "Q134846383",
 }
 
 # Approximate (birth, death) years implied by the pedigree; negative = BC.
