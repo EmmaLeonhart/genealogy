@@ -81,6 +81,13 @@ in 1641, as a Taira. The Inbe version comes from undated pedigrees held by the
 Oda shrine families. The 1290 "Chikazane" gravestone actually reads 親尊.
 Details: `notes/oda-branch.md`.
 
+**The strongest real continuity is the Miki family of Awa, and it shows the job
+continuing, not a pedigree.** About 45 Kamakura- to Muromachi-period documents
+show them supplying the aratae hemp cloth for the enthronement. That is the Awa Inbe's
+role in the Kogo Shūi, and they still did it in 2019. Their genealogies back to
+the ancient Inbe are modern compilations (1917 onwards). Details:
+`notes/branches.md`.
+
 ## Open questions
 
 - What do the Kogo Shūi and Shinsen Shōjiroku actually say about each branch's

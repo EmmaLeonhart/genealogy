@@ -26,9 +26,9 @@ Work top to bottom. Delete an item when it is done (record it in
 4. Historical individuals: list every named Inbe person found in the
    chronicles (Nihon Shoki, Shoku Nihongi and later), with dates, rank and any
    stated parentage, `research/notes/individuals.md`.
-5. Branches: one note per branch (Awa, Sanuki, Kii, Izumo, Tsukushi/Ise,
-   Bōsō Awa), covering origin claims, shrines, surviving families (e.g. the Miki
-   family of Tokushima), `research/notes/branches.md`.
+5. Branches, `research/notes/branches.md`: Awa/Miki started. Still: the
+   earliest 三木家文書 (do they say Inbe?), Sanuki, Kii, Izumo, Tsukushi/Ise,
+   central Yamato Inbe.
 5a. Origin theories: started in `research/notes/origin-theories.md`
    (be organisation, Soga link, kabane). Still: the hemp/Awa archaeology, the
    Miki family, kin-group counter-theories, craft-guild theories.
