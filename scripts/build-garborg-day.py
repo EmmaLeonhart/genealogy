@@ -4019,6 +4019,14 @@ def subgraph_roots():
         raise SystemExit(
             f"{path.relative_to(ROOT)} holds only {len(roots)} entry points. The roster is about "
             "250 and has been since 2026-08-29; refusing to run on a truncated one.")
+    # ⛔ **AND EVERY ENTRY POINT ACTIVE TODAY, FROM `ledgers`.** Found 2026-10-02: the 441 January
+    # pairs switched on 2026-09-30 (`ledgers.JAN1_DATE`), and every dated per-person entry point
+    # since, were never roots, because the immediate CSV was last built before the gate opened and
+    # nothing rebuilds it from `ledgers.entry_points()`. Of 481 active entry points, 23 were roots.
+    # The owner's and her family's items are never roots (`wikidata_lockout.PROTECTED_ITEMS`).
+    import wikidata_lockout
+    roots += [q for q, _g in ledgers.entry_points() if q.startswith("Q")]
+    roots = [q for q in roots if q not in wikidata_lockout.PROTECTED_ITEMS]
     return tuple(dict.fromkeys(roots))
 
 
