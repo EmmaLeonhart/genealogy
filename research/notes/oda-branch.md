@@ -43,3 +43,10 @@ panel 03 <https://www.town.echizen.fukui.jp/otabunreki/panel/03.html>
   to be Edo or Meiji, the Oda–Inbe link is in the same position as the other
   Inbe pedigrees. *Also open:* whether the 1393 Fujiwara signatories were
   the shrine's priests.
+
+### Search log (2026-10-03)
+
+A web search for 『越前織田明神社家忌部上坂系譜』 finds it only quoted (by the
+Echizen museum, blogs and ja Wikipedia), never with a compilation date or a
+catalogue entry. It adds that Chikazane went up Mt Hiei in Shōka 2 (1258)
+and took the name 覚盛. Next: CiNii / Fukui prefectural archives / 越前町史.
