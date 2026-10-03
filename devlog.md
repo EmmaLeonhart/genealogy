@@ -50566,3 +50566,19 @@ are in `reports/impossible-parent-links-on-wikidata.csv` (239 live, 191 on items
 (3) of the error items closed on 2026-10-02, only the EMERGENCY item lacked its source, and it is
 reopened. Follow-ups are their own items: the post-rebuild check, the 14 false statements for Emma's
 go-ahead, and the Haakon foster-father source.
+
+## 2026-10-03: Tore of Steig as King Haakon's father: the slim drops PEDI
+
+The reopened EMERGENCY question, answered. In the tree Haakon Magnusson (`353479885240011139`,
+`Q1752172`) has Tore Tordsson (`6000000008248195523`, `Q6149119`) as his PRIMARY father and Tore's
+wife (`6000000010686395360`) as his primary mother, from Geni family `6000000010686395364`, a real
+Geni family with Tore's own children; Magnus II and "NN Mother(S) Friller" are the extra parents,
+from Geni family `6000000013614127014`. Tore of Steig was Haakon's foster father. The slim
+(`src/genimerge/slim.py`) keeps `FAMC` and drops `PEDI` and `ADOP`, so a foster or adoptive child
+arrives in `merged.ged` as a birth child: the corpus carries 781 `PEDI foster` and 2,185 `PEDI
+adopted` (the counts recorded in `build-tiny-gedcoms.py`), all read as birth links. Haakon's own
+`PEDI foster` line was not looked up: finding his export means a corpus grep, which is ruled out.
+"NN Mother(S) Friller" passed the creation gates by design: it is a real Geni profile with an NN name,
+and NN people are created on purpose; nothing marks a placeholder for unknown concubines apart from
+an unnamed real person. The fix is queued (keep `PEDI`/`ADOP`, record the pedigree), with the
+Wikidata modelling of a foster or adoptive parent left for Emma.
