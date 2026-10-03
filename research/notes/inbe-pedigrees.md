@@ -15,9 +15,24 @@ a ten-question inquiry, and the National Diet Library holds copies:
    Matsudaira family collection stamp. IIIF manifest:
    `https://dl.ndl.go.jp/api/iiif/2538213/manifest.json`.
 2. **忌部岡島家系 (Inbe Okajima kakei)**: the **Okajima family**, said to be
-   from **Shimotatsu-Matsubara Shrine** (Minamibōsō). NDL copy not yet located.
-3. **斎部宿禰本系帳 (Inbe no Sukune honkeichō)**: the **Ono family**. NDL copy
-   not yet located.
+   from **Shimotatsu-Matsubara Shrine** (Minamibōsō). It is in the **same NDL
+   volume, images 32–50**. It opens with **天富命 Ame no Tomi** ("child of
+   大宮賣命"), who sets up Futodama's sacred site in the east and makes his
+   daughter Iinagahime its priestess, with Yufutsunushi in charge. The last
+   entry is 義鑑, appointed in Meiji 5 (1872). Kosugi's red note is dated Meiji 9,
+   August.
+3. **斎部宿禰本系帳 (Inbe no Sukune honkeichō)**: the **Ono family**. Also in
+   the **same NDL volume, from image 50**. It opens with Ame no Tomi, "real child"
+   of Futodama and Ame no Hiritome. It names his daughter Iinagahime as
+   priestess, and **天日鷲命孫由布津主命**, "Yufutsunushi, Ame no Hiwashi's
+   grandson", as her helper. That matches the Awa pedigree's junction. Kosugi's
+   long red note (Meiji 9, August, with the family head 小野義久) gives the
+   Suzuki Masatoshi forgery account. A separate 1870–71 manuscript of this
+   text is catalogued via CiNii (NDL Search R100000136-I1970304959845984135),
+   with no digital copy.
+
+So all three pedigrees can be read in one public-domain scan, NDL pid 2538213.
+The library catalogues the whole volume under the first title.
 
 ## The verdict on them
 
