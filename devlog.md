@@ -50718,3 +50718,11 @@ it now takes any quoted id. Real Geni ids are digits, so no batch line changes. 
 `reports/built-batches.tsv` lacked `wikidata-splice-removals.qs` (added in `82f424e30`) because the inventory step was skipped in
 `batch_only` runs, which are the only pipeline runs completing while the ring watcher chains them. The step now runs in those too.
 CI is re-dispatched once a pipeline run has rewritten the inventory.
+
+## 2026-10-03: Petrus Olai Gestricius merged (Emma)
+
+Emma asked why it had not been merged; with her explicit authorization (AskUserQuestion, after the
+permission classifier refused the first click), `Q141444742` (ours, 2026-09-13) was merged into the
+older `Q117341653` through the Wikidata UI merge gadget, no edit summary, 2026-10-03 12:56 PDT; the
+redirect `Q141444742` -> `Q117341653` is in the item history. The ledger follows redirects to their
+targets (`ledger_redirects`).
