@@ -309,12 +309,14 @@ def cbdb_identifications():
     by_cbdb = collections.defaultdict(set)
     for line in items.read_text(encoding="utf-8").splitlines():
         q, _, c = line.partition("\t")
-        if q.startswith("Q") and c:
-            by_cbdb[c.strip()].add(q)
+        # Wikidata writes the CBDB id zero-padded to seven digits (`0030158`) and the Geni About
+        # link does not (`person.php?id=30158`), so both sides drop their leading zeros.
+        if q.startswith("Q") and c.strip():
+            by_cbdb[c.strip().lstrip("0")].add(q)
     out = {}
     with open(ids, encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
-            qs_ = by_cbdb.get(row["cbdb_id"], set())
+            qs_ = by_cbdb.get(row["cbdb_id"].strip().lstrip("0"), set())
             if len(qs_) == 1:
                 out[row["geni_id"]] = next(iter(qs_))
     return out

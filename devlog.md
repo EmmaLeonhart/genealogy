@@ -50809,3 +50809,16 @@ why: no paired child below them, or a paired child where FamilySearch has no par
 unpaired parent (the frontier). `reports/familysearch-ancestor-deck-cards.csv`: the 539 cards on deck version 8, refused-slot or
 frontier (iffy), with the answer each has. Also committed at Emma's word: the 17 SPARQL cache files, `Logs/` and `debug.log` left
 in the checkout.
+
+## 2026-10-03: the CBDB join, measured after the rebuild; a zero-padding fix
+
+Rebuild `7ed0b4b95` wrote `reports/derived-cbdb.csv`: 8,605 Geni profiles with a CBDB id in their About
+note. The first join matched none: Wikidata writes `P497` zero-padded to seven digits (`0030158`),
+the Geni link does not; both sides now drop leading zeros. Then: 8,574 pairs. 5,922 name the same item
+the `P2600` roster already gives (the join agrees with the Geni id wherever both exist); 2,650 are Geni
+profiles whose id is on no Wikidata item, the people a ring creation could have duplicated; 2 name a
+different item from the Geni id's, and both of those second items were created by GZWDer's 2025
+"semi-automatic Geni import" (`Q133522035` beside `Q45693584` Jiang Chongshen 蔣重申, `Q133448066`
+beside `Q45575935`). Sample checked by name: Geni stores the given name and native place (公衡 京兆長安),
+Wikidata the full name (韋公衡 Wei Gongheng), same CBDB id. Still to check: the next batch creates none
+of them.
