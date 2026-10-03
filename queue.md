@@ -3,6 +3,16 @@
 Work top to bottom. Delete an item when it is done (record it in
 `research/SUMMARY.md` "What changed").
 
+0. Wikidata import plan, `research/notes/wikidata-import-plan.md`: how to
+   model the Ono pedigree on Wikidata. Cover an item for the 斎部宿禰本系帳
+   itself (with its NDL identifier); P22/P25/P40/P26 statements referenced with
+   P248 stated in = that item plus page/image; qualifiers marking the claim as
+   disputed (P1310 statement disputed by, with Kosugi's 1876 note) and its
+   nature (P5102 / P1480); instance-of for invented people (legendary figure
+   vs human); and whether existing items (Kobito, Shikobuchi, Futodama) should
+   get these parent claims at all. Verify every P/Q id against Wikidata before
+   writing it down. Then a QuickStatements draft for review (do not run).
+
 1. Continue transcribing 安房国忌部家系 (NDL 2538213) into
    `genealogy/awa_inbe_kakei.csv`: images 3–19 are done (gods to 1102; rows 34+ have
    dates but parent links not yet resolved from the bracket layout). Next:
