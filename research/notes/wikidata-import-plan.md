@@ -69,23 +69,46 @@ forgery on real historical figures. Many editors would object. The options:
    most likely to be challenged.
 3. Option 1, plus a talk-page note on Kobito explaining the pedigree.
 
-## Mechanics
+## Mechanics: the three-batch pipeline (user's design, 2026-10-03)
 
-`genealogy/make_ono_quickstatements.py` writes a **draft** in QuickStatements
-v1 format, for review only. **Do not run it without reading it.** It has two
-phases:
+`genealogy/ono_wikidata_pipeline.py` writes QuickStatements **3.0** batches
+(V1 syntax) into `genealogy/wikidata/`. The user reviews and runs each one.
+Before each later batch, a SPARQL lookup finds what the earlier batch created.
 
-- **Phase 1** (`genealogy/ono_quickstatements_phase1.txt`): create the
-  honkeichō item and the new people, with labels, descriptions, P31 and P1343.
-- **Phase 2** (`genealogy/ono_quickstatements_phase2.txt`): the family
-  statements. QuickStatements can only refer back to the *last* item it
-  created, so phase 2 uses placeholders like `{ono:6}` that have to be filled
-  with the QIDs phase 1 produced.
+1. `batch1` creates **the source item** for the 斎部宿禰本系帳: labels en/ja,
+   descriptions, P31 manuscript and family tree, P407 Japanese, P9836 NDL
+   Persistent ID 2538213, P571 c. 1870, and P50 Suzuki Matoshi *allegedly*,
+   disputed by Kosugi Sugimura.
+2. `batch2` finds the source item by P9836 = 2538213, then **creates the
+   people without linking them**:
+   - labels (Japanese, plus English, or an English alias where the reading is
+     a guess) and a description;
+   - P31 kami or legendary figure, and P21 sex, both cited to the source;
+   - **P1343 described by source = the source item, with qualifier P1545
+     series ordinal = the pedigree id** (e.g. "H11"), which batch 3 uses to
+     find them;
+   - **estimated P569 / P570**: decade precision (`/8`), qualifier P1480
+     sourcing circumstances = Q5727902 circa, **deprecated rank (`R-`)**, and
+     P2241 reason for deprecated rank = Q25895909 "cannot be confirmed by other
+     sources". These carry **no reference**: they are estimates, not claims of
+     the source (the user's instruction).
+   - The 11 people already on Wikidata get only the P1343 statement.
+3. `batch3` finds all 49 by their P1545 ordinal, then writes the **family
+   links** (P22, P25, P40, P26). Each is qualified P1480 = disputed and cited
+   with S248 stated in = the source, S958 section = "NDL frame N", and S854 =
+   the direct frame URL `https://dl.ndl.go.jp/pid/2538213/1/N`. By default it
+   skips parent links for the two real people. `--link-real` adds them.
 
-The draft follows option 1 above (no parent statements on Kobito or
-Shikobuchi) until the user decides otherwise.
+Every citation goes to the source item, except the dates. Rank setting
+(`R-`) needs **QuickStatements 3.0**: QuickStatements 2 cannot set ranks
+(QS 3.0 user guide, meta.wikimedia.org).
 
-## Caution for phase 2
+How the date estimates are made: each person is placed at the reign the
+pedigree assigns them, using the traditional Nihon Shoki reign dates.
+Unplaced people are interpolated between anchors (`make_ono_gedcom.DATES`).
+Decade precision is used so the dates don't look exact.
+
+## Caution for batch 3
 
 Some links between items that already exist are already on Wikidata from
 other sources, for example Futodama P22 Takamimusubi and Futodama P40 Ame no

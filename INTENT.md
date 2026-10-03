@@ -90,6 +90,14 @@ link tied to a source.
 - Asked for a roster of "all the Wikidata items that are present for these plus
   their Japanese name and their English name ... alongside any notes".
 
+- **Wikidata pipeline design (user, 2026-10-03):** batch 1 creates the source
+  item; batch 2 creates the people unlinked, "described by" the source, with
+  name, gender and estimated lifetime; batch 3 adds cited connections using the
+  source with page and URL. SPARQL between batches finds the created items. "The
+  source needs to exist before the people do ... Any other claims on them are
+  going to be cited to that except for the dates, which are just estimations.
+  So they are ... going to be deprecated estimations."
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no
