@@ -91,3 +91,26 @@ genealogy that **replaces** the Inbe ancestry rather than tracing it.
 - The historical layer goes in as unconnected individuals.
 - The Chikazane → Taira link goes in marked as a claimed descent (GEDCOM
   QUAY 0 or 1) with a note.
+
+## References on the parentage statements (checked 2026-10-02)
+
+| Statement | Wikidata reference |
+|---|---|
+| Futodama → child Ame no Iwatowake | 古語拾遺 (Kogo Shūi) |
+| Futodama → child Ōmiyanome | 古語拾遺 |
+| Futodama → child Ame no Kushimimi | 新撰姓氏録 (Shinsen Shōjiroku) |
+| Futodama → child Kamo Taketsunumi | ja Wikipedia only |
+| Futodama → child Ame no Uzume | a Hokkaido University paper, hdl 2115/34366 |
+| Futodama → father Takamimusubi | imported from ja Wikipedia |
+| Ame no Kushimimi → child Ame no Tomi | imported from ja Wikipedia |
+| Ame no Hiwashi → father Ame no Tajikarao | Kokugakuin *Encyclopedia of Shinto* (says "child of Tajikarao" per the Nihongi tradition) |
+
+Japanese Wikipedia's Futodama article cites **斎部氏家牒** (an Inbe family
+register, as printed in 『大和志料』) for Futodama's children. So the
+Kushimimi → Ame no Tomi steps come from a mix of the Shinsen Shōjiroku and
+that family register.
+
+The 安房国忌部家系 (see `inbe-pedigrees.md`) instead makes Ame no Hiwashi the
+grandson of **Kamimusubi**, contradicting the Tajikarao → Omoikane →
+Takamimusubi chain in Wikidata. The sources disagree about the Awa ancestor's
+own parentage.

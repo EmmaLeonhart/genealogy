@@ -3,9 +3,14 @@
 Work top to bottom. Delete an item when it is done (record it in
 `research/SUMMARY.md` "What changed").
 
-1. Check the references on Wikidata's unusual Futodama parentage statements
-   (Ame no Uzume and Kamo Taketsunumi as Futodama's children; Ame no Hiwashi
-   as Tajikarao's son), add to `research/notes/wikidata-survey.md`.
+1. Transcribe the generational line from 安房国忌部家系 (NDL 2538213, 75 images,
+   IIIF) into `genealogy/awa_inbe_kakei.csv`: person, parent, alias, notes, image
+   number. Names and parentage only; record Kosugi's red notes where they hit
+   a link.
+1b. Locate the NDL copies of 忌部岡島家系 and 斎部宿禰本系帳 (search NDL Digital
+   for the titles) and do the same, at least the god-to-human junction.
+1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
+   whether FamilySearch's line matches it.
 2. Find the source behind FamilySearch's Inbe line (Hamanari → Chikazane):
    look for an Inbe/斎部 pedigree in Oda genealogies, Tsurugi Shrine records,
    Zoku Gunsho Ruijū / Keizu Sanyō. Check Hamanari–Hironari against the
