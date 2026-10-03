@@ -50838,3 +50838,29 @@ over 80 years. Reading from the siblings: 676 the child's date (every sibling fi
 parent's date (no child fits), 200 mixed, 37 a wrong link or a date centuries off (over 150 years,
 no siblings: Hødd Svadesdatter b. 335 as mother of Gard Norsson b. 650, stated by both Geni and
 FamilySearch), 828 undetermined. 28 are live on Wikidata. Nothing in the tree or on Wikidata changed.
+
+## 2026-10-03: a surname links to an existing item only by its English label and "family name" (Emma)
+
+Where it went wrong: `namemodel.store_name_item` indexed every label of every name item in every
+language, case-folded, so `Tu`, the Norwegian farm name of `Q141422096` Gjermund Hansson Tu and others,
+matched `Q709747` 杜 (en label "Du"), which carries `Tu` as a label in another language; our batch
+added that `P734` on 2026-09-11 and Emma moved it by hand today. Fix: `namemodel.family_item_fits`
+accepts a family-name item only when its `en` label is exactly the surname and its `en` description
+exactly "family name" (or it is one the account created with that label); `store_name_item` and
+`load_plan` refuse every other match for a family or married name, so the batch creates a new item
+instead. The labels come from `out/wikidata/family-name-items-en.tsv.gz`, which
+`extract-name-items.py` now writes beside its extract (every name item, and any item described
+"family name" whatever its `P31`: `Eriksson` `Q1354604` is classed a patronymic surname), plus 66 plan
+items the offline store does not hold, fetched live. `refresh-created-name-items.py` now runs in the
+pipeline, so a family-name item made by hand under the account is linked rather than re-created
+(Emma's `Q141633168` Tu has since been merged into `Q128277799` Tu, which is what links now).
+
+Effect on the plan: 126 of 3,679 planned family-name links are refused (4,216 bearers),
+`reports/family-name-plan-refused.csv`: 73 because the label differs (`KHOO`/`WONG` against "Khoo"/
+"Wong" from Geni's capitals, `Reuß` against "Reuss"), 53 because the description differs ("family name
+(臣)" on `Chén`, "male given name" on `Warren`, "German family from Berlin" on `Oppenheim`). Live
+`P734` statements on items the account created that fail the rule: 637 on 153 family items,
+`reports/p734-failing-family-rule.csv` (no `en` label, a description other than "family name", a split
+particle such as `Zum`, or a surname Geni does not give the person, such as `de Ros` on Birgerus
+Nicolai Cantherus). Listed only; nothing on Wikidata changed.
+Test: `test_a_family_name_links_only_by_its_exact_english_label_and_description`, CI.

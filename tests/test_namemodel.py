@@ -1823,3 +1823,17 @@ def test_ersson_is_eriks_son_not_a_family_name():
     assert namemodel.patronymic_or_surname("Ersson", "Erik Persson") == "patronymic"
     assert namemodel.patronymic_or_surname("Ersdotter", "Eric Jansson") == "patronymic"
     assert namemodel.patronymic_or_surname("Ersson", "Nils Ersson") == "family"
+
+
+def test_a_family_name_links_only_by_its_exact_english_label_and_description(monkeypatch):
+    """Emma, 2026-10-03: a `P734` value is an existing item only when its `en` label is exactly the
+    surname and its `en` description exactly "family name". `Tu` (a Norwegian farm name) had been
+    linked to `Q709747`, 杜, whose en label is "Du"."""
+    import namemodel as nm
+    monkeypatch.setattr(nm, "_FAMILY_EN", {"Q709747": ("Du", "Chinese family name (杜)"),
+                                           "Q1354604": ("Eriksson", "family name"),
+                                           "Q37548132": ("Khoo", "family name")})
+    monkeypatch.setattr(nm, "created_name_item", lambda token, usage: "")
+    assert nm.family_item_fits("Q1354604", "Eriksson")
+    assert not nm.family_item_fits("Q709747", "Tu")
+    assert not nm.family_item_fits("Q37548132", "KHOO")

@@ -38,6 +38,10 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8")
 
 OUT = ROOT / "out" / "wikidata" / "name-items-in-store.tsv"
+#: Every name item's `en` label and `en` description (whatever its `P31`: `Eriksson` is classed
+#: as a patronymic surname and is still a "family name" by its description), which decide whether a surname may
+#: link to one (Emma, 2026-10-03, `namemodel.family_item_fits`).
+FAMILY_EN = ROOT / "out" / "wikidata" / "family-name-items-en.tsv.gz"
 
 #: `P31` value -> the usage a person links to it with. Confirmed in `CLAUDE.md` § *Names*.
 KIND = {"Q101352": "family",       # family name, linked with P734
@@ -56,18 +60,27 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     scanned = found = 0
     start = time.time()
-    with OUT.open("w", encoding="utf-8", newline="") as out:
+    with OUT.open("w", encoding="utf-8", newline="") as out, \
+            gzip.open(FAMILY_EN, "wt", encoding="utf-8", newline="\n") as fam:
         out.write("qid\tkind\tp31\tlabels\n")
+        fam.write("qid\ten_label\ten_description\n")
         for path in sorted(glob.glob(str(ROOT / "wikidata" / "items" / "items-*.jsonl.gz"))):
             with gzip.open(path, "rt", encoding="utf-8") as fh:
                 for line in fh:
                     scanned += 1
-                    if not any(p in line for p in PROBE):
+                    named = any(p in line for p in PROBE)
+                    if not named and '"family name"' not in line:
                         continue
                     item = json.loads(line)
+                    en = (item.get("labels", {}).get("en") or {}).get("value", "")
+                    desc = (item.get("descriptions", {}).get("en") or {}).get("value", "")
                     p31 = [s["mainsnak"].get("datavalue", {}).get("value", {}).get("id")
                            for s in item.get("claims", {}).get("P31", [])]
                     kinds = sorted({KIND[q] for q in p31 if q in KIND})
+                    # Every name item, and any item described "family name" whatever its `P31`
+                    # (`Eriksson` `Q1354604` is classed a patronymic surname).
+                    if kinds or desc == "family name":
+                        fam.write(f"{item['id']}\t{en}\t{desc}\n")
                     if not kinds:
                         continue
                     labels = sorted({v["value"] for v in item.get("labels", {}).values()})

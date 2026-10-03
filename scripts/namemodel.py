@@ -2429,10 +2429,12 @@ def load_plan(path: Path | None = None) -> dict:
                 continue
             if row["token"] in LOCATIVE_WORDS:     # `på`, 2026-09-25: never an item
                 continue
-            out[(row["token"], row["usage"])] = (
-                (row.get("existing_qid") or "").strip(),
-                (row.get("action") or "").strip(),
-            )
+            qid, action = (row.get("existing_qid") or "").strip(), (row.get("action") or "").strip()
+            # A family name links only by its exact English label and "family name" (Emma,
+            # 2026-10-03, `family_item_fits`); a plan match made any other way becomes a creation.
+            if row["usage"] in ("family", "married") and qid and not family_item_fits(qid, row["token"]):
+                qid, action = "", "create"
+            out[(row["token"], row["usage"])] = (qid, action)
 
     resolved = ROOT / "reports" / "ambiguous-names-resolved.tsv"
     if resolved.exists():
@@ -2490,7 +2492,11 @@ def store_name_item(token, usage):
     global _STORE_INDEX
     if _STORE_INDEX is None:
         _STORE_INDEX = _load_store_index()
-    return _STORE_INDEX.get((token.casefold(), usage), "")
+    qid = _STORE_INDEX.get((token.casefold(), usage), "")
+    # A family name links only by its exact English label and "family name" (Emma, 2026-10-03).
+    if usage in ("family", "married") and qid and not family_item_fits(qid, token):
+        return ""
+    return qid
 
 
 _CREATED_INDEX = None
@@ -2563,6 +2569,35 @@ def _load_store_index():
                 for label in labels.split("|"):
                     index.setdefault((label.casefold(), kind), qid)
     return index
+
+
+#: ⛔ **A SURNAME LINKS TO AN EXISTING ITEM ONLY BY ITS ENGLISH LABEL AND "family name". Emma,
+#: 2026-10-03:** *"we are not supposed to be smart about the surnames ... if it does not exist with
+#: the text under the english language label with the description 'family name' then we create a
+#: new item ... No text searching lol"*. The Norwegian farm name `Tu` had been linked to `Q709747`
+#: (杜, en label "Du") because `Tu` is one of its labels in another language. Every other way of
+#: matching a family name (labels in other languages, aliases, case folding) is refused.
+FAMILY_DESCRIPTION = "family name"
+_FAMILY_EN = None
+
+
+def family_item_fits(qid, token):
+    """True when `qid`'s `en` label is exactly `token` and its `en` description exactly
+    "family name" (`out/wikidata/family-name-items-en.tsv.gz`), or it is a family-name item this
+    account created with that label (`reports/created-name-items.tsv`, which carries the same
+    label and description by construction)."""
+    global _FAMILY_EN
+    if _FAMILY_EN is None:
+        _FAMILY_EN = {}
+        path = ROOT / "out" / "wikidata" / "family-name-items-en.tsv.gz"
+        if path.exists():
+            import gzip
+            with gzip.open(path, "rt", encoding="utf-8", newline="") as fh:
+                for row in csv.DictReader(fh, delimiter="\t"):
+                    _FAMILY_EN[row["qid"]] = (row["en_label"], row["en_description"])
+    if _FAMILY_EN.get(qid) == (token, FAMILY_DESCRIPTION):
+        return True
+    return bool(qid) and created_name_item(token, "family") == qid
 
 
 def _store_name_items(planned):
