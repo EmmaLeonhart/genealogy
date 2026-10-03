@@ -13,6 +13,8 @@ it. Each session starts with
 
 
 
+- **Fix this queue's shape: 1 finding from ontology-harness's shape check.** line 32, item "Keep foster and adoptive links from being read as birth p...": status-in-place (item says 'Done 2026-10-03'; status written onto work; delete done items and log them in devlog.md). The rules are `../docs/queue-shape.md` (the parent repo). Fix them the way this repo's own queue rules say, then delete this item.
+
 - **Make CI green (Emma, 2026-09-27; run 36373025512 then).** Never weaken a test. State 2026-10-02 16:40 UTC: every cause found and fixed in the repo (the `NN-` P1810 line, the builder test, the vocabulary's patronymic roles, the live-value QIDs, the backfill test's second cap, and the label overwrites without an alias rescue, which were the label-edit cap draining an `Amul` emitted in an earlier batch while a new label value went out alone). The batch on main (`58dfcdfc6`) was composed before the cap fix and still carries `Q141574857` without its rescue, so the next pipeline rebuild must land first; then dispatch `ci.yml` on main and confirm green.
 
 - **Clean up this project, and the ontology-harness checkout of it.** Emma: "we should be putting at the end of the queue something about cleaning it up." Keep it at the end. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
