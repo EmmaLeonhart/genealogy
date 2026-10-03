@@ -7,6 +7,20 @@
 #
 # The genitive s is shared: Rasmussen -> Rasmusdatter, never Rasmussdatter.
 
+# Ottesen -- the counterpart of Ottesdatter (83 bearer(s))
+CREATE
+LAST	Len	"Ottesen"
+LAST	Lmul	"Ottesen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141622081
+Q141622081	P5278	LAST
+Q141622081	P407	Q9043
+Q141622081	P407	Q9035
+
 # Torstensen -- the counterpart of Torstensdatter (38 bearer(s))
 CREATE
 LAST	Len	"Torstensen"
@@ -20,16 +34,6 @@ LAST	P5278	Q141549532
 Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
-
-# Dagsdotter -- the counterpart of Dagsson (19 bearer(s))
-CREATE
-LAST	Len	"Dagsdotter"
-LAST	Lmul	"Dagsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
 
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
@@ -81,6 +85,21 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
+# Didriksdatter -- the counterpart of Didriksen (14 bearer(s))
+CREATE
+LAST	Len	"Didriksdatter"
+LAST	Lmul	"Didriksdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141614695
+Q141614695	P5278	LAST
+Q141614695	P407	Q9043
+Q141614695	P407	Q9035
+
 # Hrólfsson -- the counterpart of Hrólfsdóttir (11 bearer(s))
 CREATE
 LAST	Len	"Hrólfsson"
@@ -94,10 +113,35 @@ LAST	P5278	Q113001280
 Q113001280	P5278	LAST
 Q113001280	P407	Q294
 
+# Palnesdatter -- the counterpart of Palnesen (8 bearer(s))
+CREATE
+LAST	Len	"Palnesdatter"
+LAST	Lmul	"Palnesdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141625206
+Q141625206	P5278	LAST
+Q141625206	P407	Q9043
+Q141625206	P407	Q9035
+
 # Mstislavsen -- the counterpart of Mstislavsdatter (7 bearer(s))
 CREATE
 LAST	Len	"Mstislavsen"
 LAST	Lmul	"Mstislavsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Nikolaisen -- the counterpart of Nikolaisdatter (7 bearer(s))
+CREATE
+LAST	Len	"Nikolaisen"
+LAST	Lmul	"Nikolaisen"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444148
