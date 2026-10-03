@@ -10,8 +10,10 @@ Work top to bottom. Delete an item when it is done (record it in
    images 20–75 (lower priority than 1b/1c), plus a check of image 10 and the
    image 14→15 page break (who is 久米麻呂's father?). Verify 色洞子 =
    忌部色夫知.
-1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
-   whether FamilySearch's line matches it.
+1c. BLOCKED-ON-USER-ACTION: Hōga Toshio's 『古代氏族系譜集成』 (古代氏族研究会,
+   1986; CiNii BN00924708; Inbe in vol. 2, 神別) is not online. Reading it
+   needs a library copy (NDL in-library, or a university library). Then
+   check whether FamilySearch's line matches it.
 2. Date the Oda shrine families' Inbe pedigrees (『越前織田明神社家忌部上坂系譜』,
    『忌部氏系譜』): search CiNii / Fukui prefectural archives / 越前町史.
    Read the 1393 藤原信昌・将広置文 text. Notes: `research/notes/oda-branch.md`.
