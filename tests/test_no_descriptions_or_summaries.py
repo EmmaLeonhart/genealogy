@@ -227,8 +227,10 @@ def test_the_composer_never_describes_by_relationship():
 
 def test_no_person_is_labelled_by_a_relationship_phrase_in_english():
     """Ruled 2026-09-28 (an NN person is `NN` in `mul` and `NN` in `en`), enforced 2026-10-01:
-    batch `30b61a451` still created 20 people as `Len "wife of Halvard Guttormsson? Såstad"`."""
-    label = re.compile(rf'^(?:LAST|Q[1-9][0-9]*)	Len(?:-us)?	"(?:[^",]{{1,120}}, )?(?:{RELATION_WORD}) of ')
+    batch `30b61a451` still created 20 people as `Len "wife of Halvard Guttormsson? Såstad"`.
+    AT CREATION only since 2026-10-03 (Emma, by AskUserQuestion, "Approve, English too later"):
+    an existing NN item of ours takes its relational `en` label a day after creation."""
+    label = re.compile(rf'^LAST	Len(?:-us)?	"(?:[^",]{{1,120}}, )?(?:{RELATION_WORD}) of ')
     offenders = []
     for path in sorted({p for pattern in BATCHES for p in REPO.glob(pattern)}):
         # Records of hand batches already run (2026-08-29, 2026-10-01); what they wrote live is corrected
@@ -275,8 +277,14 @@ def test_the_relational_labels_of_batch_30b61a451_are_corrected():
     for qid in ("Q141612054", "Q141612062", "Q141612168", "Q141612504"):
         # `Q141612062` was created with no `en-us`, so it gets none.
         for lang in ("en",) if qid == "Q141612062" else ("en", "en-us"):
-            value = fixed.get((qid, lang)) or live.get((qid, lang), "")
-            assert value.startswith("NN") and " of " not in value, (qid, lang, value)
+            # A pending correction row restores `NN`. Once live, the label may carry the relational
+            # phrase the later pass writes a day after creation (Emma, 2026-10-03), so the live
+            # value is only required to be set.
+            if (qid, lang) in fixed:
+                value = fixed[(qid, lang)]
+                assert value.startswith("NN") and " of " not in value, (qid, lang, value)
+            else:
+                assert live.get((qid, lang)), (qid, lang)
     for qid in ("Q141612062", "Q141612168"):
         assert (fixed.get((qid, "mul")) or live.get((qid, "mul"))) == "NN", qid
     offenders = []

@@ -508,7 +508,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
     life description, the occupation, then `Geni <id>`, for NN people too.
   - **⛔ NO DESCRIPTIVE LABELS ON PEOPLE IN ENGLISH. Ruled 2026-09-28:** an NN person is `NN` in `mul`
     and `NN` in `en`, never `wife of …` as a label. A descriptive label is the same liability as an
-    improvable description.
+    improvable description. **⛔ That is AT CREATION. The relational labels come a day later, English
+    included (Emma, 2026-10-03, by AskUserQuestion):** an NN person is created with nothing relational
+    in any language; from the day after, a pass in `build-garborg-day.py` writes the standardized
+    relational label in `en`/`ja`/`zh`/`ko` where the slot is empty or still the bare `NN …` value.
   → [wikidata](docs/rules/wikidata-editing.md)
 - **Wikidata editing starts 2026-09-01; the schedule sends from 2026-09-30 08:00 UTC.** Two dates, each
   written twice and pinned by a test. A start date is not a blocker. **⛔ The schedule is paused by

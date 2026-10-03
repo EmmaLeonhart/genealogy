@@ -93,6 +93,8 @@ SIBLING_KINSHIP_REPAIR_CAP = 40
 PATRONYMIC_ROLE_REPAIR_CAP = 100
 #: Relational labels re-anchored on the father per run (queue item 2026-09-27; 95 measured).
 RELATION_RELABEL_CAP = 100
+#: NN items of ours given their relational labels a day after creation, per run (2026-10-03).
+LATER_RELATIONAL_CAP = 200
 _siblings_emitted = []
 
 #: ⛔ **`P3448` STEPPARENT, ruled 2026-09-15:** *"our general relationship emitter stuff should be
@@ -8963,6 +8965,42 @@ def main():
         print(f"relational labels re-anchored on the father: {_relabelled} (cap {RELATION_RELABEL_CAP})")
     lines.append("")
 
+    # ⛔ **THE RELATIONAL LABELS COME A DAY AFTER CREATION, ENGLISH INCLUDED. Emma, 2026-10-03, by
+    # AskUserQuestion ("Approve, English too later"):** an NN person is created `NN` in `mul` and
+    # `en` with nothing relational; from the day after, this pass writes the standardized relational
+    # label in `en`, `ja`, `zh` and `ko`, *"because then uniqueness isn't as much of an issue"*. Only
+    # an item of ours whose `mul` is still a bare `NN …` (no given name), created on an earlier day,
+    # and only a slot that is empty or still holds that same `NN …` value.
+    from labels import UNNAMED_MARKER
+    _created_on = {}
+    with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="\t"):
+            if (r.get("created") or "")[:4].isdigit():
+                _created_on[r["qid"]] = r["created"][:10]
+    _today = datetime.date.today().isoformat()
+    _later = 0
+    for g, q in sorted(our_items.items(), key=lambda kv: kv[1]):
+        if _later >= LATER_RELATIONAL_CAP:
+            break
+        nn = live_labels.get((q, "mul"), "")
+        if (not nn.startswith(f"{UNNAMED_MARKER} ") and nn != UNNAMED_MARKER) \
+                or not (_created_on.get(q, _today) < _today) or own_given_name(fields.get(g)):
+            continue
+        described = describe_all(g, facts, father, mother, referred_to_as, table,
+                                 children, spouses, siblings, qid_of=our_items,
+                                 live_labels=live_labels, fields=fields)
+        wrote = False
+        for code in ("en", "ja", "zh", "ko"):
+            have = live_labels.get((q, code), "")
+            if described.get(code) and (not have or have == nn) and described[code] != have:
+                lines.append(f'{q}\tL{code}\t"{qs(described[code])}"')
+                wrote = True
+        _later += wrote
+    if _later:
+        print(f"relational labels a day after creation: {_later} NN item(s) "
+              f"(cap {LATER_RELATIONAL_CAP})")
+    lines.append("")
+
     # ---- 2. the next ring ---------------------------------------------------
     create_from = len(lines)
     lines += ["# INDIVIDUALS. Each is linked only to items that already exist; links",
@@ -9191,15 +9229,14 @@ def main():
             else:
                 # ⛔ **NO RELATIONSHIP PHRASE AS AN ENGLISH LABEL. Ruled 2026-09-28, enforced
                 # 2026-10-01** (20 creations in batch `30b61a451` went out as `Len "wife of …"`):
-                # an NN person is `NN` in `mul` and `NN` in `en`. The CJK phrases stay.
+                # an NN person is `NN` in `mul` and `NN` in `en`.
+                # ⛔ **AND NO RELATIONSHIP PHRASE IN ANY LANGUAGE AT CREATION. Emma, 2026-10-03 (by
+                # AskUserQuestion):** *"nothing should be created under them"*; the relational labels
+                # come a day later, from `_later_relational_labels`, English included.
                 lines.append(f'LAST\tLen\t"{mul_value}"')
                 if not _desc_emitted:
                     lines.append(f'LAST\tDen\t"{qs(_desc)}"')
                     _desc_emitted = True
-                for code, value in sorted(described.items()):
-                    if code in ("en", "en-us"):
-                        continue
-                    lines.append(f'LAST\tL{code}\t"{value}"')
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:

@@ -50649,3 +50649,17 @@ on `8e004d55a`; Haakon's foster family and Puyi's two adoptive families among th
 qualifying line for each such statement already live without it, subject inside the edit universe:
 25 today. The father and mother columns are unchanged, so the ring still climbs adoptive lines.
 Test: `test_a_foster_or_adoptive_parent_takes_the_kinship_qualifier`, CI.
+
+## 2026-10-03: NN people are created plain; their relational labels come a day later (Emma)
+
+Emma approved the proposal by AskUserQuestion, English included ("Approve, English too later").
+`build-garborg-day.py` no longer writes the `ja`/`zh`/`ko` relational phrases at creation (24 of the
+57 NN creations in the batch at `d2f0376bf` carried them); an NN person is created `NN …` in `mul`
+and `en` with its description, and nothing relational. A new pass after the re-anchor pass writes the
+standardized relational label (`describe_all`) in `en`, `ja`, `zh` and `ko` on items of ours whose
+`mul` is a bare `NN …`, that have no given name of their own, and that the ledger records as created
+on an earlier day, into a slot that is empty or still holds that `NN …` value, at most
+`LATER_RELATIONAL_CAP` (200) items a run. The existing standardized NN naming is untouched (the
+correction item). `CLAUDE.md`'s English-label rule now says "at creation";
+`test_no_person_is_labelled_by_a_relationship_phrase_in_english` checks creations only, and the
+30b61a451 test no longer forbids the relational label the later pass writes on those items.
