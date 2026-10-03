@@ -192,3 +192,20 @@ line.** The Ono document adds two things: Hiwashi's own ancestry back to
 Kamimusubi, which matches the Awa pedigree's "grandson of Kamimusubi" only
 loosely, since Ono has six generations between them; and a separate Futodama
 father-line running into Kobito and Shikobuchi.
+
+### Where the honkeichō goes after the 8th century (images 57–73)
+
+After 久米麻呂 and 勝萬呂, the Ono document follows **Awa district officials and
+priests of 洲宮 (Sunomiya / Susaki)**: 宅足, 満足 (d. Tenchō 5, 828), 得積,
+浄人, 宗継, 良資, 景知 (Engi era), 副義 (d. Tengen 5, 982), 統光 (d. Chōtoku 2,
+996), 義種 (d. Chōgen 9, 1036). It continues through the Kamakura period, with
+Minamoto no Yoritomo's prayers in Awa in 1180 and gifts of land, and on to Edo-period heads
+(義當, 義簪, Kansei era). Most of the later names begin with 義, as in the Awa
+(Takayama) pedigree, and both tell the same Yoritomo episode.
+
+**None of FamilySearch's names appear** (伴主, 明成, 季長, 茂藤, 春光, 頼友, 頼成,
+頼親, 親光, 親澄), and neither do Hamanari, Hironari or Fumiyama. So
+**FamilySearch's Hamanari → Chikazane line does not come from these three
+pedigrees.** The remaining candidates are an Oda / Tsurugi Shrine pedigree
+(the line ends at Chikazane, the Oda ancestor) or Hōga Toshio's 1986
+compilation, which Japanese Wikipedia cites for "father of Fumiyama: Tomonushi".
