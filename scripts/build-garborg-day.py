@@ -1993,6 +1993,61 @@ def write_composed_labels():
           f" -> {COMPOSED_LABELS_OUT.relative_to(ROOT)}")
 
 
+#: `P1039` *kinship to subject* on a foster or adoptive parent's `P22`/`P25`. Emma, 2026-10-03:
+#: *"Qualifier figure it out, for Toresfoestre I did it myself and that should be the standard"*:
+#: Haakon Magnusson `Q1752172` `P22` Tore Tordsson with `P1039` foster father, `P25` Tore's wife
+#: with foster mother, and the reverse `P40` left bare.
+NON_BIRTH_KINSHIP = {("foster", "P22"): "Q20747105", ("foster", "P25"): "Q20747106",
+                     ("adopted", "P22"): "Q61740757", ("adopted", "P25"): "Q61740758"}
+
+
+def qualify_non_birth_parents(lines, our_items, live_entities=None, editable=None):
+    """Put `P1039` on every `P22`/`P25` line whose child and parent are a foster or adoptive pair in
+    `reports/derived-pedigree.csv`, and add one qualifying line for each such statement already
+    live without it (subject in `editable` only, the locality the gate applies)."""
+    path = ROOT / "reports" / "derived-pedigree.csv"
+    if not path.exists():
+        return lines
+    kind = {}
+    with open(path, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            for parent in (r["husb"], r["wife"]):
+                if parent and r["pedigree"] in ("foster", "adopted"):
+                    kind[(r["child"], parent)] = r["pedigree"]
+    geni_of = {q: g for g, q in our_items.items()}
+    out, current, done = [], None, 0
+    for ln in lines:
+        if ln == "CREATE":
+            current = None
+        m = re.match(r'^LAST\tP2600\t"(\d+)"', ln)
+        if m:
+            current = m.group(1)
+        parts = ln.split("\t")
+        if len(parts) >= 3 and parts[1] in ("P22", "P25") and "P1039" not in parts[3:]:
+            child = current if parts[0] == "LAST" else geni_of.get(parts[0])
+            k = kind.get((child, geni_of.get(parts[2])))
+            if k:
+                parts[3:3] = ["P1039", NON_BIRTH_KINSHIP[(k, parts[1])]]
+                ln = "\t".join(parts)
+                done += 1
+        out.append(ln)
+    added = []
+    for (child, parent), k in sorted(kind.items()):
+        qc, qp = our_items.get(child), our_items.get(parent)
+        entity = (live_entities or {}).get(qc) if qc and qp else None
+        if not entity or (editable is not None and qc not in editable):
+            continue
+        for prop in ("P22", "P25"):
+            for c in (entity.get("claims") or {}).get(prop, []):
+                if ((c.get("mainsnak") or {}).get("datavalue") or {}).get("value", {}).get("id") == qp \
+                        and "P1039" not in (c.get("qualifiers") or {}):
+                    added.append(f"{qc}\t{prop}\t{qp}\tP1039\t{NON_BIRTH_KINSHIP[(k, prop)]}")
+    if done or added:
+        print(f"foster/adoptive parents: {done} batch line(s) qualified, {len(added)} live "
+              f"statement(s) given P1039")
+    return out + added
+
+
 def gate_label_languages(lines):
     """Drop every `L`/`A` line outside `LABEL_LANGUAGES`, except Emma's own hand labels.
 
@@ -10317,6 +10372,15 @@ def main():
         if _held:
             print(f"{_held} bare restatement(s) dropped from the assembled batch, head included")
     _final_lines = add_fs_id_statements(_final_lines, our_items, live_values or set())
+    _live_entities = {}
+    for _shard in sorted((ROOT / "reports").glob("garborg-live-items-*.json")):
+        _live_entities.update(json.loads(_shard.read_text(encoding="utf-8")))
+    _universe_file = ROOT / "out" / "wikidata" / "edit-universe.json"
+    _editable = None
+    if _universe_file.exists():
+        _u = json.loads(_universe_file.read_text(encoding="utf-8"))
+        _editable = set(_u.get("universe", [])) | set(_u.get("one_step", []))
+    _final_lines = qualify_non_birth_parents(_final_lines, our_items, _live_entities, _editable)
     _final_lines = gate_label_languages(_final_lines)
     _final_lines = update_applied_facts(_final_lines, live_labels, live_values,
                                         datetime.date.today().isoformat())

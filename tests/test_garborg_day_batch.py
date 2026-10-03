@@ -1757,3 +1757,28 @@ def test_a_private_person_linked_to_one_person_is_pruned_recursively(tmp_path):
                       "P3,P2,,P2,,,\n"
                       "Q,B,A,B,A,,\n", encoding="utf-8")
     assert mod.lonely_private_people(family, names) == {"P1", "P2", "P3"}
+
+
+def test_a_foster_or_adoptive_parent_takes_the_kinship_qualifier(tmp_path, monkeypatch):
+    """Emma, 2026-10-03: the Tore of Steig standard. A foster or adoptive parent's `P22`/`P25`
+    carries `P1039` (foster father/mother, adoptive father/mother); a birth parent's does not, and
+    a live statement already qualified is left alone."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_foster", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "derived-pedigree.csv").write_text(
+        "child,family,pedigree,husb,wife\nC,F1,foster,T,W\nD,F2,adopted,T,\n", encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    items = {"C": "Q1", "T": "Q2", "W": "Q3", "B": "Q4", "D": "Q5"}
+    lines = ["Q1\tP22\tQ2\tS2600\t\"C\"", "Q1\tP22\tQ4", "CREATE", 'LAST\tP2600\t"D"', "LAST\tP22\tQ2"]
+    live = {"Q1": {"claims": {"P25": [{"mainsnak": {"datavalue": {"value": {"id": "Q3"}}}}]}}}
+    out = mod.qualify_non_birth_parents(lines, items, live, {"Q1", "Q5"})
+    assert out[0] == "Q1\tP22\tQ2\tP1039\tQ20747105\tS2600\t\"C\""
+    assert out[1] == "Q1\tP22\tQ4"
+    assert out[4] == "LAST\tP22\tQ2\tP1039\tQ61740757"
+    assert out[5:] == ["Q1\tP25\tQ3\tP1039\tQ20747106"]

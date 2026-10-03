@@ -50629,3 +50629,23 @@ without an item: about 598, 2,483 and 1,430; the ring takes them a generation at
 adoptive parents (the Guangxu and Tongzhi emperors, Yehe Nara, Alute), all read as birth parents
 because the slim dropped `PEDI`; the ring climbs those lines too until the foster/adoptive item lands.
 Yi Ku's `P2600` is live (added by the account 2026-09-17); the local `p2600-all.tsv` predates it.
+
+## 2026-10-03: the spliced links are out of the tree, the 14 false statements removed, foster parents qualified
+
+**Spliced links.** Tree rebuild `8e004d55a`: all 79 links stated only by a splice are out of
+`derived-family.csv`; none of the spliced pairs is in the batch at `d2f0376bf`.
+
+**The 14 statements**, with Emma's go-ahead (AskUserQuestion): `reports/wikidata-splice-removals.qs`
+run in a new QuickStatements tab (Run, not background); checked live afterwards, none of the 14
+remains.
+
+**Foster and adoptive parents** (Emma: "Qualifier figure it out, for Toresfoestre I did it myself
+and that should be the standard"). Her own edit on `Q1752172` Haakon Magnusson: `P22` Tore Tordsson
+with `P1039` `Q20747105` foster father, `P25` Tore's wife with `P1039` `Q20747106` foster mother, the
+reverse `P40` bare. `qualify_non_birth_parents` in `build-garborg-day.py`, the last pass before the
+file is written, puts that qualifier (adoptive: `Q61740757` / `Q61740758`) on every `P22`/`P25` line
+whose pair is foster or adoptive in `reports/derived-pedigree.csv` (1,044 adopted and 461 foster links
+on `8e004d55a`; Haakon's foster family and Puyi's two adoptive families among them), and adds one
+qualifying line for each such statement already live without it, subject inside the edit universe:
+25 today. The father and mother columns are unchanged, so the ring still climbs adoptive lines.
+Test: `test_a_foster_or_adoptive_parent_takes_the_kinship_qualifier`, CI.
