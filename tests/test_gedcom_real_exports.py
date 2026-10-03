@@ -94,7 +94,10 @@ SYNTHESISED_SOURCES = {"genimerge-scraped", "genimerge", "genimerge-tiny", "swee
 #: ids 1..3103. `tests/test_familysearch_gedcom.py` pins that render and asserts the raw file
 #: WOULD have leaked. So asserting `@I<digits>@` here would demand the exact thing the renderer
 #: exists to prevent, and the two test files would contradict each other.
-FOREIGN_SOURCES = {"getmyancestors"}
+#: The RootsMagic file is the same FamilySearch data, exported from RootsMagic and rendered by the
+#: same `render-familysearch-gedcom.py`, so it is foreign in exactly the same way (2026-10-02: CI
+#: run 37071530459 read both `rootsmagic-PFR5-LDS-*.ged` renders as Geni exports).
+FOREIGN_SOURCES = {"getmyancestors", "RootsMagic", "rootsmagic-import"}
 
 #: The xref prefixes a foreign export uses, per source. One map each, because the point of a
 #: foreign prefix is that it is NOT one of ours.
@@ -103,6 +106,10 @@ FOREIGN_XREF_PREFIXES = {
     # a matching `RFN`, which `test_every_individual_xref_encodes_its_geni_profile_id` checks).
     "getmyancestors": {"IFS": "INDI", "FFS": "FAM", "NFS": "NOTE", "SFS": "SOUR",
                        "SUBM": "SUBM", "I": "INDI"},
+    "RootsMagic": {"IFS": "INDI", "FFS": "FAM", "NFS": "NOTE", "SFS": "SOUR",
+                   "SUBM": "SUBM", "I": "INDI"},
+    "rootsmagic-import": {"IFS": "INDI", "FFS": "FAM", "NFS": "NOTE", "SFS": "SOUR",
+                          "SUBM": "SUBM", "I": "INDI"},
     # Ours, not foreign, but with prefixes of its own: `IL`/`FL` are the label-only people and
     # the families they sit in -- `label_xref`, deliberately unparseable as Geni ids.
     "sweep-parsed": {"I": "INDI", "F": "FAM", "IL": "INDI", "FL": "FAM"},
