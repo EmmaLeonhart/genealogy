@@ -104,6 +104,16 @@ link tied to a source.
   all are the same text that we usually would treat as being the English ...
   I'm not going to make a claim about what the Korean label is going to be."
 
+- **QuickStatements tool (2026-10-03, after an angry correction):** use the
+  standard tool at https://quickstatements.toolforge.org/#/batch, NOT
+  QuickStatements 3.0 / qs-dev (which I had wrongly sent her to and whose OAuth
+  page upset her). Pipes with **no spaces**. Standard QS cannot set rank, so
+  the estimated dates are a separate step to be deprecated.
+- The user made the source item herself: **Q141627872** ("Genealogical
+  Record of the Inbe no Sukune clan", 斎部宿禰本系帳). Batch 1 is done.
+- Batch 2 (people) submitted by me at her request as QuickStatements batch
+  #289566, "Run in background", 2026-10-03.
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no
