@@ -112,7 +112,11 @@ link tied to a source.
 - The user made the source item herself: **Q141627872** ("Genealogical
   Record of the Inbe no Sukune clan", 斎部宿禰本系帳). Batch 1 is done.
 - Batch 2 (people) submitted by me at her request as QuickStatements batch
-  #289566, "Run in background", 2026-10-03.
+  #289566, "Run in background", 2026-10-03; she confirmed it completed.
+- Batch 3 (98 family links) submitted at her request as batch #289567.
+  QIDs for all 49 people: `genealogy/wikidata/ono_qids.json`. Batch 4 (64
+  estimated dates, to be deprecated) is generated but not run: standard QS
+  cannot set the deprecated rank.
 
 ## Assumptions (mine)
 
