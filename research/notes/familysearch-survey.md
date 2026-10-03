@@ -76,10 +76,13 @@ So the FamilySearch line is **Nakata Norinobu's reconstruction of Nobunaga's
 Inbe ancestry**: Hamanari → Hironari → … → Fumiyama → … → Chikazumi →
 Chikazane → Oda.
 
-- *To verify:* Nakata Norinobu worked with Suzuki Masatoshi, the genealogist
-  Kosugi named as the forger of the Ono honkeichō, and Hōga Toshio's 1986
-  compilation draws on their collections. If confirmed, all the Inbe chains
-  found so far go back to the same Meiji circle of genealogists.
+- **Confirmed:** Nakata Norinobu (1835–1910) was a Hirata-school kokugaku
+  scholar and the "fellow student and ally" (同学の士で盟友) of **Suzuki
+  Masatoshi** (1831–1894), the man Kosugi named as forger of the Ono
+  honkeichō. Hōga Toshio, whose 1986 『古代氏族系譜集成』 Japanese Wikipedia also
+  cites, revived and drew on both men's collections (ja Wikipedia 鈴木眞年 and
+  宝賀寿男; NDL Reference 1000090125). So **every multi-generation Inbe chain
+  found so far traces back to the same Meiji circle.**
 - **A conflict with a primary source:** the 『日本三代実録』 entry for Fumiyama's
   death (Jōgan 9.4.4, 867) says he was **of humble birth** (身分の低い出自,
   as Japanese Wikipedia summarises it) and known for his craft skill. He repaired the head of the Tōdaiji

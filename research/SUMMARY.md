@@ -43,14 +43,20 @@ attributed to the forger Suzuki Masatoshi. Confidence: high that these are the
 chains that exist and that they are late constructions. Details:
 `notes/inbe-pedigrees.md`.
 
-**No early or independent chain links any real Inbe to Futodama.** Wikidata has
+**FamilySearch's 14-generation line comes from Nakata Norinobu**, a Meiji
+genealogist and Suzuki Masatoshi's close ally, in his account of Nobunaga's
+ancestry. It also contradicts the 9th-century chronicle entry on Fumiyama,
+which calls him humbly born. Details: `notes/familysearch-survey.md`.
+
+**No early or independent chain links any real Inbe to Futodama.** Every
+multi-generation Inbe pedigree found traces back to Suzuki Masatoshi and his
+circle (1870s–1900s). Wikidata has
 the gods down to Ame no Tomi. FamilySearch has people back to Hamanari. Nothing
 bridges the two. Confidence: high for these two databases; the primary texts
 and printed pedigrees are not yet checked.
 
 ## Open questions
 
-- What source is behind FamilySearch's Hamanari → Chikazane line?
 - What do the Kogo Shūi and Shinsen Shōjiroku actually say about each branch's
   descent?
 - Are there real lineage documents for any Inbe family: the Miki of Awa, the
@@ -62,4 +68,5 @@ and printed pedigrees are not yet checked.
 
 - 2026-10-02: Research started. Wikidata survey done. FamilySearch survey done:
   found the 14-generation line, unsourced, ending at Hamanari. Found and
-  began transcribing the three 1870 pedigrees (Awa, Okajima, Ono).
+  began transcribing the three 1870 pedigrees (Awa, Okajima, Ono). Traced
+  FamilySearch's line to Nakata Norinobu (Suzuki Masatoshi's ally).
