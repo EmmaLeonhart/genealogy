@@ -776,6 +776,13 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   The universe is the contiguous Wikidata subgraph from Arne and Bureus — no hop counts inside
   it, a billion hops if that is what it takes — and the ring is the items one relationship
   removes from it, which is the same reach `compose` builds creations from.
+  **⛔ Every item the account has edited is in it when it is linked, and so is one hop from it. Ruled
+  2026-10-02 (Emma):** *"Anything one hop over from edited items is a part of the universe"*, and
+  *"any edited item at all is in the universe if it is linked no need for the geni id or
+  familysearch id to be linked but them being linked is ideal"*. The walk is not limited to items
+  carrying our `P2600`: `refresh-garborg-ledger.py` writes `reports/account-edited-links.tsv` (the
+  relationship statements on every item the account touched), and `wikidata_subgraph` counts an
+  edge when either end was edited by us. The owner's protected items are never walked.
   **A hand identification is not exempt and is not withheld**: it goes out like everything else,
   gated on where the item sits and on nothing else. Two over-corrections are refuted and must not
   return — gating on the CSV's free-text note, and withholding the file wholesale.

@@ -4257,6 +4257,9 @@ def held_items(today=None):
     return held
 
 
+#: Every item the account has edited, with its relationship statements (`refresh-garborg-ledger.py`).
+ACCOUNT_EDITED_LINKS = ROOT / "reports" / "account-edited-links.tsv"
+
 #: The relationship properties that make two Wikidata items neighbours in the subgraph.
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
@@ -4286,24 +4289,46 @@ def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
     Two edge sources, because neither is current alone: the bulk `out/wikidata/relations.tsv`,
     which predates most of those edits, and `reports/garborg-live-values.tsv`, refreshed each
     run.
+
+    ⛔ **EVERY ITEM THE ACCOUNT HAS EDITED, AND ONE HOP FROM IT. Ruled 2026-10-02 (Emma):**
+    *"Anything one hop over from edited items is a part of the universe"* and *"any edited item
+    at all is in the universe if it is linked no need for the geni id or familysearch id"*.
+    The ledger is only the edited items carrying our `P2600`; `reports/account-edited-links.tsv`
+    (written by `refresh-garborg-ledger.py`) adds every other item the account touched, a
+    FamilySearch creation or a "subject named as" edit, with its relationship statements. So an
+    edge counts when EITHER end was edited by us: an edited item linked to the group is in it, and
+    so is the item one relationship from it. The walk does not continue from that unedited item
+    except through another edge to an edited one, which keeps it from swallowing the world tree.
+    The owner's and her family's items (`wikidata_lockout.PROTECTED_ITEMS`) are never walked.
     """
+    import wikidata_lockout
+
     universe = set(universe or ()) | set(roots)
+    edited_links = []
+    if ACCOUNT_EDITED_LINKS.exists():
+        with open(ACCOUNT_EDITED_LINKS, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                edited_links.append((row["qid"], row["value"]))
+                universe.add(row["qid"])
     if datetime.date.today() < KLUGE_UNIVERSE_BLOCK_EXPIRES:
         universe -= kluge_blocked_from_universe()
+    universe -= wikidata_lockout.PROTECTED_ITEMS
     adj = collections.defaultdict(set)
 
     def link(a, b):
-        if a in universe and b in universe:
+        if (a in universe or b in universe) and not (
+                a in wikidata_lockout.PROTECTED_ITEMS or b in wikidata_lockout.PROTECTED_ITEMS):
             adj[a].add(b)
             adj[b].add(a)
+
+    for a, b in edited_links:
+        link(a, b)
 
     rel = ROOT / "out" / "wikidata" / "relations.tsv"
     if rel.exists():
         with open(rel, encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="	"):
                 q = row["qid"]
-                if q not in universe:
-                    continue
                 for col in ("p22", "p25", "p40", "p26"):
                     # relations.tsv is semicolon-separated -- see build-parent-candidates.
                     # Splitting on "|" here meant an item with two parents or two children

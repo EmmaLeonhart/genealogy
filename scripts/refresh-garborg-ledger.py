@@ -58,6 +58,10 @@ ROOT = Path(__file__).resolve().parent.parent
 API = "https://www.wikidata.org/w/api.php"
 ACCOUNT = "日巫女"
 LEDGER = ROOT / "reports" / "garborg-qids.tsv"
+#: `qid`, `property`, `value`: the relationship statements on every item the account has edited.
+EDITED_LINKS = ROOT / "reports" / "account-edited-links.tsv"
+#: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
+LINK_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
 
 def _geni_for_qids(qids):
@@ -166,6 +170,7 @@ def main():
     # Every touched item, not only the created ones: a P2600 gets added to items other
     # people made, and that correspondence is just as load-bearing.
     found = {}
+    links = set()
     for i in range(0, len(touched), 50):
         batch = touched[i:i + 50]
         data = get({"action": "wbgetentities", "ids": "|".join(batch),
@@ -175,6 +180,11 @@ def main():
             if "missing" in ent:
                 continue
             claims = ent.get("claims", {})
+            for prop in LINK_PROPS:
+                for st in claims.get(prop, []):
+                    v = (st["mainsnak"].get("datavalue") or {}).get("value")
+                    if st.get("rank") != "deprecated" and isinstance(v, dict) and v.get("id"):
+                        links.add((qid, prop, v["id"]))
             gs = [st["mainsnak"].get("datavalue", {}).get("value")
                   for st in claims.get("P2600", []) if st.get("rank") != "deprecated"]
             labels = ent.get("labels", {})
@@ -352,6 +362,18 @@ def main():
               % len(followed))
         for g, was, now in followed[:20]:
             print("   %-21s %s -> %s" % (g, was, now))
+
+    # ⛔ **EVERY ITEM THE ACCOUNT HAS EDITED, AND WHAT IT IS LINKED TO.** Ruled 2026-10-02:
+    # *"any edited item at all is in the universe if it is linked no need for the geni id or
+    # familysearch id to be linked"*. The ledger above keeps only the items carrying a `P2600`;
+    # `build-garborg-day.wikidata_subgraph` reads this file for the rest. Same fetch, no extra
+    # requests.
+    with open(EDITED_LINKS, "w", encoding="utf-8", newline="") as f:
+        f.write("qid\tproperty\tvalue\n")
+        for row in sorted(links, key=lambda r: (len(r[0]), r[0], r[1], len(r[2]), r[2])):
+            f.write("\t".join(row) + "\n")
+    print(f"{len(links)} relationship statements on {len({r[0] for r in links})} edited items "
+          f"-> {EDITED_LINKS.relative_to(ROOT)}")
 
     with open(LEDGER, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["geni_id", "qid", "label", "created", "note"],

@@ -1113,12 +1113,14 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
     # 2026-10-02 by ordinary growth, every edge between the account's own items: a root
     # `Q141493461` -> N. N. `Q141510070` -> Sune Sik `Q3736064` -> Karl Sverkersson `Q315055` ->
     # Sverker II `Q365072` -> Benedicta Ebbesdotter of Hvide `Q2183430` -> Cecilie. The group grows
-    # with the contributions by design; the four below have no such path and still guard it.
+    # with the contributions by design; the three below have no such path and still guard it.
     inside["Q116150300"] = "Cecilie Ebbesdatter"
+    # Jon Jonsen `Q116150298` is an item the account edited, and its `P25` is Cecilie: ruled
+    # 2026-10-02 (Emma), *"any edited item at all is in the universe if it is linked"*.
+    inside["Q116150298"] = "Jon Jonsen"
     outside = {"Q232803": "Empress Jingū",
                "Q12598947": "Buyeo Taebi",
-               "Q19657284": "Buyeo Deokjang",
-               "Q116150298": "Jon Jonsen"}
+               "Q19657284": "Buyeo Deokjang"}
     for qid, who in inside.items():
         assert qid in group, f"{qid} {who} must be in the contiguous group"
     for qid, who in outside.items():
@@ -1129,6 +1131,37 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
     # genealogy items in the future. Size is irrelevant."* A `< 10_000` stood here and failed at
     # 10,799 on ordinary growth. What catches a walk escaping is the named people above, who
     # must stay outside, not a count.
+
+
+def test_an_edited_item_and_one_hop_from_it_are_in_the_universe(tmp_path, monkeypatch):
+    """Emma, 2026-10-02: *"Anything one hop over from edited items is a part of the universe"*.
+
+    `Q2` was edited by the account and carries no `P2600`; `Q3` was never edited and is `Q2`'s
+    child. Both are in. `Q4` is linked only to `Q3`, two hops out, and stays out. The owner's
+    item is never walked, even when an edited item links to it.
+    """
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_edited", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "out" / "wikidata").mkdir(parents=True)
+    links = tmp_path / "reports" / "account-edited-links.tsv"
+    links.write_text("qid\tproperty\tvalue\n"
+                     "Q2\tP22\tQ1\n"
+                     "Q2\tP40\tQ3\n"
+                     "Q2\tP40\tQ140568870\n", encoding="utf-8")
+    (tmp_path / "out" / "wikidata" / "relations.tsv").write_text(
+        "qid\tp22\tp25\tp40\tp26\tp3373\tp2600\nQ4\tQ3\t\t\t\t\t\n", encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "ACCOUNT_EDITED_LINKS", links)
+    group = mod.wikidata_subgraph(roots=("Q1",), universe=set())
+    assert {"Q1", "Q2", "Q3"} <= group
+    assert "Q4" not in group
+    assert "Q140568870" not in group
 
 
 def _carries_marker():
