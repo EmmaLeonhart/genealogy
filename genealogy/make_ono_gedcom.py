@@ -1,5 +1,6 @@
-"""Build genealogy/ono_inbe_honkeicho.ged (Japanese names) and
-ono_inbe_honkeicho_en.ged (English names, Japanese in notes) from genealogy/ono_inbe_honkeicho.csv.
+"""Build genealogy/ono_inbe_honkeicho.ged (Japanese names),
+ono_inbe_honkeicho_en.ged (English names, Japanese in notes) and
+ono_inbe_honkeicho_en_dated.ged (English, with estimated years and Wikidata links) from genealogy/ono_inbe_honkeicho.csv.
 
 The Ono family's 斎部宿禰本系帳 (1870; NDL pid 2538213, images 50-56), judged a
 Suzuki Masatoshi forgery by Kosugi Sugimura in 1876. Parent links follow the
@@ -65,6 +66,54 @@ ROLE = {
 }
 assert set(EN) == set(people), set(people) ^ set(EN)
 
+# Wikidata items: the five the user linked in ono_inbe_honkeicho_en_with_wikidata.ged,
+# plus three confirmed in research/notes/wikidata-survey.md.
+WIKIDATA = {
+    "1": "Q125400", "2": "Q11059539", "3": "Q110064736", "4": "Q24899653",
+    "21": "Q11490720", "21b": "Q11490725", "H8": "Q10939697", "W2": "Q85879124",
+}
+
+# Approximate (birth, death) years implied by the pedigree; negative = BC.
+# Anchored on the reign each entry names, using the traditional Nihon Shoki
+# reign dates (legendary before the 6th century); entries without a reign are
+# interpolated. Real dates only for Kobito and Shikobuchi. Gods get none.
+DATES = {
+    "4": (-700, -620, "Jimmu (trad. 660-585 BC)"),
+    "5": (-680, -600, "wife of Yufutsunushi, Jimmu's reign"),
+    "6": (-610, -540, "interpolated"), "7": (-460, -390, "interpolated"),
+    "8": (-310, -240, "interpolated"), "9": (-40, 30, "Suinin 25 (trad. 5 BC)"),
+    "10": (20, 90, "interpolated"), "10b": (20, 90, "interpolated"),
+    "11": (80, 150, "Keikō 53 (trad. AD 123)"), "11b": (80, 150, "interpolated"),
+    "12": (180, 250, "Jingū (trad. 201-269)"),
+    "13": (260, 340, "Ōjin to Nintoku (trad. 270-399)"),
+    "14": (370, 430, "Richū (trad. 400-405)"),
+    "15": (430, 490, "Yūryaku (trad. 456-479)"),
+    "16": (470, 530, "interpolated"), "17": (500, 560, "interpolated"),
+    "18": (520, 580, "Kinmei (539-571)"), "19": (570, 630, "Suiko (593-628)"),
+    "20": (610, 670, "Hakuchi 4 (653)"),
+    "21": (650, 719, "real: died Yōrō 3 (719); birth year approximate"),
+    "21b": (640, 701, "real: Jinshin War 672; death year approximate"),
+    "22": (680, 740, "interpolated"), "23": (670, 730, "Monmu 4 (700)"),
+    "H10": (-690, -610, "Jimmu (trad. 660-585 BC)"),
+    "H11": (-610, -545, "Suizei (trad. 581-549 BC)"),
+    "H12": (-570, -475, "Annei to Itoku (trad. 549-477 BC)"),
+    "H13": (-500, -400, "Kōshō (trad. 475-393 BC)"),
+    "H14": (-420, -320, "Kōan (trad. 392-291 BC)"),
+    "H15": (-360, -290, "Kōan (same palace)"),
+    "H16": (-300, -220, "Kōrei (trad. 290-215 BC)"),
+    "H17": (-240, -160, "Kōgen (trad. 214-158 BC)"),
+    "H18": (-180, -100, "Kaika (trad. 158-98 BC)"),
+    "H19": (-120, -40, "Sujin (trad. 97-30 BC)"),
+    "H20": (-50, 30, "Suinin (trad. 29 BC-AD 70)"),
+    "H21": (-10, 100, "Suinin to Keikō (trad. to AD 130)"),
+    "H22": (100, 170, "Seimu (trad. 131-190)"),
+}
+assert set(DATES) <= set(people)
+
+
+def gdate(y):
+    return f"EST {-y} B.C." if y < 0 else f"EST {y}"
+
 FEMALE = {"5", "W2"}
 
 
@@ -110,9 +159,10 @@ ids = {k: f"@I{i}@" for i, k in enumerate(people, 1)}
 fam_ids = {k: f"@F{i}@" for i, k in enumerate(families, 1)}
 
 OUT_EN = HERE / "ono_inbe_honkeicho_en.ged"
+OUT_DATED = HERE / "ono_inbe_honkeicho_en_dated.ged"
 
 
-def write(out, english):
+def write(out, english, dated=False):
     head_note = ("Ono family Inbe pedigree (Inbe no Sukune honkeicho, 1870). "
                  "Judged forged by Kosugi Sugimura in 1876, who attributed it to Suzuki "
                  "Masatoshi; not evidence of real descent. Parent links follow transcription "
@@ -120,6 +170,14 @@ def write(out, english):
                  "research/notes/inbe-pedigrees.md.")
     if not english:
         head_note = "斎部宿禰本系帳. " + head_note
+    if dated:
+        head_note += (" Years are estimates (EST) of when each person would have lived "
+                      "according to the pedigree itself, anchored on the emperor each entry "
+                      "names, using the traditional Nihon Shoki reign dates; those are "
+                      "legendary before the 6th century. Only Inbe no Kobito and Inbe no "
+                      "Shikobuchi are real people with known dates. Gaps of a century or more "
+                      "between parent and child are the pedigree's own, a sign it was "
+                      "constructed.")
     L = ["0 HEAD", "1 SOUR INBE-research", "2 NAME make_ono_gedcom.py",
          "1 GEDC", "2 VERS 5.5.1", "2 FORM LINEAGE-LINKED", "1 CHAR UTF-8",
          f"1 NOTE {head_note}",
@@ -138,8 +196,16 @@ def write(out, english):
             name, note = en.rstrip("?"), "; ".join(parts + [p["note"]])
         else:
             name, note = p["name"], p["note"]
+        if dated and key in WIKIDATA:
+            note += f"; Wikidata: https://www.wikidata.org/wiki/{WIKIDATA[key]}"
         L += [f"0 {ids[key]} INDI", f"1 NAME {name}",
               f"1 SEX {'F' if key in FEMALE else 'M'}"]
+        if dated and key in DATES:
+            b, d, basis = DATES[key]
+            L += ["1 BIRT", f"2 DATE {gdate(b)}", "1 DEAT", f"2 DATE {gdate(d)}"]
+            note += f"; Dates estimated from: {basis}"
+        elif dated:
+            note += "; No dates: mythological figure"
         for fk, kids in families.items():
             if key in kids:
                 L.append(f"1 FAMC {fam_ids[fk]}")
@@ -162,3 +228,4 @@ def write(out, english):
 
 write(OUT, english=False)
 write(OUT_EN, english=True)
+write(OUT_DATED, english=True, dated=True)
