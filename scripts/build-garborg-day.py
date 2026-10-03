@@ -1167,6 +1167,10 @@ PRIORITY_ANCESTOR_SEEDS = (
 )
 
 
+#: Ring people created per run (Emma, 2026-10-02: "cap out the ring", 500).
+RING_CAP = 500
+
+
 def priority_ancestor_ring(our_items, fam_p, famc, on_wikidata=()):
     """The next FULL generation of ancestors of `PRIORITY_ANCESTOR_SEEDS`, uncapped.
 
@@ -7763,6 +7767,13 @@ def main():
         # the locality gate all run after this point.
         _ring = priority_ancestor_ring(our_items, fam_p, famc,
                                        set(any_wikidata_item) | set(known_pair))
+        # ⛔ **AT MOST `RING_CAP` RING PEOPLE A RUN. Ruled 2026-10-02 (Emma):** *"We're going to
+        # cap out the ring"*, 500 a run; the rings are capped, not stopped. One batch on
+        # 2026-10-02 held 1,275 once the locality gate stopped holding ring people back. The
+        # pick is deterministic (sorted Geni ids); the rest stand on the ring for the next run.
+        if len(_ring) > RING_CAP:
+            print(f"priority ancestor ring: {len(_ring)} on the boundary, capped to {RING_CAP}")
+            _ring = {g: _ring[g] for g in sorted(_ring)[:RING_CAP]}
         _added = {g: f for g, f in _ring.items() if g not in to_create}
         to_create.update(_added)
         print(f"priority ancestor ring: {len(_ring)} people directly above the ancestry of "
