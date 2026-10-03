@@ -9114,6 +9114,14 @@ def main():
             # label reaching here by any other route is unfiltered. It costs one call.
             _nsfx_new = (fields.get(g) or {}).get("nsfx", "")
             primary = drop_description_suffix(primary, _nsfx_new)
+            # ⛔ A relative in the name field is not a name (2026-10-02, CI run 37083138171): Geni's
+            # `Mary, wife of Maurice /de Menteith/` reached the batch as `Len "Mary, wife of Maurice
+            # de Menteith"`. The given name stays, the relation goes: `Mary NN`.
+            _rel = re.match(r"^(.{1,120}?),\s*(?:son|daughter|child|husband|wife|spouse|father"
+                            r"|mother|parent) of\b", primary)
+            if _rel:
+                _given = _rel.group(1).strip(" ?")
+                primary = f"{_given} NN" if re.search(r"[^\W\d_]", _given) else "NN"
             # `generation` rather than `_nsfx_new`: the suffix may sit on a name record
             # this person's `fields` row is not, and `primary` is rebuilt from `GIVN` +
             # `_MARNM` for a married person, which drops anything the label carried.

@@ -263,10 +263,21 @@ def known_live_values():
                 if (r.get("value") or "").startswith("Q")}
 
 
+def _creation_relatives():
+    """Existing items a creation in the batch links to (Emma, 2026-10-02: a created person gets every
+    relationship our tree gives them, and one hop from an edited item is in the universe).
+    `qs_v1.creation_relatives` is the one reading of it the gates share."""
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    import qs_v1
+    return qs_v1.creation_relatives(list(lines()))
+
+
 def test_every_qid_the_batch_points_at_already_exists():
     """The single-run rule. A value not in the ledger cannot resolve mid-run."""
     known = (known_qids() | VOCABULARY | known_name_items() | known_place_items()
-             | known_place_items(REPO / "reports" / "occupation-qids.tsv") | known_live_values())
+             | known_place_items(REPO / "reports" / "occupation-qids.tsv") | known_live_values()
+             | _creation_relatives())
     unknown = []
     for ln in lines():
         m = QID_VALUE.match(ln)
@@ -452,7 +463,7 @@ def test_every_explicit_subject_already_exists():
     """
     known = (known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids()
              | _emma_confirmed_qids() | _manual_identification_qids()
-             | _name_item_qids() | _immediate_entry_point_qids())
+             | _name_item_qids() | _immediate_entry_point_qids() | _creation_relatives())
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"

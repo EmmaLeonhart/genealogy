@@ -25,10 +25,11 @@ def _cite(tmp_path):
     src = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
     tree = ast.parse(src)
     code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
-                       if isinstance(n, ast.FunctionDef) and n.name in ("family_source", "cite"))
+                       if isinstance(n, ast.FunctionDef) and n.name in ("family_source", "removed_fs_ids", "cite"))
     (tmp_path / "reports").mkdir()
     (tmp_path / "reports" / "derived-family-sources.csv").write_text(SOURCES, encoding="utf-8")
-    ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {}}
+    ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {},
+          "FS_ID_REMOVALS": tmp_path / "no-removals.qs"}
     exec(code, ns)
     return ns["cite"]
 
@@ -136,7 +137,7 @@ def test_a_date_cites_the_database_that_gives_it(tmp_path):
     tree = ast.parse(src)
     code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
                          if isinstance(n, ast.FunctionDef)
-                         and n.name in ("family_source", "cite_date"))
+                         and n.name in ("family_source", "removed_fs_ids", "cite_date"))
     (tmp_path / "reports").mkdir()
     (tmp_path / "reports" / "derived-family-sources.csv").write_text(
         "geni_id,relation,relative,source\n1,fs_id,AAA,fs\n", encoding="utf-8")
@@ -144,6 +145,7 @@ def test_a_date_cites_the_database_that_gives_it(tmp_path):
         "geni_id,event,date,source\n1,BIRT,1700,both\n1,DEAT,ABT 1761,fs\n1,DEAT,1760,geni\n",
         encoding="utf-8")
     ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {},
+          "FS_ID_REMOVALS": tmp_path / "no-removals.qs",
           "_DATE_SOURCES": None}
     exec(code, ns)
     cite_date = ns["cite_date"]
@@ -158,12 +160,13 @@ def test_a_sibling_cites_the_database_that_links_both_to_a_shared_parent(tmp_pat
     tree = ast.parse(src)
     code = "\n\n".join(ast.get_source_segment(src, n) for n in tree.body
                          if isinstance(n, ast.FunctionDef)
-                         and n.name in ("family_source", "cite_sibling", "_parents"))
+                         and n.name in ("family_source", "removed_fs_ids", "cite_sibling", "_parents"))
     (tmp_path / "reports").mkdir()
     (tmp_path / "reports" / "derived-family-sources.csv").write_text(
         "geni_id,relation,relative,source\n"
         "2,father,1,both\n5,mother,3,fs\n6,mother,3,fs\n6,fs_id,FFF,fs\n", encoding="utf-8")
-    ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {}}
+    ns = {"csv": csv, "ROOT": tmp_path, "_FAMILY_SOURCES": None, "_FS_IDS": {},
+          "FS_ID_REMOVALS": tmp_path / "no-removals.qs"}
     exec(code, ns)
     rows = {"2": {"fathers": "1"}, "4": {"fathers": "1"}, "5": {"mothers": "3"},
             "6": {"mothers": "3"}, "7": {}}
