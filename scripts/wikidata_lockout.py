@@ -297,7 +297,12 @@ OWNER_GENI = "6000000087535357291"
 #: Her parents' and sibling's Geni profiles, for the same ruling.
 PROTECTED_GENI = frozenset({OWNER_GENI, "6000000195149174838", "6000000177921459056",
                            "6000000177921459052", "6000000177921458823"})
-_PROTECTED = PROTECTED_ITEMS | PROTECTED_GENI
+#: ⛔ **GENI PROFILES THAT MUST NEVER BE GENERATED. Ruled 2026-10-02 (Emma):** *"This person shouldn't
+#: exist. We should have some sort of a thing that straight up blocks anything with that geni ID
+#: from ever being generated."* No creation, no statement and no link to or from one, ever.
+#: `6000000013614127010` "NN Mother(S) Friller": a Geni placeholder for Magnus II's concubine mothers.
+BLOCKED_GENI = frozenset({"6000000013614127010"})
+_PROTECTED = PROTECTED_ITEMS | PROTECTED_GENI | BLOCKED_GENI
 
 
 def touches_protected(line):

@@ -7811,6 +7811,12 @@ def main():
     # `lines` because the exclusion and duplicate checks below both append to it.
     carried = []
 
+    # ⛔ A blocked Geni profile is never created (`wikidata_lockout.BLOCKED_GENI`, Emma 2026-10-02).
+    import wikidata_lockout as _wl
+    for g in [g for g in to_create if g in _wl.BLOCKED_GENI]:
+        to_create.pop(g, None)
+        carried.append((g, "", "blocked Geni profile (wikidata_lockout.BLOCKED_GENI)"))
+
     # Anyone Wikidata already links is never created, whatever the batch shape asked for.
     dup = [g for g in to_create if g in any_wikidata_item and g not in our_items]
     for g in dup:
