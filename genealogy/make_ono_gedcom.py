@@ -1,4 +1,5 @@
-"""Build genealogy/ono_inbe_honkeicho.ged from genealogy/ono_inbe_honkeicho.csv.
+"""Build genealogy/ono_inbe_honkeicho.ged (Japanese names) and
+ono_inbe_honkeicho_en.ged (English names, Japanese in notes) from genealogy/ono_inbe_honkeicho.csv.
 
 The Ono family's 斎部宿禰本系帳 (1870; NDL pid 2538213, images 50-56), judged a
 Suzuki Masatoshi forgery by Kosugi Sugimura in 1876. Parent links follow the
@@ -33,6 +34,36 @@ for r in rows:
     ] if x)
     people[r["seq"]] = {"name": r["name"].split(" / ")[0], "note": note}
 people.update(EXTRA)
+
+# English (romanised) names for the English-first file. "?" marks a reading of
+# rare man'yōgana spellings that is a best guess, not attested.
+EN = {
+    "1": "Takamimusubi", "2": "Ame no Futodama", "W2": "Ame no Hiritome",
+    "3": "Ame no Kushimimi", "4": "Ame no Tomi", "5": "Iinagahime",
+    "6": "Wakafunu?", "7": "Sakumimi?", "8": "Akasako?", "9": "Tamakushiko?",
+    "10": "Kosamazuchi", "10b": "Hamimi?", "11": "Tarashitomi?", "11b": "Ōkuma",
+    "12": "Mazunumi no Sukune?", "13": "Saki no Ōhito no Sukune?",
+    "14": "Tahiko no Sukune?", "15": "Namiko?", "16": "Kotone?",
+    "17": "Tanate (Takenadeko)?", "18": "Toyotomi?", "19": "Utsuniwamaro?",
+    "20": "Sagashi?", "21": "Inbe no Kobito", "21b": "Inbe no Shikobuchi",
+    "22": "Nashiro?", "23": "Fukimaro?",
+    "H1": "Kamimusubi", "H2": "Tsunokorimusubi", "H3": "Ame no Sokotachi",
+    "H4": "Isafutama?", "H5": "Ikashihotama?", "H6": "Ame no Seo",
+    "H7": "Kotonomachi?", "H8": "Ame no Hiwashi", "H9": "Ōasahiko",
+    "H10": "Yufutsunushi", "H11": "Katatanushi", "H12": "Inasakao",
+    "H13": "Sakikuwake", "H14": "Fuyurawake", "H15": "Hihita no Omi",
+    "H16": "Tomimi no Ōhito?", "H17": "Iwabiko", "H18": "Shimanafu?",
+    "H19": "Murahi?", "H20": "Ukei?", "H21": "Itsuhiko", "H22": "Kuzumi?",
+}
+ROLE = {
+    "1": "god", "2": "god; ancestor of the Inbe", "W2": "goddess; Futodama's wife",
+    "3": "god", "4": "god; led the Awa Inbe east to Bōsō", "5": "goddess; priestess of Futodama's shrine",
+    "H1": "god", "H8": "god; ancestor of the Awa Inbe", "H9": "god",
+    "H10": "god; hemp cultivation in Awa", "H11": "'first ancestor of the Awa Inbe'",
+    "21": "real person: Nihon Shoki compiler, d. 719",
+    "21b": "real person: Jingikan official, Jinshin War 672",
+}
+assert set(EN) == set(people), set(people) ^ set(EN)
 
 FEMALE = {"5", "W2"}
 
@@ -78,35 +109,56 @@ families.setdefault(("2", "W2"), [])
 ids = {k: f"@I{i}@" for i, k in enumerate(people, 1)}
 fam_ids = {k: f"@F{i}@" for i, k in enumerate(families, 1)}
 
-L = ["0 HEAD", "1 SOUR INBE-research", "2 NAME make_ono_gedcom.py",
-     "1 GEDC", "2 VERS 5.5.1", "2 FORM LINEAGE-LINKED", "1 CHAR UTF-8",
-     "1 NOTE 斎部宿禰本系帳 (Ono family Inbe pedigree, 1870). Judged forged by Kosugi "
-     "Sugimura (1876); not evidence of real descent. Parent links follow transcription "
-     "order; see genealogy/ono_inbe_honkeicho.csv and research/notes/inbe-pedigrees.md.",
-     "0 @S1@ SOUR", "1 TITL 斎部宿禰本系帳 (in 安房国忌部家系 volume), NDL Digital Collections",
-     "1 PUBL National Diet Library, pid 2538213, doi 10.11501/2538213",
-     "1 NOTE Kosugi Sugimura's 1876 headnote attributes it to Suzuki Masatoshi."]
+OUT_EN = HERE / "ono_inbe_honkeicho_en.ged"
 
-for key, p in people.items():
-    L += [f"0 {ids[key]} INDI", f"1 NAME {p['name']}",
-          f"1 SEX {'F' if key in FEMALE else 'M' if key not in ('W2',) else 'F'}"]
+
+def write(out, english):
+    head_note = ("Ono family Inbe pedigree (Inbe no Sukune honkeicho, 1870). "
+                 "Judged forged by Kosugi Sugimura in 1876, who attributed it to Suzuki "
+                 "Masatoshi; not evidence of real descent. Parent links follow transcription "
+                 "order; see genealogy/ono_inbe_honkeicho.csv and "
+                 "research/notes/inbe-pedigrees.md.")
+    if not english:
+        head_note = "斎部宿禰本系帳. " + head_note
+    L = ["0 HEAD", "1 SOUR INBE-research", "2 NAME make_ono_gedcom.py",
+         "1 GEDC", "2 VERS 5.5.1", "2 FORM LINEAGE-LINKED", "1 CHAR UTF-8",
+         f"1 NOTE {head_note}",
+         "0 @S1@ SOUR",
+         "1 TITL Inbe no Sukune honkeicho (斎部宿禰本系帳), bound in the Awa no kuni Inbe kakei volume, NDL Digital Collections",
+         "1 PUBL National Diet Library, pid 2538213, doi 10.11501/2538213",
+         "1 NOTE Kosugi Sugimura's 1876 headnote attributes it to Suzuki Masatoshi."]
+    for key, p in people.items():
+        if english:
+            en = EN[key]
+            parts = [f"Japanese: {p['name']}"]
+            if en.endswith("?"):
+                parts.append("English reading is a best guess")
+            if key in ROLE:
+                parts.append(ROLE[key])
+            name, note = en.rstrip("?"), "; ".join(parts + [p["note"]])
+        else:
+            name, note = p["name"], p["note"]
+        L += [f"0 {ids[key]} INDI", f"1 NAME {name}",
+              f"1 SEX {'F' if key in FEMALE else 'M'}"]
+        for fk, kids in families.items():
+            if key in kids:
+                L.append(f"1 FAMC {fam_ids[fk]}")
+            if key in fk:
+                L.append(f"1 FAMS {fam_ids[fk]}")
+        L += [f"1 NOTE {note}", "1 SOUR @S1@", "2 QUAY 0"]
     for fk, kids in families.items():
-        if key in kids:
-            L.append(f"1 FAMC {fam_ids[fk]}")
-        if key in fk:
-            L.append(f"1 FAMS {fam_ids[fk]}")
-    L += [f"1 NOTE {p['note']}", "1 SOUR @S1@", "2 QUAY 0"]
+        father, mother = fk
+        L.append(f"0 {fam_ids[fk]} FAM")
+        if father:
+            L.append(f"1 HUSB {ids[father]}")
+        if mother:
+            L.append(f"1 WIFE {ids[mother]}")
+        L += [f"1 CHIL {ids[c]}" for c in kids]
+        L += ["1 SOUR @S1@", "2 QUAY 0"]
+    L.append("0 TRLR")
+    out.write_text("\n".join(L) + "\n", encoding="utf-8")
+    print(f"wrote {out} ({len(people)} people, {len(families)} families)")
 
-for fk, kids in families.items():
-    father, mother = fk
-    L.append(f"0 {fam_ids[fk]} FAM")
-    if father:
-        L.append(f"1 HUSB {ids[father]}")
-    if mother:
-        L.append(f"1 WIFE {ids[mother]}")
-    L += [f"1 CHIL {ids[c]}" for c in kids]
-    L += ["1 SOUR @S1@", "2 QUAY 0"]
 
-L.append("0 TRLR")
-OUT.write_text("\n".join(L) + "\n", encoding="utf-8")
-print(f"wrote {OUT} ({len(people)} people, {len(families)} families)")
+write(OUT, english=False)
+write(OUT_EN, english=True)
