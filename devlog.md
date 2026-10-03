@@ -50763,3 +50763,15 @@ checked). The slim now reads it before the prune drops `NOTE` (`slim.harvest_cbd
 two rosters); `build-garborg-day.cbdb_identifications()` joins them and `ledger()` takes each pair
 the ledger lacks, leaving out a CBDB id on more than one item. The pairs appear after the next tree
 rebuild. Test: `test_the_cbdb_id_is_read_from_the_about_note_before_the_prune`, CI.
+
+## 2026-10-03: Puyi's ring was starved by the cap's sort order (error report)
+
+The ring with the pipeline's own walk-through sets (the `P2600` roster and the correspondence) is
+2,876 people, and the 500-a-run cap kept `sorted(_ring)[:500]`, the 500 lowest Geni ids as text. Puyi's
+13 frontier people (his adoptive and birth lines: the Qianlong Emperor, Prince Chun I huwan, Yehe Nara,
+Alute and others) sat at positions 762-841, so none reached a batch; Naruhito and Yi Ku got 57 and 37 of
+107 and 76. Youlan, the fourteenth, is correctly linked to `Q701641` through the correspondence. Fix:
+`priority_ancestor_ring` walks each seed on its own, sorts each frontier, and interleaves them one
+from each seed in turn, and the cap takes the front of that order. Measured locally on today's tree:
+Puyi 13 of 13, Yi Ku 76 of 76, Naruhito 101 of 107, Ettinger 132, the owner 275, 500 in all.
+Test: `test_the_ring_cap_gives_every_seed_a_turn`, CI.

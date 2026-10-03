@@ -1267,19 +1267,33 @@ def priority_ancestor_ring(our_items, fam_p, famc, on_wikidata=()):
     (`on_wikidata`). Stopping at them returned the same people every run and never reached
     their parents, so the ring looked nearly finished (58 new a run) while it was stuck.
     """
-    frontier, seen, stack = {}, set(), [g for g in PRIORITY_ANCESTOR_SEEDS]
-    while stack:
-        g = stack.pop()
-        if g in seen:
-            continue
-        seen.add(g)
-        for fam in famc.get(g, []):
-            for parent in fam_p.get(fam, []):
-                if parent in our_items or parent in on_wikidata:
-                    stack.append(parent)
-                else:
-                    frontier.setdefault(parent, fam)
-    return frontier
+    # ⛔ **THE SEEDS TAKE TURNS (2026-10-03).** The frontier came back as one set and the cap kept
+    # its 500 lowest Geni ids sorted as text, so a seed whose line has high ids never got a place:
+    # Puyi's 13 frontier people sat at positions 762-841 of a 2,876-person ring and none reached
+    # a batch (error report, Emma, 2026-10-03). Each seed's frontier is walked and sorted on its
+    # own, and the result interleaves them, one from each seed in turn, so a cap on the front of
+    # it gives every seed its share. Deterministic: the seed order and the sort fix the order.
+    per_seed = []
+    for seed in PRIORITY_ANCESTOR_SEEDS:
+        frontier, seen, stack = {}, set(), [seed]
+        while stack:
+            g = stack.pop()
+            if g in seen:
+                continue
+            seen.add(g)
+            for fam in famc.get(g, []):
+                for parent in fam_p.get(fam, []):
+                    if parent in our_items or parent in on_wikidata:
+                        stack.append(parent)
+                    else:
+                        frontier.setdefault(parent, fam)
+        per_seed.append(sorted(frontier.items()))
+    out = {}
+    for i in range(max((len(f) for f in per_seed), default=0)):
+        for f in per_seed:
+            if i < len(f):
+                out.setdefault(*f[i])
+    return out
 
 
 #: ⛔ **A CREATED INDIVIDUAL GETS A LIFE DESCRIPTION. Ruled 2026-09-19**, reversing the hard rule
@@ -7924,10 +7938,10 @@ def main():
         # ⛔ **AT MOST `RING_CAP` RING PEOPLE A RUN. Ruled 2026-10-02 (Emma):** *"We're going to
         # cap out the ring"*, 500 a run; the rings are capped, not stopped. One batch on
         # 2026-10-02 held 1,275 once the locality gate stopped holding ring people back. The
-        # pick is deterministic (sorted Geni ids); the rest stand on the ring for the next run.
+        # pick is deterministic (the seeds take turns); the rest stand on the ring for the next run.
         if len(_ring) > RING_CAP:
             print(f"priority ancestor ring: {len(_ring)} on the boundary, capped to {RING_CAP}")
-            _ring = {g: _ring[g] for g in sorted(_ring)[:RING_CAP]}
+            _ring = {g: _ring[g] for g in list(_ring)[:RING_CAP]}   # the seeds' turns
         _added = {g: f for g, f in _ring.items() if g not in to_create}
         to_create.update(_added)
         print(f"priority ancestor ring: {len(_ring)} people directly above the ancestry of "

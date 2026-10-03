@@ -1782,3 +1782,21 @@ def test_a_foster_or_adoptive_parent_takes_the_kinship_qualifier(tmp_path, monke
     assert out[1] == "Q1\tP22\tQ4"
     assert out[4] == "LAST\tP22\tQ2\tP1039\tQ61740757"
     assert out[5:] == ["Q1\tP25\tQ3\tP1039\tQ20747106"]
+
+
+def test_the_ring_cap_gives_every_seed_a_turn(monkeypatch):
+    """Error report, 2026-10-03: the cap kept the 500 lowest Geni ids, so a seed with high ids
+    (Puyi) never got a place. The ring now interleaves the seeds' frontiers, so the front of it
+    holds every seed."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_ring", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    monkeypatch.setattr(mod, "PRIORITY_ANCESTOR_SEEDS", ("1", "9"))
+    famc = {"1": ["F1"], "9": ["F9"]}
+    fam_p = {"F1": ["10", "11", "12"], "F9": ["90"]}
+    ring = mod.priority_ancestor_ring({"1": "Q1", "9": "Q9"}, fam_p, famc)
+    assert list(ring)[:2] == ["10", "90"]
