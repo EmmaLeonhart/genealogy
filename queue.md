@@ -11,15 +11,15 @@ Work top to bottom. Delete an item when it is done (record it in
    忌部色夫知.
 1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
    whether FamilySearch's line matches it.
-2. Verify the Nakata Norinobu ↔ Suzuki Masatoshi connection, and find the
-   Hōraku-ji gravestone inscription text for Chikazane (Echizen town 2011).
+2. Find the Hōraku-ji gravestone inscription text for Chikazane (Echizen
+   town 2011) and what it says about his name/parentage.
 2b. Search for any generational chain from Futodama or Ame no Tomi down to a
    historical Inbe (Kogo Shūi, Shinsen Shōjiroku, Awa Inbe / Miki family
    records, Awa Shrine priests). This is the user's core question.
 3. Primary-source notes: the Kogo Shūi (807) branch genealogy,
-   `research/notes/kogo-shui.md`; Shinsen Shōjiroku (815) Inbe entries,
-   `research/notes/shinsen-shojiroku.md`; Kojiki / Nihon Shoki mentions of
-   Futodama and Inbe ancestors.
+   `research/notes/kogo-shui.md` (Shinsen Shōjiroku done); check the
+   Shinsen Shōjiroku entries against a critical edition; Kojiki / Nihon Shoki
+   mentions of Futodama and Inbe ancestors.
 4. Historical individuals: list every named Inbe person found in the
    chronicles (Nihon Shoki, Shoku Nihongi and later), with dates, rank and any
    stated parentage, `research/notes/individuals.md`.
