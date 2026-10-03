@@ -11,11 +11,8 @@ Work top to bottom. Delete an item when it is done (record it in
    忌部色夫知.
 1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
    whether FamilySearch's line matches it.
-2. Find the source behind FamilySearch's Inbe line (Hamanari → Chikazane); it
-   is NOT in the three 1870 pedigrees. Look for an Inbe/斎部 pedigree in Oda
-   genealogies (織田系図 with 忌部 ancestry), Tsurugi Shrine records,
-   Zoku Gunsho Ruijū / Keizu Sanyō. Check Hamanari–Hironari against the
-   Shoku Nihongi / Nihon Kōki.
+2. Verify the Nakata Norinobu ↔ Suzuki Masatoshi connection, and find the
+   Hōraku-ji gravestone inscription text for Chikazane (Echizen town 2011).
 2b. Search for any generational chain from Futodama or Ame no Tomi down to a
    historical Inbe (Kogo Shūi, Shinsen Shōjiroku, Awa Inbe / Miki family
    records, Awa Shrine priests). This is the user's core question.

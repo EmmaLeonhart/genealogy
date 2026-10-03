@@ -61,3 +61,31 @@ The best "Inbe to the gods" account found so far, in either database:
 
 The gap between Hamanari and Futodama is where a documented chain would have
 to be. No source for it has turned up yet.
+
+## Source of the line (found 2026-10-02)
+
+Japanese Wikipedia's 斎部文山 article gives "father: 斎部伴主, son: 斎部季長" and
+cites **中田憲信「織田右大臣信長公ノ系統及履歴」, 『好古類纂』 vol. 7**. That is
+a Meiji-period account of Oda Nobunaga's ancestry by the genealogist **Nakata
+Norinobu**. The 平親真 article gives the end of the same chain: Chikazane is
+the son of **忌部親澄 Chikazumi, 神祇権大祐** (assistant official of the Jingikan).
+The mainstream Oda pedigree (「織田系図」, 『続群書類従』 vol. 142) instead
+makes him Taira no Sukemori's son, later adopted by Chikazumi.
+
+So the FamilySearch line is **Nakata Norinobu's reconstruction of Nobunaga's
+Inbe ancestry**: Hamanari → Hironari → … → Fumiyama → … → Chikazumi →
+Chikazane → Oda.
+
+- *To verify:* Nakata Norinobu worked with Suzuki Masatoshi, the genealogist
+  Kosugi named as the forger of the Ono honkeichō, and Hōga Toshio's 1986
+  compilation draws on their collections. If confirmed, all the Inbe chains
+  found so far go back to the same Meiji circle of genealogists.
+- **A conflict with a primary source:** the 『日本三代実録』 entry for Fumiyama's
+  death (Jōgan 9.4.4, 867) says he was **of humble birth** (身分の低い出自,
+  as Japanese Wikipedia summarises it) and known for his craft skill. He repaired the head of the Tōdaiji
+  Great Buddha. The Nakata pedigree makes him the son of a **Jingi Taifu** (vice-head of the
+  Jingikan). Those don't fit together.
+- Independent evidence for the Inbe identity of Chikazane (not for the chain
+  above him): a gravestone fragment found at Hōraku-ji, Echizen town, announced
+  by the town education board on 2011-11-01 (Nikkei, 2011-11-04). It gives his
+  death date, and on that basis the Taira parentage was rejected.
