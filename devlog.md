@@ -50469,3 +50469,27 @@ impossible links marked (2,731 on 2026-10-02, by a different rule), 0 dangling r
 of Hungary carries her two dropped fathers (born 1763 and 1874) as marked alternates, and Bogislaw II
 Ulla Celsing (born 1854). `out/wikidata/dates.tsv` on this machine is from 2026-09-30. After each
 tree rebuild, run it again with that day's date in the file name.
+
+## 2026-10-03: a stale unpacked tree on this machine; the owner's GEDCOM regenerated; first descent pass
+
+**Unexpected, first.** The unpacked `reports/derived-{family,facts,labels}.csv` and
+`display-names.csv` on this machine dated from 2026-10-02 03:39, before `d2e69de16` (father and
+mother read by sex). `emit-ancestor-gedcoms.py` read them in preference to the rebuilt `.gz` files,
+so the GEDCOM written earlier today put mothers in the father slot as extra parents (Rakel
+Rasmusdottir Lea as an extra father of Reinhert Borsheim, and eight more on the owner's own line).
+The `.gz` files were right. Fixed: `pack-derived.py --unpack` was run, and the emitter's `open_text`
+now reads the `.gz` whenever it is newer than the unpacked copy. Any local script reading the
+unpacked CSVs (`path-between.py`, `census-paths.py`) was reading the 2026-10-02 tree until now.
+The 2026-10-02 GEDCOM (51,847 people) was built from that same stale data. Regenerated
+`emma-ancestry-synoptic-tree-2026-10-03.ged`: 51,840 people, 30,037 families, 1,442 alternate
+families, 2,912 impossible links marked. The figures in the entry above are superseded.
+
+**Descent pass** (read-only, every parent link, the `derive-family.py` impossible rule): Yuri
+Dolgorukiy is an ancestor through primary links alone, via Olga Yurievna. Helena is an ancestor only
+through impossible links, via Vsevolod "Big Nest". Abul Hamza has 178,755 descendants in the tree
+and none is an ancestor of the owner, even counting every link; Helena is not his descendant in the
+tree, and Emma assumes the link is real and simply missing. No Guy d'Ibelin is an ancestor; two (the
+seneschal of Cyprus b. 1280 and the count of Jaffa b. 1250) descend from Abul Hamza. Olga, Rostislav
+and Ivan (b. 1109 to 1116) are given Anna Aëpovna, and by the tree's own dates cannot be Helena's
+(b. 1121). Izyaslav II's one wife who descends from Abul Hamza has no children in the tree. The
+FamilySearch file is not checked yet. Findings are on the queue items.

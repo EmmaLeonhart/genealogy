@@ -44,7 +44,9 @@ def open_text(path: Path):
     if path.suffix == '.gz' or str(path).endswith('.csv.gz'):
         return gzip.open(path, 'rt', encoding='utf-8', newline='')
     gz = Path(str(path) + '.gz')
-    if not path.exists() and gz.exists():
+    # A newer .gz wins (2026-10-03): an unpacked copy left from before a rebuild was read
+    # instead of the rebuilt tree, and put mothers in the father slot of the owner's ancestry.
+    if gz.exists() and (not path.exists() or gz.stat().st_mtime > path.stat().st_mtime):
         return gzip.open(gz, 'rt', encoding='utf-8', newline='')
     return path.open(encoding='utf-8', newline='')
 
