@@ -1726,3 +1726,34 @@ def test_a_rescue_alias_travels_with_its_label_even_when_drained(tmp_path):
     assert out.index('Q141574857\tAmul\t"Maurits Rasmusson Ø. Maudal"') < out.index(
         'Q141574857\tLmul\t"Maurits Rasmusson Maudal"')
     assert not any(ln.startswith("Q5\t") for ln in out), "nothing fresh for Q5: still drained"
+
+
+def test_a_private_person_linked_to_one_person_is_pruned_recursively(tmp_path):
+    """Emma, 2026-10-03: a private person linked to exactly one other person is not created, and
+    the rule repeats, so a chain of private people is eaten to nothing. A named person is never
+    taken away, and a private person with two remaining relatives stays."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_lonely", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    names = tmp_path / "names.csv"
+    names.write_text("geni_id,name_index,name_raw,display_name\n"
+                     "A,0,Anna /Berg/,Anna Berg\n"
+                     "B,0,Bo /Berg/,Bo Berg\n"
+                     "P1,0,<private> /Berg/,Berg\n"
+                     "P2,0,<private> //,Private\n"
+                     "P3,0,Private,Private\n"
+                     "Q,0,<private> /Lund/,Lund\n", encoding="utf-8")
+    family = tmp_path / "family.csv"
+    # A - P1 - P2 - P3 is a chain hanging off a named person; Q is the child of A and B.
+    family.write_text("geni_id,father,mother,fathers,mothers,spouses,children\n"
+                      "A,,,,,B,P1 | Q\n"
+                      "B,,,,,A,Q\n"
+                      "P1,,A,,A,,P2\n"
+                      "P2,P1,,P1,,,P3\n"
+                      "P3,P2,,P2,,,\n"
+                      "Q,B,A,B,A,,\n", encoding="utf-8")
+    assert mod.lonely_private_people(family, names) == {"P1", "P2", "P3"}

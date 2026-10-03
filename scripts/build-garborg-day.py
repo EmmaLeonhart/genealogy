@@ -457,6 +457,47 @@ def is_relationship_description(text):
 #     return out
 
 
+def lonely_private_people(family=None, names=None):
+    """The private people (Geni name `Private` or `<private> …`) left with at most one relative
+    once every such person is taken away in turn (Emma, 2026-10-03). Relatives are parents,
+    children and spouses in `derived-family.csv`; a chain of private people is eaten from its
+    end inwards, and a named person is never taken away."""
+    family = family or ROOT / "reports" / "derived-family.csv"
+    names = names or ROOT / "reports" / "display-names.csv"
+    private, seen = set(), set()
+    with open(names, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            g = row["geni_id"]
+            if g in seen:
+                continue
+            seen.add(g)
+            raw = (row.get("name_raw") or "").strip().lower()
+            if "<private>" in raw or (row.get("display_name") or "").strip().lower() == "private":
+                private.add(g)
+    links = collections.defaultdict(set)
+    with open(family, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            g = row["geni_id"]
+            for col in ("father", "mother", "fathers", "mothers", "spouses", "children"):
+                for other in (row.get(col) or "").split(" | "):
+                    other = other.strip()
+                    if other and other != g:
+                        links[g].add(other)
+                        links[other].add(g)
+    gone = set()
+    queue = [g for g in private if len(links.get(g, ())) <= 1]
+    while queue:
+        g = queue.pop()
+        if g in gone:
+            continue
+        gone.add(g)
+        for other in links.get(g, ()):
+            links[other].discard(g)
+            if other in private and other not in gone and len(links[other]) <= 1:
+                queue.append(other)
+    return gone
+
+
 def describe_all(geni_id, facts, father, mother, labels, table,
                  children=None, spouses=None, siblings=None,
                  qid_of=None, live_labels=None, fields=None):
@@ -7823,6 +7864,17 @@ def main():
 
     else:
         compose_why = {}
+
+    # ⛔ **A PRIVATE PERSON LINKED TO ONE PERSON IS NOT CREATED, RECURSIVELY. Emma, 2026-10-03:**
+    # *"if a private individual links to exactly one other individual then they are excluded.
+    # This is applied recursively so if there were a long chain of NN individuals it would get
+    # eaten up by this into nothing."*
+    _lonely = lonely_private_people()
+    _pruned = [g for g in to_create if g in _lonely]
+    for g in _pruned:
+        del to_create[g]
+    print(f"private people linked to one person (recursively): {len(_lonely):,} in the tree, "
+          f"{len(_pruned)} taken out of this batch")
 
     # **`--exclude` applies to EVERY batch shape, not only `--compose`.** It lived inside the
     # compose branch, so a `--roster` run ignored it completely -- which is how a roster batch

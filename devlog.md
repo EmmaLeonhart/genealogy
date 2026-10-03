@@ -50609,3 +50609,13 @@ The merge is Emma's, in the Wikidata UI. `Q141454472` Jon Larsen Sveinsvoll (Gen
 from a second Geni profile (`6000000111207318091`): Geni holds two profiles, so the tree holds two,
 by the rule. `Q141443310` Barbro Tormosdotter Ström: no twin found by label variants, and none of her
 six children carries a second mother; GZWDer's example may already have been resolved, or be wrong.
+
+## 2026-10-03: a private person linked to one person is not created, recursively (Emma)
+
+`build-garborg-day.lonely_private_people()` takes every private person (`<private>` in the Geni name,
+or the name `Private`) with at most one relative (parents, children, spouses in
+`derived-family.csv`), removes them, and repeats, so a chain of private people hanging off one
+person is eaten to nothing; a named person is never removed. The creation set drops them right after
+the composition and the ring, before every other guard. Measured on rebuild `df8463574`: 145,334
+private people, 51,031 removed by the rule; none of the 508 creations in the batch on disk is one of
+them (2 of 1,415 at `e622d4bf6`). Test: `test_a_private_person_linked_to_one_person_is_pruned_recursively`, CI.
