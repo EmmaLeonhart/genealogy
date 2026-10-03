@@ -50582,3 +50582,15 @@ adopted` (the counts recorded in `build-tiny-gedcoms.py`), all read as birth lin
 and NN people are created on purpose; nothing marks a placeholder for unknown concubines apart from
 an unnamed real person. The fix is queued (keep `PEDI`/`ADOP`, record the pedigree), with the
 Wikidata modelling of a foster or adoptive parent left for Emma.
+
+## 2026-10-03: queue items removed as part of a larger item, gone back over
+
+Read the queue history since 2026-09-20 for commits that folded, replaced or superseded items
+(`817639039`, `251d277ab`, `86a24b4ca`, `4dad97b14`, `78cabcb0f`, `5d8e4eb64`, `0fcf3ec3b`) and the
+error items removed on 2026-10-02. Each removed item's own question: the entry-point items (done: the
+gate removed, the three added), the talk-page items (replaced by Emma's own later item), the
+shintowiki sender (no more edit runs, Emma 2026-10-01), the CI slow lane (already fixed, duplicate
+xrefs in 306 tiny-path files), the 2026-09-23 handoff notes (notes, no question), the court-rank skip
+(Emma approved) were all answered. Two were not, and are back in the queue: the EMERGENCY item of
+2026-10-02 (answered today: the slim dropped `PEDI`) and GZWDer's three duplicate parent items,
+closed on a general cause and still live and unmerged.
