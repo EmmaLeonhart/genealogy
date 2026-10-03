@@ -86,6 +86,11 @@ KEEP_TAGS = frozenset({
     "OCCU", "TITL",
     # relationships — derive-family.py
     "FAMC", "FAMS", "HUSB", "WIFE", "CHIL",
+    # ⛔ **THE PEDIGREE OF A FAMC, 2026-10-03.** Dropping `PEDI` and `ADOP` made every foster and
+    # adoptive child a birth child (781 `PEDI foster`, 2,185 `PEDI adopted` in the corpus): Tore of
+    # Steig, King Haakon Magnusson's foster father, became his primary father and went to Wikidata
+    # as `P22`. derive-family.py writes them to `reports/derived-pedigree.csv`.
+    "PEDI", "ADOP",
     # CLAUDE.md "Later sources win": INDI.CHAN.DATE is the tiebreaker
     "CHAN",
     # continuation of a KEPT value only — a dropped node takes its children, so these survive

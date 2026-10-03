@@ -107,6 +107,10 @@ def main() -> int:
     families: dict[str, dict] = {}
     people: set[str] = set()
     fs_ids: dict[str, str] = {}
+    # (child, family, pedigree) for every `FAMC` carrying a `PEDI` other than birth: the slim
+    # keeps it since 2026-10-03, and a foster or adoptive family is otherwise a birth family here.
+    pedigree: set[tuple[str, str, str]] = set()
+    famc_of = ""
     current: str | None = None
     kind = ""
 
@@ -127,6 +131,12 @@ def main() -> int:
             if kind == "INDI":
                 if line.startswith("1 REFN fs:"):
                     fs_ids.setdefault(current, line[len("1 REFN fs:"):].strip())
+                elif line.startswith("1 FAMC @F"):
+                    famc_of = line.split()[2][2:-1]
+                elif line.startswith("2 PEDI ") and famc_of:
+                    pedigree.add((current, famc_of, line[7:].strip().lower()))
+                elif line.startswith("1 "):
+                    famc_of = ""
                 continue
             if kind != "FAM" or current is None:
                 continue
@@ -145,6 +155,18 @@ def main() -> int:
                 families[current]["chil"].append(other)
 
     print(f"{len(people):,} people, {len(families):,} families", flush=True)
+    # The pedigree is RECORDED, not yet acted on: what a foster or adoptive parent becomes on
+    # Wikidata is Emma's decision (queue), so the father and mother columns are unchanged.
+    with open(REPO_ROOT / "reports" / "derived-pedigree.csv", "w", encoding="utf-8",
+              newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["child", "family", "pedigree", "husb", "wife"])
+        for child, fam, pedi in sorted(pedigree):
+            if pedi != "birth":
+                f = families.get(fam, {})
+                writer.writerow([child, fam, pedi, f.get("husb", ""), f.get("wife", "")])
+    print(f"{sum(p != 'birth' for _c, _f, p in pedigree):,} non-birth family links "
+          f"-> reports/derived-pedigree.csv", flush=True)
 
     # ⛔ **THE FATHER IS THE MAN AND THE MOTHER THE WOMAN, WHICHEVER SLOT A FILE PUT THEM IN.**
     # Found 2026-10-02 on the owner's own row: `exports/tiny-profiles/saved-6000000087535357291.ged`
