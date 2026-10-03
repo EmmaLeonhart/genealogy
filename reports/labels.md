@@ -5,17 +5,17 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **2,274,286 people**.
+One row per person in `reports/derived-labels.csv` — **2,273,785 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 2,150,374 | 94.6% |
-| CJK only — needs translation for en | 54,472 | 2.4% |
+| Latin only | 2,149,888 | 94.6% |
+| CJK only — needs translation for en | 54,461 | 2.4% |
 | no usable name at all | 29,782 | 1.3% |
-| other script only — needs translation for en | 23,668 | 1.0% |
-| mixed-script only — no clean Latin label | 12,688 | 0.6% |
+| other script only — needs translation for en | 23,659 | 1.0% |
+| mixed-script only — no clean Latin label | 12,693 | 0.6% |
 | Latin and CJK | 3,302 | 0.1% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
@@ -27,10 +27,10 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 2,551,056 |
-| CJK | 133,612 |
-| other | 64,457 |
-| mixed | 37,093 |
+| Latin | 2,550,239 |
+| CJK | 133,582 |
+| other | 64,436 |
+| mixed | 37,086 |
 | none | 531 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-84,139 people have both a derived Latin label and a Wikidata English
-label. **25,815 match exactly (30.7%).**
+84,082 people have both a derived Latin label and a Wikidata English
+label. **25,798 match exactly (30.7%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the

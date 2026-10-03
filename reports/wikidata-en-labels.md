@@ -4,15 +4,15 @@ Built by `scripts/build-en-label-batch.py`. **Emits nothing to Wikidata.**
 
 All the `en` labels are done at once, as one step, so Japanese gets transcribed -- then `mul`, then `ja`, then `zh`. This is that step and only that step.
 
-- individuals with no English label: **265018**
-- of those, an `en` is now available: **190718**
-- still without one: **74300**
+- individuals with no English label: **264999**
+- of those, an `en` is now available: **190707**
+- still without one: **74292**
 
 | where the label comes from | people |
 | --- | ---: |
-| relationship label | 168068 |
-| romanised from zh | 17212 |
+| relationship label | 168050 |
+| romanised from zh | 17221 |
 | wikidata's own English label | 5200 |
-| romanised from ja | 238 |
+| romanised from ja | 236 |
 
 **A marker is not an `en` label.** `NN` belongs in `mul`, which `build-marker-label-fixes.py` already emits, so a person whose name is only a marker is counted in the shortfall above rather than given a false name here.
