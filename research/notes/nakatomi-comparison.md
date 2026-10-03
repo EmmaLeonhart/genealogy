@@ -17,10 +17,22 @@ clan."
 - The Fujiwara, who split off from the Nakatomi with Kamatari, were then
   recorded in the most detailed genealogies Japan has, culminating in the
   14th-century **Sonpi Bunmyaku**.
-- *To verify:* how far back the Engi honkei's generations run before Kamatari,
-  and whether its early, mythical part is any more trustworthy than the Inbe
-  ones. A pedigree compiled in 906 is still a construction for its earliest
-  stretch.
+- **What the Nakatomi line looks like before Kamatari.** This is from a hobbyist
+  transcription of the 中臣氏系図 (eonet.ne.jp/~academy-web, keifu-nakatomishi;
+  accessed 2026-10-02; *to check against the 群書類従 text*):
+  天児屋根命 Ame no Koyane → (two blank generations) → 天押雲命 → 天種子命 →
+  宇佐津臣命 → 大御食津臣命 → 伊香津臣命 (雷大臣命) → **five blank generations,
+  annotated 此間凡五世失傳歟, "about five generations here seem to have been
+  lost"** → 梨迹臣命 → 神聞勝命 → 久志宇賀主命 → 國摩大鹿嶋命 → 臣狭山命 →
+  跨耳命 → 大小橋命 → 阿麻毘舎卿 → 阿毘古大連 → 眞人大連 → 賀麻大夫 → 黒田大連 →
+  常磐大連 → 加多能子大連 → 御食子卿 → **鎌足 Kamatari (614–669)**.
+- So the Nakatomi pedigree is **also mythical at the top**, and it **admits a
+  gap** of about five generations rather than filling it. *Inference:* the
+  difference from the Inbe is not that the Nakatomi line is real all the way up.
+  It is (1) compiled in 906 rather than 1870; (2) continuous through the 6th
+  and 7th centuries with men the Nihon Shoki also names, such as 中臣勝海 in
+  587 and Kamatari's father 御食子; and (3) willing to leave a gap blank. The Ono
+  honkeichō fills every slot.
 
 ## The Inbe have nothing comparable
 
