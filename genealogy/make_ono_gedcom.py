@@ -162,9 +162,11 @@ fam_ids = {k: f"@F{i}@" for i, k in enumerate(families, 1)}
 
 OUT_EN = HERE / "ono_inbe_honkeicho_en.ged"
 OUT_DATED = HERE / "ono_inbe_honkeicho_en_dated.ged"
+OUT_EN_QID = HERE / "ono_inbe_honkeicho_en_qids.ged"
+QIDS_JSON = HERE / "wikidata" / "ono_qids.json"
 
 
-def write(out, english, dated=False):
+def write(out, english, dated=False, qids=None):
     head_note = ("Ono family Inbe pedigree (Inbe no Sukune honkeicho, 1870). "
                  "Judged forged by Kosugi Sugimura in 1876, who attributed it to Suzuki "
                  "Masatoshi; not evidence of real descent. Parent links follow transcription "
@@ -213,6 +215,8 @@ def write(out, english, dated=False):
                 L.append(f"1 FAMC {fam_ids[fk]}")
             if key in fk:
                 L.append(f"1 FAMS {fam_ids[fk]}")
+        if qids and key in qids:
+            note += f"; Wikidata: {qids[key]}"
         L += [f"1 NOTE {note}", "1 SOUR @S1@", "2 QUAY 0"]
     for fk, kids in families.items():
         father, mother = fk
@@ -232,3 +236,5 @@ if __name__ == "__main__":
     write(OUT, english=False)
     write(OUT_EN, english=True)
     write(OUT_DATED, english=True, dated=True)
+    import json
+    write(OUT_EN_QID, english=True, qids=json.loads(QIDS_JSON.read_text(encoding="utf-8")))
