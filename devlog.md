@@ -50775,3 +50775,14 @@ Alute and others) sat at positions 762-841, so none reached a batch; Naruhito an
 from each seed in turn, and the cap takes the front of that order. Measured locally on today's tree:
 Puyi 13 of 13, Yi Ku 76 of 76, Naruhito 101 of 107, Ettinger 132, the owner 275, 500 in all.
 Test: `test_the_ring_cap_gives_every_seed_a_turn`, CI.
+
+## 2026-10-03: the owner's ancestry GEDCOM re-emitted after the splice fix (error report)
+
+Emma opened `emma-ancestry-synoptic-tree-2026-10-03.ged` in MyHeritage Family Tree Builder and saw
+Frederik Zeuthen as father of Mstislav II of Kiev: that file was built from the tree before the splice
+fix. A new file, not an overwrite: `Documents\genealogy-gedcom\emma-ancestry-synoptic-tree-2026-10-03-after-splice-fix.ged`,
+from `derived-family.csv` of rebuild `8e004d55a` (10:13 PDT): 32,120 people (51,840 before; the
+spliced links had pulled whole unrelated families into the ancestry, Immanuel Bang's Danish line
+among them), 18,659 families, 1,998 impossible links marked. "Zeuthen" occurs 0 times (2 in the old
+file). The old file was itself an overwrite of the first, stale 2026-10-03 file; files are written
+under new names from now on.
