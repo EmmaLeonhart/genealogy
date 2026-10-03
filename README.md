@@ -17,7 +17,12 @@ invented.
 - `research/SUMMARY.md`: the current answer, how sure, what is open.
 - `research/sources.md`: sources consulted and how far to trust each.
 - `research/notes/`: one file per sub-question.
-- `genealogy/`: the GEDCOM file and the data it is built from.
+- `genealogy/`: transcriptions of the three 1870 Inbe pedigrees (CSV) and
+  GEDCOM files built from the Ono pedigree by `make_ono_gedcom.py`:
+  Japanese names (`ono_inbe_honkeicho.ged`), English names
+  (`_en.ged`), and English with estimated years and Wikidata links
+  (`_en_dated.ged`). `_en_with_wikidata.ged` is the user's own edit in
+  MyHeritage.
 - `data_lake/`: source material (`downloads/` is what the agent fetched).
 - `INTENT.md`, `queue.md`: what the project is for and what is next.
 

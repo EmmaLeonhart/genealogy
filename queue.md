@@ -25,10 +25,9 @@ Work top to bottom. Delete an item when it is done (record it in
 5. Branches: one note per branch (Awa, Sanuki, Kii, Izumo, Tsukushi/Ise,
    Bōsō Awa), covering origin claims, shrines, surviving families (e.g. the Miki
    family of Tokushima), `research/notes/branches.md`.
-5a. Origin theories: what scholars propose the Inbe actually were
-   (occupational be grouping vs kin group, immigrant/craft-guild theories,
-   the Awa hemp connection, how the shared Futodama descent was assembled),
-   `research/notes/origin-theories.md`.
+5a. Origin theories: started in `research/notes/origin-theories.md`
+   (be organisation, Soga link, kabane). Still: the hemp/Awa archaeology, the
+   Miki family, kin-group counter-theories, craft-guild theories.
 5b. Nakatomi comparison: why the Nakatomi genealogy is so much better defined
    (Fujiwara-era lineage records such as the Ōnakatomi family register, the
    Sonpi Bunmyaku) and what that says about the Inbe gaps,
