@@ -13,7 +13,6 @@ it. Each session starts with
 
 
 
-- **When the uncapped relationships batch (`reports/wikidata-relationships-uncapped.txt` at `d12c26ab2`, started 2026-10-02 11:42 PDT) has finished, rebuild and report how much the universe grew (Emma, 2026-10-02).** Before: `edit-universe.json` held 16,934 universe items and 630 one step out (2026-10-02, before the batch); compare after the next full rebuild.
 - **Make CI green (Emma, 2026-09-27; run 36373025512 then).** Never weaken a test. State 2026-10-02 16:40 UTC: every cause found and fixed in the repo (the `NN-` P1810 line, the builder test, the vocabulary's patronymic roles, the live-value QIDs, the backfill test's second cap, and the label overwrites without an alias rescue, which were the label-edit cap draining an `Amul` emitted in an earlier batch while a new label value went out alone). The batch on main (`58dfcdfc6`) was composed before the cap fix and still carries `Q141574857` without its rescue, so the next pipeline rebuild must land first; then dispatch `ci.yml` on main and confirm green.
 
 - **Clean up this project, and the ontology-harness checkout of it.** Emma: "we should be putting at the end of the queue something about cleaning it up." Keep it at the end. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.

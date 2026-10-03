@@ -50422,3 +50422,17 @@ Bogislaw II (`6000000002188021178`, born 1178) loses Ulla Celsing (`600000002260
 1854), keeping mother `6000000008248664316`. `census-paths.py` and `path-between.py` walk
 `derived-family.csv`, so they no longer cross these links. Where the links came from is still open:
 the queue item "Interrogate the source of errors" asks it.
+
+## 2026-10-03: the uncapped relationships batch finished; the universe grew by 2,228 items
+
+The file was re-scoped three times after `d12c26ab2` (28,233 lines): `f27882ab5` (27,287),
+`400261b1a` (25,426), and `db50df4e4` at 18:44 PDT on 2026-10-02 (4,179, only links with one end in
+the universe and one outside). The `d12c26ab2` and `400261b1a` versions are mostly not on Wikidata
+(sampled live: about 4 in 40 of `400261b1a`, the live ones mostly early lines or statements another
+batch also carries), so the earlier runs were stopped when the file was re-scoped. The final version
+is: 40 of 40 sampled statements live. The account's runs that touched these items ended 2026-10-03
+21:59 PDT (QuickStatements run 1790992318762, 8,262 edits).
+
+`out/wikidata/edit-universe.json` from the first rebuild after that (`d3a2786f5`, 23:56 PDT):
+19,162 universe items and 657 one step out, against 16,934 and 630 before the batch. That is +2,228
+(+13%) and +27. The growth is not all this batch's: the day batches ran over the same hours.
