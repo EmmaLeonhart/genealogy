@@ -177,3 +177,18 @@ Transcription: `genealogy/ono_inbe_honkeicho.csv`.
 Note also that the Ono and Awa lines contradict each other right after the
 junction, so at most one of them could be right. Both were submitted to the
 Jingikan in the same year.
+
+### The honkeichō also has the Hiwashi line (images 54–56)
+
+The Ono document has a **second line**. It starts higher, at **神魂命
+Kamimusubi**, and runs 角凝魂命 → 天底立命 → 五十狭布魂命 → 伊加志保魂命 →
+天背男命 → 許登能麻遅命 → **天日鷲翔矢命 Ame no Hiwashi** → 大麻比古命 →
+由布津主命 → **訶多々主命**. From there it uses **the same names as Awa and
+Okajima**: 伊那佐可雄, 沙喜久別, 夫由良別, 比比多臣, 止美美大人, 伊波毘古,
+志麻名布, 武良比, 宇氣意, 伊津比古, 久豆美, …
+
+So **all three documents use the same per-emperor name list for the Hiwashi
+line.** The Ono document adds two things: Hiwashi's own ancestry back to
+Kamimusubi, which matches the Awa pedigree's "grandson of Kamimusubi" only
+loosely, since Ono has six generations between them; and a separate Futodama
+father-line running into Kobito and Shikobuchi.

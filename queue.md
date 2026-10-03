@@ -9,10 +9,9 @@ Work top to bottom. Delete an item when it is done (record it in
    images 20–75 (lower priority than 1b/1c), plus a check of image 10 and the
    image 14→15 page break (who is 久米麻呂's father?). Verify 色洞子 =
    忌部色夫知.
-1b. Transcribe the god-to-human junction of the other two pedigrees, which
-   are in the same NDL volume 2538213: Okajima (images 32–50) and Ono
-   honkeichō (images 50–73). Compare their generations with the Awa line: do
-   they share the per-emperor scaffold, and where do they diverge?
+1b. Ono honkeichō images 57–73: does it continue the court Inbe down to
+   Hamanari / Hironari / Fumiyama and the FamilySearch names (伴主, 季長, 茂藤,
+   春光, 頼友, 頼成, 頼親, 親光, 親澄)? If yes, that is FamilySearch's source.
 1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
    whether FamilySearch's line matches it.
 2. Find the source behind FamilySearch's Inbe line (Hamanari → Chikazane):
