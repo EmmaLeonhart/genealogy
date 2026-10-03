@@ -12,8 +12,9 @@ Work top to bottom. Delete an item when it is done (record it in
    忌部色夫知.
 1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
    whether FamilySearch's line matches it.
-2. Find the Oda family's own Inbe pedigree (織田氏 忌部氏系譜, shown in the
-   2012 Echizen report) and its date/holder (Tsurugi Shrine?).
+2. Date the Oda shrine families' Inbe pedigrees (『越前織田明神社家忌部上坂系譜』,
+   『忌部氏系譜』): search CiNii / Fukui prefectural archives / 越前町史.
+   Read the 1393 藤原信昌・将広置文 text. Notes: `research/notes/oda-branch.md`.
 2b. Search for any generational chain from Futodama or Ame no Tomi down to a
    historical Inbe (Kogo Shūi, Shinsen Shōjiroku, Awa Inbe / Miki family
    records, Awa Shrine priests). This is the user's core question.

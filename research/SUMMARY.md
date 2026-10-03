@@ -75,6 +75,12 @@ Inbe were a ritual-supply organisation tied to the Soga, lost ground after
 record-keeping more than reality. Details: `notes/origin-theories.md`,
 `notes/nakatomi-comparison.md`.
 
+**The Oda as an Inbe branch:** plausible but undocumented. The earliest Oda
+document (1393, Tsurugi Shrine) is signed "Fujiwara". Chikazane is first named
+in 1641, as a Taira. The Inbe version comes from undated pedigrees held by the
+Oda shrine families. The 1290 "Chikazane" gravestone actually reads 親尊.
+Details: `notes/oda-branch.md`.
+
 ## Open questions
 
 - What do the Kogo Shūi and Shinsen Shōjiroku actually say about each branch's
