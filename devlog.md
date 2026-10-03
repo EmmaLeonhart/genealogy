@@ -50663,3 +50663,21 @@ on an earlier day, into a slot that is empty or still holds that `NN …` value,
 correction item). `CLAUDE.md`'s English-label rule now says "at creation";
 `test_no_person_is_labelled_by_a_relationship_phrase_in_english` checks creations only, and the
 30b61a451 test no longer forbids the relational label the later pass writes on those items.
+
+## 2026-10-03 13:10 PDT: ancestor deck re-counted, child and spouse cards removed
+
+The FamilySearch deck https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj still held 556 child and spouse cards
+(444 unanswered) after the 2026-10-01 ruling that only father/mother slots of her line go in the deck. They are
+removed; her answers stay in the deck's `pairs` store, so nothing she answered is lost. 89 unanswered father/mother
+cards whose two sides the zipper has since paired are removed too. No new verdicts since 2026-10-01 10:59 PDT
+(353 docs, all 289 Geni-FamilySearch pairs already in `emma-judgments.tsv`).
+
+Re-count (tree `a5b8bb6f9`, zipper `cc239fecb`): 4,294 of 9,991 Geni-side ancestors paired (3,941 on 2026-09-30),
+5,167 of 20,904 FamilySearch-side ancestors of `PFR5-LDS`. The refused slots hold 18 father/mother slots, 3,416
+child and 763 spouse slots, so the new round is 5 cards: Tollak Assersen Grøsfjell and Ingeleiv Ormsdatter Årstad
+(parents of Helga Tollaksdatter Årstad), Kotini an der Amper (mother of Ratold I von Ebersberg), Eiliv Eilivson
+Naustdal (father of Margrethe Eilefsdatter Naustdal), and Sigurd Haldorsen's mother, where FamilySearch puts
+Haldor Gudbrandsen, a man's name, in the mother slot. Deck now 267 cards, 78 open.
+
+Not expected: the unpaired ancestors are not waiting in refused slots. The walk never reaches them, so more deck
+rounds will not pair them; the zipper's reach is the next step on that item.
