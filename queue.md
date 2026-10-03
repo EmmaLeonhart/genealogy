@@ -12,8 +12,8 @@ Work top to bottom. Delete an item when it is done (record it in
    忌部色夫知.
 1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
    whether FamilySearch's line matches it.
-2. Find the Hōraku-ji gravestone inscription text for Chikazane (Echizen
-   town 2011) and what it says about his name/parentage.
+2. Find the Oda family's own Inbe pedigree (織田氏 忌部氏系譜, shown in the
+   2012 Echizen report) and its date/holder (Tsurugi Shrine?).
 2b. Search for any generational chain from Futodama or Ame no Tomi down to a
    historical Inbe (Kogo Shūi, Shinsen Shōjiroku, Awa Inbe / Miki family
    records, Awa Shrine priests). This is the user's core question.

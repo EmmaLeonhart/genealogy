@@ -88,7 +88,31 @@ Chikazane → Oda.
   as Japanese Wikipedia summarises it) and known for his craft skill. He repaired the head of the Tōdaiji
   Great Buddha. The Nakata pedigree makes him the son of a **Jingi Taifu** (vice-head of the
   Jingikan). Those don't fit together.
-- Independent evidence for the Inbe identity of Chikazane (not for the chain
-  above him): a gravestone fragment found at Hōraku-ji, Echizen town, announced
-  by the town education board on 2011-11-01 (Nikkei, 2011-11-04). It gives his
-  death date, and on that basis the Taira parentage was rejected.
+- **Correction (2026-10-03): the Hōraku-ji stone is not independent evidence
+  for Chikazane.** The 2011 announcement (Nikkei, 2011-11-04) treated a
+  five-ring stupa at Hōraku-ji, Echizen town, as Chikazane's tomb. The town's
+  own survey report (『広報えちぜん』 Sept. 2012, pp. 2–3, saved as
+  `data_lake/downloads/echizen/koho_echizen_2012-09_horakuji.pdf`) concluded
+  that the inscription reads **喪親尊阿聖霊／正應三年庚刀二／月十九日未尅**.
+  That makes it the grave of a man called **親尊 (Chikataka)** who died on the 19th day
+  of the 2nd month of Shōō 3 (1290), around 2 pm. It is **not 親真**. The report
+  suggests the stone, which is easily misread as 親真, may have been a model
+  when the Oda pedigrees were drawn up.
+- What the same report says about the Oda pedigrees:
+  - Oze Hoan's 『信長記』 (c. 1611) has the Taira story (Sukemori's pregnant
+    concubine fleeing to Tsuda in Ōmi; the child adopted by the Tsurugi Shrine
+    priests) but **does not name Chikazane**.
+  - **Chikazane first appears in Hayashi Razan's 『織田信長譜』** (commissioned
+    1641, published 1658), on Taira lines.
+  - The 『続群書類従』 「織田系図」 (c. 1692) has Chikazane as Sukemori's son.
+  - **The Oda's own "Inbe pedigree"** (織田氏、忌部氏説の系譜) says Chikazane's
+    father was **忌部(斎部)親澄**, his mother a daughter of 平基度 (Ise Heishi),
+    that he became priest of Oda Myōjin in Jōei 2 (1233), took the Buddhist
+    name 覚盛, and died on Shōgen 2.2.18 (1260). It says explicitly
+    "平氏にあらず、忌部神主の正系なり" ("not Taira, but the direct line of the
+    Inbe priests"). FamilySearch's dates for Chikazane (d. 1260) and his father
+    Chikazumi match this pedigree.
+  - Nobunaga himself signed as "Fujiwara Nobunaga" at 16 and claimed Taira
+    descent in the 1570s.
+- So Chikazane's Inbe identity rests on **a family pedigree of uncertain date**,
+  not on the stone. Chikazane is not attested earlier than 1641 at all.
