@@ -112,7 +112,7 @@ assert set(DATES) <= set(people)
 
 
 def gdate(y):
-    return f"EST {-y} B.C." if y < 0 else f"EST {y}"
+    return f"{-y} B.C." if y < 0 else f"{y}"
 
 FEMALE = {"5", "W2"}
 
@@ -171,7 +171,7 @@ def write(out, english, dated=False):
     if not english:
         head_note = "斎部宿禰本系帳. " + head_note
     if dated:
-        head_note += (" Years are estimates (EST) of when each person would have lived "
+        head_note += (" Years are rough estimates of when each person would have lived "
                       "according to the pedigree itself, anchored on the emperor each entry "
                       "names, using the traditional Nihon Shoki reign dates; those are "
                       "legendary before the 6th century. Only Inbe no Kobito and Inbe no "
