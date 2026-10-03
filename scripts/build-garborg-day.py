@@ -1339,11 +1339,15 @@ def family_source(g, relation, relative):
     if _FAMILY_SOURCES is None:
         _FAMILY_SOURCES = {}
         path = ROOT / "reports" / "derived-family-sources.csv"
+        # ⛔ A FamilySearch id removed on Emma's order is never loaded, so no statement and no
+        # `S2889` citation can use it (2026-10-02: links still cited `G644-GSR` after removal).
+        removed = removed_fs_ids()
         if path.exists():
             with open(path, encoding="utf-8", newline="") as fh:
                 for row in csv.DictReader(fh):
                     if row["relation"] == "fs_id":
-                        _FS_IDS.setdefault(row["geni_id"], row["relative"])
+                        if row["relative"] not in removed:
+                            _FS_IDS.setdefault(row["geni_id"], row["relative"])
                     else:
                         _FAMILY_SOURCES[(row["geni_id"], row["relation"],
                                          row["relative"])] = row["source"]
