@@ -50436,3 +50436,16 @@ is: 40 of 40 sampled statements live. The account's runs that touched these item
 `out/wikidata/edit-universe.json` from the first rebuild after that (`d3a2786f5`, 23:56 PDT):
 19,162 universe items and 657 one step out, against 16,934 and 630 before the batch. That is +2,228
 (+13%) and +27. The growth is not all this batch's: the day batches ran over the same hours.
+
+## 2026-10-03: the "pause FamilySearch importing" item closed; a correction to the universe count
+
+The item asked for two things, the pause and a devlog record of it, and both were done on 2026-09-30
+(the 15:50 PDT entry: `CREATIONS_PAUSED`, no new downloads, where the zipper stood). Its RootsMagic
+half was lifted later that day by Emma's AskUserQuestion answer (`CLAUDE.md`: the extraction is
+finished, only `CREATIONS_PAUSED` stays). The zipper work it led to is its own item, on Emma's
+ancestors. So nothing in it was left undone.
+
+Correction to today's universe entry: the 19,162 in `d3a2786f5` was built with the old walk. The
+2026-10-03 00:56 PDT change (every edited item is in the universe, with one hop from it) was
+measured locally at 28,210 universe items and 87 one step out, so the next pipeline rebuild should
+show that number, mostly from the new rule rather than from the batch.
