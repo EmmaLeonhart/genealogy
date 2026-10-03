@@ -48,6 +48,12 @@ genealogist and Suzuki Masatoshi's close ally, in his account of Nobunaga's
 ancestry. It also contradicts the 9th-century chronicle entry on Fumiyama,
 which calls him humbly born. Details: `notes/familysearch-survey.md`.
 
+**The Inbe's own 807 account (Kogo Shūi) gives no chain either.** Futodama
+is Takamimusubi's son, and the regional ancestors (Hiwashi, Taokiho-oi,
+Hikosashiri, Kushiakarutama, Ama no Mahitotsu) are his *followers*, not kin.
+Ame no Tomi is his grandson in Jimmu's time, and there is nothing after that, not even
+for the author himself. Details: `notes/kogo-shui.md`.
+
 **The official 815 register gives the Inbe no chain at all**, only
 "descendants of Futodama, child of Takamimusubi". It gives Ame no Hiwashi three
 different ancestries. The Ono pedigree's generations can be matched to the
@@ -77,4 +83,5 @@ and printed pedigrees are not yet checked.
   found the 14-generation line, unsourced, ending at Hamanari. Found and
   began transcribing the three 1870 pedigrees (Awa, Okajima, Ono). Traced
   FamilySearch's line to Nakata Norinobu (Suzuki Masatoshi's ally). Shinsen
-  Shōjiroku entries checked.
+  Shōjiroku entries checked. Kogo Shūi
+  checked; Ono GEDCOM (Japanese and English) built.

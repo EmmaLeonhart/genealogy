@@ -16,10 +16,9 @@ Work top to bottom. Delete an item when it is done (record it in
 2b. Search for any generational chain from Futodama or Ame no Tomi down to a
    historical Inbe (Kogo Shūi, Shinsen Shōjiroku, Awa Inbe / Miki family
    records, Awa Shrine priests). This is the user's core question.
-3. Primary-source notes: the Kogo Shūi (807) branch genealogy,
-   `research/notes/kogo-shui.md` (Shinsen Shōjiroku done); check the
-   Shinsen Shōjiroku entries against a critical edition; Kojiki / Nihon Shoki
-   mentions of Futodama and Inbe ancestors.
+3. Check the Kogo Shūi and Shinsen Shōjiroku notes against critical editions
+   (Iwanami Bunko / Saeki); Kojiki / Nihon Shoki mentions of Futodama and Inbe
+   ancestors.
 4. Historical individuals: list every named Inbe person found in the
    chronicles (Nihon Shoki, Shoku Nihongi and later), with dates, rank and any
    stated parentage, `research/notes/individuals.md`.
