@@ -146,3 +146,34 @@ CSV.
 copied from another family's. The two texts share one list of names, and the
 list was re-spaced against the emperor list differently each time. It is not
 an independent record of real generations.
+
+## The Ono honkeichō: the most complete chain, and the one called a forgery (images 50–53)
+
+Transcription: `genealogy/ono_inbe_honkeicho.csv`.
+
+- It starts at the top: **Takamimusubi → Futodama** (also called 天神玉命 and
+  玉櫛比古命; wife Ame no Hiritome) **→ Ame no Kushimimi → Ame no Tomi →
+  Iinagahime** (wife of Yufutsunushi). The line then passes through Iinagahime.
+- **After her it has completely different names from Awa/Okajima:** 和訶富奴命,
+  佐久耳命, 阿加佐古命, 玉久志古命 (Suinin, attending Yamatohime), 多良斯富命
+  (Keikō 53, on the emperor's eastern tour), and so on down to 豊止美 (Kinmei;
+  given the kabane 忌部首) and 佐賀斯 (653, head of the Jingikan). It shares the
+  junction with the other two but not one of their generations.
+- **It runs straight into real people from the chronicles.** 子麿 is "also called
+  子人 or 首", Izumo no kami, Junior 4th Rank Upper, died Yōrō 3. That is
+  **Inbe no Kobito**. 色弗, Jingi Taifu, given posthumous rank for Jinshin War
+  merit and granted kabane in Tenmu's reign, is **Inbe no Shikobuchi**. The
+  entries paraphrase the Nihon Shoki and Shoku Nihongi.
+- So this is the **only one of the three that gives an unbroken father-line
+  from Futodama to people who certainly existed.** It is exactly the shape the
+  user is looking for.
+- It is also the one Kosugi says **Suzuki Masatoshi made**. He saw Suzuki's own
+  draft, with generations deliberately reordered. *Inference:* its
+  completeness is the sign of the forgery. A compiler who knew the chronicles
+  took the real 7th-century Inbe from the Nihon Shoki and Shoku Nihongi,
+  attached them to the mythical line, and filled the gap with invented names
+  pinned to emperors.
+
+Note also that the Ono and Awa lines contradict each other right after the
+junction, so at most one of them could be right. Both were submitted to the
+Jingikan in the same year.
