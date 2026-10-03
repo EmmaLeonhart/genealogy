@@ -68,6 +68,13 @@ the gods down to Ame no Tomi. FamilySearch has people back to Hamanari. Nothing
 bridges the two. Confidence: high for these two databases; the primary texts
 and printed pedigrees are not yet checked.
 
+**Why the Nakatomi differ:** the Nakatomi have a pedigree compiled in 906 on
+imperial order, and the Fujiwara kept records for centuries afterwards. The
+Inbe were a ritual-supply organisation tied to the Soga, lost ground after
+645, and had no great house to keep records. The gap is about power and
+record-keeping more than reality. Details: `notes/origin-theories.md`,
+`notes/nakatomi-comparison.md`.
+
 ## Open questions
 
 - What do the Kogo Shūi and Shinsen Shōjiroku actually say about each branch's

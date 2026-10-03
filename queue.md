@@ -28,10 +28,9 @@ Work top to bottom. Delete an item when it is done (record it in
 5a. Origin theories: started in `research/notes/origin-theories.md`
    (be organisation, Soga link, kabane). Still: the hemp/Awa archaeology, the
    Miki family, kin-group counter-theories, craft-guild theories.
-5b. Nakatomi comparison: why the Nakatomi genealogy is so much better defined
-   (Fujiwara-era lineage records such as the Ōnakatomi family register, the
-   Sonpi Bunmyaku) and what that says about the Inbe gaps,
-   `research/notes/nakatomi-comparison.md`.
+5b. Nakatomi comparison: drafted in `research/notes/nakatomi-comparison.md`.
+   Still: how far back the 906 Engi honkei's generations run before Kamatari
+   (read the 中臣氏系図 in 群書類従, NDL Digital).
 6. Build `genealogy/people.csv` and `genealogy/links.csv` (source and
    confidence on every row), plus a script that writes `genealogy/inbe.ged`.
    Check that the GEDCOM loads (parse it back).
