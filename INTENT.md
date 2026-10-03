@@ -81,6 +81,15 @@ link tied to a source.
   one the same way: commit as landed, push, `git mv` into `genealogy/`, and fold
   any new QIDs into `make_ono_gedcom.py`.
 
+- **End goal stated 2026-10-03:** "My end interest is potentially importing
+  this tree onto Wikidata, although I'm not really sure how to ... present it
+  properly with its records and such." So outputs should move toward a
+  Wikidata-ready form: a roster of people with QIDs and Japanese/English
+  names, and a plan for modelling a forged/legendary pedigree on Wikidata with
+  references.
+- Asked for a roster of "all the Wikidata items that are present for these plus
+  their Japanese name and their English name ... alongside any notes".
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no

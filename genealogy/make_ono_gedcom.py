@@ -228,6 +228,7 @@ def write(out, english, dated=False):
     print(f"wrote {out} ({len(people)} people, {len(families)} families)")
 
 
-write(OUT, english=False)
-write(OUT_EN, english=True)
-write(OUT_DATED, english=True, dated=True)
+if __name__ == "__main__":
+    write(OUT, english=False)
+    write(OUT_EN, english=True)
+    write(OUT_DATED, english=True, dated=True)
