@@ -50695,3 +50695,17 @@ Not expected: none of the 158 rows in `label-applications.tsv` is in today's bat
 2026-09-08 and 2026-09-25 included. Run 37121725454 queued all 158, then `_cap_label_edits` took 450 people
 newest-QID-first and held 2,103 more. That starvation of older items is Emma's rule (no fairness pass), so
 nothing was changed; the rows go out as the backlog drains. 6 rows were retired this morning as live.
+
+## 2026-10-03 13:10 PDT: the zipper's frontier into the ancestor deck
+
+Why the unpaired ancestors are not reached, measured on the same tree: of 5,697 unpaired Geni-side ancestors,
+1,344 sit directly above a paired child. For 681 of them FamilySearch has an unpaired parent in that slot, and
+the FamilySearch walk (`allow_solo=False`) neither paired the two nor wrote the slot to the ambiguous file, so
+no deck saw it; 531 have no FamilySearch parent there; 132 face a FamilySearch parent already paired to someone
+else. The other 4,353 sit above those breaks. Also seen: 325 of the 643 ancestors in generations 5-9 are
+unpaired, though the FamilySearch download reaches twelve generations up.
+
+The frontier slots are now cards (Geni ancestor against FamilySearch's parent in that slot): 270 after dropping
+cards where our side is our own `FS<id>` render of the same record and empty ids. Deck version 8, 539 cards,
+350 open. Correction to the entry above: the FamilySearch-side count is 6,309 of 25,311 ancestors paired, not
+5,167 of 20,904; the first walk read a slot holding two parents (`A | B`) as one id.
