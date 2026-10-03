@@ -625,6 +625,11 @@ def build(args):
     if added:
         lines.append("")
 
+    # A super entry point is created if missing (Emma, 2026-10-03), ahead of everyone and past the
+    # pause, so `--limit` never cuts one: `qs_v1.super_entry_points`.
+    super_keys = qs_v1.super_entry_points()
+    order = ([f for f in order if "FS" + f.replace("-", "") in super_keys]
+             + [f for f in order if "FS" + f.replace("-", "") not in super_keys])
     for fs in order:
         rec = by_fs[fs]
         key = rec["xref"]
@@ -640,7 +645,8 @@ def build(args):
             carried.append((fs, "", f"paired to Geni profile {on_geni[fs]} (the render keys "
                                     f"them on it): the day batch creates them, with P2889"))
             continue
-        if CREATIONS_PAUSED:
+        super_point = "FS" + fs.replace("-", "") in super_keys
+        if CREATIONS_PAUSED and not super_point:
             carried.append((fs, "", "paused: FamilySearch creations wait on the zipper merge "
                                     "(Emma, 2026-09-30)"
                                     + ("; on the ancestor ring" if on_ring(fs) else "")))
@@ -750,8 +756,8 @@ def build(args):
         # outward from the eleven attachment points as a wavefront, which is the SEQUENCE
         # `CLAUDE.md` § *The batches are a SEQUENCE* describes — not a slower version of
         # shipping 2,817 isolates today.
-        if not any(re.match(r"^(?:LAST|Q\d+)\t(?:P22|P25|P26|P40|P3373)\t", ln)
-                   for ln in block):
+        if not super_point and not any(
+                re.match(r"^(?:LAST|Q\d+)\t(?:P22|P25|P26|P40|P3373)\t", ln) for ln in block):
             carried.append((fs, primary, "no relationship could be emitted: no relative of "
                                          "theirs has a QID yet, so they would be an isolate"))
             continue

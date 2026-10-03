@@ -50726,3 +50726,25 @@ permission classifier refused the first click), `Q141444742` (ours, 2026-09-13) 
 older `Q117341653` through the Wikidata UI merge gadget, no edit summary, 2026-10-03 12:56 PDT; the
 redirect `Q141444742` -> `Q117341653` is in the item history. The ledger follows redirects to their
 targets (`ledger_redirects`).
+
+## 2026-10-03: super entry points; the 01:09 people and the Ettinger ancestors
+
+Emma defined a super entry point by AskUserQuestion: "Created if missing", with no relative in the
+universe needed. `reports/super-entry-points.tsv` is the one list (tree keys), read through
+`qs_v1.super_entry_points`: the isolate guard keeps a creation whose `P2600`/`P2889` names one;
+`build-garborg-day.py` adds the Geni-keyed ones without an item to the creations and lets them past
+its no-relationship carry; `build-familysearch-day.py` puts the FamilySearch-keyed ones first, past
+`CREATIONS_PAUSED` and past its carry. The list holds the 01:09 UTC message's people, Romans left
+out: Gwrddwfin ap Cwrrig, Cendfindan mac Maith (`FSL7J5NNV`; FamilySearch also holds `FSLHJY2G1`),
+Abba ben Marukba, Azariya ibn Pedaya, Safracht de Gothie, Vedrhall Himileigsson (the Geni profile;
+FamilySearch `FSGL4PRF9` is the same person), Hocingas de Saxe, Frava De Gaule, Clodius IV
+(`FSLCXKGNP`, the record on the ring), Pellinor Ewrawe and Burgerschaft. None is on Wikidata (by id
+or by name). "Marchudd ap Otta" is not in the tree under that name and is left out. A FamilySearch
+person still has to pass that builder's ja/zh/ko label gate.
+
+Robert Ettinger's ancestors: 14,580 in the tree, 450 with an item; those 450 are in
+`reports/entry-points-now.tsv` (the owner's protected items excluded), and the rest are created by
+the ring seeded at Ettinger, within the 500-a-run cap. Walked locally: the universe goes to 29,732
+items, and the two Buyeo guards stay outside. The ring-cap correction item is closed: the 500-a-run
+cap and the kept descendant rings were done on 2026-10-02 (`406af5225`).
+Test: `test_a_super_entry_point_is_created_even_with_no_relationship`, CI.

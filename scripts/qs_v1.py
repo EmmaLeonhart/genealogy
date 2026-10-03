@@ -38,6 +38,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from pathlib import Path
 from dataclasses import dataclass, field
 
 __all__ = ["ParseError", "Command", "parse", "edit_objects"]
@@ -262,6 +263,28 @@ _RELATIONSHIP_LINE = re.compile(
     r"^(?:LAST|Q\d+)\t(?:%s)\t" % "|".join(RELATIONSHIP_PROPS))
 
 
+#: ⛔ **A SUPER ENTRY POINT IS CREATED IF MISSING, LINKED OR NOT. Emma, 2026-10-02/03:** *"If they
+#: do not exist on Wikidata, you create them"*; asked what a super entry point does, *"Created if
+#: missing"*, with no relative in the universe needed. One list, read by the composers and by this
+#: guard: `reports/super-entry-points.tsv`, keyed on the tree's key (a Geni id, or `FS` + the
+#: FamilySearch id without its dash).
+SUPER_ENTRY_POINTS = Path(__file__).resolve().parents[1] / "reports" / "super-entry-points.tsv"
+
+
+def super_entry_points(path=None):
+    """The tree keys of the super entry points (`FSL7J5NNV`, `6000000019081884913`)."""
+    path = Path(path or SUPER_ENTRY_POINTS)
+    if not path.exists():
+        return set()
+    rows = path.read_text(encoding="utf-8").splitlines()[1:]
+    return {r.split("	")[0].strip() for r in rows if r.strip()}
+
+
+def _super_id_values(keys):
+    """The identifier strings a creation carries for those keys: `P2600` digits, `P2889` dashed."""
+    return {k if not k.startswith("FS") else f"{k[2:6]}-{k[6:]}" for k in keys}
+
+
 def _block_end(lines, start, limit):
     """Where the `CREATE` at `start` stops, never later than `limit`.
 
@@ -347,6 +370,7 @@ def drop_orphaned_creations(lines):
     """
     starts = [n for n, l in enumerate(lines) if l.strip() == "CREATE"]
     doomed, dropped = set(), []
+    keep_ids = _super_id_values(super_entry_points())
     for i, start in enumerate(starts):
         end = _block_end(lines, start, starts[i + 1] if i + 1 < len(starts) else len(lines))
         label = None
@@ -358,6 +382,9 @@ def drop_orphaned_creations(lines):
                 label = m.group(1)
             if _RELATIONSHIP_LINE.match(lines[n]):
                 related = True
+            ident = re.match(r'^LAST	(?:P2600|P2889)	"([^"]+)"', lines[n])
+            if ident and ident.group(1) in keep_ids:
+                related = True     # a super entry point: created if missing, linked or not
             # `P31 Q5` is what separates a person from a name item. Only a person is expected
             # to carry a relationship, and only a person becomes an isolate without one.
             if lines[n].startswith("LAST\tP31\tQ5"):

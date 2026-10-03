@@ -7937,6 +7937,16 @@ def main():
         del to_create[g]
     print(f"private people linked to one person (recursively): {len(_lonely):,} in the tree, "
           f"{len(_pruned)} taken out of this batch")
+    # ⛔ **A SUPER ENTRY POINT IS CREATED IF MISSING (Emma, 2026-10-03).** The Geni-keyed ones join
+    # the creation set whether or not a relative has an item; the FamilySearch-keyed ones are
+    # `build-familysearch-day.py`'s. `qs_v1.super_entry_points` is the one list.
+    _super = qs_v1.super_entry_points()
+    _super_added = [g for g in sorted(_super) if g.isdigit() and g not in our_items
+                    and g not in to_create]
+    for g in _super_added:
+        to_create[g] = ""
+    if _super_added:
+        print(f"super entry points without an item, added to the creations: {len(_super_added)}")
 
     # **`--exclude` applies to EVERY batch shape, not only `--compose`.** It lived inside the
     # compose branch, so a `--roster` run ignored it completely -- which is how a roster batch
@@ -9622,8 +9632,8 @@ def main():
         # of theirs has no QID, and the single relative that mattered was in the same file.
         #
         # Holding them costs nothing. Tomorrow the spouse has a QID and the link is ordinary.
-        if not any(re.match(r"^(LAST|Q[0-9]+)	(P22|P25|P26|P40|P3373)	", ln)
-                   for ln in lines[block_start:]):
+        if g not in _super and not any(re.match(r"^(LAST|Q[0-9]+)	(P22|P25|P26|P40|P3373)	", ln)
+                                       for ln in lines[block_start:]):
             del lines[block_start:]
             carried.append((g, label,
                             "no relationship could be emitted: every relative either has no "

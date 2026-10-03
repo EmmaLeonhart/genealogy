@@ -210,3 +210,24 @@ def test_the_strip_keeps_a_creations_links(tmp_path):
                                 "Q900003\tP22\tQ900004", ""]), encoding="utf-8")
     non_local, _, _ = check.offenders(batch, {"Q1"}, set())
     assert set(non_local) == {"Q900003"}
+
+
+def test_a_super_entry_point_is_created_even_with_no_relationship(tmp_path, monkeypatch):
+    """Emma, 2026-10-03: a super entry point is created if missing, linked or not, so the isolate
+    guard keeps its block; any other creation with no relationship is still dropped."""
+    import sys
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
+    import qs_v1
+    tsv = tmp_path / "super.tsv"
+    tsv.write_text("key\tlabel\tnote\nFSL7J5NNV\tCendfindan mac Maith\t\n"
+                   "4820870572080061061\tGwrddwfin ap Cwrrig\t\n", encoding="utf-8")
+    monkeypatch.setattr(qs_v1, "SUPER_ENTRY_POINTS", tsv)
+    lines = ["CREATE", 'LAST\tLmul\t"Cendfindan mac Maith"', "LAST\tP31\tQ5",
+             'LAST\tP2889\t"L7J5-NNV"', "",
+             "CREATE", 'LAST\tLmul\t"Gwrddwfin ap Cwrrig"', "LAST\tP31\tQ5",
+             'LAST\tP2600\t"4820870572080061061"', "",
+             "CREATE", 'LAST\tLmul\t"Somebody Else"', "LAST\tP31\tQ5",
+             'LAST\tP2600\t"123"', ""]
+    kept, dropped = qs_v1.drop_orphaned_creations(lines)
+    assert dropped == ["Somebody Else"]
+    assert 'LAST\tP2889\t"L7J5-NNV"' in kept and 'LAST\tP2600\t"4820870572080061061"' in kept
