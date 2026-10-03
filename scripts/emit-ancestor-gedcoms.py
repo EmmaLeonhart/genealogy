@@ -5,6 +5,12 @@ Source of truth: reports/derived-{family,facts,places}.csv + display-names.csv
 
 Usage:
   python scripts/emit-ancestor-gedcoms.py
+  python scripts/emit-ancestor-gedcoms.py --leonhart OUT.ged
+
+`--leonhart` writes the owner's whole ancestry instead (queue, 2026-10-02: regenerate it after each
+tree rebuild): every parent link the tree holds, the primary father and mother as the family and
+each extra parent as an alternate family, impossible links kept and marked in a NOTE, and each
+person's Geni, FamilySearch and Wikidata ids as REFN records.
 """
 from __future__ import annotations
 
@@ -13,6 +19,7 @@ import gzip
 import csv
 import hashlib
 import os
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -26,7 +33,8 @@ TANG_SEEDS = (
     "6000000008024207441",  # David IV of Georgia
     "6000000002187826932",  # Yuri Dolgorukiy
 )
-LEONHART_SEED = "6000000087535357291"  # Emma Leonhart
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from wikidata_lockout import OWNER_GENI as LEONHART_SEED  # noqa: E402
 
 csv.field_size_limit(10**9)
 
@@ -286,6 +294,187 @@ def write_ged(
     return len(people), len(families)
 
 
+def load_parent_links(path: Path):
+    """child -> [(role, parent, primary)] over every parent the tree holds, and geni_id -> qid.
+
+    The primary father and mother are the singular columns; the rest of `fathers`/`mothers`
+    are extra parents. The extra parents `derive-family.py` dropped as impossible
+    (`reports/dropped-impossible-parents.csv`) come back here, because this file keeps them and
+    marks them rather than hiding them."""
+    links: dict[str, list[tuple[str, str, bool]]] = collections.defaultdict(list)
+    qids: dict[str, str] = {}
+    with open_text(path) as fh:
+        for row in csv.DictReader(fh):
+            g = (row.get("geni_id") or "").strip()
+            if not g:
+                continue
+            if (row.get("qid") or "").strip():
+                qids[g] = row["qid"].strip()
+            for role in ("father", "mother"):
+                primary = (row.get(role) or "").strip()
+                if primary:
+                    links[g].append((role, primary, True))
+                for p in (row.get(role + "s") or "").split(SEP):
+                    p = p.strip()
+                    if p and p != primary:
+                        links[g].append((role, p, False))
+    dropped = REPORTS / "dropped-impossible-parents.csv"
+    if dropped.exists():
+        with dropped.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh):
+                link = (row["slot"], row["parent"], False)
+                if link not in links[row["child"]]:
+                    links[row["child"]].append(link)
+    return links, qids
+
+
+def life_years(facts: dict[str, dict]):
+    """geni_id -> birth year, geni_id -> death year, from the ISO dates."""
+    born, died = {}, {}
+    for g, row in facts.items():
+        for key, out in (("birth_date_iso", born), ("death_date_iso", died)):
+            iso = (row.get(key) or "").strip()
+            if len(iso) >= 5 and iso[1:5].isdigit():
+                out[g] = int(iso[:5])
+    return born, died
+
+
+def impossible(child, parent, born, died):
+    """Why a parent link cannot be real, or None: the rule `derive-family.py` drops extra
+    parents by (born after the child, under 12 or over 80 years before it; with no birth year,
+    died over a year before the child's birth or over 120 after it), applied to every link."""
+    if child not in born:
+        return None
+    if parent in born:
+        gap = born[child] - born[parent]
+        if gap < 12 or gap > 80:
+            return f"parent born {born[parent]}, child born {born[child]}"
+    elif parent in died:
+        late = died[parent] - born[child]
+        if late < -1 or late > 120:
+            return f"parent died {died[parent]}, child born {born[child]}"
+    return None
+
+
+def fs_ids_of() -> dict[str, set[str]]:
+    """Geni id -> FamilySearch ids: the bridge and the zipper's pairs."""
+    out: dict[str, set[str]] = collections.defaultdict(set)
+    for name in ("familysearch-qid-bridge.tsv", "familysearch-zipper-pairs.tsv"):
+        path = REPORTS / name
+        if not path.exists():
+            continue
+        with path.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if row.get("geni_id") and row.get("fs_id"):
+                    out[row["geni_id"]].add(row["fs_id"])
+    return out
+
+
+def write_full_ancestry(path: Path, seed: str, facts, places, names) -> None:
+    links, qids = load_parent_links(REPORTS / "derived-family.csv")
+    born, died = life_years(facts)
+    # A person with no birth year in the tree takes Wikidata's, as `derive-family.py` does:
+    # Immanuel Bang, Jelena of Hungary's dropped third father, has his 1874 only there.
+    wd_dates = ROOT / "out" / "wikidata" / "dates.tsv"
+    if wd_dates.exists():
+        by_qid = {}
+        with wd_dates.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                y = (row.get("birth_year") or "").strip().lstrip("+")
+                if y.lstrip("-").isdigit():
+                    by_qid[row["qid"]] = int(y)
+        for g, q in qids.items():
+            if g not in born and q in by_qid:
+                born[g] = by_qid[q]
+    fs_of = fs_ids_of()
+    people, queue = {seed}, collections.deque([seed])
+    while queue:
+        for _role, p, _primary in links.get(queue.popleft(), ()):
+            if p not in people:
+                people.add(p)
+                queue.append(p)
+    families: dict[tuple, list[str]] = collections.defaultdict(list)
+    famc: dict[str, list[tuple[str, bool, list[str]]]] = collections.defaultdict(list)
+    n_impossible = 0
+    for child in people:
+        mine = links.get(child, [])
+        f = next((p for r, p, pr in mine if r == "father" and pr), None)
+        m = next((p for r, p, pr in mine if r == "mother" and pr), None)
+        groups = []
+        if f or m:
+            groups.append(((f, m), True, [x for x in (f, m) if x]))
+        for r, p, pr in mine:
+            if not pr:
+                groups.append(((p, None) if r == "father" else (None, p), False, [p]))
+        for key, primary, members in groups:
+            families[key].append(child)
+            notes = [f"impossible parent link: {why}" for x in members
+                     if (why := impossible(child, x, born, died))]
+            n_impossible += len(notes)
+            famc[child].append((fam_xref(*key), primary, notes))
+    fams_of: dict[str, set[str]] = collections.defaultdict(set)
+    for (f, m) in families:
+        for x in (f, m):
+            if x:
+                fams_of[x].add(fam_xref(f, m))
+    lines = [
+        "0 HEAD", "1 SOUR synoptic-derived", "2 NAME the owner's ancestry from the synoptic tree",
+        f"1 DATE {date.today().strftime('%d %b %Y').upper()}", "1 GEDC", "2 VERS 5.5.1",
+        "2 FORM LINEAGE-LINKED", "1 CHAR UTF-8",
+        f"1 NOTE Every ancestor of {seed} in reports/derived-family.csv, every parent link kept:",
+        "2 CONT the primary father and mother are the family (PEDI birth), each extra parent an",
+        "2 CONT alternate family (PEDI unknown), and an impossible link carries a NOTE on its FAMC.",
+        "2 CONT REFN TYPE geni / familysearch / wikidata give each person's ids. No network contact.",
+    ]
+    for gid in sorted(people, key=lambda x: (len(x), x)):
+        lines.append(f"0 @I{gid}@ INDI")
+        for nrow in (names.get(gid) or [{"name_raw": "NN //", "display_name": "NN"}])[:8]:
+            emit_name_lines(lines, nrow)
+        fact = facts.get(gid) or {}
+        sex = (fact.get("sex") or "").strip().upper()
+        if sex in ("M", "F", "U"):
+            lines.append(f"1 SEX {sex}")
+        pb, pd = places.get(gid, ("", ""))
+        emit_event(lines, "BIRT", fact.get("birth_date_raw") or "",
+                   (fact.get("birth_place") or "").strip() or pb)
+        emit_event(lines, "DEAT", fact.get("death_date_raw") or "",
+                   (fact.get("death_place") or "").strip() or pd)
+        emit_event(lines, "BURI", fact.get("burial_date_raw") or "", fact.get("burial_place") or "")
+        for part in (fact.get("occupations") or "").split(SEP):
+            if part.strip():
+                lines.append(f"1 OCCU {escape_ged(part.strip())}")
+        for xref, primary, notes in famc.get(gid, ()):
+            lines.append(f"1 FAMC {xref}")
+            lines.append(f"2 PEDI {'birth' if primary else 'unknown'}")
+            lines.extend(f"2 NOTE {n}" for n in notes)
+        for fx in sorted(fams_of.get(gid, ())):
+            lines.append(f"1 FAMS {fx}")
+        fs = set(fs_of.get(gid, ()))
+        if gid.startswith("FS"):
+            fs.add(gid[2:6] + "-" + gid[6:])
+        else:
+            lines += [f"1 REFN {gid}", "2 TYPE geni"]
+        for x in sorted(fs):
+            lines += [f"1 _FSFTID {x}", f"1 REFN {x}", "2 TYPE familysearch"]
+        if gid in qids:
+            lines += [f"1 REFN {qids[gid]}", "2 TYPE wikidata"]
+    for (f, m) in sorted(families, key=lambda k: (k[0] or "", k[1] or "")):
+        lines.append(f"0 {fam_xref(f, m)} FAM")
+        if f:
+            lines.append(f"1 HUSB @I{f}@")
+        if m:
+            lines.append(f"1 WIFE @I{m}@")
+        for c in sorted(set(families[(f, m)]), key=lambda x: (len(x), x)):
+            lines.append(f"1 CHIL @I{c}@")
+    lines.append("0 TRLR")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".partial")
+    tmp.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    os.replace(tmp, path)
+    print(f"wrote {path}: {len(people):,} people, {len(families):,} families, "
+          f"{n_impossible:,} impossible parent links kept and marked")
+
+
 def main() -> int:
     print("loading derived CSVs...")
     parents = load_family(REPORTS / "derived-family.csv")
@@ -293,6 +482,9 @@ def main() -> int:
     places = load_places(REPORTS / "derived-places.csv")
     names = load_names(REPORTS / "display-names.csv")
     print(f"  family rows {len(parents):,}; facts {len(facts):,}; names {len(names):,}; places {len(places):,}")
+    if len(sys.argv) == 3 and sys.argv[1] == "--leonhart":
+        write_full_ancestry(Path(sys.argv[2]), LEONHART_SEED, facts, places, names)
+        return 0
 
     for label, seeds, out_name in (
         ("tang DFA seeds", list(TANG_SEEDS), "tang-ancestors.ged"),

@@ -50449,3 +50449,23 @@ Correction to today's universe entry: the 19,162 in `d3a2786f5` was built with t
 2026-10-03 00:56 PDT change (every edited item is in the universe, with one hop from it) was
 measured locally at 28,210 universe items and 87 one step out, so the next pipeline rebuild should
 show that number, mostly from the new rule rather than from the batch.
+
+## 2026-10-03: the owner's ancestry GEDCOM is a script here
+
+`python scripts/emit-ancestor-gedcoms.py --leonhart OUT.ged` writes the owner's whole ancestry from
+the derived CSVs, replacing the one-off file ontology-harness built on 2026-10-02. It extends the
+existing emitter rather than adding a script: every parent link is kept; the primary father and
+mother form the family (`PEDI birth`) and each extra parent gets an alternate family
+(`PEDI unknown`); the 346 extra parents `derive-family.py` now drops come back from
+`reports/dropped-impossible-parents.csv`; an impossible link (the `derive-family.py` rule, applied
+to every link, with Wikidata's birth year where the tree has none) carries a `NOTE` on its `FAMC`;
+each person has `REFN`s typed geni / familysearch / wikidata, and `_FSFTID`. The seed is
+`wikidata_lockout.OWNER_GENI`. The default run (tang and the old single-parent leonhart file in
+`research-exports/`) is unchanged.
+
+Run on rebuild `cc239fecb`: `Documents\genealogy-gedcom\emma-ancestry-synoptic-tree-2026-10-03.ged`,
+51,847 people (the same as 2026-10-02), 30,492 families (30,455), 2,014 alternate families, 2,959
+impossible links marked (2,731 on 2026-10-02, by a different rule), 0 dangling references. Jelena
+of Hungary carries her two dropped fathers (born 1763 and 1874) as marked alternates, and Bogislaw II
+Ulla Celsing (born 1854). `out/wikidata/dates.tsv` on this machine is from 2026-09-30. After each
+tree rebuild, run it again with that day's date in the file name.
