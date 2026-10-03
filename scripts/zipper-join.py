@@ -606,6 +606,11 @@ def write_outputs(prefix, other, pairs, provenance, conflicts, ambiguous, refute
 FS_DIR = ROOT / "gedcom" / "familysearch"
 FS_BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
 JUDGMENTS = ROOT / "reports" / "emma-judgments.tsv"
+#: The frontier cards of 2026-10-03: an unpaired ancestor against FamilySearch's parent in the slot
+#: above a paired child. Emma, the same day: "leave this whole comparison thing somewhere where we're
+#: considering it to be slightly iffy" -- some came from a child pair the zipper made on a birth year
+#: alone across two families (Malin Olofsdotter / Karin Ersdotter).
+IFFY_BATCH = "familysearch-frontier-iffy"
 #: A FamilySearch person id: `GF2B-NKG`, `PFR5-LDS`.
 FS_ID = re.compile(r"^[A-Z0-9]{4}-[A-Z0-9]{3}$")
 
@@ -633,7 +638,7 @@ def read_verdicts(path=None):
     pairs in the file carried both verdicts that day. The render reads this too.
     """
     path = JUDGMENTS if path is None else path
-    last = {}
+    last, iffy = {}, set()
     if path.exists():
         with open(path, encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f, delimiter="\t"):
@@ -641,7 +646,12 @@ def read_verdicts(path=None):
                 verdict = (row.get("verdict") or "").strip().upper()
                 if FS_ID.match(fs) and g and verdict in ("SAME", "DIFFERENT"):
                     last[(g, fs)] = verdict
-    same = {fs: g for (g, fs), v in last.items() if v == "SAME"}
+                    if row.get("batch") == IFFY_BATCH:
+                        iffy.add((g, fs))
+                    else:
+                        iffy.discard((g, fs))
+    # A SAME from the frontier cards is not an anchor; its DIFFERENT still refuses the pairing.
+    same = {fs: g for (g, fs), v in last.items() if v == "SAME" and (g, fs) not in iffy}
     refused = {(g, fs) for (g, fs), v in last.items() if v == "DIFFERENT"}
     return same, refused
 

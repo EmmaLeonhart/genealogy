@@ -50786,3 +50786,18 @@ spliced links had pulled whole unrelated families into the ancestry, Immanuel Ba
 among them), 18,659 families, 1,998 impossible links marked. "Zeuthen" occurs 0 times (2 in the old
 file). The old file was itself an overwrite of the first, stale 2026-10-03 file; files are written
 under new names from now on.
+
+## 2026-10-03 14:55 PDT: ancestor deck answers in; the frontier comparison kept as iffy
+
+75 new answers from https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj: 73 on the frontier cards (51 SAME, 22 DIFFERENT) and 2
+DIFFERENT on refused slots, appended to `reports/emma-judgments.tsv`. Emma, looking at Olof abu Malin against Erik Persson as father
+of Malin Olofsdotter: "These people look like they should not have ever been compared ... leave this whole comparison thing somewhere
+where we're considering it to be slightly iffy." So the 73 are batch `familysearch-frontier-iffy`, and `zipper-join.read_verdicts`
+takes no anchor from a SAME in that batch; a DIFFERENT there still refuses the pairing. Anchors stay 633; refusals 389 -> 413.
+
+Why that card existed: the FamilySearch walk paired Eric Andersson (Geni `6000000010057341163`, son of Anders Mattsson and Malin
+Olofsdotter) with Eric Ersson (`KV2Y-B65`, son of Erich Ersson and Karin Ersdotter) as the father of the same child, then paired the
+two mothers, Malin Olofsdotter and Karin Ersdotter (`GGQD-NJF`), on "born 1713 vs 1713" alone. The two sources disagree on Eric's
+parents, and the date rule settled it by coincidence. The render then wrote FamilySearch's family onto Malin's Geni id, so our tree
+gives her two fathers (Erik Persson, Olof abu Malin) and two husbands, and Eric two fathers. The chain is anchored on
+`6000000178275437038` and was paired by birth year from round 1. Not changed: whether to refuse Malin/Karin is Emma's call.
