@@ -50664,7 +50664,7 @@ correction item). `CLAUDE.md`'s English-label rule now says "at creation";
 `test_no_person_is_labelled_by_a_relationship_phrase_in_english` checks creations only, and the
 30b61a451 test no longer forbids the relational label the later pass writes on those items.
 
-## 2026-10-03 13:10 PDT: ancestor deck re-counted, child and spouse cards removed
+## 2026-10-03 12:10 PDT: ancestor deck re-counted, child and spouse cards removed
 
 The FamilySearch deck https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj still held 556 child and spouse cards
 (444 unanswered) after the 2026-10-01 ruling that only father/mother slots of her line go in the deck. They are
@@ -50682,7 +50682,7 @@ Haldor Gudbrandsen, a man's name, in the mother slot. Deck now 267 cards, 78 ope
 Not expected: the unpaired ancestors are not waiting in refused slots. The walk never reaches them, so more deck
 rounds will not pair them; the zipper's reach is the next step on that item.
 
-## 2026-10-03 13:40 PDT: label composition item closed; the hand label rows wait on the cap
+## 2026-10-03 12:18 PDT: label composition item closed; the hand label rows wait on the cap
 
 The last open step was correcting our own wrong-script name-item labels. Checked live: of the 79 items in
 `reports/name-item-labels-wrong-script.csv`, the two this account created (`Q141549472`, `Q141550359`, bare
@@ -50696,7 +50696,7 @@ Not expected: none of the 158 rows in `label-applications.tsv` is in today's bat
 newest-QID-first and held 2,103 more. That starvation of older items is Emma's rule (no fairness pass), so
 nothing was changed; the rows go out as the backlog drains. 6 rows were retired this morning as live.
 
-## 2026-10-03 13:10 PDT: the zipper's frontier into the ancestor deck
+## 2026-10-03 12:47 PDT: the zipper's frontier into the ancestor deck
 
 Why the unpaired ancestors are not reached, measured on the same tree: of 5,697 unpaired Geni-side ancestors,
 1,344 sit directly above a paired child. For 681 of them FamilySearch has an unpaired parent in that slot, and
