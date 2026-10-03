@@ -6,9 +6,13 @@ Work top to bottom. Delete an item when it is done (record it in
 1. Check the references on Wikidata's unusual Futodama parentage statements
    (Ame no Uzume and Kamo Taketsunumi as Futodama's children; Ame no Hiwashi
    as Tajikarao's son), add to `research/notes/wikidata-survey.md`.
-2. FamilySearch survey: what is reachable without a login (public pages,
-   search), whether its Family Tree has Inbe / Futodama lineages, and what they
-   cite. If it needs a login, mark BLOCKED-ON-USER-ACTION in `INTENT.md`.
+2. Find the source behind FamilySearch's Inbe line (Hamanari → Chikazane):
+   look for an Inbe/斎部 pedigree in Oda genealogies, Tsurugi Shrine records,
+   Zoku Gunsho Ruijū / Keizu Sanyō. Check Hamanari–Hironari against the
+   Shoku Nihongi / Nihon Kōki.
+2b. Search for any generational chain from Futodama or Ame no Tomi down to a
+   historical Inbe (Kogo Shūi, Shinsen Shōjiroku, Awa Inbe / Miki family
+   records, Awa Shrine priests). This is the user's core question.
 3. Primary-source notes: the Kogo Shūi (807) branch genealogy,
    `research/notes/kogo-shui.md`; Shinsen Shōjiroku (815) Inbe entries,
    `research/notes/shinsen-shojiroku.md`; Kojiki / Nihon Shoki mentions of

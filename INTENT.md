@@ -52,6 +52,20 @@ link tied to a source.
 - Name: the user calls the Inbe "the hemp clan" in chat, because speech-to-text
   never gets "Imbe" right. "Hemp clan" in a message means the Inbe.
 
+- **The core question, clarified 2026-10-02:** is there any documented
+  generation-by-generation chain from a real Inbe person up to the Inbe's own
+  divine ancestry (Futodama etc.)? "I'm only caring about ... this one specific
+  clan and their specific divine ancestry. ... any generation by generation
+  account, is fine. ... But I'm actually looking for one." Her current belief:
+  "I'm pretty convinced that this clan does not have any such documented
+  ancestry ... doesn't really have that many documented people in it either.
+  But I'm trying to figure this stuff out."
+- Answer what is asked, directly. Asked whether Wikidata takes the Oda to the
+  gods, she did not want a detour into Nobunaga ("I didn't ask you about
+  Nobunaga"). Paths to the gods through other clans (Taira, imperial line) are
+  not what she is looking for: "If it doesn't, well then it's not what we're
+  asking."
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no
@@ -61,11 +75,19 @@ link tied to a source.
 - Mythological genealogy (gods) is included as a clearly labelled layer,
   sourced to the Kojiki, Nihon Shoki, Kogo Shūi and Shinsen Shōjiroku.
 
+- FamilySearch access (2026-10-02): "Yes, I do have a family search account,
+  and you have the ability to ... use the browser extension to go on family
+  search. Um, you also have permission to sign into family search automatically
+  using my Google account in the event that you need to do that." Use Claude in
+  Chrome for FamilySearch; signing in with her Google account is authorised.
+- The user asked whether the Oda clan is an Inbe ("hemp clan") branch. Answered:
+  mainstream view yes (Tsurugi Shrine priests of Oda, Echizen; Inbe no
+  Chikazane), with the Taira descent as a later claim. Verify in the branches
+  note.
+
 ## Open questions
 
-- Does the user have a FamilySearch account I should know about? Its Family
-  Tree needs a login, so I can't browse it without one (BLOCKED-ON-USER-ACTION
-  if it turns out to be needed).
+- None blocking.
 
 ## Confidence
 

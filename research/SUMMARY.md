@@ -26,9 +26,19 @@ descent**, not through the Inbe. Chikazane, an Inbe called the Oda ancestor, is
 given the Taira as his father's line. Details are in
 `notes/wikidata-survey.md`.
 
+**FamilySearch has a 14-generation Inbe line, but it stops short of the gods.**
+It runs Hamanari → Hironari → … → Fumiyama (822–867) → … → Chikazane (d. 1260),
+and Hamanari has no parents. No link above Chikazane cites a source, and the
+middle generations are too long. Details are in `notes/familysearch-survey.md`.
+
+**So far no documented chain links any real Inbe to Futodama.** Wikidata has
+the gods down to Ame no Tomi. FamilySearch has people back to Hamanari. Nothing
+bridges the two. Confidence: high for these two databases; the primary texts
+and printed pedigrees are not yet checked.
+
 ## Open questions
 
-- FamilySearch: does its tree link any Inbe to Futodama, and on what evidence?
+- What source is behind FamilySearch's Hamanari → Chikazane line?
 - What do the Kogo Shūi and Shinsen Shōjiroku actually say about each branch's
   descent?
 - Are there real lineage documents for any Inbe family: the Miki of Awa, the
@@ -38,4 +48,5 @@ given the Taira as his father's line. Details are in
 
 ## What changed
 
-- 2026-10-02: Research started. Wikidata survey done.
+- 2026-10-02: Research started. Wikidata survey done. FamilySearch survey done:
+  found the 14-generation line, unsourced, ending at Hamanari.
