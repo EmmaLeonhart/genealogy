@@ -115,8 +115,8 @@ link tied to a source.
   #289566, "Run in background", 2026-10-03; she confirmed it completed.
 - Batch 3 (98 family links) submitted at her request as batch #289567.
   QIDs for all 49 people: `genealogy/wikidata/ono_qids.json`. Batch 4 (64
-  estimated dates, to be deprecated) is generated but not run: standard QS
-  cannot set the deprecated rank.
+  estimated dates) is NOT to be run: "I do not want the dates" (user,
+  2026-10-03).
 
 - **Real people are connected (user, 2026-10-03):** "I many times expressed
   the fact that no, we're not doing this. We are doing the form that actually
