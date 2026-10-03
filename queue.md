@@ -3,10 +3,11 @@
 Work top to bottom. Delete an item when it is done (record it in
 `research/SUMMARY.md` "What changed").
 
-1. Transcribe the generational line from 安房国忌部家系 (NDL 2538213, 75 images,
-   IIIF) into `genealogy/awa_inbe_kakei.csv`: person, parent, alias, notes, image
-   number. Names and parentage only; record Kosugi's red notes where they hit
-   a link.
+1. Continue transcribing 安房国忌部家系 (NDL 2538213) into
+   `genealogy/awa_inbe_kakei.csv`: images 3–15 are done (31 generations, gods to
+   the 8th century). Next: images 16–75, plus a check of image 10 and the
+   image 14→15 page break (who is 久米麻呂's father?). Verify 色洞子 =
+   忌部色夫知.
 1b. Locate the NDL copies of 忌部岡島家系 and 斎部宿禰本系帳 (search NDL Digital
    for the titles) and do the same, at least the god-to-human junction.
 1c. Find what Hōga Toshio's 古代氏族系譜集成 (1986) gives for the Inbe, and
