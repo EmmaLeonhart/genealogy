@@ -723,8 +723,11 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-name-item-cjk.py
 
+      # Runs in a lean rebuild too: since the ring watcher chains `batch_only` runs, those are
+      # the only pipeline runs that complete, and a batch file added between full runs left
+      # `test_the_batch_inventory_names_exactly_the_batches_on_disk` red (2026-10-03). It reads
+      # `reports/` only.
       - name: Refresh the batch inventory
-        if: ${{ !inputs.batch_only }}
         continue-on-error: true
         env:
           PYTHONPATH: src

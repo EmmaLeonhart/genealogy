@@ -2021,7 +2021,7 @@ def qualify_non_birth_parents(lines, our_items, live_entities=None, editable=Non
     for ln in lines:
         if ln == "CREATE":
             current = None
-        m = re.match(r'^LAST\tP2600\t"(\d+)"', ln)
+        m = re.match(r'^LAST\tP2600\t"([^"]+)"', ln)
         if m:
             current = m.group(1)
         parts = ln.split("\t")

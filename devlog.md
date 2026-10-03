@@ -50709,3 +50709,12 @@ The frontier slots are now cards (Geni ancestor against FamilySearch's parent in
 cards where our side is our own `FS<id>` render of the same record and empty ids. Deck version 8, 539 cards,
 350 open. Correction to the entry above: the FamilySearch-side count is 6,309 of 25,311 ancestors paired, not
 5,167 of 20,904; the first walk read a slot holding two parents (`A | B`) as one id.
+
+## 2026-10-03 13:05 PDT: CI red on main again, two causes fixed
+
+Run 37146824340 on `d96a26af8` failed in both Python versions on two tests. `test_a_foster_or_adoptive_parent_takes_the_kinship_qualifier`:
+`qualify_non_birth_parents` read a creation's child only from a digit `P2600` (`"(\d+)"`), so the test's `"D"` creation got no `P1039`;
+it now takes any quoted id. Real Geni ids are digits, so no batch line changes. `test_the_batch_inventory_names_exactly_the_batches_on_disk`:
+`reports/built-batches.tsv` lacked `wikidata-splice-removals.qs` (added in `82f424e30`) because the inventory step was skipped in
+`batch_only` runs, which are the only pipeline runs completing while the ring watcher chains them. The step now runs in those too.
+CI is re-dispatched once a pipeline run has rewritten the inventory.
