@@ -1929,8 +1929,8 @@ def _name_parts(entity):
 
 
 #: The languages whose label is filled from the name items (`composed-labels.tsv`). Emma,
-#: 2026-10-02 by AskUserQuestion: English only for now; ja/zh/ko stay on transliteration.
-COMPOSED_LANGS_LIVE = ("en",)
+#: 2026-10-02 by AskUserQuestion: English; 2026-10-03 by AskUserQuestion: ja, zh and ko too.
+COMPOSED_LANGS_LIVE = ("en", "ja", "zh", "ko")
 
 
 def _composed_en_labels(our_items, live_labels):
@@ -10041,14 +10041,19 @@ def main():
     # wrote an `en` description onto every editable item of ours that had none; on 26 September
     # batch `temporary_batch_1790391174856` put raw source text onto a run of them ("jfr g og æ
     # bok 2 s 422", "Grannes bruk 7. Sola s95 nr 4"), from Geni place fields. It is deleted.
+    # A composed label takes an empty slot ahead of the transliteration (Emma, 2026-10-03, ja/zh/ko
+    # switched on): the transliterated line for the same slot is dropped rather than sent first.
+    _composed = _composed_en_labels(editable_items, live_labels)
+    _composed_slots = {tuple(ln.split("	")[:2]) for ln in _composed}
     derived_labels = (
         _description_overwrites()
         + _piped_label_fixes(live_labels)
         + _label_corrections(editable_items, labels, table, state, fields, generation,
                              live_labels)
         + _cjk_follows_mul(table)
-        + _missing_cjk_labels(editable_items, labels, table, live_labels)
-        + _composed_en_labels(editable_items, live_labels)
+        + [ln for ln in _missing_cjk_labels(editable_items, labels, table, live_labels)
+           if tuple(ln.split("	")[:2]) not in _composed_slots]
+        + _composed
         + _unnamed_take_familysearch_names(live_labels, table))
     # ⛔ **LOCALITY, ON EVERY DERIVED LABEL EDIT. THIS IS THE ALARM.**
     #
