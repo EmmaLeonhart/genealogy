@@ -216,7 +216,8 @@ def write(out, english, dated=False, qids=None):
             if key in fk:
                 L.append(f"1 FAMS {fam_ids[fk]}")
         if qids and key in qids:
-            note += f"; Wikidata: {qids[key]}"
+            url = f"https://www.wikidata.org/wiki/{qids[key]}"
+            note += f'; Wikidata: <a href="{url}">{url}</a>'  # clickable in MyHeritage, as in the user's edits
         L += [f"1 NOTE {note}", "1 SOUR @S1@", "2 QUAY 0"]
     for fk, kids in families.items():
         father, mother = fk
