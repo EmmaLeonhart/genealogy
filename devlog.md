@@ -50493,3 +50493,35 @@ seneschal of Cyprus b. 1280 and the count of Jaffa b. 1250) descend from Abul Ha
 and Ivan (b. 1109 to 1116) are given Anna Aëpovna, and by the tree's own dates cannot be Helena's
 (b. 1121). Izyaslav II's one wife who descends from Abul Hamza has no children in the tree. The
 FamilySearch file is not checked yet. Findings are on the queue items.
+
+## 2026-10-03: where the impossible parents come from: spliced saved-path files; 14 false statements live
+
+**Unexpected, first: our account put 14 false statements on Wikidata.** Sent through QuickStatements
+on 2026-10-02 18:52-19:02 PDT, in the scoped uncapped relationships run: `Q269085` Izyaslav II,
+Grand Duke of Kiev, is given four modern Norwegian and Danish spouses (`P26`: `Q4807262` Aslak
+Olavsson Versto, `Q11978449` Jens Olsen Røkke, `Q4753741` Anders Bugge, `Q12330764` Peter Christian
+Zahle); `Q2616032` Princess Christina of Sweden two children (`P40`: `Q11851310` Anders Edvin
+Nylander, `Q7710709` Robert Sperati); `Q41514` Mstislav of Kiev a child (`P40`: `Q21182886` Col.
+George Hairston); each with its reverse. Checked live; nothing removed (that needs Emma's go-ahead).
+
+**The mechanism.** Immanuel Bang as Jelena of Hungary's father and Ulla Celsing as Bogislaw II's
+mother each sit in a one-parent, one-child family with a `9990…` id, which `build-tiny-gedcoms.py`
+mints for the tiny GEDCOMs it builds from saved Geni paths. The saved paths are spliced: the in-law
+path to Ulla Celsing runs Emma → … → Ulla at step 20, then a second chain starts at step 21 with
+"Bogislaw II, her son" and runs back down to Ulla at step 40. The builder reads each step against
+the one before, so step 21 makes Ulla Bogislaw's mother. Immanuel Bang is the same, in
+`harvested-path-geni-6000000076411296932-inlaw-resplit-2026-09-25.tsv` (Bang at step 21, "Jelena, his
+daughter" at 22). 200 files in `harvested-paths/` are spliced this way: 133 of the 146 re-split on
+2026-09-25 (`9ded8bcb3`) and 67 others (`reports/spliced-path-files.csv`). Of the links they make:
+99 parent links were dropped by the date filter; 46 extra parents, 20 primary parents and 13
+marriages are in the tree now, with plausible dates or none, and no real export states any of them.
+15 have both ends on Wikidata, and the 7 above are live. The date filter only ever caught the
+impossible-looking half; the source is the splice, and `derive-family.py`'s premise that the
+first-listed parent is Geni's own does not hold for these 20.
+
+**Part (2), impossible primary-slot links against Wikidata:** 21,293 links fail the impossible
+rule (with Wikidata's birth year where the tree has none); 425 have both ends on Wikidata; 239 of
+those are live, 191 of them on items our account never edited, so they are other editors' (many are
+medieval near-misses of the 12-year bound, `Q273773` mother born 834, child 844). The other 48 are on
+items we edited; whether we added those statements is not yet checked per revision.
+`reports/impossible-parent-links-on-wikidata.csv`.
