@@ -21,6 +21,16 @@ Q141622081	P5278	LAST
 Q141622081	P407	Q9043
 Q141622081	P407	Q9035
 
+# Samsonsdotter -- the counterpart of Samsonson (38 bearer(s))
+CREATE
+LAST	Len	"Samsonsdotter"
+LAST	Lmul	"Samsonsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Torstensen -- the counterpart of Torstensdatter (38 bearer(s))
 CREATE
 LAST	Len	"Torstensen"
@@ -34,6 +44,21 @@ LAST	P5278	Q141549532
 Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
+
+# Ovesdatter -- the counterpart of Ovesen (22 bearer(s))
+CREATE
+LAST	Len	"Ovesdatter"
+LAST	Lmul	"Ovesdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141584054
+Q141584054	P5278	LAST
+Q141584054	P407	Q9043
+Q141584054	P407	Q9035
 
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
@@ -160,6 +185,16 @@ LAST	P407	Q9027
 LAST	P5278	Q141456297
 Q141456297	P5278	LAST
 Q141456297	P407	Q9027
+
+# Strangesen -- the counterpart of Strangesdatter (7 bearer(s))
+CREATE
+LAST	Len	"Strangesen"
+LAST	Lmul	"Strangesen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
 
 # Agnarsdotter -- the counterpart of Agnarsson (5 bearer(s))
 CREATE
@@ -444,27 +479,4 @@ LAST	P5278	Q141625151
 Q141625151	P5278	LAST
 Q141625151	P407	Q9043
 Q141625151	P407	Q9035
-
-# Åkesson -- the counterpart of Åkesdotter (5 bearer(s))
-CREATE
-LAST	Len	"Åkesson"
-LAST	Lmul	"Åkesson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141622102
-Q141622102	P5278	LAST
-Q141622102	P407	Q9027
-
-# Öndesdotter -- the counterpart of Öndesson (5 bearer(s))
-CREATE
-LAST	Len	"Öndesdotter"
-LAST	Lmul	"Öndesdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
 
