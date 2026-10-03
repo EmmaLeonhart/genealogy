@@ -437771,6 +437771,23 @@
      "type": "statement"
     }
    ],
+   "P4342": [
+    {
+     "id": "Q141586268$e32f0a99-400a-23cb-09a3-c8ecd7d5cd73",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Håkon_Jonsson"
+      },
+      "hash": "73fa39338d57eb012da9ca8cd909b498c3fde62f",
+      "property": "P4342",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P5056": [
     {
      "id": "Q141586268$A2BA4E64-CE93-4D96-AE3B-9282A0B158A4",
@@ -437857,6 +437874,88 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141586268$5f978e48-405c-4673-37dc-1e8bdb9a5066",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+        "precision": 9,
+        "time": "+1345-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "2f8077e4a279b5f1f22e59849972a04ad05292c5",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1480": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q5727902",
+          "numeric-id": 5727902
+         }
+        },
+        "hash": "cb40f2027a88b8d23735681aaccba1069a574f54",
+        "property": "P1480",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1480"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "acf75f1a7b8e06456bb32c5028829283c80e7cdd",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q746368",
+            "numeric-id": 746368
+           }
+          },
+          "hash": "65bf94067e6255ff8d61c9c9535d98794a309a4c",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P4342": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "Håkon_Jonsson"
+          },
+          "hash": "73fa39338d57eb012da9ca8cd909b498c3fde62f",
+          "property": "P4342",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P4342"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P570": [
@@ -437923,6 +438022,84 @@
        ]
       }
      ],
+     "type": "statement"
+    },
+    {
+     "id": "Q141586268$9a7d4a9c-4136-ec61-e16d-4f1637040b8e",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+        "precision": 9,
+        "time": "+1391-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "67aac5e908c54a13b0c993c93ca7b420b2618bbe",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "acf75f1a7b8e06456bb32c5028829283c80e7cdd",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q746368",
+            "numeric-id": 746368
+           }
+          },
+          "hash": "65bf94067e6255ff8d61c9c9535d98794a309a4c",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P4342": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "Håkon_Jonsson"
+          },
+          "hash": "73fa39338d57eb012da9ca8cd909b498c3fde62f",
+          "property": "P4342",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P4342"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P6520": [
+    {
+     "id": "Q141586268$9ff4ec89-47ec-bfae-1e59-0e5a703eda6c",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Håkon_Jonsson"
+      },
+      "hash": "c35367f58a441428a63304714ace04483206c8ac",
+      "property": "P6520",
+      "snaktype": "value"
+     },
+     "rank": "normal",
      "type": "statement"
     }
    ],
@@ -438033,13 +438210,17 @@
     "language": "mul",
     "value": "Haakon Jonsson Roos"
    },
+   "nb": {
+    "language": "nb",
+    "value": "Håkon Jonsson"
+   },
    "zh": {
     "language": "zh",
     "value": "霍孔·约翰逊·鲁斯"
    }
   },
-  "lastrevid": 2552438292,
-  "modified": "2026-10-03T04:51:19Z",
+  "lastrevid": 2552493306,
+  "modified": "2026-10-03T08:04:57Z",
   "ns": 0,
   "pageid": 135148831,
   "sitelinks": {},
@@ -610248,6 +610429,10 @@
     "language": "pl",
     "value": "król duński"
    },
+   "ru": {
+    "language": "ru",
+    "value": "король Дании"
+   },
    "sv": {
     "language": "sv",
     "value": "kung av Danmark 1250–1252"
@@ -610448,8 +610633,8 @@
     "value": "丹麦的阿贝尔"
    }
   },
-  "lastrevid": 2551974963,
-  "modified": "2026-10-02T00:59:44Z",
+  "lastrevid": 2552489124,
+  "modified": "2026-10-03T07:50:25Z",
   "ns": 0,
   "pageid": 31327,
   "sitelinks": {
