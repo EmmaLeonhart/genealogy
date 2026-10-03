@@ -40,6 +40,18 @@ link tied to a source.
   So: evaluate both Wikidata and FamilySearch as routes to the gods, and report
   which works better.
 
+- The user knows the branches are not all meant to be blood relatives and
+  finds that confusing: "not all of them are supposed to be blood relatives.
+  Um, it's just it's very confusing to me."
+- Origin theories are wanted: "I'm interested in potential theories of their
+  origins and stuff."
+- Compare with the **Nakatomi**: "the Nakatomi clan have a much more like
+  actually defined genealogy, which makes me a bit unsure about this, this
+  clan." (One word in that message, "Kisu", was garbled by dictation; meaning
+  unknown, not guessed.)
+- Name: the user calls the Inbe "the hemp clan" in chat, because speech-to-text
+  never gets "Imbe" right. "Hemp clan" in a message means the Inbe.
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no
