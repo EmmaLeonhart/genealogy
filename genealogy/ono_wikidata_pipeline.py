@@ -46,7 +46,7 @@ SUZUKI, KOSUGI, JAPANESE = "Q6536470", "Q6536257", "Q5287"
 CJK_LANGS = ("ja", "zh")
 ROMAN_LANGS = ("en", "mul", "fr", "id", "es")
 
-GODS = {"1", "2", "W2", "3", "4", "5"} | {f"H{i}" for i in range(1, 11)}
+GODS = {"1", "2", "W2", "3", "4", "5"}|{f"H{i}" for i in range(1, 11)}
 REAL = {"21", "21b"}  # real people: no parent links unless --link-real
 
 
@@ -63,7 +63,14 @@ def sparql(query):
             time.sleep(5)
 
 
+SOURCE_QID = "Q141627872"  # created by the user 2026-10-03
+
+
 def find_source():
+    return SOURCE_QID
+
+
+def find_source_sparql():
     rows = sparql(f'SELECT ?s WHERE {{ ?s wdt:P9836 "{NDL_PID}" ; wdt:P31 wd:{MANUSCRIPT} . }}')
     qids = sorted({r["s"]["value"].rsplit("/", 1)[1] for r in rows})
     if len(qids) != 1:
@@ -78,9 +85,9 @@ def frame(key):
 def cite(src, key):
     """Reference: stated in the source, frame number, and a direct frame URL."""
     f = frame(key)
-    ref = f" | S248 | {src}"
+    ref = f"|S248|{src}"
     if f:
-        ref += f' | S958 | "NDL frame {f}" | S854 | "{NDL}/1/{f}"'
+        ref += f'|S958|"NDL frame {f}"|S854|"{NDL}/1/{f}"'
     return ref
 
 
@@ -98,16 +105,16 @@ def write(name, lines):
 def batch1():
     write("batch1_source.qs", [
         "CREATE",
-        'LAST | Len | "Inbe no Sukune honkeichō"',
-        'LAST | Lja | "斎部宿禰本系帳"',
-        'LAST | Den | "1870 genealogy of the Ono family, claimed descendants of the Inbe clan; judged a forgery in 1876"',
-        'LAST | Dja | "小野家の斎部氏系譜（明治3年）。明治9年に小杉榲邨が偽作と判定"',
-        f"LAST | P31 | {MANUSCRIPT}",
-        f"LAST | P31 | {FAMILY_TREE}",
-        f"LAST | P407 | {JAPANESE}",
-        f'LAST | P9836 | "{NDL_PID}" | P958 | "NDL frames 50-73 of the bound volume"',
-        f"LAST | P571 | +1870-00-00T00:00:00Z/9 | P1480 | {CIRCA}",
-        f"LAST | P50 | {SUZUKI} | P1480 | {ALLEGEDLY} | P1310 | {KOSUGI} | S854 | \"{NDL}/1/50\"",
+        'LAST|Len|"Inbe no Sukune honkeichō"',
+        'LAST|Lja|"斎部宿禰本系帳"',
+        'LAST|Den|"1870 genealogy of the Ono family, claimed descendants of the Inbe clan; judged a forgery in 1876"',
+        'LAST|Dja|"小野家の斎部氏系譜（明治3年）。明治9年に小杉榲邨が偽作と判定"',
+        f"LAST|P31|{MANUSCRIPT}",
+        f"LAST|P31|{FAMILY_TREE}",
+        f"LAST|P407|{JAPANESE}",
+        f'LAST|P9836|"{NDL_PID}"|P958|"NDL frames 50-73 of the bound volume"',
+        f"LAST|P571|+1870-00-00T00:00:00Z/9|P1480|{CIRCA}",
+        f"LAST|P50|{SUZUKI}|P1480|{ALLEGEDLY}|P1310|{KOSUGI}|S854|\"{NDL}/1/50\"",
     ])
 
 
@@ -115,30 +122,38 @@ def batch2():
     src = find_source()
     lines = [f"/* source item: {src} */"]
     for key, p in g.people.items():
-        ordinal = f' | P1545 | "{key}"'
+        ordinal = f'|P1545|"{key}"'
         if key in g.WIKIDATA:  # already on Wikidata: just attach the source
-            lines.append(f"{g.WIKIDATA[key]} | P1343 | {src}{ordinal}{cite(src, key)}")
+            lines.append(f"{g.WIKIDATA[key]}|P1343|{src}{ordinal}{cite(src, key)}")
             continue
         en = g.EN[key].rstrip("?")
         alias = ""
         if " (" in en:  # "Tanate (Takenadeko)": label + alias
             en, alias = en.rstrip(")").split(" (", 1)
         lines.append("CREATE")
-        lines += [f'LAST | L{lang} | "{p["name"]}"' for lang in CJK_LANGS]
-        lines += [f'LAST | L{lang} | "{en}"' for lang in ROMAN_LANGS]
+        lines += [f'LAST|L{lang}|"{p["name"]}"' for lang in CJK_LANGS]
+        lines += [f'LAST|L{lang}|"{en}"' for lang in ROMAN_LANGS]
         if alias:
-            lines.append(f'LAST | Aen | "{alias}"')
+            lines.append(f'LAST|Aen|"{alias}"')
         lines += [
-            'LAST | Den | "figure in the 1870 Ono family Inbe pedigree"',
-            f"LAST | P31 | {KAMI if key in GODS else LEGENDARY}{cite(src, key)}",
-            f"LAST | P21 | {FEMALE if key in g.FEMALE else MALE}{cite(src, key)}",
-            f"LAST | P1343 | {src}{ordinal}{cite(src, key)}",
+            'LAST|Den|"figure in the 1870 Ono family Inbe pedigree"',
+            f"LAST|P31|{KAMI if key in GODS else LEGENDARY}{cite(src, key)}",
+            f"LAST|P21|{FEMALE if key in g.FEMALE else MALE}{cite(src, key)}",
+            f"LAST|P1343|{src}{ordinal}{cite(src, key)}",
         ]
-        if key in g.DATES:
+    write("batch2_people.qs", lines)
+
+
+def dates(q):
+    """Estimated dates for the deprecated-rank step. Standard QuickStatements
+    (quickstatements.toolforge.org) cannot set rank, so these are kept apart."""
+    lines = ["/* estimated dates: circa, decade precision, to be given deprecated rank */"]
+    for key in g.people:
+        if key in g.DATES and key not in g.WIKIDATA:
             b, d, _basis = g.DATES[key]
             for prop, y in (("P569", b), ("P570", d)):
-                lines.append(f"LAST | {prop} | {wd_date(y)} | P1480 | {CIRCA} | R- | P2241 | {CANNOT_CONFIRM}")
-    write("batch2_people.qs", lines)
+                lines.append(f"{q[key]}|{prop}|{wd_date(y)}|P1480|{CIRCA}|P2241|{CANNOT_CONFIRM}")
+    write("batch4_dates_to_deprecate.qs", lines)
 
 
 def batch3(link_real=False):
@@ -157,12 +172,13 @@ def batch3(link_real=False):
                 continue
             for par, prop in ((father, "P22"), (mother, "P25")):
                 if par:
-                    lines.append(f"{q[kid]} | {prop} | {q[par]} | P1480 | {DISPUTED}{cite(src, kid)}")
-                    lines.append(f"{q[par]} | P40 | {q[kid]} | P1480 | {DISPUTED}{cite(src, kid)}")
+                    lines.append(f"{q[kid]}|{prop}|{q[par]}|P1480|{DISPUTED}{cite(src, kid)}")
+                    lines.append(f"{q[par]}|P40|{q[kid]}|P1480|{DISPUTED}{cite(src, kid)}")
         if father and mother:
-            lines.append(f"{q[father]} | P26 | {q[mother]} | P1480 | {DISPUTED}{cite(src, mother)}")
-            lines.append(f"{q[mother]} | P26 | {q[father]} | P1480 | {DISPUTED}{cite(src, mother)}")
+            lines.append(f"{q[father]}|P26|{q[mother]}|P1480|{DISPUTED}{cite(src, mother)}")
+            lines.append(f"{q[mother]}|P26|{q[father]}|P1480|{DISPUTED}{cite(src, mother)}")
     write("batch3_links.qs", lines)
+    dates(q)
 
 
 if __name__ == "__main__":
