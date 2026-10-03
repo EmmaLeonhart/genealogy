@@ -13,7 +13,6 @@ it. Each session starts with
 
 
 
-- **After the next tree rebuild, confirm the impossible extra parents are gone (Emma, 2026-10-02).** `derive-family.py` now drops them (`reports/dropped-impossible-parents.csv`; 381 measured on the current tree, Jelena of Hungary's Immanuel Bang and Bogislaw II's Ulla Celsing among them). Check the file lists them and the path finder (`census-paths.py`, `path-between.py`) no longer crosses them.
 - **When the uncapped relationships batch (`reports/wikidata-relationships-uncapped.txt` at `d12c26ab2`, started 2026-10-02 11:42 PDT) has finished, rebuild and report how much the universe grew (Emma, 2026-10-02).** Before: `edit-universe.json` held 16,934 universe items and 630 one step out (2026-10-02, before the batch); compare after the next full rebuild.
 - **Make CI green (Emma, 2026-09-27; run 36373025512 then).** Never weaken a test. State 2026-10-02 16:40 UTC: every cause found and fixed in the repo (the `NN-` P1810 line, the builder test, the vocabulary's patronymic roles, the live-value QIDs, the backfill test's second cap, and the label overwrites without an alias rescue, which were the label-edit cap draining an `Amul` emitted in an earlier batch while a new label value went out alone). The batch on main (`58dfcdfc6`) was composed before the cap fix and still carries `Q141574857` without its rescue, so the next pipeline rebuild must land first; then dispatch `ci.yml` on main and confirm green.
 
