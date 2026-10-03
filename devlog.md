@@ -50822,3 +50822,19 @@ different item from the Geni id's, and both of those second items were created b
 beside `Q45575935`). Sample checked by name: Geni stores the given name and native place (公衡 京兆長安),
 Wikidata the full name (韋公衡 Wei Gongheng), same CBDB id. Still to check: the next batch creates none
 of them.
+
+## 2026-10-03: the impossible parent links left in the owner's ancestry, traced (read-only)
+
+`reports/owner-impossible-parent-links.csv`: every primary-slot father/mother link among the owner's
+32,120 ancestors (tree of 2026-10-03 10:13 PDT, after the splice fix) that fails the
+`derive-family.py` rule, with both dates, the gap, the family records that state it, a reading, and
+whether it is live on Wikidata. 1,895 links (the 2,361 was counted on an earlier tree; Mons b. 115 as
+Dagfinn Monsson Risa's father is gone with the splices). Unexpected, against the item's premise that
+all came from Geni families: 1,287 are stated only by the FamilySearch renders (the RootsMagic
+exports), 271 only by Geni, 255 by both, 82 also by a tiny path GEDCOM (path chains that were not
+spliced). Kinds: 1,053 a parent 0-12 years older than the child, mostly the ten-year steps of
+estimated medieval dates (Ragnhild b. 834, Rollo b. 844); 582 a parent born after the child; 222 a gap
+over 80 years. Reading from the siblings: 676 the child's date (every sibling fits the parent), 154 the
+parent's date (no child fits), 200 mixed, 37 a wrong link or a date centuries off (over 150 years,
+no siblings: Hødd Svadesdatter b. 335 as mother of Gard Norsson b. 650, stated by both Geni and
+FamilySearch), 828 undetermined. 28 are live on Wikidata. Nothing in the tree or on Wikidata changed.
