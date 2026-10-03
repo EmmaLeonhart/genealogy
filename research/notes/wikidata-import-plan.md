@@ -54,7 +54,11 @@ On each link (P22 father, P25 mother, P40 child, P26 spouse):
 - reference **P248 stated in = the honkeichō item**, plus P304 page = NDL
   image number, plus P854 reference URL = the NDL page.
 
-## The decision only the user can make
+## Decided by the user: connect the real people (2026-10-03)
+
+The user had said this repeatedly; I kept the unlinked version as a default anyway. Kobito and Shikobuchi are linked to Sagashi like everyone else, disputed and cited (QuickStatements batch #289568).
+
+## (Superseded) the decision as first framed
 
 **NEEDS-DECISION (the user): should the forged chain touch the real people?**
 Inbe no Kobito (Q11490720) and Inbe no Shikobuchi (Q11490725) are real

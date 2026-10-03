@@ -47,7 +47,7 @@ CJK_LANGS = ("ja", "zh")
 ROMAN_LANGS = ("en", "mul", "fr", "id", "es")
 
 GODS = {"1", "2", "W2", "3", "4", "5"}|{f"H{i}" for i in range(1, 11)}
-REAL = {"21", "21b"}  # real people: no parent links unless --link-real
+REAL = {"21", "21b"}  # real people (Kobito, Shikobuchi); linked like everyone else
 
 
 def sparql(query):
@@ -157,7 +157,7 @@ def dates(q):
     write("batch4_dates_to_deprecate.qs", lines)
 
 
-def batch3(link_real=False):
+def batch3(link_real=True):
     src = find_source()
     rows = sparql(f"""SELECT ?item ?ord WHERE {{
       ?item p:P1343 ?st . ?st ps:P1343 wd:{src} ; pq:P1545 ?ord . }}""")
@@ -195,6 +195,6 @@ if __name__ == "__main__":
     elif step == "batch2":
         batch2()
     elif step == "batch3":
-        batch3(link_real="--link-real" in sys.argv)
+        batch3(link_real="--no-link-real" not in sys.argv)
     else:
         sys.exit(__doc__)

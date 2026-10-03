@@ -118,6 +118,13 @@ link tied to a source.
   estimated dates, to be deprecated) is generated but not run: standard QS
   cannot set the deprecated rank.
 
+- **Real people are connected (user, 2026-10-03):** "I many times expressed
+  the fact that no, we're not doing this. We are doing the form that actually
+  connects them." Kobito and Shikobuchi get their pedigree parents like
+  everyone else (disputed + cited); done as batch #289568. Do not hold back
+  user-requested links on my own accuracy grounds; say a concern once, then do
+  what she decided.
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no
