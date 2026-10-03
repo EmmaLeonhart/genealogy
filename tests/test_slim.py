@@ -79,3 +79,19 @@ def test_no_place_statement_has_ever_been_emitted():
     assert not out.stdout.strip(), (
         "a place statement is being emitted, so the address block may need to come back: "
         + out.stdout)
+
+
+def test_the_cbdb_id_is_read_from_the_about_note_before_the_prune():
+    """Emma, 2026-10-03: the CBDB people's CBDB ids are entity resolution. A CBDB-managed Geni
+    profile states the id in its About note, which the prune drops, so it is read first."""
+    from genimerge.gedcom import Node
+    from genimerge.slim import harvest_cbdb, prune_stream
+    note = Node("NOTE", "{geni:about_me} [https://cbdb.fas.harvard.edu/cbdbapi/person.php?id=22793 "
+                        "'''Yu Shinan''' 虞世南] [22793]")
+    person = Node("INDI", "", "@I6000000052102247014@", [Node("NAME", "Yu /Shinan/"), note])
+    other = Node("INDI", "", "@I1@", [Node("NOTE", "a note with no CBDB link")])
+    got = []
+    kept = list(prune_stream([person, other], cbdb=lambda g, c: got.append((g, c))))
+    assert got == [("6000000052102247014", "22793")]
+    assert harvest_cbdb(other) is None
+    assert all(c.tag != "NOTE" for r in kept for c in r.children)

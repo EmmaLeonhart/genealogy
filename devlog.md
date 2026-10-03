@@ -50748,3 +50748,18 @@ the ring seeded at Ettinger, within the 500-a-run cap. Walked locally: the unive
 items, and the two Buyeo guards stay outside. The ring-cap correction item is closed: the 500-a-run
 cap and the kept descendant rings were done on 2026-10-02 (`406af5225`).
 Test: `test_a_super_entry_point_is_created_even_with_no_relationship`, CI.
+
+## 2026-10-03: the CBDB id is an exact join, like the Geni id (Emma)
+
+Emma: "the cbdb people have their cbdb ids as entity resolution lol". Measured first: the offline
+Wikidata store holds 77,774 items with `P497` CBDB ID, 20,637 of them with no `P2600`, so the ledger
+(keyed on the Geni id) could not see them, and a ring creation could duplicate one; the live roster
+fetched afterwards holds 418,005 `P497` statements, so the real gap is larger. A CBDB-managed Geni
+profile states its CBDB id in its About note (`1 NOTE {geni:about_me}
+[https://cbdb.fas.harvard.edu/cbdbapi/person.php?id=22793 ...`; 107 in the one Confucius export
+checked). The slim now reads it before the prune drops `NOTE` (`slim.harvest_cbdb`, the way
+`harvest_places` reads `PLAC`); the merge writes `reports/derived-cbdb.csv` beside the tree;
+`refresh-p2600-all.py --p497` writes `out/wikidata/p497-all.tsv` (in `pipeline.yml` beside the other
+two rosters); `build-garborg-day.cbdb_identifications()` joins them and `ledger()` takes each pair
+the ledger lacks, leaving out a CBDB id on more than one item. The pairs appear after the next tree
+rebuild. Test: `test_the_cbdb_id_is_read_from_the_about_note_before_the_prune`, CI.

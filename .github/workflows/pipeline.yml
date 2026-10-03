@@ -248,7 +248,7 @@ jobs:
       # refresh that happens when somebody remembers. `p2600-all.tsv` is what forty scripts join
       # through; `p2889-all.tsv` is the FamilySearch zipper's anchors. An outage keeps the
       # committed copy -- the script refuses a short fetch and never writes one.
-      - name: Refresh the P2600 and P2889 rosters
+      - name: Refresh the P2600, P2889 and P497 rosters
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
@@ -256,6 +256,8 @@ jobs:
         run: |
           python scripts/refresh-p2600-all.py
           python scripts/refresh-p2600-all.py --p2889
+          # P497 CBDB ID: the CBDB people's entity resolution (Emma, 2026-10-03), joined in ledger()
+          python scripts/refresh-p2600-all.py --p497
 
       # `--compose` refreshes the ledger itself — `CLAUDE.md`: regenerating the QuickStatements
       # ALWAYS regenerates the ledger — so there is no separate refresh step to forget.

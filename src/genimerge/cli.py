@@ -190,6 +190,18 @@ def _cmd_merge(args: argparse.Namespace) -> int:
                 w.writerow([gid, b, d])
         print(f"wrote {places_out}: {len(_places)} people with a birth or death place")
 
+    # The CBDB id of every CBDB-managed Geni profile, beside the tree like the places (Emma,
+    # 2026-10-03: entity resolution for the CBDB people, joined to Wikidata's `P497`).
+    _cbdb = getattr(report, "cbdb", None) or {}
+    if _cbdb:
+        cbdb_out = (output.parent if args.output else ws.reports) / "derived-cbdb.csv"
+        with open(cbdb_out, "w", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, lineterminator=chr(10))
+            w.writerow(["geni_id", "cbdb_id"])
+            for gid in sorted(_cbdb):
+                w.writerow([gid, _cbdb[gid]])
+        print(f"wrote {cbdb_out}: {len(_cbdb)} people with a CBDB id")
+
     # Which database gives each birth and death date of the people the FamilySearch renders put
     # on Geni xrefs: `fs`, `geni` or `both` per value (see `merge_files`). Read by the composer's
     # citations; a date with no row is Geni's.

@@ -38,6 +38,8 @@ it is those two moving off the merged tree, after which the flag could become th
 
 from __future__ import annotations
 
+import re
+
 from .gedcom import Node
 
 #: Level-0 records kept. `NOTE` and `SOUR` records are dropped whole.
@@ -192,7 +194,27 @@ def harvest_places(record):
     return rfn, out.get("BIRT", ""), out.get("DEAT", "")
 
 
-def prune_stream(records, keep=KEEP_TAGS, places=None):
+#: The CBDB person id in a CBDB-managed Geni profile's About text, which an export carries as
+#: `1 NOTE {geni:about_me} [https://cbdb.fas.harvard.edu/cbdbapi/person.php?id=22793 ...`.
+CBDB_ID = re.compile(r"cbdb\.fas\.harvard\.edu/cbdbapi/person\.php\?id=(\d+)")
+
+
+def harvest_cbdb(record):
+    """`(geni_id, cbdb_id)` for one `INDI` whose `NOTE` names a CBDB person, before the prune drops
+    the note (Emma, 2026-10-03: the CBDB people's CBDB ids are entity resolution, joined to
+    Wikidata's `P497`)."""
+    if record.tag != "INDI" or not record.xref or not record.xref[2:-1].isdigit():
+        return None
+    for child in record.children:
+        if child.tag == "NOTE":
+            text = (child.value or "") + "".join(c.value or "" for c in child.children)
+            m = CBDB_ID.search(text)
+            if m:
+                return record.xref[2:-1], m.group(1)
+    return None
+
+
+def prune_stream(records, keep=KEEP_TAGS, places=None, cbdb=None):
     """Wrap a record iterator, dropping what the pipeline never reads.
 
     `places` is an optional callable taking `(geni_id, birth_place, death_place)`. It is called
@@ -203,6 +225,10 @@ def prune_stream(records, keep=KEEP_TAGS, places=None):
             got = harvest_places(record)
             if got is not None:
                 places(*got)
+        if cbdb is not None:
+            got = harvest_cbdb(record)
+            if got is not None:
+                cbdb(*got)
         pruned = prune_record(record, keep)
         if pruned is not None:
             yield pruned

@@ -73,8 +73,11 @@ def main():
                     help="fetch and report, but do not write the file")
     ap.add_argument("--p2889", action="store_true",
                     help="refresh the FamilySearch roster, out/wikidata/p2889-all.tsv")
+    ap.add_argument("--p497", action="store_true",
+                    help="refresh the CBDB roster, out/wikidata/p497-all.tsv (Emma, 2026-10-03)")
     args = ap.parse_args()
-    prop, out = ("P2889", OUT.with_name("p2889-all.tsv")) if args.p2889 else ("P2600", OUT)
+    prop, out = (("P2889", OUT.with_name("p2889-all.tsv")) if args.p2889 else
+                 ("P497", OUT.with_name("p497-all.tsv")) if args.p497 else ("P2600", OUT))
 
     # `require_agent` fails loudly when BOT_CONTACT is unset: an empty User-Agent gets a bare
     # 403 from Wikimedia, and six call sites once shared that mystery.

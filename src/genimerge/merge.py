@@ -354,6 +354,13 @@ def merge_files(
         prev = places.get(gid, ("", ""))
         places[gid] = (birth or prev[0], death or prev[1])
 
+    # The CBDB id a CBDB-managed profile states in its About note, read before the prune drops
+    # `NOTE`, written beside the tree as `reports/derived-cbdb.csv` (Emma, 2026-10-03).
+    cbdb_ids: dict[str, str] = {}
+
+    def _cbdb(gid, cbdb_id):
+        cbdb_ids[gid] = cbdb_id
+
     # **A file name is only a report key when it is unique.** 530 names were shared by 1,064
     # exports on 2026-09-26 (the same `export-Descendants-<seed>.ged` in two campaign folders),
     # and `report.new_records[name]` let the second overwrite the first: the per-source table summed
@@ -410,11 +417,12 @@ def merge_files(
         if connectivity:
             records = slim_mod.prune_stream(records, slim_mod.CONNECTIVITY_TAGS)
         elif slim:
-            records = slim_mod.prune_stream(records, places=_place)
+            records = slim_mod.prune_stream(records, places=_place, cbdb=_cbdb)
         merger.add_source(_label(path), records)
     # Hung on the report rather than returned, because `merge_files` has two callers that
     # unpack exactly two values and a third element would break the one that writes nothing.
     merger.report.places = places
+    merger.report.cbdb = cbdb_ids
     merger.report.date_sources = date_sources
     return merger.result(), merger.report
 

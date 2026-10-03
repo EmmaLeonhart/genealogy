@@ -291,6 +291,32 @@ def ledger():
     except Exception as exc:                                        # noqa: BLE001
         print(f"WARNING: emma-judgments.tsv not folded into the ledger ({exc}) -- "
               f"a person already confirmed by hand could be created a second time")
+    for g, q in cbdb_identifications().items():
+        out.setdefault(g, q)
+    return out
+
+
+def cbdb_identifications():
+    """Geni id -> QID through the CBDB id (Emma, 2026-10-03: *"the cbdb people have their cbdb ids
+    as entity resolution"*). A CBDB-managed Geni profile states its CBDB id in its About note
+    (`reports/derived-cbdb.csv`, harvested by the slim), and Wikidata carries it as `P497`
+    (`out/wikidata/p497-all.tsv`). An exact join, like `P2600`: 20,637 of the 77,774 `P497` items had
+    no `P2600` on 2026-10-03, so without it a ring creation could duplicate one. A CBDB id on more
+    than one item is left out rather than guessed."""
+    ids, items = ROOT / "reports" / "derived-cbdb.csv", ROOT / "out" / "wikidata" / "p497-all.tsv"
+    if not ids.exists() or not items.exists():
+        return {}
+    by_cbdb = collections.defaultdict(set)
+    for line in items.read_text(encoding="utf-8").splitlines():
+        q, _, c = line.partition("\t")
+        if q.startswith("Q") and c:
+            by_cbdb[c.strip()].add(q)
+    out = {}
+    with open(ids, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            qs_ = by_cbdb.get(row["cbdb_id"], set())
+            if len(qs_) == 1:
+                out[row["geni_id"]] = next(iter(qs_))
     return out
 
 
