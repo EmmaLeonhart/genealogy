@@ -66,6 +66,14 @@ link tied to a source.
   not what she is looking for: "If it doesn't, well then it's not what we're
   asking."
 
+- **GEDCOM output (2026-10-02):** the user asked for a GEDCOM of the Ono
+  pedigree, committed, pushed and opened in the default program (MyHeritage
+  on this machine). Then: "English names should be the primary thing on
+  there, and then the Japanese names would be put in the note ... make an
+  English language version too that you open up. Just because I'm not really
+  understanding it very well." Default from now on: genealogy outputs get an
+  English-first version, with the Japanese in notes, and that is the one opened.
+
 ## Assumptions (mine)
 
 - Unattested parent–child links are not invented. Where a source gives no
