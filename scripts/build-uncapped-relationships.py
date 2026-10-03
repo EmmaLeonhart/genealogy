@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import sys as _sys
 import gzip
 import io
 import sys
@@ -49,6 +50,8 @@ SUPPRESSED = REPO / "reports" / "suppressed-statements.tsv"
 REMOVED = REPO / "reports" / "removed-statements.tsv"
 CORRECTIONS = REPO / "reports" / "relationship-corrections.csv"
 OUT = REPO / "reports" / "wikidata-relationships-uncapped.txt"
+_sys.path.insert(0, str(REPO / "scripts"))
+import wikidata_lockout  # noqa: E402 -- the owner and her family are never named
 
 TAB = "\t"
 NL = "\n"
@@ -292,7 +295,15 @@ def main() -> int:
             counts["both ends are one item"] += 1
             continue
         # The other end is a relative of a member, so one step beyond it by this very link.
-        if qa not in members and qb not in members:
+        # ⛔ Emma, 2026-10-02: this batch is for links where ONE person is in the universe and
+        # the other is NOT; links between two members are left to the day batches.
+        if (qa in members) == (qb in members):
+            counts["both ends members, or neither"] += 1
+            continue
+        if wikidata_lockout.touches_protected(f"{qa}	{prop}	{qb}"):
+            counts["names the owner or her family"] += 1
+            continue
+        if False:
             counts["outside the universe and its ring"] += 1
             continue
         key = (qa, prop, qb)
