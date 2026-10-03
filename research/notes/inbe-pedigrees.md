@@ -120,3 +120,29 @@ Transcription so far: `genealogy/awa_inbe_kakei.csv`.
 - Images 16–75 continue through the Heian period (image 20: dates from Hōan
   1121 and Kenpō 1217, Minamoto no Yoritomo's arrival in Awa in 1180) to the
   16th-century Takayama heads (images 25, 45, 65). Still to transcribe.
+
+## Awa vs Okajima: one template, two copies (images 33–34)
+
+Transcription: `genealogy/okajima_inbe_kakei.csv`, cross-referenced to the Awa
+CSV.
+
+- The Okajima pedigree has the **same junction** as the Awa one. Yufutsunushi,
+  Hiwashi's grandson, marries Iinagahime, Ame no Tomi's daughter, and their son
+  Katatanushi (訶多多主命 / 堅田主命) is "the first ancestor of the Awa Inbe".
+- It then runs through **the same names in the same order**: 伊那左可雄,
+  沙喜久別, 夫由良別, 比比多臣, 止美美大人, 伊波毘古, 志麻名市, 武良比, 宇氣意,
+  伊津毘古, 久豆美, 波志主, 多氣毘古, 見都万侶, 由岐万侶, 大左和氣, 名美麻呂,
+  久米麻呂, 勝麻呂. Each is pinned to an emperor, and Okajima names the emperor
+  outright.
+- **Okajima has five fewer generations.** Awa's 止保志, 岐久和氣, 伊久毘古,
+  多岐雄 and 理岐万呂 are missing, so the same names stretch across the same
+  reigns at different spacing.
+- **The dates don't fit each other.** Okajima puts 名美麻呂 under Ankan–Kinmei
+  (6th century) and 久米麻呂 under Yōmei–Suiko (around 600). Awa has 名美麻呂
+  dying in Hakuhō 11 (late 7th century) and 久米麻呂 in Yōrō 4 (720). The same
+  people are 100+ years apart in the two versions.
+
+*Inference:* this matches Kosugi's 1876 judgment that the Okajima pedigree was
+copied from another family's. The two texts share one list of names, and the
+list was re-spaced against the emperor list differently each time. It is not
+an independent record of real generations.
