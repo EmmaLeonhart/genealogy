@@ -50681,3 +50681,17 @@ Haldor Gudbrandsen, a man's name, in the mother slot. Deck now 267 cards, 78 ope
 
 Not expected: the unpaired ancestors are not waiting in refused slots. The walk never reaches them, so more deck
 rounds will not pair them; the zipper's reach is the next step on that item.
+
+## 2026-10-03 13:40 PDT: label composition item closed; the hand label rows wait on the cap
+
+The last open step was correcting our own wrong-script name-item labels. Checked live: of the 79 items in
+`reports/name-item-labels-wrong-script.csv`, the two this account created (`Q141549472`, `Q141550359`, bare
+`N` in ja/zh/ko) are redirects since 2026-09-24, merged into `Q47246294` *Eiane* (created 2018 by another
+editor), which still shows `N` in ja/zh/ko. Its correction (エイアネ / 艾阿内 / 에이아네) has been in
+`label-applications.tsv` since 2026-10-02. The other 77 are not ours. The composer already skips a
+wrong-script part, and en/ja/zh/ko composition is live, so the item is deleted.
+
+Not expected: none of the 158 rows in `label-applications.tsv` is in today's batch, Emma's own of
+2026-09-08 and 2026-09-25 included. Run 37121725454 queued all 158, then `_cap_label_edits` took 450 people
+newest-QID-first and held 2,103 more. That starvation of older items is Emma's rule (no fairness pass), so
+nothing was changed; the rows go out as the backlog drains. 6 rows were retired this morning as live.
