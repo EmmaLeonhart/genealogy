@@ -286,12 +286,17 @@ NEVER_EDIT = frozenset({"Q347480", "Q140568870"})
 #:
 #: `6000000195149174838` is the Geni profile the batch tied to Huaxu (`Q9511624 P2600`) with the
 #: mother link cited to it; it is blocked with the owner's until the investigation says what it is.
-PROTECTED_ITEMS = frozenset({"Q140568870"})
+#: ⛔ **AND EVERY ITEM NEXT TO IT. Ruled 2026-10-02 (Emma):** *"Anything that remotely touches my
+#: profile should be blocked from editing ... Nothing should ever touch it after it was made."* Her
+#: father `Q141224814`, her mother `Q141223923`, and her sibling `Q141318957` join it.
+PROTECTED_ITEMS = frozenset({"Q140568870", "Q141224814", "Q141223923", "Q141318957"})
 #: ⛔ **THE OWNER'S GENI PROFILE, ONE CONSTANT FOR EVERY SCRIPT** (queue, 2026-10-02). Four
 #: scripts had `EMMA = "6000000001846508982"`, which is Empress Jingū's profile: 101 ancestors and
 #: no path to Yuri Dolgorukiy, against 9,874+ from this one.
 OWNER_GENI = "6000000087535357291"
-PROTECTED_GENI = frozenset({OWNER_GENI, "6000000195149174838"})
+#: Her parents' and sibling's Geni profiles, for the same ruling.
+PROTECTED_GENI = frozenset({OWNER_GENI, "6000000195149174838", "6000000177921459056",
+                           "6000000177921459052", "6000000177921458823"})
 _PROTECTED = PROTECTED_ITEMS | PROTECTED_GENI
 
 
