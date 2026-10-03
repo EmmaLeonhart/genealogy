@@ -16,7 +16,7 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# af Gennäs -- family, 11 bearer(s) in the batches
+# af Gennäs -- family, 12 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "af Gennäs"
@@ -60,6 +60,36 @@ Q141518007	P734	LAST	S2600	"6000000039479021935"
 #   Q141516265 Carl Henrik Boije af Gennäs: P734 family name = the item just created
 Q141516265	P734	LAST	S2600	"6000000039510457629"
 
+# Gaudland -- family, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gaudland"
+LAST	Len	"Gaudland"
+#   set the mul label to "Gaudland"
+LAST	Lmul	"Gaudland"
+#   set the ja label to "ガウドランド"
+LAST	Lja	"ガウドランド"
+#   set the zh label to "加乌德兰德"
+LAST	Lzh	"加乌德兰德"
+#   set the ko label to "가우드란드"
+LAST	Lko	"가우드란드"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Gaudland"
+LAST	P1705	mul:"Gaudland"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141624567 Endre Larsen Gaudland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141624567	P734	LAST	P3831	Q2507958	S2600	"6000000005609399000"
+#   Q141625616 Lars Tollaksen Eia: P734 family name = the item just created
+Q141625616	P734	LAST	S2600	"6000000005609403018"
+#   Q141625775 NN Endresdatter Gaudland: P734 family name = the item just created
+Q141625775	P734	LAST	S2600	"6000000005609403027"
+#   Q141626652 Endre Gaudland: P734 family name = the item just created
+Q141626652	P734	LAST	S2600	"6000000012151787396"
+
 # Shalma -- family, 5 bearer(s) in the batches
 # create a new item
 CREATE
@@ -92,65 +122,33 @@ Q135489819	P734	LAST	S2600	"6000000178794999821"
 #   Q109888305 Yaacob I ben Aaharon ben Shalma: P734 family name = the item just created
 Q109888305	P734	LAST	S2600	"6000000178795028823"
 
-# Gaudland -- family, 4 bearer(s) in the batches
+# Anckarswärd -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Gaudland"
-LAST	Len	"Gaudland"
-#   set the mul label to "Gaudland"
-LAST	Lmul	"Gaudland"
-#   set the ja label to "ガウドランド"
-LAST	Lja	"ガウドランド"
-#   set the zh label to "加乌德兰德"
-LAST	Lzh	"加乌德兰德"
-#   set the ko label to "가우드란드"
-LAST	Lko	"가우드란드"
+#   the item just created: set the en label to "Anckarswärd"
+LAST	Len	"Anckarswärd"
+#   set the mul label to "Anckarswärd"
+LAST	Lmul	"Anckarswärd"
+#   set the ja label to "アンカルスヴェルド"
+LAST	Lja	"アンカルスヴェルド"
+#   set the zh label to "安卡尔斯韦尔德"
+LAST	Lzh	"安卡尔斯韦尔德"
+#   set the ko label to "안카르스웨르드"
+LAST	Lko	"안카르스웨르드"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Gaudland"
-LAST	P1705	mul:"Gaudland"
+#   P1705 native label = mul:"Anckarswärd"
+LAST	P1705	mul:"Anckarswärd"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141624567 Endre Larsen Gaudland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141624567	P734	LAST	P3831	Q2507958	S2600	"6000000005609399000"
-#   Q141625616 Lars Tollaksen Eia: P734 family name = the item just created
-Q141625616	P734	LAST	S2600	"6000000005609403018"
-#   Q141625775 NN Endresdatter Gaudland: P734 family name = the item just created
-Q141625775	P734	LAST	S2600	"6000000005609403027"
-#   Q141626652 Endre Gaudland: P734 family name = the item just created
-Q141626652	P734	LAST	S2600	"6000000012151787396"
+#   Q141550554 Johan Otto Michaël Otto Mikael Anckarswärd: P734 family name = the item just created
+Q141550554	P734	LAST	S2600	"6000000008366816951"
+#   Q125907725 Magnus Cosswa: P734 family name = the item just created
+Q125907725	P734	LAST	S2600	"6000000012744143504"
 
-# Schultin -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Schultin"
-LAST	Len	"Schultin"
-#   set the mul label to "Schultin"
-LAST	Lmul	"Schultin"
-#   set the ja label to "シュルティン"
-LAST	Lja	"シュルティン"
-#   set the zh label to "舒尔廷"
-LAST	Lzh	"舒尔廷"
-#   set the ko label to "술틴"
-LAST	Lko	"술틴"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Schultin"
-LAST	P1705	mul:"Schultin"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q140387943 Elisabet Schultin: P734 family name = the item just created
-Q140387943	P734	LAST	S2600	"6000000005583598693"
-#   Q141585215 Margareta Olofsdotter Schultin: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141585215	P734	LAST	P3831	Q28418670	S2600	"6000000012012409036"
-#   Q141283098 Justina Schultin: P734 family name = the item just created
-Q141283098	P734	LAST	S2600	"6000000026434701324"
-
-# Skräddare -- family, 3 bearer(s) in the batches
+# Skräddare -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Skräddare"
@@ -178,10 +176,32 @@ Q2661641	P734	LAST	P3831	Q2507958	S2600	"6000000003658158948"
 #   Q64782306 Bengt Nilsson Skräddare: P734 family name = the item just created
 Q64782306	P734	LAST	S2600	"6000000006419505974"
 
-# von Borcke -- family, 3 bearer(s) in the batches
+# de Briwere -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "von Borcke"
+#   the item just created: set the en label to "de Briwere"
+LAST	Len	"de Briwere"
+#   set the mul label to "de Briwere"
+LAST	Lmul	"de Briwere"
+#   set the ja label to "デ・ブリヴェレ"
+LAST	Lja	"デ・ブリヴェレ"
+#   set the zh label to "德·布里韦雷"
+LAST	Lzh	"德·布里韦雷"
+#   set the ko label to "데 브리웨레"
+LAST	Lko	"데 브리웨레"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"de Briwere"
+LAST	P1705	mul:"de Briwere"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# von Borcke -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "von Borcke"
 LAST	Len	"von Borcke"
 #   set the mul label to "von Borcke"
 LAST	Lmul	"von Borcke"
@@ -206,10 +226,54 @@ Q141575470	P734	LAST	P3831	Q28418670	S2600	"6000000074210492852"
 #   Q141585760 Christian von Borcke: P734 family name = the item just created
 Q141585760	P734	LAST	S2600	"6000000128025964821"
 
-# Amundsson -- patronymic, 2 bearer(s) in the batches
+# von Wassel -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Amundsson"
+#   the item just created: set the en label to "von Wassel"
+LAST	Len	"von Wassel"
+#   set the mul label to "von Wassel"
+LAST	Lmul	"von Wassel"
+#   set the ja label to "ヴォン・ヴァッセル"
+LAST	Lja	"ヴォン・ヴァッセル"
+#   set the zh label to "翁·瓦塞尔"
+LAST	Lzh	"翁·瓦塞尔"
+#   set the ko label to "본 와셀"
+LAST	Lko	"본 와셀"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"von Wassel"
+LAST	P1705	mul:"von Wassel"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Acarsane -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Acarsane"
+LAST	Len	"Acarsane"
+#   set the mul label to "Acarsane"
+LAST	Lmul	"Acarsane"
+#   set the ja label to "アカルサネ"
+LAST	Lja	"アカルサネ"
+#   set the zh label to "阿卡尔萨内"
+LAST	Lzh	"阿卡尔萨内"
+#   set the ko label to "아카르사네"
+LAST	Lko	"아카르사네"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Acarsane"
+LAST	P1705	mul:"Acarsane"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Amundsson -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Amundsson"
 LAST	Len	"Amundsson"
 #   set the mul label to "Amundsson"
 LAST	Lmul	"Amundsson"
@@ -240,31 +304,209 @@ Q141560703	P5056	LAST	P144	Q141562057	S2600	"6000000002962891477"
 #   Q138302787 Erik Amundsson Holter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141556506 Amund Jonsson Holter
 Q138302787	P5056	LAST	P144	Q141556506	S2600	"6000000023793282200"
 
-# Anckarswärd -- family, 2 bearer(s) in the batches
+# Humrost -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Anckarswärd"
-LAST	Len	"Anckarswärd"
-#   set the mul label to "Anckarswärd"
-LAST	Lmul	"Anckarswärd"
-#   set the ja label to "アンカルスヴェルド"
-LAST	Lja	"アンカルスヴェルド"
-#   set the zh label to "安卡尔斯韦尔德"
-LAST	Lzh	"安卡尔斯韦尔德"
-#   set the ko label to "안카르스웨르드"
-LAST	Lko	"안카르스웨르드"
+#   the item just created: set the en label to "Humrost"
+LAST	Len	"Humrost"
+#   set the mul label to "Humrost"
+LAST	Lmul	"Humrost"
+#   set the ja label to "フムロスト"
+LAST	Lja	"フムロスト"
+#   set the zh label to "胡姆罗斯特"
+LAST	Lzh	"胡姆罗斯特"
+#   set the ko label to "훔로스트"
+LAST	Lko	"훔로스트"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Anckarswärd"
-LAST	P1705	mul:"Anckarswärd"
+#   P1705 native label = mul:"Humrost"
+LAST	P1705	mul:"Humrost"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141550554 Johan Otto Michaël Otto Mikael Anckarswärd: P734 family name = the item just created
-Q141550554	P734	LAST	S2600	"6000000008366816951"
-#   Q125907725 Magnus Cosswa: P734 family name = the item just created
-Q125907725	P734	LAST	S2600	"6000000012744143504"
+#   Q141583521 Ragnhild Amundsdotter Humrost: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141583521	P734	LAST	P3831	Q28418670	S2600	"6000000001529763510"
+#   Q141611102 Amund Arneson Alm Skrep: P734 family name = the item just created
+Q141611102	P734	LAST	S2600	"6000000001530080852"
+
+# Kyrning -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kyrning"
+LAST	Len	"Kyrning"
+#   set the mul label to "Kyrning"
+LAST	Lmul	"Kyrning"
+#   set the ja label to "キルニング"
+LAST	Lja	"キルニング"
+#   set the zh label to "基尔宁"
+LAST	Lzh	"基尔宁"
+#   set the ko label to "키르닝"
+LAST	Lko	"키르닝"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Kyrning"
+LAST	P1705	mul:"Kyrning"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Matfried -- given, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Matfried"
+LAST	Len	"Matfried"
+#   set the mul label to "Matfried"
+LAST	Lmul	"Matfried"
+#   set the ja label to "マトフリエド"
+LAST	Lja	"マトフリエド"
+#   set the zh label to "马特夫里埃德"
+LAST	Lzh	"马特夫里埃德"
+#   set the ko label to "마트프리에드"
+LAST	Lko	"마트프리에드"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Matfried"
+LAST	P1705	mul:"Matfried"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141624587 Matfried I. von Metz: P735 given name = the item just created, qualified P1545 series ordinal 1
+Q141624587	P735	LAST	P1545	"1"	S2600	"6000000002187699058"
+#   Q141625649 Matfried von Orleans I.: P735 given name = the item just created
+Q141625649	P735	LAST	S2600	"6000000179404334821"
+
+# Schultin -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Schultin"
+LAST	Len	"Schultin"
+#   set the mul label to "Schultin"
+LAST	Lmul	"Schultin"
+#   set the ja label to "シュルティン"
+LAST	Lja	"シュルティン"
+#   set the zh label to "舒尔廷"
+LAST	Lzh	"舒尔廷"
+#   set the ko label to "술틴"
+LAST	Lko	"술틴"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Schultin"
+LAST	P1705	mul:"Schultin"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q140387943 Elisabet Schultin: P734 family name = the item just created
+Q140387943	P734	LAST	S2600	"6000000005583598693"
+#   Q141585215 Margareta Olofsdotter Schultin: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141585215	P734	LAST	P3831	Q28418670	S2600	"6000000012012409036"
+#   Q141283098 Justina Schultin: P734 family name = the item just created
+Q141283098	P734	LAST	S2600	"6000000026434701324"
+
+# de Semur -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "de Semur"
+LAST	Len	"de Semur"
+#   set the mul label to "de Semur"
+LAST	Lmul	"de Semur"
+#   set the ja label to "デ・セムル"
+LAST	Lja	"デ・セムル"
+#   set the zh label to "德·塞穆尔"
+LAST	Lzh	"德·塞穆尔"
+#   set the ko label to "데 세무르"
+LAST	Lko	"데 세무르"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"de Semur"
+LAST	P1705	mul:"de Semur"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141626589 Adelaïs de Mâcon: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141626589	P734	LAST	P3831	Q28418670	S2600	"6000000002188271139"
+#   Q10308650 Josserand Bers de Semur: P734 family name = the item just created
+Q10308650	P734	LAST	S2600	"6000000006422194686"
+#   Q141626660 NN: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141626660	P734	LAST	P3831	Q28418670	S2600	"6000000032201968837"
+
+# von Bregenz-Pfullendorf -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "von Bregenz-Pfullendorf"
+LAST	Len	"von Bregenz-Pfullendorf"
+#   set the mul label to "von Bregenz-Pfullendorf"
+LAST	Lmul	"von Bregenz-Pfullendorf"
+#   set the ja label to "ヴォン・ブレゲンズプフレンドルフ"
+LAST	Lja	"ヴォン・ブレゲンズプフレンドルフ"
+#   set the zh label to "翁·布雷根兹普富伦多尔夫"
+LAST	Lzh	"翁·布雷根兹普富伦多尔夫"
+#   set the ko label to "본 브레겐즈프풀렌도르프"
+LAST	Lko	"본 브레겐즈프풀렌도르프"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"von Bregenz-Pfullendorf"
+LAST	P1705	mul:"von Bregenz-Pfullendorf"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q25344436 Rudolf I von Bregenz-Pfullendorf: P734 family name = the item just created
+Q25344436	P734	LAST	S2600	"6000000003827451485"
+#   Q52636341 Ulrich von Bregenz-Pfullendorf: P734 family name = the item just created
+Q52636341	P734	LAST	S2600	"6000000003827618996"
+
+# Berdor -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Berdor"
+LAST	Len	"Berdor"
+#   set the mul label to "Berdor"
+LAST	Lmul	"Berdor"
+#   set the ja label to "ベルドル"
+LAST	Lja	"ベルドル"
+#   set the zh label to "贝尔多尔"
+LAST	Lzh	"贝尔多尔"
+#   set the ko label to "베르도르"
+LAST	Lko	"베르도르"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Berdor"
+LAST	P1705	mul:"Berdor"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141562126 Berdor Bolt: P735 given name = the item just created
+Q141562126	P735	LAST	S2600	"6000000011295701330"
+
+# Bjerchenius -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Bjerchenius"
+LAST	Len	"Bjerchenius"
+#   set the mul label to "Bjerchenius"
+LAST	Lmul	"Bjerchenius"
+#   set the ja label to "ビェルケニウス"
+LAST	Lja	"ビェルケニウス"
+#   set the zh label to "贝尔凯尼乌斯"
+LAST	Lzh	"贝尔凯尼乌斯"
+#   set the ko label to "베르체뉴스"
+LAST	Lko	"베르체뉴스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Bjerchenius"
+LAST	P1705	mul:"Bjerchenius"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141529786 Sven Bjerchenius: P734 family name = the item just created
+Q141529786	P734	LAST	S2600	"6000000019160626603"
 
 # Brungström -- family, 2 bearer(s) in the batches
 # create a new item
@@ -292,6 +534,102 @@ Q141523177	P734	LAST	P3831	Q28418670	S2600	"6000000025904846542"
 #   Q141550844 Lovisa Albertina Johansdotter Brungström: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141550844	P734	LAST	P3831	Q2507958	S2600	"6000000042471150144"
 
+# Chadaloh -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Chadaloh"
+LAST	Len	"Chadaloh"
+#   set the mul label to "Chadaloh"
+LAST	Lmul	"Chadaloh"
+#   set the ja label to "カダロ"
+LAST	Lja	"カダロ"
+#   set the zh label to "卡达洛"
+LAST	Lzh	"卡达洛"
+#   set the ko label to "차다로흐"
+LAST	Lko	"차다로흐"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Chadaloh"
+LAST	P1705	mul:"Chadaloh"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141628438 Chadaloh im Schwaben: P735 given name = the item just created
+Q141628438	P735	LAST	S2600	"6000000002019568829"
+
+# Endride -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Endride"
+LAST	Len	"Endride"
+#   set the mul label to "Endride"
+LAST	Lmul	"Endride"
+#   set the ja label to "エンドリデ"
+LAST	Lja	"エンドリデ"
+#   set the zh label to "恩德里德"
+LAST	Lzh	"恩德里德"
+#   set the ko label to "엔드리데"
+LAST	Lko	"엔드리데"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Endride"
+LAST	P1705	mul:"Endride"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141614037 Endride: P735 given name = the item just created
+Q141614037	P735	LAST	S2600	"6000000001995109887"
+
+# Eustachie -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Eustachie"
+LAST	Len	"Eustachie"
+#   set the mul label to "Eustachie"
+LAST	Lmul	"Eustachie"
+#   set the ja label to "エウスタキエ"
+LAST	Lja	"エウスタキエ"
+#   set the zh label to "厄斯塔基埃"
+LAST	Lzh	"厄斯塔基埃"
+#   set the ko label to "유스타치에"
+LAST	Lko	"유스타치에"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Eustachie"
+LAST	P1705	mul:"Eustachie"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q60833254 Eustachie de Tonnerre: P735 given name = the item just created
+Q60833254	P735	LAST	S2600	"6000000008248363481"
+
+# Franconia -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Franconia"
+LAST	Len	"Franconia"
+#   set the mul label to "Franconia"
+LAST	Lmul	"Franconia"
+#   set the ja label to "フランコニア"
+LAST	Lja	"フランコニア"
+#   set the zh label to "夫兰科尼阿"
+LAST	Lzh	"夫兰科尼阿"
+#   set the ko label to "프란코니아"
+LAST	Lko	"프란코니아"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Franconia"
+LAST	P1705	mul:"Franconia"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141626554 Kunigunda Franconia: P734 family name = the item just created
+Q141626554	P734	LAST	S2600	"6000000220206162871"
+
 # Gjemnes -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -318,653 +656,7 @@ Q141583454	P734	LAST	S2600	"6000000077554584817"
 #   Q141583664 Gro Sveinsdatter Gjemnes: P734 family name = the item just created
 Q141583664	P734	LAST	S2600	"6000000077555069491"
 
-# Humrost -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Humrost"
-LAST	Len	"Humrost"
-#   set the mul label to "Humrost"
-LAST	Lmul	"Humrost"
-#   set the ja label to "フムロスト"
-LAST	Lja	"フムロスト"
-#   set the zh label to "胡姆罗斯特"
-LAST	Lzh	"胡姆罗斯特"
-#   set the ko label to "훔로스트"
-LAST	Lko	"훔로스트"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Humrost"
-LAST	P1705	mul:"Humrost"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141583521 Ragnhild Amundsdotter Humrost: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141583521	P734	LAST	P3831	Q28418670	S2600	"6000000001529763510"
-#   Q141611102 Amund Arneson Alm Skrep: P734 family name = the item just created
-Q141611102	P734	LAST	S2600	"6000000001530080852"
-
-# Jenson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Jenson"
-LAST	Len	"Jenson"
-#   set the mul label to "Jenson"
-LAST	Lmul	"Jenson"
-#   set the ja label to "イェンソン"
-LAST	Lja	"イェンソン"
-#   set the zh label to "延松"
-LAST	Lzh	"延松"
-#   set the ko label to "젠손"
-LAST	Lko	"젠손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Jenson"
-LAST	P1705	mul:"Jenson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q2246251 Jens
-LAST	P144	Q2246251
-#   Q141584557 Kristoffer Jenson Barka: P5056 patronym or matronym = the item just created, qualified P144 based on Q141584272 Jens Askoudtsen Geiteskjer
-Q141584557	P5056	LAST	P144	Q141584272	S2600	"6000000012710594391"
-#   Q141352521 Sven Jenson Slettestrand: P5056 patronym or matronym = the item just created, qualified P144 based on Q141520838 Jens Svenson
-Q141352521	P5056	LAST	P144	Q141520838	S2600	"6000000014276970304"
-
-# Matfried -- given, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Matfried"
-LAST	Len	"Matfried"
-#   set the mul label to "Matfried"
-LAST	Lmul	"Matfried"
-#   set the ja label to "マトフリエド"
-LAST	Lja	"マトフリエド"
-#   set the zh label to "马特夫里埃德"
-LAST	Lzh	"马特夫里埃德"
-#   set the ko label to "마트프리에드"
-LAST	Lko	"마트프리에드"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Matfried"
-LAST	P1705	mul:"Matfried"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141624587 Matfried I. von Metz: P735 given name = the item just created, qualified P1545 series ordinal 1
-Q141624587	P735	LAST	P1545	"1"	S2600	"6000000002187699058"
-#   Q141625649 Matfried von Orleans I.: P735 given name = the item just created
-Q141625649	P735	LAST	S2600	"6000000179404334821"
-
-# Samson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Samson"
-LAST	Len	"Samson"
-#   set the mul label to "Samson"
-LAST	Lmul	"Samson"
-#   set the ja label to "サムソン"
-LAST	Lja	"サムソン"
-#   set the zh label to "萨姆森"
-LAST	Lzh	"萨姆森"
-#   set the ko label to "삼손"
-LAST	Lko	"삼손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Samson"
-LAST	P1705	mul:"Samson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141577735 Samson: P5056 patronym or matronym = the item just created
-Q141577735	P5056	LAST	S2600	"6000000008928599620"
-#   Q141566150 Samson de la Motte Sr.: P5056 patronym or matronym = the item just created
-Q141566150	P5056	LAST	S2600	"6000000009508651872"
-
-# de Briwere -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "de Briwere"
-LAST	Len	"de Briwere"
-#   set the mul label to "de Briwere"
-LAST	Lmul	"de Briwere"
-#   set the ja label to "デ・ブリヴェレ"
-LAST	Lja	"デ・ブリヴェレ"
-#   set the zh label to "德·布里韦雷"
-LAST	Lzh	"德·布里韦雷"
-#   set the ko label to "데 브리웨레"
-LAST	Lko	"데 브리웨레"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"de Briwere"
-LAST	P1705	mul:"de Briwere"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# von Bregenz-Pfullendorf -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "von Bregenz-Pfullendorf"
-LAST	Len	"von Bregenz-Pfullendorf"
-#   set the mul label to "von Bregenz-Pfullendorf"
-LAST	Lmul	"von Bregenz-Pfullendorf"
-#   set the ja label to "ヴォン・ブレゲンズプフレンドルフ"
-LAST	Lja	"ヴォン・ブレゲンズプフレンドルフ"
-#   set the zh label to "翁·布雷根兹普富伦多尔夫"
-LAST	Lzh	"翁·布雷根兹普富伦多尔夫"
-#   set the ko label to "본 브레겐즈프풀렌도르프"
-LAST	Lko	"본 브레겐즈프풀렌도르프"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"von Bregenz-Pfullendorf"
-LAST	P1705	mul:"von Bregenz-Pfullendorf"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q25344436 Rudolf I von Bregenz-Pfullendorf: P734 family name = the item just created
-Q25344436	P734	LAST	S2600	"6000000003827451485"
-#   Q52636341 Ulrich von Bregenz-Pfullendorf: P734 family name = the item just created
-Q52636341	P734	LAST	S2600	"6000000003827618996"
-
-# Acarsane -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Acarsane"
-LAST	Len	"Acarsane"
-#   set the mul label to "Acarsane"
-LAST	Lmul	"Acarsane"
-#   set the ja label to "アカルサネ"
-LAST	Lja	"アカルサネ"
-#   set the zh label to "阿卡尔萨内"
-LAST	Lzh	"阿卡尔萨内"
-#   set the ko label to "아카르사네"
-LAST	Lko	"아카르사네"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Acarsane"
-LAST	P1705	mul:"Acarsane"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# Adélaïs -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Adélaïs"
-LAST	Len	"Adélaïs"
-#   set the mul label to "Adélaïs"
-LAST	Lmul	"Adélaïs"
-#   set the ja label to "アデライス"
-LAST	Lja	"アデライス"
-#   set the zh label to "阿德拉伊斯"
-LAST	Lzh	"阿德拉伊斯"
-#   set the ko label to "아데라이스"
-LAST	Lko	"아데라이스"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Adélaïs"
-LAST	P1705	mul:"Adélaïs"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q354934 Adélaïs Aélis de Tours: P735 given name = the item just created, qualified P1545 series ordinal 1
-Q354934	P735	LAST	P1545	"1"	S2600	"6000000012468581950"
-
-# Amdall -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Amdall"
-LAST	Len	"Amdall"
-#   set the mul label to "Amdall"
-LAST	Lmul	"Amdall"
-#   set the ja label to "アムダル"
-LAST	Lja	"アムダル"
-#   set the zh label to "阿姆达尔"
-LAST	Lzh	"阿姆达尔"
-#   set the ko label to "암달"
-LAST	Lko	"암달"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Amdall"
-LAST	P1705	mul:"Amdall"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141626199 Gunnar Larson Larsson.Amdal: P734 family name = the item just created
-Q141626199	P734	LAST	S2600	"5486422439870101291"
-
-# Antoniussen -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Antoniussen"
-LAST	Len	"Antoniussen"
-#   set the mul label to "Antoniussen"
-LAST	Lmul	"Antoniussen"
-#   set the ja label to "アントニウセン"
-LAST	Lja	"アントニウセン"
-#   set the zh label to "安托尼乌森"
-LAST	Lzh	"安托尼乌森"
-#   set the ko label to "안토뉴센"
-LAST	Lko	"안토뉴센"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Antoniussen"
-LAST	P1705	mul:"Antoniussen"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q16898983 Antonius
-LAST	P144	Q16898983
-#   Q141518826 Gunnar Antoniussen Sveinsvoll: P5056 patronym or matronym = the item just created
-Q141518826	P5056	LAST	S2600	"6000000003272907214"
-
-# Berdor -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Berdor"
-LAST	Len	"Berdor"
-#   set the mul label to "Berdor"
-LAST	Lmul	"Berdor"
-#   set the ja label to "ベルドル"
-LAST	Lja	"ベルドル"
-#   set the zh label to "贝尔多尔"
-LAST	Lzh	"贝尔多尔"
-#   set the ko label to "베르도르"
-LAST	Lko	"베르도르"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Berdor"
-LAST	P1705	mul:"Berdor"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141562126 Berdor Bolt: P735 given name = the item just created
-Q141562126	P735	LAST	S2600	"6000000011295701330"
-
-# Bjerchenius -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Bjerchenius"
-LAST	Len	"Bjerchenius"
-#   set the mul label to "Bjerchenius"
-LAST	Lmul	"Bjerchenius"
-#   set the ja label to "ビェルケニウス"
-LAST	Lja	"ビェルケニウス"
-#   set the zh label to "贝尔凯尼乌斯"
-LAST	Lzh	"贝尔凯尼乌斯"
-#   set the ko label to "베르체뉴스"
-LAST	Lko	"베르체뉴스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Bjerchenius"
-LAST	P1705	mul:"Bjerchenius"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141529786 Sven Bjerchenius: P734 family name = the item just created
-Q141529786	P734	LAST	S2600	"6000000019160626603"
-
-# Bråstein -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Bråstein"
-LAST	Len	"Bråstein"
-#   set the mul label to "Bråstein"
-LAST	Lmul	"Bråstein"
-#   set the ja label to "ブローステイン"
-LAST	Lja	"ブローステイン"
-#   set the zh label to "布罗斯特因"
-LAST	Lzh	"布罗斯特因"
-#   set the ko label to "브라스테인"
-LAST	Lko	"브라스테인"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Bråstein"
-LAST	P1705	mul:"Bråstein"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141570099 Knut Knutson Bråstein: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141570099	P734	LAST	P3831	Q2507958	S2600	"6000000006776171152"
-
-# Chadaloh -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Chadaloh"
-LAST	Len	"Chadaloh"
-#   set the mul label to "Chadaloh"
-LAST	Lmul	"Chadaloh"
-#   set the ja label to "カダロ"
-LAST	Lja	"カダロ"
-#   set the zh label to "卡达洛"
-LAST	Lzh	"卡达洛"
-#   set the ko label to "차다로흐"
-LAST	Lko	"차다로흐"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Chadaloh"
-LAST	P1705	mul:"Chadaloh"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141628438 Chadaloh im Schwaben: P735 given name = the item just created
-Q141628438	P735	LAST	S2600	"6000000002019568829"
-
-# Chronander -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Chronander"
-LAST	Len	"Chronander"
-#   set the mul label to "Chronander"
-LAST	Lmul	"Chronander"
-#   set the ja label to "クロナンデル"
-LAST	Lja	"クロナンデル"
-#   set the zh label to "克罗南德尔"
-LAST	Lzh	"克罗南德尔"
-#   set the ko label to "크로난데르"
-LAST	Lko	"크로난데르"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Chronander"
-LAST	P1705	mul:"Chronander"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141586727 Ulrika Margareta Chronander: P734 family name = the item just created
-Q141586727	P734	LAST	S2600	"6000000015284609378"
-
-# Didriksdotter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Didriksdotter"
-LAST	Len	"Didriksdotter"
-#   set the mul label to "Didriksdotter"
-LAST	Lmul	"Didriksdotter"
-#   set the ja label to "ディドリクスドッテル"
-LAST	Lja	"ディドリクスドッテル"
-#   set the zh label to "迪德里克斯多特"
-LAST	Lzh	"迪德里克斯多特"
-#   set the ko label to "디드리크스도테르"
-LAST	Lko	"디드리크스도테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Didriksdotter"
-LAST	P1705	mul:"Didriksdotter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q15883468 Didrik
-LAST	P144	Q15883468
-#   P144 based on = Q20804429 Diedrich
-LAST	P144	Q20804429
-#   P144 based on = Q30145907 Didrich
-LAST	P144	Q30145907
-#   P144 based on = Q18145860 Dietrich
-LAST	P144	Q18145860
-#   Q110548317 Helena Didriksdotter Yxküll: P5056 patronym or matronym = the item just created
-Q110548317	P5056	LAST	S2600	"6000000004160997724"
-
-# Einridesdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Einridesdatter"
-LAST	Len	"Einridesdatter"
-#   set the mul label to "Einridesdatter"
-LAST	Lmul	"Einridesdatter"
-#   set the ja label to "エインリデスダッテル"
-LAST	Lja	"エインリデスダッテル"
-#   set the zh label to "艾恩里德斯达特"
-LAST	Lzh	"艾恩里德斯达特"
-#   set the ko label to "에인리데스다테르"
-LAST	Lko	"에인리데스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Einridesdatter"
-LAST	P1705	mul:"Einridesdatter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q139808004
-LAST	P144	Q139808004
-#   Q141551759 NN Einridesdatter Vormestrand: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562268 Einride Øyolvsson Vormestrand
-Q141551759	P5056	LAST	P144	Q141562268	S2600	"6000000028205413569"
-
-# Elofsdotter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Elofsdotter"
-LAST	Len	"Elofsdotter"
-#   set the mul label to "Elofsdotter"
-LAST	Lmul	"Elofsdotter"
-#   set the ja label to "エロフスドッテル"
-LAST	Lja	"エロフスドッテル"
-#   set the zh label to "埃洛夫斯多特"
-LAST	Lzh	"埃洛夫斯多特"
-#   set the ko label to "에로프스도테르"
-LAST	Lko	"에로프스도테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Elofsdotter"
-LAST	P1705	mul:"Elofsdotter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q3366319 Elof
-LAST	P144	Q3366319
-#   Q141624569 Ingeborg Elofsdotter Vingad pil: P5056 patronym or matronym = the item just created
-Q141624569	P5056	LAST	S2600	"6000000035267894955"
-
-# Endride -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Endride"
-LAST	Len	"Endride"
-#   set the mul label to "Endride"
-LAST	Lmul	"Endride"
-#   set the ja label to "エンドリデ"
-LAST	Lja	"エンドリデ"
-#   set the zh label to "恩德里德"
-LAST	Lzh	"恩德里德"
-#   set the ko label to "엔드리데"
-LAST	Lko	"엔드리데"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Endride"
-LAST	P1705	mul:"Endride"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141614037 Endride: P735 given name = the item just created
-Q141614037	P735	LAST	S2600	"6000000001995109887"
-
-# Eustachie -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Eustachie"
-LAST	Len	"Eustachie"
-#   set the mul label to "Eustachie"
-LAST	Lmul	"Eustachie"
-#   set the ja label to "エウスタキエ"
-LAST	Lja	"エウスタキエ"
-#   set the zh label to "厄斯塔基埃"
-LAST	Lzh	"厄斯塔基埃"
-#   set the ko label to "유스타치에"
-LAST	Lko	"유스타치에"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Eustachie"
-LAST	P1705	mul:"Eustachie"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q60833254 Eustachie de Tonnerre: P735 given name = the item just created
-Q60833254	P735	LAST	S2600	"6000000008248363481"
-
-# Franconia -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Franconia"
-LAST	Len	"Franconia"
-#   set the mul label to "Franconia"
-LAST	Lmul	"Franconia"
-#   set the ja label to "フランコニア"
-LAST	Lja	"フランコニア"
-#   set the zh label to "夫兰科尼阿"
-LAST	Lzh	"夫兰科尼阿"
-#   set the ko label to "프란코니아"
-LAST	Lko	"프란코니아"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Franconia"
-LAST	P1705	mul:"Franconia"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141626554 Kunigunda Franconia: P734 family name = the item just created
-Q141626554	P734	LAST	S2600	"6000000220206162871"
-
-# Fru -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Fru"
-LAST	Len	"Fru"
-#   set the mul label to "Fru"
-LAST	Lmul	"Fru"
-#   set the ja label to "フル"
-LAST	Lja	"フル"
-#   set the zh label to "夫鲁"
-LAST	Lzh	"夫鲁"
-#   set the ko label to "프루"
-LAST	Lko	"프루"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Fru"
-LAST	P1705	mul:"Fru"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141225708 Fru Tore: P735 given name = the item just created
-Q141225708	P735	LAST	S2600	"6000000150599235831"
-
-# Gislesdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gislesdatter"
-LAST	Len	"Gislesdatter"
-#   set the mul label to "Gislesdatter"
-LAST	Lmul	"Gislesdatter"
-#   set the ja label to "ギスレスダッテル"
-LAST	Lja	"ギスレスダッテル"
-#   set the zh label to "吉斯莱斯达特"
-LAST	Lzh	"吉斯莱斯达特"
-#   set the ko label to "기스레스다테르"
-LAST	Lko	"기스레스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Gislesdatter"
-LAST	P1705	mul:"Gislesdatter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q4570691 Gisle
-LAST	P144	Q4570691
-#   Q141514975 Gjertrud Gislesdatter Velo: P5056 patronym or matronym = the item just created, qualified P144 based on Q141523455 Gisle Gulbandsen Velo
-Q141514975	P5056	LAST	P144	Q141523455	S2600	"6000000015423623209"
-
-# Gudrødsson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gudrødsson"
-LAST	Len	"Gudrødsson"
-#   set the mul label to "Gudrødsson"
-LAST	Lmul	"Gudrødsson"
-#   set the ja label to "グドロドソン"
-LAST	Lja	"グドロドソン"
-#   set the zh label to "古德罗德松"
-LAST	Lzh	"古德罗德松"
-#   set the ko label to "구드뢰드손"
-LAST	Lko	"구드뢰드손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Gudrødsson"
-LAST	P1705	mul:"Gudrødsson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q504932 Halvdan «the Black» Gudrødsson King in Uppland: P5056 patronym or matronym = the item just created, qualified P144 based on Q2448909 Gudrød «the Hunter» Halvdansson
-Q504932	P5056	LAST	P144	Q2448909	S2600	"6000000001200495470"
-
-# Gumsehuvud -- family, 1 bearer(s) in the batches
+# Gumsehuvud -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Gumsehuvud"
@@ -988,63 +680,7 @@ LAST	P282	Q8229
 #   Q2305403 Katarina Karlsdotter (Gumsehuvud): P734 family name = the item just created
 Q2305403	P734	LAST	S2600	"4753263"
 
-# Gunnor -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gunnor"
-LAST	Len	"Gunnor"
-#   set the mul label to "Gunnor"
-LAST	Lmul	"Gunnor"
-#   set the ja label to "グンノル"
-LAST	Lja	"グンノル"
-#   set the zh label to "古诺尔"
-LAST	Lzh	"古诺尔"
-#   set the ko label to "군노르"
-LAST	Lko	"군노르"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Gunnor"
-LAST	P1705	mul:"Gunnor"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q270777 Gunnor: P735 given name = the item just created
-Q270777	P735	LAST	S2600	"6000000003852730222"
-
-# Halkjellson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Halkjellson"
-LAST	Len	"Halkjellson"
-#   set the mul label to "Halkjellson"
-LAST	Lmul	"Halkjellson"
-#   set the ja label to "ハルヒェルソン"
-LAST	Lja	"ハルヒェルソン"
-#   set the zh label to "哈尔谢尔松"
-LAST	Lzh	"哈尔谢尔松"
-#   set the ko label to "할켈손"
-LAST	Lko	"할켈손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Halkjellson"
-LAST	P1705	mul:"Halkjellson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q26970862 Hallkjell
-LAST	P144	Q26970862
-#   Q26965895 Jon Halkjellson Huk: P5056 patronym or matronym = the item just created, qualified P144 based on Q26970861 Hallkjell Jonson Huk
-Q26965895	P5056	LAST	P144	Q26970861	S2600	"6000000004533725115"
-
-# Halldorson -- patronymic, 1 bearer(s) in the batches
+# Halldorson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Halldorson"
@@ -1080,51 +716,19 @@ LAST	P144	Q582148
 #   Q141584973 Jostein Halldorson Dall: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585595 Halldor Arnesson Holar
 Q141584973	P5056	LAST	P144	Q141585595	S2600	"6000000007588176685"
 
-# Hallkjellsson -- patronymic, 1 bearer(s) in the batches
+# Hemmingsdotter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Hallkjellsson"
-LAST	Len	"Hallkjellsson"
-#   set the mul label to "Hallkjellsson"
-LAST	Lmul	"Hallkjellsson"
-#   set the ja label to "ハルヒェルソン"
-LAST	Lja	"ハルヒェルソン"
-#   set the zh label to "哈尔谢尔松"
-LAST	Lzh	"哈尔谢尔松"
-#   set the ko label to "할켈손"
-LAST	Lko	"할켈손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Hallkjellsson"
-LAST	P1705	mul:"Hallkjellsson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q16426724 Hallkell
-LAST	P144	Q16426724
-#   Q141562267 Eindride Hallkjellsson Peine: P5056 patronym or matronym = the item just created, qualified P144 based on Q141565342 Hallkell Lo
-Q141562267	P5056	LAST	P144	Q141565342	S2600	"6000000007426473196"
-
-# Hallkjelsdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Hallkjelsdatter"
-LAST	Len	"Hallkjelsdatter"
-#   set the mul label to "Hallkjelsdatter"
-LAST	Lmul	"Hallkjelsdatter"
-#   set the ja label to "ハルヒェルスダッテル"
-LAST	Lja	"ハルヒェルスダッテル"
-#   set the zh label to "哈尔谢尔斯达特"
-LAST	Lzh	"哈尔谢尔斯达特"
-#   set the ko label to "할켈스다테르"
-LAST	Lko	"할켈스다테르"
+#   the item just created: set the en label to "Hemmingsdotter"
+LAST	Len	"Hemmingsdotter"
+#   set the mul label to "Hemmingsdotter"
+LAST	Lmul	"Hemmingsdotter"
+#   set the ja label to "ヘムミングスドッテル"
+LAST	Lja	"ヘムミングスドッテル"
+#   set the zh label to "赫明斯多特"
+LAST	Lzh	"赫明斯多特"
+#   set the ko label to "헴밍스도테르"
+LAST	Lko	"헴밍스도테르"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -1135,28 +739,378 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Hallkjelsdatter"
-LAST	P1705	mul:"Hallkjelsdatter"
+#   P1705 native label = mul:"Hemmingsdotter"
+LAST	P1705	mul:"Hemmingsdotter"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141451073 NN Hallkjelsdatter: P5056 patronym or matronym = the item just created
-Q141451073	P5056	LAST	S2600	"6000000005606928456"
+#   P144 based on = Q15105874 Hemming
+LAST	P144	Q15105874
 
-# 5271 more name items are needed and wait for a later
+# Ingemundsson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Ingemundsson"
+LAST	Len	"Ingemundsson"
+#   set the mul label to "Ingemundsson"
+LAST	Lmul	"Ingemundsson"
+#   set the ja label to "インゲムンドソン"
+LAST	Lja	"インゲムンドソン"
+#   set the zh label to "因盖蒙德松"
+LAST	Lzh	"因盖蒙德松"
+#   set the ko label to "잉에문드손"
+LAST	Lko	"잉에문드손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Ingemundsson"
+LAST	P1705	mul:"Ingemundsson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q21505126 Ingemund
+LAST	P144	Q21505126
+#   Q141499453 Torgeir Ingemundsson Spånheim d.a.: P5056 patronym or matronym = the item just created, qualified P144 based on Q141499443 Ingemund Grimsson I&R
+Q141499453	P5056	LAST	P144	Q141499443	S2600	"6000000227816363824"
+
+# Irmentrud -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Irmentrud"
+LAST	Len	"Irmentrud"
+#   set the mul label to "Irmentrud"
+LAST	Lmul	"Irmentrud"
+#   set the ja label to "イルメントルド"
+LAST	Lja	"イルメントルド"
+#   set the zh label to "伊尔门特鲁德"
+LAST	Lzh	"伊尔门特鲁德"
+#   set the ko label to "이르멘트루드"
+LAST	Lko	"이르멘트루드"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Irmentrud"
+LAST	P1705	mul:"Irmentrud"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Jenson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Jenson"
+LAST	Len	"Jenson"
+#   set the mul label to "Jenson"
+LAST	Lmul	"Jenson"
+#   set the ja label to "イェンソン"
+LAST	Lja	"イェンソン"
+#   set the zh label to "延松"
+LAST	Lzh	"延松"
+#   set the ko label to "젠손"
+LAST	Lko	"젠손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Jenson"
+LAST	P1705	mul:"Jenson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q2246251 Jens
+LAST	P144	Q2246251
+#   Q141584557 Kristoffer Jenson Barka: P5056 patronym or matronym = the item just created, qualified P144 based on Q141584272 Jens Askoudtsen Geiteskjer
+Q141584557	P5056	LAST	P144	Q141584272	S2600	"6000000012710594391"
+#   Q141352521 Sven Jenson Slettestrand: P5056 patronym or matronym = the item just created, qualified P144 based on Q141520838 Jens Svenson
+Q141352521	P5056	LAST	P144	Q141520838	S2600	"6000000014276970304"
+
+# Kjeran -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kjeran"
+LAST	Len	"Kjeran"
+#   set the mul label to "Kjeran"
+LAST	Lmul	"Kjeran"
+#   set the ja label to "ヒェラン"
+LAST	Lja	"ヒェラン"
+#   set the zh label to "谢兰"
+LAST	Lzh	"谢兰"
+#   set the ko label to "케란"
+LAST	Lko	"케란"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Kjeran"
+LAST	P1705	mul:"Kjeran"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141586884 Kjeran Anderson: P735 given name = the item just created
+Q141586884	P735	LAST	S2600	"6000000003094925975"
+
+# Kvitlen -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kvitlen"
+LAST	Len	"Kvitlen"
+#   set the mul label to "Kvitlen"
+LAST	Lmul	"Kvitlen"
+#   set the ja label to "クヴィトレン"
+LAST	Lja	"クヴィトレン"
+#   set the zh label to "克维特伦"
+LAST	Lzh	"克维特伦"
+#   set the ko label to "크비트렌"
+LAST	Lko	"크비트렌"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Kvitlen"
+LAST	P1705	mul:"Kvitlen"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141625689 Siri Johannesdatter Kvitlen: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141625689	P734	LAST	P3831	Q2507958	S2600	"6000000113712940988"
+
+# Liffman -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Liffman"
+LAST	Len	"Liffman"
+#   set the mul label to "Liffman"
+LAST	Lmul	"Liffman"
+#   set the ja label to "リッフマン"
+LAST	Lja	"リッフマン"
+#   set the zh label to "利夫曼"
+LAST	Lzh	"利夫曼"
+#   set the ko label to "리프만"
+LAST	Lko	"리프만"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Liffman"
+LAST	P1705	mul:"Liffman"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141629356 Lorens Johan Liffman: P734 family name = the item just created
+Q141629356	P734	LAST	S2600	"6000000015382726750"
+
+# Loccenia -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Loccenia"
+LAST	Len	"Loccenia"
+#   set the mul label to "Loccenia"
+LAST	Lmul	"Loccenia"
+#   set the ja label to "ロッセニア"
+LAST	Lja	"ロッセニア"
+#   set the zh label to "洛塞尼阿"
+LAST	Lzh	"洛塞尼阿"
+#   set the ko label to "로케니아"
+LAST	Lko	"로케니아"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Loccenia"
+LAST	P1705	mul:"Loccenia"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141582170 Ursula Loccenia: P734 family name = the item just created
+Q141582170	P734	LAST	S2600	"6000000007026235042"
+
+# Mattiasdatter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Mattiasdatter"
+LAST	Len	"Mattiasdatter"
+#   set the mul label to "Mattiasdatter"
+LAST	Lmul	"Mattiasdatter"
+#   set the ja label to "マティアスダッテル"
+LAST	Lja	"マティアスダッテル"
+#   set the zh label to "马蒂阿斯达特"
+LAST	Lzh	"马蒂阿斯达特"
+#   set the ko label to "마티아스다테르"
+LAST	Lko	"마티아스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Mattiasdatter"
+LAST	P1705	mul:"Mattiasdatter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q1818817 Mathias
+LAST	P144	Q1818817
+#   P144 based on = Q16279186 Mattias
+LAST	P144	Q16279186
+#   P144 based on = Q4927273 Matthias
+LAST	P144	Q4927273
+#   Q141403598 Malena Mattiasdatter Fotland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141257266 Mattias Tollefsen Vatnamot
+Q141403598	P5056	LAST	P144	Q141257266	S2600	"6000000005607082618"
+
+# Moshals -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Moshals"
+LAST	Len	"Moshals"
+#   set the mul label to "Moshals"
+LAST	Lmul	"Moshals"
+#   set the ja label to "モスハルス"
+LAST	Lja	"モスハルス"
+#   set the zh label to "莫斯哈尔斯"
+LAST	Lzh	"莫斯哈尔斯"
+#   set the ko label to "모살스"
+LAST	Lko	"모살스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Moshals"
+LAST	P1705	mul:"Moshals"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141624545 Hallur Moshals Audunarsson: P734 family name = the item just created
+Q141624545	P734	LAST	S2600	"6000000014536837729"
+#   Q141625647 Audunar Moshals: P734 family name = the item just created
+Q141625647	P734	LAST	S2600	"6000000177945014827"
+
+# Murkerke -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Murkerke"
+LAST	Len	"Murkerke"
+#   set the mul label to "Murkerke"
+LAST	Lmul	"Murkerke"
+#   set the ja label to "ムルケルケ"
+LAST	Lja	"ムルケルケ"
+#   set the zh label to "穆尔凯尔凯"
+LAST	Lzh	"穆尔凯尔凯"
+#   set the ko label to "무르케르케"
+LAST	Lko	"무르케르케"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Murkerke"
+LAST	P1705	mul:"Murkerke"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# Myklabost -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Myklabost"
+LAST	Len	"Myklabost"
+#   set the mul label to "Myklabost"
+LAST	Lmul	"Myklabost"
+#   set the ja label to "ミクラボスト"
+LAST	Lja	"ミクラボスト"
+#   set the zh label to "米克拉博斯特"
+LAST	Lzh	"米克拉博斯特"
+#   set the ko label to "미크라보스트"
+LAST	Lko	"미크라보스트"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Myklabost"
+LAST	P1705	mul:"Myklabost"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141520850 Jeremias Njellson Myklabost: P734 family name = the item just created
+Q141520850	P734	LAST	S2600	"6000000011726123937"
+#   Q141514439 Berit Gabrielsdatter Dahle: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141514439	P734	LAST	P3831	Q28418670	S2600	"6000000011726165343"
+
+# Nielsdotter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Nielsdotter"
+LAST	Len	"Nielsdotter"
+#   set the mul label to "Nielsdotter"
+LAST	Lmul	"Nielsdotter"
+#   set the ja label to "ニエルスドッテル"
+LAST	Lja	"ニエルスドッテル"
+#   set the zh label to "尼埃尔斯多特"
+LAST	Lzh	"尼埃尔斯多特"
+#   set the ko label to "니엘스도테르"
+LAST	Lko	"니엘스도테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Nielsdotter"
+LAST	P1705	mul:"Nielsdotter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q2001572 Niels
+LAST	P144	Q2001572
+#   P144 based on = Q16423038 Nils
+LAST	P144	Q16423038
+#   Q117277821 Sophie Adelaide Rosalie Nielsdotter Ancker: P5056 patronym or matronym = the item just created, qualified P144 based on Q117277822 Niels Ancher Jr.
+Q117277821	P5056	LAST	P144	Q117277822	S2600	"6000000018680480149"
+
+# Nocher -- given, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Nocher"
+LAST	Len	"Nocher"
+#   set the mul label to "Nocher"
+LAST	Lmul	"Nocher"
+#   set the ja label to "ノケル"
+LAST	Lja	"ノケル"
+#   set the zh label to "诺凯尔"
+LAST	Lzh	"诺凯尔"
+#   set the ko label to "노체르"
+LAST	Lko	"노체르"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Nocher"
+LAST	P1705	mul:"Nocher"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+
+# 5450 more name items are needed and wait for a later
 # run -- 40 a day is the cap, not a limit of the data:
-#   Halvdansdatter (patronymic), 1 bearer(s)
-#   Hareland (family), 1 bearer(s)
-#   Hauld (family), 1 bearer(s)
-#   Håland (family), 1 bearer(s)
-#   Hemmingsdotter (patronymic), 1 bearer(s)
-#   Hognasson (patronymic), 1 bearer(s)
-#   Hravnhild (given), 1 bearer(s)
-#   Hrifluson (patronymic), 1 bearer(s)
-#   Hörn (family), 1 bearer(s)
-#   Ingemundsson (patronymic), 1 bearer(s)
-#   Ingen (given), 1 bearer(s)
-#   Irmentrud (given), 1 bearer(s)
-#   ... and 5259 more
+#   Pedersøn (patronymic), 2 bearer(s)
+#   Reinfrid (given), 2 bearer(s)
+#   Samson (patronymic), 2 bearer(s)
+#   Tokesen (patronymic), 2 bearer(s)
+#   Torgaut (given), 2 bearer(s)
+#   Vermuis (family), 2 bearer(s)
+#   de Beaumont sur Oise (family), 2 bearer(s)
+#   de Brionne (family), 2 bearer(s)
+#   de Clinton (family), 2 bearer(s)
+#   de Cornouaille (family), 2 bearer(s)
+#   de Guines (family), 2 bearer(s)
+#   de Maers (family), 2 bearer(s)
+#   ... and 5438 more
 
 
 # ======================================================================
