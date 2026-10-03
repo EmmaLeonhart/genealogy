@@ -28,6 +28,7 @@ made here.
 """
 from __future__ import annotations
 
+import collections
 import csv
 import functools
 import importlib.util
@@ -263,6 +264,16 @@ def known_live_values():
                 if (r.get("value") or "").startswith("Q")}
 
 
+def known_court_ranks():
+    """The court-rank items the court-rank generator queried live (`reports/court-rank-items.tsv`):
+    its `P14005` values are items of the court-rank class, which no ledger lists."""
+    path = REPO / "reports" / "court-rank-items.tsv"
+    if not path.exists():
+        return set()
+    with open(path, encoding="utf-8") as f:
+        return {r["qid"] for r in csv.DictReader(f, delimiter="\t")}
+
+
 def _creation_relatives():
     """Existing items a creation in the batch links to (Emma, 2026-10-02: a created person gets every
     relationship our tree gives them, and one hop from an edited item is in the universe).
@@ -277,7 +288,7 @@ def test_every_qid_the_batch_points_at_already_exists():
     """The single-run rule. A value not in the ledger cannot resolve mid-run."""
     known = (known_qids() | VOCABULARY | known_name_items() | known_place_items()
              | known_place_items(REPO / "reports" / "occupation-qids.tsv") | known_live_values()
-             | _creation_relatives())
+             | _creation_relatives() | known_court_ranks())
     unknown = []
     for ln in lines():
         m = QID_VALUE.match(ln)
@@ -936,6 +947,23 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
                                           for k in ("givn", "surn", "nick", "marnm", "nsfx")}
 
     plan, proposed = load_plan(), name_item_tokens()
+    # A token in `_MARNM` that the batch gives the same person as a PATRONYMIC is modelled,
+    # not lost (2026-10-03): Geni files `Mikaelsson` (Anders, father Michael) and `Olai`
+    # (Petrus, father Olaus) as married names, and the builder reads them by form with the
+    # father attested, as `P5056`. Matched through the name item's own `mul`/`en` label.
+    item_label = collections.defaultdict(set)
+    labels = REPO / "reports" / "name-item-cjk-labels.tsv"
+    if labels.exists():
+        with open(labels, encoding="utf-8") as f:
+            for r in csv.DictReader(f, delimiter="\t"):
+                if r["lang"] in ("mul", "en"):
+                    item_label[r["qid"]].add(r["label"])
+    patronymic_of = collections.defaultdict(set)
+    for block in re.split(r"^CREATE$", BATCH.read_text(encoding="utf-8"), flags=re.M):
+        who = re.search(r'^LAST\tP2600\t"(\d+)"', block, re.M)
+        if who:
+            for q in re.findall(r"^LAST\tP5056\t(Q\d+)", block, re.M):
+                patronymic_of[who.group(1)] |= item_label.get(q, set())
     missing = []
     for geni_id, person in fields.items():
         # The model classifies the CLEANED fields (`namemodel.clean_fields`): a title tail
@@ -944,7 +972,7 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
         clean = clean_fields(person)
         for token, usage, _ordinal in classify_fields(clean["givn"], clean["surn"],
                                                       clean["nick"], clean["marnm"]):
-            if usage != "married":
+            if usage != "married" or token in patronymic_of.get(geni_id, ()):
                 continue
             # The parenthesised exclusion that stood here is GONE, and deliberately.
             # `classify_fields` now strips the brackets upstream, and the ruling is that
@@ -1118,8 +1146,12 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
     # Jon Jonsen `Q116150298` is an item the account edited, and its `P25` is Cecilie: ruled
     # 2026-10-02 (Emma), *"any edited item at all is in the universe if it is linked"*.
     inside["Q116150298"] = "Jon Jonsen"
-    outside = {"Q232803": "Empress Jingū",
-               "Q12598947": "Buyeo Taebi",
+    # Empress Jingū `Q232803` guarded the outside until every entry point started (Emma's
+    # Wikidata strategy, 2026-09-30, `CLAUDE.md`): she is in `reports/entry-points-jan1.tsv`, so
+    # she is a ROOT, and a root is in the group by definition. The two Buyeo items are in the
+    # ledger and are not entry points, so they still guard what this test is for.
+    inside["Q232803"] = "Empress Jingū"
+    outside = {"Q12598947": "Buyeo Taebi",
                "Q19657284": "Buyeo Deokjang"}
     for qid, who in inside.items():
         assert qid in group, f"{qid} {who} must be in the contiguous group"

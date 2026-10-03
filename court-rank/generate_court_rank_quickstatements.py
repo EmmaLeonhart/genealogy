@@ -82,6 +82,7 @@ from genimerge.wikidata import SPARQL_ENDPOINT, _http_fetch  # noqa: E402
 import wikidata_lockout  # noqa: E402
 
 OUT = os.path.join(ROOT, "reports", "wikidata-court-rank.qs")
+RANK_ITEMS = os.path.join(ROOT, "reports", "court-rank-items.tsv")
 UNIVERSE = os.path.join(ROOT, "out", "wikidata", "edit-universe.json")
 
 JA_API = "https://ja.wikipedia.org/w/api.php"
@@ -290,6 +291,12 @@ def main():
     print(f"Rank label->QID map (P14005 values)...", flush=True)
     rank_map = rank_label_to_qid()
     print(f"  {len(rank_map)} court-rank items.", flush=True)
+    # The rank items as queried, for the batch test: a P14005 value is a live item of the
+    # court-rank class, which no ledger lists (2026-10-03: CI failed on 従三位 Q11071123).
+    with open(RANK_ITEMS, "w", encoding="utf-8", newline="\n") as f:
+        f.write("qid\tja\n")
+        for lab, qid in sorted(rank_map.items(), key=lambda kv: (kv[1], kv[0])):
+            f.write(f"{qid}\t{lab}\n")
 
     print("Existing person->rank pairs...", flush=True)
     have = existing_pairs()

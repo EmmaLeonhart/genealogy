@@ -622,6 +622,16 @@ def main():
     for p in sorted(list((ROOT / "paths").glob("*.tsv"))
                     + list((ROOT / "harvested-paths").glob("*.tsv"))):
         rows = read_path_tsv(p)
+        # ⛔ **A HARVESTED CHAIN ENDS AT ITS TARGET** (2026-10-03). 200 files hold a second chain
+        # after the target (133 of the 146 re-split on 2026-09-25), and its first row was read
+        # against the target: "Bogislaw II, her son" after Ulla Celsing made her his mother,
+        # "Jelena, his daughter" after Immanuel Bang made him her father, and four modern men
+        # Izyaslav II's husbands, all sent to Wikidata. `reports/spliced-path-files.csv`.
+        target = re.match(r"harvested-path-geni-(\d+)-", p.stem)
+        if target:
+            ids = [r["gid"] for r in rows]
+            if target.group(1) in ids:
+                rows = rows[:ids.index(target.group(1)) + 1]
         text = path_gedcom(p.stem, rows)
         if text:
             (PATH_OUT / ("%s.ged" % p.stem)).write_text(text, encoding="utf-8")

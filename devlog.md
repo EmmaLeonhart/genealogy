@@ -50525,3 +50525,34 @@ those are live, 191 of them on items our account never edited, so they are other
 medieval near-misses of the 12-year bound, `Q273773` mother born 834, child 844). The other 48 are on
 items we edited; whether we added those statements is not yet checked per revision.
 `reports/impossible-parent-links-on-wikidata.csv`.
+
+## 2026-10-03: spliced paths cut at the target; CI's three failures fixed; the error-item audit
+
+**Spliced paths.** `build-tiny-gedcoms.py` now ends a harvested chain at the first row naming its
+target (the id in the file name), so the second chain in a spliced file makes no edge. The 200
+spliced tiny GEDCOMs were regenerated alone (191 rewritten, 9 removed, where only the viewer and the
+target were left with no family between them); `expand-gedcom-abbreviations.py`'s own rules were
+applied to just those files (7 name lines), and three surnames the fresh build wrote in capitals
+were put back to the committed title case. A full rebuild of `exports/tiny-paths/` was tried first and
+reverted: it touched 17,550 files (it undoes the expander's corpus edits) and built 5,808 tiny
+GEDCOMs for harvested paths that were never built before; neither belongs in this change. The links
+leave the tree at the next rebuild (queue).
+
+**CI** (run 37117021014 on `e45bdecb5`, three failures): (1) the batch's `P14005` court ranks
+pointed at `Q11071123` 従三位, `Q140679495` 正七位下 and `Q140679508` 外従五位上, real items of the
+court-rank class that no ledger lists; the court-rank generator now writes the items it queries to
+`reports/court-rank-items.tsv` (114) and the test counts them as known. (2) `Mikaelsson` (Anders,
+father Michael Björnsson Burman) and `Olai` (Petrus, father Olaus Persson) are filed by Geni as married
+names, and the batch already models both as `P5056` patronymics with the father; the test now
+accepts a `_MARNM` token the batch gives the same person as a patronymic, matched through the name
+item's own label. (3) Empress Jingū `Q232803` is an entry point (`entry-points-jan1.tsv`), so since
+every entry point started (2026-09-30) she is a root and inside by definition; she moves to the test's
+inside list, and the two Buyeo items, in the ledger and not entry points, still guard the outside.
+
+**Error-item audit** (part 3 of the interrogate item), the error items removed on 2026-10-02: the
+wrong-sex parents and the owner's both-parents row (source found, `d2e69de16`), the January entry
+points that were not roots (`bfd24a9c1`), the scripts aimed at Jingū (`bf81b1669`), the uncapped run's
+reference edits (explained) and the mis-recorded `CLAUDE.md` rule (rewritten) all had their source
+found. The EMERGENCY item (Haakon's foster father as a birth father; a placeholder created as a
+person) was cleared with the blocking of one Geni id and its own question unanswered; it is reopened
+as a queue item, source question only, since Emma ruled nothing is removed.
