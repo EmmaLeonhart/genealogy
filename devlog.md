@@ -50594,3 +50594,18 @@ xrefs in 306 tiny-path files), the 2026-09-23 handoff notes (notes, no question)
 (Emma approved) were all answered. Two were not, and are back in the queue: the EMERGENCY item of
 2026-10-02 (answered today: the slim dropped `PEDI`) and GZWDer's three duplicate parent items,
 closed on a general cause and still live and unmerged.
+
+## 2026-10-03: GZWDer's three duplicate parent items, traced
+
+Checked live. `Q141444742` Petrus Olai Gestricius (ours, created 2026-09-13, Geni
+`6000000007588996666`, born 1540) has the same label as `Q117341653`, created 2023 by
+Marcus.linneberg ("svensk präst i Kjula"), which carries no `P2600` and no birth date and has two
+children of its own (`Q122973778` Ericus Petri Gestricius, `Q109835775` Sigrid Olofsdotter). Very
+likely one person: the ledger finds an existing item only by our `P2600`, so an item without it is
+invisible to the batch and a second is created. A description would not have stopped it (Wikidata
+refuses only on the same label and description in one language; that item has only an `sv` one).
+The merge is Emma's, in the Wikidata UI. `Q141454472` Jon Larsen Sveinsvoll (Geni
+`6000000003492045949`, born 1671) has a twin `Q141559839` (born 1670), which we created on 2026-09-25
+from a second Geni profile (`6000000111207318091`): Geni holds two profiles, so the tree holds two,
+by the rule. `Q141443310` Barbro Tormosdotter Ström: no twin found by label variants, and none of her
+six children carries a second mother; GZWDer's example may already have been resolved, or be wrong.
