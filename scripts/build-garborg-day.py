@@ -1205,6 +1205,11 @@ PRIORITY_ANCESTOR_SEEDS = (
     "6000000006783102821",   # Erik Odelstierna, Q6158199
     "6000000012044161205",   # Anders Sidner, Q6175446
     "6000000009585266046",   # Per Henrik Widmark, Q6240337
+    # ⛔ **ADDED 2026-10-03 BY HAND**: *"add ancestors of https://www.wikidata.org/wiki/Q185152
+    # to ring as well as current Japanese emperor and https://en.wikipedia.org/wiki/Yi_Ku"*.
+    "6000000009796535956",   # Puyi, Q185152
+    "6000000001783830969",   # Naruhito, Q217096
+    "6000000028895625641",   # Yi Ku, Q496421
 )
 
 

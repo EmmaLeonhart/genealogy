@@ -50619,3 +50619,13 @@ person is eaten to nothing; a named person is never removed. The creation set dr
 the composition and the ring, before every other guard. Measured on rebuild `df8463574`: 145,334
 private people, 51,031 removed by the rule; none of the 508 creations in the batch on disk is one of
 them (2 of 1,415 at `e622d4bf6`). Test: `test_a_private_person_linked_to_one_person_is_pruned_recursively`, CI.
+
+## 2026-10-03: Puyi, Naruhito and Yi Ku are ring seeds (Emma)
+
+`PRIORITY_ANCESTOR_SEEDS` takes Puyi `6000000009796535956` (`Q185152`), Naruhito
+`6000000001783830969` (`Q217096`) and Yi Ku `6000000028895625641` (`Q496421`). Ancestors in the tree
+without an item: about 598, 2,483 and 1,430; the ring takes them a generation at a time within the
+500-a-run cap. Unexpected: Puyi has six recorded parents, his birth parents Zaifeng and Youlan and his
+adoptive parents (the Guangxu and Tongzhi emperors, Yehe Nara, Alute), all read as birth parents
+because the slim dropped `PEDI`; the ring climbs those lines too until the foster/adoptive item lands.
+Yi Ku's `P2600` is live (added by the account 2026-09-17); the local `p2600-all.tsv` predates it.
