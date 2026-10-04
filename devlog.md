@@ -51131,3 +51131,10 @@ ja/zh/ko readings were removed; no existing item found. 6000000001903352866 老�
 `Q141635286` "Fujiwara": labelled 孝長 藤原 and 公成室(知光女) 藤原, ko removed. The failed create of 春日大娘皇女 NN:
 the earlier creation `Q141634134` was relabelled and merged into `Q11088800`. Ryogu NN (`Q141635460`): labelled
 良虞 / Ryogu of Kudara, merged into `Q30937834` 百済王郎虞. The Ninken item stays open (two Emperor Ninken items).
+
+## 2026-10-03: the 66 FamilySearch-only ancient SAME people: recorded, not entry points (Emma)
+
+`ledgers._read` takes only Geni-id rows, so these could not be entry points without a new route. Measured
+against `out/wikidata/edit-universe.json`: of their 58 distinct items, 5 are in the universe, 0 one step out,
+53 outside; as roots they would pull in the Kushan, Western Satrap, Armenian and early Arab families. Emma
+(AskUserQuestion): record only. The verdicts stay in `reports/ancient-ring-verdicts.tsv`; item closed.
