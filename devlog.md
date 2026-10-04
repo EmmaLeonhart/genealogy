@@ -50984,3 +50984,10 @@ identity. Emma: different people. The wrong `P40` was removed (checked live; Oto
 never changed), and a DIFFERENT verdict went into `emma-judgments.tsv` so the zipper refuses the pair.
 `Q141635488` duplicates `Q106206087` 阿倍船守 (father of Abe no Nakamaro). Committed, not pushed: a
 push touching `reports/` would start a pipeline run.
+
+## 2026-10-03: "labels built from name objects" closed: it is live
+
+Composition from name items is on for `en`, `ja`, `zh`, `ko` (`COMPOSED_LANGS_LIVE`, Emma 2026-10-02 and
+10-03). `reports/composed-labels.tsv`: composable en 5,641, ja 806, zh 769, ko 100; already equal to the
+live label en 5,570, ja 454, zh 361, ko 49. Transliteration remains only where the name items cannot
+compose. Item deleted.
