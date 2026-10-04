@@ -51403,3 +51403,24 @@ agreement is no evidence. (2) `garborg-qids.tsv`'s `created` column is a constan
 24,111 rows) and cannot date anything. (3) The local `synoptic-correspondence.tsv` and
 `out/wikidata/p2600-all.tsv` are CI outputs of 2026-09-30 and miss every later creation. Nothing was changed
 on Wikidata.
+
+## 2026-10-04 — Guy I d'Aumelas: the ordinal lost in the `_MARNM` label rebuild; 8 items queued for relabel
+
+**Cause.** Geni has `GIVN Guy I`, `SURN d'Aumelas`, `_MARNM de Montpellier`. A `_MARNM` that differs from
+`SURN` sends a creation through the married/birth rebuild in `build-garborg-day.py`, which rebuilds the
+label from `GIVN` keeping only tokens `classify_fields` calls `given`/`patronymic`. It calls `I` `unknown`,
+so `Q141632439` went out `Guy d'Aumelas` (birth form, after the 2026-10-01 swap). The title helpers were
+not involved. **Fix:** that filter now keeps a Roman numeral the derived label kept (the derived label has
+already been through the regnal/initial rules). § *DROP TITLES, KEEP ORDINALS*.
+
+**Sweep.** Every ledger item whose Geni `GIVN` has a Roman numeral that the derived label keeps and the
+created label lacks: 42. Most are old items we only added statements to (Ramiro I, Otto I, the Samaritan
+priests), not creations. Among our creations, 8 went through the same path, and their live mul/en are still
+the created label (checked live): `Q141632439` Guy I d'Aumelas, `Q141634198` Thibert I d’Arles,
+`Q141636829` Mistui II Billung (created today), `Q141621983` Thietmar IV and `Q141624597` Gero II von der
+Niederlausitz, `Q141633890` Lambertus II de Gand, `Q141632723` Alard II d'Antoing, `Q141583421` Matthias
+III von Stauden. Their mul/en rows are in `label-applications.tsv`, which sends them and retires each row
+once it is live. ja/zh/ko are left as created. Not touched, because the cause differs or the `I` is
+doubtful: `Q141614326` Thibauld (II), `Q141610365` Louis (II) van Chiny, `Q141628224` Dalmace (II),
+`Q141443354` Henrik (I) Blank, `Q141629287` Magla (I) Toresdatter, `Q141626659` Sophia (I) von Hamm,
+`Q141552173` Siboto (I) Pfinzing.

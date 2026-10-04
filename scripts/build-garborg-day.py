@@ -9406,8 +9406,14 @@ def main():
             # it is the family name rather than a married one.
             is_married = bool(marnm and surn and marnm.casefold() != surn.casefold())
 
+            # ⛔ **DROP TITLES, KEEP ORDINALS, on this rebuild too (2026-10-04).** `classify_fields`
+            # reads `I` as `unknown`, so `Guy I /d'Aumelas/` with `_MARNM de Montpellier` was created
+            # as `Q141632439` `Guy d'Aumelas`. A Roman numeral the derived label kept (it has
+            # already been through the regnal/initial rules) stays.
+            _label_toks = set(label.split())
             given = [t for t, u, _o in classify_fields(f_.get("givn", ""), "")
-                     if u in ("given", "patronymic")]
+                     if u in ("given", "patronymic")
+                     or (u == "unknown" and re.fullmatch(r"[IVXLC]+", t) and t in _label_toks)]
             # ⛔ **A MARRIED LABEL WITHOUT THE PERSON'S GIVEN NAMES IS NEVER BUILT.** With `given`
             # empty this made the label the bare married surname: `Q141492819` went out as
             # `Talgje`, and a census on 2026-09-25 found 7 of 8,350 created items shaped that way.
