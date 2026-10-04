@@ -51525,3 +51525,15 @@ commands checked live through `wbgetentities`: the 22 `P5056` values are gone an
 are present. Left on the queue item: `Q138687615` Bertrand Olav Vigdel (her decision), the 10 father links
 that do not fit (Geni, after 2026-10-21), and Halvor Larsen Brattval `Q141517855` (classified after the
 batch was built).
+
+## 2026-10-04: the 155 identity-drift candidates, sorted
+
+`reports/geni-identity-drift.csv` now has `kind` and `cluster` columns. 51 spelling only (Ommund/Omund),
+16 a name expanded, shortened or reordered (Wilhelm Bucht -> Gustaf Wilhelm Bucht, Ukita Hideie -> Hideie
+Ukita), 25 a creation label that was a description or marker (`wife of …`, `NN`), 5 our creations already
+merged into established items on 2026-10-03 (the three Qing empresses, Kanshūji Norihide, Ukita Hideie), 19
+a different given name with a shared surname or patronymic, and **39 a different person**. The real changes
+bunch in a few families (Bjørgås, Bjørgo, Mestad, Güntersberg, Pfinzing): Ole Eriksen -> Lars Larsson,
+Oleiv Samuelsen -> Mogens Olson Bjørgås, Ole Tollefsen Storla -> Berge Toresen Brunborg, Andres Ottarsen ->
+Knut Knutsen Mestad. That looks like whole families being reworked on Geni, with our items following each
+profile id. Rough heuristic; the 58 in the last two classes are the ones to read.
