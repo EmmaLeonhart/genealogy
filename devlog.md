@@ -51376,3 +51376,30 @@ all 5 read as the right person (`Q141628175` spouse `Q3061707` Eóghan of Argyll
 Dunollie), so the band alone does not mark a link wrong. The two known wrong cases (`Q11623249`,
 `Q106267274`) are no longer in the live links. **Still live:** `Q141636899` was created today with child
 `Q80518` through a zipper-only pair, so the 2026-09-28 path keeps adding these in every batch.
+
+## 2026-10-04: zipper-driven links, a second cut beside `c53d1ad` (kept, not discarded: Emma)
+
+A second session ran the same analysis in parallel and finished after `c53d1ad`; Emma: preserve it. It
+differs in scope, so the two files are complementary, not duplicates. `reports/zipper-driven-links.csv`
+(2,556 rows, 2,555 statements): every live family statement in `account-edited-links.tsv` (at `ebec37585`)
+between an item held through the zipper (`zipper` **or `structural;zipper`**) and an item the account
+created (`garborg-qids.tsv`), where our tree asserts that relation between the two Geni people. Each row
+carries the band, `contradicted` (ONE-PARENT-DISAGREE or NAMES-CONFLICT) and whether the creation came after
+the 2026-09-28 change, dated by QID from live first revisions: last before is `Q141589528` (00:48 PDT), first
+after is `Q141593710` (10:34 PDT).
+
+- After the change: 2,404 statements, 1,191 zipper-paired items, 839 of our creations (`P40` 1,013, `P26`
+  527, `P3373` 365, `P25` 336, `P22` 163); before it, 151.
+- 263 of the 2,404 rest on contradicted pairs (143 items); PARENTS-ONE-SIDE, no slot comparable (the
+  Kudara no Nagatsugu band), is 1,003 statements on 418 items.
+- Live sample of 15 zipper items: all 15 carry the account's edits of 2026-10-03/04. Contradicted examples:
+  Robert de Muschamp 4th of Wooler as `Q3105339` Gilbert, Earl of Orkney (`P26` to our `Q141632110`);
+  Konrad von Reinhausen as `Q1620545` Udo von Gleichen-Reinhausen; Margaret MacEarchard as `Q76261692`
+  "unknown daughter Macearchan"; Björn Assurson Holter as `Q101247924` Björn Amundsson (Kamp).
+
+**Unexpected.** (1) A zipper error carries a whole wrong family: the zipper pairs the relatives too, so the
+tree "supports" links on `Q106267274` (`P26` `Q11623664`, `P40` `Q11623311`, her own statements); tree
+agreement is no evidence. (2) `garborg-qids.tsv`'s `created` column is a constant (2026-08-25 on 23,799 of
+24,111 rows) and cannot date anything. (3) The local `synoptic-correspondence.tsv` and
+`out/wikidata/p2600-all.tsv` are CI outputs of 2026-09-30 and miss every later creation. Nothing was changed
+on Wikidata.
