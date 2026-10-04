@@ -14,7 +14,7 @@ it. Each session starts with
 
 
 
-- **Sinosphere creations: re-sweep the creations of the batch still running in the browser when it ends (2026-10-03).** Every other item from the Sinosphere cleanup is done (devlog).
+- **Sinosphere creations: re-sweep the creations of the batch still running in the browser when it ends (2026-10-03).** Also, at the same time (Emma, 2026-10-04: "let them run, sweep after"): re-run the overwrite sweep (her `wikidata-ui` label edits since 2026-10-02, any later QuickStatements label edit in the same language on the same item) and restore every hand fix the stale batches reverted. Every other item from the Sinosphere cleanup is done (devlog).
 - **Run `reports/novalue-family-name-backfill-2026-10-04.qs` (1,917 `P734` = `Q108474139`) in the session's QuickStatements tab once the Given NN backfill there has finished, then check a sample live (Emma approved the backfill in the item, 2026-10-03).**
 
 - **Clean up this project, and the ontology-harness checkout of it.** Emma: "we should be putting at the end of the queue something about cleaning it up." Keep it at the end. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
