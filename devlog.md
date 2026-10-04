@@ -51006,3 +51006,21 @@ all, impossible links included; Vsevolod is not among the 9,991 tree ancestors. 
 families, whose impossible links the next entry traced to spliced saved-path files; which spliced link
 made that route is not traced. Abul Hamza and the Guy d'Ibelins stand as in the first pass (not
 ancestors). Item closed; the Helena and Abul Hamza items below it stay as their own items.
+
+## 2026-10-03: the Tang/Uyghur route to Emma runs through David IV, and stops at three missing joins
+
+Read-only investigation (Emma: Kata, daughter of David IV; the Tang theory through Bayanchur's daughter
+via the Kipchaks). Wikipedia, "Kata (daughter of David IV)": the hypothesis commonly accepted in Georgia
+is that Kata married Isaac Komnenos (son of Alexios I) as Irene, and that their daughter Helene is Yuri
+Dolgorukiy's wife Helena. In the tree, Bayanchur (`6000000054082402440`) has 164,177 descendants through
+Bayanue > Isaac Karim Bavand > Qarin I Artsruni > Abu'l-Melik Artsruni > Abul-Hamza > ..., and David IV
+(`6000000008024207441`) is one, 12 generations down (... > Maria Mariam > Bagrat > George > David). So the
+Uyghur/Tang descent reaches the Kata theory through David IV, not through Gurandukht (Otrok's line is
+not a Bayanchur descendant) nor through Anna Aëpovna's Cumans (her line ends at Osen b. 1019 in Geni and
+Termiter c. 910 in FamilySearch; none of her 4,014 ancestors is a Bayanchur descendant or married to or
+sibling of one). Missing joins: David IV has no child Kata; Isaac Komnenos (`6000000002187823205`) has a
+wife "Irene" with no parents; Helena (`6000000003251725930`) has no parents. Even with them, Emma reaches
+Helena only through a child of Helena: she descends from Yuri via Olga Yurievna (Anna Aëpovna's
+daughter in both sources; Olga b. 1112 in the tree, 1123 in FamilySearch), and neither source puts her
+below Vsevolod (261,500 descendants) or Helena's other children. FamilySearch file: no Uyghur or Tang
+people, no David IV, no Isaac Komnenos family.
