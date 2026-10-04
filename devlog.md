@@ -51783,3 +51783,15 @@ the 116 male mothers, 99 move to `P22` (his `P40` already lists the child) and 1
 already there). It adds `Q141249609 P734 Q21507480`. 27 meant links are held out
 (`reports/infovarius-fix-held-2026-10-04.tsv`) because the parent's live `P21` contradicts the property.
 That includes 20 women as `P22`, which is not understood yet.
+
+## 2026-10-04: the Infovarius fix batch ran; the talk-page item closed
+
+Emma: "Run all of it". `reports/infovarius-fix-2026-10-04.qs` ran in a new QuickStatements tab with Run (not
+background): 2,266 of 2,266 steps, 2 errors. Checked live afterwards, line by line: 761 of 761 removals are
+gone, and 752 of 753 additions are present. The one miss is `Q141579791 P3373 Q141629349`, because Nore
+Martin `Q141579791` has since been merged into `Q88289215`.
+
+Ingrid Charlotta Carlsdotter Hansson (`Q141249609`): Emma asked who her father is. He is Carl Hansson (Geni
+`6000000000410629543`, c. 1590 - Nov 1660), who had no item, so her item had no `P22` and no `P25`. Emma
+created him herself as `Q141641874`. Our tree has no father for Carl; his patronymic says only that he was a
+Hans.
