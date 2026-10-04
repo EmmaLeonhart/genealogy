@@ -145,6 +145,19 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
+# Pålsson -- the counterpart of Pålsdotter (6 bearer(s))
+CREATE
+LAST	Len	"Pålsson"
+LAST	Lmul	"Pålsson"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P31	Q10673705
+LAST	P407	Q9027
+LAST	P5278	Q141612286
+Q141612286	P5278	LAST
+Q141612286	P407	Q9027
+
 # Bosdatter -- the counterpart of Bosen (5 bearer(s))
 CREATE
 LAST	Len	"Bosdatter"
