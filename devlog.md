@@ -51347,3 +51347,11 @@ capital `No`, which is the Korean surname 노 and is left alone. Lower-case `no`
 calling `statements_for`: `Agata no Inukai no Michiyo` gave two `Q21148356` statements before the change and
 none after. Test in `test_namemodel.py` (CI). Nothing sent: removing the 10 live statements and relabelling the
 two `no name` items wait on Emma's go-ahead (queue).
+
+## 2026-10-04 — the 2026-09-30..10-03 GEDCOMs: tidied by Emma's answer
+
+Emma's answers (AskUserQuestion): `gedcom/ggggggg.ged` stays as it is, public. "Tidy": deleted the
+misfiled `gedcom/familysearch/ono_inbe_honkeicho_en_qids.ged` (no `_FSFTID`, in the directory every
+FamilySearch reader scans) and `gedcom/ono_inbe_honkeicho_en_qids - Copy.ged`. Kept
+`gedcom/ono_inbe_honkeicho_en_qids.ged` (her MyHeritage version, 51 QIDs) and
+`gedcom/tang-ancestors.ged`. Item closed.
