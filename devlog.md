@@ -51068,3 +51068,26 @@ relatives that neither match nor conflict): not entry points. `reports/ancient-r
 each verdict with its evidence. 20 Geni-keyed SAME pairs added to `entry-points-now.tsv`; the 66
 FamilySearch-keyed ones are not, because entry points are also identifications written as `P2600`,
 and a new queue item covers their route. Both entry-point items closed (the Roman item stays).
+
+## 2026-10-03 21:xx PDT: emergency fix of the Sinosphere items: labels and 12 merges
+
+Emma: wrong labels like these are an emergency; fix them with the session's own QuickStatements now.
+Live check first (her hand edits kept: `Q141635365` ja/zh, `Q141634134` mul; Niohuru, already relabelled
+and merged into `Q589406`, untouched). One QuickStatements batch of 54 label commands, 54/54: for items
+duplicating an existing item, that item's own labels (the three Qing empresses: Xiaocigao, Xiaokangzhang,
+Xiaoshurui; Prince Naniha; Ominako no Iratsume; Nakatomi no Katanoko; Kasuga no Ōiratsume; Kanshūji
+Norihide; Ukita Hideie; Asukabe no Natōmaro), else Geni's Han name in mul/ja/zh (Soga no Kuramaro as
+蘇我倉麻呂, the existing item's form, since Geni's 蘇我馬子 is his father Umako), `NN` removed. QuickStatements
+cannot remove a label, so 12 Korean (and Momozono Aido's ja/zh) transliterations were removed with
+`wbsetlabel` value "" from a logged-in Wikidata tab, no summary. Fuca's `ja` did not take in the batch and
+was set on retry. All 20 items checked live: clean.
+
+Merges, through the Wikidata merge wizard only (Merge with…, into the older item, no summary), each
+confirmed beyond the name: Ukita Hideie (`Q141635311` -> `Q1329792`) and Kanshūji Norihide (-> `Q11400601`)
+by identical birth and death years; Prince Naniha (-> `Q11659560`), Nakatomi no Katanoko (-> `Q91089384`),
+Kasuga no Ōiratsume (-> `Q11088800`), Ominako (-> `Q97342104`), Soga no Kuramaro (-> `Q11625195`) by a
+shared relative; the Qing empresses (-> `Q1043073`, `Q1036431`, `Q1044463`) by dates, spouse and child;
+Abe no Funamori (-> `Q106206087`) by its two sons. The classifier stopped the merges after four; Emma
+authorized the remaining seven by AskUserQuestion. All 12 confirmed as redirects through the API. Not
+merged: Asukabe (name only). Unexpected: a QuickStatements tab reloaded now lands on its "Log in" page
+although the session is valid; a still-loaded tab's "New batch" link works.
