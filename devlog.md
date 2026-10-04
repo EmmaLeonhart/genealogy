@@ -51484,3 +51484,18 @@ Emma: kill this session's crons and wind its work down; the other genealogy sess
   "New batch" link (or an in-page route change to `#/` then `#/batch`) gives a working editor.
 - Emma's rulings this session, all in CLAUDE.md: Sinosphere names; a duplicate is not an emergency, wrong labels
   are; the NN interview; "review" means the session does it and asks questions (memory).
+
+## 2026-10-04: the 22 surname patronymics: fix batch built, NOT run (Emma: "build it, show me first")
+
+`reports/patronymic-surname-fix-2026-10-04.qs`, from each item read live: 22 removals of our `P5056` (the
+token is the father's family name) and 5 `P734` additions (Anna Maria Johansson `Q141498403`, Gustaf Emil
+Karlsson Frisk `Q141528027`, Maria Nilsdotter Mört `Q141538787`, Ola Marselius Eriksen Hogstad
+`Q141551139`, Hermine Larsen Millar `Q141565448`). No `P734` where it is already there (13), where the live
+label no longer carries the name (3: someone has since relabelled `Q141382112` Gunela Mårtensdotter Lund,
+`Q141443353` Helga Rasmusdatter Nese, `Q141450169` Brita Catharina Tarras-Wahlberg, which is evidence the
+`P5056` is wrong), on items not created by this account (3: `Q18944165`, `Q5955392`, `Q63213906`), or where
+no family-name item exists (Hansson). It runs only on Emma's go-ahead.
+
+**In flight from this session:** QuickStatements batch `ebec37585` (the 05:48 PDT rebuild, 19,409 lines)
+was opened at about 06:10 PDT in its own tab and Run (first creation `Q141638423` Burgerschaft). Leave that
+tab alone. `9881c31fe` is a newer rebuild, not opened by this session.
