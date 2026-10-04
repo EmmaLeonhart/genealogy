@@ -51631,3 +51631,16 @@ Then, on Emma's go-ahead: `Q141640557` (the third run's 是善 菅原) -> `Q1161
 -> `Q106237458` 菅原類子, both with the wizard. All five confirmed redirects at 11:03 PDT; Sugawara no
 Ruishi's only father is `Q11619187`, Minamoto no Washi `Q14269031` has father Kōkō and no `P25`. Left: the
 other 56 duplicate pairs of this run (Emma: merge them).
+
+## 2026-10-04 ~11:4x PDT: this run's duplicate pairs: 2 of 56 merged, then stopped
+
+All 56 remaining pairs from `reports/duplicate-creations-2026-10-04.csv` checked live first: same Geni id on
+both, no conflicting P21/P569/P570, no disjoint P22/P25. Merged with the wizard, newer into older, confirmed
+redirects: `Q141638429` -> `Q141636785`, `Q141638431` -> `Q141636945`. Then stopped: on `Q141638438` the
+Merge gadget never adds its "Merge with…" link (gadget loaded, page complete, reloaded twice), and two
+earlier attempts silently did nothing. 54 pairs left (`Q141638438` -> `Q141636796` next).
+
+**Unexpected, correcting the entry above:** not every duplicate is the missing-`en` gap. `Q141638431` had
+an `en` label ("Gyritha") and description ("585 - 614"); its older twin `Q141636945` is labelled
+"Gyritha NN". The 2026-10-03 NN ruling (a given name with no surname is the name alone) changed the label
+between the two builds, so label+description no longer matched and Wikidata refused nothing.
