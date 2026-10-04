@@ -105,52 +105,6 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Sverresen -- the counterpart of Sverresdatter (5 bearer(s))
-CREATE
-LAST	Len	"Sverresen"
-LAST	Lmul	"Sverresen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Sæbjørnsdotter -- the counterpart of Sæbjørnsson (5 bearer(s))
-CREATE
-LAST	Len	"Sæbjørnsdotter"
-LAST	Lmul	"Sæbjørnsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Tolleivsson -- the counterpart of Tolleivsdotter (5 bearer(s))
-CREATE
-LAST	Len	"Tolleivsson"
-LAST	Lmul	"Tolleivsson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141582477
-Q141582477	P5278	LAST
-Q141582477	P407	Q9027
-
-# Torbergsdotter -- the counterpart of Torbergsson (5 bearer(s))
-CREATE
-LAST	Len	"Torbergsdotter"
-LAST	Lmul	"Torbergsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-LAST	P5278	Q141622035
-Q141622035	P5278	LAST
-Q141622035	P407	Q9027
-
 # Vermundsen -- the counterpart of Vermundsdatter (5 bearer(s))
 CREATE
 LAST	Len	"Vermundsen"
@@ -164,17 +118,6 @@ LAST	P5278	Q141625151
 Q141625151	P5278	LAST
 Q141625151	P407	Q9043
 Q141625151	P407	Q9035
-
-# Vincentsdatter -- the counterpart of Vincentsen (5 bearer(s))
-CREATE
-LAST	Len	"Vincentsdatter"
-LAST	Lmul	"Vincentsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
 
 # Åkesson -- the counterpart of Åkesdotter (5 bearer(s))
 CREATE

@@ -651,7 +651,7 @@ Q19689363	Lko	"악네스"
 # Q19818134 ABDUL -- adding ko (183 bearer(s))
 Q19818134	Lko	"압둘"
 # Q56244536 Katzenellenbogen -- adding ja, zh, ko (183 bearer(s))
-Q56244536	Lja	"カトゼネレンボゲン"
+Q56244536	Lja	"カッツェンエレンボーゲン"
 Q56244536	Lzh	"卡特泽内伦博根"
 Q56244536	Lko	"카체넬렌보겐"
 # Q1483687 Marthe -- adding ko (182 bearer(s))
