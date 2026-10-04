@@ -51612,3 +51612,17 @@ invention, reverted uncommitted). Restored: `build-garborg-day.py` carries a Sin
 has no Latin record (`no Latin label (…): not created`), beside the Han-surname-only carry. 類子 菅原 and
 和子 源 have no Latin record at all in `derived-labels.csv`; Tokiyasu (`Tokiyasu Koko-tenno`) still passes.
 Not run locally (tests run in CI); the check is the next batch's carried list (queue).
+
+## 2026-10-04 ~11:0x PDT: the Kōkō duplicates: P25 removed, three merges (Emma authorized)
+
+Chrome restarted with the four throttling flags and without `--restore-last-session` (Emma's choice), on
+Wikidata. Removed the wrong `P25` mother = `Q440518` Kōkō from `Q141638654` and from `Q141636963` (both
+和子 源; `wbremoveclaims` from the logged-in tab, no summary; checked: 0 left). Merged with the Merge
+Wizard gadget (into the older item, redirect, no summary): `Q141638654` -> `Q14269031` 源和子,
+`Q141636963` -> `Q14269031`, `Q141638581` -> `Q106237458` 菅原類子. All three confirmed as redirects.
+
+**Held, unexpected:** `Q141636879` (the earlier run's 類子 菅原) carries `P22` = `Q141640557` 是善 菅原,
+created today at 10:22 PDT by a **third** QuickStatements run, `1791133593828`, opened after this
+session's; it duplicates `Q11619187` 菅原是善. Merging `Q141636879` as it stands would give Sugawara no
+Ruishi a second father. Also: Special:MergeItems with prefilled ids does nothing ("Edit token required");
+the gadget is behind the ⋮ menu at this window width.
