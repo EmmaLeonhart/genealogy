@@ -577,6 +577,11 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **⛔ A SPECIFIC ISSUE IS NOT A GENERAL RULE, AND IT COMES FIRST. Ruled 2026-10-02 (Emma).** A problem in one part of the tree is handled as that problem, never folded into a general fix or rule; a specific queue item outranks a general one. People are reported with their Geni, FamilySearch and Wikidata links in the reply.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
+- **A DUPLICATE ITEM IS NOT AN EMERGENCY; A WRONG IDENTITY IS WORSE. Ruled 2026-10-03 (Emma):** a person created
+  twice is not an emergency and can even help: a manual merge on Wikidata gets the items audited by other
+  editors along the way. It is not to be relied on, since it adds work for others, but it is "far better than
+  zipper insanity": an identity asserted on weak evidence writes false family links onto real items. Wrong
+  labels on Wikidata, by contrast, are an emergency, fixed at once with the session's own QuickStatements.
 - **⛔ AN INCOMPLETE OPERATION IS WORSE THAN A COMPLETED WRONG ONE. Ruled 2026-10-01 (Emma),
   knowingly against Wikimedia consensus.** Once an operation is under way, finish it the way the
   pipeline would (a Geni id carries its `P1810` display name, and so on). Do not stop it halfway
