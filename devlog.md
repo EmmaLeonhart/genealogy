@@ -51553,3 +51553,13 @@ rewritten as the whole-parse problem, NEEDS-DECISION (Emma).
 
 Both session crons were deleted at Emma's instruction (relayed by session genealogy-72: "Stop all cron jobs but
 carry on").
+
+## 2026-10-04 10:4x PDT: Chrome killed (Emma); the session's batch tab ended with it
+
+Emma had cancelled an edit run she did not know the origin of, and asked for Chrome to be killed so no
+unknown sessions stay running: 31 Chrome processes stopped, 0 left. That also ended this session's
+QuickStatements run of `ebec37585` (opened ~06:10 PDT); `9881c31fe` was never opened. Nothing in GitHub
+Actions matches a cancelled edit run (`wikidata-edits` ran at 10:24 PDT for 7 s), so the run she cancelled
+was a browser run. **Also:** 9 `pipeline.yml` runs were cancelled between 10:10 and 10:38 PDT, each
+superseded by the next push; this session's pushes (and the other session's) were minutes apart, so the
+pipeline could not finish while both were committing.
