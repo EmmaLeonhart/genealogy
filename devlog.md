@@ -50864,3 +50864,16 @@ Effect on the plan: 126 of 3,679 planned family-name links are refused (4,216 be
 particle such as `Zum`, or a surname Geni does not give the person, such as `de Ros` on Birgerus
 Nicolai Cantherus). Listed only; nothing on Wikidata changed.
 Test: `test_a_family_name_links_only_by_its_exact_english_label_and_description`, CI.
+
+## 2026-10-03: CI, two failures from today's changes, fixed
+
+CI run 37160679387 (on `8dfd9937a`). (1) `test_the_contiguous_group_matches_what_is_known_to_be_outside_it`:
+Buyeo Taebi was inside the universe walk. Cause: the CBDB join had been folded into `ledger()`, the set
+of our own items the walk starts from, so 8,574 CBDB items widened it through the CBDB families into
+Korea (37,736 items). The CBDB pairs are identifications, not our items: they now go into `known_pair`
+(link to the existing item, never create, and the ring walks through them), and the walk is back to
+30,295 with both Buyeo items outside. (2) `test_a_label_is_never_written_over_an_item_that_already_has_one`:
+the day-later relational pass wrote `Q141628261 Len "sister of William of Septimania"` over its English
+`NN`. Emma ruled that replacement (2026-10-03); the test now exempts exactly that case, an `en` that is
+a bare `NN …` and identical to the item's live `mul`, so the old value is still on the item. Every other
+overwrite still needs its `Amul` rescue.

@@ -291,8 +291,6 @@ def ledger():
     except Exception as exc:                                        # noqa: BLE001
         print(f"WARNING: emma-judgments.tsv not folded into the ledger ({exc}) -- "
               f"a person already confirmed by hand could be created a second time")
-    for g, q in cbdb_identifications().items():
-        out.setdefault(g, q)
     return out
 
 
@@ -302,7 +300,8 @@ def cbdb_identifications():
     (`reports/derived-cbdb.csv`, harvested by the slim), and Wikidata carries it as `P497`
     (`out/wikidata/p497-all.tsv`). An exact join, like `P2600`: 20,637 of the 77,774 `P497` items had
     no `P2600` on 2026-10-03, so without it a ring creation could duplicate one. A CBDB id on more
-    than one item is left out rather than guessed."""
+    than one item is left out rather than guessed. Folded into `known_pair` (link, never create),
+    not into `ledger()`, which is the set of our own items the universe walk starts from."""
     ids, items = ROOT / "reports" / "derived-cbdb.csv", ROOT / "out" / "wikidata" / "p497-all.tsv"
     if not ids.exists() or not items.exists():
         return {}
@@ -7743,6 +7742,14 @@ def main():
                 if g and q:
                     known_pair.setdefault(g, (q, row.get("sources") or "?"))
         print(f"{len(known_pair):,} Geni ids identified with an item in the correspondence union")
+    # The CBDB join (Emma, 2026-10-03) is an identification like the correspondence: the person
+    # is linked to the existing item, never created. It is NOT one of our items, so it stays out
+    # of `ledger()`: there it widened the universe walk through the CBDB families into Korea
+    # (CI, 2026-10-03: Buyeo Taebi inside the group).
+    _cbdb = cbdb_identifications()
+    for g, q in _cbdb.items():
+        known_pair.setdefault(g, (q, "cbdb"))
+    print(f"{len(_cbdb):,} Geni ids identified with an item through their CBDB id")
     for path in args.known:
         with open(path, encoding="utf-8") as f:
             head = f.readline()

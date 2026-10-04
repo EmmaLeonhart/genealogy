@@ -629,6 +629,13 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
             continue
         if relational.search(held_value.get((qid, lang), "")):
             continue
+        # The bare `NN …` English label an NN person is created with, replaced a day later by the
+        # relational label (Emma, 2026-10-03, by AskUserQuestion): the old value is still the
+        # item's `mul`, read live, so nothing is lost. Only an `en` identical to the live `mul`.
+        old_en = held_value.get((qid, "en"), "")
+        if (lang == "en" and old_en.split(" ")[0] == "NN"
+                and old_en == held_value.get((qid, "mul"))):
+            continue
         if qid in held and lang not in held[qid]:
             continue
         bad.append(ln)
