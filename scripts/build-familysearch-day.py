@@ -733,7 +733,8 @@ def build(args):
             q = qid_of_key.get(kid)
             if q and q in universe:
                 block.append(f"LAST\tP40\t{q}{ref}")
-                back.append((q, "P22" if rec["sex"] == "M" else "P25"))
+                if rec["sex"] in ("M", "F"):  # unknown sex is not a mother (2026-10-04)
+                    back.append((q, "P22" if rec["sex"] == "M" else "P25"))
                 kids.append(q)
         for subject, prop in back:
             block.append(f"{subject}\t{prop}\tLAST{ref}")

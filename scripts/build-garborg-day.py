@@ -8123,10 +8123,21 @@ def main():
     referred_to_as = {}
     #: The person's own CJK name (`cjk_names`, first form), read by `sinosphere_name` at creation.
     cjk_first = {}
+    #: Everybody's sex, not only the batch's: a parent outside `ids` had no `facts` row, read as
+    #: sex "" and was filed as a MOTHER (2026-10-04, Infovarius on User talk:日巫女: `Q141640492`
+    #: Hervé I de Mortagne was created with `P25` = his father Hugh I of Maine). See `sex_of`.
+    sex_all = {}
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
+            if row["sex"] in ("M", "F"):
+                sex_all[row["geni_id"]] = row["sex"]
             if row["geni_id"] in ids:
                 facts[row["geni_id"]] = row
+    _wd_sex = {}
+    _sex_tsv = ROOT / "out" / "wikidata" / "sex.tsv"
+    if _sex_tsv.exists():
+        with open(_sex_tsv, encoding="utf-8") as f:
+            _wd_sex = {r["qid"]: r["sex"] for r in csv.DictReader(f, delimiter="	")}
     with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
@@ -8294,6 +8305,10 @@ def main():
                     if names_a_relative(held.get(key, "")):
                         held[key] = ""
 
+    def sex_of(g):
+        """`M`, `F` or "": the tree's sex, else the sex Wikidata states for the person's item."""
+        return sex_all.get(g) or _wd_sex.get(our_items.get(g) or _known_qid.get(g) or "", "")
+
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
     children = collections.defaultdict(set)
@@ -8323,8 +8338,12 @@ def main():
         for p in parents:
             for k in kids:
                 children[p].add(k)
-                sex = (facts.get(p, {}).get("sex") or "")
-                (father_all if sex == "M" else mother_all)[k].append(p)
+                sex = sex_of(p)
+                # ⛔ Unknown sex is neither father nor mother: it used to fall into `mother_all`.
+                if sex == "M":
+                    father_all[k].append(p)
+                elif sex == "F":
+                    mother_all[k].append(p)
         for a in parents:
             for b in parents:
                 if a != b:
@@ -9690,9 +9709,10 @@ def main():
         for kid in sorted(children.get(g, ())):
             if _rq(kid):
                 lines.append(f"LAST\tP40\t{_rq(kid)}{ref(g, 'child', kid)}")
-                sex_of = (facts.get(g, {}) or {}).get("sex", "")
-                reciprocal.append((_rq(kid), "P22" if sex_of == "M" else "P25", g, "",
-                                   ("child", kid)))
+                _sx = sex_of(g)
+                if _sx in ("M", "F"):
+                    reciprocal.append((_rq(kid), "P22" if _sx == "M" else "P25", g, "",
+                                       ("child", kid)))
 
         # **The other direction, in the SAME run.** `Q… P… LAST` -- the subject already
         # exists, so QuickStatements resolves `LAST` to the item created just above.

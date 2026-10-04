@@ -51747,3 +51747,39 @@ It came from run 37219106291 on `681f497b9`, checked out 10:04 PDT, 50 minutes b
 not a guard failure. Run 37230192005 rebuilds on code with the guard. Also: each git command in this
 submodule started an automatic geometric repack that used 11-18 GB of RAM; git is now run here with
 `-c maintenance.auto=false -c gc.auto=0`.
+
+## 2026-10-04 14:50 PDT: Infovarius's talk-page message, two concerns separated and traced
+
+Read live from User talk:日巫女. Infovarius raised two separate things.
+
+**(1) "You've been adding men as mothers" (19:26 UTC).** Two causes, and only the second is in the code.
+- **A background QuickStatements run.** The four numbered batches #289566-#289569 (2026-10-03, 03:00-04:30
+  PDT, the only numbered batches in the account's 212,887 edits since 2026-09-01) resolve `LAST` to the item
+  edited last, not the item created last. After a creation's first back-reference (`Q… P26 LAST`), every
+  later one pointed at the previous line's subject: `Q9023075` Liubava Dmitrievna got her father `Q4162682`
+  as `P25` (the edit Infovarius reverted), and her brother `Q4183031` got her as his mother. **736 chained
+  claims** (`P22`/`P25`/`P26`/`P40`/`P3373`) on established items; 460 back-references in those batches were
+  right. The composed batch was correct. Browser runs resolve `LAST` correctly (250 of 250 today). The
+  existing rule "never Run in background" now carries this reason in `CLAUDE.md`.
+  `reports/background-batch-last-chain-2026-10-03.tsv`: 82 are sibling-of-sibling (both siblings of the new
+  person, so probably true) and are kept. 645 false ones are still live, and 4 have since been removed by others.
+- **The composer, still live in today's browser batches.** `build-garborg-day.py` loaded `derived-facts`
+  only for the batch's ids, so a parent outside them had sex "" and `(father_all if sex == "M" else
+  mother_all)` filed him as a mother: `Q141640492` Hervé I de Mortagne was created with `P25` = his father
+  Hugh I of Maine `Q2033094`. That hit 116 created items whose live `P25` is a man
+  (`reports/created-items-male-mother-2026-10-04.tsv`). Fixed: sex is read for everyone, then from the
+  parent item's Wikidata `P21` (`out/wikidata/sex.tsv`), and unknown sex is neither father nor mother. The
+  child-side reciprocal and `build-familysearch-day.py` had the same `else "P25"` and are fixed the same way.
+
+**(2) "is this ok?" on `Q141249609` (posted under the patronymics thread).** The diff is our authorized
+patronymic-surname fix removing `P5056` Hansson from Ingrid Charlotta Carlsdotter Hansson: correct, since
+Hansson is her father Carl Hansson's surname and `Carlsdotter` is her patronymic. But that batch skipped
+the `P734` because "no family-name item exists (Hansson)", which is wrong: `Q21507480` Hansson (family
+name) exists. So she was left with no Hansson at all.
+
+**Fix batch, built from live reads, not run:** `reports/infovarius-fix-2026-10-04.qs`, 1,514 commands.
+It removes the 645 live false chain claims and adds the link each batch line meant (with its `S2600`). For
+the 116 male mothers, 99 move to `P22` (his `P40` already lists the child) and 17 are removed (`P22`
+already there). It adds `Q141249609 P734 Q21507480`. 27 meant links are held out
+(`reports/infovarius-fix-held-2026-10-04.tsv`) because the parent's live `P21` contradicts the property.
+That includes 20 women as `P22`, which is not understood yet.
