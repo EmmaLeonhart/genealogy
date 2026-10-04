@@ -51118,3 +51118,16 @@ Emperor Kōnin `Q958662`, Soga no Iname `Q595897` (twice), Takano no Niigasa `Q7
 labelled just 橘 (Geni's Han record holds only the clan: Prince Minu, Agata no Inukai no Michiyo), and Geni's
 "Soga no Umako" carries 蘇我稲目, his father's name. The existing items carry no Geni id, so the composer cannot
 see them.
+
+## 2026-10-03: Emma's ten Sinosphere screenshot items, closed
+
+Each was handled in the entries above; live state checked 21:xx PDT. 6000000012621583313 Norihide Kajuji
+(`Q141635365`): labelled 教秀 勧修寺 / Kanshūji Norihide, merged into `Q11400601`. 6000000009797320507 Niohuru
+(`Q141635363`): merged into `Q589406` Empress Xiaoquancheng. 6000000133686493164 "Soga no Kuramaro"
+(`Q141635354`): labelled 蘇我倉麻呂, merged into `Q11625195`; its given name "No" (`Q21148356`) is the separate
+"No" audit item. 6000000006602233132 Momozono Aido (`Q141633806`): no Han name exists anywhere, so the made-up
+ja/zh/ko readings were removed; no existing item found. 6000000001903352866 老女子 NN (`Q141634195`): labelled
+春日老女子 / Ominako no Iratsume, merged into `Q97342104`. `Q141635298` 未詳: labelled NN. `Q141635295` and
+`Q141635286` "Fujiwara": labelled 孝長 藤原 and 公成室(知光女) 藤原, ko removed. The failed create of 春日大娘皇女 NN:
+the earlier creation `Q141634134` was relabelled and merged into `Q11088800`. Ryogu NN (`Q141635460`): labelled
+良虞 / Ryogu of Kudara, merged into `Q30937834` 百済王郎虞. The Ninken item stays open (two Emperor Ninken items).
