@@ -51447,7 +51447,7 @@ changed on Wikidata; queued at the end.
 
 ## 2026-10-04: patronymic audit reviewed row by row (`reports/patronymic-review.csv`)
 
-Every row of `patronymic-audit.csv` the model flagged (226: 83 "father carries the same token", 107 "root
+Every row of `patronymic-audit.csv` the model flagged (224: 83 "father carries the same token", 107 "root
 does not match", 34 "token unknown", plus the batch rows) got one verdict and a reason. Spelling variants
 of the father's given name count as a match (Eilefsdatter/Eiliv, Nilsdotter/Nicolaus, Jöransdotter/Göran
 (Jöran), Persson/Petrus, Olsdatter/Oluff).
