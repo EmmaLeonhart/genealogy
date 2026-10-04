@@ -14,7 +14,6 @@ it. Each session starts with
 
 
 
-- **Crisis, first: people created with no English label (Emma, 2026-10-04: "the no English language labels on unnamed people is a fucking crisis. Put it at the beginning of the queue, it has to be fucking solved").** Since the `sinosphere_name` change of 2026-10-03 (`760a32fe1`), a Han-named creation gets `Lmul`/`Lja`/`Lzh` and an `en` label only when Geni has its own Latin record, so some are created with no `en` label at all. Emma does not recall agreeing to drop English labels; the devlog cites only her hand edit of `Q141634581` as the model. Every creation must have an `en` label: fix the composer so none is created without one, then find every item already created without one and give it one. Check with Emma (AskUserQuestion) only what the `en` label should be where Geni has no Latin record.
 
 - **Check that Sinosphere people with no Latin label are now carried, not created (Emma, 2026-10-04: no Latin label, no creation).** The 2026-10-03 change (`760a32fe18`) created them with mul/ja/zh and no `en`, so Wikidata's label+description refusal never fired and overlapping runs created the same person twice (58 pairs between run `1791108307454` and this session's `ebec37585`, 45 older, `reports/duplicate-creations-2026-10-04.csv`). The guard is restored in `build-garborg-day.py` (carry reason `no Latin label (…): not created`); check the next pipeline batch's carried list for 類子 菅原 (`6000000002826094685`) and 和子 源 (`6000000001999556566`).
 

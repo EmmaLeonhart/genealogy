@@ -51661,3 +51661,41 @@ the page) unstuck it every time.
 - Many pairs differ only by ` NN` in the older label (Gyritha NN, Unnur NN, Leutfried NN, Albert NN, Erik
   NN, Claudius NN, Thrand NN, Wytgeorn NN, Sisalda NN): the NN label ruling of 2026-10-03 changed the label
   between the two builds.
+
+## 2026-10-04 12:50 PDT: no creation without an `en` label; 222 existing items given one
+
+**Unexpected, first:** the committed batches `reports/wikidata-garborg-day-manual.txt` and `-auto.txt`
+(rebuilt 08:15 PDT, before the guard `0244c90ee` of 10:54 PDT) still hold **85 and 84 Han-named
+`CREATE`s with no `Len`**. Opened in QuickStatements as they stand, they would make more of these items.
+No browser batch was opened this session; the next pipeline rebuild replaces both files.
+
+**Size, checked live.** All 20,518 items the account created (`usercontribs`, `ucshow=new`) were read
+from Wikidata: 841 are now redirects (merged), and **225 people have no `en` label**:
+- 193 Han-named people, all created 2026-10-04 (`sinosphere_name`, `760a32fe1`): `mul`/`ja`/`zh` only.
+  192 of them carry an `en` description (`Geni <id>` or the dates), so with no `en` label the
+  label+description refusal could not fire.
+- 29 `NN` people (`NN`, `NN Miwa`) created 2026-08-30 to 2026-09-25, before the 2026-09-27 rule gave NN
+  creations an explicit `Len`.
+- 3 left alone because somebody removed the `en` label by hand: `Q141523636` (Emma, UI edit, removed
+  `mm Concubine`), `Q141628334` (Infovarius removed `NN`; it has no `mul` either), `Q141578095`
+  (Anvilaquarius removed the all-caps `CHRISTOPH Ruttger Gottlieb Frei…`; `mul` `Christoph von Barnekow`
+  stands). A human correction is not reverted.
+- Also seen, not people: 4 family-name items created 2026-10-04 with no `en` (`Q141638758` 劉,
+  `Q141637679` 葉赫那拉, `Q141637662` 勧修寺, `Q141637661` 今出川). Not touched.
+Every row: `reports/no-en-label-creations-2026-10-04.tsv`.
+
+**Fix.** (1) `build-garborg-day.py` now drops any person `CREATE` block that reaches the end with no
+`LAST\tLen` and carries the person (`no en label: not created`), behind the `sinosphere_name` guard of
+`0244c90ee`, so no branch can ship one again. Test: `test_every_person_the_batch_creates_has_an_en_label`
+(CI; it reads the committed batches, so it is red until the pipeline rebuilds them). (2) 222 `L en` rows
+in `reports/label-applications.tsv` (source `Claude`): they go out with the pipeline's batches and
+retire once live. Nothing was sent by hand.
+
+**Decision made without asking (the queue item allowed one question; this session was told to make the
+call):** where Geni has no Latin record, the `en` label is **the Han name verbatim, the same string as
+`mul`**. Why: there is no romanisation in Geni or in our data; a kanji name's reading cannot be derived
+(以盛 has several), a wrong label is an emergency here, and transliteration is being phased out. The Han
+`en` label also restores the `en` label+description pair that stops a second creation. A romanised `en`
+can replace it later from a real source (some of these duplicate established items with English labels,
+e.g. `Q141636850` 基嗣 近衛 = `Q3198721` Konoe Mototsugu). For the NN people, `en` = `mul`, the NN rule
+at creation; the day-later relational pass may then replace it.

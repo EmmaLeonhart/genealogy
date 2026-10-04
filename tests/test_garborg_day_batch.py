@@ -1889,3 +1889,28 @@ def test_a_correction_never_puts_a_non_latin_name_over_a_latin_label():
     assert mod.is_latin_text("Abigail Ogla Katzenellenbogen")
     assert not mod.is_latin_text("אביגיל אוגלה לבית יפה?")
     assert not mod.is_latin_text("덕장")
+
+
+def test_every_person_the_batch_creates_has_an_en_label():
+    """Emma, 2026-10-04: "the no English language labels on unnamed people is a fucking crisis".
+    193 Han-named people were created that day with mul/ja/zh and no `en`. Every `CREATE` of a
+    person (`P31 Q5`) in the committed batches carries a `Len`; the composer carries anyone else."""
+    for name in ("wikidata-garborg-day.txt", "wikidata-garborg-day-manual.txt",
+                 "wikidata-garborg-day-auto.txt"):
+        path = REPO / "reports" / name
+        if not path.exists():
+            continue
+        blocks, cur = [], None
+        for ln in path.read_text(encoding="utf-8").splitlines():
+            if ln.strip() == "CREATE":
+                cur = []
+                blocks.append(cur)
+            elif ln.lstrip().startswith("#"):
+                continue
+            elif ln.startswith("LAST\t") and cur is not None:
+                cur.append(ln)
+            else:
+                cur = None
+        bad = [b for b in blocks if "LAST\tP31\tQ5" in b
+               and not any(x.startswith("LAST\tLen\t") for x in b)]
+        assert not bad, f"{name}: {len(bad)} people created with no en label, e.g. {bad[0][:2]}"

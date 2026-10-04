@@ -9804,6 +9804,14 @@ def main():
                             "no relationship could be emitted: every relative either has no "
                             "QID or is being created in this same batch"))
             continue
+        # ⛔ **NO `en` LABEL, NO CREATION, WHICHEVER BRANCH BUILT THE BLOCK. Emma, 2026-10-04:** *"the
+        # no English language labels on unnamed people is a fucking crisis"*. 193 Han-named people
+        # went out on 2026-10-04 with mul/ja/zh only; the `sinosphere_name` guard above catches that
+        # branch, and this catches any branch that ever forgets.
+        if not any(ln.startswith("LAST\tLen\t") for ln in lines[block_start:]):
+            del lines[block_start:]
+            carried.append((g, label, "no en label: not created"))
+            continue
 
         lines.append("")
         created += 1
