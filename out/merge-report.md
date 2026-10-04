@@ -32268,7 +32268,7 @@ Sources in merge order (later sources win value conflicts):
 | record | count |
 | --- | ---: |
 | FAM | 1150152 |
-| INDI | 2273964 |
+| INDI | 2273972 |
 | SUBM | 58714 |
 
 ## What each source contributed
@@ -32792,16 +32792,16 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227757712839.ged` | 945 | 1182 | 5 | 6314 | 663 |
 | `export-Forest-6000000227739821875.ged` | 2826 | 4979 | 6 | 42 | 26 |
 | `MBW7-P7H-ancestors12-descendants2.ged` | 1456 | 2590 | 1 | 513 | 3464 |
-| `PFR5-LDS-ancestors12-descendants2.ged` | 7093 | 11909 | 0 | 4519 | 32312 |
-| `rootsmagic-PFR5-LDS-2026-09-25.ged` | 24761 | 18809 | 0 | 10264 | 70491 |
-| `rootsmagic-PFR5-LDS-2026-09-30.ged` | 26547 | 24277 | 1 | 29708 | 63382 |
+| `PFR5-LDS-ancestors12-descendants2.ged` | 7093 | 11909 | 0 | 4519 | 32307 |
+| `rootsmagic-PFR5-LDS-2026-09-25.ged` | 24761 | 18811 | 0 | 10262 | 70471 |
+| `rootsmagic-PFR5-LDS-2026-09-30.ged` | 26547 | 24276 | 1 | 29709 | 63387 |
 | `export-Descendants-6000000227714378863.ged` | 234 | 357 | 1 | 7983 | 578 |
 | `export-Descendants-6000000227723755983.ged` | 1085 | 1248 | 12 | 6634 | 230 |
 | `export-Forest-6000000227714378863.ged` | 81 | 98 | 1 | 8135 | 132 |
 | `export-Ancestors-6000000227464556886-2026-08-30.ged` | 4 | 1 | 0 | 7460 | 67 |
 | `export-Descendants-6000000227513637856.ged` | 2077 | 3326 | 79 | 2960 | 839 |
 | `export-Forest-6000000227464556886-2026-08-30.ged` | 0 | 0 | 0 | 8645 | 1 |
-| `export-Forest-6000000227491932881.ged` | 558 | 811 | 16 | 6729 | 1454 |
+| `export-Forest-6000000227491932881.ged` | 558 | 812 | 16 | 6728 | 1437 |
 | `export-BloodTree-16.ged` | 112 | 391 | 1 | 125 | 154 |
 | `export-Descendants-21.ged` | 0 | 0 | 0 | 6637 | 0 |
 | `export-Forest-0.ged` | 630 | 2370 | 30 | 1964 | 401 |
@@ -32840,13 +32840,13 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-7.ged` | 185 | 509 | 10 | 5495 | 466 |
 | `export-Forest-8.ged` | 4 | 4 | 0 | 6795 | 32 |
 | `export-Forest-9.ged` | 0 | 6 | 0 | 6230 | 6 |
-| `export-Ancestors-6000000227891340662.ged` | 311 | 203 | 13 | 1113 | 2335 |
+| `export-Ancestors-6000000227891340662.ged` | 311 | 202 | 13 | 1114 | 2342 |
 | `export-Ancestors-6000000227892448837.ged` | 136 | 212 | 2 | 1487 | 174 |
-| `export-Ancestors-6000000087535357291.ged` | 626 | 760 | 16 | 5606 | 3180 |
+| `export-Ancestors-6000000087535357291.ged` | 626 | 759 | 16 | 5607 | 3190 |
 | `export-Ancestors-6000000177921459052.ged` | 0 | 0 | 0 | 875 | 0 |
 | `export-Ancestors-6000000177921459056.ged` | 11 | 11 | 1 | 7049 | 147 |
 | `export-Ancestors-6000000177921459078.ged` | 4 | 2 | 0 | 7082 | 66 |
-| `exports/gaps/export-Ancestors-6000000177921459114.ged` | 291 | 301 | 8 | 6600 | 1874 |
+| `exports/gaps/export-Ancestors-6000000177921459114.ged` | 291 | 306 | 8 | 6595 | 1827 |
 | `export-Ancestors-6000000209078072833.ged` | 0 | 0 | 0 | 1189 | 0 |
 | `exports/gaps/export-Ancestors-6000000220974565012.ged` | 0 | 0 | 0 | 1897 | 0 |
 | `export-Bio-6000000212213649822.ged` | 33 | 38 | 0 | 7031 | 17 |
@@ -32863,7 +32863,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227085797849.ged` | 70 | 125 | 0 | 5379 | 61 |
 | `export-Descendants-6000000227085828865.ged` | 27 | 39 | 0 | 6700 | 15 |
 | `export-Descendants-6000000227085871850.ged` | 0 | 0 | 0 | 938 | 32 |
-| `export-Descendants-6000000227086244080.ged` | 1291 | 1891 | 51 | 3765 | 3551 |
+| `export-Descendants-6000000227086244080.ged` | 1291 | 1895 | 51 | 3761 | 3527 |
 | `export-Descendants-6000000227086432913.ged` | 623 | 1149 | 40 | 13 | 2 |
 | `export-Descendants-6000000227086452843.ged` | 1860 | 3380 | 35 | 1075 | 11 |
 | `export-Descendants-6000000227086455824.ged` | 1199 | 1250 | 23 | 5521 | 2406 |
@@ -32876,20 +32876,20 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227227278828.ged` | 885 | 2958 | 28 | 1982 | 215 |
 | `export-Descendants-6000000227227295846.ged` | 1317 | 2929 | 49 | 2376 | 438 |
 | `exports/gaps/export-Forest-6000000178918422849.ged` | 0 | 0 | 0 | 6860 | 0 |
-| `export-Forest-6000000227086244080.ged` | 632 | 1095 | 28 | 5251 | 2530 |
-| `export-Forest-6000000227086380915.ged` | 444 | 1104 | 14 | 4855 | 1383 |
+| `export-Forest-6000000227086244080.ged` | 632 | 1093 | 28 | 5253 | 2546 |
+| `export-Forest-6000000227086380915.ged` | 444 | 1107 | 14 | 4852 | 1357 |
 | `export-Forest-6000000227086432913.ged` | 845 | 1938 | 1 | 3256 | 425 |
 | `export-Forest-6000000227086452843.ged` | 317 | 539 | 1 | 5413 | 114 |
-| `export-Forest-6000000227086455824.ged` | 354 | 840 | 16 | 5476 | 604 |
+| `export-Forest-6000000227086455824.ged` | 354 | 839 | 16 | 5477 | 610 |
 | `export-Forest-6000000227086465839.ged` | 952 | 1975 | 0 | 3019 | 52 |
 | `export-Forest-6000000227086500885.ged` | 219 | 463 | 0 | 5846 | 504 |
-| `export-Forest-6000000227086506866.ged` | 832 | 1396 | 12 | 4683 | 536 |
+| `export-Forest-6000000227086506866.ged` | 832 | 1396 | 12 | 4683 | 531 |
 | `export-Forest-6000000227086510841.ged` | 58 | 142 | 1 | 6608 | 67 |
 | `export-Forest-6000000227086620980.ged` | 258 | 488 | 2 | 6021 | 402 |
 | `export-Forest-6000000227086715937.ged` | 1348 | 3284 | 199 | 1473 | 205 |
 | `export-Forest-6000000227086717913.ged` | 1281 | 2031 | 16 | 3808 | 1186 |
 | `export-Forest-6000000227087120840.ged` | 828 | 1653 | 41 | 4097 | 1150 |
-| `export-Forest-6000000227225487992.ged` | 1047 | 1390 | 25 | 5000 | 3177 |
+| `export-Forest-6000000227225487992.ged` | 1047 | 1386 | 25 | 5004 | 3211 |
 | `export-Forest-6000000227225628908.ged` | 210 | 360 | 2 | 6329 | 293 |
 | `export-Forest-6000000227225654852.ged` | 122 | 209 | 0 | 5954 | 142 |
 | `export-Forest-6000000227226552913.ged` | 847 | 4124 | 104 | 75 | 0 |
@@ -32899,9 +32899,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227226792872.ged` | 1406 | 3949 | 120 | 440 | 123 |
 | `export-Forest-6000000227226796847.ged` | 1486 | 3552 | 197 | 1074 | 194 |
 | `export-Forest-6000000227226850980.ged` | 88 | 51 | 0 | 6729 | 141 |
-| `export-Forest-6000000227227016909.ged` | 1233 | 2621 | 18 | 2709 | 1172 |
-| `export-Forest-6000000227227035828.ged` | 547 | 655 | 6 | 6061 | 1827 |
-| `export-Forest-6000000227227039845.ged` | 805 | 1152 | 15 | 5151 | 1350 |
+| `export-Forest-6000000227227016909.ged` | 1233 | 2621 | 18 | 2709 | 1165 |
+| `export-Forest-6000000227227035828.ged` | 547 | 653 | 6 | 6063 | 1846 |
+| `export-Forest-6000000227227039845.ged` | 805 | 1151 | 15 | 5152 | 1358 |
 | `export-Forest-6000000227227041063.ged` | 1044 | 1922 | 42 | 4344 | 650 |
 | `export-Forest-6000000227227092862.ged` | 4 | 29 | 0 | 7067 | 54 |
 | `export-Forest-6000000227227104853.ged` | 120 | 168 | 1 | 6513 | 283 |
@@ -32933,16 +32933,16 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227690477821.ged` | 1453 | 4742 | 150 | 463 | 300 |
 | `export-Forest-6000000227690638845.ged` | 2038 | 3606 | 135 | 2966 | 1002 |
 | `export-Forest-6000000227738818838.ged` | 1635 | 4917 | 183 | 300 | 56 |
-| `export-Forest-6000000227787716121.ged` | 94 | 152 | 1 | 8413 | 292 |
+| `export-Forest-6000000227787716121.ged` | 94 | 150 | 1 | 8415 | 311 |
 | `export-Forest-6000000227331852896.ged` | 212 | 431 | 0 | 7533 | 294 |
 | `export-Forest-6000000227390753876.ged` | 105 | 269 | 0 | 7578 | 222 |
 | `export-Descendants-6000000227713229918.ged` | 16 | 8 | 0 | 8429 | 16 |
 | `export-Forest-6000000227713229918.ged` | 22 | 51 | 0 | 7838 | 27 |
-| `export-Forest-6000000227258314174.ged` | 1040 | 1687 | 30 | 6301 | 1090 |
-| `export-Forest-6000000227258622821.ged` | 703 | 995 | 7 | 7199 | 1397 |
+| `export-Forest-6000000227258314174.ged` | 1040 | 1686 | 30 | 6302 | 1100 |
+| `export-Forest-6000000227258622821.ged` | 703 | 997 | 7 | 7197 | 1380 |
 | `export-Forest-6000000227288930948.ged` | 1575 | 4517 | 99 | 920 | 344 |
 | `export-Forest-6000000227289463836.ged` | 1525 | 4375 | 150 | 1332 | 392 |
-| `export-Forest-6000000227289547881.ged` | 729 | 1218 | 20 | 6670 | 1241 |
+| `export-Forest-6000000227289547881.ged` | 729 | 1218 | 20 | 6670 | 1242 |
 | `export-Forest-6000000227289604840.ged` | 1124 | 2052 | 28 | 5122 | 1070 |
 | `export-Forest-6000000227289663852.ged` | 393 | 1888 | 34 | 4564 | 1233 |
 | `export-Forest-6000000227289792822.ged` | 208 | 518 | 5 | 7378 | 727 |
@@ -32972,7 +32972,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227717534826.ged` | 954 | 1590 | 38 | 5622 | 734 |
 | `export-Descendants-6000000227720080850.ged` | 0 | 1 | 0 | 8203 | 1 |
 | `export-Descendants-6000000227720816948.ged` | 1295 | 2570 | 20 | 3715 | 1339 |
-| `export-Descendants-6000000227226958932.ged` | 1034 | 1221 | 13 | 6952 | 1002 |
+| `export-Descendants-6000000227226958932.ged` | 1034 | 1222 | 13 | 6951 | 996 |
 | `export-Descendants-6000000227715492839.ged` | 0 | 1 | 0 | 9227 | 1 |
 | `export-Descendants-6000000227725842871.ged` | 1482 | 4733 | 92 | 550 | 172 |
 | `export-Descendants-6000000227725863956.ged` | 2771 | 4808 | 288 | 1078 | 226 |
@@ -33010,16 +33010,16 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227380109838.ged` | 76 | 206 | 0 | 8333 | 309 |
 | `export-Forest-6000000227380247996.ged` | 137 | 200 | 6 | 8148 | 261 |
 | `export-Forest-6000000227380708902.ged` | 1674 | 3229 | 174 | 2960 | 463 |
-| `export-Forest-6000000227380718910.ged` | 345 | 734 | 1 | 6740 | 579 |
+| `export-Forest-6000000227380718910.ged` | 345 | 739 | 1 | 6735 | 537 |
 | `export-Forest-6000000227381358911.ged` | 143 | 520 | 6 | 6823 | 424 |
 | `export-Forest-6000000227381399852.ged` | 1987 | 2788 | 33 | 4590 | 1023 |
 | `export-Forest-6000000227381400057.ged` | 15 | 27 | 0 | 8433 | 13 |
 | `export-Forest-6000000227382054896.ged` | 1010 | 2418 | 66 | 3992 | 779 |
 | `export-Forest-6000000227389059850.ged` | 0 | 0 | 0 | 7906 | 0 |
-| `exports/stragglers/export-geni/export-Forest-40.ged` | 1073 | 1450 | 20 | 5114 | 822 |
+| `exports/stragglers/export-geni/export-Forest-40.ged` | 1073 | 1451 | 20 | 5113 | 817 |
 | `exports/stragglers/export-geni/export-Forest-41.ged` | 523 | 1656 | 15 | 3774 | 909 |
 | `exports/stragglers/export-geni/export-Forest-42.ged` | 201 | 317 | 0 | 6190 | 416 |
-| `exports/stragglers/export-geni/export-Forest-43.ged` | 667 | 1095 | 11 | 5103 | 641 |
+| `exports/stragglers/export-geni/export-Forest-43.ged` | 667 | 1094 | 11 | 5104 | 648 |
 | `sweep-parsed-2026-09-24-01.ged` | 0 | 183672 | 0 | 16328 | 20093 |
 | `sweep-parsed-2026-09-24-02.ged` | 17805 | 173326 | 0 | 8869 | 9608 |
 | `sweep-parsed-2026-09-24-03.ged` | 131122 | 0 | 0 | 0 | 0 |
@@ -37901,7 +37901,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000007343684238-inlaw.ged` | 0 | 0 | 0 | 37 | 0 |
 | `harvested-path-geni-6000000007343727214-blood.ged` | 1 | 1 | 0 | 65 | 0 |
 | `harvested-path-geni-6000000007343727214-inlaw.ged` | 1 | 0 | 0 | 38 | 0 |
-| `harvested-path-geni-6000000007348644399-blood.ged` | 18 | 13 | 0 | 42 | 5 |
+| `harvested-path-geni-6000000007348644399-blood.ged` | 18 | 15 | 0 | 40 | 3 |
 | `harvested-path-geni-6000000007352948835-inlaw.ged` | 12 | 7 | 0 | 24 | 5 |
 | `harvested-path-geni-6000000007353257141-inlaw.ged` | 2 | 2 | 0 | 33 | 0 |
 | `harvested-path-geni-6000000007353330285-inlaw.ged` | 10 | 7 | 0 | 26 | 3 |
@@ -64479,7 +64479,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227715260898.ged` | 42 | 178 | 0 | 7636 | 123 |
 | `export-Forest-6000000227739381826.ged` | 106 | 424 | 1 | 7301 | 877 |
 | `export-Forest-6000000227755683825.ged` | 8 | 51 | 0 | 7569 | 62 |
-| `export-Forest-6000000227802407043.ged` | 1319 | 1735 | 40 | 6502 | 2419 |
+| `export-Forest-6000000227802407043.ged` | 1319 | 1737 | 40 | 6500 | 2410 |
 | `export-Forest-6000000227802431855.ged` | 1778 | 3041 | 51 | 3125 | 2050 |
 | `export-Forest-6000000227802432937.ged` | 254 | 861 | 7 | 6472 | 1163 |
 | `export-Forest-6000000227802697066.ged` | 101 | 175 | 2 | 8015 | 530 |
@@ -64516,13 +64516,13 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227811549827-2026-09-18T2314.ged` | 0 | 0 | 0 | 8406 | 0 |
 | `export-Forest-6000000227811549827.ged` | 0 | 0 | 0 | 8406 | 0 |
 | `export-Forest-6000000227815618073.ged` | 482 | 1639 | 8 | 5217 | 1390 |
-| `export-Forest-6000000227816205043.ged` | 382 | 1077 | 1 | 6049 | 2363 |
+| `export-Forest-6000000227816205043.ged` | 382 | 1075 | 1 | 6051 | 2379 |
 | `export-Forest-6000000227816313859.ged` | 645 | 1171 | 8 | 6353 | 3483 |
 | `export-Forest-6000000227816363824.ged` | 427 | 507 | 3 | 8101 | 690 |
 | `export-Forest-6000000227816411855.ged` | 34 | 766 | 11 | 6127 | 1483 |
 | `export-Forest-6000000227816541821.ged` | 0 | 0 | 0 | 6938 | 0 |
 | `export-Forest-6000000227816551825.ged` | 0 | 2 | 0 | 7839 | 6 |
-| `export-Forest-6000000227816621867.ged` | 163 | 248 | 1 | 8298 | 485 |
+| `export-Forest-6000000227816621867.ged` | 163 | 247 | 1 | 8299 | 492 |
 | `export-Forest-6000000227816628912.ged` | 0 | 0 | 0 | 8682 | 0 |
 | `export-Forest-6000000227816629854.ged` | 0 | 0 | 0 | 8405 | 7 |
 | `export-Forest-6000000227816685869.ged` | 25 | 114 | 1 | 8098 | 229 |
@@ -64530,7 +64530,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227831999861.ged` | 297 | 855 | 4 | 6136 | 1590 |
 | `hotfix-romer-ingrid-parentage.ged` | 0 | 0 | 0 | 2 | 2 |
 | `wikidata-qid-links.ged` | 0 | 2 | 0 | 440 | 0 |
-| `identifications-now.ged` | 0 | 0 | 0 | 478 | 0 |
+| `identifications-now.ged` | 0 | 0 | 0 | 498 | 0 |
 | `identifications-jan1.ged` | 0 | 0 | 0 | 445 | 0 |
 | `identifications-passive.ged` | 0 | 94 | 0 | 1592 | 0 |
 
@@ -64544,16 +64544,16 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**52698** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**52675** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
-| `INDI.CHAN.DATE` | 21139 |
-| `INDI.BIRT.DATE` | 15087 |
-| `INDI.DEAT.DATE` | 9890 |
-| `INDI.DEAT` | 3209 |
+| `INDI.CHAN.DATE` | 21130 |
+| `INDI.BIRT.DATE` | 15086 |
+| `INDI.DEAT.DATE` | 9876 |
+| `INDI.DEAT` | 3210 |
 | `INDI.BURI.DATE` | 1865 |
 | `INDI.CHR.DATE` | 799 |
 | `FAM.HUSB` | 579 |
@@ -68663,6 +68663,8 @@ By path:
 | `@I6000000003492033751@` | `INDI.BURI.DATE` | 29 Aug 1828 | PFR5-LDS-ancestors12-descendants2.ged | 29 AUG 1828 | export-Forest-6000000227299181836.ged |
 | `@I6000000201956755823@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227312306880.ged |
 | `@I6000000201956755823@` | `INDI.BIRT.DATE` |        1786 | PFR5-LDS-ancestors12-descendants2.ged | 1786 | export-Forest-6000000227312306880.ged |
+| `@I6000000005609557337@` | `INDI.DEAT.DATE` | 1682 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1682 | exports/8-19 exports/export-Forest-6000000227290969847.ged |
+| `@I6000000005609557337@` | `INDI.BIRT.DATE` | CAL 1608 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1608 | exports/8-19 exports/export-Forest-6000000227290969847.ged |
 | `@I6000000003492037647@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227310843862.ged |
 | `@I6000000025171541172@` | `INDI.DEAT.DATE` | 1752 | PFR5-LDS-ancestors12-descendants2.ged | BEF 1752 | export-Descendants-6000000177944124971.ged |
 | `@I6000000025171541172@` | `INDI.BIRT.DATE` | 24 Aug 1721 | PFR5-LDS-ancestors12-descendants2.ged | 24 AUG 1721 | export-Descendants-6000000177944124971.ged |
@@ -70110,7 +70112,6 @@ By path:
 | `@I6000000003492007276@` | `INDI.BIRT.DATE` |        1674 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1678 | export-Descendants-6000000227224418030.ged |
 | `@I6000000035012697420@` | `INDI.DEAT.DATE` | 1765 | PFR5-LDS-ancestors12-descendants2.ged | 26 JAN 1765 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
 | `@I6000000005607685516@` | `INDI.DEAT.DATE` | 1728 | PFR5-LDS-ancestors12-descendants2.ged | BEF 1728 | exports/8-19 exports/export-Forest-6000000227291028845.ged |
-| `@I6000000003026033578@` | `INDI.BIRT.DATE` | about  1711 | PFR5-LDS-ancestors12-descendants2.ged | 1711 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
 | `@I6000000008744612803@` | `INDI.BIRT.DATE` | about 1640 | PFR5-LDS-ancestors12-descendants2.ged | 1640 | export-Descendants-6000000177944124971.ged |
 | `@I6000000025457179900@` | `INDI.BIRT.DATE` | før 29. mai 1796 | PFR5-LDS-ancestors12-descendants2.ged | 29 MAY 1796 | export-Forest-6000000227311010870.ged |
 | `@I6000000011655884591@` | `INDI.DEAT.DATE` | 14 April 1828 | PFR5-LDS-ancestors12-descendants2.ged | 14 APR 1828 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
@@ -71395,6 +71396,8 @@ By path:
 | `@I6000000206012315823@` | `INDI.BIRT.DATE` | 24 Nov 1811 | PFR5-LDS-ancestors12-descendants2.ged | 1811 | export-Forest-6000000227315362825.ged |
 | `@I6000000003492045791@` | `INDI.DEAT.DATE` | 15 Jan 1788 | PFR5-LDS-ancestors12-descendants2.ged | 15 JAN 1788 | export-Forest-6000000227303522852.ged |
 | `@I6000000005609575559@` | `INDI.BIRT.DATE` |        1675 | PFR5-LDS-ancestors12-descendants2.ged | 1675 | export-Forest-6000000227315643833.ged |
+| `@I6000000116695548828@` | `INDI.BIRT.DATE` | 1743 | PFR5-LDS-ancestors12-descendants2.ged | 1758 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
+| `@I6000000116695548828@` | `INDI.DEAT.DATE` | January 1797 | PFR5-LDS-ancestors12-descendants2.ged | 1833 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
 | `@I6000000014020391786@` | `INDI.DEAT.DATE` | 1815 | PFR5-LDS-ancestors12-descendants2.ged | 7 JAN 1815 | export-Descendants-6000000177944124971.ged |
 | `@I6000000014020391786@` | `INDI.BIRT.DATE` | 1738 | PFR5-LDS-ancestors12-descendants2.ged | 12 OCT 1738 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005606873520@` | `INDI.BURI.DATE` | 19. februar 1814 | PFR5-LDS-ancestors12-descendants2.ged | 5 NOV 1814 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
@@ -71815,8 +71818,6 @@ By path:
 | `@I6000000011167651960@` | `INDI.BIRT.DATE` | 16 Feb 1855 | PFR5-LDS-ancestors12-descendants2.ged | 16 FEB 1855 | export-Forest-6000000227299732860.ged |
 | `@I6000000011167651960@` | `INDI.DEAT.DATE` | 7 November 1938 | PFR5-LDS-ancestors12-descendants2.ged | 7 NOV 1938 | export-Forest-6000000227299732860.ged |
 | `@I6000000005930447562@` | `INDI.DEAT.DATE` | 18 May 1838 | PFR5-LDS-ancestors12-descendants2.ged | 18 MAY 1838 | exports/8-19 exports/export-Forest-6000000227295934952.ged |
-| `@I6000000003025847817@` | `INDI.BIRT.DATE` |        1713 | PFR5-LDS-ancestors12-descendants2.ged | 1713 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
-| `@I6000000003025847817@` | `INDI.DEAT.DATE` | 1746 | PFR5-LDS-ancestors12-descendants2.ged | 1778 | exports/8-19 exports/export-Forest-6000000227296927882.ged |
 | `@I6000000008379457317@` | `INDI.BIRT.DATE` |        1807 | PFR5-LDS-ancestors12-descendants2.ged | 1807 | export-Forest-6000000227300430000.ged |
 | `@I6000000008379457317@` | `INDI.DEAT` | Y | PFR5-LDS-ancestors12-descendants2.ged | *(empty)* | export-Forest-6000000227300430000.ged |
 | `@I6000000026340046985@` | `INDI.BIRT.DATE` |        1790 | PFR5-LDS-ancestors12-descendants2.ged | ABT 1790 | export-Forest-6000000227254397877.ged |
@@ -80473,7 +80474,8 @@ By path:
 | `@I6000000003095166367@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 02 MAY 2025 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000003095166367@` | `INDI.BIRT.DATE` | 1540 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1540 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000003095166367@` | `INDI.DEAT.DATE` | BEF 1600 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1610 | export-Ancestors-6000000227464556886.ged |
-| `@IFSMBTCL6J@` | `INDI.BIRT.DATE` | BET 31 DEC 1606 AND 1 JAN 1610 | rootsmagic-PFR5-LDS-2026-09-25.ged | CAL 1608 | PFR5-LDS-ancestors12-descendants2.ged |
+| `@I6000000005609557337@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 07 JUL 2021 | exports/8-19 exports/export-Forest-6000000227290969847.ged |
+| `@I6000000005609557337@` | `INDI.BIRT.DATE` | BET 31 DEC 1606 AND 1 JAN 1610 | rootsmagic-PFR5-LDS-2026-09-25.ged | CAL 1608 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@IFSKVG386L@` | `INDI.BIRT.DATE` | ABT 1630 | rootsmagic-PFR5-LDS-2026-09-25.ged | EST 1630 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@IFSKVG386L@` | `INDI.DEAT` | *(empty)* | rootsmagic-PFR5-LDS-2026-09-25.ged | Y | PFR5-LDS-ancestors12-descendants2.ged |
 | `@IFSKVG3L4D@` | `INDI.BIRT.DATE` | ABT 1635 | rootsmagic-PFR5-LDS-2026-09-25.ged | Abt 1635 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -82767,6 +82769,8 @@ By path:
 | `@I6000000011322552421@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 12 MAR 2026 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000011322552421@` | `INDI.BIRT.DATE` | 1595 | rootsmagic-PFR5-LDS-2026-09-25.ged | about 1595 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000011322552421@` | `INDI.DEAT.DATE` | 1639 | rootsmagic-PFR5-LDS-2026-09-25.ged | about 1639 | PFR5-LDS-ancestors12-descendants2.ged |
+| `@I6000000007980352331@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 28 APR 2022 | export-BloodTree-6000000227289508960.ged |
+| `@I6000000007980352331@` | `INDI.BIRT.DATE` | ABT 1583 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1595 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000009624596112@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 02 MAY 2026 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000003376453205@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 25 JAN 2026 | exports/8-19 exports/export-Forest-6000000227295848846.ged |
 | `@I6000000003376453205@` | `INDI.BIRT.DATE` | BET 1500 AND 1512 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1500 | exports/8-19 exports/export-Forest-6000000227295848846.ged |
@@ -82997,7 +83001,7 @@ By path:
 | `@I6000000011092395557@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 25 AUG 2024 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000011092395557@` | `INDI.BIRT.DATE` | 1605 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1605 | export-BloodTree-6000000227289508960.ged |
 | `@I6000000011092395557@` | `INDI.DEAT.DATE` | 1676 | rootsmagic-PFR5-LDS-2026-09-25.ged | BEF 21 MAR 1676 | export-BloodTree-6000000227289508960.ged |
-| `@I6000000003492093275@` | `INDI.BIRT.DATE` | 1619 | rootsmagic-PFR5-LDS-2026-09-25.ged |        1619 | PFR5-LDS-ancestors12-descendants2.ged |
+| `@IFSMFJCRH3@` | `INDI.BIRT.DATE` | 1619 | rootsmagic-PFR5-LDS-2026-09-25.ged |        1619 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@IFS2773PSN@` | `INDI.BIRT.DATE` | 1617 | rootsmagic-PFR5-LDS-2026-09-25.ged |        1617 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@IFS2773PSN@` | `INDI.DEAT.DATE` | 1676 | rootsmagic-PFR5-LDS-2026-09-25.ged |        1676 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000003492093290@` | `INDI.BIRT.DATE` | 1623 | rootsmagic-PFR5-LDS-2026-09-25.ged |        1623 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -85999,6 +86003,8 @@ By path:
 | `@I6000000001169174384@` | `INDI.BIRT.DATE` | ABT 1150 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1145 | exports/archive/export-geni/export-Forest-22.ged |
 | `@I6000000010521965469@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 06 APR 2024 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000010521965469@` | `INDI.BIRT.DATE` | ABT 1073 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1075 | export-Ancestors-6000000227464556886.ged |
+| `@I6000000003645707458@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 22 DEC 2024 | exports/archive/export-geni/export-Forest-22.ged |
+| `@I6000000003645707458@` | `INDI.BIRT.DATE` | ABT 1133 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1130 | exports/archive/export-geni/export-Forest-22.ged |
 | `@I6000000001169130891@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 26 APR 2022 | export-Forest-6000000227676734863.ged |
 | `@I304892179090002934@` | `INDI.BIRT.DATE` | ABT 1110 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT. 1110 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@IFSG6VB6DH@` | `INDI.DEAT` | *(empty)* | rootsmagic-PFR5-LDS-2026-09-25.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
@@ -86412,9 +86418,6 @@ By path:
 | `@I4571439@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 30 JUL 2026 | exports/archive/export-geni/export-Forest-22.ged |
 | `@I6000000000771264415@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 20 MAR 2026 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000000771264415@` | `INDI.BURI.DATE` | AFT 22 SEP 1093 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1093 | export-Ancestors-6000000227464556886.ged |
-| `@I6000000003087188326@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 15 AUG 2023 | export-Forest-6000000227313486929.ged |
-| `@I6000000003087188326@` | `INDI.BIRT.DATE` | 1229 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1225 | export-Forest-6000000227313486929.ged |
-| `@I6000000003087188326@` | `INDI.DEAT.DATE` | 1246 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1245 | export-Forest-6000000227313486929.ged |
 | `@I6000000003897541752@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 12 AUG 2026 | export-Forest-6000000227297843999.ged |
 | `@I6000000003897541752@` | `INDI.BIRT.DATE` | 1111 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1115 | export-Forest-6000000227297843999.ged |
 | `@I6000000003897541752@` | `INDI.DEAT.DATE` | 1160 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1160 | export-Forest-6000000227297843999.ged |
@@ -87015,9 +87018,6 @@ By path:
 | `@I6000000000771264432@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 22 JUN 2026 | export-Forest-6000000227676734863.ged |
 | `@I6000000000771264432@` | `INDI.BIRT.DATE` | 30 OCT 1015 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1015 | export-Forest-6000000227676734863.ged |
 | `@I6000000000771264432@` | `INDI.BURI.DATE` | SEP 1066 | rootsmagic-PFR5-LDS-2026-09-25.ged | 14 OCT 1066 | export-Forest-6000000227676734863.ged |
-| `@I6000000003495280505@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 25 JUN 2026 | export-Forest-6000000227298391886.ged |
-| `@I6000000003495280505@` | `INDI.BIRT.DATE` | ABT 1145 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1156 | export-Forest-6000000227298391886.ged |
-| `@I6000000003495280505@` | `INDI.DEAT.DATE` | ABT 1198 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1198 | export-Forest-6000000227298391886.ged |
 | `@I6000000001412949016@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 27 APR 2022 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000001412949016@` | `INDI.DEAT.DATE` | 30 MAR 1185 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1185 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000004533250087@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 12 AUG 2026 | export-Forest-6000000227676734863.ged |
@@ -87806,9 +87806,6 @@ By path:
 | `@I6000000004533384785@` | `INDI.BIRT.DATE` | ABT 940 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 934 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000006802589692@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 28 APR 2022 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000003645760032@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 25 JUL 2025 | export-Forest-6000000227317899894.ged |
-| `@I6000000002187801612@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 02 DEC 2025 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
-| `@I6000000002187801612@` | `INDI.BIRT.DATE` | 1160 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1157 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
-| `@I6000000002187801612@` | `INDI.DEAT.DATE` | 1220 | rootsmagic-PFR5-LDS-2026-09-25.ged | 2 FEB 1218 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000000905031154@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 14 SEP 2023 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000000905031154@` | `INDI.BURI.DATE` | MAR 1154 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1154 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000001210401775@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 11 SEP 2025 | export-Forest-6000000227676734863.ged |
@@ -88710,8 +88707,6 @@ By path:
 | `@I6000000010915367473@` | `INDI.DEAT.DATE` | ABT 1267 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1263 | export-Forest-6000000227298391886.ged |
 | `@I6000000002188563846@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 30 APR 2022 | export-Forest-6000000227322001858.ged |
 | `@I6000000002188563846@` | `INDI.DEAT.DATE` | 1210 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1210 | export-Forest-6000000227322001858.ged |
-| `@I6000000004533196277@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 30 APR 2022 | export-Forest-6000000227322001858.ged |
-| `@I6000000004533196277@` | `INDI.DEAT.DATE` | BEF 1180 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1180 | export-Forest-6000000227322001858.ged |
 | `@I6000000003827315945@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 26 JAN 2023 | export-Forest-6000000227297843999.ged |
 | `@I6000000003827305543@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 26 APR 2022 | export-Forest-6000000227298391886.ged |
 | `@I6000000003827305543@` | `INDI.BIRT.DATE` | 1098 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1091 | export-Forest-6000000227298391886.ged |
@@ -89684,16 +89679,10 @@ By path:
 | `@I6000000006727869435@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 20 JUL 2024 | exports/8-19 exports/export-Forest-6000000227295719853.ged |
 | `@I6000000006727869435@` | `INDI.BIRT.DATE` | ABT 1161 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1155 | exports/8-19 exports/export-Forest-6000000227295719853.ged |
 | `@I6000000008209581435@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 15 DEC 2014 | export-Forest-6000000227298391886.ged |
-| `@I6000000003827470062@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 29 APR 2022 | export-Forest-6000000227298391886.ged |
-| `@I6000000003827470062@` | `INDI.BIRT.DATE` | ABT 1127 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1131 | export-Forest-6000000227298391886.ged |
-| `@I6000000003827470062@` | `INDI.DEAT.DATE` | BEF 1180 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1180 | export-Forest-6000000227298391886.ged |
 | `@I6000000008209520936@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 08 JAN 2019 | export-Forest-6000000227298391886.ged |
 | `@I6000000015482810672@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 02 JUL 2023 | export-Forest-6000000227322001858.ged |
 | `@I6000000015482810672@` | `INDI.BIRT.DATE` | 1069 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1065 | export-Forest-6000000227322001858.ged |
 | `@I6000000015482810672@` | `INDI.DEAT.DATE` | 28 AUG 1125 | rootsmagic-PFR5-LDS-2026-09-25.ged | BEF 30 AUG 1125 | export-Forest-6000000227322001858.ged |
-| `@I6000000003827470068@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 17 SEP 2023 | export-Forest-6000000227298391886.ged |
-| `@I6000000003827470068@` | `INDI.BIRT.DATE` | AFT 1129 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1160 | export-Forest-6000000227676734863.ged |
-| `@I6000000003827470068@` | `INDI.DEAT.DATE` | AFT 15 JAN 1197 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1197 | export-Forest-6000000227676734863.ged |
 | `@I6000000003827612430@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 14 FEB 2026 | export-Forest-6000000227297843999.ged |
 | `@I6000000003827612430@` | `INDI.BIRT.DATE` | 1056 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1045 | export-Forest-6000000227297843999.ged |
 | `@I6000000003827612430@` | `INDI.DEAT.DATE` | 18 FEB 1118 | rootsmagic-PFR5-LDS-2026-09-25.ged | 16 APR 1121 | export-Forest-6000000227297843999.ged |
@@ -90690,6 +90679,9 @@ By path:
 | `@I5233386757510064451@` | `INDI.BIRT.DATE` | 1043 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1042 | export-Forest-6000000209042542914.ged |
 | `@I6000000212709336827@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 22 DEC 2024 | export-Forest-6000000209042542914.ged |
 | `@I6000000212709336827@` | `INDI.BIRT.DATE` | ABT 910 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 945 | export-Forest-6000000209042542914.ged |
+| `@I6000000173713743961@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 28 APR 2022 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000173713743961@` | `INDI.BIRT.DATE` | 1000 | rootsmagic-PFR5-LDS-2026-09-25.ged | BET 952 AND 1012 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000173713743961@` | `INDI.DEAT.DATE` | 1060 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 1060 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000003828361657@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 28 AUG 2024 | export-Forest-6000000227298391886.ged |
 | `@I6000000003828361657@` | `INDI.BIRT.DATE` | 998 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 970 | export-Forest-6000000227298391886.ged |
 | `@I6000000003828361657@` | `INDI.DEAT.DATE` | 10 JUN 1052 | rootsmagic-PFR5-LDS-2026-09-25.ged | BEF 1032 | export-Forest-6000000227298391886.ged |
@@ -90718,6 +90710,9 @@ By path:
 | `@I6000000002240801301@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 29 APR 2022 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000002240801301@` | `INDI.BIRT.DATE` | ABT 1087 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1095 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000002240801301@` | `INDI.DEAT.DATE` | 10 JUN 1141 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 10 JUN 1141 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000003650795370@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 01 MAY 2022 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000003650795370@` | `INDI.BIRT.DATE` | ABT 955 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 960 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000003650795370@` | `INDI.DEAT.DATE` | ABT 1019 | rootsmagic-PFR5-LDS-2026-09-25.ged | 1020 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000003146960249@` | `INDI.CHAN.DATE` | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged | 09 SEP 2025 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000003146960249@` | `INDI.BIRT.DATE` | 935 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 935 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000003146960249@` | `INDI.DEAT.DATE` | 17 SEP 978 | rootsmagic-PFR5-LDS-2026-09-25.ged | ABT 7 SEP 978 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
@@ -91976,6 +91971,8 @@ By path:
 | `@I6000000005588616059@` | `INDI.BURI.DATE` | OCT 877 | rootsmagic-PFR5-LDS-2026-09-30.ged | AFT 6 OCT 877 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000091228965439@` | `INDI.DEAT.DATE` | 950 | rootsmagic-PFR5-LDS-2026-09-30.ged | BET NOV 983 AND DEC 983 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000001412933605@` | `INDI.DEAT.DATE` | DEC 968 | rootsmagic-PFR5-LDS-2026-09-30.ged | 968 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000003828021900@` | `INDI.BIRT.DATE` | ABT 975 | rootsmagic-PFR5-LDS-2026-09-30.ged | ABT 982 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
+| `@I6000000003828021900@` | `INDI.DEAT.DATE` | 1 MAR 1043 | rootsmagic-PFR5-LDS-2026-09-30.ged | ABT 1023 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000003299280458@` | `INDI.BIRT.DATE` | 830 | rootsmagic-PFR5-LDS-2026-09-30.ged | BET 825 AND 830 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000006906655660@` | `INDI.BIRT.DATE` | 1126 | rootsmagic-PFR5-LDS-2026-09-30.ged | ABT 1126 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000006906655660@` | `INDI.DEAT.DATE` | 16 SEP 1150 | rootsmagic-PFR5-LDS-2026-09-30.ged | 19 SEP 1150 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
@@ -96167,8 +96164,6 @@ By path:
 | `@I6000000013093828902@` | `INDI.BIRT.DATE` | ABT 1080 | export-Forest-6000000227491932881.ged | ABT 1078 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000013093828902@` | `INDI.DEAT.DATE` | 1145 | export-Forest-6000000227491932881.ged | 1140 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000013093828902@` | `INDI.CHAN.DATE` | 14 MAY 2025 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000047015361965@` | `INDI.BIRT.DATE` | ABT 1120 | export-Forest-6000000227491932881.ged | ABT 1106 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000047015361965@` | `INDI.CHAN.DATE` | 02 JUL 2024 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533283733@` | `INDI.DEAT.DATE` | AFT 1145 | export-Forest-6000000227491932881.ged | 29 OCT 1178 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533283733@` | `INDI.CHAN.DATE` | 04 MAR 2025 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000007589212979@` | `INDI.BIRT.DATE` | 1100 | export-Forest-6000000227491932881.ged | AFT 1100 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -96675,9 +96670,7 @@ By path:
 | `@I6000000006727869435@` | `INDI.CHAN.DATE` | 20 JUL 2024 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002187828377@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000015423521080@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 27 APR 2022 | export-Forest-6000000227298391886.ged |
-| `@I6000000003827470068@` | `INDI.BIRT.DATE` | 1160 | export-Forest-6000000227491932881.ged | AFT 1129 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827470068@` | `INDI.DEAT.DATE` | 1197 | export-Forest-6000000227491932881.ged | AFT 15 JAN 1197 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827470068@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000003827470068@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 17 SEP 2023 | export-Forest-6000000227298391886.ged |
 | `@I6000000200469970834@` | `INDI.BIRT.DATE` | ABT 1190 | export-Forest-6000000227491932881.ged | 1185 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000200469970834@` | `INDI.CHAN.DATE` | 28 FEB 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000007584661312@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -96937,13 +96930,8 @@ By path:
 | `@I6000000004533176176@` | `INDI.CHAN.DATE` | 29 MAY 2025 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000015423343970@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 27 APR 2022 | export-Forest-6000000227298391886.ged |
 | `@I6000000015423309808@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 27 APR 2022 | export-Forest-6000000227298391886.ged |
-| `@I6000000003827470062@` | `INDI.BIRT.DATE` | ABT 1131 | export-Forest-6000000227491932881.ged | ABT 1127 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827470062@` | `INDI.DEAT.DATE` | ABT 1180 | export-Forest-6000000227491932881.ged | BEF 1180 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827470062@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000014961482241@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 29 NOV 2016 | export-Forest-6000000227298391886.ged |
 | `@I6000000014961031922@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227491932881.ged | 15 JAN 2017 | export-Forest-6000000227298391886.ged |
-| `@I6000000004533196277@` | `INDI.DEAT.DATE` | ABT 1180 | export-Forest-6000000227491932881.ged | BEF 1180 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000004533196277@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000200469328848@` | `INDI.DEAT.DATE` | BEF 1252 | export-Forest-6000000227491932881.ged | 1252 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000200469328848@` | `INDI.CHAN.DATE` | 28 FEB 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000000445183988@` | `INDI.BIRT.DATE` | 1223 | export-Forest-6000000227491932881.ged | ABT 1220 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -97157,9 +97145,6 @@ By path:
 | `@I6000000002187798578@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008354369380@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008354193367@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187801612@` | `INDI.BIRT.DATE` | ABT 1157 | export-Forest-6000000227491932881.ged | 1160 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187801612@` | `INDI.DEAT.DATE` | 2 FEB 1218 | export-Forest-6000000227491932881.ged | 1220 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187801612@` | `INDI.CHAN.DATE` | 02 DEC 2025 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533196051@` | `INDI.BIRT.DATE` | ABT 1143 | export-Forest-6000000227491932881.ged | ABT 1145 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533196051@` | `INDI.CHAN.DATE` | 06 MAR 2024 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003858523994@` | `INDI.BIRT.DATE` | 1140 | export-Forest-6000000227491932881.ged | 1160 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -97512,9 +97497,6 @@ By path:
 | `@I6000000003827922604@` | `INDI.CHAN.DATE` | 08 MAY 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008030414335@` | `INDI.DEAT.DATE` | 25 MAY 1204 | export-Forest-6000000227491932881.ged | 1214 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008030414335@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003495280505@` | `INDI.BIRT.DATE` | ABT 1156 | export-Forest-6000000227491932881.ged | ABT 1145 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003495280505@` | `INDI.DEAT.DATE` | 1198 | export-Forest-6000000227491932881.ged | ABT 1198 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003495280505@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010915367473@` | `INDI.DEAT.DATE` | ABT 1263 | export-Forest-6000000227491932881.ged | ABT 1267 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010915367473@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533196008@` | `INDI.CHAN.DATE` | 29 JUL 2025 | export-Forest-6000000227491932881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -97889,6 +97871,8 @@ By path:
 | `@I6000000021931201433@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-12.ged | 25 AUG 2026 | export-Forest-6000000227491932881.ged |
 | `@I6000000021931259299@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-12.ged | 25 AUG 2026 | export-Forest-6000000227491932881.ged |
 | `@I6000000021931395193@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-12.ged | 25 AUG 2026 | export-Forest-6000000227491932881.ged |
+| `@I6000000003645707458@` | `INDI.BIRT.DATE` | ABT 1130 | export-Forest-12.ged | ABT 1133 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000003645707458@` | `INDI.CHAN.DATE` | 22 DEC 2024 | export-Forest-12.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533725115@` | `INDI.BIRT.DATE` | 1130 | export-Forest-12.ged | ABT 1131 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533725115@` | `INDI.CHAN.DATE` | 28 MAY 2023 | export-Forest-12.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000000722900298@` | `INDI.BIRT.DATE` | 1080 | export-Forest-12.ged | 1090 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -98035,6 +98019,9 @@ By path:
 | `@I6000000005704400010@` | `INDI.BIRT.DATE` | ABT 931 | export-Forest-20.ged | 9 JUL 930 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005704400010@` | `INDI.BURI.DATE` | 973 | export-Forest-20.ged | AFT 15 MAR 973 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005704400010@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest-20.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000003650795370@` | `INDI.BIRT.DATE` | ABT 960 | export-Forest-20.ged | ABT 955 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000003650795370@` | `INDI.DEAT.DATE` | 1020 | export-Forest-20.ged | ABT 1019 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000003650795370@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-20.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000029349440949@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-20.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002043260887@` | `INDI.BIRT.DATE` | ABT 1002 | export-Forest-20.ged | 22 APR 997 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002043260887@` | `INDI.BURI.DATE` | 1037 | export-Forest-20.ged | 27 JUL 1038 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -99612,6 +99599,8 @@ By path:
 | `@F6000000224108293881@` | `FAM.HUSB` | @I6000000224108293877@ | export-Forest-8.ged | @I6000000223125136860@ | export-Descendants-6000000227714378863.ged |
 | `@F6000000004858909166@` | `FAM.HUSB` | @I6000000004858909161@ | export-Forest-8.ged | @I6000000004827515077@ | export-Descendants-6000000227714378863.ged |
 | `@I6000000227892521858@` | `INDI.CHAN.DATE` | 23 SEP 2026 | export-Ancestors-6000000227891340662.ged | 24 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000227892521867@` | `INDI.BIRT.DATE` | 1 JAN 1858 | export-Ancestors-6000000227891340662.ged | 23 november 1849 | PFR5-LDS-ancestors12-descendants2.ged |
+| `@I6000000227892521867@` | `INDI.DEAT.DATE` | 19 MAR 1934 | export-Ancestors-6000000227891340662.ged | 6 juli 1874 | PFR5-LDS-ancestors12-descendants2.ged |
 | `@I6000000227892521906@` | `INDI.CHAN.DATE` | 23 SEP 2026 | export-Ancestors-6000000227891340662.ged | 24 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000227892521918@` | `INDI.CHAN.DATE` | 23 SEP 2026 | export-Ancestors-6000000227891340662.ged | 24 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000227892521880@` | `INDI.BIRT.DATE` | 20 MAR 1827 | export-Ancestors-6000000227891340662.ged | 18 APR 1824 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -102044,6 +102033,9 @@ By path:
 | `@I6000000041146037126@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Ancestors-6000000087535357291.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000123230798444@` | `INDI.CHAN.DATE` | 20 JAN 2025 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227322079156.ged |
 | `@I6000000177313726824@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227322079156.ged |
+| `@I6000000002006386304@` | `INDI.BIRT.DATE` | ABT 1435 | export-Ancestors-6000000087535357291.ged | 1425 | MBW7-P7H-ancestors12-descendants2.ged |
+| `@I6000000002006386304@` | `INDI.DEAT.DATE` | ABT 1481 | export-Ancestors-6000000087535357291.ged | 1481 | MBW7-P7H-ancestors12-descendants2.ged |
+| `@I6000000002006386304@` | `INDI.CHAN.DATE` | 19 APR 2024 | export-Ancestors-6000000087535357291.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003281256924@` | `INDI.CHAN.DATE` | 28 JUL 2025 | export-Ancestors-6000000087535357291.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003645811056@` | `INDI.DEAT.DATE` | ABT 1471 | export-Ancestors-6000000087535357291.ged | 1471 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000003645811056@` | `INDI.CHAN.DATE` | 10 SEP 2025 | export-Ancestors-6000000087535357291.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -102736,7 +102728,6 @@ By path:
 | `@I6000000003097871490@` | `INDI.BIRT.DATE` | ABT 927 | exports/gaps/export-Ancestors-6000000177921459114.ged | 936 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003097871490@` | `INDI.DEAT.DATE` | 29 SEP 961 | exports/gaps/export-Ancestors-6000000177921459114.ged | 29 SEP 964 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003097871490@` | `INDI.CHAN.DATE` | 09 JUL 2025 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000006568712910@` | `INDI.DEAT.DATE` | BET 27 SEP 979 AND 983 | exports/gaps/export-Ancestors-6000000177921459114.ged | 26 JAN 976 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I385880058560010090@` | `INDI.CHAN.DATE` | 18 MAR 2026 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533765610@` | `INDI.BIRT.DATE` | ABT 900 | exports/gaps/export-Ancestors-6000000177921459114.ged | 900 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533765610@` | `INDI.DEAT.DATE` | 954 | exports/gaps/export-Ancestors-6000000177921459114.ged | 12 OCT 953 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -102765,8 +102756,6 @@ By path:
 | `@I6000000003949711151@` | `INDI.BIRT.DATE` | ABT 938 | exports/gaps/export-Ancestors-6000000177921459114.ged | 923 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000011275477139@` | `INDI.BIRT.DATE` | ABT 890 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 865 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000011275477139@` | `INDI.DEAT.DATE` | 916 | exports/gaps/export-Ancestors-6000000177921459114.ged | NOV 916 | rootsmagic-PFR5-LDS-2026-09-30.ged |
-| `@I6000000001745348629@` | `INDI.BIRT.DATE` | BEF 898 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 869 | rootsmagic-PFR5-LDS-2026-09-30.ged |
-| `@I6000000004533664800@` | `INDI.BIRT.DATE` | BEF 889 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 869 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000003827791584@` | `INDI.BIRT.DATE` | ABT 895 | exports/gaps/export-Ancestors-6000000177921459114.ged | 899 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003827791584@` | `INDI.CHAN.DATE` | 01 MAY 2022 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002134762390@` | `INDI.CHAN.DATE` | 24 NOV 2025 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -102787,12 +102776,6 @@ By path:
 | `@I6000000154825138822@` | `INDI.BIRT.DATE` | ABT 920 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 934 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000154825138822@` | `INDI.DEAT.DATE` | 963 | exports/gaps/export-Ancestors-6000000177921459114.ged | AFT 963 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000154825138822@` | `INDI.CHAN.DATE` | 27 JUL 2026 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000015620969058@` | `INDI.BIRT.DATE` | ABT 910 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 895 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000015620969058@` | `INDI.DEAT.DATE` | 1 NOV 933 | exports/gaps/export-Ancestors-6000000177921459114.ged | 18 JAN 971 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000015620969058@` | `INDI.CHAN.DATE` | 30 APR 2022 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000025005403299@` | `INDI.BIRT.DATE` | ABT 875 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 901 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000025005403299@` | `INDI.DEAT.DATE` | 6 OCT 939 | exports/gaps/export-Ancestors-6000000177921459114.ged | 23 APR 944 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000025005403299@` | `INDI.CHAN.DATE` | 28 APR 2022 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001353932237@` | `INDI.BIRT.DATE` | ABT 860 | exports/gaps/export-Ancestors-6000000177921459114.ged | ABT 830 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001353932237@` | `INDI.CHAN.DATE` | 18 JUL 2026 | exports/gaps/export-Ancestors-6000000177921459114.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I4956806082660028398@` | `INDI.BIRT.DATE` | ABT 881 | exports/gaps/export-Ancestors-6000000177921459114.ged | 30 SEP 881 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -104431,8 +104414,6 @@ By path:
 | `@I6000000004148978545@` | `INDI.CHAN.DATE` | 06 DEC 2023 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003827751413@` | `INDI.BIRT.DATE` | 1120 | export-Descendants-6000000227086244080.ged | 1125 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003827751413@` | `INDI.CHAN.DATE` | 23 OCT 2024 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003243367319@` | `INDI.BIRT.DATE` | ABT 1127 | export-Descendants-6000000227086244080.ged | 1125 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003243367319@` | `INDI.CHAN.DATE` | 09 JAN 2023 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006290716901@` | `INDI.CHAN.DATE` | 28 NOV 2023 | export-Descendants-6000000227086244080.ged | 17 AUG 2026 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I4224136108080121326@` | `INDI.BIRT.DATE` | BET 1103 AND 1105 | export-Descendants-6000000227086244080.ged | 10 NOV 1105 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I4224136108080121326@` | `INDI.BURI.DATE` | 3 MAY 1152 | export-Descendants-6000000227086244080.ged | 10 MAY 1152 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -104648,8 +104629,6 @@ By path:
 | `@I6000000009688464215@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001412949016@` | `INDI.DEAT.DATE` | ABT 1185 | export-Descendants-6000000227086244080.ged | 30 MAR 1185 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001412949016@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583736@` | `INDI.DEAT.DATE` | ABT 1198 | export-Descendants-6000000227086244080.ged | 1197 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583736@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000054480587131@` | `INDI.BIRT.DATE` | ABT 1131 | export-Descendants-6000000227086244080.ged | 14 JUN 1134 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000054480587131@` | `INDI.DEAT.DATE` | AFT APR 1202 | export-Descendants-6000000227086244080.ged | APR 1202 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000054480587131@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -104708,9 +104687,6 @@ By path:
 | `@I6000000002187952714@` | `INDI.BIRT.DATE` | ABT 1162 | export-Descendants-6000000227086244080.ged | 1162 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002187952714@` | `INDI.DEAT.DATE` | 1217 | export-Descendants-6000000227086244080.ged | 8 DEC 1217 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002187952714@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583729@` | `INDI.BIRT.DATE` | ABT 1149 | export-Descendants-6000000227086244080.ged | ABT 1150 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583729@` | `INDI.DEAT.DATE` | 1223 | export-Descendants-6000000227086244080.ged | FEB 1221 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583729@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011953740277@` | `INDI.BIRT.DATE` | AFT 1160 | export-Descendants-6000000227086244080.ged | ABT 1160 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011953740277@` | `INDI.CHAN.DATE` | 09 APR 2020 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003772369196@` | `INDI.BIRT.DATE` | ABT 1081 | export-Descendants-6000000227086244080.ged | ABT 1080 | rootsmagic-PFR5-LDS-2026-09-30.ged |
@@ -104866,9 +104842,6 @@ By path:
 | `@I6000000003828074704@` | `INDI.BIRT.DATE` | ABT 1137 | export-Descendants-6000000227086244080.ged | 1140 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003828074704@` | `INDI.DEAT.DATE` | 1196 | export-Descendants-6000000227086244080.ged | 5 MAR 1196 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003828074704@` | `INDI.CHAN.DATE` | 13 APR 2023 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583715@` | `INDI.BIRT.DATE` | ABT 1165 | export-Descendants-6000000227086244080.ged | ABT 1171 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583715@` | `INDI.DEAT.DATE` | FEB 1228 | export-Descendants-6000000227086244080.ged | 14 FEB 1228 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583715@` | `INDI.CHAN.DATE` | 25 OCT 2024 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533274562@` | `INDI.BIRT.DATE` | ABT 1179 | export-Descendants-6000000227086244080.ged | 30 MAY 1180 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000004533274562@` | `INDI.DEAT.DATE` | ABT 1232 | export-Descendants-6000000227086244080.ged | 24 APR 1232 | exports/8-19 exports/export-Forest-6000000227297393968.ged |
 | `@I6000000004533274562@` | `INDI.CHAN.DATE` | 06 APR 2026 | export-Descendants-6000000227086244080.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -105158,6 +105131,9 @@ By path:
 | `@I6000000002889380984@` | `INDI.DEAT.DATE` | BET 1015 AND 6 JUL 1016 | export-Descendants-6000000227086455824.ged | 15 OCT 1015 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002889380984@` | `INDI.CHAN.DATE` | 27 FEB 2023 | export-Descendants-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001745083048@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Descendants-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000173713743961@` | `INDI.BIRT.DATE` | BET 952 AND 1012 | export-Descendants-6000000227086455824.ged | 1000 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000173713743961@` | `INDI.DEAT.DATE` | ABT 1060 | export-Descendants-6000000227086455824.ged | 1060 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000173713743961@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Descendants-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005737049161@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Descendants-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001744898194@` | `INDI.BIRT.DATE` | ABT 960 | export-Descendants-6000000227086455824.ged | 952 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001744898194@` | `INDI.BURI.DATE` | 6 APR 1028 | export-Descendants-6000000227086455824.ged | 1037 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -105676,6 +105652,8 @@ By path:
 | `@I6000000003827315463@` | `INDI.BURI.DATE` | ABT 489 | export-Forest-6000000227086244080.ged | 489 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000003827315463@` | `INDI.DEAT.DATE` | 507 | export-Forest-6000000227086244080.ged | 489 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000000437656204@` | `INDI.BIRT.DATE` | 468 | export-Forest-6000000227086244080.ged | ABT 480 | rootsmagic-PFR5-LDS-2026-09-30.ged |
+| `@I6000000010192446278@` | `INDI.BIRT.DATE` | 524 | export-Forest-6000000227086244080.ged | 534 | rootsmagic-PFR5-LDS-2026-09-30.ged |
+| `@I6000000000437198125@` | `INDI.BIRT.DATE` | 526 | export-Forest-6000000227086244080.ged | ABT 520 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000010191917882@` | `INDI.BIRT.DATE` | 530 | export-Forest-6000000227086244080.ged | 550 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000005956039079@` | `INDI.CHAN.DATE` | 14 DEC 2025 | export-Forest-6000000227086244080.ged | 08 AUG 2026 | export-Ancestors-6000000227464556886.ged |
 | `@I6000000005012134163@` | `INDI.BIRT.DATE` | 395 | export-Forest-6000000227086244080.ged | 387 | rootsmagic-PFR5-LDS-2026-09-30.ged |
@@ -106108,8 +106086,6 @@ By path:
 | `@I6000000001563350714@` | `INDI.BIRT.DATE` | 1182 | export-Forest-6000000227086380915.ged | ABT 1182 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001563350714@` | `INDI.DEAT.DATE` | 1243 | export-Forest-6000000227086380915.ged | 1242 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001563350714@` | `INDI.CHAN.DATE` | 25 JUN 2024 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000001501073741@` | `INDI.BIRT.DATE` | 1184 | export-Forest-6000000227086380915.ged | ABT 1183 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000001501073741@` | `INDI.CHAN.DATE` | 07 FEB 2026 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001501073724@` | `INDI.BIRT.DATE` | 1177 | export-Forest-6000000227086380915.ged | ABT 1177 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001501073724@` | `INDI.DEAT.DATE` | 1234 | export-Forest-6000000227086380915.ged | ABT 1234 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001501073724@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -106166,10 +106142,6 @@ By path:
 | `@I6000000005017983373@` | `INDI.BIRT.DATE` | 1195 | export-Forest-6000000227086380915.ged | 1192 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005017983373@` | `INDI.DEAT.DATE` | 1267 | export-Forest-6000000227086380915.ged | 1272 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005017983373@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000009304962181@` | `INDI.BIRT.DATE` | ABT 1192 | export-Forest-6000000227086380915.ged | ABT 1198 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000009304962181@` | `INDI.DEAT.DATE` | 26 JUN 1268 | export-Forest-6000000227086380915.ged | 8 JAN 1255 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000009304962181@` | `INDI.CHAN.DATE` | 07 FEB 2026 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000001500984301@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000027483397023@` | `INDI.DEAT.DATE` | 1218 | export-Forest-6000000227086380915.ged | 1219 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000027483397023@` | `INDI.CHAN.DATE` | 11 MAR 2015 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005076742255@` | `INDI.CHAN.DATE` | 19 JUL 2025 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -106324,9 +106296,6 @@ By path:
 | `@I6000000010455043218@` | `INDI.DEAT.DATE` | ABT 1178 | export-Forest-6000000227086380915.ged | 6 DEC 1178 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010455043218@` | `INDI.CHAN.DATE` | 23 SEP 2025 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006727908777@` | `INDI.CHAN.DATE` | 09 AUG 2024 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003087188326@` | `INDI.BIRT.DATE` | ABT 1225 | export-Forest-6000000227086380915.ged | 1229 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003087188326@` | `INDI.DEAT.DATE` | ABT 1245 | export-Forest-6000000227086380915.ged | 1246 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003087188326@` | `INDI.CHAN.DATE` | 15 AUG 2023 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006101415543@` | `INDI.BIRT.DATE` | 1216 | export-Forest-6000000227086380915.ged | 1215 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006101415543@` | `INDI.CHAN.DATE` | 01 AUG 2022 | export-Forest-6000000227086380915.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000014723878069@` | `INDI.DEAT.DATE` | ABT 1271 | export-Forest-6000000227086380915.ged | 9 DEC 1262 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -106421,6 +106390,8 @@ By path:
 | `@I6000000212709336827@` | `INDI.CHAN.DATE` | 22 DEC 2024 | export-Forest-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001353933886@` | `INDI.DEAT.DATE` | AFT 1028 | export-Forest-6000000227086455824.ged | BET 988 AND 1041 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000170677980027@` | `INDI.CHAN.DATE` | 13 JAN 2021 | export-Forest-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000034958259389@` | `INDI.BIRT.DATE` | ABT 933 | export-Forest-6000000227086455824.ged | ABT 925 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000034958259389@` | `INDI.CHAN.DATE` | 02 OCT 2016 | export-Forest-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002187823921@` | `INDI.BIRT.DATE` | 1012 | export-Forest-6000000227086455824.ged | 1005 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000007275739403@` | `INDI.BIRT.DATE` | ABT 875 | export-Forest-6000000227086455824.ged | 873 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000007275739403@` | `INDI.DEAT.DATE` | 12 APR 901 | export-Forest-6000000227086455824.ged | AFT NOV 912 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -106443,6 +106414,8 @@ By path:
 | `@I6000000008819754054@` | `INDI.BIRT.DATE` | ABT 915 | export-Forest-6000000227086455824.ged | 915 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008819754054@` | `INDI.DEAT.DATE` | 999 | export-Forest-6000000227086455824.ged | 8 APR 960 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008819754054@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000003828021900@` | `INDI.BIRT.DATE` | ABT 982 | export-Forest-6000000227086455824.ged | ABT 975 | rootsmagic-PFR5-LDS-2026-09-30.ged |
+| `@I6000000003828021900@` | `INDI.DEAT.DATE` | ABT 1023 | export-Forest-6000000227086455824.ged | 1 MAR 1043 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000003816916461@` | `INDI.BIRT.DATE` | ABT 975 | export-Forest-6000000227086455824.ged | ABT 960 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003816916461@` | `INDI.DEAT.DATE` | ABT 1035 | export-Forest-6000000227086455824.ged | AFT 1008 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003816916461@` | `INDI.CHAN.DATE` | 22 DEC 2024 | export-Forest-6000000227086455824.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -106507,6 +106480,8 @@ By path:
 | `@I6000000001169157316@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I342489558850013756@` | `INDI.BIRT.DATE` | ABT 960 | export-Forest-6000000227086506866.ged | 960 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I342489558850013756@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001169179281@` | `INDI.BIRT.DATE` | ABT 970 | export-Forest-6000000227086506866.ged | ABT 963 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001169179281@` | `INDI.CHAN.DATE` | 22 DEC 2024 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002277151794@` | `INDI.BIRT.DATE` | OCT 1000 | export-Forest-6000000227086506866.ged | ABT 1000 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002277151794@` | `INDI.DEAT.DATE` | 1058 | export-Forest-6000000227086506866.ged | 27 FEB 1063 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002277151794@` | `INDI.BURI.DATE` | 1064 | export-Forest-6000000227086506866.ged | AFT 27 FEB 1063 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -106519,8 +106494,6 @@ By path:
 | `@I6000000000295663857@` | `INDI.CHAN.DATE` | 21 FEB 2024 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003828256279@` | `INDI.BIRT.DATE` | 1005 | export-Forest-6000000227086506866.ged | ABT 1005 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003828256279@` | `INDI.CHAN.DATE` | 26 DEC 2022 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000001169084849@` | `INDI.BIRT.DATE` | ABT 878 | export-Forest-6000000227086506866.ged | ABT 876 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000001169084849@` | `INDI.CHAN.DATE` | 11 FEB 2023 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003820968876@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001169229771@` | `INDI.BIRT.DATE` | 955 | export-Forest-6000000227086506866.ged | ABT 955 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001169229771@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227086506866.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107011,6 +106984,8 @@ By path:
 | `@I6000000001460298612@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000029519237024@` | `INDI.CHAN.DATE` | 01 DEC 2023 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002374397365@` | `INDI.CHAN.DATE` | 01 AUG 2024 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000076851466727@` | `INDI.BIRT.DATE` | ABT 1014 | export-Forest-6000000227225487992.ged | ABT 990 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000076851466727@` | `INDI.CHAN.DATE` | 19 FEB 2025 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001459479241@` | `INDI.BIRT.DATE` | 945 | export-Forest-6000000227225487992.ged | ABT 945 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001459479241@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001459386250@` | `INDI.BIRT.DATE` | 980 | export-Forest-6000000227225487992.ged | 975 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107173,12 +107148,16 @@ By path:
 | `@I6000000001471841421@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001472243329@` | `INDI.BIRT.DATE` | 1006 | export-Forest-6000000227225487992.ged | ABT 1000 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001472243329@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001471800317@` | `INDI.BIRT.DATE` | ABT 1040 | export-Forest-6000000227225487992.ged | ABT 1046 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001471800317@` | `INDI.CHAN.DATE` | 26 MAR 2018 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000013144176566@` | `INDI.BIRT.DATE` | ABT 1042 | export-Forest-6000000227225487992.ged | 1042 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000013144176566@` | `INDI.DEAT.DATE` | 23 MAY 1118 | export-Forest-6000000227225487992.ged | 22 MAY 1118 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000013144176566@` | `INDI.CHAN.DATE` | 05 JAN 2019 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000077428836925@` | `INDI.BIRT.DATE` | ABT 940 | export-Forest-6000000227225487992.ged | ABT 965 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000077428836925@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000077427561685@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000077429025401@` | `INDI.BIRT.DATE` | ABT 999 | export-Forest-6000000227225487992.ged | ABT 985 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000077429025401@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177296451@` | `INDI.BIRT.DATE` | ABT 910 | export-Forest-6000000227225487992.ged | ABT 930 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177296451@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001169182305@` | `INDI.BIRT.DATE` | 935 | export-Forest-6000000227225487992.ged | ABT 935 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107216,6 +107195,7 @@ By path:
 | `@I6000000001465257408@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006802356849@` | `INDI.BIRT.DATE` | ABT 1075 | export-Forest-6000000227225487992.ged | 1075 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006802356849@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001471817302@` | `INDI.BIRT.DATE` | ABT 1045 | export-Forest-6000000227225487992.ged | 1055 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000009389077909@` | `INDI.BIRT.DATE` | ABT 1014 | export-Forest-6000000227225487992.ged | 1014 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000009389077909@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001449074001@` | `INDI.BIRT.DATE` | 1050 | export-Forest-6000000227225487992.ged | ABT 1050 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107405,8 +107385,6 @@ By path:
 | `@I6000000001459346066@` | `INDI.CHAN.DATE` | 04 MAY 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010222381368@` | `INDI.BIRT.DATE` | 1110 | export-Forest-6000000227225487992.ged | 1120 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010222381368@` | `INDI.CHAN.DATE` | 18 MAR 2015 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000032057328170@` | `INDI.DEAT.DATE` | 18 JUN 1188 | export-Forest-6000000227225487992.ged | 1188 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000032057328170@` | `INDI.CHAN.DATE` | 27 JUN 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010606590808@` | `INDI.BIRT.DATE` | 1150 | export-Forest-6000000227225487992.ged | ABT 1150 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010606590808@` | `INDI.CHAN.DATE` | 09 NOV 2015 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000034222586916@` | `INDI.CHAN.DATE` | 27 JUN 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107419,6 +107397,8 @@ By path:
 | `@I3250062@` | `INDI.DEAT.DATE` | 22 SEP 1241 | export-Forest-6000000227225487992.ged | 23 SEP 1241 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I3250062@` | `INDI.CHAN.DATE` | 15 MAY 2026 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001469486917@` | `INDI.CHAN.DATE` | 13 NOV 2020 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000007409210641@` | `INDI.BIRT.DATE` | ABT 1200 | export-Forest-6000000227225487992.ged | ABT 1184 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000007409210641@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003082447466@` | `INDI.CHAN.DATE` | 21 JUL 2025 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000009796535940@` | `INDI.BIRT.DATE` | AFT 1137 | export-Forest-6000000227225487992.ged | 1138 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000009796535940@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227225487992.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107724,6 +107704,8 @@ By path:
 | `@I342469849260013722@` | `INDI.CHAN.DATE` | 15 MAY 2026 | export-Forest-6000000227227016909.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010232249252@` | `INDI.DEAT.DATE` | 1241 | export-Forest-6000000227227016909.ged | 25 JUL 1241 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010232249252@` | `INDI.CHAN.DATE` | 15 MAY 2026 | export-Forest-6000000227227016909.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I4073235@` | `INDI.BIRT.DATE` | ABT 1200 | export-Forest-6000000227227016909.ged | ABT 1180 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I4073235@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-6000000227227016909.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011553005880@` | `INDI.BIRT.DATE` | 1163 | export-Forest-6000000227227016909.ged | ABT 1163 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011553005880@` | `INDI.DEAT.DATE` | 1 SEP 1235 | export-Forest-6000000227227016909.ged | 8 SEP 1235 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011553005880@` | `INDI.CHAN.DATE` | 20 MAY 2026 | export-Forest-6000000227227016909.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107815,8 +107797,12 @@ By path:
 | `@I3137665@` | `INDI.DEAT.DATE` | ABT 970 | export-Forest-6000000227227035828.ged | ABT 950 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I3137665@` | `INDI.CHAN.DATE` | 16 MAR 2023 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177297014@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000074969690825@` | `INDI.BIRT.DATE` | ABT 910 | export-Forest-6000000227227035828.ged | ABT 915 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000074969690825@` | `INDI.CHAN.DATE` | 28 JAN 2018 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001465590808@` | `INDI.BIRT.DATE` | ABT 915 | export-Forest-6000000227227035828.ged | ABT 925 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001465590808@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000074964285240@` | `INDI.BIRT.DATE` | ABT 916 | export-Forest-6000000227227035828.ged | ABT 915 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000074964285240@` | `INDI.CHAN.DATE` | 28 JAN 2018 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006783612419@` | `INDI.BIRT.DATE` | ABT 860 | export-Forest-6000000227227035828.ged | ABT 890 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000015477260648@` | `INDI.BIRT.DATE` | 960 | export-Forest-6000000227227035828.ged | 965 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000015477260648@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107829,8 +107815,6 @@ By path:
 | `@I6000000003645908760@` | `INDI.BIRT.DATE` | ABT 940 | export-Forest-6000000227227035828.ged | ABT 950 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003645908760@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177296591@` | `INDI.BIRT.DATE` | 910 | export-Forest-6000000227227035828.ged | 900 | rootsmagic-PFR5-LDS-2026-09-30.ged |
-| `@I6000000011946489855@` | `INDI.BIRT.DATE` | ABT 875 | export-Forest-6000000227227035828.ged | 872 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000011946489855@` | `INDI.CHAN.DATE` | 03 MAY 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000000658580126@` | `INDI.BIRT.DATE` | 880 | export-Forest-6000000227227035828.ged | 872 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000000658580126@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011814022806@` | `INDI.CHAN.DATE` | 10 AUG 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -107899,6 +107883,8 @@ By path:
 | `@I6000000009590593992@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177296541@` | `INDI.BIRT.DATE` | ABT 910 | export-Forest-6000000227227035828.ged | 910 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177296541@` | `INDI.CHAN.DATE` | 06 MAY 2018 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001169204915@` | `INDI.BIRT.DATE` | ABT 913 | export-Forest-6000000227227035828.ged | ABT 917 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000001169204915@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003241735802@` | `INDI.BIRT.DATE` | 940 | export-Forest-6000000227227035828.ged | ABT 940 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003241735802@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008177296569@` | `INDI.CHAN.DATE` | 15 DEC 2014 | export-Forest-6000000227227035828.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -108152,6 +108138,8 @@ By path:
 | `@I6000000011953282844@` | `INDI.BIRT.DATE` | ABT 870 | export-Forest-6000000227227039845.ged | ABT 890 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000011953282844@` | `INDI.CHAN.DATE` | 02 MAR 2017 | export-Forest-6000000227227039845.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000009892786972@` | `INDI.CHAN.DATE` | 31 JAN 2015 | export-Forest-6000000227227039845.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000029956389127@` | `INDI.BIRT.DATE` | ABT 936 | export-Forest-6000000227227039845.ged | ABT 950 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000029956389127@` | `INDI.CHAN.DATE` | 27 JUN 2022 | export-Forest-6000000227227039845.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000075484640999@` | `INDI.BIRT.DATE` | ABT 920 | export-Forest-6000000227227039845.ged | ABT 910 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000075484640999@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227227039845.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003242509064@` | `INDI.BIRT.DATE` | 900 | export-Forest-6000000227227039845.ged | ABT 900 | rootsmagic-PFR5-LDS-2026-09-30.ged |
@@ -109066,6 +109054,8 @@ By path:
 | `@I6000000008815551709@` | `INDI.CHAN.DATE` | 25 AUG 2026 | export-Forest-6000000227787716121.ged | 30 APR 2022 | export-Forest-6000000227225628908.ged |
 | `@I6000000009602077168@` | `INDI.CHAN.DATE` | 13 SEP 2026 | export-Forest-6000000227787716121.ged | 18 JUN 2025 | export-Ancestors-6000000177921459078.ged |
 | `@I6000000009602172784@` | `INDI.CHAN.DATE` | 13 SEP 2026 | export-Forest-6000000227787716121.ged | 29 APR 2022 | export-Ancestors-6000000177921459078.ged |
+| `@I6000000002187690352@` | `INDI.BIRT.DATE` | ABT 893 | export-Forest-6000000227787716121.ged | BEF 880 | rootsmagic-PFR5-LDS-2026-09-30.ged |
+| `@I6000000002187690352@` | `INDI.DEAT.DATE` | 945 | export-Forest-6000000227787716121.ged | BEF 948 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000006293262169@` | `INDI.BIRT.DATE` | ABT 996 | export-Forest-6000000227787716121.ged | ABT 978 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000003495384814@` | `INDI.BIRT.DATE` | ABT 993 | export-Forest-6000000227787716121.ged | 992 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003495384814@` | `INDI.DEAT.DATE` | 1031 | export-Forest-6000000227787716121.ged | 1032 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -109139,6 +109129,8 @@ By path:
 | `@I6000000003243328097@` | `INDI.CHAN.DATE` | 07 MAR 2024 | export-Forest-6000000227258314174.ged | 27 AUG 2026 | export-Forest-6000000227787716121.ged |
 | `@I6000000006417079440@` | `INDI.BIRT.DATE` | ABT 999 | export-Forest-6000000227258314174.ged | BET 1030 AND 1040 | export-Ancestors-6000000227891340662.ged |
 | `@I6000000006417079440@` | `INDI.CHAN.DATE` | 01 MAY 2026 | export-Forest-6000000227258314174.ged | 08 SEP 2026 | export-Ancestors-6000000227891340662.ged |
+| `@I6000000003232515422@` | `INDI.BIRT.DATE` | ABT 1030 | export-Forest-6000000227258314174.ged | ABT 1025 | rootsmagic-PFR5-LDS-2026-09-30.ged |
+| `@I6000000003232515422@` | `INDI.DEAT.DATE` | AFT 20 FEB 1071 | export-Forest-6000000227258314174.ged | 1071 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000039840224493@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-6000000227258314174.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005406581101@` | `INDI.BIRT.DATE` | BEF 1020 | export-Forest-6000000227258314174.ged | AFT 1036 | export-Ancestors-6000000227891340662.ged |
 | `@I6000000005406581101@` | `INDI.DEAT.DATE` | 24 JUN 1074 | export-Forest-6000000227258314174.ged | AFT 24 JUN 1074 | export-Ancestors-6000000227891340662.ged |
@@ -109426,6 +109418,8 @@ By path:
 | `@I6000000000462674121@` | `INDI.CHAN.DATE` | 04 DEC 2024 | export-Forest-6000000227289547881.ged | 04 SEP 2026 | exports/hoknes-kingo/export-Ancestors-6000000177921459114.ged |
 | `@I6000000032763240838@` | `INDI.BIRT.DATE` | ABT 1313 | export-Forest-6000000227289547881.ged | abt. 1302 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000032763240838@` | `INDI.DEAT.DATE` | ABT 1387 | export-Forest-6000000227289547881.ged | ABT 1360 | MBW7-P7H-ancestors12-descendants2.ged |
+| `@I6000000222080866875@` | `INDI.BIRT.DATE` | ABT 1318 | export-Forest-6000000227289547881.ged | 1380 | MBW7-P7H-ancestors12-descendants2.ged |
+| `@I6000000222080866875@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227289547881.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000156644764851@` | `INDI.BIRT.DATE` | 1160 | export-Forest-6000000227289547881.ged | ABT 1160 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000156644764851@` | `INDI.CHAN.DATE` | 03 MAY 2022 | export-Forest-6000000227289547881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000083842636637@` | `INDI.CHAN.DATE` | 28 JUN 2024 | export-Forest-6000000227289547881.ged | 04 SEP 2026 | exports/hoknes-kingo/export-Ancestors-6000000177921459114.ged |
@@ -109564,7 +109558,6 @@ By path:
 | `@I6000000001463382156@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227289547881.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001036055652@` | `INDI.BIRT.DATE` | 1320 | export-Forest-6000000227289547881.ged | Abt 1320 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001036055652@` | `INDI.DEAT.DATE` | 1348 | export-Forest-6000000227289547881.ged | 1347 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000012533047952@` | `INDI.BIRT.DATE` | ABT 1365 | export-Forest-6000000227289547881.ged | ABT 1370 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000001191606803@` | `INDI.BIRT.DATE` | ABT 1390 | export-Forest-6000000227289547881.ged | 1390 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007764545581@` | `INDI.BIRT.DATE` | ABT 1280 | export-Forest-6000000227289547881.ged | about 1280 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000007764545581@` | `INDI.DEAT.DATE` | ABT 1349 | export-Forest-6000000227289547881.ged | 1359 | MBW7-P7H-ancestors12-descendants2.ged |
@@ -110379,6 +110372,8 @@ By path:
 | `@I6000000004214184242@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Descendants-6000000227712070008.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003823025083@` | `INDI.DEAT.DATE` | 1639 | export-Descendants-6000000227712070008.ged | 1635 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003823025083@` | `INDI.CHAN.DATE` | 24 AUG 2022 | export-Descendants-6000000227712070008.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000007980352331@` | `INDI.BIRT.DATE` | ABT 1595 | export-Descendants-6000000227712070008.ged | ABT 1583 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000007980352331@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Descendants-6000000227712070008.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000118056358520@` | `INDI.CHAN.DATE` | 19 AUG 2026 | export-Descendants-6000000227712070008.ged | 05 AUG 2025 | exports/8-19 exports/export-Forest-6000000227295848846.ged |
 | `@I6000000002390794792@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Descendants-6000000227712070008.ged | 04 MAY 2026 | export-Forest-6000000227289604840.ged |
 | `@I6000000002893785676@` | `INDI.CHAN.DATE` | 19 AUG 2026 | export-Descendants-6000000227712070008.ged | 05 AUG 2025 | exports/8-19 exports/export-Forest-6000000227295848846.ged |
@@ -111361,8 +111356,6 @@ By path:
 | `@I6000000032100966354@` | `INDI.CHAN.DATE` | 27 JUN 2022 | export-Descendants-6000000227226958932.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001469860043@` | `INDI.BIRT.DATE` | ABT 1150 | export-Descendants-6000000227226958932.ged | ABT 1140 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001469860043@` | `INDI.CHAN.DATE` | 04 MAY 2022 | export-Descendants-6000000227226958932.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000032057466034@` | `INDI.BIRT.DATE` | ABT 1154 | export-Descendants-6000000227226958932.ged | ABT 1143 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000032057466034@` | `INDI.CHAN.DATE` | 27 JUN 2022 | export-Descendants-6000000227226958932.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I3120280@` | `INDI.BIRT.DATE` | ABT 1162 | export-Descendants-6000000227226958932.ged | 1162 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I3120280@` | `INDI.CHAN.DATE` | 03 SEP 2020 | export-Descendants-6000000227226958932.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000008825918491@` | `INDI.CHAN.DATE` | 05 MAR 2015 | export-Descendants-6000000227226958932.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -112474,9 +112467,6 @@ By path:
 | `@I6000000012403033412@` | `INDI.BIRT.DATE` | ABT 1115 | export-Forest-6000000227380718910.ged | ABT 1123 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000012403033412@` | `INDI.DEAT.DATE` | ABT 1179 | export-Forest-6000000227380718910.ged | AFT 1179 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000012403033412@` | `INDI.CHAN.DATE` | 01 JUL 2023 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187814955@` | `INDI.BIRT.DATE` | 1116 | export-Forest-6000000227380718910.ged | ABT 1116 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187814955@` | `INDI.DEAT.DATE` | 1172 | export-Forest-6000000227380718910.ged | AFT 1173 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187814955@` | `INDI.CHAN.DATE` | 22 OCT 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000065111329845@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000022252159282@` | `INDI.CHAN.DATE` | 23 MAR 2023 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000006727888646@` | `INDI.DEAT.DATE` | ABT 999 | export-Forest-6000000227380718910.ged | 999 | export-Ancestors-6000000227464556886-2026-08-30.ged |
@@ -112517,10 +112507,6 @@ By path:
 | `@I6000000000437178654@` | `INDI.CHAN.DATE` | 09 MAY 2025 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002043225106@` | `INDI.BIRT.DATE` | ABT 1090 | export-Forest-6000000227380718910.ged | 1090 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000002043225106@` | `INDI.CHAN.DATE` | 09 MAY 2025 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827611720@` | `INDI.DEAT.DATE` | 1139 | export-Forest-6000000227380718910.ged | AFT 1136 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827611720@` | `INDI.CHAN.DATE` | 30 JAN 2024 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827611904@` | `INDI.BIRT.DATE` | ABT 1128 | export-Forest-6000000227380718910.ged | 1128 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827611904@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000196349752830@` | `INDI.DEAT.DATE` | ABT 13 APR 1155 | export-Forest-6000000227380718910.ged | 12 MAR 1176 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000196349752830@` | `INDI.CHAN.DATE` | 15 JUL 2023 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004533709603@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -112596,11 +112582,6 @@ By path:
 | `@I6000000129566418828@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000015311101218@` | `INDI.BIRT.DATE` | ABT 1080 | export-Forest-6000000227380718910.ged | ABT 1090 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000015311101218@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583722@` | `INDI.BIRT.DATE` | 1180 | export-Forest-6000000227380718910.ged | ABT 1175 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003827583722@` | `INDI.CHAN.DATE` | 25 OCT 2024 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187851758@` | `INDI.BIRT.DATE` | 1192 | export-Forest-6000000227380718910.ged | ABT 1192 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187851758@` | `INDI.DEAT.DATE` | 1242 | export-Forest-6000000227380718910.ged | JUN 1243 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000002187851758@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I347868854190012671@` | `INDI.CHAN.DATE` | 08 JAN 2024 | export-Forest-6000000227380718910.ged | 27 AUG 2026 | export-Forest-6000000227712070008.ged |
 | `@I6000000009665839880@` | `INDI.CHAN.DATE` | 20 JUL 2024 | export-Forest-6000000227380718910.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003827496317@` | `INDI.BIRT.DATE` | ABT 1178 | export-Forest-6000000227380718910.ged | 1180 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -112833,8 +112814,6 @@ By path:
 | `@I6000000000574102715@` | `INDI.BIRT.DATE` | 1651 | exports/stragglers/export-geni/export-Forest-40.ged | ABT 1651 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000000574102715@` | `INDI.CHAN.DATE` | 12 APR 2023 | exports/stragglers/export-geni/export-Forest-40.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000001462346540@` | `INDI.CHAN.DATE` | 11 JUL 2026 | exports/stragglers/export-geni/export-Forest-40.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000035360414299@` | `INDI.BIRT.DATE` | ABT 1390 | exports/stragglers/export-geni/export-Forest-40.ged | ABT 1384 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000035360414299@` | `INDI.CHAN.DATE` | 24 DEC 2024 | exports/stragglers/export-geni/export-Forest-40.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003095089973@` | `INDI.CHAN.DATE` | 25 NOV 2014 | exports/stragglers/export-geni/export-Forest-40.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000007913455977@` | `INDI.CHAN.DATE` | 23 DEC 2024 | exports/stragglers/export-geni/export-Forest-40.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000005608892006@` | `INDI.CHAN.DATE` | 14 APR 2023 | exports/stragglers/export-geni/export-Forest-40.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -112909,6 +112888,9 @@ By path:
 | `@I6000000003417357719@` | `INDI.CHAN.DATE` | 13 MAY 2024 | exports/stragglers/export-geni/export-Forest-43.ged | 25 AUG 2026 | export-Forest-6000000227474891888.ged |
 | `@I4643134319900012652@` | `INDI.CHAN.DATE` | 28 APR 2022 | exports/stragglers/export-geni/export-Forest-43.ged | 19 AUG 2026 | export-Forest-6000000227474891888.ged |
 | `@I5106195884670114511@` | `INDI.CHAN.DATE` | 23 FEB 2026 | exports/stragglers/export-geni/export-Forest-43.ged | 19 AUG 2026 | export-Forest-6000000227469177824.ged |
+| `@I6000000008923709992@` | `INDI.BIRT.DATE` | 1505 | exports/stragglers/export-geni/export-Forest-43.ged | 1532 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000008923709992@` | `INDI.DEAT.DATE` | AFT 1571 | exports/stragglers/export-geni/export-Forest-43.ged | 26 FEB 1598 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000008923709992@` | `INDI.CHAN.DATE` | 17 JAN 2016 | exports/stragglers/export-geni/export-Forest-43.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000023140541858@` | `INDI.CHAN.DATE` | 23 FEB 2026 | exports/stragglers/export-geni/export-Forest-43.ged | 09 AUG 2026 | export-Forest-6000000227469177824.ged |
 | `@I6000000006595819303@` | `INDI.CHAN.DATE` | 28 APR 2022 | exports/stragglers/export-geni/export-Forest-43.ged | 10 AUG 2026 | export-Forest-6000000227468650841.ged |
 | `@I6000000006595819315@` | `INDI.CHAN.DATE` | 27 APR 2022 | exports/stragglers/export-geni/export-Forest-43.ged | 10 AUG 2026 | export-Forest-6000000227468650841.ged |
@@ -114274,15 +114256,9 @@ By path:
 | `@I6000000000621079973@` | `INDI.BIRT.DATE` | ABT 1300 | export-Forest-6000000227802407043.ged | Abt 1300 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000000621079973@` | `INDI.DEAT.DATE` | ABT 1349 | export-Forest-6000000227802407043.ged |        1349 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000000621170104@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227802407043.ged | 04 FEB 2025 | export-Ancestors.ged |
-| `@I6000000008589462082@` | `INDI.BIRT.DATE` | ABT 1350 | export-Forest-6000000227802407043.ged | about 1350 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000008589462082@` | `INDI.DEAT.DATE` | AFT 1410 | export-Forest-6000000227802407043.ged | about 1408 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000001669654171@` | `INDI.BIRT.DATE` | ABT 1345 | export-Forest-6000000227802407043.ged | about 1345 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000001669654171@` | `INDI.DEAT.DATE` | ABT 1429 | export-Forest-6000000227802407043.ged | before 1429 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I5137046756290104512@` | `INDI.CHAN.DATE` | 11 SEP 2026 | export-Forest-6000000227802407043.ged | 28 OCT 2024 | export-Ancestors-6000000087535357291.ged |
 | `@I5432351857220032926@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227802407043.ged | 01 SEP 2025 | export-Ancestors.ged |
 | `@I6000000000621252583@` | `INDI.DEAT` | *(empty)* | export-Forest-6000000227802407043.ged | Y | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003651025546@` | `INDI.BIRT.DATE` | ABT 1380 | export-Forest-6000000227802407043.ged | 1380 | MBW7-P7H-ancestors12-descendants2.ged |
-| `@I6000000003651025546@` | `INDI.DEAT.DATE` | ABT 1461 | export-Forest-6000000227802407043.ged | 1461 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000000621295527@` | `INDI.BIRT.DATE` | 1246 | export-Forest-6000000227802407043.ged | about 1246 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000000621295527@` | `INDI.DEAT.DATE` | 1323 | export-Forest-6000000227802407043.ged |        1323 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000000621330410@` | `INDI.BIRT.DATE` | ABT 1248 | export-Forest-6000000227802407043.ged | about 1248 | MBW7-P7H-ancestors12-descendants2.ged |
@@ -114305,6 +114281,8 @@ By path:
 | `@I6000000007980874715@` | `INDI.BIRT.DATE` | ABT 1430 | export-Forest-6000000227802407043.ged | ABT 1412 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000007980874715@` | `INDI.DEAT.DATE` | 1464 | export-Forest-6000000227802407043.ged | AFT 1465 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000007980874715@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-6000000227802407043.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
+| `@I6000000002837418908@` | `INDI.BIRT.DATE` | ABT 1440 | export-Forest-6000000227802407043.ged | ABT 1425 | MBW7-P7H-ancestors12-descendants2.ged |
+| `@I6000000002837418908@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-6000000227802407043.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000004202433041@` | `INDI.BIRT.DATE` | ABT 1540 | export-Forest-6000000227802407043.ged | about 1540 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000004202433041@` | `INDI.DEAT.DATE` | 1587 | export-Forest-6000000227802407043.ged | 1615 | MBW7-P7H-ancestors12-descendants2.ged |
 | `@I6000000006300611140@` | `INDI.CHAN.DATE` | 03 MAY 2022 | export-Forest-6000000227802407043.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
@@ -115651,8 +115629,6 @@ By path:
 | `@I6000000006808708702@` | `INDI.CHAN.DATE` | 15 SEP 2026 | export-Forest-6000000227815618073.ged | 24 NOV 2025 | exports/8-19 exports/export-Forest-6000000227297762830.ged |
 | `@I6000000207827699827@` | `INDI.CHAN.DATE` | 15 SEP 2026 | export-Forest-6000000227815618073.ged | 02 AUG 2024 | exports/8-19 exports/export-Forest-6000000227297762830.ged |
 | `@I6000000001732073634@` | `INDI.CHAN.DATE` | 16 SEP 2026 | export-Forest-6000000227815618073.ged | 13 FEB 2026 | exports/archive/export-geni/export-Descendants-6000000211987119821.ged |
-| `@I6000000003492093275@` | `INDI.BIRT.DATE` | 1625 | export-Forest-6000000227816205043.ged | 1619 | rootsmagic-PFR5-LDS-2026-09-25.ged |
-| `@I6000000003492093275@` | `INDI.CHAN.DATE` | 14 MAY 2026 | export-Forest-6000000227816205043.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003492093290@` | `INDI.CHAN.DATE` | 14 MAY 2026 | export-Forest-6000000227816205043.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003492093315@` | `INDI.CHAN.DATE` | 14 MAY 2026 | export-Forest-6000000227816205043.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000003491940861@` | `INDI.BIRT.DATE` | ABT 1656 | export-Forest-6000000227816205043.ged | 1656 | PFR5-LDS-ancestors12-descendants2.ged |
@@ -116996,6 +116972,7 @@ By path:
 | `@I6000000001459915089@` | `INDI.CHAN.DATE` | 15 NOV 2014 | export-Forest-6000000227816621867.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000029380635861@` | `INDI.CHAN.DATE` | 27 JUN 2022 | export-Forest-6000000227816621867.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010222411154@` | `INDI.BIRT.DATE` | 910 | export-Forest-6000000227816621867.ged | ABT 910 | rootsmagic-PFR5-LDS-2026-09-30.ged |
+| `@I6000000009027220144@` | `INDI.BIRT.DATE` | 860 | export-Forest-6000000227816621867.ged | 846 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000032249895611@` | `INDI.BIRT.DATE` | ABT 850 | export-Forest-6000000227816621867.ged | ABT 900 | rootsmagic-PFR5-LDS-2026-09-30.ged |
 | `@I6000000010222371203@` | `INDI.BIRT.DATE` | 990 | export-Forest-6000000227816621867.ged | ABT 980 | rootsmagic-PFR5-LDS-2026-09-25.ged |
 | `@I6000000010222371203@` | `INDI.CHAN.DATE` | 02 FEB 2015 | export-Forest-6000000227816621867.ged | 25 SEP 2026 | rootsmagic-PFR5-LDS-2026-09-25.ged |
