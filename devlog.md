@@ -51802,3 +51802,10 @@ All 250 creations in `eb56da79f` carry an `en` label, and 84 people are carried 
 created`. The two named in the queue item are neither created nor carried, because both now have items: 類子
 菅原 `6000000002826094685` is `Q106237458` Sugawara no Ruishi (the duplicate `Q141638581` redirects to it), and
 和子 源 `6000000001999556566` is `Q14269031` Minamoto no Washi. Both were checked live by `P2600`.
+
+## 2026-10-04: the clean-up item moved back to the end of the queue
+
+It reached the top because the items above it were finished, and later items had been appended below it,
+although its own text says "Keep it at the end". Its checkout half is already resolved: the submodule is
+not sparse (`core.sparseCheckout` false), and `reports/`, `gedcom/`, `exports/` and `rootsmagic/` are
+present. The rest is the minimalist deletion pass, which `CLAUDE.md` holds as queued, not started.
