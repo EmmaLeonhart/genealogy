@@ -51178,3 +51178,13 @@ whose `mul` is `Given NN`; `mul`/`en` become the given name, `ja`/`zh`/`ko` the 
 name attached, transliterated NN); 16 CJK slots that do not look like ours are kept, 5 names have no reading.
 1,559 commands, `reports/given-nn-backfill-2026-10-03.qs`, run from the session's QuickStatements. Test
 `test_a_bare_given_name_is_not_given_nn_any_more` (CI). Item closed.
+
+## 2026-10-03: the -ez audit
+
+`reports/ez-name-audit.csv`: every `P5056`/`P734` ending -ez/-iz/-az on the 22,952 items of our ledger, read live,
+with the father's given name. 47 statements: 10 patronymic, 37 family name. Patronymics: 8 match the father, 1
+(`Q62657659` Fortun Íñiguez, father Eneko) matches once Eneko = Íñigo is known, 1 has no father on the item
+(`Q141632219` Muniadona Menéndez, b. 955), the only one against the 2026-09-25 rule. Family names: 13 match the
+father and are medieval patronymics recorded as family names (Alfonso VI "Fernández", Alfonso III "Ordóñez",
+Urraca of Aragon "Ramírez", Diego Rodríguez son of El Cid, both "Rodríguez" and "Ruiz"); 13 do not match the
+father; 11 have no father. Who added the 13 family-name statements is not checked. Item closed; nothing changed.
