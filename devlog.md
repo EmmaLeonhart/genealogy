@@ -51286,3 +51286,32 @@ Geni-FamilySearch verdicts are already in `reports/emma-judgments.tsv` (batches 
 `familysearch-frontier-iffy`) with the same verdict; none changed since. The other 64 are FamilySearch-FamilySearch
 pairs answered 2026-09-30/10-01, which are not written (no slot for them in the file, as on 2026-09-30). Nothing
 appended. The first queue item waits: a QuickStatements batch was still editing at 04:23 PDT.
+
+## 2026-10-04: why titles sit in `mul` aliases and not in labels (analysis, Emma's photo of 2026-10-03)
+
+**Both halves are rules working as written, from two rulings that were never put side by side.**
+
+- **The label carries no title because of the 2026-09-07 ruling** that titles must not end up in `mul` labels
+  (`Judith of Flanders` becomes `Judith`): `derive-labels.py` calls `namemodel.drop_label_title`, and the
+  creation goes out as `Hugo I de Blois`. `docs/rules/names.md` § *SCOPE IS DESCRIPTION MARKERS ONLY* still
+  says "a title in a label stays"; that sentence predates the ruling and is stale.
+- **The alias carries the title because Geni's display name carries `NSFX`** (`build-display-names.py`
+  concatenates given + surname + `NSFX`), and two paths add that form as an `Amul`:
+  (1) at creation, `aliases_for(fields)` (`build-garborg-day.py`, the married-name alias, which
+  `derive-labels.py` builds with `NSFX` appended): `Q141626677` Elswitha got `Elswitha of Wessex and Mercia`
+  5 seconds after creation; (2) on the next batch, the consensus pass for existing items
+  (`build-garborg-day.py`, "The Geni form is added as the `P1810` subject-named-as qualifier and as a `mul`
+  alias", the 2026-08-30 spec). Hugo, Solve and Guy were created 2026-10-03 12:4x PDT and got the alias from
+  the batch at 18:10 PDT. That pass checks the alias only against the item's live LABELS, never its aliases.
+
+**Size, from the live item shards (`reports/garborg-live-items-*.json`, refreshed 2026-10-04 02:24 PDT,
+23,428 ledger items):** 2,579 `mul` aliases on 2,573 items equal the Geni display name (`P1810`) and differ
+from the label. 194 of those carry a title by `drop_label_title`'s own test (`of` 40, `till` 19, `på` 14,
+`til` 13, `i` 10, `Graf` 9, `Comte` 8 ...); on 118 the label is exactly the alias minus its title; 164 are on
+items this account created. That is a floor: `Seigneur` is not in the title list, so `Guy I d'Aumelas Seigneur
+de Montpellier` counts as no title. The other 2,385 are not titles (birth/married forms, spelling variants,
+`d.e.`, a nickname in brackets). Every instance: `reports/title-in-mul-alias.csv` (`alias_has_title`,
+`label_equals_stripped`, `created_by_account`). Nothing edited.
+
+**Unexpected:** `Q141632439` went out as `Guy d'Aumelas`, without the ordinal `I` that § *DROP TITLES, KEEP
+ORDINALS* keeps; none of the three title functions removes it. Queued as its own item. Item closed.
