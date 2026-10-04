@@ -51499,3 +51499,20 @@ no family-name item exists (Hansson). It runs only on Emma's go-ahead.
 **In flight from this session:** QuickStatements batch `ebec37585` (the 05:48 PDT rebuild, 19,409 lines)
 was opened at about 06:10 PDT in its own tab and Run (first creation `Q141638423` Burgerschaft). Leave that
 tab alone. `9881c31fe` is a newer rebuild, not opened by this session.
+
+## 2026-10-04: the patronymic father mismatches, checked one by one
+
+The 22 "father mismatch" rows and the 4 questions, each read against every father the tree records and
+the item's live `P22` and history. **The audit over-flags here too:** it prints one father, sometimes a
+stale one, and once the mother (Cecilie Olsdatter Skiftun: the tree father is Olav Knutson Randa). 9 are
+correct (Herse Andersson Bure's live `P22` is Anders Olofsson; "Rehr" Jönsson is Pehr; Sjur and Sigvard are
+one name on Geni). Wrong: Halvor Larsen Brattval (Larsen is his father Lage Lauritzen's own patronymic),
+Christina Johansdotter äv Nilsdotter Gerdes (Nilsdotter is a second name form; father Johan), Gunvor
+Gunnarsdatter `Q141573942` (identity drift: Geni now Gjertrud Jørundsdatter). 10 stay as father links that
+do not fit, to read on Geni after 2026-10-21; 3 have no usable father.
+
+**Unexpected.** (1) `Q141559586` Gudrun Ormsdatter carries `P22` Olav Nilssen Bagge from our batch of
+2026-09-26, and the tree now gives her no father: a live link our data no longer supports. (2) `Q138687615`
+Bertrand Olav Vigdel is not our item (created 2026-03 from "Våre falne"); Epìdosis removed our en label and
+`P5056` on 2026-08-31 at 22:25 UTC, and four minutes later the account put a `P5056` (Olsen) back from the
+UI. Left for Emma (queue).
