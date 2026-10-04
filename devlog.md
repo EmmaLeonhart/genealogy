@@ -51355,3 +51355,24 @@ misfiled `gedcom/familysearch/ono_inbe_honkeicho_en_qids.ged` (no `_FSFTID`, in 
 FamilySearch reader scans) and `gedcom/ono_inbe_honkeicho_en_qids - Copy.ged`. Kept
 `gedcom/ono_inbe_honkeicho_en_qids.ged` (her MyHeritage version, 51 QIDs) and
 `gedcom/tang-ancestors.ged`. Item closed.
+
+## 2026-10-04 — what reached Wikidata through zipper-only pairs: 1,829 statements, 907 pairs
+
+Analysis only; nothing undone. Population: the 41,829 pairs whose only source in
+`reports/synoptic-correspondence.tsv` is `zipper` (the file the composer reads; last committed
+2026-09-01). For every item the account created (`garborg-qids.tsv`, 17,893 rows not marked "added to
+an existing item"), every father/mother/spouse/child in `derived-family.csv` that is zipper-only (not in
+the ledger, no `P2600` in `out/wikidata/p2600-all.tsv`): 2,067 relations. Joined to the live statements
+in `reports/account-edited-links.tsv` (refreshed 2026-10-04 10:03 PDT): **1,152 links live, 1,829
+statements** (677 both directions, 400 only on our creation, 75 only the reciprocal on the other item),
+through **907 zipper pairs**, on **758 creations**. By property: child 776, spouse 263, father 77,
+mother 36. Every row: `reports/zipper-only-links-on-wikidata.csv`.
+
+By the pair's band in `zipper-evidence.tsv`: PARENTS-ONE-SIDE 506 (no comparable slot, the Kudara no
+Nagatsugu shape), ONE-PARENT-AGREE 256, **ONE-PARENT-DISAGREE 101**, BOTH-PARENTS-AGREE 93, NO-PARENTS 86,
+BOTH-PARENTS-PARTIAL 46, **NAMES-CONFLICT 28**, no band 36. The contradicting bands: 129 links, 198
+statements, 108 items. Spot check of 5 of them live (wbgetentities): all 5 present, and on their names
+all 5 read as the right person (`Q141628175` spouse `Q3061707` Eóghan of Argyll for Ewan MacDougall of
+Dunollie), so the band alone does not mark a link wrong. The two known wrong cases (`Q11623249`,
+`Q106267274`) are no longer in the live links. **Still live:** `Q141636899` was created today with child
+`Q80518` through a zipper-only pair, so the 2026-09-28 path keeps adding these in every batch.
