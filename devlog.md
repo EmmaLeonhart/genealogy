@@ -51315,3 +51315,11 @@ de Montpellier` counts as no title. The other 2,385 are not titles (birth/marrie
 
 **Unexpected:** `Q141632439` went out as `Guy d'Aumelas`, without the ordinal `I` that § *DROP TITLES, KEEP
 ORDINALS* keeps; none of the three title functions removes it. Queued as its own item. Item closed.
+
+## 2026-10-04: Emperor Ninken merge, already done
+
+Checked live: both items created for Ninken, `Q141635508` "Ninken Tenno" (Geni `6000000210456044822`) and
+`Q141634193` "Ninken-tenno (Osu)", redirect to `Q357266` Emperor Ninken. `Q141635508` was merged under the
+account on 2026-10-03 19:26 PDT, after the evening's devlog entry had left the Ninken item open. `Q357266` now
+carries both Geni ids (`6000000001829644307`, `6000000210456044822`); a second Geni id on one item is not a
+conflict. Item closed.
