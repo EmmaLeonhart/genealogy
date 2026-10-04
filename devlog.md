@@ -51537,3 +51537,19 @@ bunch in a few families (Bjørgås, Bjørgo, Mestad, Güntersberg, Pfinzing): Ol
 Oleiv Samuelsen -> Mogens Olson Bjørgås, Ole Tollefsen Storla -> Berge Toresen Brunborg, Andres Ottarsen ->
 Knut Knutsen Mestad. That looks like whole families being reworked on Geni, with our items following each
 profile id. Rough heuristic; the 58 in the last two classes are the ones to read.
+
+## 2026-10-04 ~10:30 PDT: Sinosphere name statements, sized; crons stopped
+
+Emma, on the "No" go-ahead question: "The entire names are parsed wrong", so removing "No" alone is insufficient.
+Two wrong first passes, said plainly: a SPARQL query filtering every `P2600` item by label regex (wrong population:
+Japanese items are mostly not Geni-linked; it timed out), then a history pass that hit HTTP 429 on most items and
+was discarded. The measured pass: the 44,197 items the account has edited (`account-edited-links.tsv` plus creations
+since 10-03), 1,948 of them Sinosphere (Han `ja`, no katakana), 769 carrying `P735`/`P734`; each item's history read
+for the account's own edits (1 request/s, back-off on 429, 0 failures). 49 statements on 39 items are ours (36
+direct, 7 via merges, 6 on our creations): `reports/sinosphere-name-statements.csv`. **Unexpected:** today's batch
+created at least nine family-name items with no label (`Q141637547`, `Q141637660`…`Q141637679`, `Q141638758`) and
+`Q141637649` "Mikoto" (the honorific 命), and used them as `P734`. Nothing edited on Wikidata. The queue item is
+rewritten as the whole-parse problem, NEEDS-DECISION (Emma).
+
+Both session crons were deleted at Emma's instruction (relayed by session genealogy-72: "Stop all cron jobs but
+carry on").
