@@ -51444,3 +51444,26 @@ share are other people (Andres Ottarsen -> Knut Knutsen Mestad, Ole Eriksen -> L
 Oxehode -> Aslak Brattson Oxehode, Siri Madland -> Sigmund Madland, Natronai -> Makhir). Whether Geni
 renamed one person or merged two cannot be read until Geni contact resumes (2026-10-21). Nothing was
 changed on Wikidata; queued at the end.
+
+## 2026-10-04: patronymic audit reviewed row by row (`reports/patronymic-review.csv`)
+
+Every row of `patronymic-audit.csv` the model flagged (226: 83 "father carries the same token", 107 "root
+does not match", 34 "token unknown", plus the batch rows) got one verdict and a reason. Spelling variants
+of the father's given name count as a match (Eilefsdatter/Eiliv, Nilsdotter/Nicolaus, Jöransdotter/Göran
+(Jöran), Persson/Petrus, Olsdatter/Oluff).
+
+- **159 correct.** The "father carries the same token" test over-flags: Rasmus Andersson Auglend, son of
+  Anders Andersson Auglend, is a patronymic; a father carrying the same token is what patronymic naming
+  produces when father and grandfather share a name. The 34 "token unknown" are all correct patronymics whose
+  name item the model does not know (Josefson, Tjølsdatter, Sveinsson, Roderici).
+- **22 inherited or married surname:** the token is the father's own family name (Christian Frederik,
+  Carl, Georg August Bergersen under Gunder Bergersen; Gunela Olofsson under Mårten Olofsson; Hans Carl
+  Theodor Evensen Hansen under Even Hansen). `P5056` is wrong there; the token is a `P734`.
+- **22 father mismatch:** a patronymic form of a name the father does not carry (Gudrun Ormsdatter, father
+  Olav Nilssen Bagge; Herse Andersson Bure, father Jon Olofsson; Cecilie Olsdatter Skiftun, whose "father" is
+  Gudrun Sæbjørnsdatter). The father link or the person is suspect; not a name-model question.
+- **15 identity drift:** the token is not in the person's current name; the item carries another person
+  (previous entry).
+- **4 questions** for Emma, **2** with an unnamed father.
+
+Nothing was changed on Wikidata.
