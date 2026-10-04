@@ -51516,3 +51516,12 @@ do not fit, to read on Geni after 2026-10-21; 3 have no usable father.
 Bertrand Olav Vigdel is not our item (created 2026-03 from "Våre falne"); Epìdosis removed our en label and
 `P5056` on 2026-08-31 at 22:25 UTC, and four minutes later the account put a `P5056` (Olsen) back from the
 UI. Left for Emma (queue).
+
+## 2026-10-04: the surname patronymic fix batch, run and checked
+
+Emma authorized it by AskUserQuestion ("Run all of it"). `reports/patronymic-surname-fix-2026-10-04.qs`
+ran in a new QuickStatements tab (Run, not background), separate from the tab running `ebec37585`. All 27
+commands checked live through `wbgetentities`: the 22 `P5056` values are gone and the 5 `P734` family names
+are present. Left on the queue item: `Q138687615` Bertrand Olav Vigdel (her decision), the 10 father links
+that do not fit (Geni, after 2026-10-21), and Halvor Larsen Brattval `Q141517855` (classified after the
+batch was built).
