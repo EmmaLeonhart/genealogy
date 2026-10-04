@@ -237,6 +237,10 @@ PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056",
 #: is a different claim from the `P144` on a PERSON's `P5056`, where it names the father.
 #: Both are correct and both are emitted by this file, in their own places.
 BASED_ON = "P144"
+#: `P2976` *patronym or matronym for this name*, on the GIVEN name, pointing at each patronymic
+#: built from it (Rasmus -> Rasmusdotter): the reverse of the patronymic item's `P144`.
+#: Emma, 2026-10-03, new items and a backfill of every pair already on Wikidata.
+PATRONYM_FOR = "P2976"
 
 #: **Stop a live pass after this many chunks fail in a row.**
 #:
@@ -1006,6 +1010,10 @@ def main():
         if usage == "patronymic":
             for target in based_on.get(token.casefold(), ()):
                 lines.append(f"LAST\t{BASED_ON}\t{target}")
+                # And the other direction, on the given name (Emma, 2026-10-03): `P2976`
+                # *patronym or matronym for this name*. `LAST` is a valid value here because
+                # the given-name item already exists.
+                lines.append(f"{target}\t{PATRONYM_FOR}\tLAST")
                 based_on_now += 1
             if not based_on.get(token.casefold()):
                 no_based_on.append(token)
@@ -1258,6 +1266,33 @@ def main():
             lines.append("# P735 item is among these values. Patronymics only -- never people.")
             lines.append("# " + "=" * 70)
             lines.extend(added)
+
+        # ---- P2976 on the given names, the reverse of every patronymic's P144 (2026-10-03) ----
+        # The given names each patronymic is based on: what it holds live plus what this run adds.
+        pairs = sorted({(target, qid) for qid in ids if qid in claims_of
+                        for target in (claims_of[qid][BASED_ON] | set(backfill[qid][1]))
+                        if target})
+        givens = sorted({t for t, _q in pairs})
+        p2976_of = {}
+        for k in range(0, len(givens), 50):
+            try:
+                data = api_get({"action": "wbgetentities", "format": "json", "props": "claims",
+                                "ids": "|".join(givens[k:k + 50])}, AGENT)
+            except Exception as exc:                                   # noqa: BLE001
+                print(f"   P2976: given names at {k} could not be read ({exc}); held")
+                continue
+            for qid, ent in (data.get("entities") or {}).items():
+                if "missing" not in ent:
+                    p2976_of[qid] = {st["mainsnak"].get("datavalue", {}).get("value", {}).get("id")
+                                     for st in (ent.get("claims") or {}).get(PATRONYM_FOR, [])}
+        reverse = [f"{g}\t{PATRONYM_FOR}\t{q}" for g, q in pairs
+                   if g in p2976_of and q not in p2976_of[g]]
+        if reverse:
+            lines.append("")
+            lines.append("# P2976 patronym or matronym for this name, on the given names: the")
+            lines.append("# reverse of each patronymic item's P144 (Rasmus -> Rasmusdotter).")
+            lines.extend(reverse)
+        print(f"P2976 on given names: {len(reverse)} reverse link(s) of {len(pairs)} pair(s)")
         print(f"   {len(added):,} P144 statement(s) to add"
               + (f"; {held:,} item(s) held, the live read failed" if held else ""))
 

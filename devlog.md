@@ -50877,3 +50877,13 @@ the day-later relational pass wrote `Q141628261 Len "sister of William of Septim
 `NN`. Emma ruled that replacement (2026-10-03); the test now exempts exactly that case, an `en` that is
 a bare `NN …` and identical to the item's live `mul`, so the old value is still on the item. Every other
 overwrite still needs its `Amul` rescue.
+
+## 2026-10-03: P2976 on the given names, the reverse of every patronymic's P144 (Emma)
+
+`P2976` *patronym or matronym for this name* goes on the given-name item and points at each
+patronymic built from it (Rasmus -> Rasmusdotter), the reverse of the `P144` *based on* the patronymic
+items already carry. `build-garborg-name-items.py`: a created patronymic writes `<given name> P2976
+LAST` beside each `LAST P144 <given name>`; the daily backfill of existing patronymic items (ours and
+the plan's) now also reads their given names live and writes `<given name> P2976 <patronymic>` for
+every pair (the item's live `P144` values and the ones this run adds) the given name lacks. Checked
+when the pipeline next builds the name-items batch.
