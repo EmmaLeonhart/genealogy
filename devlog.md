@@ -51197,3 +51197,12 @@ Tiberioclaudio99, Escudero, Mr.Ajedrez, Belagaile, 2017-2021) and 3 ours. Done f
 `P5056` with `P144` = the father, no summary. Four items hit transient "failed-save" mid-way (two had lost the
 family name before the patronymic was added, one lacked its qualifier, one kept both); all four were finished with
 retries. Checked live: all 13 have no `P734` for the name and exactly one `P5056` with `P144` = the father.
+
+## 2026-10-04: no family name = `Q108474139` for patronymic names, at creation and backfilled
+
+Creation: a person whose Geni name fields give a patronymic and no family token (not NN/redacted, not a Han
+name) gets `LAST P734 Q108474139` when no other `P734` was emitted (`NO_FAMILY_NAME`). A bare given name or an NN
+person is left out on purpose: their surname is unknown, which is a different claim from "has none". Shapes over
+200,000 people: given+patronymic 10,221, patronymic alone 93. Backfill: of our 23,168 ledger people, 2,136 have
+that shape; read live, 219 already carry a `P734`, 1,917 do not (659 of them lack the `P5056` statement too):
+`reports/novalue-family-name-backfill-2026-10-04.qs`, run from the session's QuickStatements. Item closed.

@@ -1858,3 +1858,19 @@ def test_a_bare_given_name_is_not_given_nn_any_more():
     from labels import name_with_unknown_surname
     assert name_with_unknown_surname("Brita", "Brita", "", "") == "Brita"
     assert name_with_unknown_surname("Ånon", "Ånon", "", "") == "Ånon"
+
+
+def test_the_no_family_name_placeholder_is_the_item_emma_named():
+    """2026-10-03: a patronymic name with no surname gets `P734` = `Q108474139` ("no value" placeholder),
+    the value on `Q141628094` Fernando Gundemárez."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_novalue", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.NO_FAMILY_NAME == "Q108474139"
+    usages = {u for _t, u, _o in mod.statements_tokens(
+        {"givn": "Fernando", "surn": "Gundemárez", "marnm": ""})}
+    assert "family" not in usages or "patronymic" in usages

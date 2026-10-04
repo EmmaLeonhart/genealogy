@@ -224,6 +224,8 @@ def step_budget_left():
     """How many `P3448` lines are left today."""
     return STEP_CAP - len(_steps_emitted)
 HUMAN = "Q5"
+#: `P734` family name = "no value" placeholder (Emma, 2026-10-03), for a name with a patronymic and no surname.
+NO_FAMILY_NAME = "Q108474139"
 
 
 def qs(text):
@@ -9710,6 +9712,15 @@ def main():
             father_aka=aka.get(dad, "") if dad else "",
             father_given=given_name.get(dad, "") if dad else "")
         lines.extend(name_statements)
+        # ⛔ **A PATRONYMIC NAME WITH NO SURNAME SAYS SO: `P734` = `Q108474139`. Emma, 2026-10-03** (on
+        # `Q141628094` Fernando Gundemárez): "with our name construction I think this is relatively
+        # important". Only a given name plus a patronymic and no family token in Geni's fields: a bare
+        # given name or an NN person has an UNKNOWN surname, which is not the same claim, and a Han name
+        # carries its clan inside the given field.
+        _usages = {u for _t, u, _o in statements_tokens(fields.get(g) or {})}
+        if ("patronymic" in _usages and "family" not in _usages and not _sino and not redacted
+                and not any(ln.startswith("LAST	P734	") for ln in name_statements)):
+            lines.append(f"LAST	P734	{NO_FAMILY_NAME}")
         # Aliases: the nickname, and the full name under a married surname. These were
         # asked for alongside the second `P734` *family name*.
         # An alias identical to the label is noise. Now that the married name is
