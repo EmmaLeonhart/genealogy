@@ -7,6 +7,50 @@
 #
 # The genitive s is shared: Rasmussen -> Rasmusdatter, never Rasmussdatter.
 
+# Eriksdatter -- the counterpart of Eriksen (448 bearer(s))
+CREATE
+LAST	Len	"Eriksdatter"
+LAST	Lmul	"Eriksdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141436533
+Q141436533	P5278	LAST
+Q141436533	P407	Q9043
+Q141436533	P407	Q9035
+
+# Jonsdatter -- the counterpart of Jonsen (325 bearer(s))
+CREATE
+LAST	Len	"Jonsdatter"
+LAST	Lmul	"Jonsdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141249587
+Q141249587	P5278	LAST
+Q141249587	P407	Q9043
+Q141249587	P407	Q9035
+
+# Gundersen -- the counterpart of Gundersdatter (79 bearer(s))
+CREATE
+LAST	Len	"Gundersen"
+LAST	Lmul	"Gundersen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141450960
+Q141450960	P5278	LAST
+Q141450960	P407	Q9043
+Q141450960	P407	Q9035
+
 # Eivindsen -- the counterpart of Eivindsdatter (70 bearer(s))
 CREATE
 LAST	Len	"Eivindsen"
@@ -35,6 +79,17 @@ Q141549532	P407	Q9035
 CREATE
 LAST	Len	"Eivindsdatter"
 LAST	Lmul	"Eivindsdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+
+# Hansdatter -- the counterpart of Hanssen (23 bearer(s))
+CREATE
+LAST	Len	"Hansdatter"
+LAST	Lmul	"Hansdatter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
@@ -92,6 +147,20 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
+# Bergersen -- the counterpart of Bergersdatter (11 bearer(s))
+CREATE
+LAST	Len	"Bergersen"
+LAST	Lmul	"Bergersen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141584062
+Q141584062	P5278	LAST
+Q141584062	P407	Q9043
+Q141584062	P407	Q9035
+
 # Malsdatter -- the counterpart of Malsen (9 bearer(s))
 CREATE
 LAST	Len	"Malsdatter"
@@ -116,18 +185,15 @@ LAST	P5278	Q141456297
 Q141456297	P5278	LAST
 Q141456297	P407	Q9027
 
-# Pålsson -- the counterpart of Pålsdotter (6 bearer(s))
+# Raumsdotter -- the counterpart of Raumsson (7 bearer(s))
 CREATE
-LAST	Len	"Pålsson"
-LAST	Lmul	"Pålsson"
+LAST	Len	"Raumsdotter"
+LAST	Lmul	"Raumsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
+LAST	P31	Q130444179
+LAST	P31	Q10476255
 LAST	P407	Q9027
-LAST	P5278	Q141612286
-Q141612286	P5278	LAST
-Q141612286	P407	Q9027
 
 # Esdatter -- the counterpart of Esen (5 bearer(s))
 CREATE
