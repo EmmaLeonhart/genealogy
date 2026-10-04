@@ -50956,3 +50956,15 @@ went through the romanisation, and four of them were duplicates of empresses alr
 reading of a romanisation is not a `ja`/`zh` label, so the CJK gate now carries them: 5,183 people
 over `derived-labels.csv`, carry reason "Han surname only". Their label (a clan name with `氏`, or
 otherwise) is a decision for Emma; nothing is guessed. Takes effect at the next pipeline batch.
+
+## 2026-10-03: items that trigger or wait on a new run are out of the queue (Emma)
+
+Emma, 19:3x PDT: "remove anything triggering a new run from the queue and let it go through the queue
+fixing up things and assessing the damage". Deleted: the confirmations of the next Sinosphere batch,
+of the 2026-09-17 restores going live, of the CBDB-joined people, of `P2976` in the name-items batch,
+part (2) of the Sinosphere damage item (the label fixes stay in `label-applications.tsv`), and "Make
+CI green" (it waited on a pipeline run, then dispatched `ci.yml`). The pipeline run my 19:10 PDT push
+of `93482d197` had queued (37170256575) was cancelled while still pending, before doing any work; the
+run on `20ce82aa8` was left alone. Pushes that only touch `queue.md`/`devlog.md` start no run
+(`paths-ignore`); a code change pushed now would, so code fixes are committed but not pushed until
+Emma says.
