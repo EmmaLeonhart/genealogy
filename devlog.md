@@ -51626,3 +51626,8 @@ created today at 10:22 PDT by a **third** QuickStatements run, `1791133593828`, 
 session's; it duplicates `Q11619187` 菅原是善. Merging `Q141636879` as it stands would give Sugawara no
 Ruishi a second father. Also: Special:MergeItems with prefilled ids does nothing ("Edit token required");
 the gadget is behind the ⋮ menu at this window width.
+
+Then, on Emma's go-ahead: `Q141640557` (the third run's 是善 菅原) -> `Q11619187` 菅原是善, and `Q141636879`
+-> `Q106237458` 菅原類子, both with the wizard. All five confirmed redirects at 11:03 PDT; Sugawara no
+Ruishi's only father is `Q11619187`, Minamoto no Washi `Q14269031` has father Kōkō and no `P25`. Left: the
+other 56 duplicate pairs of this run (Emma: merge them).
