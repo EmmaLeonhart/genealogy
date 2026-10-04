@@ -998,10 +998,11 @@ def name_with_unknown_surname(label: str, givn: str = "", surn: str = "",
         cleaned = " ".join((field or "").split())
         if cleaned and not is_placeholder_form(cleaned):
             return label
-    first = " ".join((givn or "").split()).split()
-    if not first or first[0].casefold() != label.casefold():
-        return label
-    return f"{label} {UNNAMED_MARKER}"
+    # ⛔ **SUPERSEDED 2026-10-03 (Emma, NN interview): "Just the name in all languages, no usage of
+    # NN, using NN was a mistake."** A known given name with no surname is labelled by the name
+    # alone, so nothing is appended any more. The guards above still return early; the function
+    # stays as the one seam both batch builders call.
+    return label
 
 
 def drop_marker_surname(label: str, *surnames: str) -> str:

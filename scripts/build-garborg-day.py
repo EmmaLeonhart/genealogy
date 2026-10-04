@@ -2902,6 +2902,10 @@ CJK_RELATION = {
 #: Katakana, which is what our transliteration writes a European name in.
 _KATAKANA = re.compile("[゠-ヿ]")
 
+#: `NN` read as a name by the transliterator: `ン・ペーデシュダッテル・フォス`, `恩·阿拉努斯`, `느느 롬멜`
+#: (live on our items, 2026-10-03). `恩德雷` (Endre) is a real name, so the separator is required.
+_NN_TRANSLITERATED = re.compile("^(?:ン・|恩·|恩・|느느 )")
+
 
 def _our_cjk_relational_phrase(label, lang):
     """Is `label` exactly a CJK relation phrase `describe_all` writes, with no name yet?
@@ -9089,7 +9093,15 @@ def main():
         wrote = False
         for code in ("en", "ja", "zh", "ko"):
             have = live_labels.get((q, code), "")
-            if described.get(code) and (not have or have == nn) and described[code] != have:
+            # ⛔ **CONSISTENT ACROSS THE FOUR LANGUAGES. Emma, 2026-10-03 (NN interview):** a slot
+            # holding OUR older relationship phrase, or a transliteration of `NN` itself (`ン・…`,
+            # `恩·…`, `느느 …`, the ruling's third point), is rewritten to the current phrase too.
+            # A label anybody else wrote is never matched by these tests and is left alone.
+            stale = (have == nn
+                     or (code == "en" and _our_relational_phrase(have, "en"))
+                     or (code != "en" and (_our_cjk_relational_phrase(have, code)
+                                           or _NN_TRANSLITERATED.match(have))))
+            if described.get(code) and (not have or stale) and described[code] != have:
                 lines.append(f'{q}\tL{code}\t"{qs(described[code])}"')
                 wrote = True
         _later += wrote
@@ -9183,6 +9195,12 @@ def main():
         # `_carries_marker` cannot see them: `Ånon i /Byre/` carries no marker at all, and
         # `Maria /No name/` has already had hers dropped by `drop_marker_surname` upstream. The
         # test is the fields — one token, and no surname Geni actually records.
+        # ⛔ **A GIVEN NAME WITH `NN` FOR THE SURNAME IS THE GIVEN NAME. Emma, 2026-10-03 (NN interview):**
+        # Geni's `Sara /NN/` was created `Sara NN`; the label is `Sara` in every language now.
+        _tk = label.split()
+        if (len(_tk) >= 2 and _tk[-1] in ("NN", "N.N.", "nn") and _name_fields(fields.get(g))[0]
+                and not _carries_marker(" ".join(_tk[:-1]))):
+            label = " ".join(_tk[:-1])
         # A Han name in Geni's GIVEN field is the whole name (`春日大娘皇女`, `中臣可多能祜`): no
         # `NN` is appended to it (2026-10-03, created as `春日大娘皇女 NN`). Surname-only stays NN.
         _sino = sinosphere_name(cjk_first.get(g, ""))

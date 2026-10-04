@@ -1832,3 +1832,29 @@ def test_a_person_geni_names_in_kanji_is_created_under_that_name():
     assert mod.sinosphere_name("") == ""
     from labels import WORDS_MEANING_UNKNOWN
     assert {"未知", "未詳", "無名"} <= WORDS_MEANING_UNKNOWN
+
+
+def test_a_transliterated_nn_is_recognised_and_a_real_name_is_not():
+    """NN interview, 2026-10-03: a CJK label that reads `NN` as a name is rewritten to the relationship
+    phrase. `ン・ペーデシュダッテル・フォス`, `恩·阿拉努斯` and `느느 롬멜` were live; `恩德雷` (Endre) is a real name."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_nn", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    for live in ("ン・ペーデシュダッテル・フォス", "恩·阿拉努斯", "느느 롬멜"):
+        assert mod._NN_TRANSLITERATED.match(live)
+    for real in ("恩德雷·斯韦因斯沃尔之妻", "エンドレの妻", "オーラ・エイリヴソン・テンゲスダルの妻"):
+        assert not mod._NN_TRANSLITERATED.match(real)
+
+
+def test_a_bare_given_name_is_not_given_nn_any_more():
+    """NN interview, 2026-10-03: "Just the name in all languages, no usage of NN, using NN was a
+    mistake." The helper that wrote `Ånon NN` returns the given name unchanged."""
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    from labels import name_with_unknown_surname
+    assert name_with_unknown_surname("Brita", "Brita", "", "") == "Brita"
+    assert name_with_unknown_surname("Ånon", "Ånon", "", "") == "Ånon"

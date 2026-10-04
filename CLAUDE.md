@@ -577,6 +577,11 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **⛔ A SPECIFIC ISSUE IS NOT A GENERAL RULE, AND IT COMES FIRST. Ruled 2026-10-02 (Emma).** A problem in one part of the tree is handled as that problem, never folded into a general fix or rule; a specific queue item outranks a general one. People are reported with their Geni, FamilySearch and Wikidata links in the reply.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
+- **A DUPLICATE ITEM IS NOT AN EMERGENCY; A WRONG IDENTITY IS WORSE. Ruled 2026-10-03 (Emma):** a person created
+  twice is not an emergency and can even help: a manual merge on Wikidata gets the items audited by other
+  editors along the way. It is not to be relied on, since it adds work for others, but it is "far better than
+  zipper insanity": an identity asserted on weak evidence writes false family links onto real items. Wrong
+  labels on Wikidata, by contrast, are an emergency, fixed at once with the session's own QuickStatements.
 - **⛔ AN INCOMPLETE OPERATION IS WORSE THAN A COMPLETED WRONG ONE. Ruled 2026-10-01 (Emma),
   knowingly against Wikimedia consensus.** Once an operation is under way, finish it the way the
   pipeline would (a Geni id carries its `P1810` display name, and so on). Do not stop it halfway
@@ -696,9 +701,16 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   bare married surname is how `Q141492819` went out as `Talgje`; 7 of 8,350 created items were
   that shape, and all were fixed by hand on 2026-09-25. **⛔ Still never backfilled** (ruled
   2026-09-24, *"a waste of edits"*): it governs what is CREATED.
+- **⛔ NN LABELS, RULED BY INTERVIEW 2026-10-03 (Emma, AskUserQuestion), superseding the NN rules around this one where they
+  differ.** (1) No known name, or only a surname: `mul` and `en` are `NN` / `NN Skårland` at creation; once the item is
+  24 hours old and on the roster, CI writes the relationship phrase in `en`, `ja`, `zh` and `ko`, and keeps those
+  phrases consistent across the four languages for every item whose `mul` is NN-shaped. (2) A known given name with
+  no surname: the label is just the name in every language, never `Given NN` ("using NN was a mistake"); backfill the
+  existing ones. (3) Japanese, Chinese and Korean labels of NN people are the relationship phrase, never a
+  transliteration of `NN` (`ン・…`).
 - **`NN` is PRESERVED in `mul`**; descriptive labels are ADDED in other languages. `Private` never
   becomes a label, and neither person is left unlabelled.
-- **A bare given name is not a label** — the farm name is the surname; else `Given NN`.
+- **Superseded 2026-10-03 (NN interview): ~~A bare given name is not a label — else `Given NN`~~.** The farm name is still the surname where there is one; otherwise the given name alone is the label.
 - **Redacted people go in.** `<private> /Surname/` keeps a real surname.
 - **⛔ THE KANJI SIGNAL DECIDES WHICH LABEL UNIVERSE A PERSON IS IN.** A `ja` label in **kanji**
   means a SINOSPHERE name: a different universe of labels, and **no label edit in any language**.

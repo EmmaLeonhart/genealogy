@@ -1,9 +1,9 @@
-655 people across 1 Garborg batches, 22903 already holding a QID
-4275 token(s) are already pointed at by their own bearers
-8845 tokens already have an item and are linked, not created
-5970 need creating, 2 are ambiguous and are not
-205 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (10), Laurentii (5), ll (4), Georgii (3), Lauritzen (3), Ænes (3)
-1369 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
+266 people across 1 Garborg batches, 23168 already holding a QID
+4326 token(s) are already pointed at by their own bearers
+8838 tokens already have an item and are linked, not created
+5917 need creating, 2 are ambiguous and are not
+208 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (10), Laurentii (5), ll (4), Georgii (3), Lauritzen (3), Ænes (3)
+1389 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Abluna               given        Q17317997
    Abo                  family       Q1677742
    Adalasia             given        Q62102498
@@ -34,6 +34,7 @@
    Bagge Vang           family       Q21454074
    Basilus              given        Q16282378
    Benedicti Prætorius  family       Q47544277
+   Benhard              given        Q141635587
    Benkestokk           family       Q42857954
    Berenguier           given        Q18220416
    Bergersen Næsmoen    family       Q27824335
@@ -497,21 +498,23 @@
    Симонида             given        Q602977
    媯                    family       Q10943080
    子                    family       Q10105188
+   宇喜多                  family       Q140088822
    愛新覺羅                 family       Q934262
    懐仁                   given        Q104746795
+   拓跋                   family       Q1099766
+   楊                    family       Q845069
    比企                   family       Q107183647
    田口                   family       Q24090483
    興子                   given        Q110183362
-   藤原                   family       Q24090411
    蟜極                   given        Q125319074
-993 token(s) RESCUED by the live check -- these would have been created a second time:
+   行成                   given        Q96324139
+952 token(s) RESCUED by the live check -- these would have been created a second time:
    von Wrangell         family       already Q112692214
    De Besche            family       already Q42179582
    Teet                 family       already Q37117634
    Teet                 family       already Q37117634
    Þorsteinsson         patronymic   already Q335668
    von Stockenström     family       already Q94373418
-   Fálkason             patronymic   already Q141635528
    Atlason              patronymic   already Q757300
    von Geijer           family       already Q48075060
    D'Avignon            family       already Q63439039
@@ -537,7 +540,6 @@
    d'Oyly               family       already Q5203170
    de Provence          family       already Q105498434
    de Troyes            family       already Q104592177
-   Vermuis              family       already Q141635540
    Larssen              patronymic   already Q27888992
    Umayya               given        already Q141530101
    Hindrich             given        already Q141626452
@@ -549,7 +551,6 @@
    de Metz              family       already Q105305546
    Natt och Dag         family       already Q47461748
    FitzRobert           family       already Q20996208
-   Danpsdatter          patronymic   already Q141635525
    Skiftun              family       already Q141500917
    de Bourgogne         family       already Q104837093
    Nielsen              patronymic   already Q133876583
@@ -581,6 +582,7 @@
    de Blois             family       already Q25113852
    de Blois             family       already Q25113852
    de Beaumont          family       already Q76417957
+   auf                  family       already Q63142909
    de Montmorency       family       already Q63457366
    de Thouars           family       already Q104803129
    Helgason             patronymic   already Q122958814
@@ -591,8 +593,6 @@
    de Savoie            family       already Q105418238
    Dmitriyevich         patronymic   already Q107076183
    Kierstin             given        already Q141235334
-   Pilckar              family       already Q141635535
-   Sjovat               given        already Q141635510
    Skiftun              family       already Q141500917
    de Verdun            family       already Q104592179
    de Bourgogne         family       already Q104837093
@@ -622,7 +622,6 @@
    von Schantz          family       already Q46529499
    de Beaumont          family       already Q76417957
    de Lorraine          family       already Q98890791
-   Casparsson           patronymic   already Q141635520
    Ségur                family       already Q59822955
    im                   family       already Q37179342
    von Francken         family       already Q116656147
@@ -632,7 +631,6 @@
    de Bourgogne         family       already Q104837093
    de Bourgogne         family       already Q104837093
    de Champagne         family       already Q104854485
-   Hemmingsen           patronymic   already Q141635531
    von Levetzow         family       already Q48095081
    De la Gardie         family       already Q41366581
    de la Rochefoucauld  family       already Q47002551
@@ -661,7 +659,6 @@
    FitzRichard          family       already Q5455679
    LORRAINE             family       already Q18355916
    de Lorraine          family       already Q98890791
-   Halfdansdatter       patronymic   already Q141635530
    de Bourgogne         family       already Q104837093
    de Geer              family       already Q42181347
    de Sully             family       already Q101014826
@@ -683,7 +680,6 @@
    von Seinsheim        family       already Q116761053
    de Vere              family       already Q5244793
    del Vasto            family       already Q84607985
-   Vermuis              family       already Q141635540
    de La Rivière        family       already Q63396378
    de Salins            family       already Q105496624
    de Marseille         family       already Q105180754
@@ -695,7 +691,6 @@
    verch                family       already Q7921001
    Mercia               family       already Q107443816
    Mercia               family       already Q107443816
-   Casparsson           patronymic   already Q141635520
    Nielsen              patronymic   already Q133876583
    Nielsen              patronymic   already Q133876583
    Nielsen              patronymic   already Q133876583
@@ -710,6 +705,7 @@
    Eid                  family       already Q37510021
    Eid                  family       already Q37510021
    von Schantz          family       already Q46529499
+   Oppsal               family       already Q12717525
    Skiftun              family       already Q141500917
    von Schantz          family       already Q46529499
    von Schantz          family       already Q46529499
@@ -749,7 +745,6 @@
    ESPEDAL              family       already Q27892902
    Johanson             patronymic   already Q1326577
    Randa                family       already Q37071011
-   Sjovat               given        already Q141635510
    Skiftun              family       already Q141500917
    de Thouars           family       already Q104803129
    Nielsen              patronymic   already Q133876583
@@ -770,7 +765,6 @@
    Johanson             patronymic   already Q1326577
    Nielsen              patronymic   already Q133876583
    Halvarson            family       already Q37101466
-   Efjestad             family       already Q141635544
    Eivindsson           patronymic   already Q122835943
    ØKSNEVAD             family       already Q30583490
    Guilhèm              given        already Q4138351
@@ -783,6 +777,7 @@
    Gunnarsson           patronymic   already Q69821535
    pedersen             family       already Q23751947
    eeg                  family       already Q30643862
+   Steinarsson          patronymic   already Q47479440
    Sigtryggsson         patronymic   already Q1556775
    Eiríksdóttir         patronymic   already Q18411475
    Arnórsson            patronymic   already Q697887
@@ -793,7 +788,6 @@
    lundin               family       already Q21450868
    Olifard              family       already Q65058792
    De la Gardie         family       already Q41366581
-   Hemmingsen           patronymic   already Q141635531
    de Bourgogne         family       already Q104837093
    de Bourgogne         family       already Q104837093
    Eiríksson            patronymic   already Q66930050
@@ -815,10 +809,8 @@
    de Châtillon         family       already Q104825290
    von Nellenburg       family       already Q113552200
    de Beaumont          family       already Q76417957
-   Hognasson            patronymic   already Q141635532
    Stjerne              family       already Q112634099
    Gunnarsson           patronymic   already Q69821535
-   Steinson             patronymic   already Q141635522
    de Thouars           family       already Q104803129
    de Lacy              family       already Q65650530
    Michael              family       already Q1926724
@@ -832,7 +824,6 @@
    de Castilla          family       already Q99907853
    østre                family       already Q55230790
    de Valois            family       already Q105348467
-   Eysteinsdatter       patronymic   already Q141635527
    de Faucigny          family       already Q104539895
    de Turenne           family       already Q105247980
    De Rodez             family       already Q106549201
@@ -851,7 +842,6 @@
    Wendt                family       already Q15853986
    Hanssen              patronymic   already Q27887944
    von Holstein         family       already Q46528511
-   Steinson             patronymic   already Q141635522
    Bergsagel            family       already Q114402569
    Smeland              family       already Q37089917
    de Savoie            family       already Q105418238
@@ -865,7 +855,6 @@
    Tjentland            family       already Q141150230
    Eilefson             patronymic   already Q141494369
    Pedersdatter         family       already Q122838114
-   Bellestson           patronymic   already Q141635518
    Skiftun              family       already Q141500917
    de Turenne           family       already Q105247980
    Skiftun              family       already Q141500917
@@ -923,6 +912,8 @@
    Helgeson             family       already Q37099418
    HÅLAND               family       already Q30580079
    Sigfússon            patronymic   already Q2284701
+   Einarsson            patronymic   already Q1305970
+   Einarsson            patronymic   already Q1305970
    Adelheim             family       already Q124130722
    Hainaut              family       already Q124708094
    FitzJohn             family       already Q112600123
@@ -949,7 +940,6 @@
    iser                 family       already Q37176716
    ytre                 family       already Q30340328
    Dalina               family       already Q132559859
-   Danpsdatter          patronymic   already Q141635525
    von Habsburg         family       already Q16880125
    von Habsburg         family       already Q16880125
    Eid                  family       already Q37510021
@@ -975,7 +965,6 @@
    De Bretagne          family       already Q105418240
    Adelheim             family       already Q124130722
    von Berg             family       already Q7941401
-   Gottschalksdotter    patronymic   already Q141635529
    De Geer af Finspång  family       already Q131613209
    De la Gardie         family       already Q41366581
    von Moers            family       already Q115538835
@@ -991,12 +980,10 @@
    Adelheim             family       already Q124130722
    de Montfaucon        family       already Q104825235
    Kjær                 family       already Q21509465
-   Makrembolites        family       already Q16149864
    von Lantinghausen    family       already Q96147521
    de Lara              family       already Q30307403
    Helgason             patronymic   already Q122958814
    Ellington            family       already Q37463857
-   Ingen                given        already Q141635516
    von Stedingk         family       already Q7941518
    von Stedingk         family       already Q7941518
    Souper               family       already Q112599742
@@ -1023,17 +1010,11 @@
    von Burghausen       family       already Q47457001
    van Limburg          family       already Q138672468
    dell'Aquila          family       already Q99908212
-   Levinsen             patronymic   already Q141635521
-   Jonesdotter          patronymic   already Q141635533
    Randa                family       already Q37071011
-   Sjovat               given        already Q141635510
-   Levinsen             patronymic   already Q141635521
-   Bellestson           patronymic   already Q141635518
-   Bellestson           patronymic   already Q141635518
-   Bellestson           patronymic   already Q141635518
    Tjentland            family       already Q141150230
    Larssen              patronymic   already Q27888992
    von Wrangell         family       already Q112692214
+   Aisin Gioro          family       already Q934262
    Aisin Gioro          family       already Q934262
    Kagg                 family       already Q131612938
    de Rumigny           family       already Q63881930
@@ -1075,6 +1056,8 @@
    von Rosenstein       family       already Q45218897
    Aisin Gioro          family       already Q934262
    Aisin Gioro          family       already Q934262
+   Aisin Gioro          family       already Q934262
+   Aisin Gioro          family       already Q934262
    Niohuru              family       already Q994197
    Nara                 family       already Q10801964
    Tunggiya             family       already Q7853038
@@ -1088,7 +1071,6 @@
    von Wrangell         family       already Q112692214
    Kuuth                family       already Q137796078
    FitzRichard          family       already Q5455679
-   Pilckar              family       already Q141635535
    Atladóttir           patronymic   already Q756064
    von Wrangell         family       already Q112692214
    de Castilla          family       already Q99907853
@@ -1119,11 +1101,11 @@
    von Stockenström     family       already Q94373418
    Maijström            family       already Q111838442
    Wendt                family       already Q15853986
-   Fauk                 family       already Q141635545
    Wendt                family       already Q15853986
    von Rosen            family       already Q42122485
    de Bourbon           family       already Q98890770
    von Rosen            family       already Q42122485
+   Apolloff             family       already Q4068044
    Natt och Dag         family       already Q47461748
    Reftelius            family       already Q113151078
    Uhr                  family       already Q37072462
@@ -1133,13 +1115,12 @@
    Uhr                  family       already Q37072462
    Hestad               family       already Q16870756
    Hestad               family       already Q16870756
+   Hestad               family       already Q16870756
    Stierneroos          family       already Q117808635
    de Normandie         family       already Q104594406
    In de Betou          family       already Q137721209
    af Geijerstam        family       already Q42033741
    Reetz                family       already Q37331011
-   Stephansson          patronymic   already Q141635519
-   Stephansson          patronymic   already Q141635519
    Aminov               family       already Q36938159
    Eid                  family       already Q37510021
    De la Gardie         family       already Q41366581
@@ -1150,7 +1131,6 @@
    Rostopchina          family       already Q16692739
    von Berg             family       already Q7941401
    Lagersparre          family       already Q124913060
-   Helsing              family       already Q5710406
    von Mentzer          family       already Q47472748
    De la Gardie         family       already Q41366581
    Cosswa               family       already Q125911926
@@ -1177,9 +1157,7 @@
    von Rosen            family       already Q42122485
    Iñíguez              family       already Q130546575
    kyllingstad          family       already Q30080230
-   Hustru               given        already Q141635515
    Hanssen              patronymic   already Q27887944
-   Vermuis              family       already Q141635540
    Hestad               family       already Q16870756
    Aslaksen             family       already Q27892779
    de Turenne           family       already Q105247980
@@ -1228,7 +1206,6 @@
    Noræus               family       already Q140692665
    Kierstin             given        already Q141235334
    Rabbe                family       already Q37075423
-   Kanalheia            family       already Q141635537
    Adelheim             family       already Q124130722
    von Numers           family       already Q47011129
    von Heland           family       already Q42103340
@@ -1238,7 +1215,6 @@
    von Friesen          family       already Q93629641
    Kallhovd             family       already Q123097815
    Takku                family       already Q63283498
-   Pilckar              family       already Q141635535
    De la Gardie         family       already Q41366581
    Gunnarsson           patronymic   already Q69821535
    von Rosenstein       family       already Q45218897
@@ -1258,8 +1234,6 @@
    von Zimmern          family       already Q108940160
    de Rochefort         family       already Q104540260
    Stiernsparre         family       already Q129261087
-   Grymyr               family       already Q141635536
-   Hellwegh             family       already Q141635553
    de Montmorency       family       already Q63457366
    Pedersdotter         family       already Q122838115
    Detloffsson          patronymic   already Q141494368
@@ -1278,7 +1252,6 @@
    af Sandeberg         family       already Q41342147
    von Nellenburg       family       already Q113552200
    Michaelis            family       already Q21450401
-   Hjorvard             given        already Q141635512
    Allenius             family       already Q113811286
    St John              family       already Q65953328
    Zander               family       already Q146624
@@ -1296,7 +1269,6 @@
    de Grey              family       already Q90125417
    de Laval             family       already Q47462010
    de Laval             family       already Q47462010
-   Grymyr               family       already Q141635536
    von Lepel            family       already Q54612150
    Sylvin               family       already Q106330276
    Sylvin               family       already Q106330276
@@ -1315,15 +1287,15 @@
    Eilefson             patronymic   already Q141494369
    Ohren                family       already Q37075294
    Doukas               family       already Q37524246
-   Benhard              given        already Q141635587
    Vang                 family       already Q32792439
    Sigtryggsson         patronymic   already Q1556775
    von Seth             family       already Q49597252
    von Seth             family       already Q49597252
    de Beaumont          family       already Q76417957
    de Beaumont          family       already Q76417957
-   von Arenberg         family       already Q116650579
+   Hytten               family       already Q56538733
    von der Osten-Sacken family       already Q49164231
+   Hovet                family       already Q37434687
    Hovet                family       already Q37434687
    von Reinhausen       family       already Q137674873
    Victorin             family       already Q37075799
@@ -1341,7 +1313,6 @@
    von Holstein         family       already Q46528511
    de Silva             family       already Q57773714
    de Castilla          family       already Q99907853
-   Hravnhild            given        already Q141635513
    Hensrud              family       already Q36995480
    de Valdés            family       already Q133467869
    Moreen               family       already Q37329940
@@ -1361,6 +1332,7 @@
    Wendt                family       already Q15853986
    Wendt                family       already Q15853986
    Wendt                family       already Q15853986
+   Hedbom               family       already Q133805511
    von Kleist           family       already Q42865399
    Eid                  family       already Q37510021
    von Rosen            family       already Q42122485
@@ -1379,7 +1351,6 @@
    KOLD                 family       already Q46160472
    KOLD                 family       already Q46160472
    Flygare              family       already Q33073243
-   Stephansson          patronymic   already Q141635519
    Hanssen              patronymic   already Q27887944
    de Laval             family       already Q47462010
    von Reichenbach      family       already Q139817595
@@ -1411,7 +1382,6 @@
    Pehrsdotter          family       already Q54490983
    Vang                 family       already Q32792439
    Vang                 family       already Q32792439
-   Geitreim             family       already Q141635548
    von Numers           family       already Q47011129
    Pehrsdotter          family       already Q54490983
    Kierstin             given        already Q141235334
@@ -1419,7 +1389,6 @@
    von Staffeldt        family       already Q49442886
    Zettersten           family       already Q124040026
    Kantakouzenos        family       already Q99909713
-   Eggertsson           patronymic   already Q141635526
    von Hofsten          family       already Q41363542
    de Lorraine          family       already Q98890791
    Nyen                 family       already Q36988457
@@ -1443,7 +1412,6 @@
    abu                  family       already Q79783064
    abu                  family       already Q79783064
    abu                  family       already Q79783064
-   Jåtta                family       already Q141635554
    LYSE                 family       already Q39265204
    Skiftun              family       already Q141500917
    abu                  family       already Q79783064
@@ -1453,7 +1421,6 @@
    Uzzi                 family       already Q37330573
    Bagby                family       already Q16479709
    Bagby                family       already Q16479709
-   Benhard              given        already Q141635587
    Vang                 family       already Q32792439
    Smeland              family       already Q37089917
    Smeland              family       already Q37089917
@@ -1469,7 +1436,6 @@
    de Mendoza           family       already Q99888991
    koll                 family       already Q21510541
    Molla                family       already Q29007081
-   Eggertsson           patronymic   already Q141635526
    de Lacy              family       already Q65650530
    von Nellenburg       family       already Q113552200
    KVALBEIN             family       already Q30133009
@@ -1485,8 +1451,6 @@
    de Valois            family       already Q105348467
    Reetz                family       already Q37331011
    von Post             family       already Q47469205
-   Hustru               given        already Q141635515
-   Kanalheia            family       already Q141635537
    Torbergsdatter       patronymic   already Q122839156
    Higashi              family       already Q68518419
    Higashi              family       already Q68518419
@@ -1497,71 +1461,56 @@
    Higashi              family       already Q68518419
    Wendt                family       already Q15853986
    Rommel               family       already Q16882255
-   Grimsson             family       already Q141635549
-1832 token(s) the ring is about to need are ranked first
+1866 token(s) the ring is about to need are ranked first
 
-checking 3,664 existing name items for a missing description
-   3 of them have no English description; 3,661 already do
+checking 3,679 existing name items for a missing description
+   2 of them have no English description; 3,677 already do
    1 are DUPLICATES of an existing name item -- the description was refused, not emitted; see duplicate-name-items-found.tsv
 
-checking 774 existing patronymic items for P144 based on and P460
-P2976 on given names: 1572 reverse link(s) of 1584 pair(s)
-   8 P144 statement(s) to add
-   4 P31 culture class(es) to add
+checking 785 existing patronymic items for P144 based on and P460
+P2976 on given names: 1587 reverse link(s) of 1599 pair(s)
+   1 P144 statement(s) to add
+   1 P31 culture class(es) to add
    0 P144 statement(s) to remove
-   12 P460 statement(s) to add
+   10 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carried to a later run), 54 statements linking an EXISTING person to one, in the same run
-6 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
-   4 created WITHOUT a P144: Aldredsdotter, Fernandez, Fosen, Herseson
+wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5877 carried to a later run), 56 statements linking an EXISTING person to one, in the same run
+4 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
+   2 created WITHOUT a P144: Arinbjørnsdatter, Fanuelsdotter
   create  Tanba                family       178
-  create  李                    family       46
-  create  河南洛陽                 family       42
-  create  韋                    family       42
-  create  裴                    family       38
   create  Izumo                family       36
-  create  河東聞喜                 family       36
-  create  京兆長安                 family       34
-  create  崔                    family       33
-  create  弘農華陰                 family       26
-  create  楊                    family       26
-  create  隴西狄道                 family       24
-  create  竇                    family       18
+  create  李                    family       33
+  create  隴西狄道                 family       28
+  create  太原                   family       17
+  create  郭                    family       17
+  create  蕭                    family       16
   create  Mörner               family       15
   create  Mörner af Morlanda   family       15
-  create  盧                    family       15
   create  til                  family       14
-  create  鄭州管城                 family       14
-  create  柳                    family       13
-  create  河東解縣                 family       13
-  create  京兆杜陵                 family       12
-  create  深州安平                 family       12
-  create  蕭                    family       10
-  create  Andreæ               patronymic   9
-  create  京兆萬年                 family       9
-  create  南蘭陵                  family       9
-  create  獨孤                   family       9
+  create  薛                    family       14
+  create  崔                    family       12
+  create  蘭陵                   family       11
+  create  Andreæ               patronymic   10
+  create  弘農華陰                 family       10
+  create  蒲州寶鼎                 family       9
   create  Halvardsdatter       family       8
   create  Olofsdotter          family       8
   create  Piast                family       8
   create  von Hartmannsdorf    family       8
   create  von Yxkull           family       8
-  create  劉                    family       8
+  create  河東聞喜                 family       8
+  create  清河東武城                family       8
+  create  裴                    family       8
   create  Yitzhaq              family       7
   create  af Morlanda          family       7
   create  von Krüdener         family       7
-  create  于                    family       7
-  create  博陵安平                 family       7
-  create  清河武城                 family       7
-  create  范陽涿縣                 family       7
-  create  長孫                   family       7
   create  Dimberg              family       6
   create  Dokken               family       6
   create  Wołłowicz Bogoria    family       6
   create  af Hageby            family       6
   create  af Åminne            family       6
-  create  京兆高陵                 family       6
-  create  范陽                   family       6
+  create  河南洛陽                 family       6
+  create  Adlersköld           family       5
   create  Albrektsson          patronymic   5
   create  Berdinesdatter       patronymic   5
   create  Clodt                family       5
@@ -1569,6 +1518,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Finnsson             patronymic   5
   create  Gene                 family       5
   create  Gertsson             patronymic   5
+  create  Gudrød               given        5
   create  Haakonsdatter        patronymic   5
   create  Hohenstaufen         family       5
   create  Huk                  family       5
@@ -1582,20 +1532,20 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  af Koberg            family       5
   create  af Liebelitz         family       5
   create  Árpád dynasty        family       5
-  create  扶風平陵                 family       5
-  create  杜                    family       5
-  create  陳                    family       5
+  create  南蘭陵                  family       5
+  create  河東汾陰                 family       5
+  create  鉅鹿曲城                 family       5
+  create  魏                    family       5
   create  Aaharon              family       4
-  create  Adlersköld           family       4
   create  Al-Umawi             family       4
   create  Arvidi               patronymic   4
   create  Askanier             family       4
   create  Ådneson             family       4
   create  Benedicti            patronymic   4
   create  Filippusson          patronymic   4
-  create  Gudrød               given        4
   create  Halvardson           family       4
   create  Hauskje              family       4
+  create  Hyltén               family       4
   create  Hårå                 family       4
   create  Izyaslavich          patronymic   4
   create  Jelling              family       4
@@ -1628,6 +1578,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  af Harmens           family       4
   create  af Johannishus       family       4
   create  af Söfdeborg         family       4
+  create  de Lodève            family       4
   create  de Pallars           family       4
   create  de Tonnerre          family       4
   create  fra                  family       4
@@ -1636,12 +1587,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Gleichen         family       4
   create  von Jürgensburg      family       4
   create  von Krassow          family       4
+  create  von Mecklenburg      family       4
   create  von dem              family       4
   create  Åreskjold            family       4
-  create  元                    family       4
-  create  河南                   family       4
-  create  王                    family       4
-  create  豆盧                   family       4
+  create  蘇                    family       4
+  create  趙州贊皇                 family       4
+  create  長孫                   family       4
   create  Albretson            patronymic   3
   create  Algotsson            patronymic   3
   create  Aronsson             patronymic   3
@@ -1698,7 +1649,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Holar                family       3
   create  Holgersdotter        patronymic   3
   create  Hontherus            family       3
-  create  Hyltén               family       3
   create  Ingemundson          patronymic   3
   create  Ingesdotter          patronymic   3
   create  JONSDAL-LYSE         family       3
@@ -1729,17 +1679,18 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Matintytär           patronymic   3
   create  Mattssons            family       3
   create  Matzliach            family       3
+  create  Meginhard            given        3
   create  Mikkjelsdatter       patronymic   3
   create  Mikoto               family       3
   create  Mosesson             patronymic   3
   create  Mstislavna           given        3
   create  Mugga                family       3
   create  Máel                 given        3
+  create  Nerbelia             family       3
   create  Njå                 family       3
   create  Noræa                family       3
   create  Novgorod             family       3
   create  Nuzel                family       3
-  create  Obertenghi           family       3
   create  Omnberg              family       3
   create  Ottarsdatter         patronymic   3
   create  Paliche              family       3
@@ -1811,7 +1762,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Baião             family       3
   create  de Carnall           family       3
   create  de Chiny             family       3
-  create  de Lodève            family       3
   create  le Boteler           family       3
   create  van Polen            family       3
   create  von Achalm           family       3
@@ -1821,7 +1771,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Braunschweig     family       3
   create  von Burgau           family       3
   create  von Eppstein         family       3
-  create  von Mecklenburg      family       3
+  create  von Formbach         family       3
   create  von Osterwolde       family       3
   create  von Patkul           family       3
   create  von Saarbrücken      family       3
@@ -1834,11 +1784,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Örnfeldt             family       3
   create  Øysteinsson          patronymic   3
   create  Úlfsson              family       3
+  create  京兆杜陵                 family       3
   create  姬                    family       3
-  create  定州安喜                 family       3
-  create  彭城                   family       3
+  create  河南偃師                 family       3
+  create  藤原                   family       3
   create  陶唐氏                  family       3
-  create  陸                    family       3
+  create  韋                    family       3
   create  Aagesen              patronymic   2
   create  Aasten               given        2
   create  Ab-Hisda             family       2
@@ -1848,6 +1799,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Al-Abshamsi          family       2
   create  Al-Adawi             family       2
   create  Alstadia             family       2
+  create  Ambjörnsdotter       patronymic   2
   create  Amya                 family       2
   create  Ananiasson           patronymic   2
   create  Andersson Appelbom   family       2
@@ -1865,6 +1817,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Audotja              given        2
   create  Ådne                given        2
   create  Bagge af Boo         family       2
+  create  Barnimsdatter        patronymic   2
   create  Baugeid              given        2
   create  Becklind             family       2
   create  Belestson            patronymic   2
@@ -1885,7 +1838,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Bjug                 given        2
   create  Bjørku               family       2
   create  Bohemond             given        2
-  create  Botolvsson           family       2
   create  Brungren             family       2
   create  Brynhilda            given        2
   create  Brynildsdatter       patronymic   2
@@ -1913,6 +1865,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Dominicusdatter      patronymic   2
   create  Dreizel              given        2
   create  Ebbesdotter          patronymic   2
+  create  Eggertsdotter        patronymic   2
   create  Egilsson             patronymic   2
   create  Egypt                family       2
   create  Eilersen             patronymic   2
@@ -2044,6 +1997,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  King of Alvheim      family       2
   create  Kjellsdatter         patronymic   2
   create  Kjellsen             patronymic   2
+  create  Kjetilson            patronymic   2
   create  Kjær                 given        2
   create  Kjølevik             family       2
   create  Klemetson            patronymic   2
@@ -2054,7 +2008,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Kolv                 given        2
   create  Kolvsen              patronymic   2
   create  Kone                 given        2
-  create  Korpfelt             family       2
   create  Kristersdotter       patronymic   2
   create  Kristofersdatter     patronymic   2
   create  Kvaselbakken         family       2
@@ -2071,6 +2024,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Lenæus               family       2
   create  Leonhardsson         patronymic   2
   create  Leufstadius          family       2
+  create  Leutfried            given        2
   create  Levenshtam           family       2
   create  Levinius             given        2
   create  Lindö                family       2
@@ -2091,8 +2045,8 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Matsdotter           family       2
   create  Mattiae              given        2
   create  Måge                family       2
-  create  Meginhard            given        2
   create  Michaelsdotter       patronymic   2
+  create  Midtre               family       2
   create  Mieszkówna           family       2
   create  Mintz                family       2
   create  Mjölhus              family       2
@@ -2109,10 +2063,9 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Munk                 given        2
   create  Märet                given        2
   create  Møgjedal             family       2
+  create  Naucler              family       2
   create  Nauclérus            family       2
   create  Nechelin             family       2
-  create  Nelson               patronymic   2
-  create  Nerbelia             family       2
   create  Nesvizh              family       2
   create  Nevstein             given        2
   create  Nicolassen           patronymic   2
@@ -2129,6 +2082,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Normandy             family       2
   create  Nyra                 given        2
   create  Oberberg             family       2
+  create  Obertenghi           family       2
   create  Oddson               patronymic   2
   create  Odhelia              family       2
   create  Olgerdovich          patronymic   2
@@ -2182,6 +2136,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Rosladin             family       2
   create  Rotenburg            family       2
   create  Rurikids             family       2
+  create  Rya                  family       2
   create  Rödbeck              family       2
   create  Rögnvaldsson         patronymic   2
   create  Röök                 family       2
@@ -2197,6 +2152,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Schefferus           family       2
   create  Schillerfelt         family       2
   create  Schmedeman           family       2
+  create  Schröder            family       2
   create  Semelange            family       2
   create  Sigbjørnson          patronymic   2
   create  Sigerstad            family       2
@@ -2229,13 +2185,14 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Stovreim-Naustdal    family       2
   create  Strangesdatter       patronymic   2
   create  Strokirch            family       2
-  create  Stud                 family       2
   create  Størkardsdatter      patronymic   2
   create  Størkardsen          patronymic   2
   create  Sunesen              patronymic   2
   create  Svantepolksdotter    patronymic   2
+  create  Svarthen             family       2
   create  Sveinall             family       2
   create  Sveinsvold           family       2
+  create  Svendatter           patronymic   2
   create  Svyatopolk           given        2
   create  Swabia               family       2
   create  Swedelius            family       2
@@ -2248,12 +2205,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Tafse                family       2
   create  Takataka             given        2
   create  Tamemoto             given        2
-  create  Tananger             family       2
   create  Taralson             patronymic   2
   create  Tasta                family       2
   create  Teofiliusdatter      patronymic   2
   create  Theutberga           given        2
   create  Thorei               family       2
+  create  Thrand               given        2
   create  Thrugotsdatter       patronymic   2
   create  Tibelia              family       2
   create  Tjeldøy              family       2
@@ -2320,7 +2277,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Vikøy                family       2
   create  Vinstorp             family       2
   create  Volodarsdatter       patronymic   2
-  create  Von Liesgau          family       2
   create  Vseslav              given        2
   create  Wahl-Katzenellenbogen family       2
   create  Wallensis            family       2
@@ -2331,13 +2287,14 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Welinus              family       2
   create  Widstedt             family       2
   create  Wife                 given        2
+  create  Willibirg            given        2
   create  Wrede af Elimä       family       2
   create  Wrång                family       2
   create  Wält                 family       2
   create  Yaacob               given        2
   create  Yaacov               family       2
+  create  Yehe Nara            family       2
   create  Yitzhaq              given        2
-  create  Zachrisdotter        patronymic   2
   create  af Anckar            family       2
   create  af Björksund         family       2
   create  af Broxvik           family       2
@@ -2367,7 +2324,9 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Braose            family       2
   create  de Brionne           family       2
   create  de Carcassona        family       2
+  create  de Castrogeriz       family       2
   create  de Cerdanya          family       2
+  create  de Château-Larcher   family       2
   create  de Château-du-Loir   family       2
   create  de Clinton           family       2
   create  de Frioul            family       2
@@ -2393,6 +2352,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Neufchâtel        family       2
   create  de Osta              family       2
   create  de Ottenbüttel       family       2
+  create  de Poher             family       2
   create  de Portugal          family       2
   create  de Roët              family       2
   create  de Saint Omer        family       2
@@ -2420,12 +2380,10 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Arnsberg-Werl    family       2
   create  von Bilstein         family       2
   create  von Brabeck          family       2
-  create  von Braunschweig-Lüneburg family       2
   create  von Buren            family       2
   create  von Diemating        family       2
   create  von Diessen          family       2
   create  von Ebersberg        family       2
-  create  von Formbach         family       2
   create  von Gleiberg         family       2
   create  von Heinsberg-Valkenburg family       2
   create  von Hochstaden       family       2
@@ -2452,12 +2410,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Salzburg         family       2
   create  von Schauenburg-Holstein family       2
   create  von Sponheim-Starkenburg family       2
+  create  von Sualafeld        family       2
   create  von Sülichen         family       2
   create  von Tengen           family       2
   create  von Traugau          family       2
   create  von Tübingen         family       2
   create  von Vestenberg       family       2
-  create  von Vietinghoff      family       2
   create  von Walcker          family       2
   create  von Waldburg         family       2
   create  von Weimar-Orlamünde family       2
@@ -2479,6 +2437,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Önde                 given        2
   create  Öndesson             patronymic   2
   create  Ødeby                family       2
+  create  Ølver                given        2
   create  Ølversdatter         patronymic   2
   create  Ølversson            patronymic   2
   create  Þorfinnsson          family       2
@@ -2491,17 +2450,17 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Федорович            given        2
   create  Фёдорович            given        2
   create  بن فورتون            family       2
-  create  京兆府                  family       2
-  create  博陵                   family       2
+  create  京兆武功                 family       2
+  create  京兆萬年                 family       2
+  create  元                    family       2
   create  吳郡吳縣                 family       2
-  create  太原                   family       2
-  create  太原祁縣                 family       2
+  create  唐                    family       2
   create  扶餘                   family       2
-  create  綜                    given        2
-  create  郭                    family       2
-  create  釴                    given        2
-  create  鉅鹿曲城                 family       2
-  create  魏                    family       2
+  create  晉昌冥安                 family       2
+  create  柳                    family       2
+  create  河東解縣                 family       2
+  create  葉赫那拉                 family       2
+  create  陸                    family       2
   create  ....datter           family       1
   create  1st                  family       1
   create  29NOV 12240BC        family       1
@@ -2516,6 +2475,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Aagota               given        1
   create  Aalesson             patronymic   1
   create  Aaseline             given        1
+  create  Aasleivsson          family       1
   create  Aastensdatter        patronymic   1
   create  Aastensen            patronymic   1
   create  Aasuvdatter          family       1
@@ -2548,14 +2508,17 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Aelinde              given        1
   create  Af Harmens           family       1
   create  Af Rosenschiöld      family       1
+  create  Agalmodis            given        1
   create  Aganitrude           given        1
   create  Agilve               given        1
   create  Agmundson            family       1
   create  Agnarsson            patronymic   1
   create  Agrivillensis        family       1
   create  Ahusen               family       1
+  create  Airauld              given        1
   create  Airmetach            given        1
   create  Akseliana            given        1
+  create  Aksliane             given        1
   create  Al-Azdi              family       1
   create  Al-Fihri             family       1
   create  Al-Qurashi           family       1
@@ -2610,7 +2573,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Alveseike            family       1
   create  Alvsøn               family       1
   create  Amalvina             given        1
-  create  Ambjörnsdotter       patronymic   1
   create  Ambjörnsson          patronymic   1
   create  Ambrosiusson         patronymic   1
   create  Amda                 given        1
@@ -2672,12 +2634,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Arduinici            family       1
   create  Aremburg             given        1
   create  Aremburge            family       1
-  create  Arentsson            patronymic   1
   create  Aresen               family       1
   create  Aresson              patronymic   1
   create  Arimandus            given        1
   create  Arimendus            given        1
   create  Arimichi             given        1
+  create  Arinbjørnsdatter     patronymic   1
   create  Ariyasu              given        1
   create  Ariyoshi             given        1
   create  Arkimboldus          given        1
@@ -2703,6 +2665,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Arrhusia             family       1
   create  Artacama             given        1
   create  Arvidi               family       1
+  create  Arvidsen             patronymic   1
   create  Asbiørn              given        1
   create  Asbjørnson           family       1
   create  Asbjørnsson          patronymic   1
@@ -2802,6 +2765,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Barchaeus            family       1
   create  Bardsdatter          patronymic   1
   create  Bardsson             patronymic   1
+  create  Barnekar             given        1
   create  Barrildsdotter       patronymic   1
   create  Barthéls             family       1
   create  Bartolomeusdatter    patronymic   1
@@ -2866,8 +2830,8 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Berntine             given        1
   create  Berritt              given        1
   create  Bers                 given        1
-  create  Bersvendsdatter      patronymic   1
   create  Bersvendsen          patronymic   1
+  create  Berthelsen           patronymic   1
   create  Bertila              given        1
   create  Bertildis            given        1
   create  Bertilsen            family       1
@@ -2953,6 +2917,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Botolvsdatter        patronymic   1
   create  Botolvsdotter        patronymic   1
   create  Botolvsen            family       1
+  create  Botolvsson           family       1
   create  Bottolfsson          patronymic   1
   create  Botulfsson           patronymic   1
   create  Botun                family       1
@@ -3001,6 +2966,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Brynjólfsson         family       1
   create  Brynolfsson          patronymic   1
   create  Brynolphi            family       1
+  create  Brynolphus           given        1
   create  Brytteva             given        1
   create  Brønla               given        1
   create  Budic                given        1
@@ -3108,6 +3074,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Chrochius            family       1
   create  Chronhjelm           family       1
   create  Chydenia             family       1
+  create  Cixi                 family       1
   create  Claesdotter          family       1
   create  Claravallius         family       1
   create  Clasen               patronymic   1
@@ -3198,6 +3165,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  De Roxelle           family       1
   create  De Rumigny-Florennes family       1
   create  De Schelde           family       1
+  create  De Varmland          family       1
   create  De Velay             family       1
   create  De Vestmar           family       1
   create  De Windsor           family       1
@@ -3232,6 +3200,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Doth                 family       1
   create  Dotter               given        1
   create  Douglas of Whittinghame family       1
+  create  Dowager              family       1
   create  Dowlandi             given        1
   create  Dowoyno-Sollohub     family       1
   create  Driesen              patronymic   1
@@ -3282,8 +3251,8 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Edvardsen            patronymic   1
   create  Egehard              given        1
   create  Egenolf              given        1
-  create  Eggertsdotter        patronymic   1
   create  Ehrencreutz          family       1
+  create  Ehrenhielm           family       1
   create  Ehrenhjelm           family       1
   create  Eibrandsdatter       patronymic   1
   create  Eiel                 given        1
@@ -3332,6 +3301,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Emmikesson           patronymic   1
   create  Emnildis             given        1
   create  Emperor              given        1
+  create  Empress              family       1
   create  End                  given        1
   create  Endrideson           patronymic   1
   create  Endsdatter           patronymic   1
@@ -3343,6 +3313,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Engebrechtsdotter    patronymic   1
   create  Engebregtsen         family       1
   create  Engelbrektsson       patronymic   1
+  create  Engelmode            given        1
   create  Engelmut             given        1
   create  Engelrade            given        1
   create  Engeltrude           given        1
@@ -3436,6 +3407,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Farteinsdotter       patronymic   1
   create  Fastraad             given        1
   create  Fastulv              given        1
+  create  Fauciburge           given        1
   create  Faugincy             family       1
   create  Faydive              given        1
   create  Fectil               family       1
@@ -3491,6 +3463,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Folkvidsson          patronymic   1
   create  Folmar               given        1
   create  Fordal               given        1
+  create  Fordi                given        1
   create  Formbach             family       1
   create  Fornjot              given        1
   create  Fornjoto             given        1
@@ -3521,6 +3494,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Friderichsdatter     patronymic   1
   create  Frideruna            given        1
   create  Friderunda           given        1
+  create  Fridleifsdatter      patronymic   1
   create  Fridsberg            family       1
   create  Friherrinnan         given        1
   create  Frillor              family       1
@@ -3529,6 +3503,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Frodesson            patronymic   1
   create  Frohburg             family       1
   create  Froilan              family       1
+  create  Froilaz de León      family       1
   create  Frolaz               family       1
   create  Frondinus            family       1
   create  Frosten              given        1
@@ -3601,6 +3576,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Geirtrud             given        1
   create  Geiteskjer           family       1
   create  Georgsson            patronymic   1
+  create  Gerdeschöld          family       1
   create  Gerdruta             given        1
   create  Gerdtsdotter         patronymic   1
   create  Gerhard ab Osta      family       1
@@ -3661,6 +3637,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Go-Daigo-tenno       family       1
   create  Godeset              family       1
   create  Godfredsdotter       family       1
+  create  Godilona             given        1
   create  Godskalk             given        1
   create  Godtskalksdatter     patronymic   1
   create  Godwinsen            patronymic   1
@@ -3928,6 +3905,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Helgers              family       1
   create  Helgevoll            family       1
   create  Helgisdatter         patronymic   1
+  create  Helgonis             family       1
   create  Heliot               given        1
   create  Hellbag              family       1
   create  Hellesen             patronymic   1
@@ -4047,6 +4025,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Hraereksson          family       1
   create  Hrappsson            patronymic   1
   create  Hrifla               given        1
+  create  Hring                given        1
   create  Hroarsson            patronymic   1
   create  Hroison              patronymic   1
   create  Hrolfursson          patronymic   1
@@ -4060,6 +4039,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Humberge             given        1
   create  Humle                family       1
   create  Hund Namdal          family       1
+  create  Hunda-Steinar        given        1
   create  Hunda-Steinarson     patronymic   1
   create  Hunde-Steinarson     patronymic   1
   create  Hundingr             given        1
@@ -4091,6 +4071,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Håland Gjesdal       family       1
   create  Hålegg               family       1
   create  Hålogaland           family       1
+  create  Hånevsson            patronymic   1
   create  Hårdrådesätten Norge family       1
   create  Håreksdatter         patronymic   1
   create  Hårfagre-Hårdrådesätten family       1
@@ -4139,6 +4120,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Ingebretsdatter      family       1
   create  Ingebretsen Grude Rott family       1
   create  Ingebretsson         patronymic   1
+  create  Ingefred             given        1
   create  Ingelborg            given        1
   create  Ingeldus             given        1
   create  Ingelotz             family       1
@@ -4148,7 +4130,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Ingerborg            family       1
   create  Ingessen             patronymic   1
   create  Ingevaldssøn         patronymic   1
-  create  Ingiel               given        1
   create  Ingiríðr             given        1
   create  Ingjaldson           patronymic   1
   create  Ingjaldsson          family       1
@@ -4183,7 +4164,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Izyaslav             given        1
   create  Izyaslavl            family       1
   create  Iñiguez              family       1
-  create  Ióannés              given        1
   create  J                    given        1
   create  JONSSON              family       1
   create  Jahnsdatter          patronymic   1
@@ -4326,7 +4306,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Kjelsen              patronymic   1
   create  Kjempe               family       1
   create  Kjetillson           patronymic   1
-  create  Kjetilson            patronymic   1
   create  Klausen              patronymic   1
   create  Klementsdatter       patronymic   1
   create  Klementsson          patronymic   1
@@ -4365,6 +4344,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Kopervik             family       1
   create  Korikos              family       1
   create  Korpenfelt           family       1
+  create  Korpfelt             family       1
   create  Koss                 family       1
   create  Kotini               given        1
   create  Kourkouas            family       1
@@ -4433,6 +4413,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Laihia               family       1
   create  Lambrektsson         patronymic   1
   create  Lambrigt             given        1
+  create  Landrade             given        1
   create  Landéric             given        1
   create  Langlia              family       1
   create  Lannera              family       1
@@ -4482,7 +4463,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Lette                given        1
   create  Leufstadia           family       1
   create  Leukardis            given        1
-  create  Leutfried            given        1
   create  Leutharis            given        1
   create  Levarsen             patronymic   1
   create  Levinsdatter         patronymic   1
@@ -4536,6 +4516,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Lodinson             patronymic   1
   create  Lodmundsdatter       patronymic   1
   create  Loew                 given        1
+  create  Lofthøna             given        1
   create  Lokatt               family       1
   create  Lollia               given        1
   create  Lomakova             family       1
@@ -4575,7 +4556,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Lythræa              family       1
   create  Lyubech              family       1
   create  Låge                 family       1
-  create  Læstadia             family       1
   create  Læstander            family       1
   create  Löja                 family       1
   create  Löschern             family       1
@@ -4650,7 +4630,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Mathiasson           patronymic   1
   create  Mathisen             patronymic   1
   create  Matiasdatter         patronymic   1
-  create  Matingsdal           family       1
   create  Matinpoika           patronymic   1
   create  Matson               patronymic   1
   create  Mattathias           given        1
@@ -4686,7 +4665,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Mesel                family       1
   create  Messenius            family       1
   create  Metalla              family       1
-  create  Midtre               family       1
   create  Mieceslas            given        1
   create  Mieszkowic           family       1
   create  Mikaeli              family       1
@@ -4702,6 +4680,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Minnesköld           family       1
   create  Minz                 family       1
   create  Mishima              given        1
+  create  Mistui               given        1
   create  Misztiszlavovna      patronymic   1
   create  Mita                 family       1
   create  Miten                family       1
@@ -4731,6 +4710,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Montelia             family       1
   create  Montfort-Feldkirch   family       1
   create  Morensis             family       1
+  create  Morimasa             family       1
   create  Moringius            family       1
   create  Moriyo               given        1
   create  Mormaer              family       1
@@ -4755,6 +4735,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Mure of Cowdams      family       1
   create  Mure of Tasseis      family       1
   create  Musin-Puškin         family       1
+  create  Mussla               family       1
   create  Myklabust            family       1
   create  Märitta              given        1
   create  Måneskiold           family       1
@@ -4794,9 +4775,9 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Naokuni              given        1
   create  Narvesdatter         patronymic   1
   create  Narvesson            patronymic   1
+  create  Nashimoto            given        1
   create  Nassau-Dillenburg    family       1
   create  Natomaro             family       1
-  create  Naucler              family       1
   create  Nauclera             family       1
   create  Naucléra             family       1
   create  Naundalsson          family       1
@@ -4813,6 +4794,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Nefsteinsson         patronymic   1
   create  Neithhotep           given        1
   create  Neitshe              given        1
+  create  Nelson               patronymic   1
   create  Nemtyemsaf           given        1
   create  Nericia              family       1
   create  Nericius             family       1
@@ -4880,6 +4862,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Notberg              family       1
   create  Novgorod Volynia     family       1
   create  Noígiallach          given        1
+  create  Nurhaci              given        1
   create  När                  family       1
   create  Närike               family       1
   create  Närke                family       1
@@ -4930,6 +4913,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Olderman Cronstedt   family       1
   create  Oldsdotter           family       1
   create  Oldsdotter           patronymic   1
+  create  Ole-Johannesdatter   family       1
   create  Olette               given        1
   create  Olfvir               given        1
   create  Olivarius            given        1
@@ -4986,6 +4970,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Otomaro              family       1
   create  Otomo                given        1
   create  Otoyama              given        1
+  create  Ottenbüttel          family       1
   create  Otterson             patronymic   1
   create  Otuel                given        1
   create  Out                  given        1
@@ -5099,6 +5084,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Rafertach            given        1
   create  Rafoss-Augland       family       1
   create  Raghild              given        1
+  create  Raginsunt            given        1
   create  Ragnfred             given        1
   create  Ragnilda             given        1
   create  Ragnilde             given        1
@@ -5141,6 +5127,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Raud                 given        1
   create  Raufoss              family       1
   create  Raumsson             family       1
+  create  Raumsson             patronymic   1
   create  Raymodis             given        1
   create  Raziye               given        1
   create  Refil                given        1
@@ -5181,6 +5168,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Rickeby              family       1
   create  Ricoaire             given        1
   create  Ridderståhle         family       1
+  create  Ridoredh             given        1
   create  Riesebieter          family       1
   create  Rig                  given        1
   create  Rigson               patronymic   1
@@ -5201,6 +5189,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Rithovius            family       1
   create  Riurikai             family       1
   create  Rjonsdatter          patronymic   1
+  create  Roaldson             patronymic   1
   create  Roarsdatter          patronymic   1
   create  Robertsdotter        patronymic   1
   create  Rockert              given        1
@@ -5245,7 +5234,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Runell               given        1
   create  Rustung              family       1
   create  Ruuth Finland        family       1
-  create  Rya                  family       1
   create  Ryogu                given        1
   create  Rytze                family       1
   create  Rzepicha             given        1
@@ -5327,7 +5315,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Schmiedefelt         family       1
   create  Schoendle            given        1
   create  Schomera             family       1
-  create  Schröder            family       1
   create  Schultunensis        family       1
   create  Schwarzburg          family       1
   create  Schwarzburg-Blankenburg family       1
@@ -5363,7 +5350,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Serker               given        1
   create  Serkerson            patronymic   1
   create  Serkersson           family       1
-  create  Serket               given        1
   create  Serksdatter          patronymic   1
   create  Sestrid              given        1
   create  Seth-Peribsen        family       1
@@ -5377,6 +5363,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Shigetsune           given        1
   create  Shigeuji             given        1
   create  Shigeyo              given        1
+  create  Shikatahime          given        1
   create  Shprinza             given        1
   create  Shrentzels           family       1
   create  Shuiski              family       1
@@ -5429,6 +5416,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Siniluoto            family       1
   create  Sint-Pieters-Leeuw   family       1
   create  Sirene               given        1
+  create  Sisalda              given        1
   create  Sisebuto             given        1
   create  Siur                 given        1
   create  Siurd                given        1
@@ -5542,6 +5530,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Spantekow            family       1
   create  Sparre av Tofta      family       1
   create  Sparre av Vik        family       1
+  create  Sparre över blad     family       1
   create  Spilhammar           family       1
   create  Spoleto              family       1
   create  Sprota               given        1
@@ -5570,7 +5559,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Stein av Væradal     family       1
   create  Stein von Steinhausen family       1
   create  Steinarson           patronymic   1
-  create  Steinarsson          family       1
   create  Steinbru             family       1
   create  Steine               family       1
   create  Steinstø             family       1
@@ -5600,7 +5588,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Stongaland           family       1
   create  Stora                given        1
   create  Store                given        1
-  create  Store Ålgård         family       1
   create  Stovrheim            family       1
   create  Strachkvas           given        1
   create  Stromman             family       1
@@ -5643,7 +5630,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Svantesdotter        patronymic   1
   create  Svantevold           family       1
   create  Svare av Klosterhof  family       1
-  create  Svarthen             family       1
   create  Svassesdotter        patronymic   1
   create  Svave                given        1
   create  Svavedatter          patronymic   1
@@ -5654,7 +5640,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Sveinke              given        1
   create  Sveinsen             family       1
   create  Sveinssen            patronymic   1
-  create  Svendatter           patronymic   1
   create  Svendsdotter         family       1
   create  Svendson             family       1
   create  Svendsøn             family       1
@@ -5743,6 +5728,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Tames                given        1
   create  Tamine               family       1
   create  Tammelinus           family       1
+  create  Tananger             family       1
   create  Tandberg av Kvie     family       1
   create  Tao-Klarjeti         family       1
   create  Taralsdatter         family       1
@@ -5758,8 +5744,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Teitsson             patronymic   1
   create  Telipinu             given        1
   create  Tellingius           family       1
-  create  Teodine              given        1
-  create  Teodolf              given        1
   create  Terentjevitj         given        1
   create  Tersmeden Cedercreutz family       1
   create  Terteroba            family       1
@@ -5814,7 +5798,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Thorun               given        1
   create  Thorved              given        1
   create  Thorvedsson          patronymic   1
-  create  Thrand               given        1
   create  Thrandsdotter        patronymic   1
   create  Thrond               given        1
   create  Thrytho              given        1
@@ -5845,6 +5828,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Tjärn                family       1
   create  Tjøstolvsen          patronymic   1
   create  Tobiasson            patronymic   1
+  create  Todilde              given        1
   create  Todni                given        1
   create  Tofue                given        1
   create  Tofuesson            patronymic   1
@@ -5957,6 +5941,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Tre Musslor          family       1
   create  Tre Roser            family       1
   create  Tresk                family       1
+  create  Triugnev             given        1
   create  Troianus             given        1
   create  Trommeslager         family       1
   create  Tromslager           family       1
@@ -6030,6 +6015,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Udilhilde            given        1
   create  Ufeig                given        1
   create  Ufeigsdotter         patronymic   1
+  create  Uffesen              patronymic   1
   create  Ugjæva               family       1
   create  Uglich               family       1
   create  Uhlbom               family       1
@@ -6076,6 +6062,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Vagnadottír          family       1
   create  Vagnadóttir          patronymic   1
   create  Valavičiūtė          family       1
+  create  Valdarsson           patronymic   1
   create  Valdemarsen          patronymic   1
   create  Valdemarsøn          family       1
   create  Valentinsdotter      patronymic   1
@@ -6088,6 +6075,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Van Boulogne         family       1
   create  Van Der Huus         family       1
   create  Van Leiningen Westerburg family       1
+  create  Van Renesse van Haamstede family       1
   create  Vanlandesson         patronymic   1
   create  Vanlandi             given        1
   create  Vapnø                family       1
@@ -6121,6 +6109,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Veðrar-Grímsson      family       1
   create  Victurnian           given        1
   create  Vidame D'amiens      family       1
+  create  Vifilsdatter         patronymic   1
   create  Vigleison            patronymic   1
   create  Viglesdalen          family       1
   create  Vigolf               given        1
@@ -6153,6 +6142,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Von Genf             family       1
   create  Von Hohenstaufen     family       1
   create  Von Kiessel          family       1
+  create  Von Liesgau          family       1
   create  Von Papenheim        family       1
   create  Von Sachen           family       1
   create  Von Staufen          family       1
@@ -6214,10 +6204,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Wellam               given        1
   create  Werigand             given        1
   create  Wermelandus          family       1
+  create  Wermund              given        1
   create  West Gotland         family       1
   create  Westbaar             family       1
   create  Westerllng           family       1
   create  Westheusen           family       1
+  create  Westrogotus          family       1
   create  Wether               family       1
   create  Wettin               family       1
   create  Wettiner             family       1
@@ -6229,7 +6221,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Wilhelmsen           patronymic   1
   create  Wilibalda            given        1
   create  Wilkens Engebretsen  family       1
-  create  Willibirg            given        1
   create  Wincentzsdatter      patronymic   1
   create  Winecker             family       1
   create  Wirtenberg           family       1
@@ -6254,6 +6245,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Xuanyuan             given        1
   create  Yaacob               family       1
   create  Yakuno               given        1
+  create  Yangginu             given        1
   create  Yaropolkovna         patronymic   1
   create  Yasukiyo泰清           given        1
   create  Yasutsune            given        1
@@ -6265,6 +6257,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Yitzhak              family       1
   create  Yleskog              family       1
   create  Yngvildr             given        1
+  create  Yngvildur            given        1
   create  Yngwin               given        1
   create  Yorifusa             given        1
   create  Yorihide             given        1
@@ -6289,6 +6282,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Zachariasson         patronymic   1
   create  Zachariæ             patronymic   1
   create  Zachrichsson         family       1
+  create  Zachrisdotter        patronymic   1
   create  Zariea               given        1
   create  Zavidich             family       1
   create  Zawisza-Kieżgajło    family       1
@@ -6379,6 +6373,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  d'Aglie              family       1
   create  d'Agliè              family       1
   create  d'Ampuries           family       1
+  create  d'Ancenis            family       1
   create  d'Ancy-le-Franc      family       1
   create  d'Anduze             family       1
   create  d'Angelica           family       1
@@ -6397,6 +6392,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  d'Escuens            family       1
   create  d'Espec              family       1
   create  d'Héristal           family       1
+  create  d'ORCADES            family       1
   create  d'Oilly              family       1
   create  d'Oisy d'Avesnes     family       1
   create  d'Ongnies            family       1
@@ -6434,6 +6430,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Blois-Champagne   family       1
   create  de Blâmont           family       1
   create  de Bois Ferrand      family       1
+  create  de Bolebec           family       1
   create  de Borgoña           family       1
   create  de Borja y Enriquez de Luna family       1
   create  de Boulogne-Blois    family       1
@@ -6447,11 +6444,11 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Bénauges          family       1
   create  de Bénévento         family       1
   create  de Bésiers-Sauvian   family       1
+  create  de Calian            family       1
   create  de Cantabria         family       1
   create  de Castile           family       1
   create  de Castilla y León   family       1
   create  de Castro Alvarez Osorio family       1
-  create  de Castrogeriz       family       1
   create  de Caumont la Force  family       1
   create  de Celanova          family       1
   create  de Chalon et Troyes  family       1
@@ -6461,8 +6458,9 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Charroux          family       1
   create  de Chateauvillain    family       1
   create  de Chatellerault     family       1
+  create  de Chaunois          family       1
   create  de Châlon-sur-Saône  family       1
-  create  de Château-Larcher   family       1
+  create  de Châtellerault     family       1
   create  de Châtellérault     family       1
   create  de Clerieux          family       1
   create  de Clermont en Beauvaisis family       1
@@ -6483,7 +6481,9 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Enver             family       1
   create  de Essex             family       1
   create  de Falaise           family       1
+  create  de Fiero-Marle       family       1
   create  de Ganelon           family       1
+  create  de Gasconha          family       1
   create  de Gdańsk            family       1
   create  de Gelas             family       1
   create  de Gevaudan          family       1
@@ -6492,6 +6492,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Gévaudan          family       1
   create  de Gévaudan-Brioude  family       1
   create  de Hainault          family       1
+  create  de Ham-sur-Heure     family       1
   create  de Haspengouw        family       1
   create  de Haute-Lotharingie family       1
   create  de Haveskercke       family       1
@@ -6532,6 +6533,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Montpellier       family       1
   create  de Montreal de Beauvoir family       1
   create  de Monyorókerék      family       1
+  create  de Mortagne          family       1
   create  de Moselle           family       1
   create  de Mousson           family       1
   create  de Multon            family       1
@@ -6547,7 +6549,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  de Pailhars          family       1
   create  de Pallars Sobirà    family       1
   create  de Peronne           family       1
-  create  de Poher             family       1
   create  de Poitou            family       1
   create  de Prades            family       1
   create  de Périgord          family       1
@@ -6639,6 +6640,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  d’Amiens             family       1
   create  d’Arles              family       1
   create  ektefelle            given        1
+  create  father               given        1
   create  ferch Cadifor        patronymic   1
   create  ferch Gwynnog        patronymic   1
   create  ferch Merfyn         patronymic   1
@@ -6662,6 +6664,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  im Erpesfeld         family       1
   create  im Liesgau           family       1
   create  im Neckargau         family       1
+  create  im Saulafeld         family       1
   create  im Schwaben          family       1
   create  ingen Cearbhaill     family       1
   create  ingen Cináed         family       1
@@ -6688,6 +6691,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  nedre Øxnevad        family       1
   create  nic Uilliam          patronymic   1
   create  nnson                family       1
+  create  no Mikoto            family       1
   create  nær                  family       1
   create  op den Graeff        family       1
   create  oławski              given        1
@@ -6738,6 +6742,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  van Luneborg         family       1
   create  van Mochental        family       1
   create  van Putelendorf      family       1
+  create  van Saint Omer       family       1
   create  van Saint-Omer       family       1
   create  van Schoonhoven      family       1
   create  van Schoten          family       1
@@ -6764,6 +6769,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Aderkas          family       1
   create  von Aich             family       1
   create  von Aichelberg       family       1
+  create  von Alemannien       family       1
   create  von Anrep            family       1
   create  von Auersperg        family       1
   create  von Baden            family       1
@@ -6783,6 +6789,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Bohemia          family       1
   create  von Bolanden         family       1
   create  von Bratt            family       1
+  create  von Braunschweig-Lüneburg family       1
   create  von Braunschweig-Wolfenbüttel family       1
   create  von Brauweiler de Lorraine family       1
   create  von Brundert         family       1
@@ -6945,6 +6952,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Saksen           family       1
   create  von Saletta          family       1
   create  von Salzburggau      family       1
+  create  von Sarmatien        family       1
   create  von Sass             family       1
   create  von Saveland         family       1
   create  von Sayn-Wittgenstein-Homburg family       1
@@ -6968,17 +6976,18 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Steding          family       1
   create  von Stefanskirchen   family       1
   create  von Stolberg         family       1
-  create  von Sualafeld        family       1
   create  von Sundersbuhl      family       1
   create  von Swabia           family       1
   create  von Thurgau          family       1
   create  von Thurn-Valsassina family       1
   create  von Thüringen        family       1
+  create  von Turngau          family       1
   create  von Ungarn           family       1
   create  von Urslingen        family       1
   create  von Usedom           family       1
   create  von Veckenstedt      family       1
   create  von Viermundt        family       1
+  create  von Vietinghoff      family       1
   create  von Vinzgau          family       1
   create  von Vohburg          family       1
   create  von Volmestein       family       1
@@ -6996,6 +7005,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  von Wrangell af Adinal family       1
   create  von Wulf-Pogwisch    family       1
   create  von Wulffschmidt     family       1
+  create  von Wülflingen       family       1
   create  von Würtemberg       family       1
   create  von Zaltza           family       1
   create  von Zutphen          family       1
@@ -7051,6 +7061,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Æsa                  family       1
   create  Æthelflaed           given        1
   create  Æthelthrith          given        1
+  create  Ævarsdóttir          patronymic   1
   create  Æðelswyð             given        1
   create  Æþelræd              given        1
   create  Éremburge            given        1
@@ -7073,7 +7084,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  Österhild            given        1
   create  Øglend               family       1
   create  Ølve                 given        1
-  create  Ølver                given        1
   create  Ølvesson             patronymic   1
   create  Østabø               family       1
   create  Østenson             patronymic   1
@@ -7163,126 +7173,91 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  רפא                  family       1
   create  ბაგრატი              given        1
   create  ბაგრატიონი           family       1
-  create  䪻                    given        1
-  create  一作頊                  given        1
+  create  䋔                    given        1
   create  一条天皇                 family       1
   create  三千媛                  given        1
   create  世仁                   given        1
-  create  世矩                   given        1
-  create  世翼                   given        1
   create  中臣可多能祜               given        1
-  create  中行                   given        1
   create  丹後内侍                 given        1
+  create  京兆長安                 family       1
   create  仁賢天皇                 family       1
   create  今出川                  family       1
-  create  仙鼎                   given        1
-  create  令則                   given        1
-  create  令名                   given        1
-  create  仲讓                   given        1
+  create  仲元                   given        1
+  create  仲宣                   given        1
+  create  仲文                   given        1
+  create  仲武                   given        1
+  create  仲詡                   given        1
+  create  仲謙                   given        1
+  create  仲通                   given        1
   create  伏見天皇                 family       1
-  create  休徵                   given        1
-  create  伯宣                   given        1
   create  伯益                   given        1
-  create  伯謙                   given        1
-  create  伯黨                   given        1
-  create  佺壽                   given        1
-  create  侍庶                   given        1
-  create  元晨                   given        1
-  create  元曄                   given        1
-  create  充虞                   given        1
+  create  佛                    family       1
+  create  信臣                   given        1
+  create  儒童                   given        1
+  create  元將                   given        1
+  create  元曖                   given        1
+  create  元節                   given        1
+  create  元表                   given        1
   create  光仁天皇                 family       1
-  create  光叔                   given        1
-  create  光大                   given        1
-  create  光遠                   given        1
-  create  克恭                   given        1
-  create  克溫                   given        1
-  create  全節                   given        1
+  create  光州固始                 family       1
   create  公成室                  given        1
-  create  公牧                   given        1
-  create  公續                   given        1
+  create  公達                   given        1
+  create  冀歸                   given        1
   create  円融天皇                 family       1
-  create  副子                   given        1
-  create  勃                    given        1
   create  勧修寺                  family       1
-  create  厚復                   given        1
-  create  去惑                   given        1
-  create  友剛                   given        1
-  create  友柔                   given        1
-  create  友順                   given        1
-  create  叔仁                   given        1
-  create  叔德                   given        1
-  create  叔玉                   given        1
-  create  受彩                   given        1
+  create  叔昇                   given        1
   create  句芒                   given        1
-  create  君齊                   given        1
+  create  君倩                   given        1
+  create  君山                   given        1
   create  周仁                   given        1
-  create  咒                    given        1
-  create  善會                   given        1
-  create  嘉慶                   given        1
-  create  嘉祥                   given        1
+  create  和                    family       1
+  create  喜塔臘                  family       1
   create  嚳                    given        1
   create  土御門天皇                family       1
-  create  執虛                   given        1
-  create  執顏                   given        1
-  create  士南                   given        1
+  create  士積                   given        1
   create  大业                   given        1
   create  大方                   given        1
-  create  大猷                   given        1
+  create  大泊瀬稚武皇子              given        1
+  create  大端                   given        1
   create  大脚                   given        1
-  create  大莊                   given        1
+  create  大質                   given        1
+  create  大順                   given        1
   create  天宗高紹                 given        1
   create  太原文水                 family       1
-  create  太真                   given        1
-  create  夷道                   given        1
+  create  奭                    given        1
   create  女修                   given        1
   create  女媧                   given        1
   create  女英                   given        1
+  create  威惠                   given        1
   create  娥皇                   given        1
   create  嫘                    family       1
   create  嫫母                   given        1
-  create  字師                   given        1
-  create  字曖                   given        1
-  create  孝友                   given        1
-  create  孝慈                   given        1
-  create  孝本                   given        1
-  create  孝材                   given        1
-  create  孝逸                   given        1
+  create  子美                   given        1
+  create  子邵                   given        1
+  create  字璀                   given        1
+  create  孝基                   given        1
+  create  孝徹                   given        1
+  create  孝瑜                   given        1
   create  孝長                   given        1
-  create  季良                   given        1
-  create  宇喜多                  family       1
+  create  季卿                   given        1
   create  守平                   given        1
-  create  安壽                   given        1
-  create  宋州宋城                 family       1
-  create  宣悊                   given        1
+  create  容卿                   given        1
+  create  寂                    given        1
+  create  察躬                   given        1
+  create  寶卷                   given        1
+  create  寶胤                   given        1
   create  尊成                   given        1
   create  少典                   given        1
-  create  尚之                   given        1
-  create  尚烈                   given        1
-  create  居晊                   given        1
-  create  居業                   given        1
-  create  居約                   given        1
-  create  居近                   given        1
-  create  岱                    given        1
-  create  峴                    given        1
-  create  嶼                    given        1
-  create  巨                    given        1
-  create  師仁                   given        1
-  create  師幹                   given        1
-  create  師武                   given        1
-  create  師道                   given        1
-  create  平仲                   given        1
-  create  幼平                   given        1
-  create  幼達                   given        1
+  create  市辺押磐皇子               given        1
   create  広言                   given        1
-  create  延壽                   given        1
-  create  延昕                   given        1
-  create  延福                   given        1
-  create  弘儀                   given        1
-  create  弘度                   given        1
-  create  弘甫                   given        1
-  create  弘素                   given        1
+  create  廩                    given        1
+  create  弘達                   given        1
+  create  弘默                   given        1
+  create  張                    family       1
   create  彤魚氏                  given        1
+  create  彥生                   given        1
   create  彦仁                   given        1
+  create  待聘                   given        1
   create  後二条天皇                family       1
   create  後伏見天皇                family       1
   create  後光明天皇                family       1
@@ -7297,189 +7272,124 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5930 carri
   create  後花園天皇                family       1
   create  後陽成天皇                family       1
   create  後鳥羽天皇                family       1
-  create  從心                   given        1
-  create  從易                   given        1
-  create  從龜                   given        1
   create  德璋                   given        1
-  create  思泰                   given        1
-  create  思禎                   given        1
-  create  思簡                   given        1
-  create  思約                   given        1
-  create  思訥                   given        1
-  create  思誼                   given        1
-  create  恆州井陘                 family       1
-  create  恊義                   given        1
-  create  恭仁                   given        1
-  create  恭道                   given        1
   create  息長帯比売                given        1
   create  惟宗                   family       1
-  create  愛同                   given        1
-  create  愛業                   given        1
-  create  慎由                   given        1
-  create  慶協                   given        1
-  create  慶復                   given        1
-  create  慶暕                   given        1
-  create  慶餘                   given        1
-  create  懷感                   given        1
-  create  懷莊                   given        1
-  create  懿卿                   given        1
+  create  惠                    family       1
+  create  愻                    given        1
+  create  慈禧太后                 family       1
+  create  懲                    given        1
   create  成仁                   given        1
-  create  成休                   given        1
-  create  成式                   given        1
-  create  成績                   given        1
   create  戡                    given        1
-  create  承乾                   given        1
-  create  承確                   given        1
-  create  承祐                   given        1
-  create  拯                    given        1
+  create  才甫                   given        1
+  create  扶風平陵                 family       1
+  create  承業                   given        1
   create  握登                   given        1
   create  政仁                   given        1
-  create  政會                   given        1
   create  教秀                   given        1
   create  敦仁                   given        1
+  create  敦信                   given        1
   create  敦良                   given        1
   create  敬康                   given        1
-  create  敬愛                   given        1
-  create  敬止                   given        1
-  create  方則                   given        1
+  create  敬遠                   given        1
+  create  敻                    given        1
+  create  文偉                   given        1
+  create  旻寧                   family       1
   create  昌意                   given        1
-  create  昌遠                   given        1
   create  明正天皇                 family       1
-  create  易從                   given        1
-  create  易知                   given        1
-  create  昙首                   given        1
   create  春日大娘皇女               given        1
   create  昭仁                   given        1
-  create  晅                    given        1
-  create  晏                    given        1
-  create  景初                   given        1
-  create  景回                   given        1
-  create  景猷                   given        1
-  create  暄                    given        1
-  create  暈                    given        1
-  create  曖                    given        1
+  create  時文                   given        1
+  create  智藏                   given        1
   create  有熊氏                  family       1
   create  朝仁                   given        1
   create  東山天皇                 family       1
-  create  柱成                   given        1
   create  桃園天皇                 family       1
   create  桜町天皇                 family       1
-  create  條                    given        1
-  create  橚                    given        1
-  create  欽爽                   given        1
-  create  欽肅                   given        1
-  create  正覺                   given        1
+  create  梁                    family       1
+  create  梨本宮                  family       1
   create  武                    family       1
   create  殷                    family       1
-  create  毖                    given        1
-  create  汜                    given        1
-  create  沐                    given        1
-  create  河南偃師                 family       1
-  create  河南府                  family       1
-  create  河南鞏州                 family       1
-  create  法師                   given        1
-  create  泝                    given        1
-  create  涗                    given        1
-  create  深之                   given        1
-  create  渾                    given        1
-  create  湜                    given        1
+  create  沙莫仁                  given        1
+  create  清河武城                 family       1
   create  溥                    family       1
-  create  漸                    given        1
-  create  潼                    given        1
   create  炎帝                   given        1
   create  為仁                   given        1
-  create  無為                   given        1
   create  熈仁                   given        1
-  create  熙勳                   given        1
   create  熲                    given        1
-  create  玄意                   given        1
-  create  玄育                   given        1
-  create  玄象                   given        1
-  create  玉環                   given        1
-  create  玢                    given        1
-  create  珖                    given        1
-  create  珦                    given        1
-  create  琄                    given        1
-  create  琅邪臨沂                 family       1
-  create  瑨                    given        1
-  create  瑾之                   given        1
-  create  璡                    given        1
-  create  璥                    given        1
-  create  異                    given        1
-  create  皆                    given        1
-  create  知亮                   given        1
-  create  知人                   given        1
-  create  知什                   given        1
+  create  爭臣                   given        1
+  create  爾經額                  given        1
+  create  玄弼                   given        1
+  create  玄成                   given        1
+  create  玄機                   given        1
+  create  珵                    given        1
+  create  球                    given        1
+  create  琚                    given        1
+  create  瑀                    given        1
+  create  瑱                    given        1
+  create  璀                    given        1
+  create  真陽                   given        1
   create  知仁                   given        1
-  create  知機                   given        1
-  create  知運                   given        1
+  create  知本                   given        1
   create  神功皇后                 family       1
-  create  禮源                   given        1
+  create  福臨                   family       1
   create  秀家                   given        1
-  create  稚詮                   given        1
+  create  稚                    given        1
   create  穷蝉                   given        1
-  create  級                    given        1
+  create  竇                    family       1
   create  紹仁                   given        1
-  create  紹遠                   given        1
-  create  綸                    given        1
-  create  緬                    given        1
-  create  縯                    given        1
-  create  繽                    given        1
-  create  纁                    given        1
-  create  續                    given        1
-  create  義盛                   given        1
+  create  翊周                   given        1
   create  老女子                  given        1
+  create  聞禮                   given        1
   create  胤仁                   given        1
-  create  若濁                   given        1
   create  英仁                   given        1
   create  華胥氏                  given        1
-  create  蒲州河東                 family       1
-  create  藻                    given        1
-  create  蘭陵                   family       1
-  create  虛巳                   given        1
-  create  虛舟                   given        1
-  create  虬                    given        1
+  create  葉赫納喇                 family       1
   create  蟜牛                   given        1
-  create  褘                    given        1
-  create  該                    given        1
-  create  調                    given        1
-  create  謐                    given        1
+  create  行基                   given        1
   create  豊沢                   given        1
-  create  賓庭                   given        1
-  create  踐微                   given        1
+  create  豫之                   given        1
+  create  貞玄                   given        1
   create  載淳                   family       1
   create  載湉                   family       1
   create  載灃                   family       1
-  create  輪王                   given        1
-  create  通理                   given        1
-  create  進思                   given        1
   create  遂                    given        1
-  create  遊藝                   given        1
   create  遐仁                   given        1
-  create  道彥                   given        1
-  create  邃                    given        1
+  create  道楨                   given        1
+  create  道猷                   given        1
+  create  道賜                   given        1
+  create  道默                   given        1
+  create  遵訓                   given        1
+  create  遵誠                   given        1
   create  邦治                   given        1
-  create  鄭州榮澤                 family       1
+  create  鄆州須城                 family       1
   create  醍醐天皇                 family       1
-  create  鎰                    given        1
-  create  鐔                    given        1
-  create  長賢                   given        1
+  create  醫                    given        1
+  create  鈁                    given        1
+  create  鉷                    given        1
+  create  銶                    given        1
+  create  鍇                    given        1
+  create  鍊                    given        1
+  create  鎋                    given        1
+  create  鏡民                   given        1
+  create  鏶                    given        1
+  create  鑲                    given        1
+  create  陳                    family       1
   create  陳郡長平                 family       1
+  create  雄略天皇                 family       1
   create  難波                   given        1
-  create  雲將                   given        1
   create  震                    given        1
-  create  靈州靈武                 family       1
-  create  靈昭                   given        1
+  create  青州益都                 family       1
   create  韓日狭                  given        1
-  create  頂                    given        1
-  create  顏                    family       1
+  create  須                    given        1
+  create  頎                    given        1
+  create  顒琰                   family       1
   create  顓頊                   given        1
-  create  顗                    given        1
-  create  騫                    given        1
   create  高倉天皇                 family       1
   create  高辛氏                  family       1
   create  鳥居小路                 family       1
   create  鴻智                   given        1
+  create  麗質                   given        1
   create  덕장                   given        1
   create  부여                   family       1
   create  은                    family       1

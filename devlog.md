@@ -50968,3 +50968,223 @@ of `93482d197` had queued (37170256575) was cancelled while still pending, befor
 run on `20ce82aa8` was left alone. Pushes that only touch `queue.md`/`devlog.md` start no run
 (`paths-ignore`); a code change pushed now would, so code fixes are committed but not pushed until
 Emma says.
+
+## 2026-10-03: label fixes sent from the session's own QuickStatements; Abe no Obimaro is not Fujiwara no Otosada
+
+Emma: the label fixes go through the session's own QuickStatements, not a pipeline run. Re-read live (no
+hand edits since 18:30 PDT), then 25 commands in a new tab, 25/25, no errors; checked live (`Q29201`
+黄帝/黃帝/황제 again, `Q141635286` 公成室(知光女) 藤原). The `ko` transliterations stay: QuickStatements
+cannot remove a label.
+
+Abe no Funamori (`Q141635488`, created 19:19 PDT) carried child = `Q11623249` Fujiwara no Otosada.
+Geni gives Funamori's children as Abe no Obimaro and Abe no Nakamaro. The zipper had paired Obimaro
+(`6000000133685951857`) with Otosada in round 6, band ONE-PARENT-DISAGREE, 0 of 1 comparable slots
+agreeing (`reports/zipper-evidence.tsv`), and `synoptic-correspondence.tsv` took the pair as an
+identity. Emma: different people. The wrong `P40` was removed (checked live; Otosada's own item was
+never changed), and a DIFFERENT verdict went into `emma-judgments.tsv` so the zipper refuses the pair.
+`Q141635488` duplicates `Q106206087` 阿倍船守 (father of Abe no Nakamaro). Committed, not pushed: a
+push touching `reports/` would start a pipeline run.
+
+## 2026-10-03: "labels built from name objects" closed: it is live
+
+Composition from name items is on for `en`, `ja`, `zh`, `ko` (`COMPOSED_LANGS_LIVE`, Emma 2026-10-02 and
+10-03). `reports/composed-labels.tsv`: composable en 5,641, ja 806, zh 769, ko 100; already equal to the
+live label en 5,570, ja 454, zh 361, ko 49. Transliteration remains only where the name items cannot
+compose. Item deleted.
+
+## 2026-10-03: notable descents, second pass: Yuri found, Helena and Vsevolod not in the tree by any link
+
+Read-only, over the current tree (`derived-family.csv`, every primary and alternate parent link, the
+impossible ones from `../notes/genealogy-impossible-parents-2026-10-02.tsv`). Yuri Dolgorukiy
+(`6000000002187826932`, `Q275106`): an ancestor in 27 steps with no impossible link and one alternate
+(Sissel Jonsdatter Aukland's mother slot, Bergitte Gunnbjørnsdatter Tengs), via Olga Yurievna,
+Vysheslava Yaroslavna, Euphrosyne of Opole, Hedvig Svantepolksdotter; 28 through primary links alone.
+`paths/emma-to-yuri-dolgorukiy.tsv` lists each step with its Geni id, QID (20 of 28) and FamilySearch
+id (23). Helena (`6000000003251725930`) and Vsevolod "Big Nest" (`6000000003897541297`): no route at
+all, impossible links included; Vsevolod is not among the 9,991 tree ancestors. The first pass's
+"Helena through impossible links, via Vsevolod" came from the ancestry GEDCOM it built with alternate
+families, whose impossible links the next entry traced to spliced saved-path files; which spliced link
+made that route is not traced. Abul Hamza and the Guy d'Ibelins stand as in the first pass (not
+ancestors). Item closed; the Helena and Abul Hamza items below it stay as their own items.
+
+## 2026-10-03: the Tang/Uyghur route to Emma runs through David IV, and stops at three missing joins
+
+Read-only investigation (Emma: Kata, daughter of David IV; the Tang theory through Bayanchur's daughter
+via the Kipchaks). Wikipedia, "Kata (daughter of David IV)": the hypothesis commonly accepted in Georgia
+is that Kata married Isaac Komnenos (son of Alexios I) as Irene, and that their daughter Helene is Yuri
+Dolgorukiy's wife Helena. In the tree, Bayanchur (`6000000054082402440`) has 164,177 descendants through
+Bayanue > Isaac Karim Bavand > Qarin I Artsruni > Abu'l-Melik Artsruni > Abul-Hamza > ..., and David IV
+(`6000000008024207441`) is one, 12 generations down (... > Maria Mariam > Bagrat > George > David). So the
+Uyghur/Tang descent reaches the Kata theory through David IV, not through Gurandukht (Otrok's line is
+not a Bayanchur descendant) nor through Anna Aëpovna's Cumans (her line ends at Osen b. 1019 in Geni and
+Termiter c. 910 in FamilySearch; none of her 4,014 ancestors is a Bayanchur descendant or married to or
+sibling of one). Missing joins: David IV has no child Kata; Isaac Komnenos (`6000000002187823205`) has a
+wife "Irene" with no parents; Helena (`6000000003251725930`) has no parents. Even with them, Emma reaches
+Helena only through a child of Helena: she descends from Yuri via Olga Yurievna (Anna Aëpovna's
+daughter in both sources; Olga b. 1112 in the tree, 1123 in FamilySearch), and neither source puts her
+below Vsevolod (261,500 descendants) or Helena's other children. FamilySearch file: no Uyghur or Tang
+people, no David IV, no Isaac Komnenos family.
+
+## 2026-10-03 20:4x PDT: batch `b951ca695` held: composed before the Sinosphere fix
+
+Emma said open the new batch, with the session checking its Han-named creations first. All 8 failed
+(romanised `mul`, katakana `ja`, `ko`, `NN` appended): the batch came from pipeline run on `20ce82aa8`
+(started 18:19 PDT), before `760a32fe1`, and was only pushed on top of main. Opening it would create
+Emperor Yūryaku as "Yuryaku-tenno (Ohatsusewakatakeru)" and Prince Ichinobe no Oshiwa as
+"市辺押磐皇子 NN", both likely duplicates. Held; the next batch, from run 37173952486 on `b951ca695`
+(includes the fix), gets the same check and is opened if it passes.
+
+## 2026-10-03: the Helena items, reported as a probable route (Emma's reading), and closed
+
+Attributions. The synoptic tree gives Yuri Dolgorukiy's second wife Helena (`6000000003251725930`) five
+children: Vsevolod "Big Nest" (b. 1154; 269,804 descendants), Mikhalko, Vasilko, Mstislav, Yelena
+(1 to 3 descendants each). The FamilySearch file holds Helena (G82L-CF5) with no children and gives Yuri
+only Anna Aëpovna's children. Emma's lines run through Olga Yurievna (b. 1112 in the tree, 1123 in
+FamilySearch), Rostislav and Ivan (b. 1109 to 1116), all given Anna Aëpovna in both sources.
+
+Evidence. Under the Kata hypothesis (Wikipedia, "Kata (daughter of David IV)"), Helena is the daughter of
+Isaac Komnenos and Kata/Irene, married c. 1116, so Helena is born 1117 at the earliest: Olga, Rostislav
+and Ivan are born before or within a few years of that, so none of Emma's three lines can be Helena's
+child under the very theory that gives Helena the Bagratid and Uyghur/Tang ancestry. Vsevolod fits.
+None of Helena's five children reaches Emma in the tree (no ancestor, spouse or sibling contact beyond
+Olga being their half-sister). Helena has no parents in the tree, so her own descent from Abul Hamza is
+not in the data; David IV is a Bayanchur descendant (previous entry). No Guy d'Ibelin is an ancestor
+(first pass). So the descent stands as Emma framed it: probable only if one of her Rurikid lines runs
+through Vsevolod or a sibling of his by Helena, which neither source shows. Items closed (the Abul Hamza
+children item, its three corrections, and Emma's reading).
+
+## 2026-10-03: the ancient ring deck, judged by the session; 20 entry points
+
+Emma: "review" means the session does it and asks questions. All 149 cards of
+https://claude.ai/artifact/8j73WtGRXw1PiKrbpRD9sp (pre-500 ring people beside one exact-label Wikidata
+candidate; no verdicts had been given) were judged on relatives and dates, not names: each card's
+parents, spouses and children in the tree against the item's `P22`/`P25`/`P26`/`P40` labels (all
+languages and aliases). 86 SAME (a named relative matches and the dates fit, e.g. Elioenai: Neariah,
+Hodaviah, Eliashib; Prasutagus: Boudica; Gregory the Illuminator: Anak), 34 DIFFERENT (Disney and TV
+characters, a record producer, a singer, a rapper, a politician; items centuries off with no matching
+relative such as Uurad d. 842 for a tree Uurad b. 145, Mou Shen d. 794, Einion ab Owain d. 984; same
+name, other person, such as Laodice daughter of Priam), 29 UNSURE (nothing on Wikidata to compare, or
+relatives that neither match nor conflict): not entry points. `reports/ancient-ring-verdicts.tsv` has
+each verdict with its evidence. 20 Geni-keyed SAME pairs added to `entry-points-now.tsv`; the 66
+FamilySearch-keyed ones are not, because entry points are also identifications written as `P2600`,
+and a new queue item covers their route. Both entry-point items closed (the Roman item stays).
+
+## 2026-10-03 21:xx PDT: emergency fix of the Sinosphere items: labels and 12 merges
+
+Emma: wrong labels like these are an emergency; fix them with the session's own QuickStatements now.
+Live check first (her hand edits kept: `Q141635365` ja/zh, `Q141634134` mul; Niohuru, already relabelled
+and merged into `Q589406`, untouched). One QuickStatements batch of 54 label commands, 54/54: for items
+duplicating an existing item, that item's own labels (the three Qing empresses: Xiaocigao, Xiaokangzhang,
+Xiaoshurui; Prince Naniha; Ominako no Iratsume; Nakatomi no Katanoko; Kasuga no Ōiratsume; Kanshūji
+Norihide; Ukita Hideie; Asukabe no Natōmaro), else Geni's Han name in mul/ja/zh (Soga no Kuramaro as
+蘇我倉麻呂, the existing item's form, since Geni's 蘇我馬子 is his father Umako), `NN` removed. QuickStatements
+cannot remove a label, so 12 Korean (and Momozono Aido's ja/zh) transliterations were removed with
+`wbsetlabel` value "" from a logged-in Wikidata tab, no summary. Fuca's `ja` did not take in the batch and
+was set on retry. All 20 items checked live: clean.
+
+Merges, through the Wikidata merge wizard only (Merge with…, into the older item, no summary), each
+confirmed beyond the name: Ukita Hideie (`Q141635311` -> `Q1329792`) and Kanshūji Norihide (-> `Q11400601`)
+by identical birth and death years; Prince Naniha (-> `Q11659560`), Nakatomi no Katanoko (-> `Q91089384`),
+Kasuga no Ōiratsume (-> `Q11088800`), Ominako (-> `Q97342104`), Soga no Kuramaro (-> `Q11625195`) by a
+shared relative; the Qing empresses (-> `Q1043073`, `Q1036431`, `Q1044463`) by dates, spouse and child;
+Abe no Funamori (-> `Q106206087`) by its two sons. The classifier stopped the merges after four; Emma
+authorized the remaining seven by AskUserQuestion. All 12 confirmed as redirects through the API. Not
+merged: Asukabe (name only). Unexpected: a QuickStatements tab reloaded now lands on its "Log in" page
+although the session is valid; a still-loaded tab's "New batch" link works.
+
+## 2026-10-03 22:xx PDT: Ryogu and Asukabe: read the sources, removed two false links and Geni's wrong father link, merged
+
+Emma asked what is on the existing items. Japanese Wikipedia, 百済王郎虞 (`Q30937834`): other name 良虞 (Geni's
+exact name), died 天平9年7月17日 = 737 (ours: died 737), children 孝忠, 全福, 敬福, 清仁. 飛鳥部奈止麻呂
+(`Q11665982`): 飛鳥部氏, father not recorded, child 百済永継 (`Q11580786`). So Ryogu is Rōgu, and our Asukabe is
+`Q11665982` through his daughter Kudara no Nagatsugu (Geni's child for him). Unexpected: our batch (12:35
+PDT) had put two false statements on Wikidata from another zipper error: Nagatsugu paired with `Q106267274`,
+a lady of the Agata Inukai clan (wife of Fujiwara no Kuromaro), band PARENTS-ONE-SIDE with no comparable
+slot; that stranger's item was given father = our Asukabe, and ours child = her. Also Geni's "Ryogu, father
+of Asukabe" contradicts the article (different clan, father unrecorded; Rōgu's children listed). Emma
+authorized: removed the four statements by QuickStatements (checked live: `Q106267274` back to its own
+statements), DIFFERENT verdict for Nagatsugu/`Q106267274`, then merged `Q141635460` -> `Q30937834` and
+`Q141632350` -> `Q11665982` through the merge wizard (checked: redirects). The zipper blast-radius item at the
+end of the queue now names both known cases.
+
+## 2026-10-03 22:30 PDT: batch `295e94730` (first with the Sinosphere fix): format right, not opened
+
+Pipeline run 37173952486 (on `b951ca695`) succeeded and pushed `295e94730`: 391 creations, 93 Han-named. All
+93 have the Han name in mul/ja/zh, no katakana `ja`, no `ko`, no `NN`: the fix works on real output. Not
+opened (Emma, 2026-10-03: no batch until she says, she is not after throughput). Read-only check of each Han
+name against Wikidata (`wbsearchentities`, both name orders): 39 of the 93 already label an item, e.g.
+Emperor Kōnin `Q958662`, Soga no Iname `Q595897` (twice), Takano no Niigasa `Q7677188`, Konoe Mototsugu
+`Q3198721`, Ōmi no Mifune `Q5014663`; a few hits are ambiguous (和子 源, 公子 藤原). Two creations would be
+labelled just 橘 (Geni's Han record holds only the clan: Prince Minu, Agata no Inukai no Michiyo), and Geni's
+"Soga no Umako" carries 蘇我稲目, his father's name. The existing items carry no Geni id, so the composer cannot
+see them.
+
+## 2026-10-03: Emma's ten Sinosphere screenshot items, closed
+
+Each was handled in the entries above; live state checked 21:xx PDT. 6000000012621583313 Norihide Kajuji
+(`Q141635365`): labelled 教秀 勧修寺 / Kanshūji Norihide, merged into `Q11400601`. 6000000009797320507 Niohuru
+(`Q141635363`): merged into `Q589406` Empress Xiaoquancheng. 6000000133686493164 "Soga no Kuramaro"
+(`Q141635354`): labelled 蘇我倉麻呂, merged into `Q11625195`; its given name "No" (`Q21148356`) is the separate
+"No" audit item. 6000000006602233132 Momozono Aido (`Q141633806`): no Han name exists anywhere, so the made-up
+ja/zh/ko readings were removed; no existing item found. 6000000001903352866 老女子 NN (`Q141634195`): labelled
+春日老女子 / Ominako no Iratsume, merged into `Q97342104`. `Q141635298` 未詳: labelled NN. `Q141635295` and
+`Q141635286` "Fujiwara": labelled 孝長 藤原 and 公成室(知光女) 藤原, ko removed. The failed create of 春日大娘皇女 NN:
+the earlier creation `Q141634134` was relabelled and merged into `Q11088800`. Ryogu NN (`Q141635460`): labelled
+良虞 / Ryogu of Kudara, merged into `Q30937834` 百済王郎虞. The Ninken item stays open (two Emperor Ninken items).
+
+## 2026-10-03: the 66 FamilySearch-only ancient SAME people: recorded, not entry points (Emma)
+
+`ledgers._read` takes only Geni-id rows, so these could not be entry points without a new route. Measured
+against `out/wikidata/edit-universe.json`: of their 58 distinct items, 5 are in the universe, 0 one step out,
+53 outside; as roots they would pull in the Kushan, Western Satrap, Armenian and early Arab families. Emma
+(AskUserQuestion): record only. The verdicts stay in `reports/ancient-ring-verdicts.tsv`; item closed.
+
+## 2026-10-03: no Roman entry points (Emma)
+
+From `reports/ancient-ring-wikidata-candidates.csv`: 96 single exact-label candidates flagged Roman (by name or
+description), 87 items, none in the editing universe or one step out. Of Emma's three starters, Cornelia
+Cethegilla and Flavius Julius Agricola have no name match and Sulpicia only a politician item and a generic
+"Roman noblewoman". Emma (AskUserQuestion): no Roman entry points; item closed.
+
+## 2026-10-03: the NN interview
+
+Survey of our items' live labels (`garborg-live-labels.tsv`): `NN` alone has an English relationship phrase on
+274, "NN" on 165, none on 26; `Given NN` repeats mul on 271 and has "Segrid, mother of ..." on 100; `NN Surname`
+has a phrase on 245 and itself on 89; junk survives (`NN ektefelle Torgier Olson`, `NN- d Vrouw van Laurens`),
+and some ja labels transliterate NN as `ン`. Emma's answers (AskUserQuestion), written into CLAUDE.md: NN and NN
+Surname start as themselves in mul and en, and after 24 hours on the roster CI writes the relationship phrase in
+en/ja/zh/ko, consistent across languages; a known given name with no surname is the name alone in every language,
+backfilled ("using NN was a mistake"); CJK labels of NN people are the relationship phrase. Three queue items
+replace the interview item.
+
+## 2026-10-03: NN rulings (1) and (3): the day-after relationship pass keeps the four languages consistent
+
+`build-garborg-day.py`'s day-after pass (NN-shaped mul, created on an earlier day, no given name) filled a slot
+only when empty or still `NN …`, so languages drifted. It now also rewrites a slot holding our own older
+relationship phrase (`_our_relational_phrase`, `_our_cjk_relational_phrase`: only the shapes our emitter writes)
+when it differs from the current phrase, and a transliterated `NN` (`_NN_TRANSLITERATED`: `ン・`, `恩·`, `느느 `;
+not `恩德雷`). Measured on our NN items' live labels: ~400 items have a slot to fill or fix for certain (en: 328
+= mul, 30 empty; ja/zh/ko: ~200 empty each, 10 transliterations), ~700 per language hold our phrase (rewritten
+only if it differs), ~30 per language hold someone else's label (never touched); `LATER_RELATIONAL_CAP` 200
+items a batch. Test `test_a_transliterated_nn_is_recognised_and_a_real_name_is_not` (CI). Items (1) and (3) closed.
+
+## 2026-10-03: NN ruling (2): a given name with no surname is the name alone, created and backfilled
+
+`labels.name_with_unknown_surname` no longer appends `NN` (both batch builders call it), and the creation path
+drops a trailing `NN` from a Geni name with a real given name (`Sara /NN/` -> `Sara`). CLAUDE.md's "a bare given
+name is not a label" line is marked superseded. Backfill, built from live labels (re-read): 379 of our items
+whose `mul` is `Given NN`; `mul`/`en` become the given name, `ja`/`zh`/`ko` the composer's reading of it
+(`label_in`), each replacing only labels we wrote (`NN`-shaped, our relationship phrases with or without the
+name attached, transliterated NN); 16 CJK slots that do not look like ours are kept, 5 names have no reading.
+1,559 commands, `reports/given-nn-backfill-2026-10-03.qs`, run from the session's QuickStatements. Test
+`test_a_bare_given_name_is_not_given_nn_any_more` (CI). Item closed.
+
+## 2026-10-03: the -ez audit
+
+`reports/ez-name-audit.csv`: every `P5056`/`P734` ending -ez/-iz/-az on the 22,952 items of our ledger, read live,
+with the father's given name. 47 statements: 10 patronymic, 37 family name. Patronymics: 8 match the father, 1
+(`Q62657659` Fortun Íñiguez, father Eneko) matches once Eneko = Íñigo is known, 1 has no father on the item
+(`Q141632219` Muniadona Menéndez, b. 955), the only one against the 2026-09-25 rule. Family names: 13 match the
+father and are medieval patronymics recorded as family names (Alfonso VI "Fernández", Alfonso III "Ordóñez",
+Urraca of Aragon "Ramírez", Diego Rodríguez son of El Cid, both "Rodríguez" and "Ruiz"); 13 do not match the
+father; 11 have no father. Who added the 13 family-name statements is not checked. Item closed; nothing changed.
