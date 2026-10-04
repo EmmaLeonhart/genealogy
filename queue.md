@@ -14,6 +14,7 @@ it. Each session starts with
 
 
 
+- Move the item "Run reports/novalue-family-name-backfill-2026-10-04.qs (1,917 P734 = Q108474139) …" to the end of this queue, below every other item (Emma, 2026-10-04: "Move it to the end"; it starts a new run, and on 2026-10-03 she had runs taken out of the queue). Then delete this item.
 - **Sinosphere creations: re-sweep the creations of the batch still running in the browser when it ends (2026-10-03).** Also, at the same time (Emma, 2026-10-04: "let them run, sweep after"): re-run the overwrite sweep (her `wikidata-ui` label edits since 2026-10-02, any later QuickStatements label edit in the same language on the same item) and restore every hand fix the stale batches reverted. Every other item from the Sinosphere cleanup is done (devlog).
 - **Run `reports/novalue-family-name-backfill-2026-10-04.qs` (1,917 `P734` = `Q108474139`) in the session's QuickStatements tab once the Given NN backfill there has finished, then check a sample live (Emma approved the backfill in the item, 2026-10-03).**
 
