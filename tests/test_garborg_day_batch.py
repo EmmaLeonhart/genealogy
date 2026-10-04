@@ -1874,3 +1874,18 @@ def test_the_no_family_name_placeholder_is_the_item_emma_named():
     usages = {u for _t, u, _o in mod.statements_tokens(
         {"givn": "Fernando", "surn": "Gundemárez", "marnm": ""})}
     assert "family" not in usages or "patronymic" in usages
+
+
+def test_a_correction_never_puts_a_non_latin_name_over_a_latin_label():
+    """Error report 2026-10-03, `Q141610242`: the label-correction pass replaced `Abigail Ogla
+    Katzenellenbogen` with the Hebrew record in `mul` and `en`. The guard is `is_latin_text`."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_latin", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.is_latin_text("Abigail Ogla Katzenellenbogen")
+    assert not mod.is_latin_text("אביגיל אוגלה לבית יפה?")
+    assert not mod.is_latin_text("덕장")

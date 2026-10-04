@@ -51223,3 +51223,16 @@ empty, `_MARNM` a single patronymic token, the cut tail ends with it, the remain
 (`King Ranald`, `Francesco Parma`). The narrow rule moves 12 records, all right (Peder Samuelsson, Eirik Eiriksson,
 Erik Persson, Eanmund Ottarsson, Kjell Jonsson, Nils Eskilsson ...); only Peder has an item. Test in
 `test_namemodel.py` (CI). Item closed.
+
+## 2026-10-04: error report `Q141610242`, Hebrew in the English label
+
+Not a creation: on 2026-10-02 04:05 PDT the label-correction pass (`_label_corrections`, married-name branch of the
+2026-10-01 birth-name ruling) replaced `Abigail Ogla Katzenellenbogen` with `אביגיל אוגלה לבית יפה?` in mul and en:
+`derived-labels` has no Latin label for her (Geni's SURN is Hebrew), so `labels` fell back to the Hebrew record.
+Emma had fixed the item by hand (Abigail Ogla Yaffe). Guard: a correction never puts a non-Latin name over a Latin
+label (`is_latin_text`). Sweep of all 22,952 ledger items, live, for a non-Latin `en`: three more from the same pass
+on 2026-10-02 (`Q141585621`, `Q141585629`, `Q141610308`), restored to their earlier Latin labels (Yosef HaCohen
+Katz, Gerson Moses HaCohen Rapaport, Moishe Ashkenazi) in mul/en; and `Q141198548` `덕장, wife of Buyeo Deokjang`
+(the day-after relationship pass led with a Hangul GIVN, which is her husband's name) set to `wife of Buyeo
+Deokjang`, and `describe_all` no longer leads a Latin phrase with a non-Latin given name. Two other hits are not ours
+(`Q4165342` Arabic, an established item) or not wrong (`Q25492370`, the modifier letter ʼ). Test (CI). Item closed.

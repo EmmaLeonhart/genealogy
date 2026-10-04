@@ -680,6 +680,11 @@ def describe_all(geni_id, facts, father, mother, labels, table,
             # Ruled 2026-09-21 -- see this function's docstring. `own_given_name` is the
             # model's, so `build-nn-label-batch` gets the identical reading of what counts.
             own = own_given_name((fields or {}).get(geni_id))
+            # A non-Latin given name never leads a Latin-script phrase: `Q141198548` went out
+            # `덕장, wife of Buyeo Deokjang` in `en` (2026-10-04; the Hangul is her husband's name,
+            # which Geni put in her `GIVN`).
+            if own and not is_latin_text(own):
+                own = ""
             out = {}
             for lang, words in WORDS.items():
                 group = words[group_name]
@@ -3046,6 +3051,12 @@ def _label_corrections(our_items, labels, table, state, fields=None,
         want = qs(expand_abbreviations(labels.get(geni_id, ""), geni_id))
         have = live.get(qid, "")
         if not want or not have or have == want:
+            continue
+        # ⛔ **A CORRECTION NEVER PUTS A NON-LATIN NAME OVER A LATIN LABEL.** Error report 2026-10-03,
+        # `Q141610242`: `labels` falls back to the Hebrew record when Geni has no Latin label, and the
+        # married-name branch below replaced `Abigail Ogla Katzenellenbogen` with
+        # `אביגיל אוגלה לבית יפה?` in `mul` AND `en`.
+        if is_latin_text(have) and not is_latin_text(want):
             continue
         # **An abbreviation expansion is its own ground for a correction**, alongside the
         # birth-name case below. It cannot rewrite anything else: the test is that the live
