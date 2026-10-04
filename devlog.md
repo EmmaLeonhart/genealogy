@@ -51024,3 +51024,12 @@ Helena only through a child of Helena: she descends from Yuri via Olga Yurievna 
 daughter in both sources; Olga b. 1112 in the tree, 1123 in FamilySearch), and neither source puts her
 below Vsevolod (261,500 descendants) or Helena's other children. FamilySearch file: no Uyghur or Tang
 people, no David IV, no Isaac Komnenos family.
+
+## 2026-10-03 20:4x PDT: batch `b951ca695` held: composed before the Sinosphere fix
+
+Emma said open the new batch, with the session checking its Han-named creations first. All 8 failed
+(romanised `mul`, katakana `ja`, `ko`, `NN` appended): the batch came from pipeline run on `20ce82aa8`
+(started 18:19 PDT), before `760a32fe1`, and was only pushed on top of main. Opening it would create
+Emperor Yūryaku as "Yuryaku-tenno (Ohatsusewakatakeru)" and Prince Ichinobe no Oshiwa as
+"市辺押磐皇子 NN", both likely duplicates. Held; the next batch, from run 37173952486 on `b951ca695`
+(includes the fix), gets the same check and is opened if it passes.
