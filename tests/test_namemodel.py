@@ -1849,3 +1849,11 @@ def test_a_patronymic_filed_as_married_name_survives_the_title_cut():
     assert nm.keep_own_surname(label, nm.drop_label_title(label), "", "Samuelsson") == "Peder Samuelsson"
     assert nm.keep_own_surname("Claude of Luxembourg", "Claude", "Luxembourg", "") == "Claude"
     assert nm.keep_own_surname("Konen til Ævar Ketilsson", "Konen", "", "Ketilsson") == "Konen"
+
+
+def test_lowercase_no_is_the_japanese_particle_not_a_given_name():
+    """2026-10-04: `Otomo no Kui` went out with `P735` = `Q21148356` "No". Lower case only:
+    `No` is a Korean surname."""
+    import namemodel as nm
+    assert nm.name_shape("no") == ("no", "particle")
+    assert nm.name_shape("No")[1] is None

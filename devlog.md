@@ -51323,3 +51323,27 @@ Checked live: both items created for Ninken, `Q141635508` "Ninken Tenno" (Geni `
 account on 2026-10-03 19:26 PDT, after the evening's devlog entry had left the Ninken item open. `Q357266` now
 carries both Geni ids (`6000000001829644307`, `6000000210456044822`); a second Geni id on one item is not a
 conflict. Item closed.
+
+## 2026-10-04: everything linking to `Q21148356` (the given name "No"), audited; the particle fixed
+
+Live (SPARQL + `wbgetentities` + histories), every item with `P735` = `Q21148356`: 11, in
+`reports/given-name-no-links.csv`. **10 are this account's doing**, all from a romanised `X no Y` name whose
+Japanese genitive particle `no` was read as a given name (usually middle name 2): our creations
+`Q141635487` Otomo no Nagatoko, `Q141637004` Otomo no Kui, `Q141636954` 橘 (Agata no Inukai no Michiyo, "No"
+twice), `Q141217396` Maria, `Q141512464` `no name`, `Q141534009` `no name Wertmüller`; a QuickStatements
+addition to `Q11623003` Fujiwara no Otomaro (2026-09-11); and three established items that got it through
+today's merges of our creations into them: `Q11625195` 蘇我倉麻呂 (from `Q141635354`), `Q11665982` 飛鳥部奈止麻呂
+(from `Q141632350`), `Q106206087` 阿倍船守 (from `Q141635488`). The 11th, `Q124526294` No Bours, is another
+editor's (2024) and not ours to judge.
+
+**Unexpected:** `Q141512464` and `Q141534009` are labelled `no name` / `no name Wertmüller` (`ja` `ノ・ナメ…`), and
+both also carry `P735` `Q116367185` "Name": `no name` is in `UNKNOWN_MARKERS` but the creation path never saw it
+as a marker. And the three creations above went out today (02:19 and 10:2x UTC) from the batch running in the
+browser; the Otomo pair under a romanised label, which the Sinosphere sweep (first queue item) covers.
+
+**Cause and fix:** `namemodel.name_shape` had no rule for `no`. Of 557 corpus labels with a lower-case `no`
+token, every one is an `X no Y` name or a phrase (`freira no Convento`, `no name`, `no registrada`); 77 carry a
+capital `No`, which is the Korean surname 노 and is left alone. Lower-case `no` is now a particle. Checked by
+calling `statements_for`: `Agata no Inukai no Michiyo` gave two `Q21148356` statements before the change and
+none after. Test in `test_namemodel.py` (CI). Nothing sent: removing the 10 live statements and relabelling the
+two `no name` items wait on Emma's go-ahead (queue).

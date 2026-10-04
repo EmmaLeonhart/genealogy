@@ -2342,6 +2342,13 @@ def name_shape(token):
     """
     m = PAREN.match(token)
     bare = m.group(1) if m else token
+    # **Lower-case `no` is the Japanese genitive particle, never a given name** (2026-10-04,
+    # `reports/given-name-no-links.csv`): `Otomo no Kui` and `Soga no Kuramaro` went out with
+    # `P735` = `Q21148356` "No". Of 557 labels carrying the token, all are `X no Y` names or
+    # phrases (`freira no Convento`, `no name`). Case-sensitive on purpose: `No` (노) is a
+    # Korean surname, 77 labels.
+    if bare == "no":
+        return bare, "particle"
     low = bare.casefold()
     # **A TOKEN MADE ENTIRELY OF PUNCTUATION IS NOT A NAME.** Reported by Emma 2026-09-12 off
     # the QuickStatements themselves: *"I am just letting you know that this was in the
