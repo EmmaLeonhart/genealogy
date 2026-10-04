@@ -156,6 +156,16 @@ LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
 
+# Esgesen -- the counterpart of Esgesdatter (5 bearer(s))
+CREATE
+LAST	Len	"Esgesen"
+LAST	Lmul	"Esgesen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
 # Håvarsdotter -- the counterpart of Håvarson (5 bearer(s))
 CREATE
 LAST	Len	"Håvarsdotter"
