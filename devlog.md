@@ -51563,3 +51563,22 @@ Actions matches a cancelled edit run (`wikidata-edits` ran at 10:24 PDT for 7 s)
 was a browser run. **Also:** 9 `pipeline.yml` runs were cancelled between 10:10 and 10:38 PDT, each
 superseded by the next push; this session's pushes (and the other session's) were minutes apart, so the
 pipeline could not finish while both were committing.
+
+## 2026-10-04: what batch `ebec37585` put on Wikidata through zipper-only pairs (Emma asked)
+
+Emma's cancelled browser run was most likely this session's: QuickStatements batch `1791119184727`
+(`ebec37585`, opened 06:06 PDT, 4,365 edits, last at 09:55 PDT). This session opened it at session start
+without checking it for zipper-driven links; the composer still takes a relative's item from zipper-only
+correspondence pairs (the path since 2026-09-28).
+
+- The batch held 385 creations and 304 relationship lines to items known only through the zipper: 182
+  PARENTS-ONE-SIDE (no parent slot comparable), 17 ONE-PARENT-DISAGREE.
+- Before it stopped, 239 people were created. **244 live family links** now join them to **117 existing
+  items** through zipper-only pairs (`reports/zipper-links-batch-ebec37585.csv`, read live): PARENTS-ONE-SIDE
+  160, ONE-PARENT-AGREE 32, NO-PARENTS 25, BOTH-PARENTS-AGREE 13, ONE-PARENT-DISAGREE 7, BOTH-PARENTS-PARTIAL 3,
+  no band 4. The contradicted Jörund/Aun/Yngve/Lupo lines did not run.
+- **Unexpected:** all 7 contradicted links are one family, Emperor Kōkō `Q440518`; our new `Q141638654`
+  和子 源 carries `P25` *mother* = Kōkō, which cannot be right whatever the pair (Tokiyasu is Kōkō's personal
+  name, so the identity itself may be correct).
+
+Nothing removed yet: explained first, fix on Emma's word.
