@@ -51644,3 +51644,20 @@ earlier attempts silently did nothing. 54 pairs left (`Q141638438` -> `Q14163679
 an `en` label ("Gyritha") and description ("585 - 614"); its older twin `Q141636945` is labelled
 "Gyritha NN". The 2026-10-03 NN ruling (a given name with no surname is the name alone) changed the label
 between the two builds, so label+description no longer matched and Wikidata refused nothing.
+
+## 2026-10-04 ~12:xx PDT: all 56 of this run's duplicate pairs merged
+
+Every newer item of the 56 pairs (this session's `ebec37585` creations) merged into its earlier-run twin
+with the Merge Wizard gadget, no summary, redirect on; **all 56 checked live as redirects**. The gadget's
+link sometimes never appeared: its CSS/icon modules wait on animation frames, which Chrome does not run
+for an undrawn window, so the gadget stayed "loaded" and never executed. Taking a screenshot (which draws
+the page) unstuck it every time.
+
+**Seen while merging, not acted on:**
+- Several surviving items duplicate established Wikidata items (the 2026-10-03 devlog found them by name):
+  `Q141636934` 高野新笠 = `Q7677188` Takano no Niigasa, `Q141636864` 三船 淡海 = `Q5014663` Ōmi no Mifune,
+  `Q141636850` 基嗣 近衛 = `Q3198721` Konoe Mototsugu.
+- `Q141636849` is labelled `？(市川孫左衛門の娘) 市川`: an unknown-name marker and a description in a label.
+- Many pairs differ only by ` NN` in the older label (Gyritha NN, Unnur NN, Leutfried NN, Albert NN, Erik
+  NN, Claudius NN, Thrand NN, Wytgeorn NN, Sisalda NN): the NN label ruling of 2026-10-03 changed the label
+  between the two builds.
