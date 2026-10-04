@@ -51250,3 +51250,31 @@ given name: the composer reads `von` as ヴォン/翁/본, not the usual フォ�
 Emma's external addition (2026-10-04, "Move it to the end"): the item to run
 `reports/novalue-family-name-backfill-2026-10-04.qs` (1,917 `P734` = `Q108474139`) now sits
 below every other item, since it starts a new run. The move item itself is deleted.
+
+## 2026-10-04 — the GEDCOM files added 2026-09-30 to 2026-10-03, found and sized
+
+Searched by git history (`log --diff-filter=A --no-renames`, 2026-09-30 00:00 to 2026-10-04 00:00
+PDT, `*.ged`). 17 additions. The Bure/FamilySearch/RootsMagic ones (`rootsmagic/second_attempt.ged`,
+`gedcom/familysearch/` and `exports/familysearch/rootsmagic-PFR5-LDS-2026-09-30.ged`) and
+`order-life-genealogy/order-life-gaiad-2026-09-30.ged` are known. The 7 `genealogy/ono_inbe_*`
+paths came in with the INBE subtree merge and now live in `subtrees/INBE/genealogy/`. That leaves
+five files, all added by Emma in `d1a2a180bf` / `f867ad4644` (2026-10-03 02:51 to 02:54 PDT), all
+MyHeritage Family Tree Builder exports:
+
+- `gedcom/ono_inbe_honkeicho_en_qids.ged`: the Ono Inbe honkeichō (49 people, Japanese), round-tripped
+  through MyHeritage; 51 QID mentions against the subtree original's 49.
+- `gedcom/ono_inbe_honkeicho_en_qids - Copy.ged`: a second copy of it.
+- `gedcom/familysearch/ono_inbe_honkeicho_en_qids.ged`: a third copy, **misfiled**. It has 0 `_FSFTID`,
+  and every FamilySearch reader (zipper, bridge, `render --all`, id backfill) globs that directory. Today
+  it is inert because each reader skips records without `_FSFTID`; `render --all` would write its 49
+  people into `exports/familysearch/` as an unkeyed small component.
+- `gedcom/tang-ancestors.ged`: 2,092 people, a MyHeritage round-trip of
+  `research-exports/tang-ancestors.ged` (the DFA/Tang ancestor closure from
+  `emit-ancestor-gedcoms.py`). Not Japanese.
+- `gedcom/ggggggg.ged`: **Emma's own MyHeritage master tree, 53,265 people**, starting with her, her
+  parents and grandparents, with her MyHeritage username in the header. The repo is public. 2 people
+  born after 1925 with no death carry a full birth date. Its `.ftb` database is also committed under
+  `preservation/genealogy/MyHeritage-local/`.
+
+Nothing in `gedcom/` outside `familysearch/` and the Samaritan files is read by the pipeline. What to do
+with each is put to Emma (removing or moving files, and whether her own tree stays public, are hers).
