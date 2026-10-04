@@ -9226,6 +9226,14 @@ def main():
             # so § THE GATE (no ja/zh, no creation) holds them until their label is decided.
             carried.append((g, label, f"Han surname only ({_sino}): not created from a romanisation"))
             continue
+        if _sino and not (re.search(r"[A-Za-z]", label) and not _SINO_HAN.search(label)):
+            # ⛔ **NO LATIN LABEL, NO CREATION. Emma, 2026-10-04:** a Sinosphere person is created only
+            # when Geni has a Latin record for the `en` label. Without one the item went out with
+            # mul/ja/zh and no `en`, so no language held a label and the `en` description together,
+            # Wikidata's label+description refusal never fired, and overlapping runs created the
+            # same person twice (`reports/duplicate-creations-2026-10-04.csv`).
+            carried.append((g, label, f"no Latin label ({_sino}): not created"))
+            continue
         redacted = ("<private>" in low or low.startswith("private")
                     or _carries_marker(label)
                     or (not _sino and _nn_surname(label, *_name_fields(fields.get(g))) != label))

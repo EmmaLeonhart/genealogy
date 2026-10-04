@@ -51602,3 +51602,13 @@ on purpose because of that guard (CLAUDE.md, 2026-09-25); for Han-named creation
 session opened `ebec37585` without checking for that.
 
 Nothing fixed yet. Merges go through the UI merge wizard only, and the wrong `P25` has to come off first.
+
+## 2026-10-04: no Latin label, no creation: the guard restored (Emma)
+
+Emma: a Sinosphere person is not created unless Geni has a Latin label; the 2026-10-03 change
+(`760a32fe18`, a session's) turned that guard into "create with mul/ja/zh and no `en`", which is what let
+the 58 duplicate pairs through. This session first wrote an `en` label from the Han name instead (an
+invention, reverted uncommitted). Restored: `build-garborg-day.py` carries a Sinosphere person whose label
+has no Latin record (`no Latin label (…): not created`), beside the Han-surname-only carry. 類子 菅原 and
+和子 源 have no Latin record at all in `derived-labels.csv`; Tokiyasu (`Tokiyasu Koko-tenno`) still passes.
+Not run locally (tests run in CI); the check is the next batch's carried list (queue).
