@@ -50947,3 +50947,12 @@ on `Q29201`, `Q504797`, `Q5429464`, `Q528666`, `Q818588`, `Q18397598`. Not cover
 table has no removal kind), `Q246812` (changed again after our edit, editor unknown). Emma: the run is
 not cancelled, the damage is fixed after; merges are hers, later; the duplicate guard should have
 existed beforehand. Queue items updated.
+
+## 2026-10-03: Han-surname-only people are carried, not created from a romanisation
+
+`sinosphere_name` covered a Han name in Geni's given field. A Han name in the surname field only (the
+Qing consorts known by clan name, `鈕祜祿` -> `Q141635363` "Niohuru", ja ニオフル, zh 尼奥胡鲁) still
+went through the romanisation, and four of them were duplicates of empresses already on Wikidata. A
+reading of a romanisation is not a `ja`/`zh` label, so the CJK gate now carries them: 5,183 people
+over `derived-labels.csv`, carry reason "Han surname only". Their label (a clan name with `氏`, or
+otherwise) is a decision for Emma; nothing is guessed. Takes effect at the next pipeline batch.

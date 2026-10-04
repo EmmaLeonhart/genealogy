@@ -9187,7 +9187,14 @@ def main():
         # `NN` is appended to it (2026-10-03, created as `春日大娘皇女 NN`). Surname-only stays NN.
         _sino = sinosphere_name(cjk_first.get(g, ""))
         if _sino and not _name_fields(fields.get(g))[0]:
-            _sino = ""
+            # ⛔ **A HAN NAME IN THE SURNAME FIELD ONLY IS CARRIED, NOT ROMANISED.** 2026-10-03: the
+            # Qing consorts known by clan name (`鈕祜祿` -> `Q141635363` "Niohuru", ja ニオフル, zh
+            # 尼奥胡鲁, Emma: "looks Japanese where it should be Chinese"; `佟佳`, `喜塔臘`, `葉赫納喇`)
+            # went out as transliterations of Geni's romanisation, and four were duplicates of
+            # empresses Wikidata already had. A reading of a romanisation is not a `ja`/`zh` label,
+            # so § THE GATE (no ja/zh, no creation) holds them until their label is decided.
+            carried.append((g, label, f"Han surname only ({_sino}): not created from a romanisation"))
+            continue
         redacted = ("<private>" in low or low.startswith("private")
                     or _carries_marker(label)
                     or (not _sino and _nn_surname(label, *_name_fields(fields.get(g))) != label))
