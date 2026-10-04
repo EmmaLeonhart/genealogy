@@ -51188,3 +51188,12 @@ with the father's given name. 47 statements: 10 patronymic, 37 family name. Patr
 father and are medieval patronymics recorded as family names (Alfonso VI "Fernández", Alfonso III "Ordóñez",
 Urraca of Aragon "Ramírez", Diego Rodríguez son of El Cid, both "Rodríguez" and "Ruiz"); 13 do not match the
 father; 11 have no father. Who added the 13 family-name statements is not checked. Item closed; nothing changed.
+
+## 2026-10-04: the 13 Spanish family names that are patronymics, converted (Emma)
+
+Emma: convert all 13, told first that 10 of the `P734` statements were other editors' (Jura1, Abián,
+Tiberioclaudio99, Escudero, Mr.Ajedrez, Belagaile, 2017-2021) and 3 ours. Done from a logged-in Wikidata tab
+(the QuickStatements tab was busy with the Given NN backfill): each `P734` removed and the same name added as
+`P5056` with `P144` = the father, no summary. Four items hit transient "failed-save" mid-way (two had lost the
+family name before the patronymic was added, one lacked its qualifier, one kept both); all four were finished with
+retries. Checked live: all 13 have no `P734` for the name and exactly one `P5056` with `P144` = the father.
