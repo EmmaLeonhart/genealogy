@@ -51052,3 +51052,19 @@ not in the data; David IV is a Bayanchur descendant (previous entry). No Guy d'I
 (first pass). So the descent stands as Emma framed it: probable only if one of her Rurikid lines runs
 through Vsevolod or a sibling of his by Helena, which neither source shows. Items closed (the Abul Hamza
 children item, its three corrections, and Emma's reading).
+
+## 2026-10-03: the ancient ring deck, judged by the session; 20 entry points
+
+Emma: "review" means the session does it and asks questions. All 149 cards of
+https://claude.ai/artifact/8j73WtGRXw1PiKrbpRD9sp (pre-500 ring people beside one exact-label Wikidata
+candidate; no verdicts had been given) were judged on relatives and dates, not names: each card's
+parents, spouses and children in the tree against the item's `P22`/`P25`/`P26`/`P40` labels (all
+languages and aliases). 86 SAME (a named relative matches and the dates fit, e.g. Elioenai: Neariah,
+Hodaviah, Eliashib; Prasutagus: Boudica; Gregory the Illuminator: Anak), 34 DIFFERENT (Disney and TV
+characters, a record producer, a singer, a rapper, a politician; items centuries off with no matching
+relative such as Uurad d. 842 for a tree Uurad b. 145, Mou Shen d. 794, Einion ab Owain d. 984; same
+name, other person, such as Laodice daughter of Priam), 29 UNSURE (nothing on Wikidata to compare, or
+relatives that neither match nor conflict): not entry points. `reports/ancient-ring-verdicts.tsv` has
+each verdict with its evidence. 20 Geni-keyed SAME pairs added to `entry-points-now.tsv`; the 66
+FamilySearch-keyed ones are not, because entry points are also identifications written as `P2600`,
+and a new queue item covers their route. Both entry-point items closed (the Roman item stays).
