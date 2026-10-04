@@ -2902,6 +2902,10 @@ CJK_RELATION = {
 #: Katakana, which is what our transliteration writes a European name in.
 _KATAKANA = re.compile("[゠-ヿ]")
 
+#: `NN` read as a name by the transliterator: `ン・ペーデシュダッテル・フォス`, `恩·阿拉努斯`, `느느 롬멜`
+#: (live on our items, 2026-10-03). `恩德雷` (Endre) is a real name, so the separator is required.
+_NN_TRANSLITERATED = re.compile("^(?:ン・|恩·|恩・|느느 )")
+
 
 def _our_cjk_relational_phrase(label, lang):
     """Is `label` exactly a CJK relation phrase `describe_all` writes, with no name yet?
@@ -9089,7 +9093,15 @@ def main():
         wrote = False
         for code in ("en", "ja", "zh", "ko"):
             have = live_labels.get((q, code), "")
-            if described.get(code) and (not have or have == nn) and described[code] != have:
+            # ⛔ **CONSISTENT ACROSS THE FOUR LANGUAGES. Emma, 2026-10-03 (NN interview):** a slot
+            # holding OUR older relationship phrase, or a transliteration of `NN` itself (`ン・…`,
+            # `恩·…`, `느느 …`, the ruling's third point), is rewritten to the current phrase too.
+            # A label anybody else wrote is never matched by these tests and is left alone.
+            stale = (have == nn
+                     or (code == "en" and _our_relational_phrase(have, "en"))
+                     or (code != "en" and (_our_cjk_relational_phrase(have, code)
+                                           or _NN_TRANSLITERATED.match(have))))
+            if described.get(code) and (not have or stale) and described[code] != have:
                 lines.append(f'{q}\tL{code}\t"{qs(described[code])}"')
                 wrote = True
         _later += wrote

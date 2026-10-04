@@ -51156,3 +51156,14 @@ Surname start as themselves in mul and en, and after 24 hours on the roster CI w
 en/ja/zh/ko, consistent across languages; a known given name with no surname is the name alone in every language,
 backfilled ("using NN was a mistake"); CJK labels of NN people are the relationship phrase. Three queue items
 replace the interview item.
+
+## 2026-10-03: NN rulings (1) and (3): the day-after relationship pass keeps the four languages consistent
+
+`build-garborg-day.py`'s day-after pass (NN-shaped mul, created on an earlier day, no given name) filled a slot
+only when empty or still `NN …`, so languages drifted. It now also rewrites a slot holding our own older
+relationship phrase (`_our_relational_phrase`, `_our_cjk_relational_phrase`: only the shapes our emitter writes)
+when it differs from the current phrase, and a transliterated `NN` (`_NN_TRANSLITERATED`: `ン・`, `恩·`, `느느 `;
+not `恩德雷`). Measured on our NN items' live labels: ~400 items have a slot to fill or fix for certain (en: 328
+= mul, 30 empty; ja/zh/ko: ~200 empty each, 10 transliterations), ~700 per language hold our phrase (rewritten
+only if it differs), ~30 per language hold someone else's label (never touched); `LATER_RELATIONAL_CAP` 200
+items a batch. Test `test_a_transliterated_nn_is_recognised_and_a_real_name_is_not` (CI). Items (1) and (3) closed.
