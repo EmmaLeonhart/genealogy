@@ -51424,3 +51424,23 @@ once it is live. ja/zh/ko are left as created. Not touched, because the cause di
 doubtful: `Q141614326` Thibauld (II), `Q141610365` Louis (II) van Chiny, `Q141628224` Dalmace (II),
 `Q141443354` Henrik (I) Blank, `Q141629287` Magla (I) Toresdatter, `Q141626659` Sophia (I) von Hamm,
 `Q141552173` Siboto (I) Pfinzing.
+
+## 2026-10-04: a created item can turn into a different person when its Geni profile does
+
+**Unexpected, found in the patronymic review.** Rows whose `P5056` is not in the person's name at all
+are items carrying two people. `Q141532596` was created on 2026-09-22 (Geni `6000000005607694001`) as
+Berit Rasmusdatter Høyland, and the ledger still says so; the same Geni id now carries Elen Svensdatter
+Fosse. Our own batches then moved the item over to Elen one statement at a time (live history, all
+`OAuth CID: 1776`): alias `Elen Svensdatter Fosse` (09-24), `P22`/`P25` = Elen's parents (09-25), a
+second `P735`, `P5056` Svensdatter with `P144` her father, a second `P734` (09-30), `P2889` `G2T9-19V`
+and `P1810` `Elen Svensdatter Fosse` (10-04). The same shape is live on `Q141562866` (Oleiv Samuelsen +
+Mogens Olson Bjørgås), `Q141565565` (Jon Herbrandsen + Knut Sjurson Bjørgo), `Q141546674` (Anna
+Oddsdatter Styve, Geni now Gunhild Halvorsdatter) and `Q141189093`.
+
+**Size.** `reports/geni-identity-drift.csv`: the 155 of 17,893 created items whose label at creation
+(`garborg-qids.tsv`) and Geni's current name (`derived-labels.csv`, 2026-10-03) differ in the given name.
+Many are spellings only (Ommund/Omund, Per/Pehr, Roe/Hroy) or a label that was a description; a real
+share are other people (Andres Ottarsen -> Knut Knutsen Mestad, Ole Eriksen -> Lars Larsson, Hallgrim
+Oxehode -> Aslak Brattson Oxehode, Siri Madland -> Sigmund Madland, Natronai -> Makhir). Whether Geni
+renamed one person or merged two cannot be read until Geni contact resumes (2026-10-21). Nothing was
+changed on Wikidata; queued at the end.
