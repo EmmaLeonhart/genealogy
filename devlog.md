@@ -51278,3 +51278,11 @@ MyHeritage Family Tree Builder exports:
 
 Nothing in `gedcom/` outside `familysearch/` and the Samaritan files is read by the pipeline. What to do
 with each is put to Emma (removing or moving files, and whether her own tree stays public, are hers).
+
+## 2026-10-04 04:3x PDT: FamilySearch parent deck read back, nothing new
+
+The deck's `pairs` store (https://claude.ai/artifact/4QNYuYaZfcrWsA4baFyYnj) holds 428 documents. All 364
+Geni-FamilySearch verdicts are already in `reports/emma-judgments.tsv` (batches `familysearch-parent-deck` and
+`familysearch-frontier-iffy`) with the same verdict; none changed since. The other 64 are FamilySearch-FamilySearch
+pairs answered 2026-09-30/10-01, which are not written (no slot for them in the file, as on 2026-09-30). Nothing
+appended. The first queue item waits: a QuickStatements batch was still editing at 04:23 PDT.
