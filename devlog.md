@@ -50968,3 +50968,19 @@ of `93482d197` had queued (37170256575) was cancelled while still pending, befor
 run on `20ce82aa8` was left alone. Pushes that only touch `queue.md`/`devlog.md` start no run
 (`paths-ignore`); a code change pushed now would, so code fixes are committed but not pushed until
 Emma says.
+
+## 2026-10-03: label fixes sent from the session's own QuickStatements; Abe no Obimaro is not Fujiwara no Otosada
+
+Emma: the label fixes go through the session's own QuickStatements, not a pipeline run. Re-read live (no
+hand edits since 18:30 PDT), then 25 commands in a new tab, 25/25, no errors; checked live (`Q29201`
+黄帝/黃帝/황제 again, `Q141635286` 公成室(知光女) 藤原). The `ko` transliterations stay: QuickStatements
+cannot remove a label.
+
+Abe no Funamori (`Q141635488`, created 19:19 PDT) carried child = `Q11623249` Fujiwara no Otosada.
+Geni gives Funamori's children as Abe no Obimaro and Abe no Nakamaro. The zipper had paired Obimaro
+(`6000000133685951857`) with Otosada in round 6, band ONE-PARENT-DISAGREE, 0 of 1 comparable slots
+agreeing (`reports/zipper-evidence.tsv`), and `synoptic-correspondence.tsv` took the pair as an
+identity. Emma: different people. The wrong `P40` was removed (checked live; Otosada's own item was
+never changed), and a DIFFERENT verdict went into `emma-judgments.tsv` so the zipper refuses the pair.
+`Q141635488` duplicates `Q106206087` 阿倍船守 (father of Abe no Nakamaro). Committed, not pushed: a
+push touching `reports/` would start a pipeline run.
