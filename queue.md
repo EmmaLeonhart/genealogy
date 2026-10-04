@@ -15,6 +15,8 @@ it. Each session starts with
 
 
 
+- **Look over the talk page message from Infovarius (on the account's Wikidata talk page, User talk:日巫女) and fix what it raises now (Emma, 2026-10-04).** Emma thinks it confuses a few different things, or is two different concerns, and may be about something already a little out of date. Separate the concerns, check each against what the account is doing now (live, not from memory), and fix immediately whatever is still happening. Then delete this item.
+
 - **Check that Sinosphere people with no Latin label are now carried, not created (Emma, 2026-10-04: no Latin label, no creation).** The 2026-10-03 change (`760a32fe18`) created them with mul/ja/zh and no `en`, so Wikidata's label+description refusal never fired and overlapping runs created the same person twice (58 pairs between run `1791108307454` and this session's `ebec37585`, 45 older, `reports/duplicate-creations-2026-10-04.csv`). The guard is restored in `build-garborg-day.py` (carry reason `no Latin label (…): not created`); check the next pipeline batch's carried list for 類子 菅原 (`6000000002826094685`) and 和子 源 (`6000000001999556566`).
 
 - **Clean up this project, and the ontology-harness checkout of it.** Emma: "we should be putting at the end of the queue something about cleaning it up." Keep it at the end. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
