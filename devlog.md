@@ -51583,7 +51583,7 @@ correspondence pairs (the path since 2026-09-28).
 
 Nothing removed yet: explained first, fix on Emma's word.
 
-## 2026-10-04: batch `ebec37585` (this session's) duplicated ~100 people the earlier run had just created
+## 2026-10-04: batch `ebec37585` (this session's) duplicated 58 people the earlier run had just created
 
 **Unexpected, and caused by this session.** Checking the Emperor Kōkō links (Emma: fix Kōkō first) found
 that both our Kōkō-family creations duplicate established items: `Q141638581` 類子 菅原 is `Q106237458`
@@ -51594,8 +51594,8 @@ the batch already running when this session started) and `Q141638581` (13:23 UTC
 `1791119184727` of `ebec37585`), same Geni id `6000000002826094685`.
 
 **Size, live (SPARQL):** 103 Geni ids sit on two or more of our items created since 2026-09-28
-(`reports/duplicate-creations-2026-10-04.csv`), nearly all pairs `Q141636xxx` (earlier run) / `Q141638xxx`
-(this run). **Why the guard did not stop it:** Wikidata refuses a second item only when a label and the
+(`reports/duplicate-creations-2026-10-04.csv`); **58** of them are a `Q141636xxx` (earlier run) /
+`Q141638xxx` (this run) pair, and the other 45 are older duplicate pairs from earlier days, same cause. **Why the guard did not stop it:** Wikidata refuses a second item only when a label and the
 description match *in the same language*. These people are created under their Han name in mul/ja/zh with
 the description in en only, so no language holds both and nothing is refused. Overlapping runs are allowed
 on purpose because of that guard (CLAUDE.md, 2026-09-25); for Han-named creations it does not exist. This
