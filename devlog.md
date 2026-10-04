@@ -51145,3 +51145,14 @@ From `reports/ancient-ring-wikidata-candidates.csv`: 96 single exact-label candi
 description), 87 items, none in the editing universe or one step out. Of Emma's three starters, Cornelia
 Cethegilla and Flavius Julius Agricola have no name match and Sulpicia only a politician item and a generic
 "Roman noblewoman". Emma (AskUserQuestion): no Roman entry points; item closed.
+
+## 2026-10-03: the NN interview
+
+Survey of our items' live labels (`garborg-live-labels.tsv`): `NN` alone has an English relationship phrase on
+274, "NN" on 165, none on 26; `Given NN` repeats mul on 271 and has "Segrid, mother of ..." on 100; `NN Surname`
+has a phrase on 245 and itself on 89; junk survives (`NN ektefelle Torgier Olson`, `NN- d Vrouw van Laurens`),
+and some ja labels transliterate NN as `ン`. Emma's answers (AskUserQuestion), written into CLAUDE.md: NN and NN
+Surname start as themselves in mul and en, and after 24 hours on the roster CI writes the relationship phrase in
+en/ja/zh/ko, consistent across languages; a known given name with no surname is the name alone in every language,
+backfilled ("using NN was a mistake"); CJK labels of NN people are the relationship phrase. Three queue items
+replace the interview item.

@@ -701,6 +701,13 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   bare married surname is how `Q141492819` went out as `Talgje`; 7 of 8,350 created items were
   that shape, and all were fixed by hand on 2026-09-25. **⛔ Still never backfilled** (ruled
   2026-09-24, *"a waste of edits"*): it governs what is CREATED.
+- **⛔ NN LABELS, RULED BY INTERVIEW 2026-10-03 (Emma, AskUserQuestion), superseding the NN rules around this one where they
+  differ.** (1) No known name, or only a surname: `mul` and `en` are `NN` / `NN Skårland` at creation; once the item is
+  24 hours old and on the roster, CI writes the relationship phrase in `en`, `ja`, `zh` and `ko`, and keeps those
+  phrases consistent across the four languages for every item whose `mul` is NN-shaped. (2) A known given name with
+  no surname: the label is just the name in every language, never `Given NN` ("using NN was a mistake"); backfill the
+  existing ones. (3) Japanese, Chinese and Korean labels of NN people are the relationship phrase, never a
+  transliteration of `NN` (`ン・…`).
 - **`NN` is PRESERVED in `mul`**; descriptive labels are ADDED in other languages. `Private` never
   becomes a label, and neither person is left unlabelled.
 - **A bare given name is not a label** — the farm name is the surname; else `Given NN`.
