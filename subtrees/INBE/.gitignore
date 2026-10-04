@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# One-off scripts, throwaway experiments and temporary downloads. Never
+# committed, so they cannot pile up as crud. Promote a script out of here only
+# once it will be run again.
+scratch/
+
+# Empty log written when a GEDCOM is opened in the default viewer
+debug.log
