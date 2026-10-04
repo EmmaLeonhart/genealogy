@@ -51091,3 +51091,18 @@ Abe no Funamori (-> `Q106206087`) by its two sons. The classifier stopped the me
 authorized the remaining seven by AskUserQuestion. All 12 confirmed as redirects through the API. Not
 merged: Asukabe (name only). Unexpected: a QuickStatements tab reloaded now lands on its "Log in" page
 although the session is valid; a still-loaded tab's "New batch" link works.
+
+## 2026-10-03 22:xx PDT: Ryogu and Asukabe: read the sources, removed two false links and Geni's wrong father link, merged
+
+Emma asked what is on the existing items. Japanese Wikipedia, 百済王郎虞 (`Q30937834`): other name 良虞 (Geni's
+exact name), died 天平9年7月17日 = 737 (ours: died 737), children 孝忠, 全福, 敬福, 清仁. 飛鳥部奈止麻呂
+(`Q11665982`): 飛鳥部氏, father not recorded, child 百済永継 (`Q11580786`). So Ryogu is Rōgu, and our Asukabe is
+`Q11665982` through his daughter Kudara no Nagatsugu (Geni's child for him). Unexpected: our batch (12:35
+PDT) had put two false statements on Wikidata from another zipper error: Nagatsugu paired with `Q106267274`,
+a lady of the Agata Inukai clan (wife of Fujiwara no Kuromaro), band PARENTS-ONE-SIDE with no comparable
+slot; that stranger's item was given father = our Asukabe, and ours child = her. Also Geni's "Ryogu, father
+of Asukabe" contradicts the article (different clan, father unrecorded; Rōgu's children listed). Emma
+authorized: removed the four statements by QuickStatements (checked live: `Q106267274` back to its own
+statements), DIFFERENT verdict for Nagatsugu/`Q106267274`, then merged `Q141635460` -> `Q30937834` and
+`Q141632350` -> `Q11665982` through the merge wizard (checked: redirects). The zipper blast-radius item at the
+end of the queue now names both known cases.
