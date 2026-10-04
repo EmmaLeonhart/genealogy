@@ -7,6 +7,16 @@
 #
 # The genitive s is shared: Rasmussen -> Rasmusdatter, never Rasmussdatter.
 
+# Eivindsen -- the counterpart of Eivindsdatter (70 bearer(s))
+CREATE
+LAST	Len	"Eivindsen"
+LAST	Lmul	"Eivindsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
 # Torstensen -- the counterpart of Torstensdatter (38 bearer(s))
 CREATE
 LAST	Len	"Torstensen"
@@ -21,15 +31,16 @@ Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 
-# Grandsdotter -- the counterpart of Grandson (21 bearer(s))
+# Eivindsdatter -- the counterpart of Eivindsen (34 bearer(s))
 CREATE
-LAST	Len	"Grandsdotter"
-LAST	Lmul	"Grandsdotter"
+LAST	Len	"Eivindsdatter"
+LAST	Lmul	"Eivindsdatter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
-LAST	P407	Q9027
+LAST	P407	Q9043
+LAST	P407	Q9035
 
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
@@ -81,36 +92,16 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Truidsdatter -- the counterpart of Truidsen (11 bearer(s))
+# Malsdatter -- the counterpart of Malsen (9 bearer(s))
 CREATE
-LAST	Len	"Truidsdatter"
-LAST	Lmul	"Truidsdatter"
+LAST	Len	"Malsdatter"
+LAST	Lmul	"Malsdatter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
-
-# Brandsdotter -- the counterpart of Brandsson (9 bearer(s))
-CREATE
-LAST	Len	"Brandsdotter"
-LAST	Lmul	"Brandsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Hallsson -- the counterpart of Hallsdóttir (9 bearer(s))
-CREATE
-LAST	Len	"Hallsson"
-LAST	Lmul	"Hallsson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
 
 # Pettersson -- the counterpart of Pettersdotter (7 bearer(s))
 CREATE
@@ -125,26 +116,6 @@ LAST	P5278	Q141456297
 Q141456297	P5278	LAST
 Q141456297	P407	Q9027
 
-# Frodesdotter -- the counterpart of Frodesson (6 bearer(s))
-CREATE
-LAST	Len	"Frodesdotter"
-LAST	Lmul	"Frodesdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Hallsdotter -- the counterpart of Hallsson (6 bearer(s))
-CREATE
-LAST	Len	"Hallsdotter"
-LAST	Lmul	"Hallsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
 # Pålsson -- the counterpart of Pålsdotter (6 bearer(s))
 CREATE
 LAST	Len	"Pålsson"
@@ -158,24 +129,14 @@ LAST	P5278	Q141612286
 Q141612286	P5278	LAST
 Q141612286	P407	Q9027
 
-# Bosdatter -- the counterpart of Bosen (5 bearer(s))
+# Esdatter -- the counterpart of Esen (5 bearer(s))
 CREATE
-LAST	Len	"Bosdatter"
-LAST	Lmul	"Bosdatter"
+LAST	Len	"Esdatter"
+LAST	Lmul	"Esdatter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Esgesen -- the counterpart of Esgesdatter (5 bearer(s))
-CREATE
-LAST	Len	"Esgesen"
-LAST	Lmul	"Esgesen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
 
