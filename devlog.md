@@ -51467,3 +51467,20 @@ of the father's given name count as a match (Eilefsdatter/Eiliv, Nilsdotter/Nico
 - **4 questions** for Emma, **2** with an unnamed father.
 
 Nothing was changed on Wikidata.
+
+## 2026-10-04: session genealogy-72 winds down: handoff
+
+Emma: kill this session's crons and wind its work down; the other genealogy sessions carry on. Crons deleted
+(84c9cf1f, c5428f4c). What this session holds that the repo did not, now written down:
+- The Given NN backfill (`reports/given-nn-backfill-2026-10-03.qs`, 1,559 commands) ran to 1,559/1,559 before the
+  Chrome restart; a live sample of 25 items matched every label.
+- The no-family-name backfill (`reports/novalue-family-name-backfill-2026-10-04.qs`) did not land: 0 of 1,917,
+  checked live; its run died with Chrome. Waiting for Emma's word (queue).
+- Batch `295e94730` (first with the Sinosphere fix) was never opened: its 93 Han-named creations are formatted
+  right, 39 already have items. Batches are opened only on Emma's word (she is not after throughput).
+- Overwrite sweep: stale browser batches reverted Emma's hand fixes on `Q141633473` and `Q141560190`; restored.
+  To redo over the batches' last edits (queue).
+- QuickStatements quirk: a reloaded tab lands on "Log in" although the session is valid; a still-loaded tab's
+  "New batch" link (or an in-page route change to `#/` then `#/batch`) gives a working editor.
+- Emma's rulings this session, all in CLAUDE.md: Sinosphere names; a duplicate is not an emergency, wrong labels
+  are; the NN interview; "review" means the session does it and asks questions (memory).
