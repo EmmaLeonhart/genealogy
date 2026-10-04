@@ -50991,3 +50991,18 @@ Composition from name items is on for `en`, `ja`, `zh`, `ko` (`COMPOSED_LANGS_LI
 10-03). `reports/composed-labels.tsv`: composable en 5,641, ja 806, zh 769, ko 100; already equal to the
 live label en 5,570, ja 454, zh 361, ko 49. Transliteration remains only where the name items cannot
 compose. Item deleted.
+
+## 2026-10-03: notable descents, second pass: Yuri found, Helena and Vsevolod not in the tree by any link
+
+Read-only, over the current tree (`derived-family.csv`, every primary and alternate parent link, the
+impossible ones from `../notes/genealogy-impossible-parents-2026-10-02.tsv`). Yuri Dolgorukiy
+(`6000000002187826932`, `Q275106`): an ancestor in 27 steps with no impossible link and one alternate
+(Sissel Jonsdatter Aukland's mother slot, Bergitte Gunnbjørnsdatter Tengs), via Olga Yurievna,
+Vysheslava Yaroslavna, Euphrosyne of Opole, Hedvig Svantepolksdotter; 28 through primary links alone.
+`paths/emma-to-yuri-dolgorukiy.tsv` lists each step with its Geni id, QID (20 of 28) and FamilySearch
+id (23). Helena (`6000000003251725930`) and Vsevolod "Big Nest" (`6000000003897541297`): no route at
+all, impossible links included; Vsevolod is not among the 9,991 tree ancestors. The first pass's
+"Helena through impossible links, via Vsevolod" came from the ancestry GEDCOM it built with alternate
+families, whose impossible links the next entry traced to spliced saved-path files; which spliced link
+made that route is not traced. Abul Hamza and the Guy d'Ibelins stand as in the first pass (not
+ancestors). Item closed; the Helena and Abul Hamza items below it stay as their own items.
