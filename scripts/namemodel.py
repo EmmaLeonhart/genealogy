@@ -1304,6 +1304,20 @@ def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = ""
         if (len(own.split()) > 1 and own.split()[0] in NOBILIARY_PARTICLES
                 and tail.endswith(own) and tail != own):
             return f"{truncated} {own}"
+    # ⛔ **A TAIL THAT ENDS ON THE PERSON'S OWN SURNAME KEEPS IT.** Error report 2026-10-03,
+    # `Q141633473`: Geni files `Peder of Finland` in `GIVN` and `Samuelsson` in `_MARNM` with `SURN`
+    # empty (the field is then his own name), so the title rule cut `of Finland Samuelsson` and he
+    # was created as bare `Peder`. The territorial words go; the surname his record files stays.
+    # Narrow on purpose (a specific issue is not a general rule): `SURN` empty, the `_MARNM` one
+    # patronymic token, and the cut tail ends with it. A general "keep any trailing own surname"
+    # measured 521 labels, many wrong (`King Ranald`, `Francesco Parma`).
+    own = " ".join((marnm or "").split()).rstrip(",")
+    if (not (surn or "").strip() and len(own.split()) == 1 and is_patronymic(own)
+            and tail.endswith(" " + own)
+            # `Konen til Ævar Ketilsson` is "the wife of": a relationship word is not a given name.
+            and truncated.casefold() not in {"konen", "kona", "hustru", "enke", "wife", "widow",
+                                             "mother", "daughter", "son", "datter", "dotter"}):
+        return f"{truncated} {own}"
     if len(parts) < 2 or parts[0].casefold() not in FARM_OPENERS:
         return truncated
     rest = " ".join(parts[1:])

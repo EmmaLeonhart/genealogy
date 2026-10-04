@@ -51206,3 +51206,20 @@ person is left out on purpose: their surname is unknown, which is a different cl
 200,000 people: given+patronymic 10,221, patronymic alone 93. Backfill: of our 23,168 ledger people, 2,136 have
 that shape; read live, 219 already carry a `P734`, 1,917 do not (659 of them lack the `P5056` statement too):
 `reports/novalue-family-name-backfill-2026-10-04.qs`, run from the session's QuickStatements. Item closed.
+
+## 2026-10-04: error report `Q141633473` "Peder", and three hand fixes a running batch overwrote
+
+**Unexpected, first.** Emma fixed `Q141633473` by hand on 2026-10-03 15:30 PDT (`Peder Samuelsson` in mul/en/ja/zh/ko);
+at 21:32 PDT a day batch running in the browser, composed before her fix, set mul/en/ja/ko back to `Peder`. A sweep
+of her 323 hand label edits since 2026-10-02 05:00 PDT (110 items) for a later QuickStatements label edit in the same
+language found two more: `Q141560190` (her `Marit Rasmusdotter Tu` overwritten with `Marit Rasmusdotter
+Rasmusdatter`, mul/en/ja/ko) and `Q141628094` (en; the batch's form only adds the accent her later mul also uses,
+left). Her values restored on `Q141633473` and `Q141560190` (wbsetlabel, no summary).
+
+Cause of "Peder": Geni files `Peder of Finland` in GIVN and `Samuelsson` in `_MARNM` with SURN empty; the title rule
+cut `of Finland Samuelsson` and `namemodel.keep_own_surname` only rescued a farm or nobiliary tail. Now also: SURN
+empty, `_MARNM` a single patronymic token, the cut tail ends with it, the remaining word not a relationship word
+(`Konen til …`). A general "keep any trailing own surname" was measured first and refused: 521 labels, many wrong
+(`King Ranald`, `Francesco Parma`). The narrow rule moves 12 records, all right (Peder Samuelsson, Eirik Eiriksson,
+Erik Persson, Eanmund Ottarsson, Kjell Jonsson, Nils Eskilsson ...); only Peder has an item. Test in
+`test_namemodel.py` (CI). Item closed.

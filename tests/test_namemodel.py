@@ -1837,3 +1837,15 @@ def test_a_family_name_links_only_by_its_exact_english_label_and_description(mon
     assert nm.family_item_fits("Q1354604", "Eriksson")
     assert not nm.family_item_fits("Q709747", "Tu")
     assert not nm.family_item_fits("Q37548132", "KHOO")
+
+
+def test_a_patronymic_filed_as_married_name_survives_the_title_cut():
+    """Error report 2026-10-03, `Q141633473`: Geni `Peder of Finland` + `_MARNM` Samuelsson, `SURN` empty,
+    was created as bare `Peder`. Narrow rule: 12 records over the corpus move, all of this shape."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    import namemodel as nm
+    label = "Peder of Finland Samuelsson"
+    assert nm.keep_own_surname(label, nm.drop_label_title(label), "", "Samuelsson") == "Peder Samuelsson"
+    assert nm.keep_own_surname("Claude of Luxembourg", "Claude", "Luxembourg", "") == "Claude"
+    assert nm.keep_own_surname("Konen til Ævar Ketilsson", "Konen", "", "Ketilsson") == "Konen"
