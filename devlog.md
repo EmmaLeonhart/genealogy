@@ -51699,3 +51699,51 @@ call):** where Geni has no Latin record, the `en` label is **the Han name verbat
 can replace it later from a real source (some of these duplicate established items with English labels,
 e.g. `Q141636850` 基嗣 近衛 = `Q3198721` Konoe Mototsugu). For the NN people, `en` = `mul`, the NN rule
 at creation; the day-later relational pass may then replace it.
+
+## 2026-10-04 13:40 PDT: the 193 get English readings, not the Han string; the overwrite sweep redone
+
+**Emma corrected the entry above:** an `en` label is an English reading, and corrections go through the
+label pipeline (`label-applications.tsv`), never a direct API call (the session had tried `wbsetlabel` from
+the browser for the overwrite sweep; refused, and not repeated). Her "No" to that question was to the
+method, not to the label changes. Memory written.
+
+**The 193 `en` rows now carry readings** (`reports/no-en-label-readings-2026-10-04.tsv`, source per row):
+- 62 from the English label of an existing Wikidata item with the same full name (searched in `ja`; matches
+  on one-character names and on our own twins dropped; given-first labels put surname-first, so
+  `Tsuneyori Minamoto` is `Minamoto no Tsuneyori`). Many are the same person, i.e. duplicates of
+  established items: `Q11355854` Sanjōnishi Saneki, `Q958662` Emperor Kōnin, `Q595897` Soga no Iname,
+  `Q7677188` Takano no Niigasa, `Q3198721` Konoe Mototsugu, `Q1473290` Fujiwara no Kanesuke and more.
+- 58 relational forms (室, 正室, 継室, 妻, 后, 娘, 女, 養女, ？): no personal name, so `NN <surname>` as the
+  NN rule writes at creation (`NN Fujiwara`, `NN Ōgimachisanjō`); the day-later pass writes the phrase.
+  (`基嗣室` and `尚顕室` have no surname: `NN`, counted under hand.)
+- 18 given names from JMnedict (EDRDG name dictionary), filtered by sex, with its own romanisation.
+- 28 by hand where the sources are wrong or silent, mostly kuge readings (実 sane, 公 kin, 言 toki):
+  `Ōgimachisanjō Sanenaka`, `Fujiwara no Tokiyuki`, `Fujiwara no Sadasuke`, `Susuki Mochimori`,
+  `Awaya Kataie`, `Oda Katsuhisa`; titles dropped (`公国 内大臣 三条西` is Sanjōnishi Kinkuni).
+- 18 Qing/Manchu and Chinese (`Mo Lifang`): established clan forms (Niohuru, Yehe Nara, Hitara, Uya, Gūwalgiya, Fuca) plus pinyin.
+- 9 from pykakasi, the last resort, all in the low-confidence list below.
+- Ancient uji take `no`; family names (家名) do not. Surnames from a table of the families involved,
+  because Wikidata's family-name items are unreliable here (`本多` reads "Hotta" there; it is Honda).
+
+**Low confidence, a person should check:** `Inaba Kimame` (気豆), `Niwata Tsunesuke`, `Iitaka no Deshi`
+(弟子), `Agata no Inukai no Kurohiko`, `Mononobe no Umaro`, `Nakayama Kanechika`, `Soejima Aya`,
+`Oda Ryōen`, `Fujiwara no Kōsei` (後生), `Awaya Etsushin` (笑鴎軒 is an art name), `Sanjō Kaoko` (香子),
+`Aoki Aki` (紋), `Ikenabe` (池辺). `祿 仲華 瓜爾佳` (1836-1903) is written `Gūwalgiya Lu Zhonghua`;
+by clan, courtesy name and dates he is Ronglu (榮祿), so Geni's 祿 is probably truncated.
+
+**Overwrite sweep, redone over every edit since 2026-10-02 (66,640):** 11 slots got a QuickStatements
+label edit after a hand one. `Q141633473` ko already holds Emma's value; `Q141628094` en stays as decided
+earlier. Restored through `label-applications.tsv`, as the phrase built from the relative's own label
+(`CJK_RELATION`): `Q141624426` ja/zh/ko `ホーコン・マグヌスソンの母` … (Emma's en "Mother of Haakon
+Toresfostre", `Q1752172`), `Q141629202` ja/zh/ko `グットルム・ヨスダルの妻` … (her en "wife of Guttorm
+Josdal"). All 9 slots added to `corrected-label-slots.tsv`, so derived edits stop re-adding the stale
+readings (hand rows are applied after that filter, so they still go out).
+**Not restored:** `Q141633806` Momozono Aido ja/zh/ko. A session removed the made-up readings and a stale
+batch put them back; the label channel can only set a value, and no Han name is known. Queued at the end
+with the rest of the Aido family.
+
+**Unexpected:** batch `82477aa99` (the 12:55 PDT rebuild) still had 80 Han-named creations with no `Len`.
+It came from run 37219106291 on `681f497b9`, checked out 10:04 PDT, 50 minutes before the guard; it is
+not a guard failure. Run 37230192005 rebuilds on code with the guard. Also: each git command in this
+submodule started an automatic geometric repack that used 11-18 GB of RAM; git is now run here with
+`-c maintenance.auto=false -c gc.auto=0`.
