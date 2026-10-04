@@ -4510,6 +4510,41 @@ def _carries_marker(label):
     return any(tok.casefold().strip(".,") in markers for tok in (label or "").split())
 
 
+_SINO_HAN = re.compile("[㐀-䶿一-鿿豈-﫿]")
+#: `1世` is a regnal numeral after a European name, not a Sinosphere signal (§ THE KANJI SIGNAL).
+_SINO_ORDINAL = re.compile(r"\d+\s*世")
+
+
+def sinosphere_name(cjk):
+    """The person's own Han-script name when they are a Sinosphere person, else `""`.
+
+    ⛔ **A PERSON GENI NAMES IN KANJI IS CREATED UNDER THAT NAME, NOT A ROMANISATION OF IT.**
+    Reported 2026-10-03 on `Q141634581`: Geni's primary name is `信子 /鳥居小路/` with a second,
+    Latin record `Nobuko Toriikoji`. The loader takes `label_en` before `cjk_names`, so she was
+    created as `Nobuko Toriikoji` in `mul` and `en`, the CJK labels were `label_in` transliterations
+    of the romanisation (`ノブコ・トリイコイ`), and the real name survived only as an `Amul`. Emma
+    set `ja` and `zh` to `信子 鳥居小路` by hand and removed the `ko` transliteration. A kanji `ja`
+    is what puts a person in the Sinosphere label universe, so writing katakana at creation put
+    her in the wrong one.
+
+    `cjk_names` is Geni's string, used verbatim: it is what she wrote back. Han script only: a
+    katakana-only form (`クヌート1世 (イングランド王)`, kanji only in its title) is a
+    European's Japanese reading, and a form with the
+    transliteration dot (`·`, `・`) is a Western name spelled in Chinese or Japanese. An
+    unknown-name marker (`未詳`, `未知`) is not a name.
+    """
+    name = " ".join((cjk or "").split())
+    # Hangul is not a `ja`/`zh` label (12 people mix it in, `중희 盧`); they keep the old path.
+    if not name or '"' in name or "·" in name or "・" in name \
+            or re.search("[가-힯]", name):
+        return ""
+    # The Han must be in the name itself, not in a parenthetical title (`(イングランド王)`).
+    bare = re.sub(r"[(（][^)）]*[)）]", "", _SINO_ORDINAL.sub("", name))
+    if not _SINO_HAN.search(bare) or _carries_marker(name):
+        return ""
+    return name
+
+
 def statements_tokens(record):
     """`(token, usage, ordinal)` for one `fields` row, with the never-items dropped.
 
@@ -8069,6 +8104,8 @@ def main():
     #: form where there is one. Separate from `labels` on purpose; see the comment at
     #: the assignment below.
     referred_to_as = {}
+    #: The person's own CJK name (`cjk_names`, first form), read by `sinosphere_name` at creation.
+    cjk_first = {}
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
@@ -8108,6 +8145,7 @@ def main():
                 # formulaic descriptions. `strip_markers` belongs where a label is emitted
                 # for a person who is NOT redacted, which is the `Sara NN` case.
                 labels[row["geni_id"]] = raw_label
+                cjk_first[row["geni_id"]] = (row.get("cjk_names") or "").split(" | ")[0].strip()
                 aka[row["geni_id"]] = " ".join(
                     (row.get(c) or "").replace(" | ", " ")
                     for c in ("alias_names", "further_latin_names"))
@@ -9145,9 +9183,14 @@ def main():
         # `_carries_marker` cannot see them: `Ånon i /Byre/` carries no marker at all, and
         # `Maria /No name/` has already had hers dropped by `drop_marker_surname` upstream. The
         # test is the fields — one token, and no surname Geni actually records.
+        # A Han name in Geni's GIVEN field is the whole name (`春日大娘皇女`, `中臣可多能祜`): no
+        # `NN` is appended to it (2026-10-03, created as `春日大娘皇女 NN`). Surname-only stays NN.
+        _sino = sinosphere_name(cjk_first.get(g, ""))
+        if _sino and not _name_fields(fields.get(g))[0]:
+            _sino = ""
         redacted = ("<private>" in low or low.startswith("private")
                     or _carries_marker(label)
-                    or _nn_surname(label, *_name_fields(fields.get(g))) != label)
+                    or (not _sino and _nn_surname(label, *_name_fields(fields.get(g))) != label))
         if redacted and args.skip_nn:
             carried.append((g, label, "redacted: skipped by --skip-nn for this run"))
             continue
@@ -9298,6 +9341,18 @@ def main():
                     _desc_emitted = True
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
+        elif _sino:
+            # ⛔ **A SINOSPHERE PERSON: THE HAN NAME IN `mul`, `ja` AND `zh`; NO TRANSLITERATION.**
+            # `sinosphere_name` says why. `en` takes Geni's own Latin record when there is one
+            # (`Nobuko Toriikoji` is Geni's, not ours); `ko` is left empty rather than given a
+            # reading of the romanisation, which is the line Emma removed from `Q141634581`.
+            if re.search(r"[A-Za-z]", primary) and not _SINO_HAN.search(primary):
+                lines.append(f'LAST\tLen\t"{qs(primary)}"')
+                lines.append(f'LAST\tDen\t"{qs(_desc)}"')
+                _desc_emitted = True
+            lines.append(f'LAST\tLmul\t"{qs(_sino)}"')
+            lines.append(f'LAST\tLja\t"{qs(_sino)}"')
+            lines.append(f'LAST\tLzh\t"{qs(_sino)}"')
         else:
             # **The MARRIED name is the primary label; the BIRTH name is an alias.**
             # Ruled 2026-08-24, after running the first batch: the married name is the
@@ -9642,7 +9697,7 @@ def main():
         # wrote `Aen` alone — an alias that exists only in `en` is invisible to every
         # other language, which is why `mul` is the one that matters and `en` is the
         # one that never applies.
-        emitted = {qs(primary), qs(birth)}
+        emitted = {qs(primary), qs(birth), qs(_sino)}
         for alias in aliases_for(fields.get(g, {})):
             if qs(alias) and qs(alias) not in emitted:
                 lines.append(f'LAST	Amul	"{qs(alias)}"')

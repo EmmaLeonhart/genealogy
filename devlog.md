@@ -50902,3 +50902,36 @@ and his consort are held by the duplicate guard (Zaifeng `Q144348` already names
 and `Q6470338`); Yehe Nara and Alute, his adoptive mothers, likewise (Puyi already names a mother);
 three have no ja/zh/ko label yet (the CJK gate). Both items closed: the regeneration and the Puyi
 error report.
+
+## 2026-10-03: Sinosphere people are created under their Han name (`Q141634581` Nobuko Toriikoji)
+
+**Unexpected, first.** (1) The ring has been creating duplicates of Japanese people Wikidata already
+has, none of which carries a Geni id: `Q141635311` Hideie Ukita (`Q1329792`, the daimyo),
+`Q141635365` (`Q11400601`), `Q141632350` (`Q11665982`), `Q141632158` (`Q11659560` Prince Naniha),
+`Q141635288` (`Q91089384`), `Q141634134` (`Q11088800`, Ninken's empress), likely `Q141634195`
+(`Q97342104`). Queued for Emma's merge and a decision on a guard. (2) A sweep of the account's untagged
+edits of 2026-09-16 to 09-18 found 8 items whose existing `ja`/`zh`/`ko` labels our account overwrote
+on 2026-09-17 (14:40-14:49 PDT) with transliterations of English labels, none reverted: `Q29201` Yellow
+Emperor's 黄帝 became イェロヴ・エムペロル, then フアングディ. `reports/cjk-overwrites-2026-09-17.tsv`;
+queued for her go-ahead. (3) This session opened batch `20ce82aa8` in a new tab at about 18:45 PDT,
+though the previous session had already opened it at 18:1x PDT: a second run of the same batch. Its
+creations are refused by the label-plus-description guard ("No last item available" for the lines
+after), its other edits are re-adds, so it was left running. A new tab should only be opened for a
+new `rebuild the batch` commit.
+
+**Cause.** Geni records her as `信子 /鳥居小路/` (record 0) and `Nobuko Toriikoji` (record 1).
+`build-garborg-day.py` labels a creation from `label_en or label_mul or cjk_names`, so the Latin
+record won, `mul`/`en` became the romanisation, and `label_in` transliterated it into `ja`/`zh`/`ko`
+(ノブコ・トリイコイ). The kanji survived only as an `Amul` and `P1810`. Han-only people went through the
+bare-given-name test, so `春日大娘皇女` became `春日大娘皇女 NN` with a Han `en` label (the `NN` made
+the Latin test pass), and `未詳`/`未知` ("unknown") were created as names.
+
+**Fix.** `sinosphere_name(cjk_names)` returns the person's Han name, verbatim from Geni, unless the
+Han is only in a parenthetical title (`クヌート1世 (イングランド王)`), the form carries a
+transliteration dot or Hangul, or it is a marker. For such a person whose Han name is in Geni's given
+field, the creation writes it as `Lmul`/`Lja`/`Lzh`, `Len` only from Geni's own Latin record, no `Lko`,
+and no `NN` (the shape Emma gave `Q141634581` by hand at 18:30 PDT: `ja`/`zh` 信子 鳥居小路, `ko`
+removed). `labels.WORDS_MEANING_UNKNOWN` gains 未知, 未詳, 無名. Over `derived-labels.csv`: 51,956 of
+57,763 CJK-named people qualify; 381 rejected are `某` forms and bare ordinals. Descriptions are
+untouched. Test: `test_a_person_geni_names_in_kanji_is_created_under_that_name` (CI). Measured from the
+wired path when the next pipeline batch lands (queued). Item replaced by the three it produced.

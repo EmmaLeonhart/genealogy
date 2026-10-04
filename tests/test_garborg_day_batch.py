@@ -1807,3 +1807,28 @@ def test_the_ring_cap_gives_every_seed_a_turn(monkeypatch):
     fam_p = {"F1": ["10", "11", "12"], "F9": ["90"]}
     ring = mod.priority_ancestor_ring({"1": "Q1", "9": "Q9"}, fam_p, famc)
     assert list(ring)[:2] == ["10", "90"]
+
+
+def test_a_person_geni_names_in_kanji_is_created_under_that_name():
+    """Error report, 2026-10-03, `Q141634581`: Geni's primary name `信子 /鳥居小路/` lost to the
+    Latin record `Nobuko Toriikoji`, and the CJK labels were transliterations of it. Emma set
+    `ja`/`zh` to the Geni string by hand. A Han name is the person's Sinosphere name; a katakana
+    reading of a European, a dotted transliteration, a regnal numeral and a marker are not."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_sino", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.sinosphere_name("信子  鳥居小路") == "信子 鳥居小路"
+    assert mod.sinosphere_name("春日大娘皇女") == "春日大娘皇女"
+    assert mod.sinosphere_name("クヌート1世 (イングランド王)") == ""
+    assert mod.sinosphere_name("维托里奥·埃马努埃莱二世") == ""
+    assert mod.sinosphere_name("未詳") == ""
+    assert mod.sinosphere_name("未知") == ""
+    assert mod.sinosphere_name("중희 盧") == ""
+    assert mod.sinosphere_name("マツ 大久保") == "マツ 大久保"
+    assert mod.sinosphere_name("") == ""
+    from labels import WORDS_MEANING_UNKNOWN
+    assert {"未知", "未詳", "無名"} <= WORDS_MEANING_UNKNOWN

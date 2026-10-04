@@ -166,6 +166,9 @@ WORDS_MEANING_UNKNOWN = {
                       #        name, `NN` in `mul`, descriptive labels elsewhere.
     "без име",        #    52  Bulgarian / Macedonian
     "ukendt",         #    18  Danish
+    "未知",           #        Chinese/Japanese "unknown"; `build-cjk-reading-labels.CJK_MARKERS`
+    "未詳",           #        Japanese "details unknown". Both were CREATED as labels on
+    "無名",           #        2026-10-03 (`6000000132319413832`, `6000000010702683433`).
     "okänd",          #    17  Swedish
     "not known",      #    15
     "desconocida",    #    13  Spanish
