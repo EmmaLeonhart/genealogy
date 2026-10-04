@@ -1848,3 +1848,13 @@ def test_a_transliterated_nn_is_recognised_and_a_real_name_is_not():
         assert mod._NN_TRANSLITERATED.match(live)
     for real in ("恩德雷·斯韦因斯沃尔之妻", "エンドレの妻", "オーラ・エイリヴソン・テンゲスダルの妻"):
         assert not mod._NN_TRANSLITERATED.match(real)
+
+
+def test_a_bare_given_name_is_not_given_nn_any_more():
+    """NN interview, 2026-10-03: "Just the name in all languages, no usage of NN, using NN was a
+    mistake." The helper that wrote `Ånon NN` returns the given name unchanged."""
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    from labels import name_with_unknown_surname
+    assert name_with_unknown_surname("Brita", "Brita", "", "") == "Brita"
+    assert name_with_unknown_surname("Ånon", "Ånon", "", "") == "Ånon"

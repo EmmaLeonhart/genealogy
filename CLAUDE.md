@@ -710,7 +710,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   transliteration of `NN` (`ン・…`).
 - **`NN` is PRESERVED in `mul`**; descriptive labels are ADDED in other languages. `Private` never
   becomes a label, and neither person is left unlabelled.
-- **A bare given name is not a label** — the farm name is the surname; else `Given NN`.
+- **Superseded 2026-10-03 (NN interview): ~~A bare given name is not a label — else `Given NN`~~.** The farm name is still the surname where there is one; otherwise the given name alone is the label.
 - **Redacted people go in.** `<private> /Surname/` keeps a real surname.
 - **⛔ THE KANJI SIGNAL DECIDES WHICH LABEL UNIVERSE A PERSON IS IN.** A `ja` label in **kanji**
   means a SINOSPHERE name: a different universe of labels, and **no label edit in any language**.

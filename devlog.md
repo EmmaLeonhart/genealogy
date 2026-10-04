@@ -51167,3 +51167,14 @@ not `恩德雷`). Measured on our NN items' live labels: ~400 items have a slot 
 = mul, 30 empty; ja/zh/ko: ~200 empty each, 10 transliterations), ~700 per language hold our phrase (rewritten
 only if it differs), ~30 per language hold someone else's label (never touched); `LATER_RELATIONAL_CAP` 200
 items a batch. Test `test_a_transliterated_nn_is_recognised_and_a_real_name_is_not` (CI). Items (1) and (3) closed.
+
+## 2026-10-03: NN ruling (2): a given name with no surname is the name alone, created and backfilled
+
+`labels.name_with_unknown_surname` no longer appends `NN` (both batch builders call it), and the creation path
+drops a trailing `NN` from a Geni name with a real given name (`Sara /NN/` -> `Sara`). CLAUDE.md's "a bare given
+name is not a label" line is marked superseded. Backfill, built from live labels (re-read): 379 of our items
+whose `mul` is `Given NN`; `mul`/`en` become the given name, `ja`/`zh`/`ko` the composer's reading of it
+(`label_in`), each replacing only labels we wrote (`NN`-shaped, our relationship phrases with or without the
+name attached, transliterated NN); 16 CJK slots that do not look like ours are kept, 5 names have no reading.
+1,559 commands, `reports/given-nn-backfill-2026-10-03.qs`, run from the session's QuickStatements. Test
+`test_a_bare_given_name_is_not_given_nn_any_more` (CI). Item closed.

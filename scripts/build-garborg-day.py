@@ -9195,6 +9195,12 @@ def main():
         # `_carries_marker` cannot see them: `Ånon i /Byre/` carries no marker at all, and
         # `Maria /No name/` has already had hers dropped by `drop_marker_surname` upstream. The
         # test is the fields — one token, and no surname Geni actually records.
+        # ⛔ **A GIVEN NAME WITH `NN` FOR THE SURNAME IS THE GIVEN NAME. Emma, 2026-10-03 (NN interview):**
+        # Geni's `Sara /NN/` was created `Sara NN`; the label is `Sara` in every language now.
+        _tk = label.split()
+        if (len(_tk) >= 2 and _tk[-1] in ("NN", "N.N.", "nn") and _name_fields(fields.get(g))[0]
+                and not _carries_marker(" ".join(_tk[:-1]))):
+            label = " ".join(_tk[:-1])
         # A Han name in Geni's GIVEN field is the whole name (`春日大娘皇女`, `中臣可多能祜`): no
         # `NN` is appended to it (2026-10-03, created as `春日大娘皇女 NN`). Surname-only stays NN.
         _sino = sinosphere_name(cjk_first.get(g, ""))
