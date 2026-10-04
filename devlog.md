@@ -50887,3 +50887,18 @@ LAST` beside each `LAST P144 <given name>`; the daily backfill of existing patro
 the plan's) now also reads their given names live and writes `<given name> P2976 <patronymic>` for
 every pair (the item's live `P144` values and the ones this run adds) the given name lacks. Checked
 when the pipeline next builds the name-items batch.
+
+## 2026-10-03: the regenerated batches run; Puyi's ancestors reach a batch (Emma)
+
+Two batches opened in new QuickStatements tabs (Run, not background), neither tab touching another:
+`0b75f12c3` (composed before the ring fix: 6,665 commands, Naruhito 5, Yi Ku 3, Puyi 0 of the seeds'
+ancestors) at 15:5x PDT, and `20ce82aa8` (from pipeline run 37157410532 on `968a5e38a`, with the seeds
+taking turns: 8,239 commands, 290 creations, Puyi 5, Naruhito 20, Yi Ku 19) at 18:1x PDT. The second
+opens with the five FamilySearch super entry points (Hocingas de Saxe first). Its first errors are the
+duplicate guard working ("already has label ... using the same description text": the first batch,
+still running, had just created those people), the overlap CLAUDE.md allows on purpose. Puyi's other
+eight frontier people are carried with their reasons: Youlan is linked to `Q701641`; Prince Chun Yixuan
+and his consort are held by the duplicate guard (Zaifeng `Q144348` already names parents `Q2982450`
+and `Q6470338`); Yehe Nara and Alute, his adoptive mothers, likewise (Puyi already names a mother);
+three have no ja/zh/ko label yet (the CJK gate). Both items closed: the regeneration and the Puyi
+error report.
