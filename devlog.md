@@ -51106,3 +51106,15 @@ authorized: removed the four statements by QuickStatements (checked live: `Q1062
 statements), DIFFERENT verdict for Nagatsugu/`Q106267274`, then merged `Q141635460` -> `Q30937834` and
 `Q141632350` -> `Q11665982` through the merge wizard (checked: redirects). The zipper blast-radius item at the
 end of the queue now names both known cases.
+
+## 2026-10-03 22:30 PDT: batch `295e94730` (first with the Sinosphere fix): format right, not opened
+
+Pipeline run 37173952486 (on `b951ca695`) succeeded and pushed `295e94730`: 391 creations, 93 Han-named. All
+93 have the Han name in mul/ja/zh, no katakana `ja`, no `ko`, no `NN`: the fix works on real output. Not
+opened (Emma, 2026-10-03: no batch until she says, she is not after throughput). Read-only check of each Han
+name against Wikidata (`wbsearchentities`, both name orders): 39 of the 93 already label an item, e.g.
+Emperor Kōnin `Q958662`, Soga no Iname `Q595897` (twice), Takano no Niigasa `Q7677188`, Konoe Mototsugu
+`Q3198721`, Ōmi no Mifune `Q5014663`; a few hits are ambiguous (和子 源, 公子 藤原). Two creations would be
+labelled just 橘 (Geni's Han record holds only the clan: Prince Minu, Agata no Inukai no Michiyo), and Geni's
+"Soga no Umako" carries 蘇我稲目, his father's name. The existing items carry no Geni id, so the composer cannot
+see them.
