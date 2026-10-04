@@ -50935,3 +50935,15 @@ removed). `labels.WORDS_MEANING_UNKNOWN` gains 未知, 未詳, 無名. Over `der
 57,763 CJK-named people qualify; 381 rejected are `某` forms and bare ordinals. Descriptions are
 untouched. Test: `test_a_person_geni_names_in_kanji_is_created_under_that_name` (CI). Measured from the
 wired path when the next pipeline batch lands (queued). Item replaced by the three it produced.
+
+## 2026-10-03: Sinosphere label fixes and the 2026-09-17 restores, approved
+
+Emma approved (AskUserQuestion) the label fixes on six Sinosphere creations and the restore of the
+labels overwritten on 2026-09-17, asking that her manual fixes not be replaced. Re-read live first: her
+only hand edits are on `Q141634581` (`ja`/`zh` 信子 鳥居小路, `ko` removed), so that item gets `mul`
+only. 25 rows into `label-applications.tsv`, source Emma: the Han name in `mul`/`ja`/`zh` on
+`Q141635286`, `Q141635295`, `Q141632121`, `Q141635384`; `NN` on `Q141635298` (未詳); the before values
+on `Q29201`, `Q504797`, `Q5429464`, `Q528666`, `Q818588`, `Q18397598`. Not covered: `ko` removals (the
+table has no removal kind), `Q246812` (changed again after our edit, editor unknown). Emma: the run is
+not cancelled, the damage is fixed after; merges are hers, later; the duplicate guard should have
+existed beforehand. Queue items updated.
