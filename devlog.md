@@ -51033,3 +51033,22 @@ Emma said open the new batch, with the session checking its Han-named creations 
 Emperor Yūryaku as "Yuryaku-tenno (Ohatsusewakatakeru)" and Prince Ichinobe no Oshiwa as
 "市辺押磐皇子 NN", both likely duplicates. Held; the next batch, from run 37173952486 on `b951ca695`
 (includes the fix), gets the same check and is opened if it passes.
+
+## 2026-10-03: the Helena items, reported as a probable route (Emma's reading), and closed
+
+Attributions. The synoptic tree gives Yuri Dolgorukiy's second wife Helena (`6000000003251725930`) five
+children: Vsevolod "Big Nest" (b. 1154; 269,804 descendants), Mikhalko, Vasilko, Mstislav, Yelena
+(1 to 3 descendants each). The FamilySearch file holds Helena (G82L-CF5) with no children and gives Yuri
+only Anna Aëpovna's children. Emma's lines run through Olga Yurievna (b. 1112 in the tree, 1123 in
+FamilySearch), Rostislav and Ivan (b. 1109 to 1116), all given Anna Aëpovna in both sources.
+
+Evidence. Under the Kata hypothesis (Wikipedia, "Kata (daughter of David IV)"), Helena is the daughter of
+Isaac Komnenos and Kata/Irene, married c. 1116, so Helena is born 1117 at the earliest: Olga, Rostislav
+and Ivan are born before or within a few years of that, so none of Emma's three lines can be Helena's
+child under the very theory that gives Helena the Bagratid and Uyghur/Tang ancestry. Vsevolod fits.
+None of Helena's five children reaches Emma in the tree (no ancestor, spouse or sibling contact beyond
+Olga being their half-sister). Helena has no parents in the tree, so her own descent from Abul Hamza is
+not in the data; David IV is a Bayanchur descendant (previous entry). No Guy d'Ibelin is an ancestor
+(first pass). So the descent stands as Emma framed it: probable only if one of her Rurikid lines runs
+through Vsevolod or a sibling of his by Helena, which neither source shows. Items closed (the Abul Hamza
+children item, its three corrections, and Emma's reading).
