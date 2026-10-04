@@ -51582,3 +51582,23 @@ correspondence pairs (the path since 2026-09-28).
   name, so the identity itself may be correct).
 
 Nothing removed yet: explained first, fix on Emma's word.
+
+## 2026-10-04: batch `ebec37585` (this session's) duplicated ~100 people the earlier run had just created
+
+**Unexpected, and caused by this session.** Checking the Emperor Kōkō links (Emma: fix Kōkō first) found
+that both our Kōkō-family creations duplicate established items: `Q141638581` 類子 菅原 is `Q106237458`
+菅原類子 Sugawara no Ruishi (already Kōkō's consort, Junshi's mother), and `Q141638654` 和子 源 is
+`Q14269031` 源和子 Minamoto no Washi (Kōkō's daughter, Daigo's consort); `Q141638654` also carries `P25`
+*mother* = Kōkō. And 類子 菅原 was created **twice by us**: `Q141636879` (10:13 UTC, run `1791108307454`,
+the batch already running when this session started) and `Q141638581` (13:23 UTC, this session's run
+`1791119184727` of `ebec37585`), same Geni id `6000000002826094685`.
+
+**Size, live (SPARQL):** 103 Geni ids sit on two or more of our items created since 2026-09-28
+(`reports/duplicate-creations-2026-10-04.csv`), nearly all pairs `Q141636xxx` (earlier run) / `Q141638xxx`
+(this run). **Why the guard did not stop it:** Wikidata refuses a second item only when a label and the
+description match *in the same language*. These people are created under their Han name in mul/ja/zh with
+the description in en only, so no language holds both and nothing is refused. Overlapping runs are allowed
+on purpose because of that guard (CLAUDE.md, 2026-09-25); for Han-named creations it does not exist. This
+session opened `ebec37585` without checking for that.
+
+Nothing fixed yet. Merges go through the UI merge wizard only, and the wrong `P25` has to come off first.
