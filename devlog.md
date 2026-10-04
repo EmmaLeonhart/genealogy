@@ -51244,3 +51244,9 @@ with no SURN, so the title rule dropped the whole tail and the bare given name b
 backfill (earlier today) had since made it `Luthard`. Handled as this person's issue, not a rule: his Kleve kin in
 our data are all `… von Kleve`, so mul/en set to `Luthard von Kleve` (wbsetlabel, no summary). ja/zh/ko left as the
 given name: the composer reads `von` as ヴォン/翁/본, not the usual フォン/冯/폰. Item closed.
+
+## 2026-10-04 — novalue backfill run moved to the end of the queue
+
+Emma's external addition (2026-10-04, "Move it to the end"): the item to run
+`reports/novalue-family-name-backfill-2026-10-04.qs` (1,917 `P734` = `Q108474139`) now sits
+below every other item, since it starts a new run. The move item itself is deleted.
