@@ -51236,3 +51236,11 @@ Katz, Gerson Moses HaCohen Rapaport, Moishe Ashkenazi) in mul/en; and `Q14119854
 (the day-after relationship pass led with a Hangul GIVN, which is her husband's name) set to `wife of Buyeo
 Deokjang`, and `describe_all` no longer leads a Latin phrase with a non-Latin given name. Two other hits are not ours
 (`Q4165342` Arabic, an established item) or not wrong (`Q25492370`, the modifier letter ʼ). Test (CI). Item closed.
+
+## 2026-10-04: error report `Q141632229` "Luthard NN", count of Kleve
+
+Geni files him `Luthard` in GIVN, `Graf von Kleve` in NSFX (the title field) and `Count of Cleeves` as a nickname,
+with no SURN, so the title rule dropped the whole tail and the bare given name became `Luthard NN`; the Given NN
+backfill (earlier today) had since made it `Luthard`. Handled as this person's issue, not a rule: his Kleve kin in
+our data are all `… von Kleve`, so mul/en set to `Luthard von Kleve` (wbsetlabel, no summary). ja/zh/ko left as the
+given name: the composer reads `von` as ヴォン/翁/본, not the usual フォン/冯/폰. Item closed.
