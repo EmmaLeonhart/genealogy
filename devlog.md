@@ -51138,3 +51138,10 @@ the earlier creation `Q141634134` was relabelled and merged into `Q11088800`. Ry
 against `out/wikidata/edit-universe.json`: of their 58 distinct items, 5 are in the universe, 0 one step out,
 53 outside; as roots they would pull in the Kushan, Western Satrap, Armenian and early Arab families. Emma
 (AskUserQuestion): record only. The verdicts stay in `reports/ancient-ring-verdicts.tsv`; item closed.
+
+## 2026-10-03: no Roman entry points (Emma)
+
+From `reports/ancient-ring-wikidata-candidates.csv`: 96 single exact-label candidates flagged Roman (by name or
+description), 87 items, none in the editing universe or one step out. Of Emma's three starters, Cornelia
+Cethegilla and Flavius Julius Agricola have no name match and Sulpicia only a politician item and a generic
+"Roman noblewoman". Emma (AskUserQuestion): no Roman entry points; item closed.
