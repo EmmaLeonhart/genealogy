@@ -51921,3 +51921,15 @@ DIFFERENT verdicts so far go now (`reports/zipper-review-geni-id-removals-2026-1
 DIFFERENT id is removed as soon as it is judged. Not included: `Q2746341` Ælfthryth also carries Baldwin II as a
 spouse, and who added it has not been checked yet.
 Ran 2026-10-04 in a new QuickStatements tab with Run: 13 of 13, no errors. Checked live: all 13 Geni ids are gone.
+
+## 2026-10-04: zipper review, all 601 Geni ids added since 2026-09-28 judged
+
+`reports/session-2026-10-04/id-review-P2600-verdicts.tsv`, one verdict each with its reason, read by the session
+(the sheet now falls back to the Han names in `cjk_names`; without them the Tang/Sui/Chen records looked
+nameless). **568 same person, 27 different, 6 unsure.** Of the 27 DIFFERENT, 12 were already removed by someone
+and 13 were removed on 2026-10-04 (checked live). The 2 still live, `Q65809823` Yang Shi (Yang Guifei's id) and
+`Q10513912` Xiao Xia (his son Xiao Fuzi's id), wait for a group of ten. The 6 UNSURE have a blank Geni record or
+a name that does not clearly match (Tsusahime, Kushiyatama, an unlabelled Izumo item, Sasaki Tametoshi, Chen Bodang,
+Chen Boxuan); they stay as they are. Most of the 601 were right. The wrong ones bunch on Emma's own Swedish
+lines (competing ancestries) and on a few famous names (Herman II of Swabia, Ælfthryth, Yang Guifei).
+Next: the 4,728 FamilySearch ids (`P2889`).

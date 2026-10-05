@@ -11,7 +11,7 @@ for r in rows:
     k = (r["item"], r["value"].strip('"'))
     if k not in seen: seen.add(k); claims.append((k, r["timestamp"]))
 def get(ids, props):
-    u = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({"action": "wbgetentities", "ids": "|".join(ids), "props": props, "languages": "en|mul|sv|nb|de|fr", "format": "json"})
+    u = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode({"action": "wbgetentities", "ids": "|".join(ids), "props": props, "languages": "en|mul|sv|nb|de|fr|zh|ja|ko", "format": "json"})
     for i in range(5):
         try: return json.load(urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=90)).get("entities", {})
         except Exception: time.sleep(10 * (i + 1))
@@ -36,7 +36,7 @@ if G:
         if r["geni_id"] in G: fam[r["geni_id"]] = r
     need = set(G) | {x.strip() for r in fam.values() for k in ("fathers", "mothers", "spouses", "children") for x in r[k].split("|") if x.strip()}
     for r in csv.DictReader(open("reports/derived-labels.csv", encoding="utf-8")):
-        if r["geni_id"] in need: lab[r["geni_id"]] = r.get("label_en") or r.get("label_mul") or ""
+        if r["geni_id"] in need: lab[r["geni_id"]] = r.get("label_en") or r.get("label_mul") or (r.get("cjk_names") or "").split("|")[0].strip() or (r.get("other_script_names") or "").split("|")[0].strip()
     for r in csv.DictReader(open("reports/derived-facts.csv", encoding="utf-8")):
         if r["geni_id"] in G: fac[r["geni_id"]] = r
 def N(s): return [lab.get(x.strip(), x.strip()) for x in s.split("|") if x.strip()]
