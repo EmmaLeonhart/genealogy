@@ -52026,3 +52026,15 @@ written principle, not code.
 language variant is real evidence of the same person. It does not carry over to Sinosphere or very common names.
 Worked cases from the zipper review: Wedberg (1794 vs 1807) and Anna Margareta/Greta Gabrielsdotter (1789 vs 1811).
 A written principle, not a script rule.
+
+## 2026-10-05: zipper split batch 1 ran (12 wrong identifications); the two merges did not go through
+
+Emma authorized it by AskUserQuestion ("Yes, both"). `reports/zipper-split-batch-1-2026-10-05.qs` (66 commands) finished
+before Chrome closed. Checked live: all 35 removals and moved links are in place, and the 5 new people exist and are
+linked both ways: `Q141645559` Robert de Muschamp, `Q141645564` Erik Bengtsson Sparre över Blad, `Q141645567`
+Fridleif Skjoldsson, `Q141645572` Adalbert Alsace, `Q141645573` Wigg. Links moved to existing right items: Raymond
+Pons `Q1338833`, Lupo II `Q983624`, Adalric `Q1106589`, Moddan of Dale `Q75532108`, Freawine `Q3089288`, Richard de
+Hummet `Q116177405`. Gewis `Q3761553`'s father Brand is another editor's 2019 statement and was left alone.
+**Not done:** merging the session's own duplicates Damianos `Q141632173` into `Q5212237` and Garsinda `Q141628302` into
+Garsenda `Q16558507`. Special:MergeItems, three tries: a pre-filled link has no edit token, and a filled form returned
+empty with no error and no merge (checked live). Stopped after three tries; put to Emma.
