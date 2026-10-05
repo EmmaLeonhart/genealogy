@@ -51978,3 +51978,15 @@ Shi and `Q10513912` Xiao Xia (Geni ids), and the FamilySearch ids on `Q141562087
 `Q141562860` Ole Knudsen Mestad, `Q141565233` Guri Pedersdatter Finne and `Q5618220` Gillis de Bèche.
 Cutoff item closed: the restore check, the 601 Geni ids and these removals are done; the family links since 09-28
 are the "Zipper-merge audit" item, and the FamilySearch review is its own item at the end.
+
+## 2026-10-05: disputed parentage, batch 1: seven second parents on Wikidata
+
+Of the 19 disputed rows, 10 are real disputes (one child, two candidate parents); the others are the ancestry above a
+competing parent and come with that parent. A classifier refusal was put to Emma as AskUserQuestion ("Yes, run
+it"). `reports/disputed-parentage-batch-1-2026-10-05.qs` ran with Run, 47/47, and was checked live: 8 slots on 5
+children each hold both parents, all qualified `P1480` = disputed. New items: `Q141645151` Jöns Andersson,
+`Q141645154` Maria Nilsdotter, `Q141645155` Karin Jonsson, `Q141645156` Erich Ersson, `Q141645157` Karin Ersdotter,
+`Q141645158` Mats Henriksson, `Q141645159` Karin Eriksdotter. Their descriptions come from the frozen
+`life_description`. Anna Ersson `Q141622328` already existed and was linked.
+**Unexpected:** Anna Persdotter exists twice (`Q141290456`, `Q141586037`, same two Geni ids), so her case waits for
+a merge. Anna Ersson's item carries Maria Maja's parents. Raihita no Wiho waits for a label decision (no Han name).
