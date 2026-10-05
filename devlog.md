@@ -52012,3 +52012,10 @@ the merge and the link be done by the session, not left as open questions.
 misread as two items. The merge page answered "already merged" and nothing was changed.
 Item closed. In all: 10 parents created (`Q141645151`-`159`, `Q141645291`-`293`, `Q141645327`), Anna Ersson
 linked, Anna Ersson's wrong parents replaced, every disputed slot qualified `P1480` = disputed.
+
+## 2026-10-05: the European namosphere principle written down
+
+`CLAUDE.md`, beside the identification rulings: a European name is matched element by element as the same name in
+different languages (John/Hans/Ivan/Johannes; Fitzgeorge/Jørgensen/Yurievich), and fuzzy matching is used only
+inside one rendering, to catch misspellings. Added as the counter-case: Karin and Kerstin are different names. A
+written principle, not code.

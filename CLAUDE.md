@@ -597,6 +597,15 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   ONE person and the two ancestries are a dispute to resolve separately. Worked case: Eric Andersson
   (b. 1724, son of Anders Mattsson and Malin Olofsdotter) = Eric Ersson (b. 1730, son of Erich Ersson and
   Karin Ersdotter), d. 1767, father of Eric Ericsson.
+- **⛔ EUROPE IS ONE NAMOSPHERE: MATCH THE NAME, NOT THE TEXT. Ruled 2026-10-04 (Emma). A written principle for the
+  session's own judgment, never code.** One name is rendered differently by language, the way a kanji name moves
+  between Chinese, Japanese and Korean. One man can be John Michael Fitzgeorge, Hans Mieke Jørgensen, Ivan Mikhail
+  Yurievich and Johannes Michaelis Girgai (the last the least plausible): John/Hans/Ivan/Johannes,
+  Michael/Mieke/Mikhail/Michaelis, and the patronymic from George as Fitzgeorge/Jørgensen/Yurievich. Fuzzy text
+  matching calls these different people when nothing in the name disagrees. So compare element by element, as the
+  same underlying name in different languages; fuzzy matching belongs only inside one rendering, to catch a
+  misspelling (is it "Yurievich" misspelled?). The other way round, two names that only look alike are not one name:
+  Karin (Katarina) and Kerstin (Kristina) are different names, and the zipper review treated them so.
 - **⛔ WHEN THE SOURCES DISAGREE ON PARENTS, KEEP BOTH: THE PARENTAGE IS DISPUTED. Ruled 2026-10-04 (Emma).**
   Geni, FamilySearch and Wikidata often name different parents for one person. Then the person has two fathers
   (or two mothers), each their own person, and the parentage is recorded as disputed; neither side overwrites or
