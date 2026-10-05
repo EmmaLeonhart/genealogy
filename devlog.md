@@ -51933,3 +51933,11 @@ a name that does not clearly match (Tsusahime, Kushiyatama, an unlabelled Izumo 
 Chen Boxuan); they stay as they are. Most of the 601 were right. The wrong ones bunch on Emma's own Swedish
 lines (competing ancestries) and on a few famous names (Herman II of Swabia, Ælfthryth, Yang Guifei).
 Next: the 4,728 FamilySearch ids (`P2889`).
+
+## 2026-10-04: disputed parentage keeps both sides; removals more cautious (Emma)
+
+Emma, on why the wrong ids bunch on her Swedish lines: her ask to incorporate a second GEDCOM was turned into an
+unconsented zipper merge. When the sources disagree, the person has two fathers and two mothers and the parentage
+is marked disputed. Ids should not be added and removed over and over, so they come off only when the record is
+clearly another person. In `CLAUDE.md` and the review item. The two pending removals (Yang Shi, Xiao Xia) are
+clear-identity cases and still wait for a group of ten.

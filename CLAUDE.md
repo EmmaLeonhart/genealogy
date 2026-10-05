@@ -597,6 +597,14 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   ONE person and the two ancestries are a dispute to resolve separately. Worked case: Eric Andersson
   (b. 1724, son of Anders Mattsson and Malin Olofsdotter) = Eric Ersson (b. 1730, son of Erich Ersson and
   Karin Ersdotter), d. 1767, father of Eric Ericsson.
+- **⛔ WHEN THE SOURCES DISAGREE ON PARENTS, KEEP BOTH: THE PARENTAGE IS DISPUTED. Ruled 2026-10-04 (Emma).**
+  Geni, FamilySearch and Wikidata often name different parents for one person. Then the person has two fathers
+  (or two mothers), each their own person, and the parentage is recorded as disputed; neither side overwrites or
+  deletes the other. The Swedish lines are where this hit: the ask to incorporate a second GEDCOM became an
+  unconsented zipper merge that forced one ancestry onto the other.
+- **⛔ BE CAUTIOUS ABOUT REMOVING IDS. Ruled 2026-10-04 (Emma):** adding and removing Geni and FamilySearch ids
+  over and over causes problems. An id comes off an item only when the record is clearly another person (Herman II
+  of Swabia against Hermann von Arnsberg-Werl), never when it is one side of a disputed parentage.
 - **A DUPLICATE ITEM IS NOT AN EMERGENCY; A WRONG IDENTITY IS WORSE. Ruled 2026-10-03 (Emma):** a person created
   twice is not an emergency and can even help: a manual merge on Wikidata gets the items audited by other
   editors along the way. It is not to be relied on, since it adds work for others, but it is "far better than
