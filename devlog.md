@@ -52093,3 +52093,17 @@ zipper laid them a generation off: Matsudaira onto Mitsukuri (#431, 432, 526, 52
 (#385, 540, 542, with 810, 811, 1101, 1171 still to read). Also SPLIT: #541 Wassenberg/Guelders, #553 Ekbert/Bruno of
 Walbeck, #560 Hidda/Tuta. #519 Ranulph de Varenne / Hugues of Coutances is back to UNSURE, because Wikidata itself
 gives Hugues the Warenne family.
+
+## 2026-10-05: zipper split review #1011-1260 judged by a second session
+
+A second session, started by the stall check, took the last 250 pairs so that the review finishes sooner. The first
+session keeps #726-1010 in the main file. Verdicts are in `reports/session-2026-10-04/zipper-pair-verdicts-1011-1260.tsv`:
+212 SAME, 34 SPLIT, 4 UNSURE. Every case was read on both sides, using the written principles (same person with
+disputed ancestry; the name outweighs the year before 1900; one European namosphere, so the Finnish renderings
+Piriitta Petterintytär, Pekka and Dan Niilonpoika count as the same names).
+**Unexpected:** two items each carry two different Geni people. Agneta von Fahrensbach `Q103775136` is paired with
+both Gertrud von Fahrensbach (#1051) and an NN von Tiesenhausen (#1137), two wives of Wolmar von Uexküll. Aun Arnasson
+and Orn Hyrna (#1101, #1171) take the Hordaland chain a generation off, as in #385/540/542. Three Berg splits
+(#1184, 1196, 1247) are one fusion of Adolf III's family with Adolf II's.
+The splits go to the first session's batch builder (batch 6 and later), so that there is only one numbering. The item
+stays open until #726-1010 are judged and the batches have run.
