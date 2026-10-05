@@ -52190,3 +52190,19 @@ present live.
 Left for a later batch: Ulrich `Q141649649` P40 Berthold `Q141649646`, because two people created in one batch cannot
 point at each other. Ulrich's Geni father (Meginhard I von Traungau) is a FamilySearch-only id, and his daughter
 Mathilde has no item, so neither is linked.
+
+## 2026-10-05: zipper split batch 9: the Hordaland chain, checked live (60/60)
+
+Splits #385, 540, 542, 810, 811, 1101, 1171. Wikidata's chain runs Solgi, Kaun, Bodvar, Thorir, Ørn Hyrna, Aun,
+Aslak Bifrakari, Horda-Kåre. Geni's chain has one more generation: Bifra-Kåre Aunarsson sits between Aslak and Aun.
+The zipper's anchor was also a son of Horda-Kåre rather than Horda-Kåre himself, so each pair was one or two
+generations off. On Wikidata the damage was in our own NN wives and mothers: all seven sat on the wrong generation.
+Each is now on her own husband and son, by her Geni record: wife of Kaun `Q141632394`, of Bodvar `Q141628119`, of
+Thorir `Q141626610`, of Ørn `Q141628197`, of Aun `Q141628220`, of Bifra-Kåre `Q141635375`, and of Aslak `Q141635267`,
+who is Horda-Kåre's mother. Wikidata's own father-son chain was not touched.
+Created: `Q141649715` Bifra-Kåre Aunarsson (description `born circa 820`). Aslak Bifrakari `Q19949677` = Geni's Aslak
+Kåresson: his father is disputed, and both Aun and Bifra-Kåre are qualified `P1480` disputed.
+**Unexpected:** our `Q141635383` Kaun Sølvesson Solvason is a duplicate of Kaun Solgasson `Q19950168` and was linked
+as Solgi's father. That link is off, and the item is on the merge list.
+Coordination: genealogy-42 ran batch 10 (Formbach) and takes Matsudaira/Mitsukuri as batch 11. This session takes the
+2026-09-28 cutoff statements next.
