@@ -272,6 +272,12 @@ from the raw downloads in `gedcom/familysearch/`, never from the renders.
 
 ## ⛔ AND EVERY SESSION STARTS WITH THE ZIPPER DECKS, THE SAME WAY
 
+**⛔ SUPERSEDED: NO DECKS, EVER. Ruled 2026-10-04 (Emma):** *"I am never going to look at the decks ever ...
+looking at them is the cause of more issues than it helps."* No deck is built, published or handed over, and
+no work waits on a verdict from one. The zipper's quality on her ancestry is whatever the automatic zipper
+reaches at each rebuild; `reports/emma-judgments.tsv` keeps the verdicts already given. The section below is
+history.
+
 Ruled 2026-09-23: *"I want to do zipper merge resolution right now and make it a constant start
 of session thing like the paths"*, and *"You make an artifact as per protocol and then you move
 through the queue."* It runs **beside** the path runner, and it needs no Geni, so the moratorium

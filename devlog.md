@@ -51809,3 +51809,12 @@ It reached the top because the items above it were finished, and later items had
 although its own text says "Keep it at the end". Its checkout half is already resolved: the submodule is
 not sparse (`core.sparseCheckout` false), and `reports/`, `gedcom/`, `exports/` and `rootsmagic/` are
 present. The rest is the minimalist deletion pass, which `CLAUDE.md` holds as queued, not started.
+
+## 2026-10-04: no decks, ever (Emma)
+
+Asked about the ~277 open cards in the ancestor deck (no answers since 2026-10-03 14:48 PDT; all 428 stored
+verdicts already in `emma-judgments.tsv`), Emma: "I am never going to look at the decks ever ... looking at
+them is the cause of more issues than it helps." Recorded at the head of the deck section in `CLAUDE.md`. The
+FamilySearch parent-deck item is deleted, since it was only "read the deck's verdicts back". The ancestor
+zipper item is rewritten around the automatic zipper, with no step waiting on her. Not changed: `review-decks.yml`
+and `pipeline.yml` still build the deck HTML. Removing that is part of the clean-up item at the end.
