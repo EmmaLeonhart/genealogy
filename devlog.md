@@ -52107,3 +52107,22 @@ and Orn Hyrna (#1101, #1171) take the Hordaland chain a generation off, as in #3
 (#1184, 1196, 1247) are one fusion of Adolf III's family with Adolf II's.
 The splits go to the first session's batch builder (batch 6 and later), so that there is only one numbering. The item
 stays open until #726-1010 are judged and the batches have run.
+
+## 2026-10-05: zipper split batch 7 checked live (149/149)
+
+Emma: "Yes, run it". `reports/zipper-split-batch-7-2026-10-05.qs` was built from the splits in #1011-1260, from Berg
+(#346, 347, 621, 1184, 1196, 1247) and from #1025/1026. It ran from 20:23 to 20:41 UTC (1:23-1:41 PM PDT) with Run, in its own new tab.
+`scripts/session-2026-10-04/verify-qs.py` checked it live: 149 of 149 lines as intended.
+Before the batch was written, every removal line was checked live, and three already-gone sibling links were dropped.
+14 people were created, not 13 as first counted when asking Emma: Frédéric II de Dampierre `Q141648859` (son of
+Gisela of Vaudemont and Rainald III of Toul), Gertrud von Fahrensbach `Q141648878`, Brochwel II ap Aeddan `Q141648880`,
+Sigurd Guttormson `Q141648887`, Märta Sunesdotter `Q141648888`, Lain Núñez `Q141648893`, Fernando Laínez `Q141648895`,
+Johannes von Rosen `Q141648899`, Pons d'Arles `Q141648902`, John Gordon `Q141648907`, Knud Gro `Q141648922`, Gilchrist Muir
+`Q141648926`, Wichmann I of Cleves `Q141648929` and Lothar IV of Walbeck `Q141648936`. Our wife of Koga Nagamichi is now on
+Koga Nagamichi `Q18226489`. Our Gisela von Berg is now the daughter of Adolf I (III) `Q201540`. Before, she had been made a
+sister of her nephews.
+**Unexpected:** batch 1's Robert de Muschamp `Q141645559` and our Isabel duplicate the existing Sir Robert de Muschamp
+of Wooler `Q116102809` and Isabel `Q116102812`. Marjory de Muschamp already exists as `Q116033402`. These are on the merge
+item. Koga Michimitsu (1187-1248) is Geni's father for Nagamichi and Michihiro, which is obviously wrong, so it was not linked.
+Left for a later batch: Lain Núñez `Q141648893` P40 Fernando Laínez `Q141648895`. Two people created in one batch
+cannot point at each other.
