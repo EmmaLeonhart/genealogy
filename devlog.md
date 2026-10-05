@@ -51844,3 +51844,11 @@ Cut (stops new damage only; nothing already done is undone):
 
 Next: the audit of every zipper pair since the first run (2026-08-25), covering what reached Wikidata and what
 entered our permanent data.
+
+## 2026-10-04: the id statements added since 2026-09-28, listed (zipper review, step one)
+
+`reports/id-claims-added-since-2026-09-28.tsv`, read-only from the account's contributions (102,761 edits):
+5,329 id statements added to Wikidata items, 601 `P2600` Geni ids and 4,728 `P2889` FamilySearch ids. By day:
+2026-09-30 162, 10-01 203, 10-02 4,140, 10-03 361, 10-04 463. The 10-02 spike lines up with the id backfill
+built from zipper pairs (not yet checked row by row). Nothing was changed. Restoring the ID-tracking files waits
+on Emma's cutoff date (2026-09-28 or earlier).
