@@ -52167,3 +52167,26 @@ The entry above says batch 8 was run "unlogged by the session that ran it". It w
 (`session_01XW77A2fVGU4iotwmhR4Bmh`) in a new tab with Run, after Emma authorized it by AskUserQuestion. That session's
 own check gave the same 14/14 and created `Q141649447` Brita Gregersdotter. It was about to log the run when this
 commit landed. Nothing was run twice.
+
+## 2026-10-05: zipper split batch 10 (Formbach) ran and checked live (19/19)
+
+The split work is shared with session genealogy-fa. It took the Hordaland chain as batch 9; this session took the
+Berg/Formbach UNSURE pairs. Berg had already gone out in batch 7, so only Formbach (#350, 351, 989) was left. The
+verdicts are this session's own, made by reading both sides. They are appended to
+`reports/session-2026-10-04/zipper-pair-verdicts.tsv`, which keeps the UNSURE rows as history.
+**Unexpected:** the spouses that made the Formbach chain look like it lined up were our own creations: Himiltrude von Lurngau
+`Q141628101` and Kunigunde von Bayern `Q141628093`. The zipper pairs had attached them to Wikidata's Thiemo I and Bertold.
+Without them, the independent evidence is this. Geni's Thiemo (wife from Braunschweig; sons Heinrich and Thiemo) matches
+Wikidata's Tiemo `Q110570732`. Above him, the two trees give different men: Ulrich and Berthold on Geni, Bertold and
+Thiemo I on Wikidata.
+- #350 SAME: Tiemo keeps Geni's Thiemo, and his father is disputed. `P22` Thiemo I `Q61314932` and `P22` Berthold are both
+  qualified `P1480` disputed.
+- #351 SPLIT: Kunigunde and Himiltrude come off Thiemo I. Berthold im Schweinachgau is created as `Q141649646`: Kunigunde's
+  son, Himiltrude's husband, Tiemo's father.
+- #989 SPLIT: Kunigunde comes off Bertold `Q61314934`. Ulrich I. von Formbach is created as `Q141649649`, her husband.
+Descriptions come from `life_description` as built. Removals were checked live before the batch was written. The batch
+ran with Run in a new tab at about 3:55 PM PDT. `verify-qs.py`: 19 ok, 0 not as intended. Both disputed qualifiers are
+present live.
+Left for a later batch: Ulrich `Q141649649` P40 Berthold `Q141649646`, because two people created in one batch cannot
+point at each other. Ulrich's Geni father (Meginhard I von Traungau) is a FamilySearch-only id, and his daughter
+Mathilde has no item, so neither is linked.
