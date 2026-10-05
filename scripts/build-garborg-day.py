@@ -7786,6 +7786,8 @@ def main():
     # symmetric. Holding a creation costs a day, because tomorrow's batch runs again; creating a
     # duplicate costs a manual merge on Wikidata, which is what this is written against.
     correspondence = ROOT / "reports" / "synoptic-correspondence.tsv"
+    #: Sources that infer an identity rather than state it; see `_known_qid` below.
+    INFERRED_SOURCES = {"zipper", "structural"}
     known_pair = {}
     if correspondence.exists():
         with open(correspondence, encoding="utf-8") as f:
@@ -7995,7 +7997,9 @@ def main():
         # below still applies: the duplicate check, `--exclude`, the label-collision hold and
         # the locality gate all run after this point.
         _ring = priority_ancestor_ring(our_items, fam_p, famc,
-                                       set(any_wikidata_item) | set(known_pair))
+                                       set(any_wikidata_item) | {
+                                           g for g, v in known_pair.items()
+                                           if not set(str(v[1]).split(";")) <= INFERRED_SOURCES})
         # ⛔ **AT MOST `RING_CAP` RING PEOPLE A RUN. Ruled 2026-10-02 (Emma):** *"We're going to
         # cap out the ring"*, 500 a run; the rings are capped, not stopped. One batch on
         # 2026-10-02 held 1,275 once the locality gate stopped holding ring people back. The
@@ -8080,8 +8084,14 @@ def main():
     #: Every Geni id Wikidata already has an item for, whatever the route: the `P2600` roster and
     #: the correspondence. Used to LINK a new creation to such a relative (see `_rq` below).
     _known_qid = {g: q for g, q in any_wikidata_item.items() if str(q).startswith("Q")}
+    # ⛔ **NOT THROUGH THE ZIPPER (Emma, 2026-10-04: "it's probably better to make duplicates over
+    # doing this sheer level of reckless merging").** A correspondence row whose only sources are
+    # inferred (`zipper`, `structural`) no longer links a creation to an item: 1,829 statements went
+    # out that way from 2026-09-28 (`reports/zipper-only-links-on-wikidata.csv`). It still HOLDS the
+    # person from creation (`corr_dup` below), which writes nothing.
     _known_qid.update({g: v[0] for g, v in known_pair.items()
-                       if g not in _known_qid and str(v[0]).startswith("Q")})
+                       if g not in _known_qid and str(v[0]).startswith("Q")
+                       and not set(str(v[1]).split(";")) <= INFERRED_SOURCES})
     corr_dup = [g for g in to_create if g in known_pair and g not in our_items]
     for g in corr_dup:
         q, src = known_pair[g]

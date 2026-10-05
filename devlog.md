@@ -51826,3 +51826,21 @@ verdicts second worst, and the session deciding agentically (not by script) the 
 AskUserQuestion on specific cases and are never turned into code. She doubts that anyone ever looked at the
 ~277 open cards. As far as the devlog shows, none were judged one by one: the frontier cards were generated
 on 2026-10-03 and handed to the deck. `CLAUDE.md`, the zipper item and a memory now say this.
+
+## 2026-10-04: the automatic zipper taken out of the pipeline (Emma)
+
+Emma: "the big thing is we're supposed to be ripping out the automatic zipper merging that's been destroying the
+entire repo", and "it's probably better to make duplicates over doing this sheer level of reckless merging". On
+the zipper's premise: "Positional is often quite authoritative. But when it disagrees, it disagrees hard";
+Geni, FamilySearch and Wikidata disagree with each other often, and FamilySearch disagrees with itself. The
+zipper took position as the only authority.
+
+Cut (stops new damage only; nothing already done is undone):
+- `build-garborg-day.py`: a correspondence row whose only sources are `zipper`/`structural` no longer links a
+  creation to an item (`_known_qid`) and no longer seeds the priority ring. It still holds the person from creation.
+- `tree.yml`: `zipper-join.py --familysearch` no longer runs. The render keeps the exact bridge, verdicts and roots.
+- `render-familysearch-gedcom.py`: zipper pairs are no longer read.
+- `build-id-backfill.py`, `build-familysearch-day.py`: zipper pairs are no longer an identity source.
+
+Next: the audit of every zipper pair since the first run (2026-08-25), covering what reached Wikidata and what
+entered our permanent data.

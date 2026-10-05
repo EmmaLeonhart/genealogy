@@ -111,7 +111,8 @@ jobs:
           PYTHONPATH: src
         run: |
           python scripts/bridge-familysearch-qids.py
-          python scripts/zipper-join.py --familysearch
+          # The zipper walk is OUT (Emma, 2026-10-04: duplicates over reckless merging). The render
+          # puts a FamilySearch person on a Geni id only through the exact bridge, a verdict or a root.
           python scripts/render-familysearch-gedcom.py --all
 
       # One streaming pass over the shards -> a sqlite index of QID -> shard and Geni ID -> QID.

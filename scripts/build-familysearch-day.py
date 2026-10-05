@@ -530,7 +530,7 @@ def read_zipped_items(G, geni_q=None):
     if geni_q is None:
         geni_q = read_geni_qids(G)
     out = {}
-    if ZIPPER_PAIRS.exists():
+    if False:  # the zipper is no longer an identity source (Emma, 2026-10-04)
         with open(ZIPPER_PAIRS, encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
                 fs, g = (row.get("fs_id") or "").strip(), (row.get("geni_id") or "").strip()

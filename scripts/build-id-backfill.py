@@ -267,10 +267,7 @@ def main() -> int:
 
     # Geni <-> FamilySearch, kept only where every reading agrees.
     g2f, f2g = collections.defaultdict(set), collections.defaultdict(set)
-    with open(PAIRS, encoding="utf-8", newline="") as fh:
-        for row in csv.DictReader(fh, delimiter=TAB):
-            g2f[row["geni_id"]].add(row["fs_id"])
-            f2g[row["fs_id"]].add(row["geni_id"])
+    # The zipper's pairs (`PAIRS`) are no longer an identity source (Emma, 2026-10-04).
     with open(SOURCES, encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             if row["relation"] == "fs_id":

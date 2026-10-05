@@ -122,7 +122,10 @@ def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER,
         with open(p, encoding="utf-8", newline="") as fh:
             return {r["fs_id"]: r["geni_id"] for r in csv.DictReader(fh, delimiter="\t")
                     if r.get("fs_id") and r.get("geni_id")}
-    out = rows(zipper)
+    # ⛔ The zipper's walked pairs are NOT read any more (Emma, 2026-10-04: "it's probably better to
+    # make duplicates over doing this sheer level of reckless merging"). `zipper` stays a parameter
+    # so an audit can still render with it explicitly.
+    out = rows(zipper) if zipper is not ZIPPER else {}
     # The zipper's own reader, so the two cannot disagree about a verdict: the LAST verdict on
     # a pair wins, and a SAME later judged DIFFERENT anchors nothing (the Fornjot line,
     # 2026-10-02: Kari "Wind" Fornjotsson stayed keyed to his son's FamilySearch record).
