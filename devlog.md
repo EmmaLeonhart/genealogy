@@ -51861,3 +51861,19 @@ with both sides fetched, the ancestor deck's open cards and its 428 stored verdi
 verdicts on those cards (108, superseded by the full zipper review), the account's male-mother `P25`s, and
 the background batches' raw wrong links. The 5,329 id claims were already committed as
 `reports/id-claims-added-since-2026-09-28.tsv`. `CLAUDE.md`: nothing lives only in scratch or temp.
+
+## 2026-10-04: the 09-28 restore, file by file; the bridge's feedback loop cut
+
+Each ID-tracking file against its state at `d91acbe4d` (2026-09-27 23:43 PDT):
+- `synoptic-correspondence.tsv` and `zipper-pairs.tsv` are unchanged since then (both built 2026-09-01), so a
+  restore changes nothing. Their zipper rows date from the first run in August. Since `861a72b75` they no
+  longer link a creation.
+- `familysearch-qid-bridge.tsv` grew from 50,172 to 75,024 rows. It is rebuilt every run from the live `P2889`
+  roster, which now carries the FamilySearch ids we sent from zipper pairs, so restoring the file would be
+  overwritten at the next run. Instead, `bridge-familysearch-qids.py` now skips every id statement on
+  `reports/id-claims-added-since-2026-09-28.tsv` (5,013 unique, `P2889` and `P2600`, ledger included) until it
+  is reviewed. The local roster copy (2026-09-30) predates most of them, so the effect shows at the next CI rebuild.
+- `garborg-qids.tsv` (ledger, 15,963 -> 24,389 rows) is NOT restored: it records items that exist, and rolling it
+  back would make the pipeline create them again. `emma-judgments.tsv` and `entry-points.tsv` are Emma's.
+- `familysearch-zipper-pairs.tsv` was zipper-built from 2026-09-24 and is no longer read (`861a72b75`).
+Next: the 5,013 id statements, one by one.

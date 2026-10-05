@@ -51,16 +51,33 @@ def fs_ids(path: Path) -> list[str]:
     return list(seen)
 
 
+#: ⛔ **The id statements the account added since 2026-09-28 are not anchors (Emma, 2026-10-04).** Most
+#: were sent from zipper pairs (the 2026-10-02 id backfill), so reading them back from the roster made
+#: the zipper's guesses look like exact joins: the bridge grew 50,172 -> 75,024. They stay out until
+#: each one is reviewed (the zipper review in `queue.md`).
+UNREVIEWED = ROOT / "reports" / "id-claims-added-since-2026-09-28.tsv"
+
+
+def unreviewed() -> set[tuple[str, str, str]]:
+    """`(qid, property, value)` for every id statement on the 2026-09-28 list."""
+    if not UNREVIEWED.exists():
+        return set()
+    with open(UNREVIEWED, encoding="utf-8") as fh:
+        return {(r["item"], r["property"], r["value"].strip('"'))
+                for r in csv.DictReader(fh, delimiter="\t")}
+
+
 def qid_by_fs() -> dict[str, str]:
     """`{fs_id: qid}` from the roster. An id on several items keeps the first, sorted."""
     if not ROSTER.exists():
         sys.exit(f"{ROSTER.relative_to(ROOT)} is missing; "
                  f"run scripts/refresh-p2600-all.py --p2889")
-    out = {}
+    out, skip = {}, unreviewed()
     with open(ROSTER, encoding="utf-8") as fh:
         for line in fh:
             parts = line.rstrip("\n").split("\t")
-            if len(parts) >= 2 and parts[0].startswith("Q"):
+            if (len(parts) >= 2 and parts[0].startswith("Q")
+                    and (parts[0], "P2889", parts[1]) not in skip):
                 out.setdefault(parts[1], parts[0])
     return out
 
@@ -78,14 +95,14 @@ def geni_by_qid() -> dict[str, str]:
 
     The master wins where both hold a value, because it is what Wikidata actually states.
     """
-    out = {}
+    out, skip = {}, unreviewed()
     ledger = ROOT / "reports" / "garborg-qids.tsv"
     if ledger.exists():
         with open(ledger, encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
                 q = (row.get("qid") or "").strip()
                 g = (row.get("geni_id") or "").strip()
-                if q.startswith("Q") and g:
+                if q.startswith("Q") and g and (q, "P2600", g) not in skip:
                     out.setdefault(q, g)
     path = ROOT / "out" / "wikidata" / "p2600-all.tsv"
     if not path.exists():
@@ -93,7 +110,8 @@ def geni_by_qid() -> dict[str, str]:
     with open(path, encoding="utf-8") as fh:
         for line in fh:
             parts = line.rstrip("\n").split("\t")
-            if len(parts) >= 2 and parts[0].startswith("Q"):
+            if (len(parts) >= 2 and parts[0].startswith("Q")
+                    and (parts[0], "P2600", parts[1]) not in skip):
                 out[parts[0]] = parts[1]
     return out
 
