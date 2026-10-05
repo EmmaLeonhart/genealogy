@@ -606,6 +606,15 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   same underlying name in different languages; fuzzy matching belongs only inside one rendering, to catch a
   misspelling (is it "Yurievich" misspelled?). The other way round, two names that only look alike are not one name:
   Karin (Katarina) and Kerstin (Kristina) are different names, and the zipper review treated them so.
+- **⛔ PRE-1900 EUROPEANS: THE NAME OUTWEIGHS THE YEAR. Ruled 2026-10-04 (Emma). A written principle for the
+  session's own judgment of each case, never a script rule.** Before 1900 the years in European records are often
+  unreliable, so a year disagreement is weak evidence that two records are different people. Names vary between
+  sources by language (Johann/Hans, Anna Lovisa/Anne Louise), but the variation is regular and the names are often
+  distinctive, so a name that matches as a language variant is real evidence of the same person even when the years
+  disagree. It does not carry over by default to other populations: Sinosphere names, or very common names (an Anna
+  Andersdotter in a parish of Anna Andersdotters), need more than the name. Seen in the zipper review: Anders
+  Andersson Wedberg b. 1794 vs 1807, and Anna Margareta = Anna Greta Gabrielsdotter b. 1789 vs 1811, are the same
+  people.
 - **⛔ WHEN THE SOURCES DISAGREE ON PARENTS, KEEP BOTH: THE PARENTAGE IS DISPUTED. Ruled 2026-10-04 (Emma).**
   Geni, FamilySearch and Wikidata often name different parents for one person. Then the person has two fathers
   (or two mothers), each their own person, and the parentage is recorded as disputed; neither side overwrites or

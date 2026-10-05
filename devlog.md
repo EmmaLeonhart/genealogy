@@ -52019,3 +52019,10 @@ linked, Anna Ersson's wrong parents replaced, every disputed slot qualified `P14
 different languages (John/Hans/Ivan/Johannes; Fitzgeorge/Jørgensen/Yurievich), and fuzzy matching is used only
 inside one rendering, to catch misspellings. Added as the counter-case: Karin and Kerstin are different names. A
 written principle, not code.
+
+## 2026-10-05: the pre-1900 European identification principle written down
+
+`CLAUDE.md`, beside the namosphere rule: before 1900 a year disagreement is weak evidence, and a name that matches as a
+language variant is real evidence of the same person. It does not carry over to Sinosphere or very common names.
+Worked cases from the zipper review: Wedberg (1794 vs 1807) and Anna Margareta/Greta Gabrielsdotter (1789 vs 1811).
+A written principle, not a script rule.
