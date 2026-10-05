@@ -52038,3 +52038,19 @@ Hummet `Q116177405`. Gewis `Q3761553`'s father Brand is another editor's 2019 st
 **Not done:** merging the session's own duplicates Damianos `Q141632173` into `Q5212237` and Garsinda `Q141628302` into
 Garsenda `Q16558507`. Special:MergeItems, three tries: a pre-filled link has no edit token, and a filled form returned
 empty with no error and no merge (checked live). Stopped after three tries; put to Emma.
+
+## 2026-10-05: zipper split batches 2 and 3 checked live; the 4:30 merge failed again
+
+Batch 2 (Emma: "Yes, run it"; 63/63, 3 errors that touched none of the statements): splits #199, 240, 244, 245, 250,
+281, 282, 302, 309, 322. 28 wrong links are off, and the right ones are on: Ōmandokoro `Q5353737`, Prince Saneyasu
+`Q11375984`, Misao-ko `Q106214662`, Fujiwara no Fusatsugu `Q11623476`, Joan Basset `Q81058124`, Cecily de Rumilly
+`Q56526093`, Tegyd ap Gwyar `Q112640608`, and the new `Q141646027` Jacqueline. Koga Keiko's father Hosokawa Takamoto
+is Sabonya's 2021 statement and stays.
+Batch 3, after Emma asked why Koga Michitoki and Tokudaiji Kinkore were not made: both already exist, 久我通言
+`Q11369388` ("Koga Michinobu") and 徳大寺公維 `Q11489576` ("Tokudaiji Kinfusa"); the readings differ by source and
+the labels were not touched. The zipper had also fused Koga Michihiro with Hosokawa Harutomo `Q11605914`; our wife of
+Michihiro (created twice) is off Harutomo and is now Michitoki's mother. The Saionji wife is his second wife, and
+she and Michitoki are linked to Keiko and Kinfusa as parents, marked disputed where Wikidata names another parent. 22/22,
+checked live.
+**4:30 cron:** Special:MergeItems again took no merge (filled fresh, submitted, both from-items still items, no
+error on the page). The queue item stays, which now lists 5 pairs of the session's own duplicates.
