@@ -84,6 +84,16 @@ how a name is modelled and beats anything here.
 
 ---
 
+## The `wikidata_to_gedcom/` submodule
+
+`wikidata_to_gedcom/` is a git submodule of https://github.com/EmmaLeonhart/wikidata-ancestor-gedcom-export (added
+2026-10-05, Emma). It exports a person's ancestors from Wikidata as GEDCOM files, one per language (`en`, `zh`,
+`ja`, `ko` by default), following `P22`/`P25` up a set number of generations; names are each person's label in that
+language, falling back to `mul` and then the QID. Its first use is checking how the labels written here read in each
+language for Emma's own line (`python wikidata_to_gedcom/wikidata_to_gedcom.py Q140568870`). Standard library only.
+It is its own cleanvibe project with its own `CLAUDE.md`, queue and sessions: keep it a plain, small checkout, and
+never move or copy Emma's local `Documents\GitHub\wikidata_to_gedcom` folder into this repo.
+
 ## Skills
 
 `.claude/skills/` — `emergency-stop`, `cron-is-local`, `autonomous-loop`,

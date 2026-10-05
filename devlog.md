@@ -52067,3 +52067,12 @@ the next batch). Four more of the session's own duplicates are on the merge item
 main"), not by this session. The local `main` branch was stale at 2026-10-03 (`4b59bca67`), so today's files
 disappeared from disk; nothing was lost on GitHub. The one local-only commit had already been pushed as
 `cb3f9d79b` (`git cherry`: "-"), so `git rebase origin/main` brought `main` level with GitHub without dropping anything.
+
+## 2026-10-05: wikidata_to_gedcom added as a submodule (Emma)
+
+Ran at Emma's word ("Do it in 10 minutes"), from a one-shot cron. `git submodule add
+https://github.com/EmmaLeonhart/wikidata-ancestor-gedcom-export wikidata_to_gedcom` (8.2 MB). Another session had
+corrected the item (GitHub has no repo named wikidata_to_gedcom) and had left an untracked copy of Emma's local
+folder at `genealogy/wikidata_to_gedcom/` (no `.git`). That copy was moved aside into this session's scratchpad, not
+deleted, before the submodule was added. Emma's local `Documents\GitHub\wikidata_to_gedcom` was not touched. What it is
+and how the repo uses it is in `CLAUDE.md`. Item closed.
