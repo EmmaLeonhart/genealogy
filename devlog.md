@@ -51877,3 +51877,17 @@ Each ID-tracking file against its state at `d91acbe4d` (2026-09-27 23:43 PDT):
   back would make the pipeline create them again. `emma-judgments.tsv` and `entry-points.tsv` are Emma's.
 - `familysearch-zipper-pairs.tsv` was zipper-built from 2026-09-24 and is no longer read (`861a72b75`).
 Next: the 5,013 id statements, one by one.
+
+## 2026-10-04: zipper review, the Geni ids added since 2026-09-28, first 120 of 601
+
+`reports/session-2026-10-04/id-review-P2600.json` holds both sides of each statement (live item, our tree's
+Geni record), fetched by `scripts/session-2026-10-04/id-sheet.py`. The verdicts in `id-review-P2600-verdicts.tsv`
+are the session's own reading, one at a time. These 120 are Emma's own lines (Frisk, Wedberg, Söderberg,
+Skellefteå). Most are the same person. Wrong ones:
+- Still live: `Q141382445` Niklas Olsson carries Anders Gustaf Olsson's Geni id, and `Q141382447` Stina
+  Larsdotter carries Anna Brita Andersdotter's. Nils Olofsson `Q141516372` carries Nils Pahrsson's, Karin
+  `Q141318969` carries Kerstin Larsdotter's, Kerstin Jonsdotter `Q141528849` carries Karin Jonsson's, and
+  Erik Trast and Kjerstin Nilsdotter carry Erick Nilsson's and Karin Nilsdatter's.
+- Already removed by someone (`GONE`): the competing ancestry above Eric Andersson / Eric Ersson.
+Emma ruled the principle for that shape: same man, ancestry disputed (`CLAUDE.md`). Parent conflicts on
+same-person items are noted per row.

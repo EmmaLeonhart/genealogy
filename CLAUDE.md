@@ -591,6 +591,12 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **⛔ A SPECIFIC ISSUE IS NOT A GENERAL RULE, AND IT COMES FIRST. Ruled 2026-10-02 (Emma).** A problem in one part of the tree is handled as that problem, never folded into a general fix or rule; a specific queue item outranks a general one. People are reported with their Geni, FamilySearch and Wikidata links in the reply.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
+- **⛔ SAME PERSON, ANCESTRY DISPUTED. Ruled 2026-10-04 (Emma, by AskUserQuestion). A written principle, never
+  code.** When two records share the decisive facts of a life (the same child, the same death year, a spouse
+  with the same dates) but the trees give the person a different patronymic and different parents, they are
+  ONE person and the two ancestries are a dispute to resolve separately. Worked case: Eric Andersson
+  (b. 1724, son of Anders Mattsson and Malin Olofsdotter) = Eric Ersson (b. 1730, son of Erich Ersson and
+  Karin Ersdotter), d. 1767, father of Eric Ericsson.
 - **A DUPLICATE ITEM IS NOT AN EMERGENCY; A WRONG IDENTITY IS WORSE. Ruled 2026-10-03 (Emma):** a person created
   twice is not an emergency and can even help: a manual merge on Wikidata gets the items audited by other
   editors along the way. It is not to be relied on, since it adds work for others, but it is "far better than
