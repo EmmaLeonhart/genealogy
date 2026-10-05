@@ -51891,3 +51891,17 @@ Skellefteå). Most are the same person. Wrong ones:
 - Already removed by someone (`GONE`): the competing ancestry above Eric Andersson / Eric Ersson.
 Emma ruled the principle for that shape: same man, ancestry disputed (`CLAUDE.md`). Parent conflicts on
 same-person items are noted per row.
+
+## 2026-10-04: the Infovarius fix batch removed 227 CORRECT links (session error)
+
+**Unexpected, found while reviewing the Geni ids:** Izumo priests, Samaritan high priests and Senge Takatomi
+showed Norwegian people as fathers and children. The cause is this session's fix batch
+(`reports/infovarius-fix-2026-10-04.qs`, run 15:36 PDT). The test for a chained LAST ("the value is the subject
+of the edit just before it") also matched direct links between existing items, because a lineage chain (Izumo,
+Samaritan, the Isserles and Skallagrimsson families) has that shape by nature. Checked against the batch file
+that ran (`c7bffd633`): of the 736 rows, **509 were `LAST` back-references (fixed correctly) and 227 were
+direct lines** (`Q135579370 P22 Q135579369` in the file). For those 227 the fix removed the correct link and
+added a link to the batch's last creation (`Q141628775`, `Q141628599` and others).
+Revert built from the live state: `reports/fix-batch-revert-2026-10-04.qs`, 428 commands (227 restores, using
+each original line from the batch file with its reference, and 201 removals of the wrong links still live).
+List: `reports/session-2026-10-04/fix-batch-direct-links-wrongly-removed.json`. Not run yet.
