@@ -1,0 +1,61 @@
+# Zipper split batch 11 (2026-10-05, this session; split work shared with genealogy-fa): the Matsudaira/Mitsukuri splits #431, 526, 527, 529, plus batch 10's leftover link. Run with Run, never in background.
+# Every removal checked live before the batch was written. Our two wives exist twice each (Q141636953 = Q141638506, Q141636982 = Q141638588; merge list); the zipper links come off both copies, and the corrected links go on the older copy only.
+# batch 10 leftover: Ulrich I. von Formbach is the father of Berthold im Schweinachgau (both created in batch 10)
+Q141649649	P40	Q141649646	S2600	"6000000002187796770"
+Q141649646	P22	Q141649649	S2600	"6000000002187796770"
+# 527: Geni's 康道 is Matsudaira Yasumichi 松平康道 Q128865475 (father 康詮, son 康任), not the scholar Mitsukuri Shūhei Q6532071. His wife (ours) comes off Shūhei and goes on Q128865475
+-Q141636953	P26	Q6532071
+-Q6532071	P26	Q141636953
+-Q141638506	P26	Q6532071
+-Q6532071	P26	Q141638506
+Q141636953	P26	Q128865475	S2600	"6000000003187824451"
+Q128865475	P26	Q141636953	S2600	"6000000003187824451"
+# 431: Geni's 康義 (son of 康道) is not the mathematician Kikuchi Dairoku Q976582. 康道's wife comes off him as mother; 康義 is created
+-Q976582	P25	Q141636953
+-Q141636953	P40	Q976582
+-Q976582	P25	Q141638506
+-Q141638506	P40	Q976582
+# 529: Geni's 康任 is Matsudaira Yasutō 松平康任 Q3538594 (son of 康道), not his son-in-law Koide Fusaoki Q11459133. 康道's wife and 康任's wife come off Fusaoki and go on Q3538594
+-Q11459133	P25	Q141636953
+-Q141636953	P40	Q11459133
+-Q11459133	P25	Q141638506
+-Q141638506	P40	Q11459133
+-Q11459133	P26	Q141636982
+-Q141636982	P26	Q11459133
+-Q11459133	P26	Q141638588
+-Q141638588	P26	Q11459133
+Q3538594	P25	Q141636953	S2600	"6000000003187824451"
+Q141636953	P40	Q3538594	S2600	"6000000003187824451"
+Q3538594	P26	Q141636982	S2600	"6000000003187897112"
+Q141636982	P26	Q3538594	S2600	"6000000003187897112"
+# 526: Geni's 英発正室 (Fusaoki's wife, daughter of 康任) is not 小出英発の娘 Q134593756 (Fusaoki's daughter, wife of Sono Motosachi). 康任's wife comes off her as mother; 英発正室 is created. Geni's own record fuses her with her daughter (spouse "Sono", child Sono Sachiko); those two links are obviously wrong and are left out
+-Q134593756	P25	Q141636982
+-Q141636982	P40	Q134593756
+-Q134593756	P25	Q141638588
+-Q141638588	P40	Q134593756
+CREATE
+LAST	Lmul	"康義 松平"
+LAST	Lja	"康義 松平"
+LAST	Lzh	"康義 松平"
+LAST	Aja	"松平康義"
+LAST	Den	"Geni 6000000002278985734"
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P2600	"6000000002278985734"	P1810	"康義 松平"
+LAST	P22	Q128865475	S2600	"6000000002278985734"
+LAST	P25	Q141636953	S2600	"6000000002278985734"
+Q128865475	P40	LAST	S2600	"6000000002278985734"
+Q141636953	P40	LAST	S2600	"6000000002278985734"
+CREATE
+LAST	Lmul	"英発正室 松平"
+LAST	Lja	"英発正室 松平"
+LAST	Lzh	"英発正室 松平"
+LAST	Aja	"小出英発正室"
+LAST	Den	"Geni 6000000003187817870"
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2600	"6000000003187817870"	P1810	"英発正室 松平"
+LAST	P22	Q3538594	S2600	"6000000003187817870"
+LAST	P25	Q141636982	S2600	"6000000003187817870"
+Q3538594	P40	LAST	S2600	"6000000003187817870"
+Q141636982	P40	LAST	S2600	"6000000003187817870"
