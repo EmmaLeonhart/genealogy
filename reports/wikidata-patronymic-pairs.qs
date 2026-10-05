@@ -161,17 +161,6 @@ Q141584062	P5278	LAST
 Q141584062	P407	Q9043
 Q141584062	P407	Q9035
 
-# Malsdatter -- the counterpart of Malsen (9 bearer(s))
-CREATE
-LAST	Len	"Malsdatter"
-LAST	Lmul	"Malsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
 # Pettersson -- the counterpart of Pettersdotter (7 bearer(s))
 CREATE
 LAST	Len	"Pettersson"
@@ -184,27 +173,6 @@ LAST	P407	Q9027
 LAST	P5278	Q141456297
 Q141456297	P5278	LAST
 Q141456297	P407	Q9027
-
-# Raumsdotter -- the counterpart of Raumsson (7 bearer(s))
-CREATE
-LAST	Len	"Raumsdotter"
-LAST	Lmul	"Raumsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Esdatter -- the counterpart of Esen (5 bearer(s))
-CREATE
-LAST	Len	"Esdatter"
-LAST	Lmul	"Esdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
 
 # Håvarsdotter -- the counterpart of Håvarson (5 bearer(s))
 CREATE
