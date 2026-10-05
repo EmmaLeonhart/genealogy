@@ -52126,3 +52126,13 @@ of Wooler `Q116102809` and Isabel `Q116102812`. Marjory de Muschamp already exis
 item. Koga Michimitsu (1187-1248) is Geni's father for Nagamichi and Michihiro, which is obviously wrong, so it was not linked.
 Left for a later batch: Lain Núñez `Q141648893` P40 Fernando Laínez `Q141648895`. Two people created in one batch
 cannot point at each other.
+
+## 2026-10-05: zipper split batch 6 ran and checked live (38/38)
+
+Batch 6 (splits #541, 553, 578, 584, 633, 677, 681, 688, 723, 768, 790) had been built at 12:09 PDT by the session
+holding #726-1010, which sat waiting and did not answer a message about it. A live check showed none of it had run.
+Emma authorized this session to run it (AskUserQuestion, "Yes, run it"), and the owning session was told before the run
+so that it is not run twice. It ran in a new QuickStatements tab with Run. `verify-qs.py`: 38 ok, 0 not as intended.
+Created: `Q141649244` Konrad von Reinhausen (Udo of Hildesheim's brother), `Q141649254` Drogon d'Amiens (Adila's
+father), `Q141649260` Torild Totilsson (son of our Totil Thordsson). The item stays open: batch 8 (built, not run) and
+the rest of the #726-1010 work belong to the other two sessions.
