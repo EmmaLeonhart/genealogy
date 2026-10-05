@@ -51952,3 +51952,10 @@ father's id, Yang Shi (Yang Guifei's id), Xiao Xia (his son's id). Taking the id
 groups, because it never named that item's person. But under the rule, the other tree's parent should exist as
 their own person with the parentage marked disputed, and on Wikidata they now exist nowhere. Nothing changed; how
 to represent a disputed second parent on Wikidata is Emma's call.
+
+## 2026-10-04: Niklas Olsson is not a disputed parentage (Emma)
+
+Emma: the Geni version of Anders Petter Nilsson's parents (Anders Gustaf Olsson and Anna Brita Andersdotter) is
+"nonsensical to the point that I don't believe it". The name agrees: his patronymic Nilsson fits Niklas Olsson,
+and a son of Anders Gustaf would be Andersson. #19 and #20 are now `not a real dispute`, and no second parent is
+created for him. 19 disputed cases remain.
