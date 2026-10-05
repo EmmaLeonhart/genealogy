@@ -51941,3 +51941,14 @@ unconsented zipper merge. When the sources disagree, the person has two fathers 
 is marked disputed. Ids should not be added and removed over and over, so they come off only when the record is
 clearly another person. In `CLAUDE.md` and the review item. The two pending removals (Yang Shi, Xiao Xia) are
 clear-identity cases and still wait for a group of ten.
+
+## 2026-10-04: the 27 wrong Geni ids, sorted by Emma's disputed-parentage rule
+
+`reports/session-2026-10-04/id-review-P2600-different-classified.tsv`. **21 disputed parentage:** the id belonged
+to the other tree's parent (Anders Petter Nilsson's parents, Erik Jönsson's mother and her ancestry, the ancestry
+above Eric Andersson/Ersson, Jonas Jönsson's parents, the mothers of Anna and Barbro Persdotter, two Izumo
+generations). **6 clearly another person:** Herman II, Ælfthryth, Kirsti Pedersdatter, Senge no Naokatsu's
+father's id, Yang Shi (Yang Guifei's id), Xiao Xia (his son's id). Taking the id off the item was right in both
+groups, because it never named that item's person. But under the rule, the other tree's parent should exist as
+their own person with the parentage marked disputed, and on Wikidata they now exist nowhere. Nothing changed; how
+to represent a disputed second parent on Wikidata is Emma's call.
