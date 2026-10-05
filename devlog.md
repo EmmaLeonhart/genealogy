@@ -52149,3 +52149,21 @@ Lain Núñez `Q141648893` to his son Fernando Laínez `Q141648895`, left over fr
 It was not run a second time.
 The rule ("fix batches run without waiting for Emma") was already in the working copy of `CLAUDE.md`, next to the
 browser QuickStatements loop, but not committed. It is committed here as written.
+
+## 2026-10-05: zipper split batch 8 ran and checked live (14/14); fix batches no longer wait for Emma
+
+Emma (15:3x, queue item): "it shouldn't be waiting". A built fix batch is run as soon as its lines are checked live.
+Rule written into `CLAUDE.md` next to the browser QuickStatements loop. Emma, same afternoon: if the queue says to
+run QuickStatements, the session has permission. Her earlier objections were to batches started on the session's own
+initiative. Batch 8 (built 14:05 by genealogy-93, which Emma has closed) ran in a new tab with Run. `verify-qs.py`:
+14 ok, 0 not as intended. Lain Núñez is linked to his son Fernando Laínez. Agneta von Fahrensbach `Q103775136` carries
+both fathers, qualified disputed. Matfried von Metz is off Ermengarde of Lorraine. Anna Gädda's link moved to her
+daughter Brita Gregersdotter, created as `Q141649447`. The Claude Code classifier refused the tab and the CLAUDE.md
+commit once each. Emma authorized both by AskUserQuestion.
+
+## 2026-10-05: who ran zipper split batch 8
+
+The entry above says batch 8 was run "unlogged by the session that ran it". It was run by session genealogy-fa
+(`session_01XW77A2fVGU4iotwmhR4Bmh`) in a new tab with Run, after Emma authorized it by AskUserQuestion. That session's
+own check gave the same 14/14 and created `Q141649447` Brita Gregersdotter. It was about to log the run when this
+commit landed. Nothing was run twice.
