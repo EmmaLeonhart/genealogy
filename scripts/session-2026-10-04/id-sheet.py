@@ -39,10 +39,16 @@ if G:
         if r["geni_id"] in need: lab[r["geni_id"]] = r.get("label_en") or r.get("label_mul") or (r.get("cjk_names") or "").split("|")[0].strip() or (r.get("other_script_names") or "").split("|")[0].strip()
     for r in csv.DictReader(open("reports/derived-facts.csv", encoding="utf-8")):
         if r["geni_id"] in G: fac[r["geni_id"]] = r
+FS = json.load(open("reports/session-2026-10-04/familysearch-records.json", encoding="utf-8")) if prop == "P2889" else {}
 def N(s): return [lab.get(x.strip(), x.strip()) for x in s.split("|") if x.strip()]
 out = []
 for n, ((q, v), ts) in enumerate(claims):
     e = ent.get(q, {}); f = fam.get(v, {}); fa = fac.get(v, {})
+    if prop == "P2889":
+        r = FS.get(v, {})
+        f = {"fathers": "|".join(r.get("f", [])), "mothers": "|".join(r.get("m", [])), "spouses": "|".join(r.get("s", [])), "children": "|".join(r.get("c", []))}
+        fa = {"birth_date_raw": r.get("b", ""), "death_date_raw": r.get("d", "")}
+        lab[v] = r.get("n", "") or "(not in the downloads)"
     out.append({"n": n, "qid": q, "value": v, "added": ts, "live": v in [str(x) for x in V(e, prop)],
                 "W": {"name": L(e), "desc": (e.get("descriptions", {}).get("en") or {}).get("value", ""), "b": T(e, "P569"), "d": T(e, "P570"),
                       "f": R(e, "P22"), "m": R(e, "P25"), "s": R(e, "P26"), "c": R(e, "P40")[:6], "geni": V(e, "P2600"), "fs": V(e, "P2889")},
