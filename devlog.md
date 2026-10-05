@@ -51818,3 +51818,11 @@ them is the cause of more issues than it helps." Recorded at the head of the dec
 FamilySearch parent-deck item is deleted, since it was only "read the deck's verdicts back". The ancestor
 zipper item is rewritten around the automatic zipper, with no step waiting on her. Not changed: `review-decks.yml`
 and `pipeline.yml` still build the deck HTML. Removing that is part of the clean-up item at the end.
+
+## 2026-10-04: identities are decided by the session, case by case (Emma)
+
+Emma, after the no-decks ruling: the automatic zipper is by far the worst decider of identities, her own deck
+verdicts second worst, and the session deciding agentically (not by script) the best. Principles come from
+AskUserQuestion on specific cases and are never turned into code. She doubts that anyone ever looked at the
+~277 open cards. As far as the devlog shows, none were judged one by one: the frontier cards were generated
+on 2026-10-03 and handed to the deck. `CLAUDE.md`, the zipper item and a memory now say this.
