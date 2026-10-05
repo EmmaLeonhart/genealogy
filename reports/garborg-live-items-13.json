@@ -570664,25 +570664,25 @@
    ],
    "P40": [
     {
-     "id": "Q141632237$E4B1FDC5-3C19-465F-9DAA-FAF2195002E2",
+     "id": "Q141632237$BA4B2518-80C8-4489-A528-87934DC161DF",
      "mainsnak": {
       "datatype": "wikibase-item",
       "datavalue": {
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q61865807",
-        "numeric-id": 61865807
+        "id": "Q141647805",
+        "numeric-id": 141647805
        }
       },
-      "hash": "0450559274013d036094d9608ff5453a1d6d02e0",
+      "hash": "a6a612c2dec8e083e33a4682d2e196f50618cd35",
       "property": "P40",
       "snaktype": "value"
      },
      "rank": "normal",
      "references": [
       {
-       "hash": "eb033657fe9fe5d6dc791b21cf6a00b2a2884304",
+       "hash": "b9e37fa9b19f36f1e8a1e8ad7f93c113e1cb36ce",
        "snaks": {
         "P2600": [
          {
@@ -570695,23 +570695,10 @@
           "property": "P2600",
           "snaktype": "value"
          }
-        ],
-        "P2889": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "GKM5-MYN"
-          },
-          "hash": "d27e6d78a189560e642ec8d66ae2d2a416c865ae",
-          "property": "P2889",
-          "snaktype": "value"
-         }
         ]
        },
        "snaks-order": [
-        "P2600",
-        "P2889"
+        "P2600"
        ]
       }
      ],
@@ -570908,8 +570895,8 @@
     "value": "维尔纳·翁·文特尔图尔·翁·古登斯贝尔格"
    }
   },
-  "lastrevid": 2552828762,
-  "modified": "2026-10-04T00:45:13Z",
+  "lastrevid": 2553531638,
+  "modified": "2026-10-05T16:41:38Z",
   "ns": 0,
   "pageid": 135209216,
   "sitelinks": {},
@@ -599343,6 +599330,197 @@
   "pageid": 135216843,
   "sitelinks": {},
   "title": "Q141640685",
+  "type": "item"
+ },
+ "Q141647805": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141647805$46EAE99E-C69B-4C81-A6DD-18B2701ED50D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q141647805$BE1DA7A8-A3F8-4187-8FCA-C3FE80F2C179",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141632237",
+        "numeric-id": 141632237
+       }
+      },
+      "hash": "a188b2a72efe2083f6df005d31c0e41dd7d25b5a",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "ce6e142cc3456d030b7e596dfdfa53d5367ce317",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002187823891"
+          },
+          "hash": "3e2c2a0718896fa0b076c0de35ccc63f4ac0dd3c",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141647805$0BD56A16-1010-431E-AB3D-6C4352B034DD",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141632148",
+        "numeric-id": 141632148
+       }
+      },
+      "hash": "d2eb29b6db65914e3bfedd611059836a8b656f11",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "ce6e142cc3456d030b7e596dfdfa53d5367ce317",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002187823891"
+          },
+          "hash": "3e2c2a0718896fa0b076c0de35ccc63f4ac0dd3c",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141647805$EB93A209-708E-4444-8C9C-C43138051983",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000002187823891"
+      },
+      "hash": "3e2c2a0718896fa0b076c0de35ccc63f4ac0dd3c",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Hilja von Gudensberg"
+        },
+        "hash": "f2875eebdf89510441127c6039c07d1869039c13",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141647805$E164E00C-E34D-4E22-8CC4-79E9F8C4A555",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "circa 1047 Holy Roman Empire - circa 1085 Bilstein, Germany"
+   }
+  },
+  "id": "Q141647805",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Hilja von Gudensberg"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Hilja von Gudensberg"
+   }
+  },
+  "lastrevid": 2553531596,
+  "modified": "2026-10-05T16:41:35Z",
+  "ns": 0,
+  "pageid": 135223670,
+  "sitelinks": {},
+  "title": "Q141647805",
   "type": "item"
  },
  "Q1431725": {
@@ -649952,13 +650130,17 @@
     "language": "es",
     "value": "Hasteinn Atlason"
    },
+   "mul": {
+    "language": "mul",
+    "value": "Hasteinn Atlason"
+   },
    "sq": {
     "language": "sq",
     "value": "Hasteinn Atlason"
    }
   },
-  "lastrevid": 2552342646,
-  "modified": "2026-10-02T23:11:05Z",
+  "lastrevid": 2553485220,
+  "modified": "2026-10-05T14:45:25Z",
   "ns": 0,
   "pageid": 18191803,
   "sitelinks": {

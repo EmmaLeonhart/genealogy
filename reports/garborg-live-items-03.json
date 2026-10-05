@@ -558177,6 +558177,154 @@
   "title": "Q141645155",
   "type": "item"
  },
+ "Q141647811": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141647811$36924F3D-26BB-424E-ACA1-5C8F4CE369AF",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q141647811$3FFE2B86-F6D7-4A8A-A7C9-12C137804E18",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141628234",
+        "numeric-id": 141628234
+       }
+      },
+      "hash": "d361fec332ed64103c1c6febbe2fea3749dd385e",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "0eb92229587c776d848b6445d6cb94427cedb9f8",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000002187823883"
+          },
+          "hash": "d0b5eb6e0f6957e2d0769e2bfcc17e2f43384e0a",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141647811$8B974E65-0046-481E-B19B-8B8DDAB23A05",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000002187823883"
+      },
+      "hash": "d0b5eb6e0f6957e2d0769e2bfcc17e2f43384e0a",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Rugger von Bilstein"
+        },
+        "hash": "5476d8f04ee0f6cfa2b5d94cce2b849e6c3239e8",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141647811$9EE2B414-185B-4F59-923F-8F9901273E59",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "1037 Bilstein - 1096 Bilstein"
+   }
+  },
+  "id": "Q141647811",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Rugger von Bilstein"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Rugger von Bilstein"
+   }
+  },
+  "lastrevid": 2553531754,
+  "modified": "2026-10-05T16:41:49Z",
+  "ns": 0,
+  "pageid": 135223676,
+  "sitelinks": {},
+  "title": "Q141647811",
+  "type": "item"
+ },
  "Q1427539": {
   "aliases": {
    "fr": [
@@ -570448,6 +570596,10 @@
     "language": "it",
     "value": "Luigi Guicciardini"
    },
+   "mul": {
+    "language": "mul",
+    "value": "Luigi Guicciardini"
+   },
    "pl": {
     "language": "pl",
     "value": "Luigi Guicciardini"
@@ -570465,8 +570617,8 @@
     "value": "Luigi Guicciardini"
    }
   },
-  "lastrevid": 2543780549,
-  "modified": "2026-09-11T06:44:12Z",
+  "lastrevid": 2553489064,
+  "modified": "2026-10-05T14:54:05Z",
   "ns": 0,
   "pageid": 18191911,
   "sitelinks": {
