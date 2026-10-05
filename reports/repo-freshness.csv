@@ -1,6 +1,6 @@
 path,last_commit,days_stale,bytes,claims_exports,behind_by,dated_name,generator,stale_against_input
 reports/cjk-priority-qids.tsv,2026-10-04,1,776,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 2h newer
-reports/composed-labels.tsv,2026-10-04,1,504489,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 1h newer
+reports/composed-labels.tsv,2026-10-04,1,504578,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 1h newer
 reports/corrected-label-slots.tsv,2026-10-04,1,9891,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/derived-date-sources.csv,2026-10-04,1,3239771,,,,scripts/build-garborg-day.py;src/genimerge/cli.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/derived-family-sources.csv,2026-10-04,1,9772815,,,,scripts/build-garborg-day.py;scripts/build-id-backfill.py;scripts/build-relationship-sources-backfill.py,reports/garborg-name-transliterations.tsv is 2h newer
@@ -9,21 +9,21 @@ reports/derived-pedigree.csv,2026-10-04,1,120357,,,,scripts/build-garborg-day.py
 reports/derived-places.csv,2026-10-04,1,24810298,,,,scripts/build-description-audit.py;scripts/build-garborg-day.py;scripts/emit-ancestor-gedcoms.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/description-overwrites.tsv,2026-10-04,1,262,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/entry-points-immediate.csv,2026-10-04,1,10907,,,,scripts/build-garborg-day.py;scripts/build-immediate-entry-points.py,reports/garborg-name-transliterations.tsv is 2h newer
-reports/garborg-live-labels.tsv,2026-10-04,1,7956476,,,,scripts/build-garborg-day.py;scripts/check-batch-locality.py;scripts/find-label-damage.py,reports/garborg-name-transliterations.tsv is 2h newer
+reports/garborg-live-labels.tsv,2026-10-04,1,7956600,,,,scripts/build-garborg-day.py;scripts/check-batch-locality.py;scripts/find-label-damage.py,reports/garborg-name-transliterations.tsv is 1h newer
 reports/garborg-live-state.tsv,2026-10-04,1,2958,,,,scripts/build-garborg-day.py;scripts/garborg-modelling.py,reports/garborg-name-transliterations.tsv is 2h newer
-reports/garborg-live-values.tsv,2026-10-04,1,9676332,,,,scripts/audit-compliance.py;scripts/build-daily-batch.py;scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 2h newer
-reports/label-edits-emitted.tsv,2026-10-04,1,4203836,,,,scripts/build-garborg-day.py;scripts/find-label-damage.py,reports/garborg-name-transliterations.tsv is 1h newer
+reports/garborg-live-values.tsv,2026-10-04,1,9676001,,,,scripts/audit-compliance.py;scripts/build-daily-batch.py;scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 1h newer
+reports/label-edits-emitted.tsv,2026-10-04,1,4206238,,,,scripts/build-garborg-day.py;scripts/find-label-damage.py,reports/garborg-name-transliterations.tsv is 1h newer
 reports/missing-transliterations.tsv,2026-10-04,1,3527,,,,scripts/census-missing-transliterations.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/name-audit.csv,2026-10-04,1,175566,,,,scripts/audit-ledger-names.py;scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 2h newer
-reports/name-tokens-needed.tsv,2026-10-04,1,32927,,,,scripts/build-garborg-day.py;scripts/build-garborg-name-items.py,reports/garborg-name-transliterations.tsv is 1h newer
+reports/name-tokens-needed.tsv,2026-10-04,1,28141,,,,scripts/build-garborg-day.py;scripts/build-garborg-name-items.py,reports/garborg-name-transliterations.tsv is 1h newer
 reports/occupation-qids.tsv,2026-10-04,1,12999,,,,scripts/build-garborg-day.py;scripts/resolve-places.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/place-qids.tsv,2026-10-04,1,20566,,,,scripts/build-garborg-day.py;scripts/resolve-places.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/reverted-labels.tsv,2026-10-04,1,515,,,,scripts/build-garborg-day.py;scripts/refresh-reverted-labels.py,reports/garborg-name-transliterations.tsv is 2h newer
-reports/single-value-drops.tsv,2026-10-04,1,13551,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 1h newer
+reports/single-value-drops.tsv,2026-10-04,1,12783,,,,scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 1h newer
 reports/suppressed-statements.tsv,2026-10-04,1,739,,,,scripts/build-garborg-day.py;scripts/build-id-backfill.py;scripts/build-uncapped-relationships.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/wikidata-cjk-transcription-labels.json,2026-10-04,1,42840400,,,,scripts/build-cjk-transcription-labels.py,reports/garborg-name-transliterations.tsv is 2h newer
 reports/wikidata-cjk-transcription-labels.md,2026-10-04,1,1297,,,,scripts/build-cjk-transcription-labels.py,reports/garborg-name-transliterations.tsv is 2h newer
-CLAUDE.md,2026-10-04,1,75666,,,,scripts/audit-turns-recorded.py,
+CLAUDE.md,2026-10-04,1,76612,,,,scripts/audit-turns-recorded.py,
 README.md,2026-10-04,1,13119,,,,,
 correspondence.md,2026-10-04,1,22414,,,,,
 docs/algorithms.md,2026-10-04,1,13914,,,,,
@@ -70,7 +70,7 @@ docs/wikidata-item-template.md,2026-10-04,1,12380,,,,,
 edit-objects.md,2026-10-04,1,7997,,,,,
 emission-spec.md,2026-10-04,1,8281,,,,,
 questions.md,2026-10-04,1,1445,,,,,
-queue.md,2026-10-04,1,15736,,,,scripts/audit-turns-recorded.py;scripts/build-export-provenance.py,
+queue.md,2026-10-04,1,12394,,,,scripts/audit-turns-recorded.py;scripts/build-export-provenance.py,
 reports/abbreviated-patronymics.csv,2026-10-04,1,572029,,,,scripts/build-garborg-day.py;scripts/census-abbreviated-patronymics.py;scripts/expand-gedcom-abbreviations.py,
 reports/abbreviation-resolution-changes.csv,2026-10-04,1,344247,,,,,
 reports/absent-but-present.tsv,2026-10-04,1,764,,,,scripts/find-absent-on-wikidata.py,
@@ -83,7 +83,7 @@ reports/abul-hamza-montecarlo-round4.tsv,2026-10-04,1,920,,,,,
 reports/abul-hamza-montecarlo-round5-candidates.txt,2026-10-04,1,800,,,,,
 reports/abul-hamza-montecarlo-round5.tsv,2026-10-04,1,921,,,,,
 reports/academic-isolates.csv,2026-10-04,1,341268,,,,scripts/build-isolate-path-targets.py,
-reports/account-edited-links.tsv,2026-10-04,1,2732010,,,,scripts/build-garborg-day.py;scripts/refresh-garborg-ledger.py,
+reports/account-edited-links.tsv,2026-10-04,1,2731107,,,,scripts/build-garborg-day.py;scripts/refresh-garborg-ledger.py,
 reports/adasi-montecarlo-round2.tsv,2026-10-04,1,2641,,,,,
 reports/adasi-montecarlo-stats.tsv,2026-10-04,1,2695,,,,,
 reports/agreeing-latin-labels.tsv,2026-10-04,1,156095,,,,scripts/build-agreeing-latin-labels.py,
@@ -98,7 +98,7 @@ reports/ancient-pairs-generation-check.tsv,2026-10-04,1,580,,,,,
 reports/ancient-ring-verdicts.tsv,2026-10-04,1,14627,,,,,
 reports/ancient-ring-wikidata-candidates.csv,2026-10-04,1,330043,,,,,
 reports/anvilaquarius.md,2026-10-04,1,2919,,,,,
-reports/applied-facts.csv,2026-10-04,1,3177117,,,,scripts/build-garborg-day.py,
+reports/applied-facts.csv,2026-10-04,1,3193664,,,,scripts/build-garborg-day.py,
 reports/attested-name-renderings.tsv,2026-10-04,1,596321,,,,scripts/apply-attested-renderings.py;scripts/build-attested-renderings.py,
 reports/audit-downloads-2026-08-06.md,2026-10-04,1,8300,,,yes,,
 reports/audit-q141223488.md,2026-10-04,1,3880,,,,,
@@ -332,7 +332,7 @@ reports/family-candidates.tsv,2026-10-04,1,947807,,,,scripts/build-family-candid
 reports/family-name-plan-refused.csv,2026-10-04,1,6810,,,,,
 reports/family.md,2026-10-04,1,3545,,,,,
 reports/familysearch-ancestor-deck-cards.csv,2026-10-04,1,91259,,,,,
-reports/familysearch-carry-forward.tsv,2026-10-04,1,5883408,,,,scripts/build-familysearch-day.py,
+reports/familysearch-carry-forward.tsv,2026-10-04,1,5884278,,,,scripts/build-familysearch-day.py,
 reports/familysearch-qid-bridge.tsv,2026-10-04,1,830515,,,,scripts/bridge-familysearch-qids.py;scripts/build-familysearch-day.py;scripts/emit-ancestor-gedcoms.py,
 reports/familysearch-zipper-ambiguous.tsv,2026-10-04,1,492658,,,,scripts/build-familysearch-deck.py,
 reports/familysearch-zipper-conflicts.tsv,2026-10-04,1,1987,,,,,
@@ -352,26 +352,26 @@ reports/frontier.md,2026-10-04,1,11951,,,,src/genimerge/cli.py,
 reports/fs-only-geni-citations.csv,2026-10-04,1,17848,,,,,
 reports/future-dates.csv,2026-10-04,1,5509,,,,scripts/build-future-dates.py,
 reports/fuzzy-name-matches.csv,2026-10-04,1,105910,,,,scripts/fuzzy-match-tables.py,
-reports/garborg-carry-forward.tsv,2026-10-04,1,3288293,,,,scripts/build-garborg-day.py;scripts/extend-transliterations.py;scripts/split-daily-batch.py,
+reports/garborg-carry-forward.tsv,2026-10-04,1,3283647,,,,scripts/build-garborg-day.py;scripts/extend-transliterations.py;scripts/split-daily-batch.py,
 reports/garborg-coverage.txt,2026-10-04,1,938,,,,,
 reports/garborg-existing-gaps.tsv,2026-10-04,1,11772,,,,scripts/garborg-existing-gaps.py,
-reports/garborg-live-items-00.json,2026-10-04,1,23215366,,,,,
-reports/garborg-live-items-01.json,2026-10-04,1,21930513,,,,,
-reports/garborg-live-items-02.json,2026-10-04,1,23785991,,,,,
-reports/garborg-live-items-03.json,2026-10-04,1,22309756,,,,,
-reports/garborg-live-items-04.json,2026-10-04,1,23713091,,,,,
-reports/garborg-live-items-05.json,2026-10-04,1,22424080,,,,,
-reports/garborg-live-items-06.json,2026-10-04,1,22493378,,,,,
-reports/garborg-live-items-07.json,2026-10-04,1,21151974,,,,,
-reports/garborg-live-items-08.json,2026-10-04,1,23730470,,,,,
-reports/garborg-live-items-09.json,2026-10-04,1,22642103,,,,,
-reports/garborg-live-items-10.json,2026-10-04,1,22710711,,,,,
-reports/garborg-live-items-11.json,2026-10-04,1,23234864,,,,,
-reports/garborg-live-items-12.json,2026-10-04,1,22772156,,,,,
-reports/garborg-live-items-13.json,2026-10-04,1,24418191,,,,,
-reports/garborg-live-items-14.json,2026-10-04,1,22666835,,,,,
-reports/garborg-live-items-15.json,2026-10-04,1,24403939,,,,,
-reports/garborg-name-transliterations.tsv,2026-10-04,1,3791133,,,,scripts/apply-attested-renderings.py;scripts/audit-ledger-names.py;scripts/build-cjk-transcription-labels.py,
+reports/garborg-live-items-00.json,2026-10-04,1,23219425,,,,,
+reports/garborg-live-items-01.json,2026-10-04,1,21930677,,,,,
+reports/garborg-live-items-02.json,2026-10-04,1,23788021,,,,,
+reports/garborg-live-items-03.json,2026-10-04,1,22312421,,,,,
+reports/garborg-live-items-04.json,2026-10-04,1,23714190,,,,,
+reports/garborg-live-items-05.json,2026-10-04,1,22422322,,,,,
+reports/garborg-live-items-06.json,2026-10-04,1,22496940,,,,,
+reports/garborg-live-items-07.json,2026-10-04,1,21155495,,,,,
+reports/garborg-live-items-08.json,2026-10-04,1,23734196,,,,,
+reports/garborg-live-items-09.json,2026-10-04,1,22644660,,,,,
+reports/garborg-live-items-10.json,2026-10-04,1,22715479,,,,,
+reports/garborg-live-items-11.json,2026-10-04,1,23238582,,,,,
+reports/garborg-live-items-12.json,2026-10-04,1,22778148,,,,,
+reports/garborg-live-items-13.json,2026-10-04,1,24423676,,,,,
+reports/garborg-live-items-14.json,2026-10-04,1,22670857,,,,,
+reports/garborg-live-items-15.json,2026-10-04,1,24406956,,,,,
+reports/garborg-name-transliterations.tsv,2026-10-04,1,3792788,,,,scripts/apply-attested-renderings.py;scripts/audit-ledger-names.py;scripts/build-cjk-transcription-labels.py,
 reports/garborg-qids.tsv,2026-10-04,1,2516615,,,,scripts/audit-compliance.py;scripts/audit-ledger-names.py;scripts/audit-marker-surname-labels.py,
 reports/generation-shift-slots.csv,2026-10-04,1,24168,,,,,
 reports/generation-suffix-gap.csv,2026-10-04,1,665732,,,,scripts/measure-generation-suffix-gap.py,
@@ -473,7 +473,7 @@ reports/middle-initials.csv,2026-10-04,1,3633573,,,,scripts/build-middle-initial
 reports/middle-initials.md,2026-10-04,1,1601,,,,scripts/build-middle-initial-census.py,
 reports/midpoint-seeds-to-open.tsv,2026-10-04,1,28,,,,scripts/find-chain-gaps.py,
 reports/model-vs-reality-izumo.tsv,2026-10-04,1,40534,,,,,
-reports/model-vs-reality.tsv,2026-10-04,1,9962247,,,,scripts/build-from-diff.py;scripts/model-vs-reality.py,
+reports/model-vs-reality.tsv,2026-10-04,1,9957951,,,,scripts/build-from-diff.py;scripts/model-vs-reality.py,
 reports/model.md,2026-10-04,1,7805,,,,,
 reports/mononyms.csv,2026-10-04,1,9833428,,,,scripts/build-mononym-census.py,
 reports/mononyms.md,2026-10-04,1,2654,,,,scripts/build-mononym-census.py,
@@ -518,7 +518,7 @@ reports/name-item-languages-15.csv,2026-10-04,1,5386225,,,,,
 reports/name-item-languages.md,2026-10-04,1,1507,,,,scripts/measure-name-item-languages.py,
 reports/name-item-plan.csv,2026-10-04,1,821255,,,,scripts/build-garborg-day.py;scripts/build-name-item-batch.py;scripts/build-name-item-cjk.py,
 reports/name-item-qids.tsv,2026-10-04,1,15417309,,,,scripts/build-cjk-romanisation.py;scripts/collect-name-item-qids.py;scripts/measure-name-item-languages.py,
-reports/name-items-compose.log,2026-10-04,1,394985,,,,,
+reports/name-items-compose.log,2026-10-04,1,394963,,,,,
 reports/name-items-to-create.md,2026-10-04,1,3167,,,,scripts/measure-name-items-to-create.py,
 reports/name-items.csv,2026-10-04,1,2961416,,,,scripts/build-name-object-report.py;scripts/measure-name-items-to-create.py;scripts/measure-name-resolution.py,
 reports/name-label-gaps.csv,2026-10-04,1,716599,,,,scripts/build-name-label-gaps.py,
@@ -578,7 +578,7 @@ reports/p2889-unnamed-fs-names.tsv,2026-10-04,1,7481,,,,scripts/build-garborg-da
 reports/p734-failing-family-rule.csv,2026-10-04,1,90700,,,,,
 reports/paren-tokens.md,2026-10-04,1,4471,,,,scripts/census-paren-tokens.py,
 reports/paren-tokens.tsv,2026-10-04,1,486384,,,,scripts/census-paren-tokens.py,
-reports/parent-candidates.tsv,2026-10-04,1,1260199,,,,scripts/build-parent-candidates.py,
+reports/parent-candidates.tsv,2026-10-04,1,1259202,,,,scripts/build-parent-candidates.py,
 reports/partial-nn.csv,2026-10-04,1,1691109,,,,scripts/build-cjk-clan-labels.py;scripts/census-partial-nn.py,
 reports/path-bergitte-to-emma.json,2026-10-04,1,7385,,,,,
 reports/path-bergitte-to-emma.md,2026-10-04,1,2550,,,,,
@@ -10166,16 +10166,16 @@ reports/wikidata-frisk-geni-ids-named-as.qs,2026-10-04,1,8028,,,,,
 reports/wikidata-frisk-geni-ids-removals.qs,2026-10-04,1,625,,,,,
 reports/wikidata-frisk-geni-ids.qs,2026-10-04,1,4973,,,,,
 reports/wikidata-from-diff-izumo.qs,2026-10-04,1,1811,,,,,
-reports/wikidata-from-diff.qs,2026-10-04,1,1134259,,,,,
+reports/wikidata-from-diff.qs,2026-10-04,1,1125154,,,,,
 reports/wikidata-frontier-era.md,2026-10-04,1,5686,,,,,
 reports/wikidata-garborg-day-1.qs,2026-10-04,1,16921,,,,,
 reports/wikidata-garborg-day-2026-08-25-run.qs,2026-10-04,1,15617,,,yes,,
-reports/wikidata-garborg-day-auto.txt,2026-10-04,1,376544,,,,,
-reports/wikidata-garborg-day-manual.txt,2026-10-04,1,588199,,,,,
-reports/wikidata-garborg-day.txt,2026-10-04,1,590609,,,,,
+reports/wikidata-garborg-day-auto.txt,2026-10-04,1,250482,,,,,
+reports/wikidata-garborg-day-manual.txt,2026-10-04,1,527036,,,,,
+reports/wikidata-garborg-day.txt,2026-10-04,1,529446,,,,,
 reports/wikidata-garborg-label-fixes.qs,2026-10-04,1,10197,,,,,
 reports/wikidata-garborg-links.qs,2026-10-04,1,7253,,,,,
-reports/wikidata-garborg-name-items.txt,2026-10-04,1,90846,,,,,
+reports/wikidata-garborg-name-items.txt,2026-10-04,1,88144,,,,,
 reports/wikidata-garborg-role-fixes.qs,2026-10-04,1,783,,,,,
 reports/wikidata-geni-qid-p2600.qs,2026-10-04,1,13697,,,,,
 reports/wikidata-id-backfill.qs,2026-10-04,1,17462,,,,,
@@ -10315,5 +10315,5 @@ reports/correspondence-sources.md,2026-10-04,1,3343,600,-596,,,
 reports/path-census.md,2026-10-04,1,1407,600,-596,,scripts/census-paths.py,
 docs/rules/wikidata-editing.md,2026-10-04,1,99124,602,-598,,,
 docs/rules/working-here.md,2026-10-04,1,44292,607,-603,,,
-devlog.md,2026-10-04,1,3319243,815,-811,,scripts/audit-turns-recorded.py,
+devlog.md,2026-10-04,1,3323580,815,-811,,scripts/audit-turns-recorded.py,
 reports/sparse-ancient-exports-2026-08-22.md,2026-10-04,1,3054,5000,-4996,yes,,
