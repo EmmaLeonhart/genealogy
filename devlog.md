@@ -51959,3 +51959,12 @@ Emma: the Geni version of Anders Petter Nilsson's parents (Anders Gustaf Olsson 
 "nonsensical to the point that I don't believe it". The name agrees: his patronymic Nilsson fits Niklas Olsson,
 and a son of Anders Gustaf would be Andersson. #19 and #20 are now `not a real dispute`, and no second parent is
 created for him. 19 disputed cases remain.
+
+## 2026-10-05: the FamilySearch id review moved to the end of the queue (Emma)
+
+Emma: the one-by-one review of the FamilySearch ids is important but too slow for the front (about 110 an hour).
+The batch in progress was finished: 175 of 4,412 judged (171 same, 4 different: Anna Knudsdatter Bjørgo, Ole
+Knudsen Mestad and Guri Pedersdatter Finne carry the ids of Birgit Jonsdatter, Otter Andersen Rotneim and Kristine
+Larsdatter Schack, and Gillis de Bèche carries the id of the elder Gillius). The rest is its own item at the end,
+with where it stopped and how to pick it up. The cutoff item keeps what is not the FamilySearch review: the six
+wrong ids waiting for a group of ten, and a pointer to the family-link audit.
