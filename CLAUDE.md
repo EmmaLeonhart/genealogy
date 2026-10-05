@@ -240,6 +240,8 @@ Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner,
 
 The noticeboard rule below still applies before any run.
 
+**⛔ FIX BATCHES RUN WITHOUT WAITING FOR EMMA. Ruled 2026-10-05 (Emma):** *"it shouldn't be waiting"*, and *"if the queue tells you to do quick statements, you have permission to do them."* A built zipper split batch (or any fix batch a queue item calls for) is run as soon as its lines are checked live: a NEW tab, Run, then `scripts/session-2026-10-04/verify-qs.py` and a devlog entry. No "run it?" question. Batches 6 and 7 each waited hours on one. This covers what the queue asks for, not QuickStatements started on a session's own initiative outside a queue item.
+
 **⛔ WHEN SOMETHING ABOUT THE BATCH IS UNCLEAR, DON'T STOP TO ASK: IMPLEMENT, REGENERATE, RUN. Ruled 2026-09-27 (Emma).** Overlapping batches, a possible duplicate, which order is current: implement the batch-structure changes Emma has asked for, regenerate the batch, and when the regeneration finishes, open another tab and run it. The batch order is ten FamilySearch people first (a separate population, a test that they come out well formed; **paused 2026-09-30**, Emma: FamilySearch creations wait on the zipper merge, `CREATIONS_PAUSED` in `build-familysearch-day.py`, so the section is empty), then the ring (shuffled), then the name items, then the other people one at a time with a slice of the edits on existing items: `max(120, 180 - ring)` of them, so a batch aims at 180 people (Emma, 2026-09-27); the next lean rebuild starts (from `ring-watch.yml`) as soon as the batch's last ring person is created, not when the whole batch ends.
 
 ## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS

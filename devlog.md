@@ -52136,3 +52136,16 @@ so that it is not run twice. It ran in a new QuickStatements tab with Run. `veri
 Created: `Q141649244` Konrad von Reinhausen (Udo of Hildesheim's brother), `Q141649254` Drogon d'Amiens (Adila's
 father), `Q141649260` Torild Totilsson (son of our Totil Thordsson). The item stays open: batch 8 (built, not run) and
 the rest of the #726-1010 work belong to the other two sessions.
+
+## 2026-10-05: zipper split batch 8 found already run (14/14); "fix batches run without waiting" rule committed
+
+The queue item said to run batch 8 (`reports/zipper-split-batch-8-2026-10-05.qs`, built 14:05 PDT) unless a live
+check showed it already ran. `verify-qs.py` showed it had: 14 of 14 lines as intended. Wikidata's history dates it to a
+browser run (`#temporary_batch_1791239938347`), 22:40-22:42 UTC (3:40-3:42 PM PDT), so it was not run in the background.
+It created Brita Gregersdotter `Q141649447` (daughter of Anna Gädda, wife of Åke Jönsson `Q42309350`). It also linked
+Lain Núñez `Q141648893` to his son Fernando Laínez `Q141648895`, left over from batch 7, and gave Agneta von Fahrensbach
+`Q103775136` both fathers with a disputed qualifier.
+**Unexpected:** no devlog entry recorded this run. Another session ran it and did not log it, so this entry is the record.
+It was not run a second time.
+The rule ("fix batches run without waiting for Emma") was already in the working copy of `CLAUDE.md`, next to the
+browser QuickStatements loop, but not committed. It is committed here as written.
