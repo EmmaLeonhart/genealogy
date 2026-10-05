@@ -52054,3 +52054,16 @@ she and Michitoki are linked to Keiko and Kinfusa as parents, marked disputed wh
 checked live.
 **4:30 cron:** Special:MergeItems again took no merge (filled fresh, submitted, both from-items still items, no
 error on the page). The queue item stays, which now lists 5 pairs of the session's own duplicates.
+
+## 2026-10-05: zipper split batch 4 checked live; this checkout was moved back to a stale main
+
+Batch 4 (Emma: "Yes, run it"; 32/32, checked live, every line as intended): Ralph V de Tosny's wife is now Marguerite de
+Beaumont `Q59154744` (not her sister Isabella); our Henry IV of Żagań is no longer his own brother and has his brother
+Bolesław `Q480572`; the Bilstein people the zipper had laid over the counts of Maden now exist: `Q141647805` Hilja von
+Gudensberg, `Q141647810` Wigger III, `Q141647811` Rugger von Bilstein (Rugger's links to his father and wife go in
+the next batch). Four more of the session's own duplicates are on the merge item. Berg (#346/347) and Formbach
+(#350/351) were reclassified UNSURE for a careful pass: the generations do not line up on either side.
+**Unexpected:** while batch 4 ran, `git checkout main` was run in this checkout (reflog: "moving from 303aaaf58 to
+main"), not by this session. The local `main` branch was stale at 2026-10-03 (`4b59bca67`), so today's files
+disappeared from disk; nothing was lost on GitHub. The one local-only commit had already been pushed as
+`cb3f9d79b` (`git cherry`: "-"), so `git rebase origin/main` brought `main` level with GitHub without dropping anything.
