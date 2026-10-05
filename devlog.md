@@ -51968,3 +51968,13 @@ Knudsen Mestad and Guri Pedersdatter Finne carry the ids of Birgit Jonsdatter, O
 Larsdatter Schack, and Gillis de Bèche carries the id of the elder Gillius). The rest is its own item at the end,
 with where it stopped and how to pick it up. The cutoff item keeps what is not the FamilySearch review: the six
 wrong ids waiting for a group of ten, and a pointer to the family-link audit.
+
+## 2026-10-05: the six wrong ids removed; the cutoff item closed
+
+`reports/zipper-review-id-removals-2026-10-05.qs` ran in a new QuickStatements tab with Run: 6 of 6, no errors,
+all 6 checked gone live. Sent as six, not ten: the FamilySearch review is at the end of the queue now, so a group
+of ten would have left known wrong ids live for days (said in advance; no objection). Removed: `Q65809823` Yang
+Shi and `Q10513912` Xiao Xia (Geni ids), and the FamilySearch ids on `Q141562087` Anna Knudsdatter Bjørgo,
+`Q141562860` Ole Knudsen Mestad, `Q141565233` Guri Pedersdatter Finne and `Q5618220` Gillis de Bèche.
+Cutoff item closed: the restore check, the 601 Geni ids and these removals are done; the family links since 09-28
+are the "Zipper-merge audit" item, and the FamilySearch review is its own item at the end.
