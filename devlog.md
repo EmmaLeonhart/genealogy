@@ -51912,3 +51912,11 @@ Emma authorized it by AskUserQuestion ("Run the revert"). `reports/fix-batch-rev
 QuickStatements tab with Run: 655 of 655 steps, 4 errors. Checked live, line by line: all 227 restores are
 present and all 201 removals are gone, so the 4 errors touched none of the statements (presumably the reference
 steps). Of the Infovarius fix batch, the 509 LAST corrections stand; the 227 direct links are back as they were.
+
+## 2026-10-04: wrong Geni ids are removed as they are judged (Emma)
+
+Emma asked why the errors found by the review were left live. They were held for a go-ahead and for one batch at the
+end, which only left known errors in place. By AskUserQuestion ("Yes, and keep going"): the 13 still live of the 25
+DIFFERENT verdicts so far go now (`reports/zipper-review-geni-id-removals-2026-10-04.qs`), and from here on each
+DIFFERENT id is removed as soon as it is judged. Not included: `Q2746341` Ælfthryth also carries Baldwin II as a
+spouse, and who added it has not been checked yet.
