@@ -51920,3 +51920,4 @@ end, which only left known errors in place. By AskUserQuestion ("Yes, and keep g
 DIFFERENT verdicts so far go now (`reports/zipper-review-geni-id-removals-2026-10-04.qs`), and from here on each
 DIFFERENT id is removed as soon as it is judged. Not included: `Q2746341` Ælfthryth also carries Baldwin II as a
 spouse, and who added it has not been checked yet.
+Ran 2026-10-04 in a new QuickStatements tab with Run: 13 of 13, no errors. Checked live: all 13 Geni ids are gone.
