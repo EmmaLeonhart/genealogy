@@ -52001,3 +52001,14 @@ Batch 2: the three new couples are spouses of each other (12/12). Batch 3, from 
   `Geni 6000000227331880928` (the last rung of the frozen ladder, since he has no dates). He is the second father of
   Mishima no Ashinazu `Q135579366`, and both fathers are qualified disputed.
 Left: the Erick/Karin spouse link, and Anna Persdotter (waits for the merge of her two items).
+
+## 2026-10-05: disputed parentage finished: all ten real disputes carry both parents
+
+Batch 4 (10/10, checked live): Erick Nilsson and Karin Nilsdatter are spouses, and Anna Persdotter `Q141290456` has
+both mothers, Karin `Q141318969` and the new `Q141645327` Kerstin Larsdotter, qualified disputed. Emma asked that
+the merge and the link be done by the session, not left as open questions.
+**Correction, said plainly:** the "duplicate" Anna Persdotter was not one. `Q141586037` had been a redirect to
+`Q141290456` since before today. `wbgetentities` follows redirects, so it returned the target twice, and that was
+misread as two items. The merge page answered "already merged" and nothing was changed.
+Item closed. In all: 10 parents created (`Q141645151`-`159`, `Q141645291`-`293`, `Q141645327`), Anna Ersson
+linked, Anna Ersson's wrong parents replaced, every disputed slot qualified `P1480` = disputed.
