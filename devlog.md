@@ -51990,3 +51990,14 @@ children each hold both parents, all qualified `P1480` = disputed. New items: `Q
 `life_description`. Anna Ersson `Q141622328` already existed and was linked.
 **Unexpected:** Anna Persdotter exists twice (`Q141290456`, `Q141586037`, same two Geni ids), so her case waits for
 a merge. Anna Ersson's item carries Maria Maja's parents. Raihita no Wiho waits for a label decision (no Han name).
+
+## 2026-10-05: disputed parentage, batches 2 and 3 checked live
+
+Batch 2: the three new couples are spouses of each other (12/12). Batch 3, from Emma's answers (16/16):
+- Anna Ersson `Q141622328`, "Replace with her own": Erik Trast and Kjerstin Nilsdotter (Maria Maja's parents, a
+  zipper fusion) were taken off her both ways. Her own parents from her Geni record were created: `Q141645291` Erick
+  Nilsson and `Q141645292` Karin Nilsdatter.
+- Raihita no Wiho, "Katakana here": `Q141645293` "Raihita no Wiho no Mikoto", `ja` ライヒタノウィホノミコト, description
+  `Geni 6000000227331880928` (the last rung of the frozen ladder, since he has no dates). He is the second father of
+  Mishima no Ashinazu `Q135579366`, and both fathers are qualified disputed.
+Left: the Erick/Karin spouse link, and Anna Persdotter (waits for the merge of her two items).
