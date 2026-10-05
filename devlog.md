@@ -52206,3 +52206,28 @@ Kåresson: his father is disputed, and both Aun and Bifra-Kåre are qualified `P
 as Solgi's father. That link is off, and the item is on the merge list.
 Coordination: genealogy-42 ran batch 10 (Formbach) and takes Matsudaira/Mitsukuri as batch 11. This session takes the
 2026-09-28 cutoff statements next.
+
+## 2026-10-05: zipper split batch 11 (Matsudaira/Mitsukuri) ran and checked live (40/40)
+
+The split work is shared with genealogy-fa, which handed this session #431, 526, 527 and 529, plus batch 10's leftover
+link. #432 had already gone out in batch 5 (only removals; our 康納 `Q141637090` is on the merge list for
+`Q128865484`). The SPLIT verdicts in `zipper-pair-verdicts.tsv` were re-read against live data and hold. The zipper had
+fused two Matsudaira generations with the Mitsukuri/Kikuchi family and with Koide Fusaoki.
+- #527: Geni's 康道 is 松平康道 `Q128865475` (father 康詮, son 康任 on both sides). Our wife 松平康道室 五島 `Q141636953`
+  comes off Mitsukuri Shūhei `Q6532071` and goes on `Q128865475`.
+- #529: Geni's 康任 is 松平康任 `Q3538594` (father 康道). 康道's wife comes off Koide Fusaoki `Q11459133` as his mother and
+  goes on `Q3538594`. 康任's wife 康任正室 松平 `Q141636982` comes off Fusaoki and goes on `Q3538594` as his wife.
+- #431: 康道's wife comes off Kikuchi Dairoku `Q976582` as his mother. 康義 松平 is created as `Q141649704`, son of
+  `Q128865475` and `Q141636953`.
+- #526: 康任's wife comes off 小出英発の娘 `Q134593756` as her mother. 英発正室 松平 is created as `Q141649714`, daughter of
+  `Q3538594` and `Q141636982`.
+- Ulrich I. von Formbach `Q141649649` is now the father of Berthold im Schweinachgau `Q141649646` (batch 10's leftover).
+**Unexpected:** both of our wives exist twice on Wikidata, each copy carrying the same zipper links. 松平康道室 五島 is
+`Q141636953` and `Q141638506`; 康任正室 松平 is `Q141636982` and `Q141638588`. The removals went on both copies, the
+corrected links on the older copy only. Both pairs are for the merge item (passed to genealogy-fa, which has `queue.md`
+open).
+**Unexpected:** Geni's own record for 英発正室 fuses her with her daughter: it gives her spouse as "Sono" and her child as
+Sono Sachiko, who belong to 小出英発の娘. Those two links are obviously wrong and were left out of the creation. Her
+Geni child 都子 松浦 of 康義 (`6000000002278888556`) is still zipper-paired with Kikuchi's daughter 菊池多美子
+`Q140366783`; no statement of ours rests on that pair, so nothing was sent for it.
+The batch ran with Run in a new tab at about 4:15 PM PDT. `verify-qs.py`: 40 ok, 0 not as intended.
