@@ -52076,3 +52076,20 @@ corrected the item (GitHub has no repo named wikidata_to_gedcom) and had left an
 folder at `genealogy/wikidata_to_gedcom/` (no `.git`). That copy was moved aside into this session's scratchpad, not
 deleted, before the submodule was added. Emma's local `Documents\GitHub\wikidata_to_gedcom` was not touched. What it is
 and how the repo uses it is in `CLAUDE.md`. Item closed.
+
+## 2026-10-05: zipper split batch 5 checked live; review through #575
+
+Batch 5 (Emma: "Yes, run it"; 74 commands, Run, two "Base statement not found" on removals): checked live, all 65
+statement lines as intended. 49 wrong zipper links are off. `Q141648211` Judith de Vaudemont is created, the daughter
+of Gerard of Vaudémont and Hedwig; the zipper had made our Gisèle `Q141628341` her own sister. Inoue Masatoshi
+`Q11373071`, Koide Fusatomo `Q11459136` and Itakura Shigeyasu `Q8515460` now carry their own father, mother and wife.
+Before, those relatives sat on Shirakawa Masataka-ō, Sono Motoyoshi and Takakura Nagafusa. Rugger von Bilstein is
+linked to his father Wigger III and his wife Hilja. Three unnamed wives (of Koide Hidetoshi, Hidemochi and Hidesada)
+are only taken off: they have no name of their own and are not created. Several of our people turned out to be
+created twice with one Geni id, both copies carrying the wrong link; both lost it. The second copies and our duplicates
+of existing items (19) are on the merge item.
+Review #475-575 recorded. More Koide/Sono fusions (#528, #530). Two chains need a batch of their own, because the
+zipper laid them a generation off: Matsudaira onto Mitsukuri (#431, 432, 526, 527, 529) and the Hordaland kings
+(#385, 540, 542, with 810, 811, 1101, 1171 still to read). Also SPLIT: #541 Wassenberg/Guelders, #553 Ekbert/Bruno of
+Walbeck, #560 Hidda/Tuta. #519 Ranulph de Varenne / Hugues of Coutances is back to UNSURE, because Wikidata itself
+gives Hugues the Warenne family.
