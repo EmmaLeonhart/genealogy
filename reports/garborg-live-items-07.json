@@ -512552,47 +512552,6 @@
    ],
    "P3373": [
     {
-     "id": "Q141628247$638AAB59-87EB-4667-9FBB-D9F6D9F49D70",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q75290495",
-        "numeric-id": 75290495
-       }
-      },
-      "hash": "2261f9025c75c18acd5fd2b59e338e34085a056a",
-      "property": "P3373",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "e4d431aea4e10ee0ed6676f6b4d1379279456783",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000001500884093"
-          },
-          "hash": "89487445bda4012944ea89ff011d9ae223a2f505",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    },
-    {
      "id": "Q141628247$04B8AC44-1E37-4207-B0A4-90DAFAD0A20D",
      "mainsnak": {
       "datatype": "wikibase-item",
@@ -512878,6 +512837,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141628247$348F89CD-62C1-4827-8763-C910B4C7E799",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141646027",
+        "numeric-id": 141646027
+       }
+      },
+      "hash": "0e7af9ebf240249eacab6a081b817e29e19c53d9",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "e4d431aea4e10ee0ed6676f6b4d1379279456783",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000001500884093"
+          },
+          "hash": "89487445bda4012944ea89ff011d9ae223a2f505",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P40": [
@@ -513066,8 +513066,8 @@
     "value": "伊丽莎白·德·卡隆"
    }
   },
-  "lastrevid": 2552535975,
-  "modified": "2026-10-03T10:12:52Z",
+  "lastrevid": 2553421072,
+  "modified": "2026-10-05T11:28:30Z",
   "ns": 0,
   "pageid": 135205753,
   "sitelinks": {},
