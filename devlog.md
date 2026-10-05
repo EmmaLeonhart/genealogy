@@ -51905,3 +51905,10 @@ added a link to the batch's last creation (`Q141628775`, `Q141628599` and others
 Revert built from the live state: `reports/fix-batch-revert-2026-10-04.qs`, 428 commands (227 restores, using
 each original line from the batch file with its reference, and 201 removals of the wrong links still live).
 List: `reports/session-2026-10-04/fix-batch-direct-links-wrongly-removed.json`. Not run yet.
+
+## 2026-10-04: the revert of the 227 links ran and was checked
+
+Emma authorized it by AskUserQuestion ("Run the revert"). `reports/fix-batch-revert-2026-10-04.qs` ran in a new
+QuickStatements tab with Run: 655 of 655 steps, 4 errors. Checked live, line by line: all 227 restores are
+present and all 201 removals are gone, so the 4 errors touched none of the statements (presumably the reference
+steps). Of the Infovarius fix batch, the 509 LAST corrections stand; the 227 direct links are back as they were.
