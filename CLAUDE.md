@@ -602,6 +602,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   (or two mothers), each their own person, and the parentage is recorded as disputed; neither side overwrites or
   deletes the other. The Swedish lines are where this hit: the ask to incorporate a second GEDCOM became an
   unconsented zipper merge that forced one ancestry onto the other.
+  **Except when one side is obviously wrong** (Emma, same day): then that side is omitted and no second parent
+  is created. The worked case: Anders Petter Nilsson's Geni parents (Anders Gustaf Olsson) are left out because
+  his patronymic Nilsson makes Niklas Olsson his father beyond doubt. That is the only such case among the 21; the
+  rest are real disputes.
 - **⛔ BE CAUTIOUS ABOUT REMOVING IDS. Ruled 2026-10-04 (Emma):** adding and removing Geni and FamilySearch ids
   over and over causes problems. An id comes off an item only when the record is clearly another person (Herman II
   of Swabia against Hermann von Arnsberg-Werl), never when it is one side of a disputed parentage.
