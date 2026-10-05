@@ -445,6 +445,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   (`HELD`/`EDITS_HELD`). Name and label changes may be written and tested; they reach Wikidata only
   with her go-ahead. A step that needs her decision is asked with AskUserQuestion, and the next
   workable item is taken meanwhile.
+- **⛔ NOTHING LIVES ONLY IN SCRATCH OR TEMP. Ruled 2026-10-04 (Emma).** Every script and every output a
+  session makes goes into the repo (scripts into `scripts/`, outputs into `reports/`) and is committed and
+  pushed. Storage Sense deletes temp files on this machine, and the session scratchpad and `$TEMP` are under
+  it: on 2026-10-04 the 5,329 id claims and the 1,261-pair zipper sheet existed only there.
 - **⛔ COMMIT AND PUSH AFTER EVERY MEANINGFUL CHANGE. Ruled 2026-09-25:** not in batches at the end
   of an item, so work is never left sitting unpushed. A finished step (a measured fix, a rebuilt
   report, a queue edit) is its own commit and is pushed at once.

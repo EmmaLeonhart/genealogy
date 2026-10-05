@@ -51852,3 +51852,12 @@ entered our permanent data.
 2026-09-30 162, 10-01 203, 10-02 4,140, 10-03 361, 10-04 463. The 10-02 spike lines up with the id backfill
 built from zipper pairs (not yet checked row by row). Nothing was changed. Restoring the ID-tracking files waits
 on Emma's cutoff date (2026-09-28 or earlier).
+
+## 2026-10-04: scratch work moved into the repo
+
+The session's scripts (`$TEMP/s/`) are now in `scripts/session-2026-10-04/`, with their temp paths pointed at
+the repo. Its outputs are in `reports/session-2026-10-04/`: the 1,261 zipper pairs behind Wikidata links
+with both sides fetched, the ancestor deck's open cards and its 428 stored verdicts, the partial session
+verdicts on those cards (108, superseded by the full zipper review), the account's male-mother `P25`s, and
+the background batches' raw wrong links. The 5,329 id claims were already committed as
+`reports/id-claims-added-since-2026-09-28.tsv`. `CLAUDE.md`: nothing lives only in scratch or temp.
