@@ -150078,6 +150078,27 @@
       "property": "P25",
       "snaktype": "value"
      },
+     "qualifiers": {
+      "P1480": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q18912752",
+          "numeric-id": 18912752
+         }
+        },
+        "hash": "5539d72946d7d148a4372b3b865f7a60f397a94e",
+        "property": "P1480",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1480"
+     ],
      "rank": "normal",
      "references": [
       {
@@ -150111,6 +150132,68 @@
            "value": "6000000227891353779"
           },
           "hash": "6366381a1a05c3f6132540a25bfa51455081b4ce",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q141290456$25FEB0F9-7E1D-40B5-9826-BA5B82D9A141",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141645327",
+        "numeric-id": 141645327
+       }
+      },
+      "hash": "0bb5078bf2076adf0304f2562718a72e59230724",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1480": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q18912752",
+          "numeric-id": 18912752
+         }
+        },
+        "hash": "5539d72946d7d148a4372b3b865f7a60f397a94e",
+        "property": "P1480",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1480"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "db204d2f82cf2d21f1c497204c5e2056d84edf39",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000227892677845"
+          },
+          "hash": "0811308086503c30650a676bfeda9f66e3d42e77",
           "property": "P2600",
           "snaktype": "value"
          }
@@ -150814,8 +150897,8 @@
     "value": "安娜·佩尔斯多特"
    }
   },
-  "lastrevid": 2552999129,
-  "modified": "2026-10-04T10:20:11Z",
+  "lastrevid": 2553371097,
+  "modified": "2026-10-05T08:57:37Z",
   "ns": 0,
   "pageid": 134822359,
   "sitelinks": {},
@@ -181953,6 +182036,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141447128$C88CB3F5-D3AB-4AFE-B688-1577A656EFA4",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Tham-30"
+      },
+      "hash": "d31f9eafb809673cfa1c85e889a794a955432bac",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Gertrud Elisabet Tham (15 Nov 1702 - 17 Apr 1773)"
+        },
+        "hash": "a9d0de0e3b6e25533b54c2d513aa499ef6bc6e21",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141447128$D5160B3B-8B81-49C4-A619-0A78E2B1F1B5",
@@ -182239,8 +182356,8 @@
     "value": "格特鲁德·塔姆"
    }
   },
-  "lastrevid": 2552423086,
-  "modified": "2026-10-03T04:03:19Z",
+  "lastrevid": 2553367685,
+  "modified": "2026-10-05T08:47:46Z",
   "ns": 0,
   "pageid": 135007235,
   "sitelinks": {},
@@ -242300,6 +242417,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141517544$DE90F156-C749-48B7-808E-C2FF959D7ED0",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Nold-3"
+      },
+      "hash": "13a7e9fc1a38b0f492f5af5c4d577d2792ec75b9",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Helle Margrethe Nold aka Thomasdatter (1630 - 4 Mar 1671)"
+        },
+        "hash": "44f88a5fe30f729e6b11c50bcfe0c3a80d2b6969",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141517544$DE635B9D-2AF1-4583-A19C-D89982601F36",
@@ -242764,8 +242915,8 @@
     "value": "赫勒·马尔格雷特·托马斯达特·诺尔德"
    }
   },
-  "lastrevid": 2552426729,
-  "modified": "2026-10-03T04:15:02Z",
+  "lastrevid": 2553366902,
+  "modified": "2026-10-05T08:45:33Z",
   "ns": 0,
   "pageid": 135077250,
   "sitelinks": {},
@@ -328247,6 +328398,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141550888$5AFFAA0E-9F11-4337-940A-10E1DB93A22A",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Troilia-10"
+      },
+      "hash": "ba672dbbbcaad8d5984ccce3eedd2e168756a54b",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Emfred Troilia aka Unosdotter (1623 - est. 1697)"
+        },
+        "hash": "cd0dfbf0c05cb740f8e7394282dbf88999cb9ef6",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141550888$A86F1377-4A94-4F76-BF03-357E88C2BA5E",
@@ -328644,8 +328829,8 @@
     "value": "埃姆夫雷德·乌诺斯多特·特罗伊利阿"
    }
   },
-  "lastrevid": 2552430923,
-  "modified": "2026-10-03T04:28:05Z",
+  "lastrevid": 2553367714,
+  "modified": "2026-10-05T08:47:49Z",
   "ns": 0,
   "pageid": 135109975,
   "sitelinks": {},
@@ -449167,6 +449352,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141583736$0991B5D3-BF2C-4D90-B217-41BEDD69DDA7",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Krabbe_af_Svaneby-1"
+      },
+      "hash": "f06dc54fbb740ca2c945659c8bf24592b1b64040",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Knut Krabbe af Svaneby ( - est. 1594)"
+        },
+        "hash": "b480740043c43ae4f04515af624c81d3fc641628",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141583736$7511C992-A5EE-426E-BB1A-E9CCBB60E2C9",
@@ -449422,8 +449641,8 @@
     "value": "克努特·克拉贝·阿夫·斯瓦内比"
    }
   },
-  "lastrevid": 2550258349,
-  "modified": "2026-09-28T01:44:01Z",
+  "lastrevid": 2553366484,
+  "modified": "2026-10-05T08:44:28Z",
   "ns": 0,
   "pageid": 135142604,
   "sitelinks": {},
@@ -452614,6 +452833,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141584136$01D2E7B9-E983-4734-9852-F1B6D98DC515",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Linnerhielm-3"
+      },
+      "hash": "87d7d11dfb89ff22214c8aeb17760e6a219cfac1",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Anna Christina Jonasdotter Linnerhielm (14 Jul 1709 - 2 Oct 1775)"
+        },
+        "hash": "d04f846eaa7e75e9e748f225fa6e09ccba052ef6",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141584136$209BB54E-7931-487F-AC03-A35D1D7AC34E",
@@ -452848,8 +453101,8 @@
     "value": "安娜·克里斯蒂娜·利内尔希埃尔姆"
    }
   },
-  "lastrevid": 2550275521,
-  "modified": "2026-09-28T02:27:01Z",
+  "lastrevid": 2553367639,
+  "modified": "2026-10-05T08:47:39Z",
   "ns": 0,
   "pageid": 135143763,
   "sitelinks": {},
@@ -498832,6 +499085,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141612104$7D1F944B-AC1B-4501-BB96-C9463488F0F7",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Jonsson-5319"
+      },
+      "hash": "59e73ba431e6439d1f96a30f7a390c90c2882185",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Gregorius Jonsson (est. 1160 - 1228)"
+        },
+        "hash": "1a55fcd7a90f50fc6bb66bac470429a03bf6a21a",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141612104$DFDEF420-91B7-4ACC-8001-B9ACFCD0850C",
@@ -499199,8 +499486,8 @@
     "value": "格雷戈里乌斯·约翰逊·胡克"
    }
   },
-  "lastrevid": 2552815120,
-  "modified": "2026-10-03T23:56:39Z",
+  "lastrevid": 2553367702,
+  "modified": "2026-10-05T08:47:48Z",
   "ns": 0,
   "pageid": 135186828,
   "sitelinks": {},
@@ -507908,6 +508195,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141620040$09FBDC33-9EB5-4CD8-B023-D5CAA4E5B92D",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Warnmark-1"
+      },
+      "hash": "b22c298de5721ea68fd2f388885f6a19aec0cc21",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Christina Wester (Warnmark) (est. Apr 1654 - Mar 1717)"
+        },
+        "hash": "179b0539522862346b5d05ab776fc861ca5168e7",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141620040$9D13CD78-F6A3-442F-8764-8943E3BA33D7",
@@ -508197,8 +508518,8 @@
     "value": "克里斯蒂娜·瓦尔恩马尔克"
    }
   },
-  "lastrevid": 2552440249,
-  "modified": "2026-10-03T04:57:20Z",
+  "lastrevid": 2553367344,
+  "modified": "2026-10-05T08:46:44Z",
   "ns": 0,
   "pageid": 135197192,
   "sitelinks": {},
@@ -516221,34 +516542,34 @@
    ],
    "P22": [
     {
-     "id": "Q141622328$AECA4EAA-9273-4A6E-AB42-6276969D35FE",
+     "id": "Q141622328$76C975F2-2E4F-4DCC-A344-966E664AB479",
      "mainsnak": {
       "datatype": "wikibase-item",
       "datavalue": {
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q141511388",
-        "numeric-id": 141511388
+        "id": "Q141645291",
+        "numeric-id": 141645291
        }
       },
-      "hash": "741ac9448aacf6f84a1743c57a2e249d91a660b5",
+      "hash": "e395b7c661226b47deabc2cee1817ceb006748af",
       "property": "P22",
       "snaktype": "value"
      },
      "rank": "normal",
      "references": [
       {
-       "hash": "69a7e18e39248c57f96b621cad5223a68588ec58",
+       "hash": "10110db2beead507ef9151a5e14625047cc4752d",
        "snaks": {
         "P2600": [
          {
           "datatype": "external-id",
           "datavalue": {
            "type": "string",
-           "value": "6000000227891606412"
+           "value": "6000000227891441652"
           },
-          "hash": "c93dad80dab651f239d35a9d5606a588e7ae36d5",
+          "hash": "5469ae719eb056920baa4366ae9159bfe8d9f801",
           "property": "P2600",
           "snaktype": "value"
          }
@@ -516264,34 +516585,34 @@
    ],
    "P25": [
     {
-     "id": "Q141622328$4517CF77-CD8B-47CC-9684-5D1C3157C7E1",
+     "id": "Q141622328$3CCCEE74-F333-424D-A0B4-EE10D141B24A",
      "mainsnak": {
       "datatype": "wikibase-item",
       "datavalue": {
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q141514163",
-        "numeric-id": 141514163
+        "id": "Q141645292",
+        "numeric-id": 141645292
        }
       },
-      "hash": "470d7c22400b9ddf4ec4929e3559be69157b52b4",
+      "hash": "c0fa3abc49b3b065f94181e8075d589f2704bc0c",
       "property": "P25",
       "snaktype": "value"
      },
      "rank": "normal",
      "references": [
       {
-       "hash": "69a7e18e39248c57f96b621cad5223a68588ec58",
+       "hash": "7ff0928a09092e903ecf57a9bb5c33d6e04c472a",
        "snaks": {
         "P2600": [
          {
           "datatype": "external-id",
           "datavalue": {
            "type": "string",
-           "value": "6000000227891606412"
+           "value": "6000000227891441673"
           },
-          "hash": "c93dad80dab651f239d35a9d5606a588e7ae36d5",
+          "hash": "58560a7e912249bed9fb2783b29cfa4ae0a6abe9",
           "property": "P2600",
           "snaktype": "value"
          }
@@ -516610,8 +516931,8 @@
     "value": "安娜·埃尔松"
    }
   },
-  "lastrevid": 2552112720,
-  "modified": "2026-10-02T10:12:16Z",
+  "lastrevid": 2553368109,
+  "modified": "2026-10-05T08:48:59Z",
   "ns": 0,
   "pageid": 135199520,
   "sitelinks": {},
@@ -524388,6 +524709,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141625976$3DA32F01-30D0-4A1C-B3E7-535831DAC8A2",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Erlingsson-5"
+      },
+      "hash": "1254f942a4144c26d490c5712e0832b42742cbfb",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Skjalg Erlingsson (999 - 10 Aug 1062)"
+        },
+        "hash": "f35743c8b5ff9febb35269f1583d6deea83ff4b1",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141625976$BB290935-FF93-4214-A26E-961FB3490E9E",
@@ -524620,8 +524975,8 @@
     "value": "沙尔格·埃林松·索拉"
    }
   },
-  "lastrevid": 2552325882,
-  "modified": "2026-10-02T22:08:10Z",
+  "lastrevid": 2553368014,
+  "modified": "2026-10-05T08:48:44Z",
   "ns": 0,
   "pageid": 135203037,
   "sitelinks": {},
@@ -539482,6 +539837,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141628712$B7BBE5F7-696D-47B4-8479-0A4E169EE9A1",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Wrede_af_Elimä-50"
+      },
+      "hash": "f4e8ec2326c8bf71c93dff9676e4fe7247b2fe0b",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Agneta Charlotta Wrede af Elimä (est. 1772 - est. 1772)"
+        },
+        "hash": "7720cdec40e95bf52caf76dd31c52f53b88cca6e",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141628712$4B7DF4E8-8545-46EF-B98D-3314623AB855",
@@ -539759,8 +540148,8 @@
     "value": "艾格尼塔·夏洛塔·夫雷德·阿夫·埃利梅"
    }
   },
-  "lastrevid": 2552796048,
-  "modified": "2026-10-03T22:41:56Z",
+  "lastrevid": 2553368005,
+  "modified": "2026-10-05T08:48:43Z",
   "ns": 0,
   "pageid": 135206089,
   "sitelinks": {},
@@ -540415,6 +540804,40 @@
      "type": "statement"
     }
    ],
+   "P2949": [
+    {
+     "id": "Q141629080$D016E548-ED07-4640-B573-3B23BF6DF391",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Von_Saletta-1"
+      },
+      "hash": "6d9ffd555fadc3395cb8efd0653995ca3f316bd1",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Barbro von Saletta (1598 - 1629)"
+        },
+        "hash": "27946854ed9e72f0a385eb17602a0195d42d2284",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P31": [
     {
      "id": "Q141629080$2DE8B8F6-5E9D-47DD-B2FF-67305BD300F2",
@@ -540622,8 +541045,8 @@
     "value": "巴布罗·翁·萨莱塔"
    }
   },
-  "lastrevid": 2552795876,
-  "modified": "2026-10-03T22:41:32Z",
+  "lastrevid": 2553367563,
+  "modified": "2026-10-05T08:47:28Z",
   "ns": 0,
   "pageid": 135206199,
   "sitelinks": {},
