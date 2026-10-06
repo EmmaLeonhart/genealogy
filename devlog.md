@@ -52767,3 +52767,24 @@ Queue item "Analyze the Daniel name links". Report only; the fix is queued as th
   Others may be right for their bearers and need judging one by one: Japanese families in kanji (Konoe 6, Sasaki 3,
   Fujiwara 2), Konstantinos in Greek 5, Rurikid Vsevolod/Sviatoslav in Cyrillic, Hebrew names (Ashkenazi 10, Mordechai 4).
 - The three Daniel lines of batch `8bb75afff` ran in the browser this morning, as the earlier session left them.
+
+## 2026-10-06: wrong-script name links: the plan fixed by an overlay; a fix batch built, not run
+
+Queue item "Fix the wrong-script name links found by the Daniel analysis" (queued by this session).
+- **The resolution.** Rebuilding `reports/name-resolution.csv` would mean re-running the August label fetch and the
+  name measurement against the whole store; instead `namemodel.load_plan` now overlays
+  `reports/wrong-script-name-links.tsv` (next to the existing `ambiguous-names-resolved.tsv` overlay), and replaces a
+  plan link only while the plan still holds the wrong item. 29 given-name tokens, each judged by itself against a live
+  lookup of Latin-script items whose `mul` is exactly the token (`latin-name-candidates.py`,
+  `reports/name-links-latin-candidates-2026-10-06.tsv`): Daniel -> `Q14516546`, Karl -> `Q15731830`, Eva -> `Q829665`,
+  David -> `Q18057751`, Louis -> `Q2897866`, Bo -> `Q1234223` (the Swedish bearers, Bo Jonsson Grip and others, had the
+  Chinese 伯 Bo), Zacharias, Konstantinos, Vsevolod, Sviatoslav, Meir, Mordechai, Aryeh and others. Left as they are:
+  CJK and pinyin tokens (Sinosphere people get no name statements now), family names, the Cyrillic patronymics, and
+  tokens with no exact Latin-script match. Checked: `load_plan()` returns the new items for all six above.
+- **The live links.** `build-wrong-script-name-fix.py` (live re-check) wrote `reports/wrong-script-name-fix-2026-10-06.qs`:
+  253 removals of the wrong `P735` and 233 additions of the right one (20 items already hold it). Only links the
+  account added, or that came with an item the account created; 16 are left alone (11 added by other editors, such as
+  KrBot on Byzantine emperors, and 5 on items other editors created where no adding edit was found).
+- **Not run.** It removes 253 statements and the item asking for it was written by this session, not by Emma, so it
+  waits on her go-ahead (NEEDS-DECISION: Emma, whether to run the batch). The next pipeline batch adds the right links
+  by itself through the plan; the removals are what needs the decision.

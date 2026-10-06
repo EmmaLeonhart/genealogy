@@ -2465,6 +2465,19 @@ def load_plan(path: Path | None = None) -> dict:
                 if qid:
                     out[(row["token"], "given")] = (qid, "link (ambiguity resolved)")
 
+    # ⛔ **A LATIN TOKEN LINKED TO A NAME ITEM IN ANOTHER SCRIPT (2026-10-06).** `Daniel` went to
+    # `Q53787734`, the Hebrew-script Daniel, because the label table the plan was resolved from has no
+    # row for the Latin `Q14516546`, whose only label is `mul`; Karl went to Cyrillic Карл, Eva and
+    # Louis to Greek-script items. `reports/wrong-script-name-links.tsv` names each case, judged one by
+    # one, and replaces the link only while the plan still holds the wrong item.
+    wrong = ROOT / "reports" / "wrong-script-name-links.tsv"
+    if wrong.exists():
+        with open(wrong, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                key = (row["token"], row["usage"])
+                if out.get(key, ("",))[0] == row["wrong_qid"]:
+                    out[key] = (row["qid"], "link (wrong-script item replaced)")
+
     # **Does WIKIDATA have this name item -- not, does one of OUR people already link to one.**
     #
     # Reported 2026-08-29 on Tunheim: some of these names were merged into an existing item,
