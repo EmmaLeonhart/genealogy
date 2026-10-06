@@ -3308,17 +3308,31 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     # it is under a day old and may still be in a running batch. A label that landed and was changed later
     # by somebody stays drained, which keeps the repeat from undoing a hand correction. Aliases (`A`)
     # drain on emission as before: nothing records whether one landed, and a repeat is a no-op anyway.
-    landed = set()
+    # ⛔ **AND A SLOT THE ACCOUNT TOUCHED SINCE THE FIRST EMISSION STAYS DRAINED (2026-10-06).** A label
+    # that never landed but whose slot an edit of the account set to another value or removed after it
+    # was first emitted is a slot somebody decided. And a slot ever edited BY HAND (outside QuickStatements,
+    # `hand` 1) stays drained whatever the dates: Emma removed the `en` of `Q141523636` by hand on
+    # 2026-09-21, before the values the generator emitted for it on 2026-09-28 and 2026-10-03, and without
+    # this the next batch would put one back. Only a slot nobody has decided is sent again.
+    landed, touched = set(), {}
     landed_path = ROOT / "reports" / "account-label-sets.tsv"
     if landed_path.exists():
         for row in csv.DictReader(landed_path.open(encoding="utf-8"), delimiter="	"):
             landed.add((row["qid"], row["slot"], row["value"]))
+            slot = (row["qid"], row["slot"])
+            when = "9999" if row.get("hand") == "1" else row["timestamp"][:10]
+            touched[slot] = max(touched.get(slot, ""), when)
     recent = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
     if done_path.exists():
+        first, last = {}, {}
         for row in csv.DictReader(done_path.open(encoding="utf-8"), delimiter="	"):
             key = (row["qid"], row["slot"], row.get("value", ""))
+            when = row.get("first_emitted") or ""
+            first[key] = min(first.get(key, when), when)
+            last[key] = max(last.get(key, when), when)
+        for key in first:
             if (not landed_path.exists() or not key[1].startswith("L") or key in landed
-                    or (row.get("first_emitted") or "") >= recent):
+                    or last[key] >= recent or touched.get(key[:2], "") >= first[key]):
                 done.add(key)
 
     def is_label_edit(ln):

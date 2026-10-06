@@ -61,21 +61,31 @@ ACCOUNT = "日巫女"
 LEDGER = ROOT / "reports" / "garborg-qids.tsv"
 #: `qid`, `property`, `value`: the relationship statements on every item the account has edited.
 EDITED_LINKS = ROOT / "reports" / "account-edited-links.tsv"
-#: `qid`, `slot`, `value`, `timestamp`: every label the account's edits actually set (2026-10-06).
+#: `qid`, `slot`, `value`, `timestamp`, `hand`: every label the account's edits actually set or removed (2026-10-06).
 LABEL_SETS = ROOT / "reports" / "account-label-sets.tsv"
 #: `/* wbsetlabel-set:1|en */ Peder Samuelsson, #quickstatements; #temporary_batch_…`: the value is the
 #: autosummary after the autocomment, up to the QuickStatements summary when there is one.
-_LABEL_SET_RE = re.compile(r"^/\* wbsetlabel-(?:set|add):\d+\|([a-z][a-z0-9-]*) \*/ (.*?)(?:, #quickstatements.*)?$")
+#: A removal (`wbsetlabel-remove`) is recorded with an empty value: it set no label, but it shows that
+#: somebody (Emma by hand, under the account) acted on the slot, which `_cap_label_edits` reads.
+_LABEL_SET_RE = re.compile(r"^/\* wbsetlabel-(set|add|remove):\d+\|([a-z][a-z0-9-]*) \*/ (.*?)(?:, #quickstatements.*)?$")
 
 
 def label_sets(contribs):
-    """`{(qid, "L" + lang, value): timestamp}` for every label an edit of the account set (latest time wins)."""
+    """`{(qid, "L" + lang, value): (timestamp, hand)}` for every label an edit of the account set or
+    removed (a removal has value `""`; latest time wins). `hand` is 1 when any such edit was made
+    outside QuickStatements, which under this account means Emma by hand."""
     out = {}
     for c in contribs:
-        m = _LABEL_SET_RE.match(c.get("comment") or "")
-        if m and m.group(2):
-            key = (c["title"], "L" + m.group(1), m.group(2))
-            out[key] = max(out.get(key, ""), c.get("timestamp", ""))
+        comment = c.get("comment") or ""
+        m = _LABEL_SET_RE.match(comment)
+        if not m:
+            continue
+        value = "" if m.group(1) == "remove" else m.group(3)
+        if value or m.group(1) == "remove":
+            key = (c["title"], "L" + m.group(2), value)
+            was = out.get(key, ("", 0))
+            out[key] = (max(was[0], c.get("timestamp", "")),
+                        was[1] or int("#quickstatements" not in comment))
     return out
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 LINK_PROPS = ("P22", "P25", "P26", "P40", "P3373")
@@ -398,9 +408,9 @@ def main():
     # changed by somebody. Same fetch, no extra requests.
     sets = label_sets(contribs)
     with open(LABEL_SETS, "w", encoding="utf-8", newline="") as f:
-        f.write("qid\tslot\tvalue\ttimestamp\n")
-        for (qid, slot, value), ts in sorted(sets.items()):
-            f.write(f"{qid}\t{slot}\t{value}\t{ts}\n")
+        f.write("qid\tslot\tvalue\ttimestamp\thand\n")
+        for (qid, slot, value), (ts, hand) in sorted(sets.items()):
+            f.write(f"{qid}\t{slot}\t{value}\t{ts}\t{hand}\n")
     print(f"{len(sets)} labels set by the account's edits -> {LABEL_SETS.relative_to(ROOT)}")
 
     with open(LEDGER, "w", encoding="utf-8", newline="") as f:

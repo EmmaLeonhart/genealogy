@@ -52686,3 +52686,29 @@ was audited as it landed (`reports/daily-audit/2026-10-06-1791287342.md`).
 - `reports/wikidata-garborg-day-manual-held.txt` at `1aaab06f4` (191 creations, 9,859 lines) opened in a new
   QuickStatements tab and Run at about 5:05 a.m. PDT; the first creation is `Q141657252` Audleiv Gudraudsen, and the
   following `LAST` lines resolved to it.
+
+## 2026-10-06: label edits that never landed: the drain fix made safe, and what was lost
+
+Queue item "Label edits are dropped for good after one emission". The code fix, `8d3eb9408` (a label drains
+when an edit of the account set it, read from `reports/account-label-sets.tsv`), was already in. Found this session:
+- **No batch has been built on it.** Batch `8bb75afff` came from a pipeline run on `52fd8adf5`, before the fix: it
+  re-emitted 0 old label keys (104 `Amul` rescues only). The next pipeline run (12:19 UTC) is pending and has not
+  started, so the check on a real batch waits on CI (BLOCKED-ON-EXTERNAL: GitHub Actions not starting runs; unblocked
+  by the next "rebuild the batch" commit).
+- **Unexpected: the fix would have undone Emma's hand edits.** It re-sent any label that never landed, including on
+  a slot she had since edited by hand. `Q141523636`: she removed `en` "mm Concubine" in the UI on 2026-09-21; the
+  generator emitted `Len "NN"` (2026-09-28) and `Len`/`Lmul "Guðrún Daðadóttir"` (2026-10-03), none landed, and the
+  fix made all three eligible again. Now `refresh-garborg-ledger.py` also records label removals (empty value) and a
+  `hand` column (1 when the edit was made outside QuickStatements), and `_cap_label_edits` keeps a key drained when its
+  slot was ever edited by hand, or changed by the account on or after the key's first emission.
+- **What was lost, measured.** `account-label-sets.tsv` built locally (237,853 mainspace edits, 21,649 label
+  sets/removals, 4,750 of them by hand) and committed, so the file exists from now on. Of 54,114 `L` keys ever
+  emitted, 14,238 landed and **38,587 never did**. 3,396 stay drained by the new guard (2,196 on hand-edited slots);
+  **35,191 on 8,895 items are eligible again** (720 emitted in August, 16,837 in September, 17,634 in October; by slot
+  `ko` 8,376, `zh` 7,169, `ja` 7,127, `mul` 6,376, `en` 3,055). That includes 304 `en` rows of 2026-10-04, more than
+  the audit's 221. Live check of 40 random eligible rows: 0 live; 28 slots empty, 12 hold another value. Every row:
+  `reports/label-edits-not-landed-2026-10-06.tsv`.
+- Only keys the generator still produces go out again, under `LABEL_EDIT_CAP`, newest items first, and through the
+  existing revert and corrected-slot guards. Several old values in the list are transliterations the current rules
+  would not write (`시르 토마스 브리드게스`, a title transliterated); those come back only if the generator still makes them.
+The queue item is narrowed to the check on the first batch built on the fix.
