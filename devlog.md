@@ -52463,3 +52463,14 @@ description, which is why there are no duplicates, but the 2026-10-05 lesson is 
 creation block. 86 were held (`reports/wikidata-garborg-day-manual-held-out.tsv`), and no `LAST` line is left outside
 its creation. `reports/wikidata-garborg-day-manual-held.txt` (168 creations, 2,801 commands) was opened in a new tab
 and Run. It was running at 21/2801 when this was written. The four generator defects are queued.
+
+## 2026-10-06: the super entry points are isolates on Wikidata (Emma asked)
+
+A correction first: the session told Emma that the FamilySearch super entry points were "re-created in every batch".
+They are in every batch's text, but each id still has exactly one item. Wikidata refuses the repeat because the
+label and description ("born circa 380" and so on) match. Nothing was re-created.
+The real problem, checked live: of the 11 super entry points, 7 have items and all 7 have no family links at all.
+They are the six FamilySearch ones (`Q141634572`-`Q141634576`, Burgerschaft `Q141638423`) and Vedrhall
+Himileigsson `Q141649463`. The other 4 are not on Wikidata. None of the 7 is in `entry-points-now.tsv`,
+`edit-universe.json` or the committed `p2889-all.tsv` (last committed 2026-09-24), so the pipeline cannot link anything
+to them. Queued in place of the wrong defect (2).
