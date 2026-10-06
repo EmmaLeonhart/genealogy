@@ -52341,3 +52341,13 @@ missing, so those were read directly; all are present.
 **Unexpected, the session's own slip:** cutting the four creations out of the audited batch also dropped 10 unrelated
 lines that shared their paragraphs. Nine were restored in this batch. The tenth was left out: a `ko` label on
 `Q112970943` that reads like "Marketta Keermemarketta Dowager". The doubled patronymics are queued at the end.
+
+## 2026-10-05: "Flag and review every identification the zipper ever made" closed (Emma)
+
+Emma: the review is done, except the FamilySearch part, which is its own item at the end of the queue. What covered it:
+- The 1,261 zipper pairs behind every link that reached Wikidata were judged one by one, and the wrong ones split
+  (batches 1-13).
+- The 601 Geni ids were reviewed, and the FamilySearch ids are under review (175 of 4,412 done; at the end of the queue).
+- The dates-alone splits were re-checked (only Margareta).
+- The zipper is out of the pipeline (`861a72b75`).
+Pairs that never reached Wikidata are not being reviewed one by one: the pipeline no longer reads zipper pairs.
