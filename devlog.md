@@ -52279,3 +52279,17 @@ checked: `zipper-driven-links.csv`, including its 76 pairs from before the 2026-
 `zipper-only-links-on-wikidata.csv`, with none missing. Every SPLIT and UNSURE pair now has its wrong links off. What
 is not this item's: the duplicates waiting for a UI merge (the merge item), the FamilySearch id review (end of the
 queue), and zipper pairs that never reached Wikidata (the next item, "Flag and review every identification").
+
+## 2026-10-05: every duplicate pair on the merge list made mergeable; the merge item closed
+
+Special:MergeItems has not been taking this account's merges, so Emma's rule (now in `CLAUDE.md`) applies instead:
+a shared Geni/FamilySearch id and a shared label get a duplicate pair merged. Each of the 46 pairs on the merge item
+was checked live (`reports/merge-pairs-state-2026-10-05.json`). **9 had already merged**, every one of them a pair of
+our own items that shared a Geni id. That is Emma's point borne out. For the other 37,
+`reports/merge-pairs-common-ids-labels-2026-10-05.qs` (114 lines, Run) gave each target item our Geni and FamilySearch
+ids, and gave our item the target's label (`mul`/`en`, `ja` for Japanese names; descriptions untouched).
+`scripts/session-2026-10-04/verify-labels-ids.py`: 113/114. The one refusal was the second copy of 師実室 藤原
+`Q141638487`, which cannot take the `en` label because the first copy `Q141637033` already has that label and the same
+description. Both copies carry the shared Geni id and the `mul` label. Left out as unproven: the wife of Koga
+Nagamichi into 園基顕の娘 `Q110081738`, and NN von Altdorf into `Q76299409`.
+Margareta Bertilsdotter Mjöhund (`Q141653021` / `Q112968698`) got the same treatment earlier the same evening.
