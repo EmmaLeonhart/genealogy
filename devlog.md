@@ -52826,3 +52826,29 @@ Emma, on the report that batch `0aff979b1` still held `Q128045691 P735 Q13677175
 Emma: "Skip the item lol remove the first item". The queue item "Then, if the audit above confirms the errors are
 solved: wait on the pipeline (Emma, 2026-10-04)" is deleted unworked. At the time, pipeline run 37486679835 (from
 `532dfa908`) had been on its ledger refresh step since 08:20 PDT, and run 37504809247 was pending behind it.
+
+## 2026-10-06: batch `87767fa88` audited and run in the browser
+
+Queue item "Then run the new batch of QuickStatements from the audited pipeline", and the noon audit-then-run cron.
+- **The batch** is the first built on all of today's fixes (pipeline run 37486679835 from `532dfa908`: the hand-edit
+  label hold, the drain bookkeeping, the wrong-script name overlay). It holds 0 wrong-script `P735` lines.
+  The earlier `0aff979b1` was not run: it predated the hand-edit hold (`564257197`) and could re-send labels onto
+  hand-edited slots.
+- **Audit:** `reports/daily-audit/2026-10-06-1791315121.md`, 20 of 20 confirmed. Talk page: nothing since
+  StarTrekker's 2026-10-05 post.
+- **Already live, held out: 46 of 262 creations** (`hold-live-creations.py`, list in
+  `reports/wikidata-garborg-day-manual-held-out.tsv`): 39 patronymic/surname name items the account created on
+  earlier days (Pedersdatter `Q141257144`, Jonsson `Q141242306`, Olofsson `Q141244186` ...), 6 FamilySearch-only
+  legendary figures (`Q141634572`-`Q141634576`, `Q141638423`, created by the account earlier although
+  `CREATIONS_PAUSED` is on; they pass through the `super_point` exception), and Charlotta Rosenblad `Q141658974`.
+  The generator still re-emits name items the account already made; the earlier batch `8bb75afff` had the same
+  defect (67 held). NEEDS-INVESTIGATION: why name-item creation does not see our own live name items.
+- **Run:** `reports/wikidata-garborg-day-manual-audited-87767fa88.txt` (216 creations, 6,230 commands), loaded from
+  raw at `f12142a73` into a NEW QuickStatements tab, Import, Run, from 12:37 PDT. First creation Gudraud Raumsen
+  av Gudbrandsdalen `Q141659761`.
+- **Unexpected: two background batches, #289711 and #289712, were running on the account at the same time**,
+  editing Japanese shrine and temple items (`P1448`, `P1814`, e.g. 塩湯彦神社 `Q11428793`), 273 edits between
+  12:30 and 12:39 PDT. This session did not start them. With three runs on one account, the browser run showed
+  "The save has failed" on about half its first 68 commands (47 errors), with "No last item available" on the
+  lines after a failed creation; NN Brynjulvsson (Geni 6000000124606635821) failed and is not on Wikidata. A
+  failed creation leaves nothing behind and returns in a later batch. No run was stopped.
