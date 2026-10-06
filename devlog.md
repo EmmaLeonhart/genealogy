@@ -52663,3 +52663,21 @@ is the session's, from the personal names and the whole family structure, which 
 CI on `main` (run 37437730721, 2026-10-06): 18 failures, most from `test_p2600_batches.py` checking every hand `.qs` in
 `reports/` (pipe-separated lines and repeats in the 2026-10-04..06 fix batches), plus `Q12598947` Buyeo Taebi now inside
 the universe walk; none from today's label-drain fix.
+
+## 2026-10-06: batch `8bb75afff` audited, 67 already-live creations held out
+
+The rebuild of 11:32 UTC (4:32 a.m. PDT), from pipeline run on `52fd8adf5` (before the label-edit fix `8d3eb9408`),
+was audited as it landed (`reports/daily-audit/2026-10-06-1791287342.md`).
+- **Talk page:** nothing new since StarTrekker's 2026-10-05 post.
+- **10 existing items:** all confirmed. **Unexpected:** the sibling of one of them, our `Q141640588` (Fujiwara no
+  Tokitaka), is live as `説孝 藤原` in mul/ja/zh with no `en`. Its `en` application of 2026-10-04 was recorded as
+  emitted and never landed (the label-edit defect, first queue item), and this pre-fix batch carries only its `ru`
+  line. It is the probe for the first batch built on the fix.
+- **10 creations:** 6 confirmed. Pedersdatter, Knutsdatter and Persdatter (patronymic name items) are live already.
+  **Unexpected:** `NN Guttormsdatter Ålesdatter?)` is live already too, as `Q141656681`, created with that label by
+  an earlier batch; its label is fixed through `label-applications.tsv` (`NN Guttormsdatter`, mul and en). Daniel's
+  `P735` goes to `Q53787734`, a *male given name (Hebrew)* item; left in, and queued with the label as an error report.
+- A label+description scan of all 262 creations found 40 that Wikidata would refuse
+  (`reports/daily-audit/2026-10-06-8bb75afff-duplicate-creations.tsv`). `hold-live-creations.py` held out 67
+  (24 by Geni id, 6 by FamilySearch id, 37 name items; `reports/wikidata-garborg-day-manual-held-out.tsv`), leaving
+  195 creations in `reports/wikidata-garborg-day-manual-held.txt`, which is the file run.
