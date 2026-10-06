@@ -52365,3 +52365,11 @@ Emma: running a batch built from a stale snapshot was against the item.
 ever been tracked or committed (`git log --all` touches nothing there). The rest of the item, programmatic daily
 submission, is "not now" (Emma, 2026-10-03), so it is a todo rather than a queue item. Also moved: "Zipper-merge
 Emma's own ancestry" to the end of the queue, since it depends on the FamilySearch id review (Emma).
+
+## 2026-10-05: the "no value" family-name backfill ran (411 of 413 needed)
+
+`reports/novalue-family-name-backfill-2026-10-04.qs` (1,917 `P734` = `Q108474139`, approved by Emma on 2026-10-03)
+was re-checked live first. 1,504 items already had a `P734` or are redirects, so
+`reports/novalue-family-name-backfill-2026-10-05-rechecked.qs` sent the remaining 413 with Run. 411 are live.
+Wikidata refused 2 saves ("The save has failed"): Þorsteinn Ingólfsson `Q6175099` and Skuli Tostisson Kongsfostre
+`Q6180419`, two well-known saga figures. They were not retried. Item closed.
