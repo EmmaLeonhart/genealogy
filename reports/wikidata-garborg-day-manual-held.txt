@@ -4,37 +4,6 @@
 
 # create a new item
 CREATE
-#   set the en label to "Aude de Cornouailles Queen Consort of Brittany. France"
-LAST	Len	"Aude de Cornouailles Queen Consort of Brittany. France"
-#   set the en description to "724 - 755"
-LAST	Den	"724 - 755"
-#   set the mul label to "Aude de Cornouailles Queen Consort of Brittany. France"
-LAST	Lmul	"Aude de Cornouailles Queen Consort of Brittany. France"
-#   set the ja label to "アウデ・デ・コルノウアイレス"
-LAST	Lja	"アウデ・デ・コルノウアイレス"
-#   set the zh label to "奥德·德·科尔诺乌艾莱斯"
-LAST	Lzh	"奥德·德·科尔诺乌艾莱斯"
-#   set the ko label to "아우데 데 코르누아일레스"
-LAST	Lko	"아우데 데 코르누아일레스"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000004869049636 Aude de Cornouailles Queen Consort of Brittany. France, qualified P1810 subject named as Aude de Cornouailles Queen Consort of Brittany. France
-LAST	P2600	"6000000004869049636"	P1810	"Aude de Cornouailles Queen Consort of Brittany. France"
-#   P569 date of birth = +0724-00-00T00:00:00Z/9
-LAST	P569	+0724-00-00T00:00:00Z/9	S2600	"6000000004869049636"
-#   P570 date of death = +0755-00-00T00:00:00Z/9
-LAST	P570	+0755-00-00T00:00:00Z/9	S2600	"6000000004869049636"
-#   P40 child = Q141654548 Budic Mur III de Bretagne
-LAST	P40	Q141654548	S2600	"6000000004869049636"
-#   Q141654548 Budic Mur III de Bretagne: P25 mother = the item just created
-Q141654548	P25	LAST	S2600	"6000000004869049636"
-#   the item just created: P735 given name = Q2870696 Aude
-LAST	P735	Q2870696
-
-# create a new item
-CREATE
 #   set the en label to "Audleiv Gudraudsen"
 LAST	Len	"Audleiv Gudraudsen"
 #   set the en description to "born circa 660"
@@ -1451,69 +1420,6 @@ Q919247	P26	Q284400	P2842	Q142	P6375	und:"France"	S2600	"6000000003495348447"	S2
 Q141559885	P26	Q141557956	P2842	Q50624	P6375	und:"Rogaland, Norway"	S2600	"6000000000496977750"	S2889	"L4SB-7WZ"
 #   Q141557956 Arne Torkelson Lomeland: P26 spouse = Q141559885 Kari nndatter Kari, qualified P2842 place of marriage Q50624 Rogaland, P6375 street address und:"Rogaland, Norway"
 Q141557956	P26	Q141559885	P2842	Q50624	P6375	und:"Rogaland, Norway"	S2600	"6000000005606873645"	S2889	"LCML-XNV"
-
-# create a new item
-CREATE
-#   the item just created: set the en label to "Acfred De Carcassone (de Montignac) II"
-LAST	Len	"Acfred De Carcassone (de Montignac) II"
-#   set the en description to "880 - 933"
-LAST	Den	"880 - 933"
-#   set the mul label to "Acfred De Carcassone (de Montignac) II"
-LAST	Lmul	"Acfred De Carcassone (de Montignac) II"
-#   set the ja label to "アクフレド・デ・カルカッソネ・デ・モンティグナク2世"
-LAST	Lja	"アクフレド・デ・カルカッソネ・デ・モンティグナク2世"
-#   set the zh label to "阿克夫雷德·德·卡尔卡索内·德·蒙蒂格纳克二世"
-LAST	Lzh	"阿克夫雷德·德·卡尔卡索内·德·蒙蒂格纳克二世"
-#   set the ko label to "아크프레드 데 카르카소네 데 몬틱나크 2세"
-LAST	Lko	"아크프레드 데 카르카소네 데 몬틱나크 2세"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000224010004860 Acfred De Carcassone (de Montignac) II, qualified P1810 subject named as Acfred De Carcassone (de Montignac) II
-LAST	P2600	"6000000224010004860"	P1810	"Acfred De Carcassone (de Montignac) II"
-#   P569 date of birth = +0880-00-00T00:00:00Z/9
-LAST	P569	+0880-00-00T00:00:00Z/9	S2600	"6000000224010004860"
-#   P570 date of death = +0933-00-00T00:00:00Z/9
-LAST	P570	+0933-00-00T00:00:00Z/9	S2600	"6000000224010004860"
-#   P40 child = Q141634036 Adélaïs de Montignac
-LAST	P40	Q141634036	S2600	"6000000224010004860"
-#   Q141634036 Adélaïs de Montignac: P22 father = the item just created
-Q141634036	P22	LAST	S2600	"6000000224010004860"
-#   Q141562477 Jon Holteson Holter: P26 spouse = Q141562733 NN Geirlaugsdatter Seim, qualified P2842 place of marriage Q4585497, P6375 street address und:"Nes kirkeruiner"
-Q141562477	P26	Q141562733	P2842	Q4585497	P6375	und:"Nes kirkeruiner"	S2600	"6000000000574028558"
-#   Q141562733 NN Geirlaugsdatter Seim: P26 spouse = Q141562477 Jon Holteson Holter, qualified P2842 place of marriage Q4585497, P6375 street address und:"Nes kirkeruiner"
-Q141562733	P26	Q141562477	P2842	Q4585497	P6375	und:"Nes kirkeruiner"	S2600	"6000000020708827372"
-#   Q141654047 Thorn Søfrensen Schive: P40 child = Q141654725 Søren Thornson Schive
-Q141654047	P40	Q141654725	S2600	"6000000000574527356"
-#   Q141654725 Søren Thornson Schive: P22 father = Q141654047 Thorn Søfrensen Schive
-Q141654725	P22	Q141654047	S2600	"6000000003492068457"
-#   Q141654072 Sidsel Pedersdatter Schive: P40 child = Q141654725 Søren Thornson Schive
-Q141654072	P40	Q141654725	S2600	"6000000000574602191"
-#   P25 mother = Q141654072 Sidsel Pedersdatter Schive
-Q141654725	P25	Q141654072	S2600	"6000000003492068457"
-#   Q11872025 Knut Troilius: P40 child = Q126845150 Uno Knutsson von Troil
-Q11872025	P40	Q126845150	S2600	"6000000000583938523"
-#   Q126845150 Uno Knutsson von Troil: P22 father = Q11872025 Knut Troilius
-Q126845150	P22	Q11872025	S2600	"6000000000583959520"
-#   Q3052486 Emma: P26 spouse = Q333359 Richard 'Sans-Peur’, qualified P2842 place of marriage Q142 France, P6375 street address und:"France"
-Q3052486	P26	Q333359	P2842	Q142	P6375	und:"France"	S2600	"6000000000624754372"	S2889	"LVDF-MVB"
-#   Q333359 Richard 'Sans-Peur’: P26 spouse = Q3052486 Emma, qualified P2842 place of marriage Q142 France, P6375 street address und:"France"
-Q333359	P26	Q3052486	P2842	Q142	P6375	und:"France"	S2600	"6000000010211396295"	S2889	"9HTX-2CD"
-#   Q291372 Almodis de La Marche countess consort of Toulouse & Barcelona, dame of Lusignan: P40 child = Q110578221 Mélisende de Lusignan
-Q291372	P40	Q110578221	S2600	"6000000000656886819"
-#   Q141562087 Anna Knudsdatter Bjørgo: P26 spouse = Q141562860 Ole Knudsen Mestad, qualified P2842 place of marriage Q109031 Voss Municipality, P6375 street address und:"Evanger, Voss, Hordaland, Norway"
-Q141562087	P26	Q141562860	P2842	Q109031	P6375	und:"Evanger, Voss, Hordaland, Norway"	S2600	"6000000000664801584"
-#   Q141562860 Ole Knudsen Mestad: P26 spouse = Q141562087 Anna Knudsdatter Bjørgo, qualified P2842 place of marriage Q109031 Voss Municipality, P6375 street address und:"Evanger, Voss, Hordaland, Norway"
-Q141562860	P26	Q141562087	P2842	Q109031	P6375	und:"Evanger, Voss, Hordaland, Norway"	S2600	"6000000000664832184"
-#   Q141565147 Guri Knutsdatter Mestad: P26 spouse = Q141564600 Knut Knutsen Mestad, qualified P2842 place of marriage Q20 Norway, P6375 street address und:"Norway"
-Q141565147	P26	Q141564600	P2842	Q20	P6375	und:"Norway"	S2600	"6000000000664826244"
-#   Q141564600 Knut Knutsen Mestad: P26 spouse = Q141565147 Guri Knutsdatter Mestad, qualified P2842 place of marriage Q20 Norway, P6375 street address und:"Norway"
-Q141564600	P26	Q141565147	P2842	Q20	P6375	und:"Norway"	S2600	"6000000000664826273"
-#   Q141583193 Ulvhedin Holteson Kamp: P26 spouse = Q141583315 NN Kamp, qualified P2842 place of marriage Q4585497, P6375 street address und:"Nes kirkeruiner"
-Q141583193	P26	Q141583315	P2842	Q4585497	P6375	und:"Nes kirkeruiner"	S2600	"6000000000944947195"
-#   Q141583315 NN Kamp: P26 spouse = Q141583193 Ulvhedin Holteson Kamp, qualified P2842 place of marriage Q4585497, P6375 street address und:"Nes kirkeruiner"
-Q141583315	P26	Q141583193	P2842	Q4585497	P6375	und:"Nes kirkeruiner"	S2600	"6000000014614463492"
 
 # create a new item
 CREATE
@@ -9639,42 +9545,6 @@ Q114850416	P2600	"6000000012267030683"	P1810	"Jakob Olofsson Schnack"
 
 # create a new item
 CREATE
-#   set the en label to "Lars Dansson (Stolpe)"
-LAST	Len	"Lars Dansson (Stolpe)"
-#   set the en description to "Geni 6000000016860749225"
-LAST	Den	"Geni 6000000016860749225"
-#   set the mul label to "Lars Dansson (Stolpe)"
-LAST	Lmul	"Lars Dansson (Stolpe)"
-#   set the ja label to "ラーシュ・ダンソン・ストルペ"
-LAST	Lja	"ラーシュ・ダンソン・ストルペ"
-#   set the zh label to "拉尔斯·丹松·斯托尔佩"
-LAST	Lzh	"拉尔斯·丹松·斯托尔佩"
-#   set the ko label to "라르스 단손 스톨페"
-LAST	Lko	"라르스 단손 스톨페"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000016860749225 Lars Dansson (Stolpe), qualified P1810 subject named as Lars Dansson (Stolpe)
-LAST	P2600	"6000000016860749225"	P1810	"Lars Dansson (Stolpe)"
-#   P25 mother = Q141626559 Seastrid
-LAST	P25	Q141626559	S2600	"6000000016860749225"
-#   Q141626559 Seastrid: P40 child = the item just created
-Q141626559	P40	LAST	S2600	"6000000016860749225"
-#   the item just created: P735 given name = Q15635262 Lars
-LAST	P735	Q15635262
-Q141493372	P407	Q9035
-Q141574629	P407	Q9027
-Q141383300	P407	Q9043
-Q141383300	P407	Q9035
-Q141585055	P407	Q9043
-Q141585055	P407	Q9035
-Q141450960	P407	Q9043
-Q141450960	P407	Q9035
-Q141419268	P407	Q9043
-
-# create a new item
-CREATE
 #   set the en label to "Antoinetta Maria Stierncrona af Söderby"
 LAST	Len	"Antoinetta Maria Stierncrona af Söderby"
 #   set the en description to "18 Mar 1718 - 2 Apr 1773 Ekholmen"
@@ -9712,52 +9582,6 @@ Q141500773	P407	Q9035
 Q141457240	P407	Q9043
 Q141457240	P407	Q9035
 Q141510578	P407	Q9027
-
-# create a new item
-CREATE
-#   set the en label to "Peder Svensson Gubbe, Gavelius"
-LAST	Len	"Peder Svensson Gubbe, Gavelius"
-#   set the en description to "born 1610 Gävle"
-LAST	Den	"born 1610 Gävle"
-#   set the mul label to "Peder Svensson Gubbe, Gavelius"
-LAST	Lmul	"Peder Svensson Gubbe, Gavelius"
-#   set the ja label to "ペダー・スヴェンッソン・グッベ・ガヴェリウス"
-LAST	Lja	"ペダー・スヴェンッソン・グッベ・ガヴェリウス"
-#   set the zh label to "彼泽·斯文森·古贝·加韦利乌斯"
-LAST	Lzh	"彼泽·斯文森·古贝·加韦利乌斯"
-#   set the ko label to "페데르 스벤손 구베 가베류스"
-LAST	Lko	"페데르 스벤손 구베 가베류스"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000006595796531 Peder Svensson Gubbe, Gavelius, qualified P1810 subject named as Peder Svensson Gubbe, Gavelius
-LAST	P2600	"6000000006595796531"	P1810	"Peder Svensson Gubbe, Gavelius"
-#   P569 date of birth = +1610-00-00T00:00:00Z/9
-LAST	P569	+1610-00-00T00:00:00Z/9	S2600	"6000000006595796531"
-#   P26 spouse = Q141529333 Anna Mårtensdotter Gavelia
-LAST	P26	Q141529333	S2600	"6000000006595796531"
-#   Q141529333 Anna Mårtensdotter Gavelia: P26 spouse = the item just created
-Q141529333	P26	LAST	S2600	"6000000006595796531"
-#   the item just created: P735 given name = Q10622039 Peder
-LAST	P735	Q10622039
-#   P5056 patronym or matronym = Q141450963
-LAST	P5056	Q141450963
-#   P734 family name = Q47463363 Gavelius
-LAST	P734	Q47463363
-#   add a mul alias "Per"
-LAST	Amul	"Per"
-#   add a mul alias "Peder Gubbe, Gavelius"
-LAST	Amul	"Peder Gubbe, Gavelius"
-Q141442237	P407	Q9027
-Q141619378	P407	Q9043
-Q141619378	P407	Q9035
-Q141549532	P407	Q9043
-Q141549532	P407	Q9035
-Q141574663	P407	Q9043
-Q141574663	P407	Q9035
-Q141499047	P407	Q9043
-Q141499047	P407	Q9035
 
 # create a new item
 CREATE

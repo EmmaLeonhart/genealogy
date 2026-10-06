@@ -52681,3 +52681,5 @@ was audited as it landed (`reports/daily-audit/2026-10-06-1791287342.md`).
   (`reports/daily-audit/2026-10-06-8bb75afff-duplicate-creations.tsv`). `hold-live-creations.py` held out 67
   (24 by Geni id, 6 by FamilySearch id, 37 name items; `reports/wikidata-garborg-day-manual-held-out.tsv`), leaving
   195 creations in `reports/wikidata-garborg-day-manual-held.txt`, which is the file run.
+- On import, creation 1 read `Aude de Cornouailles Queen Consort of Brittany. France`. A scan of every creation `mul` label
+  for titles, commas and brackets found 4; all four were held out too, leaving 191 creations.
