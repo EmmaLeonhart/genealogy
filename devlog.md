@@ -52788,3 +52788,20 @@ Queue item "Fix the wrong-script name links found by the Daniel analysis" (queue
 - **Not run.** It removes 253 statements and the item asking for it was written by this session, not by Emma, so it
   waits on her go-ahead (NEEDS-DECISION: Emma, whether to run the batch). The next pipeline batch adds the right links
   by itself through the plan; the removals are what needs the decision.
+
+## 2026-10-06: wrong-script name links: the fix batch is live, run by someone else before this session
+
+Queue item "Fix the wrong-script name links found by the Daniel analysis". This session was started to get past the
+go-ahead it was waiting on, and the decision turned out to be already made.
+- **Unexpected:** `reports/wrong-script-name-fix-2026-10-06.qs` had already run. The account's QuickStatements browser run
+  (OAuth CID 1776, `#temporary_batch_…`) made the removals and additions between 08:25 and 08:35 PDT today (e.g.
+  `Q43974` at 08:25:36, `Q469962` at 08:25:59-08:26:11, Daniel Olofsson `Q141205902` at 08:35:34-08:35:46), after the
+  previous session wrote "not run". Nothing in the devlog records who started it: Emma by hand, or another session.
+- **Checked live, every line:** 486 lines on 252 items, 0 not landed. All 253 wrong `P735` links (Eva `Q64412279`,
+  Daniel `Q53787734`, Karl `Q136771753`, David `Q29937870`, Louis `Q97156058`, Zacharias `Q97932747`, Bo and others) are
+  gone, and all 233 Latin-script ones are present. Re-running `build-wrong-script-name-fix.py` now emits an empty batch
+  (all 253 "wrong link no longer live"), which agrees.
+- The plan overlay (`reports/wrong-script-name-links.tsv` in `namemodel.load_plan`) keeps new batches on the right items.
+  The 16 links added by other editors (KrBot and others on Byzantine and Rurikid items) are left alone, as built.
+- `scripts/session-2026-10-04/verify-qs.py` reads tab-separated lines only and failed on this `|`-separated file; the
+  check was done with an inline fetch instead.
