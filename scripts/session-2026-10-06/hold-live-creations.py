@@ -22,16 +22,17 @@ def live_by_id(prop, value):
     return [h["title"] for h in d["query"]["search"]]
 
 def live_name_item(label, classes):
-    q = (f'SELECT ?item WHERE {{ ?item rdfs:label "{label}"@mul . VALUES ?c {{ {" ".join("wd:" + c for c in classes)} }} '
-         f'?item wdt:P31 ?c }} LIMIT 3')
-    u = "https://query.wikidata.org/sparql?format=json&query=" + urllib.parse.quote(q)
-    for _ in range(5):
-        try:
-            d = json.load(urllib.request.urlopen(urllib.request.Request(u, headers=UA)))
-            return sorted({r["item"]["value"].rsplit("/", 1)[1] for r in d["results"]["bindings"]})
-        except Exception:
-            time.sleep(5)
-    raise SystemExit("SPARQL failed: " + label)
+    # The search API's `inlabel:` instead of SPARQL: on 2026-10-06 WDQS was held to 1 request a minute during an
+    # outage. `inlabel` matches words, so each hit is checked for the exact `mul` label.
+    hits = set()
+    for c in classes:
+        d = api({"action": "query", "list": "search", "srsearch": f'inlabel:"{label}@mul" haswbstatement:P31={c}'})
+        hits |= {h["title"] for h in d["query"]["search"]}
+    if not hits:
+        return []
+    ents = api({"action": "wbgetentities", "ids": "|".join(sorted(hits)[:50]), "props": "labels",
+                "languages": "mul"})["entities"]
+    return sorted(q for q, e in ents.items() if e.get("labels", {}).get("mul", {}).get("value") == label)
 
 
 i, keep, held = 0, [], []
