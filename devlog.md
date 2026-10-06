@@ -52306,3 +52306,21 @@ differ too. The closest cases were re-read, and their splits stand:
 - #68, Raymond Pons: Wikidata has him as his own item, `Q1338833`.
 - #1140/#1249, Laín vs Flaín: the names are variants, but the wives and the kingdoms differ.
 The work loop's prompt named this item; it is next replaced by the queue's new first item.
+
+## 2026-10-05: the daily audit-then-run loop set up; its first run stops the batch
+
+Emma's item, built as asked:
+- `CLAUDE.md` § AT SESSION START: the loop runs at every session start and at noon. It goes talk page, then 10
+  universe items, then 10 batch creations, and the batch runs only when all of that is confirmed. It replaces the
+  bare talk-page check.
+- `scripts/daily-audit-sample.py` writes the sheet to `reports/daily-audit/<date>.md`. It lists and fetches only;
+  the verdicts are the session's own.
+- The noon run is a `CronCreate` (`0 12 * * *`), made at session start, so the 7-day expiry does not matter.
+- `.github/workflows/morning-batch.yml` starts the lean batch rebuild (`pipeline.yml -f batch_only=true -f
+  force=true`) at 9 a.m. Pacific. Both UTC slots are scheduled, and it matches the cron rather than the clock.
+**The first run failed the audit, and the batch was not run** (`reports/daily-audit/2026-10-06.md`):
+- 2 of the 10 sampled creations are legendary FamilySearch people (Pellinor Ewrawe b. 445, Frava De Gaule b. 240).
+- 1 makes the English surname Gibson a Scandinavian patronymic.
+- Across the batch's 25 FamilySearch-only creations, 6 are legendary (b. 128 to 445), and 3 labels are malformed.
+- The universe sample found a relationship-phrase description (`Q141538414`) and a doubled patronymic in a label.
+Item closed; the findings go to Emma.

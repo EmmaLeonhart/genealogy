@@ -229,6 +229,16 @@ In this order: (1) the 136 duplicate sets are merged and `User:日巫女` declar
 
 ## ⛔ AT SESSION START: THE BROWSER QUICKSTATEMENTS LOOP
 
+**⛔ THE BATCH RUNS INSIDE THE DAILY AUDIT-THEN-RUN LOOP. Ruled 2026-10-05 (Emma).** At every session start, and daily
+at noon (a `CronCreate` job made at session start, `0 12 * * *`), the session runs one loop, in this order:
+(1) read the talk page (`User talk:日巫女`); (2) audit 10 random items in the universe for perceived errors;
+(3) audit 10 random creations from the batch about to run; (4) only when all of that is confirmed, run the batch as
+below. `python scripts/daily-audit-sample.py` writes the sheet to `reports/daily-audit/<date>.md`. It only lists and
+fetches: each of the 20 verdicts is the session's own reading, written under its entry and committed. A wrong
+creation is held out of the batch, or the generator is fixed and the batch rebuilt, before the run. This loop
+replaces the bare talk-page check at startup. `morning-batch.yml` rebuilds the batch at 9 a.m. Pacific, so a fresh
+one is ready for noon.
+
 Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner, and it starts with the session. Immediately after a session opens: open a NEW QuickStatements tab, load the current `reports/wikidata-garborg-day-manual.txt` (fetch it from raw.githubusercontent into the batch textarea), Import, and press **Run** (never "Run in background" unless she asks). **Why, measured 2026-10-04:** a background (numbered) batch resolves `LAST` to the item edited last, not the item created last, so after a creation's first back-reference line (`Q… P26 LAST`) every further one points at the previous line's subject. Background batch #289569 (2026-10-03) made a man the mother of his own daughter (`Q9023075`) that way; browser runs resolve `LAST` correctly (250 of 250 checked).
 
 **⛔ WHAT THE LOOP IS FOR: THE RING. Ruled 2026-09-27 (Emma).** There are two kinds of people in a batch. The **ring people** are made obligatorily in every batch, and they are the limiting factor of the whole campaign: they connect to each other, so the next ring can only grow from a ring that already exists. The **non-ring people** are not the intended thing; they run, but nothing waits on them. So a batch opens with its ring (shuffled), and **whether a batch finishes does not matter**: several QuickStatements runs go at once in the browser, each old tab finishing its tail on its own. A generation is done when the LAST ring person in its batch's order exists on Wikidata.

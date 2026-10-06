@@ -1,0 +1,33 @@
+# ⛔ **A FRESH BATCH BEFORE THE NOON RUN. Ruled 2026-10-05 (Emma).** The session runs the daily
+# audit-then-run loop at noon Pacific (CLAUDE.md § AT SESSION START), so the lean batch rebuild
+# starts at 9 a.m. Pacific and is ready by then. GitHub cron is UTC and ignores daylight saving, so
+# both UTC hours are scheduled (16:00 under PDT, 17:00 under PST) and the one that is not 9 a.m. in
+# Los Angeles stops at once.
+name: Morning batch
+
+on:
+  schedule:
+    - cron: "0 16 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Start the lean batch rebuild at 9 a.m. Pacific
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Match the CRON, not the clock, so a start GitHub delays past the hour still runs.
+          if [ "$(TZ=America/Los_Angeles date +%z)" = "-0700" ]; then want="0 16 * * *"; else want="0 17 * * *"; fi
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" != "$want" ]; then
+            echo "this slot (${{ github.event.schedule }}) is not 9 a.m. Pacific today; the other one is"
+            exit 0
+          fi
+          gh workflow run pipeline.yml --repo "$GITHUB_REPOSITORY" --ref main -f batch_only=true -f force=true
