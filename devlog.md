@@ -52511,3 +52511,8 @@ Started with `Start-Process explorer.exe '"…\shintowiki-scripts\startclaude.ba
 and Emma explicitly authorized it by AskUserQuestion. explorer.exe passes no arguments, so `--now` was not given and the
 bat waited its 15 seconds first. Running: claude.exe PID 11004, `--remote-control "shintowiki-scripts"` (the name is
 the bat's own) with its boot prompt.
+
+## 2026-10-06: Sodacan arms session started
+
+Started with `Start-Process explorer.exe '"…\Sodacan-arms-svg-generator\!runClaude.bat"'`. Running: claude.exe PID
+15004, with the bat's own `--name`/`--remote-control Sodacan-arms-svg-generator` and its catch-up prompt.
