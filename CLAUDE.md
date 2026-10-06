@@ -644,6 +644,12 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   editors along the way. It is not to be relied on, since it adds work for others, but it is "far better than
   zipper insanity": an identity asserted on weak evidence writes false family links onto real items. Wrong
   labels on Wikidata, by contrast, are an emergency, fixed at once with the session's own QuickStatements.
+- **⛔ A DUPLICATE GETS THE COMMON ID AND THE COMMON LABEL FIRST, THEN A MERGE. Ruled 2026-10-05 (Emma).** Two items
+  carrying the same Geni id (or FamilySearch id) and the same label are as good as merged: other editors and bots merge
+  them. So before any merge attempt, and always when a merge does not go through, put the shared `P2600`/`P2889` on
+  both items and give our item the other item's label (`mul` and `en`, never the description). The merge pages have
+  failed this account repeatedly; a failed merge is not a blocker. Check a merge by whether the from-item is now a
+  redirect.
 - **⛔ AN INCOMPLETE OPERATION IS WORSE THAN A COMPLETED WRONG ONE. Ruled 2026-10-01 (Emma),
   knowingly against Wikimedia consensus.** Once an operation is under way, finish it the way the
   pipeline would (a Geni id carries its `P1810` display name, and so on). Do not stop it halfway
