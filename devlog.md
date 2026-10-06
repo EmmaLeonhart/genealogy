@@ -52863,3 +52863,20 @@ Queue item "Then run the new batch of QuickStatements from the audited pipeline"
   Applying the scale-back stays its own item.
 - **"Clean up this project, and the ontology-harness checkout of it" moved to the end of the queue.** Its text says
   "Keep it at the end"; the items added after it had left it on top.
+
+## 2026-10-06: session transcripts saved into sessions/, local only
+
+Queue item "Save every session transcript into the repo, now and from here on, like a current cleanvibe project".
+- **Not pushed, at Emma's word.** Claude Code's permission classifier refused copying the transcripts into this repo,
+  and the repo is PUBLIC (cleanvibe 2 projects push to private repos). Put to Emma by AskUserQuestion; her answer:
+  "Keep them local only". So `sessions/` is in `.gitignore`, and nothing from it is committed or pushed.
+- **Past sessions:** all 46 transcripts from the four Claude Code project folders (this checkout 30, the deleted
+  `Documents\GitHub\genealogy` 14, `genealogy-misc` 1, `Preservation\genealogy` 1) are in `sessions/` as
+  `<local date>_<session8>.jsonl` plus `.md`, 254 MB. A secret-pattern scan of the raw files found no tokens or keys.
+- **From now on:** `.claude/hooks/save_session_log.py` is cleanvibe's `CHAT_SAVE_SESSION_LOG_PY` with three changes: it
+  saves and never commits (no `commit()` call); a transcript over 80 MB is kept as `.jsonl.gz` (the size guard and
+  GitHub's 100 MB limit, though nothing is pushed now); and `_clean` accepts a queued prompt given as a list of content
+  blocks (7 of the 46 failed to render without it). `.claude/settings.json` runs it on Stop and SessionEnd.
+- **LFS or plain git:** moot while nothing is pushed. Had they been pushed: plain git (the pack is already 46 GB; public
+  LFS has a 1 GB storage and bandwidth quota that daily transcripts would exhaust within weeks).
+- `CLAUDE.md` gains a short "Session transcripts (local only)" section.

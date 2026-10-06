@@ -94,6 +94,13 @@ language for Emma's own line (`python wikidata_to_gedcom/wikidata_to_gedcom.py Q
 It is its own cleanvibe project with its own `CLAUDE.md`, queue and sessions: keep it a plain, small checkout, and
 never move or copy Emma's local `Documents\GitHub\wikidata_to_gedcom` folder into this repo.
 
+## Session transcripts (local only)
+
+`.claude/hooks/save_session_log.py` (cleanvibe's hook, on Stop and SessionEnd) copies every session's transcript into
+`sessions/<local date>_<session8>.jsonl` plus a readable `.md`. **`sessions/` is gitignored and never pushed: the repo
+is public (Emma, 2026-10-06, by AskUserQuestion, "Keep them local only").** To catch up on earlier sessions, read the
+`.md` files there, newest first.
+
 ## Skills
 
 `.claude/skills/` — `emergency-stop`, `cron-is-local`, `autonomous-loop`,
