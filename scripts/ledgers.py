@@ -137,8 +137,12 @@ def dated_pairs(today: datetime.date | None = None) -> list[tuple[str, str]]:
 JAN1_DATE = datetime.date(2026, 9, 1)
 
 
-def _read(path: Path) -> list[tuple[str, str]]:
+def _read(path: Path, blank_geni: bool = False) -> list[tuple[str, str]]:
     """`(qid, geni_id)` pairs, in file order, skipping anything malformed.
+
+    `blank_geni` keeps a row with an empty `geni_id` as `(qid, "")`: a super entry point keyed on a
+    FamilySearch id (`reports/super-entry-points.tsv`, Emma 2026-10-06) is an entry point with no
+    Geni id. Only `entry_points()` asks for those; `identifications()` never sees them.
 
     A malformed row is skipped rather than repaired. This module renders a decision somebody else
     made; it does not adjudicate one.
@@ -150,7 +154,7 @@ def _read(path: Path) -> list[tuple[str, str]]:
         for row in csv.DictReader(fh, delimiter="\t"):
             qid = (row.get("qid") or "").strip()
             gid = (row.get("geni_id") or "").strip()
-            if qid.startswith("Q") and gid.isdigit():
+            if qid.startswith("Q") and (gid.isdigit() or (blank_geni and not gid)):
                 out.append((qid, gid))
     return out
 
@@ -177,7 +181,7 @@ def entry_points(today: datetime.date | None = None) -> list[tuple[str, str]]:
     date does.
     """
     today = today or datetime.date.today()
-    pairs = list(now_pairs())
+    pairs = list(_read(NOW, blank_geni=True))
     # ⛔ The blocs and the per-person trickle each carry their OWN date and are checked
     # against it; only the January bucket uses JAN1_DATE. Restored 2026-09-20.
     pairs += bloc_pairs(today)

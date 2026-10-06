@@ -260,6 +260,8 @@ jobs:
           python scripts/refresh-p2600-all.py --p497
           # The name items the account created, so a family name made by hand is linked, not re-created (2026-10-03)
           python scripts/refresh-created-name-items.py
+          # A super entry point found on Wikidata by its Geni/FamilySearch id becomes a regular entry point (Emma, 2026-10-06)
+          python scripts/refresh-super-entry-points.py
 
       # `--compose` refreshes the ledger itself — `CLAUDE.md`: regenerating the QuickStatements
       # ALWAYS regenerates the ledger — so there is no separate refresh step to forget.

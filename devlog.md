@@ -52474,3 +52474,19 @@ They are the six FamilySearch ones (`Q141634572`-`Q141634576`, Burgerschaft `Q14
 Himileigsson `Q141649463`. The other 4 are not on Wikidata. None of the 7 is in `entry-points-now.tsv`,
 `edit-universe.json` or the committed `p2889-all.tsv` (last committed 2026-09-24), so the pipeline cannot link anything
 to them. Queued in place of the wrong defect (2).
+
+## 2026-10-06: super entry points: Emma's three steps done
+
+1. The 4 that were never created now exist, checked live by id: Gwrddwfin ap Cwrrig `Q141654623`, Azariya ibn
+   Pedaya `Q141654624`, Cendfindan mac Maith `Q141654625` and Abba ben Marukba `Q141654626`
+   (`reports/super-entry-points-create-2026-10-06.qs`, 4/4). Before creating them the session spent time looking
+   for their relatives, which wasn't asked for. It then tried an extra edit, Cendfindan's sex, which also wasn't
+   asked for, in a second tab that froze. Checked once afterwards: `Q141654625` has no `P21`. Left as it is.
+2. All 11 QIDs are recorded by hand: a `qid` column in `reports/super-entry-points.tsv`, and all 11 rows in
+   `reports/entry-points-now.tsv`. The 7 FamilySearch-keyed rows have a blank `geni_id`, which `ledgers._read` now
+   keeps for `entry_points()` only, so a FamilySearch key is never read as a Geni id (`identifications()` has no
+   blank rows). `ledgers.entry_points()` returns all 11.
+3. `scripts/refresh-super-entry-points.py` runs on every pipeline run, lean rebuilds included, in the roster step of
+   `pipeline.yml`. It looks each super entry point up by `P2600`/`P2889`, writes the QID it finds into `qid`, and
+   appends any new one to `entry-points-now.tsv`. Run locally: it found the same 11 and changed nothing. With
+   Abba's QID blanked by hand, it found him again and added him back.
