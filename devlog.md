@@ -52941,3 +52941,14 @@ was edited.
   Geni id (`6000000003897541297`) and Helena's (`6000000003251725930`) are not in `reports/owner-ancestors.tsv`. With
   the 2026-10-03 finding (none of Helena's five children reaches Emma in the tree), the descent through Helena is not
   in any source; Emma's tie to Yuri is through the Cuman wife.
+
+## 2026-10-06: CI on the positional-walk rename: one failure was the rename's, fixed
+
+CI run 37529468254 (`6fc6622fa`) against 37460591770 (`8bb75afff`, this morning): 22 failing tests against 20. New:
+`test_the_freshness_report_names_no_file_that_has_been_deleted` was the rename's: it rewrote dated history file names
+inside `reports/repo-freshness.csv` (21) and `reports/built-batches.tsv` (15) to `positional-walk-*` paths that do not
+exist (the history files keep "zipper"); those entries are back to the real names. The other three new ones are not the
+rename's: `test_a_label_drains_when_it_landed_not_when_it_was_emitted` (the drain record's shape changed in `9bcfa41a9`,
+`('t', 1)` against `'t'`), `test_a_label_is_never_written_over_an_item_that_already_has_one` (batch line
+`Q141656681 Lmul "NN Guttormsdatter"`), and the `|`-separated `wrong-script-name-fix-2026-10-06.qs` failing the line
+format, as the other hand batches in that form already do. NEEDS-INVESTIGATION for the next tick: those three.

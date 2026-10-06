@@ -36,11 +36,11 @@ reports/wikidata-patronymic-pairs.qs	400	40 creations + 360 statements
 reports/wikidata-garborg-day-1.qs	371	9 creations + 362 statements
 reports/wikidata-geni-qid-p2600.qs	354	354 statements
 reports/wikidata-garborg-day-2026-08-25-run.qs	325	4 creations + 321 statements
-reports/positional-walk-split-batch-7-2026-10-05.qs	219	14 creations + 205 statements
+reports/zipper-split-batch-7-2026-10-05.qs	219	14 creations + 205 statements
 reports/wikidata-p2889-removals.qs	208	208 statements
-reports/positional-walk-split-batch-13-2026-10-05.qs	189	14 creations + 175 statements
+reports/zipper-split-batch-13-2026-10-05.qs	189	14 creations + 175 statements
 reports/wikidata-garborg-label-fixes.qs	148	148 statements
-reports/positional-walk-split-batch-12-2026-10-05.qs	145	7 creations + 138 statements
+reports/zipper-split-batch-12-2026-10-05.qs	145	7 creations + 138 statements
 reports/wikidata-garborg-links.qs	127	127 statements
 reports/wikidata-frisk-geni-ids-named-as.qs	124	124 statements
 reports/wikidata-frisk-geni-ids.qs	124	124 statements
@@ -49,19 +49,19 @@ reports/merge-pairs-common-ids-labels-2026-10-05.qs	114	114 statements
 reports/wikidata-court-rank.qs	106	106 statements
 reports/wikidata-izumo-succession.json	105	edit objects
 reports/daily-audit-2026-10-06-fixed-creations.qs	93	3 creations + 90 statements
-reports/positional-walk-split-batch-1-2026-10-05.qs	86	5 creations + 81 statements
+reports/zipper-split-batch-1-2026-10-05.qs	86	5 creations + 81 statements
 reports/restore-cjk-labels.qs	80	80 statements
 reports/wikidata-samaritan-priests.json	76	edit objects
-reports/positional-walk-split-batch-5-2026-10-05.qs	74	1 creations + 73 statements
+reports/zipper-split-batch-5-2026-10-05.qs	74	1 creations + 73 statements
 reports/disputed-parentage-batch-1-2026-10-05.qs	72	7 creations + 65 statements
 reports/wikidata-add-geni-id.json	69	edit objects
 reports/wikidata-add-geni-id.qs	69	69 statements
-reports/positional-walk-split-batch-9-2026-10-05.qs	65	1 creations + 64 statements
+reports/zipper-split-batch-9-2026-10-05.qs	65	1 creations + 64 statements
 reports/wikidata-p2889-reremovals.qs	55	55 statements
-reports/positional-walk-split-batch-11-2026-10-05.qs	54	2 creations + 52 statements
-reports/positional-walk-split-batch-2-2026-10-05.qs	53	1 creations + 52 statements
-reports/positional-walk-split-batch-6-2026-10-05.qs	53	3 creations + 50 statements
-reports/positional-walk-split-batch-4-2026-10-05.qs	46	3 creations + 43 statements
+reports/zipper-split-batch-11-2026-10-05.qs	54	2 creations + 52 statements
+reports/zipper-split-batch-2-2026-10-05.qs	53	1 creations + 52 statements
+reports/zipper-split-batch-6-2026-10-05.qs	53	3 creations + 50 statements
+reports/zipper-split-batch-4-2026-10-05.qs	46	3 creations + 43 statements
 reports/wikidata-relationship-sources.qs	40	40 statements
 reports/wikidata-subject-named-as.qs	40	40 statements
 reports/wikidata-datteratter-fixes.qs	39	39 statements
@@ -69,7 +69,7 @@ reports/disputed-parentage-batch-3-2026-10-05.qs	33	3 creations + 30 statements
 reports/super-entry-points-create-2026-10-06.qs	33	4 creations + 29 statements
 reports/wikidata-ancestor-creations.qs	32	4 creations + 28 statements
 reports/wikidata-latin-patronymic-fixes.qs	32	2 creations + 30 statements
-reports/positional-walk-split-batch-10-2026-10-05.qs	29	2 creations + 27 statements
+reports/zipper-split-batch-10-2026-10-05.qs	29	2 creations + 27 statements
 reports/patronymic-surname-fix-2026-10-04.qs	27	27 statements
 reports/wikidata-description-case-fix.qs	25	25 statements
 reports/wikidata-ancestor-creations-auto.qs	24	3 creations + 21 statements
@@ -78,7 +78,7 @@ reports/wikidata-samaritan-succession.json	21	edit objects
 reports/wikidata-relationship-sources-auto.qs	20	20 statements
 reports/wikidata-subject-named-as-auto.qs	20	20 statements
 reports/agata-michiyo-fix-2026-10-05.qs	19	19 statements
-reports/positional-walk-split-batch-8-2026-10-05.qs	19	1 creations + 18 statements
+reports/zipper-split-batch-8-2026-10-05.qs	19	1 creations + 18 statements
 reports/wikidata-jon-parents.qs	17	2 creations + 15 statements
 reports/wikidata-wrong-sex-parent-fix.qs	17	17 statements
 reports/wikidata-edited-not-created.qs	16	16 statements
@@ -86,10 +86,10 @@ reports/wikidata-q141198548-nn.qs	14	14 statements
 reports/wikidata-splice-removals.qs	14	14 statements
 reports/wikidata-frisk-geni-ids-removals.qs	13	13 statements
 reports/wikidata-remove-iv-of-p735.qs	13	13 statements
-reports/positional-walk-review-geni-id-removals-2026-10-04.qs	13	13 statements
+reports/zipper-review-geni-id-removals-2026-10-04.qs	13	13 statements
 reports/disputed-parentage-batch-4-2026-10-05.qs	12	1 creations + 11 statements
 reports/wikidata-orderlife-identifiers.json	12	edit objects
-reports/positional-walk-split-batch-3-2026-10-05.qs	12	12 statements
+reports/zipper-split-batch-3-2026-10-05.qs	12	12 statements
 reports/wikidata-touched-not-created.qs	11	11 statements
 reports/wikidata-q272148-undo.qs	9	9 statements
 reports/wikidata-samaritan-links.json	9	edit objects
@@ -99,7 +99,7 @@ reports/wikidata-bureatten-p2600.qs	7	7 statements
 reports/disputed-parentage-batch-2-spouses-2026-10-05.qs	6	6 statements
 reports/wikidata-from-diff-izumo.qs	6	6 statements
 reports/wikidata-regnal-ordinals.qs	6	6 statements
-reports/positional-walk-review-id-removals-2026-10-05.qs	6	6 statements
+reports/zipper-review-id-removals-2026-10-05.qs	6	6 statements
 reports/wikidata-lave-jonsen.qs	5	5 statements
 reports/duplicate-pair-ids-2026-10-05.qs	3	3 statements
 reports/fastre-oisy-common-id-label-2026-10-06.qs	3	3 statements
