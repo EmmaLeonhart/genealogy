@@ -1,8 +1,8 @@
-"""The zipper join: walk both trees together and pair people by matching family position.
+"""The positional walk: walk both trees together and pair people by matching family position.
 
-    python scripts/zipper-join.py
+    python scripts/positional-walk.py
 
-**Reported 2026-08-25:** the zipper merge half existed and was opaque — a feature never
+**Reported 2026-08-25:** the positional walk half existed and was opaque — a feature never
 actually implemented. It was to be implemented properly.
 
 It did not exist. What existed were parent-shaped fragments — three separate
@@ -17,7 +17,7 @@ the other relationships."* And the rule for when to accept: *"we merge them base
 something is the mother on both sides of an individual. We merge them together unless the mothers
 really conflict."*
 
-And the warning about where it gets hard: *"parents are very easy to do a zipper join on.
+And the warning about where it gets hard: *"parents are very easy to do a positional walk on.
 Children, however, selecting between children and spouses, and in some cases multiple sets of
 parents, is a much, much more difficult task."*
 
@@ -36,7 +36,7 @@ describing the same person.
 
 For a slot, **already-known correspondences are consumed first**: any person on our side whose
 partner is already paired, and whose partner appears on their side, is struck from both. That is
-the zipper's teeth — each closed pair removes a candidate from both sides and makes the residual
+the positional walk's teeth — each closed pair removes a candidate from both sides and makes the residual
 smaller.
 
 **What is left is proposed when it is unambiguous: exactly one unpaired person on our side and
@@ -62,15 +62,15 @@ his wife.
 
 ## Reading the output
 
-`reports/zipper-pairs.tsv` — proposals, with the slot and the round that produced each. **Round
+`reports/positional-walk-pairs.tsv` — proposals, with the slot and the round that produced each. **Round
 number is a confidence signal**: round 1 pairs hang directly off a Wikidata-asserted identifier,
 round 6 pairs hang off five inferences in a chain.
 
-`reports/zipper-ambiguous.tsv` — slots where both sides had unmatched people but more than one.
+`reports/positional-walk-ambiguous.tsv` — slots where both sides had unmatched people but more than one.
 This is the honest measure of the hard case, and it is the file to look at before deciding
 whether the join needs names, dates, or nothing at all.
 
-`reports/zipper-conflicts.tsv` — proposals refuted by a recorded `P2600`.
+`reports/positional-walk-conflicts.tsv` — proposals refuted by a recorded `P2600`.
 
 Requires `out/wikidata/relations.tsv` from `scripts/extract-wikidata-relations.py`.
 """
@@ -160,8 +160,8 @@ SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
 #: `SLOT_YEAR_TOLERANCE` cuts the child date tolerance to 0, and the sex filter drops refuted
 #: pairs outright.
 #:
-#: Recorded in `reports/zipper-reliability.md` § *Error by round*. Revisit by re-running
-#: `scripts/measure-zipper-reliability.py`; do not revisit from the date column alone.
+#: Recorded in `reports/positional-walk-reliability.md` § *Error by round*. Revisit by re-running
+#: `scripts/measure-positional-walk-reliability.py`; do not revisit from the date column alone.
 ROUND_CAP = 8
 
 #: How far the walk goes. Rounds beyond `ROUND_CAP` are recorded, not consumed.
@@ -172,13 +172,13 @@ def split(cell):
     """Multi-valued cell -> list.
 
     **The separator in `reports/derived-family.csv` is ` | `, and this function did not know it.**
-    Found 2026-08-25, when the zipper merge was reported as not hitting the hard points.
+    Found 2026-08-25, when the positional walk was reported as not hitting the hard points.
     The reason was mechanical: with only `,` and `;` handled, a five-child
     cell parsed as the single token `"1050090 | 1050271 | ..."`, which is in nobody's index, so it
     was filtered out by `if x in ours` and the person presented as **childless**.
 
     **379,251 people have two or more children and every one of them reached the join with none.**
-    That is why `zipper-ambiguous.tsv` held no `2 x 2` rows at all -- not because two-against-two
+    That is why `positional-walk-ambiguous.tsv` held no `2 x 2` rows at all -- not because two-against-two
     is rare, but because our side could never *have* two. The whole hard case named in the
     design -- *"selecting between children and spouses ... is a much, much more difficult task"* --
     was invisible.
@@ -293,7 +293,7 @@ def by_name(left, right, our_name, their_name, inherited=frozenset()):
 
 
 def load_ours():
-    """Our side of every zipper: the synoptic tree's derived CSVs, keyed by Geni id.
+    """Our side of every positional walk: the synoptic tree's derived CSVs, keyed by Geni id.
 
     Names and dates feed the cascade ONLY. Nothing here is consulted for a solo proposal.
     """
@@ -328,7 +328,7 @@ def refuter(our_sex, their_sex):
     #
     # **It is the only check here with near-total coverage.** Our `sex` column is populated for
     # 99.85% of the tree where birth years reach 69%, and 44,002 of 44,706 pairs carry a sex on
-    # both sides. That matters because `reports/zipper-reliability.md` records that the
+    # both sides. That matters because `reports/positional-walk-reliability.md` records that the
     # independent-source check is parent-shaped and so its per-method margins cannot be read as
     # a ranking. This one has no such confound.
     #
@@ -397,7 +397,7 @@ def main():
             stated_q[qid].add(g)
     result = zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year,
                        their_year, refuter(our_sex, their_sex))
-    write_outputs("zipper", "qid", *result)
+    write_outputs("positional-walk", "qid", *result)
 
 
 def zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year, their_year,
@@ -591,7 +591,7 @@ def write_outputs(prefix, other, pairs, provenance, conflicts, ambiguous, refute
     methods = collections.Counter(provenance[(g, q)][1] for g, (q, _r) in pairs.items()
                                   if (g, q) in provenance)
     print("\nhow each pair was reached - per the 2026-08-25 rule that the "
-          "provenance of zipper merges is recorded:")
+          "provenance of positional walks is recorded:")
     for m, n in methods.most_common():
         print(f"   {n:>7,}  {m}")
     by_slot = collections.Counter(a["slot"] for a in ambiguous)
@@ -601,14 +601,14 @@ def write_outputs(prefix, other, pairs, provenance, conflicts, ambiguous, refute
             print(f"   {n:>7}  {slot}")
 
 
-#: The raw `getmyancestors` downloads. The FamilySearch side of the zipper is read from these,
+#: The raw `getmyancestors` downloads. The FamilySearch side of the positional walk is read from these,
 #: never from the renders in `exports/familysearch/`, which are keyed by this run's output.
 FS_DIR = ROOT / "gedcom" / "familysearch"
 FS_BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
 JUDGMENTS = ROOT / "reports" / "emma-judgments.tsv"
 #: The frontier cards of 2026-10-03: an unpaired ancestor against FamilySearch's parent in the slot
 #: above a paired child. Emma, the same day: "leave this whole comparison thing somewhere where we're
-#: considering it to be slightly iffy" -- some came from a child pair the zipper made on a birth year
+#: considering it to be slightly iffy" -- some came from a child pair the positional walk made on a birth year
 #: alone across two families (Malin Olofsdotter / Karin Ersdotter).
 IFFY_BATCH = "familysearch-frontier-iffy"
 #: A FamilySearch person id: `GF2B-NKG`, `PFR5-LDS`.
@@ -657,7 +657,7 @@ def read_verdicts(path=None):
 
 
 def load_familysearch():
-    """Every FamilySearch download as the other side of the zipper, keyed by `_FSFTID`.
+    """Every FamilySearch download as the other side of the positional walk, keyed by `_FSFTID`.
 
     Shaped like `relations.tsv` -- `p22`/`p25`/`p26`/`p40` -- so `zip_sides` walks it
     unchanged. A person in two downloads is one person: the id is FamilySearch's own.
@@ -733,9 +733,9 @@ def load_familysearch():
 
 
 def main_familysearch():
-    """`--familysearch`: the zipper between the FamilySearch downloads and the synoptic tree.
+    """`--familysearch`: the positional walk between the FamilySearch downloads and the synoptic tree.
 
-    **Ruled 2026-09-24: the zipper does the FamilySearch work.** The bridge alone is an exact
+    **Ruled 2026-09-24: the positional walk does the FamilySearch work.** The bridge alone is an exact
     join through `P2889` and `P2600`, and it reached **11** of 4,442 people: an item has to carry
     both ids, and almost none of the owner's ancestors' items do. Emma Olivia Andersdotter
     (`Q141539855`, `GF2B-NKG`) is the case that showed it -- her daughter is anchored on both
@@ -743,7 +743,7 @@ def main_familysearch():
 
     Anchors are the bridge's `fs_id -> geni_id` rows and `FS_ROOTS`; the walk is `zip_sides`,
     the same cascade and the same refusals as the Wikidata run. Writes
-    `reports/familysearch-zipper-{pairs,conflicts,sex-refuted,ambiguous}.tsv`, and
+    `reports/familysearch-positional-walk-{pairs,conflicts,sex-refuted,ambiguous}.tsv`, and
     `scripts/render-familysearch-gedcom.py` puts every paired person on their Geni id.
     """
     theirs, their_name, their_year, their_sex = load_familysearch()
@@ -784,7 +784,7 @@ def main_familysearch():
     result = zip_sides(ours, theirs, stated_g, stated_q, our_name, their_name, our_year,
                        their_year, refuter(our_sex, their_sex), refused=frozenset(refused),
                        max_rounds=FS_MAX_ROUNDS, allow_solo=False)
-    write_outputs("familysearch-zipper", "fs_id", *result)
+    write_outputs("familysearch-positional-walk", "fs_id", *result)
 
 
 if __name__ == "__main__":

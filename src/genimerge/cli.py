@@ -143,7 +143,7 @@ def _cmd_merge(args: argparse.Namespace) -> int:
         print(f"no .ged files given and none found under {ws.exports_dir}", file=sys.stderr)
         return 1
 
-    # **`--also` is for a GENERATED input that must not be corpus.** The manual parental zipper
+    # **`--also` is for a GENERATED input that must not be corpus.** The manual parental positional walk
     # correspondences are generated into a gitignored GEDCOM that is part of the synoptic tree
     # merge. A file under `exports/` is corpus, which is two things this
     # is not: it is untracked (and `tests/test_repo_invariants.py` compares `git ls-files`

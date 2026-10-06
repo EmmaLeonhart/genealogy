@@ -50,14 +50,22 @@ barely started. `queue.md` holds the rest of the roster and its order.
 **Updating the Wikidata side properly is wanted, and it is not time.** It waits; the pipeline has
 to get further first. Do not start it, and do not treat its absence as a gap to close.
 
-## ⛔ The practical barrier: the zipper merge
+## ⛔ The practical barrier: entity resolution, and what a zipper merge is
 
-**The zipper merge is supposed to do entity resolution between Wikidata and Geni at scale** —
-assigning QIDs to people, so the synoptic tree knows who is who. **It is not doing that well, and
-the pipeline is effectively manual as a result.** That is an error caused by other
-complications, **not the intended long-term shape**. The intent is zipper merging doing the
-resolution over very large amounts of both sides, which is also what makes the tree efficient:
-the more people are identified with each other, the less duplication there is to carry.
+**Entity resolution between Wikidata and Geni at scale is supposed to assign QIDs to people**, so the
+synoptic tree knows who is who. **It is not being done well, and the pipeline is effectively manual as a
+result.** That is an error caused by other complications, **not the intended long-term shape**. The intent
+is resolution over very large amounts of both sides, which is also what makes the tree efficient: the more
+people are identified with each other, the less duplication there is to carry.
+
+**A zipper merge (Emma, 2026-10-04) identifies the path of people between two people who were already
+entity-resolved independently**: a common grandfather and a common grandchild resolve the father between
+them. Nothing here does that yet. **What was built under the name is a positional walk** and is never
+called a zipper: `scripts/positional-walk.py` (2026-08-25 on; `zipper-join.py` until 2026-10-06) walks
+outward from one anchor, pairs any slot with one unpaired person left on each side, and feeds each pair back
+as a new anchor (error 3.9% in round 1, 27.1% by round 8); the FamilySearch version also paired on dates
+and names. The word "zipper" made that sloppier thing sound approved. Its source tag is `positional-walk`
+(`zipper` in files built before the rename).
 
 Treat manual adjudication as a stopgap. → [corpus-and-tree](docs/rules/corpus-and-tree.md)
 
@@ -72,7 +80,7 @@ says why, and § *the stupider and more specific the instruction* applies.
 | --- | --- |
 | [`docs/rules/names.md`](docs/rules/names.md) | names, labels, patronymics, CJK, transliteration |
 | [`docs/rules/wikidata-editing.md`](docs/rules/wikidata-editing.md) | what goes out, caps, properties, entry points, decks |
-| [`docs/rules/corpus-and-tree.md`](docs/rules/corpus-and-tree.md) | exports, the merge, the zipper, dates |
+| [`docs/rules/corpus-and-tree.md`](docs/rules/corpus-and-tree.md) | exports, the merge, the positional walk, dates |
 | [`docs/rules/working-here.md`](docs/rules/working-here.md) | process, asking, blockers, reporting |
 | [`docs/rules/collector-and-browser.md`](docs/rules/collector-and-browser.md) | the collector, Geni, Chrome |
 | [`docs/rules/ci-and-pipeline.md`](docs/rules/ci-and-pipeline.md) | CI, the pipeline, the published site |
@@ -260,11 +268,11 @@ Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner,
 
 The noticeboard rule below still applies before any run.
 
-**⛔ FIX BATCHES RUN WITHOUT WAITING FOR EMMA. Ruled 2026-10-05 (Emma):** *"it shouldn't be waiting"*, and *"if the queue tells you to do quick statements, you have permission to do them."* A built zipper split batch (or any fix batch a queue item calls for) is run as soon as its lines are checked live: a NEW tab, Run, then `scripts/session-2026-10-04/verify-qs.py` and a devlog entry. No "run it?" question. Batches 6 and 7 each waited hours on one. This covers what the queue asks for, not QuickStatements started on a session's own initiative outside a queue item.
+**⛔ FIX BATCHES RUN WITHOUT WAITING FOR EMMA. Ruled 2026-10-05 (Emma):** *"it shouldn't be waiting"*, and *"if the queue tells you to do quick statements, you have permission to do them."* A built positional-walk split batch (or any fix batch a queue item calls for) is run as soon as its lines are checked live: a NEW tab, Run, then `scripts/session-2026-10-04/verify-qs.py` and a devlog entry. No "run it?" question. Batches 6 and 7 each waited hours on one. This covers what the queue asks for, not QuickStatements started on a session's own initiative outside a queue item.
 
 **⛔ WHEN SOMETHING ABOUT THE BATCH IS UNCLEAR, DON'T STOP TO ASK: IMPLEMENT, REGENERATE, RUN. Ruled 2026-09-27 (Emma).** Overlapping batches, a possible duplicate, which order is current: implement the batch-structure changes Emma has asked for, regenerate the batch, and when the regeneration finishes, open another tab and run it. The batch order is ten FamilySearch people first (a separate population, a test that they come out well formed; **paused 2026-09-30**, Emma: FamilySearch creations wait on the zipper merge, `CREATIONS_PAUSED` in `build-familysearch-day.py`, so the section is empty), then the ring (shuffled), then the name items, then the other people one at a time with a slice of the edits on existing items: `max(120, 180 - ring)` of them, so a batch aims at 180 people (Emma, 2026-09-27); the next lean rebuild starts (from `ring-watch.yml`) as soon as the batch's last ring person is created, not when the whole batch ends.
 
-## ⛔ FIRST OF ALL, THE FAMILYSEARCH ZIPPER — ABOVE THE DECKS
+## ⛔ FIRST OF ALL, THE FAMILYSEARCH POSITIONAL WALK — ABOVE THE DECKS
 
 Ruled 2026-09-24: *"We should be having the zipper do all of the familysearch stuff. I want
 familysearch zippering to be a specific thing that we do start with every session. Since
@@ -275,24 +283,24 @@ stop it, and it comes **before** the three decks below.
 an item carrying both ids, and almost none of the owner's ancestors' items do. So
 `Q141539855` Emma Olivia Andersdotter was in the FamilySearch tree and nowhere in ours, with her
 daughter anchored on both sides, because nothing walked from the daughter to the mother.
-`zipper-join.py --familysearch` walks it: 12 anchors, 25 rounds, **4,866 pairs**, and she is
+`positional-walk.py --familysearch` walks it: 12 anchors, 25 rounds, **4,866 pairs**, and she is
 round 3.
 
     CI, pipeline.yml daily:
       refresh-p2600-all.py [--p2889]     both rosters, out/wikidata/p2{600,889}-all.tsv
     CI, in tree.yml before the merge:
       bridge-familysearch-qids.py        anchors: _FSFTID -> P2889 roster -> QID -> P2600 roster
-      zipper-join.py --familysearch      FamilySearch downloads against the synoptic tree
+      positional-walk.py --familysearch  FamilySearch downloads against the synoptic tree
       render-familysearch-gedcom.py --all  every paired person written on their Geni id
 
     THE SESSION:
-      1. git pull; read reports/familysearch-zipper-pairs.tsv against the last session's count
-      2. work reports/familysearch-zipper-ambiguous.tsv -- the slots the zipper refuses to guess,
+      1. git pull; read reports/familysearch-positional-walk-pairs.tsv against the last session's count
+      2. work reports/familysearch-positional-walk-ambiguous.tsv -- the slots the walk refuses to guess,
          as the FamilySearch deck (scripts/build-familysearch-deck.py, built by review-decks.yml;
          its verdicts go into emma-judgments.tsv with the fs_id in `qid` and come back as anchors)
       3. then the three decks below
 
-**⛔ THE HAND WORK IS ON EMMA'S DIRECT ANCESTORS ONLY. Ruled 2026-09-30:** *"the zipping that I'm asking you to do is only on the ancestors ... I don't care about identifying siblings with each other."* A deck card or any manual zipper work needs one side to be her direct ancestor: Geni side in `reports/owner-ancestors.tsv`, FamilySearch side an ancestor of her own record `PFR5-LDS`. Siblings, children and spouses' relatives get no cards. A card that asks whether a FamilySearch person is her ancestor (Agnes Jonsdotter / Karin Jonsdotter) is ancestor matching and stays. **⛔ An ancestor card is a FATHER or MOTHER slot whose child is her or one of her ancestors. Ruled 2026-10-01** (*"An ancestor is an ancestor. Your thing compares siblings and spouses and they are not ancestors"*): the zipper's `child` and `spouse` slots never go in the deck, even when one side is on an ancestor list. The 2026-10-01 deck had 523 child and 33 spouse cards of 907.
+**⛔ THE HAND WORK IS ON EMMA'S DIRECT ANCESTORS ONLY. Ruled 2026-09-30:** *"the zipping that I'm asking you to do is only on the ancestors ... I don't care about identifying siblings with each other."* A deck card or any manual identification work needs one side to be her direct ancestor: Geni side in `reports/owner-ancestors.tsv`, FamilySearch side an ancestor of her own record `PFR5-LDS`. Siblings, children and spouses' relatives get no cards. A card that asks whether a FamilySearch person is her ancestor (Agnes Jonsdotter / Karin Jonsdotter) is ancestor matching and stays. **⛔ An ancestor card is a FATHER or MOTHER slot whose child is her or one of her ancestors. Ruled 2026-10-01** (*"An ancestor is an ancestor. Your thing compares siblings and spouses and they are not ancestors"*): the zipper's `child` and `spouse` slots never go in the deck, even when one side is on an ancestor list. The 2026-10-01 deck had 523 child and 33 spouse cards of 907.
 
 **THE ROOTSMAGIC EXTRACTION IS FINISHED (Emma, 2026-09-30, confirmed by AskUserQuestion).** The gate is open. Every `.rmtree` and `.ged` of that day is archived read-only in `Documents\rootsmagic-archive\2026-09-30\`, and the sibling repo `rootsmagic-import` already turns `copy of second attempt.rmtree` into a cleaned GEDCOM. The FamilySearch creations pause (`CREATIONS_PAUSED`) stays; its wording about stopping RootsMagic/GEDCOM imports is lifted. The RootsMagic and order.life queue items keep their place after the Wikidata items.
 
@@ -300,14 +308,14 @@ round 3.
 from the raw downloads in `gedcom/familysearch/`, never from the renders.
 **FamilySearch holds duplicates of its own** — two records, one person, the same parents
 (`GDQB-KJQ` and `PNMB-9FS` are both Anna Danielsdotter). A pair whose Wikidata item states the
-*other* FamilySearch id is that, not a zipper error: all 6 such disagreements on 2026-09-24 were.
+*other* FamilySearch id is that, not a positional-walk error: all 6 such disagreements on 2026-09-24 were.
 
-## ⛔ AND EVERY SESSION STARTS WITH THE ZIPPER DECKS, THE SAME WAY
+## ⛔ AND EVERY SESSION STARTS WITH THE IDENTITY DECKS, THE SAME WAY
 
 **⛔ SUPERSEDED: NO DECKS, EVER. Ruled 2026-10-04 (Emma):** *"I am never going to look at the decks ever ...
 looking at them is the cause of more issues than it helps."* No deck is built, published or handed over, and
 no work waits on a verdict from one. **Who decides an identity, ranked by Emma the same day:** the automatic
-zipper is "by far the worst", Emma deciding off a ~200-card deck is second worst, and the session deciding each
+positional walk is "by far the worst", Emma deciding off a ~200-card deck is second worst, and the session deciding each
 case agentically (reading the evidence itself, never a script) is best. So the session works the cases itself,
 records each verdict with its reason as the session's (not hers), and asks Emma with AskUserQuestion only about a
 principle or a specific edge case. **A principle extracted that way is never turned into code**: "once it
@@ -332,7 +340,7 @@ does not stop it.
     parent    https://claude.ai/artifact/LKhTa5itp99KBXexTtY45Z
     family    https://claude.ai/artifact/8LrXG1u2QUamTFJ66Fayx3
     pick-one  https://claude.ai/artifact/AL1PD6ENiaKZbUST1ALUur
-    familysearch  https://claude.ai/artifact/93GL9DBmVErTnBxfGsru3j   (the zipper's refused slots)
+    familysearch  https://claude.ai/artifact/93GL9DBmVErTnBxfGsru3j   (the positional walk's refused slots)
 
 **Each deck keeps its verdicts in its own `db` store, `decisions/all`**, whether or not *Copy
 decisions* was ever pressed. Read it with `ArtifactData` before rebuilding and append anything not
@@ -346,7 +354,7 @@ Judge a deck change on a phone-width screen first.
 Pasted verdicts go into `reports/emma-judgments.tsv` exactly as
 [wikidata-editing](docs/rules/wikidata-editing.md) § *THE PARENT DECK* says, then rebuild — the
 deck shrinking is the check that they landed. Manual adjudication is still the stopgap the top
-of this file calls it; the verdicts are the labelled examples the automatic zipper learns from.
+of this file calls it; the verdicts are the labelled examples the automatic walk learns from.
 
 ## ⛔ THE FIRST THING IN EVERY SESSION: TURN THE RELATIONSHIP REQUESTING ON
 
@@ -480,7 +488,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **⛔ NOTHING LIVES ONLY IN SCRATCH OR TEMP. Ruled 2026-10-04 (Emma).** Every script and every output a
   session makes goes into the repo (scripts into `scripts/`, outputs into `reports/`) and is committed and
   pushed. Storage Sense deletes temp files on this machine, and the session scratchpad and `$TEMP` are under
-  it: on 2026-10-04 the 5,329 id claims and the 1,261-pair zipper sheet existed only there.
+  it: on 2026-10-04 the 5,329 id claims and the 1,261-pair positional-walk sheet existed only there.
 - **⛔ COMMIT AND PUSH AFTER EVERY MEANINGFUL CHANGE. Ruled 2026-09-25:** not in batches at the end
   of an item, so work is never left sitting unpushed. A finished step (a measured fix, a rebuilt
   report, a queue edit) is its own commit and is pushed at once.
@@ -637,21 +645,21 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   matching calls these different people when nothing in the name disagrees. So compare element by element, as the
   same underlying name in different languages; fuzzy matching belongs only inside one rendering, to catch a
   misspelling (is it "Yurievich" misspelled?). The other way round, two names that only look alike are not one name:
-  Karin (Katarina) and Kerstin (Kristina) are different names, and the zipper review treated them so.
+  Karin (Katarina) and Kerstin (Kristina) are different names, and the positional-walk review treated them so.
 - **⛔ PRE-1900 EUROPEANS: THE NAME OUTWEIGHS THE YEAR. Ruled 2026-10-04 (Emma). A written principle for the
   session's own judgment of each case, never a script rule.** Before 1900 the years in European records are often
   unreliable, so a year disagreement is weak evidence that two records are different people. Names vary between
   sources by language (Johann/Hans, Anna Lovisa/Anne Louise), but the variation is regular and the names are often
   distinctive, so a name that matches as a language variant is real evidence of the same person even when the years
   disagree. It does not carry over by default to other populations: Sinosphere names, or very common names (an Anna
-  Andersdotter in a parish of Anna Andersdotters), need more than the name. Seen in the zipper review: Anders
+  Andersdotter in a parish of Anna Andersdotters), need more than the name. Seen in the positional-walk review: Anders
   Andersson Wedberg b. 1794 vs 1807, and Anna Margareta = Anna Greta Gabrielsdotter b. 1789 vs 1811, are the same
   people.
 - **⛔ WHEN THE SOURCES DISAGREE ON PARENTS, KEEP BOTH: THE PARENTAGE IS DISPUTED. Ruled 2026-10-04 (Emma).**
   Geni, FamilySearch and Wikidata often name different parents for one person. Then the person has two fathers
   (or two mothers), each their own person, and the parentage is recorded as disputed; neither side overwrites or
   deletes the other. The Swedish lines are where this hit: the ask to incorporate a second GEDCOM became an
-  unconsented zipper merge that forced one ancestry onto the other.
+  unconsented positional-walk merge that forced one ancestry onto the other.
   **Except when one side is obviously wrong** (Emma, same day): then that side is omitted and no second parent
   is created. The worked case: Anders Petter Nilsson's Geni parents (Anders Gustaf Olsson) are left out because
   his patronymic Nilsson makes Niklas Olsson his father beyond doubt. That is the only such case among the 21; the
@@ -758,7 +766,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **The `Descendants` campaign is about TIME, not thinness** — a ball reaches ~12 generations, so
   seed where you want to arrive. Two seed-choosing methods are refuted; do not propose a third on
   reasoning alone.
-- **The zipper's one name exception lives inside a slot**: solo, then date, then name — and
+- **The positional walk's one name exception lives inside a slot**: solo, then date, then name — and
   **1600–1900 is the band where names lie and years decide** (71% of confirmed pairs spell the
   name differently).
 - **The four big derived CSVs are committed gzipped.** `pack-derived.py --unpack` on a clean clone.

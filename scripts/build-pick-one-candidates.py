@@ -274,7 +274,7 @@ def main():
                             our=anchor["name"], cand=wd_label.get(q, q)) for g, q in opts]
             ask = "Which of these items is our person?"
 
-        # **DATES FIRST, the zipper's own order.** An option born more than DATE_GATE years from
+        # **DATES FIRST, the positional walk's own order.** An option born more than DATE_GATE years from
         # the anchor is not a candidate, and a card with none left is not a question. Without
         # this, a Geni duplicate of Johann Christoph Friedrich Bach (1732) -- whose real item is
         # already held by the other profile -- was asked to pick among a 1689 cousin and two

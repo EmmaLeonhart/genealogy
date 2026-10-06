@@ -9,7 +9,7 @@ parsing."* `reports/sweep-report-parsing.md` measured it feasible. This builds i
 
 *"The actual content is extremely regular with string matching plus the generation numbers.
 You can pretty easily narrow down things almost entirely. ... we do create individuals based
-solely on their names ... but we do zipper merging on the individuals that are created solely
+solely on their names ... but we do positional walk merging on the individuals that are created solely
 based off of their label."*
 
 So there are two kinds of person here and they never mix:
@@ -53,7 +53,7 @@ people keyed on the lowest id among the siblings in that file naming the same co
 **Geni names the father first**, measured at 11,854 (M, F) against zero (F, M), so position
 gives the sex wherever neither the row nor the corpus does.
 
-## Step 3 -- the zipper, over the label-only individuals only
+## Step 3 -- the positional walk, over the label-only individuals only
 
 A label-only person has a slot -- parent of these children, spouse of this person -- and the
 corpus (`out/family-structure.tsv.gz`, `reports/derived-*.csv.gz`) may already fill it:
@@ -62,16 +62,16 @@ corpus (`out/family-structure.tsv.gz`, `reports/derived-*.csv.gz`) may already f
              folded name must pick exactly one (name).
     spouse   the co-parent's corpus spouses not already accounted for. Solo, then name.
 
-Solo, then name, inside a slot -- `CLAUDE.md` § *The zipper's one name exception lives inside
+Solo, then name, inside a slot -- `CLAUDE.md` § *The positional walk's one name exception lives inside
 a slot*. A proposal refuted by sex is dropped; children disagreeing about who their label-only
 parent is are a conflict and the person stays label-only. Every identification is written to
-`reports/sweep-parsed-zipper.tsv` with its slot, method and the anchor it hung off.
+`reports/sweep-parsed-positional-walk.tsv` with its slot, method and the anchor it hung off.
 
 ## What is emitted -- only what the corpus lacks
 
     a swept person not in the corpus            a full INDI: NAME, SEX, years, FAMC/FAMS
     a swept person already in the corpus        a stub INDI carrying only the new pointers
-    a label-only person the zipper left alone   a full INDI @IL…@
+    a label-only person the positional walk left alone   a full INDI @IL…@
     a child whose corpus family exists          the missing HUSB/WIFE goes onto THAT family's
                                                 xref, so the merge adds to it, not beside it
     a family the corpus does not have           @FL<digits>@
@@ -105,7 +105,7 @@ FAMILY = os.path.join(ROOT, "reports", "derived-family.csv.gz")
 FACTS = os.path.join(ROOT, "reports", "derived-facts.csv.gz")
 LABELS = os.path.join(ROOT, "reports", "derived-labels.csv.gz")
 OUT_DIR = os.path.join(ROOT, "exports", "sweep-parsed")
-ZIPPER_OUT = os.path.join(ROOT, "reports", "sweep-parsed-zipper.tsv")
+POSITIONAL_WALK_OUT = os.path.join(ROOT, "reports", "sweep-parsed-positional-walk.tsv")
 
 #: Shard size in records. 200,000 INDI/FAM records is ~20 MB of GEDCOM -- far under GitHub's
 #: 100 MB refusal, which is what declined every push on 2026-09-19.
@@ -644,7 +644,7 @@ def main() -> int:
 
     (corpus, c_fathers, c_mothers, c_spouses, c_sex, c_label,
      fam_p, fam_c, fams, famc) = read_corpus()
-    # The ZIPPER matches against the CURRENT tree: its candidates are Geni ids only, so the
+    # The POSITIONAL WALK matches against the CURRENT tree: its candidates are Geni ids only, so the
     # render's own label people cannot match themselves, and whatever was merged since --
     # the FamilySearch render, newer exports -- is evidence it should use. Only the PLACEMENT
     # above reads the pre-merge tree.
@@ -733,7 +733,7 @@ def main() -> int:
             if key not in labels and s:
                 labels[key] = {"display": display, "sex": s, "children": set(), "co": person}
 
-    # --- step 3: the zipper, over the label-only people only -------------------------------
+    # --- step 3: the positional walk, over the label-only people only -------------------------------
     ident: dict[tuple, str] = {}
     zrows = []
     taken_spouse = collections.defaultdict(set)
@@ -769,16 +769,16 @@ def main() -> int:
                 if len(hit) == 1:
                     props.add(hit[0]); method = "name"
         if len(props) > 1:
-            st["label people the zipper found conflicting (kept as labels)"] += 1
+            st["label people the positional walk found conflicting (kept as labels)"] += 1
             continue
         if not props:
             continue
         g = next(iter(props))
         if sex(g) and sex(g) != rec["sex"]:
-            st["zipper proposals refuted by sex"] += 1
+            st["positional walk proposals refuted by sex"] += 1
             continue
         if g in taken_spouse[rec["co"]]:
-            st["zipper proposals claimed twice (dropped)"] += 1
+            st["positional walk proposals claimed twice (dropped)"] += 1
             continue
         taken_spouse[rec["co"]].add(g)
         ident[key] = g
@@ -787,7 +787,7 @@ def main() -> int:
         zrows.append((rec["display"], anchor, slot, method, g, c_label.get(g, ""),
                       " ".join(sorted(rec["children"]))))
     st["label people made"] = len(labels)
-    st["label people identified by the zipper"] = len(ident)
+    st["label people identified by the positional walk"] = len(ident)
     resolve_node = lambda n: ident.get(n, n) if isinstance(n, tuple) else n
     for slot in (father, mother):
         for c in list(slot):
@@ -936,12 +936,12 @@ def main() -> int:
                 fh.write("\n".join(lines) + "\n")
             fh.write("0 TRLR\n")
         print("wrote %s (%d records)" % (os.path.relpath(path, ROOT), len(shard)))
-    with io.open(ZIPPER_OUT, "w", encoding="utf-8", newline="") as fh:
+    with io.open(POSITIONAL_WALK_OUT, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t", lineterminator="\n")
         w.writerow(["label", "anchor", "slot", "method", "geni_id", "corpus_label",
                     "children"])
         w.writerows(sorted(zrows))
-    print("wrote %s (%d identifications)" % (os.path.relpath(ZIPPER_OUT, ROOT), len(zrows)))
+    print("wrote %s (%d identifications)" % (os.path.relpath(POSITIONAL_WALK_OUT, ROOT), len(zrows)))
     return 0
 
 

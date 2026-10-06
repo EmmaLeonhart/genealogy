@@ -2,7 +2,7 @@
 
 **The design of 2026-09-05, and this document is a proposal rather than a decision.**
 
-The manual zipper parents are wired in correctly and well, and the pipeline is not to be broken.
+The manual positional walk parents are wired in correctly and well, and the pipeline is not to be broken.
 The long-term architectural smoothing would generate them in the pipeline into a gitignored
 GEDCOM that is part of the synoptic tree merge, with QIDs in bios a fundamental part of the
 pipeline. For now the pipeline works well, and this is a thing to experiment with at the end of
@@ -51,10 +51,10 @@ ids plus a `NOTE` carrying the Wikidata URL — and let the synoptic tree merge 
   the SYNOPTIC TREE BUILD* already says the correspondence belongs in the tree: *"we put the
   Wikidata links into bios during the build process of the Synoptic tree… Forcing them into this
   Synoptic tree like this makes it so that the Synoptic tree, when it starts being used as an
-  input, does use them properly, in the zipper merge thing."* This proposal is that instruction
+  input, does use them properly, in the positional walk thing."* This proposal is that instruction
   applied to the artifact-adjudicated pairs as well.
-- **The zipper gets them for free.** They are *manual zipper merge* results; feeding them back
-  into the tree the zipper reads closes the loop, and a manual verdict becomes an anchor for the
+- **The positional walk gets them for free.** They are *manual positional walk* results; feeding them back
+  into the tree the positional walk reads closes the loop, and a manual verdict becomes an anchor for the
   automatic pass rather than a separate table it cannot see.
 - **Gitignored is right.** It is derived from a tracked CSV every run, so tracking it would be a
   second copy that can disagree — the failure this evening kept turning up.
@@ -84,7 +84,7 @@ extract for now.
   came from the parent deck rather than from a bio.
 - **`SAME` only, or the rest?** `manual-identifications.csv` holds rejections
   (`rejected-parents`, 24) and `blocked-creations` (12). A correspondence GEDCOM should probably
-  carry only affirmed pairs, but a rejection is also a fact the zipper would benefit from.
+  carry only affirmed pairs, but a rejection is also a fact the positional walk would benefit from.
 - **Does `bio-qids.tsv` stay a separate extract?** Under this design the bios are already in the
   tree, so the extract becomes a *query* over the tree rather than a scan of 600 exports —
   which is faster and cannot go stale the way it just did.

@@ -244,7 +244,7 @@ def build_people():
     facts = {r["geni_id"]: r for r in _read_csv(rep / "derived-facts.csv.gz")
              if r["geni_id"] in ledger}
     fs = {}
-    for r in _read_csv(rep / "familysearch-zipper-pairs.tsv", delimiter="\t"):
+    for r in _read_csv(rep / "familysearch-positional-walk-pairs.tsv", delimiter="\t"):
         fs.setdefault(r.get("geni_id"), r.get("fs_id"))
     # Relatives outside the ledger are named from the derived labels and simply not linked.
     wanted = {i for f in family.values()

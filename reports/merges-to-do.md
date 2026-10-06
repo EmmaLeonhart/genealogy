@@ -329,9 +329,9 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 - **Johan Falkenberg af Trystorp** - Geni `388325917570007375` - you created Q141224780
     - also **Q5984640** _(zipper)_ - merge **Q141224780** into **Q5984640** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224780&to=Q5984640
 - **Ingrid Charlotta Carlsdotter Ekenbom** - Geni `6000000000410527402` - you created Q141249609
-    - also **Q110303131** _(structural;zipper)_ - merge **Q141249609** into **Q110303131** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249609&to=Q110303131
+    - also **Q110303131** _(structural;positional-walk)_ - merge **Q141249609** into **Q110303131** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249609&to=Q110303131
 - **Hans Olofsson Törne** - Geni `6000000000410600770` - you created Q141249606
-    - also **Q6025581** _(structural;zipper)_ - merge **Q141249606** into **Q6025581** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249606&to=Q6025581
+    - also **Q6025581** _(structural;positional-walk)_ - merge **Q141249606** into **Q6025581** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249606&to=Q6025581
 - **Jakob Chydenius** - Geni `6000000000583631058` - you created Q109852817
     - also **Q141225740** _(wikidata-p2600)_ - merge **Q141225740** into **Q109852817** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225740&to=Q109852817
     - also **Q141225741** _(wikidata-p2600)_ - merge **Q141225741** into **Q109852817** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225741&to=Q109852817
@@ -346,7 +346,7 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 - **Ingeborg Simonsdatter Ytre Lima** - Geni `6000000002836363103` - you created Q141225713
     - also **Q141225714** _(wikidata-p2600)_ - merge **Q141225714** into **Q141225713** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225714&to=Q141225713
 - **Maria Carlberg** - Geni `6000000003133670452` - you created Q141244109
-    - also **Q109265048** _(emma-verdicts;structural;zipper)_ - merge **Q141244109** into **Q109265048** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141244109&to=Q109265048
+    - also **Q109265048** _(emma-verdicts;structural;positional-walk)_ - merge **Q141244109** into **Q109265048** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141244109&to=Q109265048
 - **Gustav Petersson Lejon** - Geni `6000000003414711727` - you created Q141223837
     - also **Q110548729** _(zipper)_ - merge **Q141223837** into **Q110548729** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223837&to=Q110548729
 - **Hafrid Sigtryggsdotter Boberg** - Geni `6000000003559734445` - you created Q141223838
@@ -354,11 +354,11 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 - **Margareta Lejon** - Geni `6000000003827763101` - you created Q141216491
     - also **Q101247856** _(zipper)_ - merge **Q141216491** into **Q101247856** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141216491&to=Q101247856
 - **Torsten Håkansson Rudén** - Geni `6000000004548321013` - you created Q141224371
-    - also **Q6082642** _(emma-verdicts;zipper)_ - merge **Q141224371** into **Q6082642** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224371&to=Q6082642
+    - also **Q6082642** _(emma-verdicts;positional-walk)_ - merge **Q141224371** into **Q6082642** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224371&to=Q6082642
 - **Anders Rasmusson Lea** - Geni `6000000005607296161` - you created Q141225676
     - also **Q141225673** _(wikidata-p2600)_ - merge **Q141225676** into **Q141225673** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225676&to=Q141225673
 - **Erik Knudsen til Skarsholm** - Geni `6000000005619727117` - you created Q28467896
-    - also **Q130334556** _(emma-verdicts;structural;zipper)_ - merge **Q130334556** into **Q28467896** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q130334556&to=Q28467896
+    - also **Q130334556** _(emma-verdicts;structural;positional-walk)_ - merge **Q130334556** into **Q28467896** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q130334556&to=Q28467896
 - **Bengt Hafridsson Lejon** - Geni `6000000005795638104` - you created Q141198381
     - also **Q5569976** _(zipper)_ - merge **Q141198381** into **Q5569976** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141198381&to=Q5569976
 - **Brita Ulfsparre af Broxvik** - Geni `6000000006127621094` - you created Q141224002
@@ -368,9 +368,9 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 - **Hedvig Swedenborg** - Geni `6000000006782610675` - you created Q140191768
     - also **Q141223425** _(wikidata-p2600)_ - merge **Q141223425** into **Q140191768** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223425&to=Q140191768
 - **Johan Börgesson Carlberg** - Geni `6000000006897169084` - you created Q141249728
-    - also **Q5602483** _(structural;zipper)_ - merge **Q141249728** into **Q5602483** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249728&to=Q5602483
+    - also **Q5602483** _(structural;positional-walk)_ - merge **Q141249728** into **Q5602483** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249728&to=Q5602483
 - **Kristina Olofsdotter Spaak** - Geni `6000000006897337018` - you created Q141249729
-    - also **Q98697623** _(structural;zipper)_ - merge **Q141249729** into **Q98697623** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249729&to=Q98697623
+    - also **Q98697623** _(structural;positional-walk)_ - merge **Q141249729** into **Q98697623** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249729&to=Q98697623
 - **Erik Guttormsson** - Geni `6000000007328872457` - you created Q141225702
     - also **Q141225703** _(wikidata-p2600)_ - merge **Q141225703** into **Q141225702** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225703&to=Q141225702
 - **Katarina Johansdotter Ståhlbom** - Geni `6000000007367019257` - you created Q141225772
@@ -384,7 +384,7 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 - **Eva Carolina Leijonhufvud** - Geni `6000000011399293802` - you created Q141223419
     - also **Q99301833** _(zipper)_ - merge **Q141223419** into **Q99301833** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223419&to=Q99301833
 - **Hedvig Augusta af Söderling** - Geni `6000000011713042906` - you created Q141242507
-    - also **Q135480138** _(emma-verdicts;zipper)_ - merge **Q141242507** into **Q135480138** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141242507&to=Q135480138
+    - also **Q135480138** _(emma-verdicts;positional-walk)_ - merge **Q141242507** into **Q135480138** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141242507&to=Q135480138
 - **Magdalena von Mentzer** - Geni `6000000012617083513` - you created Q141217393
     - also **Q103771980** _(zipper)_ - merge **Q141217393** into **Q103771980** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141217393&to=Q103771980
 - **Catharina Charlotta Falkenberg af Trystorp** - Geni `6000000012641210385` - you created Q141224102

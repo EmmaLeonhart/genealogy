@@ -3,7 +3,7 @@
     python scripts/extract-wikidata-sex.py
 
 **Nothing had extracted it.** `out/wikidata/relations.tsv` carries `P22`/`P25`/`P40`/`P26`/`P2600`,
-`labels.tsv` carries labels and identifiers, `dates.tsv` carries years — and `scripts/zipper-join.py`
+`labels.tsv` carries labels and identifiers, `dates.tsv` carries years — and `scripts/positional-walk.py`
 contains no reference to sex anywhere. So a join that pairs a man with a woman had no way to
 notice, across 44,725 correspondences.
 

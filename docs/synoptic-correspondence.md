@@ -22,7 +22,7 @@ Measured by running it, 2026-08-31.
 | source | pairs | what its evidence is |
 | --- | ---: | --- |
 | `wikidata-p2600` | **518,941** | Wikidata's own `P2600` statement. Not our inference at all. |
-| `zipper` | **45,898** | Our positional join, all eight rounds. Inference, with provenance. |
+| `positional walk` | **45,898** | Our positional join, all eight rounds. Inference, with provenance. |
 | `structural` | 7,606 | The relationship walk: both sides have a person in the same slot. |
 | `geni-about-me` | 405 | **QID links written by hand into Geni bios.** A direct statement of identity. |
 | `tanba-roster` | 181 | Hand-built clan roster. |
@@ -31,7 +31,7 @@ Measured by running it, 2026-08-31.
 | `izumo-roster` | 111 | |
 
 **Two sources are 99.9% of the volume and they are of completely different kinds.** `P2600` is
-Wikidata asserting the identifier; the zipper is us inferring it from position. Anything reading
+Wikidata asserting the identifier; the positional walk is us inferring it from position. Anything reading
 this file and treating a pair as one thing is flattening that distinction — the `sources` column
 is what keeps it, and it should never be dropped.
 
@@ -55,14 +55,14 @@ missing validation file costs 235 bad pairs, not a crash.
 
 ## `ROUND_CAP` is 8, and the reason it is 8 is a correction
 
-The zipper contributes all eight rounds. It was **3** on a date-based error curve that rose 3.9%
+The positional walk contributes all eight rounds. It was **3** on a date-based error curve that rose 3.9%
 at round 1 to 27.1% at round 8 — and that curve was a **coverage artefact**: the share of pairs
 carrying a birth year on *both* sides falls 65% → 20% with depth, so the "error" was tracking the
 decline of the measuring instrument rather than the join.
 
 Measured instead against `P21` *sex or gender*, which has 86–100% coverage at every round and is
 corrected for the father/mother slots where sex can never refute, the real rise is **2.8% → 4.8%**.
-Hence 8. `scripts/zipper-join.py` § `ROUND_CAP` carries the full working.
+Hence 8. `scripts/positional-walk.py` § `ROUND_CAP` carries the full working.
 
 This is the clearest case in the repo of a metric that looked like a finding and was about the
 instrument.
@@ -79,6 +79,6 @@ instrument.
 - **410 Geni profiles claim more than one QID and the file records them without resolving them.**
   That is right — they are settled by hand — but nothing downstream is required to look at
   `synoptic-conflicts.tsv`, so a consumer of the correspondence gets both pairs silently.
-- **No source is weighted.** A `zipper` round-8 pair and a `wikidata-p2600` pair are the same row
+- **No source is weighted.** A `positional walk` round-8 pair and a `wikidata-p2600` pair are the same row
   with a different `sources` value, and any consumer that does not read that column treats an
   inference as an identifier.

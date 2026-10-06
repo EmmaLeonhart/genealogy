@@ -4,9 +4,9 @@
 
 **The scalable route is consistency of relatives on Wikidata against Geni.** Where one item
 carries two Geni ids and the person's father and mother each carry one, and those match one of
-the two but not the other, the zipper join settles it.
+the two but not the other, the positional walk settles it.
 
-That is the zipper join used on the half that is easy: parents are very easy to join on, while
+That is the positional walk used on the half that is easy: parents are very easy to join on, while
 selecting between children and spouses is much harder. This module does parents only, on
 purpose.
 

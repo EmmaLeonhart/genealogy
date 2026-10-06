@@ -4,8 +4,8 @@
 
 **An analysis, over both corpuses, of people with multiple mothers or multiple fathers.**
 
-**This is not tidiness. It tests an assumption the zipper join is built on.**
-`scripts/zipper-join.py` compares "our father" against "their `P22`" as though each side had at
+**This is not tidiness. It tests an assumption the positional walk is built on.**
+`scripts/positional-walk.py` compares "our father" against "their `P22`" as though each side had at
 most one, and its teeth-consuming step is written for a value rather than a set. Where either side
 holds two, the join is choosing between them with no rule saying how — and 44,725 correspondences
 now rest on that.
@@ -14,7 +14,7 @@ now rest on that.
 `scripts/derive-family.py` held parents in a plain `dict[str, str]`, so a second father
 silently overwrote the first and `derived-family.csv` could not express the case at all --
 it showed one parent, chosen by family-iteration order, with nothing saying another
-existed. Every one of the 44 scripts reading that file, the zipper join included, has been
+existed. Every one of the 44 scripts reading that file, the positional walk included, has been
 seeing a single parent that may be the wrong one. Fixed the same day by adding `fathers`
 and `mothers` columns; `father`/`mother` keep their single-value meaning so no consumer
 breaks. **A census that reports zero is a claim about a parser until proven otherwise.**
@@ -37,7 +37,7 @@ Three questions, three outputs:
   one `P22` or `P25`.
 * `reports/multi-parents-crossed.tsv` — **the ones that matter to the join**: a person we hold a
   correspondence for where either side is multi-valued. If our side has two fathers and theirs has
-  one, the zipper picked, and this names who.
+  one, the positional walk picked, and this names who.
 
 Offline. Reads the derived CSVs and the extracted relations; asks Wikidata nothing.
 """
@@ -57,7 +57,7 @@ R = ROOT / "reports"
 
 def split(cell):
     """`reports/derived-family.csv` uses ` | `. Splitting without stripping silently
-    yields tokens that match no index -- the bug that made the zipper blind to every
+    yields tokens that match no index -- the bug that made the positional walk blind to every
     multi-child family until 2026-08-25."""
     return [x.strip() for x in re.split(r"[,;|]", cell or "") if x.strip()]
 
@@ -122,12 +122,12 @@ def main():
             if len(row) >= 2 and row[0].startswith("Q") and row[1].strip().isdigit():
                 held.setdefault(row[1].strip(), row[0])
     stated = len(held)
-    zipper = {}
-    with open(R / "zipper-pairs.tsv", encoding="utf-8") as f:
+    positional_walk = {}
+    with open(R / "positional-walk-pairs.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
-            zipper[row["geni_id"]] = row
+            positional_walk[row["geni_id"]] = row
             held.setdefault(row["geni_id"], row["qid"])
-    print(f"{stated:,} stated + {len(zipper):,} zipper = {len(held):,} correspondences")
+    print(f"{stated:,} stated + {len(positional_walk):,} positional walk = {len(held):,} correspondences")
 
     crossed = []
     for g, q in held.items():
@@ -139,7 +139,7 @@ def main():
             b = [x for x in (their[prop] or "").split(";") if x]
             if len(a) <= 1 and len(b) <= 1:
                 continue
-            z = zipper.get(g, {})
+            z = positional_walk.get(g, {})
             crossed.append({
                 "geni_id": g, "name": names.get(g, ""), "qid": q,
                 "label": lab.get(q, ""), "slot": slot[:-1],
@@ -147,8 +147,8 @@ def main():
                 "ours": ";".join(a), "theirs": ";".join(b),
                 "ours_names": " | ".join(names.get(v, "?") for v in a),
                 "theirs_labels": " | ".join(lab.get(v, "?") for v in b),
-                "pair_from": "wikidata-p2600" if g not in zipper else
-                             f"zipper r{z.get('round','?')} {z.get('slot','')}/{z.get('method','')}",
+                "pair_from": "wikidata-p2600" if g not in positional_walk else
+                             f"positional walk r{z.get('round','?')} {z.get('slot','')}/{z.get('method','')}",
             })
 
     for path, rows in ((R / "multi-parents-ours.tsv", ours_multi),

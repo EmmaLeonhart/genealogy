@@ -1,15 +1,15 @@
-"""The chain of justifications behind every zipper pair, walked both ways.
+"""The chain of justifications behind every positional walk pair, walked both ways.
 
-    python scripts/zipper-provenance.py [GENI_ID ...]
+    python scripts/positional-walk-provenance.py [GENI_ID ...]
 
-**Provenance is important here.** A zipper merge should almost always carry a relatively large
+**Provenance is important here.** A positional walk should almost always carry a relatively large
 chain of it -- not a single "this was the justification", but a potentially very large series of
 justifications.
 
 That is also why the hand verdicts are recorded at all: they enter the provenance graph as
 first-class nodes.
 
-`reports/zipper-pairs.tsv` records **one step** — the slot, the method, the pair it hung off, and
+`reports/positional-walk-pairs.tsv` records **one step** — the slot, the method, the pair it hung off, and
 the evidence. That is a link. This walks the links into the chain: a round-6 pair's justification
 is its own step plus every step beneath it, all the way down to a Wikidata-stated `P2600`
 *Geni.com profile ID* or to a verdict given by hand.
@@ -25,7 +25,7 @@ down the entire chain."*
 resolution that clearly contradicts it, this indicates a clear contradiction... it goes both
 ways."*
 
-So every pair the zipper inferred is checked against every *independent* correspondence this repo
+So every pair the positional walk inferred is checked against every *independent* correspondence this repo
 holds -- the Geni About Me links, the hand identifications, the structural walk, the Izumo and
 Tanba rosters, and the hand verdicts. An independent source that **agrees** is corroboration; one that
 **disagrees** is a contradiction. Neither is applied only to the pair itself: both are pushed
@@ -38,8 +38,8 @@ not a deletion: `CLAUDE.md` is emphatic that the question is whether our snapsho
 never whether Geni is right, and the standard for stopping the join is high: it takes a very
 good reason. So nothing is dropped here. The marking exists so that the reason is visible.
 
-Writes `reports/zipper-provenance.tsv` (one row per pair, with chain depth, root, and status) and
-`reports/zipper-provenance-chains.md` (the full chains for the contradicted ones, plus any Geni
+Writes `reports/positional-walk-provenance.tsv` (one row per pair, with chain depth, root, and status) and
+`reports/positional-walk-provenance-chains.md` (the full chains for the contradicted ones, plus any Geni
 ids named on the command line).
 """
 from __future__ import annotations
@@ -55,9 +55,9 @@ csv.field_size_limit(1 << 30)
 ROOT = Path(__file__).resolve().parent.parent
 R = ROOT / "reports"
 
-#: Correspondences that do NOT come from the zipper, so they can corroborate or refute it.
+#: Correspondences that do NOT come from the positional walk, so they can corroborate or refute it.
 #: `wikidata-p2600` is deliberately absent: the join already refuses to contradict a recorded
-#: identifier (those land in `zipper-conflicts.tsv`), so it can only ever agree here.
+#: identifier (those land in `positional-walk-conflicts.tsv`), so it can only ever agree here.
 INDEPENDENT = (
     ("emma-hand-verdict", R / "emma-judgments.tsv", "qid", "geni_id", "\t"),
     ("geni-about-me", R / "geni-qid-links.tsv", "qids", "geni_id", "\t"),
@@ -85,18 +85,18 @@ def read_pairs(path, qcol, gcol, delim):
 
 def main():
     pairs = {}
-    with open(R / "zipper-pairs.tsv", encoding="utf-8") as f:
+    with open(R / "positional-walk-pairs.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             pairs[row["geni_id"]] = row
     if not pairs:
-        sys.exit("no zipper pairs - run scripts/zipper-join.py first")
+        sys.exit("no positional walk pairs - run scripts/positional-walk.py first")
     if "method" not in next(iter(pairs.values())):
-        sys.exit("zipper-pairs.tsv has no provenance columns - re-run scripts/zipper-join.py")
+        sys.exit("positional-walk-pairs.tsv has no provenance columns - re-run scripts/positional-walk.py")
     print(f"{len(pairs):,} inferred pairs")
 
     # --- the chain -------------------------------------------------------------------
     def chain(g, seen=None):
-        """Steps from `g` down to a root. A root is a pair the zipper did not make."""
+        """Steps from `g` down to a root. A root is a pair the positional walk did not make."""
         seen = seen or set()
         out = []
         while g in pairs and g not in seen:
@@ -159,7 +159,7 @@ def main():
     for k, n in counts.most_common():
         print(f"   {n:>7,}  {k}")
 
-    out = R / "zipper-provenance.tsv"
+    out = R / "positional-walk-provenance.tsv"
     with open(out, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, delimiter="\t")
         w.writerow(["geni_id", "qid", "round", "slot", "method", "chain_depth",
@@ -186,11 +186,11 @@ def main():
                 f"from `{step['from_geni']}`")
         return lines
 
-    md = R / "zipper-provenance-chains.md"
+    md = R / "positional-walk-provenance-chains.md"
     wanted = [a for a in sys.argv[1:] if a in pairs]
     with open(md, "w", encoding="utf-8", newline="\n") as f:
-        f.write("# Zipper provenance chains\n\n")
-        f.write("Generated by `scripts/zipper-provenance.py`. Ideally a zipper merge is done "
+        f.write("# Positional walk provenance chains\n\n")
+        f.write("Generated by `scripts/positional-walk-provenance.py`. Ideally a positional walk is done "
                 "with a relatively large chain of provenance behind it -- not a single 'this "
                 "was the justification', but a potentially very large series of "
                 "justifications.\n\n")

@@ -1,4 +1,4 @@
-"""The FamilySearch zipper never pairs a one-against-one slot on position alone.
+"""The FamilySearch positional walk never pairs a one-against-one slot on position alone.
 
 `b26c7259c` (Emma, 2026-10-01): position alone fused differently named lines -- Kerstin
 Olofsdotter with Elisabet Matsdotter above Eric Ericsson, rounds 7-9 -- and the Adelus
@@ -13,8 +13,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def _zipper():
-    spec = importlib.util.spec_from_file_location("zj", ROOT / "scripts" / "zipper-join.py")
+def _positional_walk():
+    spec = importlib.util.spec_from_file_location("zj", ROOT / "scripts" / "positional-walk.py")
     zj = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(zj)
     return zj
@@ -22,7 +22,7 @@ def _zipper():
 
 def _run(our_father, their_father, our_year=None, their_year=None, allow_solo=False):
     """One anchored child on each side, one father on each side: a 1 x 1 father slot."""
-    zj = _zipper()
+    zj = _positional_walk()
     ours = {"c": {"father": "f", "mother": "", "spouses": "", "children": ""},
             "f": {"father": "", "mother": "", "spouses": "", "children": "c"}}
     theirs = {"FC": {"p22": "FF", "p25": "", "p26": "", "p40": ""},
@@ -56,14 +56,14 @@ def test_position_only_pairing_is_what_allow_solo_true_would_do():
 
 
 def test_the_familysearch_run_passes_allow_solo_false():
-    src = (ROOT / "scripts" / "zipper-join.py").read_text(encoding="utf-8")
+    src = (ROOT / "scripts" / "positional-walk.py").read_text(encoding="utf-8")
     assert "FS_MAX_ROUNDS, allow_solo=False)" in src
 
 
 def test_a_different_verdict_refuses_the_pairing():
     """Adelus Eriksdatter (2026-10-02): the walk read only `SAME` verdicts. A pairing judged
     `DIFFERENT` is refused even when the years agree, and goes to the conflicts."""
-    zj = _zipper()
+    zj = _positional_walk()
     ours = {"c": {"father": "f", "mother": "", "spouses": "", "children": ""},
             "f": {"father": "", "mother": "", "spouses": "", "children": "c"}}
     theirs = {"FC": {"p22": "FF", "p25": "", "p26": "", "p40": ""},
@@ -85,7 +85,7 @@ def test_the_last_verdict_on_a_pair_wins(tmp_path):
     walk kept the SAME as an anchor while only blocking proposals on the DIFFERENT, so the whole
     Fornjot line was paired one generation off. `read_verdicts` keeps the last verdict per pair:
     a SAME later judged DIFFERENT is a refusal, and a DIFFERENT later judged SAME an anchor."""
-    zj = _zipper()
+    zj = _positional_walk()
     path = tmp_path / "judgments.tsv"
     path.write_text(
         "date\tbatch\tn\tround\tgeni_id\tour_name\tqid\ttheir_name\tverdict\ther_words\n"

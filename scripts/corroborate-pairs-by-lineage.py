@@ -18,7 +18,7 @@ same father, the same mother or the same child are the same person.
 
 **No name is compared anywhere in this module.** The evidence is entirely `P2600` incidence:
 Wikidata already claims each relative pair is one person, and this module only asks whether those
-claims line up across a generation. That is the zipper join: a merge is made on whether
+claims line up across a generation. That is the positional walk: a merge is made on whether
 somebody is the mother on both sides of an individual — applied here to a pair whose
 identity is in question rather than to a pair being proposed.
 

@@ -246,7 +246,7 @@ jobs:
       # rosters of these since they change a lot and it can lead to outdated stuff."* `tree.yml`
       # only runs on a push to `exports/**` or by hand, so a refresh that lives only there is a
       # refresh that happens when somebody remembers. `p2600-all.tsv` is what forty scripts join
-      # through; `p2889-all.tsv` is the FamilySearch zipper's anchors. An outage keeps the
+      # through; `p2889-all.tsv` is the FamilySearch positional walk's anchors. An outage keeps the
       # committed copy -- the script refuses a short fetch and never writes one.
       - name: Refresh the P2600, P2889 and P497 rosters
         continue-on-error: true

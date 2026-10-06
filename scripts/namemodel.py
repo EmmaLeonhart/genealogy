@@ -2700,7 +2700,7 @@ def _skeleton(word: str) -> str:
     **This is NOT the fuzzy matching `CLAUDE.md` forbids, and the boundary is the candidate set.**
     That rule is about *searching* for a name across a population. Here the father is already
     fixed by the tree -- exactly one person -- and the comparison only asks whether this token was
-    built from that one man's name. The same boundary the zipper's name step runs on: position has
+    built from that one man's name. The same boundary the positional walk's name step runs on: position has
     chosen, the letters only confirm.
     """
     w = word.casefold()

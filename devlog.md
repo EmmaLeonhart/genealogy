@@ -52880,3 +52880,30 @@ Queue item "Save every session transcript into the repo, now and from here on, l
 - **LFS or plain git:** moot while nothing is pushed. Had they been pushed: plain git (the pack is already 46 GB; public
   LFS has a 1 GB storage and bandwidth quota that daily transcripts would exhaust within weeks).
 - `CLAUDE.md` gains a short "Session transcripts (local only)" section.
+
+## 2026-10-06: what a zipper merge is, written down; the outward walk renamed the positional walk
+
+Queue item "Write down what a zipper merge is, and stop calling the outward walk one (Emma, 2026-10-04)".
+- **`CLAUDE.md`:** the "practical barrier" section now carries Emma's definition (a zipper merge resolves the path of
+  people between two people already entity-resolved independently; nothing here does that yet) and says what was built
+  under the name: a positional walk. The FamilySearch section is now "FIRST OF ALL, THE FAMILYSEARCH POSITIONAL WALK"
+  and the decks section "THE IDENTITY DECKS"; `queue.md`'s standing line points at the new heading. Emma's quotes
+  (*"We should be having the zipper do ..."*, *"zipper merge resolution"*, *"zipper insanity"*) and the rulings that
+  FamilySearch creations wait on "the zipper work" keep her words.
+- **Renamed files (`git mv`):** `scripts/zipper-join.py` -> `scripts/positional-walk.py`, `census-zipper-evidence.py`,
+  `measure-zipper-reliability.py`, `zipper-provenance.py`, `tests/test_zipper_no_solo.py`, and the live reports
+  (`positional-walk-{pairs,ambiguous,conflicts,sex-refuted,evidence,provenance,...}`,
+  `familysearch-positional-walk-*`, `sweep-parsed-positional-walk.tsv`, `out/positional-walk-sample20.json`).
+- **Text:** 93 files, by `scripts/session-2026-10-06/rename-positional-walk.py` (kept for the record). Code is rewritten
+  token by token (a variable `zipper` became `positional_walk`; only strings and comments take prose). A first
+  plain-text pass broke four files (`positional walk = ...`); they were restored from `HEAD` and redone, and every
+  changed `.py` compiles. Data files take only the lowercase tag and file-name forms: **people named Zipper are in the
+  data** (Herbert Zipper `Q214870`, Alice Zipper `Q106476385`, Wilhelm von Zipperlen `Q55567964`) and are untouched;
+  `harvested-paths/` is left out entirely.
+- **The source tag** `zipper` is now `positional-walk` (`synoptic-correspondence.tsv` 49,550 rows, and the files built
+  from it). `build-garborg-day.py`'s `INFERRED_SOURCES` accepts both, so a file built by a run on the old code still
+  reads correctly until it is rebuilt.
+- **Left as history:** `devlog.md`, `docs/queue-archive/`, the dated session scripts and reports, the dated
+  `zipper-split-batch-*`/`zipper-review-*`/`zipper-ebec-*` batches, `reports/emma-judgments.*`, `reports/user-turns.tsv`,
+  `todo.md`, and the queue items quoting Emma. `preservation/genealogy/dropbox/ITIS.ged` is not UTF-8 and was skipped.
+- Tests run in CI only; the next push run is the check.

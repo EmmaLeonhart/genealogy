@@ -378,7 +378,7 @@ def _manual_identification_qids():
     the guard bites on it, which is the whole point of reading the file rather than pattern-
     matching the QIDs.
 
-    **⛔ This file is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES** — `CLAUDE.md` names the
+    **⛔ This file is the MANUAL PARENTAL POSITIONAL WALK CORRESPONDENCES** — `CLAUDE.md` names the
     vague title as the thing later agents abuse. It is used here for exactly what it records, a
     Geni id against a QID, and for nothing else.
     """

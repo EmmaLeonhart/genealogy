@@ -21,7 +21,7 @@ The constraint: it uses a string comparison exactly once. Here it is -- establis
 name a patronymic derives from -- and the comparison is made **against the fathers our tree
 already names**, never by searching the store. Searching returns 553 candidates for `Olsdatter`
 including `oala` and `oilbhe`; the father is one fixed person, which is the same boundary the
-zipper's name step runs on. After this file exists, no bearer is ever string-compared again.
+positional walk's name step runs on. After this file exists, no bearer is ever string-compared again.
 
 ## What each item carries
 

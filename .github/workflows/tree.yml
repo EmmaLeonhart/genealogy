@@ -44,7 +44,7 @@ on:
     branches: [main]
     paths:
       - "exports/**"
-      # The FamilySearch side the zipper reads (the downloads and the RootsMagic exports). The
+      # The FamilySearch side the positional walk reads (the downloads and the RootsMagic exports). The
       # finished RootsMagic export (19efa81e0, 2026-09-30) sat here unread by any rebuild until
       # one was dispatched by hand on 2026-10-01, because only exports/ triggered.
       - "gedcom/familysearch/**"
@@ -99,19 +99,19 @@ jobs:
       - name: Unpack the derived CSVs
         run: python scripts/pack-derived.py --unpack || echo "nothing to unpack; a full rebuild writes them"
 
-      # ⛔ THE ZIPPER DOES THE FAMILYSEARCH WORK, AND IT RUNS BEFORE THE MERGE (ruled 2026-09-24).
-      # Bridge -> zipper -> render, so the merge below reads a FamilySearch render keyed on the
-      # Geni ids this run found. The zipper reads the derived CSVs just unpacked -- the previous
+      # ⛔ THE POSITIONAL WALK DOES THE FAMILYSEARCH WORK, AND IT RUNS BEFORE THE MERGE (ruled 2026-09-24).
+      # Bridge -> positional walk -> render, so the merge below reads a FamilySearch render keyed on the
+      # Geni ids this run found. The positional walk reads the derived CSVs just unpacked -- the previous
       # tree -- which is the same one-run lag every other derived input has.
       # The P2889 roster it reads is refreshed daily by pipeline.yml. A failure here keeps the
       # previous render in exports/ and must not abandon the rebuild below.
-      - name: FamilySearch zipper
+      - name: FamilySearch positional walk
         continue-on-error: true
         env:
           PYTHONPATH: src
         run: |
           python scripts/bridge-familysearch-qids.py
-          # The zipper walk is OUT (Emma, 2026-10-04: duplicates over reckless merging). The render
+          # The positional walk is OUT (Emma, 2026-10-04: duplicates over reckless merging). The render
           # puts a FamilySearch person on a Geni id only through the exact bridge, a verdict or a root.
           python scripts/render-familysearch-gedcom.py --all
 

@@ -6,7 +6,7 @@
 **`--p2889` refreshes `out/wikidata/p2889-all.tsv` the same way** -- `qid<TAB>fs_id`, every item
 carrying `P2889` *FamilySearch person ID*. Ruled 2026-09-24: *"We need to update our rosters of
 these since they change a lot and it can lead to outdated stuff."* It is the FamilySearch
-zipper's anchor roster, and it replaces the bridge's own live queries: those asked one question
+positional walk's anchor roster, and it replaces the bridge's own live queries: those asked one question
 per 250 people at build time, and on 2026-09-24 the query service answered them 403 and 429
 (*"1 req / min ... during active wdqs outage"*), so the bridge reached 12 people. A roster
 refreshed here fails loudly and leaves the last good copy in place.
@@ -14,7 +14,7 @@ refreshed here fails loudly and leaves the last good copy in place.
 **The file is the master QID-to-Geni correspondence** — every Wikidata item carrying `P2600`
 *Geni.com profile ID*, as `qid<TAB>geni_id` with no header. **Forty scripts and three modules
 read it**, including `build-garborg-day.py`, `refresh-garborg-ledger.py`, `derive-family.py` and
-`zipper-join.py`.
+`positional-walk.py`.
 
 **Why this exists rather than `genimerge overlap`.** That command does the same fetch and then
 merges the whole corpus to produce `reports/wikidata-overlap.md` — 837 seconds and 16.8 GB for a

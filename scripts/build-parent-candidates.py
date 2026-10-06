@@ -78,7 +78,7 @@ def main():
     # **`P2600` is not the only thing that identifies somebody, and using it alone made the deck
     # stale.** Reported 2026-08-31: essentially all these people had been identified earlier and
     # some of the cases were very stale. Seven of nine cases answered `SAME` were already in
-    # `reports/synoptic-correspondence.tsv`, known through the structural walk, the zipper, the
+    # `reports/synoptic-correspondence.tsv`, known through the structural walk, the positional walk, the
     # bio links or earlier verdicts -- none of which puts a `P2600` on Wikidata.
     known_qid, known_geni, _syn = deck.load_correspondence()
     claimed |= known_qid

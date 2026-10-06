@@ -87,7 +87,7 @@ def ledger_against_correspondence():
     `Q550343` *Welf I, Duke of Bavaria*, 27 sitelinks, was created again as `Q141249742` for
     exactly that reason, along with three others merged by hand the same afternoon.
 
-    `reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural
+    `reports/synoptic-correspondence.tsv` does see them, through the positional walk and the structural
     walk. Where the ledger says a Geni profile is one item and the correspondence says it is also
     an older one, that is a probable double-creation and a merge to make.
 
@@ -312,10 +312,10 @@ def main():
         "this reason on 2026-09-01, along with three others merged by hand.\n"
     )
     w.append(
-        "`reports/synoptic-correspondence.tsv` does see them, through the zipper and the "
+        "`reports/synoptic-correspondence.tsv` does see them, through the positional walk and the "
         "structural walk. **Five were spot-checked live on 2026-09-01** and every one matched on "
         "sex and on both dates where both sides carried them. The bracketed `sources` says what "
-        "found each pair: a `zipper`-only row is the weakest, carrying a measured 2.8-4.8% error, "
+        "found each pair: a `positional walk`-only row is the weakest, carrying a measured 2.8-4.8% error, "
         "so read both items before merging that one.\n"
     )
     # `older` rather than `outside`: that name is section 2's dict and shadowing it here made the

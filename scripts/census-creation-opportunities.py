@@ -11,7 +11,7 @@ from wikidata is not a problem at all lol."*
 Both halves matter and they run in that order:
 
 **Direction first.** A five-against-one slot is not five candidates for one item. It is one item
-that belongs to one of our five, and four people Wikidata does not have. `scripts/zipper-join.py`
+that belongs to one of our five, and four people Wikidata does not have. `scripts/positional-walk.py`
 now does the placing -- solo, then dates, then names inside the slot -- so by the time this runs,
 their one child either has a partner or is honestly still ambiguous.
 
@@ -77,10 +77,10 @@ def main():
             if len(row) >= 2 and row[0].startswith("Q") and row[1].strip().isdigit():
                 held.setdefault(row[1].strip(), row[0])
     stated = len(held)
-    with open(ROOT / "reports" / "zipper-pairs.tsv", encoding="utf-8") as f:
+    with open(ROOT / "reports" / "positional-walk-pairs.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             held.setdefault(row["geni_id"], row["qid"])
-    print(f"{stated:,} stated + zipper -> {len(held):,} people we can already point at an item")
+    print(f"{stated:,} stated + positional walk -> {len(held):,} people we can already point at an item")
 
     # Hops from Arne over parent/child/spouse edges. Proximity beats volume.
     dist = {ARNE: 0}

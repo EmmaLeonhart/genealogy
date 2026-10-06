@@ -69,7 +69,7 @@ population the GEDCOM exports never reached — and `yuri-junction-hunt.md` § *
 names the frontier as the bottleneck on the whole descent hunt.
 
 **Built 2026-09-24: `scripts/parse-sweep-trees.py`**, writing `exports/sweep-parsed/` (three
-shards, 75 MB) and `reports/sweep-parsed-zipper.tsv`. Per the ruling that day, a name that does
+shards, 75 MB) and `reports/sweep-parsed-positional-walk.tsv`. Per the ruling that day, a name that does
 not resolve becomes **a label-only individual** (`@IL…@`) and the zipper runs over those. Over
 all 8,959 files:
 

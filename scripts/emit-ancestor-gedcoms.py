@@ -359,9 +359,9 @@ def impossible(child, parent, born, died):
 
 
 def fs_ids_of() -> dict[str, set[str]]:
-    """Geni id -> FamilySearch ids: the bridge and the zipper's pairs."""
+    """Geni id -> FamilySearch ids: the bridge and the positional walk's pairs."""
     out: dict[str, set[str]] = collections.defaultdict(set)
-    for name in ("familysearch-qid-bridge.tsv", "familysearch-zipper-pairs.tsv"):
+    for name in ("familysearch-qid-bridge.tsv", "familysearch-positional-walk-pairs.tsv"):
         path = REPORTS / name
         if not path.exists():
             continue

@@ -9,7 +9,7 @@ what                                         what it printed                  wh
 ``split()`` unaware of ``" | "``             615 ambiguous slots, no ``2x2``  379,251 childless
 ``|`` split without ``.strip()``             pair count moved by *zero*       tokens missed index
 ``father[child] = husb``                     census read **0**                1,663 people
-sex rate over ``zipper-pairs.tsv``           **0.0%** for all four shapes     measured the filter
+sex rate over ``positional-walk-pairs.tsv``           **0.0%** for all four shapes     measured the filter
 ``chart_name`` column that does not exist    all 10 pairs "no item held"      196 names have QIDs
 ===========================================  ===============================  ====================
 
@@ -55,7 +55,7 @@ def _rows(path, delim=","):
 def test_derived_family_multi_values_land_in_the_index():
     """`children` and `spouses` hold ` | `-separated ids that must BE people.
 
-    This is the bug that made the zipper blind to every multi-child family: the separator is
+    This is the bug that made the positional walk blind to every multi-child family: the separator is
     ` | ` with spaces, so splitting on `|` alone yields `"1050090 "` and splitting on `,;`
     alone yields one uncut token. Either way `x in ours` rejects it and the person presents
     as childless.
@@ -179,18 +179,18 @@ def test_the_spine_paths_resolve_to_people_we_hold():
 
 @pytest.mark.slow
 def test_a_measurement_over_a_filtered_file_is_not_mistaken_for_the_population():
-    """`zipper-pairs.tsv` holds SURVIVORS; the refused ones are a separate file.
+    """`positional-walk-pairs.tsv` holds SURVIVORS; the refused ones are a separate file.
 
     Measuring sex disagreement over the kept file alone returned 0.0% for every shape, which
     describes the filter rather than the join. Both files must exist and the refused one must
     be non-empty, or that mistake is available again.
     """
-    kept = R / "zipper-pairs.tsv"
-    refused = R / "zipper-sex-refuted.tsv"
-    assert kept.exists(), "reports/zipper-pairs.tsv missing"
+    kept = R / "positional-walk-pairs.tsv"
+    refused = R / "positional-walk-sex-refuted.tsv"
+    assert kept.exists(), "reports/positional-walk-pairs.tsv missing"
     assert refused.exists(), (
-        "reports/zipper-sex-refuted.tsv missing -- without it, any rate computed over "
-        "zipper-pairs.tsv alone measures the filter and reads as a property of the join.")
+        "reports/positional-walk-sex-refuted.tsv missing -- without it, any rate computed over "
+        "positional-walk-pairs.tsv alone measures the filter and reads as a property of the join.")
     n_ref = sum(1 for _ in _rows(refused, "\t"))
     assert n_ref > 0, (
         "no sex-refused pairs recorded. Either the filter is off, or the file was written "
@@ -277,7 +277,7 @@ def test_compose_returns_stripped_geni_ids():
     50**.
 
     `CLAUDE.md` § *Our side could never have two children* records the same bug in
-    `zipper-join.py`, including that the pipe-aware fix without the strip *"moved the pair
+    `positional-walk.py`, including that the pipe-aware fix without the strip *"moved the pair
     count by exactly zero"*. This is that bug in the one disguise that survives a careful
     reading — the strip is present, on the test rather than on the value.
 
@@ -405,7 +405,7 @@ def test_emma_s_hand_written_files_are_not_claimed_as_generated():
     named its writers.
     """
     freshness = _freshness()
-    for script in ("zipper-provenance.py", "measure-zipper-reliability.py"):
+    for script in ("positional-walk-provenance.py", "measure-positional-walk-reliability.py"):
         path = ROOT / "scripts" / script
         if not path.exists():
             continue

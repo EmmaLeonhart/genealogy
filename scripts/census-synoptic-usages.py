@@ -45,7 +45,7 @@ GENI = re.compile(r"merged\.ged|exports/|genimerge merge|rebuild-everything|"
                   r"\bgedcoms?\b|\.ged\b|derived-|display-names|the merge\b", re.I)
 
 #: Words that can only belong to the union with other sources.
-FULL = re.compile(r"wikidata|\bQ\d{3,}|qid|union with|all data sources|zipper|"
+FULL = re.compile(r"wikidata|\bQ\d{3,}|qid|union with|all data sources|positional walk|"
                   r"\bp2600\b|other sources", re.I)
 
 

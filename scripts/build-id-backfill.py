@@ -8,7 +8,7 @@ done in a rapid thing just the same as what we were doing earlier"* -- the earli
 the `P2889` backfill of 2026-10-01 (`reports/wikidata-p2889-backfill.qs`).
 
 **`P2889` FamilySearch person ID** goes on an item when its Geni id (the item's own `P2600`, or
-the ledger's) is paired with a FamilySearch id by the zipper (`reports/familysearch-zipper-pairs.tsv`,
+the ledger's) is paired with a FamilySearch id by the positional walk (`reports/familysearch-positional-walk-pairs.tsv`,
 which since 2026-10-01 pairs no slot by position alone) or by the merged tree
 (`derived-family-sources.csv`), and both readings agree.
 
@@ -43,7 +43,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 from live_name_items import _get as api_get  # noqa: E402
 
 LEDGER = REPO / "reports" / "garborg-qids.tsv"
-PAIRS = REPO / "reports" / "familysearch-zipper-pairs.tsv"
+PAIRS = REPO / "reports" / "familysearch-positional-walk-pairs.tsv"
 SOURCES = REPO / "reports" / "derived-family-sources.csv"
 DISPLAY = REPO / "reports" / "display-names.csv"
 P2600_ALL = REPO / "out" / "wikidata" / "p2600-all.tsv"
@@ -185,7 +185,7 @@ def name_check():
     """Drop every line whose source name and the item's live label disagree on the first name.
 
     Found on the first build, 2026-10-02: `Q618605` Höfða-Þórður Bjarnarson was given Geni
-    `Sæmundur suðureyski` through a FamilySearch pairing the zipper made on a birth year alone
+    `Sæmundur suðureyski` through a FamilySearch pairing the positional walk made on a birth year alone
     (402 of the 654 `P2889` lines are such `date` pairings). The 2026-10-01 removals were exactly
     this case, so the same test runs before the batch: Geni's display name for `P2600`, the
     FamilySearch download's name for `P2889`, each against the item's `mul`/`en` label and aliases.
@@ -267,7 +267,7 @@ def main() -> int:
 
     # Geni <-> FamilySearch, kept only where every reading agrees.
     g2f, f2g = collections.defaultdict(set), collections.defaultdict(set)
-    # The zipper's pairs (`PAIRS`) are no longer an identity source (Emma, 2026-10-04).
+    # The positional walk's pairs (`PAIRS`) are no longer an identity source (Emma, 2026-10-04).
     with open(SOURCES, encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             if row["relation"] == "fs_id":

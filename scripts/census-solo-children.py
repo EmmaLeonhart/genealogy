@@ -1,4 +1,4 @@
-"""Every solo-child slot the zipper resolved, and why that cell is the worst in the join.
+"""Every solo-child slot the positional walk resolved, and why that cell is the worst in the join.
 
     python scripts/census-solo-children.py
 
@@ -20,7 +20,7 @@ different reasons:
   entered, or because an export ball hit its size bound mid-family.
 
 The second is not a match. It is two arbitrary children of the same couple, and position cannot
-tell them apart any better than it can tell two-against-two apart — which the zipper already
+tell them apart any better than it can tell two-against-two apart — which the positional walk already
 refuses.
 
 ## What this builds
@@ -31,7 +31,7 @@ whether the free checks agree.
 
 The discriminator the join never uses is **sex**: `P21` against our `sex` column costs nothing,
 needs no name, and refutes a pairing outright. It is already applied as a filter in
-`scripts/zipper-join.py`; here it is used to measure what is left.
+`scripts/positional-walk.py`; here it is used to measure what is left.
 
 Writes `reports/solo-children.csv` and prints the analysis.
 """
@@ -55,14 +55,14 @@ def split(cell):
 
 def main():
     # **The refuted proposals are included, and leaving them out was the first version's
-    # mistake.** `scripts/zipper-join.py` already drops sex-refuted proposals, so
-    # `zipper-pairs.tsv` holds only survivors -- measuring sex disagreement over it returns
+    # mistake.** `scripts/positional-walk.py` already drops sex-refuted proposals, so
+    # `positional-walk-pairs.tsv` holds only survivors -- measuring sex disagreement over it returns
     # 0.0% by construction, which describes the filter and not the join. `CLAUDE.md` records
     # this shape twice already: a date curve that tracked date coverage, and one that tracked
     # date softness. Third time.
     pairs = []
-    for path, was_refuted in ((R / "zipper-pairs.tsv", False),
-                              (R / "zipper-sex-refuted.tsv", True)):
+    for path, was_refuted in ((R / "positional-walk-pairs.tsv", False),
+                              (R / "positional-walk-sex-refuted.tsv", True)):
         if not path.exists():
             continue
         with open(path, encoding="utf-8") as f:

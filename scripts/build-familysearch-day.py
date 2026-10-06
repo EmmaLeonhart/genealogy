@@ -11,7 +11,7 @@ leaves a redirect behind. That is not a defect this script should be preventing.
 people — 0.35% — so automated resolution cannot join these two trees
 (`reports/familysearch-qid-bridge.tsv`, `scripts/bridge-familysearch-qids.py`). Withholding an
 item until the join is proven means **3,092 people never enter Wikidata at all**. Creating both
-and merging by hand is the stopgap `CLAUDE.md` § *THE PRACTICAL BARRIER: THE ZIPPER MERGE*
+and merging by hand is the stopgap `CLAUDE.md` § *THE PRACTICAL BARRIER: ENTITY RESOLUTION*
 already describes, applied to a second source.
 
 ⛔ **THIS OVERRIDES THE ANTI-DUPLICATE REASONING FOR THIS PIPELINE ONLY.** `CLAUDE.md`
@@ -114,16 +114,16 @@ CARRY = ROOT / "reports" / "familysearch-carry-forward.tsv"
 #: `P2889` FamilySearch person ID -- the identifier that makes a created item joinable.
 FS_PROP = "P2889"
 
-ZIPPER_PAIRS = ROOT / "reports" / "familysearch-zipper-pairs.tsv"
+POSITIONAL_WALK_PAIRS = ROOT / "reports" / "familysearch-positional-walk-pairs.tsv"
 P2600_ALL = ROOT / "out" / "wikidata" / "p2600-all.tsv"
-#: The Geni-to-item correspondence union (`P2600` roster, structural, zipper), the same file
+#: The Geni-to-item correspondence union (`P2600` roster, structural, positional walk), the same file
 #: `build-garborg-day.py` links a creation's relatives through (`_known_qid`, 2026-09-28).
 CORRESPONDENCE = ROOT / "reports" / "synoptic-correspondence.tsv"
 
-#: ⛔ **A person the zipper put on a Geni profile that ALREADY HAS AN ITEM is not created.**
+#: ⛔ **A person the positional walk put on a Geni profile that ALREADY HAS AN ITEM is not created.**
 #: Decided when asked, 2026-09-24: *"Skip them; add P2889 instead"*. The intentional-duplicates
 #: ruling was made when the bridge reached 11 people and nothing else could tell who a
-#: FamilySearch person was; the zipper now pairs thousands, and minting a second item for a
+#: FamilySearch person was; the positional walk now pairs thousands, and minting a second item for a
 #: person whose item we can name is a duplicate made on purpose for no one. The item takes
 #: `P2889` instead -- which also grows the bridge, since the next bridge run finds it.
 #: Capped per run like `MANUAL_P2600_PER_RUN`: an identifier onto an existing item is the same
@@ -131,11 +131,11 @@ CORRESPONDENCE = ROOT / "reports" / "synoptic-correspondence.tsv"
 P2889_ADD_CAP = 40
 
 #: ⛔ **FAMILYSEARCH CREATIONS ARE PAUSED. Emma, 2026-09-30:** *"try drop familysearch importing
-#: for a while since lack of zipper merge is kinda egregious and then to start the work"*. Every
-#: person this file would create is a FamilySearch item beside a Geni one the zipper failed to
-#: pair, so nobody is created until the zipper does its job on what is already imported; each is
+#: for a while since lack of positional walk is kinda egregious and then to start the work"*. Every
+#: person this file would create is a FamilySearch item beside a Geni one the positional walk failed to
+#: pair, so nobody is created until the positional walk does its job on what is already imported; each is
 #: carried with the reason `paused`. The `P2889` additions above still go out: they ARE the
-#: zipper's output. With no creations here, `split-daily-batch.py` gets no FamilySearch test
+#: positional walk's output. With no creations here, `split-daily-batch.py` gets no FamilySearch test
 #: people either. Only Emma lifts it.
 CREATIONS_PAUSED = True
 
@@ -494,7 +494,7 @@ def read_ring():
 def read_geni_qids(G):
     """`geni_id -> qid` for every Geni profile Wikidata has an item for, the way the day builder
     links a creation's relatives: the live `P2600` roster, then the correspondence union
-    (`synoptic-correspondence.tsv`: structural and zipper pairs too), then
+    (`synoptic-correspondence.tsv`: structural and positional walk pairs too), then
     `build-garborg-day.ledger()` -- our ledger, the hand identifications and the judgments --
     which wins. A Geni id that two items both claim is left out: that is Wikidata's duplicate,
     and choosing one is not ours to do.
@@ -526,12 +526,12 @@ def read_geni_qids(G):
 
 
 def read_zipped_items(G, geni_q=None):
-    """`fs_id -> qid` for every zipper pair whose Geni profile has an item (`read_geni_qids`)."""
+    """`fs_id -> qid` for every positional walk pair whose Geni profile has an item (`read_geni_qids`)."""
     if geni_q is None:
         geni_q = read_geni_qids(G)
     out = {}
-    if False:  # the zipper is no longer an identity source (Emma, 2026-10-04)
-        with open(ZIPPER_PAIRS, encoding="utf-8") as fh:
+    if False:  # the positional walk is no longer an identity source (Emma, 2026-10-04)
+        with open(POSITIONAL_WALK_PAIRS, encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
                 fs, g = (row.get("fs_id") or "").strip(), (row.get("geni_id") or "").strip()
                 if fs and geni_q.get(g):
@@ -541,7 +541,7 @@ def read_zipped_items(G, geni_q=None):
 
 def geni_keyed(people):
     """`fs_id -> geni_id` for every FamilySearch person a render wrote on a Geni profile id
-    (`0 @I6000…@ INDI` rather than `@IFS…@`): the bridge, a zipper pair or one of Emma's SAME
+    (`0 @I6000…@ INDI` rather than `@IFS…@`): the bridge, a positional walk pair or one of Emma's SAME
     verdicts identified them, and the tree holds them as that Geni person. The day batch
     creates such a person with `P2600` and `P2889` both; creating them here as well would be a
     duplicate of our own making (Emma, 2026-09-24: *"Skip them; add P2889 instead"*)."""
@@ -618,7 +618,7 @@ def build(args):
             continue
         q = zipped[fs]
         if q in universe and added < P2889_ADD_CAP:
-            lines.append(f"#   {q}: the zipper put FamilySearch {fs} on this item's Geni "
+            lines.append(f"#   {q}: the positional walk put FamilySearch {fs} on this item's Geni "
                          f"profile; the item takes the id instead of a duplicate")
             lines.append(f'{q}\t{FS_PROP}\t"{fs}"')
             added += 1
@@ -634,7 +634,7 @@ def build(args):
         rec = by_fs[fs]
         key = rec["xref"]
         if fs in zipped:
-            carried.append((fs, "", f"the zipper put them on an existing item: {zipped[fs]}, "
+            carried.append((fs, "", f"the positional walk put them on an existing item: {zipped[fs]}, "
                                     f"not created"))
             continue
         if fs in bridge:
@@ -647,7 +647,7 @@ def build(args):
             continue
         super_point = "FS" + fs.replace("-", "") in super_keys
         if CREATIONS_PAUSED and not super_point:
-            carried.append((fs, "", "paused: FamilySearch creations wait on the zipper merge "
+            carried.append((fs, "", "paused: FamilySearch creations wait on the positional walk "
                                     "(Emma, 2026-09-30)"
                                     + ("; on the ancestor ring" if on_ring(fs) else "")))
             continue
@@ -797,7 +797,7 @@ def build(args):
     print(f"  {created:,} CREATE blocks")
     print(f"  {ring_here:,} people on the priority ancestor ring in this corpus "
           f"({len(ring):,} on the ring), {ring_created:,} created, first in the file")
-    print(f"  {len(zipped):,} zipper pairs already on an item; {added:,} take {FS_PROP} this run "
+    print(f"  {len(zipped):,} positional walk pairs already on an item; {added:,} take {FS_PROP} this run "
           f"(cap {P2889_ADD_CAP}, universe-gated)")
     print(f"  {collided:,} descriptions collided and took their FamilySearch id")
     print(f"  {len(orphaned):,} orphaned creations dropped by the post-pass")

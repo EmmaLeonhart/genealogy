@@ -34,7 +34,7 @@ it's the reason for my fear. It should be called idk 'manual parental zipper mer
 correspondences' since the extremely vague title is almost certainly gonna be fucking abused by
 later agents for other purposes."*
 
-- it is a **manual form of the zipper merge**, the job `zipper-join.py` does by position;
+- it is a **manual form of the zipper merge**, the job `positional-walk.py` does by position;
 - **right now, only for parents**;
 - it is **hoped to be phased out**, so it is not a permanent channel;
 - **artifact means a CLAUDE artifact**, never a GitHub Actions artifact, which is inaccessible

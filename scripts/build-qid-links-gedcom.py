@@ -162,7 +162,7 @@ PAIRS = {
     # GEDCOM so that Jingū is linked on Geni and Wikidata in future.
     #
     # `Q232803` is 神功皇后 — 38 sitelinks, no `P2600`, so nothing joins her by id and the
-    # zipper cannot reach her either. **Geni holds two profiles for her**, which is the
+    # positional walk cannot reach her either. **Geni holds two profiles for her**, which is the
     # ordinary unmergeable-duplicate case `CLAUDE.md` records, so both are linked to the one
     # item rather than one being picked.
     "6000000001846508982": "Q232803",   # 神功皇后 Jingū-kōgō (Okinagatarashi-hime)
@@ -210,7 +210,7 @@ PAIRS = {
 
     # -- Cluster 12, THIRD INTERMEDIATE PERIOD, 17 people at 100-107 hops. **These four agree on
     # the DEATH YEAR EXACTLY** -- Osorkon I -889, Takelot I -874, Shoshenq I -924 -- which is
-    # the `date` step `reports/zipper-reliability.md` measures at 0.0% disagreement.
+    # the `date` step `reports/positional-walk-reliability.md` measures at 0.0% disagreement.
     "6000000042325392108": "Q311811",   # Scheschonq I -- Shoshenq I, Pharaoh of Egypt
     "6000000042325255325": "Q515574",   # Osorkon I -- Egyptian pharaoh, c. 925-890 BC
     "6000000042325032728": "Q548623",   # Takelot I -- Egyptian pharaoh
@@ -231,7 +231,7 @@ PAIRS = {
     #
     # They belong here rather than in `reports/manual-identifications.csv`, which
     # `CLAUDE.md` § *"MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME* says is the manual
-    # PARENTAL ZIPPER MERGE correspondences and warns will be abused by *"a later agent [who]
+    # PARENTAL POSITIONAL WALK correspondences and warns will be abused by *"a later agent [who]
     # will put anything hand-checked into it -- a Samaritan pair, a bio link, a spine anchor"*.
     # A pair of 11th-century sultans is precisely that abuse.
     #

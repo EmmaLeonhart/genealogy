@@ -2,7 +2,7 @@
 
     python scripts/extract-wikidata-relations.py
 
-**This is the thing whose absence made the zipper join half-exist.** The zipper merge half
+**This is the thing whose absence made the positional walk half-exist.** The positional walk half
 existed and was opaque, because the feature had never actually been implemented.
 
 Everything built so far read Wikidata's relationships **one item at a time**, opening a shard per
@@ -23,10 +23,10 @@ genealogical join needs:
 | `P26` | spouse |
 | `P3373` | sibling |
 
-`P2600` *Geni.com profile ID* comes along too, so the zipper does not need a second file to know
+`P2600` *Geni.com profile ID* comes along too, so the positional walk does not need a second file to know
 which items are already anchored.
 
-**`P3373` was added 2026-09-09, for the sibling half of the manual zipper deck.** Geni records
+**`P3373` was added 2026-09-09, for the sibling half of the manual positional walk deck.** Geni records
 no sibling edge -- two siblings are joined only through a shared parent -- so a Wikidata item that
 names a sibling directly is evidence our tree cannot produce from its own structure, and it
 reaches families whose parents have no item at all. It is the one relationship in

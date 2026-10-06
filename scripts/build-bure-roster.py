@@ -127,7 +127,7 @@ def main():
         for row in csv.reader(f, delimiter="\t"):
             if len(row) >= 2 and row[1].strip() in side_b and row[0].startswith("Q"):
                 held.setdefault(row[1].strip(), row[0])
-    zp = R / "zipper-pairs.tsv"
+    zp = R / "positional-walk-pairs.tsv"
     if zp.exists():
         with open(zp, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):

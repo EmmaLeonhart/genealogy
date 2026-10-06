@@ -20,7 +20,7 @@ carries a patronymic built on Y.
 already known -- he is the `father` column of `reports/derived-family.csv`, established by the
 GEDCOM's own `FAMC`/`FAMS` structure. The only question asked is *what is this already-identified
 man's given name, and what stem does his child's patronymic carry*. That is reading a
-correspondence off a fixed pair, which is the same thing `zipper-join`'s name step is allowed to
+correspondence off a fixed pair, which is the same thing `positional-walk`'s name step is allowed to
 do inside a slot the structure has already chosen.
 
 **A pair is kept only when several unrelated families attest it**, because one family is a

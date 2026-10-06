@@ -269,7 +269,7 @@ def ledger():
         # and the `RIGHT` verdicts have to be implemented too.
         #
         # This used to read `emma-judgments.tsv` and accept only `SAME`, which left **17 `RIGHT`
-        # verdicts inert** -- all from the 2026-08-25 `zipper-sample` batch, all carrying both
+        # verdicts inert** -- all from the 2026-08-25 `positional-walk-sample` batch, all carrying both
         # ids, every one an affirmation nothing acted on. `RIGHT` is the older word from before
         # the deck settled on `SAME`; the fold never learned it.
         #
@@ -989,7 +989,7 @@ _FS_NAMES = None
 
 
 def familysearch_names():
-    """`{fs_id: name}` as the FamilySearch downloads give it, from the zipper's own reader.
+    """`{fs_id: name}` as the FamilySearch downloads give it, from the positional walk's own reader.
 
     Emma, 2026-10-01: every `P2889` carries `P1810` *subject named as*, the FamilySearch name,
     the way a Geni id carries the Geni name. Empty when the downloads are absent.
@@ -1000,7 +1000,7 @@ def familysearch_names():
         try:
             import importlib.util
             spec = importlib.util.spec_from_file_location(
-                "zipper_join", ROOT / "scripts" / "zipper-join.py")
+                "positional_walk", ROOT / "scripts" / "positional-walk.py")
             zj = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(zj)
             _FS_NAMES = {fs: " ".join(n.split()) for fs, n in zj.load_familysearch()[1].items()
@@ -4675,7 +4675,7 @@ def _strip_markers(label):
 #: the solution is a deliberate kludge — every QuickStatements batch adds these QIDs at the end,
 #: as a hard-coded block of text that stays in forever and adds them every single time.
 #:
-#: **These are manual zipper merges.** Each line says *this Wikidata item is that Geni person*.
+#: **These are manual positional walks.** Each line says *this Wikidata item is that Geni person*.
 #: The daily algorithm needs those eight pairings to exist on Wikidata for the Charlemagne chain
 #: to link up, and the work depending on it is due within about a week. Until the statement is on
 #: the item, the pairing lives only in `reports/garborg-qids.tsv`, where nothing outside this
@@ -7827,8 +7827,8 @@ def main():
         **The ledger first, then any `P2600` -- and the correspondence union NOT at all.** Those
         first two are direct statements of identity: one made by hand, one Wikidata already
         holds.
-        `known_pair` is 568,535 wide and includes zipper-inferred pairs, which
-        `reports/zipper-reliability.md` measures at 2.8-4.8% error. A wrong `P144` does not
+        `known_pair` is 568,535 wide and includes positional-walk-inferred pairs, which
+        `reports/positional-walk-reliability.md` measures at 2.8-4.8% error. A wrong `P144` does not
         merely mis-rank something -- it asserts this patronymic derives from THAT man, which is
         a false claim about a named person. `CLAUDE.md`: labels confirm a position, they never
         choose one, and the same caution applies to a father.
@@ -7841,10 +7841,10 @@ def main():
     # let a duplicate through.** `Q550343` *Welf I, Duke of Bavaria*, an item with 27 sitelinks,
     # was re-created by a batch as `Q141249742` -- reported as an error with no obvious cause.
     #
-    # Welf carried **no `P2600` at all**, so the map above could not see him. The zipper could,
-    # and did: `4927821250240067090 -> Q550343` was in `reports/zipper-pairs.tsv` on 2026-08-26,
+    # Welf carried **no `P2600` at all**, so the map above could not see him. The positional walk could,
+    # and did: `4927821250240067090 -> Q550343` was in `reports/positional-walk-pairs.tsv` on 2026-08-26,
     # a week before the batch, and `reports/synoptic-correspondence.tsv` recorded it as
-    # `structural;zipper` -- two independent sources.
+    # `structural;positional-walk` -- two independent sources.
     #
     # **The rule was already known and applied in the wrong script.**
     # `scripts/build-parent-candidates.py` treats the correspondence as authoritative for "this
@@ -7853,13 +7853,14 @@ def main():
     # learned it. That is `CLAUDE.md` § *Code that is WRITTEN but never CALLED*, one level up --
     # the lesson landed, in one place only.
     #
-    # **Held, not linked, matching how the `P2600` guard already behaves.** A zipper pair carries
+    # **Held, not linked, matching how the `P2600` guard already behaves.** A positional walk pair carries
     # a measured 2.8-4.8% error, so some of these will be wrong -- and the two outcomes are not
     # symmetric. Holding a creation costs a day, because tomorrow's batch runs again; creating a
     # duplicate costs a manual merge on Wikidata, which is what this is written against.
     correspondence = ROOT / "reports" / "synoptic-correspondence.tsv"
     #: Sources that infer an identity rather than state it; see `_known_qid` below.
-    INFERRED_SOURCES = {"zipper", "structural"}
+    # "zipper" is the positional walk's tag before 2026-10-06, kept until every file is rebuilt.
+    INFERRED_SOURCES = {"positional-walk", "zipper", "structural"}
     known_pair = {}
     if correspondence.exists():
         with open(correspondence, encoding="utf-8") as f:
@@ -8156,10 +8157,10 @@ def main():
     #: Every Geni id Wikidata already has an item for, whatever the route: the `P2600` roster and
     #: the correspondence. Used to LINK a new creation to such a relative (see `_rq` below).
     _known_qid = {g: q for g, q in any_wikidata_item.items() if str(q).startswith("Q")}
-    # ⛔ **NOT THROUGH THE ZIPPER (Emma, 2026-10-04: "it's probably better to make duplicates over
+    # ⛔ **NOT THROUGH THE POSITIONAL WALK (Emma, 2026-10-04: "it's probably better to make duplicates over
     # doing this sheer level of reckless merging").** A correspondence row whose only sources are
-    # inferred (`zipper`, `structural`) no longer links a creation to an item: 1,829 statements went
-    # out that way from 2026-09-28 (`reports/zipper-only-links-on-wikidata.csv`). It still HOLDS the
+    # inferred (`positional walk`, `structural`) no longer links a creation to an item: 1,829 statements went
+    # out that way from 2026-09-28 (`reports/positional-walk-only-links-on-wikidata.csv`). It still HOLDS the
     # person from creation (`corr_dup` below), which writes nothing.
     _known_qid.update({g: v[0] for g, v in known_pair.items()
                        if g not in _known_qid and str(v[0]).startswith("Q")

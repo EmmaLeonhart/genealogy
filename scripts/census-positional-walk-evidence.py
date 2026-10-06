@@ -1,6 +1,6 @@
-"""How much corroboration does each zipper pair actually have? All of them, not a sample.
+"""How much corroboration does each positional walk pair actually have? All of them, not a sample.
 
-    python scripts/census-zipper-evidence.py
+    python scripts/census-positional-walk-evidence.py
 
 **Sixteen sampled merges were judged and every one of them was easy**, which raised the
 question of whether the sample was being filtered to unambiguous cases and what a hard one
@@ -10,7 +10,7 @@ The sample was drawn at random and then **sorted easiest-first**, that ordering 
 asked for. So sixteen easy rows in a row says nothing about the population -- which is exactly the
 thing this file measures instead of asserting.
 
-For every pair in `reports/zipper-pairs.tsv`, count what a human would have to go on:
+For every pair in `reports/positional-walk-pairs.tsv`, count what a human would have to go on:
 
 * how many parents our tree names,
 * how many parents Wikidata names,
@@ -32,7 +32,7 @@ Bands, coarsest first:
 | `NO-PARENTS` | neither side names a parent; position is the whole evidence |
 | `NAMES-CONFLICT` | every comparable slot disagrees |
 
-Writes `reports/zipper-evidence.tsv`, one row per pair. Offline.
+Writes `reports/positional-walk-evidence.tsv`, one row per pair. Offline.
 """
 from __future__ import annotations
 
@@ -95,7 +95,7 @@ def main():
     bands = collections.Counter()
     by_round = collections.defaultdict(collections.Counter)
     rows = []
-    with open(ROOT / "reports" / "zipper-pairs.tsv", encoding="utf-8") as f:
+    with open(ROOT / "reports" / "positional-walk-pairs.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             g, q, rnd = row["geni_id"], row["qid"], row["round"]
             mine, their = fam.get(g), theirs.get(q)
@@ -127,14 +127,14 @@ def main():
                 "comparable_slots": len(slots), "slots_agreeing": sum(hits),
             })
 
-    out = ROOT / "reports" / "zipper-evidence.tsv"
+    out = ROOT / "reports" / "positional-walk-evidence.tsv"
     with open(out, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter="\t")
         w.writeheader()
         w.writerows(rows)
 
     total = sum(bands.values())
-    print(f"\n{total:,} zipper pairs\n")
+    print(f"\n{total:,} positional walk pairs\n")
     for band, n in bands.most_common():
         print(f"  {n:>7,}  {100 * n / total:5.1f}%  {band}")
     print("\nby round:")

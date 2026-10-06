@@ -680,7 +680,7 @@ def main():
     # fired only where the father had been made by hand.
     #
     # The correspondence union is deliberately NOT consulted: it is 568,535 wide and includes
-    # zipper-inferred pairs measured at 2.8-4.8% error, and a wrong `P144` asserts that this
+    # positional-walk-inferred pairs measured at 2.8-4.8% error, and a wrong `P144` asserts that this
     # patronymic derives from THAT man -- a false claim about a named person, not a mis-ranking.
     any_item = {}
     _p2600 = ROOT / "out" / "wikidata" / "p2600-all.tsv"

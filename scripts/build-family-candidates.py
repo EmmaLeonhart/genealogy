@@ -1,6 +1,6 @@
-"""The CHILD and SIBLING half of the manual zipper, as a deck to answer by hand.
+"""The CHILD and SIBLING half of the manual positional walk, as a deck to answer by hand.
 
-**More manual zipper merging, now on siblings and children**, the parents being mostly worked
+**More manual positional walk merging, now on siblings and children**, the parents being mostly worked
 through.
 
     python scripts/pack-derived.py --unpack     # clean clone only; the derived CSVs are gitignored
@@ -37,7 +37,7 @@ could use it. 155,456 items carry it, 418,004 statements.
 
 ## ⛔ A CARD IS ONLY OFFERED WHERE THE SLOT HAS ONE ANSWER
 
-The unit is the **slot**, exactly as in `scripts/zipper-join.py`: one parent, one sex, our
+The unit is the **slot**, exactly as in `scripts/positional-walk.py`: one parent, one sex, our
 unclaimed children of that sex against Wikidata's unaccounted ones. A card is emitted only where
 both sides hold **exactly one**.
 

@@ -1,7 +1,7 @@
-"""The machinery both manual-zipper decks are built out of.
+"""The machinery both manual-positional-walk decks are built out of.
 
 `CLAUDE.md` § *⛔ "MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME* --- these are the **manual
-zipper merge correspondences**: the same job `scripts/zipper-join.py` does by position, done by
+positional walk correspondences**: the same job `scripts/positional-walk.py` does by position, done by
 eye where position is not enough. Two generators sit on top of this module:
 
 * `scripts/build-parent-candidates.py` --- the PARENT slot, live since 2026-08-31;
@@ -146,7 +146,7 @@ def load_correspondence():
     **`P2600` is not the only thing that identifies somebody.** You, 2026-08-31, on nine cases
     that survived a slot fix: *"I think literally all these people were identified earlier and
     some are very stale."* Seven of the nine were already in
-    `reports/synoptic-correspondence.tsv` --- known through the structural walk, the zipper, your
+    `reports/synoptic-correspondence.tsv` --- known through the structural walk, the positional walk, your
     bio links or your own verdicts, none of which puts a `P2600` on Wikidata.
     """
     qids, genis, qid_of = set(), set(), {}

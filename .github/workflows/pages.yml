@@ -93,7 +93,7 @@ jobs:
             /reports/derived-family.csv.gz
             /reports/derived-facts.csv.gz
             /reports/derived-labels.csv.gz
-            /reports/familysearch-zipper-pairs.tsv
+            /reports/familysearch-positional-walk-pairs.tsv
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5

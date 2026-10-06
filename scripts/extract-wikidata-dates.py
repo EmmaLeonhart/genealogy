@@ -1,9 +1,9 @@
-"""Birth and death years out of the store, once, so the zipper can order siblings.
+"""Birth and death years out of the store, once, so the positional walk can order siblings.
 
     python scripts/extract-wikidata-dates.py
 
-**How the zipper resolves a sibling set that position alone cannot separate: dates first,
-then names** — and the provenance of a zipper merge is recorded either way.
+**How the positional walk resolves a sibling set that position alone cannot separate: dates first,
+then names** — and the provenance of a positional walk is recorded either way.
 
 Dates first requires dates, and nothing had extracted them: `out/wikidata/relations.tsv` carries
 `P22`/`P25`/`P40`/`P26`/`P2600` and `out/wikidata/labels.tsv` carries labels and identifiers, but

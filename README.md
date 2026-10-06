@@ -15,7 +15,7 @@ The tree is the thing. Several sources feed it, and none of them is what it is *
 
 | source | what it brings |
 | --- | --- |
-| **FamilySearch** | downloads under `gedcom/familysearch/`, keyed on the FamilySearch tree id (`_FSFTID`) and walked against the tree by `zipper-join.py --familysearch`. This is the direction the project is moving in. |
+| **FamilySearch** | downloads under `gedcom/familysearch/`, keyed on the FamilySearch tree id (`_FSFTID`) and walked against the tree by `positional-walk.py --familysearch`. This is the direction the project is moving in. |
 | **Wikidata** | the people who already have items, and the relationships between them, joined on their identifiers. |
 | **Geni** | GEDCOM exports under `exports/`, the bulk of the tree as it stands. Geni writes its profile id as the GEDCOM xref, so merging exports is an exact join, never a name match. |
 | **RootsMagic** | a hand-kept tree, exported as GEDCOM. |

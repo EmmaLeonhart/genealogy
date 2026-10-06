@@ -2,7 +2,7 @@
 
     python scripts/validate-structural-walk.py
 
-**Whether the zipper join has ever been done correctly was unclear, not least because it
+**Whether the positional walk has ever been done correctly was unclear, not least because it
 was never explained.**
 
 `docs/structural-walk.md` is the explanation. This is the check.

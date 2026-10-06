@@ -62,9 +62,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "gedcom" / "familysearch"
 OUT_DIR = ROOT / "exports" / "familysearch"
 BRIDGE = ROOT / "reports" / "familysearch-qid-bridge.tsv"
-ZIPPER = ROOT / "reports" / "familysearch-zipper-pairs.tsv"
+POSITIONAL_WALK = ROOT / "reports" / "familysearch-positional-walk-pairs.tsv"
 JUDGMENTS = ROOT / "reports" / "emma-judgments.tsv"
-#: The zipper's own anchors that are not pairs (`zipper-join.FS_ROOTS`, `FS_ID`).
+#: The positional walk's own anchors that are not pairs (`positional-walk.FS_ROOTS`, `FS_ID`).
 FS_ROOTS = {"PFR5-LDS": "6000000087535357291"}
 FS_ID = re.compile(r"^[A-Z0-9]{4}-[A-Z0-9]{3}$")
 
@@ -92,29 +92,29 @@ def clean(fs_id: str) -> str:
     return re.sub(r"[^0-9A-Za-z]", "", fs_id).upper()
 
 
-def _zipper():
-    """`scripts/zipper-join.py` as a module, for the verdict reader the walk itself uses."""
+def _positional_walk():
+    """`scripts/positional-walk.py` as a module, for the verdict reader the walk itself uses."""
     import importlib.util
-    spec = importlib.util.spec_from_file_location("zipper_join", ROOT / "scripts" / "zipper-join.py")
+    spec = importlib.util.spec_from_file_location("positional_walk", ROOT / "scripts" / "positional-walk.py")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
 
 
-def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER,
+def load_bridge(path: Path = BRIDGE, positional_walk: Path = POSITIONAL_WALK,
                 judgments: Path = JUDGMENTS) -> dict[str, str]:
-    """`{fs_id: geni_id}` for every FamilySearch person the bridge OR THE ZIPPER puts on a Geni id.
+    """`{fs_id: geni_id}` for every FamilySearch person the bridge OR THE POSITIONAL WALK puts on a Geni id.
 
-    ⛔ **THE ZIPPER DOES THE FAMILYSEARCH WORK. Ruled 2026-09-24.** The bridge on its own
-    reached 11 people of 4,442; `zipper-join.py --familysearch` walks from those anchors and
+    ⛔ **THE POSITIONAL WALK DOES THE FAMILYSEARCH WORK. Ruled 2026-09-24.** The bridge on its own
+    reached 11 people of 4,442; `positional-walk.py --familysearch` walks from those anchors and
     reached 4,866. The bridge wins a disagreement, because it is an identifier Wikidata states
-    and the zipper is an inference from position.
+    and the positional walk is an inference from position.
 
-    ⛔ **AND EVERY ANCHOR THE ZIPPER WALKED FROM, NOT ONLY ITS PAIRS** (Adelus Eriksdatter,
-    2026-10-02). The zipper also anchors on Emma's FamilySearch-deck `SAME` verdicts and on
+    ⛔ **AND EVERY ANCHOR THE POSITIONAL WALK WALKED FROM, NOT ONLY ITS PAIRS** (Adelus Eriksdatter,
+    2026-10-02). The positional walk also anchors on Emma's FamilySearch-deck `SAME` verdicts and on
     `FS_ROOTS`, and writes neither as a pair, so `L89V-S6W` Erich Andersson, `SAME` as Geni
     `6000000003281256924`, stayed an `FSL89VS6W` father beside the Geni one. Precedence is the
-    zipper's: root, then bridge, then verdict, then inferred pair.
+    positional walk's: root, then bridge, then verdict, then inferred pair.
     """
     def rows(p):
         if not p.exists():
@@ -122,14 +122,14 @@ def load_bridge(path: Path = BRIDGE, zipper: Path = ZIPPER,
         with open(p, encoding="utf-8", newline="") as fh:
             return {r["fs_id"]: r["geni_id"] for r in csv.DictReader(fh, delimiter="\t")
                     if r.get("fs_id") and r.get("geni_id")}
-    # ⛔ The zipper's walked pairs are NOT read any more (Emma, 2026-10-04: "it's probably better to
-    # make duplicates over doing this sheer level of reckless merging"). `zipper` stays a parameter
+    # ⛔ The positional walk's walked pairs are NOT read any more (Emma, 2026-10-04: "it's probably better to
+    # make duplicates over doing this sheer level of reckless merging"). `positional walk` stays a parameter
     # so an audit can still render with it explicitly.
-    out = rows(zipper) if zipper is not ZIPPER else {}
-    # The zipper's own reader, so the two cannot disagree about a verdict: the LAST verdict on
+    out = rows(positional_walk) if positional_walk is not POSITIONAL_WALK else {}
+    # The positional walk's own reader, so the two cannot disagree about a verdict: the LAST verdict on
     # a pair wins, and a SAME later judged DIFFERENT anchors nothing (the Fornjot line,
     # 2026-10-02: Kari "Wind" Fornjotsson stayed keyed to his son's FamilySearch record).
-    out.update(_zipper().read_verdicts(judgments)[0])
+    out.update(_positional_walk().read_verdicts(judgments)[0])
     out.update(rows(path))
     out.update(FS_ROOTS)
     return out

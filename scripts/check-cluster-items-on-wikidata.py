@@ -40,7 +40,7 @@ that is: the census first, then a sample read by eye.
 settlement in Myanmar*) and the genera (`Kapes -> Q6366576`, *genus of procolophonians*).
 
 **The birth and death years on both sides do the rest**, and that is not a preference:
-`reports/zipper-reliability.md` measures the `date` step at **0.0%** disagreement against
+`reports/positional-walk-reliability.md` measures the `date` step at **0.0%** disagreement against
 `solo`'s 11.8% and `name`'s 9.2%. `CLAUDE.md` § *1600-1900 is the band where NAMES LIE and YEARS
 decide* is the same finding from the other side. Every cluster this touches is ancient, so a hit
 whose dates are modern is a stranger however well the string matches.

@@ -1,4 +1,4 @@
-# **The manual zipper decks, on demand.** `CLAUDE.md` § *THE PARENT DECK* is the long form.
+# **The manual positional walk decks, on demand.** `CLAUDE.md` § *THE PARENT DECK* is the long form.
 #
 # **Three decks, one workflow, because they are one job.** `parent-review.html` asks whether
 # our person is the PARENT their child already names; `family-review.html` asks the mirror
@@ -106,9 +106,9 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-pick-one-candidates.py
 
-      # The fourth deck: the FamilySearch slots the zipper refused. Queued 2026-09-24 under
-      # FAMILYSEARCH ZIPPERING; it reads the raw downloads in gedcom/familysearch/ and
-      # reports/familysearch-zipper-ambiguous.tsv, which tree.yml writes, and no Wikidata.
+      # The fourth deck: the FamilySearch slots the positional walk refused. Queued 2026-09-24 under
+      # FAMILYSEARCH POSITIONAL WALK; it reads the raw downloads in gedcom/familysearch/ and
+      # reports/familysearch-positional-walk-ambiguous.tsv, which tree.yml writes, and no Wikidata.
       - name: Build the FamilySearch deck
         env:
           PYTHONPATH: src
@@ -132,7 +132,7 @@ jobs:
             echo "the deck is unchanged; nothing to commit"
             exit 0
           fi
-          git commit -m "rebuild the manual zipper decks"
+          git commit -m "rebuild the manual positional walk decks"
           # The pipeline pushes on its own schedule, so losing this race is ordinary rather than
           # an error. Rebase and retry instead of failing a run that has already built the deck.
           for i in 1 2 3 4 5; do

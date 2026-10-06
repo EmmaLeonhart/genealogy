@@ -70,8 +70,8 @@ def date_refuted():
                 if r["verdict"] == "conflict"}
 
 
-def zipper_rows(path, cap):
-    """Zipper pairs from rounds 1..cap; later rounds are in the file and skipped."""
+def positional_walk_rows(path, cap):
+    """Positional walk pairs from rounds 1..cap; later rounds are in the file and skipped."""
     if not path.exists():
         print(f"  (missing: {path.relative_to(ROOT)})")
         return
@@ -87,7 +87,7 @@ def zipper_rows(path, cap):
                 yield row["qid"], row["geni_id"]
             else:
                 dropped += 1
-    print(f"  zipper: kept rounds 1-{cap} ({kept:,}), dropped {dropped:,} beyond")
+    print(f"  positional walk: kept rounds 1-{cap} ({kept:,}), dropped {dropped:,} beyond")
 
 
 def rows_from(path, qid_col, geni_col, delim=","):
@@ -131,13 +131,13 @@ def main():
         ("tanba-roster", rows_from(R / "tanba-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
         ("izumo-sister-roster",
          rows_from(R / "izumo-sister-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
-        # The zipper join, ALL EIGHT ROUNDS as of 2026-08-25. The 3 came from a date-based
+        # The positional walk, ALL EIGHT ROUNDS as of 2026-08-25. The 3 came from a date-based
         # error curve -- 3.9% at round 1 to 27.1% at round 8 -- that turned out to be a
         # COVERAGE ARTEFACT: the share of pairs carrying a birth year on both sides falls
         # 65% -> 20% with depth, and the "error" tracked that decline rather than the join.
         # Measured instead against `P21` *sex or gender* (86-100% coverage at every round,
         # and corrected for the father/mother slots where sex can never refute), the real
-        # rise is 2.8% -> 4.8% across eight rounds. `scripts/zipper-join.py` § ROUND_CAP
+        # rise is 2.8% -> 4.8% across eight rounds. `scripts/positional-walk.py` § ROUND_CAP
         # carries the full working.
         # **The hand verdicts, which were not a source until 2026-09-01.** Every SAME and
         # RIGHT ruled by hand, via `scripts/build-manual-identifications.py`. Measured when it
@@ -150,7 +150,7 @@ def main():
         # columns and no verdict. The verdict filter this used to rely on is gone -- a wrong pair
         # is a deleted row.
         ("emma-verdicts", rows_from(R / "identifications.tsv", "qid", "geni_id", "	")),
-        ("zipper", zipper_rows(R / "zipper-pairs.tsv", 8)),
+        ("positional-walk", positional_walk_rows(R / "positional-walk-pairs.tsv", 8)),
     ]
     refuted = date_refuted()
     dropped = 0

@@ -473,7 +473,7 @@ physically refuses are ignored, one explicit line each** — `out/merged.ged`,
 `out/wikidata/store-index.sqlite3` and `out/wikidata/labels.tsv` (187 MB, rebuilt by
 `scripts/extract-wikidata-labels.py` in ~10 min) — all rebuildable, so the cost is a rebuild and
 never data. `out/wikidata/relations.tsv` (65 MB) and `dates.tsv` (18 MB) are under the limit and
-stay tracked, so a clean clone can run the zipper after one labels rebuild.
+stay tracked, so a clean clone can run the positional walk after one labels rebuild.
 `.gitignore` line 32 carries the reasoning.
 
 This paragraph said "gitignored" for ten days after the rule changed, and the stale word was not
@@ -634,7 +634,7 @@ what is not legitimate is a sentence where the reader cannot tell which.
   *"rebuild the synoptic tree"* always means.
 - **the full union** — that tree joined to every other source, Wikidata above all. This is what
   the structural walk *builds up*, what `reports/synoptic-correspondence.tsv` is a correspondence
-  **for**, and what the zipper join feeds.
+  **for**, and what the positional walk feeds.
 
 **Measured 2026-09-01: 975 usages across 61 files**, of which 81 are live prose rather than
 transcript or devlog history. `scripts/census-synoptic-usages.py` → `reports/synoptic-usages.tsv`
@@ -670,9 +670,9 @@ limit. It is covered by the existing `out/` line, so **no `.ged` pattern exists
 and none should be added**; the rule about the corpus under `exports/` is
 untouched. It is ignored by necessity.
 
-### The ONE place a name may choose: inside a zipper slot, dates first
+### The ONE place a name may choose: inside a positional walk slot, dates first
 
-**Dates first, then names**, and the provenance of a zipper merge is recorded.
+**Dates first, then names**, and the provenance of a positional walk is recorded.
 
 **⛔ THE THREE-STEP CASCADE IS A LOCAL DECISION, NOT A SPECIFICATION.** *Dates first then names*
 was said about the **2x2 sibling** case; `solo -> date -> name` was generalised out of it into an
@@ -680,11 +680,11 @@ architecture and then presented as though it had been specified. The name except
 sanctioned for that case; the shape around it is on trial.
 
 **Solo child says nothing on its own.** One unmatched person on each side is *trivially* unique,
-so uniqueness proves nothing when the set has one element. **`reports/zipper-reliability.md`
+so uniqueness proves nothing when the set has one element. **`reports/positional-walk-reliability.md`
 measures it**: `child`+`solo` disagrees with independent sources **14.9%** of the time against
 **0.7%** for `father`+`solo` — twenty times. Solo *parents* are fine; solo *children* are not.
 
-**Solo child STAYS, flagged as the weakest thing in the join**, given that 14.9%. All 3,326 remain in `reports/zipper-pairs.tsv` carrying
+**Solo child STAYS, flagged as the weakest thing in the join**, given that 14.9%. All 3,326 remain in `reports/positional-walk-pairs.tsv` carrying
 `method=solo` and `slot=child`, so any consumer can exclude them in one filter — and the queued
 solo-children analysis may yet rescue them, since sex agreement (`P21` against our `sex` column)
 is free evidence the join ignores entirely. **Do not silently drop them and do not silently trust
@@ -693,10 +693,10 @@ them.**
 **The standard for every rule here:** *"a lot of these rules are empirical and we need to
 empirically study our data to figure out what to make of it. Don't jump to conclusions based on
 what sounds like it might be true. Even parents isn't certain."* The slot ordering in
-`zipper-join.py` is a **hypothesis under test**, not a settled rule.
+`positional-walk.py` is a **hypothesis under test**, not a settled rule.
 
 This is a narrow, deliberate exception to *no name similarity, ever*, and the boundary is what
-makes it safe. `scripts/zipper-join.py` resolves a family slot in three steps:
+makes it safe. `scripts/positional-walk.py` resolves a family slot in three steps:
 
 1. **solo** — one unpaired person on each side. Position is the whole evidence.
 2. **date** — birth years within `matching.YEAR_TOLERANCE`, unique from **both** directions.
@@ -721,12 +721,12 @@ where both sides carry a birth year, those reached by name disagree by more than
 of the time, against **11.8%** for `solo` and **0.0%** for `date` (which selects on the year). So
 adding names did not lower the join's standard.
 
-**Provenance is mandatory, and it is a CHAIN.** A zipper merge should almost always carry a
+**Provenance is mandatory, and it is a CHAIN.** A positional walk should almost always carry a
 relatively large chain of provenance — not a single justification, but a potentially very long
-series of them. `reports/zipper-pairs.tsv` carries one step —
+series of them. `reports/positional-walk-pairs.tsv` carries one step —
 `round, geni_id, qid, slot, method, from_geni, from_qid, evidence`; it previously carried round,
 geni id and qid alone, because the slot was assigned into the tuple as `""` and never emitted, so
-no pair could be audited at all. `scripts/zipper-provenance.py` walks the steps into chains (max
+no pair could be audited at all. `scripts/positional-walk-provenance.py` walks the steps into chains (max
 depth 8, mean 2.7) and checks each against every *independent* correspondence in the repo.
 
 **Support and contradiction both propagate along the chain; it goes both ways.** An independent
@@ -768,25 +768,25 @@ decides which form is written down. Earlier people are recorded once, in Latin, 
 Later people are recorded in a settled national orthography. The 1600-1900 stretch is where one
 person genuinely has several names, each of them correct.
 
-**So the ordering in `zipper-join.py` - solo, then date, then name - is confirmed rather than
+**So the ordering in `positional-walk.py` - solo, then date, then name - is confirmed rather than
 merely assumed, and the reason is now known.** The date step is not just "more precise than
 names"; in this band the names are describing something other than identity. Do not promote the
 name step, do not add a similarity threshold to rescue the 71%, and do not read a name mismatch as
 evidence against a pair.
 
 **And it says where a discriminator is worth building.** Birth year is on both sides for almost
-every one of these people. `reports/zipper-reliability.md` already measures `date` at **0.0%**
+every one of these people. `reports/positional-walk-reliability.md` already measures `date` at **0.0%**
 disagreement against `solo`'s 11.8% and `name`'s 9.2% - the same conclusion from the other
 direction, arrived at before anybody had the reason.
 
 ### Our side could never have two children — check the separator before believing a distribution
 
 **`reports/derived-family.csv` separates multi-valued cells with ` | `, spaces included.** Every
-consumer must split on it. `zipper-join.py` handled `,` and `;` only, so a five-child cell parsed
+consumer must split on it. `positional-walk.py` handled `,` and `;` only, so a five-child cell parsed
 as the single token `"1050090 | 1050271 | ..."`, matched nothing, and the person reached the join
 **childless**. 379,251 people have two or more children and every one of them arrived with none.
 
-**The tell was a distribution that was too clean.** `reports/zipper-ambiguous.tsv` held 615 rows
+**The tell was a distribution that was too clean.** `reports/positional-walk-ambiguous.tsv` held 615 rows
 and not one was `2 × 2` — read at the time as "two-against-two is rare", when the truth was that
 our side could not *have* two. It was spotted from the outside, as the join not hitting the hard
 points.
@@ -806,7 +806,7 @@ number that was about the instrument rather than the data:
 | `split()` unaware of ` \| ` | 615 ambiguous slots, no `2x2` | 379,251 people arrived childless |
 | `\|` split without `.strip()` | pair count moved by **exactly zero** | every token missed the index |
 | `father[child] = husb` | census read **0** multi-parent people | 1,663 of them |
-| sex rate over `zipper-pairs.tsv` | **0.0%** for all four shapes | measured the filter, not the join |
+| sex rate over `positional-walk-pairs.tsv` | **0.0%** for all four shapes | measured the filter, not the join |
 | `chart_name` column that does not exist | all 10 pairs *"no item held"* | 196 names carry a QID |
 
 **An empty or narrowed join is indistinguishable from an absence of data**, and absence is exactly

@@ -52,9 +52,9 @@ def fs_ids(path: Path) -> list[str]:
 
 
 #: ⛔ **The id statements the account added since 2026-09-28 are not anchors (Emma, 2026-10-04).** Most
-#: were sent from zipper pairs (the 2026-10-02 id backfill), so reading them back from the roster made
-#: the zipper's guesses look like exact joins: the bridge grew 50,172 -> 75,024. They stay out until
-#: each one is reviewed (the zipper review in `queue.md`).
+#: were sent from positional walk pairs (the 2026-10-02 id backfill), so reading them back from the roster made
+#: the positional walk's guesses look like exact joins: the bridge grew 50,172 -> 75,024. They stay out until
+#: each one is reviewed (the positional walk review in `queue.md`).
 UNREVIEWED = ROOT / "reports" / "id-claims-added-since-2026-09-28.tsv"
 
 

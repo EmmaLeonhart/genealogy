@@ -1,11 +1,11 @@
-"""The FamilySearch slots the zipper refuses to guess, as a deck you can answer.
+"""The FamilySearch slots the positional walk refuses to guess, as a deck you can answer.
 
     PYTHONPATH=src python scripts/build-familysearch-deck.py
 
     -> out/familysearch-review.html, out/familysearch-gui-data.json
 
-Queued 2026-09-24 under *FAMILYSEARCH ZIPPERING*: *"A FamilySearch deck for
-`reports/familysearch-zipper-ambiguous.tsv` ... The pick-one card is the shape (`N x 1` and
+Queued 2026-09-24 under *FAMILYSEARCH POSITIONAL WALK*: *"A FamilySearch deck for
+`reports/familysearch-positional-walk-ambiguous.tsv` ... The pick-one card is the shape (`N x 1` and
 `1 x N`); `genimerge.deck` is QID-shaped, so the FamilySearch side needs its own relatives and
 dates from the download."* Published as the fourth artifact beside the three decks.
 
@@ -15,11 +15,11 @@ by another name. `N x M` is a matching problem across two sets, not a pick -- it
 census, exactly as it does for the Wikidata pick-one deck.
 
 **Verdicts go into `reports/emma-judgments.tsv` with the FamilySearch id in the `qid` column**,
-and `zipper-join.py --familysearch` reads the `SAME` ones back as anchors. A pair already
+and `positional-walk.py --familysearch` reads the `SAME` ones back as anchors. A pair already
 judged never comes back (`deck.answered_pairs`), so the deck shrinks as it is worked.
 
-The FamilySearch side is read from the raw downloads through `zipper-join.load_familysearch`,
-the same reader the zipper uses -- keyed on `_FSFTID`, never on a file's own counter.
+The FamilySearch side is read from the raw downloads through `positional-walk.load_familysearch`,
+the same reader the positional walk uses -- keyed on `_FSFTID`, never on a file's own counter.
 """
 from __future__ import annotations
 
@@ -34,14 +34,14 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
 from genimerge import deck                                              # noqa: E402
 
 ROOT = deck.ROOT
-AMBIGUOUS = ROOT / "reports" / "familysearch-zipper-ambiguous.tsv"
+AMBIGUOUS = ROOT / "reports" / "familysearch-positional-walk-ambiguous.tsv"
 OUT_JSON = ROOT / "out" / "familysearch-gui-data.json"
 OUT_HTML = ROOT / "out" / "familysearch-review.html"
 
 _spec = importlib.util.spec_from_file_location(
-    "zipper_join", ROOT / "scripts" / "zipper-join.py")
-zipper = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(zipper)
+    "positional_walk", ROOT / "scripts" / "positional-walk.py")
+positional_walk = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(positional_walk)
 
 
 def ids(cell):
@@ -49,7 +49,7 @@ def ids(cell):
 
 
 def main() -> int:
-    theirs, fs_name, fs_year, fs_sex = zipper.load_familysearch()
+    theirs, fs_name, fs_year, fs_sex = positional_walk.load_familysearch()
     fs_name = {k: " ".join(v.split()) for k, v in fs_name.items()}
     fathers, mothers, children, spouses = deck.load_our_family()
     labels = deck.load_our_labels()
@@ -116,7 +116,7 @@ def main() -> int:
                 options = [dict(our_block(g, r["from_geni"]), geni=g, qid=f,
                                 our=(labels.get(g) or g), cand=anchor["name"]) for g in open_]
                 side, ask = "ours", "Which of these is the FamilySearch person?"
-            # A known sex that contradicts the anchor's is not a candidate -- the zipper's own
+            # A known sex that contradicts the anchor's is not a candidate -- the positional walk's own
             # refuter would drop that pair, so offering it is a question with one answer.
             want = anchor["sex"]
             options = [o for o in options if not (want and o["sex"] and o["sex"] != want)]
@@ -135,7 +135,7 @@ def main() -> int:
                 "id": "fs|%s|%s|%s|%s" % (r["slot"], r["from_geni"], anchor["id"], side),
                 "side": side, "slot": r["slot"], "ask": ask,
                 "anchor": anchor, "options": options,
-                "trigger_pre": "held because the zipper reached this %s slot from " % r["slot"],
+                "trigger_pre": "held because the positional walk reached this %s slot from " % r["slot"],
                 "trigger_bold": (labels.get(r["from_geni"]) or r["from_geni"]),
                 "trigger_post": " and could not tell who is who",
                 "highlight": sorted(shared),
@@ -143,8 +143,8 @@ def main() -> int:
             })
 
     out = deck.render(cases, OUT_HTML, OUT_JSON,
-                      title="FamilySearch Zipper",
-                      sub="The zipper walked into this family slot from both sides and could "
+                      title="FamilySearch Positional walk",
+                      sub="The positional walk walked into this family slot from both sides and could "
                           "not tell who is who. Which one is it?",
                       key="familysearch-v1")
     print("%d cards in the deck -> %s; %d N x M slots stay in the census, %d answered or "

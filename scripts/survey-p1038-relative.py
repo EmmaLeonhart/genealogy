@@ -2,7 +2,7 @@
 
     python scripts/survey-p1038-relative.py
 
-Alongside the four link kinds the zipper uses — parents, spouses, children, siblings — there
+Alongside the four link kinds the positional walk uses — parents, spouses, children, siblings — there
 is a fifth relationship sometimes reported on Wikidata: the *relative* role. The instruction
 attached to it: **measure how much of it exists before building anything on it.**
 

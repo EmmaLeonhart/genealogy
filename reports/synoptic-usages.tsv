@@ -96,7 +96,7 @@ devlog.md	23661	unclear	**Fixed by using the union rather than one source.** `sy
 devlog.md	23662	unclear	565,348 pairs across eight sources; `docs/synoptic-correspondence.md`, written earlier today, is
 devlog.md	23721	full	outside `garborg-qids.tsv` but are known through `synoptic-correspondence.tsv` — the same widening
 devlog.md	23855	unclear	`reports/synoptic-correspondence.tsv`.** They are hers by hand, from identities she *"put a lot of
-devlog.md	24608	full	`zipper-join` or `build-synoptic-correspondence` — zero occurrences in either log.
+devlog.md	24608	full	`positional-walk` or `build-synoptic-correspondence` — zero occurrences in either log.
 devlog.md	24672	unclear	still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have not run) ·
 devlog.md	24720	unclear	reports/synoptic-correspondence 565,348 -> 568,955 +3,607
 devlog.md	24742	unclear	`reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
@@ -123,15 +123,15 @@ reports/audit-transcripts-2026-08-15.md	60	full	| J | **Descent-from-antiquity p
 reports/farmname-seed-fixes.md	3	unclear	Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is built. I will do the editing on geni for th
 reports/garborg-carry-forward.tsv	43	full	6000000012007377976 already identified as Q135480174 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	44	full	6000000012959021518 already identified as Q56752288 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/garborg-carry-forward.tsv	45	full	6000000000186469135 already identified as Q347426 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/garborg-carry-forward.tsv	46	full	6000000003051245269 already identified as Q3173713 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	45	full	6000000000186469135 already identified as Q347426 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	46	full	6000000003051245269 already identified as Q3173713 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	47	full	6000000002325842230 already identified as Q345420 via structural (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	48	full	6000000011116043585 already identified as Q109555189 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/garborg-carry-forward.tsv	49	full	5106195884670114511 already identified as Q16649300 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	49	full	5106195884670114511 already identified as Q16649300 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	50	full	6000000012956793199 already identified as Q116775787 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	51	full	6000000007306087396 already identified as Q109655586 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	52	full	6000000007858471180 already identified as Q123254472 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/garborg-carry-forward.tsv	53	full	6000000005936931116 already identified as Q72067 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	53	full	6000000005936931116 already identified as Q72067 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/garborg-carry-forward.tsv	54	full	6000000020389536815 already identified as Q115871131 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/geni-qid-links.md	153	unclear	## The synoptic correspondence: five sources, now one file
 reports/geni-qid-links.md	157	unclear	represented in our synoptic tree."*
@@ -291,7 +291,7 @@ reports/synoptic-usages.tsv	95	unclear	devlog.md 23661 unclear **Fixed by using 
 reports/synoptic-usages.tsv	96	unclear	devlog.md 23662 unclear 565,348 pairs across eight sources; `docs/synoptic-correspondence.md`, written earlier today, is
 reports/synoptic-usages.tsv	97	full	devlog.md 23721 full outside `garborg-qids.tsv` but are known through `synoptic-correspondence.tsv` — the same widening
 reports/synoptic-usages.tsv	98	unclear	devlog.md 23855 unclear `reports/synoptic-correspondence.tsv`.** They are hers by hand, from identities she *"put a lot of
-reports/synoptic-usages.tsv	99	full	devlog.md 24608 full `zipper-join` or `build-synoptic-correspondence` — zero occurrences in either log.
+reports/synoptic-usages.tsv	99	full	devlog.md 24608 full `positional-walk` or `build-synoptic-correspondence` — zero occurrences in either log.
 reports/synoptic-usages.tsv	100	unclear	devlog.md 24672 unclear still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have not run) ·
 reports/synoptic-usages.tsv	101	unclear	devlog.md 24720 unclear reports/synoptic-correspondence 565,348 -> 568,955 +3,607
 reports/synoptic-usages.tsv	102	unclear	devlog.md 24742 unclear `reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
@@ -318,15 +318,15 @@ reports/synoptic-usages.tsv	122	full	reports/audit-transcripts-2026-08-15.md 60 
 reports/synoptic-usages.tsv	123	unclear	reports/farmname-seed-fixes.md 3 unclear Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is bu
 reports/synoptic-usages.tsv	124	full	reports/garborg-carry-forward.tsv 43 full 6000000012007377976 already identified as Q135480174 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	125	full	reports/garborg-carry-forward.tsv 44 full 6000000012959021518 already identified as Q56752288 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/synoptic-usages.tsv	126	full	reports/garborg-carry-forward.tsv 45 full 6000000000186469135 already identified as Q347426 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/synoptic-usages.tsv	127	full	reports/garborg-carry-forward.tsv 46 full 6000000003051245269 already identified as Q3173713 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	126	full	reports/garborg-carry-forward.tsv 45 full 6000000000186469135 already identified as Q347426 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	127	full	reports/garborg-carry-forward.tsv 46 full 6000000003051245269 already identified as Q3173713 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	128	full	reports/garborg-carry-forward.tsv 47 full 6000000002325842230 already identified as Q345420 via structural (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	129	full	reports/garborg-carry-forward.tsv 48 full 6000000011116043585 already identified as Q109555189 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/synoptic-usages.tsv	130	full	reports/garborg-carry-forward.tsv 49 full 5106195884670114511 already identified as Q16649300 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	130	full	reports/garborg-carry-forward.tsv 49 full 5106195884670114511 already identified as Q16649300 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	131	full	reports/garborg-carry-forward.tsv 50 full 6000000012956793199 already identified as Q116775787 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	132	full	reports/garborg-carry-forward.tsv 51 full 6000000007306087396 already identified as Q109655586 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	133	full	reports/garborg-carry-forward.tsv 52 full 6000000007858471180 already identified as Q123254472 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
-reports/synoptic-usages.tsv	134	full	reports/garborg-carry-forward.tsv 53 full 6000000005936931116 already identified as Q72067 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	134	full	reports/garborg-carry-forward.tsv 53 full 6000000005936931116 already identified as Q72067 via structural;positional-walk (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	135	full	reports/garborg-carry-forward.tsv 54 full 6000000020389536815 already identified as Q115871131 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/synoptic-usages.tsv	136	full	reports/geni-qid-links.md 153 unclear ## The synoptic correspondence: five sources, now one file
 reports/synoptic-usages.tsv	137	full	reports/geni-qid-links.md 157 unclear represented in our synoptic tree."*
@@ -567,8 +567,8 @@ reports/synoptic-usages.tsv	372	unclear	reports/synoptic-usages.tsv 178 unclear 
 reports/synoptic-usages.tsv	373	unclear	reports/synoptic-usages.tsv 179 unclear scripts/verify-spine-candidates.py 85 unclear syn = R / "synoptic-correspondence.tsv"
 reports/synoptic-usages.tsv	374	unclear	reports/synoptic-usages.tsv 180 unclear scripts/walk-structural-merge.py 3 unclear Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
 reports/synoptic-usages.tsv	375	unclear	reports/synoptic-usages.tsv 181 unclear scripts/walk-structural-merge.py 6 unclear That is a critical part of building up this synoptic tree."*
-reports/synoptic-usages.tsv	376	full	reports/synoptic-usages.tsv 182 full scripts/zipper-join.py 15 unclear *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
-reports/synoptic-usages.tsv	377	full	reports/synoptic-usages.tsv 183 full scripts/zipper-join.py 62 unclear * **It emits no edit.** The output is a correspondence for the synoptic tree.
+reports/synoptic-usages.tsv	376	full	reports/synoptic-usages.tsv 182 full scripts/positional-walk.py 15 unclear *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
+reports/synoptic-usages.tsv	377	full	reports/synoptic-usages.tsv 183 full scripts/positional-walk.py 62 unclear * **It emits no edit.** The output is a correspondence for the synoptic tree.
 reports/synoptic-usages.tsv	378	unclear	reports/synoptic-usages.tsv 184 unclear src/genimerge/frontier.py 116 unclear synoptic tree, and what makes it synoptic is that the graph is connected —
 reports/synoptic-usages.tsv	379	geni	reports/synoptic-usages.tsv 185 geni src/genimerge/sources.py 163 geni the synoptic tree"*. The merge already gives a conflict to the later source — but
 reports/synoptic-usages.tsv	380	geni	reports/synoptic-usages.tsv 186 geni tests/test_chain_gaps.py 3 geni Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
@@ -699,8 +699,8 @@ reports/synoptic-usages.tsv	635	unclear	scripts/verify-spine-candidates.py 24 un
 reports/synoptic-usages.tsv	636	unclear	scripts/verify-spine-candidates.py 85 unclear syn = R / "synoptic-correspondence.tsv"
 reports/synoptic-usages.tsv	637	unclear	scripts/walk-structural-merge.py 3 unclear Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
 reports/synoptic-usages.tsv	638	unclear	scripts/walk-structural-merge.py 6 unclear That is a critical part of building up this synoptic tree."*
-reports/synoptic-usages.tsv	639	full	scripts/zipper-join.py 15 unclear *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
-reports/synoptic-usages.tsv	640	full	scripts/zipper-join.py 62 unclear * **It emits no edit.** The output is a correspondence for the synoptic tree.
+reports/synoptic-usages.tsv	639	full	scripts/positional-walk.py 15 unclear *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
+reports/synoptic-usages.tsv	640	full	scripts/positional-walk.py 62 unclear * **It emits no edit.** The output is a correspondence for the synoptic tree.
 reports/synoptic-usages.tsv	641	unclear	src/genimerge/frontier.py 116 unclear synoptic tree, and what makes it synoptic is that the graph is connected —
 reports/synoptic-usages.tsv	642	geni	src/genimerge/sources.py 163 geni the synoptic tree"*. The merge already gives a conflict to the later source — but
 reports/synoptic-usages.tsv	643	geni	tests/test_chain_gaps.py 3 geni Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
@@ -827,8 +827,8 @@ reports/user-turns.tsv	1743	unclear	2026-08-27T06:02:08.037Z dbec586f enqueued D
 reports/user-turns.tsv	1768	unclear	2026-08-27T03:39:21.080Z dbec586f enqueued Okay so a few things ⏎ ⏎ ⏎ I’m confused why the created individuals are not getting their names across different languages. Chinese and Japanese should be ma
 reports/user-turns.tsv	1832	full	2026-08-26T20:35:51.725Z dbec586f enqueued The current preferences that I have haven't really been met. The idea is that, in our model, the algorithm for creating quick statements should: ⏎ - Check my
 reports/user-turns.tsv	2027	full	2026-08-26T00:00:26.187Z e71a0de8 enqueued Yeah, I think the problem is that the zipper merge is extremely intuitive to me because I strictly think in terms of graphs. I think graph operations like th
-reports/user-turns.tsv	2041	full	2026-08-25T23:01:53.843Z e71a0de8 typed "ZIPPER CRON — 4pm, Emma's instruction, rescheduled from the 3pm slot. ⏎ ⏎ WHERE THINGS STAND. `scripts/zipper-join.py` has been written and RUN once already (c
-reports/user-turns.tsv	2042	full	2026-08-25T23:01:53.590Z e71a0de8 enqueued "ZIPPER CRON — 4pm, Emma's instruction, rescheduled from the 3pm slot. ⏎ ⏎ WHERE THINGS STAND. `scripts/zipper-join.py` has been written and RUN once already
+reports/user-turns.tsv	2041	full	2026-08-25T23:01:53.843Z e71a0de8 typed "ZIPPER CRON — 4pm, Emma's instruction, rescheduled from the 3pm slot. ⏎ ⏎ WHERE THINGS STAND. `scripts/positional-walk.py` has been written and RUN once already (c
+reports/user-turns.tsv	2042	full	2026-08-25T23:01:53.590Z e71a0de8 enqueued "ZIPPER CRON — 4pm, Emma's instruction, rescheduled from the 3pm slot. ⏎ ⏎ WHERE THINGS STAND. `scripts/positional-walk.py` has been written and RUN once already
 reports/user-turns.tsv	2057	full	2026-08-25T22:15:43.261Z e71a0de8 typed Oh my god just fucking run the goddamn zipper cron at 4pm I didn’t ask for the synoptic rebuild at 4pm cancel it
 reports/user-turns.tsv	2058	full	2026-08-25T22:15:43.226Z e71a0de8 enqueued Oh my god just fucking run the goddamn zipper cron at 4pm I didn’t ask for the synoptic rebuild at 4pm cancel it
 reports/user-turns.tsv	2083	both named	2026-08-25T21:37:00.748Z e71a0de8 typed "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and the rebuild must see her edits. ⏎ ⏎ Do, i
@@ -962,8 +962,8 @@ scripts/verify-spine-candidates.py	24	unclear	* the relative appears in `reports
 scripts/verify-spine-candidates.py	85	unclear	syn = R / "synoptic-correspondence.tsv"
 scripts/walk-structural-merge.py	3	unclear	Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
 scripts/walk-structural-merge.py	6	unclear	That is a critical part of building up this synoptic tree."*
-scripts/zipper-join.py	15	unclear	*"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
-scripts/zipper-join.py	62	unclear	* **It emits no edit.** The output is a correspondence for the synoptic tree.
+scripts/positional-walk.py	15	unclear	*"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
+scripts/positional-walk.py	62	unclear	* **It emits no edit.** The output is a correspondence for the synoptic tree.
 src/genimerge/frontier.py	116	unclear	synoptic tree, and what makes it synoptic is that the graph is connected —
 src/genimerge/sources.py	163	geni	the synoptic tree"*. The merge already gives a conflict to the later source — but
 tests/test_chain_gaps.py	3	geni	Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now

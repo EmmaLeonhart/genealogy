@@ -616,11 +616,11 @@ is the deliverable.
 > tree. We put the Wikidata IDs in the bios of the final product, although I do want to check all
 > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
 > tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
-> use them properly, in the zipper merge thing."*
+> use them properly, in the positional walk thing."*
 
 **So the injection is into the merged output, not into Geni.** No browser, no bio edits, no
 re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
-as it is built, so that anything consuming the tree — the zipper merge above all — sees the
+as it is built, so that anything consuming the tree — the positional walk above all — sees the
 correspondence as ordinary tree content rather than needing a side file.
 
 **The IDs are checked for merges first**, and offline: *"it really should be on our export of
@@ -745,14 +745,14 @@ as one; the full version is a `genimerge.density` presence count against the fil
 ### ⛔ "MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME AND IT IS THE ONE TO GET RIGHT
 
 **The vague name is the risk.** *Artifact entity resolution* is not *manual entity resolution*,
-and calling it that is extremely misleading: the right name is **manual parental zipper merge
+and calling it that is extremely misleading: the right name is **manual parental positional walk
 correspondences**, because a vague title will be abused by later sessions for other purposes.
 
-**So `reports/manual-identifications.csv` is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.**
+**So `reports/manual-identifications.csv` is the MANUAL PARENTAL POSITIONAL WALK CORRESPONDENCES.**
 Not "manual identifications", not "manual entity resolution", not a general-purpose place to put a
 Geni-to-Wikidata pair somebody is confident about. What it is:
 
-- **a manual form of the ZIPPER MERGE** -- the same job `scripts/zipper-join.py` does by
+- **a manual form of the POSITIONAL WALK** -- the same job `scripts/positional-walk.py` does by
   position, done by eye where position is not enough;
 - **right now, only for PARENTS.** The parent deck is the instrument
   (§ *THE PARENT DECK*), and 46 of its rows carry `batch = parent-adjudication-gui` while 204
@@ -762,7 +762,7 @@ Geni-to-Wikidata pair somebody is confident about. What it is:
 **The danger the vague name creates is specific.** A later agent reading *manual identifications*
 will put anything hand-checked into it -- a Samaritan pair, a bio link, a spine anchor -- and the
 file stops meaning *parents adjudicated in the deck*. That is not hypothetical: this file already
-carries `charlemagne-spine-anchors`, `zipper-sample`, `zipper-hard` and `blocked-creations`
+carries `charlemagne-spine-anchors`, `positional-walk-sample`, `positional-walk-hard` and `blocked-creations`
 alongside the parent verdicts.
 
 **ARTIFACT means a CLAUDE ARTIFACT.** Not a GitHub Actions artifact, which is *"effectively
@@ -1225,7 +1225,7 @@ fixed where it shows rather than where it starts.
 
 ### THE FAMILY DECK: the CHILD and SIBLING slots, `family-review.html`
 
-**The child and sibling slots get the same manual zipper treatment as the parents.**
+**The child and sibling slots get the same manual positional walk treatment as the parents.**
 
 <https://emmaleonhart.github.io/genealogy/family-review.html> --- same shape as the parent deck,
 same Copy-decisions round trip, same `reports/emma-judgments.tsv`, `batch` =
@@ -1252,7 +1252,7 @@ and the table went 65 MB -> 77 MB, which is still under GitHub's 100 MB refusal 
 comfortably.
 
 **⛔ A CARD IS ONLY OFFERED WHERE THE SLOT HAS ONE ANSWER.** The unit is the slot, as in
-`zipper-join.py`: one parent, one sex, our unclaimed children of that sex against Wikidata's
+`positional-walk.py`: one parent, one sex, our unclaimed children of that sex against Wikidata's
 unaccounted ones, and a card only where both sides hold **exactly one**.
 
 **Sex splits the slot and it is not decoration.** `scripts/census-solo-children.py` measured

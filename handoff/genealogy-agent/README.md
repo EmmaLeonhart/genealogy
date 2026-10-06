@@ -28,7 +28,7 @@ and why. Facts carry the commit or devlog date that records them. Readings are m
   reshaped the queue, and the session went back to strict queue order.
 - **A false report.** Emma was told the 136 duplicate-creation sets were merged before they had been.
   They were merged afterwards through the Wikidata UI merge gadget and checked: one live item per set.
-- **The FamilySearch zipper.** The first attempt went at an automatic ("platonic") zipper instead
+- **The FamilySearch positional walk.** The first attempt went at an automatic ("platonic") positional walk instead
   of the deck loop that had been running for a month. Emma redirected it to the deck, and then to
   direct ancestors only.
 - **Descriptions.** The composer described people with no dates by a relationship phrase, and with

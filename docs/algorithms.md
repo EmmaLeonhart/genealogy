@@ -113,14 +113,14 @@ it.
 
 ### The chain of provenance
 
-**Provenance matters, and a zipper merge should almost always carry a relatively large chain of
+**Provenance matters, and a positional walk should almost always carry a relatively large chain of
 it** — not a single justification but a potentially very long series. That is also why the manual
 verdicts are recorded: they enter the provenance too.
 
-**BUILT — `scripts/zipper-provenance.py`, re-run 2026-08-31.** `reports/zipper-pairs.tsv` records
+**BUILT — `scripts/positional-walk-provenance.py`, re-run 2026-08-31.** `reports/positional-walk-pairs.tsv` records
 one step; this walks them into the **transitive closure** — a round-5 pair's justification being
 its own step plus every step beneath it, down to an anchor or to a hand verdict. Chain depth **max 8, mean 2.7** over 45,898 inferred pairs. Outputs
-`reports/zipper-provenance.tsv` and `reports/zipper-provenance-chains.md`.
+`reports/positional-walk-provenance.tsv` and `reports/positional-walk-provenance-chains.md`.
 
     25,723  CORROBORATED        7,306 pairs an independent source confirms
     20,008  INFERRED            88 an independent source contradicts
@@ -158,7 +158,7 @@ recorded `P2600` confirms or refutes.
 3. **children** — *"there's a lot of comparison stuff"*
 4. **siblings** — *"sibling links are not very common"* on Wikidata
 
-`scripts/zipper-join.py` now runs its slots in this order, which matters because the first slot to
+`scripts/positional-walk.py` now runs its slots in this order, which matters because the first slot to
 claim a person in a round wins. Siblings are **not** a slot yet and should be added last, if at
 all. **The fifth kind is surveyed** — `P1038` *relative* with `P1039` *kinship to subject*,
 `reports/p1038-relative-survey.md`, 2026-08-26. 26,724 of 2,246,827 stored items carry it,
@@ -168,7 +168,7 @@ in-law, step, adoptive, foster, godparent — are the only part worth building o
 
 **And the point that stops a whole category of wrong stopping:** *"no ancestors isn't a point to
 stop... It doesn't mean that the ancestors aren't on Wikidata. That's not what it means... at this
-point, you're not really doing the zipper anymore. We'll just be adding new individuals on
+point, you're not really doing the positional walk anymore. We'll just be adding new individuals on
 Wikidata."* A slot with nothing on their side is a **creation opportunity**, which
 `reports/creation-opportunities.tsv` now counts, not a failure of the join.
 

@@ -375,7 +375,7 @@ def test_nothing_lands_on_an_existing_item_outside_the_universe(builder, tmp_pat
 
 
 def test_creations_paused(builder, tmp_path, monkeypatch):
-    """⛔ Emma, 2026-09-30: FamilySearch importing waits on the zipper merge. The switch ships
+    """⛔ Emma, 2026-09-30: FamilySearch importing waits on the positional walk. The switch ships
     on, and while it is on the file creates nobody and carries every would-be creation."""
     import argparse
     import importlib.util
@@ -420,7 +420,7 @@ def test_a_multi_word_marker_leading_a_label_is_caught(builder):
 
 
 def test_the_render_puts_a_verdict_anchor_on_its_geni_id(tmp_path):
-    """Adelus Eriksdatter (2026-10-02): the zipper anchors on Emma's FamilySearch-deck `SAME`
+    """Adelus Eriksdatter (2026-10-02): the positional walk anchors on Emma's FamilySearch-deck `SAME`
     verdicts and on its root, and writes neither as a pair, so the render must read both or
     the anchored person stays an `FS<id>` beside their Geni self. `L89V-S6W` Erich Andersson,
     `SAME` as Geni `6000000003281256924`, sat as a second father that way. A `DIFFERENT`
@@ -429,8 +429,8 @@ def test_the_render_puts_a_verdict_anchor_on_its_geni_id(tmp_path):
     spec = util.spec_from_file_location("fsrender_bridge", RENDERER)
     mod = util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    zipper = tmp_path / "pairs.tsv"
-    zipper.write_text("round\tgeni_id\tfs_id\n1\t111\tGVBB-VT7\n1\t222\tAAAA-BBB\n",
+    positional_walk = tmp_path / "pairs.tsv"
+    positional_walk.write_text("round\tgeni_id\tfs_id\n1\t111\tGVBB-VT7\n1\t222\tAAAA-BBB\n",
                       encoding="utf-8")
     bridge = tmp_path / "bridge.tsv"
     bridge.write_text("fs_id\tqid\tgeni_id\nAAAA-BBB\tQ1\t333\nL89V-S6W\t\t\n", encoding="utf-8")
@@ -446,7 +446,7 @@ def test_the_render_puts_a_verdict_anchor_on_its_geni_id(tmp_path):
         "2026-10-01\tfamilysearch-parent-deck\t\t\t666\tKari\tPXPY-MM4\tFrosti Kari\tSAME\t\n"
         "2026-10-01\tfamilysearch-parent-deck\t\t\t666\tKari\tPXPY-MM4\tFrosti Kari\tDIFFERENT\t\n",
         encoding="utf-8")
-    got = mod.load_bridge(bridge, zipper, judged)
+    got = mod.load_bridge(bridge, positional_walk, judged)
     assert "PXPY-MM4" not in got
     assert got["L89V-S6W"] == "6000000003281256924"
     assert "PCFL-GSL" not in got
@@ -504,7 +504,7 @@ def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_per
     measured 2026-10-02 (235 and 78 of 372): (1) the child's item was known to the synoptic
     correspondence, which the ancestor ring walks through and the day builder links through
     (`_known_qid`), but this builder read only the `P2600` roster and the ledger; (2) a person
-    the render writes on a Geni profile id (bridge, zipper pair or SAME verdict) is that Geni
+    the render writes on a Geni profile id (bridge, positional walk pair or SAME verdict) is that Geni
     person in the tree: the day batch creates them with `P2600` and `P2889`, so this file
     carries them, never a second item (Emma, 2026-09-24: skip them, add P2889 instead)."""
     import argparse
@@ -517,14 +517,14 @@ def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_per
     monkeypatch.setattr(builder, "UNIVERSE", tmp_path / "universe.json")
     monkeypatch.setattr(builder, "RING", tmp_path / "ring.json")
     monkeypatch.setattr(builder, "P2600_ALL", tmp_path / "p2600-all.tsv")
-    monkeypatch.setattr(builder, "ZIPPER_PAIRS", tmp_path / "pairs.tsv")
+    monkeypatch.setattr(builder, "POSITIONAL_WALK_PAIRS", tmp_path / "pairs.tsv")
     monkeypatch.setattr(builder, "CORRESPONDENCE", tmp_path / "correspondence.tsv")
     monkeypatch.setattr(builder, "CREATIONS_PAUSED", False)
     # Only Henrik (EEEE-555) is bridged; Torleiv (FFFF-666) is now keyed on a Geni profile that
     # the correspondence, and nothing else, identifies with Q66666666.
     builder.BRIDGE.write_text("fs_id\tqid\tgeni_id\nEEEE-555\tQ88888888\t\n", encoding="utf-8")
     builder.CORRESPONDENCE.write_text(
-        "qid\tgeni_id\tsources\nQ66666666\t6000000000000000009\tstructural;zipper\n",
+        "qid\tgeni_id\tsources\nQ66666666\t6000000000000000009\tstructural;positional-walk\n",
         encoding="utf-8")
     builder.UNIVERSE.write_text('{"universe": ["Q88888888", "Q66666666"], "one_step": []}',
                                 encoding="utf-8")
@@ -542,4 +542,4 @@ def test_a_child_known_only_to_the_correspondence_is_linked_and_a_geni_keyed_per
     assert 'Q66666666	P2889	"FFFF-666"' in text
     # His Geni profile has an item, so he is a zipped person (the id goes on Q66666666) rather
     # than the day batch's creation; either way, never a second item.
-    assert "FFFF-666\t\tthe zipper put them on an existing item: Q66666666" in carry
+    assert "FFFF-666\t\tthe positional walk put them on an existing item: Q66666666" in carry

@@ -1,6 +1,6 @@
 # What the structural walk actually does, and what it does not
 
-**The zipper join was never written down**, which is why it was never clear it was being
+**The positional walk was never written down**, which is why it was never clear it was being
 done correctly. This is the algorithm, exactly, read off
 `scripts/walk-structural-merge.py` rather than described from memory.
 
@@ -28,7 +28,7 @@ build, of which 7,861 became rows in `reports/structural-correspondence.csv`.
 
 ## What it is not
 
-**It is not a zipper join.** Calling it one oversold it.
+**It is not a positional walk.** Calling it one oversold it.
 
 - **It never looks at children (`P40`) or spouses (`P26`).** Neither property appears
   anywhere in the script. The hard cases — choosing among several children,
@@ -84,6 +84,6 @@ checking it.
 
 - `scripts/validate-structural-walk.py` writes the date verdict per correspondence, so
   the 271 can be dropped and the rest read with the right amount of trust.
-- **A real zipper join — children and spouses, both parent lines, several candidates per
+- **A real positional walk — children and spouses, both parent lines, several candidates per
   position — is not built.** It is a different piece of work from this walk, and this
   document exists so nobody mistakes one for the other again.

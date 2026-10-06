@@ -84,7 +84,7 @@ def main():
     # than reporting failure on the route it happened to pick first.
     #
     # It matches on the LABEL, which is a name test — the one thing this repo refuses almost
-    # everywhere. It is safe here for the same reason the zipper's name step is: nothing is
+    # everywhere. It is safe here for the same reason the positional walk's name step is: nothing is
     # being *identified* by name. A name only decides which edges the walk may use, and the
     # result is then checked step by step against the tree. A wrong exclusion loses a route;
     # it can never merge two people.

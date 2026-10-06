@@ -87,7 +87,7 @@ STEPS = [
     # 7.7 min with it, for the same 1,451,993 people and 630,053 families. It is what lets this
     # script run on a GitHub runner at all -- see `genimerge.slim`.
     # **BEFORE the merge, because the merge consumes what it writes.** The long-term shape for
-    # the manual parental zipper correspondences is that the pipeline generates them into a
+    # the manual parental positional walk correspondences is that the pipeline generates them into a
     # gitignored GEDCOM that is part of the synoptic tree merge, with QIDs in bios as a
     # fundamental part of the pipeline.
     #
