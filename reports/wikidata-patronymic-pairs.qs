@@ -88,6 +88,16 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
+# Pedersdotter -- the counterpart of Pederson (286 bearer(s))
+CREATE
+LAST	Len	"Pedersdotter"
+LAST	Lmul	"Pedersdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Johannesdatter -- the counterpart of Johannesen (259 bearer(s))
 CREATE
 LAST	Len	"Johannesdatter"
@@ -251,6 +261,19 @@ Q141585055	P5278	LAST
 Q141585055	P407	Q9043
 Q141585055	P407	Q9035
 
+# Knutsson -- the counterpart of Knutsdotter (81 bearer(s))
+CREATE
+LAST	Len	"Knutsson"
+LAST	Lmul	"Knutsson"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P31	Q10673705
+LAST	P407	Q9027
+LAST	P5278	Q141456528
+Q141456528	P5278	LAST
+Q141456528	P407	Q9027
+
 # Gundersen -- the counterpart of Gundersdatter (79 bearer(s))
 CREATE
 LAST	Len	"Gundersen"
@@ -349,6 +372,16 @@ LAST	P407	Q9027
 LAST	P5278	Q141502514
 Q141502514	P5278	LAST
 Q141502514	P407	Q9027
+
+# Tollaksen -- the counterpart of Tollaksdatter (59 bearer(s))
+CREATE
+LAST	Len	"Tollaksen"
+LAST	Lmul	"Tollaksen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
 
 # Ingebretsdatter -- the counterpart of Ingebretsen (54 bearer(s))
 CREATE
@@ -453,48 +486,4 @@ LAST	P5278	Q141619378
 Q141619378	P5278	LAST
 Q141619378	P407	Q9043
 Q141619378	P407	Q9035
-
-# Tollaksdatter -- the counterpart of Tollaksen (38 bearer(s))
-CREATE
-LAST	Len	"Tollaksdatter"
-LAST	Lmul	"Tollaksdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141403349
-Q141403349	P5278	LAST
-Q141403349	P407	Q9043
-Q141403349	P407	Q9035
-
-# Torstensen -- the counterpart of Torstensdatter (38 bearer(s))
-CREATE
-LAST	Len	"Torstensen"
-LAST	Lmul	"Torstensen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141549532
-Q141549532	P5278	LAST
-Q141549532	P407	Q9043
-Q141549532	P407	Q9035
-
-# Persdatter -- the counterpart of Persen (36 bearer(s))
-CREATE
-LAST	Len	"Persdatter"
-LAST	Lmul	"Persdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141574663
-Q141574663	P5278	LAST
-Q141574663	P407	Q9043
-Q141574663	P407	Q9035
 
