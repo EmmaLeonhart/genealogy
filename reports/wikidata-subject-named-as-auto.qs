@@ -5,6 +5,7 @@
 # per the 2026-08-30 ruling that neither form of private gets a qualifier.
 # Re-stating property+value attaches the qualifier; it does not add a second P2600.
 
+Q110566491	P2600	"6000000006906597206"	P1810	"Sunniva Håkonsdatter"
 Q110578221	P2600	"6000000003827568801"	P1810	"Mélisende de Lusignan"
 Q110602334	P2600	"6000000003827746357"	P1810	"Mahaut de Trie"
 Q110602457	P2600	"6000000002818164545"	P1810	"Béatrix de Mâcon"
@@ -14,7 +15,6 @@ Q110641098	P2600	"6000000003828078936"	P1810	"Béatrix de Walcourt dame de Houff
 Q110641580	P2600	"6000000000424765030"	P1810	"Bertha de Picquigny"
 Q110659153	P2600	"6000000045395223966"	P1810	"Agnes von Saarbrücken-Zweibrücken"
 Q11078587	P2600	"6000000001844033355"	P1810	"Harima no Inabi no Ōiratsume"
-Q110832597	P2600	"6000000004289203292"	P1810	"Hedvig Elisabeth Elisabeth Cronman"
 Q100326603	P2600	"6000000003210301052"	P1810	"Matilde"
 Q100722549	P2600	"6000000007343661385"	P1810	"Carl Rudenschöld"
 Q100723	P2600	"310819047470008278"	P1810	"Otto prins af von Braunschweig-Lüneburg"

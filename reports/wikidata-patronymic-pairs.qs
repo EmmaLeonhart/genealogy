@@ -7,6 +7,16 @@
 #
 # The genitive s is shared: Rasmussen -> Rasmusdatter, never Rasmussdatter.
 
+# Jonsen -- the counterpart of Jonsdatter (465 bearer(s))
+CREATE
+LAST	Len	"Jonsen"
+LAST	Lmul	"Jonsen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
 # Eriksdatter -- the counterpart of Eriksen (448 bearer(s))
 CREATE
 LAST	Len	"Eriksdatter"
@@ -32,10 +42,32 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
-LAST	P5278	Q141249587
-Q141249587	P5278	LAST
-Q141249587	P407	Q9043
-Q141249587	P407	Q9035
+
+# Olofsson -- the counterpart of Olofsdotter (237 bearer(s))
+CREATE
+LAST	Len	"Olofsson"
+LAST	Lmul	"Olofsson"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P31	Q10673705
+LAST	P407	Q9027
+LAST	P5278	Q141250201
+Q141250201	P5278	LAST
+Q141250201	P407	Q9027
+
+# Jonsson -- the counterpart of Jonsdotter (208 bearer(s))
+CREATE
+LAST	Len	"Jonsson"
+LAST	Lmul	"Jonsson"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P31	Q10673705
+LAST	P407	Q9027
+LAST	P5278	Q141319007
+Q141319007	P5278	LAST
+Q141319007	P407	Q9027
 
 # Gundersen -- the counterpart of Gundersdatter (79 bearer(s))
 CREATE
@@ -85,6 +117,21 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
+
+# Asbjørnsdatter -- the counterpart of Asbjørnsen (24 bearer(s))
+CREATE
+LAST	Len	"Asbjørnsdatter"
+LAST	Lmul	"Asbjørnsdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+LAST	P5278	Q141318571
+Q141318571	P5278	LAST
+Q141318571	P407	Q9043
+Q141318571	P407	Q9035
 
 # Hansdatter -- the counterpart of Hanssen (23 bearer(s))
 CREATE

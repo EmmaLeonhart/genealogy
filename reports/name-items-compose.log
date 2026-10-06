@@ -1,9 +1,9 @@
-240 people across 1 Garborg batches, 24513 already holding a QID
-4592 token(s) are already pointed at by their own bearers
-9228 tokens already have an item and are linked, not created
-6650 need creating, 2 are ambiguous and are not
-211 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (10), Laurentii (5), ll (4), Georgii (3), Lauritzen (3), Ænes (3)
-2374 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
+240 people across 1 Garborg batches, 24619 already holding a QID
+4611 token(s) are already pointed at by their own bearers
+9244 tokens already have an item and are linked, not created
+6675 need creating, 2 are ambiguous and are not
+212 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (10), Laurentii (5), ll (4), Georgii (3), Lauritzen (3), Ænes (3)
+2649 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Abluna               given        Q17317997
    Abo                  family       Q1677742
    Adalasia             given        Q62102498
@@ -23,6 +23,7 @@
    Ared                 family       Q107448247
    Arnbjarnardóttir     patronymic   Q141583356
    Arnoulf              given        Q3623461
+   Asbjørnsdatter       patronymic   Q141249690
    Ashkenazi            family       Q722780
    Asnar                family       Q980636
    Aspenäsätten         family       Q27887723
@@ -174,10 +175,13 @@
    Imiza                given        Q10000391
    Ingebor              given        Q1459707
    Ingeleiv             given        Q11973376
+   JONSON               patronymic   Q141249667
    Jerling              family       Q21509276
    Joa Austvoll         family       Q37507451
    Johansdatter Kruckow family       Q36932126
    Jonsdatter           patronymic   Q141189036
+   Jonsen               patronymic   Q141249587
+   Jonson               patronymic   Q141249667
    Jørundsdatter        patronymic   Q141450954
    Kalberg              family       Q37076085
    Kamp                 family       Q37459529
@@ -271,6 +275,7 @@
    Ragnvaldsdóttir      patronymic   Q130738659
    Ragnvaldsson         patronymic   Q113006412
    Randklef             family       Q21476625
+   Rasmussen            patronymic   Q141249669
    Ribbing af Koberg    family       Q37134374
    Ribbing af Zernava   family       Q37134374
    Richildis            given        Q22343622
@@ -341,6 +346,7 @@
    Thórður              given        Q8079578
    Tjurhuvud            family       Q37024418
    Tjöl                 given        Q141532387
+   Tokugawa             family       Q7813711
    Tolleif              given        Q141630222
    Tollev               given        Q141630239
    Tomassson            patronymic   Q141583327
@@ -368,12 +374,14 @@
    Viby                 family       Q20819840
    Von Essen            family       Q41365468
    Von Normann          family       Q16880514
+   Voster               family       Q141244184
    Vratislaus           given        Q2067239
    Vølstad              family       Q57406813
    Wachtmeister af Björkö family       Q141381252
    Wachtmeister af Johannishus family       Q20882338
    Waern                family       Q42033535
    Wallwik              family       Q21507419
+   Wasilko              given        Q4926514
    Wegelin              family       Q2554220
    Wigerich             given        Q19997457
    Wiggman              family       Q21507850
@@ -520,6 +528,7 @@
    Øvre Augland         family       Q47085823
    Симонида             given        Q602977
    一条                   family       Q43657267
+   三条西                  family       Q141648474
    中山                   family       Q6960378
    于                    family       Q985858
    信尋                   given        Q7046140
@@ -544,23 +553,32 @@
    行成                   given        Q96324139
    近衞                   family       Q43609174
    韋                    family       Q6665383
-981 token(s) RESCUED by the live check -- these would have been created a second time:
+1119 token(s) RESCUED by the live check -- these would have been created a second time:
    von Wrangell         family       already Q112692214
    De Besche            family       already Q42179582
    Teet                 family       already Q37117634
    Teet                 family       already Q37117634
+   Olofsson             patronymic   already Q141244186
    Þorsteinsson         patronymic   already Q335668
    von Stockenström     family       already Q94373418
    Atlason              patronymic   already Q757300
+   Olofsson             patronymic   already Q141244186
    von Geijer           family       already Q48075060
    D'Avignon            family       already Q63439039
    Teet                 family       already Q37117634
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    till                 family       already Q16884701
+   Olofsson             patronymic   already Q141244186
    Takku                family       already Q63283498
+   Olofsson             patronymic   already Q141244186
    Noræus               family       already Q140692665
    Bull                 family       already Q13570075
    de Carcassonne       family       already Q105175587
    de Carcassonne       family       already Q105175587
+   Olofsson             patronymic   already Q141244186
    de Narbonne          family       already Q105248042
    Osmanoğlu            family       already Q93398240
    D'Avignon            family       already Q63439039
@@ -570,12 +588,14 @@
    de Bourgogne         family       already Q104837093
    Magnúsdóttir         patronymic   already Q1884646
    d'Avignon            family       already Q63439039
+   Olofsson             patronymic   already Q141244186
    Vladimirovich        patronymic   already Q27670878
    de Bourgogne         family       already Q104837093
    de Metz              family       already Q105305546
    d'Oyly               family       already Q5203170
    de Provence          family       already Q105498434
    de Troyes            family       already Q104592177
+   Olofsson             patronymic   already Q141244186
    Larssen              patronymic   already Q27888992
    Umayya               given        already Q141530101
    Hindrich             given        already Q141626452
@@ -586,13 +606,16 @@
    Snare                family       already Q36988240
    de Metz              family       already Q105305546
    Natt och Dag         family       already Q47461748
+   Olofsson             patronymic   already Q141244186
    Skiftun              family       already Q141500917
+   Olofsson             patronymic   already Q141244186
    de Bourgogne         family       already Q104837093
    Nielsen              patronymic   already Q133876583
    von Kothen           family       already Q47012149
    de Saint-Martin      family       already Q104540208
    de Castilla          family       already Q99907853
    Guilhèm              given        already Q4138351
+   Olofsson             patronymic   already Q141244186
    de Courtenay         family       already Q76909999
    de Beaumont          family       already Q76417957
    de Varenne           family       already Q104803133
@@ -606,6 +629,7 @@
    de Normandie         family       already Q104594406
    Berliner             family       already Q16479916
    Al-Husayni           family       already Q21125702
+   Olofsson             patronymic   already Q141244186
    de Narbonne          family       already Q105248042
    de Narbona           family       already Q100255279
    Macduff              family       already Q37511524
@@ -621,6 +645,8 @@
    auf                  family       already Q63142909
    de Montmorency       family       already Q63457366
    de Thouars           family       already Q104803129
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Helgason             patronymic   already Q122958814
    de Marseille         family       already Q105180754
    DE CASTELLANE        family       already Q63951643
@@ -642,6 +668,9 @@
    de Bourgogne         family       already Q104837093
    Uhr                  family       already Q37072462
    fitzJohn             family       already Q112600123
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    von Habsburg         family       already Q16880125
    Einarsson            patronymic   already Q1305970
    Randa                family       already Q37071011
@@ -669,7 +698,9 @@
    de Bourgogne         family       already Q104837093
    de Champagne         family       already Q104854485
    von Levetzow         family       already Q48095081
+   Olofsson             patronymic   already Q141244186
    De la Gardie         family       already Q41366581
+   Olofsson             patronymic   already Q141244186
    de la Rochefoucauld  family       already Q47002551
    Vladimirovich        patronymic   already Q27670878
    de Lorraine          family       already Q98890791
@@ -729,6 +760,11 @@
    verch                family       already Q7921001
    Mercia               family       already Q107443816
    Mercia               family       already Q107443816
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Nielsen              patronymic   already Q133876583
    Nielsen              patronymic   already Q133876583
    Nielsen              patronymic   already Q133876583
@@ -748,6 +784,7 @@
    von Schantz          family       already Q46529499
    Ericksdatter         patronymic   already Q141494371
    Torbergsdatter       patronymic   already Q122839156
+   Olofsson             patronymic   already Q141244186
    Randa                family       already Q37071011
    Eilefson             patronymic   already Q141494369
    Torbergsdatter       patronymic   already Q122839156
@@ -768,6 +805,7 @@
    Gunnarsson           patronymic   already Q69821535
    Pedersdatter         family       already Q122838114
    de Bourgogne         family       already Q104837093
+   Olofsson             patronymic   already Q141244186
    Wendt                family       already Q15853986
    Wendt                family       already Q15853986
    de Blois             family       already Q25113852
@@ -779,6 +817,7 @@
    de Normandie         family       already Q104594406
    Sherburne            family       already Q37435368
    DE BRUGES            family       already Q104539930
+   Olofsson             patronymic   already Q141244186
    de Montaigu          family       already Q98086024
    ESPEDAL              family       already Q27892902
    Johanson             patronymic   already Q1326577
@@ -802,6 +841,7 @@
    Randa                family       already Q37071011
    Johanson             patronymic   already Q1326577
    Nielsen              patronymic   already Q133876583
+   Olofsson             patronymic   already Q141244186
    Halvarson            family       already Q37101466
    Eivindsson           patronymic   already Q122835943
    ØKSNEVAD             family       already Q30583490
@@ -809,6 +849,9 @@
    Turov                family       already Q25114400
    von Stade            family       already Q7941517
    d'Archiac            family       already Q105496735
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    de Velasco           family       already Q57826880
    De la Gardie         family       already Q41366581
    von Ascheberg        family       already Q127180377
@@ -844,11 +887,15 @@
    von Württemberg      family       already Q113495620
    von Württemberg      family       already Q113495620
    de Turenne           family       already Q105247980
+   von Reinhausen       family       already Q137674873
    de Châtillon         family       already Q104825290
    von Nellenburg       family       already Q113552200
    de Beaumont          family       already Q76417957
+   Olofsson             patronymic   already Q141244186
    Stjerne              family       already Q112634099
    Gunnarsson           patronymic   already Q69821535
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    de Thouars           family       already Q104803129
    de Lacy              family       already Q65650530
    Michael              family       already Q1926724
@@ -860,8 +907,13 @@
    Eiríksson            patronymic   already Q66930050
    Von Nellenburg       family       already Q113552200
    de Castilla          family       already Q99907853
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    østre                family       already Q55230790
    de Valois            family       already Q105348467
+   Olofsson             patronymic   already Q141244186
    de Faucigny          family       already Q104539895
    de Turenne           family       already Q105247980
    De Rodez             family       already Q106549201
@@ -870,11 +922,15 @@
    von Hessen           family       already Q115920480
    von Hessen           family       already Q115920480
    ytre                 family       already Q30340328
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    de Vere              family       already Q5244793
    de Bourgogne         family       already Q104837093
    Haraldson            patronymic   already Q30347057
    Takku                family       already Q63283498
    von Wrangell         family       already Q112692214
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Teet                 family       already Q37117634
    Helsing              family       already Q5710406
    Wendt                family       already Q15853986
@@ -896,6 +952,7 @@
    Skiftun              family       already Q141500917
    de Turenne           family       already Q105247980
    Skiftun              family       already Q141500917
+   Olofsson             patronymic   already Q141244186
    Natt och Dag         family       already Q47461748
    de Champagne         family       already Q104854485
    ØKSNEVAD             family       already Q30583490
@@ -922,6 +979,7 @@
    Victorin             family       already Q37075799
    Dume                 family       already Q36988434
    De Metz              family       already Q105305546
+   Olofsson             patronymic   already Q141244186
    Natt och Dag         family       already Q47461748
    Ivanovna             patronymic   already Q45752976
    de Laval             family       already Q47462010
@@ -930,6 +988,7 @@
    de Laval             family       already Q47462010
    de Laval             family       already Q47462010
    de Laval             family       already Q47462010
+   Olofsson             patronymic   already Q141244186
    de Lorraine          family       already Q98890791
    de Valois            family       already Q105348467
    Valois               family       already Q37067422
@@ -938,8 +997,11 @@
    de Laval             family       already Q47462010
    von Bremen           family       already Q139784928
    Eig                  family       already Q37442382
+   Olofsson             patronymic   already Q141244186
    Uhr                  family       already Q37072462
    Uhr                  family       already Q37072462
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    walsch               family       already Q37567590
    Svedman              family       already Q113021252
    De la Gardie         family       already Q41366581
@@ -949,29 +1011,41 @@
    de Courtenay         family       already Q76909999
    Helgeson             family       already Q37099418
    HÅLAND               family       already Q30580079
+   Olofsson             patronymic   already Q141244186
    Sigfússon            patronymic   already Q2284701
    Einarsson            patronymic   already Q1305970
    Einarsson            patronymic   already Q1305970
+   Olofsson             patronymic   already Q141244186
    Adelheim             family       already Q124130722
+   Olofsson             patronymic   already Q141244186
    Hainaut              family       already Q124708094
    FitzJohn             family       already Q112600123
    Lancaster            family       already Q16871796
    de Laval             family       already Q47462010
    De Laval             family       already Q47462010
+   Olofsson             patronymic   already Q141244186
    Myhrman              family       already Q16284938
    von Nieroth          family       already Q47461731
    de Blois             family       already Q25113852
+   Olofsson             patronymic   already Q141244186
    de Savoie            family       already Q105418238
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    de Narbona           family       already Q100255279
    De Toulouse          family       already Q104837165
    De Narbonne          family       already Q105248042
    Svenonis             family       already Q114854229
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    de La Marche         family       already Q104832190
    de Limoges           family       already Q104832197
    Uhr                  family       already Q37072462
    Pehrsdotter          family       already Q54490983
    Glebovich            patronymic   already Q131154560
    de Criol             family       already Q136359207
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Rawleigh             family       already Q37091866
    af Geijerstam        family       already Q42033741
    af Geijerstam        family       already Q42033741
@@ -986,6 +1060,7 @@
    Stålbom              family       already Q18449107
    Stålbom              family       already Q18449107
    Stålbom              family       already Q18449107
+   Olofsson             patronymic   already Q141244186
    ESPEDAL              family       already Q27892902
    Wendula              given        already Q141106909
    Gunnarsson           patronymic   already Q69821535
@@ -994,6 +1069,9 @@
    Tufto                family       already Q141599609
    de Geer              family       already Q42181347
    de Lorraine          family       already Q98890791
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Natt och Dag         family       already Q47461748
    von Schlieben        family       already Q112764161
    till                 family       already Q16884701
@@ -1001,12 +1079,16 @@
    Hummelhielm          family       already Q124607847
    Lagerström           family       already Q58414461
    till                 family       already Q16884701
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    De Bretagne          family       already Q105418240
    Adelheim             family       already Q124130722
    von Berg             family       already Q7941401
    De Geer af Finspång  family       already Q131613209
    De la Gardie         family       already Q41366581
+   Olofsson             patronymic   already Q141244186
    von Moers            family       already Q115538835
+   Olofsson             patronymic   already Q141244186
    von Plauen           family       already Q116759022
    Randa                family       already Q37071011
    Tjentland            family       already Q141150230
@@ -1021,13 +1103,16 @@
    Kjær                 family       already Q21509465
    Makrembolites        family       already Q16149864
    von Lantinghausen    family       already Q96147521
+   Olofsson             patronymic   already Q141244186
    de Lara              family       already Q30307403
+   Olofsson             patronymic   already Q141244186
    Helgason             patronymic   already Q122958814
    Thorleiv             given        already Q141630346
    Ellington            family       already Q37463857
    von Stedingk         family       already Q7941518
    von Stedingk         family       already Q7941518
    Souper               family       already Q112599742
+   Olofsson             patronymic   already Q141244186
    Thörner              family       already Q114755056
    Carlheim-Gyllensköld family       already Q103980519
    von Heland           family       already Q42103340
@@ -1040,6 +1125,7 @@
    von Numers           family       already Q47011129
    von Numers           family       already Q47011129
    Hummelhielm          family       already Q124607847
+   Olofsson             patronymic   already Q141244186
    de Lara              family       already Q30307403
    de Caen              family       already Q114950787
    de Savoie            family       already Q105418238
@@ -1057,6 +1143,7 @@
    von Wrangell         family       already Q112692214
    Aisin Gioro          family       already Q934262
    Aisin Gioro          family       already Q934262
+   Olofsson             patronymic   already Q141244186
    Kagg                 family       already Q131612938
    de Rumigny           family       already Q63881930
    von Wrangell         family       already Q112692214
@@ -1072,7 +1159,9 @@
    Berntsen             patronymic   already Q21508794
    Carlheim-Gyllensköld family       already Q103980519
    Patriksson           patronymic   already Q121536498
+   Olofsson             patronymic   already Q141244186
    Urdal                family       already Q12719278
+   Olofsson             patronymic   already Q141244186
    von Holstein         family       already Q46528511
    De la Gardie         family       already Q41366581
    de la Cerda          family       already Q23710195
@@ -1090,6 +1179,7 @@
    FitzRichard          family       already Q5455679
    FitzRichard          family       already Q5455679
    till                 family       already Q16884701
+   Olofsson             patronymic   already Q141244186
    øvre                 family       already Q47085823
    von Staffeldt        family       already Q49442886
    von Rosen            family       already Q42122485
@@ -1097,6 +1187,7 @@
    Esping               family       already Q36966369
    Esping               family       already Q36966369
    Esping               family       already Q36966369
+   Olofsson             patronymic   already Q141244186
    von Rosenstein       family       already Q45218897
    Aisin Gioro          family       already Q934262
    Aisin Gioro          family       already Q934262
@@ -1121,6 +1212,8 @@
    de Castilla          family       already Q99907853
    Helsing              family       already Q5710406
    Eivindsson           patronymic   already Q122835943
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Stjerne              family       already Q112634099
    Torbergsdatter       patronymic   already Q122839156
    zum                  family       already Q119412875
@@ -1140,9 +1233,12 @@
    Wendt                family       already Q15853986
    Wendt                family       already Q15853986
    Stålbom              family       already Q18449107
+   Olofsson             patronymic   already Q141244186
    de Narbona           family       already Q100255279
    von Rosenstein       family       already Q45218897
    de Savoie            family       already Q105418238
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    de Laval             family       already Q47462010
    van Zutphen          family       already Q66309761
    Niohuru              family       already Q994197
@@ -1154,6 +1250,7 @@
    Wendt                family       already Q15853986
    von Rosen            family       already Q42122485
    de Bourbon           family       already Q98890770
+   Olofsson             patronymic   already Q141244186
    von Rosen            family       already Q42122485
    Shoda                family       already Q27263573
    Natt och Dag         family       already Q47461748
@@ -1163,6 +1260,7 @@
    Uhr                  family       already Q37072462
    Stiernblad           family       already Q124742254
    Uhr                  family       already Q37072462
+   Olofsson             patronymic   already Q141244186
    Hestad               family       already Q16870756
    Hestad               family       already Q16870756
    Hestad               family       already Q16870756
@@ -1172,14 +1270,18 @@
    af Geijerstam        family       already Q42033741
    Shoda                family       already Q27263573
    Reetz                family       already Q37331011
+   Olofsson             patronymic   already Q141244186
    Aminov               family       already Q36938159
    Eid                  family       already Q37510021
    De la Gardie         family       already Q41366581
    Moreen               family       already Q37329940
    Moreen               family       already Q37329940
    Moreen               family       already Q37329940
+   Olofsson             patronymic   already Q141244186
    von Post             family       already Q47469205
    Rostopchina          family       already Q16692739
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    von Berg             family       already Q7941401
    Lagersparre          family       already Q124913060
    Helsing              family       already Q5710406
@@ -1194,6 +1296,7 @@
    Yamato               family       already Q26231336
    Eid                  family       already Q37510021
    von Gertten          family       already Q41365248
+   Olofsson             patronymic   already Q141244186
    Noræus               family       already Q140692665
    von Stedingk         family       already Q7941518
    von Rosen            family       already Q42122485
@@ -1210,9 +1313,16 @@
    till                 family       already Q16884701
    till                 family       already Q16884701
    von Rosen            family       already Q42122485
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Iñíguez              family       already Q130546575
    de Sens              family       already Q106294686
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    kyllingstad          family       already Q30080230
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Hanssen              patronymic   already Q27887944
    Hestad               family       already Q16870756
    Aslaksen             family       already Q27892779
@@ -1254,23 +1364,27 @@
    Tjentland            family       already Q141150230
    Stierneroos          family       already Q117808635
    de Almada            family       already Q100520970
+   Olofsson             patronymic   already Q141244186
    De la Gardie         family       already Q41366581
    de Courtenay         family       already Q76909999
    de Austria           family       already Q113798504
    de La Rochefoucauld  family       already Q47002551
    del Vasto            family       already Q84607985
    de Maillé            family       already Q104591675
+   Olofsson             patronymic   already Q141244186
    Halsne               family       already Q36986617
    Noræus               family       already Q140692665
    Kierstin             given        already Q141235334
    Rabbe                family       already Q37075423
    Adelheim             family       already Q124130722
    von Numers           family       already Q47011129
+   Olofsson             patronymic   already Q141244186
    von Heland           family       already Q42103340
    Eid                  family       already Q37510021
    van Bylandt          family       already Q131689724
    von Post             family       already Q47469205
    von Friesen          family       already Q93629641
+   Olofsson             patronymic   already Q141244186
    Kallhovd             family       already Q123097815
    Takku                family       already Q63283498
    De la Gardie         family       already Q41366581
@@ -1294,7 +1408,9 @@
    de Rochefort         family       already Q104540260
    Stiernsparre         family       already Q129261087
    de Montmorency       family       already Q63457366
+   Olofsson             patronymic   already Q141244186
    Pedersdotter         family       already Q122838115
+   Olofsson             patronymic   already Q141244186
    Detloffsson          patronymic   already Q141494368
    De Rogier            family       already Q42166524
    De Rogier            family       already Q42166524
@@ -1311,13 +1427,16 @@
    af Sandeberg         family       already Q41342147
    Eneskjöld            family       already Q10484118
    von Nellenburg       family       already Q113552200
+   von Heland           family       already Q42103340
    Michaelis            family       already Q21450401
    Allenius             family       already Q113811286
    St John              family       already Q65953328
+   Olofsson             patronymic   already Q141244186
    Zander               family       already Q146624
    Halsne               family       already Q36986617
    Halsne               family       already Q36986617
    Halsne               family       already Q36986617
+   Olofsson             patronymic   already Q141244186
    Zettersten           family       already Q124040026
    Zettersten           family       already Q124040026
    Källander            family       already Q115626708
@@ -1327,6 +1446,7 @@
    Crælius              family       already Q127223004
    von Hessen           family       already Q115920480
    de Grey              family       already Q90125417
+   Olofsson             patronymic   already Q141244186
    de Laval             family       already Q47462010
    de Laval             family       already Q47462010
    von Lepel            family       already Q54612150
@@ -1343,6 +1463,7 @@
    von Reichenbach      family       already Q139817595
    von Reichenbach      family       already Q139817595
    von Württemberg      family       already Q113495620
+   Olofsson             patronymic   already Q141244186
    Eilefson             patronymic   already Q141494369
    Eilefson             patronymic   already Q141494369
    Ohren                family       already Q37075294
@@ -1360,6 +1481,7 @@
    Victorin             family       already Q37075799
    Ivanovna             patronymic   already Q45752976
    Vladimirovich        patronymic   already Q27670878
+   Olofsson             patronymic   already Q141244186
    von Heland           family       already Q42103340
    von Reichenbach      family       already Q139817595
    De Rogier            family       already Q42166524
@@ -1367,11 +1489,14 @@
    Tarras-Wahlberg      family       already Q42180689
    von Malortie         family       already Q115913524
    Tarras-Wahlberg      family       already Q42180689
+   Olofsson             patronymic   already Q141244186
    Eilefson             patronymic   already Q141494369
    Eilefson             patronymic   already Q141494369
    von Holstein         family       already Q46528511
    de Silva             family       already Q57773714
    de Castilla          family       already Q99907853
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Hensrud              family       already Q36995480
    de Valdés            family       already Q133467869
    Moreen               family       already Q37329940
@@ -1396,6 +1521,8 @@
    von Kleist           family       already Q42865399
    Eid                  family       already Q37510021
    von Rosen            family       already Q42122485
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Victorin             family       already Q37075799
    Święcicka            family       already Q112590509
    Victorin             family       already Q37075799
@@ -1414,6 +1541,8 @@
    Bond                 family       already Q15789303
    Hanssen              patronymic   already Q27887944
    de Laval             family       already Q47462010
+   Truchsess            family       already Q1412409
+   von Henneberg        family       already Q111819000
    von Reichenbach      family       already Q139817595
    von Reichenbach      family       already Q139817595
    von Reichenbach      family       already Q139817595
@@ -1429,9 +1558,12 @@
    von Wachholtz        family       already Q109767532
    zum                  family       already Q119412875
    von Alvensleben      family       already Q56546927
+   Olofsson             patronymic   already Q141244186
    du Maine             family       already Q105305593
+   Olofsson             patronymic   already Q141244186
    Steinbock            family       already Q37052837
    Esping               family       already Q36966369
+   Olofsson             patronymic   already Q141244186
    Takku                family       already Q63283498
    Halldorson           family       already Q16870413
    Vang                 family       already Q32792439
@@ -1441,6 +1573,8 @@
    Randa                family       already Q37071011
    Thunholm             family       already Q100924890
    Kallhovd             family       already Q123097815
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
    Pehrsdotter          family       already Q54490983
    Vang                 family       already Q32792439
    Vang                 family       already Q32792439
@@ -1461,6 +1595,7 @@
    Von Hartmansdorff    family       already Q87755926
    Carlheim-Gyllensköld family       already Q103980519
    Urach                family       already Q113587212
+   Olofsson             patronymic   already Q141244186
    Kierstin             given        already Q141235334
    abu                  family       already Q79783064
    abu                  family       already Q79783064
@@ -1492,16 +1627,20 @@
    del Giudice          family       already Q84592667
    de Béarn             family       already Q105818540
    Wendt                family       already Q15853986
+   Olofsson             patronymic   already Q141244186
    Stålbom              family       already Q18449107
    De Rogier            family       already Q42166524
    De Rogier            family       already Q42166524
    De Rogier            family       already Q42166524
    De Rogier            family       already Q42166524
    de Mendoza           family       already Q99888991
+   Olofsson             patronymic   already Q141244186
    koll                 family       already Q21510541
    Molla                family       already Q29007081
    de Lacy              family       already Q65650530
+   Olofsson             patronymic   already Q141244186
    von Nellenburg       family       already Q113552200
+   Olofsson             patronymic   already Q141244186
    KVALBEIN             family       already Q30133009
    Tjentland            family       already Q141150230
    ferch                family       already Q37081790
@@ -1526,23 +1665,32 @@
    Higashi              family       already Q68518419
    Wendt                family       already Q15853986
    Rommel               family       already Q16882255
-1503 token(s) the ring is about to need are ranked first
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+   Olofsson             patronymic   already Q141244186
+1481 token(s) the ring is about to need are ranked first
 
 checking 3,792 existing name items for a missing description
    1 of them have no English description; 3,791 already do
    1 are DUPLICATES of an existing name item -- the description was refused, not emitted; see duplicate-name-items-found.tsv
 
-checking 816 existing patronymic items for P144 based on and P460
-P2976 on given names: 263 reverse link(s) of 1639 pair(s)
-   10 P144 statement(s) to add
-   4 P31 culture class(es) to add
+checking 812 existing patronymic items for P144 based on and P460
+P2976 on given names: 268 reverse link(s) of 1621 pair(s)
+   17 P144 statement(s) to add
+   7 P31 culture class(es) to add
    0 P144 statement(s) to remove
    12 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carried to a later run), 49 statements linking an EXISTING person to one, in the same run
-12 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
-   4 created WITHOUT a P144: Gibson, Gudraudsdatter, Himileigsson, Kettillsson
+wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6635 carried to a later run), 168 statements linking an EXISTING person to one, in the same run
+30 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
+   3 created WITHOUT a P144: Gibson, Kettillsson, Lavransson
   create  Tanba                family       178
+  create  Jonsson              patronymic   125
   create  隴西狄道                 family       92
   create  河南洛陽                 family       68
   create  崔                    family       66
@@ -1598,6 +1746,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  魏                    family       7
   create  Dimberg              family       6
   create  Dokken               family       6
+  create  Huk                  family       6
   create  Wołłowicz Bogoria    family       6
   create  af Hageby            family       6
   create  af Åminne            family       6
@@ -1611,7 +1760,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Gene                 family       5
   create  Gertsson             patronymic   5
   create  Haakonsdatter        patronymic   5
-  create  Huk                  family       5
   create  Isse                 family       5
   create  Matthiæ              patronymic   5
   create  Phinehas             family       5
@@ -1642,6 +1790,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Lauritzdatter        patronymic   4
   create  Linderstedt          family       4
   create  Marcusson            patronymic   4
+  create  Mattssons            family       4
   create  Mel                  family       4
   create  Mogensen             patronymic   4
   create  Månesköld            family       4
@@ -1679,6 +1828,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  彭城                   family       4
   create  河南偃師                 family       4
   create  絳州聞喜                 family       4
+  create  蘇                    family       4
   create  趙州贊皇                 family       4
   create  Albretson            patronymic   3
   create  Algotsson            patronymic   3
@@ -1764,7 +1914,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Marcusdotter         patronymic   3
   create  Martini              patronymic   3
   create  Matintytär           patronymic   3
-  create  Mattssons            family       3
   create  Mikkjelsdatter       patronymic   3
   create  Mosesson             patronymic   3
   create  Mstislavna           given        3
@@ -1792,6 +1941,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Sabelfana            family       3
   create  Sacklinius           family       3
   create  Samsonsdatter        family       3
+  create  Samsonson            family       3
   create  Saurnes              family       3
   create  Schruuf              family       3
   create  Schytler             family       3
@@ -1952,6 +2102,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Ebbesdotter          patronymic   2
   create  Egilsson             patronymic   2
   create  Egypt                family       2
+  create  Ehrencreutz          family       2
   create  Eilersen             patronymic   2
   create  Eilivsson            patronymic   2
   create  Eindrideson          patronymic   2
@@ -1968,6 +2119,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Fanuelsdotter        patronymic   2
   create  Fegræa               family       2
   create  Felthuus             family       2
+  create  Fergillander         family       2
   create  Finnvik              family       2
   create  Finstaätten          family       2
   create  FitzWalter           family       2
@@ -2001,6 +2153,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Gothilander          family       2
   create  Govertsdatter        patronymic   2
   create  Gran-Meløy           family       2
+  create  Gregersdotter        patronymic   2
   create  Grimsdatter          patronymic   2
   create  Grimsson             patronymic   2
   create  Gripenflycht         family       2
@@ -2101,6 +2254,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Lenaea               family       2
   create  Lenæus               family       2
   create  Leonhardsson         patronymic   2
+  create  Leufstadia           family       2
   create  Levenshtam           family       2
   create  Levinius             given        2
   create  Lindö                family       2
@@ -2217,7 +2371,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Sakariasson          patronymic   2
   create  Salmundson           patronymic   2
   create  Salveson             patronymic   2
-  create  Samsonson            family       2
   create  Sannais              family       2
   create  Sarfve               family       2
   create  Schefferus           family       2
@@ -2443,6 +2596,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  nord-Kolnæs          family       2
   create  under                family       2
   create  van Chiny            family       2
+  create  van Kleve            family       2
   create  van der Huus         family       2
   create  von Anhalt-Bernburg  family       2
   create  von Brabeck          family       2
@@ -2831,6 +2985,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Audunsson            family       1
   create  Augustana            given        1
   create  Augustinsdotter      patronymic   1
+  create  Aunarsson            patronymic   1
   create  Aunsdotter           patronymic   1
   create  Aurembiaix           given        1
   create  Aurucia              given        1
@@ -2939,6 +3094,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Berger               given        1
   create  Bergeson             patronymic   1
   create  Berggrener           family       1
+  create  Bergham              family       1
   create  Berghemia            family       1
   create  Berghemius           family       1
   create  Bergine              given        1
@@ -2972,6 +3128,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Bezprym              given        1
   create  Bidenia              family       1
   create  Bidenius             family       1
+  create  Bifra-Kåre           given        1
   create  Bileivson            patronymic   1
   create  Billung von Ambergau family       1
   create  Billung von Sachsen in Westfalengau family       1
@@ -3389,7 +3546,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Egehard              given        1
   create  Egenolf              given        1
   create  Eggertsdotter        patronymic   1
-  create  Ehrencreutz          family       1
   create  Ehrenhjelm           family       1
   create  Ehrenlund            family       1
   create  Eibrandsdatter       patronymic   1
@@ -3561,7 +3717,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Feltria              given        1
   create  Feodorovich          patronymic   1
   create  Ferdinad             given        1
-  create  Fergillander         family       1
+  create  Ferelia              family       1
   create  Fergillandra         family       1
   create  Fernandez            patronymic   1
   create  Fernández de Lara    family       1
@@ -3775,6 +3931,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Glanshammarensis     family       1
   create  Glate                family       1
   create  Glbrandsdatter       patronymic   1
+  create  Glineke              family       1
   create  Glinskis             family       1
   create  Glipping             family       1
   create  Glismode             given        1
@@ -3818,7 +3975,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Gratianna            given        1
   create  Grautan              family       1
   create  Greberg              family       1
-  create  Gregersdotter        patronymic   1
   create  Gregorievich         patronymic   1
   create  Gregorii             patronymic   1
   create  Gregorinpoika        patronymic   1
@@ -4000,6 +4156,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Hallvord             given        1
   create  Halstensdotter       patronymic   1
   create  Halti                given        1
+  create  Halvardi             patronymic   1
   create  Halvardsen Vasshus   family       1
   create  Halvardssøn          patronymic   1
   create  Halvarsdotter        family       1
@@ -4162,6 +4319,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Hjalmtiersson        patronymic   1
   create  Hjarandson           patronymic   1
   create  Hjarrande            given        1
+  create  Hjerne               family       1
   create  Hjerta               family       1
   create  Hjordis              given        1
   create  Hjornevik            family       1
@@ -4194,6 +4352,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Hoskuldson           patronymic   1
   create  Hovedøya             given        1
   create  Hraereksson          family       1
+  create  Hrapp                given        1
   create  Hrappsson            patronymic   1
   create  Hrifla               given        1
   create  Hring                given        1
@@ -4649,7 +4808,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Lescelina            given        1
   create  Lesh'chinska         family       1
   create  Lette                given        1
-  create  Leufstadia           family       1
   create  Leukardis            given        1
   create  Leutharis            given        1
   create  Levarsen             patronymic   1
@@ -4687,6 +4845,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Lituaniae            family       1
   create  Liudolfinger         family       1
   create  Liutaud              given        1
+  create  Liutold              given        1
   create  Livard               given        1
   create  Livarsdatter         family       1
   create  Livo                 given        1
@@ -4927,6 +5086,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Munetada             given        1
   create  Muneyasu             given        1
   create  Munka                family       1
+  create  Munktelia            family       1
   create  Mure of Cowdams      family       1
   create  Mure of Tasseis      family       1
   create  Musin-Puškin         family       1
@@ -5056,6 +5216,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Nordmøre             family       1
   create  Nordre Glømmen       family       1
   create  Nordre Kvaløy Vågen  family       1
+  create  Nore Sunde           family       1
   create  Noreaus              family       1
   create  Norinaga             given        1
   create  Norsson              patronymic   1
@@ -5211,6 +5372,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Pavonia              family       1
   create  Peder-Torleifsson    family       1
   create  Pederfru             given        1
+  create  Pedersdsdatter       family       1
   create  Pedersdtter          given        1
   create  Pedher               given        1
   create  Pelgrim              given        1
@@ -5305,6 +5467,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Ragnvaldsdatter      family       1
   create  Ragnvaldson          family       1
   create  Ragnvaldsson         family       1
+  create  Ragnvild             given        1
   create  Ragvaldsson          family       1
   create  Raick                family       1
   create  Raihita              given        1
@@ -5491,6 +5654,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Sahlander            family       1
   create  Sahlbom              family       1
   create  Saint-Macaire        family       1
+  create  Saksbjørn            given        1
   create  Saksbjørnsdatter     patronymic   1
   create  Saksesdotter         patronymic   1
   create  Salentin             given        1
@@ -5845,8 +6009,11 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Suesada              given        1
   create  Sueyasu              given        1
   create  Suibne               given        1
+  create  Sukehira             given        1
   create  Sulzburg             family       1
+  create  Sumarlidasson        family       1
   create  Sumarlidsdatter      family       1
+  create  Sundewall            family       1
   create  Sunnerberg           family       1
   create  Sunnmore             family       1
   create  Sursill              family       1
@@ -5959,6 +6126,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Takamago             given        1
   create  Takano-no-ason高野朝臣   family       1
   create  Takanou              given        1
+  create  Takatsukasa          family       1
   create  Takatsuna            given        1
   create  Takelot              given        1
   create  Taleke               given        1
@@ -6174,6 +6342,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Tostigson            patronymic   1
   create  Totenais             family       1
   create  Totil                given        1
+  create  Totilsson            patronymic   1
   create  Toutin               family       1
   create  Tov                  given        1
   create  Toyba                given        1
@@ -6454,7 +6623,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  Warpke               family       1
   create  Wartrun              given        1
   create  Wasa                 family       1
-  create  Wasilko              given        1
   create  Watson               patronymic   1
   create  Wederborg            family       1
   create  Weissmann von Weissenstein family       1
@@ -6620,6 +6788,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  av Tornberg          family       1
   create  av Trondheim         family       1
   create  av Vatne             family       1
+  create  av Värnäs            family       1
   create  av Västergötland     family       1
   create  bat Elohim           patronymic   1
   create  bat Yehiel Luria of Brisk patronymic   1
@@ -6933,6 +7102,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  im Neckargau         family       1
   create  im Saulafeld         family       1
   create  im Schwaben          family       1
+  create  im Schweinachgau     family       1
   create  in Karantanien       family       1
   create  ingen Cearbhaill     family       1
   create  ingen Cináed         family       1
@@ -7004,7 +7174,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  van Helpten          family       1
   create  van Henegouwen       family       1
   create  van Hesse            family       1
-  create  van Kleve            family       1
   create  van Kyren            family       1
   create  van Langerak         family       1
   create  van Laurens          family       1
@@ -7066,10 +7235,12 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  von Busseck          family       1
   create  von Böckenförde-Schüngel family       1
   create  von Calw-Löwenstein  family       1
+  create  von Chiemgau         family       1
   create  von Cleves           family       1
   create  von Comburg          family       1
   create  von Conowen          family       1
   create  von Cronberg-Kronen  family       1
+  create  von Cronhjelm        family       1
   create  von Dagsburg         family       1
   create  von Dettingen        family       1
   create  von Dießen           family       1
@@ -8064,6 +8235,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 6610 carri
   create  若濁                   given        1
   create  英仁                   given        1
   create  英常継室                 given        1
+  create  英発正室                 given        1
   create  茂休                   given        1
   create  茂孫                   given        1
   create  茂時                   given        1
