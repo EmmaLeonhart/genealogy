@@ -655,6 +655,25 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   Andersdotter in a parish of Anna Andersdotters), need more than the name. Seen in the positional-walk review: Anders
   Andersson Wedberg b. 1794 vs 1807, and Anna Margareta = Anna Greta Gabrielsdotter b. 1789 vs 1811, are the same
   people.
+- **⛔ ONE NAME THEN, SEPARATE NAMES NOW: JUDGE THE EQUIVALENCE BY PERIOD. Emma's open question (2026-10-04), thought
+  through 2026-10-06. A written principle for the session's own judgment, never code.** The namosphere rule above is
+  historical. Names that were one name have drifted apart, unevenly: a nationalist period distanced each country's
+  forms from the pan-European ones, and then English-centred internationalization made people meet a foreigner under
+  the native form, so today effectively every form is its own name (Yuri, George and Jørgen were one name and are now
+  three; Hans may have become a name apart from Johan(n)). So:
+  (1) **For identity, the period of the record decides.** For people born before about 1900 (the line the rule above
+  uses), two records whose given names are forms of one name are the same name: Hans/Johannes/Jöns/Jan,
+  Jørgen/Georg/Göran/Yuri, recorded by different clerks in different languages. From about 1900 a person's given name
+  is a fixed, personal name, so Hans against Johannes is weak evidence of the same person and a real difference in the
+  name is evidence against. The change was gradual and differs by country; a case near the line is judged on the
+  rest of the evidence, not on the name.
+  (2) **For the given-name items we link, the written form decides, in every period.** A person written Hans gets the
+  Hans item, not Johannes; the equivalence between forms belongs on Wikidata between the name items (`P460`
+  "said to be the same as"), not in our `P735`. The same holds across scripts: the Latin-script form, never the Hebrew,
+  Greek or Cyrillic item for the same name (the 2026-10-06 Daniel/Karl/Eva fix).
+  (3) **Monarchs keep the forms and numbering of their own culture.** A regnal name is the person's, in each language
+  a label of one item; the numbering is never recomputed across cultures, even where a culture split one name
+  retroactively (the French count Clovis and Louis separately though they are one name).
 - **⛔ WHEN THE SOURCES DISAGREE ON PARENTS, KEEP BOTH: THE PARENTAGE IS DISPUTED. Ruled 2026-10-04 (Emma).**
   Geni, FamilySearch and Wikidata often name different parents for one person. Then the person has two fathers
   (or two mothers), each their own person, and the parentage is recorded as disputed; neither side overwrites or

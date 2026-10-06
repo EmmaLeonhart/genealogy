@@ -52907,3 +52907,14 @@ Queue item "Write down what a zipper merge is, and stop calling the outward walk
   `zipper-split-batch-*`/`zipper-review-*`/`zipper-ebec-*` batches, `reports/emma-judgments.*`, `reports/user-turns.tsv`,
   `todo.md`, and the queue items quoting Emma. `preservation/genealogy/dropbox/ITIS.ged` is not UTF-8 and was skipped.
 - Tests run in CI only; the next push run is the check.
+
+## 2026-10-06: when equivalent European names became separate names, written as a principle
+
+Queue item "Open question, for the end: when did equivalent European names become separate names? (Emma,
+2026-10-04)". `CLAUDE.md` gains "ONE NAME THEN, SEPARATE NAMES NOW: JUDGE THE EQUIVALENCE BY PERIOD", after the
+pre-1900 rule, prose only. Decisions made by the session, each with its reason in the text: (1) identity: before
+about 1900 forms of one name are one name, after it a given name is the person's own and a variant is weak evidence
+(the line is the one the pre-1900 rule already uses); (2) the `P735` link follows the written form in every period,
+and equivalence between forms lives on Wikidata between name items (`P460`), as the wrong-script fix of today
+showed; (3) regnal names and numbering stay those of the person's own culture (Clovis/Louis). The case left open,
+Hans and Johannes as one name or two, is put to Emma by AskUserQuestion after this commit; nothing waits on it.
