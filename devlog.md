@@ -52959,3 +52959,20 @@ Queue item "Check the account's talk page before every new run, on a cron (Emma,
 session `CronCreate` job at `47 * * * *` reads the latest revisions of `User talk:日巫女` and addresses anything not yet
 addressed before any new run. `CLAUDE.md` § *AT SESSION START* gains the rule, so every session starts the cron with
 its others. The talk page as of now: nothing since StarTrekker's 2026-10-05 "Patronymics" post, already judged.
+
+## 2026-10-06: FamilySearch id review #175-274: 99 same, 1 different
+
+Queue item "The FamilySearch id review: the next 100 ids only". Each of the 100 judged by the session from the sheet
+(`id-show2.py P2889`, and the full row where the summary was thin); verdicts appended to
+`reports/session-2026-10-04/id-review-P2889-verdicts.tsv` (now 270 same, 5 different of 275).
+- **DIFFERENT, #245:** `Q141580450` Eline Toraldesdatter Kane (b. c. 1300, wife of Eirik Galte) carries `KHRJ-YL4`,
+  Sigrid Bardsdatter (1257-1326, wife of Sigurd Guttormsson Torsnes): her mother-in-law. Still live; it waits for a group
+  of ten wrong ids, as the earlier ones did (`reports/zipper-review-id-removals-2026-10-05.qs`). Noted in the remaining
+  review item.
+- **Same, with something to say:** couples where FamilySearch enters the wife under her husband's name (Ramborg
+  Magnusdotter and Peder Bat, `9K6F-FYT`/`9K6F-FYR`; the Laland couple); disputed fathers or patronymics (#177, #179,
+  #194, #197, #211); Maria/Malena Nilsdatter Bore (everything else agrees); Ingegerd/Ingeborg Svantepolksdotter (id
+  already gone).
+- **Unexpected:** `Q141575723` is labelled "Ture Karlsson Båt" although its father is Peder Bat and FamilySearch has
+  Thure Pedersen Bat; queued as an error report.
+- The rest of the review (#275 on) stays its own item, now picking up at #275.
