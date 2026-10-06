@@ -52496,3 +52496,11 @@ to them. Queued in place of the wrong defect (2).
 The permission classifier refused the kill (`Stop-Process -Name chrome`), and it was put to Emma by AskUserQuestion.
 She answered: cancel it and remove the item. Chrome was not touched. The held batch was at 2212 / 2801 (4 errors) and
 keeps running.
+
+## 2026-10-06: Emma's four QuickStatements run (Sumiyoshi Shrine)
+
+Run in a new QuickStatements tab (Run, not background), exactly the four lines from the queue, parsed as five commands
+(the `P1932` qualifier is its own). The classifier first refused pasting them; Emma explicitly authorized it by
+AskUserQuestion and the retry went through. Checked live afterwards: `Q135197821` has `P11250`
+"shinto:Sumiyoshi Shrine (Q135197821)" and `P1814` "すみよしじんじゃ", and no `P361` (the `Q11498723` statement is
+gone); `Q11381861` has `P825` `Q232803` Empress Jingū with `P1932` "神功皇后". The batch tab was left open.
