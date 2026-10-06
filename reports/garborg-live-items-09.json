@@ -161722,6 +161722,49 @@
      "type": "statement"
     }
    ],
+   "P3373": [
+    {
+     "id": "Q141451001$246CAEF9-536F-4F9E-9E46-619A4761394D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659038",
+        "numeric-id": 141659038
+       }
+      },
+      "hash": "8747c079b6e517c7567ca4ed9d4311a726bf5c44",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "5e281231b244365c89efdea1be29c569342eb65c",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003491995159"
+          },
+          "hash": "d940fa025587e2eeed7f5288bef241cd331ee61e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P40": [
     {
      "id": "Q141451001$27B4DB32-DE6B-40F3-9429-BD0E68C5E8BE",
@@ -161985,8 +162028,8 @@
     "value": "伊莱亚斯·埃诺克松·伦内贝格·卢拉"
    }
   },
-  "lastrevid": 2548231631,
-  "modified": "2026-09-21T23:55:16Z",
+  "lastrevid": 2554036493,
+  "modified": "2026-10-06T16:56:16Z",
   "ns": 0,
   "pageid": 135011215,
   "sitelinks": {},
@@ -298969,6 +299012,49 @@
      "type": "statement"
     }
    ],
+   "P734": [
+    {
+     "id": "Q141550521$E2D8AEDF-2475-44F2-A10F-F7864E3293B0",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659849",
+        "numeric-id": 141659849
+       }
+      },
+      "hash": "eee0f9d91ab7ee4d3c65781135e63d21c40ccef4",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "e3b34767c900202b564bd8951ac4c47f4782bea7",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000023327739005"
+          },
+          "hash": "3055b67799c3deb447d64bc67cdcb45056414275",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P735": [
     {
      "id": "Q141550521$AD0E50C6-6D4D-4E02-A4E3-E7122D70B107",
@@ -299020,8 +299106,8 @@
     "value": "安德烈亚斯·马蒂埃·赫尔辛吉乌斯"
    }
   },
-  "lastrevid": 2549603887,
-  "modified": "2026-09-26T09:59:43Z",
+  "lastrevid": 2554117865,
+  "modified": "2026-10-06T19:44:16Z",
   "ns": 0,
   "pageid": 135109651,
   "sitelinks": {},
@@ -384260,6 +384346,68 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141574201$0C670116-23CB-4F3B-825F-130757F74A73",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659836",
+        "numeric-id": 141659836
+       }
+      },
+      "hash": "6ef3f04113ebb414b5be4d138ce2828520c5ce61",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P3831": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q28418670",
+          "numeric-id": 28418670
+         }
+        },
+        "hash": "91ccfc6bc526dec6cc761841200844bff27f0781",
+        "property": "P3831",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P3831"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "44d88da793b52f1871afa2e791a80e166f7c790a",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000175794542879"
+          },
+          "hash": "975e1b82461361e2d21a4f6de55ce128fcfd78d8",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P735": [
@@ -384313,8 +384461,8 @@
     "value": "英格·约翰内斯达特·塞莱"
    }
   },
-  "lastrevid": 2553758450,
-  "modified": "2026-10-06T04:15:02Z",
+  "lastrevid": 2554117548,
+  "modified": "2026-10-06T19:43:49Z",
   "ns": 0,
   "pageid": 135131344,
   "sitelinks": {},
@@ -834930,7 +835078,14 @@
   "type": "item"
  },
  "Q468729": {
-  "aliases": {},
+  "aliases": {
+   "de": [
+    {
+     "language": "de",
+     "value": "Ingrid Ylva Sunesdotter Sverkerskaätten"
+    }
+   ]
+  },
   "claims": {
    "P1185": [
     {
@@ -836183,8 +836338,8 @@
     "value": "英格丽达·于尔娃"
    }
   },
-  "lastrevid": 2553762195,
-  "modified": "2026-10-06T04:27:11Z",
+  "lastrevid": 2554105872,
+  "modified": "2026-10-06T19:16:29Z",
   "ns": 0,
   "pageid": 442075,
   "sitelinks": {
@@ -1031912,6 +1032067,10 @@
    ]
   },
   "descriptions": {
+   "as": {
+    "language": "as",
+    "value": "অপ্ৰকাশিত ছুইডিছ লেখিকা"
+   },
    "bn": {
     "language": "bn",
     "value": "অপ্রকাশিত সুইডিশ লেখিকা"
@@ -1031976,8 +1032135,8 @@
     "value": "Henrica Johanna Carpelan"
    }
   },
-  "lastrevid": 2552402922,
-  "modified": "2026-10-03T03:03:13Z",
+  "lastrevid": 2554044170,
+  "modified": "2026-10-06T17:08:45Z",
   "ns": 0,
   "pageid": 96749067,
   "sitelinks": {},

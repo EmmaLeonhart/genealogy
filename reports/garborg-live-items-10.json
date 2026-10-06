@@ -17313,6 +17313,777 @@
   "title": "Q1052410",
   "type": "item"
  },
+ "Q105275194": {
+  "aliases": {},
+  "claims": {
+   "P1248": [
+    {
+     "id": "Q105275194$694EBDB0-60B1-4576-BC68-AB71AB98C8C4",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "0f3e9102-ec70-4375-9369-623123b1c097"
+      },
+      "hash": "1e2a73ef671dd0dd64b4ab33d45c4c90058deb59",
+      "property": "P1248",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P972": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q124745135",
+          "numeric-id": 124745135
+         }
+        },
+        "hash": "496c37699f7ed1be42bdc1f00e10172962a6e01a",
+        "property": "P972",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P972"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P19": [
+    {
+     "id": "Q105275194$6e6ef132-4f66-5d2a-b46a-9b1fb6608180",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q10707795",
+        "numeric-id": 10707795
+       }
+      },
+      "hash": "4a8c2e347335e4d48ca6314ed0622b2a42ddb66d",
+      "property": "P19",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "795fe7ad73b94dbafc3b8652a0779020eb49583c",
+       "snaks": {
+        "P1476": [
+         {
+          "datatype": "monolingualtext",
+          "datavalue": {
+           "type": "monolingualtext",
+           "value": {
+            "language": "sv",
+            "text": "Helena Catharina Utfall (von Utfall) 1689 — 1750-06-27 Vävlärare, pionjär, affärskvinna"
+           }
+          },
+          "hash": "284cbc72b85ed1330571f06c49eee56a6c25c291",
+          "property": "P1476",
+          "snaktype": "value"
+         }
+        ],
+        "P4963": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "HelenaCatharinaUtfall"
+          },
+          "hash": "89a1ad5d92f1a12fbcd52bab3e8e75328cedb5f1",
+          "property": "P4963",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2021-02-03T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "5ee9e00b4342fc71753cfa6a7789d95e045aa27b",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4963",
+        "P813",
+        "P1476"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P20": [
+    {
+     "id": "Q105275194$f42df902-4f0f-a6cc-7b35-2dbcb37cf5dc",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q10713567",
+        "numeric-id": 10713567
+       }
+      },
+      "hash": "958ae495eee79df6dd4a0f6461baa30282b8d385",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "795fe7ad73b94dbafc3b8652a0779020eb49583c",
+       "snaks": {
+        "P1476": [
+         {
+          "datatype": "monolingualtext",
+          "datavalue": {
+           "type": "monolingualtext",
+           "value": {
+            "language": "sv",
+            "text": "Helena Catharina Utfall (von Utfall) 1689 — 1750-06-27 Vävlärare, pionjär, affärskvinna"
+           }
+          },
+          "hash": "284cbc72b85ed1330571f06c49eee56a6c25c291",
+          "property": "P1476",
+          "snaktype": "value"
+         }
+        ],
+        "P4963": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "HelenaCatharinaUtfall"
+          },
+          "hash": "89a1ad5d92f1a12fbcd52bab3e8e75328cedb5f1",
+          "property": "P4963",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2021-02-03T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "5ee9e00b4342fc71753cfa6a7789d95e045aa27b",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4963",
+        "P813",
+        "P1476"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P21": [
+    {
+     "id": "Q105275194$fc3efa14-473d-bb3c-512f-905386b2dc39",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P26": [
+    {
+     "id": "Q105275194$e46b4283-49f5-e3bc-b8f9-567c3b7ec97e",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q26993339",
+        "numeric-id": 26993339
+       }
+      },
+      "hash": "766650cab32ecfb810dac8b80f786879472eb3eb",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "795fe7ad73b94dbafc3b8652a0779020eb49583c",
+       "snaks": {
+        "P1476": [
+         {
+          "datatype": "monolingualtext",
+          "datavalue": {
+           "type": "monolingualtext",
+           "value": {
+            "language": "sv",
+            "text": "Helena Catharina Utfall (von Utfall) 1689 — 1750-06-27 Vävlärare, pionjär, affärskvinna"
+           }
+          },
+          "hash": "284cbc72b85ed1330571f06c49eee56a6c25c291",
+          "property": "P1476",
+          "snaktype": "value"
+         }
+        ],
+        "P4963": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "HelenaCatharinaUtfall"
+          },
+          "hash": "89a1ad5d92f1a12fbcd52bab3e8e75328cedb5f1",
+          "property": "P4963",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2021-02-03T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "5ee9e00b4342fc71753cfa6a7789d95e045aa27b",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4963",
+        "P813",
+        "P1476"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q105275194$58494A21-34F4-4AC5-B87F-EB7ADFD0CE83",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659013",
+        "numeric-id": 141659013
+       }
+      },
+      "hash": "1ec2a2f368ed4d9c66d11351d8c82ba7250db553",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "f77f4e44ac9a5e949eb51e8f6dda5e6cb75a23e8",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000012058962139"
+          },
+          "hash": "b804fda13661ee8ca2ee07a317648daa7ff20a5d",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q105275194$ce30b374-406f-7621-3c84-ed0198255035",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000012058967190"
+      },
+      "hash": "ef0d3223324ec23d5367a09956a0905048dab216",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P27": [
+    {
+     "id": "Q105275194$faadc91f-4b39-0d33-5f58-7abe3498f819",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q34",
+        "numeric-id": 34
+       }
+      },
+      "hash": "5af2cec61c799b4b41456740d23a788824009a7b",
+      "property": "P27",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2949": [
+    {
+     "id": "Q105275194$92f15d9e-4613-dbc4-f45a-975ea0a86916",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Utfall-1"
+      },
+      "hash": "78bdcbfe2724da036845844a65119b3175ab7f88",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Helena Catharina Utfall (bef. 20 Jul 1689 - certain 27 Jun 1750)"
+        },
+        "hash": "5c5bac417c9b57219a63e60ecc15e21603cbd6de",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q105275194$ebe9db47-4e3b-4e8f-8459-0c9d941dac74",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P3373": [
+    {
+     "id": "Q105275194$153d2594-43e9-5068-64d9-5d03fdfcb967",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6220755",
+        "numeric-id": 6220755
+       }
+      },
+      "hash": "58821dad566f0e8998845079851b039793f3ec21",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P4963": [
+    {
+     "id": "Q105275194$c7c0ffef-41e7-860c-02ab-e75c98136ae8",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "HelenaCatharinaUtfall"
+      },
+      "hash": "89a1ad5d92f1a12fbcd52bab3e8e75328cedb5f1",
+      "property": "P4963",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q105275194$bc552b27-4752-54d9-decb-7a4de299b539",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 9,
+        "time": "+1689-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "db3c22921d3856c64e1335adbc1064ef8b646215",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "795fe7ad73b94dbafc3b8652a0779020eb49583c",
+       "snaks": {
+        "P1476": [
+         {
+          "datatype": "monolingualtext",
+          "datavalue": {
+           "type": "monolingualtext",
+           "value": {
+            "language": "sv",
+            "text": "Helena Catharina Utfall (von Utfall) 1689 — 1750-06-27 Vävlärare, pionjär, affärskvinna"
+           }
+          },
+          "hash": "284cbc72b85ed1330571f06c49eee56a6c25c291",
+          "property": "P1476",
+          "snaktype": "value"
+         }
+        ],
+        "P4963": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "HelenaCatharinaUtfall"
+          },
+          "hash": "89a1ad5d92f1a12fbcd52bab3e8e75328cedb5f1",
+          "property": "P4963",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2021-02-03T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "5ee9e00b4342fc71753cfa6a7789d95e045aa27b",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4963",
+        "P813",
+        "P1476"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P570": [
+    {
+     "id": "Q105275194$9aff5bc7-49e6-80d1-947c-a049f4a85498",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 11,
+        "time": "+1750-06-27T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "6d289d84703b1c41346462421766f4e44caeffec",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "795fe7ad73b94dbafc3b8652a0779020eb49583c",
+       "snaks": {
+        "P1476": [
+         {
+          "datatype": "monolingualtext",
+          "datavalue": {
+           "type": "monolingualtext",
+           "value": {
+            "language": "sv",
+            "text": "Helena Catharina Utfall (von Utfall) 1689 — 1750-06-27 Vävlärare, pionjär, affärskvinna"
+           }
+          },
+          "hash": "284cbc72b85ed1330571f06c49eee56a6c25c291",
+          "property": "P1476",
+          "snaktype": "value"
+         }
+        ],
+        "P4963": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "HelenaCatharinaUtfall"
+          },
+          "hash": "89a1ad5d92f1a12fbcd52bab3e8e75328cedb5f1",
+          "property": "P4963",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2021-02-03T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "5ee9e00b4342fc71753cfa6a7789d95e045aa27b",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4963",
+        "P813",
+        "P1476"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P6104": [
+    {
+     "id": "Q105275194$894B8F77-B352-41BE-B94A-5A1E1DE8BB13",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q100741461",
+        "numeric-id": 100741461
+       }
+      },
+      "hash": "132c6237e75ab272f644602e74b7dc6518d82db6",
+      "property": "P6104",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P734": [
+    {
+     "id": "Q105275194$87933442-437f-3ee5-42e6-c12b3b207214",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q125817210",
+        "numeric-id": 125817210
+       }
+      },
+      "hash": "f6b8b91a13cc3b6417da6ff2b653faba3e087210",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q105275194$67835BA1-E2F9-4875-8981-3BAA86D55D29",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q1035239",
+        "numeric-id": 1035239
+       }
+      },
+      "hash": "87ede54b2df3b5221895f9a5b4b523f5bf602b6b",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P7847": [
+    {
+     "id": "Q105275194$8E7DE5EA-6FCF-440C-A4FE-15F9C835E1FB",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "0210314284249"
+      },
+      "hash": "721af6e00243492436f381a8f80901de36fe88b3",
+      "property": "P7847",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "weaving teacher, pioneer, businesswoman"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "svensk textilkonstnär"
+   }
+  },
+  "id": "Q105275194",
+  "labels": {
+   "ast": {
+    "language": "ast",
+    "value": "Helena Catharina Utfall"
+   },
+   "da": {
+    "language": "da",
+    "value": "Helena Catharina Utfall"
+   },
+   "en": {
+    "language": "en",
+    "value": "Helena Catharina Utfall"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Helena Catharina Utfall"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "Helena Catharina Utfall"
+   },
+   "sl": {
+    "language": "sl",
+    "value": "Helena Catharina Utfall"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "Helena Catharina Utfall"
+   }
+  },
+  "lastrevid": 2554032969,
+  "modified": "2026-10-06T16:50:44Z",
+  "ns": 0,
+  "pageid": 100656591,
+  "sitelinks": {
+   "svwiki": {
+    "badges": [],
+    "site": "svwiki",
+    "title": "Helena Catharina Utfall"
+   }
+  },
+  "title": "Q105275194",
+  "type": "item"
+ },
  "Q105834490": {
   "aliases": {
    "en": [
@@ -29162,6 +29933,49 @@
      "type": "statement"
     }
    ],
+   "P3373": [
+    {
+     "id": "Q109835642$FE71B6BB-2339-43FB-A3C5-A77D47C1340E",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659013",
+        "numeric-id": 141659013
+       }
+      },
+      "hash": "5526c98d766ee260fb6e41bab8e5cabf6ad974da",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "f77f4e44ac9a5e949eb51e8f6dda5e6cb75a23e8",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000012058962139"
+          },
+          "hash": "b804fda13661ee8ca2ee07a317648daa7ff20a5d",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P40": [
     {
      "id": "Q109835642$9a8d0308-f3c4-4ca1-b412-d4076cea4320",
@@ -29360,8 +30174,8 @@
     "value": "Anna Elisabet von Döbeln"
    }
   },
-  "lastrevid": 2553650518,
-  "modified": "2026-10-05T22:26:42Z",
+  "lastrevid": 2554033202,
+  "modified": "2026-10-06T16:51:08Z",
   "ns": 0,
   "pageid": 104937685,
   "sitelinks": {},
@@ -156495,6 +157309,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141436602$8489AAC0-6872-469D-9B4C-434143205C2F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6081429",
+        "numeric-id": 6081429
+       }
+      },
+      "hash": "e1723f83361c237a7fd185dbb7dcd1022306c44f",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "798753d0aaddb3ac6fcd0ff546ca80f04a223bda",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "4911594554000135409"
+          },
+          "hash": "fceac2a6ccde3b270a97769bcc3a45967218759b",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P570": [
@@ -156676,8 +157531,8 @@
     "value": "安娜·卡塔里娜·贝姆"
    }
   },
-  "lastrevid": 2553935695,
-  "modified": "2026-10-06T13:14:35Z",
+  "lastrevid": 2554118502,
+  "modified": "2026-10-06T19:45:27Z",
   "ns": 0,
   "pageid": 134981980,
   "sitelinks": {},
@@ -191134,6 +191989,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141492682$5A579B5D-E853-4A2E-A77D-56F0EC4DC3F2",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659856",
+        "numeric-id": 141659856
+       }
+      },
+      "hash": "45c8b29177fa43f62583c6d684b767f0b7bfffc7",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "63c9299db0f755b94acf4794d790dac0316f85a4",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "3961627094740078588"
+          },
+          "hash": "955e1d114e2839992e75356963032da57fca0546",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -191274,8 +192170,8 @@
     "value": "埃伊文德·林德霍尔姆"
    }
   },
-  "lastrevid": 2553844301,
-  "modified": "2026-10-06T09:23:19Z",
+  "lastrevid": 2554118079,
+  "modified": "2026-10-06T19:44:34Z",
   "ns": 0,
   "pageid": 135051848,
   "sitelinks": {},
@@ -489999,6 +490895,48 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141610666$B3A4CBD5-3D97-4419-8B64-D74FD61B6AFD",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659819",
+        "numeric-id": 141659819
+       }
+      },
+      "hash": "37b54c8c364eba79313cab90e0c7275b4c798c8b",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P144": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q141612489",
+          "numeric-id": 141612489
+         }
+        },
+        "hash": "36d274fb59d65a59d213334ee9a90c2788bc3fb0",
+        "property": "P144",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P144"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141610666$9EB51FC9-83A1-4F6E-9A6C-260ABC10096E",
@@ -490142,8 +491080,8 @@
     "value": "兰韦伊格·西格瓦尔德斯达特·克罗凯达尔"
    }
   },
-  "lastrevid": 2551713257,
-  "modified": "2026-10-01T09:40:05Z",
+  "lastrevid": 2554117062,
+  "modified": "2026-10-06T19:42:54Z",
   "ns": 0,
   "pageid": 135181957,
   "sitelinks": {},
@@ -561800,6 +562738,49 @@
      "type": "statement"
     }
    ],
+   "P3373": [
+    {
+     "id": "Q141637034$DDC318BD-A030-493B-BC20-73B4F3EF3CCE",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659761",
+        "numeric-id": 141659761
+       }
+      },
+      "hash": "415d262ee6dd1518cc76e8c1921449e887270fb5",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fe3d06aa2ce812deb75585f33689af52b4934461",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006906358399"
+          },
+          "hash": "4afd93d72085d5f8e7b7b85f5bf25d87e14bb8d1",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P40": [
     {
      "id": "Q141637034$D4F979D8-A210-4622-BA21-72952B6F48EE",
@@ -562109,8 +563090,8 @@
     "value": "林·拉乌姆松"
    }
   },
-  "lastrevid": 2553832923,
-  "modified": "2026-10-06T08:52:26Z",
+  "lastrevid": 2554114412,
+  "modified": "2026-10-06T19:38:22Z",
   "ns": 0,
   "pageid": 135213305,
   "sitelinks": {},
@@ -569227,6 +570208,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141640490$733F0DC9-4173-473C-9A9A-908EE8FC4615",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659761",
+        "numeric-id": 141659761
+       }
+      },
+      "hash": "67a9c8ede37485aab63ce4eaad368253c10a4474",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fe3d06aa2ce812deb75585f33689af52b4934461",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006906358399"
+          },
+          "hash": "4afd93d72085d5f8e7b7b85f5bf25d87e14bb8d1",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -569492,8 +570514,8 @@
     "value": "拉乌姆·诺尔松"
    }
   },
-  "lastrevid": 2553830001,
-  "modified": "2026-10-06T08:39:10Z",
+  "lastrevid": 2554114330,
+  "modified": "2026-10-06T19:38:17Z",
   "ns": 0,
   "pageid": 135216648,
   "sitelinks": {},
@@ -624109,6 +625131,20 @@
      "value": "Uhtred the Bold"
     }
    ],
+   "de": [
+    {
+     "language": "de",
+     "value": "Uchtred"
+    },
+    {
+     "language": "de",
+     "value": "Utred"
+    },
+    {
+     "language": "de",
+     "value": "Uhtred von Northumbria"
+    }
+   ],
    "en": [
     {
      "language": "en",
@@ -625361,8 +626397,8 @@
     "value": "烏特雷德"
    }
   },
-  "lastrevid": 2551978801,
-  "modified": "2026-10-02T01:12:27Z",
+  "lastrevid": 2554050974,
+  "modified": "2026-10-06T17:20:50Z",
   "ns": 0,
   "pageid": 1671069,
   "sitelinks": {
@@ -662524,6 +663560,10 @@
     {
      "language": "de",
      "value": "Ruprecht I. von Pfalz-Mosbach"
+    },
+    {
+     "language": "de",
+     "value": "Rupert"
     }
    ],
    "en": [
@@ -664069,8 +665109,8 @@
     "value": "Ruprecht von Pfalz-Mosbach"
    }
   },
-  "lastrevid": 2543636898,
-  "modified": "2026-09-11T00:50:37Z",
+  "lastrevid": 2554054544,
+  "modified": "2026-10-06T17:27:42Z",
   "ns": 0,
   "pageid": 2101708,
   "sitelinks": {
@@ -700167,6 +701207,16 @@
      "value": "Valdemar I."
     }
    ],
+   "de": [
+    {
+     "language": "de",
+     "value": "Waldemar I. der Große"
+    },
+    {
+     "language": "de",
+     "value": "Valdemar I. den Store"
+    }
+   ],
    "en": [
     {
      "language": "en",
@@ -705013,8 +706063,8 @@
     "value": "瓦爾德馬一世"
    }
   },
-  "lastrevid": 2552280074,
-  "modified": "2026-10-02T19:50:39Z",
+  "lastrevid": 2554101418,
+  "modified": "2026-10-06T19:05:25Z",
   "ns": 0,
   "pageid": 286711,
   "sitelinks": {
@@ -821412,13 +822462,17 @@
     "language": "en",
     "value": "Li Chengcong"
    },
+   "fr": {
+    "language": "fr",
+    "value": "Li Chengcong"
+   },
    "ja": {
     "language": "ja",
-    "value": "リー・ケングコング"
+    "value": "李承賨"
    },
    "ko": {
     "language": "ko",
-    "value": "리 쳉콩"
+    "value": "李承賨"
    },
    "lzh": {
     "language": "lzh",
@@ -821431,6 +822485,10 @@
    "nl": {
     "language": "nl",
     "value": "Li Chengcong"
+   },
+   "ru": {
+    "language": "ru",
+    "value": "Ли Чэнцун"
    },
    "zh": {
     "language": "zh",
@@ -821445,8 +822503,8 @@
     "value": "李承賨"
    }
   },
-  "lastrevid": 2553072469,
-  "modified": "2026-10-04T15:00:52Z",
+  "lastrevid": 2554040247,
+  "modified": "2026-10-06T17:02:10Z",
   "ns": 0,
   "pageid": 46698357,
   "sitelinks": {},
@@ -844914,6 +845972,10 @@
     {
      "language": "de",
      "value": "Andreas Gyldenklou"
+    },
+    {
+     "language": "de",
+     "value": "Andreas Månsson Gylle"
     }
    ],
    "sv": [
@@ -848878,8 +849940,8 @@
     "value": "Andreas Gyldenklou"
    }
   },
-  "lastrevid": 2552292000,
-  "modified": "2026-10-02T20:23:32Z",
+  "lastrevid": 2554121401,
+  "modified": "2026-10-06T19:52:58Z",
   "ns": 0,
   "pageid": 462121,
   "sitelinks": {
@@ -865640,6 +866702,20 @@
  },
  "Q528666": {
   "aliases": {
+   "de": [
+    {
+     "language": "de",
+     "value": "Robert von Artois"
+    },
+    {
+     "language": "de",
+     "value": "Robert d’Artois"
+    },
+    {
+     "language": "de",
+     "value": "Robert von Burgund"
+    }
+   ],
    "en": [
     {
      "language": "en",
@@ -866734,8 +867810,8 @@
     "value": "羅貝爾 (勃艮第伯爵)"
    }
   },
-  "lastrevid": 2552863827,
-  "modified": "2026-10-04T02:54:24Z",
+  "lastrevid": 2554076692,
+  "modified": "2026-10-06T18:06:46Z",
   "ns": 0,
   "pageid": 497592,
   "sitelinks": {

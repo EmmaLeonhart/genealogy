@@ -120395,6 +120395,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141205921$33224C9F-F150-4ED5-87A0-8C86EA9F7ACB",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659038",
+        "numeric-id": 141659038
+       }
+      },
+      "hash": "5d0bed8397b3701dfc2788ae68c180f8a5fd674b",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "5e281231b244365c89efdea1be29c569342eb65c",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000003491995159"
+          },
+          "hash": "d940fa025587e2eeed7f5288bef241cd331ee61e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -120648,8 +120689,8 @@
     "value": "Maria Jonsdatter Lura"
    }
   },
-  "lastrevid": 2550332071,
-  "modified": "2026-09-28T05:14:39Z",
+  "lastrevid": 2554035580,
+  "modified": "2026-10-06T16:54:54Z",
   "ns": 0,
   "pageid": 134660152,
   "sitelinks": {},
@@ -192576,11 +192617,11 @@
        "type": "wikibase-entityid",
        "value": {
         "entity-type": "item",
-        "id": "Q20087948",
-        "numeric-id": 20087948
+        "id": "Q252763",
+        "numeric-id": 252763
        }
       },
-      "hash": "724417501b06427f8037306ba271cca1dfe3b8b5",
+      "hash": "90b369ce51a60f0f4945088488ea789fbcf8edab",
       "property": "P3373",
       "snaktype": "value"
      },
@@ -192664,8 +192705,8 @@
     "value": "Елена Гимонтовна"
    }
   },
-  "lastrevid": 2552516245,
-  "modified": "2026-10-03T09:15:55Z",
+  "lastrevid": 2554063951,
+  "modified": "2026-10-06T17:44:20Z",
   "ns": 0,
   "pageid": 135034737,
   "sitelinks": {},
@@ -609406,6 +609447,49 @@
      "type": "statement"
     }
    ],
+   "P734": [
+    {
+     "id": "Q141655617$E33261B5-52A4-4268-A8B2-E1A6EADD0A43",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141659841",
+        "numeric-id": 141659841
+       }
+      },
+      "hash": "0fd915f1b5679d0db6fa27eda1b5fed9b8972db8",
+      "property": "P734",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "041d8644650f1a9efcbf84ba00b1571a273be2d6",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000078057739669"
+          },
+          "hash": "adea3bfa3a892b734aaecd0e325302dcc0ce4d19",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P735": [
     {
      "id": "Q141655617$8A12D4B0-A029-406D-98F5-F6BD47DAF2F1",
@@ -609457,8 +609541,8 @@
     "value": "布里塔·达尼埃尔斯多特·贝尔根赫姆"
    }
   },
-  "lastrevid": 2553845290,
-  "modified": "2026-10-06T09:25:41Z",
+  "lastrevid": 2554117670,
+  "modified": "2026-10-06T19:44:00Z",
   "ns": 0,
   "pageid": 135230660,
   "sitelinks": {},
@@ -612202,6 +612286,49 @@
      "type": "statement"
     }
    ],
+   "P25": [
+    {
+     "id": "Q141656641$5EB2E6C1-D3F8-4068-8D2E-6FF7EF5C3949",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141656695",
+        "numeric-id": 141656695
+       }
+      },
+      "hash": "00df93ad8da5e7e5b8a8a8bfa68bf998bff743d2",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b5b2b03a8f8ad6ef493e9d83dbc423c4fa305323",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "5696665779730134105"
+          },
+          "hash": "8e45e711caced4b0e1ad3c482b7f01846bd79ee7",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P2600": [
     {
      "id": "Q141656641$995A9D24-6CA8-4B9C-A7E4-50BA64358FCB",
@@ -612611,8 +612738,8 @@
     "value": "奥拉·拉森·格罗德赫伊姆"
    }
   },
-  "lastrevid": 2553867003,
-  "modified": "2026-10-06T10:23:17Z",
+  "lastrevid": 2554118785,
+  "modified": "2026-10-06T19:46:17Z",
   "ns": 0,
   "pageid": 135231653,
   "sitelinks": {},
@@ -685597,6 +685724,16 @@
  },
  "Q272209": {
   "aliases": {
+   "de": [
+    {
+     "language": "de",
+     "value": "Ethelred"
+    },
+    {
+     "language": "de",
+     "value": "Ethered"
+    }
+   ],
    "en": [
     {
      "language": "en",
@@ -687291,8 +687428,8 @@
     "value": "埃塞尔雷德，麦西亚人的领主"
    }
   },
-  "lastrevid": 2552979801,
-  "modified": "2026-10-04T09:08:30Z",
+  "lastrevid": 2554048213,
+  "modified": "2026-10-06T17:15:41Z",
   "ns": 0,
   "pageid": 263416,
   "sitelinks": {
@@ -961870,6 +962007,14 @@
     {
      "language": "de",
      "value": "Augustin Rhau"
+    },
+    {
+     "language": "de",
+     "value": "Augustin Rau"
+    },
+    {
+     "language": "de",
+     "value": "Augustin Rhawe"
     }
    ]
   },
@@ -963256,8 +963401,8 @@
     "value": "Augustin Rhaw"
    }
   },
-  "lastrevid": 2552254685,
-  "modified": "2026-10-02T18:26:01Z",
+  "lastrevid": 2554060267,
+  "modified": "2026-10-06T17:39:23Z",
   "ns": 0,
   "pageid": 721486,
   "sitelinks": {
