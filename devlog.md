@@ -52231,3 +52231,28 @@ Sono Sachiko, who belong to 小出英発の娘. Those two links are obviously wr
 Geni child 都子 松浦 of 康義 (`6000000002278888556`) is still zipper-paired with Kikuchi's daughter 菊池多美子
 `Q140366783`; no statement of ours rests on that pair, so nothing was sent for it.
 The batch ran with Run in a new tab at about 4:15 PM PDT. `verify-qs.py`: 40 ok, 0 not as intended.
+
+## 2026-10-05: zipper split batch 12: the SPLIT pairs whose zipper links were still live (110/110)
+
+A live check of every pair judged SPLIT (114) found 23 whose zipper links were still on Wikidata after batches 1-11.
+Each was judged by this session:
+- **Kept as true (9):** #169 (Brand-Gewis, another editor's statement), 362 (Henry IV and Konrad I are both sons of
+  Henry III), 677 (Mathilde is Udo's mother), 692, 889's Mathilde-Henry, and 1184 (Irmgard is Adolf II's wife). The
+  mothers in #1005 (綱子) and #1227 (Luitburg) were also kept: the pairs fused two brothers, and nothing says the
+  mother differs. That is the session's call, not a certainty.
+- **Moved to existing items:** Adelheid von Hochstaden to Otto of Are-Hochstaden `Q25796261` (not his brother Ulrich).
+  Ann Maxwell and Elizabeth de Keith to Sir Hamelin Leslie `Q76053181`. The Ii wife to Koide Fusatsune `Q11459131` and
+  小出英筠 `Q11459127` (off Sono Motomachi and 園基茂). The Gren women to Erengisle `Q101248441` and Harald `Q101248440`:
+  Ernils = Erengisle, and they were laid over the Danish Bät line. Hodierne and Guénedon now sit under Budic `Q4098042`
+  (as wife and child), next to Benedict `Q4083744`.
+- **Created (7):** `Q141651140` Gerhard von Egisheim-Dagsburg, `Q141651203` Arthfoddw ap Boddw, `Q141651217` 藤原仲保,
+  `Q141651231` Guttorm Sigurdsson, `Q141651242` James Ogilvy, `Q141651261` Thorleiv Moddansdatter, `Q141651279` Landry
+  de Maers III.
+Run with Run. `verify-qs.py`: 109/110. Mathilde → Gerhard (P40) failed ("Base statement not found"), was re-sent as
+one line, and is now live: 110/110.
+**Unexpected:** several items are our own duplicates and are on the merge item. Our Budic I `Q141632282` is Budic
+`Q4098042` himself and was linked as his own father. Our Heinrich I. von Dagsburg `Q141633935` is Henry I and was his
+own sibling. Our Richard Comyn `Q141628125` was his own sibling too. The Ii wife was created twice (`Q141638621`). Kristina
+Ulfsdotter was only taken off Anne Gertsdatter: NN Torkelsdotter `Q101248443` already has a mother item.
+Left on this item: the 20 UNSURE pairs, which need a careful pass. genealogy-42 ran batches 10 (Formbach) and 11
+(Matsudaira).
