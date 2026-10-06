@@ -52516,3 +52516,27 @@ the bat's own) with its boot prompt.
 
 Started with `Start-Process explorer.exe '"…\Sodacan-arms-svg-generator\!runClaude.bat"'`. Running: claude.exe PID
 15004, with the bat's own `--name`/`--remote-control Sodacan-arms-svg-generator` and its catch-up prompt.
+
+## 2026-10-06: Sinosphere label overrides, sized (item stays first)
+
+Live reading was not possible: every Wikidata API call from this machine got HTTP 429 (`retry-after: 8`, the IP is
+shared with the other sessions), so the sizing reads the pipeline's own live copy, `reports/garborg-live-labels.tsv`
+(24,574 items, refreshed 2026-10-05 22:23 PDT), joined to Geni through `garborg-qids.tsv` (the roster
+`p2600-all.tsv` was last committed 2026-09-30 and misses everything created since, the Aido family among them).
+`scripts/session-2026-10-06/sino-label-size.py` -> `reports/sinosphere-label-overrides-size-2026-10-06.csv`.
+
+1,305 of our items are Sinosphere people (Han in a label or the Geni CJK name, an East Asian place, or `no`).
+**281 carry at least one live label of ours** (`ours` column: every label on our creations; on other items the slots
+whose live value is one we emitted, `label-edits-emitted.tsv`): `mul` 280, `ja` 273, `zh` 174, `ko` 103, `en` 24.
+- 171 our Han creations: Western order (`三千媛 田口`) in mul/ja/zh, `en` often the bare romanised surname (`Taguchi`).
+- 98 established Chinese items (CBDB, Tang): we wrote `mul` in pinyin, a katakana `ja` read off the pinyin, sometimes
+  half Han (`リー・虞`, `プリンセス・ヴァンクン`), and a Hangul `ko` read off the pinyin (`프린케스 완춘`). **Unexpected:**
+  a katakana `ja` flips the kanji signal, the damage the 2026-09-18 reverts were about, here on 98 items.
+- 5 our romanised-Japanese creations (the Aido family, `Otomo no Nagatoko` -> `オトモ・ノ・ナガトコ`), 6 established
+  items with only our `mul`, 1 NN. `no name` / `no name Wertmüller` are false positives of the `no` test.
+The other 1,024 have no label of ours (mostly CBDB people labelled in `zh` by others; their Geni CJK form is often a
+given name plus a place of origin, `璵 深州安平`, which no label should be built from).
+
+Also unexpected, not this item's: `git status` fails in the `order.life` submodule. Its objects come through
+`objects/info/alternates` from `Documents\GitHub\order.life`, which no longer exists, so its HEAD tree is unreadable.
+Not touched (git inside a submodule).
