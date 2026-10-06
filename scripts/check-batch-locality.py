@@ -35,6 +35,10 @@ output.
    universe of labels, so no label edit in any language; katakana or blank means ours. A regnal
    numeral is stripped first — the generation kanji after a digit is how an ordinal is written,
    so `アダルベルト2世` is Adalbert II in katakana and not a Sinosphere name at all.
+   **Except a row of `reports/label-applications.tsv`**, as in the composer: the hand channel is not
+   subject to the kanji refusal. Until 2026-10-06 this strip cut every `mul`/`en`/`ja`/`zh`/`ko` line of
+   Emma's Sinosphere overrides (ordered 2026-10-04) and of the `en` readings given to the Han-named
+   creations, while their `ru`/`fr`/`es` lines went through.
 """
 from __future__ import annotations
 
@@ -50,6 +54,7 @@ import qs_v1  # noqa: E402 -- the one module that knows what a CREATE block is
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 UNIVERSE = ROOT / "out" / "wikidata" / "edit-universe.json"
 LIVE_LABELS = ROOT / "reports" / "garborg-live-labels.tsv"
+LABEL_APPLICATIONS = ROOT / "reports" / "label-applications.tsv"
 #: ⛔ **THE FAMILYSEARCH BATCH IS A BATCH.** `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE
 #: UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS, NO EXCEPTIONS* — a separate output file is not
 #: an exemption from the locality rule, it is another file that has to obey it.
@@ -102,6 +107,26 @@ def is_our_nn(labels):
     return any(NN_TOKEN.search(labels.get(lang) or "") for lang in ("mul", "en"))
 
 
+def hand_applied():
+    """`{(qid, slot, value)}` of `reports/label-applications.tsv`: the hand channel, exempt from the
+    kanji rule here exactly as in the composer (`build-garborg-day._hand_label_applications`)."""
+    if not LABEL_APPLICATIONS.exists():
+        return set()
+    rows = LABEL_APPLICATIONS.read_text(encoding="utf-8").split("\n")
+    head = rows[0].split("\t")
+    out = set()
+    for row in rows[1:]:
+        r = dict(zip(head, row.split("\t")))
+        if r.get("qid") and r.get("lang"):
+            out.add((r["qid"], (r.get("kind") or "L") + r["lang"], r.get("value", "")))
+    return out
+
+
+def _is_hand(line, hand):
+    parts = line.split("\t")
+    return len(parts) >= 3 and (parts[0], parts[1], parts[2].strip('"')) in hand
+
+
 def kanji_items():
     """`{qid}` whose LIVE `ja` label is kanji once a regnal ordinal is stripped.
 
@@ -124,6 +149,7 @@ def kanji_items():
 def offenders(path, allowed, kanji):
     """`(non_local, on_kanji, never)` -- all three `{qid: first line number}`."""
     non_local, on_kanji, never = {}, {}, {}
+    hand = hand_applied()
     text = path.read_text(encoding="utf-8").split("\n")
     # A relative of a person this batch creates is one hop from an edited item: in the universe.
     allowed = set(allowed) | qs_v1.creation_relatives(text)
@@ -132,7 +158,7 @@ def offenders(path, allowed, kanji):
         if m and m.group(1) not in allowed and not court_rank_anywhere(line):
             non_local.setdefault(m.group(1), n)
         k = LABEL_EDIT.match(line)
-        if k and k.group(1) in kanji:
+        if k and k.group(1) in kanji and not _is_hand(line, hand):
             on_kanji.setdefault(k.group(1), n)
         if m and m.group(1) in wikidata_lockout.NEVER_EDIT:
             never.setdefault(m.group(1), n)
@@ -158,6 +184,7 @@ def strip(path, allowed, kanji) -> int:
     """
     lines = path.read_text(encoding="utf-8").split(chr(10))
     allowed = set(allowed) | qs_v1.creation_relatives(lines)
+    hand = hand_applied()
     keep, dropped = [], []
     for line in lines:
         m = SUBJECT.match(line)
@@ -167,7 +194,7 @@ def strip(path, allowed, kanji) -> int:
         if m and ((m.group(1) not in allowed and not court_rank_anywhere(line))
                   or m.group(1) in wikidata_lockout.NEVER_EDIT):
             dropped.append(m.group(1)); continue
-        if k and k.group(1) in kanji:
+        if k and k.group(1) in kanji and not _is_hand(line, hand):
             dropped.append(k.group(1)); continue
         keep.append(line)
     # ⛔ **AND A STRIPPED ITEM TAKES ITS ANNOTATION WITH IT.** Reported 2026-09-24, on the Izumo

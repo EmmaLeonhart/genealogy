@@ -52721,3 +52721,21 @@ when an edit of the account set it, read from `reports/account-label-sets.tsv`),
   still produces go out, under `LABEL_EDIT_CAP`, newest items first, through the revert and corrected-slot guards;
   several old values in the list are transliterations the current rules would not write (`시르 토마스 브리드게스`).
 The queue item is narrowed to the step that still removes the 164 `en` applications after the composer.
+
+## 2026-10-06: the step that removed label edits after the composer: the kanji strip, now exempting the hand channel
+
+Last part of the label-edit item. The `en`/`mul`/`ja`/`zh`/`ko` lines that the composer wrote and no batch file kept
+were cut by `scripts/check-batch-locality.py --fix` (pipeline step "The batch may not touch anything outside the
+universe"): it strips every label edit in those five languages on an item whose live `ja` is kanji. Its regex does
+not cover `ru`/`fr`/`es`, which is why `Q141640588` Fujiwara no Tokitaka kept only those three.
+- **A defect, not the kanji rule doing its job.** The composer applies the kanji refusal only to derived labels and
+  passes every row of `reports/label-applications.tsv` (the hand channel). The post-step did not know about that
+  channel, so it cut Emma's Sinosphere overrides (ordered from her queue on 2026-10-04; `ru`/`fr`/`es` already allowed
+  through in `812fd854f`) and the `en` readings given to the Han-named creations on 2026-10-04 (the audit's lost
+  `en` rows). Measured on the current files: 653 hand label edits on 200 kanji items (`en` 154, `mul` 150, `ko` 130,
+  `ja` 128, `zh` 90) were stripped every run.
+- **Fix:** `check-batch-locality.py` reads `label-applications.tsv` and exempts an exact `(qid, slot, value)` row from
+  the kanji strip and the kanji check, the same exemption as the composer. Everything else about the rule is unchanged.
+- To see on the next batch built on `main`: `Q141640588` `Len "Fujiwara no Tokitaka"` in the batch file (or held behind
+  `LABEL_EDIT_CAP`), and the composer's log line "label edits recorded as emitted".
+Item deleted.
