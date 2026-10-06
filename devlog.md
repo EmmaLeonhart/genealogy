@@ -52683,3 +52683,6 @@ was audited as it landed (`reports/daily-audit/2026-10-06-1791287342.md`).
   195 creations in `reports/wikidata-garborg-day-manual-held.txt`, which is the file run.
 - On import, creation 1 read `Aude de Cornouailles Queen Consort of Brittany. France`. A scan of every creation `mul` label
   for titles, commas and brackets found 4; all four were held out too, leaving 191 creations.
+- `reports/wikidata-garborg-day-manual-held.txt` at `1aaab06f4` (191 creations, 9,859 lines) opened in a new
+  QuickStatements tab and Run at about 5:25 a.m. PDT; the first creation is `Q141657252` Audleiv Gudraudsen, and the
+  following `LAST` lines resolved to it.
