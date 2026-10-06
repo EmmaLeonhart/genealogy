@@ -52358,3 +52358,10 @@ Written into `CLAUDE.md`, in the audit-then-run loop: a "rebuild the batch" comm
 the noon cron and the startup run only catch a missed one. Cause: at 20:03 the session left `0e9893226` waiting for
 noon. That batch was then run (audited, with n Bårdsdatter held out because she was created after its snapshot).
 Emma: running a batch built from a stale snapshot was against the item.
+
+## 2026-10-05: the QuickStatements-token folder item: already gitignored; moved to todo.md
+
+`Use this to do a new programmatic daily quickstatements cicd/` is ignored (`.gitignore:666`), and no file in it has
+ever been tracked or committed (`git log --all` touches nothing there). The rest of the item, programmatic daily
+submission, is "not now" (Emma, 2026-10-03), so it is a todo rather than a queue item. Also moved: "Zipper-merge
+Emma's own ancestry" to the end of the queue, since it depends on the FamilySearch id review (Emma).

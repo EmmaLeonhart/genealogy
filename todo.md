@@ -929,3 +929,5 @@ Also deferred: the NN relationship labels in other languages (ca, da, de, es, fr
 pt, sv and the rest), and the native generation-suffix labels (`d.y.`/`d.e.`).
 
 **Ruled 2026-09-27 (AskUserQuestion): yes, strictly.** Labels are composed from the name items' labels in every language, CJK included, a language written only when every name part has a label in it; transliteration is phased out over time. The build is a queue item.
+
+- The saved QuickStatements page in "Use this to do a new programmatic daily quickstatements cicd/" (saved 2026-10-03 19:38: the user page with the token-management section and the api.php import instructions) is for later CI/CD: submitting the daily batches programmatically instead of by hand. Not now: it requires us to be better than we are first (Emma, 2026-10-03). The page holds the account's live QuickStatements token, so the folder must never be committed or pushed: (gitignored at `.gitignore:666`, checked 2026-10-05; never committed), and never copy the token into a tracked file, a log or a queue item.
