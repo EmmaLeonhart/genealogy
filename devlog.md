@@ -52590,3 +52590,22 @@ It said the label overrides and the ordered-name representation are separate fro
 names are parsed wrong as a whole", and must not be combined. Both were worked as their own items today (two
 separate closes, `52fd8adf5` and `5f9ac4cc9`), neither touched the parse decision of earlier today, so the note has
 nothing left to govern.
+
+## 2026-10-06: batch `fb299cd39` audited and run, 64 already-live creations held out
+
+The rebuild (08:19 UTC) was pulled in mid-session and had not been audited, so the loop ran on it before the next
+queue item (`reports/daily-audit/2026-10-06-1791275159.md`).
+- **Talk page:** nothing new since StarTrekker's 2026-10-05 post, already judged commentary.
+- **10 existing items:** all confirmed. Two oddities are other editors' (Sigurd the Stout's `ja` `Hlodvirの息子シグルド`,
+  Cewbot 2021; Adelheid von Dillingen's description "1 Dec 1141", Gamaliel 2023). Birger Jarl carries our
+  `Q141528104` "NN" as a second father beside Magnus Minniskiöld: a duplicate parent value, not fixed (CLAUDE.md).
+- **10 creations:** 7 confirmed. Jeanne de Pacy (born 1328, died 1285) and Mons Osmundson Edland (`P734` Osmundson,
+  a patronymic) were to be held, but **unexpected:** both were already live, created by the previous batch
+  (`Q141654716`, `Q141654774`); queued as an error report at the end. Brita Andersdotter Bånge's `ko`
+  `브리타 안데르스도테르 보에` (the ng of Bånge dropped) was removed from the batch.
+- `hold-live-creations.py` held 64 already-live creations (21 by Geni id, 6 by FamilySearch id, 37 name items,
+  `reports/wikidata-garborg-day-manual-held-out.tsv`). Its name-item check now uses the search API's `inlabel:` with an
+  exact `mul` match, because WDQS is held to 1 request a minute during an outage.
+- QuickStatements first would not load ("Could not finish loading"): the Wikidata API was answering this IP with
+  429. Once it answered 200, `reports/wikidata-garborg-day-manual-held.txt` at `9618016d7` (198 creations, 4,003
+  commands) was opened in a new tab and Run. It was at 1 / 4003 when this was written.
