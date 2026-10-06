@@ -52426,3 +52426,21 @@ on Wikidata now, and the 23 statements judged correct are all still there
 (`reports/sinosphere-name-live-2026-10-06.csv` is now the after-state; the before-state is the copy in `ee352869b`).
 Item closed. Not done here, and not part of this item: the 源 item `Q141637678` stays merged into the given name
 Hajime `Q27306306`, which is another editor's merge.
+
+## 2026-10-06: zipper-merge audit item closed; 11 pairs nobody had reviewed, judged
+
+This item (about 2,400 zipper links, contradicted ones first, then those with no evidence) had already been done
+under another name. The split review of 2026-10-05 judged all 1,261 zipper pairs behind links in
+`zipper-driven-links.csv` and `zipper-only-links-on-wikidata.csv`, and batches 1-13 took the wrong ones off.
+**Unexpected:** the third file the item names, `reports/zipper-links-batch-ebec37585.csv`, was not fully covered.
+Of the 117 zipper pairs behind its 244 links, 11 were not among the 1,261, and 19 of their 21 links are live
+(`reports/zipper-ebec-unreviewed-2026-10-06.csv`, `scripts/session-2026-10-06/ebec-unreviewed.py`).
+The session judged them one by one (`reports/zipper-ebec-unreviewed-verdicts-2026-10-06.tsv`). All 11 are the same
+person on both sides, so no link comes off. Two carry disputes, and both sides are kept:
+- Israel Krok `Q112162181`: Geni gives his mother as Anna Cecilia Tomasdotter `Q141639153`, Wikidata as Sigrid
+  Andersdotter.
+- Hugues I d'Oisy `Q3142601`: Geni makes Fastre I his brother, Wikidata his son.
+Found on the way: our Fastre I d'Oisy `Q141639374` (1040-1091) is a duplicate of Fastré I d'Oisy `Q3190659`
+(1040-1092). `reports/fastre-oisy-common-id-label-2026-10-06.qs` ran with Run (3/3) and was checked live: `Q3190659`
+carries Geni `6000000002188026417`, and our item has the label "Fastré I d'Oisy" in `mul` and `en`. The item's
+"fixes only on Emma's go-ahead" was read under the 2026-10-05 rule that fix batches a queue item calls for don't wait.
