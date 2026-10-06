@@ -52417,3 +52417,12 @@ Bo (伯益), Gorō (a tsūshō), Zhēng (惠徵), Jī and Ye (大業), Shou, Zha
 源→Hajime `P734`. The other 23 (Nobuko 信子, Kazuko 和子, Michiaki 道明, Taguchi 田口, Hiki 比企, Wu Zetian's 曌/照,
 the merged family names) are right and stay. Writing the removal batch was refused by the Claude Code permission
 classifier, so it is not built. BLOCKED-ON-USER-ACTION: put to Emma by AskUserQuestion. The item stays first.
+
+## 2026-10-06: Sinosphere name fix batch run (22 removals); item closed
+
+Emma authorized it by AskUserQuestion after the classifier refusal. `reports/sinosphere-name-fix-2026-10-06.qs`
+ran in a new QuickStatements tab with Run: Done 22 / 22. Re-checked live with `sino-live.py`: none of the 22 is
+on Wikidata now, and the 23 statements judged correct are all still there
+(`reports/sinosphere-name-live-2026-10-06.csv` is now the after-state; the before-state is the copy in `ee352869b`).
+Item closed. Not done here, and not part of this item: the 源 item `Q141637678` stays merged into the given name
+Hajime `Q27306306`, which is another editor's merge.
