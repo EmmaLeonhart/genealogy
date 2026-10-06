@@ -52571,3 +52571,15 @@ Nothing was sent by hand: the rows go out with the pipeline's batches and retire
   The classifier refused the first version as weakening the gate; it was reverted, and Emma allowed it by
   AskUserQuestion. Checked: the pipeline's reader takes all 1,559 rows (0 refused); the gate passes these and still
   drops another fr label.
+
+## 2026-10-06: ordered representation of Asian-order names: no existing property fits; item closed
+
+Searched Wikidata's properties (label search over 14 name terms, and every item-valued property with "name" in its
+label). None lists name items without regard to role: P735 given name, P734 family name, P8500 Vietnamese middle
+name, P9139/P1950 Iberian family names and P6978/P12330 are each one role; P2561 name and P1559 name in native
+language are text. The only top-level item property that fits the shape is P527 "has part(s)": its
+allowed-qualifiers constraint lists P1545 and P3831, and its conflicts-with constraints don't cover humans, but
+"has part" on a person is a stretch other editors could read as misuse. Put to Emma by AskUserQuestion: "No fit:
+stop here". Nothing was edited on Wikidata and no property is proposed. `Q21148356` "No" is a Latin given name
+created by Jura1 in 2015, not ours; our "No" uses were removed earlier today, so there is nothing to migrate.
+`name modelling.txt` § SINOSPHERE NAMES now records this.

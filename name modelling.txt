@@ -182,5 +182,9 @@ question to Emma had stalled the queue for two days. Recorded in devlog.md the s
        Honorifics and titles (命, 王, 内侍, 親王) are not names.
        A tsūshō such as 五郎 Gorō is not the given name (Sasaki Yoshikiyo's given name is 義清).
 
-   Coming back to this needs Emma: the ordered-name representation (queue, "an ordered
-   representation of Asian-order names") is the intended way to model them, and it comes first.
+   Coming back to this needs Emma. The ordered-name representation (one property listing every name
+   item in order, the role as a qualifier) was looked for on 2026-10-06 and no existing property fits:
+   every name property is role-specific (P735, P734, P8500, P9139, P1950), P2561/P1559 are text, and
+   P527 "has part(s)" fits only structurally. Emma: no fit, stop there (AskUserQuestion, 2026-10-06).
+   No new property is proposed. The `no` particle has no item of ours; Q21148356 "No" is a Latin
+   given name created by others and is never used for the particle.
