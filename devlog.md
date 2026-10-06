@@ -52373,3 +52373,8 @@ was re-checked live first. 1,504 items already had a `P734` or are redirects, so
 `reports/novalue-family-name-backfill-2026-10-05-rechecked.qs` sent the remaining 413 with Run. 411 are live.
 Wikidata refused 2 saves ("The save has failed"): Þorsteinn Ingólfsson `Q6175099` and Skuli Tostisson Kongsfostre
 `Q6180419`, two well-known saga figures. They were not retried. Item closed.
+
+## 2026-10-05: this session's cron jobs cancelled (Emma)
+
+All three cancelled with CronDelete, and no new ones are made in this session: the work loop (`0,30`), the auto-flush
+(`:15`) and the noon audit-then-run job.
