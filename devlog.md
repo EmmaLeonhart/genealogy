@@ -52609,3 +52609,25 @@ queue item (`reports/daily-audit/2026-10-06-1791275159.md`).
 - QuickStatements first would not load ("Could not finish loading"): the Wikidata API was answering this IP with
   429. Once it answered 200, `reports/wikidata-garborg-day-manual-held.txt` at `9618016d7` (198 creations, 4,003
   commands) was opened in a new tab and Run. It was at 1 / 4003 when this was written.
+
+## 2026-10-06: pipeline audit of the 2026-10-03/04 errors, error by error; item closed
+
+Every pipeline change made for an error reported or found on 2026-10-03 and 2026-10-04, checked against what the
+pipeline produces now (batch `fb299cd39`, tree `a984c3e10` with the derived CSVs unpacked fresh, Wikidata live), never
+from the commit. Full evidence per error: `reports/pipeline-audit-2026-10-06.md`.
+- **SOLVED (14):** spliced path files and the 14 false statements (1); foster/adoptive parents qualified (2); lonely
+  private people (3); Puyi's ring sort order (4; the lines now wait on identifying established items such as the
+  Qianlong Emperor and Empress Michiko, which no part of the pipeline does); CBDB join (6); surnames only by their
+  English label and "family name" (7); `Given NN` (9); the novalue placeholder (10; one edge, Markus Tomasson); Peder
+  (11); Hebrew in `en` (12); Luthard (13); the particle "No" (14); men as mothers (18); the zipper cut (19); the
+  bridge's feedback loop (20).
+- **PARTLY (4):** NN relational labels (5), lost ordinals (15) and the Han-named creations' `en` (17) are fixed in the
+  generator, but their label edits never land: `_cap_label_edits` marks an edit emitted when it is written into a
+  batch and never sends it again, so 221 `en` rows of 2026-10-04, the 8 ordinal relabels and 50 NN labels are stuck.
+  `P2976` (8): 6 of 60 reverse links on `Jons`/`Pär` dropped somewhere in assembly (not established).
+- **NOT SOLVED (1):** an item drifting with its Geni profile (16): no fix was made; queued, waits on Geni.
+- **Unexpected:** CI has been red since 2026-10-03 19:08 UTC (last green `1020bf03c`); of its 7 failures two are stale
+  tests about the novalue placeholder. 52 batch lines are in decomposed Unicode (NFD, `Märta`), which breaks the
+  pipeline's own text comparisons. This session's pushes cancelled five pipeline runs today.
+The audit does not confirm the errors are solved, so the next item ("if the audit confirms …, wait on the pipeline")
+is preceded by the label-edit defect, added to the queue in this item's place.
