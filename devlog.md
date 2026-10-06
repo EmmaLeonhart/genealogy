@@ -52583,3 +52583,10 @@ allowed-qualifiers constraint lists P1545 and P3831, and its conflicts-with cons
 stop here". Nothing was edited on Wikidata and no property is proposed. `Q21148356` "No" is a Latin given name
 created by Jura1 in 2015, not ours; our "No" uses were removed earlier today, so there is nothing to migrate.
 `name modelling.txt` § SINOSPHERE NAMES now records this.
+
+## 2026-10-06: the note on the two Sinosphere items, closed
+
+It said the label overrides and the ordered-name representation are separate from each other and from "Japanese
+names are parsed wrong as a whole", and must not be combined. Both were worked as their own items today (two
+separate closes, `52fd8adf5` and `5f9ac4cc9`), neither touched the parse decision of earlier today, so the note has
+nothing left to govern.
