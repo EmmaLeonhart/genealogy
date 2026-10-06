@@ -52952,3 +52952,10 @@ rename's: `test_a_label_drains_when_it_landed_not_when_it_was_emitted` (the drai
 `('t', 1)` against `'t'`), `test_a_label_is_never_written_over_an_item_that_already_has_one` (batch line
 `Q141656681 Lmul "NN Guttormsdatter"`), and the `|`-separated `wrong-script-name-fix-2026-10-06.qs` failing the line
 format, as the other hand batches in that form already do. NEEDS-INVESTIGATION for the next tick: those three.
+
+## 2026-10-06: the talk-page cron, set up
+
+Queue item "Check the account's talk page before every new run, on a cron (Emma, 2026-10-04)". Set up 14:4x PDT: a
+session `CronCreate` job at `47 * * * *` reads the latest revisions of `User talk:日巫女` and addresses anything not yet
+addressed before any new run. `CLAUDE.md` § *AT SESSION START* gains the rule, so every session starts the cron with
+its others. The talk page as of now: nothing since StarTrekker's 2026-10-05 "Patronymics" post, already judged.

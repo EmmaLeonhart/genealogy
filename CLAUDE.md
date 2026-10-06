@@ -257,6 +257,12 @@ the batch" commit appears, the loop runs on it at once (talk page, 10 existing i
 noon cron and the startup run only catch a batch that was missed. On 2026-10-05 a fresh batch was left waiting for
 noon ("you're waiting 16 hours for nothing").
 
+**⛔ THE TALK PAGE IS READ ON A CRON, AND BEFORE EVERY NEW RUN. Ruled 2026-10-04 (Emma), set up 2026-10-06.** Every
+session starts, with its other crons, a `CronCreate` job at `47 * * * *` that reads the latest revisions of
+`User talk:日巫女`. Before deciding to start any new run (a batch on Wikidata), the talk page is read again: input
+that has not been addressed is addressed first (fixed, answered in a plan, or an error-report queue item), recorded
+in the devlog, and only then is the run decided.
+
 Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner, and it starts with the session. Immediately after a session opens: open a NEW QuickStatements tab, load the current `reports/wikidata-garborg-day-manual.txt` (fetch it from raw.githubusercontent into the batch textarea), Import, and press **Run** (never "Run in background" unless she asks). **Why, measured 2026-10-04:** a background (numbered) batch resolves `LAST` to the item edited last, not the item created last, so after a creation's first back-reference line (`Q… P26 LAST`) every further one points at the previous line's subject. Background batch #289569 (2026-10-03) made a man the mother of his own daughter (`Q9023075`) that way; browser runs resolve `LAST` correctly (250 of 250 checked).
 
 **⛔ WHAT THE LOOP IS FOR: THE RING. Ruled 2026-09-27 (Emma).** There are two kinds of people in a batch. The **ring people** are made obligatorily in every batch, and they are the limiting factor of the whole campaign: they connect to each other, so the next ring can only grow from a ring that already exists. The **non-ring people** are not the intended thing; they run, but nothing waits on them. So a batch opens with its ring (shuffled), and **whether a batch finishes does not matter**: several QuickStatements runs go at once in the browser, each old tab finishing its tail on its own. A generation is done when the LAST ring person in its batch's order exists on Wikidata.
