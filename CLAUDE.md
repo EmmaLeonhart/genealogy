@@ -663,7 +663,8 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   three; Hans may have become a name apart from Johan(n)). So:
   (1) **For identity, the period of the record decides.** For people born before about 1900 (the line the rule above
   uses), two records whose given names are forms of one name are the same name: Hans/Johannes/Jöns/Jan,
-  Jørgen/Georg/Göran/Yuri, recorded by different clerks in different languages. From about 1900 a person's given name
+  Jørgen/Georg/Göran/Yuri, recorded by different clerks in different languages. Hans and Johannes/Johan are one name for anyone born before about
+  1900 (Emma, 2026-10-06, by AskUserQuestion: "Same name before 1900"). From about 1900 a person's given name
   is a fixed, personal name, so Hans against Johannes is weak evidence of the same person and a real difference in the
   name is evidence against. The change was gradual and differs by country; a case near the line is judged on the
   rest of the evidence, not on the name.

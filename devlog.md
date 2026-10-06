@@ -52917,4 +52917,4 @@ about 1900 forms of one name are one name, after it a given name is the person's
 (the line is the one the pre-1900 rule already uses); (2) the `P735` link follows the written form in every period,
 and equivalence between forms lives on Wikidata between name items (`P460`), as the wrong-script fix of today
 showed; (3) regnal names and numbering stay those of the person's own culture (Clovis/Louis). The case left open,
-Hans and Johannes as one name or two, is put to Emma by AskUserQuestion after this commit; nothing waits on it.
+Hans and Johannes as one name or two, is put to Emma by AskUserQuestion after this commit; nothing waits on it. Emma's answer: "Same name before 1900"; written into the principle.
