@@ -52504,3 +52504,10 @@ Run in a new QuickStatements tab (Run, not background), exactly the four lines f
 AskUserQuestion and the retry went through. Checked live afterwards: `Q135197821` has `P11250`
 "shinto:Sumiyoshi Shrine (Q135197821)" and `P1814` "すみよしじんじゃ", and no `P361` (the `Q11498723` statement is
 gone); `Q11381861` has `P825` `Q232803` Empress Jingū with `P1932` "神功皇后". The batch tab was left open.
+
+## 2026-10-06: shintowiki-scripts session started
+
+Started with `Start-Process explorer.exe '"…\shintowiki-scripts\startclaude.bat"'` after the classifier refused it once
+and Emma explicitly authorized it by AskUserQuestion. explorer.exe passes no arguments, so `--now` was not given and the
+bat waited its 15 seconds first. Running: claude.exe PID 11004, `--remote-control "shintowiki-scripts"` (the name is
+the bat's own) with its boot prompt.
