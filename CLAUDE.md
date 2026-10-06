@@ -237,7 +237,10 @@ below. `python scripts/daily-audit-sample.py` writes the sheet to `reports/daily
 fetches: each of the 20 verdicts is the session's own reading, written under its entry and committed. A wrong
 creation is held out of the batch, or the generator is fixed and the batch rebuilt, before the run. This loop
 replaces the bare talk-page check at startup. `morning-batch.yml` rebuilds the batch at 9 a.m. Pacific, so a fresh
-one is ready for noon.
+one is ready for noon. **⛔ A new batch is audited and run AS SOON AS IT LANDS (Emma, 2026-10-05):** when a "rebuild
+the batch" commit appears, the loop runs on it at once (talk page, 10 existing items, 10 creations, then Run). The
+noon cron and the startup run only catch a batch that was missed. On 2026-10-05 a fresh batch was left waiting for
+noon ("you're waiting 16 hours for nothing").
 
 Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner, and it starts with the session. Immediately after a session opens: open a NEW QuickStatements tab, load the current `reports/wikidata-garborg-day-manual.txt` (fetch it from raw.githubusercontent into the batch textarea), Import, and press **Run** (never "Run in background" unless she asks). **Why, measured 2026-10-04:** a background (numbered) batch resolves `LAST` to the item edited last, not the item created last, so after a creation's first back-reference line (`Q… P26 LAST`) every further one points at the previous line's subject. Background batch #289569 (2026-10-03) made a man the mother of his own daughter (`Q9023075`) that way; browser runs resolve `LAST` correctly (250 of 250 checked).
 

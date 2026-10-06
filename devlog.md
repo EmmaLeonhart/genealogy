@@ -52351,3 +52351,10 @@ Emma: the review is done, except the FamilySearch part, which is its own item at
 - The dates-alone splits were re-checked (only Margareta).
 - The zipper is out of the pipeline (`861a72b75`).
 Pairs that never reached Wikidata are not being reviewed one by one: the pipeline no longer reads zipper pairs.
+
+## 2026-10-05: a new batch is audited and run as soon as it lands (Emma)
+
+Written into `CLAUDE.md`, in the audit-then-run loop: a "rebuild the batch" commit is audited and run at once, and
+the noon cron and the startup run only catch a missed one. Cause: at 20:03 the session left `0e9893226` waiting for
+noon. That batch was then run (audited, with n Bårdsdatter held out because she was created after its snapshot).
+Emma: running a batch built from a stale snapshot was against the item.
