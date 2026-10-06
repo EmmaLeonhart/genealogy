@@ -2111,7 +2111,7 @@ def gate_label_languages(lines):
     if hand_path.exists():
         with open(hand_path, encoding="utf-8", newline="") as fh:
             for r in csv.DictReader(fh, delimiter="	"):
-                if (r.get("source") or "").strip() == "Emma":
+                if (r.get("source") or "").strip() in HAND_LABEL_SOURCES:
                     hand_emma.add((r["qid"], (r.get("kind") or "L") + r["lang"]))
     dropped = collections.Counter()
     out = []
@@ -3225,6 +3225,10 @@ P2600_LEAD_CAP = 300
 LABEL_LANGUAGE_ORDER = ("en", "mul", "ja", "zh", "ko")
 #: The only label and alias languages a batch writes (ruled 2026-09-27). `en-us` is English.
 LABEL_LANGUAGES = frozenset({"mul", "en", "en-us", "ja", "zh", "ko"})
+#: `label-applications.tsv` sources whose rows pass `LABEL_LANGUAGES` in any language: Emma's own hand labels,
+#: and the Sinosphere overrides in fr/es/ru that her queue item of 2026-10-04 asked for (values are the
+#: session's; this source allowed by Emma by AskUserQuestion, 2026-10-06).
+HAND_LABEL_SOURCES = frozenset({"Emma", "Emma queue 2026-10-04 (Sinosphere overrides)"})
 
 
 def _supported_languages():
