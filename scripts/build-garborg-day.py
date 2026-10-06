@@ -3261,6 +3261,47 @@ def _label_tiers():
         | {"D" + lang for lang in supported}]
 
 
+#: The label edits `_cap_label_edits` chose for this batch, waiting for `record_emitted_labels`.
+_EMITTED_PENDING = []
+
+
+def record_emitted_labels(final_lines, path=None):
+    """Append to `reports/label-edits-emitted.tsv` the chosen label edits that are IN the written batch.
+
+    ⛔ **ONLY WHAT SURVIVED THE GATES (2026-10-06).** The edits were recorded when `_cap_label_edits`
+    chose them, and several gates run after it (locality, the label-language gate, the restatement and
+    applied-facts drops). An edit a later gate removed was recorded as emitted and never sent: `Q141640588`
+    Fujiwara no Tokitaka had `en`/`mul`/`ja`/`zh`/`ko` recorded on 2026-10-06 while every batch file carried
+    only its `ru`/`fr`/`es` lines. An edit that is not in the file is not recorded, so it stays eligible.
+    """
+    path = path or ROOT / "reports" / "label-edits-emitted.tsv"
+    present = set()
+    for ln in final_lines:
+        parts = ln.split("\t")
+        if (len(parts) >= 3 and re.match(r"^Q[1-9][0-9]*$", parts[0])
+                and re.match(r"^[LAD][a-z-]+$", parts[1])):
+            present.add((parts[0], parts[1], parts[2].strip('"')))
+    # A label in a language the language gate always drops (the `da`/`nb`/`nn`/`no`/`sv` generation
+    # suffixes, all 71 of batch `476738075`'s dropped edits) can never go out: it is recorded as before,
+    # or it would come back every run and hold a place under the cap.
+    passes = set(gate_label_languages([f'{q}\t{s}\t"{v}"' for q, s, v in _EMITTED_PENDING]))
+    never = {(q, s, v) for q, s, v in _EMITTED_PENDING if f'{q}\t{s}\t"{v}"' not in passes}
+    kept = [k for k in _EMITTED_PENDING if k in present or k in never]
+    if kept:
+        today = datetime.date.today().isoformat()
+        fresh = not path.exists()
+        with path.open("a", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, delimiter="\t", lineterminator="\n")
+            if fresh:
+                w.writerow(["qid", "slot", "value", "first_emitted"])
+            for qid, slot, value in kept:
+                w.writerow([qid, slot, value, today])
+    print(f"label edits recorded as emitted: {len(kept)} of {len(_EMITTED_PENDING)} chosen "
+          f"({len(never)} in a language never sent); {len(_EMITTED_PENDING) - len(kept)} removed "
+          f"by a later gate stay eligible")
+    _EMITTED_PENDING.clear()
+
+
 def _cap_label_edits(lines, clan_block, corrections, priority=()):
     """Move label edits on existing items to the FRONT, capped at `LABEL_EDIT_CAP` QIDS.
 
@@ -3308,20 +3349,19 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     # it is under a day old and may still be in a running batch. A label that landed and was changed later
     # by somebody stays drained, which keeps the repeat from undoing a hand correction. Aliases (`A`)
     # drain on emission as before: nothing records whether one landed, and a repeat is a no-op anyway.
-    # ⛔ **AND A SLOT THE ACCOUNT TOUCHED SINCE THE FIRST EMISSION STAYS DRAINED (2026-10-06).** A label
-    # that never landed but whose slot an edit of the account set to another value or removed after it
-    # was first emitted is a slot somebody decided. And a slot ever edited BY HAND (outside QuickStatements,
-    # `hand` 1) stays drained whatever the dates: Emma removed the `en` of `Q141523636` by hand on
-    # 2026-09-21, before the values the generator emitted for it on 2026-09-28 and 2026-10-03, and without
-    # this the next batch would put one back. Only a slot nobody has decided is sent again.
+    # ⛔ **AND A SLOT EVER EDITED BY HAND STAYS DRAINED (2026-10-06).** `hand` 1 is a label set or removed
+    # outside QuickStatements, which under this account is Emma. Emma removed the `en` of `Q141523636` by hand
+    # on 2026-09-21, before the values the generator emitted for it on 2026-09-28 and 2026-10-03, and without
+    # this the next batch would put one back. A slot a BATCH changed later is not held: the 16 such re-emissions
+    # in batch `476738075` were the generator's own later corrections (`… Sr.` to `… I`, `Q141586230`'s birth
+    # name), and other editors' corrections are `read_reverted_labels`'s job.
     landed, touched = set(), {}
     landed_path = ROOT / "reports" / "account-label-sets.tsv"
     if landed_path.exists():
         for row in csv.DictReader(landed_path.open(encoding="utf-8"), delimiter="	"):
             landed.add((row["qid"], row["slot"], row["value"]))
-            slot = (row["qid"], row["slot"])
-            when = "9999" if row.get("hand") == "1" else row["timestamp"][:10]
-            touched[slot] = max(touched.get(slot, ""), when)
+            if row.get("hand") == "1":
+                touched[(row["qid"], row["slot"])] = "9999"
     recent = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
     if done_path.exists():
         first, last = {}, {}
@@ -3433,15 +3473,8 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
                 "no-op, so nothing is lost.",
                 "# " + "-" * 72] + head + [""]
 
-    if newly:
-        today = datetime.date.today().isoformat()
-        fresh = not done_path.exists()
-        with done_path.open("a", encoding="utf-8", newline="") as fh:
-            w = csv.writer(fh, delimiter="\t", lineterminator="\n")
-            if fresh:
-                w.writerow(["qid", "slot", "value", "first_emitted"])
-            for qid, slot, value in newly:
-                w.writerow([qid, slot, value, today])
+    # Recorded by `record_emitted_labels` once the batch is written, and only for the lines still in it.
+    _EMITTED_PENDING[:] = newly
     print(f"label edits on existing items: {len(newly)} edits over {len(chosen)} people "
           f"(cap {LABEL_EDIT_CAP} people); {held} edits held across "
           f"{len(by_qid) - len(chosen)} more people; "
@@ -10680,6 +10713,7 @@ def main():
         print(f"{len(_orphans)} creation(s) dropped: the gate stripped the only relationship "
               f"they had, e.g. {_orphans[:4]}")
     out.write_text(NEWLINE.join(_final_lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
+    record_emitted_labels(_final_lines)
     write_creation_candidates(locals().get("_candidates", set()), locals().get("_ring", {}),
                               compose_why if isinstance(compose_why, dict) else {}, carried)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")

@@ -52689,26 +52689,35 @@ was audited as it landed (`reports/daily-audit/2026-10-06-1791287342.md`).
 
 ## 2026-10-06: label edits that never landed: the drain fix made safe, and what was lost
 
-Queue item "Label edits are dropped for good after one emission". The code fix, `8d3eb9408` (a label drains
-when an edit of the account set it, read from `reports/account-label-sets.tsv`), was already in. Found this session:
-- **No batch has been built on it.** Batch `8bb75afff` came from a pipeline run on `52fd8adf5`, before the fix: it
-  re-emitted 0 old label keys (104 `Amul` rescues only). The next pipeline run (12:19 UTC) is pending and has not
-  started, so the check on a real batch waits on CI (BLOCKED-ON-EXTERNAL: GitHub Actions not starting runs; unblocked
-  by the next "rebuild the batch" commit).
-- **Unexpected: the fix would have undone Emma's hand edits.** It re-sent any label that never landed, including on
-  a slot she had since edited by hand. `Q141523636`: she removed `en` "mm Concubine" in the UI on 2026-09-21; the
-  generator emitted `Len "NN"` (2026-09-28) and `Len`/`Lmul "Guðrún Daðadóttir"` (2026-10-03), none landed, and the
-  fix made all three eligible again. Now `refresh-garborg-ledger.py` also records label removals (empty value) and a
-  `hand` column (1 when the edit was made outside QuickStatements), and `_cap_label_edits` keeps a key drained when its
-  slot was ever edited by hand, or changed by the account on or after the key's first emission.
+Queue item "Label edits are dropped for good after one emission". The code fix, `8d3eb9408` (an `L` edit drains
+when an edit of the account set it, read from `reports/account-label-sets.tsv`), was already in.
+- **The first batch on it.** `8bb75afff` was built on `52fd8adf5`, before the fix (0 old `L` keys re-emitted).
+  `476738075` (14:23 UTC) is the first built on it: CI wrote `account-label-sets.tsv` (21,453 rows) and the batch
+  re-emits 334 `L` edits that had been recorded and never landed. So the fix works in CI.
+- **Unexpected: it would have undone Emma's hand edits.** It re-sent any label that never landed, also on a slot she
+  had edited by hand since. `Q141523636`: she removed `en` "mm Concubine" in the UI on 2026-09-21; the generator then
+  emitted `Len "NN"` (2026-09-28) and `Len`/`Lmul "Guðrún Daðadóttir"` (2026-10-03); none landed, and all three became
+  eligible again (the batch did not happen to choose them). Now `refresh-garborg-ledger.py` records removals (empty
+  value) and a `hand` column (1 = edited outside QuickStatements), and `_cap_label_edits` keeps any key on a slot
+  edited by hand drained. A first version also held slots a batch had changed since; dropped, because the 16 such
+  re-emissions in `476738075` were the generator's own later corrections (`… Sr.` to `… I`, the birth-name relabel
+  of `Q141586230`).
+- **Unexpected: a second path to the same loss.** An edit was recorded when `_cap_label_edits` chose it, and gates
+  run after that. `8bb75afff` recorded 1,507 label edits of which 704 (203 items) are not in its batch;
+  `476738075` recorded 438, 71 missing (all `da`/`nb`/`nn`/`no`/`sv` generation suffixes, which the language gate
+  always drops). And of the 1,558 `en`/other label applications, 164 `en` rows were chosen again on 2026-10-06 and
+  are not in the batch, among them the probe `Q141640588` Fujiwara no Tokitaka (`en`/`mul`/`ja`/`zh`/`ko` recorded,
+  only `ru`/`fr`/`es` in every batch file). The composer's own `applied-facts.csv` lists its `Len` as pending, so the
+  removal is in a pipeline step after the composer, not found yet (`strip_tanba`, `update_applied_facts` and the
+  language gate ruled out). Now `record_emitted_labels` writes the ledger after the batch file is written and records
+  only the edits in it, plus those in a language never sent (so they cannot cycle and hold places under the cap).
+  The rest stay eligible.
 - **What was lost, measured.** `account-label-sets.tsv` built locally (237,853 mainspace edits, 21,649 label
-  sets/removals, 4,750 of them by hand) and committed, so the file exists from now on. Of 54,114 `L` keys ever
-  emitted, 14,238 landed and **38,587 never did**. 3,396 stay drained by the new guard (2,196 on hand-edited slots);
-  **35,191 on 8,895 items are eligible again** (720 emitted in August, 16,837 in September, 17,634 in October; by slot
-  `ko` 8,376, `zh` 7,169, `ja` 7,127, `mul` 6,376, `en` 3,055). That includes 304 `en` rows of 2026-10-04, more than
-  the audit's 221. Live check of 40 random eligible rows: 0 live; 28 slots empty, 12 hold another value. Every row:
-  `reports/label-edits-not-landed-2026-10-06.tsv`.
-- Only keys the generator still produces go out again, under `LABEL_EDIT_CAP`, newest items first, and through the
-  existing revert and corrected-slot guards. Several old values in the list are transliterations the current rules
-  would not write (`시르 토마스 브리드게스`, a title transliterated); those come back only if the generator still makes them.
-The queue item is narrowed to the check on the first batch built on the fix.
+  sets/removals, 4,750 by hand) and committed. Of 53,666 `L` keys recorded as emitted, 14,238 landed and **38,587
+  never did**: 2,196 stay held (slot edited by hand), **36,391 on 9,097 items are eligible again** (761 recorded in
+  August, 17,703 in September, 17,927 in October; `ko` 8,725, `zh` 7,461, `ja` 7,459, `mul` 6,480, `en` 3,153;
+  330 `en` rows of 2026-10-04, more than the audit's 221). Live check of 40 random eligible rows: 0 live; 28 slots
+  empty, 12 hold another value. Every row: `reports/label-edits-not-landed-2026-10-06.tsv`. Only keys the generator
+  still produces go out, under `LABEL_EDIT_CAP`, newest items first, through the revert and corrected-slot guards;
+  several old values in the list are transliterations the current rules would not write (`시르 토마스 브리드게스`).
+The queue item is narrowed to the step that still removes the 164 `en` applications after the composer.
