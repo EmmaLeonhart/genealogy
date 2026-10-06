@@ -52739,3 +52739,31 @@ not cover `ru`/`fr`/`es`, which is why `Q141640588` Fujiwara no Tokitaka kept on
 - To see on the next batch built on `main`: `Q141640588` `Len "Fujiwara no Tokitaka"` in the batch file (or held behind
   `LABEL_EDIT_CAP`), and the composer's log line "label edits recorded as emitted".
 Item deleted.
+
+## 2026-10-06: the Daniel name links: a Hebrew-script item, and a class of 214 wrong-script links
+
+Queue item "Analyze the Daniel name links". Report only; the fix is queued as the next item.
+- **What `Q53787734` is (live):** the HEBREW-script given name Daniel: `mul` "דניאיל", `he` "דניאל", `en`/`de` "Daniel",
+  *male given name (Hebrew)*, writing system (`P282`) Hebrew alphabet, language Hebrew. The Latin-script Daniel is
+  `Q14516546` (`mul`/`en` "Daniel", Latin alphabet, French/Polish/English/Dutch/Spanish/Romanian/Czech/Galician),
+  listed as "said to be the same as" (`P460`) on `Q53787734`, with Dániel, Daniël, Daniele, Daniil and others.
+- **Who carries it:** 160 items live; 64 are ours (Daniel Olofsson `Q141205902`, Daniel Kullberg `Q141488190`, Daniel
+  Melanderhjelm `Q5983613` and others), 58 of them linked by the account between 2026-08-28 and 2026-10-06 (11 on
+  2026-09-24, 7 each on 09-26 and 09-28, 3 today), and 6 with no separate edit (linked at creation).
+- **Why, by mistake not by design:** `reports/name-item-plan.csv` routes the Latin token `Daniel` (given, 583 bearers)
+  to `Q53787734`, from `measure-name-resolution.py`, which matches a token against one label per item in
+  `reports/wikidata-labels.tsv`. That file has no row for `Q14516546`. Its only Latin label is effectively the
+  `mul` one (the bot that removes `en` labels duplicating `mul` is the likely reason), while the Hebrew item keeps
+  `en` "Daniel" because its `mul` is Hebrew. So the wrong item was the only candidate and "resolved" without ambiguity.
+  The same pattern feeds the patronymics: `reports/patronymic-resolution.tsv` flags Danielsson/Danielsdotter fathers
+  whose `P735` (`Q53787734`) is not among the patronymic's `P144` (`Q14516546`).
+- **How big, live:** all 8,109 Latin-token links in the plan (8,000 items) were fetched
+  (`scripts/session-2026-10-06/name-links-script-check.py`). 214 point at an item whose `mul` or `P282` is not Latin,
+  9,434 bearers in the plan (`reports/name-links-wrong-script-2026-10-06.tsv`). Those 214 items are on 45,962 items
+  live, **317 links on 314 of ours** (`name-links-live-count.py`, `reports/name-links-wrong-script-live-2026-10-06.tsv`):
+  264 added by the account, 23 with no separate edit, the rest by other editors (KrBot, 白布飘扬 and others). The
+  clear errors: Eva -> `Q64412279` (Greek alphabet) 71, Daniel -> `Q53787734` 64, Karl -> `Q136771753` (Cyrillic Карл)
+  64, David -> `Q29937870` (Cyrillic Давид) 31, Louis -> `Q97156058` (Greek) 8, Zacharias -> `Q97932747` (Greek) 9.
+  Others may be right for their bearers and need judging one by one: Japanese families in kanji (Konoe 6, Sasaki 3,
+  Fujiwara 2), Konstantinos in Greek 5, Rurikid Vsevolod/Sviatoslav in Cyrillic, Hebrew names (Ashkenazi 10, Mordechai 4).
+- The three Daniel lines of batch `8bb75afff` ran in the browser this morning, as the earlier session left them.
