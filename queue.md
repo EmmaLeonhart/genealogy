@@ -26,7 +26,6 @@ it. Each session starts with
 
 
 
-- **Then, if the audit above confirms the errors are solved: wait on the pipeline (Emma, 2026-10-04).** If the pipeline is not finished, or is generating new QuickStatements, wait until it has finished and committed its new batch.
 - **Then run the new batch of QuickStatements from the audited pipeline (Emma, 2026-10-04).** The point of this item is that the batch run is the one built by the pipeline after the audit, not an older one.
 - **Clean up this project, and the ontology-harness checkout of it.** Emma: "we should be putting at the end of the queue something about cleaning it up." Keep it at the end. From Emma's notes of 2026-09-30, `docs/queue-archive/emma-notes-2026-09-30.md`.
 - **Assess changing the scope of our operations (Emma, 2026-10-04).** Emma: "I think we've gone insanely fast, like way too fast compared to what we probably should have gone on." An assessment of the current scale (creations per batch, edits a day, campaigns running at once) against a smaller one.

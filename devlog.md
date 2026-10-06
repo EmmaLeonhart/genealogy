@@ -52820,3 +52820,9 @@ Emma, on the report that batch `0aff979b1` still held `Q128045691 P735 Q13677175
   Karl Otto von Toll `Q128045691` has no `P735` live, so the line now adds the Latin Karl. The archived
   `-audited-*`/`-held` copies are history and were left alone. If the running pipeline conflicts on these files, its
   commit step resolves in favour of its own rebuild, which is the clean one.
+
+## 2026-10-06: "wait on the pipeline" item removed at Emma's word
+
+Emma: "Skip the item lol remove the first item". The queue item "Then, if the audit above confirms the errors are
+solved: wait on the pipeline (Emma, 2026-10-04)" is deleted unworked. At the time, pipeline run 37486679835 (from
+`532dfa908`) had been on its ledger refresh step since 08:20 PDT, and run 37504809247 was pending behind it.
