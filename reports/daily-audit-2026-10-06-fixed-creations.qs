@@ -90,13 +90,12 @@ LAST	P734	Q27888882
 LAST	Amul	"Guttorm EIVINDSEN ARSTAD-BO"
 LAST	Amul	"Guttorm Høyland"
 
-# Lines from the same paragraphs, unrelated to the four, dropped with them by the audit and restored here.
+# Lines from the same paragraphs, unrelated to the four, dropped with them by the audit and restored here (one garbled ko label on Q112970943 left out).
 Q1168365	P40	Q11872025	S2600	"6000000007442688545"
 Q1168365	P40	Q86133100	S2600	"6000000007442688545"
 Q11683763	P22	Q12715292	S2600	"6000000070303542947"
 Q11683763	P3373	Q3360436	S2600	"6000000070303542947"
 Q116964250	P22	Q3370121	S2600	"6000000006851811354"
-Q112970943	Lko	"마르케타 케에르메마르케타 도와게르"
 Q88797061	Lmul	"Robert Reuterskiöld"
 Q88797061	Lja	"クヌート・ロバート・ファービアーン・レウテルスキオルド"
 Q88797061	Lja	"ロバート・レウテルスキオルド"
