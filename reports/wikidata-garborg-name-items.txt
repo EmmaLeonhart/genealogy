@@ -16,384 +16,6 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Tanba -- family, 178 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Tanba"
-LAST	Len	"Tanba"
-#   set the mul label to "Tanba"
-LAST	Lmul	"Tanba"
-#   set the ja label to "タンバ"
-LAST	Lja	"タンバ"
-#   set the zh label to "坦巴"
-LAST	Lzh	"坦巴"
-#   set the ko label to "탄바"
-LAST	Lko	"탄바"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Tanba"
-LAST	P1705	mul:"Tanba"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q135524858 Yorikiyo Tanba: P734 family name = the item just created
-Q135524858	P734	LAST	S2600	"6000000227350432965"
-#   Q135524821 Yasuji Tanba: P734 family name = the item just created
-Q135524821	P734	LAST	S2600	"6000000227350450833"
-#   Q135524864 Toshiyasu Tanba: P734 family name = the item just created
-Q135524864	P734	LAST	S2600	"6000000227350457835"
-#   Q135524890 Tsuginaga Tanba: P734 family name = the item just created
-Q135524890	P734	LAST	S2600	"6000000227350458858"
-#   Q135524873 Ienaga Tanba: P734 family name = the item just created
-Q135524873	P734	LAST	S2600	"6000000227350459846"
-#   Q135524804 Yoriyasu Tanba: P734 family name = the item just created
-Q135524804	P734	LAST	S2600	"6000000227350466844"
-#   Q135524875 Muneyasu Tanba: P734 family name = the item just created
-Q135524875	P734	LAST	S2600	"6000000227350466908"
-#   Q135524824 Ikimoto Tanba: P734 family name = the item just created
-Q135524824	P734	LAST	S2600	"6000000227350468901"
-#   Q135524833 Masatsune Tanba: P734 family name = the item just created
-Q135524833	P734	LAST	S2600	"6000000227350468906"
-#   Q135524822 Motoaki Tanba: P734 family name = the item just created
-Q135524822	P734	LAST	S2600	"6000000227350468920"
-#   Q135524846 Hisanaga Tanba: P734 family name = the item just created
-Q135524846	P734	LAST	S2600	"6000000227350468929"
-#   Q135524790 Kiyomasa Tanba: P734 family name = the item just created
-Q135524790	P734	LAST	S2600	"6000000227350480005"
-#   Q135524797 Tadayasu Tanba: P734 family name = the item just created
-Q135524797	P734	LAST	S2600	"6000000227350480021"
-#   Q135524848 Motoyoshi Tanba: P734 family name = the item just created
-Q135524848	P734	LAST	S2600	"6000000227350480136"
-#   Q135524892 Kaneyasu Tanba: P734 family name = the item just created
-Q135524892	P734	LAST	S2600	"6000000227350480176"
-#   Q135524807 Tsuneyasu Tanba: P734 family name = the item just created
-Q135524807	P734	LAST	S2600	"6000000227350483979"
-#   Q135524830 Yoshimoto Tanba: P734 family name = the item just created
-Q135524830	P734	LAST	S2600	"6000000227350483988"
-#   Q17212991 Masatada Tanba: P734 family name = the item just created
-Q17212991	P734	LAST	S2600	"6000000227350486846"
-#   Q135524810 Norimoto Tanba: P734 family name = the item just created
-Q135524810	P734	LAST	S2600	"6000000227350486925"
-#   Q135524899 Ariyasu Tanba: P734 family name = the item just created
-Q135524899	P734	LAST	S2600	"6000000227350486977"
-#   Q11368580 Tokinaga Tanba: P734 family name = the item just created
-Q11368580	P734	LAST	S2600	"6000000227350487098"
-#   Q135524834 Masatsugu Tanba: P734 family name = the item just created
-Q135524834	P734	LAST	S2600	"6000000227350504993"
-#   Q135524798 Shigeyasu Tanba: P734 family name = the item just created
-Q135524798	P734	LAST	S2600	"6000000227350508924"
-#   Q135524814 Masanaga Tanba: P734 family name = the item just created
-Q135524814	P734	LAST	S2600	"6000000227350508962"
-#   Q135524844 Naganobu Tanba: P734 family name = the item just created
-Q135524844	P734	LAST	S2600	"6000000227350508982"
-#   Q135524806 Mikoyasu Tanba: P734 family name = the item just created
-Q135524806	P734	LAST	S2600	"6000000227350511019"
-#   Q135524793 Toshiyoshi Tanba: P734 family name = the item just created
-Q135524793	P734	LAST	S2600	"6000000227350512947"
-#   Q135524898 Morinaga Tanba: P734 family name = the item just created
-Q135524898	P734	LAST	S2600	"6000000227350524835"
-#   Q135524894 Nagahira Tanba: P734 family name = the item just created
-Q135524894	P734	LAST	S2600	"6000000227350524887"
-#   Q135524803 Shigeyori Tanba: P734 family name = the item just created
-Q135524803	P734	LAST	S2600	"6000000227350527916"
-#   Q135524973 Tamemoto Tanba: P734 family name = the item just created
-Q135524973	P734	LAST	S2600	"6000000227350530885"
-#   Q135524975 Tokimichi Tanba: P734 family name = the item just created
-Q135524975	P734	LAST	S2600	"6000000227350530892"
-#   Q135524984 Tsunetoshi Tanba: P734 family name = the item just created
-Q135524984	P734	LAST	S2600	"6000000227350530913"
-#   Q135524808 Motoyasu Tanba: P734 family name = the item just created
-Q135524808	P734	LAST	S2600	"6000000227350531833"
-#   Q135524915 Sueyoshi Tanba: P734 family name = the item just created
-Q135524915	P734	LAST	S2600	"6000000227350533879"
-#   Q135524789 Shigemitsu Tanba: P734 family name = the item just created
-Q135524789	P734	LAST	S2600	"6000000227350539869"
-#   Q1466794 Yasuyori Tanba: P734 family name = the item just created
-Q1466794	P734	LAST	S2600	"6000000227350547867"
-#   Q135524794 Tadamitsu Tanba: P734 family name = the item just created
-Q135524794	P734	LAST	S2600	"6000000227350551882"
-#   Q135524809 Tomoyasu Tanba: P734 family name = the item just created
-Q135524809	P734	LAST	S2600	"6000000227350556836"
-#   Q135524815 Yorimoto Tanba: P734 family name = the item just created
-Q135524815	P734	LAST	S2600	"6000000227350557852"
-#   Q11665947 Asukai Masaharu Tanba: P734 family name = the item just created
-Q11665947	P734	LAST	S2600	"6000000227350572848"
-#   Q135524856 Yorimoto Tanba: P734 family name = the item just created
-Q135524856	P734	LAST	S2600	"6000000227350573858"
-#   Q132435802 Shigetada Tanba: P734 family name = the item just created
-Q132435802	P734	LAST	S2600	"6000000227350573875"
-#   Q135524831 Tsunenaga Tanba: P734 family name = the item just created
-Q135524831	P734	LAST	S2600	"6000000227350575878"
-#   Q135524879 Ennaga Tanba: P734 family name = the item just created
-Q135524879	P734	LAST	S2600	"6000000227350585923"
-#   Q135524835 Hisamoto Tanba: P734 family name = the item just created
-Q135524835	P734	LAST	S2600	"6000000227350585974"
-#   Q135524842 Yoriyuki Tanba: P734 family name = the item just created
-Q135524842	P734	LAST	S2600	"6000000227350587897"
-#   Q135524801 Nakakiyo Tanba: P734 family name = the item just created
-Q135524801	P734	LAST	S2600	"6000000227350588855"
-#   Q135524930 Nagachika Tanba: P734 family name = the item just created
-Q135524930	P734	LAST	S2600	"6000000227350589923"
-#   Q135524988 Kiyoyoshi Tanba: P734 family name = the item just created
-Q135524988	P734	LAST	S2600	"6000000227350589990"
-#   Q135524812 Shigenaga Tanba: P734 family name = the item just created
-Q135524812	P734	LAST	S2600	"6000000227350590843"
-#   Q135524795 Shigetsune Tanba: P734 family name = the item just created
-Q135524795	P734	LAST	S2600	"6000000227350592846"
-#   Q135524816 Tsunemoto Tanba: P734 family name = the item just created
-Q135524816	P734	LAST	S2600	"6000000227350595891"
-#   Q135524896 Sadayasu Tanba: P734 family name = the item just created
-Q135524896	P734	LAST	S2600	"6000000227350595928"
-#   Q135524902 Yorihide Tanba: P734 family name = the item just created
-Q135524902	P734	LAST	S2600	"6000000227350595951"
-#   Q11665951 Asukai Masatsuna Tanba: P734 family name = the item just created
-Q11665951	P734	LAST	S2600	"6000000227350595957"
-#   Q135524928 Mitsuyo Tanba: P734 family name = the item just created
-Q135524928	P734	LAST	S2600	"6000000227350596084"
-#   Q135524799 Masayasu Tanba: P734 family name = the item just created
-Q135524799	P734	LAST	S2600	"6000000227350600828"
-#   Q135524888 Iemae Tanba: P734 family name = the item just created
-Q135524888	P734	LAST	S2600	"6000000227350600851"
-#   Q135524805 Shigemoto Tanba: P734 family name = the item just created
-Q135524805	P734	LAST	S2600	"6000000227350605869"
-#   Q135524823 Nobuyasu Tanba: P734 family name = the item just created
-Q135524823	P734	LAST	S2600	"6000000227350605885"
-#   Q135524860 Hiromoto Tanba: P734 family name = the item just created
-Q135524860	P734	LAST	S2600	"6000000227350605921"
-#   Q135524829 Arimichi Tanba: P734 family name = the item just created
-Q135524829	P734	LAST	S2600	"6000000227350605990"
-#   Q135524901 Haruyasu Tanba: P734 family name = the item just created
-Q135524901	P734	LAST	S2600	"6000000227350610914"
-#   Q135524904 Toshinaga Tanba: P734 family name = the item just created
-Q135524904	P734	LAST	S2600	"6000000227350610924"
-#   Q135524849 Ieyasu Tanba: P734 family name = the item just created
-Q135524849	P734	LAST	S2600	"6000000227350611012"
-#   Q135524845 Naganaga Tanba: P734 family name = the item just created
-Q135524845	P734	LAST	S2600	"6000000227350612827"
-#   Q135524871 Norinaga Tanba: P734 family name = the item just created
-Q135524871	P734	LAST	S2600	"6000000227350617868"
-#   Q135524820 Tomomoto Tanba: P734 family name = the item just created
-Q135524820	P734	LAST	S2600	"6000000227350639842"
-#   Q135524832 Motokane Tanba: P734 family name = the item just created
-Q135524832	P734	LAST	S2600	"6000000227350661830"
-#   Q135524841 Tadatoshi Tanba: P734 family name = the item just created
-Q135524841	P734	LAST	S2600	"6000000227350675940"
-#   Q135524868 Akihito Tanba: P734 family name = the item just created
-Q135524868	P734	LAST	S2600	"6000000227350675955"
-#   Q135524869 Hisayoshi Tanba: P734 family name = the item just created
-Q135524869	P734	LAST	S2600	"6000000227350675960"
-#   Q135524931 Tokimi Tanba: P734 family name = the item just created
-Q135524931	P734	LAST	S2600	"6000000227350676015"
-#   Q135524865 Yukimoto Tanba: P734 family name = the item just created
-Q135524865	P734	LAST	S2600	"6000000227350676859"
-#   Q135524874 Hisayasu Tanba: P734 family name = the item just created
-Q135524874	P734	LAST	S2600	"6000000227350676868"
-#   Q135524884 Tomonaga Tanba: P734 family name = the item just created
-Q135524884	P734	LAST	S2600	"6000000227350676877"
-#   Q135524885 Moriyasu Tanba: P734 family name = the item just created
-Q135524885	P734	LAST	S2600	"6000000227350683839"
-#   Q135524826 Tadanori Tanba: P734 family name = the item just created
-Q135524826	P734	LAST	S2600	"6000000227350683895"
-#   Q135524836 Yorinori Tanba: P734 family name = the item just created
-Q135524836	P734	LAST	S2600	"6000000227350693884"
-#   Q135524862 Yukinaga Tanba: P734 family name = the item just created
-Q135524862	P734	LAST	S2600	"6000000227350698848"
-#   Q135524878 Nagahiro Tanba: P734 family name = the item just created
-Q135524878	P734	LAST	S2600	"6000000227350700901"
-#   Q135524909 Yoritoki Tanba: P734 family name = the item just created
-Q135524909	P734	LAST	S2600	"6000000227350700930"
-#   Q135524855 Nagatomo Tanba: P734 family name = the item just created
-Q135524855	P734	LAST	S2600	"6000000227350703883"
-#   Q135524886 Nagatoyo Tanba: P734 family name = the item just created
-Q135524886	P734	LAST	S2600	"6000000227350703891"
-#   Q135524850 Takamoto Tanba: P734 family name = the item just created
-Q135524850	P734	LAST	S2600	"6000000227350703911"
-#   Q135524863 Morinaga Tanba: P734 family name = the item just created
-Q135524863	P734	LAST	S2600	"6000000227350704822"
-#   Q135524889 Hidenaga Tanba: P734 family name = the item just created
-Q135524889	P734	LAST	S2600	"6000000227350704830"
-#   Q135524893 Shigeyo Tanba: P734 family name = the item just created
-Q135524893	P734	LAST	S2600	"6000000227350704918"
-#   Q135524828 Yasunaga Tanba: P734 family name = the item just created
-Q135524828	P734	LAST	S2600	"6000000227350705908"
-#   Q135524840 Nagatada Tanba: P734 family name = the item just created
-Q135524840	P734	LAST	S2600	"6000000227350705920"
-#   Q135524839 Yasumitsu Tanba: P734 family name = the item just created
-Q135524839	P734	LAST	S2600	"6000000227350708868"
-#   Q135524905 Yorihiro Tanba: P734 family name = the item just created
-Q135524905	P734	LAST	S2600	"6000000227350709826"
-#   Q135524877 Nagauji Tanba: P734 family name = the item just created
-Q135524877	P734	LAST	S2600	"6000000227350716844"
-#   Q135524907 Nagamoto Tanba: P734 family name = the item just created
-Q135524907	P734	LAST	S2600	"6000000227350716880"
-#   Q11368575 Tadamori Tanba: P734 family name = the item just created
-Q11368575	P734	LAST	S2600	"6000000227350727867"
-#   Q135524887 Suetoshi Tanba: P734 family name = the item just created
-Q135524887	P734	LAST	S2600	"6000000227350727872"
-#   Q135524853 Shigeuji Tanba: P734 family name = the item just created
-Q135524853	P734	LAST	S2600	"6000000227350733847"
-#   Q135524914 Mitsumoto Tanba: P734 family name = the item just created
-Q135524914	P734	LAST	S2600	"6000000227350734863"
-#   Q135524939 Moriyo Tanba: P734 family name = the item just created
-Q135524939	P734	LAST	S2600	"6000000227350734887"
-#   Q135524854 Tadamoto Tanba: P734 family name = the item just created
-Q135524854	P734	LAST	S2600	"6000000227350737865"
-#   Q135524882 Kanehira Tanba: P734 family name = the item just created
-Q135524882	P734	LAST	S2600	"6000000227350738821"
-#   Q135524895 Sadanaga Tanba: P734 family name = the item just created
-Q135524895	P734	LAST	S2600	"6000000227350739830"
-#   Q135524906 Yasunaga Tanba: P734 family name = the item just created
-Q135524906	P734	LAST	S2600	"6000000227350739844"
-#   Q135524811 Yoritada Tanba: P734 family name = the item just created
-Q135524811	P734	LAST	S2600	"6000000227350739851"
-#   Q135524838 Yasutaka Tanba: P734 family name = the item just created
-Q135524838	P734	LAST	S2600	"6000000227350739858"
-#   Q135524872 Nagasue Tanba: P734 family name = the item just created
-Q135524872	P734	LAST	S2600	"6000000227350739869"
-#   Q135524936 Sadayo Tanba: P734 family name = the item just created
-Q135524936	P734	LAST	S2600	"6000000227350744934"
-#   Q135524937 Chikanori Tanba: P734 family name = the item just created
-Q135524937	P734	LAST	S2600	"6000000227350744940"
-#   Q135524900 Yoritoyo Tanba: P734 family name = the item just created
-Q135524900	P734	LAST	S2600	"6000000227350747823"
-#   Q135524852 Masanori Tanba: P734 family name = the item just created
-Q135524852	P734	LAST	S2600	"6000000227350747859"
-#   Q135524927 Naganori Tanba: P734 family name = the item just created
-Q135524927	P734	LAST	S2600	"6000000227350747937"
-#   Q135524897 Yorinobu Tanba: P734 family name = the item just created
-Q135524897	P734	LAST	S2600	"6000000227350748821"
-#   Q135524851 Masahisa Tanba: P734 family name = the item just created
-Q135524851	P734	LAST	S2600	"6000000227350752844"
-#   Q135524867 Yukiyasu Tanba: P734 family name = the item just created
-Q135524867	P734	LAST	S2600	"6000000227350759848"
-#   Q135524916 Tokinori Tanba: P734 family name = the item just created
-Q135524916	P734	LAST	S2600	"6000000227350759876"
-#   Q135524933 Yasutsune Tanba: P734 family name = the item just created
-Q135524933	P734	LAST	S2600	"6000000227350763845"
-#   Q135524924 Atsumoto Tanba: P734 family name = the item just created
-Q135524924	P734	LAST	S2600	"6000000227350767823"
-#   Q135524962 Kiyomoto Tanba: P734 family name = the item just created
-Q135524962	P734	LAST	S2600	"6000000227350769911"
-#   Q135524969 Yorimoto Tanba: P734 family name = the item just created
-Q135524969	P734	LAST	S2600	"6000000227350769923"
-#   Q135524987 Shigetoshi Tanba: P734 family name = the item just created
-Q135524987	P734	LAST	S2600	"6000000227350769945"
-#   Q135524910 Tadanaga Tanba: P734 family name = the item just created
-Q135524910	P734	LAST	S2600	"6000000227350790824"
-#   Q135524945 Nagaaki Tanba: P734 family name = the item just created
-Q135524945	P734	LAST	S2600	"6000000227350797870"
-#   Q135524960 Tamemoto Tanba: P734 family name = the item just created
-Q135524960	P734	LAST	S2600	"6000000227350797893"
-#   Q135524934 Naochoku Tanba: P734 family name = the item just created
-Q135524934	P734	LAST	S2600	"6000000227350800834"
-#   Q135524921 Tadayori Tanba: P734 family name = the item just created
-Q135524921	P734	LAST	S2600	"6000000227350800846"
-#   Q135524911 Suehiro Tanba: P734 family name = the item just created
-Q135524911	P734	LAST	S2600	"6000000227350802824"
-#   Q135524940 Nagaharu Tanba: P734 family name = the item just created
-Q135524940	P734	LAST	S2600	"6000000227350802831"
-#   Q135524932 Tadakage Tanba: P734 family name = the item just created
-Q135524932	P734	LAST	S2600	"6000000227350811835"
-#   Q135524922 Yasuie Tanba: P734 family name = the item just created
-Q135524922	P734	LAST	S2600	"6000000227350814835"
-#   Q135524919 Naganori Tanba: P734 family name = the item just created
-Q135524919	P734	LAST	S2600	"6000000227350819822"
-#   Q135524955 Munekiyo Tanba: P734 family name = the item just created
-Q135524955	P734	LAST	S2600	"6000000227350822857"
-#   Q135524957 Munetada Tanba: P734 family name = the item just created
-Q135524957	P734	LAST	S2600	"6000000227350822862"
-#   Q135524917 Yasuyo Tanba: P734 family name = the item just created
-Q135524917	P734	LAST	S2600	"6000000227350826825"
-#   Q135524941 Tadayuki Tanba: P734 family name = the item just created
-Q135524941	P734	LAST	S2600	"6000000227350826842"
-#   Q135524947 Tadayuki 2 Tanba: P734 family name = the item just created
-Q135524947	P734	LAST	S2600	"6000000227350826862"
-#   Q135524952 Sueyoshi 2 Tanba: P734 family name = the item just created
-Q135524952	P734	LAST	S2600	"6000000227350826883"
-#   Q135524950 Suekata Tanba: P734 family name = the item just created
-Q135524950	P734	LAST	S2600	"6000000227350828860"
-#   Q135524972 Hideyori Tanba: P734 family name = the item just created
-Q135524972	P734	LAST	S2600	"6000000227350828902"
-#   Q135524989 Masayoshi Tanba: P734 family name = the item just created
-Q135524989	P734	LAST	S2600	"6000000227350837845"
-#   Q135524961 Toshimichi Tanba: P734 family name = the item just created
-Q135524961	P734	LAST	S2600	"6000000227350855841"
-#   Q135524943 Chikatoki Tanba: P734 family name = the item just created
-Q135524943	P734	LAST	S2600	"6000000227350856824"
-#   Q135524981 Chikayoshi Tanba: P734 family name = the item just created
-Q135524981	P734	LAST	S2600	"6000000227350856861"
-#   Q135524948 Suekage Tanba: P734 family name = the item just created
-Q135524948	P734	LAST	S2600	"6000000227350857841"
-#   Q135524974 Hideyoshi Tanba: P734 family name = the item just created
-Q135524974	P734	LAST	S2600	"6000000227350858841"
-#   Q135524968 Toshitada Tanba: P734 family name = the item just created
-Q135524968	P734	LAST	S2600	"6000000227350861849"
-#   Q135524986 Ariyoshi Tanba: P734 family name = the item just created
-Q135524986	P734	LAST	S2600	"6000000227350861875"
-#   Q135524942 Hideyo Tanba: P734 family name = the item just created
-Q135524942	P734	LAST	S2600	"6000000227350867821"
-#   Q135524944 Yukiyasu Tanba: P734 family name = the item just created
-Q135524944	P734	LAST	S2600	"6000000227350867826"
-#   Q135524946 Yorikage Tanba: P734 family name = the item just created
-Q135524946	P734	LAST	S2600	"6000000227350869832"
-#   Q135524979 Yukiyoshi Tanba: P734 family name = the item just created
-Q135524979	P734	LAST	S2600	"6000000227350871828"
-#   Q135524977 Taneyoshi Tanba: P734 family name = the item just created
-Q135524977	P734	LAST	S2600	"6000000227350877878"
-#   Q135524990 Suetoshi Tanba: P734 family name = the item just created
-Q135524990	P734	LAST	S2600	"6000000227350877904"
-#   Q135524971 Yasumichi Tanba: P734 family name = the item just created
-Q135524971	P734	LAST	S2600	"6000000227350878846"
-#   Q135524985 Hidemasa Tanba: P734 family name = the item just created
-Q135524985	P734	LAST	S2600	"6000000227350878880"
-#   Q135524993 Yoshitoshi Tanba: P734 family name = the item just created
-Q135524993	P734	LAST	S2600	"6000000227350878899"
-#   Q135524995 Yoshitomo Tanba: P734 family name = the item just created
-Q135524995	P734	LAST	S2600	"6000000227350878907"
-#   Q135524980 Motoyoshi Tanba: P734 family name = the item just created
-Q135524980	P734	LAST	S2600	"6000000227350880839"
-#   Q135524965 Suetoshi Tanba: P734 family name = the item just created
-Q135524965	P734	LAST	S2600	"6000000227350881838"
-#   Q135524994 Yoshikuni Tanba: P734 family name = the item just created
-Q135524994	P734	LAST	S2600	"6000000227350881854"
-#   Q135525000 Yorinao Tanba: P734 family name = the item just created
-Q135525000	P734	LAST	S2600	"6000000227351138949"
-#   Q135525006 Yorinaka Tanba: P734 family name = the item just created
-Q135525006	P734	LAST	S2600	"6000000227351138968"
-#   Q135524876 Fuyuyasu Tanba: P734 family name = the item just created
-Q135524876	P734	LAST	S2600	"6000000227351157886"
-#   Q135525012 Motonori Taki Tanba: P734 family name = the item just created
-Q135525012	P734	LAST	S2600	"6000000227351174975"
-#   Q135525001 Yoriyoshi Tanba: P734 family name = the item just created
-Q135525001	P734	LAST	S2600	"6000000227351205884"
-#   Q135524996 Nagatoshi Tanba: P734 family name = the item just created
-Q135524996	P734	LAST	S2600	"6000000227351212844"
-#   Q55529040 Mototaka Taki Tanba: P734 family name = the item just created
-Q55529040	P734	LAST	S2600	"6000000227351216851"
-#   Q135525009 Motonao Kanpo Tanba: P734 family name = the item just created
-Q135525009	P734	LAST	S2600	"6000000227351241860"
-#   Q135524999 Yorikazu Tanba: P734 family name = the item just created
-Q135524999	P734	LAST	S2600	"6000000227351250838"
-#   Q135525010 Motokatsu Kanpo Tanba: P734 family name = the item just created
-Q135525010	P734	LAST	S2600	"6000000227351269845"
-#   Q135524925 Tokiyo Tanba: P734 family name = the item just created
-Q135524925	P734	LAST	S2600	"6000000227351269898"
-#   Q135525008 Yorifusa Tanba: P734 family name = the item just created
-Q135525008	P734	LAST	S2600	"6000000227351270846"
-#   Q135525003 Yorimoto Tanba: P734 family name = the item just created
-Q135525003	P734	LAST	S2600	"6000000227351273825"
-#   Q135525002 Yorishige Tanba: P734 family name = the item just created
-Q135525002	P734	LAST	S2600	"6000000227351301821"
-#   Q135525011 Motoen Kanpo Tanba: P734 family name = the item just created
-Q135525011	P734	LAST	S2600	"6000000227351315822"
-#   Q135524912 Sueyasu Tanba: P734 family name = the item just created
-Q135524912	P734	LAST	S2600	"6000000227351379821"
-#   Q135524954 Sueyoshi Tanba Jr.: P734 family name = the item just created
-Q135524954	P734	LAST	S2600	"6000000227379158022"
-#   Q135524991 Masatoshi Tanba: P734 family name = the item just created
-Q135524991	P734	LAST	S2600	"6000000227379231882"
-
 # Jonsson -- patronymic, 125 bearer(s) in the batches
 # create a new item
 CREATE
@@ -493,12 +115,12 @@ Q141523488	P5056	LAST	S2600	"6000000002359758915"
 Q141403652	P5056	LAST	P144	Q141502792	S2600	"6000000002390972936"
 #   Q141611071 Torgaut Jonsson Smør: P5056 patronym or matronym = the item just created, qualified P144 based on Q141610335 Jon Ragnvaldson Smør
 Q141611071	P5056	LAST	P144	Q141610335	S2600	"6000000002951792311"
-#   Q121199578 Zacharias Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585445 Jon, P3831 object of statement has role Q141584760
-Q121199578	P5056	LAST	P144	Q141585445	P3831	Q141584760	S2600	"6000000002994865324"
+#   Q121199578 Zacharias Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585445 Jon
+Q121199578	P5056	LAST	P144	Q141585445	S2600	"6000000002994865324"
 #   Q5915860 Knut Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q5884317 Johan, Jons Filipsson
 Q5915860	P5056	LAST	P144	Q5884317	S2600	"6000000003168965773"
-#   Q141538424 Johan Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559850 Jon Persson, P3831 object of statement has role Q141584760
-Q141538424	P5056	LAST	P144	Q141559850	P3831	Q141584760	S2600	"6000000003194167361"
+#   Q141538424 Johan Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559850 Jon Persson
+Q141538424	P5056	LAST	P144	Q141559850	S2600	"6000000003194167361"
 #   Q141566070 Per Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559850 Jon Persson
 Q141566070	P5056	LAST	P144	Q141559850	S2600	"6000000003194196611"
 #   Q141632386 Bo Jonsson Grip: P5056 patronym or matronym = the item just created, qualified P144 based on Q141634083 Jon Tomasson (äldre Grip)
@@ -521,8 +143,8 @@ Q106528141	P5056	LAST	P144	Q103783310	S2600	"6000000003575836084"
 Q18418043	P5056	LAST	P144	Q26965895	S2600	"6000000003645671274"
 #   Q101247917 Alf Jonsson Bolt: P5056 patronym or matronym = the item just created
 Q101247917	P5056	LAST	S2600	"6000000003645734197"
-#   Q141516045 Jonas Jonsson: P5056 patronym or matronym = the item just created, qualified P3831 object of statement has role Q141584760
-Q141516045	P5056	LAST	P3831	Q141584760	S2600	"6000000003770307606"
+#   Q141516045 Jonas Jonsson: P5056 patronym or matronym = the item just created
+Q141516045	P5056	LAST	S2600	"6000000003770307606"
 #   Q141502516 Anders Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141521650 Jon Olofsson
 Q141502516	P5056	LAST	P144	Q141521650	S2600	"6000000004368412079"
 #   Q141611088 Assur Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141610335 Jon Ragnvaldson Smør
@@ -547,14 +169,14 @@ Q141444734	P5056	LAST	S2600	"6000000006371373241"
 Q141585970	P5056	LAST	S2600	"6000000006428811762"
 #   Q141578677 Lars Gustaf Jonsson Bratt: P5056 patronym or matronym = the item just created, qualified P144 based on Q5585277 Jonas Larsson Bratt
 Q141578677	P5056	LAST	P144	Q5585277	S2600	"6000000006578582210"
-#   Q141520180 Olaus Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538446 Jon Olofsson, P3831 object of statement has role Q141584760
-Q141520180	P5056	LAST	P144	Q141538446	P3831	Q141584760	S2600	"6000000006590213904"
+#   Q141520180 Olaus Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538446 Jon Olofsson
+Q141520180	P5056	LAST	P144	Q141538446	S2600	"6000000006590213904"
 #   Q5568857 Daniel Jonsson Behmer: P5056 patronym or matronym = the item just created, qualified P144 based on Q25451348 Jon Mickelsson Behm
 Q5568857	P5056	LAST	P144	Q25451348	S2600	"6000000006776755330"
-#   Q141224872 Petrus Jonae Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141314031 Jonas Persson, P3831 object of statement has role Q141584760
-Q141224872	P5056	LAST	P144	Q141314031	P3831	Q141584760	S2600	"6000000006782697953"
-#   Q141565992 Olaus Jonsson Krok: P5056 patronym or matronym = the item just created, qualified P144 based on Q141569962 Jonas Olai Olofsson, P3831 object of statement has role Q141584760
-Q141565992	P5056	LAST	P144	Q141569962	P3831	Q141584760	S2600	"6000000007294780753"
+#   Q141224872 Petrus Jonae Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141314031 Jonas Persson
+Q141224872	P5056	LAST	P144	Q141314031	S2600	"6000000006782697953"
+#   Q141565992 Olaus Jonsson Krok: P5056 patronym or matronym = the item just created, qualified P144 based on Q141569962 Jonas Olai Olofsson
+Q141565992	P5056	LAST	P144	Q141569962	S2600	"6000000007294780753"
 #   Q141551335 Jöns Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141610222 Jon Månsson Haga, Norrala
 Q141551335	P5056	LAST	P144	Q141610222	S2600	"6000000007294888260"
 #   Q141529597 Lars Jonsson Behm: P5056 patronym or matronym = the item just created, qualified P144 based on Q25451348 Jon Mickelsson Behm
@@ -569,8 +191,8 @@ Q141318610	P5056	LAST	P144	Q141382221	S2600	"6000000007910876307"
 Q141579609	P5056	LAST	P144	Q141583246	S2600	"6000000007922797801"
 #   Q141528352 Hallstein Jonsson Haar: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498446 Jon Olofsson Hård
 Q141528352	P5056	LAST	P144	Q141498446	S2600	"6000000007980453767"
-#   Q141538911 Petrus Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559856 Jonas Tomasson, P3831 object of statement has role Q141584760
-Q141538911	P5056	LAST	P144	Q141559856	P3831	Q141584760	S2600	"6000000008059972444"
+#   Q141538911 Petrus Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559856 Jonas Tomasson
+Q141538911	P5056	LAST	P144	Q141559856	S2600	"6000000008059972444"
 #   Q471905 Pall Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q653125 Jón Loftsson
 Q471905	P5056	LAST	P144	Q653125	S2600	"6000000008060356693"
 #   Q141574345 Jon Jonsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528780 Jon Olofsson
@@ -686,127 +308,19 @@ Q141548424	P5056	LAST	S2600	"6000000227892386988"
 #   Q141645155 Karin Jonsson: P5056 patronym or matronym = the item just created
 Q141645155	P5056	LAST	S2600	"6000000227892668842"
 
-# Filippusson -- patronymic, 4 bearer(s) in the batches
+# Johansdotter -- patronymic, 88 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Filippusson"
-LAST	Len	"Filippusson"
-#   set the mul label to "Filippusson"
-LAST	Lmul	"Filippusson"
-#   set the ja label to "フィリップソン"
-LAST	Lja	"フィリップソン"
-#   set the zh label to "菲利普松"
-LAST	Lzh	"菲利普松"
-#   set the ko label to "피리푸손"
-LAST	Lko	"피리푸손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Filippusson"
-LAST	P1705	mul:"Filippusson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q16423806 Filippus
-LAST	P144	Q16423806
-#   Q16423806 Filippus: P2976 patronym or matronym for this name = the item just created
-Q16423806	P2976	LAST
-#   Q141569599 Erland Filippusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141573919 Filippus
-Q141569599	P5056	LAST	P144	Q141573919	S2600	"6000000001169232235"
-#   Q138310804 Samson Filippusson Losna: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559564 Filippus Fartegnsson Losna
-Q138310804	P5056	LAST	P144	Q141559564	S2600	"6000000002893319563"
-#   Q141562320 Fartegn Filippusson Losna Sr.: P5056 patronym or matronym = the item just created, qualified P144 based on Q141565133 Filippus Erlendsson Ousland
-Q141562320	P5056	LAST	P144	Q141565133	S2600	"6000000004217634501"
-#   Q141529437 Fartegn Filippusson Semeleng: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559564 Filippus Fartegnsson Losna
-Q141529437	P5056	LAST	P144	Q141559564	S2600	"6000000014512537406"
-
-# Gjerdeskvål -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gjerdeskvål"
-LAST	Len	"Gjerdeskvål"
-#   set the mul label to "Gjerdeskvål"
-LAST	Lmul	"Gjerdeskvål"
-#   set the ja label to "イェルデスクヴォール"
-LAST	Lja	"イェルデスクヴォール"
-#   set the zh label to "耶尔德斯克沃尔"
-LAST	Lzh	"耶尔德斯克沃尔"
-#   set the ko label to "게르데스크볼"
-LAST	Lko	"게르데스크볼"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Gjerdeskvål"
-LAST	P1705	mul:"Gjerdeskvål"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141585813 Askjell Havtorsson Gjerdeskvål: P734 family name = the item just created
-Q141585813	P734	LAST	S2600	"6000000007224161621"
-#   Q141585599 Havtor Geirmundsen Gjerdeskvål: P734 family name = the item just created
-Q141585599	P734	LAST	S2600	"6000000007224161902"
-#   Q141584878 Bothilda Havtorsdatter Gjerdeskvål: P734 family name = the item just created
-Q141584878	P734	LAST	S2600	"6000000007481535717"
-
-# Abrahamson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Abrahamson"
-LAST	Len	"Abrahamson"
-#   set the mul label to "Abrahamson"
-LAST	Lmul	"Abrahamson"
-#   set the ja label to "エイブラハムソン"
-LAST	Lja	"エイブラハムソン"
-#   set the zh label to "亚伯拉罕森"
-LAST	Lzh	"亚伯拉罕森"
-#   set the ko label to "압라함손"
-LAST	Lko	"압라함손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Abrahamson"
-LAST	P1705	mul:"Abrahamson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q17997608 Abraham
-LAST	P144	Q17997608
-#   Q17997608 Abraham: P2976 patronym or matronym for this name = the item just created
-Q17997608	P2976	LAST
-#   the item just created: P144 based on = Q323415 Abram
-LAST	P144	Q323415
-#   Q323415 Abram: P2976 patronym or matronym for this name = the item just created
-Q323415	P2976	LAST
-#   Q141628775 Andreas Abrahamson Erga: P5056 patronym or matronym = the item just created
-Q141628775	P5056	LAST	S2600	"6000000005607506411"
-#   Q141610640 Isak Abrahamsen Abrahamson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498371 Abraham Ommundsen, P3831 object of statement has role Q141584760
-Q141610640	P5056	LAST	P144	Q141498371	P3831	Q141584760	S2600	"6000000013700984437"
-
-# Asgautsdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Asgautsdatter"
-LAST	Len	"Asgautsdatter"
-#   set the mul label to "Asgautsdatter"
-LAST	Lmul	"Asgautsdatter"
-#   set the ja label to "アスガウトスダッテル"
-LAST	Lja	"アスガウトスダッテル"
-#   set the zh label to "阿斯加乌特斯达特"
-LAST	Lzh	"阿斯加乌特斯达特"
-#   set the ko label to "아스가우트스다테르"
-LAST	Lko	"아스가우트스다테르"
+#   the item just created: set the en label to "Johansdotter"
+LAST	Len	"Johansdotter"
+#   set the mul label to "Johansdotter"
+LAST	Lmul	"Johansdotter"
+#   set the ja label to "ヨハンスドッテル"
+LAST	Lja	"ヨハンスドッテル"
+#   set the zh label to "约汉斯多特"
+LAST	Lzh	"约汉斯多特"
+#   set the ko label to "조한스도테르"
+LAST	Lko	"조한스도테르"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -817,16 +331,1074 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Asgautsdatter"
-LAST	P1705	mul:"Asgautsdatter"
+#   P1705 native label = mul:"Johansdotter"
+LAST	P1705	mul:"Johansdotter"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q16419537 Asgaut
-LAST	P144	Q16419537
-#   Q16419537 Asgaut: P2976 patronym or matronym for this name = the item just created
-Q16419537	P2976	LAST
-#   Q141559703 Ingeborg Asgautsdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562105 Asgaut Ambrosiusson Voll
-Q141559703	P5056	LAST	P144	Q141562105	S2600	"6000000002801145791"
+#   P144 based on = Q10989273 Johan
+LAST	P144	Q10989273
+#   Q10989273 Johan: P2976 patronym or matronym for this name = the item just created
+Q10989273	P2976	LAST
+#   the item just created: P144 based on = Q2117521 Johannes
+LAST	P144	Q2117521
+#   Q2117521 Johannes: P2976 patronym or matronym for this name = the item just created
+Q2117521	P2976	LAST
+#   the item just created: P144 based on = Q11122389 Johann
+LAST	P144	Q11122389
+#   Q11122389 Johann: P2976 patronym or matronym for this name = the item just created
+Q11122389	P2976	LAST
+#   the item just created: P144 based on = Q47526977 Jöns
+LAST	P144	Q47526977
+#   Q47526977 Jöns: P2976 patronym or matronym for this name = the item just created
+Q47526977	P2976	LAST
+#   the item just created: P144 based on = Q4120836 Johanna
+LAST	P144	Q4120836
+#   Q4120836 Johanna: P2976 patronym or matronym for this name = the item just created
+Q4120836	P2976	LAST
+#   Q141573697 Christina Johansdotter äv Nilsdotter Gerdes: P5056 patronym or matronym = the item just created
+Q141573697	P5056	LAST	S2600	"4377340"
+#   Q141546652 Anna Margareta Johansdotter von Birckholtz: P5056 patronym or matronym = the item just created
+Q141546652	P5056	LAST	S2600	"5278189988850046934"
+#   Q141450240 Johanna Barbara Johansdotter Hisinger: P5056 patronym or matronym = the item just created, qualified P144 based on Q3450190 Johan Hising
+Q141450240	P5056	LAST	P144	Q3450190	S2600	"5544032958450042086"
+#   Q141579755 Brita Johansdotter Lithovius: P5056 patronym or matronym = the item just created, qualified P144 based on Q141565558 Johannes Henrici Lithovius
+Q141579755	P5056	LAST	P144	Q141565558	S2600	"5596407937160047498"
+#   Q141628219 Karin Johansdotter Fleming: P5056 patronym or matronym = the item just created
+Q141628219	P5056	LAST	S2600	"5679409631000132174"
+#   Q141436703 Sara Johansdotter Cajanus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141450236 Johan Eriksson Cajanus
+Q141436703	P5056	LAST	P144	Q141450236	S2600	"6000000001005144207"
+#   Q133283749 Clara Johansdotter: P5056 patronym or matronym = the item just created
+Q133283749	P5056	LAST	S2600	"6000000001197351347"
+#   Q141403604 Margareta Elisabet Johansdotter Amnell: P5056 patronym or matronym = the item just created, qualified P144 based on Q10540338 Johan Mattsson Amnelius
+Q141403604	P5056	LAST	P144	Q10540338	S2600	"6000000001208357524"
+#   Q141586955 Catharina Gustava Johansdotter Gyllenkrok: P5056 patronym or matronym = the item just created, qualified P144 based on Q110313513 Johan Andersson Krok
+Q141586955	P5056	LAST	P144	Q110313513	S2600	"6000000001594574943"
+#   Q141583613 Karin Johansdotter: P5056 patronym or matronym = the item just created
+Q141583613	P5056	LAST	S2600	"6000000002207797162"
+#   Q73763413 Margareta Johansdotter Wallensteen: P5056 patronym or matronym = the item just created
+Q73763413	P5056	LAST	S2600	"6000000002255382033"
+#   Q141498499 Margareta Johansdotter Steen: P5056 patronym or matronym = the item just created
+Q141498499	P5056	LAST	S2600	"6000000002757975331"
+#   Q141520725 Maria Christina Johansdotter Roos: P5056 patronym or matronym = the item just created, qualified P144 based on Q141515943 Johan Persson Roos
+Q141520725	P5056	LAST	P144	Q141515943	S2600	"6000000002759793276"
+#   Q141538032 Anna Johansdotter Ruuth: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559784 Johan Jakobsson
+Q141538032	P5056	LAST	P144	Q141559784	S2600	"6000000002836468532"
+#   Q141523799 Maria Johansdotter Walstenius: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548475 Johannes Petri Walstenius
+Q141523799	P5056	LAST	P144	Q141548475	S2600	"6000000002881597802"
+#   Q141654397 Margareta Johansdotter Valck: P5056 patronym or matronym = the item just created
+Q141654397	P5056	LAST	S2600	"6000000002926462063"
+#   Q141633402 Margareta Johansdotter Hedraea: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562459 Johan Johansson Hedraeus
+Q141633402	P5056	LAST	P144	Q141562459	S2600	"6000000003339046321"
+#   Q109835501 Hedvig Katarina Johansdotter Barthéls: P5056 patronym or matronym = the item just created
+Q109835501	P5056	LAST	S2600	"6000000003833442597"
+#   Q141610705 Virginia Johansdotter Rytter: P5056 patronym or matronym = the item just created
+Q141610705	P5056	LAST	S2600	"6000000003897396882"
+#   Q123420182 Maria Christina Johansdotter Gyllenstierna af Lundholm: P5056 patronym or matronym = the item just created
+Q123420182	P5056	LAST	S2600	"6000000003903128854"
+#   Q509216 Sophia Elisabeth Johansdotter Gyllenhielm: P5056 patronym or matronym = the item just created, qualified P144 based on Q52944
+Q509216	P5056	LAST	P144	Q52944	S2600	"6000000004220596426"
+#   Q141551635 Maria Johansdotter Ullberg: P5056 patronym or matronym = the item just created
+Q141551635	P5056	LAST	S2600	"6000000004603432015"
+#   Q141492524 Christina Johansdotter Johannesdotter Av Hökhufvud: P5056 patronym or matronym = the item just created
+Q141492524	P5056	LAST	S2600	"6000000005583834020"
+#   Q130684369 Agneta Johansdotter Ållongren: P5056 patronym or matronym = the item just created, qualified P144 based on Q141353709 Johan Olofsson Ållongren
+Q130684369	P5056	LAST	P144	Q141353709	S2600	"6000000006127651347"
+#   Q141250247 Sara Johansdotter Carlberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q5602483 Johan Börjesson Carlberg
+Q141250247	P5056	LAST	P144	Q5602483	S2600	"6000000006435949669"
+#   Q141633873 Anna Johansdotter Gädda af Gieddeholm: P5056 patronym or matronym = the item just created
+Q141633873	P5056	LAST	S2600	"6000000006617814659"
+#   Q141583413 Kristina Johansdotter Tolpo: P5056 patronym or matronym = the item just created
+Q141583413	P5056	LAST	S2600	"6000000006718341628"
+#   Q109266155 Magdalena Johansdotter Bure: P5056 patronym or matronym = the item just created, qualified P144 based on Q633094 Johannes Tomasson
+Q109266155	P5056	LAST	P144	Q633094	S2600	"6000000006828701331"
+#   Q141634013 Holmfrid Johansdotter (Almöätten): P5056 patronym or matronym = the item just created
+Q141634013	P5056	LAST	S2600	"6000000006961829697"
+#   Q141633622 Regina Johansdotter Ursula Loccenia: P5056 patronym or matronym = the item just created, qualified P144 based on Q5962036 Johannes Loccenius
+Q141633622	P5056	LAST	P144	Q5962036	S2600	"6000000007026166079"
+#   Q141551443 Kristina Johansdotter: P5056 patronym or matronym = the item just created
+Q141551443	P5056	LAST	S2600	"6000000007140194261"
+#   Q141520442 Katarina Johansdotter Rikström: P5056 patronym or matronym = the item just created, qualified P144 based on Q141440577 Johan Eriksson Ichten
+Q141520442	P5056	LAST	P144	Q141440577	S2600	"6000000007311396693"
+#   Q141225772 Katarina Johansdotter Ståhlbom: P5056 patronym or matronym = the item just created, qualified P144 based on Q141450215 Hans Hansson Ståhlbom
+Q141225772	P5056	LAST	P144	Q141450215	S2600	"6000000007367019257"
+#   Q141520273 Hedvig Johansdotter Stålbom: P5056 patronym or matronym = the item just created, qualified P144 based on Q141492718 Johan Hansson Stålbom
+Q141520273	P5056	LAST	P144	Q141492718	S2600	"6000000007368081218"
+#   Q141456544 Anna Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141515933 Johan Larsson
+Q141456544	P5056	LAST	P144	Q141515933	S2600	"6000000007372814422"
+#   Q141430058 Märta Johansdotter (Ulf af Horsnäs): P5056 patronym or matronym = the item just created, qualified P144 based on Q141456306 Johan Christersson (Ulf af Horsnäs)
+Q141430058	P5056	LAST	P144	Q141456306	S2600	"6000000007443495343"
+#   Q141528996 Margareta Johansdotter: P5056 patronym or matronym = the item just created
+Q141528996	P5056	LAST	S2600	"6000000007511564022"
+#   Q141499069 Maria Johansdotter Polviander: P5056 patronym or matronym = the item just created, qualified P144 based on Q141499755 Johan Simonsson Polviander
+Q141499069	P5056	LAST	P144	Q141499755	S2600	"6000000007511816949"
+#   Q141584416 Margareta Johansdotter Utter: P5056 patronym or matronym = the item just created
+Q141584416	P5056	LAST	S2600	"6000000007549770241"
+#   Q141584586 Anna Johansdotter Rusk: P5056 patronym or matronym = the item just created
+Q141584586	P5056	LAST	S2600	"6000000007949154665"
+#   Q141532483 Anna Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141520493 Johan Hansson
+Q141532483	P5056	LAST	P144	Q141520493	S2600	"6000000008418463047"
+#   Q141560303 Märta Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141520493 Johan Hansson
+Q141560303	P5056	LAST	P144	Q141520493	S2600	"6000000008418768924"
+#   Q141612451 Maria Johansdotter Stålbom: P5056 patronym or matronym = the item just created, qualified P144 based on Q141492718 Johan Hansson Stålbom
+Q141612451	P5056	LAST	P144	Q141492718	S2600	"6000000008519950370"
+#   Q115870663 Elseby Johansdotter Bukhorn: P5056 patronym or matronym = the item just created
+Q115870663	P5056	LAST	S2600	"6000000008638245654"
+#   Q141538031 Anna Johansdotter Lithovius: P5056 patronym or matronym = the item just created, qualified P144 based on Q141565558 Johannes Henrici Lithovius
+Q141538031	P5056	LAST	P144	Q141565558	S2600	"6000000009262565307"
+#   Q141538380 Hedvig Johansdotter von Stauden: P5056 patronym or matronym = the item just created, qualified P144 based on Q141494489 Johan von Stauden
+Q141538380	P5056	LAST	P144	Q141494489	S2600	"6000000009360653182"
+#   Q141611425 Katarina Johansdotter Tornberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141586401 Johan Johansson Tornberg
+Q141611425	P5056	LAST	P144	Q141586401	S2600	"6000000010090716242"
+#   Q141336618 Margareta Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528763 Johan Olofsson Utter
+Q141336618	P5056	LAST	P144	Q141528763	S2600	"6000000011078744023"
+#   Q141562629 Maria Johansdotter Hedraeus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528722 Johan Johansson Hedraeus
+Q141562629	P5056	LAST	P144	Q141528722	S2600	"6000000011322599602"
+#   Q141580733 Britta Johansdotter: P5056 patronym or matronym = the item just created
+Q141580733	P5056	LAST	S2600	"6000000011403347627"
+#   Q141547308 Elsa Johansdotter Galle: P5056 patronym or matronym = the item just created, qualified P144 based on Q18632469 Johann Claesson Galle
+Q141547308	P5056	LAST	P144	Q18632469	S2600	"6000000012162647267"
+#   Q141533364 Ingrid Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498436 Johan Eskilsson
+Q141533364	P5056	LAST	P144	Q141498436	S2600	"6000000012536140626"
+#   Q141610653 Greta Johansdotter Gyldenär: P5056 patronym or matronym = the item just created
+Q141610653	P5056	LAST	S2600	"6000000012558378857"
+#   Q141629194 Elisabet Johansdotter Örnecrantz: P5056 patronym or matronym = the item just created, qualified P144 based on Q141492557 Johan Mattsson Forrsman
+Q141629194	P5056	LAST	P144	Q141492557	S2600	"6000000012924408420"
+#   Q141626185 Brita Johansdotter Tornberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141586401 Johan Johansson Tornberg
+Q141626185	P5056	LAST	P144	Q141586401	S2600	"6000000013220760269"
+#   Q141548638 Lucia Johansdotter Schick: P5056 patronym or matronym = the item just created
+Q141548638	P5056	LAST	S2600	"6000000013415634134"
+#   Q141518331 Maria Johansdotter Sellin: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538424 Johan Jonsson
+Q141518331	P5056	LAST	P144	Q141538424	S2600	"6000000017182337900"
+#   Q141442300 Hedvig Johansdotter Rikström: P5056 patronym or matronym = the item just created, qualified P144 based on Q141440577 Johan Eriksson Ichten
+Q141442300	P5056	LAST	P144	Q141440577	S2600	"6000000017195037118"
+#   Q141649513 NN Johansdotter Lilja av Värnäs: P5056 patronym or matronym = the item just created
+Q141649513	P5056	LAST	S2600	"6000000018143034001"
+#   Q141578954 Marjet Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528762 Johan Nilsson
+Q141578954	P5056	LAST	P144	Q141528762	S2600	"6000000019103475989"
+#   Q141529002 Margeta Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141403585 Johan Danielsson Dubblare
+Q141529002	P5056	LAST	P144	Q141403585	S2600	"6000000023266855901"
+#   Q141636136 Britha Johansdotter Kock: P5056 patronym or matronym = the item just created, qualified P144 based on Q141550543 Johan Mattsson Kock
+Q141636136	P5056	LAST	P144	Q141550543	S2600	"6000000023823654105"
+#   Q141612412 Maria Johansdotter Kock: P5056 patronym or matronym = the item just created, qualified P144 based on Q141550543 Johan Mattsson Kock
+Q141612412	P5056	LAST	P144	Q141550543	S2600	"6000000023823745181"
+#   Q141580871 Helena Johansdotter Häggroth: P5056 patronym or matronym = the item just created
+Q141580871	P5056	LAST	S2600	"6000000024399483058"
+#   Q141206084 Margareta Johansdotter Burea: P5056 patronym or matronym = the item just created, qualified P144 based on Q633094 Johannes Tomasson
+Q141206084	P5056	LAST	P144	Q633094	S2600	"6000000025579779586"
+#   Q141529591 Kristina Johansdotter Stille: P5056 patronym or matronym = the item just created, qualified P144 based on Q141529535 Johannes Persson Stille
+Q141529591	P5056	LAST	P144	Q141529535	S2600	"6000000025983747307"
+#   Q141562152 Brita Johansdotter: P5056 patronym or matronym = the item just created
+Q141562152	P5056	LAST	S2600	"6000000026102897817"
+#   Q141576188 Anna Lovisa Johansdotter Gråå: P5056 patronym or matronym = the item just created
+Q141576188	P5056	LAST	S2600	"6000000032206908944"
+#   Q141562630 Maria Johansdotter Wallensis: P5056 patronym or matronym = the item just created, qualified P144 based on Q141565560 Johannes Petri Wallensis
+Q141562630	P5056	LAST	P144	Q141565560	S2600	"6000000034271326744"
+#   Q141639700 Sigrid Johansdotter Lechander: P5056 patronym or matronym = the item just created
+Q141639700	P5056	LAST	S2600	"6000000037254988896"
+#   Q141565644 Kristina Johansdotter Polviander: P5056 patronym or matronym = the item just created, qualified P144 based on Q141499755 Johan Simonsson Polviander
+Q141565644	P5056	LAST	P144	Q141499755	S2600	"6000000038536441029"
+#   Q141562642 Marta Johansdotter: P5056 patronym or matronym = the item just created
+Q141562642	P5056	LAST	S2600	"6000000039229233199"
+#   Q141550844 Lovisa Albertina Johansdotter Brungström: P5056 patronym or matronym = the item just created, qualified P144 based on Q141550524 Johan Grelsson Brungstöm
+Q141550844	P5056	LAST	P144	Q141550524	S2600	"6000000042471150144"
+#   Q141565623 Kerstin Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528774 Johannes Persson
+Q141565623	P5056	LAST	P144	Q141528774	S2600	"6000000051069929934"
+#   Q141548839 Margareta Johansdotter Johansson: P5056 patronym or matronym = the item just created, qualified P3831 object of statement has role Q141584760
+Q141548839	P5056	LAST	P3831	Q141584760	S2600	"6000000089467696913"
+#   Q141538268 Brita Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548508 Jon Persson
+Q141538268	P5056	LAST	P144	Q141548508	S2600	"6000000177921501869"
+#   Q141538291 Chatarina Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548446 Johan Pehrsson
+Q141538291	P5056	LAST	P144	Q141548446	S2600	"6000000177921535860"
+#   Q141548399 Ingrid Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551203 Johan Svensson
+Q141548399	P5056	LAST	P144	Q141551203	S2600	"6000000177921535870"
+#   Q141550803 Catharina Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141576630 Johan
+Q141550803	P5056	LAST	P144	Q141576630	S2600	"6000000177921629825"
+#   Q141550162 Carin Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141576624 Johan
+Q141550162	P5056	LAST	P144	Q141576624	S2600	"6000000177921648825"
+#   Q141550772 Carin Johansdotter: P5056 patronym or matronym = the item just created
+Q141550772	P5056	LAST	S2600	"6000000177921654827"
+#   Q141538811 Märta Johansdotter Ulf: P5056 patronym or matronym = the item just created, qualified P144 based on Q141456337 Johan Gudmundsson (Ulf
+Q141538811	P5056	LAST	P144	Q141456337	S2600	"6000000191204078825"
+#   Q141533342 Helena Johansdotter Rahm: P5056 patronym or matronym = the item just created, qualified P144 based on Q141494474 Johan Eriksson Rahm
+Q141533342	P5056	LAST	P144	Q141494474	S2600	"6000000216759985879"
+#   Q141570677 Marta Helena Johansdotter Lundström: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562456 Johan Andersson Lundström
+Q141570677	P5056	LAST	P144	Q141562456	S2600	"6000000223278552891"
+#   Q141336618 Margareta Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528763 Johan Olofsson Utter
+Q141336618	P5056	LAST	P144	Q141528763	S2600	"6000000227891353804"
+#   Q141422019 Anna Johansdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141447158 Johan
+Q141422019	P5056	LAST	P144	Q141447158	S2600	"6000000227891863298"
+#   Q141318975 Anna Matilda Johansdotter: P5056 patronym or matronym = the item just created
+Q141318975	P5056	LAST	S2600	"6000000227892521872"
+
+# Jonsdotter -- patronymic, 77 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Jonsdotter"
+LAST	Len	"Jonsdotter"
+#   set the mul label to "Jonsdotter"
+LAST	Lmul	"Jonsdotter"
+#   set the ja label to "ヨンスドッテル"
+LAST	Lja	"ヨンスドッテル"
+#   set the zh label to "永斯多特"
+LAST	Lzh	"永斯多特"
+#   set the ko label to "존스도테르"
+LAST	Lko	"존스도테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Jonsdotter"
+LAST	P1705	mul:"Jonsdotter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q10989273 Johan
+LAST	P144	Q10989273
+#   Q10989273 Johan: P2976 patronym or matronym for this name = the item just created
+Q10989273	P2976	LAST
+#   the item just created: P144 based on = Q47526977 Jöns
+LAST	P144	Q47526977
+#   Q47526977 Jöns: P2976 patronym or matronym for this name = the item just created
+Q47526977	P2976	LAST
+#   the item just created: P144 based on = Q11978684 Joen
+LAST	P144	Q11978684
+#   Q11978684 Joen: P2976 patronym or matronym for this name = the item just created
+Q11978684	P2976	LAST
+#   the item just created: P144 based on = Q123820137
+LAST	P144	Q123820137
+#   Q123820137: P2976 patronym or matronym for this name = the item just created
+Q123820137	P2976	LAST
+#   the item just created: P144 based on = Q2117521 Johannes
+LAST	P144	Q2117521
+#   Q2117521 Johannes: P2976 patronym or matronym for this name = the item just created
+Q2117521	P2976	LAST
+#   the item just created: P144 based on = Q4925477 John
+LAST	P144	Q4925477
+#   Q4925477 John: P2976 patronym or matronym for this name = the item just created
+Q4925477	P2976	LAST
+#   the item just created: P144 based on = Q14436586 Jone
+LAST	P144	Q14436586
+#   Q14436586 Jone: P2976 patronym or matronym for this name = the item just created
+Q14436586	P2976	LAST
+#   the item just created: P144 based on = Q1715043 Jón
+LAST	P144	Q1715043
+#   Q1715043 Jón: P2976 patronym or matronym for this name = the item just created
+Q1715043	P2976	LAST
+#   Q141451042 Kelu Jonsdotter: P5056 patronym or matronym = the item just created
+Q141451042	P5056	LAST	S2600	"347821660360001380"
+#   Q141588988 Ingeborg Jonsdotter: P5056 patronym or matronym = the item just created
+Q141588988	P5056	LAST	S2600	"4708621"
+#   Q141499060 Cecilia Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271422 Jon Olofsson
+Q141499060	P5056	LAST	P144	Q141271422	S2600	"4982994758410110117"
+#   Q141549764 Agnes Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271422 Jon Olofsson
+Q141549764	P5056	LAST	P144	Q141271422	S2600	"4983000170270079201"
+#   Q141611104 Barbro Jonsdotter: P5056 patronym or matronym = the item just created
+Q141611104	P5056	LAST	S2600	"6000000000443777836"
+#   Q141632343 Ose Jonsdotter Kyrning: P5056 patronym or matronym = the item just created, qualified P144 based on Q141633769 Jon Andersen
+Q141632343	P5056	LAST	P144	Q141633769	S2600	"6000000000853042335"
+#   Q141574781 Margrete Jonsdotter Sveen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562475 Jon Gautesson Dall
+Q141574781	P5056	LAST	P144	Q141562475	S2600	"6000000001480791991"
+#   Q141569374 Anna Jonsdotter Nortman: P5056 patronym or matronym = the item just created
+Q141569374	P5056	LAST	S2600	"6000000002686811282"
+#   Q141580929 Ingrid Jonsdotter Ekman: P5056 patronym or matronym = the item just created
+Q141580929	P5056	LAST	S2600	"6000000002919126349"
+#   Q141583631 Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559850 Jon Persson
+Q141583631	P5056	LAST	P144	Q141559850	S2600	"6000000003194146052"
+#   Q141456313 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141520406 Jon Asserson
+Q141456313	P5056	LAST	P144	Q141520406	S2600	"6000000003273015668"
+#   Q141538480 Kerstin Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548489 Jon Ericsson
+Q141538480	P5056	LAST	P144	Q141548489	S2600	"6000000003483631330"
+#   Q141551125 Ingeborg Gurina Jonsdotter Lura: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216481 Jon Tørresson Soma
+Q141551125	P5056	LAST	P144	Q141216481	S2600	"6000000003491967394"
+#   Q141200054 Rakel Jonsdatter Jonsdotter Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson Store Vatne
+Q141200054	P5056	LAST	P144	Q141216388	S2600	"6000000003491986761"
+#   Q141562283 Elisabet Jonsdotter Hallenia: P5056 patronym or matronym = the item just created
+Q141562283	P5056	LAST	S2600	"6000000003684977429"
+#   Q141587500 Margareta Jonsdotter Winbom: P5056 patronym or matronym = the item just created
+Q141587500	P5056	LAST	S2600	"6000000003688178032"
+#   Q141456390 Karin Jonsdotter: P5056 patronym or matronym = the item just created
+Q141456390	P5056	LAST	S2600	"6000000005418758464"
+#   Q141502785 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498711 Jonas Jonsson
+Q141502785	P5056	LAST	P144	Q141498711	S2600	"6000000006346546505"
+#   Q141498649 Flicka Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498711 Jonas Jonsson
+Q141498649	P5056	LAST	P144	Q141498711	S2600	"6000000006346551911"
+#   Q141560777 Torborg Jonsdotter: P5056 patronym or matronym = the item just created
+Q141560777	P5056	LAST	S2600	"6000000006356645320"
+#   Q141216605 Gunilla Jonsdotter: P5056 patronym or matronym = the item just created
+Q141216605	P5056	LAST	S2600	"6000000007117021938"
+#   Q141569639 Gunhild Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141521650 Jon Olofsson
+Q141569639	P5056	LAST	P144	Q141521650	S2600	"6000000007126376414"
+#   Q141589013 Margareta Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141576751 Jon Jönsson
+Q141589013	P5056	LAST	P144	Q141576751	S2600	"6000000007294555829"
+#   Q141550859 Magdalena Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141529543 Jon GABRIELSSON
+Q141550859	P5056	LAST	P144	Q141529543	S2600	"6000000007376006862"
+#   Q141579313 Marjet Jonsdotter: P5056 patronym or matronym = the item just created
+Q141579313	P5056	LAST	S2600	"6000000007588750077"
+#   Q141579756 Brita Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548508 Jon Persson
+Q141579756	P5056	LAST	P144	Q141548508	S2600	"6000000007818250927"
+#   Q140373699 Anna Jonsdotter Bure: P5056 patronym or matronym = the item just created, qualified P144 based on Q5590143 Jonas Bureus
+Q140373699	P5056	LAST	P144	Q5590143	S2600	"6000000008979821547"
+#   Q141564820 Cecilia Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141569958 Jonas Andreæ
+Q141564820	P5056	LAST	P144	Q141569958	S2600	"6000000009027837450"
+#   Q141550270 Elisabeth Jonsdotter Blix: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528791 Jonas Persson Blix
+Q141550270	P5056	LAST	P144	Q141528791	S2600	"6000000010118088036"
+#   Q141520670 Mareta: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528780 Jon Olofsson
+Q141520670	P5056	LAST	P144	Q141528780	S2600	"6000000011079271617"
+#   Q141559270 Brita Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141521650 Jon Olofsson
+Q141559270	P5056	LAST	P144	Q141521650	S2600	"6000000011152912438"
+#   Q141610258 Birgitta Jonsdotter Aspenäs: P5056 patronym or matronym = the item just created, qualified P144 based on Q5884317 Johan, Jons Filipsson
+Q141610258	P5056	LAST	P144	Q5884317	S2600	"6000000011648683509"
+#   Q141454324 Catharina Jonsdotter: P5056 patronym or matronym = the item just created
+Q141454324	P5056	LAST	S2600	"6000000013073047457"
+#   Q141528247 Elisabet Bure: P5056 patronym or matronym = the item just created
+Q141528247	P5056	LAST	S2600	"6000000013227533350"
+#   Q141442925 Anna Cajsa Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498478 Jonas Jonsson
+Q141442925	P5056	LAST	P144	Q141498478	S2600	"6000000013897603243"
+#   Q141566155 Sara Jonsdotter: P5056 patronym or matronym = the item just created
+Q141566155	P5056	LAST	S2600	"6000000016155465514"
+#   Q141565477 Ingeborg Jonsdotter Herrlund: P5056 patronym or matronym = the item just created
+Q141565477	P5056	LAST	S2600	"6000000016286097812"
+#   Q141518679 Anna: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528778 Jon
+Q141518679	P5056	LAST	P144	Q141528778	S2600	"6000000017079204200"
+#   Q141205928 NN Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216389 Jon Jonsson
+Q141205928	P5056	LAST	P144	Q141216389	S2600	"6000000017093875188"
+#   Q141576170 Anna Jonsdotter: P5056 patronym or matronym = the item just created
+Q141576170	P5056	LAST	S2600	"6000000019686086335"
+#   Q141492670 Brita Jonsdotter Linneria: P5056 patronym or matronym = the item just created, qualified P144 based on Q141314031 Jonas Persson
+Q141492670	P5056	LAST	P144	Q141314031	S2600	"6000000020224448807"
+#   Q141499039 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141510798 Jon Persson
+Q141499039	P5056	LAST	P144	Q141510798	S2600	"6000000021131950217"
+#   Q141498489 Stina Jonsdotter: P5056 patronym or matronym = the item just created
+Q141498489	P5056	LAST	S2600	"6000000021132011052"
+#   Q141549734 Stina Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498483 Jonas Ericsson
+Q141549734	P5056	LAST	P144	Q141498483	S2600	"6000000021138940714"
+#   Q141487902 Anna Cajsa Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498483 Jonas Ericsson
+Q141487902	P5056	LAST	P144	Q141498483	S2600	"6000000021139261439"
+#   Q141502785 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498711 Jonas Jonsson
+Q141502785	P5056	LAST	P144	Q141498711	S2600	"6000000022918847134"
+#   Q141548644 Magdalena Malin Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551320 Jonas Olofsson
+Q141548644	P5056	LAST	P144	Q141551320	S2600	"6000000022935325122"
+#   Q141585474 Christina Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548488 Jon Andersson
+Q141585474	P5056	LAST	P144	Q141548488	S2600	"6000000024376041676"
+#   Q141619794 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548488 Jon Andersson
+Q141619794	P5056	LAST	P144	Q141548488	S2600	"6000000024376587907"
+#   Q141352518 Sigrid Jonsdotter Rudbera: P5056 patronym or matronym = the item just created, qualified P144 based on Q109265381 Jonas Benedicti Rudberus
+Q141352518	P5056	LAST	P144	Q109265381	S2600	"6000000025579626728"
+#   Q141488187 Anna Jonsdotter Foss: P5056 patronym or matronym = the item just created
+Q141488187	P5056	LAST	S2600	"6000000030107109160"
+#   Q141382582 Sara Jonsdotter: P5056 patronym or matronym = the item just created
+Q141382582	P5056	LAST	S2600	"6000000034365853125"
+#   Q141565729 Marjetta Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141521650 Jon Olofsson
+Q141565729	P5056	LAST	P144	Q141521650	S2600	"6000000039718922727"
+#   Q141557540 Anne Jonsdatter Jonsdotter Byberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141574359 Jon Torjusson Byberg
+Q141557540	P5056	LAST	P144	Q141574359	S2600	"6000000040368733580"
+#   Q141528768 Johanna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498478 Jonas Jonsson
+Q141528768	P5056	LAST	P144	Q141498478	S2600	"6000000041610138097"
+#   Q141585326 Magdalena Jonasdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141580166 Jonas Jonsson, P3831 object of statement has role Q141584760
+Q141585326	P5056	LAST	P144	Q141580166	P3831	Q141584760	S2600	"6000000044012539833"
+#   Q141532486 Anna Jonsdotter Heigre: P5056 patronym or matronym = the item just created, qualified P144 based on Q141199892 Jon Olsen Heigre
+Q141532486	P5056	LAST	P144	Q141199892	S2600	"6000000055158810386"
+#   Q141579759 Brita Jonsdotter Blix: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528791 Jonas Persson Blix
+Q141579759	P5056	LAST	P144	Q141528791	S2600	"6000000057415385287"
+#   Q141584146 Anna Jonsdotter Blix: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528791 Jonas Persson Blix
+Q141584146	P5056	LAST	P144	Q141528791	S2600	"6000000057415790012"
+#   Q141550586 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141559828 Jon Ersson
+Q141550586	P5056	LAST	P144	Q141559828	S2600	"6000000074804326068"
+#   Q141440504 Anna Jonsdotter Elg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141447167 Jonas Stephansson
+Q141440504	P5056	LAST	P144	Q141447167	S2600	"6000000083201186284"
+#   Q141312566 Beata Catharina Jonsdotter: P5056 patronym or matronym = the item just created
+Q141312566	P5056	LAST	S2600	"6000000161721983843"
+#   Q141648740 Stina Elisabeth Jonsdotter: P5056 patronym or matronym = the item just created
+Q141648740	P5056	LAST	S2600	"6000000174245845132"
+#   Q141538977 Stina Jonsdotter: P5056 patronym or matronym = the item just created
+Q141538977	P5056	LAST	S2600	"6000000177921501839"
+#   Q141538269 Brita Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548521 Jonas Olofsson
+Q141538269	P5056	LAST	P144	Q141548521	S2600	"6000000177921535839"
+#   Q141546819 Brita Jonsdotter: P5056 patronym or matronym = the item just created
+Q141546819	P5056	LAST	S2600	"6000000177921544849"
+#   Q141550779 Carin Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141576656 Jons
+Q141550779	P5056	LAST	P144	Q141576656	S2600	"6000000177921636827"
+#   Q141562517 Karin Jonsdotter: P5056 patronym or matronym = the item just created
+Q141562517	P5056	LAST	S2600	"6000000178417496821"
+#   Q141580677 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562483 Jon Persson
+Q141580677	P5056	LAST	P144	Q141562483	S2600	"6000000197200766874"
+#   Q141562086 Anna Jonsdotter Tjentland: P5056 patronym or matronym = the item just created
+Q141562086	P5056	LAST	S2600	"6000000203132586829"
+#   Q141436698 Ragnhild Jonsdotter Tu: P5056 patronym or matronym = the item just created, qualified P144 based on Q141318602 Jon Larsson
+Q141436698	P5056	LAST	P144	Q141318602	S2600	"6000000224019156868"
+#   Q141312566 Beata Catharina Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141529041 Jon
+Q141312566	P5056	LAST	P144	Q141529041	S2600	"6000000227891863252"
+#   Q141538269 Brita Jonsdotter: P5056 patronym or matronym = the item just created
+Q141538269	P5056	LAST	S2600	"6000000227891947688"
+#   Q141546819 Brita Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141550618 Jonas Eriksson
+Q141546819	P5056	LAST	P144	Q141550618	S2600	"6000000227892000190"
+#   Q141538033 Anna Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141548521 Jonas Olofsson
+Q141538033	P5056	LAST	P144	Q141548521	S2600	"6000000227892000202"
+#   Q141559858 Jonsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562481 Jon Jonsson
+Q141559858	P5056	LAST	P144	Q141562481	S2600	"6000000227892225310"
+
+# Persson -- patronymic, 72 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Persson"
+LAST	Len	"Persson"
+#   set the mul label to "Persson"
+LAST	Lmul	"Persson"
+#   set the ja label to "パーション"
+LAST	Lja	"パーション"
+#   set the zh label to "佩尔松"
+LAST	Lzh	"佩尔松"
+#   set the ko label to "페르손"
+LAST	Lko	"페르손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Persson"
+LAST	P1705	mul:"Persson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q13582800 Per
+LAST	P144	Q13582800
+#   Q13582800 Per: P2976 patronym or matronym for this name = the item just created
+Q13582800	P2976	LAST
+#   the item just created: P144 based on = Q18606368 Pehr
+LAST	P144	Q18606368
+#   Q18606368 Pehr: P2976 patronym or matronym for this name = the item just created
+Q18606368	P2976	LAST
+#   the item just created: P144 based on = Q19869349 Pär
+LAST	P144	Q19869349
+#   Q19869349 Pär: P2976 patronym or matronym for this name = the item just created
+Q19869349	P2976	LAST
+#   Q141649540 Börje Persson: P5056 patronym or matronym = the item just created
+Q141649540	P5056	LAST	S2600	"363395090350011224"
+#   Q141216455 Anders Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223548 Per Isaksson
+Q141216455	P5056	LAST	P144	Q141223548	S2600	"375734886370012680"
+#   Q141528791 Jonas Persson Blix: P5056 patronym or matronym = the item just created, qualified P144 based on Q141560637 Petrus Magni Blix
+Q141528791	P5056	LAST	P144	Q141560637	S2600	"6000000000165107776"
+#   Q141538908 Per Persson Stille III: P5056 patronym or matronym = the item just created
+Q141538908	P5056	LAST	S2600	"6000000000792305768"
+#   Q141533891 Simon Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549392 Per Jonsson
+Q141533891	P5056	LAST	P144	Q141549392	S2600	"6000000002207897723"
+#   Q141583790 Jonas Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141525584 Per Larsson Bod
+Q141583790	P5056	LAST	P144	Q141525584	S2600	"6000000002502560144"
+#   Q141442324 Lars Persson Bod: P5056 patronym or matronym = the item just created
+Q141442324	P5056	LAST	S2600	"6000000002549068239"
+#   Q5576561 Birger Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141610327 Per Israelsson
+Q5576561	P5056	LAST	P144	Q141610327	S2600	"6000000002601866292"
+#   Q141559814 Johannes Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141571015 Petrus Jönsson
+Q141559814	P5056	LAST	P144	Q141571015	S2600	"6000000002692932190"
+#   Q141494433 Ericus Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q117341653 Petrus Olofsson
+Q141494433	P5056	LAST	P144	Q117341653	S2600	"6000000002695784685"
+#   Q456456 Matthias Petri Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q6189847 Petrus Eriksson Stöök I
+Q456456	P5056	LAST	P144	Q6189847	S2600	"6000000002797432088"
+#   Q10608167 Olaus Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q117341653 Petrus Olofsson
+Q10608167	P5056	LAST	P144	Q117341653	S2600	"6000000003110778492"
+#   Q141562075 Andreas Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q117341653 Petrus Olofsson
+Q141562075	P5056	LAST	P144	Q117341653	S2600	"6000000003125502882"
+#   Q141498693 Johannes Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q117341653 Petrus Olofsson
+Q141498693	P5056	LAST	P144	Q117341653	S2600	"6000000003125616414"
+#   Q141583191 Andreas Persson: P5056 patronym or matronym = the item just created
+Q141583191	P5056	LAST	S2600	"6000000003282929824"
+#   Q141551486 Lars Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141577650 Per
+Q141551486	P5056	LAST	P144	Q141577650	S2600	"6000000003483666375"
+#   Q141216637 Ola Persson Heigre: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219299 Per Asbjørnson Stokka, P3831 object of statement has role Q141584760
+Q141216637	P5056	LAST	P144	Q141219299	P3831	Q141584760	S2600	"6000000003491947917"
+#   Q141586390 Bryngel Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141612406 Per Eriksson
+Q141586390	P5056	LAST	P144	Q141612406	S2600	"6000000003618403096"
+#   Q141564569 Abraham Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549400 Per Nilsson
+Q141564569	P5056	LAST	P144	Q141549400	S2600	"6000000004010626496"
+#   Q141575784 Anders Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141581352 Per Olofsson
+Q141575784	P5056	LAST	P144	Q141581352	S2600	"6000000004246944191"
+#   Q141529172 Sven Pehrsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141533851 Pehr Svensson
+Q141529172	P5056	LAST	P144	Q141533851	S2600	"6000000004840106862"
+#   Q141533348 Helge Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538907 Per Jonsson
+Q141533348	P5056	LAST	P144	Q141538907	S2600	"6000000006094423024"
+#   Q141314031 Jonas Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141444734 Per Jonsson
+Q141314031	P5056	LAST	P144	Q141444734	S2600	"6000000006371654208"
+#   Q105740137 Petrus Persson: P5056 patronym or matronym = the item just created
+Q105740137	P5056	LAST	S2600	"6000000006822607166"
+#   Q141578987 Anders Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549392 Per Jonsson
+Q141578987	P5056	LAST	P144	Q141549392	S2600	"6000000006843865684"
+#   Q141528872 Lars Persson Broman: P5056 patronym or matronym = the item just created, qualified P144 based on Q141498455 Petrus Mattiæ Helsingius
+Q141528872	P5056	LAST	P144	Q141498455	S2600	"6000000007048853684"
+#   Q141562927 Per Persson Gavelin: P5056 patronym or matronym = the item just created
+Q141562927	P5056	LAST	S2600	"6000000007511692809"
+#   Q141575118 Nicolaus Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q117341653 Petrus Olofsson
+Q141575118	P5056	LAST	P144	Q117341653	S2600	"6000000007511892807"
+#   Q141548508 Jon Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551989 Per Jonsson
+Q141548508	P5056	LAST	P144	Q141551989	S2600	"6000000007818631316"
+#   Q141633380 Per Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549400 Per Nilsson
+Q141633380	P5056	LAST	P144	Q141549400	S2600	"6000000007934132963"
+#   Q141529075 Olaus Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551302 Petrus Arctædius
+Q141529075	P5056	LAST	P144	Q141551302	S2600	"6000000008244928656"
+#   Q141562136 Bertil Persson Ruuth: P5056 patronym or matronym = the item just created
+Q141562136	P5056	LAST	S2600	"6000000008427931619"
+#   Q141382577 Petrus Persson: P5056 patronym or matronym = the item just created
+Q141382577	P5056	LAST	S2600	"6000000009713471895"
+#   Q141653672 Abraham Persson: P5056 patronym or matronym = the item just created
+Q141653672	P5056	LAST	S2600	"6000000010793324810"
+#   Q141562483 Jon Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141566067 Per
+Q141562483	P5056	LAST	P144	Q141566067	S2600	"6000000010799834793"
+#   Q21198292 Nils Persson Groth: P5056 patronym or matronym = the item just created
+Q21198292	P5056	LAST	S2600	"6000000011051202772"
+#   Q141217433 Daniel Pehrsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141217431 Pehr Andersson Storskytt
+Q141217433	P5056	LAST	P144	Q141217431	S2600	"6000000011078726908"
+#   Q141436677 Mårten Pehrsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141511421 Pehr Larsson Ryss
+Q141436677	P5056	LAST	P144	Q141511421	S2600	"6000000011078927412"
+#   Q141580711 Augustin Persson Maijström: P5056 patronym or matronym = the item just created
+Q141580711	P5056	LAST	S2600	"6000000011403400379"
+#   Q141515056 Hans Persson Reetz: P5056 patronym or matronym = the item just created
+Q141515056	P5056	LAST	S2600	"6000000012008711345"
+#   Q141523351 Lars Pehrsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141529110 Pehr
+Q141523351	P5056	LAST	P144	Q141529110	S2600	"6000000012070565269"
+#   Q141625762 Trina Persson: P5056 patronym or matronym = the item just created
+Q141625762	P5056	LAST	S2600	"6000000012073439266"
+#   Q141562593 Magnus Petri Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141587320 Per Månsson
+Q141562593	P5056	LAST	P144	Q141587320	S2600	"6000000012119697656"
+#   Q141585814 Jon Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141560614 Per Albrektsson
+Q141585814	P5056	LAST	P144	Q141560614	S2600	"6000000013582662170"
+#   Q141584318 Josef Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551977 Per Eriksson
+Q141584318	P5056	LAST	P144	Q141551977	S2600	"6000000014864150271"
+#   Q141611280 Michael Persson: P5056 patronym or matronym = the item just created
+Q141611280	P5056	LAST	S2600	"6000000015470633952"
+#   Q141456606 Christian Persson Herkepaeus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549431 Petrus Laurentii Herkepaeus
+Q141456606	P5056	LAST	P144	Q141549431	S2600	"6000000016115043153"
+#   Q141533735 Nils Pehrsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551977 Per Eriksson
+Q141533735	P5056	LAST	P144	Q141551977	S2600	"6000000017337900535"
+#   Q141579290 Lars Persson: P5056 patronym or matronym = the item just created
+Q141579290	P5056	LAST	S2600	"6000000017915187193"
+#   Q141550819 Lars Persson Lamberg: P5056 patronym or matronym = the item just created
+Q141550819	P5056	LAST	S2600	"6000000019549848003"
+#   Q141559850 Jon Persson: P5056 patronym or matronym = the item just created
+Q141559850	P5056	LAST	S2600	"6000000020500728554"
+#   Q141633187 Jonas Persson Asp: P5056 patronym or matronym = the item just created
+Q141633187	P5056	LAST	S2600	"6000000021259993245"
+#   Q141487912 Carl Johan Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141493431 Per Larsson
+Q141487912	P5056	LAST	P144	Q141493431	S2600	"6000000021647492808"
+#   Q141529711 Olof Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141533850 Per Gertsson
+Q141529711	P5056	LAST	P144	Q141533850	S2600	"6000000030282655973"
+#   Q141352985 Anders Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141217431 Pehr Andersson Storskytt
+Q141352985	P5056	LAST	P144	Q141217431	S2600	"6000000039229563859"
+#   Q141318581 Anders Persson Bring: P5056 patronym or matronym = the item just created
+Q141318581	P5056	LAST	S2600	"6000000040548664890"
+#   Q141546525 Abraham Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538906 Per Isaksson
+Q141546525	P5056	LAST	P144	Q141538906	S2600	"6000000065907050305"
+#   Q141576945 Lars Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551989 Per Jonsson
+Q141576945	P5056	LAST	P144	Q141551989	S2600	"6000000074804183152"
+#   Q141648728 Lars Persson Bunstad: P5056 patronym or matronym = the item just created
+Q141648728	P5056	LAST	S2600	"6000000084934392874"
+#   Q141580594 Olof Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141583273 Per Olofsson
+Q141580594	P5056	LAST	P144	Q141583273	S2600	"6000000116236387852"
+#   Q141523266 Lars Persson: P5056 patronym or matronym = the item just created
+Q141523266	P5056	LAST	S2600	"6000000173443464858"
+#   Q138081705 Per Persson Swedelius: P5056 patronym or matronym = the item just created, qualified P144 based on Q16650429 Per Swedelius
+Q138081705	P5056	LAST	P144	Q16650429	S2600	"6000000206529201861"
+#   Q141584935 Bengt Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585600 Per Svensson
+Q141584935	P5056	LAST	P144	Q141585600	S2600	"6000000218927330835"
+#   Q141548509 Jon Persson: P5056 patronym or matronym = the item just created
+Q141548509	P5056	LAST	S2600	"6000000227892032104"
+#   Q141575945 Brita Persson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141580601 Per Svensson
+Q141575945	P5056	LAST	P144	Q141580601	S2600	"6000000227892341620"
+#   Q141583241 Sven Persson: P5056 patronym or matronym = the item just created
+Q141583241	P5056	LAST	S2600	"6000000227892530087"
+
+# Magnusson -- patronymic, 28 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Magnusson"
+LAST	Len	"Magnusson"
+#   set the mul label to "Magnusson"
+LAST	Lmul	"Magnusson"
+#   set the ja label to "マグヌッソン"
+LAST	Lja	"マグヌッソン"
+#   set the zh label to "马格努松"
+LAST	Lzh	"马格努松"
+#   set the ko label to "막누손"
+LAST	Lko	"막누손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Magnusson"
+LAST	P1705	mul:"Magnusson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q18109457 Magnus
+LAST	P144	Q18109457
+#   Q18109457 Magnus: P2976 patronym or matronym for this name = the item just created
+Q18109457	P2976	LAST
+#   Q777417 Erling Steinvegg Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q350213 Magnus Erlingsson
+Q777417	P5056	LAST	P144	Q350213	S2600	"353464201260013082"
+#   Q888200 Inge Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q350213 Magnus Erlingsson
+Q888200	P5056	LAST	P144	Q350213	S2600	"353466568960001728"
+#   Q314595 Eystein Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q311996 Magnus Olavsson
+Q314595	P5056	LAST	P144	Q311996	S2600	"4075666"
+#   Q350385 Olaf Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q311996 Magnus Olavsson
+Q350385	P5056	LAST	P144	Q311996	S2600	"4570664"
+#   Q313153 Håkon V Magnússon: P5056 patronym or matronym = the item just created, qualified P144 based on Q334673 Magnus VI Haakonsson, P3831 object of statement has role Q141584760
+Q313153	P5056	LAST	P144	Q334673	P3831	Q141584760	S2600	"6000000000351087662"
+#   Q314450 Eric Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q334673 Magnus VI Haakonsson
+Q314450	P5056	LAST	P144	Q334673	S2600	"6000000000351087679"
+#   Q681228 Sigurd Magnusson of: P5056 patronym or matronym = the item just created, qualified P144 based on Q350213 Magnus Erlingsson
+Q681228	P5056	LAST	P144	Q350213	S2600	"6000000001169130610"
+#   Q313005 Sigurd Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q311996 Magnus Olavsson
+Q313005	P5056	LAST	P144	Q311996	S2600	"6000000001205606328"
+#   Q141529510 Ingebret Magnusson Kluge: P5056 patronym or matronym = the item just created
+Q141529510	P5056	LAST	S2600	"6000000003094939052"
+#   Q75291908 Olav Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q334673 Magnus VI Haakonsson
+Q75291908	P5056	LAST	P144	Q334673	S2600	"6000000003263030645"
+#   Q3312279 Eskil Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q971142 Magnus Bengtsson Minnesköld (Folkungaätten)
+Q3312279	P5056	LAST	P144	Q971142	S2600	"6000000003353135037"
+#   Q5569987 Bengt Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528104 Magnus Bengtsson
+Q5569987	P5056	LAST	P144	Q141528104	S2600	"6000000003353148560"
+#   Q547911 Erik Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q350220
+Q547911	P5056	LAST	P144	Q350220	S2600	"6000000003456051444"
+#   Q5775141 Gudmar Ulvåsa: P5056 patronym or matronym = the item just created, qualified P144 based on Q141621924 Magnus
+Q5775141	P5056	LAST	P144	Q141621924	S2600	"6000000005037358032"
+#   Q5618770 Carl Julius Magnusson De la Gardie: P5056 patronym or matronym = the item just created, qualified P144 based on Q4157020 Magnus Julius Axelsson De la Gardie
+Q5618770	P5056	LAST	P144	Q4157020	S2600	"6000000006127523477"
+#   Q5618813 Ulrik Gustaf Magnusson de la Gardie: P5056 patronym or matronym = the item just created, qualified P144 based on Q4157020 Magnus Julius Axelsson De la Gardie
+Q5618813	P5056	LAST	P144	Q4157020	S2600	"6000000006127907767"
+#   Q316828 Birger Magnusson (Folkungaätten): P5056 patronym or matronym = the item just created, qualified P144 based on Q141528104 Magnus Bengtsson
+Q316828	P5056	LAST	P144	Q141528104	S2600	"6000000010160609967"
+#   Q463505 Sigurd «Slembedjakn» Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q311996 Magnus Olavsson
+Q463505	P5056	LAST	P144	Q311996	S2600	"6000000010521779745"
+#   Q5569990 Bengt Bengtsson (Folkungaätten): P5056 patronym or matronym = the item just created, qualified P144 based on Q5971771 Magnus Bengtsson (Folkungaätten)
+Q5569990	P5056	LAST	P144	Q5971771	S2600	"6000000012961002090"
+#   Q260543 Harald IV Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q311996 Magnus Olavsson
+Q260543	P5056	LAST	P144	Q311996	S2600	"6000000018329271956"
+#   Q141224331 Per Magnusson Aurivillius: P5056 patronym or matronym = the item just created, qualified P144 based on Q5562579 Magnus Petri Aurivillius
+Q141224331	P5056	LAST	P144	Q5562579	S2600	"6000000021327773121"
+#   Q141610662 Gustaf Adolf Magnusson Blix: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585495 Magnus Blix
+Q141610662	P5056	LAST	P144	Q141585495	S2600	"6000000022750085331"
+#   Q141290191 Axel Kasimir Magnusson de la Gardie: P5056 patronym or matronym = the item just created, qualified P144 based on Q4157020 Magnus Julius Axelsson De la Gardie
+Q141290191	P5056	LAST	P144	Q4157020	S2600	"6000000154120324101"
+#   Q141548518 Jonas Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141551550 Magnus Pehrsson
+Q141548518	P5056	LAST	P144	Q141551550	S2600	"6000000177921544859"
+#   Q141538014 Anders Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538751 Magnus Larsson Kruskopp
+Q141538014	P5056	LAST	P144	Q141538751	S2600	"6000000197341913821"
+#   Q141589128 Martin Magnusson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141538751 Magnus Larsson Kruskopp
+Q141589128	P5056	LAST	P144	Q141538751	S2600	"6000000201568337836"
+#   Q141548518 Jonas Magnusson: P5056 patronym or matronym = the item just created
+Q141548518	P5056	LAST	S2600	"6000000227892000206"
+
+# Huk -- family, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Huk"
+LAST	Len	"Huk"
+#   set the mul label to "Huk"
+LAST	Lmul	"Huk"
+#   set the ja label to "フク"
+LAST	Lja	"フク"
+#   set the zh label to "胡克"
+LAST	Lzh	"胡克"
+#   set the ko label to "후크"
+LAST	Lko	"후크"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Huk"
+LAST	P1705	mul:"Huk"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q26970861 Hallkjell Jonson Huk: P734 family name = the item just created
+Q26970861	P734	LAST	S2600	"6000000000628841483"
+#   Q141499012 Sigrid Huk: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141499012	P734	LAST	P3831	Q28418670	S2600	"6000000001024438875"
+#   Q18418043 Halkjell Jonsson Huk: P734 family name = the item just created
+Q18418043	P734	LAST	S2600	"6000000003645671274"
+#   Q26965895 Jon Halkjellson Huk: P734 family name = the item just created
+Q26965895	P734	LAST	S2600	"6000000004533725115"
+#   Q141649494 Ragnvild Jonsdatter Huk: P734 family name = the item just created
+Q141649494	P734	LAST	S2600	"6000000007376820064"
+#   Q141612104 Gregorius Jonsson Huk: P734 family name = the item just created
+Q141612104	P734	LAST	S2600	"6000000014604476442"
+
+# Clodt -- family, 5 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Clodt"
+LAST	Len	"Clodt"
+#   set the mul label to "Clodt"
+LAST	Lmul	"Clodt"
+#   set the ja label to "クロト"
+LAST	Lja	"クロト"
+#   set the zh label to "克洛特"
+LAST	Lzh	"克洛特"
+#   set the ko label to "크로트"
+LAST	Lko	"크로트"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Clodt"
+LAST	P1705	mul:"Clodt"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q5610044: P734 family name = the item just created
+Q5610044	P734	LAST	S2600	"6000000006127496905"
+#   Q128043947 Carl Gustaf Gustav Clodt a. Jürgensburg u. Festen: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q128043947	P734	LAST	P3831	Q2507958	S2600	"6000000007398664955"
+#   P734 family name = the item just created
+Q128043947	P734	LAST	S2600	"6000000007398664955"
+#   Q110619356 Hedwig Ingeborg Clodt von Jürgensburg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q110619356	P734	LAST	P3831	Q28418670	S2600	"6000000011494559738"
+#   Q141546667 Anna Maria Clodt von Jürgensburg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141546667	P734	LAST	P3831	Q28418670	S2600	"6000000011494986226"
+
+# de Tonnerre -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "de Tonnerre"
+LAST	Len	"de Tonnerre"
+#   set the mul label to "de Tonnerre"
+LAST	Lmul	"de Tonnerre"
+#   set the ja label to "デ・トネール"
+LAST	Lja	"デ・トネール"
+#   set the zh label to "德·托内尔"
+LAST	Lzh	"德·托内尔"
+#   set the ko label to "데 톤네르레"
+LAST	Lko	"데 톤네르레"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"de Tonnerre"
+LAST	P1705	mul:"de Tonnerre"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q130781139 Milon de Tonnerre: P734 family name = the item just created
+Q130781139	P734	LAST	S2600	"6000000002774361183"
+#   Q18277901 Milo de Tonnerre: P734 family name = the item just created
+Q18277901	P734	LAST	S2600	"6000000003051267456"
+#   Q18275567 Guy de Tonnerre: P734 family name = the item just created
+Q18275567	P734	LAST	S2600	"6000000007151099425"
+#   Q60833254 Eustachie de Tonnerre: P734 family name = the item just created
+Q60833254	P734	LAST	S2600	"6000000008248363481"
+
+# von Jürgensburg -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "von Jürgensburg"
+LAST	Len	"von Jürgensburg"
+#   set the mul label to "von Jürgensburg"
+LAST	Lmul	"von Jürgensburg"
+#   set the ja label to "ヴォン・イルゲンスブルグ"
+LAST	Lja	"ヴォン・イルゲンスブルグ"
+#   set the zh label to "翁·伊尔根斯布尔格"
+LAST	Lzh	"翁·伊尔根斯布尔格"
+#   set the ko label to "본 쥐르겐스부륵"
+LAST	Lko	"본 쥐르겐스부륵"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"von Jürgensburg"
+LAST	P1705	mul:"von Jürgensburg"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q5610044: P734 family name = the item just created
+Q5610044	P734	LAST	S2600	"6000000006127496905"
+#   Q128043947 Carl Gustaf Gustav Clodt a. Jürgensburg u. Festen: P734 family name = the item just created
+Q128043947	P734	LAST	S2600	"6000000007398664955"
+#   Q110619356 Hedwig Ingeborg Clodt von Jürgensburg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q110619356	P734	LAST	P3831	Q28418670	S2600	"6000000011494559738"
+#   Q141546667 Anna Maria Clodt von Jürgensburg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141546667	P734	LAST	P3831	Q28418670	S2600	"6000000011494986226"
+
+# Domhild -- given, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Domhild"
+LAST	Len	"Domhild"
+#   set the mul label to "Domhild"
+LAST	Lmul	"Domhild"
+#   set the ja label to "ドムヒルド"
+LAST	Lja	"ドムヒルド"
+#   set the zh label to "多姆希尔德"
+LAST	Lzh	"多姆希尔德"
+#   set the ko label to "돔힐드"
+LAST	Lko	"돔힐드"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Domhild"
+LAST	P1705	mul:"Domhild"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141585849 Domhild Salmundsdatter Ølberg: P735 given name = the item just created
+Q141585849	P735	LAST	S2600	"6000000003095033246"
+#   Q141578160 Domhild Salmundsdatter Sømme: P735 given name = the item just created
+Q141578160	P735	LAST	S2600	"6000000003491944769"
+#   Q141546919 Domhild: P735 given name = the item just created
+Q141546919	P735	LAST	S2600	"6000000003491944813"
+
+# Gabestad -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gabestad"
+LAST	Len	"Gabestad"
+#   set the mul label to "Gabestad"
+LAST	Lmul	"Gabestad"
+#   set the ja label to "ガベスタド"
+LAST	Lja	"ガベスタド"
+#   set the zh label to "加贝斯塔德"
+LAST	Lzh	"加贝斯塔德"
+#   set the ko label to "가베스타드"
+LAST	Lko	"가베스타드"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Gabestad"
+LAST	P1705	mul:"Gabestad"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141576714 Kolv Amundsen Gabestad: P734 family name = the item just created
+Q141576714	P734	LAST	S2600	"6000000016454084574"
+#   Q141580393 Amund Jonsen Gabestad: P734 family name = the item just created
+Q141580393	P734	LAST	S2600	"6000000019721001559"
+#   Q141583207 Jon Gabestad: P734 family name = the item just created
+Q141583207	P734	LAST	S2600	"6000000028606492605"
+
+# Marcusdotter -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Marcusdotter"
+LAST	Len	"Marcusdotter"
+#   set the mul label to "Marcusdotter"
+LAST	Lmul	"Marcusdotter"
+#   set the ja label to "マルクスドッテル"
+LAST	Lja	"マルクスドッテル"
+#   set the zh label to "马尔库斯多特"
+LAST	Lzh	"马尔库斯多特"
+#   set the ko label to "마르쿠스도테르"
+LAST	Lko	"마르쿠스도테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Marcusdotter"
+LAST	P1705	mul:"Marcusdotter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q4642 Marcus
+LAST	P144	Q4642
+#   Q4642 Marcus: P2976 patronym or matronym for this name = the item just created
+Q4642	P2976	LAST
+#   the item just created: P144 based on = Q17520949 Markus
+LAST	P144	Q17520949
+#   Q17520949 Markus: P2976 patronym or matronym for this name = the item just created
+Q17520949	P2976	LAST
+#   Q141537994 Agnes Marcusdotter Priia: P5056 patronym or matronym = the item just created, qualified P144 based on Q141560123 Marcus Påhlsson Priia
+Q141537994	P5056	LAST	P144	Q141560123	S2600	"373194795770013265"
+#   Q141532628 Britta Marcusdotter: P5056 patronym or matronym = the item just created
+Q141532628	P5056	LAST	S2600	"6000000006590124119"
+#   Q141570612 Margareta Marcusdotter Knuutila: P5056 patronym or matronym = the item just created, qualified P144 based on Q141550887 Marcus Simonsson Knuutila
+Q141570612	P5056	LAST	P144	Q141550887	S2600	"6000000022818664738"
+
+# Mosesson -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Mosesson"
+LAST	Len	"Mosesson"
+#   set the mul label to "Mosesson"
+LAST	Lmul	"Mosesson"
+#   set the ja label to "モセソン"
+LAST	Lja	"モセソン"
+#   set the zh label to "摩西森"
+LAST	Lzh	"摩西森"
+#   set the ko label to "모세손"
+LAST	Lko	"모세손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Mosesson"
+LAST	P1705	mul:"Mosesson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q13554012 Moses
+LAST	P144	Q13554012
+#   Q13554012 Moses: P2976 patronym or matronym for this name = the item just created
+Q13554012	P2976	LAST
+#   Q141562523 Karl Mosesson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141456415 Moses Jacobsson
+Q141562523	P5056	LAST	P144	Q141456415	S2600	"6000000001144926106"
+#   Q141510753 Anders Mosesson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141456415 Moses Jacobsson
+Q141510753	P5056	LAST	P144	Q141456415	S2600	"6000000003633557422"
+#   Q141584313 Olof Mosesson: P5056 patronym or matronym = the item just created
+Q141584313	P5056	LAST	S2600	"6000000017316664104"
+
+# Pfinzing von Henfenfeld -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Pfinzing von Henfenfeld"
+LAST	Len	"Pfinzing von Henfenfeld"
+#   set the mul label to "Pfinzing von Henfenfeld"
+LAST	Lmul	"Pfinzing von Henfenfeld"
+#   set the ja label to "プフィンジング・ヴォン・ヘンフェンフェルド"
+LAST	Lja	"プフィンジング・ヴォン・ヘンフェンフェルド"
+#   set the zh label to "普芬津·翁·亨芬费尔德"
+LAST	Lzh	"普芬津·翁·亨芬费尔德"
+#   set the ko label to "프핀징 본 헨펜펠드"
+LAST	Lko	"프핀징 본 헨펜펠드"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Pfinzing von Henfenfeld"
+LAST	P1705	mul:"Pfinzing von Henfenfeld"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141552173 Sibotho I Pfinzing von Henfenfeld: P734 family name = the item just created
+Q141552173	P734	LAST	S2600	"6000000059499436981"
+#   Q141551088 Nicolaus Pfinzing von Henfenfeld: P734 family name = the item just created
+Q141551088	P734	LAST	S2600	"6000000201590432845"
+#   Q141547335 Andreas Pfinzing von Henfenfeld: P734 family name = the item just created
+Q141547335	P734	LAST	S2600	"6000000201590648822"
+
+# Sacklinius -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Sacklinius"
+LAST	Len	"Sacklinius"
+#   set the mul label to "Sacklinius"
+LAST	Lmul	"Sacklinius"
+#   set the ja label to "サクリニウス"
+LAST	Lja	"サクリニウス"
+#   set the zh label to "萨克利尼乌斯"
+LAST	Lzh	"萨克利尼乌斯"
+#   set the ko label to "사크리뉴스"
+LAST	Lko	"사크리뉴스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Sacklinius"
+LAST	P1705	mul:"Sacklinius"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q105705577 Lars Henriksson Sacklinius: P734 family name = the item just created
+Q105705577	P734	LAST	S2600	"6000000001389335105"
+#   Q141528999 Margaretha Christina Sacklinius: P734 family name = the item just created
+Q141528999	P734	LAST	S2600	"6000000001720768631"
+#   Q6087798 Lars Larsson Sacklén (Sacklinius): P734 family name = the item just created
+Q6087798	P734	LAST	S2600	"6000000011507762149"
+
+# Uppheim -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Uppheim"
+LAST	Len	"Uppheim"
+#   set the mul label to "Uppheim"
+LAST	Lmul	"Uppheim"
+#   set the ja label to "ウップヘイム"
+LAST	Lja	"ウップヘイム"
+#   set the zh label to "乌普赫伊姆"
+LAST	Lzh	"乌普赫伊姆"
+#   set the ko label to "우페임"
+LAST	Lko	"우페임"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Uppheim"
+LAST	P1705	mul:"Uppheim"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141562410 Ingebjørg Larsdatter Uppheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141562410	P734	LAST	P3831	Q2507958	S2600	"6000000007224180921"
+#   P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141562410	P734	LAST	P3831	Q28418670	S2600	"6000000007224180921"
+#   Q141565656 Lars Gudleikson Uppheim: P734 family name = the item just created
+Q141565656	P734	LAST	S2600	"6000000014596414349"
+
+# von Patkul -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "von Patkul"
+LAST	Len	"von Patkul"
+#   set the mul label to "von Patkul"
+LAST	Lmul	"von Patkul"
+#   set the ja label to "ヴォン・パトクル"
+LAST	Lja	"ヴォン・パトクル"
+#   set the zh label to "翁·帕特库尔"
+LAST	Lzh	"翁·帕特库尔"
+#   set the ko label to "본 파트쿨"
+LAST	Lko	"본 파트쿨"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"von Patkul"
+LAST	P1705	mul:"von Patkul"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q128045214 Jürgen III von Patkul: P734 family name = the item just created
+Q128045214	P734	LAST	S2600	"6000000010069237036"
+#   Q141620043 Köne von Patkul: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141620043	P734	LAST	P3831	Q28418670	S2600	"6000000011548501343"
+#   Q128158945 Gertrude von Patkul: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q128158945	P734	LAST	P3831	Q2507958	S2600	"6000000014430226111"
+
+# Bjørku -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Bjørku"
+LAST	Len	"Bjørku"
+#   set the mul label to "Bjørku"
+LAST	Lmul	"Bjørku"
+#   set the ja label to "ビョルク"
+LAST	Lja	"ビョルク"
+#   set the zh label to "博尔库"
+LAST	Lzh	"博尔库"
+#   set the ko label to "뵈르쿠"
+LAST	Lko	"뵈르쿠"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Bjørku"
+LAST	P1705	mul:"Bjørku"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141585584 Gunnhild Askjellsdatter Bjørku: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141585584	P734	LAST	P3831	Q2507958	S2600	"6000000007224161906"
+#   Q141586289 Ragna Bårdsdotter Bjørku: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141586289	P734	LAST	P3831	Q28418670	S2600	"6000000205643875855"
 
 # Bråstein -- family, 2 bearer(s) in the batches
 # create a new item
@@ -854,205 +1426,121 @@ Q141648844	P734	LAST	S2600	"6000000003094907617"
 #   Q141570099 Knut Knutson Bråstein: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141570099	P734	LAST	P3831	Q2507958	S2600	"6000000006776171152"
 
-# Holteson -- patronymic, 2 bearer(s) in the batches
+# Gyllenlood -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Holteson"
-LAST	Len	"Holteson"
-#   set the mul label to "Holteson"
-LAST	Lmul	"Holteson"
-#   set the ja label to "ホルテソン"
-LAST	Lja	"ホルテソン"
-#   set the zh label to "霍尔特松"
-LAST	Lzh	"霍尔特松"
-#   set the ko label to "홀테손"
-LAST	Lko	"홀테손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Holteson"
-LAST	P1705	mul:"Holteson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141562477 Jon Holteson Holter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141565449 Holte Gunnarson Seim
-Q141562477	P5056	LAST	P144	Q141565449	S2600	"6000000000574028558"
-#   Q141583193 Ulvhedin Holteson Kamp: P5056 patronym or matronym = the item just created, qualified P144 based on Q141583992 Holte Jonsson
-Q141583193	P5056	LAST	P144	Q141583992	S2600	"6000000000944947195"
-
-# Mariota -- given, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Mariota"
-LAST	Len	"Mariota"
-#   set the mul label to "Mariota"
-LAST	Lmul	"Mariota"
-#   set the ja label to "マリオタ"
-LAST	Lja	"マリオタ"
-#   set the zh label to "马里奥塔"
-LAST	Lzh	"马里奥塔"
-#   set the ko label to "마리오타"
-LAST	Lko	"마리오타"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Mariota"
-LAST	P1705	mul:"Mariota"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# Rosstøl -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Rosstøl"
-LAST	Len	"Rosstøl"
-#   set the mul label to "Rosstøl"
-LAST	Lmul	"Rosstøl"
-#   set the ja label to "ロッストル"
-LAST	Lja	"ロッストル"
-#   set the zh label to "罗斯托尔"
-LAST	Lzh	"罗斯托尔"
-#   set the ko label to "로스퇼"
-LAST	Lko	"로스퇼"
+#   the item just created: set the en label to "Gyllenlood"
+LAST	Len	"Gyllenlood"
+#   set the mul label to "Gyllenlood"
+LAST	Lmul	"Gyllenlood"
+#   set the ja label to "ギレンロオド"
+LAST	Lja	"ギレンロオド"
+#   set the zh label to "吉伦洛奥德"
+LAST	Lzh	"吉伦洛奥德"
+#   set the ko label to "길렌루드"
+LAST	Lko	"길렌루드"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Rosstøl"
-LAST	P1705	mul:"Rosstøl"
+#   P1705 native label = mul:"Gyllenlood"
+LAST	P1705	mul:"Gyllenlood"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141562520 Karina Torjusdatter Rosstøl: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141562520	P734	LAST	P3831	Q2507958	S2600	"6000000005770751283"
-#   Q141653730 Gunvor Salvesdatter Torkelsen Omlid: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141653730	P734	LAST	P3831	Q28418670	S2600	"6000000007303617491"
+#   Q141584406 Axel Gyllenlood: P734 family name = the item just created
+Q141584406	P734	LAST	S2600	"6000000004112357635"
+#   Q141580738 Charlotta Lovisa Gyllenlood: P734 family name = the item just created
+Q141580738	P734	LAST	S2600	"6000000004113104740"
 
-# Rødser -- family, 2 bearer(s) in the batches
+# Hallenia -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Rødser"
-LAST	Len	"Rødser"
-#   set the mul label to "Rødser"
-LAST	Lmul	"Rødser"
-#   set the ja label to "ロドセル"
-LAST	Lja	"ロドセル"
-#   set the zh label to "罗德塞尔"
-LAST	Lzh	"罗德塞尔"
-#   set the ko label to "뢰드세르"
-LAST	Lko	"뢰드세르"
+#   the item just created: set the en label to "Hallenia"
+LAST	Len	"Hallenia"
+#   set the mul label to "Hallenia"
+LAST	Lmul	"Hallenia"
+#   set the ja label to "ハレニア"
+LAST	Lja	"ハレニア"
+#   set the zh label to "哈莱尼阿"
+LAST	Lzh	"哈莱尼阿"
+#   set the ko label to "할레니아"
+LAST	Lko	"할레니아"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Rødser"
-LAST	P1705	mul:"Rødser"
+#   P1705 native label = mul:"Hallenia"
+LAST	P1705	mul:"Hallenia"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141583243 Ole Rødser: P734 family name = the item just created
-Q141583243	P734	LAST	S2600	"6000000019086969181"
-#   Q141583299 NN Rødser: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141583299	P734	LAST	P3831	Q28418670	S2600	"6000000178414001829"
+#   Q141562283 Elisabet Jonsdotter Hallenia: P734 family name = the item just created
+Q141562283	P734	LAST	S2600	"6000000003684977429"
+#   Q141510821 Elsa Hallenia: P734 family name = the item just created
+Q141510821	P734	LAST	S2600	"6000000041955395763"
 
-# Sveinsvold -- family, 2 bearer(s) in the batches
+# Sædberg -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Sveinsvold"
-LAST	Len	"Sveinsvold"
-#   set the mul label to "Sveinsvold"
-LAST	Lmul	"Sveinsvold"
-#   set the ja label to "スヴェインスヴォルド"
-LAST	Lja	"スヴェインスヴォルド"
-#   set the zh label to "斯韦因斯沃尔德"
-LAST	Lzh	"斯韦因斯沃尔德"
-#   set the ko label to "스베인스볼드"
-LAST	Lko	"스베인스볼드"
+#   the item just created: set the en label to "Sædberg"
+LAST	Len	"Sædberg"
+#   set the mul label to "Sædberg"
+LAST	Lmul	"Sædberg"
+#   set the ja label to "セドベルグ"
+LAST	Lja	"セドベルグ"
+#   set the zh label to "塞德贝尔格"
+LAST	Lzh	"塞德贝尔格"
+#   set the ko label to "새드베륵"
+LAST	Lko	"새드베륵"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Sveinsvold"
-LAST	P1705	mul:"Sveinsvold"
+#   P1705 native label = mul:"Sædberg"
+LAST	P1705	mul:"Sædberg"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141570621 Mari Einarsdatter Sveinsvold: P734 family name = the item just created
-Q141570621	P734	LAST	S2600	"6000000005607524517"
-#   Q141586048 Jon Eivindson Sveinsvold: P734 family name = the item just created
-Q141586048	P734	LAST	S2600	"6000000023529849237"
+#   Q141547202 Eli Jonesdatter Tøtland: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141547202	P734	LAST	P3831	Q28418670	S2600	"6000000003377430910"
+#   Q141547873 Erik Jonsson Norheim Bjørheim: P734 family name = the item just created
+Q141547873	P734	LAST	S2600	"6000000003377603531"
 
-# Todni -- given, 2 bearer(s) in the batches
+# Almöätten -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Todni"
-LAST	Len	"Todni"
-#   set the mul label to "Todni"
-LAST	Lmul	"Todni"
-#   set the ja label to "トドニ"
-LAST	Lja	"トドニ"
-#   set the zh label to "托德尼"
-LAST	Lzh	"托德尼"
-#   set the ko label to "토드니"
-LAST	Lko	"토드니"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Todni"
-LAST	P1705	mul:"Todni"
+#   the item just created: set the en label to "Almöätten"
+LAST	Len	"Almöätten"
+#   set the mul label to "Almöätten"
+LAST	Lmul	"Almöätten"
+#   set the ja label to "アルモエッテン"
+LAST	Lja	"アルモエッテン"
+#   set the zh label to "阿尔莫埃滕"
+LAST	Lzh	"阿尔莫埃滕"
+#   set the ko label to "알뫼에텐"
+LAST	Lko	"알뫼에텐"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Almöätten"
+LAST	P1705	mul:"Almöätten"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141563024 Todni Tormodsdatter Oaland: P735 given name = the item just created
-Q141563024	P735	LAST	S2600	"6000000003095003918"
+#   Q141634013 Holmfrid Johansdotter (Almöätten): P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141634013	P734	LAST	P3831	Q2507958	S2600	"6000000006961829697"
 
-# Tyssen -- patronymic, 2 bearer(s) in the batches
+# Bjarnesdatter -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Tyssen"
-LAST	Len	"Tyssen"
-#   set the mul label to "Tyssen"
-LAST	Lmul	"Tyssen"
-#   set the ja label to "ティセン"
-LAST	Lja	"ティセン"
-#   set the zh label to "蒂森"
-LAST	Lzh	"蒂森"
-#   set the ko label to "티센"
-LAST	Lko	"티센"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Tyssen"
-LAST	P1705	mul:"Tyssen"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141559595 Gunnhild Johannesdatter Tyssen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141562468 Johannes Gulleikson Øyo, P3831 object of statement has role Q141584760
-Q141559595	P5056	LAST	P144	Q141562468	P3831	Q141584760	S2600	"6000000000866353020"
-#   Q141566130 Rasmus Nilsson Tyssen: P5056 patronym or matronym = the item just created, qualified P3831 object of statement has role Q141584760
-Q141566130	P5056	LAST	P3831	Q141584760	S2600	"6000000013373537733"
-
-# Ulvåsedotter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Ulvåsedotter"
-LAST	Len	"Ulvåsedotter"
-#   set the mul label to "Ulvåsedotter"
-LAST	Lmul	"Ulvåsedotter"
-#   set the ja label to "ウルヴォーセドッテル"
-LAST	Lja	"ウルヴォーセドッテル"
-#   set the zh label to "乌尔沃塞多特"
-LAST	Lzh	"乌尔沃塞多特"
-#   set the ko label to "울보세도테르"
-LAST	Lko	"울보세도테르"
+#   the item just created: set the en label to "Bjarnesdatter"
+LAST	Len	"Bjarnesdatter"
+#   set the mul label to "Bjarnesdatter"
+LAST	Lmul	"Bjarnesdatter"
+#   set the ja label to "ビャルネスダッテル"
+LAST	Lja	"ビャルネスダッテル"
+#   set the zh label to "巴尔内斯达特"
+LAST	Lzh	"巴尔内斯达特"
+#   set the ko label to "바르네스다테르"
+LAST	Lko	"바르네스다테르"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -1063,176 +1551,76 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Ulvåsedotter"
-LAST	P1705	mul:"Ulvåsedotter"
+#   P1705 native label = mul:"Bjarnesdatter"
+LAST	P1705	mul:"Bjarnesdatter"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141487965 Katarina Ulvåsedotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141499085 Ulvåse
-Q141487965	P5056	LAST	P144	Q141499085	S2600	"6000000081984205249"
-#   Q141454543 Kristina Ulvåsedotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141454719 Ulvåse
-Q141454543	P5056	LAST	P144	Q141454719	S2600	"6000000212837788828"
+#   P144 based on = Q782509 Bjarne
+LAST	P144	Q782509
+#   Q782509 Bjarne: P2976 patronym or matronym for this name = the item just created
+Q782509	P2976	LAST
+#   Q141611098 Elin Bjarnesdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141612162 Bjarne Mel-ætta
+Q141611098	P5056	LAST	P144	Q141612162	S2600	"6000000015251679467"
 
-# Vermund -- given, 2 bearer(s) in the batches
+# Egersund -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Vermund"
-LAST	Len	"Vermund"
-#   set the mul label to "Vermund"
-LAST	Lmul	"Vermund"
-#   set the ja label to "ヴェルムンド"
-LAST	Lja	"ヴェルムンド"
-#   set the zh label to "韦尔蒙德"
-LAST	Lzh	"韦尔蒙德"
-#   set the ko label to "베르문드"
-LAST	Lko	"베르문드"
+#   the item just created: set the en label to "Egersund"
+LAST	Len	"Egersund"
+#   set the mul label to "Egersund"
+LAST	Lmul	"Egersund"
+#   set the ja label to "エゲルスンド"
+LAST	Lja	"エゲルスンド"
+#   set the zh label to "埃盖尔孙德"
+LAST	Lzh	"埃盖尔孙德"
+#   set the ko label to "에게르순드"
+LAST	Lko	"에게르순드"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Egersund"
+LAST	P1705	mul:"Egersund"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141654064 Anna Jakobsdatter Egersund: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141654064	P734	LAST	P3831	Q2507958	S2600	"6000000022178238513"
+
+# Gerdruta -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gerdruta"
+LAST	Len	"Gerdruta"
+#   set the mul label to "Gerdruta"
+LAST	Lmul	"Gerdruta"
+#   set the ja label to "ゲルドルタ"
+LAST	Lja	"ゲルドルタ"
+#   set the zh label to "盖尔德鲁塔"
+LAST	Lzh	"盖尔德鲁塔"
+#   set the ko label to "게르드루타"
+LAST	Lko	"게르드루타"
 #   set the en description to "given name"
 LAST	Den	"given name"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
-#   P1705 native label = mul:"Vermund"
-LAST	P1705	mul:"Vermund"
+#   P1705 native label = mul:"Gerdruta"
+LAST	P1705	mul:"Gerdruta"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141624586 Vermund Regevik: P735 given name = the item just created
-Q141624586	P735	LAST	S2600	"6000000005012044691"
-#   Q141575774 Vermund Einarsen Østre Tonstad: P735 given name = the item just created
-Q141575774	P735	LAST	S2600	"6000000005607527499"
 
-# Vikøy -- family, 2 bearer(s) in the batches
+# Gormsson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Vikøy"
-LAST	Len	"Vikøy"
-#   set the mul label to "Vikøy"
-LAST	Lmul	"Vikøy"
-#   set the ja label to "ヴィコイ"
-LAST	Lja	"ヴィコイ"
-#   set the zh label to "维科伊"
-LAST	Lzh	"维科伊"
-#   set the ko label to "비쾨이"
-LAST	Lko	"비쾨이"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Vikøy"
-LAST	P1705	mul:"Vikøy"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141443447 Torlak Olsen Aukland: P734 family name = the item just created
-Q141443447	P734	LAST	S2600	"6000000006171215814"
-#   Q141610617 Margareta Torlaksdatter Vikøy: P734 family name = the item just created
-Q141610617	P734	LAST	S2600	"6000000031896320853"
-
-# Zachrisdotter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Zachrisdotter"
-LAST	Len	"Zachrisdotter"
-#   set the mul label to "Zachrisdotter"
-LAST	Lmul	"Zachrisdotter"
-#   set the ja label to "ザクリスドッテル"
-LAST	Lja	"ザクリスドッテル"
-#   set the zh label to "扎克里斯多特"
-LAST	Lzh	"扎克里斯多特"
-#   set the ko label to "자크리스도테르"
-LAST	Lko	"자크리스도테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Zachrisdotter"
-LAST	P1705	mul:"Zachrisdotter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q61957868 Zachris
-LAST	P144	Q61957868
-#   Q61957868 Zachris: P2976 patronym or matronym for this name = the item just created
-Q61957868	P2976	LAST
-#   the item just created: P144 based on = Q20174193
-LAST	P144	Q20174193
-#   Q20174193: P2976 patronym or matronym for this name = the item just created
-Q20174193	P2976	LAST
-#   the item just created: P144 based on = Q19868629 Sakari
-LAST	P144	Q19868629
-#   Q19868629 Sakari: P2976 patronym or matronym for this name = the item just created
-Q19868629	P2976	LAST
-#   the item just created: P144 based on = Q41796451 Zakarias
-LAST	P144	Q41796451
-#   Q41796451 Zakarias: P2976 patronym or matronym for this name = the item just created
-Q41796451	P2976	LAST
-#   Q141448462 Catharina Zachrisdotter Ulhaegius: P5056 patronym or matronym = the item just created, qualified P144 based on Q141549948 Zacharias Olai Heikkola
-Q141448462	P5056	LAST	P144	Q141549948	S2600	"6000000001005061614"
-#   Q141635847 Helena Zachrisdotter Franzén: P5056 patronym or matronym = the item just created, qualified P144 based on Q11903151 Zachris Zachrisson Franzén
-Q141635847	P5056	LAST	P144	Q11903151	S2600	"6000000004117907577"
-
-# de Monterroso -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "de Monterroso"
-LAST	Len	"de Monterroso"
-#   set the mul label to "de Monterroso"
-LAST	Lmul	"de Monterroso"
-#   set the ja label to "デ・モンテロソ"
-LAST	Lja	"デ・モンテロソ"
-#   set the zh label to "德·蒙特罗索"
-LAST	Lzh	"德·蒙特罗索"
-#   set the ko label to "데 몬테르로소"
-LAST	Lko	"데 몬테르로소"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"de Monterroso"
-LAST	P1705	mul:"de Monterroso"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141634207 Fernando Rodriguez de Monterroso: P734 family name = the item just created
-Q141634207	P734	LAST	S2600	"6000000007192013315"
-
-# von Saveland -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "von Saveland"
-LAST	Len	"von Saveland"
-#   set the mul label to "von Saveland"
-LAST	Lmul	"von Saveland"
-#   set the ja label to "ヴォン・サヴェランド"
-LAST	Lja	"ヴォン・サヴェランド"
-#   set the zh label to "翁·萨韦兰德"
-LAST	Lzh	"翁·萨韦兰德"
-#   set the ko label to "본 사베란드"
-LAST	Lko	"본 사베란드"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"von Saveland"
-LAST	P1705	mul:"von Saveland"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q110547994 Elisabeth von Saveland: P734 family name = the item just created
-Q110547994	P734	LAST	S2600	"6000000001799769002"
-
-# Arnmodsson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Arnmodsson"
-LAST	Len	"Arnmodsson"
-#   set the mul label to "Arnmodsson"
-LAST	Lmul	"Arnmodsson"
-#   set the ja label to "アルンモドソン"
-LAST	Lja	"アルンモドソン"
-#   set the zh label to "阿尔恩莫德松"
-LAST	Lzh	"阿尔恩莫德松"
-#   set the ko label to "아른모드손"
-LAST	Lko	"아른모드손"
+#   set the en label to "Gormsson"
+LAST	Len	"Gormsson"
+#   set the mul label to "Gormsson"
+LAST	Lmul	"Gormsson"
+#   set the ja label to "ゴルムソン"
+LAST	Lja	"ゴルムソン"
+#   set the zh label to "戈尔姆松"
+LAST	Lzh	"戈尔姆松"
+#   set the ko label to "고름손"
+LAST	Lko	"고름손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -1243,130 +1631,54 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Arnmodsson"
-LAST	P1705	mul:"Arnmodsson"
+#   P1705 native label = mul:"Gormsson"
+LAST	P1705	mul:"Gormsson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q16532663 Arne Arnmodsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q16532667 Arnmod Arnvidsson
-Q16532663	P5056	LAST	P144	Q16532667	S2600	"6000000002527618911"
+#   P144 based on = Q1782248 Gorm
+LAST	P144	Q1782248
+#   Q1782248 Gorm: P2976 patronym or matronym for this name = the item just created
+Q1782248	P2976	LAST
+#   Q141635497 Gothrik Gormsson af Scania: P5056 patronym or matronym = the item just created
+Q141635497	P5056	LAST	S2600	"6000000022851598987"
 
-# Asbjørnson -- family, 1 bearer(s) in the batches
+# Grønhoff -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Asbjørnson"
-LAST	Len	"Asbjørnson"
-#   set the mul label to "Asbjørnson"
-LAST	Lmul	"Asbjørnson"
-#   set the ja label to "アスビョルンソン"
-LAST	Lja	"アスビョルンソン"
-#   set the zh label to "阿斯博尔恩松"
-LAST	Lzh	"阿斯博尔恩松"
-#   set the ko label to "아스뵈른손"
-LAST	Lko	"아스뵈른손"
+#   the item just created: set the en label to "Grønhoff"
+LAST	Len	"Grønhoff"
+#   set the mul label to "Grønhoff"
+LAST	Lmul	"Grønhoff"
+#   set the ja label to "グロンホッフ"
+LAST	Lja	"グロンホッフ"
+#   set the zh label to "格龙霍夫"
+LAST	Lzh	"格龙霍夫"
+#   set the ko label to "그뢴호프"
+LAST	Lko	"그뢴호프"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Asbjørnson"
-LAST	P1705	mul:"Asbjørnson"
+#   P1705 native label = mul:"Grønhoff"
+LAST	P1705	mul:"Grønhoff"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141514048 Aslak Asbjørnson: P734 family name = the item just created
-Q141514048	P734	LAST	S2600	"6000000003492072706"
+#   Q141585838 Karen Pernille Andersdatter Grønhoff: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141585838	P734	LAST	P3831	Q28418670	S2600	"3810409"
 
-# Asgautsdotter -- patronymic, 1 bearer(s) in the batches
+# Hallorsson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Asgautsdotter"
-LAST	Len	"Asgautsdotter"
-#   set the mul label to "Asgautsdotter"
-LAST	Lmul	"Asgautsdotter"
-#   set the ja label to "アスガウトスドッテル"
-LAST	Lja	"アスガウトスドッテル"
-#   set the zh label to "阿斯加乌特斯多特"
-LAST	Lzh	"阿斯加乌特斯多特"
-#   set the ko label to "아스가우트스도테르"
-LAST	Lko	"아스가우트스도테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Asgautsdotter"
-LAST	P1705	mul:"Asgautsdotter"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q16419537 Asgaut
-LAST	P144	Q16419537
-#   Q16419537 Asgaut: P2976 patronym or matronym for this name = the item just created
-Q16419537	P2976	LAST
-#   Q141587414 Dorte Sofie Asgautsdotter Nordbø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141528167 Asgaut Rasmusson Reilstad
-Q141587414	P5056	LAST	P144	Q141528167	S2600	"6000000001770110415"
-
-# Bergithe -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Bergithe"
-LAST	Len	"Bergithe"
-#   set the mul label to "Bergithe"
-LAST	Lmul	"Bergithe"
-#   set the ja label to "ベルギテ"
-LAST	Lja	"ベルギテ"
-#   set the zh label to "贝尔吉特"
-LAST	Lzh	"贝尔吉特"
-#   set the ko label to "베르기테"
-LAST	Lko	"베르기테"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Bergithe"
-LAST	P1705	mul:"Bergithe"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141216639 Olufine Bergithe Jenssen: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q141216639	P735	LAST	P1545	"2"	P3831	Q245025	S2600	"6000000014196479728"
-
-# Blitgardis -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Blitgardis"
-LAST	Len	"Blitgardis"
-#   set the mul label to "Blitgardis"
-LAST	Lmul	"Blitgardis"
-#   set the ja label to "ブリトガルディス"
-LAST	Lja	"ブリトガルディス"
-#   set the zh label to "布利特加尔迪斯"
-LAST	Lzh	"布利特加尔迪斯"
-#   set the ko label to "브리트가르디스"
-LAST	Lko	"브리트가르디스"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Blitgardis"
-LAST	P1705	mul:"Blitgardis"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# Börjesson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Börjesson"
-LAST	Len	"Börjesson"
-#   set the mul label to "Börjesson"
-LAST	Lmul	"Börjesson"
-#   set the ja label to "ボリイェソン"
-LAST	Lja	"ボリイェソン"
-#   set the zh label to "博尔耶松"
-LAST	Lzh	"博尔耶松"
-#   set the ko label to "뵈르제손"
-LAST	Lko	"뵈르제손"
+#   the item just created: set the en label to "Hallorsson"
+LAST	Len	"Hallorsson"
+#   set the mul label to "Hallorsson"
+LAST	Lmul	"Hallorsson"
+#   set the ja label to "ハロルソン"
+LAST	Lja	"ハロルソン"
+#   set the zh label to "哈洛尔松"
+LAST	Lzh	"哈洛尔松"
+#   set the ko label to "할로르손"
+LAST	Lko	"할로르손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -1377,120 +1689,218 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Börjesson"
-LAST	P1705	mul:"Börjesson"
+#   P1705 native label = mul:"Hallorsson"
+LAST	P1705	mul:"Hallorsson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q3491357 Börje
-LAST	P144	Q3491357
-#   Q3491357 Börje: P2976 patronym or matronym for this name = the item just created
-Q3491357	P2976	LAST
-#   Q141529441 Gabriel Börjesson Falck: P5056 patronym or matronym = the item just created
-Q141529441	P5056	LAST	S2600	"6000000003963725368"
+#   Q141549786 Anders Erik Hallorsson Bergius: P5056 patronym or matronym = the item just created, qualified P144 based on Q141585951 Hallor Bergius (Bergius)
+Q141549786	P5056	LAST	P144	Q141585951	S2600	"6000000001329837065"
 
-# Fauciburge -- given, 1 bearer(s) in the batches
+# Karasson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Fauciburge"
-LAST	Len	"Fauciburge"
-#   set the mul label to "Fauciburge"
-LAST	Lmul	"Fauciburge"
-#   set the ja label to "ファウシブルゲ"
-LAST	Lja	"ファウシブルゲ"
-#   set the zh label to "法乌西布尔盖"
-LAST	Lzh	"法乌西布尔盖"
-#   set the ko label to "파우키부르게"
-LAST	Lko	"파우키부르게"
+#   the item just created: set the en label to "Karasson"
+LAST	Len	"Karasson"
+#   set the mul label to "Karasson"
+LAST	Lmul	"Karasson"
+#   set the ja label to "カラソン"
+LAST	Lja	"カラソン"
+#   set the zh label to "卡拉松"
+LAST	Lzh	"卡拉松"
+#   set the ko label to "카라손"
+LAST	Lko	"카라손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Karasson"
+LAST	P1705	mul:"Karasson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141634224 Frosti Karasson Mythical: P5056 patronym or matronym = the item just created
+Q141634224	P5056	LAST	S2600	"6000000002665380834"
+
+# Kjetilson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kjetilson"
+LAST	Len	"Kjetilson"
+#   set the mul label to "Kjetilson"
+LAST	Lmul	"Kjetilson"
+#   set the ja label to "ヒェティルソン"
+LAST	Lja	"ヒェティルソン"
+#   set the zh label to "谢蒂尔松"
+LAST	Lzh	"谢蒂尔松"
+#   set the ko label to "케틸손"
+LAST	Lko	"케틸손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P31 instance of = Q141584760
+LAST	P31	Q141584760
+#   P1705 native label = mul:"Kjetilson"
+LAST	P1705	mul:"Kjetilson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q1744078 Kjetil
+LAST	P144	Q1744078
+#   Q1744078 Kjetil: P2976 patronym or matronym for this name = the item just created
+Q1744078	P2976	LAST
+#   the item just created: P144 based on = Q19827701 Ketill
+LAST	P144	Q19827701
+#   Q19827701 Ketill: P2976 patronym or matronym for this name = the item just created
+Q19827701	P2976	LAST
+#   the item just created: P144 based on = Q19827695 Ketil
+LAST	P144	Q19827695
+#   Q19827695 Ketil: P2976 patronym or matronym for this name = the item just created
+Q19827695	P2976	LAST
+#   Q141200067 Rasmus Kjetilson Kjetilsen Høle: P5056 patronym or matronym = the item just created, qualified P144 based on Q141499094 Kjetil Rasmusson Høle, P3831 object of statement has role Q141584760
+Q141200067	P5056	LAST	P144	Q141499094	P3831	Q141584760	S2600	"6000000003095034915"
+
+# Märta -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Märta"
+LAST	Len	"Märta"
+#   set the mul label to "Märta"
+LAST	Lmul	"Märta"
+#   set the ja label to "メルタ"
+LAST	Lja	"メルタ"
+#   set the zh label to "梅尔塔"
+LAST	Lzh	"梅尔塔"
+#   set the ko label to "마르타"
+LAST	Lko	"마르타"
 #   set the en description to "given name"
 LAST	Den	"given name"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
-#   P1705 native label = mul:"Fauciburge"
-LAST	P1705	mul:"Fauciburge"
+#   P1705 native label = mul:"Märta"
+LAST	P1705	mul:"Märta"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
+#   Q141570691 Märta Bertilsdotter: P735 given name = the item just created
+Q141570691	P735	LAST	S2600	"6000000006595715535"
 
-# Gölin -- given, 1 bearer(s) in the batches
+# Nising -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Gölin"
-LAST	Len	"Gölin"
-#   set the mul label to "Gölin"
-LAST	Lmul	"Gölin"
-#   set the ja label to "ゴリン"
-LAST	Lja	"ゴリン"
-#   set the zh label to "戈林"
-LAST	Lzh	"戈林"
-#   set the ko label to "괴린"
-LAST	Lko	"괴린"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Gölin"
-LAST	P1705	mul:"Gölin"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141629263 Gölin Jakobsdotter: P735 given name = the item just created
-Q141629263	P735	LAST	S2600	"6000000000584038900"
-
-# Kakujitsu-ni -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kakujitsu-ni"
-LAST	Len	"Kakujitsu-ni"
-#   set the mul label to "Kakujitsu-ni"
-LAST	Lmul	"Kakujitsu-ni"
-#   set the ja label to "カクイトスニ"
-LAST	Lja	"カクイトスニ"
-#   set the zh label to "卡库伊特苏尼"
-LAST	Lzh	"卡库伊特苏尼"
-#   set the ko label to "카쿠지트수니"
-LAST	Lko	"카쿠지트수니"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Kakujitsu-ni"
-LAST	P1705	mul:"Kakujitsu-ni"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# Lycon -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Lycon"
-LAST	Len	"Lycon"
-#   set the mul label to "Lycon"
-LAST	Lmul	"Lycon"
-#   set the ja label to "リコン"
-LAST	Lja	"リコン"
-#   set the zh label to "利孔"
-LAST	Lzh	"利孔"
-#   set the ko label to "리콘"
-LAST	Lko	"리콘"
+#   the item just created: set the en label to "Nising"
+LAST	Len	"Nising"
+#   set the mul label to "Nising"
+LAST	Lmul	"Nising"
+#   set the ja label to "ニシング"
+LAST	Lja	"ニシング"
+#   set the zh label to "尼辛"
+LAST	Lzh	"尼辛"
+#   set the ko label to "니싱"
+LAST	Lko	"니싱"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   P1705 native label = mul:"Lycon"
-LAST	P1705	mul:"Lycon"
+#   P1705 native label = mul:"Nising"
+LAST	P1705	mul:"Nising"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
+#   Q141519484 Brynhild Knutsdatter Nising: P734 family name = the item just created
+Q141519484	P734	LAST	S2600	"6000000002491976606"
 
-# Martinsson -- patronymic, 1 bearer(s) in the batches
+# Pascweten -- given, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Martinsson"
-LAST	Len	"Martinsson"
-#   set the mul label to "Martinsson"
-LAST	Lmul	"Martinsson"
-#   set the ja label to "マルティンッソン"
-LAST	Lja	"マルティンッソン"
-#   set the zh label to "马丁森"
-LAST	Lzh	"马丁森"
-#   set the ko label to "마르틴손"
-LAST	Lko	"마르틴손"
+#   the item just created: set the en label to "Pascweten"
+LAST	Len	"Pascweten"
+#   set the mul label to "Pascweten"
+LAST	Lmul	"Pascweten"
+#   set the ja label to "パスクヴェテン"
+LAST	Lja	"パスクヴェテン"
+#   set the zh label to "帕斯克韦滕"
+LAST	Lzh	"帕斯克韦滕"
+#   set the ko label to "파스크웨텐"
+LAST	Lko	"파스크웨텐"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Pascweten"
+LAST	P1705	mul:"Pascweten"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141628392 Pascweten de Bayeau: P735 given name = the item just created
+Q141628392	P735	LAST	S2600	"6000000000804907642"
+
+# Porcelos -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Porcelos"
+LAST	Len	"Porcelos"
+#   set the mul label to "Porcelos"
+LAST	Lmul	"Porcelos"
+#   set the ja label to "ポルセロス"
+LAST	Lja	"ポルセロス"
+#   set the zh label to "波尔塞洛斯"
+LAST	Lzh	"波尔塞洛斯"
+#   set the ko label to "포르케로스"
+LAST	Lko	"포르케로스"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Porcelos"
+LAST	P1705	mul:"Porcelos"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q333676 Ordoño II de Asturias rey de León: P734 family name = the item just created
+Q333676	P734	LAST	S2600	"6000000000033235630"
+
+# Raum -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Raum"
+LAST	Len	"Raum"
+#   set the mul label to "Raum"
+LAST	Lmul	"Raum"
+#   set the ja label to "ラウム"
+LAST	Lja	"ラウム"
+#   set the zh label to "拉乌姆"
+LAST	Lzh	"拉乌姆"
+#   set the ko label to "라움"
+LAST	Lko	"라움"
+#   set the en description to "given name"
+LAST	Den	"given name"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   P1705 native label = mul:"Raum"
+LAST	P1705	mul:"Raum"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q141640490 Raum Norsson: P735 given name = the item just created
+Q141640490	P735	LAST	S2600	"6000000005937127057"
+
+# Raumsson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Raumsson"
+LAST	Len	"Raumsson"
+#   set the mul label to "Raumsson"
+LAST	Lmul	"Raumsson"
+#   set the ja label to "ラウムソン"
+LAST	Lja	"ラウムソン"
+#   set the zh label to "拉乌姆松"
+LAST	Lzh	"拉乌姆松"
+#   set the ko label to "라움손"
+LAST	Lko	"라움손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -1501,284 +1911,147 @@ LAST	P31	Q130444148
 LAST	P31	Q10673705
 #   P31 instance of = Q141584760
 LAST	P31	Q141584760
-#   P1705 native label = mul:"Martinsson"
-LAST	P1705	mul:"Martinsson"
+#   P1705 native label = mul:"Raumsson"
+LAST	P1705	mul:"Raumsson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q18002399 Martin
-LAST	P144	Q18002399
-#   Q18002399 Martin: P2976 patronym or matronym for this name = the item just created
-Q18002399	P2976	LAST
-#   the item just created: P144 based on = Q17520926 Martinus
-LAST	P144	Q17520926
-#   Q17520926 Martinus: P2976 patronym or matronym for this name = the item just created
-Q17520926	P2976	LAST
-#   the item just created: P144 based on = Q18964343 Mårten
-LAST	P144	Q18964343
-#   Q18964343 Mårten: P2976 patronym or matronym for this name = the item just created
-Q18964343	P2976	LAST
-#   the item just created: P144 based on = Q16421992
-LAST	P144	Q16421992
-#   Q16421992: P2976 patronym or matronym for this name = the item just created
-Q16421992	P2976	LAST
-#   Q101247940 Jon Marteinsønn Stjerne: P5056 patronym or matronym = the item just created
-Q101247940	P5056	LAST	S2600	"6000000001195495695"
+#   Q141637034 Hring Raumsson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141640490 Raum Norsson
+Q141637034	P5056	LAST	P144	Q141640490	S2600	"6000000006906358485"
 
-# Matinpoika -- patronymic, 1 bearer(s) in the batches
+# Ridoredh -- given, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Matinpoika"
-LAST	Len	"Matinpoika"
-#   set the mul label to "Matinpoika"
-LAST	Lmul	"Matinpoika"
-#   set the ja label to "マティンポイカ"
-LAST	Lja	"マティンポイカ"
-#   set the zh label to "马廷波伊卡"
-LAST	Lzh	"马廷波伊卡"
-#   set the ko label to "마틴포이카"
-LAST	Lko	"마틴포이카"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P1705 native label = mul:"Matinpoika"
-LAST	P1705	mul:"Matinpoika"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141611432 Olavi Matinpoika Mullo: P5056 patronym or matronym = the item just created
-Q141611432	P5056	LAST	S2600	"6000000011736958277"
-
-# NN1 -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "NN1"
-LAST	Len	"NN1"
-#   set the mul label to "NN1"
-LAST	Lmul	"NN1"
+#   the item just created: set the en label to "Ridoredh"
+LAST	Len	"Ridoredh"
+#   set the mul label to "Ridoredh"
+LAST	Lmul	"Ridoredh"
+#   set the ja label to "リドレド"
+LAST	Lja	"リドレド"
+#   set the zh label to "里多雷德"
+LAST	Lzh	"里多雷德"
+#   set the ko label to "리도레드흐"
+LAST	Lko	"리도레드흐"
 #   set the en description to "given name"
 LAST	Den	"given name"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
-#   P1705 native label = mul:"NN1"
-LAST	P1705	mul:"NN1"
+#   P1705 native label = mul:"Ridoredh"
+LAST	P1705	mul:"Ridoredh"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141494554 NN1: P735 given name = the item just created
-Q141494554	P735	LAST	S2600	"6000000016189817229"
+#   Q141636835 Ridoredh de Bretagne: P735 given name = the item just created
+Q141636835	P735	LAST	S2600	"6000000006321320508"
 
-# NN2 -- given, 1 bearer(s) in the batches
+# Serker -- given, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "NN2"
-LAST	Len	"NN2"
-#   set the mul label to "NN2"
-LAST	Lmul	"NN2"
+#   the item just created: set the en label to "Serker"
+LAST	Len	"Serker"
+#   set the mul label to "Serker"
+LAST	Lmul	"Serker"
+#   set the ja label to "セルケル"
+LAST	Lja	"セルケル"
+#   set the zh label to "塞尔凯尔"
+LAST	Lzh	"塞尔凯尔"
+#   set the ko label to "세르케르"
+LAST	Lko	"세르케르"
 #   set the en description to "given name"
 LAST	Den	"given name"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
-#   P1705 native label = mul:"NN2"
-LAST	P1705	mul:"NN2"
+#   P1705 native label = mul:"Serker"
+LAST	P1705	mul:"Serker"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141577856 NN2: P735 given name = the item just created
-Q141577856	P735	LAST	S2600	"6000000024771809926"
+#   Q141614332 Serker Jonsen: P735 given name = the item just created
+Q141614332	P735	LAST	S2600	"6000000003646023820"
 
-# Njeldsdatter -- patronymic, 1 bearer(s) in the batches
+# Strykare -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Njeldsdatter"
-LAST	Len	"Njeldsdatter"
-#   set the mul label to "Njeldsdatter"
-LAST	Lmul	"Njeldsdatter"
-#   set the ja label to "ニェルドスダッテル"
-LAST	Lja	"ニェルドスダッテル"
-#   set the zh label to "内尔德斯达特"
-LAST	Lzh	"内尔德斯达特"
-#   set the ko label to "넬드스다테르"
-LAST	Lko	"넬드스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444179
-LAST	P31	Q130444179
-#   P31 instance of = Q10476255
-LAST	P31	Q10476255
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Njeldsdatter"
-LAST	P1705	mul:"Njeldsdatter"
+#   the item just created: set the en label to "Strykare"
+LAST	Len	"Strykare"
+#   set the mul label to "Strykare"
+LAST	Lmul	"Strykare"
+#   set the ja label to "ストリカレ"
+LAST	Lja	"ストリカレ"
+#   set the zh label to "斯特里卡雷"
+LAST	Lzh	"斯特里卡雷"
+#   set the ko label to "스트리카레"
+LAST	Lko	"스트리카레"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Strykare"
+LAST	P1705	mul:"Strykare"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q30740781
-LAST	P144	Q30740781
-#   Q30740781: P2976 patronym or matronym for this name = the item just created
-Q30740781	P2976	LAST
-#   Q141585741 Kirsten Njeldsdatter Kvalbein Jr.: P5056 patronym or matronym = the item just created, qualified P144 based on Q141622900 Njeld Håvardson Stokkeland
-Q141585741	P5056	LAST	P144	Q141622900	S2600	"6000000000172092164"
+#   Q141520723 Jon Olofsson Strykare: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141520723	P734	LAST	P3831	Q2507958	S2600	"6000000005418618725"
 
-# Norsson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Norsson"
-LAST	Len	"Norsson"
-#   set the mul label to "Norsson"
-LAST	Lmul	"Norsson"
-#   set the ja label to "ノルソン"
-LAST	Lja	"ノルソン"
-#   set the zh label to "诺尔松"
-LAST	Lzh	"诺尔松"
-#   set the ko label to "노르손"
-LAST	Lko	"노르손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Norsson"
-LAST	P1705	mul:"Norsson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q134873218
-LAST	P144	Q134873218
-#   Q134873218: P2976 patronym or matronym for this name = the item just created
-Q134873218	P2976	LAST
-#   Q141640490 Raum Norsson: P5056 patronym or matronym = the item just created
-Q141640490	P5056	LAST	S2600	"6000000005937127057"
-
-# Ogmundsen -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Ogmundsen"
-LAST	Len	"Ogmundsen"
-#   set the mul label to "Ogmundsen"
-LAST	Lmul	"Ogmundsen"
-#   set the ja label to "オグムンドセン"
-LAST	Lja	"オグムンドセン"
-#   set the zh label to "奥格蒙德森"
-LAST	Lzh	"奥格蒙德森"
-#   set the ko label to "옥문드센"
-LAST	Lko	"옥문드센"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Ogmundsen"
-LAST	P1705	mul:"Ogmundsen"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141585632 Gjermund Ogmundsen Pust: P5056 patronym or matronym = the item just created, qualified P144 based on Q141586242 Ogmund Olavson Pust
-Q141585632	P5056	LAST	P144	Q141586242	S2600	"6000000007480923065"
-
-# Onund -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Onund"
-LAST	Len	"Onund"
-#   set the mul label to "Onund"
-LAST	Lmul	"Onund"
-#   set the ja label to "オヌンド"
-LAST	Lja	"オヌンド"
-#   set the zh label to "奥农德"
-LAST	Lzh	"奥农德"
-#   set the ko label to "오눈드"
-LAST	Lko	"오눈드"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Onund"
-LAST	P1705	mul:"Onund"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141635437 Onund Ofeigssdottir Beitil: P735 given name = the item just created
-Q141635437	P735	LAST	S2600	"6000000009437649048"
-
-# Ospaksson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Ospaksson"
-LAST	Len	"Ospaksson"
-#   set the mul label to "Ospaksson"
-LAST	Lmul	"Ospaksson"
-#   set the ja label to "オスパクソン"
-LAST	Lja	"オスパクソン"
-#   set the zh label to "奥斯帕克松"
-LAST	Lzh	"奥斯帕克松"
-#   set the ko label to "오스파크손"
-LAST	Lko	"오스파크손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P31 instance of = Q141584760
-LAST	P31	Q141584760
-#   P1705 native label = mul:"Ospaksson"
-LAST	P1705	mul:"Ospaksson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q75387811 Sumarliði Ospaksson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141628398 Ospak Thórdarson
-Q75387811	P5056	LAST	P144	Q141628398	S2600	"6000000003646023917"
-
-# Osterhild -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Osterhild"
-LAST	Len	"Osterhild"
-#   set the mul label to "Osterhild"
-LAST	Lmul	"Osterhild"
-#   set the ja label to "オステルヒルド"
-LAST	Lja	"オステルヒルド"
-#   set the zh label to "奥斯特尔希尔德"
-LAST	Lzh	"奥斯特尔希尔德"
-#   set the ko label to "오스테르힐드"
-LAST	Lko	"오스테르힐드"
-#   set the en description to "given name"
-LAST	Den	"given name"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   P1705 native label = mul:"Osterhild"
-LAST	P1705	mul:"Osterhild"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141549273 Osterhild Ester von Dietenhofen: P735 given name = the item just created, qualified P1545 series ordinal 1
-Q141549273	P735	LAST	P1545	"1"	S2600	"6000000201590078885"
-
-# 6615 more name items are needed and wait for a later
+# 5619 more name items are needed and wait for a later
 # run -- 40 a day is the cap, not a limit of the data:
-#   Pascweten (given), 1 bearer(s)
-#   Porcelos (family), 1 bearer(s)
-#   Pyhlsson (family), 1 bearer(s)
-#   Rangela (given), 1 bearer(s)
-#   Raum (given), 1 bearer(s)
-#   Raumsson (patronymic), 1 bearer(s)
-#   Riddersvärd (family), 1 bearer(s)
-#   Ridoredh (given), 1 bearer(s)
-#   Rolvsen (patronymic), 1 bearer(s)
-#   Skafhogg (given), 1 bearer(s)
-#   Solgasson (patronymic), 1 bearer(s)
+#   Svaleson (patronymic), 1 bearer(s)
+#   Tomasson (family), 1 bearer(s)
 #   Torgard (given), 1 bearer(s)
-#   ... and 6603 more
+#   Traung (family), 1 bearer(s)
+#   Tumesdatter (patronymic), 1 bearer(s)
+#   Undenius (family), 1 bearer(s)
+#   Vemundarsson (patronymic), 1 bearer(s)
+#   Vigleison (patronymic), 1 bearer(s)
+#   Von Stubersheim (family), 1 bearer(s)
+#   Yngvildur (given), 1 bearer(s)
+#   de Laurenbourg (family), 1 bearer(s)
+#   de Mélitene (family), 1 bearer(s)
+#   ... and 5607 more
 
 # NOT created -- the plan says these already resolve to more than
 # one item, and creating another is the Maria failure that would
 # have made a tenth. Picked by hand; the person's sex decides.
 #   Bu (family), 1 bearer(s)
 #   Fitzgerald (family), 1 bearer(s)
+
+# ======================================================================
+# P144 BASED ON, on patronymic items that already exist and lack it.
+# The given names each patronymic derives from, which is what the
+# resolution rule reads: a bearer gets P5056 when their father's
+# P735 item is among these values. Patronymics only -- never people.
+# ======================================================================
+#   Q141574638: P144 based on = Q4926263 Andreas
+Q141574638	P144	Q4926263
+#   P144 based on = Q8843357 Anders
+Q141574638	P144	Q8843357
+#   Q141574649: P144 based on = Q4925477 John
+Q141574649	P144	Q4925477
+#   P144 based on = Q10989273 Johan
+Q141574649	P144	Q10989273
+#   P144 based on = Q2117521 Johannes
+Q141574649	P144	Q2117521
+#   Q141585066: P144 based on = Q317315 Øystein
+Q141585066	P144	Q317315
+#   P144 based on = Q30826758 Østen
+Q141585066	P144	Q30826758
+#   Q141585072: P144 based on = Q10989273 Johan
+Q141585072	P144	Q10989273
+#   P144 based on = Q1477134 Janne
+Q141585072	P144	Q1477134
+#   Q141585659: P144 based on = Q10989273 Johan
+Q141585659	P144	Q10989273
+#   P144 based on = Q15820657 Jahn
+Q141585659	P144	Q15820657
+#   P144 based on = Q2117521 Johannes
+Q141585659	P144	Q2117521
+#   P144 based on = Q1477134 Janne
+Q141585659	P144	Q1477134
+#   Q141585669: P144 based on = Q631585 Ingebrigt
+Q141585669	P144	Q631585
+#   Q141586318: P144 based on = Q16429390 Jochum
+Q141586318	P144	Q16429390
+#   P144 based on = Q4926961 Joachim
+Q141586318	P144	Q4926961
+#   P144 based on = Q139769074 Jokum
+Q141586318	P144	Q139769074
 
 # P2976 patronym or matronym for this name, on the given names: the
 # reverse of each patronymic item's P144 (Rasmus -> Rasmusdotter).
@@ -1804,6 +2077,12 @@ Q108520438	P2976	Q141574681
 Q108520438	P2976	Q141614698
 #   Q108704693: P2976 patronym or matronym for this name = Q141584089
 Q108704693	P2976	Q141584089
+#   Q10989273 Johan: P2976 patronym or matronym for this name = Q141574649
+Q10989273	P2976	Q141574649
+#   P2976 patronym or matronym for this name = Q141585072
+Q10989273	P2976	Q141585072
+#   P2976 patronym or matronym for this name = Q141585659
+Q10989273	P2976	Q141585659
 #   Q11161783 Stian: P2976 patronym or matronym for this name = Q141635522
 Q11161783	P2976	Q141635522
 #   Q113128546 Michell: P2976 patronym or matronym for this name = Q141456534
@@ -1868,9 +2147,7 @@ Q12319119	P2976	Q141336973
 Q12319119	P2976	Q141442237
 #   Q1237447 Pieter: P2976 patronym or matronym for this name = Q141582465
 Q1237447	P2976	Q141582465
-#   Q123820137: P2976 patronym or matronym for this name = Q141319007
-Q123820137	P2976	Q141319007
-#   P2976 patronym or matronym for this name = Q141442237
+#   Q123820137: P2976 patronym or matronym for this name = Q141442237
 Q123820137	P2976	Q141442237
 #   P2976 patronym or matronym for this name = Q141632538
 Q123820137	P2976	Q141632538
@@ -1878,9 +2155,7 @@ Q123820137	P2976	Q141632538
 Q124630667	P2976	Q141586316
 #   P2976 patronym or matronym for this name = Q141653615
 Q124630667	P2976	Q141653615
-#   Q1303231 Lauri: P2976 patronym or matronym for this name = Q141290425
-Q1303231	P2976	Q141290425
-#   P2976 patronym or matronym for this name = Q141436525
+#   Q1303231 Lauri: P2976 patronym or matronym for this name = Q141436525
 Q1303231	P2976	Q141436525
 #   Q130733980: P2976 patronym or matronym for this name = Q141403363
 Q130733980	P2976	Q141403363
@@ -1892,6 +2167,8 @@ Q134411324	P2976	Q141583370
 Q134594998	P2976	Q141585044
 #   P2976 patronym or matronym for this name = Q141585686
 Q134594998	P2976	Q141585686
+#   Q134873218: P2976 patronym or matronym for this name = Q141654588
+Q134873218	P2976	Q141654588
 #   Q135214035: P2976 patronym or matronym for this name = Q141580646
 Q135214035	P2976	Q141580646
 #   Q137709742 Søffren: P2976 patronym or matronym for this name = Q141611227
@@ -1900,7 +2177,9 @@ Q137709742	P2976	Q141611227
 Q137709760	P2976	Q141610474
 #   P2976 patronym or matronym for this name = Q141611227
 Q137709760	P2976	Q141611227
-#   Q139769074 Jokum: P2976 patronym or matronym for this name = Q141611199
+#   Q139769074 Jokum: P2976 patronym or matronym for this name = Q141586318
+Q139769074	P2976	Q141586318
+#   P2976 patronym or matronym for this name = Q141611199
 Q139769074	P2976	Q141611199
 #   Q139808004: P2976 patronym or matronym for this name = Q141632498
 Q139808004	P2976	Q141632498
@@ -1918,14 +2197,16 @@ Q1474085	P2976	Q141456293
 Q1474085	P2976	Q141499007
 #   P2976 patronym or matronym for this name = Q141614437
 Q1474085	P2976	Q141614437
+#   Q1477134 Janne: P2976 patronym or matronym for this name = Q141585072
+Q1477134	P2976	Q141585072
+#   P2976 patronym or matronym for this name = Q141585659
+Q1477134	P2976	Q141585659
 #   Q1522689 Markku: P2976 patronym or matronym for this name = Q141625202
 Q1522689	P2976	Q141625202
 #   Q15277207 Eerik: P2976 patronym or matronym for this name = Q130232912 Eriksdotter
 Q15277207	P2976	Q130232912
 #   P2976 patronym or matronym for this name = Q130232913 Eriksson
 Q15277207	P2976	Q130232913
-#   P2976 patronym or matronym for this name = Q141313547
-Q15277207	P2976	Q141313547
 #   P2976 patronym or matronym for this name = Q141502514
 Q15277207	P2976	Q141502514
 #   Q15621024 Michiel: P2976 patronym or matronym for this name = Q141456534
@@ -1936,11 +2217,11 @@ Q15621024	P2976	Q141515181
 Q15711062	P2976	Q56245178
 #   Q15820657 Jahn: P2976 patronym or matronym for this name = Q141546498
 Q15820657	P2976	Q141546498
+#   P2976 patronym or matronym for this name = Q141585659
+Q15820657	P2976	Q141585659
 #   Q15885228 Theodorus: P2976 patronym or matronym for this name = Q141584084
 Q15885228	P2976	Q141584084
-#   Q15897150 Peer: P2976 patronym or matronym for this name = Q141336454
-Q15897150	P2976	Q141336454
-#   P2976 patronym or matronym for this name = Q141421831
+#   Q15897150 Peer: P2976 patronym or matronym for this name = Q141421831
 Q15897150	P2976	Q141421831
 #   P2976 patronym or matronym for this name = Q141429564
 Q15897150	P2976	Q141429564
@@ -1952,10 +2233,6 @@ Q15897756	P2976	Q141456297
 Q15897788	P2976	Q141456297
 #   P2976 patronym or matronym for this name = Q141474271
 Q15897788	P2976	Q141474271
-#   Q15967275: P2976 patronym or matronym for this name = Q141318571
-Q15967275	P2976	Q141318571
-#   P2976 patronym or matronym for this name = Q141318792
-Q15967275	P2976	Q141318792
 #   Q16169145: P2976 patronym or matronym for this name = Q141612220
 Q16169145	P2976	Q141612220
 #   Q1619450 Hinrich: P2976 patronym or matronym for this name = Q141421834
@@ -1966,12 +2243,18 @@ Q1619450	P2976	Q141436541
 Q16280122	P2976	Q130233015
 #   P2976 patronym or matronym for this name = Q141383169
 Q16280122	P2976	Q141383169
+#   Q16419750: P2976 patronym or matronym for this name = Q141457242
+Q16419750	P2976	Q141457242
 #   Q16421983 Marten: P2976 patronym or matronym for this name = Q141582523
 Q16421983	P2976	Q141582523
+#   Q16421992: P2976 patronym or matronym for this name = Q141654583
+Q16421992	P2976	Q141654583
 #   Q16424899: P2976 patronym or matronym for this name = Q141611153
 Q16424899	P2976	Q141611153
 #   Q16428295: P2976 patronym or matronym for this name = Q141493361
 Q16428295	P2976	Q141493361
+#   Q16429390 Jochum: P2976 patronym or matronym for this name = Q141586318
+Q16429390	P2976	Q141586318
 #   Q1667407 Joonas: P2976 patronym or matronym for this name = Q141336969
 Q1667407	P2976	Q141336969
 #   P2976 patronym or matronym for this name = Q141336973
@@ -2036,9 +2319,9 @@ Q19828986	P2976	Q130232912
 Q19828986	P2976	Q130232913
 #   Q19868586 Arn: P2976 patronym or matronym for this name = Q141448439
 Q19868586	P2976	Q141448439
-#   Q19869349 Pär: P2976 patronym or matronym for this name = Q141314124
-Q19869349	P2976	Q141314124
-#   P2976 patronym or matronym for this name = Q141429564
+#   Q19868629 Sakari: P2976 patronym or matronym for this name = Q141654577
+Q19868629	P2976	Q141654577
+#   Q19869349 Pär: P2976 patronym or matronym for this name = Q141429564
 Q19869349	P2976	Q141429564
 #   P2976 patronym or matronym for this name = Q141550361
 Q19869349	P2976	Q141550361
@@ -2050,9 +2333,7 @@ Q20804429	P2976	Q141614695
 Q20804429	P2976	Q141629147
 #   P2976 patronym or matronym for this name = Q141632497
 Q20804429	P2976	Q141632497
-#   Q21069228: P2976 patronym or matronym for this name = Q141318548
-Q21069228	P2976	Q141318548
-#   P2976 patronym or matronym for this name = Q141574654
+#   Q21069228: P2976 patronym or matronym for this name = Q141574654
 Q21069228	P2976	Q141574654
 #   Q21142021 Jakobus: P2976 patronym or matronym for this name = Q141383280
 Q21142021	P2976	Q141383280
@@ -2082,6 +2363,10 @@ Q21148379	P2976	Q130233025
 Q21148379	P2976	Q141582465
 #   P2976 patronym or matronym for this name = Q141583352
 Q21148379	P2976	Q141583352
+#   Q2117521 Johannes: P2976 patronym or matronym for this name = Q141574649
+Q2117521	P2976	Q141574649
+#   P2976 patronym or matronym for this name = Q141585659
+Q2117521	P2976	Q141585659
 #   Q2140988 Torbjörn: P2976 patronym or matronym for this name = Q141585040
 Q2140988	P2976	Q141585040
 #   Q21505029 Dagfin: P2976 patronym or matronym for this name = Q141488194
@@ -2108,9 +2393,7 @@ Q28798237	P2976	Q141403300
 Q28798237	P2976	Q141456528
 #   P2976 patronym or matronym for this name = Q141528098
 Q28798237	P2976	Q141528098
-#   Q29169618 Kristopher: P2976 patronym or matronym for this name = Q141336468
-Q29169618	P2976	Q141336468
-#   P2976 patronym or matronym for this name = Q141383300
+#   Q29169618 Kristopher: P2976 patronym or matronym for this name = Q141383300
 Q29169618	P2976	Q141383300
 #   Q30087284 Eilif: P2976 patronym or matronym for this name = Q141515172
 Q30087284	P2976	Q141515172
@@ -2150,12 +2433,16 @@ Q30640453	P2976	Q141442910
 Q30640453	P2976	Q141574676
 #   Q30652665 Svenn: P2976 patronym or matronym for this name = Q141583341
 Q30652665	P2976	Q141583341
-#   Q31522621 Claës: P2976 patronym or matronym for this name = Q141318796
-Q31522621	P2976	Q141318796
-#   Q323415 Abram: P2976 patronym or matronym for this name = Q141318566
-Q323415	P2976	Q141318566
-#   P2976 patronym or matronym for this name = Q141443235
+#   Q30740781: P2976 patronym or matronym for this name = Q141654587
+Q30740781	P2976	Q141654587
+#   Q30826758 Østen: P2976 patronym or matronym for this name = Q141585066
+Q30826758	P2976	Q141585066
+#   Q317315 Øystein: P2976 patronym or matronym for this name = Q141585066
+Q317315	P2976	Q141585066
+#   Q323415 Abram: P2976 patronym or matronym for this name = Q141443235
 Q323415	P2976	Q141443235
+#   P2976 patronym or matronym for this name = Q141654566
+Q323415	P2976	Q141654566
 #   Q32731373 Mikkjel: P2976 patronym or matronym for this name = Q141498381
 Q32731373	P2976	Q141498381
 #   P2976 patronym or matronym for this name = Q141576533
@@ -2178,6 +2465,8 @@ Q33104818	P2976	Q141610415
 Q35028031	P2976	Q141622035
 #   P2976 patronym or matronym for this name = Q141633141
 Q35028031	P2976	Q141633141
+#   Q41796451 Zakarias: P2976 patronym or matronym for this name = Q141654577
+Q41796451	P2976	Q141654577
 #   Q4259083 Kaarle: P2976 patronym or matronym for this name = Q108828512
 Q4259083	P2976	Q108828512
 #   P2976 patronym or matronym for this name = Q141352058
@@ -2186,6 +2475,8 @@ Q4259083	P2976	Q141352058
 Q4259083	P2976	Q141450140
 #   P2976 patronym or matronym for this name = Q141574629
 Q4259083	P2976	Q141574629
+#   Q43754751: P2976 patronym or matronym for this name = Q141653866
+Q43754751	P2976	Q141653866
 #   Q44058926: P2976 patronym or matronym for this name = Q141585023
 Q44058926	P2976	Q141585023
 #   Q4413537 Hannu: P2976 patronym or matronym for this name = Q141444391
@@ -2202,12 +2493,14 @@ Q476155	P2976	Q141574681
 Q48781188	P2976	Q141381271
 #   P2976 patronym or matronym for this name = Q141512896
 Q48781188	P2976	Q141512896
-#   Q490500 Ander: P2976 patronym or matronym for this name = Q141318548
-Q490500	P2976	Q141318548
-#   P2976 patronym or matronym for this name = Q141318568
-Q490500	P2976	Q141318568
-#   P2976 patronym or matronym for this name = Q141429497
+#   Q490500 Ander: P2976 patronym or matronym for this name = Q141429497
 Q490500	P2976	Q141429497
+#   Q4925477 John: P2976 patronym or matronym for this name = Q141574649
+Q4925477	P2976	Q141574649
+#   Q4926263 Andreas: P2976 patronym or matronym for this name = Q141574638
+Q4926263	P2976	Q141574638
+#   Q4926961 Joachim: P2976 patronym or matronym for this name = Q141586318
+Q4926961	P2976	Q141586318
 #   Q50875453: P2976 patronym or matronym for this name = Q141442908
 Q50875453	P2976	Q141442908
 #   P2976 patronym or matronym for this name = Q141455640
@@ -2238,10 +2531,14 @@ Q61745602	P2976	Q141614437
 Q61745602	P2976	Q141622033
 #   Q61957819 Daavid: P2976 patronym or matronym for this name = Q141585069
 Q61957819	P2976	Q141585069
+#   Q61957868 Zachris: P2976 patronym or matronym for this name = Q141654577
+Q61957868	P2976	Q141654577
 #   Q61957903 Grels: P2976 patronym or matronym for this name = Q141511260
 Q61957903	P2976	Q141511260
 #   P2976 patronym or matronym for this name = Q141517710
 Q61957903	P2976	Q141517710
+#   Q631585 Ingebrigt: P2976 patronym or matronym for this name = Q141585669
+Q631585	P2976	Q141585669
 #   Q63218796 Friderik: P2976 patronym or matronym for this name = Q141579847
 Q63218796	P2976	Q141579847
 #   Q6673450 Aatami: P2976 patronym or matronym for this name = Q141550382
@@ -2258,22 +2555,39 @@ Q71148594	P2976	Q141586335
 Q71148594	P2976	Q141611196
 #   Q87362746 Jorgen: P2976 patronym or matronym for this name = Q141499558
 Q87362746	P2976	Q141499558
+#   Q8843357 Anders: P2976 patronym or matronym for this name = Q141574638
+Q8843357	P2976	Q141574638
 #   Q953931 Erkki: P2976 patronym or matronym for this name = Q130232912 Eriksdotter
 Q953931	P2976	Q130232912
 #   P2976 patronym or matronym for this name = Q130232913 Eriksson
 Q953931	P2976	Q130232913
-#   P2976 patronym or matronym for this name = Q141313547
-Q953931	P2976	Q141313547
 #   P2976 patronym or matronym for this name = Q141502514
 Q953931	P2976	Q141502514
 #   Q96099739: P2976 patronym or matronym for this name = Q141436530
 Q96099739	P2976	Q141436530
 #   P2976 patronym or matronym for this name = Q141499007
 Q96099739	P2976	Q141499007
-#   Q96186930: P2976 patronym or matronym for this name = Q141318568
-Q96186930	P2976	Q141318568
 #   Q98669211 Knute: P2976 patronym or matronym for this name = Q141403300
 Q98669211	P2976	Q141403300
+
+# P31 culture class (Latin / Scandinavian patronymic) on patronymic
+# items this repo created. Emma's model on Q141562457.
+#   Q141457242: P31 instance of = Q141584760
+Q141457242	P31	Q141584760
+#   Q141574638: P31 instance of = Q141584760
+Q141574638	P31	Q141584760
+#   Q141574649: P31 instance of = Q141584760
+Q141574649	P31	Q141584760
+#   Q141585066: P31 instance of = Q141584760
+Q141585066	P31	Q141584760
+#   Q141585072: P31 instance of = Q141584760
+Q141585072	P31	Q141584760
+#   Q141585659: P31 instance of = Q141584760
+Q141585659	P31	Q141584760
+#   Q141585669: P31 instance of = Q141584760
+Q141585669	P31	Q141584760
+#   Q141586318: P31 instance of = Q141584760
+Q141586318	P31	Q141584760
 
 # ======================================================================
 # P460 SAID TO BE THE SAME AS, between spellings of one patronymic.
@@ -2281,18 +2595,16 @@ Q98669211	P2976	Q141403300
 # where the two items share a P144 source, a stem and a gendered
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
-#   Q141381271: P460 said to be the same as = Q141653873
-Q141381271	P460	Q141653873
-#   Q141653873: P460 said to be the same as = Q141381271
-Q141653873	P460	Q141381271
-#   Q141429499: P460 said to be the same as = Q141653618
-Q141429499	P460	Q141653618
-#   Q141653618: P460 said to be the same as = Q141429499
-Q141653618	P460	Q141429499
-#   Q141440462: P460 said to be the same as = Q141653618
-Q141440462	P460	Q141653618
+#   Q141421887: P460 said to be the same as = Q141585066
+Q141421887	P460	Q141585066
+#   Q141585066: P460 said to be the same as = Q141421887
+Q141585066	P460	Q141421887
 #   Q141653618: P460 said to be the same as = Q141440462
 Q141653618	P460	Q141440462
+#   Q141454278: P460 said to be the same as = Q141654566
+Q141454278	P460	Q141654566
+#   Q141654566: P460 said to be the same as = Q141454278
+Q141654566	P460	Q141454278
 #   Q141500773: P460 said to be the same as = Q141653623
 Q141500773	P460	Q141653623
 #   Q141653623: P460 said to be the same as = Q141500773
@@ -2303,29 +2615,27 @@ Q141515171	P460	Q141653873
 Q141653873	P460	Q141515171
 #   Q141527207: P460 said to be the same as = Q141653623
 Q141527207	P460	Q141653623
-#   Q141653623: P460 said to be the same as = Q141527207
-Q141653623	P460	Q141527207
-#   Q141555929: P460 said to be the same as = Q141653620
-Q141555929	P460	Q141653620
-#   Q141653620: P460 said to be the same as = Q141555929
-Q141653620	P460	Q141555929
-#   Q141569060: P460 said to be the same as = Q141653618
-Q141569060	P460	Q141653618
-#   Q141653618: P460 said to be the same as = Q141569060
-Q141653618	P460	Q141569060
-#   Q141575698: P460 said to be the same as = Q141653615
-Q141575698	P460	Q141653615
-#   Q141653615: P460 said to be the same as = Q141575698
-Q141653615	P460	Q141575698
-#   Q141586316: P460 said to be the same as = Q141653615
-Q141586316	P460	Q141653615
-#   Q141653615: P460 said to be the same as = Q141586316
-Q141653615	P460	Q141586316
-#   Q141612276: P460 said to be the same as = Q141653874
-Q141612276	P460	Q141653874
-#   Q141653874: P460 said to be the same as = Q141612276
-Q141653874	P460	Q141612276
-#   Q141622087: P460 said to be the same as = Q141653624
-Q141622087	P460	Q141653624
-#   Q141653624: P460 said to be the same as = Q141622087
-Q141653624	P460	Q141622087
+#   Q141546498: P460 said to be the same as = Q141585072
+Q141546498	P460	Q141585072
+#   Q141585072: P460 said to be the same as = Q141546498
+Q141585072	P460	Q141546498
+#   Q141574638: P460 said to be the same as = Q141585008
+Q141574638	P460	Q141585008
+#   Q141585008: P460 said to be the same as = Q141574638
+Q141585008	P460	Q141574638
+#   Q141574641: P460 said to be the same as = Q141574649
+Q141574641	P460	Q141574649
+#   Q141574649: P460 said to be the same as = Q141574641
+Q141574649	P460	Q141574641
+#   Q141574673: P460 said to be the same as = Q141585659
+Q141574673	P460	Q141585659
+#   Q141585659: P460 said to be the same as = Q141574673
+Q141585659	P460	Q141574673
+#   Q141610387: P460 said to be the same as = Q141654583
+Q141610387	P460	Q141654583
+#   Q141654583: P460 said to be the same as = Q141610387
+Q141654583	P460	Q141610387
+#   Q141654569: P460 said to be the same as = Q141654581
+Q141654569	P460	Q141654581
+#   Q141654581: P460 said to be the same as = Q141654569
+Q141654581	P460	Q141654569
