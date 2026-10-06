@@ -52324,3 +52324,20 @@ Emma's item, built as asked:
 - Across the batch's 25 FamilySearch-only creations, 6 are legendary (b. 128 to 445), and 3 labels are malformed.
 - The universe sample found a relationship-phrase description (`Q141538414`) and a doubled patronymic in a label.
 Item closed; the findings go to Emma.
+
+## 2026-10-05: the four creations held out by the first daily audit, made right by hand
+
+Emma: "manually make these items as good items". `reports/daily-audit-2026-10-06-fixed-creations.qs` ran with Run,
+68 commands, and every line was checked live. `verify-qs.py` flags label/alias lines and year-precision dates as
+missing, so those were read directly; all are present.
+- Gibson: an English family name, not a patronymic. Thomas Gibson I `Q141560760` got the existing family name
+  `Q2700390`, and no name item was created.
+- `Q141653674` NN Bårdsdatter: Geni has "n Bårdsdatter på Al", with the given name lost. She is created under the NN
+  label rules, with no transliterated NN, and has no patronymic statement without her father. She is the mother of
+  Ingólfr Arnarson `Q209138` on Geni and FamilySearch.
+- `Q141653675` Inger Svalesdatter: the generator had doubled her patronymic in the surname slot. Her married family
+  name Gjedrem stays.
+- `Q141653678` Guttorm Eivindson Årstad: the stray "Bo-" is gone from the label; Geni's form stays in `P1810`.
+**Unexpected, the session's own slip:** cutting the four creations out of the audited batch also dropped 10 unrelated
+lines that shared their paragraphs. Nine were restored in this batch. The tenth was left out: a `ko` label on
+`Q112970943` that reads like "Marketta Keermemarketta Dowager". The doubled patronymics are queued at the end.
