@@ -52293,3 +52293,16 @@ ids, and gave our item the target's label (`mul`/`en`, `ja` for Japanese names; 
 description. Both copies carry the shared Geni id and the `mul` label. Left out as unproven: the wife of Koga
 Nagamichi into 園基顕の娘 `Q110081738`, and NN von Altdorf into `Q76299409`.
 Margareta Bertilsdotter Mjöhund (`Q141653021` / `Q112968698`) got the same treatment earlier the same evening.
+
+## 2026-10-05: review of every split made on dates alone: Margareta was the only one; item closed
+
+Emma did not take the session's word that #53 was the only such split. All 114 SPLIT verdicts and the 14 splits made in
+batch 13 (128 rows) were re-read for their basis: `reports/split-dates-alone-review-2026-10-05.tsv`, one row per
+split. **#53 Margareta Bertilsdotter Mjöhund is the only split that rested on dates alone**, and it has already been
+corrected with a common Geni id and label. Every other split has a different given name, a different parent or
+spouse, or a separate Wikidata item for the Geni person. Where a reason also cites a generation shift, the names
+differ too. The closest cases were re-read, and their splits stand:
+- #941/#1104, Guttorm vs Gaute Sigurdsson: the names are different Norse names.
+- #68, Raymond Pons: Wikidata has him as his own item, `Q1338833`.
+- #1140/#1249, Laín vs Flaín: the names are variants, but the wives and the kingdoms differ.
+The work loop's prompt named this item; it is next replaced by the queue's new first item.
