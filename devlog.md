@@ -52256,3 +52256,26 @@ own sibling. Our Richard Comyn `Q141628125` was his own sibling too. The Ii wife
 Ulfsdotter was only taken off Anne Gertsdatter: NN Torkelsdotter `Q101248443` already has a mother item.
 Left on this item: the 20 UNSURE pairs, which need a careful pass. genealogy-42 ran batches 10 (Formbach) and 11
 (Matsudaira).
+
+## 2026-10-05: zipper split batch 13: the UNSURE pairs (119/119); the split item closed
+
+The 20 UNSURE pairs, judged by this session. Different given names in one slot mean two people (Emma, 2026-10-04).
+- **Split (13):** #46, 53, 90, 386, 491, 519, 560, 693, 702, 812, 840, 901, 910. The zipper links came off and the Geni
+  person was created: `Q141653019` Tigridia Gundemares de Astúrias, `Q141653021` Margareta Bertilsdotter Mjöhund,
+  `Q141653045` Albrecht von Zimmern II, `Q141653094` Beate von Sulmetingen, `Q141653108` Gunnel Bengtsdotter,
+  `Q141653109` Ranulph de Varenne I, `Q141653112` Konrad von Hohenwarth, `Q141653136` Hidda von Hohenwarth (linked to
+  her father Konrad in a follow-up, checked live), `Q141653143` Ramborg Israelsdotter (Finsta), `Q141653147` Joscelin
+  de Courtenay, `Q141653148` Bertha de Bar-le-Duc, `Q141653151` Helvide Bassett, `Q141653154` Fulcuin de Creil.
+- **Cleves (#348/349):** Theodorich and Dietrich are the same name, so #348 is one man with a disputed father: Dietrich
+  II (Wikidata) or Konrad (Geni). Konrad was created as `Q141653065`, and both fathers are qualified `P1480` disputed.
+  Catherina is off Dietrich II as his wife and is Konrad's wife.
+- **Kept:** #114 (Aribo and Hartwig are brothers; Friderun is Aribo's mother) and #444 (the same name, 藤原頼成, so a
+  parentage question rather than two men). #346, 347 and 868 were already clean on Wikidata.
+- **#53, unexpected:** the Wikidata NN is the mother of Marketta Perttulintytär (d. 1676), a later generation, and not
+  Margareta Bertilsdotter Mjöhund (c. 1550-1615). Margareta was created instead.
+Run with Run; `verify-qs.py` 119/119.
+**The item is closed.** The 1,261 reviewed pairs cover every zipper pair behind a link on Wikidata. Both lists were
+checked: `zipper-driven-links.csv`, including its 76 pairs from before the 2026-09-28 change, and
+`zipper-only-links-on-wikidata.csv`, with none missing. Every SPLIT and UNSURE pair now has its wrong links off. What
+is not this item's: the duplicates waiting for a UI merge (the merge item), the FamilySearch id review (end of the
+queue), and zipper pairs that never reached Wikidata (the next item, "Flag and review every identification").
