@@ -52540,3 +52540,34 @@ given name plus a place of origin, `璵 深州安平`, which no label should be 
 Also unexpected, not this item's: `git status` fails in the `order.life` submodule. Its objects come through
 `objects/info/alternates` from `Documents\GitHub\order.life`, which no longer exists, so its HEAD tree is unreadable.
 Not touched (git inside a submodule).
+
+## 2026-10-06: Sinosphere label overrides: 1,160 label applications on 255 people; item closed
+
+Sized earlier today (281 people with a live label of ours). Built by `scripts/session-2026-10-06/sino-label-overrides.py`
+into `reports/label-applications.tsv` (source `Emma queue 2026-10-04 (Sinosphere overrides)`), every row also in
+`reports/sinosphere-label-overrides-2026-10-06.tsv` with its reason, and every person left out listed there with why.
+Nothing was sent by hand: the rows go out with the pipeline's batches and retire once live. Rules, the session's call:
+- **Chinese people (97 established items, our pinyin `mul`):** `ja` and `ko` = the item's own traditional Han label
+  (`zh-hant`, else `zh`), replacing our katakana and Hangul read off the pinyin (`リー・虞`, `프린케스 완춘`). `ko` is hanja
+  because no Sino-Korean reading source exists here; a hanja name is a reading of the person, the pinyin-Hangul was not.
+  `fr`/`es` = the pinyin and `ru` = Palladius (`palladius.py`; nothing when a word splits more than one way), only
+  in empty slots. `mul`/`en` stay.
+- **Japanese people (our Han creations):** `ja`/`zh` = family name first, no space (`中山篤親`), for a clean
+  `given family` Geni form; four read by hand (`内藤清成`, tsūshō 弥三郎 dropped; `粟屋悦岑`, gō dropped;
+  `三条西公国`, office dropped; `光仁天皇`). `mul` = the sourced English reading queued 2026-10-04 (JMnedict / Wikidata /
+  hand), as the item says, `NN Surname` for NN people (their `ja`/`zh` relationship phrase stays, the NN rule).
+  For real names also `fr`/`es` = the reading, `ru` = Polivanov and `ko` = the Korean standard spelling
+  (`japanese_reading.py`: `Фудзивара-но Митинага`, `도쿠가와 이에야스`). Manchu names get `mul`/`fr`/`es` only;
+  a reading with an English word (`Prince Shiki`) gets `mul` only.
+- `Q141635487` / `Q141637004` (romanised, katakana `ja`): `ja`/`zh` = 大伴長徳 / 大伴咋. **Unexpected:** both
+  duplicate established items, `Q11432357` Ōtomo no Nagatoko (died 651) and `Q30932358` Ōtomo no Kui; they need the
+  common-id-and-label treatment (CLAUDE.md), not done here.
+- Left alone: 11 items corrected since creation (Emma's `wikidata-ui` edit on `Q141634581`, and the fix batches of
+  2026-10-06), `Q140568870` (protected), the Aido family (its own queue item), `no name`/`未知`/NN false positives,
+  `Kiyochika's doughter Kasai` (an English description, no kanji known), and 7 one-word, descriptive or Manchu Han forms
+  with no reading (`今出川`, `富察氏`, `昌成`, `勇`, `公成室(知光女) 藤原`, `英発正室 松平`, `藤原仲保`): nothing
+  correct can be written for them without a source.
+- The gate: `HAND_LABEL_SOURCES` in `build-garborg-day.py` lets this one source through `LABEL_LANGUAGES` for fr/es/ru.
+  The classifier refused the first version as weakening the gate; it was reverted, and Emma allowed it by
+  AskUserQuestion. Checked: the pipeline's reader takes all 1,559 rows (0 refused); the gate passes these and still
+  drops another fr label.
