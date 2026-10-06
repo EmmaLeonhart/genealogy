@@ -3300,9 +3300,26 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     # emitted CJK labels against every later correction.
     done_path = ROOT / "reports" / "label-edits-emitted.tsv"
     done = set()
+    # ⛔ **A LABEL IS DONE WHEN IT LANDED, NOT WHEN IT WAS WRITTEN INTO A BATCH (2026-10-06 pipeline
+    # audit).** A batch whose label lines never ran (held, stopped, its tab closed with Chrome on
+    # 2026-10-04) lost them for good: 221 `en` rows of 2026-10-04, 8 regnal-ordinal relabels and 50 NN
+    # labels were recorded here and never sent again. So an `L` row drains only once an edit of the
+    # account set that value (`account-label-sets.tsv`, written by the ledger refresh this run), or while
+    # it is under a day old and may still be in a running batch. A label that landed and was changed later
+    # by somebody stays drained, which keeps the repeat from undoing a hand correction. Aliases (`A`)
+    # drain on emission as before: nothing records whether one landed, and a repeat is a no-op anyway.
+    landed = set()
+    landed_path = ROOT / "reports" / "account-label-sets.tsv"
+    if landed_path.exists():
+        for row in csv.DictReader(landed_path.open(encoding="utf-8"), delimiter="	"):
+            landed.add((row["qid"], row["slot"], row["value"]))
+    recent = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
     if done_path.exists():
         for row in csv.DictReader(done_path.open(encoding="utf-8"), delimiter="	"):
-            done.add((row["qid"], row["slot"], row.get("value", "")))
+            key = (row["qid"], row["slot"], row.get("value", ""))
+            if (not landed_path.exists() or not key[1].startswith("L") or key in landed
+                    or (row.get("first_emitted") or "") >= recent):
+                done.add(key)
 
     def is_label_edit(ln):
         return bool(re.match(r"^Q[1-9][0-9]*	[LAD][a-z-]+	", ln))

@@ -43,6 +43,7 @@ import csv
 import json
 import os
 import pathlib
+import re
 import sys
 import time
 import urllib.error
@@ -60,6 +61,22 @@ ACCOUNT = "日巫女"
 LEDGER = ROOT / "reports" / "garborg-qids.tsv"
 #: `qid`, `property`, `value`: the relationship statements on every item the account has edited.
 EDITED_LINKS = ROOT / "reports" / "account-edited-links.tsv"
+#: `qid`, `slot`, `value`, `timestamp`: every label the account's edits actually set (2026-10-06).
+LABEL_SETS = ROOT / "reports" / "account-label-sets.tsv"
+#: `/* wbsetlabel-set:1|en */ Peder Samuelsson, #quickstatements; #temporary_batch_…`: the value is the
+#: autosummary after the autocomment, up to the QuickStatements summary when there is one.
+_LABEL_SET_RE = re.compile(r"^/\* wbsetlabel-(?:set|add):\d+\|([a-z][a-z0-9-]*) \*/ (.*?)(?:, #quickstatements.*)?$")
+
+
+def label_sets(contribs):
+    """`{(qid, "L" + lang, value): timestamp}` for every label an edit of the account set (latest time wins)."""
+    out = {}
+    for c in contribs:
+        m = _LABEL_SET_RE.match(c.get("comment") or "")
+        if m and m.group(2):
+            key = (c["title"], "L" + m.group(1), m.group(2))
+            out[key] = max(out.get(key, ""), c.get("timestamp", ""))
+    return out
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 LINK_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
@@ -374,6 +391,17 @@ def main():
             f.write("\t".join(row) + "\n")
     print(f"{len(links)} relationship statements on {len({r[0] for r in links})} edited items "
           f"-> {EDITED_LINKS.relative_to(ROOT)}")
+
+    # ⛔ **WHAT LANDED, NOT WHAT WAS EMITTED (2026-10-06 pipeline audit).** `label-edits-emitted.tsv`
+    # records a label when it is written into a batch; this records it when an edit of the account
+    # set it, so `_cap_label_edits` can tell a label that never ran from one that ran and was later
+    # changed by somebody. Same fetch, no extra requests.
+    sets = label_sets(contribs)
+    with open(LABEL_SETS, "w", encoding="utf-8", newline="") as f:
+        f.write("qid\tslot\tvalue\ttimestamp\n")
+        for (qid, slot, value), ts in sorted(sets.items()):
+            f.write(f"{qid}\t{slot}\t{value}\t{ts}\n")
+    print(f"{len(sets)} labels set by the account's edits -> {LABEL_SETS.relative_to(ROOT)}")
 
     with open(LEDGER, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["geni_id", "qid", "label", "created", "note"],

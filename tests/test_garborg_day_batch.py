@@ -1735,6 +1735,47 @@ def test_a_rescue_alias_travels_with_its_label_even_when_drained(tmp_path):
     assert not any(ln.startswith("Q5\t") for ln in out), "nothing fresh for Q5: still drained"
 
 
+def test_a_label_drains_when_it_landed_not_when_it_was_emitted(tmp_path):
+    """2026-10-06 pipeline audit: a label written into a batch whose label lines never ran was drained
+    for good (221 `en` rows of 2026-10-04, `Q141632439` Guy I d'Aumelas). A label drains once an edit of
+    the account set it (`account-label-sets.tsv`) or while it is under a day old; one that landed and was
+    changed later stays drained, so a hand correction is not undone."""
+    import datetime
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_bgd_landed", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    (tmp_path / "reports").mkdir()
+    today = datetime.date.today().isoformat()
+    (tmp_path / "reports" / "label-edits-emitted.tsv").write_text(
+        "qid\tslot\tvalue\tfirst_emitted\n"
+        "Q1\tLen\tGuy I d'Aumelas\t2026-10-04\n"      # never landed: sent again
+        "Q2\tLen\tPeder\t2026-10-03\n"                # landed, then corrected by hand: stays drained
+        f"Q3\tLen\tIn Flight\t{today}\n",             # emitted today: may still be running
+        encoding="utf-8")
+    (tmp_path / "reports" / "account-label-sets.tsv").write_text(
+        "qid\tslot\tvalue\ttimestamp\nQ2\tLen\tPeder\t2026-10-04T04:32:00Z\n", encoding="utf-8")
+    scripts = tmp_path / "scripts"
+    scripts.mkdir()
+    (scripts / "build-four-script-labels.py").write_text("CODES = ()\n", encoding="utf-8")
+    mod.ROOT = tmp_path
+    out = mod._cap_label_edits([], "", ['Q1\tLen\t"Guy I d\'Aumelas"', 'Q2\tLen\t"Peder"',
+                                        'Q3\tLen\t"In Flight"'])
+    assert 'Q1\tLen\t"Guy I d\'Aumelas"' in out
+    assert not any(ln.startswith("Q2\t") for ln in out)
+    assert not any(ln.startswith("Q3\t") for ln in out)
+
+    spec = importlib.util.spec_from_file_location(
+        "_ledger_sets", REPO / "scripts" / "refresh-garborg-ledger.py")
+    led = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(led)
+    got = led.label_sets([
+        {"title": "Q2", "timestamp": "t", "comment": "/* wbsetlabel-set:1|en */ Kari, Wind, #quickstatements; #temporary_batch_1"},
+        {"title": "Q4", "timestamp": "t", "comment": "/* wbsetlabel-remove:1|ko */ 타구치"}])
+    assert got == {("Q2", "Len", "Kari, Wind"): "t"}
+
+
 def test_a_private_person_linked_to_one_person_is_pruned_recursively(tmp_path):
     """Emma, 2026-10-03: a private person linked to exactly one other person is not created, and
     the rule repeats, so a chain of private people is eaten to nothing. A named person is never

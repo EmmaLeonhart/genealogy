@@ -52631,3 +52631,16 @@ from the commit. Full evidence per error: `reports/pipeline-audit-2026-10-06.md`
   pipeline's own text comparisons. This session's pushes cancelled five pipeline runs today.
 The audit does not confirm the errors are solved, so the next item ("if the audit confirms …, wait on the pipeline")
 is preceded by the label-edit defect, added to the queue in this item's place.
+
+## 2026-10-06: label edits drain when they land, not when they are emitted (item stays first until the next batch)
+
+`refresh-garborg-ledger.py`, which already reads every edit of the account with its comment, now also writes
+`reports/account-label-sets.tsv`: every `(qid, slot, value)` a `wbsetlabel-set`/`-add` of the account set, parsed from
+the autosummary (the QuickStatements summary stripped). `_cap_label_edits` drains an `L` edit only when it is in that
+file or was emitted less than a day ago (it may still be in a running batch); `A` rows drain on emission as before, and
+`cjk_slots_we_have_emitted` still reads the emitted file unchanged. Why not simply "not live, send again": a label that
+landed and was then changed by a person must stay drained, or the batch undoes the hand correction. Without the new
+file (a local run) the old behaviour holds. Nothing was lost for good: the 221 `en` rows of 2026-10-04, the 8 ordinal
+relabels and the 50 NN labels become eligible at the next compose, under the 450-people cap, newest items first.
+Test: `test_a_label_drains_when_it_landed_not_when_it_was_emitted` (CI). The item stays first until the next batch
+built on this code is checked.
