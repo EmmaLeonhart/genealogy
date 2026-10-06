@@ -52918,3 +52918,26 @@ about 1900 forms of one name are one name, after it a given name is the person's
 and equivalence between forms lives on Wikidata between name items (`P460`), as the wrong-script fix of today
 showed; (3) regnal names and numbering stay those of the person's own culture (Clovis/Louis). The case left open,
 Hans and Johannes as one name or two, is put to Emma by AskUserQuestion after this commit; nothing waits on it. Emma's answer: "Same name before 1900"; written into the principle.
+
+## 2026-10-06: Helena, Yuri Dolgorukiy's second wife: no source names her parents, and no line of Emma's runs through her
+
+Queue item "Continue the investigation of Yuri Dolgoruky's other wife, Helena (Emma, 2026-10-04)". Report only; nothing
+was edited.
+- **Her parents: unknown in every source read.** Wikidata `Q134891859` (made 2025-06-14 by Melderick; `mul` "NN",
+  "second wife of Yuri Dolgorukiy") has no `P22`/`P25`, died 1183, and carries Roglo `helena;n=komnena`, Rodovid 251849
+  and Genealogics I00645250. Roglo answered with a CAPTCHA page (not passed), Genealogics with 401, Rodovid with 503.
+  The FamilySearch download (`rootsmagic-PFR5-LDS-2026-09-25.ged`, `G82L-CF5`) has "Helene Comnène de Byzance",
+  b. 1121 Constantinople, d. 14 Jul 1180 Suzdal, and no parents. English Wikipedia ("Yuri Dolgorukiy"): "Her
+  paternity is not known for certain"; she has been theorised to be a Komnene since Karamzin. "Kata (daughter of
+  David IV)" gives the hypothesis (Prinke 2011) that she was Helene, daughter of Isaac Komnenos and Kata/Irene,
+  in conditional terms ("If the hypothesis is true"). So the Komnenos/Bagratid parentage is a hypothesis only.
+- **Her children differ by source, and stay as a dispute.** Geni (synoptic tree): five (Vsevolod, Mikhalko, Vasilko,
+  Mstislav, Yelena). Wikidata: two (Mikhail I of Vladimir `Q497566`, Vsevolod III `Q348689`), with Vasilko
+  (`Q4104908`) and Mstislav (`Q4305615`) under the first wife. FamilySearch: none. Wikipedia: mothers "not known for
+  certain"; Mikhail, Vsevolod and Yaropolk are "typically attributed to the second wife".
+- **No line of Emma's runs through Helena.** Wikidata's own ancestry graph (SPARQL, `P22`/`P25` paths up from
+  `Q140568870`, read only) reaches Yuri `Q275106` through **Olga Yuryevna `Q16594166`, whose mother is the first wife
+  `Q101247284`** (the Cuman khan Aepa's daughter); neither Helena nor Vsevolod nor Mikhail is an ancestor. Vsevolod's
+  Geni id (`6000000003897541297`) and Helena's (`6000000003251725930`) are not in `reports/owner-ancestors.tsv`. With
+  the 2026-10-03 finding (none of Helena's five children reaches Emma in the tree), the descent through Helena is not
+  in any source; Emma's tie to Yuri is through the Cuman wife.
