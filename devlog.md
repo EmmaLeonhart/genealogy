@@ -52644,3 +52644,22 @@ file (a local run) the old behaviour holds. Nothing was lost for good: the 221 `
 relabels and the 50 NN labels become eligible at the next compose, under the 450-people cap, newest items first.
 Test: `test_a_label_drains_when_it_landed_not_when_it_was_emitted` (CI). The item stays first until the next batch
 built on this code is checked.
+
+## 2026-10-06: the "Aido" family is the imperial family; common ids live, common labels queued; item closed
+
+**Unexpected:** Geni's `Momozono (Toohito) /Aido/` is Emperor Momozono: Tōhito (遐仁) was his personal name, his
+father `Teruhito /Aido/` is Emperor Sakuramachi (personal name Teruhito, 昭仁), his mother `Sadako /Aido/` is Anekōji
+Sadako (Kaimei-mon'in), his wife `Tomiko /Ichijo/` is Ichijō Tomiko; Geni's children for him are Hidehito (英仁, Emperor
+Go-Momozono), Fushimi-no-miya and Toshiko (Empress Go-Sakuramachi). Our tree has no dates for any of them; the verdict
+is the session's, from the personal names and the whole family structure, which matches the established items exactly
+(Momozono's father Sakuramachi and spouse Tomiko; Sakuramachi's spouses include Sadako). So our four creations duplicate
+`Q313864`, `Q313870`, `Q10943125` and `Q7138920`, which carry other Geni ids (Geni has the family twice).
+- **Labels (the item):** the CJK labels were readings of Geni's romanisation (`トミコ・イキヨ`). Our four items take the
+  established items' labels in mul/en/ja/zh/ko (桃園天皇, 櫻町天皇, 姉小路定子, 一條富子, …) through
+  `label-applications.tsv` (source `Claude`); they go out with the next batches.
+- **Common ids (the duplicate rule):** `reports/aido-common-ids-2026-10-06.qs`, 8 `P2600` lines (each item gets the
+  other's Geni id), run in a new QuickStatements tab (Run) under Emma's standing permission; checked live: 8 of 8.
+- The merges are queued at the end (UI only).
+CI on `main` (run 37437730721, 2026-10-06): 18 failures, most from `test_p2600_batches.py` checking every hand `.qs` in
+`reports/` (pipe-separated lines and repeats in the 2026-10-04..06 fix batches), plus `Q12598947` Buyeo Taebi now inside
+the universe walk; none from today's label-drain fix.
