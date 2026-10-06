@@ -158,3 +158,29 @@ H1. AN EMPTY VARIANT SLOT -- 1 row, ruled on its own.
 
 H2. SQUARE BRACKETS -- 1 row, ruled on its own.
     `(Teppana|Tahvana) of [Husu]` -> `Teppana of Husu`, alias `Tahvana of Husu`.
+
+SINOSPHERE NAMES (Japanese, Chinese, Korean, Manchu) -- decided 2026-10-06 by the session, since the
+question to Emma had stalled the queue for two days. Recorded in devlog.md the same day.
+
+   The pipeline does NOT model these names. No P735, P734 or P5056, and no name item minted, for a
+   person whose Geni CJK name is Han script, whose GIVN/SURN carry Han, or whose Latin name has the
+   particle `no` (namemodel.sinosphere_person, read by both emitters). Their labels are unaffected:
+   those follow the kanji signal and sinosphere_name in build-garborg-day.py.
+
+   Why: the model reads Western order and Western name inventories. `Fujiwara no Otomaro` gave
+   P735 "No"; `Abe no Funamori` P735 "Abe" (the English name, エイブ); 襲髄命 P734 "Mikoto" (the
+   honorific 命); 安 P735 "Enn" (an Estonian name); 顯 of the Fuca clan P735 "Akira" (a Japanese
+   reading of a Manchu name). 22 of 45 statements sent onto Sinosphere items were wrong.
+
+   What correct looks like, for anyone doing one by hand (established Wikidata practice):
+       X no Y            P734 = the uji X in kanji (藤原, 蘇我, 小野), P735 = Y, P53 = the clan;
+                         `no` is never a name.
+       Chinese           P734 = the surname item in Han (劉, 楊), P735 the given-name item only when
+                         one exists for the whole given name, never a single character of it.
+       Manchu clan names (葉赫那拉, 富察) are clan/family names; the given name is not read in
+                         Japanese or Chinese pinyin pieces.
+       Honorifics and titles (命, 王, 内侍, 親王) are not names.
+       A tsūshō such as 五郎 Gorō is not the given name (Sasaki Yoshikiyo's given name is 義清).
+
+   Coming back to this needs Emma: the ordered-name representation (queue, "an ordered
+   representation of Asian-order names") is the intended way to model them, and it comes first.

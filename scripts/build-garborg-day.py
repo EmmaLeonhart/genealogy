@@ -3947,8 +3947,10 @@ def label_in(label, table):
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
-               father_name="", father_aka="", father_given=""):
+               father_name="", father_aka="", father_given="", cjk=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
+
+    None at all for a Sinosphere person (`namemodel.sinosphere_person`, decided 2026-10-06).
 
     **Only tokens whose item already exists.** A name item this run is creating
     cannot be pointed at, same single-run rule as everybody else, so the rest waits
@@ -3958,7 +3960,9 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
     the same line: `LAST<TAB>P735<TAB>Q629347<TAB>P1545<TAB>"1"<TAB>P7452<TAB>Q3409033`.
     """
     out, notes = [], []
-    from namemodel import expand_abbreviated, expand_abbreviated_fields
+    from namemodel import expand_abbreviated, expand_abbreviated_fields, sinosphere_person
+    if sinosphere_person(fields, cjk):
+        return [], ["Sinosphere name: not modelled (namemodel.sinosphere_person)"]
     label = expand_abbreviated(label, geni_id)
     fields = expand_abbreviated_fields(fields, geni_id)
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
@@ -8848,7 +8852,8 @@ def main():
                                    fields=fields.get(g),
                                    father_name=labels.get(dad, "") if dad else "",
                                    father_aka=aka.get(dad, "") if dad else "",
-                                   father_given=given_name.get(dad, "") if dad else "")[0]:
+                                   father_given=given_name.get(dad, "") if dad else "",
+                                   cjk=cjk_first.get(g, ""))[0]:
                 _parts = line.split("\t")
                 if (q, _parts[1], _parts[2]) in live_values:
                     continue
@@ -9765,7 +9770,8 @@ def main():
             fields=fields.get(g), sex=f["sex"],
             father_name=labels.get(dad, "") if dad else "",
             father_aka=aka.get(dad, "") if dad else "",
-            father_given=given_name.get(dad, "") if dad else "")
+            father_given=given_name.get(dad, "") if dad else "",
+            cjk=cjk_first.get(g, ""))
         lines.extend(name_statements)
         # ⛔ **A PATRONYMIC NAME WITH NO SURNAME SAYS SO: `P734` = `Q108474139`. Emma, 2026-10-03** (on
         # `Q141628094` Fernando Gundemárez): "with our name construction I think this is relatively

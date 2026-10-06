@@ -3860,6 +3860,28 @@ LABEL_SCRIPT = {
     "ko": re.compile("^[\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f" + _HAN + r"\s-]+$"),
 }
 LABEL_JOIN = {"ja": "\u30fb", "zh": "\u00b7"}
+
+#: \u26d4 **NO NAME STATEMENTS OR NAME ITEMS FOR A SINOSPHERE PERSON. Decided 2026-10-06** (queue item
+#: "Japanese (Sinosphere) names are parsed wrong as a whole"; `name modelling.txt` \u00a7 SINOSPHERE NAMES).
+#: The model reads names in Western order, so `Fujiwara no Otomaro` gave `P735` "No", `Abe no Funamori`
+#: `P735` Abe (\u30a8\u30a4\u30d6), `\u8972\u9ac4\u547d` `P734` "Mikoto" (the honorific \u547d), `\u5b89` `P735` "Enn" (an Estonian name).
+#: Measured live 2026-10-06: 22 of the 45 statements we sent onto Sinosphere items were wrong
+#: (`reports/sinosphere-name-live-2026-10-06.csv`). A person is Sinosphere when Geni's CJK name is Han
+#: script, or Han is in `GIVN`/`SURN`, or the Latin name has the particle `no`.
+_SINO_DOT = re.compile("[\u00b7\u30fb\uac00-\ud7af]")
+_SINO_PARENS = re.compile(r"[(\uff08][^)\uff09]*[)\uff09]|\d+\s*\u4e16")
+_SINO_HAN = re.compile("[" + _HAN + "]")
+
+
+def sinosphere_person(fields=None, cjk=""):
+    """True when the pipeline must not model this person's name (see the comment above)."""
+    form = (cjk or "").split(" | ")[0]
+    if form and not _SINO_DOT.search(form) and _SINO_HAN.search(_SINO_PARENS.sub("", form)):
+        return True
+    fields = fields or {}
+    text = " ".join(fields.get(k) or "" for k in ("givn", "surn"))
+    # Lower-case `no` as a word of its own is the Japanese particle (`3e57ae1bc0`), wherever Geni put it.
+    return bool(_SINO_HAN.search(text) or "no" in text.split())
 #: A `ja` name-item label written only in hiragana (`\u307e\u308a\u3048` for Marie, 2026-09-28) is no reading of
 #: a Western name, which is katakana; such a part counts as unlabelled.
 _ONLY_HIRAGANA = re.compile("^[\u3040-\u309f\u30fc\u30fb]+$")

@@ -52392,3 +52392,28 @@ husband of Michiyo and father of Moroe) is Prince Minu (美努王) `Q11608781`.
   misreading that is not ours.
 - `Q141638589` now has no labels or statements (merged or deleted).
 The pairs will merge on their common ids and labels. Item closed.
+
+## 2026-10-06: Sinosphere names: the parse decided, both emitters guarded, the damage re-checked live
+
+The first queue item had waited two days on Emma for "the parse". Decided by the session instead, and written into
+`name modelling.txt` § SINOSPHERE NAMES: the pipeline does not model Sinosphere names at all. No `P735`/`P734`/
+`P5056` and no name item for a person whose Geni CJK name is Han, whose `GIVN`/`SURN` carry Han, or whose Latin
+name has the particle `no`. `namemodel.sinosphere_person` is the test, read by `build-garborg-day.name_lines` (both
+call sites) and `build-garborg-name-items.py`. Why not a parser instead: the model reads Western order and Western
+name inventories, and the measured output was "No", "Abe" (エイブ), "Mikoto" (the honorific 命), "Enn" (Estonian)
+and "Akira" for a Manchu name. The ordered-name representation in the queue is the intended way to model these
+names, and this item doesn't pre-empt it. The section also writes down what a correct hand statement looks like.
+
+Unexpected: the live re-check (`scripts/session-2026-10-06/sino-live.py`,
+`reports/sinosphere-name-live-2026-10-06.csv`) found that 6 of the 9 family name items called "unlabelled junk" in the
+queue have since been merged by other editors into established items: 藤原 `Q90033414`, 三条 `Q43659956`, 松平
+`Q132289984`, 正親町三条 `Q122891084` and 劉 `Q804970`. Those `P734`s are now correct. The sixth, 源 `Q141637678`,
+was merged into `Q27306306`, which is the given name Hajime, so 湛 源 `Q141640468` now carries "family name:
+Hajime". The other three (今出川, 勧修寺, 葉赫那拉) are labelled in `mul` and are right for their people. 45 of the 49
+statements are live; the 4 gone are Michiyo's, fixed yesterday.
+
+Judged one by one: 22 are wrong and should come off. They are "No" ×4, Abe, Mikoto ×2, Enn ×2, Akira ×2, Zu (嫘祖),
+Bo (伯益), Gorō (a tsūshō), Zhēng (惠徵), Jī and Ye (大業), Shou, Zhan, the katakana Fujiwara `Q21488835` ×2, and the
+源→Hajime `P734`. The other 23 (Nobuko 信子, Kazuko 和子, Michiaki 道明, Taguchi 田口, Hiki 比企, Wu Zetian's 曌/照,
+the merged family names) are right and stay. Writing the removal batch was refused by the Claude Code permission
+classifier, so it is not built. BLOCKED-ON-USER-ACTION: put to Emma by AskUserQuestion. The item stays first.

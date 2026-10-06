@@ -712,7 +712,7 @@ def main():
                 fields[row["geni_id"]] = {k: row.get(k, "") for k in
                                           ("givn", "surn", "nick", "marnm")}
 
-    labels_of, father_of, sex_of, aka_of, given_of = {}, {}, {}, {}, {}
+    labels_of, father_of, sex_of, aka_of, given_of, cjk_of = {}, {}, {}, {}, {}, {}
     # **The family pass runs FIRST so the father's LABEL can be loaded in the same
     # sweep as everyone else's.** `namemodel.patronymic_or_surname` needs the father's
     # NAME, not his QID: without it every `-sen`/`-son`/`-datter` token falls through
@@ -734,6 +734,7 @@ def main():
         for row in csv.DictReader(f):
             if row["geni_id"] in wanted_labels:
                 labels_of[row["geni_id"]] = row.get("label_en") or row.get("label_mul") or ""
+                cjk_of[row["geni_id"]] = row.get("cjk_names") or ""
                 # **Every OTHER spelling the person is recorded under**, for the patronymic
                 # test only. A father is routinely written in Latin where his son's patronymic
                 # is vernacular -- `Olaus Petri Niurenius` against `Olofsson` -- and the
@@ -760,7 +761,11 @@ def main():
     # the dict. The father's OWN `givn` and `nick` are the other half of `father_aka` and are
     # only there when he is himself in the batch -- `nick` is where Geni keeps the vernacular
     # form of a Latinised name, which is exactly what the test needs.
-    from namemodel import expand_abbreviated_fields
+    from namemodel import expand_abbreviated_fields, sinosphere_person
+    # ⛔ No name items minted for a Sinosphere person (decided 2026-10-06; `namemodel.sinosphere_person`):
+    # `Agata`, `No`, `Mikoto` and `Enn` were all minted or linked from this scan.
+    for geni_id in [g for g in fields if sinosphere_person(fields[g], cjk_of.get(g, ""))]:
+        del fields[geni_id]
     for geni_id in list(fields):
         # `Alvsdtr.` and `Rasmusdtr.` were created as patronymic items from the raw field.
         fields[geni_id] = expand_abbreviated_fields(fields[geni_id], geni_id)
