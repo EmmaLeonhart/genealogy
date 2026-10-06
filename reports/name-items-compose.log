@@ -1,9 +1,9 @@
-240 people across 1 Garborg batches, 25347 already holding a QID
-4679 token(s) are already pointed at by their own bearers
-9123 tokens already have an item and are linked, not created
+240 people across 1 Garborg batches, 25356 already holding a QID
+4687 token(s) are already pointed at by their own bearers
+9124 tokens already have an item and are linked, not created
 5721 need creating, 2 are ambiguous and are not
 219 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (11), Laurentii (6), ll (4), Georgii (3), Lauritzen (3), Ænes (3)
-5044 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
+5043 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Abluna               given        Q17317997
    Abo                  family       Q1677742
    Adalasia             given        Q62102498
@@ -107,7 +107,6 @@
    Eide                 family       Q16869792
    Eigeland             family       Q114132043
    Eilica               given        Q64364589
-   Eilífsson            family       Q108474139
    Eivindsdatter        patronymic   Q141189042
    Eivindsen            patronymic   Q141189045
    Eivindson            patronymic   Q141318999
@@ -626,7 +625,7 @@
    ØKSENVAD             family       Q30583490
    Øvre Augland         family       Q47085823
    Симонида             given        Q602977
-1372 token(s) RESCUED by the live check -- these would have been created a second time:
+1375 token(s) RESCUED by the live check -- these would have been created a second time:
    von Wrangell         family       already Q112692214
    Andersson            patronymic   already Q141318548
    De Besche            family       already Q42179582
@@ -1737,6 +1736,9 @@
    de Beaumont          family       already Q76417957
    Andersson            patronymic   already Q141318548
    von Arenberg         family       already Q116650579
+   Takatsukasa          family       already Q110069903
+   Takatsukasa          family       already Q110069903
+   Takatsukasa          family       already Q110069903
    von der Osten-Sacken family       already Q49164231
    Hovet                family       already Q37434687
    Hovet                family       already Q37434687
@@ -1999,10 +2001,10 @@
    Andersson            patronymic   already Q141318548
    Olofsson             patronymic   already Q141244186
    Olofsson             patronymic   already Q141244186
-1461 token(s) the ring is about to need are ranked first
+1441 token(s) the ring is about to need are ranked first
 
-checking 3,806 existing name items for a missing description
-   0 of them have no English description; 3,806 already do
+checking 3,800 existing name items for a missing description
+   0 of them have no English description; 3,800 already do
    1 are DUPLICATES of an existing name item -- the description was refused, not emitted; see duplicate-name-items-found.tsv
 
 checking 792 existing patronymic items for P144 based on and P460
@@ -2012,12 +2014,12 @@ P2976 on given names: 237 reverse link(s) of 1531 pair(s)
    0 P144 statement(s) to remove
    19 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5681 carried to a later run), 424 statements linking an EXISTING person to one, in the same run
-34 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
-   3 created WITHOUT a P144: Sariasen, Øybrandsen, Úlfsdóttir
+wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5681 carried to a later run), 392 statements linking an EXISTING person to one, in the same run
+39 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
+   3 created WITHOUT a P144: Niilontytär, Olavintytär, Smidsen
   create  Jonsson              patronymic   127
   create  Johansdotter         patronymic   88
-  create  Jonsdotter           patronymic   78
+  create  Jonsdotter           patronymic   79
   create  Persson              patronymic   75
   create  Izumo                family       36
   create  Petri                patronymic   30
@@ -2222,7 +2224,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5681 carri
   create  Söffrensen           patronymic   3
   create  Søndre Austad        family       3
   create  Tabia                family       3
-  create  Takatsukasa          family       3
   create  Tarjeisson           patronymic   3
   create  Tekse                family       3
   create  Tidemansdotter       patronymic   3
@@ -3727,6 +3728,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5681 carri
   create  Eilevsdotter         patronymic   1
   create  Eilivsdatter         family       1
   create  Eilivson             family       1
+  create  Eilífsson            family       1
   create  Eimyrja              given        1
   create  Ein                  given        1
   create  Eindridesdatter      patronymic   1
