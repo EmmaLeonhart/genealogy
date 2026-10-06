@@ -52805,3 +52805,18 @@ go-ahead it was waiting on, and the decision turned out to be already made.
   The 16 links added by other editors (KrBot and others on Byzantine and Rurikid items) are left alone, as built.
 - `scripts/session-2026-10-04/verify-qs.py` reads tab-separated lines only and failed on this `|`-separated file; the
   check was done with an inline fetch instead.
+
+## 2026-10-06: the batch on main still carried wrong-script given names; patched by hand
+
+Emma, on the report that batch `0aff979b1` still held `Q128045691 P735 Q136771753` (Karl -> Cyrillic Карл): "Fix it".
+- **Why it was there:** `0aff979b1` came from pipeline run 476738075 (started 07:24 PDT, pushed 09:23 PDT after a
+  rebase onto `532dfa908`), so it was composed BEFORE the overlay `reports/wrong-script-name-links.tsv` existed. Both
+  generators read `namemodel.load_plan()` (`build-garborg-day.py`, and `model-vs-reality.py` under `build-from-diff.py`),
+  which now gives Karl -> `Q15731830`; the next pipeline build is clean by itself.
+- **The same staleness in `reports/wikidata-from-diff.qs`:** 64 `P735` lines to an overlaid wrong-script item
+  (Cyrillic Karl on `Q315055`, `Q310433`, `Q5900614` and others), built at 07:22 PDT.
+- **Fix:** in the three day files (`-manual`, `-auto`, the whole) and `wikidata-from-diff.qs`, every `P735` whose object
+  is an overlay `wrong_qid` now points at that row's Latin-script `qid` (67 lines, plus the matching comment lines).
+  Karl Otto von Toll `Q128045691` has no `P735` live, so the line now adds the Latin Karl. The archived
+  `-audited-*`/`-held` copies are history and were left alone. If the running pipeline conflicts on these files, its
+  commit step resolves in favour of its own rebuild, which is the clean one.
