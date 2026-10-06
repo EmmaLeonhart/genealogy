@@ -52444,3 +52444,22 @@ Found on the way: our Fastre I d'Oisy `Q141639374` (1040-1091) is a duplicate of
 (1040-1092). `reports/fastre-oisy-common-id-label-2026-10-06.qs` ran with Run (3/3) and was checked live: `Q3190659`
 carries Geni `6000000002188026417`, and our item has the label "Fastré I d'Oisy" in `mul` and `en`. The item's
 "fixes only on Emma's go-ahead" was read under the 2026-10-05 rule that fix batches a queue item calls for don't wait.
+
+## 2026-10-06: batch `71fce5ef0` audited and run, with 86 already-live creations held out
+
+The rebuild landed at 05:17 UTC, so the audit-then-run loop ran on it at once (`reports/daily-audit/2026-10-06-1791264277.md`).
+- **Talk page:** nothing unaddressed. Infovarius's `Q141249609` question was handled on 2026-10-04. StarTrekker's
+  post on 2026-10-05 is commentary that asks nothing, and no reply was posted.
+- **10 existing items:** 9 fine. `Q141520674` has a relationship-phrase description, added to the existing-item
+  errors item.
+- **10 creations:** 8 fine. Eriksdatter and Alba Autun already exist (below). Alba's alias "mtH1" (a haplogroup) is
+  live on `Q141653950`.
+**Unexpected:** the batch was built while the previous batch (`0e9893226`) was still running (its creations ran
+03:43-05:18 UTC). So 53 people it had just created were in this batch again. The 6 FamilySearch super entry points,
+live since 2026-10-04, are re-created by every batch, and 27 counterpart name items that already exist are generated
+again (`scripts/session-2026-10-06/batch-precheck.py`). Wikidata has been refusing the repeats on label and
+description, which is why there are no duplicates, but the 2026-10-05 lesson is not to run a stale snapshot.
+`scripts/session-2026-10-06/hold-live-creations.py` re-checks every creation block live and holds out only the
+creation block. 86 were held (`reports/wikidata-garborg-day-manual-held-out.tsv`), and no `LAST` line is left outside
+its creation. `reports/wikidata-garborg-day-manual-held.txt` (168 creations, 2,801 commands) was opened in a new tab
+and Run. It was running at 21/2801 when this was written. The four generator defects are queued.
