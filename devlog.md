@@ -52490,3 +52490,9 @@ to them. Queued in place of the wrong defect (2).
    `pipeline.yml`. It looks each super entry point up by `P2600`/`P2889`, writes the QID it finds into `qid`, and
    appends any new one to `entry-points-now.tsv`. Run locally: it found the same 11 and changed nothing. With
    Abba's QID blanked by hand, it found him again and added him back.
+
+## 2026-10-06: "Kill Chrome" cancelled by Emma; item removed
+
+The permission classifier refused the kill (`Stop-Process -Name chrome`), and it was put to Emma by AskUserQuestion.
+She answered: cancel it and remove the item. Chrome was not touched. The held batch was at 2212 / 2801 (4 errors) and
+keeps running.
