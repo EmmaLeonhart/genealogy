@@ -52852,3 +52852,14 @@ Queue item "Then run the new batch of QuickStatements from the audited pipeline"
   "The save has failed" on about half its first 68 commands (47 errors), with "No last item available" on the
   lines after a failed creation; NN Brynjulvsson (Geni 6000000124606635821) failed and is not on Wikidata. A
   failed creation leaves nothing behind and returns in a later batch. No run was stopped.
+
+## 2026-10-06: scope assessment committed; the cleanup item moved back to the end
+
+- **Queue item "Assess changing the scope of our operations (Emma, 2026-10-04)" is done.** The assessment was written
+  at 03:54 PDT by the session later killed at 04:31 (PID 4240) and left untracked:
+  `reports/scope-assessment-2026-10-06.md` and `reports/scope-edits-by-day-2026-10-06.json` (228,881 edits since
+  2026-09-01; about 2,000 edits a day in early September against about 20,000 from 2026-10-01). Its question was
+  answered by Emma through the queue at 05:5x: scale back. Both files are now committed with the answer appended.
+  Applying the scale-back stays its own item.
+- **"Clean up this project, and the ontology-harness checkout of it" moved to the end of the queue.** Its text says
+  "Keep it at the end"; the items added after it had left it on top.
