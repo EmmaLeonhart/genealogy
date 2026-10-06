@@ -52976,3 +52976,12 @@ Queue item "The FamilySearch id review: the next 100 ids only". Each of the 100 
 - **Unexpected:** `Q141575723` is labelled "Ture Karlsson Båt" although its father is Peder Bat and FamilySearch has
   Thure Pedersen Bat; queued as an error report.
 - The rest of the review (#275 on) stays its own item, now picking up at #275.
+
+## 2026-10-06: "run the pipeline to generate new labels": done by the pipeline's own run
+
+Queue item "Run the pipeline to generate new labels (Emma, 2026-10-05)". The pipeline has rebuilt the batch twice
+since that item was written; the latest, `36c91ae5a` (15:08 PDT, built on every fix of today including the label-drain
+hold and the wrong-script overlay), carries fresh labels on existing items: 1,445 label lines (`Lmul` 322, `Len` 307,
+`Lko` 301, `Lja` 266, `Lzh` 249) and 591 `Amul` aliases, plus 262 creations. Nothing was run, as the item says. The next
+item runs Emma's `Q140568870|Lzh|"李命玥"` and then that batch; it waits for the browser run of `87767fa88` to end
+(one QuickStatements tab at a time, Emma's scale-back answer).
