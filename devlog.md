@@ -52378,3 +52378,17 @@ Wikidata refused 2 saves ("The save has failed"): Þorsteinn Ingólfsson `Q61750
 
 All three cancelled with CronDelete, and no new ones are made in this session: the work loop (`0,30`), the auto-flush
 (`:15`) and the noon audit-then-run job.
+
+## 2026-10-05: error report Q141638589 (Agata no Inukai no Michiyo) fixed
+
+`Q141638589` and `Q141636954` were both our item for Geni `6000000210457327856`, labelled only 橘. Their given names
+were "Agata" plus "No" twice. She is Agata Inukai no Michiyo (県犬養三千代), who already has the established item
+`Q11582685` (mother of Tachibana no Moroe `Q3135863`). Our 橘 husband `Q141636974` (Geni `6000000210457489833`,
+husband of Michiyo and father of Moroe) is Prince Minu (美努王) `Q11608781`.
+`reports/agata-michiyo-fix-2026-10-05.qs` ran with Run, and the state was checked live:
+- Both established items carry our Geni ids.
+- `Q141636954` has Michiyo's labels, and the broken given names are gone.
+- `Q141636974` is labelled 美努王 in `mul`/`ja`/`zh`, not in `en`, where `Q11608781`'s English "Yoshi Tsutomuo" is a
+  misreading that is not ours.
+- `Q141638589` now has no labels or statements (merged or deleted).
+The pairs will merge on their common ids and labels. Item closed.
