@@ -53374,3 +53374,8 @@ FamilySearch records (verdict only; protected items, not edited).
   theirs. Written into CLAUDE.md under "be cautious about removing ids". The nine go back to DIFFERENT and into the
   fourth removal group with the three clear cases: `reports/familysearch-id-review-removals-2026-10-07d.qs`, 12 ids, all
   checked live just before. Emma, same moment: "And recreate new items for the familysearch people" (next step).
+
+- The recreate step was NOT run. `scripts/session-2026-10-07/recreate-removed-fs-people.py` is written and committed
+  unrun: Emma, mid-build, "please don't ... it feels scary", then "Explain more first". The explanation (scope 298 vs
+  today's 45; second parents on real people; past the FamilySearch creation pause; some, like Gamle Olof, likely already
+  have an item without the id) is in the session; her decision is pending. Nothing created.
