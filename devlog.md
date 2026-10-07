@@ -53315,3 +53315,15 @@ FamilySearch records (verdict only; protected items, not edited).
 - New live wrong id for the next removal group (now 8 of 10): #2787 `Q141533461` Karen Pedersdatter Koll carries
   `LHKN-1XF`, Olivia Nerheim (daughter of Nils Tormodsen Foss). Both are given as the wife of Olav Jensen Hebnes and
   mother of Åge: a disputed mother, two women, not one person.
+
+## 2026-10-07: FamilySearch id review #2880-2929; third removal group
+
+- #2880-2929: 45 same, 4 different (4 live), 1 unsure (two Kristi Mikkelsdatters with different husbands, id kept).
+- **Unexpected, in the Bure core:** `Q141538395` Herse Andersson Bure carried `LZPL-NGQ`, the FamilySearch record of
+  Olof 'Gamle Olof' Jonsson Bure, another man (b. 1490, wife Sigrid Sara, daughters Malin and Margareta, against
+  Herse's b. 1470, wife Mariet, daughters Barbro and Brita). His wife `Q141538789` Mariet Jönsdotter carried Sigrid
+  Sara Nilsdotter's `GKCT-6P8`, and `Q141538883` Olof Filipsson carried Nils Albrektsson's `GHLF-WFS`. No other item
+  holds any of the three ids (haswbstatement search), so they were not duplicates of the right people: a walk paired
+  one generation of the Bure line onto another. Also `Q141538483` Kirsten Kristoffersdatter carried her sister Eli's
+  `LH1J-XVG`.
+- Third removal group, 12 ids, all checked live just before: `reports/familysearch-id-review-removals-2026-10-07c.qs`.
