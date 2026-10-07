@@ -92,15 +92,17 @@ how a name is modelled and beats anything here.
 
 ---
 
-## The `wikidata_to_gedcom/` submodule
+## `wikidata_to_gedcom/`, part of this repo
 
-`wikidata_to_gedcom/` is a git submodule of https://github.com/EmmaLeonhart/wikidata-ancestor-gedcom-export (added
-2026-10-05, Emma). It exports a person's ancestors from Wikidata as GEDCOM files, one per language (`en`, `zh`,
-`ja`, `ko` by default), following `P22`/`P25` up a set number of generations; names are each person's label in that
-language, falling back to `mul` and then the QID. Its first use is checking how the labels written here read in each
-language for Emma's own line (`python wikidata_to_gedcom/wikidata_to_gedcom.py Q140568870`). Standard library only.
-It is its own cleanvibe project with its own `CLAUDE.md`, queue and sessions: keep it a plain, small checkout, and
-never move or copy Emma's local `Documents\GitHub\wikidata_to_gedcom` folder into this repo.
+`wikidata_to_gedcom/` exports a person's ancestors from Wikidata as GEDCOM files, one per language (`en`, `zh`, `ja`,
+`ko` by default), following `P22`/`P25` up a set number of generations; names are each person's label in that language,
+falling back to `mul` and then the QID. Standard library only. Its use is checking how the labels written here read in
+each language on Emma's own line: `python wikidata_to_gedcom/wikidata_to_gedcom.py Q140568870 --generations 40
+--langs en,ko,zh,ja --suffix -N` (it opens each file in the default `.ged` program). It was a submodule of the private
+repo EmmaLeonhart/wikidata-ancestor-gedcom-export from 2026-10-05; **on 2026-10-06 (Emma's ask, and her explicit
+authorization to publish) its files became plain files of this repo**, without that repo's history and without its
+`sessions/` transcripts. Keep it small. Never move or copy Emma's local `Documents\GitHub\wikidata_to_gedcom` folder
+into this repo.
 
 ## Session transcripts (local only)
 

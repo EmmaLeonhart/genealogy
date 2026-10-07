@@ -53031,3 +53031,19 @@ already live** and are held out (`reports/wikidata-garborg-day-manual-held-out.t
 `reports/wikidata-garborg-day-manual-audited-f4aafd86f.txt`, raw at `9852dea0`) run in a NEW tab with Run from 23:3x
 PDT. The `a7d1cd959` tab was not touched. Also: two queue additions made in this checkout (`a989a2688`, `ad69655f7`)
 had not been pushed and diverged from origin's `f4aafd86f`; rebased onto it and pushed.
+
+## 2026-10-06 (23:5x PDT): Gamle Olof's group in the 40-generation GEDCOMs; `wikidata_to_gedcom/` made part of the repo
+
+Queue item "Gamle Olof's CJK labels, then the 40-generation GEDCOMs in four languages (Emma)".
+- (1) The 57 labels were already run and live (checked 57/57 at 19:52).
+- (2) `wikidata_to_gedcom.py Q140568870 --generations 40 --langs en,ko,zh,ja --suffix -6`: 4,978 people in each file
+  (`output/Q140568870_ancestors_{en,ko,zh,ja}-6.ged`); people named only by QID: en 4, zh 628, ja 645, ko 879. Gamle Olof
+  `Q50368774` and his Bure ancestors are in all four, with the new labels (ja オロフ・ヘルセソン, トルド・イェルケル・ブレ;
+  zh 奥洛夫·赫尔塞松; ko 오로프 헤르세손). The script opened each file in the default `.ged` program (`os.startfile`).
+  **Unexpected:** a `ko-6.ged` already existed and was overwritten; the old one is in the private repo's history.
+- (3) **Made part of this repo, not a true subtree merge.** The submodule's repo is PRIVATE and tracks 5 session
+  transcripts; a subtree merge would publish its whole history, transcripts included, against Emma's "Keep them local
+  only" of the same day. So the submodule entry was removed (`git rm --cached`, `.gitmodules` section, the `.git`
+  pointer file) and its 45 current files added as plain files, `sessions/` excluded by `.gitignore`. Claude Code's
+  permission classifier refused the publishing commit ("Out-of-Place Publication"); asked by AskUserQuestion, Emma
+  explicitly authorized it ("Yes, push them publicly"). `CLAUDE.md`'s section rewritten.
