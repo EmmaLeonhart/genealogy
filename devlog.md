@@ -53305,3 +53305,13 @@ FamilySearch records (verdict only; protected items, not edited).
 - Unsure, ids kept: Eickstedt I/II (the chain a generation apart, as at #2544); Anna/Helga Salomonsdatter; and Berit
   Rasmusdatter/Elen Svensdatter (same father, husband and child, but different names; our label's patronymic
   disagrees with our own father, Sven).
+
+## 2026-10-07: FamilySearch id review #2780-2879; talk page checked
+
+- Talk page: nothing new since StarTrekker's 2026-10-05 "Patronymics" post.
+- The new batch `40cacc9b4` was not opened: Emma's scale-back is one batch a day, one tab at a time, and today's
+  (`f4aafd86f`) is the one running.
+- #2780-2829: 47 same, 3 different (1 live). #2830-2879: 49 same, 1 different (0 live).
+- New live wrong id for the next removal group (now 8 of 10): #2787 `Q141533461` Karen Pedersdatter Koll carries
+  `LHKN-1XF`, Olivia Nerheim (daughter of Nils Tormodsen Foss). Both are given as the wife of Olav Jensen Hebnes and
+  mother of Åge: a disputed mother, two women, not one person.
