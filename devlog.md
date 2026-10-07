@@ -53081,3 +53081,12 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   (Æthelbald of Wessex), #564 Alice of Namur (Ida von Sponheim).
 - Same: Sigrid the Haughty with her disputed father (Mieszko I / Skoglar Toste); FamilySearch's own slips noted
   (Euphemia "Güntersdotter").
+
+## 2026-10-07: FamilySearch id review #575-674: 94 same, 5 different (1 still live), 1 unsure
+
+- **DIFFERENT, live:** #626 `Q346380` Ada, Countess of Holland (1188-1223) carries `GP12-XP6`, Adela van Holland
+  (1163-1205), her aunt. Group of ten now 7 (#245, #312, #449, #465, #482, #504, #626).
+- **DIFFERENT, already gone:** #600 Werner II of Habsburg, #624 Magnus IV of Norway, #667 Canute Lavard, #674
+  Harthacnut I.
+- **UNSURE, id kept:** #646 Sverker I against a garbled FamilySearch "Sverker".
+- Same under other names: Ragnar Lodbrok = Ragnar Sigurdsson, Werner (father of Conrad the Red) = Werner vom Wormsgau.
