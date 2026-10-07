@@ -53594,3 +53594,13 @@ FamilySearch records (verdict only; protected items, not edited).
   (`_label_corrections`) is working: the current batch corrects 42 of them, so at one batch a day they drain over about
   three weeks. Not sent separately.
 - The description batch is running (343 of 1,316 live at the last check).
+- **Description batch done:** 1,316/1,316, 5 errors in QuickStatements. Checked live: 1,309 now carry the ladder value.
+  Of the 7 still relational, 4 are our duplicates already MERGED into established items (`Q141523987`/`Q141527563` ->
+  `Q4301841` Anastasia Monomakh, `Q141636963`/`Q141638654` -> `Q14269031` Minamoto no Washi); the relationship
+  description is another editor's on the target, so it is left. **Unexpected, the other 3:** the replacement itself
+  carried the phrase, because Geni's PLACE field holds it (`Trondheim - son of Sautha-Ulf`; 95 such place fields).
+  Fixed in `life_description` (`PLACE_RELATION_RE`; Emma's no-relationship rule overrides the description freeze), and
+  the 3 rerun from `reports/relational-descriptions-places-fix-2026-10-07.qs`, checked live.
+- **Item done, deleted from the queue.** Summary of the item: 4 named relational descriptions + 1,312 more fixed;
+  Valborg's label fixed and 922 more married-name labels left to the working backfill; the two Fernström duplicate
+  pairs already shared ids and labels.
