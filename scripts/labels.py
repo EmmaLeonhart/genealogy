@@ -417,10 +417,16 @@ def labels_for(gedcom_name: str, descriptive: str = "") -> dict[str, str]:
     """
     if not is_unnamed(gedcom_name):
         name = display_name(gedcom_name)
-        if leads_with_a_marker(name):
+        # **A lone lowercase letter in front of a name is a cut-off marker, not a given name.**
+        # `n Bårdsdatter på Al`, `x Martini`, `n Haraldsdatter`: 385 labels in `derived-labels.csv`
+        # (2026-10-07), 266 of them `n`, the remains of `N.N.`. Held out of the 2026-10-06 batch by
+        # the daily audit. The rest of the name is real, so it takes the `NN <rest>` form below.
+        lone = bool(re.match(r"^[a-z] \S", name))
+        if lone or leads_with_a_marker(name):
             # The whole marker comes off, not its first token: `N. N. Harniktsdatter` is
             # `NN Harniktsdatter`, never `NN N. Harniktsdatter`.
-            rest = " ".join(name.split()[marker_prefix_length(name):]).strip()
+            rest = " ".join(name.split()[1 if lone else marker_prefix_length(name):]).strip()
+            rest = join_split_hyphens(rest)
             # **A parenthetical is a description, not a surname.**
             # `NN (Wife of Marcus Aemilius Lepidus)` carries no family name at all
             # — somebody wrote the relationship into the name field. The model for
@@ -523,7 +529,18 @@ def label_for(gedcom_name: str) -> str:
     if GIVEN_REDACTED in raw.lower():
         return ""
     name = display_name(raw)
-    return "" if name.strip().lower() in NOT_A_NAME else name
+    return "" if name.strip().lower() in NOT_A_NAME else join_split_hyphens(name)
+
+
+def join_split_hyphens(name: str) -> str:
+    """`Guttorm Eivindson Bo- Årstad` -> `Guttorm Eivindson Bo-Årstad`.
+
+    A hyphen at the end of a word with a space after it is a double-barrelled name split by a
+    stray space: `Johan- Henrik`, `Brown- McKenna`, `Talleyrand- Perigord`, 941 labels in
+    `derived-labels.csv` (2026-10-07). Only letter-hyphen-space-letter is joined, so `-?-`,
+    `--` and `(1820- ?)` are left as they are. Labels only: `P1810` keeps Geni's own string.
+    """
+    return re.sub(r"(?<=[^\W\d_])- +(?=[^\W\d_])", "-", name)
 
 
 

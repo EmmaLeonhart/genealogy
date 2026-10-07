@@ -53488,3 +53488,19 @@ FamilySearch records (verdict only; protected items, not edited).
 - Over the day: five removal groups, 61 wrong FamilySearch ids taken off (`-07`, `-07b`, `-07c`, `-07d`, `-07e`, plus
   retries), each checked live. The 93 unsure cases keep their ids. The disputed parents whose FamilySearch ids came off
   go to the end-of-queue item on adding them as second parents (Emma, 2026-10-07).
+
+## 2026-10-07: generator defects from the 2026-10-06 audit (queue item, in progress)
+
+- (2) "n Bårdsdatter" and (3) "Guttorm Eivindson Bo- Årstad" are Geni's own display names reaching the label.
+  Fixed in `labels.py`, the shared choke point: a lone lowercase letter in front of a name is a cut-off marker and takes
+  the `NN <rest>` form (385 labels in `derived-labels.csv`, 266 of them `n`); a letter-hyphen-space-letter is joined
+  (`Bo-Årstad`, `Johan-Henrik`, `Brown-McKenna`; 941 labels). `P1810` keeps Geni's string.
+- (4) the doubled patronymic is not from the label code (`derived-labels` has plain "Inger Svalesdatter"); it is added
+  later in the batch composer. Left to the "Duplicated patronymics" item below, which asks for the full CSV first.
+- (1) Gibson: `namemodel.patronymic_or_surname` returns "patronymic" when the person has no father in the tree.
+  **Live, not only held out:** a browser run on 2026-10-06 03:33 UTC created `Q141653876` "Gibson" as a (Scandinavian)
+  patronymic item and put it on `Q141560760` Thomas Gibson Sr. as `P5056`. Measured: 41,540 patronymic-form surname
+  tokens have no father in the tree (`reports/patronymic-no-father-2026-10-07.csv`), mostly real Scandinavian
+  patronymics (Nilsson 572, Olofsdotter 561, Larsson 545) with English and Iberian family names among them (Thompson 122,
+  Wilson 88, Fernandez 87). Applying "a patronymic requires the father" literally would flip ~30,000 Scandinavian
+  patronymics to family names, so the principle is put to Emma before the default changes.
