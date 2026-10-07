@@ -53011,3 +53011,14 @@ item runs Emma's `Q140568870|Lzh|"李命玥"` and then that batch; it waits for 
 Emma: "I want you to drop the first Q item": it was not meant to take a whole day, or to run while other work went on.
 Deleted unfinished. Done before the drop: her line `Q140568870|Lzh|"李命玥"` is live. The browser run of
 `a7d1cd959` (started 18:35 PDT, about 3,200 of 5,287 commands at the drop) was left running, not stopped.
+
+## 2026-10-06: CJK labels for Gamle Olof's ancestors, live
+
+Queue item "Add CJK labels to the ancestors of Gamle Olof, `Q50368774`". His 21 ancestors on Wikidata (SPARQL,
+`P22`/`P25` paths, `reports/session-2026-10-06/gamle-olof-ancestors.json`); 20 had no ja/zh/ko. Labels composed by the
+pipeline's own `label_in` with `translit()` (it reproduces his オロフ・ヘルセソン / 奥洛夫·赫尔塞松 / 오로프 헤르세손), only
+into empty slots: 57 labels on 19 items, `reports/gamle-olof-ancestors-cjk-2026-10-06.qs`. Ingeborg NN `Q141442442`
+skipped (NN people get a relationship phrase, not a transliteration). "Thord i Byr" became トルド: the pipeline drops a
+place. Run in the browser in three passes (57, then the 14 and 6 that failed with "The save has failed" while the
+`a7d1cd959` run shared the account, then 1); checked live: 57 of 57. Seen, not changed: two items each for Herse
+Falesson Bure and Gunnar Herse Bure among his ancestors.
