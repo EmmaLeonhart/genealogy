@@ -53436,3 +53436,8 @@ FamilySearch records (verdict only; protected items, not edited).
   ancestor-matching case CLAUDE.md names (Agnes/Karin Jonsdotter), so flagged here rather than judged.
 - Seen in passing (the Bure dispute, not acted on): our Mariet Jönsdotter has Nils Hansson as father, which her own
   patronymic contradicts; FamilySearch gives Nils Hansson's daughter as Sigrid Sara Nilsdotter (Gamle Olof's wife).
+
+## 2026-10-07: FamilySearch id review #3880-3979
+
+- #3880-3929: 49 same, 1 unsure. #3930-3979: 49 same, 1 unsure. No new wrong ids; group still 4 of 10.
+- Unsure, ids kept: #3923 Ragnhild Bjørnsdatter Lyse (different husbands); #3936 an Anders paired on the name alone.
