@@ -53521,3 +53521,5 @@ FamilySearch records (verdict only; protected items, not edited).
   not combined into this one.
 - The live "Gibson" `P5056` on `Q141560760` is still there: queued at the end as an error report.
 
+
+- Batch watch 2026-10-07 09:33 PDT: new batch `9fa26199f` (landed 08:29 PDT) not opened. Emma's scale-back answer (queue item "Scale back", 2026-10-06) is one batch a day, and today's day batch `f4aafd86f` already ran.
