@@ -54,8 +54,11 @@ KIND = {"Q101352": "family", "Q202444": "given", "Q12308941": "given",
 
 
 def created_pages(ua):
+    # ⛔ EVERY PAGE, NOT 40. Forty pages of 500 is the newest 20,000 creations, and the account has made
+    # more than that, so the name items of August fell off the end: `Eriksdatter` (`Q141223487`, created
+    # 2026-08-30) and 26 more counterparts were proposed again in the 2026-10-06 batch (audit defect 3).
     out, cont = [], None
-    for _ in range(40):
+    while True:
         url = ("https://www.wikidata.org/w/api.php?action=query&format=json&list=usercontribs"
                "&ucuser=" + urllib.parse.quote(USER) +
                "&ucshow=new&uclimit=500&ucnamespace=0&ucprop=ids|title|timestamp")
@@ -105,6 +108,14 @@ def main():
                              "created": when.get(asked, "")[:10]})
         time.sleep(0.3)
 
+    # A row the fetch did not reach (a short or failed listing) is kept, never dropped: an item once
+    # known to exist still exists, and forgetting it is what re-creates it.
+    if OUT.exists():
+        with OUT.open(encoding="utf-8", newline="") as fh:
+            for old in csv.DictReader(fh, delimiter="\t"):
+                if old.get("label") and (old["label"].casefold(), old["kind"]) not in seen:
+                    seen.add((old["label"].casefold(), old["kind"]))
+                    rows.append(old)
     rows.sort(key=lambda r: (r["kind"], r["label"].casefold()))
     with OUT.open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=["label", "kind", "qid", "created"], delimiter="\t")

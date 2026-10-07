@@ -612,7 +612,12 @@ jobs:
           DEN = re.compile(r'^LAST\tDen\t"(.*)"$')
 
           def blocks(lines):
-              starts = [n for n, l in enumerate(lines) if l.strip() == "CREATE"]
+              # A block starts at its `#` comment, not at CREATE: cut at CREATE, a skipped pair's
+              # comment stayed on the block before it and the next block went out under the
+              # wrong name ("# Jonsdotter -- the counterpart of Jonsson" over an Olofsdotter
+              # creation, 2026-10-07).
+              starts = [n - 1 if n and lines[n - 1].startswith("#") else n
+                        for n, l in enumerate(lines) if l.strip() == "CREATE"]
               for i, a in enumerate(starts):
                   b = starts[i + 1] if i + 1 < len(starts) else len(lines)
                   yield a, b
@@ -623,7 +628,7 @@ jobs:
               return {(x, dens[0]) for x in labels} if dens else set()
 
           pairs = Path("reports/wikidata-patronymic-pairs.qs").read_text(encoding="utf-8").splitlines()
-          head = pairs[:next((n for n, l in enumerate(pairs) if l.strip() == "CREATE"), len(pairs))]
+          head = pairs[:next((a for a, _b in blocks(pairs)), len(pairs))]
           for name in ("wikidata-garborg-day.txt", "wikidata-garborg-day-auto.txt",
                        "wikidata-garborg-day-manual.txt"):
               day = Path("reports") / name

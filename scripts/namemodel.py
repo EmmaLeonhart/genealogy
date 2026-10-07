@@ -3512,6 +3512,28 @@ def classify(label: str) -> list[tuple[str, str, int]]:
     return out
 
 
+#: ⛔ **A HAPLOGROUP IS NOT A NAME.** Audit 2026-10-06: `Q141653950` Alba Autun went out with
+#: `Amul "mtH1"`, her Geni `NICK`. Geni users write DNA haplogroups into `NICK` and `NSFX`
+#: (`mtH1`, `mtDNA J1c7a`, `Y-DNA "R-BY100221"`, `I-BY185780`, `(Y-haplogroup R-Z209 - ...)`);
+#: 31 name fields in `display-names.csv` on 2026-10-07. Case-sensitive on purpose: `Mtre.`
+#: (maestre), `Mtskhetos` and `Mtz` (Martínez) are not haplogroups.
+HAPLOGROUP = re.compile(
+    r'\((?:Y|mt)-haplogr[^)]*\)'
+    r'|\b(?:Y-?(?:DNA|Dna)|mtDNA)\b[\s:]*"?[A-Z][A-Za-z0-9-]*"?'
+    r'|\bmt[A-Z][0-9a-z]*\b'
+    r'|\b[A-Z]-(?:[A-Z]{1,3})?\d{2,}\b')
+
+
+def strip_haplogroups(text):
+    """`text` without any haplogroup designation, whitespace and dangling punctuation tidied."""
+    if not text or not HAPLOGROUP.search(text):
+        return text
+    out = HAPLOGROUP.sub(" ", text)
+    out = re.sub(r"\s*,\s*(?=,|$)", "", out)
+    out = " ".join(out.split()).strip(" ,.;")
+    return out
+
+
 def clean_fields(fields):
     """The GEDCOM name fields as the model reads them: a description `GIVN` emptied, and the
     suffix, title tail, leading title and leading territorial designation cut from `GIVN`,
@@ -3520,6 +3542,9 @@ def clean_fields(fields):
     or `Olof Galle i Sverige`'s `Sverige` reads as a married surname the model never meant.
     """
     fields = dict(fields)
+    for _f in ("nick", "nsfx"):
+        if fields.get(_f):
+            fields[_f] = strip_haplogroups(fields[_f])
     # **⛔ THE DROP CHAIN MUST NOT MANUFACTURE A NAME OUT OF "THERE IS NO NAME".**
     # `drop_leading_title` reads `Stillborn` as a title, so `Stillborn Son` arrived at
     # `classify_fields` as `Son` and `Stillborn daughter 1` as `daughter 1` -- and
@@ -3766,7 +3791,7 @@ def aliases_for(fields, surn="", marnm=""):
     """
     out = []
     tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
-                             fields.get("nick", ""), fields.get("marnm", ""))
+                             strip_haplogroups(fields.get("nick", "")), fields.get("marnm", ""))
     surn = surn or fields.get("surn", "")
     marnm = marnm or fields.get("marnm", "")
     given = [t for t, u, _o in tokens if u == "given"]

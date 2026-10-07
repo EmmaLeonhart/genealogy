@@ -197,6 +197,16 @@ def test_no_father_in_the_tree_means_no_patronym_statement():
     assert any("no father in the tree" in n for n in notes)
 
 
+def test_a_haplogroup_is_not_a_name():
+    """`Q141653950` Alba Autun went out with `Amul "mtH1"`, her Geni `NICK`."""
+    from namemodel import aliases_for, strip_haplogroups
+    assert strip_haplogroups("mtH1") == ""
+    assert strip_haplogroups("Ava mtH1") == "Ava"
+    assert strip_haplogroups('Y-DNA "R-BY100221"') == ""
+    assert strip_haplogroups("Mtre. de Campo") == "Mtre. de Campo"
+    assert "mtH1" not in aliases_for({"givn": "Alba", "surn": "Autun", "nick": "mtH1"})
+
+
 def test_a_father_in_the_tree_keeps_the_patronym_statement():
     lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1", has_father=True)
     assert PATRONYM in [ln[0] for ln in lines]
