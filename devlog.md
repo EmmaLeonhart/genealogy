@@ -53394,3 +53394,12 @@ FamilySearch records (verdict only; protected items, not edited).
 - #3280-3329: 46 same, 3 different (0 live), 1 unsure. #3330-3379: 46 same, 3 different (0 live), 1 unsure. No new live wrong ids; the next removal group is empty.
 - Unsure, ids kept: #3299 our "Sjur Matsson Holter" whose children are the FamilySearch Tore Sæbjørnsen's (label and
   data disagree, like #3274); #3370 Ingrid/Inger Eriksdatter.
+
+## 2026-10-07: FamilySearch id review #3380-3479
+
+- #3380-3429: 45 same, 4 different (0 live), 1 unsure (#3421, two Ole Eriksens with no shared spouse or child).
+  #3430-3479: 49 same, 1 different (1 live).
+- Next removal group (1 of 10): #3431 `Q141562933` Pär, father of Ingerborg Pärsdotter, carries `LH15-HMD`, Eric
+  Ersson (b. 1677), father of Karin Eriksdotter. This is a grandparent across the #3072 dispute, the level Emma
+  asked to be told apart from a disputed parent: it comes off because it is another man, and it is not a disputed
+  parent of anyone on our side, so nothing about it goes to the second-parents queue item.
