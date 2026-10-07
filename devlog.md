@@ -53269,3 +53269,12 @@ FamilySearch records (verdict only; protected items, not edited).
   other wife of Guttorm Jakobson. Next group now 3 (#1914, #2332, #2381).
 - Already gone: #2432, #2437 (another spouse's id); #2411, #2438 (disputed lines).
 - UNSURE, id kept: #2460 Lars Rasmusson Bore against Ommund Rasmussen (same father and year, other first name).
+
+## 2026-10-07: FamilySearch id review #2480-2529: 47 same, 3 different (gone); an impossible child link found
+
+- **Unexpected, live on Wikidata:** `Q141521528` Kirsten Jakobsdatter Bolstad (1600-1682) has `P40` `Q313015` Haakon VI
+  of Norway (b. 1340), added by the account and referenced to her own Geni id (6000000007635631030). In Geni her profile
+  has a child whose Geni id (6000000003464260121) is the one on Haakon VI's item, so the pipeline carried a Geni error
+  across; Haakon VI's own `P25` (Blanche of Namur) is right. Queued as an error report (remove the link, find the cause,
+  sweep for children born centuries before their parents). Not edited by this session.
+- Otherwise: already gone #2494, #2519, #2521 (different).
