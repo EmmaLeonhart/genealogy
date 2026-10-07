@@ -4014,7 +4014,7 @@ def label_in(label, table):
     return compose((joined(ja, "・"), joined(zh, "·"), " ".join(ko)), _title_cjk, _bare)
 
 
-def name_lines(label, plan, geni_id, father_qid, fields=None, sex="", has_father=None,
+def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
                father_name="", father_aka="", father_given="", cjk=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
@@ -4035,8 +4035,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="", has_father
     fields = expand_abbreviated_fields(fields, geni_id)
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
                                 fields=fields, sex=sex, father_name=father_name,
-                                father_aka=father_aka, father_given=father_given,
-                                has_father=has_father)
+                                father_aka=father_aka, father_given=father_given)
     for prop, value, quals in lines:
         # `P1449` *nickname* never arrives: `namemodel.statements_for` stops modelling it,
         # per the 2026-08-29 ruling. The drop used to be here, and having it in the emitter
@@ -8923,7 +8922,6 @@ def main():
                                    father_name=labels.get(dad, "") if dad else "",
                                    father_aka=aka.get(dad, "") if dad else "",
                                    father_given=given_name.get(dad, "") if dad else "",
-                                   has_father=bool(dad),
                                    cjk=cjk_first.get(g, ""))[0]:
                 _parts = line.split("\t")
                 if (q, _parts[1], _parts[2]) in live_values:
@@ -9842,7 +9840,6 @@ def main():
             father_name=labels.get(dad, "") if dad else "",
             father_aka=aka.get(dad, "") if dad else "",
             father_given=given_name.get(dad, "") if dad else "",
-            has_father=bool(dad),
             cjk=cjk_first.get(g, ""))
         lines.extend(name_statements)
         # ⛔ **A PATRONYMIC NAME WITH NO SURNAME SAYS SO: `P734` = `Q108474139`. Emma, 2026-10-03** (on
@@ -9851,9 +9848,7 @@ def main():
         # given name or an NN person has an UNKNOWN surname, which is not the same claim, and a Han name
         # carries its clan inside the given field.
         _usages = {u for _t, u, _o in statements_tokens(fields.get(g) or {})}
-        # A patronymic with no father in the tree is not modelled (`namemodel.statements_for`,
-        # 2026-10-07), so it says nothing about a missing surname either.
-        if ("patronymic" in _usages and "family" not in _usages and not _sino and not redacted and dad
+        if ("patronymic" in _usages and "family" not in _usages and not _sino and not redacted
                 and not any(ln.startswith("LAST	P734	") for ln in name_statements)):
             lines.append(f"LAST	P734	{NO_FAMILY_NAME}")
         # Aliases: the nickname, and the full name under a married surname. These were

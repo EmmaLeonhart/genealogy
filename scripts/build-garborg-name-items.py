@@ -792,16 +792,11 @@ def main():
     bearer_reuse = reuse_from_bearers(fields, have, live_values())
     if bearer_reuse:
         print(f"{len(bearer_reuse)} token(s) are already pointed at by their own bearers")
-    for geni_id, person in fields.items():
+    for person in fields.values():
         for token, usage, _ordinal in classify_fields(**person):
             # A nickname is monolingual text on the person's own item, so it needs no
             # name item and must not be proposed as one.
             if usage == "nickname":
-                continue
-            # A patronymic requires the father: with none in the tree the token is not modelled
-            # (`namemodel.statements_for`, 2026-10-07), so it does not need an item. This is how
-            # "Gibson" was created as a patronymic item (`Q141653876`) for Thomas Gibson I.
-            if usage == "patronymic" and not father_of.get(geni_id):
                 continue
             # **A particle and an unknown-name marker are never items.** `CLAUDE.md`
             # § *A parenthesised token in `SURN`/`_MARNM`*: `de`, `von`, `af` belong in the
@@ -1059,8 +1054,7 @@ def main():
                     fields=person, sex=sex_of.get(geni_id, ""),
                     father_name=person.get("father_name", ""),
                     father_aka=person.get("father_aka", ""),
-                    father_given=person.get("father_given", ""),
-                    has_father=bool(dad))
+                    father_given=person.get("father_given", ""))
             except Exception as exc:                                   # noqa: BLE001
                 lines.append(f"#   {qid}: the name model failed -- {exc}")
                 continue

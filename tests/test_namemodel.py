@@ -189,14 +189,6 @@ def test_the_patronym_carries_no_p144_when_the_father_has_no_item():
     assert patronym[2] == []
 
 
-def test_no_father_in_the_tree_means_no_patronym_statement():
-    """A patronymic requires the father (2026-09-25): `Thomas Gibson` got `P5056` Gibson."""
-    lines, notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1", has_father=False)
-    assert PATRONYM not in [ln[0] for ln in lines]
-    assert FAMILY_NAME in [ln[0] for ln in lines]
-    assert any("no father in the tree" in n for n in notes)
-
-
 def test_a_haplogroup_is_not_a_name():
     """`Q141653950` Alba Autun went out with `Amul "mtH1"`, her Geni `NICK`."""
     from namemodel import aliases_for, strip_haplogroups
@@ -207,8 +199,12 @@ def test_a_haplogroup_is_not_a_name():
     assert "mtH1" not in aliases_for({"givn": "Alba", "surn": "Autun", "nick": "mtH1"})
 
 
-def test_a_father_in_the_tree_keeps_the_patronym_statement():
-    lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1", has_father=True)
+def test_gibson_is_a_named_family_name_not_a_patronym():
+    """Emma, 2026-10-07: keep the no-father default as patronymic; Gibson is a named exception."""
+    from namemodel import classify_fields, is_patronymic
+    assert not is_patronymic("Gibson")
+    assert ("Gibson", "family", 0) in classify_fields(givn="Thomas", surn="Gibson")
+    lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1")
     assert PATRONYM in [ln[0] for ln in lines]
 
 

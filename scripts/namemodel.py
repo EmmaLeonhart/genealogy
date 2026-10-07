@@ -3578,7 +3578,7 @@ def clean_fields(fields):
 
 
 def statements_for(label, plan, geni_id, father_qid=None, fields=None,
-                   sex="", father_name="", father_aka="", father_given="", has_father=None):
+                   sex="", father_name="", father_aka="", father_given=""):
     """(statement lines, notes) for one person's name.
 
     Each line is `(property, value, qualifiers)` with qualifiers as
@@ -3591,11 +3591,6 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     `father_qid` is the `P144` *based on* target for a patronym -- `name
     modelling.txt` points it at **the person the link names**, not at a name item.
     Omitted when the father has no item yet rather than guessed.
-
-    `has_father` is whether the person has a father IN THE TREE. `False` withholds every
-    `P5056`: a patronymic requires the father (ruled 2026-09-25), and a `-son` token on a
-    fatherless person is as often an English family name (`Gibson`, `Thompson`) as a patronymic.
-    `None` (the caller does not know) keeps the old behaviour.
 
     A `nickname` produces an **alias only** and no statement -- see the block that handles it
     for the 2026-08-29 ruling and why the drop lives here rather than in a caller.
@@ -3667,17 +3662,6 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # primary name, which is exactly the `Lmul`-against-`Amul` shape that was asked for.
         if usage == "nickname":
             aliases.append(token)
-            continue
-
-        # ⛔ **A PATRONYMIC REQUIRES THE FATHER (2026-09-25), SO NO FATHER IN THE TREE MEANS NO
-        # `P5056`.** Decided 2026-10-07 for the first daily audit's defect (1): `Q141560760`
-        # Thomas Gibson I went out with `P5056` "Gibson" because `patronymic_or_surname` reads a
-        # `-son` token as a patronymic when the father is unknown. Calling those tokens family
-        # names instead would turn ~30,000 real Scandinavian patronymics (Nilsson, Olofsdotter)
-        # into `P734`, so neither is asserted: the token stays in the label and no statement is
-        # made until the father is in the tree. `reports/patronymic-no-father-2026-10-07.csv`.
-        if usage == "patronymic" and has_father is False:
-            notes.append(f"{token}: patronymic form but no father in the tree, not modelled")
             continue
 
         # The married name is looked up as a family name -- it IS one, just a later

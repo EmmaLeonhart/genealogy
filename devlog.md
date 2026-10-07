@@ -53523,3 +53523,16 @@ FamilySearch records (verdict only; protected items, not edited).
 
 
 - Batch watch 2026-10-07 09:33 PDT: new batch `9fa26199f` (landed 08:29 PDT) not opened. Emma's scale-back answer (queue item "Scale back", 2026-10-06) is one batch a day, and today's day batch `f4aafd86f` already ran.
+
+- **Another session was on the same item.** Session `01XFnAXdDTuo1bfcT8PieDYm` committed `62f98ba54` (09:15 PDT): a
+  patronymic-form token with no father in the tree made no `P5056` at all; it also deleted this queue item and queued
+  the live Gibson statement as an error report (placed below the pinned last item). Found only after this session's own
+  fixes; `git log` was not re-read before starting, which is the miss.
+- **Emma, by AskUserQuestion: "Keep patronymic; fix Gibson", then "Your answer stands; I go on".** So the no-father
+  default stays "patronymic": `62f98ba54`'s `has_father` rule is reversed in `namemodel.py`, `build-garborg-day.py` and
+  `build-garborg-name-items.py`, and its two tests replaced by one for the named exception. `Gibson` is
+  `namemodel.NAMED_FAMILY_NAMES` (a named case, not a rule). The other session's other fixes (`1dad0a22d`: August name
+  items, pair comments, haplogroups) are untouched.
+- The Gibson error report item is taken off the queue: its sweep for other fatherless `P5056` is moot under Emma's
+  ruling, and its removal is `reports/gibson-p5056-removal-2026-10-07.qs`, run below. `Q141653876` ("Gibson", typed as a
+  patronymic) is left as it is: a merge into the family-name item `Q2700390` goes through the UI only.
