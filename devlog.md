@@ -53347,3 +53347,13 @@ FamilySearch records (verdict only; protected items, not edited).
   Tørresen Lunde's `KL7C-9Y2`; #3111 `Q141551306` Jon Jonson Tjensvoll carries Jon Jonsen Monsen Mossige's `L7FL-HBB`.
 - Unsure, ids kept: Kerstin Olofsdotter/Elisabet Matsdotter (wife of Eric Andersson = Eric Ersson, identical dates);
   Mari/Marta Halvardsdatter Bjelland.
+
+## 2026-10-07: FamilySearch id review #3130-3229
+
+- #3130-3179: 43 same, 6 different (2 live), 1 unsure. #3180-3229: 46 same, 4 different (1 live).
+- Next removal group now 9 of 10: #3148 `Q141552170` Sevatsdatter Skiftun carries Haakonsdatter's `L4JG-YV1` (two
+  women each given as Laurits Hogganvik's mother); #3163 `Q141557554` Anstein Torgrimsson Birkeland carries Torgrim
+  Ormsson's `G3T8-JZJ` (two men each given as Børge Åmodt's father); #3214 `Q141559725` Ingerborg Pärsdotter carries
+  Karin Eriksdotter's `KZHR-8B2` (the mothers on the two sides of the disputed wife at #3072).
+- The pattern in this stretch: where a parent is disputed, the walk put the other side's parent's FamilySearch id on our
+  parent. Per CLAUDE.md a disputed parent is two people, so those ids come off; the child, one person, keeps theirs.
