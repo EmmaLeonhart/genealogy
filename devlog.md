@@ -53142,3 +53142,14 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   Haraldsson (his brother Sigtrygg). **UNSURE, gone:** #1077 Gormflaith.
 - Same, FamilySearch under another name: Harald Gulskeg filed as "Harald Klak Halfdansson" (wife and daughter his),
   Catherine Lady Blake = Katarina "den heliga", Karl Sunesson = Karl, jarl of Götaland.
+
+## 2026-10-07: FamilySearch id review #1110-1209: 88 same, 9 different (none live), 3 unsure
+
+- **No live wrong id in this hundred.** DIFFERENT, already gone: #1138, #1141 (Oda of Saxony, her sister's id),
+  #1145, #1146, #1167, #1192 (Eadhild, Raingarde's id), #1208, #1209 (the early Uí Néill kings, each carrying a
+  neighbour's id).
+- **UNSURE, ids kept:** #1126 `Q6188543` "Sten Bengtsson (Bielke)" has his brother Ture's dates and wife; #1182
+  `Q12306503` Claus Limbek against FamilySearch's "Henneke Limbek" with Claus's family. #1196 (gone) Kol Kalisson.
+- **Unexpected, queued as an error report:** `Q11979148` "Jon Guttormsen" has father Gaute Ivarsson (FamilySearch: Jon
+  Gautesson Dall), the patronymic contradicting the father, like Ture Karlsson Båt. The two UNSURE items ride along in
+  that error report.
