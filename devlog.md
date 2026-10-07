@@ -53587,3 +53587,10 @@ FamilySearch records (verdict only; protected items, not edited).
   ids sit on two or more of these items (388 items), duplicate sets of our own creations; the identical
   label+description will be refused on the second of each, one edit each. Batch
   `reports/relational-descriptions-fix-2026-10-07.qs`.
+- `Q141539011` Valborg: label set to her birth name `Valborg Pedersdatter Sandsmark` in mul/en/ja/zh/ko (the pipeline's
+  own transliteration), checked live; `Valborg Pedersdatter Ueland` was already a `mul` alias.
+- **How many more like her:** 922 of the account's 19,082 creations with a Geni id still carry the married name as
+  their label (`reports/married-labels-live-2026-10-07.csv`, Aagot Garborg born Nyvold and the like). The backfill
+  (`_label_corrections`) is working: the current batch corrects 42 of them, so at one batch a day they drain over about
+  three weeks. Not sent separately.
+- The description batch is running (343 of 1,316 live at the last check).
