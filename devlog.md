@@ -53369,3 +53369,8 @@ FamilySearch records (verdict only; protected items, not edited).
   and put to Emma. **One of this kind was already removed** in today's third group: #2787 `Q141533461` Karen
   Pedersdatter Koll lost `LHKN-1XF` (Olivia Nerheim). The clear cases stay in the next group: #2976 (a brother), #3111
   (another man), #3230 (a sister).
+
+- **Emma's answer (AskUserQuestion, "Remove them"):** the other side's parent's id comes off our parent; the child keeps
+  theirs. Written into CLAUDE.md under "be cautious about removing ids". The nine go back to DIFFERENT and into the
+  fourth removal group with the three clear cases: `reports/familysearch-id-review-removals-2026-10-07d.qs`, 12 ids, all
+  checked live just before. Emma, same moment: "And recreate new items for the familysearch people" (next step).
