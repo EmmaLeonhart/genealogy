@@ -53090,3 +53090,14 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   Harthacnut I.
 - **UNSURE, id kept:** #646 Sverker I against a garbled FamilySearch "Sverker".
 - Same under other names: Ragnar Lodbrok = Ragnar Sigurdsson, Werner (father of Conrad the Red) = Werner vom Wormsgau.
+
+## 2026-10-07: FamilySearch id review #675-774: 93 same, 7 different (2 still live)
+
+- **DIFFERENT, live:** #729 `Q536899` Welf III, Count of Altdorf (940-1030) carries `9W4D-4YP`, Welf I (770-825);
+  #774 `Q703389` Baldwin IV of Hainaut carries `GKBJ-JLC`, Guillaume de Nevers. **A pattern:** three generations of the
+  Hainaut/Namur line carry the matching Nevers/Sponheim person's id (#564 Alice of Namur -> Ida von Sponheim, #744
+  Baldwin III -> Guillaume de Nevers, #774 Baldwin IV -> his son Guillaume): one wrong anchor, walked down a line.
+  Group of ten now 9.
+- **DIFFERENT, already gone:** #681 Amadeus II of Montfaucon, #744 Baldwin III of Hainaut, #755 Stigand, #756
+  Höfða-Þórður, #759 Kristin Sigurdsdatter.
+- Same under other names: Gertrud of Lorraine = Petronilla, William II of Angoulême = Guillaume IV Taillefer.
