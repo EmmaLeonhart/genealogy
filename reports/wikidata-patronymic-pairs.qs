@@ -89,6 +89,17 @@ LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
 
+# Rasmusdatter -- the counterpart of Rasmussen (322 bearer(s))
+CREATE
+LAST	Len	"Rasmusdatter"
+LAST	Lmul	"Rasmusdatter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9043
+LAST	P407	Q9035
+
 # Jonsdotter -- the counterpart of Jonsson (321 bearer(s))
 CREATE
 LAST	Len	"Jonsdotter"
@@ -465,18 +476,4 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
-
-# Christiansen -- the counterpart of Christiansdatter (72 bearer(s))
-CREATE
-LAST	Len	"Christiansen"
-LAST	Lmul	"Christiansen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141499585
-Q141499585	P5278	LAST
-Q141499585	P407	Q9043
-Q141499585	P407	Q9035
 
