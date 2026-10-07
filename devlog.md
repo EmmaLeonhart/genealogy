@@ -53227,3 +53227,12 @@ FamilySearch records (verdict only; protected items, not edited).
 - **Disputed fathers and husbands, recorded as disputes:** Osmund Olsen Vågen's father (our Ola Eilivson, which the
   patronymic fits, against FamilySearch's Ommund Klengsen; #1899, gone, was the other side); Anna Fartegnsdatter's
   husband (Mats Amundsen against Mads Eriksson; #1961, gone).
+
+## 2026-10-07: FamilySearch id review #1980-2079: 96 same, 1 different (gone), 3 unsure
+
+- No live wrong id. Already gone: #2067 Torsten Ellingsen (Sven Ivarson's id).
+- **Another patronymic contradiction**, added to the error report: `Q141493432` Ragnhild Sæbjørnsdatter Underberge has
+  father "Eivind Underberge"; FamilySearch's Sebjørn Talje fits the name.
+- UNSURE, id kept: #2035 the wife of Orm Pederson (our Anna Jonsdotter, FamilySearch's Helga Andersdatter).
+- Couples where FamilySearch files the wife under the husband's name keep appearing ("Mother Peder Bloch", "Mother
+  Anders", "Omund Bjerga" twice).
