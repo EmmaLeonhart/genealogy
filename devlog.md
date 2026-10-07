@@ -53172,3 +53172,15 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   a generation off), #1365 "Hildesiut (?)", wife of Hermann Billung (FamilySearch's Hildegard, also his wife).
 - Items named "unknown daughter of ..." or "NN" matched by their husbands and children (Oda van Vlaanderen, Judith
   Piast); the item "Harold Finson" is Håkon Finnson by its daughter Ulvhild.
+
+## 2026-10-07: FamilySearch id review to #1479; second group of ten removed; all 21 live wrong ids now off
+
+- **#1410-1479:** 61 same, 9 different (2 live). Live: #1461 `Q115633980` Guermond de Picquigny carried his son
+  Eustache I's id (`LVVK-HVJ`), the Picquigny line shifted a generation like Hainaut/Nevers (#1460, #1462, already
+  gone, are the same chain); #1468 `Q116005748` Mélisende "Caravicina" de Montlhéry carried another Melisende de
+  Montlhéry (`LBS8-7SB`). #1433 Anna Fartegnsdatter Seim = Anne Knudsdatter Bille under "same person, ancestry
+  disputed" (same son, same death year 1578).
+- **Second removal batch** `reports/familysearch-id-review-removals-2026-10-07b.qs` (#857, #871, #953, #1029, #1084,
+  #1264, #1286, #1306, #1461, #1468), each re-checked live first, run in a NEW tab with Run: **10 of 10 removed, checked
+  live.** The two holdouts of the first batch (`Q346380` Ada of Holland, `Q536899` Welf III) were retried once more in a
+  new tab and **are now removed** (checked live): 21 of 21 live wrong ids found so far are off.
