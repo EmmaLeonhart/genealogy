@@ -53327,3 +53327,13 @@ FamilySearch records (verdict only; protected items, not edited).
   one generation of the Bure line onto another. Also `Q141538483` Kirsten Kristoffersdatter carried her sister Eli's
   `LH1J-XVG`.
 - Third removal group, 12 ids, all checked live just before: `reports/familysearch-id-review-removals-2026-10-07c.qs`.
+
+## 2026-10-07: third removal group done; FamilySearch id review #2930-3029
+
+- `-07c.qs` ran in a new tab: 6 of 12 saves failed in QuickStatements ("The save has failed"), as with the first
+  group. `-07c-retry.qs` carried the six; checked live afterwards, all 12 ids are gone.
+- #2930-2979: 45 same, 5 different (1 live). #2980-3029: 47 same, 1 different (1 live), 2 unsure.
+- Next removal group so far (2 of 10): #2976 `Q141548501` Jon Jonsson carries his brother Mårten Jonsson Furman's
+  `LC7C-SS5`; #3015 `Q141549731` Stefan Olofsson carries `KDSC-FSV`, Anders Nilsson, the other man given as Mårten's
+  father (a disputed father is two people, so his id does not belong on Stefan; Mårten himself stays one person).
+- Unsure, ids kept: Mareta Olsdatter 1745-1820 with two different husbands; Mårten's unnamed mother.
