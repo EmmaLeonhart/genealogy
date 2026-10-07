@@ -53212,3 +53212,10 @@ FamilySearch records (verdict only; protected items, not edited).
 - UNSURE among ids already gone: #1716 Karin against Kerstin (different names, per Emma), #1748 two sisters with one
   husband, #1752 Knud / "Ola" Hidle.
 - Many "wife of ..." items match FamilySearch records entered under the husband's name.
+
+## 2026-10-07: FamilySearch id review #1780-1879: 95 same, 2 different (gone), 3 unsure
+
+- No live wrong id. Already gone: #1829 Malena Monsdatter, #1860 Eirik Jakobson Byre (his brother's id).
+- **Disputed parentage, id kept:** #1805 "Nils" (our grandfather of Anders Persson) carries FamilySearch's Isak
+  Abrahamsson, the same Per Nilsson / Per Isaksson dispute one generation up from #1601.
+- #1836 "N.N. de Courtenay" has nothing to compare; id kept.
