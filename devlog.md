@@ -53357,3 +53357,15 @@ FamilySearch records (verdict only; protected items, not edited).
   Karin Eriksdotter's `KZHR-8B2` (the mothers on the two sides of the disputed wife at #3072).
 - The pattern in this stretch: where a parent is disputed, the walk put the other side's parent's FamilySearch id on our
   parent. Per CLAUDE.md a disputed parent is two people, so those ids come off; the child, one person, keeps theirs.
+
+## 2026-10-07: FamilySearch id review #3230-3279; disputed-parent ids held
+
+- #3230-3279: 43 same, 5 different, 2 unsure (before the change below).
+- **Held, not removed:** nine live ids where the two trees name a different parent (or spouse) and the walk put the
+  FamilySearch side's parent's id on our parent: #3015 Stefan Olofsson, #3042 Geirtrud Kvaale, #3062 Jon Larsson, #3094
+  Hans Rasmusson Lunde, #3148 Sevatsdatter Skiftun, #3163 Anstein Torgrimsson, #3214 Ingerborg Pärsdotter, #3245 Malin
+  Olofsdotter, #3273 Oddsdatter Foss. CLAUDE.md: an id comes off only when the record is clearly another person, "never
+  when it is one side of a disputed parentage". Read literally that covers these, so they are re-marked UNSURE, kept,
+  and put to Emma. **One of this kind was already removed** in today's third group: #2787 `Q141533461` Karen
+  Pedersdatter Koll lost `LHKN-1XF` (Olivia Nerheim). The clear cases stay in the next group: #2976 (a brother), #3111
+  (another man), #3230 (a sister).
