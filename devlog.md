@@ -53421,3 +53421,9 @@ FamilySearch records (verdict only; protected items, not edited).
   Berthe Jacobsdatter as Hallvard Frøyland's wife.
 - A new batch landed (`ae429162e`, "rebuild the batch"). Not opened: Emma's scale-back is one batch a day, and today's
   is `f4aafd86f`.
+
+## 2026-10-07: FamilySearch id review #3680-3779
+
+- #3680-3729: 50 same. #3730-3779: 50 same (mostly medieval and royal people). No new wrong ids; group still 4 of 10.
+- Noted, not a wrong id: #3680 Anders Gjermundson Gjedrem and #3681 Anders Holmen are two items for one man (same wife
+  and children), each carrying one of FamilySearch's two records for him. A duplicate pair, not an error to act on here.
