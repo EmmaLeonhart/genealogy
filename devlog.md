@@ -53286,3 +53286,12 @@ FamilySearch records (verdict only; protected items, not edited).
   Geni id 6000000002198362511 is Welf I's profile, so Welf I's relatives landed on Welf III (the same mix-up as #729).
   Queued as its own error report; not edited.
 - Eickstedt chain #2544: UNSURE, id kept.
+
+## 2026-10-07: FamilySearch id review #2580-2679
+
+- #2580-2629: 45 same, 4 different (1 live), 1 unsure. #2630-2679: 41 same, 4 different (1 live), 5 unsure.
+- New live wrong ids, held for the next removal group (now 5 of 10): #2625 `Q141528681` Jens Jenssen Bonde
+  carries `LZNZ-NSW`, Jens Jensen Hersleb (another family, other father, died 40 years later); #2670 `Q141529086`
+  Olof Nilsson carries `LCF6-W5H`, Olof Olofsson (the generation above or below: other father, other wife).
+- Unsure, ids kept: Kerstin/Karin Jonsdotter (same husband and child, different names), Maren/Marta Reiarsdatter,
+  two FamilySearch "Pehr" records of unclear sex, and Ingeborg's husband whose daughters differ.
