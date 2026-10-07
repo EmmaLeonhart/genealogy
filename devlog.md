@@ -53113,3 +53113,14 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   `Q346380` Ada of Holland (`GP12-XP6`) and `Q536899` Welf III (`9W4D-4YP`), failed twice with "The save has failed"
   (the retry file `-retry.qs`); neither item is protected and the statements are ordinary. NEEDS-INVESTIGATION, noted in
   the remaining review item.
+
+## 2026-10-07: FamilySearch id review #810-909: 88 same, 10 different (2 still live), 2 unsure
+
+- **DIFFERENT, live (start of the next group):** #857 `Q1470395` Ælfthryth, Countess of Flanders carries `PZX6-N9Y`,
+  "Princess Egwine" (husband "Lord Ethelbrett"); #871 `Q1771200` Thorstein Eiriksson carries `9QD3-9X9`, Thorfinn
+  Karlsefni: **the two husbands of Gudrid had each other's ids** (#465, removed today, was Thorfinn with Thorstein's).
+- **DIFFERENT, already gone:** #813 Erling Skjalgsson, #820 Skjalm Hvide, #837 Flann Sinna, #847 Robert de Beaumont,
+  #868 Guy of Hauteville, #874 Conrad de Fribourg.
+- **UNSURE:** #864 Herbert III of Omois (id kept), #887 Boudewijn III van Gent (already gone).
+- Same under other numberings or forms: Günther II/III of Schwarzburg, Ruprecht II/III of Laurenburg, Warmund =
+  Guermond de Picquigny, Ketil Trout = Ketill hængur, Harald Granraude = Harald Herbrandsson.
