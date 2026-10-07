@@ -53262,3 +53262,10 @@ FamilySearch records (verdict only; protected items, not edited).
   group now 2 (#1914, #2332).
 - Already gone: #2317, #2322, #2353 (different); #2292, #2312, #2313, #2334, #2359, #2378 (disputed lines).
 - Disputes, ids kept: #2361 Nils Olofsson / Nils Pahrsson, #2374 the Eickstedt chain (Tidericus / Friedrich).
+
+## 2026-10-07: FamilySearch id review #2380-2479: 94 same, 3 different (1 live), 3 unsure
+
+- **DIFFERENT, live:** #2381 `Q141517488` Berita Torgersdotter Høle carries `LHQF-PRJ`, Berita Gunbjørnsdatter, the
+  other wife of Guttorm Jakobson. Next group now 3 (#1914, #2332, #2381).
+- Already gone: #2432, #2437 (another spouse's id); #2411, #2438 (disputed lines).
+- UNSURE, id kept: #2460 Lars Rasmusson Bore against Ommund Rasmussen (same father and year, other first name).
