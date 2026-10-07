@@ -53617,3 +53617,19 @@ FamilySearch records (verdict only; protected items, not edited).
   pipeline could not see it). `hold-live-creations.py` held 12 more already live. Run:
   `reports/wikidata-garborg-day-manual-audited-5b470a97d-held.txt`, 226 creations, in a NEW tab. Also deleted the
   superseded "Rebuild the QuickStatements batch, then run it (Emma, 2026-10-07 12:3x)" item, as this one asks.
+
+## 2026-10-07: generator defects of the 2026-10-06 audit (batch `71fce5ef0`), closed
+
+- **Emma: "Do not remove the haplogroups lol and stop waiting."** The three live haplogroup aliases (`Q141653950`,
+  `Q141632101`, `Q141635457`) stay; the item, which the other session (`genealogy-9a`) had left open on that question
+  with its crons stopped, is closed here.
+- Done by the other session: (1) `hold-live-creations.py` into `scripts/` and the run loop; (3) the created-name-items
+  refresh reads all 22,121 creations (`a36a8af92`, `1dad0a22d`); (4) the haplogroup filter in `namemodel` (new aliases
+  are no longer built; the live ones are kept, per Emma).
+- (2) **The super entry points are still isolates (checked live: all 11 have no P22/P25/P26/P40/P3373)**, though since
+  2026-10-06 they are on `entry-points-now.tsv`. Cause, measured: none of their 46 relatives in our tree has a Wikidata
+  item yet (`scripts/session-2026-10-07/link-super-entry-points.py`, `reports/super-entry-points-links-2026-10-07.qs`,
+  which therefore links nothing). The 3 Geni-keyed ones (Gwrddwfin, Vedrhall, Azariya) get linked as the ring creates
+  their relatives; the 8 FamilySearch-keyed ones cannot be until FamilySearch creations resume (`CREATIONS_PAUSED` in
+  `build-familysearch-day.py`; Emma said today she does not recall setting that pause). NEEDS-DECISION (Emma): lift
+  the pause or not.
