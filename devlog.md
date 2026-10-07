@@ -53184,3 +53184,13 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   #1264, #1286, #1306, #1461, #1468), each re-checked live first, run in a NEW tab with Run: **10 of 10 removed, checked
   live.** The two holdouts of the first batch (`Q346380` Ada of Holland, `Q536899` Welf III) were retried once more in a
   new tab and **are now removed** (checked live): 21 of 21 live wrong ids found so far are off.
+
+## 2026-10-07: FamilySearch id review #1480-1579: 86 same, 13 different (none live), 1 unsure
+
+- No live wrong id. **A generation shift in the early Icelandic lines, all already removed by someone:** #1502 Eyjólfur
+  halti, #1503 Guðmundur ríki and #1504 Eyjólfur Valgerðarson each carried their father's id, and the women around them
+  (#1508-1511) and #1481 Jorund carried other people's.
+- **Unexpected, added to the patronymic error report:** `Q141200111` Sæbjørn Toresson and `Q141216648` Tore Toresson
+  Talgje both carry "Sjur Matsson Holter", their mother's other husband, as father; FamilySearch's Tore Sæbjørnsen fits
+  the patronymic.
+- Same with disputed husbands or wives (#1498, #1532, #1540, #1565) and farm-name variants (Øksnevad/Grude/Storhaug).
