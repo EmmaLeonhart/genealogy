@@ -53101,3 +53101,15 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
 - **DIFFERENT, already gone:** #681 Amadeus II of Montfaucon, #744 Baldwin III of Hainaut, #755 Stigand, #756
   Höfða-Þórður, #759 Kristin Sigurdsdatter.
 - Same under other names: Gertrud of Lorraine = Petronilla, William II of Angoulême = Guillaume IV Taillefer.
+
+## 2026-10-07: FamilySearch id review to #809; the group of ten wrong ids removed (9 of 11 live)
+
+- **#775-809:** 31 same, 3 different. Live: #779 `Q714874` Harald Klak carries `LY35-3CW`, Harold Halfdansson
+  (870-930); #781 `Q715062` Herman II, Duke of Swabia carries `PMRK-LP6`, Hermann de Werl (the Swabia/Werl confusion
+  `CLAUDE.md` records for his Geni id). Already gone: #793 Aslaug (an Imhild von Engern record).
+- **Removal batch** `reports/familysearch-id-review-removals-2026-10-07.qs`: the 11 live wrong ids (#245, #312, #449,
+  #465, #482, #504, #626, #729, #774, #779, #781), each re-checked live first, each clearly another person (the
+  `CLAUDE.md` rule for taking an id off). Run in a NEW tab with Run: **9 of 11 removed, checked live.** The other two,
+  `Q346380` Ada of Holland (`GP12-XP6`) and `Q536899` Welf III (`9W4D-4YP`), failed twice with "The save has failed"
+  (the retry file `-retry.qs`); neither item is protected and the statements are ordinary. NEEDS-INVESTIGATION, noted in
+  the remaining review item.
