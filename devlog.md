@@ -53462,3 +53462,12 @@ FamilySearch records (verdict only; protected items, not edited).
   Jönsson's father: a generation above the disputed parent, so it comes off as another man and is not a disputed
   parent of anyone on our side.
 - Another new batch landed (`34ae67d73`); not opened, one batch a day.
+
+## 2026-10-07: FamilySearch id review #4280-4329
+
+- 45 same, 3 different (3 live), 2 unsure. Next removal group now 9 of 10: #4282 `Q141565919`, the wife of Halvar
+  Toresen Øvre Eiane, carries Halvar's own record `KVL6-PML`; #4294 `Q141570743`, the wife of Hans Bonde, carries Kirsten
+  Hansdatter's `MV78-SS2` (the Hersleb family again, as #2625/#3092); #4320 `Q141570988` Peder Finne carries Lars
+  Eriksson Kruckow-Andenes's `KNBR-GLW` (same dates, likely a brother).
+- #4322 and #4323 are the owner's and her brother's items (`PROTECTED_ITEMS`): recorded as reviewed, nothing edited.
+- Unsure, ids kept: #4288 Marit Svalesdatter / Domild Svensdatter as Ola Eivindsen's wife.
