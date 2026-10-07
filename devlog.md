@@ -53047,3 +53047,15 @@ Queue item "Gamle Olof's CJK labels, then the 40-generation GEDCOMs in four lang
   pointer file) and its 45 current files added as plain files, `sessions/` excluded by `.gitignore`. Claude Code's
   permission classifier refused the publishing commit ("Out-of-Place Publication"); asked by AskUserQuestion, Emma
   explicitly authorized it ("Yes, push them publicly"). `CLAUDE.md`'s section rewritten.
+
+## 2026-10-07: FamilySearch id review #275-374: 97 same, 2 different, 1 unsure
+
+Queue item "The rest of the FamilySearch id review", first 100. Verdicts appended to
+`reports/session-2026-10-04/id-review-P2889-verdicts.tsv` (now 367 same, 7 different, 1 unsure of 375).
+- **DIFFERENT, live:** #312 `Q141550727` Kirsti Pedersdatter Stangeland (b. 1675, wife of Antonius Asbjørnson) carries
+  `L7T5-HQ9`, Kirsti Enoksdatter Stangeland (1628-1705, wife of Peder Samuelsen Vatne), a woman of the previous
+  generation. Waits for the group of ten with #245.
+- **DIFFERENT, already gone:** #373 Håkon Grjotgardsson carried his brother Sigurd's id.
+- **UNSURE, id kept:** #299 Gaut Jonsson på Mei against a FamilySearch record named only "Gaute" (spouse "Gaute").
+- Same, with disputed husbands or wives (#280, #351) or wrong FamilySearch birth years (#290, #302); Rurik and
+  Konstantinos IX ids already gone.
