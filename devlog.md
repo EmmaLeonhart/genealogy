@@ -53236,3 +53236,12 @@ FamilySearch records (verdict only; protected items, not edited).
 - UNSURE, id kept: #2035 the wife of Orm Pederson (our Anna Jonsdotter, FamilySearch's Helga Andersdatter).
 - Couples where FamilySearch files the wife under the husband's name keep appearing ("Mother Peder Bloch", "Mother
   Anders", "Omund Bjerga" twice).
+
+## 2026-10-07: FamilySearch id review #2080-2179: 96 same, 2 different (gone), 2 unsure kept
+
+- No live wrong id. Already gone: #2132 Joachim von Güntersberg (Simon's id), #2138 Gjertrud Magnesdatter (another wife
+  of Knut).
+- UNSURE, ids kept: #2131 Kristoffer Brådland (FamilySearch's record looks like his wife under his name), #2153 the
+  wife of Conrad I Stromer (Cunegonda Esler / Anna von Lauffenholz).
+- Same, with the name or parents disputed: #2089 Kirsten Lagesdatter = Adeleitze Johansdottir (same husband, son and
+  death year), #2139 Ragnfrid / Ragnhild Skulesdotter, #2155 Knut Knutsson's father.
