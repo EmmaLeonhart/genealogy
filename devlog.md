@@ -53096,7 +53096,7 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
 - **DIFFERENT, live:** #729 `Q536899` Welf III, Count of Altdorf (940-1030) carries `9W4D-4YP`, Welf I (770-825);
   #774 `Q703389` Baldwin IV of Hainaut carries `GKBJ-JLC`, Guillaume de Nevers. **A pattern:** three generations of the
   Hainaut/Namur line carry the matching Nevers/Sponheim person's id (#564 Alice of Namur -> Ida von Sponheim, #744
-  Baldwin III -> Guillaume de Nevers, #774 Baldwin IV -> his son Guillaume): one wrong anchor, walked down a line.
+  Baldwin III -> Guillaume de Nevers, #774 Baldwin IV -> Guillaume de Nevers, 1110-1161): one wrong anchor, walked down a line.
   Group of ten now 9.
 - **DIFFERENT, already gone:** #681 Amadeus II of Montfaucon, #744 Baldwin III of Hainaut, #755 Stigand, #756
   Höfða-Þórður, #759 Kristin Sigurdsdatter.
