@@ -53059,3 +53059,16 @@ Queue item "The rest of the FamilySearch id review", first 100. Verdicts appende
 - **UNSURE, id kept:** #299 Gaut Jonsson på Mei against a FamilySearch record named only "Gaute" (spouse "Gaute").
 - Same, with disputed husbands or wives (#280, #351) or wrong FamilySearch birth years (#290, #302); Rurik and
   Konstantinos IX ids already gone.
+
+## 2026-10-07: FamilySearch id review #375-474: 91 same, 9 different (2 still live)
+
+The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, Holland). Verdicts appended.
+- **DIFFERENT, live:** #449 `Q91590` Siegfried I, Archbishop of Mainz, carries `9CXC-QVJ`, Siegfried I von Spanheim (a
+  count, 1015-1065, married with children); #465 `Q137732` Thorfinn Karlsefni carries `L6DN-YV5`, Thorsteinn Eiriksson,
+  his wife Gudrid's first husband. Both wait for the group of ten (now 4: #245, #312, #449, #465).
+- **DIFFERENT, already gone (removed by someone earlier):** #378 Theodore I Laskaris (his brother's id), #380 John I
+  Tzimiskes ("Otto von Babenberg I"), #384 Michael III (Basil I), #390 Andronikos I (Alexios II), #394 Sigurd
+  Snake-in-the-Eye (Halfdan Haroldsson), #446 Maurice of Oldenburg (Bernhard zur Lippe), #447 Judith of Hohenstaufen
+  (her sister Bertha).
+- Same under other names: Leo IX = Bruno von Egisheim, Gregory V = Bruno of Carinthia, Henry I of Werle = "Heinrich
+  von Mecklenburg"; FamilySearch's own errors noted (Ludmila's husband "Dag Polie").
