@@ -53163,3 +53163,12 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
 - **DIFFERENT, already gone:** #1210 Thjodhild (the other half of the Erik the Red / Þórður Snorrason swap), #1221,
   #1225, #1244, #1265, #1270, #1281 (Margaret Haraldsdatter, her husband's id), #1299.
 - Same: Eppstein, Sayn and Leiningen counts under shifted numberings.
+
+## 2026-10-07: FamilySearch id review #1310-1409: 92 same, 6 different (none live), 2 unsure kept
+
+- No live wrong id. DIFFERENT, already gone: #1310 Ernst III von Gleichen, #1352 Kanaga, #1359 Ingigerd, #1360 Erik
+  Slagbrellir, #1363 Eithne of Brega (and #1338, gone, unsure).
+- **UNSURE, ids kept:** #1327 Agnes von Ostmark (FamilySearch's Agnes is a daughter of Wilhelm III of Weimar, possibly
+  a generation off), #1365 "Hildesiut (?)", wife of Hermann Billung (FamilySearch's Hildegard, also his wife).
+- Items named "unknown daughter of ..." or "NN" matched by their husbands and children (Oda van Vlaanderen, Judith
+  Piast); the item "Harold Finson" is Håkon Finnson by its daughter Ulvhild.
