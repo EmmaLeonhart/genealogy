@@ -53219,3 +53219,11 @@ FamilySearch records (verdict only; protected items, not edited).
 - **Disputed parentage, id kept:** #1805 "Nils" (our grandfather of Anders Persson) carries FamilySearch's Isak
   Abrahamsson, the same Per Nilsson / Per Isaksson dispute one generation up from #1601.
 - #1836 "N.N. de Courtenay" has nothing to compare; id kept.
+
+## 2026-10-07: FamilySearch id review #1880-1979: 97 same, 1 different (live), 2 unsure
+
+- **DIFFERENT, live:** #1914 `Q141447199` "NN Knutson Atletveit" (son of Anna Olsdatter) is the father of Johannes
+  Aagensen, so Aage; it carries FamilySearch's Henrik Knutson Atletveit (`L71G-PCL`), his brother. Starts the next group.
+- **Disputed fathers and husbands, recorded as disputes:** Osmund Olsen Vågen's father (our Ola Eilivson, which the
+  patronymic fits, against FamilySearch's Ommund Klengsen; #1899, gone, was the other side); Anna Fartegnsdatter's
+  husband (Mats Amundsen against Mads Eriksson; #1961, gone).
