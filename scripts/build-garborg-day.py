@@ -1359,6 +1359,12 @@ def is_latin_text(text):
     return bool(letters) and all(unicodedata.name(ch, "").startswith("LATIN") for ch in letters)
 
 
+#: A relationship phrase inside a Geni place field, from the separator in front of it to the end.
+PLACE_RELATION_RE = re.compile(
+    r"[\s,;-]*(?:\?\s*)?(?:natural\s+)?\b(?:son|daughter|child|father|mother|parent|wife|husband|"
+    r"spouse|brother|sister|widow|widower|datter|dotter)\s+(?:of|av|til|till)\b.*$", re.I)
+
+
 def life_description(facts_row, places_row):
     """`12 Mar 1550 Bergen - Aft 1596 Isnäinen, Pernaja` or `""`.
 
@@ -1376,6 +1382,11 @@ def life_description(facts_row, places_row):
     def side(date_key, place_key):
         d = normalise_date_case(" ".join((f.get(date_key) or "").split()))
         raw = " ".join((p.get(place_key) or "").split())
+        # ⛔ **NO RELATIONSHIP PHRASE IN ANY DESCRIPTION (Emma, 2026-09-30) reaches it through the
+        # PLACE either.** 95 Geni place fields carry one (`Norway - son of Sigurd I`, `Italy - ? wife
+        # of Cesare Borgia`), and this rung copied it: `Q141611057` went out `born circa 1110
+        # Trondheim - son of Sautha-Ulf`. The place is cut where the phrase starts (2026-10-07).
+        raw = PLACE_RELATION_RE.split(raw, 1)[0].rstrip(" -,;?")
         # ⛔ Ruled 2026-09-26: a RESOLVED place gives its English label, an unresolved one its
         # raw source string. A description exists to be unique, not good, so the raw string is
         # the default and the label is a compromise with Wikidata.
