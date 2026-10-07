@@ -53124,3 +53124,12 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
 - **UNSURE:** #864 Herbert III of Omois (id kept), #887 Boudewijn III van Gent (already gone).
 - Same under other numberings or forms: Günther II/III of Schwarzburg, Ruprecht II/III of Laurenburg, Warmund =
   Guermond de Picquigny, Ketil Trout = Ketill hængur, Harald Granraude = Harald Herbrandsson.
+
+## 2026-10-07: FamilySearch id review #910-1009: 92 same, 7 different (1 still live), 1 unsure
+
+- **DIFFERENT, live:** #953 `Q2745448` Constance of Burgundy carries `P6GK-WPW`, Berthe de Bourgogne, another wife of
+  Alfonso VI. Next group now 3 (#857, #871, #953).
+- **DIFFERENT, already gone:** #952 Boedil, #958 Arnfinn, #960 Malmfred, #969 Emma de Laval, #975 Sigurd Syr, #994
+  Gunnar Hámundarson: most of them the id of a spouse's other partner or a sibling.
+- The legendary Ynglings (#928, #929, #936) are matched by their relatives; FamilySearch's dates and epithets wander
+  (Halfdan the Mild filed as "Whitelegs").
