@@ -1566,9 +1566,19 @@ def drop_title_tail(label: str) -> str:
 ROMANCE_PATRONYMIC = frozenset({"alvarez", "fernandez", "fernandes"})
 
 
+#: **Named family names that only LOOK like patronymics.** A named exception, never a rule (Emma,
+#: 2026-10-07, by AskUserQuestion, "Keep patronymic; fix Gibson"): a `-son` token with no father in
+#: the tree stays a patronymic by default, and a token goes on this list only with its case.
+#: `gibson`: Thomas Gibson Sr. `Q141560760`, English, no father in the tree; the 2026-10-06 audit
+#: caught `Gibson` built as a Scandinavian patronymic (`Q141653876`).
+NAMED_FAMILY_NAMES = {"gibson"}
+
+
 def is_patronymic(token: str) -> bool:
     """True for a suffix form (`Jonsdatter`) or a joined particle form (`ben Phinhas`)."""
     if not token:
+        return False
+    if token.casefold() in NAMED_FAMILY_NAMES:
         return False
     if " " in token:
         return token.split(" ", 1)[0].casefold() in PATRONYMIC_PARTICLE
