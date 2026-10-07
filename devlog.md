@@ -53427,3 +53427,12 @@ FamilySearch records (verdict only; protected items, not edited).
 - #3680-3729: 50 same. #3730-3779: 50 same (mostly medieval and royal people). No new wrong ids; group still 4 of 10.
 - Noted, not a wrong id: #3680 Anders Gjermundson Gjedrem and #3681 Anders Holmen are two items for one man (same wife
   and children), each carrying one of FamilySearch's two records for him. A duplicate pair, not an error to act on here.
+
+## 2026-10-07: FamilySearch id review #3780-3879
+
+- #3780-3829: 48 same, 2 unsure. #3830-3879: 50 same. No new wrong ids; group still 4 of 10.
+- Unsure, ids kept: #3798 Tora Bjørnsdatter Mele (two husbands, possibly sisters); #3816 Agnes Jonsdotter Bure, our
+  wife of Olof Andersson and mother of Ingrid against a FamilySearch Agnes who died in 1492 with no husband. Agnes is the
+  ancestor-matching case CLAUDE.md names (Agnes/Karin Jonsdotter), so flagged here rather than judged.
+- Seen in passing (the Bure dispute, not acted on): our Mariet Jönsdotter has Nils Hansson as father, which her own
+  patronymic contradicts; FamilySearch gives Nils Hansson's daughter as Sigrid Sara Nilsdotter (Gamle Olof's wife).
