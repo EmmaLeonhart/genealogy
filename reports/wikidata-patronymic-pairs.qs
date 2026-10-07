@@ -22,6 +22,16 @@ Q130233025	P5278	LAST
 Q130233025	P407	Q9043
 Q130233025	P407	Q9035
 
+# Eriksen -- the counterpart of Eriksdatter (465 bearer(s))
+CREATE
+LAST	Len	"Eriksen"
+LAST	Lmul	"Eriksen"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444148
+LAST	P407	Q9043
+LAST	P407	Q9035
+
 # Jonsen -- the counterpart of Jonsdatter (465 bearer(s))
 CREATE
 LAST	Len	"Jonsen"
@@ -42,10 +52,6 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9043
 LAST	P407	Q9035
-LAST	P5278	Q141436533
-Q141436533	P5278	LAST
-Q141436533	P407	Q9043
-Q141436533	P407	Q9035
 
 # Johannesen -- the counterpart of Johannesdatter (358 bearer(s))
 CREATE
@@ -361,6 +367,16 @@ Q141450960	P5278	LAST
 Q141450960	P407	Q9043
 Q141450960	P407	Q9035
 
+# Gabrielsdotter -- the counterpart of Gabrielson (74 bearer(s))
+CREATE
+LAST	Len	"Gabrielsdotter"
+LAST	Lmul	"Gabrielsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Knutsdatter -- the counterpart of Knutsen (74 bearer(s))
 CREATE
 LAST	Len	"Knutsdatter"
@@ -451,34 +467,4 @@ LAST	P31	Q110874
 LAST	P31	Q130444148
 LAST	P407	Q9043
 LAST	P407	Q9035
-
-# Ingebretsdatter -- the counterpart of Ingebretsen (54 bearer(s))
-CREATE
-LAST	Len	"Ingebretsdatter"
-LAST	Lmul	"Ingebretsdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141500773
-Q141500773	P5278	LAST
-Q141500773	P407	Q9043
-Q141500773	P407	Q9035
-
-# Ådnesdatter -- the counterpart of Ådnesen (48 bearer(s))
-CREATE
-LAST	Len	"Ådnesdatter"
-LAST	Lmul	"Ådnesdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141457240
-Q141457240	P5278	LAST
-Q141457240	P407	Q9043
-Q141457240	P407	Q9035
 
