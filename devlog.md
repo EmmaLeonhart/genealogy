@@ -53072,3 +53072,12 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   (her sister Bertha).
 - Same under other names: Leo IX = Bruno von Egisheim, Gregory V = Bruno of Carinthia, Henry I of Werle = "Heinrich
   von Mecklenburg"; FamilySearch's own errors noted (Ludmila's husband "Dag Polie").
+
+## 2026-10-07: FamilySearch id review #475-574: 94 same, 6 different (2 still live)
+
+- **DIFFERENT, live:** #482 `Q172345` Erik the Red carries `MY98-K6C`, Þórður Snorrason (father of Thorfinn
+  Karlsefni); #504 `Q213791` Eric Bloodaxe carries `L5Y7-RR9`, his brother Frode Haraldsson. Group of ten now 6.
+- **DIFFERENT, already gone:** #480 Gerberga of Saxony, #484 Stephen I of Hungary (Zerind), #559 Æthelbald of Mercia
+  (Æthelbald of Wessex), #564 Alice of Namur (Ida von Sponheim).
+- Same: Sigrid the Haughty with her disputed father (Mieszko I / Skoglar Toste); FamilySearch's own slips noted
+  (Euphemia "Güntersdotter").
