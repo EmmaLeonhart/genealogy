@@ -53245,3 +53245,13 @@ FamilySearch records (verdict only; protected items, not edited).
   wife of Conrad I Stromer (Cunegonda Esler / Anna von Lauffenholz).
 - Same, with the name or parents disputed: #2089 Kirsten Lagesdatter = Adeleitze Johansdottir (same husband, son and
   death year), #2139 Ragnfrid / Ragnhild Skulesdotter, #2155 Knut Knutsson's father.
+
+## 2026-10-07: FamilySearch id review #2180-2279: 79 same, 5 different (gone), 16 unsure (disputes, ids kept)
+
+- No live wrong id. **Two German lines where our tree and FamilySearch disagree generation by generation** (the
+  Güntersberg chain: Joachim/Jakob, Günther/Henning, Heinrich/Voltekin, Burchard; the Stromer / Esler / Lauffenholz
+  ancestry of Conrad Stromer): each id sits on the person in the same position (same spouse or children) under the other
+  version's name. Treated as disputed ancestry: UNSURE, ids kept, nothing removed.
+- Also disputed, ids kept: Knut Knutsson's parents, Erik Jönsson's mother's side, #2233 Thomas / Thomine Mikkelsen
+  (same father and year, male against female name), #2245 two Helga Ommundsdatter Laland (possibly sisters).
+- Already gone: the Kruckow chain shifted a generation (#2180, #2207), #2216, #2241, #2279.
