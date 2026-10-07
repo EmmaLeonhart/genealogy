@@ -53337,3 +53337,13 @@ FamilySearch records (verdict only; protected items, not edited).
   `LC7C-SS5`; #3015 `Q141549731` Stefan Olofsson carries `KDSC-FSV`, Anders Nilsson, the other man given as Mårten's
   father (a disputed father is two people, so his id does not belong on Stefan; Mårten himself stays one person).
 - Unsure, ids kept: Mareta Olsdatter 1745-1820 with two different husbands; Mårten's unnamed mother.
+
+## 2026-10-07: FamilySearch id review #3030-3129
+
+- #3030-3079: 47 same, 2 different (2 live), 1 unsure. #3080-3129: 45 same, 4 different (2 live), 1 unsure.
+- Next removal group now 6 of 10: #3042 `Q141550286` Geirtrud Kvaale carries Gyrid Sigurdsdatter Raastad's `LB9F-462`
+  (two women each given as Magnhild Jogrimsdatter's mother); #3062 `Q141550618` Jon Larsson carries Jonas Eriksson's
+  `PDFG-DRD` (two men each given as Brita Jonsdotter's father); #3094 `Q141551026` Hans Rasmusson Lunde carries Lars
+  Tørresen Lunde's `KL7C-9Y2`; #3111 `Q141551306` Jon Jonson Tjensvoll carries Jon Jonsen Monsen Mossige's `L7FL-HBB`.
+- Unsure, ids kept: Kerstin Olofsdotter/Elisabet Matsdotter (wife of Eric Andersson = Eric Ersson, identical dates);
+  Mari/Marta Halvardsdatter Bjelland.
