@@ -53504,3 +53504,20 @@ FamilySearch records (verdict only; protected items, not edited).
   patronymics (Nilsson 572, Olofsdotter 561, Larsson 545) with English and Iberian family names among them (Thompson 122,
   Wilson 88, Fernandez 87). Applying "a patronymic requires the father" literally would flip ~30,000 Scandinavian
   patronymics to family names, so the principle is put to Emma before the default changes.
+
+## 2026-10-07: generator defects from the first daily audit (queue item done)
+
+- (1) Gibson, decided by the session (the question to Emma was not asked again, per the boot prompt): **a token in
+  patronymic form on a person with no father in the tree gets no `P5056` and no patronymic name item.** Neither
+  "patronymic" (the old default, which made "Gibson" a patronymic) nor "family name" (which would turn ~30,000 real
+  Scandinavian patronymics such as Nilsson and Olofsdotter into `P734`). Why: the 2026-09-25 ruling says a patronymic
+  requires the father, and withholding is the only reading that asserts nothing false either way; the label is not
+  touched, and the statement comes as soon as the father is in the tree. Built as `has_father` in
+  `namemodel.statements_for` (both emitters pass it), the same gate on patronymic name items in
+  `build-garborg-name-items.py`, and on the "no family name" `P734` (`Q108474139`), which a fatherless "Gibson" would
+  otherwise also have got. `has_father=None` (`model-vs-reality.py`) keeps the old reading. Two tests added; CI runs them.
+- (2) and (3) were done earlier today (`83296ce9d`).
+- (4) the doubled patronymic is the next queue item ("Duplicated patronymics"), which asks for the full CSV first; it is
+  not combined into this one.
+- The live "Gibson" `P5056` on `Q141560760` is still there: queued at the end as an error report.
+

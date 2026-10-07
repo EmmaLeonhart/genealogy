@@ -189,6 +189,19 @@ def test_the_patronym_carries_no_p144_when_the_father_has_no_item():
     assert patronym[2] == []
 
 
+def test_no_father_in_the_tree_means_no_patronym_statement():
+    """A patronymic requires the father (2026-09-25): `Thomas Gibson` got `P5056` Gibson."""
+    lines, notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1", has_father=False)
+    assert PATRONYM not in [ln[0] for ln in lines]
+    assert FAMILY_NAME in [ln[0] for ln in lines]
+    assert any("no father in the tree" in n for n in notes)
+
+
+def test_a_father_in_the_tree_keeps_the_patronym_statement():
+    lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1", has_father=True)
+    assert PATRONYM in [ln[0] for ln in lines]
+
+
 def test_an_ambiguous_token_becomes_a_note_and_never_a_statement():
     """`Maria` resolves to nine items. Emitting one is how a tenth nearly appeared."""
     lines, notes = statements_for("Marie Garborg", PLAN, "1")
