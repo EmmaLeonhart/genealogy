@@ -53387,3 +53387,4 @@ FamilySearch records (verdict only; protected items, not edited).
   familysearch importing for a while since lack of positional walk is kinda egregious").
 - Fourth removal group: 9 of 12 gone; 3 saves failed (`Q141548501` `LC7C-SS5`, `Q141550286` `LB9F-462`,
   `Q141550618` `PDFG-DRD`), retried in `-07d-retry.qs`.
+- Fourth removal group checked live after the retry: 12 of 12 gone.
