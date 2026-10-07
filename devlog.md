@@ -53413,3 +53413,11 @@ FamilySearch records (verdict only; protected items, not edited).
   sister Magnhild's `PMM1-H9Z`.
 - Unsure, ids kept: Inger/Ingrid Tørresdatter (#3525), Anna/Eline Eriksdatter Orm (#3559), and #3562 whose label
   (Erik Torsteinsson Orm) disagrees with its own child (Mats Amundsen).
+
+## 2026-10-07: FamilySearch id review #3580-3679
+
+- #3580-3629: 48 same, 2 unsure. #3630-3679: 49 same, 1 unsure. No new live wrong ids (group still 4 of 10).
+- Unsure, ids kept: #3584 two Torgrimsen sons twenty years apart; #3589 Tord/Trond Trondsson; #3656 Riskadatter /
+  Berthe Jacobsdatter as Hallvard Frøyland's wife.
+- A new batch landed (`ae429162e`, "rebuild the batch"). Not opened: Emma's scale-back is one batch a day, and today's
+  is `f4aafd86f`.
