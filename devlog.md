@@ -53471,3 +53471,20 @@ FamilySearch records (verdict only; protected items, not edited).
   Eriksson Kruckow-Andenes's `KNBR-GLW` (same dates, likely a brother).
 - #4322 and #4323 are the owner's and her brother's items (`PROTECTED_ITEMS`): recorded as reviewed, nothing edited.
 - Unsure, ids kept: #4288 Marit Svalesdatter / Domild Svensdatter as Ola Eivindsen's wife.
+
+## 2026-10-07: the FamilySearch id review is finished (queue item done)
+
+- #4330-4411, the last: 71 same, 8 different (8 live), 3 unsure. Every one of the 4,412 `P2889` cases now has a
+  session verdict in `reports/session-2026-10-04/id-review-P2889-verdicts.tsv`: **4,121 same, 198 different, 93 unsure.**
+- Fifth and last removal group, `reports/familysearch-id-review-removals-2026-10-07e.qs`, 16 ids, all checked live and
+  gone after the run. Among them two established items: `Q41600` Alexios I Komnenos carried his brother Adrianos's
+  `9KXH-HGQ` and `Q3286784` Manuel Komnenos carried Alexios's `L5P9-GVV` (the walk shifted the siblings by one);
+  `Q141585537` Adelinde carried Gerswinda's record (two concubines of Charlemagne).
+- **Unexpected:** #4372 `Q141584329` Per Persson Hagman's wrong id `LRP6-5H5` was live at the check and gone a minute
+  later, before the batch was built. Not removed by this session; another editor or session did it.
+- **Unexpected:** this session's Chrome tab group was gone when the batch was due (all its QuickStatements tabs closed,
+  including the one running today's day batch `f4aafd86f`). Not closed by this session. QuickStatements then failed to
+  load once in the new tab and loaded on a reload.
+- Over the day: five removal groups, 61 wrong FamilySearch ids taken off (`-07`, `-07b`, `-07c`, `-07d`, `-07e`, plus
+  retries), each checked live. The 93 unsure cases keep their ids. The disputed parents whose FamilySearch ids came off
+  go to the end-of-queue item on adding them as second parents (Emma, 2026-10-07).
