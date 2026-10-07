@@ -52985,3 +52985,23 @@ hold and the wrong-script overlay), carries fresh labels on existing items: 1,44
 `Lko` 301, `Lja` 266, `Lzh` 249) and 591 `Amul` aliases, plus 262 creations. Nothing was run, as the item says. The next
 item runs Emma's `Q140568870|Lzh|"李命玥"` and then that batch; it waits for the browser run of `87767fa88` to end
 (one QuickStatements tab at a time, Emma's scale-back answer).
+
+## 2026-10-06 (evening): `87767fa88` finished; Emma's zh label run; `a7d1cd959` audited and running
+
+- **The run of `87767fa88` finished:** 6,230 / 6,230 commands, 1,170 errors, most of them while background batches
+  #289711/#289712 shared the account.
+- **Queue item "run `Q140568870|Lzh|"李命玥"`, then the whole generated batch":** Emma's line ran exactly as given in
+  a new tab at 18:2x PDT; checked live, `Q140568870` zh is now 李命玥 (it was 艾玛·莱昂哈特). The batch is the newest the
+  pipeline built, `a7d1cd959` (18:04 PDT), not `36c91ae5a`: the newer one supersedes it.
+- **Audit** `reports/daily-audit/2026-10-07.md`: talk page unchanged; 20 checks read. Held out: 50 already-live
+  creations (44 name items, the 6 legendary FamilySearch figures, and 6 people created this afternoon by the
+  `87767fa88` run, e.g. Baldwin `Q141660760`), and **Gulleik Bergeson MykkeltveIt** (Geni 6000000011819320023), whose
+  patronymic Bergeson (brother Odd Bergeson too) contradicts the father given, Ole Tollefsen Storla. Findings on
+  existing items, not changed: Vellum Velumson Kyllingstad `Q141563061` has two father items both labelled Velum
+  (`Q141577920`, `Q141579677`), a likely duplicate; Tova Toyba Landau `Q141566272` has her married name in `zh`.
+  `hold-live-creations.py` now backs off up to ~4 minutes (the search API refused it twice).
+- **Run:** `reports/wikidata-garborg-day-manual-audited-a7d1cd959.txt` (211 creations, 5,287 commands) from raw at
+  `8c0aa58`, NEW tab, Run, from 18:35 PDT. Early errors again (16 of 30): **two more background batches, #289717 and
+  #289719, run on the account at the same time** (Japanese shrine and temple items: `P1448`, `P1814`, `P612`; no item
+  creations, so no `LAST` risk). Not started by this session; left running. The item stays until this run ends and is
+  checked live.
