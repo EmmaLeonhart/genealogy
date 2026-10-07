@@ -53203,3 +53203,12 @@ FamilySearch records (verdict only; protected items, not edited).
   Isaksson (FamilySearch's father of Anders). Under `CLAUDE.md` both fathers stay and an id is not removed for being the
   other side of a dispute; recorded UNSURE (disputed). #1600 (gone) is the mother's side of the same dispute.
 - Already gone: #1678 Katrina Torbjørnsdatter (another wife of Sæbjørn). No live wrong id.
+
+## 2026-10-07: FamilySearch id review #1680-1779: 94 same, 1 different (gone), 5 unsure (one disputed parentage, kept)
+
+- No live wrong id. Already gone: #1681 Jone Olason Foss (his wife's other husband).
+- **Disputed parentage, id kept:** #1706 Salomon Kingo against FamilySearch's Salomon Jacobsen as father of Olina /
+  Anne Salomonsdatter (#1707, same woman, same husband and daughter).
+- UNSURE among ids already gone: #1716 Karin against Kerstin (different names, per Emma), #1748 two sisters with one
+  husband, #1752 Knud / "Ola" Hidle.
+- Many "wife of ..." items match FamilySearch records entered under the husband's name.
