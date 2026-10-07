@@ -53604,3 +53604,10 @@ FamilySearch records (verdict only; protected items, not edited).
 - **Item done, deleted from the queue.** Summary of the item: 4 named relational descriptions + 1,312 more fixed;
   Valborg's label fixed and 922 more married-name labels left to the working backfill; the two Fernström duplicate
   pairs already shared ids and labels.
+
+## 2026-10-07: "Don't wait on a running run" and "Run today's built batch now"
+
+- **Missed:** both items were added at the top from outside at 12:49 and 14:07 PDT; this session kept working the
+  item it was on (and its long description run) without re-reading the queue from the top each tick, so today's batch
+  waited ~3.5 hours. The "don't wait" item is satisfied (the description run has finished; the item is closed) and is
+  deleted. Taking "Run today's built batch now" on the newest batch on main, `5b470a97d`.
