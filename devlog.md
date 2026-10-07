@@ -53566,3 +53566,11 @@ FamilySearch records (verdict only; protected items, not edited).
   other doubling, **reported, not touched**: 4,308 a given name doubled inside Geni's `GIVN` (`Knut Alrik Alrik
   /Döbeln/`), ~2,000 the same token in `GIVN` and `SURN` (`Thomas /Thomas/`, which can be a real Welsh name), 177 a
   token doubled in `SURN` (`Barros Barros`, which can be a real Iberian double surname).
+- **Live labels fixed:** 99 items the account created carried the doubled patronymic (found by reading all 22,121
+  creations, `reports/doubled-patronymic-live-2026-10-07.csv`). `reports/doubled-patronymic-label-fix-2026-10-07.qs`,
+  473 lines (`mul`/`en` from `drop_repeated_patronymic`, `ja`/`zh`/`ko` with the exact repeat collapsed), run in the
+  browser; all 473 checked live. One line (`Q141626373` `ko`) was dropped by QuickStatements without an error and was
+  rerun on its own. Spelling-variant repeats in CJK (`ペルソン・パーソン`) were left; they need a transliteration, not a
+  collapse. **Item done, deleted from the queue.**
+- The other doublings in `reports/doubled-name-tokens-2026-10-07.csv` (given names doubled in Geni's `GIVN`, a token in
+  both `GIVN` and `SURN`, a repeated surname) are reported to Emma, not acted on.
