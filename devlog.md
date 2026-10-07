@@ -53452,3 +53452,13 @@ FamilySearch records (verdict only; protected items, not edited).
 
 - #4080-4129: 49 same, 1 unsure (#4102, two Inger Tjerandsdatters 25 years apart with different husbands).
   #4130-4179: 50 same. No new wrong ids; group still 4 of 10.
+
+## 2026-10-07: FamilySearch id review #4180-4279
+
+- #4180-4229: 50 same. #4230-4279: 47 same, 2 different (2 live), 1 unsure (#4276, two Gunnbjørn Gunnarsens,
+  possibly brothers).
+- Next removal group now 6 of 10: #4262 `Q141546760` Bengt Hansson carries Bengt Jönsson's `GHF7-76C` (the other man
+  given as Jöns Bengtsson's father); #4266 `Q141576235` Hans, Bengt Hansson's father, carries `GHF7-23T`, Jöns, Bengt
+  Jönsson's father: a generation above the disputed parent, so it comes off as another man and is not a disputed
+  parent of anyone on our side.
+- Another new batch landed (`34ae67d73`); not opened, one batch a day.
