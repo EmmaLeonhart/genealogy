@@ -53549,3 +53549,20 @@ FamilySearch records (verdict only; protected items, not edited).
   `Q141653876` ("Gibson", typed as a patronymic) stays, now linked from nothing; merging it into `Q2700390` is UI-only.
 - The generator-defects item is closed (the other session had already removed its line from the queue): (1) Gibson by
   the children rule, (2) and (3) in `labels.py`, (4) handed to the "Duplicated patronymics" item.
+
+## 2026-10-07: Duplicated patronymics (queue item, in progress)
+
+- Split with the other genealogy session (`genealogy-9a`, by message, agreed): it keeps the 2026-10-06 audit defects
+  item; this session takes this one. That session reports its three haplogroup-alias removals are waiting on Emma
+  (its permission classifier refused them); this session leaves them alone.
+- **Where it comes from:** Geni writes the patronymic in `GIVN` and `SURN` alike (`Marta Monsdatter /Monsdatter/`).
+  `derive-labels.py` already drops the repeat (`namemodel.drop_repeated_patronymic`), so `derived-labels.csv` reads
+  `Marta Monsdatter`. The day builder's creation path rebuilds a MARRIED person's label from the raw `GIVN` + `SURN` /
+  `_MARNM` and never called that function, so married women (who take the birth form as their label) went out as
+  `Marta Monsdatter Monsdatter`, `Guri Tørresdatter Tørresdatter`, `Inger Svalesdatter Svalesdatter`. The current batch
+  had 5 such creations. Fixed: both rebuilt forms go through `drop_repeated_patronymic`.
+- **Every doubled token in the derived labels**, counted into `reports/doubled-name-tokens-2026-10-07.csv`: 8,523
+  people (404 with an item). Only ~56 are patronymics in the derived file (that layer was already fixed); the rest is
+  other doubling, **reported, not touched**: 4,308 a given name doubled inside Geni's `GIVN` (`Knut Alrik Alrik
+  /Döbeln/`), ~2,000 the same token in `GIVN` and `SURN` (`Thomas /Thomas/`, which can be a real Welsh name), 177 a
+  token doubled in `SURN` (`Barros Barros`, which can be a real Iberian double surname).

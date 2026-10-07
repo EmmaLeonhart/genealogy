@@ -56,7 +56,7 @@ from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
     names_a_relative as _namemodel_names_a_relative,
     lead_with_given_name, own_given_name, married_is_primary, married_name_of,
-    drop_description_suffix, generation_suffix_key,
+    drop_description_suffix, drop_repeated_patronymic, generation_suffix_key,
     normalise_generation_suffix, native_generation_labels, patronymic_culture, statements_for,
     suffix_is_native)
 
@@ -9546,10 +9546,14 @@ def main():
             # `Anne Govertsdtr. Bratland` kept its abbreviation through two rebuilds while
             # `expand_abbreviations` tested correct in isolation. Married people are the
             # majority of the batch, so the upstream call alone fixed almost nobody.
-            primary = expand_abbreviations(
-                " ".join(given + marnm.split()), g) if is_married else label
-            birth = expand_abbreviations(
-                " ".join(given + surn.split()), g) if is_married else ""
+            # ⛔ **THE PATRONYMIC ARRIVES TWICE HERE TOO** (the "Duplicated patronymics" item, Emma
+            # 2026-10-05): Geni writes it into `GIVN` and `SURN` alike (`Marta Monsdatter /Monsdatter/`),
+            # and this rebuild joined them raw, so a married woman went out as `Marta Monsdatter
+            # Monsdatter` while `derived-labels.csv` (which calls the same function) had it right.
+            primary = drop_repeated_patronymic(expand_abbreviations(
+                " ".join(given + marnm.split()), g)) if is_married else label
+            birth = drop_repeated_patronymic(expand_abbreviations(
+                " ".join(given + surn.split()), g)) if is_married else ""
 
             # **A marker in the SURNAME slot never reaches a label.** Ruled 2026-08-29, on
             # `Q141217396` coming out *Maria No name*: such a person is called by their first
