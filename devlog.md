@@ -53278,3 +53278,11 @@ FamilySearch records (verdict only; protected items, not edited).
   across; Haakon VI's own `P25` (Blanche of Namur) is right. Queued as an error report (remove the link, find the cause,
   sweep for children born centuries before their parents). Not edited by this session.
 - Otherwise: already gone #2494, #2519, #2521 (different).
+
+## 2026-10-07: FamilySearch id review #2530-2579: 49 same, 1 unsure; a second impossible link (Welf III)
+
+- **Unexpected, live both ways:** `Q141523079` Ermenane (8th century) has `P40` `Q536899` Welf III (b. 940), and Welf
+  III has her as a second `P25` beside his real mother. Both from the pipeline, sourced to Geni. Likely root: Welf III's
+  Geni id 6000000002198362511 is Welf I's profile, so Welf I's relatives landed on Welf III (the same mix-up as #729).
+  Queued as its own error report; not edited.
+- Eickstedt chain #2544: UNSURE, id kept.
