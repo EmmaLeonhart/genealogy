@@ -53022,3 +53022,12 @@ skipped (NN people get a relationship phrase, not a transliteration). "Thord i B
 place. Run in the browser in three passes (57, then the 14 and 6 that failed with "The save has failed" while the
 `a7d1cd959` run shared the account, then 1); checked live: 57 of 57. Seen, not changed: two items each for Herse
 Falesson Bure and Gunnar Herse Bure among his ancestors.
+
+## 2026-10-06 (23:2x PDT): batch `f4aafd86f` (landed 21:07 PDT) running
+
+Queue item "Run any fresh batch that landed after 8 p.m. PDT, now (Emma)". `f4aafd86f` landed at 21:07 PDT. Only the
+already-live check was done first (no audit sample, as the item asks for right away): **79 of 262 creations were
+already live** and are held out (`reports/wikidata-garborg-day-manual-held-out.tsv`); the other 183 (5,125 commands,
+`reports/wikidata-garborg-day-manual-audited-f4aafd86f.txt`, raw at `9852dea0`) run in a NEW tab with Run from 23:3x
+PDT. The `a7d1cd959` tab was not touched. Also: two queue additions made in this checkout (`a989a2688`, `ad69655f7`)
+had not been pushed and diverged from origin's `f4aafd86f`; rebased onto it and pushed.
