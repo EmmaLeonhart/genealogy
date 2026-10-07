@@ -53545,3 +53545,7 @@ FamilySearch records (verdict only; protected items, not edited).
   builders (`build-garborg-day.py` builds `children_of` from the same parent maps; `build-garborg-name-items.py`
   reads the `children` column). Thomas Gibson Sr.'s eight children are all `Gibson`, so the rule covers him and the
   named exception list (`NAMED_FAMILY_NAMES`) is removed again.
+- `reports/gibson-p5056-removal-2026-10-07.qs` run in a new tab: `Q141560760` has no `P5056` now (checked live).
+  `Q141653876` ("Gibson", typed as a patronymic) stays, now linked from nothing; merging it into `Q2700390` is UI-only.
+- The generator-defects item is closed (the other session had already removed its line from the queue): (1) Gibson by
+  the children rule, (2) and (3) in `labels.py`, (4) handed to the "Duplicated patronymics" item.
