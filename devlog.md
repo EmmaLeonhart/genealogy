@@ -53447,3 +53447,8 @@ FamilySearch records (verdict only; protected items, not edited).
 - #3980-4029: 50 same. #4030-4079: 50 same. No new wrong ids; group still 4 of 10.
 - Seen in passing: our #3995 Marit Larsdatter Lunde has Hans Rasmusson as father, which her patronymic and FamilySearch
   (Lars Tørresen) contradict; the walk's Anna/Helga Salomonsdatter confusion (#2701/#3094) again.
+
+## 2026-10-07: FamilySearch id review #4080-4179
+
+- #4080-4129: 49 same, 1 unsure (#4102, two Inger Tjerandsdatters 25 years apart with different husbands).
+  #4130-4179: 50 same. No new wrong ids; group still 4 of 10.
