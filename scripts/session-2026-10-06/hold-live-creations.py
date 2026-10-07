@@ -10,11 +10,11 @@ lines = open(src, encoding="utf-8").read().split("\n")
 
 def api(params):
     u = "https://www.wikidata.org/w/api.php?format=json&" + urllib.parse.urlencode(params)
-    for _ in range(5):
+    for i in range(8):  # the search API rate-limits bursts: back off up to ~4 minutes in all
         try:
             return json.load(urllib.request.urlopen(urllib.request.Request(u, headers=UA)))
         except Exception:
-            time.sleep(5)
+            time.sleep(5 * (i + 1))
     raise SystemExit("API failed: " + u)
 
 def live_by_id(prop, value):
