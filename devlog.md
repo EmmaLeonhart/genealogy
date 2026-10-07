@@ -53133,3 +53133,12 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   Gunnar Hámundarson: most of them the id of a spouse's other partner or a sibling.
 - The legendary Ynglings (#928, #929, #936) are matched by their relatives; FamilySearch's dates and epithets wander
   (Halfdan the Mild filed as "Whitelegs").
+
+## 2026-10-07: FamilySearch id review #1010-1109: 94 same, 5 different (2 still live), 1 unsure
+
+- **DIFFERENT, live:** #1029 `Q4267365` Lothar II von Stade carries `LDRK-Y8G`, Lothar Udo von Stade (950-994); #1084
+  `Q5714342` Erengisle Nilsson Sr. carries `GNSQ-7QM`, Sten Ragvaldsson. Next group now 5.
+- **DIFFERENT, already gone:** #1042 Gisela of France (her sister Ermentrude), #1059 Echu Tirmcharna, #1081 Rørek
+  Haraldsson (his brother Sigtrygg). **UNSURE, gone:** #1077 Gormflaith.
+- Same, FamilySearch under another name: Harald Gulskeg filed as "Harald Klak Halfdansson" (wife and daughter his),
+  Catherine Lady Blake = Katarina "den heliga", Karl Sunesson = Karl, jarl of Götaland.
