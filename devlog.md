@@ -53255,3 +53255,10 @@ FamilySearch records (verdict only; protected items, not edited).
 - Also disputed, ids kept: Knut Knutsson's parents, Erik Jönsson's mother's side, #2233 Thomas / Thomine Mikkelsen
   (same father and year, male against female name), #2245 two Helga Ommundsdatter Laland (possibly sisters).
 - Already gone: the Kruckow chain shifted a generation (#2180, #2207), #2216, #2241, #2279.
+
+## 2026-10-07: FamilySearch id review #2280-2379: 88 same, 4 different (1 live), 8 unsure
+
+- **DIFFERENT, live:** #2332 `Q141515038` Hallgrim Oxehode carries `GSVR-494`, his brother Aslak Brattson Oxehode. Next
+  group now 2 (#1914, #2332).
+- Already gone: #2317, #2322, #2353 (different); #2292, #2312, #2313, #2334, #2359, #2378 (disputed lines).
+- Disputes, ids kept: #2361 Nils Olofsson / Nils Pahrsson, #2374 the Eickstedt chain (Tidericus / Friedrich).
