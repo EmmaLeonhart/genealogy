@@ -53379,3 +53379,11 @@ FamilySearch records (verdict only; protected items, not edited).
   unrun: Emma, mid-build, "please don't ... it feels scary", then "Explain more first". The explanation (scope 298 vs
   today's 45; second parents on real people; past the FamilySearch creation pause; some, like Gamle Olof, likely already
   have an item without the id) is in the session; her decision is pending. Nothing created.
+
+- Emma's decision on recreating: not all at once. A queue item at the end (above the pinned last one): add the disputed
+  parents as second parents of the child, one generation only, nothing positional; higher generations come in through
+  the regular additions. The unrun recreate script stays unrun. On the "pause": Emma does not recall setting one; what
+  exists is `CREATIONS_PAUSED = True` in `build-familysearch-day.py`, whose comment quotes her on 2026-09-30 ("try drop
+  familysearch importing for a while since lack of positional walk is kinda egregious").
+- Fourth removal group: 9 of 12 gone; 3 saves failed (`Q141548501` `LC7C-SS5`, `Q141550286` `LB9F-462`,
+  `Q141550618` `PDFG-DRD`), retried in `-07d-retry.qs`.
