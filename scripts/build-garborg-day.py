@@ -4015,7 +4015,7 @@ def label_in(label, table):
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
-               father_name="", father_aka="", father_given="", cjk=""):
+               father_name="", father_aka="", father_given="", cjk="", children_names=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
     None at all for a Sinosphere person (`namemodel.sinosphere_person`, decided 2026-10-06).
@@ -4035,7 +4035,8 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
     fields = expand_abbreviated_fields(fields, geni_id)
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
                                 fields=fields, sex=sex, father_name=father_name,
-                                father_aka=father_aka, father_given=father_given)
+                                father_aka=father_aka, father_given=father_given,
+                                children_names=children_names)
     for prop, value, quals in lines:
         # `P1449` *nickname* never arrives: `namemodel.statements_for` stops modelling it,
         # per the 2026-08-29 ruling. The drop used to be here, and having it in the emitter
@@ -8479,6 +8480,12 @@ def main():
         father[_k] = _best_parent(_v)
     for _k, _v in mother_all.items():
         mother[_k] = _best_parent(_v)
+    # The children's names, for the no-father patronymic test (`namemodel.patronymic_or_surname`,
+    # Emma 2026-10-07): a token the children carry too is a family name.
+    children_of = collections.defaultdict(list)
+    for _k, _v in list(father_all.items()) + list(mother_all.items()):
+        for _p in _v:
+            children_of[_p].append(_k)
 
     lines = []
     # ---- THE DUPLICATE GUARD -------------------------------------------------------
@@ -8922,7 +8929,9 @@ def main():
                                    father_name=labels.get(dad, "") if dad else "",
                                    father_aka=aka.get(dad, "") if dad else "",
                                    father_given=given_name.get(dad, "") if dad else "",
-                                   cjk=cjk_first.get(g, ""))[0]:
+                                   cjk=cjk_first.get(g, ""),
+                                   children_names=" ".join(
+                                       labels.get(k, "") for k in children_of.get(g, ())))[0]:
                 _parts = line.split("\t")
                 if (q, _parts[1], _parts[2]) in live_values:
                     continue
@@ -9840,7 +9849,8 @@ def main():
             father_name=labels.get(dad, "") if dad else "",
             father_aka=aka.get(dad, "") if dad else "",
             father_given=given_name.get(dad, "") if dad else "",
-            cjk=cjk_first.get(g, ""))
+            cjk=cjk_first.get(g, ""),
+            children_names=" ".join(labels.get(k, "") for k in children_of.get(g, ())))
         lines.extend(name_statements)
         # ⛔ **A PATRONYMIC NAME WITH NO SURNAME SAYS SO: `P734` = `Q108474139`. Emma, 2026-10-03** (on
         # `Q141628094` Fernando Gundemárez): "with our name construction I think this is relatively

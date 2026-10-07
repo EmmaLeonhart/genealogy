@@ -53536,3 +53536,12 @@ FamilySearch records (verdict only; protected items, not edited).
 - The Gibson error report item is taken off the queue: its sweep for other fatherless `P5056` is moot under Emma's
   ruling, and its removal is `reports/gibson-p5056-removal-2026-10-07.qs`, run below. `Q141653876` ("Gibson", typed as a
   patronymic) is left as it is: a merge into the family-name item `Q2700390` goes through the UI only.
+
+- **Emma's rule for the no-father case (2026-10-07):** "if it is treated as a surname by descendants, then we can
+  usually assume it's a surname. Whereas if the descendants have patronymics, it's that way. So we don't need to be
+  identifying cultures." Implemented as the father test read from the other generation:
+  `namemodel.patronymic_or_surname(..., children_names)`: with no father in the tree, a token the children also carry
+  is a family name; otherwise it stays a patronymic. Threaded through `classify_fields`/`statements_for` and both
+  builders (`build-garborg-day.py` builds `children_of` from the same parent maps; `build-garborg-name-items.py`
+  reads the `children` column). Thomas Gibson Sr.'s eight children are all `Gibson`, so the rule covers him and the
+  named exception list (`NAMED_FAMILY_NAMES`) is removed again.

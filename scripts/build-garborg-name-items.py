@@ -713,6 +713,7 @@ def main():
                                           ("givn", "surn", "nick", "marnm")}
 
     labels_of, father_of, sex_of, aka_of, given_of, cjk_of = {}, {}, {}, {}, {}, {}
+    children_of = {}
     # **The family pass runs FIRST so the father's LABEL can be loaded in the same
     # sweep as everyone else's.** `namemodel.patronymic_or_surname` needs the father's
     # NAME, not his QID: without it every `-sen`/`-son`/`-datter` token falls through
@@ -727,9 +728,14 @@ def main():
                 first = [x.strip() for x in (row.get("father") or "").split("|") if x.strip()]
                 if first:
                     father_of[row["geni_id"]] = first[0]
+                # The children, for the no-father test (`namemodel.patronymic_or_surname`,
+                # Emma 2026-10-07): a token the children carry too is a family name.
+                kids = [x.strip() for x in (row.get("children") or "").split("|") if x.strip()]
+                if kids:
+                    children_of[row["geni_id"]] = kids
     # The fathers are wanted for their labels alone and are NOT added to `ids`, which
     # decides who gets an item.
-    wanted_labels = ids | set(father_of.values())
+    wanted_labels = ids | set(father_of.values()) | {k for v in children_of.values() for k in v}
     with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in wanted_labels:
@@ -776,6 +782,7 @@ def main():
         person["father_aka"] = " ".join(x for x in (
             aka_of.get(dad, "") if dad else "",
             dad_fields.get("givn", ""), dad_fields.get("nick", "")) if x)
+        person["children_names"] = " ".join(labels_of.get(k, "") for k in children_of.get(geni_id, ()))
         person["father_given"] = " ".join(dict.fromkeys(
             (given_of.get(dad, "") if dad else "").split()
             + (dad_fields.get("givn", "") or "").split()
@@ -1054,7 +1061,8 @@ def main():
                     fields=person, sex=sex_of.get(geni_id, ""),
                     father_name=person.get("father_name", ""),
                     father_aka=person.get("father_aka", ""),
-                    father_given=person.get("father_given", ""))
+                    father_given=person.get("father_given", ""),
+                    children_names=person.get("children_names", ""))
             except Exception as exc:                                   # noqa: BLE001
                 lines.append(f"#   {qid}: the name model failed -- {exc}")
                 continue

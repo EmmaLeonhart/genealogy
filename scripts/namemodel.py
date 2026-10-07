@@ -1566,19 +1566,9 @@ def drop_title_tail(label: str) -> str:
 ROMANCE_PATRONYMIC = frozenset({"alvarez", "fernandez", "fernandes"})
 
 
-#: **Named family names that only LOOK like patronymics.** A named exception, never a rule (Emma,
-#: 2026-10-07, by AskUserQuestion, "Keep patronymic; fix Gibson"): a `-son` token with no father in
-#: the tree stays a patronymic by default, and a token goes on this list only with its case.
-#: `gibson`: Thomas Gibson Sr. `Q141560760`, English, no father in the tree; the 2026-10-06 audit
-#: caught `Gibson` built as a Scandinavian patronymic (`Q141653876`).
-NAMED_FAMILY_NAMES = {"gibson"}
-
-
 def is_patronymic(token: str) -> bool:
     """True for a suffix form (`Jonsdatter`) or a joined particle form (`ben Phinhas`)."""
     if not token:
-        return False
-    if token.casefold() in NAMED_FAMILY_NAMES:
         return False
     if " " in token:
         return token.split(" ", 1)[0].casefold() in PATRONYMIC_PARTICLE
@@ -2772,7 +2762,8 @@ def _father_attests(token: str, father_name: str, also_known_as: str = "") -> bo
     return False
 
 
-def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "") -> str:
+def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "",
+                          children_names: str = "") -> str:
     """`"patronymic"` or `"family"` for a `-sen`/`-son` token, using the FATHER.
 
     **The test as first stated, 2026-08-26:** if the father has `-son` or `-sen` then it is a
@@ -2824,6 +2815,13 @@ def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "")
     `Johannes Benedicti` (also `Hans`), `Cnut Sweynsson` of `Svend Haraldssøn` (also `Sweyn`).
     """
     if not father_name:
+        # ⛔ **WITH NO FATHER, THE CHILDREN DECIDE. Emma, 2026-10-07:** a token the children carry
+        # too is inherited, so a family name; children with patronymics of their own leave it a
+        # patronymic. The father test above, read from the other generation, and no culture test.
+        # The case: `Q141560760` Thomas Gibson Sr., no father in the tree, eight children all
+        # `Gibson`, went out with `Gibson` as a Scandinavian patronymic (`Q141653876`).
+        if token.casefold() in {t.casefold() for t in (children_names or "").split()}:
+            return "family"
         return "patronymic"
     # ⛔ **THE BARE `-ić` IS DECIDED HERE AND NOWHERE ELSE.** `PATRONYMIC` cannot match it -- the
     # form collides with `Eric`, `Henric`, `Fredric` -- so `FATHER_GATED_PATRONYMIC` is answered
@@ -3139,7 +3137,8 @@ def is_roman_name(*fields) -> bool:
 def classify_fields(givn: str, surn: str, nick: str = "",
                     marnm: str = "", father_name: str = "",
                     father_aka: str = "",
-                    father_given: str = "") -> list[tuple[str, str, int]]:
+                    father_given: str = "",
+                    children_names: str = "") -> list[tuple[str, str, int]]:
     """`(token, usage, ordinal)` from the GEDCOM name FIELDS.
 
     This is the one to call. `classify()` below takes a rendered label and survives
@@ -3350,7 +3349,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             out.append((token, shape, 0))
             continue
         if is_patronymic(token):
-            out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
+            out.append((token, patronymic_or_surname(token, father_name, father_aka,
+                                                     children_names), 0))
         elif latin_patronymic(token, father_given) and not _latin_is_given(position):
             # `Nicolaus Iohannis Johansson`, `Magnus Jonæ Uhr`, `Georgius Andreae Troninus`:
             # the Latin genitive stands where a middle name would and is not one.
@@ -3415,7 +3415,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             out.append((token, shape, 0))
             continue
         if is_patronymic(token) and patronymic_or_surname(
-                token, father_name, father_aka) == "patronymic":
+                token, father_name, father_aka, children_names) == "patronymic":
             out.append((token, "patronymic", 0))
         elif latin_patronymic(token, father_given):
             out.append((token, "patronymic", 0))
@@ -3578,7 +3578,7 @@ def clean_fields(fields):
 
 
 def statements_for(label, plan, geni_id, father_qid=None, fields=None,
-                   sex="", father_name="", father_aka="", father_given=""):
+                   sex="", father_name="", father_aka="", father_given="", children_names=""):
     """(statement lines, notes) for one person's name.
 
     Each line is `(property, value, qualifiers)` with qualifiers as
@@ -3625,7 +3625,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
                                  fields.get("nick", ""), fields.get("marnm", ""),
                                  father_name=father_name, father_aka=father_aka,
-                                 father_given=father_given)
+                                 father_given=father_given, children_names=children_names)
     else:
         tokens = classify(label)
 

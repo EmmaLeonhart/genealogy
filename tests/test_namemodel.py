@@ -199,14 +199,16 @@ def test_a_haplogroup_is_not_a_name():
     assert "mtH1" not in aliases_for({"givn": "Alba", "surn": "Autun", "nick": "mtH1"})
 
 
-def test_gibson_is_a_named_family_name_not_a_patronym():
-    """Emma, 2026-10-07: keep the no-father default as patronymic; Gibson is a named exception."""
-    from namemodel import classify_fields, is_patronymic
-    assert not is_patronymic("Gibson")
-    assert ("Gibson", "family", 0) in classify_fields(givn="Thomas", surn="Gibson")
+def test_with_no_father_the_children_decide():
+    """Emma, 2026-10-07: Thomas Gibson Sr. has no father in the tree and eight Gibson children."""
+    from namemodel import classify_fields, patronymic_or_surname
+    assert patronymic_or_surname("Gibson", "", children_names="Valentine Gibson Mary Gibson") == "family"
+    assert patronymic_or_surname("Nilsson", "", children_names="Olof Larsson Anna Larsdotter") == "patronymic"
+    assert patronymic_or_surname("Nilsson", "") == "patronymic"
+    assert ("Gibson", "family", 0) in classify_fields(givn="Thomas", surn="Gibson",
+                                                     children_names="Eunice Gibson")
     lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1")
     assert PATRONYM in [ln[0] for ln in lines]
-
 
 def test_an_ambiguous_token_becomes_a_note_and_never_a_statement():
     """`Maria` resolves to nine items. Emitting one is how a tenth nearly appeared."""
