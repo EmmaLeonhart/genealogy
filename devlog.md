@@ -53153,3 +53153,13 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
 - **Unexpected, queued as an error report:** `Q11979148` "Jon Guttormsen" has father Gaute Ivarsson (FamilySearch: Jon
   Gautesson Dall), the patronymic contradicting the father, like Ture Karlsson Båt. The two UNSURE items ride along in
   that error report.
+
+## 2026-10-07: FamilySearch id review #1210-1309: 88 same, 11 different (3 still live), 1 unsure
+
+- **DIFFERENT, live:** #1264 `Q21077152` Mathilde d'Alluyes carries `PMRK-CHD` (Gerberge de la Rochefoucauld); #1286
+  `Q28718414` Maria, daughter of Harald IV, carries `GPCM-TRC` (her sister Margareta); #1306 `Q58674087` Adela of Roucy
+  carries `L7JF-2YC` (her mother Adélaïde), and the item itself also lists her father Hilduin IV as a spouse. Next group
+  now 8.
+- **DIFFERENT, already gone:** #1210 Thjodhild (the other half of the Erik the Red / Þórður Snorrason swap), #1221,
+  #1225, #1244, #1265, #1270, #1281 (Margaret Haraldsdatter, her husband's id), #1299.
+- Same: Eppstein, Sayn and Leiningen counts under shifted numberings.
