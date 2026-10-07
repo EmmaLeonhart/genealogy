@@ -53611,3 +53611,9 @@ FamilySearch records (verdict only; protected items, not edited).
   item it was on (and its long description run) without re-reading the queue from the top each tick, so today's batch
   waited ~3.5 hours. The "don't wait" item is satisfied (the description run has finished; the item is closed) and is
   deleted. Taking "Run today's built batch now" on the newest batch on main, `5b470a97d`.
+- **Today's batch (`5b470a97d`), audited:** `reports/daily-audit/2026-10-07-1791414844.md`, talk page nothing new, 18
+  of 20 fine. Held: creation 128 Nobutaka Inaoka (Japanese name given katakana/transliterated CJK labels: the kanji rule)
+  and creation 211 Gottskalk Nikulasson (already `Q68909000`, which lacks his Geni id `6000000001995121578`, so the
+  pipeline could not see it). `hold-live-creations.py` held 12 more already live. Run:
+  `reports/wikidata-garborg-day-manual-audited-5b470a97d-held.txt`, 226 creations, in a NEW tab. Also deleted the
+  superseded "Rebuild the QuickStatements batch, then run it (Emma, 2026-10-07 12:3x)" item, as this one asks.
