@@ -53574,3 +53574,16 @@ FamilySearch records (verdict only; protected items, not edited).
   collapse. **Item done, deleted from the queue.**
 - The other doublings in `reports/doubled-name-tokens-2026-10-07.csv` (given names doubled in Geni's `GIVN`, a token in
   both `GIVN` and `SURN`, a repeated surname) are reported to Emma, not acted on.
+
+## 2026-10-07: Existing-item errors from the 2026-10-06 audits (queue item, in progress)
+
+- **Duplicate pairs** (Alfred Kofoed Fernström `Q141532441`/`Q27943135`, Eric K. Fernström `Q141573869`/`Q5728732`):
+  already share their `P2600` and label (and descriptions) live; nothing to send. Not merged (merges are UI-only).
+- **Relationship-phrase descriptions:** the four named items are four of **1,316** items this account created whose `en`
+  description is a relationship phrase (all 22,121 creations read; `reports/relational-descriptions-2026-10-07.csv`).
+  They predate Emma's 2026-09-30 ruling; the creation path has obeyed it since, but nothing corrected existing items.
+  Replacements by the creation ladder itself (`build-garborg-day.life_description`, occupation, `Geni <id>`):
+  1,173 Geni id, 95 life description, 48 occupation (raw Geni strings, as the ladder gives them). Unexpected: 113 Geni
+  ids sit on two or more of these items (388 items), duplicate sets of our own creations; the identical
+  label+description will be refused on the second of each, one edit each. Batch
+  `reports/relational-descriptions-fix-2026-10-07.qs`.
