@@ -2,7 +2,7 @@
 (haswbstatement), a name item by its mul label plus one of its P31 classes. Only the creation block goes: from
 its comment line (if any) through the blank line that ends it. Writes <batch>-held.txt and
 <batch>-held-out.tsv next to the input.
-Usage: python scripts/session-2026-10-06/hold-live-creations.py reports/wikidata-garborg-day-manual.txt"""
+Usage: python scripts/hold-live-creations.py reports/wikidata-garborg-day-manual.txt"""
 import json, re, sys, time, urllib.parse, urllib.request
 UA = {"User-Agent": "genealogy-batch-precheck/1.0 (emma@topazcomputing.com)"}
 src = sys.argv[1]

@@ -252,7 +252,10 @@ at noon (a `CronCreate` job made at session start, `0 12 * * *`), the session ru
 (3) audit 10 random creations from the batch about to run; (4) only when all of that is confirmed, run the batch as
 below. `python scripts/daily-audit-sample.py` writes the sheet to `reports/daily-audit/<date>.md`. It only lists and
 fetches: each of the 20 verdicts is the session's own reading, written under its entry and committed. A wrong
-creation is held out of the batch, or the generator is fixed and the batch rebuilt, before the run. This loop
+creation is held out of the batch, or the generator is fixed and the batch rebuilt, before the run. **Every run
+first goes through `python scripts/hold-live-creations.py <batch>`, and the `-held.txt` copy is what is run**: a batch
+is a snapshot, and one built while an earlier run was still creating carries those people again (53 in batch
+`71fce5ef0`, 2026-10-06). This loop
 replaces the bare talk-page check at startup. `morning-batch.yml` rebuilds the batch at 9 a.m. Pacific, so a fresh
 one is ready for noon. **⛔ A new batch is audited and run AS SOON AS IT LANDS (Emma, 2026-10-05):** when a "rebuild
 the batch" commit appears, the loop runs on it at once (talk page, 10 existing items, 10 creations, then Run). The
