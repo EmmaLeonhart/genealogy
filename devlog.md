@@ -53194,3 +53194,12 @@ The royal and imperial stretch (Byzantine emperors, Ottonians, Piasts, Limburg, 
   Talgje both carry "Sjur Matsson Holter", their mother's other husband, as father; FamilySearch's Tore Sæbjørnsen fits
   the patronymic.
 - Same with disputed husbands or wives (#1498, #1532, #1540, #1565) and farm-name variants (Øksnevad/Grude/Storhaug).
+
+## 2026-10-07: FamilySearch id review #1580-1679: 97 same, 1 different (gone), 2 unsure (one a disputed parentage, kept)
+
+Emma's own lines (Gjesdal, Garborg, Wedberg, Frisk, Borsheim, Hoknes, Gunderson): her parents' items match their
+FamilySearch records (verdict only; protected items, not edited).
+- **Disputed parentage, id kept:** #1601 Per Nilsson (our tree's father of Anders Persson) carries FamilySearch's Per
+  Isaksson (FamilySearch's father of Anders). Under `CLAUDE.md` both fathers stay and an id is not removed for being the
+  other side of a dispute; recorded UNSURE (disputed). #1600 (gone) is the mother's side of the same dispute.
+- Already gone: #1678 Katrina Torbjørnsdatter (another wife of Sæbjørn). No live wrong id.
