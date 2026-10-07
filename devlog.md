@@ -53298,10 +53298,10 @@ FamilySearch records (verdict only; protected items, not edited).
 
 ## 2026-10-07: FamilySearch id review #2680-2779
 
-- #2680-2729: 45 same, 3 different (2 live), 2 unsure. #2730-2779: 46 same, 2 different (0 live), 2 unsure.
+- #2680-2729: 45 same, 3 different (2 live), 2 unsure. #2730-2779: 48 same, 1 different (0 live), 1 unsure (corrected; the commit message says 91/5/4, the right totals for the hundred are 93 same, 4 different, 3 unsure).
 - New live wrong ids for the next removal group (now 7 of 10): #2681 `Q141529120` Rangela Eriksdotter carries
   `GM71-7VC`, Maria Nilsdotter, another man's wife; #2719 `Q141529504` Ingeborg Jonsdatter Tytland carries
   `G3M6-WX4`, her sister Anna.
-- Unsure, ids kept: Eickstedt I/II (the chain a generation apart, as at #2544); Anna/Helga Salomonsdatter; Berit
+- Unsure, ids kept: Eickstedt I/II (the chain a generation apart, as at #2544); Anna/Helga Salomonsdatter; and Berit
   Rasmusdatter/Elen Svensdatter (same father, husband and child, but different names; our label's patronymic
   disagrees with our own father, Sven).
