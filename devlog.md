@@ -53403,3 +53403,13 @@ FamilySearch records (verdict only; protected items, not edited).
   Ersson (b. 1677), father of Karin Eriksdotter. This is a grandparent across the #3072 dispute, the level Emma
   asked to be told apart from a disputed parent: it comes off because it is another man, and it is not a disputed
   parent of anyone on our side, so nothing about it goes to the second-parents queue item.
+
+## 2026-10-07: FamilySearch id review #3480-3579
+
+- #3480-3529: 46 same, 3 different (1 live), 1 unsure. #3530-3579: 46 same, 2 different (2 live), 2 unsure.
+- Next removal group now 4 of 10: #3504 `Q141565133` Filippus Erlendsson Ousland carries Herse Spjelbosson's
+  `PSK7-5GD` (the other side's father of Fartegn, #3343); #3552 `Q11967797` Erlend Filippusson, an established item
+  (not one of ours), carries Otte Henningsen Rømer's `L6Y7-R5V`; #3555 `Q141534288` Kristina Magnusdotter carries her
+  sister Magnhild's `PMM1-H9Z`.
+- Unsure, ids kept: Inger/Ingrid Tørresdatter (#3525), Anna/Eline Eriksdatter Orm (#3559), and #3562 whose label
+  (Erik Torsteinsson Orm) disagrees with its own child (Mats Amundsen).
