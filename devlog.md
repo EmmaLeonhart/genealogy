@@ -53388,3 +53388,9 @@ FamilySearch records (verdict only; protected items, not edited).
 - Fourth removal group: 9 of 12 gone; 3 saves failed (`Q141548501` `LC7C-SS5`, `Q141550286` `LB9F-462`,
   `Q141550618` `PDFG-DRD`), retried in `-07d-retry.qs`.
 - Fourth removal group checked live after the retry: 12 of 12 gone.
+
+## 2026-10-07: FamilySearch id review #3280-3379
+
+- #3280-3329: 46 same, 3 different (0 live), 1 unsure. #3330-3379: 46 same, 3 different (0 live), 1 unsure. No new live wrong ids; the next removal group is empty.
+- Unsure, ids kept: #3299 our "Sjur Matsson Holter" whose children are the FamilySearch Tore Sæbjørnsen's (label and
+  data disagree, like #3274); #3370 Ingrid/Inger Eriksdatter.
