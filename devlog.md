@@ -53005,3 +53005,9 @@ item runs Emma's `Q140568870|Lzh|"李命玥"` and then that batch; it waits for 
   #289719, run on the account at the same time** (Japanese shrine and temple items: `P1448`, `P1814`, `P612`; no item
   creations, so no `LAST` risk). Not started by this session; left running. The item stays until this run ends and is
   checked live.
+
+## 2026-10-06 (19:4x PDT): the "run 李命玥, then the whole generated batch" item dropped (Emma)
+
+Emma: "I want you to drop the first Q item": it was not meant to take a whole day, or to run while other work went on.
+Deleted unfinished. Done before the drop: her line `Q140568870|Lzh|"李命玥"` is live. The browser run of
+`a7d1cd959` (started 18:35 PDT, about 3,200 of 5,287 commands at the drop) was left running, not stopped.
