@@ -2873,7 +2873,14 @@ def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "",
     # nowhere in the father's name is an inherited surname that happens to end like a
     # patronymic, which is exactly the `Slawson` case one branch up seen without the father
     # carrying the token himself.
-    return "family"
+    #
+    # ⛔ **SUPERSEDED BY EMMA'S BOTH-CONDITIONS RULE, 2026-10-05:** a patronymic is a surname only
+    # when the root does not match the father's given name AND the father carries the same token.
+    # The second half returned `"family"` above; a root that matches nothing alone is not enough.
+    # The case that surfaced it: `Q141654774` Mons Osmundson Edland, father Omund Monsson (Omund is
+    # a form of Osmund), went out with `Osmundson` as a `P734` family name. Vigdel's `Olsen` above
+    # was the same shape: Olsen came from his biological father, not the adoptive one in the tree.
+    return "patronymic"
 
 
 def without_nickname(label, fields):

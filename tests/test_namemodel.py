@@ -694,6 +694,16 @@ def test_fersen_needs_the_father_to_stop_being_a_patronymic():
     assert namemodel.patronymic_or_surname("Olsen", "Ole Hansen") == "patronymic"
 
 
+def test_a_surname_needs_both_conditions():
+    """Emma, 2026-10-05: a patronymic is a surname only when the root does not match the father's
+    given name AND the father carries the same token. `Q141654774` Mons Osmundson Edland, father
+    Omund Monsson, went out with `Osmundson` as a family name on the first condition alone."""
+    assert namemodel.patronymic_or_surname("Osmundson", "Omund Monsson Edland") == "patronymic"
+    assert namemodel.patronymic_or_surname("Olsen", "John Jonassen Hegre") == "patronymic"
+    # Both conditions hold: still a family name.
+    assert namemodel.patronymic_or_surname("Bergersen", "Gunder Bergersen") == "family"
+
+
 # --- drop_description_suffix: a description marker is not a name -----------------------
 #
 # **Ruled 2026-09-07** on `Q141313961`, live as *Helena Maria Linnerhielm ogift*: `ogift` is

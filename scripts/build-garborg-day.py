@@ -9729,6 +9729,16 @@ def main():
         # was never the missing part: that file has carried `birth_date_modifier` and
         # `birth_date_year_end` all along, and `genimerge.dates` is the authority on the
         # grammar. Only the emission was absent.
+        #
+        # ⛔ **A DEATH BEFORE THE BIRTH WRITES NEITHER DATE. 2026-10-08** (error report on batch
+        # `fb299cd39`): `Q141654716` Jeanne de Pacy went live born 1328 and died 1285, and
+        # `Q141670688` Harald Gyrdsson born circa 830 (Geni) and died 815 (FamilySearch, which
+        # gives born 735): the two dates can come from different sources, and nothing checked
+        # that they fit. The pair contradicts itself, so neither goes out. The year carries its
+        # sign, so a BCE pair compares the right way round.
+        _yr = lambda iso: (-1 if iso.startswith("-") else 1) * int(iso.lstrip("+-").split("-")[0])
+        _dates_contradict = bool(f["birth_date_iso"] and f["death_date_iso"]) and \
+            _yr(f["death_date_iso"]) < _yr(f["birth_date_iso"])
         for prop, iso, prec, mod, end, event, raw in (
                 ("P569", f["birth_date_iso"], f["birth_date_precision"],
                  f.get("birth_date_modifier", ""), f.get("birth_date_year_end", ""),
@@ -9736,7 +9746,7 @@ def main():
                 ("P570", f["death_date_iso"], f["death_date_precision"],
                  f.get("death_date_modifier", ""), f.get("death_date_year_end", ""),
                  "DEAT", f.get("death_date_raw", ""))):
-            if iso and prec:
+            if iso and prec and not _dates_contradict:
                 lines.append(f"LAST\t{prop}\t{iso}/{prec}"
                              f"{date_quals(mod, iso, prec, end)}{cite_date(g, event, raw)}")
         # ⛔ **PLACE OF BIRTH AND DEATH: OUR READING AS THE VALUE, THE SOURCE'S STRING AS `P1932`.**
