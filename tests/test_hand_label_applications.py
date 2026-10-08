@@ -36,22 +36,18 @@ def test_her_rows_parse_and_emit_verbatim(tmp_path):
     """Her dictated labels go out exactly as written. On a fixture, because the shipped file's rows retire once live
     (`retire_applied_labels`): the `Q140568870` rows below were retired by the pipeline on 2026-10-07."""
     mod = _bgd()
-    path = _write(tmp_path, "Q140568870	L	zh	李命玥	Emma	2026-09-08	
-"
-                            "Q140568870	L	ja	エマ・レオンハート	Emma	2026-09-08	
-"
-                            "Q140568870	A	ja	閻魔獅心	Emma	2026-09-08	
-"
-                            "Q140568870	L	ko	엠마 레온하트	Emma	2026-09-08	
-")
+    path = _write(tmp_path, "Q140568870\tL\tzh\t李命玥\tEmma\t2026-09-08\t\n"
+                            "Q140568870\tL\tja\tエマ・レオンハート\tEmma\t2026-09-08\t\n"
+                            "Q140568870\tA\tja\t閻魔獅心\tEmma\t2026-09-08\t\n"
+                            "Q140568870\tL\tko\t엠마 레온하트\tEmma\t2026-09-08\t\n")
     rows = mod.hand_label_applications(path)
     assert ("Q140568870", "L", "zh", "李命玥") == rows[0][:4]
     lines = mod._hand_label_applications(live_labels={}, path=path)
     # Exactly the string in the file, with no transliteration, title rule or consensus vote.
-    assert 'Q140568870	Lzh	"李命玥"' in lines
-    assert 'Q140568870	Lja	"エマ・レオンハート"' in lines
-    assert 'Q140568870	Aja	"閻魔獅心"' in lines
-    assert 'Q140568870	Lko	"엠마 레온하트"' in lines
+    assert 'Q140568870\tLzh\t"李命玥"' in lines
+    assert 'Q140568870\tLja\t"エマ・レオンハート"' in lines
+    assert 'Q140568870\tAja\t"閻魔獅心"' in lines
+    assert 'Q140568870\tLko\t"엠마 레온하트"' in lines
 
 
 def test_a_description_row_is_refused(tmp_path):
