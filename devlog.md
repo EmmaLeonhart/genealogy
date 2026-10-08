@@ -54205,3 +54205,15 @@ Not yet addressed; queued at the end as an error report (the standing place for 
 
 21:15-21:16 UTC: "You also shouldn't add non-English labels to the English language for those names that are not
 transliterated (鄭, 西園寺), and search if they exist in the other language." Queued at the end as an error report.
+
+## 2026-10-08 14:4x PDT: en and mul take extended Latin only, at the commit gate (Emma)
+
+Emma, after OBender12's second talk-page point (Han `鄭`, `西園寺` in `en` on name items): "nothing is ever supposed to
+go in an English language label or a multi-language label that contains anything other than Latin characters ...
+extended Latin ... nothing else." The earlier guard against CJK `mul` lived in one emitter. `wikidata_lockout.
+wrong_label_script` now drops any `Len`/`Lmul`/`Aen`/`Amul` line holding a letter outside the Latin script (or CJK,
+kana, Hangul, fullwidth characters), in the commit-time gate of `pipeline.yml` and `tree.yml` that already strips
+protected items from every batch file, so no emitter goes around it. Measured on disk: 86 lines (7 in the current day
+batch, Hebrew `Amul` aliases; the rest in audited archives, e.g. `Len "鄭"`, `Len "father of 松平頼純"`, `Lmul "松平康納"`,
+`Lmul "Без име NN"`). The archives' lines already ran, so the same labels are likely live; that is the end-of-queue
+audit. Queue: the 10-instance leak list for Emma's merges at the top; the existing-items script audit at the very end.
