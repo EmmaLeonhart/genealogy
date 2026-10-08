@@ -8,7 +8,7 @@ creation ladder gives today (`build-garborg-day.life_description`, then the occu
 `Geni <id>`), computed by the day builder's own functions.
 
 Writes `reports/relational-descriptions-2026-10-07.csv` and the batch
-`reports/relational-descriptions-fix-2026-10-07.qs`. Sends nothing.
+`reports/session-2026-10-07/relational-descriptions-fix-2026-10-07.qs`. Sends nothing.
 
     python scripts/session-2026-10-07/relational-descriptions.py
 """
@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT / "src"))
 API = "https://www.wikidata.org/w/api.php"
 UA = {"User-Agent": "genealogy-review/1.0 (emma)"}
 CSV_OUT = ROOT / "reports" / "relational-descriptions-2026-10-07.csv"
-QS_OUT = ROOT / "reports" / "relational-descriptions-fix-2026-10-07.qs"
+QS_OUT = ROOT / "reports" / "session-2026-10-07" / "relational-descriptions-fix-2026-10-07.qs"
 RELATIONAL = re.compile(r"\b(son|daughter|child|father|mother|parent|wife|husband|spouse|"
                         r"brother|sister|sibling|widow|widower)\s+of\b", re.I)
 

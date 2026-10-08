@@ -200,6 +200,7 @@ def known_name_items():
 #: values every person statement carries. Listed rather than pattern-matched so a new
 #: one is a decision.
 VOCABULARY = {
+    "Q108474139",  # "placeholder for novalue": the no-family-name value (NO_FAMILY_NAME, Emma 2026-10-03)
     "Q5",           # human
     "Q6581097",     # male
     "Q6581072",     # female
