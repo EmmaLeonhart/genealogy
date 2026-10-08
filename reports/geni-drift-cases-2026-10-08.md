@@ -117,8 +117,11 @@ On 2026-10-07 the FamilySearch-id review took several of these ids off. What the
   Nilsson (added 2026-10-06) from the walk's Anders Nilsson; `Q141528244` Elin Nilsdotter carries the alias "Anna
   Nilsdotter" from a mother-slot pairing on the birth year alone.
 - **Wrong, nothing left behind:** `Q141538883` Olof Filipsson (the walk's Nils Albrektsson, on a birth year; id removed).
-- **Not settled:** `Q141538789` Mariet Jönsdotter, whose live father is Nils Hansson and who carries `P5056` Nilsdotter
-  from the walk's Sigrid Sara Nilsdotter: the father may have come with the walk's person too. `Q141515038` Hallgrim
+- **Settled 2026-10-08:** `Q141538789` Mariet Jönsdotter (wife of Herse Andersson Bure): her parents Nils Hansson and Kålug
+  Larsdotter are Geni's own (our tree gives the same), so they stay; the walk's residue was the given names Sigrid and Sara
+  and the patronymic Nilsdotter (added 2026-10-01), removed and checked live. Jönsdotter against a father Nils is a Geni-side
+  mismatch for after 2026-10-21.
+- **Not settled:** `Q141515038` Hallgrim
   Oxehode, whose father link is Bratt Oxehode, which fits the walk's Aslak Brattson better than Hallgrim.
   `Q141382445` / `Q141382447` Niklas Olsson and Stina Larsdotter, whose merge history (2026-09-09 and 09-23) has to be
   read first.

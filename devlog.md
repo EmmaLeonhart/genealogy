@@ -53868,3 +53868,12 @@ a grandchild that FamilySearch places under Augustin and Geni under Antoine. A c
 as the nine Emma approved this morning, so `P2889` `K4YV-M5N` (QuickStatements, new tab) and the alias "Augustin
 Constant" (`wbsetaliases`) came off, both checked live and added to `reports/removed-statements.tsv`. Noted, not acted
 on: our tree gives Antoine 13 children, most of them FamilySearch people the walk rendered under his Geni id.
+
+## 2026-10-08 03:3x PDT: Geni drift, unsettled case settled: Q141538789 Mariet Jönsdotter
+
+Mariet Jönsdotter (wife of Herse Andersson Bure, mother of Brita and Cecilia Hersesdotter). Her live parents, Nils
+Hansson (`Q141570916`) and Kålug Larsdotter (`Q141570206`), were added on 2026-09-26 inside the walk's window, but our
+tree's current Geni data gives the same two, so they are Geni's own and stay. The walk's residue was what came on
+2026-10-01 from its Sigrid Sara Nilsdotter: `P735` Sigrid and Sara and `P5056` Nilsdotter. Removed (QuickStatements, new
+tab, checked live, added to `reports/removed-statements.tsv`). Her patronymic Jönsdotter against Geni's father Nils is a
+Geni-side mismatch, left for after 2026-10-21 with the patronymic item's ten.
