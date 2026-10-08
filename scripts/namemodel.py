@@ -3469,95 +3469,73 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     #     two words, and splitting it first produced the token `(Ulf` with 5 bearers.
     #   * `join_compound_surname` -- a connector with a name on each side joins them.
     # Only then whitespace-split and `join_particles`, which is unchanged.
-    surn_field = _unwrap_surn(surn or "")
-    surn_tokens = join_compound_surname(
-        [t for t in re.split(r"\s+", surn_field.strip()) if t])
-    # ⛔ **EVERYTHING LEFT IN THE SURNAME FIELD IS ONE SURNAME. Ruled 2026-09-27 (Emma), built
-    # 2026-09-28:** parse by field and by form, never by position. Patronymics are taken out by
-    # form; from the first token that is clearly not one, the rest of the field is ONE family
-    # name, spaces and all (`Sør Kolnes`, `Stromer von Reichenbach`, `Lunde Eriksen`), not a
-    # family name per word. Markers (`NN`, a lone farm letter) keep their own handling.
-    _surn_parts = list(join_particles(join_nobiliary(surn_tokens)))
-    _one_surname = None
-    for _k, raw in enumerate(_surn_parts):
-        if _one_surname is not None:
-            _t, _sh = name_shape(raw)
-            # A separator (`Latimer / de Latimer`) divides two spellings of the surname: the
-            # one being gathered ends there, and what follows starts afresh.
-            if _t in ("/", "|"):
-                out[out.index(None)] = (" ".join(_one_surname), "family", 0)
-                _one_surname = None
-                out.append((_t, _sh or "unknown", 0))
-                continue
-            # A bracketed part (`Høeg (Banner)`) is a variant or a second family, a naming
-            # question left open on purpose: it ends the surname being gathered and is read
-            # on its own, as before.
-            if raw.startswith("("):
-                out[out.index(None)] = (" ".join(_one_surname), "family", 0)
-                _one_surname = None
-            else:
-                if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS):
-                    out.append((_t, _sh or "unknown", 0))
+    # ⛔ **ONE PARSER FOR EVERY SURNAME-TYPE FIELD (Emma, 2026-10-08):** *"married names are no more special ...
+    # Married names should go through the same parsing logic."* `_MARNM` used to be split word by word, every
+    # word its own married family name, so Geni's `/father of Hallvard/` gave the family names `father` and
+    # `Hallvard`; `SURN` already kept the field whole. Both now go through this, and only the role differs.
+    def _surname_field(field):
+        part = []
+        surn_field = _unwrap_surn(field or "")
+        surn_tokens = join_compound_surname(
+            [t for t in re.split(r"\s+", surn_field.strip()) if t])
+        # ⛔ **EVERYTHING LEFT IN THE SURNAME FIELD IS ONE SURNAME. Ruled 2026-09-27 (Emma), built
+        # 2026-09-28:** parse by field and by form, never by position. Patronymics are taken out by
+        # form; from the first token that is clearly not one, the rest of the field is ONE family
+        # name, spaces and all (`Sør Kolnes`, `Stromer von Reichenbach`, `Lunde Eriksen`), not a
+        # family name per word. Markers (`NN`, a lone farm letter) keep their own handling.
+        _surn_parts = list(join_particles(join_nobiliary(surn_tokens)))
+        _one_surname = None
+        for _k, raw in enumerate(_surn_parts):
+            if _one_surname is not None:
+                _t, _sh = name_shape(raw)
+                # A separator (`Latimer / de Latimer`) divides two spellings of the surname: the
+                # one being gathered ends there, and what follows starts afresh.
+                if _t in ("/", "|"):
+                    part[part.index(None)] = (" ".join(_one_surname), "family", 0)
+                    _one_surname = None
+                    part.append((_t, _sh or "unknown", 0))
+                    continue
+                # A bracketed part (`Høeg (Banner)`) is a variant or a second family, a naming
+                # question left open on purpose: it ends the surname being gathered and is read
+                # on its own, as before.
+                if raw.startswith("("):
+                    part[part.index(None)] = (" ".join(_one_surname), "family", 0)
+                    _one_surname = None
                 else:
-                    _one_surname.append(_t)
+                    if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS):
+                        part.append((_t, _sh or "unknown", 0))
+                    else:
+                        _one_surname.append(_t)
+                    continue
+            token, shape = name_shape(raw)
+            # ⛔ **A LONE LETTER IN A SURNAME FIELD IS NEVER A FAMILY NAME.** Reported 2026-09-24,
+            # after the batch created `N.` as a family-name item twice and was killed by hand:
+            # `Ingemund Olson /N. Eiane/`, married `N. Espedal`. In a farm name `N.` is Nordre or
+            # Nedre, as `S.` is Søndre and `Ø.` Øvre -- a qualifier on the farm, not a name.
+            if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
+                part.append((token, "unknown", 0))
                 continue
-        token, shape = name_shape(raw)
-        # ⛔ **A LONE LETTER IN A SURNAME FIELD IS NEVER A FAMILY NAME.** Reported 2026-09-24,
-        # after the batch created `N.` as a family-name item twice and was killed by hand:
-        # `Ingemund Olson /N. Eiane/`, married `N. Espedal`. In a farm name `N.` is Nordre or
-        # Nedre, as `S.` is Søndre and `Ø.` Øvre -- a qualifier on the farm, not a name.
-        if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
-            out.append((token, "unknown", 0))
-            continue
-        if shape:
-            out.append((token, shape, 0))
-            continue
-        if is_patronymic(token) and patronymic_or_surname(
-                token, father_name, father_aka, children_names) == "patronymic":
-            out.append((token, "patronymic", 0))
-        elif latin_patronymic(token, father_given):
-            out.append((token, "patronymic", 0))
-        else:
-            _one_surname = [token]
-            out.append(None)                      # the place the one surname goes
-    if _one_surname is not None:
-        out[out.index(None)] = (" ".join(_one_surname), "family", 0)
+            if shape:
+                part.append((token, shape, 0))
+                continue
+            if is_patronymic(token) and patronymic_or_surname(
+                    token, father_name, father_aka, children_names) == "patronymic":
+                part.append((token, "patronymic", 0))
+            elif latin_patronymic(token, father_given):
+                part.append((token, "patronymic", 0))
+            else:
+                _one_surname = [token]
+                part.append(None)                      # the place the one surname goes
+        if _one_surname is not None:
+            part[part.index(None)] = (" ".join(_one_surname), "family", 0)
+        return part
+
+    out.extend(_surname_field(surn))
 
     married = " ".join((marnm or "").split())
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
-        for raw in join_nobiliary(married.split()):
-            token, shape = name_shape(raw)
-            if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
-                out.append((token, "unknown", 0))
-                continue
-            # **`_MARNM` gets the patronymic test too, and it did not until 2026-09-04.**
-            # `GIVN` and `SURN` both run `is_patronymic` above -- `name modelling.txt`:
-            # *"We have to check in the given names and in the surname whether it is a
-            # patronym"* -- and the married field was the one that did not, so
-            # `Carlsdotter` in `_MARNM` became a `P734` *family name* carrying the
-            # `Q28418670` *married name* role. Only the DAUGHTER forms, which cannot be a
-            # married name at all; see `DAUGHTER_PATRONYMIC`.
-            if not shape and is_daughter_patronymic(token):
-                out.append((token, "patronymic", 0))
-                continue
-            # ⛔ **AND A DAUGHTER FORM WHATEVER ITS STEM; A SON FORM THE FATHER ATTESTS. 2026-09-28**
-            # (the patronymic mix-ups audit, `reports/patronymic-mixups.csv`): `Karen / /
-            # Lauritzdatter` became the married family name `Lauritzdatter`, because
-            # `is_daughter_patronymic` wants an `s` before `-datter`. A son form stays a married
-            # name (a woman carrying `-son` is a surname, Emma's slam dunk) unless the father's
-            # given name is its stem, as with `Jonas / / Hansson` son of Hans: then it is his own.
-            if not shape and is_patronymic(token) and (
-                    re.search(r"(?:datter|dotter|d[oó]ttir|dochter)\.?$", token, re.I)
-                    or _father_attests(token, father_name, father_aka)):
-                out.append((token, "patronymic", 0))
-                continue
-            # **`Olai Plantin` is a patronymic and a family name, in that order.** The worked
-            # case `Q141312682` *Zacharias Olai Plantin* carries both in `_MARNM`, and without this
-            # the Latin genitive became a second `P734`.
-            if not shape and latin_patronymic(token, father_given):
-                out.append((token, "patronymic", 0))
-                continue
-            out.append((token, shape or "married", 0))
+        for token, usage, ordinal in _surname_field(married):
+            out.append((token, "married" if usage == "family" else usage, ordinal))
 
     # A description yields no nickname either. `(--stillborn--)` occurs 11 times and the
     # bracket makes `QUOTED` read it as a byname, so without this it survives the
