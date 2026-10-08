@@ -53812,3 +53812,17 @@ Güntersberg and Eickstedt lines, renamed on Geni on 2026-09-24 with the father 
 Madland / "Sigmund Madland"; Antoine de / Augustin Constant). Checked on the way: Anvilaquarius's 2026-10-03 merge of
 `Q141584329` into `Q141217433` was right (our duplicate of the same man, born 24 Sep 1754), but it brought Daniel's
 FamilySearch id along. Nothing changed on Wikidata.
+
+## 2026-10-08 01:2x PDT: Geni drift, part 3 finished: 47 of the 58 are the positional walk, not Geni
+
+`reports/geni-drift-cases-2026-10-08.md` now has every case. **Unexpected, and it answers the item:** the 27 Geni ids the
+walk's current pairs never touch were checked against the history of its old pairs file (`familysearch-zipper-pairs.tsv`,
+before the 2026-10-06 rename): 16 of them were paired in every run from 2026-09-24 to 2026-10-01 by slot position alone
+("solo, position") and dropped on 10-02, the exact dates the names flip. The Bjørgås, Bjørgo and Mestad items were
+created in that window AS the walk's FamilySearch person (Oleiv Samuelsen, Halvor Oleivsen, Jon Herbrandsen …) under
+the Geni id of somebody else (Mogens Olson Bjørgås, Tormod Monsson Bjørgås, Knut Sjurson Bjørgo …); when the pairing
+dropped, our batches appended the Geni person's name as an alias and their patronymic as a second `P5056`. So 47 of the
+58 trace to the walk (31 current, 16 earlier), and the Geni profiles did not change person in those. The real Geni
+changes are two renamed lines (Güntersberg, Eickstedt), where FamilySearch agrees with the new names. 10 more are one
+person under another name form; one label error (`Q141498427` "Gustavsson"). Nothing changed on Wikidata; the fixes
+wait on Emma's go-ahead.

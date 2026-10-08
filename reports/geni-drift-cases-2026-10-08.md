@@ -71,7 +71,72 @@ Geni id, and our batches then wrote that person's FamilySearch id (`P2889`, on 2
   Antoine Constant, and the item's own father link is Antoine Constant. Either the item is Augustin labelled with his
   father's name, or it is Antoine and the walk paired the son. Needs the item's other statements read.
 
-## Part B: the 39 not covered by Part A
+## Part B: the other 39
 
-Not written yet: the 12 walk-paired items whose FamilySearch id is not the walk's, and the 27 the walk never touched
-(the alternating Bjørgås, Bjørgo and Mestad groups among them).
+### Created from an earlier walk run, then given the Geni person on top (16)
+
+These 16 Geni ids are not in the walk's current pairs, but every earlier run under its old name (the zipper,
+`reports/familysearch-zipper-pairs.tsv`, 2026-09-24 to 2026-10-01) paired each with a FamilySearch person by slot
+position alone ("solo, position"), and stopped on 2026-10-02. Those are exactly the dates the names flip in the tree's
+history. The items were created during that window, so each was created AS the FamilySearch person, under the Geni id
+of somebody else; once the pairing dropped, the Geni export's own person came back and our batches appended that
+person's name as an alias and their patronymic as a second `P5056`. FamilySearch and the item's creation agree on who
+the item is; the Geni id is the other person's.
+
+- `Q141562866` Oleiv Samuelsen (FamilySearch `LDYY-JT9`); the Geni id is Mogens Olson Bjørgås: alias "Mogens Olson
+  Bjørgås", "Mogens Bjørgås" and `P5056` Olson appended.
+- `Q141559631` Halvor Oleivsen (`K84M-FXV`, father Oleiv Samuelsen, as on the item); Geni: Tormod Monsson Bjørgås
+  (alias, `P5056` Monsson).
+- `Q141558357` Barbro Olsdatter (`L4P9-YSY`, father Ole Eriksen, as on the item); Geni: Marita Larsdotter Bjørgås
+  (alias, `P5056` Larsdotter).
+- `Q141562856` Ole Eriksen (`L4P9-BXD`); Geni: Lars Larsson (alias, `P5056` Larsson).
+- `Q141562358` Guri Vilhelmsdatter (`L6PH-S6D`); Geni: Kari Bjørgås (alias).
+- `Q141562826` Ola Mekkelson (`MNC3-4CC`); Geni: Hallvard Gulleikson Bjørgås (aliases).
+- `Q141565565` Jon Herbrandsen (`KCHF-HMZ`); Geni: Knut Sjurson Bjørgo (alias, `P5056` Sjurson).
+- `Q141565713` Margit Larsdatter (`GMZM-RBY`); Geni: Elisabet Olsdatter Bjørgo (alias, `P5056` Olsdatter).
+- `Q141564600` Andres Ottarsen (`L2H4-8S4`); Geni: Knut Knutsen Mestad (alias, `P5056` Knutsen; the item's father
+  link is Knut Mestad, the Geni side's).
+- `Q141565147` Gietrud Torstensdatter (`L7LN-RSZ`, father Torsten Tolleivsen, as on the item); Geni: Guri
+  Knutsdatter Mestad (alias, `P5056` Knutsdatter).
+- `Q141560557` Ole Tollefsen Storla (`LCRT-MN6`, father Tollef Olsen, as on the item); Geni: Berge Toresen Brunborg
+  (aliases, `P5056` Toresen).
+- `Q141569620` Giertrud Ivarsdatter; Geni: Ambjørg Johannesdatter (alias, `P5056` Johannesdatter). No FamilySearch id
+  on the item.
+- `Q141571165` Torsten Tolleivsen; Geni: Knut Toresson Hærum (alias, `P5056` Toresson). No FamilySearch id on the item.
+- `Q141487959` Kari Oddsdatter Foss: Geni only moves her between the farms Foss and Hauge; the same woman. No harm.
+- `Q141579565` Peder Bat (`9K6F-FYR`); Geni: Karl Bååt (alias). Different given name.
+- `Q141611085` Roe (`9VM1-4Y9`, "Roe Bishop of Farogane"); Geni: Hroy. Roe and Hroy are one name; the same man.
+
+### Walk-paired, the walk's FamilySearch id since removed or never applied (12)
+
+On 2026-10-07 the FamilySearch-id review took several of these ids off. What the walk left behind:
+- **Wrong, residue left:** `Q141532548` Barbro Hersesdotter (father Herse, so the item is right) still carries the
+  walk's Malin Olofsdotter as alias and `P5056` Olofsdotter; `Q141533731` Nils Olofsson (father Olof Filipsson) still
+  carries `P5056` Nilsson from the walk's Olof Nilsson Albrektsson; `Q141549731` Stefan Olofsson still carries `P5056`
+  Nilsson (added 2026-10-06) from the walk's Anders Nilsson; `Q141528244` Elin Nilsdotter carries the alias "Anna
+  Nilsdotter" from a mother-slot pairing on the birth year alone.
+- **Wrong, nothing left behind:** `Q141538883` Olof Filipsson (the walk's Nils Albrektsson, on a birth year; id removed).
+- **Not settled:** `Q141538789` Mariet Jönsdotter, whose live father is Nils Hansson and who carries `P5056` Nilsdotter
+  from the walk's Sigrid Sara Nilsdotter: the father may have come with the walk's person too. `Q141515038` Hallgrim
+  Oxehode, whose father link is Bratt Oxehode, which fits the walk's Aslak Brattson better than Hallgrim.
+  `Q141382445` / `Q141382447` Niklas Olsson and Stina Larsdotter, whose merge history (2026-09-09 and 09-23) has to be
+  read first.
+- **Same person or harmless:** `Q141515084` Heinrich = Jakub Kaszuba von Güntersberg (the renamed line);
+  `Q141551485` Tjærand Olson Goa (id removed, aliases his own); `Q141574824` Marita Gunnarsdatter Nordland (id removed;
+  `P5056` Gunnarsen fits her father Gunnar).
+
+### Not walk-related (11)
+
+The same person under another form of the name, so not drift: `Q135268178` Lars = Laurentius Lang; `Q141499439`
+Álfheiði = Alvhild Tumesdatter; `Q141523034` Els Pfinzing = Elisabeth Isolt; `Q141529028` Markward = Merklin Pfinzing;
+`Q141526129` Tollak Reiarson/Reiersen Kydland; `Q141571108` Soffi Massdatter = Sophie Madsdatter (father Mass/Mads);
+`Q141583399` Ulrika Fredrika Braun = Fredrika Ulrika von Nolcken (married and birth name); `Q141584552` "Traung" =
+Johanna Sandelin; `Q141585911` Ole Nag = Olav Persen Nag; `Q141498427` Signe Maria Wedberg/Gustavsson, whose live
+label is the bare surname "Gustavsson" (a label error to fix). Not settled: `Q141517162` Elisabeth Margaretha Rahm /
+Margareta Elisabet Brunlöf (no FamilySearch id, no parents on the item).
+
+## The whole picture
+
+47 of the 58 trace to the positional walk (31 in its current pairs, 16 in its earlier zipper runs); the Geni profiles
+themselves did not change person in those. The two lines renamed on Geni (Güntersberg, Eickstedt) are the real Geni
+changes, and FamilySearch agrees with Geni's new names there.
