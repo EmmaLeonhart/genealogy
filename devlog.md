@@ -53656,3 +53656,13 @@ FamilySearch records (verdict only; protected items, not edited).
   A guess, not verified: Jakob Knutsen Koll attached to his mother Gurid's marriage with Nils Toresson Kold.
 - The 360 verdicts stay only in `reports/session-2026-10-07/ancestor-frontier-verdicts.tsv`; nothing went to
   `emma-judgments.tsv` or Wikidata. Waiting on Emma for how to go on.
+
+## 2026-10-08: daily audit-then-run on batch c2a26afa5
+
+Talk page read, then 10 universe items and 10 creations audited (`reports/daily-audit/2026-10-08.md`). 19 fine. Notes
+that did not block the run: `Q141514637`'s zh label reads Juslenius against mul af Anckar; `Q453739` Ansegisel has two
+P25 (Doda of Metz and our duplicate `Q141523778`); `Q141538405`'s ja/zh still carry the married name Lura (the label
+backfill). Held: creation 147, Leonard Holliday, who is already `Q6525383` (Lord Mayor of London 1605-06). Taken out:
+creation 76's junk mul alias `Karin Andersdotter [¨Åbyn?]`. `hold-live-creations.py` held 21 more creations already
+live. Ran `reports/wikidata-garborg-day-manual-audited-c2a26afa5-held.txt` (211 creations, 4,725 commands) in a new
+QuickStatements tab with Run.
