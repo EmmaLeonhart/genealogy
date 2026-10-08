@@ -53666,3 +53666,23 @@ backfill). Held: creation 147, Leonard Holliday, who is already `Q6525383` (Lord
 creation 76's junk mul alias `Karin Andersdotter [¨Åbyn?]`. `hold-live-creations.py` held 21 more creations already
 live. Ran `reports/wikidata-garborg-day-manual-audited-c2a26afa5-held.txt` (211 creations, 4,725 commands) in a new
 QuickStatements tab with Run.
+
+## 2026-10-08: patronymic audit re-checked against the both-conditions rule; Brattval fixed; item narrowed
+
+Emma's rule of 2026-10-05 (a patronymic is a surname only when the root does not match the father's given name AND the
+father carries the same token) was put over every verdict in `reports/patronymic-review.csv` (224 rows).
+- The 168 rows judged correct: none meets both conditions (125 have a root matching the father, 30 are catalogue
+  gaps where the father's name plus an ending is the token, the rest a stale or second recorded father). No change.
+- The 23 judged an inherited surname: 21 meet both. `Q141178201` Marie Petrine Simensdatter Bergersen does not (her
+  father Simen Olsen does not carry Bergersen): Bergersen is her married name, not a patronymic case, and the removal of
+  2026-10-04 stands under "a patronymic requires the father". `Q141517855` Halvor Larsen Brattval (b. c.1655, father
+  `Q141578672` Lage Lauritzen Bratvold b. 1612) meets both once Lars and Lauritz are read as one name before 1900, so
+  his `P5056` Larsen (`Q141440447`) was removed (`reports/patronymic-surname-fix-2026-10-08.qs`, one line, run in a new
+  QuickStatements tab, checked live: no `P5056`, `P734` Larsen and Brattval kept). He was the one left out of the
+  2026-10-04 fix batch.
+- `Q138687615` Bertrand Olav Vigdel (the open NEEDS-DECISION): not our item; Epìdosis removed our `P5056` Olsen on
+  2026-08-31 and the account put it back from the UI (an untagged hand edit, so Emma's) four minutes later. Session's
+  verdict: a hand correction on Wikidata is evidence, so it stays as she left it. Closed.
+- The 16 identity-drift rows belong to the identity-drift queue item; the 5 unverifiable ones have no usable father
+  name and nothing to check.
+- Left: the 10 father mismatches, which need Geni (off limits until 2026-10-21). The queue item is cut down to them.
