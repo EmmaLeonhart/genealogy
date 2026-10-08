@@ -54248,3 +54248,24 @@ Emma's three items, in her order.
    one-off batches failing the checks meant for batches still to run are gone: those files moved to their
    `reports/session-<date>/` folders, with today's nine verified fix batches (the one script writing one of them,
    `build-wrong-script-name-fix.py`, now writes there). The rest is the narrowed queue item.
+
+## 2026-10-08 (late) PDT: OBender12's Han `en` labels on family-name items: what is left of it, done
+
+The audit, the commit gate (`wikidata_lockout.wrong_label_script`) and the twin search were already done earlier today.
+Checked live: the 8 surviving items (`Q141637679` 葉赫那拉, `Q141648449` 葉赫納喇, `Q141648458` 鈕祜祿, `Q141648477` 烏雅,
+`Q141637661` 今出川, `Q141637662` 勧修寺, `Q141648454` 喜塔臘, `Q141648475` 京兆武功) still hold Han as `mul` and have
+no `en`; each is used by 2-5 items. The 鄭, 劉, 姬 and 本多 creations in archived batches never became items (not among
+the account's 22,766 creations). **Unexpected:** yesterday's "possible twin" for 今出川, `Q11376759`, is a person
+(今出川尚季), not a family-name item, so 今出川 has no twin. **Also unexpected:** 京兆武功 is a choronym (Jingzhao
+commandery, Wugong county), not a family name at all; it was added to the "Strange family names" item.
+`Q428664` Saionji keeps its Han `mul`: Xezbeth added it in 2025, not us.
+
+- **Labels:** 32 rows in `label-applications.tsv`: Latin `mul`+`en` (the twin's English label where there is one,
+  Yehe Nara clan / Niohuru / Uya, so the pair reads as one item for a merge; Imadegawa, Kajūji, Hitara, Jingzhao Wugong
+  otherwise) and the Han form kept as `ja`/`zh`. They go out with the next batch and retire once live. The merges stay
+  Emma's (UI only), as listed earlier.
+- **The rule, closed at the emitter too:** `build-garborg-name-items.py` never queues a non-Latin token for creation
+  (with the gate, it would have made an item with no label); it prints the tokens it skipped. Sinosphere people have
+  minted no name items since 2026-10-06.
+- Not done: the talk-page reply to OBender12. OUT-OF-SCOPE for this item; it belongs to the "Strange family names" item,
+  which answers both points once fixed.

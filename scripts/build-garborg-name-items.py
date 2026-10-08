@@ -92,6 +92,7 @@ import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from wikidata_lockout import _extended_latin  # noqa: E402
 csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -796,6 +797,7 @@ def main():
     bearer_rescues = []
     unavailable = []
     never_first = collections.Counter()
+    non_latin = collections.Counter()
     bearer_reuse = reuse_from_bearers(fields, have, live_values())
     if bearer_reuse:
         print(f"{len(bearer_reuse)} token(s) are already pointed at by their own bearers")
@@ -886,6 +888,12 @@ def main():
                 linked[(token, usage)] += 1
             elif "AMBIG" in action.upper():
                 ambiguous[(token, usage)] += 1
+            elif not _extended_latin(token):
+                # ⛔ Never minted (OBender12 on the talk page, 2026-10-08: `鄭`, `西園寺` went out
+                # as `en` labels). The commit gate strips a non-Latin `Len`/`Lmul`, so a CREATE
+                # here would make an item with no label at all; such a name already has its item
+                # in its own language, to be found by hand, not created.
+                non_latin[(token, usage)] += 1
             else:
                 need[(token, usage)] += 1
 
@@ -898,6 +906,9 @@ def main():
             print(f"   {token:<20} {usage:<12} {why[:70]}")
 
     print(f"{len(linked)} tokens already have an item and are linked, not created")
+    if non_latin:
+        print(f"{len(non_latin)} token(s) not in Latin script, never created: "
+              + ", ".join(sorted(t for t, _ in non_latin)))
     print(f"{len(need)} need creating, {len(ambiguous)} are ambiguous and are not")
     if never_first:
         top = ", ".join(f"{tok} ({n})" for tok, n in never_first.most_common(6))
