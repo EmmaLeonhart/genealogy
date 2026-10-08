@@ -31,8 +31,8 @@ spec2.loader.exec_module(recreate)
 import descriptions  # noqa: E402
 import qs_v1  # noqa: E402
 
-OUT = ROOT / "reports" / "disputed-parents-2026-10-08.qs"
-LIST = ROOT / "reports" / "disputed-parents-2026-10-08.tsv"
+OUT = ROOT / "reports" / "session-2026-10-08" / "disputed-parents-2026-10-08-DRAFT-not-run.qs"
+LIST = ROOT / "reports" / "session-2026-10-08" / "disputed-parents-2026-10-08.tsv"
 UA = {"User-Agent": "genealogy-check/1.0 (emma@topazcomputing.com)"}
 DISPUTED = "\tP1480\tQ18912752"
 
