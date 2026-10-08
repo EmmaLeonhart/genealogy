@@ -104973,10 +104973,6 @@
     {
      "language": "mul",
      "value": "Pehr Pehrsson Hagman"
-    },
-    {
-     "language": "mul",
-     "value": "Daniel Pehrsson"
     }
    ]
   },
@@ -105411,38 +105407,6 @@
       "property": "P2889",
       "snaktype": "value"
      },
-     "rank": "normal",
-     "type": "statement"
-    },
-    {
-     "id": "Q141217433$262B919E-AB2B-4E64-A592-B407B2FFB7BB",
-     "mainsnak": {
-      "datatype": "external-id",
-      "datavalue": {
-       "type": "string",
-       "value": "LRP6-5H5"
-      },
-      "hash": "5051ffd14ce7e724694801e8f43c08f75a613737",
-      "property": "P2889",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P1810": [
-       {
-        "datatype": "string",
-        "datavalue": {
-         "type": "string",
-         "value": "Daniel Pehrsson"
-        },
-        "hash": "76cd43db7735b279909ab756420fdb695b40bba5",
-        "property": "P1810",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P1810"
-     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -106077,8 +106041,8 @@
     "value": "佩尔·佩尔松·哈格曼"
    }
   },
-  "lastrevid": 2553996257,
-  "modified": "2026-10-06T15:36:57Z",
+  "lastrevid": 2554964446,
+  "modified": "2026-10-08T09:12:06Z",
   "ns": 0,
   "pageid": 134671796,
   "sitelinks": {},
@@ -336725,6 +336689,70 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141562265$BC2F0AC5-0650-4EB2-8293-749E32D578A4",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141671860",
+        "numeric-id": 141671860
+       }
+      },
+      "hash": "c983537ab9ac1e67a83e89445df484aaa7674b08",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P144": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q141585183",
+          "numeric-id": 141585183
+         }
+        },
+        "hash": "dbbff066b7e5c7559ceff25ccfd164e4f8289191",
+        "property": "P144",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P144"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "431405caaf568548ab1b2c411a3f177d3280298e",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000037035268512"
+          },
+          "hash": "e94cd0870adde2fded085ff3cc3f2dc8254de31e",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141562265$E814DF17-56FA-4BEE-96AD-06C0633D9FE3",
@@ -336929,8 +336957,8 @@
     "value": "艾莱夫·贝尔恩特松·索尔博"
    }
   },
-  "lastrevid": 2552345529,
-  "modified": "2026-10-02T23:20:33Z",
+  "lastrevid": 2554970716,
+  "modified": "2026-10-08T09:34:23Z",
   "ns": 0,
   "pageid": 135121332,
   "sitelinks": {},
@@ -453160,6 +453188,49 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141584825$4B51F8FF-A41F-473E-8931-8DFCEC2A83BB",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141671882",
+        "numeric-id": 141671882
+       }
+      },
+      "hash": "23577b7dc3de47529e3e1cddb85d750cb0204a75",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "565424ab95e5c4c96a55b83456c74da6a6f3e2aa",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006787786088"
+          },
+          "hash": "b8ff27f596bce77ad501b0185f3b62b7df0ec592",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141584825$5DA8260E-617D-4AC8-9B8D-5A4B6127EF96",
@@ -453345,8 +453416,8 @@
     "value": "迪德里克·托雷伊松·特韦伊滕"
    }
   },
-  "lastrevid": 2550330246,
-  "modified": "2026-09-28T05:07:45Z",
+  "lastrevid": 2554971619,
+  "modified": "2026-10-08T09:37:47Z",
   "ns": 0,
   "pageid": 135145061,
   "sitelinks": {},
@@ -516044,6 +516115,49 @@
      "type": "statement"
     }
    ],
+   "P5056": [
+    {
+     "id": "Q141626041$1A364F7E-84DD-47BF-90C6-7CFA9604BA37",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141671868",
+        "numeric-id": 141671868
+       }
+      },
+      "hash": "ec4fb7c45b5e753abd7434f4b07676a1104011b4",
+      "property": "P5056",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "c6fea2e6a212fe897f3eb4b17f7626325358fba1",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000004656592469"
+          },
+          "hash": "fbb5644a9d1d51b626b2ac4797a215a8996e6f14",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
    "P569": [
     {
      "id": "Q141626041$DEB419E0-6B5C-4E41-A39A-F878528C38BF",
@@ -516269,8 +516383,8 @@
     "value": "英格堡·马蒂阿斯达特·洛梅兰德"
    }
   },
-  "lastrevid": 2553766602,
-  "modified": "2026-10-06T04:44:55Z",
+  "lastrevid": 2554970958,
+  "modified": "2026-10-08T09:34:55Z",
   "ns": 0,
   "pageid": 135203101,
   "sitelinks": {},
@@ -661832,6 +661946,10 @@
     "language": "ar",
     "value": "مؤلف سويدي"
    },
+   "as": {
+    "language": "as",
+    "value": "ছুইডিছ লেখক (১৬৭৬-১৭৫০)"
+   },
    "bn": {
     "language": "bn",
     "value": "সুইডিশ লেখক (১৬৭৬-১৭৫০)"
@@ -661924,8 +662042,8 @@
     "value": "Olof Broman"
    }
   },
-  "lastrevid": 2548260987,
-  "modified": "2026-09-22T01:47:00Z",
+  "lastrevid": 2554969314,
+  "modified": "2026-10-08T09:30:32Z",
   "ns": 0,
   "pageid": 1949175,
   "sitelinks": {
