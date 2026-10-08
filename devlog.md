@@ -53826,3 +53826,20 @@ dropped, our batches appended the Geni person's name as an alias and their patro
 changes are two renamed lines (Güntersberg, Eickstedt), where FamilySearch agrees with the new names. 10 more are one
 person under another name form; one label error (`Q141498427` "Gustavsson"). Nothing changed on Wikidata; the fixes
 wait on Emma's go-ahead.
+
+## 2026-10-08 02:2x PDT: Geni drift fixes run (Emma's go-ahead), all checked live
+
+Emma, by AskUserQuestion: for the 14 items created as the walk's FamilySearch person under another person's Geni id,
+"Remove Geni id + residue"; for the 9 carrying another person's statements from the walk, "Yes, remove them".
+(`Q141487959` Kari Oddsdatter Foss and `Q141611085` Roe/Hroy were left out of the 16: one person each.)
+`scripts/session-2026-10-08/drift-fix.py` read each item live and wrote `reports/geni-drift-fix-2026-10-08.qs` (36
+removals: 14 `P2600`, 5 `P2889`, 17 `P5056`) and `reports/geni-drift-fix-aliases-2026-10-08.json` (22 mul aliases), and
+appended all 58 to `reports/removed-statements.tsv`, so no batch puts them back. The statements ran in a new
+QuickStatements tab with Run (6 collided with the alias edits and were re-run); the aliases went through `wbsetaliases`
+from a logged-in tab, no summary (5 failed-save on the first pass, all saved on retry). Every one checked live: gone.
+The 14 items now carry no Geni id for the other person; that person can get an item of their own later.
+
+**Unexpected, before this:** the browser tab group was closed between ticks, and today's genealogy batch (`561d3c89f`,
+started 00:14 PDT) had stopped at 00:24 PDT after 58 edits of 3,821 commands. From 01:47 PDT the account is running a
+QuickStatements background batch, #289821 "shintowiki round 3 part 1 2026-10-08" (Shinto shrine items, another
+project), not started here. The rest of the genealogy batch was not restarted: asked of Emma.
