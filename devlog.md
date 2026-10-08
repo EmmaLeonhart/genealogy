@@ -54217,3 +54217,13 @@ protected items from every batch file, so no emitter goes around it. Measured on
 batch, Hebrew `Amul` aliases; the rest in audited archives, e.g. `Len "鄭"`, `Len "father of 松平頼純"`, `Lmul "松平康納"`,
 `Lmul "Без име NN"`). The archives' lines already ran, so the same labels are likely live; that is the end-of-queue
 audit. Queue: the 10-instance leak list for Emma's merges at the top; the existing-items script audit at the very end.
+
+## 2026-10-08 15:xx PDT: the script-leak instances for Emma's merges: 8 exist, not 10
+
+All live name items with a Han/kana/Hangul `en` or `mul` label among recent items (264), filtered to those the account
+created: 8, all family-name items of 2026-10-04/05 (the other two of our 13 CJK name items, 蘇 and 西園寺, were already
+merged by OBender12). Each checked for an existing twin (`reports/script-leak-name-items-2026-10-08.tsv`):
+`Q141637679` 葉赫那拉 and `Q141648449` 葉赫納喇 -> `Q985700` Yehe Nara clan; `Q141648458` 鈕祜祿 -> `Q994197` Niohuru;
+`Q141648477` 烏雅 -> `Q15888864` Uya; `Q141637661` 今出川 -> possibly `Q11376759` (no en label); `Q141637662` 勧修寺,
+`Q141648454` 喜塔臘 and `Q141648475` 京兆武功 have no family-name item to merge into (only people). Listed for Emma to
+merge herself; none merged. Item deleted.
