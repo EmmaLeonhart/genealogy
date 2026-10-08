@@ -53712,3 +53712,22 @@ only to `P2600`, so our pipeline wrote them (most likely Geni holds two profiles
 the sibling step linked the two). As one person that reads "he is his own brother", so those two statements were
 removed (QuickStatements, new tab) and both merges then went through. Not swept further: other items whose duplicates
 are linked as siblings would show up the same way, refused at merge time.
+
+## 2026-10-08: todo.md gone through, every item (934 lines to 370); the queue item closed
+
+Each section of `todo.md`, top to bottom:
+- **Deleted, done:** 1 one canonical genealogy (the synoptic tree builds in Actions); 2 Wikidata reconciliation (the
+  structural walk is built; the fuzzy half was already dead); 3a the frontier analysis (a pointer to
+  `reports/frontier.md`); 4 the authoring pipeline (the daily batches run); 5 name items (built, in every batch); 6
+  backfilling existing items (built; the re-run is the pipeline's); 7 more sources (GEDCOM drops work, order.life is
+  vendored); 8a, 8a-revised and 8a-decided, the Wikidata download design (built: `wikidata/items/`, 2,427 shards);
+  the built-batches inventory of 2026-08-23 (a list, not work, and long out of date); 9d the `gaiad` flag (fixed
+  2026-08-15/16). The stale 2026-08-16 audit note at the top is replaced by a dated one.
+- **Moved to the queue (end), ready:** 8b's century-distribution prediction, which needs only the local store.
+- **Left, Geni-gated** (no Geni work, Emma 2026-10-01): 3 and 3z export planning, 3b seeds, 3c the final scrape, 3d the
+  collector's service worker, research on Geni `6000000000757999620`.
+- **Left, not ready or not now:** 8 trimmed to field-level provenance (links now carry it through
+  `derived-family-sources.csv`, names and dates do not), the postponed Geni-side merge queue, and 8b's ancestors
+  measurement; order.life's descent-from-antiquity material; 9a to 9c (Cladoplast, Gaiad citations, `T999999`); the
+  2026-09-26 context list; Emma's QuickStatements ideas; labels beyond en/ja/zh/ko (en/ja/zh/ko are composed live,
+  the rest wait on name items); the saved QuickStatements token page (never committed).
