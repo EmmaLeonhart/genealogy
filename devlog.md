@@ -54140,3 +54140,38 @@ about 1315, d. 1373, and Claus's family. In both the record shares the decisive 
 person when the decisive facts match" and "an id comes off only when the record is clearly another person" they stay.
 Both ids were already added, removed and re-added once (2026-10-02/03); another removal would be the churn Emma warned
 about. New helper `scripts/show-person.py` (an item, its family with labels, ids, and non-batch edits). Item deleted.
+
+## 2026-10-08 16:xx PDT: error report `Q141521528` (Kirsten Jakobsdatter Bolstad -> Haakon VI): 22 impossible child links removed
+
+**How Haakon VI got there.** Haakon VI's own Geni id (`6000000003464260121`, put on `Q313015` by GZWDer in 2020) is
+right. The false link came from **our tree as it stood on 2026-10-02**: `derived-family.csv` at `d12c26ab2` lists
+Haakon's Geni id among Kirsten's (`6000000007635631030`) children, and today's tree does not. The one-off "uncapped
+relationships" batch of that day (`build-uncapped-relationships.py`, `reports/wikidata-relationships-uncapped.txt`,
+28,230 statements, run 2026-10-03) carried it to Wikidata, cited to her Geni id. The builder is not wired into any
+workflow, so it does not recur.
+
+**Unexpected, and bigger than one link:** the same batch carried a whole class of these. Of its relationship lines, 27
+state a relation the 2026-10-02 tree had and today's does not; 20 were still live. 18 were impossible on their face and
+are removed: people born 1745-1933 given 12th-14th century royalty as children (Annikki Kariniemi -> Canute, Duke of
+Estonia; Johan Edward Wendell and Enni Lundström -> Valdemar II; Jan Trägårdh -> Valdemar I; Alfred Bexell, Pi Sarpaneva
+and Richard K. Macalester -> Elizabeth of Hungary; Johan Gustaf Lagerbjelke -> Magnus V; Jack Adams-Ray -> Jón Loftsson;
+Oscar Storm -> Kristin Sigurdsdatter; Max Müllertz -> Albert I of Saxony; three Müllertz/Negendanck people -> Judith of
+Greater Poland; Caroline Signe Borsheim (b. 1932) -> Jorge Holguín (b. 1848)), Johannes Olsen Torpe (b. 1580) -> Christian
+IV (b. 1577), Isabelle de Joigny -> Ingeborg of Norway, and Kirsten -> Haakon VI. None had a reverse `P22`/`P25`.
+`reports/fix-impossible-children-2026-10-08.qs`, 18 of 18 landed; the 27 in `reports/uncapped-links-gone-from-tree-2026-10-08.tsv`.
+Two were left: "Regnild" -> Sune Ebbesen and "Slag Slau" -> Toke Trylle (medieval, no dates, could be real).
+What put those children into the 2026-10-02 tree was not found; the rebuilds of 2026-10-03/04 dropped them.
+NEEDS-INVESTIGATION for the tree: the same shape as the 2026-09-27 path-chain splitter defect (false parent/child edges).
+
+**Sweep, any batch: a `P40` child born 50+ years before the parent** (WDQS over items with a Geni id; 185 such pairs,
+every one checked for who added it: `reports/children-born-before-parent-2026-10-08.tsv`). 24 were added by the account.
+15 were the uncapped batch above. Of the other 9, the 4 our tree no longer holds were removed (Jon Larsson Mæle b. 1726 ->
+Margareta Nilsdotter b. 1585, Iver Pedersen Sandsmark b. 1830 -> "daughter of Jon Jonsson" b. 1610, Iver Halvorsen Sør
+Braut b. 1799 -> Guri Ivarsdatter Kråkedal b. 1691, and Arne Garborg `Q467497` b. 1851 -> Jon Samuelsen Raustad b. 1779),
+with the one reverse `P22` (Margareta -> Jon Larsson Mæle): `reports/fix-impossible-children-2-2026-10-08.qs`, 5 of 5
+landed. **Left, because today's tree still holds them as Geni gives them** ("our tree matches Geni, never whether Geni is
+right"), though the dates conflict: `Q21660657` (b. 925) -> Lothar II von Stade (b. 874), `Q310152` (b. 1120) -> Harthacnut
+I (b. 857), `Q536899` (b. 940) -> Judith of Bavaria (b. 797), NN Finnsdatter (b. 1030) -> `Q11703445` (b. 962), and
+`Q21033409` (b. 1600) -> Kendel and Miriam Beila Isserles (b. 1530). All removals are in `removed-statements.tsv`.
+Mistake noted: one command this tick began a recursive grep of `exports/` (the corpus grep CLAUDE.md bans); it was
+stopped within two minutes and nothing used its output. Item deleted.
