@@ -53698,3 +53698,17 @@ block, never the paragraph" guard. Item deleted.
 Also on the patronymic father-mismatch item (still blocked on Geni until 2026-10-21): in all 10 cases our data has a
 single father, so the father the patronymic names is not in our exports; the same shape as Bertrand Olav Vigdel
 (`Q138687615`), whose tree father John Jonassen Heigre is, per Emma, his adoptive father. Recorded on the item.
+
+## 2026-10-08: every unmerged duplicate pair merged, plus Q135197821 into Q11381861; the merge item closed
+
+Emma said "Yes, merge all 38" (AskUserQuestion). Checked live first: none of the 37 pairs given a common id and label on
+2026-10-05 had merged on its own, nor Q135197821. All 38 were merged through the Wikidata merge gadget (Merge with...,
+into the older item, no summary), and every one is confirmed a redirect to its target through the API:
+`reports/merges-2026-10-08.tsv`. Q135197821 went into Q11381861 Sumiyoshi Shrine, as the item asked.
+
+**Unexpected:** two merges were refused because the established item listed our duplicate as its own sibling: `Q1635242`
+Hugh III of Maine had `P3373` -> `Q141628525`, and `Q61495089` Richard Comyn had `P3373` -> `Q141628125`, both cited
+only to `P2600`, so our pipeline wrote them (most likely Geni holds two profiles of each man under the same parents, and
+the sibling step linked the two). As one person that reads "he is his own brother", so those two statements were
+removed (QuickStatements, new tab) and both merges then went through. Not swept further: other items whose duplicates
+are linked as siblings would show up the same way, refused at merge time.
