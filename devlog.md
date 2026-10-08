@@ -53747,3 +53747,11 @@ wins depends on the build. The drift CSV's "Geni name now" is only the 10-03 win
 changed (the Güntersberg and Eickstedt groups all on 09-24, Hallgrim Oxehode -> Hallgrim Grisen -> Aslak Brattson
 Oxehode). 2 have one name throughout (only the creation label differed). Nothing changed on Wikidata. Next part:
 FamilySearch for each case.
+
+## 2026-10-07 22:50 PDT: batch watch; a second batch ran on 2026-10-07 by mistake
+
+New batch `561d3c89f` landed 22:42 PDT. Not opened: Emma's scale-back is one batch a day, and 2026-10-07 (Pacific) has
+already had two. `5b470a97d` ran in the day, and `c2a26afa5` was audited and run this evening under the sheet name
+`reports/daily-audit/2026-10-08.md`: the session counted the day in UTC, where it was already 10-08. That second run
+was against the scale-back. It finished (4,725 of 4,725 commands). `561d3c89f` is the next one, audited and run after
+midnight Pacific; dates in this loop are Pacific from now on.
