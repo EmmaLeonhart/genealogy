@@ -53852,3 +53852,10 @@ Held: the name item "wife" (a word made a married surname for three NN women; th
 NN daughter whose parents were born 1920 and 1925 (probably a living private person), and the comma label "Abraham
 Larsson Hirsch, Cronhjort". `hold-live-creations.py` held 13 already live. Ran
 `reports/wikidata-garborg-day-manual-audited-765642477-held.txt` (219 creations) in a new tab with Run.
+
+## 2026-10-08 02:5x PDT: Geni drift leftover (4): Q141498427's bare-surname label queued for correction
+
+`Q141498427` was created with the label "Gustavsson" (mul, en; zh 古斯塔夫松), the bare surname, which is never a label.
+Her father is Gustaf Albert Wedberg, so the birth name is Signe Maria Wedberg (Geni writes "Signe* Maria"; the asterisk
+is Geni's). Two rows added to `reports/label-applications.tsv` (mul, en); the next batch sends them and retires the rows
+once live. The zh label is left as it is for now rather than guessed; ja and ko already carry the full name.
