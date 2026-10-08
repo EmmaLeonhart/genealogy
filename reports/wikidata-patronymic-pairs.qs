@@ -7,20 +7,6 @@
 #
 # The genitive s is shared: Rasmussen -> Rasmusdatter, never Rasmussdatter.
 
-# Torstensen -- the counterpart of Torstensdatter (38 bearer(s))
-CREATE
-LAST	Len	"Torstensen"
-LAST	Lmul	"Torstensen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141549532
-Q141549532	P5278	LAST
-Q141549532	P407	Q9043
-Q141549532	P407	Q9035
-
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
 LAST	Len	"Gunnarsson"
@@ -47,20 +33,6 @@ LAST	P5278	Q105303192
 Q105303192	P5278	LAST
 Q105303192	P407	Q294
 
-# Thoresen -- the counterpart of Thoresdatter (15 bearer(s))
-CREATE
-LAST	Len	"Thoresen"
-LAST	Lmul	"Thoresen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141579837
-Q141579837	P5278	LAST
-Q141579837	P407	Q9043
-Q141579837	P407	Q9035
-
 # Ådnesdotter -- the counterpart of Ådneson (14 bearer(s))
 CREATE
 LAST	Len	"Ådnesdotter"
@@ -70,19 +42,6 @@ LAST	P31	Q110874
 LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
-
-# Pettersson -- the counterpart of Pettersdotter (7 bearer(s))
-CREATE
-LAST	Len	"Pettersson"
-LAST	Lmul	"Pettersson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141456297
-Q141456297	P5278	LAST
-Q141456297	P407	Q9027
 
 # Håvarsdotter -- the counterpart of Håvarson (5 bearer(s))
 CREATE

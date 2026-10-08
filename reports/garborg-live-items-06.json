@@ -729280,6 +729280,12 @@
  },
  "Q30932358": {
   "aliases": {
+   "en": [
+    {
+     "language": "en",
+     "value": "Otomo no Kui"
+    }
+   ],
    "ja": [
     {
      "language": "ja",
@@ -729400,6 +729406,38 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q30932358$7F229AF7-57E5-476E-9AE3-5EF9F6A667B1",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000222488276844"
+      },
+      "hash": "ee392827b4a266b9d8577e8bdf422b4e592033e5",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Otomo no Kui"
+        },
+        "hash": "bf3a718fc02ee1dd626e9c7debd1fbe898e59ec1",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -729643,6 +729681,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q30932358$FB4EA40E-50DF-4EA0-92D8-32DDCBF3B0DD",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141635487",
+        "numeric-id": 141635487
+       }
+      },
+      "hash": "e0c2e8c4bcea87b8f584f82317e1236331cc88db",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "a2138204b37bbf7da5de0ba72b3b3035d3f77ad2",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000222488276844"
+          },
+          "hash": "ee392827b4a266b9d8577e8bdf422b4e592033e5",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -729715,9 +729794,68 @@
      "rank": "normal",
      "type": "statement"
     }
+   ],
+   "P735": [
+    {
+     "id": "Q30932358$69C5467D-BD8F-4582-9DE9-85F35AB33092",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q21148356",
+        "numeric-id": 21148356
+       }
+      },
+      "hash": "dab2790825b8382a8dfbcea547f1514f3d9f7070",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1545": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "2"
+        },
+        "hash": "7241753c62a310cf84895620ea82250dcea65835",
+        "property": "P1545",
+        "snaktype": "value"
+       }
+      ],
+      "P3831": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q245025",
+          "numeric-id": 245025
+         }
+        },
+        "hash": "d2f200256267b5915480636fe6e9142b0bf2236d",
+        "property": "P3831",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1545",
+      "P3831"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
    ]
   },
   "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "Geni 6000000222488276844"
+   },
    "ja": {
     "language": "ja",
     "value": "飛鳥時代の豪族"
@@ -729737,6 +729875,14 @@
     "language": "ja",
     "value": "大伴咋"
    },
+   "ko": {
+    "language": "ko",
+    "value": "오토모 노 퀴"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Otomo no Kui"
+   },
    "yue": {
     "language": "yue",
     "value": "大伴咋"
@@ -729750,8 +729896,8 @@
     "value": "大伴咋"
    }
   },
-  "lastrevid": 2555000200,
-  "modified": "2026-10-08T11:14:52Z",
+  "lastrevid": 2555053658,
+  "modified": "2026-10-08T15:12:33Z",
   "ns": 0,
   "pageid": 32541653,
   "sitelinks": {

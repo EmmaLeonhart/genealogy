@@ -781880,6 +781880,26 @@
     {
      "language": "ja",
      "value": "茶地宮"
+    },
+    {
+     "language": "ja",
+     "value": "モモゾノ・アイド"
+    }
+   ],
+   "ko": [
+    {
+     "language": "ko",
+     "value": "모모조노 아이도"
+    }
+   ],
+   "mul": [
+    {
+     "language": "mul",
+     "value": "Toohito Aido"
+    },
+    {
+     "language": "mul",
+     "value": "Momozono (Toohito) Aido"
     }
    ],
    "pt": [
@@ -781944,6 +781964,10 @@
     {
      "language": "zh",
      "value": "桃園,"
+    },
+    {
+     "language": "zh",
+     "value": "莫莫佐诺·艾多"
     }
    ],
    "zh-hk": [
@@ -783325,6 +783349,47 @@
      },
      "rank": "normal",
      "type": "statement"
+    },
+    {
+     "id": "Q313864$DE8B1777-063E-4656-A870-F5FB246E2EB9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141637029",
+        "numeric-id": 141637029
+       }
+      },
+      "hash": "63b73adfbea5ccc58cebb80575148a9b3cb0d4ec",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bf73ed70f442186d188e363dd494b9d5dd586417",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006602265123"
+          },
+          "hash": "dd1c7cbe69165ae8838d68225351e03aa813e6ad",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P244": [
@@ -783389,6 +783454,47 @@
      },
      "rank": "normal",
      "type": "statement"
+    },
+    {
+     "id": "Q313864$E2B1F15B-0D80-45CE-8B94-8D79D19E46AD",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141636958",
+        "numeric-id": 141636958
+       }
+      },
+      "hash": "acf6a1bdffb2d73987f058ccff8a53dd10cccd6a",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "0bc2b918f0958b3f24d786a14e89fc8e025b6f32",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006602269108"
+          },
+          "hash": "4ec43e768c30a85c440af2762e59e7fa559556ea",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P26": [
@@ -783436,6 +783542,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q313864$B9B79DD3-B766-4E71-8544-7657DC0C5E72",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141633826",
+        "numeric-id": 141633826
+       }
+      },
+      "hash": "035f955c50ba07e1458278adda3f40cfe47a23ad",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "aed022b657d644da91d12fea618f7b4564ba274b",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006602233132"
+          },
+          "hash": "9119dc62d8208c00a1d308f97d7e5232b6adbd58",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P2600": [
@@ -783466,6 +783613,38 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q313864$F7D27B39-6B63-4269-95DA-B14B0BC39CC5",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000006602233132"
+      },
+      "hash": "9119dc62d8208c00a1d308f97d7e5232b6adbd58",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Momozono (Toohito) Aido"
+        },
+        "hash": "29191573fac0e5b188f69a8daf4b3d433e687a6c",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -783860,6 +784039,47 @@
       "snaktype": "value"
      },
      "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q313864$FA08EAF6-A185-4F0A-832B-0BAD01FC9557",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q109778738",
+        "numeric-id": 109778738
+       }
+      },
+      "hash": "020762d9735c71f6c161d665227794f43347500f",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "aed022b657d644da91d12fea618f7b4564ba274b",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006602233132"
+          },
+          "hash": "9119dc62d8208c00a1d308f97d7e5232b6adbd58",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
      "type": "statement"
     }
    ],
@@ -784464,6 +784684,10 @@
     "language": "ms",
     "value": "Maharaja Momozono"
    },
+   "mul": {
+    "language": "mul",
+    "value": "Momozono"
+   },
    "nan": {
     "language": "nan",
     "value": "Momozono Thian-hông"
@@ -784557,8 +784781,8 @@
     "value": "桃園天皇"
    }
   },
-  "lastrevid": 2553861630,
-  "modified": "2026-10-06T10:06:58Z",
+  "lastrevid": 2555053134,
+  "modified": "2026-10-08T15:09:25Z",
   "ns": 0,
   "pageid": 301799,
   "sitelinks": {
@@ -900009,6 +900233,10 @@
     "language": "cs",
     "value": "švédská hraběnka"
    },
+   "de": {
+    "language": "de",
+    "value": "schwedische Gräfin und Salonnière (1649-1727)"
+   },
    "en": {
     "language": "en",
     "value": "Swedish countess (1649-1727)"
@@ -900028,6 +900256,14 @@
     "language": "cs",
     "value": "Magdalena Stenbocková"
    },
+   "de": {
+    "language": "de",
+    "value": "Magdalena Stenbock"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "Magdalena Stenbock"
+   },
    "mul": {
     "language": "mul",
     "value": "Magdalena Stenbock"
@@ -900041,11 +900277,16 @@
     "value": "Магдалена Стенбок"
    }
   },
-  "lastrevid": 2552388126,
-  "modified": "2026-10-03T02:09:43Z",
+  "lastrevid": 2555053717,
+  "modified": "2026-10-08T15:12:54Z",
   "ns": 0,
   "pageid": 4760926,
   "sitelinks": {
+   "dewiki": {
+    "badges": [],
+    "site": "dewiki",
+    "title": "Magdalena Stenbock"
+   },
    "enwiki": {
     "badges": [],
     "site": "enwiki",
@@ -1040300,6 +1040541,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q7138920$95439FD3-7D93-4B9F-AC72-B5F10AEEF2F2",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141633806",
+        "numeric-id": 141633806
+       }
+      },
+      "hash": "a06b40e044099da87945511165f553dde22cee0d",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "afe78b98d29b1e15f1d8f6f03424841968b557d0",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006602384032"
+          },
+          "hash": "5e1336eb24a382dec1388c465e58cf435f76372f",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P2600": [
@@ -1040330,6 +1040612,38 @@
       "property": "P2600",
       "snaktype": "value"
      },
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q7138920$24465ABC-BB62-4E9B-881F-7054027E1685",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000006602384032"
+      },
+      "hash": "5e1336eb24a382dec1388c465e58cf435f76372f",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Tomiko Ichijo"
+        },
+        "hash": "5604c62c7210b4565c01a72e16d22afe0b7c474e",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
      "rank": "normal",
      "type": "statement"
     }
@@ -1040543,6 +1040857,47 @@
      },
      "rank": "normal",
      "type": "statement"
+    },
+    {
+     "id": "Q7138920$51115E5E-EF75-4C0F-B3E6-08CB50E71434",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q109778738",
+        "numeric-id": 109778738
+       }
+      },
+      "hash": "020762d9735c71f6c161d665227794f43347500f",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "afe78b98d29b1e15f1d8f6f03424841968b557d0",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000006602384032"
+          },
+          "hash": "5e1336eb24a382dec1388c465e58cf435f76372f",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -1040696,6 +1041051,10 @@
     "language": "ko",
     "value": "이치조 도미코"
    },
+   "mul": {
+    "language": "mul",
+    "value": "Ichijō Tomiko"
+   },
    "ru": {
     "language": "ru",
     "value": "Итидзё Томико"
@@ -1040717,8 +1041076,8 @@
     "value": "一條富子"
    }
   },
-  "lastrevid": 2553861894,
-  "modified": "2026-10-06T10:08:10Z",
+  "lastrevid": 2555053501,
+  "modified": "2026-10-08T15:11:36Z",
   "ns": 0,
   "pageid": 7036112,
   "sitelinks": {

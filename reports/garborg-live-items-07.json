@@ -876333,6 +876333,999 @@
   "title": "Q56299975",
   "type": "item"
  },
+ "Q57141255": {
+  "aliases": {
+   "en": [
+    {
+     "language": "en",
+     "value": "Adela Vicomtesse de Carlat"
+    }
+   ]
+  },
+  "claims": {
+   "P1185": [
+    {
+     "id": "Q57141255$74BE5865-B65C-4649-A260-A8D7E20AD79E",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "112680"
+      },
+      "hash": "dd9d1963cde64bf7d673067f6be7b93dc592fc4a",
+      "property": "P1185",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P1819": [
+    {
+     "id": "Q57141255$c9b8dee5-b286-4e29-b26b-60b779a11fef",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "I00197692"
+      },
+      "hash": "46e3affd5139f6971cfd5e4536e902ab102b31b2",
+      "property": "P1819",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P21": [
+    {
+     "id": "Q57141255$b3fbf099-464f-ef16-5eab-fe25bae6ac55",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581072",
+        "numeric-id": 6581072
+       }
+      },
+      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "75fc645c5652700f7c3b72e2758c711c971d853a",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000000424678903"
+          },
+          "hash": "7338b08b7d7a3898c62051291ae4f6d86e016145",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "Q57141255$13850a61-4899-db9c-62a1-8e619fe7a6fb",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q57141145",
+        "numeric-id": 57141145
+       }
+      },
+      "hash": "bf249aea80e2dc3d2b74ec053ab6bc9f6a8c8a4f",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bd0aafb79093aa4c9735c0ac3a28b83444201419",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/AUVERGNE.htm"
+          },
+          "hash": "f52b1dced9ab9abcfa674321838b33804c7e55e8",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q57141255$3d36f36d-4fff-ddb7-cbb1-a3a67102caaf",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q57141206",
+        "numeric-id": 57141206
+       }
+      },
+      "hash": "5d4c7e68cfe51c7fc80174b5b5406ba1bca15d43",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bd0aafb79093aa4c9735c0ac3a28b83444201419",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/AUVERGNE.htm"
+          },
+          "hash": "f52b1dced9ab9abcfa674321838b33804c7e55e8",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P26": [
+    {
+     "id": "Q57141255$e84e1b80-4b09-d715-7139-afd742c893c0",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q2929975",
+        "numeric-id": 2929975
+       }
+      },
+      "hash": "5398f279cfff732290c42b36cf78663d3e3cc943",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bd0aafb79093aa4c9735c0ac3a28b83444201419",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/AUVERGNE.htm"
+          },
+          "hash": "f52b1dced9ab9abcfa674321838b33804c7e55e8",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q57141255$86C64EF0-2CA4-454E-BC9E-648F4E646875",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000000424678903"
+      },
+      "hash": "7338b08b7d7a3898c62051291ae4f6d86e016145",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Adela Vicomtesse de Carlat"
+        },
+        "hash": "8b9013a71ffa22526e35908bdb1e9a54aee205dd",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2949": [
+    {
+     "id": "Q57141255$2031360C-CB70-42D6-A534-E6040EB64E91",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Carlat-2"
+      },
+      "hash": "d1bb57d04559eb3e04b5013ba8e9e5b4a7de8667",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Adela Vicomtesse de Carlat de Carlat (Carlat) (est. 1030 - aft. 1071)"
+        },
+        "hash": "d6a18e1b72e9935e4cc676ff9939bac17f3b3111",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q57141255$ff8a8acf-4505-ce94-2332-e1cf71720336",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "75fc645c5652700f7c3b72e2758c711c971d853a",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000000424678903"
+          },
+          "hash": "7338b08b7d7a3898c62051291ae4f6d86e016145",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q57141255$a79f64cb-4409-f86f-f9b4-63cf075f2342",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q328700",
+        "numeric-id": 328700
+       }
+      },
+      "hash": "0099ed859bbd644b87adc1315fdb864462a22071",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "89e001dc8c6278c4b0c916a232db467c546e8acb",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/toulnoreast.htm"
+          },
+          "hash": "2661abcfe32e1caa4987fdfbafcbfad77d04752a",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      },
+      {
+       "hash": "75fc645c5652700f7c3b72e2758c711c971d853a",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000000424678903"
+          },
+          "hash": "7338b08b7d7a3898c62051291ae4f6d86e016145",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q57141255$1c20e3ab-4783-a9ad-bdbb-eb62dc00b138",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q3431369",
+        "numeric-id": 3431369
+       }
+      },
+      "hash": "01e01cf4f828c42aa162e0960b3fee73b2bea80c",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "89e001dc8c6278c4b0c916a232db467c546e8acb",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/toulnoreast.htm"
+          },
+          "hash": "2661abcfe32e1caa4987fdfbafcbfad77d04752a",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      },
+      {
+       "hash": "56296c22fda8ff0509f71ed7cc067bcbe11856ac",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q19847326",
+            "numeric-id": 19847326
+           }
+          },
+          "hash": "18a7eccf050ab7390888344c498336e62366cbdb",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q57141255$d6f0223f-4d5f-0eea-0735-db44998a547b",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q57143595",
+        "numeric-id": 57143595
+       }
+      },
+      "hash": "3435aeab7d9ca1c285a7362cd5c0b4c01b4c1b94",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "89e001dc8c6278c4b0c916a232db467c546e8acb",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/toulnoreast.htm"
+          },
+          "hash": "2661abcfe32e1caa4987fdfbafcbfad77d04752a",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P4159": [
+    {
+     "id": "Q57141255$8DB8D8EF-2BBA-45BE-819E-40873F918021",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Adyle_Carlat_(1)"
+      },
+      "hash": "e850f43bf2775f31bc3471dd8e67964fabf9be1f",
+      "property": "P4159",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P570": [
+    {
+     "id": "Q57141255$599f6d10-4410-bda3-7e9f-540187b92048",
+     "mainsnak": {
+      "datatype": "time",
+      "hash": "47120b7358ae3d3ae5f0762e83028363c1caef4a",
+      "property": "P570",
+      "snaktype": "somevalue"
+     },
+     "qualifiers": {
+      "P1319": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+          "precision": 9,
+          "time": "+1071-00-00T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "dc5a7c23138f5ebe567733cef3b004cae35415f9",
+        "property": "P1319",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1319"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "bd0aafb79093aa4c9735c0ac3a28b83444201419",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q13419312",
+            "numeric-id": 13419312
+           }
+          },
+          "hash": "6c5200032612ac24e864bce84ac2f1c729591d54",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2018-10-09T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "96becaceaa7b2f863d73ea7822962b7e674b3269",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P854": [
+         {
+          "datatype": "url",
+          "datavalue": {
+           "type": "string",
+           "value": "http://fmg.ac/Projects/MedLands/AUVERGNE.htm"
+          },
+          "hash": "f52b1dced9ab9abcfa674321838b33804c7e55e8",
+          "property": "P854",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P854",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q57141255$16A6DB76-A9E5-43A4-AF2A-BE55D50D9F08",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q18175375",
+        "numeric-id": 18175375
+       }
+      },
+      "hash": "06409d4d9891da53a2aaa980caabc5f13d5a40a8",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "Q57141255$0576111E-A6DF-47C5-AA42-A0E77FE87A62",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q16146675",
+        "numeric-id": 16146675
+       }
+      },
+      "hash": "0241d2f7b844dfdd5537bbbf8b657cd70218e88a",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P7929": [
+    {
+     "id": "Q57141255$0D3484AE-5F20-4A24-B188-B631EBBCC2B2",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "p=adele;n=de carlat"
+      },
+      "hash": "74545357b76794048fc7d6daa1139ae8ea21de07",
+      "property": "P7929",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P8172": [
+    {
+     "id": "Q57141255$C523D2C3-E429-4F0A-866A-63317DFECE37",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "sg.149449"
+      },
+      "hash": "e87977749eabcc42a2e755dee940c0f36c53bd29",
+      "property": "P8172",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "103ba26910a63fd12453e5bc5a6e28b2fcf40dbb",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q93482363",
+            "numeric-id": 93482363
+           }
+          },
+          "hash": "c55598288e81315e1551813f8f8b05fb267a277b",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "en": {
+    "language": "en",
+    "value": "(1060 - 1115)"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "vicomtesse de Carlat"
+   },
+   "ru": {
+    "language": "ru",
+    "value": "виконтесса Карлата"
+   }
+  },
+  "id": "Q57141255",
+  "labels": {
+   "ast": {
+    "language": "ast",
+    "value": "Adèle de Carlat"
+   },
+   "ca": {
+    "language": "ca",
+    "value": "Adela de Carlat"
+   },
+   "en": {
+    "language": "en",
+    "value": "Adèle de Carlat"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "Adèle de Carlat"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "アデラ・ヴィコムテッセ・デ・カルラト"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Adela Vicomtesse de Carlat"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "Adèle de Carlat"
+   },
+   "ru": {
+    "language": "ru",
+    "value": "Адель де Карлат"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "阿德拉·维科姆特塞·德·卡尔拉特"
+   }
+  },
+  "lastrevid": 2555082875,
+  "modified": "2026-10-08T17:26:46Z",
+  "ns": 0,
+  "pageid": 57058369,
+  "sitelinks": {},
+  "title": "Q57141255",
+  "type": "item"
+ },
  "Q5756071": {
   "aliases": {},
   "claims": {
