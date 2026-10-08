@@ -59,7 +59,8 @@ if %errorlevel% equ 0 (
 
 set "BOOT_PROMPT=Read queue.md and work its FIRST item, on its own, never combined with another item. Do not skip it, even if it says it is waiting on Emma or blocked: if it is stuck on a question, make the call yourself, do it, and record the decision and why in devlog.md. Only when it is done go on to the next item, the new first one. Follow the queue-driven-workflow skill: finish an item, delete it from queue.md, append a dated devlog.md entry in the same commit, then push. Ask me before anything destructive."
 
-"%CLAUDE_EXE%" "%BOOT_PROMPT%"
+REM --remote-control added 2026-10-07 at Emma's request: every launcher must start a session she can reach from her iPhone. The name is explicit because the flag takes an optional value.
+"%CLAUDE_EXE%" --remote-control "genealogy" "%BOOT_PROMPT%"
 
 echo.
 echo Claude Code exited with code %errorlevel%.
