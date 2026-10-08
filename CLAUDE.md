@@ -695,6 +695,10 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   is created. The worked case: Anders Petter Nilsson's Geni parents (Anders Gustaf Olsson) are left out because
   his patronymic Nilsson makes Niklas Olsson his father beyond doubt. That is the only such case among the 21; the
   rest are real disputes.
+- **⛔ AN UNNAMED PERSON AGAINST A NAMED ONE IS ONE PERSON. Ruled 2026-10-07 (Emma):** *"an nn on one with a name
+  on another is not two different people it's just one has a name one doesn't."* When one tree has `NN` (or an unnamed
+  record) in a slot and the other tree a named person in the same slot, they are the same person; the missing name is
+  not evidence of a second person. A written principle for the session's own judgment, never code.
 - **⛔ BE CAUTIOUS ABOUT REMOVING IDS. Ruled 2026-10-04 (Emma):** adding and removing Geni and FamilySearch ids
   over and over causes problems. An id comes off an item only when the record is clearly another person (Herman II
   of Swabia against Hermann von Arnsberg-Werl), never when it is one side of a disputed parentage.

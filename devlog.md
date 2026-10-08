@@ -53633,3 +53633,8 @@ FamilySearch records (verdict only; protected items, not edited).
   their relatives; the 8 FamilySearch-keyed ones cannot be until FamilySearch creations resume (`CREATIONS_PAUSED` in
   `build-familysearch-day.py`; Emma said today she does not recall setting that pause). NEEDS-DECISION (Emma): lift
   the pause or not.
+
+- **Emma, 2026-10-07: "an nn on one with a name on another is not two different people it's just one has a name one
+  doesn't."** Written into CLAUDE.md as a principle. Applied to the ancestor-frontier verdicts so far: 10 verdicts on
+  cases 2, 11, 44, 82, 165, 193, 229, 230, 231 changed from UNSURE to SAME (case 82's other candidate, Anne, to
+  DIFFERENT: the unnamed wife's children match Marit Olsdatter Rott).
