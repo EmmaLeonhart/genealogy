@@ -54200,3 +54200,8 @@ father of Moses Isserles (b. 1520); the date, not the link, looks wrong. Item de
 
 New section on `User talk:日巫女`, 20:07 UTC: "'NN', 'fra', '1st', 'wife', 'II' (and many others) are not family names".
 Not yet addressed; queued at the end as an error report (the standing place for error reports), before any new run.
+
+## 2026-10-08 14:2x PDT: talk page: OBender12 added to "Strange family names"
+
+21:15-21:16 UTC: "You also shouldn't add non-English labels to the English language for those names that are not
+transliterated (鄭, 西園寺), and search if they exist in the other language." Queued at the end as an error report.
