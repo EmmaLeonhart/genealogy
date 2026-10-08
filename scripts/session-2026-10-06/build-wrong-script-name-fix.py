@@ -4,7 +4,7 @@ For every live link in `reports/name-links-wrong-script-live-2026-10-06.tsv` who
 `reports/wrong-script-name-links.tsv`, and that the account added (or that came with our creation, no separate
 edit, on an item the account created): remove the wrong item and add the Latin-script one, unless the item already holds it. Links added by
 other editors are left alone, and protected items are skipped. Re-checks each item live first.
-Writes `reports/wrong-script-name-fix-2026-10-06.qs`.
+Writes `reports/session-2026-10-06/wrong-script-name-fix-2026-10-06.qs`.
 
     python scripts/session-2026-10-06/build-wrong-script-name-fix.py
 """
@@ -59,7 +59,7 @@ for r in sorted(mine, key=lambda r: int(r["item"][1:])):
     out.append(line)
     if right not in held:
         out.append(f"{q}|P735|{right}")
-(ROOT / "reports/wrong-script-name-fix-2026-10-06.qs").write_text("\n".join(out) + "\n", encoding="utf-8")
+(ROOT / "reports/session-2026-10-06/wrong-script-name-fix-2026-10-06.qs").write_text("\n".join(out) + "\n", encoding="utf-8")
 print(f"{len(links)} live links on overlaid tokens: {len(mine)} ours, {len(others)} by other editors (left alone)")
 print(f"{sum(1 for l in out if l.startswith('-'))} removals, {sum(1 for l in out if not l.startswith('-'))} additions; "
       f"skipped {len(skipped)}: {skipped[:5]}")

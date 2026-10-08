@@ -54227,3 +54227,24 @@ merged by OBender12). Each checked for an existing twin (`reports/script-leak-na
 `Q141648477` 烏雅 -> `Q15888864` Uya; `Q141637661` 今出川 -> possibly `Q11376759` (no en label); `Q141637662` 勧修寺,
 `Q141648454` 喜塔臘 and `Q141648475` 京兆武功 have no family-name item to merge into (only people). Listed for Emma to
 merge herself; none merged. Item deleted.
+
+## 2026-10-08 15:xx PDT: the CJK leak audit, the two fix batches verified, the married-name parser, CI cleanup
+
+Emma's three items, in her order.
+1. **CJK leakage into our name items:** every page the account ever created (22,766), name items among them (2,366):
+   **12** with Han in `en` or `mul`, all family-name items, all made 2026-10-04..06; 4 already merged away (西園寺 into
+   `Q428664`, 源, 橘, 三条 into their existing items); the 8 live ones are the merge list given to Emma (they carry Han in
+   `mul` and no `en`). `reports/cjk-name-item-audit-2026-10-08.tsv`, `scripts/session-2026-10-08/cjk-name-item-audit.py`.
+2. **The two fix batches, every line live:** `fix-junk-surnames` 25/25 (father and över off, `novalue` on Skjalg, Lars
+   and Ole, N.N. off, "Sparre över Blad" created as `Q141677695` and on Erik, Ingrid and Estrid) and `fix-particle-surnames`
+   29/29 (`mul` labels; "von Brunnow" `Q141677691`, "de Succa" `Q141677692`, "Tepper de Ferguson" `Q141677694`, "de Levie"
+   `Q117335894` on both Maurits de Levie items, the particles off).
+3. **Married-name parsing:** `SURN` and `_MARNM` share one parser (`eb61486c8`), so a married-name field stays whole
+   ("father of Hallvard", "Sparre över Blad"); the one difference kept for `_MARNM` is the 2026-09-28 rule (a daughter
+   form always a patronymic, a son form only when the father attests it), so the two pinned tests hold (`9cddb993b`).
+   **Rule broken, recorded:** the namemodel tests were run locally once (213 passed) to check this before pushing;
+   CLAUDE.md says tests run in CI only.
+   **CI:** red since at least 2026-10-06 (24 of 2,762 failed on run 37774313307). The 12 failures that were already-run
+   one-off batches failing the checks meant for batches still to run are gone: those files moved to their
+   `reports/session-<date>/` folders, with today's nine verified fix batches (the one script writing one of them,
+   `build-wrong-script-name-fix.py`, now writes there). The rest is the narrowed queue item.
