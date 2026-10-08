@@ -53755,3 +53755,24 @@ already had two. `5b470a97d` ran in the day, and `c2a26afa5` was audited and run
 `reports/daily-audit/2026-10-08.md`: the session counted the day in UTC, where it was already 10-08. That second run
 was against the scale-back. It finished (4,725 of 4,725 commands). `561d3c89f` is the next one, audited and run after
 midnight Pacific; dates in this loop are Pacific from now on.
+
+## 2026-10-07 23:30 PDT: Geni drift, part 2: FamilySearch, and the positional walk behind a third of it
+
+`scripts/session-2026-10-08/drift-familysearch.py` -> `reports/geni-drift-familysearch-2026-10-08.csv`: for each of the
+58, the live item (label, `P2889`, parents) and what that FamilySearch id is in our own downloads. Then the 58 Geni ids
+against `reports/familysearch-positional-walk-pairs.tsv`: `reports/geni-drift-walk-2026-10-08.csv`.
+
+**Unexpected, and it changes the reading of the item:** 31 of the 58 Geni ids were paired by the positional walk, and on
+19 of them the FamilySearch id now on the Wikidata item is the walk's pick. Examples: `Q141532596` Berit Rasmusdatter
+Høyland, whose Geni id the walk paired with Elen Svensdatter Fosse (`G2T9-19V`) in a spouse slot on "born 1660 vs 1660"
+alone, which is how the item came to carry Elen's parents and ids; `Q141538482` Kierstin Slut, paired in a mother slot
+with a man, Mårten Andersson (`L63V-WW2`), on shared name tokens; `Q141422290` "Nils", paired with Isak Abrahamsson on
+"born 1569 vs 1569". For these the second person is the walk's FamilySearch render written onto the Geni id, so the
+Geni profile itself may never have changed. The other 27 were not touched by the walk; the Bjørgås, Bjørgo and Mestad
+alternation is among them and its cause is not known yet (NEEDS-INVESTIGATION, next part). Two groups are renames of
+whole lines with the structure intact, and FamilySearch agrees with the new names: Güntersberg (Günther -> Henning,
+Heinrich -> Voltekin Walter, Burchard -> "Herr auf Grutkow", Heinrich -> Jakub Kaszuba, each father link still pointing
+at the renamed father) and Eickstedt (Tidericus -> Friedrich V, Theodericus II -> Dietrich III). Several are one person
+under two forms (Lars = Laurentius Lang, Markward = Merklin Pfinzing, Els = Elisabeth Isolt, Álfheiði = Alvhild).
+Also found: `Q141498427`'s live label is the bare surname "Gustavsson" (Signe Maria Wedberg/Gustavsson). Nothing
+changed on Wikidata.
