@@ -53686,3 +53686,15 @@ father carries the same token) was put over every verdict in `reports/patronymic
 - The 16 identity-drift rows belong to the identity-drift queue item; the 5 unverifiable ones have no usable father
   name and nothing to check.
 - Left: the 10 father mismatches, which need Geni (off limits until 2026-10-21). The queue item is cut down to them.
+
+## 2026-10-08: the 2026-10-05 session-errors item closed
+
+Every error on the list had its guard in place except one marked open: a batch built from a snapshot taken before a
+hand creation could create that person again, so the audit must compare each creation against items created since.
+That is `scripts/hold-live-creations.py`, run on every batch before it runs (CLAUDE.md since 2026-10-06): it looks each
+creation up live by `P2600` and `P2889` and holds out only that creation's block, which also covers the "hold out the
+block, never the paragraph" guard. Item deleted.
+
+Also on the patronymic father-mismatch item (still blocked on Geni until 2026-10-21): in all 10 cases our data has a
+single father, so the father the patronymic names is not in our exports; the same shape as Bertrand Olav Vigdel
+(`Q138687615`), whose tree father John Jonassen Heigre is, per Emma, his adoptive father. Recorded on the item.
