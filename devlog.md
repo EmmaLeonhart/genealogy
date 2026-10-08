@@ -53951,3 +53951,30 @@ reading it waited on would not come even after the date.
 
 If a father the patronymic names turns up later in FamilySearch or on Wikidata, it is added beside the existing one
 as a disputed parentage, never in its place. Item deleted.
+
+## 2026-10-08 08:2x PDT: the four Aido and two Ōtomo duplicates merged
+
+The queue's first item, blocked since this morning on the Chrome window being hidden. Taking a screenshot of the tab
+brought it on screen, the merge gadget then added "Merge with…", and all six went through the Wikidata UI merge gadget
+(no edit summary, "merge into the older entity" left on, which is the imperial item in each case):
+
+- `Q141633806` -> `Q313864` Momozono
+- `Q141637029` -> `Q313870` Sakuramachi
+- `Q141636958` -> `Q10943125` Empress Dowager Kaimei (Anekōji Sadako)
+- `Q141633826` -> `Q7138920` Ichijō Tomiko
+- `Q141635487` -> `Q11432357` Ōtomo no Nagatoko
+- `Q141637004` -> `Q30932358` Ōtomo no Kui
+
+Checked with `wbgetentities`: all six from-items are now redirects to their targets.
+
+**Unexpected, flagged:** the Kaimei merge stopped halfway on the first try. The gadget moved the content
+(`wbmergeitems-to:Q10943125`, 15:10:57 UTC) and cleared the item ("Clearing item to prepare for redirect"), but the
+redirect was not created, which left `Q141636958` as an empty item with no label. Running the gadget again on the
+empty item made the redirect. The other five needed one run each.
+
+The common labels for these items in `label-applications.tsv` (rows written 2026-10-06/08) now point at redirects whose
+targets already carry those exact labels, so the retire step should find them live and drop them. Nothing else was
+changed. Item deleted.
+
+Git: local HEAD carried `840f874d5`, the same patch another session had pushed as `86451dcba`; moved onto origin/main with
+`git reset --keep` (Emma authorized it by AskUserQuestion after the permission checker refused it).
