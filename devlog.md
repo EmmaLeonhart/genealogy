@@ -53799,3 +53799,16 @@ bearer is Isak Gustaf Clason Sr.); removed the hedged alias "Palaiologa ?" on th
 Noted, not blocking: `Q141584252`'s mul label carries her husband's and son's names, `Q141565642`'s zh label her married
 name. `hold-live-creations.py` held 48 creations already live. Ran `reports/wikidata-garborg-day-manual-audited-561d3c89f-held.txt`
 (184 creations) in a new QuickStatements tab with Run.
+
+## 2026-10-08 00:5x PDT: Geni drift, part 3: the 19 walk cases written up
+
+`reports/geni-drift-cases-2026-10-08.md`, Part A, the session's verdicts in plain words. Of the 19 items carrying the
+positional walk's FamilySearch pick: **5 wrong**, where the walk put another person on the item, each paired on a
+birth year or shared name tokens alone (`Q141532596` Berit Rasmusdatter Høyland / Elen Svensdatter Fosse; `Q141538482`
+Kierstin Slut / Mårten Andersson, a man in a mother slot; `Q141422290` Nils / Isak Abrahamsson; `Q141217433` Per Persson
+Hagman / his brother Daniel Pehrsson; `Q141570661` Marit Svalesdatter Skas / Domild Svensdatter), with what belongs off
+each; **12 the same person** (name forms, farm names, an epithet, a wife known only by her husband's name, and the
+Güntersberg and Eickstedt lines, renamed on Geni on 2026-09-24 with the father links intact); **2 not settled** (Siri
+Madland / "Sigmund Madland"; Antoine de / Augustin Constant). Checked on the way: Anvilaquarius's 2026-10-03 merge of
+`Q141584329` into `Q141217433` was right (our duplicate of the same man, born 24 Sep 1754), but it brought Daniel's
+FamilySearch id along. Nothing changed on Wikidata.
