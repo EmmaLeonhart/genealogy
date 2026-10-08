@@ -54105,3 +54105,38 @@ the current label. In 4 of them it was the only given name. All 24 removed, and 
 `Q141560557` Ole Tollefsen Storla (`reports/fix-drift-leftover-names-2026-10-08.qs`, browser run, 25 of 25 landed,
 checked with the new `scripts/verify-qs-removals.py`, which also reads removal lines). Oleiv, Gietrud and Giertrud have
 no given-name item; the pipeline's name step handles them. Item deleted.
+
+## 2026-10-08 15:xx PDT: error report `Q11979148` "Jon Guttormsen" and its four companions: a Geni merge, two stepfathers, two records kept
+
+**`Q11979148` is not ours and its label is right.** It is the established item for Jon Guttormssøn, Bishop of Stavanger
+(d. 1577), with Wikipedia articles and a human-kept label since 2014. **Unexpected:** what was wrong was the family *we*
+put on it. Geni's profile `6000000001169087690` (put on the item by Einar Myre in 2022) is a merge of two men: two name
+records read Jon Gautesson Dall, two read "Jon Guttormson Larsgård, Biskop i Stavanger". Through it, on 2026-10-02/06,
+our batches gave the bishop Jon Gautesson Dall's father Gaute Ivarsson Sandvik, mother Guri Pedersdatter Finne, a wife
+Anna Eriksdatter Orm, daughter Gro Jonsdatter Dall, the patronymic Gautesson, and FamilySearch `L62Y-SZB`, which
+FamilySearch has as Jon Gautesson Dall, son of Gaute Ivarsen Dall. Jon Gautesson Dall already has his own item, ours:
+`Q141562475` (b. 1526, d. Jan 1578, wife Eline Eriksdatter Orm, three daughters, Gaute's son). Gaute and Guttorm are
+different names. Session's call ("a wrong identity is worse than a duplicate"): our additions came off the bishop and
+off the other side (Gaute's and Guri's `P40`, Anna's `P26`); `L62Y-SZB` and the Anna `P26` (both directions) went to
+`Q141562475`. Einar Myre's Geni id stays. `reports/fix-bishop-jon-guttormsson-2026-10-08.qs`, 12 of 12 landed; the 9
+removals are in `removed-statements.tsv` so the pipeline does not send them again.
+
+**The Talgje brothers** `Q141200111` Sæbjørn and `Q141216648` Tore Toresson Talgje had `P22` Sjur Matsson Holter (our
+batch, 2026-09-26, from Geni), their mother's other husband; FamilySearch has Tore Sæbjørnsen (`LHBY-FRQ`), which the
+patronymic Toresson fits. **Unexpected:** Sjur's item `Q141560737` carried `LHBY-FRQ` itself, the positional walk having
+paired the two father slots. **`Q141493432` Ragnhild Sæbjørnsdatter** had `P22` Eivind Underberge against FamilySearch's
+Sebjorn Talje (`G1FV-HRK`). Both are the Anders Petter Nilsson shape (the patronymic names the father beyond doubt, so
+the other side is omitted and no second parent is created): `P22` and the reverse `P40` removed for all three, and
+`LHBY-FRQ` off Sjur (Emma's 2026-10-07 rule on the other side's parent id). Tore Sæbjørnsen and Sebjorn Talje have no
+items and FamilySearch creations are paused, so the three have no father on Wikidata for now.
+`reports/fix-talgje-fathers-2026-10-08.qs`, 7 of 7 landed, recorded in `removed-statements.tsv`.
+**Unexpected, left alone:** the brothers' mother `Q141206060` Cecilie Mortensdatter is dated 1440-1465, before their
+births (1510, 1515); FamilySearch's mother is Cicilia Torgilsdatter. The mothers disagree, so both stay (disputed).
+
+**The two UNSURE ones, kept as they are.** `Q6188543` Sten Bengtsson (Bielke) carries `LX7S-BF3`, which FamilySearch names
+Ture Bengtsson Bielke but dates b. about 1343, d. 20 July 1408 at Marieberg: Sten's exact death date and place.
+`Q12306503` Claus Limbek carries `GTHZ-F1L`, named Henneke Nicolausen Limbek (the form for Claus's son Henneke) with b.
+about 1315, d. 1373, and Claus's family. In both the record shares the decisive facts of the item's man, so by "same
+person when the decisive facts match" and "an id comes off only when the record is clearly another person" they stay.
+Both ids were already added, removed and re-added once (2026-10-02/03); another removal would be the churn Emma warned
+about. New helper `scripts/show-person.py` (an item, its family with labels, ids, and non-batch edits). Item deleted.
