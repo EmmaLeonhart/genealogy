@@ -53877,3 +53877,23 @@ tree's current Geni data gives the same two, so they are Geni's own and stay. Th
 2026-10-01 from its Sigrid Sara Nilsdotter: `P735` Sigrid and Sara and `P5056` Nilsdotter. Removed (QuickStatements, new
 tab, checked live, added to `reports/removed-statements.tsv`). Her patronymic Jönsdotter against Geni's father Nils is a
 Geni-side mismatch, left for after 2026-10-21 with the patronymic item's ten.
+
+## 2026-10-08 04:xx PDT: Geni drift round 2: the unsettled cases settled, and a correction about Güntersberg/Eickstedt
+
+Emma: "do more analysis for the three unsettled cases ... and fix these things", and of Güntersberg and Eickstedt, "I
+don't know what's going on". `scripts/session-2026-10-08/drift-look.py` reads one case in full (live item, our tree's
+row, the FamilySearch records).
+
+**Correction first:** this morning's write-up called the Güntersberg and Eickstedt items "the same person, renamed on
+Geni". Wrong. The Güntersberg items are 15th-16th-century men on Geni (died about 1531, 1433, 1419); the walk paired
+them with 13th-century FamilySearch people (about 1240-1300) on the surname plus one shared given name. The Eickstedt
+pair was paired one generation down. Geni renamed nobody; the old labels are right. The walk's FamilySearch ids and
+aliases came off.
+
+The three unsettled cases: Siri Madland is the same woman (FamilySearch records her under her husband's name, "Sigmund
+Madland", the lost "Mrs" pattern Emma described); her family name "Sigmund" came off. Hallgrim Oxehode is Hallgrim (son
+Torstein Halgrimsen); the walk's given name Aslak came off. Niklas Olsson and Stina Larsdotter are right; the walk had
+put his brother Anders Gustaf's name and children on Niklas's Geni profile, and the family name "Andersson" came off
+both. Andres Ottarsen's father link to the Geni person's father Knut Mestad came off, both directions.
+`scripts/session-2026-10-08/drift-fix2.py`: 12 statements (QuickStatements, new tab) and 4 aliases, all checked live,
+all in `reports/removed-statements.tsv`. The queue item is cut down to its last four loose ends.

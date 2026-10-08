@@ -144,3 +144,33 @@ Margareta Elisabet Brunlöf (no FamilySearch id, no parents on the item).
 47 of the 58 trace to the positional walk (31 in its current pairs, 16 in its earlier zipper runs); the Geni profiles
 themselves did not change person in those. The two lines renamed on Geni (Güntersberg, Eickstedt) are the real Geni
 changes, and FamilySearch agrees with Geni's new names there.
+
+## Round 2 (2026-10-08, after Emma: "do more analysis for the three unsettled cases ... and fix these things")
+
+**Correction to Part A.** The Güntersberg and Eickstedt items were listed above as "the same person, renamed on Geni".
+That was wrong. On Geni the Güntersberg items are 15th-16th-century men (died about 1531, 1433, 1419), and the
+FamilySearch people the walk gave them are 13th-century (Herr auf Grutkow about 1240, Voltekin Walter about 1260, Henning
+about 1300): paired on "von Güntersberg" plus one shared given name, two centuries apart. The Eickstedt pair was paired
+one generation down (our Theodericus II, 1185-1249, got FamilySearch's Dietrich III, the son of Theodoricus II; our
+Tidericus got Dietrich III's son Friedrich V). Geni renamed nobody; the "new names" were the walk's renders. The old
+labels are right. The walk's FamilySearch ids (5) and aliases (4) came off. Likely, not acted on: our Tidericus
+(Dietrich, son of Theodericus II) is FamilySearch's Dietrich III `LVGN-3YS`.
+
+- **`Q141562977` Siri Madland: the same woman.** Female in both our tree and FamilySearch `PHY3-2V4`, born about 1534, wife of
+  Sigmund Madland I, mother of Ola Sigmundsen Madland. FamilySearch (and Geni's latest version) record her under her
+  husband's name, "Sigmund Madland" (a "Mrs Sigmund" whose "Mrs" was lost); Siri is her own name from Geni's earlier
+  versions. The FamilySearch id stays; the family name "Sigmund" (her husband's given name, added 2026-09-28) came off.
+- **`Q141515038` Hallgrim Oxehode: the item is Hallgrim.** His son on the item is Torstein Halgrimsen ("son of Hallgrim");
+  Geni's own versions name the profile Hallgrim Oxehode, then Hallgrim Grisen. "Aslak Brattson Oxehode" is the walk's
+  FamilySearch `GSVR-494`, another son of Bratt (born about 1300, no children). The walk's given name Aslak (added
+  2026-10-02) came off; its FamilySearch id had already gone on 2026-10-07.
+- **`Q141382445` Niklas Olsson and `Q141382447` Stina Larsdotter: both right.** Two brothers, sons of Olof Svensson and Stina
+  Nilsdotter: Niklas (1827-1909, wife Stina Larsdotter 1828-1910, son Anders Petter Nilsson) and Anders Gustaf
+  (1824-1875, wife Anna Brita Andersdotter 1821-1914). The walk rendered Anders Gustaf's name and children onto Niklas's
+  Geni profile, which is why our tree shows "Anders Gustaf Olsson" with Niklas's dates. The 2026-09-09 merge in their
+  history was undone. The family name "Andersson" (added to both on 2026-10-06, the brother's family's) came off.
+- **`Q141564600` Andres Ottarsen:** his father link to Knut Mestad (the Geni person Knut Knutsen Mestad's father) came off,
+  and the reverse link on Knut Mestad.
+
+All 12 statements (QuickStatements, new tab) and 4 aliases (`wbsetaliases`) checked live: gone. All in
+`reports/removed-statements.tsv`.
