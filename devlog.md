@@ -53843,3 +53843,12 @@ The 14 items now carry no Geni id for the other person; that person can get an i
 started 00:14 PDT) had stopped at 00:24 PDT after 58 edits of 3,821 commands. From 01:47 PDT the account is running a
 QuickStatements background batch, #289821 "shintowiki round 3 part 1 2026-10-08" (Shinto shrine items, another
 project), not started here. The rest of the genealogy batch was not restarted: asked of Emma.
+
+## 2026-10-08 02:4x PDT: audit-then-run on batch 765642477, as today's batch
+
+Emma, by AskUserQuestion: "Run the new batch today" (today's `561d3c89f` had stopped at 58 edits when the tab group
+closed). Talk page nothing new; 10 items and 10 creations audited (`reports/daily-audit/2026-10-08-1791451686.md`).
+Held: the name item "wife" (a word made a married surname for three NN women; the same generator defect as "1st"), an
+NN daughter whose parents were born 1920 and 1925 (probably a living private person), and the comma label "Abraham
+Larsson Hirsch, Cronhjort". `hold-live-creations.py` held 13 already live. Ran
+`reports/wikidata-garborg-day-manual-audited-765642477-held.txt` (219 creations) in a new tab with Run.
