@@ -1,4 +1,4 @@
-"""Check a QuickStatements v1 file (adds and `-` removals of item-valued statements) against live Wikidata.
+"""Check a QuickStatements v1 file (adds and `-` removals of item- or string-valued statements) against live Wikidata.
 Usage: python scripts/verify-qs-removals.py <file.qs> [--wait MINUTES]
 Prints the lines not landed; exits 0 when all have, 1 otherwise. With --wait, re-checks every 30 s until done."""
 import json, sys, time, urllib.request
@@ -16,8 +16,10 @@ while True:
     missing = []
     for q, p, v in (l[:3] for l in lines):
         rm, q = q.startswith("-"), q.lstrip("-")
-        have = {(s["mainsnak"].get("datavalue", {}).get("value") or {}).get("id")
-                for s in ents[q].get("claims", {}).get(p, [])}
+        have = set()
+        for s in ents[q].get("claims", {}).get(p, []):
+            val = s["mainsnak"].get("datavalue", {}).get("value")
+            have.add(val.get("id") if isinstance(val, dict) else f'"{val}"')
         if (v in have) == rm:
             missing.append(("-" if rm else "") + f"{q}\t{p}\t{v}")
     if not missing or time.time() >= deadline:
