@@ -60,7 +60,11 @@ from genimerge import overlap as overlap_mod  # noqa: E402
 from genimerge.wikidata import WikidataClient, require_agent  # noqa: E402
 
 OUT = ROOT / "out" / "wikidata" / "p2600-all.tsv"
-CACHE = ROOT / "out" / "wikidata" / "cache"
+#: ⛔ A FRESH, EMPTY CACHE EVERY RUN (2026-10-08). This was `out/wikidata/cache`, which is committed,
+#: and the queries are the same every day, so every "refresh" since the cache files were committed read
+#: its answer back from disk: CI wrote `p2600-all.tsv: 518,975 -> 518,975 rows (+0)` while Wikidata held
+#: 542,043 `P2600` and 40,372 `P2889` statements (34,919 in the roster). A roster is a live read or nothing.
+CACHE = Path(__import__("tempfile").mkdtemp(prefix="roster-refresh-"))
 
 #: A fetch below this share of what the endpoint reports is a failed partition, not drift.
 #: Loose enough that ordinary churn between the count query and the partitions passes.

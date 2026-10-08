@@ -1487,6 +1487,89 @@ def drop_description_suffix(label: str, nsfx: str) -> str:
     return out or label
 
 
+def _drop_unpartnered_brackets(text: str) -> str:
+    """`text` without bracket characters that have no partner (`Ålesdatter?)` -> `Ålesdatter?`)."""
+    out, depth = [], 0
+    for ch in text:
+        if ch in "([":
+            depth += 1
+        elif ch in ")]":
+            if depth == 0:
+                continue
+            depth -= 1
+        out.append(ch)
+    if depth:
+        kept, remaining = [], depth
+        for ch in reversed(out):
+            if ch in "([" and remaining:
+                remaining -= 1
+                continue
+            kept.append(ch)
+        out = list(reversed(kept))
+    return "".join(out)
+
+
+def creation_label_debris(label: str, nsfx: str = "") -> tuple[str, str]:
+    """`(label, alias)` for a NEW item: the label with source debris taken out.
+
+    The error report from the audit of batch `8bb75afff` (2026-10-06): five creations went to
+    `mul`/`en` carrying what Geni had in the name line and nothing removed. Every other rule in
+    this module was in place; the creation block simply never ran these shapes through one.
+
+    - `NN Guttormsdatter Ålesdatter?)` (Geni writes `NN Guttormsdatter / Ålesdatter?)`): an
+      unpartnered bracket and an uncertainty `?`. The bracket goes, a `?` stuck to a word goes,
+      and a token that is nothing but `?` is an unknown name, `NN`.
+    - `Aude de Cornouailles Queen Consort of Brittany. France`: the whole tail is her `NSFX`.
+      § *A TITLE IS NOT A NAME — Geni already said so in `NSFX`. Drop titles, keep ordinals.*
+      So the person's OWN `NSFX` comes off the end unless it is an ordinal or a generation
+      suffix (`Acfred … II` keeps `II`), by exact trailing match as in `drop_name_suffix`.
+    - `Lars Dansson (Stolpe)`, `Acfred De Carcassone (de Montignac) II`: a bracketed part is
+      another name for the person, not part of the label. It comes out of the label, and the
+      form with the brackets opened (`Lars Dansson Stolpe`) is returned as the alias.
+    - `Peder Svensson Gubbe, Gavelius`: a comma separates alternatives. The label is what
+      comes before it, and the alias is the label with the first alternative swapped for the
+      rest (`Peder Svensson Gavelius`). A comma before an ordinal or generation suffix
+      (`Tore Underberge, III`, the recorded form) is not a separator and stays.
+
+    **New items only.** `derived-labels.csv` is not changed: an established item's label is
+    not touched by this. Never to empty: a label with no letter left is `NN`.
+    """
+    if not label:
+        return label, ""
+    text = " ".join(label.split())
+    # The person's own NSFX, unless it is an ordinal or generation suffix.
+    suffix = " ".join((nsfx or "").split())
+    if suffix and not generation_suffix_key(suffix) and not all(
+            is_numeral(t) for t in suffix.replace(",", " ").split()):
+        if text.endswith(suffix) and len(text) > len(suffix):
+            text = text[: -len(suffix)].rstrip(" ,")
+    text = _drop_unpartnered_brackets(text)
+    # `?` as a whole token is an unknown name; glued to a word it is an uncertainty mark.
+    toks = ["NN" if re.fullmatch(r"\?+", t) else t.strip("?") or t for t in text.split()]
+    toks = [t for i, t in enumerate(toks) if not (t == "NN" and i and toks[i - 1] == "NN")]
+    text = " ".join(toks)
+    alias = ""
+    if re.search(r"\([^()]*\)|\[[^\[\]]*\]", text):
+        alias = " ".join(re.sub(r"[()\[\]]", " ", text).split())
+        text = " ".join(re.sub(r"\s*(\([^()]*\)|\[[^\[\]]*\])", " ", text).split())
+    m = re.match(r"^(.*?)\s*,\s*(.+)$", text)
+    if m:
+        tail = m.group(2).strip()
+        if not (generation_suffix_key(tail) or all(is_numeral(t) for t in tail.split())):
+            head = m.group(1).strip()
+            words = head.split()
+            # Only a single capitalised word is an alternative name; `kasztelan kaliski` is
+            # an office, and it simply goes.
+            if not alias and len(words) > 1 and re.fullmatch(r"[^\W\d_a-z][^\W\d_]*", tail):
+                alias = " ".join(words[:-1] + [tail])
+            text = head
+    if not re.search(r"[^\W\d_]", text):
+        text = "NN"
+    if alias == text:
+        alias = ""
+    return text, alias
+
+
 def drop_title_tail(label: str) -> str:
     """`label` with a trailing title or territorial phrase removed. See `TITLE_WORDS`.
 
@@ -2509,6 +2592,8 @@ _NAME_ITEM_CLASS = {"Q101352": "family", "Q202444": "given", "Q12308941": "given
 
 
 _STORE_INDEX = None
+#: `{(folded label, "family"): [qid, ...]}`: the store's other items under a label already indexed.
+_STORE_FAMILY_ALT: dict = {}
 
 
 def store_name_item(token, usage):
@@ -2528,8 +2613,12 @@ def store_name_item(token, usage):
         _STORE_INDEX = _load_store_index()
     qid = _STORE_INDEX.get((token.casefold(), usage), "")
     # A family name links only by its exact English label and "family name" (Emma, 2026-10-03).
+    # **Every item the store holds under the label is tried, not only the first.** `Mintz` has
+    # two, `Q6871262` and `Q21492488`; the index kept the first, it did not fit, and the
+    # generator proposed a new `Mintz` beside `Q21492488`, which does (audit of 5f983b80b).
     if usage in ("family", "married") and qid and not family_item_fits(qid, token):
-        return ""
+        return next((alt for alt in _STORE_FAMILY_ALT.get((token.casefold(), usage), ())
+                     if family_item_fits(alt, token)), "")
     return qid
 
 
@@ -2601,7 +2690,9 @@ def _load_store_index():
             qid, kinds, _p31, labels = parts
             for kind in kinds.split("|"):
                 for label in labels.split("|"):
-                    index.setdefault((label.casefold(), kind), qid)
+                    key = (label.casefold(), kind)
+                    if index.setdefault(key, qid) != qid and kind == "family":
+                        _STORE_FAMILY_ALT.setdefault(key, []).append(qid)
     return index
 
 

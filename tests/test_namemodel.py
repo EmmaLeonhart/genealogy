@@ -1888,3 +1888,25 @@ def test_lowercase_no_is_the_japanese_particle_not_a_given_name():
     import namemodel as nm
     assert nm.name_shape("no") == ("no", "particle")
     assert nm.name_shape("No")[1] is None
+
+
+@pytest.mark.parametrize("label,nsfx,expected", [
+    # The five creations of the 8bb75afff audit (2026-10-06).
+    ("NN Guttormsdatter Ålesdatter?)", "", ("NN Guttormsdatter Ålesdatter", "")),
+    ("Aude de Cornouailles Queen Consort of Brittany. France",
+     "Queen Consort of Brittany. France", ("Aude de Cornouailles", "")),
+    ("Acfred De Carcassone (de Montignac) II", "II",
+     ("Acfred De Carcassone II", "Acfred De Carcassone de Montignac II")),
+    ("Lars Dansson (Stolpe)", "", ("Lars Dansson", "Lars Dansson Stolpe")),
+    ("Peder Svensson Gubbe, Gavelius", "", ("Peder Svensson Gubbe", "Peder Svensson Gavelius")),
+    # What stays: the recorded comma before an ordinal, an ordinary name.
+    ("Tore Underberge, III", "III", ("Tore Underberge, III", "")),
+    ("Anna Larsdotter", "", ("Anna Larsdotter", "")),
+    # An office after a comma goes, with no alias; a `?` token is an unknown name.
+    ("Marcin Zaremba z Kalinowy, kasztelan kaliski", "", ("Marcin Zaremba z Kalinowy", "")),
+    ("?? Martin", "", ("NN Martin", "")),
+    ("NN ?", "", ("NN", "")),
+])
+def test_creation_label_debris(label, nsfx, expected):
+    import namemodel as nm
+    assert nm.creation_label_debris(label, nsfx) == expected

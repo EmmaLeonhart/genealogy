@@ -50,7 +50,13 @@ USER = "日巫女"
 
 #: `P31` value -> the usage a person links to it with. Same table as `namemodel`.
 KIND = {"Q101352": "family", "Q202444": "given", "Q12308941": "given",
-        "Q11879590": "given", "Q3409032": "given", "Q110874": "patronymic"}
+        "Q11879590": "given", "Q3409032": "given", "Q110874": "patronymic",
+        # The finer patronymic classes (`live_name_items.CLASSES`). StarTrekker replaced `Q110874`
+        # with `Q130444148` masculine patronymic on our `Torstensen`, `Thoresen` and `Pettersson`
+        # (2026-09-18); with only `Q110874` here they dropped out of this file and were proposed
+        # again (audit of batch 8bb75afff, defect 3, still 9 of 15 holds in 5f983b80b).
+        "Q130444148": "patronymic", "Q130444179": "patronymic",
+        "Q10673705": "patronymic", "Q10476255": "patronymic"}
 
 
 def created_pages(ua):

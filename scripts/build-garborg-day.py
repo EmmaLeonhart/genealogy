@@ -56,7 +56,7 @@ from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
     names_a_relative as _namemodel_names_a_relative,
     lead_with_given_name, own_given_name, married_is_primary, married_name_of,
-    drop_description_suffix, drop_repeated_patronymic, generation_suffix_key,
+    creation_label_debris, drop_description_suffix, drop_repeated_patronymic, generation_suffix_key,
     normalise_generation_suffix, native_generation_labels, patronymic_culture, statements_for,
     suffix_is_native)
 
@@ -9614,6 +9614,12 @@ def main():
             if _rel:
                 _given = _rel.group(1).strip(" ?")
                 primary = f"{_given} NN" if re.search(r"[^\W\d_]", _given) else "NN"
+            # ⛔ Source debris never reaches a new item's label (error report from the audit of
+            # batch 8bb75afff, 2026-10-06): a stray bracket or `?`, a title out of `NSFX`, a
+            # bracketed or comma-separated second name. `namemodel.creation_label_debris`.
+            primary, _debris_alias = creation_label_debris(primary, _nsfx_new)
+            if birth:
+                birth = creation_label_debris(birth, _nsfx_new)[0]
             # `generation` rather than `_nsfx_new`: the suffix may sit on a name record
             # this person's `fields` row is not, and `primary` is rebuilt from `GIVN` +
             # `_MARNM` for a married person, which drops anything the label carried.
@@ -9656,6 +9662,8 @@ def main():
             # cannot live in `mul`.
             if birth and qs(birth) != qs(mul_form):
                 lines.append(f'LAST\tAmul\t"{qs(birth)}"')
+            if _debris_alias and qs(_debris_alias) not in (qs(mul_form), qs(birth or "")):
+                lines.append(f'LAST\tAmul\t"{qs(_debris_alias)}"')
 
             # The CJK labels transliterate the PRIMARY form, which is `mul` -- `CLAUDE.md`
             # § *The MARRIED name is the real name*. So they follow the normalised label, not

@@ -54001,3 +54001,57 @@ creations, ended 05:26 PDT). The CLAUDE.md rule says to run a new batch as it la
 queue's scale-back item is one batch a day, and today's ran at 04:04–05:26 PDT. Session call: her later answer wins,
 so the batch waits for tomorrow's morning batch. Talk page checked 11:0x PDT: nothing since StarTrekker's 2026-10-05
 Patronymics thread, already handled.
+
+## 2026-10-08 12:xx PDT: error report from the audit of batch `8bb75afff`, all four parts; the rosters were never refreshing
+
+**Unexpected, and the biggest finding: the daily roster refresh has been reading its own cache.**
+`refresh-p2600-all.py` used `out/wikidata/cache`, which is committed, and sends the same queries every day, so in
+CI every "refresh" got the committed answer back: run 37768858102 today logged `p2600-all.tsv: 518,975 -> 518,975
+rows (+0)` and `p2889-all.tsv: 34,919 -> 34,919 (+0)`. Live WDQS now: **542,043 `P2600` statements (23,068 missing
+from the roster) and 40,372 `P2889` (5,453 missing).** On origin `p2600-all.tsv` last changed 2026-08-30 and
+`p2889-all.tsv` 2026-09-24. Everything that joins through them (the ledger, the worklist, the FamilySearch bridge,
+the "is this person already on Wikidata" check in the composers) has been working from those dates. Proved on the
+`P2889` count query: its cache file `de9291ce…json` answers 34,919 with a cache hit. Fix: the refresh uses a fresh
+temporary cache each run; `--p2889 --dry-run` now fetches 40,372. The next pipeline run writes the files (not done by
+hand: CI's job). No other workflow script reads that cache directory.
+
+Parts of the item:
+
+1. **`NN Guttormsdatter Ålesdatter?)`** (`Q141656681`): live is `NN Guttormsdatter` already (the 2026-10-06
+   application landed and retired). **The rule that let it through:** none. Bracket debris was handled only in
+   `build-marker-label-fixes.py` (a fix pass over existing labels), never on the creation path, and nothing anywhere
+   removed a `?`. Now `namemodel.creation_label_debris`, called in `build-garborg-day.py`'s creation block on the
+   label and the birth alias. **Sweep:** `garborg-live-labels.tsv` (refreshed 15:19 UTC today), `mul`/`en` with a stray
+   bracket or `?`: 26 items. 9 are not ours (`Q116150245`, `Q137613679`, `Q45495375` and other `Q45…` Chinese items) and
+   stay: Wikidata's label beats ours. The other 17 were read live and each given a value in
+   `label-applications.tsv` (33 rows, the session's reading): `Signe Bjørnsdotter Tengs`, `Tollak Torkelsen
+   Hetland-Nedre`, `Mats` (two), `Asbjørn`, `NN` for `NN ?` (`Q141636899`), `Lars Knutsen Rosså` plus `Amul` `Lars
+   Knutsen Rosså Flotene`, `Gudmund Sunesson` plus `Amul` `Gudmund Sunesson Ulf`, `NN` for `Q141577231`'s `mul` "NN wife of
+   Gase ( Christensdotter?)" (a relational phrase in `mul`), and the `?` out of five `wife of …` `en` labels.
+   **Unexpected:** `Q141499779`'s `en` is `(Eldri?) Olufsdotter, daughter of Oluf Gunnbjørnsson Tengs` while its `mul` is
+   `NN Slettebø`; `en` is set to `NN Slettebø` like `mul` (the relational pass may then write its phrase).
+   `Q141583265` reads `Astrid Underberge` in `mul` and `Astrid Haukali?` in `en`; only the `?` is removed.
+2. **Daniel `P735` -> `Q53787734`:** already done on 2026-10-06 (the wrong-script overlay and the fix batch, 486 lines
+   checked live). Nothing new.
+3. **Already-live creations composed again:** batch `5f983b80b` (today 08:19 PDT), through `hold-live-creations.py` on a
+   scratch copy: 15 of 233 held (67 on 2026-10-06). The name-item half was mostly fixed on 2026-10-07 (`1dad0a22d`, the
+   refresh read only the newest 20,000 creations). Of the 15:
+   - `Torstensen`, `Thoresen`, `Pettersson` (ours) and `Einarsson`: StarTrekker replaced `P31` `Q110874` *patronymic*
+     with `Q130444148` *masculine patronymic* (2026-09-18), and `refresh-created-name-items.py` knew only `Q110874`. Its
+     `KIND` now takes the finer classes `live_name_items.CLASSES` already lists.
+   - `Mintz`, `Huk`: the store index kept only the first item per label (`Q6871262` for Mintz), which fails the
+     family-name test, so a fitting second item (`Q21492488`) was never tried. `store_name_item` now tries every one.
+   - `Dimberg`, `Dokken`, `Gene`: the live items have only a `mul` label, no `en`, so Emma's 2026-10-03 rule (exact
+     English label and "family name") refuses them, and the generator creates new ones as that rule says. Left as
+     ruled; `hold-live-creations.py` keeps catching them.
+   - Six FamilySearch-only legendary figures (`Q141634572`-`Q141634576`, `Q141638423`): already live with their `P2889`,
+     invisible because the `P2889` roster is the stale one above. The roster fix covers them, and the Geni-id people
+     of 2026-10-06 the same way.
+4. **The four held-out creation labels:** the same function. `Aude de Cornouailles` (her `NSFX` is "Queen Consort of
+   Brittany. France": a title, not an ordinal, so it comes off), `Acfred De Carcassone II` + `Amul` `… de Montignac II`,
+   `Lars Dansson` + `Amul` `Lars Dansson Stolpe`, `Peder Svensson Gubbe` + `Amul` `Peder Svensson Gavelius`. Kept: a
+   comma before an ordinal (`Tore Underberge, III`, the recorded form); an office after a comma goes with no alias.
+   New items only: `derived-labels.csv` is unchanged (20,328 labels there have balanced brackets, 1,907 a `?`), so no
+   established item is relabelled by this. Test cases in `tests/test_namemodel.py` (CI).
+
+Not run: batch `5f983b80b` (one batch a day, see the entry above). Item deleted.
