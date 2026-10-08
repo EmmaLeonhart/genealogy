@@ -53638,3 +53638,21 @@ FamilySearch records (verdict only; protected items, not edited).
   doesn't."** Written into CLAUDE.md as a principle. Applied to the ancestor-frontier verdicts so far: 10 verdicts on
   cases 2, 11, 44, 82, 165, 193, 229, 230, 231 changed from UNSURE to SAME (case 82's other candidate, Anne, to
   DIFFERENT: the unnamed wife's children match Marit Olsdatter Rott).
+
+## 2026-10-07/08: ancestor frontier judging paused; what the "two fathers" disputes are
+
+- Judging stopped at case 360 on Emma's question ("I don't think these are settled ... I think there might be a
+  versioning issue"). This session first said the tree had changed since the 2026-10-03 frontier list; **that was
+  wrong**: the parent links of the four cases looked at are identical in the 10-03 data and now.
+- What is true: `derived-family.csv` keeps BOTH fathers in its plural `fathers` column (the Geni export's, e.g. Nils
+  Toresson Kold for Jakob Knutsen Koll, and FamilySearch's, rendered onto a Geni id by the positional walk, e.g. Knut
+  Johanson Håland), and the singular `father` the pipeline uses is the FamilySearch one in all three cases looked at
+  (Jakob Knutsen Koll, Anders Botolvsen Sømme, Ragnvaldsdatter Krøkedans). `derived-family-sources.csv` lists only the
+  chosen parent. The frontier list's unpaired "Geni-side" parent is the Geni one. So the disputes are real
+  differences between the Geni exports and FamilySearch, not versions; in two of the three (Botolvsen,
+  Ragnvaldsdatter) the chosen FamilySearch father is the one the patronymic says is wrong. Bjørn Amundsen is not a
+  dispute: Geni and FamilySearch agree on Amund Bjørnsson Kamp; "Assur Tordson" is a second FamilySearch record.
+- Why Geni holds those links is not checked: geni.com is off limits until 2026-10-21 and grepping the corpus is banned.
+  A guess, not verified: Jakob Knutsen Koll attached to his mother Gurid's marriage with Nils Toresson Kold.
+- The 360 verdicts stay only in `reports/session-2026-10-07/ancestor-frontier-verdicts.tsv`; nothing went to
+  `emma-judgments.tsv` or Wikidata. Waiting on Emma for how to go on.
