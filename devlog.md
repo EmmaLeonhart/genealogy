@@ -54055,3 +54055,23 @@ Parts of the item:
    established item is relabelled by this. Test cases in `tests/test_namemodel.py` (CI).
 
 Not run: batch `5f983b80b` (one batch a day, see the entry above). Item deleted.
+
+## 2026-10-08 13:xx PDT: scaled back, as Emma answered on 2026-10-06
+
+The three scale-back items (Emma's "yes", her correction about the ontology-harness Actions billing, and the full
+context from PID 4240's transcript) done together, as the third says. Her answer was "Scale back (Recommended)":
+- **Caps back to a fifth**, each checked against `d91acbe4d` (the last commit before 2026-09-28): `SIBLING_CAP` 300 ->
+  60, `NAME_ADD_CAP` 250 -> 50, `P2600_LEAD_CAP` 300 -> 60, `MANUAL_P2600_PER_RUN` 150 -> 30, `LABEL_EDIT_CAP` 450 -> 90
+  (`build-garborg-day.py`; the test copy of `SIBLING_CAP` in `tests/test_p2600_batches.py` too). The assessment's
+  "drains at 450 a run" line contradicts this; the option she chose says a fifth, so 90.
+- **One batch a day:** `ring-watch.yml` still watches for the last ring person and logs it, but no longer dispatches
+  `pipeline.yml -f batch_only=true -f force=true`. `morning-batch.yml` (9 a.m. Pacific) is the day's rebuild. Note:
+  `pipeline.yml` still recomposes the batch on its own push and 6 a.m./6 p.m. runs; the session runs one a day.
+- **No `-auto` sender beside the browser run:** already true. `wikidata-edits.yml` has been held since 2026-09-28
+  (`EDITS_HELD: "yes"`, Emma), and its scheduled runs exit at that gate (the last three, 2026-10-07/08, all did).
+  A comment there now says the scale-back keeps it held. GitHub Actions was not otherwise touched, per her correction.
+- **One tab at a time**, the next batch only after the last audit is read: CLAUDE.md § AT SESSION START now opens
+  with the scale-back and says it wins over the run-as-soon-as-it-lands and several-tabs paragraphs; the caps line and
+  § CI CHAINS THE GENERATIONS are updated.
+- `reports/scope-assessment-2026-10-06.md` and its data were already committed; the "Assess changing the scope" item
+  was already gone. All three items deleted.

@@ -1,3 +1,8 @@
+# ⛔ **NO LONGER CHAINS THE REBUILDS. Scaled back 2026-10-08** (Emma's answer "Scale back" to the
+# 2026-10-06 scope question): one batch a day, from `morning-batch.yml` only. This still watches
+# for the last ring person and logs when the generation is done, but dispatches nothing.
+# What follows is the 2026-09-27 design it replaces.
+#
 # ⛔ **THE GENERATIONS CHAIN THEMSELVES. Ruled 2026-09-27 (Emma).** The ring people are what limits
 # the work: they connect to each other, so the next ring can only grow from a ring that exists.
 # Several QuickStatements runs go at once in the browser, and whether a batch's non-ring tail ever
@@ -72,4 +77,5 @@ jobs:
             echo "$(date -u +%H:%M) Geni ${GENI} not created yet"
             sleep 900
           done
-          gh workflow run pipeline.yml --repo "$GITHUB_REPOSITORY" --ref main -f batch_only=true -f force=true
+          # Scaled back 2026-10-08: no chained rebuild; the next batch is morning-batch.yml's.
+          echo "generation done; the next batch comes from morning-batch.yml (one batch a day since 2026-10-08)"

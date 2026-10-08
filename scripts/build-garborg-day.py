@@ -85,7 +85,9 @@ ROOT = Path(__file__).resolve().parent.parent
 #: rather than dropped: the statements are correct, there are just too many at once.
 #: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
 #: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
-SIBLING_CAP = 300
+#: ⛔ **Back to a fifth, 2026-10-08 (Emma's answer "Scale back" to the 2026-10-06 scope question):** one batch a
+#: day, about 2,000 edits; every serious incident fell in the fast weeks and was found days later.
+SIBLING_CAP = 60
 #: Existing sibling statements given `P1039` a day (ruled 2026-09-26: 40, like siblings).
 SIBLING_KINSHIP_REPAIR_CAP = 40
 #: Existing `P5056` statements given their culture role a day (the Spak model, 2026-10-02;
@@ -972,7 +974,9 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 #: start of each generation, taken from the CSV rows found not to be present already.
 #: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
 #: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
-MANUAL_P2600_PER_RUN = 150
+#: ⛔ **Back to a fifth, 2026-10-08 (Emma's answer "Scale back" to the 2026-10-06 scope question):** one batch a
+#: day, about 2,000 edits; every serious incident fell in the fast weeks and was found days later.
+MANUAL_P2600_PER_RUN = 30
 
 #: How many existing items a run gives their own `P2889` *FamilySearch person ID*. Emma,
 #: 2026-10-01: the FamilySearch ids are pipeline output; the 706 lines of the hand batch that
@@ -3177,7 +3181,9 @@ def _label_corrections(our_items, labels, table, state, fields=None,
 #: counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
 #: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
 #: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
-LABEL_EDIT_CAP = 450
+#: ⛔ **Back to a fifth, 2026-10-08 (Emma's answer "Scale back" to the 2026-10-06 scope question):** one batch a
+#: day, about 2,000 edits; every serious incident fell in the fast weeks and was found days later.
+LABEL_EDIT_CAP = 90
 
 #: **How many EXISTING people may gain name statements in one run.** Ruled 2026-09-09, on a
 #: 4,081-statement batch carrying seemingly uncapped Geni ids and other things: they should be
@@ -3203,7 +3209,9 @@ LABEL_EDIT_CAP = 450
 #: *"an additional smaller amount of edits ... run autonomously"* asks for.
 #: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
 #: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
-NAME_ADD_CAP = 250
+#: ⛔ **Back to a fifth, 2026-10-08 (Emma's answer "Scale back" to the 2026-10-06 scope question):** one batch a
+#: day, about 2,000 edits; every serious incident fell in the fast weeks and was found days later.
+NAME_ADD_CAP = 50
 
 #: **A ceiling on the `P2600` lead**, which is exempt from `MANUAL_P2600_PER_RUN` by design: an
 #: id must never be withheld from an item this run is labelling. That exemption is right and is
@@ -3212,7 +3220,9 @@ NAME_ADD_CAP = 250
 #: the cause; this is the backstop.
 #: ⛔ **5x, 2026-09-28 (Emma, by AskUserQuestion):** the browser QuickStatements runs take ~2,500 to 3,000
 #: edits an hour with no refusals (`reports/browser-run-rates.csv`); the caps were set for the old QuickStatements.
-P2600_LEAD_CAP = 300
+#: ⛔ **Back to a fifth, 2026-10-08 (Emma's answer "Scale back" to the 2026-10-06 scope question):** one batch a
+#: day, about 2,000 edits; every serious incident fell in the fast weeks and was found days later.
+P2600_LEAD_CAP = 60
 
 
 #: **The order label edits go out in, by LANGUAGE. Set 2026-09-04:**

@@ -246,6 +246,15 @@ In this order: (1) the 136 duplicate sets are merged and `User:日巫女` declar
 
 ## ⛔ AT SESSION START: THE BROWSER QUICKSTATEMENTS LOOP
 
+**⛔ SCALED BACK: ONE BATCH A DAY. Emma, 2026-10-06, answering the scope question with "Scale back"; applied
+2026-10-08.** One batch a day, the one `morning-batch.yml` builds at 9 a.m. Pacific; `ring-watch.yml` no longer
+dispatches lean rebuilds. One QuickStatements tab at a time: the next batch runs only after the audit of the last one
+has been read. No `-auto` sender beside the browser run (`wikidata-edits.yml` stays held, `EDITS_HELD`). The caps are
+back to a fifth (below). About 2,000 edits a day; every serious incident (136 duplicate creations, 736 chained false
+claims, 116 men sent as mothers, 58 duplicate pairs) fell in the fast weeks and was found days later
+(`reports/scope-assessment-2026-10-06.md`). Where the paragraphs below say otherwise (a batch run as soon as it
+lands, several tabs at once, CI chaining the generations), this one wins.
+
 **⛔ THE BATCH RUNS INSIDE THE DAILY AUDIT-THEN-RUN LOOP. Ruled 2026-10-05 (Emma).** At every session start, and daily
 at noon (a `CronCreate` job made at session start, `0 12 * * *`), the session runs one loop, in this order:
 (1) read the talk page (`User talk:日巫女`); (2) audit 10 random items in the universe for perceived errors;
@@ -272,7 +281,7 @@ Ruled 2026-09-27 (Emma): editing runs from her own browser, not a GitHub runner,
 
 **⛔ WHAT THE LOOP IS FOR: THE RING. Ruled 2026-09-27 (Emma).** There are two kinds of people in a batch. The **ring people** are made obligatorily in every batch, and they are the limiting factor of the whole campaign: they connect to each other, so the next ring can only grow from a ring that already exists. The **non-ring people** are not the intended thing; they run, but nothing waits on them. So a batch opens with its ring (shuffled), and **whether a batch finishes does not matter**: several QuickStatements runs go at once in the browser, each old tab finishing its tail on its own. A generation is done when the LAST ring person in its batch's order exists on Wikidata.
 
-**⛔ AND CI CHAINS THE GENERATIONS, NOT THE SESSION.** Every day-batch commit in `pipeline.yml` dispatches `ring-watch.yml` with that batch's last ring person (`qs-loop-status.py --last-ring`); it checks every 15 minutes for an item carrying that `P2600` and then dispatches the next lean rebuild (`pipeline.yml -f batch_only=true -f force=true`, about an hour), which starts the next watcher. **The session's only job is to open each new batch in another NEW tab as soon as it lands** (a session cron runs `scripts/qs-loop-status.py` and watches main for a new `rebuild the batch` commit). The session never dispatches the rebuild itself. Overlap between runs is fine: QuickStatements rate-limits each run.
+**⛔ (Superseded 2026-10-08 by the scale-back above: `ring-watch.yml` no longer dispatches a rebuild.) AND CI CHAINS THE GENERATIONS, NOT THE SESSION.** Every day-batch commit in `pipeline.yml` dispatches `ring-watch.yml` with that batch's last ring person (`qs-loop-status.py --last-ring`); it checks every 15 minutes for an item carrying that `P2600` and then dispatches the next lean rebuild (`pipeline.yml -f batch_only=true -f force=true`, about an hour), which starts the next watcher. **The session's only job is to open each new batch in another NEW tab as soon as it lands** (a session cron runs `scripts/qs-loop-status.py` and watches main for a new `rebuild the batch` commit). The session never dispatches the rebuild itself. Overlap between runs is fine: QuickStatements rate-limits each run.
 
     ⛔ NEVER navigate, reload or close a tab that is running a batch. A QuickStatements run done in
     the browser lives in the page; closing the tab killed Emma's run on 2026-09-27. Only open new tabs.
@@ -911,9 +920,9 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   at each other.
 - **The ledger refresh is PART OF THE RUN.** Regenerating QuickStatements always regenerates the
   ledger; it almost never rebuilds the tree.
-- **Caps (5x on 2026-09-28, Emma):** `SIBLING_CAP` **300 pairs**, `NAME_ADD_CAP` **250 people**,
-  `P2600_LEAD_CAP` **300**, `MANUAL_P2600_PER_RUN` **150**, `LABEL_EDIT_CAP` **450**. `P22`/`P25`/`P40`/`P26`
-  are uncapped. The browser runs absorb ~2,500 to 3,000 edits an hour (`reports/browser-run-rates.csv`).
+- **Caps (back to a fifth on 2026-10-08, the scale-back; 5x from 2026-09-28):** `SIBLING_CAP` **60 pairs**,
+  `NAME_ADD_CAP` **50 people**, `P2600_LEAD_CAP` **60**, `MANUAL_P2600_PER_RUN` **30**, `LABEL_EDIT_CAP` **90**.
+  `P22`/`P25`/`P40`/`P26` are uncapped.
 - **A sibling step gets a placeholder parent in OUR TREE and never on Wikidata** — Wikidata has
   `P3373` and needs no invented parent.
 - **A second Geni ID on one item is NOT a conflict**, and a duplicate parent value is
