@@ -53978,3 +53978,26 @@ changed. Item deleted.
 
 Git: local HEAD carried `840f874d5`, the same patch another session had pushed as `86451dcba`; moved onto origin/main with
 `git reset --keep` (Emma authorized it by AskUserQuestion after the permission checker refused it).
+
+## 2026-10-08 11:1x PDT: the `order.life` submodule is self-contained again
+
+Its git directory (`.git/modules/genealogy/modules/order.life`) held 5 KB of objects; everything else came through
+`objects/info/alternates` from `Documents\GitHub\order.life`, which no longer exists (left deleted, as the item says).
+Steps:
+
+- The alternates file was renamed to `alternates.dead-2026-10-08`, not deleted.
+- A plain `git fetch origin` failed ("pack has 30 unresolved deltas"), and so did `--refetch` ("did not send all
+  necessary objects", bad object `fd0ea748…`). **Unexpected:** the cause was `packed-refs`, which listed all 14
+  remote branches under `refs/remotes/origin/` with tips whose objects were only in the dead checkout, so the
+  server built thin packs against them and the connectivity check failed on them.
+- `packed-refs` was copied to `packed-refs.bak-2026-10-08`, its `refs/remotes/origin/*` lines removed (it had no other
+  refs), and `git fetch origin` then rebuilt every remote-tracking ref from GitHub.
+- Check: `GIT_NO_LAZY_FETCH=1 git fsck --connectivity-only` reports nothing missing; the pinned commit `45177d35`
+  is present; `git status` works in the submodule and in genealogy without any submodule flags, and
+  `git fetch origin` + `git merge --ff-only origin/main` ran clean. `!runClaude.bat` was not touched. Item deleted.
+
+**Batch `5f983b80b` (08:19 PDT) is not being run.** No QuickStatements run is active (the last, 1,345 edits and 78
+creations, ended 05:26 PDT). The CLAUDE.md rule says to run a new batch as it lands, but Emma's recorded answer in the
+queue's scale-back item is one batch a day, and today's ran at 04:04–05:26 PDT. Session call: her later answer wins,
+so the batch waits for tomorrow's morning batch. Talk page checked 11:0x PDT: nothing since StarTrekker's 2026-10-05
+Patronymics thread, already handled.
