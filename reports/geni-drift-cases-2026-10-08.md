@@ -67,9 +67,10 @@ Geni id, and our batches then wrote that person's FamilySearch id (`P2889`, on 2
 - **`Q141562977` Siri Madland.** Paired in a mother slot with FamilySearch `PHY3-2V4` "Sigmund Madland" (born 1534) on
   the year. Sigmund is a man's name in a mother slot: probably the same woman under a garbled FamilySearch name, but
   not certain.
-- **`Q141610297` Antoine de Constant.** FamilySearch `K4YV-M5N` is Augustin Constant (1542-1593), whose father is
-  Antoine Constant, and the item's own father link is Antoine Constant. Either the item is Augustin labelled with his
-  father's name, or it is Antoine and the walk paired the son. Needs the item's other statements read.
+- **`Q141610297` Antoine de Constant.** Settled 2026-10-08: the item is Antoine (about 1500 Geneva - 1547 Lausanne), son
+  of Antoine Constant (1475-1548); FamilySearch `K4YV-M5N` is his son Augustin Constant (1542-1593), a generation later,
+  reached by the walk through a grandchild FamilySearch places under Augustin and Geni under Antoine. `K4YV-M5N` and the
+  alias "Augustin Constant" were removed (checked live).
 
 ## Part B: the other 39
 

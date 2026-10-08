@@ -53859,3 +53859,12 @@ Larsson Hirsch, Cronhjort". `hold-live-creations.py` held 13 already live. Ran
 Her father is Gustaf Albert Wedberg, so the birth name is Signe Maria Wedberg (Geni writes "Signe* Maria"; the asterisk
 is Geni's). Two rows added to `reports/label-applications.tsv` (mul, en); the next batch sends them and retires the rows
 once live. The zh label is left as it is for now rather than guessed; ja and ko already carry the full name.
+
+## 2026-10-08 03:1x PDT: Geni drift, unsettled case settled: Q141610297 Antoine de Constant
+
+The item is Antoine de Constant (about 1500 Geneva - 1547 Lausanne), son of Antoine Constant (1475-1548, `Q141611081`).
+The FamilySearch id on it, `K4YV-M5N`, is Augustin Constant (1542-1593), Antoine's son: the walk paired the two through
+a grandchild that FamilySearch places under Augustin and Geni under Antoine. A clearly different person, the same class
+as the nine Emma approved this morning, so `P2889` `K4YV-M5N` (QuickStatements, new tab) and the alias "Augustin
+Constant" (`wbsetaliases`) came off, both checked live and added to `reports/removed-statements.tsv`. Noted, not acted
+on: our tree gives Antoine 13 children, most of them FamilySearch people the walk rendered under his Geni id.
