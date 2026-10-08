@@ -53731,3 +53731,19 @@ Each section of `todo.md`, top to bottom:
   measurement; order.life's descent-from-antiquity material; 9a to 9c (Cladoplast, Gaiad citations, `T999999`); the
   2026-09-26 context list; Emma's QuickStatements ideas; labels beyond en/ja/zh/ko (en/ja/zh/ko are composed live,
   the rest wait on name items); the saved QuickStatements token page (never committed).
+
+## 2026-10-08: Geni drift, part 1: the version history of the 58 real cases
+
+For the queue item on items whose Geni profile turned into another person (Emma 2026-10-05: a versioning problem,
+FamilySearch decides). `scripts/session-2026-10-08/drift-versions.py` reads one committed `derived-labels.csv.gz` per
+day from git history (2026-08-24 to 2026-10-04, all local) and writes what each of the 58 Geni ids ("different person"
+and "different given name") named on each date: `reports/geni-drift-versions-2026-10-08.csv`.
+
+**Unexpected:** 28 of the 58 do not drift once, they ALTERNATE. On the same rebuild dates they flip between two people
+and back, in step across many ids: `Q141562866` Mogens Olson Bjørgås (08-24) -> Oleiv Samuelsen (09-24) -> Mogens Olson
+Bjørgås (10-02); the whole Bjørgås, Bjørgo and Mestad groups do this. Geni does not edit dozens of profiles back and
+forth in step, so this is ours: we hold two exports in which one Geni id names two different people, and which one
+wins depends on the build. The drift CSV's "Geni name now" is only the 10-03 winner. 28 changed once and stayed
+changed (the Güntersberg and Eickstedt groups all on 09-24, Hallgrim Oxehode -> Hallgrim Grisen -> Aslak Brattson
+Oxehode). 2 have one name throughout (only the creation label differed). Nothing changed on Wikidata. Next part:
+FamilySearch for each case.
