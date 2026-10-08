@@ -53928,3 +53928,26 @@ added by FamilySearch when FamilySearch starts adding individuals. Item deleted 
   their labels through `label-applications.tsv` (mul, en). A merge is still to do when the window is visible.
 All live changes checked; the fix batch is `reports/error-report-fb299cd39-fix-2026-10-08.qs`, every removal in
 `reports/removed-statements.tsv`.
+
+## 2026-10-08: patronymic audit, the 10 father mismatches closed without Geni (session's call)
+
+The item waited on reading the 10 Geni profiles after 2026-10-21. The session started to get it through made the call
+itself instead. The 2026-10-01 ruling says Geni is not gone back to ("We're never even touching it anymore"), so the
+reading it waited on would not come even after the date.
+
+**Decision: no edit on any of the 10. Each item keeps its live `P5056` and its live `P22` as they are.** Why:
+- In all 10 our data holds one father and the patronymic names a different man who is not in our exports. That is the
+  shape Emma ruled on for Bertrand Olav Vigdel: the tree father is the adoptive father or stepfather, and the
+  patronymic is the biological father's. Both facts can be true at once, so neither is evidence against the other.
+- "When the sources disagree on parents, keep both", and "the purpose is to ADD, not to correct". Taking off a `P5056`
+  or a `P22` because they do not fit each other would be a correction made on no new evidence.
+- `Q141559586` Gudrun Ormsdatter: checked live today, `P22` is still `Q141570951` (from our 2026-09-26 batch), `P5056`
+  Ormsdatter `Q141271452`. The tree now giving her no father may come from export coverage and does not show that Geni
+  deleted the link (the `exports/excluded/` check needs Geni). Removing a parent is the hard-to-undo direction, so it
+  stays.
+- `Q141533461` Karen Pedersdatter Koll and `Q141538262` Brigitta Petersdotter: checked live, no `P22` and the
+  `P5056` in place. No father is added: the only candidate fathers (FamilySearch's Nils Tormodsen Foss, Geni's Nils
+  Nilsson Natt och Dag) are the ones the patronymic contradicts.
+
+If a father the patronymic names turns up later in FamilySearch or on Wikidata, it is added beside the existing one
+as a disputed parentage, never in its place. Item deleted.
