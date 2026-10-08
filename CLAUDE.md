@@ -252,8 +252,11 @@ dispatches lean rebuilds. One QuickStatements tab at a time: the next batch runs
 has been read. No `-auto` sender beside the browser run (`wikidata-edits.yml` stays held, `EDITS_HELD`). The caps are
 back to a fifth (below). About 2,000 edits a day; every serious incident (136 duplicate creations, 736 chained false
 claims, 116 men sent as mothers, 58 duplicate pairs) fell in the fast weeks and was found days later
-(`reports/scope-assessment-2026-10-06.md`). Where the paragraphs below say otherwise (a batch run as soon as it
-lands, several tabs at once, CI chaining the generations), this one wins.
+(`reports/scope-assessment-2026-10-06.md`). Where the paragraphs below say otherwise about the DAILY pipeline batch
+(run as soon as it lands, several tabs at once, CI chaining the generations), this one wins. **It limits the daily
+batch only. A batch a queue item calls for (a fix batch, an error-report fix) still runs at once, whenever the item
+needs it, as § FIX BATCHES RUN WITHOUT WAITING FOR EMMA says (Emma, 2026-10-08: "under the scale back in fact you are
+fully able to run any batches required by the queue items").**
 
 **⛔ THE BATCH RUNS INSIDE THE DAILY AUDIT-THEN-RUN LOOP. Ruled 2026-10-05 (Emma).** At every session start, and daily
 at noon (a `CronCreate` job made at session start, `0 12 * * *`), the session runs one loop, in this order:
