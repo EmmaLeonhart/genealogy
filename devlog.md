@@ -53897,3 +53897,12 @@ put his brother Anders Gustaf's name and children on Niklas's Geni profile, and 
 both. Andres Ottarsen's father link to the Geni person's father Knut Mestad came off, both directions.
 `scripts/session-2026-10-08/drift-fix2.py`: 12 statements (QuickStatements, new tab) and 4 aliases, all checked live,
 all in `reports/removed-statements.tsv`. The queue item is cut down to its last four loose ends.
+
+## 2026-10-08 04:3x PDT: Geni drift item closed
+
+Emma's answers on the last four loose ends: `Q141517168` Tidericus von Eickstedt IS FamilySearch `LVGN-3YS` Dietrich III
+("a correct match"): `P2889` added (QuickStatements, new tab, checked live). `Q141498427`'s Chinese label becomes her
+entire name: 西格内·玛丽亚·韦德贝尔格 (the pipeline transliterator's reading of Signe Maria Wedberg; her name items carry no
+Chinese labels to compose from), added to `reports/label-applications.tsv` beside the mul/en rows. `Q141517162`
+Rahm/Brunlöf: ignored, on Emma's word. `Q141610297` Antoine de Constant's FamilySearch children: left; they will be
+added by FamilySearch when FamilySearch starts adding individuals. Item deleted from the queue.
