@@ -97,6 +97,16 @@ LAST	P5278	Q141456297
 Q141456297	P5278	LAST
 Q141456297	P407	Q9027
 
+# Gyrdsdotter -- the counterpart of Gyrdsson (6 bearer(s))
+CREATE
+LAST	Len	"Gyrdsdotter"
+LAST	Lmul	"Gyrdsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Håvarsdotter -- the counterpart of Håvarson (5 bearer(s))
 CREATE
 LAST	Len	"Håvarsdotter"
