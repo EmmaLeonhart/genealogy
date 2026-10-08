@@ -21,20 +21,6 @@ Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 
-# Eilersen -- the counterpart of Eilersdatter (25 bearer(s))
-CREATE
-LAST	Len	"Eilersen"
-LAST	Lmul	"Eilersen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141584094
-Q141584094	P5278	LAST
-Q141584094	P407	Q9043
-Q141584094	P407	Q9035
-
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
 LAST	Len	"Gunnarsson"
@@ -61,19 +47,6 @@ LAST	P5278	Q105303192
 Q105303192	P5278	LAST
 Q105303192	P407	Q294
 
-# Jørgensson -- the counterpart of Jørgensdotter (16 bearer(s))
-CREATE
-LAST	Len	"Jørgensson"
-LAST	Lmul	"Jørgensson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141582519
-Q141582519	P5278	LAST
-Q141582519	P407	Q9027
-
 # Thoresen -- the counterpart of Thoresdatter (15 bearer(s))
 CREATE
 LAST	Len	"Thoresen"
@@ -98,57 +71,6 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
-# Gregersdatter -- the counterpart of Gregersen (13 bearer(s))
-CREATE
-LAST	Len	"Gregersdatter"
-LAST	Lmul	"Gregersdatter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9043
-LAST	P407	Q9035
-
-# Kristiansson -- the counterpart of Kristiansdotter (10 bearer(s))
-CREATE
-LAST	Len	"Kristiansson"
-LAST	Lmul	"Kristiansson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141586312
-Q141586312	P5278	LAST
-Q141586312	P407	Q9027
-
-# Berentsen -- the counterpart of Berentsdatter (9 bearer(s))
-CREATE
-LAST	Len	"Berentsen"
-LAST	Lmul	"Berentsen"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P407	Q9043
-LAST	P407	Q9035
-LAST	P5278	Q141625299
-Q141625299	P5278	LAST
-Q141625299	P407	Q9043
-Q141625299	P407	Q9035
-
-# Mortensson -- the counterpart of Mortensdotter (9 bearer(s))
-CREATE
-LAST	Len	"Mortensson"
-LAST	Lmul	"Mortensson"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444148
-LAST	P31	Q10673705
-LAST	P407	Q9027
-LAST	P5278	Q141610465
-Q141610465	P5278	LAST
-Q141610465	P407	Q9027
-
 # Pettersson -- the counterpart of Pettersdotter (7 bearer(s))
 CREATE
 LAST	Len	"Pettersson"
@@ -166,16 +88,6 @@ Q141456297	P407	Q9027
 CREATE
 LAST	Len	"Håvarsdotter"
 LAST	Lmul	"Håvarsdotter"
-LAST	Den	"patronymic"
-LAST	P31	Q110874
-LAST	P31	Q130444179
-LAST	P31	Q10476255
-LAST	P407	Q9027
-
-# Valdarsdotter -- the counterpart of Valdarsson (5 bearer(s))
-CREATE
-LAST	Len	"Valdarsdotter"
-LAST	Lmul	"Valdarsdotter"
 LAST	Den	"patronymic"
 LAST	P31	Q110874
 LAST	P31	Q130444179
