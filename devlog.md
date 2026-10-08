@@ -54175,3 +54175,23 @@ I (b. 857), `Q536899` (b. 940) -> Judith of Bavaria (b. 797), NN Finnsdatter (b.
 `Q21033409` (b. 1600) -> Kendel and Miriam Beila Isserles (b. 1530). All removals are in `removed-statements.tsv`.
 Mistake noted: one command this tick began a recursive grep of `exports/` (the corpus grep CLAUDE.md bans); it was
 stopped within two minutes and nothing used its output. Item deleted.
+
+## 2026-10-08 16:xx PDT: error report `Q536899` Welf III: Welf I's Geni id moved to Welf I
+
+**Confirmed:** Geni `6000000002198362511` is Welf I ("Welf I von Altdorf, Graf in Schwaben", all five name records),
+the 8th-century father of Judith of Bavaria. Another editor (Miraclepine) put it on `Q536899` Welf III, Count of Altdorf
+(b. 940) in 2020. Through it our batches gave Welf III Welf I's family: `P25` Ermenane `Q141523079` (2026-10-03, with her
+`P40` back) and `P40` Judith of Bavaria `Q169547` (2026-10-02, with her `P22` back). **Correction to the entry above:**
+the Welf III -> Judith of Bavaria link left there as "Geni says so" was this same wrong identification. Welf I has his
+own item, `Q694696` "Welf I, Count of Altdorf" (778-825, already the father of Judith, no Geni id). Under "an id comes off
+only when the record is clearly another person" (Welf I against Welf III, two centuries apart): the Geni id moved to
+`Q694696`, Ermenane moved with it (her only link was the false one; Wikidata gives Welf I another mother, Irmentruda, so
+both stand, disputed), and Welf III lost the two links. `reports/fix-welf-i-iii-2026-10-08.qs`, 8 of 8 landed; the
+removals in `removed-statements.tsv`. Welf I's FamilySearch id on this item was already removed on 2026-10-07 (#729).
+Welf III's other relatives were added by other editors or are his real parents' duplicates (`Q141610310` Rudolf,
+`Q141610369` Ita von Öhningen, ours); nothing else came through this Geni id.
+
+**Sweep, same cause:** the four items left above as "Geni says so" (Henry I of Stade, Eric IX of Sweden, Israel ben Josef,
+daughter of Finn) each carry a Geni id whose profile is that same man, so they are Geni's genealogy and not this
+confusion; they stay. Noted, not changed: `Q21033409` Israel ben Josef is dated b. 1600 on Wikidata although he is the
+father of Moses Isserles (b. 1520); the date, not the link, looks wrong. Item deleted.
