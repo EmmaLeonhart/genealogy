@@ -54195,3 +54195,8 @@ Welf III's other relatives were added by other editors or are his real parents' 
 daughter of Finn) each carry a Geni id whose profile is that same man, so they are Geni's genealogy and not this
 confusion; they stay. Noted, not changed: `Q21033409` Israel ben Josef is dated b. 1600 on Wikidata although he is the
 father of Moses Isserles (b. 1520); the date, not the link, looks wrong. Item deleted.
+
+## 2026-10-08 13:xx PDT: talk page: OBender12, "Strange family names"
+
+New section on `User talk:日巫女`, 20:07 UTC: "'NN', 'fra', '1st', 'wife', 'II' (and many others) are not family names".
+Not yet addressed; queued at the end as an error report (the standing place for error reports), before any new run.
