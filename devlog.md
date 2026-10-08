@@ -53906,3 +53906,25 @@ entire name: 西格内·玛丽亚·韦德贝尔格 (the pipeline transliterator'
 Chinese labels to compose from), added to `reports/label-applications.tsv` beside the mul/en rows. `Q141517162`
 Rahm/Brunlöf: ignored, on Emma's word. `Q141610297` Antoine de Constant's FamilySearch children: left; they will be
 added by FamilySearch when FamilySearch starts adding individuals. Item deleted from the queue.
+
+## 2026-10-08 05:xx PDT: error report from the audit of batch fb299cd39, closed
+
+- **`Q141654716` Jeanne de Pacy, live born 1328 and died 1285.** Both were Geni's; FamilySearch `L7NG-X9Y` gives born 1290,
+  died 8 Mar 1392, and her son Jean Ier Baillet (`Q3172694`, a French politician) died 1358, so 1328 cannot be her birth.
+  Geni's two dates removed, FamilySearch's added with an `S2889` reference.
+- **`Q141654774` Mons Osmundson Edland, `P734` Osmundson.** His father is Omund Monsson; Omund is a form of Osmund, and the
+  father does not carry Osmundson, so under Emma's both-conditions rule (2026-10-05) it is his patronymic. `P734`
+  Osmundson removed. **The rule that caused it:** `namemodel.patronymic_or_surname` returned "family" whenever the root
+  matched nothing in the father's name, whether or not the father carried the token; it now returns "patronymic" there,
+  so a surname needs both conditions (`tests/test_namemodel.py::test_a_surname_needs_both_conditions`, CI).
+- **The sweep for death before birth** over our items in the tree found one more: `Q141670688` Harald Gyrdsson, born circa
+  830 (Geni) and died 815 (FamilySearch, which gives born 735). Geni's birth removed, FamilySearch's 735 added. **The
+  step that caused both:** a creation's birth and death can come from different sources and nothing checked they fit;
+  `build-garborg-day.py` now writes neither date when the death comes before the birth (the year read with its sign, so
+  BCE pairs compare right; the pharaoh `Q320908`, stored as 2216/2142 in the tree, was the other hit and is BCE).
+- **The two Ōtomo duplicates:** `Q141635487` = `Q11432357` Ōtomo no Nagatoko and `Q141637004` = `Q30932358` Ōtomo no Kui.
+  The merge gadget could not run (the Chrome window is hidden, and the gadget adds its "Merge with…" link only after a
+  frame is drawn), so per the rule the common Geni ids went on the established items (checked live) and our items take
+  their labels through `label-applications.tsv` (mul, en). A merge is still to do when the window is visible.
+All live changes checked; the fix batch is `reports/error-report-fb299cd39-fix-2026-10-08.qs`, every removal in
+`reports/removed-statements.tsv`.
