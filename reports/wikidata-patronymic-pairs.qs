@@ -21,6 +21,19 @@ Q141549532	P5278	LAST
 Q141549532	P407	Q9043
 Q141549532	P407	Q9035
 
+# Tørresdotter -- the counterpart of Tørresson (28 bearer(s))
+CREATE
+LAST	Len	"Tørresdotter"
+LAST	Lmul	"Tørresdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+LAST	P5278	Q141421878
+Q141421878	P5278	LAST
+Q141421878	P407	Q9027
+
 # Gunnarsson -- the counterpart of Gunnarsdotter (19 bearer(s))
 CREATE
 LAST	Len	"Gunnarsson"
