@@ -792,10 +792,10 @@ jobs:
           import wikidata_lockout as w
           for path in sorted(set(glob.glob("reports/*.qs") + glob.glob("reports/wikidata-*-day*.txt"))):
               lines = open(path, encoding="utf-8").read().split("\n")
-              keep = [l for l in lines if not w.touches_protected(l)]
+              keep = [l for l in lines if not w.refused_at_commit(l)]
               if len(keep) != len(lines):
                   open(path, "w", encoding="utf-8", newline="").write("\n".join(keep))
-                  print(f"{path}: {len(lines) - len(keep)} line(s) naming a protected item removed at commit")
+                  print(f"{path}: {len(lines) - len(keep)} line(s) removed at commit (protected item, or an en/mul label not in extended Latin)")
           EOF
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

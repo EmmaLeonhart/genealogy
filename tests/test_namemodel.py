@@ -1910,3 +1910,14 @@ def test_lowercase_no_is_the_japanese_particle_not_a_given_name():
 def test_creation_label_debris(label, nsfx, expected):
     import namemodel as nm
     assert nm.creation_label_debris(label, nsfx) == expected
+
+
+@pytest.mark.parametrize("line, refused", [
+    ('LAST\tLmul\t"西園寺"', True), ('Q1\tAmul\t"ペーダー"', True), ('Q1\tLmul\t"Иван"', True),
+    ('LAST\tLen\t"Saionji"', False), ('Q1\tLmul\t"Jørgen Åsmund Ærø"', False), ('Q1\tLen\t"Đặng Thị Ngọc"', False),
+    ('LAST\tLja\t"西園寺"', False), ('Q1\tP734\tQ5', False),
+])
+def test_en_and_mul_take_extended_latin_only(line, refused):
+    """Emma, 2026-10-08: nothing but extended Latin in an `en` or `mul` label, at the commit-time gate."""
+    import wikidata_lockout
+    assert wikidata_lockout.wrong_label_script(line) is refused

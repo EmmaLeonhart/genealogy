@@ -319,3 +319,37 @@ def protected_in(obj):
     if isinstance(obj, (list, tuple)):
         return any(protected_in(v) for v in obj)
     return isinstance(obj, str) and obj.strip('"') in _PROTECTED
+
+
+#: ⛔ **`en` AND `mul` TAKE EXTENDED LATIN AND NOTHING ELSE. Ruled 2026-10-08 (Emma):** *"nothing is ever supposed
+#: to go in an English language label or a multi-language label that contains anything other than Latin
+#: characters. It does extended Latin characters ... nothing else."* Found through OBender12's talk-page report
+#: (Han `鄭`, `西園寺` as English labels on name items): the earlier guard against CJK `mul` labels lived in one
+#: emitter. This one is at the commit-time gate every batch file passes, the same place as `touches_protected`.
+_LATIN_SLOTS = ("Len", "Lmul", "Aen", "Amul", "Len-us", "Aen-us")
+
+
+def _extended_latin(text):
+    import unicodedata
+    for ch in text:
+        if ch.isascii():
+            continue
+        name = unicodedata.name(ch, "")
+        if unicodedata.category(ch).startswith("L") and not name.startswith("LATIN"):
+            return False
+        if name.startswith(("CJK", "KATAKANA", "HIRAGANA", "HANGUL", "IDEOGRAPHIC", "FULLWIDTH", "HALFWIDTH")):
+            return False
+    return True
+
+
+def wrong_label_script(line):
+    """True when a QuickStatements line writes an `en`/`mul` label or alias holding anything but extended Latin."""
+    if not line or line.lstrip().startswith("#"):
+        return False
+    f = line.rstrip("\r\n").split("\t")
+    return len(f) >= 3 and f[1] in _LATIN_SLOTS and not _extended_latin(f[2].strip('"'))
+
+
+def refused_at_commit(line):
+    """Every line the commit-time gate removes: a protected item, or a label in the wrong script."""
+    return touches_protected(line) or wrong_label_script(line)
