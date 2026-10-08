@@ -53790,3 +53790,12 @@ reversal), and the walk's person arrived first as a `mul` alias (Berit: alias El
 `f4aafd86f` (run 2026-10-07 00:56 PDT) wrote fr/de/no/sv "Marite Bergesdatter Talgje" on `Q141492819`, and batch
 `c2a26afa5` (run tonight) carried 24 fr/es lines (and ru) on Japanese people under "Sinosphere override" rows. Tonight's
 audit did not catch them. Whether rows a session wrote count as hand labels is an open question; nothing changed.
+
+## 2026-10-08 00:3x PDT: daily audit-then-run on batch 561d3c89f (the 10-08 Pacific batch)
+
+Talk page nothing new; 10 universe items and 10 creations audited (`reports/daily-audit/2026-10-08-1791443247.md`).
+Held: the name items "1st" (an ordinal made a family name) and "Clason" (a family name read as a patronymic; its one
+bearer is Isak Gustaf Clason Sr.); removed the hedged alias "Palaiologa ?" on the NN wife of Andronikos I Komnenos.
+Noted, not blocking: `Q141584252`'s mul label carries her husband's and son's names, `Q141565642`'s zh label her married
+name. `hold-live-creations.py` held 48 creations already live. Ran `reports/wikidata-garborg-day-manual-audited-561d3c89f-held.txt`
+(184 creations) in a new QuickStatements tab with Run.
