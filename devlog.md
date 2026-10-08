@@ -54075,3 +54075,33 @@ context from PID 4240's transcript) done together, as the third says. Her answer
   § CI CHAINS THE GENERATIONS are updated.
 - `reports/scope-assessment-2026-10-06.md` and its data were already committed; the "Assess changing the scope" item
   was already gone. All three items deleted.
+
+## 2026-10-08 14:xx PDT: error report `Q141575723` "Ture Karlsson Båt": a disputed father, and what the Geni drift fix left behind
+
+**Where "Karlsson" came from:** Geni. All three of his Geni name records (`6000000007980337359`) give `GIVN` "Ture
+Karlsson", after Geni's father for him, **Karl Bååt** (`6000000007980337962`). FamilySearch `LC8B-SPJ` has Thure Pedersen
+Bat, son of **Peder Bat** (`9K6F-FYR`); his son is Aslak Thuresson Bååt (`Q141569426`). So the sources disagree on the
+father. Our batch set the label on 2026-10-02 from the Geni name.
+
+**Unexpected: the father item mixed the two men.** `Q141579565` was created on 2026-09-27 as Geni's Karl Bååt (Geni id,
+`P735` Karl, alias "Karl Bååt") at a time when someone on Geni had renamed that profile "Peder Bat" (Geni versions:
+2026-08-24 Karl Bååt, 2026-09-26 Peder Bat, 2026-10-02 Karl Bååt; `reports/geni-drift-versions-2026-10-08.csv`). On
+2026-10-01 the positional walk added FamilySearch's `9K6F-FYR`. This morning's Geni drift fix (Emma's go-ahead)
+settled it as FamilySearch's Peder Bat and removed the Geni id and the Karl alias, but left `P735` Karl.
+
+Done (session's reading, under "when the sources disagree on parents, keep both"):
+- `Q141575723`: `mul`/`en` "Ture Pederson Båt" (the item's own name items: Ture, Pederson, Båt), `ja`/`zh`/`ko` from the
+  pipeline's transliterator (トゥーレ・ペデルセン・ボート, 图雷·佩德尔松·博特, 투레 페데르손 보트), all in
+  `label-applications.tsv`; a row in `label-corrections.tsv` for his Geni id so the derived label stops producing
+  "Ture Karlsson Båt". The alias "Ture Karlsson Båt" is already on the item. `P5056` Karlsson stays: it is Geni's side
+  of the dispute, and the patronymic audit of this morning ruled the same way on such pairs.
+- `Q141579565` Peder Bat: `P735` Karl -> Peder `Q10622039` (`reports/fix-peder-bat-given-name-2026-10-08.qs`, browser run,
+  checked live).
+
+**Sweep, same cause:** the 14 items whose Geni id the drift fix removed today. 13 more carried name statements of the
+removed Geni identity: 24 in all (`P735` Marita, Tormod, Berge, Kari, Hallvard, Lars, Mogens, Knut x4, Guri, Elisabet,
+Ambjørg; `P734` Bjørgås x5, Monsson, Brunborg, Mestad x2, Bjørgo x2). Each name was found in the removed alias and not in
+the current label. In 4 of them it was the only given name. All 24 removed, and `P735` Ole `Q2097883` added to
+`Q141560557` Ole Tollefsen Storla (`reports/fix-drift-leftover-names-2026-10-08.qs`, browser run, 25 of 25 landed,
+checked with the new `scripts/verify-qs-removals.py`, which also reads removal lines). Oleiv, Gietrud and Giertrud have
+no given-name item; the pipeline's name step handles them. Item deleted.
