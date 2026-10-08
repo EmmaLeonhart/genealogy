@@ -1774,7 +1774,8 @@ def test_a_label_drains_when_it_landed_not_when_it_was_emitted(tmp_path):
     got = led.label_sets([
         {"title": "Q2", "timestamp": "t", "comment": "/* wbsetlabel-set:1|en */ Kari, Wind, #quickstatements; #temporary_batch_1"},
         {"title": "Q4", "timestamp": "t", "comment": "/* wbsetlabel-remove:1|ko */ 타구치"}])
-    assert got == {("Q2", "Len", "Kari, Wind"): "t"}
+    # Since 2026-10-06 a removal is recorded too (value "") with a hand flag: 1 when made outside QuickStatements.
+    assert got == {("Q2", "Len", "Kari, Wind"): ("t", 0), ("Q4", "Lko", ""): ("t", 1)}
 
 
 def test_a_private_person_linked_to_one_person_is_pruned_recursively(tmp_path):
