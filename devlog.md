@@ -53776,3 +53776,17 @@ at the renamed father) and Eickstedt (Tidericus -> Friedrich V, Theodericus II -
 under two forms (Lars = Laurentius Lang, Markward = Merklin Pfinzing, Els = Elisabeth Isolt, Álfheiði = Alvhild).
 Also found: `Q141498427`'s live label is the bare surname "Gustavsson" (Signe Maria Wedberg/Gustavsson). Nothing
 changed on Wikidata.
+
+## 2026-10-08 00:0x PDT: Geni drift, part 3 data: the 58 items' live histories; labels outside en/ja/zh/ko noted
+
+`scripts/session-2026-10-08/drift-history.py` -> `reports/geni-drift-history-2026-10-08.csv`: every revision of the
+58 items (876), item ids resolved to labels. In the 19 walk-paired items, the walk's FamilySearch id went on as
+`P2889` on 2026-10-02, came off the same day, and went back on 2026-10-04 (the FamilySearch id roll-out and its
+reversal), and the walk's person arrived first as a `mul` alias (Berit: alias Elen Svensdatter Fosse 09-24, then
+`P5056` Svensdatter 09-30). The per-case write-up is the next step.
+
+**Unexpected, noted:** live labels in languages outside en/ja/zh/ko are still being written, all through
+`reports/label-applications.tsv`, the hand-supplied path that passes the `LABEL_LANGUAGES` gate by design: batch
+`f4aafd86f` (run 2026-10-07 00:56 PDT) wrote fr/de/no/sv "Marite Bergesdatter Talgje" on `Q141492819`, and batch
+`c2a26afa5` (run tonight) carried 24 fr/es lines (and ru) on Japanese people under "Sinosphere override" rows. Tonight's
+audit did not catch them. Whether rows a session wrote count as hand labels is an open question; nothing changed.
