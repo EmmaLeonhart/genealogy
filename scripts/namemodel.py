@@ -3473,7 +3473,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # Married names should go through the same parsing logic."* `_MARNM` used to be split word by word, every
     # word its own married family name, so Geni's `/father of Hallvard/` gave the family names `father` and
     # `Hallvard`; `SURN` already kept the field whole. Both now go through this, and only the role differs.
-    def _surname_field(field):
+    def _surname_field(field, married=False):
         part = []
         surn_field = _unwrap_surn(field or "")
         surn_tokens = join_compound_surname(
@@ -3518,10 +3518,21 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             if shape:
                 part.append((token, shape, 0))
                 continue
-            if is_patronymic(token) and patronymic_or_surname(
+            # The one difference for `_MARNM`, from the 2026-09-28 patronymic mix-ups audit: in a
+            # married-name field a daughter form is always her own patronymic, and a son form only when
+            # her father attests it (`Jonas / / Hansson` son of Hans); otherwise it is a married surname
+            # (a woman carrying `-son`/`-sen` is a surname). `Olai Plantin`'s Latin genitive likewise
+            # needs the father.
+            if married and is_patronymic(token):
+                if (re.search(r"(?:datter|dotter|d[oó]ttir|dochter)\.?$", token, re.I)
+                        or is_daughter_patronymic(token) or _father_attests(token, father_name, father_aka)):
+                    part.append((token, "patronymic", 0))
+                    continue
+            elif is_patronymic(token) and patronymic_or_surname(
                     token, father_name, father_aka, children_names) == "patronymic":
                 part.append((token, "patronymic", 0))
-            elif latin_patronymic(token, father_given):
+                continue
+            if latin_patronymic(token, father_given):
                 part.append((token, "patronymic", 0))
             else:
                 _one_surname = [token]
@@ -3534,7 +3545,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
 
     married = " ".join((marnm or "").split())
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
-        for token, usage, ordinal in _surname_field(married):
+        for token, usage, ordinal in _surname_field(married, married=True):
             out.append((token, "married" if usage == "family" else usage, ordinal))
 
     # A description yields no nickname either. `(--stillborn--)` occurs 11 times and the
