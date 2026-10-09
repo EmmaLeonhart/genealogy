@@ -246,6 +246,8 @@ In this order: (1) the 136 duplicate sets are merged and `User:日巫女` declar
 
 ## ⛔ AT SESSION START: THE BROWSER QUICKSTATEMENTS LOOP
 
+**⛔ NO OTHER QUEUE ITEM WHILE CI IS RED. Ruled 2026-10-08 (Emma):** "you should never ever move on to another queue item until you have full suite green." CI had been red since at least 2026-10-06 while sessions kept taking items. A red suite is the first item, whatever the queue says; edit runs through QuickStatements may continue.
+
 **⛔ EVERY EDIT GOES THROUGH QUICKSTATEMENTS. NEVER THE API DIRECTLY. Ruled 2026-10-08 (Emma).** On 2026-10-08 a session edited items straight through the Wikidata API from the logged-in tab (`mw.Api`: emptying an item, labels, statements, label-to-alias edits before merges); Emma: "We're not allowed to use the API, we're only allowed to use quick statements for edits." Labels, statements, descriptions, aliases, removals: all through QuickStatements, in the browser, with Run. The one exception is a merge, which goes through merge.js (the UI merge gadget) alone, with no edits to either item before or after it; a conflict is reported, not worked around. **And edit runs are not rationed while the queue is worked (Emma, same evening):** "you can run as many edit batches as you can, as long as they go through quick statements"; the scale-back below governs the daily pipeline batch, not runs the queue needs.
 
 **⛔ SCALED BACK: ONE BATCH A DAY. Emma, 2026-10-06, answering the scope question with "Scale back"; applied
