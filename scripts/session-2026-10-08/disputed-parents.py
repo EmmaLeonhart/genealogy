@@ -35,6 +35,8 @@ OUT = ROOT / "reports" / "session-2026-10-08" / "disputed-parents-2026-10-08-DRA
 LIST = ROOT / "reports" / "session-2026-10-08" / "disputed-parents-2026-10-08.tsv"
 UA = {"User-Agent": "genealogy-check/1.0 (emma@topazcomputing.com)"}
 DISPUTED = "\tP1480\tQ18912752"
+#: Read one by one and refused, with the reason.
+SKIP = {"9KM9-392": "Anders Kruckow in the mother slot, no sex on the record: a FamilySearch entry error"}
 
 
 def entities(qids):
@@ -56,6 +58,22 @@ def entities(qids):
 def vals(ent, prop):
     return [(s["mainsnak"].get("datavalue") or {}).get("value") for s in ent.get("claims", {}).get(prop, [])]
 
+
+
+def same_name_item(label):
+    """A live item whose label is exactly this name, or ''. A FamilySearch parent can already have an item of its
+    own (Torgrim Ormsson `Q141571152`), and only the FamilySearch id was checked before (2026-10-08)."""
+    u = ("https://www.wikidata.org/w/api.php?action=wbsearchentities&type=item&language=en&limit=10&format=json&search="
+         + urllib.parse.quote(label))
+    for t in range(5):
+        try:
+            hits = json.load(urllib.request.urlopen(urllib.request.Request(u, headers=UA)))["search"]
+            break
+        except Exception:
+            time.sleep(10 * (t + 1))
+    else:
+        return "lookup failed"
+    return next((h["id"] for h in hits if (h.get("label") or "").casefold() == label.casefold()), "")
 
 def main():
     ap = argparse.ArgumentParser()
@@ -122,6 +140,10 @@ def main():
             continue
         if (prop == "P25" and rec["sex"] == "M") or (prop == "P22" and rec["sex"] == "F"):
             rows.append((r, q_old, c, kfs, prop, "skipped: sex does not fit the parent slot"))
+            continue
+        twin = same_name_item(primary)
+        if twin:
+            rows.append((r, q_old, c, kfs, prop, f"skipped: an item with this name exists ({twin}); review by hand"))
             continue
         primary = qs(primary)
         ja, zh, ko = G.label_in(primary, table)
