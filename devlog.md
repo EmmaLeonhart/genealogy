@@ -54412,3 +54412,14 @@ slot. **Linked, not created** (the twin is that FamilySearch person): Torgrim Or
 Børge Åmodt `Q141546847`, Anna Olavsdatter Bagge `Q141585107` as disputed mother of Olav Fartegnsen Bagge `Q141549185`
 (`reports/session-2026-10-08/disputed-parents-batch-4-links-2026-10-09.qs`, a new tab). Left: the 53 whose child is an
 established item.
+
+## 2026-10-09 07:xx PDT: disputed parents, established group 1: nothing to create
+
+The two links of the same-name pass checked live (Torgrim Ormsson and Anna Olavsdatter Bagge now disputed second
+parents). The first ten whose child is an established item (8 distinct FamilySearch parents): Рюрик = Rurik, Tora
+Guttormsdatter Sudreim = Thora Guttormsdatter, Jon Ivarsson Raud Rud = Jon Ivarsson Raud, Cicilia Haakonsdatter = Cecily
+Haakonsdottir, Bertha von Schwaben = Judith of Hohenstaufen (one woman under both names), Thóra = Tora Magnusdatter:
+the same person each time. Thorvaldur Refsson against Þórarinn Þórisson: the child Fálki Þórarinsson's patronymic backs
+Geni. Tora Saksesdatter against Sigrid Saxesdatter, mother on FamilySearch of Sigurd the Crusader, Eystein I and Olav
+Magnusson: FamilySearch looks to fold two of Magnus Barefoot's women into one record; unsure, and on curated royal
+items, so not created. Decisions in `SKIP`.
