@@ -54314,3 +54314,8 @@ All live edits from the logged-in tab, no edit summaries, each checked live afte
   label): merged at Emma's word, 烏雅 `Q141648477` -> `Q140628789` Uya, 喜塔臘 `Q141648454` -> `Q48936818` Hitara (its Han
   `mul` moved to `ja` first). A browser call timed out mid-edit once; the state was read back live before finishing.
 Still open: 葉赫那拉 and 葉赫納喇 -> Yehe Nara clan `Q985700`, 鈕祜祿 -> Niohuru `Q994197`, not merged.
+Then, at Emma's "Yes": the last three merged through the gadget. Their en/ja/zh labels and en description clashed with
+the clan items, so on each the labels became aliases and the labels and description were removed first; 葉赫那拉
+`Q141637679` and 葉赫納喇 `Q141648449` -> `Q985700` Yehe Nara clan, 鈕祜祿 `Q141648458` -> `Q994197` Niohuru, all three now
+redirects, their spellings kept as aliases. Of the eight Han surname items: 5 merged into existing items, 今出川 and
+勧修寺 kept as Japanese surnames with romanized labels, 京兆武功 kept as a junwang.
