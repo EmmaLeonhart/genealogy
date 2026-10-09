@@ -54361,3 +54361,12 @@ parser, the ordinal and relationship guard, the en/mul script gate, Buyeo inside
 Einarsson), leaving 223. `reports/wikidata-garborg-day-manual-held.txt` at `24b42b8e8` loaded from raw into a new
 QuickStatements tab, Import, Run: 3,032 commands. Under Emma's evening rulings (edit runs through QuickStatements are not
 rationed; edit runs may continue while CI is worked); CI run 37893181517 is still going.
+
+## 2026-10-09 01:xx PDT: CI green (run 37897579860, on `ab9435ab6`)
+
+Red since at least 2026-10-06 (24 of 2,762 failing on 2026-10-08 morning). The last fixes: Buyeo Taebi and Deokjang are
+inside the universe by the 2026-10-02 rule (the account linked them to its own `Q141198548` on 2026-10-06; the walk had
+not escaped), with Louis XIV and Queen Victoria as the named guards outside; the married-surname test reads with the
+father as the builder does (`Jørgen /Jørgensen Døvik/`, father Jørgen: patronymic plus surname Døvik); `repo-freshness.csv`
+regenerated after the file moves. One run, after cancelling every active run (Emma's rule): fast lane and slow lane
+(258,044 passed) green. Emma's rule from now: no other queue item while CI is red. Item deleted.
