@@ -1,0 +1,72 @@
+# The one-time ring around the Geni-keyed super entry points (queue item, Emma 2026-10-07). Run with Run.
+
+CREATE
+#   the item just created: set the en label to "Himileig Hodbrodsson"
+LAST	Len	"Himileig Hodbrodsson"
+#   set the en description to "circa 339 - circa 363"
+LAST	Den	"circa 339 - circa 363"
+#   set the mul label to "Himileig Hodbrodsson"
+LAST	Lmul	"Himileig Hodbrodsson"
+#   set the ja label to "ヒミレイグ・ホドブロドソン"
+LAST	Lja	"ヒミレイグ・ホドブロドソン"
+#   set the zh label to "希米莱伊格·霍德布罗德松"
+LAST	Lzh	"希米莱伊格·霍德布罗德松"
+#   set the ko label to "히미레익 호듭로드손"
+LAST	Lko	"히미레익 호듭로드손"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000006906358126 Himileig Hodbrodsson, qualified P1810 subject named as Himileig Hodbrodsson
+LAST	P2600	"6000000006906358126"	P1810	"Himileig Hodbrodsson"
+#   P569 date of birth = +0339-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+0339-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000006906358126"
+#   P570 date of death = +0363-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+0363-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000006906358126"
+#   P40 child = Q141649463 Vedrhall Himileigsson av Hålogaland
+LAST	P40	Q141649463	S2600	"6000000006906358126"
+#   Q141649463 Vedrhall Himileigsson av Hålogaland: P22 father = the item just created
+Q141649463	P22	LAST	S2600	"6000000006906358126"
+#   the item just created: P734 family name = Q108474139
+LAST	P734	Q108474139
+#   add a mul alias "Himinleyg"
+LAST	Amul	"Himinleyg"
+
+CREATE
+#   set the mul label to "NN"
+LAST	Lmul	"NN"
+#   set the en label to "NN"
+LAST	Len	"NN"
+#   set the en description to "Geni 6000000207770773821"
+LAST	Den	"Geni 6000000207770773821"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000207770773821 NN
+LAST	P2600	"6000000207770773821"
+#   P26 spouse = Q141654623 Gwrddwfin ap Cwrrig
+LAST	P26	Q141654623	S2600	"6000000207770773821"
+#   Q141654623 Gwrddwfin ap Cwrrig: P26 spouse = the item just created
+Q141654623	P26	LAST	S2600	"6000000207770773821"
+
+CREATE
+#   the item just created: set the mul label to "NN"
+LAST	Lmul	"NN"
+#   set the en label to "NN"
+LAST	Len	"NN"
+#   set the en description to "born circa 366"
+LAST	Den	"born circa 366"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000003086828004 NN wife of Vedrhall
+LAST	P2600	"6000000003086828004"
+#   P569 date of birth = +0366-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+0366-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000003086828004"
+#   P26 spouse = Q141649463 Vedrhall Himileigsson av Hålogaland
+LAST	P26	Q141649463	S2600	"6000000003086828004"
+#   Q141649463 Vedrhall Himileigsson av Hålogaland: P26 spouse = the item just created
+Q141649463	P26	LAST	S2600	"6000000003086828004"
+
