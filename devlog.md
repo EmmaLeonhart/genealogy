@@ -54441,3 +54441,9 @@ guard: no ja/zh/ko reading for the name, and none is guessed. Reasons are in `SK
 `reports/session-2026-10-08/fix-komnenos-stray-father-2026-10-09.qs`, and not run. A sweep of every
 FamilySearch-cited parent link pointing at an item whose FamilySearch id was later removed found 28
 (`fs-cited-parent-links-to-removed-ids-2026-10-09.tsv`); the Komnenos pair is the only one read as plainly wrong so far.
+
+## 2026-10-09 — the "Stop all crons" item withdrawn
+
+Emma added "Stop all crons" (12:1x PDT) and then withdrew it (12:2x PDT) with an item telling the
+session to remove both. Both are removed from `queue.md`. No cron was stopped; this session started
+its own (work loop, the :47 talk-page check, the noon audit-then-run loop).
