@@ -1159,8 +1159,16 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
     # she is a ROOT, and a root is in the group by definition. The two Buyeo items are in the
     # ledger and are not entry points, so they still guard what this test is for.
     inside["Q232803"] = "Empress Jingū"
-    outside = {"Q12598947": "Buyeo Taebi",
-               "Q19657284": "Buyeo Deokjang"}
+    # Buyeo Taebi `Q12598947` and Buyeo Deokjang `Q19657284` guarded the outside until 2026-10-06, when the account
+    # linked them to its own item `Q141198548` (Taebi's mother, Deokjang's wife; every edge is in
+    # `reports/account-edited-links.tsv`). By the 2026-10-02 ruling an edited, linked item is in the universe, so they
+    # are inside by ordinary growth, like Cecilie Ebbesdatter above (found 2026-10-08; the walk had not escaped).
+    inside["Q12598947"] = "Buyeo Taebi"
+    inside["Q19657284"] = "Buyeo Deokjang"
+    # The guards now: deep in Wikidata's royal world tree, which an escape through Bureus would swallow first, and
+    # never edited by the account. Both outside on 2026-10-08 with the group at 38,657.
+    outside = {"Q7742": "Louis XIV",
+               "Q9439": "Queen Victoria"}
     for qid, who in inside.items():
         assert qid in group, f"{qid} {who} must be in the contiguous group"
     for qid, who in outside.items():
