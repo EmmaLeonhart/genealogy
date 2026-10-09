@@ -54464,3 +54464,24 @@ its own (work loop, the :47 talk-page check, the noon audit-then-run loop).
   § THE WIKIDATA STRATEGY point (4) (plus the two other places that said the pause stays). The permission classifier
   refused the edit ("Security Weaken"); Emma authorized it by AskUserQuestion ("Yes, lift it") and the retry went
   through. From the next pipeline batch, FamilySearch people are created again.
+
+## 2026-10-09 PDT: ancestor frontier, all 668 cases judged; Malin/Karin refused
+
+- **What the cases are.** Every place on Emma's ancestor lines where Geni has a parent and FamilySearch has a parent
+  in the same slot, but the automatic walk did not pair them (`reports/owner-ancestor-frontier.csv`, the 668 rows with
+  a FamilySearch candidate). For each, the session read both records and wrote whether they are one person.
+- **Picked up again at case 360** without asking first; it had stopped on Emma's question about a versioning issue.
+  Emma, when asked: "Yes, there's different ones ... Do it. Continue." The session had said the disagreements were
+  genuine and not versioning on the strength of the four cases the 2026-10-07/08 entry checked; it did not check any
+  case for versioning itself.
+- **Result**, `reports/session-2026-10-07/ancestor-frontier-verdicts.tsv`, every case 0-667: 567 SAME, 146 DIFFERENT,
+  15 UNSURE (verdicts per FamilySearch candidate). How the session decided, in plain words: same name (allowing
+  spelling and language variants), same spouse, same children = SAME, even when the years differ this early; a wife
+  recorded under her husband's name, or unnamed on one side and named on the other, = SAME; two different given names
+  for the parent (Tove against Margrethe) = DIFFERENT, both kept as parents in dispute; a man offered for a mother's
+  slot or the reverse = DIFFERENT. These are the session's verdicts, not Emma's; nothing went to Wikidata or into the
+  tree, and none went into `emma-judgments.tsv`.
+- **Malin Olofsdotter (Geni `6000000177921940830`) against Karin Ersdotter (`GGQD-NJF`)**, the pairing the item named
+  as bad: a DIFFERENT row in `reports/emma-judgments.tsv` (batch `zipper-correction`, quoting the queue item), which
+  `positional-walk.read_verdicts` reads as a refusal (checked: the pair is in `refused`). The next tree rebuild drops
+  the pairing and the FamilySearch family it wrote onto Malin's Geni id.
