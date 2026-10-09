@@ -1921,3 +1921,23 @@ def test_en_and_mul_take_extended_latin_only(line, refused):
     """Emma, 2026-10-08: nothing but extended Latin in an `en` or `mul` label, at the commit-time gate."""
     import wikidata_lockout
     assert wikidata_lockout.wrong_label_script(line) is refused
+
+
+
+@pytest.mark.parametrize("givn, surn, marnm, refused, kept", [
+    ("Hans", "1st", "", "1st", None),
+    ("Kari", "Hansen 1st", "", "1st", None),
+    ("Ingrid", "wife", "", "wife", None),
+    ("Ingrid", "", "wife of Ole", "wife of Ole", None),
+    ("Skjalg", "", "father of Hallvard", "father of Hallvard", None),
+    ("father", "Berg", "", "father", "Berg"),
+    ("Harry", "Son", "", None, "Son"),                    # a real surname, not the relationship word
+    ("Erik", "", "Sparre över Blad", None, "Sparre över Blad"),
+])
+def test_an_ordinal_or_a_relationship_word_is_not_a_name(givn, surn, marnm, refused, kept):
+    """OBender12 on the talk page, 2026-10-08: "'NN', 'fra', '1st', 'wife', 'II' ... are not family names"."""
+    got = {t: u for t, u, _o in namemodel.classify_fields(givn, surn, marnm=marnm)}
+    if refused:
+        assert got.get(refused) == "unknown"
+    if kept:
+        assert got.get(kept) in ("family", "married")

@@ -3232,6 +3232,22 @@ def is_roman_name(*fields) -> bool:
     return any(ROMAN_NOMEN.search(t.strip("().,")) for t in tokens[1:])
 
 
+
+#: ⛔ **AN ORDINAL OR A RELATIONSHIP WORD IS NOT A NAME, IN ANY NAME FIELD (OBender12 on the talk page, 2026-10-08:**
+#: *"'NN', 'fra', '1st', 'wife', 'II' (and many others) are not family names"*). `NN` and `II` were already refused;
+#: `1st` (an ordinal with a suffix), a bare `wife`/`father`, and a whole `wife of …`/`father of …` were not. The word
+#: list is narrow and English on purpose: `Son` is a real surname (Harry Son) and stays a name.
+RELATION_WORDS_EN = frozenset({"wife", "husband", "father", "mother", "daughter", "widow", "widower", "spouse"})
+_ORDINAL_SUFFIX = re.compile(r"^\d+(?:st|nd|rd|th)\.?$", re.I)
+_RELATION_PHRASE = re.compile(r"^(?:wife|husband|father|mother|daughter|son|widow|widower|spouse|child"
+                              r"|brother|sister)\s+of\s+\S", re.I)
+
+
+def not_a_name_word(token: str) -> bool:
+    """True for an ordinal written with a suffix (`1st`) or a bare English relationship word (`wife`)."""
+    t = (token or "").strip()
+    return bool(_ORDINAL_SUFFIX.match(t)) or t.casefold().strip(".,") in RELATION_WORDS_EN
+
 def classify_fields(givn: str, surn: str, nick: str = "",
                     marnm: str = "", father_name: str = "",
                     father_aka: str = "",
@@ -3455,6 +3471,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             out.append((token, "patronymic", 0))
         elif _after_connector:
             out.append((token, "unknown", 0))
+        elif not_a_name_word(token):
+            out.append((token, "unknown", 0))
         elif not _has_marker:
             ordinal += 1
             out.append((token, "given", ordinal))
@@ -3475,6 +3493,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # `Hallvard`; `SURN` already kept the field whole. Both now go through this, and only the role differs.
     def _surname_field(field, married=False):
         part = []
+        if _RELATION_PHRASE.match((field or "").strip()):
+            return [((field or "").strip(), "unknown", 0)]   # `wife of Ole`, `father of Hallvard`
         surn_field = _unwrap_surn(field or "")
         surn_tokens = join_compound_surname(
             [t for t in re.split(r"\s+", surn_field.strip()) if t])
@@ -3502,7 +3522,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
                     part[part.index(None)] = (" ".join(_one_surname), "family", 0)
                     _one_surname = None
                 else:
-                    if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS):
+                    if _sh or (_MARKER_EXEMPT.match(_t) and _t not in ONE_LETTER_FARMS) or not_a_name_word(_t):
                         part.append((_t, _sh or "unknown", 0))
                     else:
                         _one_surname.append(_t)
@@ -3512,7 +3532,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             # after the batch created `N.` as a family-name item twice and was killed by hand:
             # `Ingemund Olson /N. Eiane/`, married `N. Espedal`. In a farm name `N.` is Nordre or
             # Nedre, as `S.` is Søndre and `Ø.` Øvre -- a qualifier on the farm, not a name.
-            if _MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS:
+            if (_MARKER_EXEMPT.match(token) and token not in ONE_LETTER_FARMS) or not_a_name_word(token):
                 part.append((token, "unknown", 0))
                 continue
             if shape:
