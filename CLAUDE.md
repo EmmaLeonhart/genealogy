@@ -256,7 +256,7 @@ claims, 116 men sent as mothers, 58 duplicate pairs) fell in the fast weeks and 
 (run as soon as it lands, several tabs at once, CI chaining the generations), this one wins. **It limits the daily
 batch only. A batch a queue item calls for (a fix batch, an error-report fix) still runs at once, whenever the item
 needs it, as § FIX BATCHES RUN WITHOUT WAITING FOR EMMA says (Emma, 2026-10-08: "under the scale back in fact you are
-fully able to run any batches required by the queue items").**
+fully able to run any batches required by the queue items").** **And more batches when they test the pipeline (Emma, 2026-10-08 evening):** "getting through the queue is more important than keeping the scale low"; a new, smaller batch is how the queue's CI/CD-dependent items get tested, and any number of CI/CD runs may be started for that. **The order, a standing rule:** implement the changes together, start ONE CI/CD run, check that its outcome is correct, and only then use it (run the batch it built).
 
 **⛔ THE BATCH RUNS INSIDE THE DAILY AUDIT-THEN-RUN LOOP. Ruled 2026-10-05 (Emma).** At every session start, and daily
 at noon (a `CronCreate` job made at session start, `0 12 * * *`), the session runs one loop, in this order:
