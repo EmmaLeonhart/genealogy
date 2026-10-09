@@ -54338,3 +54338,15 @@ which sent OBender12's "Strange family names" to the end on 2026-10-08. Now: Emm
 anything from the talk page, from any editor, goes in as the first item. That line was the only copy (checked CLAUDE.md,
 `docs/rules/`, the skills). The talk-page cron is a session cron, recreated per session, so its wording follows
 CLAUDE.md. Item deleted.
+
+## 2026-10-08 21:xx PDT: Fernando Gundemárez: a patronymic in his period; his father's duplicate merged
+
+`Q141628094` (b. c. 1002, d. 1052). In 11th-century Iberia an -ez name was still a patronymic ("son of"); fixed
+surnames came later (my reading of the period). It was already modelled that way: `P5056` Gundemárez `Q141632857`
+(a patronymic item based on the given name Gundemaro `Q141633270`), `P22` Gundemaro `Q141632146`, no `P734`. The one
+missing piece, the `P144` on his `P5056` pointing at the father (name modelling.txt), ran by hand:
+`reports/session-2026-10-08/fix-gundemarez-patronymic-father-2026-10-08.qs`, 2/2. **Unexpected:** his father was in
+Wikidata twice, our `Q141632146` "Gundemaro Pinioliz de Braga Conde de Oviedo" (950-c. 1025) and the older `Q10290493`
+"Gundemaro Pinióliz", Leonese noble. At Emma's word ("if they're both named Gundemaro, then you merge them") ours was
+merged into `Q10290493` through the gadget, after its en/mul labels became aliases and its en description came off (they
+clashed). `Q10290493` now holds the Geni id, both children and both birth years (950, 1000). Item deleted.
