@@ -54485,3 +54485,11 @@ its own (work loop, the :47 talk-page check, the noon audit-then-run loop).
   as bad: a DIFFERENT row in `reports/emma-judgments.tsv` (batch `zipper-correction`, quoting the queue item), which
   `positional-walk.read_verdicts` reads as a refusal (checked: the pair is in `refused`). The next tree rebuild drops
   the pairing and the FamilySearch family it wrote onto Malin's Geni id.
+
+## 2026-10-09 13:5x PDT: talk page: a noticeboard report about the account
+
+Bovlb posted "Discussion concerning you" (20:29 UTC), pointing to "Report concerning User:日巫女" on the Administrators'
+noticeboard, filed by OBender12 at 15:14 UTC (08:14 PDT): the account "is copying the entire Geni database into Wikidata",
+kept on after the talk-page questions, and creates people with no names (`Q141678841`, `Q141678835`, `Q141678827`).
+Queued as the first item. Not answered: replies are Emma's. The super entry ring ran at 12:15 PDT, four hours after the
+report was filed; nothing has been run since.
