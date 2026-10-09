@@ -577,12 +577,19 @@ def build(args):
     # Two exports of overlapping trees hold the same person twice and the first record wins,
     # for the same reason the Geni merge joins on an id: a second copy is the same human, not
     # a second one.
+    # Except that a copy carrying U+FFFD (an encoding loss in the `ancestors12` downloads: `K�ln`)
+    # gives way to a later clean copy (the RootsMagic exports hold `Köln`); a replacement
+    # character never reaches a label or a description.
+    def damaged(rec):
+        return any("�" in v for v in rec.values() if isinstance(v, str))
     by_fs, order = {}, []
     for rec in people.values():
         fs = rec["fs_id"]
         if fs and fs not in by_fs:
             by_fs[fs] = rec
             order.append(fs)
+        elif fs and damaged(by_fs[fs]) and not damaged(rec):
+            by_fs[fs] = rec
     # The ancestor ring's people first (Emma, 2026-09-27): a stable sort, so the ring keeps the
     # file order among itself and `--limit` cuts the tail, never the ring.
     ring = read_ring()
@@ -650,6 +657,9 @@ def build(args):
             carried.append((fs, "", "paused: FamilySearch creations wait on the positional walk "
                                     "(Emma, 2026-09-30)"
                                     + ("; on the ancestor ring" if on_ring(fs) else "")))
+            continue
+        if damaged(rec):
+            carried.append((fs, "", "damaged text: U+FFFD in every copy of the record"))
             continue
         primary, aliases = name_plan(rec)
         if not primary:
@@ -736,6 +746,15 @@ def build(args):
                 if rec["sex"] in ("M", "F"):  # unknown sex is not a mother (2026-10-04)
                     back.append((q, "P22" if rec["sex"] == "M" else "P25"))
                 kids.append(q)
+        # Siblings share a father or a mother (Emma, 2026-10-02), and a creation gets every
+        # relationship our tree gives it (same day): `P3373` both ways to a sibling with an item.
+        sibs = {s for p in (father.get(key), mother.get(key)) if p
+                for s in children.get(p, ()) if s != key}
+        for sib in sorted(sibs):
+            q = qid_of_key.get(sib)
+            if q and q in universe:
+                block.append(f"LAST\tP3373\t{q}{ref}")
+                back.append((q, "P3373"))
         for subject, prop in back:
             block.append(f"{subject}\t{prop}\tLAST{ref}")
         if on_ring(fs):

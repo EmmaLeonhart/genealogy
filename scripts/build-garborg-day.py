@@ -8126,6 +8126,16 @@ def main():
 
     else:
         compose_why = {}
+        # A `--roster` run walks no universe of its own: it edits only what the last compose's
+        # `edit-universe.json` allows, the gate the sender and `build-familysearch-day.py` read.
+        _u = ROOT / "out" / "wikidata" / "edit-universe.json"
+        _u = json.loads(_u.read_text(encoding="utf-8")) if _u.exists() else {}
+        our_wikidata_subgraph = set(_u.get("universe") or ())
+        one_step_qids = set(_u.get("one_step") or ())
+        editable = our_wikidata_subgraph | one_step_qids
+        editable_items = {g: q for g, q in our_items.items() if q in editable}
+        with open(ROOT / "reports" / "derived-family.csv", encoding="utf-8") as f:
+            fam_rows = {row["geni_id"]: row for row in csv.DictReader(f)}
 
     # ⛔ **A PRIVATE PERSON LINKED TO ONE PERSON IS NOT CREATED, RECURSIVELY. Emma, 2026-10-03:**
     # *"if a private individual links to exactly one other individual then they are excluded.
