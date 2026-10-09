@@ -1,10 +1,10 @@
-180 people across 1 Garborg batches, 26480 already holding a QID
-5032 token(s) are already pointed at by their own bearers
-9327 tokens already have an item and are linked, not created
+180 people across 1 Garborg batches, 26570 already holding a QID
+5041 token(s) are already pointed at by their own bearers
+9330 tokens already have an item and are linked, not created
 56 token(s) not in Latin script, never created: ibn ʿAwkal, ibn ʿAwkal, Nasi, Nagid of Fustat and Rome, Δέρδας, Δαλασσηνός, Κομνηνός, Аминев, Арпад, Асенина, Борисович, Васильевич, Владимир-Димитрий, Владимир-Дмитрий, Врана, Гедиминовна, Григорьев, Густавович, Звенигородский, Исаевич, Карлов, Каролинг, Киевский, Княгиня Холмская, Кориятович, Любечанин, Мономахиня, Мстиславович, Несвицкий, Николаевна, Оттович, Полоцкий, Полоцкий и Киевский, Пукуверович, Пукуверовичъ, Пяст, Рогволод Полоцкий, Святополк, Семёнович, Смилец, Степанович, Федорович, Фёдорович, Хаартман, Шернваль, Эрикович, княгиня Минская, אשכנזי, לבית, נפתלי הירש פרענקל Fraenkel, רפא, بن فورتون, ბაგრატი, ბაგრატიონი, 덕장, 부여, 은, 이
 5628 need creating, 0 are ambiguous and are not
 229 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (11), Laurentii (7), Georgii (4), ll (4), Lauritzen (3), Ænes (3)
-1559 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
+1564 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Aadnesson            patronymic   Q141152710
    Abluna               given        Q17317997
    Adalasia             given        Q62102498
@@ -611,6 +611,8 @@
    von Sachsenkam       family       Q141549525
    von Saffenberg-Maubach family       Q117816350
    von Saltza           family       Q7941508
+   von Sass             family       Q21484988
+   von Sass till Malkila family       Q21484988
    von Sayn             family       Q66661616
    von Stein            family       Q2339506
    von Taube            family       Q28148619
@@ -1529,22 +1531,22 @@
    Olson                family       already Q16880716
    Torbergsdatter       patronymic   already Q122839156
    Rommel               family       already Q16882255
-1380 token(s) the ring is about to need are ranked first
+1364 token(s) the ring is about to need are ranked first
 
-checking 4,004 existing name items for a missing description
-   0 of them have no English description; 4,004 already do
+checking 4,014 existing name items for a missing description
+   0 of them have no English description; 4,014 already do
    1 are DUPLICATES of an existing name item -- the description was refused, not emitted; see duplicate-name-items-found.tsv
 
-checking 936 existing patronymic items for P144 based on and P460
-P2976 on given names: 279 reverse link(s) of 1869 pair(s)
-   1 P144 statement(s) to add
-   1 P31 culture class(es) to add
+checking 939 existing patronymic items for P144 based on and P460
+P2976 on given names: 285 reverse link(s) of 1875 pair(s)
+   4 P144 statement(s) to add
+   4 P31 culture class(es) to add
    0 P144 statement(s) to remove
-   8 P460 statement(s) to add
+   10 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5588 carried to a later run), 91 statements linking an EXISTING person to one, in the same run
-12 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
-   4 created WITHOUT a P144: Clason, Mikontytär, Osen, Thorrasson
+wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5588 carried to a later run), 143 statements linking an EXISTING person to one, in the same run
+15 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
+   5 created WITHOUT a P144: Ådneson, Børgersdatter, Osen, Sjovatson, Thorrasson
   create  Laurentii            patronymic   13
   create  Cronhielm af Hakunge family       12
   create  Sør Kolnes           family       9
@@ -4993,6 +4995,7 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5588 carri
   create  Pfinzig              family       1
   create  Pfrützschner         family       1
   create  Pharaoh of Egypt     family       1
+  create  Philipson            patronymic   1
   create  Phithia              given        1
   create  Phragmænia           family       1
   create  Phragmænius          family       1
@@ -6995,7 +6998,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5588 carri
   create  von Saletta          family       1
   create  von Salzburggau      family       1
   create  von Sarmatien        family       1
-  create  von Sass             family       1
   create  von Sayn und Sponheim zu Sayn und Starkenburg family       1
   create  von Sayn-Wittgenstein-Homburg family       1
   create  von Schauenburg      family       1

@@ -43,6 +43,16 @@ LAST	P31	Q130444179
 LAST	P31	Q10476255
 LAST	P407	Q9027
 
+# Philipsdotter -- the counterpart of Philipson (9 bearer(s))
+CREATE
+LAST	Len	"Philipsdotter"
+LAST	Lmul	"Philipsdotter"
+LAST	Den	"patronymic"
+LAST	P31	Q110874
+LAST	P31	Q130444179
+LAST	P31	Q10476255
+LAST	P407	Q9027
+
 # Håvarsdotter -- the counterpart of Håvarson (5 bearer(s))
 CREATE
 LAST	Len	"Håvarsdotter"
