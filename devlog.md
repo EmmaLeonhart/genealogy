@@ -54386,3 +54386,14 @@ Gillis de Bèche, b. 1579, was born after his daughter Maria, b. 1575). Each lin
 citation. The builder now also skips a candidate whose exact name already has an item (3 of an earlier draft did).
 The tonight-batch: the browser closed at 02:00 PDT at 129 of 223 creations; the remaining 94 were held out by
 `hold-live-creations.py` and rerun in a new tab after Emma's refresh (1,293 commands, still running).
+
+## 2026-10-09 05:xx PDT: disputed parents, group 2: 5 created, 5 skipped
+
+Read pair by pair against the Geni-side parent. Created, checked live (each a second parent with `P1480` disputed and an
+`S2889` citation): Friz von Lauffenholz `Q141679892` (father of Cunegonda Esler, Geni: Konrad Esler), Cicilia
+Torgilsdatter `Q141679893` (mother of Sæbjørn Toresson Talgje; Geni's Cecilie Mortensdatter, 1440-1465, died before her
+son was born), Lars Tørresen Lunde `Q141679895` (father of Marit Larsdatter; her patronymic fits him), Kristine
+Larsdatter Schack `Q141679903` (mother of Lucretia Gautesdotter Dal), Gyrid Sigurdsdatter Raastad `Q141679905` (mother
+of Magnhild Jogrimsdatter Semeleng). Skipped: Jens Jensen Hersleb and Ole Olsen Storla (the child's patronymic backs
+Geni's father), Kari Olsdotter (the wife in that ruled-out family), Álufr Ålov Einarsdotter (same person as `Q12341816`),
+"Narvesdatter" (no given name). `reports/session-2026-10-08/disputed-parents-batch-2-2026-10-09.qs`, run in a new tab.
