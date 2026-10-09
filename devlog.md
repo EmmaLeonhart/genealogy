@@ -54423,3 +54423,21 @@ the same person each time. Thorvaldur Refsson against Þórarinn Þórisson: the
 Geni. Tora Saksesdatter against Sigrid Saxesdatter, mother on FamilySearch of Sigurd the Crusader, Eystein I and Olav
 Magnusson: FamilySearch looks to fold two of Magnus Barefoot's women into one record; unsure, and on curated royal
 items, so not created. Decisions in `SKIP`.
+
+## 2026-10-09 — Disputed parents: the established children read; the item is done
+
+The last 22 FamilySearch parents whose child is an established item were read one by one (34 distinct over the three
+established groups, 53 rows). Nothing was created. 17 are the Geni-side parent under another spelling (Theobald III,
+Christopher I, Rotrude, Pepin of Herstal, Peter II of Courtenay and the rest); 2 are ruled out by the child's
+patronymic (Ebbe Skjalmsen, Thrand Bjarnasson); `PHPZ-QWQ` puts a man in the mother slot; `LH21-X45` Þuríður
+Þórðardóttir is already an alias on `Q135529234`; `PQ6F-WN9` is Pallig `Q4992341`, who died in 1002, against Toke
+Trylle born about 1010. The one real dispute, `LHKD-1GN` Hallbera Þóroddsdóttir against Þórlaug Atladóttir as the
+mother of Einar Þveræingur `Q135529150`, was let through (`ESTABLISHED_DISPUTES`) and then stopped by the script's own
+guard: no ja/zh/ko reading for the name, and none is guessed. Reasons are in `SKIP`.
+
+**Unexpected:** Anna Komnene `Q179284` and John II Komnenos `Q41628` each carry a second father, Manuel Komnenos
+`Q3286784` (born 1040, Alexios I's brother), cited only to FamilySearch. It came in because Alexios I's FamilySearch id
+`L5P9-GVV` sat on Manuel's item before it was removed. The removal batch is written,
+`reports/session-2026-10-08/fix-komnenos-stray-father-2026-10-09.qs`, and not run. A sweep of every
+FamilySearch-cited parent link pointing at an item whose FamilySearch id was later removed found 28
+(`fs-cited-parent-links-to-removed-ids-2026-10-09.tsv`); the Komnenos pair is the only one read as plainly wrong so far.

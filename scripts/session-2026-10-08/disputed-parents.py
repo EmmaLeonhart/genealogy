@@ -57,7 +57,29 @@ SKIP = {"9KM9-392": "Anders Kruckow in the mother slot, no sex on the record: a 
         "935Z-J1R": "same person as Q7990 Rurik", "9CXH-YML": "same person as Q122949820 Thora Guttormsdatter",
         "9QXX-JY4": "unsure: Tora Saksesdatter against Sigrid Saxesdatter, mother of three kings on curated items",
         "9WTM-HQR": "the child's patronymic Þórarinsson backs Geni's Þórarinn",
-        "GGT4-LF5": "same person as Q91003 Judith (Bertha) of Hohenstaufen", "GHLN-3X9": "same person as Q4809203 Tora Magnusdatter"}
+        "GGT4-LF5": "same person as Q91003 Judith (Bertha) of Hohenstaufen", "GHLN-3X9": "same person as Q4809203 Tora Magnusdatter",
+        # Established groups 2 and 3 (2026-10-09).
+        "GPQX-JZG": "same person as Q333384 Baldwin V", "GYQS-XCQ": "same person as Q111989192 Olav Haakonson av Nesoy",
+        "K83K-RFX": "same person as Q56285213 Aremberge", "L1MX-5L9": "same person as Q130320401 Bjørg Eyvindardottir",
+        "L1W1-M5G": "same person as Q2634369 Gyða Þorkelsdóttir", "L2PN-NHV": "same person as Q232714 Irene Doukaina",
+        "L51Z-XMG": "same person as Q462881 Theobald III",
+        "L5P9-GVV": "Alexios I, already Q41600 on both children; the FamilySearch-cited P22 to Q3286784 Manuel is a stray link",
+        "L8MR-J5P": "same person as Q206315 Christopher I", "LCWG-Q36": "same person as Q467469 Gudrid",
+        "LCX5-2HB": "same person as Q469702 Rotrude", "LD97-4RG": "same person as Q382138 Baldwin III",
+        "LDSS-4ZY": "same person as Q91392 Pepin of Herstal", "LDSS-KJ6": "same person as Q600483 Baldwin II of Boulogne",
+        "LDV1-DSC": "same person as Q1019325 Bård Guttormsson", "LDW5-PC5": "same person as Q23979522 Cunigunde",
+        "LH21-X45": "Q135529234 carries Þuríður Þórðardóttir as an alias: one person there",
+        "LHDL-6WG": "same person as Q2026887 Sofia of Minsk", "LHG4-N8V": "same person as Q153023 Henry III",
+        "LWXR-413": "same person as Q3049451 Torf-Einarr", "LYTR-DM4": "same person as Q354672 Peter II of Courtenay",
+        "P85Y-L3X": "the child's patronymic Skjalmsen backs Geni's Skjalm Hvide",
+        "P9TP-CLX": "same person as Q101247940 Jon Marteinsson",
+        "PC95-4G5": "the child's patronymic Bjarnasson backs Geni's Bjarni Hrolfsson",
+        "PHPZ-QWQ": "a man (Jon Halkjellson) in the mother slot: a FamilySearch entry error",
+        "PQ6F-WN9": "Pallig Q4992341 died 1002, Toke Trylle was born about 1010",
+        "PZL5-X9M": "same person as Q75292013 Lif"}
+
+#: Established children read one by one (2026-10-09) where the two trees name different people: these go ahead.
+ESTABLISHED_DISPUTES = {"LHKD-1GN": "Hallbera Þóroddsdóttir against Þórlaug Atladóttir, mother of Einar Þveræingur"}
 
 
 def entities(qids):
@@ -150,7 +172,7 @@ def main():
             continue
         # First groups touch our own items only (Emma: risky, not all at once); a name in capitals is a place or a
         # note more often than a name (MADLA); a man's name in the mother slot is a FamilySearch entry error.
-        if not (c.startswith("Q141") and len(c) == 10):
+        if not (c.startswith("Q141") and len(c) == 10) and r not in ESTABLISHED_DISPUTES:
             rows.append((r, q_old, c, kfs, prop, "later: the child is an established item other editors keep"))
             continue
         if primary.isupper():
