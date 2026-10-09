@@ -54350,3 +54350,14 @@ Wikidata twice, our `Q141632146` "Gundemaro Pinioliz de Braga Conde de Oviedo" (
 "Gundemaro Pinióliz", Leonese noble. At Emma's word ("if they're both named Gundemaro, then you merge them") ours was
 merged into `Q10290493` through the gadget, after its en/mul labels became aliases and its en description came off (they
 clashed). `Q10290493` now holds the Geni id, both children and both birth years (950, 1000). Item deleted.
+
+## 2026-10-08 22:xx PDT: tonight's batch `f8abb96a1` audited and run (Emma: "critical that we run an edit batch today")
+
+Built by the lean rebuild run 37881930667 on `ac66465e7`, the first batch on all of today's fixes (the married-name
+parser, the ordinal and relationship guard, the en/mul script gate, Buyeo inside the universe). Audit
+`reports/daily-audit/2026-10-09.md`: talk page nothing new since OBender12's 21:16 UTC note; 19 of 20 confirmed;
+`Q5040609` Carl Otto Mörner's `ja` label carries the title 中尉 (an existing item, queued as an error report).
+`hold-live-creations.py` held out 7 already-live creations (the six FamilySearch legendary figures and the name item
+Einarsson), leaving 223. `reports/wikidata-garborg-day-manual-held.txt` at `24b42b8e8` loaded from raw into a new
+QuickStatements tab, Import, Run: 3,032 commands. Under Emma's evening rulings (edit runs through QuickStatements are not
+rationed; edit runs may continue while CI is worked); CI run 37893181517 is still going.
