@@ -1914,9 +1914,11 @@ def test_the_no_family_name_placeholder_is_the_item_emma_named():
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     assert mod.NO_FAMILY_NAME == "Q108474139"
+    # Emma, 2026-10-08: with no known father a name is not counted as a patronymic; leave it alone.
+    # So Fernando /Gundemárez/ with no father in the fields is not read as a patronymic.
     usages = {u for _t, u, _o in mod.statements_tokens(
         {"givn": "Fernando", "surn": "Gundemárez", "marnm": ""})}
-    assert "family" not in usages or "patronymic" in usages
+    assert "patronymic" not in usages
 
 
 def test_a_correction_never_puts_a_non_latin_name_over_a_latin_label():

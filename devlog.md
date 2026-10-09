@@ -54284,3 +54284,11 @@ literals and stopped one run at collection (`01e6dd098` fixed it).
 **Unexpected, live, left by ruling:** `Q141565139` Freida Harif's description is "The Unbroken Chain: G9.2" (a book
 citation), set by our `relational-descriptions-fix-2026-10-07` batch; junk descriptions stay (Emma, 2026-10-01).
 Run 37868617153: 2514 passed, 5 failed; the queue item lists them.
+
+## 2026-10-08 19:xx PDT: Gundemárez: no known father, not a patronymic (Emma)
+
+The CI test `test_the_no_family_name_placeholder_is_the_item_emma_named` (written 2026-10-04 around one person,
+`Q141628094` Fernando Gundemárez) expected `Gundemárez` read as a patronymic with no father in the fields. Emma: "Don't
+count it as a patronymic if no father is known ... don't touch ones without known fathers", and on my turning one case
+into a question about every Spanish -ez name: "you're jumping from one case to everything". The code already reads it
+that way; the test now says so. Nothing on Wikidata changed.
