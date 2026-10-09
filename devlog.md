@@ -54397,3 +54397,18 @@ Larsdatter Schack `Q141679903` (mother of Lucretia Gautesdotter Dal), Gyrid Sigu
 of Magnhild Jogrimsdatter Semeleng). Skipped: Jens Jensen Hersleb and Ole Olsen Storla (the child's patronymic backs
 Geni's father), Kari Olsdotter (the wife in that ruled-out family), Álufr Ålov Einarsdotter (same person as `Q12341816`),
 "Narvesdatter" (no given name). `reports/session-2026-10-08/disputed-parents-batch-2-2026-10-09.qs`, run in a new tab.
+
+## 2026-10-09 06:xx PDT: disputed parents, the 26 same-name cases
+
+The builder's same-name check matched namesakes as well (Maria Nilsdotter b. 1981, Ole Olsen b. 1850, the given-name
+items Hans, Erik, Johan), so each was read against its child and the Geni-side parent. Already done (the child has the
+parent, or already a second one): Cecilia Olofsdotter, Jöns Andersson, Gyða Þorkelsdóttir, Mats Henriksson, Maria
+Nilsdotter, Karin Eriksdotter, Jöns Bengtsson. The child's patronymic backs Geni: Hans/Salmon, Erik/Torkel, Anders
+Grude/Peder, Erik Andresson/Johan, Anders Nilsson/Stefan. The same person (another spelling, or NN against a name): Ole
+Olsen/Ola Olson Fuglestad, Johan/Jans, Ingebjørg/Ingebjørg Guttormsdatter, Karen Jakobsdatter/N.N. Jacobsdotter Koll,
+Peder Indre Lima/Per Torkelson Indre Lima, Olof Olofsson/Olof Nilsson (same child), Jonas Eriksson/Jon Larsson. Unsure or
+no given name: Christina Johansdotter, Anna Nilsdotter/Elin Nilsdotter, "Gunbjørnsdatter", Hoskuld Torkelson in a mother
+slot. **Linked, not created** (the twin is that FamilySearch person): Torgrim Ormsson `Q141571152` as disputed father of
+Børge Åmodt `Q141546847`, Anna Olavsdatter Bagge `Q141585107` as disputed mother of Olav Fartegnsen Bagge `Q141549185`
+(`reports/session-2026-10-08/disputed-parents-batch-4-links-2026-10-09.qs`, a new tab). Left: the 53 whose child is an
+established item.
