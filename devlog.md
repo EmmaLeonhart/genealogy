@@ -54493,3 +54493,10 @@ noticeboard, filed by OBender12 at 15:14 UTC (08:14 PDT): the account "is copyin
 kept on after the talk-page questions, and creates people with no names (`Q141678841`, `Q141678835`, `Q141678827`).
 Queued as the first item. Not answered: replies are Emma's. The super entry ring ran at 12:15 PDT, four hours after the
 report was filed; nothing has been run since.
+
+## 2026-10-09 14:xx PDT: the 15 unsure frontier cases are different people (Emma)
+
+Shown to Emma as https://claude.ai/artifact/WvqEt3hsP3DoN9567HcZQa. Her ruling: "we consider all of them to be like
+different people from each other." All 15 are DIFFERENT in `ancestor-frontier-verdicts.tsv` (the earlier doubt kept in
+the reason) and in `reports/emma-judgments.tsv` (batch `frontier-unsure`), so the walk refuses those pairings. Tally now
+567 SAME, 161 DIFFERENT.
