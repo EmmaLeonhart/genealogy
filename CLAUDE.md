@@ -740,8 +740,9 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   over a human correction or another editor's statement); find the rule or step that caused it and
   fix that, or show it is already fixed and since when; sweep for every other item made the same
   way and fix those too; record it in the devlog. AskUserQuestion only where the fix is a real
-  choice, and for the go-ahead to send anything. Error reports go at the end of the queue unless
-  Emma says otherwise.
+  choice, and for the go-ahead to send anything. **Placement (Emma, 2026-10-08):** Emma's own glitch reports
+  (a single thing she doesn't like) go at the END of the queue; anything from the talk page (`User talk:日巫女`,
+  from any editor) goes in as the FIRST item, never at the end.
 - **"Add it to the end of the queue" means WRITE IT DOWN AND STOP.** No investigation, no
   questions, no gathering evidence first.
 - **Every two hours, put the blockers up as an `AskUserQuestion`** — 10, 12, 14, 16, 18, 20, 22,

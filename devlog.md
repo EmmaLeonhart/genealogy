@@ -54330,3 +54330,11 @@ with a suffix (`1st`), a bare English relationship word (`wife`, `father`, `moth
 `spouse`) and a whole relationship phrase (`wife of …`, `father of …`) are not names in any field (`64801b608`; `Son`
 deliberately not in the word list, a real surname). Checked by calling `classify_fields` on each shape; tests added for
 CI. The reply to OBender12 on the talk page is Emma's (she chose to write it herself). Item deleted.
+
+## 2026-10-08 20:xx PDT: queue placement: talk-page items first (Emma)
+
+CLAUDE.md § Working, the error-report rule, ended "Error reports go at the end of the queue unless Emma says otherwise",
+which sent OBender12's "Strange family names" to the end on 2026-10-08. Now: Emma's own glitch reports go at the end;
+anything from the talk page, from any editor, goes in as the first item. That line was the only copy (checked CLAUDE.md,
+`docs/rules/`, the skills). The talk-page cron is a session cron, recreated per session, so its wording follows
+CLAUDE.md. Item deleted.
