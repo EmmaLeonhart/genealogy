@@ -54292,3 +54292,25 @@ The CI test `test_the_no_family_name_placeholder_is_the_item_emma_named` (writte
 count it as a patronymic if no father is known ... don't touch ones without known fathers", and on my turning one case
 into a question about every Spanish -ez name: "you're jumping from one case to everything". The code already reads it
 that way; the test now says so. Nothing on Wikidata changed.
+
+## 2026-10-08 19:xx PDT: the bad surname items and the eight Han surname items, by Emma's direction
+
+All live edits from the logged-in tab, no edit summaries, each checked live after.
+- **"father" `Q141493138`** (0 links): emptied, then merged into `Q7565` father through the merge gadget; now a redirect.
+- **"över" `Q141614660`** (0 links): no item for the word exists (prepositions are lexemes), so by Emma's ruling it is
+  now an instance of nobiliary particle `Q355505` (family name removed), and "Sparre över Blad" `Q141677695`, the one
+  surname containing it, has part(s) it.
+- "fra" and "1st" were already merged away by others (into `Q37293668` Fra, `Q28469711` first).
+- **The eight Han surname items** (5 Manchu, 2 Japanese, 1 Chinese junwang). **Mistake, recorded:** I removed the `mul`
+  label from the four with twins before putting the Han form in `ja`/`zh`, which left all four with no label at all
+  until Emma caught it; restored (`ja`/`zh` Han) after her explicit authorization (a classifier refusal). None merged
+  until she said. Now: 葉赫那拉 `Q141637679` en/mul "Yehe Nara", 葉赫納喇 `Q141648449` "Yehenara", 鈕祜祿 `Q141648458`
+  "Niohuru", 今出川 `Q141637661` "Imadegawa", 勧修寺 `Q141637662` "Kajūji", each with ja/zh Han. 京兆武功 `Q141648475` is not a
+  surname: en/mul "Jingzhao Wugong", ja/zh Han, instance of 郡望 `Q18226532` (family name removed), en description
+  "Chinese ancestral-seat designation (junwang)"; nothing linked it as a surname. 今出川's candidate `Q11376759` is a
+  person (今出川尚季, Edo court noble, 23rd head of the Imadegawa family), so not merged; he now has en "Imadegawa Naosue"
+  and surname Imadegawa `Q141637661`.
+  **Unexpected:** 烏雅 and 喜塔臘 had live twins I had missed (en "Uya"/"Hitara", "family name", which refused the same
+  label): merged at Emma's word, 烏雅 `Q141648477` -> `Q140628789` Uya, 喜塔臘 `Q141648454` -> `Q48936818` Hitara (its Han
+  `mul` moved to `ja` first). A browser call timed out mid-edit once; the state was read back live before finishing.
+Still open: 葉赫那拉 and 葉赫納喇 -> Yehe Nara clan `Q985700`, 鈕祜祿 -> Niohuru `Q994197`, not merged.
