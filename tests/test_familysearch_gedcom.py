@@ -376,13 +376,14 @@ def test_nothing_lands_on_an_existing_item_outside_the_universe(builder, tmp_pat
 
 def test_creations_paused(builder, tmp_path, monkeypatch):
     """⛔ Emma, 2026-09-30: FamilySearch importing waits on the positional walk. The switch ships
-    on, and while it is on the file creates nobody and carries every would-be creation."""
+    on, and while it is on the file creates nobody and carries every would-be creation. Lifted
+    2026-10-09 by Emma after the super entry ring: it ships off, and the switch still works."""
     import argparse
     import importlib.util
     spec = importlib.util.spec_from_file_location("fsday_shipped", BUILDER)
     shipped = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(shipped)
-    assert shipped.CREATIONS_PAUSED is True
+    assert shipped.CREATIONS_PAUSED is False
 
     src = tmp_path / "sample.ged"
     src.write_text(BATCH_GED, encoding="utf-8")

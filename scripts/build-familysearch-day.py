@@ -136,8 +136,9 @@ P2889_ADD_CAP = 40
 #: pair, so nobody is created until the positional walk does its job on what is already imported; each is
 #: carried with the reason `paused`. The `P2889` additions above still go out: they ARE the
 #: positional walk's output. With no creations here, `split-daily-batch.py` gets no FamilySearch test
-#: people either. Only Emma lifts it.
-CREATIONS_PAUSED = True
+#: people either. **Lifted 2026-10-09 by Emma (AskUserQuestion, "Yes, lift it")**, after the one-time ring
+#: around the super entry points had run and been checked live (39 of 39 on exactly one item).
+CREATIONS_PAUSED = False
 
 
 def garborg():

@@ -54447,3 +54447,20 @@ FamilySearch-cited parent link pointing at an item whose FamilySearch id was lat
 Emma added "Stop all crons" (12:1x PDT) and then withdrew it (12:2x PDT) with an item telling the
 session to remove both. Both are removed from `queue.md`. No cron was stopped; this session started
 its own (work loop, the :47 talk-page check, the noon audit-then-run loop).
+
+## 2026-10-09 — the super entry ring ran; FamilySearch creations resumed
+
+- **The ring ran at 12:15 PDT**, one browser Run of `reports/super-entry-ring-held.txt` (39 creations: 36 FamilySearch,
+  3 Geni), pressed by the previous session, which then went quiet. Checked live at 12:5x PDT with
+  `scripts/session-2026-10-09/super-entry-ring-verify.py`: **39 of 39 ids are on exactly one item**
+  (`Q141681629` … `Q141681771`).
+- **9 of the 11 super entry points now have family links.** Two are still isolates: Abba ben Marukba (`Q141654626`) and
+  Azariya ibn Pedaya (`Q141654624`). Azariya's father (Geni `6000000019082148388`) and child (`6000000019082005648`)
+  were in the ring list but not created, held by the batch's gates (no ja/zh/ko label, among the 6 the run-file commit
+  names). Abba has no relative the FamilySearch ring found to create (the two FamilySearch people carried were also
+  stopped by the label gate). The item asked for one ring through the normal path, gates included, so they are left
+  as they are.
+- **Step (2): `CREATIONS_PAUSED = False`** in `build-familysearch-day.py`, with its pin test and CLAUDE.md
+  § THE WIKIDATA STRATEGY point (4) (plus the two other places that said the pause stays). The permission classifier
+  refused the edit ("Security Weaken"); Emma authorized it by AskUserQuestion ("Yes, lift it") and the retry went
+  through. From the next pipeline batch, FamilySearch people are created again.
