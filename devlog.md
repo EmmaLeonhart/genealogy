@@ -54269,3 +54269,18 @@ commandery, Wugong county), not a family name at all; it was added to the "Stran
   minted no name items since 2026-10-06.
 - Not done: the talk-page reply to OBender12. OUT-OF-SCOPE for this item; it belongs to the "Strange family names" item,
   which answers both points once fixed.
+
+## 2026-10-08 18:xx PDT: CI from 24 failures to 5
+
+Since run 37774313307 (24 failed): already-run one-off batches moved out of `reports/` into `reports/session-<date>/`
+(31 files in all; none written by a generator or waited on by a queue item; the roster now reading live made old
+creation batches show as duplicates), my unrun disputed-parents draft moved too; the hand-label test runs on a fixture
+(the shipped `Q140568870` rows retired as live on 2026-10-07, by design); the novalue placeholder `Q108474139` is a
+known QID; the label-set test expects removals and the hand flag (the ledger change of 2026-10-06); the Yuri Dolgorukiy
+path file converted to the standard path columns; the debris label fixes moved to `forced-labels.tsv` (labels our
+pipeline broke, no `Amul` rescue), less `Q141625773`, whose `ja` relational phrase holds the kanji 夫 so the kanji rule
+refuses any label edit on it (a misfire of that rule, noted). A test of mine had real tabs written into its string
+literals and stopped one run at collection (`01e6dd098` fixed it).
+**Unexpected, live, left by ruling:** `Q141565139` Freida Harif's description is "The Unbroken Chain: G9.2" (a book
+citation), set by our `relational-descriptions-fix-2026-10-07` batch; junk descriptions stay (Emma, 2026-10-01).
+Run 37868617153: 2514 passed, 5 failed; the queue item lists them.
