@@ -947,12 +947,22 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
     if not created:
         pytest.skip("no creations in this batch")
 
-    fields = {}
+    # The father, as the builder reads him: a son form in `_MARNM` is a patronymic when the father attests it
+    # (`Jørgen /Jørgensen Døvik/`, father Jørgen Samsonson: patronymic Jørgensen and surname Døvik, 2026-10-09).
+    father_of = {}
+    with open(REPO / "reports" / "derived-family.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if row["geni_id"] in created and row.get("father"):
+                father_of[row["geni_id"]] = row["father"].split("|")[0].strip()
+    wanted = created | set(father_of.values())
+    fields, names = {}, {}
     with open(REPO / "reports" / "display-names.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            if row["geni_id"] in created and row["geni_id"] not in fields:
-                fields[row["geni_id"]] = {k: row.get(k, "")
-                                          for k in ("givn", "surn", "nick", "marnm", "nsfx")}
+            g = row["geni_id"]
+            if g in wanted and g not in names:
+                names[g] = " ".join(x for x in (row.get("givn", ""), row.get("nick", "")) if x) or row.get("display_name", "")
+            if g in created and g not in fields:
+                fields[g] = {k: row.get(k, "") for k in ("givn", "surn", "nick", "marnm", "nsfx")}
 
     plan, proposed = load_plan(), name_item_tokens()
     # A token in `_MARNM` that the batch gives the same person as a PATRONYMIC is modelled,
@@ -979,7 +989,8 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
         # flagged it as a married name the model never emits.
         clean = clean_fields(person)
         for token, usage, _ordinal in classify_fields(clean["givn"], clean["surn"],
-                                                      clean["nick"], clean["marnm"]):
+                                                      clean["nick"], clean["marnm"],
+                                                      father_name=names.get(father_of.get(geni_id, ""), "")):
             if usage != "married" or token in patronymic_of.get(geni_id, ()):
                 continue
             # The parenthesised exclusion that stood here is GONE, and deliberately.
