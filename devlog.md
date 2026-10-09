@@ -54370,3 +54370,19 @@ not escaped), with Louis XIV and Queen Victoria as the named guards outside; the
 father as the builder does (`Jørgen /Jørgensen Døvik/`, father Jørgen: patronymic plus surname Døvik); `repo-freshness.csv`
 regenerated after the file moves. One run, after cancelling every active run (Emma's rule): fast lane and slow lane
 (258,044 passed) green. Emma's rule from now: no other queue item while CI is red. Item deleted.
+
+## 2026-10-09 04:xx PDT: disputed parents, group 1; fix batches in a new tab (Emma)
+
+Emma's external item: fix batches open a NEW tab at once and a session never holds an item waiting on a run; written
+into CLAUDE.md (`36d59db71`), item deleted. The disputed-parents group of ten, read pair by pair against the Geni-side
+parent: **6 were the same person** (Åadne/Ådne Larsson Kråkedal, Oluf Komp/Olluff Hoskuldsen Komp, Jon Ivarsson Raud,
+Cicilia Haakonsdatter/Cecily Haakonsdottir, Baudouin II de Hainaut/Baldwin II, Orm Vatn-Orm Dagson/Vatnorm Dagsson): the
+FamilySearch id removal was the mistake, so no second parent; the ids were not re-added (Emma: id churn causes problems).
+Omund Bjerga against Ommund Klengson Løland left unsure. **3 created** as disputed parents
+(`reports/session-2026-10-08/disputed-parents-batch-1-2026-10-09.qs`, a new tab beside the running batch, checked
+live): Nelleborg Christiansdotter `Q141679847` (a second mother of `Q141488165`), Håkon Finnson av Tjøtta `Q141679851`
+(second father of `Q141612199`), Gillius Willhelmsson de Besche `Q141679854` (second father of `Q141586277`; Geni's
+Gillis de Bèche, b. 1579, was born after his daughter Maria, b. 1575). Each link carries `P1480` disputed and an `S2889`
+citation. The builder now also skips a candidate whose exact name already has an item (3 of an earlier draft did).
+The tonight-batch: the browser closed at 02:00 PDT at 129 of 223 creations; the remaining 94 were held out by
+`hold-live-creations.py` and rerun in a new tab after Emma's refresh (1,293 commands, still running).
