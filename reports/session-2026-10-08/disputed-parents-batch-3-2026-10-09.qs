@@ -1,0 +1,15 @@
+# LHKN-1XF: FamilySearch's mother of Q141518722 (FamilySearch LHKN-BGZ); the Geni-side parent is Q141533461
+CREATE
+LAST	Lmul	"Olivia Nerheim"
+LAST	Len	"Olivia Nerheim"
+LAST	Den	"circa 1500 Vikedal, Stavanger, Norway - 1563 Jelsa, Rogaland, Norway"
+LAST	Lja	"オリビア・ネルヘイム"
+LAST	Lzh	"奧利維亞·内尔赫伊姆"
+LAST	Lko	"올리비아 네르헤임"
+LAST	P31	Q5
+LAST	P21	Q6581072
+LAST	P2889	"LHKN-1XF"
+LAST	P569	+1500-00-00T00:00:00Z/9	P1480	Q5727902	S2889	"LHKN-1XF"
+LAST	P570	+1563-00-00T00:00:00Z/9	S2889	"LHKN-1XF"
+LAST	P40	Q141518722	S2889	"LHKN-1XF"
+Q141518722	P25	LAST	P1480	Q18912752	S2889	"LHKN-1XF"

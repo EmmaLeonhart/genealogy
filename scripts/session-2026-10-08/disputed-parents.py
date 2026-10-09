@@ -45,7 +45,13 @@ SKIP = {"9KM9-392": "Anders Kruckow in the mother slot, no sex on the record: a 
         # Group 2 (2026-10-09).
         "GW89-FQC": "the child's patronymic Hansson backs Geni's Hans Bonde", "GY31-WS1": "same person as Q12341816 Ålov Einarsdatter",
         "L4JG-BMR": "no given name on the FamilySearch record (Narvesdatter)", "LH3L-6FN": "the child's patronymic Haldorsson backs Geni's Haldor",
-        "LH3L-6N4": "the wife in the FamilySearch family that the child's patronymic rules out"}
+        "LH3L-6N4": "the wife in the FamilySearch family that the child's patronymic rules out",
+        # Group 3 (2026-10-09).
+        "LHD3-RM8": "same person as Q141512276 Peder Enoksson Stangeland", "LQT8-CQ7": "same person as Q141528876 Laurits Torkellson Hommersåk",
+        "LRP6-L37": "same person as Q141217431 Per Andersson Storskytt", "LWVM-HJG": "the child's patronymic Olsen backs Geni's Ola",
+        "MV78-SS2": "named against Geni's NN Q141570743: one person (Emma 2026-10-07)", "P7TY-SXJ": "same person as Q141352187 Ånon Byre",
+        "PF68-N12": "the child's patronymic Kollsdotter backs Geni's Kol Kalisson", "PQLL-85X": "junk record (Mother Peder Bloch, b. 1684, child b. 1593)",
+        "PSCF-NTY": "same person as Q141533806 Ole Nordland"}
 
 
 def entities(qids):
