@@ -54319,3 +54319,14 @@ the clan items, so on each the labels became aliases and the labels and descript
 `Q141637679` and 葉赫納喇 `Q141648449` -> `Q985700` Yehe Nara clan, 鈕祜祿 `Q141648458` -> `Q994197` Niohuru, all three now
 redirects, their spellings kept as aliases. Of the eight Han surname items: 5 merged into existing items, 今出川 and
 勧修寺 kept as Japanese surnames with romanized labels, 京兆武功 kept as a junwang.
+
+## 2026-10-08 20:xx PDT: OBender12's "Strange family names": closed
+
+What his note named, and where each stands. On Wikidata (entries above): the junk surnames off the 9 people, "father"
+merged into `Q7565`, "över" a nobiliary particle, "fra" and "1st" already merged by others, NN/wife/II on nobody, the
+eight Han surname items merged or relabelled. In the code: the married-name field parsed whole like the surname field
+(`eb61486c8`, `9cddb993b`); en/mul outside extended Latin refused at the commit gate (`1eae263fc`); and now an ordinal
+with a suffix (`1st`), a bare English relationship word (`wife`, `father`, `mother`, `husband`, `daughter`, `widow`,
+`spouse`) and a whole relationship phrase (`wife of …`, `father of …`) are not names in any field (`64801b608`; `Son`
+deliberately not in the word list, a real surname). Checked by calling `classify_fields` on each shape; tests added for
+CI. The reply to OBender12 on the talk page is Emma's (she chose to write it herself). Item deleted.
