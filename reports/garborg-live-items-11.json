@@ -370303,6 +370303,25 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141562475$A35CF25F-299C-4735-806D-827A24FA448C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141569368",
+        "numeric-id": 141569368
+       }
+      },
+      "hash": "29e2473f9e336d59018a9d90de8c44293beccf5c",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
     }
    ],
    "P2600": [
@@ -370335,6 +370354,23 @@
      "qualifiers-order": [
       "P1810"
      ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2889": [
+    {
+     "id": "Q141562475$70FECDDE-297C-49C2-A47C-958F24019208",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "L62Y-SZB"
+      },
+      "hash": "0b13f06341e3b55d3a08ef5807079b0f485079db",
+      "property": "P2889",
+      "snaktype": "value"
+     },
      "rank": "normal",
      "type": "statement"
     }
@@ -370713,8 +370749,8 @@
     "value": "乔恩·加乌特松·达尔"
    }
   },
-  "lastrevid": 2553728996,
-  "modified": "2026-10-06T02:39:52Z",
+  "lastrevid": 2555109843,
+  "modified": "2026-10-08T19:33:42Z",
   "ns": 0,
   "pageid": 135121517,
   "sitelinks": {},
@@ -674494,60 +674530,6 @@
       }
      ],
      "type": "statement"
-    },
-    {
-     "id": "Q169547$660313DC-B2B4-4B83-84E6-A883CD34A6AE",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q536899",
-        "numeric-id": 536899
-       }
-      },
-      "hash": "3a4bed5774cb64b5f6a69118622289ccbe07c998",
-      "property": "P22",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "d89aa5691f6a12b934ceca1ac0f24a259d85f4e9",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000000904661585"
-          },
-          "hash": "46ffd59c429b0ab5a0a626ae093a9df263517a28",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ],
-        "P2889": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "LZT6-KBL"
-          },
-          "hash": "df802e8f394a991506fd6f5af8d7518f3f281838",
-          "property": "P2889",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600",
-        "P2889"
-       ]
-      }
-     ],
-     "type": "statement"
     }
    ],
    "P227": [
@@ -676403,8 +676385,8 @@
     "value": "巴伐利亚的朱迪丝"
    }
   },
-  "lastrevid": 2552271695,
-  "modified": "2026-10-02T19:27:11Z",
+  "lastrevid": 2555123125,
+  "modified": "2026-10-08T20:33:40Z",
   "ns": 0,
   "pageid": 169956,
   "sitelinks": {
