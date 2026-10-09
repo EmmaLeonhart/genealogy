@@ -36,7 +36,16 @@ LIST = ROOT / "reports" / "session-2026-10-08" / "disputed-parents-2026-10-08.ts
 UA = {"User-Agent": "genealogy-check/1.0 (emma@topazcomputing.com)"}
 DISPUTED = "\tP1480\tQ18912752"
 #: Read one by one and refused, with the reason.
-SKIP = {"9KM9-392": "Anders Kruckow in the mother slot, no sex on the record: a FamilySearch entry error"}
+SKIP = {"9KM9-392": "Anders Kruckow in the mother slot, no sex on the record: a FamilySearch entry error",
+        # Group 1 (2026-10-09): the same person as the Geni-side parent, another spelling; the id removal was the mistake.
+        "27SQ-PXV": "same person as Q141560819 Ådne Larsson Kråkedal", "97ZL-1TT": "same person as Q141560559 Olluff Hoskuldsen Komp",
+        "G8S4-QBP": "same person as Q101247943 Jon Ivarsson Raud", "GDHN-ZLR": "same person as Q75393578 Cecily Haakonsdottir",
+        "GH7M-SN1": "same person as Q704403 Baldwin II, Count of Hainaut", "GNCQ-998": "same person as Q25433328 Vatnorm Dagsson",
+        "GBRF-3V9": "unsure: Omund Bjerga against Q141487988 Ommund Klengson Løland",
+        # Group 2 (2026-10-09).
+        "GW89-FQC": "the child's patronymic Hansson backs Geni's Hans Bonde", "GY31-WS1": "same person as Q12341816 Ålov Einarsdatter",
+        "L4JG-BMR": "no given name on the FamilySearch record (Narvesdatter)", "LH3L-6FN": "the child's patronymic Haldorsson backs Geni's Haldor",
+        "LH3L-6N4": "the wife in the FamilySearch family that the child's patronymic rules out"}
 
 
 def entities(qids):
