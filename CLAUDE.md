@@ -1,3 +1,18 @@
+> ## OFFLINE BRANCH — NO WIKIDATA EDITING. Emma, 2026-10-09.
+>
+> This is the `offline` branch. It "has no ability whatsoever to edit wiki data": Wikidata
+> editing is "in a pin" (parked). On this branch the edit runner
+> (`scripts/wikidata-edit-run.py`) and the workflows that call it (`wikidata-edits.yml`,
+> `pipeline.yml`, `daily-batch-email.yml`) are deleted; `main` still has them. Do not
+> restore them here, do not write QuickStatements for sending, do not log in to Wikidata.
+> Reading Wikidata to look things up is fine. Work here is offline analysis of the
+> RootsMagic GEDCOM (`rootsmagic/test_2026-10-09.ged`).
+>
+> **The subject of this branch:** Emma's ancestry through the **Reuss** family (House of
+> Reuss), and her German lines generally. Her words: "the R E U S S family, I want to know
+> about my ancestry related to them" and "generally at the German lines is what I'm most
+> interested in right now."
+
 # Synoptic
 
 ## What this project is
