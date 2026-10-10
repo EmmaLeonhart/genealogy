@@ -55,3 +55,14 @@ above exclude each of these. Do not cite those earlier results.
 
 Scripts: `scripts/offline/compare_ah.py`, `scripts/offline/reuss_paths.py`,
 `scripts/offline/ged_lib.py` (stdlib only).
+
+## Wikidata side, with dates (same evening)
+
+Birth and death years were read from Wikidata (read only, `scripts/offline/wd_dates.py`) for all
+5,298 people in her Wikidata ancestry; 4,082 have a date, and 2,048 were born 900–1600, the span
+of Abul Hamza's descendants. Matched with the same strict rules (`scripts/offline/wd_vs_ah.py`):
+**no Reuss or Plauen among them, and no match with Abul Hamza's descendants.**
+
+**Weak point:** Wikidata labels are English ("Christian of Thuringia") while `test.ged` names are
+often German, Portuguese or Latin ("von Thüringen"), and the matching compares words literally.
+So this zero is weaker than the synoptic-tree one. Language-aware matching is queued.

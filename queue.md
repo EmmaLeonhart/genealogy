@@ -5,6 +5,7 @@ The queue from `main` was cleared on this branch on Emma's instruction, 2026-10-
 do it, delete it, log it in `devlog.md` in the same commit. No Wikidata editing here (see the
 banner in `CLAUDE.md`).
 
-- **Dates for her unmatched Wikidata ancestors.** 3,074 of her 5,297 Wikidata ancestors are not
-  in the synoptic tree. Read their birth and death years from Wikidata (read only, no edits) and
-  match them against Abul Hamza's descendants too.
+- **Language-aware name matching.** Wikidata labels are English, `test.ged` names German,
+  Portuguese or Latin. Map place names and particles across languages (Thuringia/Thüringen,
+  of/von/de, Saxony/Sachsen) and rerun `wd_vs_ah.py` and `compare_ah.py`; report any new matches
+  with the full line down to Emma, and check each line for bridges the matching built.

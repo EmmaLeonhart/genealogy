@@ -54520,3 +54520,10 @@ Borsheim side; the Reuss neighbourhood is there (Gleichen, Weimar-Orlamünde, We
 Askanier Saxony, Henneberg, Isenburg-Kempenich, Everstein; 319 people) but no Reuss. Two lines
 traced in full (Gleichen, Everstein). Closes the "where her lines come closest" and "German lines"
 items.
+
+## 2026-10-09 (offline branch): Wikidata dates
+
+Read birth/death years from Wikidata for her 5,298 Wikidata ancestors (read only; 4,082 dated)
+and matched them with Abul Hamza's descendants: no matches, no Reuss. The zero is weaker than the
+synoptic-tree one because names are compared literally across languages; queued a
+language-aware rerun.
