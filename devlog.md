@@ -54575,3 +54575,8 @@ Read her original Geni profile from the exports: the only reference is FamilySea
 LKM3-Z4V via SmartCopy (2018), no source for "von Brandenburg". Queued: Forsandboka vol. 2 p. 88.
 Forsandboka vol. 2 searched via the nb.no API: "Brandenburg" occurs once, scan page 64, away from
 the Under-Berge pages; context needs a Norwegian IP (BLOCKED-ON-USER-ACTION). Queue empty.
+
+## 2026-10-10 (offline branch): rerun on the 09:54 snapshot
+
+159,262-person GEDCOM: no link. His synoptic-tree descendants grew to 496,617 (from 481,994),
+still none her ancestor; 2 false family matches; dead-end leads unchanged (Sophia von Brandenburg).
