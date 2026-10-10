@@ -82,6 +82,42 @@ about a lawman, but it does not use the names Sophia/Sofie or Gard. That is more
 the Brandenburg tradition may have a printed source here after all. Emma has the page open in her
 browser (2026-10-10) to read it directly.
 
+## Page 64 read (2026-10-10, from Emma's purchased copy)
+
+Scan page 64 is book page 58, chapter "Lagmannsætta", the ancestry of Ramborg Knutsdotter. The one
+"Brandenburg" is:
+
+> "11. Knut Valdemarson (12.. – 1260 15/10). Knut var dansk prins … Han vart hertug av Estland og
+> Reval … Knut var gift to gonger, først med Hedvig av Brandenburg, og han hadde med henne sonen
+> Erik … Andre gongen var han gift med Ingegerd av Pommern, og med henne hadde han sonen
+> 12. Svantepolk Knutson (Lejon)."
+
+**So it is not about Sophia.** The Brandenburg woman is Hedvig, Knut Valdemarsson's first wife, and
+she is not even in this line (the line runs through his second wife, Ingegerd of Pomerania).
+*Forsandboka* gives no source for a Sophia von Brandenburg in the Underberge family. Her name
+still rests only on FamilySearch tree person LKM3-Z4V.
+
+**What the page does give:** the book's line for Ramborg Knutsdotter, wife of Gard Toreson on
+Talgje and ancestress of the Under-Berge family: Valdemar II Sejr of Denmark (1170–1241) → Knut
+Valdemarsson → Svantepolk Knutsson (Lejon) → Ingegerd Svantepolksdotter (m. Brynjulf Bengtsson) →
+Algot Brynjulfsson (Lejon) → Knut Algotsson (Lejon), m. Märta Ulfsdotter → Ramborg Knutsdotter.
+The book also gives Ramborg's mother as **Märta Ulfsdotter, daughter of Ulf Gudmarsson and Saint
+Birgitta of Sweden** ("Morsætta til Ramborg Knutsdotter").
+
+**Against the trees:**
+- This royal line is **already among Emma's synoptic-tree ancestors** (Gard Toreson Underberge II →
+  Tore Gardsson → Gard Toresson and Ramborg Knutsdotter Lejon → Knut Algotsson → … → Svantepolk
+  Knutsson → Valdemar II, 24 generations above Emma), through Gard's own line, not through Sophia.
+- The synoptic tree gives Ramborg's mother as "NN (Frille)" (an unnamed concubine), not Märta
+  Ulfsdotter. *Forsandboka* would make Saint Birgitta Emma's ancestor. Märta Ulfsdotter (1319)
+  is in the synoptic tree with Ulf Gudmarsson and Birgitta as parents, but not linked to Ramborg.
+- **Neither line is among Abul Hamza's descendants**, in the RootsMagic GEDCOM or in his
+  descendants as followed down the synoptic tree. So page 64 adds a possible Saint Birgitta line
+  to her ancestry, but not the link to Abul Hamza.
+
+**Sophia von Brandenburg: no printed source found; treated as an unsourced tradition.** The book
+itself is not stored in any repo (copyright); pages read were rendered to `scratch/` only.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused

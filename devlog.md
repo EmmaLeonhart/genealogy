@@ -54580,3 +54580,11 @@ the Under-Berge pages; context needs a Norwegian IP (BLOCKED-ON-USER-ACTION). Qu
 
 159,262-person GEDCOM: no link. His synoptic-tree descendants grew to 496,617 (from 481,994),
 still none her ancestor; 2 false family matches; dead-end leads unchanged (Sophia von Brandenburg).
+
+## 2026-10-10 (offline branch): Forsandboka page 64 read
+
+From Emma's purchased PDF: the "av Brandenburg" is Hedvig of Brandenburg, first wife of Knut
+Valdemarsson, not Sophia. The page gives Ramborg Knutsdotter's royal line (Valdemar II → … → Knut
+Algotsson) and her mother as Märta Ulfsdotter, daughter of Saint Birgitta (the synoptic tree has an
+unnamed concubine). The royal line is already in Emma's synoptic ancestry; neither it nor the
+Birgitta line is among Abul Hamza's descendants. Sophia: no printed source.
