@@ -130,6 +130,35 @@ itself is not stored in any repo (copyright); pages read were rendered to `scrat
   A tree built from that book could have carried the name onto Gard II Toreson's unknown wife, about
   200 years and seven generations later.
 
+## A real, small-scale "von Brandenburg" in western Norway at the right time (2026-10-10)
+
+Emma's question: might there be someone named von Brandenburg alive then, on a smaller scale than
+the margraves? Diplomatarium Norvegicum full-text search (dokpro.uio.no, 1300–1550; 346 hits, almost
+all the ruling house, among them Queen Dorothea of Brandenburg, queen of Denmark and Norway from
+1445) gave one strong answer, in the papal registers printed in **DN XVII**:
+
+- Sixtus IV, 4th year (1474–75): a petition "for the cleric **Johannes v. Brandenburg** of the
+  diocese of Bamberg, **uægte Søn af Markgreven af Brandenburg** [illegitimate son of the Margrave
+  of Brandenburg], to obtain the **archdeaconry of Bergen** and a canonry and prebend in Nidaros"
+  (Supplicationes Sixti IV an. 4 lib. 7, fol. 81).
+- **DN XVII 719, 7 November 1480:** Johannes von Brandenburg resigns the Bergen archdeaconry to
+  Henrik Pelrenhorst.
+
+Also found: Johannes Brandenburg, merchant in Yarmouth, and Henrik Brandenburg, burgher of Hamburg,
+in a 1403 Stralsund record about a ship of a man who died in Bergen. These are merchants with the
+surname, and too early for Sophia.
+
+**What this means for Sophia, all inference:** Bamberg diocese is Franconia, the Franconian
+Hohenzollerns' land, where Albrecht Achilles was margrave until 1486, so Johannes is likely his
+illegitimate son or a near relative's. An illegitimate child of the margrave was called plainly
+"von Brandenburg", the same form as "Sophia von Brandenburg". The archdeacon was in western Norway
+in the mid-1470s, when Sophia's sons were born (1475, 1481, 1485). Nothing names her, and
+Høgsfjord is in Stavanger diocese, not Bergen's. But a Brandenburg connection in this family is no
+longer implausible: an illegitimate Hohenzollern daughter, or a relative of the Bergen
+archdeacon, is a possible reading. Next places to look: the Bergen archdeacon's household and
+relatives; whether Albrecht Achilles had an illegitimate daughter Sophia; Stavanger diocese records
+of the 1470s.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
