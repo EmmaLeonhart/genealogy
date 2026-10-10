@@ -63,3 +63,15 @@ descent is a genealogical tradition); Sabina of Pfalz-Simmern (wife of Lamoral o
 Egmond Meerestein" (Meerestein is a different Egmond branch) → Lorentz Johansen Rasch of Itzehoe. The
 last is the link that carries the line to Norway. Next: Lauritz Rasch's descendants against Emma's
 Rogaland lines (synoptic tree and her Wikidata ancestors).
+
+**Rasch to Emma, first check (2026-10-10):** not traceable yet, in either tree.
+- RootsMagic (15:37 snapshot): Lauritz Rasch (I158537) has a marriage, about 1636 at Stavanger
+  (F76393), but **no wife or children fetched yet**; he is on the frontier, so his family is next.
+- Synoptic tree: two separate Lauritz Lauritzsen Rasch profiles (FamilySearch import PMP8-ZK8,
+  1607–1656, no parents or children; Geni 6000000001838709766, 1598–1658, parents "Lauritz Rasch"
+  and "Marine", no children). Lorentz Johansen Rasch (1573) is there with parents Johan
+  Michaelsson Rasch and "Anna van Egmond van Merenstein", no children linked. Only Jacob Lauritzen
+  Rasch (1600) has descendants (385), none of them Emma's ancestors.
+- Her Wikidata ancestry (on hold; Emma: the synoptic tree is the place to search) has no Rasch.
+Next: after the next snapshot, take Lauritz's children from RootsMagic and trace them down to her
+Rogaland lines in the synoptic tree.
