@@ -51,6 +51,24 @@ here; whether it names Gard II Toreson's wife is the next thing to check.
 entry, not to a document. The next check is *Forsandboka* vol. 2 around p. 88 on Gard II Toreson's
 wife.
 
+## Forsandboka vol. 2, searched through the National Library API
+
+*Forsandboka. B. 2: Gards- og ættesoge* (Sigleif Engen, 1985; nb.no item
+`1d0d79060c1eb690db15c5dbb0708dc3`). Reading is limited to Norwegian IP addresses, and the search
+API returns only the matched word, not the sentence around it. What it shows:
+
+- **"Brandenburg" occurs exactly once in the volume, on scan page 64.** The Under-Berge material
+  is elsewhere (hits on scan pages 13–24, 112 and around 329). Whether page 64 is about a wife of
+  the Underberge line or about something else (Hanseatic trade, the Danish-Norwegian kings) cannot
+  be seen from here.
+- "Sofie" occurs on scan pages 220, 221 and 230; "Sophia" does not occur.
+
+**Not done, BLOCKED-ON-USER-ACTION:** reading scan page 64 needs a Norwegian IP address (or the
+printed book). Emma, or anyone in Norway, can open
+<https://www.nb.no/items/URN:NBN:no-nb_digibok_2016021608139?page=63> and read what the one
+"Brandenburg" refers to. That page decides whether the Sophia von Brandenburg tradition has a
+printed source at all.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
