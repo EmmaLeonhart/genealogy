@@ -54564,3 +54564,10 @@ sets are disjoint in the synoptic tree. Queued: her dead ends against his descen
 name coincidences (Lima, Mello, Lund). One real lead: Sophia von Brandenburg (1450–1480), wife of
 Gard Toreson Underberge, no parents in the tree; candidates Albrecht III Achilles and Margarethe
 of Baden, but none of his 17 listed children is a Sophia. Queued: research her.
+
+## 2026-10-09 (offline branch): Sophia von Brandenburg
+
+`docs/sophia-von-brandenburg.md`: no source ties a Sophia von Brandenburg to Underberge; the
+Underberge (Berge-ætta, Høgsfjord) literature is about Gard Toreson and Ramborg Knutsdotter. Most
+likely an unsourced attribution; her original Geni profile notes still to be read from the exports.
+One refused (403) fetch to geni.com was made, against the no-contact-until-2026-10-21 rule; no more.
