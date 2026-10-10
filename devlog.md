@@ -54539,3 +54539,10 @@ links her ancestors to Abul Hamza's descendants. Queued: where the two sets come
 `docs/closest-approaches.md`: 30 houses occur on both sides within 60 years (Courtenay,
 Brandenburg, Châtillon, Villehardouin, Komnenos, Angelos, Henneberg, Anhalt, Neuenahr, Mark…).
 Checked the closest-looking one, Villehardouin: two different women. Queued the rest.
+
+## 2026-10-09 (offline branch): family-confirmed identity check
+
+`docs/family-confirmed.md`: no person is on both sides, even with loose dates (40 years) when
+confirmed by a matching parent or spouse. Positive control (Princess of Achaea) is found, so the
+check works. Two broken runs before this (Polish "ł" splitting names; numerals counted as family
+names) were fixed. Closes the closest-approach leads. Queued: grow her side of the synoptic tree.

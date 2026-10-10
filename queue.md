@@ -5,8 +5,7 @@ The queue from `main` was cleared on this branch on Emma's instruction, 2026-10-
 do it, delete it, log it in `devlog.md` in the same commit. No Wikidata editing here (see the
 banner in `CLAUDE.md`).
 
-- **Check the closest-approach leads.** `docs/closest-approaches.md` lists 30 shared houses.
-  Villehardouin is checked (different women). Next: Courtenay (Élisabeth 1145 vs Agnès 1136),
-  Brandenburg (Sophia vs Margarete, both 1450), Châtillon (Marie 1341 vs Guy II 1345), Komnenos
-  and Angelos, Henneberg, Anhalt, Neuenahr, Mark. For each: are the two people kin, and does a
-  real parent link join her side to his?
+- **Grow her side.** Only 2,220 of her 5,297 Wikidata ancestors were found in the synoptic tree
+  (exact full name, unique). Match the rest with dates (now read from Wikidata) and a parent check,
+  walk up from the new entry points, and rerun `family_confirmed.py`. More of her real ancestry in
+  the synoptic tree is the most likely way to reach Abul Hamza's descendants.
