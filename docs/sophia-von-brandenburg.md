@@ -159,6 +159,21 @@ archdeacon, is a possible reading. Next places to look: the Bergen archdeacon's 
 relatives; whether Albrecht Achilles had an illegitimate daughter Sophia; Stavanger diocese records
 of the 1470s.
 
+## Did Albrecht Achilles have a daughter Sophie? (2026-10-10)
+
+- **Emma, from Geni:** "he does actually have a daughter named Sophie ... The daughter appears to
+  have died in infancy. Although that is just what [Geni] said." (Geni was not consulted from here;
+  no-contact rule until 2026-10-21.)
+- **NDB (Deutsche Biographie):** Albrecht Achilles had **8 sons and 11 daughters** (ADB: six from the
+  first marriage, 1445/46, to Margarethe of Baden, thirteen from the second, 1458, to Anna of
+  Saxony), so 19 children. The synoptic tree lists 17. NDB names no Sophie; Wikipedia's lists do not
+  either.
+- **Reading:** two of his children are missing from the synoptic tree, and Geni's Sophie could be
+  one. If she is from the first marriage she would be born c. 1447–1457, the same as Sophia (c.
+  1450). An "died in infancy" on a profile is often an assumption made because a child drops out of
+  the record, which a daughter married into a Rogaland farm family would also do. Needed from
+  Emma: the birth date and mother Geni gives for that Sophie, and any source the profile cites.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
