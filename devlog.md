@@ -54571,3 +54571,5 @@ of Baden, but none of his 17 listed children is a Sophia. Queued: research her.
 Underberge (Berge-ætta, Høgsfjord) literature is about Gard Toreson and Ramborg Knutsdotter. Most
 likely an unsourced attribution; her original Geni profile notes still to be read from the exports.
 One refused (403) fetch to geni.com was made, against the no-contact-until-2026-10-21 rule; no more.
+Read her original Geni profile from the exports: the only reference is FamilySearch tree person
+LKM3-Z4V via SmartCopy (2018), no source for "von Brandenburg". Queued: Forsandboka vol. 2 p. 88.

@@ -34,6 +34,23 @@ the original Geni profile's notes are still to be read from the exports on disk.
 Whether to attach her to the Hohenzollerns anyway is Emma's call (where a line attaches in the
 story). Nothing has been applied anywhere.
 
+## Her original Geni profile (from the exports on disk)
+
+`exports/8-19 exports/export-BloodTree-6000000227289508960.ged`, profile `6000000004666525158`:
+"Sophia /von Brandenburg/", married name Underberge, born about 1450 in Rogaland, died between
+1470 and 1480. **Its only reference is a FamilySearch Family Tree person, `LKM3-Z4V`, copied to
+Geni with SmartCopy on 13 March 2018.** No biography, no source for "von Brandenburg".
+
+Her son Tore Gardson Underberge IV (1481–1535) cites the local history: *Forsandboka* vol. 2,
+p. 88, "Lagmannsætta" ([nb.no](https://www.nb.no/items/URN:NBN:no-nb_digibok_2016021608139?page=329)),
+which says of him "Me veit ikkje kven han var gift med" ("we do not know whom he married") and
+that very little is known about the holders of the farm in this period. That page was not read
+here; whether it names Gard II Toreson's wife is the next thing to check.
+
+**Conclusion so far:** "Sophia von Brandenburg" goes back to a user-contributed FamilySearch tree
+entry, not to a document. The next check is *Forsandboka* vol. 2 around p. 88 on Gard II Toreson's
+wife.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
