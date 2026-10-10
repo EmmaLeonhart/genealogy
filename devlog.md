@@ -54593,3 +54593,5 @@ Kulmbach as well as Ansbach). First web search found nothing on him.
 DN XVII 685 read: the Bergen archdeacon Johannes was about 23 in 1474, son of a married margrave
 and an unmarried woman, and Cardinal Francesco Gonzaga's avunculus, so most likely an illegitimate
 son of Johann the Alchemist. Too young to be Sophia's father; possibly her brother.
+Correction: DN XVII 719 shows Johannes's Bergen grant was never executed (papal letters not drawn
+up) and was resigned in 1480; he was very likely never in Norway. Earlier wording corrected in the doc.

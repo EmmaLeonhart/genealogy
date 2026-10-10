@@ -201,6 +201,23 @@ the Alchemist was Albrecht Achilles' brother, with the same ancestry, which reac
 it. If Sophia were an illegitimate daughter of Johann the Alchemist, she would be the link to Abul
 Hamza. Next: Johann the Alchemist's known natural children.
 
+## Correction: he probably never took up the post (2026-10-10)
+
+The full Latin of **DN XVII 719 (7 November 1480)** says the Pope had provided "Jo. de Brandeborch
+clerico [Bambergensis] diocesis" with (1) the archdeaconry of Bergen and the prebend in Nidaros
+(grant dated 2 December 1474) and (2) the provostship of the Benedictine nunnery "Lippie" in Verden
+diocese (grant dated 27 August 1477), and that he now gives these up "concessionem gratie huiusmodi
+litteris apostolicis super ea non confectis": **the papal letters executing the grants had never
+been drawn up.** He resigns in favour of Henrik Pelrenhorst, a priest who had spent nearly twenty
+years at the Curia. Values: archdeaconry and canonry at most 20 gold florins a year each; the
+provostship at most 20 marks of silver. "Concessum ut petitur."
+
+So Johannes's Bergen appointment was a paper provision arranged in Rome by his nephew Cardinal
+Gonzaga, and given up before it took effect. **He was very likely never in Norway.** The earlier
+sections overstate this ("in western Norway in the mid-1470s"); this section corrects them. What
+stands: an illegitimate Hohenzollern born c. 1451, of Sophia's generation, held a claim on a
+Norwegian church office in 1474–1480. That is a much weaker link to Sophia than first written.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
