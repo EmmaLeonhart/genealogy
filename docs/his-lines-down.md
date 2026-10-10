@@ -28,3 +28,9 @@ Same method, same scripts, new `rootsmagic/test_2026-10-10_095436.ged`:
   the only real lead.
 
 The new people in the RootsMagic file widen his side but do not yet reach hers.
+
+## Rerun on the 14:43 snapshot (163,942 people)
+
+His descendants located in the synoptic tree: 14,874; reached walking down: 498,146; none among
+her 33,516 ancestors. Same 2 false family matches; same 5 dead-end leads. (The Lauritz Rasch descent
+in `fetch-progress.md` is the live lead: his children are not fetched yet.)
