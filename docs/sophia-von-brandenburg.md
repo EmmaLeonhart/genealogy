@@ -6,6 +6,16 @@ Emma, has no parents, and is married to Gard Toreson Underberge II (b. 1454); th
 (1475), Tore (1481) and Osmund (1485) Gardson Underberge. If she was a Brandenburg (Hohenzollern)
 princess, she is the link.
 
+> **Status (Emma, 2026-10-10): unexplained, under investigation. Do not treat her as an error.**
+> Her words: "I have no idea where the name came from, but ... assuming that it's a mistake and then
+> trying to correct it instead of looking into it" is the wrong move; "This was actually the person
+> who I was most ... confused about when reading about my genealogy." The name has no source yet,
+> and it fits a real pattern (Johann the Alchemist's natural children placed through his legitimate
+> daughters' courts; his daughter Dorothea was queen of Norway). Earlier lines below that call her
+> "most likely an unsourced attribution" or a drift from Hedvig of Brandenburg are superseded by this
+> status: they were readings, and no evidence makes her a mistake. Do not change, detach or
+> "correct" her profile anywhere.
+
 ## What was found
 
 - **No source connects a Sophia von Brandenburg to Underberge.** Web searches in English, German
