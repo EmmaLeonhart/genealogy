@@ -5,8 +5,8 @@ The queue from `main` was cleared on this branch on Emma's instruction, 2026-10-
 do it, delete it, log it in `devlog.md` in the same commit. No Wikidata editing here (see the
 banner in `CLAUDE.md`).
 
-- **Her dead ends against his 481,994 descendants.** Her ancestors with no parents in the synoptic
-  tree are where a missing link could go. For each dead end, look among his synoptic-tree
-  descendants for a family (a couple with children born in the right years and place-names or
-  patronymics that fit) that could be the missing parents. List candidates with the evidence for
-  each; a candidate is a lead for Emma to judge, not a link to apply.
+- **Sophia von Brandenburg (1450–1480) and Gard Toreson Underberge.** The one real dead-end lead
+  (`docs/dead-end-candidates.md`). Find out what is known about her: where the claim that she was
+  a Brandenburg princess comes from, which Hohenzollern (if any) she is said to be the daughter
+  of, and what sources say about the Underberge family. Reading only; write it up in
+  `docs/sophia-von-brandenburg.md`.

@@ -54557,3 +54557,10 @@ person on both sides. Queued: follow his descendants down inside the synoptic tr
 `his_lines_down.py`: 10,432 of his descendants located in the synoptic tree; walking down from
 them (with duplicates) reaches 481,994 people, none of them among her 33,516 ancestors. The two
 sets are disjoint in the synoptic tree. Queued: her dead ends against his descendants.
+
+## 2026-10-09 (offline branch): dead-end candidates
+
+`dead_ends.py`: 8,922 of her dead ends; 5 have a candidate parent among his descendants; four are
+name coincidences (Lima, Mello, Lund). One real lead: Sophia von Brandenburg (1450–1480), wife of
+Gard Toreson Underberge, no parents in the tree; candidates Albrecht III Achilles and Margarethe
+of Baden, but none of his 17 listed children is a Sophia. Queued: research her.

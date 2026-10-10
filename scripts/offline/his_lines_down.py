@@ -53,6 +53,10 @@ while front:
             if c not in prev: prev[c] = n; nxt.append(c)
     front = nxt
 print('his descendants reached in the synoptic tree:', len(prev), file=sys.stderr)
+import os, pickle
+SAVE = os.environ.get('SAVE_SETS')
+if SAVE:
+    pickle.dump({'anc': anc, 'his': set(prev)}, open(SAVE, 'wb'))
 hits = [a for a in anc if a in prev]
 print('links (his synoptic-tree descendants who are her ancestors):', len(hits), file=sys.stderr)
 def route(a):
