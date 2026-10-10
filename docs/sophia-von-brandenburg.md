@@ -287,6 +287,14 @@ natural daughter placed through the queen, a marriage into a lawman's family of 
 descent is a fitting rank: above a farm family, below the princely marriages that leave records.
 This makes the Sophia reading more plausible; it does not document it.
 
+**Correction (Emma, 2026-10-10: "You misread the versioning history"):** the Geni export shows only
+that an "About me" reference line, "Reference: FamilySearch … LKM3-Z4V – SmartCopy: Mar 13 2018",
+was added with SmartCopy, and that the profile was last changed on 24 December 2020. It does **not**
+show when the profile was created, that it was copied from FamilySearch, or who first entered "von
+Brandenburg". Earlier statements here that her name "goes back to" or "rests only on" the
+FamilySearch entry, or that the profile was "copied to Geni with SmartCopy on 13 March 2018",
+overread that line and are withdrawn. Where the name came from is open.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
