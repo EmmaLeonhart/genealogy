@@ -54511,3 +54511,12 @@ matches. Earlier runs the same evening reported Reuss and Bagrationi links, and 
 bad bridges in the matching (NN placeholders, birth-vs-death years, Cyrillic dropped to a lone
 "Samson"), fixed before this result. Write-up: `docs/reuss-ancestry.md`. Scripts:
 `scripts/offline/`.
+
+## 2026-10-09 (offline branch): her German lines
+
+`docs/german-lines.md`: 2,329 of her 33,541 synoptic-tree ancestors carry German titles or
+particles, nearly all born 800–1300. They reach her through Danish and Norwegian nobility on the
+Borsheim side; the Reuss neighbourhood is there (Gleichen, Weimar-Orlamünde, Wettin, Thuringia,
+Askanier Saxony, Henneberg, Isenburg-Kempenich, Everstein; 319 people) but no Reuss. Two lines
+traced in full (Gleichen, Everstein). Closes the "where her lines come closest" and "German lines"
+items.
