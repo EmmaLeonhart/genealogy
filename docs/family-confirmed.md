@@ -19,3 +19,10 @@ like "III" counted as a shared family name). Both fixed before this result.
 
 This covers every lead in `closest-approaches.md` at once: none of those shared houses has a
 person who is on both sides.
+
+## Her side grown (same evening)
+
+`scripts/offline/grow_side.py`: her Wikidata ancestors not found by exact name were matched into
+the synoptic tree with Wikidata dates (within 10 years), a real shared name word and a matching
+parent or child. Entry points 2,220 → 2,685; ancestors in the synoptic tree 33,495 → 33,987.
+Family-confirmed check rerun: **still no one on both sides.**

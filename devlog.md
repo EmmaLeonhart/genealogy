@@ -54546,3 +54546,8 @@ Checked the closest-looking one, Villehardouin: two different women. Queued the 
 confirmed by a matching parent or spouse. Positive control (Princess of Achaea) is found, so the
 check works. Two broken runs before this (Polish "ł" splitting names; numerals counted as family
 names) were fixed. Closes the closest-approach leads. Queued: grow her side of the synoptic tree.
+
+## 2026-10-09 (offline branch): her side grown
+
+`grow_side.py`: 2,685 entry points (was 2,220), 33,987 ancestors; still no family-confirmed
+person on both sides. Queued: follow his descendants down inside the synoptic tree.
