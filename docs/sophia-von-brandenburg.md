@@ -253,6 +253,22 @@ any Norwegian charter of Queen Dorothea's time, in her household or elsewhere. T
 are Danish (Repertorium diplomaticum regni Danici mediævalis; the queen's accounts) and Stavanger
 diocesan records, which are not searchable online from here.
 
+## Fritz, another natural son, and the pattern (2026-10-10, found by Emma)
+
+**Fritz di Brandeburgo** ([Wikidata Q98479306](https://www.wikidata.org/wiki/Q98479306);
+[it.wikipedia](https://it.wikipedia.org/wiki/Fritz_di_Brandeburgo)): "figlio naturale di Giovanni
+l'Alchimista"; mother NN. He "si stabilì presso la corte dei Gonzaga di Mantova della sorellastra
+Barbara". Daughters: Maddalena, married Giberto Borromeo (1463–1508), count of Arona; Francesca
+(d. 1512), married Borso da Correggio, count of Correggio.
+
+**The pattern:** Johann the Alchemist's natural children were placed through his legitimate
+daughters' courts. Fritz went to Barbara's court at Mantua, and his daughters married Italian
+counts. Johannes got the Bergen claim through Barbara's son, Cardinal Gonzaga. His other legitimate
+daughter, Dorothea, was queen of Denmark and Norway. A natural daughter placed through Dorothea
+would be married off in Scandinavia as plain "von Brandenburg", which is how Sophia's profile reads.
+This is the strongest argument for Sophia so far, and it is still circumstantial: no document names
+her.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused

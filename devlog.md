@@ -54600,3 +54600,6 @@ Q61873); he also had natural children (Johannes, a son noted 1458, "Fritz"). A p
 natural daughter "Sophia" into Norway. Queued: Queen Dorothea's household.
 DN full text has no Sophie/Sofie in the 1440s–1490s (76 + 146 hits outside that range). Queen
 Dorothea's-household item closed as far as online sources go.
+Fritz di Brandeburgo (Q98479306), natural son of Johann the Alchemist, at his half-sister Barbara's
+Mantua court; daughters married Italian counts. Pattern: natural children placed through legitimate
+daughters' courts, which would put a natural daughter with Queen Dorothea in Scandinavia.
