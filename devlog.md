@@ -54527,3 +54527,9 @@ Read birth/death years from Wikidata for her 5,298 Wikidata ancestors (read only
 and matched them with Abul Hamza's descendants: no matches, no Reuss. The zero is weaker than the
 synoptic-tree one because names are compared literally across languages; queued a
 language-aware rerun.
+
+## 2026-10-09 (offline branch): language-aware rerun
+
+Added cross-language name aliases to `compare_ah.py` and reran both comparisons: no real match
+(5 false ones on the synoptic side, none on the Wikidata side; near misses checked). Neither tree
+links her ancestors to Abul Hamza's descendants. Queued: where the two sets come closest.

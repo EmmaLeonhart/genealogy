@@ -66,3 +66,21 @@ of Abul Hamza's descendants. Matched with the same strict rules (`scripts/offlin
 **Weak point:** Wikidata labels are English ("Christian of Thuringia") while `test.ged` names are
 often German, Portuguese or Latin ("von Thüringen"), and the matching compares words literally.
 So this zero is weaker than the synoptic-tree one. Language-aware matching is queued.
+
+## Language-aware rerun
+
+`compare_ah.py` now maps names across languages (Henry/Heinrich/Henrique/Enrique, John/Johann/
+Jean/João/Juan, Thuringia/Thüringen, Saxony/Sachsen, Braganza/Bragança and about 200 more).
+Rerun of both comparisons:
+
+- **Wikidata ancestors (dated):** still no match and no Reuss. The 2,841 near misses (same birth
+  year, one shared name word) were checked: all are different people (e.g. Anna Maria Thierry vs
+  Anna Maria von Lüneburg).
+- **Synoptic-tree ancestors:** 5 matches, all false: Anna Maria Thierry / Anna Maria von Lüneburg
+  (1610), Anna Katharina von Köller / von Münsterberg (1475), Jean II Baillet / Juan II of Aragón
+  (1400), Johann II von Saffenberg / Jan II van Bouchout (1320), Guillaume I de Mont Saint Jean
+  (Burgundy) / William de Saint John (England) (1175).
+
+**Conclusion: neither tree contains a link between Emma's ancestors and Abul Hamza's
+descendants.** The missing link has to be found or made; the next step is to find where the two
+sets come closest (shared houses in overlapping centuries).
