@@ -218,6 +218,29 @@ sections overstate this ("in western Norway in the mid-1470s"); this section cor
 stands: an illegitimate Hohenzollern born c. 1451, of Sophia's generation, held a claim on a
 Norwegian church office in 1474–1480. That is a much weaker link to Sophia than first written.
 
+## Johann the Alchemist's family reaches Norway: Queen Dorothea (2026-10-10)
+
+- **Legitimate children of Johann "the Alchemist"** (de.wikipedia mirror; Deutsche Biographie):
+  Barbara (Marchioness of Mantua), Rudolf, Elisabeth, **Dorothea**.
+- **Dorothea of Brandenburg (1430–1495), queen of Denmark, Norway and Sweden** (Wikidata Q61873:
+  father John, Margrave of Brandenburg-Kulmbach; mother Barbara of Saxe-Wittenberg; husbands
+  Christopher of Bavaria, 1445, and Christian I, 1449). DN XVII also has her morning-gift from
+  King Christopher (15 September 1445), which assigned her Jämtland in Norway among other lands.
+- **Natural children:** Pope Pius II mentions an illegitimate son of Johann in 1458 (Deutsche
+  Biographie); a "Fritz von Brandenburg", illegitimate son, had daughters Magdalena and Franziska who
+  married Italian counts (single source, a de.wikipedia mirror). Plus Johannes (b. c. 1451), the
+  Bergen archdeacon of 1474–1480, per DN XVII 685.
+
+**Reading (inference, no document names Sophia):** Johann the Alchemist's legitimate daughter was
+queen of Norway from 1445 to 1481 and queen dowager until 1495, and his natural children were
+provided for through the family's connections (the Gonzaga cardinal for Johannes; Italian marriages
+for Fritz's daughters). An illegitimate daughter of his born c. 1450, placed through her half-sister
+the queen, marrying into a Norwegian lawman's family, is a plausible origin for "Sophia von
+Brandenburg". If she was his daughter, Emma descends from Abul Hamza through her (Johann the
+Alchemist is among his descendants in the synoptic tree). Next: Queen Dorothea's household and
+ladies; Norwegian or Danish records of a "Sophie/Sofie" with the queen; Stavanger-area marriages
+of the 1470s.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused

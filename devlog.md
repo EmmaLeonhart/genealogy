@@ -54595,3 +54595,6 @@ and an unmarried woman, and Cardinal Francesco Gonzaga's avunculus, so most like
 son of Johann the Alchemist. Too young to be Sophia's father; possibly her brother.
 Correction: DN XVII 719 shows Johannes's Bergen grant was never executed (papal letters not drawn
 up) and was resigned in 1480; he was very likely never in Norway. Earlier wording corrected in the doc.
+Johann the Alchemist's legitimate daughter was Dorothea, queen of Denmark and Norway (Wikidata
+Q61873); he also had natural children (Johannes, a son noted 1458, "Fritz"). A plausible route for a
+natural daughter "Sophia" into Norway. Queued: Queen Dorothea's household.
