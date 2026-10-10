@@ -118,6 +118,18 @@ Birgitta of Sweden** ("Morsætta til Ramborg Knutsdotter").
 **Sophia von Brandenburg: no printed source found; treated as an unsourced tradition.** The book
 itself is not stored in any repo (copyright); pages read were rendered to `scratch/` only.
 
+## Two readings to keep apart (2026-10-10)
+
+- **Ramborg's mother is disputed, not simply wrong.** Knut Algotsson did marry Märta Ulfsdotter
+  (b. c. 1319). Sollied (1941) argued Ramborg was Knut's illegitimate daughter (the synoptic tree's
+  "NN (Frille)"); Engen (1942) left her legitimacy open; *Forsandboka* (1985) names Märta. Märta
+  would have been about 40 at Ramborg's birth (c. 1360). The article that decides it is Eyvin Dahl,
+  "Gard Toresons hustru: Ramborg Knutsdotter", *Lagnaden* 1946, not yet seen.
+- **Where "von Brandenburg" may have come from (a guess, no source says so):** the family's printed
+  history names a Brandenburg woman, Hedvig, wife of Knut Valdemarsson (d. 1260), on a side branch.
+  A tree built from that book could have carried the name onto Gard II Toreson's unknown wife, about
+  200 years and seven generations later.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
