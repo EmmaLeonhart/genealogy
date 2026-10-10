@@ -180,6 +180,27 @@ Elector Frederick I and Elisabeth of Bavaria-Landshut, who died in infancy (c. 1
 memory, unchecked). Not our Sophia (c. 1450). The open lead is the Bergen archdeacon, Johannes von
 Brandenburg (above).
 
+## The archdeacon identified (2026-10-10)
+
+**DN XVII 685, 2 December 1474, Rome** ([dokpro.uio.no](https://www.dokpro.uio.no/cgi-bin/middelalder/diplom_vise_tekst.cgi?b=14767&s=n&str=)),
+from *Supplicationes Sixti IV* an. 4 lib. 7 (943) fol. 81. Cardinal Francesco Gonzaga petitions for
+"Johannis Brandeburgensis clerici Bambergensis diocesis, avunculi sui, de nobili marchionum genere
+procreati, qui in vicesimo tertio vel circa sue etatis anno constitutus existit et defectum
+natalium patitur, de coniugato marchione et soluta genitus" to have the archdeaconry of Bergen and
+a canonry in Nidaros. **DN XVII 719, 7 November 1480** ([dokpro.uio.no](https://www.dokpro.uio.no/cgi-bin/middelalder/diplom_vise_tekst.cgi?b=14801&s=n&str=)):
+he resigns them to Henrik Pelrenhorst.
+
+So Johannes was **about 23 in December 1474 (born c. 1451)**, the son of a married margrave and an
+unmarried woman, and the cardinal's *avunculus* (mother's brother). Cardinal Francesco Gonzaga's
+mother was Barbara of Brandenburg, daughter of **Johann "the Alchemist", Margrave of
+Brandenburg-Kulmbach** (from memory, to be checked), which matches Bamberg diocese (Kulmbach). So
+Johannes is most likely Johann the Alchemist's illegitimate son, and Barbara's half-brother. Johann
+the Alchemist was Albrecht Achilles' brother, with the same ancestry, which reaches Abul Hamza.
+
+**For Sophia:** born c. 1451, Johannes cannot be her father. He could be her brother; nothing shows
+it. If Sophia were an illegitimate daughter of Johann the Alchemist, she would be the link to Abul
+Hamza. Next: Johann the Alchemist's known natural children.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused

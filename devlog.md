@@ -54590,3 +54590,6 @@ unnamed concubine). The royal line is already in Emma's synoptic ancestry; neith
 Birgitta line is among Abul Hamza's descendants. Sophia: no printed source.
 Queued: who fathered Johannes von Brandenburg, archdeacon of Bergen (Bamberg diocese points at
 Kulmbach as well as Ansbach). First web search found nothing on him.
+DN XVII 685 read: the Bergen archdeacon Johannes was about 23 in 1474, son of a married margrave
+and an unmarried woman, and Cardinal Francesco Gonzaga's avunculus, so most likely an illegitimate
+son of Johann the Alchemist. Too young to be Sophia's father; possibly her brother.
