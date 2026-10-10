@@ -54500,3 +54500,14 @@ Shown to Emma as https://claude.ai/artifact/WvqEt3hsP3DoN9567HcZQa. Her ruling: 
 different people from each other." All 15 are DIFFERENT in `ancestor-frontier-verdicts.tsv` (the earlier doubt kept in
 the reason) and in `reports/emma-judgments.tsv` (batch `frontier-unsure`), so the walk refuses those pairings. Tally now
 567 SAME, 161 DIFFERENT.
+
+## 2026-10-09 (offline branch): Reuss / Abul Hamza against Emma's ancestors, first pass
+
+Rebuilt the synoptic tree locally (`genimerge merge --slim`, 2,273,878 people). Seeded her
+ancestry from Wikidata (Q140568870, 5,297 ancestors; 2,223 found in the synoptic tree, giving
+33,541 ancestors there) and compared it by name and dates with Abul Hamza's 73,711 descendants in
+`rootsmagic/test_2026-10-09.ged`. Result: no Reuss ancestors and no real overlap; two false
+matches. Earlier runs the same evening reported Reuss and Bagrationi links, and those came from
+bad bridges in the matching (NN placeholders, birth-vs-death years, Cyrillic dropped to a lone
+"Samson"), fixed before this result. Write-up: `docs/reuss-ancestry.md`. Scripts:
+`scripts/offline/`.
