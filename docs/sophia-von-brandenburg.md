@@ -241,6 +241,12 @@ Alchemist is among his descendants in the synoptic tree). Next: Queen Dorothea's
 ladies; Norwegian or Danish records of a "Sophie/Sofie" with the queen; Stavanger-area marriages
 of the 1470s.
 
+**Not the same man:** Wikidata Q69437231 / Catholic Hierarchy "brandej", Johann von Brandenburg,
+bishop-elect of Płock (appointed 26 September 1522, d. 1523, *Hierarchia Catholica* III 276), is
+Johann Albrecht of Brandenburg-Ansbach ("Jan Albrecht", b. 1499), brother of Grand Master Albrecht
+of Prussia, nominated after Erazm Ciołek's death (Tygodnik Ciechanowski, "Brat wielkiego mistrza
+biskupem w Płocku?"). Legitimate, and born about 50 years after the Bergen Johannes (c. 1451).
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
