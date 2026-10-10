@@ -5,5 +5,7 @@ The queue from `main` was cleared on this branch on Emma's instruction, 2026-10-
 do it, delete it, log it in `devlog.md` in the same commit. No Wikidata editing here (see the
 banner in `CLAUDE.md`).
 
-(Empty. Open: Danish sources on Queen Dorothea's household and Stavanger diocesan records, not
-searchable online; see `docs/sophia-von-brandenburg.md`.)
+- **Lauritz Rasch to Emma.** Lauritz Lauritzsen Rasch (1607–1656, Stavanger/Nedstrand) descends
+  from Abul Hamza in the RootsMagic file (`docs/fetch-progress.md`). Find his line down to Emma:
+  his descendants in the synoptic tree and in her Wikidata ancestry (Rogaland: Kolnes, Borsheim,
+  Nedstrand/Tysvær). Then check the weak links upward (Anna van Egmond Meerestein → Lorentz Rasch).

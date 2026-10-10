@@ -36,3 +36,30 @@ Emma's test ("really good evidence of ... ties to Östergötland or to Rogaland"
 continental links are well past the frontier): neither holds yet. The links are not reached, and
 the home-region people present are princely, not the recent low-generation people that would
 show a tie.
+
+## Lauritz Lauritzsen Rasch: a descent from Abul Hamza into Rogaland (2026-10-10)
+
+Emma: Lauritz Rasch "is a reasonably likely ancestor of mine." **Decision (Emma): the export keeps
+going.** "this is clear evidence ... there's an extreme case to be made for keeping the export
+going ... We are keeping going here. I think that we're on to something." (The section above that
+said "neither holds yet" read her test wrongly: the test is whether the frontier is clearly past the
+ring people's dates, and with 1850–1949 births it is.)
+
+Lauritz Lauritzsen Rasch, b. c. 1607 Stavanger, d. 1656 Nedstrand, Tysvær, Rogaland
+(FamilySearch PMP8-ZK8; GEDCOM I158537), is a **direct descendant of Abul Hamza in the RootsMagic
+file, 22 generations, every step parent to child:**
+
+Gregory-Abuhamza Artsruni (869) → Melike Artsruni → Abusahl Amazasp III, King of Vaspurakan →
+Senekerim, Prince of Vaspurakan → Mariam of Vaspurakan → Bagrat IV, King of Georgia → Giorgi
+Bagrationi → Totorme Bagrationi → Kotyan Sutoevich (Cuman khan) → Elizabeth the Cuman → Mária
+Árpád-házi (Mary of Hungary) → Eleonora d'Angiò, Queen of Sicily → Pietro II of Sicily → Beatrice of
+Sicily-Aragon → Ruprecht III of the Palatinate, King of the Romans → Stefan of
+Pfalz-Simmern-Zweibrücken → Friedrich I of Pfalz-Simmern → Johann I of Pfalz-Simmern → Johann II of
+Pfalz-Simmern → Sabina of Pfalz-Simmern (1528) → Anna van Egmond Meerestein (1537, Heemskerk) →
+Lorentz Johansen Rasch (1573, Itzehoe, Holstein) → Lauritz Lauritzsen Rasch (1607, Stavanger).
+
+**Links to check (from memory, unchecked):** Totorme Bagrationi → Kotyan (Kotyan's Georgian royal
+descent is a genealogical tradition); Sabina of Pfalz-Simmern (wife of Lamoral of Egmont) → "Anna van
+Egmond Meerestein" (Meerestein is a different Egmond branch) → Lorentz Johansen Rasch of Itzehoe. The
+last is the link that carries the line to Norway. Next: Lauritz Rasch's descendants against Emma's
+Rogaland lines (synoptic tree and her Wikidata ancestors).
