@@ -174,6 +174,12 @@ of the 1470s.
   the record, which a daughter married into a Rogaland farm family would also do. Needed from
   Emma: the birth date and mother Geni gives for that Sophie, and any source the profile cites.
 
+**Settled the same day:** Geni gives that Sophie's birth as **1416** (Emma). Albrecht Achilles was
+born in 1414, so she cannot be his daughter; she is almost certainly his sister, Sophie, daughter of
+Elector Frederick I and Elisabeth of Bavaria-Landshut, who died in infancy (c. 1416–1417, from
+memory, unchecked). Not our Sophia (c. 1450). The open lead is the Bergen archdeacon, Johannes von
+Brandenburg (above).
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
