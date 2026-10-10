@@ -269,6 +269,14 @@ would be married off in Scandinavia as plain "von Brandenburg", which is how Sop
 This is the strongest argument for Sophia so far, and it is still circumstantial: no document names
 her.
 
+**The Underberge family's standing (Emma, 2026-10-10: "they're not nothing ... they are
+surprisingly high up"):** *Forsandboka* calls them "Lagmannsætta". Gard Toreson was lawman
+(lagmann) of Ryfylke; his wife Ramborg Knutsdotter was of the Swedish Lejon family, descended from
+Valdemar II of Denmark, and per *Forsandboka* a granddaughter of Saint Birgitta. For a margrave's
+natural daughter placed through the queen, a marriage into a lawman's family of royal and noble
+descent is a fitting rank: above a farm family, below the princely marriages that leave records.
+This makes the Sophia reading more plausible; it does not document it.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
