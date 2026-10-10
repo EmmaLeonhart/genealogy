@@ -54598,3 +54598,5 @@ up) and was resigned in 1480; he was very likely never in Norway. Earlier wordin
 Johann the Alchemist's legitimate daughter was Dorothea, queen of Denmark and Norway (Wikidata
 Q61873); he also had natural children (Johannes, a son noted 1458, "Fritz"). A plausible route for a
 natural daughter "Sophia" into Norway. Queued: Queen Dorothea's household.
+DN full text has no Sophie/Sofie in the 1440s–1490s (76 + 146 hits outside that range). Queen
+Dorothea's-household item closed as far as online sources go.

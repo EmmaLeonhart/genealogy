@@ -247,6 +247,12 @@ Johann Albrecht of Brandenburg-Ansbach ("Jan Albrecht", b. 1499), brother of Gra
 of Prussia, nominated after Erazm Ciołek's death (Tygodnik Ciechanowski, "Brat wielkiego mistrza
 biskupem w Płocku?"). Legitimate, and born about 50 years after the Bergen Johannes (c. 1451).
 
+**Diplomatarium Norvegicum checked for her (2026-10-10):** full-text search for "Sophi*" (76 hits)
+and "Sofi*" (146 hits) over 1300–1550: **none dated in the 1440s–1490s.** No Sophie appears in
+any Norwegian charter of Queen Dorothea's time, in her household or elsewhere. The remaining places
+are Danish (Repertorium diplomaticum regni Danici mediævalis; the queen's accounts) and Stavanger
+diocesan records, which are not searchable online from here.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
