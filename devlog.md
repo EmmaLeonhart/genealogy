@@ -54551,3 +54551,9 @@ names) were fixed. Closes the closest-approach leads. Queued: grow her side of t
 
 `grow_side.py`: 2,685 entry points (was 2,220), 33,987 ancestors; still no family-confirmed
 person on both sides. Queued: follow his descendants down inside the synoptic tree.
+
+## 2026-10-09 (offline branch): his lines followed down
+
+`his_lines_down.py`: 10,432 of his descendants located in the synoptic tree; walking down from
+them (with duplicates) reaches 481,994 people, none of them among her 33,516 ancestors. The two
+sets are disjoint in the synoptic tree. Queued: her dead ends against his descendants.
