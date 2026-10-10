@@ -54588,3 +54588,5 @@ Valdemarsson, not Sophia. The page gives Ramborg Knutsdotter's royal line (Valde
 Algotsson) and her mother as Märta Ulfsdotter, daughter of Saint Birgitta (the synoptic tree has an
 unnamed concubine). The royal line is already in Emma's synoptic ancestry; neither it nor the
 Birgitta line is among Abul Hamza's descendants. Sophia: no printed source.
+Queued: who fathered Johannes von Brandenburg, archdeacon of Bergen (Bamberg diocese points at
+Kulmbach as well as Ansbach). First web search found nothing on him.
