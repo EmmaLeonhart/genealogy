@@ -69,6 +69,19 @@ printed book). Emma, or anyone in Norway, can open
 "Brandenburg" refers to. That page decides whether the Sophia von Brandenburg tradition has a
 printed source at all.
 
+## What else is on scan page 64 (word probe, 2026-10-10)
+
+The search API cannot show the text, but it does say which words occur on a page.
+`scripts/offline/nb_page_probe.py` tested words one at a time. **On page 64:** "Brandenburg", the
+phrase "av Brandenburg", "Høgsfjord", "lagmann", "Hans", "gifte" (married). **Not on page 64:**
+"von Brandenburg", "Sofie", "Sophie", "Sophia", "prinsesse", "kurfyrste", "markgreve", "Gard",
+"Berge", "Underberge", "Ramborg", "kona".
+
+So the page speaks of someone "av Brandenburg" and a marriage, in Høgsfjord, in a passage
+about a lawman, but it does not use the names Sophia/Sofie or Gard. That is more than nothing:
+the Brandenburg tradition may have a printed source here after all. Emma has the page open in her
+browser (2026-10-10) to read it directly.
+
 ## Process note
 
 One page fetch went to geni.com (a profile in this family) while researching; it was refused
