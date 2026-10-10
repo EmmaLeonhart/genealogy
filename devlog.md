@@ -54533,3 +54533,9 @@ language-aware rerun.
 Added cross-language name aliases to `compare_ah.py` and reran both comparisons: no real match
 (5 false ones on the synoptic side, none on the Wikidata side; near misses checked). Neither tree
 links her ancestors to Abul Hamza's descendants. Queued: where the two sets come closest.
+
+## 2026-10-09 (offline branch): closest approaches
+
+`docs/closest-approaches.md`: 30 houses occur on both sides within 60 years (Courtenay,
+Brandenburg, Châtillon, Villehardouin, Komnenos, Angelos, Henneberg, Anhalt, Neuenahr, Mark…).
+Checked the closest-looking one, Villehardouin: two different women. Queued the rest.
