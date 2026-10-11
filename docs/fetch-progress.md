@@ -115,7 +115,7 @@ descendants (here Brazilian families in Paraná), which "wipes the floor with ev
 when many sections are exported at once. She also wonders whether the computer locking changed
 something (the screen was locked at 19:56; when it locked is not known).
 
-## Next fetch targets (Emma, 2026-10-10, 21:5x PST)
+## Next fetch targets (Emma, 2026-10-10, between 21:53 and 21:57 PST)
 
 Her words: "these are the ones", and then "write them in as the next fetch targets". FamilySearch
 person IDs, with the download mode she gave for each:
