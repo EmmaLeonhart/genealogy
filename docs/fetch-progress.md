@@ -125,5 +125,6 @@ person IDs, with the download mode she gave for each:
 | [G82L-CF5](https://ancestors.familysearch.org/en/G82L-CF5/princess-comn%C3%A9ne-helene-de-byzance-1121-1180) | Hélène Comnène de Byzance (1121–1180) | descendants or hourglass |
 | [G4FF-FYC](https://www.familysearch.org/en/tree/person/details/G4FF-FYC) | (name not given) | hourglass |
 | [PF5Q-L8W](https://www.familysearch.org/en/tree/person/PF5Q-L8W) | (name not given) | descendants |
+| [GZ8J-L3N](https://www.familysearch.org/en/tree/person/GZ8J-L3N) | (name not given; added 2026-10-11, 00:37 PST: "another thing I want to do an hourglass export on") | hourglass |
 
 The fetch runs in RootsMagic on her side; nothing here touches RootsMagic or the live file.
