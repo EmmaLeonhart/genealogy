@@ -114,3 +114,16 @@ era: "sheer increase in surface area"; a founder around 1800 fans out into very 
 descendants (here Brazilian families in Paraná), which "wipes the floor with everything", especially
 when many sections are exported at once. She also wonders whether the computer locking changed
 something (the screen was locked at 19:56; when it locked is not known).
+
+## Next fetch targets (Emma, 2026-10-10, 21:5x PST)
+
+Her words: "these are the ones", and then "write them in as the next fetch targets". FamilySearch
+person IDs, with the download mode she gave for each:
+
+| FamilySearch ID | person | mode |
+|---|---|---|
+| [G82L-CF5](https://ancestors.familysearch.org/en/G82L-CF5/princess-comn%C3%A9ne-helene-de-byzance-1121-1180) | Hélène Comnène de Byzance (1121–1180) | descendants or hourglass |
+| [G4FF-FYC](https://www.familysearch.org/en/tree/person/details/G4FF-FYC) | (name not given) | hourglass |
+| [PF5Q-L8W](https://www.familysearch.org/en/tree/person/PF5Q-L8W) | (name not given) | descendants |
+
+The fetch runs in RootsMagic on her side; nothing here touches RootsMagic or the live file.
