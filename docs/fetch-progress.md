@@ -107,3 +107,10 @@ lines; the import is at 21–22.
 Practically stopped since about 18:06 (last person change), with RootsMagic still running and
 writing. ProtonVPN on throughout (Oslo, server NO#39, no reconnects logged); FamilySearch loads
 normally in the browser over it. Cause not known.
+
+**Why it gets stuck, Emma's model (2026-10-10):** both eras stall the search, for different reasons.
+The ancient era: pedigree collapse, loops and an abundance of paths to the same people. The modern
+era: "sheer increase in surface area"; a founder around 1800 fans out into very many well-indexed
+descendants (here Brazilian families in Paraná), which "wipes the floor with everything", especially
+when many sections are exported at once. She also wonders whether the computer locking changed
+something (the screen was locked at 19:56; when it locked is not known).
