@@ -75,3 +75,35 @@ Rogaland lines (synoptic tree and her Wikidata ancestors).
 - Her Wikidata ancestry (on hold; Emma: the synoptic tree is the place to search) has no Rasch.
 Next: after the next snapshot, take Lauritz's children from RootsMagic and trace them down to her
 Rogaland lines in the synoptic tree.
+
+## The standard for continuing the import (Emma, 2026-10-10)
+
+**Progress is measured only by total individuals added to the file.** ("only total individuals
+matters.") Not by any one person's family.
+
+**When it would be conclusive:** once the file holds *all* of Abul Hamza's descendants down to the
+period of her ring people (Abraham de Flon, Inger Axelsdatter / Güntersberg, Pfinzing, Olver Rømer
+and others), the question is settled either way. The ring people are her continental links that go
+furthest, and they have known lifespans, so the cutoff comes from their dates, around 1700 ("1700 is
+also a date that's like this"), not a fixed 1800. Her ancestors up to that period are almost all
+known and predictable; the outliers like Abraham de Flon go in unexpected directions and are the
+most valuable. Every line from Abul Hamza to her must pass through someone of that period, so with
+his descendants complete to then, either one of her ancestors of that period is among them (the
+link, proven) or none is (no link, a real result rather than a gap).
+
+## How the import orders people (checked 2026-10-10, 18:49 snapshot)
+
+Roughly breadth-first by **generations below Abul Hamza**, loosely: the median generation of each
+10,000-ID block rises 14, 16, 17, 18, 18, 20, 19, 19, 20, 21, 20, 20, 20, 21, 22, 22, 21, each block
+mixing about four generations, and about a quarter of each block are spouses. RootsMagic's import
+window agrees ("Importing: … Nineteenth great-grandson" = generation 21). Median birth year by block:
+1307, 1415, 1457, 1485, 1504, 1502, 1547, 1552, 1520, 1574, 1599, 1578, 1608, 1556, 1536, 1545,
+then 1878 for the last block. So a generation spans centuries: fast-breeding families reach the 1900s
+by generation 21 while slow lines are still in the 1500s. **Completeness to ~1700 needs the slow
+lines finished:** 869 to 1700 is about 830 years, around 30 generations for long-generation noble
+lines; the import is at 21–22.
+
+**Import status:** 168,898 people at 18:49 and 19:53, 168,899 at 20:19; families 91,360 → 91,364.
+Practically stopped since about 18:06 (last person change), with RootsMagic still running and
+writing. ProtonVPN on throughout (Oslo, server NO#39, no reconnects logged); FamilySearch loads
+normally in the browser over it. Cause not known.

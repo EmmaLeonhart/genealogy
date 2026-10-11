@@ -54603,3 +54603,10 @@ Dorothea's-household item closed as far as online sources go.
 Fritz di Brandeburgo (Q98479306), natural son of Johann the Alchemist, at his half-sister Barbara's
 Mantua court; daughters married Italian counts. Pattern: natural children placed through legitimate
 daughters' courts, which would put a natural daughter with Queen Dorothea in Scandinavia.
+
+## 2026-10-10 (offline branch): the import standard, its order, and its stall
+
+Recorded Emma's standard (total individuals; conclusive when Abul Hamza's descendants are complete
+to the ring people's period, about 1700), the import's loose generation-by-generation order, and the
+stall since about 18:06 (168,899 people at 20:19). Dropped the Lauritz-children queue item (he has no
+children on FamilySearch); queued watching the import by total individuals.
