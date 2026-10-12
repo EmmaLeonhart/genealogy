@@ -54610,3 +54610,7 @@ Recorded Emma's standard (total individuals; conclusive when Abul Hamza's descen
 to the ring people's period, about 1700), the import's loose generation-by-generation order, and the
 stall since about 18:06 (168,899 people at 20:19). Dropped the Lauritz-children queue item (he has no
 children on FamilySearch); queued watching the import by total individuals.
+
+- **15:13 PST, 2026-10-12:** queue item "Watch the import by total individuals" closed on Emma's word: "we're
+  finished with all the roots magic stuff ... nothing is running there." Last Helena (G82L-CF5) snapshot:
+  37,653 people (13:35); RootsMagic has been closed since 12:59.
