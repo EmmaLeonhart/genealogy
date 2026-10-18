@@ -846,6 +846,9 @@ TITLE_WORDS = {
     "könig", "königin", "kaiser", "kaiserin", "graf", "gräfin", "markgraf", "markgräfin",
     "fürst", "furst", "jarl", "reine", "roi", "duc", "duchesse", "comte", "comtesse",
     "kuningas", "kuningatar", "maestre",
+    # `heiress of`/`heir of` is a title tail like `lord of` (2026-10-17): `Katrine/Katharina Jonsdottir
+    # av Sudreim, heiress of Manvik & Soerum` read `…・ヘイレッス` in CJK, the English word spelled out.
+    "heiress", "heir",
 }
 
 #: What turns a title word into a title PHRASE, and what opens a territorial tail on its own.
