@@ -87,6 +87,11 @@ ROWS = {
     "th": (("タ", "ティ", "ト", "テ", "ト"), ("塔", "蒂", "图", "特", "托")),
     "ch": (("カ", "キ", "ク", "ケ", "コ"), ("卡", "基", "库", "凯", "科")),
     "sch": (("シャ", "シ", "シュ", "シェ", "ショ"), ("沙", "西", "舒", "谢", "肖")),
+    # **`qu` is /kw/ and `q` alone /k/; neither was in the table, so 2,161 words with a `q` read as
+    # nothing** (Quintus, Torquatus, Aquitaine, Jacques: 2026-10-17, Emma's "Extend the engine" for
+    # gaiad.ged). `Quintus` is 昆图斯, `Quadratus` 夸德拉图斯, by the standard Chinese characters.
+    "qu": (("クァ", "クィ", "ク", "クェ", "クォ"), ("夸", "奎", "库", "奎", "阔")),
+    "q":  (("カ", "キ", "ク", "ケ", "コ"), ("卡", "基", "库", "凯", "科")),
 }
 
 #: vowel -> column, plus the ones that carry their own length.
@@ -155,6 +160,8 @@ NASAL_FINAL = {
     "gj": ("扬", "延", "因", "永", "云"),
     "hj": ("扬", "延", "因", "永", "云"),
     "sch": ("尚", "申", "辛", "雄", "顺"),
+    "qu": ("宽", "昆", "昆", "孔", "昆"),
+    "q":  ("坎", "肯", "金", "孔", "昆"),
 }
 
 #: vowel -> its column in `NASAL_FINAL`. Norwegian `æ`/`ä` follow `e`, `ø`/`ö`/`å` follow `o`,
@@ -274,7 +281,10 @@ def translit(token):
     # `aa` normalises to `å`, fixes the coda (`Falck`, `Munck`) and the onset (`Sacken`
     # `サクケン` -> `サケン`) in one place. 47 tokens were affected.
     s = (token.casefold().translate(BARE_VOWEL).replace("aa", "å")
-         .replace("ck", "k"))
+         .replace("ck", "k").replace("þ", "th").replace("ð", "d"))
+    # **`þ` and `ð` are spelled `th` and `d` in the Norwegian forms of the same names**
+    # (Þorsteinn = Thorstein, Guðrún = Gudrun), so they read the same way: one name, one reading
+    # across the namosphere. Neither was readable before, which cost 1,306 words (2026-10-17).
     # **A doubled nasal with no vowel after it is one mora nasal.** `Finn` came out `フィンン`
     # and `Gunnbjørn` `グンンブヨルン`: the nasal-final block consumed one `n` and the geminate
     # branch below then emitted the other. Collapsing here, the same way `ck` collapses above,
