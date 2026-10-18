@@ -1,0 +1,267 @@
+"""Names in Cyrillic, Greek, Georgian, Armenian, Hebrew, Arabic and Devanagari into Latin.
+
+The other direction of `scripts/translit_scripts.py`, which writes Latin names into those scripts. This reads them
+back, so a person whose only name is `Θεόδωρος /Κομνηνὸς Λάσκαρις/` or `عِيْسَى /بن لُبّ بن مُوسَى/` gets a Latin form, and
+through it the `ja`/`zh`/`ko` the label composer makes from Latin (Emma, 2026-10-17, for gaiad.ged: "try wikidata
+but then build readers"). Nothing in the repo read these scripts before: 646 primary names in gaiad.ged, 405 of
+them Arabic.
+
+The standard is `translit_scripts.py`'s: a transcription a native reader would spell differently is acceptable; a
+different name is not. Every mapping is letter by letter from the written form; no language is guessed.
+
+| script | system | what it costs |
+| --- | --- | --- |
+| Cyrillic | BGN/PCGN-style, plus the Serbian and Ukrainian letters | near-lossless |
+| Greek | ELOT 743-style (θ th, χ ch, υ y), Greek numerals as Roman | near-lossless |
+| Georgian | the national romanization, ejectives unmarked | near-lossless |
+| Armenian | Hübschmann-Meillet without diacritics, letter numerals as Roman | near-lossless |
+| Devanagari | inherent `a`, matras, virama, final schwa dropped | structural |
+| Arabic | consonants plus the vowel marks when written; `بن` ibn, `ال` al- | an abjad: unvocalised short vowels are lost |
+| Hebrew | consonants with the Yiddish vowel letters (ו u, יי ey) | an abjad: vowels mostly lost |
+
+`romanize(text)` keeps the GEDCOM `/surname/` marks and any Latin already in the text, and returns `None` when a
+letter it does not know is left, so a half-read name is never emitted.
+"""
+
+import re
+import unicodedata
+
+CYRL = {"а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "yo", "ж": "zh", "з": "z", "и": "i",
+        "й": "y", "к": "k", "л": "l", "м": "m", "н": "n", "о": "o", "п": "p", "р": "r", "с": "s", "т": "t",
+        "у": "u", "ф": "f", "х": "kh", "ц": "ts", "ч": "ch", "ш": "sh", "щ": "shch", "ъ": "", "ы": "y", "ь": "",
+        "э": "e", "ю": "yu", "я": "ya", "і": "i", "ї": "yi", "є": "ye", "ґ": "g", "ў": "w", "ђ": "dj", "ј": "j",
+        "љ": "lj", "њ": "nj", "ћ": "c", "џ": "dz", "ѣ": "e", "ѳ": "f", "ѵ": "i"}
+
+GREK2 = {"ου": "ou", "αι": "ai", "ει": "ei", "οι": "oi", "υι": "yi", "αυ": "av", "ευ": "ev", "γγ": "ng", "γκ": "gk",
+         "μπ": "mp", "ντ": "nt", "τσ": "ts", "τζ": "tz"}
+GREK = {"α": "a", "β": "v", "γ": "g", "δ": "d", "ε": "e", "ζ": "z", "η": "i", "θ": "th", "ι": "i", "κ": "k",
+        "λ": "l", "μ": "m", "ν": "n", "ξ": "x", "ο": "o", "π": "p", "ρ": "r", "σ": "s", "ς": "s", "τ": "t",
+        "υ": "y", "φ": "f", "χ": "ch", "ψ": "ps", "ω": "o"}
+GREK_NUM = {"α": 1, "β": 2, "γ": 3, "δ": 4, "ε": 5, "ϛ": 6, "στ": 6, "ζ": 7, "η": 8, "θ": 9, "ι": 10}
+
+GEOR = {"ა": "a", "ბ": "b", "გ": "g", "დ": "d", "ე": "e", "ვ": "v", "ზ": "z", "თ": "t", "ი": "i", "კ": "k",
+        "ლ": "l", "მ": "m", "ნ": "n", "ო": "o", "პ": "p", "ჟ": "zh", "რ": "r", "ს": "s", "ტ": "t", "უ": "u",
+        "ფ": "p", "ქ": "k", "ღ": "gh", "ყ": "q", "შ": "sh", "ჩ": "ch", "ც": "ts", "ძ": "dz", "წ": "ts", "ჭ": "ch",
+        "ხ": "kh", "ჯ": "j", "ჰ": "h", "ჱ": "e", "ჲ": "y", "ჳ": "w", "ჴ": "q", "ჵ": "o"}
+
+ARMN = {"ա": "a", "բ": "b", "գ": "g", "դ": "d", "ե": "e", "զ": "z", "է": "e", "ը": "y", "թ": "t", "ժ": "zh",
+        "ի": "i", "լ": "l", "խ": "kh", "ծ": "ts", "կ": "k", "հ": "h", "ձ": "dz", "ղ": "gh", "ճ": "ch", "մ": "m",
+        "յ": "y", "ն": "n", "շ": "sh", "ո": "o", "չ": "ch", "պ": "p", "ջ": "j", "ռ": "r", "ս": "s", "վ": "v",
+        "տ": "t", "ր": "r", "ց": "ts", "փ": "p", "ք": "k", "օ": "o", "ֆ": "f", "և": "ev"}
+ARMN_NUM = dict(zip("աբգդեզէըթ", range(1, 10)))
+
+DEVA_CONS = {"क": "k", "ख": "kh", "ग": "g", "घ": "gh", "ङ": "ng", "च": "c", "छ": "ch", "ज": "j", "झ": "jh",
+             "ञ": "ny", "ट": "t", "ठ": "th", "ड": "d", "ढ": "dh", "ण": "n", "त": "t", "थ": "th", "द": "d",
+             "ध": "dh", "न": "n", "प": "p", "फ": "ph", "ब": "b", "भ": "bh", "म": "m", "य": "y", "र": "r",
+             "ल": "l", "व": "v", "श": "sh", "ष": "sh", "स": "s", "ह": "h"}
+DEVA_VOW = {"अ": "a", "आ": "a", "इ": "i", "ई": "i", "उ": "u", "ऊ": "u", "ऋ": "ri", "ए": "e", "ऐ": "ai", "ओ": "o",
+            "औ": "au"}
+DEVA_MATRA = {"ा": "a", "ि": "i", "ी": "i", "ु": "u", "ू": "u", "ृ": "ri", "े": "e", "ै": "ai", "ो": "o", "ौ": "au"}
+
+ARAB = {"ب": "b", "ت": "t", "ث": "th", "ج": "j", "ح": "h", "خ": "kh", "د": "d", "ذ": "dh", "ر": "r", "ز": "z",
+        "س": "s", "ش": "sh", "ص": "s", "ض": "d", "ط": "t", "ظ": "z", "ع": "'", "غ": "gh", "ف": "f", "ق": "q",
+        "ك": "k", "ل": "l", "م": "m", "ن": "n", "ه": "h", "ء": "'", "ئ": "'", "ؤ": "'", "پ": "p", "چ": "ch",
+        "ژ": "zh", "گ": "g", "ک": "k", "ی": "y"}
+ARAB_VOW = {"َ": "a", "ِ": "i", "ُ": "u", "ً": "an", "ٍ": "in", "ٌ": "un"}
+ARAB_WORDS = {"بن": "ibn", "ابن": "ibn", "بنت": "bint", "أبو": "abu", "ابو": "abu", "عبد": "abd"}
+
+HEBR = {"ב": "b", "ג": "g", "ד": "d", "ה": "h", "ז": "z", "ח": "ch", "ט": "t", "כ": "k", "ך": "kh", "ל": "l",
+        "מ": "m", "ם": "m", "נ": "n", "ן": "n", "ס": "s", "פ": "p", "ף": "f", "צ": "tz", "ץ": "tz", "ק": "k",
+        "ר": "r", "ש": "sh", "ת": "t", "א": "a", "ע": "e"}
+
+
+def _roman(n):
+    out = ""
+    for v, s in ((10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")):
+        while n >= v:
+            out, n = out + s, n - v
+    return out
+
+
+def _cyrl(w):
+    w = "".join(c for c in unicodedata.normalize("NFD", w) if not unicodedata.combining(c))   # stress marks
+    w = unicodedata.normalize("NFC", w.replace("й", "й"))
+    out = []
+    for ch in w:
+        low = ch.lower()
+        if low not in CYRL:
+            return None
+        r = CYRL[low]
+        out.append(r.capitalize() if ch != low and r else r)
+    return "".join(out)
+
+
+def _grek(w):
+    bare = "".join(c for c in unicodedata.normalize("NFD", w) if not unicodedata.combining(c))
+    if bare.endswith(("ʹ", "'", "΄")):   # a Greek numeral: Αʹ is 1
+        n = GREK_NUM.get(bare[:-1].lower())
+        return _roman(n) if n else None
+    low, out, i = bare.lower(), [], 0
+    while i < len(low):
+        two = low[i:i + 2]
+        if two in GREK2:
+            out.append(GREK2[two]); i += 2; continue
+        if low[i] not in GREK:
+            return None
+        out.append(GREK[low[i]]); i += 1
+    s = "".join(out)
+    return s[:1].upper() + s[1:] if bare[:1].isupper() else s
+
+
+def _geor(w):
+    if not all(c in GEOR for c in w):
+        return None
+    return "".join(GEOR[c] for c in w).capitalize()
+
+
+def _armn(w):
+    low = w.lower()
+    if len(low) == 1 and low in ARMN_NUM:   # a letter alone after a name is a numeral: Աշոտ Ա is Ashot I
+        return _roman(ARMN_NUM[low])
+    low = low.replace("ու", "u")
+    if not all(c in ARMN or c == "u" for c in low):
+        return None
+    return "".join(ARMN.get(c, c) for c in low).capitalize()
+
+
+def _deva(w):
+    out, i = [], 0
+    while i < len(w):
+        c = w[i]
+        if c in DEVA_VOW:
+            out.append(DEVA_VOW[c]); i += 1; continue
+        if c in DEVA_CONS:
+            out.append(DEVA_CONS[c])
+            nxt = w[i + 1] if i + 1 < len(w) else ""
+            if nxt in DEVA_MATRA:
+                out.append(DEVA_MATRA[nxt]); i += 2; continue
+            if nxt == "्":
+                i += 2; continue
+            out.append("a"); i += 1; continue
+        if c in "ंँ":
+            out.append("n"); i += 1; continue
+        if c == "ः":
+            out.append("h"); i += 1; continue
+        return None
+    s = "".join(out)
+    if s.endswith("a") and len(s) > 2:   # the final inherent vowel is not spoken
+        s = s[:-1]
+    return s.capitalize()
+
+
+def _arab(w):
+    w = w.replace("ـ", "").replace("ٱ", "ا")   # tatweel; alef wasla reads as alef
+    w = w.rstrip("ًٌٍَُِْ")   # case endings (a final shadda stays: لُبّ is Lubb) are not part of a name
+    bare = "".join(c for c in w if c not in ARAB_VOW and c not in "ّْٰ")
+    if bare in ARAB_WORDS:
+        return ARAB_WORDS[bare]
+    prefix = ""
+    if bare.startswith("ال") and len(bare) > 3:
+        prefix, w = "al-", w[w.index("ل") + 1:]
+    out, i, prev_cons = [], 0, False
+    while i < len(w):
+        c = w[i]
+        if c in ARAB_VOW:
+            out.append(ARAB_VOW[c]); prev_cons = False
+        elif c == "ّ" and out:   # shadda: the consonant doubled
+            out.append(out[-1] if out[-1] not in "aiu" else "")
+        elif c in "ْٰ":
+            pass
+        elif c in "اأإآىٱ":
+            if out and out[-1] == "a" and c in "اى":
+                pass   # a long a after its fatha is one vowel
+            else:
+                out.append("i" if c == "إ" else "a")
+            prev_cons = False
+        elif c == "ة":
+            out.append("a"); prev_cons = False
+        elif c == "و":
+            if out and out[-1] == "u":
+                pass   # a long u after its damma is one vowel
+            else:
+                out.append("u" if prev_cons else "w")
+            prev_cons = not prev_cons and not (out and out[-1] == "u")
+        elif c in "يی":
+            if out and out[-1] == "i":
+                pass   # a long i after its kasra is one vowel
+            else:
+                out.append("i" if prev_cons else "y")
+            prev_cons = not prev_cons and not (out and out[-1] == "i")
+        elif c in ARAB:
+            out.append(ARAB[c]); prev_cons = True
+        else:
+            return None
+        i += 1
+    s = "".join(out).strip("'")
+    if not s:
+        return None
+    return prefix + s.capitalize()
+
+
+def _hebr(w):
+    w = "".join(c for c in w if not ("֑" <= c <= "ׇ"))   # points and cantillation
+    s = w.replace("וו", "v").replace("וי", "oy").replace("יי", "ey").replace("ו", "u").replace("י", "i")
+    out = []
+    for i, c in enumerate(s):
+        if c in "vuoiey":
+            out.append(c)
+        elif c == "ה" and i == len(s) - 1:
+            out.append("e")
+        elif c == "א" and i + 1 < len(s) and s[i + 1] in "uoiey":
+            continue   # an alef before a vowel letter carries it
+        elif c in HEBR:
+            out.append(HEBR[c])
+        else:
+            return None
+    r = "".join(out)
+    return r.capitalize() if r else None
+
+
+READERS = [("Ѐ", "ӿ", _cyrl), ("Ͱ", "Ͽ", _grek), ("ἀ", "῿", _grek),
+           ("Ⴀ", "ჿ", _geor), ("԰", "֏", _armn), ("ऀ", "ॿ", _deva),
+           ("؀", "ۿ", _arab), ("֐", "׿", _hebr)]
+LANG = {_cyrl: "und-Cyrl", _grek: "el", _geor: "ka", _armn: "hy", _deva: "und-Deva", _arab: "und-Arab",
+        _hebr: "und-Hebr"}
+
+
+def reader_for(text):
+    for lo, hi, f in READERS:
+        if any(lo <= c <= hi for c in text):
+            return f
+    return None
+
+
+def romanize(text):
+    """`(latin, lang)` for a name in one of these scripts, the /surname/ marks kept; `(None, None)` if unreadable."""
+    f = reader_for(text)
+    if not f:
+        return None, None
+    out = []
+    for part in re.split(r"(\s+|/)", text):
+        if not part or part.isspace() or part == "/":
+            out.append(part)
+            continue
+        core = part.strip("\"'()[]{},;:.!?«»“”")
+        if not core:
+            continue
+        if not reader_for(core):   # Latin or digits already: kept
+            out.append(core)
+            continue
+        r = f(core)
+        if r is None:
+            return None, None
+        out.append(r)
+    return " ".join("".join(out).split()), LANG[f]
+
+
+def check(samples=None):
+    """Print the reading of each sample name, the measurement this file is judged on."""
+    import sys
+    sys.stdout.reconfigure(encoding="utf-8")
+    for s in samples or ["Феодосия Ярославна /Рюриковна/", "Θεόδωρος Αʹ /Κομνηνὸς Λάσκαρις/", "ვახტანგ I //",
+                         "Աշոտ Ա /Բագրատունի/", "वासुदेव /कुषाण/", "عِيْسَى /بن لُبّ بن مُوسَى/", "אריה לייב /HaKohen Rapaport/"]:
+        print(f"{s:<40} {romanize(s)}")
+
+
+if __name__ == "__main__":
+    check()
