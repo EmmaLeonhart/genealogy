@@ -92,6 +92,14 @@ ROWS = {
     # gaiad.ged). `Quintus` is 昆图斯, `Quadratus` 夸德拉图斯, by the standard Chinese characters.
     "qu": (("クァ", "クィ", "ク", "クェ", "クォ"), ("夸", "奎", "库", "奎", "阔")),
     "q":  (("カ", "キ", "ク", "ケ", "コ"), ("卡", "基", "库", "凯", "科")),
+    # **The consonant letters that are NOT folded get their own sound** (2026-10-17, Emma's
+    # "Extend the engine"): `č`/`ć` /tʃ/, `š`/`ś` /ʃ/ (the `sj` row), `ž`/`ź`/`ż`/`ř` /ʒ/. Folding
+    # them to the bare letter would invent a reading, which is why BARE_VOWEL leaves them out;
+    # these rows read them as the sound they are. `ñ` `ń` `ň` go through the palatal `nj` row,
+    # `ç` is /s/, `ł` is /w/, `ď` `ť` are /d/ /t/ (the normalisation line in translit()).
+    "č":  (("チャ", "チ", "チュ", "チェ", "チョ"), ("查", "奇", "丘", "切", "乔")),
+    "š":  (("シャ", "シ", "シュ", "シェ", "ショ"), ("沙", "西", "舒", "谢", "肖")),
+    "ž":  (("ジャ", "ジ", "ジュ", "ジェ", "ジョ"), ("扎", "日", "茹", "热", "若")),
 }
 
 #: vowel -> column, plus the ones that carry their own length.
@@ -105,6 +113,7 @@ CODA = {
     "k": ("ク", "克"), "g": ("グ", "格"), "t": ("ト", "特"), "d": ("ド", "德"),
     "m": ("ム", "姆"), "b": ("ブ", "布"), "p": ("プ", "普"), "v": ("ヴ", "夫"),
     "f": ("フ", "夫"), "h": ("", ""), "z": ("ズ", "兹"), "c": ("ク", "克"),
+    "č": ("チ", "奇"), "š": ("シュ", "什"), "ž": ("ジュ", "日"),
     "j": ("イ", "伊"), "w": ("ヴ", "夫"), "y": ("イ", "伊"), "x": ("クス", "克斯"),
 }
 
@@ -162,6 +171,9 @@ NASAL_FINAL = {
     "sch": ("尚", "申", "辛", "雄", "顺"),
     "qu": ("宽", "昆", "昆", "孔", "昆"),
     "q":  ("坎", "肯", "金", "孔", "昆"),
+    "č":  ("昌", "琴", "钦", "琼", "春"),
+    "š":  ("尚", "申", "辛", "雄", "顺"),
+    "ž":  ("让", "任", "金", "荣", "润"),
 }
 
 #: vowel -> its column in `NASAL_FINAL`. Norwegian `æ`/`ä` follow `e`, `ø`/`ö`/`å` follow `o`,
@@ -224,6 +236,11 @@ BARE_VOWEL = str.maketrans({
     "ó": "o", "ò": "o", "ô": "o", "õ": "o",
     "ú": "u", "ù": "u", "û": "u",
     "ý": "y", "ÿ": "y",
+    # **Length marks and nasal hooks are vowel marks too** (2026-10-17, for gaiad.ged): `ō` `ā`
+    # `ī` `ē` `ū` (Japanese and Latin romanisations), `ő` `ű` (Hungarian long ö/ü), `ą` `ę`
+    # (Polish nasal vowels). Katakana cannot write the distinction, same as the acute.
+    "ā": "a", "ē": "e", "ī": "i", "ō": "o", "ū": "u", "ą": "a", "ę": "e",
+    "ő": "ö", "ű": "ü",
 })
 
 
@@ -281,7 +298,10 @@ def translit(token):
     # `aa` normalises to `å`, fixes the coda (`Falck`, `Munck`) and the onset (`Sacken`
     # `サクケン` -> `サケン`) in one place. 47 tokens were affected.
     s = (token.casefold().translate(BARE_VOWEL).replace("aa", "å")
-         .replace("ck", "k").replace("þ", "th").replace("ð", "d"))
+         .replace("ck", "k").replace("þ", "th").replace("ð", "d")
+         .replace("ñ", "nj").replace("ń", "nj").replace("ň", "nj").replace("ç", "s").replace("ł", "w")
+         .replace("ć", "č").replace("ś", "š").replace("ź", "ž").replace("ż", "ž").replace("ř", "ž")
+         .replace("ď", "d").replace("ť", "t"))
     # **`þ` and `ð` are spelled `th` and `d` in the Norwegian forms of the same names**
     # (Þorsteinn = Thorstein, Guðrún = Gudrun), so they read the same way: one name, one reading
     # across the namosphere. Neither was readable before, which cost 1,306 words (2026-10-17).
@@ -322,7 +342,7 @@ def translit(token):
     #
     # The 55 are already right in the emitted output, because the attested column beats the rule
     # per token. So the class needs no rule; it needs attestations, which it has.
-    if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxz-'’." for c in s):
+    if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxzčšž-'’." for c in s):
         return None, None
     ja, zh, i = [], [], 0
     while i < len(s):
