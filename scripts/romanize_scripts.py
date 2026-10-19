@@ -1,4 +1,5 @@
-"""Names in Cyrillic, Greek, Georgian, Armenian, Hebrew, Arabic, Devanagari and Ethiopic into Latin.
+"""Names in Cyrillic, Greek (with Bactrian ϸ), Georgian, Armenian, Hebrew, Arabic, Devanagari, Ethiopic, Gothic,
+Kharosthi and Nabataean into Latin.
 
 The other direction of `scripts/translit_scripts.py`, which writes Latin names into those scripts. This reads them
 back, so a person whose only name is `Θεόδωρος /Κομνηνὸς Λάσκαρις/` or `عِيْسَى /بن لُبّ بن مُوسَى/` gets a Latin form, and
@@ -17,7 +18,10 @@ different name is not. Every mapping is letter by letter from the written form; 
 | Armenian | Hübschmann-Meillet without diacritics, letter numerals as Roman | near-lossless |
 | Devanagari | inherent `a`, matras, virama, final schwa dropped | structural |
 | Arabic | consonants plus the vowel marks when written; `بن` ibn, `ال` al- | an abjad: unvocalised short vowels are lost |
-| Hebrew | consonants with the Yiddish vowel letters (ו u, יי ey) | an abjad: vowels mostly lost |
+| Hebrew | consonants with the Yiddish vowel letters (ו u, יי ey); an acronym (כ"ץ) with an a between consonants, Katz | an abjad: vowels mostly lost |
+| Nabataean | as the Hebrew letter of the same name | an abjad, as Hebrew |
+| Gothic | the standard transliteration (𐍂𐌴𐌹𐌺𐍃 reiks) | near-lossless |
+| Kharosthi | inherent `a`, kept at the end; vowel signs, virama | structural |
 | Ethiopic | Ge'ez syllables read off their Unicode names; first order `e` (`a` on the laryngeals), sixth order `e` inside a word and nothing at its end | the sixth order's vowel is a guess: ማክዳ Makeda, ንግሥተ Negesete |
 
 `romanize(text)` keeps the GEDCOM `/surname/` marks and any Latin already in the text, and returns `None` when a
@@ -37,7 +41,7 @@ GREK2 = {"ου": "ou", "αι": "ai", "ει": "ei", "οι": "oi", "υι": "yi", "
          "μπ": "mp", "ντ": "nt", "τσ": "ts", "τζ": "tz"}
 GREK = {"α": "a", "β": "v", "γ": "g", "δ": "d", "ε": "e", "ζ": "z", "η": "i", "θ": "th", "ι": "i", "κ": "k",
         "λ": "l", "μ": "m", "ν": "n", "ξ": "x", "ο": "o", "π": "p", "ρ": "r", "σ": "s", "ς": "s", "τ": "t",
-        "υ": "y", "φ": "f", "χ": "ch", "ψ": "ps", "ω": "o"}
+        "υ": "y", "φ": "f", "χ": "ch", "ψ": "ps", "ω": "o", "ϸ": "sh"}   # ϸ: Bactrian sho (ϷΑΟΝΑΝΟϷΑΟ)
 GREK_NUM = {"α": 1, "β": 2, "γ": 3, "δ": 4, "ε": 5, "ϛ": 6, "στ": 6, "ζ": 7, "η": 8, "θ": 9, "ι": 10}
 
 GEOR = {"ა": "a", "ბ": "b", "გ": "g", "დ": "d", "ე": "e", "ვ": "v", "ზ": "z", "თ": "t", "ი": "i", "კ": "k",
@@ -62,7 +66,7 @@ DEVA_MATRA = {"ा": "a", "ि": "i", "ी": "i", "ु": "u", "ू": "u", "ृ":
 ARAB = {"ب": "b", "ت": "t", "ث": "th", "ج": "j", "ح": "h", "خ": "kh", "د": "d", "ذ": "dh", "ر": "r", "ز": "z",
         "س": "s", "ش": "sh", "ص": "s", "ض": "d", "ط": "t", "ظ": "z", "ع": "'", "غ": "gh", "ف": "f", "ق": "q",
         "ك": "k", "ل": "l", "م": "m", "ن": "n", "ه": "h", "ء": "'", "ئ": "'", "ؤ": "'", "پ": "p", "چ": "ch",
-        "ژ": "zh", "گ": "g", "ک": "k", "ی": "y"}
+        "ژ": "zh", "گ": "g", "ک": "k", "ی": "y", "ڤ": "v"}
 ARAB_VOW = {"َ": "a", "ِ": "i", "ُ": "u", "ً": "an", "ٍ": "in", "ٌ": "un"}
 ARAB_WORDS = {"بن": "ibn", "ابن": "ibn", "بنت": "bint", "أبو": "abu", "ابو": "abu", "عبد": "abd"}
 
@@ -201,12 +205,14 @@ def _arab(w):
 
 def _hebr(w):
     w = "".join(c for c in w if not ("֑" <= c <= "ׇ"))   # points and cantillation
+    acronym = any(m in w for m in "\"'״׳")   # a quote mark inside a word makes it an acronym: כ"ץ, ש"ץ
+    w = "".join(c for c in w if c not in "\"'״׳")
     s = w.replace("וו", "v").replace("וי", "oy").replace("יי", "ey").replace("ו", "u").replace("י", "i")
     out = []
     for i, c in enumerate(s):
         if c in "vuoiey":
             out.append(c)
-        elif c == "ה" and i == len(s) - 1:
+        elif c == "ה" and i == len(s) - 1 and not acronym:
             out.append("e")
         elif c == "א" and i + 1 < len(s) and s[i + 1] in "uoiey":
             continue   # an alef before a vowel letter carries it
@@ -214,8 +220,77 @@ def _hebr(w):
             out.append(HEBR[c])
         else:
             return None
+    if acronym:   # read as it is said, an a between two consonants: כ"ץ Katz, ש"ץ Shatz, ריב"ש Ribash
+        vowel = lambda o: o[-1] in "aeiouy"
+        out = [o + ("a" if k + 1 < len(out) and not vowel(o) and not vowel(out[k + 1]) else "")
+               for k, o in enumerate(out)]
     r = "".join(out)
     return r.capitalize() if r else None
+
+
+# Nabataean is read as the Hebrew letter of the same name (NABATAEAN LETTER LAMEDH is ל).
+HEBR_BY_NAME = {"ALEPH": "א", "BETH": "ב", "GIMEL": "ג", "DALETH": "ד", "HE": "ה", "WAW": "ו", "ZAYIN": "ז",
+                "HETH": "ח", "TETH": "ט", "YODH": "י", "KAPH": "כ", "FINAL KAPH": "ך", "LAMEDH": "ל", "MEM": "מ",
+                "FINAL MEM": "ם", "NUN": "נ", "FINAL NUN": "ן", "SAMEKH": "ס", "AYIN": "ע", "PE": "פ", "SADHE": "צ",
+                "QOPH": "ק", "RESH": "ר", "SHIN": "ש", "TAW": "ת", "FINAL SHIN": "ש", "FINAL HE": "ה",
+                "FINAL LAMEDH": "ל", "FINAL BETH": "ב"}
+
+
+def _nbat(w):
+    import unicodedata as u
+    heb = []
+    for c in w:
+        name = u.name(c, "")
+        if not name.startswith("NABATAEAN LETTER ") or name[17:] not in HEBR_BY_NAME:
+            return None
+        heb.append(HEBR_BY_NAME[name[17:]])
+    return _hebr("".join(heb))
+
+
+# Gothic, in the standard transliteration (þ as th, ƕ as hw, q as kw); the two numeral letters are not names.
+GOTH = {"AHSA": "a", "BAIRKAN": "b", "GIBA": "g", "DAGS": "d", "AIHVUS": "e", "QAIRTHRA": "q", "IUJA": "z",
+        "HAGL": "h", "THIUTH": "th", "EIS": "i", "KUSMA": "k", "LAGUS": "l", "MANNA": "m", "NAUTHS": "n", "JER": "j",
+        "URUS": "u", "PAIRTHRA": "p", "RAIDA": "r", "SAUIL": "s", "TEIWS": "t", "WINJA": "w", "FAIHU": "f",
+        "IGGWS": "x", "HWAIR": "hw", "OTHAL": "o"}
+
+
+def _goth(w):
+    import unicodedata as u
+    out = []
+    for c in w:
+        name = u.name(c, "")
+        if not name.startswith("GOTHIC LETTER ") or name[14:] not in GOTH:
+            return None
+        out.append(GOTH[name[14:]])
+    return "".join(out).capitalize()
+
+
+# Kharosthi, the Gandhari abugida: an inherent a (kept at the end, as Gandhari names end in it), vowel signs, virama.
+KHAR_VOW = {"I": "i", "U": "u", "VOCALIC R": "ri", "E": "e", "O": "o"}
+
+
+def _khar(w):
+    import unicodedata as u
+    out, pending = [], False
+    for c in w:
+        name = u.name(c, "")
+        if name.startswith("KHAROSHTHI LETTER "):
+            if pending:
+                out.append("a")
+            letter = name[18:].lower()   # KHAROSHTHI LETTER KA: the consonant is k
+            out.append(letter[:-1] if letter.endswith("a") else letter)
+            pending = True
+        elif name.startswith("KHAROSHTHI VOWEL SIGN ") and name[22:] in KHAR_VOW and pending:
+            out.append(KHAR_VOW[name[22:]])
+            pending = False
+        elif name == "KHAROSHTHI VIRAMA" and pending:
+            pending = False
+        else:
+            return None
+    if pending:
+        out.append("a")
+    s = "".join(out)
+    return s.capitalize() if s else None
 
 
 # Ge'ez consonants as Unicode names them (ETHIOPIC SYLLABLE MAA is m + the fourth order), longest first so SH is
@@ -267,9 +342,11 @@ def _ethi(w):
 
 READERS = [("Ѐ", "ӿ", _cyrl), ("Ͱ", "Ͽ", _grek), ("ἀ", "῿", _grek),
            ("Ⴀ", "ჿ", _geor), ("԰", "֏", _armn), ("ऀ", "ॿ", _deva),
-           ("؀", "ۿ", _arab), ("֐", "׿", _hebr), ("ሀ", "፿", _ethi)]
+           ("؀", "ۿ", _arab), ("֐", "׿", _hebr), ("ሀ", "፿", _ethi),
+           ("\U00010330", "\U0001034f", _goth), ("\U00010a00", "\U00010a5f", _khar),
+           ("\U00010880", "\U000108af", _nbat)]
 LANG = {_cyrl: "und-Cyrl", _grek: "el", _geor: "ka", _armn: "hy", _deva: "und-Deva", _arab: "und-Arab",
-        _hebr: "und-Hebr", _ethi: "und-Ethi"}
+        _hebr: "und-Hebr", _ethi: "und-Ethi", _goth: "got", _khar: "und-Khar", _nbat: "und-Nbat"}
 
 
 def reader_for(text):
@@ -285,11 +362,19 @@ def romanize(text):
     if not f:
         return None, None
     out = []
-    for part in re.split(r"(\s+|/)", text):
+    # A hyphen joins two words and is kept (Бага-шад, Baga-shad); a bracket is dropped and parts the words it stood
+    # between; an underscore from a Wikipedia title (نيلوس_(الأساطير)) is a space.
+    for part in re.split(r"(\s+|/|[-‐‑()])", text.replace("_", " ")):
+        if part in ("-", "‐", "‑"):
+            out.append("-")
+            continue
+        if part in ("(", ")"):   # שור(ריב"ש") is two words, Shur Ribash
+            out.append(" ")
+            continue
         if not part or part.isspace() or part == "/":
             out.append(part)
             continue
-        core = part.strip("\"'()[]{},;:.!?«»“”")
+        core = part.strip("\"'()[]{},;:.!?«»“”،؛")
         if not core:
             continue
         if not reader_for(core):   # Latin or digits already: kept
@@ -299,7 +384,11 @@ def romanize(text):
         if r is None:
             return None, None
         out.append(r)
-    return " ".join("".join(out).split()), LANG[f]
+    s = " ".join("".join(out).split())
+    if s.count("/") == 2:   # a bracket at the edge of the surname leaves no space inside its slashes
+        a, sur, b = s.split("/")
+        s = f"{a}/{sur.strip()}/{b}"
+    return s, LANG[f]
 
 
 def check(samples=None):
@@ -308,7 +397,9 @@ def check(samples=None):
     sys.stdout.reconfigure(encoding="utf-8")
     for s in samples or ["Феодосия Ярославна /Рюриковна/", "Θεόδωρος Αʹ /Κομνηνὸς Λάσκαρις/", "ვახტანგ I //",
                          "Աշոտ Ա /Բագրատունի/", "वासुदेव /कुषाण/", "عِيْسَى /بن لُبّ بن مُوسَى/", "אריה לייב /HaKohen Rapaport/",
-                         "ማክዳ /ንግሥተ ሳእ/", "ኃይለ ሥላሴ", "ምኒልክ", "ቴዎድሮስ", "ዘርአ ያዕቆብ", "ልብነ ድንግል"]:
+                         "ማክዳ /ንግሥተ ሳእ/", "ኃይለ ሥላሴ", "ምኒልክ", "ቴዎድሮስ", "ዘርአ ያዕቆብ", "ልብነ ድንግል",
+                         "Avraham /כ\"ץ/ of Porto", "ϷΑΟΝΑΝΟϷΑΟ /ΚΑΝΗϷΚΟ/", "Бага-шад //", "Vultulf // 𐍂𐌴𐌹𐌺𐍃",
+                         "𐨬𐨁𐨬 /𐨐𐨿𐨪𐨥𐨁𐨱𐨿𐨪/", "𐢗𐢑𐢍𐢔 //", "مارغريت، بنت بيتر"]:
         print(f"{s:<40} {romanize(s)}")
 
 
