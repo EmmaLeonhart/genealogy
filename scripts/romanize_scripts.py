@@ -1,4 +1,4 @@
-"""Names in Cyrillic, Greek, Georgian, Armenian, Hebrew, Arabic and Devanagari into Latin.
+"""Names in Cyrillic, Greek, Georgian, Armenian, Hebrew, Arabic, Devanagari and Ethiopic into Latin.
 
 The other direction of `scripts/translit_scripts.py`, which writes Latin names into those scripts. This reads them
 back, so a person whose only name is `Θεόδωρος /Κομνηνὸς Λάσκαρις/` or `عِيْسَى /بن لُبّ بن مُوسَى/` gets a Latin form, and
@@ -18,6 +18,7 @@ different name is not. Every mapping is letter by letter from the written form; 
 | Devanagari | inherent `a`, matras, virama, final schwa dropped | structural |
 | Arabic | consonants plus the vowel marks when written; `بن` ibn, `ال` al- | an abjad: unvocalised short vowels are lost |
 | Hebrew | consonants with the Yiddish vowel letters (ו u, יי ey) | an abjad: vowels mostly lost |
+| Ethiopic | Ge'ez syllables read off their Unicode names; first order `e` (`a` on the laryngeals), sixth order `e` inside a word and nothing at its end | the sixth order's vowel is a guess: ማክዳ Makeda, ንግሥተ Negesete |
 
 `romanize(text)` keeps the GEDCOM `/surname/` marks and any Latin already in the text, and returns `None` when a
 letter it does not know is left, so a half-read name is never emitted.
@@ -217,11 +218,58 @@ def _hebr(w):
     return r.capitalize() if r else None
 
 
+# Ge'ez consonants as Unicode names them (ETHIOPIC SYLLABLE MAA is m + the fourth order), longest first so SH is
+# not read as S. The ejectives and the second h/s/ts lose their marks, as in Georgian above.
+ETHI_CONS = {"HH": "h", "SZ": "s", "SH": "sh", "QH": "q", "NY": "ny", "KX": "kh", "ZH": "zh", "DD": "d", "GG": "g",
+             "TH": "t", "CH": "ch", "PH": "p", "TS": "ts", "TZ": "ts", "H": "h", "L": "l", "M": "m", "R": "r",
+             "S": "s", "Q": "q", "B": "b", "V": "v", "T": "t", "C": "ch", "X": "h", "N": "n", "K": "k", "W": "w",
+             "Z": "z", "Y": "y", "D": "d", "J": "j", "G": "g", "F": "f", "P": "p"}
+# The orders: A first (ä), U, I, AA fourth (a), EE fifth (e), E sixth (none), O, and the labialised forms.
+ETHI_VOW = {"WAA": "wa", "WEE": "we", "WA": "wa", "WI": "wi", "WE": "we", "OA": "wa", "YA": "ya", "AA": "a",
+            "EE": "e", "A": "ä", "U": "u", "I": "i", "E": "", "O": "o"}
+ETHI_LARYNGEAL = {"GLOTTAL", "PHARYNGEAL", "H", "HH", "X"}
+
+
+def _ethi_syllable(c):
+    import unicodedata as u
+    name = u.name(c, "")
+    if not name.startswith("ETHIOPIC SYLLABLE "):
+        return None
+    rest = name[len("ETHIOPIC SYLLABLE "):]
+    if rest.startswith(("GLOTTAL ", "PHARYNGEAL ")):
+        row, vow = rest.split(" ", 1)
+        return row, "", ETHI_VOW.get(vow)
+    for k in sorted(ETHI_CONS, key=len, reverse=True):
+        if rest.startswith(k) and rest[len(k):] in ETHI_VOW:
+            return k, ETHI_CONS[k], ETHI_VOW[rest[len(k):]]
+    return None
+
+
+def _ethi(w):
+    sylls = [_ethi_syllable(c) for c in w]
+    if any(s is None or s[2] is None for s in sylls):
+        return None
+    out = []
+    for i, (row, cons, vow) in enumerate(sylls):
+        last = i == len(sylls) - 1
+        if vow == "ä":   # the first order: e as Amharic is written in Latin (ተ te), a on the laryngeals (ሀ ha, አ a)
+            vow = "a" if row in ETHI_LARYNGEAL else "e"
+        if vow == "":   # the sixth order: the spoken ə inside a word (ማክዳ Makeda), nothing at its end
+            prev_vowel = bool(out) and out[-1][-1:] in "aeiou"
+            if cons in ("y", "w") and prev_vowel:   # ይ, ው after a vowel close it: ሀይለ Haile
+                out.append("i" if cons == "y" else "u")
+                continue
+            vow = "" if last else "e"
+        out.append(cons + vow)
+    s = "".join(out)
+    return s.capitalize() if s else None
+
+
 READERS = [("Ѐ", "ӿ", _cyrl), ("Ͱ", "Ͽ", _grek), ("ἀ", "῿", _grek),
            ("Ⴀ", "ჿ", _geor), ("԰", "֏", _armn), ("ऀ", "ॿ", _deva),
-           ("؀", "ۿ", _arab), ("֐", "׿", _hebr)]
+           ("؀", "ۿ", _arab), ("֐", "׿", _hebr), ("ሀ", "፿", _ethi)]
 LANG = {_cyrl: "und-Cyrl", _grek: "el", _geor: "ka", _armn: "hy", _deva: "und-Deva", _arab: "und-Arab",
-        _hebr: "und-Hebr"}
+        _hebr: "und-Hebr", _ethi: "und-Ethi"}
 
 
 def reader_for(text):
@@ -259,7 +307,8 @@ def check(samples=None):
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
     for s in samples or ["Феодосия Ярославна /Рюриковна/", "Θεόδωρος Αʹ /Κομνηνὸς Λάσκαρις/", "ვახტანგ I //",
-                         "Աշոտ Ա /Բագրատունի/", "वासुदेव /कुषाण/", "عِيْسَى /بن لُبّ بن مُوسَى/", "אריה לייב /HaKohen Rapaport/"]:
+                         "Աշոտ Ա /Բագրատունի/", "वासुदेव /कुषाण/", "عِيْسَى /بن لُبّ بن مُوسَى/", "אריה לייב /HaKohen Rapaport/",
+                         "ማክዳ /ንግሥተ ሳእ/", "ኃይለ ሥላሴ", "ምኒልክ", "ቴዎድሮስ", "ዘርአ ያዕቆብ", "ልብነ ድንግል"]:
         print(f"{s:<40} {romanize(s)}")
 
 
