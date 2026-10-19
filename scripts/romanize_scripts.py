@@ -17,7 +17,7 @@ different name is not. Every mapping is letter by letter from the written form; 
 | Georgian | the national romanization, ejectives unmarked | near-lossless |
 | Armenian | Hübschmann-Meillet without diacritics, letter numerals as Roman | near-lossless |
 | Devanagari | inherent `a`, matras, virama, final schwa dropped | structural |
-| Arabic | consonants plus the vowel marks when written; `بن` ibn, `ال` al- | an abjad: unvocalised short vowels are lost |
+| Arabic | consonants plus the vowel marks when written; `بن` ibn, `ال` al-; an unvocalised word Wikidata's name items spell (reports/arabic-name-words.tsv: هنري Henry, مالك Malik) takes that spelling | an abjad: short vowels are lost in words the table lacks |
 | Hebrew | consonants with the Yiddish vowel letters (ו u, יי ey); an acronym (כ"ץ) with an a between consonants, Katz | an abjad: vowels mostly lost |
 | Nabataean | as the Hebrew letter of the same name | an abjad, as Hebrew |
 | Gothic | the standard transliteration (𐍂𐌴𐌹𐌺𐍃 reiks) | near-lossless |
@@ -68,7 +68,9 @@ ARAB = {"ب": "b", "ت": "t", "ث": "th", "ج": "j", "ح": "h", "خ": "kh", "د"
         "ك": "k", "ل": "l", "م": "m", "ن": "n", "ه": "h", "ء": "'", "ئ": "'", "ؤ": "'", "پ": "p", "چ": "ch",
         "ژ": "zh", "گ": "g", "ک": "k", "ی": "y", "ڤ": "v"}
 ARAB_VOW = {"َ": "a", "ِ": "i", "ُ": "u", "ً": "an", "ٍ": "in", "ٌ": "un"}
-ARAB_WORDS = {"بن": "ibn", "ابن": "ibn", "بنت": "bint", "أبو": "abu", "ابو": "abu", "عبد": "abd"}
+ARAB_WORDS = {"بن": "ibn", "ابن": "ibn", "بنت": "bint", "أبو": "abu", "ابو": "abu", "عبد": "abd",
+              # titles and ordinals in royal names (الملك أرتازركسيس الأول): the king, the queen, the first, the second
+              "الملك": "al-Malik", "الملكة": "al-Malika", "الأول": "al-Awwal", "الثاني": "al-Thani"}
 
 HEBR = {"ב": "b", "ג": "g", "ד": "d", "ה": "h", "ז": "z", "ח": "ch", "ט": "t", "כ": "k", "ך": "kh", "ל": "l",
         "מ": "m", "ם": "m", "נ": "n", "ן": "n", "ס": "s", "פ": "p", "ף": "f", "צ": "tz", "ץ": "tz", "ק": "k",
@@ -154,6 +156,21 @@ def _deva(w):
     return s.capitalize()
 
 
+_ARAB_NAMES = {}
+
+
+def arab_names():
+    """{unvocalised word: usual Latin spelling} from Wikidata's name items (build-arabic-name-words.py)."""
+    if not _ARAB_NAMES:
+        from pathlib import Path
+        path = Path(__file__).resolve().parent.parent / "reports" / "arabic-name-words.tsv"
+        if path.exists():
+            for row in path.read_text(encoding="utf-8").splitlines()[1:]:
+                ar, latin = row.split("\t")[:2]
+                _ARAB_NAMES[ar] = latin
+    return _ARAB_NAMES
+
+
 def _arab(w):
     w = w.replace("ـ", "").replace("ٱ", "ا")   # tatweel; alef wasla reads as alef
     w = w.rstrip("ًٌٍَُِْ")   # case endings (a final shadda stays: لُبّ is Lubb) are not part of a name
@@ -163,6 +180,8 @@ def _arab(w):
     prefix = ""
     if bare.startswith("ال") and len(bare) > 3:
         prefix, w = "al-", w[w.index("ل") + 1:]
+    if not any(c in ARAB_VOW for c in w) and w in arab_names():   # unvocalised: the spelling people use (Henry)
+        return prefix + arab_names()[w]
     out, i, prev_cons = [], 0, False
     while i < len(w):
         c = w[i]
