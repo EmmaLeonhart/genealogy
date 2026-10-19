@@ -4634,7 +4634,11 @@ def _carries_marker(label):
     """
     from labels import NARROW_MARKERS, WORDS_MEANING_UNKNOWN
     markers = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
-    return any(tok.casefold().strip(".,") in markers for tok in (label or "").split())
+    if any(tok.casefold().strip(".,") in markers for tok in (label or "").split()):
+        return True
+    # A marker of more than one word is a phrase: `No Name /Datskaya/` read ノ・ナメ・ダトスカヤ token by token.
+    text = " " + " ".join((label or "").replace("/", " ").casefold().split()) + " "
+    return any(" " in m and f" {m} " in text for m in markers)
 
 
 _SINO_HAN = re.compile("[㐀-䶿一-鿿豈-﫿]")
