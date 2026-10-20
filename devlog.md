@@ -54600,3 +54600,23 @@ Emma's restart instructions.
   anywhere and wants their sources. On the `P2600` single-value report (3,157), most are ours, many the same Geni id
   with and without `P1810`. Ruling: "hold on here". Queued at the end, uninvestigated.
 
+## 2026-10-19 PDT: the super entry points traced down; eight dropped (Emma)
+
+`scripts/super-entry-descent.py` walks each FamilySearch-keyed super entry point down
+`gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-30.ged` to the owner's record (`reports/super-entry-descent.tsv`, cut
+before anyone born from 1900 on). All nine reach her, in two bundles: Safracht, Frava, Abba, Pellinor and Vedrhall
+through the Swedish royals (Kristina Birgersdotter, Elena Siggesdotter) into the Bure line; Cendfindan, Hocingas,
+Burgerschaft and Clodius IV through Norway. Every line is a legendary or fabricated top stitched onto real medieval
+people, with impossible generation gaps at the seams (212 years under Clodius IV, 140 under Safracht and Frava, 106
+under Cendfindan, 105 and 85 under Hocingas/Burgerschaft). Frava De Gaule is no one the session could place: "of
+Gaul", husband "of Galatia", no source.
+
+Emma: the Abba ben Marukba line (exilarch, Šōšāndukht, Bahram V, the Sasanians, Iberia, the Bagratuni, Samuel of
+Bulgaria, Andrew I, the Piasts, Minsk, Sweden) is "the only interesting line". A correction to what the session told
+her: in the file Anastasia Kometopoulou is Andrew I's **mother**, not his wife (said wrongly first). By AskUserQuestion,
+"Drop the other eight": Safracht (`FSG5C9SCV`), Frava (`FSGSMQ8QW`), Clodius IV (`FSLCXKGNP`), Hocingas (`FSLC585QX`),
+Burgerschaft (`FSPMGTZYB`), Pellinor (`FSGZ1CZSY`), Cendfindan (`FSL7J5NNV`) and Vedrhall (`6000000006906358240`) are
+off `reports/super-entry-points.tsv`, and their QIDs off `reports/entry-points-now.tsv`, where the refresh had promoted
+them. Their items on Wikidata are left as they are. Kept: Abba ben Marukba, Gwrddwfin ap Cwrrig, Azariya ibn Pedaya,
+Abul Hamza (the three not named in the question are untouched).
+
