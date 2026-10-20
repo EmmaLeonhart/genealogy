@@ -54528,3 +54528,15 @@ hold line is replaced by that ruling. A one-shot session cron at 18:00 PDT re-en
 (`EDITS_HELD`, the scale-back) and `Ring watch` (superseded 2026-10-08), and dispatches one CI run; no batch is run
 before her further instructions.
 
+## 2026-10-19 PDT: repointed at FamilySearch and the super / non-Bure entry points (Emma)
+
+Emma, after ten days with nothing run: FamilySearch first, Geni "less significant now", the Bure and Scandinavian entry
+points at "clear diminishing returns" and modelled well enough to leave, the super and later non-Bure entry points
+"pretty good". Asked which area of her editing history she meant, the session read the account's contributions from
+2026-09-25 on (244,284 edits; 2,602 without an OAuth tag, i.e. hers by hand) and found her 52 gadget merges of
+2026-10-08/09, 51 of which merged one of our creations (`Q1416…`/`Q1418…`) into an older item: medieval nobility
+(Werner III of Maden, Hugh III of Maine, Teutberga of Arles, Damianos Dalassenos), Fujiwara / Matsudaira / Itakura,
+Alatheus and Saphrax, Yehe Nara and Niohuru. 14 of the 49 kept items carry a FamilySearch id. She confirmed that area
+by AskUserQuestion ("Yes, reorder the queue"). Written into CLAUDE.md § *Where the pipeline is pointed right now*; the
+merges are `reports/emma-hand-merges-2026-10-08-09.tsv`.
+

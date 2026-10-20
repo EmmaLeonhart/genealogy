@@ -27,6 +27,16 @@ and narrow. **It broadened on 2026-09-01** (moved forward from 2027-01-01 by Emm
 driven by `exports/post-merge/wikidata-qid-links.ged` — the file of Wikidata identifications that
 turned into entry points on that date — and the seven entry-point groups.
 
+**⛔ REPOINTED 2026-10-19 (Emma, after the noticeboard pause; confirmed by AskUserQuestion): FAMILYSEARCH AND THE
+SUPER / NON-BURE ENTRY POINTS FIRST.** Her words: "I'm more interested in this point at in a lot of the family search
+stuff", the Geni export and import are "less significant now", and "a lot of the entry points around Scandinavian stuff
+... seem to have had clear diminishing returns. A lot of the super entry points and like the later non-Bure entry
+points are pretty good though. With the Bure people having being modeled well enough on Wikidata, I think it's quite
+possibly worth just not doing much with them anymore." The model of what she wants is her own 52 hand merges of
+2026-10-08/09 (`reports/emma-hand-merges-2026-10-08-09.tsv`): our fresh creations merged into established items of
+medieval European nobility, Japanese court and daimyo families, the Goths and the Manchu clans. Bure and the
+Scandinavian entry points are left alone; Geni work stays secondary.
+
 ## What is left
 
 * **The Geni exports are mostly done.** A few are still running. They are **commanded rather
