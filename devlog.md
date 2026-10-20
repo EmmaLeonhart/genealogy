@@ -54627,3 +54627,14 @@ item is still to be finished, and the long-term objectives are to get the Samari
 ancient Chinese, the Tanba people and the Japanese lines completely linked in, plus the other far-out clusters (Zerbib,
 Akeletzion). Written into CLAUDE.md § *Where the pipeline is pointed right now*.
 
+## 2026-10-19/20: CI green again, on a fresh batch
+
+CI run `39368429874` on `8b7d61f19` (the batch the pipeline rebuilt after the ten-day pause): **success**. Both
+failures of run `39351835766` were on the batch built 2026-10-09 15:21 UTC and do not recur on the fresh build: the
+one-way `LAST P40 Q141499809` (Tollak Pederson Folkvår, two mothers in our tree, `Q141493424` his mother on Wikidata)
+and the three married surnames (Guldsmed, Billberg, Planström). Not explained: which stage dropped Tollak's
+`P25 LAST` without recording it in `reports/single-value-drops.tsv`, and why the carry-forward recorded
+`Johansson Guldsmed` whole while the test looked for `Guldsmed` (the builder passes the father's full label to the
+name model, the test his given name and nickname). If either test goes red again, those are the leads. The pipeline's
+"Start the ring watch" step fails because `Ring watch` is disabled (deliberately, since 2026-10-08); nothing else failed.
+
