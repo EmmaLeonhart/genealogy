@@ -1167,13 +1167,13 @@ def test_the_contiguous_group_matches_what_is_known_to_be_outside_it():
     inside["Q116150298"] = "Jon Jonsen"
     # Empress Jingū `Q232803` guarded the outside until every entry point started (Emma's
     # Wikidata strategy, 2026-09-30, `CLAUDE.md`): she is in `reports/entry-points-jan1.tsv`, so
-    # she is a ROOT, and a root is in the group by definition. The two Buyeo items are in the
-    # ledger and are not entry points, so they still guard what this test is for.
+    # she is a ROOT, and a root is in the group by definition.
     inside["Q232803"] = "Empress Jingū"
     # Buyeo Taebi `Q12598947` and Buyeo Deokjang `Q19657284` guarded the outside until 2026-10-06, when the account
     # linked them to its own item `Q141198548` (Taebi's mother, Deokjang's wife; every edge is in
     # `reports/account-edited-links.tsv`). By the 2026-10-02 ruling an edited, linked item is in the universe, so they
     # are inside by ordinary growth, like Cecilie Ebbesdatter above (found 2026-10-08; the walk had not escaped).
+    # Taebi is also an entry point from 2026-10-19 (Emma), so a root as well.
     inside["Q12598947"] = "Buyeo Taebi"
     inside["Q19657284"] = "Buyeo Deokjang"
     # The guards now: deep in Wikidata's royal world tree, which an escape through Bureus would swallow first, and

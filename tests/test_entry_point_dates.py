@@ -54,3 +54,11 @@ def test_sunjong_is_an_entry_point_from_now():
         rows = {row["qid"]: row for row in csv.DictReader(fh, delimiter="	")}
     assert rows["Q334111"]["active_from"] == "2026-09-01"
     assert rows["Q334111"]["geni_id"] == "6000000028714712399"
+
+
+def test_buyeo_taebi_is_an_entry_point():
+    """Emma, 2026-10-08: `Q12598947` Buyeo Taebi, a root from 2026-10-19."""
+    with (ROOT / "reports" / "entry-points.tsv").open(encoding="utf-8") as fh:
+        rows = {row["qid"]: row for row in csv.DictReader(fh, delimiter="\t")}
+    assert rows["Q12598947"]["active_from"] == "2026-10-19"
+    assert rows["Q12598947"]["geni_id"] == "6000000186285688286"

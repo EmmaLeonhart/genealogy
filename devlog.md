@@ -54564,3 +54564,11 @@ everything, emit-research-ancestor-gedcoms, Places to Wikidata items, Morning ba
 on `main`: run `39350829699`. No pipeline or batch run was dispatched and nothing was sent to Wikidata; the scheduled
 Morning batch will build (not run) its batch at 9 a.m. Pacific. Emma is giving further restart instructions.
 
+## 2026-10-19 PDT: Buyeo Taebi is an entry point
+
+`Q12598947` Buyeo Taebi added to `reports/entry-points.tsv`, active from 2026-10-19, with the Geni id his item carries
+(`P2600` `6000000186285688286`, read live). Pinned by `tests/test_entry_point_dates.py`; the comment in the group test
+that called the Buyeo items "not entry points" is corrected. **Whether the entry points caused the walk escape, as Emma
+suspected:** no. There was no escape; the Buyeo items came inside on 2026-10-06 through the account's own link to
+`Q141198548` (see the entry above). Nothing in the group test's outside guards changes: Louis XIV and Queen Victoria.
+
