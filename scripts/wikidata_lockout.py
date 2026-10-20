@@ -31,6 +31,7 @@ from __future__ import annotations
 import datetime
 import io
 import os
+import re
 import sys
 
 #: ⛔ **EDITING IS HELD, AND THE DATES DO NOT MATTER WHILE IT IS.** Ruled 2026-09-13:
@@ -342,12 +343,35 @@ def _extended_latin(text):
     return True
 
 
+#: ⛔ **AND `ja`/`zh`/`ko` TAKE THEIR OWN SCRIPTS. Emma, 2026-10-08:** a label's script must fit its slot everywhere,
+#: with the one ruled exception that a Latin letter may stand as an initial (`カール・J・スミス`). Same gate, so every
+#: path that writes a label passes one check.
+_CJK_SCRIPTS = {"ja": ("CJK", "KATAKANA", "HIRAGANA", "IDEOGRAPHIC"), "zh": ("CJK", "IDEOGRAPHIC"), "ko": ("HANGUL",)}
+_INITIAL = re.compile(r"(?<![A-Za-z])[A-Za-z]\.?(?![A-Za-z])")
+
+
+def _fits_cjk(lang, text):
+    import unicodedata
+    for ch in _INITIAL.sub("", text):
+        if ch.isspace() or ch.isdigit() or ch in "・·ー-‐()（）、,.々〆ヶ〇=＝":
+            continue
+        if not unicodedata.name(ch, "").startswith(_CJK_SCRIPTS[lang]):
+            return False
+    return True
+
+
 def wrong_label_script(line):
-    """True when a QuickStatements line writes an `en`/`mul` label or alias holding anything but extended Latin."""
+    """True when a QuickStatements line writes a label or alias in a script its slot does not take:
+    `en`/`mul` anything but extended Latin, `ja`/`zh`/`ko` anything but their scripts (Latin initials allowed)."""
     if not line or line.lstrip().startswith("#"):
         return False
     f = line.rstrip("\r\n").split("\t")
-    return len(f) >= 3 and f[1] in _LATIN_SLOTS and not _extended_latin(f[2].strip('"'))
+    if len(f) < 3:
+        return False
+    if f[1] in _LATIN_SLOTS:
+        return not _extended_latin(f[2].strip('"'))
+    m = re.fullmatch(r"[LA](ja|zh|ko)", f[1])
+    return bool(m) and not _fits_cjk(m.group(1), f[2].strip('"'))
 
 
 def refused_at_commit(line):

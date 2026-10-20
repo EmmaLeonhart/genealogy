@@ -256,12 +256,12 @@ jobs:
           import glob, sys
           sys.path.insert(0, "/tmp")
           import wikidata_lockout as w
-          for path in sorted(set(glob.glob("reports/*.qs") + glob.glob("reports/wikidata-*-day*.txt"))):
+          for path in sorted(set(glob.glob("reports/*.qs") + glob.glob("reports/*.txt"))):
               lines = open(path, encoding="utf-8").read().split("\n")
               keep = [l for l in lines if not w.refused_at_commit(l)]
               if len(keep) != len(lines):
                   open(path, "w", encoding="utf-8", newline="").write("\n".join(keep))
-                  print(f"{path}: {len(lines) - len(keep)} line(s) removed at commit (protected item, or an en/mul label not in extended Latin)")
+                  print(f"{path}: {len(lines) - len(keep)} line(s) removed at commit (protected item, or a label in the wrong script for its language)")
           EOF
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

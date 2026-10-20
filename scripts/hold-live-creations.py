@@ -64,6 +64,13 @@ while i < len(lines):
             continue
     keep.append(lines[i])
     i += 1
+# The one label-script check and the protected-item lockout, here too: every run goes through this file.
+sys.path.insert(0, __import__("os").path.dirname(__file__))
+from wikidata_lockout import refused_at_commit  # noqa: E402
+refused = sum(map(refused_at_commit, keep))
+keep = [l for l in keep if not refused_at_commit(l)]
+if refused:
+    print(f"refused {refused} line(s): a protected item, or a label in the wrong script for its language")
 base = src.rsplit(".", 1)[0]
 open(base + "-held.txt", "w", encoding="utf-8", newline="\n").write("\n".join(keep))
 with open(base + "-held-out.tsv", "w", encoding="utf-8", newline="\n") as f:

@@ -54698,3 +54698,27 @@ never touched the `ja` slot; its edits on the item are statements (`P25`, `P3373
 said to fix it if ours, and CLAUDE.md keeps us off other editors' labels ("Wikidata's label beats ours"; the purpose is
 to add, not to correct). It is a plain wrong label anyone could fix by hand.
 
+## 2026-10-20 PDT: one script check on every label, every path
+
+**What was there.** The 2026-10-08 guard (`wikidata_lockout.wrong_label_script`: `en`/`mul` extended Latin only) ran
+at one place, the commit-time gate in `pipeline.yml` and `tree.yml`, and that gate read only `reports/*.qs` and
+`reports/wikidata-*-day*.txt`. So the name-item batch (`wikidata-garborg-name-items.txt`), the FamilySearch and side
+batches under other names, and a session's own run files were never checked; and `ja`/`zh`/`ko` were not checked
+anywhere.
+
+**The paths that write a label or alias:** the day batch (creations, `_label_corrections`, `label-applications.tsv`,
+`forced-labels.tsv`, the composed and relational labels), the name-item batch, the FamilySearch batch, the side
+batches (`.qs` and `.txt` in `reports/`), and the `-held.txt` a session runs. The sender (`wikidata-edit-run.py`,
+held) reads only committed day files.
+
+**Now one check, two places:** `wrong_label_script` also requires `ja` kana/kanji, `zh` Han, `ko` Hangul, a Latin
+letter allowed only as an initial (`カール・J・スミス`); the commit-time gate reads every `reports/*.qs` and
+`reports/*.txt`; and `hold-live-creations.py`, which every run goes through, applies the same `refused_at_commit`
+before writing the `-held.txt`. Measured before the change: 0 `ja`/`zh`/`ko` lines in the 36 batch files that carry
+them would be refused, so nothing currently queued changes.
+
+**Unexpected, and removed (Emma, by AskUserQuestion, "Delete the file now"):** `reports/wikidata-cjk-mul-labels.txt`
+(2026-09-10) was an unsent batch of 1,998 Han-character `mul` labels, which the 2026-10-08 rule forbids; nothing read
+it. Deleted, with its generator `scripts/build-cjk-mul-labels.py`, which no workflow ran (CLAUDE.md: legacy code is
+deleted).
+

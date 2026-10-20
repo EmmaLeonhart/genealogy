@@ -1916,9 +1916,12 @@ def test_creation_label_debris(label, nsfx, expected):
     ('LAST\tLmul\t"西園寺"', True), ('Q1\tAmul\t"ペーダー"', True), ('Q1\tLmul\t"Иван"', True),
     ('LAST\tLen\t"Saionji"', False), ('Q1\tLmul\t"Jørgen Åsmund Ærø"', False), ('Q1\tLen\t"Đặng Thị Ngọc"', False),
     ('LAST\tLja\t"西園寺"', False), ('Q1\tP734\tQ5', False),
+    # ja/zh/ko take their own scripts, a Latin initial allowed (Emma, 2026-10-08).
+    ('Q1\tLja\t"カール・J・スミス"', False), ('Q1\tLzh\t"卡爾·奧托·默納"', False), ('Q1\tLko\t"마렌 스케이"', False),
+    ('Q1\tLja\t"Carl Otto"', True), ('Q1\tLko\t"西園寺"', True), ('Q1\tAzh\t"ペーダー"', True),
 ])
-def test_en_and_mul_take_extended_latin_only(line, refused):
-    """Emma, 2026-10-08: nothing but extended Latin in an `en` or `mul` label, at the commit-time gate."""
+def test_every_label_slot_takes_its_own_script(line, refused):
+    """Emma, 2026-10-08: each label slot takes its own script, at the one commit-time gate."""
     import wikidata_lockout
     assert wikidata_lockout.wrong_label_script(line) is refused
 
