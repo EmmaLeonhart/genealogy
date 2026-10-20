@@ -54540,3 +54540,8 @@ Alatheus and Saphrax, Yehe Nara and Niohuru. 14 of the 49 kept items carry a Fam
 by AskUserQuestion ("Yes, reorder the queue"). Written into CLAUDE.md § *Where the pipeline is pointed right now*; the
 merges are `reports/emma-hand-merges-2026-10-08-09.tsv`.
 
+Queue reordered the same evening to match (Emma, by AskUserQuestion: "Do it all in this order"): the CI walk-escape fix
+and Buyeo Taebi first (red CI blocks everything), then the Abul Hamza and Izanagi FamilySearch items, the label error
+report and the two audits, the RootsMagic copy, the Roger.ec1 check, the Geni-side century score, and the three
+end-pinned items.
+
