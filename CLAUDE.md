@@ -39,9 +39,10 @@ Scandinavian entry points are left alone; Geni work stays secondary.
 
 **The long-term objectives (Emma, 2026-10-19), with the project otherwise "mostly complete":** get completely linked
 in (1) all the Samaritan high priests, (2) all the pharaohs, (3) all the ancient Chinese, (4) all the Tanba people and
-the Japanese lines generally, as far as they exist; and the other far-out groups of `reports/eccentric-clusters.md`
-(the Zerbib/Guedj family, the Eritrean Akeletzion group) connected in too. These are the eccentric clusters and
-entry-point groups (`reports/entry-point-groups.tsv`).
+the Japanese lines generally, as far as they exist. These are the eccentric clusters (`reports/eccentric-clusters.md`)
+and entry-point groups (`reports/entry-point-groups.tsv`). **Not the Zerbib/Guedj cluster** (private modern
+profiles: "just like a no"); the Eritrean Akeletzion cluster is "a maybe", and Emma is "tempted to say" both "should
+be given up on" (same day).
 
 ## What is left
 
