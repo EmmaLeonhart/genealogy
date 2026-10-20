@@ -54641,7 +54641,8 @@ name model, the test his given name and nickname). If either test goes red again
 ## 2026-10-19 PDT: Abul Hamza on FamilySearch (`GRWG-G82`) against Geni
 
 Read from Emma's finished RootsMagic hourglass (`test.abu-hamza-hourglass.rmtree`, 2026-10-10, 168,902 people), after
-archiving it read-only to `Documentsootsmagic-archive6-10-19\`; only the archive copy was opened
+archiving it read-only to `Documents
+ootsmagic-archive6-10-19\`; only the archive copy was opened
 (`mode=ro&immutable=1`). `scripts/abul-hamza-hourglass.py` writes `reports/abul-hamza-hourglass.md` and
 `reports/abul-hamza-scandinavian-descendants.tsv`.
 
@@ -54662,4 +54663,28 @@ archiving it read-only to `Documentsootsmagic-archive6-10-19\`; only the arch
 - **Geni's Descendants ball (5,000, at the cap) has no one born in Scandinavia**: it is truncated, as CLAUDE.md
   says a capped ball is. The FamilySearch hourglass goes 22 generations down (34,796 at generation 20) and 25 up.
 - **Emma's own record `PFR5-LDS` is not in this hourglass.** No Wikidata edits from this item.
+
+## 2026-10-19 PDT: FamilySearch `PF5Q-L8W` is Izanagi; the imperial line against Geni and Wikidata
+
+Read from Emma's RootsMagic file `PF5Q-L8W Izanagi descendants.rmtree` (2026-10-11, 9,106 people), archived read-only
+to `Documents\rootsmagic-archive\2026-10-19\` first and only the copy opened. (`Izanagi-descendants.rmtree`, the
+other file of that day, is empty: 0 people. Archived too.) `scripts/izanagi-emperors.py` writes
+`reports/izanagi-emperors.tsv`, one row per emperor of our roster (`reports/japanese-emperors.tsv`, the 128 holders of
+`Q208233`), with the roster's Geni ids and the FamilySearch records matched on the emperor's `ja` label (read live).
+
+- **`PF5Q-L8W` is Izanagi**, 伊邪那岐, record 1 of the file, followed by Izanami and Susanoo. FamilySearch gives him a
+  birth year of 899 (AD, as stored).
+- **39 of the 128 emperors are in the file**: Jimmu and the legendary early emperors through Keikō, Chūai and Ōjin,
+  then Keitai, Kinmei, Bidatsu, Jomei, Tenji, and the Heian emperors down to Toba, Sutoku, Konoe, Nijō and Rokujō
+  (12th century). It stops there, so Momozono and the later emperors (the 2026-10-08 merges) are not in it.
+- **FamilySearch duplicates its emperors**: Ninmyō 4 records, Saga, Reizei and Kōkō 3 each, Seiwa, Yōzei, Montoku,
+  Suzaku and Junna 2 each.
+- **Geni (through Wikidata's `P2600`) covers almost none of the same span**: 35 roster emperors carry a Geni id, mostly
+  the modern ones (Meiji, Taishō, Hirohito, Akihito, Naruhito) and a scattering of medieval ones (Kōnin, Daigo,
+  Ichijō, Go-Toba, Go-Shirakawa); 93 have none, including every early emperor FamilySearch has.
+- **Unexpected: the roster holds fictional emperors.** Six holders of `Q208233` are not people: the Tale of Genji's
+  Kiritsubo (`Q11112640`), Suzaku (`Q11094916`), Reizei (`Q11395345`), Kinjō (`Q11376528`) and "A Previous Emperor"
+  (`Q11388140`), and `Q11544860` 欠史十代, the "eight undocumented emperors" as a group. They came in through
+  `build-emperor-rosters.py` reading every holder of the position. Reported, not changed.
+No Wikidata edits.
 
