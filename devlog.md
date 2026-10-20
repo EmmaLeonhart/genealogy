@@ -54681,10 +54681,10 @@ other file of that day, is empty: 0 people. Archived too.) `scripts/izanagi-empe
   Suzaku and Junna 2 each.
 - **Geni (through Wikidata's `P2600`) covers almost none of the same span**: 35 roster emperors carry a Geni id, mostly
   the modern ones (Meiji, Taishō, Hirohito, Akihito, Naruhito) and a scattering of medieval ones (Kōnin, Daigo,
-  Ichijō, Go-Toba, Go-Shirakawa); 93 have none, including every early emperor FamilySearch has.
+  Ichijō, Go-Toba, Go-Shirakawa); 93 have none. **Only Daigo is in both** FamilySearch and Geni.
 - **Unexpected: the roster holds fictional emperors.** Six holders of `Q208233` are not people: the Tale of Genji's
   Kiritsubo (`Q11112640`), Suzaku (`Q11094916`), Reizei (`Q11395345`), Kinjō (`Q11376528`) and "A Previous Emperor"
-  (`Q11388140`), and `Q11544860` 欠史十代, the "eight undocumented emperors" as a group. They came in through
+  (`Q11388140`), and `Q11544860` 欠史十代, "the ten undocumented reigns" as a group. They came in through
   `build-emperor-rosters.py` reading every holder of the position. Reported, not changed.
 No Wikidata edits.
 
