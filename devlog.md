@@ -54545,3 +54545,13 @@ and Buyeo Taebi first (red CI blocks everything), then the Abul Hamza and Izanag
 report and the two audits, the RootsMagic copy, the Roger.ec1 check, the Geni-side century score, and the three
 end-pinned items.
 
+## 2026-10-19 PDT: "CI: the universe walk has escaped" closed, already done on 2026-10-08
+
+The walk did not escape. Commit `ac66465e7` (2026-10-08 20:29 PDT) found that the account itself linked Buyeo Taebi
+`Q12598947` and Buyeo Deokjang `Q19657284` to its own item `Q141198548` (Taebi's mother, Deokjang's wife) on
+2026-10-06, so both are inside by the 2026-10-02 rule (an edited, linked item is in the universe), not through Bureus
+and not through the entry points. Size of the escape: none; the group was 38,657 and Louis XIV `Q7742` and Queen
+Victoria `Q9439` became the outside guards. CI went green on it at 07:11 and 11:56 UTC on 2026-10-09 (runs
+`37897579860`, `37926808858`); the item had stayed in the queue only because it was never deleted. The next item
+(Buyeo Taebi as an entry point) asks to record whether the entry points caused it: they did not.
+
