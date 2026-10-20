@@ -54583,3 +54583,20 @@ entry points once it exists. The batch's label gate can still hold the creation 
 relatives on 2026-10-09 for lack of a ja/zh/ko label); the audit of that batch will show it. No batch is run before
 Emma's restart instructions.
 
+## 2026-10-19 PDT: Saphrax, the super entry points, and the P2600 report; held (Emma)
+
+- **Saphrax was created three times:** `Q746220` (Wikipedia), `Q137537941` (MatSuBot, 2025-12, split from the duo item
+  `Q106506544` "Alatheus and Saphrax") and our `Q141634575` (FamilySearch `G5C9-SCV`, born 128). Emma merged ours into
+  MatSuBot's on 2026-10-09; on 2026-10-20 03:12 UTC the account **Immanuelle** merged MatSuBot's two into `Q746220` and
+  `Q576127` Alatheus, so the historical pair now carries FamilySearch's legendary dates (born 128/147, died 195/187), the
+  Swedish parents, and Alatheus as Saphrax's son. The same is set up for Hengist, Horsa, Vortigern, Whitgils, Peredur
+  and Pellinore, which the 2026-10-09 ring created beside existing items.
+- **The nine FamilySearch-keyed super entry points carry no source and no note** in
+  `gedcom/familysearch/rootsmagic-PFR5-LDS-2026-09-30.ged`. Readings (the session's, from its own knowledge): the
+  Sicambrian Frankish king list (Clodius IV), Arthurian romance (Pellinor Ewrawe, Herzeloide, Peredur), a tribe name
+  made a woman (Hocingas, both parents "Hnaref" = Hnæf), a German word as a name (Burgerschaft), the exilarch list
+  (Abba ben Marukba).
+- **Emma:** not intrinsically bad and not damaging the data; she questions whether some super entry points lead
+  anywhere and wants their sources. On the `P2600` single-value report (3,157), most are ours, many the same Geni id
+  with and without `P1810`. Ruling: "hold on here". Queued at the end, uninvestigated.
+
