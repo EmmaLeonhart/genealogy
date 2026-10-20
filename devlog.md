@@ -54500,3 +54500,24 @@ Shown to Emma as https://claude.ai/artifact/WvqEt3hsP3DoN9567HcZQa. Her ruling: 
 different people from each other." All 15 are DIFFERENT in `ancestor-frontier-verdicts.tsv` (the earlier doubt kept in
 the reason) and in `reports/emma-judgments.tsv` (batch `frontier-unsure`), so the walk refuses those pairings. Tally now
 567 SAME, 161 DIFFERENT.
+
+## 2026-10-19 PDT: the noticeboard report item closed; the hold stays
+
+Read live at 17:4x PDT. **Emma already answered on the noticeboard**, on 2026-10-09 at 20:58 UTC: "I will stop. I am
+sorry about this ... I apologize for scaling back too slowly and not being responsive enough", and at 21:08 that the
+strange names were fixed. OBender12 answered at 01:51 UTC on 2026-10-10 ("I don't understand how it makes sense to
+transfer the Geni database to here, especially since that data is not exactly sourced"); that reply has not been
+answered, and the thread was moved to `Wikidata:Administrators' noticeboard/Archive/2026/10` on 2026-10-18. The talk
+page has had no new revision since Emma's own reply at 20:57 UTC on 2026-10-09.
+
+**Unexpected, reported first:** the account made **1,143 edits after "I will stop"**, from 20:58 to 22:11 UTC on
+2026-10-09, none of them creations: 1,083 `mul` labels (Japanese temples, `Tōgen-ji`, `Entsū-ji`, `Gankai-ji`,
+QuickStatements batch `temporary_batch_1791581507910`), about 18 labels in other languages, 16 claim removals, 2
+merges, plus a handful of claims, qualifiers and references. Nothing since 22:11 UTC on 2026-10-09 (ten days).
+
+**The call made (the item asked for a decision from Emma; she made it on the noticeboard):** the item is done, since
+the reply was hers and it was given. Her public "I will stop" is treated as the hold the item described: no batch, no
+creations and no QuickStatements run until she lifts it. That is now a standing line at the top of `queue.md`, so it
+outlives this item, and the noon audit-then-run cron checks it before running anything. Whether to answer OBender12's
+last question is hers; no reply was drafted.
+
