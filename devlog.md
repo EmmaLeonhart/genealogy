@@ -54688,3 +54688,13 @@ other file of that day, is empty: 0 people. Archived too.) `scripts/izanagi-empe
   `build-emperor-rosters.py` reading every holder of the position. Reported, not changed.
 No Wikidata edits.
 
+## 2026-10-19 PDT: error report `Q5040609` Carl Otto Mörner, `ja` "カール・オットー・メルネル中尉": not ours, left
+
+Read live. The `ja` label was written on **2016-05-29 by Cewbot** (`wbeditentity-update`, "import label/alias from
+[[ja:カール14世ヨハン (スウェーデン王)]]"): the bot took the link text in the Japanese article on Karl XIV Johan,
+title included. Found by stepping through the item's 124 revisions for the first one holding the label. The account
+never touched the `ja` slot; its edits on the item are statements (`P25`, `P3373` on 2026-10-03, `P734` on
+2026-10-07). So no rule of ours let the title in, and there is nothing to sweep. **The call:** no edit. The queue item
+said to fix it if ours, and CLAUDE.md keeps us off other editors' labels ("Wikidata's label beats ours"; the purpose is
+to add, not to correct). It is a plain wrong label anyone could fix by hand.
+
