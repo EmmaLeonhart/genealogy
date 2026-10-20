@@ -54572,3 +54572,14 @@ that called the Buyeo items "not entry points" is corrected. **Whether the entry
 suspected:** no. There was no escape; the Buyeo items came inside on 2026-10-06 through the account's own link to
 `Q141198548` (see the entry above). Nothing in the group test's outside guards changes: Louis XIV and Queen Victoria.
 
+## 2026-10-19 PDT: Abul Hamza is a super entry point
+
+Abul Hamza (Geni `6000000227676734863`, the Cyprus person; FamilySearch `GRWG-G82`) was not among the 11 in
+`reports/super-entry-points.tsv`. Added, keyed on the Geni id (the tree's key; the FamilySearch id is in the note, and
+the next item compares the two records). Neither id is on any Wikidata item (searched live,
+`haswbstatement:P2600=6000000227676734863` and `P2889=GRWG-G82`, both empty), so the next built batch creates the item
+(`qs_v1.super_entry_points` is read by both composers), and `refresh-super-entry-points.py` moves it to the regular
+entry points once it exists. The batch's label gate can still hold the creation (it held Azariya ibn Pedaya's
+relatives on 2026-10-09 for lack of a ja/zh/ko label); the audit of that batch will show it. No batch is run before
+Emma's restart instructions.
+
