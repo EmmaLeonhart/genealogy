@@ -37,6 +37,12 @@ possibly worth just not doing much with them anymore." The model of what she wan
 medieval European nobility, Japanese court and daimyo families, the Goths and the Manchu clans. Bure and the
 Scandinavian entry points are left alone; Geni work stays secondary.
 
+**The long-term objectives (Emma, 2026-10-19), with the project otherwise "mostly complete":** get completely linked
+in (1) all the Samaritan high priests, (2) all the pharaohs, (3) all the ancient Chinese, (4) all the Tanba people and
+the Japanese lines generally, as far as they exist; and the other far-out groups of `reports/eccentric-clusters.md`
+(the Zerbib/Guedj family, the Eritrean Akeletzion group) connected in too. These are the eccentric clusters and
+entry-point groups (`reports/entry-point-groups.tsv`).
+
 ## What is left
 
 * **The Geni exports are mostly done.** A few are still running. They are **commanded rather

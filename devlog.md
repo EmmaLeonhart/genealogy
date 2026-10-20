@@ -54620,3 +54620,10 @@ off `reports/super-entry-points.tsv`, and their QIDs off `reports/entry-points-n
 them. Their items on Wikidata are left as they are. Kept: Abba ben Marukba, Gwrddwfin ap Cwrrig, Azariya ibn Pedaya,
 Abul Hamza (the three not named in the question are untouched).
 
+## 2026-10-19 PDT: the long-term objectives (Emma)
+
+Emma, with the project "mostly complete" and the noticeboard having made her reluctant to do much more: every queue
+item is still to be finished, and the long-term objectives are to get the Samaritan high priests, the pharaohs, the
+ancient Chinese, the Tanba people and the Japanese lines completely linked in, plus the other far-out clusters (Zerbib,
+Akeletzion). Written into CLAUDE.md § *Where the pipeline is pointed right now*.
+
