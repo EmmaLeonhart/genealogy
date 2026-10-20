@@ -205,6 +205,11 @@ for _c in ("b", "f", "m", "n", "p", "r"):
 # name that is not Norwegian at all. One rule cannot serve both and nothing here says which a
 # given token is, so neither is added.
 ROWS.update(_PALATAL)
+# **`ñ` is one palatal onset, the `nj` row as a single letter.** Folded to the two letters `nj`, the
+# nasal-coda rule took the `n` first and `Muñoz` read `ムンヨズ`; every attested form reads it as an
+# onset -- `Muñoz` ムニョス, `Núñez` ヌニェス, `Peña` ペーニャ (attested-name-renderings.tsv). Norwegian
+# `nj` (`Anja` アンヤ) is untouched.
+ROWS["ñ"] = (ROWS["nj"][0], ("尼亚", "尼", "纽", "涅", "尼奥"))   # zh as attested: 培尼亚, 努涅斯, 穆尼奥斯
 
 
 def _onsets():
@@ -299,7 +304,7 @@ def translit(token):
     # `サクケン` -> `サケン`) in one place. 47 tokens were affected.
     s = (token.casefold().translate(BARE_VOWEL).replace("aa", "å")
          .replace("ck", "k").replace("þ", "th").replace("ð", "d")
-         .replace("ñ", "nj").replace("ń", "nj").replace("ň", "nj").replace("ç", "s").replace("ł", "w")
+         .replace("ń", "nj").replace("ň", "nj").replace("ç", "s").replace("ł", "w")
          .replace("ć", "č").replace("ś", "š").replace("ź", "ž").replace("ż", "ž").replace("ř", "ž")
          .replace("ď", "d").replace("ť", "t"))
     # **`þ` and `ð` are spelled `th` and `d` in the Norwegian forms of the same names**
@@ -342,7 +347,7 @@ def translit(token):
     #
     # The 55 are already right in the emitted output, because the attested column beats the rule
     # per token. So the class needs no rule; it needs attestations, which it has.
-    if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxzčšž-'’." for c in s):
+    if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxzčšžñ-'’." for c in s):
         return None, None
     ja, zh, i = [], [], 0
     while i < len(s):
