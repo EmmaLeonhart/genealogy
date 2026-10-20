@@ -1,8 +1,8 @@
 240 people across 1 Garborg batches, 26571 already holding a QID
 5045 token(s) are already pointed at by their own bearers
-9364 tokens already have an item and are linked, not created
+9365 tokens already have an item and are linked, not created
 56 token(s) not in Latin script, never created: ibn ʿAwkal, ibn ʿAwkal, Nasi, Nagid of Fustat and Rome, Δέρδας, Δαλασσηνός, Κομνηνός, Аминев, Арпад, Асенина, Борисович, Васильевич, Владимир-Димитрий, Владимир-Дмитрий, Врана, Гедиминовна, Григорьев, Густавович, Звенигородский, Исаевич, Карлов, Каролинг, Киевский, Княгиня Холмская, Кориятович, Любечанин, Мономахиня, Мстиславович, Несвицкий, Николаевна, Оттович, Полоцкий, Полоцкий и Киевский, Пукуверович, Пукуверовичъ, Пяст, Рогволод Полоцкий, Святополк, Семёнович, Смилец, Степанович, Федорович, Фёдорович, Хаартман, Шернваль, Эрикович, княгиня Минская, אשכנזי, לבית, נפתלי הירש פרענקל Fraenkel, רפא, بن فورتون, ბაგრატი, ბაგრატიონი, 덕장, 부여, 은, 이
-5665 need creating, 0 are ambiguous and are not
+5664 need creating, 0 are ambiguous and are not
 230 token(s) held: never a first given name in the corpus but attested as a family name -- Ier (11), Laurentii (7), Georgii (4), ll (4), Lauritzen (3), Ænes (3)
 1568 token(s) RESCUED by the bearers' own statements -- these would have been created a second time:
    Aadnesson            patronymic   Q141152710
@@ -646,7 +646,7 @@
    Øvre Sedberg         family       Q47085823
    Þorfinnsson          patronymic   Q7796212
    Симонида             given        Q602977
-896 token(s) RESCUED by the live check -- these would have been created a second time:
+899 token(s) RESCUED by the live check -- these would have been created a second time:
    von Wrangell         family       already Q112692214
    Rothe                family       already Q21452690
    Haldorson            family       already Q36986319
@@ -1417,6 +1417,9 @@
    de Beaumont          family       already Q76417957
    Nielsen              patronymic   already Q133876583
    von Arenberg         family       already Q116650579
+   Takatsukasa          family       already Q110069903
+   Takatsukasa          family       already Q110069903
+   Takatsukasa          family       already Q110069903
    Ulven                family       already Q37101336
    von der Osten-Sacken family       already Q49164231
    Hovet                family       already Q37434687
@@ -1543,7 +1546,7 @@
    Olson                family       already Q16880716
    Torbergsdatter       patronymic   already Q122839156
    Rommel               family       already Q16882255
-1366 token(s) the ring is about to need are ranked first
+1367 token(s) the ring is about to need are ranked first
 
 checking 4,016 existing name items for a missing description
    0 of them have no English description; 4,016 already do
@@ -1556,7 +1559,7 @@ P2976 on given names: 285 reverse link(s) of 1875 pair(s)
    0 P144 statement(s) to remove
    10 P460 statement(s) to add
 
-wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5625 carried to a later run), 54 statements linking an EXISTING person to one, in the same run
+wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5624 carried to a later run), 54 statements linking an EXISTING person to one, in the same run
 7 P144 based on statement(s) on the patronymics created, from 4,966 tokens with a resolved derivation
    7 created WITHOUT a P144: Bergtorson, Fanuelsdotter, Govertsdatter, Kalvsson, Kefilsdatter, Osen, Thorrasson
   create  Laurentii            patronymic   13
@@ -1731,7 +1734,6 @@ wrote reports/wikidata-garborg-name-items.txt: 40 name items (cap 40, 5625 carri
   create  Svenonis             patronymic   3
   create  Sverkersson          patronymic   3
   create  Söffrensen           patronymic   3
-  create  Takatsukasa          family       3
   create  Tarjeisson           patronymic   3
   create  Tekse                family       3
   create  Tidemansdotter       patronymic   3

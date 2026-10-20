@@ -761978,7 +761978,28 @@
       "property": "P648",
       "snaktype": "value"
      },
-     "rank": "normal",
+     "qualifiers": {
+      "P2241": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q45403344",
+          "numeric-id": 45403344
+         }
+        },
+        "hash": "74bd46d0bbe97d05804856f1f73b6a7480c68cec",
+        "property": "P2241",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P2241"
+     ],
+     "rank": "deprecated",
      "type": "statement"
     }
    ],
@@ -763105,8 +763126,8 @@
     "value": "詹姆斯一世"
    }
   },
-  "lastrevid": 2557945040,
-  "modified": "2026-10-17T09:58:32Z",
+  "lastrevid": 2559075205,
+  "modified": "2026-10-20T04:47:14Z",
   "ns": 0,
   "pageid": 228756,
   "sitelinks": {
