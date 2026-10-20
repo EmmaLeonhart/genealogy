@@ -54521,3 +54521,10 @@ creations and no QuickStatements run until she lifts it. That is now a standing 
 outlives this item, and the noon audit-then-run cron checks it before running anything. Whether to answer OBender12's
 last question is hers; no reply was drafted.
 
+**Superseded the same evening (Emma, by AskUserQuestion, about the workflows being disabled):** "Bruh noticeboard is over
+we're back, cicd at 6pm with a cron job because I'm gonna give you more instructions for starting again". Every
+workflow had been disabled by hand since 2026-10-09 20:53 UTC (CI included; its last run was cancelled). The standing
+hold line is replaced by that ruling. A one-shot session cron at 18:00 PDT re-enables them all except `wikidata-edits`
+(`EDITS_HELD`, the scale-back) and `Ring watch` (superseded 2026-10-08), and dispatches one CI run; no batch is run
+before her further instructions.
+

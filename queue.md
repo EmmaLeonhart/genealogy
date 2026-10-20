@@ -10,8 +10,8 @@ not an action goes in `docs/queue-archive/`. The file this replaced, verbatim, i
 **Standing, not items:** no contact with geni.com until at least 2026-10-21, and only Emma lifts
 it. Each session starts with
 `CLAUDE.md` § *FIRST OF ALL, THE FAMILYSEARCH POSITIONAL WALK*.
-**No new run on Wikidata (no batch, no creations) until Emma lifts it:** on 2026-10-09 20:58 UTC she
-told the Administrators' noticeboard "I will stop" ("Report concerning User:日巫女", archived 2026-10-18).
+**The noticeboard matter is over (Emma, 2026-10-19): "noticeboard is over we're back".** CI/CD is re-enabled by a
+cron at 18:00 PDT that day; Emma is giving further instructions for starting again, so no batch run before them.
 
 
 
