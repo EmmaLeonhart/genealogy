@@ -54555,3 +54555,12 @@ Victoria `Q9439` became the outside guards. CI went green on it at 07:11 and 11:
 `37897579860`, `37926808858`); the item had stayed in the queue only because it was never deleted. The next item
 (Buyeo Taebi as an entry point) asks to record whether the entry points caused it: they did not.
 
+## 2026-10-19 18:0x PDT: CI/CD back on (Emma: "noticeboard is over we're back, cicd at 6pm")
+
+The 18:00 cron re-enabled 14 workflows with `gh workflow enable`: CI, Daily batch, Pipeline, Pages, Rebuild the
+synoptic tree, Fetch Wikidata items, Fetch a URL, Check cluster items, Review decks, Measure the union tree, Redo
+everything, emit-research-ancestor-gedcoms, Places to Wikidata items, Morning batch. Left disabled: `wikidata-edits`
+(the `-auto` sender, `EDITS_HELD` under the scale-back) and `Ring watch` (superseded 2026-10-08). One CI run dispatched
+on `main`: run `39350829699`. No pipeline or batch run was dispatched and nothing was sent to Wikidata; the scheduled
+Morning batch will build (not run) its batch at 9 a.m. Pacific. Emma is giving further restart instructions.
+
