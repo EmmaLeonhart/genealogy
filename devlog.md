@@ -54638,3 +54638,28 @@ and the three married surnames (Guldsmed, Billberg, Planström). Not explained: 
 name model, the test his given name and nickname). If either test goes red again, those are the leads. The pipeline's
 "Start the ring watch" step fails because `Ring watch` is disabled (deliberately, since 2026-10-08); nothing else failed.
 
+## 2026-10-19 PDT: Abul Hamza on FamilySearch (`GRWG-G82`) against Geni
+
+Read from Emma's finished RootsMagic hourglass (`test.abu-hamza-hourglass.rmtree`, 2026-10-10, 168,902 people), after
+archiving it read-only to `Documentsootsmagic-archive6-10-19\`; only the archive copy was opened
+(`mode=ro&immutable=1`). `scripts/abul-hamza-hourglass.py` writes `reports/abul-hamza-hourglass.md` and
+`reports/abul-hamza-scandinavian-descendants.tsv`.
+
+- **Who he is.** FamilySearch: Gregory-Abuhamza Artsruni, male, born 869 Armenia, of the Artsruni house of Vaspurakan.
+  Geni `6000000227676734863`: "Abul-Hamza", male, no dates. (CLAUDE.md calls the Cyprus person "her"; both records
+  say male.)
+- **Same person, yes.** The child is one person on both sides (FamilySearch Melike Artsrouni b. 898, Geni Michke
+  Ardzouni), and so is the grandson (Abusahl Amazasp III, King of Vaspurakan, b. about 920, on both).
+- **The parents disagree** (a disputed parentage, kept as such): FamilySearch "Abo-Hamza" (b. 845) and "Sra Hamza"
+  (b. 847, România); Geni Abu'l-Melik "Isaac ben Qarin" Artsruni and Surkhab.
+- **Scandinavian descendants: yes, 354 born or dying there before 1900 in the FamilySearch file.** The line: Abul Hamza
+  → Melike → Abusahl Amazasp III → Senekerim-Hovhannes of Vaspurakan → Mariam → Bagrat IV of Georgia → George II →
+  "Totorme Bagrationi" (no date) → Kotyan Sutoevich, the Cuman khan (b. 1155; the Bagratid-to-Cuman step is the
+  weak join) → Elizabeth the Cuman → Mary of Hungary → Margaret of Naples → Joan of Valois → Margaret II of Hainaut →
+  **Beatrix of Bavaria (1344–1359, died in Stockholm, queen of Erik XII)**. Her children died young; the lasting
+  Scandinavian lines run through Christopher of Bavaria and Dorothea of Brandenburg (queen of Denmark, d. Kalundborg
+  1495) into the Oldenburg kings.
+- **Geni's Descendants ball (5,000, at the cap) has no one born in Scandinavia**: it is truncated, as CLAUDE.md
+  says a capped ball is. The FamilySearch hourglass goes 22 generations down (34,796 at generation 20) and 25 up.
+- **Emma's own record `PFR5-LDS` is not in this hourglass.** No Wikidata edits from this item.
+
