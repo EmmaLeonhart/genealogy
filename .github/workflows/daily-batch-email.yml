@@ -1,0 +1,121 @@
+name: Daily batch
+
+# **This does not edit Wikidata: it DELIVERS the daily QuickStatements file** so it can be run
+# by hand. The deliverable is delivery.
+#
+# **It opens an ISSUE rather than sending mail**, decided 2026-09-01, because GitHub
+# already emails about issues, so an SMTP server, a sending account and an app password were three
+# secrets bought for something the platform does for free. `send_batch_email.py` and the `SMTP_*`
+# secrets are deleted.
+#
+# **The batch goes in the issue BODY, not just as a link.** QuickStatements is pasted into a
+# textarea, so the text IS the deliverable and an email carrying it is a complete hand-off. The
+# run artifact stays for anything that wants the file.
+#
+# **It is assigned to the owner**, because a notification on issue creation is not guaranteed
+# by watching alone -- assignment is.
+
+on:
+  schedule:
+    # 06:05 UTC, after the CI run at 05:17 so the two do not queue against each other.
+    - cron: "5 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # ⛔ Nothing is delivered while the Administrators' noticeboard mentions 日巫女 (ruled
+      # 2026-09-24, scripts/wikidata-edit-run.py § NOTICEBOARD). Fails closed: unreadable == held.
+      - name: Noticeboard hold
+        id: hold
+        # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25): before that date the page is not read.
+        run: |
+          if [[ "$(date -u +%F)" < "2026-10-05" ]]; then
+            echo "noticeboard check suspended until 2026-10-05"
+            echo "go=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          page=$(curl -fsSL --retry 3 --max-time 60 \
+            -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
+            "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
+          if [ -z "$page" ] || grep -qF '日巫女' <<<"$page"; then
+            echo "HELD: the Administrators' noticeboard mentions 日巫女, or could not be read"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Only the batch and the carry-forward. This workflow rebuilds nothing: the batch is
+      # committed, and rebuilding needs the corpus and 17 GB.
+      - uses: actions/checkout@v4
+        if: steps.hold.outputs.go == 'true'
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /reports/wikidata-garborg-day.txt
+            /reports/garborg-carry-forward.tsv
+          sparse-checkout-cone-mode: false
+
+      - name: What is in today's batch
+        id: batch
+        if: steps.hold.outputs.go == 'true'
+        run: |
+          FILE=reports/wikidata-garborg-day.txt
+          if [ ! -s "$FILE" ]; then echo "no batch file on disk" >&2; exit 1; fi
+          echo "creates=$(grep -c '^CREATE' "$FILE" || true)" >> "$GITHUB_OUTPUT"
+          echo "lines=$(grep -cve '^[[:space:]]*#' -e '^[[:space:]]*$' "$FILE" || true)" >> "$GITHUB_OUTPUT"
+          echo "bytes=$(wc -c < "$FILE")" >> "$GITHUB_OUTPUT"
+          echo "carried=$(( $(wc -l < reports/garborg-carry-forward.tsv) - 1 ))" >> "$GITHUB_OUTPUT"
+
+      - name: Open the issue
+        if: steps.hold.outputs.go == 'true'
+        uses: actions/github-script@v7
+        env:
+          CREATES: ${{ steps.batch.outputs.creates }}
+          LINES: ${{ steps.batch.outputs.lines }}
+          CARRIED: ${{ steps.batch.outputs.carried }}
+          BYTES: ${{ steps.batch.outputs.bytes }}
+        with:
+          script: |
+            const fs = require('fs');
+            const LIMIT = 65536;
+            const batch = fs.readFileSync('reports/wikidata-garborg-day.txt', 'utf8');
+            const today = new Date().toISOString().slice(0, 10);
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
+                        `/actions/runs/${context.runId}`;
+            // Same rule as pipeline.yml: the PAGE is the hand-off, never the artifact.
+            const site = 'https://emmaleonhart.github.io/genealogy';
+            const head = [
+              `**${process.env.CREATES} creations - ${process.env.LINES} statement lines - ` +
+              `${process.env.CARRIED} carried forward**`,
+              '',
+              `### [Open the batch](${site}/wikidata-garborg-day.html)`,
+              '',
+              "Name items come first, then the day's people, so it runs top to bottom as one paste.",
+              '',
+            ].join('\n');
+            // The body carries the batch when it fits. It was 54,184 bytes on 2026-09-01 against
+            // a 65,536 limit -- 17% headroom -- so the fallback is not theoretical.
+            const wrapped = head + '```\n' + batch + '\n```\n';
+            const body = wrapped.length <= LIMIT
+              ? wrapped
+              : head + `The batch is ${process.env.BYTES} bytes, past the ${LIMIT}-byte issue-body ` +
+                       `limit to inline it here — read it on ` +
+                       `[the page](${site}/wikidata-garborg-day.html) above.\n`;
+            // From 2026-10-05 the batch issue is still opened but assigned to nobody (queue item,
+            // Emma 2026-09-25): the QuickStatements are routine by then. Pinned by a test.
+            function assigneesOn(today, owner) { return today < '2026-10-05' ? [owner] : []; }
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Garborg batch ${today} - ${process.env.CREATES} creations`,
+              body,
+              assignees: assigneesOn(new Date().toISOString().slice(0, 10), context.repo.owner),
+            });
+            core.info(`opened #${issue.data.number}: ${issue.data.html_url}`);

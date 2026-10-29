@@ -1,18 +1,3 @@
-> ## OFFLINE BRANCH — NO WIKIDATA EDITING. Emma, 2026-10-09.
->
-> This is the `offline` branch. It "has no ability whatsoever to edit wiki data": Wikidata
-> editing is "in a pin" (parked). On this branch the edit runner
-> (`scripts/wikidata-edit-run.py`) and the workflows that call it (`wikidata-edits.yml`,
-> `pipeline.yml`, `daily-batch-email.yml`) are deleted; `main` still has them. Do not
-> restore them here, do not write QuickStatements for sending, do not log in to Wikidata.
-> Reading Wikidata to look things up is fine. Work here is offline analysis of the
-> RootsMagic GEDCOM (`rootsmagic/test_2026-10-09.ged`).
->
-> **The subject of this branch:** Emma's ancestry through the **Reuss** family (House of
-> Reuss), and her German lines generally. Her words: "the R E U S S family, I want to know
-> about my ancestry related to them" and "generally at the German lines is what I'm most
-> interested in right now."
-
 # Synoptic
 
 ## What this project is
@@ -917,13 +902,7 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   labels pass. Other languages are `todo.md` work, not batch work.
 - **⛔ LONG-TERM, A LABEL IS COMPOSED FROM THE NAME ITEMS, STRICTLY. Ruled 2026-09-27 by AskUserQuestion.** A person's label in any language, `ja`/`zh`/`ko` included, is built from the labels their name items (given names, patronymics, family names) carry in that language, and a language is written for a person only once EVERY part of the name has a label there. Transliteration is phased out over time in favour of this; it is a long tail and nothing is guessed. **English is switched on (Emma, 2026-10-02, by AskUserQuestion):** `COMPOSED_LANGS_LIVE` in `build-garborg-day.py` fills an empty `en` slot from the name items, never overwriting. **`ja`/`zh`/`ko` too (Emma, 2026-10-03, by AskUserQuestion):** an empty slot takes the composed label, and the transliterated line for that slot is dropped; transliteration still fills a slot the name items cannot compose.
 - **The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN.** All three readings are produced for
-  everyone; culture only picks which is promoted to the **pan-CJK label** (internal, not `mul`).
-- **⛔ `mul` IS CATEGORICALLY LATIN. Ruled 2026-09-21:** *"Mul is categorically only latin and any
-  letter from any script should stop it from going through. Diacritics are okay though. The pan cjk
-  label is internal and is generally applied literally to Japanese and Chinese and transliterated
-  into Korean"*. `is_latin()` in `build-mul-labels.py` drops a non-Latin `mul` (ported 2026-10-15
-  from the unmerged branch `misc/file-size-guard`; it never reached `main`). It stops new ones only:
-  labels already live on Wikidata are not repaired by it.
+  everyone; culture only picks which is promoted to `mul`.
 - **A title inside a label takes the NATIVE form in CJK**, never a transliteration. An unknown
   place or title is DROPPED, never transliterated.
 - **Transliterate the English reading.** Faithfulness to the source language destroys more than it

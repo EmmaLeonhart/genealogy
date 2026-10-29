@@ -1,0 +1,399 @@
+name: wikidata-edits
+
+# Executes a REVIEWED batch of Wikidata edits through the bot-password account.
+#
+# Triggers are workflow_dispatch and schedule ONLY. Never add push: or
+# pull_request:. The old reason here was billing on a private repo; the repo went
+# public on 2026-09-01 so minutes are free, and the reason is now the one in
+# CLAUDE.md § "The repo is PUBLIC as of 2026-09-01" -- pipeline.yml is the single
+# exemption, and a workflow that SENDS EDITS is the last one that should fire on
+# every push.
+#
+# TWO DATES, and they gate different things.
+#   START_DATE            2026-09-01  may this repo edit Wikidata at all
+#   AUTOMATION_START_DATE 2026-09-30T08:00 (UTC)  may the SCHEDULE send them by itself
+# On the 15th all of this starts running automatically, and what starts is the
+# daily Garborg batch, through the bot-password API.
+# Before the 15th the schedule still runs -- as a DRY RUN, so the wiring is
+# exercised daily and a break shows up before the day rather than on it.
+#
+# A dispatched run is unaffected by the second date: dry by default, live if
+# dispatched with dry_run: false, which has been allowed since 1 September.
+
+on:
+  # ⛔ `workflow_call`, so `redo-everything.yml` can chain this. Secrets are passed by the
+  # caller with `secrets: inherit`; nothing here reads them from a file.
+  workflow_call:
+    inputs:
+      dry_run:
+        type: boolean
+        default: true
+      limit:
+        type: string
+        default: "10"
+      batch:
+        type: string
+        default: "reports/wikidata-garborg-day-auto.txt"
+      attempt:
+        type: string
+        default: "1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the edits without sending them"
+        type: boolean
+        default: true
+      limit:
+        description: "Maximum edits this run (cadence is 10-100/day)"
+        type: string
+        default: "10"
+      batch:
+        description: "Path to the reviewed batch file"
+        type: string
+        # ⛔ **THE DEFAULT IS THE DAILY BATCH, BECAUSE A DISPATCH TAKES THE DEFAULT.** It was
+        # `out/wikidata/unlinked-items.json` until 2026-09-19 -- a file last written 2026-08-13,
+        # in a schema the sender no longer speaks: its objects carry `type` where `apply()` now
+        # reads `kind`. A hand dispatch therefore did not send the day's batch at all; it loaded
+        # two month-old objects and died on `KeyError: 'kind'` after logging in and taking a
+        # csrf token, with `0 edits executed`.
+        #
+        # The schedule was always right -- it passes `$DAILY_BATCH` explicitly -- so this only
+        # ever bit a dispatch, which is why it survived. A default that is wrong for every
+        # caller who does not override it is not a default, it is a trap.
+        default: "reports/wikidata-garborg-day-auto.txt"
+      attempt:
+        description: "Which try this is; a run on a blocked runner re-dispatches itself with the next"
+        type: string
+        default: "1"
+  # (08:07 UTC was the slot until 2026-09-27, placed after the pipeline's 07:23 rebuild. Both
+  # now start at the same Pacific times, so a run sends the batch the previous rebuild committed.)
+  schedule:
+    # ⛔ **06:00 AND 18:00 PACIFIC, EVERY DAY. Ruled 2026-09-26** (queue item): the regular
+    # scheduled runs start at 6 a.m. and 6 p.m. Pacific. GitHub cron is UTC and ignores daylight
+    # saving, so all four UTC hours are scheduled -- 13:00/01:00 under PDT, 14:00/02:00 under
+    # PST -- and a scheduled run whose cron is the other
+    # daylight-saving slot stops at once. It matches the CRON, not the clock, so a start GitHub
+    # delays past the hour still runs. Pinned by
+    # tests/test_pacific_schedule.py on both sides of the switch.
+    - cron: "0 13 * * *"
+    - cron: "0 1 * * *"
+    - cron: "0 14 * * *"
+    - cron: "0 2 * * *"
+
+concurrency:
+  group: wikidata-edits
+  cancel-in-progress: false
+
+permissions:
+  # write, because a live run commits its receipt. Without that the next run reads
+  # an empty receipt and re-creates everything the last one made.
+  contents: write
+  # actions: write, so a run on a blocked runner can re-dispatch this workflow (2026-09-30).
+  actions: write
+
+env:
+  WIKIDATA_API: https://www.wikidata.org/w/api.php
+  # HELD BY HAND, 2026-09-13. Not a date -- a stop order, lifted by a person.
+  # "disable any editing of Wikidata by this, uh, by the runner right now ...
+  # because we aren't ready for it. And the queue structure was supposed to make
+  # that be the case." The Wikidata work is at the END of queue.md and the isolate
+  # path connections come first; batches went out ahead of both.
+  # Mirrors HELD in scripts/wikidata_lockout.py; tests/test_wikidata_start_date.py
+  # fails if the two disagree. To put the hold back: set both to yes/True.
+  #
+  # LIFTED 2026-09-14. The condition was "attempt every isolate first", and that was gating
+  # the wrong thing: the isolate sweep needs a logged-in browser and therefore an agent, the
+  # edits need neither, and 261,084 people at ~900/hour made the slow half the pacemaker for
+  # the fast one. The agent now does the browser work once a session; CI/CD does the rest
+  # continuously. See the long note on HELD in scripts/wikidata_lockout.py.
+  # HELD BY HAND AGAIN, 2026-09-28 (Emma): no edits through CI/CD while the duplicate creations are
+  # sorted out. Mirrors HELD in scripts/wikidata_lockout.py. Lifted only by her.
+  # And the scale-back, 2026-10-08 (Emma's answer to the 2026-10-06 scope question): no `-auto` sender
+  # alongside the browser run, so this stays held while the browser runs the same batch.
+  EDITS_HELD: "yes"
+  START_DATE: "2026-09-01"
+  # A UTC TIMESTAMP since 2026-09-28 (Emma: automatic editing starts 48 hours from now, gated on the
+  # date, never disabled by hand). Mirrors scripts/wikidata_lockout.py; the test pins the two.
+  AUTOMATION_START_DATE: "2026-09-30T08:00"
+  # The daily batch: what runs by itself, chosen 2026-09-05.
+  # ⛔ The AUTO half, not the whole batch. scripts/split-daily-batch.py writes the two
+  # halves and they are disjoint by construction; the Pages site serves the other one.
+  # Sending the whole file here would re-send what the page tells a person to paste.
+  DAILY_BATCH: reports/wikidata-garborg-day-auto.txt
+  # What a live run has already applied, so a re-sent batch does not create the
+  # same people twice. Committed after every live run.
+  RECEIPT: reports/wikidata-edits-applied.tsv
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    # ⛔ **20 MINUTES WAS SIZED FOR A 10-EDIT HAND RUN, NOT THE WHOLE AUTO HALF.** On
+    # 2026-09-19 a `limit=1000` dispatch was cancelled mid-send at the timeout with ~73 of the
+    # batch applied. Nothing was lost -- the receipt step still ran and
+    # reports/wikidata-edits-applied.tsv went 702 -> 785, so a re-run resumes rather than
+    # repeats -- but a run that stops halfway needs a person to notice and dispatch again, and
+    # the whole point of the schedule is that nobody has to.
+    #
+    # The auto half is ~45 creations and several hundred objects, each a separate wbeditentity
+    # call with a deliberate delay, plus whatever maxlag costs. 90 minutes covers it and still
+    # fails a genuinely stuck run rather than hanging the queue all day.
+    # ⛔ 355 since 2026-09-24: shintowiki's pacing, a random 20-50 s between edits, puts 500
+    # edits at ~4.9 h. GitHub kills a hosted job at 6 h whatever this says, so it sits under that.
+    timeout-minutes: 355
+    steps:
+      # ⛔ AND WHILE THE ADMINISTRATORS' NOTICEBOARD MENTIONS 日巫女, NOTHING RUNS -- not even
+      # a dry run. Ruled 2026-09-24; scripts/wikidata-edit-run.py § NOTICEBOARD carries the ruling
+      # and the sender checks it again on its live path. Fails closed: unreadable == held.
+      - name: Hold until the start date
+        id: gate
+        run: |
+          noticeboard_clear() {
+            local page
+            # ⛔ SUSPENDED UNTIL 2026-10-05 (ruled 2026-09-25, wikidata-edit-run.py NOTICEBOARD_RESUMES).
+            if [[ "$(date -u +%F)" < "2026-10-05" ]]; then echo "noticeboard check suspended until 2026-10-05"; return 0; fi
+            page=$(curl -fsSL --retry 3 --max-time 60 \
+              -A "genealogy-noticeboard-gate/1.0 (https://github.com/EmmaLeonhart/genealogy)" \
+              "https://www.wikidata.org/w/index.php?title=Wikidata:Administrators%27_noticeboard&action=raw") || page=""
+            if [[ -z "$page" ]]; then echo "HELD (fail-closed): the noticeboard could not be read"; return 1; fi
+            if grep -qF '日巫女' <<<"$page"; then echo "HELD: the Administrators' noticeboard mentions 日巫女"; return 1; fi
+            echo "the Administrators' noticeboard does not mention 日巫女"
+          }
+          today=$(date -u +%F)
+          pacific_slot() { case "$(TZ=America/Los_Angeles date -d "@${NOW:-$(date +%s)}" +%Z):$1" in "PDT:0 13 * * *"|"PDT:0 1 * * *"|"PST:0 14 * * *"|"PST:0 2 * * *") return 0;; esac; return 1; }
+          if [[ "${{ github.event_name }}" == "schedule" ]] && ! pacific_slot "${{ github.event.schedule }}"; then
+            echo "cron '${{ github.event.schedule }}' is the other daylight-saving slot: not 06:00 or 18:00 Pacific today"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$EDITS_HELD" == "yes" ]]; then
+            echo "EDITS_HELD=yes - editing is held by hand, nothing runs (not even a dry run)"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$today" < "$START_DATE" ]]; then
+            echo "today=$today is before START_DATE=$START_DATE — nothing to do"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif ! noticeboard_clear; then
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ⛔ THE BATCH GLOB, NOT ONE NAME, AND THIS COST EVERY EDIT THE PROJECT EVER SENT.
+      # This list said /reports/wikidata-garborg-day.txt while DAILY_BATCH said
+      # reports/wikidata-garborg-day-auto.txt, so the file the run reads was never checked out.
+      # The first live morning -- 2026-09-15, the day AUTOMATION_START_DATE names -- died on
+      # `no such batch: /home/runner/.../reports/wikidata-garborg-day-auto.txt`, and NOT ONE
+      # EDIT HAS EVER GONE OUT FROM THE ACCOUNT. Emma: "why the fuck have I never seen any
+      # edits from the account". The run went red on the schedule and nobody looked, because a
+      # red wikidata-edits run had been ordinary all through the hold.
+      # The -auto/-manual split landed 2026-09-14 and this line was not moved with it. The glob
+      # covers whichever half a run asks for, and "The batch has to be on disk" below refuses to
+      # continue rather than letting the mismatch fail 200 lines into a log.
+      #
+      # Sparse, because this repo is 13+ GB tracked and this job reads four paths.
+      # A full checkout is minutes of runner time every morning for nothing, and
+      # `sparse-checkout-cone-mode: false` is what lets a single FILE be named
+      # rather than its whole directory -- reports/ alone is 1.1 GB.
+      # ⛔ **THE GATE NEEDS ITS OWN EVIDENCE CHECKED OUT, OR IT REFUSES EVERYTHING.**
+      # out/wikidata/edit-universe.json is what _edit_universe() reads. It was not in
+      # this list, so it was never on disk here: the loader returned an empty set, the
+      # locality gate failed CLOSED and run 35378526623 REFUSED ALL 143 edits of a live
+      # daily batch. Failing closed is right, but the refusal prints "missing", which
+      # reads as though the composer never wrote the file -- it had, and it was committed.
+      # A sparse checkout that omits a gate's input turns the gate into a total block.
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.go == 'true'
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts
+            /src
+            /tests/test_no_descriptions_or_summaries.py
+            /reports/wikidata-garborg-day*.txt
+            /reports/wikidata-familysearch-day.txt
+            /reports/wikidata-edits-applied.tsv
+            /reports/runner-ips.tsv
+            /out/wikidata/unlinked-items.json
+            /out/wikidata/edit-universe.json
+            /reports/tanba-qids.json
+            /reports/tanba-p2600-pairs.tsv
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.go == 'true'
+        with:
+          python-version: "3.11"
+
+      # THE START DATE, and it is this repo's own. It used to read a lockout state
+      # file belonging to shintowiki-scripts. Those scripts and this repo are not
+      # the same and are not coordinated. The coordination
+      # was invented by an earlier session, and because the check failed closed it
+      # would have blocked this repo from 2026-09-01 for another repo's reason.
+      # scripts/wikidata-edit-run.py checks the same date on the live path, so a
+      # local run is covered. FAILS CLOSED: an unreadable date == locked.
+      - name: Wikidata start-date guard
+        id: lockout
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          if python scripts/wikidata_lockout.py; then
+            echo "open=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "open=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Wikidata start date::NOT YET — no edits will be sent."
+          fi
+
+      - name: Check the secrets are present
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        env:
+          USER_SECRET: ${{ secrets.USERNAME }}
+          BOT_SECRET: ${{ secrets.BOT_NAME }}
+          PASS_SECRET: ${{ secrets.BOT_PASSWORD }}
+          BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
+        run: |
+          missing=0
+          [[ -z "$USER_SECRET" ]] && { echo "::error::USERNAME is not set"; missing=1; }
+          [[ -z "$BOT_SECRET" ]] && { echo "::error::BOT_NAME is not set"; missing=1; }
+          [[ -z "$PASS_SECRET" ]] && { echo "::error::BOT_PASSWORD is not set"; missing=1; }
+          [[ "$missing" == 1 ]] && exit 1
+          echo "all three secrets present"
+
+      # WHAT A SCHEDULED RUN DOES, and it is not what a dispatched one does.
+      # On the schedule the batch is the daily Garborg file and the run goes live
+      # only from AUTOMATION_START_DATE. Before that it is a dry run: the point of
+      # running it anyway is that a break in the wiring shows up on an ordinary
+      # morning rather than on the 15th.
+      - name: Decide what this run does
+        id: plan
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: |
+          today=$(date -u +%F)
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            echo "batch=$DAILY_BATCH" >> "$GITHUB_OUTPUT"
+            # 500, ruled 2026-09-24 with shintowiki's pacing: what fits in six hours at 20-50 s.
+            echo "limit=500" >> "$GITHUB_OUTPUT"
+            # A THIRD OF THE BATCH is the autonomous share -- ruled 2026-09-14, "making 50%
+            # more quickstatements and then segregating out a third of that to be run by
+            # cicd". The caps went up 50% the same day, so the third CI/CD takes is exactly
+            # the increase and the hand-run keeps the volume it had. `limit` stays as the
+            # hard ceiling on top of it.
+            # no fraction: the batch file IS the share. One place computes the split.
+            now=$(date -u +%Y-%m-%dT%H:%M)
+            if [[ ! "$now" < "$AUTOMATION_START_DATE" ]]; then
+              echo "mode=--live" >> "$GITHUB_OUTPUT"
+              echo "::notice title=Automation live::$now UTC is on or after $AUTOMATION_START_DATE"
+            else
+              echo "mode=--dry-run" >> "$GITHUB_OUTPUT"
+              echo "::notice title=Automation not yet::dry run until $AUTOMATION_START_DATE"
+            fi
+          else
+            echo "batch=${{ inputs.batch || 'out/wikidata/unlinked-items.json' }}" >> "$GITHUB_OUTPUT"
+            echo "limit=${{ inputs.limit || '10' }}" >> "$GITHUB_OUTPUT"
+            echo "mode=${{ (inputs.dry_run == false) && '--live' || '--dry-run' }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The failure this guards is silent in the worst way: the batch path is a string in two
+      # places, and when they disagree the run dies inside the python with a one-line message
+      # 200 lines down a log nobody opens. Say it at the top, in the words of the mistake.
+      - name: The batch has to be on disk
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: |
+          batch="${{ steps.plan.outputs.batch }}"
+          if [[ ! -f "$batch" ]]; then
+            echo "::error title=Batch not checked out::$batch is not on disk. It is either not"                 " committed, or not covered by the sparse-checkout list in this workflow."
+            ls -la reports/ 2>/dev/null | head -40
+            exit 1
+          fi
+          echo "$batch: $(grep -c '^' "$batch") lines"
+
+      # ⛔ **THE DESCRIPTION GUARDS RUN BEFORE ANYTHING IS SENT, AND THEY FAIL THE JOB.**
+      # Ruled 2026-09-21: *"ci/cd for this should block any editing lol. All individuals should
+      # have descriptions"*, and *"we need to make everything green before edits happen. No
+      # half measures."*
+      #
+      # Wikibase refuses a duplicate creation only when the label AND a NON-EMPTY description
+      # both match, so a blank description is not a weak guard — it is the absence of the only
+      # guard there is, and every duplicate it lets through has to be merged by hand afterwards.
+      # A test that goes red in `tests.yml` does not stop this workflow; this step does.
+      #
+      # `pytest` rather than a bespoke check, so the gate and the test suite can never drift
+      # apart into two different answers. No `continue-on-error`: it fails closed, which is the
+      # same choice the start-date and locality gates make.
+      # Tanba is never edited (ruled 2026-09-22). The batch on disk may predate the pipeline's
+      # own strip, so it is stripped again here; it fails closed without the roster.
+      - name: No Tanba line reaches Wikidata
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: python scripts/strip_tanba_from_day_batch.py
+
+      - name: Nothing is sent while a creation has no description
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: |
+          python -m pip install --quiet pytest
+          python -m pytest -q tests/test_no_descriptions_or_summaries.py
+
+      - name: Run the batch
+        id: run
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          BOT_NAME: ${{ secrets.BOT_NAME }}
+          BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}
+          BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
+          PYTHONPATH: src
+        run: |
+          # The runner's address, recorded with what Wikidata made of it, so the pattern of the
+          # Azure blocks can be measured rather than guessed (queue item, 2026-09-26).
+          ip=$(curl -fsS --max-time 10 https://api.ipify.org || echo unknown)
+          set +e
+          python scripts/wikidata-edit-run.py \
+            --batch "${{ steps.plan.outputs.batch }}" \
+            --limit "${{ steps.plan.outputs.limit }}" \
+            --receipt "$RECEIPT" \
+            ${{ steps.plan.outputs.mode }}
+          rc=$?
+          set -e
+          result=ok; [[ $rc == 75 ]] && result=blocked; [[ $rc != 0 && $rc != 75 ]] && result="failed:$rc"
+          [[ "${{ steps.plan.outputs.mode }}" == "--live" ]] || result=dry
+          [[ -f reports/runner-ips.tsv ]] || printf 'utc\trun_id\tattempt\tip\tresult\n' > reports/runner-ips.tsv
+          printf '%s\t%s\t%s\t%s\t%s\n' "$(date -u +%FT%TZ)" "$GITHUB_RUN_ID" "${{ inputs.attempt || '1' }}" "$ip" "$result" >> reports/runner-ips.tsv
+          echo "runner $ip: $result"
+          if [[ $rc == 75 ]]; then echo "blocked=true" >> "$GITHUB_OUTPUT"; fi
+          exit $rc
+
+      # ⛔ **A BLOCKED RUNNER RE-DISPATCHES THE RUN, EVERY 15 MINUTES, AT MOST 12 TIMES. Emma, 2026-09-26,
+      # a firm decision; the cadence is the one she chose for shintowiki-scripts (`de992b123`).** GitHub-hosted runners are Azure; Wikimedia blocks some Azure addresses as
+      # webhosts and not others, so a new run draws a new runner (see the 2026-09-17 measurement
+      # in scripts/wikidata-edit-run.py). The sender exits 75 at login when `whoami` says
+      # blocked, at the first global-block error, or when nothing at all has landed. The concurrency group queues the new
+      # run behind this one. reports/runner-ips.tsv records each runner's address and result.
+      - name: Re-dispatch on a blocked runner
+        if: always() && steps.run.outputs.blocked == 'true' && steps.plan.outputs.mode == '--live'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          attempt="${{ inputs.attempt || '1' }}"
+          if (( attempt >= 13 )); then
+            echo "::error title=Blocked runner::attempt $attempt was blocked too; not re-dispatching again"
+            exit 1
+          fi
+          sleep 900
+          gh workflow run wikidata-edits.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" \
+            -f dry_run=false -f limit="${{ steps.plan.outputs.limit }}" \
+            -f batch="${{ steps.plan.outputs.batch }}" -f attempt="$((attempt + 1))"
+          echo "::notice title=Blocked runner::re-dispatched as attempt $((attempt + 1))"
+
+      # The receipt is the run's only durable output and it is worthless uncommitted.
+      # `always()` because a run that died halfway still applied what it applied --
+      # writing the receipt only on success is the reading that re-sends.
+      - name: Commit the receipt
+        if: always() && steps.plan.outputs.mode == '--live'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -z "$(git status --porcelain "$RECEIPT" reports/runner-ips.tsv)" ]]; then
+            echo "nothing applied; no receipt to commit"
+            exit 0
+          fi
+          git add "$RECEIPT" reports/runner-ips.tsv
+          git commit -m "wikidata-edits: receipt for $(date -u +%F)"
+          for i in 1 2 3 4; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1
