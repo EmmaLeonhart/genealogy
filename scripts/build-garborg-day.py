@@ -3880,7 +3880,7 @@ def label_in(label, table):
     Japanese label, it is a broken one. **A middle initial is the one exception** —
     `labels.transliterate_token` keeps `F` as `F` in every script, ruled 2026-08-27.
     """
-    from labels import (ORDINAL_RE, FINAL_ORDINALS, transliterate_token,
+    from labels import (ARABIC_ORDINAL_RE, ORDINAL_RE, FINAL_ORDINALS, transliterate_token,
                         transliterate_token_ko)
 
     # **A DESCRIPTION is not a name and never goes through here.** This is the choke point
@@ -3967,14 +3967,30 @@ def label_in(label, table):
     # `・` and the `·` stop before the ordinal. `ko` is unaffected because it separates every
     # word with a space anyway, and that item reads `토레 운데르베르게 3세`.
     attached = []
+    amp_next = False   # the token after `&` attaches to it
     tokens = list(classify(label))
     for position, (token, _usage, _o) in enumerate(tokens):
         clean = token.strip(",;:")
         # A single `I`/`V` is an ordinal only in the FINAL position; anywhere else it is a
         # middle initial and keeps its letter. `labels.FINAL_ORDINALS` carries the census.
         final = position == len(tokens) - 1 and len(tokens) > 1
-        attached.append(bool(ORDINAL_RE.match(clean))
-                        or (final and clean in FINAL_ORDINALS))
+        # **`&` joins two names and is read as the word it stands for**, と / 和 / 와, never
+        # transliterated: it had no reading at all, so `Ann & John` lost every CJK label
+        # (2026-10-17, Emma's "Build it" for gaiad.ged).
+        # It attaches on both sides, as a particle does: アンとジョン, 安和约翰, and in Korean it
+        # joins the word before it, 과 after a final consonant and 와 after a vowel (안과 존).
+        if clean == "&" and ja:
+            attached.append(True)
+            ja.append("と")
+            zh.append("和")
+            prev = ko[-1][-1:] if ko and ko[-1] else ""
+            batchim = bool(prev) and "가" <= prev <= "힣" and (ord(prev) - 0xAC00) % 28 != 0
+            ko[-1] = ko[-1] + ("과" if batchim else "와")
+            amp_next = True
+            continue
+        attached.append(bool(ORDINAL_RE.match(clean)) or bool(ARABIC_ORDINAL_RE.match(clean))
+                        or (final and clean in FINAL_ORDINALS) or amp_next)
+        amp_next = False
         a, b = transliterate_token(clean, table, final=final)
         c = transliterate_token_ko(clean, table, final=final)
         # The name item's own reading wins where it has one (ruled 2026-09-14, "they should even
@@ -4618,7 +4634,11 @@ def _carries_marker(label):
     """
     from labels import NARROW_MARKERS, WORDS_MEANING_UNKNOWN
     markers = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
-    return any(tok.casefold().strip(".,") in markers for tok in (label or "").split())
+    if any(tok.casefold().strip(".,") in markers for tok in (label or "").split()):
+        return True
+    # A marker of more than one word is a phrase: `No Name /Datskaya/` read ノ・ナメ・ダトスカヤ token by token.
+    text = " " + " ".join((label or "").replace("/", " ").casefold().split()) + " "
+    return any(" " in m and f" {m} " in text for m in markers)
 
 
 _SINO_HAN = re.compile("[㐀-䶿一-鿿豈-﫿]")
