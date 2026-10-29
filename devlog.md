@@ -54722,3 +54722,116 @@ them would be refused, so nothing currently queued changes.
 it. Deleted, with its generator `scripts/build-cjk-mul-labels.py`, which no workflow ran (CLAUDE.md: legacy code is
 deleted).
 
+## 2026-10-09 (offline branch): Reuss / Abul Hamza against Emma's ancestors, first pass
+
+Rebuilt the synoptic tree locally (`genimerge merge --slim`, 2,273,878 people). Seeded her
+ancestry from Wikidata (Q140568870, 5,297 ancestors; 2,223 found in the synoptic tree, giving
+33,541 ancestors there) and compared it by name and dates with Abul Hamza's 73,711 descendants in
+`rootsmagic/test_2026-10-09.ged`. Result: no Reuss ancestors and no real overlap; two false
+matches. Earlier runs the same evening reported Reuss and Bagrationi links, and those came from
+bad bridges in the matching (NN placeholders, birth-vs-death years, Cyrillic dropped to a lone
+"Samson"), fixed before this result. Write-up: `docs/reuss-ancestry.md`. Scripts:
+`scripts/offline/`.
+
+## 2026-10-09 (offline branch): her German lines
+
+`docs/german-lines.md`: 2,329 of her 33,541 synoptic-tree ancestors carry German titles or
+particles, nearly all born 800–1300. They reach her through Danish and Norwegian nobility on the
+Borsheim side; the Reuss neighbourhood is there (Gleichen, Weimar-Orlamünde, Wettin, Thuringia,
+Askanier Saxony, Henneberg, Isenburg-Kempenich, Everstein; 319 people) but no Reuss. Two lines
+traced in full (Gleichen, Everstein). Closes the "where her lines come closest" and "German lines"
+items.
+
+## 2026-10-09 (offline branch): Wikidata dates
+
+Read birth/death years from Wikidata for her 5,298 Wikidata ancestors (read only; 4,082 dated)
+and matched them with Abul Hamza's descendants: no matches, no Reuss. The zero is weaker than the
+synoptic-tree one because names are compared literally across languages; queued a
+language-aware rerun.
+
+## 2026-10-09 (offline branch): language-aware rerun
+
+Added cross-language name aliases to `compare_ah.py` and reran both comparisons: no real match
+(5 false ones on the synoptic side, none on the Wikidata side; near misses checked). Neither tree
+links her ancestors to Abul Hamza's descendants. Queued: where the two sets come closest.
+
+## 2026-10-09 (offline branch): closest approaches
+
+`docs/closest-approaches.md`: 30 houses occur on both sides within 60 years (Courtenay,
+Brandenburg, Châtillon, Villehardouin, Komnenos, Angelos, Henneberg, Anhalt, Neuenahr, Mark…).
+Checked the closest-looking one, Villehardouin: two different women. Queued the rest.
+
+## 2026-10-09 (offline branch): family-confirmed identity check
+
+`docs/family-confirmed.md`: no person is on both sides, even with loose dates (40 years) when
+confirmed by a matching parent or spouse. Positive control (Princess of Achaea) is found, so the
+check works. Two broken runs before this (Polish "ł" splitting names; numerals counted as family
+names) were fixed. Closes the closest-approach leads. Queued: grow her side of the synoptic tree.
+
+## 2026-10-09 (offline branch): her side grown
+
+`grow_side.py`: 2,685 entry points (was 2,220), 33,987 ancestors; still no family-confirmed
+person on both sides. Queued: follow his descendants down inside the synoptic tree.
+
+## 2026-10-09 (offline branch): his lines followed down
+
+`his_lines_down.py`: 10,432 of his descendants located in the synoptic tree; walking down from
+them (with duplicates) reaches 481,994 people, none of them among her 33,516 ancestors. The two
+sets are disjoint in the synoptic tree. Queued: her dead ends against his descendants.
+
+## 2026-10-09 (offline branch): dead-end candidates
+
+`dead_ends.py`: 8,922 of her dead ends; 5 have a candidate parent among his descendants; four are
+name coincidences (Lima, Mello, Lund). One real lead: Sophia von Brandenburg (1450–1480), wife of
+Gard Toreson Underberge, no parents in the tree; candidates Albrecht III Achilles and Margarethe
+of Baden, but none of his 17 listed children is a Sophia. Queued: research her.
+
+## 2026-10-09 (offline branch): Sophia von Brandenburg
+
+`docs/sophia-von-brandenburg.md`: no source ties a Sophia von Brandenburg to Underberge; the
+Underberge (Berge-ætta, Høgsfjord) literature is about Gard Toreson and Ramborg Knutsdotter. Most
+likely an unsourced attribution; her original Geni profile notes still to be read from the exports.
+One refused (403) fetch to geni.com was made, against the no-contact-until-2026-10-21 rule; no more.
+Read her original Geni profile from the exports: the only reference is FamilySearch tree person
+LKM3-Z4V via SmartCopy (2018), no source for "von Brandenburg". Queued: Forsandboka vol. 2 p. 88.
+Forsandboka vol. 2 searched via the nb.no API: "Brandenburg" occurs once, scan page 64, away from
+the Under-Berge pages; context needs a Norwegian IP (BLOCKED-ON-USER-ACTION). Queue empty.
+
+## 2026-10-10 (offline branch): rerun on the 09:54 snapshot
+
+159,262-person GEDCOM: no link. His synoptic-tree descendants grew to 496,617 (from 481,994),
+still none her ancestor; 2 false family matches; dead-end leads unchanged (Sophia von Brandenburg).
+
+## 2026-10-10 (offline branch): Forsandboka page 64 read
+
+From Emma's purchased PDF: the "av Brandenburg" is Hedvig of Brandenburg, first wife of Knut
+Valdemarsson, not Sophia. The page gives Ramborg Knutsdotter's royal line (Valdemar II → … → Knut
+Algotsson) and her mother as Märta Ulfsdotter, daughter of Saint Birgitta (the synoptic tree has an
+unnamed concubine). The royal line is already in Emma's synoptic ancestry; neither it nor the
+Birgitta line is among Abul Hamza's descendants. Sophia: no printed source.
+Queued: who fathered Johannes von Brandenburg, archdeacon of Bergen (Bamberg diocese points at
+Kulmbach as well as Ansbach). First web search found nothing on him.
+DN XVII 685 read: the Bergen archdeacon Johannes was about 23 in 1474, son of a married margrave
+and an unmarried woman, and Cardinal Francesco Gonzaga's avunculus, so most likely an illegitimate
+son of Johann the Alchemist. Too young to be Sophia's father; possibly her brother.
+Correction: DN XVII 719 shows Johannes's Bergen grant was never executed (papal letters not drawn
+up) and was resigned in 1480; he was very likely never in Norway. Earlier wording corrected in the doc.
+Johann the Alchemist's legitimate daughter was Dorothea, queen of Denmark and Norway (Wikidata
+Q61873); he also had natural children (Johannes, a son noted 1458, "Fritz"). A plausible route for a
+natural daughter "Sophia" into Norway. Queued: Queen Dorothea's household.
+DN full text has no Sophie/Sofie in the 1440s–1490s (76 + 146 hits outside that range). Queen
+Dorothea's-household item closed as far as online sources go.
+Fritz di Brandeburgo (Q98479306), natural son of Johann the Alchemist, at his half-sister Barbara's
+Mantua court; daughters married Italian counts. Pattern: natural children placed through legitimate
+daughters' courts, which would put a natural daughter with Queen Dorothea in Scandinavia.
+
+## 2026-10-10 (offline branch): the import standard, its order, and its stall
+
+Recorded Emma's standard (total individuals; conclusive when Abul Hamza's descendants are complete
+to the ring people's period, about 1700), the import's loose generation-by-generation order, and the
+stall since about 18:06 (168,899 people at 20:19). Dropped the Lauritz-children queue item (he has no
+children on FamilySearch); queued watching the import by total individuals.
+
+- **15:13 PST, 2026-10-12:** queue item "Watch the import by total individuals" closed on Emma's word: "we're
+  finished with all the roots magic stuff ... nothing is running there." Last Helena (G82L-CF5) snapshot:
+  37,653 people (13:35); RootsMagic has been closed since 12:59.

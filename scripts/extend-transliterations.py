@@ -92,7 +92,9 @@ from translit_no import SUFFIXES, table_sort_key  # noqa: E402
 #: These come from labels like `Ulrika Eleonora Vasa of Sweden Queen and Queen Consort`.
 TITLES = {"queen", "king", "prince", "princess", "duke", "duchess", "earl", "count",
           "countess", "baron", "baroness", "lord", "lady", "sir", "dame", "emperor",
-          "empress", "consort", "regent", "archduke", "archduchess"}
+          "empress", "consort", "regent", "archduke", "archduchess",
+          # `heiress of Manvik & Soerum` (2026-10-17): a title, never a name to transliterate.
+          "heiress", "heir"}
 
 
 def clean_token(token):

@@ -611,6 +611,11 @@ def _han_number(n):
 #: `I` 4,088 and `V` 827 sit there.
 FINAL_ORDINALS = {"I": 1, "V": 5}
 
+#: **An ordinal written in Arabic numerals reads as the Roman one does.** `1st`, `2nd`, `21st`,
+#: French `1er`/`1re`/`2e`: none was read, so every name carrying one had no `ja`/`zh`/`ko` at all
+#: (2026-10-17, Emma's "Build it" for gaiad.ged). `Henry 1st` is `1世`/`一世`/`1세` like `Henry I`.
+ARABIC_ORDINAL_RE = re.compile(r"^([1-9][0-9]?)(st|nd|rd|th|er|re|e|ème|eme)$", re.IGNORECASE)
+
 
 def ordinal_readings(token, final=False):
     """`(ja, zh, ko)` for a regnal ordinal, or `(None, None, None)` if it is not one.
@@ -625,6 +630,10 @@ def ordinal_readings(token, final=False):
     """
     if final and (token or "") in FINAL_ORDINALS:
         n = FINAL_ORDINALS[token]
+        return f"{n}\u4e16", f"{_han_number(n)}\u4e16", f"{n}\uc138"
+    arabic = ARABIC_ORDINAL_RE.match(token or "")
+    if arabic:
+        n = int(arabic.group(1))
         return f"{n}\u4e16", f"{_han_number(n)}\u4e16", f"{n}\uc138"
     if not ORDINAL_RE.match(token or ""):
         return None, None, None
