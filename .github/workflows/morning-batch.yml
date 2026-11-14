@@ -30,4 +30,9 @@ jobs:
             echo "this slot (${{ github.event.schedule }}) is not 9 a.m. Pacific today; the other one is"
             exit 0
           fi
+          # pipeline.yml went with the Wikidata editing in the offline merge (2026-10-29); stop quietly while it is gone.
+          if ! gh api "repos/$GITHUB_REPOSITORY/contents/.github/workflows/pipeline.yml?ref=main" >/dev/null 2>&1; then
+            echo "pipeline.yml is not in the repo (Wikidata editing removed 2026-10-29); nothing to start"
+            exit 0
+          fi
           gh workflow run pipeline.yml --repo "$GITHUB_REPOSITORY" --ref main -f batch_only=true -f force=true
