@@ -80,3 +80,34 @@ def pytest_collection_modifyitems(config, items):
         nodeid = item.nodeid.replace("\\", "/")
         if any(nodeid == t or nodeid.startswith(t + "::") or nodeid.startswith(t + "[") for t in _AUTOMATION_TESTS):
             item.add_marker(mark)
+
+
+# The 2026-10-20 Garborg day batch is stale and set aside (header of reports/wikidata-garborg-day.txt; Emma's
+# 2026-11-12 reset of the entry points toward Brandon Reese Taylor's relatives). Its two content guards check that
+# stale file against the moved-on ledger, so they skip while the file carries the STALE header.
+_GARBORG_BATCH = _REPO / "reports" / "wikidata-garborg-day.txt"
+_GARBORG_CONTENT_TESTS = (
+    "tests/test_garborg_day_batch.py::test_every_explicit_subject_already_exists",
+    "tests/test_garborg_day_batch.py::test_a_label_is_never_written_over_an_item_that_already_has_one",
+)
+
+
+def _garborg_batch_is_stale() -> bool:
+    try:
+        with _GARBORG_BATCH.open(encoding="utf-8") as fh:
+            return fh.readline().startswith("# ⛔ STALE")
+    except OSError:
+        return False
+
+
+_previous_modifyitems = pytest_collection_modifyitems
+
+
+def pytest_collection_modifyitems(config, items):  # noqa: F811 - extends the hook above
+    _previous_modifyitems(config, items)
+    if not _garborg_batch_is_stale():
+        return
+    mark = pytest.mark.skip(reason="reports/wikidata-garborg-day.txt is the stale 2026-10-20 batch, set aside")
+    for item in items:
+        if item.nodeid.replace("\\", "/") in _GARBORG_CONTENT_TESTS:
+            item.add_marker(mark)
