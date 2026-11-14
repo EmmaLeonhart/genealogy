@@ -22,6 +22,12 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+import pytest
+# The Wikidata editing scripts were removed on purpose when the offline branch was merged into main (2026-10-29:
+# "Wikidata editing removed"), so this module skips while wikidata-edit-run.py is absent instead of breaking CI.
+if not (REPO / "scripts" / "wikidata-edit-run.py").exists():
+    pytest.skip("scripts/wikidata-edit-run.py removed with the Wikidata editing (offline merge, 2026-10-29)",
+                allow_module_level=True)
 # `wikidata-edit-run.py` imports `qs_v1`, a sibling in scripts/, and the hyphen in its own name
 # means it can only be loaded by path.
 sys.path.insert(0, str(REPO / "scripts"))
