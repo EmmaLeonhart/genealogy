@@ -42,3 +42,41 @@ def run_cli(workspace: dict, *argv: str) -> int:
 def run():
     """The `run_cli` helper, as a fixture, for tests that prefer injection."""
     return run_cli
+
+
+# ── Tests of the removed Wikidata-editing automation ─────────────────────────────────────────────
+# The offline merge (2026-10-29) removed the automated Wikidata editing: pipeline.yml, wikidata-edits.yml,
+# daily-batch-email.yml and scripts/wikidata-edit-run.py. Wikidata is edited only through QuickStatements
+# (Emma, 2026-11-14: "Obv only quickstatements"). The tests below check that removed machinery, so they are
+# skipped while it is absent, instead of failing CI; if it ever comes back they run again unchanged.
+from pathlib import Path as _Path
+
+_REPO = _Path(__file__).resolve().parents[1]
+_REMOVED_AUTOMATION = [
+    ".github/workflows/pipeline.yml",
+    ".github/workflows/wikidata-edits.yml",
+    ".github/workflows/daily-batch-email.yml",
+    "scripts/wikidata-edit-run.py",
+]
+_AUTOMATION_TESTS = (
+    "tests/test_pacific_schedule.py",
+    "tests/test_wikidata_start_date.py",
+    "tests/test_batch_issue_assignment.py",
+    "tests/test_daily_batch_wiring.py",
+    "tests/test_editorder.py",
+    "tests/test_bot_identity.py::test_the_bot_scripts_do_not_hand_write_an_agent",
+    "tests/test_patronymic_pairs_called.py::test_pipeline_or_name_items_calls_a_patronymic_pair_builder",
+    "tests/test_repo_invariants.py::test_the_push_exemption_names_a_workflow_that_exists_and_uses_it",
+)
+
+
+def pytest_collection_modifyitems(config, items):
+    missing = [p for p in _REMOVED_AUTOMATION if not (_REPO / p).exists()]
+    if not missing:
+        return
+    mark = pytest.mark.skip(reason="tests the Wikidata-editing automation removed 2026-10-29 "
+                                   "(missing: " + ", ".join(missing) + "); Wikidata is edited only through QuickStatements")
+    for item in items:
+        nodeid = item.nodeid.replace("\\", "/")
+        if any(nodeid == t or nodeid.startswith(t + "::") or nodeid.startswith(t + "[") for t in _AUTOMATION_TESTS):
+            item.add_marker(mark)
