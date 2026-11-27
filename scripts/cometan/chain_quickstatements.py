@@ -9,7 +9,8 @@
 #      another item: QuickStatements' new server moves LAST on every command (inochi-no-michikyo research/last-explained.md);
 #   3. reports/wikidata-cometan-day.txt = reports/wikidata-corrections.txt (on top) + the day's ring, no comment lines:
 #      the one batch published at genealogy.order.life.
-#   4. nobody is created without a FamilySearch or Geni id: the chain stops at such a person.
+#   4. nobody is created without a FamilySearch or Geni id: the chain stops at such a person;
+#   5. every statement but P31 cites the person's Geni (S2600) and FamilySearch (S2889) ids, as Garborg does.
 #   PYTHONPATH= python scripts/cometan/chain_quickstatements.py
 import csv, datetime, os, runpy
 
@@ -65,19 +66,27 @@ def qs_date(s):
     y = year(s)
     return f"+{y:04d}-00-00T00:00:00Z/9" if y else None
 
+def ref(i):
+    """The citation for a statement about i: its Geni id (S2600) and FamilySearch id (S2889), as the Garborg generator
+    cites (scripts/build-garborg-day.py). External ids are what becomes the citation (2026-11-27)."""
+    return (f'\tS2600\t"{a2g[i]}"' if i in a2g else "") + (f'\tS2889\t"{a2f[i]}"' if i in a2f else "")
+
+
 def creation(i, link_prop, link_qid, comment):
     p = anc[i]
+    r = ref(i)
+    assert r, f"{i} has no external id: never created"
     lines = [f"# {comment}", "CREATE", f'LAST\tLen\t"{p["name"]}"', "LAST\tP31\tQ5"]
     yrs = "-".join(v for v in (str(year(p["bt"]) or ""), str(year(p["dt"]) or "")) if v)
     lines.append(f'LAST\tDen\t"genealogical record{(" (" + yrs + ")") if yrs else ""}"')
     if p["sex"] in ("M", "F"):
-        lines.append(f"LAST\tP21\t{'Q6581097' if p['sex'] == 'M' else 'Q6581072'}")
+        lines.append(f"LAST\tP21\t{'Q6581097' if p['sex'] == 'M' else 'Q6581072'}{r}")
     for prop, s in (("P569", p["bt"]), ("P570", p["dt"])):
         d = qs_date(s)
-        if d: lines.append(f"LAST\t{prop}\t{d}")
+        if d: lines.append(f"LAST\t{prop}\t{d}{r}")
     if i in a2f: lines.append(f'LAST\tP2889\t"{a2f[i]}"')
     if i in a2g: lines.append(f'LAST\tP2600\t"{a2g[i]}"')
-    lines.append(f"LAST\t{link_prop}\t{link_qid}")
+    lines.append(f"LAST\t{link_prop}\t{link_qid}{r}")
     return lines
 
 # every relative with an item is known on every chain, and nobody is created twice
@@ -113,8 +122,11 @@ for qid, label_, pre, y, why in TARGETS:
         if a in known and b in known and known[a] != known[b]:
             r = rel(a, b)                # b's relation to a
             inv = {"father": "child", "mother": "child", "spouse": "spouse"}.get(r) or                   ({"M": "father", "F": "mother"}.get(anc[a]["sex"]) if r == "child" else None)
-            if r in PROP: back.append(f"{known[a]}	{PROP[r]}	{known[b]}")
-            if inv in PROP: back.append(f"{known[b]}	{PROP[inv]}	{known[a]}")
+            src = ref(b) or ref(a)       # cited to the newer end's record, else the older's; never uncited
+            if not src:
+                continue
+            if r in PROP: back.append(f"{known[a]}\t{PROP[r]}\t{known[b]}{src}")
+            if inv in PROP: back.append(f"{known[b]}\t{PROP[inv]}\t{known[a]}{src}")
     stop = None
     for k, i in enumerate(chain):
         status = ("has item " + known[i]) if i in known else ("living: not created" if living(i) else
