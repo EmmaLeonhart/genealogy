@@ -67,6 +67,12 @@ BATCHES = (
     # page of its own, to be looked over by hand. Ten of them also lead every loop batch.
     (ROOT / "reports" / "wikidata-familysearch-day.txt", "familysearch.html",
      "FamilySearch", "the FamilySearch people, their own batch: look it over before running"),
+    # **COMETAN'S CHAINS, their own page (Emma, 2026-11-26: "why haven't you put it into the genealogy repos
+    # pipeline?").** The chains from his relatives with Wikidata items down to Cometan (Q142094657) are planned in
+    # Emma's private inochi-no-michikyo repo (scripts/cometan_chain_quickstatements.py), which keeps his tree; only
+    # the day's ring, the people meant for Wikidata, is written here, as reports/wikidata-cometan-day.txt.
+    (ROOT / "reports" / "wikidata-cometan-day.txt", "cometan.html",
+     "Cometan", "Cometan's chains, today's ring: each new item linked to one that exists"),
 )
 
 #: The one that must exist. A run with no day batch is a failed run; a run with no name items

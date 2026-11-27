@@ -1,0 +1,65 @@
+# Cometan chains, today's ring. Each item is created linked to an item that already exists;
+# the reverse links and the next ring come in the next batch, once these QIDs are in the ledger.
+# Leo Baxendale chain, step 1: Joseph Leo Baxendale, child is Joseph Leo Baxendale (Q5567529)
+CREATE
+LAST	Len	"Joseph Leo Baxendale"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1903-1972)"
+LAST	P21	Q6581097
+LAST	P569	+1903-00-00T00:00:00Z/9
+LAST	P570	+1972-00-00T00:00:00Z/9
+LAST	P2889	"G5P7-PJT"
+LAST	P40	Q5567529
+# William Clayton chain, step 2: Thomas Moon, child is Ruth Moon (Q106764092)
+CREATE
+LAST	Len	"Thomas Moon"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1783-1841)"
+LAST	P21	Q6581097
+LAST	P569	+1783-00-00T00:00:00Z/9
+LAST	P570	+1841-00-00T00:00:00Z/9
+LAST	P40	Q106764092
+# Heber C. Kimball chain, step 1: Hannah Moon, spouse is Heber Chase Kimball (Q9002343)
+CREATE
+LAST	Len	"Hannah Moon"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1802-1877)"
+LAST	P21	Q6581072
+LAST	P569	+1802-00-00T00:00:00Z/9
+LAST	P570	+1877-00-00T00:00:00Z/9
+LAST	P26	Q9002343
+# Alexander Neibaur (father of Harriet) chain, step 1: John Thomas Moon, spouse is Harriet Ellen Neibaur (Q4719736)
+CREATE
+LAST	Len	"John Thomas Moon"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1844-1910)"
+LAST	P21	Q6581097
+LAST	P569	+1844-00-00T00:00:00Z/9
+LAST	P570	+1910-00-00T00:00:00Z/9
+LAST	P26	Q4719736
+# Mary Powell (open match) chain, step 2: Ellen Higginson, father is William Higginson (Q76131227)
+CREATE
+LAST	Len	"Ellen Higginson"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1746-1769)"
+LAST	P21	Q6581072
+LAST	P569	+1746-00-00T00:00:00Z/9
+LAST	P570	+1769-00-00T00:00:00Z/9
+LAST	P22	Q76131227
+# Jasper Moon chain, step 5: Richard Moon of Jamaica, child is Robert Moon (Q76080019)
+CREATE
+LAST	Len	"Richard Moon of Jamaica"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1735-1799)"
+LAST	P21	Q6581097
+LAST	P569	+1735-00-00T00:00:00Z/9
+LAST	P570	+1799-00-00T00:00:00Z/9
+LAST	P40	Q76080019
+# Sir Thomas de Strickland chain, step 1: Cecelia Strickland, father is Sir Thomas DeStrickland (Q7795501)
+CREATE
+LAST	Len	"Cecelia Strickland"
+LAST	P31	Q5
+LAST	Den	"genealogical record (1415)"
+LAST	P21	Q6581072
+LAST	P569	+1415-00-00T00:00:00Z/9
+LAST	P22	Q7795501
