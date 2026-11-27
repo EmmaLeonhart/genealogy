@@ -115,12 +115,6 @@ jobs:
       # One page per person with a Wikidata item, adapted from order.life (queue, 2026-09-26).
       # Built here at deploy time and never committed. A failure here must not hold back the
       # batch page, which is still the site's front door.
-      - name: Build the people pages
-        continue-on-error: true
-        run: PYTHONPATH=src python scripts/build-pages-site.py --people
-
-      # Fail loudly rather than publishing an empty page. A site that builds to nothing looks
-      # like a working deploy, which is the failure mode this repo keeps hitting in other places.
       - name: Check the page is not empty
         run: |
           test -s out/site/index.html

@@ -51,27 +51,12 @@ OUT = ROOT / "out" / "site" / "index.html"
 #: The batch files the site exists to serve: (report, page name, title, subtitle).
 #: The first is `index.html`, so the bare site URL is the daily batch and nothing else.
 BATCHES = (
-    # ⛔ THE MANUAL HALF, NOT THE WHOLE BATCH. Ruled 2026-09-14: *"Produce disjoint
-    # quickstatements on the github page too."* The scheduled run sends
-    # `wikidata-garborg-day-auto.txt` by itself; publishing the whole batch here would tell a
-    # person to paste what the runner already sent, and a duplicate `CREATE` mints a second
-    # item for somebody who now exists. `scripts/split-daily-batch.py` writes both halves and
-    # asserts they are disjoint and complete.
-    (ROOT / "reports" / "wikidata-garborg-day-manual.txt", "index.html",
-     "The daily batch", "the half CI/CD does not send — run this one"),
-    (ROOT / "reports" / "wikidata-garborg-name-items.txt",
-     "wikidata-garborg-name-items.html",
-     "Name items", "the name items the daily batch links to"),
-    # ⛔ **FAMILYSEARCH, ITS OWN PAGE. Ruled 2026-09-27 (Emma):** the FamilySearch people are the
-    # hard part and the pipeline's handling of them is not yet trusted, so their batch is on a
-    # page of its own, to be looked over by hand. Ten of them also lead every loop batch.
-    (ROOT / "reports" / "wikidata-familysearch-day.txt", "familysearch.html",
-     "FamilySearch", "the FamilySearch people, their own batch: look it over before running"),
-    # **COMETAN'S CHAINS, their own page (Emma, 2026-11-26: "why haven't you put it into the genealogy repos
-    # pipeline?").** The chains from his relatives with Wikidata items down to Cometan (Q142094657) are planned in
-    # Emma's private inochi-no-michikyo repo (scripts/cometan_chain_quickstatements.py), which keeps his tree; only
-    # the day's ring, the people meant for Wikidata, is written here, as reports/wikidata-cometan-day.txt.
-    (ROOT / "reports" / "wikidata-cometan-day.txt", "cometan.html",
+    # ⛔ **THE OLD BATCHES ARE OFF THE SITE (Emma, 2026-11-26):** "we're literally not even supposed to be running the
+    # old genealogy stuff"; what the site posts is "supposed to be completely overwritten". The garborg day batch, the
+    # name items and the FamilySearch batch are no longer published, and Morning batch / Places are disabled. The site
+    # posts the new work only: Cometan's chains (Q142094657), planned in Emma's private inochi-no-michikyo repo, whose
+    # day's ring is written here as reports/wikidata-cometan-day.txt.
+    (ROOT / "reports" / "wikidata-cometan-day.txt", "index.html",
      "Cometan", "Cometan's chains, today's ring: each new item linked to one that exists"),
 )
 
@@ -82,7 +67,7 @@ BATCH = BATCHES[0][0]
 #: Published beside it so a review page is never artifact-only, but deliberately unlinked.
 #: Add a path here and it gets a Pages URL; also add it to `pages.yml`'s sparse checkout, or
 #: the runner will not have the file and the copy silently does nothing.
-ALONGSIDE = (
+ALONGSIDE_OLD = (
     ROOT / "out" / "parent-review.html",
     ROOT / "out" / "family-review.html",
     ROOT / "out" / "pick-one-review.html",
@@ -323,10 +308,8 @@ def main() -> int:
         print("%s -> %s creations, %s statement lines, %s bytes"
               % (name, got[0], format(got[1], ","), format(got[2], ",")))
 
-    render_candidates()
-    render_patronymic_review()
 
-    for extra in ALONGSIDE:
+    for extra in ():  # the old review pages are no longer published (2026-11-26)
         if not extra.exists():
             print("not published (absent here): %s" % extra.name)
             continue
