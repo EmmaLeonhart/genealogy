@@ -1,0 +1,59 @@
+# The daily run of Cometan's chains (Emma, 2026-11-26: "we're intended to be like, essentially, a daily run of Comiton
+# edits"; "there should be only one batch at all that's ever published"). Rebuilds reports/wikidata-cometan-day.txt
+# (the corrections in reports/wikidata-corrections.txt on top, then reverse links and the day's ring, Q numbers only,
+# never LAST after a line naming another item), commits it, and publishes the site, which shows that one batch.
+# Nothing is sent to Wikidata from here: the batch is pasted into QuickStatements by a person.
+name: Cometan daily
+
+on:
+  schedule:
+    - cron: "41 14 * * *"   # daily, 14:41 UTC (morning in Vancouver)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: write
+
+concurrency:
+  group: cometan-daily
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /scripts/cometan
+            /targets/brandon-reese-taylor
+            /reports/cometan
+            /reports/wikidata-cometan-day.txt
+            /reports/wikidata-corrections.txt
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Rebuild the batch
+        run: python scripts/cometan/chain_quickstatements.py
+
+      - name: Commit what changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/wikidata-cometan-day.txt reports/cometan
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -m "Cometan daily: batch rebuilt"
+          for n in 1 2 3; do git pull --rebase -q origin main && git push origin HEAD:main && exit 0; sleep 15; done
+          exit 1
+
+      - name: Publish the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml -R "${{ github.repository }}"
