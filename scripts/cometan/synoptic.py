@@ -146,6 +146,65 @@ for path in sorted(glob.glob(f"{DL}/Geni - *.html")):
                               "page": None})
         G_rel[gid].append((rel.strip(), rid))
 
+# ---------- Geni GEDCOM downloads (Forest, Ancestors, Descendants exports), keyed on the Geni id ----------
+# Geni's own exports use the profile id as the xref (@I6000000...@), so every person in them joins the same way a
+# saved page's main profile does: by name and year, with at least one Geni relative agreeing (Emma, 2026-11-27: "we
+# use, of course, the [Geni] downloads. We don't go to the [Geni] site").
+for path in sorted(glob.glob(f"{DL}/*.ged")):
+    if os.path.basename(path) == "Cometan's Family Tree.ged":
+        continue
+    head = open(path, encoding="utf-8-sig", errors="replace").read(400)
+    if "SOUR Geni" not in head:
+        continue
+    base = os.path.basename(path)
+    gp, gf, cur, typ, ev = {}, {}, None, None, None
+    for line in open(path, encoding="utf-8-sig", errors="replace"):
+        line = line.rstrip("\n")
+        m = re.match(r"0 @([IF])(\d+)@ (INDI|FAM)", line)
+        if m:
+            typ, cur = m.group(1), m.group(2); ev = None
+            if typ == "I": gp[cur] = {"name": "", "sex": "", "by": None, "dy": None, "famc": [], "fams": []}
+            else: gf[cur] = {"H": None, "W": None, "C": []}
+            continue
+        if line.startswith("0 "):
+            cur = None; continue
+        if not cur:
+            continue
+        if typ == "I":
+            p = gp[cur]
+            if line.startswith("1 NAME") and not p["name"]:
+                p["name"] = " ".join(line[7:].replace("/", " ").split())
+            elif line.startswith("1 SEX"): p["sex"] = line[6:].strip()
+            elif line.startswith("1 FAMC"): p["famc"].append(line[9:-1])
+            elif line.startswith("1 FAMS"): p["fams"].append(line[9:-1])
+            if line.startswith("1 "): ev = line[2:6]
+            if line.startswith("2 DATE"):
+                if ev == "BIRT" and not p["by"]: p["by"] = year(line[7:])
+                if ev == "DEAT" and not p["dy"]: p["dy"] = year(line[7:])
+        else:
+            m = re.match(r"1 (HUSB|WIFE|CHIL) @I(\d+)@", line)
+            if m:
+                k, v = m.groups()
+                if k == "CHIL": gf[cur]["C"].append(v)
+                else: gf[cur][k[0]] = v
+    for gid, p in gp.items():
+        g = geni.setdefault(gid, {"name": p["name"], "by": p["by"], "dy": p["dy"], "page": None})
+        g["page"] = g["page"] or base
+        g["by"] = g["by"] or p["by"]; g["dy"] = g["dy"] or p["dy"]
+        have = set(G_rel[gid])
+        rels = []
+        for f in p["famc"]:
+            f = gf.get(f) or {}
+            if f.get("H"): rels.append(("father", f["H"]))
+            if f.get("W"): rels.append(("mother", f["W"]))
+        for f in p["fams"]:
+            f = gf.get(f) or {}
+            sp = f.get("W") if f.get("H") == gid else f.get("H")
+            if sp: rels.append(("wife" if f.get("H") == gid else "husband", sp))
+            for c in f.get("C", []):
+                rels.append(("daughter" if gp.get(c, {}).get("sex") == "F" else "son", c))
+        G_rel[gid] += [r for r in rels if r not in have and r[1] in gp]
+
 # ---------- join Ancestry <-> FamilySearch from Cometan outward ----------
 a2f, f2a, how = {ANC_ME: FS_ME}, {FS_ME: ANC_ME}, {ANC_ME: "seed (Cometan)"}
 def try_join(a, f, why):
