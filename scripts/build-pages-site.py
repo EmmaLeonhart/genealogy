@@ -57,7 +57,7 @@ BATCHES = (
     # posts the new work only: Cometan's chains (Q142094657), planned in Emma's private inochi-no-michikyo repo, whose
     # day's ring is written here as reports/wikidata-cometan-day.txt.
     (ROOT / "reports" / "wikidata-cometan-day.txt", "index.html",
-     "Cometan", "Cometan's chains, today's ring: each new item linked to one that exists"),
+     "The batch", "first the correction of the 2026-11-25/26 runs (LAST resolved by the new QuickStatements server), then Cometan's chains"),
 )
 
 #: The one that must exist. A run with no day batch is a failed run; a run with no name items
