@@ -9,6 +9,7 @@
 #      another item: QuickStatements' new server moves LAST on every command (inochi-no-michikyo research/last-explained.md);
 #   3. reports/wikidata-cometan-day.txt = reports/wikidata-corrections.txt (on top) + the day's ring, no comment lines:
 #      the one batch published at genealogy.order.life.
+#   4. nobody is created without a FamilySearch or Geni id: the chain stops at such a person.
 #   PYTHONPATH= python scripts/cometan/chain_quickstatements.py
 import csv, datetime, os, runpy
 
@@ -116,7 +117,8 @@ for qid, label_, pre, y, why in TARGETS:
             if inv in PROP: back.append(f"{known[b]}	{PROP[inv]}	{known[a]}")
     stop = None
     for k, i in enumerate(chain):
-        status = ("has item " + known[i]) if i in known else ("living: not created" if living(i) else "to create")
+        status = ("has item " + known[i]) if i in known else ("living: not created" if living(i) else
+                  "to create" if (i in a2f or i in a2g) else "no FamilySearch or Geni id: not created")
         if status.startswith("living") and stop is None and i != ME:
             stop = k
         plan.append({"relative": label_, "relative_qid": qid, "step": k, "ancestry": i, "name": anc[i]["name"],
@@ -131,7 +133,10 @@ for qid, label_, pre, y, why in TARGETS:
             continue
         if i in created:
             break
-        if prev in known and not living(i):
+        # Nobody is created without an external identifier (Emma, 2026-11-27, of Thomas Moon, Hannah Moon and others
+        # created "with no external identifiers whatsoever": "It's kind of baffling that you are doing that."): a person
+        # with neither a FamilySearch nor a Geni id is not created, and the chain waits there.
+        if prev in known and not living(i) and (i in a2f or i in a2g):
             r = rel(i, prev)             # prev's relation to i, stated on the new item i
             if r in PROP:
                 created.add(i)
