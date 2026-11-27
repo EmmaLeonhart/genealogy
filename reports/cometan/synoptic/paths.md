@@ -2,7 +2,7 @@
 
 Built by `scripts/cometan_synoptic.py` from local files only: his Ancestry tree (`targets/brandon-reese-taylor/Cometan's Family Tree.ged`), the five FamilySearch exports (`*.rmtree`), and the saved Geni pages (`Geni - *.html`). Ancestry and FamilySearch people are joined structurally from Cometan (PJ9Y-N11) outward; a Geni profile joins only where one of its Geni relatives also joins. The tree is `reports/cometan/synoptic/cometan-synoptic.ged`.
 
-Joined: 512 Ancestry people to FamilySearch; 795 to Geni.
+Joined: 509 Ancestry people to FamilySearch; 795 to Geni.
 
 Each step says which sources link the two people: **FS** = FamilySearch links them (both are joined and parent/child or spouse there), **Geni** = a saved Geni page links them, otherwise Ancestry only.
 
