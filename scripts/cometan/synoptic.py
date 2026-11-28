@@ -62,7 +62,8 @@ for line in open(f"{DL}/Cometan's Family Tree.ged", encoding="utf-8-sig", errors
     m = re.match(r"0 (@[^@]+@) (INDI|FAM)", line)
     if m:
         cur, typ = m.groups(); ev = None
-        (anc if typ == "INDI" else fam)[cur] = ({"name": "", "sex": "", "bt": "", "dt": ""} if typ == "INDI"
+        (anc if typ == "INDI" else fam)[cur] = ({"name": "", "sex": "", "bt": "", "dt": "", "bp": "", "dp": ""}
+                                                 if typ == "INDI"
                                                  else {"H": None, "W": None, "C": []})
         continue
     if line.startswith("0 "):
@@ -80,6 +81,9 @@ for line in open(f"{DL}/Cometan's Family Tree.ged", encoding="utf-8-sig", errors
         if line.startswith("2 DATE"):
             if ev == "BIRT" and not p["bt"]: p["bt"] = line[7:]
             if ev == "DEAT" and not p["dt"]: p["dt"] = line[7:]
+        if line.startswith("2 PLAC"):
+            if ev == "BIRT" and not p["bp"]: p["bp"] = line[7:].strip()
+            if ev == "DEAT" and not p["dp"]: p["dp"] = line[7:].strip()
     else:
         m = re.match(r"1 (HUSB|WIFE|CHIL) (@[^@]+@)", line)
         if m:

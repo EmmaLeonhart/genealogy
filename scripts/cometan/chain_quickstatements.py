@@ -12,7 +12,7 @@
 #   4. nobody is created without a FamilySearch or Geni id: the chain stops at such a person;
 #   5. every statement but P31 cites the person's Geni (S2600) and FamilySearch (S2889) ids, as Garborg does.
 #   PYTHONPATH= python scripts/cometan/chain_quickstatements.py
-import csv, datetime, os, runpy
+import csv, datetime, os, re, runpy
 
 G = runpy.run_path("scripts/cometan/synoptic.py")
 anc, A_par, A_ch, A_sp = G["anc"], G["A_par"], G["A_ch"], G["A_sp"]
@@ -66,6 +66,34 @@ def qs_date(s):
     y = year(s)
     return f"+{y:04d}-00-00T00:00:00Z/9" if y else None
 
+# The standard description, as scripts/build-garborg-day.py's life_description writes it (Emma, 2026-11-28: "Give
+# actual standardized descriptions"; 2026-09-19: "($DATE_OF_BIRTH - $DATE_OF_DEATH) should be the descriptions we make
+# on individuals. Include the gedcom qualifiers"): `11 May 1783 Eccleston, Lancashire, England, United Kingdom - 17 Aug
+# 1841 Zarahelma, ...`, `born circa 1415 Sizergh Castle, ...`, `died 1758`. Qualifiers written out (ABT and Ancestry's
+# "Abt."/"About" -> circa), the raw place string, no relationship phrase, at most 240 characters.
+MONTHS = {m.upper(): m for m in ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")}
+QUAL = {"ABT": "circa", "ABOUT": "circa", "C": "circa", "CA": "circa", "CIRCA": "circa", "AFT": "Aft", "AFTER": "Aft",
+        "BEF": "Bef", "BEFORE": "Bef", "EST": "Est", "CAL": "Cal", "BET": "Bet", "AND": "and", "FROM": "From", "TO": "to"}
+def desc_date(s):
+    s = re.sub(r"-00-00\b|-00\b", "", (s or "").replace(":", " "))          # Ancestry's "About:1510-00-00"
+    s = re.sub(r"^[cC](?=\d)", "c ", s.strip())                              # "c1480"
+    out = []
+    for tok in s.split():
+        t = tok.rstrip(".").upper()
+        if t in ("UNKNOWN", "DECEASED"): return ""
+        out.append(QUAL.get(t) or MONTHS.get(t[:3] if t[:3] in MONTHS and t.isalpha() else t) or tok)
+    return " ".join(out)
+PLACE_RELATION_RE = re.compile(r"[\s,;-]*(?:\?\s*)?\b(?:son|daughter|child|father|mother|wife|husband|spouse|brother|"
+                               r"sister|widow|widower)\s+(?:of|av|til|till)\b.*$", re.I)
+def life_description(p):
+    def side(d, pl):
+        pl = PLACE_RELATION_RE.split(" ".join((pl or "").split()), 1)[0].rstrip(" -,;?.")
+        pl = ", ".join(x.strip() for x in pl.split(",") if x.strip())       # "Yorkshire, , England"
+        return " ".join(x for x in (desc_date(d), pl) if x)
+    born, died = side(p["bt"], p.get("bp")), side(p["dt"], p.get("dp"))
+    out = f"{born} - {died}" if born and died else f"born {born}" if born else f"died {died}" if died else ""
+    return out[:240].rstrip(" -,")
+
 def ref(i):
     """The citation for a statement about i: its Geni id (S2600) and FamilySearch id (S2889), as the Garborg generator
     cites (scripts/build-garborg-day.py). External ids are what becomes the citation (2026-11-27)."""
@@ -77,8 +105,9 @@ def creation(i, link_prop, link_qid, comment):
     r = ref(i)
     assert r, f"{i} has no external id: never created"
     lines = [f"# {comment}", "CREATE", f'LAST\tLen\t"{p["name"]}"', "LAST\tP31\tQ5"]
-    yrs = "-".join(v for v in (str(year(p["bt"]) or ""), str(year(p["dt"]) or "")) if v)
-    lines.append(f'LAST\tDen\t"genealogical record{(" (" + yrs + ")") if yrs else ""}"')
+    desc = life_description(p)
+    if desc:
+        lines.append(f'LAST\tDen\t"{desc}"')
     if p["sex"] in ("M", "F"):
         lines.append(f"LAST\tP21\t{'Q6581097' if p['sex'] == 'M' else 'Q6581072'}{r}")
     for prop, s in (("P569", p["bt"]), ("P570", p["dt"])):
