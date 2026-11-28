@@ -95,6 +95,20 @@ for f in fam.values():
     if f["H"] and f["W"]:
         A_sp[f["H"]].add(f["W"]); A_sp[f["W"]].add(f["H"])
 
+# The Woodplumpton Moons follow FamilySearch's line, not Ancestry's (Emma, 2026-11-28; searched that day,
+# inochi-no-michikyo research/cometan/familysearch-search-2026-11-28.md). Ancestry makes Robert (1715, LZLW-GHS) the son
+# of Richard (1711-1744, 2HK1-KBJ), born four years before him; FamilySearch makes them brothers, sons of John Moone
+# (1677-1758, LZL4-WXT) and Isabell Warwick, and John the grandson of Robert Moone 94WX-XF2, already on the Lancashire
+# Moone line. Ancestry instead reached that line through John Moone Junior (1590), whom FamilySearch does not have.
+def set_parent(child, role, new):
+    old = A_par[child][role]
+    if old: A_ch[old].discard(child)
+    A_par[child][role] = new
+    if new: A_ch[new].add(child)
+set_parent("@I392309342887@", "F", "@I392309341219@")   # Robert Moon (1715): father John Moone (1677-1758)
+set_parent("@I392309342887@", "M", "@I392309341264@")   # Robert Moon (1715): mother Isabel Worsick (Isabell Warwick)
+set_parent("@I392309325611@", "F", "@I392166240874@")   # Robert Moone (1642-1685): father Robert Moone 94WX-XF2
+
 # ---------- FamilySearch exports (union by FS ID) ----------
 fs = {}
 F_par = collections.defaultdict(lambda: {"F": None, "M": None}); F_ch = collections.defaultdict(set)
@@ -226,6 +240,39 @@ while q:
     for sa in A_sp[a]:
         for sf in F_sp[f]:
             if try_join(sa, sf, f"spouse of {anc[a]['name']}"): q.append(sa); break
+
+# FamilySearch ids found by searching FamilySearch's tree for the chain people the exports did not reach (Emma,
+# 2026-11-28: "once you've found them, then like set it up so that they're in the thing"). Matched on name, dates,
+# parents and spouse; "probable" ones have no parents on FamilySearch and are matched on spouse, place and dates.
+# Evidence per person: inochi-no-michikyo research/cometan/familysearch-search-2026-11-28.md.
+FS_FOUND = {
+    "@I392234895255@": "LRJF-RD5",  # Thomas Moon 1783-1841
+    "@I392234810306@": "KWVM-PRG",  # Matthias Moon 1775-1839
+    "@I392234820512@": "LHVH-5J8",  # Hannah Moon 1802-1877 (w. Heber C. Kimball)
+    "@I392234807558@": "KWJX-S4D",  # Lydia Moon 1811-1868
+    "@I392234819538@": "KWC2-QJ6",  # John Thomas Moon 1844-1910
+    "@I392320581730@": "K4L6-6WT",  # Ellen Higginson 1746-1769 (probable)
+    "@I392316280907@": "KD1M-X8N",  # Ambrose Fox 1769-1844 (probable)
+    "@I392309342956@": "LZFV-RN8",  # Richard Moon of Jamaica 1735-c1799
+    "@I392309342887@": "LZLW-GHS",  # Robert Moon 1715-1778
+    "@I392309341929@": "2HK1-KBJ",  # Richard Moon 1711-1744 (Robert's brother on FamilySearch)
+    "@I392309341219@": "LZL4-WXT",  # John Moone 1677-1758
+    "@I392309325611@": "LDGL-WGP",  # Robert Moone 1642-1685 (Ancestry: 1636-1691)
+    "@I392220174137@": "LVVV-XKL",  # Cecilia Strickland b. c1415
+    "@I392220170046@": "GHBD-G7K",  # Richard Redman 1450-1495 (FamilySearch duplicate: G1GQ-HC1)
+    "@I392220167622@": "GQC6-NRQ",  # James Redman of Thornton 1480-1525
+    "@I392220167122@": "GL47-JCB",  # William Redman c1510-1561
+    "@I392220161128@": "L1J8-KDZ",  # Anne Redmayne c1560
+    "@I392220152307@": "GLT2-6F8",  # Marye Clapham (Mary Foxcrofte) 1590-1632
+    "@I392220120299@": "L5LS-NZ2",  # Richard Clapham 1622-1676
+    "@I392160445674@": "K8MJ-DMP",  # Margaret Clapham 1666-1714 (probable: "Margaret", wife of Oswald Airey)
+    "@I392160445600@": "KZ81-FZ1",  # Charles Airey 1707-1781
+    "@I392160445541@": "L5FS-DCJ",  # William Airey 1735-1820
+    "@I392160445367@": "L4QD-988",  # Elizabeth Airey 1760-1834 (probable)
+}
+for a, f in FS_FOUND.items():
+    if a not in a2f and f not in f2a:
+        a2f[a], f2a[f], how[a] = f, a, "found on FamilySearch, 2026-11-28"
 
 # ---------- join Geni profiles to joined people (needs a relative to agree) ----------
 REL = {"father": "F", "mother": "M", "son": "C", "daughter": "C", "husband": "S", "wife": "S"}
